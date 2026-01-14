@@ -63,8 +63,8 @@ const programs: SignatureProgram[] = [
     detailDescription: '콜라겐 재생과 깊은 보습으로 피부 텍스처를 근본적으로 개선합니다. 안에서부터 빛나는 건강한 광택을 되찾으세요.',
     features: ['스킨부스터', '콜라겐 부스팅', '맞춤 피부 관리'],
     href: '/laser',
-    beforeImage: '/images/signature/glow-before.jpg',
-    afterImage: '/images/signature/glow-after.jpg',
+    beforeImage: '/images/signature/glow-abstract.png',
+    afterImage: '/images/signature/glow-abstract.png',
     accentColor: '#a89080',
   },
   {
@@ -75,8 +75,8 @@ const programs: SignatureProgram[] = [
     detailDescription: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리미엄 패키지. 시네마틱한 변화를 경험하세요.',
     features: ['복합 리프팅', '볼륨 재정립', '피부 재생'],
     href: '/signature',
-    beforeImage: '/images/signature/total-before.jpg',
-    afterImage: '/images/signature/total-after.jpg',
+    beforeImage: '/images/signature/total-antiaging-abstract.png',
+    afterImage: '/images/signature/total-antiaging-abstract.png',
     accentColor: '#6d4e42',
   },
 ];
