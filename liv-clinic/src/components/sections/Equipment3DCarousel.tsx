@@ -80,8 +80,8 @@ const devices: DeviceItem[] = [
   },
   {
     id: '08',
-    title: 'LUCAS Laser',
-    subTitle: '루카스 레이저',
+    title: 'Lucas',
+    subTitle: '루카스',
     desc: '피부 속부터 밝고 맑게 – 색소 치료의 새로운 기준',
     image: '/images/equipment/processed/equipment_lucas.png',
     link: '/laser',

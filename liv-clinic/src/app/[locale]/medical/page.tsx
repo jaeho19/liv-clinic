@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, ScrollLink } from '@/components/ui';
 import { MedicalBlogSection } from '@/components/sections';
@@ -25,6 +25,7 @@ export default function MedicalPage() {
     { id: 'general', label: tMedical('categories.general') },
   ];
 
+  // 필터링된 Q&A 목록
   const filteredQA = useMemo(() => {
     return MEDICAL_QA.filter((qa) => {
       const matchesCategory = selectedCategory === 'all' || qa.category === selectedCategory;
@@ -37,41 +38,56 @@ export default function MedicalPage() {
     });
   }, [selectedCategory, searchQuery]);
 
-  const toggleExpand = useCallback((id: string, element: HTMLElement | null) => {
+  // 정렬된 Q&A 목록 - 확장된 질문이 항상 최상단에 위치
+  const sortedQA = useMemo(() => {
+    if (!expandedId) return filteredQA;
+
+    const expandedItem = filteredQA.find(qa => qa.id === expandedId);
+    if (!expandedItem) return filteredQA;
+
+    const otherItems = filteredQA.filter(qa => qa.id !== expandedId);
+    return [expandedItem, ...otherItems];
+  }, [filteredQA, expandedId]);
+
+  // Q&A 목록 컨테이너 ref
+  const qaListRef = useRef<HTMLDivElement>(null);
+
+  const toggleExpand = useCallback((id: string) => {
     const isExpanding = expandedId !== id;
     setExpandedId(expandedId === id ? null : id);
 
-    // 펼쳐질 때만 스크롤 (접을 때는 스크롤하지 않음)
-    if (isExpanding && element) {
-      // 애니메이션이 시작된 후 스크롤
+    // 펼쳐질 때 Q&A 목록 최상단으로 스크롤 (질문이 재정렬되어 최상단으로 이동하므로)
+    if (isExpanding) {
+      // 레이아웃 애니메이션 완료 후 스크롤
       setTimeout(() => {
-        // 동적으로 sticky 헤더 높이 + 네비게이션 헤더 높이 계산
         const navHeader = document.querySelector('header');
         const navHeight = navHeader?.offsetHeight || 80;
         const stickyHeight = stickyHeaderRef.current?.offsetHeight || 100;
-        const totalOffset = navHeight + stickyHeight + 12; // 12px 추가 여백
+        const totalOffset = navHeight + stickyHeight + 16;
 
-        const elementPosition = element.getBoundingClientRect().top;
-        const offsetPosition = elementPosition + window.scrollY - totalOffset;
+        if (qaListRef.current) {
+          const listPosition = qaListRef.current.getBoundingClientRect().top;
+          const offsetPosition = listPosition + window.scrollY - totalOffset;
 
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        });
-      }, 100);
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 150);
     }
   }, [expandedId]);
 
   return (
     <>
-      {/* Hero - 모바일에서 여백 축소 */}
-      <section className="relative pt-24 pb-10 md:pt-32 md:pb-20 bg-gradient-to-b from-primary/10 to-background">
+      {/* Hero - 컴팩트하게 최적화 */}
+      <section className="relative pt-20 pb-4 md:pt-24 md:pb-8 bg-gradient-to-b from-primary/10 to-background">
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="max-w-3xl">
-              <p className="font-serif text-h3 text-primary mb-2 md:mb-4">Medical Info</p>
-              <h1 className="text-h1 md:text-display text-secondary mb-3 md:mb-6">{tMedical('title')}</h1>
-              <p className="text-body md:text-h4 text-mono leading-relaxed whitespace-pre-line">
+              <p className="font-serif text-h4 md:text-h3 text-primary mb-1 md:mb-2">Medical Info</p>
+              <h1 className="text-h2 md:text-h1 text-secondary mb-2 md:mb-3">{tMedical('title')}</h1>
+              <p className="text-small md:text-body text-mono leading-relaxed">
                 {tMedical('subtitle')}
               </p>
             </div>
@@ -79,17 +95,17 @@ export default function MedicalPage() {
         </div>
       </section>
 
-      {/* Search & Filter - 모바일에서 여백 축소 */}
+      {/* Search & Filter - 헤더 바로 아래에 붙도록 설정 */}
       <section
         ref={stickyHeaderRef}
-        className="py-4 md:py-8 bg-white border-b border-border sticky top-20 z-30"
+        className="py-2 md:py-4 bg-white border-b border-border sticky top-16 z-30"
       >
         <div className="container-custom">
-          <div className="flex flex-col md:flex-row gap-3 md:gap-6 items-center justify-between">
+          <div className="flex flex-col md:flex-row gap-2 md:gap-4 items-center justify-between">
             {/* Search */}
-            <div className="relative w-full md:w-96">
+            <div className="relative w-full md:w-80">
               <svg
-                className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-mono-light"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-mono-light"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -106,17 +122,17 @@ export default function MedicalPage() {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={tMedical('searchPlaceholder')}
-                className="w-full pl-12 pr-4 py-2.5 md:py-3 rounded-xl border border-border focus:border-primary focus:outline-none transition-colors text-body"
+                className="w-full pl-10 pr-3 py-2 md:py-2.5 rounded-lg border border-border focus:border-primary focus:outline-none transition-colors text-small md:text-body"
               />
             </div>
 
             {/* Category Filter */}
-            <div className="flex gap-2 overflow-x-auto pb-1 md:pb-2 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
+            <div className="flex gap-1.5 overflow-x-auto scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0">
               {categories.map((category) => (
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`flex-shrink-0 px-3 md:px-4 py-1.5 md:py-2 rounded-full text-small font-medium transition-colors whitespace-nowrap ${
+                  className={`flex-shrink-0 px-2.5 md:px-3 py-1 md:py-1.5 rounded-full text-xs md:text-small font-medium transition-colors whitespace-nowrap ${
                     selectedCategory === category.id
                       ? 'bg-primary text-white'
                       : 'bg-background text-mono hover:bg-primary/10'
@@ -130,20 +146,18 @@ export default function MedicalPage() {
         </div>
       </section>
 
-      {/* Q&A List - 모바일에서 여백 축소 */}
-      <section className="py-6 md:py-16 bg-background">
+      {/* Q&A List - 컴팩트하게 최적화 */}
+      <section className="py-3 md:py-8 bg-background">
         <div className="container-custom">
-          <AnimateOnScroll>
-            <div className="text-center mb-4 md:mb-8">
-              <p className="text-small md:text-body text-mono-light">
-                {t('total')} <span className="text-primary font-medium">{filteredQA.length}</span> {t('questions')}
-              </p>
-            </div>
-          </AnimateOnScroll>
+          <div className="text-center mb-2 md:mb-4">
+            <p className="text-xs md:text-small text-mono-light">
+              {t('total')} <span className="text-primary font-medium">{filteredQA.length}</span> {t('questions')}
+            </p>
+          </div>
 
           <div className="max-w-3xl mx-auto">
-            {filteredQA.length === 0 ? (
-              <div className="text-center py-16">
+            {sortedQA.length === 0 ? (
+              <div className="text-center py-12">
                 <svg
                   className="w-16 h-16 mx-auto mb-4 text-mono-light/50"
                   fill="none"
@@ -161,18 +175,24 @@ export default function MedicalPage() {
                 <p className="text-body text-mono-light">{t('tryAnother')}</p>
               </div>
             ) : (
-              <div className="space-y-3 md:space-y-4">
-                {filteredQA.map((qa, index) => (
-                  <motion.div
-                    key={qa.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    <Card padding="none" hover={false} className="overflow-hidden">
+              <LayoutGroup>
+                <div ref={qaListRef} className="space-y-2 md:space-y-3">
+                  {sortedQA.map((qa) => (
+                    <motion.div
+                      key={qa.id}
+                      layout
+                      layoutId={qa.id}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{
+                        layout: { type: 'spring', stiffness: 300, damping: 30 },
+                        opacity: { duration: 0.2 }
+                      }}
+                    >
+                      <Card padding="none" hover={false} className="overflow-hidden">
                       {/* Question */}
                       <button
-                        onClick={(e) => toggleExpand(qa.id, e.currentTarget.closest('.overflow-hidden'))}
+                        onClick={() => toggleExpand(qa.id)}
                         className="w-full px-4 py-4 md:px-6 md:py-5 text-left flex items-start justify-between gap-3 md:gap-4 hover:bg-background/50 transition-colors"
                       >
                         <div className="flex items-start gap-3 md:gap-4">
@@ -285,10 +305,11 @@ export default function MedicalPage() {
                           </motion.div>
                         )}
                       </AnimatePresence>
-                    </Card>
-                  </motion.div>
-                ))}
-              </div>
+                      </Card>
+                    </motion.div>
+                  ))}
+                </div>
+              </LayoutGroup>
             )}
           </div>
         </div>

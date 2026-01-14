@@ -186,51 +186,6 @@ const CoolingIllustration = () => (
   </svg>
 );
 
-// Image Placeholder Component
-const ImagePlaceholder = ({ label, aspectRatio = "square" }: { label: string; aspectRatio?: "square" | "wide" | "tall" }) => {
-  const ratioClasses = {
-    square: "aspect-square",
-    wide: "aspect-video",
-    tall: "aspect-[3/4]"
-  };
-
-  return (
-    <div className={`relative ${ratioClasses[aspectRatio]} rounded-2xl overflow-hidden bg-gradient-to-br from-[#8B5CF6]/10 via-background to-[#06B6D4]/10`}>
-      <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-        <svg className="w-16 h-16 text-[#8B5CF6]/30 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <p className="text-mono-light text-sm text-center">{label}</p>
-      </div>
-      <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#8B5CF6]/10" />
-      <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-[#06B6D4]/10" />
-    </div>
-  );
-};
-
-// Before/After Comparison Placeholder
-const BeforeAfterPlaceholder = () => (
-  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-mono-light/5 to-[#8B5CF6]/5">
-    <div className="grid grid-cols-2 divide-x divide-border">
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6">
-        <div className="w-20 h-20 rounded-full bg-mono-light/20 mb-3 flex items-center justify-center">
-          <span className="text-mono-light text-2xl font-serif">B</span>
-        </div>
-        <p className="text-mono-light text-sm">Before</p>
-      </div>
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6 bg-[#8B5CF6]/5">
-        <div className="w-20 h-20 rounded-full bg-[#8B5CF6]/20 mb-3 flex items-center justify-center">
-          <span className="text-[#8B5CF6] text-2xl font-serif">A</span>
-        </div>
-        <p className="text-[#8B5CF6] text-sm">After</p>
-      </div>
-    </div>
-    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white to-transparent flex items-end justify-center pb-3">
-      <span className="text-xs text-mono-light">실제 시술 사례 이미지</span>
-    </div>
-  </div>
-);
-
 // Dual Energy Diagram Component
 const DualEnergyDiagram = () => (
   <div className="relative w-full max-w-xl mx-auto">
@@ -830,59 +785,6 @@ export default function DensityDetail() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="section-gap bg-background">
-        <div className="container-custom">
-          <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">Treatment Gallery</p>
-              <h2 className="text-h1 text-secondary mb-4">덴서티 시술 사례</h2>
-              <p className="text-body text-mono-light">
-                실제 리브성형외과에서 시술받으신 분들의 변화입니다
-              </p>
-            </div>
-          </AnimateOnScroll>
-
-          {/* Before/After Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <AnimateOnScroll animation="fadeInUp" delay={0}>
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">전안면 리프팅</p>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInUp" delay={0.1}>
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">볼 + 턱선 개선</p>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInUp" delay={0.2}>
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">이마 + 눈가</p>
-            </AnimateOnScroll>
-          </div>
-
-          {/* Additional Images Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <AnimateOnScroll animation="scaleIn" delay={0}>
-              <ImagePlaceholder label="덴서티 장비" aspectRatio="square" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.1}>
-              <ImagePlaceholder label="시술 과정" aspectRatio="square" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.2}>
-              <ImagePlaceholder label="듀얼 핸드피스" aspectRatio="square" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.3}>
-              <ImagePlaceholder label="상담실" aspectRatio="square" />
-            </AnimateOnScroll>
-          </div>
-
-          <AnimateOnScroll>
-            <p className="text-center text-xs text-mono-light mt-8">
-              * 시술 결과는 개인에 따라 차이가 있을 수 있습니다
-            </p>
-          </AnimateOnScroll>
-        </div>
-      </section>
-
       {/* LIV Section */}
       <section className="section-gap bg-gradient-to-b from-secondary/5 to-background">
         <div className="container-custom">
@@ -1235,7 +1137,7 @@ export default function DensityDetail() {
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
-                  <Button size="lg" className="bg-white text-secondary hover:bg-[#8B5CF6] hover:text-white w-full sm:w-auto">
+                  <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-[#8B5CF6] hover:!text-white w-full sm:w-auto">
                     무료 상담 예약하기
                   </Button>
                 </ScrollLink>

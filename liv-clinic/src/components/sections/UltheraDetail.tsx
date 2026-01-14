@@ -186,29 +186,6 @@ const ImagePlaceholder = ({ label, aspectRatio = "square" }: { label: string; as
   );
 };
 
-// Before/After Comparison Placeholder
-const BeforeAfterPlaceholder = () => (
-  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-mono-light/5 to-primary/5">
-    <div className="grid grid-cols-2 divide-x divide-border">
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6">
-        <div className="w-20 h-20 rounded-full bg-mono-light/20 mb-3 flex items-center justify-center">
-          <span className="text-mono-light text-2xl font-serif">B</span>
-        </div>
-        <p className="text-mono-light text-sm">Before</p>
-      </div>
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6 bg-primary/5">
-        <div className="w-20 h-20 rounded-full bg-primary/20 mb-3 flex items-center justify-center">
-          <span className="text-primary text-2xl font-serif">A</span>
-        </div>
-        <p className="text-primary text-sm">After</p>
-      </div>
-    </div>
-    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white to-transparent flex items-end justify-center pb-3">
-      <span className="text-xs text-mono-light">실제 시술 사례 이미지</span>
-    </div>
-  </div>
-);
-
 // Skin Layer Diagram Component
 const SkinLayerDiagram = () => (
   <div className="relative w-full max-w-xl mx-auto">
@@ -1124,101 +1101,6 @@ export default function UltheraDetail() {
         </div>
       </section>
 
-      {/* Gallery Section - 시술 사례 */}
-      <section className="section-gap-md bg-background relative overflow-hidden">
-        <div className="absolute top-20 right-0 w-96 h-96 rounded-full bg-[#D4AF37]/5 blur-3xl" />
-        <div className="container-custom relative z-10">
-          <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <div className="flex items-center justify-center gap-4 mb-4">
-                <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Gallery</span>
-                <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
-              </div>
-              <p className="font-serif text-h3 text-primary mb-2">Treatment Gallery</p>
-              <h2 className="text-h1 text-secondary mb-4">울쎄라피 프라임 시술 사례</h2>
-              <p className="text-body text-mono-light">
-                실제 리브성형외과에서 시술받으신 분들의 변화입니다
-              </p>
-            </div>
-          </AnimateOnScroll>
-
-          {/* Before/After - Mobile: Horizontal Scroll, Desktop: Grid */}
-          <div className="flex overflow-x-auto gap-4 -mx-6 px-6 pb-4 md:grid md:grid-cols-3 md:gap-8 md:overflow-visible md:mx-0 md:px-0 md:pb-0 mb-8 md:mb-12 scrollbar-hide scroll-snap-x-mandatory">
-            <div className="flex-shrink-0 w-[85vw] md:w-auto scroll-snap-center">
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">전안면 리프팅 (800 lines)</p>
-            </div>
-            <div className="flex-shrink-0 w-[85vw] md:w-auto scroll-snap-center">
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">턱선 + 목 리프팅 (600 lines)</p>
-            </div>
-            <div className="flex-shrink-0 w-[85vw] md:w-auto scroll-snap-center">
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">눈가 + 이마 리프팅 (400 lines)</p>
-            </div>
-          </div>
-
-          {/* Additional Images Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <AnimateOnScroll animation="scaleIn" delay={0}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/images/lifting/ulthera/equipment/control-unit-front.jpg"
-                  alt="울쎄라피 프라임 장비"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">울쎄라피 프라임 장비</p>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.1}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/images/lifting/ulthera/transducers/handset.jpg"
-                  alt="시술 핸드피스"
-                  className="w-full h-full object-contain bg-gradient-to-br from-[#f9f6f3] to-white p-4 group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">시술 핸드피스</p>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.2}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/images/lifting/ulthera/videos/ultherapy-device.mp4" type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">DeepSEE 시각화</p>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.3}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/images/lifting/ulthera/transducers/ds-4-4.5.jpg"
-                  alt="4.5mm SMAS 트랜스듀서"
-                  className="w-full h-full object-contain bg-gradient-to-br from-[#D4AF37]/5 to-[#f9f6f3] p-4 group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">SMAS 트랜스듀서</p>
-              </div>
-            </AnimateOnScroll>
-          </div>
-
-          <AnimateOnScroll>
-            <p className="text-center text-xs text-mono-light mt-8">
-              * 시술 결과는 개인에 따라 차이가 있을 수 있습니다
-            </p>
-          </AnimateOnScroll>
-        </div>
-      </section>
-
       {/* LIV Section - 리브만의 울쎄라 */}
       <section className="section-gap-sm bg-gradient-to-b from-secondary/5 to-background relative overflow-hidden">
         <div className="absolute top-1/2 left-0 w-64 h-64 rounded-full bg-[#D4AF37]/10 blur-3xl -translate-y-1/2" />
@@ -1608,12 +1490,12 @@ export default function UltheraDetail() {
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
-                  <Button size="lg" className="bg-white text-secondary hover:bg-primary hover:text-white w-full sm:w-auto">
+                  <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-primary hover:!text-white w-full sm:w-auto">
                     무료 상담 예약하기
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
-                  <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="border-white !text-white hover:bg-white/10 w-full sm:w-auto">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>

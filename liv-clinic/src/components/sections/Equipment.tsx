@@ -74,8 +74,8 @@ const devices: DeviceItem[] = [
   },
   {
     id: '08',
-    title: 'LUCAS Laser',
-    subTitle: '루카스 레이저',
+    title: 'Lucas',
+    subTitle: '루카스',
     desc: '고출력 Q스위치로 난치성 색소 치료',
     image: '/images/equipment/lucas-laser.png',
     link: '/laser',

@@ -151,51 +151,6 @@ const FaceTiteIllustration = () => (
   </svg>
 );
 
-// Image Placeholder Component
-const ImagePlaceholder = ({ label, aspectRatio = "square" }: { label: string; aspectRatio?: "square" | "wide" | "tall" }) => {
-  const ratioClasses = {
-    square: "aspect-square",
-    wide: "aspect-video",
-    tall: "aspect-[3/4]"
-  };
-
-  return (
-    <div className={`relative ${ratioClasses[aspectRatio]} rounded-2xl overflow-hidden bg-gradient-to-br from-[#E91E63]/10 via-background to-[#9C27B0]/10`}>
-      <div className="absolute inset-0 flex flex-col items-center justify-center p-6">
-        <svg className="w-16 h-16 text-[#E91E63]/30 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
-        <p className="text-mono-light text-sm text-center">{label}</p>
-      </div>
-      <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-[#E91E63]/10" />
-      <div className="absolute bottom-4 left-4 w-12 h-12 rounded-full bg-[#9C27B0]/10" />
-    </div>
-  );
-};
-
-// Before/After Comparison Placeholder
-const BeforeAfterPlaceholder = ({ treatment }: { treatment: string }) => (
-  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-mono-light/5 to-[#E91E63]/5">
-    <div className="grid grid-cols-2 divide-x divide-border">
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6">
-        <div className="w-20 h-20 rounded-full bg-mono-light/20 mb-3 flex items-center justify-center">
-          <span className="text-mono-light text-2xl font-serif">B</span>
-        </div>
-        <p className="text-mono-light text-sm">Before</p>
-      </div>
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6 bg-[#E91E63]/5">
-        <div className="w-20 h-20 rounded-full bg-[#E91E63]/20 mb-3 flex items-center justify-center">
-          <span className="text-[#E91E63] text-2xl font-serif">A</span>
-        </div>
-        <p className="text-[#E91E63] text-sm">After</p>
-      </div>
-    </div>
-    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white to-transparent flex items-end justify-center pb-3">
-      <span className="text-xs text-mono-light">{treatment}</span>
-    </div>
-  </div>
-);
-
 // Treatment Card Component for each handpiece
 const TreatmentCard = ({
   name,
@@ -694,54 +649,6 @@ export default function InModeDetail() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="section-gap bg-white">
-        <div className="container-custom">
-          <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-[#E91E63] mb-2">Treatment Gallery</p>
-              <h2 className="text-h1 text-secondary mb-4">인모드 시술 사례</h2>
-              <p className="text-body text-mono-light">
-                실제 리브성형외과에서 시술받으신 분들의 변화입니다
-              </p>
-            </div>
-          </AnimateOnScroll>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <AnimateOnScroll animation="fadeInUp" delay={0}>
-              <BeforeAfterPlaceholder treatment="Morpheus8 - 모공/피부결" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInUp" delay={0.1}>
-              <BeforeAfterPlaceholder treatment="FaceTite - 이중턱 개선" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInUp" delay={0.2}>
-              <BeforeAfterPlaceholder treatment="Forma - 피부 탄력" />
-            </AnimateOnScroll>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <AnimateOnScroll animation="scaleIn" delay={0}>
-              <ImagePlaceholder label="인모드 장비" aspectRatio="square" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.1}>
-              <ImagePlaceholder label="Morpheus8 팁" aspectRatio="square" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.2}>
-              <ImagePlaceholder label="시술 과정" aspectRatio="square" />
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.3}>
-              <ImagePlaceholder label="상담실" aspectRatio="square" />
-            </AnimateOnScroll>
-          </div>
-
-          <AnimateOnScroll>
-            <p className="text-center text-xs text-mono-light mt-8">
-              * 시술 결과는 개인에 따라 차이가 있을 수 있습니다
-            </p>
-          </AnimateOnScroll>
-        </div>
-      </section>
-
       {/* LIV Section */}
       <section className="section-gap bg-gradient-to-b from-secondary/5 to-background">
         <div className="container-custom">
@@ -1071,12 +978,12 @@ export default function InModeDetail() {
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
-                  <Button size="lg" className="bg-white text-secondary hover:bg-[#E91E63] hover:text-white w-full sm:w-auto">
+                  <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-[#E91E63] hover:!text-white w-full sm:w-auto">
                     무료 상담 예약하기
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
-                  <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="border-white !text-white hover:bg-white/10 w-full sm:w-auto">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>

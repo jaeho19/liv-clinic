@@ -3,7 +3,7 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { pretendard, cormorant } from '@/styles/fonts';
-import { Header, Footer, FloatingCTA, BackToTop, ScrollProgress } from '@/components/layout';
+import { Header, Footer, FloatingCTA, BackToTop, ScrollProgress, QuickConsultBar } from '@/components/layout';
 import { GoogleAnalytics } from '@/components/analytics';
 import { generatePageMetadata, generateLocalBusinessSchema, BASE_URL } from '@/lib/seo';
 import '../globals.css';
@@ -80,6 +80,7 @@ export default async function LocaleLayout({
           <Header />
           <main id="main-content" className="min-h-screen page-enter" role="main">{children}</main>
           <Footer />
+          <QuickConsultBar />
           <FloatingCTA />
           <BackToTop />
         </NextIntlClientProvider>

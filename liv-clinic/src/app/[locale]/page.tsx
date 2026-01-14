@@ -7,7 +7,6 @@ import {
   InstagramFeed,
   BeforeAfterShowcase,
   Location,
-  FloatingConsultation,
 } from '@/components/sections';
 
 export default function HomePage() {
@@ -21,7 +20,6 @@ export default function HomePage() {
       <InstagramFeed />
       <BeforeAfterShowcase />
       <Location />
-      <FloatingConsultation />
     </>
   );
 }

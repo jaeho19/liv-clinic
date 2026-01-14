@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink } from '@/components/ui';
@@ -220,29 +220,6 @@ const ImagePlaceholder = ({ label, aspectRatio = "square" }: { label: string; as
     </div>
   );
 };
-
-// Before/After Comparison Placeholder
-const BeforeAfterPlaceholder = () => (
-  <div className="relative rounded-2xl overflow-hidden bg-gradient-to-r from-mono-light/5 to-primary/5">
-    <div className="grid grid-cols-2 divide-x divide-border">
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6">
-        <div className="w-20 h-20 rounded-full bg-mono-light/20 mb-3 flex items-center justify-center">
-          <span className="text-mono-light text-2xl font-serif">B</span>
-        </div>
-        <p className="text-mono-light text-sm">Before</p>
-      </div>
-      <div className="aspect-[4/5] flex flex-col items-center justify-center p-6 bg-primary/5">
-        <div className="w-20 h-20 rounded-full bg-primary/20 mb-3 flex items-center justify-center">
-          <span className="text-primary text-2xl font-serif">A</span>
-        </div>
-        <p className="text-primary text-sm">After</p>
-      </div>
-    </div>
-    <div className="absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-white to-transparent flex items-end justify-center pb-3">
-      <span className="text-xs text-mono-light">실제 시술 사례 이미지</span>
-    </div>
-  </div>
-);
 
 // RF Energy Diagram Component
 const RFEnergyDiagram = () => (
@@ -481,10 +458,36 @@ const ProcessStep = ({ step, title, desc, isLast }: { step: number; title: strin
   </motion.div>
 );
 
+// 동적 레이블 데이터
+const heroLabels = [
+  {
+    top: { title: 'AccuREP', subtitle: '자동 에너지 조절' },
+    bottom: { title: 'Comfort Pulse', subtitle: '진동 통증 완화' }
+  },
+  {
+    top: { title: 'RF Technology', subtitle: '콜라겐 수축 & 재생' },
+    bottom: { title: '14M+', subtitle: '전세계 시술 건수' }
+  },
+  {
+    top: { title: 'AccuTip', subtitle: '3.0cm² 정밀 면적' },
+    bottom: { title: '멀츠 코리아', subtitle: '공식 인증 클리닉' }
+  },
+];
+
 // Main Component
 export default function ThermageDetail() {
   const treatment = TREATMENTS.lifting.thermage;
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
+  const [currentLabelIndex, setCurrentLabelIndex] = useState(0);
+
+  // 동적 레이블 전환 효과
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentLabelIndex((prev) => (prev + 1) % heroLabels.length);
+    }, 4000); // 4초마다 전환
+
+    return () => clearInterval(interval);
+  }, []);
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => id === 'thermage')
@@ -594,11 +597,19 @@ export default function ThermageDetail() {
                   {/* Premium gradient border */}
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#FF6B35]/30 via-[#D4AF37]/20 to-primary/30 p-[2px]">
                     <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
-                      {/* Hero Image */}
-                      <img
+                      {/* Hero Image with slow zoom animation */}
+                      <motion.img
                         src="/images/lifting/thermage/flx-closeup.jpg"
                         alt="Thermage FLX 장비"
                         className="absolute inset-0 w-full h-full object-cover"
+                        animate={{
+                          scale: [1, 1.08, 1],
+                        }}
+                        transition={{
+                          duration: 20,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
                       />
 
                       {/* Glassmorphism overlay */}
@@ -611,24 +622,42 @@ export default function ThermageDetail() {
                   </div>
                 </motion.div>
 
-                {/* Floating badges */}
-                <motion.div
-                  className="absolute -top-4 -right-4 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl px-4 py-3 border border-[#D4AF37]/20"
-                  animate={{ y: [0, -10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity }}
-                >
-                  <p className="text-small font-medium text-secondary">AccuREP</p>
-                  <p className="text-xs text-mono-light">자동 에너지 조절</p>
-                </motion.div>
+                {/* Floating badges - Dynamic Labels */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`top-${currentLabelIndex}`}
+                    className="absolute -top-4 -right-4 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl px-4 py-3 border border-[#D4AF37]/20"
+                    initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: [0, -10, 0], scale: 1 }}
+                    exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                    transition={{
+                      opacity: { duration: 0.5 },
+                      y: { duration: 3, repeat: Infinity },
+                      scale: { duration: 0.5 }
+                    }}
+                  >
+                    <p className="text-small font-medium text-secondary">{heroLabels[currentLabelIndex].top.title}</p>
+                    <p className="text-xs text-mono-light">{heroLabels[currentLabelIndex].top.subtitle}</p>
+                  </motion.div>
+                </AnimatePresence>
 
-                <motion.div
-                  className="absolute -bottom-4 -left-4 bg-gradient-to-r from-[#FF6B35] to-[#FF8B55] text-white rounded-2xl shadow-xl px-4 py-3"
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 3, repeat: Infinity, delay: 1 }}
-                >
-                  <p className="text-small font-medium">Comfort Pulse</p>
-                  <p className="text-xs opacity-80">진동 통증 완화</p>
-                </motion.div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`bottom-${currentLabelIndex}`}
+                    className="absolute -bottom-4 -left-4 bg-gradient-to-r from-[#FF6B35] to-[#FF8B55] text-white rounded-2xl shadow-xl px-4 py-3"
+                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: [0, 10, 0], scale: 1 }}
+                    exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                    transition={{
+                      opacity: { duration: 0.5 },
+                      y: { duration: 3, repeat: Infinity, delay: 1 },
+                      scale: { duration: 0.5 }
+                    }}
+                  >
+                    <p className="text-small font-medium">{heroLabels[currentLabelIndex].bottom.title}</p>
+                    <p className="text-xs opacity-80">{heroLabels[currentLabelIndex].bottom.subtitle}</p>
+                  </motion.div>
+                </AnimatePresence>
 
                 {/* Premium glow effect */}
                 <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[#FF6B35]/20 to-[#D4AF37]/20 blur-2xl opacity-50" />
@@ -885,99 +914,6 @@ export default function ThermageDetail() {
             <Card padding="lg" hover={false}>
               <GenerationTable />
             </Card>
-          </AnimateOnScroll>
-        </div>
-      </section>
-
-      {/* Gallery Section - 시술 사례 */}
-      <section className="section-gap bg-white">
-        <div className="container-custom">
-          <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-[#FF6B35] mb-2">Treatment Gallery</p>
-              <h2 className="text-h1 text-secondary mb-4">써마지 시술 사례</h2>
-              <p className="text-body text-mono-light">
-                실제 리브성형외과에서 시술받으신 분들의 변화입니다
-              </p>
-            </div>
-          </AnimateOnScroll>
-
-          {/* Before/After Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <AnimateOnScroll animation="fadeInUp" delay={0}>
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">전안면 써마지 (900샷)</p>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInUp" delay={0.1}>
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">하안면 + 목 (600샷)</p>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fadeInUp" delay={0.2}>
-              <BeforeAfterPlaceholder />
-              <p className="text-center text-small text-mono-light mt-3">써마지 아이 (225샷)</p>
-            </AnimateOnScroll>
-          </div>
-
-          {/* Additional Images Row */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <AnimateOnScroll animation="scaleIn" delay={0}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/images/lifting/thermage/equipment/thermage-flx-device.png"
-                  alt="써마지 FLX 장비"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">써마지 FLX 장비</p>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.1}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/images/lifting/thermage/treatment/procedure.png"
-                  alt="시술 과정"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">시술 과정</p>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.2}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <img
-                  src="/images/lifting/thermage/tips/handpiece.png"
-                  alt="정품 팁"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">정품 팁</p>
-              </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="scaleIn" delay={0.3}>
-              <div className="relative aspect-square rounded-2xl overflow-hidden shadow-lg group">
-                <video
-                  src="/images/lifting/thermage/videos/thermage-flx-demo.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <p className="absolute bottom-3 left-3 text-white text-sm font-medium">시술 영상</p>
-                <div className="absolute top-3 right-3 w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center">
-                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </div>
-            </AnimateOnScroll>
-          </div>
-
-          <AnimateOnScroll>
-            <p className="text-center text-xs text-mono-light mt-8">
-              * 시술 결과는 개인에 따라 차이가 있을 수 있습니다
-            </p>
           </AnimateOnScroll>
         </div>
       </section>
@@ -1359,12 +1295,12 @@ export default function ThermageDetail() {
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
-                  <Button size="lg" className="bg-white text-secondary hover:bg-[#FF6B35] hover:text-white w-full sm:w-auto">
+                  <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-[#FF6B35] hover:!text-white w-full sm:w-auto">
                     무료 상담 예약하기
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
-                  <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10 w-full sm:w-auto">
+                  <Button variant="outline" size="lg" className="border-white !text-white hover:bg-white/10 w-full sm:w-auto">
                     <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>

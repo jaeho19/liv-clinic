@@ -84,7 +84,8 @@ export default function FloatingCTA() {
   const main = ctaButtons[mainButton];
 
   return (
-    <div className="fixed bottom-4 sm:bottom-6 right-4 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-3">
+    // bottom 값: 하단 고정 바(QuickConsultBar) 높이(약 76px) + 여유 공간
+    <div className="fixed bottom-24 sm:bottom-[100px] right-4 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-3">
       {/* Secondary Buttons - 항상 표시 */}
       <div className="flex flex-col gap-2">
         {secondaryButtons.map((buttonKey, index) => {
