@@ -142,7 +142,7 @@ const signaturePrograms: SignatureProgram[] = [
     duration: '약 2시간',
     recommended: '처진 피부, 탄력 저하, 윤곽선 흐림',
     beforeImage: '/images/signature/lifting.png',
-    afterImage: '/images/signature/lifting-premium.jpg',
+    afterImage: '/images/signature/lifting-woman.png',
     accentColor: '#8B5CF6',
     href: '/lifting',
   },
