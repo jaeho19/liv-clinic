@@ -1,0 +1,312 @@
+'use client';
+
+import { useState } from 'react';
+import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
+import { Link } from '@/i18n/routing';
+import { AnimateOnScroll, Button } from '@/components/ui';
+import { SOCIAL_LINKS } from '@/lib/constants';
+
+// 대표 유튜브 영상
+const FEATURED_VIDEO = {
+  id: 'J2ZiPnsORRw',
+  title: '리브 원장이 직접 설명하는 안티에이징 시술',
+  thumbnail: 'https://img.youtube.com/vi/J2ZiPnsORRw/maxresdefault.jpg',
+};
+
+const doctor = {
+  name: '김수영',
+  nameEn: 'Dr. Sooyoung Kim',
+  title: '리브성형외과 대표원장',
+  titleEn: 'Director',
+  specialty: '성형외과 전문의',
+  image: '/images/doctor/doctor-main.jpg',
+  philosophy: '자연스러움을 추구하는 것, 그것이 진정한 아름다움입니다. 과하지 않은, 본연의 아름다움을 찾아드립니다.',
+  credentials: [
+    '고려대학교 의과대학 졸업',
+    '고려대학교 대학원 성형외과학 석사',
+    '대한성형외과학회 정회원',
+    '대한미용성형외과학회 정회원',
+    '미국 MD Anderson Cancer Center 연수',
+  ],
+};
+
+export default function Doctor() {
+  const t = useTranslations('sections.doctor');
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  return (
+    <section className="section-gap bg-white overflow-hidden">
+      <div className="container-custom">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Image */}
+          <AnimateOnScroll animation="slideInLeft">
+            <div className="relative">
+              {/* Main Image */}
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/30">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${doctor.image})` }}
+                />
+                {/* Placeholder */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white/50">
+                    <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <p className="font-serif text-2xl">Doctor Photo</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Decorative elements */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
+
+              {/* Certification badges */}
+              <motion.div
+                className="absolute -right-4 bottom-32 bg-white rounded-2xl shadow-xl p-5"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.4 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-mono-light">공식 인증의</p>
+                    <p className="text-sm font-medium text-secondary">Ultherapy Prime & Thermage</p>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* APTOS Global Expert badge */}
+              <motion.div
+                className="absolute -right-4 bottom-8 bg-gradient-to-r from-secondary to-primary rounded-2xl shadow-xl p-5"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.6 }}
+              >
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-xs text-white/80">글로벌 인증 전문의</p>
+                    <p className="text-sm font-medium text-white">APTOS Certified Expert</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </AnimateOnScroll>
+
+          {/* Content */}
+          <AnimateOnScroll animation="slideInRight">
+            <div>
+              {/* Section Title */}
+              <motion.p
+                className="font-serif text-h3 text-primary mb-2"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
+              >
+                {t('title')}
+              </motion.p>
+              <motion.h2
+                className="text-h1 text-secondary mb-8"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1, duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
+              >
+                {t('subtitle')}
+              </motion.h2>
+
+              {/* Doctor Info */}
+              <div className="mb-8">
+                <h3 className="text-h2 text-secondary mb-1">{doctor.name}</h3>
+                <p className="font-serif text-xl text-mono-light mb-2">{doctor.nameEn}</p>
+                <p className="text-body text-primary font-medium">{doctor.title}</p>
+              </div>
+
+              {/* Philosophy */}
+              <blockquote className="relative pl-6 border-l-4 border-primary mb-10">
+                <p className="text-h4 text-mono italic leading-relaxed">
+                  "{doctor.philosophy}"
+                </p>
+              </blockquote>
+
+              {/* Credentials */}
+              <div className="mb-8">
+                <h4 className="text-h4 text-secondary mb-4">주요 이력</h4>
+                <ul className="space-y-2">
+                  {doctor.credentials.map((credential, index) => (
+                    <li key={index} className="flex items-center gap-3 text-body text-mono">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      {credential}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* International Activities Mini Gallery */}
+              <div className="mb-10">
+                <h4 className="text-h4 text-secondary mb-4 flex items-center gap-2">
+                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  국제 활동
+                </h4>
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    {
+                      src: '/images/aptos/certification-ceremony.jpg',
+                      caption: 'APTOS 본사 연수 수료',
+                      location: 'Georgia, 2025'
+                    },
+                    {
+                      src: '/images/aptos/presentation-mips.jpg',
+                      caption: 'Clinical Experience 발표',
+                      location: '국제 학술대회'
+                    },
+                    {
+                      src: '/images/aptos/presentation.jpg',
+                      caption: 'Clinical Practice',
+                      location: '임상 시술 현장'
+                    },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <div
+                        className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                        style={{ backgroundImage: `url(${item.src})` }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                      <div className="absolute bottom-0 left-0 right-0 p-2">
+                        <p className="text-xs font-medium text-white leading-tight">{item.caption}</p>
+                        <p className="text-[10px] text-white/70">{item.location}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA */}
+              <Link href="/about/staff">
+                <Button variant="outline" size="lg">
+                  의료진 상세보기
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Button>
+              </Link>
+            </div>
+          </AnimateOnScroll>
+        </div>
+
+        {/* YouTube Video Section */}
+        <AnimateOnScroll>
+          <div className="mt-20 pt-16 border-t border-border">
+            <div className="text-center mb-10">
+              <p className="font-serif text-h3 text-primary mb-2">LIV TV</p>
+              <h3 className="text-h2 text-secondary">리브 원장의 시술 이야기</h3>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              {/* Video Container */}
+              <motion.div
+                className="relative aspect-video rounded-2xl overflow-hidden bg-secondary/10 shadow-lg"
+                whileHover={{ scale: 1.01 }}
+                transition={{ duration: 0.3 }}
+              >
+                {isVideoPlaying ? (
+                  <iframe
+                    src={`https://www.youtube.com/embed/${FEATURED_VIDEO.id}?autoplay=1&rel=0`}
+                    title={FEATURED_VIDEO.title}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                ) : (
+                  <button
+                    onClick={() => setIsVideoPlaying(true)}
+                    className="absolute inset-0 w-full h-full group cursor-pointer"
+                    aria-label="영상 재생"
+                  >
+                    {/* Thumbnail Background */}
+                    <div
+                      className="absolute inset-0 bg-cover bg-center"
+                      style={{ backgroundImage: `url(${FEATURED_VIDEO.thumbnail})` }}
+                    />
+                    {/* Fallback Gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-secondary/50" />
+
+                    {/* Play Button */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center">
+                      <motion.div
+                        className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/90 flex items-center justify-center shadow-xl group-hover:bg-white transition-colors"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        <svg className="w-8 h-8 md:w-10 md:h-10 text-primary ml-1" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </motion.div>
+                      <p className="mt-4 text-white text-body font-medium text-shadow">
+                        {FEATURED_VIDEO.title}
+                      </p>
+                    </div>
+
+                    {/* YouTube Logo Badge */}
+                    <div className="absolute bottom-4 right-4 flex items-center gap-2 bg-black/60 rounded-full px-3 py-1.5">
+                      <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                      </svg>
+                      <span className="text-white text-sm font-medium">YouTube</span>
+                    </div>
+                  </button>
+                )}
+              </motion.div>
+
+              {/* Channel Link */}
+              <div className="mt-8 text-center">
+                <a
+                  href={SOCIAL_LINKS.youtube}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
+                  리브 유튜브 채널 구독하기
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+                <p className="mt-3 text-small text-mono-light">
+                  시술 정보, 원장 인터뷰, Before & After 영상을 확인하세요
+                </p>
+              </div>
+            </div>
+          </div>
+        </AnimateOnScroll>
+      </div>
+    </section>
+  );
+}

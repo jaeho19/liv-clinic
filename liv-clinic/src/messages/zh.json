@@ -1,0 +1,277 @@
+{
+  "common": {
+    "siteName": "LIV整形外科",
+    "siteNameEn": "LIV Plastic Surgery",
+    "slogan": "Slow Aging, Natural Beauty",
+    "consultation": "咨询预约",
+    "learnMore": "了解更多",
+    "viewAll": "查看全部",
+    "phone": "+82-2-797-2773",
+    "scrollDown": "SCROLL",
+    "total": "共",
+    "items": "个",
+    "questions": "个问题",
+    "noResults": "未找到搜索结果",
+    "tryAnother": "请尝试其他搜索词",
+    "relatedTreatments": "相关项目"
+  },
+  "nav": {
+    "about": "关于LIV",
+    "aboutBrand": "LIV品牌",
+    "aboutStaff": "医疗团队",
+    "aboutEquipment": "设备介绍",
+    "aboutLocation": "位置指南",
+    "signature": "特色项目",
+    "lifting": "提升",
+    "ulthera": "超声刀",
+    "thermage": "热玛吉FLX",
+    "density": "Density",
+    "inmode": "InMode",
+    "shurink": "Shurink",
+    "thread": "线雕",
+    "aptos": "APTOS NAMICA",
+    "antiaging": "抗衰老",
+    "botox": "肉毒素",
+    "filler": "玻尿酸",
+    "skinbooster": "水光针",
+    "laser": "激光",
+    "medical": "医疗信息",
+    "contact": "联系我们"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Natural Results",
+      "subtitle": "自然无痕的改变，整形外科专家亲自施术"
+    },
+    "slide2": {
+      "title": "Certified Premium",
+      "subtitle": "超声刀·热玛吉官方认证，只使用正品的可信赖医院"
+    },
+    "slide3": {
+      "title": "Beyond Gravity",
+      "subtitle": "无需手术恢复弹性，体验十年前的肌肤"
+    }
+  },
+  "sections": {
+    "certification": {
+      "title": "官方认证医院",
+      "ulthera": "超声刀正品认证",
+      "thermage": "热玛吉FLX合作伙伴"
+    },
+    "equipment": {
+      "title": "Genuine Equipment",
+      "subtitle": "高端正品设备"
+    },
+    "signature": {
+      "title": "Signature Programs",
+      "subtitle": "LIV特色项目"
+    },
+    "values": {
+      "title": "Core Values",
+      "subtitle": "LIV四大核心价值",
+      "natural": {
+        "title": "Natural Beauty",
+        "subtitle": "自然之美",
+        "description": "追求不过度的、本真的美丽"
+      },
+      "expertise": {
+        "title": "Clinical Expertise",
+        "subtitle": "专业技术",
+        "description": "凭借丰富的经验和专业知识提供最佳效果"
+      },
+      "safety": {
+        "title": "Safety & Ethical Care",
+        "subtitle": "安全与伦理",
+        "description": "遵守正品正量原则和严格的安全管理"
+      },
+      "tailored": {
+        "title": "Tailored Aging",
+        "subtitle": "定制抗衰",
+        "description": "通过个性化定制方案设计最佳效果"
+      }
+    },
+    "doctor": {
+      "title": "Medical Staff",
+      "subtitle": "LIV医疗团队"
+    },
+    "doctors": {
+      "kim": {
+        "name": "金秀英",
+        "nameEn": "Dr. Sooyoung Kim",
+        "title": "代表院长",
+        "specialty": "整形外科专科医生",
+        "philosophy": "追求自然之美，这才是真正的美丽。",
+        "education": [
+          "高丽大学医学院毕业",
+          "高丽大学医疗院住院医师结业",
+          "高丽大学医疗院整形外科住院医师结业",
+          "高丽大学研究生院整形外科学硕士",
+          "高丽大学医学院客座教授",
+          "美国德克萨斯州休斯顿 MD Anderson Cancer Center 进修"
+        ],
+        "experience": [
+          "现) LIV整形外科代表院长",
+          "前) 梨村整形外科代表院长",
+          "前) FI整形外科院长",
+          "前) Pladen整形外科院长",
+          "前) MadeMe整形外科院长"
+        ],
+        "certifications": [
+          "大韩整形外科医师会正式会员",
+          "大韩整形外科学会正式会员",
+          "大韩美容整形外科学会正式会员",
+          "大韩头颅颜面整形外科学会正式会员",
+          "大韩医学激光学会正式会员"
+        ]
+      },
+      "cheon": {
+        "name": "千信惠",
+        "nameEn": "Dr. Shinhye Cheon",
+        "title": "院长",
+        "specialty": "家庭医学科专科医生",
+        "philosophy": "通过细致的治疗创造自然的变化。",
+        "education": [
+          "启明大学医学院毕业",
+          "翰林大学江南圣心医院专科医师结业",
+          "翰林大学江南圣心医院客座教授"
+        ],
+        "experience": [
+          "现) LIV整形外科院长",
+          "前) 梨村整形外科院长",
+          "前) 延世Mien医院院长",
+          "前) Abiju医院院长",
+          "前) Roje皮肤科医院院长"
+        ],
+        "certifications": [
+          "大韩家庭医学会正式会员",
+          "大韩美容整形激光医学会正式会员",
+          "大韩肥胖美容治疗学会正式会员"
+        ]
+      },
+      "labels": {
+        "education": "学历",
+        "experience": "经历",
+        "certifications": "资格认证",
+        "specialties": "主要项目",
+        "publications": "学术论文",
+        "presentations": "学会发表",
+        "globalActivities": "国际活动",
+        "media": "媒体报道",
+        "comingSoon": "即将更新"
+      }
+    },
+    "location": {
+      "title": "Location",
+      "subtitle": "交通指南",
+      "address": "首尔特别市瑞草区Naruteo路80 Jaeun大厦4楼",
+      "subway": "新沙站4号出口步行1分钟"
+    }
+  },
+  "footer": {
+    "businessHours": "营业时间",
+    "weekday": "工作日",
+    "saturday": "周六",
+    "sunday": "周日休息",
+    "address": "地址",
+    "copyright": "© 2025 LIV整形外科. All rights reserved."
+  },
+  "meta": {
+    "title": "LIV整形外科 | 高端非手术抗衰老 首尔",
+    "description": "超声刀、热玛吉官方认证医院。超越地心引力的美丽，Anti-Gravity提升解决方案。"
+  },
+  "contact": {
+    "title": "咨询预约",
+    "subtitle": "与LIV整形外科专业医疗团队\n进行1:1定制咨询。",
+    "phone": "电话咨询",
+    "kakao": "KakaoTalk咨询",
+    "kakaoDesc": "实时聊天咨询",
+    "visit": "到店咨询",
+    "weekdayHours": "工作日 10:00 - 19:00",
+    "always": "全年无休",
+    "onlineReservation": "在线咨询预约",
+    "directions": "地址",
+    "floor": "Jaeun大厦4楼",
+    "walkTime": "新沙站4号出口步行1分钟",
+    "naverMap": "Naver地图",
+    "kakaoMap": "Kakao地图",
+    "parking": "停车指南",
+    "parkingInfo": "大楼地下停车场可用",
+    "freeParking": "就诊顾客2小时免费停车",
+    "reservationNotice": "咨询预约须知",
+    "notice1": "咨询申请后1个工作日内联系您。",
+    "notice2": "紧急咨询请致电+82-2-797-2773。",
+    "notice3": "预约变更/取消需在到访前一天完成。",
+    "mapLoading": "地图加载中...",
+    "location": "交通指南",
+    "form": {
+      "name": "姓名",
+      "namePlaceholder": "王小明",
+      "nameError": "请输入姓名",
+      "phone": "联系电话",
+      "phonePlaceholder": "+86-138-1234-5678",
+      "phoneError": "请输入正确的电话号码",
+      "email": "电子邮箱",
+      "emailPlaceholder": "email@example.com",
+      "emailError": "请输入正确的邮箱地址",
+      "treatment": "感兴趣的项目",
+      "treatmentPlaceholder": "请选择项目",
+      "treatmentError": "请选择感兴趣的项目",
+      "preferredDate": "期望日期",
+      "preferredTime": "期望时间",
+      "timePlaceholder": "选择时间",
+      "message": "咨询内容",
+      "messagePlaceholder": "请填写您的问题或想咨询的内容。",
+      "privacy": "同意收集和使用个人信息。为了咨询和预约，将收集姓名、联系方式和电子邮件，咨询完成后保存3个月。",
+      "privacyError": "请同意个人信息收集条款",
+      "submit": "提交咨询申请",
+      "submitting": "提交中...",
+      "successTitle": "咨询申请已完成",
+      "successMessage": "我们将尽快与您联系。\n谢谢。",
+      "retry": "重新填写",
+      "other": "其他 / 咨询后决定"
+    }
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "汇总了客户经常咨询的问题。",
+    "moreQuestions": "还有其他问题吗？",
+    "callUs": "电话咨询",
+    "onlineConsult": "在线咨询",
+    "items": {
+      "q1": "如何预约咨询？",
+      "a1": "您可以通过电话（+82-2-797-2773）、KakaoTalk或网站在线预约进行咨询预约。告诉我们您希望的日期和时间，我们会确认后与您联系。",
+      "q2": "治疗需要多长时间？",
+      "a2": "根据治疗项目不同而异，超声刀约60-90分钟，热玛吉约30-60分钟，肉毒素/玻尿酸约15-30分钟。咨询时会提供详细说明。",
+      "q3": "治疗后可以立即恢复日常生活吗？",
+      "a3": "大多数非手术治疗当天即可恢复日常生活。根据治疗部位可能会有轻微肿胀或淤青，但通常在1-2周内自然消退。",
+      "q4": "治疗价格是多少？",
+      "a4": "价格根据治疗部位、范围和使用产品而异。准确价格可通过咨询获得个性化报价。",
+      "q5": "可以停车吗？",
+      "a5": "是的，可以使用大楼内的地下停车场。治疗客户可享受2小时免费停车。",
+      "q6": "治疗前需要做什么准备？",
+      "a6": "不需要特别准备。但治疗当天请化淡妆或卸妆。特定治疗可能会提前告知注意事项。",
+      "q7": "外国人可以咨询吗？",
+      "a7": "是的，可以提供英语、日语、中文咨询。预约时请告知是否需要翻译服务。",
+      "q8": "只使用正品设备吗？",
+      "a8": "LIV整形外科是超声刀、热玛吉官方认证医院，只使用100%正品设备和产品。所有产品都可以查看正品认证书。"
+    }
+  },
+  "medical": {
+    "title": "医疗信息",
+    "subtitle": "查看关于治疗的常见问题\n和实用的医疗信息。",
+    "searchPlaceholder": "输入搜索词 (例如: 超声刀、疼痛)",
+    "categories": {
+      "all": "全部",
+      "lifting": "提升",
+      "antiaging": "抗衰老",
+      "laser": "激光",
+      "general": "一般"
+    },
+    "cta": {
+      "title": "还有其他问题吗？",
+      "subtitle": "专业咨询师将为您详细解答。",
+      "reservation": "预约咨询",
+      "call": "电话咨询"
+    }
+  }
+}

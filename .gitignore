@@ -1,0 +1,16 @@
+# Claude Code
+.claude/
+
+# Temp files
+tmpclaude-*
+NUL
+
+# Screenshots and test files
+screenshots/
+test_*.py
+
+# Revision folder
+liv_revision/
+
+# Korean docs
+제안서.md

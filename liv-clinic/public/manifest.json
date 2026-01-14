@@ -1,0 +1,31 @@
+{
+  "name": "리브성형외과",
+  "short_name": "LIV",
+  "description": "수술 없는 프리미엄 안티에이징 - 울쎄라, 써마지 공식 인증 병원",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f6f6",
+  "theme_color": "#b4988d",
+  "icons": [
+    {
+      "src": "/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-maskable-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["medical", "health", "beauty"],
+  "lang": "ko",
+  "dir": "ltr",
+  "orientation": "portrait-primary"
+}
