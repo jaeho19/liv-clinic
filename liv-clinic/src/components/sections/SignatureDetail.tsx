@@ -186,7 +186,7 @@ const signaturePrograms: SignatureProgram[] = [
     features: ['복합 리프팅 시술', '볼륨 재정립', '토탈 피부 재생'],
     duration: '맞춤 설계',
     recommended: '종합적인 안티에이징, 특별한 날',
-    beforeImage: '/images/signature/antiaging-total-thumb.png',
+    beforeImage: '/images/signature/total-antiaging-abstract.png',
     afterImage: '/images/signature/bridal.png',
     accentColor: '#F43F5E',
     href: '/signature',
