@@ -57,17 +57,13 @@ export default function LiftingPage({
               <AnimateOnScroll key={treatment.id}>
                 <Link href={`/lifting/${treatment.id}`}>
                   <Card padding="none" className="overflow-hidden group cursor-pointer h-full">
-                    <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
-                      <div
-                        className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        style={{ backgroundImage: `url(/images/treatments/${treatment.id}.png)` }}
+                    <div className="aspect-[4/5] bg-gradient-to-b from-white to-background relative overflow-hidden flex items-center justify-center p-6">
+                      <img
+                        src={`/images/treatments/${treatment.id}.png`}
+                        alt={treatment.name}
+                        className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="font-serif text-5xl text-white/30">
-                          {treatment.nameEn.charAt(0)}
-                        </span>
-                      </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     <div className="p-6">
                       <p className="text-small text-primary mb-2">{treatment.nameEn}</p>
