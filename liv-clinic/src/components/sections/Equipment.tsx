@@ -1,9 +1,40 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
+
+// Lazy Loading을 위한 Intersection Observer 훅 (성능 최적화)
+function useImageLazy(threshold = 0.1) {
+  const [isInView, setIsInView] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsInView(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold, rootMargin: '100px' }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  const handleLoad = useCallback(() => setIsLoaded(true), []);
+
+  return { imgRef, isInView, isLoaded, handleLoad };
+}
 
 interface DeviceItem {
   id: string;
@@ -172,6 +203,15 @@ export default function Equipment() {
           /* 30초 동안 부드럽게 이동, 무한 반복 */
           animation: scrollLeft 30s linear infinite;
           cursor: pointer;
+          /* GPU 가속으로 애니메이션 성능 최적화 (Vercel Best Practice) */
+          will-change: transform;
+        }
+
+        /* Reduced motion 지원 - 접근성 향상 */
+        @media (prefers-reduced-motion: reduce) {
+          .infinite-scroll-track {
+            animation: none;
+          }
         }
       `}</style>
 
@@ -293,6 +333,16 @@ interface DeviceCardProps {
 
 function DeviceCard({ device, index, activeIndex, setActiveIndex }: DeviceCardProps) {
   const isActive = activeIndex === index;
+  const { imgRef, isInView, isLoaded, handleLoad } = useImageLazy(0.1);
+
+  // 이미지 프리로드 (isInView가 true일 때만)
+  useEffect(() => {
+    if (isInView && !isLoaded) {
+      const img = new Image();
+      img.onload = handleLoad;
+      img.src = device.image;
+    }
+  }, [isInView, isLoaded, device.image, handleLoad]);
 
   return (
     <motion.div
@@ -316,16 +366,28 @@ function DeviceCard({ device, index, activeIndex, setActiveIndex }: DeviceCardPr
           border: '1px solid rgba(180,152,141,0.15)',
         }}
       >
-        {/* Device Image */}
-        <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-white to-gray-50">
+        {/* Device Image - Lazy Loading 적용 */}
+        <div ref={imgRef} className="relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-white to-gray-50">
+          {/* Placeholder skeleton (이미지 로드 전) */}
+          {!isLoaded && (
+            <div
+              className="absolute inset-0 animate-pulse"
+              style={{
+                background: 'linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%)',
+                backgroundSize: '200% 100%',
+              }}
+            />
+          )}
+          {/* 실제 이미지 (Lazy Loading) */}
           <div
             className={`
               absolute inset-0 bg-contain bg-center bg-no-repeat
-              transition-transform duration-700 ease-out
+              transition-all duration-700 ease-out
               ${isActive ? 'scale-110' : 'scale-100'}
+              ${isLoaded ? 'opacity-100' : 'opacity-0'}
             `}
             style={{
-              backgroundImage: `url(${device.image})`,
+              backgroundImage: isInView ? `url(${device.image})` : 'none',
               filter: isActive ? 'none' : 'saturate(0.9)',
             }}
           />

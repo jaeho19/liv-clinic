@@ -67,7 +67,7 @@ export async function GET() {
 
     // Instagram Graph API 호출
     const fields = 'id,media_type,media_url,permalink,caption,timestamp,thumbnail_url';
-    const limit = 6;
+    const limit = 12; // 더보기 기능을 위해 12개로 확장
 
     // Instagram Account ID가 있으면 Graph API 사용, 없으면 me/media 사용
     const baseUrl = instagramAccountId

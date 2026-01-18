@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface CollapsibleItem {
@@ -31,7 +31,8 @@ export default function CollapsibleSection({
     new Set(items.filter((item) => item.defaultOpen).map((item) => item.id))
   );
 
-  const toggleItem = (id: string) => {
+  // useCallback으로 메모이제이션 - 불필요한 리렌더 방지 (Vercel Best Practice)
+  const toggleItem = useCallback((id: string) => {
     setOpenItems((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(id)) {
@@ -44,7 +45,7 @@ export default function CollapsibleSection({
       }
       return newSet;
     });
-  };
+  }, [allowMultiple]);
 
   const getItemStyles = () => {
     switch (variant) {

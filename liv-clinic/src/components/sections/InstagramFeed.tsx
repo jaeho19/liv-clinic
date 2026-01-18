@@ -214,6 +214,12 @@ export default function InstagramFeed() {
   const [posts, setPosts] = useState<InstagramPost[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [displayCount, setDisplayCount] = useState(6); // 초기 6개 표시
+
+  // 더보기 클릭 핸들러
+  const handleShowMore = () => {
+    setDisplayCount(12);
+  };
 
   useEffect(() => {
     async function fetchInstagramPosts() {
@@ -283,14 +289,33 @@ export default function InstagramFeed() {
           </div>
         </AnimateOnScroll>
 
-        {/* 6개 그리드 (3열 x 2행 on desktop, 2열 x 3행 on mobile) */}
+        {/* 그리드 (3열 x 2행 on desktop, 2열 x 3행 on mobile) */}
         <StaggerChildren className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4" staggerDelay={0.08}>
-          {(posts.length > 0 ? posts : placeholderPosts).slice(0, 6).map((post, index) => (
+          {(posts.length > 0 ? posts : placeholderPosts).slice(0, displayCount).map((post, index) => (
             <StaggerItem key={post.id} variant="scale">
               <PostCard post={post} index={index} isLoading={isLoading} />
             </StaggerItem>
           ))}
         </StaggerChildren>
+
+        {/* 더보기 버튼 (6개 이상 포스트가 있고, 아직 6개만 표시 중일 때) */}
+        {posts.length > 6 && displayCount === 6 && (
+          <AnimateOnScroll>
+            <div className="mt-8 text-center">
+              <motion.button
+                onClick={handleShowMore}
+                className="inline-flex items-center gap-2 px-6 py-3 border-2 border-primary/30 text-primary rounded-full hover:bg-primary hover:text-white hover:border-primary transition-all duration-300"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <span className="font-medium">더보기</span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </motion.button>
+            </div>
+          </AnimateOnScroll>
+        )}
 
         {/* Follow 버튼 */}
         <AnimateOnScroll>
