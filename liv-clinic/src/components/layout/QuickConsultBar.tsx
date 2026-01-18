@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
@@ -20,7 +20,6 @@ function isValidPhone(phone: string): boolean {
 
 export default function QuickConsultBar() {
   const t = useTranslations();
-  const [isVisible, setIsVisible] = useState(true);
   const [isMinimized, setIsMinimized] = useState(false);
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -29,20 +28,6 @@ export default function QuickConsultBar() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; phone?: string; privacy?: string }>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
-
-  // 스크롤 시 바 표시 (페이지 최상단에서는 숨김)
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // 300px 이상 스크롤하면 표시
-      if (scrollY > 300) {
-        setIsVisible(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
@@ -131,8 +116,7 @@ export default function QuickConsultBar() {
     setIsMinimized(false);
   };
 
-  if (!isVisible) return null;
-
+  // 항상 표시 (하단 고정)
   return (
     <>
       <AnimatePresence>
@@ -164,9 +148,9 @@ export default function QuickConsultBar() {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
-            className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.1)]"
+            className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.1)] safe-area-pb"
           >
-            <div className="max-w-6xl mx-auto px-4 py-3">
+            <div className="max-w-6xl mx-auto px-3 sm:px-4 py-3">
               <AnimatePresence mode="wait">
                 {showSuccess ? (
                   // 성공 메시지
@@ -246,13 +230,14 @@ export default function QuickConsultBar() {
                           value={name}
                           onChange={handleNameChange}
                           placeholder={t('contact.form.namePlaceholder')}
-                          className={`w-full h-10 px-3 rounded-lg border ${
+                          className={`w-full h-11 px-3 rounded-lg border ${
                             errors.name ? 'border-red-400 bg-red-50' : 'border-border bg-white'
-                          } text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors`}
+                          } text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors`}
                           aria-label={t('contact.form.name')}
+                          aria-invalid={!!errors.name}
                         />
                         {errors.name && (
-                          <span className="absolute -bottom-5 left-0 text-xs text-red-500">{errors.name}</span>
+                          <span className="absolute -bottom-5 left-0 text-xs text-red-500" role="alert">{errors.name}</span>
                         )}
                       </div>
 
@@ -263,13 +248,15 @@ export default function QuickConsultBar() {
                           value={phone}
                           onChange={handlePhoneChange}
                           placeholder={t('contact.form.phonePlaceholder')}
-                          className={`w-full h-10 px-3 rounded-lg border ${
+                          className={`w-full h-11 px-3 rounded-lg border ${
                             errors.phone ? 'border-red-400 bg-red-50' : 'border-border bg-white'
-                          } text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors`}
+                          } text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors`}
                           aria-label={t('contact.form.phone')}
+                          aria-invalid={!!errors.phone}
+                          inputMode="tel"
                         />
                         {errors.phone && (
-                          <span className="absolute -bottom-5 left-0 text-xs text-red-500">{errors.phone}</span>
+                          <span className="absolute -bottom-5 left-0 text-xs text-red-500" role="alert">{errors.phone}</span>
                         )}
                       </div>
                     </div>
@@ -277,15 +264,18 @@ export default function QuickConsultBar() {
                     {/* 개인정보 동의 + 제출 버튼 */}
                     <div className="flex items-center gap-3 sm:gap-4">
                       {/* 개인정보 동의 체크박스 */}
-                      <label className="flex items-center gap-2 cursor-pointer group">
-                        <input
-                          type="checkbox"
-                          checked={privacyAgreed}
-                          onChange={handlePrivacyChange}
-                          className="w-4 h-4 rounded border-border text-primary focus:ring-primary/30 cursor-pointer"
-                        />
+                      <label className="flex items-center gap-2 cursor-pointer group min-h-[44px]">
+                        <div className="relative flex items-center justify-center w-6 h-6">
+                          <input
+                            type="checkbox"
+                            checked={privacyAgreed}
+                            onChange={handlePrivacyChange}
+                            className="w-5 h-5 rounded border-border text-primary focus:ring-primary/30 cursor-pointer"
+                            aria-invalid={!!errors.privacy}
+                          />
+                        </div>
                         <span
-                          className={`text-xs ${errors.privacy ? 'text-red-500' : 'text-mono-light'} group-hover:text-mono transition-colors max-w-[150px] sm:max-w-none line-clamp-2 sm:line-clamp-1`}
+                          className={`text-xs ${errors.privacy ? 'text-red-500' : 'text-mono-light'} group-hover:text-mono transition-colors max-w-[120px] sm:max-w-none line-clamp-2 sm:line-clamp-1`}
                         >
                           개인정보 수집 동의
                         </span>
@@ -295,7 +285,7 @@ export default function QuickConsultBar() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="h-10 px-6 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-colors whitespace-nowrap flex items-center gap-2"
+                        className="h-11 px-4 sm:px-6 bg-primary text-white rounded-lg font-medium text-sm hover:bg-primary/90 disabled:opacity-70 disabled:cursor-not-allowed transition-colors whitespace-nowrap flex items-center justify-center gap-2 min-w-[80px]"
                       >
                         {isSubmitting ? (
                           <>
@@ -328,9 +318,6 @@ export default function QuickConsultBar() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* 폼이 펼쳐져 있을 때 하단 여백 확보 */}
-      {!isMinimized && <div className="h-20 sm:h-16" />}
     </>
   );
 }

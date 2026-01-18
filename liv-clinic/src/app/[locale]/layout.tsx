@@ -58,7 +58,7 @@ export default async function LocaleLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#b4988d" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
         {/* Naver Search Advisor */}
         {process.env.NEXT_PUBLIC_NAVER_VERIFICATION && (
           <meta name="naver-site-verification" content={process.env.NEXT_PUBLIC_NAVER_VERIFICATION} />
@@ -78,7 +78,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <ScrollProgress />
           <Header />
-          <main id="main-content" className="min-h-screen page-enter" role="main">{children}</main>
+          <main id="main-content" className="min-h-screen page-enter pb-20 sm:pb-16" role="main">{children}</main>
           <Footer />
           <QuickConsultBar />
           <FloatingCTA />
