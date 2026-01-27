@@ -1069,7 +1069,162 @@
         "name": "InMode",
         "fullName": "InMode",
         "tagline": "射频复合提升",
-        "description": "利用射频的复合提升系统，同时改善皮肤弹性和身体轮廓。"
+        "description": "利用射频的复合提升系统，同时改善皮肤弹性和身体轮廓。",
+        "detail": {
+          "illustrations": {
+            "forma": "皮肤弹性",
+            "morpheus": "微针射频",
+            "facetite": "脂肪紧致"
+          },
+          "treatmentCard": {
+            "benefits": "主要效果",
+            "duration": "治疗时间",
+            "downtime": "恢复期",
+            "idealFor": "适合人群"
+          },
+          "comparison": {
+            "header": "比较项目",
+            "rows": {
+              "method": { "feature": "治疗方式", "forma": "射频高频", "morpheus": "微针+射频", "facetite": "套管+射频" },
+              "invasiveness": { "feature": "侵入性", "forma": "非侵入", "morpheus": "微创", "facetite": "微创" },
+              "anesthesia": { "feature": "麻醉", "forma": "不需要", "morpheus": "麻醉膏", "facetite": "局部麻醉" },
+              "downtime": { "feature": "恢复期", "forma": "无", "morpheus": "3-5天", "facetite": "5-7天" },
+              "onset": { "feature": "效果显现", "forma": "渐进", "morpheus": "渐进", "facetite": "即刻" },
+              "sessions": { "feature": "治疗次数", "forma": "4-6次", "morpheus": "2-3次", "facetite": "1次" },
+              "target": { "feature": "主要目标", "forma": "弹性", "morpheus": "毛孔/疤痕", "facetite": "脂肪/松弛" }
+            }
+          },
+          "treatmentOptions": {
+            "forma": {
+              "name": "Forma",
+              "nameKo": "Forma",
+              "description": "非侵入性射频高频诱导胶原蛋白收缩和再生，改善皮肤弹性。几乎无痛且无恢复期，不影响日常生活。",
+              "benefits": ["即刻皮肤紧致", "促进胶原蛋白再生", "改善细纹", "无痛治疗"],
+              "duration": "20-30分钟",
+              "downtime": "无",
+              "idealFor": ["弹性下降", "细纹", "预防护理"]
+            },
+            "morpheus": {
+              "name": "Morpheus8",
+              "nameKo": "Morpheus8",
+              "description": "24根镀金微针将射频能量传递到真皮层，诱导皮肤重塑。同时改善毛孔、疤痕、肤质和弹性。",
+              "benefits": ["缩小毛孔", "改善痤疮疤痕", "改善肤质", "真皮层重塑"],
+              "duration": "30-45分钟",
+              "downtime": "3-5天",
+              "idealFor": ["毛孔粗大", "痤疮疤痕", "肤质"]
+            },
+            "facetite": {
+              "name": "FaceTite",
+              "nameKo": "FaceTite",
+              "description": "通过细套管将射频能量直接传递到脂肪层，溶解脂肪并紧致皮肤。提供迷你拉皮级别的效果。",
+              "benefits": ["减少脂肪", "紧致皮肤", "改善下颌线", "改善双下巴"],
+              "duration": "60-90分钟",
+              "downtime": "5-7天",
+              "idealFor": ["双下巴", "脸颊脂肪", "下颌线松弛"]
+            }
+          },
+          "recommendations": {
+            "forma": {
+              "title": "Forma推荐",
+              "desc": "希望维持皮肤弹性、预防护理、无恢复期治疗的人"
+            },
+            "morpheus": {
+              "title": "Morpheus8推荐",
+              "desc": "希望改善毛孔、疤痕、肤质且可接受短期恢复期的人"
+            },
+            "facetite": {
+              "title": "FaceTite推荐",
+              "desc": "担心双下巴、脸颊脂肪等脂肪松弛且希望获得明确效果的人"
+            }
+          },
+          "extendedFaqs": [
+            {
+              "q": "InMode治疗中最受欢迎的是什么？",
+              "a": "Morpheus8最受欢迎。结合微针和射频，可以同时改善毛孔、疤痕、肤质和弹性，对有各种皮肤问题的人很有效。"
+            },
+            {
+              "q": "可以组合多种InMode治疗吗？",
+              "a": "是的，可以。例如，用Morpheus8改善肤质，用FaceTite紧致脂肪的组合很受欢迎。通过咨询确定最佳组合。"
+            },
+            {
+              "q": "InMode与其他提升治疗有什么区别？",
+              "a": "InMode是一个全能平台，可以在一个系统中选择各种治疗。特别是Morpheus8通过微针射频改善肤质和弹性，FaceTite可以进行脂肪紧致，实现个性化定制治疗。"
+            }
+          ],
+          "hero": {
+            "badge": "全能提升系统",
+            "title": "InMode",
+            "description": "通过射频(RF)能量同时实现减脂和提升。<br />如果面部脂肪是您的困扰，InMode就是答案。",
+            "stats": {
+              "rf": { "value": "RF", "label": "射频能量" },
+              "fda": { "value": "FDA", "label": "认证设备" },
+              "custom": { "value": "定制", "label": "个性化治疗" }
+            },
+            "floatingBadges": {
+              "morpheus": { "title": "Morpheus8", "subtitle": "微针射频" },
+              "custom": { "title": "定制治疗", "subtitle": "针对问题优化" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About InMode",
+            "title": "什么是InMode？",
+            "description": "InMode是利用<strong>射频(RF)能量</strong>同时刺激脂肪层和真皮层的多功能提升设备。对面部脂肪较多或皮肤松弛等复合问题非常有效。"
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "手柄比较",
+            "subtitle": "比较各治疗的特性，找到适合自己的治疗"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV独有的InMode",
+            "cards": {
+              "genuine": {
+                "title": "正品认证诊所",
+                "desc": "作为InMode Korea官方认证诊所，仅使用正品设备和探头。运营最新版本的设备。"
+              },
+              "combination": {
+                "title": "定制组合治疗",
+                "desc": "不仅使用单一手柄，还根据皮肤状态组合多种治疗以获得最佳效果。"
+              },
+              "specialist": {
+                "title": "专家亲自治疗",
+                "desc": "皮肤科/整形外科专家从咨询到治疗全程亲自进行。凭借丰富的经验获得最佳效果。"
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "治疗信息",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常见问题",
+            "moreInfo": "想了解更多医疗信息吗？",
+            "viewMedicalQA": "查看医疗问答"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "预约InMode咨询",
+            "description": "通过与专业医疗团队的1:1定制咨询，<br />找到最适合您的治疗方案。",
+            "bookConsultation": "预约免费咨询",
+            "businessHours": "工作日 10:00-19:00",
+            "location": "新沙站4号出口步行3分钟"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "相关推荐治疗"
+          }
+        }
       },
       "shurink": {
         "name": "Shurink",

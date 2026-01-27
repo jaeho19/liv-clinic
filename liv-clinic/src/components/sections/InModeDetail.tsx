@@ -162,7 +162,8 @@ const TreatmentCard = ({
   benefits,
   duration,
   downtime,
-  idealFor
+  idealFor,
+  labels
 }: {
   name: string;
   nameKo: string;
@@ -173,6 +174,7 @@ const TreatmentCard = ({
   duration: string;
   downtime: string;
   idealFor: string[];
+  labels: { benefits: string; duration: string; downtime: string; idealFor: string };
 }) => (
   <Card padding="lg" className="h-full" style={{ borderTopWidth: '4px', borderTopColor: color }}>
     <div className="mb-6">
@@ -186,7 +188,7 @@ const TreatmentCard = ({
 
     <div className="space-y-4">
       <div>
-        <p className="text-small font-medium text-secondary mb-2">주요 효과</p>
+        <p className="text-small font-medium text-secondary mb-2">{labels.benefits}</p>
         <ul className="space-y-1">
           {benefits.map((benefit, i) => (
             <li key={i} className="flex items-start gap-2 text-small text-mono">
@@ -199,17 +201,17 @@ const TreatmentCard = ({
 
       <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
         <div>
-          <p className="text-xs text-mono-light">시술 시간</p>
+          <p className="text-xs text-mono-light">{labels.duration}</p>
           <p className="text-small font-medium text-secondary">{duration}</p>
         </div>
         <div>
-          <p className="text-xs text-mono-light">다운타임</p>
+          <p className="text-xs text-mono-light">{labels.downtime}</p>
           <p className="text-small font-medium text-secondary">{downtime}</p>
         </div>
       </div>
 
       <div className="pt-4 border-t border-border">
-        <p className="text-xs text-mono-light mb-2">추천 대상</p>
+        <p className="text-xs text-mono-light mb-2">{labels.idealFor}</p>
         <div className="flex flex-wrap gap-2">
           {idealFor.map((item, i) => (
             <span
@@ -227,23 +229,19 @@ const TreatmentCard = ({
 );
 
 // Comparison Table Component
-const ComparisonTable = () => {
-  const comparisonData = [
-    { feature: '시술 방식', forma: 'RF 고주파', morpheus: '마이크로니들 + RF', facetite: '캐뉼라 + RF' },
-    { feature: '침습도', forma: '비침습', morpheus: '최소침습', facetite: '최소침습' },
-    { feature: '마취', forma: '불필요', morpheus: '마취크림', facetite: '국소마취' },
-    { feature: '다운타임', forma: '없음', morpheus: '3-5일', facetite: '5-7일' },
-    { feature: '효과 발현', forma: '점진적', morpheus: '점진적', facetite: '즉각적' },
-    { feature: '시술 횟수', forma: '4-6회', morpheus: '2-3회', facetite: '1회' },
-    { feature: '주요 타겟', forma: '탄력', morpheus: '모공/흉터', facetite: '지방/처짐' },
-  ];
-
+const ComparisonTable = ({
+  header,
+  data
+}: {
+  header: string;
+  data: { feature: string; forma: string; morpheus: string; facetite: string }[];
+}) => {
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[600px]">
         <thead>
           <tr className="border-b-2 border-[#E91E63]/20">
-            <th className="py-4 px-4 text-left text-h4 text-secondary">비교 항목</th>
+            <th className="py-4 px-4 text-left text-h4 text-secondary">{header}</th>
             <th className="py-4 px-4 text-center rounded-t-lg" style={{ backgroundColor: `${INMODE_COLORS.forma}10` }}>
               <span className="text-h4" style={{ color: INMODE_COLORS.forma }}>Forma</span>
             </th>
@@ -256,7 +254,7 @@ const ComparisonTable = () => {
           </tr>
         </thead>
         <tbody>
-          {comparisonData.map((row, index) => (
+          {data.map((row, index) => (
             <motion.tr
               key={index}
               className="border-b border-border hover:bg-background/50 transition-colors"
@@ -332,59 +330,73 @@ export default function InModeDetail() {
     });
   }, []);
 
-  // Extended FAQ data
+  // Get translations for detail page
+  const detail = t.raw('lifting.inmode.detail') as {
+    illustrations: { forma: string; morpheus: string; facetite: string };
+    treatmentCard: { benefits: string; duration: string; downtime: string; idealFor: string };
+    comparison: { header: string; rows: Record<string, { feature: string; forma: string; morpheus: string; facetite: string }> };
+    treatmentOptions: Record<string, { name: string; nameKo: string; description: string; benefits: string[]; duration: string; downtime: string; idealFor: string[] }>;
+    recommendations: Record<string, { title: string; desc: string }>;
+    extendedFaqs: { q: string; a: string }[];
+    hero: { badge: string; title: string; description: string; stats: Record<string, { value: string; label: string }>; floatingBadges: Record<string, { title: string; subtitle: string }> };
+    about: { sectionLabel: string; title: string; description: string };
+    compare: { sectionLabel: string; title: string; subtitle: string };
+    livDifference: { sectionLabel: string; title: string; cards: Record<string, { title: string; desc: string }> };
+    processSection: { sectionLabel: string };
+    treatmentInfo: { sectionLabel: string; title: string; labels: Record<string, string> };
+    faq: { sectionLabel: string; title: string; moreInfo: string; viewMedicalQA: string };
+    cta: { sectionLabel: string; title: string; description: string; bookConsultation: string; businessHours: string; location: string };
+    related: { sectionLabel: string; title: string };
+  };
+
+  // Extended FAQ data (from constants + translated extended)
   const extendedFaqs = [
     ...treatment.faqs,
-    {
-      q: '인모드 시술 중 가장 인기 있는 것은 무엇인가요?',
-      a: 'Morpheus8이 가장 인기 있습니다. 마이크로니들과 RF를 결합하여 모공, 흉터, 피부결, 탄력을 동시에 개선할 수 있어 다양한 피부 고민을 가진 분들께 효과적입니다.'
-    },
-    {
-      q: '인모드 시술을 여러 개 조합해서 받을 수 있나요?',
-      a: '네, 가능합니다. 예를 들어 Morpheus8으로 피부결을 개선하고 FaceTite로 지방을 타이트닝하는 조합이 인기 있습니다. 상담을 통해 최적의 조합을 결정합니다.'
-    },
-    {
-      q: '인모드와 다른 리프팅 시술의 차이점은?',
-      a: '인모드는 올인원 플랫폼으로 하나의 시스템에서 다양한 시술을 선택할 수 있습니다. 특히 Morpheus8은 마이크로니들 RF로 피부결과 탄력을, FaceTite는 지방 타이트닝까지 가능해 개인 맞춤 시술이 가능합니다.'
-    },
+    ...detail.extendedFaqs,
   ];
+
+  // Comparison data from translations
+  const comparisonData = Object.values(detail.comparison.rows);
+
+  // Treatment card labels
+  const treatmentCardLabels = detail.treatmentCard;
 
   const treatmentOptions = [
     {
       id: 'forma',
-      name: 'Forma',
-      nameKo: '포르마',
+      name: detail.treatmentOptions.forma.name,
+      nameKo: detail.treatmentOptions.forma.nameKo,
       color: INMODE_COLORS.forma,
       icon: <FormaIllustration />,
-      description: '비침습 RF 고주파로 콜라겐 수축과 재생을 유도하여 피부 탄력을 개선합니다. 통증이 거의 없고 다운타임이 없어 일상생활에 지장이 없습니다.',
-      benefits: ['즉각적 피부 탄력', '콜라겐 재생 촉진', '잔주름 개선', '무통증 시술'],
-      duration: '20-30분',
-      downtime: '없음',
-      idealFor: ['탄력 저하', '잔주름', '예방관리'],
+      description: detail.treatmentOptions.forma.description,
+      benefits: detail.treatmentOptions.forma.benefits,
+      duration: detail.treatmentOptions.forma.duration,
+      downtime: detail.treatmentOptions.forma.downtime,
+      idealFor: detail.treatmentOptions.forma.idealFor,
     },
     {
       id: 'morpheus',
-      name: 'Morpheus8',
-      nameKo: '모피어스8',
+      name: detail.treatmentOptions.morpheus.name,
+      nameKo: detail.treatmentOptions.morpheus.nameKo,
       color: INMODE_COLORS.morpheus,
       icon: <Morpheus8Illustration />,
-      description: '24개의 금도금 마이크로니들이 진피층까지 RF 에너지를 전달하여 피부 리모델링을 유도합니다. 모공, 흉터, 피부결, 탄력을 동시에 개선합니다.',
-      benefits: ['모공 축소', '여드름 흉터 개선', '피부결 개선', '진피층 리모델링'],
-      duration: '30-45분',
-      downtime: '3-5일',
-      idealFor: ['넓은 모공', '여드름 흉터', '피부결'],
+      description: detail.treatmentOptions.morpheus.description,
+      benefits: detail.treatmentOptions.morpheus.benefits,
+      duration: detail.treatmentOptions.morpheus.duration,
+      downtime: detail.treatmentOptions.morpheus.downtime,
+      idealFor: detail.treatmentOptions.morpheus.idealFor,
     },
     {
       id: 'facetite',
-      name: 'FaceTite',
-      nameKo: '페이스타이트',
+      name: detail.treatmentOptions.facetite.name,
+      nameKo: detail.treatmentOptions.facetite.nameKo,
       color: INMODE_COLORS.facetite,
       icon: <FaceTiteIllustration />,
-      description: '얇은 캐뉼라를 통해 지방층에 직접 RF 에너지를 전달하여 지방을 녹이고 피부를 타이트닝합니다. 미니 리프팅급의 효과를 제공합니다.',
-      benefits: ['지방 감소', '피부 타이트닝', '턱선 개선', '이중턱 개선'],
-      duration: '60-90분',
-      downtime: '5-7일',
-      idealFor: ['이중턱', '볼살', '턱선 처짐'],
+      description: detail.treatmentOptions.facetite.description,
+      benefits: detail.treatmentOptions.facetite.benefits,
+      duration: detail.treatmentOptions.facetite.duration,
+      downtime: detail.treatmentOptions.facetite.downtime,
+      idealFor: detail.treatmentOptions.facetite.idealFor,
     },
   ];
 
@@ -420,33 +432,30 @@ export default function InModeDetail() {
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: INMODE_COLORS.morpheus }} />
                     <span className="w-2 h-2 rounded-full" style={{ backgroundColor: INMODE_COLORS.facetite }} />
                   </span>
-                  <span className="text-small font-medium text-secondary">올인원 리프팅 시스템</span>
+                  <span className="text-small font-medium text-secondary">{detail.hero.badge}</span>
                 </motion.div>
 
                 <p className="font-serif text-h2 text-[#E91E63] mb-3 tracking-wide">InMode</p>
                 <h1 className="text-display text-secondary mb-4 leading-tight">
-                  인모드
+                  {detail.hero.title}
                 </h1>
                 <p className="font-serif text-xl text-mono-light mb-6 italic">
                   {treatment.tagline}
                 </p>
-                <p className="text-h4 text-mono leading-relaxed mb-8 max-w-lg">
-                  고주파(RF) 에너지로 지방 감소와 리프팅을 동시에.<br />
-                  얼굴 지방이 고민이라면 인모드가 답입니다.
-                </p>
+                <p className="text-h4 text-mono leading-relaxed mb-8 max-w-lg" dangerouslySetInnerHTML={{ __html: detail.hero.description }} />
 
                 <div className="flex gap-8 mt-2 pt-8 border-t border-border/50">
                   <div>
-                    <p className="text-h2 text-[#E91E63] font-serif">RF</p>
-                    <p className="text-small text-mono-light">고주파 에너지</p>
+                    <p className="text-h2 text-[#E91E63] font-serif">{detail.hero.stats.rf.value}</p>
+                    <p className="text-small text-mono-light">{detail.hero.stats.rf.label}</p>
                   </div>
                   <div>
-                    <p className="text-h2 text-[#E91E63] font-serif">FDA</p>
-                    <p className="text-small text-mono-light">승인 장비</p>
+                    <p className="text-h2 text-[#E91E63] font-serif">{detail.hero.stats.fda.value}</p>
+                    <p className="text-small text-mono-light">{detail.hero.stats.fda.label}</p>
                   </div>
                   <div>
-                    <p className="text-h2 text-[#E91E63] font-serif">맞춤</p>
-                    <p className="text-small text-mono-light">개인별 시술</p>
+                    <p className="text-h2 text-[#E91E63] font-serif">{detail.hero.stats.custom.value}</p>
+                    <p className="text-small text-mono-light">{detail.hero.stats.custom.label}</p>
                   </div>
                 </div>
               </div>
@@ -489,8 +498,8 @@ export default function InModeDetail() {
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <p className="text-small font-medium" style={{ color: INMODE_COLORS.morpheus }}>Morpheus8</p>
-                  <p className="text-xs text-mono-light">마이크로니들 RF</p>
+                  <p className="text-small font-medium" style={{ color: INMODE_COLORS.morpheus }}>{detail.hero.floatingBadges.morpheus.title}</p>
+                  <p className="text-xs text-mono-light">{detail.hero.floatingBadges.morpheus.subtitle}</p>
                 </motion.div>
 
                 <motion.div
@@ -498,8 +507,8 @@ export default function InModeDetail() {
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                 >
-                  <p className="text-small font-medium">맞춤 시술</p>
-                  <p className="text-xs opacity-80">고민별 최적화</p>
+                  <p className="text-small font-medium">{detail.hero.floatingBadges.custom.title}</p>
+                  <p className="text-xs opacity-80">{detail.hero.floatingBadges.custom.subtitle}</p>
                 </motion.div>
               </div>
             </AnimateOnScroll>
@@ -522,12 +531,9 @@ export default function InModeDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-[#E91E63] mb-2">About InMode</p>
-              <h2 className="text-h1 text-secondary mb-6">인모드란?</h2>
-              <p className="text-body text-mono max-w-3xl mx-auto leading-relaxed">
-                인모드는 <strong className="text-secondary">고주파(RF) 에너지</strong>를 활용하여 지방층과 진피층을 동시에 자극하는
-                멀티 리프팅 장비입니다. 얼굴 지방이 많은 타입이나 늘어진 피부가 복합적으로 고민인 경우에 효과적입니다.
-              </p>
+              <p className="font-serif text-h3 text-[#E91E63] mb-2">{detail.about.sectionLabel}</p>
+              <h2 className="text-h1 text-secondary mb-6">{detail.about.title}</h2>
+              <p className="text-body text-mono max-w-3xl mx-auto leading-relaxed" dangerouslySetInnerHTML={{ __html: detail.about.description }} />
             </div>
           </AnimateOnScroll>
 
@@ -557,7 +563,7 @@ export default function InModeDetail() {
           <StaggerChildren className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {treatmentOptions.map((option) => (
               <StaggerItem key={option.id}>
-                <TreatmentCard {...option} />
+                <TreatmentCard {...option} labels={treatmentCardLabels} />
               </StaggerItem>
             ))}
           </StaggerChildren>
@@ -569,17 +575,17 @@ export default function InModeDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-[#E91E63] mb-2">Comparison</p>
-              <h2 className="text-h1 text-secondary mb-4">핸드피스 비교</h2>
+              <p className="font-serif text-h3 text-[#E91E63] mb-2">{detail.compare.sectionLabel}</p>
+              <h2 className="text-h1 text-secondary mb-4">{detail.compare.title}</h2>
               <p className="text-body text-mono-light">
-                각 시술의 특성을 비교하여 나에게 맞는 시술을 찾아보세요
+                {detail.compare.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll>
             <Card padding="lg" hover={false}>
-              <ComparisonTable />
+              <ComparisonTable header={detail.comparison.header} data={comparisonData} />
             </Card>
           </AnimateOnScroll>
 
@@ -587,21 +593,21 @@ export default function InModeDetail() {
           <AnimateOnScroll>
             <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="p-6 rounded-2xl" style={{ backgroundColor: `${INMODE_COLORS.forma}10` }}>
-                <h4 className="text-h4 mb-2" style={{ color: INMODE_COLORS.forma }}>Forma 추천</h4>
+                <h4 className="text-h4 mb-2" style={{ color: INMODE_COLORS.forma }}>{detail.recommendations.forma.title}</h4>
                 <p className="text-body text-mono-light">
-                  피부 탄력 유지, 예방 관리, 다운타임 없이 시술받고 싶은 분
+                  {detail.recommendations.forma.desc}
                 </p>
               </div>
               <div className="p-6 rounded-2xl" style={{ backgroundColor: `${INMODE_COLORS.morpheus}10` }}>
-                <h4 className="text-h4 mb-2" style={{ color: INMODE_COLORS.morpheus }}>Morpheus8 추천</h4>
+                <h4 className="text-h4 mb-2" style={{ color: INMODE_COLORS.morpheus }}>{detail.recommendations.morpheus.title}</h4>
                 <p className="text-body text-mono-light">
-                  모공, 흉터, 피부결 개선을 원하고 단기 다운타임 가능한 분
+                  {detail.recommendations.morpheus.desc}
                 </p>
               </div>
               <div className="p-6 rounded-2xl" style={{ backgroundColor: `${INMODE_COLORS.facetite}10` }}>
-                <h4 className="text-h4 mb-2" style={{ color: INMODE_COLORS.facetite }}>FaceTite 추천</h4>
+                <h4 className="text-h4 mb-2" style={{ color: INMODE_COLORS.facetite }}>{detail.recommendations.facetite.title}</h4>
                 <p className="text-body text-mono-light">
-                  이중턱, 볼살 등 지방 처짐이 고민이고 확실한 효과를 원하는 분
+                  {detail.recommendations.facetite.desc}
                 </p>
               </div>
             </div>
@@ -614,8 +620,8 @@ export default function InModeDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-[#E91E63] mb-2">LIV Difference</p>
-              <h2 className="text-h1 text-secondary">리브만의 인모드</h2>
+              <p className="font-serif text-h3 text-[#E91E63] mb-2">{detail.livDifference.sectionLabel}</p>
+              <h2 className="text-h1 text-secondary">{detail.livDifference.title}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -628,10 +634,9 @@ export default function InModeDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">정품 인증 클리닉</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{detail.livDifference.cards.genuine.title}</h3>
                   <p className="text-body text-mono-light">
-                    인모드코리아 공식 인증 클리닉으로 정품 장비와 팁만 사용합니다.
-                    최신 버전의 장비를 운용합니다.
+                    {detail.livDifference.cards.genuine.desc}
                   </p>
                 </div>
               </Card>
@@ -645,10 +650,9 @@ export default function InModeDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">맞춤형 조합 시술</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{detail.livDifference.cards.combination.title}</h3>
                   <p className="text-body text-mono-light">
-                    한 가지 핸드피스만이 아닌, 피부 상태에 따라 여러 시술을 조합하여
-                    최적의 결과를 도출합니다.
+                    {detail.livDifference.cards.combination.desc}
                   </p>
                 </div>
               </Card>
@@ -662,10 +666,9 @@ export default function InModeDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">전문의 직접 시술</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{detail.livDifference.cards.specialist.title}</h3>
                   <p className="text-body text-mono-light">
-                    피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다.
-                    풍부한 경험으로 최적의 결과를 도출합니다.
+                    {detail.livDifference.cards.specialist.desc}
                   </p>
                 </div>
               </Card>
@@ -679,7 +682,7 @@ export default function InModeDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-[#E91E63] mb-2">Treatment Process</p>
+              <p className="font-serif text-h3 text-[#E91E63] mb-2">{detail.processSection.sectionLabel}</p>
               <h2 className="text-h1 text-secondary">{t('common.process')}</h2>
             </div>
           </AnimateOnScroll>
@@ -703,8 +706,8 @@ export default function InModeDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <p className="font-serif text-h3 opacity-80 mb-2">Treatment Info</p>
-              <h2 className="text-h1">시술 정보</h2>
+              <p className="font-serif text-h3 opacity-80 mb-2">{detail.treatmentInfo.sectionLabel}</p>
+              <h2 className="text-h1">{detail.treatmentInfo.title}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -716,7 +719,7 @@ export default function InModeDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">시술 시간</p>
+                <p className="text-small opacity-70 mb-1">{detail.treatmentInfo.labels.duration}</p>
                 <p className="font-medium text-lg">{treatment.duration}</p>
               </div>
             </AnimateOnScroll>
@@ -727,7 +730,7 @@ export default function InModeDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">마취</p>
+                <p className="text-small opacity-70 mb-1">{detail.treatmentInfo.labels.anesthesia}</p>
                 <p className="font-medium text-lg">{treatment.anesthesia}</p>
               </div>
             </AnimateOnScroll>
@@ -738,7 +741,7 @@ export default function InModeDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">회복 기간</p>
+                <p className="text-small opacity-70 mb-1">{detail.treatmentInfo.labels.recovery}</p>
                 <p className="font-medium text-lg">{treatment.recovery}</p>
               </div>
             </AnimateOnScroll>
@@ -749,7 +752,7 @@ export default function InModeDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">효과</p>
+                <p className="text-small opacity-70 mb-1">{detail.treatmentInfo.labels.results}</p>
                 <p className="font-medium text-lg">{treatment.results}</p>
               </div>
             </AnimateOnScroll>
@@ -837,8 +840,8 @@ export default function InModeDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-[#E91E63] mb-2">FAQ</p>
-              <h2 className="text-h1 text-secondary">자주 묻는 질문</h2>
+              <p className="font-serif text-h3 text-[#E91E63] mb-2">{detail.faq.sectionLabel}</p>
+              <h2 className="text-h1 text-secondary">{detail.faq.title}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -911,11 +914,11 @@ export default function InModeDetail() {
             <AnimateOnScroll>
               <div className="text-center mt-12">
                 <p className="text-body text-mono-light mb-4">
-                  더 많은 의료 정보가 궁금하신가요?
+                  {detail.faq.moreInfo}
                 </p>
                 <Link href="/medical">
                   <Button variant="outline">
-                    의료정보 Q&A 더보기
+                    {detail.faq.moreButton}
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -937,17 +940,14 @@ export default function InModeDetail() {
         <div className="container-custom relative z-10">
           <AnimateOnScroll>
             <div className="text-center max-w-2xl mx-auto">
-              <p className="font-serif text-h3 opacity-80 mb-4">Ready for Transformation?</p>
-              <h2 className="text-h1 mb-6">인모드 상담 예약</h2>
-              <p className="text-h4 opacity-90 mb-10 leading-relaxed">
-                전문 의료진과 1:1 맞춤 상담을 통해<br />
-                나에게 맞는 최적의 시술을 찾아보세요.
-              </p>
+              <p className="font-serif text-h3 opacity-80 mb-4">{detail.cta.subtitle}</p>
+              <h2 className="text-h1 mb-6">{detail.cta.title}</h2>
+              <p className="text-h4 opacity-90 mb-10 leading-relaxed" dangerouslySetInnerHTML={{ __html: detail.cta.description }} />
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
                   <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-[#E91E63] hover:!text-white w-full sm:w-auto">
-                    무료 상담 예약하기
+                    {detail.cta.consultButton}
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
@@ -965,13 +965,13 @@ export default function InModeDetail() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  평일 10:00-19:00
+                  {detail.cta.hours}
                 </span>
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   </svg>
-                  신사역 4번 출구 도보 3분
+                  {detail.cta.location}
                 </span>
               </div>
             </div>
@@ -985,8 +985,8 @@ export default function InModeDetail() {
           <div className="container-custom">
             <AnimateOnScroll>
               <div className="text-center mb-16">
-                <p className="font-serif text-h3 text-[#E91E63] mb-2">Related Treatments</p>
-                <h2 className="text-h1 text-secondary">함께 보면 좋은 시술</h2>
+                <p className="font-serif text-h3 text-[#E91E63] mb-2">{detail.related.sectionLabel}</p>
+                <h2 className="text-h1 text-secondary">{detail.related.title}</h2>
               </div>
             </AnimateOnScroll>
 

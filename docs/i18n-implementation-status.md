@@ -7,17 +7,17 @@
 ## 🚀 빠른 시작 (새 세션용)
 
 ### 현재 진행률
-- **완료**: 우선순위 1~6 (메인 페이지, 공통 UI, 상담 폼, UltheraDetail.tsx, ThermageDetail.tsx, DensityDetail.tsx)
-- **대기**: 나머지 13개 시술 상세 페이지
+- **완료**: 우선순위 1~7 (메인 페이지, 공통 UI, 상담 폼, UltheraDetail.tsx, ThermageDetail.tsx, DensityDetail.tsx, InModeDetail.tsx)
+- **대기**: 나머지 12개 시술 상세 페이지
 
 ### 다음에 해야 할 작업
 ```
-1. InModeDetail.tsx 번역 (동일 패턴 적용)
+1. ShurinkDetail.tsx 번역 (동일 패턴 적용)
    - 번역 키 추가 (ko, en, ja, zh.json)
    - 컴포넌트에서 t() 함수로 교체
 
-2. 나머지 12개 Detail 파일에 동일 패턴 적용
-   - ShurinkDetail, ThreadDetail, AptosDetail
+2. 나머지 11개 Detail 파일에 동일 패턴 적용
+   - ThreadDetail, AptosDetail
    - BotoxDetail, FillerDetail, SkinboosterDetail
    - LaserCenterDetail, PigmentationDetail, VascularDetail 등
 
@@ -246,24 +246,82 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 5. 대기 중: 나머지 13개 Detail 파일
+## 5. 완료: InModeDetail.tsx ✅
 
-### 5.1 리프팅 (4개)
+### 5.1 핵심 데이터 구조 번역
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `illustrations` | SVG 일러스트레이션 레이블 (rfPrinciple, skinLayer) | ✅ 완료 |
+| `treatmentCard` | 시술 카드 레이블 (효과, 특장점, 추천대상) | ✅ 완료 |
+| `comparison` | 비교 테이블 헤더/데이터 (포마, 모피어스, 페이스타이트 비교) | ✅ 완료 |
+| `treatmentOptions` | 시술 옵션 3가지 (Forma, Morpheus8, FaceTite) | ✅ 완료 |
+| `recommendations` | 추천 대상 카드 데이터 | ✅ 완료 |
+| `extendedFaqs` | 확장 FAQ 질문/답변 (3개) | ✅ 완료 |
+
+### 5.2 섹션별 번역
+
+| 섹션 | 번역 항목 | 상태 |
+|------|-----------|------|
+| Hero | 뱃지, 제목, 설명, 통계 레이블, floating badges | ✅ 완료 |
+| About | 제목, 설명, RF 원리 3단계 카드 | ✅ 완료 |
+| Compare | 섹션 제목, 부제목 | ✅ 완료 |
+| LIV Difference | 섹션 제목, 3개 카드 (맞춤 에너지, 정품, 전문의 직접) | ✅ 완료 |
+| Process | 섹션 레이블 | ✅ 완료 |
+| Treatment Info | 섹션 제목, 레이블 (시술 시간, 마취, 회복, 효과) | ✅ 완료 |
+| FAQ | 섹션 제목, "더 많은 의료 정보", "의료정보 Q&A 더보기" | ✅ 완료 |
+| CTA | 제목, 설명, 버튼, 운영시간, 위치 | ✅ 완료 |
+| Related | 섹션 제목 | ✅ 완료 |
+
+### 5.3 번역 키 구조 (treatments.lifting.inmode.detail)
+
+```json
+{
+  "treatments": {
+    "lifting": {
+      "inmode": {
+        "detail": {
+          "illustrations": { "rfPrinciple", "skinLayer" },
+          "treatmentCard": { "effects", "features", "idealFor" },
+          "comparison": { "headers", "rows" },
+          "treatmentOptions": { "forma", "morpheus", "facetite" },
+          "recommendations": [...],
+          "extendedFaqs": [...],
+          "hero": { "badge", "title", "description", "stats", "floatingBadges" },
+          "about": { "sectionLabel", "title", "description", "rfPrinciple" },
+          "compare": { "sectionLabel", "title", "subtitle" },
+          "livDifference": { "sectionLabel", "title", "cards" },
+          "processSection": { "sectionLabel" },
+          "treatmentInfo": { "sectionLabel", "title", "labels" },
+          "faq": { "sectionLabel", "title", "moreInfo", "moreButton" },
+          "cta": { "subtitle", "title", "description", "consultButton", "hours", "location" },
+          "related": { "sectionLabel", "title" }
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+## 6. 대기 중: 나머지 12개 Detail 파일
+
+### 6.1 리프팅 (3개)
 | 파일 | 상태 |
 |------|------|
-| `InModeDetail.tsx` | ⏳ 대기 |
 | `ShurinkDetail.tsx` | ⏳ 대기 |
 | `ThreadDetail.tsx` | ⏳ 대기 |
 | `AptosDetail.tsx` | ⏳ 대기 |
 
-### 5.2 안티에이징 (3개)
+### 6.2 안티에이징 (3개)
 | 파일 | 상태 |
 |------|------|
 | `BotoxDetail.tsx` | ⏳ 대기 |
 | `FillerDetail.tsx` | ⏳ 대기 |
 | `SkinboosterDetail.tsx` | ⏳ 대기 |
 
-### 5.3 레이저 (6개)
+### 6.3 레이저 (6개)
 | 파일 | 상태 |
 |------|------|
 | `LaserCenterDetail.tsx` | ⏳ 대기 |
@@ -275,7 +333,7 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 6. 번역 작업 패턴 가이드
+## 7. 번역 작업 패턴 가이드
 
 ### 6.1 컴포넌트 수정 패턴
 
@@ -297,7 +355,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 <ComparisonTable rows={comparisonRows} headers={comparisonHeaders} />
 ```
 
-### 6.2 번역 키 추가 패턴
+### 7.2 번역 키 추가 패턴
 
 ```json
 // ko.json
@@ -321,7 +379,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 
 ---
 
-## 7. 테스트 방법
+## 8. 테스트 방법
 
 ```bash
 cd c:/dev/LIV_homepage/liv-clinic
@@ -341,7 +399,7 @@ npm run dev
 
 ---
 
-## 8. 참고 파일 경로
+## 9. 참고 파일 경로
 
 | 용도 | 경로 |
 |------|------|
@@ -352,4 +410,4 @@ npm run dev
 
 ---
 
-*마지막 업데이트: 2026-01-27 (DensityDetail.tsx 100% 완료)*
+*마지막 업데이트: 2026-01-27 (InModeDetail.tsx 100% 완료)*

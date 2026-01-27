@@ -1069,7 +1069,162 @@
         "name": "InMode",
         "fullName": "InMode",
         "tagline": "RF-Based Combination Lifting",
-        "description": "A comprehensive lifting system using radiofrequency to improve skin elasticity and body contouring simultaneously."
+        "description": "A comprehensive lifting system using radiofrequency to improve skin elasticity and body contouring simultaneously.",
+        "detail": {
+          "illustrations": {
+            "forma": "Skin Elasticity",
+            "morpheus": "Microneedle RF",
+            "facetite": "Fat Tightening"
+          },
+          "treatmentCard": {
+            "benefits": "Key Benefits",
+            "duration": "Treatment Time",
+            "downtime": "Downtime",
+            "idealFor": "Ideal For"
+          },
+          "comparison": {
+            "header": "Comparison",
+            "rows": {
+              "method": { "feature": "Method", "forma": "RF Radiofrequency", "morpheus": "Microneedle + RF", "facetite": "Cannula + RF" },
+              "invasiveness": { "feature": "Invasiveness", "forma": "Non-invasive", "morpheus": "Minimally invasive", "facetite": "Minimally invasive" },
+              "anesthesia": { "feature": "Anesthesia", "forma": "Not required", "morpheus": "Numbing cream", "facetite": "Local anesthesia" },
+              "downtime": { "feature": "Downtime", "forma": "None", "morpheus": "3-5 days", "facetite": "5-7 days" },
+              "onset": { "feature": "Effect Onset", "forma": "Gradual", "morpheus": "Gradual", "facetite": "Immediate" },
+              "sessions": { "feature": "Sessions", "forma": "4-6 sessions", "morpheus": "2-3 sessions", "facetite": "1 session" },
+              "target": { "feature": "Main Target", "forma": "Elasticity", "morpheus": "Pores/Scars", "facetite": "Fat/Sagging" }
+            }
+          },
+          "treatmentOptions": {
+            "forma": {
+              "name": "Forma",
+              "nameKo": "Forma",
+              "description": "Non-invasive RF radiofrequency induces collagen contraction and regeneration to improve skin elasticity. Virtually painless with no downtime, allowing you to resume daily activities immediately.",
+              "benefits": ["Instant skin tightening", "Collagen regeneration", "Fine wrinkle improvement", "Pain-free treatment"],
+              "duration": "20-30 min",
+              "downtime": "None",
+              "idealFor": ["Loss of elasticity", "Fine wrinkles", "Preventive care"]
+            },
+            "morpheus": {
+              "name": "Morpheus8",
+              "nameKo": "Morpheus8",
+              "description": "24 gold-plated microneedles deliver RF energy to the dermal layer for skin remodeling. Simultaneously improves pores, scars, skin texture, and elasticity.",
+              "benefits": ["Pore reduction", "Acne scar improvement", "Skin texture refinement", "Dermal remodeling"],
+              "duration": "30-45 min",
+              "downtime": "3-5 days",
+              "idealFor": ["Large pores", "Acne scars", "Skin texture"]
+            },
+            "facetite": {
+              "name": "FaceTite",
+              "nameKo": "FaceTite",
+              "description": "A thin cannula delivers RF energy directly to the fat layer to melt fat and tighten skin. Provides mini facelift-level results.",
+              "benefits": ["Fat reduction", "Skin tightening", "Jawline improvement", "Double chin reduction"],
+              "duration": "60-90 min",
+              "downtime": "5-7 days",
+              "idealFor": ["Double chin", "Cheek fat", "Jawline sagging"]
+            }
+          },
+          "recommendations": {
+            "forma": {
+              "title": "Forma Recommended",
+              "desc": "For maintaining skin elasticity, preventive care, and those who want treatment without downtime"
+            },
+            "morpheus": {
+              "title": "Morpheus8 Recommended",
+              "desc": "For those wanting pore, scar, and texture improvement who can accommodate short-term downtime"
+            },
+            "facetite": {
+              "title": "FaceTite Recommended",
+              "desc": "For those concerned about double chin, cheek fat, and sagging who want definitive results"
+            }
+          },
+          "extendedFaqs": [
+            {
+              "q": "Which InMode treatment is most popular?",
+              "a": "Morpheus8 is the most popular. By combining microneedles with RF, it can simultaneously improve pores, scars, skin texture, and elasticity, making it effective for those with various skin concerns."
+            },
+            {
+              "q": "Can I combine multiple InMode treatments?",
+              "a": "Yes, you can. For example, combining Morpheus8 for skin texture improvement with FaceTite for fat tightening is popular. The optimal combination is determined through consultation."
+            },
+            {
+              "q": "How is InMode different from other lifting treatments?",
+              "a": "InMode is an all-in-one platform that allows various treatments within a single system. Morpheus8 offers microneedle RF for skin texture and elasticity, while FaceTite enables fat tightening, allowing personalized treatments."
+            }
+          ],
+          "hero": {
+            "badge": "All-in-One Lifting System",
+            "title": "InMode",
+            "description": "Fat reduction and lifting simultaneously with RF energy.<br />If facial fat is your concern, InMode is the answer.",
+            "stats": {
+              "rf": { "value": "RF", "label": "Radiofrequency Energy" },
+              "fda": { "value": "FDA", "label": "Approved Device" },
+              "custom": { "value": "Custom", "label": "Personalized Treatment" }
+            },
+            "floatingBadges": {
+              "morpheus": { "title": "Morpheus8", "subtitle": "Microneedle RF" },
+              "custom": { "title": "Custom Treatment", "subtitle": "Concern-Based Optimization" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About InMode",
+            "title": "What is InMode?",
+            "description": "InMode is a multi-lifting device that uses <strong>radiofrequency (RF) energy</strong> to stimulate both the fat layer and dermal layer simultaneously. It's effective for those with excess facial fat or combined concerns of loose skin."
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "Handpiece Comparison",
+            "subtitle": "Compare the characteristics of each treatment to find the right one for you"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "InMode at LIV",
+            "cards": {
+              "genuine": {
+                "title": "Certified Clinic",
+                "desc": "As an officially certified InMode Korea clinic, we only use genuine equipment and tips. We operate the latest version of equipment."
+              },
+              "combination": {
+                "title": "Customized Combination Treatment",
+                "desc": "Rather than using just one handpiece, we combine multiple treatments based on skin condition for optimal results."
+              },
+              "specialist": {
+                "title": "Specialist Treatment",
+                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "Treatment Information",
+            "labels": {
+              "duration": "Treatment Time",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery Period",
+              "results": "Results"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "Frequently Asked Questions",
+            "moreInfo": "Want more medical information?",
+            "viewMedicalQA": "View Medical Q&A"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "Book InMode Consultation",
+            "description": "Through 1:1 personalized consultation with our medical team,<br />find the optimal treatment for your concerns.",
+            "bookConsultation": "Book Free Consultation",
+            "businessHours": "Weekdays 10:00-19:00",
+            "location": "3 min walk from Sinsa Station Exit 4"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "Related Treatments"
+          }
+        }
       },
       "shurink": {
         "name": "Shurink",

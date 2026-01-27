@@ -1069,7 +1069,162 @@
         "name": "インモード",
         "fullName": "InMode",
         "tagline": "RF基盤複合リフティング",
-        "description": "高周波を活用した複合リフティングシステムで肌弾力とボディコンツアリングを同時に改善します。"
+        "description": "高周波を活用した複合リフティングシステムで肌弾力とボディコンツアリングを同時に改善します。",
+        "detail": {
+          "illustrations": {
+            "forma": "肌弾力",
+            "morpheus": "マイクロニードルRF",
+            "facetite": "脂肪タイトニング"
+          },
+          "treatmentCard": {
+            "benefits": "主な効果",
+            "duration": "施術時間",
+            "downtime": "ダウンタイム",
+            "idealFor": "おすすめの方"
+          },
+          "comparison": {
+            "header": "比較項目",
+            "rows": {
+              "method": { "feature": "施術方式", "forma": "RF高周波", "morpheus": "マイクロニードル+RF", "facetite": "カニューレ+RF" },
+              "invasiveness": { "feature": "侵襲度", "forma": "非侵襲", "morpheus": "最小侵襲", "facetite": "最小侵襲" },
+              "anesthesia": { "feature": "麻酔", "forma": "不要", "morpheus": "麻酔クリーム", "facetite": "局所麻酔" },
+              "downtime": { "feature": "ダウンタイム", "forma": "なし", "morpheus": "3-5日", "facetite": "5-7日" },
+              "onset": { "feature": "効果発現", "forma": "段階的", "morpheus": "段階的", "facetite": "即時" },
+              "sessions": { "feature": "施術回数", "forma": "4-6回", "morpheus": "2-3回", "facetite": "1回" },
+              "target": { "feature": "主なターゲット", "forma": "弾力", "morpheus": "毛穴/傷跡", "facetite": "脂肪/たるみ" }
+            }
+          },
+          "treatmentOptions": {
+            "forma": {
+              "name": "Forma",
+              "nameKo": "フォルマ",
+              "description": "非侵襲RF高周波でコラーゲンの収縮と再生を誘導し肌弾力を改善します。痛みがほとんどなくダウンタイムがないため日常生活に支障がありません。",
+              "benefits": ["即時の肌引き締め", "コラーゲン再生促進", "小じわ改善", "無痛施術"],
+              "duration": "20-30分",
+              "downtime": "なし",
+              "idealFor": ["弾力低下", "小じわ", "予防管理"]
+            },
+            "morpheus": {
+              "name": "Morpheus8",
+              "nameKo": "モーフィアス8",
+              "description": "24本の金メッキマイクロニードルが真皮層までRFエネルギーを伝達し肌リモデリングを誘導します。毛穴、傷跡、肌質、弾力を同時に改善します。",
+              "benefits": ["毛穴縮小", "ニキビ跡改善", "肌質改善", "真皮層リモデリング"],
+              "duration": "30-45分",
+              "downtime": "3-5日",
+              "idealFor": ["開いた毛穴", "ニキビ跡", "肌質"]
+            },
+            "facetite": {
+              "name": "FaceTite",
+              "nameKo": "フェイスタイト",
+              "description": "細いカニューレを通じて脂肪層に直接RFエネルギーを伝達し脂肪を溶かし肌をタイトニングします。ミニリフト級の効果を提供します。",
+              "benefits": ["脂肪減少", "肌タイトニング", "フェイスライン改善", "二重あご改善"],
+              "duration": "60-90分",
+              "downtime": "5-7日",
+              "idealFor": ["二重あご", "頬の脂肪", "フェイスラインのたるみ"]
+            }
+          },
+          "recommendations": {
+            "forma": {
+              "title": "Forma推薦",
+              "desc": "肌弾力維持、予防管理、ダウンタイムなしで施術を受けたい方"
+            },
+            "morpheus": {
+              "title": "Morpheus8推薦",
+              "desc": "毛穴、傷跡、肌質改善を望み短期ダウンタイムが可能な方"
+            },
+            "facetite": {
+              "title": "FaceTite推薦",
+              "desc": "二重あご、頬の脂肪など脂肪のたるみが悩みで確実な効果を求める方"
+            }
+          },
+          "extendedFaqs": [
+            {
+              "q": "インモード施術で最も人気があるのは何ですか？",
+              "a": "Morpheus8が最も人気です。マイクロニードルとRFを組み合わせて毛穴、傷跡、肌質、弾力を同時に改善できるため、様々な肌の悩みをお持ちの方に効果的です。"
+            },
+            {
+              "q": "インモード施術を複数組み合わせて受けられますか？",
+              "a": "はい、可能です。例えばMorpheus8で肌質を改善しFaceTiteで脂肪をタイトニングする組み合わせが人気です。カウンセリングを通じて最適な組み合わせを決定します。"
+            },
+            {
+              "q": "インモードと他のリフティング施術の違いは？",
+              "a": "インモードはオールインワンプラットフォームで一つのシステムで様々な施術を選択できます。特にMorpheus8はマイクロニードルRFで肌質と弾力を、FaceTiteは脂肪タイトニングまで可能で個人カスタマイズ施術が可能です。"
+            }
+          ],
+          "hero": {
+            "badge": "オールインワンリフティングシステム",
+            "title": "インモード",
+            "description": "高周波（RF）エネルギーで脂肪減少とリフティングを同時に。<br />顔の脂肪がお悩みならインモードが答えです。",
+            "stats": {
+              "rf": { "value": "RF", "label": "高周波エネルギー" },
+              "fda": { "value": "FDA", "label": "承認機器" },
+              "custom": { "value": "カスタム", "label": "個人別施術" }
+            },
+            "floatingBadges": {
+              "morpheus": { "title": "Morpheus8", "subtitle": "マイクロニードルRF" },
+              "custom": { "title": "カスタム施術", "subtitle": "悩み別最適化" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About InMode",
+            "title": "インモードとは？",
+            "description": "インモードは<strong>高周波（RF）エネルギー</strong>を活用して脂肪層と真皮層を同時に刺激するマルチリフティング機器です。顔の脂肪が多いタイプやたるんだ肌が複合的にお悩みの場合に効果的です。"
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "ハンドピース比較",
+            "subtitle": "各施術の特性を比較して自分に合った施術を見つけてください"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIVだけのインモード",
+            "cards": {
+              "genuine": {
+                "title": "正規認定クリニック",
+                "desc": "インモードコリア公式認定クリニックとして正規機器とチップのみ使用します。最新バージョンの機器を運用しています。"
+              },
+              "combination": {
+                "title": "カスタマイズ組み合わせ施術",
+                "desc": "一つのハンドピースだけでなく、肌状態に応じて複数の施術を組み合わせて最適な結果を導き出します。"
+              },
+              "specialist": {
+                "title": "専門医直接施術",
+                "desc": "皮膚科/形成外科専門医が直接カウンセリングから施術まで行います。豊富な経験で最適な結果を導き出します。"
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "施術情報",
+            "labels": {
+              "duration": "施術時間",
+              "anesthesia": "麻酔",
+              "recovery": "回復期間",
+              "results": "効果"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "よくある質問",
+            "moreInfo": "もっと医療情報をお知りになりたいですか？",
+            "viewMedicalQA": "医療情報Q&Aを見る"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "インモードカウンセリング予約",
+            "description": "専門医療陣との1:1カスタマイズカウンセリングを通じて<br />自分に合った最適な施術を見つけてください。",
+            "bookConsultation": "無料カウンセリング予約",
+            "businessHours": "平日 10:00-19:00",
+            "location": "新沙駅4番出口徒歩3分"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "一緒に見ると良い施術"
+          }
+        }
       },
       "shurink": {
         "name": "シュリンク",
