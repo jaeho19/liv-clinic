@@ -663,9 +663,9 @@ interface TreatmentData {
   duration: string;
   anesthesia?: string;
   recovery?: string;
-  targetAreas?: string[];
-  benefits?: { title: string; desc: string }[];
-  faqs?: { q: string; a: string }[];
+  targetAreas?: readonly string[];
+  benefits?: readonly { readonly title: string; readonly desc: string }[];
+  faqs?: readonly { readonly q: string; readonly a: string }[];
 }
 
 export function generateMedicalServiceSchema(treatment: TreatmentData) {
