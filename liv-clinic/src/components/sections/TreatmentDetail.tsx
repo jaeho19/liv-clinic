@@ -36,7 +36,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
 
     if (isExpanding && element) {
       setTimeout(() => {
-        const headerOffset = 100;
+        const headerOffset = 120; // 헤더 높이(96px) + 여유 공간(24px)
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
 

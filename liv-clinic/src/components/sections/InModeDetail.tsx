@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink } from '@/components/ui';
@@ -308,14 +308,26 @@ export default function InModeDetail() {
   const treatment = TREATMENTS.lifting.inmode;
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<'forma' | 'morpheus' | 'facetite'>('morpheus');
+  const faqRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'inmode')
   );
 
   const toggleFaq = useCallback((index: number) => {
-    setExpandedFaq(expandedFaq === index ? null : index);
-  }, [expandedFaq]);
+    // 항상 해당 FAQ를 열기 (이미 열려있어도)
+    setExpandedFaq(index);
+
+    // 해당 FAQ 요소로 스무스 스크롤
+    requestAnimationFrame(() => {
+      const el = faqRefs.current.get(index);
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const scrollOffset = 120; // 헤더 높이(96px) + 여유 공간(24px)
+      const scrollTop = window.scrollY + rect.top - scrollOffset;
+      window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+    });
+  }, []);
 
   // Extended FAQ data
   const extendedFaqs = [
@@ -891,7 +903,15 @@ export default function InModeDetail() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.05 }}
               >
-                <Card padding="none" hover={false} className="overflow-hidden">
+                <Card
+                  padding="none"
+                  hover={false}
+                  className="overflow-hidden"
+                  id={`faq-${index}`}
+                  ref={(el: HTMLDivElement | null) => {
+                    if (el) faqRefs.current.set(index, el);
+                  }}
+                >
                   <button
                     onClick={() => toggleFaq(index)}
                     className="w-full px-6 py-5 text-left flex items-start justify-between gap-4 hover:bg-background/50 transition-colors"

@@ -250,35 +250,53 @@ interface FAQItemProps {
   answer: string;
   isOpen: boolean;
   onClick: () => void;
+  id?: string;
 }
 
-const FAQItem = ({ question, answer, isOpen, onClick }: FAQItemProps) => (
-  <div className="border-b border-[var(--color-border)] last:border-b-0">
-    <button
-      onClick={onClick}
-      className="w-full py-5 flex items-center justify-between text-left"
-    >
-      <span className="font-medium text-[var(--color-secondary)] pr-4">{question}</span>
-      <motion.span
-        animate={{ rotate: isOpen ? 180 : 0 }}
-        transition={{ duration: 0.3 }}
-        className="text-[var(--color-primary)] flex-shrink-0"
+const FAQItem = ({ question, answer, isOpen, onClick, id }: FAQItemProps) => {
+  const handleClick = () => {
+    onClick();
+    // 열릴 때만 스크롤 (현재 닫혀있을 때)
+    if (!isOpen) {
+      requestAnimationFrame(() => {
+        const el = id ? document.getElementById(id) : null;
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const scrollOffset = 120; // 헤더 높이(96px) + 여유 공간(24px)
+        const scrollTop = window.scrollY + rect.top - scrollOffset;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      });
+    }
+  };
+
+  return (
+    <div id={id} className="border-b border-[var(--color-border)] last:border-b-0">
+      <button
+        onClick={handleClick}
+        className="w-full py-5 flex items-center justify-between text-left"
       >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-        </svg>
-      </motion.span>
-    </button>
-    <motion.div
-      initial={false}
-      animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-      transition={{ duration: 0.3 }}
-      className="overflow-hidden"
-    >
-      <p className="pb-5 text-[var(--color-mono)] leading-relaxed whitespace-pre-line">{answer}</p>
-    </motion.div>
-  </div>
-);
+        <span className="font-medium text-[var(--color-secondary)] pr-4">{question}</span>
+        <motion.span
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+          className="text-[var(--color-primary)] flex-shrink-0"
+        >
+          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          </svg>
+        </motion.span>
+      </button>
+      <motion.div
+        initial={false}
+        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="overflow-hidden"
+      >
+        <p className="pb-5 text-[var(--color-mono)] leading-relaxed whitespace-pre-line">{answer}</p>
+      </motion.div>
+    </div>
+  );
+};
 
 export default function TattooRemovalDetail() {
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(0);
@@ -719,6 +737,7 @@ export default function TattooRemovalDetail() {
               {faqs.map((faq, idx) => (
                 <FAQItem
                   key={idx}
+                  id={`faq-${idx}`}
                   question={faq.question}
                   answer={faq.answer}
                   isOpen={openFAQ === idx}

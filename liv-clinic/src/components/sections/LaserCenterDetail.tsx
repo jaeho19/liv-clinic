@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll } from '@/components/ui';
@@ -250,6 +250,24 @@ const EquipmentMatrixIllustration = () => (
 );
 
 export default function LaserCenterDetail() {
+  const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+
+  // FAQ 토글 시 스크롤
+  const handleFaqToggle = useCallback((index: number, e: React.MouseEvent<HTMLElement>) => {
+    const details = e.currentTarget.closest('details') as HTMLDetailsElement;
+    if (!details) return;
+
+    // details가 열릴 때만 스크롤 (열리기 전 상태가 closed일 때)
+    if (!details.open) {
+      requestAnimationFrame(() => {
+        const rect = details.getBoundingClientRect();
+        const scrollOffset = 120; // 헤더 높이(96px) + 여유 공간(24px)
+        const scrollTop = window.scrollY + rect.top - scrollOffset;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      });
+    }
+  }, []);
+
   return (
     <main className="min-h-screen bg-[var(--color-background)]">
       {/* Hero Section */}
@@ -537,7 +555,10 @@ export default function LaserCenterDetail() {
                 }
               ].map((faq, idx) => (
                 <details key={idx} className="group bg-white rounded-xl border border-[var(--color-border)] overflow-hidden">
-                  <summary className="flex items-center justify-between p-5 cursor-pointer">
+                  <summary
+                    onClick={(e) => handleFaqToggle(idx, e)}
+                    className="flex items-center justify-between p-5 cursor-pointer"
+                  >
                     <span className="font-medium text-[var(--color-secondary)]">{faq.q}</span>
                     <span className="text-[var(--color-primary)] group-open:rotate-180 transition-transform">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
@@ -240,9 +241,27 @@ const PremiumCourseTimeline = () => {
 };
 
 export default function SkinboosterDetail() {
+  const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'skinbooster')
   );
+
+  // FAQ 토글 시 스크롤
+  const handleFaqToggle = useCallback((index: number, e: React.MouseEvent<HTMLElement>) => {
+    const details = e.currentTarget.closest('details') as HTMLDetailsElement;
+    if (!details) return;
+
+    // details가 열릴 때만 스크롤 (열리기 전 상태가 closed일 때)
+    if (!details.open) {
+      requestAnimationFrame(() => {
+        const rect = details.getBoundingClientRect();
+        const scrollOffset = 120; // 헤더 높이(96px) + 여유 공간(24px)
+        const scrollTop = window.scrollY + rect.top - scrollOffset;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      });
+    }
+  }, []);
 
   return (
     <main className="bg-white overflow-hidden">
@@ -705,7 +724,10 @@ export default function SkinboosterDetail() {
                 transition={{ delay: index * 0.05 }}
                 className="group bg-[#F7FAFA] rounded-xl border border-gray-100 overflow-hidden"
               >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/50 transition-colors">
+                <summary
+                  onClick={(e) => handleFaqToggle(index, e)}
+                  className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-white/50 transition-colors"
+                >
                   <span className="font-light text-[#3A3A3A] pr-8">{faq.q}</span>
                   <span className="w-8 h-8 rounded-full bg-[#7BA3A8]/10 flex items-center justify-center text-[#7BA3A8] transform group-open:rotate-45 transition-transform duration-300 flex-shrink-0">
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

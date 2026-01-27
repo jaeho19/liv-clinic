@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
@@ -541,10 +542,28 @@ const TreatmentAreasIllustration = () => (
 );
 
 export default function ShurinkDetail() {
+  const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+
   // 관련 Q&A 필터링
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'shurink' || (id as string) === 'ulthera')
   );
+
+  // FAQ 토글 시 스크롤
+  const handleFaqToggle = useCallback((index: number, e: React.MouseEvent<HTMLElement>) => {
+    const details = e.currentTarget.closest('details') as HTMLDetailsElement;
+    if (!details) return;
+
+    // details가 열릴 때만 스크롤 (열리기 전 상태가 closed일 때)
+    if (!details.open) {
+      requestAnimationFrame(() => {
+        const rect = details.getBoundingClientRect();
+        const scrollOffset = 120; // 헤더 높이(96px) + 여유 공간(24px)
+        const scrollTop = window.scrollY + rect.top - scrollOffset;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      });
+    }
+  }, []);
 
   return (
     <main className="bg-white">
@@ -977,7 +996,10 @@ export default function ShurinkDetail() {
                 transition={{ delay: index * 0.1 }}
                 className="group bg-gray-50 rounded-xl overflow-hidden"
               >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                <summary
+                  onClick={(e) => handleFaqToggle(index, e)}
+                  className="flex items-center justify-between p-6 cursor-pointer list-none"
+                >
                   <span className="font-medium text-gray-900 pr-4">{faq.q}</span>
                   <span className="text-[#00D4FF] transform group-open:rotate-180 transition-transform">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

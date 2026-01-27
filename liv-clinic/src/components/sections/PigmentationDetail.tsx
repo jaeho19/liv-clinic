@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { TREATMENTS, LASER_CATEGORIES } from '@/lib/constants';
@@ -229,6 +230,23 @@ const EquipmentCard = ({
 );
 
 export default function PigmentationDetail() {
+  const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+
+  // FAQ 토글 시 스크롤
+  const handleFaqToggle = useCallback((index: number, e: React.MouseEvent<HTMLElement>) => {
+    const details = e.currentTarget.closest('details') as HTMLDetailsElement;
+    if (!details) return;
+
+    if (!details.open) {
+      requestAnimationFrame(() => {
+        const rect = details.getBoundingClientRect();
+        const scrollOffset = 120;
+        const scrollTop = window.scrollY + rect.top - scrollOffset;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      });
+    }
+  }, []);
+
   return (
     <main className="bg-white">
       {/* 히어로 섹션 */}
@@ -597,7 +615,10 @@ export default function PigmentationDetail() {
                 transition={{ delay: index * 0.1 }}
                 className="group bg-gray-50 rounded-xl overflow-hidden"
               >
-                <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
+                <summary
+                  onClick={(e) => handleFaqToggle(index, e)}
+                  className="flex items-center justify-between p-6 cursor-pointer list-none"
+                >
                   <span className="font-medium text-gray-900 pr-4">{faq.q}</span>
                   <span style={{ color: category.color }} className="transform group-open:rotate-180 transition-transform">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

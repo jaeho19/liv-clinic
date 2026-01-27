@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface CollapsibleItem {
@@ -15,6 +15,8 @@ interface CollapsibleSectionProps {
   className?: string;
   allowMultiple?: boolean;
   variant?: 'default' | 'card' | 'minimal';
+  scrollOnOpen?: boolean;
+  scrollOffset?: number;
 }
 
 /**
@@ -26,10 +28,13 @@ export default function CollapsibleSection({
   className = '',
   allowMultiple = false,
   variant = 'default',
+  scrollOnOpen = true,
+  scrollOffset = 120, // 헤더 높이(96px) + 여유 공간(24px)
 }: CollapsibleSectionProps) {
   const [openItems, setOpenItems] = useState<Set<string>>(
     new Set(items.filter((item) => item.defaultOpen).map((item) => item.id))
   );
+  const itemRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   // useCallback으로 메모이제이션 - 불필요한 리렌더 방지 (Vercel Best Practice)
   const toggleItem = useCallback((id: string) => {
@@ -45,7 +50,18 @@ export default function CollapsibleSection({
       }
       return newSet;
     });
-  }, [allowMultiple]);
+
+    // 항목이 열릴 때 스크롤
+    if (scrollOnOpen) {
+      requestAnimationFrame(() => {
+        const el = itemRefs.current.get(id);
+        if (!el) return;
+        const rect = el.getBoundingClientRect();
+        const scrollTop = window.scrollY + rect.top - scrollOffset;
+        window.scrollTo({ top: scrollTop, behavior: 'smooth' });
+      });
+    }
+  }, [allowMultiple, scrollOnOpen, scrollOffset]);
 
   const getItemStyles = () => {
     switch (variant) {
@@ -75,7 +91,14 @@ export default function CollapsibleSection({
         const isOpen = openItems.has(item.id);
 
         return (
-          <div key={item.id} className={getItemStyles()}>
+          <div
+            key={item.id}
+            id={`collapsible-${item.id}`}
+            ref={(el) => {
+              if (el) itemRefs.current.set(item.id, el);
+            }}
+            className={getItemStyles()}
+          >
             <button
               onClick={() => toggleItem(item.id)}
               className={`
