@@ -17,7 +17,12 @@
     "close": "닫기",
     "closeMenu": "메뉴 닫기",
     "language": "언어",
-    "backToTop": "맨 위로"
+    "backToTop": "맨 위로",
+    "expandAll": "전체 펼치기",
+    "collapseAll": "전체 접기",
+    "all": "전체",
+    "freeConsultation": "무료 상담 예약",
+    "faq": "자주 묻는 질문"
   },
   "nav": {
     "about": "리브 소개",

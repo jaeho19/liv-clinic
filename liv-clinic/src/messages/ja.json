@@ -17,7 +17,12 @@
     "close": "閉じる",
     "closeMenu": "メニューを閉じる",
     "language": "言語",
-    "backToTop": "トップへ"
+    "backToTop": "トップへ",
+    "expandAll": "すべて展開",
+    "collapseAll": "すべて折りたたむ",
+    "all": "すべて",
+    "freeConsultation": "無料相談予約",
+    "faq": "よくある質問"
   },
   "nav": {
     "about": "リブ紹介",

@@ -285,6 +285,7 @@ const FAQItem = ({ question, answer, isOpen, onClick, id }: FAQItemProps) => {
 export default function HairRemovalDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
+  const tNav = useTranslations('nav');
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(0);
 
   // 부위별 제모 정보
@@ -434,9 +435,9 @@ export default function HairRemovalDetail() {
             <div className="max-w-4xl mx-auto text-center">
               {/* 브레드크럼 */}
               <div className="flex items-center justify-center gap-2 text-sm text-[var(--color-mono-light)] mb-6">
-                <a href="/laser" className="hover:text-[var(--color-primary)] transition-colors">레이저 센터</a>
+                <a href="/laser" className="hover:text-[var(--color-primary)] transition-colors">{t('laser.center.name')}</a>
                 <span>/</span>
-                <span className="text-[var(--color-secondary)]">프리미엄 제모</span>
+                <span className="text-[var(--color-secondary)]">{t('laser.hairRemoval.name')}</span>
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-secondary)] mb-6">
@@ -652,7 +653,7 @@ export default function HairRemovalDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                자주 묻는 질문
+                {tCommon('faq')}
               </h2>
               <p className="text-[var(--color-mono)]">
                 레이저 제모에 대해 궁금한 점을 확인하세요
@@ -694,7 +695,7 @@ export default function HairRemovalDetail() {
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white px-8 py-4 rounded-full font-medium hover:bg-[var(--color-primary)]/90 transition-colors"
                 >
-                  무료 상담 예약
+                  {tCommon('freeConsultation')}
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

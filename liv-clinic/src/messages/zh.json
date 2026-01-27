@@ -17,7 +17,12 @@
     "close": "关闭",
     "closeMenu": "关闭菜单",
     "language": "语言",
-    "backToTop": "返回顶部"
+    "backToTop": "返回顶部",
+    "expandAll": "全部展开",
+    "collapseAll": "全部折叠",
+    "all": "全部",
+    "freeConsultation": "免费咨询预约",
+    "faq": "常见问题"
   },
   "nav": {
     "about": "关于LIV",

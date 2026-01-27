@@ -32,6 +32,7 @@ export default function FAQ({
   subtitle
 }: FAQProps) {
   const t = useTranslations('faq');
+  const tCommon = useTranslations('common');
   const [openIndices, setOpenIndices] = useState<Set<number>>(new Set([0]));
 
   // 외부 데이터가 있으면 사용, 없으면 번역 파일 데이터 사용
@@ -90,7 +91,7 @@ export default function FAQ({
               onClick={toggleAll}
               className="text-sm text-mono-light hover:text-primary transition-colors"
             >
-              {isAllExpanded ? '전체 접기' : '전체 펼치기'}
+              {isAllExpanded ? tCommon('collapseAll') : tCommon('expandAll')}
             </button>
           </div>
 

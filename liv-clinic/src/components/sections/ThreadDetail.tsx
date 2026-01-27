@@ -1180,7 +1180,7 @@ export default function ThreadDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              자주 묻는 <span className="text-[#D4AF37]">질문</span>
+              {tCommon('faq')}
             </h2>
           </motion.div>
 

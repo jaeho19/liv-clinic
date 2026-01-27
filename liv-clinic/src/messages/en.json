@@ -17,7 +17,12 @@
     "close": "Close",
     "closeMenu": "Close menu",
     "language": "Language",
-    "backToTop": "Back to Top"
+    "backToTop": "Back to Top",
+    "expandAll": "Expand All",
+    "collapseAll": "Collapse All",
+    "all": "All",
+    "freeConsultation": "Book Free Consultation",
+    "faq": "Frequently Asked Questions"
   },
   "nav": {
     "about": "About",
