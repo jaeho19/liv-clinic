@@ -198,6 +198,20 @@ const PremiumVolumeIllustration = () => (
   </div>
 );
 
+// Treatment Areas Data
+const treatmentAreas = [
+  { id: 1, name: '이마', description: '이마 주름 개선' },
+  { id: 2, name: '관자놀이', description: '볼륨 손실 복원' },
+  { id: 3, name: '코', description: '콧대/코끝 성형' },
+  { id: 4, name: '앞광대', description: '광대뼈 볼륨' },
+  { id: 5, name: '팔자', description: '팔자주름 개선' },
+  { id: 6, name: '옆볼', description: '볼 처짐 개선' },
+  { id: 7, name: '턱끝', description: '턱 볼륨 형성' },
+  { id: 8, name: '애교살', description: '눈 밑 볼륨' },
+  { id: 9, name: '입술', description: '입술 볼륨' },
+  { id: 10, name: '눈썹', description: '눈썹 리프트' },
+];
+
 // Premium Filler Types Section
 const PremiumFillerTypesSection = () => (
   <div className="grid md:grid-cols-3 gap-8">
@@ -322,27 +336,9 @@ export default function FillerDetail() {
                 {treatment.tagline}
               </p>
 
-              <p className="text-gray-400 leading-relaxed mb-12 max-w-md font-light text-lg">
+              <p className="text-gray-400 leading-relaxed max-w-md font-light text-lg">
                 {treatment.description}
               </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#6D5A4D] to-[#5A4940] text-white text-sm tracking-wider hover:from-[#5A4940] hover:to-[#4A3930] transition-all duration-500 shadow-xl shadow-black/10"
-                >
-                  <span>상담 예약</span>
-                  <svg className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/antiaging"
-                  className="inline-flex items-center px-10 py-5 border border-[#D4C4B8] text-[#6D5A4D] text-sm tracking-wider hover:border-[#A89080] transition-all duration-300"
-                >
-                  전체 시술 보기
-                </Link>
-              </div>
             </motion.div>
 
             <motion.div
@@ -420,67 +416,81 @@ export default function FillerDetail() {
         </div>
       </section>
 
-      {/* Treatment Areas with Video */}
-      <section className="py-32 bg-gradient-to-br from-[#FAF8F6] to-[#F5F0EB] relative overflow-hidden">
+      {/* Treatment Areas - Grid Layout */}
+      <section className="py-32 bg-gradient-to-b from-white to-[#FAF8F6] relative overflow-hidden">
         <FloatingOrb className="w-80 h-80 bg-[#A89080]/5 -right-20 top-20" delay={1} />
+        <FloatingOrb className="w-64 h-64 bg-[#C9A99A]/5 -left-16 bottom-40" delay={3} />
 
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-8 h-px bg-[#A89080]" />
-                <span className="text-xs tracking-[0.3em] text-[#A89080] uppercase">Treatment Areas</span>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-8">
-                시술 부위
-              </h2>
-              <p className="text-gray-500 mb-12 leading-relaxed text-lg font-light">
-                얼굴의 다양한 부위에 볼륨을 채우고 윤곽을 정돈합니다.
-                부위별 최적의 필러 경도와 용량으로 맞춤 시술합니다.
-              </p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-8 h-px bg-[#A89080]" />
+              <span className="text-xs tracking-[0.3em] text-[#A89080] uppercase">Treatment Areas</span>
+              <div className="w-8 h-px bg-[#A89080]" />
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-4">
+              시술 부위
+            </h2>
+            <p className="text-gray-500 max-w-xl mx-auto font-light">
+              얼굴의 다양한 부위에 볼륨을 채우고 윤곽을 정돈합니다
+            </p>
+          </motion.div>
 
-              <div className="grid grid-cols-2 gap-4">
-                {treatment.targetAreas.map((area, index) => (
-                  <motion.div
-                    key={area}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                    className="group flex items-center gap-4 py-4 border-b border-gray-200/50 hover:border-[#A89080]/50 transition-all"
-                  >
-                    <span className="w-6 h-6 rounded-full bg-gradient-to-br from-[#A89080]/20 to-[#C9A99A]/10 flex items-center justify-center">
-                      <span className="text-xs text-[#A89080]">{String(index + 1).padStart(2, '0')}</span>
-                    </span>
-                    <span className="text-[#6D5A4D] font-light group-hover:text-[#A89080] transition-colors">{area}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
+          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
+            {treatmentAreas.map((area, index) => (
+              <motion.div
+                key={area.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="group relative flex flex-col items-center p-6 bg-white rounded-2xl border border-gray-100 hover:border-[#A89080]/30 hover:shadow-xl hover:shadow-[#A89080]/10 transition-all duration-500"
+              >
+                {/* Hover gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#A89080]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              <div className="aspect-[3/4] rounded-[2rem] overflow-hidden relative">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/images/antiaging/filler-volume.mp4" type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3A3A3A]/20 to-transparent" />
-              </div>
-            </motion.div>
+                {/* Icon Circle */}
+                <div className="relative w-14 h-14 mb-4">
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FAF8F6] to-[#F0E8E4]" />
+                  <div className="absolute inset-0 rounded-full flex items-center justify-center">
+                    <svg
+                      className="w-6 h-6 text-[#A89080] group-hover:text-[#6D5A4D] transition-colors"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={1.5}
+                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                      />
+                    </svg>
+                  </div>
+                </div>
+
+                {/* Number Badge */}
+                <span className="relative text-xs text-[#C9A99A] font-medium tracking-wider mb-1">
+                  {String(area.id).padStart(2, '0')}
+                </span>
+
+                {/* Name */}
+                <h3 className="relative text-base font-medium text-[#3A3A3A] group-hover:text-[#6D5A4D] transition-colors mb-2">
+                  {area.name}
+                </h3>
+
+                {/* Description */}
+                <p className="relative text-xs text-center text-gray-400 leading-relaxed">
+                  {area.description}
+                </p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

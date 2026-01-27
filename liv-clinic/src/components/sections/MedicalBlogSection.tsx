@@ -154,7 +154,7 @@ export default function MedicalBlogSection() {
                 <span className="text-white font-bold text-lg">N</span>
               </div>
               <div>
-                <h3 className="font-serif text-xl text-secondary">관련 블로그 포스트</h3>
+                <h3 className="text-xl font-semibold text-secondary" style={{ fontFamily: 'Paperlogy' }}>관련 블로그 포스트</h3>
                 <p className="text-sm text-mono-light">더 자세한 의료 정보를 확인하세요</p>
               </div>
             </div>

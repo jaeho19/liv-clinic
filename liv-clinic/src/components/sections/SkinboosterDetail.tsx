@@ -2,6 +2,7 @@
 
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
@@ -307,27 +308,9 @@ export default function SkinboosterDetail() {
                 {treatment.tagline}
               </p>
 
-              <p className="text-gray-400 leading-relaxed mb-12 max-w-md font-light text-lg">
+              <p className="text-gray-400 leading-relaxed max-w-md font-light text-lg">
                 {treatment.description}
               </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#4A6B6F] to-[#3A5A5F] text-white text-sm tracking-wider hover:from-[#3A5A5F] hover:to-[#2A4A4F] transition-all duration-500 shadow-xl shadow-black/10"
-                >
-                  <span>상담 예약</span>
-                  <svg className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/antiaging"
-                  className="inline-flex items-center px-10 py-5 border border-[#C5D9DC] text-[#4A6B6F] text-sm tracking-wider hover:border-[#7BA3A8] transition-all duration-300"
-                >
-                  전체 시술 보기
-                </Link>
-              </div>
             </motion.div>
 
             <motion.div
@@ -336,19 +319,19 @@ export default function SkinboosterDetail() {
               transition={{ duration: 1, delay: 0.3 }}
               className="relative"
             >
-              <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
-                <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover opacity-30"
-                >
-                  <source src="/images/antiaging/skinbooster-hero.mp4" type="video/mp4" />
-                </video>
+              {/* Hero Image */}
+              <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#7BA3A8]/20">
+                <Image
+                  src="/images/Gemini_Generated_Image_a2ghqha2ghqha2gh.png"
+                  alt="스킨부스터 - 피부 속부터 차오르는 광채"
+                  fill
+                  className="object-cover"
+                  quality={95}
+                  priority
+                />
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#7BA3A8]/10 to-transparent" />
               </div>
-              <PremiumHydrationIllustration />
             </motion.div>
           </div>
         </div>

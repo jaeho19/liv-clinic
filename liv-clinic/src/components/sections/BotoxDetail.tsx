@@ -544,27 +544,9 @@ export default function BotoxDetail() {
                 {treatment.nameEn}
               </p>
 
-              <p className="text-gray-600 leading-relaxed max-w-md mb-12 font-light text-lg">
+              <p className="text-gray-600 leading-relaxed max-w-md font-light text-lg">
                 {treatment.description}
               </p>
-
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="group inline-flex items-center px-10 py-5 bg-gradient-to-r from-[#3D3D3D] to-[#2D2D2D] text-white text-sm tracking-wider hover:from-[#2D2D2D] hover:to-[#1D1D1D] transition-all duration-500 shadow-xl shadow-black/10"
-                >
-                  <span>상담 예약</span>
-                  <svg className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </Link>
-                <Link
-                  href="/antiaging"
-                  className="inline-flex items-center px-10 py-5 border border-gray-200 text-gray-600 text-sm tracking-wider hover:border-[#C4A484] hover:text-[#C4A484] transition-all duration-300"
-                >
-                  전체 시술 보기
-                </Link>
-              </div>
             </motion.div>
 
             <motion.div
