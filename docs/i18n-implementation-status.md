@@ -7,19 +7,19 @@
 ## 🚀 빠른 시작 (새 세션용)
 
 ### 현재 진행률
-- **완료**: 우선순위 1~3 (메인 페이지, 공통 UI, 상담 폼)
-- **진행 중**: 우선순위 4 - UltheraDetail.tsx 상세 콘텐츠 번역 (약 70% 완료)
+- **완료**: 우선순위 1~4 (메인 페이지, 공통 UI, 상담 폼, UltheraDetail.tsx)
 - **대기**: 나머지 15개 시술 상세 페이지
 
 ### 다음에 해야 할 작업
 ```
-1. UltheraDetail.tsx 나머지 섹션 번역 완료
-   - Why Ulthera, Compare synergy, LIV Difference
-   - Journey, Treatment Info, CTA, Related 섹션
-
-2. 나머지 15개 Detail 파일에 동일 패턴 적용
+1. ThermageDetail.tsx 번역 (UltheraDetail.tsx 패턴 적용)
    - 번역 키 추가 (ko, en, ja, zh.json)
    - 컴포넌트에서 t() 함수로 교체
+
+2. 나머지 14개 Detail 파일에 동일 패턴 적용
+   - DensityDetail, InModeDetail, ShurinkDetail, ThreadDetail, AptosDetail
+   - BotoxDetail, FillerDetail, SkinboosterDetail
+   - LaserCenterDetail, PigmentationDetail, VascularDetail 등
 
 3. 번역 파일 위치: liv-clinic/src/messages/{ko,en,ja,zh}.json
 ```
@@ -64,11 +64,10 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 2. 현재 진행 중: UltheraDetail.tsx
+## 2. 완료: UltheraDetail.tsx ✅
 
-### 2.1 완료된 부분
+### 2.1 핵심 데이터 구조 번역
 
-**핵심 데이터 구조 번역:**
 | 항목 | 설명 | 상태 |
 |------|------|------|
 | `SkinLayerDiagram` | 피부층 레이블 (표피, 진피 상층, 진피 하층, SMAS층) | ✅ 완료 |
@@ -77,28 +76,24 @@ npx tsc --noEmit     # 타입 검사
 | `TRANSDUCERS` | 트랜스듀서 target/applications (6개 트랜스듀서) | ✅ 완료 |
 | `extendedFaqs` | 확장 FAQ 질문/답변 (3개) | ✅ 완료 |
 
-**섹션별 번역:**
+### 2.2 섹션별 번역
+
 | 섹션 | 번역 항목 | 상태 |
 |------|-----------|------|
 | Hero | 뱃지, 제목, 설명, 통계 레이블, floating badges | ✅ 완료 |
 | About | 제목, 설명, 깊이별 맞춤 타겟팅 카드 3개 | ✅ 완료 |
 | Transducers | 섹션 제목, 부제목, 표층/심층 레이블, 에너지 전달 텍스트 | ✅ 완료 |
+| Why Ulthera | 섹션 제목, 3개 카드 (FDA, DeepSEE, SMAS), Clinical Evidence | ✅ 완료 |
+| Compare | Synergy note 제목/설명 | ✅ 완료 |
+| LIV Difference | 섹션 제목, 3개 카드 (정품 인증, 샷 수 투명, 전문의 직접) | ✅ 완료 |
+| Journey | 섹션 제목 | ✅ 완료 |
+| Treatment Info | 섹션 제목, 레이블 (시술 시간, 마취, 회복, 효과), 권장 라인 수 | ✅ 완료 |
+| Detailed Info | 섹션 제목 | ✅ 완료 |
+| FAQ | 섹션 제목, "N개 더 보기", "의료정보 Q&A 더보기" | ✅ 완료 |
+| CTA | 제목, 설명, 버튼, 운영시간, 위치 | ✅ 완료 |
+| Related | 섹션 제목 | ✅ 완료 |
 
-### 2.2 남은 부분 (UltheraDetail.tsx)
-
-| 섹션 | 번역해야 할 항목 | 상태 |
-|------|-----------------|------|
-| Why Ulthera | 섹션 제목, 3개 카드 (FDA, DeepSEE, SMAS), Clinical Evidence | ⏳ 대기 |
-| Compare | Synergy note 제목/설명 | ⏳ 대기 |
-| LIV Difference | 섹션 제목, 3개 카드 (정품 인증, 샷 수 투명, 전문의 직접) | ⏳ 대기 |
-| Journey | 섹션 제목 | ⏳ 대기 |
-| Treatment Info | 섹션 제목, 레이블 (시술 시간, 마취, 회복, 효과), 권장 라인 수 | ⏳ 대기 |
-| Detailed Info | 섹션 제목 | ⏳ 대기 |
-| FAQ | 섹션 제목, "N개 더 보기", "의료정보 Q&A 더보기" | ⏳ 대기 |
-| CTA | 제목, 설명, 버튼, 운영시간, 위치 | ⏳ 대기 |
-| Related | 섹션 제목 | ⏳ 대기 |
-
-### 2.3 추가된 번역 키 구조 (treatments.lifting.ulthera.detail)
+### 2.3 번역 키 구조 (treatments.lifting.ulthera.detail)
 
 ```json
 {
@@ -237,4 +232,4 @@ npm run dev
 
 ---
 
-*마지막 업데이트: 2026-01-27*
+*마지막 업데이트: 2026-01-27 (UltheraDetail.tsx 100% 완료)*

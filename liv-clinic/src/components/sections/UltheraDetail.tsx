@@ -990,11 +990,11 @@ export default function UltheraDetail() {
             <div className="text-center mb-16">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Premium Quality</span>
+                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">{t('lifting.ulthera.detail.whyUlthera.sectionLabel')}</span>
                 <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
               </div>
-              <p className="font-serif text-h3 text-primary mb-2">Why Ultherapy Prime?</p>
-              <h2 className="text-h1 text-secondary">왜 울쎄라피 프라임인가?</h2>
+              <p className="font-serif text-h3 text-primary mb-2">{t('lifting.ulthera.detail.whyUlthera.labelEn')}</p>
+              <h2 className="text-h1 text-secondary">{t('lifting.ulthera.detail.whyUlthera.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -1007,10 +1007,8 @@ export default function UltheraDetail() {
                   <div className="mb-4">
                     <FDAIllustration />
                   </div>
-                  <h3 className="text-h3 text-secondary mb-4">FDA 유일 승인</h3>
-                  <p className="text-body text-mono-light leading-relaxed">
-                    미국 FDA에서 비침습 리프팅 효과를 승인받은 <strong className="text-secondary">유일한</strong> HIFU 장비입니다.
-                  </p>
+                  <h3 className="text-h3 text-secondary mb-4">{t('lifting.ulthera.detail.whyUlthera.cards.fda.title')}</h3>
+                  <p className="text-body text-mono-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.ulthera.detail.whyUlthera.cards.fda.description') }} />
                 </div>
               </Card>
             </div>
@@ -1022,10 +1020,8 @@ export default function UltheraDetail() {
                   <div className="mb-4">
                     <DeepSEEIllustration />
                   </div>
-                  <h3 className="text-h3 text-secondary mb-4">DeepSEE 시각화</h3>
-                  <p className="text-body text-mono-light leading-relaxed">
-                    특허 받은 DeepSEE 기술로 피부층을 <strong className="text-secondary">실시간 확인</strong>하며 시술합니다.
-                  </p>
+                  <h3 className="text-h3 text-secondary mb-4">{t('lifting.ulthera.detail.whyUlthera.cards.deepSee.title')}</h3>
+                  <p className="text-body text-mono-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.ulthera.detail.whyUlthera.cards.deepSee.description') }} />
                 </div>
               </Card>
             </div>
@@ -1037,10 +1033,8 @@ export default function UltheraDetail() {
                   <div className="mb-4">
                     <SMASIllustration />
                   </div>
-                  <h3 className="text-h3 text-secondary mb-4">SMAS층 타겟팅</h3>
-                  <p className="text-body text-mono-light leading-relaxed">
-                    성형 수술 시 타겟하는 <strong className="text-secondary">SMAS층까지 도달</strong>하는 유일한 비침습 장비입니다.
-                  </p>
+                  <h3 className="text-h3 text-secondary mb-4">{t('lifting.ulthera.detail.whyUlthera.cards.smas.title')}</h3>
+                  <p className="text-body text-mono-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.ulthera.detail.whyUlthera.cards.smas.description') }} />
                 </div>
               </Card>
             </div>
@@ -1049,27 +1043,27 @@ export default function UltheraDetail() {
           {/* Clinical evidence banner */}
           <AnimateOnScroll>
             <div className="mt-16 p-8 bg-secondary rounded-3xl text-white text-center">
-              <p className="font-serif text-h3 opacity-80 mb-4">Clinical Evidence</p>
+              <p className="font-serif text-h3 opacity-80 mb-4">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.label')}</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div>
                   <p className="text-h1 font-serif">110+</p>
-                  <p className="text-small opacity-70">임상 연구 논문</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.papers')}</p>
                 </div>
                 <div>
                   <p className="text-h1 font-serif">89%</p>
-                  <p className="text-small opacity-70">심미적 개선율</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.aestheticImprovement')}</p>
                 </div>
                 <div>
                   <p className="text-h1 font-serif">84%</p>
-                  <p className="text-small opacity-70">환자 만족도</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.satisfaction')}</p>
                 </div>
                 <div>
                   <p className="text-h1 font-serif">1-2년</p>
-                  <p className="text-small opacity-70">효과 지속 기간</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.duration')}</p>
                 </div>
               </div>
               <p className="text-small opacity-60 mt-6">
-                출처: 2024 체계적 문헌고찰 및 메타분석 (PubMed)
+                {t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.source')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -1113,10 +1107,9 @@ export default function UltheraDetail() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-h4 text-secondary mb-2">울쎄라피 프라임 + 써마지 시너지</h4>
+                  <h4 className="text-h4 text-secondary mb-2">{t('lifting.ulthera.detail.comparison.synergy.title')}</h4>
                   <p className="text-body text-mono-light">
-                    울쎄라피 프라임(SMAS층 리프팅)과 써마지(표피~진피층 탄력)를 3개월 간격으로 병행하면
-                    다층적 콜라겐 재생으로 더욱 강력한 시너지 효과를 경험할 수 있습니다.
+                    {t('lifting.ulthera.detail.comparison.synergy.description')}
                   </p>
                 </div>
               </div>
@@ -1134,11 +1127,11 @@ export default function UltheraDetail() {
             <div className="text-center mb-16">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">LIV Clinic</span>
+                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">{t('lifting.ulthera.detail.livDifference.sectionLabel')}</span>
                 <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
               </div>
-              <p className="font-serif text-h3 text-primary mb-2">LIV Difference</p>
-              <h2 className="text-h1 text-secondary">리브만의 울쎄라피 프라임</h2>
+              <p className="font-serif text-h3 text-primary mb-2">{t('lifting.ulthera.detail.livDifference.labelEn')}</p>
+              <h2 className="text-h1 text-secondary">{t('lifting.ulthera.detail.livDifference.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -1151,10 +1144,9 @@ export default function UltheraDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">정품 인증 클리닉</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.ulthera.detail.livDifference.cards.genuine.title')}</h3>
                   <p className="text-body text-mono-light">
-                    멀츠 코리아 공식 인증 클리닉으로 정품 장비와 트랜스듀서만 사용합니다.
-                    시리얼 번호 확인이 가능합니다.
+                    {t('lifting.ulthera.detail.livDifference.cards.genuine.description')}
                   </p>
                 </div>
               </Card>
@@ -1168,10 +1160,9 @@ export default function UltheraDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">샷 수 투명 공개</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.ulthera.detail.livDifference.cards.transparency.title')}</h3>
                   <p className="text-body text-mono-light">
-                    시술 전 계획된 라인 수와 실제 조사된 샷 수를 투명하게 공개합니다.
-                    정직한 시술을 약속드립니다.
+                    {t('lifting.ulthera.detail.livDifference.cards.transparency.description')}
                   </p>
                 </div>
               </Card>
@@ -1185,10 +1176,9 @@ export default function UltheraDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">전문의 직접 시술</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.ulthera.detail.livDifference.cards.specialist.title')}</h3>
                   <p className="text-body text-mono-light">
-                    피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다.
-                    개인별 맞춤 시술 계획을 수립합니다.
+                    {t('lifting.ulthera.detail.livDifference.cards.specialist.description')}
                   </p>
                 </div>
               </Card>
@@ -1204,10 +1194,10 @@ export default function UltheraDetail() {
             <div className="text-center mb-8 md:mb-12">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Journey</span>
+                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">{t('lifting.ulthera.detail.journey.sectionLabel')}</span>
                 <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
               </div>
-              <h2 className="text-h1 text-secondary">시술 여정</h2>
+              <h2 className="text-h1 text-secondary">{t('lifting.ulthera.detail.journey.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -1261,11 +1251,11 @@ export default function UltheraDetail() {
             <div className="text-center mb-12">
               <div className="flex items-center justify-center gap-4 mb-4">
                 <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Details</span>
+                <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">{t('lifting.ulthera.detail.treatmentInfo.sectionLabel')}</span>
                 <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
               </div>
-              <p className="font-serif text-h3 opacity-80 mb-2">Treatment Info</p>
-              <h2 className="text-h1">시술 정보</h2>
+              <p className="font-serif text-h3 opacity-80 mb-2">{t('lifting.ulthera.detail.treatmentInfo.labelEn')}</p>
+              <h2 className="text-h1">{t('lifting.ulthera.detail.treatmentInfo.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -1277,7 +1267,7 @@ export default function UltheraDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">시술 시간</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.ulthera.detail.treatmentInfo.labels.duration')}</p>
                 <p className="font-medium text-lg">{treatment.duration}</p>
               </div>
             </AnimateOnScroll>
@@ -1288,7 +1278,7 @@ export default function UltheraDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">마취</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.ulthera.detail.treatmentInfo.labels.anesthesia')}</p>
                 <p className="font-medium text-lg">{treatment.anesthesia}</p>
               </div>
             </AnimateOnScroll>
@@ -1299,7 +1289,7 @@ export default function UltheraDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">회복 기간</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.ulthera.detail.treatmentInfo.labels.recovery')}</p>
                 <p className="font-medium text-lg">{treatment.recovery}</p>
               </div>
             </AnimateOnScroll>
@@ -1310,7 +1300,7 @@ export default function UltheraDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">효과 지속</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.ulthera.detail.treatmentInfo.labels.results')}</p>
                 <p className="font-medium text-lg">{treatment.results}</p>
               </div>
             </AnimateOnScroll>
@@ -1319,23 +1309,23 @@ export default function UltheraDetail() {
           {/* Recommended lines info */}
           <AnimateOnScroll>
             <div className="bg-white/10 rounded-2xl p-6 backdrop-blur">
-              <h3 className="text-h4 mb-4 text-center">부위별 권장 라인 수</h3>
+              <h3 className="text-h4 mb-4 text-center">{t('lifting.ulthera.detail.treatmentInfo.recommendedLines.title')}</h3>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
                 <div className="p-4 bg-white/5 rounded-xl">
                   <p className="text-h3 font-serif text-primary">250-400</p>
-                  <p className="text-small opacity-70">상안면</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.treatmentInfo.recommendedLines.upperFace')}</p>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl">
                   <p className="text-h3 font-serif text-primary">~600</p>
-                  <p className="text-small opacity-70">하안면</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.treatmentInfo.recommendedLines.lowerFace')}</p>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl">
                   <p className="text-h3 font-serif text-primary">800-1,100</p>
-                  <p className="text-small opacity-70">전안면</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.treatmentInfo.recommendedLines.fullFace')}</p>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl">
                   <p className="text-h3 font-serif text-primary">~1,200</p>
-                  <p className="text-small opacity-70">전안면 + 목</p>
+                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.treatmentInfo.recommendedLines.fullFaceNeck')}</p>
                 </div>
               </div>
             </div>
@@ -1348,7 +1338,7 @@ export default function UltheraDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-8">
-              <h2 className="text-h2 text-secondary">상세 정보</h2>
+              <h2 className="text-h2 text-secondary">{t('lifting.ulthera.detail.detailedInfo.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -1413,8 +1403,8 @@ export default function UltheraDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-8 md:mb-12">
-              <p className="font-serif text-h3 text-primary mb-2">FAQ</p>
-              <h2 className="text-h1 text-secondary">자주 묻는 질문</h2>
+              <p className="font-serif text-h3 text-primary mb-2">{t('lifting.ulthera.detail.faq.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary">{t('lifting.ulthera.detail.faq.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -1422,7 +1412,7 @@ export default function UltheraDetail() {
             <ExpandableList
               items={extendedFaqs}
               initialCount={3}
-              expandText={`${extendedFaqs.length - 3}개 더 보기`}
+              expandText={`${extendedFaqs.length - 3}${t('lifting.ulthera.detail.faq.moreButton')}`}
               collapseText={t('common.collapse')}
               renderItem={(faq, index) => (
                 <Card
@@ -1487,10 +1477,10 @@ export default function UltheraDetail() {
               <div className="text-center mt-8 md:mt-12">
                 <Link href="/medical">
                   <Button variant="outline" size="sm" className="md:hidden">
-                    의료정보 Q&A 더보기
+                    {t('lifting.ulthera.detail.faq.medicalQaLink')}
                   </Button>
                   <Button variant="outline" className="hidden md:inline-flex">
-                    의료정보 Q&A 더보기
+                    {t('lifting.ulthera.detail.faq.medicalQaLink')}
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -1513,17 +1503,16 @@ export default function UltheraDetail() {
         <div className="container-custom relative z-10">
           <AnimateOnScroll>
             <div className="text-center max-w-2xl mx-auto">
-              <p className="font-serif text-h3 opacity-80 mb-4">Ready for Transformation?</p>
-              <h2 className="text-h1 mb-6">울쎄라피 프라임 상담 예약</h2>
-              <p className="text-h4 opacity-90 mb-10 leading-relaxed">
-                전문 의료진과 1:1 맞춤 상담을 통해<br />
-                나에게 맞는 최적의 시술 계획을 수립해보세요.
+              <p className="font-serif text-h3 opacity-80 mb-4">{t('lifting.ulthera.detail.cta.labelEn')}</p>
+              <h2 className="text-h1 mb-6">{t('lifting.ulthera.detail.cta.title')}</h2>
+              <p className="text-h4 opacity-90 mb-10 leading-relaxed whitespace-pre-line">
+                {t('lifting.ulthera.detail.cta.description')}
               </p>
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
                   <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-primary hover:!text-white w-full sm:w-auto">
-                    무료 상담 예약하기
+                    {t('lifting.ulthera.detail.cta.bookButton')}
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
@@ -1541,13 +1530,13 @@ export default function UltheraDetail() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  평일 10:00-19:00
+                  {t('lifting.ulthera.detail.cta.hours')}
                 </span>
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   </svg>
-                  신사역 4번 출구 도보 3분
+                  {t('lifting.ulthera.detail.cta.location')}
                 </span>
               </div>
             </div>
@@ -1561,8 +1550,8 @@ export default function UltheraDetail() {
           <div className="container-custom">
             <AnimateOnScroll>
               <div className="text-center mb-8 md:mb-12">
-                <p className="font-serif text-h3 text-primary mb-2">Related Treatments</p>
-                <h2 className="text-h1 text-secondary">함께 보면 좋은 시술</h2>
+                <p className="font-serif text-h3 text-primary mb-2">{t('lifting.ulthera.detail.related.labelEn')}</p>
+                <h2 className="text-h1 text-secondary">{t('lifting.ulthera.detail.related.title')}</h2>
               </div>
             </AnimateOnScroll>
 
