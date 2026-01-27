@@ -484,6 +484,42 @@ export default function BotoxDetail() {
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
+  // 번역된 데이터
+  const detail = {
+    hero: {
+      badge: t('antiaging.botox.detail.hero.badge'),
+      title: t('antiaging.botox.detail.hero.title'),
+      description: t('antiaging.botox.detail.hero.description'),
+    },
+    benefits: {
+      title: t('antiaging.botox.detail.benefits.title'),
+    },
+    targetAreas: {
+      title: t('antiaging.botox.detail.targetAreas.title'),
+      subtitle: t('antiaging.botox.detail.targetAreas.subtitle'),
+      areas: {
+        forehead: t('antiaging.botox.detail.targetAreas.areas.forehead'),
+        glabella: t('antiaging.botox.detail.targetAreas.areas.glabella'),
+        crowsFeet: t('antiaging.botox.detail.targetAreas.areas.crowsFeet'),
+        masseter: t('antiaging.botox.detail.targetAreas.areas.masseter'),
+      },
+    },
+    treatmentInfo: {
+      title: t('antiaging.botox.detail.treatmentInfo.title'),
+      duration: t('antiaging.botox.detail.treatmentInfo.duration'),
+      anesthesia: t('antiaging.botox.detail.treatmentInfo.anesthesia'),
+      recovery: t('antiaging.botox.detail.treatmentInfo.recovery'),
+      results: t('antiaging.botox.detail.treatmentInfo.results'),
+    },
+    faq: {
+      title: t('antiaging.botox.detail.faq.title'),
+    },
+    cta: {
+      title: t('antiaging.botox.detail.cta.title'),
+      description: t('antiaging.botox.detail.cta.description'),
+    },
+  };
+
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'botox')
   );
@@ -592,7 +628,7 @@ export default function BotoxDetail() {
               <span className="text-xs tracking-[0.3em] text-[#C4A484] uppercase">Benefits</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3D3D3D]">
-              보톡스의 장점
+              {detail.benefits.title}
             </h2>
           </motion.div>
 
@@ -776,7 +812,7 @@ export default function BotoxDetail() {
               <div className="w-8 h-px bg-[#C4A484]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3D3D3D]">
-              시술 정보
+              {detail.treatmentInfo.title}
             </h2>
           </motion.div>
 
@@ -864,7 +900,7 @@ export default function BotoxDetail() {
               <div className="w-8 h-px bg-[#C4A484]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3D3D3D]">
-              자주 묻는 질문
+              {detail.faq.title}
             </h2>
           </motion.div>
 
@@ -956,17 +992,17 @@ export default function BotoxDetail() {
               <div className="w-12 h-px bg-[#C4A484]" />
             </div>
             <h2 className="text-4xl lg:text-6xl font-extralight text-white mt-4 mb-8">
-              보톡스 상담 예약
+              {detail.cta.title}
             </h2>
             <p className="text-white/60 font-light max-w-xl mx-auto mb-12 text-lg leading-relaxed">
-              자연스러운 주름 개선과 윤곽 정리, 전문의 상담을 통해 맞춤 시술 계획을 세워드립니다.
+              {detail.cta.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
                 className="group inline-flex items-center px-12 py-5 bg-gradient-to-r from-[#C4A484] to-[#B39374] text-white text-sm tracking-wider hover:from-[#B39374] hover:to-[#A38364] transition-all duration-500 shadow-xl shadow-[#C4A484]/20"
               >
-                <span>온라인 상담 예약</span>
+                <span>{t('common.onlineConsultation')}</span>
                 <svg className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

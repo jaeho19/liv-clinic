@@ -1431,13 +1431,109 @@
         "name": "肉毒素",
         "fullName": "Botox",
         "tagline": "除皱 & 瘦脸",
-        "description": "使用肉毒杆菌素改善表情纹，缩小咬肌，打造精致脸型。"
+        "description": "使用肉毒杆菌素改善表情纹，缩小咬肌，打造精致脸型。",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "肉毒素",
+            "description": "使用肉毒杆菌素改善表情纹，缩小咬肌，打造精致脸型。"
+          },
+          "benefits": {
+            "title": "肉毒素的优点"
+          },
+          "targetAreas": {
+            "title": "治疗部位",
+            "subtitle": "在面部各个部位进行精准注射",
+            "areas": {
+              "forehead": "额头",
+              "glabella": "眉间",
+              "crowsFeet": "眼角",
+              "nasalis": "鼻翼",
+              "lips": "嘴唇",
+              "masseter": "咬肌",
+              "neckBands": "颈部",
+              "hairline": "发际线"
+            }
+          },
+          "treatmentInfo": {
+            "title": "治疗信息",
+            "duration": "治疗时间",
+            "anesthesia": "麻醉",
+            "recovery": "恢复",
+            "results": "持续时间"
+          },
+          "faq": {
+            "title": "常见问题"
+          },
+          "cta": {
+            "title": "肉毒素咨询预约",
+            "description": "自然的除皱效果，通过专家咨询为您推荐最佳治疗方案。"
+          }
+        }
       },
       "filler": {
         "name": "玻尿酸",
         "fullName": "Filler",
         "tagline": "填充 & 轮廓塑形",
-        "description": "使用透明质酸填充剂填充凹陷部位，打造自然饱满效果。"
+        "description": "使用透明质酸填充剂填充凹陷部位，打造自然饱满效果。",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "玻尿酸",
+            "description": "使用透明质酸填充剂填充凹陷部位，打造自然饱满效果。"
+          },
+          "benefits": {
+            "title": "玻尿酸的优点"
+          },
+          "targetAreas": {
+            "title": "治疗部位",
+            "subtitle": "在面部各个部位填充体积并塑造轮廓",
+            "areas": [
+              { "id": 1, "name": "额头", "description": "额头皱纹改善" },
+              { "id": 2, "name": "太阳穴", "description": "体积流失恢复" },
+              { "id": 3, "name": "鼻子", "description": "鼻梁/鼻尖塑形" },
+              { "id": 4, "name": "苹果肌", "description": "颧骨体积" },
+              { "id": 5, "name": "法令纹", "description": "法令纹改善" },
+              { "id": 6, "name": "侧脸", "description": "脸颊下垂改善" },
+              { "id": 7, "name": "下巴尖", "description": "下巴体积塑形" },
+              { "id": 8, "name": "卧蚕", "description": "眼下体积" },
+              { "id": 9, "name": "嘴唇", "description": "嘴唇体积" },
+              { "id": 10, "name": "眉毛", "description": "眉毛提升" }
+            ]
+          },
+          "fillerTypes": {
+            "title": "部位定制填充剂",
+            "subtitle": "根据治疗部位和目的选择最佳填充剂硬度",
+            "types": [
+              { "type": "柔软型", "areas": "嘴唇、眼下", "desc": "自然触感" },
+              { "type": "中等型", "areas": "法令纹、脸颊", "desc": "体积+支撑力" },
+              { "type": "坚固型", "areas": "鼻子、下巴、额头", "desc": "强支撑力" }
+            ]
+          },
+          "safety": {
+            "title": "可逆性治疗",
+            "subtitle": "透明质酸填充剂可在需要时溶解，安全可靠",
+            "steps": [
+              { "step": "01", "title": "填充剂注射", "desc": "体积塑形" },
+              { "step": "02", "title": "透明质酸酶", "desc": "需要时溶解" },
+              { "step": "03", "title": "恢复原状", "desc": "安全去除" }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "治疗信息",
+            "duration": "治疗时间",
+            "anesthesia": "麻醉",
+            "recovery": "恢复",
+            "results": "持续时间"
+          },
+          "faq": {
+            "title": "常见问题"
+          },
+          "cta": {
+            "title": "玻尿酸咨询预约",
+            "description": "自然的体积和轮廓，通过专家咨询为您推荐最佳治疗方案。"
+          }
+        }
       },
       "skinbooster": {
         "name": "水光针",
@@ -1457,13 +1553,153 @@
         "name": "色素治疗",
         "fullName": "Pigmentation Treatment",
         "tagline": "黄褐斑、色斑、雀斑改善",
-        "description": "针对各种色素问题的定制激光治疗，恢复透亮肌肤。"
+        "description": "针对各种色素问题的定制激光治疗，恢复透亮肌肤。",
+        "detail": {
+          "hero": {
+            "subtitle": "顽固性黄褐斑也能通过LIV三阶段系统解决",
+            "description": "从皮秒激光到低刺激调光，4种高端设备完成定制色素治疗"
+          },
+          "threeStageSystem": {
+            "title": "LIV三阶段色素治疗系统",
+            "subtitle": "从轻度到顽固性黄褐斑，分阶段定制治疗实现有效色素改善",
+            "stages": [
+              { "stage": "第1阶段", "title": "集中治疗", "equipment": "Lucas皮秒", "description": "皮秒脉冲集中分解深层色素" },
+              { "stage": "第2阶段", "title": "精准靶向", "equipment": "Clarity II 755nm", "description": "亚历山大波长精准治疗浅层色素" },
+              { "stage": "第3阶段", "title": "维持护理", "equipment": "调光 + 美白激光", "description": "低刺激重复治疗维持效果预防复发" }
+            ]
+          },
+          "picoVsNano": {
+            "title": "为什么选择皮秒？",
+            "subtitle": "比纳秒激光快1000倍的脉冲，更精细地分解色素",
+            "nanosecond": "纳秒激光",
+            "picosecond": "皮秒激光",
+            "nanosecondUnit": "十亿分之一秒 (10⁻⁹)",
+            "picosecondUnit": "万亿分之一秒 (10⁻¹²)",
+            "largeParticles": "色素颗粒分解较大",
+            "slowDischarge": "排出速度慢",
+            "fineParticles": "色素颗粒分解精细",
+            "fastDischarge": "淋巴排出快",
+            "timesFaster": "快1000倍",
+            "comparison": {
+              "item": "比较项目",
+              "pulseSpeed": "脉冲速度",
+              "particleSize": "色素分解大小",
+              "tissueDamage": "周围组织损伤",
+              "heatDamage": "热损伤",
+              "downtime": "恢复期",
+              "sessions": "治疗次数",
+              "relativeLarge": "相对较大",
+              "fine": "精细",
+              "exists": "有",
+              "minimal": "最小",
+              "almostNone": "几乎没有",
+              "relativeLong": "相对较长",
+              "short": "短",
+              "many": "多",
+              "few": "少"
+            }
+          },
+          "equipment": {
+            "title": "色素治疗推荐设备",
+            "subtitle": "LIV整形外科拥有的4种高端激光实现最佳色素治疗",
+            "featured": "FEATURED"
+          },
+          "protocol": {
+            "title": "症状推荐方案",
+            "mild": { "level": "轻度", "description": "轻微黄褐斑、色斑", "treatment": "激光调光", "sessions": "5-10次", "interval": "2周间隔" },
+            "moderate": { "level": "中度", "description": "中等深度色素", "treatment": "Clarity II 755nm", "sessions": "3-5次", "interval": "3-4周间隔" },
+            "severe": { "level": "重度 / 顽固性", "description": "深层黄褐斑、顽固性", "treatment": "Lucas皮秒 + 调光", "sessions": "5-10次", "interval": "2-4周间隔" }
+          },
+          "idealFor": [
+            "黄褐斑越来越深且扩大的人",
+            "多次做调光但效果不佳的人",
+            "色斑、雀斑较多困扰的人",
+            "开始出现老年斑的人",
+            "肤色暗沉不均匀的人",
+            "想要无恢复期持续护理的人"
+          ],
+          "faq": [
+            { "q": "黄褐斑可以根治吗？", "a": "黄褐斑需要以"管理"而非根治的理念来对待。集中治疗后大幅改善，通过定期维护和防晒将复发降到最低。LIV的三阶段系统包含治疗和维护两个环节。" },
+            { "q": "皮秒激光和调光，哪个更好？", "a": "取决于目的。顽固性黄褐斑或深层色素用皮秒激光集中治疗，轻微色素或维护则调光更合适。很多情况下，皮秒治疗后用调光维护的复合方案最为有效。" },
+            { "q": "激光后色素会加深吗？", "a": "可能出现暂时性色素沉着（PIH）。这会在2-4周内自然改善，做好防晒可以预防。LIV会彻底做好术后护理指导。" },
+            { "q": "怀孕期间可以做色素激光吗？", "a": "不建议在怀孕或哺乳期间做激光治疗。建议在分娩和哺乳结束后进行治疗。怀孕期间请专注于防晒和保湿。" }
+          ],
+          "cta": {
+            "title": "黄褐斑/色素 免费咨询",
+            "description": "我们将根据您的肤质提供定制色素治疗方案。通过专家咨询开始最佳治疗。"
+          }
+        }
       },
       "vascular": {
         "name": "血管治疗",
         "fullName": "Vascular Treatment",
         "tagline": "红血丝、毛细血管、痘印",
-        "description": "选择性治疗扩张的血管和发红，打造均匀肤色。"
+        "description": "选择性治疗扩张的血管和发红，打造均匀肤色。",
+        "detail": {
+          "hero": {
+            "subtitle": "双波长同时解决红血丝和血管问题",
+            "description": "Clarity II的1064nm Nd:YAG波长有效改善红血丝、毛细血管扩张、酒糟鼻"
+          },
+          "rednessTypes": {
+            "title": "红血丝类型定制治疗",
+            "subtitle": "根据发红的原因和深度选择最佳波长和能量进行治疗",
+            "recommendedTreatment": "推荐治疗",
+            "types": [
+              { "type": "面部潮红", "description": "情绪或温度变化时脸容易发红的症状", "treatment": "Clarity II 1064nm 低功率" },
+              { "type": "毛细血管扩张", "description": "鼻子、脸颊周围可见细小血管的症状", "treatment": "Clarity II 1064nm 高功率" },
+              { "type": "酒糟鼻 (Rosacea)", "description": "伴有慢性发红、丘疹、脓疱的皮肤病", "treatment": "Clarity II + 皮肤护理联合" },
+              { "type": "血管瘤 / 血管畸形", "description": "先天性或后天性血管病变", "treatment": "Clarity II 集中治疗" }
+            ]
+          },
+          "dualWavelength": {
+            "title": "双波长原理",
+            "subtitle": "755nm和1064nm两种波长选择性治疗从浅层到深层的血管",
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "shallow755": "755nm - 靶向浅层血管",
+            "deep1064": "1064nm - 靶向深层血管",
+            "alexandrite": {
+              "title": "755nm 亚历山大",
+              "points": ["靶向表皮附近的浅层血管", "对毛细血管扩张治疗有效", "血红蛋白吸收率高"]
+            },
+            "ndyag": {
+              "title": "1064nm Nd:YAG",
+              "points": ["可到达真皮层的深层血管", "对慢性红血丝、酒糟鼻治疗有效", "对深色皮肤也安全"]
+            }
+          },
+          "clarity": {
+            "title": "Clarity II 柯美丽",
+            "subtitle": "针对血管治疗优化的双波长高端激光",
+            "badge": "ONLY OPTION",
+            "why": "为什么选择Clarity II？",
+            "whyDesc": "是LIV整形外科拥有的设备中最适合血管治疗的设备。1064nm Nd:YAG波长选择性吸收血管中的血红蛋白，在不损伤周围组织的情况下只治疗血管。",
+            "recommendedSessions": "3-8次 (视症状而定)"
+          },
+          "protocol": {
+            "title": "症状推荐方案",
+            "mild": { "level": "轻度", "description": "轻微红血丝、初期毛细血管", "sessions": "3-5次", "interval": "3-4周间隔", "treatment": "Clarity II 1064nm" },
+            "moderate": { "level": "中度", "description": "慢性红血丝、扩张的毛细血管", "sessions": "5-8次", "interval": "3-4周间隔", "treatment": "Clarity II 1064nm" },
+            "severe": { "level": "重度", "description": "酒糟鼻、严重血管扩张", "sessions": "8-10次以上", "interval": "2-3周间隔", "treatment": "Clarity II 1064nm" }
+          },
+          "idealFor": [
+            "情绪或温度变化时脸容易发红的人",
+            "鼻子、脸颊周围可见细小血管的人",
+            "因慢性红血丝化妆不服帖的人",
+            "被诊断为酒糟鼻的人",
+            "激光治疗后红血丝持续较久的人",
+            "因面部潮红影响社交的人"
+          ],
+          "faq": [
+            { "q": "红血丝治疗后马上见效吗？", "a": "治疗后可能暂时看起来更红。这是正常反应，2-3天内会消退。实际效果会在3-4周后逐渐显现，随着重复治疗会逐步改善。" },
+            { "q": "红血丝能完全消除吗？", "a": "取决于发红的原因和严重程度。大多数情况下可期待50-80%的改善，目标是大幅缓解症状而非完全消除。通过维护治疗可以保持效果。" },
+            { "q": "酒糟鼻也能用激光治疗吗？", "a": "酒糟鼻的血管扩张症状可以用激光有效治疗。但酒糟鼻是复杂的皮肤病，激光治疗配合皮肤护理、药物治疗效果更好。" },
+            { "q": "治疗后有什么注意事项？", "a": "治疗后2-3天内避免桑拿、饮酒、剧烈运动。做好防晒，避免使用刺激性化妆品。治疗部位暂时发红或肿胀是正常的。" }
+          ],
+          "cta": {
+            "title": "红血丝/血管 免费咨询",
+            "description": "我们将根据您的红血丝类型提供定制治疗方案。通过专家咨询恢复健康透亮的肌肤。"
+          }
+        }
       },
       "skintone": {
         "name": "肤质改善",
@@ -1481,7 +1717,136 @@
         "name": "纹身去除",
         "fullName": "Tattoo Removal",
         "tagline": "安全去除纹身",
-        "description": "皮秒激光将纹身色素分解成微小颗粒，彻底清除。"
+        "description": "皮秒激光将纹身色素分解成微小颗粒，彻底清除。",
+        "detail": {
+          "breadcrumb": "纹身去除",
+          "hero": {
+            "title": "纹身去除",
+            "subtitle": "Tattoo Removal with Lucas",
+            "description": "皮秒技术无疤痕干净地有效去除所有颜色的纹身"
+          },
+          "picoTech": {
+            "badge": "皮秒技术",
+            "title": "为什么选择皮秒激光？",
+            "description1": "传统纳秒(10⁻⁹秒)激光通过热作用(Photothermal)分解墨水。皮秒(10⁻¹²秒)激光以快1000倍的脉冲产生光声作用(Photoacoustic)。",
+            "description2": "这种冲击波将墨水颗粒粉碎到微尘级别，使我们身体的免疫系统能够轻松清除。",
+            "benefits": [
+              { "title": "更少的治疗次数", "desc": "微粒粉碎实现高效清除" },
+              { "title": "更少的热损伤", "desc": "短脉冲保护周围组织" },
+              { "title": "更少的副作用", "desc": "最大限度降低疤痕、色素变化风险" }
+            ],
+            "illustration": {
+              "title": "墨水颗粒粉碎机制",
+              "nanosecond": "纳秒 (10⁻⁹秒)",
+              "nanosecondDevice": "传统Q-Switch激光",
+              "picosecond": "皮秒 (10⁻¹²秒)",
+              "picosecondDevice": "Lucas激光",
+              "before": "Before",
+              "after": "After",
+              "photothermal": "热作用 (Photothermal)",
+              "photothermalResult": "大颗粒 → 中颗粒",
+              "photoacoustic": "光声作用 (Photoacoustic)",
+              "photoacousticResult": "大颗粒 → 微小颗粒 ✓"
+            }
+          },
+          "colorWavelength": {
+            "badge": "多波长系统",
+            "title": "靶向所有颜色",
+            "subtitle": "Lucas皮秒激光通过多波长有效分解各种颜色的墨水",
+            "illustrationTitle": "墨水颜色最佳波长",
+            "colors": {
+              "black": { "name": "黑色", "wavelength": "1064nm", "difficulty": "最容易" },
+              "red": { "name": "红色", "wavelength": "532nm", "difficulty": "比较容易" },
+              "blue": { "name": "蓝色", "wavelength": "755nm", "difficulty": "较难" },
+              "green": { "name": "绿色", "wavelength": "755nm", "difficulty": "最难" }
+            },
+            "lucasNote": "Lucas：多波长可靶向所有颜色",
+            "wavelengths": [
+              { "wavelength": "1064nm", "colors": "黑色、深蓝色、棕色", "note": "最深穿透，大多数纹身" },
+              { "wavelength": "755nm", "colors": "蓝色、绿色", "note": "中等深度，特殊颜色靶向" },
+              { "wavelength": "532nm", "colors": "红色、橙色、黄色", "note": "表皮层，浅色专用" }
+            ]
+          },
+          "tattooTypes": {
+            "badge": "纹身类型指南",
+            "title": "您想去除什么样的纹身？",
+            "subtitle": "根据纹身的类型和特性，治疗次数和难度会有所不同",
+            "estimatedSessions": "预计次数",
+            "difficulty": {
+              "easy": "比较容易",
+              "medium": "中等",
+              "hard": "较难"
+            },
+            "types": [
+              { "type": "业余纹身", "description": "非专业人士做的纹身。墨水较浅，去除相对容易。", "sessions": "3-5次", "notes": "多为墨汁、笔墨等单色纹身" },
+              { "type": "专业纹身（黑白）", "description": "专业纹身师做的黑白纹身。墨水深且均匀。", "sessions": "6-10次", "notes": "黑色墨水对激光反应最好" },
+              { "type": "专业纹身（彩色）", "description": "使用多种颜色的彩色纹身。不同颜色需要不同波长。", "sessions": "8-15次以上", "notes": "绿色、蓝色需要更多次数" },
+              { "type": "半永久化妆", "description": "眉毛、眼线、唇部等半永久化妆。比一般纹身做得较浅。", "sessions": "3-6次", "notes": "眼部治疗使用特殊防护设备" },
+              { "type": "外伤性纹身", "description": "事故造成的异物沉积。沥青、石墨等嵌入皮肤的情况。", "sessions": "4-8次", "notes": "根据深度和范围而定" },
+              { "type": "遮盖纹身", "description": "在原有纹身上重新做的纹身。墨水层较厚，去除较难。", "sessions": "10-20次以上", "notes": "分阶段去除后可做新纹身" }
+            ]
+          },
+          "process": {
+            "badge": "治疗流程",
+            "title": "纹身去除流程",
+            "steps": [
+              { "step": 1, "title": "咨询 & 评估", "description": "评估纹身大小、颜色、深度、肤质，告知预计治疗次数和费用。", "duration": "约30分钟" },
+              { "step": 2, "title": "皮秒激光治疗", "description": "用Lucas皮秒激光将墨水颗粒微细粉碎。治疗时间因大小而异。", "duration": "15-60分钟" },
+              { "step": 3, "title": "恢复期", "description": "皮肤自然排出粉碎的墨水。可能出现结痂、轻微肿胀。", "duration": "2-4周" },
+              { "step": 4, "title": "下次治疗", "description": "间隔6-8周重复治疗。每次治疗都能看到纹身变淡。", "duration": "间隔6-8周" }
+            ]
+          },
+          "lucas": {
+            "title": "Lucas",
+            "subtitle": "皮秒纹身去除的新标准",
+            "specs": {
+              "pulseDuration": { "label": "脉冲持续时间", "value": "450皮秒" },
+              "wavelength": { "label": "波长", "value": "532 / 755 / 1064nm" },
+              "repetitionRate": { "label": "重复率", "value": "最高10Hz" },
+              "energy": { "label": "能量", "value": "最高1.8J" }
+            },
+            "strengths": {
+              "title": "Lucas的优势",
+              "items": [
+                "多波长应对所有颜色",
+                "450ps超短脉冲最小化热损伤",
+                "点阵镜头也可治疗疤痕"
+              ]
+            }
+          },
+          "precautions": {
+            "before": {
+              "title": "治疗前",
+              "items": [
+                "治疗前2周避免过度日晒",
+                "治疗部位避免使用刺激性产品",
+                "如有皮肤状况（炎症、伤口）请提前告知",
+                "告知正在服用的药物（光敏性药物等）"
+              ]
+            },
+            "after": {
+              "title": "治疗后",
+              "items": [
+                "按指示涂抹处方药膏",
+                "绝对不要人为去除结痂",
+                "必须使用防晒霜（SPF 30以上）",
+                "1周内避免桑拿、剧烈运动"
+              ]
+            }
+          },
+          "faq": [
+            { "q": "纹身能完全去除吗？", "a": "大多数纹身可以去除90%以上。能否完全去除取决于墨水颜色、深度、纹身年龄、肤质等因素。黑色墨水最容易去除，绿色和蓝色可能需要更多次数。咨询时会给出准确的预估。" },
+            { "q": "纹身去除有多痛？", "a": "疼痛程度从"橡皮筋弹的感觉"到"刺痛感"因人而异。Lucas皮秒激光的脉冲时间比传统纳秒激光短1000倍，热量积累少，疼痛也相应减轻。必要时涂抹麻醉膏来最小化疼痛。" },
+            { "q": "治疗后会留疤吗？", "a": "皮秒激光最小化热损伤，疤痕风险非常低。遵循适当的能量设置和治疗间隔，大多数情况下可以无疤痕恢复。遵循治疗后护理指南（防晒、不剥结痂等），可期待干净的皮肤。" },
+            { "q": "旧纹身和新纹身，哪个更容易去除？", "a": "通常旧纹身更容易去除。随着时间推移，我们身体的免疫系统会自然清除部分墨水颗粒。但新纹身也可以用皮秒激光有效去除，而且墨水清晰残留，激光靶向更容易也是优点。" },
+            { "q": "所有颜色的纹身都能去除吗？", "a": "大多数颜色都可以去除。Lucas皮秒激光提供多波长（532nm、755nm、1064nm）来应对各种颜色。" },
+            { "q": "治疗间隔为什么是6-8周？", "a": "激光粉碎的墨水颗粒由我们身体的巨噬细胞吸收，通过淋巴系统排出。这个自然愈合过程需要4-6周，皮肤完全恢复后才能进行下次治疗。间隔太短会增加皮肤损伤和疤痕风险。" }
+          ],
+          "cta": {
+            "title": "新起点的第一步",
+            "description": "不想要的纹身，用皮秒激光干净去除。免费咨询获取准确的治疗方案"
+          }
+        }
       }
     }
   },

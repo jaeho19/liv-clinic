@@ -13,7 +13,21 @@ const toningData = TREATMENTS.laser.toning;
 const ulblancData = TREATMENTS.laser.ulblanc;
 
 // 피코초 vs 나노초 비교 일러스트
-const PicoVsNanoIllustration = () => (
+interface PicoVsNanoProps {
+  labels: {
+    nanosecond: string;
+    picosecond: string;
+    nanosecondUnit: string;
+    picosecondUnit: string;
+    largeParticles: string;
+    slowDischarge: string;
+    fineParticles: string;
+    fastDischarge: string;
+    timesFaster: string;
+  };
+}
+
+const PicoVsNanoIllustration = ({ labels }: PicoVsNanoProps) => (
   <div className="relative w-full max-w-2xl mx-auto">
     <svg viewBox="0 0 600 300" className="w-full h-auto">
       <defs>
@@ -30,23 +44,23 @@ const PicoVsNanoIllustration = () => (
       {/* 나노초 (왼쪽) */}
       <g>
         <rect x="30" y="40" width="240" height="220" rx="15" fill="#F3F4F6" stroke="#E5E7EB" strokeWidth="2" />
-        <text x="150" y="75" textAnchor="middle" fill="#6B7280" fontSize="14" fontWeight="600">나노초 레이저</text>
-        <text x="150" y="95" textAnchor="middle" fill="#9CA3AF" fontSize="11">10억분의 1초 (10⁻⁹)</text>
+        <text x="150" y="75" textAnchor="middle" fill="#6B7280" fontSize="14" fontWeight="600">{labels.nanosecond}</text>
+        <text x="150" y="95" textAnchor="middle" fill="#9CA3AF" fontSize="11">{labels.nanosecondUnit}</text>
 
         {/* 큰 색소 입자들 */}
         <circle cx="100" cy="160" r="20" fill="#92400E" />
         <circle cx="150" cy="150" r="18" fill="#78350F" />
         <circle cx="200" cy="165" r="22" fill="#92400E" />
 
-        <text x="150" y="220" textAnchor="middle" fill="#6B7280" fontSize="10">색소 입자가 크게 분해</text>
-        <text x="150" y="240" textAnchor="middle" fill="#9CA3AF" fontSize="9">배출 속도 느림</text>
+        <text x="150" y="220" textAnchor="middle" fill="#6B7280" fontSize="10">{labels.largeParticles}</text>
+        <text x="150" y="240" textAnchor="middle" fill="#9CA3AF" fontSize="9">{labels.slowDischarge}</text>
       </g>
 
       {/* 피코초 (오른쪽) */}
       <g>
         <rect x="330" y="40" width="240" height="220" rx="15" fill="#F5F3FF" stroke="#8B5CF6" strokeWidth="2" />
-        <text x="450" y="75" textAnchor="middle" fill="#7C3AED" fontSize="14" fontWeight="600">피코초 레이저</text>
-        <text x="450" y="95" textAnchor="middle" fill="#A78BFA" fontSize="11">1조분의 1초 (10⁻¹²)</text>
+        <text x="450" y="75" textAnchor="middle" fill="#7C3AED" fontSize="14" fontWeight="600">{labels.picosecond}</text>
+        <text x="450" y="95" textAnchor="middle" fill="#A78BFA" fontSize="11">{labels.picosecondUnit}</text>
 
         {/* 미세하게 분해된 색소 입자들 */}
         {[...Array(25)].map((_, i) => (
@@ -62,8 +76,8 @@ const PicoVsNanoIllustration = () => (
           />
         ))}
 
-        <text x="450" y="220" textAnchor="middle" fill="#7C3AED" fontSize="10">색소 입자가 미세하게 분해</text>
-        <text x="450" y="240" textAnchor="middle" fill="#A78BFA" fontSize="9">빠른 림프 배출</text>
+        <text x="450" y="220" textAnchor="middle" fill="#7C3AED" fontSize="10">{labels.fineParticles}</text>
+        <text x="450" y="240" textAnchor="middle" fill="#A78BFA" fontSize="9">{labels.fastDischarge}</text>
       </g>
 
       {/* 중앙 화살표 */}
@@ -73,74 +87,64 @@ const PicoVsNanoIllustration = () => (
         transition={{ delay: 1 }}
       >
         <path d="M280 150 L320 150" stroke="#8B5CF6" strokeWidth="3" markerEnd="url(#arrowhead)" />
-        <text x="300" y="130" textAnchor="middle" fill="#8B5CF6" fontSize="10" fontWeight="600">1000배</text>
-        <text x="300" y="145" textAnchor="middle" fill="#8B5CF6" fontSize="10" fontWeight="600">빠름</text>
+        <text x="300" y="140" textAnchor="middle" fill="#8B5CF6" fontSize="10" fontWeight="600">{labels.timesFaster}</text>
       </motion.g>
     </svg>
   </div>
 );
 
 // 3단계 치료 시스템 일러스트
-const ThreeStageSystemIllustration = () => (
-  <div className="relative w-full max-w-4xl mx-auto">
-    <div className="grid md:grid-cols-3 gap-6">
-      {[
-        {
-          stage: '1단계',
-          title: '집중 치료',
-          equipment: '루카스 피코',
-          description: '피코세컨드 펄스로 깊은 색소 집중 분해',
-          color: '#8B5CF6',
-          icon: '⚡',
-        },
-        {
-          stage: '2단계',
-          title: '정밀 타겟',
-          equipment: '클래리티 II 755nm',
-          description: '알렉산드라이트 파장으로 얕은 색소 정밀 치료',
-          color: '#10B981',
-          icon: '🎯',
-        },
-        {
-          stage: '3단계',
-          title: '유지 관리',
-          equipment: '토닝 + 울블랑',
-          description: '저자극 반복 시술로 효과 유지 및 재발 방지',
-          color: '#F59E0B',
-          icon: '🔄',
-        },
-      ].map((stage, index) => (
-        <motion.div
-          key={stage.stage}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: index * 0.2 }}
-          className="relative p-6 bg-white rounded-2xl shadow-lg border-2"
-          style={{ borderColor: stage.color }}
-        >
-          {/* 연결선 */}
-          {index < 2 && (
-            <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5" style={{ backgroundColor: stage.color }} />
-          )}
+interface StageData {
+  stage: string;
+  title: string;
+  equipment: string;
+  description: string;
+}
 
-          <div
-            className="w-12 h-12 rounded-full flex items-center justify-center text-2xl mb-4"
-            style={{ backgroundColor: `${stage.color}20` }}
+interface ThreeStageProps {
+  stages: StageData[];
+}
+
+const ThreeStageSystemIllustration = ({ stages }: ThreeStageProps) => {
+  const colors = ['#8B5CF6', '#10B981', '#F59E0B'];
+  const icons = ['⚡', '🎯', '🔄'];
+
+  return (
+    <div className="relative w-full max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-6">
+        {stages.map((stage, index) => (
+          <motion.div
+            key={stage.stage}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.2 }}
+            className="relative p-6 bg-white rounded-2xl shadow-lg border-2"
+            style={{ borderColor: colors[index] }}
           >
-            {stage.icon}
-          </div>
-          <div className="text-sm font-medium mb-1" style={{ color: stage.color }}>
-            {stage.stage}
-          </div>
-          <h3 className="text-xl font-bold text-gray-900 mb-2">{stage.title}</h3>
-          <div className="text-sm font-medium text-gray-700 mb-2">{stage.equipment}</div>
-          <p className="text-sm text-gray-500">{stage.description}</p>
-        </motion.div>
-      ))}
+            {/* 연결선 */}
+            {index < 2 && (
+              <div className="hidden md:block absolute top-1/2 -right-3 w-6 h-0.5" style={{ backgroundColor: colors[index] }} />
+            )}
+
+            <div
+              className="w-12 h-12 rounded-full flex items-center justify-center text-2xl mb-4"
+              style={{ backgroundColor: `${colors[index]}20` }}
+            >
+              {icons[index]}
+            </div>
+            <div className="text-sm font-medium mb-1" style={{ color: colors[index] }}>
+              {stage.stage}
+            </div>
+            <h3 className="text-xl font-bold text-gray-900 mb-2">{stage.title}</h3>
+            <div className="text-sm font-medium text-gray-700 mb-2">{stage.equipment}</div>
+            <p className="text-sm text-gray-500">{stage.description}</p>
+          </motion.div>
+        ))}
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // 장비 카드 컴포넌트
 interface EquipmentData {
@@ -235,6 +239,93 @@ export default function PigmentationDetail() {
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
+  // 번역된 데이터 가져오기
+  const detail = {
+    hero: {
+      subtitle: t('laser.pigmentation.detail.hero.subtitle'),
+      description: t('laser.pigmentation.detail.hero.description'),
+    },
+    threeStageSystem: {
+      title: t('laser.pigmentation.detail.threeStageSystem.title'),
+      subtitle: t('laser.pigmentation.detail.threeStageSystem.subtitle'),
+      stages: [0, 1, 2].map(i => ({
+        stage: t(`laser.pigmentation.detail.threeStageSystem.stages.${i}.stage`),
+        title: t(`laser.pigmentation.detail.threeStageSystem.stages.${i}.title`),
+        equipment: t(`laser.pigmentation.detail.threeStageSystem.stages.${i}.equipment`),
+        description: t(`laser.pigmentation.detail.threeStageSystem.stages.${i}.description`),
+      })),
+    },
+    picoVsNano: {
+      title: t('laser.pigmentation.detail.picoVsNano.title'),
+      subtitle: t('laser.pigmentation.detail.picoVsNano.subtitle'),
+      nanosecond: t('laser.pigmentation.detail.picoVsNano.nanosecond'),
+      picosecond: t('laser.pigmentation.detail.picoVsNano.picosecond'),
+      nanosecondUnit: t('laser.pigmentation.detail.picoVsNano.nanosecondUnit'),
+      picosecondUnit: t('laser.pigmentation.detail.picoVsNano.picosecondUnit'),
+      largeParticles: t('laser.pigmentation.detail.picoVsNano.largeParticles'),
+      slowDischarge: t('laser.pigmentation.detail.picoVsNano.slowDischarge'),
+      fineParticles: t('laser.pigmentation.detail.picoVsNano.fineParticles'),
+      fastDischarge: t('laser.pigmentation.detail.picoVsNano.fastDischarge'),
+      timesFaster: t('laser.pigmentation.detail.picoVsNano.timesFaster'),
+      comparison: {
+        item: t('laser.pigmentation.detail.picoVsNano.comparison.item'),
+        pulseSpeed: t('laser.pigmentation.detail.picoVsNano.comparison.pulseSpeed'),
+        particleSize: t('laser.pigmentation.detail.picoVsNano.comparison.particleSize'),
+        tissueDamage: t('laser.pigmentation.detail.picoVsNano.comparison.tissueDamage'),
+        heatDamage: t('laser.pigmentation.detail.picoVsNano.comparison.heatDamage'),
+        downtime: t('laser.pigmentation.detail.picoVsNano.comparison.downtime'),
+        sessions: t('laser.pigmentation.detail.picoVsNano.comparison.sessions'),
+        relativeLarge: t('laser.pigmentation.detail.picoVsNano.comparison.relativeLarge'),
+        fine: t('laser.pigmentation.detail.picoVsNano.comparison.fine'),
+        exists: t('laser.pigmentation.detail.picoVsNano.comparison.exists'),
+        minimal: t('laser.pigmentation.detail.picoVsNano.comparison.minimal'),
+        almostNone: t('laser.pigmentation.detail.picoVsNano.comparison.almostNone'),
+        relativeLong: t('laser.pigmentation.detail.picoVsNano.comparison.relativeLong'),
+        short: t('laser.pigmentation.detail.picoVsNano.comparison.short'),
+        many: t('laser.pigmentation.detail.picoVsNano.comparison.many'),
+        few: t('laser.pigmentation.detail.picoVsNano.comparison.few'),
+      },
+    },
+    equipment: {
+      title: t('laser.pigmentation.detail.equipment.title'),
+      subtitle: t('laser.pigmentation.detail.equipment.subtitle'),
+      featured: t('laser.pigmentation.detail.equipment.featured'),
+    },
+    protocol: {
+      title: t('laser.pigmentation.detail.protocol.title'),
+      mild: {
+        level: t('laser.pigmentation.detail.protocol.mild.level'),
+        description: t('laser.pigmentation.detail.protocol.mild.description'),
+        treatment: t('laser.pigmentation.detail.protocol.mild.treatment'),
+        sessions: t('laser.pigmentation.detail.protocol.mild.sessions'),
+        interval: t('laser.pigmentation.detail.protocol.mild.interval'),
+      },
+      moderate: {
+        level: t('laser.pigmentation.detail.protocol.moderate.level'),
+        description: t('laser.pigmentation.detail.protocol.moderate.description'),
+        treatment: t('laser.pigmentation.detail.protocol.moderate.treatment'),
+        sessions: t('laser.pigmentation.detail.protocol.moderate.sessions'),
+        interval: t('laser.pigmentation.detail.protocol.moderate.interval'),
+      },
+      severe: {
+        level: t('laser.pigmentation.detail.protocol.severe.level'),
+        description: t('laser.pigmentation.detail.protocol.severe.description'),
+        treatment: t('laser.pigmentation.detail.protocol.severe.treatment'),
+        sessions: t('laser.pigmentation.detail.protocol.severe.sessions'),
+        interval: t('laser.pigmentation.detail.protocol.severe.interval'),
+      },
+    },
+    idealFor: [0, 1, 2, 3, 4, 5].map(i => t(`laser.pigmentation.detail.idealFor.${i}`)),
+    faq: [0, 1, 2, 3].map(i => ({
+      q: t(`laser.pigmentation.detail.faq.${i}.q`),
+      a: t(`laser.pigmentation.detail.faq.${i}.a`),
+    })),
+    cta: {
+      title: t('laser.pigmentation.detail.cta.title'),
+      description: t('laser.pigmentation.detail.cta.description'),
+    },
+  };
+
   // FAQ 토글 시 스크롤
   const handleFaqToggle = useCallback((index: number, e: React.MouseEvent<HTMLElement>) => {
     const details = e.currentTarget.closest('details') as HTMLDetailsElement;
@@ -273,7 +364,7 @@ export default function PigmentationDetail() {
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                 </svg>
-                레이저 센터
+                {t('common.laserCenter')}
               </Link>
 
               <span
@@ -292,7 +383,7 @@ export default function PigmentationDetail() {
             >
               {category.name}
               <span className="block text-2xl md:text-3xl mt-4 font-normal" style={{ color: category.color }}>
-                난치성 기미도 리브의 3단계 시스템으로
+                {detail.hero.subtitle}
               </span>
             </motion.h1>
 
@@ -302,8 +393,7 @@ export default function PigmentationDetail() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto"
             >
-              피코세컨드 레이저부터 저자극 토닝까지,
-              4가지 프리미엄 장비로 완성하는 맞춤 색소 치료
+              {detail.hero.description}
             </motion.p>
 
             <motion.div
@@ -317,14 +407,14 @@ export default function PigmentationDetail() {
                 className="inline-flex items-center px-8 py-4 text-white font-medium rounded-full transition-colors"
                 style={{ backgroundColor: category.color }}
               >
-                무료 상담 예약
+                {t('common.freeConsultation')}
               </Link>
               <a
                 href="tel:02-797-2773"
                 className="inline-flex items-center px-8 py-4 border-2 font-medium rounded-full transition-colors"
                 style={{ borderColor: category.color, color: category.color }}
               >
-                전화 상담 02-797-2773
+                {t('common.phoneConsultation')} 02-797-2773
               </a>
             </motion.div>
           </div>
@@ -341,14 +431,14 @@ export default function PigmentationDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              리브의 <span style={{ color: category.color }}>3단계 색소 치료</span> 시스템
+              {detail.threeStageSystem.title}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              경증부터 난치성 기미까지, 단계별 맞춤 치료로 효과적인 색소 개선
+              {detail.threeStageSystem.subtitle}
             </p>
           </motion.div>
 
-          <ThreeStageSystemIllustration />
+          <ThreeStageSystemIllustration stages={detail.threeStageSystem.stages} />
         </div>
       </section>
 
@@ -362,14 +452,14 @@ export default function PigmentationDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              왜 <span className="text-purple-600">피코세컨드</span>인가?
+              {detail.picoVsNano.title}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              나노초 레이저 대비 1000배 빠른 펄스로 색소를 더 미세하게 분해
+              {detail.picoVsNano.subtitle}
             </p>
           </motion.div>
 
-          <PicoVsNanoIllustration />
+          <PicoVsNanoIllustration labels={detail.picoVsNano} />
 
           {/* 비교 테이블 */}
           <div className="max-w-3xl mx-auto mt-12">
@@ -377,19 +467,19 @@ export default function PigmentationDetail() {
               <table className="w-full">
                 <thead>
                   <tr className="bg-gray-50">
-                    <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">비교 항목</th>
-                    <th className="px-6 py-4 text-center text-sm font-medium text-gray-400">나노초</th>
-                    <th className="px-6 py-4 text-center text-sm font-medium text-purple-600">피코초</th>
+                    <th className="px-6 py-4 text-left text-sm font-medium text-gray-500">{detail.picoVsNano.comparison.item}</th>
+                    <th className="px-6 py-4 text-center text-sm font-medium text-gray-400">{detail.picoVsNano.nanosecond}</th>
+                    <th className="px-6 py-4 text-center text-sm font-medium text-purple-600">{detail.picoVsNano.picosecond}</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100">
                   {[
-                    { item: '펄스 속도', nano: '10억분의 1초', pico: '1조분의 1초' },
-                    { item: '색소 분해 크기', nano: '상대적 큼', pico: '미세함' },
-                    { item: '주변 조직 손상', nano: '있음', pico: '최소' },
-                    { item: '열 손상', nano: '있음', pico: '거의 없음' },
-                    { item: '다운타임', nano: '상대적 김', pico: '짧음' },
-                    { item: '시술 횟수', nano: '많음', pico: '적음' },
+                    { item: detail.picoVsNano.comparison.pulseSpeed, nano: detail.picoVsNano.nanosecondUnit, pico: detail.picoVsNano.picosecondUnit },
+                    { item: detail.picoVsNano.comparison.particleSize, nano: detail.picoVsNano.comparison.relativeLarge, pico: detail.picoVsNano.comparison.fine },
+                    { item: detail.picoVsNano.comparison.tissueDamage, nano: detail.picoVsNano.comparison.exists, pico: detail.picoVsNano.comparison.minimal },
+                    { item: detail.picoVsNano.comparison.heatDamage, nano: detail.picoVsNano.comparison.exists, pico: detail.picoVsNano.comparison.almostNone },
+                    { item: detail.picoVsNano.comparison.downtime, nano: detail.picoVsNano.comparison.relativeLong, pico: detail.picoVsNano.comparison.short },
+                    { item: detail.picoVsNano.comparison.sessions, nano: detail.picoVsNano.comparison.many, pico: detail.picoVsNano.comparison.few },
                   ].map((row, i) => (
                     <tr key={i}>
                       <td className="px-6 py-4 text-sm font-medium text-gray-900">{row.item}</td>
@@ -414,10 +504,10 @@ export default function PigmentationDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              색소 치료 <span style={{ color: category.color }}>추천 장비</span>
+              {detail.equipment.title}
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              리브성형외과가 보유한 4가지 프리미엄 레이저로 최적의 색소 치료
+              {detail.equipment.subtitle}
             </p>
           </motion.div>
 
@@ -462,36 +552,15 @@ export default function PigmentationDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              증상별 <span style={{ color: category.color }}>추천 프로토콜</span>
+              {detail.protocol.title}
             </h2>
           </motion.div>
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
             {[
-              {
-                level: '경증',
-                description: '가벼운 기미, 잡티',
-                treatment: '레이저 토닝',
-                sessions: '5-10회',
-                interval: '2주 간격',
-                color: '#10B981',
-              },
-              {
-                level: '중등도',
-                description: '중간 깊이 색소',
-                treatment: '클래리티 II 755nm',
-                sessions: '3-5회',
-                interval: '3-4주 간격',
-                color: '#F59E0B',
-              },
-              {
-                level: '중증 / 난치성',
-                description: '깊은 기미, 난치성',
-                treatment: '루카스 피코 + 토닝',
-                sessions: '5-10회',
-                interval: '2-4주 간격',
-                color: '#8B5CF6',
-              },
+              { ...detail.protocol.mild, color: '#10B981' },
+              { ...detail.protocol.moderate, color: '#F59E0B' },
+              { ...detail.protocol.severe, color: '#8B5CF6' },
             ].map((protocol, index) => (
               <motion.div
                 key={protocol.level}
@@ -511,16 +580,16 @@ export default function PigmentationDetail() {
                 <p className="text-gray-600 text-sm mb-4">{protocol.description}</p>
                 <div className="space-y-3">
                   <div>
-                    <div className="text-xs text-gray-500">추천 치료</div>
+                    <div className="text-xs text-gray-500">{t('common.recommendedTreatment')}</div>
                     <div className="text-lg font-semibold text-gray-900">{protocol.treatment}</div>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
                     <div>
-                      <div className="text-xs text-gray-500">시술 횟수</div>
+                      <div className="text-xs text-gray-500">{t('common.recommendedSessions')}</div>
                       <div className="text-sm font-medium text-gray-900">{protocol.sessions}</div>
                     </div>
                     <div>
-                      <div className="text-xs text-gray-500">시술 간격</div>
+                      <div className="text-xs text-gray-500">{t('common.sessionInterval')}</div>
                       <div className="text-sm font-medium text-gray-900">{protocol.interval}</div>
                     </div>
                   </div>
@@ -546,14 +615,7 @@ export default function PigmentationDetail() {
           </motion.div>
 
           <div className="max-w-3xl mx-auto grid md:grid-cols-2 gap-6">
-            {[
-              '기미가 점점 짙어지고 넓어지는 분',
-              '여러 번 토닝을 받았지만 효과가 없는 분',
-              '잡티, 주근깨가 많아 고민인 분',
-              '검버섯이 생기기 시작한 분',
-              '피부톤이 칙칙하고 균일하지 않은 분',
-              '다운타임 없이 꾸준히 관리하고 싶은 분',
-            ].map((item, index) => (
+            {detail.idealFor.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -587,29 +649,12 @@ export default function PigmentationDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              자주 묻는 <span style={{ color: category.color }}>질문</span>
+              {t('common.faq')}
             </h2>
           </motion.div>
 
           <div className="max-w-3xl mx-auto space-y-4">
-            {[
-              {
-                q: '기미는 완치가 가능한가요?',
-                a: '기미는 완치보다는 "관리"의 개념으로 접근해야 합니다. 집중 치료로 크게 개선한 후, 정기적인 유지 관리와 자외선 차단으로 재발을 최소화합니다. 리브의 3단계 시스템은 치료와 유지 관리를 모두 포함합니다.'
-              },
-              {
-                q: '피코 레이저와 토닝 중 뭐가 좋나요?',
-                a: '목적에 따라 다릅니다. 난치성 기미나 깊은 색소는 피코 레이저로 집중 치료하고, 경미한 색소나 유지 관리는 토닝이 적합합니다. 많은 경우 피코 치료 후 토닝으로 유지하는 복합 프로토콜이 효과적입니다.'
-              },
-              {
-                q: '레이저 후 색소가 더 진해지기도 하나요?',
-                a: '일시적 색소 침착(PIH)이 발생할 수 있습니다. 이는 2-4주 내 자연스럽게 개선되며, 자외선 차단을 철저히 하면 예방할 수 있습니다. 리브에서는 시술 후 관리 안내를 철저히 해드립니다.'
-              },
-              {
-                q: '임신 중에도 색소 레이저가 가능한가요?',
-                a: '임신 중이나 수유 중에는 레이저 시술을 권장하지 않습니다. 출산 및 수유 완료 후 시술을 권장합니다. 임신 중에는 자외선 차단과 보습에 집중해주세요.'
-              },
-            ].map((faq, index) => (
+            {detail.faq.map((faq, index) => (
               <motion.details
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -645,11 +690,10 @@ export default function PigmentationDetail() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
-              기미/색소 무료 상담
+              {detail.cta.title}
             </h2>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              피부 상태에 맞는 맞춤 색소 치료 계획을 상담해드립니다.
-              전문의 상담으로 최적의 치료를 시작하세요.
+              {detail.cta.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
@@ -657,13 +701,13 @@ export default function PigmentationDetail() {
                 className="inline-flex items-center px-8 py-4 bg-white font-medium rounded-full hover:bg-gray-100 transition-colors"
                 style={{ color: category.color }}
               >
-                온라인 상담 예약
+                {t('common.onlineConsultation')}
               </Link>
               <a
                 href="tel:02-797-2773"
                 className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-medium rounded-full hover:bg-white/10 transition-colors"
               >
-                전화 상담 02-797-2773
+                {t('common.phoneConsultation')} 02-797-2773
               </a>
             </div>
           </motion.div>
@@ -673,7 +717,7 @@ export default function PigmentationDetail() {
       {/* 다른 레이저 카테고리 */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h3 className="text-xl font-medium text-gray-900 text-center mb-8">다른 레이저 시술 보기</h3>
+          <h3 className="text-xl font-medium text-gray-900 text-center mb-8">{t('common.otherLaserTreatments')}</h3>
           <div className="flex flex-wrap justify-center gap-4">
             {LASER_CATEGORIES.filter(cat => cat.id !== 'pigmentation').map((cat) => (
               <Link

@@ -84,30 +84,35 @@
 - treatments.antiaging.botox.detail
 - treatments.antiaging.filler.detail
 
+### 4. ja.json/zh.json 상세 키 추가 완료 (2024.01.28)
+
+위 ko.json/en.json과 동일한 구조로 일본어/중국어 번역 완료:
+- treatments.laser.pigmentation.detail
+- treatments.laser.vascular.detail
+- treatments.laser.tattoo.detail
+- treatments.antiaging.botox.detail
+- treatments.antiaging.filler.detail
+
+### 5. Detail 컴포넌트 useTranslations 적용 완료 (2024.01.28)
+
+- [x] PigmentationDetail.tsx - useTranslations 적용
+- [x] VascularDetail.tsx - useTranslations 적용
+- [x] TattooRemovalDetail.tsx - useTranslations 적용
+- [x] BotoxDetail.tsx - useTranslations 적용
+- [x] FillerDetail.tsx - useTranslations 적용
+
 ---
 
 ## 남은 작업 (TODO)
 
 ### Priority 3 계속
 
-#### 1. ja.json/zh.json 상세 키 추가
-- [ ] treatments.laser.pigmentation.detail (일본어/중국어)
-- [ ] treatments.laser.vascular.detail (일본어/중국어)
-- [ ] treatments.laser.tattoo.detail (일본어/중국어)
-- [ ] treatments.antiaging.botox.detail (일본어/중국어)
-- [ ] treatments.antiaging.filler.detail (일본어/중국어)
-
-#### 2. Detail 컴포넌트 업데이트 (하드코딩 → 번역 키)
-- [ ] PigmentationDetail.tsx - useTranslations 적용
-- [ ] VascularDetail.tsx - useTranslations 적용
-- [ ] TattooRemovalDetail.tsx - useTranslations 적용
-- [ ] BotoxDetail.tsx - useTranslations 적용
-- [ ] FillerDetail.tsx - useTranslations 적용
+#### 1. 추가 Detail 컴포넌트 검토
 - [ ] AptosDetail.tsx - 번역 키 추가 필요
 - [ ] SkinboosterDetail.tsx - 검토 필요
 - [ ] LaserCenterDetail.tsx - 검토 필요
 
-#### 3. 기타 검토 대상
+#### 2. 기타 검토 대상
 - [ ] UltheraDetail.tsx - 기존 번역 키 활용 상태 확인
 - [ ] ThermageDetail.tsx - 기존 번역 키 활용 상태 확인
 - [ ] DensityDetail.tsx - 기존 번역 키 활용 상태 확인

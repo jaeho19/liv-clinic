@@ -199,28 +199,19 @@ const PremiumVolumeIllustration = () => (
   </div>
 );
 
-// Treatment Areas Data
-const treatmentAreas = [
-  { id: 1, name: '이마', description: '이마 주름 개선' },
-  { id: 2, name: '관자놀이', description: '볼륨 손실 복원' },
-  { id: 3, name: '코', description: '콧대/코끝 성형' },
-  { id: 4, name: '앞광대', description: '광대뼈 볼륨' },
-  { id: 5, name: '팔자', description: '팔자주름 개선' },
-  { id: 6, name: '옆볼', description: '볼 처짐 개선' },
-  { id: 7, name: '턱끝', description: '턱 볼륨 형성' },
-  { id: 8, name: '애교살', description: '눈 밑 볼륨' },
-  { id: 9, name: '입술', description: '입술 볼륨' },
-  { id: 10, name: '눈썹', description: '눈썹 리프트' },
-];
-
 // Premium Filler Types Section
-const PremiumFillerTypesSection = () => (
+interface FillerTypesProps {
+  types: Array<{
+    type: string;
+    areas: string;
+    desc: string;
+    level: number;
+  }>;
+}
+
+const PremiumFillerTypesSection = ({ types }: FillerTypesProps) => (
   <div className="grid md:grid-cols-3 gap-8">
-    {[
-      { type: 'Soft', areas: '입술, 눈밑', desc: '자연스러운 촉감', level: 1 },
-      { type: 'Medium', areas: '팔자, 볼', desc: '볼륨 + 지지력', level: 2 },
-      { type: 'Firm', areas: '코, 턱, 이마', desc: '강한 지지력', level: 3 },
-    ].map((filler, i) => (
+    {types.map((filler, i) => (
       <motion.div
         key={i}
         initial={{ opacity: 0, y: 30 }}
@@ -271,6 +262,60 @@ export default function FillerDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+
+  // Fetch all translation keys for this detail page
+  const detail = {
+    hero: {
+      badge: t('antiaging.filler.detail.hero.badge'),
+      title: t('antiaging.filler.detail.hero.title'),
+      description: t('antiaging.filler.detail.hero.description'),
+    },
+    benefits: {
+      title: t('antiaging.filler.detail.benefits.title'),
+    },
+    targetAreas: {
+      title: t('antiaging.filler.detail.targetAreas.title'),
+      subtitle: t('antiaging.filler.detail.targetAreas.subtitle'),
+      areas: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map((i) => ({
+        id: i + 1,
+        name: t(`antiaging.filler.detail.targetAreas.areas.${i}.name`),
+        description: t(`antiaging.filler.detail.targetAreas.areas.${i}.description`),
+      })),
+    },
+    fillerTypes: {
+      title: t('antiaging.filler.detail.fillerTypes.title'),
+      subtitle: t('antiaging.filler.detail.fillerTypes.subtitle'),
+      types: [0, 1, 2].map((i) => ({
+        type: t(`antiaging.filler.detail.fillerTypes.types.${i}.type`),
+        areas: t(`antiaging.filler.detail.fillerTypes.types.${i}.areas`),
+        desc: t(`antiaging.filler.detail.fillerTypes.types.${i}.desc`),
+        level: i + 1,
+      })),
+    },
+    safety: {
+      title: t('antiaging.filler.detail.safety.title'),
+      subtitle: t('antiaging.filler.detail.safety.subtitle'),
+      steps: [0, 1, 2].map((i) => ({
+        step: t(`antiaging.filler.detail.safety.steps.${i}.step`),
+        title: t(`antiaging.filler.detail.safety.steps.${i}.title`),
+        desc: t(`antiaging.filler.detail.safety.steps.${i}.desc`),
+      })),
+    },
+    treatmentInfo: {
+      title: t('antiaging.filler.detail.treatmentInfo.title'),
+      duration: t('antiaging.filler.detail.treatmentInfo.duration'),
+      anesthesia: t('antiaging.filler.detail.treatmentInfo.anesthesia'),
+      recovery: t('antiaging.filler.detail.treatmentInfo.recovery'),
+      results: t('antiaging.filler.detail.treatmentInfo.results'),
+    },
+    faq: {
+      title: t('antiaging.filler.detail.faq.title'),
+    },
+    cta: {
+      title: t('antiaging.filler.detail.cta.title'),
+      description: t('antiaging.filler.detail.cta.description'),
+    },
+  };
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'filler')
@@ -385,7 +430,7 @@ export default function FillerDetail() {
               <div className="w-8 h-px bg-[#A89080]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              필러의 장점
+              {detail.benefits.title}
             </h2>
           </motion.div>
 
@@ -440,12 +485,12 @@ export default function FillerDetail() {
               {t('common.targetAreas')}
             </h2>
             <p className="text-gray-500 max-w-xl mx-auto font-light">
-              얼굴의 다양한 부위에 볼륨을 채우고 윤곽을 정돈합니다
+              {detail.targetAreas.subtitle}
             </p>
           </motion.div>
 
           <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
-            {treatmentAreas.map((area, index) => (
+            {detail.targetAreas.areas.map((area, index) => (
               <motion.div
                 key={area.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -513,15 +558,15 @@ export default function FillerDetail() {
               <div className="w-8 h-px bg-[#A89080]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-4">
-              부위별 맞춤 필러
+              {detail.fillerTypes.title}
             </h2>
             <p className="text-gray-400 max-w-xl mx-auto font-light">
-              시술 부위와 목적에 따라 최적의 필러 경도를 선택합니다
+              {detail.fillerTypes.subtitle}
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
-            <PremiumFillerTypesSection />
+            <PremiumFillerTypesSection types={detail.fillerTypes.types} />
           </div>
         </div>
       </section>
@@ -544,20 +589,16 @@ export default function FillerDetail() {
               <div className="w-8 h-px bg-[#A89080]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-white mb-4">
-              가역적 시술
+              {detail.safety.title}
             </h2>
             <p className="text-white/50 max-w-xl mx-auto font-light">
-              히알루론산 필러는 필요시 녹일 수 있어 안전합니다
+              {detail.safety.subtitle}
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-6">
-              {[
-                { step: '01', title: '필러 주입', desc: '볼륨 형성' },
-                { step: '02', title: '히알루로니다제', desc: '필요시 용해' },
-                { step: '03', title: '원상 복구', desc: '안전하게 제거' },
-              ].map((item, i) => (
+              {detail.safety.steps.map((item, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
@@ -649,16 +690,16 @@ export default function FillerDetail() {
               <div className="w-8 h-px bg-[#A89080]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              시술 정보
+              {detail.treatmentInfo.title}
             </h2>
           </motion.div>
 
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: '시술 시간', value: treatment.duration },
-              { label: '마취', value: treatment.anesthesia },
-              { label: '회복', value: treatment.recovery },
-              { label: '지속 기간', value: treatment.results },
+              { label: detail.treatmentInfo.duration, value: treatment.duration },
+              { label: detail.treatmentInfo.anesthesia, value: treatment.anesthesia },
+              { label: detail.treatmentInfo.recovery, value: treatment.recovery },
+              { label: detail.treatmentInfo.results, value: treatment.results },
             ].map((info, index) => (
               <motion.div
                 key={info.label}
@@ -735,7 +776,7 @@ export default function FillerDetail() {
               <div className="w-8 h-px bg-[#A89080]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              자주 묻는 질문
+              {detail.faq.title}
             </h2>
           </motion.div>
 
@@ -826,17 +867,17 @@ export default function FillerDetail() {
               <div className="w-12 h-px bg-[#A89080]" />
             </div>
             <h2 className="text-4xl lg:text-6xl font-extralight text-white mt-4 mb-8">
-              필러 상담 예약
+              {detail.cta.title}
             </h2>
             <p className="text-white/60 font-light max-w-xl mx-auto mb-12 text-lg leading-relaxed">
-              자연스러운 볼륨과 윤곽, 전문의 상담을 통해 최적의 시술을 안내해 드립니다.
+              {detail.cta.description}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
                 className="group inline-flex items-center px-12 py-5 bg-white text-[#6D5A4D] text-sm tracking-wider hover:bg-gray-100 transition-all duration-500 shadow-xl"
               >
-                <span>온라인 상담 예약</span>
+                <span>{t('common.onlineConsultation')}</span>
                 <svg className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
