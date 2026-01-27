@@ -499,12 +499,12 @@
             "deep": "深层（3.0mm - 4.5mm）",
             "energyDelivery": "精准传递能量",
             "items": {
-              "ds-10-1.5": { "target": "表皮-真皮交界", "applications": ["细纹", "眼周", "唇周", "肤质"] },
-              "ds-10-1.5-n": { "target": "狭窄部位", "applications": ["眼纹", "眼下", "眼睑"] },
-              "ds-7-3.0": { "target": "真皮下层", "applications": ["脸颊", "额头", "颧骨", "下颌线"] },
-              "ds-7-3.0-n": { "target": "狭窄真皮层", "applications": ["眼周皱纹", "唇周", "手背"] },
-              "ds-4-4.5": { "target": "SMAS层", "applications": ["中面部", "下面部", "颈部", "胸前"] },
-              "ds-7-4.5": { "target": "高分辨率SMAS", "applications": ["下颌线", "双下巴", "脸颊下垂"] }
+              "ds-10-1_5": { "target": "表皮-真皮交界", "applications": ["细纹", "眼周", "唇周", "肤质"] },
+              "ds-10-1_5-n": { "target": "狭窄部位", "applications": ["眼纹", "眼下", "眼睑"] },
+              "ds-7-3_0": { "target": "真皮下层", "applications": ["脸颊", "额头", "颧骨", "下颌线"] },
+              "ds-7-3_0-n": { "target": "狭窄真皮层", "applications": ["眼周皱纹", "唇周", "手背"] },
+              "ds-4-4_5": { "target": "SMAS层", "applications": ["中面部", "下面部", "颈部", "胸前"] },
+              "ds-7-4_5": { "target": "高分辨率SMAS", "applications": ["下颌线", "双下巴", "脸颊下垂"] }
             }
           },
           "hero": {
@@ -526,15 +526,15 @@
             "description": "超声刀是美国FDA批准<strong>提升效果的唯一</strong>非侵入式HIFU设备。专利MFU-V（微聚焦超声可视化）技术将能量精准传递至深层SMAS，促进胶原蛋白再生。",
             "depthTargeting": "深度定制精准治疗",
             "depths": {
-              "1.5": {
+              "1_5": {
                 "title": "1.5mm - 表皮/真皮交界",
                 "description": "对细纹、肤质改善有效。适用于眼周、唇周等精细部位"
               },
-              "3.0": {
+              "3_0": {
                 "title": "3.0mm - 真皮下层",
                 "description": "胶原诱导，整体弹性改善。适用于脸颊、额头等较大部位"
               },
-              "4.5": {
+              "4_5": {
                 "title": "4.5mm - SMAS层",
                 "description": "结构性提升效果。适用于下颌线、颈部、中面部等下垂严重的部位"
               }

@@ -501,12 +501,12 @@
             "deep": "심층 (3.0mm - 4.5mm)",
             "energyDelivery": "에 정확하게 에너지를 전달합니다",
             "items": {
-              "ds-10-1.5": { "target": "표피-진피 경계", "applications": ["미세주름", "눈가", "입가", "피부결"] },
-              "ds-10-1.5-n": { "target": "협소한 부위", "applications": ["눈주름", "눈밑", "눈꺼풀"] },
-              "ds-7-3.0": { "target": "진피 하층", "applications": ["볼", "이마", "광대", "턱선"] },
-              "ds-7-3.0-n": { "target": "협소한 진피층", "applications": ["눈가주름", "입가", "손등"] },
-              "ds-4-4.5": { "target": "SMAS층", "applications": ["중안면", "하안면", "목", "데콜테"] },
-              "ds-7-4.5": { "target": "고해상도 SMAS", "applications": ["턱선", "이중턱", "볼처짐"] }
+              "ds-10-1_5": { "target": "표피-진피 경계", "applications": ["미세주름", "눈가", "입가", "피부결"] },
+              "ds-10-1_5-n": { "target": "협소한 부위", "applications": ["눈주름", "눈밑", "눈꺼풀"] },
+              "ds-7-3_0": { "target": "진피 하층", "applications": ["볼", "이마", "광대", "턱선"] },
+              "ds-7-3_0-n": { "target": "협소한 진피층", "applications": ["눈가주름", "입가", "손등"] },
+              "ds-4-4_5": { "target": "SMAS층", "applications": ["중안면", "하안면", "목", "데콜테"] },
+              "ds-7-4_5": { "target": "고해상도 SMAS", "applications": ["턱선", "이중턱", "볼처짐"] }
             }
           },
           "hero": {
@@ -528,15 +528,15 @@
             "description": "울쎄라피 프라임은 미국 FDA에서 <strong>리프팅 효과를 승인받은 유일한</strong> 비침습 HIFU 장비입니다. 특허받은 MFU-V(Micro-focused Ultrasound with Visualization) 기술로 피부 깊은 층인 SMAS까지 에너지를 정확하게 전달하여 콜라겐 재생을 촉진합니다.",
             "depthTargeting": "깊이별 맞춤 타겟팅",
             "depths": {
-              "1.5": {
+              "1_5": {
                 "title": "1.5mm - 표피/진피 경계",
                 "description": "미세주름, 피부결 개선에 효과적. 눈가, 입가 등 섬세한 부위에 적용"
               },
-              "3.0": {
+              "3_0": {
                 "title": "3.0mm - 진피 하층",
                 "description": "콜라겐 유도, 전반적 탄력 개선. 볼, 이마 등 넓은 부위에 적용"
               },
-              "4.5": {
+              "4_5": {
                 "title": "4.5mm - SMAS층",
                 "description": "구조적 리프팅 효과. 턱선, 목, 중안면 등 처짐이 심한 부위에 적용"
               }

@@ -430,7 +430,7 @@ interface Transducer {
 
 const TRANSDUCERS: Transducer[] = [
   {
-    id: 'ds-10-1.5',
+    id: 'ds-10-1_5',
     name: 'DS 10-1.5',
     depth: '1.5mm',
     frequency: '10 MHz',
@@ -440,7 +440,7 @@ const TRANSDUCERS: Transducer[] = [
     color: '#E8D5C4',
   },
   {
-    id: 'ds-10-1.5-n',
+    id: 'ds-10-1_5-n',
     name: 'DS 10-1.5N',
     depth: '1.5mm',
     frequency: '10 MHz',
@@ -450,7 +450,7 @@ const TRANSDUCERS: Transducer[] = [
     color: '#E8D5C4',
   },
   {
-    id: 'ds-7-3.0',
+    id: 'ds-7-3_0',
     name: 'DS 7-3.0',
     depth: '3.0mm',
     frequency: '7 MHz',
@@ -460,7 +460,7 @@ const TRANSDUCERS: Transducer[] = [
     color: '#C4A484',
   },
   {
-    id: 'ds-7-3.0-n',
+    id: 'ds-7-3_0-n',
     name: 'DS 7-3.0N',
     depth: '3.0mm',
     frequency: '7 MHz',
@@ -470,7 +470,7 @@ const TRANSDUCERS: Transducer[] = [
     color: '#C4A484',
   },
   {
-    id: 'ds-4-4.5',
+    id: 'ds-4-4_5',
     name: 'DS 4-4.5',
     depth: '4.5mm',
     frequency: '4 MHz',
@@ -480,7 +480,7 @@ const TRANSDUCERS: Transducer[] = [
     color: '#D4AF37',
   },
   {
-    id: 'ds-7-4.5',
+    id: 'ds-7-4_5',
     name: 'DS 7-4.5',
     depth: '4.5mm',
     frequency: '7 MHz',
@@ -713,8 +713,8 @@ export default function UltheraDetail() {
                         <span className="text-primary font-serif font-bold">1.5</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.1\u002e5.title')}</h4>
-                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.1\u002e5.description')}</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.1_5.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.1_5.description')}</p>
                       </div>
                     </div>
                   </Card>
@@ -725,8 +725,8 @@ export default function UltheraDetail() {
                         <span className="text-primary font-serif font-bold">3.0</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.3\u002e0.title')}</h4>
-                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.3\u002e0.description')}</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.3_0.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.3_0.description')}</p>
                       </div>
                     </div>
                   </Card>
@@ -737,8 +737,8 @@ export default function UltheraDetail() {
                         <span className="text-primary font-serif font-bold">4.5</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.4\u002e5.title')}</h4>
-                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.4\u002e5.description')}</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.4_5.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.4_5.description')}</p>
                       </div>
                     </div>
                   </Card>

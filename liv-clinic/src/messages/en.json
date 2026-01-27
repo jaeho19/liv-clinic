@@ -499,12 +499,12 @@
             "deep": "Deep (3.0mm - 4.5mm)",
             "energyDelivery": " delivers energy precisely",
             "items": {
-              "ds-10-1.5": { "target": "Epidermis-Dermis Junction", "applications": ["Fine Lines", "Eye Area", "Mouth Area", "Skin Texture"] },
-              "ds-10-1.5-n": { "target": "Narrow Areas", "applications": ["Eye Wrinkles", "Under Eye", "Eyelids"] },
-              "ds-7-3.0": { "target": "Lower Dermis", "applications": ["Cheeks", "Forehead", "Cheekbones", "Jawline"] },
-              "ds-7-3.0-n": { "target": "Narrow Dermis", "applications": ["Eye Wrinkles", "Mouth Area", "Hands"] },
-              "ds-4-4.5": { "target": "SMAS Layer", "applications": ["Mid-face", "Lower Face", "Neck", "Décolletage"] },
-              "ds-7-4.5": { "target": "High-Resolution SMAS", "applications": ["Jawline", "Double Chin", "Cheek Sagging"] }
+              "ds-10-1_5": { "target": "Epidermis-Dermis Junction", "applications": ["Fine Lines", "Eye Area", "Mouth Area", "Skin Texture"] },
+              "ds-10-1_5-n": { "target": "Narrow Areas", "applications": ["Eye Wrinkles", "Under Eye", "Eyelids"] },
+              "ds-7-3_0": { "target": "Lower Dermis", "applications": ["Cheeks", "Forehead", "Cheekbones", "Jawline"] },
+              "ds-7-3_0-n": { "target": "Narrow Dermis", "applications": ["Eye Wrinkles", "Mouth Area", "Hands"] },
+              "ds-4-4_5": { "target": "SMAS Layer", "applications": ["Mid-face", "Lower Face", "Neck", "Décolletage"] },
+              "ds-7-4_5": { "target": "High-Resolution SMAS", "applications": ["Jawline", "Double Chin", "Cheek Sagging"] }
             }
           },
           "hero": {
@@ -526,15 +526,15 @@
             "description": "Ultherapy Prime is the <strong>only</strong> non-invasive HIFU device with FDA-approved lifting efficacy. Its patented MFU-V (Micro-focused Ultrasound with Visualization) technology precisely delivers energy to the deep SMAS layer to stimulate collagen regeneration.",
             "depthTargeting": "Customized Depth Targeting",
             "depths": {
-              "1.5": {
+              "1_5": {
                 "title": "1.5mm - Epidermis/Dermis Junction",
                 "description": "Effective for fine lines and skin texture. Applied to delicate areas like eye and mouth areas"
               },
-              "3.0": {
+              "3_0": {
                 "title": "3.0mm - Lower Dermis",
                 "description": "Collagen induction and overall elasticity improvement. Applied to larger areas like cheeks and forehead"
               },
-              "4.5": {
+              "4_5": {
                 "title": "4.5mm - SMAS Layer",
                 "description": "Structural lifting effect. Applied to areas with severe sagging like jawline, neck, and mid-face"
               }

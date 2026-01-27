@@ -499,12 +499,12 @@
             "deep": "深層（3.0mm - 4.5mm）",
             "energyDelivery": "に正確にエネルギーを伝達します",
             "items": {
-              "ds-10-1.5": { "target": "表皮-真皮境界", "applications": ["小じわ", "目元", "口元", "肌質"] },
-              "ds-10-1.5-n": { "target": "狭い部位", "applications": ["目元のしわ", "目の下", "まぶた"] },
-              "ds-7-3.0": { "target": "真皮下層", "applications": ["頬", "額", "頬骨", "フェイスライン"] },
-              "ds-7-3.0-n": { "target": "狭い真皮層", "applications": ["目元のしわ", "口元", "手の甲"] },
-              "ds-4-4.5": { "target": "SMAS層", "applications": ["中顔面", "下顔面", "首", "デコルテ"] },
-              "ds-7-4.5": { "target": "高解像度SMAS", "applications": ["フェイスライン", "二重あご", "頬たるみ"] }
+              "ds-10-1_5": { "target": "表皮-真皮境界", "applications": ["小じわ", "目元", "口元", "肌質"] },
+              "ds-10-1_5-n": { "target": "狭い部位", "applications": ["目元のしわ", "目の下", "まぶた"] },
+              "ds-7-3_0": { "target": "真皮下層", "applications": ["頬", "額", "頬骨", "フェイスライン"] },
+              "ds-7-3_0-n": { "target": "狭い真皮層", "applications": ["目元のしわ", "口元", "手の甲"] },
+              "ds-4-4_5": { "target": "SMAS層", "applications": ["中顔面", "下顔面", "首", "デコルテ"] },
+              "ds-7-4_5": { "target": "高解像度SMAS", "applications": ["フェイスライン", "二重あご", "頬たるみ"] }
             }
           },
           "hero": {
@@ -526,15 +526,15 @@
             "description": "ウルセラは米国FDAで<strong>リフティング効果が承認された唯一の</strong>非侵襲HIFU機器です。特許取得のMFU-V（Micro-focused Ultrasound with Visualization）技術で深層SMASまでエネルギーを正確に伝達しコラーゲン再生を促進します。",
             "depthTargeting": "深さ別カスタムターゲティング",
             "depths": {
-              "1.5": {
+              "1_5": {
                 "title": "1.5mm - 表皮/真皮境界",
                 "description": "小じわ、肌質改善に効果的。目元、口元など繊細な部位に適用"
               },
-              "3.0": {
+              "3_0": {
                 "title": "3.0mm - 真皮下層",
                 "description": "コラーゲン誘導、全体的な弾力改善。頬、額など広い部位に適用"
               },
-              "4.5": {
+              "4_5": {
                 "title": "4.5mm - SMAS層",
                 "description": "構造的リフティング効果。フェイスライン、首、中顔面などたるみが深刻な部位に適用"
               }
