@@ -37,7 +37,13 @@
     "noItemsInCategory": "No cases in this category",
     "selectOtherCategory": "Please select another category",
     "medicalInfoNews": "Medical Info & News",
-    "checkLatestNews": "Check out the latest news and useful medical information from LIV Plastic Surgery."
+    "checkLatestNews": "Check out the latest news and useful medical information from LIV Plastic Surgery.",
+    "timeline": "Treatment Timeline",
+    "process": "Treatment Process",
+    "targetAreas": "Target Areas",
+    "recommended": "Recommended For",
+    "precautions": "Pre & Post Treatment Care",
+    "onlineConsultation": "Online Consultation"
   },
   "categories": {
     "lifting": "Lifting",
@@ -1579,7 +1585,25 @@
             "slowDischarge": "Slow discharge",
             "fineParticles": "Pigment particles broken into fine particles",
             "fastDischarge": "Fast lymphatic discharge",
-            "timesFaster": "1000x Faster"
+            "timesFaster": "1000x Faster",
+            "comparison": {
+              "item": "Comparison",
+              "pulseSpeed": "Pulse Speed",
+              "particleSize": "Particle Size",
+              "tissueDamage": "Tissue Damage",
+              "heatDamage": "Heat Damage",
+              "downtime": "Downtime",
+              "sessions": "Sessions Required",
+              "relativeLarge": "Relatively Large",
+              "fine": "Fine",
+              "exists": "Present",
+              "minimal": "Minimal",
+              "almostNone": "Almost None",
+              "relativeLong": "Relatively Long",
+              "short": "Short",
+              "many": "Many",
+              "few": "Few"
+            }
           },
           "equipment": {
             "title": "Recommended Pigmentation Treatment Devices",

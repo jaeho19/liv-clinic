@@ -37,7 +37,13 @@
     "noItemsInCategory": "このカテゴリーには事例がありません",
     "selectOtherCategory": "他のカテゴリーを選択してください",
     "medicalInfoNews": "医療情報 & ニュース",
-    "checkLatestNews": "リブ形成外科の最新ニュースと役立つ医療情報をご確認ください。"
+    "checkLatestNews": "リブ形成外科の最新ニュースと役立つ医療情報をご確認ください。",
+    "timeline": "施術後のタイムライン",
+    "process": "施術プロセス",
+    "targetAreas": "施術部位",
+    "recommended": "こんな方におすすめ",
+    "precautions": "施術前後の注意事項",
+    "onlineConsultation": "オンライン相談"
   },
   "categories": {
     "lifting": "リフティング",

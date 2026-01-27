@@ -37,7 +37,13 @@
     "noItemsInCategory": "해당 카테고리에 사례가 없습니다",
     "selectOtherCategory": "다른 카테고리를 선택해 주세요",
     "medicalInfoNews": "의료 정보 & 소식",
-    "checkLatestNews": "리브성형외과의 최신 소식과 유용한 의료 정보를 확인해보세요."
+    "checkLatestNews": "리브성형외과의 최신 소식과 유용한 의료 정보를 확인해보세요.",
+    "timeline": "시술 후 타임라인",
+    "process": "시술 과정",
+    "targetAreas": "시술 부위",
+    "recommended": "이런 분께 추천합니다",
+    "precautions": "시술 전후 주의사항",
+    "onlineConsultation": "온라인 상담"
   },
   "categories": {
     "lifting": "리프팅",
