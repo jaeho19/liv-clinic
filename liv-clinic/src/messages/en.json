@@ -1230,7 +1230,136 @@
         "name": "Shurink",
         "fullName": "Shurink Universe",
         "tagline": "HIFU Lifting",
-        "description": "A lifting treatment using high-intensity focused ultrasound to lift sagging skin."
+        "description": "A lifting treatment using high-intensity focused ultrasound to lift sagging skin.",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "Epidermis",
+            "dermis": "Dermis",
+            "smas": "SMAS",
+            "fascia": "Fascia"
+          },
+          "cartridges": {
+            "1_5": {
+              "depth": "1.5mm",
+              "layer": "Epidermis",
+              "desc": "Fine lines, pores"
+            },
+            "3_0": {
+              "depth": "3.0mm",
+              "layer": "Dermis",
+              "desc": "Collagen regeneration"
+            },
+            "4_5": {
+              "depth": "4.5mm",
+              "layer": "SMAS Layer",
+              "desc": "Lifting effect"
+            },
+            "6_0_9_0": {
+              "depth": "6.0/9.0mm",
+              "layer": "Deep Layer",
+              "desc": "Body, double chin"
+            }
+          },
+          "rapidShot": {
+            "highSpeedShot": "⚡ HIGH-SPEED SHOT",
+            "conventional": {
+              "title": "Conventional HIFU",
+              "shotsPerSec": "1-2 shots/sec",
+              "duration": "60+ min treatment"
+            },
+            "shurink": {
+              "title": "Shurink",
+              "shotsPerSec": "7+ shots/sec",
+              "duration": "30 min treatment"
+            },
+            "speedBadge": "3x Faster"
+          },
+          "hero": {
+            "badge": "HIFU LIFTING"
+          },
+          "advantages": {
+            "sectionLabel": "Premium HIFU",
+            "title": "Shurink <span class=\"text-[#00D4FF]\">Advantages</span>",
+            "titlePlain": "Shurink Advantages",
+            "subtitle": "Developed with Korean technology, Shurink offers fast treatment and customized lifting with various cartridges"
+          },
+          "rapidShotSection": {
+            "title": "<span class=\"text-[#00D4FF]\">Rapid Shot</span> Technology",
+            "titlePlain": "Rapid Shot Technology",
+            "subtitle": "Shurink's rapid shot technology significantly reduces treatment time while delivering uniform energy",
+            "stats": {
+              "duration": {
+                "value": "30 min",
+                "label": "Treatment Time",
+                "desc": "50% faster than before"
+              },
+              "shotsPerSec": {
+                "value": "7/sec",
+                "label": "Rapid Shots",
+                "desc": "Uniform energy delivery"
+              },
+              "cartridges": {
+                "value": "4 Types",
+                "label": "Custom Cartridges",
+                "desc": "Optimized for each area"
+              }
+            }
+          },
+          "cartridgeSection": {
+            "title": "Multiple <span class=\"text-[#00D4FF]\">Cartridge</span> System",
+            "titlePlain": "Multiple Cartridge System",
+            "subtitle": "Precise customized treatment with cartridges optimized for each skin layer depth"
+          },
+          "targetAreas": {
+            "title": "Treatment Areas",
+            "subtitle": "Shurink can treat the entire face and neck area, with customized treatment using optimized cartridges for each area."
+          },
+          "treatmentInfo": {
+            "title": "Treatment <span class=\"text-[#00D4FF]\">Info</span>",
+            "titlePlain": "Treatment Info",
+            "labels": {
+              "duration": "Treatment Time",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery",
+              "results": "Results Duration"
+            }
+          },
+          "comparison": {
+            "title": "Ultherapy Prime vs <span class=\"text-[#00D4FF]\">Shurink</span>",
+            "titlePlain": "Ultherapy Prime vs Shurink",
+            "subtitle": "Compare the characteristics of both HIFU devices to choose the right treatment for you",
+            "headers": {
+              "feature": "Comparison",
+              "ulthera": "Ultherapy Prime",
+              "shurink": "Shurink"
+            },
+            "rows": [
+              { "item": "Energy Type", "ulthera": "HIFU", "shurink": "HIFU" },
+              { "item": "Treatment Time", "ulthera": "60-90 min", "shurink": "30-45 min" },
+              { "item": "Visualization", "ulthera": "DeepSEE Technology", "shurink": "None" },
+              { "item": "Pain Level", "ulthera": "Moderate-High", "shurink": "Low-Moderate" },
+              { "item": "Results Duration", "ulthera": "1-2 years", "shurink": "3-6 months" },
+              { "item": "Ideal For", "ulthera": "Deep lifting desired", "shurink": "Quick treatment, maintenance" },
+              { "item": "Cost", "ulthera": "Premium", "shurink": "Affordable" }
+            ]
+          },
+          "faq": {
+            "title": "Frequently Asked <span class=\"text-[#00D4FF]\">Questions</span>",
+            "titlePlain": "Frequently Asked Questions",
+            "relatedQa": "Related Medical Q&A",
+            "moreLink": "View More Q&A"
+          },
+          "cautions": {
+            "title": "Treatment <span class=\"text-[#00D4FF]\">Precautions</span>",
+            "titlePlain": "Treatment Precautions"
+          },
+          "cta": {
+            "title": "Book Shurink Consultation",
+            "description": "Experience youthful skin with fast and effective HIFU lifting. Our experts will create a customized treatment plan for you.",
+            "onlineButton": "Book Online Consultation",
+            "phoneButton": "Phone Consultation"
+          }
+        }
       },
       "thread": {
         "name": "Thread Lift",

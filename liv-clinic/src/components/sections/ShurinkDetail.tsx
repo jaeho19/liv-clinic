@@ -510,14 +510,12 @@ export default function ShurinkDetail() {
           >
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-              <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Premium HIFU</span>
+              <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">{t('lifting.shurink.detail.advantages.sectionLabel')}</span>
               <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              슈링크의 <span className="text-[#00D4FF]">장점</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.advantages.title') }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              국내 기술로 개발된 슈링크는 빠른 시술과 다양한 카트리지로 맞춤 리프팅을 제공합니다
+              {t('lifting.shurink.detail.advantages.subtitle')}
             </p>
           </motion.div>
 
@@ -553,11 +551,9 @@ export default function ShurinkDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              <span className="text-[#00D4FF]">고속 연사</span> 기술
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.rapidShotSection.title') }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              슈링크의 고속 연사 기술로 시술 시간을 대폭 단축하면서도 균일한 에너지를 전달합니다
+              {t('lifting.shurink.detail.rapidShotSection.subtitle')}
             </p>
           </motion.div>
 
@@ -576,9 +572,9 @@ export default function ShurinkDetail() {
               viewport={{ once: true }}
               className="text-center p-6 bg-white rounded-xl shadow-sm"
             >
-              <div className="text-4xl font-bold text-[#00D4FF] mb-2">30분</div>
-              <div className="text-gray-600">시술 시간</div>
-              <div className="text-sm text-gray-400 mt-1">기존 대비 50% 단축</div>
+              <div className="text-4xl font-bold text-[#00D4FF] mb-2">{t('lifting.shurink.detail.rapidShotSection.stats.duration.value')}</div>
+              <div className="text-gray-600">{t('lifting.shurink.detail.rapidShotSection.stats.duration.label')}</div>
+              <div className="text-sm text-gray-400 mt-1">{t('lifting.shurink.detail.rapidShotSection.stats.duration.desc')}</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -587,9 +583,9 @@ export default function ShurinkDetail() {
               transition={{ delay: 0.1 }}
               className="text-center p-6 bg-white rounded-xl shadow-sm"
             >
-              <div className="text-4xl font-bold text-[#00D4FF] mb-2">7샷/초</div>
-              <div className="text-gray-600">고속 연사</div>
-              <div className="text-sm text-gray-400 mt-1">균일한 에너지 전달</div>
+              <div className="text-4xl font-bold text-[#00D4FF] mb-2">{t('lifting.shurink.detail.rapidShotSection.stats.shotsPerSec.value')}</div>
+              <div className="text-gray-600">{t('lifting.shurink.detail.rapidShotSection.stats.shotsPerSec.label')}</div>
+              <div className="text-sm text-gray-400 mt-1">{t('lifting.shurink.detail.rapidShotSection.stats.shotsPerSec.desc')}</div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -598,9 +594,9 @@ export default function ShurinkDetail() {
               transition={{ delay: 0.2 }}
               className="text-center p-6 bg-white rounded-xl shadow-sm"
             >
-              <div className="text-4xl font-bold text-[#00D4FF] mb-2">4종</div>
-              <div className="text-gray-600">맞춤 카트리지</div>
-              <div className="text-sm text-gray-400 mt-1">부위별 최적화 시술</div>
+              <div className="text-4xl font-bold text-[#00D4FF] mb-2">{t('lifting.shurink.detail.rapidShotSection.stats.cartridges.value')}</div>
+              <div className="text-gray-600">{t('lifting.shurink.detail.rapidShotSection.stats.cartridges.label')}</div>
+              <div className="text-sm text-gray-400 mt-1">{t('lifting.shurink.detail.rapidShotSection.stats.cartridges.desc')}</div>
             </motion.div>
           </div>
         </div>
@@ -615,11 +611,9 @@ export default function ShurinkDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              다양한 <span className="text-[#00D4FF]">카트리지</span> 시스템
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.cartridgeSection.title') }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              피부층 깊이에 따라 최적화된 카트리지로 정밀한 맞춤 시술이 가능합니다
+              {t('lifting.shurink.detail.cartridgeSection.subtitle')}
             </p>
           </motion.div>
 
@@ -643,11 +637,10 @@ export default function ShurinkDetail() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-                {t('common.targetAreas')}
+                {t('lifting.shurink.detail.targetAreas.title')}
               </h2>
               <p className="text-gray-600 mb-8">
-                슈링크는 얼굴 전체와 목까지 다양한 부위에 시술이 가능하며,
-                각 부위에 최적화된 카트리지로 맞춤 시술을 진행합니다.
+                {t('lifting.shurink.detail.targetAreas.subtitle')}
               </p>
 
               <div className="space-y-4">
@@ -742,17 +735,15 @@ export default function ShurinkDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              시술 <span className="text-[#00D4FF]">정보</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.treatmentInfo.title') }} />
           </motion.div>
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
             {[
-              { label: '시술 시간', value: treatment.duration, icon: '⏱️' },
-              { label: '마취', value: treatment.anesthesia, icon: '💉' },
-              { label: '회복 기간', value: treatment.recovery, icon: '🔄' },
-              { label: '효과 지속', value: treatment.results, icon: '✨' },
+              { label: t('lifting.shurink.detail.treatmentInfo.labels.duration'), value: treatment.duration, icon: '⏱️' },
+              { label: t('lifting.shurink.detail.treatmentInfo.labels.anesthesia'), value: treatment.anesthesia, icon: '💉' },
+              { label: t('lifting.shurink.detail.treatmentInfo.labels.recovery'), value: treatment.recovery, icon: '🔄' },
+              { label: t('lifting.shurink.detail.treatmentInfo.labels.results'), value: treatment.results, icon: '✨' },
             ].map((info, index) => (
               <motion.div
                 key={info.label}
@@ -784,31 +775,21 @@ export default function ShurinkDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              울쎄라피 프라임 vs <span className="text-[#00D4FF]">슈링크</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.comparison.title') }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              두 HIFU 장비의 특성을 비교해 본인에게 맞는 시술을 선택하세요
+              {t('lifting.shurink.detail.comparison.subtitle')}
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="grid grid-cols-3 bg-gray-900 text-white">
-                <div className="p-4 text-center font-medium">비교 항목</div>
-                <div className="p-4 text-center font-medium border-l border-gray-700">울쎄라피 프라임</div>
-                <div className="p-4 text-center font-medium border-l border-gray-700 bg-[#00D4FF]">슈링크</div>
+                <div className="p-4 text-center font-medium">{t('lifting.shurink.detail.comparison.headers.feature')}</div>
+                <div className="p-4 text-center font-medium border-l border-gray-700">{t('lifting.shurink.detail.comparison.headers.ulthera')}</div>
+                <div className="p-4 text-center font-medium border-l border-gray-700 bg-[#00D4FF]">{t('lifting.shurink.detail.comparison.headers.shurink')}</div>
               </div>
 
-              {[
-                { item: '에너지 종류', ulthera: 'HIFU', shurink: 'HIFU' },
-                { item: '시술 시간', ulthera: '60-90분', shurink: '30-45분' },
-                { item: '시각화 기능', ulthera: 'DeepSEE 기술', shurink: '없음' },
-                { item: '통증', ulthera: '중간~높음', shurink: '낮음~중간' },
-                { item: '효과 지속', ulthera: '1-2년', shurink: '3-6개월' },
-                { item: '적합 대상', ulthera: '깊은 리프팅 원하는 분', shurink: '빠른 시술, 유지관리' },
-                { item: '비용', ulthera: '프리미엄', shurink: '합리적' },
-              ].map((row, index) => (
+              {(t.raw('lifting.shurink.detail.comparison.rows') as Array<{item: string; ulthera: string; shurink: string}>).map((row, index) => (
                 <motion.div
                   key={row.item}
                   initial={{ opacity: 0 }}
@@ -872,9 +853,7 @@ export default function ShurinkDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              자주 묻는 <span className="text-[#00D4FF]">질문</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.faq.title') }} />
           </motion.div>
 
           <div className="max-w-3xl mx-auto space-y-4">
@@ -909,7 +888,7 @@ export default function ShurinkDetail() {
           {relatedMedicalQA.length > 0 && (
             <div className="max-w-3xl mx-auto mt-12">
               <h3 className="text-xl font-medium text-gray-900 mb-6 text-center">
-                관련 의료정보 Q&A
+                {t('lifting.shurink.detail.faq.relatedQa')}
               </h3>
               <div className="space-y-4">
                 {relatedMedicalQA.slice(0, 3).map((qa, index) => (
@@ -940,7 +919,7 @@ export default function ShurinkDetail() {
                   href="/medical"
                   className="text-[#00D4FF] hover:text-[#0099CC] font-medium inline-flex items-center gap-2"
                 >
-                  더 많은 Q&A 보기
+                  {t('lifting.shurink.detail.faq.moreLink')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -960,9 +939,7 @@ export default function ShurinkDetail() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-2xl font-light text-gray-900 mb-8 text-center">
-              시술 <span className="text-[#00D4FF]">주의사항</span>
-            </h2>
+            <h2 className="text-2xl font-light text-gray-900 mb-8 text-center" dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.cautions.title') }} />
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <ul className="space-y-4">
                 {treatment.cautions.map((caution, index) => (
@@ -988,24 +965,23 @@ export default function ShurinkDetail() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
-              슈링크 상담 예약
+              {t('lifting.shurink.detail.cta.title')}
             </h2>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              빠르고 효과적인 HIFU 리프팅, 슈링크로 자연스러운 동안 피부를 경험하세요.
-              전문 상담을 통해 맞춤 시술 계획을 세워드립니다.
+              {t('lifting.shurink.detail.cta.description')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center px-8 py-4 bg-white text-[#00D4FF] font-medium rounded-full hover:bg-gray-100 transition-colors"
               >
-                온라인 상담 예약
+                {t('lifting.shurink.detail.cta.onlineButton')}
               </Link>
               <a
                 href="tel:02-797-2773"
                 className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-medium rounded-full hover:bg-white/10 transition-colors"
               >
-                전화 상담 02-797-2773
+                {t('lifting.shurink.detail.cta.phoneButton')} 02-797-2773
               </a>
             </div>
           </motion.div>

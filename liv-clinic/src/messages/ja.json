@@ -1230,7 +1230,136 @@
         "name": "シュリンク",
         "fullName": "Shurink Universe",
         "tagline": "HIFUリフティング",
-        "description": "高強度集束超音波を活用したリフティング施術でたるんだ肌を引き上げます。"
+        "description": "高強度集束超音波を活用したリフティング施術でたるんだ肌を引き上げます。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "smas": "SMAS",
+            "fascia": "筋膜"
+          },
+          "cartridges": {
+            "1_5": {
+              "depth": "1.5mm",
+              "layer": "表皮層",
+              "desc": "小じわ、毛穴"
+            },
+            "3_0": {
+              "depth": "3.0mm",
+              "layer": "真皮層",
+              "desc": "コラーゲン再生"
+            },
+            "4_5": {
+              "depth": "4.5mm",
+              "layer": "SMAS層",
+              "desc": "リフティング効果"
+            },
+            "6_0_9_0": {
+              "depth": "6.0/9.0mm",
+              "layer": "深部層",
+              "desc": "ボディ、二重あご"
+            }
+          },
+          "rapidShot": {
+            "highSpeedShot": "⚡ HIGH-SPEED SHOT",
+            "conventional": {
+              "title": "従来のHIFU",
+              "shotsPerSec": "1秒あたり1-2ショット",
+              "duration": "施術時間60分以上"
+            },
+            "shurink": {
+              "title": "シュリンク",
+              "shotsPerSec": "1秒あたり7ショット以上",
+              "duration": "施術時間30分台"
+            },
+            "speedBadge": "3倍速い"
+          },
+          "hero": {
+            "badge": "HIFU LIFTING"
+          },
+          "advantages": {
+            "sectionLabel": "Premium HIFU",
+            "title": "シュリンクの<span class=\"text-[#00D4FF]\">メリット</span>",
+            "titlePlain": "シュリンクのメリット",
+            "subtitle": "韓国技術で開発されたシュリンクは、高速施術と多様なカートリッジでカスタムリフティングを提供します"
+          },
+          "rapidShotSection": {
+            "title": "<span class=\"text-[#00D4FF]\">高速連射</span>技術",
+            "titlePlain": "高速連射技術",
+            "subtitle": "シュリンクの高速連射技術で施術時間を大幅に短縮しながら均一なエネルギーを伝達します",
+            "stats": {
+              "duration": {
+                "value": "30分",
+                "label": "施術時間",
+                "desc": "従来比50%短縮"
+              },
+              "shotsPerSec": {
+                "value": "7ショット/秒",
+                "label": "高速連射",
+                "desc": "均一なエネルギー伝達"
+              },
+              "cartridges": {
+                "value": "4種類",
+                "label": "カスタムカートリッジ",
+                "desc": "部位別最適化施術"
+              }
+            }
+          },
+          "cartridgeSection": {
+            "title": "多様な<span class=\"text-[#00D4FF]\">カートリッジ</span>システム",
+            "titlePlain": "多様なカートリッジシステム",
+            "subtitle": "皮膚層の深さに応じて最適化されたカートリッジで精密なカスタム施術が可能です"
+          },
+          "targetAreas": {
+            "title": "施術部位",
+            "subtitle": "シュリンクは顔全体から首まで様々な部位に施術が可能で、各部位に最適化されたカートリッジでカスタム施術を行います。"
+          },
+          "treatmentInfo": {
+            "title": "施術<span class=\"text-[#00D4FF]\">情報</span>",
+            "titlePlain": "施術情報",
+            "labels": {
+              "duration": "施術時間",
+              "anesthesia": "麻酔",
+              "recovery": "回復期間",
+              "results": "効果持続"
+            }
+          },
+          "comparison": {
+            "title": "ウルセラ vs <span class=\"text-[#00D4FF]\">シュリンク</span>",
+            "titlePlain": "ウルセラ vs シュリンク",
+            "subtitle": "二つのHIFU機器の特性を比較して自分に合った施術を選んでください",
+            "headers": {
+              "feature": "比較項目",
+              "ulthera": "ウルセラ",
+              "shurink": "シュリンク"
+            },
+            "rows": [
+              { "item": "エネルギー種類", "ulthera": "HIFU", "shurink": "HIFU" },
+              { "item": "施術時間", "ulthera": "60-90分", "shurink": "30-45分" },
+              { "item": "可視化機能", "ulthera": "DeepSEE技術", "shurink": "なし" },
+              { "item": "痛み", "ulthera": "中〜高", "shurink": "低〜中" },
+              { "item": "効果持続", "ulthera": "1-2年", "shurink": "3-6ヶ月" },
+              { "item": "適した方", "ulthera": "深いリフティング希望", "shurink": "短時間施術、維持管理" },
+              { "item": "費用", "ulthera": "プレミアム", "shurink": "リーズナブル" }
+            ]
+          },
+          "faq": {
+            "title": "よくある<span class=\"text-[#00D4FF]\">質問</span>",
+            "titlePlain": "よくある質問",
+            "relatedQa": "関連医療情報Q&A",
+            "moreLink": "もっとQ&Aを見る"
+          },
+          "cautions": {
+            "title": "施術<span class=\"text-[#00D4FF]\">注意事項</span>",
+            "titlePlain": "施術注意事項"
+          },
+          "cta": {
+            "title": "シュリンク相談予約",
+            "description": "高速で効果的なHIFUリフティング、シュリンクで自然な若々しい肌を体験してください。専門相談でカスタム施術プランを立てます。",
+            "onlineButton": "オンライン相談予約",
+            "phoneButton": "電話相談"
+          }
+        }
       },
       "thread": {
         "name": "スレッドリフト",

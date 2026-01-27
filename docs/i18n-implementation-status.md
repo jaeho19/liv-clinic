@@ -7,19 +7,20 @@
 ## 🚀 빠른 시작 (새 세션용)
 
 ### 현재 진행률
-- **완료**: 우선순위 1~7 (메인 페이지, 공통 UI, 상담 폼, UltheraDetail.tsx, ThermageDetail.tsx, DensityDetail.tsx, InModeDetail.tsx)
-- **대기**: 나머지 12개 시술 상세 페이지
+- **완료**: 메인 페이지, 공통 UI, 상담 폼, UltheraDetail, ThermageDetail, DensityDetail, InModeDetail, ShurinkDetail (5개)
+- **대기**: 나머지 11개 시술 상세 페이지
 
 ### 다음에 해야 할 작업
 ```
-1. ShurinkDetail.tsx 번역 (동일 패턴 적용)
-   - 번역 키 추가 (ko, en, ja, zh.json)
+1. ThreadDetail.tsx 번역 작업 (다음 파일)
+   - 분석 후 번역 키 추가
+   - ko/en/ja/zh.json에 번역 추가
    - 컴포넌트에서 t() 함수로 교체
 
 2. 나머지 11개 Detail 파일에 동일 패턴 적용
-   - ThreadDetail, AptosDetail
-   - BotoxDetail, FillerDetail, SkinboosterDetail
-   - LaserCenterDetail, PigmentationDetail, VascularDetail 등
+   - ThreadDetail, AptosDetail (리프팅 2개)
+   - BotoxDetail, FillerDetail, SkinboosterDetail (안티에이징 3개)
+   - LaserCenterDetail 외 5개 (레이저 6개)
 
 3. 번역 파일 위치: liv-clinic/src/messages/{ko,en,ja,zh}.json
 ```
@@ -305,23 +306,91 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 6. 대기 중: 나머지 12개 Detail 파일
+## 6. 완료: ShurinkDetail.tsx ✅
 
-### 6.1 리프팅 (3개)
+### 6.1 핵심 데이터 구조 번역
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `skinLayers` | 피부층 레이블 (표피, 진피, SMAS, 근막) | ✅ 완료 |
+| `cartridges` | 카트리지 데이터 (1.5/3.0/4.5/6.0-9.0mm) | ✅ 완료 |
+| `rapidShot` | 고속 연사 통계 및 비교 데이터 | ✅ 완료 |
+| `comparison` | 비교 테이블 헤더/데이터 (슈링크 vs 울쎄라) | ✅ 완료 |
+| `extendedFaqs` | 확장 FAQ 질문/답변 (3개) | ✅ 완료 |
+
+### 6.2 섹션별 번역
+
+| 섹션 | 번역 항목 | 상태 |
+|------|-----------|------|
+| Hero | 뱃지 (HIFU LIFTING) | ✅ 완료 |
+| 슈링크 장점 | 제목, 부제목, "Premium HIFU" 라벨 | ✅ 완료 |
+| 고속 연사 | 제목, 설명, 통계 3개 (30분, 7샷/초, 4종) | ✅ 완료 |
+| 카트리지 시스템 | 제목, 설명, 카트리지별 정보 | ✅ 완료 |
+| 시술 부위 | 제목, 부제목, 부위별 레이블 | ✅ 완료 |
+| 시술 정보 | 제목, 레이블 4개 (시술 시간, 마취, 회복 기간, 효과 지속) | ✅ 완료 |
+| 비교 테이블 | 제목, 부제목, 헤더 3개, 데이터 7행 (t.raw() 사용) | ✅ 완료 |
+| 추천 대상 | 제목 | ✅ 완료 |
+| FAQ | 제목, 관련 의료정보 Q&A 라벨, 더보기 링크 | ✅ 완료 |
+| 주의사항 | 제목 | ✅ 완료 |
+| CTA | 제목, 설명, 버튼 2개 | ✅ 완료 |
+
+**참고**: SVG 일러스트레이션 내 텍스트(피부층 다이어그램 등)는 별도 리팩토링 필요 (우선순위 낮음)
+
+### 6.3 번역 키 구조 (treatments.lifting.shurink.detail)
+
+```json
+{
+  "treatments": {
+    "lifting": {
+      "shurink": {
+        "detail": {
+          "skinLayers": { "epidermis", "dermis", "smas", "fascia" },
+          "cartridges": {
+            "1_5mm": { "layer", "description" },
+            "3_0mm": { "layer", "description" },
+            "4_5mm": { "layer", "description" },
+            "6_0_9_0mm": { "layer", "description" }
+          },
+          "rapidShot": {
+            "conventional": { "label", "speed" },
+            "shurink": { "label", "speed" },
+            "badge": "3배 빠름"
+          },
+          "hero": { "badge" },
+          "advantages": { "sectionLabel", "title", "subtitle", "premiumLabel" },
+          "rapidShotSection": { "sectionLabel", "title", "description", "stats" },
+          "cartridgeSection": { "sectionLabel", "title", "description" },
+          "targetAreas": { "sectionLabel", "title", "subtitle", "areas" },
+          "treatmentInfo": { "sectionLabel", "title", "labels" },
+          "comparison": { "sectionLabel", "title", "subtitle", "headers", "rows" },
+          "faq": { "sectionLabel", "title", "moreInfo", "moreButton" },
+          "cautions": { "sectionLabel", "title" },
+          "cta": { "subtitle", "title", "description", "consultButton", "callButton" }
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+## 7. 대기 중: 나머지 11개 Detail 파일
+
+### 7.1 리프팅 (2개)
 | 파일 | 상태 |
 |------|------|
-| `ShurinkDetail.tsx` | ⏳ 대기 |
 | `ThreadDetail.tsx` | ⏳ 대기 |
 | `AptosDetail.tsx` | ⏳ 대기 |
 
-### 6.2 안티에이징 (3개)
+### 7.2 안티에이징 (3개)
 | 파일 | 상태 |
 |------|------|
 | `BotoxDetail.tsx` | ⏳ 대기 |
 | `FillerDetail.tsx` | ⏳ 대기 |
 | `SkinboosterDetail.tsx` | ⏳ 대기 |
 
-### 6.3 레이저 (6개)
+### 7.3 레이저 (6개)
 | 파일 | 상태 |
 |------|------|
 | `LaserCenterDetail.tsx` | ⏳ 대기 |
@@ -333,9 +402,9 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 7. 번역 작업 패턴 가이드
+## 8. 번역 작업 패턴 가이드
 
-### 6.1 컴포넌트 수정 패턴
+### 8.1 컴포넌트 수정 패턴
 
 ```tsx
 // 1. 번역 훅 사용 선언
@@ -355,7 +424,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 <ComparisonTable rows={comparisonRows} headers={comparisonHeaders} />
 ```
 
-### 7.2 번역 키 추가 패턴
+### 8.2 번역 키 추가 패턴
 
 ```json
 // ko.json
@@ -379,7 +448,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 
 ---
 
-## 8. 테스트 방법
+## 9. 테스트 방법
 
 ```bash
 cd c:/dev/LIV_homepage/liv-clinic
@@ -399,7 +468,7 @@ npm run dev
 
 ---
 
-## 9. 참고 파일 경로
+## 10. 참고 파일 경로
 
 | 용도 | 경로 |
 |------|------|
@@ -410,4 +479,4 @@ npm run dev
 
 ---
 
-*마지막 업데이트: 2026-01-27 (InModeDetail.tsx 100% 완료)*
+*마지막 업데이트: 2026-01-27 (ShurinkDetail.tsx 번역 완료 - 5개 Detail 페이지 완료)*

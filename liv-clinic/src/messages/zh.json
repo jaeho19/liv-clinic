@@ -1230,7 +1230,136 @@
         "name": "Shurink",
         "fullName": "Shurink Universe",
         "tagline": "HIFU提升",
-        "description": "利用高强度聚焦超声波的提升治疗，提拉松弛的皮肤。"
+        "description": "利用高强度聚焦超声波的提升治疗，提拉松弛的皮肤。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "smas": "SMAS",
+            "fascia": "筋膜"
+          },
+          "cartridges": {
+            "1_5": {
+              "depth": "1.5mm",
+              "layer": "表皮层",
+              "desc": "细纹、毛孔"
+            },
+            "3_0": {
+              "depth": "3.0mm",
+              "layer": "真皮层",
+              "desc": "胶原蛋白再生"
+            },
+            "4_5": {
+              "depth": "4.5mm",
+              "layer": "SMAS层",
+              "desc": "提升效果"
+            },
+            "6_0_9_0": {
+              "depth": "6.0/9.0mm",
+              "layer": "深层",
+              "desc": "身体、双下巴"
+            }
+          },
+          "rapidShot": {
+            "highSpeedShot": "⚡ HIGH-SPEED SHOT",
+            "conventional": {
+              "title": "传统HIFU",
+              "shotsPerSec": "每秒1-2发",
+              "duration": "治疗时间60分钟以上"
+            },
+            "shurink": {
+              "title": "Shurink",
+              "shotsPerSec": "每秒7发以上",
+              "duration": "治疗时间30分钟左右"
+            },
+            "speedBadge": "快3倍"
+          },
+          "hero": {
+            "badge": "HIFU LIFTING"
+          },
+          "advantages": {
+            "sectionLabel": "Premium HIFU",
+            "title": "Shurink的<span class=\"text-[#00D4FF]\">优势</span>",
+            "titlePlain": "Shurink的优势",
+            "subtitle": "采用韩国技术开发的Shurink，提供快速治疗和多种探头定制提升"
+          },
+          "rapidShotSection": {
+            "title": "<span class=\"text-[#00D4FF]\">高速连发</span>技术",
+            "titlePlain": "高速连发技术",
+            "subtitle": "Shurink的高速连发技术大幅缩短治疗时间，同时均匀传递能量",
+            "stats": {
+              "duration": {
+                "value": "30分钟",
+                "label": "治疗时间",
+                "desc": "比以前快50%"
+              },
+              "shotsPerSec": {
+                "value": "7发/秒",
+                "label": "高速连发",
+                "desc": "均匀能量传递"
+              },
+              "cartridges": {
+                "value": "4种",
+                "label": "定制探头",
+                "desc": "各部位优化治疗"
+              }
+            }
+          },
+          "cartridgeSection": {
+            "title": "多种<span class=\"text-[#00D4FF]\">探头</span>系统",
+            "titlePlain": "多种探头系统",
+            "subtitle": "根据皮肤层深度优化的探头，可进行精密定制治疗"
+          },
+          "targetAreas": {
+            "title": "治疗部位",
+            "subtitle": "Shurink可治疗整个面部到颈部的各个部位，使用针对各部位优化的探头进行定制治疗。"
+          },
+          "treatmentInfo": {
+            "title": "治疗<span class=\"text-[#00D4FF]\">信息</span>",
+            "titlePlain": "治疗信息",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果持续"
+            }
+          },
+          "comparison": {
+            "title": "超声刀 vs <span class=\"text-[#00D4FF]\">Shurink</span>",
+            "titlePlain": "超声刀 vs Shurink",
+            "subtitle": "比较两种HIFU设备的特点，选择适合自己的治疗",
+            "headers": {
+              "feature": "比较项目",
+              "ulthera": "超声刀",
+              "shurink": "Shurink"
+            },
+            "rows": [
+              { "item": "能量类型", "ulthera": "HIFU", "shurink": "HIFU" },
+              { "item": "治疗时间", "ulthera": "60-90分钟", "shurink": "30-45分钟" },
+              { "item": "可视化功能", "ulthera": "DeepSEE技术", "shurink": "无" },
+              { "item": "疼痛程度", "ulthera": "中~高", "shurink": "低~中" },
+              { "item": "效果持续", "ulthera": "1-2年", "shurink": "3-6个月" },
+              { "item": "适合人群", "ulthera": "希望深层提升", "shurink": "快速治疗、维护保养" },
+              { "item": "费用", "ulthera": "高端", "shurink": "实惠" }
+            ]
+          },
+          "faq": {
+            "title": "常见<span class=\"text-[#00D4FF]\">问题</span>",
+            "titlePlain": "常见问题",
+            "relatedQa": "相关医疗问答",
+            "moreLink": "查看更多问答"
+          },
+          "cautions": {
+            "title": "治疗<span class=\"text-[#00D4FF]\">注意事项</span>",
+            "titlePlain": "治疗注意事项"
+          },
+          "cta": {
+            "title": "预约Shurink咨询",
+            "description": "体验快速有效的HIFU提升，Shurink带给您自然年轻的肌肤。专业咨询为您制定定制治疗方案。",
+            "onlineButton": "在线预约咨询",
+            "phoneButton": "电话咨询"
+          }
+        }
       },
       "thread": {
         "name": "线雕",
