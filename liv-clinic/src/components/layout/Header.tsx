@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
@@ -8,6 +8,35 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import { MAIN_NAV } from '@/lib/constants';
+
+// Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice: rerender-dependencies)
+function useThrottle<T extends (...args: unknown[]) => void>(
+  callback: T,
+  delay: number
+): T {
+  const lastRun = useRef(Date.now());
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  return useCallback(
+    ((...args: unknown[]) => {
+      const now = Date.now();
+      const timeSinceLastRun = now - lastRun.current;
+
+      if (timeSinceLastRun >= delay) {
+        callback(...args);
+        lastRun.current = now;
+      } else if (!timeoutRef.current) {
+        // 마지막 호출도 실행되도록 보장
+        timeoutRef.current = setTimeout(() => {
+          callback(...args);
+          lastRun.current = Date.now();
+          timeoutRef.current = null;
+        }, delay - timeSinceLastRun);
+      }
+    }) as T,
+    [callback, delay]
+  ) as T;
+}
 
 export default function Header() {
   const t = useTranslations('nav');
@@ -23,14 +52,19 @@ export default function Header() {
   // Use dark styling on non-homepage or when scrolled
   const useDarkStyle = isScrolled || !isHomePage;
 
-  useEffect(() => {
-    const handleScroll = () => {
+  // Throttled 스크롤 핸들러 (100ms 간격) - 60fps에서 ~6회/초로 감소
+  const handleScroll = useThrottle(
+    useCallback(() => {
       setIsScrolled(window.scrollY > 50);
-    };
+    }, []),
+    100
+  );
 
-    window.addEventListener('scroll', handleScroll);
+  useEffect(() => {
+    // passive: true로 스크롤 성능 추가 최적화
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   // Close mobile menu on resize
   useEffect(() => {
@@ -100,7 +134,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 safe-area-pt ${
           useDarkStyle
             ? 'bg-white/95 backdrop-blur-md shadow-sm'
             : 'bg-transparent'
@@ -141,8 +175,8 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className={`font-medium transition-all duration-300 hover:text-primary ${
-                      isScrolled ? 'text-xs' : 'text-sm'
+                    className={`font-medium tracking-[0.02em] transition-all duration-300 hover:text-primary ${
+                      isScrolled ? 'text-sm' : 'text-[15px]'
                     } ${
                       useDarkStyle ? 'text-mono' : 'text-white text-shadow-light'
                     }`}

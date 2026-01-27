@@ -96,7 +96,7 @@ const equipmentCategories = [
         nameKo: '루카스',
         description: '피부 속부터 밝고 맑게 – 색소 치료의 새로운 기준',
         features: ['고출력 Q스위치', '기미/잡티 치료', '문신 제거'],
-        image: `${PROCESSED_IMAGE_PATH}/equipment_lucas.png`,
+        image: '/images/000.jpg',
         certification: 'KFDA 승인',
       },
       {

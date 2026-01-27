@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, useReducedMotion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { AnimateOnScroll, Button, ScrollLink } from '@/components/ui';
+import { useScrollToSection } from '@/hooks';
 import Image from 'next/image';
 
 // ============================================================
@@ -30,6 +31,7 @@ interface PremiumCardProps {
   reducedMotion: boolean;
   onSelect: (id: string) => void;
   isSelected: boolean;
+  onScrollToDetail: (id: string) => void;
 }
 
 // ============================================================
@@ -189,14 +191,14 @@ const signaturePrograms: SignatureProgram[] = [
     beforeImage: '/images/signature/total-antiaging-abstract.png',
     afterImage: '/images/signature/bridal.png',
     accentColor: '#F43F5E',
-    href: '/signature',
+    href: '/contact',
   },
 ];
 
 // ============================================================
 // Premium Card Component - 포토리얼 전후 비교 카드 (럭셔리 에디션)
 // ============================================================
-function PremiumCard({ program, index, reducedMotion, onSelect, isSelected }: PremiumCardProps) {
+function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onScrollToDetail }: PremiumCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isTapped, setIsTapped] = useState(false);
   const [showAfter, setShowAfter] = useState(false);
@@ -291,10 +293,14 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected }: Pr
     };
   }, [isHovered, isTapped, startCrossfade, stopCrossfade]);
 
-  // 모바일 탭 핸들러
+  // 모바일 탭 핸들러 + 스크롤
   const handleTap = () => {
     setIsTapped(prev => !prev);
     onSelect(program.id);
+    // 약간의 딜레이 후 카드 그리드 상단으로 스크롤 (카드들이 보이고 아래에 상세 패널 표시)
+    setTimeout(() => {
+      onScrollToDetail('signature-cards-grid');
+    }, 100);
   };
 
   // 스크롤 인뷰 애니메이션 variants
@@ -783,22 +789,25 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected }: Pr
 function ProgramDetailPanel({
   program,
   isVisible,
-  reducedMotion
+  reducedMotion,
+  sectionId
 }: {
   program: SignatureProgram;
   isVisible: boolean;
   reducedMotion: boolean;
+  sectionId: string;
 }) {
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          transition={{ duration: reducedMotion ? 0.1 : 0.5, ease: 'easeInOut' as const }}
-          className="overflow-hidden"
-        >
+    <div id={sectionId} className="scroll-mt-20">
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: reducedMotion ? 0.1 : 0.5, ease: 'easeInOut' as const }}
+            className="overflow-hidden"
+          >
           <div
             className="mt-8 p-8 rounded-2xl"
             style={{ backgroundColor: `${program.accentColor}08` }}
@@ -881,6 +890,7 @@ function ProgramDetailPanel({
         </motion.div>
       )}
     </AnimatePresence>
+    </div>
   );
 }
 
@@ -893,6 +903,7 @@ export default function SignatureDetail() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const [selectedProgram, setSelectedProgram] = useState<string | null>(null);
+  const { scrollToSection } = useScrollToSection({ offset: 100 }); // 헤더 높이 고려
 
   const headerVariants = {
     hidden: { opacity: 0, y: reducedMotion ? 0 : 20 },
@@ -996,7 +1007,7 @@ export default function SignatureDetail() {
           </motion.div>
 
           {/* Cards Grid - 반응형: 모바일 1열, sm 2열, lg 4열 */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+          <div id="signature-cards-grid" className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 scroll-mt-24">
             {signaturePrograms.map((program, index) => (
               <PremiumCard
                 key={program.id}
@@ -1005,6 +1016,7 @@ export default function SignatureDetail() {
                 reducedMotion={reducedMotion}
                 onSelect={setSelectedProgram}
                 isSelected={selectedProgram === program.id}
+                onScrollToDetail={scrollToSection}
               />
             ))}
           </div>
@@ -1016,6 +1028,7 @@ export default function SignatureDetail() {
               program={program}
               isVisible={selectedProgram === program.id}
               reducedMotion={reducedMotion}
+              sectionId={`section-${program.id}`}
             />
           ))}
         </div>
