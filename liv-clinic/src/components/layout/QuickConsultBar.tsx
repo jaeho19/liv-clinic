@@ -192,13 +192,13 @@ export default function QuickConsultBar() {
                     onSubmit={handleSubmit}
                     className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
                   >
-                    {/* 에러 메시지 */}
+                    {/* 에러 메시지 - 모바일에서 인라인, 데스크톱에서 플로팅 */}
                     {submitError && (
-                      <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm shadow-lg flex items-center gap-2">
+                      <div className="sm:absolute sm:-top-12 sm:left-1/2 sm:-translate-x-1/2 mb-2 sm:mb-0 w-full sm:w-auto bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm shadow-lg flex items-center justify-center gap-2">
                         <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <span>{submitError}</span>
+                        <span className="flex-1 text-center sm:text-left">{submitError}</span>
                         <button type="button" onClick={() => setSubmitError(null)} className="ml-2 hover:text-red-800">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -233,9 +233,9 @@ export default function QuickConsultBar() {
                     </div>
 
                     {/* 입력 필드들 */}
-                    <div className="flex flex-col sm:flex-row flex-1 gap-2 sm:gap-3">
+                    <div className="flex flex-col sm:flex-row flex-1 gap-3 sm:gap-3">
                       {/* 성함 */}
-                      <div className="relative flex-1 min-w-0 sm:max-w-[160px]">
+                      <div className="relative flex-1 min-w-0 w-full sm:max-w-[160px]">
                         <input
                           type="text"
                           value={name}
@@ -253,7 +253,7 @@ export default function QuickConsultBar() {
                       </div>
 
                       {/* 핸드폰 번호 */}
-                      <div className="relative flex-1 min-w-0 sm:max-w-[200px]">
+                      <div className="relative flex-1 min-w-0 w-full sm:max-w-[200px]">
                         <input
                           type="tel"
                           value={phone}

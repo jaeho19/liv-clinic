@@ -243,8 +243,18 @@ export default function Equipment() {
         </div>
       </div>
 
+      {/* 모바일 스와이프 힌트 */}
+      <div className="md:hidden text-center mt-4 text-mono-light text-sm">
+        <motion.span
+          animate={{ opacity: [0.5, 1, 0.5] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          ← 스와이프하여 더 보기 →
+        </motion.span>
+      </div>
+
       {/* 상태 표시 바 */}
-      <div className="container-custom mt-10 md:mt-14 relative z-10">
+      <div className="container-custom mt-6 md:mt-14 relative z-10">
         <div className="flex justify-between items-center text-xs font-mono" style={{ color: 'rgba(109,78,66,0.5)' }}>
           <span>{t('autoScrolling')}</span>
           <span className="flex items-center gap-2">

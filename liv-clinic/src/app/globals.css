@@ -477,6 +477,15 @@ body {
   .group:hover .group-hover\:scale-105 {
     transform: none;
   }
+
+  /* 터치 피드백 강화 - 누를 때 시각적 반응 */
+  button:active,
+  a:active,
+  [role="button"]:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+    transition: transform 0.1s ease, opacity 0.1s ease;
+  }
 }
 
 /* 호버 가능한 디바이스에서만 호버 효과 적용 */

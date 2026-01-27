@@ -102,7 +102,7 @@ export default function Signature() {
 
                       {/* Description */}
                       <div className="mt-4 md:mt-6 lg:mt-8">
-                        <p className="text-sm md:text-base opacity-90 mb-4 md:mb-6 leading-relaxed line-clamp-3 md:line-clamp-none">
+                        <p className="text-sm md:text-base opacity-90 mb-4 md:mb-6 leading-relaxed line-clamp-2 sm:line-clamp-3 md:line-clamp-none">
                           {program.description}
                         </p>
 

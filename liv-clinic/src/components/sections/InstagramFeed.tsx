@@ -337,21 +337,21 @@ export default function InstagramFeed() {
               </svg>
             </motion.a>
 
-            {/* 통계 정보 */}
-            <div className="mt-6 flex items-center justify-center gap-8 text-mono-light">
+            {/* 통계 정보 - 모바일 반응형 */}
+            <div className="mt-6 flex items-center justify-center gap-4 sm:gap-8 text-mono-light">
               <div className="text-center">
-                <p className="text-h4 text-secondary font-medium">2.5K+</p>
-                <p className="text-small">팔로워</p>
+                <p className="text-base sm:text-h4 text-secondary font-medium">2.5K+</p>
+                <p className="text-xs sm:text-small">팔로워</p>
               </div>
-              <div className="w-px h-8 bg-border" />
+              <div className="w-px h-6 sm:h-8 bg-border" />
               <div className="text-center">
-                <p className="text-h4 text-secondary font-medium">500+</p>
-                <p className="text-small">게시물</p>
+                <p className="text-base sm:text-h4 text-secondary font-medium">500+</p>
+                <p className="text-xs sm:text-small">게시물</p>
               </div>
-              <div className="w-px h-8 bg-border" />
+              <div className="w-px h-6 sm:h-8 bg-border" />
               <div className="text-center">
-                <p className="text-h4 text-secondary font-medium">Daily</p>
-                <p className="text-small">업데이트</p>
+                <p className="text-base sm:text-h4 text-secondary font-medium">Daily</p>
+                <p className="text-xs sm:text-small">업데이트</p>
               </div>
             </div>
           </div>

@@ -98,7 +98,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-[85vh] w-full overflow-hidden">
+    <section className="relative h-[100svh] sm:h-[85vh] min-h-[500px] w-full overflow-hidden">
       <div className="absolute inset-0 bg-primary">
         <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/90 to-secondary/70" />
         {/* 비디오 최적화 (Vercel Best Practice: rendering-hydration-no-flicker)
@@ -121,15 +121,18 @@ export default function Hero() {
         <div className="absolute inset-0 hero-vignette" />
       </div>
 
-      <AnimatedShapes />
-      <FloatingParticles />
+      {/* 모바일에서 성능을 위해 애니메이션 요소 숨김 */}
+      <div className="hidden sm:block">
+        <AnimatedShapes />
+        <FloatingParticles />
+      </div>
 
-      <div className="absolute top-0 left-0 w-32 h-32 pointer-events-none">
+      <div className="absolute top-0 left-0 w-24 sm:w-32 h-24 sm:h-32 pointer-events-none">
         <motion.svg viewBox="0 0 100 100" className="w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 0.3 }} transition={{ delay: 1 }}>
           <motion.path d="M0 50 L0 0 L50 0" fill="none" stroke="white" strokeWidth="0.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 1.5, duration: 1.5 }} />
         </motion.svg>
       </div>
-      <div className="absolute bottom-0 right-0 w-32 h-32 pointer-events-none">
+      <div className="absolute bottom-0 right-0 w-24 sm:w-32 h-24 sm:h-32 pointer-events-none">
         <motion.svg viewBox="0 0 100 100" className="w-full h-full" initial={{ opacity: 0 }} animate={{ opacity: 0.3 }} transition={{ delay: 1 }}>
           <motion.path d="M100 50 L100 100 L50 100" fill="none" stroke="white" strokeWidth="0.5" initial={{ pathLength: 0 }} animate={{ pathLength: 1 }} transition={{ delay: 1.5, duration: 1.5 }} />
         </motion.svg>
@@ -151,7 +154,7 @@ export default function Hero() {
           </motion.div>
         </AnimatePresence>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2">
           <motion.div className="flex flex-col items-center gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>
             <motion.span className="text-small tracking-[0.3em] uppercase" animate={{ opacity: [0.5, 1, 0.5] }} transition={{ duration: 2, repeat: Infinity }}>
               {t('common.scrollDown')}

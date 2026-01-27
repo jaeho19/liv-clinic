@@ -39,7 +39,7 @@ export default function Location() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Map */}
           <AnimateOnScroll animation="slideInLeft">
-            <div className="relative h-[400px] lg:h-full min-h-[400px] rounded-3xl overflow-hidden bg-mono-light/20">
+            <div className="relative h-[280px] sm:h-[350px] lg:h-full min-h-[280px] lg:min-h-[400px] rounded-3xl overflow-hidden bg-mono-light/20">
               {/* Naver Maps */}
               <NaverMap
                 lat={SITE_INFO.coordinates.lat}
@@ -51,22 +51,22 @@ export default function Location() {
 
               {/* Location badge */}
               <motion.div
-                className="absolute bottom-6 left-6 right-6 bg-white rounded-2xl shadow-lg p-4"
+                className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white rounded-2xl shadow-lg p-3 sm:p-4"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-primary flex items-center justify-center text-white flex-shrink-0">
+                    <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-secondary">{t('subwayInfo')}</p>
-                    <p className="text-small text-mono-light">{t('walkMinutes')}</p>
+                    <p className="font-medium text-secondary text-sm sm:text-base">{t('subwayInfo')}</p>
+                    <p className="text-xs sm:text-small text-mono-light">{t('walkMinutes')}</p>
                   </div>
                 </div>
               </motion.div>

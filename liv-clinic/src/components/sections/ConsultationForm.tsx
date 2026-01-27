@@ -193,7 +193,7 @@ export default function ConsultationForm() {
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-full px-6 py-3.5 bg-primary text-white font-medium rounded-xl hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-h-[52px]"
+                  className="w-full h-full px-6 py-3.5 bg-primary text-white font-medium rounded-xl hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 min-h-[48px] sm:min-h-[52px]"
                 >
                   {isSubmitting ? (
                     <>
@@ -226,17 +226,19 @@ export default function ConsultationForm() {
               </div>
             </div>
 
-            {/* 개인정보 동의 */}
+            {/* 개인정보 동의 - 터치 영역 확대 */}
             <div className="flex items-start gap-3 max-w-3xl mx-auto">
-              <input
-                {...register('agreePrivacy')}
-                type="checkbox"
-                id="agreePrivacy"
-                className="mt-1 w-4 h-4 rounded border-border text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"
-                disabled={isSubmitting}
-              />
-              <label htmlFor="agreePrivacy" className="text-sm text-mono-light cursor-pointer flex-1">
-                <span className="text-secondary font-medium">{t('required')}</span> {t('privacyConsent')}
+              <div className="relative flex items-center justify-center w-6 h-6 mt-0.5">
+                <input
+                  {...register('agreePrivacy')}
+                  type="checkbox"
+                  id="agreePrivacy"
+                  className="w-5 h-5 rounded border-border text-primary focus:ring-primary focus:ring-offset-0 cursor-pointer"
+                  disabled={isSubmitting}
+                />
+              </div>
+              <label htmlFor="agreePrivacy" className="text-sm text-mono-light cursor-pointer flex-1 min-h-[44px] flex items-center">
+                <span><span className="text-secondary font-medium">{t('required')}</span> {t('privacyConsent')}</span>
               </label>
             </div>
             {errors.agreePrivacy && (

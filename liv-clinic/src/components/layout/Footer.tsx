@@ -10,7 +10,7 @@ export default function Footer() {
   const tCommon = useTranslations('common');
 
   return (
-    <footer className="bg-secondary text-white pb-20 sm:pb-16">
+    <footer className="bg-secondary text-white pb-24 sm:pb-20 md:pb-16">
       {/* Main Footer */}
       <div className="container-custom py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">

@@ -204,13 +204,22 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
   const [isTapped, setIsTapped] = useState(false);
   const [showAfter, setShowAfter] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.3 });
   const crossfadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const hoverDelayRef = useRef<NodeJS.Timeout | null>(null);
   const tCommon = useTranslations('common');
 
-  // 3D Tilt Effect - 마우스 위치에 따른 카드 기울기
+  // 모바일 감지 - 3D 틸트 효과 비활성화용
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // 3D Tilt Effect - 마우스 위치에 따른 카드 기울기 (모바일에서 비활성화)
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -223,9 +232,9 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
   const glareX = useTransform(mouseX, [-0.5, 0.5], ['0%', '100%']);
   const glareY = useTransform(mouseY, [-0.5, 0.5], ['0%', '100%']);
 
-  // 마우스 이동 핸들러
+  // 마우스 이동 핸들러 (모바일에서 3D 틸트 비활성화)
   const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
-    if (reducedMotion || !cardRef.current) return;
+    if (reducedMotion || isMobile || !cardRef.current) return;
 
     const rect = cardRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -237,7 +246,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
 
     mouseX.set(normalizedX);
     mouseY.set(normalizedY);
-  }, [reducedMotion, mouseX, mouseY]);
+  }, [reducedMotion, isMobile, mouseX, mouseY]);
 
   const handleMouseLeave = useCallback(() => {
     mouseX.set(0);
@@ -382,7 +391,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
       style={{ perspective: '1000px' }}
     >
       <motion.div
-        className="relative h-full rounded-2xl overflow-hidden cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        className="relative h-full min-h-[380px] sm:min-h-[450px] lg:min-h-[520px] rounded-2xl overflow-hidden cursor-pointer group focus:outline-none focus-visible:ring-4 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={handleMouseLeave}
@@ -394,9 +403,8 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
           }
         }}
         style={{
-          minHeight: '520px',
-          rotateX: reducedMotion ? 0 : rotateX,
-          rotateY: reducedMotion ? 0 : rotateY,
+          rotateX: (reducedMotion || isMobile) ? 0 : rotateX,
+          rotateY: (reducedMotion || isMobile) ? 0 : rotateY,
           transformStyle: 'preserve-3d',
         }}
         initial={{
