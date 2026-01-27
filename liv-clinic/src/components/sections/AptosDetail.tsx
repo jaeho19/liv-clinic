@@ -185,11 +185,6 @@ const galleryImages = [
     caption: '조지아 본사 인증서 수여',
   },
   {
-    src: '/images/aptos/presentation.jpg',
-    alt: '김수영 원장 발표',
-    caption: 'Clinical Experience 발표',
-  },
-  {
     src: '/images/aptos/presentation-mips.jpg',
     alt: 'Clinical Experience 발표',
     caption: 'Clinical Experience 발표',
@@ -409,7 +404,7 @@ export default function AptosDetail() {
           </motion.div>
 
           {/* Gallery Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             {galleryImages.map((image, index) => (
               <motion.div
                 key={index}

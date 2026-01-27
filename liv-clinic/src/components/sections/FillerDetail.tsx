@@ -2,6 +2,7 @@
 
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
@@ -350,20 +351,19 @@ export default function FillerDetail() {
               transition={{ duration: 1, delay: 0.3 }}
               className="relative"
             >
-              {/* Glassmorphism video container */}
-              <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
-                <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover opacity-30"
-                >
-                  <source src="/images/antiaging/filler-hero.mp4" type="video/mp4" />
-                </video>
+              {/* Hero Image */}
+              <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#A89080]/20">
+                <Image
+                  src="/images/Gemini_Generated_Image_xrqs0pxrqs0pxrqs.png"
+                  alt="필러 - 볼륨과 윤곽의 아트"
+                  fill
+                  className="object-cover"
+                  quality={95}
+                  priority
+                />
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#A89080]/10 to-transparent" />
               </div>
-              <PremiumVolumeIllustration />
             </motion.div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
@@ -17,6 +18,189 @@ const colors = {
   rose: '#D4A5A5',
   gold: '#D4AF37',
 };
+
+// Treatment Areas Illustration Component
+const TreatmentAreasIllustration = () => (
+  <div className="relative w-full max-w-[480px] mx-auto">
+    <svg viewBox="0 0 400 650" className="w-full h-auto">
+      <defs>
+        {/* Premium gradients */}
+        <linearGradient id="skinGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#FFE8E0" />
+          <stop offset="50%" stopColor="#FFE4E1" />
+          <stop offset="100%" stopColor="#FAE0D8" />
+        </linearGradient>
+        <linearGradient id="roseGoldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#E8B4B8" />
+          <stop offset="100%" stopColor="#C4A484" />
+        </linearGradient>
+        <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stopColor="#FAF0EB" />
+          <stop offset="100%" stopColor="#F5E8E4" />
+        </linearGradient>
+        {/* Glow effect for markers */}
+        <filter id="markerGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2" result="blur" />
+          <feMerge>
+            <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
+
+      {/* Background */}
+      <rect width="400" height="650" fill="url(#bgGradient)" rx="24" />
+
+      {/* Face outline - slim feminine oval with pointed chin */}
+      <path
+        d="M200 75
+           Q265 85 280 150
+           Q290 200 275 260
+           Q255 310 200 330
+           Q145 310 125 260
+           Q110 200 120 150
+           Q135 85 200 75 Z"
+        fill="url(#skinGradient)"
+        stroke="#E8D5C4"
+        strokeWidth="2"
+      />
+
+      {/* Hair hint - flowing feminine style */}
+      <path d="M120 140 Q130 70 200 60 Q270 70 280 140" fill="none" stroke="#C4B0A0" strokeWidth="2" strokeLinecap="round" />
+      <path d="M115 155 Q125 90 200 80 Q275 90 285 155" fill="none" stroke="#D4C4BD" strokeWidth="1.5" strokeLinecap="round" opacity="0.6" />
+
+      {/* ===== Face Features ===== */}
+      {/* Eyebrows - elegant feminine arch */}
+      <path d="M140 163 Q155 155 172 158" fill="none" stroke="#C4B0A0" strokeWidth="2" strokeLinecap="round" />
+      <path d="M260 163 Q245 155 228 158" fill="none" stroke="#C4B0A0" strokeWidth="2" strokeLinecap="round" />
+
+      {/* Eyes - feminine almond shape */}
+      {/* Left eye */}
+      <g>
+        {/* Double eyelid crease */}
+        <path d="M142 172 Q157 167 172 172" fill="none" stroke="#E0D0C8" strokeWidth="0.8" strokeLinecap="round" />
+        {/* Upper eyelid - elegant almond */}
+        <path d="M140 178 Q150 171 157 171 Q164 171 174 178" fill="none" stroke="#C4B0A0" strokeWidth="1.2" strokeLinecap="round" />
+        {/* Lower eyelid - subtle curve */}
+        <path d="M143 181 Q157 185 171 181" fill="none" stroke="#D8C8C0" strokeWidth="0.8" strokeLinecap="round" />
+      </g>
+
+      {/* Right eye */}
+      <g>
+        {/* Double eyelid crease */}
+        <path d="M228 172 Q243 167 258 172" fill="none" stroke="#E0D0C8" strokeWidth="0.8" strokeLinecap="round" />
+        {/* Upper eyelid - elegant almond */}
+        <path d="M226 178 Q236 171 243 171 Q250 171 260 178" fill="none" stroke="#C4B0A0" strokeWidth="1.2" strokeLinecap="round" />
+        {/* Lower eyelid - subtle curve */}
+        <path d="M229 181 Q243 185 257 181" fill="none" stroke="#D8C8C0" strokeWidth="0.8" strokeLinecap="round" />
+      </g>
+
+      {/* Nose - delicate feminine */}
+      <path d="M200 188 L200 215 Q197 222 193 225" fill="none" stroke="#E8D5C4" strokeWidth="1" strokeLinecap="round" />
+      <path d="M193 225 Q200 228 207 225" fill="none" stroke="#E8D5C4" strokeWidth="1" strokeLinecap="round" />
+
+      {/* Lips - fuller feminine shape */}
+      <path d="M178 252 Q190 246 200 248 Q210 246 222 252" fill="none" stroke="#E8B4B8" strokeWidth="1.8" strokeLinecap="round" />
+      <path d="M178 252 Q200 264 222 252" fill="#F5E0E0" stroke="#D4A5A5" strokeWidth="1.2" strokeLinecap="round" opacity="0.5" />
+
+      {/* Neck - slender feminine */}
+      <path d="M165 325 L162 380 Q162 400 178 408 L222 408 Q238 400 238 380 L235 325" fill="url(#skinGradient)" stroke="#E8D5C4" strokeWidth="1.5" />
+
+      {/* Shoulders - soft feminine curves */}
+      <path d="M70 455 Q90 430 162 418 L162 435 Q110 440 88 462 L70 455" fill="url(#skinGradient)" stroke="#E8D5C4" strokeWidth="1.5" />
+      <path d="M330 455 Q310 430 238 418 L238 435 Q290 440 312 462 L330 455" fill="url(#skinGradient)" stroke="#E8D5C4" strokeWidth="1.5" />
+
+      {/* ===== Treatment markers with labels ===== */}
+      {/* 1. 이마 (Forehead) */}
+      <g filter="url(#markerGlow)">
+        <circle cx="200" cy="105" r="10" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="200" cy="105" r="5" fill="#E8B4B8" />
+      </g>
+      <line x1="210" y1="105" x2="280" y2="105" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
+      <text x="290" y="109" fill="#8B7355" fontSize="13" fontWeight="500">이마</text>
+
+      {/* 2. 미간 (Glabella) */}
+      <g filter="url(#markerGlow)">
+        <circle cx="200" cy="145" r="10" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="200" cy="145" r="5" fill="#E8B4B8" />
+      </g>
+      <line x1="210" y1="145" x2="280" y2="145" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
+      <text x="290" y="149" fill="#8B7355" fontSize="13" fontWeight="500">미간</text>
+
+      {/* 3. 눈가 (Crow's feet) - both sides */}
+      <g filter="url(#markerGlow)">
+        <circle cx="125" cy="180" r="8" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="125" cy="180" r="4" fill="#E8B4B8" />
+      </g>
+      <g filter="url(#markerGlow)">
+        <circle cx="275" cy="180" r="8" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="275" cy="180" r="4" fill="#E8B4B8" />
+      </g>
+      <line x1="117" y1="180" x2="55" y2="180" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
+      <text x="25" y="184" fill="#8B7355" fontSize="13" fontWeight="500">눈가</text>
+
+      {/* 4. 사각턱 (Masseter/Jawline) - both sides */}
+      <g filter="url(#markerGlow)">
+        <circle cx="125" cy="280" r="10" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="125" cy="280" r="5" fill="#E8B4B8" />
+      </g>
+      <g filter="url(#markerGlow)">
+        <circle cx="275" cy="280" r="10" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="275" cy="280" r="5" fill="#E8B4B8" />
+      </g>
+      <line x1="115" y1="280" x2="45" y2="280" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
+      <text x="10" y="284" fill="#8B7355" fontSize="13" fontWeight="500">사각턱</text>
+
+      {/* 5. 입꼬리 (Mouth corners) */}
+      <g filter="url(#markerGlow)">
+        <circle cx="168" cy="258" r="7" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="168" cy="258" r="3.5" fill="#E8B4B8" />
+      </g>
+      <g filter="url(#markerGlow)">
+        <circle cx="232" cy="258" r="7" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="232" cy="258" r="3.5" fill="#E8B4B8" />
+      </g>
+      <line x1="240" y1="258" x2="300" y2="258" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
+      <text x="310" y="262" fill="#8B7355" fontSize="13" fontWeight="500">입꼬리</text>
+
+      {/* 6. 승모근 (Trapezius) */}
+      <g filter="url(#markerGlow)">
+        <circle cx="90" cy="450" r="10" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="90" cy="450" r="5" fill="#E8B4B8" />
+      </g>
+      <g filter="url(#markerGlow)">
+        <circle cx="310" cy="450" r="10" fill="url(#roseGoldGradient)" opacity="0.3" />
+        <circle cx="310" cy="450" r="5" fill="#E8B4B8" />
+      </g>
+      <text x="200" y="485" textAnchor="middle" fill="#8B7355" fontSize="13" fontWeight="500">승모근</text>
+
+      {/* 7. 종아리 (Calves) - larger inset */}
+      <g transform="translate(115, 510)">
+        <rect x="0" y="0" width="170" height="110" rx="12" fill="#FFF8F6" stroke="#E8D5C4" strokeWidth="1.5" />
+        {/* Left calf */}
+        <path d="M45 20 Q55 55 45 90" stroke="#FAE0D8" strokeWidth="18" fill="none" strokeLinecap="round" />
+        <path d="M45 20 Q55 55 45 90" stroke="#FFE4E1" strokeWidth="12" fill="none" strokeLinecap="round" />
+        {/* Right calf */}
+        <path d="M125 20 Q135 55 125 90" stroke="#FAE0D8" strokeWidth="18" fill="none" strokeLinecap="round" />
+        <path d="M125 20 Q135 55 125 90" stroke="#FFE4E1" strokeWidth="12" fill="none" strokeLinecap="round" />
+        {/* Markers */}
+        <g filter="url(#markerGlow)">
+          <circle cx="45" cy="55" r="8" fill="url(#roseGoldGradient)" opacity="0.3" />
+          <circle cx="45" cy="55" r="4" fill="#E8B4B8" />
+        </g>
+        <g filter="url(#markerGlow)">
+          <circle cx="125" cy="55" r="8" fill="url(#roseGoldGradient)" opacity="0.3" />
+          <circle cx="125" cy="55" r="4" fill="#E8B4B8" />
+        </g>
+        <text x="85" y="128" textAnchor="middle" fill="#8B7355" fontSize="12" fontWeight="500">종아리</text>
+      </g>
+
+      {/* Decorative elements */}
+      <circle cx="30" cy="30" r="2" fill="#E8B4B8" opacity="0.5" />
+      <circle cx="370" cy="30" r="2" fill="#E8B4B8" opacity="0.5" />
+    </svg>
+  </div>
+);
 
 // Floating decorative orb component
 const FloatingOrb = ({ className, delay = 0 }: { className?: string; delay?: number }) => (
@@ -389,20 +573,19 @@ export default function BotoxDetail() {
               transition={{ duration: 1, delay: 0.3 }}
               className="relative"
             >
-              {/* Glassmorphism video container */}
-              <div className="absolute inset-0 rounded-[2rem] overflow-hidden">
-                <div className="absolute inset-0 bg-white/30 backdrop-blur-sm" />
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover opacity-30"
-                >
-                  <source src="/images/antiaging/botox-hero.mp4" type="video/mp4" />
-                </video>
+              {/* Hero Image */}
+              <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#C4A484]/20">
+                <Image
+                  src="/images/Gemini_Generated_Image_dx1pc4dx1pc4dx1p.png"
+                  alt="보톡스 - 특정 근육의 움직임을 완화"
+                  fill
+                  className="object-cover"
+                  quality={95}
+                  priority
+                />
+                {/* Subtle gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#C4A484]/10 to-transparent" />
               </div>
-              <PremiumMechanismIllustration />
             </motion.div>
           </div>
         </div>
@@ -507,20 +690,8 @@ export default function BotoxDetail() {
               viewport={{ once: true }}
               className="relative"
             >
-              {/* Premium video card */}
-              <div className="aspect-[3/4] rounded-[2rem] overflow-hidden relative">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                >
-                  <source src="/images/antiaging/botox-areas.mp4" type="video/mp4" />
-                </video>
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#3D3D3D]/20 to-transparent" />
-              </div>
+              {/* Treatment Areas Illustration */}
+              <TreatmentAreasIllustration />
             </motion.div>
           </div>
         </div>
