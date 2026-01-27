@@ -3,9 +3,10 @@ import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { routing } from '@/i18n/routing';
 import { pretendard, cormorant } from '@/styles/fonts';
-import { Header, Footer, FloatingCTA, BackToTop, ScrollProgress, QuickConsultBar } from '@/components/layout';
-import { GoogleAnalytics } from '@/components/analytics';
-import { generatePageMetadata, generateLocalBusinessSchema, BASE_URL } from '@/lib/seo';
+import { Header, Footer, QuickConsultBar } from '@/components/layout';
+import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema, BASE_URL } from '@/lib/seo';
 import '../globals.css';
 
 export function generateStaticParams() {
@@ -42,6 +43,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   const localBusinessSchema = generateLocalBusinessSchema();
+  const webSiteSchema = generateWebSiteSchema();
 
   const skipToContentText = {
     ko: '본문으로 건너뛰기',
@@ -63,10 +65,18 @@ export default async function LocaleLayout({
         {process.env.NEXT_PUBLIC_NAVER_VERIFICATION && (
           <meta name="naver-site-verification" content={process.env.NEXT_PUBLIC_NAVER_VERIFICATION} />
         )}
+        {/* LocalBusiness Schema (E-E-A-T) */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(localBusinessSchema),
+          }}
+        />
+        {/* WebSite Schema (AI 검색 최적화 - SearchAction) */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(webSiteSchema),
           }}
         />
         <GoogleAnalytics />
@@ -76,13 +86,11 @@ export default async function LocaleLayout({
           {skipToContentText[locale as keyof typeof skipToContentText] || skipToContentText.en}
         </a>
         <NextIntlClientProvider messages={messages}>
-          <ScrollProgress />
           <Header />
           <main id="main-content" className="min-h-screen page-enter pb-20 sm:pb-16" role="main">{children}</main>
           <Footer />
           <QuickConsultBar />
-          <FloatingCTA />
-          <BackToTop />
+          <ClientSideWidgets />
         </NextIntlClientProvider>
       </body>
     </html>

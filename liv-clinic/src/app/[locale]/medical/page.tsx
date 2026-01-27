@@ -229,12 +229,19 @@ export default function MedicalPage() {
                             exit={{ height: 0, opacity: 0 }}
                             transition={{ duration: 0.3 }}
                           >
-                            <div className="px-4 pb-4 md:px-6 md:pb-6 border-t border-border">
+                            <div className="px-4 pb-4 md:px-6 md:pb-6 border-t border-border faq-answer">
                               <div className="flex items-start gap-3 md:gap-4 pt-4 md:pt-5">
                                 <span className="flex-shrink-0 w-7 h-7 md:w-8 md:h-8 rounded-full bg-secondary/10 flex items-center justify-center">
                                   <span className="font-serif text-secondary text-sm md:text-base">A</span>
                                 </span>
                                 <div className="flex-1">
+                                  {/* 음성검색용 한 문장 정답 (있는 경우 먼저 표시) */}
+                                  {qa.shortAnswer && (
+                                    <p className="short-answer text-sm md:text-body text-primary font-medium mb-3 pb-3 border-b border-primary/20">
+                                      {qa.shortAnswer}
+                                    </p>
+                                  )}
+                                  {/* 상세 답변 */}
                                   <p className="text-sm md:text-body text-mono leading-relaxed mb-3 md:mb-4">
                                     {qa.answer}
                                   </p>

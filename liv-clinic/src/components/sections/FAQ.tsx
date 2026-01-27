@@ -1,25 +1,41 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { AnimateOnScroll } from '@/components/ui';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
+// 음성검색 최적화 FAQ 아이템 인터페이스
 interface FAQItem {
   question: string;
   answer: string;
+  // 음성검색용 한 문장 정답 (선택)
+  shortAnswer?: string;
+  // 구어체 질문 변형 (선택)
+  questionVariants?: string[];
 }
 
 interface FAQProps {
   category?: 'general' | 'treatment' | 'reservation' | 'aftercare';
+  // 외부에서 커스텀 FAQ 데이터 전달 가능 (MEDICAL_QA 등)
+  customItems?: FAQItem[];
+  // 섹션 제목 커스터마이징
+  title?: string;
+  subtitle?: string;
 }
 
-export default function FAQ({ category = 'general' }: FAQProps) {
+export default function FAQ({
+  category = 'general',
+  customItems,
+  title,
+  subtitle
+}: FAQProps) {
   const t = useTranslations('faq');
   const [openIndices, setOpenIndices] = useState<Set<number>>(new Set([0]));
 
-  const faqItems: FAQItem[] = [
+  // 외부 데이터가 있으면 사용, 없으면 번역 파일 데이터 사용
+  const faqItems: FAQItem[] = customItems || [
     { question: t('items.q1'), answer: t('items.a1') },
     { question: t('items.q2'), answer: t('items.a2') },
     { question: t('items.q3'), answer: t('items.a3') },
@@ -30,7 +46,8 @@ export default function FAQ({ category = 'general' }: FAQProps) {
     { question: t('items.q8'), answer: t('items.a8') },
   ];
 
-  const toggleItem = (index: number) => {
+  // useCallback으로 메모이제이션 - 불필요한 리렌더 방지 (Vercel Best Practice)
+  const toggleItem = useCallback((index: number) => {
     setOpenIndices((prev) => {
       const next = new Set(prev);
       if (next.has(index)) {
@@ -40,7 +57,7 @@ export default function FAQ({ category = 'general' }: FAQProps) {
       }
       return next;
     });
-  };
+  }, []);
 
   const isAllExpanded = openIndices.size === faqItems.length;
   const toggleAll = () => {
@@ -59,9 +76,9 @@ export default function FAQ({ category = 'general' }: FAQProps) {
         <AnimateOnScroll>
           <div className="text-center mb-12">
             <p className="font-serif text-h3 text-primary mb-4">FAQ</p>
-            <h2 className="text-h1 text-secondary mb-4">{t('title')}</h2>
+            <h2 className="text-h1 text-secondary mb-4">{title || t('title')}</h2>
             <p className="text-body text-mono-light max-w-2xl mx-auto">
-              {t('subtitle')}
+              {subtitle || t('subtitle')}
             </p>
           </div>
         </AnimateOnScroll>
@@ -118,7 +135,14 @@ export default function FAQ({ category = 'general' }: FAQProps) {
                       transition={{ duration: 0.3, ease: 'easeInOut' }}
                       className="overflow-hidden"
                     >
-                      <div className="pb-6 pr-16">
+                      <div className="pb-6 pr-16 faq-answer">
+                        {/* 음성검색용 한 문장 정답 (있는 경우 먼저 표시) */}
+                        {item.shortAnswer && (
+                          <p className="short-answer text-body text-primary font-medium mb-3 pb-3 border-b border-primary/20">
+                            {item.shortAnswer}
+                          </p>
+                        )}
+                        {/* 상세 답변 */}
                         <p className="text-body text-mono leading-relaxed whitespace-pre-line">
                           {item.answer}
                         </p>
