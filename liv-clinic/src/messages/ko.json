@@ -651,13 +651,421 @@
         "name": "써마지 FLX",
         "fullName": "Thermage FLX",
         "tagline": "고주파 피부 탄력 솔루션",
-        "description": "4세대 써마지 FLX는 기존 대비 25% 빠른 시술과 함께 전면적인 콜라겐 재생을 유도합니다."
+        "description": "4세대 써마지 FLX는 기존 대비 25% 빠른 시술과 함께 전면적인 콜라겐 재생을 유도합니다.",
+        "detail": {
+          "heroLabels": [
+            {
+              "top": { "title": "AccuREP", "subtitle": "자동 에너지 조절" },
+              "bottom": { "title": "Comfort Pulse", "subtitle": "진동 통증 완화" }
+            },
+            {
+              "top": { "title": "RF Technology", "subtitle": "콜라겐 수축 & 재생" },
+              "bottom": { "title": "14M+", "subtitle": "전세계 시술 건수" }
+            },
+            {
+              "top": { "title": "AccuTip", "subtitle": "3.0cm² 정밀 면적" },
+              "bottom": { "title": "멀츠 코리아", "subtitle": "공식 인증 클리닉" }
+            }
+          ],
+          "skinLayers": {
+            "epidermis": "표피",
+            "dermis": "진피",
+            "subcutaneous": "피하지방",
+            "fascia": "근막"
+          },
+          "timeline": {
+            "items": [
+              { "time": "시술 직후", "effect": "즉각적 탄력", "desc": "콜라겐 수축 효과" },
+              { "time": "1개월", "effect": "탄력 개선", "desc": "콜라겐 재생 시작" },
+              { "time": "3개월", "effect": "눈에 띄는 변화", "desc": "신생 콜라겐 증가" },
+              { "time": "6개월", "effect": "최대 효과", "desc": "콜라겐 리모델링 완료" },
+              { "time": "12개월+", "effect": "효과 유지", "desc": "연 1회 유지 권장" }
+            ]
+          },
+          "comparison": {
+            "title": "써마지 세대별 비교",
+            "subtitle": "4세대 FLX는 기존 세대 대비 획기적으로 개선된 최신 기술입니다",
+            "headers": {
+              "feature": "비교 항목",
+              "flx": "FLX (4세대)",
+              "cpt": "CPT (3세대)",
+              "nxt": "NXT (2세대)"
+            },
+            "rows": [
+              { "feature": "기술", "flx": "AccuREP 자동 조절", "cpt": "수동 에너지 설정", "nxt": "1세대 기술" },
+              { "feature": "시술 시간", "flx": "25% 단축", "cpt": "표준", "nxt": "가장 김" },
+              { "feature": "통증", "flx": "진동 기술로 최소화", "cpt": "중간", "nxt": "높음" },
+              { "feature": "효과 균일성", "flx": "최적 자동 조절", "cpt": "시술자 의존", "nxt": "불균일 가능" },
+              { "feature": "팁 종류", "flx": "900/600/400/225", "cpt": "900/600/400", "nxt": "제한적" },
+              { "feature": "눈가 전용", "flx": "Total Tip O", "cpt": "Eye Tip O", "nxt": "X" }
+            ]
+          },
+          "tips": {
+            "title": "부위별 맞춤 팁",
+            "subtitle": "다양한 크기의 팁으로 부위에 따라 최적화된 시술이 가능합니다",
+            "items": [
+              { "shots": "900", "area": "바디", "desc": "넓은 면적" },
+              { "shots": "600", "area": "얼굴", "desc": "볼, 이마" },
+              { "shots": "400", "area": "중안면", "desc": "볼, 턱선" },
+              { "shots": "225", "area": "눈가/입가", "desc": "섬세 부위" }
+            ]
+          },
+          "hero": {
+            "badge": "4세대 프리미엄 고주파",
+            "title": "써마지 FLX",
+            "description": "AccuREP 기술로 피부 상태에 맞는 최적 에너지 자동 조절.<br />진동 기술로 통증은 줄이고, 효과는 높이는 고주파 리프팅.",
+            "stats": {
+              "treatments": { "value": "14M+", "label": "전세계 시술 건수" },
+              "time": { "value": "25%", "label": "시술시간 단축" },
+              "satisfaction": { "value": "93%", "label": "환자 만족도" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Thermage",
+            "title": "써마지 FLX란?",
+            "description": "써마지 FLX는 <strong>전 세계 1,400만 건 이상</strong> 시술된 글로벌 No.1 고주파(RF) 리프팅 장비입니다. 특허받은 AccuREP 기술로 피부 임피던스를 실시간 측정하여 최적의 에너지를 자동으로 조절하며, 콜라겐 수축과 재생을 통해 피부 탄력을 개선합니다.",
+            "rfPrinciple": {
+              "title": "고주파 에너지의 원리",
+              "steps": [
+                {
+                  "num": "1",
+                  "title": "RF 에너지 전달",
+                  "desc": "고주파 에너지가 진피층에 균일하게 전달되어 65-75°C의 열을 발생시킵니다."
+                },
+                {
+                  "num": "2",
+                  "title": "콜라겐 수축",
+                  "desc": "열 에너지로 기존 콜라겐이 수축되어 즉각적인 탄력 개선 효과가 나타납니다."
+                },
+                {
+                  "num": "3",
+                  "title": "신생 콜라겐 생성",
+                  "desc": "3-6개월에 걸쳐 신생 콜라겐이 생성되며 지속적인 탄력 개선이 이루어집니다."
+                }
+              ]
+            },
+            "temperature": "65-75°C",
+            "collagenLabel": "콜라겐 수축 & 재생"
+          },
+          "whyThermage": {
+            "sectionLabel": "Why Thermage FLX?",
+            "title": "왜 써마지 FLX인가?",
+            "cards": {
+              "accuRep": {
+                "title": "AccuREP 기술",
+                "desc": "피부 임피던스를 <strong>실시간 측정</strong>하여 각 부위에 최적화된 에너지를 자동으로 조절합니다. 균일하고 안전한 시술 결과를 보장합니다."
+              },
+              "comfortPulse": {
+                "title": "Comfort Pulse",
+                "desc": "특허받은 진동 기술로 시술 중 <strong>통증을 최소화</strong>합니다. 무마취로도 편안하게 시술받을 수 있습니다."
+              },
+              "collagenRemodeling": {
+                "title": "콜라겐 리모델링",
+                "desc": "시술 직후 <strong>즉각적 수축 효과</strong>와 함께 3-6개월에 걸친 신생 콜라겐 생성으로 점진적인 탄력 개선이 이루어집니다."
+              }
+            },
+            "globalTrust": {
+              "title": "Global Trust",
+              "treatments": { "value": "14M+", "label": "전세계 시술 건수" },
+              "satisfaction": { "value": "93%", "label": "환자 만족도" },
+              "time": { "value": "25%", "label": "시술 시간 단축" },
+              "duration": { "value": "1년+", "label": "효과 지속 기간" },
+              "source": "출처: Solta Medical 공식 임상 데이터"
+            }
+          },
+          "tipsSection": {
+            "sectionLabel": "Treatment Tips",
+            "title": "부위별 맞춤 팁",
+            "subtitle": "다양한 크기의 팁으로 부위에 따라 최적화된 시술이 가능합니다",
+            "eye": {
+              "sectionLabel": "Thermage Eye",
+              "title": "써마지 아이",
+              "desc": "눈가 전용 Total Tip으로 눈꺼풀 처짐, 눈밑 주름, 까마귀발 개선에 효과적입니다. 눈가 피부는 얇고 예민하기 때문에 전용 팁으로 섬세하게 시술합니다.",
+              "benefits": [
+                "눈꺼풀 탄력 개선",
+                "눈밑 주름 완화",
+                "눈가 전체 타이트닝"
+              ]
+            }
+          },
+          "generationCompare": {
+            "sectionLabel": "Generation Comparison",
+            "title": "써마지 세대별 비교",
+            "subtitle": "4세대 FLX는 기존 세대 대비 획기적으로 개선된 최신 기술입니다"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "리브만의 써마지",
+            "cards": {
+              "genuine": {
+                "title": "정품 인증 클리닉",
+                "desc": "솔타메디칼 공식 인증 클리닉으로 정품 장비와 팁만 사용합니다. 시리얼 번호 확인 및 정품 인증서 발급이 가능합니다."
+              },
+              "transparent": {
+                "title": "샷 수 투명 공개",
+                "desc": "시술 전 계획된 샷 수와 실제 사용된 샷 수를 투명하게 공개합니다. 정직한 시술을 약속드립니다."
+              },
+              "specialist": {
+                "title": "전문의 직접 시술",
+                "desc": "피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다. 개인별 맞춤 시술 계획을 수립합니다."
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "써마지 시술 후 즉각적 효과와 점진적 콜라겐 재생이 함께 나타납니다"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "시술 정보",
+            "labels": {
+              "duration": "시술 시간",
+              "anesthesia": "마취",
+              "recovery": "회복 기간",
+              "results": "효과 지속"
+            },
+            "recommendedShots": {
+              "title": "부위별 권장 샷 수",
+              "fullFace": { "shots": "300-400", "label": "전안면" },
+              "lowerFace": { "shots": "200-300", "label": "하안면" },
+              "eye": { "shots": "225", "label": "눈가 (아이)" },
+              "fullFaceNeck": { "shots": "500-900", "label": "전안면 + 목" }
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "자주 묻는 질문",
+            "extendedFaqs": [
+              {
+                "q": "써마지와 울쎄라피 프라임 중 어떤 시술이 좋나요?",
+                "a": "두 시술은 상호 보완적입니다. 울쎄라피 프라임은 SMAS층의 깊은 리프팅에 효과적이고, 써마지는 진피층 콜라겐 수축으로 전체적 탄력 개선에 탁월합니다. 처짐이 심하면 울쎄라피 프라임, 탄력 저하가 주 고민이면 써마지를 권장합니다."
+              },
+              {
+                "q": "써마지 시술 중 통증이 많이 느껴지나요?",
+                "a": "FLX는 진동 기술(Comfort Pulse Technology)로 시술 중 불편감을 최소화했습니다. 무마취로 진행 가능하며, 대부분의 환자분들이 참을 수 있는 수준의 열감만 느끼십니다."
+              },
+              {
+                "q": "써마지 정품 확인은 어떻게 하나요?",
+                "a": "리브성형외과는 솔타메디칼 공식 인증 클리닉입니다. 시술 전 정품 팁의 시리얼 번호와 실제 샷 수를 확인하실 수 있으며, 시술 후 정품 인증서를 발급해드립니다."
+              }
+            ],
+            "moreInfo": "더 많은 의료 정보가 궁금하신가요?",
+            "viewMedicalQA": "의료정보 Q&A 더보기"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "써마지 상담 예약",
+            "description": "전문 의료진과 1:1 맞춤 상담을 통해<br />나에게 맞는 최적의 시술 계획을 수립해보세요.",
+            "bookConsultation": "무료 상담 예약하기",
+            "businessHours": "평일 10:00-19:00",
+            "location": "신사역 4번 출구 도보 3분"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "함께 보면 좋은 시술"
+          }
+        }
       },
       "density": {
         "name": "덴서티",
         "fullName": "Density",
-        "tagline": "울쎄라피 프라임 정품 2세대",
-        "description": "울쎄라피 프라임의 정품 2세대 기술로 더욱 정밀하고 효과적인 리프팅을 제공합니다."
+        "tagline": "RF 에너지로 완성하는 탄력 리프팅",
+        "description": "고주파(RF) 에너지로 피부 속 콜라겐을 촘촘하게 리모델링. 정밀하고 균일한 에너지로 탄력 있는 피부를 완성합니다.",
+        "detail": {
+          "illustrations": {
+            "dualEnergy": {
+              "hifu": "초음파",
+              "rf": "고주파",
+              "synergy": "Dual Energy Synergy"
+            },
+            "multiLayer": {
+              "epidermis": "표피 (RF)",
+              "dermis": "진피 (HIFU+RF)",
+              "smas": "SMAS (HIFU)",
+              "title": "다층 타겟팅"
+            },
+            "cooling": {
+              "title": "쿨링 시스템"
+            },
+            "diagram": {
+              "epidermis": "표피",
+              "dermis": "진피",
+              "subcutaneous": "피하지방",
+              "smas": "SMAS"
+            }
+          },
+          "timeline": {
+            "items": [
+              { "time": "시술 직후", "effect": "즉각적 탄력", "desc": "콜라겐 수축", "percent": 40 },
+              { "time": "2주", "effect": "탄력 개선", "desc": "RF 효과 발현", "percent": 55 },
+              { "time": "1개월", "effect": "피부결 개선", "desc": "콜라겐 재생 시작", "percent": 70 },
+              { "time": "3개월", "effect": "최대 효과", "desc": "RF 콜라겐 리모델링", "percent": 100 },
+              { "time": "6개월+", "effect": "효과 유지", "desc": "정기 관리 권장", "percent": 90 }
+            ]
+          },
+          "comparison": {
+            "headers": {
+              "feature": "비교 항목",
+              "density": "덴서티",
+              "ulthera": "울쎄라피 프라임",
+              "thermage": "써마지"
+            },
+            "rows": [
+              { "feature": "에너지 종류", "density": "RF (고주파)", "ulthera": "HIFU (초음파)", "thermage": "RF (고주파)" },
+              { "feature": "타겟 깊이", "density": "진피층 중심", "ulthera": "SMAS 중심", "thermage": "진피층 중심" },
+              { "feature": "에너지 분포", "density": "균일하고 정밀", "ulthera": "집속형", "thermage": "광범위" },
+              { "feature": "통증", "density": "낮음", "ulthera": "중간~높음", "thermage": "낮음" },
+              { "feature": "시술 시간", "density": "30-40분", "ulthera": "60-90분", "thermage": "45-60분" },
+              { "feature": "가격대", "density": "합리적", "ulthera": "프리미엄", "thermage": "프리미엄" },
+              { "feature": "추천 대상", "density": "탄력/모공 관리", "ulthera": "처짐 심한 경우", "thermage": "탄력 저하" }
+            ]
+          },
+          "extendedFaqs": [
+            {
+              "q": "덴서티는 한 번만 받아도 효과가 있나요?",
+              "a": "네, 1회 시술로도 즉각적인 리프팅 효과를 경험할 수 있습니다. 하지만 최적의 결과를 위해 피부 상태에 따라 3-6개월 간격으로 2-3회 시술을 권장합니다."
+            },
+            {
+              "q": "덴서티 시술 후 다운타임이 있나요?",
+              "a": "일반적으로 다운타임이 거의 없습니다. 시술 직후 약간의 붉은기나 부기가 있을 수 있으나 대부분 당일 내 사라집니다. 바로 일상생활과 메이크업이 가능합니다."
+            },
+            {
+              "q": "울쎄라피 프라임이나 써마지를 받았는데 덴서티도 받을 수 있나요?",
+              "a": "네, 가능합니다. 다만 이전 시술과 최소 3개월 이상 간격을 두는 것이 좋습니다. 상담을 통해 피부 상태를 확인하고 최적의 시술 시기를 결정합니다."
+            }
+          ],
+          "hero": {
+            "badge": "RF 고주파 리프팅",
+            "title": "덴서티",
+            "description": "고주파(RF) 에너지로 피부 속 콜라겐을 촘촘하게 리모델링.<br />정밀하고 균일한 에너지로 탄력 있는 피부를 완성합니다.",
+            "stats": {
+              "energy": { "value": "RF", "label": "고주파 에너지" },
+              "layers": { "value": "4층", "label": "다층 타겟팅" },
+              "effect": { "value": "즉각", "label": "리프팅 효과" }
+            },
+            "floatingBadges": {
+              "rf": { "title": "RF", "subtitle": "정밀 고주파" },
+              "skin": { "title": "RF", "subtitle": "피부 탄력" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Density",
+            "title": "덴서티란?",
+            "description": "덴서티는 <strong>고주파(RF)</strong> 에너지로 진피층을 정밀하게 자극하는 프리미엄 리프팅 장비입니다. 써마지와 같은 고주파 계열로, 정밀하고 균일한 에너지 분포로 콜라겐 재생을 촉진하고 피부 탄력을 개선합니다.",
+            "rfPrinciple": {
+              "title": "RF 고주파의 원리",
+              "cards": {
+                "rf": {
+                  "label": "RF",
+                  "title": "고주파 에너지",
+                  "desc": "진피층에 열 에너지를 정밀하게 전달하여 콜라겐 수축과 재생을 유도, 피부 탄력을 개선합니다."
+                },
+                "uniform": {
+                  "label": "균일",
+                  "title": "정밀한 에너지 분포",
+                  "desc": "균일하고 정밀한 에너지 전달로 효과적인 콜라겐 리모델링을 이끌어냅니다."
+                },
+                "synergy": {
+                  "label": "+",
+                  "title": "시너지 효과",
+                  "desc": "두 에너지의 동시 작용으로 단독 시술 대비 더욱 강력하고 지속적인 리프팅 효과를 경험할 수 있습니다."
+                }
+              }
+            }
+          },
+          "whyDensity": {
+            "sectionLabel": "Why Density?",
+            "title": "왜 덴서티인가?",
+            "cards": {
+              "rf": {
+                "title": "RF 고주파",
+                "desc": "정밀한 고주파 에너지로 <strong>진피층 콜라겐을 균일하게 자극</strong>하여 탄력과 피부결을 동시에 개선합니다."
+              },
+              "affordable": {
+                "title": "합리적 가격",
+                "desc": "써마지와 같은 고주파 계열이지만 <strong>보다 합리적인 비용</strong>으로 꾸준한 리프팅 관리가 가능합니다."
+              },
+              "cooling": {
+                "title": "쿨링 시스템",
+                "desc": "내장 쿨링 시스템으로 <strong>시술 중 통증을 최소화</strong>하고 표피를 보호하여 편안한 시술이 가능합니다."
+              }
+            },
+            "clinicalBanner": {
+              "label": "RF Lifting Benefits",
+              "stats": {
+                "energy": { "value": "RF", "label": "고주파 에너지" },
+                "precision": { "value": "정밀", "label": "균일한 분포" },
+                "duration": { "value": "40분", "label": "빠른 시술" },
+                "effect": { "value": "즉각", "label": "효과 확인" }
+              }
+            }
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "덴서티 vs 타 장비",
+            "subtitle": "정밀한 RF 에너지로 탄력과 모공을 동시에 케어합니다",
+            "combinationNote": {
+              "title": "HIFU와의 복합 시술",
+              "desc": "덴서티(RF)는 울쎄라피 프라임, 슈링크(HIFU) 계열과 병행 시 다양한 층을 아우르는 복합 탄력 시술이 가능합니다. 합리적인 비용으로 꾸준한 리프팅 관리를 원하시는 분께 적합합니다."
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "리브만의 덴서티",
+            "cards": {
+              "custom": {
+                "title": "맞춤형 에너지 설정",
+                "desc": "피부 상태와 고민에 따라 RF 에너지 강도를 최적화하여 개인 맞춤 시술을 진행합니다."
+              },
+              "genuine": {
+                "title": "정품 장비 사용",
+                "desc": "정품 덴서티 장비로 안전하고 효과적인 시술을 제공합니다. 정기적인 장비 점검으로 최상의 상태를 유지합니다."
+              },
+              "specialist": {
+                "title": "전문의 직접 시술",
+                "desc": "피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다. 풍부한 경험으로 최적의 결과를 도출합니다."
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "덴서티 시술 후 즉각적 효과와 점진적 개선이 함께 나타납니다"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "시술 정보",
+            "labels": {
+              "duration": "시술 시간",
+              "anesthesia": "마취",
+              "recovery": "회복 기간",
+              "results": "효과 지속"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "자주 묻는 질문",
+            "moreInfo": "더 많은 의료 정보가 궁금하신가요?",
+            "viewMedicalQA": "의료정보 Q&A 더보기"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "덴서티 상담 예약",
+            "description": "전문 의료진과 1:1 맞춤 상담을 통해<br />나에게 맞는 최적의 시술 계획을 수립해보세요.",
+            "bookConsultation": "무료 상담 예약하기",
+            "businessHours": "평일 10:00-19:00",
+            "location": "신사역 4번 출구 도보 3분"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "함께 보면 좋은 시술"
+          }
+        }
       },
       "inmode": {
         "name": "인모드",

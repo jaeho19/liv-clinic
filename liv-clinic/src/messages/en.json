@@ -649,13 +649,421 @@
         "name": "Thermage FLX",
         "fullName": "Thermage FLX",
         "tagline": "RF Skin Tightening Solution",
-        "description": "4th generation Thermage FLX offers 25% faster treatment while promoting comprehensive collagen regeneration."
+        "description": "4th generation Thermage FLX offers 25% faster treatment while promoting comprehensive collagen regeneration.",
+        "detail": {
+          "heroLabels": [
+            {
+              "top": { "title": "AccuREP", "subtitle": "Auto Energy Control" },
+              "bottom": { "title": "Comfort Pulse", "subtitle": "Vibration Pain Relief" }
+            },
+            {
+              "top": { "title": "RF Technology", "subtitle": "Collagen Contraction & Regeneration" },
+              "bottom": { "title": "14M+", "subtitle": "Global Treatments" }
+            },
+            {
+              "top": { "title": "AccuTip", "subtitle": "3.0cm² Precision Area" },
+              "bottom": { "title": "Merz Korea", "subtitle": "Certified Clinic" }
+            }
+          ],
+          "skinLayers": {
+            "epidermis": "Epidermis",
+            "dermis": "Dermis",
+            "subcutaneous": "Subcutaneous Fat",
+            "fascia": "Fascia"
+          },
+          "timeline": {
+            "items": [
+              { "time": "Immediately", "effect": "Instant Tightening", "desc": "Collagen contraction effect" },
+              { "time": "1 Month", "effect": "Elasticity Improvement", "desc": "Collagen regeneration begins" },
+              { "time": "3 Months", "effect": "Visible Changes", "desc": "New collagen increases" },
+              { "time": "6 Months", "effect": "Maximum Effect", "desc": "Collagen remodeling complete" },
+              { "time": "12 Months+", "effect": "Sustained Results", "desc": "Annual maintenance recommended" }
+            ]
+          },
+          "comparison": {
+            "title": "Thermage Generation Comparison",
+            "subtitle": "4th generation FLX features dramatically improved technology over previous generations",
+            "headers": {
+              "feature": "Feature",
+              "flx": "FLX (4th Gen)",
+              "cpt": "CPT (3rd Gen)",
+              "nxt": "NXT (2nd Gen)"
+            },
+            "rows": [
+              { "feature": "Technology", "flx": "AccuREP Auto Control", "cpt": "Manual Energy Setting", "nxt": "1st Gen Technology" },
+              { "feature": "Treatment Time", "flx": "25% Reduced", "cpt": "Standard", "nxt": "Longest" },
+              { "feature": "Pain", "flx": "Minimized with Vibration", "cpt": "Moderate", "nxt": "High" },
+              { "feature": "Uniformity", "flx": "Optimal Auto Adjustment", "cpt": "Operator Dependent", "nxt": "May Be Uneven" },
+              { "feature": "Tip Types", "flx": "900/600/400/225", "cpt": "900/600/400", "nxt": "Limited" },
+              { "feature": "Eye Dedicated", "flx": "Total Tip O", "cpt": "Eye Tip O", "nxt": "X" }
+            ]
+          },
+          "tips": {
+            "title": "Customized Tips by Area",
+            "subtitle": "Various tip sizes allow optimized treatment for each area",
+            "items": [
+              { "shots": "900", "area": "Body", "desc": "Large areas" },
+              { "shots": "600", "area": "Face", "desc": "Cheeks, Forehead" },
+              { "shots": "400", "area": "Mid-face", "desc": "Cheeks, Jawline" },
+              { "shots": "225", "area": "Eyes/Mouth", "desc": "Delicate areas" }
+            ]
+          },
+          "hero": {
+            "badge": "4th Gen Premium RF",
+            "title": "Thermage FLX",
+            "description": "AccuREP technology automatically adjusts optimal energy for your skin condition.<br />Vibration technology reduces pain while enhancing results.",
+            "stats": {
+              "treatments": { "value": "14M+", "label": "Global Treatments" },
+              "time": { "value": "25%", "label": "Reduced Treatment Time" },
+              "satisfaction": { "value": "93%", "label": "Patient Satisfaction" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Thermage",
+            "title": "What is Thermage FLX?",
+            "description": "Thermage FLX is the global No.1 RF lifting device with <strong>over 14 million treatments worldwide</strong>. The patented AccuREP technology measures skin impedance in real-time to automatically adjust optimal energy, improving skin elasticity through collagen contraction and regeneration.",
+            "rfPrinciple": {
+              "title": "RF Energy Principle",
+              "steps": [
+                {
+                  "num": "1",
+                  "title": "RF Energy Delivery",
+                  "desc": "RF energy is uniformly delivered to the dermis, generating heat of 65-75°C."
+                },
+                {
+                  "num": "2",
+                  "title": "Collagen Contraction",
+                  "desc": "Heat energy contracts existing collagen, producing immediate tightening effects."
+                },
+                {
+                  "num": "3",
+                  "title": "New Collagen Production",
+                  "desc": "New collagen is generated over 3-6 months, providing continuous elasticity improvement."
+                }
+              ]
+            },
+            "temperature": "65-75°C",
+            "collagenLabel": "Collagen Contraction & Regeneration"
+          },
+          "whyThermage": {
+            "sectionLabel": "Why Thermage FLX?",
+            "title": "Why Choose Thermage FLX?",
+            "cards": {
+              "accuRep": {
+                "title": "AccuREP Technology",
+                "desc": "<strong>Real-time measurement</strong> of skin impedance automatically adjusts optimal energy for each area. Ensures uniform and safe treatment results."
+              },
+              "comfortPulse": {
+                "title": "Comfort Pulse",
+                "desc": "Patented vibration technology <strong>minimizes pain</strong> during treatment. Comfortable treatment possible without anesthesia."
+              },
+              "collagenRemodeling": {
+                "title": "Collagen Remodeling",
+                "desc": "<strong>Immediate contraction effect</strong> after treatment, followed by gradual elasticity improvement through new collagen production over 3-6 months."
+              }
+            },
+            "globalTrust": {
+              "title": "Global Trust",
+              "treatments": { "value": "14M+", "label": "Global Treatments" },
+              "satisfaction": { "value": "93%", "label": "Patient Satisfaction" },
+              "time": { "value": "25%", "label": "Reduced Treatment Time" },
+              "duration": { "value": "1 Year+", "label": "Effect Duration" },
+              "source": "Source: Solta Medical Official Clinical Data"
+            }
+          },
+          "tipsSection": {
+            "sectionLabel": "Treatment Tips",
+            "title": "Customized Tips by Area",
+            "subtitle": "Various tip sizes allow optimized treatment for each area",
+            "eye": {
+              "sectionLabel": "Thermage Eye",
+              "title": "Thermage Eye",
+              "desc": "The dedicated Total Tip for eyes effectively improves eyelid sagging, under-eye wrinkles, and crow's feet. Eye skin is thin and sensitive, requiring delicate treatment with a dedicated tip.",
+              "benefits": [
+                "Eyelid elasticity improvement",
+                "Under-eye wrinkle reduction",
+                "Overall eye area tightening"
+              ]
+            }
+          },
+          "generationCompare": {
+            "sectionLabel": "Generation Comparison",
+            "title": "Thermage Generation Comparison",
+            "subtitle": "4th generation FLX features dramatically improved technology over previous generations"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV's Thermage Difference",
+            "cards": {
+              "genuine": {
+                "title": "Certified Genuine Clinic",
+                "desc": "As an official Solta Medical certified clinic, we only use genuine equipment and tips. Serial number verification and authenticity certificates available."
+              },
+              "transparent": {
+                "title": "Transparent Shot Count",
+                "desc": "We transparently disclose planned and actual shot counts before and after treatment. We promise honest treatment."
+              },
+              "specialist": {
+                "title": "Specialist Direct Treatment",
+                "desc": "Board-certified dermatologists/plastic surgeons conduct consultation through treatment. Personalized treatment plans are established."
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "Experience immediate effects and gradual collagen regeneration after Thermage treatment"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "Treatment Information",
+            "labels": {
+              "duration": "Treatment Time",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery Period",
+              "results": "Effect Duration"
+            },
+            "recommendedShots": {
+              "title": "Recommended Shots by Area",
+              "fullFace": { "shots": "300-400", "label": "Full Face" },
+              "lowerFace": { "shots": "200-300", "label": "Lower Face" },
+              "eye": { "shots": "225", "label": "Eye Area" },
+              "fullFaceNeck": { "shots": "500-900", "label": "Full Face + Neck" }
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "Frequently Asked Questions",
+            "extendedFaqs": [
+              {
+                "q": "Which is better, Thermage or Ultherapy Prime?",
+                "a": "The two treatments are complementary. Ultherapy Prime is effective for deep lifting of the SMAS layer, while Thermage excels at overall elasticity improvement through dermal collagen contraction. Ultherapy Prime is recommended for severe sagging, Thermage for elasticity concerns."
+              },
+              {
+                "q": "Is the Thermage treatment painful?",
+                "a": "FLX minimizes discomfort during treatment with Comfort Pulse Technology. Treatment can be performed without anesthesia, and most patients only feel a tolerable level of heat."
+              },
+              {
+                "q": "How can I verify Thermage authenticity?",
+                "a": "LIV Plastic Surgery is an official Solta Medical certified clinic. You can verify the serial number and actual shot count of genuine tips before treatment, and receive an authenticity certificate after treatment."
+              }
+            ],
+            "moreInfo": "Want more medical information?",
+            "viewMedicalQA": "View Medical Q&A"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "Book Thermage Consultation",
+            "description": "Through 1:1 personalized consultation with our medical team,<br />establish the optimal treatment plan for you.",
+            "bookConsultation": "Book Free Consultation",
+            "businessHours": "Weekdays 10:00-19:00",
+            "location": "3 min walk from Sinsa Station Exit 4"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "Related Treatments"
+          }
+        }
       },
       "density": {
         "name": "Density",
         "fullName": "Density",
-        "tagline": "2nd Generation Ultherapy Prime",
-        "description": "The genuine 2nd generation Ultherapy Prime technology provides more precise and effective lifting."
+        "tagline": "RF Energy for Elasticity Lifting",
+        "description": "RF (radiofrequency) energy densely remodels collagen within the skin. Precise and uniform energy for firm, elastic skin.",
+        "detail": {
+          "illustrations": {
+            "dualEnergy": {
+              "hifu": "Ultrasound",
+              "rf": "Radiofrequency",
+              "synergy": "Dual Energy Synergy"
+            },
+            "multiLayer": {
+              "epidermis": "Epidermis (RF)",
+              "dermis": "Dermis (HIFU+RF)",
+              "smas": "SMAS (HIFU)",
+              "title": "Multi-Layer Targeting"
+            },
+            "cooling": {
+              "title": "Cooling System"
+            },
+            "diagram": {
+              "epidermis": "Epidermis",
+              "dermis": "Dermis",
+              "subcutaneous": "Subcutaneous",
+              "smas": "SMAS"
+            }
+          },
+          "timeline": {
+            "items": [
+              { "time": "Immediately", "effect": "Instant Tightening", "desc": "Collagen contraction", "percent": 40 },
+              { "time": "2 Weeks", "effect": "Elasticity Improvement", "desc": "RF effect manifests", "percent": 55 },
+              { "time": "1 Month", "effect": "Skin Texture Improvement", "desc": "Collagen regeneration starts", "percent": 70 },
+              { "time": "3 Months", "effect": "Peak Results", "desc": "RF collagen remodeling", "percent": 100 },
+              { "time": "6 Months+", "effect": "Maintained Results", "desc": "Regular maintenance recommended", "percent": 90 }
+            ]
+          },
+          "comparison": {
+            "headers": {
+              "feature": "Comparison",
+              "density": "Density",
+              "ulthera": "Ultherapy Prime",
+              "thermage": "Thermage"
+            },
+            "rows": [
+              { "feature": "Energy Type", "density": "RF (Radiofrequency)", "ulthera": "HIFU (Ultrasound)", "thermage": "RF (Radiofrequency)" },
+              { "feature": "Target Depth", "density": "Dermis-focused", "ulthera": "SMAS-focused", "thermage": "Dermis-focused" },
+              { "feature": "Energy Distribution", "density": "Uniform & Precise", "ulthera": "Focused", "thermage": "Broad" },
+              { "feature": "Pain Level", "density": "Low", "ulthera": "Medium-High", "thermage": "Low" },
+              { "feature": "Treatment Time", "density": "30-40 min", "ulthera": "60-90 min", "thermage": "45-60 min" },
+              { "feature": "Price Range", "density": "Affordable", "ulthera": "Premium", "thermage": "Premium" },
+              { "feature": "Recommended For", "density": "Elasticity/Pore care", "ulthera": "Significant sagging", "thermage": "Loss of elasticity" }
+            ]
+          },
+          "extendedFaqs": [
+            {
+              "q": "Can I see results with just one Density treatment?",
+              "a": "Yes, you can experience immediate lifting effects with a single treatment. However, for optimal results, 2-3 treatments at 3-6 month intervals are recommended depending on your skin condition."
+            },
+            {
+              "q": "Is there downtime after Density treatment?",
+              "a": "Generally, there is minimal to no downtime. You may experience slight redness or swelling immediately after treatment, but this typically subsides within the same day. You can resume daily activities and apply makeup right away."
+            },
+            {
+              "q": "Can I get Density if I've had Ultherapy Prime or Thermage before?",
+              "a": "Yes, it's possible. However, we recommend waiting at least 3 months after your previous treatment. Through consultation, we'll assess your skin condition and determine the optimal timing for your treatment."
+            }
+          ],
+          "hero": {
+            "badge": "RF Radiofrequency Lifting",
+            "title": "Density",
+            "description": "RF (radiofrequency) energy densely remodels collagen within the skin.<br />Precise and uniform energy for firm, elastic skin.",
+            "stats": {
+              "energy": { "value": "RF", "label": "Radiofrequency Energy" },
+              "layers": { "value": "4 Layers", "label": "Multi-Layer Targeting" },
+              "effect": { "value": "Instant", "label": "Lifting Effect" }
+            },
+            "floatingBadges": {
+              "rf": { "title": "RF", "subtitle": "Precision RF" },
+              "skin": { "title": "RF", "subtitle": "Skin Elasticity" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Density",
+            "title": "What is Density?",
+            "description": "Density is a premium lifting device that precisely stimulates the dermal layer using <strong>RF (radiofrequency)</strong> energy. Part of the same radiofrequency family as Thermage, it promotes collagen regeneration and improves skin elasticity through precise and uniform energy distribution.",
+            "rfPrinciple": {
+              "title": "How RF Works",
+              "cards": {
+                "rf": {
+                  "label": "RF",
+                  "title": "Radiofrequency Energy",
+                  "desc": "Delivers heat energy precisely to the dermal layer, inducing collagen contraction and regeneration to improve skin elasticity."
+                },
+                "uniform": {
+                  "label": "Uniform",
+                  "title": "Precise Energy Distribution",
+                  "desc": "Uniform and precise energy delivery enables effective collagen remodeling."
+                },
+                "synergy": {
+                  "label": "+",
+                  "title": "Synergy Effect",
+                  "desc": "The simultaneous action of dual energies provides more powerful and lasting lifting effects compared to single treatments."
+                }
+              }
+            }
+          },
+          "whyDensity": {
+            "sectionLabel": "Why Density?",
+            "title": "Why Choose Density?",
+            "cards": {
+              "rf": {
+                "title": "RF Radiofrequency",
+                "desc": "Precise radiofrequency energy <strong>uniformly stimulates dermal collagen</strong> to improve both elasticity and skin texture simultaneously."
+              },
+              "affordable": {
+                "title": "Affordable Price",
+                "desc": "Same radiofrequency family as Thermage but at a <strong>more affordable cost</strong>, making consistent lifting maintenance possible."
+              },
+              "cooling": {
+                "title": "Cooling System",
+                "desc": "Built-in cooling system <strong>minimizes discomfort during treatment</strong> and protects the epidermis for a comfortable experience."
+              }
+            },
+            "clinicalBanner": {
+              "label": "RF Lifting Benefits",
+              "stats": {
+                "energy": { "value": "RF", "label": "Radiofrequency Energy" },
+                "precision": { "value": "Precise", "label": "Uniform Distribution" },
+                "duration": { "value": "40 min", "label": "Fast Treatment" },
+                "effect": { "value": "Instant", "label": "Visible Results" }
+              }
+            }
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "Density vs Other Devices",
+            "subtitle": "Precise RF energy for elasticity and pore care simultaneously",
+            "combinationNote": {
+              "title": "Combination with HIFU",
+              "desc": "Density (RF) can be combined with HIFU treatments like Ultherapy Prime and Shurink for comprehensive multi-layer elasticity treatment. Ideal for those seeking consistent lifting maintenance at a reasonable cost."
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "Density at LIV",
+            "cards": {
+              "custom": {
+                "title": "Customized Energy Settings",
+                "desc": "RF energy intensity is optimized based on your skin condition and concerns for personalized treatment."
+              },
+              "genuine": {
+                "title": "Genuine Equipment",
+                "desc": "We provide safe and effective treatments using genuine Density equipment. Regular equipment maintenance ensures optimal performance."
+              },
+              "specialist": {
+                "title": "Specialist Treatment",
+                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "Experience both immediate effects and gradual improvement after Density treatment"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "Treatment Information",
+            "labels": {
+              "duration": "Treatment Time",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery Period",
+              "results": "Results Duration"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "Frequently Asked Questions",
+            "moreInfo": "Want more medical information?",
+            "viewMedicalQA": "View Medical Q&A"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "Book Density Consultation",
+            "description": "Through 1:1 personalized consultation with our medical team,<br />establish the optimal treatment plan for you.",
+            "bookConsultation": "Book Free Consultation",
+            "businessHours": "Weekdays 10:00-19:00",
+            "location": "3 min walk from Sinsa Station Exit 4"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "Related Treatments"
+          }
+        }
       },
       "inmode": {
         "name": "InMode",

@@ -649,13 +649,421 @@
         "name": "热玛吉FLX",
         "fullName": "Thermage FLX",
         "tagline": "射频紧肤解决方案",
-        "description": "第四代热玛吉FLX比传统方式快25%，同时促进全面的胶原蛋白再生。"
+        "description": "第四代热玛吉FLX比传统方式快25%，同时促进全面的胶原蛋白再生。",
+        "detail": {
+          "heroLabels": [
+            {
+              "top": { "title": "AccuREP", "subtitle": "自动能量调节" },
+              "bottom": { "title": "Comfort Pulse", "subtitle": "振动疼痛缓解" }
+            },
+            {
+              "top": { "title": "RF Technology", "subtitle": "胶原蛋白收缩与再生" },
+              "bottom": { "title": "14M+", "subtitle": "全球治疗次数" }
+            },
+            {
+              "top": { "title": "AccuTip", "subtitle": "3.0cm²精准面积" },
+              "bottom": { "title": "默茨韩国", "subtitle": "官方认证诊所" }
+            }
+          ],
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "subcutaneous": "皮下脂肪",
+            "fascia": "筋膜"
+          },
+          "timeline": {
+            "items": [
+              { "time": "治疗后立即", "effect": "即时紧致", "desc": "胶原蛋白收缩效果" },
+              { "time": "1个月", "effect": "弹性改善", "desc": "胶原蛋白再生开始" },
+              { "time": "3个月", "effect": "显著变化", "desc": "新生胶原蛋白增加" },
+              { "time": "6个月", "effect": "最大效果", "desc": "胶原蛋白重塑完成" },
+              { "time": "12个月+", "effect": "效果维持", "desc": "建议每年维护" }
+            ]
+          },
+          "comparison": {
+            "title": "热玛吉代际比较",
+            "subtitle": "第四代FLX是比前代产品有重大改进的最新技术",
+            "headers": {
+              "feature": "比较项目",
+              "flx": "FLX（第4代）",
+              "cpt": "CPT（第3代）",
+              "nxt": "NXT（第2代）"
+            },
+            "rows": [
+              { "feature": "技术", "flx": "AccuREP自动调节", "cpt": "手动能量设置", "nxt": "第1代技术" },
+              { "feature": "治疗时间", "flx": "缩短25%", "cpt": "标准", "nxt": "最长" },
+              { "feature": "疼痛", "flx": "振动技术最小化", "cpt": "中等", "nxt": "高" },
+              { "feature": "效果均匀性", "flx": "最佳自动调节", "cpt": "依赖操作者", "nxt": "可能不均匀" },
+              { "feature": "治疗头种类", "flx": "900/600/400/225", "cpt": "900/600/400", "nxt": "有限" },
+              { "feature": "眼部专用", "flx": "Total Tip O", "cpt": "Eye Tip O", "nxt": "X" }
+            ]
+          },
+          "tips": {
+            "title": "分部位定制治疗头",
+            "subtitle": "各种尺寸的治疗头可针对不同部位进行优化治疗",
+            "items": [
+              { "shots": "900", "area": "身体", "desc": "大面积" },
+              { "shots": "600", "area": "面部", "desc": "脸颊、额头" },
+              { "shots": "400", "area": "中面部", "desc": "脸颊、下颌线" },
+              { "shots": "225", "area": "眼周/唇周", "desc": "精细部位" }
+            ]
+          },
+          "hero": {
+            "badge": "第四代高端射频",
+            "title": "热玛吉FLX",
+            "description": "AccuREP技术根据皮肤状态自动调节最佳能量。<br />振动技术减少疼痛，同时提升效果的射频提升。",
+            "stats": {
+              "treatments": { "value": "14M+", "label": "全球治疗次数" },
+              "time": { "value": "25%", "label": "治疗时间缩短" },
+              "satisfaction": { "value": "93%", "label": "患者满意度" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Thermage",
+            "title": "什么是热玛吉FLX？",
+            "description": "热玛吉FLX是<strong>全球超过1400万次</strong>治疗的全球第一射频提升设备。专利AccuREP技术实时测量皮肤阻抗自动调节最佳能量，通过胶原蛋白收缩和再生改善皮肤弹性。",
+            "rfPrinciple": {
+              "title": "射频能量原理",
+              "steps": [
+                {
+                  "num": "1",
+                  "title": "射频能量传递",
+                  "desc": "射频能量均匀传递到真皮层，产生65-75°C的热量。"
+                },
+                {
+                  "num": "2",
+                  "title": "胶原蛋白收缩",
+                  "desc": "热能使现有胶原蛋白收缩，产生即时紧致效果。"
+                },
+                {
+                  "num": "3",
+                  "title": "新生胶原蛋白生成",
+                  "desc": "3-6个月内生成新的胶原蛋白，持续改善皮肤弹性。"
+                }
+              ]
+            },
+            "temperature": "65-75°C",
+            "collagenLabel": "胶原蛋白收缩与再生"
+          },
+          "whyThermage": {
+            "sectionLabel": "Why Thermage FLX?",
+            "title": "为什么选择热玛吉FLX？",
+            "cards": {
+              "accuRep": {
+                "title": "AccuREP技术",
+                "desc": "<strong>实时测量</strong>皮肤阻抗，自动调节各部位的最佳能量。保证均匀安全的治疗效果。"
+              },
+              "comfortPulse": {
+                "title": "Comfort Pulse",
+                "desc": "专利振动技术<strong>最大限度减少</strong>治疗过程中的疼痛。无需麻醉也能舒适接受治疗。"
+              },
+              "collagenRemodeling": {
+                "title": "胶原蛋白重塑",
+                "desc": "治疗后<strong>即时收缩效果</strong>，加上3-6个月内新生胶原蛋白生成，逐步改善皮肤弹性。"
+              }
+            },
+            "globalTrust": {
+              "title": "Global Trust",
+              "treatments": { "value": "14M+", "label": "全球治疗次数" },
+              "satisfaction": { "value": "93%", "label": "患者满意度" },
+              "time": { "value": "25%", "label": "治疗时间缩短" },
+              "duration": { "value": "1年+", "label": "效果持续时间" },
+              "source": "来源：Solta Medical官方临床数据"
+            }
+          },
+          "tipsSection": {
+            "sectionLabel": "Treatment Tips",
+            "title": "分部位定制治疗头",
+            "subtitle": "各种尺寸的治疗头可针对不同部位进行优化治疗",
+            "eye": {
+              "sectionLabel": "Thermage Eye",
+              "title": "热玛吉眼部",
+              "desc": "眼部专用Total Tip有效改善眼睑下垂、眼下皱纹、鱼尾纹。眼部皮肤薄而敏感，需要专用治疗头进行精细治疗。",
+              "benefits": [
+                "眼睑弹性改善",
+                "眼下皱纹缓解",
+                "眼周整体紧致"
+              ]
+            }
+          },
+          "generationCompare": {
+            "sectionLabel": "Generation Comparison",
+            "title": "热玛吉代际比较",
+            "subtitle": "第四代FLX是比前代产品有重大改进的最新技术"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV独有的热玛吉",
+            "cards": {
+              "genuine": {
+                "title": "正品认证诊所",
+                "desc": "作为Solta Medical官方认证诊所，仅使用正品设备和治疗头。可验证序列号并颁发正品证书。"
+              },
+              "transparent": {
+                "title": "发数透明公开",
+                "desc": "透明公开治疗前计划的发数和实际使用的发数。承诺诚实治疗。"
+              },
+              "specialist": {
+                "title": "专家亲自操作",
+                "desc": "皮肤科/整形外科专家从咨询到治疗全程亲自操作。制定个性化治疗方案。"
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "热玛吉治疗后即时效果与渐进式胶原蛋白再生同时出现"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "治疗信息",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果持续"
+            },
+            "recommendedShots": {
+              "title": "分部位推荐发数",
+              "fullFace": { "shots": "300-400", "label": "全脸" },
+              "lowerFace": { "shots": "200-300", "label": "下半脸" },
+              "eye": { "shots": "225", "label": "眼部" },
+              "fullFaceNeck": { "shots": "500-900", "label": "全脸+颈部" }
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常见问题",
+            "extendedFaqs": [
+              {
+                "q": "热玛吉和超声刀Prime哪个更好？",
+                "a": "两种治疗相辅相成。超声刀Prime对SMAS层的深层提升效果显著，热玛吉通过真皮层胶原蛋白收缩在整体弹性改善方面表现出色。严重下垂推荐超声刀Prime，弹性问题为主要困扰则推荐热玛吉。"
+              },
+              {
+                "q": "热玛吉治疗过程中会很疼吗？",
+                "a": "FLX通过振动技术（Comfort Pulse Technology）最大限度减少治疗过程中的不适。可无麻醉进行，大多数患者只感到可忍受程度的热感。"
+              },
+              {
+                "q": "如何确认热玛吉是正品？",
+                "a": "LIV整形外科是Solta Medical官方认证诊所。治疗前可确认正品治疗头的序列号和实际发数，治疗后颁发正品证书。"
+              }
+            ],
+            "moreInfo": "想了解更多医疗信息？",
+            "viewMedicalQA": "查看医疗信息Q&A"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "预约热玛吉咨询",
+            "description": "通过与专业医疗团队的1对1定制咨询，<br />制定最适合您的治疗方案。",
+            "bookConsultation": "预约免费咨询",
+            "businessHours": "工作日10:00-19:00",
+            "location": "新沙站4号出口步行3分钟"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "相关推荐治疗"
+          }
+        }
       },
       "density": {
         "name": "Density",
         "fullName": "Density",
-        "tagline": "超声刀正品第二代",
-        "description": "超声刀正品第二代技术，提供更精准、更有效的提升效果。"
+        "tagline": "射频能量打造弹力紧致",
+        "description": "射频(RF)能量精密重塑皮肤深层胶原蛋白，精准均匀的能量打造紧致弹力肌肤。",
+        "detail": {
+          "illustrations": {
+            "dualEnergy": {
+              "hifu": "超声波",
+              "rf": "射频",
+              "synergy": "双能量协同效应"
+            },
+            "multiLayer": {
+              "epidermis": "表皮 (RF)",
+              "dermis": "真皮 (HIFU+RF)",
+              "smas": "SMAS (HIFU)",
+              "title": "多层靶向"
+            },
+            "cooling": {
+              "title": "冷却系统"
+            },
+            "diagram": {
+              "epidermis": "表皮",
+              "dermis": "真皮",
+              "subcutaneous": "皮下脂肪",
+              "smas": "SMAS"
+            }
+          },
+          "timeline": {
+            "items": [
+              { "time": "治疗后即刻", "effect": "即刻紧致", "desc": "胶原蛋白收缩", "percent": 40 },
+              { "time": "2周", "effect": "弹力改善", "desc": "RF效果显现", "percent": 55 },
+              { "time": "1个月", "effect": "肤质改善", "desc": "胶原蛋白再生开始", "percent": 70 },
+              { "time": "3个月", "effect": "最佳效果", "desc": "RF胶原蛋白重塑", "percent": 100 },
+              { "time": "6个月+", "effect": "效果维持", "desc": "建议定期护理", "percent": 90 }
+            ]
+          },
+          "comparison": {
+            "headers": {
+              "feature": "比较项目",
+              "density": "Density",
+              "ulthera": "超声刀Prime",
+              "thermage": "热玛吉"
+            },
+            "rows": [
+              { "feature": "能量类型", "density": "RF (射频)", "ulthera": "HIFU (超声波)", "thermage": "RF (射频)" },
+              { "feature": "靶向深度", "density": "真皮层为主", "ulthera": "SMAS层为主", "thermage": "真皮层为主" },
+              { "feature": "能量分布", "density": "均匀精密", "ulthera": "聚焦型", "thermage": "广范围" },
+              { "feature": "疼痛感", "density": "低", "ulthera": "中等-高", "thermage": "低" },
+              { "feature": "治疗时间", "density": "30-40分钟", "ulthera": "60-90分钟", "thermage": "45-60分钟" },
+              { "feature": "价格", "density": "实惠", "ulthera": "高端", "thermage": "高端" },
+              { "feature": "推荐对象", "density": "弹力/毛孔护理", "ulthera": "严重下垂", "thermage": "弹力下降" }
+            ]
+          },
+          "extendedFaqs": [
+            {
+              "q": "Density只做一次有效果吗？",
+              "a": "是的，单次治疗也能体验到即刻的提升效果。但为了获得最佳效果，建议根据皮肤状态每3-6个月进行2-3次治疗。"
+            },
+            {
+              "q": "Density治疗后有恢复期吗？",
+              "a": "通常几乎没有恢复期。治疗后可能会出现轻微发红或肿胀，但大多数情况下当天即可消退。可立即恢复日常生活和化妆。"
+            },
+            {
+              "q": "做过超声刀Prime或热玛吉，还可以做Density吗？",
+              "a": "可以的。但建议与之前的治疗间隔至少3个月以上。通过咨询确认皮肤状态，确定最佳治疗时机。"
+            }
+          ],
+          "hero": {
+            "badge": "RF射频提升",
+            "title": "Density",
+            "description": "射频(RF)能量精密重塑皮肤深层胶原蛋白。<br />精准均匀的能量打造紧致弹力肌肤。",
+            "stats": {
+              "energy": { "value": "RF", "label": "射频能量" },
+              "layers": { "value": "4层", "label": "多层靶向" },
+              "effect": { "value": "即刻", "label": "提升效果" }
+            },
+            "floatingBadges": {
+              "rf": { "title": "RF", "subtitle": "精密射频" },
+              "skin": { "title": "RF", "subtitle": "肌肤弹力" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Density",
+            "title": "什么是Density？",
+            "description": "Density是一款利用<strong>射频(RF)</strong>能量精密刺激真皮层的高端提升设备。与热玛吉同属射频系列，通过精准均匀的能量分布促进胶原蛋白再生，改善皮肤弹性。",
+            "rfPrinciple": {
+              "title": "RF射频原理",
+              "cards": {
+                "rf": {
+                  "label": "RF",
+                  "title": "射频能量",
+                  "desc": "向真皮层精准传递热能，诱导胶原蛋白收缩和再生，改善皮肤弹性。"
+                },
+                "uniform": {
+                  "label": "均匀",
+                  "title": "精准能量分布",
+                  "desc": "均匀精密的能量传递实现有效的胶原蛋白重塑。"
+                },
+                "synergy": {
+                  "label": "+",
+                  "title": "协同效应",
+                  "desc": "双能量同时作用，比单独治疗产生更强效、更持久的提升效果。"
+                }
+              }
+            }
+          },
+          "whyDensity": {
+            "sectionLabel": "Why Density?",
+            "title": "为什么选择Density？",
+            "cards": {
+              "rf": {
+                "title": "RF射频",
+                "desc": "精密射频能量<strong>均匀刺激真皮层胶原蛋白</strong>，同时改善弹力和肤质。"
+              },
+              "affordable": {
+                "title": "价格实惠",
+                "desc": "与热玛吉同属射频系列，但<strong>价格更实惠</strong>，可持续进行提升护理。"
+              },
+              "cooling": {
+                "title": "冷却系统",
+                "desc": "内置冷却系统<strong>最大程度减少治疗时的不适</strong>，保护表皮，实现舒适治疗。"
+              }
+            },
+            "clinicalBanner": {
+              "label": "RF Lifting Benefits",
+              "stats": {
+                "energy": { "value": "RF", "label": "射频能量" },
+                "precision": { "value": "精准", "label": "均匀分布" },
+                "duration": { "value": "40分钟", "label": "快速治疗" },
+                "effect": { "value": "即刻", "label": "效果可见" }
+              }
+            }
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "Density vs 其他设备",
+            "subtitle": "精准RF能量同时护理弹力和毛孔",
+            "combinationNote": {
+              "title": "与HIFU联合治疗",
+              "desc": "Density(RF)与超声刀Prime、Shurink(HIFU)系列联合使用，可实现覆盖多层的综合弹力治疗。适合希望以实惠价格持续进行提升护理的人群。"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV的Density",
+            "cards": {
+              "custom": {
+                "title": "定制能量设置",
+                "desc": "根据皮肤状态和关注点优化RF能量强度，进行个性化定制治疗。"
+              },
+              "genuine": {
+                "title": "正品设备",
+                "desc": "使用正品Density设备提供安全有效的治疗。定期设备检测保持最佳状态。"
+              },
+              "specialist": {
+                "title": "专家亲自治疗",
+                "desc": "皮肤科/整形外科专家从咨询到治疗全程亲自进行。丰富经验确保最佳效果。"
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "Density治疗后即刻效果和渐进改善同时呈现"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "治疗信息",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果持续"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常见问题",
+            "moreInfo": "想了解更多医疗信息？",
+            "viewMedicalQA": "查看医疗信息Q&A"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "预约Density咨询",
+            "description": "通过与专业医疗团队的1对1定制咨询，<br />制定最适合您的治疗方案。",
+            "bookConsultation": "预约免费咨询",
+            "businessHours": "工作日10:00-19:00",
+            "location": "新沙站4号出口步行3分钟"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "相关推荐治疗"
+          }
+        }
       },
       "inmode": {
         "name": "InMode",

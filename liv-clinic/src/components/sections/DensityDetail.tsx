@@ -7,6 +7,56 @@ import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
+// TypeScript interfaces for translated data
+interface TimelineItem {
+  time: string;
+  effect: string;
+  desc: string;
+  percent: number;
+}
+
+interface ComparisonRow {
+  feature: string;
+  density: string;
+  ulthera: string;
+  thermage: string;
+}
+
+interface ComparisonHeaders {
+  feature: string;
+  density: string;
+  ulthera: string;
+  thermage: string;
+}
+
+interface ExtendedFaq {
+  q: string;
+  a: string;
+}
+
+interface IllustrationLabels {
+  dualEnergy: {
+    hifu: string;
+    rf: string;
+    synergy: string;
+  };
+  multiLayer: {
+    epidermis: string;
+    dermis: string;
+    smas: string;
+    title: string;
+  };
+  cooling: {
+    title: string;
+  };
+  diagram: {
+    epidermis: string;
+    dermis: string;
+    subcutaneous: string;
+    smas: string;
+  };
+}
+
 // SVG Icons
 const CheckIcon = () => (
   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
@@ -22,7 +72,7 @@ const DualEnergyIcon = () => (
 );
 
 // Dual Energy Illustration (HIFU + RF)
-const DualEnergyIllustration = () => (
+const DualEnergyIllustration = ({ labels }: { labels: IllustrationLabels['dualEnergy'] }) => (
   <svg viewBox="0 0 200 160" className="w-full h-40">
     <defs>
       <linearGradient id="dualGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -78,14 +128,14 @@ const DualEnergyIllustration = () => (
       <path d="M96 80 L104 80 M100 76 L100 84" stroke="white" strokeWidth="2" strokeLinecap="round" />
     </motion.g>
     {/* Labels */}
-    <text x="70" y="125" fill="#8B5CF6" fontSize="9" textAnchor="middle">초음파</text>
-    <text x="130" y="125" fill="#06B6D4" fontSize="9" textAnchor="middle">고주파</text>
-    <text x="100" y="150" fill="#6d4e42" fontSize="11" fontWeight="bold" textAnchor="middle">Dual Energy Synergy</text>
+    <text x="70" y="125" fill="#8B5CF6" fontSize="9" textAnchor="middle">{labels.hifu}</text>
+    <text x="130" y="125" fill="#06B6D4" fontSize="9" textAnchor="middle">{labels.rf}</text>
+    <text x="100" y="150" fill="#6d4e42" fontSize="11" fontWeight="bold" textAnchor="middle">{labels.synergy}</text>
   </svg>
 );
 
 // Multi Layer Illustration
-const MultiLayerIllustration = () => (
+const MultiLayerIllustration = ({ labels }: { labels: IllustrationLabels['multiLayer'] }) => (
   <svg viewBox="0 0 200 160" className="w-full h-40">
     <defs>
       <linearGradient id="layerGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -125,16 +175,16 @@ const MultiLayerIllustration = () => (
       transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
     />
     {/* Layer labels */}
-    <text x="185" y="40" fill="#6d4e42" fontSize="8" textAnchor="start">표피 (RF)</text>
-    <text x="185" y="70" fill="#6d4e42" fontSize="8" textAnchor="start">진피 (HIFU+RF)</text>
-    <text x="185" y="105" fill="#6d4e42" fontSize="8" textAnchor="start">SMAS (HIFU)</text>
+    <text x="185" y="40" fill="#6d4e42" fontSize="8" textAnchor="start">{labels.epidermis}</text>
+    <text x="185" y="70" fill="#6d4e42" fontSize="8" textAnchor="start">{labels.dermis}</text>
+    <text x="185" y="105" fill="#6d4e42" fontSize="8" textAnchor="start">{labels.smas}</text>
     {/* Title */}
-    <text x="100" y="145" fill="#6d4e42" fontSize="11" fontWeight="bold" textAnchor="middle">다층 타겟팅</text>
+    <text x="100" y="145" fill="#6d4e42" fontSize="11" fontWeight="bold" textAnchor="middle">{labels.title}</text>
   </svg>
 );
 
 // Cooling System Illustration
-const CoolingIllustration = () => (
+const CoolingIllustration = ({ labels }: { labels: IllustrationLabels['cooling'] }) => (
   <svg viewBox="0 0 200 160" className="w-full h-40">
     <defs>
       <linearGradient id="coolGrad" x1="0%" y1="0%" x2="0%" y2="100%">
@@ -183,12 +233,12 @@ const CoolingIllustration = () => (
       />
     ))}
     {/* Label */}
-    <text x="100" y="150" fill="#6d4e42" fontSize="11" fontWeight="bold" textAnchor="middle">쿨링 시스템</text>
+    <text x="100" y="150" fill="#6d4e42" fontSize="11" fontWeight="bold" textAnchor="middle">{labels.title}</text>
   </svg>
 );
 
 // Dual Energy Diagram Component
-const DualEnergyDiagram = () => (
+const DualEnergyDiagram = ({ labels }: { labels: IllustrationLabels['diagram'] }) => (
   <div className="relative w-full max-w-xl mx-auto">
     <svg viewBox="0 0 400 300" className="w-full h-auto">
       <defs>
@@ -248,10 +298,10 @@ const DualEnergyDiagram = () => (
       <rect x="50" y="220" width="300" height="50" fill="#b4988d" stroke="#e5e5e5" strokeWidth="1" rx="4" />
 
       {/* Layer labels */}
-      <text x="370" y="120" className="text-xs fill-mono" textAnchor="end">표피</text>
-      <text x="370" y="160" className="text-xs fill-mono" textAnchor="end">진피</text>
-      <text x="370" y="205" className="text-xs fill-mono" textAnchor="end">피하지방</text>
-      <text x="370" y="250" className="text-xs fill-mono" textAnchor="end">SMAS</text>
+      <text x="370" y="120" className="text-xs fill-mono" textAnchor="end">{labels.epidermis}</text>
+      <text x="370" y="160" className="text-xs fill-mono" textAnchor="end">{labels.dermis}</text>
+      <text x="370" y="205" className="text-xs fill-mono" textAnchor="end">{labels.subcutaneous}</text>
+      <text x="370" y="250" className="text-xs fill-mono" textAnchor="end">{labels.smas}</text>
 
       {/* RF effect in epidermis/dermis */}
       <motion.ellipse
@@ -285,15 +335,7 @@ const DualEnergyDiagram = () => (
 );
 
 // Effect Timeline Component
-const EffectTimeline = () => {
-  const timelineData = [
-    { time: '시술 직후', effect: '즉각적 탄력', desc: '콜라겐 수축', percent: 40 },
-    { time: '2주', effect: '탄력 개선', desc: 'RF 효과 발현', percent: 55 },
-    { time: '1개월', effect: '피부결 개선', desc: '콜라겐 재생 시작', percent: 70 },
-    { time: '3개월', effect: '최대 효과', desc: 'RF 콜라겐 리모델링', percent: 100 },
-    { time: '6개월+', effect: '효과 유지', desc: '정기 관리 권장', percent: 90 },
-  ];
-
+const EffectTimeline = ({ items }: { items: TimelineItem[] }) => {
   return (
     <div className="relative">
       {/* Timeline line */}
@@ -301,7 +343,7 @@ const EffectTimeline = () => {
 
       {/* Timeline points */}
       <div className="relative flex justify-between">
-        {timelineData.map((item, index) => (
+        {items.map((item, index) => (
           <motion.div
             key={index}
             className="flex flex-col items-center"
@@ -334,32 +376,22 @@ const EffectTimeline = () => {
 };
 
 // Comparison Table Component
-const ComparisonTable = () => {
-  const comparisonData = [
-    { feature: '에너지 종류', density: 'RF (고주파)', ulthera: 'HIFU (초음파)', thermage: 'RF (고주파)' },
-    { feature: '타겟 깊이', density: '진피층 중심', ulthera: 'SMAS 중심', thermage: '진피층 중심' },
-    { feature: '에너지 분포', density: '균일하고 정밀', ulthera: '집속형', thermage: '광범위' },
-    { feature: '통증', density: '낮음', ulthera: '중간~높음', thermage: '낮음' },
-    { feature: '시술 시간', density: '30-40분', ulthera: '60-90분', thermage: '45-60분' },
-    { feature: '가격대', density: '합리적', ulthera: '프리미엄', thermage: '프리미엄' },
-    { feature: '추천 대상', density: '탄력/모공 관리', ulthera: '처짐 심한 경우', thermage: '탄력 저하' },
-  ];
-
+const ComparisonTable = ({ rows, headers }: { rows: ComparisonRow[]; headers: ComparisonHeaders }) => {
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[600px]">
         <thead>
           <tr className="border-b-2 border-[#8B5CF6]/20">
-            <th className="py-4 px-4 text-left text-h4 text-secondary">비교 항목</th>
+            <th className="py-4 px-4 text-left text-h4 text-secondary">{headers.feature}</th>
             <th className="py-4 px-4 text-center bg-gradient-to-r from-[#8B5CF6]/10 to-[#06B6D4]/10 rounded-t-lg">
-              <span className="text-h4 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent">덴서티</span>
+              <span className="text-h4 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent">{headers.density}</span>
             </th>
-            <th className="py-4 px-4 text-center text-h4 text-mono-light">울쎄라피 프라임</th>
-            <th className="py-4 px-4 text-center text-h4 text-mono-light">써마지</th>
+            <th className="py-4 px-4 text-center text-h4 text-mono-light">{headers.ulthera}</th>
+            <th className="py-4 px-4 text-center text-h4 text-mono-light">{headers.thermage}</th>
           </tr>
         </thead>
         <tbody>
-          {comparisonData.map((row, index) => (
+          {rows.map((row, index) => (
             <motion.tr
               key={index}
               className="border-b border-border hover:bg-background/50 transition-colors"
@@ -418,40 +450,34 @@ export default function DensityDetail() {
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const faqRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
+  // Get translated data from JSON files
+  const illustrationLabels = t.raw('lifting.density.detail.illustrations') as IllustrationLabels;
+  const timelineItems = t.raw('lifting.density.detail.timeline.items') as TimelineItem[];
+  const comparisonRows = t.raw('lifting.density.detail.comparison.rows') as ComparisonRow[];
+  const comparisonHeaders = t.raw('lifting.density.detail.comparison.headers') as ComparisonHeaders;
+  const extendedFaqsData = t.raw('lifting.density.detail.extendedFaqs') as ExtendedFaq[];
+
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'density')
   );
 
   const toggleFaq = useCallback((index: number) => {
-    // 항상 해당 FAQ를 열기 (이미 열려있어도)
     setExpandedFaq(index);
 
-    // 해당 FAQ 요소로 스무스 스크롤
     requestAnimationFrame(() => {
       const el = faqRefs.current.get(index);
       if (!el) return;
       const rect = el.getBoundingClientRect();
-      const scrollOffset = 120; // 헤더 높이(96px) + 여유 공간(24px)
+      const scrollOffset = 120;
       const scrollTop = window.scrollY + rect.top - scrollOffset;
       window.scrollTo({ top: scrollTop, behavior: 'smooth' });
     });
   }, []);
 
-  // Extended FAQ data
+  // Extended FAQ data - combine treatment.faqs with translated extended FAQs
   const extendedFaqs = [
     ...treatment.faqs,
-    {
-      q: '덴서티는 한 번만 받아도 효과가 있나요?',
-      a: '네, 1회 시술로도 즉각적인 리프팅 효과를 경험할 수 있습니다. 하지만 최적의 결과를 위해 피부 상태에 따라 3-6개월 간격으로 2-3회 시술을 권장합니다.'
-    },
-    {
-      q: '덴서티 시술 후 다운타임이 있나요?',
-      a: '일반적으로 다운타임이 거의 없습니다. 시술 직후 약간의 붉은기나 부기가 있을 수 있으나 대부분 당일 내 사라집니다. 바로 일상생활과 메이크업이 가능합니다.'
-    },
-    {
-      q: '울쎄라피 프라임이나 써마지를 받았는데 덴서티도 받을 수 있나요?',
-      a: '네, 가능합니다. 다만 이전 시술과 최소 3개월 이상 간격을 두는 것이 좋습니다. 상담을 통해 피부 상태를 확인하고 최적의 시술 시기를 결정합니다.'
-    },
+    ...extendedFaqsData
   ];
 
   return (
@@ -486,34 +512,31 @@ export default function DensityDetail() {
                   transition={{ delay: 0.3 }}
                 >
                   <span className="text-[#06B6D4]"><DualEnergyIcon /></span>
-                  <span className="text-small font-medium text-secondary">RF 고주파 리프팅</span>
+                  <span className="text-small font-medium text-secondary">{t('lifting.density.detail.hero.badge')}</span>
                 </motion.div>
 
                 <p className="font-serif text-h2 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-3 tracking-wide">Density</p>
                 <h1 className="text-display text-secondary mb-4 leading-tight">
-                  덴서티
+                  {t('lifting.density.detail.hero.title')}
                 </h1>
                 <p className="font-serif text-xl text-mono-light mb-6 italic">
-                  {treatment.tagline}
+                  {t('lifting.density.tagline')}
                 </p>
-                <p className="text-h4 text-mono leading-relaxed mb-8 max-w-lg">
-                  고주파(RF) 에너지로 피부 속 콜라겐을 촘촘하게 리모델링.<br />
-                  정밀하고 균일한 에너지로 탄력 있는 피부를 완성합니다.
-                </p>
+                <p className="text-h4 text-mono leading-relaxed mb-8 max-w-lg" dangerouslySetInnerHTML={{ __html: t('lifting.density.detail.hero.description') }} />
 
 {/* Quick stats */}
                 <div className="flex gap-8 mt-10 pt-8 border-t border-border/50">
                   <div>
-                    <p className="text-h2 text-[#06B6D4] font-serif">RF</p>
-                    <p className="text-small text-mono-light">고주파 에너지</p>
+                    <p className="text-h2 text-[#06B6D4] font-serif">{t('lifting.density.detail.hero.stats.energy.value')}</p>
+                    <p className="text-small text-mono-light">{t('lifting.density.detail.hero.stats.energy.label')}</p>
                   </div>
                   <div>
-                    <p className="text-h2 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent font-serif">4층</p>
-                    <p className="text-small text-mono-light">다층 타겟팅</p>
+                    <p className="text-h2 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent font-serif">{t('lifting.density.detail.hero.stats.layers.value')}</p>
+                    <p className="text-small text-mono-light">{t('lifting.density.detail.hero.stats.layers.label')}</p>
                   </div>
                   <div>
-                    <p className="text-h2 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent font-serif">즉각</p>
-                    <p className="text-small text-mono-light">리프팅 효과</p>
+                    <p className="text-h2 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent font-serif">{t('lifting.density.detail.hero.stats.effect.value')}</p>
+                    <p className="text-small text-mono-light">{t('lifting.density.detail.hero.stats.effect.label')}</p>
                   </div>
                 </div>
               </div>
@@ -558,8 +581,8 @@ export default function DensityDetail() {
                   animate={{ y: [0, -10, 0] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <p className="text-small font-medium text-[#06B6D4]">RF</p>
-                  <p className="text-xs text-mono-light">정밀 고주파</p>
+                  <p className="text-small font-medium text-[#06B6D4]">{t('lifting.density.detail.hero.floatingBadges.rf.title')}</p>
+                  <p className="text-xs text-mono-light">{t('lifting.density.detail.hero.floatingBadges.rf.subtitle')}</p>
                 </motion.div>
 
                 <motion.div
@@ -567,8 +590,8 @@ export default function DensityDetail() {
                   animate={{ y: [0, 10, 0] }}
                   transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                 >
-                  <p className="text-small font-medium">RF</p>
-                  <p className="text-xs opacity-80">피부 탄력</p>
+                  <p className="text-small font-medium">{t('lifting.density.detail.hero.floatingBadges.skin.title')}</p>
+                  <p className="text-xs opacity-80">{t('lifting.density.detail.hero.floatingBadges.skin.subtitle')}</p>
                 </motion.div>
               </div>
             </AnimateOnScroll>
@@ -587,41 +610,38 @@ export default function DensityDetail() {
         </motion.div>
       </section>
 
-      {/* About Section - 덴서티란? */}
+      {/* About Section */}
       <section className="section-gap bg-white">
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">About Density</p>
-              <h2 className="text-h1 text-secondary mb-6">덴서티란?</h2>
-              <p className="text-body text-mono max-w-3xl mx-auto leading-relaxed">
-                덴서티는 <strong className="text-secondary">고주파(RF)</strong> 에너지로 진피층을 정밀하게 자극하는 프리미엄 리프팅 장비입니다.
-                써마지와 같은 고주파 계열로, 정밀하고 균일한 에너지 분포로 콜라겐 재생을 촉진하고 피부 탄력을 개선합니다.
-              </p>
+              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.about.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary mb-6">{t('lifting.density.detail.about.title')}</h2>
+              <p className="text-body text-mono max-w-3xl mx-auto leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.density.detail.about.description') }} />
             </div>
           </AnimateOnScroll>
 
           {/* Technology explanation */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <AnimateOnScroll animation="fadeInLeft">
-              <DualEnergyDiagram />
+              <DualEnergyDiagram labels={illustrationLabels.diagram} />
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fadeInRight">
               <div className="space-y-6">
                 <h3 className="text-h2 text-secondary mb-4">
-                  RF 고주파의 원리
+                  {t('lifting.density.detail.about.rfPrinciple.title')}
                 </h3>
 
                 <div className="space-y-4">
                   <Card padding="md" hover={false} className="border-l-4 border-l-[#06B6D4]">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-full bg-[#06B6D4]/10 flex items-center justify-center flex-shrink-0">
-                        <span className="text-[#06B6D4] font-serif font-bold">RF</span>
+                        <span className="text-[#06B6D4] font-serif font-bold">{t('lifting.density.detail.about.rfPrinciple.cards.rf.label')}</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">고주파 에너지</h4>
-                        <p className="text-body text-mono-light">진피층에 열 에너지를 정밀하게 전달하여 콜라겐 수축과 재생을 유도, 피부 탄력을 개선합니다.</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.density.detail.about.rfPrinciple.cards.rf.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.density.detail.about.rfPrinciple.cards.rf.desc')}</p>
                       </div>
                     </div>
                   </Card>
@@ -629,11 +649,11 @@ export default function DensityDetail() {
                   <Card padding="md" hover={false} className="border-l-4 border-l-[#b4988d]">
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <span className="text-primary font-serif font-bold">균일</span>
+                        <span className="text-primary font-serif font-bold">{t('lifting.density.detail.about.rfPrinciple.cards.uniform.label')}</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">정밀한 에너지 분포</h4>
-                        <p className="text-body text-mono-light">균일하고 정밀한 에너지 전달로 효과적인 콜라겐 리모델링을 이끌어냅니다.</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.density.detail.about.rfPrinciple.cards.uniform.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.density.detail.about.rfPrinciple.cards.uniform.desc')}</p>
                       </div>
                     </div>
                   </Card>
@@ -641,11 +661,11 @@ export default function DensityDetail() {
                   <Card padding="md" hover={false} className="border-l-4 border-l-gradient-to-r from-[#8B5CF6] to-[#06B6D4]" style={{ borderLeftColor: '#D4AF37' }}>
                     <div className="flex items-start gap-4">
                       <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#8B5CF6]/20 to-[#06B6D4]/20 flex items-center justify-center flex-shrink-0">
-                        <span className="text-secondary font-serif font-bold">+</span>
+                        <span className="text-secondary font-serif font-bold">{t('lifting.density.detail.about.rfPrinciple.cards.synergy.label')}</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">시너지 효과</h4>
-                        <p className="text-body text-mono-light">두 에너지의 동시 작용으로 단독 시술 대비 더욱 강력하고 지속적인 리프팅 효과를 경험할 수 있습니다.</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.density.detail.about.rfPrinciple.cards.synergy.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.density.detail.about.rfPrinciple.cards.synergy.desc')}</p>
                       </div>
                     </div>
                   </Card>
@@ -661,8 +681,8 @@ export default function DensityDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">Why Density?</p>
-              <h2 className="text-h1 text-secondary">왜 덴서티인가?</h2>
+              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.whyDensity.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary">{t('lifting.density.detail.whyDensity.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -672,12 +692,10 @@ export default function DensityDetail() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B5CF6]/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
                 <div className="relative z-10">
                   <div className="mb-4">
-                    <DualEnergyIllustration />
+                    <DualEnergyIllustration labels={illustrationLabels.dualEnergy} />
                   </div>
-                  <h3 className="text-h3 text-secondary mb-4">RF 고주파</h3>
-                  <p className="text-body text-mono-light leading-relaxed">
-                    정밀한 고주파 에너지로 <strong className="text-secondary">진피층 콜라겐을 균일하게 자극</strong>하여 탄력과 피부결을 동시에 개선합니다.
-                  </p>
+                  <h3 className="text-h3 text-secondary mb-4">{t('lifting.density.detail.whyDensity.cards.rf.title')}</h3>
+                  <p className="text-body text-mono-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.density.detail.whyDensity.cards.rf.desc') }} />
                 </div>
               </Card>
             </StaggerItem>
@@ -687,12 +705,10 @@ export default function DensityDetail() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#06B6D4]/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
                 <div className="relative z-10">
                   <div className="mb-4">
-                    <MultiLayerIllustration />
+                    <MultiLayerIllustration labels={illustrationLabels.multiLayer} />
                   </div>
-                  <h3 className="text-h3 text-secondary mb-4">합리적 가격</h3>
-                  <p className="text-body text-mono-light leading-relaxed">
-                    써마지와 같은 고주파 계열이지만 <strong className="text-secondary">보다 합리적인 비용</strong>으로 꾸준한 리프팅 관리가 가능합니다.
-                  </p>
+                  <h3 className="text-h3 text-secondary mb-4">{t('lifting.density.detail.whyDensity.cards.affordable.title')}</h3>
+                  <p className="text-body text-mono-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.density.detail.whyDensity.cards.affordable.desc') }} />
                 </div>
               </Card>
             </StaggerItem>
@@ -702,12 +718,10 @@ export default function DensityDetail() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-[#8B5CF6]/5 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-150 transition-transform duration-500" />
                 <div className="relative z-10">
                   <div className="mb-4">
-                    <CoolingIllustration />
+                    <CoolingIllustration labels={illustrationLabels.cooling} />
                   </div>
-                  <h3 className="text-h3 text-secondary mb-4">쿨링 시스템</h3>
-                  <p className="text-body text-mono-light leading-relaxed">
-                    내장 쿨링 시스템으로 <strong className="text-secondary">시술 중 통증을 최소화</strong>하고 표피를 보호하여 편안한 시술이 가능합니다.
-                  </p>
+                  <h3 className="text-h3 text-secondary mb-4">{t('lifting.density.detail.whyDensity.cards.cooling.title')}</h3>
+                  <p className="text-body text-mono-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.density.detail.whyDensity.cards.cooling.desc') }} />
                 </div>
               </Card>
             </StaggerItem>
@@ -716,23 +730,23 @@ export default function DensityDetail() {
           {/* Clinical evidence banner */}
           <AnimateOnScroll>
             <div className="mt-16 p-8 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] rounded-3xl text-white text-center">
-              <p className="font-serif text-h3 opacity-80 mb-4">RF Lifting Benefits</p>
+              <p className="font-serif text-h3 opacity-80 mb-4">{t('lifting.density.detail.whyDensity.clinicalBanner.label')}</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div>
-                  <p className="text-h1 font-serif">RF</p>
-                  <p className="text-small opacity-70">고주파 에너지</p>
+                  <p className="text-h1 font-serif">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.energy.value')}</p>
+                  <p className="text-small opacity-70">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.energy.label')}</p>
                 </div>
                 <div>
-                  <p className="text-h1 font-serif">정밀</p>
-                  <p className="text-small opacity-70">균일한 분포</p>
+                  <p className="text-h1 font-serif">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.precision.value')}</p>
+                  <p className="text-small opacity-70">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.precision.label')}</p>
                 </div>
                 <div>
-                  <p className="text-h1 font-serif">40분</p>
-                  <p className="text-small opacity-70">빠른 시술</p>
+                  <p className="text-h1 font-serif">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.duration.value')}</p>
+                  <p className="text-small opacity-70">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.duration.label')}</p>
                 </div>
                 <div>
-                  <p className="text-h1 font-serif">즉각</p>
-                  <p className="text-small opacity-70">효과 확인</p>
+                  <p className="text-h1 font-serif">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.effect.value')}</p>
+                  <p className="text-small opacity-70">{t('lifting.density.detail.whyDensity.clinicalBanner.stats.effect.label')}</p>
                 </div>
               </div>
             </div>
@@ -745,17 +759,17 @@ export default function DensityDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">Comparison</p>
-              <h2 className="text-h1 text-secondary mb-4">덴서티 vs 타 장비</h2>
+              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.compare.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary mb-4">{t('lifting.density.detail.compare.title')}</h2>
               <p className="text-body text-mono-light">
-                정밀한 RF 에너지로 탄력과 모공을 동시에 케어합니다
+                {t('lifting.density.detail.compare.subtitle')}
               </p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll>
             <Card padding="lg" hover={false}>
-              <ComparisonTable />
+              <ComparisonTable rows={comparisonRows} headers={comparisonHeaders} />
             </Card>
           </AnimateOnScroll>
 
@@ -769,10 +783,9 @@ export default function DensityDetail() {
                   </svg>
                 </div>
                 <div>
-                  <h4 className="text-h4 text-secondary mb-2">HIFU와의 복합 시술</h4>
+                  <h4 className="text-h4 text-secondary mb-2">{t('lifting.density.detail.compare.combinationNote.title')}</h4>
                   <p className="text-body text-mono-light">
-                    덴서티(RF)는 울쎄라피 프라임, 슈링크(HIFU) 계열과 병행 시 다양한 층을 아우르는 복합 탄력 시술이 가능합니다.
-                    합리적인 비용으로 꾸준한 리프팅 관리를 원하시는 분께 적합합니다.
+                    {t('lifting.density.detail.compare.combinationNote.desc')}
                   </p>
                 </div>
               </div>
@@ -786,8 +799,8 @@ export default function DensityDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">LIV Difference</p>
-              <h2 className="text-h1 text-secondary">리브만의 덴서티</h2>
+              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.livDifference.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary">{t('lifting.density.detail.livDifference.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -800,10 +813,9 @@ export default function DensityDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">맞춤형 에너지 설정</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.density.detail.livDifference.cards.custom.title')}</h3>
                   <p className="text-body text-mono-light">
-                    피부 상태와 고민에 따라 RF 에너지 강도를 최적화하여
-                    개인 맞춤 시술을 진행합니다.
+                    {t('lifting.density.detail.livDifference.cards.custom.desc')}
                   </p>
                 </div>
               </Card>
@@ -817,10 +829,9 @@ export default function DensityDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">정품 장비 사용</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.density.detail.livDifference.cards.genuine.title')}</h3>
                   <p className="text-body text-mono-light">
-                    정품 덴서티 장비로 안전하고 효과적인 시술을 제공합니다.
-                    정기적인 장비 점검으로 최상의 상태를 유지합니다.
+                    {t('lifting.density.detail.livDifference.cards.genuine.desc')}
                   </p>
                 </div>
               </Card>
@@ -834,10 +845,9 @@ export default function DensityDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">전문의 직접 시술</h3>
+                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.density.detail.livDifference.cards.specialist.title')}</h3>
                   <p className="text-body text-mono-light">
-                    피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다.
-                    풍부한 경험으로 최적의 결과를 도출합니다.
+                    {t('lifting.density.detail.livDifference.cards.specialist.desc')}
                   </p>
                 </div>
               </Card>
@@ -851,17 +861,17 @@ export default function DensityDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">Results Timeline</p>
-              <h2 className="text-h1 text-secondary mb-4">{t('common.timeline')}</h2>
+              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.timelineSection.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary mb-4">{tCommon('timeline')}</h2>
               <p className="text-body text-mono-light">
-                덴서티 시술 후 즉각적 효과와 점진적 개선이 함께 나타납니다
+                {t('lifting.density.detail.timelineSection.subtitle')}
               </p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll>
             <div className="py-8 px-4 md:px-8">
-              <EffectTimeline />
+              <EffectTimeline items={timelineItems} />
             </div>
           </AnimateOnScroll>
         </div>
@@ -872,8 +882,8 @@ export default function DensityDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">Treatment Process</p>
-              <h2 className="text-h1 text-secondary">{t('common.process')}</h2>
+              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.processSection.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary">{tCommon('process')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -896,8 +906,8 @@ export default function DensityDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-12">
-              <p className="font-serif text-h3 opacity-80 mb-2">Treatment Info</p>
-              <h2 className="text-h1">시술 정보</h2>
+              <p className="font-serif text-h3 opacity-80 mb-2">{t('lifting.density.detail.treatmentInfo.sectionLabel')}</p>
+              <h2 className="text-h1">{t('lifting.density.detail.treatmentInfo.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -909,7 +919,7 @@ export default function DensityDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">시술 시간</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.density.detail.treatmentInfo.labels.duration')}</p>
                 <p className="font-medium text-lg">{treatment.duration}</p>
               </div>
             </AnimateOnScroll>
@@ -920,7 +930,7 @@ export default function DensityDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">마취</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.density.detail.treatmentInfo.labels.anesthesia')}</p>
                 <p className="font-medium text-lg">{treatment.anesthesia}</p>
               </div>
             </AnimateOnScroll>
@@ -931,7 +941,7 @@ export default function DensityDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">회복 기간</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.density.detail.treatmentInfo.labels.recovery')}</p>
                 <p className="font-medium text-lg">{treatment.recovery}</p>
               </div>
             </AnimateOnScroll>
@@ -942,7 +952,7 @@ export default function DensityDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">효과 지속</p>
+                <p className="text-small opacity-70 mb-1">{t('lifting.density.detail.treatmentInfo.labels.results')}</p>
                 <p className="font-medium text-lg">{treatment.results}</p>
               </div>
             </AnimateOnScroll>
@@ -1030,8 +1040,8 @@ export default function DensityDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">FAQ</p>
-              <h2 className="text-h1 text-secondary">자주 묻는 질문</h2>
+              <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.faq.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary">{t('lifting.density.detail.faq.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -1105,11 +1115,11 @@ export default function DensityDetail() {
             <AnimateOnScroll>
               <div className="text-center mt-12">
                 <p className="text-body text-mono-light mb-4">
-                  더 많은 의료 정보가 궁금하신가요?
+                  {t('lifting.density.detail.faq.moreInfo')}
                 </p>
                 <Link href="/medical">
                   <Button variant="outline">
-                    의료정보 Q&A 더보기
+                    {t('lifting.density.detail.faq.viewMedicalQA')}
                     <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
@@ -1132,17 +1142,14 @@ export default function DensityDetail() {
         <div className="container-custom relative z-10">
           <AnimateOnScroll>
             <div className="text-center max-w-2xl mx-auto">
-              <p className="font-serif text-h3 opacity-80 mb-4">Ready for Transformation?</p>
-              <h2 className="text-h1 mb-6">덴서티 상담 예약</h2>
-              <p className="text-h4 opacity-90 mb-10 leading-relaxed">
-                전문 의료진과 1:1 맞춤 상담을 통해<br />
-                나에게 맞는 최적의 시술 계획을 수립해보세요.
-              </p>
+              <p className="font-serif text-h3 opacity-80 mb-4">{t('lifting.density.detail.cta.sectionLabel')}</p>
+              <h2 className="text-h1 mb-6">{t('lifting.density.detail.cta.title')}</h2>
+              <p className="text-h4 opacity-90 mb-10 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.density.detail.cta.description') }} />
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
                   <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-[#8B5CF6] hover:!text-white w-full sm:w-auto">
-                    무료 상담 예약하기
+                    {t('lifting.density.detail.cta.bookConsultation')}
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
@@ -1160,13 +1167,13 @@ export default function DensityDetail() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  평일 10:00-19:00
+                  {t('lifting.density.detail.cta.businessHours')}
                 </span>
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   </svg>
-                  신사역 4번 출구 도보 3분
+                  {t('lifting.density.detail.cta.location')}
                 </span>
               </div>
             </div>
@@ -1180,8 +1187,8 @@ export default function DensityDetail() {
           <div className="container-custom">
             <AnimateOnScroll>
               <div className="text-center mb-16">
-                <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">Related Treatments</p>
-                <h2 className="text-h1 text-secondary">함께 보면 좋은 시술</h2>
+                <p className="font-serif text-h3 bg-gradient-to-r from-[#8B5CF6] to-[#06B6D4] bg-clip-text text-transparent mb-2">{t('lifting.density.detail.related.sectionLabel')}</p>
+                <h2 className="text-h1 text-secondary">{t('lifting.density.detail.related.title')}</h2>
               </div>
             </AnimateOnScroll>
 

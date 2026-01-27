@@ -649,13 +649,421 @@
         "name": "サーマジFLX",
         "fullName": "Thermage FLX",
         "tagline": "RF肌弾力ソリューション",
-        "description": "第4世代サーマジFLXは従来比25%速い施術と全面的なコラーゲン再生を誘導します。"
+        "description": "第4世代サーマジFLXは従来比25%速い施術と全面的なコラーゲン再生を誘導します。",
+        "detail": {
+          "heroLabels": [
+            {
+              "top": { "title": "AccuREP", "subtitle": "自動エネルギー調節" },
+              "bottom": { "title": "Comfort Pulse", "subtitle": "振動痛み緩和" }
+            },
+            {
+              "top": { "title": "RF Technology", "subtitle": "コラーゲン収縮＆再生" },
+              "bottom": { "title": "14M+", "subtitle": "世界施術件数" }
+            },
+            {
+              "top": { "title": "AccuTip", "subtitle": "3.0cm²精密面積" },
+              "bottom": { "title": "メルツコリア", "subtitle": "公式認定クリニック" }
+            }
+          ],
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "subcutaneous": "皮下脂肪",
+            "fascia": "筋膜"
+          },
+          "timeline": {
+            "items": [
+              { "time": "施術直後", "effect": "即時弾力", "desc": "コラーゲン収縮効果" },
+              { "time": "1ヶ月", "effect": "弾力改善", "desc": "コラーゲン再生開始" },
+              { "time": "3ヶ月", "effect": "目に見える変化", "desc": "新生コラーゲン増加" },
+              { "time": "6ヶ月", "effect": "最大効果", "desc": "コラーゲンリモデリング完了" },
+              { "time": "12ヶ月+", "effect": "効果維持", "desc": "年1回維持推奨" }
+            ]
+          },
+          "comparison": {
+            "title": "サーマジ世代別比較",
+            "subtitle": "第4世代FLXは既存世代対比画期的に改善された最新技術です",
+            "headers": {
+              "feature": "比較項目",
+              "flx": "FLX（第4世代）",
+              "cpt": "CPT（第3世代）",
+              "nxt": "NXT（第2世代）"
+            },
+            "rows": [
+              { "feature": "技術", "flx": "AccuREP自動調節", "cpt": "手動エネルギー設定", "nxt": "第1世代技術" },
+              { "feature": "施術時間", "flx": "25%短縮", "cpt": "標準", "nxt": "最長" },
+              { "feature": "痛み", "flx": "振動技術で最小化", "cpt": "中間", "nxt": "高い" },
+              { "feature": "効果均一性", "flx": "最適自動調節", "cpt": "施術者依存", "nxt": "不均一可能" },
+              { "feature": "チップ種類", "flx": "900/600/400/225", "cpt": "900/600/400", "nxt": "制限的" },
+              { "feature": "目元専用", "flx": "Total Tip O", "cpt": "Eye Tip O", "nxt": "X" }
+            ]
+          },
+          "tips": {
+            "title": "部位別カスタムチップ",
+            "subtitle": "様々なサイズのチップで部位に応じた最適化施術が可能です",
+            "items": [
+              { "shots": "900", "area": "ボディ", "desc": "広い面積" },
+              { "shots": "600", "area": "顔", "desc": "頬、額" },
+              { "shots": "400", "area": "中顔面", "desc": "頬、顎ライン" },
+              { "shots": "225", "area": "目元/口元", "desc": "繊細な部位" }
+            ]
+          },
+          "hero": {
+            "badge": "第4世代プレミアム高周波",
+            "title": "サーマジFLX",
+            "description": "AccuREP技術で肌状態に合った最適エネルギーを自動調節。<br />振動技術で痛みは減らし、効果は高める高周波リフティング。",
+            "stats": {
+              "treatments": { "value": "14M+", "label": "世界施術件数" },
+              "time": { "value": "25%", "label": "施術時間短縮" },
+              "satisfaction": { "value": "93%", "label": "患者満足度" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Thermage",
+            "title": "サーマジFLXとは？",
+            "description": "サーマジFLXは<strong>全世界1,400万件以上</strong>施術されたグローバルNo.1高周波（RF）リフティング装備です。特許取得のAccuREP技術で肌インピーダンスをリアルタイム測定し最適なエネルギーを自動調節し、コラーゲン収縮と再生を通じて肌弾力を改善します。",
+            "rfPrinciple": {
+              "title": "高周波エネルギーの原理",
+              "steps": [
+                {
+                  "num": "1",
+                  "title": "RFエネルギー伝達",
+                  "desc": "高周波エネルギーが真皮層に均一に伝達され65-75°Cの熱を発生させます。"
+                },
+                {
+                  "num": "2",
+                  "title": "コラーゲン収縮",
+                  "desc": "熱エネルギーで既存コラーゲンが収縮し即座の弾力改善効果が現れます。"
+                },
+                {
+                  "num": "3",
+                  "title": "新生コラーゲン生成",
+                  "desc": "3-6ヶ月にわたり新生コラーゲンが生成され持続的な弾力改善がなされます。"
+                }
+              ]
+            },
+            "temperature": "65-75°C",
+            "collagenLabel": "コラーゲン収縮＆再生"
+          },
+          "whyThermage": {
+            "sectionLabel": "Why Thermage FLX?",
+            "title": "なぜサーマジFLXなのか？",
+            "cards": {
+              "accuRep": {
+                "title": "AccuREP技術",
+                "desc": "肌インピーダンスを<strong>リアルタイム測定</strong>し各部位に最適化されたエネルギーを自動調節します。均一で安全な施術結果を保証します。"
+              },
+              "comfortPulse": {
+                "title": "Comfort Pulse",
+                "desc": "特許取得の振動技術で施術中<strong>痛みを最小化</strong>します。無麻酔でも快適に施術を受けられます。"
+              },
+              "collagenRemodeling": {
+                "title": "コラーゲンリモデリング",
+                "desc": "施術直後<strong>即座の収縮効果</strong>と共に3-6ヶ月にわたる新生コラーゲン生成で段階的な弾力改善がなされます。"
+              }
+            },
+            "globalTrust": {
+              "title": "Global Trust",
+              "treatments": { "value": "14M+", "label": "世界施術件数" },
+              "satisfaction": { "value": "93%", "label": "患者満足度" },
+              "time": { "value": "25%", "label": "施術時間短縮" },
+              "duration": { "value": "1年+", "label": "効果持続期間" },
+              "source": "出典：Solta Medical公式臨床データ"
+            }
+          },
+          "tipsSection": {
+            "sectionLabel": "Treatment Tips",
+            "title": "部位別カスタムチップ",
+            "subtitle": "様々なサイズのチップで部位に応じた最適化施術が可能です",
+            "eye": {
+              "sectionLabel": "Thermage Eye",
+              "title": "サーマジアイ",
+              "desc": "目元専用Total Tipでまぶたのたるみ、目の下のシワ、カラス足改善に効果的です。目元の皮膚は薄くデリケートなため専用チップで繊細に施術します。",
+              "benefits": [
+                "まぶた弾力改善",
+                "目の下のシワ緩和",
+                "目元全体タイトニング"
+              ]
+            }
+          },
+          "generationCompare": {
+            "sectionLabel": "Generation Comparison",
+            "title": "サーマジ世代別比較",
+            "subtitle": "第4世代FLXは既存世代対比画期的に改善された最新技術です"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIVだけのサーマジ",
+            "cards": {
+              "genuine": {
+                "title": "正品認定クリニック",
+                "desc": "ソルタメディカル公式認定クリニックとして正品装備とチップのみ使用します。シリアル番号確認及び正品認証書発行が可能です。"
+              },
+              "transparent": {
+                "title": "ショット数透明公開",
+                "desc": "施術前計画されたショット数と実際使用されたショット数を透明に公開します。正直な施術をお約束します。"
+              },
+              "specialist": {
+                "title": "専門医直接施術",
+                "desc": "皮膚科/形成外科専門医が直接相談から施術まで行います。個人別カスタム施術計画を樹立します。"
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "サーマジ施術後即座の効果と段階的コラーゲン再生が一緒に現れます"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "施術情報",
+            "labels": {
+              "duration": "施術時間",
+              "anesthesia": "麻酔",
+              "recovery": "回復期間",
+              "results": "効果持続"
+            },
+            "recommendedShots": {
+              "title": "部位別推奨ショット数",
+              "fullFace": { "shots": "300-400", "label": "全顔" },
+              "lowerFace": { "shots": "200-300", "label": "下顔面" },
+              "eye": { "shots": "225", "label": "目元（アイ）" },
+              "fullFaceNeck": { "shots": "500-900", "label": "全顔＋首" }
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "よくある質問",
+            "extendedFaqs": [
+              {
+                "q": "サーマジとウルセラプライムのどちらがいいですか？",
+                "a": "両施術は相互補完的です。ウルセラプライムはSMAS層の深いリフティングに効果的で、サーマジは真皮層コラーゲン収縮で全体的弾力改善に卓越しています。たるみがひどい場合はウルセラプライム、弾力低下が主な悩みならサーマジをお勧めします。"
+              },
+              {
+                "q": "サーマジ施術中痛みはひどいですか？",
+                "a": "FLXは振動技術（Comfort Pulse Technology）で施術中不快感を最小化しました。無麻酔で進行可能で、ほとんどの患者様が我慢できるレベルの熱感のみ感じられます。"
+              },
+              {
+                "q": "サーマジ正品確認はどうしますか？",
+                "a": "LIV形成外科はソルタメディカル公式認定クリニックです。施術前正品チップのシリアル番号と実際ショット数を確認でき、施術後正品認証書を発行いたします。"
+              }
+            ],
+            "moreInfo": "もっと医療情報が気になりますか？",
+            "viewMedicalQA": "医療情報Q&Aをもっと見る"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "サーマジ相談予約",
+            "description": "専門医療陣との1:1カスタム相談を通じて<br />自分に合った最適な施術計画を樹立してみてください。",
+            "bookConsultation": "無料相談予約",
+            "businessHours": "平日10:00-19:00",
+            "location": "新沙駅4番出口徒歩3分"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "一緒に見ると良い施術"
+          }
+        }
       },
       "density": {
         "name": "デンシティ",
         "fullName": "Density",
-        "tagline": "ウルセラ正品第2世代",
-        "description": "ウルセラの正品第2世代技術でより精密で効果的なリフティングを提供します。"
+        "tagline": "RF エネルギーで完成する弾力リフティング",
+        "description": "高周波(RF)エネルギーで肌の中のコラーゲンを緻密にリモデリング。精密で均一なエネルギーで弾力のある肌を完成させます。",
+        "detail": {
+          "illustrations": {
+            "dualEnergy": {
+              "hifu": "超音波",
+              "rf": "高周波",
+              "synergy": "Dual Energy Synergy"
+            },
+            "multiLayer": {
+              "epidermis": "表皮 (RF)",
+              "dermis": "真皮 (HIFU+RF)",
+              "smas": "SMAS (HIFU)",
+              "title": "多層ターゲティング"
+            },
+            "cooling": {
+              "title": "クーリングシステム"
+            },
+            "diagram": {
+              "epidermis": "表皮",
+              "dermis": "真皮",
+              "subcutaneous": "皮下脂肪",
+              "smas": "SMAS"
+            }
+          },
+          "timeline": {
+            "items": [
+              { "time": "施術直後", "effect": "即時の引き締め", "desc": "コラーゲン収縮", "percent": 40 },
+              { "time": "2週間", "effect": "弾力改善", "desc": "RF効果発現", "percent": 55 },
+              { "time": "1ヶ月", "effect": "肌質改善", "desc": "コラーゲン再生開始", "percent": 70 },
+              { "time": "3ヶ月", "effect": "最大効果", "desc": "RFコラーゲンリモデリング", "percent": 100 },
+              { "time": "6ヶ月+", "effect": "効果持続", "desc": "定期メンテナンス推奨", "percent": 90 }
+            ]
+          },
+          "comparison": {
+            "headers": {
+              "feature": "比較項目",
+              "density": "デンシティ",
+              "ulthera": "ウルセラプライム",
+              "thermage": "サーマジ"
+            },
+            "rows": [
+              { "feature": "エネルギー種類", "density": "RF (高周波)", "ulthera": "HIFU (超音波)", "thermage": "RF (高周波)" },
+              { "feature": "ターゲット深さ", "density": "真皮層中心", "ulthera": "SMAS中心", "thermage": "真皮層中心" },
+              { "feature": "エネルギー分布", "density": "均一で精密", "ulthera": "集束型", "thermage": "広範囲" },
+              { "feature": "痛み", "density": "低い", "ulthera": "中〜高", "thermage": "低い" },
+              { "feature": "施術時間", "density": "30-40分", "ulthera": "60-90分", "thermage": "45-60分" },
+              { "feature": "価格帯", "density": "リーズナブル", "ulthera": "プレミアム", "thermage": "プレミアム" },
+              { "feature": "おすすめ対象", "density": "弾力/毛穴ケア", "ulthera": "たるみが激しい場合", "thermage": "弾力低下" }
+            ]
+          },
+          "extendedFaqs": [
+            {
+              "q": "デンシティは1回だけでも効果がありますか？",
+              "a": "はい、1回の施術でも即時のリフティング効果を体験できます。ただし、最適な結果のために肌の状態に応じて3-6ヶ月間隔で2-3回の施術をお勧めします。"
+            },
+            {
+              "q": "デンシティ施術後ダウンタイムはありますか？",
+              "a": "一般的にダウンタイムはほとんどありません。施術直後わずかな赤みやむくみがある場合がありますが、ほとんどの場合当日中に消えます。すぐに日常生活とメイクが可能です。"
+            },
+            {
+              "q": "ウルセラプライムやサーマジを受けたのですが、デンシティも受けられますか？",
+              "a": "はい、可能です。ただし、前回の施術から最低3ヶ月以上間隔を空けることをお勧めします。相談を通じて肌の状態を確認し、最適な施術時期を決定します。"
+            }
+          ],
+          "hero": {
+            "badge": "RF 高周波リフティング",
+            "title": "デンシティ",
+            "description": "高周波(RF)エネルギーで肌の中のコラーゲンを緻密にリモデリング。<br />精密で均一なエネルギーで弾力のある肌を完成させます。",
+            "stats": {
+              "energy": { "value": "RF", "label": "高周波エネルギー" },
+              "layers": { "value": "4層", "label": "多層ターゲティング" },
+              "effect": { "value": "即時", "label": "リフティング効果" }
+            },
+            "floatingBadges": {
+              "rf": { "title": "RF", "subtitle": "精密高周波" },
+              "skin": { "title": "RF", "subtitle": "肌弾力" }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Density",
+            "title": "デンシティとは？",
+            "description": "デンシティは<strong>高周波(RF)</strong>エネルギーで真皮層を精密に刺激するプレミアムリフティング装備です。サーマジと同じ高周波系列で、精密で均一なエネルギー分布でコラーゲン再生を促進し、肌弾力を改善します。",
+            "rfPrinciple": {
+              "title": "RF高周波の原理",
+              "cards": {
+                "rf": {
+                  "label": "RF",
+                  "title": "高周波エネルギー",
+                  "desc": "真皮層に熱エネルギーを精密に伝達し、コラーゲン収縮と再生を誘導し、肌弾力を改善します。"
+                },
+                "uniform": {
+                  "label": "均一",
+                  "title": "精密なエネルギー分布",
+                  "desc": "均一で精密なエネルギー伝達で効果的なコラーゲンリモデリングを引き出します。"
+                },
+                "synergy": {
+                  "label": "+",
+                  "title": "シナジー効果",
+                  "desc": "2つのエネルギーの同時作用により、単独施術に比べてより強力で持続的なリフティング効果を体験できます。"
+                }
+              }
+            }
+          },
+          "whyDensity": {
+            "sectionLabel": "Why Density?",
+            "title": "なぜデンシティなのか？",
+            "cards": {
+              "rf": {
+                "title": "RF 高周波",
+                "desc": "精密な高周波エネルギーで<strong>真皮層コラーゲンを均一に刺激</strong>し、弾力と肌質を同時に改善します。"
+              },
+              "affordable": {
+                "title": "リーズナブルな価格",
+                "desc": "サーマジと同じ高周波系列ですが<strong>より手頃な費用</strong>で継続的なリフティング管理が可能です。"
+              },
+              "cooling": {
+                "title": "クーリングシステム",
+                "desc": "内蔵クーリングシステムで<strong>施術中の痛みを最小化</strong>し、表皮を保護して快適な施術が可能です。"
+              }
+            },
+            "clinicalBanner": {
+              "label": "RF Lifting Benefits",
+              "stats": {
+                "energy": { "value": "RF", "label": "高周波エネルギー" },
+                "precision": { "value": "精密", "label": "均一な分布" },
+                "duration": { "value": "40分", "label": "速い施術" },
+                "effect": { "value": "即時", "label": "効果確認" }
+              }
+            }
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "デンシティ vs 他装備",
+            "subtitle": "精密なRFエネルギーで弾力と毛穴を同時にケアします",
+            "combinationNote": {
+              "title": "HIFUとの複合施術",
+              "desc": "デンシティ(RF)はウルセラプライム、シュリンク(HIFU)系列と併用すると様々な層を網羅する複合弾力施術が可能です。リーズナブルな費用で継続的なリフティング管理をお望みの方に最適です。"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIVだけのデンシティ",
+            "cards": {
+              "custom": {
+                "title": "カスタマイズエネルギー設定",
+                "desc": "肌の状態と悩みに合わせてRFエネルギー強度を最適化し、個人カスタム施術を進行します。"
+              },
+              "genuine": {
+                "title": "正品装備使用",
+                "desc": "正品デンシティ装備で安全で効果的な施術を提供します。定期的な装備点検で最高の状態を維持します。"
+              },
+              "specialist": {
+                "title": "専門医直接施術",
+                "desc": "皮膚科/形成外科専門医が直接相談から施術まで進行します。豊富な経験で最適な結果を導き出します。"
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "デンシティ施術後、即時効果と漸進的改善が一緒に現れます"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "施術情報",
+            "labels": {
+              "duration": "施術時間",
+              "anesthesia": "麻酔",
+              "recovery": "回復期間",
+              "results": "効果持続"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "よくある質問",
+            "moreInfo": "もっと医療情報が気になりますか？",
+            "viewMedicalQA": "医療情報Q&Aをもっと見る"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "デンシティ相談予約",
+            "description": "専門医療陣との1:1カスタム相談を通じて<br />自分に合った最適な施術計画を樹立してみてください。",
+            "bookConsultation": "無料相談予約",
+            "businessHours": "平日10:00-19:00",
+            "location": "新沙駅4番出口徒歩3分"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "一緒に見ると良い施術"
+          }
+        }
       },
       "inmode": {
         "name": "インモード",

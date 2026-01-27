@@ -7,17 +7,17 @@
 ## 🚀 빠른 시작 (새 세션용)
 
 ### 현재 진행률
-- **완료**: 우선순위 1~4 (메인 페이지, 공통 UI, 상담 폼, UltheraDetail.tsx)
-- **대기**: 나머지 15개 시술 상세 페이지
+- **완료**: 우선순위 1~6 (메인 페이지, 공통 UI, 상담 폼, UltheraDetail.tsx, ThermageDetail.tsx, DensityDetail.tsx)
+- **대기**: 나머지 13개 시술 상세 페이지
 
 ### 다음에 해야 할 작업
 ```
-1. ThermageDetail.tsx 번역 (UltheraDetail.tsx 패턴 적용)
+1. InModeDetail.tsx 번역 (동일 패턴 적용)
    - 번역 키 추가 (ko, en, ja, zh.json)
    - 컴포넌트에서 t() 함수로 교체
 
-2. 나머지 14개 Detail 파일에 동일 패턴 적용
-   - DensityDetail, InModeDetail, ShurinkDetail, ThreadDetail, AptosDetail
+2. 나머지 12개 Detail 파일에 동일 패턴 적용
+   - ShurinkDetail, ThreadDetail, AptosDetail
    - BotoxDetail, FillerDetail, SkinboosterDetail
    - LaserCenterDetail, PigmentationDetail, VascularDetail 등
 
@@ -124,26 +124,146 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 3. 대기 중: 나머지 15개 Detail 파일
+## 3. 완료: ThermageDetail.tsx ✅
 
-### 3.1 리프팅 (6개)
+### 3.1 핵심 데이터 구조 번역
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `heroLabels` | 동적 레이블 (AccuREP, Comfort Pulse 등) | ✅ 완료 |
+| `skinLayers` | 피부층 레이블 (표피, 진피, 피하지방, 근막) | ✅ 완료 |
+| `timeline` | 타임라인 데이터 (시술 직후 ~ 12개월+) | ✅ 완료 |
+| `comparison` | 세대별 비교 테이블 (FLX vs CPT vs NXT) | ✅ 완료 |
+| `tips` | 팁 종류 데이터 (900/600/400/225) | ✅ 완료 |
+| `rfSteps` | RF 에너지 원리 3단계 | ✅ 완료 |
+| `extendedFaqs` | 확장 FAQ 질문/답변 (3개) | ✅ 완료 |
+
+### 3.2 섹션별 번역
+
+| 섹션 | 번역 항목 | 상태 |
+|------|-----------|------|
+| Hero | 뱃지, 제목, 설명, 통계 레이블, floating badges | ✅ 완료 |
+| About | 제목, 설명, RF 에너지 원리 3단계 | ✅ 완료 |
+| Why Thermage | 섹션 제목, 3개 카드, Global Trust 통계 | ✅ 완료 |
+| Tips | 섹션 제목, 부제목, Thermage Eye 섹션 | ✅ 완료 |
+| Generation Compare | 섹션 제목, 부제목, 테이블 헤더 | ✅ 완료 |
+| LIV Difference | 섹션 제목, 3개 카드 (정품 인증, 샷 수 투명, 전문의 직접) | ✅ 완료 |
+| Timeline | 섹션 제목, 부제목 | ✅ 완료 |
+| Treatment Info | 섹션 제목, 레이블, 권장 샷 수 | ✅ 완료 |
+| FAQ | 섹션 제목, "더 많은 의료 정보", "의료정보 Q&A 더보기" | ✅ 완료 |
+| CTA | 제목, 설명, 버튼, 운영시간, 위치 | ✅ 완료 |
+| Related | 섹션 제목 | ✅ 완료 |
+
+### 3.3 번역 키 구조 (treatments.lifting.thermage.detail)
+
+```json
+{
+  "treatments": {
+    "lifting": {
+      "thermage": {
+        "detail": {
+          "heroLabels": [...],
+          "skinLayers": { "epidermis", "dermis", "subcutaneous", "fascia" },
+          "timeline": { "items": [...] },
+          "comparison": { "title", "subtitle", "headers", "rows" },
+          "tips": { "title", "subtitle", "items": [...] },
+          "hero": { "badge", "title", "description", "stats" },
+          "about": { "sectionLabel", "title", "description", "rfPrinciple" },
+          "whyThermage": { "sectionLabel", "title", "cards", "globalTrust" },
+          "tipsSection": { "sectionLabel", "title", "subtitle", "eye" },
+          "generationCompare": { "sectionLabel", "title", "subtitle" },
+          "livDifference": { "sectionLabel", "title", "cards" },
+          "timelineSection": { "sectionLabel", "subtitle" },
+          "treatmentInfo": { "sectionLabel", "title", "labels", "recommendedShots" },
+          "faq": { "sectionLabel", "title", "extendedFaqs", "moreInfo", "viewMedicalQA" },
+          "cta": { "sectionLabel", "title", "description", "bookConsultation", "businessHours", "location" },
+          "related": { "sectionLabel", "title" }
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+## 4. 완료: DensityDetail.tsx ✅
+
+### 4.1 핵심 데이터 구조 번역
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `illustrations` | SVG 일러스트레이션 레이블 (dualEnergy, multiLayer, cooling, diagram) | ✅ 완료 |
+| `timeline` | 타임라인 데이터 (시술 직후 ~ 6개월+) | ✅ 완료 |
+| `comparison` | 비교 테이블 헤더/데이터 (덴서티 vs 울쎄라 vs 써마지) | ✅ 완료 |
+| `extendedFaqs` | 확장 FAQ 질문/답변 (3개) | ✅ 완료 |
+
+### 4.2 섹션별 번역
+
+| 섹션 | 번역 항목 | 상태 |
+|------|-----------|------|
+| Hero | 뱃지, 제목, 설명, 통계 레이블, floating badges | ✅ 완료 |
+| About | 제목, 설명, RF 원리 3단계 카드 | ✅ 완료 |
+| Why Density | 섹션 제목, 3개 카드 (RF, 합리적 가격, 쿨링), Clinical Banner | ✅ 완료 |
+| Compare | 섹션 제목, 부제목, 복합 시술 노트 | ✅ 완료 |
+| LIV Difference | 섹션 제목, 3개 카드 (맞춤 에너지, 정품, 전문의 직접) | ✅ 완료 |
+| Timeline | 섹션 제목, 부제목 | ✅ 완료 |
+| Process | 섹션 레이블 | ✅ 완료 |
+| Treatment Info | 섹션 제목, 레이블 (시술 시간, 마취, 회복, 효과) | ✅ 완료 |
+| FAQ | 섹션 제목, "더 많은 의료 정보", "의료정보 Q&A 더보기" | ✅ 완료 |
+| CTA | 제목, 설명, 버튼, 운영시간, 위치 | ✅ 완료 |
+| Related | 섹션 제목 | ✅ 완료 |
+
+### 4.3 번역 키 구조 (treatments.lifting.density.detail)
+
+```json
+{
+  "treatments": {
+    "lifting": {
+      "density": {
+        "detail": {
+          "illustrations": { "dualEnergy", "multiLayer", "cooling", "diagram" },
+          "timeline": { "items": [...] },
+          "comparison": { "headers", "rows" },
+          "extendedFaqs": [...],
+          "hero": { "badge", "title", "description", "stats", "floatingBadges" },
+          "about": { "sectionLabel", "title", "description", "rfPrinciple" },
+          "whyDensity": { "sectionLabel", "title", "cards", "clinicalBanner" },
+          "compare": { "sectionLabel", "title", "subtitle", "combinationNote" },
+          "livDifference": { "sectionLabel", "title", "cards" },
+          "timelineSection": { "sectionLabel", "subtitle" },
+          "processSection": { "sectionLabel" },
+          "treatmentInfo": { "sectionLabel", "title", "labels" },
+          "faq": { "sectionLabel", "title", "moreInfo", "viewMedicalQA" },
+          "cta": { "sectionLabel", "title", "description", "bookConsultation", "businessHours", "location" },
+          "related": { "sectionLabel", "title" }
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+## 5. 대기 중: 나머지 13개 Detail 파일
+
+### 5.1 리프팅 (4개)
 | 파일 | 상태 |
 |------|------|
-| `ThermageDetail.tsx` | ⏳ 대기 |
-| `DensityDetail.tsx` | ⏳ 대기 |
 | `InModeDetail.tsx` | ⏳ 대기 |
 | `ShurinkDetail.tsx` | ⏳ 대기 |
 | `ThreadDetail.tsx` | ⏳ 대기 |
 | `AptosDetail.tsx` | ⏳ 대기 |
 
-### 3.2 안티에이징 (3개)
+### 5.2 안티에이징 (3개)
 | 파일 | 상태 |
 |------|------|
 | `BotoxDetail.tsx` | ⏳ 대기 |
 | `FillerDetail.tsx` | ⏳ 대기 |
 | `SkinboosterDetail.tsx` | ⏳ 대기 |
 
-### 3.3 레이저 (6개)
+### 5.3 레이저 (6개)
 | 파일 | 상태 |
 |------|------|
 | `LaserCenterDetail.tsx` | ⏳ 대기 |
@@ -155,9 +275,9 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 4. 번역 작업 패턴 가이드
+## 6. 번역 작업 패턴 가이드
 
-### 4.1 컴포넌트 수정 패턴
+### 6.1 컴포넌트 수정 패턴
 
 ```tsx
 // 1. 번역 훅 사용 선언
@@ -177,7 +297,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 <ComparisonTable rows={comparisonRows} headers={comparisonHeaders} />
 ```
 
-### 4.2 번역 키 추가 패턴
+### 6.2 번역 키 추가 패턴
 
 ```json
 // ko.json
@@ -201,7 +321,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 
 ---
 
-## 5. 테스트 방법
+## 7. 테스트 방법
 
 ```bash
 cd c:/dev/LIV_homepage/liv-clinic
@@ -221,7 +341,7 @@ npm run dev
 
 ---
 
-## 6. 참고 파일 경로
+## 8. 참고 파일 경로
 
 | 용도 | 경로 |
 |------|------|
@@ -232,4 +352,4 @@ npm run dev
 
 ---
 
-*마지막 업데이트: 2026-01-27 (UltheraDetail.tsx 100% 완료)*
+*마지막 업데이트: 2026-01-27 (DensityDetail.tsx 100% 완료)*
