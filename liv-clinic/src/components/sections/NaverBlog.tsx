@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button } from '@/components/ui';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
@@ -18,14 +19,16 @@ interface BlogPost {
   views: number;
 }
 
-// 카테고리 설정
-const categoryConfig: Record<string, { label: string; color: string; bgColor: string }> = {
-  lifting: { label: '리프팅', color: 'text-primary', bgColor: 'bg-primary/10' },
-  antiaging: { label: '안티에이징', color: 'text-[#8b6b5d]', bgColor: 'bg-[#8b6b5d]/10' },
-  skincare: { label: '스킨케어', color: 'text-[#6d5a4d]', bgColor: 'bg-[#6d5a4d]/10' },
-  news: { label: '클리닉 소식', color: 'text-secondary', bgColor: 'bg-secondary/10' },
-  qna: { label: 'Q&A', color: 'text-[#a89080]', bgColor: 'bg-[#a89080]/10' },
+// 카테고리 스타일 설정 (label은 번역으로 처리)
+const categoryStyles: Record<string, { color: string; bgColor: string }> = {
+  lifting: { color: 'text-primary', bgColor: 'bg-primary/10' },
+  antiaging: { color: 'text-[#8b6b5d]', bgColor: 'bg-[#8b6b5d]/10' },
+  skincare: { color: 'text-[#6d5a4d]', bgColor: 'bg-[#6d5a4d]/10' },
+  news: { color: 'text-secondary', bgColor: 'bg-secondary/10' },
+  qna: { color: 'text-[#a89080]', bgColor: 'bg-[#a89080]/10' },
 };
+
+const categoryKeys = ['lifting', 'antiaging', 'skincare', 'news', 'qna'] as const;
 
 // 실제 네이버 블로그 RSS/API 연동 시 데이터 교체
 const blogPosts: BlogPost[] = [
@@ -142,7 +145,9 @@ function BlogCardSkeleton({ isFeatured = false }: { isFeatured?: boolean }) {
 // Featured 카드 컴포넌트 (큰 카드)
 function FeaturedBlogCard({ post, isLoading }: { post: BlogPost; isLoading: boolean }) {
   const [imageError, setImageError] = useState(true);
-  const config = categoryConfig[post.category];
+  const tCommon = useTranslations('common');
+  const tCategories = useTranslations('categories');
+  const styles = categoryStyles[post.category];
 
   if (isLoading) {
     return <BlogCardSkeleton isFeatured />;
@@ -179,8 +184,8 @@ function FeaturedBlogCard({ post, isLoading }: { post: BlogPost; isLoading: bool
           )}
           {/* 카테고리 오버레이 */}
           <div className="absolute top-4 left-4">
-            <span className={`px-4 py-2 ${config.bgColor} ${config.color} text-sm font-medium rounded-full backdrop-blur-sm bg-white/80`}>
-              {config.label}
+            <span className={`px-4 py-2 ${styles.bgColor} ${styles.color} text-sm font-medium rounded-full backdrop-blur-sm bg-white/80`}>
+              {tCategories(post.category)}
             </span>
           </div>
         </div>
@@ -190,9 +195,9 @@ function FeaturedBlogCard({ post, isLoading }: { post: BlogPost; isLoading: bool
           <div className="flex items-center gap-3 text-mono-light text-small mb-4">
             <span>{post.date}</span>
             <span className="w-1 h-1 rounded-full bg-mono-light" />
-            <span>{post.readTime}분 읽기</span>
+            <span>{post.readTime}{tCommon('minuteRead')}</span>
             <span className="w-1 h-1 rounded-full bg-mono-light" />
-            <span>조회 {post.views.toLocaleString()}</span>
+            <span>{tCommon('views')} {post.views.toLocaleString()}</span>
           </div>
 
           <h3 className="text-h2 text-secondary mb-4 group-hover:text-primary transition-colors line-clamp-2">
@@ -204,7 +209,7 @@ function FeaturedBlogCard({ post, isLoading }: { post: BlogPost; isLoading: bool
           </p>
 
           <div className="flex items-center gap-2 text-primary font-medium group-hover:gap-4 transition-all">
-            <span>자세히 읽기</span>
+            <span>{tCommon('readMore')}</span>
             <svg className="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -218,7 +223,8 @@ function FeaturedBlogCard({ post, isLoading }: { post: BlogPost; isLoading: bool
 // 일반 카드 컴포넌트
 function BlogCard({ post, isLoading }: { post: BlogPost; isLoading: boolean }) {
   const [imageError, setImageError] = useState(true);
-  const config = categoryConfig[post.category];
+  const tCategories = useTranslations('categories');
+  const styles = categoryStyles[post.category];
 
   if (isLoading) {
     return <BlogCardSkeleton />;
@@ -263,15 +269,15 @@ function BlogCard({ post, isLoading }: { post: BlogPost; isLoading: boolean }) {
 
         {/* 읽기 시간 뱃지 */}
         <div className="absolute top-3 right-3 px-2.5 py-1 bg-black/50 backdrop-blur-sm text-white text-xs rounded-full">
-          {post.readTime}분
+          {post.readTime}min
         </div>
       </div>
 
       {/* 컨텐츠 */}
       <div className="p-5">
         {/* 카테고리 */}
-        <span className={`inline-block px-3 py-1 ${config.bgColor} ${config.color} text-xs font-medium rounded-full mb-3`}>
-          {config.label}
+        <span className={`inline-block px-3 py-1 ${styles.bgColor} ${styles.color} text-xs font-medium rounded-full mb-3`}>
+          {tCategories(post.category)}
         </span>
 
         {/* 제목 */}
@@ -303,6 +309,8 @@ function BlogCard({ post, isLoading }: { post: BlogPost; isLoading: boolean }) {
 export default function NaverBlog() {
   const [isLoading, setIsLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState<string>('all');
+  const tCommon = useTranslations('common');
+  const tCategories = useTranslations('categories');
 
   // 시뮬레이션된 로딩 (실제 API 연동 시 제거)
   useEffect(() => {
@@ -332,9 +340,9 @@ export default function NaverBlog() {
               </div>
               <p className="font-serif text-h3 text-primary">Blog</p>
             </div>
-            <h2 className="text-h1 text-secondary mb-4">의료 정보 & 소식</h2>
+            <h2 className="text-h1 text-secondary mb-4">{tCommon('medicalInfoNews')}</h2>
             <p className="text-body text-mono-light max-w-2xl mx-auto">
-              리브성형외과의 최신 소식과 유용한 의료 정보를 확인해보세요.
+              {tCommon('checkLatestNews')}
             </p>
           </div>
         </AnimateOnScroll>
@@ -350,21 +358,24 @@ export default function NaverBlog() {
                   : 'bg-background text-mono hover:bg-primary/10 hover:text-primary'
               }`}
             >
-              전체
+              {tCommon('all')}
             </button>
-            {Object.entries(categoryConfig).map(([key, config]) => (
-              <button
-                key={key}
-                onClick={() => setActiveCategory(key)}
-                className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
-                  activeCategory === key
-                    ? 'bg-secondary text-white'
-                    : `bg-background text-mono hover:${config.bgColor} hover:${config.color}`
-                }`}
-              >
-                {config.label}
-              </button>
-            ))}
+            {categoryKeys.map((key) => {
+              const styles = categoryStyles[key];
+              return (
+                <button
+                  key={key}
+                  onClick={() => setActiveCategory(key)}
+                  className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
+                    activeCategory === key
+                      ? 'bg-secondary text-white'
+                      : `bg-background text-mono hover:${styles.bgColor} hover:${styles.color}`
+                  }`}
+                >
+                  {tCategories(key)}
+                </button>
+              );
+            })}
           </div>
         </AnimateOnScroll>
 
@@ -400,7 +411,7 @@ export default function NaverBlog() {
               <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M16.273 12.845L7.376 0H0v24h7.727V11.155L16.624 24H24V0h-7.727v12.845z" />
               </svg>
-              <span className="font-medium">네이버 블로그 더보기</span>
+              <span className="font-medium">{tCommon('viewMoreBlog')}</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -410,17 +421,17 @@ export default function NaverBlog() {
             <div className="mt-6 flex items-center justify-center gap-8 text-mono-light">
               <div className="text-center">
                 <p className="text-h4 text-secondary font-medium">150+</p>
-                <p className="text-small">게시글</p>
+                <p className="text-small">{tCommon('posts')}</p>
               </div>
               <div className="w-px h-8 bg-border" />
               <div className="text-center">
                 <p className="text-h4 text-secondary font-medium">50K+</p>
-                <p className="text-small">누적 조회수</p>
+                <p className="text-small">{tCommon('cumulativeViews')}</p>
               </div>
               <div className="w-px h-8 bg-border" />
               <div className="text-center">
                 <p className="text-h4 text-secondary font-medium">Weekly</p>
-                <p className="text-small">업데이트</p>
+                <p className="text-small">{tCommon('update')}</p>
               </div>
             </div>
           </div>

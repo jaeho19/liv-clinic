@@ -22,7 +22,37 @@
     "collapseAll": "Collapse All",
     "all": "All",
     "freeConsultation": "Book Free Consultation",
-    "faq": "Frequently Asked Questions"
+    "faq": "Frequently Asked Questions",
+    "duration": "Duration",
+    "recommendedFor": "Recommended For",
+    "cases": "cases",
+    "notice": "Notice",
+    "readMore": "Read More",
+    "minuteRead": "min read",
+    "views": "views",
+    "posts": "posts",
+    "cumulativeViews": "Total Views",
+    "update": "Update",
+    "viewMoreBlog": "View More on Naver Blog",
+    "noItemsInCategory": "No cases in this category",
+    "selectOtherCategory": "Please select another category",
+    "medicalInfoNews": "Medical Info & News",
+    "checkLatestNews": "Check out the latest news and useful medical information from LIV Plastic Surgery."
+  },
+  "categories": {
+    "lifting": "Lifting",
+    "antiaging": "Anti-aging",
+    "skin": "Skin/Laser",
+    "skincare": "Skincare",
+    "news": "Clinic News",
+    "qna": "Q&A"
+  },
+  "gallery": {
+    "title": "Treatment Gallery",
+    "description": "Browse our treatment cases at LIV Plastic Surgery. Experience natural and beautiful transformations.",
+    "noticeText": "All treatment cases are posted with patient consent. Results may vary by individual.",
+    "experienceChange": "Want to experience this transformation?",
+    "findTreatment": "Find the right treatment for you through a professional consultation."
   },
   "nav": {
     "about": "About",

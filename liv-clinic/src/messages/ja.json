@@ -22,7 +22,37 @@
     "collapseAll": "すべて折りたたむ",
     "all": "すべて",
     "freeConsultation": "無料相談予約",
-    "faq": "よくある質問"
+    "faq": "よくある質問",
+    "duration": "所要時間",
+    "recommendedFor": "おすすめ対象",
+    "cases": "件の事例",
+    "notice": "お知らせ",
+    "readMore": "詳しく読む",
+    "minuteRead": "分で読める",
+    "views": "閲覧",
+    "posts": "投稿",
+    "cumulativeViews": "累計閲覧数",
+    "update": "更新",
+    "viewMoreBlog": "ネイバーブログで詳しく",
+    "noItemsInCategory": "このカテゴリーには事例がありません",
+    "selectOtherCategory": "他のカテゴリーを選択してください",
+    "medicalInfoNews": "医療情報 & ニュース",
+    "checkLatestNews": "リブ形成外科の最新ニュースと役立つ医療情報をご確認ください。"
+  },
+  "categories": {
+    "lifting": "リフティング",
+    "antiaging": "アンチエイジング",
+    "skin": "スキン/レーザー",
+    "skincare": "スキンケア",
+    "news": "クリニックニュース",
+    "qna": "Q&A"
+  },
+  "gallery": {
+    "title": "施術ギャラリー",
+    "description": "リブ形成外科の施術事例をご覧ください。自然で美しい変化をご体験いただけます。",
+    "noticeText": "すべての施術事例は患者様の同意のもと掲載されています。結果には個人差があります。",
+    "experienceChange": "このような変化を体験してみませんか？",
+    "findTreatment": "専門相談を通じてあなたに合った施術を見つけましょう。"
   },
   "nav": {
     "about": "リブ紹介",

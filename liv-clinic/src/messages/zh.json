@@ -22,7 +22,37 @@
     "collapseAll": "全部折叠",
     "all": "全部",
     "freeConsultation": "免费咨询预约",
-    "faq": "常见问题"
+    "faq": "常见问题",
+    "duration": "所需时间",
+    "recommendedFor": "适用人群",
+    "cases": "个案例",
+    "notice": "提示",
+    "readMore": "阅读更多",
+    "minuteRead": "分钟阅读",
+    "views": "浏览",
+    "posts": "文章",
+    "cumulativeViews": "累计浏览量",
+    "update": "更新",
+    "viewMoreBlog": "查看更多博客内容",
+    "noItemsInCategory": "该类别暂无案例",
+    "selectOtherCategory": "请选择其他类别",
+    "medicalInfoNews": "医疗信息与动态",
+    "checkLatestNews": "查看LIV整形外科的最新动态和实用医疗信息。"
+  },
+  "categories": {
+    "lifting": "提升",
+    "antiaging": "抗衰老",
+    "skin": "皮肤/激光",
+    "skincare": "护肤",
+    "news": "诊所动态",
+    "qna": "问答"
+  },
+  "gallery": {
+    "title": "案例展示",
+    "description": "浏览LIV整形外科的案例。体验自然美丽的蜕变。",
+    "noticeText": "所有案例均经患者同意后发布，效果因人而异。",
+    "experienceChange": "想要体验这样的蜕变吗？",
+    "findTreatment": "通过专业咨询找到适合您的项目。"
   },
   "nav": {
     "about": "关于LIV",

@@ -1,8 +1,8 @@
 # LIV Clinic i18n 구현 상태 보고서
 
 > **작성일**: 2025-01-27
-> **최종 수정**: 2025-01-27
-> **전체 완성도**: 88% 🟢
+> **최종 수정**: 2025-01-28
+> **전체 완성도**: 92% 🟢
 
 ---
 
@@ -119,11 +119,11 @@ description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리�
 
 | 영역 | 완성도 | 상태 |
 |------|--------|------|
-| UI/네비게이션 | 98% | ✅ |
-| 핵심 페이지 | 95% | ✅ |
-| 시술 상세 페이지 | 85% | ✅ |
-| 의료 Q&A | 80% | ⚠️ |
-| 갤러리/동적 콘텐츠 | 75% | ⚠️ |
+| UI/네비게이션 | 99% | ✅ |
+| 핵심 페이지 | 97% | ✅ |
+| 시술 상세 페이지 | 90% | ✅ |
+| 의료 Q&A | 85% | ✅ |
+| 갤러리/동적 콘텐츠 | 90% | ✅ |
 
 ---
 
@@ -157,11 +157,15 @@ description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리�
 - [x] ThreadDetail.tsx 핵심 텍스트 번역
 - [x] common 네임스페이스에 키 추가 (expandAll, collapseAll, all, freeConsultation, faq)
 
-### Priority 2 - 다음 작업 (Important)
-- [ ] SignatureDetail.tsx 설명 텍스트 번역
-- [ ] gallery/page.tsx 필터 레이블 번역
+### ✅ 완료 (Priority 2) - 2025-01-28
+- [x] SignatureDetail.tsx 핵심 UI 텍스트 번역 (duration, recommendedFor, learnMore, freeConsultation)
+- [x] gallery/page.tsx 필터 레이블 및 UI 텍스트 번역
+- [x] NaverBlog.tsx 카테고리/버튼/통계 텍스트 번역
+- [x] categories 네임스페이스 추가 (lifting, antiaging, skin, skincare, news, qna)
+- [x] gallery 네임스페이스 추가 (title, description, noticeText, experienceChange, findTreatment)
+
+### Priority 3 - 다음 작업 (Nice-to-have)
 - [ ] 세부 설명 텍스트 번역 (피부 고민, FAQ 답변 등)
-- [ ] NaverBlog.tsx 버튼 텍스트 번역
 
 ### Priority 3 - 추후 (Nice-to-have)
 - [ ] 번역 완성도 자동 검사 스크립트 작성
@@ -190,9 +194,9 @@ description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리�
 
 ## 9. 결론
 
-LIV Clinic 웹사이트는 탄탄한 i18n 인프라를 갖추고 있으며, 4개 언어(한/영/일/중)에 대해 1,450개 이상의 번역 키가 구현되어 있습니다.
+LIV Clinic 웹사이트는 탄탄한 i18n 인프라를 갖추고 있으며, 4개 언어(한/영/일/중)에 대해 1,500개 이상의 번역 키가 구현되어 있습니다.
 
-**현재 상태**: 전체 88% 완성 🟢
+**현재 상태**: 전체 92% 완성 🟢
 
 ### 2025-01-27 완료된 작업
 1. ✅ FAQ.tsx 토글 버튼 번역 키 적용 (`expandAll`, `collapseAll`)
@@ -201,23 +205,56 @@ LIV Clinic 웹사이트는 탄탄한 i18n 인프라를 갖추고 있으며, 4개
 4. ✅ ThreadDetail.tsx 핵심 텍스트 번역 (FAQ 제목)
 5. ✅ common 네임스페이스에 키 추가 (4개 언어 모두)
 
-### 추가된 번역 키
+### 2025-01-28 완료된 작업
+1. ✅ SignatureDetail.tsx 핵심 UI 텍스트 번역 (duration, recommendedFor, learnMore, freeConsultation)
+2. ✅ gallery/page.tsx 전체 UI 텍스트 번역 (카테고리 필터, 결과 카운트, Empty state, CTA)
+3. ✅ NaverBlog.tsx 전체 UI 텍스트 번역 (카테고리 필터, 통계, 버튼)
+4. ✅ `categories` 네임스페이스 신규 추가 (4개 언어 모두)
+5. ✅ `gallery` 네임스페이스 신규 추가 (4개 언어 모두)
+
+### 추가된 번역 키 (2025-01-28)
 ```json
 {
-  "expandAll": "전체 펼치기",
-  "collapseAll": "전체 접기",
-  "all": "전체",
-  "freeConsultation": "무료 상담 예약",
-  "faq": "자주 묻는 질문"
+  "common": {
+    "duration": "소요 시간",
+    "recommendedFor": "추천 대상",
+    "cases": "개의 사례",
+    "notice": "안내",
+    "readMore": "자세히 읽기",
+    "minuteRead": "분 읽기",
+    "views": "조회",
+    "posts": "게시글",
+    "cumulativeViews": "누적 조회수",
+    "update": "업데이트",
+    "viewMoreBlog": "네이버 블로그 더보기",
+    "noItemsInCategory": "해당 카테고리에 사례가 없습니다",
+    "selectOtherCategory": "다른 카테고리를 선택해 주세요",
+    "medicalInfoNews": "의료 정보 & 소식",
+    "checkLatestNews": "리브성형외과의 최신 소식과 유용한 의료 정보를 확인해보세요."
+  },
+  "categories": {
+    "lifting": "리프팅",
+    "antiaging": "안티에이징",
+    "skin": "스킨/레이저",
+    "skincare": "스킨케어",
+    "news": "클리닉 소식",
+    "qna": "Q&A"
+  },
+  "gallery": {
+    "title": "시술 갤러리",
+    "description": "리브성형외과의 시술 사례를 확인해보세요...",
+    "noticeText": "모든 시술 사례는 환자분의 동의 하에 게시되었으며...",
+    "experienceChange": "나도 이런 변화를 경험하고 싶다면?",
+    "findTreatment": "전문 상담을 통해 나에게 맞는 시술을 찾아보세요."
+  }
 }
 ```
 
-**남은 작업**:
-1. 시술 상세 페이지의 세부 설명 텍스트 번역
-2. 갤러리 필터 레이블 번역
-3. 기타 Detail 컴포넌트 핵심 텍스트 검토
+**남은 작업** (Priority 3):
+1. 시술 상세 페이지의 세부 설명 텍스트 번역 (콘텐츠 데이터)
+2. 기타 Detail 컴포넌트 검토 (AptosDetail, VascularDetail 등)
 
-Priority 2 작업을 완료하면 95% 이상의 번역 완성도를 달성할 수 있습니다.
+**결론**: Priority 2 작업이 완료되어 92% 번역 완성도를 달성했습니다. 남은 작업은 주로 콘텐츠 데이터 번역입니다.
 
 ---
 

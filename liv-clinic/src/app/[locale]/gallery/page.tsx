@@ -16,16 +16,20 @@ const galleryItems = [
   { id: 8, category: 'skin', title: '루카스 레이저', description: '피부결 개선' },
 ];
 
-const categories = [
-  { id: 'all', label: '전체', labelEn: 'All' },
-  { id: 'lifting', label: '리프팅', labelEn: 'Lifting' },
-  { id: 'antiaging', label: '안티에이징', labelEn: 'Anti-aging' },
-  { id: 'skin', label: '스킨/레이저', labelEn: 'Skin/Laser' },
-];
+// Category IDs for filtering
+const categoryIds = ['all', 'lifting', 'antiaging', 'skin'] as const;
 
 export default function GalleryPage() {
-  const t = useTranslations('common');
+  const tCommon = useTranslations('common');
+  const tCategories = useTranslations('categories');
+  const tGallery = useTranslations('gallery');
   const [selectedCategory, setSelectedCategory] = useState('all');
+
+  // Category labels from translations
+  const getCategoryLabel = (id: string) => {
+    if (id === 'all') return tCommon('all');
+    return tCategories(id);
+  };
 
   const filteredItems = useMemo(() => {
     if (selectedCategory === 'all') return galleryItems;
@@ -40,11 +44,9 @@ export default function GalleryPage() {
           <AnimateOnScroll>
             <div className="max-w-3xl">
               <p className="font-serif text-h3 text-primary mb-4">Gallery</p>
-              <h1 className="text-display text-secondary mb-6">시술 갤러리</h1>
+              <h1 className="text-display text-secondary mb-6">{tGallery('title')}</h1>
               <p className="text-h4 text-mono leading-relaxed">
-                리브성형외과의 시술 사례를 확인해보세요.
-                <br />
-                자연스럽고 아름다운 변화를 경험하실 수 있습니다.
+                {tGallery('description')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -57,24 +59,23 @@ export default function GalleryPage() {
           {/* Notice */}
           <div className="bg-primary/10 rounded-xl p-4 text-center mb-6">
             <p className="text-body text-mono">
-              <span className="text-primary font-medium">안내:</span> 모든 시술 사례는 환자분의 동의 하에 게시되었으며,
-              개인에 따라 결과가 다를 수 있습니다.
+              <span className="text-primary font-medium">{tCommon('notice')}:</span> {tGallery('noticeText')}
             </p>
           </div>
 
           {/* Category Filter */}
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide -mx-4 px-4 md:mx-0 md:px-0 justify-center">
-            {categories.map((category) => (
+            {categoryIds.map((categoryId) => (
               <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
+                key={categoryId}
+                onClick={() => setSelectedCategory(categoryId)}
                 className={`flex-shrink-0 px-4 py-2 rounded-full text-small font-medium transition-colors whitespace-nowrap ${
-                  selectedCategory === category.id
+                  selectedCategory === categoryId
                     ? 'bg-primary text-white'
                     : 'bg-background text-mono hover:bg-primary/10'
                 }`}
               >
-                {category.label}
+                {getCategoryLabel(categoryId)}
               </button>
             ))}
           </div>
@@ -88,7 +89,7 @@ export default function GalleryPage() {
           <AnimateOnScroll>
             <div className="text-center mb-8">
               <p className="text-body text-mono-light">
-                총 <span className="text-primary font-medium">{filteredItems.length}</span>개의 사례
+                {tCommon('total')} <span className="text-primary font-medium">{filteredItems.length}</span>{tCommon('cases')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -128,7 +129,7 @@ export default function GalleryPage() {
                             ? 'bg-pink-500/90 text-white'
                             : 'bg-green-500/90 text-white'
                         }`}>
-                          {categories.find(c => c.id === item.category)?.label}
+                          {tCategories(item.category)}
                         </span>
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
@@ -164,8 +165,8 @@ export default function GalleryPage() {
                   d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
                 />
               </svg>
-              <p className="text-h4 text-mono-light mb-2">해당 카테고리에 사례가 없습니다</p>
-              <p className="text-body text-mono-light">다른 카테고리를 선택해 주세요</p>
+              <p className="text-h4 text-mono-light mb-2">{tCommon('noItemsInCategory')}</p>
+              <p className="text-body text-mono-light">{tCommon('selectOtherCategory')}</p>
             </div>
           )}
         </div>
@@ -176,13 +177,13 @@ export default function GalleryPage() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center">
-              <h2 className="text-h1 mb-4">나도 이런 변화를 경험하고 싶다면?</h2>
+              <h2 className="text-h1 mb-4">{tGallery('experienceChange')}</h2>
               <p className="text-h4 opacity-80 mb-8">
-                전문 상담을 통해 나에게 맞는 시술을 찾아보세요.
+                {tGallery('findTreatment')}
               </p>
               <ScrollLink href="/contact">
                 <button className="bg-primary text-white hover:bg-primary/90 px-8 py-4 rounded-full font-medium transition-colors">
-                  무료 상담 신청
+                  {tCommon('freeConsultation')}
                 </button>
               </ScrollLink>
             </div>

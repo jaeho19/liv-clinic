@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, useReducedMotion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
 import { AnimateOnScroll, Button, ScrollLink } from '@/components/ui';
 import { useScrollToSection } from '@/hooks';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 
 // ============================================================
@@ -207,6 +208,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
   const isInView = useInView(cardRef, { once: true, amount: 0.3 });
   const crossfadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const hoverDelayRef = useRef<NodeJS.Timeout | null>(null);
+  const tCommon = useTranslations('common');
 
   // 3D Tilt Effect - 마우스 위치에 따른 카드 기울기
   const mouseX = useMotionValue(0);
@@ -676,7 +678,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
               whileHover={{ x: reducedMotion ? 0 : 6 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
-              <span>자세히 보기</span>
+              <span>{tCommon('learnMore')}</span>
               <motion.svg
                 className="w-5 h-5"
                 fill="none"
@@ -797,6 +799,8 @@ function ProgramDetailPanel({
   reducedMotion: boolean;
   sectionId: string;
 }) {
+  const tCommon = useTranslations('common');
+
   return (
     <div id={sectionId} className="scroll-mt-20">
       <AnimatePresence>
@@ -831,11 +835,11 @@ function ProgramDetailPanel({
                 {/* Meta Info */}
                 <div className="flex flex-wrap gap-6 mb-6">
                   <div>
-                    <p className="text-small text-mono-light mb-1">소요 시간</p>
+                    <p className="text-small text-mono-light mb-1">{tCommon('duration')}</p>
                     <p className="text-body text-secondary font-medium">{program.duration}</p>
                   </div>
                   <div>
-                    <p className="text-small text-mono-light mb-1">추천 대상</p>
+                    <p className="text-small text-mono-light mb-1">{tCommon('recommendedFor')}</p>
                     <p className="text-body text-secondary font-medium">{program.recommended}</p>
                   </div>
                 </div>
@@ -847,7 +851,7 @@ function ProgramDetailPanel({
                     className="text-white"
                     style={{ backgroundColor: program.accentColor }}
                   >
-                    자세히 알아보기
+                    {tCommon('learnMore')}
                   </Button>
                 </ScrollLink>
               </div>
@@ -904,6 +908,7 @@ export default function SignatureDetail() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   const [selectedProgram, setSelectedProgram] = useState<string | null>(null);
   const { scrollToSection } = useScrollToSection({ offset: 100 }); // 헤더 높이 고려
+  const tCommon = useTranslations('common');
 
   const headerVariants = {
     hidden: { opacity: 0, y: reducedMotion ? 0 : 20 },
@@ -1176,7 +1181,7 @@ export default function SignatureDetail() {
                     size="lg"
                     className="bg-white text-primary border-white hover:bg-white/90"
                   >
-                    무료 상담 신청
+                    {tCommon('freeConsultation')}
                   </Button>
                 </ScrollLink>
               </motion.div>
