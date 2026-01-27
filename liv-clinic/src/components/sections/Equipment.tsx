@@ -43,95 +43,35 @@ interface DeviceItem {
   desc: string;
   image: string;
   link: string;
+  learnMore: string;
+  translationKey: string;
 }
 
-// 10개 장비 목록 (회의록 기준 순서)
-const devices: DeviceItem[] = [
-  {
-    id: '01',
-    title: 'Ultherapy Prime',
-    subTitle: '울쎄라피 프라임',
-    desc: 'FDA 승인 HIFU 리프팅의 글로벌 스탠다드',
-    image: '/images/equipment/ultherapy.png',
-    link: '/lifting/ulthera',
-  },
-  {
-    id: '02',
-    title: 'Thermage FLX',
-    subTitle: '써마지 FLX',
-    desc: '4세대 RF 리프팅 기술의 정점',
-    image: '/images/equipment/thermage-flx.png',
-    link: '/lifting/thermage',
-  },
-  {
-    id: '03',
-    title: 'Density',
-    subTitle: '덴서티',
-    desc: '고주파(RF) 에너지로 콜라겐 리모델링',
-    image: '/images/equipment/density.png',
-    link: '/lifting/density',
-  },
-  {
-    id: '04',
-    title: 'Shurink',
-    subTitle: '슈링크',
-    desc: '정교한 HIFU로 V라인 완성',
-    image: '/images/equipment/shurink.png',
-    link: '/lifting/shurink',
-  },
-  {
-    id: '05',
-    title: 'Inmode',
-    subTitle: '인모드',
-    desc: 'RF 에너지로 지방 감소와 리프팅 동시에',
-    image: '/images/equipment/inmode.png',
-    link: '/lifting/inmode',
-  },
-  {
-    id: '06',
-    title: 'Potenza',
-    subTitle: '포텐자',
-    desc: 'RF 마이크로니들링으로 탄력과 모공 개선',
-    image: '/images/equipment/potenza.png',
-    link: '/laser',
-  },
-  {
-    id: '07',
-    title: 'Clarity II',
-    subTitle: '클라리티 II',
-    desc: '듀얼 파장 레이저로 색소 & 혈관 치료',
-    image: '/images/equipment/clarity-ii.png',
-    link: '/laser',
-  },
-  {
-    id: '08',
-    title: 'Lucas',
-    subTitle: '루카스',
-    desc: '고출력 Q스위치로 난치성 색소 치료',
-    image: '/images/000.jpg',
-    link: '/laser',
-  },
-  {
-    id: '09',
-    title: 'CO2 Laser',
-    subTitle: 'CO2 레이저',
-    desc: '정밀 박피와 피부 재생',
-    image: '/images/equipment/processed/equipment_co2.png',
-    link: '/laser',
-  },
-  {
-    id: '10',
-    title: 'Ulblanc',
-    subTitle: '울블랑',
-    desc: '저자극 화이트닝 레이저',
-    image: '/images/equipment/ulblanc.png',
-    link: '/laser',
-  },
+// 10개 장비 목록 설정 (번역 키와 함께)
+const devicesConfig = [
+  { id: '01', title: 'Ultherapy Prime', translationKey: 'ultherapy', image: '/images/equipment/ultherapy.png', link: '/lifting/ulthera' },
+  { id: '02', title: 'Thermage FLX', translationKey: 'thermage', image: '/images/equipment/thermage-flx.png', link: '/lifting/thermage' },
+  { id: '03', title: 'Density', translationKey: 'density', image: '/images/equipment/density.png', link: '/lifting/density' },
+  { id: '04', title: 'Shurink', translationKey: 'shurink', image: '/images/equipment/shurink.png', link: '/lifting/shurink' },
+  { id: '05', title: 'Inmode', translationKey: 'inmode', image: '/images/equipment/inmode.png', link: '/lifting/inmode' },
+  { id: '06', title: 'Potenza', translationKey: 'potenza', image: '/images/equipment/potenza.png', link: '/laser' },
+  { id: '07', title: 'Clarity II', translationKey: 'clarity', image: '/images/equipment/clarity-ii.png', link: '/laser' },
+  { id: '08', title: 'Lucas', translationKey: 'lucas', image: '/images/000.jpg', link: '/laser' },
+  { id: '09', title: 'CO2 Laser', translationKey: 'co2', image: '/images/equipment/processed/equipment_co2.png', link: '/laser' },
+  { id: '10', title: 'Ulblanc', translationKey: 'ulblanc', image: '/images/equipment/ulblanc.png', link: '/laser' },
 ];
 
 export default function Equipment() {
   const t = useTranslations('sections.equipment');
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+  // 번역된 장비 데이터 생성
+  const devices: DeviceItem[] = devicesConfig.map(config => ({
+    ...config,
+    subTitle: t(`devices.${config.translationKey}.subTitle`),
+    desc: t(`devices.${config.translationKey}.desc`),
+    learnMore: t('learnMore'),
+  }));
 
   // ============================================
   // 애니메이션 일시정지/자동재생 상태 관리
@@ -262,8 +202,7 @@ export default function Equipment() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
             >
-              리브성형외과는 정품 인증된 프리미엄 장비만을 사용합니다.
-              최신 기술로 안전하고 효과적인 시술을 제공합니다.
+              {t('description')}
             </motion.p>
           </div>
         </AnimateOnScroll>
@@ -307,13 +246,13 @@ export default function Equipment() {
       {/* 상태 표시 바 */}
       <div className="container-custom mt-10 md:mt-14 relative z-10">
         <div className="flex justify-between items-center text-xs font-mono" style={{ color: 'rgba(109,78,66,0.5)' }}>
-          <span>AUTO SCROLLING</span>
+          <span>{t('autoScrolling')}</span>
           <span className="flex items-center gap-2">
             <span
               className={`w-2 h-2 rounded-full transition-colors duration-300 ${isPaused ? 'bg-yellow-500' : 'bg-green-500'}`}
               style={{ animation: isPaused ? 'none' : 'pulse 2s infinite' }}
             />
-            10 Premium Devices
+            {t('premiumDevices')}
           </span>
         </div>
       </div>
@@ -436,7 +375,7 @@ function DeviceCard({ device, index, activeIndex, setActiveIndex }: DeviceCardPr
             `}
             onClick={(e) => e.stopPropagation()}
           >
-            자세히 보기
+            {device.learnMore}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const HERO_VIDEO = '/videos/hero.mp4?v=20251231';
+const HERO_POSTER = '/images/hero-poster.jpg'; // 비디오 로드 전 표시할 포스터 이미지
 
 const slides = [
   { id: 1, titleKey: 'hero.slide1.title', subtitleKey: 'hero.slide1.subtitle' },
@@ -12,34 +13,61 @@ const slides = [
   { id: 3, titleKey: 'hero.slide3.title', subtitleKey: 'hero.slide3.subtitle' },
 ];
 
+// FloatingParticles 최적화 (Vercel Best Practice: rendering-animate-svg-wrapper)
+// - 15개 → 8개로 감소하여 애니메이션 부하 줄임
+// - will-change: transform으로 GPU 가속 활성화
+// - prefers-reduced-motion 지원
 function FloatingParticles() {
-  const particles = useMemo(() => [...Array(15)].map((_, i) => ({
-    id: i, left: `${(i * 7) % 100}%`, top: `${(i * 13) % 100}%`,
-    duration: 8 + (i % 5), delay: i * 0.5, xOffset: (i % 3) * 25 - 25,
+  const particles = useMemo(() => [...Array(8)].map((_, i) => ({
+    id: i, left: `${(i * 12.5) % 100}%`, top: `${(i * 15) % 100}%`,
+    duration: 10 + (i % 4) * 2, delay: i * 0.8, xOffset: (i % 3) * 30 - 30,
   })), []);
+
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+    <div className="absolute inset-0 overflow-hidden pointer-events-none motion-reduce:hidden">
       {particles.map((p) => (
-        <motion.div key={p.id} className="absolute w-1 h-1 bg-white/30 rounded-full"
-          style={{ left: p.left, top: p.top }}
+        <motion.div
+          key={p.id}
+          className="absolute w-1 h-1 bg-white/30 rounded-full"
+          style={{
+            left: p.left,
+            top: p.top,
+            willChange: 'transform, opacity', // GPU 가속 힌트
+          }}
           animate={{ y: [0, -100, 0], x: [0, p.xOffset, 0], opacity: [0, 0.6, 0], scale: [0, 1.5, 0] }}
-          transition={{ duration: p.duration, repeat: Infinity, delay: p.delay, ease: 'easeInOut' }} />
+          transition={{ duration: p.duration, repeat: Infinity, delay: p.delay, ease: 'easeInOut' }}
+        />
       ))}
     </div>
   );
 }
 
+// AnimatedShapes 최적화 - GPU 가속 및 prefers-reduced-motion 지원
 function AnimatedShapes() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div className="absolute w-[600px] h-[600px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(180,152,141,0.15) 0%, transparent 70%)', left: '-10%', top: '20%' }}
+    <div className="absolute inset-0 overflow-hidden pointer-events-none motion-reduce:hidden">
+      <motion.div
+        className="absolute w-[600px] h-[600px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(180,152,141,0.15) 0%, transparent 70%)',
+          left: '-10%',
+          top: '20%',
+          willChange: 'transform',
+        }}
         animate={{ scale: [1, 1.2, 1], x: [0, 50, 0], y: [0, -30, 0] }}
-        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }} />
-      <motion.div className="absolute w-[400px] h-[400px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(109,78,66,0.1) 0%, transparent 70%)', right: '-5%', bottom: '10%' }}
+        transition={{ duration: 15, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute w-[400px] h-[400px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, rgba(109,78,66,0.1) 0%, transparent 70%)',
+          right: '-5%',
+          bottom: '10%',
+          willChange: 'transform',
+        }}
         animate={{ scale: [1.1, 1, 1.1], x: [0, -30, 0], y: [0, 20, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }} />
+        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+      />
     </div>
   );
 }
@@ -73,8 +101,20 @@ export default function Hero() {
     <section className="relative h-[85vh] w-full overflow-hidden">
       <div className="absolute inset-0 bg-primary">
         <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/90 to-secondary/70" />
-        <video autoPlay muted loop playsInline onLoadedData={() => setIsVideoLoaded(true)}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}>
+        {/* 비디오 최적화 (Vercel Best Practice: rendering-hydration-no-flicker)
+            - preload="metadata": 메타데이터만 미리 로드하여 초기 다운로드 최소화
+            - poster: 비디오 로드 전 이미지 표시로 LCP 개선
+        */}
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          poster={HERO_POSTER}
+          onLoadedData={() => setIsVideoLoaded(true)}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
+        >
           <source src={HERO_VIDEO} type="video/mp4" />
         </video>
         <div className="absolute inset-0 hero-gradient" />
@@ -126,10 +166,10 @@ export default function Hero() {
       </div>
 
       <motion.div className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:block" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 0.3, x: 0 }} transition={{ delay: 2 }}>
-        <p className="text-white text-xs tracking-[0.5em] uppercase" style={{ writingMode: 'vertical-rl' }}>Premium Anti-Aging Clinic</p>
+        <p className="text-white text-xs tracking-[0.5em] uppercase" style={{ writingMode: 'vertical-rl' }}>{t('hero.sideText.left')}</p>
       </motion.div>
       <motion.div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 0.3, x: 0 }} transition={{ delay: 2.2 }}>
-        <p className="text-white text-xs tracking-[0.5em] uppercase" style={{ writingMode: 'vertical-rl' }}>Since 2024 Seoul Sinsa</p>
+        <p className="text-white text-xs tracking-[0.5em] uppercase" style={{ writingMode: 'vertical-rl' }}>{t('hero.sideText.right')}</p>
       </motion.div>
     </section>
   );

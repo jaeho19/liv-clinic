@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import React, { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
@@ -250,6 +251,8 @@ const EquipmentMatrixIllustration = () => (
 );
 
 export default function LaserCenterDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   // FAQ 토글 시 스크롤

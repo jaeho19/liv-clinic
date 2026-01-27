@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
@@ -282,6 +283,8 @@ const FAQItem = ({ question, answer, isOpen, onClick, id }: FAQItemProps) => {
 };
 
 export default function HairRemovalDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(0);
 
   // 부위별 제모 정보
@@ -615,7 +618,7 @@ export default function HairRemovalDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                시술 과정
+                {t('common.process')}
               </h2>
             </div>
           </AnimateOnScroll>

@@ -65,8 +65,8 @@ export default function Location() {
                     </svg>
                   </div>
                   <div>
-                    <p className="font-medium text-secondary">3호선 · 신분당선 신사역 4번 출구</p>
-                    <p className="text-small text-mono-light">도보 1분</p>
+                    <p className="font-medium text-secondary">{t('subwayInfo')}</p>
+                    <p className="text-small text-mono-light">{t('walkMinutes')}</p>
                   </div>
                 </div>
               </motion.div>
@@ -85,11 +85,11 @@ export default function Location() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-h4 text-secondary mb-2">주소</h3>
+                    <h3 className="text-h4 text-secondary mb-2">{t('addressLabel')}</h3>
                     <p className="text-body text-mono mb-1">{t('address')}</p>
-                    <p className="text-small text-mono-light">(잠원동, 자은빌딩 4층)</p>
+                    <p className="text-small text-mono-light">{t('buildingDetail')}</p>
                     <p className="text-small text-mono-light mt-2 leading-relaxed">
-                      신사역 4번출구에서 빽다방을 좌측에 끼고 코너를 돌아 직진
+                      {t('directions')}
                     </p>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ export default function Location() {
                         <span className="text-mono">{BUSINESS_HOURS.saturday.open} - {BUSINESS_HOURS.saturday.close}</span>
                       </div>
                       <div className="pt-2 border-t border-border">
-                        <span className="text-primary font-medium">매주 일요일 및 공휴일 휴진</span>
+                        <span className="text-primary font-medium">{t('holidayClosed')}</span>
                       </div>
                     </div>
                   </div>
@@ -131,7 +131,7 @@ export default function Location() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-h4 text-secondary mb-2">연락처</h3>
+                    <h3 className="text-h4 text-secondary mb-2">{t('contactLabel')}</h3>
                     <a
                       href={`tel:${SITE_INFO.phone}`}
                       className="text-h3 text-primary hover:text-secondary transition-colors"
@@ -139,7 +139,7 @@ export default function Location() {
                       {SITE_INFO.phone}
                     </a>
                     <p className="text-small text-mono-light mt-1">
-                      상담 가능 시간: 평일 10:00 - 19:00
+                      {t('consultTime')}
                     </p>
                   </div>
                 </div>
@@ -154,11 +154,10 @@ export default function Location() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-h4 text-secondary mb-2">주차 안내</h3>
-                    <p className="text-body text-mono font-medium text-primary">무료 주차 가능</p>
+                    <h3 className="text-h4 text-secondary mb-2">{t('parkingLabel')}</h3>
+                    <p className="text-body text-mono font-medium text-primary">{t('freeParking')}</p>
                     <p className="text-small text-mono-light mt-2 leading-relaxed">
-                      전기차 및 대형 차량은 1층 주차장 내 공간이 있는 경우에 한해 주차 가능합니다.
-                      주차 공간이 없을 경우, 병원 인근 유료 주차장 이용을 부탁드립니다.
+                      {t('parkingDetail')}
                     </p>
                   </div>
                 </div>
@@ -173,7 +172,7 @@ export default function Location() {
                   className="flex-1"
                 >
                   <Button variant="outline" size="lg" className="w-full">
-                    네이버 지도
+                    {t('naverMap')}
                   </Button>
                 </a>
                 <a
@@ -183,7 +182,7 @@ export default function Location() {
                   className="flex-1"
                 >
                   <Button variant="outline" size="lg" className="w-full">
-                    카카오맵
+                    {t('kakaoMap')}
                   </Button>
                 </a>
               </div>

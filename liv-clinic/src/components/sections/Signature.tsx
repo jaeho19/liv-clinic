@@ -5,36 +5,21 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui';
 
-const programs = [
+const programsConfig = [
   {
     id: 'lifting',
-    title: '리프팅',
-    titleEn: 'LIFTING',
-    subtitle: '울쎄라피 프라임 & 써마지',
-    description: '비수술 리프팅의 정점, 프리미엄 정품 장비로 자연스러운 리프팅 효과를 경험하세요.',
-    features: ['울쎄라피 프라임 정품 인증', '써마지 FLX 파트너', '맞춤형 복합 시술'],
     href: '/lifting',
     image: '/images/signature/lifting.png',
     color: 'from-primary/80 to-secondary/90',
   },
   {
     id: 'antiaging',
-    title: '안티에이징',
-    titleEn: 'ANTI-AGING',
-    subtitle: '필러 & 보톡스',
-    description: '섬세한 터치로 완성하는 볼륨과 윤곽, 자연스러운 아름다움을 추구합니다.',
-    features: ['정품 필러 사용', '해부학적 접근', '자연스러운 결과'],
     href: '/antiaging',
     image: '/images/signature/petit.png',
     color: 'from-[#c4a99a]/80 to-[#8b6b5d]/90',
   },
   {
     id: 'rejuvenation',
-    title: '피부재생',
-    titleEn: 'REJUVENATION',
-    subtitle: '메디컬 스킨케어',
-    description: '피부 본연의 건강함을 되찾는 맞춤 케어, 과학적 접근으로 피부 개선을 도와드립니다.',
-    features: ['스킨부스터', '레이저 토닝', '맞춤 피부 관리'],
     href: '/laser',
     image: '/images/signature/care.png',
     color: 'from-[#a89080]/80 to-[#6d5a4d]/90',
@@ -43,6 +28,17 @@ const programs = [
 
 export default function Signature() {
   const t = useTranslations('sections.signature');
+  const tCommon = useTranslations('common');
+
+  // 번역된 프로그램 데이터 생성
+  const programs = programsConfig.map(config => ({
+    ...config,
+    title: t(`programs.${config.id}.title`),
+    titleEn: t(`programs.${config.id}.titleEn`),
+    subtitle: t(`programs.${config.id}.subtitle`),
+    description: t(`programs.${config.id}.description`),
+    features: t.raw(`programs.${config.id}.features`) as string[],
+  }));
 
   return (
     <section className="section-gap bg-white">
@@ -99,7 +95,7 @@ export default function Signature() {
 
                       {/* Title */}
                       <div className="mb-auto">
-                        <h3 className="font-sans text-2xl md:text-3xl lg:text-4xl mb-0.5 md:mb-1">{program.title}</h3>
+                        <h3 className="card-title-ko text-2xl md:text-3xl lg:text-4xl mb-0.5 md:mb-1">{program.title}</h3>
                         <p className="text-xs md:text-sm opacity-60 mb-1 md:mb-2">{program.titleEn}</p>
                         <p className="text-sm md:text-base lg:text-lg opacity-80">{program.subtitle}</p>
                       </div>
@@ -132,7 +128,7 @@ export default function Signature() {
 
                         {/* CTA */}
                         <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm font-medium group-hover:gap-3 md:group-hover:gap-4 transition-all">
-                          <span>자세히 보기</span>
+                          <span>{tCommon('learnMore')}</span>
                           <svg
                             className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform"
                             fill="none"

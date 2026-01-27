@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -409,6 +410,8 @@ const RapidShotComparisonIllustration = () => (
 );
 
 export default function ShurinkDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   // 관련 Q&A 필터링
@@ -640,7 +643,7 @@ export default function ShurinkDetail() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-                슈링크 <span className="text-[#00D4FF]">시술 부위</span>
+                {t('common.targetAreas')}
               </h2>
               <p className="text-gray-600 mb-8">
                 슈링크는 얼굴 전체와 목까지 다양한 부위에 시술이 가능하며,
@@ -698,7 +701,7 @@ export default function ShurinkDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              시술 <span className="text-[#00D4FF]">과정</span>
+              {t('common.process')}
             </h2>
           </motion.div>
 
@@ -834,7 +837,7 @@ export default function ShurinkDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              이런 분께 <span className="text-[#00D4FF]">추천</span>합니다
+              {t('common.recommended')}
             </h2>
           </motion.div>
 

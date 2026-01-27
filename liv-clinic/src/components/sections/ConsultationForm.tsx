@@ -4,10 +4,15 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
-import { consultationFormSchema, TREATMENT_OPTIONS, type ConsultationFormData } from '@/types/consultation';
+import { useTranslations } from 'next-intl';
+import { consultationFormSchema, type ConsultationFormData } from '@/types/consultation';
 import { AnimateOnScroll } from '@/components/ui';
 
+// 진료과목 옵션 키 (번역 파일의 treatmentOptions와 매핑)
+const TREATMENT_OPTION_KEYS = ['laser', 'filler', 'botox', 'skincare', 'lifting', 'antiaging', 'other'] as const;
+
 export default function ConsultationForm() {
+  const t = useTranslations('contact.form');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -54,7 +59,7 @@ export default function ConsultationForm() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || '상담 신청에 실패했습니다');
+        throw new Error(result.error || t('submitError'));
       }
 
       setSubmitStatus('success');
@@ -67,7 +72,7 @@ export default function ConsultationForm() {
     } catch (error) {
       console.error('Consultation submission error:', error);
       setSubmitStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : '상담 신청에 실패했습니다');
+      setErrorMessage(error instanceof Error ? error.message : t('submitError'));
 
       // 5초 후 에러 메시지 숨김
       setTimeout(() => {
@@ -84,9 +89,9 @@ export default function ConsultationForm() {
       <div className="container-custom">
         <AnimateOnScroll animation="fadeInUpSmooth">
           <div className="text-center mb-8">
-            <h2 className="text-h2 text-secondary mb-2">상담 신청</h2>
+            <h2 className="text-h2 text-secondary mb-2">{t('consultTitle')}</h2>
             <p className="text-body text-mono-light">
-              전문 상담사가 친절하게 안내해 드립니다
+              {t('consultSubtitle')}
             </p>
           </div>
         </AnimateOnScroll>
@@ -100,7 +105,7 @@ export default function ConsultationForm() {
                 <input
                   {...register('name')}
                   type="text"
-                  placeholder="성함"
+                  placeholder={t('namePlaceholder')}
                   className={`w-full px-4 py-3.5 rounded-xl border ${
                     errors.name
                       ? 'border-red-500 focus:ring-red-500'
@@ -118,7 +123,7 @@ export default function ConsultationForm() {
                 <input
                   {...register('password')}
                   type="password"
-                  placeholder="비밀번호 (선택)"
+                  placeholder={t('password')}
                   className={`w-full px-4 py-3.5 rounded-xl border ${
                     errors.password
                       ? 'border-red-500 focus:ring-red-500'
@@ -136,7 +141,7 @@ export default function ConsultationForm() {
                 <input
                   {...register('phone')}
                   type="tel"
-                  placeholder="연락처 (010-0000-0000)"
+                  placeholder={t('phonePlaceholder')}
                   maxLength={13}
                   onChange={(e) => {
                     e.target.value = formatPhoneNumber(e.target.value);
@@ -171,10 +176,10 @@ export default function ConsultationForm() {
                     paddingRight: '2.5rem',
                   }}
                 >
-                  <option value="">진료과목 선택</option>
-                  {TREATMENT_OPTIONS.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
+                  <option value="">{t('treatmentSelect')}</option>
+                  {TREATMENT_OPTION_KEYS.map((key) => (
+                    <option key={key} value={t(`treatmentOptions.${key}`)}>
+                      {t(`treatmentOptions.${key}`)}
                     </option>
                   ))}
                 </select>
@@ -212,10 +217,10 @@ export default function ConsultationForm() {
                           d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                         />
                       </svg>
-                      <span>전송 중...</span>
+                      <span>{t('submitting')}</span>
                     </>
                   ) : (
-                    <span>상담신청</span>
+                    <span>{t('submitButton')}</span>
                   )}
                 </button>
               </div>
@@ -231,8 +236,7 @@ export default function ConsultationForm() {
                 disabled={isSubmitting}
               />
               <label htmlFor="agreePrivacy" className="text-sm text-mono-light cursor-pointer flex-1">
-                <span className="text-secondary font-medium">[필수]</span> 개인정보 수집 및 이용에
-                동의합니다. (성함, 연락처는 상담 목적으로만 사용됩니다)
+                <span className="text-secondary font-medium">{t('required')}</span> {t('privacyConsent')}
               </label>
             </div>
             {errors.agreePrivacy && (
@@ -275,8 +279,8 @@ export default function ConsultationForm() {
                       />
                     </svg>
                     <div>
-                      <p className="font-medium">상담신청이 완료되었습니다</p>
-                      <p className="text-sm opacity-90">곧 연락드리겠습니다</p>
+                      <p className="font-medium">{t('successTitle')}</p>
+                      <p className="text-sm opacity-90">{t('successSubtitle')}</p>
                     </div>
                   </>
                 ) : (
@@ -295,8 +299,8 @@ export default function ConsultationForm() {
                       />
                     </svg>
                     <div>
-                      <p className="font-medium">상담신청에 실패했습니다</p>
-                      <p className="text-sm opacity-90">{errorMessage || '다시 시도해주세요'}</p>
+                      <p className="font-medium">{t('submitError')}</p>
+                      <p className="text-sm opacity-90">{errorMessage || t('errorSubtitle')}</p>
                     </div>
                   </>
                 )}

@@ -197,7 +197,8 @@ const galleryImages = [
 ];
 
 export default function AptosDetail() {
-  const t = useTranslations('treatments.aptos');
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const [activeImage, setActiveImage] = useState<number | null>(null);
 
   return (

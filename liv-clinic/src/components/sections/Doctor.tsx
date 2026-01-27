@@ -14,26 +14,32 @@ const FEATURED_VIDEO = {
   thumbnail: 'https://img.youtube.com/vi/J2ZiPnsORRw/maxresdefault.jpg',
 };
 
-const doctor = {
-  name: '김수영',
-  nameEn: 'Dr. Sooyoung Kim',
-  title: '리브성형외과 대표원장',
-  titleEn: 'Director',
-  specialty: '성형외과 전문의',
+const doctorConfig = {
   image: '/images/doctor/doctor-main.jpg',
-  philosophy: '자연스러움을 추구하는 것, 그것이 진정한 아름다움입니다. 과하지 않은, 본연의 아름다움을 찾아드립니다.',
-  credentials: [
-    '고려대학교 의과대학 졸업',
-    '고려대학교 대학원 성형외과학 석사',
-    '대한성형외과학회 정회원',
-    '대한미용성형외과학회 정회원',
-    '미국 MD Anderson Cancer Center 연수',
+  internationalImages: [
+    { src: '/images/aptos/certification-ceremony.jpg', activityIndex: 0 },
+    { src: '/images/aptos/presentation-mips.jpg', activityIndex: 1 },
+    { src: '/images/aptos/presentation.jpg', activityIndex: 2 },
   ],
 };
 
 export default function Doctor() {
   const t = useTranslations('sections.doctor');
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
+  // 번역된 의사 데이터 생성
+  const doctor = {
+    name: t('name'),
+    nameEn: t('nameEn'),
+    title: t('directorTitle'),
+    titleEn: t('directorTitleEn'),
+    specialty: t('specialty'),
+    philosophy: t('philosophy'),
+    credentials: t.raw('credentialsList') as string[],
+  };
+
+  // 국제 활동 데이터
+  const activities = t.raw('activities') as Array<{ caption: string; location: string }>;
 
   return (
     <section className="section-gap bg-white overflow-hidden">
@@ -46,7 +52,7 @@ export default function Doctor() {
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/30">
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: `url(${doctor.image})` }}
+                  style={{ backgroundImage: `url(${doctorConfig.image})` }}
                 />
                 {/* Placeholder */}
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -78,8 +84,8 @@ export default function Doctor() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-mono-light">공식 인증의</p>
-                    <p className="text-sm font-medium text-secondary">Ultherapy Prime & Thermage</p>
+                    <p className="text-xs text-mono-light">{t('certifications.official')}</p>
+                    <p className="text-sm font-medium text-secondary">{t('certifications.ultheraThermage')}</p>
                   </div>
                 </div>
               </motion.div>
@@ -99,8 +105,8 @@ export default function Doctor() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-xs text-white/80">글로벌 인증 전문의</p>
-                    <p className="text-sm font-medium text-white">APTOS Certified Expert</p>
+                    <p className="text-xs text-white/80">{t('certifications.globalExpert')}</p>
+                    <p className="text-sm font-medium text-white">{t('certifications.aptosCertified')}</p>
                   </div>
                 </div>
               </motion.div>
@@ -146,7 +152,7 @@ export default function Doctor() {
 
               {/* Credentials */}
               <div className="mb-8">
-                <h4 className="text-h4 text-secondary mb-4">주요 이력</h4>
+                <h4 className="text-h4 text-secondary mb-4">{t('credentials')}</h4>
                 <ul className="space-y-2">
                   {doctor.credentials.map((credential, index) => (
                     <li key={index} className="flex items-center gap-3 text-body text-mono">
@@ -163,26 +169,10 @@ export default function Doctor() {
                   <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  국제 활동
+                  {t('internationalActivities')}
                 </h4>
                 <div className="grid grid-cols-3 gap-3">
-                  {[
-                    {
-                      src: '/images/aptos/certification-ceremony.jpg',
-                      caption: 'APTOS 본사 연수 수료',
-                      location: 'Georgia, 2025'
-                    },
-                    {
-                      src: '/images/aptos/presentation-mips.jpg',
-                      caption: 'Clinical Experience 발표',
-                      location: '국제 학술대회'
-                    },
-                    {
-                      src: '/images/aptos/presentation.jpg',
-                      caption: 'Clinical Practice',
-                      location: '임상 시술 현장'
-                    },
-                  ].map((item, index) => (
+                  {doctorConfig.internationalImages.map((item, index) => (
                     <motion.div
                       key={index}
                       className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
@@ -198,8 +188,8 @@ export default function Doctor() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                       <div className="absolute bottom-0 left-0 right-0 p-2">
-                        <p className="text-xs font-medium text-white leading-tight">{item.caption}</p>
-                        <p className="text-[10px] text-white/70">{item.location}</p>
+                        <p className="text-xs font-medium text-white leading-tight">{activities[item.activityIndex].caption}</p>
+                        <p className="text-[10px] text-white/70">{activities[item.activityIndex].location}</p>
                       </div>
                     </motion.div>
                   ))}
@@ -209,7 +199,7 @@ export default function Doctor() {
               {/* CTA */}
               <Link href="/about/staff">
                 <Button variant="outline" size="lg">
-                  의료진 상세보기
+                  {t('viewStaff')}
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
@@ -223,8 +213,8 @@ export default function Doctor() {
         <AnimateOnScroll>
           <div className="mt-20 pt-16 border-t border-border">
             <div className="text-center mb-10">
-              <p className="font-serif text-h3 text-primary mb-2">LIV TV</p>
-              <h3 className="text-h2 text-secondary">리브 원장의 시술 이야기</h3>
+              <p className="font-serif text-h3 text-primary mb-2">{t('youtube.title')}</p>
+              <h3 className="text-h2 text-secondary">{t('youtube.subtitle')}</h3>
             </div>
 
             <div className="max-w-4xl mx-auto">
@@ -294,13 +284,13 @@ export default function Doctor() {
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                   </svg>
-                  리브 유튜브 채널 구독하기
+                  {t('youtube.subscribe')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>
                 </a>
                 <p className="mt-3 text-small text-mono-light">
-                  시술 정보, 원장 인터뷰, Before & After 영상을 확인하세요
+                  {t('youtube.description')}
                 </p>
               </div>
             </div>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
@@ -299,6 +300,8 @@ const FAQItem = ({ question, answer, isOpen, onClick, id }: FAQItemProps) => {
 };
 
 export default function TattooRemovalDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(0);
 
   // 문신 유형 데이터
@@ -655,7 +658,7 @@ export default function TattooRemovalDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                시술 전후 주의사항
+                {t('common.precautions')}
               </h2>
             </div>
           </AnimateOnScroll>

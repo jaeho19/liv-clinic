@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -705,6 +706,8 @@ const TreatmentAreasIllustration = () => (
 );
 
 export default function ThreadDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   // 관련 Q&A 필터링
@@ -947,7 +950,7 @@ export default function ThreadDetail() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-                실리프팅 <span className="text-[#D4AF37]">시술 부위</span>
+                {t('common.targetAreas')}
               </h2>
               <p className="text-gray-600 mb-8">
                 얼굴 전체와 목까지, 처진 부위에 맞춤형 실 시술이 가능합니다.
@@ -1005,7 +1008,7 @@ export default function ThreadDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              시술 <span className="text-[#D4AF37]">과정</span>
+              {t('common.process')}
             </h2>
           </motion.div>
 
@@ -1141,7 +1144,7 @@ export default function ThreadDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              이런 분께 <span className="text-[#D4AF37]">추천</span>합니다
+              {t('common.recommended')}
             </h2>
           </motion.div>
 

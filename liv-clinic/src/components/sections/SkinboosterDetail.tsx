@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -242,6 +243,8 @@ const PremiumCourseTimeline = () => {
 };
 
 export default function SkinboosterDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
@@ -560,7 +563,7 @@ export default function SkinboosterDetail() {
               <span className="text-xs tracking-[0.3em] text-[#7BA3A8] uppercase">Process</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              시술 과정
+              {t('common.process')}
             </h2>
           </motion.div>
 
@@ -651,7 +654,7 @@ export default function SkinboosterDetail() {
               <span className="text-xs tracking-[0.3em] text-[#7BA3A8] uppercase">Ideal For</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              이런 분께 추천합니다
+              {t('common.recommended')}
             </h2>
           </motion.div>
 
@@ -743,7 +746,7 @@ export default function SkinboosterDetail() {
                 <div className="w-8 h-px bg-[#7BA3A8]" />
               </div>
               <h2 className="text-3xl font-extralight text-[#3A3A3A]">
-                주의사항
+                {t('common.precautions')}
               </h2>
             </div>
             <div className="bg-white p-10 rounded-2xl border border-gray-100">

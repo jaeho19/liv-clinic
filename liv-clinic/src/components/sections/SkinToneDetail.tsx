@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
@@ -373,6 +374,8 @@ const FAQItem = ({ question, answer, isOpen, onClick, id }: FAQItemProps) => {
 };
 
 export default function SkinToneDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(0);
 
   // 장비 데이터

@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -120,6 +121,8 @@ const RednessTypeCard = ({
 );
 
 export default function VascularDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   // FAQ 토글 시 스크롤
@@ -478,7 +481,7 @@ export default function VascularDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              이런 분께 <span style={{ color: category.color }}>추천</span>합니다
+              {t('common.recommended')}
             </h2>
           </motion.div>
 

@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
@@ -267,6 +268,8 @@ const PremiumFillerTypesSection = () => (
 );
 
 export default function FillerDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
@@ -434,7 +437,7 @@ export default function FillerDetail() {
               <div className="w-8 h-px bg-[#A89080]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-4">
-              시술 부위
+              {t('common.targetAreas')}
             </h2>
             <p className="text-gray-500 max-w-xl mx-auto font-light">
               얼굴의 다양한 부위에 볼륨을 채우고 윤곽을 정돈합니다
@@ -599,7 +602,7 @@ export default function FillerDetail() {
               <span className="text-xs tracking-[0.3em] text-[#A89080] uppercase">Process</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              시술 과정
+              {t('common.process')}
             </h2>
           </motion.div>
 
@@ -690,7 +693,7 @@ export default function FillerDetail() {
               <span className="text-xs tracking-[0.3em] text-[#A89080] uppercase">Ideal For</span>
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              이런 분께 추천합니다
+              {t('common.recommended')}
             </h2>
           </motion.div>
 
@@ -782,7 +785,7 @@ export default function FillerDetail() {
                 <div className="w-8 h-px bg-[#A89080]" />
               </div>
               <h2 className="text-3xl font-extralight text-[#3A3A3A]">
-                주의사항
+                {t('common.precautions')}
               </h2>
             </div>
             <div className="bg-white p-10 rounded-2xl border border-gray-100">

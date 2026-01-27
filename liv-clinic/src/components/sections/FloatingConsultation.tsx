@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -11,6 +11,18 @@ export default function FloatingConsultation() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
+
+  // setTimeout 타이머 추적을 위한 ref (메모리 누수 방지)
+  const successTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const errorTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 컴포넌트 언마운트 시 타이머 정리
+  useEffect(() => {
+    return () => {
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
+      if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
+    };
+  }, []);
 
   const {
     register,
@@ -59,8 +71,9 @@ export default function FloatingConsultation() {
       setSubmitStatus('success');
       reset();
 
-      // 3초 후 폼 닫기 및 메시지 숨김
-      setTimeout(() => {
+      // 3초 후 폼 닫기 및 메시지 숨김 (기존 타이머 정리 후 새로 설정)
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
+      successTimerRef.current = setTimeout(() => {
         setSubmitStatus('idle');
         setIsOpen(false);
       }, 3000);
@@ -69,8 +82,9 @@ export default function FloatingConsultation() {
       setSubmitStatus('error');
       setErrorMessage(error instanceof Error ? error.message : '상담 신청에 실패했습니다');
 
-      // 5초 후 에러 메시지 숨김
-      setTimeout(() => {
+      // 5초 후 에러 메시지 숨김 (기존 타이머 정리 후 새로 설정)
+      if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
+      errorTimerRef.current = setTimeout(() => {
         setSubmitStatus('idle');
         setErrorMessage('');
       }, 5000);

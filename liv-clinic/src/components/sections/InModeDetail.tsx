@@ -1,5 +1,6 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
@@ -305,6 +306,8 @@ const ProcessStep = ({ step, title, desc, isLast }: { step: number; title: strin
 
 // Main Component
 export default function InModeDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const treatment = TREATMENTS.lifting.inmode;
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<'forma' | 'morpheus' | 'facetite'>('morpheus');
@@ -677,7 +680,7 @@ export default function InModeDetail() {
           <AnimateOnScroll>
             <div className="text-center mb-16">
               <p className="font-serif text-h3 text-[#E91E63] mb-2">Treatment Process</p>
-              <h2 className="text-h1 text-secondary">시술 과정</h2>
+              <h2 className="text-h1 text-secondary">{t('common.process')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -765,7 +768,7 @@ export default function InModeDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  시술 부위
+                  {t('common.targetAreas')}
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {treatment.targetAreas.map((area, index) => (
@@ -787,7 +790,7 @@ export default function InModeDetail() {
                   <svg className="w-6 h-6 text-[#9C27B0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  이런 분께 추천
+                  {t('common.recommended')}
                 </h3>
                 <ul className="space-y-3">
                   {treatment.idealFor.map((item, index) => (
@@ -813,7 +816,7 @@ export default function InModeDetail() {
                   <svg className="w-6 h-6 text-[#E91E63]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
-                  시술 전후 주의사항
+                  {t('common.precautions')}
                 </h3>
                 <ul className="space-y-3">
                   {treatment.cautions.map((caution, index) => (
