@@ -479,7 +479,24 @@
       "years": "年",
       "fdaApproved": "FDA承認",
       "genuine": "正品認証",
-      "certified": "公式認証病院"
+      "certified": "公式認証病院",
+      "laserCenter": "レーザーセンター",
+      "freeConsultation": "無料相談予約",
+      "onlineConsultation": "オンライン相談",
+      "phoneConsultation": "電話相談",
+      "treatmentInfo": "施術情報",
+      "downtime": "ダウンタイム",
+      "recommendedSessions": "推奨回数",
+      "sessionInterval": "施術間隔",
+      "recommendedTreatment": "推奨治療",
+      "otherTreatments": "他の施術を見る",
+      "otherLaserTreatments": "他のレーザー施術を見る",
+      "mild": "軽度",
+      "moderate": "中等度",
+      "severe": "重度",
+      "benefits": "メリット",
+      "consultationCta": "相談予約",
+      "effectDuration": "効果持続"
     },
     "lifting": {
       "ulthera": {

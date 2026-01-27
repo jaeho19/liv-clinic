@@ -479,7 +479,24 @@
       "years": "年",
       "fdaApproved": "FDA批准",
       "genuine": "正品认证",
-      "certified": "官方认证医院"
+      "certified": "官方认证医院",
+      "laserCenter": "激光中心",
+      "freeConsultation": "免费咨询预约",
+      "onlineConsultation": "在线咨询",
+      "phoneConsultation": "电话咨询",
+      "treatmentInfo": "治疗信息",
+      "downtime": "恢复期",
+      "recommendedSessions": "建议次数",
+      "sessionInterval": "治疗间隔",
+      "recommendedTreatment": "推荐治疗",
+      "otherTreatments": "查看其他项目",
+      "otherLaserTreatments": "查看其他激光项目",
+      "mild": "轻度",
+      "moderate": "中度",
+      "severe": "重度",
+      "benefits": "优势",
+      "consultationCta": "预约咨询",
+      "effectDuration": "效果持续"
     },
     "lifting": {
       "ulthera": {

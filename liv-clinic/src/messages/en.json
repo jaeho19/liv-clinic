@@ -479,7 +479,24 @@
       "years": "years",
       "fdaApproved": "FDA Approved",
       "genuine": "Genuine Certified",
-      "certified": "Certified Clinic"
+      "certified": "Certified Clinic",
+      "laserCenter": "Laser Center",
+      "freeConsultation": "Free Consultation",
+      "onlineConsultation": "Online Consultation",
+      "phoneConsultation": "Phone Consultation",
+      "treatmentInfo": "Treatment Info",
+      "downtime": "Downtime",
+      "recommendedSessions": "Recommended Sessions",
+      "sessionInterval": "Session Interval",
+      "recommendedTreatment": "Recommended Treatment",
+      "otherTreatments": "Other Treatments",
+      "otherLaserTreatments": "Other Laser Treatments",
+      "mild": "Mild",
+      "moderate": "Moderate",
+      "severe": "Severe",
+      "benefits": "Benefits",
+      "consultationCta": "Book Consultation",
+      "effectDuration": "Effect Duration"
     },
     "lifting": {
       "ulthera": {
@@ -1414,13 +1431,109 @@
         "name": "Botox",
         "fullName": "Botox",
         "tagline": "Wrinkle Reduction & Facial Contouring",
-        "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line."
+        "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line.",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "Botox",
+            "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line."
+          },
+          "benefits": {
+            "title": "Benefits of Botox"
+          },
+          "targetAreas": {
+            "title": "Treatment Areas",
+            "subtitle": "Precise treatment on various facial areas",
+            "areas": {
+              "forehead": "Forehead",
+              "glabella": "Glabella",
+              "crowsFeet": "Crow's Feet",
+              "nasalis": "Nose",
+              "lips": "Lips",
+              "masseter": "Jaw",
+              "neckBands": "Neck",
+              "hairline": "Hairline"
+            }
+          },
+          "treatmentInfo": {
+            "title": "Treatment Info",
+            "duration": "Duration",
+            "anesthesia": "Anesthesia",
+            "recovery": "Recovery",
+            "results": "Results Duration"
+          },
+          "faq": {
+            "title": "Frequently Asked Questions"
+          },
+          "cta": {
+            "title": "Botox Consultation",
+            "description": "Natural wrinkle improvement - Get guidance on optimal treatment through specialist consultation."
+          }
+        }
       },
       "filler": {
         "name": "Filler",
         "fullName": "Filler",
         "tagline": "Volume & Contour Enhancement",
-        "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume."
+        "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume.",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "Filler",
+            "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume."
+          },
+          "benefits": {
+            "title": "Benefits of Filler"
+          },
+          "targetAreas": {
+            "title": "Treatment Areas",
+            "subtitle": "Fill volume and refine contours in various facial areas",
+            "areas": [
+              { "id": 1, "name": "Forehead", "description": "Forehead wrinkle improvement" },
+              { "id": 2, "name": "Temple", "description": "Volume loss restoration" },
+              { "id": 3, "name": "Nose", "description": "Bridge/tip contouring" },
+              { "id": 4, "name": "Cheekbone", "description": "Cheekbone volume" },
+              { "id": 5, "name": "Nasolabial", "description": "Smile line improvement" },
+              { "id": 6, "name": "Cheek", "description": "Cheek sagging improvement" },
+              { "id": 7, "name": "Chin", "description": "Chin volume" },
+              { "id": 8, "name": "Aegyo-sal", "description": "Under-eye volume" },
+              { "id": 9, "name": "Lips", "description": "Lip volume" },
+              { "id": 10, "name": "Brow", "description": "Brow lift" }
+            ]
+          },
+          "fillerTypes": {
+            "title": "Customized Filler by Area",
+            "subtitle": "Selecting optimal filler firmness based on treatment area and purpose",
+            "types": [
+              { "type": "Soft", "areas": "Lips, Under-eye", "desc": "Natural texture" },
+              { "type": "Medium", "areas": "Nasolabial, Cheek", "desc": "Volume + Support" },
+              { "type": "Firm", "areas": "Nose, Chin, Forehead", "desc": "Strong support" }
+            ]
+          },
+          "safety": {
+            "title": "Reversible Treatment",
+            "subtitle": "Hyaluronic acid filler can be dissolved if needed, ensuring safety",
+            "steps": [
+              { "step": "01", "title": "Filler Injection", "desc": "Volume formation" },
+              { "step": "02", "title": "Hyaluronidase", "desc": "Dissolve if needed" },
+              { "step": "03", "title": "Restoration", "desc": "Safe removal" }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "Treatment Info",
+            "duration": "Duration",
+            "anesthesia": "Anesthesia",
+            "recovery": "Recovery",
+            "results": "Results Duration"
+          },
+          "faq": {
+            "title": "Frequently Asked Questions"
+          },
+          "cta": {
+            "title": "Filler Consultation",
+            "description": "Natural volume and contours - Get guidance on optimal treatment through specialist consultation."
+          }
+        }
       },
       "skinbooster": {
         "name": "Skin Booster",
@@ -1440,13 +1553,135 @@
         "name": "Pigmentation Treatment",
         "fullName": "Pigmentation Treatment",
         "tagline": "Melasma, Spots & Freckle Treatment",
-        "description": "Customized laser treatments for various pigmentation conditions to restore clear, radiant skin."
+        "description": "Customized laser treatments for various pigmentation conditions to restore clear, radiant skin.",
+        "detail": {
+          "hero": {
+            "subtitle": "Even stubborn melasma with our 3-stage system",
+            "description": "From picosecond laser to gentle toning, customized pigmentation treatment with 4 premium devices"
+          },
+          "threeStageSystem": {
+            "title": "LIV's 3-Stage Pigmentation Treatment System",
+            "subtitle": "From mild to stubborn melasma, effective pigmentation improvement with step-by-step customized treatment",
+            "stages": [
+              { "stage": "Stage 1", "title": "Intensive Treatment", "equipment": "Lucas Pico", "description": "Deep pigment breakdown with picosecond pulse" },
+              { "stage": "Stage 2", "title": "Precision Targeting", "equipment": "Clarity II 755nm", "description": "Precise treatment of shallow pigment with alexandrite wavelength" },
+              { "stage": "Stage 3", "title": "Maintenance", "equipment": "Toning + Ulblanc", "description": "Gentle repeated treatment for effect maintenance and recurrence prevention" }
+            ]
+          },
+          "picoVsNano": {
+            "title": "Why Picosecond?",
+            "subtitle": "1000x faster pulse than nanosecond laser breaks down pigment into finer particles",
+            "nanosecond": "Nanosecond Laser",
+            "picosecond": "Picosecond Laser",
+            "nanosecondUnit": "Billionth of a second (10⁻⁹)",
+            "picosecondUnit": "Trillionth of a second (10⁻¹²)",
+            "largeParticles": "Pigment particles broken into larger pieces",
+            "slowDischarge": "Slow discharge",
+            "fineParticles": "Pigment particles broken into fine particles",
+            "fastDischarge": "Fast lymphatic discharge",
+            "timesFaster": "1000x Faster"
+          },
+          "equipment": {
+            "title": "Recommended Pigmentation Treatment Devices",
+            "subtitle": "Optimal pigmentation treatment with 4 premium lasers at LIV Clinic",
+            "featured": "FEATURED"
+          },
+          "protocol": {
+            "title": "Treatment Protocol by Severity",
+            "mild": { "level": "Mild", "description": "Light melasma, spots", "treatment": "Laser Toning", "sessions": "5-10 sessions", "interval": "2-week interval" },
+            "moderate": { "level": "Moderate", "description": "Medium-depth pigmentation", "treatment": "Clarity II 755nm", "sessions": "3-5 sessions", "interval": "3-4 week interval" },
+            "severe": { "level": "Severe / Stubborn", "description": "Deep melasma, stubborn", "treatment": "Lucas Pico + Toning", "sessions": "5-10 sessions", "interval": "2-4 week interval" }
+          },
+          "idealFor": [
+            "Those whose melasma is getting darker and wider",
+            "Those who have had multiple toning sessions without results",
+            "Those concerned about many spots and freckles",
+            "Those starting to develop age spots",
+            "Those with dull and uneven skin tone",
+            "Those wanting consistent care without downtime"
+          ],
+          "faq": [
+            { "q": "Can melasma be completely cured?", "a": "Melasma should be approached as 'management' rather than 'cure'. After significant improvement with intensive treatment, regular maintenance and sun protection minimize recurrence. LIV's 3-stage system includes both treatment and maintenance." },
+            { "q": "Should I choose pico laser or toning?", "a": "It depends on your goals. Stubborn melasma or deep pigmentation requires pico laser intensive treatment, while mild pigmentation or maintenance suits toning. Often, a combination protocol of pico treatment followed by toning maintenance is most effective." },
+            { "q": "Can pigmentation get darker after laser?", "a": "Temporary post-inflammatory hyperpigmentation (PIH) can occur. This naturally improves within 2-4 weeks and can be prevented with thorough sun protection. LIV provides comprehensive post-treatment care guidance." },
+            { "q": "Can I get pigmentation laser during pregnancy?", "a": "Laser treatments are not recommended during pregnancy or breastfeeding. We recommend treatment after completing pregnancy and breastfeeding. During pregnancy, focus on sun protection and moisturizing." }
+          ],
+          "cta": {
+            "title": "Free Melasma/Pigmentation Consultation",
+            "description": "Get a customized pigmentation treatment plan tailored to your skin condition. Start optimal treatment with specialist consultation."
+          }
+        }
       },
       "vascular": {
         "name": "Vascular Treatment",
         "fullName": "Vascular Treatment",
         "tagline": "Redness, Spider Veins & Acne Scars",
-        "description": "Selectively treating dilated blood vessels and redness for an even skin tone."
+        "description": "Selectively treating dilated blood vessels and redness for an even skin tone.",
+        "detail": {
+          "hero": {
+            "subtitle": "Dual wavelength treats redness and vessels simultaneously",
+            "description": "Clarity II's 1064nm Nd:YAG wavelength effectively improves redness, capillary dilation, and rosacea"
+          },
+          "rednessTypes": {
+            "title": "Customized Treatment by Redness Type",
+            "subtitle": "Optimal wavelength and energy treatment based on the cause and depth of redness",
+            "recommendedTreatment": "Recommended Treatment",
+            "types": [
+              { "type": "Facial Flushing", "description": "Redness easily triggered by emotional or temperature changes", "treatment": "Clarity II 1064nm Low Power" },
+              { "type": "Capillary Dilation", "description": "Visible spider veins around nose and cheeks", "treatment": "Clarity II 1064nm High Power" },
+              { "type": "Rosacea", "description": "Chronic skin condition with redness, papules, and pustules", "treatment": "Clarity II + Skincare Combined" },
+              { "type": "Hemangioma / Vascular Malformation", "description": "Congenital or acquired vascular lesions", "treatment": "Clarity II Intensive Treatment" }
+            ]
+          },
+          "dualWavelength": {
+            "title": "Dual Wavelength Principle",
+            "subtitle": "755nm and 1064nm wavelengths selectively treat from shallow to deep vessels",
+            "epidermis": "Epidermis",
+            "dermis": "Dermis",
+            "shallow755": "755nm - Shallow Vessel Target",
+            "deep1064": "1064nm - Deep Vessel Target",
+            "alexandrite": {
+              "title": "755nm Alexandrite",
+              "points": ["Targets shallow vessels near epidermis", "Effective for capillary dilation treatment", "High hemoglobin absorption rate"]
+            },
+            "ndyag": {
+              "title": "1064nm Nd:YAG",
+              "points": ["Reaches deep vessels in dermis", "Effective for chronic redness and rosacea", "Safe for darker skin types"]
+            }
+          },
+          "clarity": {
+            "title": "Clarity II",
+            "subtitle": "Premium dual-wavelength laser optimized for vascular treatment",
+            "badge": "ONLY OPTION",
+            "why": "Why Clarity II?",
+            "whyDesc": "The most suitable device for vascular treatment among LIV's equipment. The 1064nm Nd:YAG wavelength is selectively absorbed by hemoglobin in blood vessels, treating only vessels without surrounding tissue damage.",
+            "recommendedSessions": "3-8 sessions (depending on severity)"
+          },
+          "protocol": {
+            "title": "Treatment Protocol by Severity",
+            "mild": { "level": "Mild", "description": "Light flushing, early capillaries", "sessions": "3-5 sessions", "interval": "3-4 week interval", "treatment": "Clarity II 1064nm" },
+            "moderate": { "level": "Moderate", "description": "Chronic redness, dilated capillaries", "sessions": "5-8 sessions", "interval": "3-4 week interval", "treatment": "Clarity II 1064nm" },
+            "severe": { "level": "Severe", "description": "Rosacea, severe vascular dilation", "sessions": "8-10+ sessions", "interval": "2-3 week interval", "treatment": "Clarity II 1064nm" }
+          },
+          "idealFor": [
+            "Those who flush easily with emotional or temperature changes",
+            "Those with visible spider veins around nose and cheeks",
+            "Those with chronic redness affecting makeup application",
+            "Those diagnosed with rosacea",
+            "Those with prolonged redness after laser treatment",
+            "Those uncomfortable in social situations due to facial flushing"
+          ],
+          "faq": [
+            { "q": "Will I see results immediately after redness treatment?", "a": "Redness may appear temporarily worse immediately after treatment. This is a normal reaction and subsides within 2-3 days. Actual effects gradually appear from 3-4 weeks and progressively improve with repeated sessions." },
+            { "q": "Can redness be completely eliminated?", "a": "Results vary depending on the cause and severity of redness. Most cases can expect 50-80% improvement, with the goal of significantly reducing symptoms rather than complete elimination. Maintenance treatments help sustain results." },
+            { "q": "Can rosacea be treated with laser?", "a": "Vascular dilation symptoms of rosacea can be effectively treated with laser. However, rosacea is a complex skin condition, so combining laser treatment with skincare and medication is most effective." },
+            { "q": "Are there post-treatment precautions?", "a": "Avoid saunas, alcohol, and intense exercise for 2-3 days after treatment. Apply thorough sun protection and avoid irritating cosmetics. Temporary redness or swelling at the treatment site is normal." }
+          ],
+          "cta": {
+            "title": "Free Redness/Vascular Consultation",
+            "description": "Get a customized treatment plan tailored to your redness type. Regain healthy, clear skin with specialist consultation."
+          }
+        }
       },
       "skintone": {
         "name": "Skin Texture",
@@ -1464,7 +1699,136 @@
         "name": "Tattoo Removal",
         "fullName": "Tattoo Removal",
         "tagline": "Safe Tattoo Removal",
-        "description": "Picosecond laser breaks down tattoo pigments into fine particles for clean removal."
+        "description": "Picosecond laser breaks down tattoo pigments into fine particles for clean removal.",
+        "detail": {
+          "breadcrumb": "Tattoo Removal",
+          "hero": {
+            "title": "Tattoo Removal",
+            "subtitle": "Tattoo Removal with Lucas",
+            "description": "Picosecond technology for scar-free, clean removal of all ink colors"
+          },
+          "picoTech": {
+            "badge": "Picosecond Technology",
+            "title": "Why Pico Laser?",
+            "description1": "Traditional nanosecond (10⁻⁹s) lasers used photothermal effect to break down ink. Picosecond (10⁻¹²s) lasers deliver 1000x faster pulses creating photoacoustic effects.",
+            "description2": "This shockwave shatters ink particles to dust-level size, allowing easy removal by the body's immune system.",
+            "benefits": [
+              { "title": "Fewer Sessions", "desc": "Efficient removal with fine particle breakdown" },
+              { "title": "Less Heat Damage", "desc": "Short pulse protects surrounding tissue" },
+              { "title": "Fewer Side Effects", "desc": "Minimized risk of scarring and pigment changes" }
+            ],
+            "illustration": {
+              "title": "Ink Particle Shattering Mechanism",
+              "nanosecond": "Nanosecond (10⁻⁹s)",
+              "nanosecondDevice": "Traditional Q-Switch Laser",
+              "picosecond": "Picosecond (10⁻¹²s)",
+              "picosecondDevice": "Lucas Laser",
+              "before": "Before",
+              "after": "After",
+              "photothermal": "Photothermal",
+              "photothermalResult": "Large → Medium particles",
+              "photoacoustic": "Photoacoustic",
+              "photoacousticResult": "Large → Fine particles ✓"
+            }
+          },
+          "colorWavelength": {
+            "badge": "Multi-Wavelength System",
+            "title": "Targeting All Colors",
+            "subtitle": "Lucas pico laser effectively breaks down various ink colors with multiple wavelengths",
+            "illustrationTitle": "Optimal Wavelength by Ink Color",
+            "colors": {
+              "black": { "name": "Black", "wavelength": "1064nm", "difficulty": "Easiest" },
+              "red": { "name": "Red", "wavelength": "532nm", "difficulty": "Relatively Easy" },
+              "blue": { "name": "Blue", "wavelength": "755nm", "difficulty": "Somewhat Difficult" },
+              "green": { "name": "Green", "wavelength": "755nm", "difficulty": "Most Difficult" }
+            },
+            "lucasNote": "Lucas: Multi-wavelength for all color targeting",
+            "wavelengths": [
+              { "wavelength": "1064nm", "colors": "Black, Dark Blue, Brown", "note": "Deepest penetration, most tattoos" },
+              { "wavelength": "755nm", "colors": "Blue, Green", "note": "Medium depth, special color targeting" },
+              { "wavelength": "532nm", "colors": "Red, Orange, Yellow", "note": "Epidermal layer, bright colors" }
+            ]
+          },
+          "tattooTypes": {
+            "badge": "Tattoo Type Guide",
+            "title": "What Type of Tattoo Do You Want to Remove?",
+            "subtitle": "Treatment sessions and difficulty vary by tattoo type and characteristics",
+            "estimatedSessions": "Estimated Sessions",
+            "difficulty": {
+              "easy": "Relatively Easy",
+              "medium": "Medium",
+              "hard": "Somewhat Difficult"
+            },
+            "types": [
+              { "type": "Amateur Tattoo", "description": "Non-professional tattoos with shallow ink placement, relatively easy to remove.", "sessions": "3-5 sessions", "notes": "Mostly single-color tattoos with pen ink or india ink" },
+              { "type": "Professional Tattoo (B&W)", "description": "Professional black and white tattoos with deep, uniform ink placement.", "sessions": "6-10 sessions", "notes": "Black ink responds best to laser" },
+              { "type": "Professional Tattoo (Color)", "description": "Multi-colored tattoos requiring different wavelengths for each color.", "sessions": "8-15+ sessions", "notes": "Green and blue require more sessions" },
+              { "type": "Permanent Makeup", "description": "Semi-permanent makeup on eyebrows, eyeliner, lips. Shallower than regular tattoos.", "sessions": "3-6 sessions", "notes": "Special protective equipment for eye area" },
+              { "type": "Traumatic Tattoo", "description": "Foreign material embedded from accidents. Asphalt, graphite in skin.", "sessions": "4-8 sessions", "notes": "Varies by depth and extent" },
+              { "type": "Cover-up Tattoo", "description": "Tattoo drawn over existing tattoo. Thicker ink layers make removal difficult.", "sessions": "10-20+ sessions", "notes": "New tattoo possible after staged removal" }
+            ]
+          },
+          "process": {
+            "badge": "Treatment Process",
+            "title": "Tattoo Removal Process",
+            "steps": [
+              { "step": 1, "title": "Consultation & Assessment", "description": "Evaluate tattoo size, color, depth, skin type and provide expected sessions and cost guidance.", "duration": "About 30 min" },
+              { "step": 2, "title": "Pico Laser Treatment", "description": "Lucas pico laser finely shatters ink particles. Treatment time varies by size.", "duration": "15-60 min" },
+              { "step": 3, "title": "Recovery Period", "description": "Skin naturally discharges shattered ink. Scabbing and mild swelling may occur.", "duration": "2-4 weeks" },
+              { "step": 4, "title": "Next Session", "description": "Repeat treatment at 6-8 week intervals. Tattoo visibly fades with each session.", "duration": "6-8 week interval" }
+            ]
+          },
+          "lucas": {
+            "title": "Lucas",
+            "subtitle": "The New Standard in Picosecond Tattoo Removal",
+            "specs": {
+              "pulseDuration": { "label": "Pulse Duration", "value": "450 Picoseconds" },
+              "wavelength": { "label": "Wavelength", "value": "532 / 755 / 1064nm" },
+              "repetitionRate": { "label": "Repetition Rate", "value": "Up to 10Hz" },
+              "energy": { "label": "Energy", "value": "Up to 1.8J" }
+            },
+            "strengths": {
+              "title": "Lucas Advantages",
+              "items": [
+                "Multi-wavelength for all color response",
+                "450ps ultra-short pulse minimizes heat damage",
+                "Fractional lens also treats scars"
+              ]
+            }
+          },
+          "precautions": {
+            "before": {
+              "title": "Before Treatment",
+              "items": [
+                "Avoid excessive sun exposure 2 weeks before treatment",
+                "Avoid irritating products on treatment area",
+                "Inform us of any skin conditions (inflammation, wounds)",
+                "Disclose medications (photosensitizing drugs, etc.)"
+              ]
+            },
+            "after": {
+              "title": "After Treatment",
+              "items": [
+                "Apply prescribed ointment as directed",
+                "Never remove scabs artificially",
+                "Essential sunscreen (SPF 30+)",
+                "Avoid sauna and intense exercise for 1 week"
+              ]
+            }
+          },
+          "faq": [
+            { "q": "Can tattoos be completely removed?", "a": "Most tattoos can be removed over 90%. Complete removal depends on ink color, depth, tattoo age, and skin type. Black ink removes best, while green and blue may require more sessions. We'll provide accurate estimates during consultation." },
+            { "q": "How painful is tattoo removal?", "a": "Pain levels range from 'snapping rubber band' to 'pinching' depending on the individual. Lucas pico laser has 1000x shorter pulse than traditional nanosecond lasers, reducing heat buildup and pain. Numbing cream can be applied to minimize discomfort." },
+            { "q": "Will there be scarring?", "a": "Pico laser minimizes heat damage, making scarring risk very low. With proper energy settings and treatment intervals, most recover without scarring. Following post-care guidelines (sun protection, no scab picking) ensures clean healing." },
+            { "q": "Are older or newer tattoos easier to remove?", "a": "Generally, older tattoos remove easier as the body's immune system naturally removes some ink particles over time. However, new tattoos can also be effectively removed with pico laser, and their clearer ink can make laser targeting easier." },
+            { "q": "Can all ink colors be removed?", "a": "Most colors can be removed. Lucas pico laser offers multiple wavelengths (532nm, 755nm, 1064nm) to address various colors." },
+            { "q": "Why is the treatment interval 6-8 weeks?", "a": "Laser-shattered ink particles are absorbed by macrophages and discharged through the lymphatic system. This natural healing process takes 4-6 weeks, and the next treatment should only proceed after complete skin recovery. Too-frequent treatments increase skin damage and scarring risk." }
+          ],
+          "cta": {
+            "title": "The First Step Toward a Fresh Start",
+            "description": "Remove unwanted tattoos cleanly with pico laser. Get accurate treatment planning through free consultation"
+          }
+        }
       }
     }
   },

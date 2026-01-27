@@ -481,7 +481,24 @@
       "years": "년",
       "fdaApproved": "FDA 승인",
       "genuine": "정품 인증",
-      "certified": "공식 인증 병원"
+      "certified": "공식 인증 병원",
+      "laserCenter": "레이저 센터",
+      "freeConsultation": "무료 상담 예약",
+      "onlineConsultation": "온라인 상담 예약",
+      "phoneConsultation": "전화 상담",
+      "treatmentInfo": "시술 정보",
+      "downtime": "다운타임",
+      "recommendedSessions": "권장 횟수",
+      "sessionInterval": "시술 간격",
+      "recommendedTreatment": "추천 치료",
+      "otherTreatments": "다른 시술 보기",
+      "otherLaserTreatments": "다른 레이저 시술 보기",
+      "mild": "경증",
+      "moderate": "중등도",
+      "severe": "중증",
+      "benefits": "장점",
+      "consultationCta": "상담 예약",
+      "effectDuration": "효과 지속"
     },
     "lifting": {
       "ulthera": {
@@ -1416,13 +1433,109 @@
         "name": "보톡스",
         "fullName": "Botox",
         "tagline": "주름 개선 & 윤곽 축소",
-        "description": "보툴리눔 톡신을 이용하여 표정 주름을 개선하고 턱 근육을 축소시켜 갸름한 얼굴선을 만들어 드립니다."
+        "description": "보툴리눔 톡신을 이용하여 표정 주름을 개선하고 턱 근육을 축소시켜 갸름한 얼굴선을 만들어 드립니다.",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "보톡스",
+            "description": "보툴리눔 톡신을 이용하여 표정 주름을 개선하고 턱 근육을 축소시켜 갸름한 얼굴선을 만들어 드립니다."
+          },
+          "benefits": {
+            "title": "보톡스의 장점"
+          },
+          "targetAreas": {
+            "title": "시술 부위",
+            "subtitle": "얼굴의 다양한 부위에 정밀하게 시술합니다",
+            "areas": {
+              "forehead": "이마",
+              "glabella": "미간",
+              "crowsFeet": "눈가",
+              "nasalis": "콧볼",
+              "lips": "입술",
+              "masseter": "턱",
+              "neckBands": "목",
+              "hairline": "헤어라인"
+            }
+          },
+          "treatmentInfo": {
+            "title": "시술 정보",
+            "duration": "시술 시간",
+            "anesthesia": "마취",
+            "recovery": "회복",
+            "results": "지속 기간"
+          },
+          "faq": {
+            "title": "자주 묻는 질문"
+          },
+          "cta": {
+            "title": "보톡스 상담 예약",
+            "description": "자연스러운 주름 개선, 전문의 상담을 통해 최적의 시술을 안내해 드립니다."
+          }
+        }
       },
       "filler": {
         "name": "필러",
         "fullName": "Filler",
         "tagline": "볼륨 & 윤곽 개선",
-        "description": "히알루론산 기반 필러를 사용하여 꺼진 부위를 채우고 자연스러운 볼륨감을 만들어 드립니다."
+        "description": "히알루론산 기반 필러를 사용하여 꺼진 부위를 채우고 자연스러운 볼륨감을 만들어 드립니다.",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "필러",
+            "description": "히알루론산 기반 필러를 사용하여 꺼진 부위를 채우고 자연스러운 볼륨감을 만들어 드립니다."
+          },
+          "benefits": {
+            "title": "필러의 장점"
+          },
+          "targetAreas": {
+            "title": "시술 부위",
+            "subtitle": "얼굴의 다양한 부위에 볼륨을 채우고 윤곽을 정돈합니다",
+            "areas": [
+              { "id": 1, "name": "이마", "description": "이마 주름 개선" },
+              { "id": 2, "name": "관자놀이", "description": "볼륨 손실 복원" },
+              { "id": 3, "name": "코", "description": "콧대/코끝 성형" },
+              { "id": 4, "name": "앞광대", "description": "광대뼈 볼륨" },
+              { "id": 5, "name": "팔자", "description": "팔자주름 개선" },
+              { "id": 6, "name": "옆볼", "description": "볼 처짐 개선" },
+              { "id": 7, "name": "턱끝", "description": "턱 볼륨 형성" },
+              { "id": 8, "name": "애교살", "description": "눈 밑 볼륨" },
+              { "id": 9, "name": "입술", "description": "입술 볼륨" },
+              { "id": 10, "name": "눈썹", "description": "눈썹 리프트" }
+            ]
+          },
+          "fillerTypes": {
+            "title": "부위별 맞춤 필러",
+            "subtitle": "시술 부위와 목적에 따라 최적의 필러 경도를 선택합니다",
+            "types": [
+              { "type": "Soft", "areas": "입술, 눈밑", "desc": "자연스러운 촉감" },
+              { "type": "Medium", "areas": "팔자, 볼", "desc": "볼륨 + 지지력" },
+              { "type": "Firm", "areas": "코, 턱, 이마", "desc": "강한 지지력" }
+            ]
+          },
+          "safety": {
+            "title": "가역적 시술",
+            "subtitle": "히알루론산 필러는 필요시 녹일 수 있어 안전합니다",
+            "steps": [
+              { "step": "01", "title": "필러 주입", "desc": "볼륨 형성" },
+              { "step": "02", "title": "히알루로니다제", "desc": "필요시 용해" },
+              { "step": "03", "title": "원상 복구", "desc": "안전하게 제거" }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "시술 정보",
+            "duration": "시술 시간",
+            "anesthesia": "마취",
+            "recovery": "회복",
+            "results": "지속 기간"
+          },
+          "faq": {
+            "title": "자주 묻는 질문"
+          },
+          "cta": {
+            "title": "필러 상담 예약",
+            "description": "자연스러운 볼륨과 윤곽, 전문의 상담을 통해 최적의 시술을 안내해 드립니다."
+          }
+        }
       },
       "skinbooster": {
         "name": "스킨부스터",
@@ -1442,13 +1555,153 @@
         "name": "색소 치료",
         "fullName": "Pigmentation Treatment",
         "tagline": "기미, 잡티, 주근깨 개선",
-        "description": "다양한 색소 질환에 맞춤 레이저 치료로 맑고 투명한 피부를 되찾아 드립니다."
+        "description": "다양한 색소 질환에 맞춤 레이저 치료로 맑고 투명한 피부를 되찾아 드립니다.",
+        "detail": {
+          "hero": {
+            "subtitle": "난치성 기미도 리브의 3단계 시스템으로",
+            "description": "피코세컨드 레이저부터 저자극 토닝까지, 4가지 프리미엄 장비로 완성하는 맞춤 색소 치료"
+          },
+          "threeStageSystem": {
+            "title": "리브의 3단계 색소 치료 시스템",
+            "subtitle": "경증부터 난치성 기미까지, 단계별 맞춤 치료로 효과적인 색소 개선",
+            "stages": [
+              { "stage": "1단계", "title": "집중 치료", "equipment": "루카스 피코", "description": "피코세컨드 펄스로 깊은 색소 집중 분해" },
+              { "stage": "2단계", "title": "정밀 타겟", "equipment": "클래리티 II 755nm", "description": "알렉산드라이트 파장으로 얕은 색소 정밀 치료" },
+              { "stage": "3단계", "title": "유지 관리", "equipment": "토닝 + 울블랑", "description": "저자극 반복 시술로 효과 유지 및 재발 방지" }
+            ]
+          },
+          "picoVsNano": {
+            "title": "왜 피코세컨드인가?",
+            "subtitle": "나노초 레이저 대비 1000배 빠른 펄스로 색소를 더 미세하게 분해",
+            "nanosecond": "나노초 레이저",
+            "picosecond": "피코초 레이저",
+            "nanosecondUnit": "10억분의 1초 (10⁻⁹)",
+            "picosecondUnit": "1조분의 1초 (10⁻¹²)",
+            "largeParticles": "색소 입자가 크게 분해",
+            "slowDischarge": "배출 속도 느림",
+            "fineParticles": "색소 입자가 미세하게 분해",
+            "fastDischarge": "빠른 림프 배출",
+            "timesFaster": "1000배 빠름",
+            "comparison": {
+              "item": "비교 항목",
+              "pulseSpeed": "펄스 속도",
+              "particleSize": "색소 분해 크기",
+              "tissueDamage": "주변 조직 손상",
+              "heatDamage": "열 손상",
+              "downtime": "다운타임",
+              "sessions": "시술 횟수",
+              "relativeLarge": "상대적 큼",
+              "fine": "미세함",
+              "exists": "있음",
+              "minimal": "최소",
+              "almostNone": "거의 없음",
+              "relativeLong": "상대적 김",
+              "short": "짧음",
+              "many": "많음",
+              "few": "적음"
+            }
+          },
+          "equipment": {
+            "title": "색소 치료 추천 장비",
+            "subtitle": "리브성형외과가 보유한 4가지 프리미엄 레이저로 최적의 색소 치료",
+            "featured": "FEATURED"
+          },
+          "protocol": {
+            "title": "증상별 추천 프로토콜",
+            "mild": { "level": "경증", "description": "가벼운 기미, 잡티", "treatment": "레이저 토닝", "sessions": "5-10회", "interval": "2주 간격" },
+            "moderate": { "level": "중등도", "description": "중간 깊이 색소", "treatment": "클래리티 II 755nm", "sessions": "3-5회", "interval": "3-4주 간격" },
+            "severe": { "level": "중증 / 난치성", "description": "깊은 기미, 난치성", "treatment": "루카스 피코 + 토닝", "sessions": "5-10회", "interval": "2-4주 간격" }
+          },
+          "idealFor": [
+            "기미가 점점 짙어지고 넓어지는 분",
+            "여러 번 토닝을 받았지만 효과가 없는 분",
+            "잡티, 주근깨가 많아 고민인 분",
+            "검버섯이 생기기 시작한 분",
+            "피부톤이 칙칙하고 균일하지 않은 분",
+            "다운타임 없이 꾸준히 관리하고 싶은 분"
+          ],
+          "faq": [
+            { "q": "기미는 완치가 가능한가요?", "a": "기미는 완치보다는 \"관리\"의 개념으로 접근해야 합니다. 집중 치료로 크게 개선한 후, 정기적인 유지 관리와 자외선 차단으로 재발을 최소화합니다. 리브의 3단계 시스템은 치료와 유지 관리를 모두 포함합니다." },
+            { "q": "피코 레이저와 토닝 중 뭐가 좋나요?", "a": "목적에 따라 다릅니다. 난치성 기미나 깊은 색소는 피코 레이저로 집중 치료하고, 경미한 색소나 유지 관리는 토닝이 적합합니다. 많은 경우 피코 치료 후 토닝으로 유지하는 복합 프로토콜이 효과적입니다." },
+            { "q": "레이저 후 색소가 더 진해지기도 하나요?", "a": "일시적 색소 침착(PIH)이 발생할 수 있습니다. 이는 2-4주 내 자연스럽게 개선되며, 자외선 차단을 철저히 하면 예방할 수 있습니다. 리브에서는 시술 후 관리 안내를 철저히 해드립니다." },
+            { "q": "임신 중에도 색소 레이저가 가능한가요?", "a": "임신 중이나 수유 중에는 레이저 시술을 권장하지 않습니다. 출산 및 수유 완료 후 시술을 권장합니다. 임신 중에는 자외선 차단과 보습에 집중해주세요." }
+          ],
+          "cta": {
+            "title": "기미/색소 무료 상담",
+            "description": "피부 상태에 맞는 맞춤 색소 치료 계획을 상담해드립니다. 전문의 상담으로 최적의 치료를 시작하세요."
+          }
+        }
       },
       "vascular": {
         "name": "혈관 치료",
         "fullName": "Vascular Treatment",
         "tagline": "홍조, 실핏줄, 여드름 홍반",
-        "description": "확장된 혈관과 홍조를 선택적으로 치료하여 균일한 피부톤을 만들어 드립니다."
+        "description": "확장된 혈관과 홍조를 선택적으로 치료하여 균일한 피부톤을 만들어 드립니다.",
+        "detail": {
+          "hero": {
+            "subtitle": "듀얼 파장으로 홍조와 혈관을 동시에",
+            "description": "클래리티 II의 1064nm Nd:YAG 파장이 홍조, 모세혈관 확장, 주사비를 효과적으로 개선합니다"
+          },
+          "rednessTypes": {
+            "title": "홍조 유형별 맞춤 치료",
+            "subtitle": "홍조의 원인과 깊이에 따라 최적의 파장과 에너지로 치료합니다",
+            "recommendedTreatment": "추천 치료",
+            "types": [
+              { "type": "안면홍조", "description": "감정 변화나 온도 변화에 얼굴이 쉽게 붉어지는 증상", "treatment": "클래리티 II 1064nm 저출력" },
+              { "type": "모세혈관 확장", "description": "코, 볼 주변에 실핏줄이 비치는 증상", "treatment": "클래리티 II 1064nm 고출력" },
+              { "type": "주사비 (Rosacea)", "description": "만성적인 홍조와 구진, 농포가 동반되는 피부 질환", "treatment": "클래리티 II + 스킨케어 병행" },
+              { "type": "혈관종 / 혈관 기형", "description": "선천성 또는 후천성 혈관 병변", "treatment": "클래리티 II 집중 치료" }
+            ]
+          },
+          "dualWavelength": {
+            "title": "듀얼 파장의 원리",
+            "subtitle": "755nm와 1064nm 두 파장이 얕은 혈관부터 깊은 혈관까지 선택적으로 치료",
+            "epidermis": "표피",
+            "dermis": "진피",
+            "shallow755": "755nm - 얕은 혈관 타겟",
+            "deep1064": "1064nm - 깊은 혈관 타겟",
+            "alexandrite": {
+              "title": "755nm 알렉산드라이트",
+              "points": ["표피 가까이의 얕은 혈관 타겟", "모세혈관 확장 치료에 효과적", "헤모글로빈 흡수율 높음"]
+            },
+            "ndyag": {
+              "title": "1064nm Nd:YAG",
+              "points": ["진피층의 깊은 혈관까지 도달", "만성 홍조, 주사비 치료에 효과적", "어두운 피부에도 안전"]
+            }
+          },
+          "clarity": {
+            "title": "Clarity II 클래리티 II",
+            "subtitle": "혈관 치료에 최적화된 듀얼 파장 프리미엄 레이저",
+            "badge": "ONLY OPTION",
+            "why": "왜 클래리티 II인가?",
+            "whyDesc": "리브성형외과가 보유한 장비 중 혈관 치료에 가장 적합한 장비입니다. 1064nm Nd:YAG 파장이 혈관의 헤모글로빈에 선택적으로 흡수되어 주변 조직 손상 없이 혈관만 치료합니다.",
+            "recommendedSessions": "3-8회 (증상에 따라)"
+          },
+          "protocol": {
+            "title": "증상별 추천 프로토콜",
+            "mild": { "level": "경증", "description": "가벼운 홍조, 초기 모세혈관", "sessions": "3-5회", "interval": "3-4주 간격", "treatment": "클래리티 II 1064nm" },
+            "moderate": { "level": "중등도", "description": "만성 홍조, 확장된 모세혈관", "sessions": "5-8회", "interval": "3-4주 간격", "treatment": "클래리티 II 1064nm" },
+            "severe": { "level": "중증", "description": "주사비, 심한 혈관 확장", "sessions": "8-10회+", "interval": "2-3주 간격", "treatment": "클래리티 II 1064nm" }
+          },
+          "idealFor": [
+            "감정 변화나 온도 변화에 얼굴이 쉽게 붉어지는 분",
+            "코, 볼 주변에 실핏줄이 비치는 분",
+            "만성적인 홍조로 화장이 잘 안 받는 분",
+            "주사비 진단을 받은 분",
+            "레이저 치료 후 홍조가 오래 지속되는 분",
+            "안면 홍조로 대인관계가 불편한 분"
+          ],
+          "faq": [
+            { "q": "홍조 치료 후 바로 효과가 나타나나요?", "a": "시술 직후에는 일시적으로 홍조가 더 심해 보일 수 있습니다. 이는 정상적인 반응이며, 2-3일 내에 가라앉습니다. 실제 효과는 3-4주 후부터 서서히 나타나며, 반복 시술에 따라 점진적으로 개선됩니다." },
+            { "q": "홍조가 완전히 없어지나요?", "a": "홍조의 원인과 심각도에 따라 다릅니다. 대부분의 경우 50-80% 개선을 기대할 수 있으며, 완전히 없애기보다는 증상을 크게 완화시키는 것이 목표입니다. 유지 관리 시술을 통해 효과를 지속시킬 수 있습니다." },
+            { "q": "주사비도 레이저로 치료가 되나요?", "a": "주사비의 혈관 확장 증상은 레이저로 효과적으로 치료할 수 있습니다. 다만 주사비는 복합적인 피부 질환이므로, 레이저 치료와 함께 스킨케어, 약물 치료를 병행하는 것이 효과적입니다." },
+            { "q": "시술 후 주의사항이 있나요?", "a": "시술 후 2-3일간은 사우나, 음주, 격한 운동을 피해야 합니다. 자외선 차단을 철저히 하고, 자극적인 화장품 사용을 자제해주세요. 시술 부위가 일시적으로 붉어지거나 붓는 것은 정상입니다." }
+          ],
+          "cta": {
+            "title": "홍조/혈관 무료 상담",
+            "description": "홍조 유형에 맞는 맞춤 치료 계획을 상담해드립니다. 전문의 상담으로 건강하고 맑은 피부를 되찾으세요."
+          }
+        }
       },
       "skintone": {
         "name": "피부결 개선",
@@ -1466,7 +1719,136 @@
         "name": "타투 제거",
         "fullName": "Tattoo Removal",
         "tagline": "안전한 문신 제거",
-        "description": "피코초 레이저로 문신 색소를 미세하게 분해하여 깨끗하게 제거합니다."
+        "description": "피코초 레이저로 문신 색소를 미세하게 분해하여 깨끗하게 제거합니다.",
+        "detail": {
+          "breadcrumb": "문신 제거",
+          "hero": {
+            "title": "문신 제거",
+            "subtitle": "Tattoo Removal with Lucas",
+            "description": "피코초 기술로 흉터 없이 깨끗하게 모든 색상의 문신을 효과적으로 제거합니다"
+          },
+          "picoTech": {
+            "badge": "피코초 기술",
+            "title": "왜 피코레이저인가?",
+            "description1": "기존 나노초(10⁻⁹초) 레이저는 열작용(Photothermal)으로 잉크를 분해했습니다. 피코초(10⁻¹²초) 레이저는 1000배 빠른 펄스로 광음향작용(Photoacoustic)을 일으킵니다.",
+            "description2": "이 충격파가 잉크 입자를 미세한 먼지 수준까지 분쇄하여 우리 몸의 면역 시스템이 쉽게 제거할 수 있게 합니다.",
+            "benefits": [
+              { "title": "더 적은 시술 횟수", "desc": "미세 입자 분쇄로 효율적 제거" },
+              { "title": "더 적은 열 손상", "desc": "짧은 펄스로 주변 조직 보호" },
+              { "title": "더 적은 부작용", "desc": "흉터, 색소 변화 위험 최소화" }
+            ],
+            "illustration": {
+              "title": "잉크 입자 파쇄 메커니즘",
+              "nanosecond": "나노초 (10⁻⁹초)",
+              "nanosecondDevice": "기존 Q-Switch 레이저",
+              "picosecond": "피코초 (10⁻¹²초)",
+              "picosecondDevice": "Lucas 레이저",
+              "before": "Before",
+              "after": "After",
+              "photothermal": "열작용 (Photothermal)",
+              "photothermalResult": "큰 입자 → 중간 입자",
+              "photoacoustic": "광음향작용 (Photoacoustic)",
+              "photoacousticResult": "큰 입자 → 미세 입자 ✓"
+            }
+          },
+          "colorWavelength": {
+            "badge": "다중 파장 시스템",
+            "title": "모든 색상을 타겟팅",
+            "subtitle": "Lucas 피코레이저는 다중 파장으로 다양한 색상의 잉크를 효과적으로 분해합니다",
+            "illustrationTitle": "잉크 색상별 최적 파장",
+            "colors": {
+              "black": { "name": "검정", "wavelength": "1064nm", "difficulty": "가장 쉬움" },
+              "red": { "name": "빨강", "wavelength": "532nm", "difficulty": "비교적 쉬움" },
+              "blue": { "name": "파랑", "wavelength": "755nm", "difficulty": "다소 어려움" },
+              "green": { "name": "녹색", "wavelength": "755nm", "difficulty": "가장 어려움" }
+            },
+            "lucasNote": "Lucas: 다중 파장으로 모든 색상 타겟팅 가능",
+            "wavelengths": [
+              { "wavelength": "1064nm", "colors": "검정, 진한 파랑, 갈색", "note": "가장 깊은 침투, 대부분의 문신" },
+              { "wavelength": "755nm", "colors": "파랑, 녹색", "note": "중간 깊이, 특수 색상 타겟" },
+              { "wavelength": "532nm", "colors": "빨강, 주황, 노랑", "note": "표피층, 밝은 색상 전용" }
+            ]
+          },
+          "tattooTypes": {
+            "badge": "문신 유형별 가이드",
+            "title": "어떤 문신을 제거하고 싶으신가요?",
+            "subtitle": "문신의 종류와 특성에 따라 치료 횟수와 난이도가 달라집니다",
+            "estimatedSessions": "예상 횟수",
+            "difficulty": {
+              "easy": "비교적 쉬움",
+              "medium": "중간",
+              "hard": "다소 어려움"
+            },
+            "types": [
+              { "type": "아마추어 문신", "description": "비전문가가 시술한 문신. 잉크가 얕게 들어가 있어 제거가 비교적 용이합니다.", "sessions": "3-5회", "notes": "먹물, 펜 잉크 등 단색 문신이 대부분" },
+              { "type": "전문 문신 (흑백)", "description": "전문 타투이스트가 시술한 흑백 문신. 잉크가 깊고 균일하게 들어가 있습니다.", "sessions": "6-10회", "notes": "검정 잉크는 레이저 반응이 가장 좋음" },
+              { "type": "전문 문신 (컬러)", "description": "여러 색상이 사용된 컬러 문신. 색상별로 다른 파장이 필요합니다.", "sessions": "8-15회 이상", "notes": "녹색, 파랑은 더 많은 횟수 필요" },
+              { "type": "반영구 화장", "description": "눈썹, 아이라인, 입술 등의 반영구 화장. 일반 문신보다 얕게 시술됩니다.", "sessions": "3-6회", "notes": "눈가 시술 시 특수 보호 장비 사용" },
+              { "type": "외상성 문신", "description": "사고로 인한 이물질 침착. 아스팔트, 흑연 등이 피부에 박힌 경우.", "sessions": "4-8회", "notes": "깊이와 범위에 따라 달라짐" },
+              { "type": "커버업 문신", "description": "기존 문신 위에 덧그린 문신. 잉크 층이 두꺼워 제거가 어렵습니다.", "sessions": "10-20회 이상", "notes": "단계적 제거 후 새 문신 가능" }
+            ]
+          },
+          "process": {
+            "badge": "치료 과정",
+            "title": "문신 제거 프로세스",
+            "steps": [
+              { "step": 1, "title": "상담 & 평가", "description": "문신 크기, 색상, 깊이, 피부 타입을 평가하고 예상 치료 횟수와 비용을 안내합니다.", "duration": "약 30분" },
+              { "step": 2, "title": "피코레이저 시술", "description": "Lucas 피코레이저로 잉크 입자를 미세하게 분쇄합니다. 시술 시간은 크기에 따라 다릅니다.", "duration": "15-60분" },
+              { "step": 3, "title": "회복 기간", "description": "피부가 분쇄된 잉크를 자연스럽게 배출합니다. 딱지, 가벼운 붓기가 나타날 수 있습니다.", "duration": "2-4주" },
+              { "step": 4, "title": "다음 시술", "description": "6-8주 간격으로 반복 시술. 매 시술마다 문신이 옅어지는 것을 확인할 수 있습니다.", "duration": "6-8주 간격" }
+            ]
+          },
+          "lucas": {
+            "title": "Lucas",
+            "subtitle": "피코초 문신 제거의 새로운 기준",
+            "specs": {
+              "pulseDuration": { "label": "펄스 지속 시간", "value": "450 피코초" },
+              "wavelength": { "label": "파장", "value": "532 / 755 / 1064nm" },
+              "repetitionRate": { "label": "반복률", "value": "최대 10Hz" },
+              "energy": { "label": "에너지", "value": "최대 1.8J" }
+            },
+            "strengths": {
+              "title": "Lucas의 강점",
+              "items": [
+                "다중 파장으로 모든 색상 대응",
+                "450ps 초단파 펄스로 열 손상 최소화",
+                "프랙셔널 렌즈로 흉터 치료도 가능"
+              ]
+            }
+          },
+          "precautions": {
+            "before": {
+              "title": "시술 전",
+              "items": [
+                "시술 2주 전부터 과도한 일광 노출 피하기",
+                "시술 부위에 자극적인 제품 사용 자제",
+                "피부 상태(염증, 상처)가 있으면 미리 알리기",
+                "복용 중인 약물(광과민성 유발 약물 등) 고지"
+              ]
+            },
+            "after": {
+              "title": "시술 후",
+              "items": [
+                "처방된 연고를 지시대로 도포",
+                "딱지는 절대 인위적으로 제거하지 않기",
+                "자외선 차단제 필수 (SPF 30 이상)",
+                "1주일간 사우나, 격렬한 운동 피하기"
+              ]
+            }
+          },
+          "faq": [
+            { "q": "문신 제거는 완전히 가능한가요?", "a": "대부분의 문신은 90% 이상 제거가 가능합니다. 완전 제거 여부는 잉크 색상, 깊이, 문신 나이, 피부 타입 등에 따라 달라집니다. 검정색 잉크가 가장 잘 제거되며, 녹색이나 파랑은 더 많은 횟수가 필요할 수 있습니다. 상담 시 정확한 예상을 안내해드립니다." },
+            { "q": "문신 제거는 얼마나 아픈가요?", "a": "통증 정도는 '고무줄로 탁탁 튕기는 느낌'에서 '따끔한 느낌'까지 개인마다 다릅니다. Lucas 피코레이저는 기존 나노초 레이저보다 펄스 시간이 1000배 짧아 열 축적이 적고, 그만큼 통증도 줄어듭니다. 필요시 마취 크림을 도포하여 통증을 최소화합니다." },
+            { "q": "시술 후 흉터가 남나요?", "a": "피코레이저는 열 손상을 최소화하여 흉터 위험이 매우 낮습니다. 적절한 에너지 세팅과 시술 간격을 지키면 대부분 흉터 없이 회복됩니다. 시술 후 관리 지침(자외선 차단, 딱지 제거 금지 등)을 잘 따라주시면 깨끗한 피부를 기대할 수 있습니다." },
+            { "q": "오래된 문신과 새 문신 중 어떤 것이 더 잘 지워지나요?", "a": "일반적으로 오래된 문신이 더 잘 지워집니다. 시간이 지나면서 우리 몸의 면역 시스템이 일부 잉크 입자를 자연스럽게 제거하기 때문입니다. 하지만 새 문신도 피코레이저로 효과적으로 제거할 수 있으며, 오히려 잉크가 선명하게 남아있어 레이저 타겟팅이 쉬운 장점도 있습니다." },
+            { "q": "모든 색상의 문신이 제거 가능한가요?", "a": "대부분의 색상은 제거 가능합니다. Lucas 피코레이저는 다중 파장(532nm, 755nm, 1064nm)을 제공하여 다양한 색상에 대응합니다." },
+            { "q": "시술 간격은 왜 6-8주인가요?", "a": "레이저로 분쇄된 잉크 입자는 우리 몸의 대식세포(macrophage)가 흡수하고 림프계를 통해 배출합니다. 이 자연 치유 과정에 4-6주가 필요하며, 피부가 완전히 회복된 후 다음 시술을 진행해야 합니다. 너무 빠른 간격으로 시술하면 피부 손상과 흉터 위험이 높아집니다." }
+          ],
+          "cta": {
+            "title": "새로운 시작을 위한 첫걸음",
+            "description": "원치 않는 문신, 피코레이저로 깨끗하게 제거하세요. 무료 상담으로 정확한 치료 계획을 안내받으세요"
+          }
+        }
       }
     }
   },
