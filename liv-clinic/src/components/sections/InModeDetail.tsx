@@ -940,14 +940,14 @@ export default function InModeDetail() {
         <div className="container-custom relative z-10">
           <AnimateOnScroll>
             <div className="text-center max-w-2xl mx-auto">
-              <p className="font-serif text-h3 opacity-80 mb-4">{detail.cta.subtitle}</p>
+              <p className="font-serif text-h3 opacity-80 mb-4">{detail.cta.sectionLabel}</p>
               <h2 className="text-h1 mb-6">{detail.cta.title}</h2>
               <p className="text-h4 opacity-90 mb-10 leading-relaxed" dangerouslySetInnerHTML={{ __html: detail.cta.description }} />
 
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <ScrollLink href="/contact">
                   <Button variant="ghost" size="lg" className="bg-white !text-secondary hover:bg-[#E91E63] hover:!text-white w-full sm:w-auto">
-                    {detail.cta.consultButton}
+                    {detail.cta.bookConsultation}
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
@@ -965,7 +965,7 @@ export default function InModeDetail() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  {detail.cta.hours}
+                  {detail.cta.businessHours}
                 </span>
                 <span className="flex items-center gap-2">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
