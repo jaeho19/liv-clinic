@@ -13,7 +13,11 @@
     "questions": "questions",
     "noResults": "No results found",
     "tryAnother": "Please try a different search term",
-    "relatedTreatments": "Related Treatments"
+    "relatedTreatments": "Related Treatments",
+    "close": "Close",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "backToTop": "Back to Top"
   },
   "nav": {
     "about": "About",
@@ -50,6 +54,10 @@
     "slide3": {
       "title": "Beyond Gravity",
       "subtitle": "Non-surgical skin tightening, experience skin from 10 years ago"
+    },
+    "sideText": {
+      "left": "Premium Anti-Aging Clinic",
+      "right": "Since 2024 Seoul Sinsa"
     }
   },
   "sections": {
@@ -60,11 +68,80 @@
     },
     "equipment": {
       "title": "Genuine Equipment",
-      "subtitle": "Premium authentic devices"
+      "subtitle": "Premium authentic devices",
+      "description": "LIV Plastic Surgery uses only certified premium equipment. We provide safe and effective treatments with the latest technology.",
+      "autoScrolling": "AUTO SCROLLING",
+      "premiumDevices": "10 Premium Devices",
+      "learnMore": "Learn More",
+      "devices": {
+        "ultherapy": {
+          "subTitle": "Ultherapy Prime",
+          "desc": "The global standard of FDA-approved HIFU lifting"
+        },
+        "thermage": {
+          "subTitle": "Thermage FLX",
+          "desc": "The pinnacle of 4th generation RF lifting technology"
+        },
+        "density": {
+          "subTitle": "Density",
+          "desc": "Collagen remodeling with RF energy"
+        },
+        "shurink": {
+          "subTitle": "Shurink",
+          "desc": "Precision HIFU for V-line contouring"
+        },
+        "inmode": {
+          "subTitle": "InMode",
+          "desc": "Fat reduction and lifting with RF energy"
+        },
+        "potenza": {
+          "subTitle": "Potenza",
+          "desc": "RF microneedling for elasticity and pore improvement"
+        },
+        "clarity": {
+          "subTitle": "Clarity II",
+          "desc": "Dual-wavelength laser for pigment & vascular treatment"
+        },
+        "lucas": {
+          "subTitle": "Lucas",
+          "desc": "High-power Q-switch for stubborn pigmentation"
+        },
+        "co2": {
+          "subTitle": "CO2 Laser",
+          "desc": "Precision resurfacing and skin regeneration"
+        },
+        "ulblanc": {
+          "subTitle": "Ulblanc",
+          "desc": "Gentle whitening laser"
+        }
+      }
     },
     "signature": {
       "title": "Signature Programs",
-      "subtitle": "LIV's exclusive signature programs"
+      "subtitle": "LIV's exclusive signature programs",
+      "programs": {
+        "lifting": {
+          "title": "Lifting",
+          "titleEn": "LIFTING",
+          "subtitle": "Ultherapy Prime & Thermage",
+          "description": "The pinnacle of non-surgical lifting. Experience natural lifting effects with premium genuine equipment.",
+          "features": ["Ultherapy Prime Certified", "Thermage FLX Partner", "Customized Combination Treatments"]
+        },
+        "antiaging": {
+          "title": "Anti-Aging",
+          "titleEn": "ANTI-AGING",
+          "subtitle": "Filler & Botox",
+          "description": "Achieve volume and contour with delicate touch. We pursue natural beauty.",
+          "features": ["Genuine Fillers", "Anatomical Approach", "Natural Results"]
+        },
+        "rejuvenation": {
+          "title": "Rejuvenation",
+          "titleEn": "REJUVENATION",
+          "subtitle": "Medical Skincare",
+          "description": "Customized care to restore your skin's natural health. Scientific approach to skin improvement.",
+          "features": ["Skin Boosters", "Laser Toning", "Personalized Skincare"]
+        }
+      }
     },
     "values": {
       "title": "Core Values",
@@ -92,7 +169,49 @@
     },
     "doctor": {
       "title": "Medical Staff",
-      "subtitle": "Our Doctors"
+      "subtitle": "Our Doctors",
+      "name": "Sooyoung Kim",
+      "nameEn": "Dr. Sooyoung Kim",
+      "directorTitle": "Director, LIV Plastic Surgery",
+      "directorTitleEn": "Director",
+      "specialty": "Board-certified Plastic Surgeon",
+      "philosophy": "Pursuing naturalness - that is true beauty. We help you find your understated, authentic beauty.",
+      "credentials": "Credentials",
+      "credentialsList": [
+        "M.D., Korea University College of Medicine",
+        "M.S. in Plastic Surgery, Korea University Graduate School",
+        "Member, Korean Society of Plastic and Reconstructive Surgeons",
+        "Member, Korean Society of Aesthetic Plastic Surgery",
+        "Fellowship, MD Anderson Cancer Center, Texas, USA"
+      ],
+      "certifications": {
+        "official": "Officially Certified",
+        "ultheraThermage": "Ultherapy Prime & Thermage",
+        "globalExpert": "Global Certified Expert",
+        "aptosCertified": "APTOS Certified Expert"
+      },
+      "internationalActivities": "International Activities",
+      "activities": [
+        {
+          "caption": "APTOS Headquarters Training",
+          "location": "Georgia, 2025"
+        },
+        {
+          "caption": "Clinical Experience Presentation",
+          "location": "International Conference"
+        },
+        {
+          "caption": "Clinical Practice",
+          "location": "Clinical Procedure Site"
+        }
+      ],
+      "viewStaff": "View Medical Staff",
+      "youtube": {
+        "title": "LIV TV",
+        "subtitle": "Treatment Stories by Dr. Kim",
+        "subscribe": "Subscribe to LIV YouTube Channel",
+        "description": "Watch treatment info, doctor interviews, and before & after videos"
+      }
     },
     "doctors": {
       "kim": {
@@ -164,7 +283,20 @@
       "title": "Location",
       "subtitle": "How to visit",
       "address": "4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea",
-      "subway": "1 min walk from Sinsa Station Exit 4"
+      "subway": "1 min walk from Sinsa Station Exit 4",
+      "subwayInfo": "Line 3 · Sinbundang Line, Sinsa Station Exit 4",
+      "walkMinutes": "1 min walk",
+      "addressLabel": "Address",
+      "buildingDetail": "(Jamwon-dong, Jaeun Building 4F)",
+      "directions": "Turn left at Paik's Coffee from Exit 4 and walk straight",
+      "holidayClosed": "Closed on Sundays and Public Holidays",
+      "contactLabel": "Contact",
+      "consultTime": "Consultation hours: Weekdays 10:00 - 19:00",
+      "parkingLabel": "Parking",
+      "freeParking": "Free Parking Available",
+      "parkingDetail": "Electric vehicles and large vehicles can park on the 1st floor when space is available. If no parking space is available, please use nearby paid parking lots.",
+      "naverMap": "Naver Map",
+      "kakaoMap": "Kakao Map"
     }
   },
   "footer": {
@@ -173,7 +305,12 @@
     "saturday": "Saturday",
     "sunday": "Closed on Sunday",
     "address": "Address",
-    "copyright": "© 2025 LIV Plastic Surgery. All rights reserved."
+    "copyright": "© 2025 LIV Plastic Surgery. All rights reserved.",
+    "quickLinks": "Quick Links",
+    "followUs": "Follow Us",
+    "slogan": "A journey to rediscover your natural, radiant self",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
   },
   "meta": {
     "title": "LIV Plastic Surgery | Premium Non-surgical Anti-aging Seoul",
@@ -228,7 +365,28 @@
       "successTitle": "Consultation request submitted",
       "successMessage": "We will contact you shortly.\nThank you.",
       "retry": "Submit Again",
-      "other": "Other / Decide after consultation"
+      "other": "Other / Decide after consultation",
+      "privacyShort": "Agree to privacy policy",
+      "submitError": "Consultation request failed.",
+      "submitErrorRetry": "Consultation request failed. Please try again later.",
+      "consultTitle": "Book Consultation",
+      "consultSubtitle": "Our specialists will guide you with care",
+      "password": "Password (Optional)",
+      "treatmentSelect": "Select Treatment",
+      "submitButton": "Submit",
+      "successSubtitle": "We will contact you soon",
+      "errorSubtitle": "Please try again",
+      "required": "[Required]",
+      "privacyConsent": "I agree to the collection and use of personal information. (Name and contact are used for consultation purposes only)",
+      "treatmentOptions": {
+        "laser": "Laser Treatment",
+        "filler": "Filler Treatment",
+        "botox": "Botox",
+        "skincare": "Skin Care",
+        "lifting": "Lifting",
+        "antiaging": "Anti-aging",
+        "other": "Other"
+      }
     }
   },
   "faq": {
@@ -254,6 +412,333 @@
       "a7": "Yes, consultations are available in English, Japanese, and Chinese. Please let us know if you need interpretation services when booking your appointment.",
       "q8": "Do you use only genuine equipment?",
       "a8": "LIV Plastic Surgery is an officially certified Ultherapy Prime and Thermage clinic, using only 100% genuine equipment and products. Authenticity certificates are available for all products."
+    }
+  },
+  "treatments": {
+    "common": {
+      "process": "Treatment Process",
+      "timeline": "Results Timeline",
+      "targetAreas": "Treatment Areas",
+      "recommended": "Recommended For",
+      "precautions": "Pre & Post Care",
+      "comparison": "Device Comparison",
+      "transducers": "Transducers",
+      "collapse": "Collapse",
+      "expand": "Expand",
+      "bookConsultation": "Book Consultation",
+      "callNow": "Call Now",
+      "whyChoose": "Why Choose This?",
+      "howItWorks": "How It Works",
+      "results": "Results",
+      "faq": "FAQ",
+      "relatedTreatments": "Related Treatments",
+      "duration": "Duration",
+      "anesthesia": "Anesthesia",
+      "recovery": "Recovery",
+      "maintenance": "Maintenance",
+      "before": "Before",
+      "after": "After",
+      "immediately": "Immediately After",
+      "weeks": "weeks",
+      "months": "months",
+      "years": "years",
+      "fdaApproved": "FDA Approved",
+      "genuine": "Genuine Certified",
+      "certified": "Certified Clinic"
+    },
+    "lifting": {
+      "ulthera": {
+        "name": "Ultherapy Prime",
+        "fullName": "Ultherapy Prime",
+        "tagline": "The Only FDA-Approved Non-Surgical Lifting",
+        "description": "The world's only FDA-approved non-surgical lifting. Ultrasound energy reaches deep into the SMAS layer for powerful lifting effects.",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "Epidermis",
+            "upperDermis": "Upper Dermis",
+            "lowerDermis": "Lower Dermis",
+            "smas": "SMAS Layer"
+          },
+          "timeline": {
+            "items": [
+              { "time": "Immediately", "effect": "Collagen Contraction", "desc": "Instant Tightening" },
+              { "time": "1 Month", "effect": "New Collagen", "desc": "Type III Formation" },
+              { "time": "3 Months", "effect": "Visible Change", "desc": "Defined Jawline" },
+              { "time": "6 Months", "effect": "Peak Results", "desc": "Type I Collagen Matured" },
+              { "time": "12-24 Months", "effect": "Sustained Effect", "desc": "Gradual Maintenance" }
+            ],
+            "note": "After Ultherapy Prime, collagen regenerates and results gradually appear"
+          },
+          "comparison": {
+            "title": "Ultherapy Prime vs Other Devices",
+            "subtitle": "Even among HIFU devices, there are significant differences in technology and clinical evidence",
+            "headers": {
+              "feature": "Feature",
+              "ulthera": "Ultherapy Prime",
+              "shurink": "Shurink/Doublo",
+              "thermage": "Thermage"
+            },
+            "rows": [
+              { "feature": "Energy Type", "ulthera": "MFU-V (Ultrasound)", "shurink": "HIFU (Ultrasound)", "thermage": "RF (Radiofrequency)" },
+              { "feature": "Real-time Visualization", "ulthera": "DeepSEE O", "shurink": "X", "thermage": "X" },
+              { "feature": "FDA Lifting Approval", "ulthera": "Only Approved", "shurink": "X", "thermage": "X" },
+              { "feature": "Max Depth", "ulthera": "4.5mm (SMAS)", "shurink": "4.5mm", "thermage": "Dermis" },
+              { "feature": "Clinical Studies", "ulthera": "110+ Papers", "shurink": "Few", "thermage": "Many" },
+              { "feature": "Duration", "ulthera": "1-2 Years", "shurink": "6-12 Months", "thermage": "6-12 Months" },
+              { "feature": "Best For", "ulthera": "Severe Sagging/Lifting", "shurink": "Maintenance", "thermage": "Elasticity/Texture" }
+            ],
+            "synergy": {
+              "title": "Ultherapy Prime + Thermage Synergy",
+              "description": "Combining Ultherapy Prime (SMAS layer lifting) with Thermage (epidermis-dermis elasticity) at 3-month intervals creates a powerful multi-layer collagen regeneration synergy."
+            }
+          },
+          "transducers": {
+            "title": "6 Specialized Transducers",
+            "subtitle": "Six transducers with different depths and frequencies enable customized treatment for each skin layer",
+            "shallow": "Shallow (1.5mm - 3.0mm)",
+            "deep": "Deep (3.0mm - 4.5mm)",
+            "energyDelivery": " delivers energy precisely",
+            "items": {
+              "ds-10-1.5": { "target": "Epidermis-Dermis Junction", "applications": ["Fine Lines", "Eye Area", "Mouth Area", "Skin Texture"] },
+              "ds-10-1.5-n": { "target": "Narrow Areas", "applications": ["Eye Wrinkles", "Under Eye", "Eyelids"] },
+              "ds-7-3.0": { "target": "Lower Dermis", "applications": ["Cheeks", "Forehead", "Cheekbones", "Jawline"] },
+              "ds-7-3.0-n": { "target": "Narrow Dermis", "applications": ["Eye Wrinkles", "Mouth Area", "Hands"] },
+              "ds-4-4.5": { "target": "SMAS Layer", "applications": ["Mid-face", "Lower Face", "Neck", "Décolletage"] },
+              "ds-7-4.5": { "target": "High-Resolution SMAS", "applications": ["Jawline", "Double Chin", "Cheek Sagging"] }
+            }
+          },
+          "hero": {
+            "badge": "The Only FDA-Approved Lifting Device",
+            "premiumLifting": "Premium Lifting",
+            "title": "Ultherapy Prime",
+            "description": "The only non-invasive lifting that reaches the deep SMAS layer.\nPrecise and safe with real-time DeepSEE visualization technology.",
+            "stats": {
+              "clinicalStudies": "Clinical Studies",
+              "globalProcedures": "Global Procedures",
+              "improvementRate": "Improvement Rate"
+            },
+            "deepSee": "Real-time Visualization",
+            "smasTarget": "Deep Layer Targeting"
+          },
+          "about": {
+            "sectionLabel": "About Ultherapy Prime",
+            "title": "What is Ultherapy Prime?",
+            "description": "Ultherapy Prime is the <strong>only</strong> non-invasive HIFU device with FDA-approved lifting efficacy. Its patented MFU-V (Micro-focused Ultrasound with Visualization) technology precisely delivers energy to the deep SMAS layer to stimulate collagen regeneration.",
+            "depthTargeting": "Customized Depth Targeting",
+            "depths": {
+              "1.5": {
+                "title": "1.5mm - Epidermis/Dermis Junction",
+                "description": "Effective for fine lines and skin texture. Applied to delicate areas like eye and mouth areas"
+              },
+              "3.0": {
+                "title": "3.0mm - Lower Dermis",
+                "description": "Collagen induction and overall elasticity improvement. Applied to larger areas like cheeks and forehead"
+              },
+              "4.5": {
+                "title": "4.5mm - SMAS Layer",
+                "description": "Structural lifting effect. Applied to areas with severe sagging like jawline, neck, and mid-face"
+              }
+            }
+          },
+          "whyUlthera": {
+            "sectionLabel": "Premium Quality",
+            "labelEn": "Why Ultherapy Prime?",
+            "title": "Why Ultherapy Prime?",
+            "cards": {
+              "fda": {
+                "title": "Only FDA Approved",
+                "description": "The <strong>only</strong> HIFU device with FDA approval for non-invasive lifting efficacy."
+              },
+              "deepSee": {
+                "title": "DeepSEE Visualization",
+                "description": "Patented DeepSEE technology allows <strong>real-time visualization</strong> of skin layers during treatment."
+              },
+              "smas": {
+                "title": "SMAS Layer Targeting",
+                "description": "The only non-invasive device that <strong>reaches the SMAS layer</strong>, the same target as surgical facelifts."
+              }
+            },
+            "clinicalEvidence": {
+              "label": "Clinical Evidence",
+              "papers": "Clinical Research Papers",
+              "aestheticImprovement": "Aesthetic Improvement",
+              "satisfaction": "Patient Satisfaction",
+              "duration": "Effect Duration",
+              "source": "Source: 2024 Systematic Review and Meta-analysis (PubMed)"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Clinic",
+            "labelEn": "LIV Difference",
+            "title": "Ultherapy Prime at LIV",
+            "cards": {
+              "genuine": {
+                "title": "Certified Genuine Clinic",
+                "description": "Official Merz Korea certified clinic using only genuine equipment and transducers. Serial number verification available."
+              },
+              "transparency": {
+                "title": "Transparent Shot Count",
+                "description": "We transparently disclose planned line counts and actual shots delivered. We promise honest treatment."
+              },
+              "specialist": {
+                "title": "Specialist Direct Treatment",
+                "description": "Board-certified dermatologist/plastic surgeon conducts consultations and treatments directly. Personalized treatment plans for each patient."
+              }
+            }
+          },
+          "journey": {
+            "sectionLabel": "Journey",
+            "title": "Treatment Journey"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Details",
+            "labelEn": "Treatment Info",
+            "title": "Treatment Information",
+            "labels": {
+              "duration": "Treatment Time",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery Period",
+              "results": "Effect Duration"
+            },
+            "recommendedLines": {
+              "title": "Recommended Lines by Area",
+              "upperFace": "Upper Face",
+              "lowerFace": "Lower Face",
+              "fullFace": "Full Face",
+              "fullFaceNeck": "Full Face + Neck"
+            }
+          },
+          "detailedInfo": {
+            "title": "Detailed Information"
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "Frequently Asked Questions",
+            "moreButton": " more",
+            "medicalQaLink": "View More Medical Q&A",
+            "extended": [
+              {
+                "q": "Can I return to daily activities immediately after Ultherapy Prime?",
+                "a": "Yes, Ultherapy Prime is a non-invasive treatment with minimal downtime. You may experience slight redness or swelling immediately after, but this typically subsides within the same day. Makeup can be applied immediately, and there are no restrictions on daily activities."
+              },
+              {
+                "q": "Can I combine Ultherapy Prime with Thermage?",
+                "a": "Yes, Ultherapy Prime and Thermage are complementary treatments that create synergy when combined. Ultherapy Prime targets deep SMAS layer lifting, while Thermage improves epidermis-dermis elasticity. Typically, treatments are spaced 3 months apart."
+              },
+              {
+                "q": "How can I verify authentic Ultherapy Prime?",
+                "a": "LIV Plastic Surgery is an official Merz Korea certified clinic. You can verify the serial number of genuine transducers during treatment, and we transparently disclose the actual number of shots delivered."
+              }
+            ]
+          },
+          "cta": {
+            "labelEn": "Ready for Transformation?",
+            "title": "Book Ultherapy Prime Consultation",
+            "description": "Through 1:1 personalized consultation with our specialists,\nestablish the optimal treatment plan tailored to you.",
+            "bookButton": "Book Free Consultation",
+            "hours": "Weekdays 10:00-19:00",
+            "location": "3 min walk from Sinsa Station Exit 4"
+          },
+          "related": {
+            "labelEn": "Related Treatments",
+            "title": "Related Treatments"
+          }
+        }
+      },
+      "thermage": {
+        "name": "Thermage FLX",
+        "fullName": "Thermage FLX",
+        "tagline": "RF Skin Tightening Solution",
+        "description": "4th generation Thermage FLX offers 25% faster treatment while promoting comprehensive collagen regeneration."
+      },
+      "density": {
+        "name": "Density",
+        "fullName": "Density",
+        "tagline": "2nd Generation Ultherapy Prime",
+        "description": "The genuine 2nd generation Ultherapy Prime technology provides more precise and effective lifting."
+      },
+      "inmode": {
+        "name": "InMode",
+        "fullName": "InMode",
+        "tagline": "RF-Based Combination Lifting",
+        "description": "A comprehensive lifting system using radiofrequency to improve skin elasticity and body contouring simultaneously."
+      },
+      "shurink": {
+        "name": "Shurink",
+        "fullName": "Shurink Universe",
+        "tagline": "HIFU Lifting",
+        "description": "A lifting treatment using high-intensity focused ultrasound to lift sagging skin."
+      },
+      "thread": {
+        "name": "Thread Lift",
+        "fullName": "Thread Lift",
+        "tagline": "Immediate Lifting with PDO Threads",
+        "description": "Biodegradable threads are inserted under the skin for immediate lifting effect and collagen stimulation."
+      },
+      "aptos": {
+        "name": "APTOS Namica",
+        "fullName": "APTOS Namica",
+        "tagline": "Premium Thread Lifting",
+        "description": "Premium lifting threads from Georgia providing natural and long-lasting lifting effects."
+      }
+    },
+    "antiaging": {
+      "botox": {
+        "name": "Botox",
+        "fullName": "Botox",
+        "tagline": "Wrinkle Reduction & Facial Contouring",
+        "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line."
+      },
+      "filler": {
+        "name": "Filler",
+        "fullName": "Filler",
+        "tagline": "Volume & Contour Enhancement",
+        "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume."
+      },
+      "skinbooster": {
+        "name": "Skin Booster",
+        "fullName": "Skin Booster",
+        "tagline": "Deep Hydration from Within",
+        "description": "Delivering hydration and nutrients deep into the skin to improve overall skin health."
+      }
+    },
+    "laser": {
+      "center": {
+        "name": "Laser Center",
+        "fullName": "Laser Center",
+        "tagline": "Advanced Laser Total Solution",
+        "description": "A premium laser center addressing various skin concerns from pigmentation, vascular issues, skin texture, hair removal, to tattoo removal."
+      },
+      "pigmentation": {
+        "name": "Pigmentation Treatment",
+        "fullName": "Pigmentation Treatment",
+        "tagline": "Melasma, Spots & Freckle Treatment",
+        "description": "Customized laser treatments for various pigmentation conditions to restore clear, radiant skin."
+      },
+      "vascular": {
+        "name": "Vascular Treatment",
+        "fullName": "Vascular Treatment",
+        "tagline": "Redness, Spider Veins & Acne Scars",
+        "description": "Selectively treating dilated blood vessels and redness for an even skin tone."
+      },
+      "skintone": {
+        "name": "Skin Texture",
+        "fullName": "Skin Tone Improvement",
+        "tagline": "Pores, Scars & Texture Refinement",
+        "description": "Laser resurfacing for pore reduction, scar improvement, and skin texture refinement."
+      },
+      "hairRemoval": {
+        "name": "Laser Hair Removal",
+        "fullName": "Laser Hair Removal",
+        "tagline": "Permanent Hair Removal Solution",
+        "description": "Medical-grade lasers selectively destroy hair follicles for permanent hair removal results."
+      },
+      "tattoo": {
+        "name": "Tattoo Removal",
+        "fullName": "Tattoo Removal",
+        "tagline": "Safe Tattoo Removal",
+        "description": "Picosecond laser breaks down tattoo pigments into fine particles for clean removal."
+      }
     }
   },
   "medical": {

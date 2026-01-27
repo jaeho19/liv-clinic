@@ -13,7 +13,11 @@
     "questions": "个问题",
     "noResults": "未找到搜索结果",
     "tryAnother": "请尝试其他搜索词",
-    "relatedTreatments": "相关项目"
+    "relatedTreatments": "相关项目",
+    "close": "关闭",
+    "closeMenu": "关闭菜单",
+    "language": "语言",
+    "backToTop": "返回顶部"
   },
   "nav": {
     "about": "关于LIV",
@@ -50,6 +54,10 @@
     "slide3": {
       "title": "Beyond Gravity",
       "subtitle": "无需手术恢复弹性，体验十年前的肌肤"
+    },
+    "sideText": {
+      "left": "Premium Anti-Aging Clinic",
+      "right": "Since 2024 Seoul Sinsa"
     }
   },
   "sections": {
@@ -60,11 +68,80 @@
     },
     "equipment": {
       "title": "Genuine Equipment",
-      "subtitle": "高端正品设备"
+      "subtitle": "高端正品设备",
+      "description": "LIV整形外科只使用正品认证的高端设备。我们以最新技术提供安全有效的治疗。",
+      "autoScrolling": "AUTO SCROLLING",
+      "premiumDevices": "10 Premium Devices",
+      "learnMore": "了解更多",
+      "devices": {
+        "ultherapy": {
+          "subTitle": "超声刀",
+          "desc": "FDA批准HIFU提升的全球标准"
+        },
+        "thermage": {
+          "subTitle": "热玛吉FLX",
+          "desc": "第四代射频提升技术的巅峰"
+        },
+        "density": {
+          "subTitle": "Density",
+          "desc": "射频能量重塑胶原蛋白"
+        },
+        "shurink": {
+          "subTitle": "Shurink",
+          "desc": "精准HIFU打造V形脸"
+        },
+        "inmode": {
+          "subTitle": "InMode",
+          "desc": "射频能量同时减脂和提升"
+        },
+        "potenza": {
+          "subTitle": "Potenza",
+          "desc": "射频微针改善弹性和毛孔"
+        },
+        "clarity": {
+          "subTitle": "Clarity II",
+          "desc": "双波长激光治疗色素和血管"
+        },
+        "lucas": {
+          "subTitle": "Lucas",
+          "desc": "高功率Q开关治疗顽固色素"
+        },
+        "co2": {
+          "subTitle": "CO2激光",
+          "desc": "精准焕肤和肌肤再生"
+        },
+        "ulblanc": {
+          "subTitle": "Ulblanc",
+          "desc": "温和美白激光"
+        }
+      }
     },
     "signature": {
       "title": "Signature Programs",
-      "subtitle": "LIV特色项目"
+      "subtitle": "LIV特色项目",
+      "programs": {
+        "lifting": {
+          "title": "提升",
+          "titleEn": "LIFTING",
+          "subtitle": "超声刀 & 热玛吉",
+          "description": "非手术提升的顶点，使用高端正品设备体验自然提升效果。",
+          "features": ["超声刀正品认证", "热玛吉FLX合作伙伴", "定制复合治疗"]
+        },
+        "antiaging": {
+          "title": "抗衰老",
+          "titleEn": "ANTI-AGING",
+          "subtitle": "玻尿酸 & 肉毒素",
+          "description": "以细腻的手法完成体积和轮廓，追求自然之美。",
+          "features": ["使用正品玻尿酸", "解剖学方法", "自然效果"]
+        },
+        "rejuvenation": {
+          "title": "肌肤再生",
+          "titleEn": "REJUVENATION",
+          "subtitle": "医疗护肤",
+          "description": "恢复肌肤天然健康的定制护理，以科学方法帮助改善肌肤。",
+          "features": ["水光针", "激光嫩肤", "定制护肤"]
+        }
+      }
     },
     "values": {
       "title": "Core Values",
@@ -92,7 +169,49 @@
     },
     "doctor": {
       "title": "Medical Staff",
-      "subtitle": "LIV医疗团队"
+      "subtitle": "LIV医疗团队",
+      "name": "金秀英",
+      "nameEn": "Dr. Sooyoung Kim",
+      "directorTitle": "LIV整形外科代表院长",
+      "directorTitleEn": "Director",
+      "specialty": "整形外科专科医生",
+      "philosophy": "追求自然之美，这才是真正的美丽。我们帮助您找到不过度的、本真的美丽。",
+      "credentials": "主要经历",
+      "credentialsList": [
+        "高丽大学医学院毕业",
+        "高丽大学研究生院整形外科学硕士",
+        "大韩整形外科学会正式会员",
+        "大韩美容整形外科学会正式会员",
+        "美国 MD Anderson Cancer Center 进修"
+      ],
+      "certifications": {
+        "official": "官方认证",
+        "ultheraThermage": "Ultherapy Prime & Thermage",
+        "globalExpert": "全球认证专家",
+        "aptosCertified": "APTOS Certified Expert"
+      },
+      "internationalActivities": "国际活动",
+      "activities": [
+        {
+          "caption": "APTOS总部培训结业",
+          "location": "格鲁吉亚, 2025"
+        },
+        {
+          "caption": "临床经验发表",
+          "location": "国际学术会议"
+        },
+        {
+          "caption": "临床实践",
+          "location": "临床治疗现场"
+        }
+      ],
+      "viewStaff": "查看医疗团队详情",
+      "youtube": {
+        "title": "LIV TV",
+        "subtitle": "LIV院长的治疗故事",
+        "subscribe": "订阅LIV YouTube频道",
+        "description": "观看治疗信息、院长访谈、前后对比视频"
+      }
     },
     "doctors": {
       "kim": {
@@ -164,7 +283,20 @@
       "title": "Location",
       "subtitle": "交通指南",
       "address": "首尔特别市瑞草区Naruteo路80 Jaeun大厦4楼",
-      "subway": "新沙站4号出口步行1分钟"
+      "subway": "新沙站4号出口步行1分钟",
+      "subwayInfo": "3号线·新盆唐线 新沙站4号出口",
+      "walkMinutes": "步行1分钟",
+      "addressLabel": "地址",
+      "buildingDetail": "(蚕院洞, Jaeun大厦4楼)",
+      "directions": "从新沙站4号出口左转经过Paik's Coffee直走",
+      "holidayClosed": "每周日及法定节假日休息",
+      "contactLabel": "联系方式",
+      "consultTime": "咨询时间：工作日 10:00 - 19:00",
+      "parkingLabel": "停车指南",
+      "freeParking": "免费停车",
+      "parkingDetail": "电动汽车和大型车辆仅在1楼停车场有空位时可停车。如无停车位，请使用附近的收费停车场。",
+      "naverMap": "Naver地图",
+      "kakaoMap": "Kakao地图"
     }
   },
   "footer": {
@@ -173,7 +305,12 @@
     "saturday": "周六",
     "sunday": "周日休息",
     "address": "地址",
-    "copyright": "© 2025 LIV整形外科. All rights reserved."
+    "copyright": "© 2025 LIV整形外科. All rights reserved.",
+    "quickLinks": "快速链接",
+    "followUs": "关注我们",
+    "slogan": "寻找自然、充满活力的美丽之旅",
+    "privacy": "隐私政策",
+    "terms": "使用条款"
   },
   "meta": {
     "title": "LIV整形外科 | 高端非手术抗衰老 首尔",
@@ -228,7 +365,28 @@
       "successTitle": "咨询申请已完成",
       "successMessage": "我们将尽快与您联系。\n谢谢。",
       "retry": "重新填写",
-      "other": "其他 / 咨询后决定"
+      "other": "其他 / 咨询后决定",
+      "privacyShort": "同意隐私政策",
+      "submitError": "咨询申请失败。",
+      "submitErrorRetry": "咨询申请失败，请稍后再试。",
+      "consultTitle": "咨询预约",
+      "consultSubtitle": "专业顾问将为您提供细心指导",
+      "password": "密码（选填）",
+      "treatmentSelect": "选择项目",
+      "submitButton": "提交咨询",
+      "successSubtitle": "我们将尽快与您联系",
+      "errorSubtitle": "请重试",
+      "required": "[必填]",
+      "privacyConsent": "同意收集和使用个人信息。（姓名和联系方式仅用于咨询目的）",
+      "treatmentOptions": {
+        "laser": "激光治疗",
+        "filler": "玻尿酸注射",
+        "botox": "肉毒素",
+        "skincare": "皮肤护理",
+        "lifting": "提升",
+        "antiaging": "抗衰老",
+        "other": "其他"
+      }
     }
   },
   "faq": {
@@ -254,6 +412,333 @@
       "a7": "是的，可以提供英语、日语、中文咨询。预约时请告知是否需要翻译服务。",
       "q8": "只使用正品设备吗？",
       "a8": "LIV整形外科是超声刀、热玛吉官方认证医院，只使用100%正品设备和产品。所有产品都可以查看正品认证书。"
+    }
+  },
+  "treatments": {
+    "common": {
+      "process": "治疗流程",
+      "timeline": "效果时间线",
+      "targetAreas": "治疗部位",
+      "recommended": "适合人群",
+      "precautions": "治疗前后注意事项",
+      "comparison": "设备对比",
+      "transducers": "探头",
+      "collapse": "收起",
+      "expand": "展开",
+      "bookConsultation": "预约咨询",
+      "callNow": "电话咨询",
+      "whyChoose": "为什么选择？",
+      "howItWorks": "治疗原理",
+      "results": "治疗效果",
+      "faq": "常见问题",
+      "relatedTreatments": "相关项目",
+      "duration": "治疗时长",
+      "anesthesia": "麻醉方式",
+      "recovery": "恢复期",
+      "maintenance": "维持时间",
+      "before": "治疗前",
+      "after": "治疗后",
+      "immediately": "治疗后即刻",
+      "weeks": "周",
+      "months": "个月",
+      "years": "年",
+      "fdaApproved": "FDA批准",
+      "genuine": "正品认证",
+      "certified": "官方认证医院"
+    },
+    "lifting": {
+      "ulthera": {
+        "name": "超声刀",
+        "fullName": "Ultherapy Prime",
+        "tagline": "FDA唯一批准的非手术提升",
+        "description": "全球唯一获得FDA批准的非手术提升。超声波能量深入SMAS层，提供强效提升效果。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "upperDermis": "真皮上层",
+            "lowerDermis": "真皮下层",
+            "smas": "SMAS层"
+          },
+          "timeline": {
+            "items": [
+              { "time": "治疗后即刻", "effect": "胶原收缩", "desc": "即时紧致" },
+              { "time": "1个月", "effect": "新生胶原", "desc": "III型胶原开始生成" },
+              { "time": "3个月", "effect": "明显变化", "desc": "下颌线清晰" },
+              { "time": "6个月", "effect": "最佳效果", "desc": "I型胶原成熟" },
+              { "time": "12-24个月", "effect": "效果维持", "desc": "渐进维持" }
+            ],
+            "note": "超声刀治疗后，胶原蛋白再生，效果逐渐显现"
+          },
+          "comparison": {
+            "title": "超声刀 vs 其他设备",
+            "subtitle": "即使同为HIFU，技术力和临床依据也存在很大差异",
+            "headers": {
+              "feature": "对比项目",
+              "ulthera": "超声刀",
+              "shurink": "Shurink/Doublo",
+              "thermage": "热玛吉"
+            },
+            "rows": [
+              { "feature": "能量类型", "ulthera": "MFU-V（超声波）", "shurink": "HIFU（超声波）", "thermage": "RF（射频）" },
+              { "feature": "实时可视化", "ulthera": "DeepSEE O", "shurink": "X", "thermage": "X" },
+              { "feature": "FDA提升批准", "ulthera": "唯一批准", "shurink": "X", "thermage": "X" },
+              { "feature": "最大深度", "ulthera": "4.5mm（SMAS）", "shurink": "4.5mm", "thermage": "真皮层" },
+              { "feature": "临床研究", "ulthera": "110+论文", "shurink": "少量", "thermage": "大量" },
+              { "feature": "效果持续", "ulthera": "1-2年", "shurink": "6-12个月", "thermage": "6-12个月" },
+              { "feature": "最佳适应症", "ulthera": "严重下垂/提升", "shurink": "维护保养", "thermage": "弹性/肤质" }
+            ],
+            "synergy": {
+              "title": "超声刀 + 热玛吉 协同效应",
+              "description": "超声刀（SMAS层提升）与热玛吉（表皮~真皮层弹性）间隔3个月联合治疗，可实现多层胶原再生，体验更强大的协同效果。"
+            }
+          },
+          "transducers": {
+            "title": "6种探头",
+            "subtitle": "6种不同深度和频率的探头可实现皮肤层定制治疗",
+            "shallow": "浅层（1.5mm - 3.0mm）",
+            "deep": "深层（3.0mm - 4.5mm）",
+            "energyDelivery": "精准传递能量",
+            "items": {
+              "ds-10-1.5": { "target": "表皮-真皮交界", "applications": ["细纹", "眼周", "唇周", "肤质"] },
+              "ds-10-1.5-n": { "target": "狭窄部位", "applications": ["眼纹", "眼下", "眼睑"] },
+              "ds-7-3.0": { "target": "真皮下层", "applications": ["脸颊", "额头", "颧骨", "下颌线"] },
+              "ds-7-3.0-n": { "target": "狭窄真皮层", "applications": ["眼周皱纹", "唇周", "手背"] },
+              "ds-4-4.5": { "target": "SMAS层", "applications": ["中面部", "下面部", "颈部", "胸前"] },
+              "ds-7-4.5": { "target": "高分辨率SMAS", "applications": ["下颌线", "双下巴", "脸颊下垂"] }
+            }
+          },
+          "hero": {
+            "badge": "FDA唯一批准提升设备",
+            "premiumLifting": "Premium Lifting",
+            "title": "超声刀",
+            "description": "唯一能到达深层SMAS的非侵入式提升。\n实时DeepSEE可视化技术，精准安全。",
+            "stats": {
+              "clinicalStudies": "临床研究",
+              "globalProcedures": "全球治疗案例",
+              "improvementRate": "患者改善率"
+            },
+            "deepSee": "实时可视化",
+            "smasTarget": "深层精准定位"
+          },
+          "about": {
+            "sectionLabel": "About Ultherapy Prime",
+            "title": "什么是超声刀？",
+            "description": "超声刀是美国FDA批准<strong>提升效果的唯一</strong>非侵入式HIFU设备。专利MFU-V（微聚焦超声可视化）技术将能量精准传递至深层SMAS，促进胶原蛋白再生。",
+            "depthTargeting": "深度定制精准治疗",
+            "depths": {
+              "1.5": {
+                "title": "1.5mm - 表皮/真皮交界",
+                "description": "对细纹、肤质改善有效。适用于眼周、唇周等精细部位"
+              },
+              "3.0": {
+                "title": "3.0mm - 真皮下层",
+                "description": "胶原诱导，整体弹性改善。适用于脸颊、额头等较大部位"
+              },
+              "4.5": {
+                "title": "4.5mm - SMAS层",
+                "description": "结构性提升效果。适用于下颌线、颈部、中面部等下垂严重的部位"
+              }
+            }
+          },
+          "whyUlthera": {
+            "sectionLabel": "Premium Quality",
+            "labelEn": "Why Ultherapy Prime?",
+            "title": "为什么选择超声刀？",
+            "cards": {
+              "fda": {
+                "title": "FDA唯一批准",
+                "description": "美国FDA批准非侵入式提升效果的<strong>唯一</strong>HIFU设备。"
+              },
+              "deepSee": {
+                "title": "DeepSEE可视化",
+                "description": "专利DeepSEE技术<strong>实时确认</strong>皮肤层进行治疗。"
+              },
+              "smas": {
+                "title": "SMAS层精准定位",
+                "description": "唯一能<strong>到达SMAS层</strong>的非侵入式设备，与整形手术靶向相同。"
+              }
+            },
+            "clinicalEvidence": {
+              "label": "Clinical Evidence",
+              "papers": "临床研究论文",
+              "aestheticImprovement": "美学改善率",
+              "satisfaction": "患者满意度",
+              "duration": "效果持续时间",
+              "source": "来源：2024年系统评价和荟萃分析（PubMed）"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Clinic",
+            "labelEn": "LIV Difference",
+            "title": "LIV的超声刀",
+            "cards": {
+              "genuine": {
+                "title": "正品认证诊所",
+                "description": "Merz Korea官方认证诊所，仅使用正品设备和探头。可验证序列号。"
+              },
+              "transparency": {
+                "title": "发数透明公开",
+                "description": "透明公开治疗前计划的线数和实际照射的发数。承诺诚信治疗。"
+              },
+              "specialist": {
+                "title": "专科医生亲自治疗",
+                "description": "皮肤科/整形外科专科医生从咨询到治疗全程亲自进行。制定个人定制治疗方案。"
+              }
+            }
+          },
+          "journey": {
+            "sectionLabel": "Journey",
+            "title": "治疗流程"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Details",
+            "labelEn": "Treatment Info",
+            "title": "治疗信息",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果持续"
+            },
+            "recommendedLines": {
+              "title": "各部位推荐线数",
+              "upperFace": "上面部",
+              "lowerFace": "下面部",
+              "fullFace": "全面部",
+              "fullFaceNeck": "全面部+颈部"
+            }
+          },
+          "detailedInfo": {
+            "title": "详细信息"
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常见问题",
+            "moreButton": "个更多",
+            "medicalQaLink": "查看更多医疗信息问答",
+            "extended": [
+              {
+                "q": "超声刀治疗后可以立即恢复日常生活吗？",
+                "a": "是的，超声刀是非侵入性治疗，几乎没有恢复期。治疗后可能会有轻微红肿，但通常当天消退。可以立即化妆，不影响日常生活。"
+              },
+              {
+                "q": "超声刀和热玛吉可以一起做吗？",
+                "a": "是的，超声刀和热玛吉是互补性治疗，联合使用可产生协同效果。超声刀针对SMAS层深层提升，热玛吉对表皮~真皮层弹性改善有效。一般间隔3个月进行治疗。"
+              },
+              {
+                "q": "如何确认超声刀是正品？",
+                "a": "LIV整形外科是Merz Korea官方认证诊所。治疗时可确认正品探头的序列号，实际照射的发数也会透明公开。"
+              }
+            ]
+          },
+          "cta": {
+            "labelEn": "Ready for Transformation?",
+            "title": "预约超声刀咨询",
+            "description": "通过与专业医疗团队1:1定制咨询，\n制定最适合您的治疗方案。",
+            "bookButton": "预约免费咨询",
+            "hours": "工作日 10:00-19:00",
+            "location": "新沙站4号出口 步行3分钟"
+          },
+          "related": {
+            "labelEn": "Related Treatments",
+            "title": "相关治疗"
+          }
+        }
+      },
+      "thermage": {
+        "name": "热玛吉FLX",
+        "fullName": "Thermage FLX",
+        "tagline": "射频紧肤解决方案",
+        "description": "第四代热玛吉FLX比传统方式快25%，同时促进全面的胶原蛋白再生。"
+      },
+      "density": {
+        "name": "Density",
+        "fullName": "Density",
+        "tagline": "超声刀正品第二代",
+        "description": "超声刀正品第二代技术，提供更精准、更有效的提升效果。"
+      },
+      "inmode": {
+        "name": "InMode",
+        "fullName": "InMode",
+        "tagline": "射频复合提升",
+        "description": "利用射频的复合提升系统，同时改善皮肤弹性和身体轮廓。"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "fullName": "Shurink Universe",
+        "tagline": "HIFU提升",
+        "description": "利用高强度聚焦超声波的提升治疗，提拉松弛的皮肤。"
+      },
+      "thread": {
+        "name": "线雕",
+        "fullName": "Thread Lift",
+        "tagline": "PDO线即刻提升",
+        "description": "将可降解线植入皮下，产生即刻提升效果并刺激胶原蛋白生成。"
+      },
+      "aptos": {
+        "name": "APTOS Namica",
+        "fullName": "APTOS Namica",
+        "tagline": "高端线雕",
+        "description": "格鲁吉亚高端提升线，提供自然持久的提升效果。"
+      }
+    },
+    "antiaging": {
+      "botox": {
+        "name": "肉毒素",
+        "fullName": "Botox",
+        "tagline": "除皱 & 瘦脸",
+        "description": "使用肉毒杆菌素改善表情纹，缩小咬肌，打造精致脸型。"
+      },
+      "filler": {
+        "name": "玻尿酸",
+        "fullName": "Filler",
+        "tagline": "填充 & 轮廓塑形",
+        "description": "使用透明质酸填充剂填充凹陷部位，打造自然饱满效果。"
+      },
+      "skinbooster": {
+        "name": "水光针",
+        "fullName": "Skin Booster",
+        "tagline": "由内而外的深层补水",
+        "description": "向皮肤深层输送水分和营养，从根本上改善肌肤健康。"
+      }
+    },
+    "laser": {
+      "center": {
+        "name": "激光中心",
+        "fullName": "Laser Center",
+        "tagline": "高端激光全方位解决方案",
+        "description": "色素、血管、肤质、脱毛、纹身去除，一站式解决各种皮肤问题的高端激光中心。"
+      },
+      "pigmentation": {
+        "name": "色素治疗",
+        "fullName": "Pigmentation Treatment",
+        "tagline": "黄褐斑、色斑、雀斑改善",
+        "description": "针对各种色素问题的定制激光治疗，恢复透亮肌肤。"
+      },
+      "vascular": {
+        "name": "血管治疗",
+        "fullName": "Vascular Treatment",
+        "tagline": "红血丝、毛细血管、痘印",
+        "description": "选择性治疗扩张的血管和发红，打造均匀肤色。"
+      },
+      "skintone": {
+        "name": "肤质改善",
+        "fullName": "Skin Tone Improvement",
+        "tagline": "毛孔、疤痕、肤质改善",
+        "description": "激光焕肤可实现毛孔缩小、疤痕改善、肤质细腻的效果。"
+      },
+      "hairRemoval": {
+        "name": "激光脱毛",
+        "fullName": "Laser Hair Removal",
+        "tagline": "永久脱毛解决方案",
+        "description": "医疗级激光选择性破坏毛囊，实现永久脱毛效果。"
+      },
+      "tattoo": {
+        "name": "纹身去除",
+        "fullName": "Tattoo Removal",
+        "tagline": "安全去除纹身",
+        "description": "皮秒激光将纹身色素分解成微小颗粒，彻底清除。"
+      }
     }
   },
   "medical": {

@@ -13,7 +13,11 @@
     "questions": "件の質問",
     "noResults": "検索結果がありません",
     "tryAnother": "別の検索ワードをお試しください",
-    "relatedTreatments": "関連施術"
+    "relatedTreatments": "関連施術",
+    "close": "閉じる",
+    "closeMenu": "メニューを閉じる",
+    "language": "言語",
+    "backToTop": "トップへ"
   },
   "nav": {
     "about": "リブ紹介",
@@ -50,6 +54,10 @@
     "slide3": {
       "title": "Beyond Gravity",
       "subtitle": "手術なしで取り戻すハリ、10年前の肌を体験してください"
+    },
+    "sideText": {
+      "left": "Premium Anti-Aging Clinic",
+      "right": "Since 2024 Seoul Sinsa"
     }
   },
   "sections": {
@@ -60,11 +68,80 @@
     },
     "equipment": {
       "title": "Genuine Equipment",
-      "subtitle": "プレミアム正品機器"
+      "subtitle": "プレミアム正品機器",
+      "description": "リブ形成外科は正品認証されたプレミアム機器のみを使用しております。最新技術で安全かつ効果的な施術を提供します。",
+      "autoScrolling": "AUTO SCROLLING",
+      "premiumDevices": "10 Premium Devices",
+      "learnMore": "詳しく見る",
+      "devices": {
+        "ultherapy": {
+          "subTitle": "ウルセラプライム",
+          "desc": "FDA承認HIFUリフティングのグローバルスタンダード"
+        },
+        "thermage": {
+          "subTitle": "サーマジFLX",
+          "desc": "第4世代RFリフティング技術の頂点"
+        },
+        "density": {
+          "subTitle": "デンシティ",
+          "desc": "RF(高周波)エネルギーでコラーゲンリモデリング"
+        },
+        "shurink": {
+          "subTitle": "シュリンク",
+          "desc": "精密なHIFUでV ラインを完成"
+        },
+        "inmode": {
+          "subTitle": "インモード",
+          "desc": "RFエネルギーで脂肪減少とリフティングを同時に"
+        },
+        "potenza": {
+          "subTitle": "ポテンザ",
+          "desc": "RFマイクロニードリングで弾力と毛穴改善"
+        },
+        "clarity": {
+          "subTitle": "クラリティII",
+          "desc": "デュアル波長レーザーで色素&血管治療"
+        },
+        "lucas": {
+          "subTitle": "ルカス",
+          "desc": "高出力Qスイッチで難治性色素治療"
+        },
+        "co2": {
+          "subTitle": "CO2レーザー",
+          "desc": "精密なスキンリサーフェシングと肌再生"
+        },
+        "ulblanc": {
+          "subTitle": "ウルブラン",
+          "desc": "低刺激ホワイトニングレーザー"
+        }
+      }
     },
     "signature": {
       "title": "Signature Programs",
-      "subtitle": "リブの特別プログラム"
+      "subtitle": "リブの特別プログラム",
+      "programs": {
+        "lifting": {
+          "title": "リフティング",
+          "titleEn": "LIFTING",
+          "subtitle": "ウルセラプライム & サーマジ",
+          "description": "非手術リフティングの頂点、プレミアム正規品機器で自然なリフティング効果を体験してください。",
+          "features": ["ウルセラプライム正品認証", "サーマジFLXパートナー", "カスタム複合施術"]
+        },
+        "antiaging": {
+          "title": "アンチエイジング",
+          "titleEn": "ANTI-AGING",
+          "subtitle": "フィラー & ボトックス",
+          "description": "繊細なタッチで完成するボリュームと輪郭、自然な美しさを追求します。",
+          "features": ["正規品フィラー使用", "解剖学的アプローチ", "自然な結果"]
+        },
+        "rejuvenation": {
+          "title": "肌再生",
+          "titleEn": "REJUVENATION",
+          "subtitle": "メディカルスキンケア",
+          "description": "肌本来の健康を取り戻すカスタムケア、科学的アプローチで肌改善をサポートします。",
+          "features": ["スキンブースター", "レーザートーニング", "カスタムスキンケア"]
+        }
+      }
     },
     "values": {
       "title": "Core Values",
@@ -92,7 +169,49 @@
     },
     "doctor": {
       "title": "Medical Staff",
-      "subtitle": "リブ医療チーム"
+      "subtitle": "リブ医療チーム",
+      "name": "キム・スヨン",
+      "nameEn": "Dr. Sooyoung Kim",
+      "directorTitle": "リブ形成外科代表院長",
+      "directorTitleEn": "Director",
+      "specialty": "形成外科専門医",
+      "philosophy": "自然さを追求すること、それが本当の美しさです。過度でない、本来の美しさをお手伝いします。",
+      "credentials": "主な経歴",
+      "credentialsList": [
+        "高麗大学校医科大学卒業",
+        "高麗大学校大学院形成外科学修士",
+        "大韓形成外科学会正会員",
+        "大韓美容形成外科学会正会員",
+        "米国 MD Anderson Cancer Center 研修"
+      ],
+      "certifications": {
+        "official": "公式認証",
+        "ultheraThermage": "Ultherapy Prime & Thermage",
+        "globalExpert": "グローバル認証専門医",
+        "aptosCertified": "APTOS Certified Expert"
+      },
+      "internationalActivities": "国際活動",
+      "activities": [
+        {
+          "caption": "APTOS本社研修修了",
+          "location": "ジョージア, 2025"
+        },
+        {
+          "caption": "Clinical Experience発表",
+          "location": "国際学術大会"
+        },
+        {
+          "caption": "Clinical Practice",
+          "location": "臨床施術現場"
+        }
+      ],
+      "viewStaff": "医療スタッフを詳しく見る",
+      "youtube": {
+        "title": "LIV TV",
+        "subtitle": "リブ院長の施術ストーリー",
+        "subscribe": "リブYouTubeチャンネル登録",
+        "description": "施術情報、院長インタビュー、ビフォーアフター動画をご覧ください"
+      }
     },
     "doctors": {
       "kim": {
@@ -164,7 +283,20 @@
       "title": "Location",
       "subtitle": "アクセス",
       "address": "ソウル特別市瑞草区ナルト路80 ジャウンビル4階",
-      "subway": "新沙駅4番出口から徒歩1分"
+      "subway": "新沙駅4番出口から徒歩1分",
+      "subwayInfo": "3号線・新盆唐線 新沙駅4番出口",
+      "walkMinutes": "徒歩1分",
+      "addressLabel": "住所",
+      "buildingDetail": "(チャムウォンドン、ジャウンビル4階)",
+      "directions": "新沙駅4番出口を出てペクダバンを左手に角を曲がり直進",
+      "holidayClosed": "毎週日曜日および祝日休診",
+      "contactLabel": "お問い合わせ",
+      "consultTime": "相談可能時間：平日 10:00 - 19:00",
+      "parkingLabel": "駐車案内",
+      "freeParking": "無料駐車可能",
+      "parkingDetail": "電気自動車および大型車両は1階駐車場のスペースがある場合のみ駐車可能です。駐車スペースがない場合は、近隣の有料駐車場をご利用ください。",
+      "naverMap": "ネイバーマップ",
+      "kakaoMap": "カカオマップ"
     }
   },
   "footer": {
@@ -173,7 +305,12 @@
     "saturday": "土曜日",
     "sunday": "日曜日休み",
     "address": "アクセス",
-    "copyright": "© 2025 リブ形成外科. All rights reserved."
+    "copyright": "© 2025 リブ形成外科. All rights reserved.",
+    "quickLinks": "クイックリンク",
+    "followUs": "フォローする",
+    "slogan": "自然で生き生きとした美しさを取り戻す旅",
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約"
   },
   "meta": {
     "title": "リブ形成外科 | プレミアム非手術アンチエイジング ソウル",
@@ -228,7 +365,28 @@
       "successTitle": "相談申請が完了しました",
       "successMessage": "できるだけ早くご連絡いたします。\nありがとうございます。",
       "retry": "もう一度作成する",
-      "other": "その他 / 相談後に決定"
+      "other": "その他 / 相談後に決定",
+      "privacyShort": "個人情報収集に同意",
+      "submitError": "相談申請に失敗しました。",
+      "submitErrorRetry": "相談申請に失敗しました。しばらくしてから再度お試しください。",
+      "consultTitle": "相談予約",
+      "consultSubtitle": "専門スタッフが丁寧にご案内いたします",
+      "password": "パスワード（任意）",
+      "treatmentSelect": "診療科目を選択",
+      "submitButton": "相談申請",
+      "successSubtitle": "まもなくご連絡いたします",
+      "errorSubtitle": "再度お試しください",
+      "required": "[必須]",
+      "privacyConsent": "個人情報の収集・利用に同意します。（氏名、連絡先は相談目的のみに使用されます）",
+      "treatmentOptions": {
+        "laser": "レーザー施術",
+        "filler": "フィラー施術",
+        "botox": "ボトックス",
+        "skincare": "スキンケア",
+        "lifting": "リフティング",
+        "antiaging": "アンチエイジング",
+        "other": "その他"
+      }
     }
   },
   "faq": {
@@ -254,6 +412,333 @@
       "a7": "はい、英語、日本語、中国語での相談が可能です。ご予約時に通訳サービスが必要かどうかをお知らせください。",
       "q8": "正規品の機器のみ使用していますか？",
       "a8": "リブ形成外科はウルセラ、サーマジ公式認証病院として、100%正規品の機器と製品のみを使用しております。すべての製品の正規品認証書をご確認いただけます。"
+    }
+  },
+  "treatments": {
+    "common": {
+      "process": "施術の流れ",
+      "timeline": "効果タイムライン",
+      "targetAreas": "施術部位",
+      "recommended": "こんな方におすすめ",
+      "precautions": "施術前後の注意事項",
+      "comparison": "機器比較",
+      "transducers": "トランスデューサー",
+      "collapse": "閉じる",
+      "expand": "開く",
+      "bookConsultation": "相談予約",
+      "callNow": "電話相談",
+      "whyChoose": "なぜ選ぶべきか？",
+      "howItWorks": "施術原理",
+      "results": "施術結果",
+      "faq": "よくある質問",
+      "relatedTreatments": "関連施術",
+      "duration": "施術時間",
+      "anesthesia": "麻酔方法",
+      "recovery": "回復期間",
+      "maintenance": "持続期間",
+      "before": "施術前",
+      "after": "施術後",
+      "immediately": "施術直後",
+      "weeks": "週間",
+      "months": "ヶ月",
+      "years": "年",
+      "fdaApproved": "FDA承認",
+      "genuine": "正品認証",
+      "certified": "公式認証病院"
+    },
+    "lifting": {
+      "ulthera": {
+        "name": "ウルセラ",
+        "fullName": "Ultherapy Prime",
+        "tagline": "FDA唯一承認の非手術リフティング",
+        "description": "世界で唯一FDA承認を受けた非手術リフティング。超音波エネルギーがSMAS層まで到達し、強力なリフティング効果を提供します。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "upperDermis": "真皮上層",
+            "lowerDermis": "真皮下層",
+            "smas": "SMAS層"
+          },
+          "timeline": {
+            "items": [
+              { "time": "施術直後", "effect": "コラーゲン収縮", "desc": "即時タイトニング" },
+              { "time": "1ヶ月", "effect": "新生コラーゲン", "desc": "タイプIII生成開始" },
+              { "time": "3ヶ月", "effect": "目に見える変化", "desc": "フェイスライン明確に" },
+              { "time": "6ヶ月", "effect": "最大効果", "desc": "タイプIコラーゲン成熟" },
+              { "time": "12-24ヶ月", "effect": "効果維持", "desc": "段階的維持" }
+            ],
+            "note": "ウルセラ施術後、コラーゲンが再生され徐々に効果が現れます"
+          },
+          "comparison": {
+            "title": "ウルセラ vs 他の機器",
+            "subtitle": "同じHIFUでも技術力と臨床的根拠には大きな違いがあります",
+            "headers": {
+              "feature": "比較項目",
+              "ulthera": "ウルセラ",
+              "shurink": "シュリンク/ダブロ",
+              "thermage": "サーマジ"
+            },
+            "rows": [
+              { "feature": "エネルギー種類", "ulthera": "MFU-V（超音波）", "shurink": "HIFU（超音波）", "thermage": "RF（高周波）" },
+              { "feature": "リアルタイム可視化", "ulthera": "DeepSEE O", "shurink": "X", "thermage": "X" },
+              { "feature": "FDAリフティング承認", "ulthera": "唯一承認", "shurink": "X", "thermage": "X" },
+              { "feature": "最大深度", "ulthera": "4.5mm（SMAS）", "shurink": "4.5mm", "thermage": "真皮層" },
+              { "feature": "臨床研究", "ulthera": "110+論文", "shurink": "少数", "thermage": "多数" },
+              { "feature": "効果持続", "ulthera": "1-2年", "shurink": "6-12ヶ月", "thermage": "6-12ヶ月" },
+              { "feature": "最適適応症", "ulthera": "重度たるみ/リフティング", "shurink": "維持管理", "thermage": "弾力/肌質" }
+            ],
+            "synergy": {
+              "title": "ウルセラ + サーマジ シナジー",
+              "description": "ウルセラ（SMAS層リフティング）とサーマジ（表皮〜真皮層弾力）を3ヶ月間隔で併用すると、多層的コラーゲン再生でより強力なシナジー効果を体験できます。"
+            }
+          },
+          "transducers": {
+            "title": "6種のトランスデューサー",
+            "subtitle": "深さと周波数が異なる6種のトランスデューサーで皮膚層別カスタム施術が可能です",
+            "shallow": "表層（1.5mm - 3.0mm）",
+            "deep": "深層（3.0mm - 4.5mm）",
+            "energyDelivery": "に正確にエネルギーを伝達します",
+            "items": {
+              "ds-10-1.5": { "target": "表皮-真皮境界", "applications": ["小じわ", "目元", "口元", "肌質"] },
+              "ds-10-1.5-n": { "target": "狭い部位", "applications": ["目元のしわ", "目の下", "まぶた"] },
+              "ds-7-3.0": { "target": "真皮下層", "applications": ["頬", "額", "頬骨", "フェイスライン"] },
+              "ds-7-3.0-n": { "target": "狭い真皮層", "applications": ["目元のしわ", "口元", "手の甲"] },
+              "ds-4-4.5": { "target": "SMAS層", "applications": ["中顔面", "下顔面", "首", "デコルテ"] },
+              "ds-7-4.5": { "target": "高解像度SMAS", "applications": ["フェイスライン", "二重あご", "頬たるみ"] }
+            }
+          },
+          "hero": {
+            "badge": "FDA唯一承認リフティング機器",
+            "premiumLifting": "Premium Lifting",
+            "title": "ウルセラ",
+            "description": "深層SMAS層まで到達する唯一の非侵襲リフティング。\nリアルタイムDeepSEE可視化技術で正確かつ安全に。",
+            "stats": {
+              "clinicalStudies": "臨床研究",
+              "globalProcedures": "世界施術件数",
+              "improvementRate": "患者改善率"
+            },
+            "deepSee": "リアルタイム可視化",
+            "smasTarget": "深層ターゲティング"
+          },
+          "about": {
+            "sectionLabel": "About Ultherapy Prime",
+            "title": "ウルセラとは？",
+            "description": "ウルセラは米国FDAで<strong>リフティング効果が承認された唯一の</strong>非侵襲HIFU機器です。特許取得のMFU-V（Micro-focused Ultrasound with Visualization）技術で深層SMASまでエネルギーを正確に伝達しコラーゲン再生を促進します。",
+            "depthTargeting": "深さ別カスタムターゲティング",
+            "depths": {
+              "1.5": {
+                "title": "1.5mm - 表皮/真皮境界",
+                "description": "小じわ、肌質改善に効果的。目元、口元など繊細な部位に適用"
+              },
+              "3.0": {
+                "title": "3.0mm - 真皮下層",
+                "description": "コラーゲン誘導、全体的な弾力改善。頬、額など広い部位に適用"
+              },
+              "4.5": {
+                "title": "4.5mm - SMAS層",
+                "description": "構造的リフティング効果。フェイスライン、首、中顔面などたるみが深刻な部位に適用"
+              }
+            }
+          },
+          "whyUlthera": {
+            "sectionLabel": "Premium Quality",
+            "labelEn": "Why Ultherapy Prime?",
+            "title": "なぜウルセラなのか？",
+            "cards": {
+              "fda": {
+                "title": "FDA唯一承認",
+                "description": "米国FDAで非侵襲リフティング効果が承認された<strong>唯一の</strong>HIFU機器です。"
+              },
+              "deepSee": {
+                "title": "DeepSEE可視化",
+                "description": "特許取得のDeepSEE技術で皮膚層を<strong>リアルタイム確認</strong>しながら施術します。"
+              },
+              "smas": {
+                "title": "SMAS層ターゲティング",
+                "description": "整形手術でターゲットする<strong>SMAS層まで到達</strong>する唯一の非侵襲機器です。"
+              }
+            },
+            "clinicalEvidence": {
+              "label": "Clinical Evidence",
+              "papers": "臨床研究論文",
+              "aestheticImprovement": "審美的改善率",
+              "satisfaction": "患者満足度",
+              "duration": "効果持続期間",
+              "source": "出典：2024年系統的レビューおよびメタ分析（PubMed）"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Clinic",
+            "labelEn": "LIV Difference",
+            "title": "LIVのウルセラ",
+            "cards": {
+              "genuine": {
+                "title": "正規認定クリニック",
+                "description": "メルツコリア公式認定クリニックとして正規機器とトランスデューサーのみ使用。シリアル番号確認可能です。"
+              },
+              "transparency": {
+                "title": "ショット数透明公開",
+                "description": "施術前に計画されたライン数と実際に照射されたショット数を透明に公開します。誠実な施術をお約束します。"
+              },
+              "specialist": {
+                "title": "専門医直接施術",
+                "description": "皮膚科/形成外科専門医が直接カウンセリングから施術まで行います。個人別カスタム施術計画を立てます。"
+              }
+            }
+          },
+          "journey": {
+            "sectionLabel": "Journey",
+            "title": "施術の流れ"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Details",
+            "labelEn": "Treatment Info",
+            "title": "施術情報",
+            "labels": {
+              "duration": "施術時間",
+              "anesthesia": "麻酔",
+              "recovery": "回復期間",
+              "results": "効果持続"
+            },
+            "recommendedLines": {
+              "title": "部位別推奨ライン数",
+              "upperFace": "上顔面",
+              "lowerFace": "下顔面",
+              "fullFace": "全顔面",
+              "fullFaceNeck": "全顔面+首"
+            }
+          },
+          "detailedInfo": {
+            "title": "詳細情報"
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "よくある質問",
+            "moreButton": "件をもっと見る",
+            "medicalQaLink": "医療情報Q&Aをもっと見る",
+            "extended": [
+              {
+                "q": "ウルセラ施術後すぐに日常生活が可能ですか？",
+                "a": "はい、ウルセラは非侵襲施術でダウンタイムがほとんどありません。施術直後に若干の赤みや腫れがある場合がありますが、ほとんど当日中に消えます。メイクもすぐに可能で、日常生活に支障はありません。"
+              },
+              {
+                "q": "ウルセラとサーマジを一緒に受けてもいいですか？",
+                "a": "はい、ウルセラとサーマジは相互補完的な施術で併用するとシナジー効果が得られます。ウルセラはSMAS層の深いリフティングを、サーマジは表皮〜真皮層の弾力改善に効果的です。一般的に3ヶ月間隔で施術します。"
+              },
+              {
+                "q": "ウルセラの正規品確認はどうすればいいですか？",
+                "a": "LIV整形外科はメルツコリア公式認定クリニックです。施術時に正規トランスデューサーのシリアル番号を確認でき、実際に照射されたショット数も透明に公開いたします。"
+              }
+            ]
+          },
+          "cta": {
+            "labelEn": "Ready for Transformation?",
+            "title": "ウルセラ カウンセリング予約",
+            "description": "専門医療陣との1:1カスタムカウンセリングを通じて\n自分に合った最適な施術計画を立ててみてください。",
+            "bookButton": "無料カウンセリング予約",
+            "hours": "平日 10:00-19:00",
+            "location": "新沙駅4番出口 徒歩3分"
+          },
+          "related": {
+            "labelEn": "Related Treatments",
+            "title": "関連施術"
+          }
+        }
+      },
+      "thermage": {
+        "name": "サーマジFLX",
+        "fullName": "Thermage FLX",
+        "tagline": "RF肌弾力ソリューション",
+        "description": "第4世代サーマジFLXは従来比25%速い施術と全面的なコラーゲン再生を誘導します。"
+      },
+      "density": {
+        "name": "デンシティ",
+        "fullName": "Density",
+        "tagline": "ウルセラ正品第2世代",
+        "description": "ウルセラの正品第2世代技術でより精密で効果的なリフティングを提供します。"
+      },
+      "inmode": {
+        "name": "インモード",
+        "fullName": "InMode",
+        "tagline": "RF基盤複合リフティング",
+        "description": "高周波を活用した複合リフティングシステムで肌弾力とボディコンツアリングを同時に改善します。"
+      },
+      "shurink": {
+        "name": "シュリンク",
+        "fullName": "Shurink Universe",
+        "tagline": "HIFUリフティング",
+        "description": "高強度集束超音波を活用したリフティング施術でたるんだ肌を引き上げます。"
+      },
+      "thread": {
+        "name": "スレッドリフト",
+        "fullName": "Thread Lift",
+        "tagline": "PDO糸を使った即時リフティング",
+        "description": "生分解性の糸を皮下に挿入し、即時のリフティング効果とコラーゲン生成を誘導します。"
+      },
+      "aptos": {
+        "name": "アプトス ナミカ",
+        "fullName": "APTOS Namica",
+        "tagline": "プレミアムスレッドリフト",
+        "description": "ジョージア産プレミアムリフティング糸で自然で長持ちするリフティング効果を提供します。"
+      }
+    },
+    "antiaging": {
+      "botox": {
+        "name": "ボトックス",
+        "fullName": "Botox",
+        "tagline": "シワ改善＆輪郭縮小",
+        "description": "ボツリヌストキシンを使用して表情ジワを改善し、エラの筋肉を縮小してスリムなフェイスラインを作ります。"
+      },
+      "filler": {
+        "name": "フィラー",
+        "fullName": "Filler",
+        "tagline": "ボリューム＆輪郭改善",
+        "description": "ヒアルロン酸ベースのフィラーを使用して凹んだ部位を埋め、自然なボリューム感を作ります。"
+      },
+      "skinbooster": {
+        "name": "スキンブースター",
+        "fullName": "Skin Booster",
+        "tagline": "肌の内側からうるおいを",
+        "description": "肌の奥深くに水分と栄養を供給し、肌自体の健康を改善します。"
+      }
+    },
+    "laser": {
+      "center": {
+        "name": "レーザーセンター",
+        "fullName": "Laser Center",
+        "tagline": "先端レーザートータルソリューション",
+        "description": "色素、血管、肌質、脱毛、タトゥー除去まで様々な肌悩みを解決するプレミアムレーザーセンターです。"
+      },
+      "pigmentation": {
+        "name": "色素治療",
+        "fullName": "Pigmentation Treatment",
+        "tagline": "シミ、そばかす、くすみ改善",
+        "description": "様々な色素疾患に合わせたレーザー治療で透明感のある肌を取り戻します。"
+      },
+      "vascular": {
+        "name": "血管治療",
+        "fullName": "Vascular Treatment",
+        "tagline": "赤ら顔、毛細血管、ニキビ跡",
+        "description": "拡張した血管と赤みを選択的に治療し、均一な肌トーンを作ります。"
+      },
+      "skintone": {
+        "name": "肌質改善",
+        "fullName": "Skin Tone Improvement",
+        "tagline": "毛穴、傷跡、肌質改善",
+        "description": "レーザーリサーフェシングで毛穴縮小、傷跡改善、肌質改善効果を提供します。"
+      },
+      "hairRemoval": {
+        "name": "レーザー脱毛",
+        "fullName": "Laser Hair Removal",
+        "tagline": "永久脱毛ソリューション",
+        "description": "医療用レーザーで毛包を選択的に破壊し、永久的な脱毛効果を提供します。"
+      },
+      "tattoo": {
+        "name": "タトゥー除去",
+        "fullName": "Tattoo Removal",
+        "tagline": "安全な入れ墨除去",
+        "description": "ピコ秒レーザーでタトゥー色素を微細に分解し、きれいに除去します。"
+      }
     }
   },
   "medical": {

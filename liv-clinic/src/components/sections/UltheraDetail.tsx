@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import {
@@ -187,7 +188,7 @@ const ImagePlaceholder = ({ label, aspectRatio = "square" }: { label: string; as
 };
 
 // Skin Layer Diagram Component
-const SkinLayerDiagram = () => (
+const SkinLayerDiagram = ({ labels }: { labels: { epidermis: string; upperDermis: string; lowerDermis: string; smas: string } }) => (
   <div className="relative w-full max-w-xl mx-auto">
     <svg viewBox="0 0 400 300" className="w-full h-auto">
       {/* Background gradient */}
@@ -211,10 +212,10 @@ const SkinLayerDiagram = () => (
       <rect x="50" y="200" width="300" height="70" fill="#b4988d" stroke="#e5e5e5" strokeWidth="1" rx="4" />
 
       {/* Layer labels */}
-      <text x="370" y="55" className="text-xs fill-mono" textAnchor="end">표피</text>
-      <text x="370" y="110" className="text-xs fill-mono" textAnchor="end">진피 상층</text>
-      <text x="370" y="175" className="text-xs fill-mono" textAnchor="end">진피 하층</text>
-      <text x="370" y="240" className="text-xs fill-mono" textAnchor="end">SMAS층</text>
+      <text x="370" y="55" className="text-xs fill-mono" textAnchor="end">{labels.epidermis}</text>
+      <text x="370" y="110" className="text-xs fill-mono" textAnchor="end">{labels.upperDermis}</text>
+      <text x="370" y="175" className="text-xs fill-mono" textAnchor="end">{labels.lowerDermis}</text>
+      <text x="370" y="240" className="text-xs fill-mono" textAnchor="end">{labels.smas}</text>
 
       {/* Depth markers */}
       <line x1="30" y1="70" x2="45" y2="70" stroke="#b4988d" strokeWidth="2" />
@@ -282,14 +283,17 @@ const SkinLayerDiagram = () => (
 );
 
 // Collagen Timeline Component
-const CollagenTimeline = () => {
-  const timelineData = [
-    { time: '시술 직후', effect: '콜라겐 수축', desc: '즉각적 타이트닝', percent: 20 },
-    { time: '1개월', effect: '신생 콜라겐', desc: 'Type III 생성 시작', percent: 40 },
-    { time: '3개월', effect: '눈에 띄는 변화', desc: '턱선 선명해짐', percent: 70 },
-    { time: '6개월', effect: '최대 효과', desc: 'Type I 콜라겐 성숙', percent: 100 },
-    { time: '12-24개월', effect: '효과 유지', desc: '점진적 유지', percent: 85 },
-  ];
+interface TimelineItem {
+  time: string;
+  effect: string;
+  desc: string;
+}
+
+const CollagenTimeline = ({ items }: { items: TimelineItem[] }) => {
+  const timelineData = items.map((item, index) => ({
+    ...item,
+    percent: [20, 40, 70, 100, 85][index] || 50
+  }));
 
   return (
     <div className="relative">
@@ -331,32 +335,36 @@ const CollagenTimeline = () => {
 };
 
 // Comparison Table Component
-const ComparisonTable = () => {
-  const comparisonData = [
-    { feature: '에너지 종류', ulthera: 'MFU-V (초음파)', shurink: 'HIFU (초음파)', thermage: 'RF (고주파)' },
-    { feature: '실시간 시각화', ulthera: 'DeepSEE O', shurink: 'X', thermage: 'X' },
-    { feature: 'FDA 리프팅 승인', ulthera: '유일하게 승인', shurink: 'X', thermage: 'X' },
-    { feature: '최대 깊이', ulthera: '4.5mm (SMAS)', shurink: '4.5mm', thermage: '진피층' },
-    { feature: '임상 연구', ulthera: '110+ 논문', shurink: '소수', thermage: '다수' },
-    { feature: '효과 지속', ulthera: '1-2년', shurink: '6-12개월', thermage: '6-12개월' },
-    { feature: '최적 적응증', ulthera: '심한 처짐/리프팅', shurink: '유지관리', thermage: '탄력/피부결' },
-  ];
+interface ComparisonRow {
+  feature: string;
+  ulthera: string;
+  shurink: string;
+  thermage: string;
+}
 
+interface ComparisonHeaders {
+  feature: string;
+  ulthera: string;
+  shurink: string;
+  thermage: string;
+}
+
+const ComparisonTable = ({ rows, headers }: { rows: ComparisonRow[]; headers: ComparisonHeaders }) => {
   return (
     <div className="overflow-x-auto">
       <table className="w-full min-w-[600px]">
         <thead>
           <tr className="border-b-2 border-primary/20">
-            <th className="py-4 px-4 text-left text-h4 text-secondary">비교 항목</th>
+            <th className="py-4 px-4 text-left text-h4 text-secondary">{headers.feature}</th>
             <th className="py-4 px-4 text-center bg-primary/5 rounded-t-lg">
-              <span className="text-h4 text-primary">울쎄라피 프라임</span>
+              <span className="text-h4 text-primary">{headers.ulthera}</span>
             </th>
-            <th className="py-4 px-4 text-center text-h4 text-mono-light">슈링크/더블로</th>
-            <th className="py-4 px-4 text-center text-h4 text-mono-light">써마지</th>
+            <th className="py-4 px-4 text-center text-h4 text-mono-light">{headers.shurink}</th>
+            <th className="py-4 px-4 text-center text-h4 text-mono-light">{headers.thermage}</th>
           </tr>
         </thead>
         <tbody>
-          {comparisonData.map((row, index) => (
+          {rows.map((row, index) => (
             <motion.tr
               key={index}
               className="border-b border-border hover:bg-background/50 transition-colors"
@@ -484,7 +492,27 @@ const TRANSDUCERS: Transducer[] = [
 ];
 
 export default function UltheraDetail() {
+  const t = useTranslations('treatments');
+  const tCommon = useTranslations('common');
   const treatment = TREATMENTS.lifting.ulthera;
+
+  // Get translated data for detail page
+  const skinLayerLabels = {
+    epidermis: t('lifting.ulthera.detail.skinLayers.epidermis'),
+    upperDermis: t('lifting.ulthera.detail.skinLayers.upperDermis'),
+    lowerDermis: t('lifting.ulthera.detail.skinLayers.lowerDermis'),
+    smas: t('lifting.ulthera.detail.skinLayers.smas'),
+  };
+
+  const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as TimelineItem[];
+  const timelineNote = t('lifting.ulthera.detail.timeline.note');
+
+  const comparisonHeaders = t.raw('lifting.ulthera.detail.comparison.headers') as ComparisonHeaders;
+  const comparisonRows = t.raw('lifting.ulthera.detail.comparison.rows') as ComparisonRow[];
+
+  const transducerTranslations = t.raw('lifting.ulthera.detail.transducers.items') as Record<string, { target: string; applications: string[] }>;
+
+  const extendedFaqsTranslated = t.raw('lifting.ulthera.detail.faq.extended') as { q: string; a: string }[];
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [activeTransducer, setActiveTransducer] = useState<string | null>(null);
   const faqRefs = useRef<Map<number, HTMLDivElement>>(new Map());
@@ -508,21 +536,10 @@ export default function UltheraDetail() {
     });
   }, []);
 
-  // Extended FAQ data
+  // Extended FAQ data - combine treatment faqs with translated extended faqs
   const extendedFaqs = [
     ...treatment.faqs,
-    {
-      q: '울쎄라피 프라임 시술 후 바로 일상생활이 가능한가요?',
-      a: '네, 울쎄라피 프라임은 비침습적 시술로 다운타임이 거의 없습니다. 시술 직후 약간의 홍조나 붓기가 있을 수 있지만 대부분 당일 내 사라집니다. 메이크업도 바로 가능하며, 일상생활에 지장이 없습니다.'
-    },
-    {
-      q: '울쎄라피 프라임과 써마지를 함께 받아도 되나요?',
-      a: '네, 울쎄라피 프라임과 써마지는 상호 보완적인 시술로 병합하면 시너지 효과를 볼 수 있습니다. 울쎄라피 프라임은 SMAS층의 깊은 리프팅을, 써마지는 표피~진피층의 탄력 개선에 효과적입니다. 일반적으로 3개월 간격을 두고 시술합니다.'
-    },
-    {
-      q: '울쎄라피 프라임 정품 확인은 어떻게 하나요?',
-      a: '리브성형외과는 멀츠 코리아 공식 인증 클리닉입니다. 시술 시 정품 트랜스듀서의 시리얼 번호를 확인하실 수 있으며, 실제 조사된 샷 수도 투명하게 공개해드립니다.'
-    },
+    ...extendedFaqsTranslated,
   ];
 
   return (
@@ -565,39 +582,38 @@ export default function UltheraDetail() {
                   transition={{ delay: 0.3 }}
                 >
                   <span className="text-primary"><FDAIcon /></span>
-                  <span className="text-small font-medium text-secondary">FDA 유일 승인 리프팅 장비</span>
+                  <span className="text-small font-medium text-secondary">{t('lifting.ulthera.detail.hero.badge')}</span>
                 </motion.div>
 
                 {/* Gold accent line */}
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-px bg-gradient-to-r from-[#D4AF37] to-transparent" />
-                  <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Premium Lifting</span>
+                  <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">{t('lifting.ulthera.detail.hero.premiumLifting')}</span>
                 </div>
                 <p className="font-serif text-h2 text-primary mb-3 tracking-wide">Ultherapy Prime</p>
                 <h1 className="text-display text-secondary mb-4 leading-tight">
-                  울쎄라피 프라임
+                  {t('lifting.ulthera.detail.hero.title')}
                 </h1>
                 <p className="font-serif text-xl text-mono-light mb-6 italic">
                   {treatment.tagline}
                 </p>
-                <p className="text-h4 text-mono leading-relaxed mb-8 max-w-lg">
-                  피부 깊은 층 SMAS까지 도달하는 유일한 비침습 리프팅.<br />
-                  실시간 시각화 DeepSEE 기술로 정확하고 안전하게.
+                <p className="text-h4 text-mono leading-relaxed mb-8 max-w-lg whitespace-pre-line">
+                  {t('lifting.ulthera.detail.hero.description')}
                 </p>
 
                 {/* Quick stats - Gold accented */}
                 <div className="flex gap-8 mt-10 pt-8 border-t border-border/50">
                   <div>
                     <p className="text-h2 text-primary font-serif">110+</p>
-                    <p className="text-small text-mono-light">임상 연구</p>
+                    <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.clinicalStudies')}</p>
                   </div>
                   <div>
                     <p className="text-h2 text-primary font-serif">175만+</p>
-                    <p className="text-small text-mono-light">전세계 시술 건수</p>
+                    <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.globalProcedures')}</p>
                   </div>
                   <div>
                     <p className="text-h2 text-primary font-serif">89%</p>
-                    <p className="text-small text-mono-light">환자 개선율</p>
+                    <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.improvementRate')}</p>
                   </div>
                 </div>
               </div>
@@ -639,7 +655,7 @@ export default function UltheraDetail() {
                   transition={{ duration: 3, repeat: Infinity }}
                 >
                   <p className="text-small font-medium text-secondary">DeepSEE</p>
-                  <p className="text-xs text-mono-light">실시간 시각화</p>
+                  <p className="text-xs text-mono-light">{t('lifting.ulthera.detail.hero.deepSee')}</p>
                 </motion.div>
 
                 <motion.div
@@ -648,7 +664,7 @@ export default function UltheraDetail() {
                   transition={{ duration: 3, repeat: Infinity, delay: 1 }}
                 >
                   <p className="text-small font-medium">4.5mm SMAS</p>
-                  <p className="text-xs opacity-90">깊은 층 타겟팅</p>
+                  <p className="text-xs opacity-90">{t('lifting.ulthera.detail.hero.smasTarget')}</p>
                 </motion.div>
               </div>
             </AnimateOnScroll>
@@ -672,26 +688,22 @@ export default function UltheraDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-primary mb-2">About Ultherapy Prime</p>
-              <h2 className="text-h1 text-secondary mb-6">울쎄라피 프라임이란?</h2>
-              <p className="text-body text-mono max-w-3xl mx-auto leading-relaxed">
-                울쎄라피 프라임은 미국 FDA에서 <strong className="text-secondary">리프팅 효과를 승인받은 유일한</strong> 비침습 HIFU 장비입니다.
-                특허받은 MFU-V(Micro-focused Ultrasound with Visualization) 기술로
-                피부 깊은 층인 SMAS까지 에너지를 정확하게 전달하여 콜라겐 재생을 촉진합니다.
-              </p>
+              <p className="font-serif text-h3 text-primary mb-2">{t('lifting.ulthera.detail.about.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary mb-6">{t('lifting.ulthera.detail.about.title')}</h2>
+              <p className="text-body text-mono max-w-3xl mx-auto leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.ulthera.detail.about.description') }} />
             </div>
           </AnimateOnScroll>
 
           {/* Technology explanation */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
             <AnimateOnScroll animation="fadeInLeft">
-              <SkinLayerDiagram />
+              <SkinLayerDiagram labels={skinLayerLabels} />
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fadeInRight">
               <div className="space-y-6">
                 <h3 className="text-h2 text-secondary mb-4">
-                  깊이별 맞춤 타겟팅
+                  {t('lifting.ulthera.detail.about.depthTargeting')}
                 </h3>
 
                 <div className="space-y-4">
@@ -701,8 +713,8 @@ export default function UltheraDetail() {
                         <span className="text-primary font-serif font-bold">1.5</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">1.5mm - 표피/진피 경계</h4>
-                        <p className="text-body text-mono-light">미세주름, 피부결 개선에 효과적. 눈가, 입가 등 섬세한 부위에 적용</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.1\u002e5.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.1\u002e5.description')}</p>
                       </div>
                     </div>
                   </Card>
@@ -713,8 +725,8 @@ export default function UltheraDetail() {
                         <span className="text-primary font-serif font-bold">3.0</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">3.0mm - 진피 하층</h4>
-                        <p className="text-body text-mono-light">콜라겐 유도, 전반적 탄력 개선. 볼, 이마 등 넓은 부위에 적용</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.3\u002e0.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.3\u002e0.description')}</p>
                       </div>
                     </div>
                   </Card>
@@ -725,8 +737,8 @@ export default function UltheraDetail() {
                         <span className="text-primary font-serif font-bold">4.5</span>
                       </div>
                       <div>
-                        <h4 className="text-h4 text-secondary mb-1">4.5mm - SMAS층</h4>
-                        <p className="text-body text-mono-light">구조적 리프팅 효과. 턱선, 목, 중안면 등 처짐이 심한 부위에 적용</p>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.ulthera.detail.about.depths.4\u002e5.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.ulthera.detail.about.depths.4\u002e5.description')}</p>
                       </div>
                     </div>
                   </Card>
@@ -748,9 +760,9 @@ export default function UltheraDetail() {
                 <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Transducers</span>
                 <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
               </div>
-              <h2 className="text-h1 text-secondary mb-4">6가지 트랜스듀서</h2>
+              <h2 className="text-h1 text-secondary mb-4">{t('lifting.ulthera.detail.transducers.title')}</h2>
               <p className="text-body text-mono-light max-w-2xl mx-auto">
-                깊이와 주파수가 다른 6가지 트랜스듀서로 피부층별 맞춤 시술이 가능합니다
+                {t('lifting.ulthera.detail.transducers.subtitle')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -760,7 +772,7 @@ export default function UltheraDetail() {
             {/* Left Column - Shallow Depth */}
             <div className="space-y-4">
               <h3 className="text-sm font-medium text-mono-light uppercase tracking-wider mb-4 text-center">
-                표층 (1.5mm - 3.0mm)
+                {t('lifting.ulthera.detail.transducers.shallow')}
               </h3>
               {TRANSDUCERS.filter(t => t.depth === '1.5mm' || (t.depth === '3.0mm' && t.id.includes('n'))).map((transducer) => (
                 <motion.div
@@ -810,9 +822,9 @@ export default function UltheraDetail() {
                         exit={{ opacity: 0, height: 0 }}
                         className="mt-4 pt-4 border-t border-[#D4AF37]/20"
                       >
-                        <p className="text-sm text-mono-light mb-3">{transducer.target}</p>
+                        <p className="text-sm text-mono-light mb-3">{transducerTranslations[transducer.id]?.target || transducer.target}</p>
                         <div className="flex flex-wrap gap-2">
-                          {transducer.applications.map((app, i) => (
+                          {(transducerTranslations[transducer.id]?.applications || transducer.applications).map((app, i) => (
                             <span
                               key={i}
                               className="px-3 py-1 bg-[#D4AF37]/10 text-[#6d4e42] rounded-full text-xs"
@@ -886,7 +898,7 @@ export default function UltheraDetail() {
                           {TRANSDUCERS.find(t => t.id === activeTransducer)?.name}
                         </h4>
                         <p className="text-sm text-mono-light">
-                          {TRANSDUCERS.find(t => t.id === activeTransducer)?.target}에 정확하게 에너지를 전달합니다
+                          {transducerTranslations[activeTransducer]?.target || TRANSDUCERS.find(t => t.id === activeTransducer)?.target}{t('lifting.ulthera.detail.transducers.energyDelivery')}
                         </p>
                       </motion.div>
                     )}
@@ -898,7 +910,7 @@ export default function UltheraDetail() {
             {/* Right Column - Deep Depth */}
             <div className="space-y-4">
               <h3 className="text-sm font-medium text-mono-light uppercase tracking-wider mb-4 text-center">
-                심층 (3.0mm - 4.5mm)
+                {t('lifting.ulthera.detail.transducers.deep')}
               </h3>
               {TRANSDUCERS.filter(t => (t.depth === '3.0mm' && !t.id.includes('n')) || t.depth === '4.5mm').map((transducer) => (
                 <motion.div
@@ -948,9 +960,9 @@ export default function UltheraDetail() {
                         exit={{ opacity: 0, height: 0 }}
                         className="mt-4 pt-4 border-t border-[#D4AF37]/20"
                       >
-                        <p className="text-sm text-mono-light mb-3">{transducer.target}</p>
+                        <p className="text-sm text-mono-light mb-3">{transducerTranslations[transducer.id]?.target || transducer.target}</p>
                         <div className="flex flex-wrap gap-2">
-                          {transducer.applications.map((app, i) => (
+                          {(transducerTranslations[transducer.id]?.applications || transducer.applications).map((app, i) => (
                             <span
                               key={i}
                               className="px-3 py-1 bg-[#D4AF37]/10 text-[#6d4e42] rounded-full text-xs"
@@ -1087,7 +1099,7 @@ export default function UltheraDetail() {
 
           <AnimateOnScroll>
             <Card padding="lg" hover={false}>
-              <ComparisonTable />
+              <ComparisonTable rows={comparisonRows} headers={comparisonHeaders} />
             </Card>
           </AnimateOnScroll>
 
@@ -1203,7 +1215,7 @@ export default function UltheraDetail() {
             tabs={[
               {
                 id: 'process',
-                label: '시술 과정',
+                label: t('common.process'),
                 content: (
                   <div className="grid grid-cols-2 md:grid-cols-5 gap-6 md:gap-8">
                     {treatment.process.map((step, index) => (
@@ -1220,12 +1232,12 @@ export default function UltheraDetail() {
               },
               {
                 id: 'timeline',
-                label: '효과 타임라인',
+                label: t('common.timeline'),
                 content: (
                   <div className="py-4 md:py-8 px-2 md:px-8">
-                    <CollagenTimeline />
+                    <CollagenTimeline items={timelineItems} />
                     <p className="text-center text-sm text-mono-light mt-6">
-                      울쎄라피 프라임 시술 후 콜라겐이 재생되며 점진적으로 효과가 나타납니다
+                      {timelineNote}
                     </p>
                   </div>
                 ),
@@ -1345,7 +1357,7 @@ export default function UltheraDetail() {
               items={[
                 {
                   id: 'targetAreas',
-                  title: '시술 부위',
+                  title: t('common.targetAreas'),
                   defaultOpen: true,
                   content: (
                     <div className="flex flex-wrap gap-2 md:gap-3">
@@ -1362,7 +1374,7 @@ export default function UltheraDetail() {
                 },
                 {
                   id: 'idealFor',
-                  title: '이런 분께 추천',
+                  title: t('common.recommended'),
                   content: (
                     <ul className="space-y-2 md:space-y-3">
                       {treatment.idealFor.map((item, index) => (
@@ -1376,7 +1388,7 @@ export default function UltheraDetail() {
                 },
                 {
                   id: 'cautions',
-                  title: '시술 전후 주의사항',
+                  title: t('common.precautions'),
                   content: (
                     <ul className="space-y-2 md:space-y-3">
                       {treatment.cautions.map((caution, index) => (
@@ -1411,7 +1423,7 @@ export default function UltheraDetail() {
               items={extendedFaqs}
               initialCount={3}
               expandText={`${extendedFaqs.length - 3}개 더 보기`}
-              collapseText="접기"
+              collapseText={t('common.collapse')}
               renderItem={(faq, index) => (
                 <Card
                   padding="none"

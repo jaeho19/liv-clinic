@@ -13,7 +13,11 @@
     "questions": "개의 질문",
     "noResults": "검색 결과가 없습니다",
     "tryAnother": "다른 검색어로 시도해보세요",
-    "relatedTreatments": "관련 시술"
+    "relatedTreatments": "관련 시술",
+    "close": "닫기",
+    "closeMenu": "메뉴 닫기",
+    "language": "언어",
+    "backToTop": "맨 위로"
   },
   "nav": {
     "about": "리브 소개",
@@ -50,6 +54,10 @@
     "slide3": {
       "title": "Beyond Gravity",
       "subtitle": "수술 없이 되찾는 탄력, 10년 전 피부를 경험하세요"
+    },
+    "sideText": {
+      "left": "Premium Anti-Aging Clinic",
+      "right": "Since 2024 Seoul Sinsa"
     }
   },
   "sections": {
@@ -60,11 +68,80 @@
     },
     "equipment": {
       "title": "Genuine Equipment",
-      "subtitle": "프리미엄 정품 장비"
+      "subtitle": "프리미엄 정품 장비",
+      "description": "리브성형외과는 정품 인증된 프리미엄 장비만을 사용합니다. 최신 기술로 안전하고 효과적인 시술을 제공합니다.",
+      "autoScrolling": "AUTO SCROLLING",
+      "premiumDevices": "10 Premium Devices",
+      "learnMore": "자세히 보기",
+      "devices": {
+        "ultherapy": {
+          "subTitle": "울쎄라피 프라임",
+          "desc": "FDA 승인 HIFU 리프팅의 글로벌 스탠다드"
+        },
+        "thermage": {
+          "subTitle": "써마지 FLX",
+          "desc": "4세대 RF 리프팅 기술의 정점"
+        },
+        "density": {
+          "subTitle": "덴서티",
+          "desc": "고주파(RF) 에너지로 콜라겐 리모델링"
+        },
+        "shurink": {
+          "subTitle": "슈링크",
+          "desc": "정교한 HIFU로 V라인 완성"
+        },
+        "inmode": {
+          "subTitle": "인모드",
+          "desc": "RF 에너지로 지방 감소와 리프팅 동시에"
+        },
+        "potenza": {
+          "subTitle": "포텐자",
+          "desc": "RF 마이크로니들링으로 탄력과 모공 개선"
+        },
+        "clarity": {
+          "subTitle": "클라리티 II",
+          "desc": "듀얼 파장 레이저로 색소 & 혈관 치료"
+        },
+        "lucas": {
+          "subTitle": "루카스",
+          "desc": "고출력 Q스위치로 난치성 색소 치료"
+        },
+        "co2": {
+          "subTitle": "CO2 레이저",
+          "desc": "정밀 박피와 피부 재생"
+        },
+        "ulblanc": {
+          "subTitle": "울블랑",
+          "desc": "저자극 화이트닝 레이저"
+        }
+      }
     },
     "signature": {
       "title": "Signature Programs",
-      "subtitle": "리브만의 시그니처 프로그램"
+      "subtitle": "리브만의 시그니처 프로그램",
+      "programs": {
+        "lifting": {
+          "title": "리프팅",
+          "titleEn": "LIFTING",
+          "subtitle": "울쎄라피 프라임 & 써마지",
+          "description": "비수술 리프팅의 정점, 프리미엄 정품 장비로 자연스러운 리프팅 효과를 경험하세요.",
+          "features": ["울쎄라피 프라임 정품 인증", "써마지 FLX 파트너", "맞춤형 복합 시술"]
+        },
+        "antiaging": {
+          "title": "안티에이징",
+          "titleEn": "ANTI-AGING",
+          "subtitle": "필러 & 보톡스",
+          "description": "섬세한 터치로 완성하는 볼륨과 윤곽, 자연스러운 아름다움을 추구합니다.",
+          "features": ["정품 필러 사용", "해부학적 접근", "자연스러운 결과"]
+        },
+        "rejuvenation": {
+          "title": "피부재생",
+          "titleEn": "REJUVENATION",
+          "subtitle": "메디컬 스킨케어",
+          "description": "피부 본연의 건강함을 되찾는 맞춤 케어, 과학적 접근으로 피부 개선을 도와드립니다.",
+          "features": ["스킨부스터", "레이저 토닝", "맞춤 피부 관리"]
+        }
+      }
     },
     "values": {
       "title": "Core Values",
@@ -92,7 +169,49 @@
     },
     "doctor": {
       "title": "Medical Staff",
-      "subtitle": "리브 의료진"
+      "subtitle": "리브 의료진",
+      "name": "김수영",
+      "nameEn": "Dr. Sooyoung Kim",
+      "directorTitle": "리브성형외과 대표원장",
+      "directorTitleEn": "Director",
+      "specialty": "성형외과 전문의",
+      "philosophy": "자연스러움을 추구하는 것, 그것이 진정한 아름다움입니다. 과하지 않은, 본연의 아름다움을 찾아드립니다.",
+      "credentials": "주요 이력",
+      "credentialsList": [
+        "고려대학교 의과대학 졸업",
+        "고려대학교 대학원 성형외과학 석사",
+        "대한성형외과학회 정회원",
+        "대한미용성형외과학회 정회원",
+        "미국 MD Anderson Cancer Center 연수"
+      ],
+      "certifications": {
+        "official": "공식 인증의",
+        "ultheraThermage": "Ultherapy Prime & Thermage",
+        "globalExpert": "글로벌 인증 전문의",
+        "aptosCertified": "APTOS Certified Expert"
+      },
+      "internationalActivities": "국제 활동",
+      "activities": [
+        {
+          "caption": "APTOS 본사 연수 수료",
+          "location": "Georgia, 2025"
+        },
+        {
+          "caption": "Clinical Experience 발표",
+          "location": "국제 학술대회"
+        },
+        {
+          "caption": "Clinical Practice",
+          "location": "임상 시술 현장"
+        }
+      ],
+      "viewStaff": "의료진 상세보기",
+      "youtube": {
+        "title": "LIV TV",
+        "subtitle": "리브 원장의 시술 이야기",
+        "subscribe": "리브 유튜브 채널 구독하기",
+        "description": "시술 정보, 원장 인터뷰, Before & After 영상을 확인하세요"
+      }
     },
     "doctors": {
       "kim": {
@@ -166,7 +285,20 @@
       "title": "Location",
       "subtitle": "오시는 길",
       "address": "서울특별시 서초구 나루터로 80 자은빌딩 4층",
-      "subway": "신사역 4번 출구 도보 1분"
+      "subway": "신사역 4번 출구 도보 1분",
+      "subwayInfo": "3호선 · 신분당선 신사역 4번 출구",
+      "walkMinutes": "도보 1분",
+      "addressLabel": "주소",
+      "buildingDetail": "(잠원동, 자은빌딩 4층)",
+      "directions": "신사역 4번출구에서 빽다방을 좌측에 끼고 코너를 돌아 직진",
+      "holidayClosed": "매주 일요일 및 공휴일 휴진",
+      "contactLabel": "연락처",
+      "consultTime": "상담 가능 시간: 평일 10:00 - 19:00",
+      "parkingLabel": "주차 안내",
+      "freeParking": "무료 주차 가능",
+      "parkingDetail": "전기차 및 대형 차량은 1층 주차장 내 공간이 있는 경우에 한해 주차 가능합니다. 주차 공간이 없을 경우, 병원 인근 유료 주차장 이용을 부탁드립니다.",
+      "naverMap": "네이버 지도",
+      "kakaoMap": "카카오맵"
     }
   },
   "footer": {
@@ -175,7 +307,12 @@
     "saturday": "토요일",
     "sunday": "매주 일요일 및 공휴일 휴진",
     "address": "찾아오시는 길",
-    "copyright": "© 2025 리브성형외과. All rights reserved."
+    "copyright": "© 2025 리브성형외과. All rights reserved.",
+    "quickLinks": "바로가기",
+    "followUs": "팔로우하기",
+    "slogan": "자연스럽고 생기 넘치는 모습을 찾는 여정",
+    "privacy": "개인정보처리방침",
+    "terms": "이용약관"
   },
   "meta": {
     "title": "리브성형외과 | 수술 없는 프리미엄 안티에이징 신사역",
@@ -230,7 +367,28 @@
       "successTitle": "상담 신청이 완료되었습니다",
       "successMessage": "빠른 시간 내에 상담 연락을 드리겠습니다.\n감사합니다.",
       "retry": "다시 작성하기",
-      "other": "기타 / 상담 후 결정"
+      "other": "기타 / 상담 후 결정",
+      "privacyShort": "개인정보 수집 동의",
+      "submitError": "상담 신청에 실패했습니다.",
+      "submitErrorRetry": "상담 신청에 실패했습니다. 잠시 후 다시 시도해주세요.",
+      "consultTitle": "상담 신청",
+      "consultSubtitle": "전문 상담사가 친절하게 안내해 드립니다",
+      "password": "비밀번호 (선택)",
+      "treatmentSelect": "진료과목 선택",
+      "submitButton": "상담신청",
+      "successSubtitle": "곧 연락드리겠습니다",
+      "errorSubtitle": "다시 시도해주세요",
+      "required": "[필수]",
+      "privacyConsent": "개인정보 수집 및 이용에 동의합니다. (성함, 연락처는 상담 목적으로만 사용됩니다)",
+      "treatmentOptions": {
+        "laser": "레이저 시술",
+        "filler": "필러 시술",
+        "botox": "보톡스",
+        "skincare": "피부 관리",
+        "lifting": "리프팅",
+        "antiaging": "안티에이징",
+        "other": "기타"
+      }
     }
   },
   "faq": {
@@ -256,6 +414,333 @@
       "a7": "네, 영어, 일본어, 중국어 상담이 가능합니다. 예약 시 통역 서비스 필요 여부를 말씀해 주시면 준비해 드리겠습니다.",
       "q8": "정품 장비만 사용하나요?",
       "a8": "리브성형외과는 울쎄라피 프라임, 써마지 공식 인증 병원으로서 100% 정품 장비와 정품 제품만을 사용합니다. 모든 제품의 정품 인증서를 확인하실 수 있습니다."
+    }
+  },
+  "treatments": {
+    "common": {
+      "process": "시술 과정",
+      "timeline": "효과 타임라인",
+      "targetAreas": "시술 부위",
+      "recommended": "이런 분께 추천",
+      "precautions": "시술 전후 주의사항",
+      "comparison": "장비 비교",
+      "transducers": "트랜스듀서",
+      "collapse": "접기",
+      "expand": "펼치기",
+      "bookConsultation": "상담 예약하기",
+      "callNow": "전화 상담",
+      "whyChoose": "왜 선택해야 하나요?",
+      "howItWorks": "시술 원리",
+      "results": "시술 결과",
+      "faq": "자주 묻는 질문",
+      "relatedTreatments": "관련 시술",
+      "duration": "시술 시간",
+      "anesthesia": "마취 방법",
+      "recovery": "회복 기간",
+      "maintenance": "유지 기간",
+      "before": "시술 전",
+      "after": "시술 후",
+      "immediately": "시술 직후",
+      "weeks": "주",
+      "months": "개월",
+      "years": "년",
+      "fdaApproved": "FDA 승인",
+      "genuine": "정품 인증",
+      "certified": "공식 인증 병원"
+    },
+    "lifting": {
+      "ulthera": {
+        "name": "울쎄라피 프라임",
+        "fullName": "Ultherapy Prime",
+        "tagline": "FDA 유일 승인 비수술 리프팅",
+        "description": "전 세계 유일 FDA 승인 비수술 리프팅. 초음파 에너지가 피부 깊숙이 SMAS층까지 도달하여 강력한 리프팅 효과를 제공합니다.",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "표피",
+            "upperDermis": "진피 상층",
+            "lowerDermis": "진피 하층",
+            "smas": "SMAS층"
+          },
+          "timeline": {
+            "items": [
+              { "time": "시술 직후", "effect": "콜라겐 수축", "desc": "즉각적 타이트닝" },
+              { "time": "1개월", "effect": "신생 콜라겐", "desc": "Type III 생성 시작" },
+              { "time": "3개월", "effect": "눈에 띄는 변화", "desc": "턱선 선명해짐" },
+              { "time": "6개월", "effect": "최대 효과", "desc": "Type I 콜라겐 성숙" },
+              { "time": "12-24개월", "effect": "효과 유지", "desc": "점진적 유지" }
+            ],
+            "note": "울쎄라피 프라임 시술 후 콜라겐이 재생되며 점진적으로 효과가 나타납니다"
+          },
+          "comparison": {
+            "title": "울쎄라피 프라임 vs 타 장비",
+            "subtitle": "같은 HIFU라도 기술력과 임상 근거에는 큰 차이가 있습니다",
+            "headers": {
+              "feature": "비교 항목",
+              "ulthera": "울쎄라피 프라임",
+              "shurink": "슈링크/더블로",
+              "thermage": "써마지"
+            },
+            "rows": [
+              { "feature": "에너지 종류", "ulthera": "MFU-V (초음파)", "shurink": "HIFU (초음파)", "thermage": "RF (고주파)" },
+              { "feature": "실시간 시각화", "ulthera": "DeepSEE O", "shurink": "X", "thermage": "X" },
+              { "feature": "FDA 리프팅 승인", "ulthera": "유일하게 승인", "shurink": "X", "thermage": "X" },
+              { "feature": "최대 깊이", "ulthera": "4.5mm (SMAS)", "shurink": "4.5mm", "thermage": "진피층" },
+              { "feature": "임상 연구", "ulthera": "110+ 논문", "shurink": "소수", "thermage": "다수" },
+              { "feature": "효과 지속", "ulthera": "1-2년", "shurink": "6-12개월", "thermage": "6-12개월" },
+              { "feature": "최적 적응증", "ulthera": "심한 처짐/리프팅", "shurink": "유지관리", "thermage": "탄력/피부결" }
+            ],
+            "synergy": {
+              "title": "울쎄라피 프라임 + 써마지 시너지",
+              "description": "울쎄라피 프라임(SMAS층 리프팅)과 써마지(표피~진피층 탄력)를 3개월 간격으로 병행하면 다층적 콜라겐 재생으로 더욱 강력한 시너지 효과를 경험할 수 있습니다."
+            }
+          },
+          "transducers": {
+            "title": "6가지 트랜스듀서",
+            "subtitle": "깊이와 주파수가 다른 6가지 트랜스듀서로 피부층별 맞춤 시술이 가능합니다",
+            "shallow": "표층 (1.5mm - 3.0mm)",
+            "deep": "심층 (3.0mm - 4.5mm)",
+            "energyDelivery": "에 정확하게 에너지를 전달합니다",
+            "items": {
+              "ds-10-1.5": { "target": "표피-진피 경계", "applications": ["미세주름", "눈가", "입가", "피부결"] },
+              "ds-10-1.5-n": { "target": "협소한 부위", "applications": ["눈주름", "눈밑", "눈꺼풀"] },
+              "ds-7-3.0": { "target": "진피 하층", "applications": ["볼", "이마", "광대", "턱선"] },
+              "ds-7-3.0-n": { "target": "협소한 진피층", "applications": ["눈가주름", "입가", "손등"] },
+              "ds-4-4.5": { "target": "SMAS층", "applications": ["중안면", "하안면", "목", "데콜테"] },
+              "ds-7-4.5": { "target": "고해상도 SMAS", "applications": ["턱선", "이중턱", "볼처짐"] }
+            }
+          },
+          "hero": {
+            "badge": "FDA 유일 승인 리프팅 장비",
+            "premiumLifting": "Premium Lifting",
+            "title": "울쎄라피 프라임",
+            "description": "피부 깊은 층 SMAS까지 도달하는 유일한 비침습 리프팅.\n실시간 시각화 DeepSEE 기술로 정확하고 안전하게.",
+            "stats": {
+              "clinicalStudies": "임상 연구",
+              "globalProcedures": "전세계 시술 건수",
+              "improvementRate": "환자 개선율"
+            },
+            "deepSee": "실시간 시각화",
+            "smasTarget": "깊은 층 타겟팅"
+          },
+          "about": {
+            "sectionLabel": "About Ultherapy Prime",
+            "title": "울쎄라피 프라임이란?",
+            "description": "울쎄라피 프라임은 미국 FDA에서 <strong>리프팅 효과를 승인받은 유일한</strong> 비침습 HIFU 장비입니다. 특허받은 MFU-V(Micro-focused Ultrasound with Visualization) 기술로 피부 깊은 층인 SMAS까지 에너지를 정확하게 전달하여 콜라겐 재생을 촉진합니다.",
+            "depthTargeting": "깊이별 맞춤 타겟팅",
+            "depths": {
+              "1.5": {
+                "title": "1.5mm - 표피/진피 경계",
+                "description": "미세주름, 피부결 개선에 효과적. 눈가, 입가 등 섬세한 부위에 적용"
+              },
+              "3.0": {
+                "title": "3.0mm - 진피 하층",
+                "description": "콜라겐 유도, 전반적 탄력 개선. 볼, 이마 등 넓은 부위에 적용"
+              },
+              "4.5": {
+                "title": "4.5mm - SMAS층",
+                "description": "구조적 리프팅 효과. 턱선, 목, 중안면 등 처짐이 심한 부위에 적용"
+              }
+            }
+          },
+          "whyUlthera": {
+            "sectionLabel": "Premium Quality",
+            "labelEn": "Why Ultherapy Prime?",
+            "title": "왜 울쎄라피 프라임인가?",
+            "cards": {
+              "fda": {
+                "title": "FDA 유일 승인",
+                "description": "미국 FDA에서 비침습 리프팅 효과를 승인받은 <strong>유일한</strong> HIFU 장비입니다."
+              },
+              "deepSee": {
+                "title": "DeepSEE 시각화",
+                "description": "특허 받은 DeepSEE 기술로 피부층을 <strong>실시간 확인</strong>하며 시술합니다."
+              },
+              "smas": {
+                "title": "SMAS층 타겟팅",
+                "description": "성형 수술 시 타겟하는 <strong>SMAS층까지 도달</strong>하는 유일한 비침습 장비입니다."
+              }
+            },
+            "clinicalEvidence": {
+              "label": "Clinical Evidence",
+              "papers": "임상 연구 논문",
+              "aestheticImprovement": "심미적 개선율",
+              "satisfaction": "환자 만족도",
+              "duration": "효과 지속 기간",
+              "source": "출처: 2024 체계적 문헌고찰 및 메타분석 (PubMed)"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Clinic",
+            "labelEn": "LIV Difference",
+            "title": "리브만의 울쎄라피 프라임",
+            "cards": {
+              "genuine": {
+                "title": "정품 인증 클리닉",
+                "description": "멀츠 코리아 공식 인증 클리닉으로 정품 장비와 트랜스듀서만 사용합니다. 시리얼 번호 확인이 가능합니다."
+              },
+              "transparency": {
+                "title": "샷 수 투명 공개",
+                "description": "시술 전 계획된 라인 수와 실제 조사된 샷 수를 투명하게 공개합니다. 정직한 시술을 약속드립니다."
+              },
+              "specialist": {
+                "title": "전문의 직접 시술",
+                "description": "피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다. 개인별 맞춤 시술 계획을 수립합니다."
+              }
+            }
+          },
+          "journey": {
+            "sectionLabel": "Journey",
+            "title": "시술 여정"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Details",
+            "labelEn": "Treatment Info",
+            "title": "시술 정보",
+            "labels": {
+              "duration": "시술 시간",
+              "anesthesia": "마취",
+              "recovery": "회복 기간",
+              "results": "효과 지속"
+            },
+            "recommendedLines": {
+              "title": "부위별 권장 라인 수",
+              "upperFace": "상안면",
+              "lowerFace": "하안면",
+              "fullFace": "전안면",
+              "fullFaceNeck": "전안면 + 목"
+            }
+          },
+          "detailedInfo": {
+            "title": "상세 정보"
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "자주 묻는 질문",
+            "moreButton": "개 더 보기",
+            "medicalQaLink": "의료정보 Q&A 더보기",
+            "extended": [
+              {
+                "q": "울쎄라피 프라임 시술 후 바로 일상생활이 가능한가요?",
+                "a": "네, 울쎄라피 프라임은 비침습적 시술로 다운타임이 거의 없습니다. 시술 직후 약간의 홍조나 붓기가 있을 수 있지만 대부분 당일 내 사라집니다. 메이크업도 바로 가능하며, 일상생활에 지장이 없습니다."
+              },
+              {
+                "q": "울쎄라피 프라임과 써마지를 함께 받아도 되나요?",
+                "a": "네, 울쎄라피 프라임과 써마지는 상호 보완적인 시술로 병합하면 시너지 효과를 볼 수 있습니다. 울쎄라피 프라임은 SMAS층의 깊은 리프팅을, 써마지는 표피~진피층의 탄력 개선에 효과적입니다. 일반적으로 3개월 간격을 두고 시술합니다."
+              },
+              {
+                "q": "울쎄라피 프라임 정품 확인은 어떻게 하나요?",
+                "a": "리브성형외과는 멀츠 코리아 공식 인증 클리닉입니다. 시술 시 정품 트랜스듀서의 시리얼 번호를 확인하실 수 있으며, 실제 조사된 샷 수도 투명하게 공개해드립니다."
+              }
+            ]
+          },
+          "cta": {
+            "labelEn": "Ready for Transformation?",
+            "title": "울쎄라피 프라임 상담 예약",
+            "description": "전문 의료진과 1:1 맞춤 상담을 통해\n나에게 맞는 최적의 시술 계획을 수립해보세요.",
+            "bookButton": "무료 상담 예약하기",
+            "hours": "평일 10:00-19:00",
+            "location": "신사역 4번 출구 도보 3분"
+          },
+          "related": {
+            "labelEn": "Related Treatments",
+            "title": "함께 보면 좋은 시술"
+          }
+        }
+      },
+      "thermage": {
+        "name": "써마지 FLX",
+        "fullName": "Thermage FLX",
+        "tagline": "고주파 피부 탄력 솔루션",
+        "description": "4세대 써마지 FLX는 기존 대비 25% 빠른 시술과 함께 전면적인 콜라겐 재생을 유도합니다."
+      },
+      "density": {
+        "name": "덴서티",
+        "fullName": "Density",
+        "tagline": "울쎄라피 프라임 정품 2세대",
+        "description": "울쎄라피 프라임의 정품 2세대 기술로 더욱 정밀하고 효과적인 리프팅을 제공합니다."
+      },
+      "inmode": {
+        "name": "인모드",
+        "fullName": "InMode",
+        "tagline": "RF 기반 복합 리프팅",
+        "description": "라디오파를 활용한 복합 리프팅 시스템으로 피부 탄력과 바디 컨투어링을 동시에 개선합니다."
+      },
+      "shurink": {
+        "name": "슈링크",
+        "fullName": "Shurink Universe",
+        "tagline": "HIFU 리프팅",
+        "description": "고강도 집속 초음파를 활용한 리프팅 시술로 처진 피부를 끌어올립니다."
+      },
+      "thread": {
+        "name": "실리프팅",
+        "fullName": "Thread Lift",
+        "tagline": "PDO 실을 이용한 즉각적 리프팅",
+        "description": "생분해성 실을 피부 아래에 삽입하여 즉각적인 리프팅 효과와 콜라겐 생성을 유도합니다."
+      },
+      "aptos": {
+        "name": "압토스 나미카",
+        "fullName": "APTOS Namica",
+        "tagline": "프리미엄 실리프팅",
+        "description": "조지아산 프리미엄 리프팅 실로 자연스럽고 오래 지속되는 리프팅 효과를 제공합니다."
+      }
+    },
+    "antiaging": {
+      "botox": {
+        "name": "보톡스",
+        "fullName": "Botox",
+        "tagline": "주름 개선 & 윤곽 축소",
+        "description": "보툴리눔 톡신을 이용하여 표정 주름을 개선하고 턱 근육을 축소시켜 갸름한 얼굴선을 만들어 드립니다."
+      },
+      "filler": {
+        "name": "필러",
+        "fullName": "Filler",
+        "tagline": "볼륨 & 윤곽 개선",
+        "description": "히알루론산 기반 필러를 사용하여 꺼진 부위를 채우고 자연스러운 볼륨감을 만들어 드립니다."
+      },
+      "skinbooster": {
+        "name": "스킨부스터",
+        "fullName": "Skin Booster",
+        "tagline": "피부 속부터 촉촉하게",
+        "description": "피부 속 깊은 곳에 수분과 영양을 공급하여 피부 자체의 건강을 개선합니다."
+      }
+    },
+    "laser": {
+      "center": {
+        "name": "레이저 센터",
+        "fullName": "Laser Center",
+        "tagline": "첨단 레이저 토탈 솔루션",
+        "description": "색소, 혈관, 피부결, 제모, 타투 제거까지 다양한 피부 고민을 해결하는 프리미엄 레이저 센터입니다."
+      },
+      "pigmentation": {
+        "name": "색소 치료",
+        "fullName": "Pigmentation Treatment",
+        "tagline": "기미, 잡티, 주근깨 개선",
+        "description": "다양한 색소 질환에 맞춤 레이저 치료로 맑고 투명한 피부를 되찾아 드립니다."
+      },
+      "vascular": {
+        "name": "혈관 치료",
+        "fullName": "Vascular Treatment",
+        "tagline": "홍조, 실핏줄, 여드름 홍반",
+        "description": "확장된 혈관과 홍조를 선택적으로 치료하여 균일한 피부톤을 만들어 드립니다."
+      },
+      "skintone": {
+        "name": "피부결 개선",
+        "fullName": "Skin Tone Improvement",
+        "tagline": "모공, 흉터, 피부결 개선",
+        "description": "레이저 리서페이싱으로 모공 축소, 흉터 개선, 피부결 정돈 효과를 제공합니다."
+      },
+      "hairRemoval": {
+        "name": "레이저 제모",
+        "fullName": "Laser Hair Removal",
+        "tagline": "영구적 제모 솔루션",
+        "description": "의료용 레이저로 모낭을 선택적으로 파괴하여 영구적인 제모 효과를 제공합니다."
+      },
+      "tattoo": {
+        "name": "타투 제거",
+        "fullName": "Tattoo Removal",
+        "tagline": "안전한 문신 제거",
+        "description": "피코초 레이저로 문신 색소를 미세하게 분해하여 깨끗하게 제거합니다."
+      }
     }
   },
   "medical": {
