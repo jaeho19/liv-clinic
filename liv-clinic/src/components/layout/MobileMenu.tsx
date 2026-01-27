@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, useRouter, usePathname } from '@/i18n/routing';
 import { useLocale } from 'next-intl';
@@ -32,17 +32,48 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const menuRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
 
-  const toggleExpand = (key: string) => {
+  // Escape 키로 메뉴 닫기
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      onClose();
+    }
+  }, [onClose]);
+
+  // 메뉴 열릴 때 포커스 트랩 및 Escape 키 리스너
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener('keydown', handleKeyDown);
+      // 메뉴 열릴 때 닫기 버튼에 포커스
+      setTimeout(() => {
+        closeButtonRef.current?.focus();
+      }, 100);
+      // 스크롤 방지
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [isOpen, handleKeyDown]);
+
+  // useCallback으로 메모이제이션 - 불필요한 리렌더 방지 (Vercel Best Practice: rerender-functional-setstate)
+  const toggleExpand = useCallback((key: string) => {
     setExpandedItems((prev) =>
       prev.includes(key) ? prev.filter((item) => item !== key) : [...prev, key]
     );
-  };
+  }, []);
 
-  const handleLanguageChange = (langCode: string) => {
+  // useCallback으로 메모이제이션 (Vercel Best Practice: rerender-functional-setstate)
+  const handleLanguageChange = useCallback((langCode: string) => {
     router.replace(pathname, { locale: langCode as 'ko' | 'en' | 'ja' | 'zh' });
     onClose();
-  };
+  }, [router, pathname, onClose]);
 
   return (
     <AnimatePresence>
@@ -60,19 +91,24 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
 
           {/* Menu Panel */}
           <motion.div
+            ref={menuRef}
             initial={{ x: '100%' }}
             animate={{ x: 0 }}
             exit={{ x: '100%' }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 right-0 bottom-0 w-[300px] bg-white z-50 lg:hidden overflow-y-auto"
+            className="fixed top-0 right-0 bottom-0 w-[min(300px,85vw)] bg-white z-50 lg:hidden overflow-y-auto safe-area-pr"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
           >
             {/* Header */}
-            <div className="flex items-center justify-between p-5 border-b border-border">
+            <div className="flex items-center justify-between p-5 border-b border-border safe-area-pt">
               <span className="font-serif text-xl text-secondary">LIV</span>
               <button
+                ref={closeButtonRef}
                 onClick={onClose}
                 className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-mono hover:text-primary transition-colors"
-                aria-label="Close menu"
+                aria-label={t('closeMenu')}
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
@@ -93,7 +129,9 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                     <>
                       <button
                         onClick={() => toggleExpand(item.key)}
-                        className="w-full flex items-center justify-between py-4 text-mono hover:text-primary transition-colors"
+                        className="w-full flex items-center justify-between py-4 text-mono hover:text-primary transition-colors min-h-[52px]"
+                        aria-expanded={expandedItems.includes(item.key)}
+                        aria-controls={`submenu-${item.key}`}
                       >
                         <span className="font-medium">{item.label}</span>
                         <svg
@@ -116,6 +154,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                       <AnimatePresence>
                         {expandedItems.includes(item.key) && (
                           <motion.div
+                            id={`submenu-${item.key}`}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}
@@ -128,7 +167,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                                   key={child.key}
                                   href={child.href}
                                   onClick={onClose}
-                                  className="block py-2 text-sm text-mono-light hover:text-primary transition-colors"
+                                  className="block py-3 text-sm text-mono-light hover:text-primary transition-colors min-h-[44px] flex items-center"
                                 >
                                   {child.label}
                                 </Link>
@@ -142,7 +181,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                     <Link
                       href={item.href}
                       onClick={onClose}
-                      className="block py-4 font-medium text-mono hover:text-primary transition-colors"
+                      className="block py-4 font-medium text-mono hover:text-primary transition-colors min-h-[52px] flex items-center"
                     >
                       {item.label}
                     </Link>
@@ -164,7 +203,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
 
             {/* Language Switcher */}
             <div className="px-5 py-4 border-t border-border">
-              <p className="text-sm text-mono-light mb-3">Language</p>
+              <p className="text-sm text-mono-light mb-3">{t('language')}</p>
               <div className="grid grid-cols-2 gap-2">
                 {languages.map((lang) => (
                   <button
@@ -184,10 +223,10 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
             </div>
 
             {/* Contact Info */}
-            <div className="px-5 py-4 border-t border-border">
+            <div className="px-5 py-4 border-t border-border safe-area-pb">
               <a
                 href="tel:02-797-2773"
-                className="flex items-center gap-3 text-mono hover:text-primary transition-colors"
+                className="flex items-center gap-3 text-mono hover:text-primary transition-colors min-h-[44px]"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path

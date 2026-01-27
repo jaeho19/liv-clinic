@@ -7,11 +7,12 @@ import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 export default function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
+  const tCommon = useTranslations('common');
 
   return (
-    <footer className="bg-secondary text-white">
+    <footer className="bg-secondary text-white pb-20 sm:pb-16">
       {/* Main Footer */}
-      <div className="container-custom py-16">
+      <div className="container-custom py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div>
@@ -20,9 +21,9 @@ export default function Footer() {
               <p className="text-sm text-white/60 mt-1">Plastic Surgery</p>
             </Link>
             <p className="text-sm text-white/70 leading-relaxed">
-              Slow Aging, Natural Beauty
+              {tCommon('slogan')}
               <br />
-              자연스럽고 생기 넘치는 모습을 찾는 여정
+              {t('slogan')}
             </p>
           </div>
 
@@ -56,9 +57,9 @@ export default function Footer() {
             <div className="mt-4 space-y-2">
               <a
                 href={`tel:${SITE_INFO.phone}`}
-                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors min-h-[44px] py-2"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -70,9 +71,9 @@ export default function Footer() {
               </a>
               <a
                 href={`mailto:${SITE_INFO.email}`}
-                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors min-h-[44px] py-2"
               >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -80,19 +81,19 @@ export default function Footer() {
                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span>{SITE_INFO.email}</span>
+                <span className="break-all">{SITE_INFO.email}</span>
               </a>
             </div>
           </div>
 
           {/* Quick Links & SNS */}
           <div>
-            <h4 className="text-lg font-medium mb-5">Quick Links</h4>
-            <ul className="space-y-2 text-sm">
+            <h4 className="text-lg font-medium mb-5">{t('quickLinks')}</h4>
+            <ul className="space-y-1 text-sm">
               <li>
                 <Link
                   href="/about"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
                 >
                   {tNav('about')}
                 </Link>
@@ -100,7 +101,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/lifting"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
                 >
                   {tNav('lifting')}
                 </Link>
@@ -108,7 +109,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/medical"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
                 >
                   {tNav('medical')}
                 </Link>
@@ -116,7 +117,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
-                  className="text-white/70 hover:text-white transition-colors"
+                  className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
                 >
                   {tNav('contact')}
                 </Link>
@@ -125,7 +126,7 @@ export default function Footer() {
 
             {/* Social Links */}
             <div className="mt-6">
-              <p className="text-sm text-white/50 mb-3">Follow Us</p>
+              <p className="text-sm text-white/50 mb-3">{t('followUs')}</p>
               <div className="flex gap-3">
                 <a
                   href={SOCIAL_LINKS.instagram}
@@ -177,15 +178,15 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
-        <div className="container-custom py-6">
+        <div className="container-custom py-4 md:py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
-            <p>{t('copyright')}</p>
-            <div className="flex gap-6">
-              <Link href="/privacy" className="hover:text-white transition-colors">
-                개인정보처리방침
+            <p className="text-center md:text-left">{t('copyright')}</p>
+            <div className="flex gap-4 sm:gap-6">
+              <Link href="/privacy" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
+                {t('privacy')}
               </Link>
-              <Link href="/terms" className="hover:text-white transition-colors">
-                이용약관
+              <Link href="/terms" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
+                {t('terms')}
               </Link>
             </div>
           </div>

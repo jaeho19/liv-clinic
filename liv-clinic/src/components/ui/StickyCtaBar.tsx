@@ -1,7 +1,26 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+
+// Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice)
+function useThrottle<T extends (...args: unknown[]) => void>(
+  callback: T,
+  delay: number
+): T {
+  const lastRun = useRef(Date.now());
+
+  return useCallback(
+    ((...args: unknown[]) => {
+      const now = Date.now();
+      if (now - lastRun.current >= delay) {
+        callback(...args);
+        lastRun.current = now;
+      }
+    }) as T,
+    [callback, delay]
+  ) as T;
+}
 
 interface StickyCtaBarProps {
   showAfterScroll?: number;
@@ -24,14 +43,18 @@ export default function StickyCtaBar({
 }: StickyCtaBarProps) {
   const [isVisible, setIsVisible] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
+  // Throttled 스크롤 핸들러 (150ms 간격)
+  const handleScroll = useThrottle(
+    useCallback(() => {
       setIsVisible(window.scrollY > showAfterScroll);
-    };
+    }, [showAfterScroll]),
+    150
+  );
 
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, [showAfterScroll]);
+  }, [handleScroll]);
 
   return (
     <AnimatePresence>

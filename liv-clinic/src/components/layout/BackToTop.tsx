@@ -1,25 +1,50 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
+
+// Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice)
+function useThrottle<T extends (...args: unknown[]) => void>(
+  callback: T,
+  delay: number
+): T {
+  const lastRun = useRef(Date.now());
+
+  return useCallback(
+    ((...args: unknown[]) => {
+      const now = Date.now();
+      if (now - lastRun.current >= delay) {
+        callback(...args);
+        lastRun.current = now;
+      }
+    }) as T,
+    [callback, delay]
+  ) as T;
+}
 
 export default function BackToTop() {
+  const t = useTranslations('common');
   const [isVisible, setIsVisible] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
-  useEffect(() => {
-    const handleScroll = () => {
+  // Throttled 스크롤 핸들러 (100ms 간격)
+  const handleScroll = useThrottle(
+    useCallback(() => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
       const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
 
       setScrollProgress(progress);
       setIsVisible(scrollTop > 400);
-    };
+    }, []),
+    100
+  );
 
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -38,7 +63,7 @@ export default function BackToTop() {
           transition={{ duration: 0.3, ease: 'easeOut' }}
           onClick={scrollToTop}
           className="fixed bottom-6 left-6 z-40 group"
-          aria-label="맨 위로 이동"
+          aria-label={t('backToTop')}
         >
           {/* 원형 프로그레스 배경 */}
           <div className="relative w-12 h-12">
@@ -93,7 +118,7 @@ export default function BackToTop() {
           {/* 툴팁 */}
           <div className="absolute left-14 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
             <div className="bg-secondary text-white text-xs px-3 py-1.5 rounded-lg whitespace-nowrap shadow-lg">
-              맨 위로
+              {t('backToTop')}
               <div className="absolute left-0 top-1/2 -translate-x-1 -translate-y-1/2 w-2 h-2 bg-secondary rotate-45" />
             </div>
           </div>

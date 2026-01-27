@@ -1,7 +1,26 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, useScroll, useSpring } from 'framer-motion';
+
+// Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice)
+function useThrottle<T extends (...args: unknown[]) => void>(
+  callback: T,
+  delay: number
+): T {
+  const lastRun = useRef(Date.now());
+
+  return useCallback(
+    ((...args: unknown[]) => {
+      const now = Date.now();
+      if (now - lastRun.current >= delay) {
+        callback(...args);
+        lastRun.current = now;
+      }
+    }) as T,
+    [callback, delay]
+  ) as T;
+}
 
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll();
@@ -14,15 +33,19 @@ export default function ScrollProgress() {
     restDelta: 0.001,
   });
 
-  useEffect(() => {
-    const handleScroll = () => {
+  // Throttled 스크롤 핸들러 (150ms 간격) - visibility만 체크하므로 낮은 빈도로 충분
+  const handleScroll = useThrottle(
+    useCallback(() => {
       // 100px 이상 스크롤했을 때만 표시
       setIsVisible(window.scrollY > 100);
-    };
+    }, []),
+    150
+  );
 
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [handleScroll]);
 
   return (
     <>

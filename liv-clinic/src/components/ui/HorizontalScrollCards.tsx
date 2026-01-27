@@ -17,19 +17,22 @@ interface HorizontalScrollCardsProps {
 export default function HorizontalScrollCards({
   children,
   className = '',
-  cardWidth = 'w-[280px]',
+  cardWidth = 'w-[min(280px,75vw)]',
   gap = 'gap-4',
   showScrollbar = false,
 }: HorizontalScrollCardsProps) {
   return (
     <div
       className={`
-        flex overflow-x-auto ${gap} -mx-6 px-6 pb-4
+        flex overflow-x-auto ${gap} -mx-4 px-4 pb-4
+        sm:-mx-6 sm:px-6
         md:grid md:grid-cols-3 md:overflow-visible md:mx-0 md:px-0 md:pb-0
         ${showScrollbar ? '' : 'scrollbar-hide'}
         scroll-snap-x-mandatory
         ${className}
       `}
+      role="region"
+      aria-label="Scrollable content"
     >
       {React.Children.map(children, (child) => (
         <div className={`flex-shrink-0 ${cardWidth} md:w-auto scroll-snap-center`}>

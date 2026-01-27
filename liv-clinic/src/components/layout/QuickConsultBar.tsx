@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 
@@ -28,6 +28,16 @@ export default function QuickConsultBar() {
   const [showSuccess, setShowSuccess] = useState(false);
   const [errors, setErrors] = useState<{ name?: string; phone?: string; privacy?: string }>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
+
+  // setTimeout 타이머 추적을 위한 ref (메모리 누수 방지)
+  const successTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  // 컴포넌트 언마운트 시 타이머 정리
+  useEffect(() => {
+    return () => {
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
+    };
+  }, []);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const formatted = formatPhoneNumber(e.target.value);
@@ -89,7 +99,7 @@ export default function QuickConsultBar() {
       const data = await response.json();
 
       if (!response.ok || !data.success) {
-        throw new Error(data.message || '상담 신청에 실패했습니다.');
+        throw new Error(data.message || t('contact.form.submitError'));
       }
 
       setShowSuccess(true);
@@ -97,12 +107,13 @@ export default function QuickConsultBar() {
       setPhone('');
       setPrivacyAgreed(false);
 
-      // 5초 후 성공 메시지 숨기기
-      setTimeout(() => {
+      // 5초 후 성공 메시지 숨기기 (기존 타이머 정리 후 새로 설정)
+      if (successTimerRef.current) clearTimeout(successTimerRef.current);
+      successTimerRef.current = setTimeout(() => {
         setShowSuccess(false);
       }, 5000);
     } catch (error) {
-      setSubmitError(error instanceof Error ? error.message : '상담 신청에 실패했습니다. 잠시 후 다시 시도해주세요.');
+      setSubmitError(error instanceof Error ? error.message : t('contact.form.submitErrorRetry'));
     } finally {
       setIsSubmitting(false);
     }
@@ -201,7 +212,7 @@ export default function QuickConsultBar() {
                       type="button"
                       onClick={handleClose}
                       className="absolute top-2 right-2 sm:static sm:order-last p-1.5 text-mono-light hover:text-secondary transition-colors"
-                      aria-label="닫기"
+                      aria-label={t('common.close')}
                     >
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -277,7 +288,7 @@ export default function QuickConsultBar() {
                         <span
                           className={`text-xs ${errors.privacy ? 'text-red-500' : 'text-mono-light'} group-hover:text-mono transition-colors max-w-[120px] sm:max-w-none line-clamp-2 sm:line-clamp-1`}
                         >
-                          개인정보 수집 동의
+                          {t('contact.form.privacyShort')}
                         </span>
                       </label>
 
