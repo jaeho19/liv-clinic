@@ -3,6 +3,7 @@
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 const treatment = TREATMENTS.lifting.thread;
@@ -976,8 +977,19 @@ export default function ThreadDetail() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="flex justify-center"
             >
-              <TreatmentAreasIllustration />
+              <div className="relative w-full max-w-[500px] mx-auto">
+                <Image
+                  src="/images/lifting/Gemini_Generated_Image_h2bh3zh2bh3zh2bh.png"
+                  alt="실리프팅 Thread Lift 시술 부위 다이어그램 - 이마, 눈썹, 볼, 턱선, 목선"
+                  width={500}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  quality={95}
+                  priority
+                />
+              </div>
             </motion.div>
           </div>
         </div>

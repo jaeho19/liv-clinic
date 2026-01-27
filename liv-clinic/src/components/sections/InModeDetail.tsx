@@ -432,23 +432,7 @@ export default function InModeDetail() {
                   얼굴 지방이 고민이라면 인모드가 답입니다.
                 </p>
 
-                <div className="flex flex-wrap gap-4">
-                  <ScrollLink href="/contact">
-                    <Button variant="primary" size="lg">
-                      무료 상담 예약
-                    </Button>
-                  </ScrollLink>
-                  <a href="tel:02-797-2773">
-                    <Button variant="outline" size="lg">
-                      <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                      </svg>
-                      02-797-2773
-                    </Button>
-                  </a>
-                </div>
-
-                <div className="flex gap-8 mt-10 pt-8 border-t border-border/50">
+                <div className="flex gap-8 mt-2 pt-8 border-t border-border/50">
                   <div>
                     <p className="text-h2 text-[#E91E63] font-serif">RF</p>
                     <p className="text-small text-mono-light">고주파 에너지</p>

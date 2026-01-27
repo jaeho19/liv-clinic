@@ -3,6 +3,7 @@
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 const treatment = TREATMENTS.lifting.shurink;
@@ -407,140 +408,6 @@ const RapidShotComparisonIllustration = () => (
   </div>
 );
 
-// 시술 부위 일러스트
-const TreatmentAreasIllustration = () => (
-  <div className="relative w-full max-w-sm mx-auto aspect-[3/4]">
-    <svg viewBox="0 0 300 400" className="w-full h-full">
-      {/* 얼굴 윤곽 */}
-      <ellipse cx="150" cy="160" rx="90" ry="110" fill="#FFE4D6" stroke="#FFCEB3" strokeWidth="2" />
-
-      {/* 헤어라인 */}
-      <path d="M70 120 Q90 60 150 50 Q210 60 230 120" fill="none" stroke="#8B6914" strokeWidth="8" strokeLinecap="round" />
-
-      {/* 눈 */}
-      <ellipse cx="115" cy="150" rx="18" ry="8" fill="#fff" stroke="#ddd" strokeWidth="1" />
-      <ellipse cx="185" cy="150" rx="18" ry="8" fill="#fff" stroke="#ddd" strokeWidth="1" />
-      <circle cx="115" cy="150" r="5" fill="#4A3728" />
-      <circle cx="185" cy="150" r="5" fill="#4A3728" />
-
-      {/* 코 */}
-      <path d="M150 150 L150 190 Q145 200 150 205 Q155 200 150 190" fill="none" stroke="#FFCEB3" strokeWidth="2" />
-
-      {/* 입 */}
-      <path d="M130 230 Q150 240 170 230" fill="none" stroke="#E8A090" strokeWidth="2" strokeLinecap="round" />
-
-      {/* 목 */}
-      <path d="M110 265 L100 350 M190 265 L200 350" stroke="#FFE4D6" strokeWidth="30" strokeLinecap="round" />
-      <path d="M110 265 L100 350 M190 265 L200 350" stroke="#FFCEB3" strokeWidth="2" fill="none" />
-
-      {/* 시술 부위 표시 */}
-      {/* 이마 */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.2 }}
-      >
-        <motion.circle
-          cx="150"
-          cy="95"
-          r="25"
-          fill="#00D4FF"
-          opacity="0.3"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-        <circle cx="150" cy="95" r="3" fill="#00D4FF" />
-        <line x1="175" y1="85" x2="220" y2="70" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 2" />
-        <text x="225" y="75" fill="#00D4FF" fontSize="11" fontWeight="500">이마</text>
-      </motion.g>
-
-      {/* 눈가 */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.4 }}
-      >
-        <motion.ellipse
-          cx="80"
-          cy="150"
-          rx="15"
-          ry="20"
-          fill="#00D4FF"
-          opacity="0.3"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-        />
-        <circle cx="80" cy="150" r="3" fill="#00D4FF" />
-        <line x1="65" y1="150" x2="30" y2="140" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 2" />
-        <text x="5" y="145" fill="#00D4FF" fontSize="11" fontWeight="500">눈가</text>
-      </motion.g>
-
-      {/* 볼 */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
-      >
-        <motion.circle
-          cx="85"
-          cy="200"
-          r="25"
-          fill="#00D4FF"
-          opacity="0.3"
-          animate={{ scale: [1, 1.1, 1] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-        />
-        <circle cx="85" cy="200" r="3" fill="#00D4FF" />
-        <line x1="60" y1="200" x2="25" y2="200" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 2" />
-        <text x="5" y="205" fill="#00D4FF" fontSize="11" fontWeight="500">볼</text>
-      </motion.g>
-
-      {/* 턱선 */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-      >
-        <motion.path
-          d="M100 250 Q150 280 200 250"
-          fill="none"
-          stroke="#00D4FF"
-          strokeWidth="20"
-          opacity="0.3"
-          strokeLinecap="round"
-          animate={{ opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 1.5 }}
-        />
-        <circle cx="200" cy="250" r="3" fill="#00D4FF" />
-        <line x1="220" y1="250" x2="260" y2="260" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 2" />
-        <text x="265" y="265" fill="#00D4FF" fontSize="11" fontWeight="500">턱선</text>
-      </motion.g>
-
-      {/* 목 */}
-      <motion.g
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1 }}
-      >
-        <motion.rect
-          x="115"
-          y="300"
-          width="70"
-          height="40"
-          rx="10"
-          fill="#00D4FF"
-          opacity="0.3"
-          animate={{ opacity: [0.2, 0.4, 0.2] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 2 }}
-        />
-        <circle cx="150" cy="320" r="3" fill="#00D4FF" />
-        <line x1="185" y1="320" x2="240" y2="340" stroke="#00D4FF" strokeWidth="1" strokeDasharray="3 2" />
-        <text x="245" y="345" fill="#00D4FF" fontSize="11" fontWeight="500">목</text>
-      </motion.g>
-    </svg>
-  </div>
-);
-
 export default function ShurinkDetail() {
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
@@ -803,8 +670,19 @@ export default function ShurinkDetail() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
+              className="flex justify-center"
             >
-              <TreatmentAreasIllustration />
+              <div className="relative w-full max-w-[500px] mx-auto">
+                <Image
+                  src="/images/lifting/Gemini_Generated_Image_qy64jzqy64jzqy64.png"
+                  alt="슈링크 HIFU 시술 부위 다이어그램 - 이마, 눈가, 볼, 턱선, 목선"
+                  width={500}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  quality={95}
+                  priority
+                />
+              </div>
             </motion.div>
           </div>
         </div>
