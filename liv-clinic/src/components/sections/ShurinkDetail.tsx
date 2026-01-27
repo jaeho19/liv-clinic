@@ -606,14 +606,24 @@ export default function ShurinkDetail() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="relative"
             >
-              {/* Hero Image Background */}
-              <div className="absolute inset-0 rounded-3xl overflow-hidden">
-                <div
-                  className="absolute inset-0 bg-cover bg-center opacity-30"
-                  style={{ backgroundImage: 'url(/images/lifting/shurink-hero.png)' }}
-                />
+              {/* Hero Video */}
+              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#00D4FF]/30 via-[#D4AF37]/20 to-[#00D4FF]/30 p-[2px]">
+                  <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
+                    <video
+                      src="/images/lifting/grok-video-1975e92a-fcdc-4070-8f5c-e36555261a40.mp4"
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+                    <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#D4AF37]/50 rounded-tl-lg" />
+                    <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#D4AF37]/50 rounded-br-lg" />
+                  </div>
+                </div>
               </div>
-              <HIFURapidFireIllustration />
             </motion.div>
           </div>
         </div>

@@ -467,74 +467,35 @@ export default function InModeDetail() {
 
             <AnimateOnScroll animation="fadeInRight">
               <div className="relative">
-                <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                  <div
-                    className="absolute inset-0 bg-cover bg-center"
-                    style={{ backgroundImage: 'url(/images/lifting/inmode-hero.png)' }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#E91E63]/20 via-transparent to-[#9C27B0]/10" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <motion.div className="relative w-64 h-64">
-                      {/* Three orbiting circles */}
-                      <motion.div
-                        className="absolute inset-0"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-                      >
-                        <motion.div
-                          className="absolute top-0 left-1/2 -translate-x-1/2 w-16 h-16 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                          style={{ backgroundColor: INMODE_COLORS.forma }}
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        >
-                          Forma
-                        </motion.div>
-                      </motion.div>
-                      <motion.div
-                        className="absolute inset-0"
-                        animate={{ rotate: -360 }}
-                        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                      >
-                        <motion.div
-                          className="absolute bottom-4 left-4 w-16 h-16 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                          style={{ backgroundColor: INMODE_COLORS.morpheus }}
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-                        >
-                          M8
-                        </motion.div>
-                      </motion.div>
-                      <motion.div
-                        className="absolute inset-0"
-                        animate={{ rotate: 360 }}
-                        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                      >
-                        <motion.div
-                          className="absolute bottom-4 right-4 w-16 h-16 rounded-full flex items-center justify-center text-white text-xs font-bold"
-                          style={{ backgroundColor: INMODE_COLORS.facetite }}
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-                        >
-                          FT
-                        </motion.div>
-                      </motion.div>
-                      {/* Center */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                          className="w-20 h-20 rounded-full bg-gradient-to-br from-[#E91E63] to-[#9C27B0] flex items-center justify-center"
-                          animate={{ scale: [1, 1.1, 1] }}
-                          transition={{ duration: 3, repeat: Infinity }}
-                        >
-                          <span className="text-white font-serif text-lg">IN</span>
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                    <div className="absolute bottom-8 left-0 right-0 text-center">
-                      <p className="font-serif text-2xl text-secondary/70">All-in-One</p>
-                      <p className="text-small text-mono-light">Premium Platform</p>
+                {/* Main visual with device video */}
+                <motion.div
+                  className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  {/* Premium gradient border */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#E91E63]/30 via-[#D4AF37]/20 to-[#9C27B0]/30 p-[2px]">
+                    <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
+                      {/* Hero Video */}
+                      <video
+                        src="/images/lifting/grok-video-971cecd6-7d15-437e-b67c-c3dcb6a62830.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+
+                      {/* Glassmorphism overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+
+                      {/* Premium corner accents */}
+                      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#D4AF37]/50 rounded-tl-lg" />
+                      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#D4AF37]/50 rounded-br-lg" />
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 <motion.div
                   className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-lg px-4 py-3"

@@ -609,19 +609,14 @@ export default function ThermageDetail() {
                   {/* Premium gradient border */}
                   <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#FF6B35]/30 via-[#D4AF37]/20 to-primary/30 p-[2px]">
                     <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
-                      {/* Hero Image with slow zoom animation */}
-                      <motion.img
-                        src="/images/lifting/thermage/flx-closeup.jpg"
-                        alt="Thermage FLX 장비"
+                      {/* Hero Video */}
+                      <video
+                        src="/images/lifting/thermage/videos/thermage-flx-demo.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
                         className="absolute inset-0 w-full h-full object-cover"
-                        animate={{
-                          scale: [1, 1.08, 1],
-                        }}
-                        transition={{
-                          duration: 20,
-                          repeat: Infinity,
-                          ease: "easeInOut"
-                        }}
                       />
 
                       {/* Glassmorphism overlay */}

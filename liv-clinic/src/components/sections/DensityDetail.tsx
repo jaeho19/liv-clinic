@@ -516,57 +516,38 @@ export default function DensityDetail() {
               </div>
             </AnimateOnScroll>
 
-            {/* Right: Visual */}
+            {/* Right: Visual with Video */}
             <AnimateOnScroll animation="fadeInRight">
               <div className="relative">
-                {/* Main visual placeholder */}
-                <div className="relative aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-[#8B5CF6]/20 via-background to-[#06B6D4]/20 shadow-2xl">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    {/* Animated dual energy visualization */}
-                    <motion.div className="relative w-56 h-56">
-                      {/* Outer rings */}
-                      {[0, 1, 2].map((i) => (
-                        <motion.div
-                          key={i}
-                          className="absolute inset-0 rounded-full"
-                          style={{
-                            border: `2px solid ${i % 2 === 0 ? '#8B5CF6' : '#06B6D4'}`,
-                            scale: 1 + i * 0.2,
-                            opacity: 0.3
-                          }}
-                          animate={{
-                            rotate: i % 2 === 0 ? 360 : -360,
-                            opacity: [0.2, 0.5, 0.2]
-                          }}
-                          transition={{ duration: 6 + i * 2, repeat: Infinity, ease: "linear" }}
-                        />
-                      ))}
-                      {/* Center dual core */}
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <motion.div
-                          className="relative w-24 h-24"
-                          animate={{ rotate: 360 }}
-                          transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                        >
-                          <motion.div
-                            className="absolute top-0 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#8B5CF6]"
-                            animate={{ scale: [1, 1.2, 1] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          />
-                          <motion.div
-                            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full bg-[#06B6D4]"
-                            animate={{ scale: [1.2, 1, 1.2] }}
-                            transition={{ duration: 2, repeat: Infinity }}
-                          />
-                        </motion.div>
-                      </div>
-                    </motion.div>
-                    <div className="absolute bottom-8 left-0 right-0 text-center">
-                      <p className="font-serif text-2xl text-secondary/70">RF Energy</p>
-                      <p className="text-small text-mono-light">고주파 리프팅</p>
+                {/* Main visual with device video */}
+                <motion.div
+                  className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  {/* Premium gradient border */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#8B5CF6]/30 via-[#D4AF37]/20 to-[#06B6D4]/30 p-[2px]">
+                    <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
+                      {/* Hero Video */}
+                      <video
+                        src="/images/lifting/grok-video-6d553fd0-24fc-4c62-9199-a28e21851279.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+
+                      {/* Glassmorphism overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+
+                      {/* Premium corner accents */}
+                      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#D4AF37]/50 rounded-tl-lg" />
+                      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#D4AF37]/50 rounded-br-lg" />
                     </div>
                   </div>
-                </div>
+                </motion.div>
 
                 {/* Floating badges */}
                 <motion.div
