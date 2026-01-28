@@ -2931,5 +2931,50 @@
     "kakao": "カカオ",
     "call": "電話",
     "kakaoTalk": "カカオトーク"
+  },
+  "aboutPage": {
+    "hero": {
+      "subtitle": "About LIV",
+      "title": "リブブランド",
+      "description1": "自然な美しさを追求するプレミアムアンチエイジングクリニック、",
+      "description2": "リブ形成外科をご紹介します。"
+    },
+    "philosophy": {
+      "subtitle": "Brand Philosophy",
+      "title1": "Slow Aging,",
+      "title2": "Natural Beauty",
+      "description1": "リブ形成外科は「ゆっくりとしたエイジング、自然な美しさ」という哲学のもと、過度でない本来の美しさを追求しています。",
+      "description2": "急激な変化よりも自然で段階的な改善を通じて、時間が経っても美しさを維持できるようお手伝いいたします。",
+      "description3": "プレミアム正規品機器と豊富な臨床経験を基に、個人に合わせたソリューションを提供いたします。",
+      "imageAlt": "LIVクリニックロビー"
+    },
+    "brandMessage": {
+      "title": "Beyond Gravity",
+      "description1": "重力を超えた美しさ、",
+      "description2": "リブ独自のアンチグラビティソリューションで",
+      "description3": "自然なリフティングを体験してください。"
+    },
+    "coreValues": {
+      "subtitle": "Core Values",
+      "title": "4つの核心価値"
+    },
+    "certifications": {
+      "subtitle": "Certifications",
+      "title": "公式認証病院"
+    },
+    "quickLinks": {
+      "staff": {
+        "title": "医療スタッフ紹介",
+        "subtitle": "Medical Staff"
+      },
+      "equipment": {
+        "title": "保有機器",
+        "subtitle": "Equipment"
+      },
+      "location": {
+        "title": "アクセス",
+        "subtitle": "Location"
+      }
+    }
   }
 }

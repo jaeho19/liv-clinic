@@ -2931,5 +2931,50 @@
     "kakao": "KakaoTalk",
     "call": "Call",
     "kakaoTalk": "KakaoTalk"
+  },
+  "aboutPage": {
+    "hero": {
+      "subtitle": "About LIV",
+      "title": "Our Brand",
+      "description1": "A premium anti-aging clinic pursuing natural beauty,",
+      "description2": "introducing LIV Plastic Surgery."
+    },
+    "philosophy": {
+      "subtitle": "Brand Philosophy",
+      "title1": "Slow Aging,",
+      "title2": "Natural Beauty",
+      "description1": "LIV Plastic Surgery pursues natural, understated beauty under the philosophy of \"Slow Aging, Natural Beauty.\"",
+      "description2": "Rather than dramatic changes, we help you maintain your beauty over time through natural, gradual improvements.",
+      "description3": "We provide personalized solutions based on premium authentic equipment and extensive clinical experience.",
+      "imageAlt": "LIV Clinic Lobby"
+    },
+    "brandMessage": {
+      "title": "Beyond Gravity",
+      "description1": "Beauty beyond gravity,",
+      "description2": "Experience natural lifting with",
+      "description3": "LIV's exclusive Anti-Gravity solution."
+    },
+    "coreValues": {
+      "subtitle": "Core Values",
+      "title": "Our 4 Core Values"
+    },
+    "certifications": {
+      "subtitle": "Certifications",
+      "title": "Officially Certified Clinic"
+    },
+    "quickLinks": {
+      "staff": {
+        "title": "Medical Staff",
+        "subtitle": "Meet Our Team"
+      },
+      "equipment": {
+        "title": "Equipment",
+        "subtitle": "Our Technology"
+      },
+      "location": {
+        "title": "Location",
+        "subtitle": "Visit Us"
+      }
+    }
   }
 }

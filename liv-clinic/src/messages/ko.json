@@ -2933,5 +2933,50 @@
     "kakao": "카톡상담",
     "call": "전화",
     "kakaoTalk": "카카오톡"
+  },
+  "aboutPage": {
+    "hero": {
+      "subtitle": "About LIV",
+      "title": "리브 브랜드",
+      "description1": "자연스러움을 추구하는 프리미엄 안티에이징 클리닉,",
+      "description2": "리브성형외과를 소개합니다."
+    },
+    "philosophy": {
+      "subtitle": "Brand Philosophy",
+      "title1": "Slow Aging,",
+      "title2": "Natural Beauty",
+      "description1": "리브성형외과는 \"느린 노화, 자연스러운 아름다움\"이라는 철학 아래, 과하지 않은 본연의 아름다움을 추구합니다.",
+      "description2": "급격한 변화보다는 자연스럽고 점진적인 개선을 통해, 시간이 지나도 아름다움을 유지할 수 있도록 도와드립니다.",
+      "description3": "프리미엄 정품 장비와 풍부한 임상 경험을 바탕으로, 개인 맞춤형 솔루션을 제공합니다.",
+      "imageAlt": "LIV 클리닉 로비"
+    },
+    "brandMessage": {
+      "title": "Beyond Gravity",
+      "description1": "중력을 넘어선 아름다움,",
+      "description2": "리브만의 Anti-Gravity 솔루션으로",
+      "description3": "자연스러운 리프팅을 경험하세요."
+    },
+    "coreValues": {
+      "subtitle": "Core Values",
+      "title": "4대 핵심 가치"
+    },
+    "certifications": {
+      "subtitle": "Certifications",
+      "title": "공식 인증 병원"
+    },
+    "quickLinks": {
+      "staff": {
+        "title": "의료진 소개",
+        "subtitle": "Medical Staff"
+      },
+      "equipment": {
+        "title": "보유 장비",
+        "subtitle": "Equipment"
+      },
+      "location": {
+        "title": "오시는 길",
+        "subtitle": "Location"
+      }
+    }
   }
 }

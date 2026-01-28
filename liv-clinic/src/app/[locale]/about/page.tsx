@@ -15,7 +15,7 @@ const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import aboutAnimation from '@/../public/lottie/about-01.json';
 
 export default function AboutPage() {
-  const t = useTranslations();
+  const t = useTranslations('aboutPage');
 
   return (
     <>
@@ -24,12 +24,12 @@ export default function AboutPage() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="max-w-3xl">
-              <p className="font-serif text-h3 text-primary mb-4">About LIV</p>
-              <h1 className="text-display text-secondary mb-6">리브 브랜드</h1>
+              <p className="font-serif text-h3 text-primary mb-4">{t('hero.subtitle')}</p>
+              <h1 className="text-display text-secondary mb-6">{t('hero.title')}</h1>
               <p className="text-h4 text-mono leading-relaxed">
-                자연스러움을 추구하는 프리미엄 안티에이징 클리닉,
+                {t('hero.description1')}
                 <br />
-                리브성형외과를 소개합니다.
+                {t('hero.description2')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -49,7 +49,7 @@ export default function AboutPage() {
                 <div className="absolute inset-0">
                   <Image
                     src="/images/about/lobby.jpg"
-                    alt="LIV 클리닉 로비"
+                    alt={t('philosophy.imageAlt')}
                     fill
                     className="object-cover"
                     priority
@@ -75,25 +75,16 @@ export default function AboutPage() {
 
             <AnimateOnScroll animation="fadeInRight">
               <div>
-                <p className="font-serif text-h3 text-primary mb-2">Brand Philosophy</p>
+                <p className="font-serif text-h3 text-primary mb-2">{t('philosophy.subtitle')}</p>
                 <h2 className="text-h1 text-secondary mb-8">
-                  Slow Aging,
+                  {t('philosophy.title1')}
                   <br />
-                  Natural Beauty
+                  {t('philosophy.title2')}
                 </h2>
                 <div className="space-y-6 text-body text-mono leading-relaxed">
-                  <p>
-                    리브성형외과는 "느린 노화, 자연스러운 아름다움"이라는 철학 아래,
-                    과하지 않은 본연의 아름다움을 추구합니다.
-                  </p>
-                  <p>
-                    급격한 변화보다는 자연스럽고 점진적인 개선을 통해,
-                    시간이 지나도 아름다움을 유지할 수 있도록 도와드립니다.
-                  </p>
-                  <p>
-                    프리미엄 정품 장비와 풍부한 임상 경험을 바탕으로,
-                    개인 맞춤형 솔루션을 제공합니다.
-                  </p>
+                  <p>{t('philosophy.description1')}</p>
+                  <p>{t('philosophy.description2')}</p>
+                  <p>{t('philosophy.description3')}</p>
                 </div>
               </div>
             </AnimateOnScroll>
@@ -107,14 +98,14 @@ export default function AboutPage() {
           <AnimateOnScroll>
             <div className="max-w-4xl mx-auto text-center">
               <p className="font-serif text-6xl md:text-8xl mb-8 opacity-90">
-                Beyond Gravity
+                {t('brandMessage.title')}
               </p>
               <p className="text-h3 opacity-80 leading-relaxed">
-                중력을 넘어선 아름다움,
+                {t('brandMessage.description1')}
                 <br />
-                리브만의 Anti-Gravity 솔루션으로
+                {t('brandMessage.description2')}
                 <br />
-                자연스러운 리프팅을 경험하세요.
+                {t('brandMessage.description3')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -126,8 +117,8 @@ export default function AboutPage() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-primary mb-2">Core Values</p>
-              <h2 className="text-h1 text-secondary">4대 핵심 가치</h2>
+              <p className="font-serif text-h3 text-primary mb-2">{t('coreValues.subtitle')}</p>
+              <h2 className="text-h1 text-secondary">{t('coreValues.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -163,8 +154,8 @@ export default function AboutPage() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-primary mb-2">Certifications</p>
-              <h2 className="text-h1 text-secondary">공식 인증 병원</h2>
+              <p className="font-serif text-h3 text-primary mb-2">{t('certifications.subtitle')}</p>
+              <h2 className="text-h1 text-secondary">{t('certifications.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -206,9 +197,9 @@ export default function AboutPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-h4 text-secondary group-hover:text-primary transition-colors">
-                      의료진 소개
+                      {t('quickLinks.staff.title')}
                     </h3>
-                    <p className="text-body text-mono-light">Medical Staff</p>
+                    <p className="text-body text-mono-light">{t('quickLinks.staff.subtitle')}</p>
                   </div>
                   <svg className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -221,9 +212,9 @@ export default function AboutPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-h4 text-secondary group-hover:text-primary transition-colors">
-                      보유 장비
+                      {t('quickLinks.equipment.title')}
                     </h3>
-                    <p className="text-body text-mono-light">Equipment</p>
+                    <p className="text-body text-mono-light">{t('quickLinks.equipment.subtitle')}</p>
                   </div>
                   <svg className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -236,9 +227,9 @@ export default function AboutPage() {
                 <div className="flex items-center justify-between">
                   <div>
                     <h3 className="text-h4 text-secondary group-hover:text-primary transition-colors">
-                      오시는 길
+                      {t('quickLinks.location.title')}
                     </h3>
-                    <p className="text-body text-mono-light">Location</p>
+                    <p className="text-body text-mono-light">{t('quickLinks.location.subtitle')}</p>
                   </div>
                   <svg className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

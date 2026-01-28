@@ -2931,5 +2931,50 @@
     "kakao": "KakaoTalk",
     "call": "电话",
     "kakaoTalk": "KakaoTalk"
+  },
+  "aboutPage": {
+    "hero": {
+      "subtitle": "About LIV",
+      "title": "LIV品牌",
+      "description1": "追求自然美的高端抗衰老诊所，",
+      "description2": "为您介绍LIV整形外科。"
+    },
+    "philosophy": {
+      "subtitle": "Brand Philosophy",
+      "title1": "Slow Aging,",
+      "title2": "Natural Beauty",
+      "description1": "LIV整形外科秉承"缓慢老化，自然美丽"的理念，追求不过度的本真之美。",
+      "description2": "比起剧烈的变化，我们通过自然渐进的改善，帮助您长久保持美丽。",
+      "description3": "我们基于高端正品设备和丰富的临床经验，提供个性化解决方案。",
+      "imageAlt": "LIV诊所大厅"
+    },
+    "brandMessage": {
+      "title": "Beyond Gravity",
+      "description1": "超越重力的美丽，",
+      "description2": "通过LIV独家的抗重力解决方案",
+      "description3": "体验自然的提升效果。"
+    },
+    "coreValues": {
+      "subtitle": "Core Values",
+      "title": "四大核心价值"
+    },
+    "certifications": {
+      "subtitle": "Certifications",
+      "title": "官方认证医院"
+    },
+    "quickLinks": {
+      "staff": {
+        "title": "医疗团队介绍",
+        "subtitle": "Medical Staff"
+      },
+      "equipment": {
+        "title": "设备介绍",
+        "subtitle": "Equipment"
+      },
+      "location": {
+        "title": "位置指南",
+        "subtitle": "Location"
+      }
+    }
   }
 }

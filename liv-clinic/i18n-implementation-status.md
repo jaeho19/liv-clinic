@@ -2,7 +2,7 @@
 
 > **작성일**: 2025-01-27
 > **최종 수정**: 2025-01-28
-> **전체 완성도**: 92% 🟢
+> **전체 완성도**: 97% 🟢
 
 ---
 
@@ -53,26 +53,25 @@ messages/
 
 ## 3. 컴포넌트 번역 상태
 
-### ✅ 번역 완료 컴포넌트 (87개 인스턴스)
+### ✅ 번역 완료 컴포넌트
 
 | 컴포넌트 | 네임스페이스 | 상태 |
 |----------|--------------|------|
 | `Header.tsx` | nav, common | ✅ |
 | `Footer.tsx` | footer | ✅ |
 | `Hero.tsx` | hero | ✅ |
-| `FAQ.tsx` | faq | ⚠️ 부분 |
-| `UltheraDetail.tsx` | treatments.lifting.ulthera | ✅ |
-| `ThermageDetail.tsx` | treatments.lifting.thermage | ✅ |
-| `DensityDetail.tsx` | treatments.lifting.density | ✅ |
-| `InModeDetail.tsx` | treatments.lifting.inmode | ✅ |
-| `ShurinkDetail.tsx` | treatments.lifting.shurink | ✅ |
+| `FAQ.tsx` | faq, common | ✅ |
+| **Lifting 6종** | treatments.lifting.* | ✅ |
+| **Antiaging 3종** | treatments.antiaging.* | ✅ |
+| **Laser 7종** | treatments.laser.* | ✅ |
+| `SignatureDetail.tsx` | signaturePage, common | ✅ |
+| `gallery/page.tsx` | gallery, categories, common | ✅ |
+| `NaverBlog.tsx` | categories, common | ✅ |
 
-### 최근 번역 완료 작업
-- `feat(i18n): ShurinkDetail.tsx 다국어 번역 완료`
-- `fix(i18n): InModeDetail CTA 타입 오류 수정`
-- `fix(i18n): InModeDetail FAQ 번역 키 수정`
-- `feat(i18n): InModeDetail.tsx 다국어 번역 완료`
-- `feat(i18n): DensityDetail.tsx 다국어 번역 완료`
+### 최근 번역 완료 작업 (2025-01-28)
+- `feat(i18n): 모든 Detail 페이지 다국어 번역 완료 (16개)`
+- `feat(i18n): 다국어 번역 누락 수정 - signature, lifting, antiaging, trust 페이지`
+- `fix(i18n): 언어 선택 후 페이지 이동 시 locale 유지 안 되는 버그 수정`
 
 ---
 
@@ -99,19 +98,9 @@ messages/
 #### 4.4 ThreadDetail.tsx ✅ 핵심 항목 완료
 - FAQ 제목: `tCommon('faq')`
 
-### 🟡 남은 항목 - 추가 작업 필요
+### ✅ 모든 항목 완료 (2025-01-28)
 
-#### SignatureDetail.tsx
-```typescript
-description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리미엄 패키지입니다...'
-```
-
-#### gallery/page.tsx
-- `'써마지 FLX'` → `t('nav.thermage')`
-- `'전체'` → `tCommon('all')`
-
-#### 세부 설명 텍스트 (SkinToneDetail, HairRemovalDetail, ThreadDetail)
-- 피부 고민 설명, FAQ 답변 등 세부 콘텐츠는 추후 번역 필요
+모든 Detail 페이지의 다국어 번역이 완료되었습니다.
 
 ---
 
@@ -120,31 +109,21 @@ description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리�
 | 영역 | 완성도 | 상태 |
 |------|--------|------|
 | UI/네비게이션 | 99% | ✅ |
-| 핵심 페이지 | 97% | ✅ |
-| 시술 상세 페이지 | 90% | ✅ |
-| 의료 Q&A | 85% | ✅ |
-| 갤러리/동적 콘텐츠 | 90% | ✅ |
+| 핵심 페이지 | 98% | ✅ |
+| 시술 상세 페이지 (16종) | 100% | ✅ |
+| 의료 Q&A | 95% | ✅ |
+| 갤러리/동적 콘텐츠 | 95% | ✅ |
 
 ---
 
-## 6. 추가 필요 번역 키
+## 6. 번역 키 현황
 
-### common 네임스페이스에 추가 필요:
-```json
-{
-  "common": {
-    "expandAll": "전체 펼치기",
-    "collapseAll": "전체 접기",
-    "all": "전체",
-    "viewAll": "전체 보기"
-  }
-}
-```
-
-### treatments 네임스페이스 확장 필요:
-- `treatments.laser.skintone.targetAreas[]`
-- `treatments.laser.hairremoval.features[]`
-- `treatments.lifting.thread.areas[]`
+### ✅ 추가 완료된 키 (2025-01-28):
+- `common.expandAll`, `common.collapseAll`, `common.all`, `common.viewAll`
+- `common.duration`, `common.recommendedFor`, `common.freeConsultation`, `common.faq`
+- `categories.*` (lifting, antiaging, skin, skincare, news, qna)
+- `gallery.*` (title, description, noticeText, experienceChange, findTreatment)
+- 모든 `treatments.lifting.*`, `treatments.antiaging.*`, `treatments.laser.*` 키
 
 ---
 
@@ -164,9 +143,6 @@ description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리�
 - [x] categories 네임스페이스 추가 (lifting, antiaging, skin, skincare, news, qna)
 - [x] gallery 네임스페이스 추가 (title, description, noticeText, experienceChange, findTreatment)
 
-### Priority 3 - 다음 작업 (Nice-to-have)
-- [ ] 세부 설명 텍스트 번역 (피부 고민, FAQ 답변 등)
-
 ### Priority 3 - 추후 (Nice-to-have)
 - [ ] 번역 완성도 자동 검사 스크립트 작성
 - [ ] 하드코딩 한글 감지 ESLint 규칙 추가
@@ -179,16 +155,27 @@ description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리�
 | 컴포넌트 | 파일 경로 | 핵심 번역 | 세부 번역 |
 |----------|-----------|----------|----------|
 | FAQ | `src/components/sections/FAQ.tsx` | ✅ 완료 | ✅ 완료 |
-| SkinToneDetail | `src/components/sections/SkinToneDetail.tsx` | ✅ 완료 | 🟡 부분 |
-| HairRemovalDetail | `src/components/sections/HairRemovalDetail.tsx` | ✅ 완료 | 🟡 부분 |
-| ThreadDetail | `src/components/sections/ThreadDetail.tsx` | ✅ 완료 | 🟡 부분 |
-| AptosDetail | `src/components/sections/AptosDetail.tsx` | 🟡 검토 필요 | 🟡 부분 |
-| VascularDetail | `src/components/sections/VascularDetail.tsx` | 🟡 검토 필요 | 🟡 부분 |
-| PigmentationDetail | `src/components/sections/PigmentationDetail.tsx` | 🟡 검토 필요 | 🟡 부분 |
-| TattooDetail | `src/components/sections/TattooDetail.tsx` | 🟡 검토 필요 | 🟡 부분 |
-| BotoxDetail | `src/components/sections/BotoxDetail.tsx` | 🟡 검토 필요 | 🟡 부분 |
-| FillerDetail | `src/components/sections/FillerDetail.tsx` | 🟡 검토 필요 | 🟡 부분 |
-| SkinboosterDetail | `src/components/sections/SkinboosterDetail.tsx` | 🟡 검토 필요 | 🟡 부분 |
+| **Lifting 6종** | | | |
+| UltheraDetail | `src/components/sections/UltheraDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| ThermageDetail | `src/components/sections/ThermageDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| DensityDetail | `src/components/sections/DensityDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| InModeDetail | `src/components/sections/InModeDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| ShurinkDetail | `src/components/sections/ShurinkDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| ThreadDetail | `src/components/sections/ThreadDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| **Antiaging 3종** | | | |
+| BotoxDetail | `src/components/sections/BotoxDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| FillerDetail | `src/components/sections/FillerDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| SkinboosterDetail | `src/components/sections/SkinboosterDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| **Laser 7종** | | | |
+| LaserCenterDetail | `src/components/sections/LaserCenterDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| SkinToneDetail | `src/components/sections/SkinToneDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| HairRemovalDetail | `src/components/sections/HairRemovalDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| VascularDetail | `src/components/sections/VascularDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| PigmentationDetail | `src/components/sections/PigmentationDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| TattooRemovalDetail | `src/components/sections/TattooRemovalDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| AptosDetail | `src/components/sections/AptosDetail.tsx` | ✅ 완료 | ✅ 완료 |
+| **기타** | | | |
+| SignatureDetail | `src/components/sections/SignatureDetail.tsx` | ✅ 완료 | ✅ 완료 |
 
 ---
 
@@ -196,7 +183,7 @@ description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리�
 
 LIV Clinic 웹사이트는 탄탄한 i18n 인프라를 갖추고 있으며, 4개 언어(한/영/일/중)에 대해 1,500개 이상의 번역 키가 구현되어 있습니다.
 
-**현재 상태**: 전체 92% 완성 🟢
+**현재 상태**: 전체 97% 완성 🟢
 
 ### 2025-01-27 완료된 작업
 1. ✅ FAQ.tsx 토글 버튼 번역 키 적용 (`expandAll`, `collapseAll`)
@@ -211,6 +198,10 @@ LIV Clinic 웹사이트는 탄탄한 i18n 인프라를 갖추고 있으며, 4개
 3. ✅ NaverBlog.tsx 전체 UI 텍스트 번역 (카테고리 필터, 통계, 버튼)
 4. ✅ `categories` 네임스페이스 신규 추가 (4개 언어 모두)
 5. ✅ `gallery` 네임스페이스 신규 추가 (4개 언어 모두)
+6. ✅ **모든 16개 Detail 페이지 다국어 번역 완료**
+   - Lifting 6종: Ulthera, Thermage, Density, InMode, Shurink, Thread
+   - Antiaging 3종: Botox, Filler, Skinbooster
+   - Laser 7종: LaserCenter, SkinTone, HairRemoval, Vascular, Pigmentation, TattooRemoval, Aptos
 
 ### 추가된 번역 키 (2025-01-28)
 ```json
@@ -250,11 +241,12 @@ LIV Clinic 웹사이트는 탄탄한 i18n 인프라를 갖추고 있으며, 4개
 }
 ```
 
-**남은 작업** (Priority 3):
-1. 시술 상세 페이지의 세부 설명 텍스트 번역 (콘텐츠 데이터)
-2. 기타 Detail 컴포넌트 검토 (AptosDetail, VascularDetail 등)
+**남은 작업** (Priority 3 - Nice-to-have):
+1. 번역 완성도 자동 검사 스크립트 작성
+2. 하드코딩 한글 감지 ESLint 규칙 추가
+3. 번역 키 문서화
 
-**결론**: Priority 2 작업이 완료되어 92% 번역 완성도를 달성했습니다. 남은 작업은 주로 콘텐츠 데이터 번역입니다.
+**결론**: 모든 16개 Detail 페이지 다국어 번역이 완료되어 **97% 번역 완성도**를 달성했습니다. 핵심 UI 및 콘텐츠 번역이 완료되었으며, 남은 작업은 개발 도구 및 문서화 관련 작업입니다.
 
 ---
 
