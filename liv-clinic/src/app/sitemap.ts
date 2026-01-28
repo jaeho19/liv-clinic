@@ -33,7 +33,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly' as const,
   }));
 
-  const allPages = [...staticPages, ...liftingTreatments, ...antiagingTreatments];
+  // Laser category pages (다국어 검색 최적화)
+  const laserCategories = [
+    'pigmentation',  // 기미/색소
+    'vascular',      // 홍조/혈관
+    'skintone',      // 피부톤/미백
+    'hair-removal',  // 제모
+    'tattoo',        // 문신 제거
+  ].map((id) => ({
+    path: `/laser/${id}`,
+    priority: 0.8,
+    changeFrequency: 'monthly' as const,
+  }));
+
+  const allPages = [...staticPages, ...liftingTreatments, ...antiagingTreatments, ...laserCategories];
 
   // Generate sitemap entries for all locales
   const sitemapEntries: MetadataRoute.Sitemap = [];

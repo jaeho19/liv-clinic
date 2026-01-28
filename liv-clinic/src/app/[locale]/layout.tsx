@@ -42,7 +42,7 @@ export default async function LocaleLayout({
   // Get messages for the current locale
   const messages = await getMessages();
 
-  const localBusinessSchema = generateLocalBusinessSchema();
+  const localBusinessSchema = generateLocalBusinessSchema(locale);
   const webSiteSchema = generateWebSiteSchema();
 
   const skipToContentText = {

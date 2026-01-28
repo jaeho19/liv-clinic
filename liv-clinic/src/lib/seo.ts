@@ -11,7 +11,7 @@ export const defaultSEO = {
   slogan: SITE_INFO.slogan,
 };
 
-// Locale-specific metadata
+// Locale-specific metadata (다국어 검색 최적화 강화)
 export const seoConfig: Record<string, {
   title: string;
   description: string;
@@ -19,38 +19,97 @@ export const seoConfig: Record<string, {
 }> = {
   ko: {
     title: '리브성형외과 | 수술 없는 프리미엄 안티에이징 신사역',
-    description: '울쎄라피 프라임, 써마지 공식 인증 병원. 중력을 넘어선 아름다움, Anti-Gravity 리프팅 솔루션. 신사역 4번 출구 도보 1분. 보톡스, 필러, 스킨부스터 전문.',
+    description: '울쎄라피 프라임, 써마지 FLX 공식 인증 병원. 중력을 넘어선 아름다움, Anti-Gravity 리프팅 솔루션. 신사역 4번 출구 도보 1분. 보톡스, 필러, 스킨부스터, 실리프팅, 레이저 토닝 전문 클리닉.',
     keywords: [
-      '리브성형외과', '신사역 피부과', '울쎄라피 프라임', '써마지', '리프팅',
-      '안티에이징', '보톡스', '필러', '스킨부스터', '클래리티 II',
-      '강남 피부과', '신사동 성형외과', '비수술 리프팅', '프리미엄 피부과'
+      // 병원명 및 지역
+      '리브성형외과', 'LIV성형외과', '신사역 피부과', '신사역 성형외과', '신사동 피부과',
+      '강남 피부과', '강남 성형외과', '압구정 피부과', '서울 피부과',
+      // 리프팅 시술
+      '울쎄라피', '울쎄라피 프라임', '울쎄라 가격', '울쎄라 효과', '울쎄라 병원',
+      '써마지', '써마지 FLX', '써마지 가격', '써마지 효과', '써마지 병원',
+      '실리프팅', '압토스 실리프팅', 'PDO 실리프팅', '실리프팅 가격',
+      '비수술 리프팅', '비수술 안면거상', 'HIFU 리프팅', '고주파 리프팅',
+      // 안티에이징 시술
+      '보톡스', '보톡스 가격', '이마 보톡스', '턱 보톡스', '주름 보톡스',
+      '필러', '필러 가격', '코 필러', '입술 필러', '팔자주름 필러',
+      '스킨부스터', '쥬베룩', '리쥬란', '물광주사',
+      // 레이저 시술
+      '레이저 토닝', '피코 레이저', '클래리티 II', '제모 레이저',
+      '기미 치료', '색소 치료', '홍조 치료', '모공 치료',
+      // 일반 키워드
+      '안티에이징', '피부 탄력', '주름 개선', '프리미엄 피부과', '피부관리'
     ],
   },
   en: {
     title: 'LIV Plastic Surgery | Premium Non-surgical Anti-aging Seoul Korea',
-    description: 'Official Ultherapy Prime & Thermage certified clinic in Seoul. Beyond Gravity, Anti-Gravity lifting solution. 1 min from Sinsa Station Exit 4. Botox, Filler, Skin Booster specialists.',
+    description: 'Official Ultherapy Prime & Thermage FLX certified clinic in Seoul, Korea. Beyond Gravity, Anti-Gravity lifting solution. 1 min from Sinsa Station Exit 4, Gangnam. Botox, Filler, Skin Booster, Thread Lift, Laser specialists.',
     keywords: [
-      'LIV Plastic Surgery', 'Seoul dermatology', 'Ultherapy Prime Korea', 'Thermage Korea',
-      'Korean beauty clinic', 'anti-aging Seoul', 'Botox Seoul', 'Filler Seoul',
-      'skin booster Korea', 'Gangnam clinic', 'non-surgical facelift'
+      // Clinic name & location
+      'LIV Plastic Surgery', 'LIV Clinic Seoul', 'Seoul dermatology', 'Seoul plastic surgery',
+      'Gangnam clinic', 'Gangnam dermatology', 'Sinsa station clinic', 'Korea beauty clinic',
+      // Lifting treatments
+      'Ultherapy Korea', 'Ultherapy Prime Seoul', 'Ultherapy cost Korea', 'Ultherapy before after',
+      'Thermage Korea', 'Thermage FLX Seoul', 'Thermage cost Korea', 'Thermage before after',
+      'thread lift Korea', 'APTOS thread lift', 'PDO thread lift Seoul', 'thread lift cost',
+      'non-surgical facelift Korea', 'HIFU lifting Seoul', 'RF lifting Korea',
+      // Anti-aging treatments
+      'Botox Seoul', 'Botox Korea', 'Botox cost Korea', 'forehead Botox Seoul',
+      'filler Seoul', 'filler Korea', 'dermal filler cost', 'nose filler Seoul',
+      'skin booster Korea', 'Juvelook Korea', 'Rejuran Korea', 'water glow injection',
+      // Laser treatments
+      'laser toning Seoul', 'Pico laser Korea', 'Clarity II laser', 'laser hair removal Seoul',
+      'melasma treatment Korea', 'pigmentation treatment Seoul', 'rosacea treatment Korea',
+      // General keywords
+      'anti-aging Seoul', 'skin tightening Korea', 'wrinkle treatment Seoul', 'K-beauty clinic',
+      'medical tourism Korea', 'best dermatologist Seoul', 'celebrity clinic Korea'
     ],
   },
   ja: {
-    title: 'リブ形成外科 | ソウル新沙洞プレミアム非手術アンチエイジング',
-    description: 'ウルセラ・サーマジ公式認証病院。重力を超えた美しさ、Anti-Gravityリフティングソリューション。新沙駅4番出口徒歩1分。ボトックス、フィラー、スキンブースター専門。',
+    title: 'リブ形成外科 | ソウル新沙プレミアム非手術アンチエイジング',
+    description: 'ウルセラプライム・サーマジFLX公式認証病院。重力を超えた美しさ、Anti-Gravityリフティングソリューション。新沙駅4番出口徒歩1分。ボトックス、フィラー、スキンブースター、糸リフト、レーザー専門。',
     keywords: [
-      'リブ形成外科', 'ソウル皮膚科', 'ウルセラ韓国', 'サーマジ韓国',
-      '韓国美容クリニック', 'アンチエイジングソウル', 'ボトックスソウル',
-      'フィラーソウル', '新沙洞クリニック', '非手術フェイスリフト'
+      // クリニック名・地域
+      'リブ形成外科', 'LIV形成外科', 'ソウル皮膚科', 'ソウル美容クリニック',
+      '江南クリニック', '江南皮膚科', '新沙洞クリニック', '韓国美容クリニック',
+      // リフティング施術
+      'ウルセラ韓国', 'ウルセラプライム', 'ウルセラ料金', 'ウルセラ効果',
+      'サーマジ韓国', 'サーマジFLX', 'サーマジ料金', 'サーマジ効果',
+      '糸リフト韓国', 'APTOS糸リフト', 'PDO糸リフト', '糸リフト料金',
+      '非手術フェイスリフト', 'HIFUリフティング', '高周波リフティング',
+      // アンチエイジング施術
+      'ボトックス韓国', 'ボトックスソウル', 'ボトックス料金', '額ボトックス',
+      'フィラー韓国', 'フィラーソウル', 'ヒアルロン酸注入', '鼻フィラー',
+      'スキンブースター韓国', 'ジュベルック', 'リジュラン', '水光注射',
+      // レーザー施術
+      'レーザートーニング', 'ピコレーザー韓国', 'クラリティII', '医療脱毛韓国',
+      '肝斑治療韓国', 'シミ治療ソウル', '赤み治療', '毛穴治療',
+      // 一般キーワード
+      'アンチエイジング韓国', '肌引き締め', 'しわ改善', 'Kビューティー',
+      '韓国医療観光', '韓国美容整形', '芸能人御用達クリニック'
     ],
   },
   zh: {
-    title: 'LIV整形外科 | 首尔新沙洞高端非手术抗衰老',
-    description: '超声刀、热玛吉官方认证医院。超越重力的美丽，Anti-Gravity提升解决方案。新沙站4号出口步行1分钟。肉毒素、玻尿酸、水光针专业。',
+    title: 'LIV整形外科 | 首尔新沙高端非手术抗衰老',
+    description: '超声刀Prime、热玛吉FLX官方认证医院。超越重力的美丽，Anti-Gravity提升解决方案。新沙站4号出口步行1分钟。肉毒素、玻尿酸、水光针、埋线提升、激光专业。',
     keywords: [
-      'LIV整形外科', '首尔皮肤科', '超声刀韩国', '热玛吉韩国',
-      '韩国美容诊所', '抗衰老首尔', '肉毒素首尔', '玻尿酸首尔',
-      '水光针韩国', '江南诊所', '非手术拉皮'
+      // 医院名称和地区
+      'LIV整形外科', 'LIV医美', '首尔皮肤科', '首尔整形医院',
+      '江南医美', '江南皮肤科', '新沙洞诊所', '韩国美容医院',
+      // 提升项目
+      '超声刀韩国', '超声刀Prime', '超声刀价格', '超声刀效果',
+      '热玛吉韩国', '热玛吉FLX', '热玛吉价格', '热玛吉效果',
+      '埋线提升韩国', 'APTOS埋线', 'PDO埋线', '埋线价格',
+      '非手术面部提升', 'HIFU提升', '射频提升',
+      // 抗衰老项目
+      '肉毒素韩国', '肉毒素首尔', '肉毒素价格', '额头肉毒素',
+      '玻尿酸韩国', '玻尿酸首尔', '玻尿酸填充', '鼻子玻尿酸',
+      '水光针韩国', 'Juvelook', 'Rejuran婴儿针', '水光注射',
+      // 激光项目
+      '激光美白', '皮秒激光韩国', 'Clarity II激光', '激光脱毛韩国',
+      '黄褐斑治疗韩国', '色斑治疗首尔', '红血丝治疗', '毛孔治疗',
+      // 一般关键词
+      '抗衰老首尔', '皮肤紧致', '祛皱治疗', 'K美容',
+      '韩国医疗旅游', '韩国医美', '明星同款诊所', '首尔高端医美'
     ],
   },
 };
@@ -139,15 +198,36 @@ export function generatePageMetadata({
   };
 }
 
-// Schema.org structured data for LocalBusiness (확장된 버전 - E-E-A-T 강화)
-export function generateLocalBusinessSchema() {
+// Schema.org structured data for LocalBusiness (확장된 버전 - E-E-A-T 강화 + 다국어)
+export function generateLocalBusinessSchema(locale: string = 'ko') {
+  // 다국어 설명
+  const descriptions: Record<string, string> = {
+    ko: seoConfig.ko.description,
+    en: seoConfig.en.description,
+    ja: seoConfig.ja.description,
+    zh: seoConfig.zh.description,
+  };
+
+  // 다국어 병원명
+  const names: Record<string, string> = {
+    ko: '리브성형외과',
+    en: 'LIV Plastic Surgery',
+    ja: 'リブ形成外科',
+    zh: 'LIV整形外科',
+  };
+
   return {
     '@context': 'https://schema.org',
     '@type': ['MedicalBusiness', 'MedicalOrganization'],
     '@id': `${BASE_URL}/#organization`,
-    name: SITE_INFO.name,
-    alternateName: SITE_INFO.nameEn,
-    description: seoConfig.ko.description,
+    name: names[locale] || SITE_INFO.name,
+    alternateName: [
+      SITE_INFO.nameEn,
+      'リブ形成外科',
+      'LIV整形外科',
+      '리브성형외과',
+    ],
+    description: descriptions[locale] || seoConfig.ko.description,
     url: BASE_URL,
     logo: `${BASE_URL}/images/logo.png`,
     image: `${BASE_URL}/images/og-image.jpg`,
@@ -254,62 +334,85 @@ export function generateLocalBusinessSchema() {
       },
     ],
 
-    // AI가 인식할 전문 분야 키워드
+    // AI가 인식할 전문 분야 키워드 (다국어 - ko, en, ja, zh)
     knowsAbout: [
-      'HIFU 리프팅',
-      'RF 고주파 리프팅',
-      '비수술 안티에이징',
-      '울쎄라피 프라임',
-      '써마지 FLX',
-      '보톡스',
-      '필러',
-      '스킨부스터',
-      '실리프팅',
-      '레이저 토닝',
+      // 한국어 (Korean)
+      'HIFU 리프팅', 'RF 고주파 리프팅', '비수술 안티에이징',
+      '울쎄라피 프라임', '써마지 FLX', '보톡스', '필러', '스킨부스터',
+      '실리프팅', '레이저 토닝', '피코 레이저', '주름 개선', '피부 탄력',
+      // English
+      'HIFU lifting', 'RF lifting', 'non-surgical anti-aging',
+      'Ultherapy Prime', 'Thermage FLX', 'Botox', 'dermal filler', 'skin booster',
+      'thread lift', 'laser toning', 'Pico laser', 'wrinkle treatment', 'skin tightening',
+      'Korean beauty clinic', 'K-beauty medical', 'Seoul aesthetic clinic',
+      // 日本語 (Japanese)
+      'HIFUリフティング', '高周波リフティング', '非手術アンチエイジング',
+      'ウルセラプライム', 'サーマジFLX', 'ボトックス', 'フィラー', 'スキンブースター',
+      '糸リフト', 'レーザートーニング', 'ピコレーザー', 'しわ改善', '肌引き締め',
+      '韓国美容クリニック', 'Kビューティー医療',
+      // 中文 (Chinese)
+      'HIFU提升', '射频提升', '非手术抗衰老',
+      '超声刀Prime', '热玛吉FLX', '肉毒素', '玻尿酸', '水光针',
+      '埋线提升', '激光美白', '皮秒激光', '祛皱', '皮肤紧致',
+      '韩国医美', 'K美容医疗', '首尔美容诊所',
     ],
 
     availableService: [
       {
         '@type': 'MedicalProcedure',
         name: 'Ultherapy Prime HIFU Lifting',
-        alternateName: '울쎄라피 프라임',
+        alternateName: ['울쎄라피 프라임', 'ウルセラプライム', '超声刀Prime'],
         procedureType: 'NoninvasiveProcedure',
-        description: 'FDA 승인 고강도 집속 초음파 리프팅',
+        description: 'FDA 승인 고강도 집속 초음파 리프팅 | FDA-approved High-Intensity Focused Ultrasound | FDA承認HIFU',
       },
       {
         '@type': 'MedicalProcedure',
         name: 'Thermage FLX',
-        alternateName: '써마지 FLX',
+        alternateName: ['써마지 FLX', 'サーマジFLX', '热玛吉FLX'],
         procedureType: 'NoninvasiveProcedure',
-        description: '4세대 프리미엄 고주파 리프팅',
+        description: '4세대 프리미엄 고주파 리프팅 | 4th Gen Premium RF Lifting | 第4世代RF',
       },
       {
         '@type': 'MedicalProcedure',
         name: 'APTOS Thread Lifting',
-        alternateName: '압토스 실리프팅',
+        alternateName: ['압토스 실리프팅', 'APTOS糸リフト', 'APTOS埋线提升'],
         procedureType: 'NoninvasiveProcedure',
-        description: '글로벌 인증 PDO/PCL 실리프팅',
+        description: '글로벌 인증 PDO/PCL 실리프팅 | Global Certified PDO/PCL Thread | 全球认证PDO/PCL埋线',
       },
       {
         '@type': 'MedicalProcedure',
         name: 'Botox',
-        alternateName: '보톡스',
+        alternateName: ['보톡스', 'ボトックス', '肉毒素'],
         procedureType: 'NoninvasiveProcedure',
-        description: '주름 개선 및 윤곽 시술',
+        description: '주름 개선 및 윤곽 시술 | Wrinkle & Contour Treatment | しわ改善・輪郭',
       },
       {
         '@type': 'MedicalProcedure',
-        name: 'Filler',
-        alternateName: '필러',
+        name: 'Dermal Filler',
+        alternateName: ['필러', 'フィラー', '玻尿酸'],
         procedureType: 'NoninvasiveProcedure',
-        description: '볼륨 및 윤곽 개선',
+        description: '볼륨 및 윤곽 개선 | Volume & Contour Enhancement | ボリューム・輪郭',
       },
       {
         '@type': 'MedicalProcedure',
         name: 'Skin Booster',
-        alternateName: '스킨부스터',
+        alternateName: ['스킨부스터', 'スキンブースター', '水光针'],
         procedureType: 'NoninvasiveProcedure',
-        description: '피부 보습 및 탄력 개선',
+        description: '피부 보습 및 탄력 개선 | Skin Hydration & Elasticity | 保湿・弾力',
+      },
+      {
+        '@type': 'MedicalProcedure',
+        name: 'Laser Toning',
+        alternateName: ['레이저 토닝', 'レーザートーニング', '激光美白'],
+        procedureType: 'NoninvasiveProcedure',
+        description: '색소 치료 및 피부톤 개선 | Pigmentation & Skin Tone | 色素・美白',
+      },
+      {
+        '@type': 'MedicalProcedure',
+        name: 'Pico Laser',
+        alternateName: ['피코 레이저', 'ピコレーザー', '皮秒激光'],
+        procedureType: 'NoninvasiveProcedure',
+        description: '기미/잡티/문신 제거 | Melasma/Spots/Tattoo Removal | シミ・タトゥー除去',
       },
     ],
 
@@ -791,6 +894,7 @@ export function generateHowToSchema(treatment: TreatmentProcess) {
 
 // 통합 스키마 생성 유틸리티 (페이지별로 필요한 스키마 조합)
 export function generatePageSchemas(options: {
+  locale?: string;
   includeOrganization?: boolean;
   includeWebSite?: boolean;
   physician?: PhysicianData;
@@ -802,7 +906,7 @@ export function generatePageSchemas(options: {
   const schemas: object[] = [];
 
   if (options.includeOrganization) {
-    schemas.push(generateLocalBusinessSchema());
+    schemas.push(generateLocalBusinessSchema(options.locale));
   }
 
   if (options.includeWebSite) {

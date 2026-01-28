@@ -24,7 +24,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
       {
-        userAgent: 'Baiduspider',
+        userAgent: 'Bingbot', // Bing/Microsoft (영어/일본어 검색)
+        allow: '/',
+      },
+      {
+        userAgent: 'Baiduspider', // Baidu (중국어 검색)
         allow: '/',
       },
     ],
