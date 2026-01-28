@@ -592,7 +592,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
             )}
           </AnimatePresence>
 
-          {/* Title Section */}
+          {/* Title Section - 고정 높이로 제목 정렬 통일 */}
           <div className="mb-3">
             <motion.p
               className="font-serif text-xs tracking-[0.2em] mb-2 uppercase"
@@ -603,14 +603,14 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
               {program.title}
             </motion.p>
             <motion.h3
-              className="text-2xl md:text-3xl font-medium mb-1"
+              className="text-2xl md:text-3xl font-medium mb-1 min-h-[2.25rem] md:min-h-[2.5rem] flex items-end"
               animate={{ y: isActive ? -4 : 0 }}
               transition={{ duration: 0.3, delay: 0.05 }}
             >
               {program.subtitle}
             </motion.h3>
             <motion.p
-              className="text-white/70 text-sm md:text-base"
+              className="text-white/70 text-sm md:text-base min-h-[1.5rem]"
               animate={{
                 opacity: isActive ? 0 : 1,
                 y: isActive ? -10 : 0,
