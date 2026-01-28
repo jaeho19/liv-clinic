@@ -16,6 +16,7 @@ import aboutAnimation from '@/../public/lottie/about-01.json';
 
 export default function AboutPage() {
   const t = useTranslations('aboutPage');
+  const sectionsT = useTranslations('sections');
 
   return (
     <>
@@ -129,7 +130,7 @@ export default function AboutPage() {
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={value.image}
-                      alt={value.titleKo}
+                      alt={sectionsT(`values.${value.id}.subtitle`)}
                       fill
                       className="object-cover"
                     />
@@ -137,10 +138,10 @@ export default function AboutPage() {
                   </div>
                   <div className="p-6">
                     <h3 className="font-serif text-xl text-primary mb-1">
-                      {value.title}
+                      {sectionsT(`values.${value.id}.title`)}
                     </h3>
-                    <p className="text-h4 text-secondary mb-3">{value.titleKo}</p>
-                    <p className="text-body text-mono-light">{value.description}</p>
+                    <p className="text-h4 text-secondary mb-3">{sectionsT(`values.${value.id}.subtitle`)}</p>
+                    <p className="text-body text-mono-light">{sectionsT(`values.${value.id}.description`)}</p>
                   </div>
                 </Card>
               </StaggerItem>
