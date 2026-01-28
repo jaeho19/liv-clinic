@@ -4,10 +4,10 @@ import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { TREATMENTS, LASER_CATEGORIES } from '@/lib/constants';
+import { LASER_CATEGORIES } from '@/lib/constants';
 
-const category = LASER_CATEGORIES[1]; // vascular
-const clarityData = TREATMENTS.laser.clarity;
+// Get category info (static data that doesn't need translation)
+const categoryStatic = LASER_CATEGORIES[1]; // vascular
 
 // 듀얼 파장 작용 원리 일러스트
 interface DualWavelengthProps {
@@ -136,7 +136,15 @@ export default function VascularDetail() {
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
-  // 번역된 데이터 가져오기
+  // Translated category data
+  const category = {
+    name: t('laser.vascular.name'),
+    nameEn: categoryStatic.nameEn,
+    color: categoryStatic.color,
+    href: categoryStatic.href,
+  };
+
+  // Translated data
   const detail = {
     hero: {
       subtitle: t('laser.vascular.detail.hero.subtitle'),
@@ -175,6 +183,13 @@ export default function VascularDetail() {
       why: t('laser.vascular.detail.clarity.why'),
       whyDesc: t('laser.vascular.detail.clarity.whyDesc'),
       recommendedSessions: t('laser.vascular.detail.clarity.recommendedSessions'),
+      benefits: [0, 1, 2, 3].map(i => ({
+        title: t(`laser.vascular.detail.clarity.benefits.${i}.title`),
+        desc: t(`laser.vascular.detail.clarity.benefits.${i}.desc`),
+      })),
+      duration: t('laser.vascular.detail.clarity.duration'),
+      anesthesia: t('laser.vascular.detail.clarity.anesthesia'),
+      recovery: t('laser.vascular.detail.clarity.recovery'),
     },
     protocol: {
       title: t('laser.vascular.detail.protocol.title'),
@@ -210,6 +225,13 @@ export default function VascularDetail() {
       description: t('laser.vascular.detail.cta.description'),
     },
   };
+
+  // Translated laser categories for "other treatments" section
+  const otherLaserCategories = LASER_CATEGORIES.filter(cat => cat.id !== 'vascular').map(cat => ({
+    id: cat.id,
+    href: cat.href,
+    name: t(`laser.${cat.id}.name`),
+  }));
 
   // FAQ 토글 시 스크롤
   const handleFaqToggle = useCallback((index: number, e: React.MouseEvent<HTMLElement>) => {
@@ -414,7 +436,7 @@ export default function VascularDetail() {
                   </p>
 
                   <ul className="space-y-3">
-                    {clarityData.benefits.map((benefit, i) => (
+                    {detail.clarity.benefits.map((benefit, i) => (
                       <li key={i} className="flex items-start gap-3">
                         <div className="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0 mt-0.5">
                           <svg className="w-3 h-3 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -432,9 +454,9 @@ export default function VascularDetail() {
 
                 <div className="space-y-4">
                   {[
-                    { label: t('common.duration'), value: clarityData.duration, icon: '⏱️' },
-                    { label: t('common.anesthesia'), value: clarityData.anesthesia, icon: '💉' },
-                    { label: t('common.downtime'), value: clarityData.recovery, icon: '🔄' },
+                    { label: t('common.duration'), value: detail.clarity.duration, icon: '⏱️' },
+                    { label: t('common.anesthesia'), value: detail.clarity.anesthesia, icon: '💉' },
+                    { label: t('common.downtime'), value: detail.clarity.recovery, icon: '🔄' },
                     { label: t('common.recommendedSessions'), value: detail.clarity.recommendedSessions, icon: '📅' },
                   ].map((info, i) => (
                     <div key={i} className="flex items-center gap-4 p-4 bg-gray-50 rounded-xl">
@@ -624,12 +646,12 @@ export default function VascularDetail() {
         </div>
       </section>
 
-      {/* 다른 레이저 카테고리 */}
+      {/* Other laser categories */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
           <h3 className="text-xl font-medium text-gray-900 text-center mb-8">{t('common.otherLaserTreatments')}</h3>
           <div className="flex flex-wrap justify-center gap-4">
-            {LASER_CATEGORIES.filter(cat => cat.id !== 'vascular').map((cat) => (
+            {otherLaserCategories.map((cat) => (
               <Link
                 key={cat.id}
                 href={cat.href}

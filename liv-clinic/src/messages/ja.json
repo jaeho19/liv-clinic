@@ -1,5 +1,6 @@
 {
   "common": {
+    "home": "ホーム",
     "siteName": "リブ形成外科",
     "siteNameEn": "LIV Plastic Surgery",
     "slogan": "Slow Aging, Natural Beauty",
@@ -2203,7 +2204,16 @@
             "badge": "ONLY OPTION",
             "why": "なぜクラリティIIなのか？",
             "whyDesc": "LIV整形外科が保有する機器の中で血管治療に最も適した機器です。1064nm Nd:YAG波長が血管のヘモグロビンに選択的に吸収され、周辺組織損傷なく血管だけを治療します。",
-            "recommendedSessions": "3-8回 (症状により)"
+            "recommendedSessions": "3-8回 (症状により)",
+            "benefits": [
+              { "title": "デュアル波長", "desc": "755nm(色素/脱毛) + 1064nm(血管/深部色素) マルチソリューション" },
+              { "title": "IntelliTrak技術", "desc": "自動18%オーバーラップで均一なエネルギー照射" },
+              { "title": "全ての肌タイプ", "desc": "スキンタイプI-VIまで安全な施術" },
+              { "title": "クライオゲン冷却", "desc": "施術中の皮膚保護と痛み最小化" }
+            ],
+            "duration": "15-30分",
+            "anesthesia": "無麻酔（クライオゲン冷却）",
+            "recovery": "即日日常復帰"
           },
           "protocol": {
             "title": "症状別推奨プロトコル",

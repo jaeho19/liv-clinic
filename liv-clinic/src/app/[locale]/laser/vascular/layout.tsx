@@ -1,47 +1,61 @@
+import { getTranslations } from 'next-intl/server';
 import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL } from '@/lib/seo';
-import { LASER_CATEGORIES, TREATMENTS, SITE_INFO } from '@/lib/constants';
+import { LASER_CATEGORIES, SITE_INFO } from '@/lib/constants';
 
-// 카테고리 데이터 가져오기
-const category = LASER_CATEGORIES.find(c => c.id === 'vascular')!;
-const featuredEquipment = TREATMENTS.laser[category.featuredEquipment as keyof typeof TREATMENTS.laser];
+// Get static category data (color, href, etc.)
+const categoryStatic = LASER_CATEGORIES.find(c => c.id === 'vascular')!;
 
-// MedicalService 스키마용 데이터
-const serviceData = {
-  id: category.id,
-  category: 'laser',
-  name: category.name,
-  nameEn: category.nameEn,
-  description: category.description,
-  shortDesc: category.shortDesc,
-  duration: '15-30분',
-  anesthesia: '무마취 (크라이오겐 쿨링)',
-  recovery: '즉시 일상 복귀',
-  targetAreas: ['안면홍조', '모세혈관 확장', '주사비', '혈관종'],
-  benefits: [
-    { title: '듀얼 파장', desc: '1064nm Nd:YAG로 혈관 선택적 치료' },
-    { title: '크라이오겐 쿨링', desc: '시술 중 피부 보호 및 통증 최소화' },
-    { title: '모든 피부 타입', desc: 'Fitzpatrick I-VI까지 안전 시술' },
-    { title: 'IntelliTrak 기술', desc: '균일한 에너지 전달로 효과 극대화' },
-  ],
-  faqs: featuredEquipment?.faqs || [],
-};
-
-export default function VascularLayout({
-  children,
-}: {
+interface LayoutProps {
   children: React.ReactNode;
-}) {
+  params: Promise<{ locale: string }>;
+}
+
+export default async function VascularLayout({
+  children,
+  params,
+}: LayoutProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'treatments' });
+  const tCommon = await getTranslations({ locale, namespace: 'common' });
+  const tNav = await getTranslations({ locale, namespace: 'nav' });
+
+  // Translated category data
+  const categoryName = t('laser.vascular.name');
+  const categoryDescription = t('laser.vascular.description');
+
+  // Translated service data for schema
+  const serviceData = {
+    id: categoryStatic.id,
+    category: 'laser',
+    name: categoryName,
+    nameEn: categoryStatic.nameEn,
+    description: categoryDescription,
+    shortDesc: t('laser.vascular.tagline'),
+    duration: t('laser.vascular.detail.clarity.duration'),
+    anesthesia: t('laser.vascular.detail.clarity.anesthesia'),
+    recovery: t('laser.vascular.detail.clarity.recovery'),
+    targetAreas: [0, 1, 2, 3].map(i => t(`laser.vascular.detail.rednessTypes.types.${i}.type`)),
+    benefits: [0, 1, 2, 3].map(i => ({
+      title: t(`laser.vascular.detail.clarity.benefits.${i}.title`),
+      desc: t(`laser.vascular.detail.clarity.benefits.${i}.desc`),
+    })),
+    faqs: [0, 1, 2, 3].map(i => ({
+      q: t(`laser.vascular.detail.faq.${i}.q`),
+      a: t(`laser.vascular.detail.faq.${i}.a`),
+    })),
+  };
+
   const serviceSchema = generateMedicalServiceSchema(serviceData);
   const pageSchema = generateWebPageSchema({
     path: '/laser/vascular',
-    title: `${category.name} | ${SITE_INFO.name}`,
-    description: category.description,
-    locale: 'ko',
+    title: `${categoryName} | ${SITE_INFO.name}`,
+    description: categoryDescription,
+    locale,
     type: 'MedicalWebPage',
     breadcrumbs: [
-      { name: '홈', url: '/' },
-      { name: '레이저', url: '/laser' },
-      { name: category.name, url: '/laser/vascular' },
+      { name: tCommon('home') || 'Home', url: '/' },
+      { name: tNav('laser') || 'Laser', url: '/laser' },
+      { name: categoryName, url: '/laser/vascular' },
     ],
   });
 
@@ -60,17 +74,45 @@ export default function VascularLayout({
   );
 }
 
-export async function generateMetadata() {
+interface MetadataProps {
+  params: Promise<{ locale: string }>;
+}
+
+export async function generateMetadata({ params }: MetadataProps) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'treatments' });
+
+  const categoryName = t('laser.vascular.name');
+  const categoryDescription = t('laser.vascular.description');
+  const categoryTagline = t('laser.vascular.tagline');
+
+  // Locale-specific keywords
+  const keywordsByLocale: Record<string, string[]> = {
+    ko: ['홍조 치료', '혈관 레이저', '모세혈관 확장', '주사비', '신사역 피부과'],
+    en: ['redness treatment', 'vascular laser', 'spider veins', 'rosacea', 'Sinsa dermatology'],
+    zh: ['红血丝治疗', '血管激光', '毛细血管扩张', '酒糟鼻', '新沙皮肤科'],
+    ja: ['赤ら顔治療', '血管レーザー', '毛細血管拡張', '酒さ', '新沙皮膚科'],
+  };
+
   return {
-    title: `${category.name} | ${SITE_INFO.name}`,
-    description: category.description,
-    keywords: [category.name, category.nameEn, '홍조 치료', '혈관 레이저', '모세혈관 확장', '주사비', '신사역 피부과'],
+    title: `${categoryName} | ${SITE_INFO.name}`,
+    description: categoryDescription,
+    keywords: [categoryName, categoryStatic.nameEn, ...(keywordsByLocale[locale] || keywordsByLocale.en)],
     openGraph: {
-      title: `${category.name} | ${SITE_INFO.name}`,
-      description: category.shortDesc,
-      url: `${BASE_URL}/laser/vascular`,
+      title: `${categoryName} | ${SITE_INFO.name}`,
+      description: categoryTagline,
+      url: `${BASE_URL}/${locale}/laser/vascular`,
       siteName: SITE_INFO.name,
       type: 'website',
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/laser/vascular`,
+      languages: {
+        'ko': `${BASE_URL}/ko/laser/vascular`,
+        'en': `${BASE_URL}/en/laser/vascular`,
+        'zh': `${BASE_URL}/zh/laser/vascular`,
+        'ja': `${BASE_URL}/ja/laser/vascular`,
+      },
     },
   };
 }

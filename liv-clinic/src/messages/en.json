@@ -1,5 +1,6 @@
 {
   "common": {
+    "home": "Home",
     "siteName": "LIV Plastic Surgery",
     "siteNameEn": "LIV Plastic Surgery",
     "slogan": "Slow Aging, Natural Beauty",
@@ -2203,7 +2204,16 @@
             "badge": "ONLY OPTION",
             "why": "Why Clarity II?",
             "whyDesc": "The most suitable device for vascular treatment among LIV's equipment. The 1064nm Nd:YAG wavelength is selectively absorbed by hemoglobin in blood vessels, treating only vessels without surrounding tissue damage.",
-            "recommendedSessions": "3-8 sessions (depending on severity)"
+            "recommendedSessions": "3-8 sessions (depending on severity)",
+            "benefits": [
+              { "title": "Dual Wavelength", "desc": "755nm (pigment/hair) + 1064nm (vascular/deep pigment) multi-solution" },
+              { "title": "IntelliTrak Technology", "desc": "Auto 18% overlap for uniform energy delivery" },
+              { "title": "All Skin Types", "desc": "Safe treatment for Fitzpatrick I-VI" },
+              { "title": "Cryogen Cooling", "desc": "Skin protection and pain minimization during treatment" }
+            ],
+            "duration": "15-30 minutes",
+            "anesthesia": "No anesthesia (Cryogen cooling)",
+            "recovery": "Immediate return to daily activities"
           },
           "protocol": {
             "title": "Treatment Protocol by Severity",

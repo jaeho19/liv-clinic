@@ -1,5 +1,6 @@
 {
   "common": {
+    "home": "首页",
     "siteName": "LIV整形外科",
     "siteNameEn": "LIV Plastic Surgery",
     "slogan": "Slow Aging, Natural Beauty",
@@ -2203,7 +2204,16 @@
             "badge": "ONLY OPTION",
             "why": "为什么选择Clarity II？",
             "whyDesc": "是LIV整形外科拥有的设备中最适合血管治疗的设备。1064nm Nd:YAG波长选择性吸收血管中的血红蛋白，在不损伤周围组织的情况下只治疗血管。",
-            "recommendedSessions": "3-8次 (视症状而定)"
+            "recommendedSessions": "3-8次 (视症状而定)",
+            "benefits": [
+              { "title": "双波长", "desc": "755nm(色素/脱毛) + 1064nm(血管/深层色素) 多功能方案" },
+              { "title": "IntelliTrak技术", "desc": "自动18%重叠，均匀传递能量" },
+              { "title": "所有肤质适用", "desc": "皮肤类型I-VI均可安全治疗" },
+              { "title": "低温气体冷却", "desc": "治疗中保护皮肤并最大程度减少疼痛" }
+            ],
+            "duration": "15-30分钟",
+            "anesthesia": "无麻醉（低温气体冷却）",
+            "recovery": "即刻恢复日常"
           },
           "protocol": {
             "title": "症状推荐方案",

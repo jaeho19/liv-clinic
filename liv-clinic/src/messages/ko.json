@@ -1,5 +1,6 @@
 {
   "common": {
+    "home": "홈",
     "siteName": "리브성형외과",
     "siteNameEn": "LIV Plastic Surgery",
     "slogan": "Slow Aging, Natural Beauty",
@@ -2205,7 +2206,16 @@
             "badge": "ONLY OPTION",
             "why": "왜 클래리티 II인가?",
             "whyDesc": "리브성형외과가 보유한 장비 중 혈관 치료에 가장 적합한 장비입니다. 1064nm Nd:YAG 파장이 혈관의 헤모글로빈에 선택적으로 흡수되어 주변 조직 손상 없이 혈관만 치료합니다.",
-            "recommendedSessions": "3-8회 (증상에 따라)"
+            "recommendedSessions": "3-8회 (증상에 따라)",
+            "benefits": [
+              { "title": "듀얼 파장", "desc": "755nm(색소/제모) + 1064nm(혈관/깊은색소) 멀티 솔루션" },
+              { "title": "IntelliTrak 기술", "desc": "자동 18% 오버랩으로 균일한 에너지 전달" },
+              { "title": "모든 피부 타입", "desc": "피부 타입 I-VI까지 안전한 시술 가능" },
+              { "title": "크라이오겐 쿨링", "desc": "시술 중 피부 보호 및 통증 최소화" }
+            ],
+            "duration": "15-30분",
+            "anesthesia": "무마취 (크라이오겐 쿨링)",
+            "recovery": "즉시 일상 복귀"
           },
           "protocol": {
             "title": "증상별 추천 프로토콜",
