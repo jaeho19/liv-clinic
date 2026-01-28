@@ -39,7 +39,7 @@ const FloatingOrb = ({ className, delay = 0 }: { className?: string; delay?: num
 );
 
 // Premium Volume Illustration
-const PremiumVolumeIllustration = () => (
+const PremiumVolumeIllustration = ({ label }: { label: string }) => (
   <div className="relative w-full max-w-md mx-auto">
     <svg viewBox="0 0 400 400" className="w-full h-full">
       <defs>
@@ -193,7 +193,7 @@ const PremiumVolumeIllustration = () => (
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
       >
-        VOLUME RESTORATION MAPPING
+        {label}
       </motion.text>
     </svg>
   </div>
@@ -315,6 +315,8 @@ export default function FillerDetail() {
       title: t('antiaging.filler.detail.cta.title'),
       description: t('antiaging.filler.detail.cta.description'),
     },
+    volumeIllustrationLabel: t('antiaging.filler.detail.volumeIllustrationLabel'),
+    heroImageAlt: t('antiaging.filler.detail.heroImageAlt'),
   };
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
@@ -399,7 +401,7 @@ export default function FillerDetail() {
               <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#A89080]/20">
                 <Image
                   src="/images/Gemini_Generated_Image_xrqs0pxrqs0pxrqs.png"
-                  alt="필러 - 볼륨과 윤곽의 아트"
+                  alt={detail.heroImageAlt}
                   fill
                   className="object-cover"
                   quality={95}

@@ -1471,13 +1471,246 @@
         "name": "Thread Lift",
         "fullName": "Thread Lift",
         "tagline": "Immediate Lifting with PDO Threads",
-        "description": "Biodegradable threads are inserted under the skin for immediate lifting effect and collagen stimulation."
+        "description": "Biodegradable threads are inserted under the skin for immediate lifting effect and collagen stimulation.",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "Epidermis",
+            "dermis": "Dermis",
+            "subcutaneous": "Subcutaneous",
+            "smas": "SMAS"
+          },
+          "liftingEffect": "↑ LIFTING EFFECT ↑",
+          "threadTypes": {
+            "pdo": {
+              "name": "PDO",
+              "fullName": "Polydioxanone",
+              "absorptionPeriod": "Absorption: 6-8 months",
+              "types": "Mono, Cog, Screw",
+              "note": "Most widely used"
+            },
+            "plla": {
+              "name": "PLLA",
+              "fullName": "Poly-L-Lactic Acid",
+              "absorptionPeriod": "Absorption: 12-18 months",
+              "feature": "Collagen stimulation",
+              "note": "Premium"
+            },
+            "pcl": {
+              "name": "PCL",
+              "fullName": "Polycaprolactone",
+              "absorptionPeriod": "Absorption: 18-24 months",
+              "feature": "Longest lasting",
+              "note": "High-end"
+            }
+          },
+          "collagenTimeline": {
+            "immediate": {
+              "phase": "Immediately After",
+              "title": "Instant Lifting",
+              "desc": "Physical pulling effect"
+            },
+            "oneToTwo": {
+              "phase": "1-2 Months Later",
+              "title": "Collagen Production Begins",
+              "desc": "Fibroblast activation"
+            },
+            "threeToSix": {
+              "phase": "3-6 Months Later",
+              "title": "Collagen Remodeling Complete",
+              "desc": "Natural elasticity"
+            }
+          },
+          "treatmentAreas": {
+            "forehead": "Forehead",
+            "cheekbone": "Cheekbone",
+            "cheek": "Cheek",
+            "nasolabial": "Nasolabial Folds",
+            "jawline": "Jawline",
+            "neck": "Neck"
+          },
+          "hero": {
+            "badge": "THREAD LIFTING"
+          },
+          "advantages": {
+            "sectionLabel": "Premium Thread",
+            "title": "<span class=\"text-[#D4AF37]\">Benefits</span> of Thread Lifting",
+            "description": "Experience immediate lifting and long-term collagen regeneration with dissolvable threads"
+          },
+          "threadTypesSection": {
+            "title": "Various <span class=\"text-[#D4AF37]\">Thread Types</span>",
+            "description": "Select the optimal thread type based on treatment goals and desired results",
+            "pdoCard": {
+              "title": "PDO",
+              "subtitle": "Most Popular Choice",
+              "features": [
+                "Natural absorption in 6-8 months",
+                "Mono/Cog/Screw types",
+                "Affordable price range"
+              ]
+            },
+            "pllaCard": {
+              "title": "PLLA",
+              "subtitle": "Collagen Booster",
+              "features": [
+                "Lasts 12-18 months",
+                "Stimulates collagen production",
+                "Gradual volume improvement"
+              ]
+            },
+            "pclCard": {
+              "title": "PCL",
+              "subtitle": "Longest Lasting",
+              "features": [
+                "Lasts 18-24 months",
+                "Soft texture",
+                "Strong support"
+              ]
+            }
+          },
+          "collagenSection": {
+            "title": "<span class=\"text-[#D4AF37]\">Collagen Regeneration</span> Process",
+            "description": "As the threads dissolve, they stimulate collagen production for natural elasticity"
+          },
+          "targetAreasSection": {
+            "title": "Treatment Areas",
+            "description": "Customized thread treatment is available from the entire face to the neck. The appropriate thread type and quantity are applied according to each area's characteristics."
+          },
+          "processSection": {
+            "title": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "title": "Treatment <span class=\"text-[#D4AF37]\">Information</span>",
+            "labels": {
+              "duration": "Duration",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery",
+              "results": "Results Last"
+            }
+          },
+          "comparison": {
+            "title": "Laser Lifting vs <span class=\"text-[#D4AF37]\">Thread Lifting</span>",
+            "description": "Compare the characteristics of each treatment to make the right choice for you",
+            "headers": {
+              "item": "Comparison",
+              "laser": "Laser Lifting",
+              "thread": "Thread Lifting"
+            },
+            "rows": [
+              { "item": "Mechanism", "laser": "Collagen contraction via heat", "thread": "Physical lifting + collagen stimulation" },
+              { "item": "Effect Onset", "laser": "Gradual (2-3 months)", "thread": "Immediate" },
+              { "item": "Duration", "laser": "6 months - 2 years", "thread": "6-18 months (varies by thread type)" },
+              { "item": "Downtime", "laser": "Almost none", "thread": "3-7 days (bruising, swelling)" },
+              { "item": "Anesthesia", "laser": "Topical or none", "thread": "Local anesthesia" },
+              { "item": "Ideal For", "laser": "Early sagging, loss of elasticity", "thread": "Moderate sagging, volume loss" },
+              { "item": "Combination", "laser": "Alone or combined", "thread": "Synergy when combined with laser" }
+            ]
+          },
+          "recommended": {
+            "title": "Recommended For"
+          },
+          "faq": {
+            "title": "Frequently Asked Questions",
+            "relatedQA": "Related Medical Q&A",
+            "moreButton": "View More Q&A"
+          },
+          "cautions": {
+            "title": "Treatment <span class=\"text-[#D4AF37]\">Precautions</span>"
+          },
+          "cta": {
+            "title": "Book Thread Lift Consultation",
+            "description": "Achieve a V-line with instant lifting and natural collagen regeneration. Our expert consultation will guide you to the optimal thread type and treatment plan.",
+            "consultButton": "Book Online Consultation",
+            "callButton": "Call 02-797-2773"
+          }
+        }
       },
       "aptos": {
         "name": "APTOS Namica",
         "fullName": "APTOS Namica",
         "tagline": "Premium Thread Lifting",
-        "description": "Premium lifting threads from Georgia providing natural and long-lasting lifting effects."
+        "description": "Premium lifting threads from Georgia providing natural and long-lasting lifting effects.",
+        "detail": {
+          "namicaIllustration": {
+            "title": "NAMICA Technology",
+            "subtitle": "40mg Hyaluronic Acid Staged Release"
+          },
+          "phaseEffects": [
+            {
+              "phase": "Immediate Effect",
+              "period": "Right After",
+              "description": "Micro particles release HA immediately",
+              "detail": "Large particles dissolve first for instant volume and hydration"
+            },
+            {
+              "phase": "Mid-term Effect",
+              "period": "1-3 Months",
+              "description": "Gradual action of sub-micro particles",
+              "detail": "Medium particles gradually stimulate collagen production"
+            },
+            {
+              "phase": "Long-term Effect",
+              "period": "3-6 Months",
+              "description": "Continuous HA supply from nano particles",
+              "detail": "Smallest particles maintain elasticity improvement over time"
+            }
+          ],
+          "certifications": [
+            { "label": "KFDA", "value": "Class 4 Medical Device Approval" },
+            { "label": "CE", "value": "European CE Certification" },
+            { "label": "ISO", "value": "ISO 13485 Quality Management" },
+            { "label": "FDA", "value": "MDSAP Certification" }
+          ],
+          "gallery": [
+            {
+              "alt": "APTOS Professional Course Certificate Award",
+              "caption": "Certificate Award at Georgia HQ"
+            },
+            {
+              "alt": "Clinical Experience Presentation",
+              "caption": "Clinical Experience Presentation"
+            },
+            {
+              "alt": "Patient Consultation",
+              "caption": "Patient Consultation"
+            }
+          ],
+          "hero": {
+            "badge": "4th Generation Bio Lifting",
+            "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
+            "description": "The original brand of facial tissue fixation threads used in over 100 countries worldwide",
+            "durationLabel": "Duration",
+            "durationValue": "Up to 24 months"
+          },
+          "namicaSection": {
+            "title": "NAMICA Technology",
+            "description": "<strong class=\"text-secondary\">NAMICA (Nano & Micro Encapsulated Particles)</strong> is an innovative drug delivery system that encapsulates 40mg of hyaluronic acid into nano, sub-micro, and micro units for staged release.",
+            "features": [
+              { "icon": "🌍", "text": "Used in over 100 countries worldwide" },
+              { "icon": "✅", "text": "KFDA Class 4 Medical Device Approval" },
+              { "icon": "⏱️", "text": "Duration: Up to 24 months" },
+              { "icon": "🧬", "text": "Biostimulation (Collagen Production)" }
+            ]
+          },
+          "phaseSection": {
+            "title": "3-Phase Staged Effect",
+            "description": "The core of NAMICA technology is staged hyaluronic acid release based on particle size"
+          },
+          "certificationsSection": {
+            "title": "Global Standard Safety Certifications"
+          },
+          "trainingSection": {
+            "title": "Globally Certified Training",
+            "description": "Dr. Kim Sooyoung of LIV completed the Professional Course at APTOS headquarters in Georgia and participated in procedures to acquire the latest techniques.",
+            "certificateTitle": "APTOS Professional Course Certificate",
+            "certificateName": "Kim Sooyoung · KR0062025",
+            "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
+          },
+          "cta": {
+            "title": "Book APTOS NAMICA Consultation",
+            "description": "Our globally certified specialist provides personalized 1:1 consultation",
+            "button": "Book Consultation"
+          }
+        }
       }
     },
     "antiaging": {
@@ -1522,6 +1755,32 @@
           "cta": {
             "title": "Botox Consultation",
             "description": "Natural wrinkle improvement - Get guidance on optimal treatment through specialist consultation."
+          },
+          "treatmentAreasLabels": {
+            "forehead": "Forehead",
+            "glabella": "Glabella",
+            "crowsFeet": "Crow's Feet",
+            "masseter": "Masseter",
+            "mouthCorners": "Mouth Corners",
+            "trapezius": "Trapezius",
+            "calves": "Calves"
+          },
+          "targetAreasDescription": "From expression wrinkles to facial contouring, we provide customized treatments for natural improvement.",
+          "timeline": {
+            "title": "Post-Treatment Timeline",
+            "items": [
+              { "time": "Day 1", "title": "Treatment Day", "desc": "Return to daily activities immediately after simple procedure", "percentage": 0 },
+              { "time": "3-7 Days", "title": "Effects Begin", "desc": "Muscles gradually begin to relax", "percentage": 30 },
+              { "time": "2-4 Weeks", "title": "Peak Effects", "desc": "Natural wrinkle improvement effects are maximized", "percentage": 100 },
+              { "time": "3-6 Months", "title": "Maintained Effects", "desc": "Duration of effects varies by individual", "percentage": 70 }
+            ]
+          },
+          "mechanismLabel": "PRECISION INJECTION MAPPING",
+          "treatmentInfoLabels": {
+            "duration": "Treatment Duration",
+            "anesthesia": "Anesthesia",
+            "recovery": "Recovery Period",
+            "results": "Effect Duration"
           }
         }
       },
@@ -1586,14 +1845,74 @@
           "cta": {
             "title": "Filler Consultation",
             "description": "Natural volume and contours - Get guidance on optimal treatment through specialist consultation."
-          }
+          },
+          "volumeIllustrationLabel": "VOLUME RESTORATION MAPPING",
+          "heroImageAlt": "Filler - The Art of Volume and Contour"
         }
       },
       "skinbooster": {
         "name": "Skin Booster",
         "fullName": "Skin Booster",
         "tagline": "Deep Hydration from Within",
-        "description": "Delivering hydration and nutrients deep into the skin to improve overall skin health."
+        "description": "Delivering hydration and nutrients deep into the skin to improve overall skin health.",
+        "detail": {
+          "heroImageAlt": "Skin Booster - Radiance from Deep Within",
+          "hydrationIllustration": {
+            "epidermis": "EPIDERMIS",
+            "dehydrated": "Dehydrated",
+            "hydrated": "Hydrated",
+            "haGrowthFactors": "HA + Growth Factors",
+            "deepHydration": "Deep Hydration to Dermis"
+          },
+          "courseTimeline": {
+            "items": [
+              { "session": "Session 1", "week": "Week 0", "effect": 20, "desc": "Basic hydration" },
+              { "session": "Session 2", "week": "Week 2-3", "effect": 50, "desc": "Moisture barrier strengthening" },
+              { "session": "Session 3", "week": "Week 4-6", "effect": 80, "desc": "Collagen activation" },
+              { "session": "Session 4", "week": "Week 6-8", "effect": 100, "desc": "Maximum effect achieved" }
+            ]
+          },
+          "benefits": {
+            "title": "Benefits of Skin Booster"
+          },
+          "effects": {
+            "title": "Skin Booster Effects",
+            "items": [
+              { "icon": "droplet", "title": "Deep Hydration", "desc": "Delivered to dermis layer" },
+              { "icon": "bounce", "title": "Elasticity Improvement", "desc": "Collagen production stimulation" },
+              { "icon": "glow", "title": "Natural Radiance", "desc": "Glowing from within" }
+            ]
+          },
+          "treatmentCourse": {
+            "title": "3-4 Sessions Recommended",
+            "subtitle": "We recommend 3-4 sessions at 2-4 week intervals for optimal results",
+            "maintenanceNote": "Maintenance treatment recommended every 2-3 months after course completion"
+          },
+          "products": {
+            "title": "Skin Booster Products",
+            "subtitle": "Optimal product selection based on skin condition and goals",
+            "items": [
+              { "name": "Juvelook", "desc": "Collagen boosting", "feature": "PDRN + HA" },
+              { "name": "Rejuran", "desc": "Skin regeneration", "feature": "PN" },
+              { "name": "Volbella", "desc": "Hydration + Elasticity", "feature": "Voluma HA" }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "Treatment Information",
+            "labels": {
+              "duration": "Duration",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery",
+              "results": "Results"
+            }
+          },
+          "faqTitle": "Frequently Asked Questions",
+          "cta": {
+            "title": "Book Skin Booster Consultation",
+            "description": "Experience hydration and radiance from deep within. Get a personalized treatment plan through expert consultation.",
+            "buttonOnline": "Book Online Consultation"
+          }
+        }
       }
     },
     "laser": {
@@ -1601,7 +1920,164 @@
         "name": "Laser Center",
         "fullName": "Laser Center",
         "tagline": "Advanced Laser Total Solution",
-        "description": "A premium laser center addressing various skin concerns from pigmentation, vascular issues, skin texture, hair removal, to tattoo removal."
+        "description": "A premium laser center addressing various skin concerns from pigmentation, vascular issues, skin texture, hair removal, to tattoo removal.",
+        "detail": {
+          "hero": {
+            "title": "Laser Center",
+            "subtitle": "Customized Laser Solutions for Your Skin Concerns",
+            "description": "With Clarity II + Lucas combination<br/>One-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+          },
+          "viewMore": "Learn More",
+          "stats": [
+            { "label": "Equipment", "value": "4 Types", "desc": "Premium Lasers" },
+            { "label": "Treatment Areas", "value": "5 Types", "desc": "Skin Concern Solutions" },
+            { "label": "Experience", "value": "10+ Years", "desc": "Laser Treatment Expertise" },
+            { "label": "Safety", "value": "Certified", "desc": "FDA-Approved Equipment" }
+          ],
+          "categories": {
+            "title": "Customized Treatment for Your Skin Concerns",
+            "subtitle": "Select your skin concern and we'll recommend the optimal laser treatment",
+            "items": [
+              {
+                "id": "pigmentation",
+                "name": "Pigmentation Treatment",
+                "nameEn": "Pigmentation & Melasma",
+                "description": "Effectively treat melasma, spots, and age spots with pico laser and laser toning.",
+                "equipment": ["Lucas", "Laser Toning", "Clarity II"],
+                "icon": "☀️"
+              },
+              {
+                "id": "vascular",
+                "name": "Redness & Vascular",
+                "nameEn": "Redness & Vascular",
+                "description": "Treat facial redness, telangiectasia, and hemangiomas with Clarity II dual wavelength.",
+                "equipment": ["Clarity II"],
+                "icon": "🔴"
+              },
+              {
+                "id": "skintone",
+                "name": "Skin Tone Evening",
+                "nameEn": "Skin Tone Brightening",
+                "description": "Brighten dull skin with laser toning and Ulblanc for a clearer complexion.",
+                "equipment": ["Laser Toning", "Ulblanc"],
+                "icon": "✨"
+              },
+              {
+                "id": "hair-removal",
+                "name": "Premium Hair Removal",
+                "nameEn": "Premium Hair Removal",
+                "description": "Safe hair removal for all skin types with Clarity II dual wavelength and IntelliTrak technology.",
+                "equipment": ["Clarity II"],
+                "icon": "💎"
+              },
+              {
+                "id": "tattoo",
+                "name": "Tattoo Removal",
+                "nameEn": "Tattoo Removal",
+                "description": "Effectively remove tattoos of all colors without scarring using Lucas pico laser.",
+                "equipment": ["Lucas"],
+                "icon": "🎨"
+              }
+            ]
+          },
+          "matrix": {
+            "badge": "Equipment × Indications",
+            "title": "Equipment Lineup for Any Skin Concern",
+            "subtitle": "LIV Laser Center's 4 premium devices cover all skin concerns",
+            "chartTitle": "Skin Concern × Equipment Matrix",
+            "equipment": ["Clarity II", "Lucas", "Laser Toning", "Ulblanc"],
+            "concerns": ["Pigmentation", "Redness/Vascular", "Skin Tone", "Hair Removal", "Tattoo Removal"]
+          },
+          "equipmentSection": {
+            "badge": "LIV Equipment",
+            "title": "Premium Laser Lineup",
+            "subtitle": "Safe and effective treatments with the latest FDA-approved equipment",
+            "labels": {
+              "wavelength": "Wavelength",
+              "feature": "Feature",
+              "indications": "Indications"
+            },
+            "items": [
+              {
+                "name": "Clarity II",
+                "nameKo": "Clarity II",
+                "wavelength": "755nm + 1064nm",
+                "feature": "Dual Wavelength + IntelliTrak Technology",
+                "targets": ["Pigmentation", "Vascular", "Hair Removal", "Skin Tone"],
+                "highlight": true
+              },
+              {
+                "name": "Lucas",
+                "nameKo": "Lucas",
+                "wavelength": "532/755/1064nm",
+                "feature": "Picosecond Pulse (450ps)",
+                "targets": ["Melasma", "Pigmentation", "Tattoo Removal"],
+                "highlight": false
+              },
+              {
+                "name": "Laser Toning",
+                "nameKo": "Laser Toning",
+                "wavelength": "1064nm Nd:YAG",
+                "feature": "Low-power Repetitive Irradiation",
+                "targets": ["Skin Tone", "Pores", "Skin Texture"],
+                "highlight": false
+              },
+              {
+                "name": "Ulblanc",
+                "nameKo": "Ulblanc",
+                "wavelength": "Proprietary Wavelength",
+                "feature": "Selective Melanin Targeting",
+                "targets": ["Skin Whitening", "Tone Evening"],
+                "highlight": false
+              }
+            ]
+          },
+          "synergy": {
+            "badge": "LIV EXCLUSIVE",
+            "title": "Clarity II + Lucas Synergy Effect",
+            "subtitle": "Expect faster and more effective results compared to single treatment with this premium equipment combination",
+            "benefits": [
+              { "title": "Multi-Wavelength Coverage", "desc": "From 532nm to 1064nm<br/>Target access at all depths" },
+              { "title": "Combined Indication Treatment", "desc": "Melasma+redness, pigmentation+pores<br/>Simultaneous treatment of multiple concerns" },
+              { "title": "Faster Results", "desc": "1.5-2x faster results<br/>compared to single treatment" }
+            ]
+          },
+          "process": {
+            "title": "Laser Treatment Process",
+            "steps": [
+              { "step": 1, "title": "Skin Analysis", "desc": "Expert consultation and precise analysis of skin type and concerns" },
+              { "step": 2, "title": "Custom Planning", "desc": "Optimal laser combination and treatment plan for each individual" },
+              { "step": 3, "title": "Laser Treatment", "desc": "Safe and precise treatment by experienced specialists" },
+              { "step": 4, "title": "Aftercare", "desc": "Post-treatment care, regular check-ups, and maintenance" }
+            ]
+          },
+          "faq": {
+            "title": "Frequently Asked Questions",
+            "items": [
+              {
+                "q": "Which laser is right for me?",
+                "a": "The optimal laser varies depending on your skin condition and concerns. Through a free consultation, our specialists will analyze your skin and recommend a customized treatment plan."
+              },
+              {
+                "q": "Does laser treatment hurt?",
+                "a": "It varies by equipment, but most describe it as a 'rubber band snap' sensation. Numbing cream can be applied if needed. Clarity II has a built-in cooling system for added comfort."
+              },
+              {
+                "q": "How long is the downtime?",
+                "a": "It depends on the laser type. Laser toning and Ulblanc have almost no downtime, allowing immediate return to daily activities. Pico laser may have mild redness for 3-5 days."
+              },
+              {
+                "q": "When will I see results?",
+                "a": "You can notice skin tone improvement immediately after treatment. Results become more pronounced over 2-4 weeks as collagen remodeling occurs. Completing the recommended sessions is advised for optimal results."
+              }
+            ]
+          },
+          "cta": {
+            "title": "Your First Step to Clear, Healthy Skin",
+            "description": "We'll help you find the optimal laser for your skin concerns<br/>Confirm your customized treatment plan with a free consultation",
+            "buttonConsult": "Book Free Consultation"
+          }
+        }
       },
       "pigmentation": {
         "name": "Pigmentation Treatment",
@@ -1759,13 +2235,222 @@
         "name": "Skin Texture",
         "fullName": "Skin Tone Improvement",
         "tagline": "Pores, Scars & Texture Refinement",
-        "description": "Laser resurfacing for pore reduction, scar improvement, and skin texture refinement."
+        "description": "Laser resurfacing for pore reduction, scar improvement, and skin texture refinement.",
+        "detail": {
+          "hero": {
+            "title": "Skin Tone Evenness",
+            "subtitle": "Skin Tone Brightening & Whitening",
+            "description": "With the synergy of laser toning and Ulblanc,<br/>restore dull skin to bright, clear complexion"
+          },
+          "concernsSection": {
+            "title": "Do you have these skin concerns?",
+            "subtitle": "There are various causes of uneven skin tone. We offer customized solutions for your specific concerns.",
+            "customSolution": "Custom Solution",
+            "concerns": [
+              { "title": "Overall Dull Skin", "description": "Skin appears dark and lifeless due to sun exposure, stress, or fatigue", "solution": "Laser toning for overall skin brightness improvement", "equipment": ["Laser Toning", "Ulblanc"] },
+              { "title": "Partial Pigmentation", "description": "Dark pigmentation deposited on cheeks, forehead, or around cheekbones", "solution": "Intensive laser toning + pico laser combination", "equipment": ["Laser Toning", "Lucas"] },
+              { "title": "Pores/Skin Texture Issues", "description": "Uneven skin tone due to enlarged pores and rough texture", "solution": "Utilizing laser toning's collagen remodeling effect", "equipment": ["Laser Toning"] },
+              { "title": "Reduced Skin Transparency", "description": "Skin looks dull and lacks transparency, appearing unhealthy", "solution": "Ulblanc for skin transparency and radiance recovery", "equipment": ["Ulblanc", "Laser Toning"] }
+            ]
+          },
+          "toningSection": {
+            "badge": "Treatment Principle",
+            "title": "The Science of Laser Toning",
+            "description1": "Laser toning uses <strong>1064nm Nd:YAG laser</strong> at low power with repeated pulses to gradually break down melanin in the skin.",
+            "description2": "Unlike conventional high-power lasers, it delivers <strong>low energy uniformly over a wide area</strong> to minimize skin irritation while maximizing results.",
+            "effectsTitle": "3 Effects of Laser Toning",
+            "effects": [
+              { "title": "Melanin Breakdown", "desc": "Gradually breaks down pigments in the skin" },
+              { "title": "Collagen Production", "desc": "Stimulates dermis to improve skin elasticity" },
+              { "title": "Pore Reduction", "desc": "Controls sebaceous gland function and tightens pores" }
+            ]
+          },
+          "beforeAfterSection": {
+            "title": "Skin Tone Transformation",
+            "subtitle": "Skin tone changes with the combination of laser toning and Ulblanc"
+          },
+          "equipmentSection": {
+            "badge": "LIV Equipment",
+            "title": "Dedicated Skin Tone Improvement Equipment",
+            "subtitle": "Professional equipment for gradual skin brightening without disrupting daily life",
+            "labels": {
+              "wavelength": "Wavelength",
+              "feature": "Feature",
+              "advantage": "Advantage",
+              "indications": "Indications",
+              "recommendedSessions": "Recommended Sessions"
+            },
+            "toning": {
+              "name": "Laser Toning",
+              "nameEn": "Laser Toning (Spectra XT)",
+              "wavelength": "1064nm Nd:YAG",
+              "feature": "Low-power repeated irradiation (MLA mode)",
+              "advantage": "Zero downtime, immediate return to daily activities",
+              "targets": ["Dull Skin", "Fine Lines", "Pores", "Texture", "Brightness"]
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc Whitening Laser",
+              "wavelength": "Dedicated whitening wavelength",
+              "feature": "Selective melanin targeting",
+              "advantage": "Improve skin tone without irritation",
+              "targets": ["Skin Whitening", "Tone Evenness", "Transparency", "Radiance", "Dullness"]
+            },
+            "synergyTitle": "Laser Toning + Ulblanc Synergy Effect",
+            "synergyDesc": "By improving overall skin condition with laser toning and directly targeting melanin with Ulblanc, you can expect <strong>1.5-2x faster results</strong> compared to single treatments. Both devices have no downtime, making combination therapy easy."
+          },
+          "protocolSection": {
+            "badge": "Treatment Process",
+            "title": "3-Step Skin Tone Improvement Program",
+            "subtitle": "Systematic step-by-step treatment for natural and lasting skin tone improvement",
+            "steps": [
+              { "step": 1, "title": "Skin Conditioning", "equipment": "Laser Toning", "description": "Uniformly delivers low-power energy across the skin with 1064nm wavelength to improve baseline skin condition.", "sessions": "Weekly, 4-5 sessions" },
+              { "step": 2, "title": "Melanin Targeting", "equipment": "Ulblanc", "description": "Uses specialized wavelength that selectively acts on melanin to gradually break down pigments and induce skin whitening.", "sessions": "Every 2 weeks, 3-4 sessions" },
+              { "step": 3, "title": "Maintenance", "equipment": "Laser Toning + Ulblanc", "description": "Monthly maintenance to preserve brightened skin tone and prevent new pigmentation.", "sessions": "Monthly maintenance" }
+            ]
+          },
+          "advantagesSection": {
+            "title": "Advantages of Laser Toning",
+            "subtitle": "Convenient skin care for busy modern lifestyles",
+            "items": [
+              { "title": "Zero Downtime", "desc": "Return to daily activities immediately" },
+              { "title": "Lunchtime Treatment", "desc": "Quick 15-20 minute sessions" },
+              { "title": "Natural Results", "desc": "Gradually brightening skin" },
+              { "title": "Comprehensive Care", "desc": "Tone, pores, elasticity together" }
+            ]
+          },
+          "faq": {
+            "title": "Skin Tone Improvement FAQ",
+            "items": [
+              { "q": "How many laser toning sessions are needed to see results?", "a": "Generally, you'll notice visible results after 4-5 treatments. Individual results vary depending on skin condition, and optimal results can be expected after about 10 treatments. Monthly maintenance sessions can help maintain brightened skin tone long-term." },
+              { "q": "Are there any restrictions on daily activities after laser toning?", "a": "The biggest advantage of laser toning is 'zero downtime.' Mild redness may appear immediately after treatment but subsides within 30 minutes to 1 hour. You can wash your face, apply makeup, and go out right away. However, avoid saunas and intense exercise on the treatment day, and be mindful of sun protection." },
+              { "q": "What's the difference between Ulblanc and laser toning?", "a": "Laser toning uses 1064nm Nd:YAG laser to gradually improve overall skin pigmentation and promote collagen production. Ulblanc uses a specialized wavelength targeting melanin for more direct whitening effects. Combining both treatments creates synergy for faster, more effective results." },
+              { "q": "Can sensitive skin receive laser toning?", "a": "Yes, it's possible. Laser toning uses low power, making it relatively safe for sensitive skin. For first treatments, we start with lower energy settings to check skin reactions, then gradually adjust. Please describe your skin condition accurately during consultation for a customized treatment plan." },
+              { "q": "How is melasma treatment different from skin tone improvement?", "a": "Melasma treatment focuses on pigmented lesions with clear boundaries using high-power equipment like pico lasers. Skin tone improvement targets overall dullness, fine pigmentation, and texture using laser toning and Ulblanc. If you have melasma and want to improve overall skin tone, combining both treatments is effective." }
+            ]
+          },
+          "illustrationLabels": {
+            "epidermis": "Epidermis",
+            "dermis": "Dermis",
+            "deepDermis": "Deep Dermis",
+            "laserHead": "1064nm Nd:YAG Low Power",
+            "mechanismDesc": "Gradual melanin breakdown through repeated low-power irradiation",
+            "before": "Before",
+            "after": "After",
+            "beforeDesc": "Uneven Skin Tone",
+            "afterDesc": "Clear, Even Skin Tone",
+            "laserToning": "Laser Toning",
+            "ulblanc": "+ Ulblanc"
+          },
+          "cta": {
+            "title": "Restore Your Clear, Bright Skin Tone",
+            "description": "Start your laser toning & Ulblanc program<br/>with no downtime, managed in your daily routine",
+            "buttonConsult": "Book Free Consultation"
+          }
+        }
       },
       "hairRemoval": {
         "name": "Laser Hair Removal",
         "fullName": "Laser Hair Removal",
         "tagline": "Permanent Hair Removal Solution",
-        "description": "Medical-grade lasers selectively destroy hair follicles for permanent hair removal results."
+        "description": "Medical-grade lasers selectively destroy hair follicles for permanent hair removal results.",
+        "detail": {
+          "hero": {
+            "title": "Premium Hair Removal",
+            "subtitle": "Premium Hair Removal with Clarity II",
+            "description": "Dual wavelength + IntelliTrak™ technology for<br/>safe and effective medical laser hair removal for all skin types"
+          },
+          "claritySection": {
+            "badge": "LIV Premium Equipment",
+            "title": "Clarity II",
+            "subtitle": "The New Standard in Hair Removal",
+            "description1": "Clarity II is a premium laser system that offers two wavelengths—<strong>755nm Alexandrite</strong> and <strong>1064nm Nd:YAG</strong>—on a single platform.",
+            "description2": "<strong>IntelliTrak™</strong> technology tracks the skin in real-time, delivering uniform energy without overlap or missed spots, minimizing burn risk and maximizing effectiveness.",
+            "specs": {
+              "wavelength": "Wavelength",
+              "wavelengthValue": "755nm + 1064nm",
+              "spotSize": "Spot Size",
+              "spotSizeValue": "Up to 3cm²",
+              "pulseTime": "Pulse Duration",
+              "pulseTimeValue": "2-400ms",
+              "cooling": "Cooling",
+              "coolingValue": "Cryogen"
+            }
+          },
+          "intellitrakSection": {
+            "badge": "Differentiating Technology",
+            "title": "IntelliTrak™ Smart Treatment"
+          },
+          "bodyAreas": {
+            "title": "Body Area Hair Removal Guide",
+            "subtitle": "Clarity II enables hair removal from face to full body",
+            "labels": {
+              "sessions": "Recommended Sessions",
+              "interval": "Treatment Interval"
+            },
+            "items": [
+              { "area": "Underarms", "sessions": "6-8 sessions", "interval": "4-6 weeks", "description": "Most popular hair removal area. Also effective for sweat and odor management." },
+              { "area": "Arms/Legs", "sessions": "6-10 sessions", "interval": "6-8 weeks", "description": "Fast treatment for large areas. Maintain smooth skin for longer." },
+              { "area": "Bikini Line", "sessions": "8-10 sessions", "interval": "4-6 weeks", "description": "Settings optimized for sensitive areas ensure safe and effective treatment." },
+              { "area": "Face (Upper Lip, Jawline)", "sessions": "8-12 sessions", "interval": "3-4 weeks", "description": "Delicate facial hair removal. Cleanly removes even fine hairs." },
+              { "area": "Back/Chest (Men)", "sessions": "8-12 sessions", "interval": "6-8 weeks", "description": "Specialized in men's hair removal. From natural reduction to complete removal." },
+              { "area": "Full Body", "sessions": "8-12 sessions", "interval": "Varies by area", "description": "Total body care. Package programs at reasonable prices." }
+            ]
+          },
+          "advantages": {
+            "title": "Clarity II Advantages",
+            "subtitle": "Why choose Clarity II for hair removal?",
+            "items": [
+              { "title": "Dual Wavelength", "description": "755nm + 1064nm for safe and effective treatment on all skin types" },
+              { "title": "IntelliTrak™", "description": "Real-time skin tracking for uniform energy delivery, minimizing burn risk" },
+              { "title": "Large Spot Size", "description": "Up to 3cm² spot size for fast treatment of large areas" },
+              { "title": "Integrated Cooling", "description": "Cryogen cooling system minimizes pain and discomfort during treatment" }
+            ]
+          },
+          "faq": {
+            "title": "Hair Removal FAQ",
+            "items": [
+              { "q": "Is laser hair removal permanent?", "a": "Laser hair removal is classified as \"Permanent Hair Reduction.\" Since it targets hair follicles in the growth phase, you can expect 80-90% permanent reduction after completing treatment. Some dormant follicles may transition to growth phase, causing slight regrowth, so 1-2 maintenance treatments per year are recommended." },
+              { "q": "Does laser hair removal hurt?", "a": "Clarity II's built-in cryogen cooling system continuously cools the skin during treatment, minimizing pain. Most clients describe it as a \"rubber band snap\" level of mild sensation. Numbing cream can be applied beforehand if needed." },
+              { "q": "Can light-colored (blonde, white) hair be removed?", "a": "Laser hair removal targets melanin, so it has limited effectiveness on white, blonde, or light-colored hair with low melanin content. Electrolysis may be an alternative in these cases. We'll assess your hair color during consultation and recommend the optimal method." },
+              { "q": "Can I get hair removal if I have dark skin?", "a": "Yes, Clarity II's 1064nm Nd:YAG wavelength is safe for use on dark skin (Fitzpatrick Type IV-VI). The 755nm Alexandrite is optimized for lighter skin, while 1064nm is optimized for darker skin, enabling customized treatment for all skin types." },
+              { "q": "Are there pre- and post-treatment precautions?", "a": "Before treatment: Avoid waxing, plucking, and depilatory creams for 2 weeks before; shaving only. Avoid excessive tanning on treatment day. After treatment: Avoid saunas and intense exercise for 24-48 hours, and apply sunscreen diligently." },
+              { "q": "How many sessions are needed to see results?", "a": "Results vary by area and individual hair characteristics, but optimal results are typically achieved after 6-10 sessions. Since lasers are only effective during the growth phase (Anagen), multiple sessions at 4-8 week intervals are needed to target follicles at different cycle stages." }
+            ]
+          },
+          "cta": {
+            "title": "Start Your Journey to Smooth Skin",
+            "description": "Get a customized hair removal consultation<br/>Discover your optimal hair removal plan with a free consultation",
+            "buttonConsult": "Book Free Consultation"
+          },
+          "wavelengthIllustration": {
+            "title": "Follicle Targeting Depth by Wavelength",
+            "wavelength755": "755nm Alexandrite",
+            "wavelength755Desc": "Optimal melanin absorption",
+            "wavelength1064": "1064nm Nd:YAG",
+            "wavelength1064Desc": "Deep penetration, all skin tones",
+            "epidermis": "Epidermis",
+            "dermis": "Dermis",
+            "lightSkin": "Optimized for light skin",
+            "darkSkin": "Dark skin/deep follicles"
+          },
+          "intellitrakIllustration": {
+            "title": "IntelliTrak™ Real-Time Tracking System",
+            "description1": "Uniform energy delivery with real-time skin tracking",
+            "description2": "Precise treatment without overlap or gaps"
+          },
+          "intellitrakFeatures": [
+            { "title": "Real-Time Tracking", "desc": "Detects handpiece movement in real-time to track treatment position" },
+            { "title": "Uniform Coverage", "desc": "Delivers uniform energy across the entire treatment area without overlap or gaps" },
+            { "title": "Burn Prevention", "desc": "Prevents over-treatment by avoiding duplicate exposure to the same area" }
+          ],
+          "processSteps": [
+            { "step": 1, "title": "Consultation & Skin Analysis", "desc": "Analyze skin type and hair characteristics to create a customized treatment plan" },
+            { "step": 2, "title": "Pre-Treatment Prep", "desc": "Shave treatment area and apply numbing cream if needed" },
+            { "step": 3, "title": "Laser Treatment", "desc": "Precise, uniform energy delivery with IntelliTrak™" },
+            { "step": 4, "title": "Post-Care", "desc": "Cooling and soothing care, schedule next appointment" }
+          ]
+        }
       },
       "tattoo": {
         "name": "Tattoo Removal",

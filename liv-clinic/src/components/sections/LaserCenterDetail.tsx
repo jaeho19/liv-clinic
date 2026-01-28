@@ -7,6 +7,47 @@ import { Link } from '@/i18n/routing';
 import { AnimateOnScroll } from '@/components/ui';
 import { LASER_EQUIPMENT, LASER_CATEGORIES } from '@/lib/constants';
 
+// TypeScript interfaces for translation data
+interface StatItem {
+  label: string;
+  value: string;
+  desc: string;
+}
+
+interface CategoryItem {
+  id: string;
+  name: string;
+  nameEn: string;
+  description: string;
+  equipment: string[];
+  icon: string;
+}
+
+interface EquipmentItem {
+  name: string;
+  nameKo: string;
+  wavelength: string;
+  feature: string;
+  targets: string[];
+  highlight: boolean;
+}
+
+interface SynergyBenefit {
+  title: string;
+  desc: string;
+}
+
+interface ProcessStep {
+  step: number;
+  title: string;
+  desc: string;
+}
+
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
 // 피부 고민별 카테고리 카드
 interface CategoryCardProps {
   category: {
@@ -19,9 +60,10 @@ interface CategoryCardProps {
     icon: string;
   };
   index: number;
+  viewMoreLabel: string;
 }
 
-const CategoryCard = ({ category, index }: CategoryCardProps) => (
+const CategoryCard = ({ category, index, viewMoreLabel }: CategoryCardProps) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -58,7 +100,7 @@ const CategoryCard = ({ category, index }: CategoryCardProps) => (
 
         {/* 화살표 */}
         <div className="flex items-center text-[var(--color-primary)] text-sm font-medium">
-          <span>자세히 보기</span>
+          <span>{viewMoreLabel}</span>
           <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
@@ -76,9 +118,14 @@ interface EquipmentCardProps {
   feature: string;
   targets: string[];
   highlight?: boolean;
+  labels: {
+    wavelength: string;
+    feature: string;
+    indications: string;
+  };
 }
 
-const EquipmentCard = ({ name, nameKo, wavelength, feature, targets, highlight = false }: EquipmentCardProps) => (
+const EquipmentCard = ({ name, nameKo, wavelength, feature, targets, highlight = false, labels }: EquipmentCardProps) => (
   <motion.div
     className={`relative rounded-2xl p-6 h-full ${
       highlight
@@ -99,17 +146,17 @@ const EquipmentCard = ({ name, nameKo, wavelength, feature, targets, highlight =
 
     <div className="space-y-3 mb-4">
       <div>
-        <span className="text-xs text-[var(--color-mono-light)]">파장</span>
+        <span className="text-xs text-[var(--color-mono-light)]">{labels.wavelength}</span>
         <p className="text-sm font-medium text-[var(--color-secondary)]">{wavelength}</p>
       </div>
       <div>
-        <span className="text-xs text-[var(--color-mono-light)]">특징</span>
+        <span className="text-xs text-[var(--color-mono-light)]">{labels.feature}</span>
         <p className="text-sm text-[var(--color-mono)]">{feature}</p>
       </div>
     </div>
 
     <div className="pt-3 border-t border-[var(--color-border)]">
-      <span className="text-xs text-[var(--color-mono-light)]">적응증</span>
+      <span className="text-xs text-[var(--color-mono-light)]">{labels.indications}</span>
       <div className="flex flex-wrap gap-1 mt-1">
         {targets.slice(0, 3).map((target, idx) => (
           <span
@@ -128,57 +175,14 @@ const EquipmentCard = ({ name, nameKo, wavelength, feature, targets, highlight =
   </motion.div>
 );
 
-// 피부 고민별 카테고리 데이터
-const skinConcernCategories = [
-  {
-    id: 'pigmentation',
-    name: '기미/색소 개선',
-    nameEn: 'Pigmentation & Melasma',
-    description: '기미, 잡티, 검버섯 등 색소 질환을 피코레이저와 레이저 토닝으로 효과적으로 개선합니다.',
-    href: '/laser/pigmentation',
-    equipment: ['Lucas', '레이저 토닝', 'Clarity II'],
-    icon: '☀️'
-  },
-  {
-    id: 'vascular',
-    name: '홍조/혈관 치료',
-    nameEn: 'Redness & Vascular',
-    description: '안면 홍조, 모세혈관 확장증, 혈관종을 Clarity II 듀얼 파장으로 치료합니다.',
-    href: '/laser/vascular',
-    equipment: ['Clarity II'],
-    icon: '🔴'
-  },
-  {
-    id: 'skintone',
-    name: '피부톤 균일화',
-    nameEn: 'Skin Tone Brightening',
-    description: '칙칙한 피부를 레이저 토닝과 울블랑으로 맑고 환하게 개선합니다.',
-    href: '/laser/skintone',
-    equipment: ['레이저 토닝', '울블랑'],
-    icon: '✨'
-  },
-  {
-    id: 'hair-removal',
-    name: '프리미엄 제모',
-    nameEn: 'Premium Hair Removal',
-    description: 'Clarity II 듀얼 파장과 IntelliTrak 기술로 모든 피부 타입에 안전한 제모.',
-    href: '/laser/hair-removal',
-    equipment: ['Clarity II'],
-    icon: '💎'
-  },
-  {
-    id: 'tattoo',
-    name: '문신 제거',
-    nameEn: 'Tattoo Removal',
-    description: 'Lucas 피코레이저로 흉터 없이 모든 색상의 문신을 효과적으로 제거합니다.',
-    href: '/laser/tattoo',
-    equipment: ['Lucas'],
-    icon: '🎨'
-  }
-];
-
 // 장비 매트릭스 일러스트레이션
-const EquipmentMatrixIllustration = () => (
+interface MatrixIllustrationProps {
+  chartTitle: string;
+  equipment: string[];
+  concerns: string[];
+}
+
+const EquipmentMatrixIllustration = ({ chartTitle, equipment, concerns }: MatrixIllustrationProps) => (
   <svg viewBox="0 0 600 400" className="w-full h-auto">
     <defs>
       <linearGradient id="matrixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -192,12 +196,12 @@ const EquipmentMatrixIllustration = () => (
 
     {/* 제목 */}
     <text x="300" y="35" fontSize="16" fill="#575756" textAnchor="middle" fontWeight="600">
-      피부 고민 × 장비 매트릭스
+      {chartTitle}
     </text>
 
     {/* 헤더 - 장비 */}
     <g transform="translate(150, 60)">
-      {['Clarity II', 'Lucas', '레이저 토닝', '울블랑'].map((eq, idx) => (
+      {equipment.map((eq, idx) => (
         <g key={idx} transform={`translate(${idx * 110}, 0)`}>
           <rect x="0" y="0" width="100" height="35" fill="#6d4e42" rx="8" />
           <text x="50" y="22" fontSize="11" fill="white" textAnchor="middle" fontWeight="500">
@@ -209,17 +213,17 @@ const EquipmentMatrixIllustration = () => (
 
     {/* 행 - 피부 고민 */}
     {[
-      { name: '기미/색소', checks: [true, true, true, false] },
-      { name: '홍조/혈관', checks: [true, false, false, false] },
-      { name: '피부톤', checks: [false, false, true, true] },
-      { name: '제모', checks: [true, false, false, false] },
-      { name: '문신 제거', checks: [false, true, false, false] }
+      { checks: [true, true, true, false] },
+      { checks: [true, false, false, false] },
+      { checks: [false, false, true, true] },
+      { checks: [true, false, false, false] },
+      { checks: [false, true, false, false] }
     ].map((row, rowIdx) => (
       <g key={rowIdx} transform={`translate(0, ${110 + rowIdx * 55})`}>
         {/* 고민명 */}
         <rect x="20" y="0" width="120" height="45" fill="url(#matrixGradient)" rx="8" />
         <text x="80" y="28" fontSize="12" fill="#575756" textAnchor="middle" fontWeight="500">
-          {row.name}
+          {concerns[rowIdx]}
         </text>
 
         {/* 체크박스들 */}
@@ -255,6 +259,66 @@ export default function LaserCenterDetail() {
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
+  // Load translation data
+  const detail = {
+    hero: {
+      title: t('laser.center.detail.hero.title'),
+      subtitle: t('laser.center.detail.hero.subtitle'),
+      description: t('laser.center.detail.hero.description'),
+    },
+    viewMore: t('laser.center.detail.viewMore'),
+    stats: t.raw('laser.center.detail.stats') as StatItem[],
+    categories: {
+      title: t('laser.center.detail.categories.title'),
+      subtitle: t('laser.center.detail.categories.subtitle'),
+      items: t.raw('laser.center.detail.categories.items') as CategoryItem[],
+    },
+    matrix: {
+      badge: t('laser.center.detail.matrix.badge'),
+      title: t('laser.center.detail.matrix.title'),
+      subtitle: t('laser.center.detail.matrix.subtitle'),
+      chartTitle: t('laser.center.detail.matrix.chartTitle'),
+      equipment: t.raw('laser.center.detail.matrix.equipment') as string[],
+      concerns: t.raw('laser.center.detail.matrix.concerns') as string[],
+    },
+    equipmentSection: {
+      badge: t('laser.center.detail.equipmentSection.badge'),
+      title: t('laser.center.detail.equipmentSection.title'),
+      subtitle: t('laser.center.detail.equipmentSection.subtitle'),
+      labels: t.raw('laser.center.detail.equipmentSection.labels') as {
+        wavelength: string;
+        feature: string;
+        indications: string;
+      },
+      items: t.raw('laser.center.detail.equipmentSection.items') as EquipmentItem[],
+    },
+    synergy: {
+      badge: t('laser.center.detail.synergy.badge'),
+      title: t('laser.center.detail.synergy.title'),
+      subtitle: t('laser.center.detail.synergy.subtitle'),
+      benefits: t.raw('laser.center.detail.synergy.benefits') as SynergyBenefit[],
+    },
+    process: {
+      title: t('laser.center.detail.process.title'),
+      steps: t.raw('laser.center.detail.process.steps') as ProcessStep[],
+    },
+    faq: {
+      title: t('laser.center.detail.faq.title'),
+      items: t.raw('laser.center.detail.faq.items') as FAQItem[],
+    },
+    cta: {
+      title: t('laser.center.detail.cta.title'),
+      description: t('laser.center.detail.cta.description'),
+      buttonConsult: t('laser.center.detail.cta.buttonConsult'),
+    },
+  };
+
+  // Add hrefs to category items
+  const categoriesWithHrefs = detail.categories.items.map(cat => ({
+    ...cat,
+    href: `/laser/${cat.id}`,
+  }));
+
   // FAQ 토글 시 스크롤
   const handleFaqToggle = useCallback((index: number, e: React.MouseEvent<HTMLElement>) => {
     const details = e.currentTarget.closest('details') as HTMLDetailsElement;
@@ -282,15 +346,15 @@ export default function LaserCenterDetail() {
                 LASER CENTER
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-secondary)] mb-6">
-                레이저 센터
+                {detail.hero.title}
               </h1>
               <p className="text-xl md:text-2xl text-[var(--color-primary)] font-medium mb-4">
-                피부 고민별 맞춤 레이저 솔루션
+                {detail.hero.subtitle}
               </p>
-              <p className="text-lg text-[var(--color-mono)] max-w-2xl mx-auto leading-relaxed">
-                Clarity II + Lucas 조합으로<br className="hidden md:block" />
-                색소부터 혈관, 제모, 문신 제거까지 원스톱 케어
-              </p>
+              <p
+                className="text-lg text-[var(--color-mono)] max-w-2xl mx-auto leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: detail.hero.description }}
+              />
             </div>
           </AnimateOnScroll>
         </div>
@@ -300,12 +364,7 @@ export default function LaserCenterDetail() {
       <section className="py-12 bg-[var(--color-secondary)]">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-6 text-center">
-            {[
-              { label: '보유 장비', value: '4종', desc: '프리미엄 레이저' },
-              { label: '치료 영역', value: '5가지', desc: '피부 고민 해결' },
-              { label: '경험', value: '10년+', desc: '레이저 시술 경력' },
-              { label: '안전성', value: '검증됨', desc: 'FDA 승인 장비' }
-            ].map((stat, idx) => (
+            {detail.stats.map((stat, idx) => (
               <AnimateOnScroll key={idx} animation="fadeInUp" delay={idx * 0.1}>
                 <div>
                   <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
@@ -324,17 +383,17 @@ export default function LaserCenterDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                피부 고민별 맞춤 치료
+                {detail.categories.title}
               </h2>
               <p className="text-[var(--color-mono)] max-w-2xl mx-auto">
-                고민하는 피부 문제를 선택하시면 최적의 레이저 치료를 안내해드립니다
+                {detail.categories.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {skinConcernCategories.map((category, idx) => (
-              <CategoryCard key={category.id} category={category} index={idx} />
+            {categoriesWithHrefs.map((category, idx) => (
+              <CategoryCard key={category.id} category={category} index={idx} viewMoreLabel={detail.viewMore} />
             ))}
           </div>
         </div>
@@ -346,20 +405,24 @@ export default function LaserCenterDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <span className="inline-block bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
-                장비 × 적응증
+                {detail.matrix.badge}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                어떤 고민이든 해결할 수 있는 장비 라인업
+                {detail.matrix.title}
               </h2>
               <p className="text-[var(--color-mono)] max-w-2xl mx-auto">
-                LIV 레이저 센터의 4종 프리미엄 장비가 모든 피부 고민을 커버합니다
+                {detail.matrix.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll animation="fadeInUp" delay={0.1}>
             <div className="max-w-4xl mx-auto bg-[var(--color-background)] rounded-2xl p-6 overflow-x-auto">
-              <EquipmentMatrixIllustration />
+              <EquipmentMatrixIllustration
+                chartTitle={detail.matrix.chartTitle}
+                equipment={detail.matrix.equipment}
+                concerns={detail.matrix.concerns}
+              />
             </div>
           </AnimateOnScroll>
         </div>
@@ -371,58 +434,31 @@ export default function LaserCenterDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <span className="inline-block bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
-                LIV 보유 장비
+                {detail.equipmentSection.badge}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                프리미엄 레이저 라인업
+                {detail.equipmentSection.title}
               </h2>
               <p className="text-[var(--color-mono)] max-w-2xl mx-auto">
-                FDA 승인 최신 장비로 안전하고 효과적인 시술을 제공합니다
+                {detail.equipmentSection.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            <AnimateOnScroll animation="fadeInUp" delay={0.1}>
-              <EquipmentCard
-                name="Clarity II"
-                nameKo="클래리티 II"
-                wavelength="755nm + 1064nm"
-                feature="듀얼 파장 + IntelliTrak 기술"
-                targets={['색소', '혈관', '제모', '피부톤']}
-                highlight
-              />
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fadeInUp" delay={0.2}>
-              <EquipmentCard
-                name="Lucas"
-                nameKo="루카스"
-                wavelength="532/755/1064nm"
-                feature="피코초 펄스 (450ps)"
-                targets={['기미', '색소', '문신 제거']}
-              />
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fadeInUp" delay={0.3}>
-              <EquipmentCard
-                name="Laser Toning"
-                nameKo="레이저 토닝"
-                wavelength="1064nm Nd:YAG"
-                feature="저출력 반복 조사"
-                targets={['피부톤', '모공', '피부결']}
-              />
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fadeInUp" delay={0.4}>
-              <EquipmentCard
-                name="Ulblanc"
-                nameKo="울블랑"
-                wavelength="전용 파장"
-                feature="멜라닌 선택적 타겟"
-                targets={['피부 미백', '톤 균일화']}
-              />
-            </AnimateOnScroll>
+            {detail.equipmentSection.items.map((equipment, idx) => (
+              <AnimateOnScroll key={equipment.name} animation="fadeInUp" delay={0.1 + idx * 0.1}>
+                <EquipmentCard
+                  name={equipment.name}
+                  nameKo={equipment.nameKo}
+                  wavelength={equipment.wavelength}
+                  feature={equipment.feature}
+                  targets={equipment.targets}
+                  highlight={equipment.highlight}
+                  labels={detail.equipmentSection.labels}
+                />
+              </AnimateOnScroll>
+            ))}
           </div>
         </div>
       </section>
@@ -434,59 +470,42 @@ export default function LaserCenterDetail() {
             <AnimateOnScroll animation="fadeInUp">
               <div className="text-center mb-12">
                 <span className="inline-block bg-white text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
-                  LIV EXCLUSIVE
+                  {detail.synergy.badge}
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                  Clarity II + Lucas<br className="md:hidden" /> 시너지 효과
+                  {detail.synergy.title}
                 </h2>
                 <p className="text-[var(--color-mono)] max-w-2xl mx-auto">
-                  두 프리미엄 장비의 조합으로 단독 시술 대비 더 빠르고 효과적인 결과를 기대할 수 있습니다
+                  {detail.synergy.subtitle}
                 </p>
               </div>
             </AnimateOnScroll>
 
             <div className="grid md:grid-cols-3 gap-6">
-              <AnimateOnScroll animation="fadeInUp" delay={0.1}>
-                <div className="bg-white rounded-2xl p-6 text-center">
-                  <div className="w-16 h-16 bg-[var(--color-primary)]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-lg font-semibold text-[var(--color-secondary)] mb-2">다중 파장 커버리지</h4>
-                  <p className="text-sm text-[var(--color-mono)]">
-                    532nm~1064nm까지<br />모든 깊이의 타겟 접근
-                  </p>
-                </div>
-              </AnimateOnScroll>
-
-              <AnimateOnScroll animation="fadeInUp" delay={0.2}>
-                <div className="bg-white rounded-2xl p-6 text-center">
-                  <div className="w-16 h-16 bg-[var(--color-primary)]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-lg font-semibold text-[var(--color-secondary)] mb-2">복합 적응증 치료</h4>
-                  <p className="text-sm text-[var(--color-mono)]">
-                    기미+홍조, 색소+모공 등<br />복합 고민 동시 해결
-                  </p>
-                </div>
-              </AnimateOnScroll>
-
-              <AnimateOnScroll animation="fadeInUp" delay={0.3}>
-                <div className="bg-white rounded-2xl p-6 text-center">
-                  <div className="w-16 h-16 bg-[var(--color-primary)]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <h4 className="text-lg font-semibold text-[var(--color-secondary)] mb-2">빠른 효과 발현</h4>
-                  <p className="text-sm text-[var(--color-mono)]">
-                    단독 시술 대비<br />1.5~2배 빠른 결과
-                  </p>
-                </div>
-              </AnimateOnScroll>
+              {detail.synergy.benefits.map((benefit, idx) => {
+                const icons = [
+                  <svg key="icon1" className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>,
+                  <svg key="icon2" className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>,
+                  <svg key="icon3" className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>,
+                ];
+                return (
+                  <AnimateOnScroll key={idx} animation="fadeInUp" delay={0.1 + idx * 0.1}>
+                    <div className="bg-white rounded-2xl p-6 text-center">
+                      <div className="w-16 h-16 bg-[var(--color-primary)]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        {icons[idx]}
+                      </div>
+                      <h4 className="text-lg font-semibold text-[var(--color-secondary)] mb-2">{benefit.title}</h4>
+                      <p className="text-sm text-[var(--color-mono)]" dangerouslySetInnerHTML={{ __html: benefit.desc }} />
+                    </div>
+                  </AnimateOnScroll>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -498,19 +517,14 @@ export default function LaserCenterDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                레이저 시술 프로세스
+                {detail.process.title}
               </h2>
             </div>
           </AnimateOnScroll>
 
           <div className="max-w-4xl mx-auto">
             <div className="grid md:grid-cols-4 gap-6">
-              {[
-                { step: 1, title: '피부 분석', desc: '전문의 상담 및 피부 타입, 고민 정밀 분석' },
-                { step: 2, title: '맞춤 설계', desc: '개인별 최적의 레이저 조합 및 치료 계획 수립' },
-                { step: 3, title: '레이저 시술', desc: '숙련된 전문의의 안전하고 정밀한 시술' },
-                { step: 4, title: '사후 관리', desc: '시술 후 케어 및 정기 점검, 유지 관리' }
-              ].map((item, idx) => (
+              {detail.process.steps.map((item, idx) => (
                 <AnimateOnScroll key={idx} animation="fadeInUp" delay={idx * 0.1}>
                   <div className="text-center">
                     <div className="w-14 h-14 bg-[var(--color-primary)] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
@@ -532,31 +546,14 @@ export default function LaserCenterDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                자주 묻는 질문
+                {detail.faq.title}
               </h2>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll animation="fadeInUp" delay={0.1}>
             <div className="max-w-3xl mx-auto space-y-4">
-              {[
-                {
-                  q: '어떤 레이저가 저에게 맞나요?',
-                  a: '피부 상태와 고민에 따라 최적의 레이저가 다릅니다. 무료 상담을 통해 전문의가 피부를 직접 분석하고 맞춤 치료 계획을 제안해드립니다.'
-                },
-                {
-                  q: '레이저 시술은 아픈가요?',
-                  a: '장비마다 다르지만 대부분 "고무줄로 튕기는 느낌" 정도입니다. 필요시 마취 크림을 도포하여 통증을 최소화합니다. Clarity II의 경우 내장 쿨링 시스템이 있어 더욱 편안합니다.'
-                },
-                {
-                  q: '다운타임은 얼마나 걸리나요?',
-                  a: '레이저 종류에 따라 다릅니다. 레이저 토닝, 울블랑은 다운타임이 거의 없어 바로 일상생활이 가능하고, 피코레이저는 3-5일 정도의 경미한 붉음이 있을 수 있습니다.'
-                },
-                {
-                  q: '효과는 언제부터 나타나나요?',
-                  a: '시술 직후부터 피부톤 개선을 느끼실 수 있으며, 2-4주에 걸쳐 콜라겐 리모델링으로 효과가 더욱 뚜렷해집니다. 최적의 결과를 위해 권장 횟수를 완료하시는 것이 좋습니다.'
-                }
-              ].map((faq, idx) => (
+              {detail.faq.items.map((faq, idx) => (
                 <details key={idx} className="group bg-white rounded-xl border border-[var(--color-border)] overflow-hidden">
                   <summary
                     onClick={(e) => handleFaqToggle(idx, e)}
@@ -583,18 +580,18 @@ export default function LaserCenterDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                맑고 건강한 피부를 위한 첫걸음
+                {detail.cta.title}
               </h2>
-              <p className="text-white/80 mb-8 leading-relaxed">
-                피부 고민에 맞는 최적의 레이저를 찾아드립니다<br className="hidden md:block" />
-                무료 상담으로 맞춤 치료 계획을 확인하세요
-              </p>
+              <p
+                className="text-white/80 mb-8 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: detail.cta.description }}
+              />
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white px-8 py-4 rounded-full font-medium hover:bg-[var(--color-primary)]/90 transition-colors"
                 >
-                  무료 상담 예약
+                  {detail.cta.buttonConsult}
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>

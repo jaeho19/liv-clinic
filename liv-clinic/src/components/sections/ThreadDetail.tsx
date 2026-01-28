@@ -9,8 +9,37 @@ import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 const treatment = TREATMENTS.lifting.thread;
 
+// SVG 일러스트레이션에서 사용할 타입
+interface SkinLayersLabels {
+  epidermis: string;
+  dermis: string;
+  subcutaneous: string;
+  smas: string;
+}
+
+interface ThreadTypesLabels {
+  pdo: { name: string; fullName: string; absorptionPeriod: string; types: string; note: string };
+  plla: { name: string; fullName: string; absorptionPeriod: string; feature: string; note: string };
+  pcl: { name: string; fullName: string; absorptionPeriod: string; feature: string; note: string };
+}
+
+interface CollagenTimelineLabels {
+  immediate: { phase: string; title: string; desc: string };
+  oneToTwo: { phase: string; title: string; desc: string };
+  threeToSix: { phase: string; title: string; desc: string };
+}
+
+interface TreatmentAreasLabels {
+  forehead: string;
+  cheekbone: string;
+  cheek: string;
+  nasolabial: string;
+  jawline: string;
+  neck: string;
+}
+
 // 실리프팅 메커니즘 일러스트
-const ThreadLiftingMechanismIllustration = () => (
+const ThreadLiftingMechanismIllustration = ({ skinLayers, liftingEffect }: { skinLayers: SkinLayersLabels; liftingEffect: string }) => (
   <div className="relative w-full max-w-md mx-auto aspect-square">
     <svg viewBox="0 0 400 400" className="w-full h-full">
       <defs>
@@ -46,10 +75,10 @@ const ThreadLiftingMechanismIllustration = () => (
       <path d="M50 280 Q200 260 350 280" stroke="#C49080" strokeWidth="1" strokeDasharray="5 3" />
 
       {/* 레이어 라벨 */}
-      <text x="365" y="165" fill="#999" fontSize="10">표피</text>
-      <text x="365" y="200" fill="#999" fontSize="10">진피</text>
-      <text x="365" y="250" fill="#999" fontSize="10">피하지방</text>
-      <text x="365" y="300" fill="#999" fontSize="10">SMAS</text>
+      <text x="365" y="165" fill="#999" fontSize="10">{skinLayers.epidermis}</text>
+      <text x="365" y="200" fill="#999" fontSize="10">{skinLayers.dermis}</text>
+      <text x="365" y="250" fill="#999" fontSize="10">{skinLayers.subcutaneous}</text>
+      <text x="365" y="300" fill="#999" fontSize="10">{skinLayers.smas}</text>
 
       {/* 실 삽입 */}
       <motion.g filter="url(#threadGlow)">
@@ -217,7 +246,7 @@ const ThreadLiftingMechanismIllustration = () => (
         animate={{ opacity: 1 }}
         transition={{ delay: 3 }}
       >
-        ↑ LIFTING EFFECT ↑
+        {liftingEffect}
       </motion.text>
 
       {/* 삽입점 표시 */}
@@ -235,7 +264,7 @@ const ThreadLiftingMechanismIllustration = () => (
 );
 
 // 실 종류 일러스트
-const ThreadTypesIllustration = () => (
+const ThreadTypesIllustration = ({ threadTypes }: { threadTypes: ThreadTypesLabels }) => (
   <div className="relative w-full max-w-3xl mx-auto">
     <svg viewBox="0 0 700 300" className="w-full h-auto">
       <defs>
@@ -260,8 +289,8 @@ const ThreadTypesIllustration = () => (
         transition={{ delay: 0.2 }}
       >
         <rect x="30" y="30" width="200" height="240" rx="15" fill="#f8f8f8" stroke="#e0e0e0" strokeWidth="1" />
-        <text x="130" y="65" textAnchor="middle" fill="#6B7280" fontSize="18" fontWeight="bold">PDO</text>
-        <text x="130" y="85" textAnchor="middle" fill="#999" fontSize="11">Polydioxanone</text>
+        <text x="130" y="65" textAnchor="middle" fill="#6B7280" fontSize="18" fontWeight="bold">{threadTypes.pdo.name}</text>
+        <text x="130" y="85" textAnchor="middle" fill="#999" fontSize="11">{threadTypes.pdo.fullName}</text>
 
         {/* PDO 실 그림 */}
         <motion.path
@@ -289,9 +318,9 @@ const ThreadTypesIllustration = () => (
           />
         ))}
 
-        <text x="130" y="200" textAnchor="middle" fill="#333" fontSize="12" fontWeight="500">흡수 기간: 6-8개월</text>
-        <text x="130" y="220" textAnchor="middle" fill="#666" fontSize="11">모노, 코그, 스크류</text>
-        <text x="130" y="240" textAnchor="middle" fill="#999" fontSize="10">가장 널리 사용</text>
+        <text x="130" y="200" textAnchor="middle" fill="#333" fontSize="12" fontWeight="500">{threadTypes.pdo.absorptionPeriod}</text>
+        <text x="130" y="220" textAnchor="middle" fill="#666" fontSize="11">{threadTypes.pdo.types}</text>
+        <text x="130" y="240" textAnchor="middle" fill="#999" fontSize="10">{threadTypes.pdo.note}</text>
       </motion.g>
 
       {/* PLLA 실 */}
@@ -301,8 +330,8 @@ const ThreadTypesIllustration = () => (
         transition={{ delay: 0.4 }}
       >
         <rect x="250" y="30" width="200" height="240" rx="15" fill="#FFFBEB" stroke="#FCD34D" strokeWidth="1" />
-        <text x="350" y="65" textAnchor="middle" fill="#B8860B" fontSize="18" fontWeight="bold">PLLA</text>
-        <text x="350" y="85" textAnchor="middle" fill="#D4AF37" fontSize="11">Poly-L-Lactic Acid</text>
+        <text x="350" y="65" textAnchor="middle" fill="#B8860B" fontSize="18" fontWeight="bold">{threadTypes.plla.name}</text>
+        <text x="350" y="85" textAnchor="middle" fill="#D4AF37" fontSize="11">{threadTypes.plla.fullName}</text>
 
         {/* PLLA 실 그림 */}
         <motion.path
@@ -344,9 +373,9 @@ const ThreadTypesIllustration = () => (
           </motion.g>
         ))}
 
-        <text x="350" y="200" textAnchor="middle" fill="#333" fontSize="12" fontWeight="500">흡수 기간: 12-18개월</text>
-        <text x="350" y="220" textAnchor="middle" fill="#666" fontSize="11">콜라겐 생성 촉진</text>
-        <text x="350" y="240" textAnchor="middle" fill="#D4AF37" fontSize="10" fontWeight="500">프리미엄</text>
+        <text x="350" y="200" textAnchor="middle" fill="#333" fontSize="12" fontWeight="500">{threadTypes.plla.absorptionPeriod}</text>
+        <text x="350" y="220" textAnchor="middle" fill="#666" fontSize="11">{threadTypes.plla.feature}</text>
+        <text x="350" y="240" textAnchor="middle" fill="#D4AF37" fontSize="10" fontWeight="500">{threadTypes.plla.note}</text>
       </motion.g>
 
       {/* PCL 실 */}
@@ -356,8 +385,8 @@ const ThreadTypesIllustration = () => (
         transition={{ delay: 0.6 }}
       >
         <rect x="470" y="30" width="200" height="240" rx="15" fill="#FAF5FF" stroke="#C084FC" strokeWidth="1" />
-        <text x="570" y="65" textAnchor="middle" fill="#9333EA" fontSize="18" fontWeight="bold">PCL</text>
-        <text x="570" y="85" textAnchor="middle" fill="#A855F7" fontSize="11">Polycaprolactone</text>
+        <text x="570" y="65" textAnchor="middle" fill="#9333EA" fontSize="18" fontWeight="bold">{threadTypes.pcl.name}</text>
+        <text x="570" y="85" textAnchor="middle" fill="#A855F7" fontSize="11">{threadTypes.pcl.fullName}</text>
 
         {/* PCL 실 그림 */}
         <motion.path
@@ -389,16 +418,16 @@ const ThreadTypesIllustration = () => (
           />
         ))}
 
-        <text x="570" y="200" textAnchor="middle" fill="#333" fontSize="12" fontWeight="500">흡수 기간: 18-24개월</text>
-        <text x="570" y="220" textAnchor="middle" fill="#666" fontSize="11">최장 지속력</text>
-        <text x="570" y="240" textAnchor="middle" fill="#9333EA" fontSize="10" fontWeight="500">하이엔드</text>
+        <text x="570" y="200" textAnchor="middle" fill="#333" fontSize="12" fontWeight="500">{threadTypes.pcl.absorptionPeriod}</text>
+        <text x="570" y="220" textAnchor="middle" fill="#666" fontSize="11">{threadTypes.pcl.feature}</text>
+        <text x="570" y="240" textAnchor="middle" fill="#9333EA" fontSize="10" fontWeight="500">{threadTypes.pcl.note}</text>
       </motion.g>
     </svg>
   </div>
 );
 
 // 콜라겐 재생 일러스트
-const CollagenRegenerationIllustration = () => (
+const CollagenRegenerationIllustration = ({ timeline }: { timeline: CollagenTimelineLabels }) => (
   <div className="relative w-full max-w-2xl mx-auto">
     <svg viewBox="0 0 600 280" className="w-full h-auto">
       {/* 시술 직후 */}
@@ -407,7 +436,7 @@ const CollagenRegenerationIllustration = () => (
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <text x="100" y="30" textAnchor="middle" fill="#999" fontSize="14" fontWeight="600">시술 직후</text>
+        <text x="100" y="30" textAnchor="middle" fill="#999" fontSize="14" fontWeight="600">{timeline.immediate.phase}</text>
         <rect x="30" y="50" width="140" height="180" rx="10" fill="#FFF5EB" stroke="#FFCEB3" strokeWidth="1" />
 
         {/* 피부 조직 */}
@@ -435,8 +464,8 @@ const CollagenRegenerationIllustration = () => (
           <line x1="115" y1="130" x2="108" y2="122" stroke="#D4AF37" strokeWidth="2" />
         </motion.g>
 
-        <text x="100" y="200" textAnchor="middle" fill="#666" fontSize="11">즉각적 리프팅</text>
-        <text x="100" y="218" textAnchor="middle" fill="#999" fontSize="10">물리적 당김 효과</text>
+        <text x="100" y="200" textAnchor="middle" fill="#666" fontSize="11">{timeline.immediate.title}</text>
+        <text x="100" y="218" textAnchor="middle" fill="#999" fontSize="10">{timeline.immediate.desc}</text>
       </motion.g>
 
       {/* 화살표 1 */}
@@ -454,7 +483,7 @@ const CollagenRegenerationIllustration = () => (
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
       >
-        <text x="300" y="30" textAnchor="middle" fill="#D4AF37" fontSize="14" fontWeight="600">1-2개월 후</text>
+        <text x="300" y="30" textAnchor="middle" fill="#D4AF37" fontSize="14" fontWeight="600">{timeline.oneToTwo.phase}</text>
         <rect x="230" y="50" width="140" height="180" rx="10" fill="#FFFBEB" stroke="#FCD34D" strokeWidth="1" />
 
         {/* 피부 조직 */}
@@ -484,8 +513,8 @@ const CollagenRegenerationIllustration = () => (
           ))}
         </motion.g>
 
-        <text x="300" y="200" textAnchor="middle" fill="#666" fontSize="11">콜라겐 생성 시작</text>
-        <text x="300" y="218" textAnchor="middle" fill="#D4AF37" fontSize="10">섬유아세포 활성화</text>
+        <text x="300" y="200" textAnchor="middle" fill="#666" fontSize="11">{timeline.oneToTwo.title}</text>
+        <text x="300" y="218" textAnchor="middle" fill="#D4AF37" fontSize="10">{timeline.oneToTwo.desc}</text>
       </motion.g>
 
       {/* 화살표 2 */}
@@ -503,7 +532,7 @@ const CollagenRegenerationIllustration = () => (
         animate={{ opacity: 1 }}
         transition={{ delay: 2.2 }}
       >
-        <text x="500" y="30" textAnchor="middle" fill="#22C55E" fontSize="14" fontWeight="600">3-6개월 후</text>
+        <text x="500" y="30" textAnchor="middle" fill="#22C55E" fontSize="14" fontWeight="600">{timeline.threeToSix.phase}</text>
         <rect x="430" y="50" width="140" height="180" rx="10" fill="#F0FDF4" stroke="#86EFAC" strokeWidth="1" />
 
         {/* 피부 조직 - 더 탄력있게 */}
@@ -533,8 +562,8 @@ const CollagenRegenerationIllustration = () => (
           ))}
         </motion.g>
 
-        <text x="500" y="200" textAnchor="middle" fill="#666" fontSize="11">콜라겐 리모델링 완성</text>
-        <text x="500" y="218" textAnchor="middle" fill="#22C55E" fontSize="10" fontWeight="500">자연스러운 탄력</text>
+        <text x="500" y="200" textAnchor="middle" fill="#666" fontSize="11">{timeline.threeToSix.title}</text>
+        <text x="500" y="218" textAnchor="middle" fill="#22C55E" fontSize="10" fontWeight="500">{timeline.threeToSix.desc}</text>
       </motion.g>
 
       {/* 화살표 마커 */}
@@ -548,7 +577,7 @@ const CollagenRegenerationIllustration = () => (
 );
 
 // 시술 부위 일러스트
-const TreatmentAreasIllustration = () => (
+const TreatmentAreasIllustration = ({ areas }: { areas: TreatmentAreasLabels }) => (
   <div className="relative w-full max-w-sm mx-auto aspect-[3/4]">
     <svg viewBox="0 0 300 400" className="w-full h-full">
       {/* 얼굴 윤곽 */}
@@ -592,7 +621,7 @@ const TreatmentAreasIllustration = () => (
         />
         <circle cx="100" cy="85" r="4" fill="#D4AF37" />
         <line x1="75" y1="75" x2="30" y2="60" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
-        <text x="5" y="65" fill="#D4AF37" fontSize="10" fontWeight="500">이마</text>
+        <text x="5" y="65" fill="#D4AF37" fontSize="10" fontWeight="500">{areas.forehead}</text>
       </motion.g>
 
       {/* 광대 */}
@@ -613,7 +642,7 @@ const TreatmentAreasIllustration = () => (
         />
         <circle cx="75" cy="170" r="4" fill="#D4AF37" />
         <line x1="60" y1="175" x2="20" y2="175" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
-        <text x="5" y="180" fill="#D4AF37" fontSize="10" fontWeight="500">광대</text>
+        <text x="5" y="180" fill="#D4AF37" fontSize="10" fontWeight="500">{areas.cheekbone}</text>
       </motion.g>
 
       {/* 볼 */}
@@ -634,7 +663,7 @@ const TreatmentAreasIllustration = () => (
         />
         <circle cx="225" cy="170" r="4" fill="#D4AF37" />
         <line x1="240" y1="175" x2="275" y2="175" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
-        <text x="280" y="180" fill="#D4AF37" fontSize="10" fontWeight="500">볼</text>
+        <text x="280" y="180" fill="#D4AF37" fontSize="10" fontWeight="500">{areas.cheek}</text>
       </motion.g>
 
       {/* 팔자 */}
@@ -655,7 +684,7 @@ const TreatmentAreasIllustration = () => (
         />
         <circle cx="120" cy="195" r="4" fill="#D4AF37" />
         <line x1="100" y1="220" x2="45" y2="230" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
-        <text x="5" y="235" fill="#D4AF37" fontSize="10" fontWeight="500">팔자주름</text>
+        <text x="5" y="235" fill="#D4AF37" fontSize="10" fontWeight="500">{areas.nasolabial}</text>
       </motion.g>
 
       {/* 턱선 */}
@@ -677,7 +706,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="100" cy="245" r="4" fill="#D4AF37" />
         <circle cx="200" cy="245" r="4" fill="#D4AF37" />
         <line x1="215" y1="260" x2="265" y2="275" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
-        <text x="270" y="280" fill="#D4AF37" fontSize="10" fontWeight="500">턱선</text>
+        <text x="270" y="280" fill="#D4AF37" fontSize="10" fontWeight="500">{areas.jawline}</text>
       </motion.g>
 
       {/* 목 */}
@@ -699,7 +728,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="120" cy="310" r="4" fill="#D4AF37" />
         <circle cx="180" cy="310" r="4" fill="#D4AF37" />
         <line x1="185" y1="320" x2="250" y2="340" stroke="#D4AF37" strokeWidth="1" strokeDasharray="2 2" />
-        <text x="255" y="345" fill="#D4AF37" fontSize="10" fontWeight="500">목</text>
+        <text x="255" y="345" fill="#D4AF37" fontSize="10" fontWeight="500">{areas.neck}</text>
       </motion.g>
     </svg>
   </div>
@@ -709,6 +738,26 @@ export default function ThreadDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+
+  // 번역 데이터 로드
+  const skinLayers = t.raw('lifting.thread.detail.skinLayers') as SkinLayersLabels;
+  const liftingEffect = t('lifting.thread.detail.liftingEffect');
+  const threadTypes = t.raw('lifting.thread.detail.threadTypes') as ThreadTypesLabels;
+  const collagenTimeline = t.raw('lifting.thread.detail.collagenTimeline') as CollagenTimelineLabels;
+  const treatmentAreas = t.raw('lifting.thread.detail.treatmentAreas') as TreatmentAreasLabels;
+  const threadTypesSection = t.raw('lifting.thread.detail.threadTypesSection') as {
+    title: string;
+    description: string;
+    pdoCard: { title: string; subtitle: string; features: string[] };
+    pllaCard: { title: string; subtitle: string; features: string[] };
+    pclCard: { title: string; subtitle: string; features: string[] };
+  };
+  const comparisonData = t.raw('lifting.thread.detail.comparison') as {
+    title: string;
+    description: string;
+    headers: { item: string; laser: string; thread: string };
+    rows: Array<{ item: string; laser: string; thread: string }>;
+  };
 
   // 관련 Q&A 필터링
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
@@ -748,7 +797,7 @@ export default function ThreadDetail() {
               transition={{ duration: 0.8 }}
             >
               <span className="inline-block px-4 py-2 bg-[#D4AF37]/10 text-[#B8860B] text-sm font-medium rounded-full mb-6 border border-[#D4AF37]/30 shadow-sm">
-                THREAD LIFTING
+                {t('lifting.thread.detail.hero.badge')}
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4">
                 {treatment.name}
@@ -770,7 +819,7 @@ export default function ThreadDetail() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <ThreadLiftingMechanismIllustration />
+              <ThreadLiftingMechanismIllustration skinLayers={skinLayers} liftingEffect={liftingEffect} />
             </motion.div>
           </div>
         </div>
@@ -787,14 +836,12 @@ export default function ThreadDetail() {
           >
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-12 h-px bg-gradient-to-r from-transparent to-[#D4AF37]" />
-              <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">Premium Thread</span>
+              <span className="text-xs tracking-[0.3em] text-[#D4AF37] uppercase font-medium">{t('lifting.thread.detail.advantages.sectionLabel')}</span>
               <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              실리프팅의 <span className="text-[#D4AF37]">장점</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.thread.detail.advantages.title') }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              녹는 실로 즉각적인 리프팅과 장기적인 콜라겐 재생을 동시에 경험하세요
+              {t('lifting.thread.detail.advantages.description')}
             </p>
           </motion.div>
 
@@ -830,11 +877,9 @@ export default function ThreadDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              다양한 <span className="text-[#D4AF37]">실 종류</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.thread.detail.threadTypesSection.title') }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              시술 목적과 원하는 효과에 따라 최적의 실을 선택합니다
+              {t('lifting.thread.detail.threadTypesSection.description')}
             </p>
           </motion.div>
 
@@ -843,7 +888,7 @@ export default function ThreadDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <ThreadTypesIllustration />
+            <ThreadTypesIllustration threadTypes={threadTypes} />
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 mt-16">
@@ -853,18 +898,14 @@ export default function ThreadDetail() {
               viewport={{ once: true }}
               className="text-center p-6 bg-white rounded-xl shadow-sm border-t-4 border-gray-400"
             >
-              <div className="text-2xl font-bold text-gray-600 mb-2">PDO</div>
-              <div className="text-gray-500 text-sm mb-4">가장 대중적인 선택</div>
+              <div className="text-2xl font-bold text-gray-600 mb-2">{threadTypesSection.pdoCard.title}</div>
+              <div className="text-gray-500 text-sm mb-4">{threadTypesSection.pdoCard.subtitle}</div>
               <ul className="text-left text-gray-600 text-sm space-y-2">
-                <li className="flex items-center gap-2">
-                  <span className="text-gray-400">•</span> 6-8개월 자연 흡수
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-gray-400">•</span> 모노/코그/스크류 타입
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-gray-400">•</span> 합리적인 가격대
-                </li>
+                {threadTypesSection.pdoCard.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="text-gray-400">•</span> {feature}
+                  </li>
+                ))}
               </ul>
             </motion.div>
             <motion.div
@@ -874,18 +915,14 @@ export default function ThreadDetail() {
               transition={{ delay: 0.1 }}
               className="text-center p-6 bg-white rounded-xl shadow-sm border-t-4 border-[#D4AF37]"
             >
-              <div className="text-2xl font-bold text-[#D4AF37] mb-2">PLLA</div>
-              <div className="text-[#B8860B] text-sm mb-4">콜라겐 부스터</div>
+              <div className="text-2xl font-bold text-[#D4AF37] mb-2">{threadTypesSection.pllaCard.title}</div>
+              <div className="text-[#B8860B] text-sm mb-4">{threadTypesSection.pllaCard.subtitle}</div>
               <ul className="text-left text-gray-600 text-sm space-y-2">
-                <li className="flex items-center gap-2">
-                  <span className="text-[#D4AF37]">•</span> 12-18개월 지속
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-[#D4AF37]">•</span> 콜라겐 생성 촉진
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-[#D4AF37]">•</span> 점진적 볼륨 개선
-                </li>
+                {threadTypesSection.pllaCard.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="text-[#D4AF37]">•</span> {feature}
+                  </li>
+                ))}
               </ul>
             </motion.div>
             <motion.div
@@ -895,18 +932,14 @@ export default function ThreadDetail() {
               transition={{ delay: 0.2 }}
               className="text-center p-6 bg-white rounded-xl shadow-sm border-t-4 border-purple-500"
             >
-              <div className="text-2xl font-bold text-purple-600 mb-2">PCL</div>
-              <div className="text-purple-500 text-sm mb-4">최장 지속력</div>
+              <div className="text-2xl font-bold text-purple-600 mb-2">{threadTypesSection.pclCard.title}</div>
+              <div className="text-purple-500 text-sm mb-4">{threadTypesSection.pclCard.subtitle}</div>
               <ul className="text-left text-gray-600 text-sm space-y-2">
-                <li className="flex items-center gap-2">
-                  <span className="text-purple-500">•</span> 18-24개월 지속
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-purple-500">•</span> 부드러운 질감
-                </li>
-                <li className="flex items-center gap-2">
-                  <span className="text-purple-500">•</span> 강력한 지지력
-                </li>
+                {threadTypesSection.pclCard.features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center gap-2">
+                    <span className="text-purple-500">•</span> {feature}
+                  </li>
+                ))}
               </ul>
             </motion.div>
           </div>
@@ -922,11 +955,9 @@ export default function ThreadDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              <span className="text-[#D4AF37]">콜라겐 재생</span> 과정
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.thread.detail.collagenSection.title') }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              실이 녹으면서 콜라겐 생성을 자극하여 자연스러운 탄력을 만들어갑니다
+              {t('lifting.thread.detail.collagenSection.description')}
             </p>
           </motion.div>
 
@@ -935,7 +966,7 @@ export default function ThreadDetail() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <CollagenRegenerationIllustration />
+            <CollagenRegenerationIllustration timeline={collagenTimeline} />
           </motion.div>
         </div>
       </section>
@@ -950,11 +981,10 @@ export default function ThreadDetail() {
               viewport={{ once: true }}
             >
               <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-6">
-                {t('common.targetAreas')}
+                {t('lifting.thread.detail.targetAreasSection.title')}
               </h2>
               <p className="text-gray-600 mb-8">
-                얼굴 전체와 목까지, 처진 부위에 맞춤형 실 시술이 가능합니다.
-                부위별 특성에 맞는 실 타입과 개수를 적용합니다.
+                {t('lifting.thread.detail.targetAreasSection.description')}
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -1008,7 +1038,7 @@ export default function ThreadDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              {t('common.process')}
+              {t('lifting.thread.detail.processSection.title')}
             </h2>
           </motion.div>
 
@@ -1049,17 +1079,15 @@ export default function ThreadDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              시술 <span className="text-[#D4AF37]">정보</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.thread.detail.treatmentInfo.title') }} />
           </motion.div>
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6">
             {[
-              { label: '시술 시간', value: treatment.duration, icon: '⏱️' },
-              { label: '마취', value: treatment.anesthesia, icon: '💉' },
-              { label: '회복 기간', value: treatment.recovery, icon: '🔄' },
-              { label: '효과 지속', value: treatment.results, icon: '✨' },
+              { label: t('lifting.thread.detail.treatmentInfo.labels.duration'), value: treatment.duration, icon: '⏱️' },
+              { label: t('lifting.thread.detail.treatmentInfo.labels.anesthesia'), value: treatment.anesthesia, icon: '💉' },
+              { label: t('lifting.thread.detail.treatmentInfo.labels.recovery'), value: treatment.recovery, icon: '🔄' },
+              { label: t('lifting.thread.detail.treatmentInfo.labels.results'), value: treatment.results, icon: '✨' },
             ].map((info, index) => (
               <motion.div
                 key={info.label}
@@ -1091,31 +1119,21 @@ export default function ThreadDetail() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              레이저 리프팅 vs <span className="text-[#D4AF37]">실리프팅</span>
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4" dangerouslySetInnerHTML={{ __html: comparisonData.title }} />
             <p className="text-gray-600 max-w-2xl mx-auto">
-              각 시술의 특성을 비교하여 본인에게 맞는 선택을 하세요
+              {comparisonData.description}
             </p>
           </motion.div>
 
           <div className="max-w-4xl mx-auto">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
               <div className="grid grid-cols-3 bg-gray-900 text-white">
-                <div className="p-4 text-center font-medium">비교 항목</div>
-                <div className="p-4 text-center font-medium border-l border-gray-700">레이저 리프팅</div>
-                <div className="p-4 text-center font-medium border-l border-gray-700 bg-[#D4AF37]">실리프팅</div>
+                <div className="p-4 text-center font-medium">{comparisonData.headers.item}</div>
+                <div className="p-4 text-center font-medium border-l border-gray-700">{comparisonData.headers.laser}</div>
+                <div className="p-4 text-center font-medium border-l border-gray-700 bg-[#D4AF37]">{comparisonData.headers.thread}</div>
               </div>
 
-              {[
-                { item: '원리', laser: '열에너지로 콜라겐 수축', thread: '물리적 리프팅 + 콜라겐 촉진' },
-                { item: '효과 발현', laser: '점진적 (2-3개월)', thread: '즉각적' },
-                { item: '효과 지속', laser: '6개월-2년', thread: '6-18개월 (실 종류에 따라)' },
-                { item: '다운타임', laser: '거의 없음', thread: '3-7일 (멍, 붓기)' },
-                { item: '마취', laser: '마취 크림 또는 무마취', thread: '국소 마취' },
-                { item: '적합 대상', laser: '초기 처짐, 탄력 저하', thread: '중등도 처짐, 볼륨 저하' },
-                { item: '병행 시술', laser: '단독 또는 병행', thread: '레이저와 병행 시 시너지' },
-              ].map((row, index) => (
+              {comparisonData.rows.map((row, index) => (
                 <motion.div
                   key={row.item}
                   initial={{ opacity: 0 }}
@@ -1144,7 +1162,7 @@ export default function ThreadDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              {t('common.recommended')}
+              {t('lifting.thread.detail.recommended.title')}
             </h2>
           </motion.div>
 
@@ -1180,7 +1198,7 @@ export default function ThreadDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-gray-900 mb-4">
-              {tCommon('faq')}
+              {t('lifting.thread.detail.faq.title')}
             </h2>
           </motion.div>
 
@@ -1216,7 +1234,7 @@ export default function ThreadDetail() {
           {relatedMedicalQA.length > 0 && (
             <div className="max-w-3xl mx-auto mt-12">
               <h3 className="text-xl font-medium text-gray-900 mb-6 text-center">
-                관련 의료정보 Q&A
+                {t('lifting.thread.detail.faq.relatedQA')}
               </h3>
               <div className="space-y-4">
                 {relatedMedicalQA.slice(0, 3).map((qa, index) => (
@@ -1247,7 +1265,7 @@ export default function ThreadDetail() {
                   href="/medical"
                   className="text-[#D4AF37] hover:text-[#B8860B] font-medium inline-flex items-center gap-2"
                 >
-                  더 많은 Q&A 보기
+                  {t('lifting.thread.detail.faq.moreButton')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -1267,9 +1285,7 @@ export default function ThreadDetail() {
             viewport={{ once: true }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-2xl font-light text-gray-900 mb-8 text-center">
-              시술 <span className="text-[#D4AF37]">주의사항</span>
-            </h2>
+            <h2 className="text-2xl font-light text-gray-900 mb-8 text-center" dangerouslySetInnerHTML={{ __html: t('lifting.thread.detail.cautions.title') }} />
             <div className="bg-white rounded-2xl p-8 shadow-sm">
               <ul className="space-y-4">
                 {treatment.cautions.map((caution, index) => (
@@ -1295,24 +1311,23 @@ export default function ThreadDetail() {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-light text-white mb-6">
-              실리프팅 상담 예약
+              {t('lifting.thread.detail.cta.title')}
             </h2>
             <p className="text-white/90 mb-8 max-w-2xl mx-auto">
-              즉각적인 리프팅과 자연스러운 콜라겐 재생, 실리프팅으로 V라인을 완성하세요.
-              전문 상담을 통해 최적의 실 종류와 시술 계획을 안내해드립니다.
+              {t('lifting.thread.detail.cta.description')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
                 className="inline-flex items-center px-8 py-4 bg-white text-[#D4AF37] font-medium rounded-full hover:bg-gray-100 transition-colors"
               >
-                온라인 상담 예약
+                {t('lifting.thread.detail.cta.consultButton')}
               </Link>
               <a
                 href="tel:02-797-2773"
                 className="inline-flex items-center px-8 py-4 border-2 border-white text-white font-medium rounded-full hover:bg-white/10 transition-colors"
               >
-                전화 상담 02-797-2773
+                {t('lifting.thread.detail.cta.callButton')}
               </a>
             </div>
           </motion.div>

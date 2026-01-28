@@ -38,8 +38,36 @@ const FloatingOrb = ({ className, delay = 0 }: { className?: string; delay?: num
   />
 );
 
+// TypeScript interfaces for translations
+interface HydrationLabels {
+  epidermis: string;
+  dehydrated: string;
+  hydrated: string;
+  haGrowthFactors: string;
+  deepHydration: string;
+}
+
+interface CourseTimelineItem {
+  session: string;
+  week: string;
+  effect: number;
+  desc: string;
+}
+
+interface EffectItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+interface ProductItem {
+  name: string;
+  desc: string;
+  feature: string;
+}
+
 // Premium Hydration Illustration
-const PremiumHydrationIllustration = () => (
+const PremiumHydrationIllustration = ({ labels }: { labels: HydrationLabels }) => (
   <div className="relative w-full max-w-md mx-auto">
     <svg viewBox="0 0 400 400" className="w-full h-full">
       <defs>
@@ -100,12 +128,12 @@ const PremiumHydrationIllustration = () => (
           transition={{ duration: 0.8 }}
           style={{ transformOrigin: 'left' }}
         />
-        <text x="200" y="128" textAnchor="middle" fill={colors.secondary} fontSize="11" fontWeight="300">EPIDERMIS</text>
+        <text x="200" y="128" textAnchor="middle" fill={colors.secondary} fontSize="11" fontWeight="300">{labels.epidermis}</text>
 
         {/* Dermis comparison */}
         <motion.g>
           <rect x="80" y="155" width="115" height="90" rx="6" fill="#F5E8E2" fillOpacity="0.8" />
-          <text x="137" y="200" textAnchor="middle" fill="#999" fontSize="10" fontWeight="300">Dehydrated</text>
+          <text x="137" y="200" textAnchor="middle" fill="#999" fontSize="10" fontWeight="300">{labels.dehydrated}</text>
 
           <motion.rect
             x="205" y="155" width="115" height="90" rx="6"
@@ -114,7 +142,7 @@ const PremiumHydrationIllustration = () => (
             animate={{ opacity: 0.9 }}
             transition={{ delay: 1.5, duration: 0.8 }}
           />
-          <text x="262" y="200" textAnchor="middle" fill={colors.secondary} fontSize="10" fontWeight="500">Hydrated</text>
+          <text x="262" y="200" textAnchor="middle" fill={colors.secondary} fontSize="10" fontWeight="500">{labels.hydrated}</text>
         </motion.g>
       </motion.g>
 
@@ -163,10 +191,10 @@ const PremiumHydrationIllustration = () => (
       >
         <rect x="100" y="270" width="200" height="70" rx="12" fill={colors.accent} fillOpacity="0.3" />
         <text x="200" y="300" textAnchor="middle" fill={colors.secondary} fontSize="12" fontWeight="500">
-          HA + Growth Factors
+          {labels.haGrowthFactors}
         </text>
         <text x="200" y="320" textAnchor="middle" fill={colors.primary} fontSize="10">
-          Deep Hydration to Dermis
+          {labels.deepHydration}
         </text>
       </motion.g>
     </svg>
@@ -174,14 +202,7 @@ const PremiumHydrationIllustration = () => (
 );
 
 // Premium Treatment Course Timeline
-const PremiumCourseTimeline = () => {
-  const courseData = [
-    { session: '1회', week: '0주', effect: 20, desc: '기초 수분 공급' },
-    { session: '2회', week: '2-3주', effect: 50, desc: '수분 장벽 강화' },
-    { session: '3회', week: '4-6주', effect: 80, desc: '콜라겐 활성화' },
-    { session: '4회', week: '6-8주', effect: 100, desc: '최대 효과 도달' },
-  ];
-
+const PremiumCourseTimeline = ({ courseData }: { courseData: CourseTimelineItem[] }) => {
   return (
     <div className="max-w-4xl mx-auto">
       <div className="relative">
@@ -246,6 +267,33 @@ export default function SkinboosterDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+
+  // Load translation data
+  const detail = {
+    heroImageAlt: t('antiaging.skinbooster.detail.heroImageAlt'),
+    hydrationLabels: t.raw('antiaging.skinbooster.detail.hydrationIllustration') as HydrationLabels,
+    courseTimeline: t.raw('antiaging.skinbooster.detail.courseTimeline.items') as CourseTimelineItem[],
+    benefitsTitle: t('antiaging.skinbooster.detail.benefits.title'),
+    effectsTitle: t('antiaging.skinbooster.detail.effects.title'),
+    effectItems: t.raw('antiaging.skinbooster.detail.effects.items') as EffectItem[],
+    treatmentCourseTitle: t('antiaging.skinbooster.detail.treatmentCourse.title'),
+    treatmentCourseSubtitle: t('antiaging.skinbooster.detail.treatmentCourse.subtitle'),
+    maintenanceNote: t('antiaging.skinbooster.detail.treatmentCourse.maintenanceNote'),
+    productsTitle: t('antiaging.skinbooster.detail.products.title'),
+    productsSubtitle: t('antiaging.skinbooster.detail.products.subtitle'),
+    productItems: t.raw('antiaging.skinbooster.detail.products.items') as ProductItem[],
+    treatmentInfoTitle: t('antiaging.skinbooster.detail.treatmentInfo.title'),
+    treatmentInfoLabels: t.raw('antiaging.skinbooster.detail.treatmentInfo.labels') as {
+      duration: string;
+      anesthesia: string;
+      recovery: string;
+      results: string;
+    },
+    faqTitle: t('antiaging.skinbooster.detail.faqTitle'),
+    ctaTitle: t('antiaging.skinbooster.detail.cta.title'),
+    ctaDescription: t('antiaging.skinbooster.detail.cta.description'),
+    ctaButtonOnline: t('antiaging.skinbooster.detail.cta.buttonOnline'),
+  };
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'skinbooster')
@@ -326,7 +374,7 @@ export default function SkinboosterDetail() {
               <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#7BA3A8]/20">
                 <Image
                   src="/images/Gemini_Generated_Image_a2ghqha2ghqha2gh.png"
-                  alt="스킨부스터 - 피부 속부터 차오르는 광채"
+                  alt={detail.heroImageAlt}
                   fill
                   className="object-cover"
                   quality={95}
@@ -357,7 +405,7 @@ export default function SkinboosterDetail() {
               <div className="w-8 h-px bg-[#7BA3A8]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              스킨부스터의 장점
+              {detail.benefitsTitle}
             </h2>
           </motion.div>
 
@@ -408,16 +456,12 @@ export default function SkinboosterDetail() {
               <div className="w-8 h-px bg-[#7BA3A8]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              스킨부스터 효과
+              {detail.effectsTitle}
             </h2>
           </motion.div>
 
           <div className="grid grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {[
-              { icon: 'droplet', title: '깊은 수분', desc: '진피층까지 전달' },
-              { icon: 'bounce', title: '탄력 개선', desc: '콜라겐 생성 촉진' },
-              { icon: 'glow', title: '자연 광채', desc: '피부 속부터 빛나는' },
-            ].map((effect, i) => (
+            {detail.effectItems.map((effect, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -470,14 +514,14 @@ export default function SkinboosterDetail() {
               <div className="w-8 h-px bg-[#7BA3A8]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-4">
-              3-4회 코스 시술 권장
+              {detail.treatmentCourseTitle}
             </h2>
             <p className="text-gray-400 max-w-xl mx-auto font-light">
-              최적의 효과를 위해 2-4주 간격으로 3-4회 시술을 권장합니다
+              {detail.treatmentCourseSubtitle}
             </p>
           </motion.div>
 
-          <PremiumCourseTimeline />
+          <PremiumCourseTimeline courseData={detail.courseTimeline} />
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -487,7 +531,7 @@ export default function SkinboosterDetail() {
           >
             <div className="inline-block px-8 py-4 bg-gradient-to-r from-[#F7FAFA] to-white rounded-xl border border-gray-100">
               <p className="text-sm text-[#4A6B6F]">
-                코스 완료 후 2-3개월마다 유지 시술 권장
+                {detail.maintenanceNote}
               </p>
             </div>
           </motion.div>
@@ -512,19 +556,15 @@ export default function SkinboosterDetail() {
               <div className="w-8 h-px bg-[#7BA3A8]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-white mb-4">
-              스킨부스터 제품
+              {detail.productsTitle}
             </h2>
             <p className="text-white/50 max-w-xl mx-auto font-light">
-              피부 상태와 목적에 따라 최적의 제품을 선택합니다
+              {detail.productsSubtitle}
             </p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            {[
-              { name: '쥬베룩', desc: '콜라겐 부스팅', feature: 'PDRN + HA' },
-              { name: '리쥬란', desc: '피부 재생', feature: 'PN' },
-              { name: '볼벨라', desc: '수분 + 탄력', feature: '볼류마 HA' },
-            ].map((product, i) => (
+            {detail.productItems.map((product, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 30 }}
@@ -610,16 +650,16 @@ export default function SkinboosterDetail() {
               <div className="w-8 h-px bg-[#7BA3A8]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              시술 정보
+              {detail.treatmentInfoTitle}
             </h2>
           </motion.div>
 
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: '시술 시간', value: treatment.duration },
-              { label: '마취', value: treatment.anesthesia },
-              { label: '회복', value: treatment.recovery },
-              { label: '효과', value: treatment.results },
+              { label: detail.treatmentInfoLabels.duration, value: treatment.duration },
+              { label: detail.treatmentInfoLabels.anesthesia, value: treatment.anesthesia },
+              { label: detail.treatmentInfoLabels.recovery, value: treatment.recovery },
+              { label: detail.treatmentInfoLabels.results, value: treatment.results },
             ].map((info, index) => (
               <motion.div
                 key={info.label}
@@ -696,7 +736,7 @@ export default function SkinboosterDetail() {
               <div className="w-8 h-px bg-[#7BA3A8]" />
             </div>
             <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A]">
-              자주 묻는 질문
+              {detail.faqTitle}
             </h2>
           </motion.div>
 
@@ -787,17 +827,17 @@ export default function SkinboosterDetail() {
               <div className="w-12 h-px bg-[#7BA3A8]" />
             </div>
             <h2 className="text-4xl lg:text-6xl font-extralight text-white mt-4 mb-8">
-              스킨부스터 상담 예약
+              {detail.ctaTitle}
             </h2>
             <p className="text-white/60 font-light max-w-xl mx-auto mb-12 text-lg leading-relaxed">
-              피부 속부터 차오르는 수분과 광채, 전문 상담을 통해 맞춤 시술을 안내해 드립니다.
+              {detail.ctaDescription}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
                 href="/contact"
                 className="group inline-flex items-center px-12 py-5 bg-white text-[#4A6B6F] text-sm tracking-wider hover:bg-gray-100 transition-all duration-500 shadow-xl"
               >
-                <span>온라인 상담 예약</span>
+                <span>{detail.ctaButtonOnline}</span>
                 <svg className="w-4 h-4 ml-4 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>

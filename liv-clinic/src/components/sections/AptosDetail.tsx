@@ -6,8 +6,14 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 
+// NAMICA 일러스트 Props 타입
+interface NamicaIllustrationProps {
+  title: string;
+  subtitle: string;
+}
+
 // NAMICA 메커니즘 일러스트
-const NamicaMechanismIllustration = () => (
+const NamicaMechanismIllustration = ({ title, subtitle }: NamicaIllustrationProps) => (
   <div className="relative w-full max-w-md mx-auto aspect-square">
     <svg viewBox="0 0 400 400" className="w-full h-full">
       <defs>
@@ -135,71 +141,36 @@ const NamicaMechanismIllustration = () => (
 
       {/* 라벨 */}
       <text x="200" y="350" textAnchor="middle" fill="#6d4e42" fontSize="14" fontWeight="600">
-        NAMICA Technology
+        {title}
       </text>
       <text x="200" y="370" textAnchor="middle" fill="#8a8a8a" fontSize="10">
-        히알루론산 40mg 단계별 방출
+        {subtitle}
       </text>
     </svg>
   </div>
 );
 
-// 3단계 효과 데이터
-const phaseEffects = [
-  {
-    phase: '즉각 효과',
-    period: '시술 직후',
-    description: '마이크로 입자가 즉시 HA 방출',
-    detail: '큰 입자가 먼저 녹아 즉각적인 볼륨감과 수분 공급',
-    color: '#b4988d',
-  },
-  {
-    phase: '중기 효과',
-    period: '1-3개월',
-    description: '서브마이크로 입자의 점진적 작용',
-    detail: '중간 크기 입자가 점진적으로 콜라겐 생성 촉진',
-    color: '#a08070',
-  },
-  {
-    phase: '장기 효과',
-    period: '3-6개월',
-    description: '나노 입자의 지속적 HA 공급',
-    detail: '가장 작은 입자가 오랜 기간 탄력 개선 효과 유지',
-    color: '#6d4e42',
-  },
-];
+// 3단계 효과 색상 (번역에서 사용)
+const phaseColors = ['#b4988d', '#a08070', '#6d4e42'];
 
-// 인증 데이터
-const certifications = [
-  { label: 'KFDA', value: '의료기기 4등급 정식 허가' },
-  { label: 'CE', value: '유럽 CE 인증' },
-  { label: 'ISO', value: 'ISO 13485 품질경영시스템' },
-  { label: 'FDA', value: 'MDSAP 인증' },
-];
-
-// 갤러리 이미지
-const galleryImages = [
-  {
-    src: '/images/aptos/certification-ceremony.jpg',
-    alt: 'APTOS Professional Course 인증서 수여',
-    caption: '조지아 본사 인증서 수여',
-  },
-  {
-    src: '/images/aptos/presentation-mips.jpg',
-    alt: 'Clinical Experience 발표',
-    caption: 'Clinical Experience 발표',
-  },
-  {
-    src: '/images/aptos/consultation.jpg',
-    alt: '환자 상담',
-    caption: '환자 진료 및 상담',
-  },
+// 갤러리 이미지 소스
+const galleryImageSrcs = [
+  '/images/aptos/certification-ceremony.jpg',
+  '/images/aptos/presentation-mips.jpg',
+  '/images/aptos/consultation.jpg',
 ];
 
 export default function AptosDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const [activeImage, setActiveImage] = useState<number | null>(null);
+
+  // 번역 데이터 로드
+  const namicaIllustration = t.raw('lifting.aptos.detail.namicaIllustration') as { title: string; subtitle: string };
+  const phaseEffects = t.raw('lifting.aptos.detail.phaseEffects') as Array<{ phase: string; period: string; description: string; detail: string }>;
+  const certifications = t.raw('lifting.aptos.detail.certifications') as Array<{ label: string; value: string }>;
+  const gallery = t.raw('lifting.aptos.detail.gallery') as Array<{ alt: string; caption: string }>;
+  const namicaSection = t.raw('lifting.aptos.detail.namicaSection') as { title: string; description: string; features: Array<{ icon: string; text: string }> };
 
   return (
     <div className="min-h-screen bg-white">
@@ -223,13 +194,11 @@ export default function AptosDetail() {
             transition={{ duration: 0.8 }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full text-sm font-medium bg-primary/20 text-white mb-4">
-              4세대 바이오 리프팅
+              {t('lifting.aptos.detail.hero.badge')}
             </span>
-            <h1 className="text-4xl md:text-6xl font-light text-white mb-4">
-              APTOS <span className="text-primary">NAMICA</span>
-            </h1>
+            <h1 className="text-4xl md:text-6xl font-light text-white mb-4" dangerouslySetInnerHTML={{ __html: t('lifting.aptos.detail.hero.title') }} />
             <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
-              글로벌 100개국 이상에서 사용되는 안면 조직 고정용 실의 오리지널 브랜드
+              {t('lifting.aptos.detail.hero.description')}
             </p>
           </motion.div>
 
@@ -240,8 +209,8 @@ export default function AptosDetail() {
             transition={{ delay: 0.5, duration: 0.5 }}
             className="mt-8 inline-flex items-center gap-3 bg-white/10 backdrop-blur-sm rounded-full px-6 py-3"
           >
-            <span className="text-white/60 text-sm">효과 지속</span>
-            <span className="text-2xl font-bold text-white">최대 24개월</span>
+            <span className="text-white/60 text-sm">{t('lifting.aptos.detail.hero.durationLabel')}</span>
+            <span className="text-2xl font-bold text-white">{t('lifting.aptos.detail.hero.durationValue')}</span>
           </motion.div>
         </div>
       </section>
@@ -257,7 +226,7 @@ export default function AptosDetail() {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <NamicaMechanismIllustration />
+              <NamicaMechanismIllustration title={namicaIllustration.title} subtitle={namicaIllustration.subtitle} />
             </motion.div>
 
             {/* Right: Content */}
@@ -268,21 +237,12 @@ export default function AptosDetail() {
               transition={{ duration: 0.8 }}
             >
               <h2 className="text-3xl md:text-4xl font-light text-secondary mb-6">
-                NAMICA Technology
+                {namicaSection.title}
               </h2>
-              <p className="text-mono leading-relaxed mb-8">
-                <strong className="text-secondary">NAMICA(Nano & Micro Encapsulated Particles)</strong>는
-                히알루론산 40mg을 나노, 서브마이크로, 마이크로 단위로 캡슐화하여
-                단계별로 방출하는 혁신적인 약물 전달 시스템입니다.
-              </p>
+              <p className="text-mono leading-relaxed mb-8" dangerouslySetInnerHTML={{ __html: namicaSection.description }} />
 
               <div className="space-y-4">
-                {[
-                  { icon: '🌍', text: '글로벌 100개국 이상 사용' },
-                  { icon: '✅', text: 'KFDA 의료기기 4등급 정식 허가' },
-                  { icon: '⏱️', text: '효과 지속: 최대 24개월' },
-                  { icon: '🧬', text: '바이오스티뮬레이션 (콜라겐 생성 촉진)' },
-                ].map((item, index) => (
+                {namicaSection.features.map((item, index) => (
                   <motion.div
                     key={index}
                     initial={{ opacity: 0, x: 20 }}
@@ -311,10 +271,10 @@ export default function AptosDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-secondary mb-4">
-              3단계 단계별 효과
+              {t('lifting.aptos.detail.phaseSection.title')}
             </h2>
             <p className="text-mono-light max-w-2xl mx-auto">
-              NAMICA 기술의 핵심은 입자 크기에 따른 단계적 히알루론산 방출입니다
+              {t('lifting.aptos.detail.phaseSection.description')}
             </p>
           </motion.div>
 
@@ -331,14 +291,14 @@ export default function AptosDetail() {
                 {/* Number Badge */}
                 <div
                   className="absolute -top-4 left-8 w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-sm"
-                  style={{ backgroundColor: effect.color }}
+                  style={{ backgroundColor: phaseColors[index] }}
                 >
                   {index + 1}
                 </div>
 
                 <div
                   className="inline-block px-3 py-1 rounded-full text-xs font-medium text-white mb-4"
-                  style={{ backgroundColor: effect.color }}
+                  style={{ backgroundColor: phaseColors[index] }}
                 >
                   {effect.period}
                 </div>
@@ -363,7 +323,7 @@ export default function AptosDetail() {
             viewport={{ once: true }}
             className="text-xl font-medium text-center text-secondary mb-10"
           >
-            글로벌 스탠다드 안전성 인증
+            {t('lifting.aptos.detail.certificationsSection.title')}
           </motion.h3>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -396,17 +356,16 @@ export default function AptosDetail() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-light text-secondary mb-4">
-              글로벌 인증 트레이닝
+              {t('lifting.aptos.detail.trainingSection.title')}
             </h2>
             <p className="text-mono max-w-2xl mx-auto">
-              리브 김수영 원장은 조지아 APTOS 본사에서 Professional Course를 수료하고
-              직접 시술에 참여하여 최신 기술을 습득했습니다.
+              {t('lifting.aptos.detail.trainingSection.description')}
             </p>
           </motion.div>
 
           {/* Gallery Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
-            {galleryImages.map((image, index) => (
+            {gallery.map((image, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -418,7 +377,7 @@ export default function AptosDetail() {
               >
                 <div className="aspect-square rounded-xl overflow-hidden mb-2 relative">
                   <Image
-                    src={image.src}
+                    src={galleryImageSrcs[index]}
                     alt={image.alt}
                     fill
                     className="object-cover transition-transform group-hover:scale-105"
@@ -457,13 +416,13 @@ export default function AptosDetail() {
             </Link>
             <div>
               <h4 className="font-medium text-secondary mb-1">
-                APTOS Professional Course Certificate
+                {t('lifting.aptos.detail.trainingSection.certificateTitle')}
               </h4>
               <p className="text-sm text-mono mb-2">
-                Kim Sooyoung · KR0062025
+                {t('lifting.aptos.detail.trainingSection.certificateName')}
               </p>
               <p className="text-xs text-mono-light">
-                Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD
+                {t('lifting.aptos.detail.trainingSection.certificateIssuer')}
               </p>
             </div>
           </motion.div>
@@ -479,16 +438,16 @@ export default function AptosDetail() {
             viewport={{ once: true }}
           >
             <h2 className="text-2xl md:text-3xl font-light text-white mb-4">
-              APTOS NAMICA 상담 예약
+              {t('lifting.aptos.detail.cta.title')}
             </h2>
             <p className="text-white/70 mb-8 max-w-xl mx-auto">
-              글로벌 인증 트레이닝을 수료한 전문의가 1:1 맞춤 상담을 제공합니다
+              {t('lifting.aptos.detail.cta.description')}
             </p>
             <Link
               href="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-primary text-white font-medium hover:bg-primary/90 transition-colors"
             >
-              상담 예약하기
+              {t('lifting.aptos.detail.cta.button')}
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
               </svg>
@@ -512,8 +471,8 @@ export default function AptosDetail() {
             className="relative max-w-4xl w-full aspect-[4/3]"
           >
             <Image
-              src={galleryImages[activeImage].src}
-              alt={galleryImages[activeImage].alt}
+              src={galleryImageSrcs[activeImage]}
+              alt={gallery[activeImage].alt}
               fill
               className="object-contain"
             />

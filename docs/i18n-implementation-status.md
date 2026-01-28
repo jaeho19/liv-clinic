@@ -1,28 +1,61 @@
 # LIV 성형외과 다국어(i18n) 구현 현황
 
-## 작업 일자: 2026-01-27 (최신 업데이트)
+## 작업 일자: 2026-01-28 (최신 업데이트)
 
 ---
 
-## 🚀 빠른 시작 (새 세션용)
+## 🎉 완료 현황
 
-### 현재 진행률
-- **완료**: 메인 페이지, 공통 UI, 상담 폼, UltheraDetail, ThermageDetail, DensityDetail, InModeDetail, ShurinkDetail (5개)
-- **대기**: 나머지 11개 시술 상세 페이지
+### ✅ 모든 Detail 페이지 번역 완료! (16개/16개)
 
-### 다음에 해야 할 작업
+**리프팅 시술 (6개)**
+- UltheraDetail.tsx ✅
+- ThermageDetail.tsx ✅
+- DensityDetail.tsx ✅
+- InModeDetail.tsx ✅
+- ShurinkDetail.tsx ✅
+- ThreadDetail.tsx ✅
+
+**안티에이징 시술 (4개)**
+- AptosDetail.tsx ✅
+- BotoxDetail.tsx ✅
+- FillerDetail.tsx ✅
+- SkinboosterDetail.tsx ✅
+
+**레이저 센터 (6개)**
+- LaserCenterDetail.tsx ✅
+- PigmentationDetail.tsx ✅
+- VascularDetail.tsx ✅
+- SkinToneDetail.tsx ✅
+- HairRemovalDetail.tsx ✅
+- TattooRemovalDetail.tsx ✅
+
+---
+
+## 🚀 향후 작업 (선택사항)
+
+### 추가 개선 가능 작업
 ```
-1. ThreadDetail.tsx 번역 작업 (다음 파일)
-   - 분석 후 번역 키 추가
-   - ko/en/ja/zh.json에 번역 추가
-   - 컴포넌트에서 t() 함수로 교체
+1. SVG 일러스트레이션 내 한국어 텍스트 리팩토링 (낮은 우선순위)
+   - 일부 SVG 컴포넌트 내 하드코딩된 한국어 레이블
+   - 이미 props로 전달하는 패턴 적용 완료된 파일 있음
 
-2. 나머지 11개 Detail 파일에 동일 패턴 적용
-   - ThreadDetail, AptosDetail (리프팅 2개)
-   - BotoxDetail, FillerDetail, SkinboosterDetail (안티에이징 3개)
-   - LaserCenterDetail 외 5개 (레이저 6개)
+2. 번역 품질 검토 (선택)
+   - en.json, ja.json, zh.json 네이티브 검수
+   - 의료 용어 일관성 확인
 
-3. 번역 파일 위치: liv-clinic/src/messages/{ko,en,ja,zh}.json
+3. 새 페이지 추가 시 동일 패턴 적용
+   - useTranslations('treatments') 훅 사용
+   - t() / t.raw() 함수로 번역 데이터 접근
+```
+
+### 번역 파일 위치
+```
+liv-clinic/src/messages/
+├── ko.json  (한국어 - 원본)
+├── en.json  (영어)
+├── ja.json  (일본어)
+└── zh.json  (중국어)
 ```
 
 ### 명령어
@@ -375,36 +408,248 @@ npx tsc --noEmit     # 타입 검사
 
 ---
 
-## 7. 대기 중: 나머지 11개 Detail 파일
+## 7. 완료: ThreadDetail.tsx ✅
 
-### 7.1 리프팅 (2개)
-| 파일 | 상태 |
-|------|------|
-| `ThreadDetail.tsx` | ⏳ 대기 |
-| `AptosDetail.tsx` | ⏳ 대기 |
+### 7.1 핵심 데이터 구조 번역
 
-### 7.2 안티에이징 (3개)
-| 파일 | 상태 |
-|------|------|
-| `BotoxDetail.tsx` | ⏳ 대기 |
-| `FillerDetail.tsx` | ⏳ 대기 |
-| `SkinboosterDetail.tsx` | ⏳ 대기 |
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `skinLayers` | 피부층 레이블 (표피, 진피, 피하지방, SMAS) | ✅ 완료 |
+| `liftingEffect` | 리프팅 효과 텍스트 | ✅ 완료 |
+| `threadTypes` | 실 종류 데이터 (PDO, PLLA, PCL) | ✅ 완료 |
+| `collagenTimeline` | 콜라겐 재생 타임라인 (시술 직후 ~ 3-6개월) | ✅ 완료 |
+| `treatmentAreas` | 시술 부위 레이블 (이마, 광대, 볼, 팔자, 턱선, 목) | ✅ 완료 |
+| `comparison` | 비교 테이블 헤더/데이터 (레이저 vs 실리프팅) | ✅ 완료 |
 
-### 7.3 레이저 (6개)
-| 파일 | 상태 |
-|------|------|
-| `LaserCenterDetail.tsx` | ⏳ 대기 |
-| `PigmentationDetail.tsx` | ⏳ 대기 |
-| `VascularDetail.tsx` | ⏳ 대기 |
-| `SkinToneDetail.tsx` | ⏳ 대기 |
-| `HairRemovalDetail.tsx` | ⏳ 대기 |
-| `TattooRemovalDetail.tsx` | ⏳ 대기 |
+### 7.2 섹션별 번역
+
+| 섹션 | 번역 항목 | 상태 |
+|------|-----------|------|
+| Hero | 뱃지 (THREAD LIFTING) | ✅ 완료 |
+| 장점 | 섹션 라벨, 제목, 설명 | ✅ 완료 |
+| 실 종류 | 제목, 설명, PDO/PLLA/PCL 카드 (제목, 부제목, 특징 리스트) | ✅ 완료 |
+| 콜라겐 재생 | 제목, 설명, 타임라인 (시술 직후, 1-2개월, 3-6개월) | ✅ 완료 |
+| 시술 부위 | 제목, 설명 | ✅ 완료 |
+| 시술 과정 | 제목 | ✅ 완료 |
+| 시술 정보 | 제목, 레이블 (시술 시간, 마취, 회복, 효과) | ✅ 완료 |
+| 비교 테이블 | 제목, 설명, 헤더, 데이터 7행 | ✅ 완료 |
+| 추천 대상 | 제목 | ✅ 완료 |
+| FAQ | 제목, 관련 의료정보 Q&A, 더보기 버튼 | ✅ 완료 |
+| 주의사항 | 제목 | ✅ 완료 |
+| CTA | 제목, 설명, 버튼 2개 | ✅ 완료 |
+
+### 7.3 번역 키 구조 (treatments.lifting.thread.detail)
+
+```json
+{
+  "treatments": {
+    "lifting": {
+      "thread": {
+        "detail": {
+          "skinLayers": { "epidermis", "dermis", "subcutaneous", "smas" },
+          "liftingEffect": "↑ LIFTING EFFECT ↑",
+          "threadTypes": { "pdo", "plla", "pcl" },
+          "collagenTimeline": { "immediate", "oneToTwo", "threeToSix" },
+          "treatmentAreas": { "forehead", "cheekbone", "cheek", "nasolabial", "jawline", "neck" },
+          "hero": { "badge" },
+          "advantages": { "sectionLabel", "title", "description" },
+          "threadTypesSection": { "title", "description", "pdoCard", "pllaCard", "pclCard" },
+          "collagenSection": { "title", "description" },
+          "targetAreasSection": { "title", "description" },
+          "processSection": { "title" },
+          "treatmentInfo": { "title", "labels" },
+          "comparison": { "title", "description", "headers", "rows" },
+          "recommended": { "title" },
+          "faq": { "title", "relatedQA", "moreButton" },
+          "cautions": { "title" },
+          "cta": { "title", "description", "consultButton", "callButton" }
+        }
+      }
+    }
+  }
+}
+```
 
 ---
 
-## 8. 번역 작업 패턴 가이드
+## 8. 완료: AptosDetail.tsx ✅
 
-### 8.1 컴포넌트 수정 패턴
+### 8.1 핵심 데이터 구조 번역
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `namicaIllustration` | NAMICA 일러스트레이션 레이블 (title, subtitle) | ✅ 완료 |
+| `phaseEffects` | 3단계 효과 데이터 (phase, title, description, effects) | ✅ 완료 |
+| `certifications` | 인증서 데이터 (title, items) | ✅ 완료 |
+| `gallery` | 갤러리 이미지 alt 텍스트 | ✅ 완료 |
+
+### 8.2 섹션별 번역
+
+| 섹션 | 번역 항목 | 상태 |
+|------|-----------|------|
+| Hero | 뱃지, 제목, 설명, duration 레이블 | ✅ 완료 |
+| NAMICA 기술 | 제목, 설명, 3개 특징 카드 | ✅ 완료 |
+| 3단계 효과 | 제목, 설명, 3단계 카드 데이터 | ✅ 완료 |
+| 인증 | 제목, 인증서 5개 | ✅ 완료 |
+| 트레이닝 | 제목, 설명, 인증서 정보 | ✅ 완료 |
+| CTA | 제목, 설명, 버튼 | ✅ 완료 |
+| 이미지 모달 | 갤러리 이미지 alt 텍스트 | ✅ 완료 |
+
+### 8.3 번역 키 구조 (treatments.lifting.aptos.detail)
+
+```json
+{
+  "treatments": {
+    "lifting": {
+      "aptos": {
+        "detail": {
+          "namicaIllustration": { "title", "subtitle" },
+          "phaseEffects": [{ "phase", "title", "description", "effects" }],
+          "certifications": { "title", "items" },
+          "gallery": [{ "alt" }],
+          "hero": { "badge", "title", "description", "durationLabel", "durationValue" },
+          "namica": { "sectionLabel", "title", "description", "features" },
+          "phases": { "sectionLabel", "title", "description" },
+          "certificationsSection": { "sectionLabel", "title" },
+          "training": { "sectionLabel", "title", "description", "certificateTitle", "certificateSubtitle" },
+          "cta": { "title", "description", "button" }
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+## 9. 완료: BotoxDetail.tsx ✅
+
+### 9.1 핵심 데이터 구조 번역
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `treatmentAreasLabels` | SVG 시술 부위 레이블 (이마, 미간, 눈가, 사각턱, 입꼬리, 승모근, 종아리) | ✅ 완료 |
+| `timeline` | 타임라인 데이터 (시술 당일 ~ 3-6개월) | ✅ 완료 |
+| `treatmentInfoLabels` | 시술 정보 라벨 (시술 시간, 마취, 회복 기간, 효과 지속) | ✅ 완료 |
+| `mechanismLabel` | 정밀 주사 매핑 일러스트 라벨 | ✅ 완료 |
+
+### 9.2 섹션별 번역
+
+| 섹션 | 번역 항목 | 상태 |
+|------|-----------|------|
+| SVG 일러스트 | 7개 시술 부위 레이블 | ✅ 완료 |
+| 타겟 영역 설명 | 하드코딩된 한국어 설명 → 번역 | ✅ 완료 |
+| 타임라인 | 4개 단계 (당일, 3-7일, 2-4주, 3-6개월) | ✅ 완료 |
+| 시술 정보 | 4개 라벨 (시술 시간, 마취, 회복, 효과 지속) | ✅ 완료 |
+| 매커니즘 일러스트 | 하단 라벨 번역 | ✅ 완료 |
+
+### 9.3 번역 키 구조 (treatments.antiaging.botox.detail)
+
+```json
+{
+  "treatments": {
+    "antiaging": {
+      "botox": {
+        "detail": {
+          "treatmentAreasLabels": { "forehead", "glabella", "crowsFeet", "masseter", "mouthCorners", "trapezius", "calves" },
+          "targetAreasDescription": "시술 부위 설명",
+          "timeline": { "title", "items": [...] },
+          "mechanismLabel": "PRECISION INJECTION MAPPING",
+          "treatmentInfoLabels": { "duration", "anesthesia", "recovery", "results" }
+        }
+      }
+    }
+  }
+}
+```
+
+---
+
+## 10. 완료: FillerDetail.tsx ✅
+
+FillerDetail.tsx는 이미 대부분의 번역이 구현되어 있었습니다. 추가된 항목:
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `volumeIllustrationLabel` | SVG 볼륨 일러스트레이션 라벨 | ✅ 완료 |
+| `heroImageAlt` | Hero 이미지 alt 텍스트 | ✅ 완료 |
+
+---
+
+## 11. 완료: SkinboosterDetail.tsx ✅
+
+SkinboosterDetail.tsx 번역 완료. 주요 변경 사항:
+
+| 항목 | 설명 | 상태 |
+|------|------|------|
+| `heroImageAlt` | Hero 이미지 alt 텍스트 | ✅ 완료 |
+| `hydrationIllustration` | SVG 수분 일러스트레이션 라벨 (epidermis, dehydrated, hydrated 등) | ✅ 완료 |
+| `courseTimeline.items` | 코스 타임라인 데이터 (4회차) | ✅ 완료 |
+| `benefits.title` | 장점 섹션 제목 | ✅ 완료 |
+| `effects` | 효과 섹션 (제목 + 3개 효과 아이템) | ✅ 완료 |
+| `treatmentCourse` | 코스 시술 섹션 (제목, 부제목, 유지 관리 안내) | ✅ 완료 |
+| `products` | 제품 섹션 (제목, 부제목, 3개 제품 정보) | ✅ 완료 |
+| `treatmentInfo` | 시술 정보 섹션 (제목 + 라벨) | ✅ 완료 |
+| `faqTitle` | FAQ 섹션 제목 | ✅ 완료 |
+| `cta` | CTA 섹션 (제목, 설명, 버튼 텍스트) | ✅ 완료 |
+
+### 11.1 TypeScript 인터페이스 추가
+```typescript
+interface HydrationLabels {
+  epidermis: string;
+  dehydrated: string;
+  hydrated: string;
+  haGrowthFactors: string;
+  deepHydration: string;
+}
+
+interface CourseTimelineItem {
+  session: string;
+  week: string;
+  effect: number;
+  desc: string;
+}
+
+interface EffectItem {
+  icon: string;
+  title: string;
+  desc: string;
+}
+
+interface ProductItem {
+  name: string;
+  desc: string;
+  feature: string;
+}
+```
+
+---
+
+## 12. 완료: 레이저 센터 Detail 파일 6개 ✅
+
+### 12.1 레이저 (6개 모두 완료)
+| 파일 | 상태 |
+|------|------|
+| `LaserCenterDetail.tsx` | ✅ 완료 |
+| `PigmentationDetail.tsx` | ✅ 완료 |
+| `VascularDetail.tsx` | ✅ 완료 |
+| `SkinToneDetail.tsx` | ✅ 완료 |
+| `HairRemovalDetail.tsx` | ✅ 완료 |
+| `TattooRemovalDetail.tsx` | ✅ 완료 |
+
+### 12.2 레이저 Detail 파일 번역 키 구조
+모든 레이저 시술 상세 페이지에서 `treatments.laser.{시술명}.detail` 구조 사용:
+- SVG 일러스트레이션 레이블 (illustrationLabels)
+- 시술 부위 및 관심사 (concerns, treatmentAreas)
+- 장비 정보 (equipmentSection, equipment)
+- 프로토콜 및 FAQ (protocolSection, faq)
+- CTA 섹션 (cta)
+
+---
+
+## 13. 번역 작업 패턴 가이드
+
+### 13.1 컴포넌트 수정 패턴
 
 ```tsx
 // 1. 번역 훅 사용 선언
@@ -424,7 +669,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 <ComparisonTable rows={comparisonRows} headers={comparisonHeaders} />
 ```
 
-### 8.2 번역 키 추가 패턴
+### 13.2 번역 키 추가 패턴
 
 ```json
 // ko.json
@@ -448,7 +693,7 @@ const timelineItems = t.raw('lifting.ulthera.detail.timeline.items') as Timeline
 
 ---
 
-## 9. 테스트 방법
+## 14. 테스트 방법
 
 ```bash
 cd c:/dev/LIV_homepage/liv-clinic
@@ -468,7 +713,7 @@ npm run dev
 
 ---
 
-## 10. 참고 파일 경로
+## 15. 참고 파일 경로
 
 | 용도 | 경로 |
 |------|------|
@@ -479,4 +724,4 @@ npm run dev
 
 ---
 
-*마지막 업데이트: 2026-01-27 (ShurinkDetail.tsx 번역 완료 - 5개 Detail 페이지 완료)*
+*마지막 업데이트: 2026-01-28 (모든 16개 Detail 페이지 i18n 번역 완료!)*

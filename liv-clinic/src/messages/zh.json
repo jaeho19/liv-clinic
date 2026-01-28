@@ -1471,13 +1471,246 @@
         "name": "线雕",
         "fullName": "Thread Lift",
         "tagline": "PDO线即刻提升",
-        "description": "将可降解线植入皮下，产生即刻提升效果并刺激胶原蛋白生成。"
+        "description": "将可降解线植入皮下，产生即刻提升效果并刺激胶原蛋白生成。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "subcutaneous": "皮下脂肪",
+            "smas": "SMAS"
+          },
+          "liftingEffect": "↑ LIFTING EFFECT ↑",
+          "threadTypes": {
+            "pdo": {
+              "name": "PDO",
+              "fullName": "Polydioxanone",
+              "absorptionPeriod": "吸收周期：6-8个月",
+              "types": "单丝、锯齿、螺旋",
+              "note": "最广泛使用"
+            },
+            "plla": {
+              "name": "PLLA",
+              "fullName": "Poly-L-Lactic Acid",
+              "absorptionPeriod": "吸收周期：12-18个月",
+              "feature": "促进胶原蛋白生成",
+              "note": "高端"
+            },
+            "pcl": {
+              "name": "PCL",
+              "fullName": "Polycaprolactone",
+              "absorptionPeriod": "吸收周期：18-24个月",
+              "feature": "最长持续",
+              "note": "顶级"
+            }
+          },
+          "collagenTimeline": {
+            "immediate": {
+              "phase": "术后即刻",
+              "title": "即刻提升",
+              "desc": "物理拉提效果"
+            },
+            "oneToTwo": {
+              "phase": "1-2个月后",
+              "title": "胶原蛋白开始生成",
+              "desc": "成纤维细胞激活"
+            },
+            "threeToSix": {
+              "phase": "3-6个月后",
+              "title": "胶原蛋白重塑完成",
+              "desc": "自然弹性"
+            }
+          },
+          "treatmentAreas": {
+            "forehead": "额头",
+            "cheekbone": "颧骨",
+            "cheek": "脸颊",
+            "nasolabial": "法令纹",
+            "jawline": "下颌线",
+            "neck": "颈部"
+          },
+          "hero": {
+            "badge": "THREAD LIFTING"
+          },
+          "advantages": {
+            "sectionLabel": "Premium Thread",
+            "title": "线雕的<span class=\"text-[#D4AF37]\">优势</span>",
+            "description": "通过可吸收线同时体验即刻提升和长期胶原蛋白再生"
+          },
+          "threadTypesSection": {
+            "title": "多种<span class=\"text-[#D4AF37]\">线材类型</span>",
+            "description": "根据治疗目的和期望效果选择最佳线材",
+            "pdoCard": {
+              "title": "PDO",
+              "subtitle": "最热门选择",
+              "features": [
+                "6-8个月自然吸收",
+                "单丝/锯齿/螺旋类型",
+                "价格合理"
+              ]
+            },
+            "pllaCard": {
+              "title": "PLLA",
+              "subtitle": "胶原蛋白促进剂",
+              "features": [
+                "持续12-18个月",
+                "促进胶原蛋白生成",
+                "渐进式容量改善"
+              ]
+            },
+            "pclCard": {
+              "title": "PCL",
+              "subtitle": "最长持续",
+              "features": [
+                "持续18-24个月",
+                "柔软质感",
+                "强力支撑"
+              ]
+            }
+          },
+          "collagenSection": {
+            "title": "<span class=\"text-[#D4AF37]\">胶原蛋白再生</span>过程",
+            "description": "线材溶解时刺激胶原蛋白生成，打造自然弹性"
+          },
+          "targetAreasSection": {
+            "title": "治疗部位",
+            "description": "从整个面部到颈部，可针对松弛部位进行定制化线雕治疗。根据各部位特性应用适合的线材类型和数量。"
+          },
+          "processSection": {
+            "title": "治疗流程"
+          },
+          "treatmentInfo": {
+            "title": "治疗<span class=\"text-[#D4AF37]\">信息</span>",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果持续"
+            }
+          },
+          "comparison": {
+            "title": "激光提升 vs <span class=\"text-[#D4AF37]\">线雕</span>",
+            "description": "比较各治疗特性，为自己做出正确选择",
+            "headers": {
+              "item": "比较项目",
+              "laser": "激光提升",
+              "thread": "线雕"
+            },
+            "rows": [
+              { "item": "原理", "laser": "热能收缩胶原蛋白", "thread": "物理提升 + 胶原蛋白促进" },
+              { "item": "效果显现", "laser": "渐进式（2-3个月）", "thread": "即刻" },
+              { "item": "效果持续", "laser": "6个月-2年", "thread": "6-18个月（因线材类型而异）" },
+              { "item": "恢复期", "laser": "几乎没有", "thread": "3-7天（淤青、肿胀）" },
+              { "item": "麻醉", "laser": "麻醉膏或无麻醉", "thread": "局部麻醉" },
+              { "item": "适合对象", "laser": "初期松弛、弹性下降", "thread": "中度松弛、容量流失" },
+              { "item": "联合治疗", "laser": "单独或联合", "thread": "与激光联合有协同效应" }
+            ]
+          },
+          "recommended": {
+            "title": "推荐人群"
+          },
+          "faq": {
+            "title": "常见问题",
+            "relatedQA": "相关医疗信息问答",
+            "moreButton": "查看更多问答"
+          },
+          "cautions": {
+            "title": "治疗<span class=\"text-[#D4AF37]\">注意事项</span>"
+          },
+          "cta": {
+            "title": "预约线雕咨询",
+            "description": "即刻提升与自然胶原蛋白再生，通过线雕完成V脸。专业咨询将为您推荐最佳线材类型和治疗方案。",
+            "consultButton": "在线预约咨询",
+            "callButton": "电话咨询 02-797-2773"
+          }
+        }
       },
       "aptos": {
         "name": "APTOS Namica",
         "fullName": "APTOS Namica",
         "tagline": "高端线雕",
-        "description": "格鲁吉亚高端提升线，提供自然持久的提升效果。"
+        "description": "格鲁吉亚高端提升线，提供自然持久的提升效果。",
+        "detail": {
+          "namicaIllustration": {
+            "title": "NAMICA Technology",
+            "subtitle": "透明质酸40mg分阶段释放"
+          },
+          "phaseEffects": [
+            {
+              "phase": "即时效果",
+              "period": "术后即刻",
+              "description": "微米粒子立即释放HA",
+              "detail": "大粒子先溶解，立即提供饱满感和保湿"
+            },
+            {
+              "phase": "中期效果",
+              "period": "1-3个月",
+              "description": "亚微米粒子逐步作用",
+              "detail": "中等粒子逐步促进胶原蛋白生成"
+            },
+            {
+              "phase": "长期效果",
+              "period": "3-6个月",
+              "description": "纳米粒子持续供应HA",
+              "detail": "最小粒子长期维持弹性改善效果"
+            }
+          ],
+          "certifications": [
+            { "label": "KFDA", "value": "医疗器械4等级正式许可" },
+            { "label": "CE", "value": "欧洲CE认证" },
+            { "label": "ISO", "value": "ISO 13485质量管理体系" },
+            { "label": "FDA", "value": "MDSAP认证" }
+          ],
+          "gallery": [
+            {
+              "alt": "APTOS Professional Course证书颁发",
+              "caption": "格鲁吉亚总部证书颁发"
+            },
+            {
+              "alt": "Clinical Experience发表",
+              "caption": "Clinical Experience发表"
+            },
+            {
+              "alt": "患者咨询",
+              "caption": "患者诊疗及咨询"
+            }
+          ],
+          "hero": {
+            "badge": "第四代生物提升",
+            "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
+            "description": "在全球100多个国家使用的面部组织固定线的原创品牌",
+            "durationLabel": "效果持续",
+            "durationValue": "最长24个月"
+          },
+          "namicaSection": {
+            "title": "NAMICA Technology",
+            "description": "<strong class=\"text-secondary\">NAMICA(Nano & Micro Encapsulated Particles)</strong>是将透明质酸40mg封装成纳米、亚微米、微米单位，实现分阶段释放的创新药物递送系统。",
+            "features": [
+              { "icon": "🌍", "text": "全球100多个国家使用" },
+              { "icon": "✅", "text": "KFDA医疗器械4等级正式许可" },
+              { "icon": "⏱️", "text": "效果持续：最长24个月" },
+              { "icon": "🧬", "text": "生物刺激（胶原蛋白生成促进）" }
+            ]
+          },
+          "phaseSection": {
+            "title": "3阶段分步效果",
+            "description": "NAMICA技术的核心是根据粒子大小分阶段释放透明质酸"
+          },
+          "certificationsSection": {
+            "title": "全球标准安全认证"
+          },
+          "trainingSection": {
+            "title": "全球认证培训",
+            "description": "LIV金秀英院长在格鲁吉亚APTOS总部完成了Professional Course，并亲自参与手术掌握了最新技术。",
+            "certificateTitle": "APTOS Professional Course Certificate",
+            "certificateName": "Kim Sooyoung · KR0062025",
+            "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
+          },
+          "cta": {
+            "title": "预约APTOS NAMICA咨询",
+            "description": "完成全球认证培训的专家提供1:1定制咨询",
+            "button": "预约咨询"
+          }
+        }
       }
     },
     "antiaging": {
@@ -1522,6 +1755,32 @@
           "cta": {
             "title": "肉毒素咨询预约",
             "description": "自然的除皱效果，通过专家咨询为您推荐最佳治疗方案。"
+          },
+          "treatmentAreasLabels": {
+            "forehead": "额头",
+            "glabella": "眉间",
+            "crowsFeet": "眼角",
+            "masseter": "咬肌",
+            "mouthCorners": "嘴角",
+            "trapezius": "斜方肌",
+            "calves": "小腿"
+          },
+          "targetAreasDescription": "从表情纹到面部轮廓，通过分部位定制治疗带来自然改善效果。",
+          "timeline": {
+            "title": "术后时间线",
+            "items": [
+              { "time": "第1天", "title": "治疗当天", "desc": "简单治疗后可立即恢复日常生活", "percentage": 0 },
+              { "time": "3-7天", "title": "效果开始", "desc": "肌肉开始逐渐放松", "percentage": 30 },
+              { "time": "2-4周", "title": "最佳效果", "desc": "自然除皱效果达到最大化", "percentage": 100 },
+              { "time": "3-6个月", "title": "效果维持", "desc": "效果持续时间因人而异", "percentage": 70 }
+            ]
+          },
+          "mechanismLabel": "精准注射定位图",
+          "treatmentInfoLabels": {
+            "duration": "治疗时间",
+            "anesthesia": "麻醉",
+            "recovery": "恢复期",
+            "results": "效果持续"
           }
         }
       },
@@ -1586,14 +1845,74 @@
           "cta": {
             "title": "玻尿酸咨询预约",
             "description": "自然的体积和轮廓，通过专家咨询为您推荐最佳治疗方案。"
-          }
+          },
+          "volumeIllustrationLabel": "容量恢复映射图",
+          "heroImageAlt": "玻尿酸 - 体积与轮廓的艺术"
         }
       },
       "skinbooster": {
         "name": "水光针",
         "fullName": "Skin Booster",
         "tagline": "由内而外的深层补水",
-        "description": "向皮肤深层输送水分和营养，从根本上改善肌肤健康。"
+        "description": "向皮肤深层输送水分和营养，从根本上改善肌肤健康。",
+        "detail": {
+          "heroImageAlt": "水光针 - 从肌底绽放光彩",
+          "hydrationIllustration": {
+            "epidermis": "表皮层",
+            "dehydrated": "干燥肌肤",
+            "hydrated": "水润肌肤",
+            "haGrowthFactors": "透明质酸 + 生长因子",
+            "deepHydration": "深层补水直达真皮层"
+          },
+          "courseTimeline": {
+            "items": [
+              { "session": "第1次", "week": "第0周", "effect": 20, "desc": "基础补水" },
+              { "session": "第2次", "week": "第2-3周", "effect": 50, "desc": "强化水分屏障" },
+              { "session": "第3次", "week": "第4-6周", "effect": 80, "desc": "激活胶原蛋白" },
+              { "session": "第4次", "week": "第6-8周", "effect": 100, "desc": "达到最佳效果" }
+            ]
+          },
+          "benefits": {
+            "title": "水光针的优势"
+          },
+          "effects": {
+            "title": "水光针效果",
+            "items": [
+              { "icon": "droplet", "title": "深层补水", "desc": "直达真皮层" },
+              { "icon": "bounce", "title": "改善弹性", "desc": "促进胶原蛋白生成" },
+              { "icon": "glow", "title": "自然光泽", "desc": "从肌底绽放光彩" }
+            ]
+          },
+          "treatmentCourse": {
+            "title": "推荐3-4次疗程",
+            "subtitle": "为获得最佳效果，建议每隔2-4周进行3-4次治疗",
+            "maintenanceNote": "疗程完成后建议每2-3个月进行维护治疗"
+          },
+          "products": {
+            "title": "水光针产品",
+            "subtitle": "根据肌肤状态和目标选择最适合的产品",
+            "items": [
+              { "name": "婕斯", "desc": "胶原蛋白提升", "feature": "PDRN + HA" },
+              { "name": "丽珠兰", "desc": "肌肤再生", "feature": "PN" },
+              { "name": "乔雅登", "desc": "补水 + 弹性", "feature": "Voluma HA" }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "治疗信息",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果"
+            }
+          },
+          "faqTitle": "常见问题",
+          "cta": {
+            "title": "预约水光针咨询",
+            "description": "感受由内而外的水润与光泽，专业咨询为您量身定制治疗方案。",
+            "buttonOnline": "在线预约咨询"
+          }
+        }
       }
     },
     "laser": {
@@ -1601,7 +1920,164 @@
         "name": "激光中心",
         "fullName": "Laser Center",
         "tagline": "高端激光全方位解决方案",
-        "description": "色素、血管、肤质、脱毛、纹身去除，一站式解决各种皮肤问题的高端激光中心。"
+        "description": "色素、血管、肤质、脱毛、纹身去除，一站式解决各种皮肤问题的高端激光中心。",
+        "detail": {
+          "hero": {
+            "title": "激光中心",
+            "subtitle": "针对肌肤问题的定制激光解决方案",
+            "description": "Clarity II + Lucas 组合<br/>从色素到血管、脱毛、纹身去除一站式护理"
+          },
+          "viewMore": "了解详情",
+          "stats": [
+            { "label": "设备", "value": "4种", "desc": "高端激光" },
+            { "label": "治疗领域", "value": "5种", "desc": "肌肤问题解决" },
+            { "label": "经验", "value": "10年以上", "desc": "激光治疗经验" },
+            { "label": "安全性", "value": "已认证", "desc": "FDA批准设备" }
+          ],
+          "categories": {
+            "title": "针对肌肤问题的定制治疗",
+            "subtitle": "选择您的皮肤问题，我们将推荐最佳激光治疗方案",
+            "items": [
+              {
+                "id": "pigmentation",
+                "name": "色斑/色素改善",
+                "nameEn": "Pigmentation & Melasma",
+                "description": "通过皮秒激光和激光调色有效改善黄褐斑、色斑、老年斑等色素问题。",
+                "equipment": ["Lucas", "激光调色", "Clarity II"],
+                "icon": "☀️"
+              },
+              {
+                "id": "vascular",
+                "name": "红血丝/血管治疗",
+                "nameEn": "Redness & Vascular",
+                "description": "使用Clarity II双波长治疗面部潮红、毛细血管扩张、血管瘤。",
+                "equipment": ["Clarity II"],
+                "icon": "🔴"
+              },
+              {
+                "id": "skintone",
+                "name": "肤色均匀化",
+                "nameEn": "Skin Tone Brightening",
+                "description": "通过激光调色和Ulblanc改善暗沉肌肤，使肤色更加明亮。",
+                "equipment": ["激光调色", "Ulblanc"],
+                "icon": "✨"
+              },
+              {
+                "id": "hair-removal",
+                "name": "高端脱毛",
+                "nameEn": "Premium Hair Removal",
+                "description": "Clarity II双波长和IntelliTrak技术，适用于所有肤质的安全脱毛。",
+                "equipment": ["Clarity II"],
+                "icon": "💎"
+              },
+              {
+                "id": "tattoo",
+                "name": "纹身去除",
+                "nameEn": "Tattoo Removal",
+                "description": "Lucas皮秒激光无疤痕有效去除各种颜色的纹身。",
+                "equipment": ["Lucas"],
+                "icon": "🎨"
+              }
+            ]
+          },
+          "matrix": {
+            "badge": "设备 × 适应症",
+            "title": "解决任何肌肤问题的设备阵容",
+            "subtitle": "LIV激光中心的4种高端设备覆盖所有肌肤问题",
+            "chartTitle": "肌肤问题 × 设备矩阵",
+            "equipment": ["Clarity II", "Lucas", "激光调色", "Ulblanc"],
+            "concerns": ["色斑/色素", "红血丝/血管", "肤色", "脱毛", "纹身去除"]
+          },
+          "equipmentSection": {
+            "badge": "LIV设备",
+            "title": "高端激光阵容",
+            "subtitle": "使用FDA批准的最新设备提供安全有效的治疗",
+            "labels": {
+              "wavelength": "波长",
+              "feature": "特点",
+              "indications": "适应症"
+            },
+            "items": [
+              {
+                "name": "Clarity II",
+                "nameKo": "Clarity II",
+                "wavelength": "755nm + 1064nm",
+                "feature": "双波长 + IntelliTrak技术",
+                "targets": ["色素", "血管", "脱毛", "肤色"],
+                "highlight": true
+              },
+              {
+                "name": "Lucas",
+                "nameKo": "Lucas",
+                "wavelength": "532/755/1064nm",
+                "feature": "皮秒脉冲 (450ps)",
+                "targets": ["黄褐斑", "色素", "纹身去除"],
+                "highlight": false
+              },
+              {
+                "name": "Laser Toning",
+                "nameKo": "激光调色",
+                "wavelength": "1064nm Nd:YAG",
+                "feature": "低能量重复照射",
+                "targets": ["肤色", "毛孔", "肤质"],
+                "highlight": false
+              },
+              {
+                "name": "Ulblanc",
+                "nameKo": "Ulblanc",
+                "wavelength": "专用波长",
+                "feature": "选择性黑色素靶向",
+                "targets": ["美白", "均匀肤色"],
+                "highlight": false
+              }
+            ]
+          },
+          "synergy": {
+            "badge": "LIV EXCLUSIVE",
+            "title": "Clarity II + Lucas 协同效果",
+            "subtitle": "两款高端设备的组合，比单一治疗更快速有效",
+            "benefits": [
+              { "title": "多波长覆盖", "desc": "从532nm到1064nm<br/>覆盖所有深度的靶点" },
+              { "title": "复合适应症治疗", "desc": "色斑+红血丝、色素+毛孔等<br/>同时解决多种问题" },
+              { "title": "快速见效", "desc": "比单一治疗<br/>快1.5-2倍的效果" }
+            ]
+          },
+          "process": {
+            "title": "激光治疗流程",
+            "steps": [
+              { "step": 1, "title": "皮肤分析", "desc": "专家咨询及皮肤类型、问题精密分析" },
+              { "step": 2, "title": "定制方案", "desc": "为每位客户制定最佳激光组合和治疗计划" },
+              { "step": 3, "title": "激光治疗", "desc": "经验丰富的专家进行安全精准的治疗" },
+              { "step": 4, "title": "术后护理", "desc": "治疗后护理、定期检查和维护管理" }
+            ]
+          },
+          "faq": {
+            "title": "常见问题",
+            "items": [
+              {
+                "q": "哪种激光适合我？",
+                "a": "最佳激光因皮肤状况和问题而异。通过免费咨询，专家将直接分析您的皮肤并推荐定制治疗方案。"
+              },
+              {
+                "q": "激光治疗疼吗？",
+                "a": "因设备而异，但大多数人形容为"橡皮筋弹的感觉"。如需要可涂抹麻醉膏以减轻疼痛。Clarity II配备内置冷却系统，更加舒适。"
+              },
+              {
+                "q": "恢复期需要多长时间？",
+                "a": "取决于激光类型。激光调色、Ulblanc几乎没有恢复期，可立即恢复日常生活。皮秒激光可能有3-5天的轻微泛红。"
+              },
+              {
+                "q": "什么时候能看到效果？",
+                "a": "治疗后立即可感受到肤色改善。2-4周内随着胶原蛋白重塑，效果会更加明显。建议完成推荐疗程以获得最佳效果。"
+              }
+            ]
+          },
+          "cta": {
+            "title": "迈向清透健康肌肤的第一步",
+            "description": "我们帮您找到针对肌肤问题的最佳激光<br/>通过免费咨询确认您的定制治疗方案",
+            "buttonConsult": "预约免费咨询"
+          }
+        }
       },
       "pigmentation": {
         "name": "色素治疗",
@@ -1759,13 +2235,222 @@
         "name": "肤质改善",
         "fullName": "Skin Tone Improvement",
         "tagline": "毛孔、疤痕、肤质改善",
-        "description": "激光焕肤可实现毛孔缩小、疤痕改善、肤质细腻的效果。"
+        "description": "激光焕肤可实现毛孔缩小、疤痕改善、肤质细腻的效果。",
+        "detail": {
+          "hero": {
+            "title": "肤色均匀化",
+            "subtitle": "Skin Tone Brightening & Whitening",
+            "description": "激光嫩肤与Ulblanc协同作用<br/>让暗沉肌肤恢复明亮透彻"
+          },
+          "concernsSection": {
+            "title": "您有这些肌肤困扰吗？",
+            "subtitle": "肤色不均的原因多种多样。我们针对您的具体问题提供定制方案。",
+            "customSolution": "定制方案",
+            "concerns": [
+              { "title": "整体暗沉", "description": "因日晒、压力、疲劳等导致肤色整体暗淡无光", "solution": "激光嫩肤整体提亮肤色", "equipment": ["激光嫩肤", "Ulblanc"] },
+              { "title": "局部色素沉着", "description": "脸颊、额头、颧骨周围局部出现深色色素沉着", "solution": "激光嫩肤密集治疗 + 皮秒激光联合", "equipment": ["激光嫩肤", "Lucas"] },
+              { "title": "毛孔/肤质问题", "description": "因毛孔粗大、肤质粗糙导致肤色看起来不均匀", "solution": "利用激光嫩肤的胶原蛋白重塑效果", "equipment": ["激光嫩肤"] },
+              { "title": "肌肤透明度下降", "description": "肌肤暗淡无透明感，看起来不健康", "solution": "Ulblanc恢复肌肤透明度和光泽", "equipment": ["Ulblanc", "激光嫩肤"] }
+            ]
+          },
+          "toningSection": {
+            "badge": "治疗原理",
+            "title": "激光嫩肤的科学",
+            "description1": "激光嫩肤使用<strong>1064nm Nd:YAG激光</strong>以低能量重复照射，逐渐分解皮肤中的黑色素。",
+            "description2": "与传统高能量激光不同，<strong>以低能量均匀覆盖大面积</strong>，最大程度减少对皮肤的刺激，同时最大化效果。",
+            "effectsTitle": "激光嫩肤的3大效果",
+            "effects": [
+              { "title": "黑色素分解", "desc": "逐步分解皮肤中的色素" },
+              { "title": "胶原蛋白生成", "desc": "刺激真皮层改善皮肤弹性" },
+              { "title": "毛孔收缩", "desc": "调节皮脂腺功能、收紧毛孔" }
+            ]
+          },
+          "beforeAfterSection": {
+            "title": "肤色变化过程",
+            "subtitle": "激光嫩肤与Ulblanc组合带来的肤色改变"
+          },
+          "equipmentSection": {
+            "badge": "LIV 设备",
+            "title": "肤色改善专用设备",
+            "subtitle": "不影响日常生活，逐渐提亮肤色的专业设备",
+            "labels": {
+              "wavelength": "波长",
+              "feature": "特点",
+              "advantage": "优势",
+              "indications": "适应症",
+              "recommendedSessions": "建议次数"
+            },
+            "toning": {
+              "name": "激光嫩肤",
+              "nameEn": "Laser Toning (Spectra XT)",
+              "wavelength": "1064nm Nd:YAG",
+              "feature": "低能量重复照射（MLA模式）",
+              "advantage": "零恢复期，立即恢复日常生活",
+              "targets": ["暗沉肌肤", "细纹", "毛孔", "肤质", "提亮"]
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc Whitening Laser",
+              "wavelength": "专用美白波长",
+              "feature": "选择性靶向黑色素",
+              "advantage": "无刺激改善肤色",
+              "targets": ["美白", "均匀肤色", "透明感", "光泽", "暗沉"]
+            },
+            "synergyTitle": "激光嫩肤 + Ulblanc 协同效果",
+            "synergyDesc": "激光嫩肤改善整体肤质，Ulblanc直接靶向黑色素，与单独治疗相比可期待<strong>1.5-2倍更快的效果</strong>。两种设备都无恢复期，可轻松进行联合治疗。"
+          },
+          "protocolSection": {
+            "badge": "治疗流程",
+            "title": "3步肤色改善计划",
+            "subtitle": "系统性分阶段治疗，实现自然持久的肤色改善",
+            "steps": [
+              { "step": 1, "title": "肌肤调理", "equipment": "激光嫩肤", "description": "使用1064nm波长均匀地向皮肤照射低能量，改善皮肤基础状态。", "sessions": "每周1次，4-5次" },
+              { "step": 2, "title": "黑色素靶向", "equipment": "Ulblanc", "description": "使用选择性作用于黑色素的专用波长，逐步分解色素，促进皮肤美白。", "sessions": "每2周，3-4次" },
+              { "step": 3, "title": "维护管理", "equipment": "激光嫩肤 + Ulblanc", "description": "每月定期护理维持提亮后的肤色，预防新的色素沉着。", "sessions": "每月1次维护" }
+            ]
+          },
+          "advantagesSection": {
+            "title": "激光嫩肤的优势",
+            "subtitle": "为忙碌现代人提供轻松护肤方案",
+            "items": [
+              { "title": "零恢复期", "desc": "治疗后立即恢复日常活动" },
+              { "title": "午休时段治疗", "desc": "仅需15-20分钟" },
+              { "title": "自然效果", "desc": "肌肤逐渐变亮" },
+              { "title": "综合改善", "desc": "肤色、毛孔、弹性同步改善" }
+            ]
+          },
+          "faq": {
+            "title": "肤色改善常见问题",
+            "items": [
+              { "q": "激光嫩肤需要几次才能看到效果？", "a": "通常4-5次治疗后可以看到明显效果。根据皮肤状况因人而异，治疗约10次可达到最佳效果。之后每月1次维护治疗可长期保持提亮后的肤色。" },
+              { "q": "激光嫩肤后日常生活有限制吗？", "a": "激光嫩肤最大的优点是"零恢复期"。治疗后可能出现轻微泛红，但30分钟至1小时内会消退，可以立即洗脸、化妆、外出。但治疗当天请避免桑拿和剧烈运动，并注意防晒。" },
+              { "q": "Ulblanc和激光嫩肤有什么区别？", "a": "激光嫩肤使用1064nm Nd:YAG激光逐步改善整体皮肤色素沉着并促进胶原蛋白生成。Ulblanc使用专门针对黑色素的专用波长，提供更直接的美白效果。两种治疗联合使用可产生协同效果，获得更快更有效的结果。" },
+              { "q": "敏感肌肤可以做激光嫩肤吗？", "a": "可以。激光嫩肤使用低能量，对敏感肌肤相对安全。但首次治疗时会从较低能量设置开始，确认皮肤反应后逐步调整。咨询时请准确描述您的皮肤状况，我们将制定个性化治疗方案。" },
+              { "q": "黄褐斑治疗与肤色改善治疗有何不同？", "a": "黄褐斑治疗针对边界清晰的色素病变，使用皮秒激光等高能量设备进行集中治疗。而肤色改善针对整体暗沉、细微色素沉着、肤质改善，使用激光嫩肤和Ulblanc。如果有黄褐斑同时想改善整体肤色，联合两种治疗效果最佳。" }
+            ]
+          },
+          "illustrationLabels": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "deepDermis": "深层真皮",
+            "laserHead": "1064nm Nd:YAG 低能量照射",
+            "mechanismDesc": "低能量重复照射逐步分解黑色素",
+            "before": "Before",
+            "after": "After",
+            "beforeDesc": "不均匀肤色",
+            "afterDesc": "明亮均匀肤色",
+            "laserToning": "激光嫩肤",
+            "ulblanc": "+ Ulblanc"
+          },
+          "cta": {
+            "title": "找回明亮透彻的肤色",
+            "description": "开始无恢复期、融入日常的<br/>激光嫩肤 & Ulblanc 护肤计划",
+            "buttonConsult": "预约免费咨询"
+          }
+        }
       },
       "hairRemoval": {
         "name": "激光脱毛",
         "fullName": "Laser Hair Removal",
         "tagline": "永久脱毛解决方案",
-        "description": "医疗级激光选择性破坏毛囊，实现永久脱毛效果。"
+        "description": "医疗级激光选择性破坏毛囊，实现永久脱毛效果。",
+        "detail": {
+          "hero": {
+            "title": "高端脱毛",
+            "subtitle": "Premium Hair Removal with Clarity II",
+            "description": "双波长 + IntelliTrak™ 技术<br/>适合所有肤质的安全高效医疗激光脱毛"
+          },
+          "claritySection": {
+            "badge": "LIV 高端设备",
+            "title": "Clarity II",
+            "subtitle": "脱毛新标准",
+            "description1": "Clarity II是一款高端激光系统，在单一平台上提供<strong>755nm亚历山大激光</strong>和<strong>1064nm Nd:YAG</strong>两种波长。",
+            "description2": "<strong>IntelliTrak™</strong>技术实时追踪皮肤，无重叠无遗漏地均匀输出能量，最大程度降低烫伤风险，最大化治疗效果。",
+            "specs": {
+              "wavelength": "波长",
+              "wavelengthValue": "755nm + 1064nm",
+              "spotSize": "光斑尺寸",
+              "spotSizeValue": "最大3cm²",
+              "pulseTime": "脉冲时间",
+              "pulseTimeValue": "2-400ms",
+              "cooling": "冷却",
+              "coolingValue": "低温气体"
+            }
+          },
+          "intellitrakSection": {
+            "badge": "差异化技术",
+            "title": "IntelliTrak™ 智能治疗"
+          },
+          "bodyAreas": {
+            "title": "部位脱毛指南",
+            "subtitle": "Clarity II可实现从面部到全身所有部位的脱毛",
+            "labels": {
+              "sessions": "建议次数",
+              "interval": "治疗间隔"
+            },
+            "items": [
+              { "area": "腋下", "sessions": "6-8次", "interval": "4-6周", "description": "最受欢迎的脱毛部位。对汗液和异味管理也很有效。" },
+              { "area": "手臂/腿部", "sessions": "6-10次", "interval": "6-8周", "description": "大面积部位也能快速治疗。长期保持光滑肌肤。" },
+              { "area": "比基尼线", "sessions": "8-10次", "interval": "4-6周", "description": "针对敏感部位优化设置，安全有效。" },
+              { "area": "面部（人中、下颌线）", "sessions": "8-12次", "interval": "3-4周", "description": "细腻面部毛发去除。连绒毛也能彻底清除。" },
+              { "area": "背部/胸部（男性）", "sessions": "8-12次", "interval": "6-8周", "description": "男性脱毛专业服务。从自然减毛到完全脱毛。" },
+              { "area": "全身脱毛", "sessions": "8-12次", "interval": "按部位调整", "description": "全身护理。套餐项目价格优惠。" }
+            ]
+          },
+          "advantages": {
+            "title": "Clarity II 优势",
+            "subtitle": "为什么选择Clarity II脱毛？",
+            "items": [
+              { "title": "双波长", "description": "755nm + 1064nm，适合所有肤质，安全有效" },
+              { "title": "IntelliTrak™", "description": "实时皮肤追踪，均匀输出能量，最大程度降低烫伤风险" },
+              { "title": "大光斑", "description": "最大3cm²光斑尺寸，大面积部位也能快速治疗" },
+              { "title": "集成冷却", "description": "低温气体冷却系统，最大程度减少治疗中的疼痛和不适" }
+            ]
+          },
+          "faq": {
+            "title": "脱毛常见问题",
+            "items": [
+              { "q": "激光脱毛是永久的吗？", "a": "激光脱毛被归类为"永久性减毛（Permanent Hair Reduction）"。由于针对生长期毛囊，完成治疗后可期待80-90%的永久减毛效果。部分休止期毛囊可能转入生长期导致轻微复发，因此建议每年1-2次维护治疗。" },
+              { "q": "激光脱毛疼吗？", "a": "Clarity II内置的低温气体冷却系统在治疗过程中持续冷却皮肤，最大程度减少疼痛。大多数客人形容为"橡皮筋轻弹"程度的轻微刺激。如需要，可提前涂抹麻醉膏。" },
+              { "q": "浅色（金色、白色）毛发也能去除吗？", "a": "激光脱毛针对黑色素，因此对黑色素含量少的白色、金色、浅色毛发效果有限。这种情况可考虑电解脱毛作为替代方案。咨询时会确认毛发颜色并推荐最佳方法。" },
+              { "q": "皮肤较深可以脱毛吗？", "a": "可以，Clarity II的1064nm Nd:YAG波长对深色皮肤（Fitzpatrick Type IV-VI）也安全适用。755nm亚历山大激光适合浅色皮肤，1064nm适合深色皮肤，可为所有肤质定制治疗。" },
+              { "q": "脱毛前后有什么注意事项？", "a": "治疗前：提前2周避免蜡脱、拔毛、脱毛膏，只进行剃毛。治疗当天避免过度日晒。治疗后：24-48小时避免桑拿、剧烈运动，认真涂抹防晒霜。" },
+              { "q": "需要多少次治疗才能看到效果？", "a": "根据部位和个人毛发特性不同，通常6-10次治疗后可达到最佳效果。由于激光仅在生长期（Anagen）有效，需要间隔4-8周进行多次治疗，以针对不同周期的毛囊。" }
+            ]
+          },
+          "cta": {
+            "title": "开启光滑肌肤之旅",
+            "description": "获取部位定制脱毛咨询<br/>免费咨询了解最适合您的脱毛方案",
+            "buttonConsult": "预约免费咨询"
+          },
+          "wavelengthIllustration": {
+            "title": "各波长毛囊靶向深度",
+            "wavelength755": "755nm 亚历山大激光",
+            "wavelength755Desc": "黑色素吸收率最佳",
+            "wavelength1064": "1064nm Nd:YAG",
+            "wavelength1064Desc": "深层渗透，适合所有肤色",
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "lightSkin": "针对浅色皮肤优化",
+            "darkSkin": "深色皮肤/深层毛囊"
+          },
+          "intellitrakIllustration": {
+            "title": "IntelliTrak™ 实时追踪系统",
+            "description1": "实时皮肤追踪实现均匀能量传递",
+            "description2": "无重叠无遗漏的精准照射"
+          },
+          "intellitrakFeatures": [
+            { "title": "实时追踪", "desc": "实时感知手柄移动，准确把握照射位置" },
+            { "title": "均匀覆盖", "desc": "无重叠无遗漏地向整个治疗区域均匀输出能量" },
+            { "title": "烫伤预防", "desc": "防止同一部位重复照射，最大程度降低烫伤和过度治疗风险" }
+          ],
+          "processSteps": [
+            { "step": 1, "title": "咨询 & 皮肤分析", "desc": "分析皮肤类型和毛发特性，制定定制治疗方案" },
+            { "step": 2, "title": "术前准备", "desc": "剃除治疗部位毛发，必要时涂抹麻醉膏" },
+            { "step": 3, "title": "激光治疗", "desc": "通过IntelliTrak™精确均匀地输出能量" },
+            { "step": 4, "title": "术后护理", "desc": "冷却和舒缓护理，安排下次治疗时间" }
+          ]
+        }
       },
       "tattoo": {
         "name": "纹身去除",

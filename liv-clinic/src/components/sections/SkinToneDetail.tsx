@@ -7,8 +7,52 @@ import { AnimateOnScroll } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 import { LASER_EQUIPMENT } from '@/lib/constants';
 
+// TypeScript interfaces for translations
+interface SkinConcern {
+  title: string;
+  description: string;
+  solution: string;
+  equipment: string[];
+}
+
+interface TreatmentStep {
+  step: number;
+  title: string;
+  equipment: string;
+  description: string;
+  sessions: string;
+}
+
+interface FAQItem {
+  q: string;
+  a: string;
+}
+
+interface AdvantageItem {
+  title: string;
+  desc: string;
+}
+
+interface IllustrationLabels {
+  epidermis: string;
+  dermis: string;
+  deepDermis: string;
+  laserHead: string;
+  mechanismDesc: string;
+  before: string;
+  after: string;
+  beforeDesc: string;
+  afterDesc: string;
+  laserToning: string;
+  ulblanc: string;
+}
+
 // 레이저 토닝 메커니즘 일러스트레이션
-const ToningMechanismIllustration = () => (
+interface ToningMechanismProps {
+  labels: IllustrationLabels;
+}
+
+const ToningMechanismIllustration = ({ labels }: ToningMechanismProps) => (
   <svg viewBox="0 0 400 300" className="w-full h-auto">
     {/* 피부 단면 - 여러 층 */}
     <defs>
@@ -34,9 +78,9 @@ const ToningMechanismIllustration = () => (
     <rect x="50" y="80" width="300" height="180" fill="url(#skinLayerGradient)" rx="4" />
 
     {/* 표피층 라벨 */}
-    <text x="360" y="100" fontSize="10" fill="#8a8a8a" textAnchor="end">표피</text>
-    <text x="360" y="150" fontSize="10" fill="#8a8a8a" textAnchor="end">진피</text>
-    <text x="360" y="220" fontSize="10" fill="#8a8a8a" textAnchor="end">심부진피</text>
+    <text x="360" y="100" fontSize="10" fill="#8a8a8a" textAnchor="end">{labels.epidermis}</text>
+    <text x="360" y="150" fontSize="10" fill="#8a8a8a" textAnchor="end">{labels.dermis}</text>
+    <text x="360" y="220" fontSize="10" fill="#8a8a8a" textAnchor="end">{labels.deepDermis}</text>
 
     {/* 멜라닌 입자들 - 불규칙하게 분포 */}
     <g className="melanin-particles">
@@ -78,7 +122,7 @@ const ToningMechanismIllustration = () => (
 
     {/* 레이저 헤드 */}
     <rect x="60" y="25" width="280" height="20" fill="#6d4e42" rx="3" />
-    <text x="200" y="38" fontSize="10" fill="white" textAnchor="middle" fontWeight="500">1064nm Nd:YAG 저출력 조사</text>
+    <text x="200" y="38" fontSize="10" fill="white" textAnchor="middle" fontWeight="500">{labels.laserHead}</text>
 
     {/* 멜라닌 파괴 효과 */}
     <motion.g
@@ -91,13 +135,17 @@ const ToningMechanismIllustration = () => (
 
     {/* 설명 텍스트 */}
     <text x="200" y="285" fontSize="11" fill="#575756" textAnchor="middle">
-      저출력 반복 조사로 멜라닌을 점진적으로 분해
+      {labels.mechanismDesc}
     </text>
   </svg>
 );
 
 // Before/After 효과 일러스트레이션
-const BeforeAfterIllustration = () => (
+interface BeforeAfterProps {
+  labels: IllustrationLabels;
+}
+
+const BeforeAfterIllustration = ({ labels }: BeforeAfterProps) => (
   <svg viewBox="0 0 500 200" className="w-full h-auto">
     <defs>
       {/* Before - 불균일한 피부톤 */}
@@ -117,14 +165,14 @@ const BeforeAfterIllustration = () => (
 
     {/* Before 섹션 */}
     <g>
-      <text x="100" y="25" fontSize="14" fill="#575756" textAnchor="middle" fontWeight="600">Before</text>
+      <text x="100" y="25" fontSize="14" fill="#575756" textAnchor="middle" fontWeight="600">{labels.before}</text>
       <rect x="25" y="40" width="150" height="130" fill="url(#unevenSkin)" rx="75" />
       {/* 불균일한 색소 추가 */}
       <circle cx="60" cy="80" r="8" fill="#a08070" opacity="0.5" />
       <circle cx="120" cy="100" r="10" fill="#907060" opacity="0.6" />
       <circle cx="80" cy="130" r="6" fill="#a08070" opacity="0.4" />
       <circle cx="130" cy="70" r="7" fill="#907060" opacity="0.5" />
-      <text x="100" y="190" fontSize="11" fill="#8a8a8a" textAnchor="middle">불균일한 피부톤</text>
+      <text x="100" y="190" fontSize="11" fill="#8a8a8a" textAnchor="middle">{labels.beforeDesc}</text>
     </g>
 
     {/* 화살표 */}
@@ -146,17 +194,17 @@ const BeforeAfterIllustration = () => (
         animate={{ opacity: [0, 1, 0] }}
         transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1, delay: 1.2 }}
       />
-      <text x="250" y="85" fontSize="10" fill="#b4988d" textAnchor="middle">레이저 토닝</text>
-      <text x="250" y="125" fontSize="10" fill="#b4988d" textAnchor="middle">+ 울블랑</text>
+      <text x="250" y="85" fontSize="10" fill="#b4988d" textAnchor="middle">{labels.laserToning}</text>
+      <text x="250" y="125" fontSize="10" fill="#b4988d" textAnchor="middle">{labels.ulblanc}</text>
     </g>
 
     {/* After 섹션 */}
     <g>
-      <text x="400" y="25" fontSize="14" fill="#575756" textAnchor="middle" fontWeight="600">After</text>
+      <text x="400" y="25" fontSize="14" fill="#575756" textAnchor="middle" fontWeight="600">{labels.after}</text>
       <rect x="325" y="40" width="150" height="130" fill="url(#evenSkin)" rx="75" />
       {/* 균일하고 밝은 피부 표현 */}
       <ellipse cx="400" cy="105" rx="60" ry="50" fill="white" opacity="0.2" />
-      <text x="400" y="190" fontSize="11" fill="#8a8a8a" textAnchor="middle">맑고 균일한 피부톤</text>
+      <text x="400" y="190" fontSize="11" fill="#8a8a8a" textAnchor="middle">{labels.afterDesc}</text>
     </g>
   </svg>
 );
@@ -169,9 +217,10 @@ interface TreatmentStepProps {
   description: string;
   sessions: string;
   icon: React.ReactNode;
+  sessionsLabel: string;
 }
 
-const TreatmentStepCard = ({ step, title, equipment, description, sessions, icon }: TreatmentStepProps) => (
+const TreatmentStepCard = ({ step, title, equipment, description, sessions, icon, sessionsLabel }: TreatmentStepProps) => (
   <motion.div
     className="relative bg-white rounded-2xl p-6 shadow-sm border border-[var(--color-border)] h-full"
     whileHover={{ y: -5 }}
@@ -194,7 +243,7 @@ const TreatmentStepCard = ({ step, title, equipment, description, sessions, icon
 
     {/* 권장 횟수 */}
     <div className="pt-4 border-t border-[var(--color-border)]">
-      <span className="text-xs text-[var(--color-mono-light)]">권장 횟수</span>
+      <span className="text-xs text-[var(--color-mono-light)]">{sessionsLabel}</span>
       <p className="text-sm font-medium text-[var(--color-secondary)]">{sessions}</p>
     </div>
   </motion.div>
@@ -206,14 +255,15 @@ interface SkinConcernCardProps {
   description: string;
   solution: string;
   equipment: string[];
+  solutionLabel: string;
 }
 
-const SkinConcernCard = ({ title, description, solution, equipment }: SkinConcernCardProps) => (
+const SkinConcernCard = ({ title, description, solution, equipment, solutionLabel }: SkinConcernCardProps) => (
   <div className="bg-white rounded-xl p-5 border border-[var(--color-border)] hover:border-[var(--color-primary)]/30 transition-colors">
     <h4 className="text-lg font-semibold text-[var(--color-secondary)] mb-2">{title}</h4>
     <p className="text-sm text-[var(--color-mono)] mb-3">{description}</p>
     <div className="bg-[var(--color-background)] rounded-lg p-3">
-      <p className="text-xs text-[var(--color-mono-light)] mb-1">맞춤 솔루션</p>
+      <p className="text-xs text-[var(--color-mono-light)] mb-1">{solutionLabel}</p>
       <p className="text-sm text-[var(--color-primary)] font-medium">{solution}</p>
       <div className="flex flex-wrap gap-1 mt-2">
         {equipment.map((eq, idx) => (
@@ -227,6 +277,13 @@ const SkinConcernCard = ({ title, description, solution, equipment }: SkinConcer
 );
 
 // 장비 카드 컴포넌트
+interface EquipmentLabels {
+  wavelength: string;
+  feature: string;
+  advantage: string;
+  indications: string;
+}
+
 interface EquipmentCardProps {
   equipment: {
     name: string;
@@ -237,10 +294,11 @@ interface EquipmentCardProps {
     targets: string[];
     sessions: string;
   };
+  labels: EquipmentLabels;
   highlight?: boolean;
 }
 
-const EquipmentCard = ({ equipment, highlight = false }: EquipmentCardProps) => (
+const EquipmentCard = ({ equipment, labels, highlight = false }: EquipmentCardProps) => (
   <motion.div
     className={`relative rounded-2xl p-6 h-full ${
       highlight
@@ -269,7 +327,7 @@ const EquipmentCard = ({ equipment, highlight = false }: EquipmentCardProps) => 
           </svg>
         </div>
         <div>
-          <p className="text-xs text-[var(--color-mono-light)]">파장</p>
+          <p className="text-xs text-[var(--color-mono-light)]">{labels.wavelength}</p>
           <p className="text-sm font-medium text-[var(--color-secondary)]">{equipment.wavelength}</p>
         </div>
       </div>
@@ -281,7 +339,7 @@ const EquipmentCard = ({ equipment, highlight = false }: EquipmentCardProps) => 
           </svg>
         </div>
         <div>
-          <p className="text-xs text-[var(--color-mono-light)]">특징</p>
+          <p className="text-xs text-[var(--color-mono-light)]">{labels.feature}</p>
           <p className="text-sm text-[var(--color-mono)]">{equipment.feature}</p>
         </div>
       </div>
@@ -293,7 +351,7 @@ const EquipmentCard = ({ equipment, highlight = false }: EquipmentCardProps) => 
           </svg>
         </div>
         <div>
-          <p className="text-xs text-[var(--color-mono-light)]">장점</p>
+          <p className="text-xs text-[var(--color-mono-light)]">{labels.advantage}</p>
           <p className="text-sm text-[var(--color-mono)]">{equipment.advantage}</p>
         </div>
       </div>
@@ -301,7 +359,7 @@ const EquipmentCard = ({ equipment, highlight = false }: EquipmentCardProps) => 
 
     {/* 적응증 */}
     <div className="pt-4 border-t border-[var(--color-border)]">
-      <p className="text-xs text-[var(--color-mono-light)] mb-2">적응증</p>
+      <p className="text-xs text-[var(--color-mono-light)] mb-2">{labels.indications}</p>
       <div className="flex flex-wrap gap-1">
         {equipment.targets.map((target, idx) => (
           <span
@@ -377,121 +435,127 @@ const FAQItem = ({ question, answer, isOpen, onClick, id }: FAQItemProps) => {
 export default function SkinToneDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
-  const tNav = useTranslations('nav');
   const [openFAQ, setOpenFAQ] = React.useState<number | null>(0);
+
+  // Load translations
+  const detail = {
+    hero: {
+      title: t('laser.skintone.detail.hero.title'),
+      subtitle: t('laser.skintone.detail.hero.subtitle'),
+      description: t.raw('laser.skintone.detail.hero.description') as string,
+    },
+    concernsSection: {
+      title: t('laser.skintone.detail.concernsSection.title'),
+      subtitle: t('laser.skintone.detail.concernsSection.subtitle'),
+      customSolution: t('laser.skintone.detail.concernsSection.customSolution'),
+      concerns: t.raw('laser.skintone.detail.concernsSection.concerns') as SkinConcern[],
+    },
+    toningSection: {
+      badge: t('laser.skintone.detail.toningSection.badge'),
+      title: t('laser.skintone.detail.toningSection.title'),
+      description1: t.raw('laser.skintone.detail.toningSection.description1') as string,
+      description2: t.raw('laser.skintone.detail.toningSection.description2') as string,
+      effectsTitle: t('laser.skintone.detail.toningSection.effectsTitle'),
+      effects: t.raw('laser.skintone.detail.toningSection.effects') as { title: string; desc: string }[],
+    },
+    beforeAfterSection: {
+      title: t('laser.skintone.detail.beforeAfterSection.title'),
+      subtitle: t('laser.skintone.detail.beforeAfterSection.subtitle'),
+    },
+    equipmentSection: {
+      badge: t('laser.skintone.detail.equipmentSection.badge'),
+      title: t('laser.skintone.detail.equipmentSection.title'),
+      subtitle: t('laser.skintone.detail.equipmentSection.subtitle'),
+      labels: {
+        wavelength: t('laser.skintone.detail.equipmentSection.labels.wavelength'),
+        feature: t('laser.skintone.detail.equipmentSection.labels.feature'),
+        advantage: t('laser.skintone.detail.equipmentSection.labels.advantage'),
+        indications: t('laser.skintone.detail.equipmentSection.labels.indications'),
+        recommendedSessions: t('laser.skintone.detail.equipmentSection.labels.recommendedSessions'),
+      },
+      toning: {
+        name: t('laser.skintone.detail.equipmentSection.toning.name'),
+        nameEn: t('laser.skintone.detail.equipmentSection.toning.nameEn'),
+        wavelength: t('laser.skintone.detail.equipmentSection.toning.wavelength'),
+        feature: t('laser.skintone.detail.equipmentSection.toning.feature'),
+        advantage: t('laser.skintone.detail.equipmentSection.toning.advantage'),
+        targets: t.raw('laser.skintone.detail.equipmentSection.toning.targets') as string[],
+      },
+      ulblanc: {
+        name: t('laser.skintone.detail.equipmentSection.ulblanc.name'),
+        nameEn: t('laser.skintone.detail.equipmentSection.ulblanc.nameEn'),
+        wavelength: t('laser.skintone.detail.equipmentSection.ulblanc.wavelength'),
+        feature: t('laser.skintone.detail.equipmentSection.ulblanc.feature'),
+        advantage: t('laser.skintone.detail.equipmentSection.ulblanc.advantage'),
+        targets: t.raw('laser.skintone.detail.equipmentSection.ulblanc.targets') as string[],
+      },
+      synergyTitle: t('laser.skintone.detail.equipmentSection.synergyTitle'),
+      synergyDesc: t.raw('laser.skintone.detail.equipmentSection.synergyDesc') as string,
+    },
+    protocolSection: {
+      badge: t('laser.skintone.detail.protocolSection.badge'),
+      title: t('laser.skintone.detail.protocolSection.title'),
+      subtitle: t('laser.skintone.detail.protocolSection.subtitle'),
+      steps: t.raw('laser.skintone.detail.protocolSection.steps') as TreatmentStep[],
+    },
+    advantagesSection: {
+      title: t('laser.skintone.detail.advantagesSection.title'),
+      subtitle: t('laser.skintone.detail.advantagesSection.subtitle'),
+      items: t.raw('laser.skintone.detail.advantagesSection.items') as AdvantageItem[],
+    },
+    faq: {
+      items: t.raw('laser.skintone.detail.faq.items') as FAQItem[],
+    },
+    illustrationLabels: t.raw('laser.skintone.detail.illustrationLabels') as IllustrationLabels,
+    cta: {
+      title: t('laser.skintone.detail.cta.title'),
+      description: t.raw('laser.skintone.detail.cta.description') as string,
+      buttonConsult: t('laser.skintone.detail.cta.buttonConsult'),
+    },
+  };
+
+  // Treatment step icons (static, not translatable)
+  const stepIcons = [
+    (
+      <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+      </svg>
+    ),
+    (
+      <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+      </svg>
+    ),
+    (
+      <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    ),
+  ];
+
+  // Advantage icons (static)
+  const advantageIcons = ['⚡', '⏱️', '✨', '💎'];
 
   // 장비 데이터
   const toningEquipment = {
-    name: '레이저 토닝',
-    nameEn: 'Laser Toning (Spectra XT)',
-    wavelength: '1064nm Nd:YAG',
-    feature: '저출력 반복 조사 (MLA 모드)',
-    advantage: '다운타임 제로, 일상생활 즉시 가능',
-    targets: ['칙칙한 피부', '잔주름', '모공', '피부결', '밝기 개선'],
+    name: detail.equipmentSection.toning.name,
+    nameEn: detail.equipmentSection.toning.nameEn,
+    wavelength: detail.equipmentSection.toning.wavelength,
+    feature: detail.equipmentSection.toning.feature,
+    advantage: detail.equipmentSection.toning.advantage,
+    targets: detail.equipmentSection.toning.targets,
     sessions: LASER_EQUIPMENT.toning.sessions
   };
 
   const ulblancEquipment = {
-    name: '울블랑',
-    nameEn: 'Ulblanc Whitening Laser',
-    wavelength: '전용 화이트닝 파장',
-    feature: '멜라닌 선택적 타겟팅',
-    advantage: '자극 없이 피부톤 개선',
-    targets: ['피부 미백', '톤 균일화', '투명함', '광채', '칙칙함'],
+    name: detail.equipmentSection.ulblanc.name,
+    nameEn: detail.equipmentSection.ulblanc.nameEn,
+    wavelength: detail.equipmentSection.ulblanc.wavelength,
+    feature: detail.equipmentSection.ulblanc.feature,
+    advantage: detail.equipmentSection.ulblanc.advantage,
+    targets: detail.equipmentSection.ulblanc.targets,
     sessions: LASER_EQUIPMENT.ulblanc.sessions
   };
-
-  // 피부 고민 유형
-  const skinConcerns = [
-    {
-      title: '전체적으로 칙칙한 피부',
-      description: '햇빛 노출, 스트레스, 피로 등으로 피부 전체가 어둡고 생기 없어 보이는 상태',
-      solution: '레이저 토닝으로 전체적인 피부 밝기 개선',
-      equipment: ['레이저 토닝', '울블랑']
-    },
-    {
-      title: '부분적 색소 침착',
-      description: '뺨, 이마, 광대뼈 주변에 부분적으로 어두운 색소가 침착된 상태',
-      solution: '레이저 토닝 집중 치료 + 피코레이저 병행',
-      equipment: ['레이저 토닝', 'Lucas']
-    },
-    {
-      title: '모공/피부결 고민',
-      description: '넓어진 모공과 거친 피부결로 인해 피부톤이 고르지 않아 보이는 상태',
-      solution: '레이저 토닝의 콜라겐 리모델링 효과 활용',
-      equipment: ['레이저 토닝']
-    },
-    {
-      title: '피부 투명도 저하',
-      description: '피부가 탁하고 투명함이 없어 건강해 보이지 않는 상태',
-      solution: '울블랑으로 피부 투명도 및 광채 회복',
-      equipment: ['울블랑', '레이저 토닝']
-    }
-  ];
-
-  // 치료 단계
-  const treatmentSteps = [
-    {
-      step: 1,
-      title: '피부 컨디셔닝',
-      equipment: '레이저 토닝',
-      description: '1064nm 파장으로 피부 전체에 저출력 에너지를 균일하게 조사하여 피부 기저 컨디션을 개선합니다.',
-      sessions: '주 1회, 4-5회',
-      icon: (
-        <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-        </svg>
-      )
-    },
-    {
-      step: 2,
-      title: '멜라닌 타겟팅',
-      equipment: '울블랑',
-      description: '멜라닌에 선택적으로 작용하는 전용 파장으로 색소를 점진적으로 분해하고 피부 미백을 유도합니다.',
-      sessions: '2주 간격, 3-4회',
-      icon: (
-        <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-        </svg>
-      )
-    },
-    {
-      step: 3,
-      title: '유지 관리',
-      equipment: '레이저 토닝 + 울블랑',
-      description: '월 1회 정기적인 관리로 밝아진 피부톤을 유지하고 새로운 색소 침착을 예방합니다.',
-      sessions: '월 1회 유지',
-      icon: (
-        <svg className="w-6 h-6 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-        </svg>
-      )
-    }
-  ];
-
-  // FAQ 데이터
-  const faqs = [
-    {
-      question: '레이저 토닝은 몇 회 정도 받아야 효과를 볼 수 있나요?',
-      answer: '일반적으로 4-5회 치료 후부터 눈에 띄는 효과를 느끼실 수 있습니다. 피부 상태에 따라 개인차가 있으며, 10회 정도 치료하면 최적의 결과를 기대할 수 있습니다. 이후 월 1회 유지 치료로 밝아진 피부톤을 오래 유지할 수 있습니다.'
-    },
-    {
-      question: '레이저 토닝 시술 후 일상생활에 제한이 있나요?',
-      answer: '레이저 토닝의 가장 큰 장점은 "다운타임 제로"입니다. 시술 직후 가벼운 홍조가 나타날 수 있으나 30분-1시간 내 가라앉으며, 세안, 화장, 외출 등 일상생활이 바로 가능합니다. 단, 시술 당일 사우나나 격렬한 운동은 피해주시고, 자외선 차단에 신경 써주세요.'
-    },
-    {
-      question: '울블랑과 레이저 토닝의 차이점은 무엇인가요?',
-      answer: '레이저 토닝은 1064nm Nd:YAG 레이저로 피부 전체의 색소를 점진적으로 개선하고 콜라겐 생성을 촉진합니다. 울블랑은 멜라닌에 특화된 전용 파장으로 보다 직접적인 미백 효과를 제공합니다. 두 시술을 병행하면 시너지 효과로 더 빠르고 효과적인 결과를 얻을 수 있습니다.'
-    },
-    {
-      question: '민감성 피부도 레이저 토닝이 가능한가요?',
-      answer: '네, 가능합니다. 레이저 토닝은 저출력으로 조사하기 때문에 민감성 피부에도 비교적 안전합니다. 다만 첫 시술 시 에너지 세팅을 낮게 시작하여 피부 반응을 확인한 후 점진적으로 조절합니다. 상담 시 피부 상태를 정확히 말씀해 주시면 맞춤 치료 계획을 세워드립니다.'
-    },
-    {
-      question: '기미 치료와 피부톤 개선 치료는 어떻게 다른가요?',
-      answer: '기미 치료는 명확한 경계가 있는 색소 병변을 타겟으로 피코레이저 등 고출력 장비로 집중 치료합니다. 반면 피부톤 개선은 전체적인 칙칙함, 미세한 색소 침착, 피부결 개선을 목표로 레이저 토닝과 울블랑을 활용합니다. 기미가 있으면서 전체 피부톤도 개선하고 싶으시다면 두 치료를 병행하는 것이 효과적입니다.'
-    }
-  ];
 
   return (
     <main className="min-h-screen bg-[var(--color-background)]">
@@ -508,15 +572,15 @@ export default function SkinToneDetail() {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-secondary)] mb-6">
-                피부톤 균일화
+                {detail.hero.title}
               </h1>
               <p className="text-xl md:text-2xl text-[var(--color-primary)] font-medium mb-4">
-                Skin Tone Brightening & Whitening
+                {detail.hero.subtitle}
               </p>
-              <p className="text-lg text-[var(--color-mono)] max-w-2xl mx-auto leading-relaxed">
-                레이저 토닝과 울블랑의 시너지로<br className="hidden md:block" />
-                칙칙한 피부를 맑고 환한 피부로 되돌립니다
-              </p>
+              <p
+                className="text-lg text-[var(--color-mono)] max-w-2xl mx-auto leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: detail.hero.description }}
+              />
             </div>
           </AnimateOnScroll>
         </div>
@@ -528,18 +592,24 @@ export default function SkinToneDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                이런 피부 고민이 있으신가요?
+                {detail.concernsSection.title}
               </h2>
               <p className="text-[var(--color-mono)] max-w-2xl mx-auto">
-                피부톤 불균일의 원인은 다양합니다. 고민별 맞춤 솔루션을 제안합니다.
+                {detail.concernsSection.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-            {skinConcerns.map((concern, idx) => (
+            {detail.concernsSection.concerns.map((concern, idx) => (
               <AnimateOnScroll key={idx} animation="fadeInUp" delay={idx * 0.1}>
-                <SkinConcernCard {...concern} />
+                <SkinConcernCard
+                  title={concern.title}
+                  description={concern.description}
+                  solution={concern.solution}
+                  equipment={concern.equipment}
+                  solutionLabel={detail.concernsSection.customSolution}
+                />
               </AnimateOnScroll>
             ))}
           </div>
@@ -555,41 +625,31 @@ export default function SkinToneDetail() {
               <AnimateOnScroll animation="fadeInUp">
                 <div>
                   <span className="inline-block bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
-                    치료 원리
+                    {detail.toningSection.badge}
                   </span>
                   <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-6">
-                    레이저 토닝의 과학
+                    {detail.toningSection.title}
                   </h2>
                   <div className="space-y-4 text-[var(--color-mono)]">
-                    <p className="leading-relaxed">
-                      레이저 토닝은 <strong className="text-[var(--color-secondary)]">1064nm Nd:YAG 레이저</strong>를
-                      저출력으로 반복 조사하여 피부 속 멜라닌을 점진적으로 분해하는 시술입니다.
-                    </p>
-                    <p className="leading-relaxed">
-                      기존의 고출력 레이저와 달리, <strong className="text-[var(--color-secondary)]">낮은 에너지를 넓은 범위에 균일하게</strong>
-                      조사하여 피부 자극을 최소화하면서 효과를 극대화합니다.
-                    </p>
+                    <p
+                      className="leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: detail.toningSection.description1 }}
+                    />
+                    <p
+                      className="leading-relaxed"
+                      dangerouslySetInnerHTML={{ __html: detail.toningSection.description2 }}
+                    />
                     <div className="bg-[var(--color-background)] rounded-xl p-5 mt-6">
-                      <h4 className="font-semibold text-[var(--color-secondary)] mb-3">레이저 토닝의 3가지 효과</h4>
+                      <h4 className="font-semibold text-[var(--color-secondary)] mb-3">{detail.toningSection.effectsTitle}</h4>
                       <ul className="space-y-2">
-                        <li className="flex items-start gap-2">
-                          <svg className="w-5 h-5 text-[var(--color-primary)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span><strong>멜라닌 분해</strong> - 피부 속 색소를 점진적으로 분해</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <svg className="w-5 h-5 text-[var(--color-primary)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span><strong>콜라겐 생성</strong> - 진피층 자극으로 피부 탄력 개선</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <svg className="w-5 h-5 text-[var(--color-primary)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                          </svg>
-                          <span><strong>모공 축소</strong> - 피지선 기능 조절 및 모공 타이트닝</span>
-                        </li>
+                        {detail.toningSection.effects.map((effect, idx) => (
+                          <li key={idx} className="flex items-start gap-2">
+                            <svg className="w-5 h-5 text-[var(--color-primary)] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                            </svg>
+                            <span><strong>{effect.title}</strong> - {effect.desc}</span>
+                          </li>
+                        ))}
                       </ul>
                     </div>
                   </div>
@@ -599,7 +659,7 @@ export default function SkinToneDetail() {
               {/* 일러스트레이션 */}
               <AnimateOnScroll animation="fadeInUp" delay={0.2}>
                 <div className="bg-[var(--color-background)] rounded-2xl p-6">
-                  <ToningMechanismIllustration />
+                  <ToningMechanismIllustration labels={detail.illustrationLabels} />
                 </div>
               </AnimateOnScroll>
             </div>
@@ -613,17 +673,17 @@ export default function SkinToneDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                피부톤 변화 과정
+                {detail.beforeAfterSection.title}
               </h2>
               <p className="text-[var(--color-mono)]">
-                레이저 토닝과 울블랑의 조합으로 달라지는 피부톤
+                {detail.beforeAfterSection.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll animation="fadeInUp" delay={0.1}>
             <div className="max-w-3xl mx-auto bg-white rounded-2xl p-8 shadow-sm">
-              <BeforeAfterIllustration />
+              <BeforeAfterIllustration labels={detail.illustrationLabels} />
             </div>
           </AnimateOnScroll>
         </div>
@@ -635,23 +695,23 @@ export default function SkinToneDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <span className="inline-block bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
-                LIV 보유 장비
+                {detail.equipmentSection.badge}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                피부톤 개선 전용 장비
+                {detail.equipmentSection.title}
               </h2>
               <p className="text-[var(--color-mono)] max-w-2xl mx-auto">
-                일상에 지장 없이, 점진적으로 밝아지는 피부톤을 위한 전문 장비
+                {detail.equipmentSection.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
             <AnimateOnScroll animation="fadeInUp" delay={0.1}>
-              <EquipmentCard equipment={toningEquipment} highlight />
+              <EquipmentCard equipment={toningEquipment} labels={detail.equipmentSection.labels} highlight />
             </AnimateOnScroll>
             <AnimateOnScroll animation="fadeInUp" delay={0.2}>
-              <EquipmentCard equipment={ulblancEquipment} />
+              <EquipmentCard equipment={ulblancEquipment} labels={detail.equipmentSection.labels} />
             </AnimateOnScroll>
           </div>
 
@@ -666,13 +726,12 @@ export default function SkinToneDetail() {
                 </div>
                 <div>
                   <h4 className="text-lg font-semibold text-[var(--color-secondary)] mb-2">
-                    레이저 토닝 + 울블랑 시너지 효과
+                    {detail.equipmentSection.synergyTitle}
                   </h4>
-                  <p className="text-[var(--color-mono)] leading-relaxed">
-                    레이저 토닝으로 피부 전체의 컨디션을 개선하고, 울블랑으로 멜라닌을 직접 타겟팅하면
-                    단독 시술 대비 <strong className="text-[var(--color-primary)]">1.5~2배 빠른 효과</strong>를 기대할 수 있습니다.
-                    두 장비 모두 다운타임이 없어 부담 없이 병행 치료가 가능합니다.
-                  </p>
+                  <p
+                    className="text-[var(--color-mono)] leading-relaxed"
+                    dangerouslySetInnerHTML={{ __html: detail.equipmentSection.synergyDesc }}
+                  />
                 </div>
               </div>
             </div>
@@ -686,21 +745,29 @@ export default function SkinToneDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <span className="inline-block bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
-                치료 과정
+                {detail.protocolSection.badge}
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                3단계 피부톤 개선 프로그램
+                {detail.protocolSection.title}
               </h2>
               <p className="text-[var(--color-mono)] max-w-2xl mx-auto">
-                체계적인 단계별 치료로 자연스럽고 지속적인 피부톤 개선을 이끌어냅니다
+                {detail.protocolSection.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {treatmentSteps.map((step, idx) => (
+            {detail.protocolSection.steps.map((step, idx) => (
               <AnimateOnScroll key={idx} animation="fadeInUp" delay={idx * 0.1}>
-                <TreatmentStepCard {...step} />
+                <TreatmentStepCard
+                  step={step.step}
+                  title={step.title}
+                  equipment={step.equipment}
+                  description={step.description}
+                  sessions={step.sessions}
+                  icon={stepIcons[idx]}
+                  sessionsLabel={detail.equipmentSection.labels.recommendedSessions}
+                />
               </AnimateOnScroll>
             ))}
           </div>
@@ -713,24 +780,19 @@ export default function SkinToneDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                레이저 토닝의 장점
+                {detail.advantagesSection.title}
               </h2>
               <p className="text-white/80">
-                바쁜 현대인을 위한 부담 없는 피부 관리
+                {detail.advantagesSection.subtitle}
               </p>
             </div>
           </AnimateOnScroll>
 
           <div className="grid md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-            {[
-              { title: '다운타임 제로', desc: '시술 직후 일상생활 가능', icon: '⚡' },
-              { title: '점심시간 시술', desc: '15-20분 소요로 간편', icon: '⏱️' },
-              { title: '자연스러운 효과', desc: '점진적으로 밝아지는 피부', icon: '✨' },
-              { title: '복합 개선', desc: '톤, 모공, 탄력 동시 케어', icon: '💎' }
-            ].map((item, idx) => (
+            {detail.advantagesSection.items.map((item, idx) => (
               <AnimateOnScroll key={idx} animation="fadeInUp" delay={idx * 0.1}>
                 <div className="text-center">
-                  <div className="text-4xl mb-3">{item.icon}</div>
+                  <div className="text-4xl mb-3">{advantageIcons[idx]}</div>
                   <h4 className="text-lg font-semibold text-white mb-2">{item.title}</h4>
                   <p className="text-white/70 text-sm">{item.desc}</p>
                 </div>
@@ -748,20 +810,17 @@ export default function SkinToneDetail() {
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
                 {tCommon('faq')}
               </h2>
-              <p className="text-[var(--color-mono)]">
-                피부톤 개선 시술에 대해 궁금한 점을 확인하세요
-              </p>
             </div>
           </AnimateOnScroll>
 
           <AnimateOnScroll animation="fadeInUp" delay={0.1}>
             <div className="max-w-3xl mx-auto bg-[var(--color-background)] rounded-2xl p-6 md:p-8">
-              {faqs.map((faq, idx) => (
+              {detail.faq.items.map((faq, idx) => (
                 <FAQItem
                   key={idx}
                   id={`faq-${idx}`}
-                  question={faq.question}
-                  answer={faq.answer}
+                  question={faq.q}
+                  answer={faq.a}
                   isOpen={openFAQ === idx}
                   onClick={() => setOpenFAQ(openFAQ === idx ? null : idx)}
                 />
@@ -777,22 +836,22 @@ export default function SkinToneDetail() {
           <AnimateOnScroll animation="fadeInUp">
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
-                맑고 환한 피부톤을 되찾으세요
+                {detail.cta.title}
               </h2>
-              <p className="text-[var(--color-mono)] mb-8 leading-relaxed">
-                다운타임 없이 일상 속에서 관리하는<br className="hidden md:block" />
-                레이저 토닝 & 울블랑 프로그램을 시작해보세요
-              </p>
+              <p
+                className="text-[var(--color-mono)] mb-8 leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: detail.cta.description }}
+              />
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white px-8 py-4 rounded-full font-medium hover:bg-[var(--color-primary)]/90 transition-colors"
                 >
-                  {tCommon('freeConsultation')}
+                  {detail.cta.buttonConsult}
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </Link>
                 <a
                   href="tel:02-547-0118"
                   className="inline-flex items-center justify-center gap-2 bg-white text-[var(--color-secondary)] px-8 py-4 rounded-full font-medium border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors"

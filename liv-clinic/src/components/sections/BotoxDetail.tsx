@@ -20,8 +20,26 @@ const colors = {
   gold: '#D4AF37',
 };
 
+// Types for translations
+interface TreatmentAreasLabels {
+  forehead: string;
+  glabella: string;
+  crowsFeet: string;
+  masseter: string;
+  mouthCorners: string;
+  trapezius: string;
+  calves: string;
+}
+
+interface TimelineItem {
+  time: string;
+  title: string;
+  desc: string;
+  percentage: number;
+}
+
 // Treatment Areas Illustration Component
-const TreatmentAreasIllustration = () => (
+const TreatmentAreasIllustration = ({ labels }: { labels: TreatmentAreasLabels }) => (
   <div className="relative w-full max-w-[480px] mx-auto">
     <svg viewBox="0 0 400 650" className="w-full h-auto">
       <defs>
@@ -118,7 +136,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="200" cy="105" r="5" fill="#E8B4B8" />
       </g>
       <line x1="210" y1="105" x2="280" y2="105" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
-      <text x="290" y="109" fill="#8B7355" fontSize="13" fontWeight="500">이마</text>
+      <text x="290" y="109" fill="#8B7355" fontSize="13" fontWeight="500">{labels.forehead}</text>
 
       {/* 2. 미간 (Glabella) */}
       <g filter="url(#markerGlow)">
@@ -126,7 +144,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="200" cy="145" r="5" fill="#E8B4B8" />
       </g>
       <line x1="210" y1="145" x2="280" y2="145" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
-      <text x="290" y="149" fill="#8B7355" fontSize="13" fontWeight="500">미간</text>
+      <text x="290" y="149" fill="#8B7355" fontSize="13" fontWeight="500">{labels.glabella}</text>
 
       {/* 3. 눈가 (Crow's feet) - both sides */}
       <g filter="url(#markerGlow)">
@@ -138,7 +156,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="275" cy="180" r="4" fill="#E8B4B8" />
       </g>
       <line x1="117" y1="180" x2="55" y2="180" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
-      <text x="25" y="184" fill="#8B7355" fontSize="13" fontWeight="500">눈가</text>
+      <text x="25" y="184" fill="#8B7355" fontSize="13" fontWeight="500">{labels.crowsFeet}</text>
 
       {/* 4. 사각턱 (Masseter/Jawline) - both sides */}
       <g filter="url(#markerGlow)">
@@ -150,7 +168,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="275" cy="280" r="5" fill="#E8B4B8" />
       </g>
       <line x1="115" y1="280" x2="45" y2="280" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
-      <text x="10" y="284" fill="#8B7355" fontSize="13" fontWeight="500">사각턱</text>
+      <text x="10" y="284" fill="#8B7355" fontSize="13" fontWeight="500">{labels.masseter}</text>
 
       {/* 5. 입꼬리 (Mouth corners) */}
       <g filter="url(#markerGlow)">
@@ -162,7 +180,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="232" cy="258" r="3.5" fill="#E8B4B8" />
       </g>
       <line x1="240" y1="258" x2="300" y2="258" stroke="#E8B4B8" strokeWidth="1" strokeDasharray="2 2" />
-      <text x="310" y="262" fill="#8B7355" fontSize="13" fontWeight="500">입꼬리</text>
+      <text x="310" y="262" fill="#8B7355" fontSize="13" fontWeight="500">{labels.mouthCorners}</text>
 
       {/* 6. 승모근 (Trapezius) */}
       <g filter="url(#markerGlow)">
@@ -173,7 +191,7 @@ const TreatmentAreasIllustration = () => (
         <circle cx="310" cy="450" r="10" fill="url(#roseGoldGradient)" opacity="0.3" />
         <circle cx="310" cy="450" r="5" fill="#E8B4B8" />
       </g>
-      <text x="200" y="485" textAnchor="middle" fill="#8B7355" fontSize="13" fontWeight="500">승모근</text>
+      <text x="200" y="485" textAnchor="middle" fill="#8B7355" fontSize="13" fontWeight="500">{labels.trapezius}</text>
 
       {/* 7. 종아리 (Calves) - larger inset */}
       <g transform="translate(115, 510)">
@@ -193,7 +211,7 @@ const TreatmentAreasIllustration = () => (
           <circle cx="125" cy="55" r="8" fill="url(#roseGoldGradient)" opacity="0.3" />
           <circle cx="125" cy="55" r="4" fill="#E8B4B8" />
         </g>
-        <text x="85" y="128" textAnchor="middle" fill="#8B7355" fontSize="12" fontWeight="500">종아리</text>
+        <text x="85" y="128" textAnchor="middle" fill="#8B7355" fontSize="12" fontWeight="500">{labels.calves}</text>
       </g>
 
       {/* Decorative elements */}
@@ -222,7 +240,7 @@ const FloatingOrb = ({ className, delay = 0 }: { className?: string; delay?: num
 );
 
 // Premium Mechanism Illustration with advanced effects
-const PremiumMechanismIllustration = () => (
+const PremiumMechanismIllustration = ({ label }: { label: string }) => (
   <div className="relative w-full aspect-square max-w-lg mx-auto">
     <svg viewBox="0 0 400 400" className="w-full h-full">
       <defs>
@@ -406,21 +424,14 @@ const PremiumMechanismIllustration = () => (
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
       >
-        PRECISION INJECTION MAPPING
+        {label}
       </motion.text>
     </svg>
   </div>
 );
 
 // Premium Timeline with progress bars
-const PremiumTimelineSection = () => {
-  const timelineData = [
-    { time: 'Day 1', title: '시술 당일', desc: '간단한 시술 후 바로 일상 복귀 가능', percentage: 0 },
-    { time: '3-7일', title: '효과 시작', desc: '근육이 서서히 이완되기 시작합니다', percentage: 30 },
-    { time: '2-4주', title: '최대 효과', desc: '자연스러운 주름 개선 효과가 극대화됩니다', percentage: 100 },
-    { time: '3-6개월', title: '효과 유지', desc: '개인에 따라 효과 지속 기간이 다릅니다', percentage: 70 },
-  ];
-
+const PremiumTimelineSection = ({ timelineData }: { timelineData: TimelineItem[] }) => {
   return (
     <div className="relative max-w-5xl mx-auto">
       {/* Central line with gradient */}
@@ -485,6 +496,15 @@ export default function BotoxDetail() {
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   // 번역된 데이터
+  const treatmentAreasLabels = t.raw('antiaging.botox.detail.treatmentAreasLabels') as TreatmentAreasLabels;
+  const timelineItems = t.raw('antiaging.botox.detail.timeline.items') as TimelineItem[];
+  const treatmentInfoLabels = t.raw('antiaging.botox.detail.treatmentInfoLabels') as {
+    duration: string;
+    anesthesia: string;
+    recovery: string;
+    results: string;
+  };
+
   const detail = {
     hero: {
       badge: t('antiaging.botox.detail.hero.badge'),
@@ -497,6 +517,7 @@ export default function BotoxDetail() {
     targetAreas: {
       title: t('antiaging.botox.detail.targetAreas.title'),
       subtitle: t('antiaging.botox.detail.targetAreas.subtitle'),
+      description: t('antiaging.botox.detail.targetAreasDescription'),
       areas: {
         forehead: t('antiaging.botox.detail.targetAreas.areas.forehead'),
         glabella: t('antiaging.botox.detail.targetAreas.areas.glabella'),
@@ -518,6 +539,7 @@ export default function BotoxDetail() {
       title: t('antiaging.botox.detail.cta.title'),
       description: t('antiaging.botox.detail.cta.description'),
     },
+    mechanismLabel: t('antiaging.botox.detail.mechanismLabel'),
   };
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
@@ -683,7 +705,7 @@ export default function BotoxDetail() {
                 {t('common.targetAreas')}
               </h2>
               <p className="text-gray-600 font-light mb-12 max-w-md text-lg leading-relaxed">
-                얼굴의 표정 주름부터 윤곽 정리까지, 부위별 맞춤 시술로 자연스러운 개선 효과를 드립니다.
+                {detail.targetAreas.description}
               </p>
 
               <div className="space-y-3">
@@ -712,7 +734,7 @@ export default function BotoxDetail() {
               className="relative"
             >
               {/* Treatment Areas Illustration */}
-              <TreatmentAreasIllustration />
+              <TreatmentAreasIllustration labels={treatmentAreasLabels} />
             </motion.div>
           </div>
         </div>
@@ -737,7 +759,7 @@ export default function BotoxDetail() {
             </h2>
           </motion.div>
 
-          <PremiumTimelineSection />
+          <PremiumTimelineSection timelineData={timelineItems} />
         </div>
       </section>
 
@@ -818,10 +840,10 @@ export default function BotoxDetail() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
             {[
-              { label: '시술 시간', value: treatment.duration },
-              { label: '마취', value: treatment.anesthesia },
-              { label: '회복 기간', value: treatment.recovery },
-              { label: '효과 지속', value: treatment.results },
+              { label: treatmentInfoLabels.duration, value: treatment.duration },
+              { label: treatmentInfoLabels.anesthesia, value: treatment.anesthesia },
+              { label: treatmentInfoLabels.recovery, value: treatment.recovery },
+              { label: treatmentInfoLabels.results, value: treatment.results },
             ].map((info, index) => (
               <motion.div
                 key={info.label}
