@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
-import { AnimateOnScroll, Button, Card } from '@/components/ui';
+import { AnimateOnScroll, Button, Card, NaverMap } from '@/components/ui';
 import { FAQ } from '@/components/sections';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 
@@ -460,15 +460,12 @@ export default function ContactPage() {
           <AnimateOnScroll>
             <h2 className="text-h2 text-secondary mb-8 text-center">{tContact('location')}</h2>
             <div className="relative h-[450px] rounded-3xl overflow-hidden bg-mono-light/20 shadow-lg">
-              <iframe
-                src="https://map.naver.com/v5/entry/place/1100410987?c=14135088.4714154,4518533.6498498,15,0,0,0,dh&placePath=%2Fhome"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
+              <NaverMap
+                lat={SITE_INFO.coordinates.lat}
+                lng={SITE_INFO.coordinates.lng}
+                zoom={17}
                 className="absolute inset-0"
-                title="리브성형외과 네이버 지도"
+                markerTitle="리브성형외과"
               />
             </div>
 

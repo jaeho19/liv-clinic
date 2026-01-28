@@ -11,9 +11,9 @@ interface LanguageSwitcherProps {
 
 const languages = [
   { code: 'ko', label: 'KOR', flag: '🇰🇷', name: '한국어' },
+  { code: 'zh', label: 'CHN', flag: '🇨🇳', name: '中文' },
   { code: 'en', label: 'ENG', flag: '🇺🇸', name: 'English' },
   { code: 'ja', label: 'JPN', flag: '🇯🇵', name: '日本語' },
-  { code: 'zh', label: 'CHN', flag: '🇨🇳', name: '中文' },
 ];
 
 export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcherProps) {
