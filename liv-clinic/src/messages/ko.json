@@ -1335,7 +1335,55 @@
             "speedBadge": "3배 빠름"
           },
           "hero": {
-            "badge": "HIFU LIFTING"
+            "badge": "HIFU LIFTING",
+            "title": "고속 리프팅의 새로운 기준",
+            "description": "국내 기술로 개발된 슈링크는 <strong>초당 7샷</strong>의 고속 연사 기술로 빠르면서도 균일한 에너지를 전달합니다. 다양한 카트리지로 피부층 깊이에 맞춘 정밀한 맞춤 시술이 가능합니다.",
+            "stats": {
+              "speed": {
+                "value": "7샷/초",
+                "label": "고속 연사"
+              },
+              "time": {
+                "value": "30분",
+                "label": "시술 시간"
+              },
+              "cartridges": {
+                "value": "4종",
+                "label": "카트리지"
+              }
+            }
+          },
+          "heroLabels": [
+            {
+              "top": { "title": "고속 연사 기술", "subtitle": "초당 7샷 이상" },
+              "bottom": { "title": "빠른 시술", "subtitle": "30분 내외" }
+            },
+            {
+              "top": { "title": "맞춤 카트리지", "subtitle": "4종 깊이 선택" },
+              "bottom": { "title": "균일한 효과", "subtitle": "정밀 에너지 전달" }
+            }
+          ],
+          "about": {
+            "sectionLabel": "About Shurink",
+            "title": "슈링크란?",
+            "description": "슈링크는 국내에서 개발된 HIFU(고강도 집속 초음파) 장비로, <strong>초당 7샷 이상의 고속 연사</strong> 기술을 통해 빠르고 균일한 에너지 전달이 가능합니다. 1.5mm부터 9.0mm까지 다양한 깊이의 카트리지를 사용하여 표피부터 SMAS층까지 정밀하게 타겟팅할 수 있습니다.",
+            "hifuPrinciple": {
+              "title": "HIFU 원리",
+              "steps": [
+                {
+                  "title": "집속 초음파",
+                  "desc": "고강도 초음파 에너지를 피부 깊숙이 집중"
+                },
+                {
+                  "title": "열응고점 형성",
+                  "desc": "SMAS층에 정밀한 열응고점을 생성"
+                },
+                {
+                  "title": "콜라겐 재생",
+                  "desc": "자연 치유 과정을 통한 콜라겐 리모델링"
+                }
+              ]
+            }
           },
           "advantages": {
             "sectionLabel": "Premium HIFU",

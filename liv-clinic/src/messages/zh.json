@@ -1333,7 +1333,55 @@
             "speedBadge": "快3倍"
           },
           "hero": {
-            "badge": "HIFU LIFTING"
+            "badge": "HIFU LIFTING",
+            "title": "高速提升的新标准",
+            "description": "采用韩国技术开发的Shurink，通过<strong>每秒7发</strong>的高速连发技术，快速均匀地传递能量。多种探头可根据皮肤层深度进行精密定制治疗。",
+            "stats": {
+              "speed": {
+                "value": "7/秒",
+                "label": "高速连发"
+              },
+              "time": {
+                "value": "30分钟",
+                "label": "治疗时间"
+              },
+              "cartridges": {
+                "value": "4种",
+                "label": "探头"
+              }
+            }
+          },
+          "heroLabels": [
+            {
+              "top": { "title": "高速连发技术", "subtitle": "每秒7发以上" },
+              "bottom": { "title": "快速治疗", "subtitle": "约30分钟" }
+            },
+            {
+              "top": { "title": "定制探头", "subtitle": "4种深度选择" },
+              "bottom": { "title": "均匀效果", "subtitle": "精准能量传递" }
+            }
+          ],
+          "about": {
+            "sectionLabel": "About Shurink",
+            "title": "什么是Shurink？",
+            "description": "Shurink是韩国开发的HIFU（高强度聚焦超声波）设备，采用<strong>每秒7发以上的高速连发</strong>技术，实现快速均匀的能量传递。使用1.5mm至9.0mm多种深度探头，可精准作用于从表皮到SMAS层的各个层次。",
+            "hifuPrinciple": {
+              "title": "HIFU原理",
+              "steps": [
+                {
+                  "title": "聚焦超声波",
+                  "desc": "高强度超声波能量深入皮肤内部聚焦"
+                },
+                {
+                  "title": "热凝固点形成",
+                  "desc": "在SMAS层形成精密热凝固点"
+                },
+                {
+                  "title": "胶原蛋白再生",
+                  "desc": "通过自然愈合过程进行胶原蛋白重塑"
+                }
+              ]
+            }
           },
           "advantages": {
             "sectionLabel": "Premium HIFU",

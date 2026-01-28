@@ -1,10 +1,11 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRef, useCallback } from 'react';
-import { motion } from 'framer-motion';
+import { useRef, useCallback, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 const treatment = TREATMENTS.lifting.shurink;
@@ -409,10 +410,45 @@ const RapidShotComparisonIllustration = () => (
   </div>
 );
 
+// Hero 레이블 타입 정의
+interface HeroLabel {
+  top: { title: string; subtitle: string };
+  bottom: { title: string; subtitle: string };
+}
+
+// HIFU 아이콘 컴포넌트
+const HIFUIcon = () => (
+  <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+    <path d="M13 10V3L4 14h7v7l9-11h-7z" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
 export default function ShurinkDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+  const [currentLabelIndex, setCurrentLabelIndex] = useState(0);
+
+  // 동적 레이블 데이터 (슈링크용)
+  const heroLabels: HeroLabel[] = [
+    {
+      top: { title: t('lifting.shurink.detail.heroLabels.0.top.title'), subtitle: t('lifting.shurink.detail.heroLabels.0.top.subtitle') },
+      bottom: { title: t('lifting.shurink.detail.heroLabels.0.bottom.title'), subtitle: t('lifting.shurink.detail.heroLabels.0.bottom.subtitle') }
+    },
+    {
+      top: { title: t('lifting.shurink.detail.heroLabels.1.top.title'), subtitle: t('lifting.shurink.detail.heroLabels.1.top.subtitle') },
+      bottom: { title: t('lifting.shurink.detail.heroLabels.1.bottom.title'), subtitle: t('lifting.shurink.detail.heroLabels.1.bottom.subtitle') }
+    }
+  ];
+
+  // 동적 레이블 전환 효과
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentLabelIndex((prev) => (prev + 1) % heroLabels.length);
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [heroLabels.length]);
 
   // 관련 Q&A 필터링
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
@@ -436,65 +472,229 @@ export default function ShurinkDetail() {
   }, []);
 
   return (
-    <main className="bg-white">
-      {/* 히어로 섹션 */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-[#E6F9FF] to-white">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-64 h-64 bg-[#00D4FF] rounded-full blur-3xl" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#0099CC] rounded-full blur-3xl" />
-          <div className="absolute top-1/3 left-1/2 w-32 h-32 bg-[#D4AF37] rounded-full blur-2xl opacity-50" />
-        </div>
+    <>
+      {/* Hero Section - Premium Full Screen (써마지/덴서티와 동일한 스타일) */}
+      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+        {/* Background gradient - 슈링크 색상 유지 */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/10 via-background to-[#0099CC]/5" />
 
-        <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <span className="inline-block px-4 py-2 bg-[#00D4FF]/10 text-[#0099CC] text-sm font-medium rounded-full mb-6 border border-[#D4AF37]/30">
-                HIFU LIFTING
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-4">
-                {treatment.name}
-                <span className="block text-2xl md:text-3xl text-[#00D4FF] mt-2 font-normal">
-                  {treatment.nameEn}
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 mb-6 font-light">
-                {treatment.tagline}
-              </p>
-              <p className="text-gray-500 leading-relaxed mb-8 max-w-lg">
-                {treatment.description}
-              </p>
-              {/* CTA buttons removed for premium look */}
-            </motion.div>
+        {/* Animated background elements */}
+        <motion.div
+          className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full bg-[#00D4FF]/5 blur-3xl"
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 left-1/4 w-64 h-64 rounded-full bg-[#0099CC]/5 blur-3xl"
+          animate={{ scale: [1.2, 1, 1.2], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, delay: 2 }}
+        />
+        <motion.div
+          className="absolute top-1/3 left-1/3 w-32 h-32 rounded-full bg-[#D4AF37]/10 blur-2xl"
+          animate={{ y: [0, -30, 0], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 6, repeat: Infinity }}
+        />
 
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="relative"
-            >
-              {/* Hero Video */}
-              <div className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl">
-                <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#00D4FF]/30 via-[#D4AF37]/20 to-[#00D4FF]/30 p-[2px]">
-                  <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
-                    <video
-                      src="/images/lifting/grok-video-1975e92a-fcdc-4070-8f5c-e36555261a40.mp4"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
-                    <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#D4AF37]/50 rounded-tl-lg" />
-                    <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#D4AF37]/50 rounded-br-lg" />
+        <div className="container-custom relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            {/* Left: Text Content */}
+            <AnimateOnScroll animation="fadeInLeft">
+              <div>
+                {/* Badge */}
+                <motion.div
+                  className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-xl rounded-full shadow-lg border border-[#D4AF37]/20 mb-6"
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                >
+                  <span className="text-[#00D4FF]"><HIFUIcon /></span>
+                  <span className="text-small font-medium text-secondary">{t('lifting.shurink.detail.hero.badge')}</span>
+                </motion.div>
+
+                <p className="font-serif text-h2 text-[#00D4FF] mb-3 tracking-wide">Shurink</p>
+                <h1 className="text-display text-secondary mb-4 leading-tight">
+                  {t('lifting.shurink.detail.hero.title')}
+                </h1>
+                <p className="font-serif text-xl text-mono-light mb-6 italic">
+                  {treatment.tagline}
+                </p>
+                <p
+                  className="text-h4 text-mono leading-relaxed mb-8 max-w-lg"
+                  dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.hero.description') }}
+                />
+
+                {/* Quick stats */}
+                <div className="flex gap-8 mt-10 pt-8 border-t border-border/50">
+                  <div>
+                    <p className="text-h2 text-[#00D4FF] font-serif">{t('lifting.shurink.detail.hero.stats.speed.value')}</p>
+                    <p className="text-small text-mono-light">{t('lifting.shurink.detail.hero.stats.speed.label')}</p>
+                  </div>
+                  <div>
+                    <p className="text-h2 text-[#00D4FF] font-serif">{t('lifting.shurink.detail.hero.stats.time.value')}</p>
+                    <p className="text-small text-mono-light">{t('lifting.shurink.detail.hero.stats.time.label')}</p>
+                  </div>
+                  <div>
+                    <p className="text-h2 text-[#00D4FF] font-serif">{t('lifting.shurink.detail.hero.stats.cartridges.value')}</p>
+                    <p className="text-small text-mono-light">{t('lifting.shurink.detail.hero.stats.cartridges.label')}</p>
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </AnimateOnScroll>
+
+            {/* Right: Visual with Video */}
+            <AnimateOnScroll animation="fadeInRight">
+              <div className="relative">
+                {/* Main visual with device video */}
+                <motion.div
+                  className="relative aspect-square rounded-3xl overflow-hidden shadow-2xl"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                >
+                  {/* Premium gradient border */}
+                  <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-[#00D4FF]/30 via-[#D4AF37]/20 to-[#0099CC]/30 p-[2px]">
+                    <div className="w-full h-full rounded-3xl overflow-hidden bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d]">
+                      {/* Hero Video */}
+                      <video
+                        src="/images/lifting/grok-video-1975e92a-fcdc-4070-8f5c-e36555261a40.mp4"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+
+                      {/* Glassmorphism overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent" />
+
+                      {/* Premium corner accents */}
+                      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-[#D4AF37]/50 rounded-tl-lg" />
+                      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-[#D4AF37]/50 rounded-br-lg" />
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Floating badges - Dynamic Labels */}
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`top-${currentLabelIndex}`}
+                    className="absolute -top-4 -right-4 bg-white/95 backdrop-blur-xl rounded-2xl shadow-xl px-4 py-3 border border-[#D4AF37]/20"
+                    initial={{ opacity: 0, y: -20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: [0, -10, 0], scale: 1 }}
+                    exit={{ opacity: 0, y: 20, scale: 0.9 }}
+                    transition={{
+                      opacity: { duration: 0.5 },
+                      y: { duration: 3, repeat: Infinity },
+                      scale: { duration: 0.5 }
+                    }}
+                  >
+                    <p className="text-small font-medium text-secondary">{heroLabels[currentLabelIndex]?.top.title}</p>
+                    <p className="text-xs text-mono-light">{heroLabels[currentLabelIndex]?.top.subtitle}</p>
+                  </motion.div>
+                </AnimatePresence>
+
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={`bottom-${currentLabelIndex}`}
+                    className="absolute -bottom-4 -left-4 bg-gradient-to-r from-[#00D4FF] to-[#0099CC] text-white rounded-2xl shadow-xl px-4 py-3"
+                    initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                    animate={{ opacity: 1, y: [0, 10, 0], scale: 1 }}
+                    exit={{ opacity: 0, y: -20, scale: 0.9 }}
+                    transition={{
+                      opacity: { duration: 0.5 },
+                      y: { duration: 3, repeat: Infinity, delay: 1 },
+                      scale: { duration: 0.5 }
+                    }}
+                  >
+                    <p className="text-small font-medium">{heroLabels[currentLabelIndex]?.bottom.title}</p>
+                    <p className="text-xs opacity-80">{heroLabels[currentLabelIndex]?.bottom.subtitle}</p>
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Premium glow effect */}
+                <div className="absolute inset-0 -z-10 rounded-3xl bg-gradient-to-br from-[#00D4FF]/20 to-[#D4AF37]/20 blur-2xl opacity-50" />
+              </div>
+            </AnimateOnScroll>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <svg className="w-6 h-6 text-[#00D4FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          </svg>
+        </motion.div>
+      </section>
+
+      {/* About Section - 슈링크란? (써마지/덴서티와 동일한 구조) */}
+      <section className="section-gap bg-white">
+        <div className="container-custom">
+          <AnimateOnScroll>
+            <div className="text-center mb-16">
+              <p className="font-serif text-h3 text-[#00D4FF] mb-2">{t('lifting.shurink.detail.about.sectionLabel')}</p>
+              <h2 className="text-h1 text-secondary mb-6">{t('lifting.shurink.detail.about.title')}</h2>
+              <p
+                className="text-body text-mono max-w-3xl mx-auto leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: t('lifting.shurink.detail.about.description') }}
+              />
+            </div>
+          </AnimateOnScroll>
+
+          {/* Technology explanation with HIFU illustration */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
+            <AnimateOnScroll animation="fadeInLeft">
+              <HIFURapidFireIllustration />
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fadeInRight">
+              <div className="space-y-6">
+                <h3 className="text-h2 text-secondary mb-4">
+                  {t('lifting.shurink.detail.about.hifuPrinciple.title')}
+                </h3>
+
+                <div className="space-y-4">
+                  <Card padding="md" hover={false} className="border-l-4 border-l-[#00D4FF]">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-[#00D4FF]/10 flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#00D4FF] font-serif font-bold">1</span>
+                      </div>
+                      <div>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.shurink.detail.about.hifuPrinciple.steps.0.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.shurink.detail.about.hifuPrinciple.steps.0.desc')}</p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card padding="md" hover={false} className="border-l-4 border-l-[#00D4FF]/70">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-[#00D4FF]/20 flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#00D4FF] font-serif font-bold">2</span>
+                      </div>
+                      <div>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.shurink.detail.about.hifuPrinciple.steps.1.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.shurink.detail.about.hifuPrinciple.steps.1.desc')}</p>
+                      </div>
+                    </div>
+                  </Card>
+
+                  <Card padding="md" hover={false} className="border-l-4 border-l-[#00D4FF]/50">
+                    <div className="flex items-start gap-4">
+                      <div className="w-12 h-12 rounded-full bg-[#00D4FF]/30 flex items-center justify-center flex-shrink-0">
+                        <span className="text-[#00D4FF] font-serif font-bold">3</span>
+                      </div>
+                      <div>
+                        <h4 className="text-h4 text-secondary mb-1">{t('lifting.shurink.detail.about.hifuPrinciple.steps.2.title')}</h4>
+                        <p className="text-body text-mono-light">{t('lifting.shurink.detail.about.hifuPrinciple.steps.2.desc')}</p>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            </AnimateOnScroll>
           </div>
         </div>
       </section>
@@ -987,6 +1187,6 @@ export default function ShurinkDetail() {
           </motion.div>
         </div>
       </section>
-    </main>
+    </>
   );
 }

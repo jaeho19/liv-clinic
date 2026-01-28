@@ -1333,7 +1333,55 @@
             "speedBadge": "3倍速い"
           },
           "hero": {
-            "badge": "HIFU LIFTING"
+            "badge": "HIFU LIFTING",
+            "title": "高速リフティングの新基準",
+            "description": "韓国技術で開発されたシュリンクは<strong>毎秒7ショット</strong>の高速連射技術で、速くて均一なエネルギーを伝達します。多様なカートリッジで皮膚層の深さに合わせた精密なカスタム施術が可能です。",
+            "stats": {
+              "speed": {
+                "value": "7/秒",
+                "label": "高速連射"
+              },
+              "time": {
+                "value": "30分",
+                "label": "施術時間"
+              },
+              "cartridges": {
+                "value": "4種類",
+                "label": "カートリッジ"
+              }
+            }
+          },
+          "heroLabels": [
+            {
+              "top": { "title": "高速連射技術", "subtitle": "毎秒7ショット以上" },
+              "bottom": { "title": "短時間施術", "subtitle": "約30分" }
+            },
+            {
+              "top": { "title": "カスタムカートリッジ", "subtitle": "4段階深さ選択" },
+              "bottom": { "title": "均一な効果", "subtitle": "精密エネルギー伝達" }
+            }
+          ],
+          "about": {
+            "sectionLabel": "About Shurink",
+            "title": "シュリンクとは？",
+            "description": "シュリンクは韓国で開発されたHIFU（高強度集束超音波）装置で、<strong>毎秒7ショット以上の高速連射</strong>技術により、速くて均一なエネルギー伝達が可能です。1.5mmから9.0mmまでの様々な深さのカートリッジを使用して、表皮からSMAS層まで精密にターゲティングできます。",
+            "hifuPrinciple": {
+              "title": "HIFU原理",
+              "steps": [
+                {
+                  "title": "集束超音波",
+                  "desc": "高強度超音波エネルギーを皮膚深くに集中"
+                },
+                {
+                  "title": "熱凝固点形成",
+                  "desc": "SMAS層に精密な熱凝固点を生成"
+                },
+                {
+                  "title": "コラーゲン再生",
+                  "desc": "自然治癒過程によるコラーゲンリモデリング"
+                }
+              ]
+            }
           },
           "advantages": {
             "sectionLabel": "Premium HIFU",

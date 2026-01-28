@@ -1333,7 +1333,55 @@
             "speedBadge": "3x Faster"
           },
           "hero": {
-            "badge": "HIFU LIFTING"
+            "badge": "HIFU LIFTING",
+            "title": "The New Standard of High-Speed Lifting",
+            "description": "Developed with Korean technology, Shurink delivers <strong>7 shots per second</strong> with rapid-fire technology for fast and uniform energy delivery. Multiple cartridges enable precise customized treatment for each skin layer depth.",
+            "stats": {
+              "speed": {
+                "value": "7/sec",
+                "label": "Rapid Shots"
+              },
+              "time": {
+                "value": "30min",
+                "label": "Treatment Time"
+              },
+              "cartridges": {
+                "value": "4 Types",
+                "label": "Cartridges"
+              }
+            }
+          },
+          "heroLabels": [
+            {
+              "top": { "title": "Rapid Shot Technology", "subtitle": "7+ shots per second" },
+              "bottom": { "title": "Quick Treatment", "subtitle": "About 30 minutes" }
+            },
+            {
+              "top": { "title": "Custom Cartridges", "subtitle": "4 depth options" },
+              "bottom": { "title": "Uniform Effect", "subtitle": "Precise energy delivery" }
+            }
+          ],
+          "about": {
+            "sectionLabel": "About Shurink",
+            "title": "What is Shurink?",
+            "description": "Shurink is a HIFU (High-Intensity Focused Ultrasound) device developed in Korea, featuring <strong>7+ rapid shots per second</strong> technology for fast and uniform energy delivery. With cartridges ranging from 1.5mm to 9.0mm depths, it precisely targets from the epidermis to the SMAS layer.",
+            "hifuPrinciple": {
+              "title": "HIFU Principle",
+              "steps": [
+                {
+                  "title": "Focused Ultrasound",
+                  "desc": "High-intensity ultrasound energy concentrated deep into the skin"
+                },
+                {
+                  "title": "Thermal Coagulation",
+                  "desc": "Creates precise thermal coagulation points in the SMAS layer"
+                },
+                {
+                  "title": "Collagen Regeneration",
+                  "desc": "Collagen remodeling through natural healing process"
+                }
+              ]
+            }
           },
           "advantages": {
             "sectionLabel": "Premium HIFU",
