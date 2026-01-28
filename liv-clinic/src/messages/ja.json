@@ -1921,5 +1921,330 @@
       "reservation": "相談予約する",
       "call": "電話でお問い合わせ"
     }
+  },
+  "signaturePage": {
+    "hero": {
+      "subtitle": "Signature Program",
+      "title": "シグネチャープログラム",
+      "description1": "LIV美容整形外科のプレミアムアンチエイジングプログラムで、",
+      "description2": "自然で美しい変化を体験してください。"
+    },
+    "photoComparison": {
+      "subtitle": "Premium Anti-aging",
+      "title": "フォトリアルなビフォーアフター比較",
+      "description": "カードにマウスを乗せるかタップして、施術前後の変化をご確認ください"
+    },
+    "programs": {
+      "lifting": {
+        "title": "LIFTING SIGNATURE",
+        "subtitle": "ウルセラリフトプライム & サーマジ",
+        "tagline": "非手術リフティングの頂点",
+        "description": "ウルセラリフトプライムのSMASリフティングとサーマジFLXのコラーゲンリモデリングが出会い、重力に逆らう強力なリフティング効果を体験してください。たるんだ肌を引き上げ、くっきりとハリのある輪郭を取り戻します。",
+        "features": ["ウルセラリフトプライム認定SMASリフティング", "サーマジFLXコラーゲン再生", "シナジー複合施術"],
+        "duration": "約2時間",
+        "recommended": "たるみ、弾力低下、輪郭のぼやけ"
+      },
+      "petit": {
+        "title": "PETIT SIGNATURE",
+        "subtitle": "ボトックス & フィラー",
+        "tagline": "繊細なボリュームと輪郭",
+        "description": "解剖学的理解に基づき、自然なボリュームとシワ改善を実現します。過度でない、本来の美しさを追求する繊細な施術で、細かいシワからボリュームまで満たします。",
+        "features": ["正規品フィラーで自然なボリューム", "ボトックスシワ改善", "解剖学的カスタム施術"],
+        "duration": "約1時間",
+        "recommended": "シワ、ボリューム減少、輪郭改善"
+      },
+      "glow": {
+        "title": "GLOW SIGNATURE",
+        "subtitle": "スキンブースター & 再生",
+        "tagline": "肌本来の輝き",
+        "description": "コラーゲン再生と深い保湿で肌のテクスチャーを根本的に改善します。くすんで荒れた肌を澄んで輝く肌に変え、内側から輝く健康的なツヤを取り戻してください。",
+        "features": ["スキンブースター水分供給", "コラーゲンブースティング", "肌質テクスチャー改善"],
+        "duration": "約1時間",
+        "recommended": "くすみ肌、乾燥、毛穴/肌質"
+      },
+      "total": {
+        "title": "TOTAL SIGNATURE",
+        "subtitle": "総合アンチエイジング",
+        "tagline": "完璧なトータルケア",
+        "description": "リフティング、ボリューム、肌質まで一度にケアするプレミアムパッケージです。顔全体がリフトアップされ、くっきりとするシネマティックな変化を体験してください。",
+        "features": ["複合リフティング施術", "ボリューム再構築", "トータル肌再生"],
+        "duration": "カスタム設計",
+        "recommended": "総合的なアンチエイジング、特別な日"
+      }
+    },
+    "whySignature": {
+      "subtitle": "Why Signature?",
+      "title": "シグネチャーを選ぶ理由",
+      "synergy": {
+        "title": "シナジー効果",
+        "description": "単一施術より2〜3倍効果的な\n複合施術のシナジー効果"
+      },
+      "price": {
+        "title": "合理的な価格",
+        "description": "個別施術比最大30%割引の\nパッケージ特別価格"
+      },
+      "protocol": {
+        "title": "検証済みプロトコル",
+        "description": "多くの施術経験で検証された\n最適な施術の組み合わせ"
+      }
+    },
+    "comparison": {
+      "subtitle": "Comparison",
+      "title": "個別施術 vs シグネチャープログラム",
+      "headers": {
+        "item": "項目",
+        "individual": "個別施術",
+        "signature": "シグネチャー"
+      },
+      "rows": {
+        "effect": {
+          "label": "効果",
+          "individual": "単一効果",
+          "signature": "2〜3倍シナジー"
+        },
+        "price": {
+          "label": "価格",
+          "individual": "定価",
+          "signature": "最大30%割引"
+        },
+        "time": {
+          "label": "時間",
+          "individual": "複数回来院",
+          "signature": "ワンストップケア"
+        },
+        "result": {
+          "label": "結果",
+          "individual": "部分改善",
+          "signature": "トータルソリューション"
+        }
+      }
+    },
+    "cta": {
+      "title": "自分に合ったプログラムが気になりますか？",
+      "description": "専門カウンセラーがお肌の状態を分析し、最適なプログラムをご提案いたします。"
+    }
+  },
+  "liftingPage": {
+    "hero": {
+      "subtitle": "Lifting",
+      "description1": "重力に逆らうプレミアムリフティングソリューションで、",
+      "description2": "自然でハリのある肌を取り戻してください。"
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "リフティング施術ラインナップ"
+    },
+    "whyChoose": {
+      "subtitle": "Why LIV Lifting?",
+      "title": "LIVリフティングを選ぶ理由",
+      "certification": {
+        "title": "正規認証",
+        "description1": "ウルセラリフトプライム、サーマジ公式認証クリニックとして、",
+        "description2": "正規品機器のみを使用しています。"
+      },
+      "experts": {
+        "title": "専門医療チーム",
+        "description1": "豊富な施術経験を持つ",
+        "description2": "専門医療チームが直接施術を行います。"
+      },
+      "customized": {
+        "title": "カスタマイズソリューション",
+        "description1": "個人の肌状態に合わせた",
+        "description2": "最適な施術を設計します。"
+      }
+    },
+    "cta": {
+      "title": "自分に合ったリフティングが気になりますか？",
+      "description": "専門カウンセリングで最適な施術を見つけてください。",
+      "button": "無料相談申込"
+    }
+  },
+  "antiagingPage": {
+    "hero": {
+      "subtitle": "Anti-aging",
+      "description1": "時を巻き戻すプレミアムアンチエイジングで、",
+      "description2": "若々しく生き生きとした肌を取り戻してください。"
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "アンチエイジング施術ラインナップ"
+    },
+    "benefits": {
+      "subtitle": "Natural Beauty",
+      "title": "自然な美しさ",
+      "description": "LIV美容整形外科のアンチエイジングは、過度でない自然な美しさを追求します。正規品のみを使用し、個人別カスタム施術で最適な結果を生み出します。",
+      "authentic": {
+        "title": "正規品・正量の原則",
+        "description": "FDA承認の正規品のみを使用し、定められた用量を守ります。"
+      },
+      "customized": {
+        "title": "カスタム施術設計",
+        "description": "顔の構造と肌の状態を分析し、最適な施術をご提案します。"
+      },
+      "natural": {
+        "title": "自然な結果",
+        "description": "目立たない自然な変化で、本来の美しさを取り戻します。"
+      }
+    },
+    "cta": {
+      "title": "若さを取り戻したいですか？",
+      "description": "専門カウンセリングで自分に合った施術を見つけてください。",
+      "button": "無料相談申込"
+    }
+  },
+  "laserPage": {
+    "hero": {
+      "title": "レーザーセンター",
+      "subtitle": "肌悩み別カスタムレーザーソリューション",
+      "description1": "Clarity II + Lucasの組み合わせで、",
+      "description2": "色素から血管、脱毛、タトゥー除去までワンストップケア"
+    },
+    "highlights": {
+      "equipment": "保有機器",
+      "treatments": "治療領域",
+      "experience": "経験",
+      "safety": "安全性"
+    },
+    "categories": {
+      "title": "肌悩み別カスタム治療",
+      "description": "お悩みの肌問題を選択すると、最適なレーザー治療をご案内します",
+      "pigmentation": {
+        "title": "シミ/色素改善",
+        "description": "シミ、そばかす、老人性色素斑などの色素トラブルをピコレーザーとレーザートーニングで効果的に改善します。"
+      },
+      "vascular": {
+        "title": "赤ら顔/血管治療",
+        "description": "赤ら顔、毛細血管拡張症、血管腫をClarity IIデュアル波長で治療します。"
+      },
+      "skintone": {
+        "title": "肌トーン均一化",
+        "description": "くすんだ肌をレーザートーニングとウルブランで明るく透明感のある肌に改善します。"
+      },
+      "hairRemoval": {
+        "title": "プレミアム脱毛",
+        "description": "Clarity IIデュアル波長とIntelliTrak技術で、すべての肌タイプに安全な脱毛。"
+      },
+      "tattoo": {
+        "title": "タトゥー除去",
+        "description": "Lucasピコレーザーで傷跡なしにすべての色のタトゥーを効果的に除去します。"
+      }
+    },
+    "matrix": {
+      "badge": "機器 × 適応症",
+      "title": "どんな悩みも解決できる機器ラインナップ",
+      "description": "LIVレーザーセンターの4種のプレミアム機器がすべての肌悩みをカバーします"
+    },
+    "equipment": {
+      "badge": "LIV保有機器",
+      "title": "プレミアムレーザーラインナップ",
+      "description": "FDA承認の最新機器で安全で効果的な施術を提供します",
+      "clarity": {
+        "name": "クラリティII",
+        "spec": "デュアル波長 + IntelliTrak技術",
+        "tags": ["色素", "血管", "脱毛", "肌トーン"]
+      },
+      "lucas": {
+        "name": "ルーカス",
+        "spec": "ピコ秒パルス (450ps)",
+        "tags": ["シミ", "色素", "タトゥー除去"]
+      },
+      "toning": {
+        "name": "レーザートーニング",
+        "spec": "低出力反復照射",
+        "tags": ["肌トーン", "毛穴", "肌質"]
+      },
+      "ulblanc": {
+        "name": "ウルブラン",
+        "spec": "メラニン選択的ターゲット",
+        "tags": ["美白", "トーン均一化"]
+      }
+    },
+    "synergy": {
+      "title": "Clarity II + Lucas シナジー効果",
+      "description": "2つのプレミアム機器の組み合わせで、単独施術よりも早く効果的な結果が期待できます",
+      "multiWave": {
+        "title": "多波長カバレッジ",
+        "description": "532nm〜1064nmまで全深度のターゲットにアクセス"
+      },
+      "combined": {
+        "title": "複合適応症治療",
+        "description": "シミ+赤ら顔、色素+毛穴など複合悩みを同時解決"
+      },
+      "fast": {
+        "title": "早い効果発現",
+        "description": "単独施術比1.5〜2倍早い結果"
+      }
+    },
+    "process": {
+      "title": "レーザー施術プロセス",
+      "steps": {
+        "analysis": {
+          "title": "肌分析",
+          "description": "専門医カウンセリング及び肌タイプ、悩みの精密分析"
+        },
+        "design": {
+          "title": "カスタム設計",
+          "description": "個人別最適なレーザー組み合わせ及び治療計画策定"
+        },
+        "treatment": {
+          "title": "レーザー施術",
+          "description": "熟練した専門医の安全で精密な施術"
+        },
+        "aftercare": {
+          "title": "アフターケア",
+          "description": "施術後のケア及び定期チェック、維持管理"
+        }
+      }
+    },
+    "faq": {
+      "title": "よくある質問",
+      "q1": {
+        "question": "どのレーザーが私に合いますか？",
+        "answer": "肌の状態とお悩みによって最適なレーザーが異なります。無料カウンセリングで専門医が直接肌を分析し、カスタム治療プランをご提案します。"
+      },
+      "q2": {
+        "question": "レーザー施術は痛いですか？",
+        "answer": "機器によって異なりますが、ほとんどの方が「輪ゴムで弾く感じ」程度とおっしゃいます。必要に応じて麻酔クリームを塗布し、痛みを最小化します。Clarity IIは内蔵冷却システムでより快適です。"
+      },
+      "q3": {
+        "question": "ダウンタイムはどのくらいですか？",
+        "answer": "レーザーの種類によって異なります。レーザートーニング、ウルブランはダウンタイムがほとんどなく、すぐに日常生活が可能です。ピコレーザーは3〜5日程度の軽い赤みが出る場合があります。"
+      },
+      "q4": {
+        "question": "効果はいつから現れますか？",
+        "answer": "施術直後から肌トーン改善を感じることができ、2〜4週間にわたるコラーゲンリモデリングで効果がより明確になります。最適な結果のために推奨回数を完了することをお勧めします。"
+      }
+    },
+    "cta": {
+      "title": "澄んだ健康な肌への第一歩",
+      "description1": "肌悩みに合った最適なレーザーを見つけます",
+      "description2": "無料カウンセリングでカスタム治療プランをご確認ください",
+      "button": "無料相談予約"
+    },
+    "viewMore": "詳しく見る"
+  },
+  "trust": {
+    "certification": {
+      "title": "公式認証クリニック",
+      "subtitle": "ウルセラリフトプライム · サーマジ"
+    },
+    "doctor": {
+      "title": "キム・スヨン代表院長",
+      "subtitle": "整形外科専門医"
+    },
+    "location": {
+      "title": "新沙駅4番出口",
+      "subtitle": "徒歩1分"
+    },
+    "cta": {
+      "consultation": "無料相談予約する",
+      "kakao": "カカオトーク相談"
+    }
+  },
+  "floatingCta": {
+    "phone": "電話相談",
+    "kakao": "カカオ",
+    "call": "電話",
+    "kakaoTalk": "カカオトーク"
   }
 }

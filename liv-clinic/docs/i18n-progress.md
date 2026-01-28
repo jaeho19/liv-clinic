@@ -1,6 +1,37 @@
 # i18n 번역 작업 진행 상황
 
-## 완료된 작업 (Priority 3 - 2024.01.28)
+## 완료된 작업 - 2025.01.28 (Phase 2)
+
+### Phase 1: 페이지 레벨 번역 키 추가
+
+4개 언어 파일에 새로운 번역 키 추가:
+
+| 파일 | 상태 | 추가된 섹션 |
+|------|------|------------|
+| `src/messages/ko.json` | ✅ 완료 | signaturePage, liftingPage, antiagingPage, laserPage, trust, floatingCta |
+| `src/messages/en.json` | ✅ 완료 | 영어 번역 추가 |
+| `src/messages/zh.json` | ✅ 완료 | 중국어 번역 추가 |
+| `src/messages/ja.json` | ✅ 완료 | 일본어 번역 추가 |
+
+### Phase 2: 컴포넌트 수정
+
+하드코딩된 한국어 텍스트를 `useTranslations()` 호출로 교체:
+
+| 파일 | 상태 | 수정 내용 |
+|------|------|----------|
+| `src/components/sections/SignatureDetail.tsx` | ✅ 완료 | hero, photoComparison, whySignature, comparison, CTA 섹션 |
+| `src/app/[locale]/lifting/page.tsx` | ✅ 완료 | hero, lineup, whyChoose, CTA 섹션 |
+| `src/app/[locale]/antiaging/page.tsx` | ✅ 완료 | hero, lineup, benefits, CTA 섹션 |
+| `src/components/sections/TrustBlock.tsx` | ✅ 완료 | trustItems, CTA 버튼 |
+| `src/components/layout/FloatingCTA.tsx` | ✅ 스킵 | 이미 locale 기반 처리 구현됨 |
+
+### Phase 3: 빌드 검증
+
+- `npm run build` 성공 ✅
+
+---
+
+## 완료된 작업 - 2024.01.28 (Phase 1)
 
 ### 1. treatments.common 공통 키 추가 (ko/en/ja/zh 모두)
 
@@ -23,122 +54,150 @@
 - `consultationCta` - 상담 예약
 - `effectDuration` - 효과 지속
 
-### 2. ko.json 상세 번역 키 추가
+### 2. Detail 컴포넌트 번역 키 추가
 
-#### treatments.laser.pigmentation.detail
-- hero (subtitle, description)
-- threeStageSystem (title, subtitle, stages[])
-- picoVsNano (title, subtitle, 비교 데이터)
-- equipment (title, subtitle, featured)
-- protocol (mild, moderate, severe)
-- idealFor[]
-- faq[]
-- cta (title, description)
-
-#### treatments.laser.vascular.detail
-- hero (subtitle, description)
-- rednessTypes (title, subtitle, recommendedTreatment, types[])
-- dualWavelength (title, subtitle, epidermis, dermis, alexandrite, ndyag)
-- clarity (title, subtitle, badge, why, whyDesc, recommendedSessions)
-- protocol (mild, moderate, severe)
-- idealFor[]
-- faq[]
-- cta (title, description)
-
-#### treatments.laser.tattoo.detail
-- breadcrumb
-- hero (title, subtitle, description)
-- picoTech (badge, title, descriptions, benefits[], illustration)
-- colorWavelength (badge, title, subtitle, colors, wavelengths[])
-- tattooTypes (badge, title, subtitle, difficulty, types[])
-- process (badge, title, steps[])
-- lucas (title, subtitle, specs, strengths)
-- precautions (before, after)
-- faq[]
-- cta (title, description)
-
-#### treatments.antiaging.botox.detail
-- hero (badge, title, description)
-- benefits (title)
-- targetAreas (title, subtitle, areas)
-- treatmentInfo (title, duration, anesthesia, recovery, results)
-- faq (title)
-- cta (title, description)
-
-#### treatments.antiaging.filler.detail
-- hero (badge, title, description)
-- benefits (title)
-- targetAreas (title, subtitle, areas[])
-- fillerTypes (title, subtitle, types[])
-- safety (title, subtitle, steps[])
-- treatmentInfo (title, duration, anesthesia, recovery, results)
-- faq (title)
-- cta (title, description)
-
-### 3. en.json 상세 번역 키 추가
-
-위 ko.json과 동일한 구조로 영어 번역 완료:
 - treatments.laser.pigmentation.detail
 - treatments.laser.vascular.detail
 - treatments.laser.tattoo.detail
 - treatments.antiaging.botox.detail
 - treatments.antiaging.filler.detail
 
-### 4. ja.json/zh.json 상세 키 추가 완료 (2024.01.28)
+### 3. Detail 컴포넌트 useTranslations 적용
 
-위 ko.json/en.json과 동일한 구조로 일본어/중국어 번역 완료:
-- treatments.laser.pigmentation.detail
-- treatments.laser.vascular.detail
-- treatments.laser.tattoo.detail
-- treatments.antiaging.botox.detail
-- treatments.antiaging.filler.detail
-
-### 5. Detail 컴포넌트 useTranslations 적용 완료 (2024.01.28)
-
-- [x] PigmentationDetail.tsx - useTranslations 적용
-- [x] VascularDetail.tsx - useTranslations 적용
-- [x] TattooRemovalDetail.tsx - useTranslations 적용
-- [x] BotoxDetail.tsx - useTranslations 적용
-- [x] FillerDetail.tsx - useTranslations 적용
+- [x] PigmentationDetail.tsx
+- [x] VascularDetail.tsx
+- [x] TattooRemovalDetail.tsx
+- [x] BotoxDetail.tsx
+- [x] FillerDetail.tsx
 
 ---
 
 ## 남은 작업 (TODO)
 
-### Priority 3 계속
+### 우선순위 HIGH
 
-#### 1. 추가 Detail 컴포넌트 검토
+#### 1. LaserCenterDetail.tsx 수정
+- **파일**: `src/components/sections/LaserCenterDetail.tsx`
+- **하드코딩 개수**: 50+ 개
+- **수정 필요 섹션**:
+  - Hero 섹션 (레이저 센터 소개)
+  - Categories 섹션 (색소, 혈관, 피부톤 등)
+  - Equipment 섹션 (장비 소개)
+  - Synergy 섹션 (시너지 효과)
+  - Process 섹션 (시술 과정)
+  - FAQ 섹션 (자주 묻는 질문)
+  - CTA 섹션
+
+#### 2. SignatureDetail.tsx - 프로그램 카드 데이터
+- **파일**: `src/components/sections/SignatureDetail.tsx`
+- **내용**: `signaturePrograms` 배열 내 하드코딩된 카드 데이터
+  - 프로그램명 (LIFTING, PETIT, GLOW, TOTAL)
+  - 설명 텍스트
+  - 추천 대상 텍스트
+
+### 우선순위 MEDIUM
+
+#### 3. SignatureProgramsSection.tsx
+- **파일**: `src/components/sections/SignatureProgramsSection.tsx`
+- **하드코딩 개수**: 약 5개
+
+#### 4. 레이아웃 Breadcrumbs
+- **파일들**: 각 페이지 레이아웃 파일
+- **내용**: 네비게이션 breadcrumb 텍스트
+
+#### 5. 추가 Detail 컴포넌트 검토
 - [ ] AptosDetail.tsx - 번역 키 추가 필요
 - [ ] SkinboosterDetail.tsx - 검토 필요
-- [ ] LaserCenterDetail.tsx - 검토 필요
-
-#### 2. 기타 검토 대상
 - [ ] UltheraDetail.tsx - 기존 번역 키 활용 상태 확인
 - [ ] ThermageDetail.tsx - 기존 번역 키 활용 상태 확인
 - [ ] DensityDetail.tsx - 기존 번역 키 활용 상태 확인
 
+### 우선순위 LOW
+
+#### 6. NaverMap.tsx
+- **파일**: `src/components/ui/NaverMap.tsx`
+- **하드코딩 개수**: 2개 (지도 팝업 텍스트)
+
+#### 7. LanguageSwitcher.tsx / MobileMenu.tsx
+- 각각 1개씩 하드코딩된 텍스트
+
 ---
 
-## 번역 키 사용 예시
+## 번역 키 구조 (Phase 2에서 추가됨)
 
-```tsx
-// 컴포넌트에서 사용
-const t = useTranslations('treatments');
-
-// 공통 키
-{t('common.freeConsultation')}
-{t('common.laserCenter')}
-
-// 상세 키
-{t('laser.pigmentation.detail.hero.subtitle')}
-{t('laser.vascular.detail.rednessTypes.title')}
-{t('antiaging.filler.detail.fillerTypes.title')}
+```json
+{
+  "signaturePage": {
+    "hero": { "subtitle", "title", "description1", "description2" },
+    "photoComparison": { "title", "subtitle" },
+    "programs": { "recommended", "viewDetails" },
+    "whySignature": {
+      "title", "subtitle",
+      "synergy": { "title", "description" },
+      "price": { "title", "description" },
+      "protocol": { "title", "description" }
+    },
+    "comparison": { "title", "subtitle", "headers": {...}, "rows": {...} },
+    "cta": { "title", "subtitle", "button" }
+  },
+  "liftingPage": {
+    "hero": { "subtitle", "description1", "description2" },
+    "lineup": { "subtitle", "title" },
+    "whyChoose": {
+      "subtitle", "title",
+      "certification": { "title", "description1", "description2" },
+      "experts": { "title", "description1", "description2" },
+      "customized": { "title", "description1", "description2" }
+    },
+    "cta": { "title", "description", "button" }
+  },
+  "antiagingPage": {
+    "hero": { "subtitle", "description1", "description2" },
+    "lineup": { "subtitle", "title" },
+    "benefits": {
+      "subtitle", "title", "description",
+      "authentic": { "title", "description" },
+      "customized": { "title", "description" },
+      "natural": { "title", "description" }
+    },
+    "cta": { "title", "description", "button" }
+  },
+  "trust": {
+    "certification": { "title", "subtitle" },
+    "doctor": { "title", "subtitle" },
+    "location": { "title", "subtitle" },
+    "cta": { "consultation", "kakao" }
+  }
+}
 ```
+
+---
+
+## 테스트 방법
+
+### 개발 서버 실행
+```bash
+cd liv-clinic
+npm run dev
+```
+
+### 각 언어별 URL 접속
+- 한국어: http://localhost:3000/ko/signature
+- 영어: http://localhost:3000/en/signature
+- 중국어: http://localhost:3000/zh/signature
+- 일본어: http://localhost:3000/ja/signature
+
+### 확인 사항
+1. 모든 텍스트가 해당 언어로 표시되는지 확인
+2. 한국어 텍스트가 남아있지 않은지 확인
+3. 레이아웃이 깨지지 않았는지 확인
 
 ---
 
 ## 참고 사항
 
+- 번역 함수: `useTranslations()` from `next-intl`
+- 번역 파일 위치: `src/messages/*.json`
+- 라우팅: `[locale]` 동적 세그먼트 사용
 - 모든 JSON 파일 유효성 검증 완료
-- 기존 번역 키와 충돌 없음
-- 빌드 테스트 필요
+- 빌드 테스트 완료

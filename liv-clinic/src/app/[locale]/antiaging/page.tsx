@@ -19,7 +19,7 @@ export default function AntiagingPage({
   const resolvedParams = params as unknown as { locale: string };
   setRequestLocale(resolvedParams.locale);
 
-  const t = useTranslations();
+  const t = useTranslations('antiagingPage');
   const tNav = useTranslations('nav');
 
   return (
@@ -29,12 +29,12 @@ export default function AntiagingPage({
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="max-w-3xl">
-              <p className="font-serif text-h3 text-primary mb-4">Anti-aging</p>
+              <p className="font-serif text-h3 text-primary mb-4">{t('hero.subtitle')}</p>
               <h1 className="text-display text-secondary mb-6">{tNav('antiaging')}</h1>
               <p className="text-h4 text-mono leading-relaxed">
-                시간을 되돌리는 프리미엄 안티에이징으로
+                {t('hero.description1')}
                 <br />
-                젊고 생기 넘치는 피부를 되찾으세요.
+                {t('hero.description2')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -46,8 +46,8 @@ export default function AntiagingPage({
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-primary mb-4">Our Treatments</p>
-              <h2 className="text-h1 text-secondary">안티에이징 시술 라인업</h2>
+              <p className="font-serif text-h3 text-primary mb-4">{t('lineup.subtitle')}</p>
+              <h2 className="text-h1 text-secondary">{t('lineup.title')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -105,11 +105,10 @@ export default function AntiagingPage({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimateOnScroll animation="fadeInLeft">
               <div>
-                <p className="font-serif text-h3 text-primary mb-4">Natural Beauty</p>
-                <h2 className="text-h1 text-secondary mb-6">자연스러운 아름다움</h2>
+                <p className="font-serif text-h3 text-primary mb-4">{t('benefits.subtitle')}</p>
+                <h2 className="text-h1 text-secondary mb-6">{t('benefits.title')}</h2>
                 <p className="text-body text-mono leading-relaxed mb-8">
-                  리브성형외과의 안티에이징은 과하지 않은, 자연스러운 아름다움을 추구합니다.
-                  정품 제품만을 사용하고, 개인별 맞춤 시술로 최적의 결과를 만들어냅니다.
+                  {t('benefits.description')}
                 </p>
 
                 <div className="space-y-4">
@@ -120,8 +119,8 @@ export default function AntiagingPage({
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-h4 text-secondary mb-1">정품정량 원칙</h4>
-                      <p className="text-body text-mono">FDA 승인 정품만을 사용하며, 정해진 용량을 지킵니다.</p>
+                      <h4 className="text-h4 text-secondary mb-1">{t('benefits.authentic.title')}</h4>
+                      <p className="text-body text-mono">{t('benefits.authentic.description')}</p>
                     </div>
                   </div>
 
@@ -132,8 +131,8 @@ export default function AntiagingPage({
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-h4 text-secondary mb-1">맞춤 시술 설계</h4>
-                      <p className="text-body text-mono">얼굴 구조와 피부 상태를 분석하여 최적의 시술을 제안합니다.</p>
+                      <h4 className="text-h4 text-secondary mb-1">{t('benefits.customized.title')}</h4>
+                      <p className="text-body text-mono">{t('benefits.customized.description')}</p>
                     </div>
                   </div>
 
@@ -144,8 +143,8 @@ export default function AntiagingPage({
                       </svg>
                     </div>
                     <div>
-                      <h4 className="text-h4 text-secondary mb-1">자연스러운 결과</h4>
-                      <p className="text-body text-mono">티 나지 않는 자연스러운 변화로 본연의 아름다움을 되찾습니다.</p>
+                      <h4 className="text-h4 text-secondary mb-1">{t('benefits.natural.title')}</h4>
+                      <p className="text-body text-mono">{t('benefits.natural.description')}</p>
                     </div>
                   </div>
                 </div>
@@ -169,9 +168,9 @@ export default function AntiagingPage({
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center">
-              <h2 className="text-h1 mb-4">젊음을 되찾고 싶으신가요?</h2>
+              <h2 className="text-h1 mb-4">{t('cta.title')}</h2>
               <p className="text-h4 opacity-80 mb-8">
-                전문 상담을 통해 나에게 맞는 시술을 찾아보세요.
+                {t('cta.description')}
               </p>
               <ScrollLink href="/contact">
                 <Button
@@ -179,7 +178,7 @@ export default function AntiagingPage({
                   size="lg"
                   className="bg-primary text-white hover:bg-secondary"
                 >
-                  무료 상담 신청
+                  {t('cta.button')}
                 </Button>
               </ScrollLink>
             </div>

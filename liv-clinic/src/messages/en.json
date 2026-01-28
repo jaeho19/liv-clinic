@@ -1921,5 +1921,330 @@
       "reservation": "Book Consultation",
       "call": "Call Us"
     }
+  },
+  "signaturePage": {
+    "hero": {
+      "subtitle": "Signature Program",
+      "title": "Signature Program",
+      "description1": "With LIV Plastic Surgery's premium anti-aging program,",
+      "description2": "experience natural and beautiful transformation."
+    },
+    "photoComparison": {
+      "subtitle": "Premium Anti-aging",
+      "title": "Photo-Real Before & After",
+      "description": "Hover over or tap the card to see before and after treatment changes"
+    },
+    "programs": {
+      "lifting": {
+        "title": "LIFTING SIGNATURE",
+        "subtitle": "Ultherapy Prime & Thermage",
+        "tagline": "The Pinnacle of Non-Surgical Lifting",
+        "description": "Experience powerful lifting effects that defy gravity with Ultherapy Prime's SMAS lifting and Thermage FLX's collagen remodeling. Lift sagging skin and restore clear, firm facial contours.",
+        "features": ["Ultherapy Prime Certified SMAS Lifting", "Thermage FLX Collagen Regeneration", "Synergistic Combination Treatment"],
+        "duration": "About 2 hours",
+        "recommended": "Sagging skin, loss of elasticity, blurred contours"
+      },
+      "petit": {
+        "title": "PETIT SIGNATURE",
+        "subtitle": "Botox & Filler",
+        "tagline": "Delicate Volume and Contour",
+        "description": "Achieve natural volume and wrinkle improvement based on anatomical understanding. From fine wrinkles to volume restoration with delicate procedures pursuing natural beauty.",
+        "features": ["Natural Volume with Authentic Filler", "Botox Wrinkle Improvement", "Anatomically Customized Treatment"],
+        "duration": "About 1 hour",
+        "recommended": "Wrinkles, volume loss, contour improvement"
+      },
+      "glow": {
+        "title": "GLOW SIGNATURE",
+        "subtitle": "Skin Booster & Regeneration",
+        "tagline": "Natural Radiance of Your Skin",
+        "description": "Fundamentally improve skin texture with collagen regeneration and deep hydration. Transform dull, rough skin into clear, radiant skin with healthy glow from within.",
+        "features": ["Skin Booster Hydration", "Collagen Boosting", "Texture Improvement"],
+        "duration": "About 1 hour",
+        "recommended": "Dull skin, dryness, pores/texture"
+      },
+      "total": {
+        "title": "TOTAL SIGNATURE",
+        "subtitle": "Comprehensive Anti-Aging",
+        "tagline": "Perfect Total Care",
+        "description": "A premium package that cares for lifting, volume, and skin texture all at once. Experience cinematic transformation as your entire face is lifted and defined.",
+        "features": ["Combined Lifting Treatment", "Volume Restructuring", "Total Skin Regeneration"],
+        "duration": "Custom Design",
+        "recommended": "Comprehensive anti-aging, special occasions"
+      }
+    },
+    "whySignature": {
+      "subtitle": "Why Signature?",
+      "title": "Why Choose Signature?",
+      "synergy": {
+        "title": "Synergy Effect",
+        "description": "2-3 times more effective than\nsingle treatments with synergistic effects"
+      },
+      "price": {
+        "title": "Reasonable Price",
+        "description": "Up to 30% discount compared to\nindividual treatments with special package pricing"
+      },
+      "protocol": {
+        "title": "Verified Protocol",
+        "description": "Optimal treatment combinations\nverified through extensive experience"
+      }
+    },
+    "comparison": {
+      "subtitle": "Comparison",
+      "title": "Individual Treatment vs Signature Program",
+      "headers": {
+        "item": "Item",
+        "individual": "Individual",
+        "signature": "Signature"
+      },
+      "rows": {
+        "effect": {
+          "label": "Effect",
+          "individual": "Single Effect",
+          "signature": "2-3x Synergy"
+        },
+        "price": {
+          "label": "Price",
+          "individual": "Regular Price",
+          "signature": "Up to 30% Off"
+        },
+        "time": {
+          "label": "Time",
+          "individual": "Multiple Visits",
+          "signature": "One-Stop Care"
+        },
+        "result": {
+          "label": "Result",
+          "individual": "Partial Improvement",
+          "signature": "Total Solution"
+        }
+      }
+    },
+    "cta": {
+      "title": "Curious about the right program for you?",
+      "description": "Our expert consultants will analyze your skin condition and recommend the optimal program."
+    }
+  },
+  "liftingPage": {
+    "hero": {
+      "subtitle": "Lifting",
+      "description1": "With premium lifting solutions that defy gravity,",
+      "description2": "restore natural and elastic skin."
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "Lifting Treatment Lineup"
+    },
+    "whyChoose": {
+      "subtitle": "Why LIV Lifting?",
+      "title": "Why Choose LIV Lifting?",
+      "certification": {
+        "title": "Authentic Certification",
+        "description1": "As an officially certified Ultherapy Prime and Thermage clinic,",
+        "description2": "we only use genuine equipment."
+      },
+      "experts": {
+        "title": "Expert Medical Team",
+        "description1": "Experienced medical professionals",
+        "description2": "perform all treatments directly."
+      },
+      "customized": {
+        "title": "Customized Solution",
+        "description1": "We design optimal treatments",
+        "description2": "tailored to individual skin conditions."
+      }
+    },
+    "cta": {
+      "title": "Curious about the right lifting for you?",
+      "description": "Find the optimal treatment through expert consultation.",
+      "button": "Book Free Consultation"
+    }
+  },
+  "antiagingPage": {
+    "hero": {
+      "subtitle": "Anti-aging",
+      "description1": "With premium anti-aging that turns back time,",
+      "description2": "restore youthful, vibrant skin."
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "Anti-Aging Treatment Lineup"
+    },
+    "benefits": {
+      "subtitle": "Natural Beauty",
+      "title": "Natural Beauty",
+      "description": "LIV Plastic Surgery's anti-aging pursues natural beauty without excess. We only use authentic products and create optimal results with personalized treatments.",
+      "authentic": {
+        "title": "Authentic Product Principle",
+        "description": "We only use FDA-approved products and adhere to proper dosages."
+      },
+      "customized": {
+        "title": "Customized Treatment Design",
+        "description": "We analyze facial structure and skin condition to propose optimal treatments."
+      },
+      "natural": {
+        "title": "Natural Results",
+        "description": "Restore your natural beauty with unnoticeable, natural changes."
+      }
+    },
+    "cta": {
+      "title": "Want to regain your youth?",
+      "description": "Find the right treatment for you through expert consultation.",
+      "button": "Book Free Consultation"
+    }
+  },
+  "laserPage": {
+    "hero": {
+      "title": "Laser Center",
+      "subtitle": "Customized Laser Solutions for Your Skin Concerns",
+      "description1": "With Clarity II + Lucas combination,",
+      "description2": "one-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+    },
+    "highlights": {
+      "equipment": "Equipment",
+      "treatments": "Treatment Areas",
+      "experience": "Experience",
+      "safety": "Safety"
+    },
+    "categories": {
+      "title": "Customized Treatment for Your Skin Concerns",
+      "description": "Select your skin concern and we'll guide you to the optimal laser treatment",
+      "pigmentation": {
+        "title": "Pigmentation Improvement",
+        "description": "Effectively improve melasma, age spots, and other pigment conditions with pico laser and laser toning."
+      },
+      "vascular": {
+        "title": "Redness/Vascular Treatment",
+        "description": "Treat facial redness, spider veins, and hemangioma with Clarity II dual wavelength."
+      },
+      "skintone": {
+        "title": "Skin Tone Evenness",
+        "description": "Brighten dull skin with laser toning and Ulblanc for clear, radiant complexion."
+      },
+      "hairRemoval": {
+        "title": "Premium Hair Removal",
+        "description": "Safe hair removal for all skin types with Clarity II dual wavelength and IntelliTrak technology."
+      },
+      "tattoo": {
+        "title": "Tattoo Removal",
+        "description": "Effectively remove all colors of tattoos without scarring using Lucas pico laser."
+      }
+    },
+    "matrix": {
+      "badge": "Equipment × Indications",
+      "title": "Equipment Lineup to Solve Any Concern",
+      "description": "LIV Laser Center's 4 premium devices cover all skin concerns"
+    },
+    "equipment": {
+      "badge": "LIV Equipment",
+      "title": "Premium Laser Lineup",
+      "description": "Safe and effective treatments with FDA-approved latest equipment",
+      "clarity": {
+        "name": "Clarity II",
+        "spec": "Dual Wavelength + IntelliTrak Technology",
+        "tags": ["Pigmentation", "Vascular", "Hair Removal", "Skin Tone"]
+      },
+      "lucas": {
+        "name": "Lucas",
+        "spec": "Picosecond Pulse (450ps)",
+        "tags": ["Melasma", "Pigmentation", "Tattoo Removal"]
+      },
+      "toning": {
+        "name": "Laser Toning",
+        "spec": "Low-Power Repeated Irradiation",
+        "tags": ["Skin Tone", "Pores", "Texture"]
+      },
+      "ulblanc": {
+        "name": "Ulblanc",
+        "spec": "Melanin Selective Targeting",
+        "tags": ["Skin Whitening", "Tone Evenness"]
+      }
+    },
+    "synergy": {
+      "title": "Clarity II + Lucas Synergy Effect",
+      "description": "The combination of two premium devices delivers faster and more effective results than standalone treatments",
+      "multiWave": {
+        "title": "Multi-Wavelength Coverage",
+        "description": "Access targets at all depths from 532nm to 1064nm"
+      },
+      "combined": {
+        "title": "Combined Indication Treatment",
+        "description": "Simultaneously solve complex concerns like melasma+redness, pigmentation+pores"
+      },
+      "fast": {
+        "title": "Fast Results",
+        "description": "1.5-2x faster results compared to standalone treatments"
+      }
+    },
+    "process": {
+      "title": "Laser Treatment Process",
+      "steps": {
+        "analysis": {
+          "title": "Skin Analysis",
+          "description": "Expert consultation and precise analysis of skin type and concerns"
+        },
+        "design": {
+          "title": "Custom Design",
+          "description": "Individual optimal laser combination and treatment planning"
+        },
+        "treatment": {
+          "title": "Laser Treatment",
+          "description": "Safe and precise treatment by experienced specialists"
+        },
+        "aftercare": {
+          "title": "Aftercare",
+          "description": "Post-treatment care, regular check-ups, and maintenance"
+        }
+      }
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": {
+        "question": "Which laser is right for me?",
+        "answer": "The optimal laser varies depending on skin condition and concerns. Through free consultation, our specialists will directly analyze your skin and propose a customized treatment plan."
+      },
+      "q2": {
+        "question": "Is laser treatment painful?",
+        "answer": "It varies by device, but most describe it as \"like a rubber band snapping.\" We minimize pain with numbing cream when needed. Clarity II has a built-in cooling system for added comfort."
+      },
+      "q3": {
+        "question": "How long is the downtime?",
+        "answer": "It depends on the laser type. Laser toning and Ulblanc have almost no downtime, allowing immediate return to daily activities. Pico laser may cause mild redness for 3-5 days."
+      },
+      "q4": {
+        "question": "When will I see results?",
+        "answer": "You can feel skin tone improvement immediately after treatment, with effects becoming more prominent over 2-4 weeks as collagen remodeling occurs. We recommend completing the suggested number of sessions for optimal results."
+      }
+    },
+    "cta": {
+      "title": "The First Step to Clear, Healthy Skin",
+      "description1": "We'll find the optimal laser for your skin concerns",
+      "description2": "Confirm your customized treatment plan with free consultation",
+      "button": "Book Free Consultation"
+    },
+    "viewMore": "Learn More"
+  },
+  "trust": {
+    "certification": {
+      "title": "Officially Certified Clinic",
+      "subtitle": "Ultherapy Prime · Thermage"
+    },
+    "doctor": {
+      "title": "Dr. Kim Soo-young",
+      "subtitle": "Board-Certified Plastic Surgeon"
+    },
+    "location": {
+      "title": "Sinsa Station Exit 4",
+      "subtitle": "1 min walk"
+    },
+    "cta": {
+      "consultation": "Book Free Consultation",
+      "kakao": "KakaoTalk Consultation"
+    }
+  },
+  "floatingCta": {
+    "phone": "Call",
+    "kakao": "KakaoTalk",
+    "call": "Call",
+    "kakaoTalk": "KakaoTalk"
   }
 }

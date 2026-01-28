@@ -8,7 +8,7 @@ import { SOCIAL_LINKS } from '@/lib/constants';
 import { getAvailabilityStatus } from '@/lib/availability';
 
 export default function TrustBlock() {
-  const t = useTranslations();
+  const t = useTranslations('trust');
   const [availability, setAvailability] = useState(() => getAvailabilityStatus());
 
   useEffect(() => {
@@ -25,8 +25,8 @@ export default function TrustBlock() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
         </svg>
       ),
-      title: '공식 인증 병원',
-      subtitle: '울쎄라피 프라임 · 써마지',
+      title: t('certification.title'),
+      subtitle: t('certification.subtitle'),
     },
     {
       icon: (
@@ -34,8 +34,8 @@ export default function TrustBlock() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
         </svg>
       ),
-      title: '김수영 대표원장',
-      subtitle: '성형외과 전문의',
+      title: t('doctor.title'),
+      subtitle: t('doctor.subtitle'),
     },
     {
       icon: (
@@ -44,8 +44,8 @@ export default function TrustBlock() {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
         </svg>
       ),
-      title: '신사역 4번출구',
-      subtitle: '도보 1분',
+      title: t('location.title'),
+      subtitle: t('location.subtitle'),
     },
   ];
 
@@ -116,7 +116,7 @@ export default function TrustBlock() {
               href="/contact"
               className="btn-primary text-center py-3 px-8 text-sm md:text-base"
             >
-              무료 상담 예약하기
+              {t('cta.consultation')}
             </ScrollLink>
             <a
               href={SOCIAL_LINKS.kakao}
@@ -127,7 +127,7 @@ export default function TrustBlock() {
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 3C6.48 3 2 6.58 2 11c0 2.85 1.89 5.35 4.72 6.77-.15.53-.5 1.9-.57 2.2-.09.38.14.38.3.27.12-.08 1.87-1.27 2.63-1.78.62.09 1.26.14 1.92.14 5.52 0 10-3.58 10-8s-4.48-8-10-8z"/>
               </svg>
-              카카오톡 상담
+              {t('cta.kakao')}
             </a>
           </div>
         </motion.div>

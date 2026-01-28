@@ -1921,5 +1921,330 @@
       "reservation": "预约咨询",
       "call": "电话咨询"
     }
+  },
+  "signaturePage": {
+    "hero": {
+      "subtitle": "Signature Program",
+      "title": "签名项目",
+      "description1": "通过LIV整形外科独有的高端抗衰老项目，",
+      "description2": "体验自然而美丽的变化。"
+    },
+    "photoComparison": {
+      "subtitle": "Premium Anti-aging",
+      "title": "真实前后对比",
+      "description": "将鼠标悬停或点击卡片，查看治疗前后的变化"
+    },
+    "programs": {
+      "lifting": {
+        "title": "LIFTING SIGNATURE",
+        "subtitle": "超声刀Prime & 热玛吉",
+        "tagline": "非手术提升的巅峰",
+        "description": "体验超声刀Prime的SMAS提升与热玛吉FLX的胶原蛋白重塑相结合，对抗重力的强效提升效果。提升下垂的皮肤，恢复清晰紧致的面部轮廓。",
+        "features": ["超声刀Prime认证SMAS提升", "热玛吉FLX胶原蛋白再生", "协同复合治疗"],
+        "duration": "约2小时",
+        "recommended": "皮肤下垂、弹性下降、轮廓模糊"
+      },
+      "petit": {
+        "title": "PETIT SIGNATURE",
+        "subtitle": "肉毒素 & 填充剂",
+        "tagline": "精致的体积与轮廓",
+        "description": "基于解剖学理解，实现自然的体积和皱纹改善。通过追求自然美的精细治疗，从细纹到体积都能填充。",
+        "features": ["正品填充剂自然丰盈", "肉毒素皱纹改善", "解剖学定制治疗"],
+        "duration": "约1小时",
+        "recommended": "皱纹、体积流失、轮廓改善"
+      },
+      "glow": {
+        "title": "GLOW SIGNATURE",
+        "subtitle": "水光针 & 再生",
+        "tagline": "肌肤本来的光彩",
+        "description": "通过胶原蛋白再生和深层保湿从根本上改善皮肤质地。将暗沉粗糙的皮肤变成清透明亮的皮肤，恢复由内而外的健康光泽。",
+        "features": ["水光针补水", "胶原蛋白促进", "肤质改善"],
+        "duration": "约1小时",
+        "recommended": "暗沉皮肤、干燥、毛孔/肤质"
+      },
+      "total": {
+        "title": "TOTAL SIGNATURE",
+        "subtitle": "综合抗衰老",
+        "tagline": "完美的整体护理",
+        "description": "一次性护理提升、丰盈和肤质的高端套餐。体验整个面部提升和清晰的电影级变化。",
+        "features": ["复合提升治疗", "体积重塑", "全面皮肤再生"],
+        "duration": "定制设计",
+        "recommended": "综合抗衰老、特殊场合"
+      }
+    },
+    "whySignature": {
+      "subtitle": "Why Signature?",
+      "title": "为什么选择签名项目？",
+      "synergy": {
+        "title": "协同效应",
+        "description": "比单一治疗效果高2-3倍的\n复合治疗协同效应"
+      },
+      "price": {
+        "title": "合理的价格",
+        "description": "与单独治疗相比最高可享30%折扣的\n套餐特惠价格"
+      },
+      "protocol": {
+        "title": "经过验证的方案",
+        "description": "通过丰富经验验证的\n最佳治疗组合"
+      }
+    },
+    "comparison": {
+      "subtitle": "Comparison",
+      "title": "单项治疗 vs 签名项目",
+      "headers": {
+        "item": "项目",
+        "individual": "单项治疗",
+        "signature": "签名项目"
+      },
+      "rows": {
+        "effect": {
+          "label": "效果",
+          "individual": "单一效果",
+          "signature": "2-3倍协同效应"
+        },
+        "price": {
+          "label": "价格",
+          "individual": "原价",
+          "signature": "最高30%折扣"
+        },
+        "time": {
+          "label": "时间",
+          "individual": "多次就诊",
+          "signature": "一站式护理"
+        },
+        "result": {
+          "label": "结果",
+          "individual": "局部改善",
+          "signature": "全面解决方案"
+        }
+      }
+    },
+    "cta": {
+      "title": "想知道适合您的项目吗？",
+      "description": "专业顾问将分析您的皮肤状况，推荐最佳项目。"
+    }
+  },
+  "liftingPage": {
+    "hero": {
+      "subtitle": "Lifting",
+      "description1": "用对抗重力的高端提升方案，",
+      "description2": "恢复自然弹性的肌肤。"
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "提升治疗系列"
+    },
+    "whyChoose": {
+      "subtitle": "Why LIV Lifting?",
+      "title": "为什么选择LIV提升？",
+      "certification": {
+        "title": "正品认证",
+        "description1": "作为超声刀Prime、热玛吉官方认证医院，",
+        "description2": "只使用正品设备。"
+      },
+      "experts": {
+        "title": "专业医疗团队",
+        "description1": "拥有丰富治疗经验的",
+        "description2": "专业医疗团队亲自操作。"
+      },
+      "customized": {
+        "title": "定制方案",
+        "description1": "根据个人皮肤状况，",
+        "description2": "设计最优治疗方案。"
+      }
+    },
+    "cta": {
+      "title": "想知道适合您的提升方案吗？",
+      "description": "通过专业咨询找到最优治疗。",
+      "button": "免费咨询预约"
+    }
+  },
+  "antiagingPage": {
+    "hero": {
+      "subtitle": "Anti-aging",
+      "description1": "用逆转时光的高端抗衰老，",
+      "description2": "恢复年轻活力的肌肤。"
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "抗衰老治疗系列"
+    },
+    "benefits": {
+      "subtitle": "Natural Beauty",
+      "title": "自然的美丽",
+      "description": "LIV整形外科的抗衰老追求不过度的自然美。只使用正品产品，通过个性化治疗创造最佳效果。",
+      "authentic": {
+        "title": "正品正量原则",
+        "description": "只使用FDA批准的正品，遵守规定剂量。"
+      },
+      "customized": {
+        "title": "定制治疗设计",
+        "description": "分析面部结构和皮肤状况，提出最优治疗方案。"
+      },
+      "natural": {
+        "title": "自然的效果",
+        "description": "通过不着痕迹的自然变化，恢复本来的美丽。"
+      }
+    },
+    "cta": {
+      "title": "想要恢复青春吗？",
+      "description": "通过专业咨询找到适合您的治疗。",
+      "button": "免费咨询预约"
+    }
+  },
+  "laserPage": {
+    "hero": {
+      "title": "激光中心",
+      "subtitle": "针对皮肤问题的定制激光方案",
+      "description1": "通过Clarity II + Lucas组合，",
+      "description2": "从色素到血管、脱毛、纹身去除一站式护理"
+    },
+    "highlights": {
+      "equipment": "设备",
+      "treatments": "治疗领域",
+      "experience": "经验",
+      "safety": "安全性"
+    },
+    "categories": {
+      "title": "针对皮肤问题的定制治疗",
+      "description": "选择您的皮肤问题，我们将为您推荐最佳激光治疗",
+      "pigmentation": {
+        "title": "色斑/色素改善",
+        "description": "用皮秒激光和激光嫩肤有效改善黄褐斑、雀斑、老年斑等色素问题。"
+      },
+      "vascular": {
+        "title": "红血丝/血管治疗",
+        "description": "用Clarity II双波长治疗面部潮红、毛细血管扩张、血管瘤。"
+      },
+      "skintone": {
+        "title": "肤色均匀化",
+        "description": "用激光嫩肤和Ulblanc使暗沉肌肤变得明亮透彻。"
+      },
+      "hairRemoval": {
+        "title": "高端脱毛",
+        "description": "用Clarity II双波长和IntelliTrak技术，适合所有肤质的安全脱毛。"
+      },
+      "tattoo": {
+        "title": "纹身去除",
+        "description": "用Lucas皮秒激光无疤痕有效去除各种颜色的纹身。"
+      }
+    },
+    "matrix": {
+      "badge": "设备 × 适应症",
+      "title": "解决任何问题的设备阵容",
+      "description": "LIV激光中心的4种高端设备覆盖所有皮肤问题"
+    },
+    "equipment": {
+      "badge": "LIV设备",
+      "title": "高端激光阵容",
+      "description": "用FDA批准的最新设备提供安全有效的治疗",
+      "clarity": {
+        "name": "Clarity II",
+        "spec": "双波长 + IntelliTrak技术",
+        "tags": ["色素", "血管", "脱毛", "肤色"]
+      },
+      "lucas": {
+        "name": "Lucas",
+        "spec": "皮秒脉冲 (450ps)",
+        "tags": ["黄褐斑", "色素", "纹身去除"]
+      },
+      "toning": {
+        "name": "激光嫩肤",
+        "spec": "低功率重复照射",
+        "tags": ["肤色", "毛孔", "肤质"]
+      },
+      "ulblanc": {
+        "name": "Ulblanc",
+        "spec": "黑色素选择性靶向",
+        "tags": ["皮肤美白", "肤色均匀"]
+      }
+    },
+    "synergy": {
+      "title": "Clarity II + Lucas协同效应",
+      "description": "两种高端设备的组合比单独治疗更快更有效",
+      "multiWave": {
+        "title": "多波长覆盖",
+        "description": "从532nm到1064nm覆盖所有深度的靶标"
+      },
+      "combined": {
+        "title": "复合适应症治疗",
+        "description": "同时解决黄褐斑+红血丝、色素+毛孔等复合问题"
+      },
+      "fast": {
+        "title": "快速见效",
+        "description": "比单独治疗快1.5-2倍的效果"
+      }
+    },
+    "process": {
+      "title": "激光治疗流程",
+      "steps": {
+        "analysis": {
+          "title": "皮肤分析",
+          "description": "专家咨询及皮肤类型、问题精准分析"
+        },
+        "design": {
+          "title": "定制设计",
+          "description": "个人最优激光组合及治疗计划制定"
+        },
+        "treatment": {
+          "title": "激光治疗",
+          "description": "经验丰富的专家安全精准操作"
+        },
+        "aftercare": {
+          "title": "术后护理",
+          "description": "治疗后护理、定期检查、维护管理"
+        }
+      }
+    },
+    "faq": {
+      "title": "常见问题",
+      "q1": {
+        "question": "哪种激光适合我？",
+        "answer": "根据皮肤状况和问题，最佳激光各有不同。通过免费咨询，专家将直接分析您的皮肤并提出定制治疗方案。"
+      },
+      "q2": {
+        "question": "激光治疗疼吗？",
+        "answer": "因设备而异，但大多数人形容为\"像橡皮筋弹一下的感觉\"。需要时涂抹麻醉膏以最小化疼痛。Clarity II配有内置冷却系统，更加舒适。"
+      },
+      "q3": {
+        "question": "恢复期多长？",
+        "answer": "根据激光类型而定。激光嫩肤、Ulblanc几乎没有恢复期，可立即恢复日常生活。皮秒激光可能有3-5天的轻微发红。"
+      },
+      "q4": {
+        "question": "什么时候能看到效果？",
+        "answer": "治疗后可立即感受到肤色改善，随着胶原蛋白重塑，效果在2-4周内更加明显。建议完成推荐次数以获得最佳效果。"
+      }
+    },
+    "cta": {
+      "title": "迈向清透健康肌肤的第一步",
+      "description1": "为您找到最适合的激光",
+      "description2": "通过免费咨询确认您的定制治疗方案",
+      "button": "免费咨询预约"
+    },
+    "viewMore": "了解更多"
+  },
+  "trust": {
+    "certification": {
+      "title": "官方认证医院",
+      "subtitle": "超声刀Prime · 热玛吉"
+    },
+    "doctor": {
+      "title": "金秀英代表院长",
+      "subtitle": "整形外科专业医师"
+    },
+    "location": {
+      "title": "新沙站4号出口",
+      "subtitle": "步行1分钟"
+    },
+    "cta": {
+      "consultation": "免费咨询预约",
+      "kakao": "KakaoTalk咨询"
+    }
+  },
+  "floatingCta": {
+    "phone": "电话咨询",
+    "kakao": "KakaoTalk",
+    "call": "电话",
+    "kakaoTalk": "KakaoTalk"
   }
 }

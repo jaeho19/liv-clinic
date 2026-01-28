@@ -917,6 +917,7 @@ export default function SignatureDetail() {
   const [selectedProgram, setSelectedProgram] = useState<string | null>(null);
   const { scrollToSection } = useScrollToSection({ offset: 100 }); // 헤더 높이 고려
   const tCommon = useTranslations('common');
+  const t = useTranslations('signaturePage');
 
   const headerVariants = {
     hidden: { opacity: 0, y: reducedMotion ? 0 : 20 },
@@ -966,7 +967,7 @@ export default function SignatureDetail() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
               >
-                Signature Program
+                {t('hero.subtitle')}
               </motion.p>
               <motion.h1
                 className="text-4xl md:text-5xl lg:text-display text-secondary mb-6 font-medium"
@@ -974,7 +975,7 @@ export default function SignatureDetail() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
               >
-                시그니처 프로그램
+                {t('hero.title')}
               </motion.h1>
               <motion.p
                 className="text-lg md:text-h4 text-mono leading-relaxed"
@@ -982,9 +983,9 @@ export default function SignatureDetail() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                리브성형외과만의 프리미엄 안티에이징 프로그램으로
+                {t('hero.description1')}
                 <br className="hidden md:block" />
-                자연스럽고 아름다운 변화를 경험하세요.
+                {t('hero.description2')}
               </motion.p>
             </div>
           </AnimateOnScroll>
@@ -1006,16 +1007,16 @@ export default function SignatureDetail() {
             animate={isInView ? 'visible' : 'hidden'}
           >
             <p className="font-serif text-base md:text-lg text-primary mb-2 tracking-wider">
-              Premium Anti-aging
+              {t('photoComparison.subtitle')}
             </p>
             <h2
               id="signature-programs-title"
               className="text-2xl md:text-3xl lg:text-4xl font-medium text-secondary mb-4"
             >
-              포토리얼 전후 비교
+              {t('photoComparison.title')}
             </h2>
             <p className="text-mono-light max-w-2xl mx-auto text-sm md:text-base">
-              카드 위에 마우스를 올리거나 탭하여 시술 전후 변화를 확인하세요
+              {t('photoComparison.description')}
             </p>
           </motion.div>
 
@@ -1052,9 +1053,9 @@ export default function SignatureDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-12 md:mb-16">
-              <p className="font-serif text-lg text-primary mb-3">Why Signature?</p>
+              <p className="font-serif text-lg text-primary mb-3">{t('whySignature.subtitle')}</p>
               <h2 className="text-2xl md:text-3xl lg:text-h1 text-secondary">
-                시그니처를 선택해야 하는 이유
+                {t('whySignature.title')}
               </h2>
             </div>
           </AnimateOnScroll>
@@ -1067,8 +1068,8 @@ export default function SignatureDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 ),
-                title: '시너지 효과',
-                desc: '단일 시술보다 2-3배 더 효과적인\n복합 시술의 시너지 효과',
+                title: t('whySignature.synergy.title'),
+                desc: t('whySignature.synergy.description'),
                 color: '#8B5CF6',
               },
               {
@@ -1077,8 +1078,8 @@ export default function SignatureDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 ),
-                title: '합리적인 가격',
-                desc: '개별 시술 대비 최대 30% 할인된\n패키지 특별 가격',
+                title: t('whySignature.price.title'),
+                desc: t('whySignature.price.description'),
                 color: '#F59E0B',
               },
               {
@@ -1087,8 +1088,8 @@ export default function SignatureDetail() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 ),
-                title: '검증된 프로토콜',
-                desc: '수많은 시술 경험으로 검증된\n최적의 시술 조합',
+                title: t('whySignature.protocol.title'),
+                desc: t('whySignature.protocol.description'),
                 color: '#EC4899',
               },
             ].map((item, index) => (
@@ -1119,24 +1120,24 @@ export default function SignatureDetail() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center mb-10 md:mb-12">
-              <p className="font-serif text-lg text-primary mb-3">Comparison</p>
+              <p className="font-serif text-lg text-primary mb-3">{t('comparison.subtitle')}</p>
               <h2 className="text-2xl md:text-3xl lg:text-h1 text-secondary">
-                개별 시술 vs 시그니처 프로그램
+                {t('comparison.title')}
               </h2>
             </div>
           </AnimateOnScroll>
 
           <div className="max-w-3xl mx-auto">
             <div className="grid grid-cols-3 gap-4 mb-4 text-center">
-              <div className="font-medium text-mono-light text-sm md:text-base">항목</div>
-              <div className="font-medium text-mono-light text-sm md:text-base">개별 시술</div>
-              <div className="font-medium text-primary text-sm md:text-base">시그니처</div>
+              <div className="font-medium text-mono-light text-sm md:text-base">{t('comparison.headers.item')}</div>
+              <div className="font-medium text-mono-light text-sm md:text-base">{t('comparison.headers.individual')}</div>
+              <div className="font-medium text-primary text-sm md:text-base">{t('comparison.headers.signature')}</div>
             </div>
             {[
-              { label: '효과', individual: '단일 효과', signature: '2-3배 시너지' },
-              { label: '가격', individual: '정가', signature: '최대 30% 할인' },
-              { label: '시간', individual: '각각 방문', signature: '원스톱 케어' },
-              { label: '결과', individual: '부분 개선', signature: '토탈 솔루션' },
+              { label: t('comparison.rows.effect.label'), individual: t('comparison.rows.effect.individual'), signature: t('comparison.rows.effect.signature') },
+              { label: t('comparison.rows.price.label'), individual: t('comparison.rows.price.individual'), signature: t('comparison.rows.price.signature') },
+              { label: t('comparison.rows.time.label'), individual: t('comparison.rows.time.individual'), signature: t('comparison.rows.time.signature') },
+              { label: t('comparison.rows.result.label'), individual: t('comparison.rows.result.individual'), signature: t('comparison.rows.result.signature') },
             ].map((row, index) => (
               <motion.div
                 key={index}
@@ -1166,7 +1167,7 @@ export default function SignatureDetail() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                나에게 맞는 프로그램이 궁금하신가요?
+                {t('cta.title')}
               </motion.h2>
               <motion.p
                 className="text-lg md:text-h4 opacity-90 mb-8"
@@ -1175,7 +1176,7 @@ export default function SignatureDetail() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                전문 상담사가 피부 상태를 분석하여 최적의 프로그램을 추천해드립니다.
+                {t('cta.description')}
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
