@@ -437,6 +437,16 @@ export function generatePhysicianSchema(doctor: PhysicianData) {
     description: doctor.philosophy,
     medicalSpecialty: ['Plastic Surgery', 'Dermatology', 'Anti-aging Medicine'],
 
+    // 근무지 주소 (Google Rich Results 요구사항)
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '나루터로 80 자은빌딩 4층',
+      addressLocality: '서초구',
+      addressRegion: '서울특별시',
+      postalCode: SITE_INFO.postalCode,
+      addressCountry: 'KR',
+    },
+
     // 소속 병원 연결
     worksFor: {
       '@type': 'MedicalBusiness',
@@ -572,8 +582,10 @@ export function generateWebPageSchema(page: {
   datePublished?: string;
   dateModified?: string;
   breadcrumbs?: { name: string; url: string }[];
+  // ProfilePage용 mainEntity (의료진 등 프로필 페이지에서 사용)
+  mainEntity?: { '@id': string }[];
 }) {
-  return {
+  const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': page.type || 'WebPage',
     '@id': `${BASE_URL}${page.path}`,
@@ -602,6 +614,13 @@ export function generateWebPageSchema(page: {
       cssSelector: ['.hero-title', '.main-description', '.short-answer', '.faq-answer'],
     },
   };
+
+  // ProfilePage 타입일 때 mainEntity 추가 (Google Rich Results 요구사항)
+  if (page.type === 'ProfilePage' && page.mainEntity && page.mainEntity.length > 0) {
+    schema.mainEntity = page.mainEntity;
+  }
+
+  return schema;
 }
 
 // 음성검색 최적화 FAQ 스키마 (shortAnswer + questionVariants 지원)

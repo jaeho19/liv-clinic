@@ -81,8 +81,8 @@ const doctorsSchemaData = {
   },
   cheon: {
     id: 'dr-cheon',
-    name: '천형준',
-    nameEn: 'Hyungjun Cheon, M.D.',
+    name: '천신혜',
+    nameEn: 'Shinhye Cheon, M.D.',
     title: '진료원장',
     specialty: '레이저·피부 관리 전문',
     philosophy: '과학적 근거를 바탕으로 한 맞춤형 피부 케어로 건강한 아름다움을 제공합니다.',
@@ -111,7 +111,7 @@ export default function StaffLayout({
   const kimSchema = generatePhysicianSchema(doctorsSchemaData.kim);
   const cheonSchema = generatePhysicianSchema(doctorsSchemaData.cheon);
 
-  // 페이지 스키마 생성
+  // 페이지 스키마 생성 (mainEntity로 의료진 연결 - Google Rich Results 요구사항)
   const pageSchema = generateWebPageSchema({
     path: '/about/staff',
     title: '의료진 소개 | 리브성형외과',
@@ -122,6 +122,11 @@ export default function StaffLayout({
       { name: '홈', url: '/' },
       { name: '소개', url: '/about' },
       { name: '의료진', url: '/about/staff' },
+    ],
+    // ProfilePage mainEntity - 의료진 참조
+    mainEntity: [
+      { '@id': `${BASE_URL}/about/staff#dr-kim` },
+      { '@id': `${BASE_URL}/about/staff#dr-cheon` },
     ],
   });
 

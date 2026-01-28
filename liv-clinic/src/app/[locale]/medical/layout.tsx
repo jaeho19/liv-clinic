@@ -21,13 +21,13 @@ export default function MedicalLayout({
   // FAQ 스키마 생성
   const faqSchema = generateVoiceOptimizedFAQSchema(faqData);
 
-  // 페이지 스키마 생성
+  // 페이지 스키마 생성 (FAQPage는 faqSchema에서 생성하므로 WebPage로 설정)
   const pageSchema = generateWebPageSchema({
     path: '/medical',
     title: '의료정보 Q&A | 리브성형외과',
     description: '울쎄라, 써마지, 보톡스, 필러 등 미용 시술에 대한 자주 묻는 질문과 전문 답변. 성형외과 전문의가 알려주는 정확한 의료정보.',
     locale: 'ko',
-    type: 'FAQPage',
+    type: 'WebPage',
     breadcrumbs: [
       { name: '홈', url: '/' },
       { name: '의료정보', url: '/medical' },
