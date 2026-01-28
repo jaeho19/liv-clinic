@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useMessages } from 'next-intl';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, ScrollLink } from '@/components/ui';
@@ -19,42 +19,27 @@ interface FAQItem {
   tags: string[];
 }
 
+// Type for messages structure
+interface MedicalMessages {
+  medical: {
+    faq: FAQItem[];
+  };
+}
+
 export default function MedicalPage() {
   const t = useTranslations('common');
   const tMedical = useTranslations('medical');
   const tNav = useTranslations('nav');
+  const messages = useMessages() as unknown as MedicalMessages;
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const stickyHeaderRef = useRef<HTMLElement>(null);
 
-  // Get FAQ data from translations
+  // Get FAQ data directly from messages
   const faqData = useMemo(() => {
-    const faqItems: FAQItem[] = [];
-    // Access the raw messages to get the faq array
-    // We need to iterate through the indices since next-intl returns individual items
-    let index = 0;
-    while (true) {
-      try {
-        const id = tMedical.raw(`faq.${index}.id`) as string | undefined;
-        if (!id) break;
-
-        faqItems.push({
-          id,
-          category: tMedical.raw(`faq.${index}.category`) as string,
-          question: tMedical(`faq.${index}.question`),
-          shortAnswer: tMedical.raw(`faq.${index}.shortAnswer`) as string | undefined,
-          answer: tMedical(`faq.${index}.answer`),
-          relatedTreatments: tMedical.raw(`faq.${index}.relatedTreatments`) as string[],
-          tags: tMedical.raw(`faq.${index}.tags`) as string[],
-        });
-        index++;
-      } catch {
-        break;
-      }
-    }
-    return faqItems;
-  }, [tMedical]);
+    return messages?.medical?.faq || [];
+  }, [messages]);
 
   const categories = [
     { id: 'all', label: tMedical('categories.all') },
