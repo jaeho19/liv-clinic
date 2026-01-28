@@ -5,9 +5,7 @@ import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
-
-const treatment = TREATMENTS.antiaging.botox;
+import { MEDICAL_QA } from '@/lib/constants';
 
 // Premium color palette - Rose Gold theme
 const colors = {
@@ -495,10 +493,24 @@ export default function BotoxDetail() {
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
-  // 번역된 데이터
+  // Translated data from messages files
   const treatmentAreasLabels = t.raw('antiaging.botox.detail.treatmentAreasLabels') as TreatmentAreasLabels;
   const timelineItems = t.raw('antiaging.botox.detail.timeline.items') as TimelineItem[];
   const treatmentInfoLabels = t.raw('antiaging.botox.detail.treatmentInfoLabels') as {
+    duration: string;
+    anesthesia: string;
+    recovery: string;
+    results: string;
+  };
+
+  // Content data from translations (previously from constants)
+  const benefitItems = t.raw('antiaging.botox.detail.benefits.items') as { title: string; desc: string }[];
+  const processItems = t.raw('antiaging.botox.detail.process.items') as { step: number; title: string; desc: string }[];
+  const targetAreasItems = t.raw('antiaging.botox.detail.targetAreasItems') as string[];
+  const idealForItems = t.raw('antiaging.botox.detail.idealFor.items') as string[];
+  const cautionItems = t.raw('antiaging.botox.detail.cautions.items') as string[];
+  const faqItems = t.raw('antiaging.botox.detail.faqs.items') as { q: string; shortA: string; a: string }[];
+  const treatmentValues = t.raw('antiaging.botox.detail.treatmentValues') as {
     duration: string;
     anesthesia: string;
     recovery: string;
@@ -540,6 +552,10 @@ export default function BotoxDetail() {
       description: t('antiaging.botox.detail.cta.description'),
     },
     mechanismLabel: t('antiaging.botox.detail.mechanismLabel'),
+    // Basic info from translations
+    name: t('antiaging.botox.name'),
+    fullName: t('antiaging.botox.fullName'),
+    description: t('antiaging.botox.description'),
   };
 
   const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
@@ -593,20 +609,20 @@ export default function BotoxDetail() {
               >
                 <div className="w-12 h-px bg-gradient-to-r from-[#C4A484] to-transparent" />
                 <span className="text-xs tracking-[0.4em] text-[#C4A484] uppercase">
-                  Anti-Aging Treatment
+                  {detail.hero.badge}
                 </span>
               </motion.div>
 
               <h1 className="text-5xl lg:text-7xl font-extralight text-[#3D3D3D] leading-tight mb-6">
-                {treatment.name}
+                {detail.name}
               </h1>
 
               <p className="text-xl font-light text-[#C4A484] mb-8 tracking-wide">
-                {treatment.nameEn}
+                {detail.fullName}
               </p>
 
               <p className="text-gray-600 leading-relaxed max-w-md font-light text-lg">
-                {treatment.description}
+                {detail.description}
               </p>
             </motion.div>
 
@@ -620,7 +636,7 @@ export default function BotoxDetail() {
               <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#C4A484]/20">
                 <Image
                   src="/images/Gemini_Generated_Image_dx1pc4dx1pc4dx1p.png"
-                  alt="보톡스 - 특정 근육의 움직임을 완화"
+                  alt={`${detail.name} - ${detail.description}`}
                   fill
                   className="object-cover"
                   quality={95}
@@ -655,7 +671,7 @@ export default function BotoxDetail() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {treatment.benefits.map((benefit, index) => (
+            {benefitItems.map((benefit, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -709,7 +725,7 @@ export default function BotoxDetail() {
               </p>
 
               <div className="space-y-3">
-                {treatment.targetAreas.map((area, index) => (
+                {targetAreasItems.map((area, index) => (
                   <motion.div
                     key={area}
                     initial={{ opacity: 0, x: -20 }}
@@ -786,7 +802,7 @@ export default function BotoxDetail() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {treatment.process.map((step, index) => (
+            {processItems.map((step, index) => (
               <motion.div
                 key={step.step}
                 initial={{ opacity: 0, y: 30 }}
@@ -809,7 +825,7 @@ export default function BotoxDetail() {
                   <p className="text-sm text-white/50 leading-relaxed">{step.desc}</p>
 
                   {/* Connection line */}
-                  {index < treatment.process.length - 1 && (
+                  {index < processItems.length - 1 && (
                     <div className="hidden lg:block absolute top-1/2 -right-3 w-6 h-px bg-gradient-to-r from-[#C4A484]/50 to-transparent" />
                   )}
                 </div>
@@ -840,10 +856,10 @@ export default function BotoxDetail() {
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
             {[
-              { label: treatmentInfoLabels.duration, value: treatment.duration },
-              { label: treatmentInfoLabels.anesthesia, value: treatment.anesthesia },
-              { label: treatmentInfoLabels.recovery, value: treatment.recovery },
-              { label: treatmentInfoLabels.results, value: treatment.results },
+              { label: treatmentInfoLabels.duration, value: treatmentValues.duration },
+              { label: treatmentInfoLabels.anesthesia, value: treatmentValues.anesthesia },
+              { label: treatmentInfoLabels.recovery, value: treatmentValues.recovery },
+              { label: treatmentInfoLabels.results, value: treatmentValues.results },
             ].map((info, index) => (
               <motion.div
                 key={info.label}
@@ -885,7 +901,7 @@ export default function BotoxDetail() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-4 max-w-4xl">
-            {treatment.idealFor.map((item, index) => (
+            {idealForItems.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -927,7 +943,7 @@ export default function BotoxDetail() {
           </motion.div>
 
           <div className="max-w-3xl mx-auto space-y-4">
-            {treatment.faqs.map((faq, index) => (
+            {faqItems.map((faq, index) => (
               <motion.details
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -977,7 +993,7 @@ export default function BotoxDetail() {
             </div>
             <div className="bg-gradient-to-br from-[#FAFAFA] to-white p-10 rounded-2xl border border-gray-100">
               <ul className="space-y-4">
-                {treatment.cautions.map((caution, index) => (
+                {cautionItems.map((caution, index) => (
                   <motion.li
                     key={index}
                     className="flex items-start gap-4 text-gray-600 font-light"

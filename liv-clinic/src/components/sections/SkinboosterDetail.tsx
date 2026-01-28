@@ -5,9 +5,7 @@ import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
-
-const treatment = TREATMENTS.antiaging.skinbooster;
+import { MEDICAL_QA } from '@/lib/constants';
 
 // Premium color palette - Aqua Serenity
 const colors = {
@@ -64,6 +62,30 @@ interface ProductItem {
   name: string;
   desc: string;
   feature: string;
+}
+
+interface BenefitItem {
+  title: string;
+  desc: string;
+}
+
+interface ProcessItem {
+  step: number;
+  title: string;
+  desc: string;
+}
+
+interface FaqItem {
+  q: string;
+  shortA: string;
+  a: string;
+}
+
+interface TreatmentValues {
+  duration: string;
+  anesthesia: string;
+  recovery: string;
+  results: string;
 }
 
 // Premium Hydration Illustration
@@ -268,8 +290,20 @@ export default function SkinboosterDetail() {
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
+  // Load translation data using t.raw() for arrays
+  const benefitItems = t.raw('antiaging.skinbooster.detail.benefits.items') as BenefitItem[];
+  const processItems = t.raw('antiaging.skinbooster.detail.process.items') as ProcessItem[];
+  const idealForItems = t.raw('antiaging.skinbooster.detail.idealFor.items') as string[];
+  const cautionItems = t.raw('antiaging.skinbooster.detail.cautions.items') as string[];
+  const faqItems = t.raw('antiaging.skinbooster.detail.faqs.items') as FaqItem[];
+  const treatmentValues = t.raw('antiaging.skinbooster.detail.treatmentValues') as TreatmentValues;
+
   // Load translation data
   const detail = {
+    name: t('antiaging.skinbooster.name'),
+    nameEn: t('antiaging.skinbooster.fullName'),
+    tagline: t('antiaging.skinbooster.tagline'),
+    description: t('antiaging.skinbooster.description'),
     heroImageAlt: t('antiaging.skinbooster.detail.heroImageAlt'),
     hydrationLabels: t.raw('antiaging.skinbooster.detail.hydrationIllustration') as HydrationLabels,
     courseTimeline: t.raw('antiaging.skinbooster.detail.courseTimeline.items') as CourseTimelineItem[],
@@ -348,19 +382,19 @@ export default function SkinboosterDetail() {
               </motion.div>
 
               <h1 className="text-5xl lg:text-7xl font-extralight text-[#3A3A3A] leading-tight mb-6">
-                {treatment.name}
+                {detail.name}
               </h1>
 
               <p className="text-xl font-light text-[#7BA3A8] mb-4 tracking-wide">
-                {treatment.nameEn}
+                {detail.nameEn}
               </p>
 
               <p className="text-lg text-gray-500 mb-4 font-light leading-relaxed">
-                {treatment.tagline}
+                {detail.tagline}
               </p>
 
               <p className="text-gray-400 leading-relaxed max-w-md font-light text-lg">
-                {treatment.description}
+                {detail.description}
               </p>
             </motion.div>
 
@@ -410,7 +444,7 @@ export default function SkinboosterDetail() {
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-            {treatment.benefits.map((benefit, index) => (
+            {benefitItems.map((benefit, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -608,7 +642,7 @@ export default function SkinboosterDetail() {
           </motion.div>
 
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
-            {treatment.process.map((step, index) => (
+            {processItems.map((step, index) => (
               <motion.div
                 key={step.step}
                 initial={{ opacity: 0, y: 30 }}
@@ -656,10 +690,10 @@ export default function SkinboosterDetail() {
 
           <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
-              { label: detail.treatmentInfoLabels.duration, value: treatment.duration },
-              { label: detail.treatmentInfoLabels.anesthesia, value: treatment.anesthesia },
-              { label: detail.treatmentInfoLabels.recovery, value: treatment.recovery },
-              { label: detail.treatmentInfoLabels.results, value: treatment.results },
+              { label: detail.treatmentInfoLabels.duration, value: treatmentValues.duration },
+              { label: detail.treatmentInfoLabels.anesthesia, value: treatmentValues.anesthesia },
+              { label: detail.treatmentInfoLabels.recovery, value: treatmentValues.recovery },
+              { label: detail.treatmentInfoLabels.results, value: treatmentValues.results },
             ].map((info, index) => (
               <motion.div
                 key={info.label}
@@ -699,7 +733,7 @@ export default function SkinboosterDetail() {
           </motion.div>
 
           <div className="max-w-4xl grid md:grid-cols-2 gap-4">
-            {treatment.idealFor.map((item, index) => (
+            {idealForItems.map((item, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -741,7 +775,7 @@ export default function SkinboosterDetail() {
           </motion.div>
 
           <div className="max-w-3xl mx-auto space-y-4">
-            {treatment.faqs.map((faq, index) => (
+            {faqItems.map((faq, index) => (
               <motion.details
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
@@ -791,7 +825,7 @@ export default function SkinboosterDetail() {
             </div>
             <div className="bg-white p-10 rounded-2xl border border-gray-100">
               <ul className="space-y-4">
-                {treatment.cautions.map((caution, index) => (
+                {cautionItems.map((caution, index) => (
                   <motion.li
                     key={index}
                     className="flex items-start gap-4 text-gray-500 font-light"

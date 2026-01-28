@@ -1782,6 +1782,54 @@
             "anesthesia": "Anesthesia",
             "recovery": "Recovery Period",
             "results": "Effect Duration"
+          },
+          "benefits": {
+            "title": "Benefits of Botox",
+            "items": [
+              { "title": "Expression Wrinkle Improvement", "desc": "Effectively reduces wrinkles on forehead, glabella, and eye area" },
+              { "title": "Facial Contouring", "desc": "Reduces masseter and trapezius muscle volume" },
+              { "title": "Quick Treatment", "desc": "Short treatment time of only 10-20 minutes" },
+              { "title": "Natural Expression", "desc": "Maintains natural expression with optimal dosage" }
+            ]
+          },
+          "process": {
+            "items": [
+              { "step": 1, "title": "Consultation", "desc": "Wrinkle analysis and desired result discussion" },
+              { "step": 2, "title": "Cleansing", "desc": "Makeup removal and disinfection" },
+              { "step": 3, "title": "Anesthesia", "desc": "Numbing cream application if needed" },
+              { "step": 4, "title": "Marking", "desc": "Treatment points marking" },
+              { "step": 5, "title": "Treatment", "desc": "Botox injection with fine needle" },
+              { "step": 6, "title": "Completion", "desc": "Post-treatment instructions" }
+            ]
+          },
+          "targetAreasItems": ["Forehead", "Glabella", "Eye area", "Masseter", "Mouth corners", "Trapezius", "Calves"],
+          "idealFor": {
+            "items": [
+              "Those concerned about expression wrinkles",
+              "Those wanting to reduce masseter or trapezius volume",
+              "Those seeking quick and simple treatment",
+              "Young people seeking preventive anti-aging"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "Avoid alcohol and sauna on treatment day",
+              "Do not massage the treatment area",
+              "Not suitable for pregnant/nursing women or those with neuromuscular disorders"
+            ]
+          },
+          "faqs": {
+            "items": [
+              { "q": "Will Botox make my expression unnatural?", "shortA": "Natural expression is maintained with proper dosage.", "a": "With proper dosage injected at the correct locations, you can maintain natural expression while improving wrinkles. Excessive dosage can lead to unnatural appearance, so treatment by experienced professionals is important." },
+              { "q": "How long do Botox effects last?", "shortA": "Usually 3-6 months depending on individual.", "a": "Results vary by individual but typically last 3-6 months. Regular treatments can weaken the muscles, potentially extending the duration of effects." },
+              { "q": "Do different Botox brands have different effects?", "shortA": "Each product differs in onset time, diffusion, and duration.", "a": "Each product has different onset time, diffusion rate, and duration. It's important to select the right product based on the treatment area and purpose." }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "10-20 minutes",
+            "anesthesia": "None or numbing cream (upon request)",
+            "recovery": "Immediate return to daily activities",
+            "results": "Effects begin in 3-7 days, last 3-6 months"
           }
         }
       },
@@ -1797,7 +1845,51 @@
             "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume."
           },
           "benefits": {
-            "title": "Benefits of Filler"
+            "title": "Benefits of Filler",
+            "items": [
+              { "title": "Immediate Results", "desc": "See volume improvement right after treatment" },
+              { "title": "Natural Texture", "desc": "Soft feel of hyaluronic acid" },
+              { "title": "Reversible Treatment", "desc": "Can be dissolved if needed for safety" },
+              { "title": "Versatile Application", "desc": "Multi-purpose use for volume, wrinkles, contours" }
+            ]
+          },
+          "process": {
+            "items": [
+              { "step": 1, "title": "Consultation", "desc": "Facial analysis and treatment planning" },
+              { "step": 2, "title": "Cleansing", "desc": "Makeup removal and disinfection" },
+              { "step": 3, "title": "Anesthesia", "desc": "Numbing cream or nerve block" },
+              { "step": 4, "title": "Treatment", "desc": "Customized filler injection by area" },
+              { "step": 5, "title": "Completion", "desc": "Shaping and aftercare instructions" }
+            ]
+          },
+          "idealFor": {
+            "items": [
+              "Those wanting to fill hollowed areas",
+              "Those concerned about nasolabial folds and mouth lines",
+              "Those wanting to enhance nose and chin contours",
+              "Those wanting fuller lips"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "Bruising and swelling may occur after treatment",
+              "Avoid massaging or pressing on treated areas",
+              "Avoid strenuous exercise and sauna for 3 days",
+              "Vascular occlusion risk exists - treatment by experienced professionals is essential"
+            ]
+          },
+          "faqs": {
+            "items": [
+              { "q": "Will the filler clump or look unnatural?", "shortA": "With proper amount and skilled professionals, results are natural.", "a": "Using genuine filler in appropriate amounts and having treatment by professionals with anatomical knowledge ensures natural results. Excessive treatment can look unnatural, so proper dosing is important." },
+              { "q": "Can I return to daily activities immediately after filler treatment?", "shortA": "Most can resume activities immediately.", "a": "Most people can resume daily activities immediately. However, depending on the treated area, bruising or swelling may occur, so it's best to schedule treatment with some buffer before important events." },
+              { "q": "Can filler be dissolved?", "shortA": "Yes, it can be safely dissolved with hyaluronidase.", "a": "Hyaluronic acid filler can be dissolved with hyaluronidase. It can be safely removed if you're unsatisfied with results or if complications occur." }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "20-40 minutes",
+            "anesthesia": "Numbing cream or nerve block",
+            "recovery": "Immediate to 3 days (varies by area)",
+            "results": "Immediate effect, lasts 6-24 months (varies by product)"
           },
           "targetAreas": {
             "title": "Treatment Areas",
@@ -1874,7 +1966,51 @@
             ]
           },
           "benefits": {
-            "title": "Benefits of Skin Booster"
+            "title": "Benefits of Skin Booster",
+            "items": [
+              { "title": "Deep Hydration", "desc": "Hyaluronic acid delivered to dermis layer" },
+              { "title": "Skin Elasticity Improvement", "desc": "Stimulates collagen and elastin production" },
+              { "title": "Natural Radiance", "desc": "Healthy glow from within" },
+              { "title": "Skin Texture Improvement", "desc": "Fine line and pore refinement" }
+            ]
+          },
+          "process": {
+            "items": [
+              { "step": 1, "title": "Consultation", "desc": "Skin condition analysis and product selection" },
+              { "step": 2, "title": "Cleansing", "desc": "Makeup removal and skin preparation" },
+              { "step": 3, "title": "Anesthesia", "desc": "Numbing cream application" },
+              { "step": 4, "title": "Treatment", "desc": "Injection via micro-needle or device" },
+              { "step": 5, "title": "Completion", "desc": "Calming care and sun protection" }
+            ]
+          },
+          "idealFor": {
+            "items": [
+              "Those with dry skin or lack of hydration",
+              "Those with reduced skin elasticity or fine lines",
+              "Those with dull skin tone or lack of radiance",
+              "Those wanting skin regeneration after laser treatment"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "Micro injection marks and redness may occur after treatment",
+              "Avoid makeup and alcohol on treatment day",
+              "Apply sunscreen diligently",
+              "3-4 sessions at 2-4 week intervals recommended"
+            ]
+          },
+          "faqs": {
+            "items": [
+              { "q": "Is skin booster the same as water glow injection?", "shortA": "Similar, but skin boosters contain more diverse ingredients.", "a": "Similar concept, but skin boosters include various ingredients (hyaluronic acid, polynucleotides, etc.). Water glow injections focus mainly on hyaluronic acid-based hydration." },
+              { "q": "When will I see results?", "shortA": "Hydration immediately + elasticity and radiance in 2-4 weeks.", "a": "You can feel hydration immediately after treatment, and skin elasticity and radiance improve from 2-4 weeks. We recommend 3-4 sessions at 2-4 week intervals for optimal results." },
+              { "q": "Which product is best?", "shortA": "Selection is made after consultation based on skin condition and goals.", "a": "Various products like Rejuran, Juvelook, Revive, Vital, and Rituo are available. Selection is based on skin condition and goals. The right product is determined through consultation." }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "30-45 minutes",
+            "anesthesia": "Numbing cream",
+            "recovery": "1-3 days (micro injection marks)",
+            "results": "Effects in 2-4 weeks, 3-4 sessions recommended"
           },
           "effects": {
             "title": "Skin Booster Effects",
@@ -2914,6 +3050,136 @@
       "title": "Curious about the right lifting for you?",
       "description": "Find the optimal treatment through expert consultation.",
       "button": "Book Free Consultation"
+    },
+    "treatments": {
+      "ulthera": {
+        "name": "Ultherapy Prime",
+        "nameEn": "Ultherapy Prime",
+        "description": "The only FDA-approved HIFU lifting device that delivers energy deep into the SMAS layer for natural lifting effects.",
+        "duration": "60-90 min",
+        "recovery": "No downtime"
+      },
+      "thermage": {
+        "name": "Thermage FLX",
+        "nameEn": "Thermage FLX",
+        "description": "4th generation premium RF lifting with AccuREP technology for optimal energy delivery and skin tightening.",
+        "duration": "45-60 min",
+        "recovery": "No downtime"
+      },
+      "density": {
+        "name": "Density",
+        "nameEn": "Density",
+        "description": "RF energy-based lifting that delivers uniform energy distribution for even and smooth lifting results.",
+        "duration": "40-60 min",
+        "recovery": "No downtime"
+      },
+      "inmode": {
+        "name": "InMode",
+        "nameEn": "InMode",
+        "description": "Multi-functional RF technology for simultaneous fat reduction and skin tightening effects.",
+        "duration": "30-90 min",
+        "recovery": "0-5 days"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "nameEn": "Shurink",
+        "description": "HIFU-based lifting treatment ideal for regular maintenance and gradual skin tightening.",
+        "duration": "30-45 min",
+        "recovery": "No downtime"
+      },
+      "thread": {
+        "name": "Thread Lift",
+        "nameEn": "Thread Lift",
+        "description": "Absorbable thread lifting for immediate and natural-looking lifting results with collagen stimulation.",
+        "duration": "30-60 min",
+        "recovery": "3-7 days"
+      }
+    },
+    "compare": {
+      "subtitle": "Compare",
+      "title": "Compare Lifting Treatments",
+      "description": "Find the right lifting treatment for you",
+      "table": {
+        "treatment": "Treatment",
+        "technology": "Technology",
+        "duration": "Duration",
+        "anesthesia": "Anesthesia",
+        "downtime": "Downtime",
+        "results": "Results Duration",
+        "price": "Price Range",
+        "details": "Details →",
+        "viewDetails": "View Details"
+      },
+      "values": {
+        "anesthesiaCream": "Numbing cream",
+        "noAnesthesia": "No anesthesia",
+        "optional": "Optional",
+        "varies": "Varies",
+        "localAnesthesia": "Local anesthesia",
+        "none": "None",
+        "premium": "Premium",
+        "moderate": "Moderate",
+        "affordable": "Affordable",
+        "hifu": "HIFU",
+        "rf": "RF",
+        "hifuRf": "HIFU+RF",
+        "rfNeedle": "RF+Needle",
+        "dissolvingThread": "PDO Thread"
+      },
+      "data": {
+        "ulthera": {
+          "technology": "HIFU",
+          "duration": "60-90 min",
+          "anesthesia": "Numbing cream",
+          "recovery": "None",
+          "results": "1-2 years",
+          "price": "Premium"
+        },
+        "thermage": {
+          "technology": "RF",
+          "duration": "45-60 min",
+          "anesthesia": "No anesthesia",
+          "recovery": "None",
+          "results": "1-2 years",
+          "price": "Premium"
+        },
+        "density": {
+          "technology": "HIFU+RF",
+          "duration": "40-60 min",
+          "anesthesia": "Optional",
+          "recovery": "None",
+          "results": "6 months - 1 year",
+          "price": "Moderate"
+        },
+        "shurink": {
+          "technology": "HIFU",
+          "duration": "30-45 min",
+          "anesthesia": "Optional",
+          "recovery": "None",
+          "results": "3-6 months",
+          "price": "Affordable"
+        },
+        "inmode": {
+          "technology": "RF+Needle",
+          "duration": "30-90 min",
+          "anesthesia": "Varies",
+          "recovery": "0-5 days",
+          "results": "6 months - 1 year",
+          "price": "Varies"
+        },
+        "thread": {
+          "technology": "PDO Thread",
+          "duration": "30-60 min",
+          "anesthesia": "Local anesthesia",
+          "recovery": "3-7 days",
+          "results": "1-2 years",
+          "price": "Moderate"
+        }
+      },
+      "cta": {
+        "question": "Not sure which treatment is right for you?",
+        "button": "Get Free Consultation"
+      }
     }
   },
   "antiagingPage": {

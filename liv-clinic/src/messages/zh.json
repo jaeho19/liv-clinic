@@ -1782,6 +1782,54 @@
             "anesthesia": "麻醉",
             "recovery": "恢复期",
             "results": "效果持续"
+          },
+          "benefits": {
+            "title": "肉毒素的优点",
+            "items": [
+              { "title": "表情纹改善", "desc": "有效缓解额头、眉间、眼角皱纹" },
+              { "title": "轮廓塑形", "desc": "减少咬肌、斜方肌体积" },
+              { "title": "快速治疗", "desc": "仅需10-20分钟的短暂治疗时间" },
+              { "title": "自然表情", "desc": "适当剂量保持自然表情" }
+            ]
+          },
+          "process": {
+            "items": [
+              { "step": 1, "title": "咨询", "desc": "皱纹分析及期望效果咨询" },
+              { "step": 2, "title": "洁面", "desc": "卸妆及消毒" },
+              { "step": 3, "title": "麻醉", "desc": "必要时涂抹麻醉膏" },
+              { "step": 4, "title": "标记", "desc": "标记注射点" },
+              { "step": 5, "title": "治疗", "desc": "微针注射肉毒素" },
+              { "step": 6, "title": "完成", "desc": "术后注意事项说明" }
+            ]
+          },
+          "targetAreasItems": ["额头", "眉间", "眼角", "咬肌", "嘴角", "斜方肌", "小腿"],
+          "idealFor": {
+            "items": [
+              "担心表情纹的人士",
+              "希望缩小咬肌、斜方肌体积的人士",
+              "希望快速简便治疗的人士",
+              "希望预防性抗衰老的年轻人"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "治疗当天避免饮酒和桑拿",
+              "禁止按摩治疗部位",
+              "孕妇、哺乳期女性、神经肌肉疾病患者不宜治疗"
+            ]
+          },
+          "faqs": {
+            "items": [
+              { "q": "打肉毒素会使表情不自然吗？", "shortA": "适当剂量可以保持自然表情。", "a": "在正确位置注射适当剂量，可以在保持自然表情的同时改善皱纹。过量使用可能导致不自然，因此由经验丰富的医疗人员进行治疗非常重要。" },
+              { "q": "肉毒素效果能持续多久？", "shortA": "因人而异，通常持续3-6个月。", "a": "因人而异，但通常持续3-6个月左右。定期治疗可使肌肉弱化，效果可能更持久。" },
+              { "q": "不同品牌的肉毒素有什么区别？", "shortA": "每种产品的起效时间、扩散度、持续时间各不相同。", "a": "每种产品的效果起效时间、扩散度、持续时间都有差异。根据部位和目的选择合适的产品很重要。" }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "10-20分钟",
+            "anesthesia": "无麻醉或麻醉膏（根据需要）",
+            "recovery": "立即恢复日常生活",
+            "results": "3-7天后开始见效，持续3-6个月"
           }
         }
       },
@@ -1797,7 +1845,51 @@
             "description": "使用透明质酸填充剂填充凹陷部位，打造自然饱满效果。"
           },
           "benefits": {
-            "title": "玻尿酸的优点"
+            "title": "玻尿酸的优点",
+            "items": [
+              { "title": "即时效果", "desc": "治疗后立即可见体积改善" },
+              { "title": "自然触感", "desc": "透明质酸柔软的质地" },
+              { "title": "可逆性治疗", "desc": "需要时可溶解，安全可靠" },
+              { "title": "多功能应用", "desc": "适用于体积、皱纹、轮廓等多种用途" }
+            ]
+          },
+          "process": {
+            "items": [
+              { "step": 1, "title": "咨询", "desc": "面部分析及治疗方案制定" },
+              { "step": 2, "title": "洁面", "desc": "卸妆及消毒" },
+              { "step": 3, "title": "麻醉", "desc": "麻醉膏或神经阻滞" },
+              { "step": 4, "title": "治疗", "desc": "分部位定制填充剂注射" },
+              { "step": 5, "title": "完成", "desc": "塑形及术后护理指导" }
+            ]
+          },
+          "idealFor": {
+            "items": [
+              "想要填充凹陷部位的人士",
+              "担心法令纹、嘴角皱纹的人士",
+              "想要提升鼻子、下巴轮廓的人士",
+              "想要丰满嘴唇的人士"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "治疗后可能出现淤青和肿胀",
+              "禁止按摩或按压治疗部位",
+              "3天内避免剧烈运动和桑拿",
+              "有血管阻塞风险，必须由经验丰富的专业人员进行治疗"
+            ]
+          },
+          "faqs": {
+            "items": [
+              { "q": "填充剂会结块或看起来不自然吗？", "shortA": "适量+熟练的医疗人员操作，效果自然。", "a": "使用正品填充剂，由具有解剖学知识的医疗人员进行适量注射，可获得自然效果。过度注射可能导致不自然，因此适量治疗很重要。" },
+              { "q": "填充剂治疗后可以立即恢复日常活动吗？", "shortA": "大多数人可以立即恢复日常活动。", "a": "大多数人可以立即恢复日常活动。但根据治疗部位，可能会出现淤青或肿胀，因此建议在重要活动前预留时间。" },
+              { "q": "填充剂可以溶解吗？", "shortA": "是的，可以用透明质酸酶安全溶解。", "a": "透明质酸填充剂可以用透明质酸酶溶解。如果对治疗效果不满意或出现并发症，可以安全去除。" }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "20-40分钟",
+            "anesthesia": "麻醉膏或神经阻滞麻醉",
+            "recovery": "即时至3天（因部位而异）",
+            "results": "即时效果，持续6-24个月（因产品而异）"
           },
           "targetAreas": {
             "title": "治疗部位",
@@ -1874,7 +1966,51 @@
             ]
           },
           "benefits": {
-            "title": "水光针的优势"
+            "title": "水光针的优势",
+            "items": [
+              { "title": "深层补水", "desc": "透明质酸直达真皮层" },
+              { "title": "改善肌肤弹性", "desc": "促进胶原蛋白和弹性蛋白生成" },
+              { "title": "自然光泽", "desc": "从肌底绽放健康光彩" },
+              { "title": "改善肤质", "desc": "改善细纹和毛孔" }
+            ]
+          },
+          "process": {
+            "items": [
+              { "step": 1, "title": "咨询", "desc": "肌肤状态分析及产品选择" },
+              { "step": 2, "title": "洁面", "desc": "卸妆及肌肤调理" },
+              { "step": 3, "title": "麻醉", "desc": "涂抹麻醉膏" },
+              { "step": 4, "title": "治疗", "desc": "微针或仪器注入" },
+              { "step": 5, "title": "完成", "desc": "镇静护理及防晒" }
+            ]
+          },
+          "idealFor": {
+            "items": [
+              "肌肤干燥、缺水困扰的人士",
+              "肌肤弹性下降、细纹困扰的人士",
+              "肤色暗沉、缺乏活力的人士",
+              "激光治疗后想要肌肤再生的人士"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "治疗后可能出现微针痕迹和发红",
+              "治疗当天避免化妆和饮酒",
+              "注意防晒",
+              "建议每隔2-4周进行3-4次治疗"
+            ]
+          },
+          "faqs": {
+            "items": [
+              { "q": "水光针和水光注射一样吗？", "shortA": "类似，但水光针含有更多成分。", "a": "概念相似，但水光针包含多种成分（透明质酸、多聚核苷酸等）。水光注射主要聚焦于透明质酸为主的补水。" },
+              { "q": "什么时候能看到效果？", "shortA": "立即感受水润+2-4周后弹性·光泽改善。", "a": "治疗后立即可感受到水润感，2-4周后肌肤弹性和光泽改善。为获得最佳效果，建议每隔2-4周进行3-4次治疗。" },
+              { "q": "哪种产品最好？", "shortA": "根据肌肤状态和目标咨询后选择。", "a": "有丽珠兰、婕斯、Revive、Vital、Rituo等多种产品，根据肌肤状态和目标选择。通过咨询确定最适合您的产品。" }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "30-45分钟",
+            "anesthesia": "麻醉膏",
+            "recovery": "1-3天（微针痕迹）",
+            "results": "2-4周后见效，建议3-4次疗程"
           },
           "effects": {
             "title": "水光针效果",
@@ -2914,6 +3050,136 @@
       "title": "想知道适合您的提升方案吗？",
       "description": "通过专业咨询找到最优治疗。",
       "button": "免费咨询预约"
+    },
+    "treatments": {
+      "ulthera": {
+        "name": "超声刀Prime",
+        "nameEn": "Ultherapy Prime",
+        "description": "唯一获得美国FDA批准的HIFU提升设备，能量可传达至SMAS层，提供自然的提升效果。",
+        "duration": "60-90分钟",
+        "recovery": "无恢复期"
+      },
+      "thermage": {
+        "name": "热玛吉FLX",
+        "nameEn": "Thermage FLX",
+        "description": "第4代高端射频提升，AccuREP技术根据皮肤状态自动调节最佳能量。",
+        "duration": "45-60分钟",
+        "recovery": "无恢复期"
+      },
+      "density": {
+        "name": "Density",
+        "nameEn": "Density",
+        "description": "射频(RF)能量均匀传递至真皮层，提供平滑的提升效果。",
+        "duration": "40-60分钟",
+        "recovery": "无恢复期"
+      },
+      "inmode": {
+        "name": "InMode",
+        "nameEn": "InMode",
+        "description": "射频(RF)能量同时实现脂肪减少和皮肤弹性改善的多功能提升设备。",
+        "duration": "30-90分钟",
+        "recovery": "0-5天"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "nameEn": "Shurink",
+        "description": "基于HIFU的提升治疗，适合定期护理和逐步改善皮肤弹性。",
+        "duration": "30-45分钟",
+        "recovery": "无恢复期"
+      },
+      "thread": {
+        "name": "线雕提升",
+        "nameEn": "Thread Lift",
+        "description": "使用可吸收线的提升，提供即时自然的提升效果和胶原蛋白刺激效果。",
+        "duration": "30-60分钟",
+        "recovery": "3-7天"
+      }
+    },
+    "compare": {
+      "subtitle": "Compare",
+      "title": "提升治疗比较",
+      "description": "找到适合您的提升治疗",
+      "table": {
+        "treatment": "治疗名称",
+        "technology": "原理",
+        "duration": "治疗时间",
+        "anesthesia": "麻醉",
+        "downtime": "恢复期",
+        "results": "效果持续",
+        "price": "价格区间",
+        "details": "详情 →",
+        "viewDetails": "查看详情"
+      },
+      "values": {
+        "anesthesiaCream": "麻醉膏",
+        "noAnesthesia": "无麻醉",
+        "optional": "可选",
+        "varies": "因治疗而异",
+        "localAnesthesia": "局部麻醉",
+        "none": "无",
+        "premium": "高端",
+        "moderate": "中等",
+        "affordable": "实惠",
+        "hifu": "HIFU",
+        "rf": "RF",
+        "hifuRf": "HIFU+RF",
+        "rfNeedle": "RF+微针",
+        "dissolvingThread": "可吸收线"
+      },
+      "data": {
+        "ulthera": {
+          "technology": "HIFU",
+          "duration": "60-90分钟",
+          "anesthesia": "麻醉膏",
+          "recovery": "无",
+          "results": "1-2年",
+          "price": "高端"
+        },
+        "thermage": {
+          "technology": "RF",
+          "duration": "45-60分钟",
+          "anesthesia": "无麻醉",
+          "recovery": "无",
+          "results": "1-2年",
+          "price": "高端"
+        },
+        "density": {
+          "technology": "HIFU+RF",
+          "duration": "40-60分钟",
+          "anesthesia": "可选",
+          "recovery": "无",
+          "results": "6个月-1年",
+          "price": "中等"
+        },
+        "shurink": {
+          "technology": "HIFU",
+          "duration": "30-45分钟",
+          "anesthesia": "可选",
+          "recovery": "无",
+          "results": "3-6个月",
+          "price": "实惠"
+        },
+        "inmode": {
+          "technology": "RF+微针",
+          "duration": "30-90分钟",
+          "anesthesia": "因治疗而异",
+          "recovery": "0-5天",
+          "results": "6个月-1年",
+          "price": "因治疗而异"
+        },
+        "thread": {
+          "technology": "可吸收线",
+          "duration": "30-60分钟",
+          "anesthesia": "局部麻醉",
+          "recovery": "3-7天",
+          "results": "1-2年",
+          "price": "中等"
+        }
+      },
+      "cta": {
+        "question": "不确定哪种治疗适合您？",
+        "button": "获取免费咨询"
+      }
     }
   },
   "antiagingPage": {

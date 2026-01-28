@@ -3,10 +3,10 @@ import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, ScrollLink } from '@/components/ui';
 import { TreatmentComparison } from '@/components/sections';
-import { TREATMENTS } from '@/lib/constants';
 import { routing } from '@/i18n/routing';
 
-const liftingTreatments = Object.values(TREATMENTS.lifting);
+// Treatment IDs for lifting category
+const liftingTreatmentIds = ['ulthera', 'thermage', 'density', 'inmode', 'shurink', 'thread'];
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -53,38 +53,38 @@ export default function LiftingPage({
           </AnimateOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {liftingTreatments.map((treatment) => (
-              <AnimateOnScroll key={treatment.id}>
-                <Link href={`/lifting/${treatment.id}`}>
+            {liftingTreatmentIds.map((treatmentId) => (
+              <AnimateOnScroll key={treatmentId}>
+                <Link href={`/lifting/${treatmentId}`}>
                   <Card padding="none" className="overflow-hidden group cursor-pointer h-full">
                     <div className="aspect-[4/5] bg-gradient-to-b from-white to-background relative overflow-hidden flex items-center justify-center p-6">
                       <img
-                        src={`/images/treatments/${treatment.id}.png`}
-                        alt={treatment.name}
+                        src={`/images/treatments/${treatmentId}.png`}
+                        alt={t(`treatments.${treatmentId}.name`)}
                         className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     <div className="p-6">
-                      <p className="text-small text-primary mb-2">{treatment.nameEn}</p>
+                      <p className="text-small text-primary mb-2">{t(`treatments.${treatmentId}.nameEn`)}</p>
                       <h3 className="text-h3 text-secondary group-hover:text-primary transition-colors mb-3">
-                        {treatment.name}
+                        {t(`treatments.${treatmentId}.name`)}
                       </h3>
                       <p className="text-body text-mono line-clamp-2 mb-4">
-                        {treatment.description}
+                        {t(`treatments.${treatmentId}.description`)}
                       </p>
                       <div className="flex items-center gap-4 text-small text-mono-light">
                         <span className="flex items-center gap-1">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          {treatment.duration}
+                          {t(`treatments.${treatmentId}.duration`)}
                         </span>
                         <span className="flex items-center gap-1">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                           </svg>
-                          {treatment.recovery}
+                          {t(`treatments.${treatmentId}.recovery`)}
                         </span>
                       </div>
                     </div>
