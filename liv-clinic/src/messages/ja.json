@@ -2976,5 +2976,125 @@
         "subtitle": "Location"
       }
     }
+  },
+  "equipmentPage": {
+    "hero": {
+      "subtitle": "Equipment",
+      "title": "保有機器",
+      "description1": "正規認証プレミアム機器で",
+      "description2": "安全で効果的な施術を提供いたします。"
+    },
+    "certification": {
+      "subtitle": "Official Certified Clinic",
+      "title1": "公式認証病院でのみ可能な",
+      "title2": "プレミアムリフティング＆レーザー",
+      "titleHighlight": "ソリューション",
+      "description1": "リブ整形外科はウルセラプライム、サーマジ、シュリンクなど",
+      "description2": "グローバルブランドの公式認証を受けたプレミアムクリニックです。"
+    },
+    "categories": {
+      "lifting": {
+        "name": "リフティング機器",
+        "nameEn": "Lifting Equipment",
+        "description": "非手術リフティングの頂点、プレミアムリフティング機器"
+      },
+      "laser": {
+        "name": "レーザー機器",
+        "nameEn": "Laser Equipment",
+        "description": "肌質改善と弾力のためのレーザーシステム"
+      }
+    },
+    "equipment": {
+      "ultherapy": {
+        "name": "Ultherapy Prime",
+        "nameKo": "ウルセラプライム",
+        "description": "FDA承認超音波リフティング – 深い層からしっかりと",
+        "features": ["SMAS層までエネルギー伝達", "自然なリフティング効果", "施術直後から日常生活可能"],
+        "certification": "FDA、KFDA承認"
+      },
+      "thermage": {
+        "name": "Thermage FLX",
+        "nameKo": "サーマジFLX",
+        "description": "高周波リフティングの精髄 – 肌の奥からハリを",
+        "features": ["AccuREP技術", "クーリングシステム", "コラーゲン再生"],
+        "certification": "FDA、KFDA承認"
+      },
+      "density": {
+        "name": "Density",
+        "nameKo": "デンシティ",
+        "description": "高周波エネルギーで緻密に – 精密コラーゲンリフティング",
+        "features": ["高周波(RF)リフティング", "均一なエネルギー分布", "リーズナブルな価格"],
+        "certification": "KFDA承認"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "nameKo": "シュリンク",
+        "description": "デイリーリフティングの代表 – リーズナブルな超音波弾力施術",
+        "features": ["無痛または低痛", "短い施術時間", "経済的な価格"],
+        "certification": "KFDA承認"
+      },
+      "inmode": {
+        "name": "InMode",
+        "nameKo": "インモード",
+        "description": "脂肪減少 + 弾力改善を一度に",
+        "features": ["脂肪減少とリフティング同時", "局所部位集中", "ダウンタイムが少ない"],
+        "certification": "FDA、KFDA承認"
+      },
+      "potenza": {
+        "name": "Potenza",
+        "nameKo": "ポテンザ",
+        "description": "毛穴、肌質、弾力まで – 肌リモデリングの新基準",
+        "features": ["RFマイクロニードル", "パンピングチップスキンブースター", "毛穴縮小"],
+        "certification": "FDA、KFDA承認"
+      },
+      "clarity": {
+        "name": "Clarity II",
+        "nameKo": "クラリティII",
+        "description": "より速く、より精密に – デュアル波長レーザー",
+        "features": ["755nm/1064nmデュアル", "色素/血管治療", "プレミアム脱毛"],
+        "certification": "FDA承認"
+      },
+      "lucas": {
+        "name": "Lucas",
+        "nameKo": "ルーカス",
+        "description": "肌の奥から明るく透明に – 色素治療の新基準",
+        "features": ["高出力Qスイッチ", "シミ/くすみ治療", "タトゥー除去"],
+        "certification": "KFDA承認"
+      },
+      "co2": {
+        "name": "CO2 Laser",
+        "nameKo": "CO2レーザー",
+        "description": "精密ピーリングと肌再生 – 深い傷跡と小じわ改善",
+        "features": ["フラクショナル技術", "傷跡/毛穴治療", "肌再生促進"],
+        "certification": "KFDA承認"
+      },
+      "ulblanc": {
+        "name": "Ulblanc",
+        "nameKo": "ウルブラン",
+        "description": "低刺激ホワイトニングレーザー",
+        "features": ["メラニンターゲティング", "肌トーン均一化", "低刺激施術"],
+        "certification": "KFDA承認"
+      }
+    },
+    "cta": {
+      "title": "プレミアム機器で施術を受けてください",
+      "description": "正規認証機器と専門医の施術で安全で効果的な結果を体験してください。",
+      "buttonPrimary": "カウンセリング予約",
+      "buttonSecondary": "シグネチャープログラム"
+    },
+    "quickLinks": {
+      "brand": {
+        "title": "リブブランド",
+        "subtitle": "About LIV"
+      },
+      "staff": {
+        "title": "医療スタッフ紹介",
+        "subtitle": "Medical Staff"
+      },
+      "location": {
+        "title": "アクセス",
+        "subtitle": "Location"
+      }
+    }
   }
 }

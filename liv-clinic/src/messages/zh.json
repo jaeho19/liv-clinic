@@ -2976,5 +2976,125 @@
         "subtitle": "Location"
       }
     }
+  },
+  "equipmentPage": {
+    "hero": {
+      "subtitle": "Equipment",
+      "title": "设备介绍",
+      "description1": "使用正品认证的高端设备，",
+      "description2": "提供安全有效的治疗。"
+    },
+    "certification": {
+      "subtitle": "Official Certified Clinic",
+      "title1": "只有官方认证医院才能提供的",
+      "title2": "高端提升 & 激光",
+      "titleHighlight": "解决方案",
+      "description1": "LIV整形外科是获得Ultherapy Prime、Thermage、Shurink等",
+      "description2": "全球品牌官方认证的高端诊所。"
+    },
+    "categories": {
+      "lifting": {
+        "name": "提升设备",
+        "nameEn": "Lifting Equipment",
+        "description": "非手术提升的巅峰，高端提升设备"
+      },
+      "laser": {
+        "name": "激光设备",
+        "nameEn": "Laser Equipment",
+        "description": "改善皮肤质地和弹性的激光系统"
+      }
+    },
+    "equipment": {
+      "ultherapy": {
+        "name": "Ultherapy Prime",
+        "nameKo": "超声刀Prime",
+        "description": "FDA批准超声提升 – 从深层开始紧致",
+        "features": ["能量直达SMAS层", "自然提升效果", "术后即可恢复日常"],
+        "certification": "FDA、KFDA认证"
+      },
+      "thermage": {
+        "name": "Thermage FLX",
+        "nameKo": "热玛吉FLX",
+        "description": "射频提升的精髓 – 从皮肤深处紧致",
+        "features": ["AccuREP技术", "冷却系统", "胶原蛋白再生"],
+        "certification": "FDA、KFDA认证"
+      },
+      "density": {
+        "name": "Density",
+        "nameKo": "Density",
+        "description": "射频能量精准紧致 – 精密胶原蛋白提升",
+        "features": ["射频(RF)提升", "能量均匀分布", "性价比高"],
+        "certification": "KFDA认证"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "nameKo": "Shurink",
+        "description": "日常提升的代表 – 性价比高的超声弹力治疗",
+        "features": ["无痛或低痛", "快速治疗", "价格实惠"],
+        "certification": "KFDA认证"
+      },
+      "inmode": {
+        "name": "InMode",
+        "nameKo": "InMode",
+        "description": "减脂 + 紧致一次完成",
+        "features": ["减脂和提升同步", "局部集中", "恢复期短"],
+        "certification": "FDA、KFDA认证"
+      },
+      "potenza": {
+        "name": "Potenza",
+        "nameKo": "Potenza",
+        "description": "毛孔、肤质、弹性 – 皮肤重塑的新标准",
+        "features": ["RF微针", "注氧导入仪", "毛孔收缩"],
+        "certification": "FDA、KFDA认证"
+      },
+      "clarity": {
+        "name": "Clarity II",
+        "nameKo": "Clarity II",
+        "description": "更快、更精准 – 双波长激光",
+        "features": ["755nm/1064nm双波长", "色素/血管治疗", "高端脱毛"],
+        "certification": "FDA认证"
+      },
+      "lucas": {
+        "name": "Lucas",
+        "nameKo": "Lucas",
+        "description": "从皮肤深处明亮清透 – 色素治疗的新标准",
+        "features": ["高功率Q开关", "黄褐斑/色斑治疗", "纹身去除"],
+        "certification": "KFDA认证"
+      },
+      "co2": {
+        "name": "CO2 Laser",
+        "nameKo": "CO2激光",
+        "description": "精准换肤和皮肤再生 – 深层疤痕和细纹改善",
+        "features": ["点阵技术", "疤痕/毛孔治疗", "促进皮肤再生"],
+        "certification": "KFDA认证"
+      },
+      "ulblanc": {
+        "name": "Ulblanc",
+        "nameKo": "Ulblanc",
+        "description": "低刺激美白激光",
+        "features": ["黑色素靶向", "肤色均匀化", "低刺激治疗"],
+        "certification": "KFDA认证"
+      }
+    },
+    "cta": {
+      "title": "体验高端设备治疗",
+      "description": "正品认证设备和专业医师治疗，体验安全有效的效果。",
+      "buttonPrimary": "预约咨询",
+      "buttonSecondary": "Signature项目"
+    },
+    "quickLinks": {
+      "brand": {
+        "title": "LIV品牌",
+        "subtitle": "About LIV"
+      },
+      "staff": {
+        "title": "医疗团队介绍",
+        "subtitle": "Medical Staff"
+      },
+      "location": {
+        "title": "位置指南",
+        "subtitle": "Location"
+      }
+    }
   }
 }

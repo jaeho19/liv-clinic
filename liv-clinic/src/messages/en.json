@@ -2976,5 +2976,125 @@
         "subtitle": "Visit Us"
       }
     }
+  },
+  "equipmentPage": {
+    "hero": {
+      "subtitle": "Equipment",
+      "title": "Our Equipment",
+      "description1": "With certified premium equipment,",
+      "description2": "we provide safe and effective treatments."
+    },
+    "certification": {
+      "subtitle": "Official Certified Clinic",
+      "title1": "Premium Lifting & Laser",
+      "title2": "Solutions Available Only at",
+      "titleHighlight": "Certified Clinics",
+      "description1": "LIV Plastic Surgery is an officially certified clinic for global brands",
+      "description2": "including Ultherapy Prime, Thermage, and Shurink."
+    },
+    "categories": {
+      "lifting": {
+        "name": "Lifting Equipment",
+        "nameEn": "Lifting Equipment",
+        "description": "The pinnacle of non-surgical lifting with premium devices"
+      },
+      "laser": {
+        "name": "Laser Equipment",
+        "nameEn": "Laser Equipment",
+        "description": "Laser systems for skin texture improvement and elasticity"
+      }
+    },
+    "equipment": {
+      "ultherapy": {
+        "name": "Ultherapy Prime",
+        "nameKo": "Ultherapy Prime",
+        "description": "FDA-approved ultrasound lifting – firming from the deepest layers",
+        "features": ["Energy delivery to SMAS layer", "Natural lifting effect", "Resume daily activities immediately"],
+        "certification": "FDA, KFDA Approved"
+      },
+      "thermage": {
+        "name": "Thermage FLX",
+        "nameKo": "Thermage FLX",
+        "description": "The essence of RF lifting – tightening from within",
+        "features": ["AccuREP technology", "Cooling system", "Collagen regeneration"],
+        "certification": "FDA, KFDA Approved"
+      },
+      "density": {
+        "name": "Density",
+        "nameKo": "Density",
+        "description": "Precise tightening with RF energy – precision collagen lifting",
+        "features": ["RF lifting", "Uniform energy distribution", "Affordable price"],
+        "certification": "KFDA Approved"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "nameKo": "Shurink",
+        "description": "The leader in daily lifting – affordable ultrasound elasticity treatment",
+        "features": ["Painless or low pain", "Quick treatment time", "Economical pricing"],
+        "certification": "KFDA Approved"
+      },
+      "inmode": {
+        "name": "InMode",
+        "nameKo": "InMode",
+        "description": "Fat reduction + elasticity improvement in one session",
+        "features": ["Simultaneous fat reduction and lifting", "Targeted treatment", "Minimal downtime"],
+        "certification": "FDA, KFDA Approved"
+      },
+      "potenza": {
+        "name": "Potenza",
+        "nameKo": "Potenza",
+        "description": "Pores, skin texture, elasticity – a new standard in skin remodeling",
+        "features": ["RF microneedling", "Skin booster pumping tip", "Pore reduction"],
+        "certification": "FDA, KFDA Approved"
+      },
+      "clarity": {
+        "name": "Clarity II",
+        "nameKo": "Clarity II",
+        "description": "Faster, more precise – dual wavelength laser",
+        "features": ["755nm/1064nm dual wavelength", "Pigment/vascular treatment", "Premium hair removal"],
+        "certification": "FDA Approved"
+      },
+      "lucas": {
+        "name": "Lucas",
+        "nameKo": "Lucas",
+        "description": "Bright and clear from within – a new standard in pigment treatment",
+        "features": ["High-power Q-switch", "Melasma/spot treatment", "Tattoo removal"],
+        "certification": "KFDA Approved"
+      },
+      "co2": {
+        "name": "CO2 Laser",
+        "nameKo": "CO2 Laser",
+        "description": "Precision resurfacing and skin regeneration – deep scar and fine line improvement",
+        "features": ["Fractional technology", "Scar/pore treatment", "Skin regeneration promotion"],
+        "certification": "KFDA Approved"
+      },
+      "ulblanc": {
+        "name": "Ulblanc",
+        "nameKo": "Ulblanc",
+        "description": "Low-irritation whitening laser",
+        "features": ["Melanin targeting", "Skin tone evening", "Low-irritation treatment"],
+        "certification": "KFDA Approved"
+      }
+    },
+    "cta": {
+      "title": "Experience Premium Equipment Treatments",
+      "description": "Experience safe and effective results with certified equipment and specialist treatments.",
+      "buttonPrimary": "Book Consultation",
+      "buttonSecondary": "Signature Programs"
+    },
+    "quickLinks": {
+      "brand": {
+        "title": "LIV Brand",
+        "subtitle": "About LIV"
+      },
+      "staff": {
+        "title": "Medical Staff",
+        "subtitle": "Medical Staff"
+      },
+      "location": {
+        "title": "Location",
+        "subtitle": "Location"
+      }
+    }
   }
 }
