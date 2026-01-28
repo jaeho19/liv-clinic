@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
+import { Link } from '@/i18n/routing';
 
 // Lazy Loading을 위한 Intersection Observer 훅 (성능 최적화)
 function useImageLazy(threshold = 0.1) {
@@ -376,7 +377,7 @@ function DeviceCard({ device, index, activeIndex, setActiveIndex }: DeviceCardPr
           </p>
 
           {/* Learn More Link */}
-          <a
+          <Link
             href={device.link}
             className={`
               inline-flex items-center gap-2 text-primary text-sm mt-3
@@ -389,7 +390,7 @@ function DeviceCard({ device, index, activeIndex, setActiveIndex }: DeviceCardPr
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </motion.div>

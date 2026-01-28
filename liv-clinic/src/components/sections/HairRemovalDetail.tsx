@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
+import { Link } from '@/i18n/routing';
 import { LASER_EQUIPMENT } from '@/lib/constants';
 
 // 755nm vs 1064nm 파장 비교 일러스트레이션
@@ -435,7 +436,7 @@ export default function HairRemovalDetail() {
             <div className="max-w-4xl mx-auto text-center">
               {/* 브레드크럼 */}
               <div className="flex items-center justify-center gap-2 text-sm text-[var(--color-mono-light)] mb-6">
-                <a href="/laser" className="hover:text-[var(--color-primary)] transition-colors">{t('laser.center.name')}</a>
+                <Link href="/laser" className="hover:text-[var(--color-primary)] transition-colors">{t('laser.center.name')}</Link>
                 <span>/</span>
                 <span className="text-[var(--color-secondary)]">{t('laser.hairRemoval.name')}</span>
               </div>
