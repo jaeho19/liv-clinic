@@ -2615,7 +2615,162 @@
       "subtitle": "专业咨询师将为您详细解答。",
       "reservation": "预约咨询",
       "call": "电话咨询"
-    }
+    },
+    "faq": [
+      {
+        "id": "ulthera-vs-thermage",
+        "category": "lifting",
+        "question": "超声刀和热玛吉有什么区别？",
+        "shortAnswer": "超声刀用超声波针对深层，热玛吉用射频改善弹性。",
+        "answer": "超声刀使用HIFU（高强度聚焦超声波）技术将能量传递到皮肤深层的SMAS层。热玛吉则使用RF（射频）能量收缩并促进真皮层的胶原蛋白再生。超声刀有效提升下垂皮肤，热玛吉则有效改善整体皮肤弹性。两种治疗结合使用可产生协同效果。",
+        "relatedTreatments": ["ulthera", "thermage"],
+        "tags": ["超声刀", "热玛吉", "提升", "HIFU", "射频"]
+      },
+      {
+        "id": "lifting-pain",
+        "category": "lifting",
+        "question": "提升治疗有多疼？",
+        "shortAnswer": "涂抹麻醉膏后进行治疗，大多数人能够承受。",
+        "answer": "提升治疗的疼痛程度因治疗类型和个人差异而异。超声刀和热玛吉FLX治疗前都会涂抹约30分钟的麻醉膏。特别是热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛，大多数患者都能舒适地接受治疗。如果您对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知我们。",
+        "relatedTreatments": ["ulthera", "thermage", "shurink"],
+        "tags": ["提升", "疼痛", "麻醉"]
+      },
+      {
+        "id": "lifting-frequency",
+        "category": "lifting",
+        "question": "提升治疗多久做一次？",
+        "shortAnswer": "超声刀建议1-2年做一次，热玛吉建议6个月-1年做一次。",
+        "answer": "超声刀建议1-2年做一次，热玛吉建议6个月-1年做一次。Shurink或InMode等维护性治疗可以每3-6个月进行一次。根据您的皮肤状况和期望效果，治疗周期可能会有所不同，建议通过咨询确定准确的周期。",
+        "relatedTreatments": ["ulthera", "thermage", "shurink"],
+        "tags": ["提升", "治疗周期", "维护"]
+      },
+      {
+        "id": "lifting-duration",
+        "category": "lifting",
+        "question": "提升效果能维持多久？",
+        "shortAnswer": "超声刀约1-2年，热玛吉约6个月-1年。",
+        "answer": "超声刀的效果约持续1年，热玛吉约6个月-1年。但效果持续时间可能因个人皮肤状况、年龄和生活习惯而异。定期进行维护治疗可以延长效果持续时间。",
+        "relatedTreatments": ["ulthera", "thermage"],
+        "tags": ["提升", "效果持续", "维持时间"]
+      },
+      {
+        "id": "botox-natural",
+        "category": "antiaging",
+        "question": "注射肉毒素后表情会不自然吗？",
+        "shortAnswer": "在正确位置注射适量可保持自然表情。",
+        "answer": "在正确位置注射适量可以在保持自然表情的同时只改善皱纹。不自然的表情通常是由于用量过多或注射位置不正确造成的。在LIV整形外科，熟练的专家会根据每个人的肌肉特点注射适量，您可以期待自然的效果。",
+        "relatedTreatments": ["botox"],
+        "tags": ["肉毒素", "表情", "自然"]
+      },
+      {
+        "id": "botox-duration",
+        "category": "antiaging",
+        "question": "肉毒素效果能维持多久？",
+        "shortAnswer": "通常持续3-6个月，定期治疗可延长效果。",
+        "answer": "肉毒素效果因人而异，通常持续3-6个月。定期治疗可以使肌肉逐渐弱化，效果维持更久，治疗间隔也会延长。首次治疗后2-3周可能需要补打，建议观察恢复情况。",
+        "relatedTreatments": ["botox"],
+        "tags": ["肉毒素", "效果持续", "治疗周期"]
+      },
+      {
+        "id": "filler-dissolve",
+        "category": "antiaging",
+        "question": "玻尿酸可以溶解吗？",
+        "shortAnswer": "是的，玻尿酸可以用溶解针安全去除。",
+        "answer": "是的，玻尿酸可以用透明质酸酶（溶解针）溶解。如果您对治疗效果不满意或出现副作用，可以安全去除。这是玻尿酸的一大优点。但不可逆的填充物（如Artecoll）无法溶解，选择填充物时请考虑这一点。",
+        "relatedTreatments": ["filler"],
+        "tags": ["玻尿酸", "透明质酸", "溶解针"]
+      },
+      {
+        "id": "filler-lumps",
+        "category": "antiaging",
+        "question": "玻尿酸会结块或凹凸不平吗？",
+        "shortAnswer": "由熟练医生使用正品几乎不会发生这种情况。",
+        "answer": "使用适量正品填充物，由具有解剖学知识的熟练医生施术，这类问题几乎不会发生。偶尔出现的凹凸不平大多可以通过按摩解决，必要时可以用透明质酸酶调整。如果治疗后有任何不适，请立即咨询。",
+        "relatedTreatments": ["filler"],
+        "tags": ["玻尿酸", "副作用", "结块"]
+      },
+      {
+        "id": "skinbooster-frequency",
+        "category": "antiaging",
+        "question": "水光针需要做几次才有效？",
+        "shortAnswer": "建议基础3-4次疗程，然后每2-3个月维护一次。",
+        "answer": "水光针建议每2-4周进行3-4次作为基础疗程。单次治疗后即可感受到水润改善，但最佳效果需要完成整个疗程。之后建议每2-3个月进行维护治疗。",
+        "relatedTreatments": ["skinbooster"],
+        "tags": ["水光针", "治疗次数"]
+      },
+      {
+        "id": "laser-sun",
+        "category": "laser",
+        "question": "激光治疗后需要避免阳光吗？",
+        "shortAnswer": "是的，至少2-4周内必须使用SPF 50+防晒霜。",
+        "answer": "是的，激光治疗后防晒非常重要。治疗后皮肤变得敏感，紫外线导致色素沉着的风险增加。至少2-4周内应仔细涂抹防晒霜（SPF 50+），并使用帽子或遮阳伞。户外活动较多的季节最好避免激光治疗。",
+        "relatedTreatments": ["clarity"],
+        "tags": ["激光", "紫外线", "色素沉着"]
+      },
+      {
+        "id": "laser-downtime",
+        "category": "laser",
+        "question": "激光治疗后需要多长恢复期？",
+        "shortAnswer": "调Q几乎没有恢复期，色素激光约3-5天。",
+        "answer": "取决于激光类型。激光调Q几乎没有恢复期，可以立即恢复日常生活。用Clarity II激光治疗表皮色素的情况下，色素会加深或形成薄痂，3-5天后自然脱落。",
+        "relatedTreatments": ["clarity"],
+        "tags": ["激光", "恢复期", "休息时间"]
+      },
+      {
+        "id": "thread-duration",
+        "category": "lifting",
+        "question": "线雕效果能维持多久？",
+        "shortAnswer": "PDO线6-8个月，PCL线12-18个月。",
+        "answer": "取决于线的类型。PDO（可溶解线）6-8个月，PLLA或PCL线12-18个月。线溶解时会促进胶原蛋白再生，所以线完全溶解后效果也会持续一段时间。通过定期维护治疗可以延长效果。",
+        "relatedTreatments": ["thread"],
+        "tags": ["线雕", "效果持续", "PDO"]
+      },
+      {
+        "id": "consultation-fee",
+        "category": "general",
+        "question": "可以只咨询吗？有费用吗？",
+        "shortAnswer": "是的，咨询费1万韩元，当天治疗可全额抵扣。",
+        "answer": "是的，可以只进行咨询。1对1专业咨询费用为1万韩元，当天进行治疗时可从治疗费用中全额抵扣。整形外科专家会亲自诊断您的皮肤状况并推荐最佳治疗方案。您可以充分考虑后再做决定。",
+        "relatedTreatments": [],
+        "tags": ["咨询", "咨询费", "预约"]
+      },
+      {
+        "id": "payment-installment",
+        "category": "general",
+        "question": "治疗费用可以分期吗？",
+        "shortAnswer": "是的，可以信用卡分期，免息优惠因卡而异。",
+        "answer": "是的，可以信用卡分期付款。免息分期优惠可能因信用卡公司和付款金额而异，请在咨询时询问。此外，各种治疗都有促销和套餐折扣，请查看。",
+        "relatedTreatments": [],
+        "tags": ["费用", "分期", "付款"]
+      },
+      {
+        "id": "pregnant-treatment",
+        "category": "general",
+        "question": "怀孕或哺乳期可以做治疗吗？",
+        "shortAnswer": "不可以，怀孕/哺乳期不建议进行大多数美容治疗。",
+        "answer": "怀孕或哺乳期不建议进行大多数美容治疗。肉毒素、玻尿酸、提升治疗对胎儿或母乳的影响安全性尚未充分验证。建议在怀孕和哺乳结束后再进行治疗。",
+        "relatedTreatments": [],
+        "tags": ["怀孕", "哺乳", "禁忌"]
+      },
+      {
+        "id": "liv-specialty",
+        "category": "general",
+        "question": "LIV整形外科最擅长什么治疗？",
+        "shortAnswer": "作为超声刀和热玛吉FLX认证医院，专注于非手术提升。",
+        "answer": "LIV整形外科是超声刀正品认证和热玛吉FLX合作医院，专注于非手术提升治疗。整形外科专家基于4篇SCI论文的学术经验，为每位患者提供定制治疗。位于新沙站4号出口步行1分钟处。",
+        "relatedTreatments": ["ulthera", "thermage"],
+        "tags": ["LIV整形外科", "专业领域", "超声刀", "热玛吉"]
+      },
+      {
+        "id": "first-visit",
+        "category": "general",
+        "question": "第一次来怎么进行？",
+        "shortAnswer": "通过电话或KakaoTalk预约后来访，可接受专家1对1咨询。",
+        "answer": "请通过电话(02-797-2773)或KakaoTalk预约咨询。来访时，整形外科专家会亲自诊断您的皮肤状况，并根据您的需求和期望效果推荐最佳治疗方案。咨询后您可以充分考虑再决定是否治疗。",
+        "relatedTreatments": [],
+        "tags": ["首次来访", "预约", "咨询流程"]
+      }
+    ]
   },
   "signaturePage": {
     "hero": {

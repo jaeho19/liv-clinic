@@ -2615,7 +2615,162 @@
       "subtitle": "Our specialists are ready to help you.",
       "reservation": "Book Consultation",
       "call": "Call Us"
-    }
+    },
+    "faq": [
+      {
+        "id": "ulthera-vs-thermage",
+        "category": "lifting",
+        "question": "What is the difference between Ultherapy Prime and Thermage?",
+        "shortAnswer": "Ultherapy uses ultrasound for deep layers, Thermage uses RF for elasticity.",
+        "answer": "Ultherapy Prime uses HIFU (High-Intensity Focused Ultrasound) technology to deliver energy deep into the skin's SMAS layer. Thermage uses RF (radiofrequency) energy to contract and promote regeneration of collagen in the dermal layer. Ultherapy Prime is effective for lifting sagging skin, while Thermage is effective for overall skin elasticity improvement. Combining both treatments can produce synergistic effects.",
+        "relatedTreatments": ["ulthera", "thermage"],
+        "tags": ["Ultherapy Prime", "Thermage", "lifting", "HIFU", "RF"]
+      },
+      {
+        "id": "lifting-pain",
+        "category": "lifting",
+        "question": "How painful are lifting treatments?",
+        "shortAnswer": "Treatment is performed after numbing cream, and most people can tolerate it.",
+        "answer": "The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Both Ultherapy Prime and Thermage FLX are performed after applying numbing cream for about 30 minutes. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.",
+        "relatedTreatments": ["ulthera", "thermage", "shurink"],
+        "tags": ["lifting", "pain", "anesthesia"]
+      },
+      {
+        "id": "lifting-frequency",
+        "category": "lifting",
+        "question": "How often should I get lifting treatments?",
+        "shortAnswer": "Ultherapy is recommended once every 1-2 years, Thermage once every 6 months to 1 year.",
+        "answer": "Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink or InMode can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.",
+        "relatedTreatments": ["ulthera", "thermage", "shurink"],
+        "tags": ["lifting", "treatment cycle", "maintenance"]
+      },
+      {
+        "id": "lifting-duration",
+        "category": "lifting",
+        "question": "How long do lifting results last?",
+        "shortAnswer": "Ultherapy lasts about 1-2 years, Thermage about 6 months to 1 year.",
+        "answer": "Ultherapy Prime results last about 1 year, while Thermage lasts 6 months to 1 year. However, the duration may vary depending on individual skin condition, age, and lifestyle. Regular maintenance treatments can help extend the results.",
+        "relatedTreatments": ["ulthera", "thermage"],
+        "tags": ["lifting", "duration", "maintenance"]
+      },
+      {
+        "id": "botox-natural",
+        "category": "antiaging",
+        "question": "Will Botox make my facial expressions look unnatural?",
+        "shortAnswer": "Proper dosage at correct injection sites maintains natural expressions.",
+        "answer": "When the proper amount is injected at the correct locations, natural expressions are maintained while only improving wrinkles. Unnatural expressions typically occur from overdosing or incorrect injection sites. At LIV Plastic Surgery, our experienced specialists inject appropriate amounts tailored to each individual's muscle characteristics, so you can expect natural results.",
+        "relatedTreatments": ["botox"],
+        "tags": ["Botox", "expression", "natural"]
+      },
+      {
+        "id": "botox-duration",
+        "category": "antiaging",
+        "question": "How long does Botox last?",
+        "shortAnswer": "Usually 3-6 months, lasting longer with regular treatments.",
+        "answer": "Botox results vary by individual but typically last 3-6 months. With regular treatments, muscles gradually weaken, making results last longer and extending the interval between treatments. A touch-up may be needed 2-3 weeks after the first treatment, so it's good to check progress.",
+        "relatedTreatments": ["botox"],
+        "tags": ["Botox", "duration", "treatment cycle"]
+      },
+      {
+        "id": "filler-dissolve",
+        "category": "antiaging",
+        "question": "Can fillers be dissolved?",
+        "shortAnswer": "Yes, hyaluronic acid fillers can be safely removed with dissolving injections.",
+        "answer": "Yes, hyaluronic acid fillers can be dissolved with hyaluronidase (dissolving injection). If you're not satisfied with the results or experience side effects, they can be safely removed. This is one of the major advantages of hyaluronic acid fillers. However, non-reversible fillers (e.g., Artecoll) cannot be dissolved, so consider this when choosing fillers.",
+        "relatedTreatments": ["filler"],
+        "tags": ["filler", "hyaluronic acid", "dissolving injection"]
+      },
+      {
+        "id": "filler-lumps",
+        "category": "antiaging",
+        "question": "Can fillers cause lumps or unevenness?",
+        "shortAnswer": "This rarely occurs when experienced doctors use genuine products.",
+        "answer": "When genuine fillers are used in appropriate amounts by experienced medical professionals with anatomical knowledge, these problems rarely occur. Occasional unevenness can usually be resolved with massage, and if necessary, can be adjusted with hyaluronidase. If you experience any discomfort after treatment, please consult us immediately.",
+        "relatedTreatments": ["filler"],
+        "tags": ["filler", "side effects", "lumps"]
+      },
+      {
+        "id": "skinbooster-frequency",
+        "category": "antiaging",
+        "question": "How many sessions of skin boosters are needed for results?",
+        "shortAnswer": "A basic course of 3-4 sessions is recommended, with maintenance every 2-3 months.",
+        "answer": "Skin boosters are recommended as a basic course of 3-4 sessions at 2-4 week intervals. You may notice hydration improvement after one session, but the optimal effect requires completing the full course. Afterward, maintenance treatments every 2-3 months are recommended.",
+        "relatedTreatments": ["skinbooster"],
+        "tags": ["skin booster", "treatment sessions"]
+      },
+      {
+        "id": "laser-sun",
+        "category": "laser",
+        "question": "Should I avoid sunlight after laser treatment?",
+        "shortAnswer": "Yes, SPF 50+ sunscreen is essential for at least 2-4 weeks.",
+        "answer": "Yes, sun protection is very important after laser treatment. After treatment, your skin becomes sensitive and the risk of pigmentation from UV exposure increases. For at least 2-4 weeks, apply sunscreen (SPF 50+) thoroughly and use hats or parasols. It's best to avoid laser treatment during seasons with a lot of outdoor activities.",
+        "relatedTreatments": ["clarity"],
+        "tags": ["laser", "UV", "pigmentation"]
+      },
+      {
+        "id": "laser-downtime",
+        "category": "laser",
+        "question": "What is the downtime after laser treatment?",
+        "shortAnswer": "Toning has no downtime, pigment lasers take about 3-5 days.",
+        "answer": "It depends on the type of laser. Laser toning has almost no downtime, allowing immediate return to daily activities. When treating surface pigmentation with Clarity II laser, the pigment may darken or thin scabs may form for 3-5 days before naturally falling off.",
+        "relatedTreatments": ["clarity"],
+        "tags": ["laser", "downtime", "recovery"]
+      },
+      {
+        "id": "thread-duration",
+        "category": "lifting",
+        "question": "How long do thread lift results last?",
+        "shortAnswer": "PDO threads last 6-8 months, PCL threads last 12-18 months.",
+        "answer": "It depends on the type of thread. PDO (dissolvable threads) last 6-8 months, while PLLA or PCL threads last 12-18 months. As threads dissolve, they promote collagen regeneration, so effects continue for some time even after threads are completely absorbed. Regular maintenance treatments can extend the results.",
+        "relatedTreatments": ["thread"],
+        "tags": ["thread lift", "duration", "PDO"]
+      },
+      {
+        "id": "consultation-fee",
+        "category": "general",
+        "question": "Can I just have a consultation? Is there a fee?",
+        "shortAnswer": "Yes, consultation fee is 10,000 KRW, fully deducted if treatment is done same day.",
+        "answer": "Yes, you can have just a consultation. The 1:1 professional consultation fee is 10,000 KRW, which is fully deducted from the treatment cost if you proceed with treatment on the same day. Our board-certified plastic surgeon will personally diagnose your skin condition and recommend the optimal treatment plan. You can take your time to decide after the consultation.",
+        "relatedTreatments": [],
+        "tags": ["consultation", "fee", "appointment"]
+      },
+      {
+        "id": "payment-installment",
+        "category": "general",
+        "question": "Can I pay for treatments in installments?",
+        "shortAnswer": "Yes, credit card installments are available, with interest-free options varying by card.",
+        "answer": "Yes, credit card installment payments are available. Interest-free installment benefits may vary by credit card company and payment amount, so please inquire during consultation. There are also various promotions and package discounts available for different treatments.",
+        "relatedTreatments": [],
+        "tags": ["cost", "installment", "payment"]
+      },
+      {
+        "id": "pregnant-treatment",
+        "category": "general",
+        "question": "Can I receive treatment while pregnant or breastfeeding?",
+        "shortAnswer": "No, most cosmetic treatments are not recommended during pregnancy/breastfeeding.",
+        "answer": "Most cosmetic treatments are not recommended during pregnancy or breastfeeding. The safety of Botox, fillers, and lifting treatments on the fetus or breast milk has not been sufficiently verified. We recommend receiving treatment after pregnancy and breastfeeding are complete.",
+        "relatedTreatments": [],
+        "tags": ["pregnancy", "breastfeeding", "contraindications"]
+      },
+      {
+        "id": "liv-specialty",
+        "category": "general",
+        "question": "What does LIV Plastic Surgery specialize in?",
+        "shortAnswer": "We are certified for Ultherapy Prime and Thermage FLX, specializing in non-surgical lifting.",
+        "answer": "LIV Plastic Surgery is an official Ultherapy Prime certified clinic and Thermage FLX partner hospital, specializing in non-surgical lifting treatments. Our board-certified plastic surgeon provides customized treatments based on academic experience with 4 SCI publications. We are located just 1 minute walk from Sinsa Station Exit 4.",
+        "relatedTreatments": ["ulthera", "thermage"],
+        "tags": ["LIV Plastic Surgery", "specialty", "Ultherapy", "Thermage"]
+      },
+      {
+        "id": "first-visit",
+        "category": "general",
+        "question": "What happens on my first visit?",
+        "shortAnswer": "After booking by phone or KakaoTalk, you'll receive a 1:1 consultation with our specialist.",
+        "answer": "Please make a consultation appointment by phone (02-797-2773) or KakaoTalk. During your visit, our board-certified plastic surgeon will personally diagnose your skin condition and recommend the optimal treatment plan based on your concerns and desired results. You can take your time to decide on treatment after the consultation.",
+        "relatedTreatments": [],
+        "tags": ["first visit", "appointment", "consultation process"]
+      }
+    ]
   },
   "signaturePage": {
     "hero": {

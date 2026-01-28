@@ -1,12 +1,23 @@
 'use client';
 
-import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
+import { useState, useMemo, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, ScrollLink } from '@/components/ui';
 import { MedicalBlogSection } from '@/components/sections';
-import { MEDICAL_QA, TREATMENTS } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
+
+// Type for FAQ items from translations
+interface FAQItem {
+  id: string;
+  category: string;
+  question: string;
+  shortAnswer?: string;
+  answer: string;
+  relatedTreatments: string[];
+  tags: string[];
+}
 
 export default function MedicalPage() {
   const t = useTranslations('common');
@@ -16,6 +27,34 @@ export default function MedicalPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const stickyHeaderRef = useRef<HTMLElement>(null);
+
+  // Get FAQ data from translations
+  const faqData = useMemo(() => {
+    const faqItems: FAQItem[] = [];
+    // Access the raw messages to get the faq array
+    // We need to iterate through the indices since next-intl returns individual items
+    let index = 0;
+    while (true) {
+      try {
+        const id = tMedical.raw(`faq.${index}.id`) as string | undefined;
+        if (!id) break;
+
+        faqItems.push({
+          id,
+          category: tMedical.raw(`faq.${index}.category`) as string,
+          question: tMedical(`faq.${index}.question`),
+          shortAnswer: tMedical.raw(`faq.${index}.shortAnswer`) as string | undefined,
+          answer: tMedical(`faq.${index}.answer`),
+          relatedTreatments: tMedical.raw(`faq.${index}.relatedTreatments`) as string[],
+          tags: tMedical.raw(`faq.${index}.tags`) as string[],
+        });
+        index++;
+      } catch {
+        break;
+      }
+    }
+    return faqItems;
+  }, [tMedical]);
 
   const categories = [
     { id: 'all', label: tMedical('categories.all') },
@@ -27,7 +66,7 @@ export default function MedicalPage() {
 
   // 필터링된 Q&A 목록
   const filteredQA = useMemo(() => {
-    return MEDICAL_QA.filter((qa) => {
+    return faqData.filter((qa) => {
       const matchesCategory = selectedCategory === 'all' || qa.category === selectedCategory;
       const matchesSearch =
         searchQuery === '' ||
@@ -36,7 +75,7 @@ export default function MedicalPage() {
         qa.tags.some((tag) => tag.toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesCategory && matchesSearch;
     });
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, faqData]);
 
   // 정렬된 Q&A 목록 - 확장된 질문이 항상 최상단에 위치
   const sortedQA = useMemo(() => {
