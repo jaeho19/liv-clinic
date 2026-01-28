@@ -2619,7 +2619,11 @@
     "photoComparison": {
       "subtitle": "Premium Anti-aging",
       "title": "포토리얼 전후 비교",
-      "description": "카드 위에 마우스를 올리거나 탭하여 시술 전후 변화를 확인하세요"
+      "description": "카드 위에 마우스를 올리거나 탭하여 시술 전후 변화를 확인하세요",
+      "viewingDetails": "상세 정보 보기",
+      "clickToViewDetails": "클릭하여 상세 정보 확인",
+      "beforeTreatment": "시술 전",
+      "afterTreatment": "시술 후"
     },
     "programs": {
       "lifting": {

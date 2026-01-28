@@ -2617,7 +2617,11 @@
     "photoComparison": {
       "subtitle": "Premium Anti-aging",
       "title": "Photo-Real Before & After",
-      "description": "Hover over or tap the card to see before and after treatment changes"
+      "description": "Hover over or tap the card to see before and after treatment changes",
+      "viewingDetails": "Viewing details",
+      "clickToViewDetails": "Click to view details",
+      "beforeTreatment": "Before treatment",
+      "afterTreatment": "After treatment"
     },
     "programs": {
       "lifting": {

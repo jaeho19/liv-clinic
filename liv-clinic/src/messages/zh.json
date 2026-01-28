@@ -2617,7 +2617,11 @@
     "photoComparison": {
       "subtitle": "Premium Anti-aging",
       "title": "真实前后对比",
-      "description": "将鼠标悬停或点击卡片，查看治疗前后的变化"
+      "description": "将鼠标悬停或点击卡片，查看治疗前后的变化",
+      "viewingDetails": "查看详情",
+      "clickToViewDetails": "点击查看详情",
+      "beforeTreatment": "治疗前",
+      "afterTreatment": "治疗后"
     },
     "programs": {
       "lifting": {

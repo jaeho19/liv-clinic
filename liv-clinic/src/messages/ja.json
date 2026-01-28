@@ -2617,7 +2617,11 @@
     "photoComparison": {
       "subtitle": "Premium Anti-aging",
       "title": "フォトリアルなビフォーアフター比較",
-      "description": "カードにマウスを乗せるかタップして、施術前後の変化をご確認ください"
+      "description": "カードにマウスを乗せるかタップして、施術前後の変化をご確認ください",
+      "viewingDetails": "詳細を見る",
+      "clickToViewDetails": "クリックして詳細を確認",
+      "beforeTreatment": "施術前",
+      "afterTreatment": "施術後"
     },
     "programs": {
       "lifting": {

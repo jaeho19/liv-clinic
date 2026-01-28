@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, useReducedMotion, useInView, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 // ============================================================
 // Types
@@ -28,16 +29,19 @@ interface SignatureCardProps {
 }
 
 // ============================================================
-// Program Data - 4개의 시그니처 프로그램
+// Program Static Config - 번역과 분리된 정적 설정
 // ============================================================
-const programs: SignatureProgram[] = [
+interface ProgramConfig {
+  id: string;
+  href: string;
+  beforeImage: string;
+  afterImage: string;
+  accentColor: string;
+}
+
+const programConfigs: ProgramConfig[] = [
   {
     id: 'lifting',
-    title: 'LIFTING SIGNATURE',
-    subtitle: '울쎄라피 프라임 & 써마지',
-    description: '비수술 리프팅의 정점',
-    detailDescription: '프리미엄 정품 장비로 자연스러운 V라인과 탄력있는 피부를 경험하세요. 처진 피부를 끌어올려 또렷한 윤곽을 되찾아드립니다.',
-    features: ['울쎄라피 프라임 정품 인증', '써마지 FLX 파트너', '맞춤형 복합 시술'],
     href: '/lifting',
     beforeImage: '/images/signature/lifting.png',
     afterImage: '/images/signature/lifting.jpg',
@@ -45,11 +49,6 @@ const programs: SignatureProgram[] = [
   },
   {
     id: 'petit',
-    title: 'PETIT SIGNATURE',
-    subtitle: '보톡스 & 필러',
-    description: '섬세한 볼륨과 윤곽',
-    detailDescription: '해부학적 이해를 바탕으로 자연스러운 볼륨과 주름 개선을 실현합니다. 과하지 않은, 본연의 아름다움을 추구합니다.',
-    features: ['정품 필러 사용', '해부학적 접근', '자연스러운 결과'],
     href: '/antiaging',
     beforeImage: '/images/signature/petit.png',
     afterImage: '/images/signature/petit.jpg',
@@ -57,11 +56,6 @@ const programs: SignatureProgram[] = [
   },
   {
     id: 'glow',
-    title: 'GLOW SIGNATURE',
-    subtitle: '스킨부스터 & 재생',
-    description: '피부 본연의 광채',
-    detailDescription: '콜라겐 재생과 깊은 보습으로 피부 텍스처를 근본적으로 개선합니다. 안에서부터 빛나는 건강한 광택을 되찾으세요.',
-    features: ['스킨부스터', '콜라겐 부스팅', '맞춤 피부 관리'],
     href: '/laser',
     beforeImage: '/images/signature/glow-abstract.png',
     afterImage: '/images/signature/glow-abstract.png',
@@ -69,17 +63,28 @@ const programs: SignatureProgram[] = [
   },
   {
     id: 'total',
-    title: 'TOTAL SIGNATURE',
-    subtitle: '종합 안티에이징',
-    description: '완벽한 토탈 케어',
-    detailDescription: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리미엄 패키지. 시네마틱한 변화를 경험하세요.',
-    features: ['복합 리프팅', '볼륨 재정립', '피부 재생'],
     href: '/signature',
     beforeImage: '/images/signature/total-antiaging-abstract.png',
     afterImage: '/images/signature/total-antiaging-abstract.png',
     accentColor: '#6d4e42',
   },
 ];
+
+// Hook to create translated program data
+function useSignaturePrograms(): SignatureProgram[] {
+  const t = useTranslations('signaturePage.programs');
+
+  return useMemo(() => {
+    return programConfigs.map((config) => ({
+      ...config,
+      title: t(`${config.id}.title`),
+      subtitle: t(`${config.id}.subtitle`),
+      description: t(`${config.id}.tagline`),
+      detailDescription: t(`${config.id}.description`),
+      features: t.raw(`${config.id}.features`) as string[],
+    }));
+  }, [t]);
+}
 
 // ============================================================
 // Signature Card Component - 포토리얼 전후 비교 카드
@@ -91,6 +96,8 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.3 });
   const crossfadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const tCommon = useTranslations('common');
+  const tPhoto = useTranslations('signaturePage.photoComparison');
 
   // 호버/탭 시 전후 이미지 크로스페이드 효과
   const startCrossfade = useCallback(() => {
@@ -213,7 +220,7 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
             <div className="absolute inset-0">
               <Image
                 src={program.beforeImage}
-                alt={`${program.title} 시술 전`}
+                alt={`${program.title} ${tPhoto('beforeTreatment')}`}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -233,7 +240,7 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
                 >
                   <Image
                     src={program.afterImage}
-                    alt={`${program.title} 시술 후`}
+                    alt={`${program.title} ${tPhoto('afterTreatment')}`}
                     fill
                     className="object-cover"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -385,7 +392,7 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
                 style={{ color: program.accentColor }}
                 whileHover={{ x: 4 }}
               >
-                <span>자세히 보기</span>
+                <span>{tCommon('learnMore')}</span>
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
@@ -419,6 +426,9 @@ export default function SignatureProgramsSection() {
   const reducedMotion = prefersReducedMotion ?? false;
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const t = useTranslations('signaturePage.hero');
+  const tCommon = useTranslations('common');
+  const programs = useSignaturePrograms();
 
   const headerVariants = {
     hidden: { opacity: 0, y: reducedMotion ? 0 : 20 },
@@ -447,18 +457,18 @@ export default function SignatureProgramsSection() {
           animate={isInView ? 'visible' : 'hidden'}
         >
           <p className="font-serif text-lg md:text-xl text-primary mb-2 tracking-wider">
-            Signature Programs
+            {t('subtitle')}
           </p>
           <h2
             id="signature-programs-title"
             className="text-3xl md:text-4xl lg:text-5xl font-medium text-secondary mb-4"
           >
-            시그니처 프로그램
+            {t('title')}
           </h2>
           <p className="text-mono-light max-w-2xl mx-auto">
-            리브성형외과만의 프리미엄 안티에이징 프로그램으로
+            {t('description1')}
             <br className="hidden md:block" />
-            자연스럽고 아름다운 변화를 경험하세요
+            {t('description2')}
           </p>
         </motion.div>
 
@@ -485,7 +495,7 @@ export default function SignatureProgramsSection() {
             href="/contact"
             className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-white rounded-full text-sm font-medium hover:bg-secondary transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2"
           >
-            무료 상담 예약하기
+            {tCommon('freeConsultation')}
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>

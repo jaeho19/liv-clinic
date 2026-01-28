@@ -131,19 +131,21 @@ function AnimatedGradientMesh({ color, isActive }: { color: string; isActive: bo
 }
 
 // ============================================================
-// Program Data - 요구사항에 맞춘 4개 프로그램
+// Program Static Config - 번역과 분리된 정적 설정
 // ============================================================
-const signaturePrograms: SignatureProgram[] = [
+interface ProgramConfig {
+  id: string;
+  number: string;
+  beforeImage: string;
+  afterImage: string;
+  accentColor: string;
+  href: string;
+}
+
+const programConfigs: ProgramConfig[] = [
   {
     id: 'lifting',
     number: '01',
-    title: 'LIFTING SIGNATURE',
-    subtitle: '울쎄라피 프라임 & 써마지',
-    tagline: '비수술 리프팅의 정점',
-    description: '울쎄라피 프라임의 SMAS 리프팅과 써마지 FLX의 콜라겐 리모델링이 만나 중력을 거스르는 강력한 리프팅 효과를 경험하세요. 처진 피부를 끌어올려 또렷하고 탄력있는 윤곽선을 되찾아드립니다.',
-    features: ['울쎄라피 프라임 정품 SMAS 리프팅', '써마지 FLX 콜라겐 재생', '시너지 복합 시술'],
-    duration: '약 2시간',
-    recommended: '처진 피부, 탄력 저하, 윤곽선 흐림',
     beforeImage: '/images/signature/lifting.png',
     afterImage: '/images/signature/lifting-woman.png',
     accentColor: '#8B5CF6',
@@ -152,13 +154,6 @@ const signaturePrograms: SignatureProgram[] = [
   {
     id: 'petit',
     number: '02',
-    title: 'PETIT SIGNATURE',
-    subtitle: '보톡스 & 필러',
-    tagline: '섬세한 볼륨과 윤곽',
-    description: '해부학적 이해를 바탕으로 자연스러운 볼륨과 주름 개선을 실현합니다. 과하지 않은, 본연의 아름다움을 추구하는 섬세한 시술로 미세한 주름부터 볼륨까지 채워드립니다.',
-    features: ['정품 필러 자연스러운 볼륨', '보톡스 주름 개선', '해부학적 맞춤 시술'],
-    duration: '약 1시간',
-    recommended: '주름, 볼륨 감소, 윤곽 개선',
     beforeImage: '/images/signature/petit.png',
     afterImage: '/images/signature/v-line.png',
     accentColor: '#EC4899',
@@ -167,13 +162,6 @@ const signaturePrograms: SignatureProgram[] = [
   {
     id: 'glow',
     number: '03',
-    title: 'GLOW SIGNATURE',
-    subtitle: '스킨부스터 & 재생',
-    tagline: '피부 본연의 광채',
-    description: '콜라겐 재생과 깊은 보습으로 피부 텍스처를 근본적으로 개선합니다. 칙칙하고 거친 피부를 맑고 빛나는 피부로 변화시켜 안에서부터 빛나는 건강한 광택을 되찾으세요.',
-    features: ['스킨부스터 수분 공급', '콜라겐 부스팅', '피부결 텍스처 개선'],
-    duration: '약 1시간',
-    recommended: '칙칙한 피부, 건조함, 모공/피부결',
     beforeImage: '/images/signature/care.png',
     afterImage: '/images/signature/glow-skin.png',
     accentColor: '#F59E0B',
@@ -182,19 +170,30 @@ const signaturePrograms: SignatureProgram[] = [
   {
     id: 'total',
     number: '04',
-    title: 'TOTAL SIGNATURE',
-    subtitle: '종합 안티에이징',
-    tagline: '완벽한 토탈 케어',
-    description: '리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리미엄 패키지입니다. 얼굴 전체가 리프팅되고 또렷해지는 시네마틱한 변화를 경험하세요.',
-    features: ['복합 리프팅 시술', '볼륨 재정립', '토탈 피부 재생'],
-    duration: '맞춤 설계',
-    recommended: '종합적인 안티에이징, 특별한 날',
     beforeImage: '/images/signature/total-antiaging-abstract.png',
     afterImage: '/images/signature/bridal.png',
     accentColor: '#F43F5E',
     href: '/contact',
   },
 ];
+
+// Hook to create translated program data
+function useSignaturePrograms(): SignatureProgram[] {
+  const t = useTranslations('signaturePage.programs');
+
+  return useMemo(() => {
+    return programConfigs.map((config) => ({
+      ...config,
+      title: t(`${config.id}.title`),
+      subtitle: t(`${config.id}.subtitle`),
+      tagline: t(`${config.id}.tagline`),
+      description: t(`${config.id}.description`),
+      features: t.raw(`${config.id}.features`) as string[],
+      duration: t(`${config.id}.duration`),
+      recommended: t(`${config.id}.recommended`),
+    }));
+  }, [t]);
+}
 
 // ============================================================
 // Premium Card Component - 포토리얼 전후 비교 카드 (럭셔리 에디션)
@@ -210,6 +209,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
   const crossfadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const hoverDelayRef = useRef<NodeJS.Timeout | null>(null);
   const tCommon = useTranslations('common');
+  const tPhoto = useTranslations('signaturePage.photoComparison');
 
   // 모바일 감지 - 3D 틸트 효과 비활성화용
   useEffect(() => {
@@ -426,7 +426,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
         tabIndex={0}
         role="button"
         aria-expanded={isActive}
-        aria-label={`${program.subtitle} - ${program.tagline}. ${isActive ? '상세 정보 보기' : '클릭하여 상세 정보 확인'}`}
+        aria-label={`${program.subtitle} - ${program.tagline}. ${isActive ? tPhoto('viewingDetails') : tPhoto('clickToViewDetails')}`}
       >
         {/* Before/After Images with Crossfade */}
         <motion.div
@@ -439,7 +439,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
           <div className="absolute inset-0">
             <Image
               src={program.beforeImage}
-              alt={`${program.subtitle} 시술 전`}
+              alt={`${program.subtitle} ${tPhoto('beforeTreatment')}`}
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -468,7 +468,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
               >
                 <Image
                   src={program.afterImage}
-                  alt={`${program.subtitle} 시술 후`}
+                  alt={`${program.subtitle} ${tPhoto('afterTreatment')}`}
                   fill
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
@@ -918,6 +918,7 @@ export default function SignatureDetail() {
   const { scrollToSection } = useScrollToSection({ offset: 100 }); // 헤더 높이 고려
   const tCommon = useTranslations('common');
   const t = useTranslations('signaturePage');
+  const signaturePrograms = useSignaturePrograms();
 
   const headerVariants = {
     hidden: { opacity: 0, y: reducedMotion ? 0 : 20 },
