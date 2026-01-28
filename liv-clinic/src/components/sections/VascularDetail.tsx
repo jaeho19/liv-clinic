@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { TREATMENTS, LASER_CATEGORIES } from '@/lib/constants';
 
 const category = LASER_CATEGORIES[1]; // vascular
