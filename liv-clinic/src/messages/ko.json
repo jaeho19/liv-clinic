@@ -2464,6 +2464,9 @@
           ]
         }
       },
+      "hair-removal": {
+        "name": "레이저 제모"
+      },
       "tattoo": {
         "name": "타투 제거",
         "fullName": "Tattoo Removal",

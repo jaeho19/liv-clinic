@@ -2462,6 +2462,9 @@
           ]
         }
       },
+      "hair-removal": {
+        "name": "激光脱毛"
+      },
       "tattoo": {
         "name": "纹身去除",
         "fullName": "Tattoo Removal",
