@@ -80,8 +80,10 @@
     "botox": "肉毒素",
     "filler": "玻尿酸",
     "skinbooster": "水光针",
+    "skincare": "皮肤管理",
     "laser": "激光",
     "medical": "医疗信息",
+    "events": "活动",
     "contact": "联系我们"
   },
   "hero": {
@@ -106,7 +108,23 @@
     "certification": {
       "title": "官方认证医院",
       "ulthera": "超声刀正品认证",
-      "thermage": "热玛吉FLX合作伙伴"
+      "ultheraEn": "Ultherapy Prime Certified",
+      "ultheraDesc": "FDA认证 HIFU提升",
+      "thermage": "热玛吉FLX合作伙伴",
+      "thermageEn": "Thermage FLX Partner",
+      "thermageDesc": "Solta Medical 官方合作伙伴",
+      "density": "Density官方合作伙伴",
+      "densityEn": "Density Official Partner",
+      "densityDesc": "HIFU+RF 双重提升",
+      "potenza": "Potenza官方合作伙伴",
+      "potenzaEn": "Potenza Official Partner",
+      "potenzaDesc": "RF 微针治疗",
+      "sculptra": "童颜针正品认证",
+      "sculptraEn": "Sculptra Certified",
+      "sculptraDesc": "胶原蛋白刺激填充剂",
+      "juvelook": "Juvelook官方合作伙伴",
+      "juvelookEn": "Juvelook Official Partner",
+      "juvelookDesc": "PDRN 皮肤增强剂"
     },
     "equipment": {
       "title": "Genuine Equipment",
@@ -1916,6 +1934,18 @@
               { "id": 10, "name": "眉毛", "description": "眉毛提升" }
             ]
           },
+          "bodyAreas": {
+            "title": "身体填充",
+            "subtitle": "改善身体曲线的体积，打造美丽的轮廓",
+            "areas": [
+              { "id": 1, "name": "肩部填充", "description": "圆润柔和的肩线", "detail": "柔化斜方肌线条，打造女性化的肩部轮廓" },
+              { "id": 2, "name": "臀部填充", "description": "丰满的臀部曲线", "detail": "为扁平或缺乏体积的臀部增添自然丰满感" },
+              { "id": 3, "name": "骨盆填充", "description": "平滑的骨盆轮廓", "detail": "自然遮盖突出的髋骨，完成平滑的身体曲线" },
+              { "id": 4, "name": "臀凹填充", "description": "改善臀凹（大腿-臀部凹陷）", "detail": "填充臀部与大腿之间的凹陷部位，打造平滑轮廓" }
+            ],
+            "notice": "身体填充使用大容量透明质酸填充剂，根据个人体型定制治疗方案。",
+            "imageAlt": "展示肩部、臀部、骨盆、臀凹身体填充治疗部位的医学插图"
+          },
           "fillerTypes": {
             "title": "部位定制填充剂",
             "subtitle": "根据治疗部位和目的选择最佳填充剂硬度",
@@ -2057,6 +2087,37 @@
             "title": "预约水光针咨询",
             "description": "感受由内而外的水润与光泽，专业咨询为您量身定制治疗方案。",
             "buttonOnline": "在线预约咨询"
+          }
+        }
+      },
+      "skincare": {
+        "name": "皮肤管理",
+        "fullName": "Skincare",
+        "tagline": "专业皮肤管理师的细致护理",
+        "description": "LIV的皮肤管理是由专业皮肤管理师亲自进行的专业护肤项目。通过水光注射、再生护理、深层清洁等多种项目，恢复肌肤本来的健康状态。",
+        "detail": {
+          "programsTitle": "高端皮肤管理项目",
+          "aquaTox": {
+            "title": "水光注射",
+            "description": "深层补水护理，为干燥暗沉的肌肤注入水分和弹性。强化肌肤保湿屏障，防止水分流失。"
+          },
+          "plafill": {
+            "title": "再生护理",
+            "description": "专注于肌肤再生和弹力恢复的项目。促进胶原蛋白生成，恢复肌肤弹性，打造充满活力的健康肌肤。"
+          },
+          "benefitsTitle": "皮肤管理的优势",
+          "infoTitle": "治疗信息",
+          "infoLabels": {
+            "duration": "治疗时间",
+            "anesthesia": "麻醉",
+            "recovery": "恢复期",
+            "results": "效果"
+          },
+          "faqTitle": "常见问题",
+          "cta": {
+            "title": "预约皮肤管理咨询",
+            "description": "通过专业皮肤管理师的精准技术，恢复肌肤本来的健康。我们将为您推荐最适合的护理项目。",
+            "button": "在线预约咨询"
           }
         }
       }
@@ -2966,7 +3027,7 @@
       },
       "total": {
         "title": "TOTAL SIGNATURE",
-        "subtitle": "综合抗衰老",
+        "subtitle": "轮廓提升",
         "tagline": "完美的整体护理",
         "description": "一次性护理提升、丰盈和肤质的高端套餐。体验整个面部提升和清晰的电影级变化。",
         "features": ["复合提升治疗", "体积重塑", "全面皮肤再生"],
@@ -3125,6 +3186,7 @@
         "optional": "可选",
         "varies": "因治疗而异",
         "localAnesthesia": "局部麻醉",
+        "anesthesiaCreamLocal": "麻醉膏 / 局部麻醉",
         "none": "无",
         "premium": "高端",
         "moderate": "中等",
@@ -3147,15 +3209,15 @@
         "thermage": {
           "technology": "RF",
           "duration": "45-60分钟",
-          "anesthesia": "无麻醉",
+          "anesthesia": "麻醉膏",
           "recovery": "无",
           "results": "1-2年",
           "price": "高端"
         },
         "density": {
-          "technology": "HIFU+RF",
+          "technology": "RF",
           "duration": "40-60分钟",
-          "anesthesia": "可选",
+          "anesthesia": "麻醉膏",
           "recovery": "无",
           "results": "6个月-1年",
           "price": "中等"
@@ -3163,15 +3225,15 @@
         "shurink": {
           "technology": "HIFU",
           "duration": "30-45分钟",
-          "anesthesia": "可选",
+          "anesthesia": "麻醉膏",
           "recovery": "无",
           "results": "3-6个月",
           "price": "实惠"
         },
         "inmode": {
-          "technology": "RF+微针",
+          "technology": "RF",
           "duration": "30-90分钟",
-          "anesthesia": "因治疗而异",
+          "anesthesia": "无麻醉",
           "recovery": "0-5天",
           "results": "6个月-1年",
           "price": "因治疗而异"
@@ -3179,7 +3241,7 @@
         "thread": {
           "technology": "可吸收线",
           "duration": "30-60分钟",
-          "anesthesia": "局部麻醉",
+          "anesthesia": "麻醉膏 / 局部麻醉",
           "recovery": "3-7天",
           "results": "1-2年",
           "price": "中等"
@@ -3449,6 +3511,11 @@
         "name": "激光设备",
         "nameEn": "Laser Equipment",
         "description": "改善皮肤质地和弹性的激光系统"
+      },
+      "diagnostic": {
+        "name": "皮肤诊断设备",
+        "nameEn": "Skin Diagnostic",
+        "description": "精准分析皮肤状况，制定个性化治疗方案的诊断设备。"
       }
     },
     "equipment": {
@@ -3521,6 +3588,13 @@
         "description": "低刺激美白激光",
         "features": ["黑色素靶向", "肤色均匀化", "低刺激治疗"],
         "certification": "KFDA认证"
+      },
+      "markvu": {
+        "name": "Mark VU",
+        "nameKo": "Mark VU",
+        "description": "配备1800万像素超高清摄像头的先进皮肤诊断仪，能够精准分析肉眼无法看到的12种皮肤问题。",
+        "features": ["1800万像素分辨率", "4种光源分析", "皮肤类型诊断"],
+        "certification": "1800万像素超高清"
       }
     },
     "cta": {
@@ -3542,6 +3616,41 @@
         "title": "位置指南",
         "subtitle": "Location"
       }
+    }
+  },
+  "events": {
+    "title": "活动",
+    "subtitle": "查看LIV整形外科的最新消息和特别优惠",
+    "activeTab": "进行中的活动",
+    "endedTab": "已结束的活动",
+    "activeCount": "进行中",
+    "endedCount": "已结束",
+    "viewDetails": "查看详情",
+    "bookNow": "预约咨询",
+    "period": "期间",
+    "category": "类别",
+    "status": {
+      "active": "进行中",
+      "ended": "已结束"
+    },
+    "categories": {
+      "lifting": "提升",
+      "antiaging": "抗衰老",
+      "laser": "激光",
+      "skincare": "皮肤管理",
+      "all": "全部"
+    },
+    "noEvents": "目前没有进行中的活动",
+    "noEndedEvents": "没有已结束的活动",
+    "backToList": "返回列表",
+    "relatedTreatments": "相关项目",
+    "eventDetails": "活动详情",
+    "share": "分享",
+    "gallery": "活动详细图片",
+    "viewLarger": "放大查看",
+    "meta": {
+      "title": "活动 | LIV整形外科",
+      "description": "查看LIV整形外科的最新活动和特别促销。超声刀、热玛吉、肉毒素、玻尿酸等各种项目优惠。"
     }
   }
 }

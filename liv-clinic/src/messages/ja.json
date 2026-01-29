@@ -80,8 +80,10 @@
     "botox": "ボトックス",
     "filler": "フィラー",
     "skinbooster": "スキンブースター",
+    "skincare": "スキンケア",
     "laser": "レーザー",
     "medical": "医療情報",
+    "events": "イベント",
     "contact": "お問い合わせ"
   },
   "hero": {
@@ -106,7 +108,23 @@
     "certification": {
       "title": "公式認証病院",
       "ulthera": "ウルセラ正品認証",
-      "thermage": "サーマジFLXパートナー"
+      "ultheraEn": "Ultherapy Prime Certified",
+      "ultheraDesc": "FDA承認 HIFUリフティング",
+      "thermage": "サーマジFLXパートナー",
+      "thermageEn": "Thermage FLX Partner",
+      "thermageDesc": "Solta Medical 公式パートナー",
+      "density": "デンシティ公式パートナー",
+      "densityEn": "Density Official Partner",
+      "densityDesc": "HIFU+RF デュアルリフティング",
+      "potenza": "ポテンザ公式パートナー",
+      "potenzaEn": "Potenza Official Partner",
+      "potenzaDesc": "RF マイクロニードル施術",
+      "sculptra": "スカルプトラ正品認証",
+      "sculptraEn": "Sculptra Certified",
+      "sculptraDesc": "コラーゲン刺激フィラー",
+      "juvelook": "ジュベルック公式パートナー",
+      "juvelookEn": "Juvelook Official Partner",
+      "juvelookDesc": "PDRN スキンブースター"
     },
     "equipment": {
       "title": "Genuine Equipment",
@@ -1916,6 +1934,18 @@
               { "id": 10, "name": "眉", "description": "眉リフト" }
             ]
           },
+          "bodyAreas": {
+            "title": "ボディフィラー",
+            "subtitle": "ボディラインのボリュームを改善し、美しいシルエットを完成させます",
+            "areas": [
+              { "id": 1, "name": "肩フィラー", "description": "丸くて柔らかい肩ライン", "detail": "僧帽筋ラインを滑らかにし、女性らしい肩のシルエットを作ります" },
+              { "id": 2, "name": "ヒップフィラー", "description": "ボリューム感のあるヒップライン", "detail": "平らなヒップやボリューム不足のヒップに自然なボリュームを与えます" },
+              { "id": 3, "name": "骨盤フィラー", "description": "滑らかな骨盤輪郭", "detail": "出っ張った骨盤骨を自然にカバーし、滑らかなボディラインを完成させます" },
+              { "id": 4, "name": "ヒップディップフィラー", "description": "ヒップディップ（太もも-ヒップの凹み）改善", "detail": "ヒップと太ももの間の凹みを埋めて、滑らかなシルエットを作ります" }
+            ],
+            "notice": "ボディフィラーは大容量ヒアルロン酸フィラーを使用し、個人の体型に合わせて施術します。",
+            "imageAlt": "肩、ヒップ、骨盤、ヒップディップのボディフィラー施術部位を示す医療イラスト"
+          },
           "fillerTypes": {
             "title": "部位別カスタムフィラー",
             "subtitle": "施術部位と目的に応じて最適なフィラー硬度を選択します",
@@ -2057,6 +2087,37 @@
             "title": "スキンブースターのご相談予約",
             "description": "肌の奥から湧き上がる水分と輝き、専門カウンセリングでオーダーメイド施術をご案内します。",
             "buttonOnline": "オンライン相談予約"
+          }
+        }
+      },
+      "skincare": {
+        "name": "スキンケア",
+        "fullName": "Skincare",
+        "tagline": "エステティシャンによる専門ケア",
+        "description": "LIVのスキンケアは、エステティシャンが直接施術する専門スキンケアプログラムです。アクアトックス、プラフィル、ディープクレンジングなど、様々なプログラムでお肌本来の健康を取り戻します。",
+        "detail": {
+          "programsTitle": "プレミアムスキンケアプログラム",
+          "aquaTox": {
+            "title": "アクアトックス",
+            "description": "深い水分補給で乾燥したお肌に潤いと弾力を与えます。お肌の保湿バリアを強化し、水分の蒸発を防ぎます。"
+          },
+          "plafill": {
+            "title": "プラフィル",
+            "description": "肌再生と弾力回復に重点を置いたプログラムです。コラーゲン生成を促進し、肌の弾力を取り戻し、生き生きとした健康的なお肌へ導きます。"
+          },
+          "benefitsTitle": "スキンケアのメリット",
+          "infoTitle": "施術情報",
+          "infoLabels": {
+            "duration": "施術時間",
+            "anesthesia": "麻酔",
+            "recovery": "回復期間",
+            "results": "効果"
+          },
+          "faqTitle": "よくある質問",
+          "cta": {
+            "title": "スキンケアのご相談予約",
+            "description": "専門エステティシャンの精緻な技術でお肌本来の健康を取り戻しましょう。最適なプログラムをご案内いたします。",
+            "button": "オンライン相談予約"
           }
         }
       }
@@ -2966,7 +3027,7 @@
       },
       "total": {
         "title": "TOTAL SIGNATURE",
-        "subtitle": "総合アンチエイジング",
+        "subtitle": "シルエットリフティング",
         "tagline": "完璧なトータルケア",
         "description": "リフティング、ボリューム、肌質まで一度にケアするプレミアムパッケージです。顔全体がリフトアップされ、くっきりとするシネマティックな変化を体験してください。",
         "features": ["複合リフティング施術", "ボリューム再構築", "トータル肌再生"],
@@ -3125,6 +3186,7 @@
         "optional": "選択",
         "varies": "施術により異なる",
         "localAnesthesia": "局所麻酔",
+        "anesthesiaCreamLocal": "麻酔クリーム / 局所麻酔",
         "none": "なし",
         "premium": "プレミアム",
         "moderate": "中間",
@@ -3147,15 +3209,15 @@
         "thermage": {
           "technology": "RF",
           "duration": "45-60分",
-          "anesthesia": "麻酔なし",
+          "anesthesia": "麻酔クリーム",
           "recovery": "なし",
           "results": "1-2年",
           "price": "プレミアム"
         },
         "density": {
-          "technology": "HIFU+RF",
+          "technology": "RF",
           "duration": "40-60分",
-          "anesthesia": "選択",
+          "anesthesia": "麻酔クリーム",
           "recovery": "なし",
           "results": "6ヶ月-1年",
           "price": "中間"
@@ -3163,15 +3225,15 @@
         "shurink": {
           "technology": "HIFU",
           "duration": "30-45分",
-          "anesthesia": "選択",
+          "anesthesia": "麻酔クリーム",
           "recovery": "なし",
           "results": "3-6ヶ月",
           "price": "リーズナブル"
         },
         "inmode": {
-          "technology": "RF+ニードル",
+          "technology": "RF",
           "duration": "30-90分",
-          "anesthesia": "施術により異なる",
+          "anesthesia": "麻酔なし",
           "recovery": "0-5日",
           "results": "6ヶ月-1年",
           "price": "施術により異なる"
@@ -3179,7 +3241,7 @@
         "thread": {
           "technology": "溶ける糸",
           "duration": "30-60分",
-          "anesthesia": "局所麻酔",
+          "anesthesia": "麻酔クリーム / 局所麻酔",
           "recovery": "3-7日",
           "results": "1-2年",
           "price": "中間"
@@ -3449,6 +3511,11 @@
         "name": "レーザー機器",
         "nameEn": "Laser Equipment",
         "description": "肌質改善と弾力のためのレーザーシステム"
+      },
+      "diagnostic": {
+        "name": "肌診断機器",
+        "nameEn": "Skin Diagnostic",
+        "description": "肌の状態を精密に分析し、オーダーメイドの施術プランを立てる診断機器です。"
       }
     },
     "equipment": {
@@ -3521,6 +3588,13 @@
         "description": "低刺激ホワイトニングレーザー",
         "features": ["メラニンターゲティング", "肌トーン均一化", "低刺激施術"],
         "certification": "KFDA承認"
+      },
+      "markvu": {
+        "name": "Mark VU",
+        "nameKo": "マークビュー",
+        "description": "1,800万画素の超高解像度カメラで、肉眼では確認できない肌の問題を12項目で精密分析する先進的な肌診断機器です。",
+        "features": ["1,800万画素の解像度", "4種類の光源分析", "肌タイプ診断"],
+        "certification": "1,800万画素 超高解像度"
       }
     },
     "cta": {
@@ -3542,6 +3616,41 @@
         "title": "アクセス",
         "subtitle": "Location"
       }
+    }
+  },
+  "events": {
+    "title": "イベント",
+    "subtitle": "リブ形成外科の最新ニュースと特別特典をご確認ください",
+    "activeTab": "開催中イベント",
+    "endedTab": "終了イベント",
+    "activeCount": "開催中",
+    "endedCount": "終了",
+    "viewDetails": "詳細を見る",
+    "bookNow": "相談予約",
+    "period": "期間",
+    "category": "カテゴリー",
+    "status": {
+      "active": "開催中",
+      "ended": "終了"
+    },
+    "categories": {
+      "lifting": "リフティング",
+      "antiaging": "アンチエイジング",
+      "laser": "レーザー",
+      "skincare": "スキンケア",
+      "all": "すべて"
+    },
+    "noEvents": "現在開催中のイベントはありません",
+    "noEndedEvents": "終了したイベントはありません",
+    "backToList": "一覧に戻る",
+    "relatedTreatments": "関連施術",
+    "eventDetails": "イベント詳細",
+    "share": "共有",
+    "gallery": "イベント詳細画像",
+    "viewLarger": "拡大表示",
+    "meta": {
+      "title": "イベント | リブ形成外科",
+      "description": "リブ形成外科の最新イベントと特別プロモーションをご確認ください。ウルセラ、サーマジ、ボトックス、フィラーなど様々な施術の割引特典をご覧ください。"
     }
   }
 }

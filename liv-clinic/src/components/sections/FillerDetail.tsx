@@ -43,250 +43,336 @@ const colors = {
   gold: '#C9A86C',
 };
 
-// Treatment Areas Data Interface
-interface FillerAreaLabel {
-  forehead: string;
-  temple: string;
-  nose: string;
-  cheekbone: string;
-  nasolabial: string;
-  cheek: string;
-  chin: string;
-  aegyo: string;
-  lips: string;
-  eyebrow: string;
-}
+// ========================================================================
+// 시술 부위 포인트 마커 데이터 구조
+// ========================================================================
+//
+// 📐 좌표 설계 원칙:
+// - viewBox: 0 0 100 100 (퍼센트 기반)
+// - 이미지 비율: 520x650 (가로:세로 ≈ 0.8:1)
+// - preserveAspectRatio="none" 사용으로 이미지와 1:1 매핑
+// - 각 시술 부위에 작은 원형 포인트 마커 하나만 표시
+// - 마커 반지름: 전체 폭 대비 2-3% (r ≈ 2-3)
+//
+// ========================================================================
 
-// SVG overlay coordinate data for precise treatment area highlighting
-// Coordinates are numeric values (0-100) based on the viewBox="0 0 100 100"
-// Image aspect ratio: 520x650 (width:height ≈ 0.8:1)
-interface AreaCoord {
-  type: 'ellipse' | 'circle';
-  cx: number;
-  cy: number;
-  rx?: number;
-  ry?: number;
-  r?: number;
-  rotate?: number;
-}
-
-interface FillerAreaData {
+/** 시술 부위 포인트 타입 정의 */
+interface TreatmentPoint {
+  /** 고유 식별자 (1-10) */
   id: number;
+  /** 한글 라벨 */
+  labelKo: string;
+  /** 표시 번호 (01-10) */
+  number: string;
+  /** X 좌표 (0-100%, viewBox 기준) */
+  x: number;
+  /** Y 좌표 (0-100%, viewBox 기준) */
+  y: number;
+  /** 마커 반지름 (viewBox 기준, 기본 2.5) */
+  radius: number;
+  /** 카테고리 (주름/볼륨/윤곽/리프트) */
   category: 'wrinkle' | 'volume' | 'contour' | 'lift';
+  /** 카테고리 색상 */
   color: string;
-  coords: AreaCoord | AreaCoord[];
+  /** 짧은 설명 */
+  description: string;
 }
 
-// Precise coordinates based on the actual image markers (viewBox 0 0 100 100)
-// Adjusted for the face image proportions
-const FILLER_AREA_DATA: FillerAreaData[] = [
+/** 카테고리별 색상 정의 */
+const CATEGORY_COLORS = {
+  wrinkle: '#D4A5A5',  // 분홍색 - 주름 개선
+  volume: '#A89080',   // 베이지색 - 볼륨 주입
+  contour: '#6D5A4D',  // 갈색 - 윤곽 성형
+  lift: '#C9A86C',     // 골드색 - 리프팅
+} as const;
+
+/**
+ * 시술 부위 포인트 데이터
+ * - 이미지의 실제 마커 위치 기준 좌표
+ * - 각 포인트는 해당 시술의 대표 주사 위치
+ */
+const TREATMENT_POINTS: TreatmentPoint[] = [
   {
-    id: 1, // 이마 (Forehead) - marker at top center
+    id: 1,
+    labelKo: '이마',
+    number: '01',
+    x: 40,      // 이마 중앙 (왼쪽으로 이동)
+    y: 23,      // 헤어라인 아래 (아래로 이동)
+    radius: 2.5,
     category: 'wrinkle',
-    color: '#D4A5A5',
-    coords: {
-      type: 'ellipse',
-      cx: 50,
-      cy: 14,
-      rx: 20,
-      ry: 5,
-    },
+    color: CATEGORY_COLORS.wrinkle,
+    description: '이마 주름 개선',
   },
   {
-    id: 2, // 관자놀이 (Temple) - markers on both sides near forehead
+    id: 2,
+    labelKo: '관자놀이',
+    number: '02',
+    x: 69,      // 오른쪽 관자놀이 (왼쪽으로 이동)
+    y: 35,      // (아래로 이동)
+    radius: 2.5,
     category: 'volume',
-    color: '#A89080',
-    coords: [
-      { type: 'ellipse', cx: 18, cy: 24, rx: 8, ry: 8 },
-      { type: 'ellipse', cx: 82, cy: 24, rx: 8, ry: 8 },
-    ],
+    color: CATEGORY_COLORS.volume,
+    description: '볼륨 손실 복원',
   },
   {
-    id: 3, // 코 (Nose) - center of face, nose bridge area
+    id: 3,
+    labelKo: '코',
+    number: '03',
+    x: 40,      // 콧대 중앙 (왼쪽으로 이동)
+    y: 48,      // (아래로 이동)
+    radius: 2.5,
     category: 'contour',
-    color: '#6D5A4D',
-    coords: {
-      type: 'ellipse',
-      cx: 50,
-      cy: 42,
-      rx: 6,
-      ry: 10,
-    },
+    color: CATEGORY_COLORS.contour,
+    description: '콧대/코끝 성형',
   },
   {
-    id: 4, // 앞광대 (Cheekbone) - under eyes, cheekbone area
+    id: 4,
+    labelKo: '앞광대',
+    number: '04',
+    x: 25,      // 왼쪽 광대 (왼쪽으로 이동)
+    y: 50,      // (아래로 이동)
+    radius: 2.5,
     category: 'volume',
-    color: '#A89080',
-    coords: [
-      { type: 'ellipse', cx: 33, cy: 43, rx: 10, ry: 6 },
-      { type: 'ellipse', cx: 67, cy: 43, rx: 10, ry: 6 },
-    ],
+    color: CATEGORY_COLORS.volume,
+    description: '광대뼈 볼륨',
   },
   {
-    id: 5, // 팔자 (Nasolabial fold) - from nose to mouth corners
+    id: 5,
+    labelKo: '팔자',
+    number: '05',
+    x: 29,      // 왼쪽 팔자 상단 (왼쪽으로 이동)
+    y: 60,      // (아래로 이동)
+    radius: 2.5,
     category: 'wrinkle',
-    color: '#D4A5A5',
-    coords: [
-      { type: 'ellipse', cx: 40, cy: 55, rx: 4, ry: 8, rotate: -20 },
-      { type: 'ellipse', cx: 60, cy: 55, rx: 4, ry: 8, rotate: 20 },
-    ],
+    color: CATEGORY_COLORS.wrinkle,
+    description: '팔자주름 개선',
   },
   {
-    id: 6, // 옆볼 (Side cheek) - outer cheek area
+    id: 6,
+    labelKo: '옆볼',
+    number: '06',
+    x: 66,      // 오른쪽 볼 (왼쪽으로 이동)
+    y: 58,      // (아래로 이동)
+    radius: 2.5,
     category: 'volume',
-    color: '#A89080',
-    coords: [
-      { type: 'ellipse', cx: 22, cy: 52, rx: 10, ry: 10 },
-      { type: 'ellipse', cx: 78, cy: 52, rx: 10, ry: 10 },
-    ],
+    color: CATEGORY_COLORS.volume,
+    description: '볼 처짐 개선',
   },
   {
-    id: 7, // 턱끝 (Chin) - bottom center
+    id: 7,
+    labelKo: '턱끝',
+    number: '07',
+    x: 40,      // 턱 중앙 (왼쪽으로 이동)
+    y: 79,      // (아래로 이동)
+    radius: 2.5,
     category: 'contour',
-    color: '#6D5A4D',
-    coords: {
-      type: 'ellipse',
-      cx: 50,
-      cy: 72,
-      rx: 10,
-      ry: 5,
-    },
+    color: CATEGORY_COLORS.contour,
+    description: '턱 볼륨 형성',
   },
   {
-    id: 8, // 애교살 (Under-eye/Aegyo-sal) - directly under eyes
+    id: 8,
+    labelKo: '애교살',
+    number: '08',
+    x: 53,      // 오른쪽 눈 아래 (왼쪽으로 이동)
+    y: 43,      // (아래로 이동)
+    radius: 2.5,
     category: 'volume',
-    color: '#A89080',
-    coords: [
-      { type: 'ellipse', cx: 36, cy: 36, rx: 8, ry: 3 },
-      { type: 'ellipse', cx: 64, cy: 36, rx: 8, ry: 3 },
-    ],
+    color: CATEGORY_COLORS.volume,
+    description: '눈 밑 볼륨',
   },
   {
-    id: 9, // 입술 (Lips) - center lip area
+    id: 9,
+    labelKo: '입술',
+    number: '09',
+    x: 40,      // 입술 중앙 (왼쪽으로 이동)
+    y: 67,      // (아래로 이동)
+    radius: 2.5,
     category: 'volume',
-    color: '#A89080',
-    coords: {
-      type: 'ellipse',
-      cx: 50,
-      cy: 63,
-      rx: 12,
-      ry: 4,
-    },
+    color: CATEGORY_COLORS.volume,
+    description: '입술 볼륨',
   },
   {
-    id: 10, // 눈썹 (Eyebrow) - eyebrow arch area
+    id: 10,
+    labelKo: '눈썹',
+    number: '10',
+    x: 24,      // 왼쪽 눈썹 위 (왼쪽으로 이동)
+    y: 34,      // (아래로 이동)
+    radius: 2.5,
     category: 'lift',
-    color: '#C9A86C',
-    coords: [
-      { type: 'ellipse', cx: 32, cy: 26, rx: 10, ry: 3, rotate: -5 },
-      { type: 'ellipse', cx: 68, cy: 26, rx: 10, ry: 3, rotate: 5 },
-    ],
+    color: CATEGORY_COLORS.lift,
+    description: '눈썹 리프트',
   },
 ];
 
-// Helper to get area data by ID
-const getAreaData = (id: number): FillerAreaData | undefined => {
-  return FILLER_AREA_DATA.find(area => area.id === id);
+/** 포인트 ID로 데이터 조회 */
+const getPointData = (id: number): TreatmentPoint | undefined => {
+  return TREATMENT_POINTS.find(point => point.id === id);
+};
+
+// ========================================================================
+// 바디 필러 포인트 마커 데이터
+// ========================================================================
+
+/** 바디 필러 시술 부위 포인트 데이터 (번역 파일 순서: 어깨→힙→골반→힙딥) */
+const BODY_TREATMENT_POINTS: TreatmentPoint[] = [
+  {
+    id: 1,
+    labelKo: '어깨',
+    number: '01',
+    x: 67,      // 오른쪽 어깨 (왼쪽으로 조금 이동)
+    y: 18,
+    radius: 4,
+    category: 'volume',
+    color: '#C9A86C',
+    description: '어깨 볼륨',
+  },
+  {
+    id: 2,
+    labelKo: '힙',
+    number: '02',
+    x: 33,      // 왼쪽 엉덩이 (오른쪽으로 조금 이동)
+    y: 70,
+    radius: 4,
+    category: 'volume',
+    color: '#C9A86C',
+    description: '힙 볼륨',
+  },
+  {
+    id: 3,
+    labelKo: '골반',
+    number: '03',
+    x: 65,      // 오른쪽 골반
+    y: 62,      // 조금 아래로
+    radius: 4,
+    category: 'contour',
+    color: '#C9A86C',
+    description: '골반 윤곽',
+  },
+  {
+    id: 4,
+    labelKo: '힙딥',
+    number: '04',
+    x: 62,      // 오른쪽 힙딥
+    y: 76,      // 조금 아래로
+    radius: 4,
+    category: 'volume',
+    color: '#C9A86C',
+    description: '힙딥 볼륨',
+  },
+];
+
+/** 바디 포인트 ID로 데이터 조회 */
+const getBodyPointData = (id: number): TreatmentPoint | undefined => {
+  return BODY_TREATMENT_POINTS.find(point => point.id === id);
 };
 
 // Category colors for treatment areas (for backward compatibility)
 const AREA_CATEGORIES: Record<number, { type: 'wrinkle' | 'volume' | 'contour' | 'lift'; color: string }> = {
-  1: { type: 'wrinkle', color: '#D4A5A5' },   // 이마
-  2: { type: 'volume', color: '#A89080' },    // 관자놀이
-  3: { type: 'contour', color: '#6D5A4D' },   // 코
-  4: { type: 'volume', color: '#A89080' },    // 앞광대
-  5: { type: 'wrinkle', color: '#D4A5A5' },   // 팔자
-  6: { type: 'volume', color: '#A89080' },    // 옆볼
-  7: { type: 'contour', color: '#6D5A4D' },   // 턱끝
-  8: { type: 'volume', color: '#A89080' },    // 애교살
-  9: { type: 'volume', color: '#A89080' },    // 입술
-  10: { type: 'lift', color: '#C9A86C' },     // 눈썹
+  1: { type: 'wrinkle', color: '#D4A5A5' },
+  2: { type: 'volume', color: '#A89080' },
+  3: { type: 'contour', color: '#6D5A4D' },
+  4: { type: 'volume', color: '#A89080' },
+  5: { type: 'wrinkle', color: '#D4A5A5' },
+  6: { type: 'volume', color: '#A89080' },
+  7: { type: 'contour', color: '#6D5A4D' },
+  8: { type: 'volume', color: '#A89080' },
+  9: { type: 'volume', color: '#A89080' },
+  10: { type: 'lift', color: '#C9A86C' },
 };
 
-// SVG Ellipse Component for treatment area overlay
-const SvgAreaOverlay = ({
-  coord,
-  color,
-  isAnimating,
+/**
+ * 단순 원형 포인트 마커 컴포넌트
+ * - 선택된 상태에서만 표시 (펄스 애니메이션)
+ */
+const PointMarker = ({
+  point,
+  isSelected,
 }: {
-  coord: AreaCoord;
-  color: string;
-  isAnimating: boolean;
+  point: TreatmentPoint;
+  isSelected: boolean;
 }) => {
-  const rx = coord.rx || coord.r || 5;
-  const ry = coord.ry || coord.r || 5;
-  const transformAttr = coord.rotate
-    ? `rotate(${coord.rotate}, ${coord.cx}, ${coord.cy})`
-    : undefined;
+  const selectedRadius = point.radius * 1.4; // 선택 시 40% 확대
+
+  // 선택되지 않은 상태에서는 아무것도 렌더링하지 않음
+  if (!isSelected) return null;
 
   return (
-    <g transform={transformAttr}>
-      {/* Outer pulse effect */}
-      <motion.ellipse
-        cx={coord.cx}
-        cy={coord.cy}
-        rx={rx * 1.3}
-        ry={ry * 1.3}
-        fill={color}
-        fillOpacity={0.1}
-        stroke={color}
-        strokeWidth="0.5"
-        strokeOpacity={0.3}
-        initial={{ scale: 1, opacity: 0 }}
-        animate={isAnimating ? {
-          scale: [1, 1.4, 1],
-          opacity: [0.3, 0, 0.3],
-        } : { opacity: 0 }}
+    <g>
+      {/* 외부 펄스 효과 */}
+      <motion.circle
+        cx={point.x}
+        cy={point.y}
+        r={selectedRadius * 2}
+        fill={point.color}
+        fillOpacity={0.15}
+        initial={{ scale: 1, opacity: 0.2 }}
+        animate={{
+          scale: [1, 1.5, 1],
+          opacity: [0.2, 0, 0.2],
+        }}
         transition={{
-          duration: 2,
+          duration: 1.5,
           repeat: Infinity,
           ease: 'easeInOut',
         }}
       />
-      {/* Main highlight area */}
-      <motion.ellipse
-        cx={coord.cx}
-        cy={coord.cy}
-        rx={rx}
-        ry={ry}
-        fill={color}
-        fillOpacity={0.3}
-        stroke={color}
-        strokeWidth="0.8"
-        strokeOpacity={0.9}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={isAnimating ? {
-          opacity: 1,
-          scale: 1,
-        } : { opacity: 0, scale: 0.8 }}
+
+      {/* 중간 글로우 */}
+      <motion.circle
+        cx={point.x}
+        cy={point.y}
+        r={selectedRadius * 1.5}
+        fill={point.color}
+        fillOpacity={0.25}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.25 }}
+        transition={{ duration: 0.2 }}
+      />
+
+      {/* 메인 원형 마커 */}
+      <motion.circle
+        cx={point.x}
+        cy={point.y}
+        r={selectedRadius}
+        fill={point.color}
+        fillOpacity={0.9}
+        stroke={point.color}
+        strokeWidth={0.8}
+        initial={{ scale: 0 }}
+        animate={{
+          scale: [1, 1.1, 1],
+        }}
         transition={{
-          duration: 0.4,
-          ease: 'easeOut',
+          duration: 0.8,
+          repeat: Infinity,
+          ease: 'easeInOut',
         }}
       />
-      {/* Inner glow center */}
-      <motion.ellipse
-        cx={coord.cx}
-        cy={coord.cy}
-        rx={rx * 0.4}
-        ry={ry * 0.4}
-        fill={color}
-        fillOpacity={0.5}
-        initial={{ opacity: 0 }}
-        animate={isAnimating ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.3, delay: 0.1 }}
+
+      {/* 중앙 흰색 점 */}
+      <motion.circle
+        cx={point.x}
+        cy={point.y}
+        r={selectedRadius * 0.35}
+        fill="white"
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.2, delay: 0.1 }}
       />
     </g>
   );
 };
 
-// Interactive Image with SVG Overlay Markers
+/**
+ * 인터랙티브 이미지 컴포넌트 - 포인트 마커 방식
+ * - 선택된 포인트만 표시 (컬러 채움 + 펄스 애니메이션)
+ */
 const FillerImageWithMarkers = ({
   selectedAreaId,
 }: {
   selectedAreaId: number | null;
 }) => {
-  const areaData = selectedAreaId ? getAreaData(selectedAreaId) : null;
+  const selectedPoint = selectedAreaId ? getPointData(selectedAreaId) : null;
 
   return (
     <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#A89080]/20 bg-gradient-to-b from-gray-50 to-gray-100">
@@ -301,18 +387,17 @@ const FillerImageWithMarkers = ({
         priority
       />
 
-      {/* SVG Overlay for precise area highlighting */}
-      {/* viewBox matches a 100x100 coordinate system that maps to the image */}
+      {/* SVG Overlay - 선택된 포인트 마커만 표시 */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className="absolute inset-0 w-full h-full"
         viewBox="0 0 100 100"
         preserveAspectRatio="none"
         style={{ mixBlendMode: 'normal' }}
       >
         <defs>
-          {/* Glow filter for selected areas */}
-          <filter id="areaGlow" x="-100%" y="-100%" width="300%" height="300%">
-            <feGaussianBlur stdDeviation="1.5" result="blur" />
+          {/* 마커 글로우 필터 */}
+          <filter id="markerGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="0.8" result="blur" />
             <feMerge>
               <feMergeNode in="blur" />
               <feMergeNode in="SourceGraphic" />
@@ -320,31 +405,20 @@ const FillerImageWithMarkers = ({
           </filter>
         </defs>
 
-        {/* Render area overlays when selected */}
-        {areaData && (
-          <g filter="url(#areaGlow)">
-            {Array.isArray(areaData.coords) ? (
-              areaData.coords.map((coord, idx) => (
-                <SvgAreaOverlay
-                  key={idx}
-                  coord={coord}
-                  color={areaData.color}
-                  isAnimating={true}
-                />
-              ))
-            ) : (
-              <SvgAreaOverlay
-                coord={areaData.coords}
-                color={areaData.color}
-                isAnimating={true}
-              />
-            )}
-          </g>
-        )}
+        {/* 선택된 포인트 마커만 렌더링 */}
+        <g filter="url(#markerGlow)">
+          {TREATMENT_POINTS.map((point) => (
+            <PointMarker
+              key={point.id}
+              point={point}
+              isSelected={selectedAreaId === point.id}
+            />
+          ))}
+        </g>
       </svg>
 
-      {/* Area number indicator */}
-      {selectedAreaId && areaData && (
+      {/* 선택된 부위 번호 표시 (우상단) */}
+      {selectedPoint && (
         <motion.div
           className="absolute top-4 right-4 z-20"
           initial={{ opacity: 0, scale: 0.8 }}
@@ -354,17 +428,98 @@ const FillerImageWithMarkers = ({
           <div
             className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
             style={{
-              backgroundColor: areaData.color,
-              boxShadow: `0 4px 20px ${areaData.color}60`,
+              backgroundColor: selectedPoint.color,
+              boxShadow: `0 4px 20px ${selectedPoint.color}60`,
             }}
           >
-            {String(selectedAreaId).padStart(2, '0')}
+            {selectedPoint.number}
+          </div>
+        </motion.div>
+      )}
+
+      {/* 미세한 그라데이션 오버레이 */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#A89080]/5 to-transparent pointer-events-none" />
+    </div>
+  );
+};
+
+/**
+ * 바디 필러 이미지 컴포넌트 - 포인트 마커 방식
+ * - 선택된 포인트만 표시 (컬러 채움 + 펄스 애니메이션)
+ */
+const BodyFillerImageWithMarkers = ({
+  selectedAreaId,
+  imageAlt,
+}: {
+  selectedAreaId: number | null;
+  imageAlt: string;
+}) => {
+  const selectedPoint = selectedAreaId ? getBodyPointData(selectedAreaId) : null;
+
+  return (
+    <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#C9A86C]/15 bg-gradient-to-b from-[#FAF8F6] to-white">
+      {/* Base Image */}
+      <Image
+        src="/images/Gemini_Generated_Image_wdfux9wdfux9wdfu.png"
+        alt={imageAlt}
+        width={600}
+        height={800}
+        className="w-full h-auto"
+        quality={95}
+      />
+
+      {/* SVG Overlay - 선택된 포인트 마커만 표시 */}
+      <svg
+        className="absolute inset-0 w-full h-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ mixBlendMode: 'normal' }}
+      >
+        <defs>
+          {/* 마커 글로우 필터 */}
+          <filter id="bodyMarkerGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="0.8" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* 선택된 포인트 마커만 렌더링 */}
+        <g filter="url(#bodyMarkerGlow)">
+          {BODY_TREATMENT_POINTS.map((point) => (
+            <PointMarker
+              key={point.id}
+              point={point}
+              isSelected={selectedAreaId === point.id}
+            />
+          ))}
+        </g>
+      </svg>
+
+      {/* 선택된 부위 번호 표시 (우상단) */}
+      {selectedPoint && (
+        <motion.div
+          className="absolute top-4 right-4 z-20"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          <div
+            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
+            style={{
+              backgroundColor: selectedPoint.color,
+              boxShadow: `0 4px 20px ${selectedPoint.color}60`,
+            }}
+          >
+            {selectedPoint.number}
           </div>
         </motion.div>
       )}
 
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#A89080]/5 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#C9A86C]/5 to-transparent pointer-events-none" />
     </div>
   );
 };
@@ -688,6 +843,7 @@ export default function FillerDetail() {
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
   const [selectedArea, setSelectedArea] = useState<number | null>(null);
+  const [selectedBodyArea, setSelectedBodyArea] = useState<number | null>(null);
 
   // Load translation data using t.raw() for arrays
   const benefitItems = t.raw('antiaging.filler.detail.benefits.items') as BenefitItem[];
@@ -718,6 +874,18 @@ export default function FillerDetail() {
         id: i + 1,
         name: t(`antiaging.filler.detail.targetAreas.areas.${i}.name`),
         description: t(`antiaging.filler.detail.targetAreas.areas.${i}.description`),
+      })),
+    },
+    bodyAreas: {
+      title: t('antiaging.filler.detail.bodyAreas.title'),
+      subtitle: t('antiaging.filler.detail.bodyAreas.subtitle'),
+      notice: t('antiaging.filler.detail.bodyAreas.notice'),
+      imageAlt: t('antiaging.filler.detail.bodyAreas.imageAlt'),
+      areas: [0, 1, 2, 3].map((i) => ({
+        id: i + 1,
+        name: t(`antiaging.filler.detail.bodyAreas.areas.${i}.name`),
+        description: t(`antiaging.filler.detail.bodyAreas.areas.${i}.description`),
+        detail: t(`antiaging.filler.detail.bodyAreas.areas.${i}.detail`),
       })),
     },
     fillerTypes: {
@@ -975,7 +1143,7 @@ export default function FillerDetail() {
               transition={{ delay: 0.2 }}
               className="w-[380px] xl:w-[420px] flex-shrink-0"
             >
-              <FillerImageWithMarkers selectedAreaId={selectedArea} />
+              <FillerImageWithMarkers selectedAreaId={selectedArea}  />
 
               {/* Selected area info card */}
               {selectedArea && (
@@ -1037,7 +1205,7 @@ export default function FillerDetail() {
               transition={{ delay: 0.2 }}
               className="lg:sticky lg:top-32"
             >
-              <FillerImageWithMarkers selectedAreaId={selectedArea} />
+              <FillerImageWithMarkers selectedAreaId={selectedArea}  />
 
               {/* Selected area info card */}
               {selectedArea && (
@@ -1093,7 +1261,7 @@ export default function FillerDetail() {
               viewport={{ once: true }}
               className="mb-8"
             >
-              <FillerImageWithMarkers selectedAreaId={selectedArea} />
+              <FillerImageWithMarkers selectedAreaId={selectedArea}  />
 
               {/* Selected area info card */}
               {selectedArea && (
@@ -1140,6 +1308,173 @@ export default function FillerDetail() {
             <p className="text-xs text-gray-400 text-center mt-6">
               * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Body Filler Section */}
+      <section className="py-24 bg-white relative overflow-hidden">
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#A89080]/20 to-transparent" />
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 lg:mb-16"
+          >
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-8 h-px bg-[#C9A86C]" />
+              <span className="text-xs tracking-[0.3em] text-[#C9A86C] uppercase">Body Filler</span>
+              <div className="w-8 h-px bg-[#C9A86C]" />
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-4">
+              {detail.bodyAreas.title}
+            </h2>
+            <p className="text-gray-500 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+              {detail.bodyAreas.subtitle}
+            </p>
+          </motion.div>
+
+          {/* Body Filler - 2 Column Layout (Image + Cards) */}
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-8 items-start">
+              {/* Left: Image with Markers */}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="lg:sticky lg:top-32"
+              >
+                <BodyFillerImageWithMarkers
+                  selectedAreaId={selectedBodyArea}
+                  imageAlt={detail.bodyAreas.imageAlt}
+                />
+
+                {/* Selected area info card */}
+                {selectedBodyArea && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#C9A86C]/30"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md"
+                        style={{
+                          backgroundColor: '#C9A86C',
+                          boxShadow: '0 4px 12px rgba(201, 168, 108, 0.4)',
+                        }}
+                      >
+                        {String(selectedBodyArea).padStart(2, '0')}
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#3A3A3A]">
+                          {detail.bodyAreas.areas.find(a => a.id === selectedBodyArea)?.name}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {detail.bodyAreas.areas.find(a => a.id === selectedBodyArea)?.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+
+                {/* Hint text */}
+                <p className="text-xs text-gray-400 text-center mt-4">
+                  * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+                </p>
+              </motion.div>
+
+              {/* Right: Cards List */}
+              <div className="space-y-4">
+                {detail.bodyAreas.areas.map((area, index) => (
+                  <motion.button
+                    key={area.id}
+                    onClick={() => setSelectedBodyArea(selectedBodyArea === area.id ? null : area.id)}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ x: 4 }}
+                    whileTap={{ scale: 0.98 }}
+                    className={`
+                      group relative w-full text-left p-6 rounded-2xl transition-all duration-500
+                      ${selectedBodyArea === area.id
+                        ? 'bg-gradient-to-r from-[#C9A86C]/15 to-[#FAF8F6] border-2 border-[#C9A86C]/50 shadow-lg shadow-[#C9A86C]/15'
+                        : 'bg-gradient-to-br from-[#FAF8F6] to-white border border-gray-100 hover:border-[#C9A86C]/40 hover:shadow-xl hover:shadow-[#C9A86C]/10'
+                      }
+                    `}
+                  >
+                    {/* Background gradient on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#C9A86C]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
+
+                    {/* Number badge */}
+                    <div className="flex items-start gap-5">
+                      <div
+                        className="relative w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300"
+                        style={{
+                          background: selectedBodyArea === area.id
+                            ? 'linear-gradient(135deg, #C9A86C 0%, #D4B87A 100%)'
+                            : 'linear-gradient(135deg, #C9A86C99 0%, #D4B87A99 100%)',
+                          boxShadow: selectedBodyArea === area.id
+                            ? '0 4px 16px rgba(201, 168, 108, 0.4)'
+                            : '0 4px 16px rgba(201, 168, 108, 0.25)',
+                          transform: selectedBodyArea === area.id ? 'scale(1.1)' : 'scale(1)',
+                        }}
+                      >
+                        <span className="text-white font-light text-base">0{area.id}</span>
+                      </div>
+
+                      <div className="flex-1 min-w-0">
+                        <h3 className={`
+                          relative text-lg font-medium mb-1 transition-colors
+                          ${selectedBodyArea === area.id ? 'text-[#6D5A4D]' : 'text-[#3A3A3A] group-hover:text-[#6D5A4D]'}
+                        `}>
+                          {area.name}
+                        </h3>
+                        <p className="relative text-sm text-[#C9A86C] font-medium mb-2">
+                          {area.description}
+                        </p>
+                        <p className="relative text-sm text-gray-400 leading-relaxed">
+                          {area.detail}
+                        </p>
+                      </div>
+
+                      {/* Selection indicator */}
+                      <div
+                        className={`
+                          w-1 h-12 rounded-full transition-all duration-300 flex-shrink-0
+                          ${selectedBodyArea === area.id ? 'bg-[#C9A86C]' : 'bg-transparent group-hover:bg-[#C9A86C]/30'}
+                        `}
+                      />
+                    </div>
+                  </motion.button>
+                ))}
+
+                {/* Notice */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4 }}
+                  className="mt-6 p-5 bg-gradient-to-r from-[#C9A86C]/10 via-[#C9A86C]/5 to-transparent rounded-xl border border-[#C9A86C]/20"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 rounded-full bg-[#C9A86C]/20 flex items-center justify-center flex-shrink-0">
+                      <svg className="w-5 h-5 text-[#C9A86C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </div>
+                    <p className="text-sm text-[#6D5A4D] leading-relaxed font-light">
+                      {detail.bodyAreas.notice}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

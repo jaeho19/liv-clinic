@@ -11,18 +11,56 @@ export default function Certification() {
     {
       id: 'ulthera',
       name: t('ulthera'),
-      nameEn: 'Ultherapy Prime Certified',
-      description: 'FDA 승인 HIFU 리프팅',
+      nameEn: t('ultheraEn'),
+      description: t('ultheraDesc'),
       logo: '/images/certifications/ulthera.png',
       link: 'https://merz.co.kr/',
+      logoWidth: 'w-56',
     },
     {
       id: 'thermage',
       name: t('thermage'),
-      nameEn: 'Thermage FLX Partner',
-      description: 'Solta Medical 공식 파트너',
+      nameEn: t('thermageEn'),
+      description: t('thermageDesc'),
       logo: '/images/certifications/thermage.png',
       link: 'https://www.thermage.co.kr/',
+      logoWidth: 'w-48',
+    },
+    {
+      id: 'density',
+      name: t('density'),
+      nameEn: t('densityEn'),
+      description: t('densityDesc'),
+      logo: '/images/certifications/density.png',
+      link: 'https://clasys.com/',
+      logoWidth: 'w-44',
+    },
+    {
+      id: 'potenza',
+      name: t('potenza'),
+      nameEn: t('potenzaEn'),
+      description: t('potenzaDesc'),
+      logo: '/images/certifications/potenza.png',
+      link: 'https://www.cynosure.co.kr/',
+      logoWidth: 'w-44',
+    },
+    {
+      id: 'sculptra',
+      name: t('sculptra'),
+      nameEn: t('sculptraEn'),
+      description: t('sculptraDesc'),
+      logo: '/images/certifications/sculptra.png',
+      link: 'https://www.galderma.com/kr',
+      logoWidth: 'w-48',
+    },
+    {
+      id: 'juvelook',
+      name: t('juvelook'),
+      nameEn: t('juvelookEn'),
+      description: t('juvelookDesc'),
+      logo: '/images/certifications/juvelook.png',
+      link: 'https://www.pharmaresearch.co.kr/',
+      logoWidth: 'w-44',
     },
   ];
 
@@ -38,11 +76,11 @@ export default function Certification() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {certifications.map((cert) => (
             <AnimateOnScroll key={cert.id}>
               <motion.div
-                className="relative group cursor-pointer"
+                className="relative group cursor-pointer h-full"
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => window.open(cert.link, '_blank')}
@@ -50,30 +88,30 @@ export default function Certification() {
                 tabIndex={0}
                 onKeyDown={(e) => e.key === 'Enter' && window.open(cert.link, '_blank')}
               >
-                <div className="bg-background rounded-2xl p-8 text-center h-full border border-transparent hover:border-primary/20 hover:shadow-lg transition-all">
+                <div className="bg-background rounded-2xl p-6 text-center h-full border border-transparent hover:border-primary/20 hover:shadow-lg transition-all flex flex-col">
                   {/* Logo Image */}
-                  <div className="relative w-full h-24 mb-6 flex items-center justify-center">
+                  <div className="relative w-full h-20 mb-5 flex items-center justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={cert.logo}
                       alt={cert.name}
-                      className={`object-contain hover:scale-105 transition-transform ${cert.id === "ulthera" ? "w-56" : "w-48"}`}
+                      className={`object-contain hover:scale-105 transition-transform ${cert.logoWidth}`}
                     />
                   </div>
 
                   {/* Name */}
-                  <h3 className="text-h4 text-secondary mb-2">{cert.name}</h3>
+                  <h3 className="text-h4 text-secondary mb-1">{cert.name}</h3>
 
                   {/* English Name */}
-                  <p className="text-small text-mono-light mb-3">{cert.nameEn}</p>
+                  <p className="text-small text-mono-light mb-2">{cert.nameEn}</p>
 
                   {/* Description */}
-                  <p className="text-body text-mono">{cert.description}</p>
+                  <p className="text-body text-mono mt-auto">{cert.description}</p>
 
                   {/* Badge decoration */}
-                  <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="absolute top-3 right-3 w-7 h-7 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg
-                      className="w-4 h-4 text-primary"
+                      className="w-3.5 h-3.5 text-primary"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >

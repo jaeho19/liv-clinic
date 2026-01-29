@@ -48,60 +48,112 @@ interface TimelineItem {
 }
 
 // Treatment area position data for SVG overlay markers
-// Coordinates are percentages relative to image dimensions
-// Refined to match actual facial anatomy proportions
+// Coordinates are percentages relative to image dimensions (520x650 = 80:100 aspect ratio)
+// Anatomically accurate positions based on facial/body muscle anatomy
 interface AreaPosition {
   x: number;
   y: number;
   size?: number;
-  shape?: 'circle' | 'ellipse';
+  shape?: 'circle' | 'ellipse' | 'trapezoid';
   rx?: number;  // horizontal radius for ellipse
   ry?: number;  // vertical radius for ellipse
   pairs?: { x: number; y: number; rx?: number; ry?: number }[];
 }
 
+// ========================================
+// 해부학적 기준 설명 (Anatomical References)
+// ========================================
+// 1. 사각턱 (Masseter):
+//    - 저작근은 광대활(zygomatic arch)에서 하악각(angle of mandible)까지 이어짐
+//    - 보톡스 주입점: 하악각 상방 1-2cm, 이를 꽉 물었을 때 볼록해지는 부위
+//    - 좌표: 얼굴 하단 1/3 지점, 측면 턱선을 따라 위치
+//
+// 2. 입꼬리 (Depressor Anguli Oris / DAO):
+//    - 구각하제근은 입꼬리에서 하악골 하연까지 주행
+//    - 보톡스 주입점: 입꼬리 외측 하방 약 1cm
+//    - 좌표: 입술 끝에서 약간 외측 하방
+//
+// 3. 승모근 (Trapezius):
+//    - 후두골~흉추~견갑골~쇄골까지 이어지는 대형 삼각형 근육
+//    - 보톡스 주입점: 상부 승모근의 볼륨이 가장 큰 어깨-목 연결부
+//    - 좌표: 목 측면에서 어깨 상부(acromion) 방향 사선 영역
+// ========================================
+
 const BOTOX_AREA_POSITIONS: Record<number, AreaPosition> = {
+  // 1. 이마 (Forehead / Frontalis muscle)
+  // 전두근 위치: 눈썹 위 2-4cm, 이마 중앙~측면
   1: {
-    x: 50, y: 18, size: 1.5,
-    shape: 'ellipse', rx: 22, ry: 10      // 이마 - forehead (wide horizontal ellipse)
+    x: 50, y: 19, size: 0.8,  // y: 15 → 19 (아래로)
+    shape: 'ellipse', rx: 8, ry: 4
   },
+
+  // 2. 미간 (Glabella / Procerus & Corrugator muscles)
+  // 추미근 위치: 양 눈썹 사이, 코뿌리 바로 위
   2: {
-    x: 50, y: 30, size: 1.0,
-    shape: 'circle'                        // 미간 - glabella (between eyebrows)
+    x: 50, y: 31, size: 0.8,  // y: 27 → 31 (눈썹 사이로)
+    shape: 'circle'
   },
+
+  // 3. 눈가 (Crow's feet / Orbicularis oculi)
+  // 안륜근 외측: 눈 외안각에서 외측 1-2cm
   3: {
-    x: 50, y: 38,
+    x: 50, y: 36,  // y: 32 → 36 (눈 위치로)
     shape: 'circle',
-    pairs: [                               // 눈가 - crow's feet (both sides)
-      { x: 28, y: 38 },
-      { x: 72, y: 38 }
+    pairs: [
+      { x: 32, y: 36 },  // x: 28 → 32, y: 32 → 36
+      { x: 68, y: 36 }   // x: 72 → 68
     ]
   },
+
+  // 4. 사각턱 (Masseter muscle) - 해부학적 정확 위치
+  // 저작근: 광대활 하방 ~ 하악각(턱 모서리) 영역
+  // 주입점은 하악각(angle of mandible) 상방, 이를 꽉 물었을 때 만져지는 볼록한 부위
+  // y: 56% = 턱 위쪽으로 올림
+  // x: 35%/65% = 턱 양쪽 (간격 더 좁힘)
   4: {
-    x: 50, y: 72, size: 1.3,
-    shape: 'ellipse',
-    pairs: [                               // 사각턱 - masseter (both sides, vertical ellipse)
-      { x: 24, y: 72, rx: 10, ry: 14 },
-      { x: 76, y: 72, rx: 10, ry: 14 }
-    ]
-  },
-  5: {
-    x: 50, y: 62, size: 0.8,
+    x: 50, y: 56, size: 0.8,  // 다른 마커와 동일한 크기
     shape: 'circle',
-    pairs: [                               // 입꼬리 - mouth corners (both sides)
-      { x: 38, y: 62 },
-      { x: 62, y: 62 }
+    pairs: [
+      { x: 35, y: 56 },
+      { x: 65, y: 56 }
     ]
   },
+
+  // 5. 입꼬리 (Mouth corners / Depressor Anguli Oris) - 해부학적 정확 위치
+  // 구각하제근: 입꼬리 외측에서 하악골 하연으로 주행
+  // 주입점은 입꼬리 바로 외측 하방 약 1cm (우울근/DAO muscle)
+  // y: 53% = 입술 높이
+  // x: 42%/58% = 입술 양끝에 맞춤
+  5: {
+    x: 50, y: 53, size: 0.6,
+    shape: 'circle',
+    pairs: [
+      { x: 42, y: 53 },   // x: 36 → 42 (입술 끝으로)
+      { x: 58, y: 53 }    // x: 64 → 58
+    ]
+  },
+
+  // 6. 승모근 (Trapezius muscle) - 해부학적 정확 위치
+  // 상부 승모근: 후두골~경추에서 쇄골/견봉까지 이어지는 삼각형 근육
+  // 주입점은 어깨-목 연결부의 볼륨이 가장 큰 영역 (상부 승모근의 견봉 부착부 근처)
+  // y: 82% = 어깨 위쪽
+  // x: 22%/78% = 어깨 위치
   6: {
-    x: 50, y: 88, size: 1.5,
+    x: 50, y: 82, size: 1.0,  // y: 90 → 82 (위로)
     shape: 'ellipse',
-    pairs: [                               // 승모근 - trapezius (shoulder area, both sides)
-      { x: 18, y: 88, rx: 14, ry: 10 },
-      { x: 82, y: 88, rx: 14, ry: 10 }
+    pairs: [
+      { x: 22, y: 82, rx: 8, ry: 5 },
+      { x: 78, y: 82, rx: 8, ry: 5 }
     ]
   },
-  7: { x: 50, y: 95, size: 1.0 },          // 종아리 - calves (shown as icon indicator)
+
+  // 7. 종아리 (Calves / Gastrocnemius)
+  // 비복근: 하퇴 후면의 볼록한 근육
+  // 이미지 우측 하단의 종아리 아이콘 위치에 단일 마커
+  7: {
+    x: 89, y: 78, size: 0.8,  // y: 92 → 78 (위로), 단일 마커
+    shape: 'circle'
+  },
 };
 
 // Category colors for treatment areas
@@ -135,7 +187,7 @@ const BotoxImageWithMarkers = ({
     const position = BOTOX_AREA_POSITIONS[areaId];
     const size = position?.size || 1;
     const shape = position?.shape || 'circle';
-    const baseRadius = 8;
+    const baseRadius = 5;  // 8 → 5 (전체적으로 작게)
     const rx = customRx || position?.rx || baseRadius * size;
     const ry = customRy || position?.ry || baseRadius * size;
 
@@ -234,6 +286,8 @@ const BotoxImageWithMarkers = ({
       <div className="absolute inset-0 bg-gradient-to-t from-[#C4A484]/5 to-transparent pointer-events-none" />
 
       {/* SVG overlay for precise markers */}
+      {/* Note: preserveAspectRatio="none" stretches SVG to match container */}
+      {/* Coordinates are percentages (0-100) mapped to image dimensions */}
       <svg
         className="absolute inset-0 w-full h-full pointer-events-none"
         viewBox="0 0 100 100"
@@ -254,18 +308,23 @@ const BotoxImageWithMarkers = ({
         {Object.entries(BOTOX_AREA_POSITIONS).map(([id, pos]) => {
           const areaId = parseInt(id);
 
-          // Skip area 7 (calves) as it's shown separately
-          if (areaId === 7) return null;
-
-          // If area has paired positions (like crow's feet, masseter)
+          // If area has paired positions (like crow's feet, masseter, calves)
           if (pos.pairs) {
-            return pos.pairs.map((pair, index) =>
-              renderSVGMarker(pair.x, pair.y, areaId, index, pair.rx, pair.ry)
+            return (
+              <g key={`area-group-${areaId}`}>
+                {pos.pairs.map((pair, index) =>
+                  renderSVGMarker(pair.x, pair.y, areaId, index, pair.rx, pair.ry)
+                )}
+              </g>
             );
           }
 
           // Single position areas
-          return renderSVGMarker(pos.x, pos.y, areaId, 0);
+          return (
+            <g key={`area-single-${areaId}`}>
+              {renderSVGMarker(pos.x, pos.y, areaId, 0)}
+            </g>
+          );
         })}
       </svg>
 

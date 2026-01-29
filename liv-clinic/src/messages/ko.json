@@ -80,8 +80,10 @@
     "botox": "보톡스",
     "filler": "필러",
     "skinbooster": "스킨부스터",
+    "skincare": "스킨케어",
     "laser": "레이저",
     "medical": "의료정보",
+    "events": "이벤트",
     "contact": "상담예약"
   },
   "hero": {
@@ -106,7 +108,23 @@
     "certification": {
       "title": "공식 인증 병원",
       "ulthera": "울쎄라피 프라임 정품 인증",
-      "thermage": "써마지 FLX 파트너"
+      "ultheraEn": "Ultherapy Prime Certified",
+      "ultheraDesc": "FDA 승인 HIFU 리프팅",
+      "thermage": "써마지 FLX 파트너",
+      "thermageEn": "Thermage FLX Partner",
+      "thermageDesc": "Solta Medical 공식 파트너",
+      "density": "덴서티 공식 파트너",
+      "densityEn": "Density Official Partner",
+      "densityDesc": "HIFU+RF 듀얼 리프팅",
+      "potenza": "포텐자 공식 파트너",
+      "potenzaEn": "Potenza Official Partner",
+      "potenzaDesc": "RF 마이크로니들 시술",
+      "sculptra": "스컬트라 정품 인증",
+      "sculptraEn": "Sculptra Certified",
+      "sculptraDesc": "콜라겐 자극 필러",
+      "juvelook": "쥬베룩 공식 파트너",
+      "juvelookEn": "Juvelook Official Partner",
+      "juvelookDesc": "PDRN 스킨부스터"
     },
     "equipment": {
       "title": "Genuine Equipment",
@@ -1918,6 +1936,18 @@
               { "id": 10, "name": "눈썹", "description": "눈썹 리프트" }
             ]
           },
+          "bodyAreas": {
+            "title": "바디 필러",
+            "subtitle": "바디라인의 볼륨을 개선하여 아름다운 실루엣을 완성합니다",
+            "areas": [
+              { "id": 1, "name": "어깨 필러", "description": "둥글고 부드러운 어깨 라인", "detail": "승모근 라인을 부드럽게 개선하여 여성스러운 어깨 실루엣을 만듭니다" },
+              { "id": 2, "name": "힙 필러", "description": "볼륨감 있는 힙 라인", "detail": "납작하거나 볼륨이 부족한 힙에 자연스러운 볼륨을 부여합니다" },
+              { "id": 3, "name": "골반 필러", "description": "매끈한 골반 윤곽", "detail": "튀어나온 골반뼈를 자연스럽게 커버하여 부드러운 바디라인을 완성합니다" },
+              { "id": 4, "name": "힙딥 필러", "description": "힙딥(허벅지-엉덩이 함몰) 개선", "detail": "힙과 허벅지 사이의 함몰 부위를 채워 매끈한 실루엣을 만듭니다" }
+            ],
+            "notice": "바디 필러는 대용량 히알루론산 필러를 사용하며, 개인별 체형에 맞춤 시술합니다.",
+            "imageAlt": "어깨, 힙, 골반, 힙딥 바디 필러 시술 부위를 보여주는 의료 일러스트"
+          },
           "fillerTypes": {
             "title": "부위별 맞춤 필러",
             "subtitle": "시술 부위와 목적에 따라 최적의 필러 경도를 선택합니다",
@@ -2059,6 +2089,210 @@
             "title": "스킨부스터 상담 예약",
             "description": "피부 속부터 차오르는 수분과 광채, 전문 상담을 통해 맞춤 시술을 안내해 드립니다.",
             "buttonOnline": "온라인 상담 예약"
+          }
+        }
+      },
+      "skincare": {
+        "name": "스킨케어",
+        "fullName": "Premium Skincare",
+        "tagline": "피부관리사의 전문 터치로 완성하는 프리미엄 스킨케어",
+        "description": "물톡스, 플라필 등 전문 피부관리사가 진행하는 프리미엄 스킨케어 프로그램입니다. 피부 타입과 고민에 맞춘 맞춤형 관리로 피부 본연의 건강함을 회복시켜 드립니다.",
+        "detail": {
+          "heroSubtitle": "Esthetician Care",
+          "programsSection": {
+            "badge": "Programs",
+            "title": "리브성형외과의 피부관리 종류",
+            "subtitle": "전문 피부관리사가 진행하는 맞춤형 프리미엄 스킨케어",
+            "items": [
+              {
+                "id": "hydration",
+                "icon": "droplet",
+                "title": "수분 / 진정 관리",
+                "subtitle": "Hydration & Soothing",
+                "description": "민감해진 피부를 빠르게 진정시키고 깊은 보습을 공급합니다.",
+                "details": "시술 전후 붉음증, 당김, 열감 개선에 효과적입니다."
+              },
+              {
+                "id": "vitaminC",
+                "icon": "sun",
+                "title": "비타민 C 이온토 관리",
+                "subtitle": "Vitamin C Iontophoresis",
+                "description": "이온토포레시스 장비로 고농도 비타민C를 피부 깊숙이 흡수시킵니다.",
+                "details": "맑고 투명한 피부톤, 항산화 작용으로 피부 활력을 되찾습니다."
+              },
+              {
+                "id": "peeling",
+                "icon": "sparkle",
+                "title": "저자극 필링 관리",
+                "subtitle": "Gentle Peeling (Plafill)",
+                "description": "플라필(플래티넘 라라필)을 사용한 안전한 각질 제거 프로그램입니다.",
+                "details": "민감 피부도 가능한 저자극 필링으로 피부결을 개선합니다."
+              },
+              {
+                "id": "ultrasound",
+                "icon": "wave",
+                "title": "초음파 리프팅 / 부스터 관리",
+                "subtitle": "Ultrasound Lifting & Boosting",
+                "description": "울블랑 초음파 장비를 사용한 고기능 피부 관리입니다.",
+                "details": "부스터 침투, 피부 재생, 진정, 리프팅 효과까지 한 번에 경험하세요."
+              },
+              {
+                "id": "acne",
+                "icon": "shield",
+                "title": "여드름 집중 관리",
+                "subtitle": "Acne Care Program",
+                "description": "피지 분비 조절과 염증 진정, 재발 방지를 위한 설계된 프로그램입니다.",
+                "details": "필요 시 의료진 연계로 염증주사 및 압출을 병행할 수 있습니다."
+              },
+              {
+                "id": "exosome",
+                "icon": "glow",
+                "title": "엑소좀 / 미백 부스터 관리",
+                "subtitle": "Exosome & Brightening Booster",
+                "description": "엑소좀, 고기능성 미백 앰플을 활용한 스킨부스팅 관리입니다.",
+                "details": "피부 활력, 광채, 탄력을 동시에 개선합니다."
+              }
+            ]
+          },
+          "equipmentSection": {
+            "badge": "Equipment",
+            "title": "사용 장비 라인업",
+            "subtitle": "프리미엄 기기로 더욱 효과적인 피부 관리",
+            "items": [
+              {
+                "id": "aqualab",
+                "name": "아쿠아랩",
+                "brand": "Histolab",
+                "icon": "water",
+                "description": "수분 딥클렌징 + 각질 제거 + 블랙헤드 케어",
+                "feature": "민감 피부에도 자극 없이 관리 가능"
+              },
+              {
+                "id": "ulblanc",
+                "name": "울블랑 초음파 기기",
+                "brand": "Ulblanc",
+                "icon": "wave",
+                "description": "진정 · 재생 · 부스터 침투 · 리프팅을 아우르는 고기능 초음파 시스템",
+                "feature": "올인원 초음파 피부 관리"
+              },
+              {
+                "id": "ionto",
+                "name": "이온토 장비",
+                "brand": "Iontophoresis",
+                "icon": "zap",
+                "description": "고농축 성분(비타민C, 미백제 등)의 효과적인 피부 흡수를 도와줍니다",
+                "feature": "성분 침투력 극대화"
+              },
+              {
+                "id": "cryocell",
+                "name": "크라이오셀",
+                "brand": "Cryo Cooling",
+                "icon": "snowflake",
+                "description": "시술 후 열감 · 붉음 완화, 피부 진정 및 수분 유지력 강화",
+                "feature": "냉각 진정 관리"
+              },
+              {
+                "id": "led",
+                "name": "LED 테라피 시스템",
+                "brand": "LED Therapy",
+                "icon": "lightbulb",
+                "description": "레드/블루/옐로우 파장 선택 가능",
+                "feature": "여드름 진정, 탄력 강화, 재생 촉진 등 피부 상태에 맞춘 맞춤 광관리"
+              }
+            ]
+          },
+          "differentiatorSection": {
+            "badge": "Why LIV",
+            "title": "리브 피부관리의 차별점",
+            "subtitle": "단순한 피부 관리가 아닌, 의료 수준의 프리미엄 케어",
+            "items": [
+              {
+                "id": "expert",
+                "icon": "award",
+                "title": "10년 이상 경력의 전문 피부관리사 상주",
+                "description": "숙련된 테크닉과 풍부한 경험으로 최상의 결과를 제공합니다"
+              },
+              {
+                "id": "genuine",
+                "icon": "verified",
+                "title": "정품 제품 & 고급 기기만 사용",
+                "description": "검증된 정품 제품과 프리미엄 장비로 안전하고 효과적인 관리"
+              },
+              {
+                "id": "medical",
+                "icon": "stethoscope",
+                "title": "피부 해부학에 기반한 의료진 연계 설계",
+                "description": "필요 시 전문의 상담 및 의료 시술과 연계된 통합 관리 가능"
+              },
+              {
+                "id": "iv",
+                "icon": "heart",
+                "title": "수액 치료 병행 가능",
+                "description": "미백, 수분, 항산화 등 피부 컨디션에 맞는 수액 치료 병행"
+              },
+              {
+                "id": "private",
+                "icon": "lock",
+                "title": "쾌적하고 프라이빗한 공간에서 진행",
+                "description": "편안하고 프라이빗한 환경에서 오롯이 나만을 위한 케어"
+              }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "시술 정보",
+            "labels": {
+              "duration": "소요 시간",
+              "anesthesia": "마취",
+              "recovery": "회복 기간",
+              "results": "효과"
+            }
+          },
+          "treatmentValues": {
+            "duration": "60-90분",
+            "anesthesia": "해당 없음",
+            "recovery": "없음 (즉시 일상 복귀)",
+            "results": "즉각적인 피부톤 개선, 정기 관리 시 효과 극대화"
+          },
+          "idealFor": {
+            "title": "이런 분께 추천합니다",
+            "items": [
+              "건조하고 푸석푸석한 피부가 고민인 분",
+              "피부 탄력이 저하되신 분",
+              "시술 전후 피부 컨디션 케어가 필요한 분",
+              "특별한 날 앞두고 피부 관리가 필요한 분",
+              "정기적인 피부 관리를 원하는 분",
+              "민감성 피부로 전문 관리가 필요한 분"
+            ]
+          },
+          "faqs": {
+            "title": "자주 묻는 질문",
+            "items": [
+              {
+                "q": "피부관리와 스킨부스터 시술의 차이점은 무엇인가요?",
+                "shortA": "피부관리는 외부 관리, 스킨부스터는 피부 내 주입 시술입니다.",
+                "a": "스킨케어는 피부관리사가 진행하는 외부 관리 프로그램으로, 클렌징, 수분 공급, 진정 등의 기본 케어입니다. 스킨부스터는 의료진이 진행하는 주사 시술로, 리쥬란, 쥬베룩 등 성분을 피부 내에 직접 주입합니다."
+              },
+              {
+                "q": "얼마나 자주 받는 것이 좋은가요?",
+                "shortA": "2-4주 간격으로 정기 관리를 권장합니다.",
+                "a": "피부 상태에 따라 다르지만, 2-4주 간격으로 정기적인 관리를 받으시면 효과가 극대화됩니다. 상담을 통해 개인별 맞춤 주기를 안내해 드립니다."
+              },
+              {
+                "q": "민감성 피부도 가능한가요?",
+                "shortA": "네, 피부 타입에 맞게 프로그램을 조정합니다.",
+                "a": "민감성 피부도 안심하고 받으실 수 있습니다. 저자극 제품과 진정 위주의 프로그램으로 맞춤 관리해 드립니다. 사전 상담을 통해 피부 상태를 확인 후 최적의 프로그램을 안내드립니다."
+              },
+              {
+                "q": "시술 후 바로 화장해도 되나요?",
+                "shortA": "네, 즉시 화장 가능합니다.",
+                "a": "스킨케어 후에는 별도의 다운타임 없이 바로 화장하실 수 있습니다. 오히려 화장이 더 잘 받는 것을 느끼실 수 있습니다."
+              }
+            ]
+          },
+          "cta": {
+            "title": "스킨케어 상담 예약",
+            "description": "10년 이상 경력의 전문 피부관리사가 피부 타입과 고민에 맞는 최적의 프로그램을 안내해 드립니다.",
+            "button": "온라인 상담 예약"
           }
         }
       }
@@ -2968,7 +3202,7 @@
       },
       "total": {
         "title": "TOTAL SIGNATURE",
-        "subtitle": "종합 안티에이징",
+        "subtitle": "실리프팅",
         "tagline": "완벽한 토탈 케어",
         "description": "리프팅, 볼륨, 피부결까지 한 번에 케어하는 프리미엄 패키지입니다. 얼굴 전체가 리프팅되고 또렷해지는 시네마틱한 변화를 경험하세요.",
         "features": ["복합 리프팅 시술", "볼륨 재정립", "토탈 피부 재생"],
@@ -3127,6 +3361,7 @@
         "optional": "선택",
         "varies": "시술별 상이",
         "localAnesthesia": "국소 마취",
+        "anesthesiaCreamLocal": "마취 크림 / 국소 마취",
         "none": "없음",
         "premium": "프리미엄",
         "moderate": "중간",
@@ -3149,15 +3384,15 @@
         "thermage": {
           "technology": "RF",
           "duration": "45-60분",
-          "anesthesia": "무마취",
+          "anesthesia": "마취 크림",
           "recovery": "없음",
           "results": "1-2년",
           "price": "프리미엄"
         },
         "density": {
-          "technology": "HIFU+RF",
+          "technology": "RF",
           "duration": "40-60분",
-          "anesthesia": "선택",
+          "anesthesia": "마취 크림",
           "recovery": "없음",
           "results": "6개월-1년",
           "price": "중간"
@@ -3165,15 +3400,15 @@
         "shurink": {
           "technology": "HIFU",
           "duration": "30-45분",
-          "anesthesia": "선택",
+          "anesthesia": "마취 크림",
           "recovery": "없음",
           "results": "3-6개월",
           "price": "합리적"
         },
         "inmode": {
-          "technology": "RF+니들",
+          "technology": "RF",
           "duration": "30-90분",
-          "anesthesia": "시술별 상이",
+          "anesthesia": "무마취",
           "recovery": "0-5일",
           "results": "6개월-1년",
           "price": "시술별 상이"
@@ -3181,7 +3416,7 @@
         "thread": {
           "technology": "녹는실",
           "duration": "30-60분",
-          "anesthesia": "국소 마취",
+          "anesthesia": "마취 크림 / 국소 마취",
           "recovery": "3-7일",
           "results": "1-2년",
           "price": "중간"
@@ -3451,6 +3686,11 @@
         "name": "레이저 장비",
         "nameEn": "Laser Equipment",
         "description": "피부 결 개선과 탄력을 위한 레이저 시스템"
+      },
+      "diagnostic": {
+        "name": "피부진단 장비",
+        "nameEn": "Skin Diagnostic",
+        "description": "피부 상태를 정밀하게 분석해 맞춤 시술 계획을 세우는 진단 장비입니다."
       }
     },
     "equipment": {
@@ -3523,6 +3763,13 @@
         "description": "저자극 화이트닝 레이저",
         "features": ["멜라닌 타겟팅", "피부 톤 균일화", "저자극 시술"],
         "certification": "KFDA 승인"
+      },
+      "markvu": {
+        "name": "Mark VU",
+        "nameKo": "마크뷰",
+        "description": "초고화질 피부 진단기로 육안으로 확인하기 어려운 피부 문제를 12가지 항목으로 정밀 분석합니다.",
+        "features": ["1,800만 화소 해상도", "4가지 광원 분석", "피부 타입 진단"],
+        "certification": "1,800만 화소 초고화질"
       }
     },
     "cta": {
@@ -3544,6 +3791,41 @@
         "title": "오시는 길",
         "subtitle": "Location"
       }
+    }
+  },
+  "events": {
+    "title": "이벤트",
+    "subtitle": "리브성형외과의 최신 소식과 특별 혜택을 확인하세요",
+    "activeTab": "진행중 이벤트",
+    "endedTab": "종료된 이벤트",
+    "activeCount": "진행중",
+    "endedCount": "종료",
+    "viewDetails": "자세히 보기",
+    "bookNow": "상담 예약하기",
+    "period": "기간",
+    "category": "카테고리",
+    "status": {
+      "active": "진행중",
+      "ended": "종료"
+    },
+    "categories": {
+      "lifting": "리프팅",
+      "antiaging": "안티에이징",
+      "laser": "레이저",
+      "skincare": "스킨케어",
+      "all": "전체"
+    },
+    "noEvents": "현재 진행중인 이벤트가 없습니다",
+    "noEndedEvents": "종료된 이벤트가 없습니다",
+    "backToList": "목록으로 돌아가기",
+    "relatedTreatments": "관련 시술",
+    "eventDetails": "이벤트 상세",
+    "share": "공유하기",
+    "gallery": "이벤트 상세 이미지",
+    "viewLarger": "크게 보기",
+    "meta": {
+      "title": "이벤트 | 리브성형외과",
+      "description": "리브성형외과의 최신 이벤트와 특별 프로모션을 확인하세요. 울쎄라피, 써마지, 보톡스, 필러 등 다양한 시술 할인 혜택을 만나보세요."
     }
   }
 }

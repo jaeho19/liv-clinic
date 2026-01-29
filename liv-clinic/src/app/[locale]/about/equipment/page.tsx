@@ -20,6 +20,10 @@ const EQUIPMENT_CATEGORIES = [
     id: 'laser',
     equipmentIds: ['potenza', 'clarity', 'lucas', 'co2', 'ulblanc'],
   },
+  {
+    id: 'diagnostic',
+    equipmentIds: ['markvu'],
+  },
 ];
 
 // Equipment image paths
@@ -34,6 +38,7 @@ const EQUIPMENT_IMAGES: Record<string, string> = {
   lucas: '/images/000.jpg',
   co2: `${PROCESSED_IMAGE_PATH}/equipment_co2.png`,
   ulblanc: `${PROCESSED_IMAGE_PATH}/equipment_ulblanc.png`,
+  markvu: '/images/official/Gemini_Generated_Image_4vgw774vgw774vgw.png',
 };
 
 export default function EquipmentPage() {

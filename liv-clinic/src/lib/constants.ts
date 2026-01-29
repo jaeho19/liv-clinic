@@ -583,6 +583,50 @@ export const TREATMENTS = {
       ],
       relatedTreatments: ['botox', 'filler', 'laser'],
     },
+    skincare: {
+      id: 'skincare',
+      category: 'antiaging',
+      name: '스킨케어',
+      nameEn: 'Skincare',
+      tagline: '피부관리사의 전문 터치',
+      shortDesc: '물톡스, 플라필 등 피부관리사가 진행하는 프리미엄 스킨케어',
+      heroImage: '/images/treatments/skincare-hero.jpg',
+      description: '리브의 스킨케어는 피부관리사가 직접 진행하는 전문 피부 관리 프로그램입니다. 물톡스(수분 공급), 플라필(피부 재생), 클렌징 등 다양한 프로그램으로 피부 본연의 건강함을 회복시켜 드립니다.',
+      benefits: [
+        { title: '전문 피부관리사', desc: '숙련된 피부관리사의 정교한 테크닉' },
+        { title: '물톡스 프로그램', desc: '깊은 수분 공급으로 촉촉하고 탄력 있는 피부' },
+        { title: '플라필 프로그램', desc: '피부 재생과 탄력 회복을 위한 집중 케어' },
+        { title: '맞춤형 프로그램', desc: '피부 타입별 최적화된 관리 프로그램 제공' },
+      ],
+      process: [
+        { step: 1, title: '상담', desc: '피부 상태 분석 및 프로그램 선택' },
+        { step: 2, title: '클렌징', desc: '딥클렌징으로 노폐물 제거' },
+        { step: 3, title: '관리', desc: '선택한 프로그램에 따른 전문 관리' },
+        { step: 4, title: '팩/마무리', desc: '진정 팩 및 수분 공급 마무리' },
+      ],
+      duration: '60-90분',
+      anesthesia: '해당 없음',
+      recovery: '없음 (즉시 일상 복귀)',
+      results: '즉각적인 피부톤 개선, 정기 관리 시 효과 극대화',
+      targetAreas: ['얼굴 전체', '목', '데콜테'],
+      idealFor: [
+        '건조하고 푸석푸석한 피부',
+        '피부 탄력이 저하된 분',
+        '특별한 날 앞두고 피부 관리가 필요한 분',
+        '정기적인 피부 관리를 원하는 분',
+      ],
+      cautions: [
+        '민감성 피부는 상담 후 프로그램 조정 가능',
+        '급성 피부 트러블이 있는 경우 상담 필요',
+        '시술 후 즉시 화장 가능',
+      ],
+      faqs: [
+        { q: '물톡스와 플라필의 차이점은 무엇인가요?', shortA: '물톡스는 수분 공급, 플라필은 피부 재생에 초점을 맞춥니다.', a: '물톡스는 깊은 수분 공급에 초점을 맞춘 프로그램으로 건조한 피부에 적합합니다. 플라필은 피부 재생과 탄력 회복에 중점을 둔 프로그램으로 탄력 저하가 고민인 분께 추천드립니다.' },
+        { q: '얼마나 자주 받는 것이 좋은가요?', shortA: '2-4주 간격으로 정기 관리를 권장합니다.', a: '피부 상태에 따라 다르지만, 2-4주 간격으로 정기적인 관리를 받으시면 효과가 극대화됩니다. 상담을 통해 개인별 맞춤 주기를 안내해 드립니다.' },
+        { q: '시술 후 바로 화장해도 되나요?', shortA: '네, 즉시 화장 가능합니다.', a: '네, 스킨케어 후에는 별도의 다운타임 없이 바로 화장하실 수 있습니다. 오히려 화장이 더 잘 받는 것을 느끼실 수 있습니다.' },
+      ],
+      relatedTreatments: ['skinbooster', 'botox', 'filler'],
+    },
   },
   // 레이저 시술
   laser: {
@@ -1225,6 +1269,7 @@ export const MAIN_NAV = [
       { label: '보톡스', href: '/antiaging/botox' },
       { label: '필러', href: '/antiaging/filler' },
       { label: '스킨부스터', href: '/antiaging/skinbooster' },
+      { label: '스킨케어', href: '/antiaging/skincare' },
     ],
   },
   {
@@ -1242,4 +1287,198 @@ export const MAIN_NAV = [
     label: '의료정보',
     href: '/medical',
   },
+  {
+    label: '이벤트',
+    href: '/events',
+  },
 ] as const;
+
+// ============================================
+// 이벤트 (Events)
+// ============================================
+
+export type EventCategory = 'lifting' | 'antiaging' | 'laser' | 'skincare' | 'all';
+export type EventStatus = 'active' | 'ended';
+
+export interface EventItem {
+  id: string;
+  title: {
+    ko: string;
+    en: string;
+    ja: string;
+    zh: string;
+  };
+  description: {
+    ko: string;
+    en: string;
+    ja: string;
+    zh: string;
+  };
+  posterImage: string;
+  thumbnailImage?: string;
+  galleryImages?: string[]; // 상세 페이지에서 표시할 이미지 갤러리
+  startDate: string; // ISO 8601 format (YYYY-MM-DD)
+  endDate: string;
+  category: EventCategory;
+  featured?: boolean;
+  relatedTreatments?: string[]; // href paths like '/lifting/ulthera'
+}
+
+// 이벤트 상태를 날짜 기반으로 계산하는 헬퍼 함수
+export function getEventStatus(event: EventItem): EventStatus {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const endDate = new Date(event.endDate);
+  endDate.setHours(23, 59, 59, 999);
+  return endDate >= today ? 'active' : 'ended';
+}
+
+// 이벤트 데이터
+export const EVENTS: EventItem[] = [
+  {
+    id: 'aptos-thread-lifting',
+    title: {
+      ko: '압토스 실리프팅',
+      en: 'APTOS Thread Lifting',
+      ja: 'APTOS スレッドリフト',
+      zh: 'APTOS 线雕',
+    },
+    description: {
+      ko: '부드러운 변화, APTOS 나미카 실리프팅으로 자연스러운 리프팅 효과를 경험하세요.',
+      en: 'Experience natural lifting effects with APTOS NAMICA thread lifting.',
+      ja: '自然なリフティング効果をAPTOS NAMICAスレッドリフトで体験してください。',
+      zh: '通过APTOS NAMICA线雕体验自然提升效果。',
+    },
+    posterImage: '/images/events/001.jpg',
+    thumbnailImage: '/images/events/001.jpg',
+    galleryImages: [
+      '/images/events/001.jpg',
+      '/images/events/002.jpg',
+      '/images/events/003.jpg',
+      '/images/events/004-scaled.jpg',
+      '/images/events/005.jpg',
+      '/images/events/006-scaled.jpg',
+      '/images/events/007.jpg',
+      '/images/events/008.jpg',
+      '/images/events/009.jpg',
+      '/images/events/010-scaled.jpg',
+      '/images/events/011-scaled.jpg',
+      '/images/events/012-scaled.jpg',
+    ],
+    startDate: '2026-01-01',
+    endDate: '2026-02-28',
+    category: 'lifting',
+    featured: false,
+    relatedTreatments: ['/lifting/thread', '/lifting/aptos'],
+  },
+  {
+    id: '2026-restart-january',
+    title: {
+      ko: '2026 Re:Start. 1월 이벤트',
+      en: '2026 Re:Start. January Event',
+      ja: '2026 Re:Start. 1月イベント',
+      zh: '2026 Re:Start. 1月活动',
+    },
+    description: {
+      ko: '새해를 맞아 리브성형외과에서 준비한 특별 패키지! 새로운 시작을 위한 특별 할인 혜택.',
+      en: 'Special package from LIV Plastic Surgery for the new year! Special discounts for a fresh start.',
+      ja: '新年を迎え、リブ形成外科で準備した特別パッケージ！新しいスタートのための特別割引。',
+      zh: '迎接新年，LIV整形外科准备的特别套餐！新起点特别优惠。',
+    },
+    posterImage: '/images/placeholder-event.jpg',
+    thumbnailImage: '/images/placeholder-event.jpg',
+    startDate: '2026-01-01',
+    endDate: '2026-01-31',
+    category: 'all',
+    featured: false,
+    relatedTreatments: ['/lifting/ulthera', '/antiaging/skinbooster'],
+  },
+  {
+    id: 'ulthera-prime-event',
+    title: {
+      ko: '울쎄라피 프라임 이벤트',
+      en: 'Ultherapy Prime Event',
+      ja: 'ウルセラピープライム イベント',
+      zh: '超声刀尊享活动',
+    },
+    description: {
+      ko: 'FDA 승인 정품 울쎄라피 프라임! 전문의 직접 시술로 안전하고 확실한 리프팅 효과를 경험하세요.',
+      en: 'FDA-approved genuine Ultherapy Prime! Experience safe and effective lifting with specialist treatment.',
+      ja: 'FDA承認の正規ウルセラピープライム！専門医による直接施術で安全で確実なリフティング効果を体験。',
+      zh: 'FDA认证正品超声刀尊享！专业医师亲自操作，体验安全有效的提升效果。',
+    },
+    posterImage: '/images/placeholder-event.jpg',
+    thumbnailImage: '/images/placeholder-event.jpg',
+    startDate: '2026-01-01',
+    endDate: '2026-02-28',
+    category: 'lifting',
+    featured: false,
+    relatedTreatments: ['/lifting/ulthera'],
+  },
+  {
+    id: 'thermage-flx-event',
+    title: {
+      ko: '써마지 FLX',
+      en: 'Thermage FLX',
+      ja: 'サーマジ FLX',
+      zh: '热玛吉 FLX',
+    },
+    description: {
+      ko: '피부 탄력 관리의 정석! 써마지 FLX로 처진 피부를 탄탄하게. 눈가, 턱선 집중 케어.',
+      en: 'The gold standard for skin elasticity! Firm sagging skin with Thermage FLX. Eye and jawline intensive care.',
+      ja: '肌弾力ケアの定番！サーマジFLXでたるんだ肌を引き締め。目元・あごライン集中ケア。',
+      zh: '皮肤弹力护理经典！用热玛吉FLX紧致松弛皮肤。眼周、下颌线集中护理。',
+    },
+    posterImage: '/images/placeholder-event.jpg',
+    thumbnailImage: '/images/placeholder-event.jpg',
+    startDate: '2026-01-15',
+    endDate: '2026-02-28',
+    category: 'lifting',
+    featured: false,
+    relatedTreatments: ['/lifting/thermage'],
+  },
+  {
+    id: 'goodbye-ulthera',
+    title: {
+      ko: '굿바이 울쎄라 | 울쎄라 리프팅 마지막 특가 이벤트',
+      en: 'Goodbye Ulthera | Final Special Ulthera Lifting Event',
+      ja: 'グッバイ ウルセラ | ウルセラリフティング最終特価イベント',
+      zh: '告别超声刀 | 超声刀提升最后特价活动',
+    },
+    description: {
+      ko: '울쎄라 리프팅 마지막 특가! 놓치면 후회할 최저가 이벤트. 지금 바로 예약하세요.',
+      en: 'Final special price for Ulthera lifting! Don\'t miss this lowest price event. Book now.',
+      ja: 'ウルセラリフティング最終特価！見逃すと後悔する最低価格イベント。今すぐご予約を。',
+      zh: '超声刀提升最后特价！错过将后悔的最低价活动。立即预约。',
+    },
+    posterImage: '/images/placeholder-event.jpg',
+    thumbnailImage: '/images/placeholder-event.jpg',
+    startDate: '2026-01-01',
+    endDate: '2026-01-31',
+    category: 'lifting',
+    featured: false,
+    relatedTreatments: ['/lifting/ulthera'],
+  },
+  {
+    id: 'density-event',
+    title: {
+      ko: '덴서티 이벤트',
+      en: 'Density Event',
+      ja: 'デンシティ イベント',
+      zh: '密度提升活动',
+    },
+    description: {
+      ko: 'HIFU+RF 듀얼 리프팅! 덴서티로 탄력과 볼륨을 동시에 잡으세요. 특별 할인 진행 중.',
+      en: 'HIFU+RF dual lifting! Achieve elasticity and volume with Density. Special discount available.',
+      ja: 'HIFU+RFデュアルリフティング！デンシティで弾力とボリュームを同時に。特別割引実施中。',
+      zh: 'HIFU+RF双重提升！用Density同时获得弹力和丰盈。特别折扣进行中。',
+    },
+    posterImage: '/images/placeholder-event.jpg',
+    thumbnailImage: '/images/placeholder-event.jpg',
+    startDate: '2026-01-15',
+    endDate: '2026-02-28',
+    category: 'lifting',
+    featured: false,
+    relatedTreatments: ['/lifting/density'],
+  },
+];

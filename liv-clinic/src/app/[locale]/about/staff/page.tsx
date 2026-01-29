@@ -218,10 +218,10 @@ export default function StaffPage() {
           className={`section-gap ${index % 2 === 0 ? 'bg-white' : 'bg-background'}`}
         >
           <div className="container-custom">
-            <div className={`grid grid-cols-1 lg:grid-cols-2 gap-16 items-start ${index % 2 === 1 ? 'lg:flex-row-reverse' : ''}`}>
-              {/* Image - alternate sides */}
-              <AnimateOnScroll animation={index % 2 === 0 ? 'fadeInLeft' : 'fadeInRight'}>
-                <div className={`relative ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              {/* Image - left side (unified layout) */}
+              <AnimateOnScroll animation="fadeInLeft">
+                <div className="relative">
                   {/* Main Image */}
                   <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/30">
                     <div
@@ -243,17 +243,19 @@ export default function StaffPage() {
                   <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl" />
                   <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
 
-                  {/* Specialty badge - hidden on mobile to avoid overlap with International Activities grid */}
-                  <motion.div
-                    className="absolute -right-4 bottom-[35%] bg-white rounded-2xl shadow-xl p-5 z-10 hidden md:block"
-                    initial={{ opacity: 0, x: 20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.4 }}
-                  >
-                    <p className="text-small text-mono-light mb-1">{labels.specialties}</p>
-                    <p className="font-medium text-secondary">{doctor.specialty}</p>
-                  </motion.div>
+                  {/* Specialty badge - Only for Dr. Kim (index === 0), hidden on mobile */}
+                  {index === 0 && (
+                    <motion.div
+                      className="absolute -right-4 bottom-[50%] bg-white rounded-2xl shadow-xl p-5 z-10 hidden md:block"
+                      initial={{ opacity: 0, x: 20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                    >
+                      <p className="text-small text-mono-light mb-1">{labels.specialties}</p>
+                      <p className="font-medium text-secondary">{doctor.specialty}</p>
+                    </motion.div>
+                  )}
 
                   {/* International Activities - Only for Dr. Kim (2x2 Grid Layout) */}
                   {index === 0 && (
@@ -339,9 +341,9 @@ export default function StaffPage() {
                 </div>
               </AnimateOnScroll>
 
-              {/* Content */}
-              <AnimateOnScroll animation={index % 2 === 0 ? 'fadeInRight' : 'fadeInLeft'}>
-                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
+              {/* Content - right side (unified layout) */}
+              <AnimateOnScroll animation="fadeInRight">
+                <div>
                   {/* Doctor Info */}
                   <div className="mb-8">
                     <p className="font-serif text-xl text-primary mb-2">{doctor.title}</p>
@@ -415,28 +417,30 @@ export default function StaffPage() {
                       </div>
                     </div>
 
-                    {/* Specialties */}
-                    <div>
-                      <h3 className="text-h4 text-secondary mb-4 flex items-center gap-2">
-                        <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
-                        </svg>
-                        {labels.specialties}
-                      </h3>
-                      <div className="grid grid-cols-2 gap-3">
-                        {doctor.specialties.map((specialty, i) => (
-                          <div
-                            key={i}
-                            className="flex items-center gap-2 text-body text-mono"
-                          >
-                            <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                            {specialty}
-                          </div>
-                        ))}
+                    {/* Specialties - Only for Dr. Kim (index === 0) */}
+                    {index === 0 && (
+                      <div>
+                        <h3 className="text-h4 text-secondary mb-4 flex items-center gap-2">
+                          <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                          </svg>
+                          {labels.specialties}
+                        </h3>
+                        <div className="grid grid-cols-2 gap-3">
+                          {doctor.specialties.map((specialty, i) => (
+                            <div
+                              key={i}
+                              className="flex items-center gap-2 text-body text-mono"
+                            >
+                              <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                              </svg>
+                              {specialty}
+                            </div>
+                          ))}
+                        </div>
                       </div>
-                    </div>
+                    )}
 
                     {/* Publications - Collapsible */}
                     {doctor.publications && doctor.publications.length > 0 && (

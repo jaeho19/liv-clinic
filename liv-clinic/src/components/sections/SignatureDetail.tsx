@@ -152,8 +152,16 @@ const programConfigs: ProgramConfig[] = [
     href: '/lifting',
   },
   {
-    id: 'petit',
+    id: 'total',
     number: '02',
+    beforeImage: '/images/signature/total-antiaging-abstract.png',
+    afterImage: '/images/signature/bridal.png',
+    accentColor: '#F43F5E',
+    href: '/lifting/thread',
+  },
+  {
+    id: 'petit',
+    number: '03',
     beforeImage: '/images/signature/petit.png',
     afterImage: '/images/signature/v-line.png',
     accentColor: '#EC4899',
@@ -161,19 +169,11 @@ const programConfigs: ProgramConfig[] = [
   },
   {
     id: 'glow',
-    number: '03',
+    number: '04',
     beforeImage: '/images/signature/care.png',
     afterImage: '/images/signature/glow-skin.png',
     accentColor: '#F59E0B',
-    href: '/laser',
-  },
-  {
-    id: 'total',
-    number: '04',
-    beforeImage: '/images/signature/total-antiaging-abstract.png',
-    afterImage: '/images/signature/bridal.png',
-    accentColor: '#F43F5E',
-    href: '/contact',
+    href: '/antiaging/skinbooster',
   },
 ];
 

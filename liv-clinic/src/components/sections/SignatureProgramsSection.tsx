@@ -48,6 +48,13 @@ const programConfigs: ProgramConfig[] = [
     accentColor: '#b4988d',
   },
   {
+    id: 'total',
+    href: '/signature',
+    beforeImage: '/images/signature/total-antiaging-abstract.png',
+    afterImage: '/images/signature/total-antiaging-abstract.png',
+    accentColor: '#6d4e42',
+  },
+  {
     id: 'petit',
     href: '/antiaging',
     beforeImage: '/images/signature/petit.png',
@@ -60,13 +67,6 @@ const programConfigs: ProgramConfig[] = [
     beforeImage: '/images/signature/glow-abstract.png',
     afterImage: '/images/signature/glow-abstract.png',
     accentColor: '#a89080',
-  },
-  {
-    id: 'total',
-    href: '/signature',
-    beforeImage: '/images/signature/total-antiaging-abstract.png',
-    afterImage: '/images/signature/total-antiaging-abstract.png',
-    accentColor: '#6d4e42',
   },
 ];
 

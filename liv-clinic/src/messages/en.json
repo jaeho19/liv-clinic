@@ -80,8 +80,10 @@
     "botox": "Botox",
     "filler": "Filler",
     "skinbooster": "Skin Booster",
+    "skincare": "Skincare",
     "laser": "Laser",
     "medical": "Medical Info",
+    "events": "Events",
     "contact": "Contact"
   },
   "hero": {
@@ -106,7 +108,23 @@
     "certification": {
       "title": "Certified Clinic",
       "ulthera": "Ultherapy Prime Certified",
-      "thermage": "Thermage FLX Partner"
+      "ultheraEn": "Ultherapy Prime Certified",
+      "ultheraDesc": "FDA Approved HIFU Lifting",
+      "thermage": "Thermage FLX Partner",
+      "thermageEn": "Thermage FLX Partner",
+      "thermageDesc": "Solta Medical Official Partner",
+      "density": "Density Official Partner",
+      "densityEn": "Density Official Partner",
+      "densityDesc": "HIFU+RF Dual Lifting",
+      "potenza": "Potenza Official Partner",
+      "potenzaEn": "Potenza Official Partner",
+      "potenzaDesc": "RF Microneedle Treatment",
+      "sculptra": "Sculptra Certified",
+      "sculptraEn": "Sculptra Certified",
+      "sculptraDesc": "Collagen Stimulating Filler",
+      "juvelook": "Juvelook Official Partner",
+      "juvelookEn": "Juvelook Official Partner",
+      "juvelookDesc": "PDRN Skin Booster"
     },
     "equipment": {
       "title": "Genuine Equipment",
@@ -1916,6 +1934,18 @@
               { "id": 10, "name": "Brow", "description": "Brow lift" }
             ]
           },
+          "bodyAreas": {
+            "title": "Body Filler",
+            "subtitle": "Enhance body contours for a beautiful silhouette",
+            "areas": [
+              { "id": 1, "name": "Shoulder Filler", "description": "Smooth, feminine shoulder line", "detail": "Softens the trapezius muscle line to create a graceful shoulder silhouette" },
+              { "id": 2, "name": "Hip Filler", "description": "Voluminous hip line", "detail": "Adds natural volume to flat or volume-deficient hips" },
+              { "id": 3, "name": "Pelvis Filler", "description": "Smooth pelvic contour", "detail": "Naturally covers protruding hip bones for a smooth body line" },
+              { "id": 4, "name": "Hip Dip Filler", "description": "Hip dip correction", "detail": "Fills the depression between hips and thighs for a smooth silhouette" }
+            ],
+            "notice": "Body filler uses high-volume hyaluronic acid filler, customized to individual body shape.",
+            "imageAlt": "Medical illustration showing shoulder, hip, pelvis, and hip dip body filler treatment areas"
+          },
           "fillerTypes": {
             "title": "Customized Filler by Area",
             "subtitle": "Selecting optimal filler firmness based on treatment area and purpose",
@@ -2057,6 +2087,37 @@
             "title": "Book Skin Booster Consultation",
             "description": "Experience hydration and radiance from deep within. Get a personalized treatment plan through expert consultation.",
             "buttonOnline": "Book Online Consultation"
+          }
+        }
+      },
+      "skincare": {
+        "name": "Skincare",
+        "fullName": "Skincare",
+        "tagline": "Expert Touch by Estheticians",
+        "description": "LIV's Skincare is a professional skin care program conducted by skilled estheticians. From Aqua Tox to Plafill and deep cleansing, we offer various programs to restore your skin's natural health.",
+        "detail": {
+          "programsTitle": "Premium Skincare Programs",
+          "aquaTox": {
+            "title": "Aqua Tox",
+            "description": "Deep hydration treatment that adds moisture and elasticity to dry, dull skin. Strengthens the skin's moisture barrier to prevent water loss."
+          },
+          "plafill": {
+            "title": "Plafill",
+            "description": "A program focused on skin regeneration and elasticity recovery. Promotes collagen production to restore skin elasticity and achieve vibrant, healthy skin."
+          },
+          "benefitsTitle": "Benefits of Skincare",
+          "infoTitle": "Treatment Information",
+          "infoLabels": {
+            "duration": "Duration",
+            "anesthesia": "Anesthesia",
+            "recovery": "Recovery",
+            "results": "Results"
+          },
+          "faqTitle": "Frequently Asked Questions",
+          "cta": {
+            "title": "Book Skincare Consultation",
+            "description": "Restore your skin's natural health with our expert estheticians' precise techniques. We'll guide you to the perfect program for your skin.",
+            "button": "Book Online Consultation"
           }
         }
       }
@@ -2966,7 +3027,7 @@
       },
       "total": {
         "title": "TOTAL SIGNATURE",
-        "subtitle": "Comprehensive Anti-Aging",
+        "subtitle": "Silhouette Lifting",
         "tagline": "Perfect Total Care",
         "description": "A premium package that cares for lifting, volume, and skin texture all at once. Experience cinematic transformation as your entire face is lifted and defined.",
         "features": ["Combined Lifting Treatment", "Volume Restructuring", "Total Skin Regeneration"],
@@ -3125,6 +3186,7 @@
         "optional": "Optional",
         "varies": "Varies",
         "localAnesthesia": "Local anesthesia",
+        "anesthesiaCreamLocal": "Anesthetic Cream / Local Anesthesia",
         "none": "None",
         "premium": "Premium",
         "moderate": "Moderate",
@@ -3147,15 +3209,15 @@
         "thermage": {
           "technology": "RF",
           "duration": "45-60 min",
-          "anesthesia": "No anesthesia",
+          "anesthesia": "Anesthetic Cream",
           "recovery": "None",
           "results": "1-2 years",
           "price": "Premium"
         },
         "density": {
-          "technology": "HIFU+RF",
+          "technology": "RF",
           "duration": "40-60 min",
-          "anesthesia": "Optional",
+          "anesthesia": "Anesthetic Cream",
           "recovery": "None",
           "results": "6 months - 1 year",
           "price": "Moderate"
@@ -3163,15 +3225,15 @@
         "shurink": {
           "technology": "HIFU",
           "duration": "30-45 min",
-          "anesthesia": "Optional",
+          "anesthesia": "Anesthetic Cream",
           "recovery": "None",
           "results": "3-6 months",
           "price": "Affordable"
         },
         "inmode": {
-          "technology": "RF+Needle",
+          "technology": "RF",
           "duration": "30-90 min",
-          "anesthesia": "Varies",
+          "anesthesia": "No Anesthesia",
           "recovery": "0-5 days",
           "results": "6 months - 1 year",
           "price": "Varies"
@@ -3179,7 +3241,7 @@
         "thread": {
           "technology": "PDO Thread",
           "duration": "30-60 min",
-          "anesthesia": "Local anesthesia",
+          "anesthesia": "Anesthetic Cream / Local Anesthesia",
           "recovery": "3-7 days",
           "results": "1-2 years",
           "price": "Moderate"
@@ -3449,6 +3511,11 @@
         "name": "Laser Equipment",
         "nameEn": "Laser Equipment",
         "description": "Laser systems for skin texture improvement and elasticity"
+      },
+      "diagnostic": {
+        "name": "Skin Diagnostic",
+        "nameEn": "Skin Diagnostic",
+        "description": "Advanced diagnostic equipment for precise skin analysis and personalized treatment planning."
       }
     },
     "equipment": {
@@ -3521,6 +3588,13 @@
         "description": "Low-irritation whitening laser",
         "features": ["Melanin targeting", "Skin tone evening", "Low-irritation treatment"],
         "certification": "KFDA Approved"
+      },
+      "markvu": {
+        "name": "Mark VU",
+        "nameKo": "Mark VU",
+        "description": "Advanced skin diagnostic device with 18-megapixel ultra-high resolution camera that precisely analyzes 12 skin conditions invisible to the naked eye.",
+        "features": ["18MP Resolution", "4 Light Source Analysis", "Skin Type Diagnosis"],
+        "certification": "18MP Ultra High Resolution"
       }
     },
     "cta": {
@@ -3542,6 +3616,41 @@
         "title": "Location",
         "subtitle": "Location"
       }
+    }
+  },
+  "events": {
+    "title": "Events",
+    "subtitle": "Discover the latest news and special offers from LIV Plastic Surgery",
+    "activeTab": "Active Events",
+    "endedTab": "Past Events",
+    "activeCount": "Active",
+    "endedCount": "Ended",
+    "viewDetails": "View Details",
+    "bookNow": "Book Consultation",
+    "period": "Period",
+    "category": "Category",
+    "status": {
+      "active": "Active",
+      "ended": "Ended"
+    },
+    "categories": {
+      "lifting": "Lifting",
+      "antiaging": "Anti-aging",
+      "laser": "Laser",
+      "skincare": "Skincare",
+      "all": "All"
+    },
+    "noEvents": "No active events at the moment",
+    "noEndedEvents": "No past events",
+    "backToList": "Back to List",
+    "relatedTreatments": "Related Treatments",
+    "eventDetails": "Event Details",
+    "share": "Share",
+    "gallery": "Event Gallery",
+    "viewLarger": "View larger",
+    "meta": {
+      "title": "Events | LIV Plastic Surgery",
+      "description": "Discover the latest events and special promotions at LIV Plastic Surgery. Special offers on Ultherapy, Thermage, Botox, Filler and more."
     }
   }
 }

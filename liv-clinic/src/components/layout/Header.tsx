@@ -117,6 +117,7 @@ export default function Header() {
         { key: 'botox', label: t('botox'), href: '/antiaging/botox' },
         { key: 'filler', label: t('filler'), href: '/antiaging/filler' },
         { key: 'skinbooster', label: t('skinbooster'), href: '/antiaging/skinbooster' },
+        { key: 'skincare', label: t('skincare'), href: '/antiaging/skincare' },
       ],
     },
     {
@@ -128,6 +129,11 @@ export default function Header() {
       key: 'medical',
       label: t('medical'),
       href: '/medical',
+    },
+    {
+      key: 'events',
+      label: t('events'),
+      href: '/events',
     },
   ];
 

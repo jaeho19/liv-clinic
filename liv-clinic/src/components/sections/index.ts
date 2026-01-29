@@ -33,3 +33,4 @@ export { default as SignatureDetail } from './SignatureDetail';
 export { default as SignatureProgramsSection } from './SignatureProgramsSection';
 export { default as ConsultationForm } from './ConsultationForm';
 export { default as FloatingConsultation } from './FloatingConsultation';
+export { default as EventCard } from './EventCard';
