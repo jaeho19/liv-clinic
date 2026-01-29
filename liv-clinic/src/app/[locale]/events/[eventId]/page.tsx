@@ -46,12 +46,13 @@ export default function EventDetailPage() {
   };
 
   // 관련 시술 정보 가져오기
-  const getRelatedTreatment = (href: string) => {
+  const getRelatedTreatment = (href: string): { name: string } | null => {
     const parts = href.split('/').filter(Boolean);
     if (parts.length < 2) return null;
     const category = parts[0] as keyof typeof TREATMENTS;
     const id = parts[1];
-    return TREATMENTS[category]?.[id as keyof (typeof TREATMENTS)[typeof category]];
+    const treatment = TREATMENTS[category]?.[id as keyof (typeof TREATMENTS)[typeof category]];
+    return treatment ? { name: treatment.name } : null;
   };
 
   if (!event) {
