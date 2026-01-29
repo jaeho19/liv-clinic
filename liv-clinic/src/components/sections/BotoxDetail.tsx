@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -36,46 +36,123 @@ interface TimelineItem {
   percentage: number;
 }
 
-// Treatment Areas Illustration Component - AI Generated Image with Labels
-const TreatmentAreasIllustration = ({ labels }: { labels: TreatmentAreasLabels }) => (
-  <div className="relative w-full max-w-[480px] mx-auto">
-    {/* AI Generated Idol Style Image */}
-    <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-[#C4A484]/10">
-      <Image
-        src="/images/botox-treatment-areas-idol.png"
-        alt="보톡스 시술 부위 - Botox Treatment Areas"
-        width={480}
-        height={600}
-        className="w-full h-auto"
-        quality={95}
-        priority
-      />
-    </div>
+// Treatment Areas Illustration Component - Interactive Version
+const TreatmentAreasIllustration = ({
+  labels,
+  selectedArea,
+  onAreaSelect
+}: {
+  labels: TreatmentAreasLabels;
+  selectedArea: string | null;
+  onAreaSelect: (area: string | null) => void;
+}) => {
+  const areas = [
+    { num: '01', key: 'forehead', label: labels.forehead, category: 'wrinkle' },
+    { num: '02', key: 'glabella', label: labels.glabella, category: 'wrinkle' },
+    { num: '03', key: 'crowsFeet', label: labels.crowsFeet, category: 'wrinkle' },
+    { num: '04', key: 'masseter', label: labels.masseter, category: 'contour' },
+    { num: '05', key: 'mouthCorners', label: labels.mouthCorners, category: 'wrinkle' },
+    { num: '06', key: 'trapezius', label: labels.trapezius, category: 'contour' },
+    { num: '07', key: 'calves', label: labels.calves, category: 'body' },
+  ];
 
-    {/* Treatment Area Labels Legend */}
-    <div className="mt-8 grid grid-cols-2 gap-3">
-      {[
-        { num: '01', label: labels.forehead },
-        { num: '02', label: labels.glabella },
-        { num: '03', label: labels.crowsFeet },
-        { num: '04', label: labels.masseter },
-        { num: '05', label: labels.mouthCorners },
-        { num: '06', label: labels.trapezius },
-        { num: '07', label: labels.calves },
-      ].map((item) => (
-        <div
-          key={item.num}
-          className="flex items-center gap-3 px-4 py-3 bg-white/80 backdrop-blur-sm rounded-xl border border-[#E8D5C4]/50"
-        >
-          <span className="w-7 h-7 rounded-full bg-gradient-to-br from-[#E8B4B8] to-[#C4A484] flex items-center justify-center text-white text-xs font-medium">
-            {item.num}
+  return (
+    <div className="relative w-full max-w-[520px] mx-auto">
+      {/* AI Generated Image */}
+      <motion.div
+        className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#C4A484]/20"
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Image
+          src="/images/Gemini_Generated_Image_khwxm0khwxm0khwx.png"
+          alt="보톡스 시술 부위 - Botox Treatment Areas"
+          width={520}
+          height={650}
+          className="w-full h-auto"
+          quality={95}
+          priority
+        />
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#C4A484]/5 to-transparent pointer-events-none" />
+      </motion.div>
+
+      {/* Interactive Treatment Area Buttons */}
+      <div className="mt-8">
+        {/* Category Labels */}
+        <div className="flex items-center justify-center gap-6 mb-4 text-xs tracking-wider">
+          <span className="flex items-center gap-2 text-[#C4A484]">
+            <span className="w-2 h-2 rounded-full bg-[#E8B4B8]" />
+            표정 주름
           </span>
-          <span className="text-sm text-[#8B7355] font-medium">{item.label}</span>
+          <span className="flex items-center gap-2 text-[#8B7355]">
+            <span className="w-2 h-2 rounded-full bg-[#C4A484]" />
+            윤곽 정리
+          </span>
+          <span className="flex items-center gap-2 text-[#6d4e42]">
+            <span className="w-2 h-2 rounded-full bg-[#8B7355]" />
+            바디
+          </span>
         </div>
-      ))}
+
+        {/* Button Grid */}
+        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
+          {areas.map((item) => (
+            <motion.button
+              key={item.num}
+              onClick={() => onAreaSelect(selectedArea === item.key ? null : item.key)}
+              onMouseEnter={() => onAreaSelect(item.key)}
+              onMouseLeave={() => onAreaSelect(null)}
+              className={`
+                group relative flex items-center gap-2 px-3 py-3 sm:px-4 sm:py-3.5
+                rounded-xl border transition-all duration-300 min-h-[48px]
+                ${selectedArea === item.key
+                  ? 'bg-gradient-to-br from-[#C4A484] to-[#B39374] border-[#C4A484] text-white shadow-lg shadow-[#C4A484]/30'
+                  : 'bg-white/90 backdrop-blur-sm border-[#E8D5C4]/60 hover:border-[#C4A484]/50 hover:bg-[#FDFBF9]'
+                }
+              `}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              aria-label={`${item.label} 시술 부위 선택`}
+              role="button"
+            >
+              <span className={`
+                w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-medium
+                transition-colors duration-300
+                ${selectedArea === item.key
+                  ? 'bg-white/20 text-white'
+                  : item.category === 'wrinkle'
+                    ? 'bg-gradient-to-br from-[#E8B4B8] to-[#D4A5A5] text-white'
+                    : item.category === 'contour'
+                      ? 'bg-gradient-to-br from-[#C4A484] to-[#B39374] text-white'
+                      : 'bg-gradient-to-br from-[#8B7355] to-[#6d4e42] text-white'
+                }
+              `}>
+                {item.num}
+              </span>
+              <span className={`
+                text-xs sm:text-sm font-medium transition-colors duration-300
+                ${selectedArea === item.key ? 'text-white' : 'text-[#8B7355]'}
+              `}>
+                {item.label}
+              </span>
+
+              {/* Active indicator */}
+              {selectedArea === item.key && (
+                <motion.span
+                  className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#E8B4B8] border-2 border-white"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+                />
+              )}
+            </motion.button>
+          ))}
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 // Floating decorative orb component
 const FloatingOrb = ({ className, delay = 0 }: { className?: string; delay?: number }) => (
@@ -350,6 +427,7 @@ export default function BotoxDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+  const [selectedArea, setSelectedArea] = useState<string | null>(null);
 
   // Translated data from messages files
   const treatmentAreasLabels = t.raw('antiaging.botox.detail.treatmentAreasLabels') as TreatmentAreasLabels;
@@ -493,7 +571,7 @@ export default function BotoxDetail() {
               {/* Hero Image */}
               <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#C4A484]/20">
                 <Image
-                  src="/images/Gemini_Generated_Image_dx1pc4dx1pc4dx1p.png"
+                  src="/images/Gemini_Generated_Image_7od8k07od8k07od8.png"
                   alt={`${detail.name} - ${detail.description}`}
                   fill
                   className="object-cover"
@@ -560,57 +638,46 @@ export default function BotoxDetail() {
         </div>
       </section>
 
-      {/* Treatment Areas with Premium Video */}
+      {/* Treatment Areas - Centered Interactive Layout */}
       <section className="py-32 bg-gradient-to-br from-[#F9F6F3] to-[#F5F0EB] relative overflow-hidden">
         <FloatingOrb className="w-80 h-80 bg-[#C4A484]/5 -right-20 top-20" delay={1} />
+        <FloatingOrb className="w-64 h-64 bg-[#D4A5A5]/5 -left-10 bottom-20" delay={2} />
 
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="w-8 h-px bg-[#C4A484]" />
-                <span className="text-xs tracking-[0.3em] text-[#C4A484] uppercase">Treatment Areas</span>
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-extralight text-[#3D3D3D] mb-8">
-                {t('common.targetAreas')}
-              </h2>
-              <p className="text-gray-600 font-light mb-12 max-w-md text-lg leading-relaxed">
-                {detail.targetAreas.description}
-              </p>
+          {/* Section Header - Centered */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-4 mb-4">
+              <div className="w-8 h-px bg-[#C4A484]" />
+              <span className="text-xs tracking-[0.3em] text-[#C4A484] uppercase">Treatment Areas</span>
+              <div className="w-8 h-px bg-[#C4A484]" />
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-extralight text-[#3D3D3D] mb-6">
+              {t('common.targetAreas')}
+            </h2>
+            <p className="text-gray-600 font-light max-w-2xl mx-auto text-lg leading-relaxed">
+              {detail.targetAreas.description}
+            </p>
+          </motion.div>
 
-              <div className="space-y-3">
-                {targetAreasItems.map((area, index) => (
-                  <motion.div
-                    key={area}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.08 }}
-                    className="group flex items-center gap-6 py-5 border-b border-gray-200/50 hover:border-[#C4A484]/50 transition-all duration-300"
-                  >
-                    <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#C4A484]/20 to-[#D4A5A5]/10 flex items-center justify-center">
-                      <span className="text-xs text-[#C4A484] font-medium">{String(index + 1).padStart(2, '0')}</span>
-                    </span>
-                    <span className="text-[#3D3D3D] font-light text-lg group-hover:text-[#C4A484] transition-colors">{area}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="relative"
-            >
-              {/* Treatment Areas Illustration */}
-              <TreatmentAreasIllustration labels={treatmentAreasLabels} />
-            </motion.div>
-          </div>
+          {/* Interactive Illustration - Centered */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative max-w-xl mx-auto"
+          >
+            <TreatmentAreasIllustration
+              labels={treatmentAreasLabels}
+              selectedArea={selectedArea}
+              onAreaSelect={setSelectedArea}
+            />
+          </motion.div>
         </div>
       </section>
 

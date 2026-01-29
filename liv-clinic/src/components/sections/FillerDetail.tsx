@@ -1,7 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -41,6 +41,157 @@ const colors = {
   light: '#FAF8F6',
   rose: '#C9A99A',
   gold: '#C9A86C',
+};
+
+// Treatment Areas Data Interface
+interface FillerAreaLabel {
+  forehead: string;
+  temple: string;
+  nose: string;
+  cheekbone: string;
+  nasolabial: string;
+  cheek: string;
+  chin: string;
+  aegyo: string;
+  lips: string;
+  eyebrow: string;
+}
+
+// Filler Treatment Areas Illustration Component - Interactive Version
+const FillerTreatmentAreasIllustration = ({
+  areas,
+  selectedArea,
+  onAreaSelect
+}: {
+  areas: Array<{ id: number; name: string; description: string }>;
+  selectedArea: string | null;
+  onAreaSelect: (area: string | null) => void;
+}) => {
+  // Map areas to interactive button data with categories
+  const areaButtons = areas.map((area, index) => {
+    const categories: Record<number, 'wrinkle' | 'volume' | 'contour' | 'lift'> = {
+      0: 'wrinkle',   // 이마 - 주름
+      1: 'volume',    // 관자놀이 - 볼륨
+      2: 'contour',   // 코 - 윤곽
+      3: 'volume',    // 앞광대 - 볼륨
+      4: 'wrinkle',   // 팔자 - 주름
+      5: 'volume',    // 옆볼 - 볼륨
+      6: 'contour',   // 턱끝 - 윤곽
+      7: 'volume',    // 애교살 - 볼륨
+      8: 'volume',    // 입술 - 볼륨
+      9: 'lift',      // 눈썹 - 리프팅
+    };
+    return {
+      num: String(index + 1).padStart(2, '0'),
+      key: `area-${area.id}`,
+      label: area.name,
+      desc: area.description,
+      category: categories[index] || 'volume'
+    };
+  });
+
+  return (
+    <div className="relative w-full max-w-[520px] mx-auto">
+      {/* AI Generated Image */}
+      <motion.div
+        className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#A89080]/20"
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.3 }}
+      >
+        <Image
+          src="/images/Gemini_Generated_Image_c8gix4c8gix4c8gi.png"
+          alt="필러 시술 부위 - Filler Treatment Areas"
+          width={520}
+          height={650}
+          className="w-full h-auto"
+          quality={95}
+          priority
+        />
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#A89080]/5 to-transparent pointer-events-none" />
+      </motion.div>
+
+      {/* Interactive Treatment Area Buttons */}
+      <div className="mt-8">
+        {/* Category Labels */}
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 mb-4 text-xs tracking-wider">
+          <span className="flex items-center gap-2 text-[#C9A99A]">
+            <span className="w-2 h-2 rounded-full bg-[#D4A5A5]" />
+            주름 개선
+          </span>
+          <span className="flex items-center gap-2 text-[#A89080]">
+            <span className="w-2 h-2 rounded-full bg-[#A89080]" />
+            볼륨
+          </span>
+          <span className="flex items-center gap-2 text-[#6D5A4D]">
+            <span className="w-2 h-2 rounded-full bg-[#6D5A4D]" />
+            윤곽
+          </span>
+          <span className="flex items-center gap-2 text-[#C9A86C]">
+            <span className="w-2 h-2 rounded-full bg-[#C9A86C]" />
+            리프팅
+          </span>
+        </div>
+
+        {/* Button Grid - 5 columns for 10 areas */}
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-3">
+          {areaButtons.map((item) => (
+            <motion.button
+              key={item.num}
+              onClick={() => onAreaSelect(selectedArea === item.key ? null : item.key)}
+              onMouseEnter={() => onAreaSelect(item.key)}
+              onMouseLeave={() => onAreaSelect(null)}
+              className={`
+                group relative flex flex-col items-center gap-1 px-2 py-3 sm:px-3 sm:py-4
+                rounded-xl border transition-all duration-300 min-h-[64px]
+                ${selectedArea === item.key
+                  ? 'bg-gradient-to-br from-[#A89080] to-[#8B7355] border-[#A89080] text-white shadow-lg shadow-[#A89080]/30'
+                  : 'bg-white/90 backdrop-blur-sm border-[#D4C4B8]/60 hover:border-[#A89080]/50 hover:bg-[#FAF8F6]'
+                }
+              `}
+              whileHover={{ y: -2 }}
+              whileTap={{ scale: 0.98 }}
+              aria-label={`${item.label} 시술 부위 선택`}
+              role="button"
+            >
+              <span className={`
+                w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-medium
+                transition-colors duration-300
+                ${selectedArea === item.key
+                  ? 'bg-white/20 text-white'
+                  : item.category === 'wrinkle'
+                    ? 'bg-gradient-to-br from-[#D4A5A5] to-[#C9A99A] text-white'
+                    : item.category === 'volume'
+                      ? 'bg-gradient-to-br from-[#A89080] to-[#8B7355] text-white'
+                      : item.category === 'contour'
+                        ? 'bg-gradient-to-br from-[#6D5A4D] to-[#5A4940] text-white'
+                        : 'bg-gradient-to-br from-[#C9A86C] to-[#B8975C] text-white'
+                }
+              `}>
+                {item.num}
+              </span>
+              <span className={`
+                text-xs font-medium transition-colors duration-300 text-center
+                ${selectedArea === item.key ? 'text-white' : 'text-[#6D5A4D]'}
+              `}>
+                {item.label}
+              </span>
+
+              {/* Active indicator */}
+              {selectedArea === item.key && (
+                <motion.span
+                  className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#C9A99A] border-2 border-white"
+                  initial={{ scale: 0 }}
+                  animate={{ scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 500, damping: 25 }}
+                />
+              )}
+            </motion.button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 // Floating decorative orb component
@@ -285,6 +436,7 @@ export default function FillerDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
+  const [selectedArea, setSelectedArea] = useState<string | null>(null);
 
   // Load translation data using t.raw() for arrays
   const benefitItems = t.raw('antiaging.filler.detail.benefits.items') as BenefitItem[];
@@ -435,7 +587,7 @@ export default function FillerDetail() {
               {/* Hero Image */}
               <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#A89080]/20">
                 <Image
-                  src="/images/Gemini_Generated_Image_xrqs0pxrqs0pxrqs.png"
+                  src="/images/filler-hero-new.png"
                   alt={detail.heroImageAlt}
                   fill
                   className="object-cover"
@@ -501,12 +653,13 @@ export default function FillerDetail() {
         </div>
       </section>
 
-      {/* Treatment Areas - Grid Layout */}
+      {/* Treatment Areas - Centered Interactive Layout (Botox Style) */}
       <section className="py-32 bg-gradient-to-b from-white to-[#FAF8F6] relative overflow-hidden">
         <FloatingOrb className="w-80 h-80 bg-[#A89080]/5 -right-20 top-20" delay={1} />
         <FloatingOrb className="w-64 h-64 bg-[#C9A99A]/5 -left-16 bottom-40" delay={3} />
 
         <div className="container mx-auto px-6 lg:px-12">
+          {/* Section Header - Centered */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -518,65 +671,28 @@ export default function FillerDetail() {
               <span className="text-xs tracking-[0.3em] text-[#A89080] uppercase">Treatment Areas</span>
               <div className="w-8 h-px bg-[#A89080]" />
             </div>
-            <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-4">
+            <h2 className="text-4xl lg:text-5xl font-extralight text-[#3A3A3A] mb-6">
               {t('common.targetAreas')}
             </h2>
-            <p className="text-gray-500 max-w-xl mx-auto font-light">
+            <p className="text-gray-500 font-light max-w-2xl mx-auto text-lg leading-relaxed">
               {detail.targetAreas.subtitle}
             </p>
           </motion.div>
 
-          <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-6">
-            {detail.targetAreas.areas.map((area, index) => (
-              <motion.div
-                key={area.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className="group relative flex flex-col items-center p-6 bg-white rounded-2xl border border-gray-100 hover:border-[#A89080]/30 hover:shadow-xl hover:shadow-[#A89080]/10 transition-all duration-500"
-              >
-                {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-[#A89080]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl" />
-
-                {/* Icon Circle */}
-                <div className="relative w-14 h-14 mb-4">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#FAF8F6] to-[#F0E8E4]" />
-                  <div className="absolute inset-0 rounded-full flex items-center justify-center">
-                    <svg
-                      className="w-6 h-6 text-[#A89080] group-hover:text-[#6D5A4D] transition-colors"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={1.5}
-                        d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-                      />
-                    </svg>
-                  </div>
-                </div>
-
-                {/* Number Badge */}
-                <span className="relative text-xs text-[#C9A99A] font-medium tracking-wider mb-1">
-                  {String(area.id).padStart(2, '0')}
-                </span>
-
-                {/* Name */}
-                <h3 className="relative text-base font-medium text-[#3A3A3A] group-hover:text-[#6D5A4D] transition-colors mb-2">
-                  {area.name}
-                </h3>
-
-                {/* Description */}
-                <p className="relative text-xs text-center text-gray-400 leading-relaxed">
-                  {area.description}
-                </p>
-              </motion.div>
-            ))}
-          </div>
+          {/* Interactive Illustration - Centered */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="relative max-w-xl mx-auto"
+          >
+            <FillerTreatmentAreasIllustration
+              areas={detail.targetAreas.areas}
+              selectedArea={selectedArea}
+              onAreaSelect={setSelectedArea}
+            />
+          </motion.div>
         </div>
       </section>
 
