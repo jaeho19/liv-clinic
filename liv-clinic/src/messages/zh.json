@@ -2092,31 +2092,204 @@
       },
       "skincare": {
         "name": "皮肤管理",
-        "fullName": "Skincare",
-        "tagline": "专业皮肤管理师的细致护理",
-        "description": "LIV的皮肤管理是由专业皮肤管理师亲自进行的专业护肤项目。通过水光注射、再生护理、深层清洁等多种项目，恢复肌肤本来的健康状态。",
+        "fullName": "Premium Skincare",
+        "tagline": "专业皮肤管理师打造的高端皮肤护理",
+        "description": "由专业皮肤管理师进行的高端皮肤护理项目，包括水光注射、Plafill等。根据您的肤质和肌肤困扰量身定制护理方案，恢复肌肤本来的健康状态。",
         "detail": {
-          "programsTitle": "高端皮肤管理项目",
-          "aquaTox": {
-            "title": "水光注射",
-            "description": "深层补水护理，为干燥暗沉的肌肤注入水分和弹性。强化肌肤保湿屏障，防止水分流失。"
+          "heroSubtitle": "Esthetician Care",
+          "programsSection": {
+            "badge": "Programs",
+            "title": "LIV整形外科的皮肤管理项目",
+            "subtitle": "专业皮肤管理师提供的定制高端护理",
+            "items": [
+              {
+                "id": "hydration",
+                "icon": "droplet",
+                "title": "补水/镇静护理",
+                "subtitle": "Hydration & Soothing",
+                "description": "快速镇静敏感肌肤，提供深层补水。",
+                "details": "有效改善术前术后的红肿、紧绷、灼热感。"
+              },
+              {
+                "id": "vitaminC",
+                "icon": "sun",
+                "title": "维生素C离子导入",
+                "subtitle": "Vitamin C Iontophoresis",
+                "description": "通过离子导入仪将高浓度维生素C深层渗透至肌肤。",
+                "details": "打造透明感肤色，抗氧化作用恢复肌肤活力。"
+              },
+              {
+                "id": "peeling",
+                "icon": "sparkle",
+                "title": "温和焕肤护理",
+                "subtitle": "Gentle Peeling (Plafill)",
+                "description": "使用Plafill（铂金拉拉焕肤）进行安全去角质。",
+                "details": "敏感肌也适用的温和焕肤，改善肤质。"
+              },
+              {
+                "id": "ultrasound",
+                "icon": "wave",
+                "title": "超声波提升/精华导入护理",
+                "subtitle": "Ultrasound Lifting & Boosting",
+                "description": "使用Ulblanc超声波仪器的高效皮肤护理。",
+                "details": "一次体验精华渗透、肌肤再生、镇静、提升效果。"
+              },
+              {
+                "id": "acne",
+                "icon": "shield",
+                "title": "痘痘集中护理",
+                "subtitle": "Acne Care Program",
+                "description": "为调节皮脂分泌、消炎镇静、预防复发而设计的项目。",
+                "details": "必要时可配合医疗团队进行消炎注射及清除。"
+              },
+              {
+                "id": "exosome",
+                "icon": "glow",
+                "title": "外泌体/美白精华护理",
+                "subtitle": "Exosome & Brightening Booster",
+                "description": "使用外泌体、高效美白安瓶的皮肤提升护理。",
+                "details": "同时改善肌肤活力、光泽和弹性。"
+              }
+            ]
           },
-          "plafill": {
-            "title": "再生护理",
-            "description": "专注于肌肤再生和弹力恢复的项目。促进胶原蛋白生成，恢复肌肤弹性，打造充满活力的健康肌肤。"
+          "equipmentSection": {
+            "badge": "Equipment",
+            "title": "使用设备阵容",
+            "subtitle": "高端设备带来更有效的皮肤护理",
+            "items": [
+              {
+                "id": "aqualab",
+                "name": "Aqualab水氧仪",
+                "brand": "Histolab",
+                "icon": "water",
+                "description": "水分深层清洁+去角质+黑头护理",
+                "feature": "敏感肌也可无刺激护理"
+              },
+              {
+                "id": "ulblanc",
+                "name": "Ulblanc超声波仪",
+                "brand": "Ulblanc",
+                "icon": "wave",
+                "description": "集镇静·再生·精华渗透·提升于一体的高效超声波系统",
+                "feature": "全方位超声波皮肤护理"
+              },
+              {
+                "id": "ionto",
+                "name": "离子导入仪",
+                "brand": "Iontophoresis",
+                "icon": "zap",
+                "description": "帮助高浓缩成分（维生素C、美白剂等）有效渗透肌肤",
+                "feature": "最大化成分渗透力"
+              },
+              {
+                "id": "cryocell",
+                "name": "冷冻镇静仪",
+                "brand": "Cryo Cooling",
+                "icon": "snowflake",
+                "description": "缓解术后灼热感·红肿，镇静肌肤并增强保湿力",
+                "feature": "冷却镇静护理"
+              },
+              {
+                "id": "led",
+                "name": "LED光疗系统",
+                "brand": "LED Therapy",
+                "icon": "lightbulb",
+                "description": "可选红/蓝/黄光波长",
+                "feature": "根据肌肤状态定制的光疗护理：痘痘镇静、弹力强化、再生促进等"
+              }
+            ]
           },
-          "benefitsTitle": "皮肤管理的优势",
-          "infoTitle": "治疗信息",
-          "infoLabels": {
-            "duration": "治疗时间",
-            "anesthesia": "麻醉",
-            "recovery": "恢复期",
-            "results": "效果"
+          "differentiatorSection": {
+            "badge": "Why LIV",
+            "title": "LIV皮肤管理的差异化优势",
+            "subtitle": "不只是普通护理，而是医疗级高端护理",
+            "items": [
+              {
+                "id": "expert",
+                "icon": "award",
+                "title": "10年以上经验的专业皮肤管理师常驻",
+                "description": "凭借熟练的技术和丰富的经验提供最佳效果"
+              },
+              {
+                "id": "genuine",
+                "icon": "verified",
+                "title": "只使用正品产品和高端设备",
+                "description": "使用经过验证的正品产品和高端设备，安全有效护理"
+              },
+              {
+                "id": "medical",
+                "icon": "stethoscope",
+                "title": "基于皮肤解剖学的医疗团队协作设计",
+                "description": "必要时可配合专家咨询及医疗治疗的综合护理"
+              },
+              {
+                "id": "iv",
+                "icon": "heart",
+                "title": "可配合输液治疗",
+                "description": "根据肌肤状态配合美白、补水、抗氧化等输液治疗"
+              },
+              {
+                "id": "private",
+                "icon": "lock",
+                "title": "在舒适私密的空间进行",
+                "description": "在轻松私密的环境中享受专属护理"
+              }
+            ]
           },
-          "faqTitle": "常见问题",
+          "treatmentInfo": {
+            "title": "治疗信息",
+            "labels": {
+              "duration": "所需时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果"
+            }
+          },
+          "treatmentValues": {
+            "duration": "60-90分钟",
+            "anesthesia": "无需",
+            "recovery": "无（即可恢复日常）",
+            "results": "即时改善肤色，定期护理效果最大化"
+          },
+          "idealFor": {
+            "title": "推荐人群",
+            "items": [
+              "肌肤干燥粗糙困扰者",
+              "肌肤弹性下降者",
+              "需要术前术后肌肤调理者",
+              "特殊日子前需要皮肤护理者",
+              "希望定期进行皮肤护理者",
+              "敏感肌需要专业护理者"
+            ]
+          },
+          "faqs": {
+            "title": "常见问题",
+            "items": [
+              {
+                "q": "皮肤管理和水光针的区别是什么？",
+                "shortA": "皮肤管理是外部护理，水光针是注射治疗。",
+                "a": "皮肤管理是由皮肤管理师进行的外部护理项目，包括清洁、补水、镇静等基础护理。水光针是由医疗团队进行的注射治疗，将丽珠兰、Juvelook等成分直接注入肌肤内部。"
+              },
+              {
+                "q": "多久做一次比较好？",
+                "shortA": "建议每2-4周进行定期护理。",
+                "a": "根据肌肤状态有所不同，每2-4周定期护理效果最佳。咨询时会根据个人情况推荐最适合的护理周期。"
+              },
+              {
+                "q": "敏感肌也可以做吗？",
+                "shortA": "可以，我们会根据肤质调整护理方案。",
+                "a": "敏感肌也可以放心接受护理。我们使用低刺激产品和以镇静为主的方案进行定制护理。初次咨询时会确认肌肤状态后推荐最适合的方案。"
+              },
+              {
+                "q": "护理后可以马上化妆吗？",
+                "shortA": "可以，可以立即化妆。",
+                "a": "皮肤管理后无恢复期，可以立即化妆。您甚至会感觉妆容比平时更服帖。"
+              }
+            ]
+          },
           "cta": {
             "title": "预约皮肤管理咨询",
-            "description": "通过专业皮肤管理师的精准技术，恢复肌肤本来的健康。我们将为您推荐最适合的护理项目。",
+            "description": "拥有10年以上经验的专业皮肤管理师将根据您的肤质和肌肤困扰推荐最适合的护理方案。",
             "button": "在线预约咨询"
           }
         }

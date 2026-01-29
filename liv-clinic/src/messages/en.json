@@ -2092,31 +2092,204 @@
       },
       "skincare": {
         "name": "Skincare",
-        "fullName": "Skincare",
-        "tagline": "Expert Touch by Estheticians",
-        "description": "LIV's Skincare is a professional skin care program conducted by skilled estheticians. From Aqua Tox to Plafill and deep cleansing, we offer various programs to restore your skin's natural health.",
+        "fullName": "Premium Skincare",
+        "tagline": "Premium skincare completed by expert estheticians",
+        "description": "A premium skincare program performed by professional estheticians, including Aqua Tox and Plafill treatments. Customized care based on your skin type and concerns to restore your skin's natural health.",
         "detail": {
-          "programsTitle": "Premium Skincare Programs",
-          "aquaTox": {
-            "title": "Aqua Tox",
-            "description": "Deep hydration treatment that adds moisture and elasticity to dry, dull skin. Strengthens the skin's moisture barrier to prevent water loss."
+          "heroSubtitle": "Esthetician Care",
+          "programsSection": {
+            "badge": "Programs",
+            "title": "LIV Skincare Programs",
+            "subtitle": "Customized premium skincare by professional estheticians",
+            "items": [
+              {
+                "id": "hydration",
+                "icon": "droplet",
+                "title": "Hydration & Soothing Care",
+                "subtitle": "Hydration & Soothing",
+                "description": "Quickly soothes sensitive skin and provides deep hydration.",
+                "details": "Effective for redness, tightness, and heat after treatments."
+              },
+              {
+                "id": "vitaminC",
+                "icon": "sun",
+                "title": "Vitamin C Iontophoresis",
+                "subtitle": "Vitamin C Iontophoresis",
+                "description": "Delivers high-concentration Vitamin C deep into the skin using iontophoresis.",
+                "details": "Achieves a clear, radiant complexion with antioxidant benefits."
+              },
+              {
+                "id": "peeling",
+                "icon": "sparkle",
+                "title": "Gentle Peeling Care",
+                "subtitle": "Gentle Peeling (Plafill)",
+                "description": "Safe exfoliation program using Plafill (Platinum LaLa Peel).",
+                "details": "Low-stimulation peeling suitable for sensitive skin, improving skin texture."
+              },
+              {
+                "id": "ultrasound",
+                "icon": "wave",
+                "title": "Ultrasound Lifting & Booster",
+                "subtitle": "Ultrasound Lifting & Boosting",
+                "description": "High-function skincare using Ulblanc ultrasound device.",
+                "details": "Experience booster penetration, skin regeneration, soothing, and lifting all at once."
+              },
+              {
+                "id": "acne",
+                "icon": "shield",
+                "title": "Intensive Acne Care",
+                "subtitle": "Acne Care Program",
+                "description": "Program designed for sebum control, inflammation relief, and prevention.",
+                "details": "Medical team coordination available for injection and extraction when needed."
+              },
+              {
+                "id": "exosome",
+                "icon": "glow",
+                "title": "Exosome & Brightening Booster",
+                "subtitle": "Exosome & Brightening Booster",
+                "description": "Skin boosting care using exosomes and high-function brightening ampoules.",
+                "details": "Improves skin vitality, radiance, and elasticity simultaneously."
+              }
+            ]
           },
-          "plafill": {
-            "title": "Plafill",
-            "description": "A program focused on skin regeneration and elasticity recovery. Promotes collagen production to restore skin elasticity and achieve vibrant, healthy skin."
+          "equipmentSection": {
+            "badge": "Equipment",
+            "title": "Equipment Lineup",
+            "subtitle": "More effective skincare with premium devices",
+            "items": [
+              {
+                "id": "aqualab",
+                "name": "Aqualab",
+                "brand": "Histolab",
+                "icon": "water",
+                "description": "Deep cleansing + exfoliation + blackhead care",
+                "feature": "Gentle care suitable for sensitive skin"
+              },
+              {
+                "id": "ulblanc",
+                "name": "Ulblanc Ultrasound",
+                "brand": "Ulblanc",
+                "icon": "wave",
+                "description": "High-function ultrasound system for soothing, regeneration, booster penetration, and lifting",
+                "feature": "All-in-one ultrasound skincare"
+              },
+              {
+                "id": "ionto",
+                "name": "Iontophoresis Device",
+                "brand": "Iontophoresis",
+                "icon": "zap",
+                "description": "Enhances effective skin absorption of concentrated ingredients (Vitamin C, brightening agents)",
+                "feature": "Maximizes ingredient penetration"
+              },
+              {
+                "id": "cryocell",
+                "name": "Cryocell",
+                "brand": "Cryo Cooling",
+                "icon": "snowflake",
+                "description": "Relieves heat and redness after treatment, soothes skin and enhances moisture retention",
+                "feature": "Cooling & soothing care"
+              },
+              {
+                "id": "led",
+                "name": "LED Therapy System",
+                "brand": "LED Therapy",
+                "icon": "lightbulb",
+                "description": "Selectable red/blue/yellow wavelengths",
+                "feature": "Customized light therapy for acne relief, elasticity, and regeneration"
+              }
+            ]
           },
-          "benefitsTitle": "Benefits of Skincare",
-          "infoTitle": "Treatment Information",
-          "infoLabels": {
-            "duration": "Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery",
-            "results": "Results"
+          "differentiatorSection": {
+            "badge": "Why LIV",
+            "title": "What Makes LIV Different",
+            "subtitle": "Not just skincare, but medical-grade premium care",
+            "items": [
+              {
+                "id": "expert",
+                "icon": "award",
+                "title": "10+ Years Expert Estheticians On-Site",
+                "description": "Skilled techniques and extensive experience deliver the best results"
+              },
+              {
+                "id": "genuine",
+                "icon": "verified",
+                "title": "Genuine Products & Premium Equipment Only",
+                "description": "Safe and effective care with verified genuine products and premium devices"
+              },
+              {
+                "id": "medical",
+                "icon": "stethoscope",
+                "title": "Medical Team Coordination Based on Skin Anatomy",
+                "description": "Integrated care with specialist consultation and medical procedures when needed"
+              },
+              {
+                "id": "iv",
+                "icon": "heart",
+                "title": "IV Therapy Available",
+                "description": "Combine with brightening, hydration, antioxidant IV treatments based on skin condition"
+              },
+              {
+                "id": "private",
+                "icon": "lock",
+                "title": "Comfortable & Private Space",
+                "description": "Exclusive care in a relaxing and private environment"
+              }
+            ]
           },
-          "faqTitle": "Frequently Asked Questions",
+          "treatmentInfo": {
+            "title": "Treatment Information",
+            "labels": {
+              "duration": "Duration",
+              "anesthesia": "Anesthesia",
+              "recovery": "Recovery",
+              "results": "Results"
+            }
+          },
+          "treatmentValues": {
+            "duration": "60-90 min",
+            "anesthesia": "Not required",
+            "recovery": "None (immediate return)",
+            "results": "Immediate skin tone improvement, maximized with regular care"
+          },
+          "idealFor": {
+            "title": "Recommended For",
+            "items": [
+              "Those with dry, dull skin concerns",
+              "Those with decreased skin elasticity",
+              "Those needing pre/post-treatment skin conditioning",
+              "Those preparing for a special occasion",
+              "Those wanting regular skincare maintenance",
+              "Those with sensitive skin needing expert care"
+            ]
+          },
+          "faqs": {
+            "title": "Frequently Asked Questions",
+            "items": [
+              {
+                "q": "What's the difference between skincare and skin booster treatments?",
+                "shortA": "Skincare is external care, while skin boosters are injectable treatments.",
+                "a": "Skincare is an external care program performed by estheticians, including cleansing, hydration, and soothing. Skin boosters are medical procedures where ingredients like Rejuran or Juvelook are injected directly into the skin by medical professionals."
+              },
+              {
+                "q": "How often should I get treatments?",
+                "shortA": "Regular care every 2-4 weeks is recommended.",
+                "a": "While it varies by skin condition, regular treatments every 2-4 weeks maximize results. We'll recommend a personalized schedule during your consultation."
+              },
+              {
+                "q": "Is it suitable for sensitive skin?",
+                "shortA": "Yes, we adjust the program for your skin type.",
+                "a": "Sensitive skin is welcome. We provide customized care using low-stimulation products and soothing-focused programs. Your skin condition will be assessed during the initial consultation to recommend the optimal program."
+              },
+              {
+                "q": "Can I apply makeup right after treatment?",
+                "shortA": "Yes, makeup can be applied immediately.",
+                "a": "There's no downtime after skincare, so you can apply makeup right away. You may even notice your makeup applies better than before."
+              }
+            ]
+          },
           "cta": {
             "title": "Book Skincare Consultation",
-            "description": "Restore your skin's natural health with our expert estheticians' precise techniques. We'll guide you to the perfect program for your skin.",
+            "description": "Our expert estheticians with 10+ years of experience will guide you to the optimal program for your skin type and concerns.",
             "button": "Book Online Consultation"
           }
         }

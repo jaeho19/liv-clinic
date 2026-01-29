@@ -2092,31 +2092,204 @@
       },
       "skincare": {
         "name": "スキンケア",
-        "fullName": "Skincare",
-        "tagline": "エステティシャンによる専門ケア",
-        "description": "LIVのスキンケアは、エステティシャンが直接施術する専門スキンケアプログラムです。アクアトックス、プラフィル、ディープクレンジングなど、様々なプログラムでお肌本来の健康を取り戻します。",
+        "fullName": "Premium Skincare",
+        "tagline": "エステティシャンの専門的なタッチで完成するプレミアムスキンケア",
+        "description": "アクアトックス、プラフィルなど専門エステティシャンが行うプレミアムスキンケアプログラムです。肌タイプとお悩みに合わせたオーダーメイドケアで、お肌本来の健康を取り戻します。",
         "detail": {
-          "programsTitle": "プレミアムスキンケアプログラム",
-          "aquaTox": {
-            "title": "アクアトックス",
-            "description": "深い水分補給で乾燥したお肌に潤いと弾力を与えます。お肌の保湿バリアを強化し、水分の蒸発を防ぎます。"
+          "heroSubtitle": "Esthetician Care",
+          "programsSection": {
+            "badge": "Programs",
+            "title": "リブ形成外科のスキンケアプログラム",
+            "subtitle": "専門エステティシャンによるオーダーメイドプレミアムスキンケア",
+            "items": [
+              {
+                "id": "hydration",
+                "icon": "droplet",
+                "title": "保湿・鎮静ケア",
+                "subtitle": "Hydration & Soothing",
+                "description": "敏感になったお肌を素早く鎮静し、深い保湿を与えます。",
+                "details": "施術前後の赤み、つっぱり、熱感の改善に効果的です。"
+              },
+              {
+                "id": "vitaminC",
+                "icon": "sun",
+                "title": "ビタミンCイオン導入",
+                "subtitle": "Vitamin C Iontophoresis",
+                "description": "イオントフォレーシス機器で高濃度ビタミンCを肌深くまで浸透させます。",
+                "details": "透明感のある肌トーン、抗酸化作用で肌に活力を取り戻します。"
+              },
+              {
+                "id": "peeling",
+                "icon": "sparkle",
+                "title": "低刺激ピーリングケア",
+                "subtitle": "Gentle Peeling (Plafill)",
+                "description": "プラフィル（プラチナララピール）を使用した安全な角質除去プログラムです。",
+                "details": "敏感肌にも対応可能な低刺激ピーリングで肌質を改善します。"
+              },
+              {
+                "id": "ultrasound",
+                "icon": "wave",
+                "title": "超音波リフティング・ブースターケア",
+                "subtitle": "Ultrasound Lifting & Boosting",
+                "description": "ウルブラン超音波機器を使用した高機能スキンケアです。",
+                "details": "ブースター浸透、肌再生、鎮静、リフティング効果を一度に体験できます。"
+              },
+              {
+                "id": "acne",
+                "icon": "shield",
+                "title": "ニキビ集中ケア",
+                "subtitle": "Acne Care Program",
+                "description": "皮脂分泌調整と炎症鎮静、再発防止のために設計されたプログラムです。",
+                "details": "必要に応じて医療チームと連携し、炎症注射や除去も行えます。"
+              },
+              {
+                "id": "exosome",
+                "icon": "glow",
+                "title": "エクソソーム・美白ブースターケア",
+                "subtitle": "Exosome & Brightening Booster",
+                "description": "エクソソーム、高機能美白アンプルを活用したスキンブースティングケアです。",
+                "details": "肌の活力、輝き、弾力を同時に改善します。"
+              }
+            ]
           },
-          "plafill": {
-            "title": "プラフィル",
-            "description": "肌再生と弾力回復に重点を置いたプログラムです。コラーゲン生成を促進し、肌の弾力を取り戻し、生き生きとした健康的なお肌へ導きます。"
+          "equipmentSection": {
+            "badge": "Equipment",
+            "title": "使用機器ラインナップ",
+            "subtitle": "プレミアム機器でより効果的なスキンケア",
+            "items": [
+              {
+                "id": "aqualab",
+                "name": "アクアラボ",
+                "brand": "Histolab",
+                "icon": "water",
+                "description": "水分ディープクレンジング＋角質除去＋毛穴ケア",
+                "feature": "敏感肌にも刺激なくケア可能"
+              },
+              {
+                "id": "ulblanc",
+                "name": "ウルブラン超音波機器",
+                "brand": "Ulblanc",
+                "icon": "wave",
+                "description": "鎮静・再生・ブースター浸透・リフティングを網羅する高機能超音波システム",
+                "feature": "オールインワン超音波スキンケア"
+              },
+              {
+                "id": "ionto",
+                "name": "イオン導入機器",
+                "brand": "Iontophoresis",
+                "icon": "zap",
+                "description": "高濃縮成分（ビタミンC、美白剤など）の効果的な肌吸収をサポートします",
+                "feature": "成分浸透力を最大化"
+              },
+              {
+                "id": "cryocell",
+                "name": "クライオセル",
+                "brand": "Cryo Cooling",
+                "icon": "snowflake",
+                "description": "施術後の熱感・赤み緩和、肌鎮静および保湿力強化",
+                "feature": "冷却鎮静ケア"
+              },
+              {
+                "id": "led",
+                "name": "LEDセラピーシステム",
+                "brand": "LED Therapy",
+                "icon": "lightbulb",
+                "description": "レッド/ブルー/イエロー波長選択可能",
+                "feature": "ニキビ鎮静、弾力強化、再生促進など肌状態に合わせたオーダーメイド光ケア"
+              }
+            ]
           },
-          "benefitsTitle": "スキンケアのメリット",
-          "infoTitle": "施術情報",
-          "infoLabels": {
-            "duration": "施術時間",
-            "anesthesia": "麻酔",
-            "recovery": "回復期間",
-            "results": "効果"
+          "differentiatorSection": {
+            "badge": "Why LIV",
+            "title": "リブスキンケアの差別化ポイント",
+            "subtitle": "単なるスキンケアではない、医療レベルのプレミアムケア",
+            "items": [
+              {
+                "id": "expert",
+                "icon": "award",
+                "title": "10年以上経験の専門エステティシャン常駐",
+                "description": "熟練したテクニックと豊富な経験で最高の結果を提供します"
+              },
+              {
+                "id": "genuine",
+                "icon": "verified",
+                "title": "正規品＆高級機器のみ使用",
+                "description": "検証された正規品とプレミアム機器で安全かつ効果的なケア"
+              },
+              {
+                "id": "medical",
+                "icon": "stethoscope",
+                "title": "肌解剖学に基づく医療チーム連携設計",
+                "description": "必要に応じて専門医相談および医療施術と連携した統合ケア可能"
+              },
+              {
+                "id": "iv",
+                "icon": "heart",
+                "title": "点滴治療併用可能",
+                "description": "美白、保湿、抗酸化など肌コンディションに合った点滴治療を併用"
+              },
+              {
+                "id": "private",
+                "icon": "lock",
+                "title": "快適でプライベートな空間で施術",
+                "description": "リラックスできるプライベートな環境であなただけのケア"
+              }
+            ]
           },
-          "faqTitle": "よくある質問",
+          "treatmentInfo": {
+            "title": "施術情報",
+            "labels": {
+              "duration": "所要時間",
+              "anesthesia": "麻酔",
+              "recovery": "回復期間",
+              "results": "効果"
+            }
+          },
+          "treatmentValues": {
+            "duration": "60-90分",
+            "anesthesia": "なし",
+            "recovery": "なし（すぐに日常復帰）",
+            "results": "即時的な肌トーン改善、定期ケアで効果最大化"
+          },
+          "idealFor": {
+            "title": "こんな方におすすめです",
+            "items": [
+              "乾燥してカサカサした肌がお悩みの方",
+              "肌の弾力が低下した方",
+              "施術前後の肌コンディションケアが必要な方",
+              "特別な日に向けてスキンケアが必要な方",
+              "定期的なスキンケアをご希望の方",
+              "敏感肌で専門ケアが必要な方"
+            ]
+          },
+          "faqs": {
+            "title": "よくある質問",
+            "items": [
+              {
+                "q": "スキンケアとスキンブースター施術の違いは何ですか？",
+                "shortA": "スキンケアは外部ケア、スキンブースターは肌内注入施術です。",
+                "a": "スキンケアはエステティシャンが行う外部ケアプログラムで、クレンジング、保湿、鎮静などの基本ケアです。スキンブースターは医療チームが行う注射施術で、リジュラン、ジュベルックなどの成分を肌内に直接注入します。"
+              },
+              {
+                "q": "どのくらいの頻度で受けるのが良いですか？",
+                "shortA": "2-4週間間隔での定期ケアをおすすめします。",
+                "a": "肌の状態により異なりますが、2-4週間間隔で定期的にケアを受けると効果が最大化されます。カウンセリングを通じて個人に合った周期をご案内いたします。"
+              },
+              {
+                "q": "敏感肌でも大丈夫ですか？",
+                "shortA": "はい、肌タイプに合わせてプログラムを調整します。",
+                "a": "敏感肌の方も安心して施術を受けていただけます。低刺激製品と鎮静中心のプログラムでオーダーメイドケアいたします。事前カウンセリングで肌状態を確認後、最適なプログラムをご案内いたします。"
+              },
+              {
+                "q": "施術後すぐにメイクしても大丈夫ですか？",
+                "shortA": "はい、すぐにメイク可能です。",
+                "a": "スキンケア後は特にダウンタイムなくすぐにメイクしていただけます。むしろメイクのノリが良くなったと感じていただけるかもしれません。"
+              }
+            ]
+          },
           "cta": {
-            "title": "スキンケアのご相談予約",
-            "description": "専門エステティシャンの精緻な技術でお肌本来の健康を取り戻しましょう。最適なプログラムをご案内いたします。",
+            "title": "スキンケア相談予約",
+            "description": "10年以上経験の専門エステティシャンが肌タイプとお悩みに合った最適なプログラムをご案内いたします。",
             "button": "オンライン相談予約"
           }
         }
