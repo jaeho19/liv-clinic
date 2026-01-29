@@ -1766,6 +1766,15 @@
             "trapezius": "僧帽筋",
             "calves": "ふくらはぎ"
           },
+          "treatmentAreasDescriptions": {
+            "forehead": "額のシワを改善して明るく若々しい印象に",
+            "glabella": "眉間のシワを改善してリラックスした表情に",
+            "crowsFeet": "目尻のシワを改善して目元をスッキリと",
+            "masseter": "咬筋を縮小してシャープな輪郭に",
+            "mouthCorners": "口角の下がりを改善して明るい表情に",
+            "trapezius": "僧帽筋のボリュームを減らしてエレガントな肩のラインに",
+            "calves": "ふくらはぎのラインを整えてスリムな脚に"
+          },
           "targetAreasDescription": "表情ジワから輪郭整形まで、部位別カスタム施術で自然な改善効果をお届けします。",
           "timeline": {
             "title": "施術後のタイムライン",

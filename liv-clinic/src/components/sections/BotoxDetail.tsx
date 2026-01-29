@@ -29,6 +29,17 @@ interface TreatmentAreasLabels {
   calves: string;
 }
 
+// Extended treatment area data with descriptions
+interface TreatmentAreaDescriptions {
+  forehead: string;
+  glabella: string;
+  crowsFeet: string;
+  masseter: string;
+  mouthCorners: string;
+  trapezius: string;
+  calves: string;
+}
+
 interface TimelineItem {
   time: string;
   title: string;
@@ -36,121 +47,278 @@ interface TimelineItem {
   percentage: number;
 }
 
-// Treatment Areas Illustration Component - Interactive Version
-const TreatmentAreasIllustration = ({
-  labels,
-  selectedArea,
-  onAreaSelect
+// Treatment area position data for SVG overlay markers
+// Coordinates are percentages relative to image dimensions
+const BOTOX_AREA_POSITIONS: Record<number, { x: number; y: number; size?: number; pairs?: { x: number; y: number }[] }> = {
+  1: { x: 50, y: 12, size: 1.3 },           // 이마 - forehead center
+  2: { x: 50, y: 24, size: 1.0 },           // 미간 - glabella (between eyebrows)
+  3: { x: 50, y: 32, pairs: [               // 눈가 - crow's feet (both sides)
+    { x: 28, y: 32 },
+    { x: 72, y: 32 }
+  ]},
+  4: { x: 50, y: 68, size: 1.2, pairs: [    // 사각턱 - masseter (both sides)
+    { x: 25, y: 68 },
+    { x: 75, y: 68 }
+  ]},
+  5: { x: 50, y: 55, pairs: [               // 입꼬리 - mouth corners (both sides)
+    { x: 40, y: 55 },
+    { x: 60, y: 55 }
+  ]},
+  6: { x: 50, y: 88, size: 1.4, pairs: [    // 승모근 - trapezius (shoulder area, both sides)
+    { x: 20, y: 88 },
+    { x: 80, y: 88 }
+  ]},
+  7: { x: 50, y: 95, size: 1.0 },           // 종아리 - calves (shown as icon indicator)
+};
+
+// Category colors for treatment areas
+const BOTOX_AREA_CATEGORIES: Record<number, { type: 'wrinkle' | 'contour' | 'body'; color: string; label: string }> = {
+  1: { type: 'wrinkle', color: '#E8B4B8', label: '표정 주름' },   // 이마
+  2: { type: 'wrinkle', color: '#E8B4B8', label: '표정 주름' },   // 미간
+  3: { type: 'wrinkle', color: '#E8B4B8', label: '표정 주름' },   // 눈가
+  4: { type: 'contour', color: '#C4A484', label: '윤곽 정리' },   // 사각턱
+  5: { type: 'wrinkle', color: '#E8B4B8', label: '표정 주름' },   // 입꼬리
+  6: { type: 'contour', color: '#C4A484', label: '윤곽 정리' },   // 승모근
+  7: { type: 'body', color: '#8B7355', label: '바디' },           // 종아리
+};
+
+// Botox Image with Interactive SVG Overlay Markers
+const BotoxImageWithMarkers = ({
+  selectedAreaId,
 }: {
-  labels: TreatmentAreasLabels;
-  selectedArea: string | null;
-  onAreaSelect: (area: string | null) => void;
+  selectedAreaId: number | null;
 }) => {
-  const areas = [
-    { num: '01', key: 'forehead', label: labels.forehead, category: 'wrinkle' },
-    { num: '02', key: 'glabella', label: labels.glabella, category: 'wrinkle' },
-    { num: '03', key: 'crowsFeet', label: labels.crowsFeet, category: 'wrinkle' },
-    { num: '04', key: 'masseter', label: labels.masseter, category: 'contour' },
-    { num: '05', key: 'mouthCorners', label: labels.mouthCorners, category: 'wrinkle' },
-    { num: '06', key: 'trapezius', label: labels.trapezius, category: 'contour' },
-    { num: '07', key: 'calves', label: labels.calves, category: 'body' },
-  ];
+  // Render marker at specific position
+  const renderMarker = (x: number, y: number, areaId: number, index: number = 0) => {
+    const isSelected = selectedAreaId === areaId;
+    const category = BOTOX_AREA_CATEGORIES[areaId];
+    const position = BOTOX_AREA_POSITIONS[areaId];
+    const size = position?.size || 1;
+
+    return (
+      <motion.div
+        key={`${areaId}-${index}`}
+        className="absolute"
+        style={{
+          left: `${x}%`,
+          top: `${y}%`,
+          transform: 'translate(-50%, -50%)',
+        }}
+        initial={{ scale: 0, opacity: 0 }}
+        animate={{
+          scale: isSelected ? 1 : 0,
+          opacity: isSelected ? 1 : 0,
+        }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      >
+        {/* Outer pulse ring */}
+        <motion.div
+          className="absolute rounded-full"
+          style={{
+            width: `${60 * size}px`,
+            height: `${60 * size}px`,
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: category?.color || '#C4A484',
+          }}
+          animate={isSelected ? {
+            scale: [1, 1.5, 1],
+            opacity: [0.4, 0, 0.4],
+          } : {}}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Middle ring */}
+        <motion.div
+          className="absolute rounded-full border-2"
+          style={{
+            width: `${44 * size}px`,
+            height: `${44 * size}px`,
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            borderColor: category?.color || '#C4A484',
+            backgroundColor: `${category?.color || '#C4A484'}20`,
+          }}
+        />
+
+        {/* Center dot */}
+        <motion.div
+          className="absolute rounded-full shadow-lg"
+          style={{
+            width: `${16 * size}px`,
+            height: `${16 * size}px`,
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: category?.color || '#C4A484',
+          }}
+          animate={isSelected ? {
+            scale: [1, 1.2, 1],
+          } : {}}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        {/* Area number label */}
+        <motion.div
+          className="absolute text-white text-xs font-bold"
+          style={{
+            left: '50%',
+            top: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        >
+          {areaId}
+        </motion.div>
+      </motion.div>
+    );
+  };
 
   return (
-    <div className="relative w-full max-w-[520px] mx-auto">
-      {/* AI Generated Image */}
-      <motion.div
-        className="relative rounded-3xl overflow-hidden shadow-2xl shadow-[#C4A484]/20"
-        whileHover={{ scale: 1.01 }}
-        transition={{ duration: 0.3 }}
-      >
-        <Image
-          src="/images/Gemini_Generated_Image_khwxm0khwxm0khwx.png"
-          alt="보톡스 시술 부위 - Botox Treatment Areas"
-          width={520}
-          height={650}
-          className="w-full h-auto"
-          quality={95}
-          priority
-        />
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#C4A484]/5 to-transparent pointer-events-none" />
-      </motion.div>
+    <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#C4A484]/20">
+      <Image
+        src="/images/Gemini_Generated_Image_khwxm0khwxm0khwx.png"
+        alt="보톡스 시술 부위 - Botox Treatment Areas"
+        width={520}
+        height={650}
+        className="w-full h-auto"
+        quality={95}
+        priority
+      />
 
-      {/* Interactive Treatment Area Buttons */}
-      <div className="mt-8">
-        {/* Category Labels */}
-        <div className="flex items-center justify-center gap-6 mb-4 text-xs tracking-wider">
-          <span className="flex items-center gap-2 text-[#C4A484]">
-            <span className="w-2 h-2 rounded-full bg-[#E8B4B8]" />
-            표정 주름
-          </span>
-          <span className="flex items-center gap-2 text-[#8B7355]">
-            <span className="w-2 h-2 rounded-full bg-[#C4A484]" />
-            윤곽 정리
-          </span>
-          <span className="flex items-center gap-2 text-[#6d4e42]">
-            <span className="w-2 h-2 rounded-full bg-[#8B7355]" />
-            바디
-          </span>
-        </div>
+      {/* Overlay gradient */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#C4A484]/5 to-transparent pointer-events-none" />
 
-        {/* Button Grid */}
-        <div className="grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-3">
-          {areas.map((item) => (
-            <motion.button
-              key={item.num}
-              onClick={() => onAreaSelect(selectedArea === item.key ? null : item.key)}
-              onMouseEnter={() => onAreaSelect(item.key)}
-              onMouseLeave={() => onAreaSelect(null)}
-              className={`
-                group relative flex items-center gap-2 px-3 py-3 sm:px-4 sm:py-3.5
-                rounded-xl border transition-all duration-300 min-h-[48px]
-                ${selectedArea === item.key
-                  ? 'bg-gradient-to-br from-[#C4A484] to-[#B39374] border-[#C4A484] text-white shadow-lg shadow-[#C4A484]/30'
-                  : 'bg-white/90 backdrop-blur-sm border-[#E8D5C4]/60 hover:border-[#C4A484]/50 hover:bg-[#FDFBF9]'
-                }
-              `}
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.98 }}
-              aria-label={`${item.label} 시술 부위 선택`}
-              role="button"
-            >
-              <span className={`
-                w-6 h-6 sm:w-7 sm:h-7 rounded-full flex items-center justify-center text-[10px] sm:text-xs font-medium
-                transition-colors duration-300
-                ${selectedArea === item.key
-                  ? 'bg-white/20 text-white'
-                  : item.category === 'wrinkle'
-                    ? 'bg-gradient-to-br from-[#E8B4B8] to-[#D4A5A5] text-white'
-                    : item.category === 'contour'
-                      ? 'bg-gradient-to-br from-[#C4A484] to-[#B39374] text-white'
-                      : 'bg-gradient-to-br from-[#8B7355] to-[#6d4e42] text-white'
-                }
-              `}>
-                {item.num}
-              </span>
-              <span className={`
-                text-xs sm:text-sm font-medium transition-colors duration-300
-                ${selectedArea === item.key ? 'text-white' : 'text-[#8B7355]'}
-              `}>
-                {item.label}
-              </span>
+      {/* Area markers overlay */}
+      <div className="absolute inset-0 pointer-events-none">
+        {Object.entries(BOTOX_AREA_POSITIONS).map(([id, pos]) => {
+          const areaId = parseInt(id);
 
-              {/* Active indicator */}
-              {selectedArea === item.key && (
-                <motion.span
-                  className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-[#E8B4B8] border-2 border-white"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: 'spring', stiffness: 500, damping: 25 }}
-                />
-              )}
-            </motion.button>
-          ))}
-        </div>
+          // If area has paired positions (like crow's feet, masseter)
+          if (pos.pairs) {
+            return pos.pairs.map((pair, index) =>
+              renderMarker(pair.x, pair.y, areaId, index)
+            );
+          }
+
+          // Single position areas
+          return renderMarker(pos.x, pos.y, areaId, 0);
+        })}
       </div>
+
+      {/* Selected area highlight glow */}
+      {selectedAreaId && BOTOX_AREA_POSITIONS[selectedAreaId] && (
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: `radial-gradient(circle at ${BOTOX_AREA_POSITIONS[selectedAreaId]?.x || 50}% ${BOTOX_AREA_POSITIONS[selectedAreaId]?.y || 50}%, ${BOTOX_AREA_CATEGORIES[selectedAreaId]?.color || '#C4A484'}15 0%, transparent 40%)`,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        />
+      )}
     </div>
+  );
+};
+
+// Treatment Area List Item Component for Botox
+const BotoxTreatmentAreaListItem = ({
+  area,
+  index,
+  isSelected,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  area: { id: number; name: string; description: string };
+  index: number;
+  isSelected: boolean;
+  onClick: () => void;
+  onMouseEnter: () => void;
+  onMouseLeave: () => void;
+}) => {
+  const category = BOTOX_AREA_CATEGORIES[area.id];
+
+  return (
+    <motion.button
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`
+        group w-full flex items-start gap-4 p-5 rounded-xl text-left
+        border transition-all duration-300
+        ${isSelected
+          ? 'bg-gradient-to-r from-[#C4A484]/10 to-[#F9F6F3] border-[#C4A484]/40 shadow-lg shadow-[#C4A484]/10'
+          : 'bg-white/80 border-transparent hover:bg-[#FDFBF9] hover:border-[#C4A484]/20'
+        }
+      `}
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      whileHover={{ x: 4 }}
+      whileTap={{ scale: 0.99 }}
+    >
+      {/* Number badge with category color */}
+      <div
+        className={`
+          w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium
+          transition-all duration-300 flex-shrink-0
+          ${isSelected
+            ? 'text-white shadow-md'
+            : 'text-white'
+          }
+        `}
+        style={{
+          backgroundColor: isSelected ? category?.color : `${category?.color}CC`,
+          boxShadow: isSelected ? `0 4px 12px ${category?.color}40` : 'none'
+        }}
+      >
+        {String(area.id).padStart(2, '0')}
+      </div>
+
+      {/* Content */}
+      <div className="flex-1 min-w-0">
+        <h3 className={`
+          font-medium text-lg transition-colors duration-300
+          ${isSelected ? 'text-[#8B7355]' : 'text-[#3D3D3D] group-hover:text-[#8B7355]'}
+        `}>
+          {area.name}
+        </h3>
+        <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+          {area.description}
+        </p>
+      </div>
+
+      {/* Arrow indicator */}
+      <div className={`
+        flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center
+        transition-all duration-300
+        ${isSelected
+          ? 'bg-[#C4A484] text-white'
+          : 'bg-gray-100 text-gray-400 group-hover:bg-[#C4A484]/20 group-hover:text-[#C4A484]'
+        }
+      `}>
+        <svg
+          className={`w-4 h-4 transition-transform duration-300 ${isSelected ? 'rotate-90' : ''}`}
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </div>
+    </motion.button>
   );
 };
 
@@ -427,10 +595,22 @@ export default function BotoxDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
-  const [selectedArea, setSelectedArea] = useState<string | null>(null);
+  const [selectedArea, setSelectedArea] = useState<number | null>(null);
 
   // Translated data from messages files
   const treatmentAreasLabels = t.raw('antiaging.botox.detail.treatmentAreasLabels') as TreatmentAreasLabels;
+  const treatmentAreasDescriptions = t.raw('antiaging.botox.detail.treatmentAreasDescriptions') as TreatmentAreaDescriptions;
+
+  // Build treatment areas list with ids, names, and descriptions
+  const treatmentAreasList = [
+    { id: 1, key: 'forehead', name: treatmentAreasLabels.forehead, description: treatmentAreasDescriptions?.forehead || '이마 주름 완화로 밝고 젊은 인상' },
+    { id: 2, key: 'glabella', name: treatmentAreasLabels.glabella, description: treatmentAreasDescriptions?.glabella || '미간 주름 개선으로 편안한 표정' },
+    { id: 3, key: 'crowsFeet', name: treatmentAreasLabels.crowsFeet, description: treatmentAreasDescriptions?.crowsFeet || '눈가 잔주름 완화로 눈매 개선' },
+    { id: 4, key: 'masseter', name: treatmentAreasLabels.masseter, description: treatmentAreasDescriptions?.masseter || '사각턱 근육 축소로 갸름한 얼굴형' },
+    { id: 5, key: 'mouthCorners', name: treatmentAreasLabels.mouthCorners, description: treatmentAreasDescriptions?.mouthCorners || '입꼬리 처짐 개선으로 밝은 표정' },
+    { id: 6, key: 'trapezius', name: treatmentAreasLabels.trapezius, description: treatmentAreasDescriptions?.trapezius || '승모근 볼륨 감소로 우아한 어깨 라인' },
+    { id: 7, key: 'calves', name: treatmentAreasLabels.calves, description: treatmentAreasDescriptions?.calves || '종아리 라인 정리로 슬림한 다리' },
+  ];
   const timelineItems = t.raw('antiaging.botox.detail.timeline.items') as TimelineItem[];
   const treatmentInfoLabels = t.raw('antiaging.botox.detail.treatmentInfoLabels') as {
     duration: string;
@@ -568,18 +748,23 @@ export default function BotoxDetail() {
               transition={{ duration: 1, delay: 0.3 }}
               className="relative"
             >
-              {/* Hero Image */}
-              <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#C4A484]/20">
-                <Image
-                  src="/images/Gemini_Generated_Image_7od8k07od8k07od8.png"
-                  alt={`${detail.name} - ${detail.description}`}
-                  fill
-                  className="object-cover"
-                  quality={95}
-                  priority
-                />
-                {/* Subtle gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#C4A484]/10 to-transparent" />
+              {/* Hero Image - object-contain으로 이미지 전체 표시 */}
+              <div className="relative flex items-center justify-center">
+                {/* 배경 장식 */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#C4A484]/5 to-[#D4A5A5]/5 rounded-[2rem] blur-xl scale-110" />
+
+                {/* 이미지 컨테이너 - 이미지가 잘리지 않도록 contain 사용 */}
+                <div className="relative bg-white/80 backdrop-blur-sm rounded-[2rem] p-6 shadow-2xl shadow-[#C4A484]/20">
+                  <Image
+                    src="/images/Gemini_Generated_Image_7od8k07od8k07od8.png"
+                    alt={`${detail.name} - ${detail.description}`}
+                    width={600}
+                    height={450}
+                    className="w-full h-auto object-contain max-h-[500px] rounded-xl"
+                    quality={95}
+                    priority
+                  />
+                </div>
               </div>
             </motion.div>
           </div>
@@ -638,13 +823,13 @@ export default function BotoxDetail() {
         </div>
       </section>
 
-      {/* Treatment Areas - Centered Interactive Layout */}
-      <section className="py-32 bg-gradient-to-br from-[#F9F6F3] to-[#F5F0EB] relative overflow-hidden">
+      {/* Treatment Areas - Side by Side Interactive Layout */}
+      <section className="py-32 bg-gradient-to-b from-white to-[#F9F6F3] relative overflow-hidden">
         <FloatingOrb className="w-80 h-80 bg-[#C4A484]/5 -right-20 top-20" delay={1} />
-        <FloatingOrb className="w-64 h-64 bg-[#D4A5A5]/5 -left-10 bottom-20" delay={2} />
+        <FloatingOrb className="w-64 h-64 bg-[#D4A5A5]/5 -left-16 bottom-40" delay={3} />
 
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Section Header - Centered */}
+          {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -664,20 +849,84 @@ export default function BotoxDetail() {
             </p>
           </motion.div>
 
-          {/* Interactive Illustration - Centered */}
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="relative max-w-xl mx-auto"
-          >
-            <TreatmentAreasIllustration
-              labels={treatmentAreasLabels}
-              selectedArea={selectedArea}
-              onAreaSelect={setSelectedArea}
-            />
-          </motion.div>
+          {/* Side by Side Layout: List (Left) + Image (Right) */}
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
+
+            {/* Left: Treatment Area List */}
+            <div className="space-y-3 order-2 lg:order-1">
+              {/* Category Legend */}
+              <div className="flex flex-wrap items-center gap-4 mb-6 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-[#E8D5C4]/30">
+                <span className="text-xs text-gray-500 mr-2">카테고리:</span>
+                <span className="flex items-center gap-2 text-xs text-[#E8B4B8]">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#E8B4B8]" />
+                  표정 주름
+                </span>
+                <span className="flex items-center gap-2 text-xs text-[#C4A484]">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4A484]" />
+                  윤곽 정리
+                </span>
+                <span className="flex items-center gap-2 text-xs text-[#8B7355]">
+                  <span className="w-2.5 h-2.5 rounded-full bg-[#8B7355]" />
+                  바디
+                </span>
+              </div>
+
+              {/* Treatment Area Items */}
+              {treatmentAreasList.map((area, index) => (
+                <BotoxTreatmentAreaListItem
+                  key={area.id}
+                  area={area}
+                  index={index}
+                  isSelected={selectedArea === area.id}
+                  onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                  onMouseEnter={() => setSelectedArea(area.id)}
+                  onMouseLeave={() => setSelectedArea(null)}
+                />
+              ))}
+
+              {/* Hint text */}
+              <p className="text-xs text-gray-400 text-center pt-4">
+                * 각 부위를 클릭하거나 마우스를 올리면 이미지에서 위치를 확인할 수 있습니다
+              </p>
+            </div>
+
+            {/* Right: Image with Interactive Markers */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="lg:sticky lg:top-32 order-1 lg:order-2"
+            >
+              <BotoxImageWithMarkers selectedAreaId={selectedArea} />
+
+              {/* Selected area info card (mobile-friendly) */}
+              {selectedArea && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#C4A484]/20"
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                      style={{ backgroundColor: BOTOX_AREA_CATEGORIES[selectedArea]?.color || '#C4A484' }}
+                    >
+                      {String(selectedArea).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <p className="font-medium text-[#3D3D3D]">
+                        {treatmentAreasList.find(a => a.id === selectedArea)?.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {treatmentAreasList.find(a => a.id === selectedArea)?.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </motion.div>
+          </div>
         </div>
       </section>
 

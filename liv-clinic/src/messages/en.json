@@ -1766,6 +1766,15 @@
             "trapezius": "Trapezius",
             "calves": "Calves"
           },
+          "treatmentAreasDescriptions": {
+            "forehead": "Smooths forehead lines for a brighter, younger appearance",
+            "glabella": "Reduces frown lines for a more relaxed expression",
+            "crowsFeet": "Softens crow's feet for improved eye contour",
+            "masseter": "Slims jaw muscles for a more defined facial shape",
+            "mouthCorners": "Lifts mouth corners for a brighter expression",
+            "trapezius": "Reduces trapezius volume for elegant shoulder lines",
+            "calves": "Refines calf lines for slimmer legs"
+          },
           "targetAreasDescription": "From expression wrinkles to facial contouring, we provide customized treatments for natural improvement.",
           "timeline": {
             "title": "Post-Treatment Timeline",

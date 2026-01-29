@@ -1768,6 +1768,15 @@
             "trapezius": "승모근",
             "calves": "종아리"
           },
+          "treatmentAreasDescriptions": {
+            "forehead": "이마 주름 완화로 밝고 젊은 인상",
+            "glabella": "미간 주름 개선으로 편안한 표정",
+            "crowsFeet": "눈가 잔주름 완화로 눈매 개선",
+            "masseter": "사각턱 근육 축소로 갸름한 얼굴형",
+            "mouthCorners": "입꼬리 처짐 개선으로 밝은 표정",
+            "trapezius": "승모근 볼륨 감소로 우아한 어깨 라인",
+            "calves": "종아리 라인 정리로 슬림한 다리"
+          },
           "targetAreasDescription": "얼굴의 표정 주름부터 윤곽 정리까지, 부위별 맞춤 시술로 자연스러운 개선 효과를 드립니다.",
           "timeline": {
             "title": "시술 후 타임라인",

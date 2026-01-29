@@ -1766,6 +1766,15 @@
             "trapezius": "斜方肌",
             "calves": "小腿"
           },
+          "treatmentAreasDescriptions": {
+            "forehead": "改善额头皱纹，呈现明亮年轻的形象",
+            "glabella": "改善眉间皱纹，呈现轻松的表情",
+            "crowsFeet": "改善眼角细纹，改善眼部轮廓",
+            "masseter": "缩小咬肌，打造精致面部轮廓",
+            "mouthCorners": "改善嘴角下垂，呈现明亮的表情",
+            "trapezius": "减少斜方肌体积，打造优雅的肩部线条",
+            "calves": "整理小腿线条，打造纤细双腿"
+          },
           "targetAreasDescription": "从表情纹到面部轮廓，通过分部位定制治疗带来自然改善效果。",
           "timeline": {
             "title": "术后时间线",
