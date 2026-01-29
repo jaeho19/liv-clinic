@@ -49,9 +49,10 @@ export default function EventDetailPage() {
   const getRelatedTreatment = (href: string): { name: string } | null => {
     const parts = href.split('/').filter(Boolean);
     if (parts.length < 2) return null;
-    const category = parts[0] as keyof typeof TREATMENTS;
+    const category = parts[0];
     const id = parts[1];
-    const treatment = TREATMENTS[category]?.[id as keyof (typeof TREATMENTS)[typeof category]];
+    const treatmentsMap = TREATMENTS as Record<string, Record<string, { name: string }>>;
+    const treatment = treatmentsMap[category]?.[id];
     return treatment ? { name: treatment.name } : null;
   };
 
