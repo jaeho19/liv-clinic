@@ -57,21 +57,139 @@ interface FillerAreaLabel {
   eyebrow: string;
 }
 
-// Treatment area position data for image overlay markers (adjusted for the face image)
-const FILLER_AREA_POSITIONS: Record<number, { x: number; y: number; size?: number }> = {
-  1: { x: 50, y: 18, size: 1.3 },    // 이마 - forehead center
-  2: { x: 25, y: 28 },               // 관자놀이 - left temple
-  3: { x: 50, y: 38 },               // 코 - nose bridge
-  4: { x: 35, y: 42 },               // 앞광대 - left cheekbone
-  5: { x: 38, y: 55 },               // 팔자 - left nasolabial fold
-  6: { x: 28, y: 50 },               // 옆볼 - left cheek
-  7: { x: 50, y: 75 },               // 턱끝 - chin
-  8: { x: 38, y: 46 },               // 애교살 - under eye
-  9: { x: 50, y: 62 },               // 입술 - lips
-  10: { x: 35, y: 30 },              // 눈썹 - eyebrow
+// SVG overlay coordinate data for precise treatment area highlighting
+// Coordinates are numeric values (0-100) based on the viewBox="0 0 100 100"
+// Image aspect ratio: 520x650 (width:height ≈ 0.8:1)
+interface AreaCoord {
+  type: 'ellipse' | 'circle';
+  cx: number;
+  cy: number;
+  rx?: number;
+  ry?: number;
+  r?: number;
+  rotate?: number;
+}
+
+interface FillerAreaData {
+  id: number;
+  category: 'wrinkle' | 'volume' | 'contour' | 'lift';
+  color: string;
+  coords: AreaCoord | AreaCoord[];
+}
+
+// Precise coordinates based on the actual image markers (viewBox 0 0 100 100)
+// Adjusted for the face image proportions
+const FILLER_AREA_DATA: FillerAreaData[] = [
+  {
+    id: 1, // 이마 (Forehead) - marker at top center
+    category: 'wrinkle',
+    color: '#D4A5A5',
+    coords: {
+      type: 'ellipse',
+      cx: 50,
+      cy: 14,
+      rx: 20,
+      ry: 5,
+    },
+  },
+  {
+    id: 2, // 관자놀이 (Temple) - markers on both sides near forehead
+    category: 'volume',
+    color: '#A89080',
+    coords: [
+      { type: 'ellipse', cx: 18, cy: 24, rx: 8, ry: 8 },
+      { type: 'ellipse', cx: 82, cy: 24, rx: 8, ry: 8 },
+    ],
+  },
+  {
+    id: 3, // 코 (Nose) - center of face, nose bridge area
+    category: 'contour',
+    color: '#6D5A4D',
+    coords: {
+      type: 'ellipse',
+      cx: 50,
+      cy: 42,
+      rx: 6,
+      ry: 10,
+    },
+  },
+  {
+    id: 4, // 앞광대 (Cheekbone) - under eyes, cheekbone area
+    category: 'volume',
+    color: '#A89080',
+    coords: [
+      { type: 'ellipse', cx: 33, cy: 43, rx: 10, ry: 6 },
+      { type: 'ellipse', cx: 67, cy: 43, rx: 10, ry: 6 },
+    ],
+  },
+  {
+    id: 5, // 팔자 (Nasolabial fold) - from nose to mouth corners
+    category: 'wrinkle',
+    color: '#D4A5A5',
+    coords: [
+      { type: 'ellipse', cx: 40, cy: 55, rx: 4, ry: 8, rotate: -20 },
+      { type: 'ellipse', cx: 60, cy: 55, rx: 4, ry: 8, rotate: 20 },
+    ],
+  },
+  {
+    id: 6, // 옆볼 (Side cheek) - outer cheek area
+    category: 'volume',
+    color: '#A89080',
+    coords: [
+      { type: 'ellipse', cx: 22, cy: 52, rx: 10, ry: 10 },
+      { type: 'ellipse', cx: 78, cy: 52, rx: 10, ry: 10 },
+    ],
+  },
+  {
+    id: 7, // 턱끝 (Chin) - bottom center
+    category: 'contour',
+    color: '#6D5A4D',
+    coords: {
+      type: 'ellipse',
+      cx: 50,
+      cy: 72,
+      rx: 10,
+      ry: 5,
+    },
+  },
+  {
+    id: 8, // 애교살 (Under-eye/Aegyo-sal) - directly under eyes
+    category: 'volume',
+    color: '#A89080',
+    coords: [
+      { type: 'ellipse', cx: 36, cy: 36, rx: 8, ry: 3 },
+      { type: 'ellipse', cx: 64, cy: 36, rx: 8, ry: 3 },
+    ],
+  },
+  {
+    id: 9, // 입술 (Lips) - center lip area
+    category: 'volume',
+    color: '#A89080',
+    coords: {
+      type: 'ellipse',
+      cx: 50,
+      cy: 63,
+      rx: 12,
+      ry: 4,
+    },
+  },
+  {
+    id: 10, // 눈썹 (Eyebrow) - eyebrow arch area
+    category: 'lift',
+    color: '#C9A86C',
+    coords: [
+      { type: 'ellipse', cx: 32, cy: 26, rx: 10, ry: 3, rotate: -5 },
+      { type: 'ellipse', cx: 68, cy: 26, rx: 10, ry: 3, rotate: 5 },
+    ],
+  },
+];
+
+// Helper to get area data by ID
+const getAreaData = (id: number): FillerAreaData | undefined => {
+  return FILLER_AREA_DATA.find(area => area.id === id);
 };
 
-// Category colors for treatment areas
+// Category colors for treatment areas (for backward compatibility)
 const AREA_CATEGORIES: Record<number, { type: 'wrinkle' | 'volume' | 'contour' | 'lift'; color: string }> = {
   1: { type: 'wrinkle', color: '#D4A5A5' },   // 이마
   2: { type: 'volume', color: '#A89080' },    // 관자놀이
@@ -85,14 +203,94 @@ const AREA_CATEGORIES: Record<number, { type: 'wrinkle' | 'volume' | 'contour' |
   10: { type: 'lift', color: '#C9A86C' },     // 눈썹
 };
 
-// Interactive Image with Overlay Markers
+// SVG Ellipse Component for treatment area overlay
+const SvgAreaOverlay = ({
+  coord,
+  color,
+  isAnimating,
+}: {
+  coord: AreaCoord;
+  color: string;
+  isAnimating: boolean;
+}) => {
+  const rx = coord.rx || coord.r || 5;
+  const ry = coord.ry || coord.r || 5;
+  const transformAttr = coord.rotate
+    ? `rotate(${coord.rotate}, ${coord.cx}, ${coord.cy})`
+    : undefined;
+
+  return (
+    <g transform={transformAttr}>
+      {/* Outer pulse effect */}
+      <motion.ellipse
+        cx={coord.cx}
+        cy={coord.cy}
+        rx={rx * 1.3}
+        ry={ry * 1.3}
+        fill={color}
+        fillOpacity={0.1}
+        stroke={color}
+        strokeWidth="0.5"
+        strokeOpacity={0.3}
+        initial={{ scale: 1, opacity: 0 }}
+        animate={isAnimating ? {
+          scale: [1, 1.4, 1],
+          opacity: [0.3, 0, 0.3],
+        } : { opacity: 0 }}
+        transition={{
+          duration: 2,
+          repeat: Infinity,
+          ease: 'easeInOut',
+        }}
+      />
+      {/* Main highlight area */}
+      <motion.ellipse
+        cx={coord.cx}
+        cy={coord.cy}
+        rx={rx}
+        ry={ry}
+        fill={color}
+        fillOpacity={0.3}
+        stroke={color}
+        strokeWidth="0.8"
+        strokeOpacity={0.9}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={isAnimating ? {
+          opacity: 1,
+          scale: 1,
+        } : { opacity: 0, scale: 0.8 }}
+        transition={{
+          duration: 0.4,
+          ease: 'easeOut',
+        }}
+      />
+      {/* Inner glow center */}
+      <motion.ellipse
+        cx={coord.cx}
+        cy={coord.cy}
+        rx={rx * 0.4}
+        ry={ry * 0.4}
+        fill={color}
+        fillOpacity={0.5}
+        initial={{ opacity: 0 }}
+        animate={isAnimating ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.3, delay: 0.1 }}
+      />
+    </g>
+  );
+};
+
+// Interactive Image with SVG Overlay Markers
 const FillerImageWithMarkers = ({
   selectedAreaId,
 }: {
   selectedAreaId: number | null;
 }) => {
+  const areaData = selectedAreaId ? getAreaData(selectedAreaId) : null;
+
   return (
-    <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#A89080]/20">
+    <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#A89080]/20 bg-gradient-to-b from-gray-50 to-gray-100">
+      {/* Base Image */}
       <Image
         src="/images/Gemini_Generated_Image_c8gix4c8gix4c8gi.png"
         alt="필러 시술 부위 - Filler Treatment Areas"
@@ -103,129 +301,87 @@ const FillerImageWithMarkers = ({
         priority
       />
 
-      {/* Overlay gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#A89080]/5 to-transparent pointer-events-none" />
+      {/* SVG Overlay for precise area highlighting */}
+      {/* viewBox matches a 100x100 coordinate system that maps to the image */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        style={{ mixBlendMode: 'normal' }}
+      >
+        <defs>
+          {/* Glow filter for selected areas */}
+          <filter id="areaGlow" x="-100%" y="-100%" width="300%" height="300%">
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
 
-      {/* Area markers overlay */}
-      <div className="absolute inset-0 pointer-events-none">
-        {Object.entries(FILLER_AREA_POSITIONS).map(([id, pos]) => {
-          const areaId = parseInt(id);
-          const isSelected = selectedAreaId === areaId;
-          const category = AREA_CATEGORIES[areaId];
-          const baseSize = pos.size || 1;
-
-          return (
-            <motion.div
-              key={id}
-              className="absolute z-10"
-              style={{
-                left: `${pos.x}%`,
-                top: `${pos.y}%`,
-                transform: 'translate(-50%, -50%)',
-              }}
-              initial={{ scale: 0, opacity: 0 }}
-              animate={{
-                scale: isSelected ? 1 : 0,
-                opacity: isSelected ? 1 : 0,
-              }}
-              transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-            >
-              {/* Outer pulse ring - large and visible */}
-              <motion.div
-                className="absolute rounded-full"
-                style={{
-                  width: `${80 * baseSize}px`,
-                  height: `${80 * baseSize}px`,
-                  left: '50%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  backgroundColor: category?.color || '#A89080',
-                }}
-                animate={isSelected ? {
-                  scale: [1, 1.8, 1],
-                  opacity: [0.5, 0, 0.5],
-                } : {}}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: 'easeOut',
-                }}
+        {/* Render area overlays when selected */}
+        {areaData && (
+          <g filter="url(#areaGlow)">
+            {Array.isArray(areaData.coords) ? (
+              areaData.coords.map((coord, idx) => (
+                <SvgAreaOverlay
+                  key={idx}
+                  coord={coord}
+                  color={areaData.color}
+                  isAnimating={true}
+                />
+              ))
+            ) : (
+              <SvgAreaOverlay
+                coord={areaData.coords}
+                color={areaData.color}
+                isAnimating={true}
               />
+            )}
+          </g>
+        )}
+      </svg>
 
-              {/* Second pulse ring */}
-              <motion.div
-                className="absolute rounded-full"
-                style={{
-                  width: `${60 * baseSize}px`,
-                  height: `${60 * baseSize}px`,
-                  left: '50%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  border: `3px solid ${category?.color || '#A89080'}`,
-                  backgroundColor: `${category?.color || '#A89080'}30`,
-                }}
-                animate={isSelected ? {
-                  scale: [1, 1.3, 1],
-                  opacity: [0.8, 0.3, 0.8],
-                } : {}}
-                transition={{
-                  duration: 1.5,
-                  repeat: Infinity,
-                  ease: 'easeInOut',
-                  delay: 0.2,
-                }}
-              />
-
-              {/* Inner solid circle with number */}
-              <motion.div
-                className="absolute rounded-full shadow-xl flex items-center justify-center"
-                style={{
-                  width: `${36 * baseSize}px`,
-                  height: `${36 * baseSize}px`,
-                  left: '50%',
-                  top: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  backgroundColor: category?.color || '#A89080',
-                  border: '3px solid white',
-                  boxShadow: `0 4px 20px ${category?.color || '#A89080'}80`,
-                }}
-              >
-                <span className="text-white font-bold text-sm">
-                  {String(areaId).padStart(2, '0')}
-                </span>
-              </motion.div>
-            </motion.div>
-          );
-        })}
-      </div>
-
-      {/* Selected area highlight glow - more visible */}
-      {selectedAreaId && (
+      {/* Area number indicator */}
+      {selectedAreaId && areaData && (
         <motion.div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background: `radial-gradient(circle at ${FILLER_AREA_POSITIONS[selectedAreaId]?.x || 50}% ${FILLER_AREA_POSITIONS[selectedAreaId]?.y || 50}%, ${AREA_CATEGORIES[selectedAreaId]?.color || '#A89080'}25 0%, transparent 50%)`,
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+          className="absolute top-4 right-4 z-20"
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.3 }}
-        />
+        >
+          <div
+            className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-lg"
+            style={{
+              backgroundColor: areaData.color,
+              boxShadow: `0 4px 20px ${areaData.color}60`,
+            }}
+          >
+            {String(selectedAreaId).padStart(2, '0')}
+          </div>
+        </motion.div>
       )}
+
+      {/* Subtle gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#A89080]/5 to-transparent pointer-events-none" />
     </div>
   );
 };
 
-// Treatment Area List Item Component
+// Treatment Area List Item Component - Compact version for 3-column layout
 const TreatmentAreaListItem = ({
   area,
   index,
   isSelected,
   onClick,
+  side = 'left',
 }: {
   area: { id: number; name: string; description: string };
   index: number;
   isSelected: boolean;
   onClick: () => void;
+  side?: 'left' | 'right';
 }) => {
   const category = AREA_CATEGORIES[area.id];
 
@@ -233,69 +389,58 @@ const TreatmentAreaListItem = ({
     <motion.button
       onClick={onClick}
       className={`
-        group w-full flex items-start gap-4 p-5 rounded-xl text-left
+        group w-full flex items-center gap-3 p-4 rounded-xl text-left
         border transition-all duration-300
         ${isSelected
-          ? 'bg-gradient-to-r from-[#A89080]/10 to-[#FAF8F6] border-[#A89080]/40 shadow-lg shadow-[#A89080]/10'
+          ? 'bg-gradient-to-r from-[#A89080]/15 to-[#FAF8F6] border-[#A89080]/50 shadow-lg shadow-[#A89080]/15'
           : 'bg-white/80 border-transparent hover:bg-[#FAF8F6] hover:border-[#A89080]/20'
         }
+        ${side === 'right' ? 'flex-row-reverse text-right' : ''}
       `}
-      initial={{ opacity: 0, x: -20 }}
+      initial={{ opacity: 0, x: side === 'left' ? -20 : 20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ delay: index * 0.05 }}
-      whileHover={{ x: 4 }}
-      whileTap={{ scale: 0.99 }}
+      whileHover={{ x: side === 'left' ? 4 : -4, scale: 1.02 }}
+      whileTap={{ scale: 0.98 }}
     >
       {/* Number badge with category color */}
       <div
         className={`
-          w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium
+          w-9 h-9 rounded-full flex items-center justify-center text-xs font-semibold
           transition-all duration-300 flex-shrink-0
-          ${isSelected
-            ? 'text-white shadow-md'
-            : 'text-white'
-          }
+          text-white
         `}
         style={{
           backgroundColor: isSelected ? category?.color : `${category?.color}CC`,
-          boxShadow: isSelected ? `0 4px 12px ${category?.color}40` : 'none'
+          boxShadow: isSelected ? `0 4px 12px ${category?.color}50` : 'none',
+          transform: isSelected ? 'scale(1.1)' : 'scale(1)',
         }}
       >
         {String(area.id).padStart(2, '0')}
       </div>
 
-      {/* Content */}
+      {/* Content - compact */}
       <div className="flex-1 min-w-0">
         <h3 className={`
-          font-medium text-lg transition-colors duration-300
+          font-medium text-base transition-colors duration-300 leading-tight
           ${isSelected ? 'text-[#6D5A4D]' : 'text-[#3A3A3A] group-hover:text-[#6D5A4D]'}
         `}>
           {area.name}
         </h3>
-        <p className="text-sm text-gray-500 mt-1 leading-relaxed">
+        <p className={`text-xs text-gray-400 mt-0.5 line-clamp-1 ${side === 'right' ? 'text-right' : ''}`}>
           {area.description}
         </p>
       </div>
 
-      {/* Arrow indicator */}
-      <div className={`
-        flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center
-        transition-all duration-300
-        ${isSelected
-          ? 'bg-[#A89080] text-white'
-          : 'bg-gray-100 text-gray-400 group-hover:bg-[#A89080]/20 group-hover:text-[#A89080]'
-        }
-      `}>
-        <svg
-          className={`w-4 h-4 transition-transform duration-300 ${isSelected ? 'rotate-90' : ''}`}
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </div>
+      {/* Selection indicator line */}
+      <div
+        className={`
+          w-0.5 h-8 rounded-full transition-all duration-300 flex-shrink-0
+          ${isSelected ? 'bg-[#A89080]' : 'bg-transparent group-hover:bg-[#A89080]/30'}
+        `}
+        style={{ order: side === 'right' ? -1 : 1 }}
+      />
     </motion.button>
   );
 };
@@ -759,18 +904,18 @@ export default function FillerDetail() {
         </div>
       </section>
 
-      {/* Treatment Areas - Side by Side Interactive Layout */}
+      {/* Treatment Areas - 3-Column Interactive Layout (5 + Image + 5) */}
       <section className="py-32 bg-gradient-to-b from-white to-[#FAF8F6] relative overflow-hidden">
         <FloatingOrb className="w-80 h-80 bg-[#A89080]/5 -right-20 top-20" delay={1} />
         <FloatingOrb className="w-64 h-64 bg-[#C9A99A]/5 -left-16 bottom-40" delay={3} />
 
-        <div className="container mx-auto px-6 lg:px-12">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
           {/* Section Header */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
+            className="text-center mb-12 lg:mb-16"
           >
             <div className="flex items-center justify-center gap-4 mb-4">
               <div className="w-8 h-px bg-[#A89080]" />
@@ -783,67 +928,123 @@ export default function FillerDetail() {
             <p className="text-gray-500 font-light max-w-2xl mx-auto text-lg leading-relaxed">
               {detail.targetAreas.subtitle}
             </p>
+
+            {/* Category Legend - centered */}
+            <div className="flex flex-wrap items-center justify-center gap-4 mt-8 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-[#D4C4B8]/30 max-w-xl mx-auto">
+              <span className="flex items-center gap-2 text-xs text-[#D4A5A5]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#D4A5A5]" />
+                주름 개선
+              </span>
+              <span className="flex items-center gap-2 text-xs text-[#A89080]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#A89080]" />
+                볼륨
+              </span>
+              <span className="flex items-center gap-2 text-xs text-[#6D5A4D]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#6D5A4D]" />
+                윤곽
+              </span>
+              <span className="flex items-center gap-2 text-xs text-[#C9A86C]">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#C9A86C]" />
+                리프팅
+              </span>
+            </div>
           </motion.div>
 
-          {/* Side by Side Layout: List (Left) + Image (Right) */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
-
-            {/* Left: 1-Column Treatment Area List */}
-            <div className="space-y-3 order-2 lg:order-1">
-              {/* Category Legend */}
-              <div className="flex flex-wrap items-center gap-4 mb-6 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-[#D4C4B8]/30">
-                <span className="text-xs text-gray-500 mr-2">카테고리:</span>
-                <span className="flex items-center gap-2 text-xs text-[#D4A5A5]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#D4A5A5]" />
-                  주름 개선
-                </span>
-                <span className="flex items-center gap-2 text-xs text-[#A89080]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#A89080]" />
-                  볼륨
-                </span>
-                <span className="flex items-center gap-2 text-xs text-[#6D5A4D]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#6D5A4D]" />
-                  윤곽
-                </span>
-                <span className="flex items-center gap-2 text-xs text-[#C9A86C]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#C9A86C]" />
-                  리프팅
-                </span>
-              </div>
-
-              {/* Treatment Area Items */}
-              {detail.targetAreas.areas.map((area, index) => (
+          {/* 3-Column Layout: Left (1-5) + Center Image + Right (6-10) */}
+          {/* Desktop: 3-column grid */}
+          <div className="hidden xl:grid xl:grid-cols-[1fr_auto_1fr] gap-6 xl:gap-8 items-start max-w-7xl mx-auto">
+            {/* Left Column: Items 1-5 */}
+            <div className="space-y-3 pt-4">
+              {detail.targetAreas.areas.slice(0, 5).map((area, index) => (
                 <TreatmentAreaListItem
                   key={area.id}
                   area={area}
                   index={index}
                   isSelected={selectedArea === area.id}
                   onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                  side="left"
                 />
               ))}
-
-              {/* Hint text */}
-              <p className="text-xs text-gray-400 text-center pt-4">
-                * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
-              </p>
             </div>
 
-            {/* Right: Image with Interactive Markers */}
+            {/* Center: Image with SVG Overlay */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
-              className="lg:sticky lg:top-32 order-1 lg:order-2"
+              className="w-[380px] xl:w-[420px] flex-shrink-0"
             >
               <FillerImageWithMarkers selectedAreaId={selectedArea} />
 
-              {/* Selected area info card (mobile-friendly) */}
+              {/* Selected area info card */}
               {selectedArea && (
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#A89080]/20"
+                  className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#A89080]/30"
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shadow-md"
+                      style={{
+                        backgroundColor: AREA_CATEGORIES[selectedArea]?.color || '#A89080',
+                        boxShadow: `0 4px 12px ${AREA_CATEGORIES[selectedArea]?.color || '#A89080'}40`,
+                      }}
+                    >
+                      {String(selectedArea).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <p className="font-medium text-[#3A3A3A]">
+                        {detail.targetAreas.areas.find(a => a.id === selectedArea)?.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {detail.targetAreas.areas.find(a => a.id === selectedArea)?.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Hint text */}
+              <p className="text-xs text-gray-400 text-center mt-4">
+                * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+              </p>
+            </motion.div>
+
+            {/* Right Column: Items 6-10 */}
+            <div className="space-y-3 pt-4">
+              {detail.targetAreas.areas.slice(5, 10).map((area, index) => (
+                <TreatmentAreaListItem
+                  key={area.id}
+                  area={area}
+                  index={index + 5}
+                  isSelected={selectedArea === area.id}
+                  onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                  side="right"
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Tablet: 2-column layout (image + list) */}
+          <div className="hidden lg:grid lg:grid-cols-2 xl:hidden gap-8 items-start max-w-5xl mx-auto">
+            {/* Left: Image */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="lg:sticky lg:top-32"
+            >
+              <FillerImageWithMarkers selectedAreaId={selectedArea} />
+
+              {/* Selected area info card */}
+              {selectedArea && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#A89080]/30"
                 >
                   <div className="flex items-center gap-3">
                     <div
@@ -864,6 +1065,81 @@ export default function FillerDetail() {
                 </motion.div>
               )}
             </motion.div>
+
+            {/* Right: Full list */}
+            <div className="space-y-3">
+              {detail.targetAreas.areas.map((area, index) => (
+                <TreatmentAreaListItem
+                  key={area.id}
+                  area={area}
+                  index={index}
+                  isSelected={selectedArea === area.id}
+                  onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                  side="left"
+                />
+              ))}
+              <p className="text-xs text-gray-400 text-center pt-4">
+                * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+              </p>
+            </div>
+          </div>
+
+          {/* Mobile: 1-column layout (image on top, list below) */}
+          <div className="lg:hidden max-w-md mx-auto">
+            {/* Image */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="mb-8"
+            >
+              <FillerImageWithMarkers selectedAreaId={selectedArea} />
+
+              {/* Selected area info card */}
+              {selectedArea && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#A89080]/30"
+                >
+                  <div className="flex items-center gap-3">
+                    <div
+                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                      style={{ backgroundColor: AREA_CATEGORIES[selectedArea]?.color || '#A89080' }}
+                    >
+                      {String(selectedArea).padStart(2, '0')}
+                    </div>
+                    <div>
+                      <p className="font-medium text-[#3A3A3A]">
+                        {detail.targetAreas.areas.find(a => a.id === selectedArea)?.name}
+                      </p>
+                      <p className="text-sm text-gray-500">
+                        {detail.targetAreas.areas.find(a => a.id === selectedArea)?.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </motion.div>
+
+            {/* List - 2 columns on mobile for compactness */}
+            <div className="grid grid-cols-2 gap-3">
+              {detail.targetAreas.areas.map((area, index) => (
+                <TreatmentAreaListItem
+                  key={area.id}
+                  area={area}
+                  index={index}
+                  isSelected={selectedArea === area.id}
+                  onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                  side={index < 5 ? 'left' : 'left'}
+                />
+              ))}
+            </div>
+
+            {/* Hint text */}
+            <p className="text-xs text-gray-400 text-center mt-6">
+              * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+            </p>
           </div>
         </div>
       </section>

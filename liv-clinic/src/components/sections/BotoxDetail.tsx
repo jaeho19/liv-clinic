@@ -49,26 +49,59 @@ interface TimelineItem {
 
 // Treatment area position data for SVG overlay markers
 // Coordinates are percentages relative to image dimensions
-const BOTOX_AREA_POSITIONS: Record<number, { x: number; y: number; size?: number; pairs?: { x: number; y: number }[] }> = {
-  1: { x: 50, y: 12, size: 1.3 },           // 이마 - forehead center
-  2: { x: 50, y: 24, size: 1.0 },           // 미간 - glabella (between eyebrows)
-  3: { x: 50, y: 32, pairs: [               // 눈가 - crow's feet (both sides)
-    { x: 28, y: 32 },
-    { x: 72, y: 32 }
-  ]},
-  4: { x: 50, y: 68, size: 1.2, pairs: [    // 사각턱 - masseter (both sides)
-    { x: 25, y: 68 },
-    { x: 75, y: 68 }
-  ]},
-  5: { x: 50, y: 55, pairs: [               // 입꼬리 - mouth corners (both sides)
-    { x: 40, y: 55 },
-    { x: 60, y: 55 }
-  ]},
-  6: { x: 50, y: 88, size: 1.4, pairs: [    // 승모근 - trapezius (shoulder area, both sides)
-    { x: 20, y: 88 },
-    { x: 80, y: 88 }
-  ]},
-  7: { x: 50, y: 95, size: 1.0 },           // 종아리 - calves (shown as icon indicator)
+// Refined to match actual facial anatomy proportions
+interface AreaPosition {
+  x: number;
+  y: number;
+  size?: number;
+  shape?: 'circle' | 'ellipse';
+  rx?: number;  // horizontal radius for ellipse
+  ry?: number;  // vertical radius for ellipse
+  pairs?: { x: number; y: number; rx?: number; ry?: number }[];
+}
+
+const BOTOX_AREA_POSITIONS: Record<number, AreaPosition> = {
+  1: {
+    x: 50, y: 18, size: 1.5,
+    shape: 'ellipse', rx: 22, ry: 10      // 이마 - forehead (wide horizontal ellipse)
+  },
+  2: {
+    x: 50, y: 30, size: 1.0,
+    shape: 'circle'                        // 미간 - glabella (between eyebrows)
+  },
+  3: {
+    x: 50, y: 38,
+    shape: 'circle',
+    pairs: [                               // 눈가 - crow's feet (both sides)
+      { x: 28, y: 38 },
+      { x: 72, y: 38 }
+    ]
+  },
+  4: {
+    x: 50, y: 72, size: 1.3,
+    shape: 'ellipse',
+    pairs: [                               // 사각턱 - masseter (both sides, vertical ellipse)
+      { x: 24, y: 72, rx: 10, ry: 14 },
+      { x: 76, y: 72, rx: 10, ry: 14 }
+    ]
+  },
+  5: {
+    x: 50, y: 62, size: 0.8,
+    shape: 'circle',
+    pairs: [                               // 입꼬리 - mouth corners (both sides)
+      { x: 38, y: 62 },
+      { x: 62, y: 62 }
+    ]
+  },
+  6: {
+    x: 50, y: 88, size: 1.5,
+    shape: 'ellipse',
+    pairs: [                               // 승모근 - trapezius (shoulder area, both sides)
+      { x: 18, y: 88, rx: 14, ry: 10 },
+      { x: 82, y: 88, rx: 14, ry: 10 }
+    ]
+  },
+  7: { x: 50, y: 95, size: 1.0 },          // 종아리 - calves (shown as icon indicator)
 };
 
 // Category colors for treatment areas
@@ -88,100 +121,102 @@ const BotoxImageWithMarkers = ({
 }: {
   selectedAreaId: number | null;
 }) => {
-  // Render marker at specific position
-  const renderMarker = (x: number, y: number, areaId: number, index: number = 0) => {
+  // Render SVG shape (circle or ellipse) at specific position
+  const renderSVGMarker = (
+    x: number,
+    y: number,
+    areaId: number,
+    index: number = 0,
+    customRx?: number,
+    customRy?: number
+  ) => {
     const isSelected = selectedAreaId === areaId;
     const category = BOTOX_AREA_CATEGORIES[areaId];
     const position = BOTOX_AREA_POSITIONS[areaId];
     const size = position?.size || 1;
+    const shape = position?.shape || 'circle';
+    const baseRadius = 8;
+    const rx = customRx || position?.rx || baseRadius * size;
+    const ry = customRy || position?.ry || baseRadius * size;
 
     return (
-      <motion.div
-        key={`${areaId}-${index}`}
-        className="absolute"
-        style={{
-          left: `${x}%`,
-          top: `${y}%`,
-          transform: 'translate(-50%, -50%)',
-        }}
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{
-          scale: isSelected ? 1 : 0,
-          opacity: isSelected ? 1 : 0,
-        }}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-      >
-        {/* Outer pulse ring */}
-        <motion.div
-          className="absolute rounded-full"
-          style={{
-            width: `${60 * size}px`,
-            height: `${60 * size}px`,
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            backgroundColor: category?.color || '#C4A484',
-          }}
+      <g key={`${areaId}-${index}`}>
+        {/* Outer glow/pulse effect */}
+        <motion.ellipse
+          cx={`${x}%`}
+          cy={`${y}%`}
+          rx={`${rx * 1.8}%`}
+          ry={`${ry * 1.8}%`}
+          fill={category?.color || '#C4A484'}
+          initial={{ opacity: 0, scale: 0 }}
           animate={isSelected ? {
-            scale: [1, 1.5, 1],
-            opacity: [0.4, 0, 0.4],
-          } : {}}
+            opacity: [0.3, 0.1, 0.3],
+            scale: [1, 1.3, 1],
+          } : { opacity: 0, scale: 0 }}
           transition={{
             duration: 2,
-            repeat: Infinity,
+            repeat: isSelected ? Infinity : 0,
             ease: 'easeInOut',
           }}
+          style={{ filter: 'blur(8px)', transformOrigin: `${x}% ${y}%` }}
         />
 
         {/* Middle ring */}
-        <motion.div
-          className="absolute rounded-full border-2"
-          style={{
-            width: `${44 * size}px`,
-            height: `${44 * size}px`,
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            borderColor: category?.color || '#C4A484',
-            backgroundColor: `${category?.color || '#C4A484'}20`,
-          }}
+        <motion.ellipse
+          cx={`${x}%`}
+          cy={`${y}%`}
+          rx={`${rx * 1.2}%`}
+          ry={`${ry * 1.2}%`}
+          fill={`${category?.color || '#C4A484'}20`}
+          stroke={category?.color || '#C4A484'}
+          strokeWidth="1.5"
+          initial={{ opacity: 0, scale: 0 }}
+          animate={isSelected ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+          style={{ transformOrigin: `${x}% ${y}%` }}
         />
 
-        {/* Center dot */}
-        <motion.div
-          className="absolute rounded-full shadow-lg"
-          style={{
-            width: `${16 * size}px`,
-            height: `${16 * size}px`,
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-            backgroundColor: category?.color || '#C4A484',
-          }}
+        {/* Center dot with pulse */}
+        <motion.circle
+          cx={`${x}%`}
+          cy={`${y}%`}
+          r={`${Math.min(rx, ry) * 0.5}%`}
+          fill={category?.color || '#C4A484'}
+          initial={{ opacity: 0, scale: 0 }}
           animate={isSelected ? {
-            scale: [1, 1.2, 1],
-          } : {}}
+            opacity: 1,
+            scale: [1, 1.15, 1],
+          } : { opacity: 0, scale: 0 }}
           transition={{
-            duration: 1,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            opacity: { type: 'spring', stiffness: 400, damping: 25 },
+            scale: {
+              duration: 1.5,
+              repeat: isSelected ? Infinity : 0,
+              ease: 'easeInOut',
+            },
           }}
+          style={{ transformOrigin: `${x}% ${y}%` }}
         />
-
-        {/* Area number label */}
-        <motion.div
-          className="absolute text-white text-xs font-bold"
-          style={{
-            left: '50%',
-            top: '50%',
-            transform: 'translate(-50%, -50%)',
-          }}
-        >
-          {areaId}
-        </motion.div>
-      </motion.div>
+      </g>
     );
   };
+
+  // Get glow position for selected area (for paired areas, use center)
+  const getGlowPosition = () => {
+    if (!selectedAreaId || !BOTOX_AREA_POSITIONS[selectedAreaId]) {
+      return { x: 50, y: 50 };
+    }
+    const pos = BOTOX_AREA_POSITIONS[selectedAreaId];
+    if (pos.pairs && pos.pairs.length > 0) {
+      // Calculate center of paired positions
+      const avgX = pos.pairs.reduce((sum, p) => sum + p.x, 0) / pos.pairs.length;
+      const avgY = pos.pairs.reduce((sum, p) => sum + p.y, 0) / pos.pairs.length;
+      return { x: avgX, y: avgY };
+    }
+    return { x: pos.x, y: pos.y };
+  };
+
+  const glowPos = getGlowPosition();
 
   return (
     <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#C4A484]/20">
@@ -198,34 +233,65 @@ const BotoxImageWithMarkers = ({
       {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-[#C4A484]/5 to-transparent pointer-events-none" />
 
-      {/* Area markers overlay */}
-      <div className="absolute inset-0 pointer-events-none">
+      {/* SVG overlay for precise markers */}
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+      >
+        <defs>
+          {/* Glow filter for selected areas */}
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="2" result="coloredBlur" />
+            <feMerge>
+              <feMergeNode in="coloredBlur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+
+        {/* Render all area markers */}
         {Object.entries(BOTOX_AREA_POSITIONS).map(([id, pos]) => {
           const areaId = parseInt(id);
+
+          // Skip area 7 (calves) as it's shown separately
+          if (areaId === 7) return null;
 
           // If area has paired positions (like crow's feet, masseter)
           if (pos.pairs) {
             return pos.pairs.map((pair, index) =>
-              renderMarker(pair.x, pair.y, areaId, index)
+              renderSVGMarker(pair.x, pair.y, areaId, index, pair.rx, pair.ry)
             );
           }
 
           // Single position areas
-          return renderMarker(pos.x, pos.y, areaId, 0);
+          return renderSVGMarker(pos.x, pos.y, areaId, 0);
         })}
-      </div>
+      </svg>
 
-      {/* Selected area highlight glow */}
+      {/* Selected area highlight glow (background effect) */}
       {selectedAreaId && BOTOX_AREA_POSITIONS[selectedAreaId] && (
         <motion.div
           className="absolute inset-0 pointer-events-none"
           style={{
-            background: `radial-gradient(circle at ${BOTOX_AREA_POSITIONS[selectedAreaId]?.x || 50}% ${BOTOX_AREA_POSITIONS[selectedAreaId]?.y || 50}%, ${BOTOX_AREA_CATEGORIES[selectedAreaId]?.color || '#C4A484'}15 0%, transparent 40%)`,
+            background: `radial-gradient(ellipse 40% 50% at ${glowPos.x}% ${glowPos.y}%, ${BOTOX_AREA_CATEGORIES[selectedAreaId]?.color || '#C4A484'}20 0%, transparent 70%)`,
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
         />
+      )}
+
+      {/* Area 7 (Calves) indicator - shown as text label when selected */}
+      {selectedAreaId === 7 && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="absolute bottom-4 right-4 bg-[#8B7355] text-white px-3 py-2 rounded-lg text-sm shadow-lg"
+        >
+          <span className="font-medium">07</span>
+          <span className="ml-2">종아리 시술 부위</span>
+        </motion.div>
       )}
     </div>
   );
@@ -823,7 +889,7 @@ export default function BotoxDetail() {
         </div>
       </section>
 
-      {/* Treatment Areas - Side by Side Interactive Layout */}
+      {/* Treatment Areas - 3-Column Interactive Layout */}
       <section className="py-32 bg-gradient-to-b from-white to-[#F9F6F3] relative overflow-hidden">
         <FloatingOrb className="w-80 h-80 bg-[#C4A484]/5 -right-20 top-20" delay={1} />
         <FloatingOrb className="w-64 h-64 bg-[#D4A5A5]/5 -left-16 bottom-40" delay={3} />
@@ -849,83 +915,206 @@ export default function BotoxDetail() {
             </p>
           </motion.div>
 
-          {/* Side by Side Layout: List (Left) + Image (Right) */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start max-w-6xl mx-auto">
+          {/* Category Legend - Centered above layout */}
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-8 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-[#E8D5C4]/30 max-w-md mx-auto">
+            <span className="text-xs text-gray-500 mr-2">카테고리:</span>
+            <span className="flex items-center gap-2 text-xs text-[#E8B4B8]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#E8B4B8]" />
+              표정 주름
+            </span>
+            <span className="flex items-center gap-2 text-xs text-[#C4A484]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#C4A484]" />
+              윤곽 정리
+            </span>
+            <span className="flex items-center gap-2 text-xs text-[#8B7355]">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#8B7355]" />
+              바디
+            </span>
+          </div>
 
-            {/* Left: Treatment Area List */}
-            <div className="space-y-3 order-2 lg:order-1">
-              {/* Category Legend */}
-              <div className="flex flex-wrap items-center gap-4 mb-6 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-[#E8D5C4]/30">
-                <span className="text-xs text-gray-500 mr-2">카테고리:</span>
-                <span className="flex items-center gap-2 text-xs text-[#E8B4B8]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#E8B4B8]" />
-                  표정 주름
-                </span>
-                <span className="flex items-center gap-2 text-xs text-[#C4A484]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#C4A484]" />
-                  윤곽 정리
-                </span>
-                <span className="flex items-center gap-2 text-xs text-[#8B7355]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#8B7355]" />
-                  바디
-                </span>
+          {/* 3-Column Layout: Left List (01-04) | Center Image | Right List (05-07) */}
+          {/* Desktop: 3-column | Tablet: 2-column stacked lists + image | Mobile: 1-column */}
+          <div className="max-w-7xl mx-auto">
+            {/* Desktop 3-Column Layout (1280px+) */}
+            <div className="hidden xl:grid xl:grid-cols-[1fr_auto_1fr] gap-8 items-start">
+              {/* Left Column: Areas 01-04 */}
+              <div className="space-y-3">
+                {treatmentAreasList.slice(0, 4).map((area, index) => (
+                  <BotoxTreatmentAreaListItem
+                    key={area.id}
+                    area={area}
+                    index={index}
+                    isSelected={selectedArea === area.id}
+                    onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                    onMouseEnter={() => setSelectedArea(area.id)}
+                    onMouseLeave={() => setSelectedArea(null)}
+                  />
+                ))}
               </div>
 
-              {/* Treatment Area Items */}
-              {treatmentAreasList.map((area, index) => (
-                <BotoxTreatmentAreaListItem
-                  key={area.id}
-                  area={area}
-                  index={index}
-                  isSelected={selectedArea === area.id}
-                  onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
-                  onMouseEnter={() => setSelectedArea(area.id)}
-                  onMouseLeave={() => setSelectedArea(null)}
-                />
-              ))}
+              {/* Center Column: Image with Interactive Markers */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="sticky top-32"
+              >
+                <BotoxImageWithMarkers selectedAreaId={selectedArea} />
 
-              {/* Hint text */}
-              <p className="text-xs text-gray-400 text-center pt-4">
-                * 각 부위를 클릭하거나 마우스를 올리면 이미지에서 위치를 확인할 수 있습니다
-              </p>
+                {/* Selected area info card */}
+                {selectedArea && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#C4A484]/20"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                        style={{ backgroundColor: BOTOX_AREA_CATEGORIES[selectedArea]?.color || '#C4A484' }}
+                      >
+                        {String(selectedArea).padStart(2, '0')}
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#3D3D3D]">
+                          {treatmentAreasList.find(a => a.id === selectedArea)?.name}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {treatmentAreasList.find(a => a.id === selectedArea)?.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </motion.div>
+
+              {/* Right Column: Areas 05-07 */}
+              <div className="space-y-3">
+                {treatmentAreasList.slice(4, 7).map((area, index) => (
+                  <BotoxTreatmentAreaListItem
+                    key={area.id}
+                    area={area}
+                    index={index + 4}
+                    isSelected={selectedArea === area.id}
+                    onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                    onMouseEnter={() => setSelectedArea(area.id)}
+                    onMouseLeave={() => setSelectedArea(null)}
+                  />
+                ))}
+              </div>
             </div>
 
-            {/* Right: Image with Interactive Markers */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="lg:sticky lg:top-32 order-1 lg:order-2"
-            >
-              <BotoxImageWithMarkers selectedAreaId={selectedArea} />
+            {/* Tablet 2-Column Layout (768px - 1279px) */}
+            <div className="hidden md:grid md:grid-cols-2 xl:hidden gap-8 items-start">
+              {/* Left: Lists stacked vertically */}
+              <div className="space-y-3">
+                {treatmentAreasList.map((area, index) => (
+                  <BotoxTreatmentAreaListItem
+                    key={area.id}
+                    area={area}
+                    index={index}
+                    isSelected={selectedArea === area.id}
+                    onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                    onMouseEnter={() => setSelectedArea(area.id)}
+                    onMouseLeave={() => setSelectedArea(null)}
+                  />
+                ))}
+              </div>
 
-              {/* Selected area info card (mobile-friendly) */}
-              {selectedArea && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#C4A484]/20"
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
-                      style={{ backgroundColor: BOTOX_AREA_CATEGORIES[selectedArea]?.color || '#C4A484' }}
-                    >
-                      {String(selectedArea).padStart(2, '0')}
+              {/* Right: Image */}
+              <motion.div
+                initial={{ opacity: 0, x: 40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="sticky top-32"
+              >
+                <BotoxImageWithMarkers selectedAreaId={selectedArea} />
+
+                {selectedArea && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#C4A484]/20"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                        style={{ backgroundColor: BOTOX_AREA_CATEGORIES[selectedArea]?.color || '#C4A484' }}
+                      >
+                        {String(selectedArea).padStart(2, '0')}
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#3D3D3D]">
+                          {treatmentAreasList.find(a => a.id === selectedArea)?.name}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {treatmentAreasList.find(a => a.id === selectedArea)?.description}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <p className="font-medium text-[#3D3D3D]">
-                        {treatmentAreasList.find(a => a.id === selectedArea)?.name}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {treatmentAreasList.find(a => a.id === selectedArea)?.description}
-                      </p>
+                  </motion.div>
+                )}
+              </motion.div>
+            </div>
+
+            {/* Mobile 1-Column Layout (< 768px) */}
+            <div className="md:hidden space-y-6">
+              {/* Image on top */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+              >
+                <BotoxImageWithMarkers selectedAreaId={selectedArea} />
+
+                {selectedArea && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="mt-4 p-4 bg-white rounded-xl shadow-lg border border-[#C4A484]/20"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div
+                        className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold"
+                        style={{ backgroundColor: BOTOX_AREA_CATEGORIES[selectedArea]?.color || '#C4A484' }}
+                      >
+                        {String(selectedArea).padStart(2, '0')}
+                      </div>
+                      <div>
+                        <p className="font-medium text-[#3D3D3D]">
+                          {treatmentAreasList.find(a => a.id === selectedArea)?.name}
+                        </p>
+                        <p className="text-sm text-gray-500">
+                          {treatmentAreasList.find(a => a.id === selectedArea)?.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </motion.div>
-              )}
-            </motion.div>
+                  </motion.div>
+                )}
+              </motion.div>
+
+              {/* List below */}
+              <div className="space-y-3">
+                {treatmentAreasList.map((area, index) => (
+                  <BotoxTreatmentAreaListItem
+                    key={area.id}
+                    area={area}
+                    index={index}
+                    isSelected={selectedArea === area.id}
+                    onClick={() => setSelectedArea(selectedArea === area.id ? null : area.id)}
+                    onMouseEnter={() => setSelectedArea(area.id)}
+                    onMouseLeave={() => setSelectedArea(null)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Hint text */}
+            <p className="text-xs text-gray-400 text-center pt-8">
+              * 각 부위를 클릭하거나 마우스를 올리면 이미지에서 위치를 확인할 수 있습니다
+            </p>
           </div>
         </div>
       </section>
