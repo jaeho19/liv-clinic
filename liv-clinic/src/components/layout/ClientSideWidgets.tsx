@@ -20,12 +20,18 @@ const ScrollProgress = dynamic(
   { ssr: false }
 );
 
+const PopupManager = dynamic(
+  () => import('@/components/layout/PopupManager'),
+  { ssr: false }
+);
+
 export default function ClientSideWidgets() {
   return (
     <>
       <ScrollProgress />
       <FloatingCTA />
       <BackToTop />
+      <PopupManager />
     </>
   );
 }

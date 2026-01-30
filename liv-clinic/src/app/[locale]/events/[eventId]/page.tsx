@@ -10,6 +10,7 @@ import { AnimateOnScroll, Button, Card } from '@/components/ui';
 import { ScrollLink } from '@/components/ui';
 import { EVENTS, getEventStatus, TREATMENTS } from '@/lib/constants';
 import EventCard from '@/components/sections/EventCard';
+import EventHero from '@/components/sections/EventHero';
 
 export default function EventDetailPage() {
   const params = useParams();
@@ -99,33 +100,14 @@ export default function EventDetailPage() {
       <section className="py-8 md:py-12 bg-background">
         <div className="container-custom">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-            {/* 포스터 이미지 */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="relative"
-            >
-              <div className={`relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl ${isEnded ? 'grayscale' : ''}`}>
-                <Image
-                  src={event.posterImage}
-                  alt={event.title[locale]}
-                  fill
-                  className="object-cover"
-                  priority
-                />
-                {/* 상태 배지 */}
-                <div className="absolute top-4 left-4">
-                  <span
-                    className={`px-4 py-2 rounded-full text-sm font-medium ${
-                      isEnded ? 'bg-gray-500 text-white' : 'bg-primary text-white'
-                    }`}
-                  >
-                    {t(`status.${status}`)}
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+            {/* 포스터 이미지 — EventHero 공통 컴포넌트 */}
+            <EventHero
+              imageSrc={event.posterImage}
+              imageAlt={event.title[locale]}
+              status={status}
+              isEnded={isEnded}
+              isPromotion={new Date(event.endDate).getFullYear() >= 2099}
+            />
 
             {/* 이벤트 정보 */}
             <motion.div
@@ -144,20 +126,22 @@ export default function EventDetailPage() {
               {/* 제목 */}
               <h1 className="text-h2 md:text-h1 text-secondary mb-4">{event.title[locale]}</h1>
 
-              {/* 기간 */}
-              <div className="flex items-center gap-3 text-mono mb-6">
-                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <span className="text-h4">
-                  {formatDate(event.startDate)} - {formatDate(event.endDate)}
-                </span>
-              </div>
+              {/* 기간 (홍보용은 표시 안 함) */}
+              {new Date(event.endDate).getFullYear() < 2099 && (
+                <div className="flex items-center gap-3 text-mono mb-6">
+                  <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <span className="text-h4">
+                    {formatDate(event.startDate)} - {formatDate(event.endDate)}
+                  </span>
+                </div>
+              )}
 
               {/* 설명 */}
               <div className="bg-white rounded-xl p-6 mb-8 shadow-sm">
@@ -232,75 +216,34 @@ export default function EventDetailPage() {
         </div>
       </section>
 
-      {/* 이미지 갤러리 (갤러리 이미지가 있는 경우에만 표시) */}
+      {/* 이미지 갤러리 - 모든 이벤트 동일한 세로 스크롤 레이아웃 */}
       {event.galleryImages && event.galleryImages.length > 0 && (
         <section className="py-12 md:py-16 bg-white">
-          {/* 압토스 실리프팅: 심플 세로 스크롤 레이아웃 */}
-          {event.id === 'aptos-thread-lifting' ? (
-            <div className="max-w-[800px] mx-auto px-4">
-              <div className="flex flex-col gap-4">
-                {event.galleryImages.map((src, idx) => (
-                  <motion.div
-                    key={src}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true, margin: '-50px' }}
-                    transition={{ duration: 0.4 }}
-                    className="relative w-full"
-                  >
-                    <Image
-                      src={src}
-                      alt={`${event.title[locale]} - ${idx + 1}`}
-                      width={800}
-                      height={1000}
-                      className="w-full h-auto rounded-lg"
-                      sizes="(max-width: 800px) 100vw, 800px"
-                      priority={idx < 2}
-                    />
-                  </motion.div>
-                ))}
-              </div>
+          <div className="max-w-[800px] mx-auto px-4">
+            <div className="flex flex-col gap-4">
+              {event.galleryImages.map((src, idx) => (
+                <motion.div
+                  key={src}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true, margin: '-50px' }}
+                  transition={{ duration: 0.4 }}
+                  className="relative w-full cursor-pointer"
+                  onClick={() => setSelectedImage(src)}
+                >
+                  <Image
+                    src={src}
+                    alt={`${event.title[locale]} - ${idx + 1}`}
+                    width={800}
+                    height={1000}
+                    className="w-full h-auto rounded-lg"
+                    sizes="(max-width: 800px) 100vw, 800px"
+                    priority={idx < 2}
+                  />
+                </motion.div>
+              ))}
             </div>
-          ) : (
-            /* 기본 갤러리 레이아웃 (2열 그리드) */
-            <div className="container-custom">
-              <AnimateOnScroll>
-                <h2 className="text-h2 text-secondary mb-8">
-                  {locale === 'ko' ? '이벤트 상세 이미지' :
-                   locale === 'ja' ? 'イベント詳細画像' :
-                   locale === 'zh' ? '活动详细图片' : 'Event Gallery'}
-                </h2>
-              </AnimateOnScroll>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-                {event.galleryImages.map((src, idx) => (
-                  <motion.div
-                    key={src}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
-                    className="relative aspect-[4/3] rounded-xl overflow-hidden bg-gray-100 cursor-pointer group shadow-sm hover:shadow-xl transition-all duration-300"
-                    onClick={() => setSelectedImage(src)}
-                  >
-                    <Image
-                      src={src}
-                      alt={`${event.title[locale]} - ${idx + 1}`}
-                      fill
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 640px) 100vw, 50vw"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-secondary shadow-lg">
-                        {locale === 'ko' ? '크게 보기' :
-                         locale === 'ja' ? '拡大表示' :
-                         locale === 'zh' ? '放大查看' : 'View larger'}
-                      </span>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          )}
+          </div>
         </section>
       )}
 

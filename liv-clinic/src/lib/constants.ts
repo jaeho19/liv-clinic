@@ -1302,6 +1302,7 @@ export type EventStatus = 'active' | 'ended';
 
 export interface EventItem {
   id: string;
+  sortOrder: number; // 레거시 사이트 노출 순서 기준 정렬
   title: {
     ko: string;
     en: string;
@@ -1317,6 +1318,7 @@ export interface EventItem {
   posterImage: string;
   thumbnailImage?: string;
   galleryImages?: string[]; // 상세 페이지에서 표시할 이미지 갤러리
+  imagePosition?: string; // CSS object-position (기본값: 'center top') — hero 이미지 focal point
   startDate: string; // ISO 8601 format (YYYY-MM-DD)
   endDate: string;
   category: EventCategory;
@@ -1333,10 +1335,18 @@ export function getEventStatus(event: EventItem): EventStatus {
   return endDate >= today ? 'active' : 'ended';
 }
 
-// 이벤트 데이터
+// 이벤트 데이터 (sortOrder: 레거시 사이트 노출 순서 기준)
+// 이미지 경로: /images/event/{이벤트폴더}/{번호}.{확장자}
+//   - aptos/        → 압토스 실리프팅 (001~013.jpg)
+//   - restart-2026/ → 2026 Re:Start 1월 이벤트 (001~007.jpeg)
+//   - ulthera-prime/→ 울쎄라피 프라임 이벤트 (001~016.jpg)
+//   - thermage-flx/ → 써마지 FLX (001~007.jpg)
+//   - goodbye-ulthera/ → 굿바이 울쎄라 (001~010.jpg)
+//   - density/      → 덴서티 이벤트 (001.png)
 export const EVENTS: EventItem[] = [
   {
     id: 'aptos-thread-lifting',
+    sortOrder: 1,
     title: {
       ko: '압토스 실리프팅',
       en: 'APTOS Thread Lifting',
@@ -1349,30 +1359,33 @@ export const EVENTS: EventItem[] = [
       ja: '自然なリフティング効果をAPTOS NAMICAスレッドリフトで体験してください。',
       zh: '通过APTOS NAMICA线雕体验自然提升效果。',
     },
-    posterImage: '/images/events/001.jpg',
-    thumbnailImage: '/images/events/001.jpg',
+    posterImage: '/images/event/aptos/001.jpg',
+    thumbnailImage: '/images/event/aptos/001.jpg',
+    imagePosition: 'center 20%', // 모델 얼굴+상체 중심
     galleryImages: [
-      '/images/events/001.jpg',
-      '/images/events/002.jpg',
-      '/images/events/003.jpg',
-      '/images/events/004-scaled.jpg',
-      '/images/events/005.jpg',
-      '/images/events/006-scaled.jpg',
-      '/images/events/007.jpg',
-      '/images/events/008.jpg',
-      '/images/events/009.jpg',
-      '/images/events/010-scaled.jpg',
-      '/images/events/011-scaled.jpg',
-      '/images/events/012-scaled.jpg',
+      '/images/event/aptos/001.jpg',
+      '/images/event/aptos/002.jpg',
+      '/images/event/aptos/003.jpg',
+      '/images/event/aptos/004.jpg',
+      '/images/event/aptos/005.jpg',
+      '/images/event/aptos/006.jpg',
+      '/images/event/aptos/007.jpg',
+      '/images/event/aptos/008.jpg',
+      '/images/event/aptos/009.jpg',
+      '/images/event/aptos/010.jpg',
+      '/images/event/aptos/011.jpg',
+      '/images/event/aptos/012.jpg',
+      '/images/event/aptos/013.jpg',
     ],
-    startDate: '2026-01-01',
-    endDate: '2026-02-28',
+    startDate: '2025-01-01',
+    endDate: '2099-12-31', // 기한없이 광고용
     category: 'lifting',
     featured: false,
-    relatedTreatments: ['/lifting/thread', '/lifting/aptos'],
+    relatedTreatments: ['/lifting/thread'],
   },
   {
     id: '2026-restart-january',
+    sortOrder: 2,
     title: {
       ko: '2026 Re:Start. 1월 이벤트',
       en: '2026 Re:Start. January Event',
@@ -1385,8 +1398,18 @@ export const EVENTS: EventItem[] = [
       ja: '新年を迎え、リブ形成外科で準備した特別パッケージ！新しいスタートのための特別割引。',
       zh: '迎接新年，LIV整形外科准备的特别套餐！新起点特别优惠。',
     },
-    posterImage: '/images/placeholder-event.jpg',
-    thumbnailImage: '/images/placeholder-event.jpg',
+    posterImage: '/images/event/restart-2026/001.jpeg',
+    thumbnailImage: '/images/event/restart-2026/001.jpeg',
+    imagePosition: 'center center', // 정방형에 가까운 이미지, 중앙 기준
+    galleryImages: [
+      '/images/event/restart-2026/001.jpeg',
+      '/images/event/restart-2026/002.jpeg',
+      '/images/event/restart-2026/003.jpeg',
+      '/images/event/restart-2026/004.jpeg',
+      '/images/event/restart-2026/005.jpeg',
+      '/images/event/restart-2026/006.jpeg',
+      '/images/event/restart-2026/007.jpeg',
+    ],
     startDate: '2026-01-01',
     endDate: '2026-01-31',
     category: 'all',
@@ -1395,6 +1418,7 @@ export const EVENTS: EventItem[] = [
   },
   {
     id: 'ulthera-prime-event',
+    sortOrder: 3,
     title: {
       ko: '울쎄라피 프라임 이벤트',
       en: 'Ultherapy Prime Event',
@@ -1407,16 +1431,36 @@ export const EVENTS: EventItem[] = [
       ja: 'FDA承認の正規ウルセラピープライム！専門医による直接施術で安全で確実なリフティング効果を体験。',
       zh: 'FDA认证正品超声刀尊享！专业医师亲自操作，体验安全有效的提升效果。',
     },
-    posterImage: '/images/placeholder-event.jpg',
-    thumbnailImage: '/images/placeholder-event.jpg',
-    startDate: '2026-01-01',
-    endDate: '2026-02-28',
+    posterImage: '/images/event/ulthera-prime/001.jpg',
+    thumbnailImage: '/images/event/ulthera-prime/001.jpg',
+    imagePosition: 'center 15%', // 모델 얼굴 상단 포커스
+    galleryImages: [
+      '/images/event/ulthera-prime/001.jpg',
+      '/images/event/ulthera-prime/002.jpg',
+      '/images/event/ulthera-prime/003.jpg',
+      '/images/event/ulthera-prime/004.jpg',
+      '/images/event/ulthera-prime/005.jpg',
+      '/images/event/ulthera-prime/006.jpg',
+      '/images/event/ulthera-prime/007.jpg',
+      '/images/event/ulthera-prime/008.jpg',
+      '/images/event/ulthera-prime/009.jpg',
+      '/images/event/ulthera-prime/010.jpg',
+      '/images/event/ulthera-prime/011.jpg',
+      '/images/event/ulthera-prime/012.jpg',
+      '/images/event/ulthera-prime/013.jpg',
+      '/images/event/ulthera-prime/014.jpg',
+      '/images/event/ulthera-prime/015.jpg',
+      '/images/event/ulthera-prime/016.jpg',
+    ],
+    startDate: '2025-08-01',
+    endDate: '2025-11-30',
     category: 'lifting',
     featured: false,
     relatedTreatments: ['/lifting/ulthera'],
   },
   {
     id: 'thermage-flx-event',
+    sortOrder: 4,
     title: {
       ko: '써마지 FLX',
       en: 'Thermage FLX',
@@ -1429,16 +1473,27 @@ export const EVENTS: EventItem[] = [
       ja: '肌弾力ケアの定番！サーマジFLXでたるんだ肌を引き締め。目元・あごライン集中ケア。',
       zh: '皮肤弹力护理经典！用热玛吉FLX紧致松弛皮肤。眼周、下颌线集中护理。',
     },
-    posterImage: '/images/placeholder-event.jpg',
-    thumbnailImage: '/images/placeholder-event.jpg',
-    startDate: '2026-01-15',
-    endDate: '2026-02-28',
+    posterImage: '/images/event/thermage-flx/001.jpg',
+    thumbnailImage: '/images/event/thermage-flx/001.jpg',
+    imagePosition: 'center 25%', // 모델 얼굴 중상단 포커스
+    galleryImages: [
+      '/images/event/thermage-flx/001.jpg',
+      '/images/event/thermage-flx/002.jpg',
+      '/images/event/thermage-flx/003.jpg',
+      '/images/event/thermage-flx/004.jpg',
+      '/images/event/thermage-flx/005.jpg',
+      '/images/event/thermage-flx/006.jpg',
+      '/images/event/thermage-flx/007.jpg',
+    ],
+    startDate: '2025-01-01',
+    endDate: '2099-12-31', // 기한없이 광고용
     category: 'lifting',
     featured: false,
     relatedTreatments: ['/lifting/thermage'],
   },
   {
     id: 'goodbye-ulthera',
+    sortOrder: 5,
     title: {
       ko: '굿바이 울쎄라 | 울쎄라 리프팅 마지막 특가 이벤트',
       en: 'Goodbye Ulthera | Final Special Ulthera Lifting Event',
@@ -1451,16 +1506,30 @@ export const EVENTS: EventItem[] = [
       ja: 'ウルセラリフティング最終特価！見逃すと後悔する最低価格イベント。今すぐご予約を。',
       zh: '超声刀提升最后特价！错过将后悔的最低价活动。立即预约。',
     },
-    posterImage: '/images/placeholder-event.jpg',
-    thumbnailImage: '/images/placeholder-event.jpg',
-    startDate: '2026-01-01',
-    endDate: '2026-01-31',
+    posterImage: '/images/event/goodbye-ulthera/001.jpg',
+    thumbnailImage: '/images/event/goodbye-ulthera/001.jpg',
+    imagePosition: 'center 20%', // 모델 얼굴 중상단 포커스
+    galleryImages: [
+      '/images/event/goodbye-ulthera/001.jpg',
+      '/images/event/goodbye-ulthera/002.jpg',
+      '/images/event/goodbye-ulthera/003.jpg',
+      '/images/event/goodbye-ulthera/004.jpg',
+      '/images/event/goodbye-ulthera/005.jpg',
+      '/images/event/goodbye-ulthera/006.jpg',
+      '/images/event/goodbye-ulthera/007.jpg',
+      '/images/event/goodbye-ulthera/008.jpg',
+      '/images/event/goodbye-ulthera/009.jpg',
+      '/images/event/goodbye-ulthera/010.jpg',
+    ],
+    startDate: '2025-08-01',
+    endDate: '2025-11-30',
     category: 'lifting',
     featured: false,
     relatedTreatments: ['/lifting/ulthera'],
   },
   {
     id: 'density-event',
+    sortOrder: 6,
     title: {
       ko: '덴서티 이벤트',
       en: 'Density Event',
@@ -1473,10 +1542,14 @@ export const EVENTS: EventItem[] = [
       ja: 'HIFU+RFデュアルリフティング！デンシティで弾力とボリュームを同時に。特別割引実施中。',
       zh: 'HIFU+RF双重提升！用Density同时获得弹力和丰盈。特别折扣进行中。',
     },
-    posterImage: '/images/placeholder-event.jpg',
-    thumbnailImage: '/images/placeholder-event.jpg',
-    startDate: '2026-01-15',
-    endDate: '2026-02-28',
+    posterImage: '/images/event/density/001.png',
+    thumbnailImage: '/images/event/density/001.png',
+    imagePosition: 'center center', // 장비+가격 중앙 포커스
+    galleryImages: [
+      '/images/event/density/001.png',
+    ],
+    startDate: '2025-08-01',
+    endDate: '2025-11-30',
     category: 'lifting',
     featured: false,
     relatedTreatments: ['/lifting/density'],

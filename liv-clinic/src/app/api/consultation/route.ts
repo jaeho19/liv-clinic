@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createAdminClient } from '@/lib/supabase-admin';
 import { consultationFormSchema } from '@/types/consultation';
 import type { ConsultationResponse } from '@/types/consultation';
 
@@ -37,17 +37,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Supabase에 데이터 저장
-    const { data, error } = await (supabase as any)
+    // Supabase에 데이터 저장 (admin client로 RLS 우회)
+    const admin = createAdminClient();
+    const { data, error } = await admin
       .from('consultation_requests')
-      .insert([{
+      .insert({
         name,
-        password: password || null,
         phone,
         treatment_type: treatment,
         agree_privacy: agreePrivacy,
         status: 'pending',
-      }])
+        source: 'consultation-form',
+      })
       .select('id, created_at')
       .single();
 

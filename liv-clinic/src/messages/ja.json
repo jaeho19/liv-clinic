@@ -3794,8 +3794,9 @@
   "events": {
     "title": "イベント",
     "subtitle": "リブ形成外科の最新ニュースと特別特典をご確認ください",
-    "activeTab": "開催中イベント",
-    "endedTab": "終了イベント",
+    "allTab": "すべて",
+    "activeTab": "開催中",
+    "endedTab": "終了",
     "activeCount": "開催中",
     "endedCount": "終了",
     "viewDetails": "詳細を見る",

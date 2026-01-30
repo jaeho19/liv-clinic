@@ -3796,8 +3796,9 @@
   "events": {
     "title": "이벤트",
     "subtitle": "리브성형외과의 최신 소식과 특별 혜택을 확인하세요",
-    "activeTab": "진행중 이벤트",
-    "endedTab": "종료된 이벤트",
+    "allTab": "전체",
+    "activeTab": "진행중",
+    "endedTab": "종료",
     "activeCount": "진행중",
     "endedCount": "종료",
     "viewDetails": "자세히 보기",

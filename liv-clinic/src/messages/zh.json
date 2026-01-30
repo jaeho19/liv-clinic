@@ -3794,8 +3794,9 @@
   "events": {
     "title": "活动",
     "subtitle": "查看LIV整形外科的最新消息和特别优惠",
-    "activeTab": "进行中的活动",
-    "endedTab": "已结束的活动",
+    "allTab": "全部",
+    "activeTab": "进行中",
+    "endedTab": "已结束",
     "activeCount": "进行中",
     "endedCount": "已结束",
     "viewDetails": "查看详情",

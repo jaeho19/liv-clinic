@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { supabase } from '@/lib/supabase';
+import { createAdminClient } from '@/lib/supabase-admin';
 import { z } from 'zod';
 
 // 빠른 상담 폼 스키마 (간소화)
@@ -53,66 +53,23 @@ export async function POST(request: NextRequest) {
     // 전화번호에서 하이픈 제거
     const cleanPhone = phone.replace(/-/g, '');
 
-    // Supabase에 데이터 저장
-    const { data, error } = await (supabase as any)
-      .from('quick_consultations')
-      .insert([
-        {
-          name,
-          phone: cleanPhone,
-          agree_privacy: agreePrivacy,
-          source: source || 'quick-bar',
-          status: 'pending',
-        },
-      ])
+    // consultation_requests 테이블에 통합 저장 (admin client로 RLS 우회)
+    const admin = createAdminClient();
+    const { data, error } = await admin
+      .from('consultation_requests')
+      .insert({
+        name,
+        phone: cleanPhone,
+        treatment_type: '빠른 상담',
+        agree_privacy: agreePrivacy,
+        source: source || 'quick-bar',
+        status: 'pending',
+      })
       .select('id, created_at')
       .single();
 
     if (error) {
       console.error('Supabase insert error:', error);
-
-      // 테이블이 없는 경우 consultation_requests 테이블 사용 시도
-      if (error.code === '42P01') {
-        // 기존 테이블에 저장 시도
-        const { data: fallbackData, error: fallbackError } = await (supabase as any)
-          .from('consultation_requests')
-          .insert([
-            {
-              name,
-              phone: cleanPhone,
-              treatment_type: '빠른 상담',
-              agree_privacy: agreePrivacy,
-              status: 'pending',
-            },
-          ])
-          .select('id, created_at')
-          .single();
-
-        if (fallbackError) {
-          console.error('Fallback insert error:', fallbackError);
-          return NextResponse.json<QuickConsultResponse>(
-            {
-              success: false,
-              message: '상담 신청 저장에 실패했습니다. 잠시 후 다시 시도해주세요.',
-              error: fallbackError.message,
-            },
-            { status: 500 }
-          );
-        }
-
-        return NextResponse.json<QuickConsultResponse>(
-          {
-            success: true,
-            message: '상담 신청이 완료되었습니다. 빠른 시간 내에 연락드리겠습니다.',
-            data: {
-              id: fallbackData.id,
-              created_at: fallbackData.created_at,
-            },
-          },
-          { status: 201 }
-        );
-      }
-
       return NextResponse.json<QuickConsultResponse>(
         {
           success: false,

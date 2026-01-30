@@ -3794,8 +3794,9 @@
   "events": {
     "title": "Events",
     "subtitle": "Discover the latest news and special offers from LIV Plastic Surgery",
-    "activeTab": "Active Events",
-    "endedTab": "Past Events",
+    "allTab": "All",
+    "activeTab": "Active",
+    "endedTab": "Ended",
     "activeCount": "Active",
     "endedCount": "Ended",
     "viewDetails": "View Details",
