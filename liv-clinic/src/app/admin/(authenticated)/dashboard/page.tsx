@@ -1,5 +1,6 @@
 import { createServerClient } from '@/lib/supabase-server';
 import Link from 'next/link';
+import TodayCallbacks from '@/components/admin/TodayCallbacks';
 
 export default async function DashboardPage() {
   const supabase = await createServerClient();
@@ -8,43 +9,59 @@ export default async function DashboardPage() {
   const now = new Date();
   const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
+  const todayStr = now.toISOString().split('T')[0];
 
   const [
     { count: todayCount },
-    { count: pendingCount },
+    { count: callbackCount },
     { count: monthCount },
-    { data: recentConsultations },
     { count: activeEventsCount },
     { count: activePopupsCount },
+    { data: recentConsultations },
   ] = await Promise.all([
     supabase.from('consultation_requests').select('*', { count: 'exact', head: true }).gte('created_at', todayStart),
-    supabase.from('consultation_requests').select('*', { count: 'exact', head: true }).eq('status', 'pending'),
+    supabase.from('consultation_requests').select('*', { count: 'exact', head: true })
+      .in('status', ['callback_scheduled', 'no_answer', 're_contact'])
+      .gte('next_followup_at', `${todayStr}T00:00:00`)
+      .lte('next_followup_at', `${todayStr}T23:59:59`),
     supabase.from('consultation_requests').select('*', { count: 'exact', head: true }).gte('created_at', monthStart),
-    supabase.from('consultation_requests').select('*').order('created_at', { ascending: false }).limit(5),
     supabase.from('events').select('*', { count: 'exact', head: true }).eq('is_published', true).gte('end_date', now.toISOString().split('T')[0]),
     supabase.from('popups').select('*', { count: 'exact', head: true }).eq('is_active', true).lte('display_start', now.toISOString()).gte('display_end', now.toISOString()),
+    supabase.from('consultation_requests').select('*').order('created_at', { ascending: false }).limit(5),
   ]);
 
   const stats = [
     { label: '오늘 신규 상담', value: todayCount ?? 0, href: '/admin/consultations', color: 'bg-blue-50 text-blue-700' },
-    { label: '미처리 상담', value: pendingCount ?? 0, href: '/admin/consultations?status=pending', color: 'bg-amber-50 text-amber-700' },
+    { label: '오늘 콜백 예정', value: callbackCount ?? 0, href: '/admin/consultations', color: 'bg-amber-50 text-amber-700' },
     { label: '이번달 상담', value: monthCount ?? 0, href: '/admin/consultations', color: 'bg-green-50 text-green-700' },
     { label: '진행중 이벤트', value: activeEventsCount ?? 0, href: '/admin/events', color: 'bg-purple-50 text-purple-700' },
     { label: '활성 팝업', value: activePopupsCount ?? 0, href: '/admin/popups', color: 'bg-pink-50 text-pink-700' },
   ];
 
   const STATUS_LABELS: Record<string, string> = {
-    pending: '대기중',
-    contacted: '연락완료',
+    new: '신규',
+    callback_scheduled: '콜백 예정',
+    no_answer: '부재중',
+    re_contact: '재연락',
+    reservation_confirmed: '예약확정',
+    no_show: '노쇼',
     completed: '완료',
     cancelled: '취소',
+    pending: '대기중',
+    contacted: '연락완료',
   };
 
   const STATUS_COLORS: Record<string, string> = {
+    new: 'bg-amber-100 text-amber-700',
+    callback_scheduled: 'bg-blue-100 text-blue-700',
+    no_answer: 'bg-orange-100 text-orange-700',
+    re_contact: 'bg-purple-100 text-purple-700',
+    reservation_confirmed: 'bg-green-100 text-green-700',
+    no_show: 'bg-red-100 text-red-700',
+    completed: 'bg-emerald-100 text-emerald-700',
+    cancelled: 'bg-gray-100 text-gray-500',
     pending: 'bg-amber-100 text-amber-700',
     contacted: 'bg-blue-100 text-blue-700',
-    completed: 'bg-green-100 text-green-700',
-    cancelled: 'bg-gray-100 text-gray-500',
   };
 
   return (
@@ -67,6 +84,11 @@ export default async function DashboardPage() {
         ))}
       </div>
 
+      {/* Today Callbacks Widget */}
+      <div className="mb-8">
+        <TodayCallbacks />
+      </div>
+
       {/* Recent Consultations */}
       <div className="bg-white rounded-xl border border-[#e5e5e5] p-5">
         <div className="flex items-center justify-between mb-4">
@@ -84,7 +106,7 @@ export default async function DashboardPage() {
                   <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">이름</th>
                   <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">전화번호</th>
                   <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">시술</th>
-                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">문의내용</th>
+                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">담당자</th>
                   <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">상태</th>
                   <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">접수일</th>
                 </tr>
@@ -95,15 +117,7 @@ export default async function DashboardPage() {
                     <td className="py-2.5 px-3 font-medium">{c.name}</td>
                     <td className="py-2.5 px-3">{c.phone}</td>
                     <td className="py-2.5 px-3">{c.treatment_type}</td>
-                    <td className="py-2.5 px-3 max-w-[200px]">
-                      {c.message ? (
-                        <span className="text-xs text-[#575756] truncate block" title={c.message}>
-                          {c.message.length > 30 ? c.message.slice(0, 30) + '...' : c.message}
-                        </span>
-                      ) : (
-                        <span className="text-xs text-[#c0c0c0]">-</span>
-                      )}
-                    </td>
+                    <td className="py-2.5 px-3 text-[#8a8a8a]">{c.assignee || '-'}</td>
                     <td className="py-2.5 px-3">
                       <span className={`text-xs px-2 py-0.5 rounded-full ${STATUS_COLORS[c.status] || 'bg-gray-100 text-gray-500'}`}>
                         {STATUS_LABELS[c.status] || c.status}

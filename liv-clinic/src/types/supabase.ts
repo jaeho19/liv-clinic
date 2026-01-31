@@ -25,6 +25,12 @@ export interface Database {
           notes: string
           contacted_at: string | null
           source: string
+          assignee: string | null
+          next_followup_at: string | null
+          followup_outcome: string | null
+          procedure_tags: string[]
+          budget_range: string | null
+          availability: string | null
           created_at: string
           updated_at: string
         }
@@ -43,6 +49,12 @@ export interface Database {
           notes?: string
           contacted_at?: string | null
           source?: string
+          assignee?: string | null
+          next_followup_at?: string | null
+          followup_outcome?: string | null
+          procedure_tags?: string[]
+          budget_range?: string | null
+          availability?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -61,6 +73,12 @@ export interface Database {
           notes?: string
           contacted_at?: string | null
           source?: string
+          assignee?: string | null
+          next_followup_at?: string | null
+          followup_outcome?: string | null
+          procedure_tags?: string[]
+          budget_range?: string | null
+          availability?: string | null
           created_at?: string
           updated_at?: string
         }

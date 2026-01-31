@@ -14,15 +14,65 @@ export type ConsultationUpdate = Database['public']['Tables']['consultation_requ
 export type EventUpdate = Database['public']['Tables']['events']['Update'];
 export type PopupUpdate = Database['public']['Tables']['popups']['Update'];
 
-// Consultation status
+// Consultation status (legacy - 기존 호환용)
 export type ConsultationStatus = 'pending' | 'contacted' | 'completed' | 'cancelled';
 
-export const CONSULTATION_STATUS_LABELS: Record<ConsultationStatus, string> = {
-  pending: '대기중',
-  contacted: '연락완료',
+// Lead status (확장된 상태)
+export type LeadStatus =
+  | 'new'
+  | 'callback_scheduled'
+  | 'no_answer'
+  | 're_contact'
+  | 'reservation_confirmed'
+  | 'no_show'
+  | 'completed'
+  | 'cancelled';
+
+export const LEAD_STATUS_LABELS: Record<LeadStatus, string> = {
+  new: '신규',
+  callback_scheduled: '콜백 예정',
+  no_answer: '부재중',
+  re_contact: '재연락',
+  reservation_confirmed: '예약확정',
+  no_show: '노쇼',
   completed: '완료',
   cancelled: '취소',
 };
+
+export const LEAD_STATUS_COLORS: Record<LeadStatus, string> = {
+  new: 'bg-amber-100 text-amber-700',
+  callback_scheduled: 'bg-blue-100 text-blue-700',
+  no_answer: 'bg-orange-100 text-orange-700',
+  re_contact: 'bg-purple-100 text-purple-700',
+  reservation_confirmed: 'bg-green-100 text-green-700',
+  no_show: 'bg-red-100 text-red-700',
+  completed: 'bg-emerald-100 text-emerald-700',
+  cancelled: 'bg-gray-100 text-gray-500',
+};
+
+// Legacy mapping (기존 코드 호환)
+export const CONSULTATION_STATUS_LABELS: Record<string, string> = {
+  ...LEAD_STATUS_LABELS,
+  pending: '대기중',
+  contacted: '연락완료',
+};
+
+// Procedure tags (관심 시술 태그)
+export const PROCEDURE_TAG_OPTIONS = [
+  '울쎄라', '써마지', '덴서티', '인모드', '슈링크', '실리프팅', '압토스',
+  '보톡스', '필러', '스킨부스터',
+  '색소 레이저', '혈관 레이저', '제모 레이저', '문신 제거', '피부톤 레이저',
+] as const;
+
+// Budget range options
+export const BUDGET_RANGE_OPTIONS = [
+  '50만원 이하',
+  '50~100만원',
+  '100~200만원',
+  '200~300만원',
+  '300만원 이상',
+  '미정',
+] as const;
 
 // Event category
 export type EventCategory = 'lifting' | 'antiaging' | 'laser' | 'skincare' | 'all';

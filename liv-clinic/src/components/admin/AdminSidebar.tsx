@@ -4,11 +4,41 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase-browser';
 
-const NAV_ITEMS = [
-  { href: '/admin/dashboard', label: '대시보드', icon: '📊' },
-  { href: '/admin/consultations', label: '상담관리', icon: '📋' },
-  { href: '/admin/events', label: '이벤트관리', icon: '🎉' },
-  { href: '/admin/popups', label: '팝업관리', icon: '🪟' },
+interface NavItem {
+  href: string;
+  label: string;
+  icon: string;
+}
+
+interface NavSection {
+  title: string;
+  items: NavItem[];
+}
+
+const NAV_SECTIONS: NavSection[] = [
+  {
+    title: '병원 운영',
+    items: [
+      { href: '/admin/dashboard', label: '대시보드', icon: '📊' },
+      { href: '/admin/consultations', label: '상담관리', icon: '📋' },
+      { href: '/admin/operations', label: '운영현황', icon: '🏥' },
+      { href: '/admin/inventory', label: '재고관리', icon: '📦' },
+      { href: '/admin/reports', label: '리포트', icon: '📈' },
+    ],
+  },
+  {
+    title: '홈페이지 관리',
+    items: [
+      { href: '/admin/events', label: '이벤트관리', icon: '🎉' },
+      { href: '/admin/popups', label: '팝업관리', icon: '🪟' },
+    ],
+  },
+  {
+    title: '시스템',
+    items: [
+      { href: '/admin/settings', label: '설정', icon: '⚙️' },
+    ],
+  },
 ];
 
 export default function AdminSidebar() {
@@ -28,30 +58,38 @@ export default function AdminSidebar() {
         <Link href="/admin/dashboard">
           <h1 className="text-lg font-bold text-[#6d4e42]">LIV 관리자</h1>
         </Link>
-        <p className="text-xs text-[#8a8a8a] mt-0.5">홈페이지 관리 시스템</p>
+        <p className="text-xs text-[#8a8a8a] mt-0.5">병원 운영 관리 시스템</p>
       </div>
 
-      <nav className="flex-1 p-3">
-        <ul className="space-y-1">
-          {NAV_ITEMS.map((item) => {
-            const isActive = pathname.startsWith(item.href);
-            return (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                    isActive
-                      ? 'bg-[#b4988d]/10 text-[#6d4e42] font-medium'
-                      : 'text-[#575756] hover:bg-[#f6f6f6]'
-                  }`}
-                >
-                  <span className="text-base">{item.icon}</span>
-                  {item.label}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+      <nav className="flex-1 p-3 overflow-y-auto">
+        {NAV_SECTIONS.map((section, idx) => (
+          <div key={section.title}>
+            {idx > 0 && <div className="border-t border-[#e5e5e5] my-2" />}
+            <p className="px-3 py-1.5 text-[10px] font-semibold text-[#b4988d] uppercase tracking-wider">
+              {section.title}
+            </p>
+            <ul className="space-y-0.5">
+              {section.items.map((item) => {
+                const isActive = pathname.startsWith(item.href);
+                return (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors ${
+                        isActive
+                          ? 'bg-[#b4988d]/10 text-[#6d4e42] font-medium'
+                          : 'text-[#575756] hover:bg-[#f6f6f6]'
+                      }`}
+                    >
+                      <span className="text-base">{item.icon}</span>
+                      {item.label}
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        ))}
       </nav>
 
       <div className="p-3 border-t border-[#e5e5e5]">
