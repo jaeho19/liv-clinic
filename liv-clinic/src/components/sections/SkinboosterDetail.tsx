@@ -238,7 +238,7 @@ const PremiumCourseTimeline = ({ courseData }: { courseData: CourseTimelineItem[
           transition={{ duration: 2, delay: 0.5 }}
         />
 
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {courseData.map((item, i) => (
             <motion.div
               key={i}
@@ -352,7 +352,7 @@ export default function SkinboosterDetail() {
   return (
     <main className="bg-white overflow-hidden">
       {/* Hero Section - Premium */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen-dvh flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#F7FAFA] via-white to-[#F0F6F6]" />
           <div className="absolute inset-0 bg-gradient-to-t from-transparent via-transparent to-[#7BA3A8]/5" />

@@ -539,7 +539,7 @@ export default function ThermageDetail() {
   return (
     <>
       {/* Hero Section - Premium Full Screen with Gold Accent */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#FF6B35]/10 via-background to-primary/5" />
 

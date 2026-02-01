@@ -45,13 +45,13 @@ export default function AntiagingPage({
       <section className="section-gap bg-white">
         <div className="container-custom">
           <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-primary mb-4">{t('lineup.subtitle')}</p>
+            <div className="text-center mb-8 md:mb-16">
+              <p className="font-serif text-h3 text-primary mb-2 md:mb-4">{t('lineup.subtitle')}</p>
               <h2 className="text-h1 text-secondary">{t('lineup.title')}</h2>
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
             {antiagingTreatments.map((treatment) => (
               <AnimateOnScroll key={treatment.id}>
                 <Link href={`/antiaging/${treatment.id}`}>
@@ -68,12 +68,12 @@ export default function AntiagingPage({
                       </div>
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <div className="p-6">
-                      <p className="text-small text-primary mb-2">{treatment.nameEn}</p>
-                      <h3 className="text-h3 text-secondary group-hover:text-primary transition-colors mb-3">
+                    <div className="p-4 md:p-6">
+                      <p className="text-small text-primary mb-1 md:mb-2">{treatment.nameEn}</p>
+                      <h3 className="text-h3 text-secondary group-hover:text-primary transition-colors mb-2 md:mb-3">
                         {treatment.name}
                       </h3>
-                      <p className="text-body text-mono line-clamp-2 mb-4">
+                      <p className="text-body text-mono line-clamp-2 mb-3 md:mb-4">
                         {treatment.description}
                       </p>
                       <div className="flex items-center gap-4 text-small text-mono-light">
@@ -102,12 +102,12 @@ export default function AntiagingPage({
       {/* Benefits */}
       <section className="section-gap bg-background">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <AnimateOnScroll animation="fadeInLeft">
               <div>
-                <p className="font-serif text-h3 text-primary mb-4">{t('benefits.subtitle')}</p>
-                <h2 className="text-h1 text-secondary mb-6">{t('benefits.title')}</h2>
-                <p className="text-body text-mono leading-relaxed mb-8">
+                <p className="font-serif text-h3 text-primary mb-2 md:mb-4">{t('benefits.subtitle')}</p>
+                <h2 className="text-h1 text-secondary mb-4 md:mb-6">{t('benefits.title')}</h2>
+                <p className="text-body text-mono leading-relaxed mb-5 md:mb-8">
                   {t('benefits.description')}
                 </p>
 

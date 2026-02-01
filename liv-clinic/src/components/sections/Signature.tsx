@@ -44,7 +44,7 @@ export default function Signature() {
     <section className="section-gap bg-white">
       <div className="container-custom">
         <AnimateOnScroll animation="fadeInUpSmooth">
-          <div className="text-center mb-8 md:mb-16">
+          <div className="text-center mb-6 md:mb-16">
             <motion.p
               className="font-serif text-xl md:text-h3 text-primary mb-1 md:mb-2"
               initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export default function Signature() {
           </div>
         </AnimateOnScroll>
 
-        <StaggerChildren className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8" staggerDelay={0.15}>
+        <StaggerChildren className="grid grid-cols-1 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8" staggerDelay={0.15}>
           {programs.map((program, index) => (
             <StaggerItem key={program.id} variant="scale">
               <motion.div
@@ -75,7 +75,7 @@ export default function Signature() {
                 transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
               >
                 <Link href={program.href} className="block h-full">
-                  <div className="relative h-full bg-white rounded-2xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500">
+                  <div className="relative h-full bg-white rounded-xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500">
                     {/* Background Image */}
                     <div className="absolute inset-0">
                       <div
@@ -87,29 +87,29 @@ export default function Signature() {
                     </div>
 
                     {/* Content */}
-                    <div className="relative z-10 h-full flex flex-col p-5 md:p-6 lg:p-8 text-white min-h-[320px] md:min-h-[400px] lg:min-h-[480px]">
+                    <div className="relative z-10 h-full flex flex-col p-4 md:p-6 lg:p-8 text-white min-h-[260px] md:min-h-[400px] lg:min-h-[480px]">
                       {/* Number */}
-                      <span className="absolute top-4 right-4 md:top-6 md:right-6 font-serif text-4xl md:text-5xl lg:text-6xl opacity-20">
+                      <span className="absolute top-3 right-3 md:top-6 md:right-6 font-serif text-3xl md:text-5xl lg:text-6xl opacity-20">
                         0{index + 1}
                       </span>
 
                       {/* Title */}
                       <div className="mb-auto">
-                        <h3 className="card-title-ko text-2xl md:text-3xl lg:text-4xl mb-0.5 md:mb-1">{program.title}</h3>
-                        <p className="text-xs md:text-sm opacity-60 mb-1 md:mb-2">{program.titleEn}</p>
-                        <p className="text-sm md:text-base lg:text-lg opacity-80">{program.subtitle}</p>
+                        <h3 className="card-title-ko text-xl md:text-3xl lg:text-4xl mb-0.5 md:mb-1">{program.title}</h3>
+                        <p className="text-[11px] md:text-sm opacity-60 mb-0.5 md:mb-2">{program.titleEn}</p>
+                        <p className="text-xs md:text-base lg:text-lg opacity-80">{program.subtitle}</p>
                       </div>
 
                       {/* Description */}
-                      <div className="mt-4 md:mt-6 lg:mt-8">
-                        <p className="text-sm md:text-base opacity-90 mb-4 md:mb-6 leading-relaxed line-clamp-2 sm:line-clamp-3 md:line-clamp-none">
+                      <div className="mt-3 md:mt-6 lg:mt-8">
+                        <p className="text-xs md:text-base opacity-90 mb-3 md:mb-6 leading-relaxed line-clamp-2 sm:line-clamp-3 md:line-clamp-none">
                           {program.description}
                         </p>
 
                         {/* Features */}
-                        <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6 lg:mb-8">
+                        <ul className="space-y-1 md:space-y-2 mb-3 md:mb-6 lg:mb-8">
                           {program.features.map((feature, idx) => (
-                            <li key={idx} className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm opacity-80">
+                            <li key={idx} className="flex items-center gap-1 md:gap-2 text-[11px] md:text-sm opacity-80">
                               <svg
                                 className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0"
                                 fill="currentColor"
@@ -127,7 +127,7 @@ export default function Signature() {
                         </ul>
 
                         {/* CTA */}
-                        <div className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm font-medium group-hover:gap-3 md:group-hover:gap-4 transition-all">
+                        <div className="flex items-center gap-1 md:gap-2 text-[11px] md:text-sm font-medium group-hover:gap-2 md:group-hover:gap-4 transition-all">
                           <span>{tCommon('learnMore')}</span>
                           <svg
                             className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform"
@@ -147,7 +147,7 @@ export default function Signature() {
                     </div>
 
                     {/* Hover Effect Border */}
-                    <div className="absolute inset-0 rounded-2xl md:rounded-3xl border-2 border-white/0 group-hover:border-white/20 transition-colors duration-300" />
+                    <div className="absolute inset-0 rounded-xl md:rounded-3xl border-2 border-white/0 group-hover:border-white/20 transition-colors duration-300" />
                   </div>
                 </Link>
               </motion.div>

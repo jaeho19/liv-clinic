@@ -81,13 +81,13 @@ export default async function LocaleLayout({
         />
         <GoogleAnalytics />
       </head>
-      <body className="antialiased">
+      <body className="antialiased overflow-x-clip w-full">
         <a href="#main-content" className="skip-link">
           {skipToContentText[locale as keyof typeof skipToContentText] || skipToContentText.en}
         </a>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main id="main-content" className="min-h-screen page-enter pb-20 sm:pb-16" role="main">{children}</main>
+          <main id="main-content" className="min-h-[100dvh] page-enter pb-20 sm:pb-16 overflow-x-clip" role="main">{children}</main>
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />

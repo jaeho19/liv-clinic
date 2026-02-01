@@ -948,7 +948,7 @@ export default function FillerDetail() {
   return (
     <main className="bg-white overflow-hidden">
       {/* Hero Section - Premium Design */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen-dvh flex items-center justify-center overflow-hidden">
         {/* Multi-layer gradient background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#FAF8F6] via-white to-[#F5F0EB]" />

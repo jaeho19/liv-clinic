@@ -53,7 +53,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-gradient-to-b from-primary/10 to-background overflow-hidden">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
             <AnimateOnScroll animation="fadeInLeft">
               <div>
                 <p className="font-serif text-h3 text-primary mb-2">{treatment.nameEn}</p>
@@ -62,7 +62,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                 <p className="text-h4 text-mono leading-relaxed mb-8">
                   {treatment.shortDesc}
                 </p>
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <ScrollLink href="/contact">
                     <Button variant="primary" size="lg">
                       상담 예약하기
@@ -103,9 +103,9 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <AnimateOnScroll>
-              <div className="text-center mb-16">
+              <div className="text-center mb-8 md:mb-16">
                 <p className="font-serif text-h3 text-primary mb-2">About</p>
-                <h2 className="text-h1 text-secondary mb-8">{treatment.name}란?</h2>
+                <h2 className="text-h1 text-secondary mb-4 md:mb-8">{treatment.name}란?</h2>
                 <p className="text-body text-mono leading-relaxed">
                   {treatment.description}
                 </p>
@@ -119,20 +119,20 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
       <section className="section-gap bg-background">
         <div className="container-custom">
           <AnimateOnScroll>
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 md:mb-16">
               <p className="font-serif text-h3 text-primary mb-2">Benefits</p>
               <h2 className="text-h1 text-secondary">{treatment.name}의 장점</h2>
             </div>
           </AnimateOnScroll>
 
-          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
             {treatment.benefits.map((benefit, index) => (
               <StaggerItem key={index}>
                 <Card padding="lg" className="text-center h-full">
-                  <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="font-serif text-2xl text-primary">0{index + 1}</span>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">{benefit.title}</h3>
+                  <h3 className="text-h4 text-secondary mb-2 md:mb-3">{benefit.title}</h3>
                   <p className="text-body text-mono-light">{benefit.desc}</p>
                 </Card>
               </StaggerItem>
@@ -145,7 +145,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
       <section className="section-gap bg-white">
         <div className="container-custom">
           <AnimateOnScroll>
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 md:mb-16">
               <p className="font-serif text-h3 text-primary mb-2">Process</p>
               <h2 className="text-h1 text-secondary">시술 과정</h2>
             </div>
@@ -156,18 +156,18 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
               {/* Timeline line */}
               <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-primary/20 hidden md:block" />
 
-              <div className="space-y-8">
+              <div className="space-y-5 md:space-y-8">
                 {treatment.process.map((step, index) => (
                   <motion.div
                     key={step.step}
-                    className="relative flex gap-6 md:gap-8"
+                    className="relative flex gap-4 md:gap-8"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.1 }}
                   >
                     {/* Step number */}
-                    <div className="flex-shrink-0 w-16 h-16 rounded-full bg-primary text-white flex items-center justify-center font-serif text-xl z-10">
+                    <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 rounded-full bg-primary text-white flex items-center justify-center font-serif text-lg md:text-xl z-10">
                       {step.step}
                     </div>
 
@@ -194,11 +194,11 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             <AnimateOnScroll>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-white/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -208,8 +208,8 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             </AnimateOnScroll>
             <AnimateOnScroll>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-white/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
@@ -219,8 +219,8 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             </AnimateOnScroll>
             <AnimateOnScroll>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-white/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
@@ -230,8 +230,8 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             </AnimateOnScroll>
             <AnimateOnScroll>
               <div className="text-center">
-                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-white/10 flex items-center justify-center">
-                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-3 md:mb-4 rounded-full bg-white/10 flex items-center justify-center">
+                  <svg className="w-6 h-6 md:w-8 md:h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
@@ -246,7 +246,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
       {/* Target Areas & Ideal For */}
       <section className="section-gap bg-background">
         <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-16">
             {/* Target Areas */}
             <AnimateOnScroll animation="fadeInLeft">
               <Card padding="lg">
@@ -325,7 +325,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
       <section className="section-gap bg-background">
         <div className="container-custom">
           <AnimateOnScroll>
-            <div className="text-center mb-16">
+            <div className="text-center mb-8 md:mb-16">
               <p className="font-serif text-h3 text-primary mb-2">FAQ</p>
               <h2 className="text-h1 text-secondary">자주 묻는 질문</h2>
             </div>
@@ -451,7 +451,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
               <p className="text-h4 opacity-80 mb-8">
                 전문 의료진과 1:1 맞춤 상담을 받아보세요.
               </p>
-              <div className="flex justify-center gap-4">
+              <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
                 <ScrollLink href="/contact">
                   <Button variant="primary" size="lg" className="bg-primary text-white hover:bg-secondary">
                     상담 예약하기
@@ -473,13 +473,13 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
         <section className="section-gap bg-white">
           <div className="container-custom">
             <AnimateOnScroll>
-              <div className="text-center mb-16">
+              <div className="text-center mb-8 md:mb-16">
                 <p className="font-serif text-h3 text-primary mb-2">Related</p>
                 <h2 className="text-h1 text-secondary">함께 보면 좋은 시술</h2>
               </div>
             </AnimateOnScroll>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
               {treatment.relatedTreatments.slice(0, 3).map((relatedId) => {
                 // Find related treatment from all categories
                 const related =

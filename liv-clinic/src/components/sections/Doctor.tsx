@@ -44,7 +44,7 @@ export default function Doctor() {
   return (
     <section className="section-gap bg-white overflow-hidden">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
           {/* Image */}
           <AnimateOnScroll animation="slideInLeft">
             <div className="relative">
@@ -65,20 +65,20 @@ export default function Doctor() {
                 </div>
               </div>
 
-              {/* Decorative elements */}
-              <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl" />
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-2xl -z-10" />
+              {/* Decorative elements - 모바일에서 숨김 (오버플로우 방지) */}
+              <div className="absolute -top-6 -left-6 w-24 h-24 border-2 border-primary/20 rounded-2xl hidden md:block" />
+              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-primary/10 rounded-2xl -z-10 hidden md:block" />
 
               {/* Certification badges */}
               <motion.div
-                className="absolute -right-4 bottom-32 bg-white rounded-2xl shadow-xl p-5"
+                className="absolute right-2 sm:-right-4 bottom-28 sm:bottom-32 bg-white rounded-xl sm:rounded-2xl shadow-xl p-3 sm:p-5"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                     </svg>
@@ -92,14 +92,14 @@ export default function Doctor() {
 
               {/* APTOS Global Expert badge */}
               <motion.div
-                className="absolute -right-4 bottom-8 bg-gradient-to-r from-secondary to-primary rounded-2xl shadow-xl p-5"
+                className="absolute right-2 sm:-right-4 bottom-4 sm:bottom-8 bg-gradient-to-r from-secondary to-primary rounded-xl sm:rounded-2xl shadow-xl p-3 sm:p-5"
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.6 }}
               >
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-white/20 flex items-center justify-center">
                     <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -127,7 +127,7 @@ export default function Doctor() {
                 {t('title')}
               </motion.p>
               <motion.h2
-                className="text-h1 text-secondary mb-8"
+                className="text-h1 text-secondary mb-4 md:mb-8"
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -137,22 +137,22 @@ export default function Doctor() {
               </motion.h2>
 
               {/* Doctor Info */}
-              <div className="mb-8">
+              <div className="mb-5 md:mb-8">
                 <h3 className="text-h2 text-secondary mb-1">{doctor.name}</h3>
                 <p className="font-serif text-xl text-mono-light mb-2">{doctor.nameEn}</p>
                 <p className="text-body text-primary font-medium">{doctor.title}</p>
               </div>
 
               {/* Philosophy */}
-              <blockquote className="relative pl-6 border-l-4 border-primary mb-10">
+              <blockquote className="relative pl-6 border-l-4 border-primary mb-6 md:mb-10">
                 <p className="text-h4 text-mono italic leading-relaxed">
                   "{doctor.philosophy}"
                 </p>
               </blockquote>
 
               {/* Credentials */}
-              <div className="mb-8">
-                <h4 className="text-h4 text-secondary mb-4">{t('credentials')}</h4>
+              <div className="mb-5 md:mb-8">
+                <h4 className="text-h4 text-secondary mb-3 md:mb-4">{t('credentials')}</h4>
                 <ul className="space-y-2">
                   {doctor.credentials.map((credential, index) => (
                     <li key={index} className="flex items-center gap-3 text-body text-mono">
@@ -164,8 +164,8 @@ export default function Doctor() {
               </div>
 
               {/* International Activities Mini Gallery */}
-              <div className="mb-10">
-                <h4 className="text-h4 text-secondary mb-4 flex items-center gap-2">
+              <div className="mb-6 md:mb-10">
+                <h4 className="text-h4 text-secondary mb-3 md:mb-4 flex items-center gap-2">
                   <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
@@ -211,7 +211,7 @@ export default function Doctor() {
 
         {/* YouTube Video Section */}
         <AnimateOnScroll>
-          <div className="mt-20 pt-16 border-t border-border">
+          <div className="mt-12 md:mt-20 pt-10 md:pt-16 border-t border-border">
             <div className="text-center mb-10">
               <p className="font-serif text-h3 text-primary mb-2">{t('youtube.title')}</p>
               <h3 className="text-h2 text-secondary">{t('youtube.subtitle')}</h3>

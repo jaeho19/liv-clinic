@@ -822,7 +822,7 @@ export default function BotoxDetail() {
   return (
     <main className="bg-[#FAFAFA] overflow-hidden">
       {/* Hero - Premium Design */}
-      <section className="relative min-h-screen flex items-center">
+      <section className="relative min-h-screen-dvh flex items-center">
         {/* Multi-layer gradient background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-[#F9F6F3] via-white to-[#F5F0EB]" />

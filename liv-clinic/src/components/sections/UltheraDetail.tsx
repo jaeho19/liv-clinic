@@ -548,7 +548,7 @@ export default function UltheraDetail() {
       <StickyCtaBar phoneNumber="02-797-2773" />
 
       {/* Hero Section - Premium Full Screen with Video */}
-      <section className="relative min-h-[70vh] md:min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-70-dvh md:min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         {/* Premium gradient background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#f9f6f3] via-background to-secondary/5" />
 

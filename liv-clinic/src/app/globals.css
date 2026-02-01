@@ -177,6 +177,7 @@ textarea:focus-visible {
 /* Base Styles */
 html {
   scroll-behavior: smooth;
+  overflow-x: clip; /* 가로 스크롤 방지 - clip은 fixed 요소를 클리핑하지 않음 */
 }
 
 body {
@@ -188,6 +189,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   word-break: keep-all; /* 한글 단어 중간에서 줄바꿈 방지 */
+  overflow-x: clip; /* 가로 스크롤 원인 요소 차단 - clip은 fixed 요소를 클리핑하지 않음 */
+  width: 100%;
 }
 
 /* Typography Scale */
@@ -289,6 +292,7 @@ body {
   margin: 0 auto;
   padding-left: var(--container-padding);
   padding-right: var(--container-padding);
+  overflow-x: clip; /* -mx-4/-mx-6 자식 요소 overflow 방지 */
 }
 
 /* Section Spacing */
@@ -392,6 +396,13 @@ body {
 
 .card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* 모바일 카드 최적화 */
+@media (max-width: 480px) {
+  .card {
+    border-radius: 12px;
+  }
 }
 
 /* Selection Color */
@@ -645,4 +656,31 @@ img {
     mix-blend-mode: screen;
     transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+}
+
+/* ===== 모바일 viewport 높이 유틸리티 (dvh with vh fallback) ===== */
+/* dvh: 모바일 주소창 변화에 동적 대응, vh: 미지원 브라우저 fallback */
+.min-h-screen-dvh {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+.h-screen-dvh {
+  height: 100vh;
+  height: 100dvh;
+}
+
+.min-h-70-dvh {
+  min-height: 70vh;
+  min-height: 70dvh;
+}
+
+.h-60-dvh {
+  height: 60vh;
+  height: 60dvh;
+}
+
+.h-85-dvh {
+  height: 85vh;
+  height: 85dvh;
 }

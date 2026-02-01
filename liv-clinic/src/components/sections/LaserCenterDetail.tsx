@@ -71,7 +71,7 @@ const CategoryCard = ({ category, index, viewMoreLabel }: CategoryCardProps) => 
     transition={{ delay: index * 0.1 }}
   >
     <Link href={category.href}>
-      <div className="group relative bg-white rounded-2xl p-6 border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 hover:shadow-lg transition-all h-full">
+      <div className="group relative bg-white rounded-xl md:rounded-2xl p-4 md:p-6 border border-[var(--color-border)] hover:border-[var(--color-primary)]/50 hover:shadow-lg transition-all h-full">
         {/* 아이콘 */}
         <div className="text-4xl mb-4">{category.icon}</div>
 
@@ -127,7 +127,7 @@ interface EquipmentCardProps {
 
 const EquipmentCard = ({ name, nameKo, wavelength, feature, targets, highlight = false, labels }: EquipmentCardProps) => (
   <motion.div
-    className={`relative rounded-2xl p-6 h-full ${
+    className={`relative rounded-xl md:rounded-2xl p-4 md:p-6 h-full ${
       highlight
         ? 'bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-primary)]/5 border-2 border-[var(--color-primary)]/30'
         : 'bg-white border border-[var(--color-border)]'
@@ -381,7 +381,7 @@ export default function LaserCenterDetail() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <AnimateOnScroll animation="fadeInUp">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8 md:mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
                 {detail.categories.title}
               </h2>
@@ -403,7 +403,7 @@ export default function LaserCenterDetail() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <AnimateOnScroll animation="fadeInUp">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8 md:mb-12">
               <span className="inline-block bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
                 {detail.matrix.badge}
               </span>
@@ -432,7 +432,7 @@ export default function LaserCenterDetail() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <AnimateOnScroll animation="fadeInUp">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8 md:mb-12">
               <span className="inline-block bg-[var(--color-primary)]/10 text-[var(--color-primary)] text-sm font-medium px-4 py-1 rounded-full mb-4">
                 {detail.equipmentSection.badge}
               </span>
@@ -484,20 +484,20 @@ export default function LaserCenterDetail() {
             <div className="grid md:grid-cols-3 gap-6">
               {detail.synergy.benefits.map((benefit, idx) => {
                 const icons = [
-                  <svg key="icon1" className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg key="icon1" className="w-6 h-6 md:w-8 md:h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>,
-                  <svg key="icon2" className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg key="icon2" className="w-6 h-6 md:w-8 md:h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>,
-                  <svg key="icon3" className="w-8 h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg key="icon3" className="w-6 h-6 md:w-8 md:h-8 text-[var(--color-primary)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>,
                 ];
                 return (
                   <AnimateOnScroll key={idx} animation="fadeInUp" delay={0.1 + idx * 0.1}>
-                    <div className="bg-white rounded-2xl p-6 text-center">
-                      <div className="w-16 h-16 bg-[var(--color-primary)]/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div className="bg-white rounded-xl md:rounded-2xl p-4 md:p-6 text-center">
+                      <div className="w-12 h-12 md:w-16 md:h-16 bg-[var(--color-primary)]/10 rounded-xl md:rounded-2xl flex items-center justify-center mx-auto mb-3 md:mb-4">
                         {icons[idx]}
                       </div>
                       <h4 className="text-lg font-semibold text-[var(--color-secondary)] mb-2">{benefit.title}</h4>
@@ -515,7 +515,7 @@ export default function LaserCenterDetail() {
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-4">
           <AnimateOnScroll animation="fadeInUp">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8 md:mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
                 {detail.process.title}
               </h2>
@@ -544,7 +544,7 @@ export default function LaserCenterDetail() {
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-4">
           <AnimateOnScroll animation="fadeInUp">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8 md:mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-secondary)] mb-4">
                 {detail.faq.title}
               </h2>

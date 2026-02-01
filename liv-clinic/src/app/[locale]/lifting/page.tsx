@@ -46,18 +46,18 @@ export default function LiftingPage({
       <section className="section-gap bg-white">
         <div className="container-custom">
           <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-primary mb-4">{t('lineup.subtitle')}</p>
+            <div className="text-center mb-8 md:mb-16">
+              <p className="font-serif text-h3 text-primary mb-2 md:mb-4">{t('lineup.subtitle')}</p>
               <h2 className="text-h1 text-secondary">{t('lineup.title')}</h2>
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {liftingTreatmentIds.map((treatmentId) => (
               <AnimateOnScroll key={treatmentId}>
                 <Link href={`/lifting/${treatmentId}`}>
                   <Card padding="none" className="overflow-hidden group cursor-pointer h-full">
-                    <div className="aspect-[4/5] bg-gradient-to-b from-white to-background relative overflow-hidden flex items-center justify-center p-6">
+                    <div className="aspect-[4/3] md:aspect-[4/5] bg-gradient-to-b from-white to-background relative overflow-hidden flex items-center justify-center p-4 md:p-6">
                       <img
                         src={`/images/treatments/${treatmentId}.png`}
                         alt={t(`treatments.${treatmentId}.name`)}
@@ -65,12 +65,12 @@ export default function LiftingPage({
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <div className="p-6">
-                      <p className="text-small text-primary mb-2">{t(`treatments.${treatmentId}.nameEn`)}</p>
-                      <h3 className="text-h3 text-secondary group-hover:text-primary transition-colors mb-3">
+                    <div className="p-4 md:p-6">
+                      <p className="text-small text-primary mb-1 md:mb-2">{t(`treatments.${treatmentId}.nameEn`)}</p>
+                      <h3 className="text-h3 text-secondary group-hover:text-primary transition-colors mb-2 md:mb-3">
                         {t(`treatments.${treatmentId}.name`)}
                       </h3>
-                      <p className="text-body text-mono line-clamp-2 mb-4">
+                      <p className="text-body text-mono line-clamp-2 mb-3 md:mb-4">
                         {t(`treatments.${treatmentId}.description`)}
                       </p>
                       <div className="flex items-center gap-4 text-small text-mono-light">
@@ -103,21 +103,21 @@ export default function LiftingPage({
       <section className="section-gap bg-background">
         <div className="container-custom">
           <AnimateOnScroll>
-            <div className="text-center mb-16">
-              <p className="font-serif text-h3 text-primary mb-4">{t('whyChoose.subtitle')}</p>
+            <div className="text-center mb-8 md:mb-16">
+              <p className="font-serif text-h3 text-primary mb-2 md:mb-4">{t('whyChoose.subtitle')}</p>
               <h2 className="text-h1 text-secondary">{t('whyChoose.title')}</h2>
             </div>
           </AnimateOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
             <AnimateOnScroll>
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 md:w-20 md:h-20 mx-auto mb-3 md:mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg className="w-7 h-7 md:w-10 md:h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                   </svg>
                 </div>
-                <h3 className="text-h4 text-secondary mb-3">{t('whyChoose.certification.title')}</h3>
+                <h3 className="text-h4 text-secondary mb-2 md:mb-3">{t('whyChoose.certification.title')}</h3>
                 <p className="text-body text-mono">
                   {t('whyChoose.certification.description1')}
                   <br />
@@ -128,12 +128,12 @@ export default function LiftingPage({
 
             <AnimateOnScroll>
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 md:w-20 md:h-20 mx-auto mb-3 md:mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg className="w-7 h-7 md:w-10 md:h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <h3 className="text-h4 text-secondary mb-3">{t('whyChoose.experts.title')}</h3>
+                <h3 className="text-h4 text-secondary mb-2 md:mb-3">{t('whyChoose.experts.title')}</h3>
                 <p className="text-body text-mono">
                   {t('whyChoose.experts.description1')}
                   <br />
@@ -144,12 +144,12 @@ export default function LiftingPage({
 
             <AnimateOnScroll>
               <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
-                  <svg className="w-10 h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-14 h-14 md:w-20 md:h-20 mx-auto mb-3 md:mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                  <svg className="w-7 h-7 md:w-10 md:h-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
                   </svg>
                 </div>
-                <h3 className="text-h4 text-secondary mb-3">{t('whyChoose.customized.title')}</h3>
+                <h3 className="text-h4 text-secondary mb-2 md:mb-3">{t('whyChoose.customized.title')}</h3>
                 <p className="text-body text-mono">
                   {t('whyChoose.customized.description1')}
                   <br />

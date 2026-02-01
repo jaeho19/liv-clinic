@@ -474,7 +474,7 @@ export default function ShurinkDetail() {
   return (
     <>
       {/* Hero Section - Premium Full Screen (써마지/덴서티와 동일한 스타일) */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         {/* Background gradient - 슈링크 색상 유지 */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#00D4FF]/10 via-background to-[#0099CC]/5" />
 

@@ -483,7 +483,7 @@ export default function DensityDetail() {
   return (
     <>
       {/* Hero Section - Premium Full Screen with Gold Accent */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         {/* Background gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#8B5CF6]/10 via-background to-[#06B6D4]/5" />
 

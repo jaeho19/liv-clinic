@@ -251,7 +251,7 @@ export default function VascularDetail() {
   return (
     <main className="bg-white">
       {/* 히어로 섹션 */}
-      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-gradient-to-b from-red-50 to-white">
+      <section className="relative min-h-70-dvh flex items-center justify-center overflow-hidden bg-gradient-to-b from-red-50 to-white">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-20 left-20 w-64 h-64 bg-red-400 rounded-full blur-3xl" />
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-pink-400 rounded-full blur-3xl" />

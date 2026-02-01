@@ -98,7 +98,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative h-[100svh] sm:h-[85vh] min-h-[500px] w-full overflow-hidden">
+    <section className="relative h-[100vh] h-[100dvh] sm:h-[85vh] sm:h-[85dvh] min-h-[500px] w-full overflow-hidden">
       <div className="absolute inset-0 bg-primary">
         <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/90 to-secondary/70" />
         {/* 비디오 최적화 (Vercel Best Practice: rendering-hydration-no-flicker)

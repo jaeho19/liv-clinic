@@ -19,9 +19,9 @@ const variants = {
 
 const paddings = {
   none: '',
-  sm: 'p-4',
-  md: 'p-6',
-  lg: 'p-8',
+  sm: 'p-3 md:p-4',
+  md: 'p-4 md:p-6',
+  lg: 'p-5 md:p-8',
 };
 
 const Card = forwardRef<HTMLDivElement, CardProps>(
@@ -150,7 +150,7 @@ export const CardImage = ({ src, alt, className, aspectRatio = 'thumbnail' }: Ca
   };
 
   return (
-    <div className={cn('overflow-hidden rounded-t-2xl -mx-6 -mt-6 mb-4', className)}>
+    <div className={cn('overflow-hidden rounded-t-2xl -mx-4 md:-mx-6 -mt-4 md:-mt-6 mb-4', className)}>
       <img
         src={src}
         alt={alt}

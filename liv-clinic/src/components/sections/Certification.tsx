@@ -65,10 +65,10 @@ export default function Certification() {
   ];
 
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 md:py-20 bg-white">
       <div className="container-custom">
         <AnimateOnScroll>
-          <div className="text-center mb-12">
+          <div className="text-center mb-8 md:mb-12">
             <p className="text-small text-primary tracking-widest uppercase mb-2">
               Official Partner
             </p>
@@ -76,7 +76,7 @@ export default function Certification() {
           </div>
         </AnimateOnScroll>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 max-w-6xl mx-auto">
           {certifications.map((cert) => (
             <AnimateOnScroll key={cert.id}>
               <motion.a
@@ -87,7 +87,7 @@ export default function Certification() {
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="bg-background rounded-2xl p-6 text-center h-full border border-transparent group-hover:border-primary/20 group-hover:shadow-lg transition-all flex flex-col">
+                <div className="bg-background rounded-xl md:rounded-2xl p-4 md:p-6 text-center h-full border border-transparent group-hover:border-primary/20 group-hover:shadow-lg transition-all flex flex-col">
                   {/* Logo Image */}
                   <div className="relative w-full h-20 mb-5 flex items-center justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}

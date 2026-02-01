@@ -199,15 +199,12 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
         aria-label={`${program.title} - ${program.subtitle}: ${program.description}`}
       >
         <motion.div
-          className="relative h-full rounded-2xl overflow-hidden shadow-lg cursor-pointer"
+          className="relative h-full rounded-2xl overflow-hidden shadow-lg cursor-pointer min-h-[340px] sm:min-h-[420px] md:min-h-[520px]"
           onHoverStart={() => setIsHovered(true)}
           onHoverEnd={() => setIsHovered(false)}
           onTap={handleTap}
           whileHover={{ y: reducedMotion ? 0 : -8 }}
           transition={{ duration: 0.4, ease: 'easeOut' as const }}
-          style={{
-            minHeight: '520px',
-          }}
         >
           {/* Before/After Images with Crossfade */}
           <motion.div
@@ -268,10 +265,10 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
           />
 
           {/* Content */}
-          <div className="relative z-10 h-full flex flex-col justify-end p-6 md:p-8 text-white">
+          <div className="relative z-10 h-full flex flex-col justify-end p-4 md:p-8 text-white">
             {/* Program Number */}
             <motion.span
-              className="absolute top-6 right-6 font-serif text-5xl md:text-6xl text-white/10"
+              className="absolute top-4 right-4 md:top-6 md:right-6 font-serif text-4xl md:text-6xl text-white/10"
               animate={{
                 opacity: isHovered || isTapped ? 0.2 : 0.1,
               }}
@@ -313,9 +310,9 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
             </AnimatePresence>
 
             {/* Title Section */}
-            <div className="mb-4">
+            <div className="mb-3 md:mb-4">
               <motion.p
-                className="font-serif text-sm tracking-widest mb-2"
+                className="font-serif text-xs md:text-sm tracking-widest mb-1 md:mb-2"
                 style={{ color: program.accentColor }}
                 animate={{
                   y: isHovered || isTapped ? -4 : 0,
@@ -325,7 +322,7 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
                 {program.title}
               </motion.p>
               <motion.h3
-                className="text-2xl md:text-3xl font-medium mb-1"
+                className="text-xl md:text-3xl font-medium mb-1"
                 animate={{
                   y: isHovered || isTapped ? -4 : 0,
                 }}
@@ -352,16 +349,16 @@ function SignatureCard({ program, index, reducedMotion }: SignatureCardProps) {
               animate={isHovered || isTapped ? 'hover' : 'initial'}
               className="overflow-hidden"
             >
-              <p className="text-white/90 text-sm leading-relaxed mb-4">
+              <p className="text-white/90 text-xs md:text-sm leading-relaxed mb-3 md:mb-4">
                 {program.detailDescription}
               </p>
 
               {/* Features */}
-              <ul className="space-y-2 mb-6">
+              <ul className="space-y-1.5 md:space-y-2 mb-4 md:mb-6">
                 {program.features.map((feature, idx) => (
                   <motion.li
                     key={idx}
-                    className="flex items-center gap-2 text-sm text-white/80"
+                    className="flex items-center gap-1.5 md:gap-2 text-xs md:text-sm text-white/80"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{
                       opacity: isHovered || isTapped ? 1 : 0,
@@ -451,7 +448,7 @@ export default function SignatureProgramsSection() {
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-8 md:mb-16"
           variants={headerVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
@@ -473,7 +470,7 @@ export default function SignatureProgramsSection() {
         </motion.div>
 
         {/* Cards Grid - 2x2 on desktop, 1 or 2 cols on mobile */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
           {programs.map((program, index) => (
             <SignatureCard
               key={program.id}

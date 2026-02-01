@@ -84,8 +84,10 @@ export default function FloatingCTA() {
   const main = ctaButtons[mainButton];
 
   return (
-    // bottom 값: 하단 고정 바(FloatingConsultation) 높이(약 96px) + 여유 공간
-    <div className="fixed bottom-[140px] sm:bottom-[130px] right-3 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-3 pb-[env(safe-area-inset-bottom,0px)]">
+    <div
+      className="fixed right-3 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-3"
+      style={{ bottom: 'calc(140px + env(safe-area-inset-bottom, 0px))' }}
+    >
       {/* Secondary Buttons - 항상 표시 */}
       <div className="flex flex-col gap-2">
         {secondaryButtons.map((buttonKey, index) => {
@@ -96,8 +98,8 @@ export default function FloatingCTA() {
               href={button.href}
               target={button.href.startsWith('http') || button.href.startsWith('weixin') ? '_blank' : undefined}
               rel={button.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
               className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center ${button.color} ${button.textColor} transition-all`}
               whileHover={{ scale: 1.1 }}

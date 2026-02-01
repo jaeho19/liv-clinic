@@ -403,7 +403,7 @@ export default function InModeDetail() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section className="relative min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#E91E63]/10 via-background to-[#9C27B0]/5" />
 
         <motion.div

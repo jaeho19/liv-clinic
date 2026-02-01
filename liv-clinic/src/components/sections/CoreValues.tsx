@@ -70,9 +70,9 @@ export default function CoreValues() {
 
       <div className="container-custom relative z-10">
         <AnimateOnScroll animation="fadeInUpSmooth">
-          <div className="text-center mb-10 md:mb-20">
+          <div className="text-center mb-8 md:mb-20">
             <motion.p
-              className="font-serif text-h3 text-primary mb-2"
+              className="font-serif text-lg md:text-h3 text-primary mb-2"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -81,7 +81,7 @@ export default function CoreValues() {
               {t('title')}
             </motion.p>
             <motion.h2
-              className="text-h1 text-secondary"
+              className="text-2xl md:text-h1 text-secondary"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -99,7 +99,7 @@ export default function CoreValues() {
           </div>
         </AnimateOnScroll>
 
-        <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8" staggerDelay={0.12}>
+        <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-8" staggerDelay={0.12}>
           {values.map((value, index) => (
             <StaggerItem key={value.id} variant="scale">
               <motion.div
@@ -156,7 +156,7 @@ export default function CoreValues() {
                   )}
 
                   {/* Content */}
-                  <div className="relative p-4 sm:p-6 md:p-8">
+                  <div className="relative p-3 sm:p-4 md:p-8">
                     {/* Title */}
                     <motion.h3
                       className="font-serif text-xl text-secondary mb-2"
@@ -169,7 +169,7 @@ export default function CoreValues() {
                     </motion.h3>
 
                     {/* Korean Subtitle */}
-                    <p className="text-h4 text-mono mb-4">
+                    <p className="text-h4 text-mono mb-2 md:mb-4">
                       {t(`${value.id}.subtitle`)}
                     </p>
 
