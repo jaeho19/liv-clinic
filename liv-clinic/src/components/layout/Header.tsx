@@ -4,6 +4,7 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
+import NextLink from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
@@ -233,6 +234,21 @@ export default function Header() {
               >
                 {tCommon('consultation')}
               </Link>
+
+              {/* Admin Link */}
+              <NextLink
+                href="/admin/login"
+                className={`hidden md:flex items-center justify-center w-9 h-9 rounded-full transition-colors ${
+                  useDarkStyle
+                    ? 'text-mono-light hover:text-secondary hover:bg-background'
+                    : 'text-white/50 hover:text-white hover:bg-white/10'
+                }`}
+                title="관리자"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+              </NextLink>
 
               {/* Language Switcher */}
               <LanguageSwitcher isScrolled={useDarkStyle} />

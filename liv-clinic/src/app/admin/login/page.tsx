@@ -23,7 +23,7 @@ export default function AdminLoginPage() {
     });
 
     if (authError) {
-      setError('이메일 또는 비밀번호가 올바르지 않습니다.');
+      setError(`로그인 실패: ${authError.message}`);
       setLoading(false);
       return;
     }
