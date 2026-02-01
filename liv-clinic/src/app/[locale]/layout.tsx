@@ -87,7 +87,7 @@ export default async function LocaleLayout({
         </a>
         <NextIntlClientProvider messages={messages}>
           <Header />
-          <main id="main-content" className="min-h-[100dvh] page-enter pb-20 sm:pb-16 overflow-x-clip" role="main">{children}</main>
+          <main id="main-content" className="min-h-[100dvh] page-enter pb-20 overflow-x-clip" role="main">{children}</main>
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />
