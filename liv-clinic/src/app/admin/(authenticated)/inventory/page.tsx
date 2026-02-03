@@ -315,9 +315,9 @@ export default function InventoryPage() {
   return (
     <div>
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-7">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5 lg:mb-7">
         <div>
-          <h2 className="text-xl font-bold text-[#6d4e42] tracking-tight">재고관리</h2>
+          <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42] tracking-tight">재고관리</h2>
           <p className="text-xs text-[#a09080] mt-1">품목 재고 현황을 한눈에 확인하고 관리합니다</p>
         </div>
         <div className="flex gap-2.5">

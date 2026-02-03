@@ -72,15 +72,15 @@ export default function SettingsPage() {
 
   return (
     <div>
-      <h2 className="text-xl font-bold text-[#6d4e42] mb-6">설정</h2>
+      <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42] mb-4 lg:mb-6">설정</h2>
 
       {/* 탭 네비게이션 */}
-      <div className="flex border-b border-[#e5e5e5] mb-6">
+      <div className="flex overflow-x-auto border-b border-[#e5e5e5] mb-4 lg:mb-6 -mx-1 px-1">
         {TABS.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            className={`px-5 py-3 text-sm font-medium border-b-2 transition-colors cursor-pointer ${
+            className={`px-3 lg:px-5 py-2.5 lg:py-3 text-xs lg:text-sm font-medium border-b-2 transition-colors cursor-pointer whitespace-nowrap ${
               activeTab === tab.key
                 ? 'border-[#b4988d] text-[#6d4e42]'
                 : 'border-transparent text-[#8a8a8a] hover:text-[#575756]'

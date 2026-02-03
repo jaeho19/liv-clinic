@@ -42,11 +42,11 @@ export default function EventsAdminPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-[#6d4e42]">이벤트관리</h2>
+      <div className="flex items-center justify-between mb-4 lg:mb-6">
+        <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">이벤트관리</h2>
         <Link
           href="/admin/events/new"
-          className="px-4 py-2 text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08474] transition-colors"
+          className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08474] transition-colors"
         >
           + 새 이벤트
         </Link>
@@ -64,23 +64,37 @@ export default function EventsAdminPage() {
             const status = getEventStatusFromRow(event);
             const badge = STATUS_BADGES[status];
             return (
-              <div key={event.id} className="bg-white rounded-xl border border-[#e5e5e5] p-4 flex items-center gap-4">
-                {event.poster_image ? (
-                  <Image
-                    src={event.poster_image}
-                    alt={event.title_ko}
-                    width={80}
-                    height={80}
-                    className="rounded-lg object-cover shrink-0"
-                    style={{ width: 80, height: 80 }}
-                  />
-                ) : (
-                  <div className="w-20 h-20 bg-[#f6f6f6] rounded-lg flex items-center justify-center text-2xl shrink-0">
-                    🎉
-                  </div>
-                )}
+              <div key={event.id} className="bg-white rounded-xl border border-[#e5e5e5] p-3 lg:p-4 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:contents">
+                  {event.poster_image ? (
+                    <Image
+                      src={event.poster_image}
+                      alt={event.title_ko}
+                      width={80}
+                      height={80}
+                      className="rounded-lg object-cover shrink-0 w-14 h-14 sm:w-20 sm:h-20"
+                      style={{ width: undefined, height: undefined }}
+                    />
+                  ) : (
+                    <div className="w-14 h-14 sm:w-20 sm:h-20 bg-[#f6f6f6] rounded-lg flex items-center justify-center text-xl sm:text-2xl shrink-0">
+                      🎉
+                    </div>
+                  )}
 
-                <div className="flex-1 min-w-0">
+                  <div className="flex-1 min-w-0 sm:hidden">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-medium text-sm text-[#6d4e42] truncate">{event.title_ko}</h3>
+                      <span className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${badge.color}`}>
+                        {badge.label}
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#8a8a8a]">
+                      {EVENT_CATEGORY_LABELS[event.category as EventCategory] || event.category} · {event.start_date} ~ {event.end_date}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="hidden sm:block flex-1 min-w-0">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-medium text-[#6d4e42] truncate">{event.title_ko}</h3>
                     <span className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${badge.color}`}>
@@ -96,13 +110,13 @@ export default function EventsAdminPage() {
                 <div className="flex gap-2 shrink-0">
                   <Link
                     href={`/admin/events/${event.id}/edit`}
-                    className="px-3 py-1.5 text-sm border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors"
+                    className="flex-1 sm:flex-none text-center px-3 py-1.5 text-sm border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors"
                   >
                     수정
                   </Link>
                   <button
                     onClick={() => setDeleteTarget(event.id)}
-                    className="px-3 py-1.5 text-sm border border-red-200 text-red-500 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
+                    className="flex-1 sm:flex-none px-3 py-1.5 text-sm border border-red-200 text-red-500 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
                   >
                     삭제
                   </button>

@@ -80,8 +80,8 @@ export default function ReportsPage() {
   return (
     <div>
       {/* 헤더 */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-        <h2 className="text-xl font-bold text-[#6d4e42]">리포트</h2>
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 lg:mb-6">
+        <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">리포트</h2>
         <div className="flex items-center gap-2">
           <select
             value={year}

@@ -203,23 +203,23 @@ export default function OperationsPage() {
   return (
     <div>
       {/* 헤더 */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 lg:mb-6">
         <div>
-          <h2 className="text-xl font-bold text-[#6d4e42]">운영현황</h2>
+          <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">운영현황</h2>
           <p className="text-sm text-[#8a8a8a] mt-0.5">{todayStr}</p>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="flex gap-2 text-sm">
-            <span className="px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full font-medium">
+        <div className="flex items-center gap-3 overflow-x-auto">
+          <div className="flex gap-1.5 lg:gap-2 text-xs lg:text-sm">
+            <span className="px-2 lg:px-2.5 py-1 bg-amber-50 text-amber-700 rounded-full font-medium whitespace-nowrap">
               진행 {activeCount}
             </span>
-            <span className="px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full font-medium">
+            <span className="px-2 lg:px-2.5 py-1 bg-blue-50 text-blue-700 rounded-full font-medium whitespace-nowrap">
               대기 {waitingCount}
             </span>
-            <span className="px-2.5 py-1 bg-gray-100 text-gray-600 rounded-full font-medium">
+            <span className="px-2 lg:px-2.5 py-1 bg-gray-100 text-gray-600 rounded-full font-medium whitespace-nowrap">
               완료 {completedCount}
             </span>
-            <span className="px-2.5 py-1 bg-[#b4988d]/10 text-[#6d4e42] rounded-full font-medium">
+            <span className="px-2 lg:px-2.5 py-1 bg-[#b4988d]/10 text-[#6d4e42] rounded-full font-medium whitespace-nowrap">
               전체 {cases.length}
             </span>
           </div>

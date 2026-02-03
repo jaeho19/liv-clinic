@@ -74,18 +74,18 @@ export default async function DashboardPage() {
 
   return (
     <div>
-      <h2 className="text-xl font-bold text-[#6d4e42] mb-6">대시보드</h2>
+      <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42] mb-4 lg:mb-6">대시보드</h2>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 lg:gap-4 mb-6 lg:mb-8">
         {stats.map((stat) => (
           <Link
             key={stat.label}
             href={stat.href}
-            className="bg-white rounded-xl p-5 border border-[#e5e5e5] hover:shadow-md transition-shadow"
+            className="bg-white rounded-xl p-3 lg:p-5 border border-[#e5e5e5] hover:shadow-md transition-shadow"
           >
-            <p className="text-sm text-[#8a8a8a] mb-1">{stat.label}</p>
-            <p className={`text-3xl font-bold ${stat.color} inline-block px-2 py-0.5 rounded-lg`}>
+            <p className="text-xs lg:text-sm text-[#8a8a8a] mb-1 truncate">{stat.label}</p>
+            <p className={`text-2xl lg:text-3xl font-bold ${stat.color} inline-block px-2 py-0.5 rounded-lg`}>
               {stat.value}
             </p>
           </Link>
@@ -111,47 +111,68 @@ export default async function DashboardPage() {
       </div>
 
       {/* Recent Consultations */}
-      <div className="bg-white rounded-xl border border-[#e5e5e5] p-5">
+      <div className="bg-white rounded-xl border border-[#e5e5e5] p-4 lg:p-5">
         <div className="flex items-center justify-between mb-4">
-          <h3 className="font-bold text-[#6d4e42]">최근 상담 신청</h3>
+          <h3 className="font-bold text-[#6d4e42] text-sm lg:text-base">최근 상담 신청</h3>
           <Link href="/admin/consultations" className="text-sm text-[#b4988d] hover:underline">
             전체보기
           </Link>
         </div>
 
         {recentConsultations && recentConsultations.length > 0 ? (
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-[#e5e5e5]">
-                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">이름</th>
-                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">전화번호</th>
-                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">시술</th>
-                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">담당자</th>
-                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">상태</th>
-                  <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">접수일</th>
-                </tr>
-              </thead>
-              <tbody>
-                {recentConsultations.map((c) => (
-                  <tr key={c.id} className="border-b border-[#f0f0f0] last:border-0">
-                    <td className="py-2.5 px-3 font-medium">{c.name}</td>
-                    <td className="py-2.5 px-3">{c.phone}</td>
-                    <td className="py-2.5 px-3">{c.treatment_type}</td>
-                    <td className="py-2.5 px-3 text-[#8a8a8a]">{c.assignee || '-'}</td>
-                    <td className="py-2.5 px-3">
-                      <span className={`text-xs px-2 py-0.5 rounded-full ${STATUS_COLORS[c.status] || 'bg-gray-100 text-gray-500'}`}>
-                        {STATUS_LABELS[c.status] || c.status}
-                      </span>
-                    </td>
-                    <td className="py-2.5 px-3 text-[#8a8a8a]">
-                      {new Date(c.created_at).toLocaleDateString('ko-KR')}
-                    </td>
+          <>
+            {/* Mobile: Card layout */}
+            <div className="space-y-3 lg:hidden">
+              {recentConsultations.map((c) => (
+                <div key={c.id} className="border border-[#f0f0f0] rounded-lg p-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-medium text-sm">{c.name}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${STATUS_COLORS[c.status] || 'bg-gray-100 text-gray-500'}`}>
+                      {STATUS_LABELS[c.status] || c.status}
+                    </span>
+                  </div>
+                  <div className="space-y-1 text-xs text-[#8a8a8a]">
+                    <p>{c.phone} · {c.treatment_type}</p>
+                    <p>{c.assignee ? `담당: ${c.assignee}` : ''} · {new Date(c.created_at).toLocaleDateString('ko-KR')}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop: Table layout */}
+            <div className="hidden lg:block overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-[#e5e5e5]">
+                    <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">이름</th>
+                    <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">전화번호</th>
+                    <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">시술</th>
+                    <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">담당자</th>
+                    <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">상태</th>
+                    <th className="text-left py-2 px-3 text-[#8a8a8a] font-medium">접수일</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {recentConsultations.map((c) => (
+                    <tr key={c.id} className="border-b border-[#f0f0f0] last:border-0">
+                      <td className="py-2.5 px-3 font-medium">{c.name}</td>
+                      <td className="py-2.5 px-3">{c.phone}</td>
+                      <td className="py-2.5 px-3">{c.treatment_type}</td>
+                      <td className="py-2.5 px-3 text-[#8a8a8a]">{c.assignee || '-'}</td>
+                      <td className="py-2.5 px-3">
+                        <span className={`text-xs px-2 py-0.5 rounded-full ${STATUS_COLORS[c.status] || 'bg-gray-100 text-gray-500'}`}>
+                          {STATUS_LABELS[c.status] || c.status}
+                        </span>
+                      </td>
+                      <td className="py-2.5 px-3 text-[#8a8a8a]">
+                        {new Date(c.created_at).toLocaleDateString('ko-KR')}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
         ) : (
           <p className="text-sm text-[#8a8a8a] py-4 text-center">아직 상담 신청이 없습니다.</p>
         )}

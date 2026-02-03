@@ -212,34 +212,34 @@ export default function NotificationsPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-[#6d4e42]">알림관리</h2>
-        <div className="flex gap-2">
-          <button onClick={() => setShowAddModal(true)} className="px-4 py-2 text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08478]">
-            + 시술 기록 등록
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 lg:mb-6">
+        <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">알림관리</h2>
+        <div className="flex gap-2 overflow-x-auto">
+          <button onClick={() => setShowAddModal(true)} className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08478] whitespace-nowrap cursor-pointer">
+            + 시술 기록
           </button>
-          <Link href="/admin/notifications/templates" className="px-4 py-2 text-sm border border-[#e5e5e5] text-[#575756] rounded-lg hover:bg-[#f6f6f6]">
-            템플릿 관리
+          <Link href="/admin/notifications/templates" className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm border border-[#e5e5e5] text-[#575756] rounded-lg hover:bg-[#f6f6f6] whitespace-nowrap">
+            템플릿
           </Link>
-          <Link href="/admin/notifications/history" className="px-4 py-2 text-sm border border-[#e5e5e5] text-[#575756] rounded-lg hover:bg-[#f6f6f6]">
+          <Link href="/admin/notifications/history" className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm border border-[#e5e5e5] text-[#575756] rounded-lg hover:bg-[#f6f6f6] whitespace-nowrap">
             발송 이력
           </Link>
         </div>
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
-        <div className="bg-white rounded-xl p-5 border border-[#e5e5e5]">
-          <p className="text-sm text-[#8a8a8a] mb-1">오늘 발송 대상</p>
-          <p className="text-3xl font-bold text-amber-600">{loading ? '-' : data?.todayCount ?? 0}</p>
+      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 lg:gap-4 mb-4 lg:mb-6">
+        <div className="bg-white rounded-xl p-3 lg:p-5 border border-[#e5e5e5]">
+          <p className="text-xs lg:text-sm text-[#8a8a8a] mb-1">오늘 발송 대상</p>
+          <p className="text-2xl lg:text-3xl font-bold text-amber-600">{loading ? '-' : data?.todayCount ?? 0}</p>
         </div>
-        <div className="bg-white rounded-xl p-5 border border-[#e5e5e5]">
-          <p className="text-sm text-[#8a8a8a] mb-1">미발송 건수</p>
-          <p className="text-3xl font-bold text-red-500">{loading ? '-' : data?.todayCount ?? 0}</p>
+        <div className="bg-white rounded-xl p-3 lg:p-5 border border-[#e5e5e5]">
+          <p className="text-xs lg:text-sm text-[#8a8a8a] mb-1">미발송 건수</p>
+          <p className="text-2xl lg:text-3xl font-bold text-red-500">{loading ? '-' : data?.todayCount ?? 0}</p>
         </div>
-        <div className="bg-white rounded-xl p-5 border border-[#e5e5e5]">
-          <p className="text-sm text-[#8a8a8a] mb-1">이번 주 예정</p>
-          <p className="text-3xl font-bold text-blue-600">{loading ? '-' : data?.weekCount ?? 0}</p>
+        <div className="bg-white rounded-xl p-3 lg:p-5 border border-[#e5e5e5] col-span-2 sm:col-span-1">
+          <p className="text-xs lg:text-sm text-[#8a8a8a] mb-1">이번 주 예정</p>
+          <p className="text-2xl lg:text-3xl font-bold text-blue-600">{loading ? '-' : data?.weekCount ?? 0}</p>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { createServerClient } from '@/lib/supabase-server';
-import AdminSidebar from '@/components/admin/AdminSidebar';
+import AdminLayoutClient from '@/components/admin/AdminLayoutClient';
 
 export default async function AuthenticatedAdminLayout({
   children,
@@ -15,11 +15,8 @@ export default async function AuthenticatedAdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen">
-      <AdminSidebar />
-      <main className="flex-1 p-6 overflow-auto">
-        {children}
-      </main>
-    </div>
+    <AdminLayoutClient>
+      {children}
+    </AdminLayoutClient>
   );
 }

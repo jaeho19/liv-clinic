@@ -52,11 +52,11 @@ export default function PopupsAdminPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-[#6d4e42]">팝업관리</h2>
+      <div className="flex items-center justify-between mb-4 lg:mb-6">
+        <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">팝업관리</h2>
         <Link
           href="/admin/popups/new"
-          className="px-4 py-2 text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08474] transition-colors"
+          className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08474] transition-colors"
         >
           + 새 팝업
         </Link>
@@ -74,36 +74,38 @@ export default function PopupsAdminPage() {
             const status = getPopupStatus(popup);
             const badge = STATUS_BADGES[status];
             return (
-              <div key={popup.id} className="bg-white rounded-xl border border-[#e5e5e5] p-4 flex items-center gap-4">
-                {popup.image_url ? (
-                  <img
-                    src={popup.image_url}
-                    alt={popup.title}
-                    className="w-20 h-20 rounded-lg object-cover shrink-0 border border-[#e5e5e5]"
-                  />
-                ) : (
-                  <div className="w-20 h-20 bg-[#f6f6f6] rounded-lg flex items-center justify-center text-2xl shrink-0">
-                    🪟
-                  </div>
-                )}
+              <div key={popup.id} className="bg-white rounded-xl border border-[#e5e5e5] p-3 lg:p-4">
+                <div className="flex items-start gap-3 lg:gap-4">
+                  {popup.image_url ? (
+                    <img
+                      src={popup.image_url}
+                      alt={popup.title}
+                      className="w-14 h-14 sm:w-20 sm:h-20 rounded-lg object-cover shrink-0 border border-[#e5e5e5]"
+                    />
+                  ) : (
+                    <div className="w-14 h-14 sm:w-20 sm:h-20 bg-[#f6f6f6] rounded-lg flex items-center justify-center text-xl sm:text-2xl shrink-0">
+                      🪟
+                    </div>
+                  )}
 
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <h3 className="font-medium text-[#6d4e42] truncate">{popup.title}</h3>
-                    <span className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${badge.color}`}>
-                      {badge.label}
-                    </span>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-2 mb-1">
+                      <h3 className="font-medium text-sm lg:text-base text-[#6d4e42] truncate">{popup.title}</h3>
+                      <span className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${badge.color}`}>
+                        {badge.label}
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#8a8a8a]">
+                      {new Date(popup.display_start).toLocaleDateString('ko-KR')} ~ {new Date(popup.display_end).toLocaleDateString('ko-KR')}
+                      {!popup.show_on_mobile && ' · 모바일 숨김'}
+                    </p>
                   </div>
-                  <p className="text-xs text-[#8a8a8a]">
-                    {new Date(popup.display_start).toLocaleString('ko-KR')} ~ {new Date(popup.display_end).toLocaleString('ko-KR')}
-                    {!popup.show_on_mobile && ' · 모바일 숨김'}
-                  </p>
                 </div>
 
-                <div className="flex gap-2 shrink-0">
+                <div className="flex gap-2 mt-3 lg:mt-0 lg:absolute lg:right-4 lg:top-1/2 lg:-translate-y-1/2">
                   <button
                     onClick={() => toggleActive(popup)}
-                    className={`px-3 py-1.5 text-sm border rounded-lg transition-colors cursor-pointer ${
+                    className={`flex-1 sm:flex-none px-3 py-1.5 text-sm border rounded-lg transition-colors cursor-pointer ${
                       popup.is_active
                         ? 'border-amber-200 text-amber-600 hover:bg-amber-50'
                         : 'border-green-200 text-green-600 hover:bg-green-50'
@@ -113,13 +115,13 @@ export default function PopupsAdminPage() {
                   </button>
                   <Link
                     href={`/admin/popups/${popup.id}/edit`}
-                    className="px-3 py-1.5 text-sm border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors"
+                    className="flex-1 sm:flex-none text-center px-3 py-1.5 text-sm border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors"
                   >
                     수정
                   </Link>
                   <button
                     onClick={() => setDeleteTarget(popup.id)}
-                    className="px-3 py-1.5 text-sm border border-red-200 text-red-500 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
+                    className="flex-1 sm:flex-none px-3 py-1.5 text-sm border border-red-200 text-red-500 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
                   >
                     삭제
                   </button>

@@ -164,25 +164,25 @@ export default function ConsultationsPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-[#6d4e42]">상담관리</h2>
+      <div className="flex items-center justify-between mb-4 lg:mb-6">
+        <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">상담관리</h2>
         <button
           onClick={downloadCSV}
-          className="px-4 py-2 text-sm bg-white border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+          className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm bg-white border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
         >
           CSV 다운로드
         </button>
       </div>
 
       {/* Filters */}
-      <div className="bg-white rounded-xl border border-[#e5e5e5] p-4 mb-4">
+      <div className="bg-white rounded-xl border border-[#e5e5e5] p-3 lg:p-4 mb-4">
         {/* Status tabs - scrollable */}
-        <div className="flex gap-1 overflow-x-auto pb-2 mb-3">
+        <div className="flex gap-1 overflow-x-auto pb-2 mb-3 -mx-1 px-1">
           {STATUS_TABS.map((tab) => (
             <button
               key={tab.key}
               onClick={() => { setStatusFilter(tab.key); setPage(0); }}
-              className={`px-3 py-1.5 text-sm rounded-lg transition-colors cursor-pointer whitespace-nowrap ${
+              className={`px-2.5 lg:px-3 py-1.5 text-xs lg:text-sm rounded-lg transition-colors cursor-pointer whitespace-nowrap ${
                 statusFilter === tab.key
                   ? 'bg-[#b4988d] text-white'
                   : 'text-[#8a8a8a] hover:bg-[#f6f6f6]'
@@ -194,38 +194,206 @@ export default function ConsultationsPage() {
         </div>
 
         {/* Search + filters */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-2 lg:gap-3">
           <input
             type="text"
             value={searchQuery}
             onChange={(e) => { setSearchQuery(e.target.value); setPage(0); }}
             placeholder="이름 또는 전화번호 검색"
-            className="px-3 py-1.5 text-sm border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b4988d] flex-1 min-w-[180px]"
+            className="px-3 py-2 lg:py-1.5 text-sm border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b4988d] sm:flex-1 sm:min-w-[180px]"
           />
-          <select
-            value={assigneeFilter}
-            onChange={(e) => { setAssigneeFilter(e.target.value); setPage(0); }}
-            className="px-3 py-1.5 text-sm border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b4988d] cursor-pointer"
-          >
-            <option value="all">담당자 전체</option>
-            {assignees.map((a) => (
-              <option key={a} value={a}>{a}</option>
-            ))}
-          </select>
-          <label className="flex items-center gap-1.5 text-sm text-[#575756] cursor-pointer">
-            <input
-              type="checkbox"
-              checked={todayCallbackOnly}
-              onChange={(e) => { setTodayCallbackOnly(e.target.checked); setPage(0); }}
-              className="rounded border-[#e5e5e5] accent-[#b4988d]"
-            />
-            오늘 콜백만
-          </label>
+          <div className="flex items-center gap-2">
+            <select
+              value={assigneeFilter}
+              onChange={(e) => { setAssigneeFilter(e.target.value); setPage(0); }}
+              className="px-3 py-2 lg:py-1.5 text-sm border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#b4988d] cursor-pointer flex-1 sm:flex-none"
+            >
+              <option value="all">담당자 전체</option>
+              {assignees.map((a) => (
+                <option key={a} value={a}>{a}</option>
+              ))}
+            </select>
+            <label className="flex items-center gap-1.5 text-sm text-[#575756] cursor-pointer whitespace-nowrap">
+              <input
+                type="checkbox"
+                checked={todayCallbackOnly}
+                onChange={(e) => { setTodayCallbackOnly(e.target.checked); setPage(0); }}
+                className="rounded border-[#e5e5e5] accent-[#b4988d]"
+              />
+              오늘 콜백만
+            </label>
+          </div>
         </div>
       </div>
 
-      {/* Table */}
-      <div className="bg-white rounded-xl border border-[#e5e5e5] overflow-hidden">
+      {/* Mobile Card View */}
+      <div className="lg:hidden">
+        {loading ? (
+          <div className="bg-white rounded-xl border border-[#e5e5e5] p-8 text-center text-[#8a8a8a]">로딩중...</div>
+        ) : consultations.length === 0 ? (
+          <div className="bg-white rounded-xl border border-[#e5e5e5] p-8 text-center text-[#8a8a8a]">상담 내역이 없습니다.</div>
+        ) : (
+          <div className="space-y-3">
+            {consultations.map((c) => (
+              <div key={c.id} className="bg-white rounded-xl border border-[#e5e5e5] overflow-hidden">
+                <div
+                  className="p-3 cursor-pointer"
+                  onClick={() => setExpandedId(expandedId === c.id ? null : c.id)}
+                >
+                  <div className="flex items-start justify-between mb-2">
+                    <div className="flex items-center gap-2">
+                      <span className={`inline-block transition-transform text-xs text-[#8a8a8a] ${expandedId === c.id ? 'rotate-90' : ''}`}>&#9654;</span>
+                      <span className="font-medium text-sm">
+                        {c.name}
+                        {c.message && <span className="ml-1 text-[10px] text-[#b4988d]">&#9679;</span>}
+                      </span>
+                    </div>
+                    <select
+                      value={c.status}
+                      onChange={(e) => { e.stopPropagation(); updateStatus(c.id, e.target.value as LeadStatus); }}
+                      onClick={(e) => e.stopPropagation()}
+                      className={`text-xs px-2 py-0.5 rounded-full border-0 cursor-pointer ${
+                        LEAD_STATUS_COLORS[c.status as LeadStatus] || 'bg-gray-100'
+                      }`}
+                    >
+                      {Object.entries(LEAD_STATUS_LABELS).map(([key, label]) => (
+                        <option key={key} value={key}>{label}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="ml-5 space-y-1 text-xs text-[#8a8a8a]">
+                    <p>{c.phone} · {c.treatment_type}</p>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      {c.assignee && <span>담당: {c.assignee}</span>}
+                      {c.next_followup_at && (
+                        <span className={c.next_followup_at && new Date(c.next_followup_at).toDateString() === new Date().toDateString() ? 'text-blue-600 font-medium' : ''}>
+                          다음연락: {formatFollowupTime(c.next_followup_at)}
+                        </span>
+                      )}
+                      <span>{new Date(c.created_at).toLocaleDateString('ko-KR')}</span>
+                    </div>
+                    {c.procedure_tags && c.procedure_tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-1">
+                        {c.procedure_tags.map((tag) => (
+                          <span key={tag} className="text-xs px-1.5 py-0.5 bg-[#f6f6f6] rounded text-[#575756]">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Expanded detail */}
+                {expandedId === c.id && (
+                  <div className="border-t border-[#e5e5e5] bg-[#f9f8f7] p-3">
+                    <div className="grid grid-cols-1 gap-3 text-sm">
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <p className="text-[#8a8a8a] text-xs mb-1">담당자</p>
+                          {editingField?.id === c.id && editingField.field === 'assignee' ? (
+                            <input
+                              type="text"
+                              value={editValue}
+                              onChange={(e) => setEditValue(e.target.value)}
+                              onBlur={() => updateField(c.id, 'assignee', editValue || null)}
+                              onKeyDown={(e) => { if (e.key === 'Enter') updateField(c.id, 'assignee', editValue || null); }}
+                              className="w-full px-2 py-1 text-sm border border-[#b4988d] rounded"
+                              autoFocus
+                            />
+                          ) : (
+                            <p
+                              className="text-[#575756] cursor-pointer hover:text-[#b4988d]"
+                              onClick={() => { setEditingField({ id: c.id, field: 'assignee' }); setEditValue(c.assignee || ''); }}
+                            >
+                              {c.assignee || <span className="text-[#c0c0c0]">클릭하여 배정</span>}
+                            </p>
+                          )}
+                        </div>
+                        <div>
+                          <p className="text-[#8a8a8a] text-xs mb-1">다음 연락</p>
+                          {editingField?.id === c.id && editingField.field === 'next_followup_at' ? (
+                            <input
+                              type="datetime-local"
+                              value={editValue}
+                              onChange={(e) => setEditValue(e.target.value)}
+                              onBlur={() => updateField(c.id, 'next_followup_at', editValue ? new Date(editValue).toISOString() : null)}
+                              className="w-full px-2 py-1 text-sm border border-[#b4988d] rounded"
+                              autoFocus
+                            />
+                          ) : (
+                            <p
+                              className="text-[#575756] cursor-pointer hover:text-[#b4988d]"
+                              onClick={() => { setEditingField({ id: c.id, field: 'next_followup_at' }); setEditValue(c.next_followup_at ? new Date(c.next_followup_at).toISOString().slice(0, 16) : ''); }}
+                            >
+                              {formatFollowupTime(c.next_followup_at) || <span className="text-[#c0c0c0]">클릭하여 설정</span>}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="grid grid-cols-2 gap-3">
+                        <div>
+                          <p className="text-[#8a8a8a] text-xs mb-1">이메일</p>
+                          <p className="text-[#575756] text-sm">{c.email || <span className="text-[#c0c0c0]">-</span>}</p>
+                        </div>
+                        <div>
+                          <p className="text-[#8a8a8a] text-xs mb-1">예상 예산</p>
+                          {editingField?.id === c.id && editingField.field === 'budget_range' ? (
+                            <select
+                              value={editValue}
+                              onChange={(e) => { setEditValue(e.target.value); updateField(c.id, 'budget_range', e.target.value || null); }}
+                              className="text-sm border border-[#b4988d] rounded px-2 py-1 w-full"
+                              autoFocus
+                            >
+                              <option value="">미정</option>
+                              {BUDGET_RANGE_OPTIONS.map((opt) => (
+                                <option key={opt} value={opt}>{opt}</option>
+                              ))}
+                            </select>
+                          ) : (
+                            <p
+                              className="text-[#575756] cursor-pointer hover:text-[#b4988d]"
+                              onClick={() => { setEditingField({ id: c.id, field: 'budget_range' }); setEditValue(c.budget_range || ''); }}
+                            >
+                              {c.budget_range || <span className="text-[#c0c0c0]">클릭하여 설정</span>}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div>
+                        <p className="text-[#8a8a8a] text-xs mb-1">문의 내용</p>
+                        <p className="text-[#575756] whitespace-pre-wrap bg-white rounded-lg p-2.5 border border-[#e5e5e5] text-sm">
+                          {c.message || <span className="text-[#c0c0c0]">문의 내용 없음</span>}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-[#8a8a8a] text-xs mb-1">메모</p>
+                        {editingField?.id === c.id && editingField.field === 'notes' ? (
+                          <textarea
+                            value={editValue}
+                            onChange={(e) => setEditValue(e.target.value)}
+                            onBlur={() => updateField(c.id, 'notes', editValue)}
+                            className="text-sm border border-[#b4988d] rounded px-2 py-1 w-full h-20 resize-none"
+                            autoFocus
+                          />
+                        ) : (
+                          <p
+                            className="text-[#575756] whitespace-pre-wrap bg-white rounded-lg p-2.5 border border-[#e5e5e5] cursor-pointer hover:border-[#b4988d] min-h-[40px] text-sm"
+                            onClick={() => { setEditingField({ id: c.id, field: 'notes' }); setEditValue(c.notes || ''); }}
+                          >
+                            {c.notes || <span className="text-[#c0c0c0]">클릭하여 메모 추가</span>}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Table View */}
+      <div className="hidden lg:block bg-white rounded-xl border border-[#e5e5e5] overflow-hidden">
         {loading ? (
           <div className="p-8 text-center text-[#8a8a8a]">로딩중...</div>
         ) : consultations.length === 0 ? (
@@ -497,32 +665,32 @@ export default function ConsultationsPage() {
             </table>
           </div>
         )}
-
-        {/* Pagination */}
-        {totalPages > 1 && (
-          <div className="flex items-center justify-between px-4 py-3 border-t border-[#e5e5e5]">
-            <p className="text-sm text-[#8a8a8a]">
-              총 {total}건 (페이지 {page + 1}/{totalPages})
-            </p>
-            <div className="flex gap-1">
-              <button
-                onClick={() => setPage(Math.max(0, page - 1))}
-                disabled={page === 0}
-                className="px-3 py-1 text-sm border border-[#e5e5e5] rounded hover:bg-[#f6f6f6] disabled:opacity-40 cursor-pointer disabled:cursor-default"
-              >
-                이전
-              </button>
-              <button
-                onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
-                disabled={page >= totalPages - 1}
-                className="px-3 py-1 text-sm border border-[#e5e5e5] rounded hover:bg-[#f6f6f6] disabled:opacity-40 cursor-pointer disabled:cursor-default"
-              >
-                다음
-              </button>
-            </div>
-          </div>
-        )}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex items-center justify-between px-3 lg:px-4 py-3 mt-3 lg:mt-0 bg-white rounded-xl lg:rounded-none border border-[#e5e5e5] lg:border-t lg:border-x-0 lg:border-b-0">
+          <p className="text-xs lg:text-sm text-[#8a8a8a]">
+            총 {total}건 ({page + 1}/{totalPages})
+          </p>
+          <div className="flex gap-1">
+            <button
+              onClick={() => setPage(Math.max(0, page - 1))}
+              disabled={page === 0}
+              className="px-3 py-1 text-sm border border-[#e5e5e5] rounded hover:bg-[#f6f6f6] disabled:opacity-40 cursor-pointer disabled:cursor-default"
+            >
+              이전
+            </button>
+            <button
+              onClick={() => setPage(Math.min(totalPages - 1, page + 1))}
+              disabled={page >= totalPages - 1}
+              className="px-3 py-1 text-sm border border-[#e5e5e5] rounded hover:bg-[#f6f6f6] disabled:opacity-40 cursor-pointer disabled:cursor-default"
+            >
+              다음
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
