@@ -8,3 +8,134 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+# ──────────────────────────────────────────
+# Custom domain redirects
+# ──────────────────────────────────────────
+
+# www -> non-www canonical redirect
+[[redirects]]
+  from = "https://www.liv-clinic.net/*"
+  to = "https://liv-clinic.net/:splat"
+  status = 301
+  force = true
+
+# Root -> /ko (default locale)
+[[redirects]]
+  from = "/"
+  to = "/ko"
+  status = 302
+
+# ──────────────────────────────────────────
+# Old WordPress URL redirects (SEO preservation)
+# Map the most common old paths to new equivalents
+# ──────────────────────────────────────────
+
+# WordPress admin/login - block gracefully
+[[redirects]]
+  from = "/wp-admin/*"
+  to = "/ko"
+  status = 301
+
+[[redirects]]
+  from = "/wp-login.php"
+  to = "/ko"
+  status = 301
+
+[[redirects]]
+  from = "/wp-content/*"
+  to = "/ko"
+  status = 404
+
+# Old WordPress common pages -> new equivalents
+[[redirects]]
+  from = "/about"
+  to = "/ko/about"
+  status = 301
+
+[[redirects]]
+  from = "/about/"
+  to = "/ko/about"
+  status = 301
+
+[[redirects]]
+  from = "/staff"
+  to = "/ko/about/staff"
+  status = 301
+
+[[redirects]]
+  from = "/equipment"
+  to = "/ko/about/equipment"
+  status = 301
+
+[[redirects]]
+  from = "/location"
+  to = "/ko/about/location"
+  status = 301
+
+[[redirects]]
+  from = "/lifting"
+  to = "/ko/lifting"
+  status = 301
+
+[[redirects]]
+  from = "/lifting/*"
+  to = "/ko/lifting/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/antiaging"
+  to = "/ko/antiaging"
+  status = 301
+
+[[redirects]]
+  from = "/antiaging/*"
+  to = "/ko/antiaging/:splat"
+  status = 301
+
+[[redirects]]
+  from = "/laser"
+  to = "/ko/laser"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/ko/contact"
+  status = 301
+
+[[redirects]]
+  from = "/gallery"
+  to = "/ko/gallery"
+  status = 301
+
+[[redirects]]
+  from = "/promotion"
+  to = "/ko/promotion"
+  status = 301
+
+[[redirects]]
+  from = "/reviews"
+  to = "/ko/gallery"
+  status = 301
+
+# ──────────────────────────────────────────
+# Security & performance headers
+# ──────────────────────────────────────────
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400, stale-while-revalidate=604800"

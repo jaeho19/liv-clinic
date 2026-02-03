@@ -62,7 +62,14 @@ export async function GET() {
     // 캐시 확인
     const now = Date.now();
     if (cache.data && now - cache.timestamp < CACHE_DURATION) {
-      return NextResponse.json({ posts: cache.data });
+      return NextResponse.json(
+        { posts: cache.data },
+        {
+          headers: {
+            'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+          },
+        }
+      );
     }
 
     // Instagram Graph API 호출
@@ -108,7 +115,14 @@ export async function GET() {
     // 캐시 업데이트
     cache = { data: posts, timestamp: now };
 
-    return NextResponse.json({ posts });
+    return NextResponse.json(
+      { posts },
+      {
+        headers: {
+          'Cache-Control': 'public, s-maxage=3600, stale-while-revalidate=7200',
+        },
+      }
+    );
   } catch (error) {
     console.error('Instagram fetch error:', error);
     return NextResponse.json(

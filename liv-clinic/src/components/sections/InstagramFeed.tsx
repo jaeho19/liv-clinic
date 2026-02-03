@@ -275,7 +275,7 @@ export default function InstagramFeed() {
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             >
-              @liv_clinic
+              @livps_official
             </motion.h2>
             <motion.p
               className="text-body text-mono-light max-w-2xl mx-auto"
