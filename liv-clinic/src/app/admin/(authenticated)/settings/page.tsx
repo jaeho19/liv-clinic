@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   TREATMENT_MASTER_CATEGORY_LABELS,
   STAFF_ROLE_LABELS,
@@ -16,49 +16,45 @@ import type {
   AuditAction,
 } from '@/types/admin';
 
-// ─── Mock 데이터 ──────────────────────────────────────────
+// ─── API 헬퍼 ──────────────────────────────────────────
 
-const MOCK_TREATMENTS: TreatmentMaster[] = [
-  { id: '1', name: '울쎄라', category: 'lifting', priceRange: '150~300만원', duration: 60, isActive: true },
-  { id: '2', name: '써마지 FLX', category: 'lifting', priceRange: '80~200만원', duration: 45, isActive: true },
-  { id: '3', name: '덴서티', category: 'lifting', priceRange: '80~150만원', duration: 40, isActive: true },
-  { id: '4', name: '인모드', category: 'lifting', priceRange: '50~120만원', duration: 30, isActive: true },
-  { id: '5', name: '슈링크', category: 'lifting', priceRange: '30~80만원', duration: 30, isActive: true },
-  { id: '6', name: '실리프팅', category: 'lifting', priceRange: '100~200만원', duration: 60, isActive: true },
-  { id: '7', name: '보톡스', category: 'antiaging', priceRange: '10~50만원', duration: 15, isActive: true },
-  { id: '8', name: '필러', category: 'antiaging', priceRange: '30~80만원', duration: 20, isActive: true },
-  { id: '9', name: '스킨부스터', category: 'antiaging', priceRange: '20~50만원', duration: 30, isActive: true },
-  { id: '10', name: '색소 레이저', category: 'laser', priceRange: '10~30만원', duration: 20, isActive: true },
-  { id: '11', name: '혈관 레이저', category: 'laser', priceRange: '10~30만원', duration: 20, isActive: true },
-  { id: '12', name: '제모 레이저', category: 'laser', priceRange: '5~20만원', duration: 15, isActive: false },
-  { id: '13', name: '문신 제거', category: 'laser', priceRange: '20~50만원', duration: 30, isActive: true },
-  { id: '14', name: '리쥬란', category: 'skincare', priceRange: '20~40만원', duration: 30, isActive: true },
-  { id: '15', name: '쥬벨룩', category: 'skincare', priceRange: '15~30만원', duration: 25, isActive: true },
-];
+async function fetchTreatments(): Promise<TreatmentMaster[]> {
+  const res = await fetch('/api/admin/settings/treatments');
+  if (!res.ok) throw new Error('시술 목록을 불러오지 못했습니다.');
+  return res.json();
+}
 
-const MOCK_STAFF: StaffMember[] = [
-  { id: '1', name: '천OO', email: 'cheon@livps.co.kr', role: 'owner', position: '대표원장 / 성형외과 전문의', isActive: true, createdAt: '2024-01-01' },
-  { id: '2', name: '김OO', email: 'kim@livps.co.kr', role: 'owner', position: '원장 / 피부과 전문의', isActive: true, createdAt: '2024-03-01' },
-  { id: '3', name: '박서현', email: 'park@livps.co.kr', role: 'admin', position: '실장', isActive: true, createdAt: '2024-06-15' },
-  { id: '4', name: '이수진', email: 'lee@livps.co.kr', role: 'staff', position: '상담사', isActive: true, createdAt: '2024-08-01' },
-  { id: '5', name: '최민지', email: 'choi@livps.co.kr', role: 'staff', position: '상담사', isActive: true, createdAt: '2025-01-10' },
-  { id: '6', name: '정하은', email: 'jung@livps.co.kr', role: 'staff', position: '간호사', isActive: false, createdAt: '2024-09-01' },
-];
+async function fetchStaff(): Promise<StaffMember[]> {
+  const res = await fetch('/api/admin/settings/staff');
+  if (!res.ok) throw new Error('직원 목록을 불러오지 못했습니다.');
+  return res.json();
+}
 
-const MOCK_AUDIT_LOGS: AuditLog[] = [
-  { id: '1', userName: '박서현', action: 'update', target: '상담 #1042', detail: '상태 변경: 신규 → 콜백 예정', createdAt: '2026-01-31T16:42:00' },
-  { id: '2', userName: '이수진', action: 'create', target: '상담 #1043', detail: '신규 상담 접수 (홍길동)', createdAt: '2026-01-31T15:30:00' },
-  { id: '3', userName: '박서현', action: 'update', target: '이벤트 #12', detail: '제목 수정: 2월 이벤트', createdAt: '2026-01-31T14:15:00' },
-  { id: '4', userName: '천OO', action: 'login', target: '관리자 시스템', detail: 'IP: 211.xxx.xxx.xxx', createdAt: '2026-01-31T09:05:00' },
-  { id: '5', userName: '박서현', action: 'export', target: '상담 목록', detail: 'CSV 내보내기 (142건)', createdAt: '2026-01-30T17:00:00' },
-  { id: '6', userName: '이수진', action: 'update', target: '상담 #1038', detail: '담당자 배정: 김원장', createdAt: '2026-01-30T14:20:00' },
-  { id: '7', userName: '박서현', action: 'create', target: '팝업 #8', detail: '2월 설연휴 팝업 생성', createdAt: '2026-01-30T11:30:00' },
-  { id: '8', userName: '최민지', action: 'update', target: '상담 #1035', detail: '시술 태그 추가: 울쎄라, 써마지', createdAt: '2026-01-29T16:45:00' },
-  { id: '9', userName: '김OO', action: 'login', target: '관리자 시스템', detail: 'IP: 211.xxx.xxx.xxx', createdAt: '2026-01-29T08:50:00' },
-  { id: '10', userName: '박서현', action: 'delete', target: '팝업 #5', detail: '만료 팝업 삭제', createdAt: '2026-01-28T17:10:00' },
-  { id: '11', userName: '이수진', action: 'create', target: '상담 #1034', detail: '신규 상담 접수 (이지은)', createdAt: '2026-01-28T10:30:00' },
-  { id: '12', userName: '박서현', action: 'update', target: '재고 #3', detail: '쥬비덤 볼벨라 출고 2개', createdAt: '2026-01-27T15:00:00' },
-];
+async function fetchAuditLogs(action?: string, userName?: string): Promise<AuditLog[]> {
+  const params = new URLSearchParams();
+  if (action && action !== 'all') params.set('action', action);
+  if (userName && userName !== 'all') params.set('userName', userName);
+  const qs = params.toString();
+  const res = await fetch(`/api/admin/settings/audit-logs${qs ? `?${qs}` : ''}`);
+  if (!res.ok) throw new Error('감사 로그를 불러오지 못했습니다.');
+  return res.json();
+}
+
+interface ClinicInfo {
+  name: string;
+  phone: string;
+  address: string;
+  email: string;
+  kakao: string;
+  hours: { weekday: string; saturday: string; sunday: string; lunch: string };
+  notifications: { callbackReminder: boolean; lowStockAlert: boolean; newConsultation: boolean };
+}
+
+async function fetchClinicInfo(): Promise<ClinicInfo> {
+  const res = await fetch('/api/admin/settings/clinic');
+  if (!res.ok) throw new Error('병원 정보를 불러오지 못했습니다.');
+  return res.json();
+}
 
 // ─── 탭 정의 ──────────────────────────────────────────
 type SettingsTab = 'treatments' | 'staff' | 'audit' | 'clinic';
@@ -109,33 +105,101 @@ export default function SettingsPage() {
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 function TreatmentMasterTab() {
-  const [treatments, setTreatments] = useState<TreatmentMaster[]>(MOCK_TREATMENTS);
+  const [treatments, setTreatments] = useState<TreatmentMaster[]>([]);
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [showModal, setShowModal] = useState(false);
   const [editTarget, setEditTarget] = useState<TreatmentMaster | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const loadData = useCallback(async () => {
+    try {
+      setError(null);
+      const data = await fetchTreatments();
+      setTreatments(data);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadData(); }, [loadData]);
 
   const filtered = useMemo(() => {
     if (categoryFilter === 'all') return treatments;
     return treatments.filter((t) => t.category === categoryFilter);
   }, [treatments, categoryFilter]);
 
-  const handleSave = useCallback((data: Omit<TreatmentMaster, 'id'> & { id?: string }) => {
-    if (data.id) {
-      setTreatments((prev) => prev.map((t) => (t.id === data.id ? { ...t, ...data, id: t.id } : t)));
-    } else {
-      setTreatments((prev) => [...prev, { ...data, id: crypto.randomUUID() }]);
+  const handleSave = useCallback(async (data: Omit<TreatmentMaster, 'id'> & { id?: string }) => {
+    try {
+      if (data.id) {
+        const res = await fetch(`/api/admin/settings/treatments/${data.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('수정 실패');
+      } else {
+        const res = await fetch('/api/admin/settings/treatments', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('추가 실패');
+      }
+      setShowModal(false);
+      setEditTarget(null);
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
     }
-    setShowModal(false);
-    setEditTarget(null);
-  }, []);
+  }, [loadData]);
 
-  const handleDelete = useCallback((id: string) => {
-    setTreatments((prev) => prev.filter((t) => t.id !== id));
-  }, []);
+  const handleDelete = useCallback(async (id: string) => {
+    try {
+      const res = await fetch(`/api/admin/settings/treatments/${id}`, { method: 'DELETE' });
+      if (!res.ok) throw new Error('삭제 실패');
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    }
+  }, [loadData]);
 
-  const handleToggleActive = useCallback((id: string) => {
-    setTreatments((prev) => prev.map((t) => (t.id === id ? { ...t, isActive: !t.isActive } : t)));
-  }, []);
+  const handleToggleActive = useCallback(async (id: string) => {
+    const target = treatments.find((t) => t.id === id);
+    if (!target) return;
+    try {
+      const res = await fetch(`/api/admin/settings/treatments/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isActive: !target.isActive }),
+      });
+      if (!res.ok) throw new Error('상태 변경 실패');
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    }
+  }, [treatments, loadData]);
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="w-8 h-8 border-2 border-[#b4988d] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-red-500 mb-4">{error}</p>
+        <button onClick={loadData} className="px-4 py-2 bg-[#b4988d] text-white rounded-lg text-sm cursor-pointer">
+          다시 시도
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -354,25 +418,87 @@ function TreatmentModal({
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 function StaffTab() {
-  const [staff, setStaff] = useState<StaffMember[]>(MOCK_STAFF);
+  const [staff, setStaff] = useState<StaffMember[]>([]);
   const [showModal, setShowModal] = useState(false);
   const [editTarget, setEditTarget] = useState<StaffMember | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSave = useCallback((data: Omit<StaffMember, 'id' | 'createdAt'> & { id?: string }) => {
-    if (data.id) {
-      setStaff((prev) => prev.map((s) => (s.id === data.id ? { ...s, ...data, id: s.id, createdAt: s.createdAt } : s)));
-    } else {
-      setStaff((prev) => [...prev, { ...data, id: crypto.randomUUID(), createdAt: new Date().toISOString().split('T')[0] }]);
+  const loadData = useCallback(async () => {
+    try {
+      setError(null);
+      const data = await fetchStaff();
+      setStaff(data);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
+    } finally {
+      setLoading(false);
     }
-    setShowModal(false);
-    setEditTarget(null);
   }, []);
 
-  const handleToggleActive = useCallback((id: string) => {
-    setStaff((prev) => prev.map((s) => (s.id === id ? { ...s, isActive: !s.isActive } : s)));
-  }, []);
+  useEffect(() => { loadData(); }, [loadData]);
+
+  const handleSave = useCallback(async (data: Omit<StaffMember, 'id' | 'createdAt'> & { id?: string }) => {
+    try {
+      if (data.id) {
+        const res = await fetch(`/api/admin/settings/staff/${data.id}`, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('수정 실패');
+      } else {
+        const res = await fetch('/api/admin/settings/staff', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error('추가 실패');
+      }
+      setShowModal(false);
+      setEditTarget(null);
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    }
+  }, [loadData]);
+
+  const handleToggleActive = useCallback(async (id: string) => {
+    const target = staff.find((s) => s.id === id);
+    if (!target) return;
+    try {
+      const res = await fetch(`/api/admin/settings/staff/${id}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isActive: !target.isActive }),
+      });
+      if (!res.ok) throw new Error('상태 변경 실패');
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    }
+  }, [staff, loadData]);
 
   const activeCount = staff.filter((s) => s.isActive).length;
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="w-8 h-8 border-2 border-[#b4988d] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-red-500 mb-4">{error}</p>
+        <button onClick={loadData} className="px-4 py-2 bg-[#b4988d] text-white rounded-lg text-sm cursor-pointer">
+          다시 시도
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -579,20 +705,29 @@ function StaffModal({
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 function AuditLogTab() {
+  const [logs, setLogs] = useState<AuditLog[]>([]);
   const [actionFilter, setActionFilter] = useState<string>('all');
   const [userFilter, setUserFilter] = useState<string>('all');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const loadData = useCallback(async () => {
+    try {
+      setError(null);
+      const data = await fetchAuditLogs(actionFilter, userFilter);
+      setLogs(data);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  }, [actionFilter, userFilter]);
+
+  useEffect(() => { loadData(); }, [loadData]);
 
   const users = useMemo(() => {
-    return [...new Set(MOCK_AUDIT_LOGS.map((l) => l.userName))];
-  }, []);
-
-  const filtered = useMemo(() => {
-    return MOCK_AUDIT_LOGS.filter((log) => {
-      if (actionFilter !== 'all' && log.action !== actionFilter) return false;
-      if (userFilter !== 'all' && log.userName !== userFilter) return false;
-      return true;
-    });
-  }, [actionFilter, userFilter]);
+    return [...new Set(logs.map((l) => l.userName))];
+  }, [logs]);
 
   const ACTION_COLORS: Record<AuditAction, string> = {
     create: 'bg-emerald-50 text-emerald-700',
@@ -601,6 +736,25 @@ function AuditLogTab() {
     login: 'bg-purple-50 text-purple-700',
     export: 'bg-amber-50 text-amber-700',
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="w-8 h-8 border-2 border-[#b4988d] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-red-500 mb-4">{error}</p>
+        <button onClick={loadData} className="px-4 py-2 bg-[#b4988d] text-white rounded-lg text-sm cursor-pointer">
+          다시 시도
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -626,7 +780,7 @@ function AuditLogTab() {
             <option key={u} value={u}>{u}</option>
           ))}
         </select>
-        <span className="text-sm text-[#8a8a8a] ml-auto">{filtered.length}건</span>
+        <span className="text-sm text-[#8a8a8a] ml-auto">{logs.length}건</span>
       </div>
 
       {/* 로그 테이블 */}
@@ -643,14 +797,14 @@ function AuditLogTab() {
               </tr>
             </thead>
             <tbody>
-              {filtered.length === 0 ? (
+              {logs.length === 0 ? (
                 <tr>
                   <td colSpan={5} className="text-center py-12 text-[#8a8a8a]">
                     로그가 없습니다.
                   </td>
                 </tr>
               ) : (
-                filtered.map((log) => (
+                logs.map((log) => (
                   <tr key={log.id} className="border-b border-[#f0f0f0] last:border-0">
                     <td className="py-3 px-4 text-[#8a8a8a] whitespace-nowrap">
                       {new Date(log.createdAt).toLocaleString('ko-KR', {
@@ -684,31 +838,70 @@ function AuditLogTab() {
 // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 function ClinicInfoTab() {
-  const [form, setForm] = useState({
-    name: '리브성형외과의원',
-    phone: '02-1234-5678',
-    address: '서울특별시 강남구 강남대로 432 리브빌딩 3~5층',
-    email: 'info@livps.co.kr',
-    kakao: '@livps',
-    hours: {
-      weekday: '10:00 ~ 19:00',
-      saturday: '10:00 ~ 16:00',
-      sunday: '휴진',
-      lunch: '13:00 ~ 14:00',
-    },
-    notifications: {
-      callbackReminder: true,
-      lowStockAlert: true,
-      newConsultation: true,
-    },
+  const [form, setForm] = useState<ClinicInfo>({
+    name: '',
+    phone: '',
+    address: '',
+    email: '',
+    kakao: '',
+    hours: { weekday: '', saturday: '', sunday: '', lunch: '' },
+    notifications: { callbackReminder: true, lowStockAlert: true, newConsultation: true },
   });
-
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
+  const [saving, setSaving] = useState(false);
 
-  const handleSave = () => {
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2000);
+  const loadData = useCallback(async () => {
+    try {
+      setError(null);
+      const data = await fetchClinicInfo();
+      setForm(data);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadData(); }, [loadData]);
+
+  const handleSave = async () => {
+    try {
+      setSaving(true);
+      const res = await fetch('/api/admin/settings/clinic', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error('저장 실패');
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '저장에 실패했습니다.');
+    } finally {
+      setSaving(false);
+    }
   };
+
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-20">
+        <div className="w-8 h-8 border-2 border-[#b4988d] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center py-20">
+        <p className="text-red-500 mb-4">{error}</p>
+        <button onClick={loadData} className="px-4 py-2 bg-[#b4988d] text-white rounded-lg text-sm cursor-pointer">
+          다시 시도
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-2xl">
@@ -849,13 +1042,16 @@ function ClinicInfoTab() {
       {/* 저장 버튼 */}
       <button
         onClick={handleSave}
+        disabled={saving}
         className={`w-full py-3 rounded-lg text-sm font-medium transition-colors cursor-pointer ${
           saved
             ? 'bg-emerald-500 text-white'
-            : 'bg-[#b4988d] text-white hover:bg-[#a08878]'
+            : saving
+              ? 'bg-[#b4988d]/60 text-white cursor-wait'
+              : 'bg-[#b4988d] text-white hover:bg-[#a08878]'
         }`}
       >
-        {saved ? '저장되었습니다' : '변경사항 저장'}
+        {saved ? '저장되었습니다' : saving ? '저장 중...' : '변경사항 저장'}
       </button>
     </div>
   );

@@ -1,0 +1,277 @@
+{
+  "common": {
+    "siteName": "LIV Plastic Surgery",
+    "siteNameEn": "LIV Plastic Surgery",
+    "slogan": "Slow Aging, Natural Beauty",
+    "consultation": "Book Consultation",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "phone": "+82-2-797-2773",
+    "scrollDown": "SCROLL",
+    "total": "Total",
+    "items": "",
+    "questions": "questions",
+    "noResults": "No results found",
+    "tryAnother": "Please try a different search term",
+    "relatedTreatments": "Related Treatments"
+  },
+  "nav": {
+    "about": "About",
+    "aboutBrand": "Our Brand",
+    "aboutStaff": "Medical Staff",
+    "aboutEquipment": "Equipment",
+    "aboutLocation": "Location",
+    "signature": "Signature",
+    "lifting": "Lifting",
+    "ulthera": "Ultherapy Prime",
+    "thermage": "Thermage FLX",
+    "density": "Density",
+    "inmode": "InMode",
+    "shurink": "Shurink",
+    "thread": "Thread Lift",
+    "aptos": "APTOS NAMICA",
+    "antiaging": "Anti-aging",
+    "botox": "Botox",
+    "filler": "Filler",
+    "skinbooster": "Skin Booster",
+    "laser": "Laser",
+    "medical": "Medical Info",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Natural Results",
+      "subtitle": "Subtle, natural transformation by board-certified plastic surgeons"
+    },
+    "slide2": {
+      "title": "Certified Premium",
+      "subtitle": "Official Ultherapy Prime & Thermage certified clinic using only genuine products"
+    },
+    "slide3": {
+      "title": "Beyond Gravity",
+      "subtitle": "Non-surgical skin tightening, experience skin from 10 years ago"
+    }
+  },
+  "sections": {
+    "certification": {
+      "title": "Certified Clinic",
+      "ulthera": "Ultherapy Prime Certified",
+      "thermage": "Thermage FLX Partner"
+    },
+    "equipment": {
+      "title": "Genuine Equipment",
+      "subtitle": "Premium authentic devices"
+    },
+    "signature": {
+      "title": "Signature Programs",
+      "subtitle": "LIV's exclusive signature programs"
+    },
+    "values": {
+      "title": "Core Values",
+      "subtitle": "LIV's 4 core values",
+      "natural": {
+        "title": "Natural Beauty",
+        "subtitle": "Natural Beauty",
+        "description": "We pursue understated, natural beauty"
+      },
+      "expertise": {
+        "title": "Clinical Expertise",
+        "subtitle": "Clinical Expertise",
+        "description": "Delivering optimal results with rich experience"
+      },
+      "safety": {
+        "title": "Safety & Ethical Care",
+        "subtitle": "Safety & Ethics",
+        "description": "Strict adherence to authentic products and safety protocols"
+      },
+      "tailored": {
+        "title": "Tailored Aging",
+        "subtitle": "Customized Anti-aging",
+        "description": "Designing optimal results with personalized solutions"
+      }
+    },
+    "doctor": {
+      "title": "Medical Staff",
+      "subtitle": "Our Doctors"
+    },
+    "doctors": {
+      "kim": {
+        "name": "Sooyoung Kim",
+        "nameEn": "Dr. Sooyoung Kim",
+        "title": "Director",
+        "specialty": "Board-certified Plastic Surgeon",
+        "philosophy": "Pursuing natural beauty - that is true aesthetics.",
+        "education": [
+          "M.D., Korea University College of Medicine",
+          "Internship, Korea University Medical Center",
+          "Residency in Plastic Surgery, Korea University Medical Center",
+          "M.S. in Plastic Surgery, Korea University Graduate School",
+          "Clinical Professor, Korea University College of Medicine",
+          "Fellowship, MD Anderson Cancer Center, Houston, Texas, USA"
+        ],
+        "experience": [
+          "Current) Director, LIV Plastic Surgery",
+          "Former) Director, Ichon Plastic Surgery",
+          "Former) Director, FI Plastic Surgery",
+          "Former) Director, Pladen Plastic Surgery",
+          "Former) Director, MadeMe Plastic Surgery"
+        ],
+        "certifications": [
+          "Member, Korean Association of Plastic Surgeons",
+          "Member, Korean Society of Plastic and Reconstructive Surgeons",
+          "Member, Korean Society of Aesthetic Plastic Surgery",
+          "Member, Korean Cleft Palate-Craniofacial Association",
+          "Member, Korean Society for Laser Medicine and Surgery"
+        ]
+      },
+      "cheon": {
+        "name": "Shinhye Cheon",
+        "nameEn": "Dr. Shinhye Cheon",
+        "title": "Medical Director",
+        "specialty": "Board-certified Family Medicine Physician",
+        "philosophy": "Creating natural changes through delicate procedures.",
+        "education": [
+          "M.D., Keimyung University College of Medicine",
+          "Residency, Hallym University Kangnam Sacred Heart Hospital",
+          "Clinical Professor, Hallym University Kangnam Sacred Heart Hospital"
+        ],
+        "experience": [
+          "Current) Director, LIV Plastic Surgery",
+          "Former) Director, Ichon Plastic Surgery",
+          "Former) Director, Yonsei Mien Clinic",
+          "Former) Director, Abiju Clinic",
+          "Former) Director, Roje Dermatology Clinic"
+        ],
+        "certifications": [
+          "Member, Korean Academy of Family Medicine",
+          "Member, Korean Society of Aesthetic Medicine and Laser Surgery",
+          "Member, Korean Society of Obesity Medicine and Aesthetic Treatment"
+        ]
+      },
+      "labels": {
+        "education": "Education",
+        "experience": "Experience",
+        "certifications": "Certifications",
+        "specialties": "Specialties",
+        "publications": "Publications",
+        "presentations": "Presentations",
+        "globalActivities": "Global Activities",
+        "media": "Media Coverage",
+        "comingSoon": "Coming Soon"
+      }
+    },
+    "location": {
+      "title": "Location",
+      "subtitle": "How to visit",
+      "address": "4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea",
+      "subway": "1 min walk from Sinsa Station Exit 4"
+    }
+  },
+  "footer": {
+    "businessHours": "Business Hours",
+    "weekday": "Weekdays",
+    "saturday": "Saturday",
+    "sunday": "Closed on Sunday",
+    "address": "Address",
+    "copyright": "© 2025 LIV Plastic Surgery. All rights reserved."
+  },
+  "meta": {
+    "title": "LIV Plastic Surgery | Premium Non-surgical Anti-aging Seoul",
+    "description": "Official Ultherapy Prime & Thermage certified clinic. Beyond Gravity, Anti-Gravity lifting solution. 1 min from Sinsa Station Exit 4."
+  },
+  "contact": {
+    "title": "Book Consultation",
+    "subtitle": "Get a personalized 1:1 consultation\nwith our medical specialists.",
+    "phone": "Phone Consultation",
+    "kakao": "KakaoTalk Chat",
+    "kakaoDesc": "Real-time chat consultation",
+    "visit": "Visit Us",
+    "weekdayHours": "Weekdays 10:00 - 19:00",
+    "always": "Available 24/7",
+    "onlineReservation": "Online Consultation Booking",
+    "directions": "Directions",
+    "floor": "4F, Jaeun Building",
+    "walkTime": "1 min walk from Sinsa Station Exit 4",
+    "naverMap": "Naver Map",
+    "kakaoMap": "Kakao Map",
+    "parking": "Parking Information",
+    "parkingInfo": "Underground parking available",
+    "freeParking": "2 hours free parking for treatment customers",
+    "reservationNotice": "Consultation Booking Notice",
+    "notice1": "We will contact you within 1 business day.",
+    "notice2": "For urgent inquiries, please call +82-2-797-2773.",
+    "notice3": "Reservation changes/cancellations are possible until the day before.",
+    "mapLoading": "Loading map...",
+    "location": "Location",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "John Doe",
+      "nameError": "Please enter your name",
+      "phone": "Phone",
+      "phonePlaceholder": "+82-10-1234-5678",
+      "phoneError": "Please enter a valid phone number",
+      "email": "Email",
+      "emailPlaceholder": "email@example.com",
+      "emailError": "Please enter a valid email address",
+      "treatment": "Treatment of Interest",
+      "treatmentPlaceholder": "Select a treatment",
+      "treatmentError": "Please select a treatment",
+      "preferredDate": "Preferred Date",
+      "preferredTime": "Preferred Time",
+      "timePlaceholder": "Select time",
+      "message": "Message",
+      "messagePlaceholder": "Please describe your concerns or questions.",
+      "privacy": "I agree to the collection and use of personal information. Name, contact, and email will be collected for consultation and stored for 3 months after completion.",
+      "privacyError": "Please agree to the privacy policy",
+      "submit": "Submit Consultation Request",
+      "submitting": "Submitting...",
+      "successTitle": "Consultation request submitted",
+      "successMessage": "We will contact you shortly.\nThank you.",
+      "retry": "Submit Again",
+      "other": "Other / Decide after consultation"
+    }
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to common questions from our patients.",
+    "moreQuestions": "Have more questions?",
+    "callUs": "Call Us",
+    "onlineConsult": "Online Consultation",
+    "items": {
+      "q1": "How do I book a consultation?",
+      "a1": "You can book a consultation by phone (+82-2-797-2773), KakaoTalk, or through our online reservation form. Let us know your preferred date and time, and we'll confirm your appointment.",
+      "q2": "How long does a treatment take?",
+      "a2": "Treatment duration varies: Ultherapy Prime takes about 60-90 minutes, Thermage about 30-60 minutes, and Botox/Filler about 15-30 minutes. You'll receive detailed information during your consultation.",
+      "q3": "Can I return to daily activities after treatment?",
+      "a3": "Most non-surgical treatments allow same-day return to daily activities. Some temporary swelling or bruising may occur depending on the treatment area, but typically resolves within 1-2 weeks.",
+      "q4": "What are the treatment prices?",
+      "a4": "Prices vary based on treatment area, scope, and products used. Accurate pricing can be provided through a personalized consultation tailored to your needs.",
+      "q5": "Is parking available?",
+      "a5": "Yes, underground parking is available in the building. Treatment customers receive 2 hours of free parking.",
+      "q6": "How should I prepare for treatment?",
+      "a6": "No special preparation is required. However, please come with light or no makeup on the treatment day. Specific pre-treatment instructions may be provided for certain procedures.",
+      "q7": "Can foreigners receive consultations?",
+      "a7": "Yes, consultations are available in English, Japanese, and Chinese. Please let us know if you need interpretation services when booking your appointment.",
+      "q8": "Do you use only genuine equipment?",
+      "a8": "LIV Plastic Surgery is an officially certified Ultherapy Prime and Thermage clinic, using only 100% genuine equipment and products. Authenticity certificates are available for all products."
+    }
+  },
+  "medical": {
+    "title": "Medical Information",
+    "subtitle": "Find answers to frequently asked questions\nand useful medical information.",
+    "searchPlaceholder": "Search (e.g., Ultherapy Prime, pain)",
+    "categories": {
+      "all": "All",
+      "lifting": "Lifting",
+      "antiaging": "Anti-aging",
+      "laser": "Laser",
+      "general": "General"
+    },
+    "cta": {
+      "title": "Have more questions?",
+      "subtitle": "Our specialists are ready to help you.",
+      "reservation": "Book Consultation",
+      "call": "Call Us"
+    }
+  }
+}

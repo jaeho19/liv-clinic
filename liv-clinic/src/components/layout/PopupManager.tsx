@@ -1,29 +1,15 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { createClient } from '@/lib/supabase-browser';
 import PopupModal from './PopupModal';
 import type { PopupRow } from '@/types/admin';
 
 // ── 로컬 정적 팝업 설정 ──────────────────────────────────
 // Supabase 없이도 표시할 팝업을 여기에 추가하세요.
 // display_start / display_end 기간 내에만 노출됩니다.
-const STATIC_POPUPS: PopupRow[] = [
-  {
-    id: 'feb-2026-schedule',
-    title: '2월 진료일정',
-    image_url: '/images/popup/feb-schedule.jpeg',
-    link_url: '',
-    link_target: '_self',
-    display_start: '2026-01-01T00:00:00+09:00',
-    display_end: '2026-02-28T23:59:59+09:00',
-    is_active: true,
-    width: 480,
-    sort_order: 0,
-    show_on_mobile: true,
-    created_at: '',
-    updated_at: '',
-  },
-];
+// 어드민 팝업관리에서 DB로 관리하므로 기본값은 빈 배열입니다.
+const STATIC_POPUPS: PopupRow[] = [];
 // ─────────────────────────────────────────────────────────
 
 function getDismissKey(popupId: string): string {
@@ -67,24 +53,34 @@ export default function PopupManager() {
     setIsMobile(window.innerWidth < 768);
 
     const loadPopups = async () => {
-      let apiPopups: PopupRow[] = [];
+      let dbPopups: PopupRow[] = [];
 
-      // Supabase API에서 팝업 로드 시도
+      // Supabase에서 활성 팝업 직접 로드
       try {
-        const res = await fetch('/api/popups');
-        if (res.ok) {
-          apiPopups = await res.json();
+        const supabase = createClient();
+        const now = new Date().toISOString();
+
+        const { data } = await supabase
+          .from('popups')
+          .select('*')
+          .eq('is_active', true)
+          .lte('display_start', now)
+          .gte('display_end', now)
+          .order('sort_order', { ascending: true });
+
+        if (data) {
+          dbPopups = data as PopupRow[];
         }
       } catch {
         // Supabase 미설정 시 무시
       }
 
-      // 정적 팝업 + API 팝업 병합 (ID 기준 중복 제거)
+      // 정적 팝업 + DB 팝업 병합 (ID 기준 중복 제거)
       const staticPopups = getActiveStaticPopups();
-      const apiIds = new Set(apiPopups.map((p) => p.id));
+      const dbIds = new Set(dbPopups.map((p) => p.id));
       const merged = [
-        ...staticPopups.filter((p) => !apiIds.has(p.id)),
-        ...apiPopups,
+        ...staticPopups.filter((p) => !dbIds.has(p.id)),
+        ...dbPopups,
       ];
 
       // 오늘 이미 닫은 팝업 제외

@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Paperlogy 4';
+    src: url('Paperlogy-4Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperlogy 6';
+    src: url('Paperlogy-6SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperlogy 8';
+    src: url('Paperlogy-8ExtraBold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paperlogy 7';
+    src: url('Paperlogy-7Bold.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

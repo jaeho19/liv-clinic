@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import type {
   ConsultationFunnelData,
   ProcedureStat,
@@ -8,50 +8,31 @@ import type {
   DailyTrend,
 } from '@/types/admin';
 
-// ─── Mock 데이터 생성 ──────────────────────────────────
-function generateMockData(year: number, month: number) {
-  const funnel: ConsultationFunnelData = {
-    total: 184,
-    contacted: 156,
-    reserved: 98,
-    completed: 82,
-    noShow: 7,
-  };
+// ─── 타입 & API ──────────────────────────────────────
+interface ReportData {
+  funnel: ConsultationFunnelData;
+  procedures: ProcedureStat[];
+  doctors: DoctorStat[];
+  daily: DailyTrend[];
+  totalRevenue: number;
+  totalProcedures: number;
+  avgRevenuePerCase: number;
+}
 
-  const procedures: ProcedureStat[] = [
-    { name: '보톡스', category: '안티에이징', count: 45, revenue: 22500000 },
-    { name: '울쎄라', category: '리프팅', count: 28, revenue: 56000000 },
-    { name: '필러', category: '안티에이징', count: 35, revenue: 31500000 },
-    { name: '써마지', category: '리프팅', count: 22, revenue: 33000000 },
-    { name: '스킨부스터', category: '안티에이징', count: 30, revenue: 15000000 },
-    { name: '실리프팅', category: '리프팅', count: 18, revenue: 27000000 },
-    { name: '덴서티', category: '리프팅', count: 15, revenue: 18750000 },
-    { name: '색소 레이저', category: '레이저', count: 20, revenue: 10000000 },
-    { name: '인모드', category: '리프팅', count: 12, revenue: 14400000 },
-    { name: '제모 레이저', category: '레이저', count: 25, revenue: 7500000 },
-  ];
+const EMPTY_REPORT: ReportData = {
+  funnel: { total: 0, contacted: 0, reserved: 0, completed: 0, noShow: 0 },
+  procedures: [],
+  doctors: [],
+  daily: [],
+  totalRevenue: 0,
+  totalProcedures: 0,
+  avgRevenuePerCase: 0,
+};
 
-  const doctors: DoctorStat[] = [
-    { name: '천원장', consultations: 98, procedures: 142, revenue: 148000000, conversionRate: 48.2 },
-    { name: '김원장', consultations: 86, procedures: 108, revenue: 87650000, conversionRate: 41.5 },
-  ];
-
-  const daysInMonth = new Date(year, month, 0).getDate();
-  const daily: DailyTrend[] = Array.from({ length: daysInMonth }, (_, i) => {
-    const day = i + 1;
-    const isWeekend = [0, 6].includes(new Date(year, month - 1, day).getDay());
-    return {
-      date: `${month}/${day}`,
-      consultations: isWeekend ? Math.floor(Math.random() * 3) : Math.floor(Math.random() * 8) + 3,
-      procedures: isWeekend ? Math.floor(Math.random() * 4) : Math.floor(Math.random() * 10) + 4,
-    };
-  });
-
-  const totalRevenue = procedures.reduce((s, p) => s + p.revenue, 0);
-  const totalProcedures = procedures.reduce((s, p) => s + p.count, 0);
-  const avgRevenuePerCase = totalProcedures > 0 ? Math.round(totalRevenue / totalProcedures) : 0;
-
-  return { funnel, procedures, doctors, daily, totalRevenue, totalProcedures, avgRevenuePerCase };
+async function fetchReport(year: number, month: number): Promise<ReportData> {
+  const res = await fetch(`/api/admin/reports?year=${year}&month=${month}`);
+  if (!res.ok) throw new Error('리포트를 불러오지 못했습니다.');
+  return res.json();
 }
 
 // ─── 유틸 ──────────────────────────────────────────
@@ -70,8 +51,24 @@ export default function ReportsPage() {
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth() + 1);
+  const [data, setData] = useState<ReportData>(EMPTY_REPORT);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const data = useMemo(() => generateMockData(year, month), [year, month]);
+  const loadReport = useCallback(async (y: number, m: number) => {
+    setLoading(true);
+    setError(null);
+    try {
+      const report = await fetchReport(y, m);
+      setData(report);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadReport(year, month); }, [year, month, loadReport]);
 
   const conversionRate = data.funnel.total > 0
     ? ((data.funnel.completed / data.funnel.total) * 100).toFixed(1)
@@ -107,6 +104,30 @@ export default function ReportsPage() {
         </div>
       </div>
 
+      {loading && (
+        <div className="flex items-center justify-center py-20">
+          <div className="text-center">
+            <div className="inline-block w-8 h-8 border-4 border-[#b4988d] border-t-transparent rounded-full animate-spin mb-3" />
+            <p className="text-[#8a8a8a] text-sm">리포트를 불러오는 중...</p>
+          </div>
+        </div>
+      )}
+
+      {error && !loading && (
+        <div className="flex items-center justify-center py-20">
+          <div className="text-center">
+            <p className="text-red-600 font-medium mb-2">{error}</p>
+            <button
+              onClick={() => loadReport(year, month)}
+              className="px-4 py-2 bg-[#6d4e42] text-white rounded-lg text-sm hover:bg-[#5a3d33] transition-colors cursor-pointer"
+            >
+              다시 시도
+            </button>
+          </div>
+        </div>
+      )}
+
+      {!loading && !error && <>
       {/* KPI 카드 */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
         <KpiCard
@@ -152,6 +173,7 @@ export default function ReportsPage() {
         </div>
         <DoctorStats doctors={data.doctors} />
       </div>
+      </>}
     </div>
   );
 }

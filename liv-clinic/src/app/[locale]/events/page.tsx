@@ -1,12 +1,13 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AnimateOnScroll, Button } from '@/components/ui';
 import { ScrollLink } from '@/components/ui';
 import EventCard from '@/components/sections/EventCard';
-import { EVENTS, getEventStatus } from '@/lib/constants';
+import { EVENTS, getEventStatus, EventItem } from '@/lib/constants';
+import { fetchPublishedEvents } from '@/lib/eventApi';
 
 type FilterStatus = 'all' | 'active' | 'ended';
 
@@ -14,27 +15,50 @@ export default function EventsPage() {
   const t = useTranslations('events');
   const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
+  const [allEvents, setAllEvents] = useState<EventItem[]>(EVENTS);
+  const [isLoading, setIsLoading] = useState(true);
+
+  // API에서 이벤트 로드, 상수 데이터와 병합
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      const { events: apiEvents, fromApi } = await fetchPublishedEvents();
+      if (cancelled) return;
+
+      if (fromApi && apiEvents.length > 0) {
+        // API 이벤트 + 상수에만 있는 이벤트 병합 (API 우선)
+        const apiIds = new Set(apiEvents.map((e) => e.id));
+        const constantsOnly = EVENTS.filter((e) => !apiIds.has(e.id));
+        setAllEvents([...apiEvents, ...constantsOnly]);
+      } else {
+        // API 실패 또는 빈 응답 → 상수 폴백
+        setAllEvents(EVENTS);
+      }
+      setIsLoading(false);
+    })();
+    return () => { cancelled = true; };
+  }, []);
 
   // 카운트
-  const activeCount = EVENTS.filter((e) => getEventStatus(e) === 'active').length;
-  const endedCount = EVENTS.filter((e) => getEventStatus(e) === 'ended').length;
+  const activeCount = allEvents.filter((e) => getEventStatus(e) === 'active').length;
+  const endedCount = allEvents.filter((e) => getEventStatus(e) === 'ended').length;
 
   // 필터 탭 정의
   const filterTabs: { id: FilterStatus; label: string; count: number }[] = [
-    { id: 'all', label: t('allTab'), count: EVENTS.length },
+    { id: 'all', label: t('allTab'), count: allEvents.length },
     { id: 'active', label: t('activeTab'), count: activeCount },
     { id: 'ended', label: t('endedTab'), count: endedCount },
   ];
 
   // 필터링 + 최신순 정렬 (startDate 내림차순)
   const filteredEvents = useMemo(() => {
-    return EVENTS
+    return allEvents
       .filter((event) => {
         if (filterStatus === 'all') return true;
         return getEventStatus(event) === filterStatus;
       })
-      .sort((a, b) => new Date(b.startDate).getTime() - new Date(a.startDate).getTime());
-  }, [filterStatus]);
+      .sort((a, b) => a.sortOrder - b.sortOrder);
+  }, [filterStatus, allEvents]);
 
   return (
     <>
@@ -77,48 +101,63 @@ export default function EventsPage() {
       {/* Events Grid */}
       <section className="py-12 md:py-20 bg-background">
         <div className="container-custom">
-          <AnimatePresence mode="wait">
-            {filteredEvents.length === 0 ? (
-              <motion.div
-                key="empty"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                className="text-center py-20"
-              >
-                <svg
-                  className="w-20 h-20 mx-auto mb-6 text-mono-light/30"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <p className="text-h4 text-mono-light mb-2">
-                  {t('noEvents')}
-                </p>
-              </motion.div>
-            ) : (
-              <motion.div
-                key={filterStatus}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {filteredEvents.map((event, index) => (
-                    <EventCard key={event.id} event={event} index={index} />
-                  ))}
+          {isLoading ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm animate-pulse">
+                  <div className="aspect-[3/4] bg-gray-200" />
+                  <div className="p-5 space-y-3">
+                    <div className="h-5 bg-gray-200 rounded w-3/4" />
+                    <div className="h-4 bg-gray-200 rounded w-full" />
+                    <div className="h-3 bg-gray-200 rounded w-1/2" />
+                  </div>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+              ))}
+            </div>
+          ) : (
+            <AnimatePresence mode="wait">
+              {filteredEvents.length === 0 ? (
+                <motion.div
+                  key="empty"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-center py-20"
+                >
+                  <svg
+                    className="w-20 h-20 mx-auto mb-6 text-mono-light/30"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                    />
+                  </svg>
+                  <p className="text-h4 text-mono-light mb-2">
+                    {t('noEvents')}
+                  </p>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key={filterStatus}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {filteredEvents.map((event, index) => (
+                      <EventCard key={event.id} event={event} index={index} />
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          )}
         </div>
       </section>
 

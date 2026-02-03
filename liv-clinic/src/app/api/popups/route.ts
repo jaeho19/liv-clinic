@@ -2,22 +2,38 @@ import { NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/supabase';
 
+export const dynamic = 'force-dynamic';
+export const fetchCache = 'force-no-store';
+
 export async function GET() {
-  const supabase = createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  const now = new Date().toISOString();
+  if (!supabaseUrl || !serviceKey) {
+    return NextResponse.json([]);
+  }
 
-  const { data, error } = await supabase
-    .from('popups')
-    .select('*')
-    .eq('is_active', true)
-    .lte('display_start', now)
-    .gte('display_end', now)
-    .order('sort_order', { ascending: true });
+  try {
+    const supabase = createClient<Database>(supabaseUrl, serviceKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+    });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
-  return NextResponse.json(data);
+    const now = new Date().toISOString();
+
+    const { data, error } = await supabase
+      .from('popups')
+      .select('*')
+      .eq('is_active', true)
+      .lte('display_start', now)
+      .gte('display_end', now)
+      .order('sort_order', { ascending: true });
+
+    if (error) {
+      return NextResponse.json([]);
+    }
+
+    return NextResponse.json(data ?? []);
+  } catch {
+    return NextResponse.json([]);
+  }
 }

@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { createClient } from '@/lib/supabase-browser';
 import ConfirmDialog from '@/components/admin/ConfirmDialog';
 import type { PopupRow } from '@/types/admin';
 import { getPopupStatus } from '@/types/admin';
@@ -15,18 +14,21 @@ const STATUS_BADGES: Record<string, { label: string; color: string }> = {
 };
 
 export default function PopupsAdminPage() {
-  const supabase = createClient();
   const [popups, setPopups] = useState<PopupRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
   const fetchPopups = async () => {
     setLoading(true);
-    const { data } = await supabase
-      .from('popups')
-      .select('*')
-      .order('created_at', { ascending: false });
-    setPopups(data ?? []);
+    try {
+      const res = await fetch('/api/admin/popups');
+      if (res.ok) {
+        const data = await res.json();
+        setPopups(data ?? []);
+      }
+    } catch {
+      // fetch error
+    }
     setLoading(false);
   };
 
@@ -34,16 +36,17 @@ export default function PopupsAdminPage() {
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
-    await supabase.from('popups').delete().eq('id', deleteTarget);
+    await fetch(`/api/admin/popups/${deleteTarget}`, { method: 'DELETE' });
     setDeleteTarget(null);
     fetchPopups();
   };
 
   const toggleActive = async (popup: PopupRow) => {
-    await supabase
-      .from('popups')
-      .update({ is_active: !popup.is_active, updated_at: new Date().toISOString() })
-      .eq('id', popup.id);
+    await fetch(`/api/admin/popups/${popup.id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ is_active: !popup.is_active }),
+    });
     fetchPopups();
   };
 

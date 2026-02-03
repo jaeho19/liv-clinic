@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -8,7 +8,8 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card } from '@/components/ui';
 import { ScrollLink } from '@/components/ui';
-import { EVENTS, getEventStatus, TREATMENTS } from '@/lib/constants';
+import { EVENTS, getEventStatus, TREATMENTS, EventItem } from '@/lib/constants';
+import { fetchEventBySlug, fetchPublishedEvents } from '@/lib/eventApi';
 import EventCard from '@/components/sections/EventCard';
 import EventHero from '@/components/sections/EventHero';
 
@@ -19,19 +20,47 @@ export default function EventDetailPage() {
   const tNav = useTranslations('nav');
   const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [event, setEvent] = useState<EventItem | undefined>(undefined);
+  const [allEvents, setAllEvents] = useState<EventItem[]>(EVENTS);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // 현재 이벤트 찾기
-  const event = useMemo(() => {
-    return EVENTS.find((e) => e.id === eventId);
+  // API에서 이벤트 로드, 상수 폴백
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      // 1. 단일 이벤트 가져오기
+      const apiEvent = await fetchEventBySlug(eventId);
+      if (cancelled) return;
+
+      if (apiEvent) {
+        setEvent(apiEvent);
+      } else {
+        // 상수에서 찾기
+        setEvent(EVENTS.find((e) => e.id === eventId));
+      }
+
+      // 2. 관련 이벤트를 위해 전체 목록도 로드
+      const { events: apiEvents, fromApi } = await fetchPublishedEvents();
+      if (cancelled) return;
+
+      if (fromApi && apiEvents.length > 0) {
+        const apiIds = new Set(apiEvents.map((e) => e.id));
+        const constantsOnly = EVENTS.filter((e) => !apiIds.has(e.id));
+        setAllEvents([...apiEvents, ...constantsOnly]);
+      }
+
+      setIsLoading(false);
+    })();
+    return () => { cancelled = true; };
   }, [eventId]);
 
   // 관련 이벤트 (같은 카테고리, 현재 이벤트 제외)
   const relatedEvents = useMemo(() => {
     if (!event) return [];
-    return EVENTS.filter(
+    return allEvents.filter(
       (e) => e.id !== event.id && (e.category === event.category || e.category === 'all')
     ).slice(0, 3);
-  }, [event]);
+  }, [event, allEvents]);
 
   // 날짜 포맷팅
   const formatDate = (dateStr: string) => {
@@ -56,6 +85,28 @@ export default function EventDetailPage() {
     const treatment = treatmentsMap[category]?.[id];
     return treatment ? { name: treatment.name } : null;
   };
+
+  // 로딩 상태
+  if (isLoading) {
+    return (
+      <div className="min-h-screen pt-24 bg-background">
+        <div className="container-custom">
+          <div className="animate-pulse space-y-8">
+            <div className="h-4 bg-gray-200 rounded w-1/3" />
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              <div className="aspect-[2/3] bg-gray-200 rounded-2xl" />
+              <div className="space-y-4">
+                <div className="h-6 bg-gray-200 rounded w-1/4" />
+                <div className="h-10 bg-gray-200 rounded w-3/4" />
+                <div className="h-4 bg-gray-200 rounded w-1/2" />
+                <div className="h-32 bg-gray-200 rounded" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (!event) {
     return (

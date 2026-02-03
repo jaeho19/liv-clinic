@@ -17,7 +17,7 @@ export default function EventCard({ event, index = 0, featured = false }: EventC
   const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
   const status: EventStatus = getEventStatus(event);
   const isEnded = status === 'ended';
-  const isPlaceholder = event.posterImage.includes('placeholder');
+  const isPlaceholder = !event.posterImage || event.posterImage.includes('placeholder');
   const isPromotion = new Date(event.endDate).getFullYear() >= 2099;
 
   // 날짜 포맷팅

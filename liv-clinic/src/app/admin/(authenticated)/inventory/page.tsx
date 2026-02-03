@@ -1,281 +1,520 @@
 'use client';
 
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import {
   INVENTORY_CATEGORY_LABELS,
+  NURSE_OPTIONS,
+  PROCEDURE_NAMES,
   getStockStatus,
 } from '@/types/admin';
-import type { InventoryCategory, InventoryItem, StockLog } from '@/types/admin';
+import type {
+  InventoryCategory,
+  InventoryItem,
+  InventoryTransaction,
+  ProcedureRecipe,
+} from '@/types/admin';
 
-// ─── Mock 데이터 ──────────────────────────────────────────
-const MOCK_ITEMS: InventoryItem[] = [
-  // 주사제/시술재료
-  { id: '1', name: '보톡스 (엘러간 100U)', category: 'injection', currentStock: 25, minStock: 10, unit: '바이알', unitPrice: 150000, supplier: '엘러간코리아', lastRestockedAt: '2026-01-25', memo: '냉장보관 필수' },
-  { id: '2', name: '쥬비덤 볼류마 1ml', category: 'injection', currentStock: 8, minStock: 5, unit: '시린지', unitPrice: 280000, supplier: '엘러간코리아', lastRestockedAt: '2026-01-20' },
-  { id: '3', name: '쥬비덤 볼벨라 1ml', category: 'injection', currentStock: 3, minStock: 5, unit: '시린지', unitPrice: 250000, supplier: '엘러간코리아', lastRestockedAt: '2026-01-15' },
-  { id: '4', name: '리쥬란 힐러 2ml', category: 'injection', currentStock: 12, minStock: 8, unit: '시린지', unitPrice: 180000, supplier: '파마리서치', lastRestockedAt: '2026-01-22' },
-  { id: '5', name: '쥬벨룩 볼륨 1ml', category: 'injection', currentStock: 0, minStock: 5, unit: '시린지', unitPrice: 200000, supplier: '에이미셀', lastRestockedAt: '2026-01-10' },
-  { id: '6', name: '실리프팅 실 (PDO)', category: 'injection', currentStock: 40, minStock: 20, unit: '개', unitPrice: 35000, supplier: '메디스킨', lastRestockedAt: '2026-01-28' },
-  // 소모품
-  { id: '7', name: '마취 크림 (에멜라 5g)', category: 'consumable', currentStock: 45, minStock: 20, unit: '튜브', unitPrice: 8000, supplier: '한국메나리니', lastRestockedAt: '2026-01-27' },
-  { id: '8', name: '일회용 니들 30G', category: 'consumable', currentStock: 200, minStock: 100, unit: '개', unitPrice: 500, supplier: '비디메디칼', lastRestockedAt: '2026-01-28' },
-  { id: '9', name: '캐뉼라 25G', category: 'consumable', currentStock: 15, minStock: 20, unit: '개', unitPrice: 3500, supplier: '비디메디칼', lastRestockedAt: '2026-01-18' },
-  { id: '10', name: '알코올 솜', category: 'consumable', currentStock: 500, minStock: 200, unit: '개', unitPrice: 50, supplier: '일반의료', lastRestockedAt: '2026-01-25' },
-  { id: '11', name: '냉각젤 (울쎄라용)', category: 'consumable', currentStock: 6, minStock: 3, unit: '병', unitPrice: 45000, supplier: '머즈코리아', lastRestockedAt: '2026-01-20' },
-  // 스킨케어
-  { id: '12', name: '재생 크림 (시술 후)', category: 'skincare', currentStock: 30, minStock: 15, unit: '개', unitPrice: 25000, supplier: '더마코스', lastRestockedAt: '2026-01-22' },
-  { id: '13', name: '선블록 SPF50+', category: 'skincare', currentStock: 20, minStock: 10, unit: '개', unitPrice: 18000, supplier: '더마코스', lastRestockedAt: '2026-01-20' },
-  { id: '14', name: '진정 마스크팩', category: 'skincare', currentStock: 2, minStock: 10, unit: '박스', unitPrice: 35000, supplier: '더마코스', lastRestockedAt: '2026-01-05' },
-  // 장비
-  { id: '15', name: '울쎄라 카트리지 DS 7-3.0', category: 'equipment', currentStock: 4, minStock: 2, unit: '개', unitPrice: 850000, supplier: '머즈코리아', lastRestockedAt: '2026-01-15' },
-  { id: '16', name: '써마지 팁 900샷', category: 'equipment', currentStock: 2, minStock: 1, unit: '개', unitPrice: 1200000, supplier: '솔타메디칼', lastRestockedAt: '2026-01-10' },
-];
+// ─── New visual components ─────────────────────
+import StockDashboard from '@/components/admin/inventory/StockDashboard';
+import StockTableView from '@/components/admin/inventory/StockTableView';
+import StockCardView from '@/components/admin/inventory/StockCardView';
+import StockGroupView from '@/components/admin/inventory/StockGroupView';
+import AlertBanner from '@/components/admin/inventory/AlertBanner';
+import HistoryTab from '@/components/admin/inventory/HistoryTab';
+import RestockTab from '@/components/admin/inventory/RestockTab';
+import DetailPanel from '@/components/admin/inventory/DetailPanel';
 
-const MOCK_LOGS: StockLog[] = [
-  { id: 'l1', itemId: '1', type: 'in', quantity: 10, note: '정기 발주', createdAt: '2026-01-25T10:00:00' },
-  { id: 'l2', itemId: '1', type: 'out', quantity: 3, note: '오전 시술 사용', createdAt: '2026-01-28T11:30:00' },
-  { id: 'l3', itemId: '3', type: 'out', quantity: 2, note: '필러 시술', createdAt: '2026-01-29T14:00:00' },
-  { id: 'l4', itemId: '5', type: 'out', quantity: 5, note: '시술 사용 완료', createdAt: '2026-01-28T16:00:00' },
-  { id: 'l5', itemId: '9', type: 'out', quantity: 5, note: '필러 캐뉼라 사용', createdAt: '2026-01-29T10:00:00' },
-  { id: 'l6', itemId: '14', type: 'out', quantity: 8, note: '시술 후 제공', createdAt: '2026-01-29T15:00:00' },
-];
-
-// ─── 유틸 ──────────────────────────────────────────
-const STOCK_STATUS_CONFIG = {
-  normal: { label: '정상', bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-400' },
-  low: { label: '부족', bg: 'bg-amber-50', text: 'text-amber-700', dot: 'bg-amber-400' },
-  out: { label: '소진', bg: 'bg-red-50', text: 'text-red-700', dot: 'bg-red-400' },
-};
-
-function formatPrice(n: number): string {
-  return n.toLocaleString('ko-KR') + '원';
+// ─── API fetch ──────────────────────────────────
+async function fetchItems(): Promise<InventoryItem[]> {
+  const res = await fetch('/api/admin/inventory');
+  if (!res.ok) throw new Error('품목 목록을 불러오지 못했습니다.');
+  return res.json();
 }
 
-// ─── 메인 컴포넌트 ──────────────────────────────────
+async function fetchTransactions(): Promise<InventoryTransaction[]> {
+  const res = await fetch('/api/admin/inventory/transactions?limit=200');
+  if (!res.ok) throw new Error('사용 이력을 불러오지 못했습니다.');
+  return res.json();
+}
+
+async function fetchRecipes(): Promise<ProcedureRecipe[]> {
+  const res = await fetch('/api/admin/inventory/recipes');
+  if (!res.ok) throw new Error('시술 레시피를 불러오지 못했습니다.');
+  return res.json();
+}
+
+// ─── Types ──────────────────────────────────────
+type TabId = 'stock' | 'history' | 'restock';
+type ViewMode = 'table' | 'card' | 'group';
+
+// ─── Main Component ─────────────────────────────
 export default function InventoryPage() {
-  const [items, setItems] = useState<InventoryItem[]>(MOCK_ITEMS);
-  const [logs, setLogs] = useState<StockLog[]>(MOCK_LOGS);
+  const [items, setItems] = useState<InventoryItem[]>([]);
+  const [transactions, setTransactions] = useState<InventoryTransaction[]>([]);
+  const [recipes, setRecipes] = useState<ProcedureRecipe[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [activeTab, setActiveTab] = useState<TabId>('stock');
+  const [viewMode, setViewMode] = useState<ViewMode>('table');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showUseModal, setShowUseModal] = useState(false);
   const [stockModal, setStockModal] = useState<{ item: InventoryItem; type: 'in' | 'out' } | null>(null);
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
 
-  // 필터링
+  // Dismissed alert IDs (persisted in localStorage)
+  const [dismissedAlertIds, setDismissedAlertIds] = useState<Set<string>>(() => {
+    if (typeof window === 'undefined') return new Set<string>();
+    try {
+      const saved = localStorage.getItem('inv_dismissed_alerts');
+      return saved ? new Set(JSON.parse(saved) as string[]) : new Set<string>();
+    } catch { return new Set<string>(); }
+  });
+
+  const handleDismissAlert = useCallback((id: string) => {
+    setDismissedAlertIds(prev => {
+      const next = new Set(prev);
+      next.add(id);
+      localStorage.setItem('inv_dismissed_alerts', JSON.stringify([...next]));
+      return next;
+    });
+  }, []);
+
+  const handleUndismissAlert = useCallback((id: string) => {
+    setDismissedAlertIds(prev => {
+      const next = new Set(prev);
+      next.delete(id);
+      localStorage.setItem('inv_dismissed_alerts', JSON.stringify([...next]));
+      return next;
+    });
+  }, []);
+
+  // ─── Data Load ────────────────────────────────
+  const loadData = useCallback(async () => {
+    try {
+      setError(null);
+      const [itemsData, txData, recipesData] = await Promise.all([
+        fetchItems(),
+        fetchTransactions(),
+        fetchRecipes(),
+      ]);
+      setItems(itemsData);
+      setTransactions(txData);
+      setRecipes(recipesData);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadData(); }, [loadData]);
+
+  // ─── Filtering ────────────────────────────────
   const filtered = useMemo(() => {
     return items.filter((item) => {
+      if (!item.is_active) return false;
       if (categoryFilter !== 'all' && item.category !== categoryFilter) return false;
       if (statusFilter !== 'all' && getStockStatus(item) !== statusFilter) return false;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
-        return item.name.toLowerCase().includes(q) || item.supplier.toLowerCase().includes(q);
+        return item.name.toLowerCase().includes(q) || (item.supplier || '').toLowerCase().includes(q);
       }
       return true;
     });
   }, [items, categoryFilter, statusFilter, searchQuery]);
 
-  // 통계
-  const stats = useMemo(() => {
-    const total = items.length;
-    const normal = items.filter((i) => getStockStatus(i) === 'normal').length;
-    const low = items.filter((i) => getStockStatus(i) === 'low').length;
-    const out = items.filter((i) => getStockStatus(i) === 'out').length;
-    const totalValue = items.reduce((sum, i) => sum + i.currentStock * i.unitPrice, 0);
-    return { total, normal, low, out, totalValue };
+  // Alert items
+  const alertItems = useMemo(() => {
+    return items.filter(i => i.is_active && (getStockStatus(i) === 'out' || getStockStatus(i) === 'low'));
   }, [items]);
 
-  // 입출고 처리
-  const handleStockChange = useCallback((itemId: string, type: 'in' | 'out', quantity: number, note: string) => {
-    setItems((prev) =>
-      prev.map((item) => {
-        if (item.id !== itemId) return item;
-        const newStock = type === 'in'
-          ? item.currentStock + quantity
-          : Math.max(0, item.currentStock - quantity);
-        return {
-          ...item,
-          currentStock: newStock,
-          ...(type === 'in' ? { lastRestockedAt: new Date().toISOString().split('T')[0] } : {}),
-        };
-      })
-    );
-    setLogs((prev) => [
-      { id: crypto.randomUUID(), itemId, type, quantity, note, createdAt: new Date().toISOString() },
-      ...prev,
-    ]);
-  }, []);
-
-  // 새 품목 추가
-  const handleAddItem = useCallback((newItem: Omit<InventoryItem, 'id'>) => {
-    setItems((prev) => [...prev, { ...newItem, id: crypto.randomUUID() }]);
-  }, []);
-
-  // 품목 삭제
-  const handleDeleteItem = useCallback((id: string) => {
-    setItems((prev) => prev.filter((i) => i.id !== id));
-    setLogs((prev) => prev.filter((l) => l.itemId !== id));
-    if (selectedItemId === id) setSelectedItemId(null);
-  }, [selectedItemId]);
-
-  // 선택된 품목의 로그
-  const selectedLogs = useMemo(() => {
+  // Selected item data
+  const selectedTxs = useMemo(() => {
     if (!selectedItemId) return [];
-    return logs.filter((l) => l.itemId === selectedItemId).slice(0, 10);
-  }, [logs, selectedItemId]);
+    return transactions.filter((t) => t.item_id === selectedItemId).slice(0, 15);
+  }, [transactions, selectedItemId]);
 
   const selectedItem = items.find((i) => i.id === selectedItemId);
 
+  // Consumption data for history tab
+  const consumptionData = useMemo(() => {
+    const useTxs = transactions.filter(t => t.tx_type === 'use');
+    const byItem: Record<string, number> = {};
+    for (const tx of useTxs) {
+      byItem[tx.item_id] = (byItem[tx.item_id] || 0) + tx.quantity;
+    }
+    return Object.entries(byItem)
+      .map(([itemId, qty]) => ({
+        item: items.find(i => i.id === itemId),
+        quantity: qty,
+      }))
+      .filter(d => d.item)
+      .sort((a, b) => b.quantity - a.quantity);
+  }, [transactions, items]);
+
+  // ─── API Handlers ─────────────────────────────
+  const handleUseItems = useCallback(async (data: {
+    patientName: string;
+    chartNumber: string;
+    confirmedBy: string;
+    note: string;
+    usageItems: { itemId: string; quantity: number }[];
+  }) => {
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/admin/inventory/use', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: data.usageItems.map(u => ({ item_id: u.itemId, quantity: u.quantity })),
+          patient_name: data.patientName,
+          chart_number: data.chartNumber,
+          note: data.note,
+          confirmed_by: data.confirmedBy,
+        }),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || '사용 기록 저장에 실패했습니다.');
+      }
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    } finally {
+      setSubmitting(false);
+    }
+  }, [loadData]);
+
+  const handleStockChange = useCallback(async (itemId: string, type: 'in' | 'out', quantity: number, note: string) => {
+    setSubmitting(true);
+    try {
+      const endpoint = type === 'in' ? '/api/admin/inventory/restock' : '/api/admin/inventory/use';
+      const body = type === 'in'
+        ? { item_id: itemId, quantity, note }
+        : { items: [{ item_id: itemId, quantity }], note };
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || '처리에 실패했습니다.');
+      }
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    } finally {
+      setSubmitting(false);
+    }
+  }, [loadData]);
+
+  const handleAddItem = useCallback(async (newItem: Omit<InventoryItem, 'id' | 'created_at' | 'updated_at' | 'is_active'>) => {
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/admin/inventory', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newItem),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || '품목 등록에 실패했습니다.');
+      }
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    } finally {
+      setSubmitting(false);
+    }
+  }, [loadData]);
+
+  const handleDeleteItem = useCallback(async (id: string) => {
+    if (!confirm('이 품목을 삭제하시겠습니까?')) return;
+    try {
+      const res = await fetch(`/api/admin/inventory/${id}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || '삭제에 실패했습니다.');
+      }
+      if (selectedItemId === id) setSelectedItemId(null);
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    }
+  }, [selectedItemId, loadData]);
+
+  // ─── Tabs & View modes ────────────────────────
+  const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
+    {
+      id: 'stock', label: '재고 현황',
+      icon: <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg>,
+    },
+    {
+      id: 'history', label: '사용 이력',
+      icon: <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>,
+    },
+    {
+      id: 'restock', label: '입고 관리',
+      icon: <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" /></svg>,
+    },
+  ];
+
+  const VIEW_MODES: { id: ViewMode; label: string; icon: React.ReactNode }[] = [
+    {
+      id: 'table', label: '테이블',
+      icon: <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M3 10h18M3 14h18M3 6h18M3 18h18" /></svg>,
+    },
+    {
+      id: 'card', label: '카드',
+      icon: <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zm10 0a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>,
+    },
+    {
+      id: 'group', label: '그룹',
+      icon: <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>,
+    },
+  ];
+
+  // ─── Loading / Error ──────────────────────────
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center py-24">
+        <div className="text-center">
+          <div className="inline-block w-8 h-8 border-[3px] border-[#b4988d]/30 border-t-[#b4988d] rounded-full animate-spin mb-4" />
+          <p className="text-[#a09080] text-sm">재고 데이터를 불러오는 중...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="flex items-center justify-center py-24">
+        <div className="text-center">
+          <div className="w-12 h-12 rounded-2xl bg-red-50 flex items-center justify-center mx-auto mb-3">
+            <svg className="w-6 h-6 text-red-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+            </svg>
+          </div>
+          <p className="text-red-600 font-medium mb-3">{error}</p>
+          <button
+            onClick={() => { setLoading(true); loadData(); }}
+            className="px-5 py-2.5 bg-[#6d4e42] text-white rounded-xl text-sm font-medium hover:bg-[#5a3d33] transition-colors cursor-pointer"
+          >
+            다시 시도
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div>
-      {/* 헤더 */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
-        <h2 className="text-xl font-bold text-[#6d4e42]">재고관리</h2>
-        <button
-          onClick={() => setShowAddModal(true)}
-          className="px-4 py-2 bg-[#b4988d] text-white rounded-lg text-sm font-medium hover:bg-[#a08878] transition-colors cursor-pointer"
-        >
-          + 새 품목 등록
-        </button>
-      </div>
-
-      {/* 통계 카드 */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-3 mb-6">
-        <StatCard label="총 품목" value={stats.total} unit="개" color="bg-blue-50 text-blue-700" />
-        <StatCard label="정상 재고" value={stats.normal} unit="개" color="bg-emerald-50 text-emerald-700" />
-        <StatCard label="부족 경고" value={stats.low} unit="개" color="bg-amber-50 text-amber-700" />
-        <StatCard label="소진" value={stats.out} unit="개" color="bg-red-50 text-red-700" />
-        <StatCard label="총 재고가치" value={stats.totalValue.toLocaleString('ko-KR')} unit="원" color="bg-purple-50 text-purple-700" />
-      </div>
-
-      {/* 필터 바 */}
-      <div className="bg-white rounded-xl border border-[#e5e5e5] p-4 mb-4">
-        <div className="flex flex-wrap gap-3 items-center">
-          <input
-            type="text"
-            placeholder="품목명 또는 공급사 검색..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
-          />
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+      {/* Header */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-7">
+        <div>
+          <h2 className="text-xl font-bold text-[#6d4e42] tracking-tight">재고관리</h2>
+          <p className="text-xs text-[#a09080] mt-1">품목 재고 현황을 한눈에 확인하고 관리합니다</p>
+        </div>
+        <div className="flex gap-2.5">
+          <button
+            onClick={() => setShowUseModal(true)}
+            className="px-4 py-2.5 bg-[#6d4e42] text-white rounded-xl text-sm font-semibold hover:bg-[#5a3d33] transition-all duration-150 cursor-pointer flex items-center gap-2 shadow-sm hover:shadow-md"
           >
-            <option value="all">전체 카테고리</option>
-            {(Object.entries(INVENTORY_CATEGORY_LABELS) as [InventoryCategory, string][]).map(([k, v]) => (
-              <option key={k} value={k}>{v}</option>
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            물품 사용 기록
+          </button>
+          <button
+            onClick={() => setShowAddModal(true)}
+            className="px-4 py-2.5 bg-[#b4988d] text-white rounded-xl text-sm font-semibold hover:bg-[#a08878] transition-all duration-150 cursor-pointer flex items-center gap-2 shadow-sm hover:shadow-md"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+            </svg>
+            새 품목 등록
+          </button>
+        </div>
+      </div>
+
+      {/* Dashboard */}
+      <StockDashboard items={items} />
+
+      {/* Alerts */}
+      <AlertBanner
+        items={items.filter(i => i.is_active)}
+        dismissedIds={dismissedAlertIds}
+        onDismiss={handleDismissAlert}
+        onUndismiss={handleUndismissAlert}
+        onStockModal={setStockModal}
+      />
+
+      {/* Tab Navigation */}
+      <div className="flex items-center justify-between gap-3 mb-5">
+        <div className="flex gap-0.5 bg-[#f6f4f2] p-1 rounded-xl">
+          {TABS.map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 cursor-pointer ${
+                activeTab === tab.id
+                  ? 'bg-white text-[#6d4e42] shadow-sm'
+                  : 'text-[#a09080] hover:text-[#575756]'
+              }`}
+            >
+              {tab.icon}
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* View mode toggle (stock tab only) */}
+        {activeTab === 'stock' && (
+          <div className="flex gap-0.5 bg-[#f6f4f2] p-0.5 rounded-lg">
+            {VIEW_MODES.map(vm => (
+              <button
+                key={vm.id}
+                onClick={() => setViewMode(vm.id)}
+                title={vm.label}
+                className={`flex items-center gap-1 px-3 py-1.5 rounded-md text-xs font-semibold transition-all duration-150 cursor-pointer ${
+                  viewMode === vm.id
+                    ? 'bg-white text-[#6d4e42] shadow-sm'
+                    : 'text-[#a09080] hover:text-[#575756]'
+                }`}
+              >
+                {vm.icon}
+                <span className="hidden sm:inline">{vm.label}</span>
+              </button>
             ))}
-          </select>
-          <select
-            value={statusFilter}
-            onChange={(e) => setStatusFilter(e.target.value)}
-            className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
-          >
-            <option value="all">전체 상태</option>
-            <option value="normal">정상</option>
-            <option value="low">부족</option>
-            <option value="out">소진</option>
-          </select>
-          <span className="text-sm text-[#8a8a8a] ml-auto">{filtered.length}개 품목</span>
-        </div>
-      </div>
-
-      {/* 메인 영역: 테이블 + 상세 패널 */}
-      <div className="flex gap-4">
-        {/* 품목 테이블 */}
-        <div className={`bg-white rounded-xl border border-[#e5e5e5] overflow-hidden ${selectedItemId ? 'flex-1' : 'w-full'}`}>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="border-b border-[#e5e5e5] bg-[#f6f6f6]">
-                  <th className="text-left py-3 px-4 text-[#8a8a8a] font-medium">품목명</th>
-                  <th className="text-left py-3 px-4 text-[#8a8a8a] font-medium">카테고리</th>
-                  <th className="text-right py-3 px-4 text-[#8a8a8a] font-medium">현재 재고</th>
-                  <th className="text-right py-3 px-4 text-[#8a8a8a] font-medium">최소 재고</th>
-                  <th className="text-center py-3 px-4 text-[#8a8a8a] font-medium">상태</th>
-                  <th className="text-left py-3 px-4 text-[#8a8a8a] font-medium">공급사</th>
-                  <th className="text-center py-3 px-4 text-[#8a8a8a] font-medium">입출고</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filtered.length === 0 ? (
-                  <tr>
-                    <td colSpan={7} className="text-center py-12 text-[#8a8a8a]">
-                      검색 결과가 없습니다.
-                    </td>
-                  </tr>
-                ) : (
-                  filtered.map((item) => {
-                    const status = getStockStatus(item);
-                    const cfg = STOCK_STATUS_CONFIG[status];
-                    const isSelected = selectedItemId === item.id;
-                    return (
-                      <tr
-                        key={item.id}
-                        onClick={() => setSelectedItemId(isSelected ? null : item.id)}
-                        className={`border-b border-[#f0f0f0] last:border-0 cursor-pointer transition-colors ${
-                          isSelected ? 'bg-[#b4988d]/5' : 'hover:bg-[#f6f6f6]'
-                        }`}
-                      >
-                        <td className="py-3 px-4">
-                          <span className="font-medium text-[#6d4e42]">{item.name}</span>
-                        </td>
-                        <td className="py-3 px-4 text-[#8a8a8a]">
-                          {INVENTORY_CATEGORY_LABELS[item.category]}
-                        </td>
-                        <td className="py-3 px-4 text-right font-medium">
-                          {item.currentStock} <span className="text-[#8a8a8a] font-normal">{item.unit}</span>
-                        </td>
-                        <td className="py-3 px-4 text-right text-[#8a8a8a]">
-                          {item.minStock} {item.unit}
-                        </td>
-                        <td className="py-3 px-4 text-center">
-                          <span className={`inline-flex items-center gap-1.5 text-xs px-2 py-0.5 rounded-full ${cfg.bg} ${cfg.text}`}>
-                            <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-                            {cfg.label}
-                          </span>
-                        </td>
-                        <td className="py-3 px-4 text-[#8a8a8a]">{item.supplier}</td>
-                        <td className="py-3 px-4 text-center">
-                          <div className="flex gap-1 justify-center" onClick={(e) => e.stopPropagation()}>
-                            <button
-                              onClick={() => setStockModal({ item, type: 'in' })}
-                              className="px-2 py-1 text-xs bg-emerald-50 text-emerald-700 rounded hover:bg-emerald-100 transition-colors cursor-pointer"
-                            >
-                              입고
-                            </button>
-                            <button
-                              onClick={() => setStockModal({ item, type: 'out' })}
-                              className="px-2 py-1 text-xs bg-orange-50 text-orange-700 rounded hover:bg-orange-100 transition-colors cursor-pointer"
-                              disabled={item.currentStock <= 0}
-                            >
-                              출고
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })
-                )}
-              </tbody>
-            </table>
           </div>
-        </div>
-
-        {/* 상세 패널 */}
-        {selectedItem && (
-          <DetailPanel
-            item={selectedItem}
-            logs={selectedLogs}
-            onClose={() => setSelectedItemId(null)}
-            onDelete={() => handleDeleteItem(selectedItem.id)}
-          />
         )}
       </div>
 
-      {/* 입출고 모달 */}
+      {/* Tab Content */}
+      {activeTab === 'stock' && (
+        <>
+          {/* Filter bar */}
+          <div className="bg-white rounded-2xl border border-[#ebe7e4] p-4 mb-5"
+            style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
+          >
+            <div className="flex flex-wrap gap-3 items-center">
+              <div className="relative">
+                <svg className="w-4 h-4 text-[#c5b8b0] absolute left-3 top-1/2 -translate-y-1/2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input
+                  type="text"
+                  placeholder="품목명 또는 공급사 검색..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="border border-[#ebe7e4] rounded-xl pl-9 pr-3 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow placeholder:text-[#c5b8b0]"
+                />
+              </div>
+              <select
+                value={categoryFilter}
+                onChange={(e) => setCategoryFilter(e.target.value)}
+                className="border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] text-[#575756] transition-shadow"
+              >
+                <option value="all">전체 카테고리</option>
+                {(Object.entries(INVENTORY_CATEGORY_LABELS) as [InventoryCategory, string][]).map(([k, v]) => (
+                  <option key={k} value={k}>{v}</option>
+                ))}
+              </select>
+              <select
+                value={statusFilter}
+                onChange={(e) => setStatusFilter(e.target.value)}
+                className="border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] text-[#575756] transition-shadow"
+              >
+                <option value="all">전체 상태</option>
+                <option value="normal">정상</option>
+                <option value="low">부족</option>
+                <option value="out">소진</option>
+              </select>
+              <span className="text-xs text-[#a09080] ml-auto font-medium tabular-nums">{filtered.length}개 품목</span>
+            </div>
+          </div>
+
+          {/* Main area: view + detail panel */}
+          <div className="flex gap-5">
+            <div className={selectedItemId ? 'flex-1 min-w-0' : 'w-full'}>
+              {viewMode === 'table' && (
+                <StockTableView
+                  items={filtered}
+                  selectedItemId={selectedItemId}
+                  onSelectItem={setSelectedItemId}
+                  onStockModal={setStockModal}
+                />
+              )}
+              {viewMode === 'card' && (
+                <StockCardView
+                  items={filtered}
+                  selectedItemId={selectedItemId}
+                  onSelectItem={setSelectedItemId}
+                  onStockModal={setStockModal}
+                />
+              )}
+              {viewMode === 'group' && (
+                <StockGroupView
+                  items={filtered}
+                  selectedItemId={selectedItemId}
+                  onSelectItem={setSelectedItemId}
+                  onStockModal={setStockModal}
+                />
+              )}
+            </div>
+
+            {/* Detail panel */}
+            {selectedItem && (
+              <DetailPanel
+                item={selectedItem}
+                txs={selectedTxs}
+                onClose={() => setSelectedItemId(null)}
+                onDelete={() => handleDeleteItem(selectedItem.id)}
+              />
+            )}
+          </div>
+        </>
+      )}
+
+      {activeTab === 'history' && (
+        <HistoryTab
+          transactions={transactions}
+          items={items}
+          consumptionData={consumptionData}
+        />
+      )}
+
+      {activeTab === 'restock' && (
+        <RestockTab
+          transactions={transactions}
+          items={items}
+          alertItems={alertItems}
+          dismissedIds={dismissedAlertIds}
+          onDismiss={handleDismissAlert}
+          onUndismiss={handleUndismissAlert}
+          onStockModal={setStockModal}
+        />
+      )}
+
+      {/* ─── Modals ──────────────────────────────── */}
+      {showUseModal && (
+        <UseItemModal
+          items={items.filter(i => i.is_active)}
+          recipes={recipes}
+          onSubmit={(data) => {
+            handleUseItems(data);
+            setShowUseModal(false);
+          }}
+          onClose={() => setShowUseModal(false)}
+          submitting={submitting}
+        />
+      )}
+
       {stockModal && (
         <StockModal
           item={stockModal.item}
@@ -285,10 +524,10 @@ export default function InventoryPage() {
             setStockModal(null);
           }}
           onClose={() => setStockModal(null)}
+          submitting={submitting}
         />
       )}
 
-      {/* 새 품목 모달 */}
       {showAddModal && (
         <AddItemModal
           onAdd={(data) => {
@@ -296,125 +535,272 @@ export default function InventoryPage() {
             setShowAddModal(false);
           }}
           onClose={() => setShowAddModal(false)}
+          submitting={submitting}
         />
       )}
     </div>
   );
 }
 
-// ─── 통계 카드 ──────────────────────────────────────
-function StatCard({ label, value, unit, color }: { label: string; value: string | number; unit: string; color: string }) {
-  return (
-    <div className="bg-white rounded-xl p-4 border border-[#e5e5e5]">
-      <p className="text-sm text-[#8a8a8a] mb-1">{label}</p>
-      <p className={`text-2xl font-bold ${color} inline-block px-2 py-0.5 rounded-lg`}>
-        {value}
-        <span className="text-sm font-normal ml-1">{unit}</span>
-      </p>
-    </div>
-  );
-}
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// Modal Components (kept in page for simplicity)
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-// ─── 상세 패널 ──────────────────────────────────────
-function DetailPanel({
-  item,
-  logs,
+// ─── UseItemModal ───────────────────────────────
+function UseItemModal({
+  items,
+  recipes,
+  onSubmit,
   onClose,
-  onDelete,
+  submitting = false,
 }: {
-  item: InventoryItem;
-  logs: StockLog[];
+  items: InventoryItem[];
+  recipes: ProcedureRecipe[];
+  onSubmit: (data: {
+    patientName: string;
+    chartNumber: string;
+    confirmedBy: string;
+    note: string;
+    usageItems: { itemId: string; quantity: number }[];
+  }) => void | Promise<void>;
   onClose: () => void;
-  onDelete: () => void;
+  submitting?: boolean;
 }) {
-  const status = getStockStatus(item);
-  const cfg = STOCK_STATUS_CONFIG[status];
+  const [patientName, setPatientName] = useState('');
+  const [chartNumber, setChartNumber] = useState('');
+  const [selectedProcedure, setSelectedProcedure] = useState('');
+  const [confirmedBy, setConfirmedBy] = useState('');
+  const [note, setNote] = useState('');
+  const [usageItems, setUsageItems] = useState<{ itemId: string; quantity: number }[]>([]);
+  const [addItemId, setAddItemId] = useState('');
+
+  const handleProcedureChange = (procedureName: string) => {
+    setSelectedProcedure(procedureName);
+    if (!procedureName) {
+      setUsageItems([]);
+      return;
+    }
+    const recipeItems = recipes
+      .filter(r => r.procedure_name === procedureName)
+      .map(r => ({ itemId: r.item_id, quantity: r.default_qty }));
+    setUsageItems(recipeItems);
+    setNote(procedureName);
+  };
+
+  const handleQtyChange = (idx: number, qty: number) => {
+    setUsageItems(prev => prev.map((item, i) => i === idx ? { ...item, quantity: Math.max(1, qty) } : item));
+  };
+
+  const handleRemoveItem = (idx: number) => {
+    setUsageItems(prev => prev.filter((_, i) => i !== idx));
+  };
+
+  const handleAddItem = () => {
+    if (!addItemId) return;
+    if (usageItems.some(u => u.itemId === addItemId)) return;
+    setUsageItems(prev => [...prev, { itemId: addItemId, quantity: 1 }]);
+    setAddItemId('');
+  };
+
+  const canSubmit = patientName.trim() && chartNumber.trim() && usageItems.length > 0;
+
+  const getStockWarning = (itemId: string, qty: number) => {
+    const item = items.find(i => i.id === itemId);
+    if (!item) return null;
+    if (item.current_stock < qty) return `재고 부족 (현재: ${item.current_stock})`;
+    return null;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!canSubmit) return;
+    onSubmit({
+      patientName: patientName.trim(),
+      chartNumber: chartNumber.trim(),
+      confirmedBy,
+      note: note.trim(),
+      usageItems,
+    });
+  };
 
   return (
-    <div className="w-80 bg-white rounded-xl border border-[#e5e5e5] flex-shrink-0">
-      {/* 헤더 */}
-      <div className="px-4 py-3 border-b border-[#e5e5e5] flex items-center justify-between">
-        <h3 className="font-bold text-sm text-[#6d4e42]">품목 상세</h3>
-        <button onClick={onClose} className="text-[#8a8a8a] hover:text-[#6d4e42] cursor-pointer text-lg leading-none">&times;</button>
-      </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+      <div className="bg-white rounded-2xl border border-[#ebe7e4] w-full max-w-xl mx-4 max-h-[90vh] overflow-y-auto"
+        style={{ boxShadow: '0 4px 12px rgba(109,78,66,0.08), 0 20px 48px rgba(109,78,66,0.12)' }}
+      >
+        <div className="px-6 py-4 border-b border-[#ebe7e4] bg-[#faf8f7]">
+          <h3 className="font-bold text-[#6d4e42] tracking-tight">물품 사용 기록</h3>
+          <p className="text-xs text-[#a09080] mt-0.5">환자 시술 시 사용한 물품을 기록하면 재고가 자동 차감됩니다.</p>
+        </div>
 
-      <div className="p-4 space-y-4">
-        {/* 기본 정보 */}
-        <div>
-          <h4 className="font-medium text-[#6d4e42] mb-2">{item.name}</h4>
-          <div className="grid grid-cols-2 gap-2 text-xs">
-            <div className="text-[#8a8a8a]">카테고리</div>
-            <div>{INVENTORY_CATEGORY_LABELS[item.category]}</div>
-            <div className="text-[#8a8a8a]">현재 재고</div>
-            <div className="font-medium">{item.currentStock} {item.unit}</div>
-            <div className="text-[#8a8a8a]">최소 재고</div>
-            <div>{item.minStock} {item.unit}</div>
-            <div className="text-[#8a8a8a]">상태</div>
+        <form onSubmit={handleSubmit} className="p-6 space-y-4">
+          <div className="grid grid-cols-2 gap-4">
             <div>
-              <span className={`inline-flex items-center gap-1 text-xs px-1.5 py-0.5 rounded-full ${cfg.bg} ${cfg.text}`}>
-                <span className={`w-1.5 h-1.5 rounded-full ${cfg.dot}`} />
-                {cfg.label}
-              </span>
+              <label className="block text-sm font-medium text-[#575756] mb-1">
+                환자명 <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                value={patientName}
+                onChange={(e) => setPatientName(e.target.value)}
+                placeholder="홍길동"
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
+                required
+              />
             </div>
-            <div className="text-[#8a8a8a]">단가</div>
-            <div>{formatPrice(item.unitPrice)}</div>
-            <div className="text-[#8a8a8a]">공급사</div>
-            <div>{item.supplier}</div>
-            <div className="text-[#8a8a8a]">최근 입고</div>
-            <div>{item.lastRestockedAt}</div>
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">
+                차트번호 <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                value={chartNumber}
+                onChange={(e) => setChartNumber(e.target.value)}
+                placeholder="차트번호"
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
+                required
+              />
+            </div>
           </div>
-          {item.memo && (
-            <p className="text-xs text-[#b4988d] bg-[#b4988d]/5 rounded px-2 py-1 mt-2">{item.memo}</p>
-          )}
-        </div>
 
-        {/* 입출고 내역 */}
-        <div>
-          <h4 className="font-medium text-sm text-[#6d4e42] mb-2">최근 입출고</h4>
-          {logs.length === 0 ? (
-            <p className="text-xs text-[#8a8a8a] text-center py-3">내역 없음</p>
-          ) : (
-            <div className="space-y-1.5">
-              {logs.map((log) => (
-                <div key={log.id} className="flex items-center gap-2 text-xs border-b border-[#f0f0f0] pb-1.5 last:border-0">
-                  <span className={`px-1.5 py-0.5 rounded font-medium ${
-                    log.type === 'in' ? 'bg-emerald-50 text-emerald-700' : 'bg-orange-50 text-orange-700'
-                  }`}>
-                    {log.type === 'in' ? '+' : '-'}{log.quantity}
-                  </span>
-                  <span className="text-[#575756] flex-1 truncate">{log.note}</span>
-                  <span className="text-[#8a8a8a] flex-shrink-0">
-                    {new Date(log.createdAt).toLocaleDateString('ko-KR', { month: 'short', day: 'numeric' })}
-                  </span>
-                </div>
+          <div>
+            <label className="block text-sm font-medium text-[#575756] mb-1">시술 선택 (레시피 자동 로드)</label>
+            <select
+              value={selectedProcedure}
+              onChange={(e) => handleProcedureChange(e.target.value)}
+              className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
+            >
+              <option value="">직접 선택</option>
+              {PROCEDURE_NAMES.map(name => (
+                <option key={name} value={name}>{name}</option>
               ))}
-            </div>
-          )}
-        </div>
+            </select>
+          </div>
 
-        {/* 삭제 */}
-        <button
-          onClick={onDelete}
-          className="w-full text-xs text-red-400 hover:text-red-600 py-2 border border-red-200 rounded-lg hover:bg-red-50 transition-colors cursor-pointer"
-        >
-          품목 삭제
-        </button>
+          <div>
+            <label className="block text-sm font-medium text-[#575756] mb-2">
+              사용 물품 {usageItems.length > 0 && `(${usageItems.length}개)`}
+            </label>
+            {usageItems.length === 0 ? (
+              <p className="text-xs text-[#a09080] bg-[#faf8f7] rounded-xl p-3.5 text-center">
+                시술을 선택하거나 아래에서 물품을 추가하세요.
+              </p>
+            ) : (
+              <div className="space-y-2 mb-3">
+                {usageItems.map((usage, idx) => {
+                  const item = items.find(i => i.id === usage.itemId);
+                  const warning = getStockWarning(usage.itemId, usage.quantity);
+                  return (
+                    <div key={idx} className="flex items-center gap-2 bg-[#faf8f7] rounded-xl px-3 py-2.5">
+                      <span className="text-sm text-[#575756] flex-1 truncate font-medium">{item?.name || '알 수 없는 품목'}</span>
+                      <span className="text-[10px] text-[#a09080] tabular-nums">재고: {item?.current_stock}</span>
+                      <input
+                        type="number"
+                        min={1}
+                        value={usage.quantity}
+                        onChange={(e) => handleQtyChange(idx, Number(e.target.value))}
+                        className="w-16 border border-[#ebe7e4] rounded-lg px-2 py-1 text-sm text-center tabular-nums"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveItem(idx)}
+                        className="text-red-400 hover:text-red-600 text-sm cursor-pointer"
+                      >
+                        &times;
+                      </button>
+                      {warning && <span className="text-xs text-red-500">{warning}</span>}
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+            <div className="flex gap-2">
+              <select
+                value={addItemId}
+                onChange={(e) => setAddItemId(e.target.value)}
+                className="flex-1 border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
+              >
+                <option value="">+ 물품 추가...</option>
+                {items
+                  .filter(i => !usageItems.some(u => u.itemId === i.id))
+                  .map(i => (
+                    <option key={i.id} value={i.id}>
+                      {i.name} ({i.current_stock}{i.unit})
+                    </option>
+                  ))}
+              </select>
+              <button
+                type="button"
+                onClick={handleAddItem}
+                disabled={!addItemId}
+                className="px-3.5 py-2 text-sm bg-[#f6f4f2] text-[#6d4e42] rounded-xl hover:bg-[#ebe7e4] transition-colors cursor-pointer disabled:opacity-40 font-medium"
+              >
+                추가
+              </button>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">확인 간호사</label>
+              <select
+                value={confirmedBy}
+                onChange={(e) => setConfirmedBy(e.target.value)}
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
+              >
+                <option value="">선택</option>
+                {NURSE_OPTIONS.map(name => (
+                  <option key={name} value={name}>{name}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">메모</label>
+              <input
+                type="text"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+                placeholder="시술 관련 메모"
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
+              />
+            </div>
+          </div>
+
+          <div className="flex gap-2 pt-2">
+            <button
+              type="button"
+              onClick={onClose}
+              className="flex-1 py-2.5 border border-[#ebe7e4] rounded-xl text-sm text-[#a09080] hover:bg-[#faf8f7] transition-colors cursor-pointer font-medium"
+            >
+              취소
+            </button>
+            <button
+              type="submit"
+              disabled={!canSubmit || submitting}
+              className="flex-1 py-2.5 bg-[#6d4e42] text-white rounded-xl text-sm font-semibold hover:bg-[#5a3d33] transition-colors cursor-pointer disabled:opacity-40"
+            >
+              {submitting ? '저장 중...' : '사용 기록 저장'}
+            </button>
+          </div>
+        </form>
       </div>
     </div>
   );
 }
 
-// ─── 입출고 모달 ──────────────────────────────────────
+// ─── StockModal ─────────────────────────────────
 function StockModal({
   item,
   type,
   onSubmit,
   onClose,
+  submitting = false,
 }: {
   item: InventoryItem;
   type: 'in' | 'out';
-  onSubmit: (qty: number, note: string) => void;
+  onSubmit: (qty: number, note: string) => void | Promise<void>;
   onClose: () => void;
+  submitting?: boolean;
 }) {
   const [quantity, setQuantity] = useState(1);
   const [note, setNote] = useState('');
@@ -423,23 +809,25 @@ function StockModal({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (quantity <= 0) return;
-    if (!isIn && quantity > item.currentStock) return;
+    if (!isIn && quantity > item.current_stock) return;
     onSubmit(quantity, note.trim() || (isIn ? '입고' : '출고'));
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-      <div className="bg-white rounded-xl border border-[#e5e5e5] shadow-xl w-full max-w-sm mx-4">
-        <div className={`px-6 py-4 border-b border-[#e5e5e5] ${isIn ? 'bg-emerald-50' : 'bg-orange-50'}`}>
-          <h3 className={`font-bold ${isIn ? 'text-emerald-700' : 'text-orange-700'}`}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+      <div className="bg-white rounded-2xl border border-[#ebe7e4] w-full max-w-sm mx-4"
+        style={{ boxShadow: '0 4px 12px rgba(109,78,66,0.08), 0 20px 48px rgba(109,78,66,0.12)' }}
+      >
+        <div className={`px-6 py-4 border-b border-[#ebe7e4] ${isIn ? 'bg-emerald-50/60' : 'bg-orange-50/60'}`}>
+          <h3 className={`font-bold tracking-tight ${isIn ? 'text-emerald-700' : 'text-orange-700'}`}>
             {isIn ? '입고 처리' : '출고 처리'}
           </h3>
-          <p className="text-sm text-[#8a8a8a] mt-0.5">{item.name}</p>
+          <p className="text-sm text-[#a09080] mt-0.5">{item.name}</p>
         </div>
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div>
             <label className="block text-sm font-medium text-[#575756] mb-1">
-              현재 재고: <span className="font-bold">{item.currentStock} {item.unit}</span>
+              현재 재고: <span className="font-bold">{item.current_stock} {item.unit}</span>
             </label>
           </div>
           <div>
@@ -449,13 +837,13 @@ function StockModal({
             <input
               type="number"
               min={1}
-              max={!isIn ? item.currentStock : undefined}
+              max={!isIn ? item.current_stock : undefined}
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
-              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+              className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
               required
             />
-            {!isIn && quantity > item.currentStock && (
+            {!isIn && quantity > item.current_stock && (
               <p className="text-xs text-red-500 mt-1">현재 재고보다 많이 출고할 수 없습니다.</p>
             )}
           </div>
@@ -466,24 +854,25 @@ function StockModal({
               value={note}
               onChange={(e) => setNote(e.target.value)}
               placeholder={isIn ? '정기 발주, 긴급 입고 등' : '시술 사용, 폐기 등'}
-              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+              className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
             />
           </div>
           <div className="flex gap-2 pt-2">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 py-2.5 border border-[#e5e5e5] rounded-lg text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+              className="flex-1 py-2.5 border border-[#ebe7e4] rounded-xl text-sm text-[#a09080] hover:bg-[#faf8f7] transition-colors cursor-pointer font-medium"
             >
               취소
             </button>
             <button
               type="submit"
-              className={`flex-1 py-2.5 rounded-lg text-sm font-medium text-white transition-colors cursor-pointer ${
+              disabled={submitting}
+              className={`flex-1 py-2.5 rounded-xl text-sm font-semibold text-white transition-colors cursor-pointer disabled:opacity-40 ${
                 isIn ? 'bg-emerald-600 hover:bg-emerald-700' : 'bg-orange-600 hover:bg-orange-700'
               }`}
             >
-              {isIn ? '입고 확인' : '출고 확인'}
+              {submitting ? '처리 중...' : (isIn ? '입고 확인' : '출고 확인')}
             </button>
           </div>
         </form>
@@ -492,59 +881,56 @@ function StockModal({
   );
 }
 
-// ─── 새 품목 모달 ──────────────────────────────────────
+// ─── AddItemModal ───────────────────────────────
 function AddItemModal({
   onAdd,
   onClose,
+  submitting = false,
 }: {
-  onAdd: (data: Omit<InventoryItem, 'id'>) => void;
+  onAdd: (data: Omit<InventoryItem, 'id' | 'created_at' | 'updated_at' | 'is_active'>) => void | Promise<void>;
   onClose: () => void;
+  submitting?: boolean;
 }) {
-  const [form, setForm] = useState<{
-    name: string;
-    category: InventoryCategory;
-    currentStock: number;
-    minStock: number;
-    unit: string;
-    unitPrice: number;
-    supplier: string;
-    memo: string;
-  }>({
+  const [form, setForm] = useState({
     name: '',
-    category: 'injection',
-    currentStock: 0,
-    minStock: 5,
+    category: 'device_tip' as InventoryCategory,
+    sub_category: '',
+    specification: '',
+    current_stock: 0,
+    min_stock: 5,
     unit: '개',
-    unitPrice: 0,
+    unit_price: 0,
     supplier: '',
-    memo: '',
+    storage_note: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name.trim() || !form.supplier.trim()) return;
+    if (!form.name.trim()) return;
     onAdd({
       name: form.name.trim(),
       category: form.category,
-      currentStock: form.currentStock,
-      minStock: form.minStock,
+      sub_category: form.sub_category || undefined,
+      specification: form.specification || undefined,
       unit: form.unit.trim() || '개',
-      unitPrice: form.unitPrice,
-      supplier: form.supplier.trim(),
-      lastRestockedAt: new Date().toISOString().split('T')[0],
-      memo: form.memo.trim() || undefined,
+      current_stock: form.current_stock,
+      min_stock: form.min_stock,
+      unit_price: form.unit_price,
+      supplier: form.supplier.trim() || undefined,
+      storage_note: form.storage_note.trim() || undefined,
     });
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/30">
-      <div className="bg-white rounded-xl border border-[#e5e5e5] shadow-xl w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto">
-        <div className="px-6 py-4 border-b border-[#e5e5e5]">
-          <h3 className="font-bold text-[#6d4e42]">새 품목 등록</h3>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-[2px]">
+      <div className="bg-white rounded-2xl border border-[#ebe7e4] w-full max-w-lg mx-4 max-h-[90vh] overflow-y-auto"
+        style={{ boxShadow: '0 4px 12px rgba(109,78,66,0.08), 0 20px 48px rgba(109,78,66,0.12)' }}
+      >
+        <div className="px-6 py-4 border-b border-[#ebe7e4] bg-[#faf8f7]">
+          <h3 className="font-bold text-[#6d4e42] tracking-tight">새 품목 등록</h3>
         </div>
         <form onSubmit={handleSubmit} className="p-6 space-y-4">
           <div className="grid grid-cols-2 gap-4">
-            {/* 품목명 */}
             <div className="col-span-2">
               <label className="block text-sm font-medium text-[#575756] mb-1">
                 품목명 <span className="text-red-400">*</span>
@@ -552,116 +938,109 @@ function AddItemModal({
               <input
                 type="text"
                 value={form.name}
-                onChange={(e) => setForm((f) => ({ ...f, name: e.target.value }))}
-                placeholder="보톡스 (엘러간 100U)"
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                onChange={(e) => setForm(f => ({ ...f, name: e.target.value }))}
+                placeholder="울쎄라 카트리지 DS 7-3.0"
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
                 required
               />
             </div>
-
-            {/* 카테고리 */}
             <div>
               <label className="block text-sm font-medium text-[#575756] mb-1">카테고리</label>
               <select
                 value={form.category}
-                onChange={(e) => setForm((f) => ({ ...f, category: e.target.value as InventoryCategory }))}
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                onChange={(e) => setForm(f => ({ ...f, category: e.target.value as InventoryCategory }))}
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
               >
                 {(Object.entries(INVENTORY_CATEGORY_LABELS) as [InventoryCategory, string][]).map(([k, v]) => (
                   <option key={k} value={k}>{v}</option>
                 ))}
               </select>
             </div>
-
-            {/* 단위 */}
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">규격</label>
+              <input
+                type="text"
+                value={form.specification}
+                onChange={(e) => setForm(f => ({ ...f, specification: e.target.value }))}
+                placeholder="3.0mm, 600팁, 100U 등"
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
+              />
+            </div>
             <div>
               <label className="block text-sm font-medium text-[#575756] mb-1">단위</label>
               <input
                 type="text"
                 value={form.unit}
-                onChange={(e) => setForm((f) => ({ ...f, unit: e.target.value }))}
-                placeholder="개, 바이알, 박스 등"
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                onChange={(e) => setForm(f => ({ ...f, unit: e.target.value }))}
+                placeholder="개, 바이알, 시린지 등"
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
               />
             </div>
-
-            {/* 초기 재고 */}
             <div>
               <label className="block text-sm font-medium text-[#575756] mb-1">초기 재고</label>
               <input
                 type="number"
                 min={0}
-                value={form.currentStock}
-                onChange={(e) => setForm((f) => ({ ...f, currentStock: Number(e.target.value) }))}
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                value={form.current_stock}
+                onChange={(e) => setForm(f => ({ ...f, current_stock: Number(e.target.value) }))}
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
               />
             </div>
-
-            {/* 최소 재고 */}
             <div>
               <label className="block text-sm font-medium text-[#575756] mb-1">최소 재고</label>
               <input
                 type="number"
                 min={0}
-                value={form.minStock}
-                onChange={(e) => setForm((f) => ({ ...f, minStock: Number(e.target.value) }))}
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                value={form.min_stock}
+                onChange={(e) => setForm(f => ({ ...f, min_stock: Number(e.target.value) }))}
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
               />
             </div>
-
-            {/* 단가 */}
             <div>
               <label className="block text-sm font-medium text-[#575756] mb-1">단가 (원)</label>
               <input
                 type="number"
                 min={0}
-                value={form.unitPrice}
-                onChange={(e) => setForm((f) => ({ ...f, unitPrice: Number(e.target.value) }))}
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                value={form.unit_price}
+                onChange={(e) => setForm(f => ({ ...f, unit_price: Number(e.target.value) }))}
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
               />
             </div>
-
-            {/* 공급사 */}
             <div>
-              <label className="block text-sm font-medium text-[#575756] mb-1">
-                공급사 <span className="text-red-400">*</span>
-              </label>
+              <label className="block text-sm font-medium text-[#575756] mb-1">공급사</label>
               <input
                 type="text"
                 value={form.supplier}
-                onChange={(e) => setForm((f) => ({ ...f, supplier: e.target.value }))}
+                onChange={(e) => setForm(f => ({ ...f, supplier: e.target.value }))}
                 placeholder="엘러간코리아"
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
-                required
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
               />
             </div>
-
-            {/* 메모 */}
             <div className="col-span-2">
-              <label className="block text-sm font-medium text-[#575756] mb-1">메모</label>
-              <textarea
-                value={form.memo}
-                onChange={(e) => setForm((f) => ({ ...f, memo: e.target.value }))}
-                placeholder="보관 조건, 유통기한 등"
-                rows={2}
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d] resize-none"
+              <label className="block text-sm font-medium text-[#575756] mb-1">보관 조건</label>
+              <input
+                type="text"
+                value={form.storage_note}
+                onChange={(e) => setForm(f => ({ ...f, storage_note: e.target.value }))}
+                placeholder="냉장보관, 상온보관 등"
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm transition-shadow"
               />
             </div>
           </div>
-
           <div className="flex gap-2 pt-2">
             <button
               type="button"
               onClick={onClose}
-              className="flex-1 py-2.5 border border-[#e5e5e5] rounded-lg text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+              className="flex-1 py-2.5 border border-[#ebe7e4] rounded-xl text-sm text-[#a09080] hover:bg-[#faf8f7] transition-colors cursor-pointer font-medium"
             >
               취소
             </button>
             <button
               type="submit"
-              className="flex-1 py-2.5 bg-[#b4988d] text-white rounded-lg text-sm font-medium hover:bg-[#a08878] transition-colors cursor-pointer"
+              disabled={submitting}
+              className="flex-1 py-2.5 bg-[#b4988d] text-white rounded-xl text-sm font-semibold hover:bg-[#a08878] transition-colors cursor-pointer disabled:opacity-40"
             >
-              등록
+              {submitting ? '등록 중...' : '등록'}
             </button>
           </div>
         </form>

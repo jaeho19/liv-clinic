@@ -1,16 +1,29 @@
-# Claude Code
-.claude/
+# Dependencies
+node_modules/
+.next/
 
-# Temp files
-tmpclaude-*
+# Build outputs
+build_output.txt
+build_result.txt
+
+# Backup files
+*.bak
+
+# Deno
+deno.lock
+
+# OS files
+.DS_Store
+Thumbs.db
 NUL
+nul
 
-# Screenshots and test files
-screenshots/
-test_*.py
+# Claude Code temp files
+tmpclaude-*-cwd
 
-# Revision folder
-liv_revision/
-
-# Korean docs
-제안서.md
+# Environment
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local

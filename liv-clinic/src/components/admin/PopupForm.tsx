@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { createClient } from '@/lib/supabase-browser';
 import ImageUploader from './ImageUploader';
 import type { PopupRow } from '@/types/admin';
 
@@ -19,7 +18,6 @@ function toLocalDatetimeString(isoString: string) {
 
 export default function PopupForm({ popup }: PopupFormProps) {
   const router = useRouter();
-  const supabase = createClient();
   const isEdit = !!popup;
 
   const [form, setForm] = useState({
@@ -59,25 +57,26 @@ export default function PopupForm({ popup }: PopupFormProps) {
       display_end: new Date(form.display_end).toISOString(),
     };
 
-    if (isEdit) {
-      const { error: updateError } = await supabase
-        .from('popups')
-        .update({ ...payload, updated_at: new Date().toISOString() })
-        .eq('id', popup.id);
+    try {
+      const url = isEdit ? `/api/admin/popups/${popup.id}` : '/api/admin/popups';
+      const method = isEdit ? 'PATCH' : 'POST';
 
-      if (updateError) {
-        setError(updateError.message);
+      const res = await fetch(url, {
+        method,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        setError(data.error || '저장에 실패했습니다.');
         setSaving(false);
         return;
       }
-    } else {
-      const { error: insertError } = await supabase.from('popups').insert(payload);
-
-      if (insertError) {
-        setError(insertError.message);
-        setSaving(false);
-        return;
-      }
+    } catch {
+      setError('네트워크 오류가 발생했습니다.');
+      setSaving(false);
+      return;
     }
 
     router.push('/admin/popups');
