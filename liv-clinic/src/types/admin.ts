@@ -604,6 +604,46 @@ export interface AuditLog {
   createdAt: string;
 }
 
+// ==========================================
+// Notifications (알림관리)
+// ==========================================
+
+export type PatientTreatmentRow = Database['public']['Tables']['patient_treatments']['Row'];
+export type PatientTreatmentInsert = Database['public']['Tables']['patient_treatments']['Insert'];
+export type NotificationTemplateRow = Database['public']['Tables']['notification_templates']['Row'];
+export type NotificationTemplateInsert = Database['public']['Tables']['notification_templates']['Insert'];
+export type NotificationHistoryRow = Database['public']['Tables']['notification_history']['Row'];
+export type NotificationHistoryInsert = Database['public']['Tables']['notification_history']['Insert'];
+
+export type NotificationChannel = 'kakao' | 'sms' | 'call';
+
+export const NOTIFICATION_CHANNEL_LABELS: Record<NotificationChannel, string> = {
+  kakao: '카카오톡',
+  sms: '문자',
+  call: '전화',
+};
+
+export type NotificationSendStatus = 'sent' | 'failed' | 'skipped';
+
+export const NOTIFICATION_STATUS_LABELS: Record<NotificationSendStatus, string> = {
+  sent: '발송완료',
+  failed: '실패',
+  skipped: '건너뜀',
+};
+
+export const NOTIFICATION_STATUS_COLORS: Record<NotificationSendStatus, string> = {
+  sent: 'bg-green-100 text-green-700',
+  failed: 'bg-red-100 text-red-700',
+  skipped: 'bg-gray-100 text-gray-500',
+};
+
+export type TemplateType = 'aftercare' | 'revisit';
+
+export const TEMPLATE_TYPE_LABELS: Record<TemplateType, string> = {
+  aftercare: '사후관리',
+  revisit: '재방문 안내',
+};
+
 // Related treatments for event form
 export const RELATED_TREATMENT_OPTIONS = [
   { value: '/lifting/ulthera', label: '울쎄라' },

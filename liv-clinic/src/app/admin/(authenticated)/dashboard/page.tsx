@@ -1,9 +1,11 @@
 import { createServerClient } from '@/lib/supabase-server';
+import { createAdminClient } from '@/lib/supabase-admin';
 import Link from 'next/link';
 import TodayCallbacks from '@/components/admin/TodayCallbacks';
 
 export default async function DashboardPage() {
   const supabase = await createServerClient();
+  const admin = createAdminClient();
 
   // Fetch stats
   const now = new Date();
@@ -18,6 +20,7 @@ export default async function DashboardPage() {
     { count: activeEventsCount },
     { count: activePopupsCount },
     { data: recentConsultations },
+    { count: notificationTodayCount },
   ] = await Promise.all([
     supabase.from('consultation_requests').select('*', { count: 'exact', head: true }).gte('created_at', todayStart),
     supabase.from('consultation_requests').select('*', { count: 'exact', head: true })
@@ -28,12 +31,17 @@ export default async function DashboardPage() {
     supabase.from('events').select('*', { count: 'exact', head: true }).eq('is_published', true).gte('end_date', now.toISOString().split('T')[0]),
     supabase.from('popups').select('*', { count: 'exact', head: true }).eq('is_active', true).lte('display_start', now.toISOString()).gte('display_end', now.toISOString()),
     supabase.from('consultation_requests').select('*').order('created_at', { ascending: false }).limit(5),
+    admin.from('patient_treatments').select('*', { count: 'exact', head: true })
+      .eq('notification_sent', false)
+      .not('next_notification_at', 'is', null)
+      .lte('next_notification_at', `${todayStr}T23:59:59`),
   ]);
 
   const stats = [
     { label: '오늘 신규 상담', value: todayCount ?? 0, href: '/admin/consultations', color: 'bg-blue-50 text-blue-700' },
     { label: '오늘 콜백 예정', value: callbackCount ?? 0, href: '/admin/consultations', color: 'bg-amber-50 text-amber-700' },
     { label: '이번달 상담', value: monthCount ?? 0, href: '/admin/consultations', color: 'bg-green-50 text-green-700' },
+    { label: '오늘 알림 발송', value: notificationTodayCount ?? 0, href: '/admin/notifications', color: 'bg-orange-50 text-orange-700' },
     { label: '진행중 이벤트', value: activeEventsCount ?? 0, href: '/admin/events', color: 'bg-purple-50 text-purple-700' },
     { label: '활성 팝업', value: activePopupsCount ?? 0, href: '/admin/popups', color: 'bg-pink-50 text-pink-700' },
   ];
@@ -69,7 +77,7 @@ export default async function DashboardPage() {
       <h2 className="text-xl font-bold text-[#6d4e42] mb-6">대시보드</h2>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-8">
+      <div className="grid grid-cols-2 lg:grid-cols-6 gap-4 mb-8">
         {stats.map((stat) => (
           <Link
             key={stat.label}
@@ -83,6 +91,19 @@ export default async function DashboardPage() {
           </Link>
         ))}
       </div>
+
+      {/* Notification Alert Banner */}
+      {(notificationTodayCount ?? 0) > 0 && (
+        <Link href="/admin/notifications" className="block bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 hover:bg-amber-100 transition-colors">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">&#128276;</span>
+            <div>
+              <p className="text-sm font-medium text-amber-800">오늘 발송해야 할 알림이 {notificationTodayCount}건 있습니다</p>
+              <p className="text-xs text-amber-600 mt-0.5">알림관리에서 확인하고 발송 처리해 주세요.</p>
+            </div>
+          </div>
+        </Link>
+      )}
 
       {/* Today Callbacks Widget */}
       <div className="mb-8">

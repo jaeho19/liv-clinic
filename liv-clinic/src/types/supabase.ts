@@ -342,6 +342,130 @@ export interface Database {
           }
         ]
       }
+      patient_treatments: {
+        Row: {
+          id: string
+          patient_name: string
+          phone: string
+          treatment_name: string
+          treatment_category: string | null
+          doctor: string | null
+          treated_at: string
+          notification_cycle_days: number | null
+          next_notification_at: string | null
+          notification_sent: boolean
+          notes: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          patient_name: string
+          phone: string
+          treatment_name: string
+          treatment_category?: string | null
+          doctor?: string | null
+          treated_at: string
+          notification_cycle_days?: number | null
+          next_notification_at?: string | null
+          notification_sent?: boolean
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          patient_name?: string
+          phone?: string
+          treatment_name?: string
+          treatment_category?: string | null
+          doctor?: string | null
+          treated_at?: string
+          notification_cycle_days?: number | null
+          next_notification_at?: string | null
+          notification_sent?: boolean
+          notes?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      notification_templates: {
+        Row: {
+          id: string
+          treatment_name: string
+          template_type: string
+          title: string
+          message: string
+          video_url: string | null
+          is_active: boolean
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          treatment_name: string
+          template_type: string
+          title: string
+          message: string
+          video_url?: string | null
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          treatment_name?: string
+          template_type?: string
+          title?: string
+          message?: string
+          video_url?: string | null
+          is_active?: boolean
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      notification_history: {
+        Row: {
+          id: string
+          patient_treatment_id: string
+          template_id: string | null
+          channel: string
+          sent_by: string
+          sent_at: string
+          status: string
+          notes: string | null
+        }
+        Insert: {
+          id?: string
+          patient_treatment_id: string
+          template_id?: string | null
+          channel: string
+          sent_by: string
+          sent_at?: string
+          status?: string
+          notes?: string | null
+        }
+        Update: {
+          id?: string
+          patient_treatment_id?: string
+          template_id?: string | null
+          channel?: string
+          sent_by?: string
+          sent_at?: string
+          status?: string
+          notes?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'notification_history_patient_treatment_id_fkey'
+            columns: ['patient_treatment_id']
+            referencedRelation: 'patient_treatments'
+            referencedColumns: ['id']
+          }
+        ]
+      }
       inventory_counts: {
         Row: {
           id: string

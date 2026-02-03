@@ -23,6 +23,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/consultations', label: '상담관리', icon: '📋' },
       { href: '/admin/operations', label: '운영현황', icon: '🏥' },
       { href: '/admin/inventory', label: '재고관리', icon: '📦' },
+      { href: '/admin/notifications', label: '알림관리', icon: '🔔' },
       { href: '/admin/reports', label: '리포트', icon: '📈' },
     ],
   },
