@@ -6,7 +6,7 @@ import { TreatmentComparison } from '@/components/sections';
 import { routing } from '@/i18n/routing';
 
 // Treatment IDs for lifting category
-const liftingTreatmentIds = ['ulthera', 'thermage', 'density', 'inmode', 'shurink', 'thread'];
+const liftingTreatmentIds = ['aptos', 'ulthera', 'thermage', 'density', 'inmode', 'shurink', 'thread'];
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

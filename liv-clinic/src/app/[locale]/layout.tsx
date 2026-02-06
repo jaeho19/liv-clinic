@@ -6,6 +6,7 @@ import { pretendard, cormorant } from '@/styles/fonts';
 import { Header, Footer, QuickConsultBar } from '@/components/layout';
 import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import NaverAnalytics from '@/components/analytics/NaverAnalytics';
 import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema, BASE_URL } from '@/lib/seo';
 import '../globals.css';
 
@@ -80,6 +81,7 @@ export default async function LocaleLayout({
           }}
         />
         <GoogleAnalytics />
+        <NaverAnalytics />
       </head>
       <body className="antialiased overflow-x-clip w-full">
         <a href="#main-content" className="skip-link">

@@ -1254,6 +1254,7 @@ export const MAIN_NAV = [
     label: '리프팅',
     href: '/lifting',
     children: [
+      { label: '압토스 나미카', href: '/lifting/aptos' },
       { label: '울쎄라피 프라임', href: '/lifting/ulthera' },
       { label: '써마지 FLX', href: '/lifting/thermage' },
       { label: '덴서티', href: '/lifting/density' },

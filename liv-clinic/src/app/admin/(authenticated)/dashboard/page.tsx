@@ -1,11 +1,9 @@
 import { createServerClient } from '@/lib/supabase-server';
-import { createAdminClient } from '@/lib/supabase-admin';
 import Link from 'next/link';
 import TodayCallbacks from '@/components/admin/TodayCallbacks';
 
 export default async function DashboardPage() {
   const supabase = await createServerClient();
-  const admin = createAdminClient();
 
   // Fetch stats
   const now = new Date();
@@ -20,7 +18,6 @@ export default async function DashboardPage() {
     { count: activeEventsCount },
     { count: activePopupsCount },
     { data: recentConsultations },
-    { count: notificationTodayCount },
   ] = await Promise.all([
     supabase.from('consultation_requests').select('*', { count: 'exact', head: true }).gte('created_at', todayStart),
     supabase.from('consultation_requests').select('*', { count: 'exact', head: true })
@@ -31,11 +28,21 @@ export default async function DashboardPage() {
     supabase.from('events').select('*', { count: 'exact', head: true }).eq('is_published', true).gte('end_date', now.toISOString().split('T')[0]),
     supabase.from('popups').select('*', { count: 'exact', head: true }).eq('is_active', true).lte('display_start', now.toISOString()).gte('display_end', now.toISOString()),
     supabase.from('consultation_requests').select('*').order('created_at', { ascending: false }).limit(5),
-    admin.from('patient_treatments').select('*', { count: 'exact', head: true })
+  ]);
+
+  // Notification count - uses admin client (service role), handle gracefully if unavailable
+  let notificationTodayCount: number | null = 0;
+  try {
+    const { createAdminClient } = await import('@/lib/supabase-admin');
+    const admin = createAdminClient();
+    const { count } = await admin.from('patient_treatments').select('*', { count: 'exact', head: true })
       .eq('notification_sent', false)
       .not('next_notification_at', 'is', null)
-      .lte('next_notification_at', `${todayStr}T23:59:59`),
-  ]);
+      .lte('next_notification_at', `${todayStr}T23:59:59`);
+    notificationTodayCount = count;
+  } catch {
+    notificationTodayCount = 0;
+  }
 
   const stats = [
     { label: '오늘 신규 상담', value: todayCount ?? 0, href: '/admin/consultations', color: 'bg-blue-50 text-blue-700' },
