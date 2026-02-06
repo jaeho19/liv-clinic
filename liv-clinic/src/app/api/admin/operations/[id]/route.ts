@@ -17,6 +17,10 @@ function toCamelCase(r: Record<string, unknown>) {
     expectedDurationMin: r.expected_duration_min,
     memo: r.memo,
     parentCaseId: r.parent_case_id,
+    priceKrw: r.price_krw,
+    discountKrw: r.discount_krw,
+    paymentMethod: r.payment_method,
+    paymentStatus: r.payment_status,
     createdAt: r.created_at,
   };
 }
@@ -47,6 +51,10 @@ export async function PATCH(
   if (body.actualStart !== undefined) updateObj.actual_start = body.actualStart;
   if (body.expectedDurationMin !== undefined) updateObj.expected_duration_min = body.expectedDurationMin;
   if (body.memo !== undefined) updateObj.memo = body.memo;
+  if (body.priceKrw !== undefined) updateObj.price_krw = body.priceKrw;
+  if (body.discountKrw !== undefined) updateObj.discount_krw = body.discountKrw;
+  if (body.paymentMethod !== undefined) updateObj.payment_method = body.paymentMethod;
+  if (body.paymentStatus !== undefined) updateObj.payment_status = body.paymentStatus;
 
   try {
     const { data, error } = await admin

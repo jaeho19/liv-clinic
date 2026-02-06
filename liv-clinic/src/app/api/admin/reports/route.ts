@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
         .lt('created_at', endDate),
       admin
         .from('operation_cases')
-        .select('procedure_name, treatment_type, doctor, status, created_at')
+        .select('procedure_name, treatment_type, doctor, status, created_at, price_krw, discount_krw, payment_status')
         .gte('created_at', startDate)
         .lt('created_at', endDate),
     ]);
@@ -61,29 +61,43 @@ export async function GET(request: NextRequest) {
       PROCEDURE: '시술',
     };
 
-    const procMap = new Map<string, { name: string; category: string; count: number }>();
+    const procMap = new Map<string, { name: string; category: string; count: number; revenue: number }>();
     for (const op of operations) {
       const key = `${op.procedure_name}|${op.treatment_type}`;
+      const netRevenue = op.payment_status === 'COMPLETED'
+        ? ((op.price_krw as number) || 0) - ((op.discount_krw as number) || 0)
+        : 0;
       const existing = procMap.get(key);
       if (existing) {
         existing.count++;
+        existing.revenue += netRevenue;
       } else {
         procMap.set(key, {
           name: op.procedure_name as string,
           category: categoryMap[op.treatment_type as string] || (op.treatment_type as string),
           count: 1,
+          revenue: netRevenue,
         });
       }
     }
     const procedures = Array.from(procMap.values())
-      .sort((a, b) => b.count - a.count)
-      .map((p) => ({ ...p, revenue: 0 }));
+      .sort((a, b) => b.count - a.count);
 
     // ─── 3. 의사 실적 ─────────────────────────────
-    const doctorOps = new Map<string, number>();
+    const doctorOps = new Map<string, { count: number; revenue: number }>();
     for (const op of operations) {
       const doc = op.doctor as string;
-      if (doc) doctorOps.set(doc, (doctorOps.get(doc) || 0) + 1);
+      if (!doc) continue;
+      const netRevenue = op.payment_status === 'COMPLETED'
+        ? ((op.price_krw as number) || 0) - ((op.discount_krw as number) || 0)
+        : 0;
+      const existing = doctorOps.get(doc);
+      if (existing) {
+        existing.count++;
+        existing.revenue += netRevenue;
+      } else {
+        doctorOps.set(doc, { count: 1, revenue: netRevenue });
+      }
     }
 
     const doctorConsults = new Map<string, number>();
@@ -93,13 +107,13 @@ export async function GET(request: NextRequest) {
     }
 
     const doctors = Array.from(doctorOps.entries())
-      .map(([name, procs]) => {
+      .map(([name, { count: procs, revenue }]) => {
         const consults = doctorConsults.get(name) || 0;
         return {
           name,
           consultations: consults,
           procedures: procs,
-          revenue: 0,
+          revenue,
           conversionRate: consults > 0 ? parseFloat(((procs / consults) * 100).toFixed(1)) : 0,
         };
       })

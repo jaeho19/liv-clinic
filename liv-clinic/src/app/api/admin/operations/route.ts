@@ -18,6 +18,10 @@ function toCamelCase(r: Record<string, unknown>) {
     expectedDurationMin: r.expected_duration_min,
     memo: r.memo,
     parentCaseId: r.parent_case_id,
+    priceKrw: r.price_krw,
+    discountKrw: r.discount_krw,
+    paymentMethod: r.payment_method,
+    paymentStatus: r.payment_status,
     createdAt: r.created_at,
   };
 }
@@ -76,6 +80,10 @@ export async function POST(request: NextRequest) {
         expected_duration_min: body.expectedDurationMin || 60,
         memo: body.memo || null,
         parent_case_id: body.parentCaseId || null,
+        price_krw: body.priceKrw ?? null,
+        discount_krw: body.discountKrw ?? 0,
+        payment_method: body.paymentMethod ?? null,
+        payment_status: body.paymentStatus ?? 'PENDING',
       })
       .select()
       .single();

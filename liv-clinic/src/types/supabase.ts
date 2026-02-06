@@ -481,6 +481,10 @@ export interface Database {
           expected_duration_min: number
           memo: string | null
           parent_case_id: string | null
+          price_krw: number | null
+          discount_krw: number | null
+          payment_method: string | null
+          payment_status: string | null
           created_at: string
           updated_at: string
         }
@@ -498,6 +502,10 @@ export interface Database {
           expected_duration_min?: number
           memo?: string | null
           parent_case_id?: string | null
+          price_krw?: number | null
+          discount_krw?: number | null
+          payment_method?: string | null
+          payment_status?: string | null
           created_at?: string
           updated_at?: string
         }
@@ -515,6 +523,10 @@ export interface Database {
           expected_duration_min?: number
           memo?: string | null
           parent_case_id?: string | null
+          price_krw?: number | null
+          discount_krw?: number | null
+          payment_method?: string | null
+          payment_status?: string | null
           created_at?: string
           updated_at?: string
         }

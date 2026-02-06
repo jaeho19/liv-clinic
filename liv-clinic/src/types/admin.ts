@@ -278,6 +278,32 @@ export const CASE_LOCATION_LABELS: Record<CaseLocation, string> = {
   OTHER: '기타',
 };
 
+// ==========================================
+// Payment (결제/매출)
+// ==========================================
+
+export type PaymentMethod = 'CARD' | 'CASH' | 'TRANSFER' | 'MIXED';
+export type PaymentStatus = 'PENDING' | 'COMPLETED' | 'REFUNDED';
+
+export const PAYMENT_METHOD_LABELS: Record<PaymentMethod, string> = {
+  CARD: '카드',
+  CASH: '현금',
+  TRANSFER: '이체',
+  MIXED: '복합',
+};
+
+export const PAYMENT_STATUS_LABELS: Record<PaymentStatus, string> = {
+  PENDING: '미결제',
+  COMPLETED: '결제완료',
+  REFUNDED: '환불',
+};
+
+export const PAYMENT_STATUS_COLORS: Record<PaymentStatus, string> = {
+  PENDING: 'bg-amber-100 text-amber-700',
+  COMPLETED: 'bg-green-100 text-green-700',
+  REFUNDED: 'bg-red-100 text-red-700',
+};
+
 export interface OperationCase {
   id: string;
   roomId: string;
@@ -293,6 +319,10 @@ export interface OperationCase {
   createdAt: string;          // ISO datetime
   memo?: string;
   parentCaseId?: string;      // linked case (마취 → 시술)
+  priceKrw?: number | null;
+  discountKrw?: number | null;
+  paymentMethod?: PaymentMethod | null;
+  paymentStatus?: PaymentStatus | null;
 }
 
 export interface TreatmentConfig {
