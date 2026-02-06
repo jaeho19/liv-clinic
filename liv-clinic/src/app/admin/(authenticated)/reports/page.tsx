@@ -68,14 +68,26 @@ export default function ReportsPage() {
     }
   }, []);
 
+  // 목표 매출을 설정에서 불러오기
+  const [revenueTarget, setRevenueTarget] = useState(250000000);
+  useEffect(() => {
+    fetch('/api/admin/settings/clinic')
+      .then((r) => r.ok ? r.json() : null)
+      .then((d) => {
+        if (d?.revenueTarget && d.revenueTarget > 0) setRevenueTarget(d.revenueTarget);
+      })
+      .catch(() => {});
+  }, []);
+
   useEffect(() => { loadReport(year, month); }, [year, month, loadReport]);
 
   const conversionRate = data.funnel.total > 0
     ? ((data.funnel.completed / data.funnel.total) * 100).toFixed(1)
     : '0';
 
-  const revenueTarget = 250000000; // 2.5억 목표
-  const achievementRate = ((data.totalRevenue / revenueTarget) * 100).toFixed(1);
+  const achievementRate = revenueTarget > 0
+    ? ((data.totalRevenue / revenueTarget) * 100).toFixed(1)
+    : '0';
 
   return (
     <div>

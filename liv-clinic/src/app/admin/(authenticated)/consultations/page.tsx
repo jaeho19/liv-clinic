@@ -100,7 +100,23 @@ export default function ConsultationsPage() {
     fetchConsultations();
   }, [fetchConsultations]);
 
+  // 감사로그 기록
+  const logAudit = async (action: string, target: string, detail: string) => {
+    try {
+      const { data: { user } } = await supabase.auth.getUser();
+      await supabase.from('audit_logs').insert({
+        user_name: user?.email?.split('@')[0] || 'admin',
+        action,
+        target,
+        detail,
+      });
+    } catch {
+      // 감사로그 실패 시 무시 (핵심 기능에 영향 없도록)
+    }
+  };
+
   const updateField = async (id: string, field: string, value: unknown) => {
+    const target = consultations.find((c) => c.id === id);
     await supabase
       .from('consultation_requests')
       .update({
@@ -109,10 +125,15 @@ export default function ConsultationsPage() {
       } as Database['public']['Tables']['consultation_requests']['Update'])
       .eq('id', id);
     setEditingField(null);
+    if (target) {
+      logAudit('update', `상담 - ${target.name}`, `${field} 변경`);
+    }
     fetchConsultations();
   };
 
   const updateStatus = async (id: string, newStatus: LeadStatus) => {
+    const target = consultations.find((c) => c.id === id);
+    const oldStatus = target?.status || '';
     const updateData: Database['public']['Tables']['consultation_requests']['Update'] = {
       status: newStatus,
       updated_at: new Date().toISOString(),
@@ -121,6 +142,11 @@ export default function ConsultationsPage() {
       updateData.contacted_at = new Date().toISOString();
     }
     await supabase.from('consultation_requests').update(updateData).eq('id', id);
+    if (target) {
+      const oldLabel = CONSULTATION_STATUS_LABELS[oldStatus] || oldStatus;
+      const newLabel = CONSULTATION_STATUS_LABELS[newStatus] || newStatus;
+      logAudit('update', `상담 - ${target.name}`, `상태 변경: ${oldLabel} → ${newLabel}`);
+    }
     fetchConsultations();
   };
 

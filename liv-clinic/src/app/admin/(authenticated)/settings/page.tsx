@@ -48,6 +48,7 @@ interface ClinicInfo {
   kakao: string;
   hours: { weekday: string; saturday: string; sunday: string; lunch: string };
   notifications: { callbackReminder: boolean; lowStockAlert: boolean; newConsultation: boolean };
+  revenueTarget: number;
 }
 
 async function fetchClinicInfo(): Promise<ClinicInfo> {
@@ -846,6 +847,7 @@ function ClinicInfoTab() {
     kakao: '',
     hours: { weekday: '', saturday: '', sunday: '', lunch: '' },
     notifications: { callbackReminder: true, lowStockAlert: true, newConsultation: true },
+    revenueTarget: 250000000,
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -1036,6 +1038,24 @@ function ClinicInfoTab() {
               onChange={(v) => setForm((f) => ({ ...f, notifications: { ...f.notifications, newConsultation: v } }))}
             />
           </label>
+        </div>
+      </div>
+
+      {/* 목표 매출 설정 */}
+      <div className="bg-white rounded-xl border border-[#e5e5e5] p-6 mb-6">
+        <h3 className="font-bold text-sm text-[#6d4e42] mb-4">리포트 설정</h3>
+        <div>
+          <label className="block text-sm font-medium text-[#575756] mb-1">월 목표 매출 (원)</label>
+          <input
+            type="number"
+            value={form.revenueTarget}
+            onChange={(e) => setForm((f) => ({ ...f, revenueTarget: Number(e.target.value) }))}
+            placeholder="250000000"
+            className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+          />
+          <p className="text-xs text-[#8a8a8a] mt-1">
+            현재 목표: {(form.revenueTarget / 100000000).toFixed(1)}억원 (리포트 대시보드에 반영)
+          </p>
         </div>
       </div>
 

@@ -21,6 +21,7 @@ function formatClinicData(row: Record<string, unknown>) {
       lowStockAlert: row.notify_low_stock_alert,
       newConsultation: row.notify_new_consultation,
     },
+    revenueTarget: row.revenue_target ?? 250000000,
   };
 }
 
@@ -78,6 +79,7 @@ export async function PUT(request: NextRequest) {
         notify_callback_reminder: body.notifications?.callbackReminder,
         notify_low_stock_alert: body.notifications?.lowStockAlert,
         notify_new_consultation: body.notifications?.newConsultation,
+        ...(body.revenueTarget !== undefined && { revenue_target: body.revenueTarget }),
       })
       .eq('id', 1)
       .select()

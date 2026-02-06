@@ -562,6 +562,7 @@ export interface Database {
           notify_callback_reminder: boolean
           notify_low_stock_alert: boolean
           notify_new_consultation: boolean
+          revenue_target: number
         }
         Insert: {
           id?: number
@@ -577,6 +578,7 @@ export interface Database {
           notify_callback_reminder?: boolean
           notify_low_stock_alert?: boolean
           notify_new_consultation?: boolean
+          revenue_target?: number
         }
         Update: {
           id?: number
@@ -592,6 +594,7 @@ export interface Database {
           notify_callback_reminder?: boolean
           notify_low_stock_alert?: boolean
           notify_new_consultation?: boolean
+          revenue_target?: number
         }
         Relationships: []
       }
