@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 
 interface NaverMapProps {
   lat: number;
@@ -13,7 +13,8 @@ interface NaverMapProps {
 declare global {
   interface Window {
     naver: typeof naver;
-    naverMapCallback?: () => void;
+    navermap_authFailure?: () => void;
+    __naverMapCallbacks?: Array<() => void>;
   }
 }
 
@@ -25,57 +26,20 @@ export default function NaverMap({
   markerTitle = '리브성형외과'
 }: NaverMapProps) {
   const mapRef = useRef<HTMLDivElement>(null);
+  const mapInstanceRef = useRef<naver.maps.Map | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState<string | false>(false);
 
-  useEffect(() => {
-    const clientId = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
+  const initMap = useCallback(() => {
+    if (!mapRef.current || !window.naver?.maps) return;
 
-    if (!clientId) {
-      console.error('Naver Map Client ID is not configured');
-      setError(true);
+    // 컨테이너 크기가 0이면 지도 초기화 불가 - 리사이즈 대기
+    const rect = mapRef.current.getBoundingClientRect();
+    if (rect.width === 0 || rect.height === 0) {
+      console.warn('[NaverMap] 컨테이너 크기 0 감지, 100ms 후 재시도');
+      setTimeout(() => initMap(), 100);
       return;
     }
-
-    // Check if script already loaded
-    if (window.naver && window.naver.maps) {
-      setIsLoaded(true);
-      return;
-    }
-
-    // Check if script is already loading
-    const existingScript = document.querySelector('script[src*="openapi.map.naver.com"]');
-    if (existingScript) {
-      const checkLoaded = setInterval(() => {
-        if (window.naver && window.naver.maps) {
-          setIsLoaded(true);
-          clearInterval(checkLoaded);
-        }
-      }, 100);
-      return () => clearInterval(checkLoaded);
-    }
-
-    // Load Naver Maps script
-    const script = document.createElement('script');
-    script.src = 'https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=' + clientId;
-    script.async = true;
-
-    script.onload = () => {
-      setIsLoaded(true);
-    };
-
-    script.onerror = () => {
-      console.error('Failed to load Naver Maps script');
-      setError(true);
-    };
-
-    document.head.appendChild(script);
-
-    return () => {};
-  }, []);
-
-  useEffect(() => {
-    if (!isLoaded || !mapRef.current || !window.naver) return;
 
     const position = new window.naver.maps.LatLng(lat, lng);
 
@@ -91,6 +55,8 @@ export default function NaverMap({
       logoControl: true,
       mapDataControl: false,
     });
+
+    mapInstanceRef.current = map;
 
     const marker = new window.naver.maps.Marker({
       position: position,
@@ -116,8 +82,116 @@ export default function NaverMap({
         infoWindow.open(map, marker);
       }
     });
+  }, [lat, lng, zoom, markerTitle]);
 
-  }, [isLoaded, lat, lng, zoom, markerTitle]);
+  // 스크립트 로딩
+  useEffect(() => {
+    const clientId = process.env.NEXT_PUBLIC_NAVER_MAP_CLIENT_ID;
+
+    if (!clientId) {
+      console.error('[NaverMap] NEXT_PUBLIC_NAVER_MAP_CLIENT_ID 환경변수 미설정');
+      setError('Client ID 미설정');
+      return;
+    }
+
+    // 인증 실패 콜백 등록 (NCP 도메인 불일치 등)
+    window.navermap_authFailure = () => {
+      console.error(
+        '[NaverMap] 네이버 지도 인증 실패!\n' +
+        '→ NCP 콘솔(https://console.ncloud.com)에서 Web Service URL에 현재 도메인 등록 필요\n' +
+        '→ 현재 도메인: ' + window.location.origin
+      );
+      setError('인증 실패 - NCP 도메인 확인 필요');
+    };
+
+    // 이미 로드된 경우
+    if (window.naver?.maps) {
+      setIsLoaded(true);
+      return;
+    }
+
+    // 이미 로딩 중인 경우 - 콜백 큐에 등록
+    const existingScript = document.querySelector('script[src*="openapi.map.naver.com"]');
+    if (existingScript) {
+      if (!window.__naverMapCallbacks) {
+        window.__naverMapCallbacks = [];
+      }
+      window.__naverMapCallbacks.push(() => setIsLoaded(true));
+
+      // 폴백: 이미 로드 완료되었을 수 있으므로 체크
+      const checkLoaded = setInterval(() => {
+        if (window.naver?.maps) {
+          setIsLoaded(true);
+          clearInterval(checkLoaded);
+        }
+      }, 100);
+
+      const timeout = setTimeout(() => {
+        clearInterval(checkLoaded);
+        if (!window.naver?.maps) {
+          console.error('[NaverMap] 스크립트 로딩 타임아웃 (10초)');
+          setError('스크립트 로딩 타임아웃');
+        }
+      }, 10000);
+
+      return () => {
+        clearInterval(checkLoaded);
+        clearTimeout(timeout);
+      };
+    }
+
+    // 새로 로드
+    const script = document.createElement('script');
+    script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}`;
+    script.async = true;
+
+    script.onload = () => {
+      // SDK가 실제로 준비되었는지 확인
+      if (window.naver?.maps) {
+        setIsLoaded(true);
+        // 대기 중인 다른 컴포넌트들에게도 알림
+        window.__naverMapCallbacks?.forEach(cb => cb());
+        window.__naverMapCallbacks = [];
+      } else {
+        // SDK 초기화 대기 (드문 경우)
+        const waitReady = setInterval(() => {
+          if (window.naver?.maps) {
+            setIsLoaded(true);
+            window.__naverMapCallbacks?.forEach(cb => cb());
+            window.__naverMapCallbacks = [];
+            clearInterval(waitReady);
+          }
+        }, 50);
+
+        setTimeout(() => {
+          clearInterval(waitReady);
+          if (!window.naver?.maps) {
+            setError('SDK 초기화 실패');
+          }
+        }, 5000);
+      }
+    };
+
+    script.onerror = () => {
+      console.error('[NaverMap] 스크립트 로딩 실패 - 네트워크 또는 URL 확인');
+      setError('스크립트 로딩 실패');
+    };
+
+    document.head.appendChild(script);
+  }, []);
+
+  // 지도 초기화
+  useEffect(() => {
+    if (!isLoaded || !mapRef.current || !window.naver?.maps) return;
+    initMap();
+
+    return () => {
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.destroy();
+        mapInstanceRef.current = null;
+      }
+    };
+  }, [isLoaded, initMap]);
 
   if (error) {
     return (
@@ -128,6 +202,9 @@ export default function NaverMap({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
           <p className="text-mono-light">지도를 불러올 수 없습니다</p>
+          {typeof error === 'string' && (
+            <p className="text-xs text-mono-light/60 mt-2">{error}</p>
+          )}
         </div>
       </div>
     );
@@ -148,7 +225,7 @@ export default function NaverMap({
       )}
       <div
         ref={mapRef}
-        className="w-full h-full"
+        style={{ width: '100%', height: '100%', minHeight: '200px' }}
       />
     </div>
   );

@@ -1,6 +1,7 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 
@@ -17,8 +18,13 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <Link href="/" className="inline-block mb-6">
-              <span className="font-serif text-3xl tracking-wider">LIV</span>
-              <p className="text-sm text-white/60 mt-1">Plastic Surgery</p>
+              <Image
+                src="/images/logo.png"
+                alt="LIV Plastic Surgery"
+                width={206}
+                height={48}
+                className="h-10 w-auto object-contain brightness-0 invert"
+              />
             </Link>
             <p className="text-sm text-white/70 leading-relaxed">
               {tCommon('slogan')}
@@ -68,20 +74,6 @@ export default function Footer() {
                   />
                 </svg>
                 <span>{SITE_INFO.phone}</span>
-              </a>
-              <a
-                href={`mailto:${SITE_INFO.email}`}
-                className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors min-h-[44px] py-2"
-              >
-                <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                <span className="break-all">{SITE_INFO.email}</span>
               </a>
             </div>
           </div>

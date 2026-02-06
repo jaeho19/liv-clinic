@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 import { Link, useRouter, usePathname } from '@/i18n/routing';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -103,7 +104,13 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
           >
             {/* Header */}
             <div className="flex items-center justify-between p-5 border-b border-border safe-area-pt">
-              <span className="font-serif text-xl text-secondary">LIV</span>
+              <Image
+                src="/images/logo.png"
+                alt="LIV Plastic Surgery"
+                width={206}
+                height={48}
+                className="h-7 w-auto object-contain"
+              />
               <button
                 ref={closeButtonRef}
                 onClick={onClose}

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import NextLink from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
@@ -150,25 +151,19 @@ export default function Header() {
         <div className="container-custom">
           <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2">
-              <span
-                className={`font-serif tracking-wider transition-all duration-300 ${
-                  isScrolled ? 'text-xl' : 'text-2xl'
+            <Link href="/" className="flex items-center shrink-0">
+              <Image
+                src="/images/logo.png"
+                alt="LIV Plastic Surgery"
+                width={206}
+                height={48}
+                priority
+                className={`object-contain transition-all duration-300 ${
+                  isScrolled ? 'h-8 w-auto' : 'h-10 w-auto'
                 } ${
-                  useDarkStyle ? 'text-secondary' : 'text-white text-shadow'
+                  useDarkStyle ? '' : 'brightness-0 invert'
                 }`}
-              >
-                LIV
-              </span>
-              <span
-                className={`hidden sm:block tracking-[0.2em] uppercase transition-all duration-300 ${
-                  isScrolled ? 'text-[10px]' : 'text-xs'
-                } ${
-                  useDarkStyle ? 'text-mono' : 'text-white/90 text-shadow-light'
-                }`}
-              >
-                Plastic Surgery
-              </span>
+              />
             </Link>
 
             {/* Desktop Navigation */}
