@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
-import getDb from '@/lib/db';
+import { createAdminClient } from '@/lib/supabase-admin';
 
 interface UseItem {
   item_id: string;
@@ -27,24 +27,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: '사용 품목을 선택해주세요.' }, { status: 400 });
   }
 
-  const sql = getDb();
+  const admin = createAdminClient();
   const txIds: string[] = [];
   const errors: string[] = [];
 
   for (const item of body.items) {
     try {
-      const [result] = await sql`
-        SELECT use_inventory_item(
-          ${item.item_id}::uuid,
-          ${item.quantity}::integer,
-          ${body.patient_name || null},
-          ${body.chart_number || null},
-          ${body.note || null},
-          ${body.confirmed_by || null},
-          ${session.user.email || null}
-        ) as tx_id
-      `;
-      txIds.push(result.tx_id);
+      const { data, error } = await admin.rpc('use_inventory_item', {
+        p_item_id: item.item_id,
+        p_quantity: item.quantity,
+        p_patient_name: body.patient_name ?? undefined,
+        p_chart_number: body.chart_number ?? undefined,
+        p_note: body.note ?? undefined,
+        p_confirmed_by: body.confirmed_by ?? undefined,
+        p_created_by: session.user.email ?? undefined,
+      });
+
+      if (error) throw new Error(error.message);
+      txIds.push(data as string);
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : 'Unknown error';
       errors.push(`${item.item_id}: ${msg}`);

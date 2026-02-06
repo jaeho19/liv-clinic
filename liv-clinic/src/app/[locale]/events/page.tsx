@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { AnimateOnScroll, Button } from '@/components/ui';
 import { ScrollLink } from '@/components/ui';
 import EventCard from '@/components/sections/EventCard';
-import { EVENTS, getEventStatus, EventItem } from '@/lib/constants';
+import { getEventStatus, EventItem } from '@/lib/constants';
 import { fetchPublishedEvents } from '@/lib/eventApi';
 
 type FilterStatus = 'all' | 'active' | 'ended';
@@ -15,24 +15,21 @@ export default function EventsPage() {
   const t = useTranslations('events');
   const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
-  const [allEvents, setAllEvents] = useState<EventItem[]>(EVENTS);
+  const [allEvents, setAllEvents] = useState<EventItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
-  // API에서 이벤트 로드, 상수 데이터와 병합
+  // API에서 이벤트 로드 (DB 전용 - 관리자에서 삭제한 이벤트 즉시 반영)
   useEffect(() => {
     let cancelled = false;
     (async () => {
       const { events: apiEvents, fromApi } = await fetchPublishedEvents();
       if (cancelled) return;
 
-      if (fromApi && apiEvents.length > 0) {
-        // API 이벤트 + 상수에만 있는 이벤트 병합 (API 우선)
-        const apiIds = new Set(apiEvents.map((e) => e.id));
-        const constantsOnly = EVENTS.filter((e) => !apiIds.has(e.id));
-        setAllEvents([...apiEvents, ...constantsOnly]);
+      if (fromApi) {
+        setAllEvents(apiEvents);
       } else {
-        // API 실패 또는 빈 응답 → 상수 폴백
-        setAllEvents(EVENTS);
+        setLoadError(true);
       }
       setIsLoading(false);
     })();
@@ -113,6 +110,23 @@ export default function EventsPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          ) : loadError ? (
+            <div className="text-center py-20">
+              <svg className="w-16 h-16 mx-auto mb-4 text-mono-light/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+              </svg>
+              <p className="text-h4 text-mono-light mb-4">
+                {locale === 'ko' ? '이벤트를 불러오는 중 오류가 발생했습니다' :
+                 locale === 'ja' ? 'イベントの読み込み中にエラーが発生しました' :
+                 locale === 'zh' ? '加载活动时出错' : 'Error loading events'}
+              </p>
+              <button
+                onClick={() => { setIsLoading(true); setLoadError(false); fetchPublishedEvents().then(({ events, fromApi }) => { if (fromApi) setAllEvents(events); else setLoadError(true); setIsLoading(false); }); }}
+                className="px-6 py-2.5 bg-secondary text-white rounded-full text-sm font-medium hover:bg-secondary/90 transition-colors"
+              >
+                {locale === 'ko' ? '다시 시도' : locale === 'ja' ? '再試行' : locale === 'zh' ? '重试' : 'Retry'}
+              </button>
             </div>
           ) : (
             <AnimatePresence mode="wait">

@@ -8,7 +8,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card } from '@/components/ui';
 import { ScrollLink } from '@/components/ui';
-import { EVENTS, getEventStatus, TREATMENTS, EventItem } from '@/lib/constants';
+import { getEventStatus, TREATMENTS, EventItem } from '@/lib/constants';
 import { fetchEventBySlug, fetchPublishedEvents } from '@/lib/eventApi';
 import EventCard from '@/components/sections/EventCard';
 import EventHero from '@/components/sections/EventHero';
@@ -21,10 +21,10 @@ export default function EventDetailPage() {
   const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [event, setEvent] = useState<EventItem | undefined>(undefined);
-  const [allEvents, setAllEvents] = useState<EventItem[]>(EVENTS);
+  const [allEvents, setAllEvents] = useState<EventItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  // API에서 이벤트 로드, 상수 폴백
+  // API에서 이벤트 로드 (DB 전용 - 관리자에서 삭제한 이벤트 즉시 반영)
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -34,19 +34,14 @@ export default function EventDetailPage() {
 
       if (apiEvent) {
         setEvent(apiEvent);
-      } else {
-        // 상수에서 찾기
-        setEvent(EVENTS.find((e) => e.id === eventId));
       }
 
       // 2. 관련 이벤트를 위해 전체 목록도 로드
       const { events: apiEvents, fromApi } = await fetchPublishedEvents();
       if (cancelled) return;
 
-      if (fromApi && apiEvents.length > 0) {
-        const apiIds = new Set(apiEvents.map((e) => e.id));
-        const constantsOnly = EVENTS.filter((e) => !apiIds.has(e.id));
-        setAllEvents([...apiEvents, ...constantsOnly]);
+      if (fromApi) {
+        setAllEvents(apiEvents);
       }
 
       setIsLoading(false);

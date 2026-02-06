@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, Fragment } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 import type { ConsultationRow } from '@/types/admin';
+import VoiceNoteInput from '@/components/admin/VoiceNoteInput';
 import {
   LEAD_STATUS_LABELS,
   LEAD_STATUS_COLORS,
@@ -367,13 +368,30 @@ export default function ConsultationsPage() {
                       <div>
                         <p className="text-[#8a8a8a] text-xs mb-1">메모</p>
                         {editingField?.id === c.id && editingField.field === 'notes' ? (
-                          <textarea
-                            value={editValue}
-                            onChange={(e) => setEditValue(e.target.value)}
-                            onBlur={() => updateField(c.id, 'notes', editValue)}
-                            className="text-sm border border-[#b4988d] rounded px-2 py-1 w-full h-20 resize-none"
-                            autoFocus
-                          />
+                          <div>
+                            <VoiceNoteInput
+                              value={editValue}
+                              onChange={setEditValue}
+                              placeholder="클릭하여 메모 추가 (음성 입력 가능)"
+                              rows={3}
+                            />
+                            <div className="flex gap-2 mt-1.5">
+                              <button
+                                type="button"
+                                onClick={() => updateField(c.id, 'notes', editValue)}
+                                className="px-3 py-1 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] transition-colors cursor-pointer"
+                              >
+                                저장
+                              </button>
+                              <button
+                                type="button"
+                                onClick={() => setEditingField(null)}
+                                className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+                              >
+                                취소
+                              </button>
+                            </div>
+                          </div>
                         ) : (
                           <p
                             className="text-[#575756] whitespace-pre-wrap bg-white rounded-lg p-2.5 border border-[#e5e5e5] cursor-pointer hover:border-[#b4988d] min-h-[40px] text-sm"
@@ -639,13 +657,30 @@ export default function ConsultationsPage() {
                             <div>
                               <p className="text-[#8a8a8a] text-xs mb-1">메모</p>
                               {editingField?.id === c.id && editingField.field === 'notes' ? (
-                                <textarea
-                                  value={editValue}
-                                  onChange={(e) => setEditValue(e.target.value)}
-                                  onBlur={() => updateField(c.id, 'notes', editValue)}
-                                  className="text-sm border border-[#b4988d] rounded px-2 py-1 w-full h-20 resize-none"
-                                  autoFocus
-                                />
+                                <div>
+                                  <VoiceNoteInput
+                                    value={editValue}
+                                    onChange={setEditValue}
+                                    placeholder="클릭하여 메모 추가 (음성 입력 가능)"
+                                    rows={4}
+                                  />
+                                  <div className="flex gap-2 mt-1.5">
+                                    <button
+                                      type="button"
+                                      onClick={() => updateField(c.id, 'notes', editValue)}
+                                      className="px-3 py-1 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] transition-colors cursor-pointer"
+                                    >
+                                      저장
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => setEditingField(null)}
+                                      className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+                                    >
+                                      취소
+                                    </button>
+                                  </div>
+                                </div>
                               ) : (
                                 <p
                                   className="text-[#575756] whitespace-pre-wrap bg-white rounded-lg p-3 border border-[#e5e5e5] cursor-pointer hover:border-[#b4988d] min-h-[50px]"

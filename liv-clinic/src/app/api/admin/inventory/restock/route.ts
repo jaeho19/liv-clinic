@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
-import getDb from '@/lib/db';
+import { createAdminClient } from '@/lib/supabase-admin';
 
 interface RestockRequest {
   item_id: string;
@@ -20,18 +20,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: '품목과 수량을 확인해주세요.' }, { status: 400 });
   }
 
-  const sql = getDb();
+  const admin = createAdminClient();
 
   try {
-    const [result] = await sql`
-      SELECT restock_inventory_item(
-        ${body.item_id}::uuid,
-        ${body.quantity}::integer,
-        ${body.note || null},
-        ${session.user.email || null}
-      ) as tx_id
-    `;
-    return NextResponse.json({ success: true, transaction_id: result.tx_id }, { status: 201 });
+    const { data, error } = await admin.rpc('restock_inventory_item', {
+      p_item_id: body.item_id,
+      p_quantity: body.quantity,
+      p_note: body.note ?? undefined,
+      p_created_by: session.user.email ?? undefined,
+    });
+
+    if (error) throw new Error(error.message);
+    return NextResponse.json({ success: true, transaction_id: data as string }, { status: 201 });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });

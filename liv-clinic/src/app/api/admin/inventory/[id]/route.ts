@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
-import getDb from '@/lib/db';
+import { createAdminClient } from '@/lib/supabase-admin';
 
 // PATCH /api/admin/inventory/[id] - 품목 수정
 export async function PATCH(
@@ -13,30 +13,21 @@ export async function PATCH(
 
   const { id } = await params;
   const body = await request.json();
-  const sql = getDb();
+  const admin = createAdminClient();
 
   try {
-    const [updated] = await sql`
-      UPDATE inventory_items SET
-        name = COALESCE(${body.name ?? null}, name),
-        category = COALESCE(${body.category ?? null}, category),
-        sub_category = ${body.sub_category !== undefined ? body.sub_category : sql`sub_category`},
-        specification = ${body.specification !== undefined ? body.specification : sql`specification`},
-        unit = COALESCE(${body.unit ?? null}, unit),
-        current_stock = COALESCE(${body.current_stock ?? null}::integer, current_stock),
-        min_stock = COALESCE(${body.min_stock ?? null}::integer, min_stock),
-        unit_price = COALESCE(${body.unit_price ?? null}::integer, unit_price),
-        supplier = ${body.supplier !== undefined ? body.supplier : sql`supplier`},
-        storage_note = ${body.storage_note !== undefined ? body.storage_note : sql`storage_note`},
-        is_active = COALESCE(${body.is_active ?? null}::boolean, is_active)
-      WHERE id = ${id}
-      RETURNING *
-    `;
+    const { data, error } = await admin.rpc('update_inventory_item_by_id', {
+      p_id: id,
+      p_data: body,
+    });
 
-    if (!updated) {
-      return NextResponse.json({ error: 'Item not found' }, { status: 404 });
+    if (error) {
+      if (error.message.includes('Item not found')) {
+        return NextResponse.json({ error: 'Item not found' }, { status: 404 });
+      }
+      throw new Error(error.message);
     }
-    return NextResponse.json(updated);
+    return NextResponse.json(data);
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });
@@ -53,13 +44,15 @@ export async function DELETE(
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const sql = getDb();
+  const admin = createAdminClient();
 
   try {
-    await sql`
-      UPDATE inventory_items SET is_active = false WHERE id = ${id}
-    `;
-    return NextResponse.json({ success: true });
+    const { data, error } = await admin.rpc('soft_delete_inventory_item', {
+      p_id: id,
+    });
+
+    if (error) throw new Error(error.message);
+    return NextResponse.json(data ?? { success: true });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });
