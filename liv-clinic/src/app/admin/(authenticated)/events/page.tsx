@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { createClient } from '@/lib/supabase-browser';
@@ -20,6 +20,8 @@ export default function EventsAdminPage() {
   const [events, setEvents] = useState<EventRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
+  const [search, setSearch] = useState('');
+  const [duplicating, setDuplicating] = useState<string | null>(null);
 
   const fetchEvents = async () => {
     setLoading(true);
@@ -32,6 +34,33 @@ export default function EventsAdminPage() {
   };
 
   useEffect(() => { fetchEvents(); }, []);
+
+  const filtered = useMemo(() => {
+    if (!search.trim()) return events;
+    const q = search.toLowerCase();
+    return events.filter((e) =>
+      e.title_ko.toLowerCase().includes(q) ||
+      (e.title_en && e.title_en.toLowerCase().includes(q)) ||
+      (e.category && e.category.toLowerCase().includes(q))
+    );
+  }, [events, search]);
+
+  const handleDuplicate = async (event: EventRow) => {
+    setDuplicating(event.id);
+    try {
+      const { id, created_at, ...rest } = event;
+      void id; void created_at;
+      const { error } = await supabase.from('events').insert({
+        ...rest,
+        title_ko: `${event.title_ko} (복사본)`,
+        title_en: event.title_en ? `${event.title_en} (Copy)` : event.title_en,
+        is_published: false,
+      });
+      if (!error) await fetchEvents();
+    } finally {
+      setDuplicating(null);
+    }
+  };
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
@@ -52,15 +81,27 @@ export default function EventsAdminPage() {
         </Link>
       </div>
 
+      {/* 검색 */}
+      <div className="flex items-center gap-3 mb-4">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="이벤트명 검색..."
+          className="flex-1 max-w-sm border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+        />
+        <span className="text-sm text-[#8a8a8a]">{filtered.length}개</span>
+      </div>
+
       {loading ? (
         <div className="bg-white rounded-xl border border-[#e5e5e5] p-8 text-center text-[#8a8a8a]">로딩중...</div>
-      ) : events.length === 0 ? (
+      ) : filtered.length === 0 ? (
         <div className="bg-white rounded-xl border border-[#e5e5e5] p-8 text-center text-[#8a8a8a]">
-          등록된 이벤트가 없습니다.
+          {search ? '검색 결과가 없습니다.' : '등록된 이벤트가 없습니다.'}
         </div>
       ) : (
         <div className="grid gap-4">
-          {events.map((event) => {
+          {filtered.map((event) => {
             const status = getEventStatusFromRow(event);
             const badge = STATUS_BADGES[status];
             return (
@@ -108,6 +149,13 @@ export default function EventsAdminPage() {
                 </div>
 
                 <div className="flex gap-2 shrink-0">
+                  <button
+                    onClick={() => handleDuplicate(event)}
+                    disabled={duplicating === event.id}
+                    className="flex-1 sm:flex-none px-3 py-1.5 text-sm border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer disabled:opacity-50"
+                  >
+                    {duplicating === event.id ? '복제중...' : '복제'}
+                  </button>
                   <Link
                     href={`/admin/events/${event.id}/edit`}
                     className="flex-1 sm:flex-none text-center px-3 py-1.5 text-sm border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors"

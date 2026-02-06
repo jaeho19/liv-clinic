@@ -13,6 +13,9 @@ export async function GET(request: NextRequest) {
   const offset = (page - 1) * limit;
   const channel = searchParams.get('channel');
   const status = searchParams.get('status');
+  const startDate = searchParams.get('startDate');
+  const endDate = searchParams.get('endDate');
+  const search = searchParams.get('search');
 
   const admin = createAdminClient();
   let query = admin
@@ -23,6 +26,8 @@ export async function GET(request: NextRequest) {
 
   if (channel) query = query.eq('channel', channel);
   if (status) query = query.eq('status', status);
+  if (startDate) query = query.gte('sent_at', `${startDate}T00:00:00`);
+  if (endDate) query = query.lte('sent_at', `${endDate}T23:59:59`);
 
   const { data, error, count } = await query;
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });

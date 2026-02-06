@@ -158,7 +158,10 @@ export default async function DashboardPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6 lg:mb-8">
         {/* Weekly Trend Chart */}
         <div className="bg-white rounded-xl border border-[#e5e5e5] p-4">
-          <h3 className="font-bold text-[#6d4e42] text-sm mb-3">최근 7일 추이</h3>
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-bold text-[#6d4e42] text-sm">최근 7일 추이</h3>
+            <Link href="/admin/reports" className="text-xs text-[#b4988d] hover:underline">상세 리포트 &rarr;</Link>
+          </div>
           <div className="flex items-end gap-1 h-28">
             {weeklyTrend.map((d) => (
               <div key={d.label} className="flex-1 flex flex-col items-center gap-0.5">
@@ -205,18 +208,18 @@ export default async function DashboardPage() {
           <div className="bg-white rounded-xl border border-[#e5e5e5] p-4 flex-1">
             <h3 className="font-bold text-[#6d4e42] text-sm mb-3">이번주 요약</h3>
             <div className="space-y-2">
-              <div className="flex justify-between items-center">
+              <Link href="/admin/consultations" className="flex justify-between items-center hover:bg-[#f6f6f6] -mx-2 px-2 py-1 rounded transition-colors">
                 <span className="text-sm text-[#8a8a8a]">7일간 상담</span>
                 <span className="text-sm font-bold text-blue-700">{weeklyTrend.reduce((s, d) => s + d.consults, 0)}건</span>
-              </div>
-              <div className="flex justify-between items-center">
+              </Link>
+              <Link href="/admin/operations" className="flex justify-between items-center hover:bg-[#f6f6f6] -mx-2 px-2 py-1 rounded transition-colors">
                 <span className="text-sm text-[#8a8a8a]">7일간 시술</span>
                 <span className="text-sm font-bold text-teal-700">{weeklyTrend.reduce((s, d) => s + d.ops, 0)}건</span>
-              </div>
-              <div className="flex justify-between items-center">
+              </Link>
+              <Link href="/admin/reports" className="flex justify-between items-center hover:bg-[#f6f6f6] -mx-2 px-2 py-1 rounded transition-colors">
                 <span className="text-sm text-[#8a8a8a]">일 평균 상담</span>
                 <span className="text-sm font-medium text-[#575756]">{(weeklyTrend.reduce((s, d) => s + d.consults, 0) / 7).toFixed(1)}건</span>
-              </div>
+              </Link>
             </div>
           </div>
         </div>

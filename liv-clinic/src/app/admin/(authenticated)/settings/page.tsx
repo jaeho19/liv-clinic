@@ -30,10 +30,12 @@ async function fetchStaff(): Promise<StaffMember[]> {
   return res.json();
 }
 
-async function fetchAuditLogs(action?: string, userName?: string): Promise<AuditLog[]> {
+async function fetchAuditLogs(action?: string, userName?: string, startDate?: string, endDate?: string): Promise<AuditLog[]> {
   const params = new URLSearchParams();
   if (action && action !== 'all') params.set('action', action);
   if (userName && userName !== 'all') params.set('userName', userName);
+  if (startDate) params.set('startDate', startDate);
+  if (endDate) params.set('endDate', endDate);
   const qs = params.toString();
   const res = await fetch(`/api/admin/settings/audit-logs${qs ? `?${qs}` : ''}`);
   if (!res.ok) throw new Error('감사 로그를 불러오지 못했습니다.');
@@ -709,25 +711,43 @@ function AuditLogTab() {
   const [logs, setLogs] = useState<AuditLog[]>([]);
   const [actionFilter, setActionFilter] = useState<string>('all');
   const [userFilter, setUserFilter] = useState<string>('all');
+  const [startDate, setStartDate] = useState<string>('');
+  const [endDate, setEndDate] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   const loadData = useCallback(async () => {
     try {
       setError(null);
-      const data = await fetchAuditLogs(actionFilter, userFilter);
+      const data = await fetchAuditLogs(actionFilter, userFilter, startDate, endDate);
       setLogs(data);
     } catch (e) {
       setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
     } finally {
       setLoading(false);
     }
-  }, [actionFilter, userFilter]);
+  }, [actionFilter, userFilter, startDate, endDate]);
 
   useEffect(() => { loadData(); }, [loadData]);
 
   const users = useMemo(() => {
     return [...new Set(logs.map((l) => l.userName))];
+  }, [logs]);
+
+  const handleExportCSV = useCallback(() => {
+    if (logs.length === 0) return;
+    const header = '일시,사용자,작업,대상,상세';
+    const rows = logs.map((l) =>
+      `"${new Date(l.createdAt).toLocaleString('ko-KR')}","${l.userName}","${l.action}","${l.target}","${(l.detail || '').replace(/"/g, '""')}"`
+    );
+    const csv = '\uFEFF' + [header, ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `audit_logs_${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
   }, [logs]);
 
   const ACTION_COLORS: Record<AuditAction, string> = {
@@ -781,7 +801,31 @@ function AuditLogTab() {
             <option key={u} value={u}>{u}</option>
           ))}
         </select>
-        <span className="text-sm text-[#8a8a8a] ml-auto">{logs.length}건</span>
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+          className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+          placeholder="시작일"
+        />
+        <span className="text-xs text-[#8a8a8a]">~</span>
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+          className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+          placeholder="종료일"
+        />
+        <div className="flex items-center gap-2 ml-auto">
+          <span className="text-sm text-[#8a8a8a]">{logs.length}건</span>
+          <button
+            onClick={handleExportCSV}
+            disabled={logs.length === 0}
+            className="px-3 py-2 text-xs border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            CSV 내보내기
+          </button>
+        </div>
       </div>
 
       {/* 로그 테이블 */}

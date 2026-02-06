@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import type { NotificationHistoryRow, PatientTreatmentRow, NotificationChannel, NotificationSendStatus } from '@/types/admin';
 import { NOTIFICATION_CHANNEL_LABELS, NOTIFICATION_STATUS_LABELS, NOTIFICATION_STATUS_COLORS } from '@/types/admin';
@@ -16,6 +16,9 @@ export default function NotificationHistoryPage() {
   const [page, setPage] = useState(1);
   const [channelFilter, setChannelFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [search, setSearch] = useState('');
   const limit = 20;
 
   const fetchHistory = useCallback(async () => {
@@ -24,6 +27,8 @@ export default function NotificationHistoryPage() {
       const params = new URLSearchParams({ page: String(page), limit: String(limit) });
       if (channelFilter) params.set('channel', channelFilter);
       if (statusFilter) params.set('status', statusFilter);
+      if (startDate) params.set('startDate', startDate);
+      if (endDate) params.set('endDate', endDate);
       const res = await fetch(`/api/admin/notifications/history?${params}`);
       if (res.ok) {
         const json = await res.json();
@@ -31,9 +36,34 @@ export default function NotificationHistoryPage() {
         setTotal(json.total || 0);
       }
     } finally { setLoading(false); }
-  }, [page, channelFilter, statusFilter]);
+  }, [page, channelFilter, statusFilter, startDate, endDate]);
 
   useEffect(() => { fetchHistory(); }, [fetchHistory]);
+
+  const handleExportCSV = useCallback(() => {
+    if (data.length === 0) return;
+    const header = '환자명,전화번호,시술,채널,상태,담당자,발송일시,메모';
+    const rows = data.map((h) =>
+      `"${h.patient_treatments?.patient_name || '-'}","${h.patient_treatments?.phone || '-'}","${h.patient_treatments?.treatment_name || '-'}","${h.channel}","${h.status}","${h.sent_by || '-'}","${new Date(h.sent_at).toLocaleString('ko-KR')}","${(h.notes || '').replace(/"/g, '""')}"`
+    );
+    const csv = '\uFEFF' + [header, ...rows].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `notification_history_${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [data]);
+
+  const filteredData = useMemo(() => {
+    if (!search.trim()) return data;
+    const q = search.toLowerCase();
+    return data.filter((h) =>
+      (h.patient_treatments?.patient_name || '').toLowerCase().includes(q) ||
+      (h.patient_treatments?.phone || '').includes(q)
+    );
+  }, [data, search]);
 
   const totalPages = Math.ceil(total / limit);
 
@@ -52,7 +82,14 @@ export default function NotificationHistoryPage() {
       </div>
 
       {/* 필터 */}
-      <div className="flex gap-3 mb-4">
+      <div className="flex flex-wrap gap-3 mb-4">
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+          placeholder="환자명 검색..."
+          className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d] w-40"
+        />
         <select className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm" value={channelFilter} onChange={e => { setChannelFilter(e.target.value); setPage(1); }}>
           <option value="">전체 채널</option>
           <option value="kakao">카카오톡</option>
@@ -65,15 +102,37 @@ export default function NotificationHistoryPage() {
           <option value="failed">실패</option>
           <option value="skipped">건너뜀</option>
         </select>
-        <span className="text-sm text-[#8a8a8a] flex items-center">총 {total}건</span>
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => { setStartDate(e.target.value); setPage(1); }}
+          className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+        />
+        <span className="text-xs text-[#8a8a8a] flex items-center">~</span>
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => { setEndDate(e.target.value); setPage(1); }}
+          className="border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+        />
+        <div className="flex items-center gap-2 ml-auto">
+          <span className="text-sm text-[#8a8a8a]">총 {total}건</span>
+          <button
+            onClick={handleExportCSV}
+            disabled={data.length === 0}
+            className="px-3 py-2 text-xs border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            CSV 내보내기
+          </button>
+        </div>
       </div>
 
       {/* 이력 테이블 */}
       <div className="bg-white rounded-xl border border-[#e5e5e5] overflow-hidden">
         {loading ? (
           <div className="p-8 text-center text-sm text-[#8a8a8a]">불러오는 중...</div>
-        ) : data.length === 0 ? (
-          <div className="p-8 text-center text-sm text-[#8a8a8a]">발송 이력이 없습니다.</div>
+        ) : filteredData.length === 0 ? (
+          <div className="p-8 text-center text-sm text-[#8a8a8a]">{search ? '검색 결과가 없습니다.' : '발송 이력이 없습니다.'}</div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
@@ -90,7 +149,7 @@ export default function NotificationHistoryPage() {
                 </tr>
               </thead>
               <tbody>
-                {data.map(h => (
+                {filteredData.map(h => (
                   <tr key={h.id} className="border-b border-[#f0f0f0] last:border-0">
                     <td className="py-3 px-4 font-medium">{h.patient_treatments?.patient_name || '-'}</td>
                     <td className="py-3 px-4 text-[#8a8a8a]">{h.patient_treatments ? maskPhone(h.patient_treatments.phone) : '-'}</td>

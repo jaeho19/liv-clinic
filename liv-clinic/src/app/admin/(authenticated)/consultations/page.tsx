@@ -44,6 +44,10 @@ export default function ConsultationsPage() {
   const [editingField, setEditingField] = useState<{ id: string; field: string } | null>(null);
   const [editValue, setEditValue] = useState('');
 
+  // Bulk selection
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
+  const [bulkAction, setBulkAction] = useState(false);
+
   // Unique assignees for filter
   const [assignees, setAssignees] = useState<string[]>([]);
 
@@ -177,6 +181,50 @@ export default function ConsultationsPage() {
     URL.revokeObjectURL(url);
   };
 
+  const toggleSelect = (id: string) => {
+    setSelectedIds((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const toggleSelectAll = () => {
+    if (selectedIds.size === consultations.length) {
+      setSelectedIds(new Set());
+    } else {
+      setSelectedIds(new Set(consultations.map((c) => c.id)));
+    }
+  };
+
+  const bulkUpdateStatus = async (newStatus: LeadStatus) => {
+    if (selectedIds.size === 0) return;
+    const ids = [...selectedIds];
+    await supabase
+      .from('consultation_requests')
+      .update({ status: newStatus, updated_at: new Date().toISOString() } as Database['public']['Tables']['consultation_requests']['Update'])
+      .in('id', ids);
+    const newLabel = CONSULTATION_STATUS_LABELS[newStatus] || newStatus;
+    logAudit('update', `상담 ${ids.length}건`, `벌크 상태 변경 → ${newLabel}`);
+    setSelectedIds(new Set());
+    setBulkAction(false);
+    fetchConsultations();
+  };
+
+  const bulkUpdateAssignee = async (assignee: string) => {
+    if (selectedIds.size === 0) return;
+    const ids = [...selectedIds];
+    await supabase
+      .from('consultation_requests')
+      .update({ assignee, updated_at: new Date().toISOString() } as Database['public']['Tables']['consultation_requests']['Update'])
+      .in('id', ids);
+    logAudit('update', `상담 ${ids.length}건`, `벌크 담당자 배정: ${assignee}`);
+    setSelectedIds(new Set());
+    setBulkAction(false);
+    fetchConsultations();
+  };
+
   const totalPages = Math.ceil(total / PAGE_SIZE);
 
   const formatFollowupTime = (dt: string | null) => {
@@ -253,6 +301,57 @@ export default function ConsultationsPage() {
         </div>
       </div>
 
+      {/* Bulk Action Bar */}
+      {selectedIds.size > 0 && (
+        <div className="bg-[#6d4e42] text-white rounded-xl p-3 mb-4 flex flex-wrap items-center gap-3">
+          <span className="text-sm font-medium">{selectedIds.size}건 선택</span>
+          <div className="flex flex-wrap items-center gap-2">
+            <select
+              defaultValue=""
+              onChange={(e) => { if (e.target.value) bulkUpdateStatus(e.target.value as LeadStatus); e.target.value = ''; }}
+              className="text-xs px-2 py-1.5 rounded-lg bg-white/20 text-white border-0 cursor-pointer"
+            >
+              <option value="" disabled>상태 일괄 변경</option>
+              {Object.entries(LEAD_STATUS_LABELS).map(([k, v]) => (
+                <option key={k} value={k} className="text-[#575756]">{v}</option>
+              ))}
+            </select>
+            {!bulkAction ? (
+              <button
+                onClick={() => setBulkAction(true)}
+                className="text-xs px-3 py-1.5 bg-white/20 rounded-lg hover:bg-white/30 transition-colors cursor-pointer"
+              >
+                담당자 배정
+              </button>
+            ) : (
+              <div className="flex items-center gap-1">
+                <input
+                  type="text"
+                  placeholder="담당자명"
+                  autoFocus
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' && (e.target as HTMLInputElement).value.trim()) {
+                      bulkUpdateAssignee((e.target as HTMLInputElement).value.trim());
+                    }
+                    if (e.key === 'Escape') setBulkAction(false);
+                  }}
+                  className="text-xs px-2 py-1.5 rounded-lg bg-white text-[#575756] w-24"
+                />
+                <button onClick={() => setBulkAction(false)} className="text-xs px-2 py-1.5 cursor-pointer hover:bg-white/20 rounded">
+                  취소
+                </button>
+              </div>
+            )}
+          </div>
+          <button
+            onClick={() => setSelectedIds(new Set())}
+            className="text-xs px-3 py-1.5 border border-white/30 rounded-lg hover:bg-white/10 transition-colors cursor-pointer ml-auto"
+          >
+            선택 해제
+          </button>
+        </div>
+      )}
+
       {/* Mobile Card View */}
       <div className="lg:hidden">
         {loading ? (
@@ -262,13 +361,20 @@ export default function ConsultationsPage() {
         ) : (
           <div className="space-y-3">
             {consultations.map((c) => (
-              <div key={c.id} className="bg-white rounded-xl border border-[#e5e5e5] overflow-hidden">
+              <div key={c.id} className={`bg-white rounded-xl border overflow-hidden ${selectedIds.has(c.id) ? 'border-[#b4988d] ring-1 ring-[#b4988d]/30' : 'border-[#e5e5e5]'}`}>
                 <div
                   className="p-3 cursor-pointer"
                   onClick={() => setExpandedId(expandedId === c.id ? null : c.id)}
                 >
                   <div className="flex items-start justify-between mb-2">
                     <div className="flex items-center gap-2">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(c.id)}
+                        onChange={(e) => { e.stopPropagation(); toggleSelect(c.id); }}
+                        onClick={(e) => e.stopPropagation()}
+                        className="rounded border-[#e5e5e5] accent-[#b4988d] shrink-0"
+                      />
                       <span className={`inline-block transition-transform text-xs text-[#8a8a8a] ${expandedId === c.id ? 'rotate-90' : ''}`}>&#9654;</span>
                       <span className="font-medium text-sm">
                         {c.name}
@@ -447,6 +553,14 @@ export default function ConsultationsPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="bg-[#f9f9f9] border-b border-[#e5e5e5]">
+                  <th className="w-8 py-3 px-2">
+                    <input
+                      type="checkbox"
+                      checked={selectedIds.size === consultations.length && consultations.length > 0}
+                      onChange={toggleSelectAll}
+                      className="rounded border-[#e5e5e5] accent-[#b4988d]"
+                    />
+                  </th>
                   <th className="w-8 py-3 px-2"></th>
                   <th className="text-left py-3 px-3 text-[#8a8a8a] font-medium">이름</th>
                   <th className="text-left py-3 px-3 text-[#8a8a8a] font-medium">전화번호</th>
@@ -462,9 +576,17 @@ export default function ConsultationsPage() {
                 {consultations.map((c) => (
                   <Fragment key={c.id}>
                     <tr
-                      className={`border-b border-[#f0f0f0] last:border-0 hover:bg-[#fafafa] cursor-pointer ${expandedId === c.id ? 'bg-[#fafafa]' : ''}`}
+                      className={`border-b border-[#f0f0f0] last:border-0 hover:bg-[#fafafa] cursor-pointer ${expandedId === c.id ? 'bg-[#fafafa]' : ''} ${selectedIds.has(c.id) ? 'bg-[#b4988d]/5' : ''}`}
                       onClick={() => setExpandedId(expandedId === c.id ? null : c.id)}
                     >
+                      <td className="py-3 px-2 text-center" onClick={(e) => e.stopPropagation()}>
+                        <input
+                          type="checkbox"
+                          checked={selectedIds.has(c.id)}
+                          onChange={() => toggleSelect(c.id)}
+                          className="rounded border-[#e5e5e5] accent-[#b4988d]"
+                        />
+                      </td>
                       <td className="py-3 px-2 text-center text-[#8a8a8a]">
                         <span className={`inline-block transition-transform text-xs ${expandedId === c.id ? 'rotate-90' : ''}`}>&#9654;</span>
                       </td>
@@ -558,7 +680,7 @@ export default function ConsultationsPage() {
                     {/* Expanded detail panel */}
                     {expandedId === c.id && (
                       <tr className="bg-[#f9f8f7] border-b border-[#f0f0f0]">
-                        <td colSpan={9} className="py-4 px-6">
+                        <td colSpan={10} className="py-4 px-6">
                           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                             {/* Row 1 */}
                             <div>

@@ -46,12 +46,68 @@ function formatMoneyFull(n: number): string {
   return n.toLocaleString('ko-KR') + '원';
 }
 
+// ─── CSV 내보내기 ──────────────────────────────────
+function exportReportCSV(data: ReportData, year: number, month: number) {
+  const sections: string[] = [];
+
+  // KPI 요약
+  sections.push('=== KPI 요약 ===');
+  sections.push(`월 매출,${data.totalRevenue}`);
+  sections.push(`총 시술 건수,${data.totalProcedures}`);
+  sections.push(`건당 평균 매출,${data.avgRevenuePerCase}`);
+  sections.push(`전환율,${data.funnel.total > 0 ? ((data.funnel.completed / data.funnel.total) * 100).toFixed(1) : 0}%`);
+
+  // 퍼널
+  sections.push('');
+  sections.push('=== 상담 퍼널 ===');
+  sections.push(`상담 신청,${data.funnel.total}`);
+  sections.push(`컨택 완료,${data.funnel.contacted}`);
+  sections.push(`예약 확정,${data.funnel.reserved}`);
+  sections.push(`시술 완료,${data.funnel.completed}`);
+  sections.push(`노쇼,${data.funnel.noShow}`);
+
+  // 시술별
+  sections.push('');
+  sections.push('=== 시술별 통계 ===');
+  sections.push('시술명,카테고리,건수,매출');
+  data.procedures.forEach((p) => {
+    sections.push(`"${p.name}","${p.category}",${p.count},${p.revenue}`);
+  });
+
+  // 의사별
+  sections.push('');
+  sections.push('=== 의사별 실적 ===');
+  sections.push('의사명,상담,시술,매출,전환율');
+  data.doctors.forEach((d) => {
+    sections.push(`"${d.name}",${d.consultations},${d.procedures},${d.revenue},${d.conversionRate}%`);
+  });
+
+  // 일별
+  sections.push('');
+  sections.push('=== 일별 추이 ===');
+  sections.push('날짜,상담,시술');
+  data.daily.forEach((d) => {
+    sections.push(`${d.date},${d.consultations},${d.procedures}`);
+  });
+
+  const csv = '\uFEFF' + sections.join('\n');
+  const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `report_${year}_${String(month).padStart(2, '0')}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 // ─── 메인 컴포넌트 ──────────────────────────────────
 export default function ReportsPage() {
   const now = new Date();
   const [year, setYear] = useState(now.getFullYear());
   const [month, setMonth] = useState(now.getMonth() + 1);
   const [data, setData] = useState<ReportData>(EMPTY_REPORT);
+  const [prevData, setPrevData] = useState<ReportData | null>(null);
+  const [showComparison, setShowComparison] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -68,6 +124,18 @@ export default function ReportsPage() {
     }
   }, []);
 
+  // 전월 데이터 로드
+  const loadPrevMonth = useCallback(async (y: number, m: number) => {
+    const prevM = m === 1 ? 12 : m - 1;
+    const prevY = m === 1 ? y - 1 : y;
+    try {
+      const report = await fetchReport(prevY, prevM);
+      setPrevData(report);
+    } catch {
+      setPrevData(null);
+    }
+  }, []);
+
   // 목표 매출을 설정에서 불러오기
   const [revenueTarget, setRevenueTarget] = useState(250000000);
   useEffect(() => {
@@ -81,6 +149,11 @@ export default function ReportsPage() {
 
   useEffect(() => { loadReport(year, month); }, [year, month, loadReport]);
 
+  useEffect(() => {
+    if (showComparison) loadPrevMonth(year, month);
+    else setPrevData(null);
+  }, [showComparison, year, month, loadPrevMonth]);
+
   const conversionRate = data.funnel.total > 0
     ? ((data.funnel.completed / data.funnel.total) * 100).toFixed(1)
     : '0';
@@ -89,12 +162,30 @@ export default function ReportsPage() {
     ? ((data.totalRevenue / revenueTarget) * 100).toFixed(1)
     : '0';
 
+  // 전월 비교 계산
+  const prevConversionRate = prevData && prevData.funnel.total > 0
+    ? ((prevData.funnel.completed / prevData.funnel.total) * 100).toFixed(1) : null;
+  const calcDiff = (curr: number, prev: number | undefined) => {
+    if (prev === undefined || prev === 0) return null;
+    const diff = ((curr - prev) / prev) * 100;
+    return diff > 0 ? `+${diff.toFixed(1)}%` : `${diff.toFixed(1)}%`;
+  };
+
   return (
     <div>
       {/* 헤더 */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-4 lg:mb-6">
         <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">리포트</h2>
         <div className="flex items-center gap-2">
+          <label className="flex items-center gap-1.5 text-sm text-[#575756] cursor-pointer mr-2">
+            <input
+              type="checkbox"
+              checked={showComparison}
+              onChange={(e) => setShowComparison(e.target.checked)}
+              className="rounded border-[#e5e5e5] accent-[#b4988d]"
+            />
+            전월 비교
+          </label>
           <select
             value={year}
             onChange={(e) => setYear(Number(e.target.value))}
@@ -113,6 +204,13 @@ export default function ReportsPage() {
               <option key={m} value={m}>{m}월</option>
             ))}
           </select>
+          <button
+            onClick={() => exportReportCSV(data, year, month)}
+            disabled={loading}
+            className="px-3 py-2 text-xs border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer disabled:opacity-50"
+          >
+            CSV 내보내기
+          </button>
         </div>
       </div>
 
@@ -149,6 +247,7 @@ export default function ReportsPage() {
           color="bg-blue-50 text-blue-700"
           progress={Math.min(100, Number(achievementRate))}
           progressColor="bg-blue-400"
+          diff={prevData ? calcDiff(data.totalRevenue, prevData.totalRevenue) : undefined}
         />
         <KpiCard
           label="상담 → 시술 전환율"
@@ -157,18 +256,21 @@ export default function ReportsPage() {
           color="bg-emerald-50 text-emerald-700"
           progress={Number(conversionRate)}
           progressColor="bg-emerald-400"
+          diff={prevData && prevConversionRate ? calcDiff(Number(conversionRate), Number(prevConversionRate)) : undefined}
         />
         <KpiCard
           label="총 시술 건수"
           value={`${data.totalProcedures}건`}
           sub={`일평균 ${(data.totalProcedures / new Date(year, month, 0).getDate()).toFixed(1)}건`}
           color="bg-purple-50 text-purple-700"
+          diff={prevData ? calcDiff(data.totalProcedures, prevData.totalProcedures) : undefined}
         />
         <KpiCard
           label="시술 건당 평균 매출"
           value={formatMoney(data.avgRevenuePerCase) + '원'}
-          sub="전월 대비 +5.2%"
+          sub={prevData ? `전월: ${formatMoney(prevData.avgRevenuePerCase)}원` : ''}
           color="bg-amber-50 text-amber-700"
+          diff={prevData ? calcDiff(data.avgRevenuePerCase, prevData.avgRevenuePerCase) : undefined}
         />
       </div>
 
@@ -198,6 +300,7 @@ function KpiCard({
   color,
   progress,
   progressColor,
+  diff,
 }: {
   label: string;
   value: string;
@@ -205,13 +308,21 @@ function KpiCard({
   color: string;
   progress?: number;
   progressColor?: string;
+  diff?: string | null;
 }) {
   return (
     <div className="bg-white rounded-xl p-5 border border-[#e5e5e5]">
       <p className="text-sm text-[#8a8a8a] mb-2">{label}</p>
-      <p className={`text-2xl font-bold ${color} inline-block px-2 py-0.5 rounded-lg mb-2`}>
-        {value}
-      </p>
+      <div className="flex items-baseline gap-2 mb-2">
+        <p className={`text-2xl font-bold ${color} inline-block px-2 py-0.5 rounded-lg`}>
+          {value}
+        </p>
+        {diff && (
+          <span className={`text-xs font-medium ${diff.startsWith('+') ? 'text-emerald-600' : diff.startsWith('-') ? 'text-red-500' : 'text-[#8a8a8a]'}`}>
+            {diff}
+          </span>
+        )}
+      </div>
       {progress !== undefined && progressColor && (
         <div className="w-full bg-[#f0f0f0] rounded-full h-1.5 mb-2">
           <div
