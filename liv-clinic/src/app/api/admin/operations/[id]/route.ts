@@ -1,8 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
-import getDb from '@/lib/db';
+import { createServerClient } from '@/lib/supabase-server';
+import { createAdminClient } from '@/lib/supabase-admin';
 
-function hasDatabase(): boolean {
-  return !!process.env.DATABASE_URL;
+function toCamelCase(r: Record<string, unknown>) {
+  return {
+    id: r.id,
+    roomId: r.room_id,
+    patientName: r.patient_name,
+    phoneNumber: r.phone_number,
+    treatmentType: r.treatment_type,
+    status: r.status,
+    location: r.location,
+    doctor: r.doctor,
+    procedure: r.procedure_name,
+    actualStart: r.actual_start,
+    expectedDurationMin: r.expected_duration_min,
+    memo: r.memo,
+    parentCaseId: r.parent_case_id,
+    createdAt: r.created_at,
+  };
 }
 
 // PATCH /api/admin/operations/[id] - 케이스 업데이트 (상태, 위치, 시작시간 등)
@@ -10,52 +26,44 @@ export async function PATCH(
   request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!hasDatabase()) {
-    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
-  }
+  const supabase = await createServerClient();
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
   const body = await request.json();
-  const sql = getDb();
+  const admin = createAdminClient();
+
+  // 요청에 포함된 필드만 업데이트 객체에 추가
+  const updateObj: Record<string, unknown> = {};
+  if (body.roomId !== undefined) updateObj.room_id = body.roomId;
+  if (body.patientName !== undefined) updateObj.patient_name = body.patientName;
+  if (body.phoneNumber !== undefined) updateObj.phone_number = body.phoneNumber;
+  if (body.treatmentType !== undefined) updateObj.treatment_type = body.treatmentType;
+  if (body.status !== undefined) updateObj.status = body.status;
+  if (body.location !== undefined) updateObj.location = body.location;
+  if (body.doctor !== undefined) updateObj.doctor = body.doctor;
+  if (body.procedure !== undefined) updateObj.procedure_name = body.procedure;
+  if (body.actualStart !== undefined) updateObj.actual_start = body.actualStart;
+  if (body.expectedDurationMin !== undefined) updateObj.expected_duration_min = body.expectedDurationMin;
+  if (body.memo !== undefined) updateObj.memo = body.memo;
 
   try {
-    const [updated] = await sql`
-      UPDATE operation_cases SET
-        room_id = COALESCE(${body.roomId ?? null}, room_id),
-        patient_name = COALESCE(${body.patientName ?? null}, patient_name),
-        phone_number = ${body.phoneNumber !== undefined ? body.phoneNumber : sql`phone_number`},
-        treatment_type = COALESCE(${body.treatmentType ?? null}::treatment_type, treatment_type),
-        status = COALESCE(${body.status ?? null}::case_status, status),
-        location = COALESCE(${body.location ?? null}::case_location, location),
-        doctor = COALESCE(${body.doctor ?? null}, doctor),
-        procedure_name = COALESCE(${body.procedure ?? null}, procedure_name),
-        actual_start = ${body.actualStart !== undefined ? body.actualStart : sql`actual_start`},
-        expected_duration_min = COALESCE(${body.expectedDurationMin ?? null}::integer, expected_duration_min),
-        memo = ${body.memo !== undefined ? body.memo : sql`memo`}
-      WHERE id = ${id}
-      RETURNING *
-    `;
+    const { data, error } = await admin
+      .from('operation_cases')
+      .update(updateObj)
+      .eq('id', id)
+      .select()
+      .single();
 
-    if (!updated) {
-      return NextResponse.json({ error: 'Case not found' }, { status: 404 });
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return NextResponse.json({ error: 'Case not found' }, { status: 404 });
+      }
+      throw error;
     }
 
-    return NextResponse.json({
-      id: updated.id,
-      roomId: updated.room_id,
-      patientName: updated.patient_name,
-      phoneNumber: updated.phone_number,
-      treatmentType: updated.treatment_type,
-      status: updated.status,
-      location: updated.location,
-      doctor: updated.doctor,
-      procedure: updated.procedure_name,
-      actualStart: updated.actual_start,
-      expectedDurationMin: updated.expected_duration_min,
-      memo: updated.memo,
-      parentCaseId: updated.parent_case_id,
-      createdAt: updated.created_at,
-    });
+    return NextResponse.json(toCamelCase(data));
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });
@@ -67,15 +75,20 @@ export async function DELETE(
   _request: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  if (!hasDatabase()) {
-    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
-  }
+  const supabase = await createServerClient();
+  const { data: { session } } = await supabase.auth.getSession();
+  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const sql = getDb();
+  const admin = createAdminClient();
 
   try {
-    await sql`DELETE FROM operation_cases WHERE id = ${id}`;
+    const { error } = await admin
+      .from('operation_cases')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
     return NextResponse.json({ success: true });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';

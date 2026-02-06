@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
-import getDb from '@/lib/db';
+import { createAdminClient } from '@/lib/supabase-admin';
 
 // PATCH /api/admin/settings/treatments/[id] - 시술 수정
 export async function PATCH(
@@ -13,31 +13,37 @@ export async function PATCH(
 
   const { id } = await params;
   const body = await request.json();
-  const sql = getDb();
+  const admin = createAdminClient();
+
+  const updateObj: Record<string, unknown> = {};
+  if (body.name !== undefined) updateObj.name = body.name;
+  if (body.category !== undefined) updateObj.category = body.category;
+  if (body.priceRange !== undefined) updateObj.price_range = body.priceRange;
+  if (body.duration !== undefined) updateObj.duration = body.duration;
+  if (body.isActive !== undefined) updateObj.is_active = body.isActive;
 
   try {
-    const [updated] = await sql`
-      UPDATE treatment_masters SET
-        name = COALESCE(${body.name ?? null}, name),
-        category = COALESCE(${body.category ?? null}, category),
-        price_range = COALESCE(${body.priceRange ?? null}, price_range),
-        duration = COALESCE(${body.duration ?? null}::integer, duration),
-        is_active = ${body.isActive !== undefined ? body.isActive : sql`is_active`}
-      WHERE id = ${id}
-      RETURNING *
-    `;
+    const { data, error } = await admin
+      .from('treatment_masters')
+      .update(updateObj)
+      .eq('id', id)
+      .select()
+      .single();
 
-    if (!updated) {
-      return NextResponse.json({ error: 'Treatment not found' }, { status: 404 });
+    if (error) {
+      if (error.code === 'PGRST116') {
+        return NextResponse.json({ error: 'Treatment not found' }, { status: 404 });
+      }
+      throw error;
     }
 
     return NextResponse.json({
-      id: updated.id,
-      name: updated.name,
-      category: updated.category,
-      priceRange: updated.price_range,
-      duration: updated.duration,
-      isActive: updated.is_active,
+      id: data.id,
+      name: data.name,
+      category: data.category,
+      priceRange: data.price_range,
+      duration: data.duration,
+      isActive: data.is_active,
     });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
@@ -55,10 +61,15 @@ export async function DELETE(
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const sql = getDb();
+  const admin = createAdminClient();
 
   try {
-    await sql`DELETE FROM treatment_masters WHERE id = ${id}`;
+    const { error } = await admin
+      .from('treatment_masters')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
     return NextResponse.json({ success: true });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';

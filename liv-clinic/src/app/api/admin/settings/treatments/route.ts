@@ -1,6 +1,19 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
-import getDb from '@/lib/db';
+import { createAdminClient } from '@/lib/supabase-admin';
+
+const CATEGORY_ORDER: Record<string, number> = { lifting: 1, antiaging: 2, laser: 3, skincare: 4 };
+
+function formatTreatment(r: Record<string, unknown>) {
+  return {
+    id: r.id,
+    name: r.name,
+    category: r.category,
+    priceRange: r.price_range,
+    duration: r.duration,
+    isActive: r.is_active,
+  };
+}
 
 // GET /api/admin/settings/treatments - 시술 마스터 목록
 export async function GET() {
@@ -8,32 +21,25 @@ export async function GET() {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const sql = getDb();
+  const admin = createAdminClient();
 
   try {
-    const rows = await sql`
-      SELECT id, name, category, price_range, duration, is_active, created_at
-      FROM treatment_masters
-      ORDER BY
-        CASE category
-          WHEN 'lifting' THEN 1
-          WHEN 'antiaging' THEN 2
-          WHEN 'laser' THEN 3
-          WHEN 'skincare' THEN 4
-        END,
-        name ASC
-    `;
+    const { data, error } = await admin
+      .from('treatment_masters')
+      .select('id, name, category, price_range, duration, is_active, created_at')
+      .order('name', { ascending: true });
 
-    const treatments = rows.map((r: Record<string, unknown>) => ({
-      id: r.id,
-      name: r.name,
-      category: r.category,
-      priceRange: r.price_range,
-      duration: r.duration,
-      isActive: r.is_active,
-    }));
+    if (error) throw error;
 
-    return NextResponse.json(treatments);
+    // 카테고리 순서대로 정렬 (Supabase에서 CASE 정렬 불가 → JS에서 처리)
+    const sorted = (data || []).sort((a, b) => {
+      const ca = CATEGORY_ORDER[a.category as string] || 99;
+      const cb = CATEGORY_ORDER[b.category as string] || 99;
+      if (ca !== cb) return ca - cb;
+      return (a.name as string).localeCompare(b.name as string, 'ko');
+    });
+
+    return NextResponse.json(sorted.map(formatTreatment));
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });
@@ -46,24 +52,24 @@ export async function POST(request: NextRequest) {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const admin = createAdminClient();
   const body = await request.json();
-  const sql = getDb();
 
   try {
-    const [row] = await sql`
-      INSERT INTO treatment_masters (name, category, price_range, duration, is_active)
-      VALUES (${body.name}, ${body.category}, ${body.priceRange || '-'}, ${body.duration || 30}, ${body.isActive ?? true})
-      RETURNING *
-    `;
+    const { data, error } = await admin
+      .from('treatment_masters')
+      .insert({
+        name: body.name,
+        category: body.category,
+        price_range: body.priceRange || '-',
+        duration: body.duration || 30,
+        is_active: body.isActive ?? true,
+      })
+      .select()
+      .single();
 
-    return NextResponse.json({
-      id: row.id,
-      name: row.name,
-      category: row.category,
-      priceRange: row.price_range,
-      duration: row.duration,
-      isActive: row.is_active,
-    }, { status: 201 });
+    if (error) throw error;
+    return NextResponse.json(formatTreatment(data), { status: 201 });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });

@@ -466,6 +466,195 @@ export interface Database {
           }
         ]
       }
+      operation_cases: {
+        Row: {
+          id: string
+          room_id: string
+          patient_name: string
+          phone_number: string | null
+          treatment_type: string
+          status: string
+          location: string
+          doctor: string
+          procedure_name: string
+          actual_start: string | null
+          expected_duration_min: number
+          memo: string | null
+          parent_case_id: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          room_id: string
+          patient_name: string
+          phone_number?: string | null
+          treatment_type: string
+          status?: string
+          location?: string
+          doctor: string
+          procedure_name: string
+          actual_start?: string | null
+          expected_duration_min?: number
+          memo?: string | null
+          parent_case_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          room_id?: string
+          patient_name?: string
+          phone_number?: string | null
+          treatment_type?: string
+          status?: string
+          location?: string
+          doctor?: string
+          procedure_name?: string
+          actual_start?: string | null
+          expected_duration_min?: number
+          memo?: string | null
+          parent_case_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      audit_logs: {
+        Row: {
+          id: string
+          user_name: string
+          action: string
+          target: string
+          detail: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_name: string
+          action: string
+          target: string
+          detail?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_name?: string
+          action?: string
+          target?: string
+          detail?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
+      clinic_settings: {
+        Row: {
+          id: number
+          name: string
+          phone: string
+          address: string
+          email: string
+          kakao: string
+          hours_weekday: string
+          hours_saturday: string
+          hours_sunday: string
+          hours_lunch: string
+          notify_callback_reminder: boolean
+          notify_low_stock_alert: boolean
+          notify_new_consultation: boolean
+        }
+        Insert: {
+          id?: number
+          name: string
+          phone: string
+          address: string
+          email?: string
+          kakao?: string
+          hours_weekday?: string
+          hours_saturday?: string
+          hours_sunday?: string
+          hours_lunch?: string
+          notify_callback_reminder?: boolean
+          notify_low_stock_alert?: boolean
+          notify_new_consultation?: boolean
+        }
+        Update: {
+          id?: number
+          name?: string
+          phone?: string
+          address?: string
+          email?: string
+          kakao?: string
+          hours_weekday?: string
+          hours_saturday?: string
+          hours_sunday?: string
+          hours_lunch?: string
+          notify_callback_reminder?: boolean
+          notify_low_stock_alert?: boolean
+          notify_new_consultation?: boolean
+        }
+        Relationships: []
+      }
+      staff_members: {
+        Row: {
+          id: string
+          name: string
+          email: string
+          role: string
+          position: string
+          is_active: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          email: string
+          role?: string
+          position?: string
+          is_active?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          email?: string
+          role?: string
+          position?: string
+          is_active?: boolean
+          created_at?: string
+        }
+        Relationships: []
+      }
+      treatment_masters: {
+        Row: {
+          id: string
+          name: string
+          category: string
+          price_range: string
+          duration: number
+          is_active: boolean
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          category: string
+          price_range?: string
+          duration?: number
+          is_active?: boolean
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          category?: string
+          price_range?: string
+          duration?: number
+          is_active?: boolean
+          created_at?: string
+        }
+        Relationships: []
+      }
       inventory_counts: {
         Row: {
           id: string

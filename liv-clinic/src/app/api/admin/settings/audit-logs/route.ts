@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
-import getDb from '@/lib/db';
+import { createAdminClient } from '@/lib/supabase-admin';
 
 // GET /api/admin/settings/audit-logs - 감사 로그 목록
 export async function GET(request: NextRequest) {
@@ -8,26 +8,31 @@ export async function GET(request: NextRequest) {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const admin = createAdminClient();
   const { searchParams } = new URL(request.url);
   const action = searchParams.get('action');
   const userName = searchParams.get('userName');
   const limit = parseInt(searchParams.get('limit') || '100');
   const offset = parseInt(searchParams.get('offset') || '0');
 
-  const sql = getDb();
-
   try {
-    const rows = await sql`
-      SELECT id, user_name, action, target, detail, created_at
-      FROM audit_logs
-      WHERE true
-        ${action && action !== 'all' ? sql`AND action = ${action}` : sql``}
-        ${userName && userName !== 'all' ? sql`AND user_name = ${userName}` : sql``}
-      ORDER BY created_at DESC
-      LIMIT ${limit} OFFSET ${offset}
-    `;
+    let query = admin
+      .from('audit_logs')
+      .select('id, user_name, action, target, detail, created_at')
+      .order('created_at', { ascending: false })
+      .range(offset, offset + limit - 1);
 
-    const logs = rows.map((r: Record<string, unknown>) => ({
+    if (action && action !== 'all') {
+      query = query.eq('action', action);
+    }
+    if (userName && userName !== 'all') {
+      query = query.eq('user_name', userName);
+    }
+
+    const { data, error } = await query;
+    if (error) throw error;
+
+    const logs = (data || []).map((r) => ({
       id: r.id,
       userName: r.user_name,
       action: r.action,

@@ -1,6 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
-import getDb from '@/lib/db';
+import { createAdminClient } from '@/lib/supabase-admin';
+
+const ROLE_ORDER: Record<string, number> = { owner: 1, admin: 2, doctor: 3, nurse: 4, staff: 5 };
+
+function formatStaff(r: Record<string, unknown>) {
+  const createdAt = r.created_at;
+  return {
+    id: r.id,
+    name: r.name,
+    email: r.email,
+    role: r.role,
+    position: r.position,
+    isActive: r.is_active,
+    createdAt: typeof createdAt === 'string'
+      ? createdAt.split('T')[0]
+      : createdAt instanceof Date
+        ? createdAt.toISOString().split('T')[0]
+        : createdAt,
+  };
+}
 
 // GET /api/admin/settings/staff - 직원 목록
 export async function GET() {
@@ -8,36 +27,24 @@ export async function GET() {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
-  const sql = getDb();
+  const admin = createAdminClient();
 
   try {
-    const rows = await sql`
-      SELECT id, name, email, role, position, is_active, created_at
-      FROM staff_members
-      ORDER BY
-        CASE role
-          WHEN 'owner' THEN 1
-          WHEN 'admin' THEN 2
-          WHEN 'staff' THEN 3
-        END,
-        created_at ASC
-    `;
+    const { data, error } = await admin
+      .from('staff_members')
+      .select('id, name, email, role, position, is_active, created_at')
+      .order('created_at', { ascending: true });
 
-    const staff = rows.map((r: Record<string, unknown>) => ({
-      id: r.id,
-      name: r.name,
-      email: r.email,
-      role: r.role,
-      position: r.position,
-      isActive: r.is_active,
-      createdAt: typeof r.created_at === 'string'
-        ? r.created_at.split('T')[0]
-        : r.created_at instanceof Date
-          ? r.created_at.toISOString().split('T')[0]
-          : r.created_at,
-    }));
+    if (error) throw error;
 
-    return NextResponse.json(staff);
+    // 역할 순서대로 정렬 (Supabase에서 CASE 정렬 불가 → JS에서 처리)
+    const sorted = (data || []).sort((a, b) => {
+      const ra = ROLE_ORDER[a.role as string] || 99;
+      const rb = ROLE_ORDER[b.role as string] || 99;
+      return ra - rb;
+    });
+
+    return NextResponse.json(sorted.map(formatStaff));
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });
@@ -50,27 +57,24 @@ export async function POST(request: NextRequest) {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
+  const admin = createAdminClient();
   const body = await request.json();
-  const sql = getDb();
 
   try {
-    const [row] = await sql`
-      INSERT INTO staff_members (name, email, role, position, is_active)
-      VALUES (${body.name}, ${body.email}, ${body.role || 'staff'}, ${body.position || ''}, ${body.isActive ?? true})
-      RETURNING *
-    `;
+    const { data, error } = await admin
+      .from('staff_members')
+      .insert({
+        name: body.name,
+        email: body.email,
+        role: body.role || 'staff',
+        position: body.position || '',
+        is_active: body.isActive ?? true,
+      })
+      .select()
+      .single();
 
-    return NextResponse.json({
-      id: row.id,
-      name: row.name,
-      email: row.email,
-      role: row.role,
-      position: row.position,
-      isActive: row.is_active,
-      createdAt: row.created_at instanceof Date
-        ? row.created_at.toISOString().split('T')[0]
-        : String(row.created_at).split('T')[0],
-    }, { status: 201 });
+    if (error) throw error;
+    return NextResponse.json(formatStaff(data), { status: 201 });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });
