@@ -488,8 +488,9 @@ export default function AptosDetail() {
                 key={item.code}
                 className={`flex items-center gap-3 px-6 py-4 rounded-xl bg-white shadow-md${index === 1 ? ' ring-2 ring-primary/20' : ''}`}
               >
-                <span className="text-2xl font-bold text-primary">{item.code}</span>
                 <span className="text-mono">{item.desc}</span>
+                <span className="text-mono-light">—</span>
+                <span className="text-lg font-bold text-primary whitespace-nowrap">{item.code}</span>
               </div>
             ))}
           </motion.div>
@@ -508,11 +509,11 @@ export default function AptosDetail() {
                 transition={{ delay: index * 0.1 }}
                 className={`rounded-2xl bg-white shadow-lg overflow-hidden${index === 1 ? ' ring-2 ring-primary/20' : ''}`}
               >
-                <div className="aspect-[4/3] relative bg-gray-50">
+                <div className="aspect-[4/3] relative bg-white flex items-center justify-center overflow-hidden">
                   <img
                     src={productImages[index]}
                     alt={product.name}
-                    className="w-full h-full object-contain p-4"
+                    className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">

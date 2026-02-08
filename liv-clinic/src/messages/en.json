@@ -1732,22 +1732,22 @@
           "lineupSection": {
             "title": "An Overwhelming Lineup for Every Face Shape",
             "positioning": [
-              { "code": "LL25", "desc": "Lifts heavy cheek fat" },
+              { "code": "LL25", "desc": "For lifting heavy cheek fat" },
               { "code": "NAMICA", "desc": "Overall elasticity and skin texture improvement" },
               { "code": "LL50", "desc": "Double chin and jawline detail" }
             ],
             "products": [
               {
                 "name": "APTOS Light Lift 25",
-                "desc": "Delicately applied along the tri-line for natural lifting and elasticity improvement. Designed with area-specific precision for more refined lifting."
+                "desc": "Delicately applied along the jawline to support natural lifting and elasticity improvement. Designed with area-specific precision for more refined lifting results."
               },
               {
                 "name": "APTOS NAMICA 19",
-                "desc": "Forms a support structure deep into the tissue to improve sagging in the mid and lower face. Delivers natural lifting effects centered on facial contours."
+                "desc": "Forms a deep support structure to help improve sagging in the mid and lower face. Stably supports the center of facial contours for natural lifting effects."
               },
               {
                 "name": "APTOS Light Lift 50",
-                "desc": "Intensively applied to the double chin area to refine the sagging jawline. Designed for line improvement when both fat and sagging are concerns."
+                "desc": "Intensively applied to the double chin area to neatly refine the sagging jawline. Provides effective line improvement when both fat and sagging are concerns."
               }
             ]
           }
