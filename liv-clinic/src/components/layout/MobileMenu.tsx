@@ -111,12 +111,23 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                 height={48}
                 className="h-7 w-auto object-contain"
               />
-              <button
-                ref={closeButtonRef}
-                onClick={onClose}
-                className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-mono hover:text-primary transition-colors"
-                aria-label={t('closeMenu')}
-              >
+              <div className="flex items-center">
+                <a
+                  href="/admin/login"
+                  onClick={onClose}
+                  className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-mono-light/40 hover:text-primary transition-colors"
+                  aria-label="관리자"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                  </svg>
+                </a>
+                <button
+                  ref={closeButtonRef}
+                  onClick={onClose}
+                  className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-mono hover:text-primary transition-colors"
+                  aria-label={t('closeMenu')}
+                >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path
                     strokeLinecap="round"
@@ -126,6 +137,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                   />
                 </svg>
               </button>
+              </div>
             </div>
 
             {/* Navigation */}
@@ -230,7 +242,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
             </div>
 
             {/* Contact Info */}
-            <div className="px-5 pt-4 pb-20 border-t border-border safe-area-pb">
+            <div className="px-5 py-4 border-t border-border safe-area-pb">
               <a
                 href="tel:02-797-2773"
                 className="flex items-center gap-3 text-mono hover:text-primary transition-colors min-h-[44px]"
@@ -244,16 +256,6 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                   />
                 </svg>
                 <span className="font-medium">02-797-2773</span>
-              </a>
-              <a
-                href="/admin/login"
-                onClick={onClose}
-                className="flex items-center gap-3 mt-2 text-mono-light/50 hover:text-mono-light transition-colors min-h-[44px]"
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
-                </svg>
-                <span className="text-xs">관리자</span>
               </a>
             </div>
           </motion.div>
