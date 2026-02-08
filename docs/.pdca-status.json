@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-02-08T13:39:21.835Z",
+  "lastUpdated": "2026-02-08T14:22:54.145Z",
   "activeFeatures": [
     "admin-v2-enhancement",
     "lifting",
@@ -171,9 +171,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T01:58:48.469Z",
-        "lastUpdated": "2026-02-08T10:43:40.231Z"
+        "lastUpdated": "2026-02-08T14:18:35.841Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\layout\\Header.tsx"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\layout\\MobileMenu.tsx"
     },
     "ui": {
       "phase": "do",
@@ -656,7 +656,33 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-08T12:21:58.673Z",
-        "lastUpdated": "2026-02-08T13:39:21.835Z"
+        "lastUpdated": "2026-02-08T14:22:54.145Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\guide\\page.tsx"
+    },
+    "guide-ai-search": {
+      "phase": "check",
+      "phaseNumber": 4,
+      "matchRate": 96,
+      "iterationCount": 0,
+      "requirements": [
+        "F1: 검색 입력 UI (가이드 상단 검색바, debounce 실시간 검색)",
+        "F2: 검색 결과 카드 (섹션 아이콘 + 제목 + 내용 발췌 + 이동 버튼)",
+        "F3: 추천 검색어 Quick Tags (10개 태그, 클릭 시 자동 검색)",
+        "F4: FAQ 우선 매칭 (FAQ 타입 +3점 보너스)",
+        "F5: 한글 조사 제거 + 동의어 매핑 (12개 그룹)",
+        "F6: 가중 스코어링 (제목 10점 / 키워드 5점 / 내용 2점 / FAQ +3점)",
+        "F7: 검색 인덱스 ~50개 항목 (14개 섹션 기반)",
+        "F8: 결과 클릭 시 scrollTo 연동 (기존 함수 재사용)"
+      ],
+      "documents": {
+        "plan": "docs/01-plan/features/guide-ai-search.plan.md",
+        "design": "docs/02-design/features/guide-ai-search.design.md",
+        "analysis": "docs/03-analysis/guide-ai-search.analysis.md"
+      },
+      "timestamps": {
+        "started": "2026-02-08T15:00:00.000Z",
+        "lastUpdated": "2026-02-08T15:45:00.000Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\guide\\page.tsx"
     }
@@ -669,7 +695,7 @@
   "session": {
     "startedAt": "2026-01-30T22:26:49.658Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-02-08T13:39:21.835Z"
+    "lastActivity": "2026-02-08T14:22:54.145Z"
   },
   "history": [
     {
@@ -2090,6 +2116,78 @@
     },
     {
       "timestamp": "2026-02-08T13:39:21.835Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T13:49:45.927Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:08:09.721Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:09:49.583Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:10:16.354Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:11:08.884Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:18:06.441Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:18:17.785Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:18:35.841Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:22:00.740Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:22:18.122Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:22:35.285Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T14:22:54.145Z",
       "feature": "guide",
       "phase": "do",
       "action": "updated"
