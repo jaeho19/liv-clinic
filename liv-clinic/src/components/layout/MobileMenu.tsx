@@ -245,6 +245,16 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                 </svg>
                 <span className="font-medium">02-797-2773</span>
               </a>
+              <a
+                href="/admin/login"
+                onClick={onClose}
+                className="flex items-center gap-3 mt-2 text-mono-light/50 hover:text-mono-light transition-colors min-h-[44px]"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                </svg>
+                <span className="text-xs">관리자</span>
+              </a>
             </div>
           </motion.div>
         </>
