@@ -230,7 +230,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
             </div>
 
             {/* Contact Info */}
-            <div className="px-5 py-4 border-t border-border safe-area-pb">
+            <div className="px-5 pt-4 pb-20 border-t border-border safe-area-pb">
               <a
                 href="tel:02-797-2773"
                 className="flex items-center gap-3 text-mono hover:text-primary transition-colors min-h-[44px]"
