@@ -20,6 +20,7 @@ nul
 
 # Claude Code temp files
 tmpclaude-*-cwd
+.claude/
 
 # Environment
 .env
@@ -27,3 +28,21 @@ tmpclaude-*-cwd
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Screenshots & test results
+screenshots/
+test-results/
+
+# Utility scripts
+capture_guide.py
+generate_screenshots.py
+
+# Working files
+liv_revision/
+logo.png
+logo_original.png
+제안서.md
+도메인전환_체크리스트.md
+
+# Generated images (root public/)
+public/images/aptos/Gemini_Generated_Image_*
