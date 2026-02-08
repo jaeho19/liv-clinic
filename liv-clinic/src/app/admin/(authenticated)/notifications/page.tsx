@@ -116,21 +116,42 @@ function AddTreatmentModal({ onClose, onAdded }: { onClose: () => void; onAdded:
   );
 }
 
-// 발송 완료 모달
+// 발송 모달 (실제 Solapi API 발송)
 function SendCompleteModal({ treatment, onClose, onCompleted }: { treatment: PatientTreatmentRow; onClose: () => void; onCompleted: () => void }) {
   const [channel, setChannel] = useState<NotificationChannel>('kakao');
   const [sentBy, setSentBy] = useState('');
   const [notes, setNotes] = useState('');
   const [saving, setSaving] = useState(false);
+  const [sendResult, setSendResult] = useState<{ success: boolean; channel?: string; fallbackUsed?: boolean; error?: string } | null>(null);
 
-  const handleSend = async (status: 'sent' | 'skipped') => {
+  // 실제 발송 (Solapi API 경유)
+  const handleRealSend = async () => {
+    if (!sentBy) return;
+    setSaving(true);
+    setSendResult(null);
+    try {
+      const res = await fetch('/api/admin/notifications/send', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ patient_treatment_id: treatment.id, channel, sent_by: sentBy, notes: notes || null }),
+      });
+      const data = await res.json();
+      setSendResult(data);
+      if (data.success) {
+        setTimeout(() => { onCompleted(); onClose(); }, 1500);
+      }
+    } finally { setSaving(false); }
+  };
+
+  // 건너뛰기 (DB 기록만)
+  const handleSkip = async () => {
     if (!sentBy) return;
     setSaving(true);
     try {
       const res = await fetch('/api/admin/notifications/complete', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ patient_treatment_id: treatment.id, channel, sent_by: sentBy, status, notes: notes || null }),
+        body: JSON.stringify({ patient_treatment_id: treatment.id, channel, sent_by: sentBy, status: 'skipped', notes: notes || null }),
       });
       if (res.ok) { onCompleted(); onClose(); }
     } finally { setSaving(false); }
@@ -144,13 +165,27 @@ function SendCompleteModal({ treatment, onClose, onCompleted }: { treatment: Pat
   return (
     <div className="fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <div className="bg-white rounded-xl w-full max-w-md p-6" onClick={e => e.stopPropagation()}>
-        <h3 className="text-lg font-bold text-[#6d4e42] mb-1">알림 발송 처리</h3>
+        <h3 className="text-lg font-bold text-[#6d4e42] mb-1">알림 발송</h3>
         <p className="text-sm text-[#8a8a8a] mb-4">{treatment.patient_name} ({maskPhone(treatment.phone)}) - {treatment.treatment_name}</p>
+
+        {/* 발송 결과 표시 */}
+        {sendResult && (
+          <div className={`mb-4 p-3 rounded-lg text-sm ${sendResult.success ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+            {sendResult.success ? (
+              <>
+                {sendResult.fallbackUsed ? 'SMS 폴백 발송 완료' : `${sendResult.channel === 'kakao' ? '카카오 알림톡' : 'SMS'} 발송 완료`}
+              </>
+            ) : (
+              <>발송 실패: {sendResult.error}</>
+            )}
+          </div>
+        )}
+
         <div className="space-y-3">
           <div>
             <label className="text-xs text-[#8a8a8a] block mb-1">발송 채널</label>
             <div className="flex gap-2">
-              {CHANNEL_OPTIONS.map(opt => (
+              {CHANNEL_OPTIONS.filter(o => o.value !== 'call').map(opt => (
                 <button key={opt.value} onClick={() => setChannel(opt.value)} className={`px-3 py-1.5 text-sm rounded-lg border ${channel === opt.value ? 'border-[#b4988d] bg-[#b4988d]/10 text-[#6d4e42]' : 'border-[#e5e5e5] text-[#8a8a8a]'}`}>
                   {opt.label}
                 </button>
@@ -167,11 +202,11 @@ function SendCompleteModal({ treatment, onClose, onCompleted }: { treatment: Pat
           </div>
         </div>
         <div className="flex justify-end gap-2 mt-5">
-          <button onClick={() => handleSend('skipped')} disabled={saving || !sentBy} className="px-4 py-2 text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] rounded-lg border border-[#e5e5e5] disabled:opacity-50">
+          <button onClick={handleSkip} disabled={saving || !sentBy} className="px-4 py-2 text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] rounded-lg border border-[#e5e5e5] disabled:opacity-50">
             건너뛰기
           </button>
-          <button onClick={() => handleSend('sent')} disabled={saving || !sentBy} className="px-4 py-2 text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08478] disabled:opacity-50">
-            {saving ? '처리 중...' : '발송 완료'}
+          <button onClick={handleRealSend} disabled={saving || !sentBy || sendResult?.success === true} className="px-4 py-2 text-sm bg-[#b4988d] text-white rounded-lg hover:bg-[#a08478] disabled:opacity-50">
+            {saving ? '발송 중...' : sendResult?.success ? '발송 완료' : '실제 발송'}
           </button>
         </div>
       </div>
@@ -293,6 +328,9 @@ export default function NotificationsPage() {
                         </div>
                         <div className="flex items-center gap-2 mt-1">
                           <span className="text-xs px-2 py-0.5 bg-purple-100 text-purple-700 rounded-full">{t.treatment_name}</span>
+                          <span className={`text-xs px-1.5 py-0.5 rounded-full ${t.auto_send !== false ? 'bg-blue-50 text-blue-600' : 'bg-gray-100 text-gray-500'}`}>
+                            {t.auto_send !== false ? '자동' : '수동'}
+                          </span>
                           {t.doctor && <span className="text-xs text-[#8a8a8a]">{t.doctor}</span>}
                           <span className="text-xs text-[#8a8a8a]">
                             시술일: {new Date(t.treated_at).toLocaleDateString('ko-KR')}

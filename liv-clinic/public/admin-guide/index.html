@@ -1,0 +1,2303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIV 클리닉 - 관리자 시스템 사용 설명서</title>
+<style>
+/* ===== CSS Variables (LIV Design System) ===== */
+:root {
+  --color-primary: #b4988d;
+  --color-primary-light: #d4c4bb;
+  --color-primary-dark: #9a7d71;
+  --color-secondary: #6d4e42;
+  --color-bg: #fafafa;
+  --color-card: #ffffff;
+  --color-text: #333333;
+  --color-text-light: #666666;
+  --color-border: #e5e5e5;
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-danger: #ef4444;
+  --color-info: #3b82f6;
+  --sidebar-bg: #1f2937;
+  --sidebar-text: #e5e7eb;
+  --sidebar-hover: #374151;
+  --sidebar-active: #b4988d;
+  --sidebar-width: 280px;
+  --header-height: 60px;
+  --font-sans: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+  --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+  --radius: 8px;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.7;
+  font-size: 15px;
+}
+a { color: var(--color-primary-dark); text-decoration: none; }
+a:hover { text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+
+/* ===== Sidebar ===== */
+#sidebar {
+  position: fixed; top: 0; left: 0; bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--sidebar-bg);
+  color: var(--sidebar-text);
+  overflow-y: auto;
+  z-index: 100;
+  transition: transform 0.3s ease;
+  display: flex; flex-direction: column;
+}
+#sidebar-header {
+  padding: 24px 20px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+#sidebar-header h1 {
+  font-size: 16px; font-weight: 700; color: #fff;
+  letter-spacing: -0.02em;
+}
+#sidebar-header p {
+  font-size: 11px; color: var(--color-primary-light); margin-top: 4px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+#sidebar-nav { flex: 1; padding: 12px 0; overflow-y: auto; }
+.nav-group { margin-bottom: 8px; }
+.nav-group-title {
+  padding: 8px 20px 4px;
+  font-size: 10px; font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.nav-link {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 20px;
+  font-size: 13px; color: var(--sidebar-text);
+  text-decoration: none;
+  transition: all 0.15s;
+  border-left: 3px solid transparent;
+}
+.nav-link:hover {
+  background: var(--sidebar-hover);
+  text-decoration: none;
+  color: #fff;
+}
+.nav-link.active {
+  background: rgba(180,152,141,0.15);
+  border-left-color: var(--sidebar-active);
+  color: var(--sidebar-active);
+  font-weight: 600;
+}
+.nav-link .nav-icon { font-size: 16px; width: 22px; text-align: center; }
+.nav-sub { padding-left: 52px; font-size: 12px; padding-top: 4px; padding-bottom: 4px; color: rgba(255,255,255,0.6); }
+.nav-sub:hover { color: #fff; }
+.nav-sub.active { color: var(--sidebar-active); }
+
+#sidebar-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  flex-shrink: 0;
+}
+.print-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 10px;
+  background: var(--color-primary);
+  color: #fff; border: none; border-radius: 6px;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: background 0.15s;
+}
+.print-btn:hover { background: var(--color-primary-dark); }
+
+/* ===== Mobile Menu Toggle ===== */
+#menu-toggle {
+  display: none;
+  position: fixed; top: 12px; left: 12px; z-index: 200;
+  width: 44px; height: 44px;
+  background: var(--sidebar-bg); color: #fff;
+  border: none; border-radius: 8px;
+  font-size: 22px; cursor: pointer;
+  box-shadow: var(--shadow-md);
+  align-items: center; justify-content: center;
+}
+#overlay {
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.5); z-index: 90;
+}
+
+/* ===== Main Content ===== */
+#content {
+  margin-left: var(--sidebar-width);
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+/* ===== Section Styles ===== */
+.guide-section {
+  margin-bottom: 64px;
+  scroll-margin-top: 24px;
+}
+.section-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 12px;
+  border-bottom: 3px solid var(--color-primary);
+}
+.section-header h2 {
+  font-size: 1.6rem; color: var(--color-secondary);
+  font-weight: 700; letter-spacing: -0.02em;
+}
+.path-badge {
+  font-size: 12px; padding: 3px 10px;
+  background: #f3f4f6; color: var(--color-text-light);
+  border-radius: 12px; font-family: monospace;
+  white-space: nowrap;
+}
+.section-summary {
+  font-size: 15px; color: var(--color-text-light);
+  margin-bottom: 24px; line-height: 1.8;
+}
+
+/* ===== Screenshot ===== */
+.screenshot-container {
+  margin: 24px 0;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.screenshot-placeholder {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  min-height: 300px;
+  background: linear-gradient(135deg, #f8f6f5 0%, #ede8e5 100%);
+  color: var(--color-text-light);
+  font-size: 14px; text-align: center;
+  padding: 40px;
+}
+.screenshot-placeholder .placeholder-icon {
+  font-size: 48px; margin-bottom: 12px; opacity: 0.4;
+}
+.screenshot-placeholder .placeholder-label {
+  font-weight: 600; margin-bottom: 4px; color: var(--color-secondary);
+}
+.screenshot-caption {
+  padding: 10px 16px;
+  background: #f9fafb;
+  font-size: 12px; color: var(--color-text-light);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+}
+.screenshot-container img.screenshot {
+  width: 100%; display: block;
+}
+
+/* ===== Feature Table ===== */
+.feature-table { margin: 24px 0; overflow-x: auto; }
+.feature-table table {
+  width: 100%; border-collapse: collapse;
+  font-size: 14px;
+}
+.feature-table th {
+  background: var(--color-primary);
+  color: #fff; font-weight: 600;
+  padding: 10px 14px; text-align: left;
+  font-size: 13px;
+}
+.feature-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+.feature-table tr:hover td { background: #faf8f7; }
+.feature-table td:first-child { font-weight: 600; white-space: nowrap; color: var(--color-secondary); }
+
+/* ===== Tips Box ===== */
+.tips-box {
+  margin: 24px 0; padding: 20px 24px;
+  background: linear-gradient(135deg, #fef8f5 0%, #fdf4ef 100%);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.tips-box h3 {
+  font-size: 14px; color: var(--color-primary-dark);
+  margin-bottom: 10px; font-weight: 700;
+}
+.tips-box ul { padding-left: 18px; }
+.tips-box li { font-size: 14px; margin-bottom: 6px; color: var(--color-text); }
+
+/* ===== Info Box ===== */
+.info-box {
+  margin: 24px 0; padding: 20px 24px;
+  background: #eff6ff;
+  border-left: 4px solid var(--color-info);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.info-box h3 { font-size: 14px; color: var(--color-info); margin-bottom: 10px; }
+
+/* ===== Warning Box ===== */
+.warning-box {
+  margin: 24px 0; padding: 20px 24px;
+  background: #fffbeb;
+  border-left: 4px solid var(--color-warning);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+.warning-box h3 { font-size: 14px; color: #b45309; margin-bottom: 10px; }
+
+/* ===== Scenarios (Accordion) ===== */
+.scenarios { margin: 24px 0; }
+.scenarios h3 { font-size: 15px; color: var(--color-secondary); margin-bottom: 12px; font-weight: 700; }
+details.scenario {
+  margin-bottom: 8px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+details.scenario summary {
+  padding: 12px 16px;
+  font-weight: 600; font-size: 14px;
+  cursor: pointer;
+  background: #fafafa;
+  color: var(--color-secondary);
+  list-style: none;
+  display: flex; align-items: center; gap: 8px;
+}
+details.scenario summary::before { content: '▸'; transition: transform 0.2s; }
+details.scenario[open] summary::before { transform: rotate(90deg); }
+details.scenario summary::-webkit-details-marker { display: none; }
+details.scenario .scenario-content {
+  padding: 16px 16px 16px 36px;
+  font-size: 14px;
+}
+details.scenario ol { padding-left: 18px; }
+details.scenario li { margin-bottom: 6px; }
+
+/* ===== Related Sections ===== */
+.related-sections { margin: 24px 0; }
+.related-sections h3 { font-size: 15px; color: var(--color-secondary); margin-bottom: 12px; }
+.link-cards {
+  display: flex; flex-wrap: wrap; gap: 10px;
+}
+.link-card {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 14px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  font-size: 13px; font-weight: 500;
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: all 0.15s;
+}
+.link-card:hover {
+  background: var(--color-primary);
+  color: #fff; border-color: var(--color-primary);
+  text-decoration: none;
+}
+
+/* ===== Status Badge ===== */
+.status-flow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  margin: 16px 0;
+}
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px; font-weight: 600;
+  white-space: nowrap;
+}
+.status-badge.new { background: #dbeafe; color: #1e40af; }
+.status-badge.progress { background: #fef3c7; color: #92400e; }
+.status-badge.done { background: #d1fae5; color: #065f46; }
+.status-badge.warn { background: #fee2e2; color: #991b1b; }
+.status-badge.neutral { background: #f3f4f6; color: #4b5563; }
+.flow-arrow { color: var(--color-text-light); font-size: 18px; }
+
+/* ===== Workflow Diagram ===== */
+.workflow-container { margin: 24px 0; }
+.workflow-flow {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px;
+  padding: 24px;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+.workflow-step {
+  padding: 10px 18px;
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary));
+  color: #fff; border-radius: 6px;
+  font-size: 13px; font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+.workflow-step .step-section {
+  display: block; font-size: 10px; font-weight: 400;
+  opacity: 0.85; margin-top: 2px;
+}
+.workflow-arrow { font-size: 20px; color: var(--color-primary); padding: 0 2px; }
+
+/* ===== Role Tabs ===== */
+.role-tabs {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-bottom: 20px;
+}
+.role-tab {
+  padding: 8px 18px;
+  border: 2px solid var(--color-border);
+  border-radius: 24px;
+  background: var(--color-card);
+  font-size: 13px; font-weight: 600;
+  color: var(--color-text-light);
+  cursor: pointer; transition: all 0.15s;
+}
+.role-tab:hover { border-color: var(--color-primary); color: var(--color-primary); }
+.role-tab.active {
+  background: var(--color-primary); border-color: var(--color-primary);
+  color: #fff;
+}
+.role-content { display: none; }
+.role-content.active { display: block; }
+.role-content h4 { font-size: 14px; color: var(--color-secondary); margin: 16px 0 8px; }
+.routine-list { padding-left: 20px; }
+.routine-list li { font-size: 14px; margin-bottom: 6px; }
+.routine-list .menu-tag {
+  display: inline-block; padding: 1px 8px;
+  background: var(--color-primary-light);
+  color: var(--color-secondary);
+  border-radius: 4px; font-size: 11px; font-weight: 600;
+  margin-right: 4px;
+}
+
+/* ===== Priority Table ===== */
+.priority-high { color: var(--color-danger); font-weight: 700; }
+.priority-mid { color: var(--color-warning); font-weight: 700; }
+.priority-low { color: var(--color-info); font-weight: 700; }
+
+/* ===== Divider ===== */
+.section-divider {
+  height: 1px; background: var(--color-border);
+  margin: 48px 0;
+}
+
+/* ===== Back to Top ===== */
+#back-to-top {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 44px; height: 44px;
+  background: var(--color-primary); color: #fff;
+  border: none; border-radius: 50%;
+  font-size: 20px; cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0; visibility: hidden;
+  transition: all 0.3s;
+  z-index: 50;
+}
+#back-to-top.visible { opacity: 1; visibility: visible; }
+
+/* ===== Responsive ===== */
+@media (max-width: 1023px) {
+  #sidebar { transform: translateX(-100%); }
+  #sidebar.open { transform: translateX(0); }
+  #menu-toggle { display: flex; }
+  #content { margin-left: 0; padding: 24px 20px 60px; }
+  .section-header h2 { font-size: 1.3rem; }
+  .workflow-flow { flex-direction: column; align-items: stretch; }
+  .workflow-arrow { transform: rotate(90deg); align-self: center; }
+}
+
+/* ===== Print ===== */
+@media print {
+  #sidebar, #menu-toggle, #back-to-top, #overlay, .print-btn { display: none !important; }
+  #content { margin-left: 0; padding: 20px; max-width: 100%; }
+  .guide-section { page-break-inside: avoid; margin-bottom: 32px; }
+  .screenshot-container { page-break-inside: avoid; }
+  .section-header { border-bottom-color: #000; }
+  .section-header h2 { color: #000; }
+  body { font-size: 12px; }
+  .feature-table th { background: #ddd; color: #000; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: #000; }
+  a[href]::after { content: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Mobile Menu Toggle ===== -->
+<button id="menu-toggle" aria-label="메뉴 열기">&#9776;</button>
+<div id="overlay"></div>
+
+<!-- ===== Sidebar ===== -->
+<nav id="sidebar" role="navigation" aria-label="목차">
+  <div id="sidebar-header">
+    <h1>LIV CLINIC</h1>
+    <p>Admin System Guide</p>
+  </div>
+  <div id="sidebar-nav">
+    <div class="nav-group">
+      <div class="nav-group-title">시작하기</div>
+      <a href="#overview" class="nav-link"><span class="nav-icon">&#128196;</span> 개요</a>
+      <a href="#login" class="nav-link"><span class="nav-icon">&#128274;</span> 로그인</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">병원 운영</div>
+      <a href="#dashboard" class="nav-link"><span class="nav-icon">&#128202;</span> 대시보드</a>
+      <a href="#consultations" class="nav-link"><span class="nav-icon">&#128172;</span> 상담관리</a>
+      <a href="#operations" class="nav-link"><span class="nav-icon">&#127973;</span> 운영현황</a>
+      <a href="#inventory" class="nav-link"><span class="nav-icon">&#128230;</span> 재고관리</a>
+      <a href="#notifications" class="nav-link"><span class="nav-icon">&#128276;</span> 알림관리</a>
+      <a href="#reports" class="nav-link"><span class="nav-icon">&#128200;</span> 리포트</a>
+      <a href="#revenue" class="nav-link"><span class="nav-icon">&#128176;</span> 매출관리</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">홈페이지 관리</div>
+      <a href="#events" class="nav-link"><span class="nav-icon">&#127881;</span> 이벤트관리</a>
+      <a href="#popups" class="nav-link"><span class="nav-icon">&#128444;</span> 팝업관리</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">시스템</div>
+      <a href="#settings" class="nav-link"><span class="nav-icon">&#9881;</span> 설정</a>
+    </div>
+    <div class="nav-group">
+      <div class="nav-group-title">가이드</div>
+      <a href="#workflows" class="nav-link"><span class="nav-icon">&#128260;</span> 통합 워크플로우</a>
+      <a href="#role-guide" class="nav-link"><span class="nav-icon">&#128101;</span> 역할별 가이드</a>
+      <a href="#improvements" class="nav-link"><span class="nav-icon">&#128161;</span> 향후 개선</a>
+      <a href="#api-reference" class="nav-link"><span class="nav-icon">&#128268;</span> API 참조</a>
+    </div>
+  </div>
+  <div id="sidebar-footer">
+    <button class="print-btn" onclick="window.print()">&#128424; 인쇄 / PDF 저장</button>
+  </div>
+</nav>
+
+<!-- ===== Main Content ===== -->
+<main id="content">
+
+<!-- ============================== -->
+<!-- SECTION: 개요 -->
+<!-- ============================== -->
+<section id="overview" class="guide-section">
+  <div class="section-header">
+    <h2>LIV 클리닉 관리자 시스템 사용 설명서</h2>
+  </div>
+  <div class="section-summary">
+    <p>이 문서는 LIV 성형외과 관리자 시스템의 모든 기능을 설명합니다. 신규 직원 교육, 업무 참고용으로 활용하세요.</p>
+  </div>
+
+  <div class="info-box">
+    <h3>접속 정보</h3>
+    <ul style="padding-left:18px; margin-top:8px;">
+      <li><strong>URL</strong>: <code>https://livps.co.kr/admin</code></li>
+      <li><strong>인증 방식</strong>: 이메일 + 비밀번호 (Supabase Auth)</li>
+      <li><strong>권장 브라우저</strong>: Chrome, Edge (최신 버전)</li>
+      <li>로그인 후 자동으로 <strong>대시보드</strong>로 이동합니다.</li>
+    </ul>
+  </div>
+
+  <h3 style="margin-top:32px; color:var(--color-secondary);">전체 메뉴 구조</h3>
+  <div style="background:var(--color-card); border:1px solid var(--color-border); border-radius:var(--radius); padding:24px; margin-top:12px; font-family:monospace; font-size:13px; line-height:2.2; overflow-x:auto;">
+    <div>&#128274; <strong>로그인</strong> <span class="path-badge">/admin/login</span></div>
+    <div style="margin-top:12px; font-weight:700; color:var(--color-secondary);">&#128202; 병원 운영</div>
+    <div style="padding-left:24px;">&#9500;&#9472; 대시보드 <span class="path-badge">/admin/dashboard</span></div>
+    <div style="padding-left:24px;">&#9500;&#9472; 상담관리 <span class="path-badge">/admin/consultations</span></div>
+    <div style="padding-left:24px;">&#9500;&#9472; 운영현황 <span class="path-badge">/admin/operations</span></div>
+    <div style="padding-left:24px;">&#9500;&#9472; 재고관리 <span class="path-badge">/admin/inventory</span></div>
+    <div style="padding-left:24px;">&#9500;&#9472; 알림관리 <span class="path-badge">/admin/notifications</span></div>
+    <div style="padding-left:24px;">&#9500;&#9472; 리포트 <span class="path-badge">/admin/reports</span></div>
+    <div style="padding-left:24px;">&#9492;&#9472; 매출관리 <span class="path-badge">/admin/revenue</span></div>
+    <div style="margin-top:12px; font-weight:700; color:var(--color-secondary);">&#127760; 홈페이지 관리</div>
+    <div style="padding-left:24px;">&#9500;&#9472; 이벤트관리 <span class="path-badge">/admin/events</span></div>
+    <div style="padding-left:24px;">&#9492;&#9472; 팝업관리 <span class="path-badge">/admin/popups</span></div>
+    <div style="margin-top:12px; font-weight:700; color:var(--color-secondary);">&#9881; 시스템</div>
+    <div style="padding-left:24px;">&#9492;&#9472; 설정 <span class="path-badge">/admin/settings</span></div>
+    <div style="padding-left:48px;">&#9500;&#9472; 시술 마스터 &middot; 직원 관리 &middot; 감사 로그 &middot; 기본정보</div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 로그인 -->
+<!-- ============================== -->
+<section id="login" class="guide-section">
+  <div class="section-header">
+    <h2>&#128274; 로그인</h2>
+    <span class="path-badge">/admin/login</span>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/01-login.png" alt="관리자 로그인 화면 - 이메일과 비밀번호를 입력하는 로그인 폼">
+    <div class="screenshot-caption">그림 1. 관리자 로그인 화면</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>로그인 절차</h3>
+    <table>
+      <thead><tr><th>단계</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>1. 접속</td><td><code>/admin</code>으로 접속하면 자동으로 로그인 페이지로 이동합니다.</td></tr>
+        <tr><td>2. 이메일 입력</td><td>관리자 계정 이메일을 입력합니다.</td></tr>
+        <tr><td>3. 비밀번호 입력</td><td>비밀번호를 입력합니다.</td></tr>
+        <tr><td>4. 로그인</td><td>로그인 버튼을 클릭하면 대시보드로 이동합니다.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warning-box">
+    <h3>비밀번호 분실 시</h3>
+    <p>시스템 관리자에게 문의하여 비밀번호를 재설정 받으세요.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 대시보드 -->
+<!-- ============================== -->
+<section id="dashboard" class="guide-section">
+  <div class="section-header">
+    <h2>&#128202; 대시보드</h2>
+    <span class="path-badge">/admin/dashboard</span>
+  </div>
+  <div class="section-summary">
+    <p>병원 운영 전체 현황을 한눈에 파악할 수 있는 메인 화면입니다. 매일 아침 가장 먼저 확인하세요.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/02-dashboard.png" alt="대시보드 전체 화면 - 7개 KPI 카드, 7일 트렌드 차트, 오늘 콜백, 최근 상담">
+    <div class="screenshot-caption">그림 2. 대시보드 - KPI 카드, 트렌드 차트, 콜백 위젯</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th><th>활용 시점</th></tr></thead>
+      <tbody>
+        <tr><td>7개 KPI 카드</td><td>오늘 상담, 콜백 예정, 운영 건수, 월간 상담, 미발송 알림, 활성 이벤트, 활성 팝업</td><td>출근 시 첫 화면</td></tr>
+        <tr><td>7일 트렌드 차트</td><td>최근 7일간 상담/시술 추이를 바 차트로 시각화</td><td>주간 동향 파악</td></tr>
+        <tr><td>알림 배너</td><td>미발송 알림이 있을 때 상단에 경고 표시</td><td>즉시 처리 필요</td></tr>
+        <tr><td>주간 요약</td><td>이번 주 통계 요약</td><td>주간 미팅 자료</td></tr>
+        <tr><td>오늘의 콜백</td><td>오늘 콜백 예정인 환자 목록</td><td>업무 우선순위</td></tr>
+        <tr><td>최근 상담 5건</td><td>가장 최근 접수된 상담</td><td>신규 상담 빠른 확인</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 출근 후 아침 업무 시작</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>대시보드에 접속하여 <strong>7개 KPI 카드</strong>를 훑어봅니다.</li>
+          <li>"오늘 상담" 카드에서 오늘 처리할 상담 건수를 확인합니다.</li>
+          <li>"콜백 예정" 카드에서 전화할 환자 수를 확인합니다.</li>
+          <li>"미발송 알림" 카드에 숫자가 있으면 <a href="#notifications">알림관리</a>에서 즉시 처리합니다.</li>
+          <li><strong>오늘의 콜백</strong> 위젯에서 환자 목록을 확인하고 <a href="#consultations">상담관리</a>로 이동하여 작업합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 알림 배너가 표시될 때</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>상단에 <strong>경고 배너</strong>가 표시됩니다 (예: "미발송 알림 5건이 있습니다").</li>
+          <li>배너를 클릭하거나 <a href="#notifications">알림관리</a>로 이동합니다.</li>
+          <li>미처리 건을 순서대로 발송/스킵 처리합니다.</li>
+          <li>모두 처리하면 대시보드의 배너가 사라집니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 병원 전체 상황을 경영진에게 빠르게 보고</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>대시보드 화면을 그대로 보여주거나 캡처합니다.</li>
+          <li><strong>7개 KPI 카드</strong>로 핵심 수치를 한눈에 전달합니다.</li>
+          <li><strong>7일 트렌드 차트</strong>로 최근 추이를 설명합니다.</li>
+          <li>더 상세한 분석이 필요하면 <a href="#reports">리포트</a>에서 CSV를 내보냅니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 주간 미팅 준비</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>대시보드의 <strong>주간 요약</strong> 통계를 확인합니다.</li>
+          <li>이번 주 상담 건수, 시술 건수, 전주 대비 추이를 파악합니다.</li>
+          <li><strong>7일 트렌드</strong>에서 특이한 날(급증/급감)을 식별합니다.</li>
+          <li><strong>최근 상담 5건</strong>에서 신규 유입 동향을 확인합니다.</li>
+          <li>활성 이벤트/팝업 수를 확인하여 마케팅 현황을 파악합니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="tips-box">
+    <h3>이런 때 사용하세요</h3>
+    <ul>
+      <li><strong>매일 아침</strong>: 오늘의 상담 건수와 콜백 예정을 확인합니다.</li>
+      <li><strong>알림 배너가 보이면</strong>: 알림관리 페이지로 이동하여 미발송 건을 처리합니다.</li>
+      <li><strong>트렌드 하락 시</strong>: 7일간 추이가 하락하면 이벤트 등록이나 마케팅 강화를 검토합니다.</li>
+    </ul>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#consultations" class="link-card">&#128172; 상담관리</a>
+      <a href="#operations" class="link-card">&#127973; 운영현황</a>
+      <a href="#notifications" class="link-card">&#128276; 알림관리</a>
+      <a href="#events" class="link-card">&#127881; 이벤트관리</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 상담관리 -->
+<!-- ============================== -->
+<section id="consultations" class="guide-section">
+  <div class="section-header">
+    <h2>&#128172; 상담관리</h2>
+    <span class="path-badge">/admin/consultations</span>
+  </div>
+  <div class="section-summary">
+    <p>환자 상담 접수부터 완료까지 전체 파이프라인을 관리합니다. 상담사의 핵심 업무 도구입니다.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/03-consultations-table.png" alt="상담관리 테이블 뷰 - 상태별 탭, 검색, 필터, 테이블, 페이지네이션">
+    <div class="screenshot-caption">그림 3. 상담관리 - 상태별 탭과 테이블 뷰</div>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--color-secondary);">상담 상태 흐름</h3>
+  <div class="status-flow">
+    <span class="status-badge new">신규</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="status-badge progress">콜백예정</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="status-badge progress">예약완료</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="status-badge done">완료</span>
+  </div>
+  <div class="status-flow" style="margin-top:8px;">
+    <span style="width:60px;display:inline-block;"></span>
+    <span class="flow-arrow">&searr;</span>
+    <span class="status-badge warn">부재중</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="status-badge neutral">재연락</span>
+    <span class="flow-arrow">&nearr;</span>
+  </div>
+  <div class="status-flow" style="margin-top:8px;">
+    <span style="width:60px;display:inline-block;"></span>
+    <span class="flow-arrow">&searr;</span>
+    <span class="status-badge warn">노쇼</span>
+    <span style="margin-left:12px;"></span>
+    <span class="status-badge neutral">취소</span>
+  </div>
+
+  <div class="screenshot-container" style="margin-top:24px;">
+    <img class="screenshot" src="screenshots/04-consultations-edit.png" alt="상담관리 인라인 편집 - 행 확장, 담당자 배정, 메모, 벌크 액션">
+    <div class="screenshot-caption">그림 4. 상담관리 - 인라인 편집 및 벌크 액션</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th><th>활용 시점</th></tr></thead>
+      <tbody>
+        <tr><td>상태별 탭</td><td>전체/신규/콜백예정/부재중/재연락/예약/노쇼/완료/취소 (9개)</td><td>업무별 분류</td></tr>
+        <tr><td>검색</td><td>이름 또는 전화번호로 검색</td><td>환자 빠른 조회</td></tr>
+        <tr><td>담당자 필터</td><td>특정 상담사에게 배정된 건만 보기</td><td>개인 업무 관리</td></tr>
+        <tr><td>오늘 콜백만</td><td>토글로 오늘 콜백 예정 건만 필터링</td><td>당일 우선 업무</td></tr>
+        <tr><td>벌크 액션</td><td>여러 건 선택 후 상태 일괄 변경, 담당자 일괄 배정</td><td>대량 처리</td></tr>
+        <tr><td>인라인 편집</td><td>담당자, 다음 연락일, 예산, 메모를 즉시 수정</td><td>빠른 업데이트</td></tr>
+        <tr><td>음성 메모</td><td>마이크 버튼으로 음성을 텍스트로 변환 (한국어 지원)</td><td>전화 상담 중</td></tr>
+        <tr><td>CSV 내보내기</td><td>현재 필터 기준으로 CSV 다운로드</td><td>보고서/분석</td></tr>
+        <tr><td>감사 로그</td><td>모든 변경 사항 자동 기록</td><td>이력 추적</td></tr>
+        <tr><td>페이지네이션</td><td>20건 단위 페이지 이동</td><td>대량 데이터</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 신규 상담 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>신규</strong> 탭에서 새로 들어온 상담을 확인합니다.</li>
+          <li>담당자를 배정합니다 (인라인 편집으로 드롭다운 선택).</li>
+          <li>전화를 걸어 상담합니다.</li>
+          <li>상태를 <strong>콜백예정</strong> 또는 <strong>예약완료</strong>로 변경합니다.</li>
+          <li>다음 연락일을 설정합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 일일 콜백 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>오늘 콜백만 보기</strong> 토글을 활성화합니다.</li>
+          <li>순서대로 전화하며 메모를 <strong>음성 입력</strong>합니다.</li>
+          <li>결과에 따라 상태를 업데이트합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 주간 보고 자료 만들기</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>원하는 기간과 상태로 필터를 적용합니다.</li>
+          <li><strong>CSV 내보내기</strong>로 데이터를 다운로드합니다.</li>
+          <li>상태별 건수를 리포트에 활용합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 전화 연결이 안 되는 환자 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>해당 상담 건의 상태를 <strong>부재중(no_answer)</strong>으로 변경합니다.</li>
+          <li>메모에 "1차 전화 부재 (날짜/시간)" 을 기록합니다.</li>
+          <li>다음 연락일을 <strong>2~3일 후</strong>로 설정합니다.</li>
+          <li>2~3회 부재 시 상태를 <strong>재연락(re_contact)</strong>으로 변경하고 다른 시간대에 시도합니다.</li>
+          <li>최종적으로 연결 불가 시 <strong>취소(cancelled)</strong> 처리하고 메모에 사유를 남깁니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 예약 환자가 노쇼(No-Show)한 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>예약완료 상태에서 환자가 내원하지 않으면 상태를 <strong>노쇼(no_show)</strong>로 변경합니다.</li>
+          <li>메모에 노쇼 날짜와 예약 시술명을 기록합니다.</li>
+          <li>다음 날 전화하여 재예약 의사를 확인합니다.</li>
+          <li>재예약 원하면 <strong>콜백예정</strong>으로 변경, 취소 원하면 <strong>취소</strong>로 변경합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 6: 대량 상담 건을 한번에 정리하기</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>처리할 상담 건들의 체크박스를 선택합니다 (또는 전체 선택).</li>
+          <li>상단의 <strong>벌크 액션</strong> 버튼을 클릭합니다.</li>
+          <li><strong>상태 일괄 변경</strong>: 여러 건을 동일 상태로 일괄 변경 (예: 오래된 미연결 건을 모두 '취소'로).</li>
+          <li><strong>담당자 일괄 배정</strong>: 새로 입사한 상담사에게 기존 건을 일괄 이관할 때 사용합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 7: 환자가 특정 시술에 대해 문의할 때</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>검색</strong>에서 환자 이름 또는 전화번호를 입력하여 기존 상담 이력을 확인합니다.</li>
+          <li>이전 상담이 있으면 행을 클릭하여 <strong>상세 보기</strong>를 펼칩니다.</li>
+          <li>예산 범위, 이전 메모, 관심 시술 등을 확인합니다.</li>
+          <li>상담 내용을 메모에 추가하고 (음성 메모 가능), 상태를 적절히 업데이트합니다.</li>
+          <li>현재 진행 중 이벤트가 있으면 <a href="#events">이벤트관리</a>에서 확인 후 안내합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 8: 담당자가 휴가/퇴사했을 때 상담 이관</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>담당자 필터</strong>에서 해당 직원을 선택하여 배정된 건을 확인합니다.</li>
+          <li>진행 중인 상담 건들의 체크박스를 모두 선택합니다.</li>
+          <li><strong>벌크 액션 &gt; 담당자 일괄 배정</strong>으로 새 담당자를 선택합니다.</li>
+          <li>메모에 "OOO님 휴가로 인한 이관 (날짜)" 기록을 남깁니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="tips-box">
+    <h3>이런 때 사용하세요</h3>
+    <ul>
+      <li>새로운 상담 요청이 들어왔을 때 &rarr; <strong>신규</strong> 탭 확인</li>
+      <li>오늘 전화해야 할 환자 목록이 필요할 때 &rarr; <strong>오늘 콜백만</strong> 토글</li>
+      <li>여러 건을 한번에 처리할 때 &rarr; <strong>벌크 액션</strong> (체크박스 선택)</li>
+      <li>전화하면서 메모할 때 &rarr; <strong>음성 메모</strong> (마이크 버튼)</li>
+    </ul>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#operations" class="link-card">&#127973; 운영현황 (예약 후 시술)</a>
+      <a href="#reports" class="link-card">&#128200; 리포트 (퍼널 분석)</a>
+      <a href="#notifications" class="link-card">&#128276; 알림관리 (팔로업)</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 운영현황 -->
+<!-- ============================== -->
+<section id="operations" class="guide-section">
+  <div class="section-header">
+    <h2>&#127973; 운영현황</h2>
+    <span class="path-badge">/admin/operations</span>
+  </div>
+  <div class="section-summary">
+    <p>당일 시술실 현황을 실시간으로 관리합니다. 플로어맵과 칸반 보드 두 가지 뷰를 제공합니다.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/05-operations-floormap.png" alt="운영현황 플로어맵 - 병원 평면도에서 각 시술실 상태를 시각적으로 표시">
+    <div class="screenshot-caption">그림 5. 운영현황 - 플로어맵 뷰</div>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/06-operations-kanban.png" alt="운영현황 칸반 보드 - 대기, 상담, 마취, 시술/스킨케어, 완료 5단계">
+    <div class="screenshot-caption">그림 6. 운영현황 - 칸반 보드 뷰</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>플로어맵</td><td>병원 평면도에서 각 룸 상태를 색상으로 시각화 (빈 방/사용 중/완료)</td></tr>
+        <tr><td>칸반 보드</td><td>대기&rarr;상담&rarr;마취&rarr;시술/스킨케어&rarr;완료 5단계 칼럼</td></tr>
+        <tr><td>케이스 등록</td><td>환자명, 시술 유형, 담당의, 시술명, 소요시간 입력</td></tr>
+        <tr><td>상태 관리</td><td>WAITING(대기) &rarr; IN_PROGRESS(진행중) &rarr; COMPLETED(완료)</td></tr>
+        <tr><td>위치 추적</td><td>LOUNGE(라운지) / ROOM(시술실) 위치 관리</td></tr>
+        <tr><td>자동 타이머</td><td>시술 시작 후 경과 시간 자동 표시 (30초마다 갱신)</td></tr>
+        <tr><td>통계 카드</td><td>활성/대기/완료/전체 건수 실시간 표시</td></tr>
+        <tr><td>시술 유형</td><td>상담(CONSULT), 마취(ANESTHESIA), 시술(PROCEDURE), 스킨케어(SKINCARE)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 환자 동선 관리 (도착~완료)</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>환자 도착 &rarr; <strong>케이스 등록</strong> (대기 상태)</li>
+          <li>상담실 배정 &rarr; <strong>위치: ROOM</strong> + <strong>상태: 진행중</strong></li>
+          <li>상담 완료 &rarr; <strong>라운지로 이동</strong></li>
+          <li>시술실 배정 &rarr; <strong>시작</strong> 버튼 클릭</li>
+          <li>시술 완료 &rarr; <strong>완료</strong> 버튼 클릭</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 한 환자가 여러 시술을 받는 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>첫 번째 시술 케이스를 등록합니다 (예: 보톡스, 시술유형: PROCEDURE).</li>
+          <li>첫 번째 시술 완료 후 <strong>완료</strong> 처리합니다.</li>
+          <li>동일 환자로 두 번째 케이스를 등록합니다 (예: 스킨케어, 시술유형: SKINCARE).</li>
+          <li>각 시술이 별도 케이스로 관리되어 <strong>리포트</strong>에서 시술별 통계가 정확하게 집계됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 시술 중 예상 시간을 초과한 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>자동 타이머</strong>에서 경과 시간이 예상 소요시간을 넘긴 것을 확인합니다.</li>
+          <li>플로어맵에서 해당 룸을 클릭하여 <strong>상세 패널</strong>을 확인합니다.</li>
+          <li>담당 의료진에게 상황을 확인합니다.</li>
+          <li>필요 시 다음 환자 대기 시간 조정 또는 라운지 안내를 합니다.</li>
+          <li>메모에 지연 사유를 기록합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 환자가 시술 도중 취소/중단한 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>해당 케이스의 <strong>취소/삭제</strong> 버튼을 클릭합니다.</li>
+          <li>메모에 취소 사유를 기록합니다 (예: "환자 요청으로 중단, 마취 후 시술 전").</li>
+          <li><a href="#revenue">매출관리</a>에서 해당 건의 결제 상태를 확인하고, 결제 전이면 별도 처리 없음, 결제 후면 환불 처리를 진행합니다.</li>
+          <li><a href="#inventory">재고관리</a>에서 이미 사용된 재료가 있으면 사용 기록은 유지합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 오전 시작 시 당일 전체 일정 세팅</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><a href="#consultations">상담관리</a>에서 오늘 <strong>예약완료</strong> 상태인 환자 목록을 확인합니다.</li>
+          <li>운영현황에서 예약된 환자들의 케이스를 미리 등록합니다 (대기 상태).</li>
+          <li>담당의, 시술명, 예상 소요시간을 입력합니다.</li>
+          <li><strong>칸반 보드</strong>에서 대기 칼럼에 오늘 일정이 한눈에 보입니다.</li>
+          <li>환자 도착 순서대로 상태를 변경하며 진행합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 6: 응급 상황 또는 비예약 환자 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>예약 없이 방문한 환자도 <strong>케이스 등록</strong>으로 바로 등록합니다.</li>
+          <li>메모에 "워크인/비예약" 을 기록합니다.</li>
+          <li>빈 시술실을 <strong>플로어맵</strong>에서 확인하고 배정합니다.</li>
+          <li>시술 후 <a href="#consultations">상담관리</a>에도 해당 환자 정보를 소급 등록합니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="tips-box">
+    <h3>이런 때 사용하세요</h3>
+    <ul>
+      <li><strong>플로어맵</strong>: 전체 병원 현황을 빠르게 파악할 때</li>
+      <li><strong>칸반 보드</strong>: 환자 흐름을 단계별로 관리할 때</li>
+      <li>경과 시간이 예상보다 길어지면 담당 의료진에게 확인</li>
+    </ul>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#consultations" class="link-card">&#128172; 상담관리 (예약 환자)</a>
+      <a href="#inventory" class="link-card">&#128230; 재고관리 (재료 차감)</a>
+      <a href="#revenue" class="link-card">&#128176; 매출관리 (결제 처리)</a>
+      <a href="#notifications" class="link-card">&#128276; 알림관리 (팔로업)</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 재고관리 -->
+<!-- ============================== -->
+<section id="inventory" class="guide-section">
+  <div class="section-header">
+    <h2>&#128230; 재고관리</h2>
+    <span class="path-badge">/admin/inventory</span>
+  </div>
+  <div class="section-summary">
+    <p>시술 재료와 소모품의 재고를 추적하고 관리합니다. 3개 탭과 3가지 뷰 모드를 제공합니다.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/07-inventory-stock.png" alt="재고관리 재고 현황 - 대시보드 카드, 알림 배너, 재고 테이블">
+    <div class="screenshot-caption">그림 7. 재고관리 - 재고 현황 (테이블 뷰)</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>3개 탭</h3>
+    <table>
+      <thead><tr><th>탭</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>재고 현황</td><td>전체 재고 목록, 현재 수량, 상태 (정상/부족/소진)</td></tr>
+        <tr><td>사용 이력</td><td>재고 입출고 기록 (날짜, 유형, 수량, 환자)</td></tr>
+        <tr><td>입고 관리</td><td>재입고 처리</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="feature-table">
+    <h3>3가지 뷰 모드 (재고 현황 탭)</h3>
+    <table>
+      <thead><tr><th>모드</th><th>설명</th><th>추천 상황</th></tr></thead>
+      <tbody>
+        <tr><td>테이블 뷰</td><td>전통적인 표 형태</td><td>상세 정보 확인</td></tr>
+        <tr><td>카드 뷰</td><td>카드 그리드 레이아웃</td><td>시각적 빠른 스캔</td></tr>
+        <tr><td>그룹 뷰</td><td>카테고리별 그룹핑</td><td>카테고리 단위 관리</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="feature-table">
+    <h3>재고 상태 구분</h3>
+    <table>
+      <thead><tr><th>상태</th><th>조건</th><th>의미</th></tr></thead>
+      <tbody>
+        <tr><td><span class="status-badge done">정상</span></td><td>현재 수량 &gt; 최소 수량</td><td>문제 없음</td></tr>
+        <tr><td><span class="status-badge progress">부족</span></td><td>현재 수량 &le; 최소 수량</td><td>발주 필요</td></tr>
+        <tr><td><span class="status-badge warn">소진</span></td><td>현재 수량 = 0</td><td>긴급 발주!</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/08-inventory-use-modal.png" alt="재고 사용 모달 - 환자명, 차트번호, 시술 선택, 레시피 자동 로드, 사용 항목">
+    <div class="screenshot-caption">그림 8. 재고관리 - 재고 사용 모달 (레시피 자동 로드)</div>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 시술 전 재고 사용 등록</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>재고 사용</strong> 버튼을 클릭하여 모달을 엽니다.</li>
+          <li>환자명과 차트번호를 입력합니다.</li>
+          <li>시술을 선택하면 <strong>레시피가 자동으로 로드</strong>됩니다.</li>
+          <li>실제 사용량이 다르면 수량을 조정합니다.</li>
+          <li>간호사 확인 후 등록합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 재입고 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>입고 관리</strong> 탭으로 이동합니다.</li>
+          <li>항목을 선택하고 입고 수량과 사유를 입력합니다.</li>
+          <li>재고가 자동으로 업데이트됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 재고 부족 대응</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>상단 <strong>알림 배너</strong>에서 부족/소진 항목을 확인합니다.</li>
+          <li>공급업체에 발주합니다.</li>
+          <li>물품 도착 시 입고 처리합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 시술 중 예상보다 재료를 많이 사용한 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>레시피로 자동 로드된 기본 수량 외에 추가 사용이 발생합니다.</li>
+          <li><strong>재고 사용</strong> 모달에서 해당 항목의 수량을 실제 사용량으로 <strong>수정</strong>합니다.</li>
+          <li>또는 추가 항목을 직접 선택하여 수량을 입력합니다.</li>
+          <li>간호사 확인 후 등록하면 정확한 소모량이 기록됩니다.</li>
+          <li>이런 상황이 반복되면 <a href="#settings">설정 &gt; 시술 마스터</a>에서 해당 시술의 레시피를 업데이트하는 것이 좋습니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 유통기한이 임박한 재고 확인</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>재고 현황</strong> 탭에서 각 항목의 <strong>보관 참고사항</strong> 필드를 확인합니다.</li>
+          <li>항목 클릭 &rarr; <strong>상세 패널</strong>에서 최근 입고 날짜를 확인하여 유통기한을 역산합니다.</li>
+          <li>유통기한이 가까운 재료는 우선 사용하도록 의료진에게 공유합니다.</li>
+          <li>폐기가 필요하면 <strong>출고</strong> 처리 시 사유에 "유통기한 만료 폐기"를 입력합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 6: 월말 재고 실사(Inventory Count)</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>그룹 뷰</strong>로 전환하여 카테고리별로 재고를 확인합니다.</li>
+          <li>실물 재고와 시스템 수량을 대조합니다.</li>
+          <li>차이가 있으면 <strong>입출고</strong>에서 사유와 함께 수량을 조정합니다 (예: "실사 조정 +2개").</li>
+          <li>대시보드 카드에서 전체/정상/부족/소진 항목 수를 최종 확인합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 7: 신규 시술 재료를 처음 등록할 때</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>항목 추가</strong> 버튼을 클릭합니다.</li>
+          <li>재료명, 카테고리, 단위(개/ml/cc 등)를 입력합니다.</li>
+          <li><strong>최소 수량</strong>을 설정합니다 (이 수량 이하가 되면 알림 배너가 표시됩니다).</li>
+          <li>현재 보유 수량, 단가, 공급업체 정보, 보관 참고사항을 입력합니다.</li>
+          <li>저장 후 <a href="#settings">설정 &gt; 시술 마스터</a>에서 해당 시술의 레시피에 이 재료를 추가합니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="tips-box">
+    <h3>이런 때 사용하세요</h3>
+    <ul>
+      <li>시술 전 재료 준비 시 &rarr; <strong>레시피 자동 로드</strong>로 빠르게 등록</li>
+      <li>알림 배너가 보이면 &rarr; 즉시 부족 항목 확인 및 발주</li>
+      <li>월말 재고 파악 &rarr; <strong>그룹 뷰</strong>로 카테고리별 확인</li>
+    </ul>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#operations" class="link-card">&#127973; 운영현황 (시술 연동)</a>
+      <a href="#settings" class="link-card">&#9881; 시술 마스터 (레시피)</a>
+      <a href="#reports" class="link-card">&#128200; 리포트 (소모량 분석)</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 알림관리 -->
+<!-- ============================== -->
+<section id="notifications" class="guide-section">
+  <div class="section-header">
+    <h2>&#128276; 알림관리</h2>
+    <span class="path-badge">/admin/notifications</span>
+  </div>
+  <div class="section-summary">
+    <p>시술 후 환자 팔로업 알림을 관리합니다. 카카오, SMS, 전화 채널을 지원합니다.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/09-notifications.png" alt="알림관리 메인 화면 - KPI 카드, 알림 배너, 환자 목록, 발송 워크플로우">
+    <div class="screenshot-caption">그림 9. 알림관리 - KPI 카드와 발송 대상 목록</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>KPI 카드</td><td>오늘 발송 대상, 미발송 건수, 이번 주 예정</td></tr>
+        <tr><td>알림 배너</td><td>미처리 알림 경고</td></tr>
+        <tr><td>발송 워크플로우</td><td>채널 선택(카카오/SMS/전화) &rarr; 담당자 확인 &rarr; 메모 &rarr; 발송/스킵</td></tr>
+        <tr><td>알림 템플릿</td><td>메시지 템플릿 관리 (CRUD) - <code>/notifications/templates</code></td></tr>
+        <tr><td>발송 이력</td><td>과거 발송 기록 조회 - <code>/notifications/history</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 시술 후 팔로업 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>환자가 시술을 받으면 치료 기록을 등록합니다.</li>
+          <li>설정된 주기(예: 3일 후)에 알림이 대시보드에 나타납니다.</li>
+          <li>알림 대상 환자에게 카카오/SMS/전화로 연락합니다.</li>
+          <li>결과를 기록하고 <strong>발송완료</strong> 또는 <strong>스킵</strong> 처리합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 시술 당일 귀가 안내 발송</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><a href="#operations">운영현황</a>에서 시술 완료 처리된 환자를 확인합니다.</li>
+          <li>알림관리에서 해당 환자의 치료 기록을 등록합니다 (시술명, 시술일).</li>
+          <li>채널을 <strong>카카오</strong>로 선택합니다.</li>
+          <li>템플릿에서 "시술 후 주의사항 안내" 템플릿을 선택합니다.</li>
+          <li>발송 후 <strong>발송완료</strong> 처리합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 환자가 시술 후 이상 증상을 호소할 때</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>알림 발송 중 환자가 이상 증상을 호소하면 메모에 상세 내용을 기록합니다.</li>
+          <li>채널을 <strong>전화</strong>로 변경하고, 담당 의료진에게 즉시 연결합니다.</li>
+          <li>필요 시 재내원 예약을 <a href="#consultations">상담관리</a>에서 등록합니다.</li>
+          <li>메모에 의료진 확인 결과와 조치 내용을 기록합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 알림 템플릿 생성 및 활용</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>알림 템플릿</strong> 하위 페이지 (<code>/notifications/templates</code>)로 이동합니다.</li>
+          <li>새 템플릿을 생성합니다 (예: "리프팅 시술 3일차 경과 확인").</li>
+          <li>메시지 본문에 시술 후 주의사항과 확인 질문을 작성합니다.</li>
+          <li>저장 후, 알림 발송 시 해당 템플릿을 선택하면 메시지가 자동 입력됩니다.</li>
+          <li>시술 유형별로 템플릿을 준비해두면 업무가 빨라집니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 미발송 알림이 쌓여 있을 때 일괄 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>KPI 카드에서 <strong>미발송 건수</strong>를 확인합니다.</li>
+          <li>오래된 알림(7일 이상 경과)은 <strong>스킵</strong> 처리하고, 메모에 사유를 기록합니다.</li>
+          <li>최근 알림은 순서대로 발송합니다.</li>
+          <li>향후 쌓이지 않도록 매일 오전 일과에 알림 처리를 포함합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 6: 재방문 유도 알림 보내기</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>시술 후 2~4주가 경과한 환자에게 재방문 유도 알림을 보냅니다.</li>
+          <li>템플릿에서 "경과 확인 및 추가 상담 안내" 메시지를 선택합니다.</li>
+          <li>채널: 카카오 (가장 읽힐 확률이 높음) 또는 SMS를 선택합니다.</li>
+          <li>환자가 예약을 원하면 <a href="#consultations">상담관리</a>에서 <strong>예약완료</strong>로 등록합니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="tips-box">
+    <h3>이런 때 사용하세요</h3>
+    <ul>
+      <li>매일 오전 미발송 건을 확인하고 처리하세요.</li>
+      <li>반복되는 메시지는 <strong>템플릿</strong>으로 등록하면 효율적입니다.</li>
+    </ul>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#consultations" class="link-card">&#128172; 상담관리</a>
+      <a href="#operations" class="link-card">&#127973; 운영현황</a>
+      <a href="#settings" class="link-card">&#9881; 설정 (알림 설정)</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 리포트 -->
+<!-- ============================== -->
+<section id="reports" class="guide-section">
+  <div class="section-header">
+    <h2>&#128200; 리포트</h2>
+    <span class="path-badge">/admin/reports</span>
+  </div>
+  <div class="section-summary">
+    <p>월간 경영 분석과 성과 리포트를 제공합니다. 경영 회의 자료로 활용하세요.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/10-reports.png" alt="리포트 화면 - KPI 카드, 상담 퍼널, 일별 트렌드, 시술 통계, 의사 성과">
+    <div class="screenshot-caption">그림 10. 리포트 - 월간 KPI, 퍼널 분석, 트렌드 차트</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>기간 선택</td><td>연도/월 드롭다운으로 조회 기간 설정</td></tr>
+        <tr><td>전월 비교</td><td>체크박스로 전월 대비 비교 활성화</td></tr>
+        <tr><td>4개 KPI 카드</td><td>월 매출(목표 달성률%), 전환율, 시술 건수, 건당 평균 + 전월 대비 증감%</td></tr>
+        <tr><td>상담 퍼널</td><td>접수 &rarr; 연락 &rarr; 예약 &rarr; 완료 &rarr; 노쇼 단계별 분석</td></tr>
+        <tr><td>일별 트렌드</td><td>7일 바 차트 (상담 vs 시술)</td></tr>
+        <tr><td>시술 통계</td><td>시술별 매출 순위 테이블</td></tr>
+        <tr><td>의사 성과</td><td>의사별 상담수, 시술수, 매출, 전환율</td></tr>
+        <tr><td>CSV 내보내기</td><td>KPI, 퍼널, 시술, 의사, 일별 데이터 통합 CSV</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 월간 경영 회의 준비</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>해당 월을 선택합니다.</li>
+          <li><strong>전월 비교</strong> 체크박스를 활성화하여 추이를 확인합니다.</li>
+          <li>KPI 카드에서 <strong>목표 달성률</strong>을 확인합니다.</li>
+          <li>상담 퍼널에서 <strong>이탈 구간</strong>을 파악합니다.</li>
+          <li>CSV를 내보내 회의 자료로 활용합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 상담 전환율이 낮을 때 원인 분석</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>KPI 카드에서 <strong>전환율</strong>이 전월 대비 하락한 것을 확인합니다.</li>
+          <li><strong>상담 퍼널</strong>에서 어느 단계에서 이탈이 많은지 파악합니다.</li>
+          <li><strong>접수&rarr;연락</strong> 이탈이 높으면: 초기 응대 속도를 확인합니다 &rarr; <a href="#consultations">상담관리</a>에서 신규 건의 처리 시간을 점검합니다.</li>
+          <li><strong>연락&rarr;예약</strong> 이탈이 높으면: 상담 품질/가격 안내 방식을 검토합니다 &rarr; 진행 중 이벤트 활용 여부를 확인합니다.</li>
+          <li><strong>예약&rarr;완료</strong> 이탈(노쇼)이 높으면: 예약 리마인드 알림 발송을 강화합니다.</li>
+          <li><strong>의사 성과</strong> 섹션에서 의사별 전환율 차이를 확인하여 교육/개선 방안을 도출합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 인기 시술/비인기 시술 파악</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>시술 통계 테이블</strong>에서 매출 순위를 확인합니다.</li>
+          <li>상위 시술: 마케팅 강화, 재고 충분히 확보, 이벤트 기획 검토.</li>
+          <li>하위 시술: 원인 분석 (가격? 인지도? 계절성?) &rarr; 할인 이벤트 또는 홈페이지 노출 강화를 고려합니다.</li>
+          <li><a href="#events">이벤트관리</a>에서 하위 시술 대상 프로모션을 기획합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 분기/반기 성과 추이 분석</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>3개월 또는 6개월 분의 리포트를 각각 조회합니다.</li>
+          <li>각 월의 CSV를 내보냅니다.</li>
+          <li>엑셀에서 월별 KPI를 합산/비교하여 분기 추이를 분석합니다.</li>
+          <li>성수기/비수기 패턴을 파악하여 다음 분기 전략을 수립합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 목표 매출 미달 시 대응 전략 수립</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>KPI 카드에서 <strong>목표 달성률</strong>이 80% 미만인 것을 확인합니다.</li>
+          <li><strong>일별 트렌드</strong>에서 매출이 특히 낮은 요일/시기를 파악합니다.</li>
+          <li><strong>의사 성과</strong>에서 특정 의사의 가동률이 낮은지 확인합니다.</li>
+          <li>대응 방안을 검토합니다:
+            <ul style="margin-top:6px;">
+              <li><a href="#events">이벤트관리</a>에서 긴급 프로모션 등록</li>
+              <li><a href="#consultations">상담관리</a>에서 재연락/부재중 건 재처리</li>
+              <li><a href="#settings">설정</a>에서 다음 달 목표 재조정</li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="tips-box">
+    <h3>이런 때 사용하세요</h3>
+    <ul>
+      <li>월간 경영 회의 전에 CSV를 미리 준비하세요.</li>
+      <li>상담 퍼널에서 이탈이 많은 단계를 찾아 개선 방안을 논의하세요.</li>
+      <li>목표 매출은 <strong>설정 &gt; 기본정보</strong>에서 설정합니다.</li>
+    </ul>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#consultations" class="link-card">&#128172; 상담관리 (퍼널 원천)</a>
+      <a href="#revenue" class="link-card">&#128176; 매출관리 (매출 원천)</a>
+      <a href="#settings" class="link-card">&#9881; 설정 (목표 매출)</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 매출관리 -->
+<!-- ============================== -->
+<section id="revenue" class="guide-section">
+  <div class="section-header">
+    <h2>&#128176; 매출관리</h2>
+    <span class="path-badge">/admin/revenue</span>
+  </div>
+  <div class="section-summary">
+    <p>일별/주별/월별 매출을 추적하고 결제를 관리합니다.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/11-revenue.png" alt="매출관리 화면 - 기간 토글, KPI 카드, 매출 트렌드, 거래 테이블">
+    <div class="screenshot-caption">그림 11. 매출관리 - 매출 트렌드와 거래 테이블</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>기간 토글</td><td>오늘 / 이번 주 / 이번 달</td></tr>
+        <tr><td>4개 KPI 카드</td><td>당일 매출, 주간 매출, 월간 매출, 건당 평균</td></tr>
+        <tr><td>7일 매출 트렌드</td><td>바 차트로 일별 매출 시각화</td></tr>
+        <tr><td>결제 상태 탭</td><td>전체 / 완료 / 대기 / 환불</td></tr>
+        <tr><td>거래 테이블</td><td>날짜, 환자명, 시술, 금액, 할인, 순금액, 결제방법, 상태</td></tr>
+        <tr><td>인라인 결제</td><td>대기 건에 결제금액 + 결제방법 입력 후 확인</td></tr>
+        <tr><td>환불 처리</td><td>완료된 결제에 환불 버튼</td></tr>
+        <tr><td>CSV 내보내기</td><td>거래 내역 다운로드</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--color-secondary);">결제 상태 흐름</h3>
+  <div class="status-flow">
+    <span class="status-badge progress">대기 (pending)</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="status-badge done">완료 (completed)</span>
+    <span class="flow-arrow">&rarr;</span>
+    <span class="status-badge warn">환불 (refunded)</span>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 당일 매출 정산</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>오늘</strong> 탭을 선택합니다.</li>
+          <li><strong>대기</strong> 상태 탭에서 미결제 건을 확인합니다.</li>
+          <li>결제 금액과 방법(카드/현금/계좌이체)을 입력하고 확인합니다.</li>
+          <li>하루 마감 시 CSV를 내보내 정산합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 환자가 할인을 받는 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>거래 테이블에서 해당 환자의 시술 건을 찾습니다.</li>
+          <li>인라인 결제 영역에서 <strong>할인 금액</strong>을 입력합니다 (예: 이벤트 할인 10만원).</li>
+          <li><strong>순금액</strong>이 자동으로 계산됩니다 (원래 금액 - 할인).</li>
+          <li>결제 방법을 선택하고 결제를 확인합니다.</li>
+          <li><a href="#reports">리포트</a>에서 할인 전/후 금액이 별도로 집계됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 환불 처리가 필요한 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>완료</strong> 상태 탭에서 환불 대상 건을 찾습니다.</li>
+          <li>환자명 또는 날짜로 검색하면 빠르게 찾을 수 있습니다.</li>
+          <li>해당 건의 <strong>환불</strong> 버튼을 클릭합니다.</li>
+          <li>확인 다이얼로그에서 환불을 최종 확인합니다.</li>
+          <li>상태가 <strong>환불(refunded)</strong>로 변경되고 매출에서 차감됩니다.</li>
+        </ol>
+        <div class="warning-box" style="margin-top:12px;">
+          <h3>주의</h3>
+          <p>환불 처리는 되돌릴 수 없습니다. 반드시 원장/실장의 승인을 받은 후 진행하세요.</p>
+        </div>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 분할 결제 (카드 + 현금)</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>환자가 카드 50만원 + 현금 30만원으로 분할 결제를 요청합니다.</li>
+          <li>첫 번째 결제: 금액 50만원, 방법 <strong>카드</strong>로 결제 처리합니다.</li>
+          <li>메모에 "분할결제 1/2, 카드 50만원" 을 기록합니다.</li>
+          <li>두 번째 결제는 별도 건으로 처리하거나, 메모에 "현금 30만원 수령" 을 기록합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 주간/월간 매출 추이 확인</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>이번 주</strong> 또는 <strong>이번 달</strong> 탭으로 전환합니다.</li>
+          <li><strong>7일 매출 트렌드</strong> 차트에서 일별 매출 패턴을 확인합니다.</li>
+          <li>특정 요일에 매출이 낮으면 해당 요일 마케팅 강화를 검토합니다.</li>
+          <li>4개 KPI 카드에서 당일/주간/월간 매출을 한눈에 비교합니다.</li>
+          <li>더 상세한 분석이 필요하면 <a href="#reports">리포트</a>로 이동합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 6: 미결제 건이 오래 방치된 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>대기</strong> 탭에서 오래된 미결제 건(3일 이상)을 확인합니다.</li>
+          <li>해당 환자의 상황을 <a href="#consultations">상담관리</a>에서 확인합니다.</li>
+          <li>시술이 완료되었으나 결제가 안 된 경우: 환자에게 연락하여 결제를 요청합니다.</li>
+          <li>시술이 취소된 경우: <a href="#operations">운영현황</a>에서 케이스 상태를 확인하고, 매출 건을 삭제합니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="warning-box">
+    <h3>환불 시 주의사항</h3>
+    <p>환불 처리는 되돌릴 수 없습니다. 환불 전 반드시 확인하세요.</p>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#operations" class="link-card">&#127973; 운영현황 (시술 완료)</a>
+      <a href="#reports" class="link-card">&#128200; 리포트 (월간 매출)</a>
+      <a href="#settings" class="link-card">&#9881; 설정 (목표 매출)</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 이벤트관리 -->
+<!-- ============================== -->
+<section id="events" class="guide-section">
+  <div class="section-header">
+    <h2>&#127881; 이벤트관리</h2>
+    <span class="path-badge">/admin/events</span>
+  </div>
+  <div class="section-summary">
+    <p>홈페이지에 노출되는 프로모션과 이벤트를 관리합니다.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/12-events-list.png" alt="이벤트 목록 - 이벤트 카드 리스트, 상태 배지, 검색, 액션 버튼">
+    <div class="screenshot-caption">그림 12. 이벤트관리 - 이벤트 목록</div>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/13-events-form.png" alt="이벤트 생성 폼 - 제목(한/영), 기간, 카테고리, 포스터, 내용, 게시 여부">
+    <div class="screenshot-caption">그림 13. 이벤트관리 - 이벤트 생성/편집 폼</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>이벤트 목록</td><td>검색 가능한 이벤트 카드 리스트</td></tr>
+        <tr><td>상태 배지</td><td><span class="status-badge done">진행중</span> <span class="status-badge neutral">종료</span> <span class="status-badge progress">초안</span></td></tr>
+        <tr><td>이벤트 생성</td><td>제목(한/영), 기간, 카테고리, 포스터 이미지, 내용, 게시 여부</td></tr>
+        <tr><td>복제</td><td>기존 이벤트를 복제하여 새 이벤트 빠르게 생성</td></tr>
+        <tr><td>편집/삭제</td><td>확인 다이얼로그 후 삭제 (즉시 홈페이지 반영)</td></tr>
+        <tr><td>다국어</td><td>한국어/영어 제목 및 내용</td></tr>
+        <tr><td>주요(Featured)</td><td>홈페이지 메인에 노출되는 주요 이벤트 지정</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 신규 이벤트 등록</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>새 이벤트</strong> 버튼을 클릭합니다.</li>
+          <li>한국어/영어 제목을 입력합니다.</li>
+          <li>시작일/종료일을 설정합니다.</li>
+          <li>카테고리를 선택합니다.</li>
+          <li>포스터 이미지를 업로드합니다.</li>
+          <li>내용을 작성합니다.</li>
+          <li><strong>게시</strong> 체크박스를 활성화하고 저장합니다.</li>
+          <li>홈페이지에 <strong>즉시 반영</strong>됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 이벤트 기간 연장</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>이벤트 목록에서 해당 이벤트의 <strong>편집</strong> 버튼을 클릭합니다.</li>
+          <li><strong>종료일</strong>을 새로운 날짜로 변경합니다.</li>
+          <li>필요하면 내용에 "기간 연장!" 문구를 추가합니다.</li>
+          <li>저장하면 홈페이지에 즉시 반영됩니다.</li>
+          <li>상태 배지가 <span class="status-badge done">진행중</span>으로 유지됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 지난 이벤트를 참고하여 새 이벤트 만들기</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>이벤트 목록에서 참고할 이전 이벤트를 찾습니다.</li>
+          <li><strong>복제</strong> 버튼을 클릭합니다.</li>
+          <li>제목, 기간, 내용을 새 이벤트에 맞게 수정합니다.</li>
+          <li>이미지를 새로 업로드하거나 기존 것을 유지합니다.</li>
+          <li>시간 절약 + 이전 이벤트의 구성을 그대로 활용할 수 있습니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 이벤트 + 팝업 동시 등록 (프로모션 캠페인)</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>먼저 이벤트를 등록하고 저장합니다.</li>
+          <li>이벤트 URL 경로를 메모해둡니다 (예: <code>/promotion</code> 페이지).</li>
+          <li><a href="#popups">팝업관리</a>로 이동합니다.</li>
+          <li>새 팝업을 생성하여 이벤트 포스터 이미지를 업로드합니다.</li>
+          <li>링크에 이벤트 페이지 경로를 입력합니다.</li>
+          <li>팝업을 활성화하면 <strong>홈페이지 접속 시 팝업으로 이벤트 홍보</strong>가 됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 이벤트 성과 측정</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>이벤트 시작 전 <a href="#reports">리포트</a>에서 현재 월 상담 건수와 매출을 확인합니다.</li>
+          <li>이벤트를 게시합니다.</li>
+          <li>이벤트 기간 중 <a href="#consultations">상담관리</a>에서 유입 상담에 메모로 "OO 이벤트 통한 문의" 를 기록합니다.</li>
+          <li>이벤트 종료 후 <a href="#reports">리포트</a>에서 이벤트 기간의 상담 건수/매출을 이전과 비교합니다.</li>
+          <li>성과가 좋으면 <strong>복제</strong>하여 다음 이벤트를 기획합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 6: 초안 상태로 미리 준비해두기</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>이벤트를 생성할 때 <strong>게시 체크박스를 해제</strong>한 상태로 저장합니다.</li>
+          <li>상태가 <span class="status-badge progress">초안(Draft)</span>으로 표시됩니다.</li>
+          <li>홈페이지에는 노출되지 않으므로 내용을 여유 있게 검토/수정합니다.</li>
+          <li>원장 승인 후 <strong>편집 &gt; 게시 체크</strong>하면 즉시 공개됩니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="tips-box">
+    <h3>이런 때 사용하세요</h3>
+    <ul>
+      <li>새 프로모션 시작 시 &rarr; 이벤트 등록 + <strong>팝업관리</strong>에서 팝업도 함께 등록</li>
+      <li>비슷한 이벤트를 반복할 때 &rarr; <strong>복제</strong> 기능으로 빠르게 생성</li>
+      <li>아직 공개하지 않을 이벤트 &rarr; 게시 체크박스를 해제하면 <strong>초안</strong> 상태</li>
+    </ul>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#popups" class="link-card">&#128444; 팝업관리 (홍보 팝업)</a>
+      <a href="#dashboard" class="link-card">&#128202; 대시보드 (활성 이벤트)</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 팝업관리 -->
+<!-- ============================== -->
+<section id="popups" class="guide-section">
+  <div class="section-header">
+    <h2>&#128444; 팝업관리</h2>
+    <span class="path-badge">/admin/popups</span>
+  </div>
+  <div class="section-summary">
+    <p>홈페이지에 표시되는 팝업 배너를 관리합니다.</p>
+  </div>
+
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/14-popups.png" alt="팝업 목록 - 팝업 리스트, 활성 상태 토글, 편집/삭제">
+    <div class="screenshot-caption">그림 14. 팝업관리 - 팝업 목록</div>
+  </div>
+
+  <div class="feature-table">
+    <h3>주요 기능</h3>
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>팝업 목록</td><td>검색 가능한 팝업 리스트</td></tr>
+        <tr><td>활성 관리</td><td>팝업 노출/숨김 토글</td></tr>
+        <tr><td>팝업 생성</td><td>제목, 이미지, 링크, 노출 기간, 위치 설정</td></tr>
+        <tr><td>편집/삭제</td><td>기존 팝업 수정 및 삭제</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 이벤트 팝업 등록</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>새 팝업을 생성합니다.</li>
+          <li>이벤트 포스터 이미지를 업로드합니다.</li>
+          <li>이벤트 페이지 링크를 설정합니다.</li>
+          <li>노출 기간을 설정합니다.</li>
+          <li>활성화하면 홈페이지 접속 시 팝업이 표시됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 휴진 안내 팝업</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>새 팝업을 생성합니다.</li>
+          <li>제목: "휴진 안내 (X월 X일 ~ X일)"</li>
+          <li>휴진 안내 이미지를 업로드합니다.</li>
+          <li>링크는 비워두거나 상담 페이지로 설정합니다.</li>
+          <li>노출 기간을 휴진 1주 전 ~ 휴진 종료일로 설정합니다.</li>
+          <li>활성화하면 방문자에게 휴진 안내가 자동으로 표시됩니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 여러 팝업이 동시에 활성화된 경우</summary>
+      <div class="scenario-content">
+        <ol>
+          <li>팝업 목록에서 활성 상태인 팝업을 확인합니다.</li>
+          <li>동시에 여러 팝업이 활성화되면 방문자가 불편할 수 있습니다.</li>
+          <li>우선순위가 낮은 팝업의 <strong>활성 토글</strong>을 해제합니다.</li>
+          <li><strong>권장</strong>: 동시에 1~2개 이하의 팝업만 활성화하세요.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 이벤트 종료 시 팝업도 함께 비활성화</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><a href="#events">이벤트관리</a>에서 이벤트가 종료되면(종료일 경과 또는 수동 종료)...</li>
+          <li>팝업관리에서 해당 이벤트의 팝업을 찾습니다.</li>
+          <li><strong>활성 토글</strong>을 해제하여 팝업을 숨깁니다.</li>
+          <li>또는 팝업을 삭제합니다 (재사용 계획이 없는 경우).</li>
+          <li>끝난 이벤트의 팝업이 계속 노출되지 않도록 주의하세요.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+
+  <div class="related-sections">
+    <h3>연관 기능</h3>
+    <div class="link-cards">
+      <a href="#events" class="link-card">&#127881; 이벤트관리</a>
+      <a href="#dashboard" class="link-card">&#128202; 대시보드</a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 설정 -->
+<!-- ============================== -->
+<section id="settings" class="guide-section">
+  <div class="section-header">
+    <h2>&#9881; 설정</h2>
+    <span class="path-badge">/admin/settings</span>
+  </div>
+  <div class="section-summary">
+    <p>시스템 전반의 설정을 관리합니다. 4개 탭으로 구성되어 있습니다.</p>
+  </div>
+
+  <!-- Tab 1: 시술 마스터 -->
+  <h3 style="margin:24px 0 12px; color:var(--color-secondary);">탭 1: 시술 마스터</h3>
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/15-settings-treatments.png" alt="시술 마스터 - 시술 목록, 카테고리 필터, 활성/비활성 토글">
+    <div class="screenshot-caption">그림 15. 설정 - 시술 마스터</div>
+  </div>
+
+  <div class="feature-table">
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>시술 목록</td><td>등록된 모든 시술 항목 (이름, 카테고리, 가격 범위, 소요시간)</td></tr>
+        <tr><td>시술 추가</td><td>시술명, 카테고리, 가격 범위, 소요시간, 활성 상태 입력</td></tr>
+        <tr><td>카테고리 필터</td><td>lifting, antiaging, laser, skincare 등으로 필터링</td></tr>
+        <tr><td>활성/비활성</td><td>사용하지 않는 시술 비활성화 (운영현황에서 선택지에서 제외)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box">
+    <h3>시술 마스터가 영향을 주는 곳</h3>
+    <ul style="padding-left:18px; margin-top:8px;">
+      <li><strong>운영현황</strong>: 케이스 등록 시 시술 선택지</li>
+      <li><strong>재고관리</strong>: 레시피(시술별 기본 사용 재료) 연동</li>
+      <li><strong>리포트</strong>: 시술별 통계/매출 분석</li>
+    </ul>
+  </div>
+
+  <!-- Tab 2: 직원 관리 -->
+  <h3 style="margin:32px 0 12px; color:var(--color-secondary);">탭 2: 직원 관리</h3>
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/16-settings-staff.png" alt="직원 관리 - 직원 카드, 역할 배지, 활성/비활성, 추가/편집">
+    <div class="screenshot-caption">그림 16. 설정 - 직원 관리</div>
+  </div>
+
+  <div class="feature-table">
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>직원 목록</td><td>카드 레이아웃, 전체/활성 인원 통계</td></tr>
+        <tr><td>직원 추가</td><td>이름, 이메일, 역할(admin/doctor/staff), 직위, 활성 상태</td></tr>
+        <tr><td>역할 배지</td><td><span class="status-badge warn">관리자</span> <span class="status-badge new">의사</span> <span class="status-badge neutral">스태프</span></td></tr>
+        <tr><td>활성/비활성</td><td>퇴사 직원 비활성화</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tab 3: 감사 로그 -->
+  <h3 style="margin:32px 0 12px; color:var(--color-secondary);">탭 3: 감사 로그</h3>
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/17-settings-audit.png" alt="감사 로그 - 활동 이력, 필터(액션/사용자/날짜), CSV 내보내기">
+    <div class="screenshot-caption">그림 17. 설정 - 감사 로그</div>
+  </div>
+
+  <div class="feature-table">
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>활동 로그</td><td>시간, 사용자, 액션, 대상, 상세 정보</td></tr>
+        <tr><td>필터</td><td>액션(생성/수정/삭제/로그인/내보내기), 사용자, 날짜 범위</td></tr>
+        <tr><td>CSV 내보내기</td><td>감사 로그 다운로드</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tab 4: 기본정보 -->
+  <h3 style="margin:32px 0 12px; color:var(--color-secondary);">탭 4: 기본정보</h3>
+  <div class="screenshot-container">
+    <img class="screenshot" src="screenshots/18-settings-clinic.png" alt="기본정보 - 병원 정보, 영업시간, 알림 설정, 목표 매출">
+    <div class="screenshot-caption">그림 18. 설정 - 기본정보</div>
+  </div>
+
+  <div class="feature-table">
+    <table>
+      <thead><tr><th>기능</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>병원 정보</td><td>병원명, 전화번호, 주소, 이메일, 카카오 채널</td></tr>
+        <tr><td>영업시간</td><td>평일, 토요일, 일요일, 점심시간</td></tr>
+        <tr><td>알림 설정</td><td>콜백 리마인더, 재고 부족 알림, 신규 상담 알림 ON/OFF</td></tr>
+        <tr><td>월 목표매출</td><td>리포트에서 달성률 계산에 사용되는 기준 금액</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="warning-box">
+    <h3>목표 매출 설정 중요!</h3>
+    <p><strong>리포트</strong>의 KPI 카드에서 "목표 달성률 %"는 이곳에서 설정한 월 목표매출을 기준으로 계산됩니다. 매월 초에 목표를 업데이트하세요.</p>
+  </div>
+
+  <div class="scenarios">
+    <h3>사용 시나리오</h3>
+    <details class="scenario">
+      <summary>시나리오 1: 신규 시술 항목 추가 (시술 마스터 + 재고 연동)</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>시술 마스터</strong> 탭에서 <strong>시술 추가</strong> 버튼을 클릭합니다.</li>
+          <li>시술명, 카테고리(lifting/antiaging/laser/skincare), 가격 범위, 소요시간을 입력합니다.</li>
+          <li>활성 상태를 <strong>ON</strong>으로 설정하고 저장합니다.</li>
+          <li><a href="#inventory">재고관리</a>에서 해당 시술에 사용되는 재료들을 등록합니다.</li>
+          <li>레시피(시술별 기본 사용 재료)를 설정하면 시술 시 자동 로드됩니다.</li>
+          <li>이제 <a href="#operations">운영현황</a>에서 케이스 등록 시 새 시술을 선택할 수 있습니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 2: 직원 입사/퇴사 처리</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>직원 관리</strong> 탭으로 이동합니다.</li>
+          <li><strong>입사 시</strong>: 직원 추가 &rarr; 이름, 이메일, 역할(admin/doctor/staff), 직위 입력 &rarr; 활성 상태 ON.</li>
+          <li>역할에 따라 시스템 기능이 달라집니다:
+            <ul style="margin-top:4px;">
+              <li><span class="status-badge new">doctor</span>: <a href="#operations">운영현황</a> 담당의 목록, <a href="#reports">리포트</a> 의사 성과에 포함</li>
+              <li><span class="status-badge neutral">staff</span>: <a href="#consultations">상담관리</a> 담당자 배정 목록에 포함</li>
+              <li><span class="status-badge warn">admin</span>: 모든 관리 기능 접근 가능</li>
+            </ul>
+          </li>
+          <li><strong>퇴사 시</strong>: 해당 직원의 활성 상태를 <strong>OFF</strong>로 변경합니다 (삭제하지 않고 비활성화하면 이력이 보존됩니다).</li>
+          <li>퇴사 직원에게 배정된 상담 건은 <a href="#consultations">상담관리</a>에서 <strong>벌크 액션으로 다른 담당자에게 이관</strong>합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 3: 시술 가격 변경</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>시술 마스터</strong> 탭에서 해당 시술을 찾습니다.</li>
+          <li><strong>편집</strong> 버튼을 클릭합니다.</li>
+          <li>가격 범위를 새 가격으로 수정합니다.</li>
+          <li>저장하면 <a href="#operations">운영현황</a>과 <a href="#reports">리포트</a>에 새 가격이 반영됩니다.</li>
+          <li>가격 변경을 상담팀에게 공유하여 상담 시 정확한 가격을 안내하도록 합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 4: 감사 로그로 누가 무엇을 변경했는지 확인</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>감사 로그</strong> 탭으로 이동합니다.</li>
+          <li>확인하려는 <strong>기간</strong>을 설정합니다.</li>
+          <li><strong>액션 필터</strong>에서 원하는 유형을 선택합니다 (생성/수정/삭제/로그인/내보내기).</li>
+          <li>특정 사용자의 활동만 보려면 <strong>사용자 필터</strong>를 사용합니다.</li>
+          <li>상세 정보 칼럼에서 변경 전/후 내용을 확인합니다.</li>
+          <li>필요 시 <strong>CSV 내보내기</strong>로 감사 자료를 보관합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 5: 매월 초 설정 점검 루틴</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>기본정보</strong> 탭에서 <strong>월 목표매출</strong>을 새 달에 맞게 업데이트합니다.</li>
+          <li>영업시간이 변경되었으면 수정합니다 (예: 공휴일 진료, 토요일 변경).</li>
+          <li><strong>알림 설정</strong>을 확인합니다 (콜백 리마인더, 재고 부족, 신규 상담 알림이 켜져 있는지).</li>
+          <li><strong>시술 마스터</strong>에서 중단할 시술은 비활성화, 새 시술은 추가합니다.</li>
+          <li><strong>직원 관리</strong>에서 인사 변동이 있으면 반영합니다.</li>
+        </ol>
+      </div>
+    </details>
+    <details class="scenario">
+      <summary>시나리오 6: 비정상 접근/활동 의심 시</summary>
+      <div class="scenario-content">
+        <ol>
+          <li><strong>감사 로그</strong> 탭으로 이동합니다.</li>
+          <li>액션 필터에서 <strong>로그인</strong>을 선택합니다.</li>
+          <li>비정상적인 시간대(심야/새벽)의 로그인 이력을 확인합니다.</li>
+          <li>의심스러운 <strong>삭제</strong> 활동이 있는지 확인합니다.</li>
+          <li>필요 시 해당 계정의 비밀번호를 변경하고, 결과를 CSV로 내보내 보관합니다.</li>
+        </ol>
+      </div>
+    </details>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 통합 워크플로우 -->
+<!-- ============================== -->
+<section id="workflows" class="guide-section">
+  <div class="section-header">
+    <h2>&#128260; 통합 워크플로우</h2>
+  </div>
+  <div class="section-summary">
+    <p>각 섹션이 어떻게 연결되어 작동하는지 보여주는 통합 워크플로우입니다.</p>
+  </div>
+
+  <h3 style="margin:24px 0 12px; color:var(--color-secondary);">워크플로우 1: 환자 전체 여정 (End-to-End)</h3>
+  <div class="workflow-container">
+    <div class="workflow-flow">
+      <div class="workflow-step">상담 접수<span class="step-section">상담관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">배정/콜백<span class="step-section">상담관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">예약 확정<span class="step-section">상담관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">시술 진행<span class="step-section">운영현황</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">재료 사용<span class="step-section">재고관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">결제 처리<span class="step-section">매출관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">팔로업<span class="step-section">알림관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">월간 분석<span class="step-section">리포트</span></div>
+    </div>
+  </div>
+
+  <h3 style="margin:32px 0 12px; color:var(--color-secondary);">워크플로우 2: 이벤트 캠페인 관리</h3>
+  <div class="workflow-container">
+    <div class="workflow-flow">
+      <div class="workflow-step">이벤트 등록<span class="step-section">이벤트관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">홍보 팝업<span class="step-section">팝업관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">상담 유입<span class="step-section">상담관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">시술 진행<span class="step-section">운영현황</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">매출 확인<span class="step-section">매출관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">성과 분석<span class="step-section">리포트</span></div>
+    </div>
+  </div>
+
+  <h3 style="margin:32px 0 12px; color:var(--color-secondary);">워크플로우 3: 재고-시술 연동</h3>
+  <div class="workflow-container">
+    <div class="workflow-flow">
+      <div class="workflow-step">시술 등록<span class="step-section">설정</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">레시피 설정<span class="step-section">재고관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">시술 진행<span class="step-section">운영현황</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">재고 차감<span class="step-section">재고관리</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">부족 알림<span class="step-section">대시보드</span></div>
+      <div class="workflow-arrow">&rarr;</div>
+      <div class="workflow-step">발주/입고<span class="step-section">재고관리</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 역할별 가이드 -->
+<!-- ============================== -->
+<section id="role-guide" class="guide-section">
+  <div class="section-header">
+    <h2>&#128101; 역할별 사용 가이드</h2>
+  </div>
+  <div class="section-summary">
+    <p>업무 역할에 따라 주로 사용하는 메뉴와 일일/주간 루틴을 안내합니다.</p>
+  </div>
+
+  <div class="role-tabs">
+    <button class="role-tab active" data-role="director" onclick="switchRole('director')">원장/실장</button>
+    <button class="role-tab" data-role="reception" onclick="switchRole('reception')">접수/상담</button>
+    <button class="role-tab" data-role="nurse" onclick="switchRole('nurse')">간호사/의료진</button>
+    <button class="role-tab" data-role="sysadmin" onclick="switchRole('sysadmin')">시스템 관리자</button>
+  </div>
+
+  <!-- 원장/실장 -->
+  <div class="role-content active" id="role-director">
+    <h4>주요 메뉴</h4>
+    <div class="link-cards" style="margin-bottom:16px;">
+      <span class="link-card">&#128202; 대시보드</span>
+      <span class="link-card">&#128200; 리포트</span>
+      <span class="link-card">&#128176; 매출관리</span>
+      <span class="link-card">&#9881; 설정</span>
+    </div>
+    <h4>일일 루틴</h4>
+    <ol class="routine-list">
+      <li><span class="menu-tag">대시보드</span> 출근 시 전체 현황 확인 (KPI 카드, 알림 배너)</li>
+      <li><span class="menu-tag">매출관리</span> 전일 매출 정산 결과 확인</li>
+    </ol>
+    <h4>주간/월간 루틴</h4>
+    <ol class="routine-list">
+      <li><span class="menu-tag">리포트</span> 월간 경영 성과 분석, 전월 비교</li>
+      <li><span class="menu-tag">리포트</span> 상담 퍼널에서 이탈 구간 파악</li>
+      <li><span class="menu-tag">설정</span> 목표 매출 업데이트 (매월 초)</li>
+      <li><span class="menu-tag">설정</span> 시술 가격/항목 변경 시 시술 마스터 수정</li>
+    </ol>
+  </div>
+
+  <!-- 접수/상담 -->
+  <div class="role-content" id="role-reception">
+    <h4>주요 메뉴</h4>
+    <div class="link-cards" style="margin-bottom:16px;">
+      <span class="link-card">&#128172; 상담관리</span>
+      <span class="link-card">&#128202; 대시보드</span>
+      <span class="link-card">&#127881; 이벤트관리</span>
+    </div>
+    <h4>일일 루틴</h4>
+    <ol class="routine-list">
+      <li><span class="menu-tag">대시보드</span> 오늘 콜백 위젯에서 전화할 환자 확인</li>
+      <li><span class="menu-tag">상담관리</span> "오늘 콜백만" 토글 &rarr; 순서대로 전화</li>
+      <li><span class="menu-tag">상담관리</span> 신규 탭에서 새 상담 확인 &rarr; 담당자 배정</li>
+      <li><span class="menu-tag">상담관리</span> 음성 메모로 상담 내용 기록</li>
+    </ol>
+    <h4>주간 루틴</h4>
+    <ol class="routine-list">
+      <li><span class="menu-tag">상담관리</span> CSV 내보내기로 주간 보고 자료 작성</li>
+      <li><span class="menu-tag">이벤트관리</span> 진행 중 이벤트 확인 후 상담 시 안내</li>
+    </ol>
+  </div>
+
+  <!-- 간호사/의료진 -->
+  <div class="role-content" id="role-nurse">
+    <h4>주요 메뉴</h4>
+    <div class="link-cards" style="margin-bottom:16px;">
+      <span class="link-card">&#127973; 운영현황</span>
+      <span class="link-card">&#128230; 재고관리</span>
+      <span class="link-card">&#128276; 알림관리</span>
+    </div>
+    <h4>일일 루틴</h4>
+    <ol class="routine-list">
+      <li><span class="menu-tag">운영현황</span> 당일 시술 일정 확인 (플로어맵/칸반)</li>
+      <li><span class="menu-tag">재고관리</span> 시술 전 레시피로 사용 재료 등록</li>
+      <li><span class="menu-tag">운영현황</span> 시술 진행 &rarr; 완료 처리</li>
+      <li><span class="menu-tag">알림관리</span> 팔로업 대상 환자에게 연락</li>
+    </ol>
+    <h4>주간 루틴</h4>
+    <ol class="routine-list">
+      <li><span class="menu-tag">재고관리</span> 알림 배너 확인, 부족 항목 발주 요청</li>
+      <li><span class="menu-tag">재고관리</span> 입고 물품 입고 처리</li>
+    </ol>
+  </div>
+
+  <!-- 시스템 관리자 -->
+  <div class="role-content" id="role-sysadmin">
+    <h4>주요 메뉴</h4>
+    <div class="link-cards" style="margin-bottom:16px;">
+      <span class="link-card">&#9881; 설정 (전체)</span>
+    </div>
+    <h4>주요 업무</h4>
+    <ol class="routine-list">
+      <li><span class="menu-tag">시술 마스터</span> 시술 항목/가격 변경, 신규 시술 등록</li>
+      <li><span class="menu-tag">직원 관리</span> 직원 입퇴사 처리 (추가/비활성화)</li>
+      <li><span class="menu-tag">감사 로그</span> 시스템 활동 이력 모니터링</li>
+      <li><span class="menu-tag">기본정보</span> 병원 정보, 영업시간, 알림 설정 관리</li>
+    </ol>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: 향후 개선 -->
+<!-- ============================== -->
+<section id="improvements" class="guide-section">
+  <div class="section-header">
+    <h2>&#128161; 향후 개선 사항</h2>
+  </div>
+  <div class="section-summary">
+    <p>현재 구현되어 있지 않지만 향후 추가할 수 있는 기능들입니다.</p>
+  </div>
+
+  <div class="feature-table">
+    <h3 style="color:var(--color-danger);">높은 우선순위</h3>
+    <table>
+      <thead><tr><th>기능</th><th>연관 섹션</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>실시간 알림</td><td>전체</td><td>WebSocket/SSE로 새 상담 접수, 콜백 리마인더 등 실시간 알림</td></tr>
+        <tr><td>카카오톡 API</td><td>알림관리</td><td>실제 카카오 알림톡 발송 연동</td></tr>
+        <tr><td>SMS API</td><td>알림관리</td><td>실제 SMS 발송 연동</td></tr>
+        <tr><td>이미지 CDN</td><td>이벤트/팝업</td><td>Supabase Storage 또는 S3 이미지 업로드</td></tr>
+        <tr><td>상담 폼 연동</td><td>상담관리</td><td>홈페이지 상담 폼 제출 &rarr; 자동 상담 등록</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="feature-table">
+    <h3 style="color:var(--color-warning);">중간 우선순위</h3>
+    <table>
+      <thead><tr><th>기능</th><th>연관 섹션</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>전후 사진 관리</td><td>운영/갤러리</td><td>시술 결과 사진 업로드 및 갤러리 연동</td></tr>
+        <tr><td>재고 자동 발주</td><td>재고관리</td><td>최소 수량 도달 시 공급업체에 자동 알림</td></tr>
+        <tr><td>예약 캘린더</td><td>운영현황</td><td>달력 뷰로 일/주/월 예약 현황</td></tr>
+        <tr><td>의사 스케줄</td><td>운영/설정</td><td>의사별 근무/휴무 스케줄 관리</td></tr>
+        <tr><td>환자 CRM</td><td>상담관리</td><td>환자별 상담/시술/결제 통합 이력</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="feature-table">
+    <h3 style="color:var(--color-info);">낮은 우선순위</h3>
+    <table>
+      <thead><tr><th>기능</th><th>연관 섹션</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>엑셀 가져오기</td><td>재고/상담</td><td>대량 데이터 일괄 등록</td></tr>
+        <tr><td>대시보드 커스텀</td><td>대시보드</td><td>위젯 추가/제거/재배치</td></tr>
+        <tr><td>다중 지점</td><td>전체</td><td>여러 지점 데이터 분리 관리</td></tr>
+        <tr><td>알림 자동화</td><td>알림관리</td><td>조건 기반 자동 알림 규칙 설정</td></tr>
+        <tr><td>네이버 예약</td><td>상담관리</td><td>네이버 예약 데이터 자동 동기화</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ============================== -->
+<!-- SECTION: API 참조 -->
+<!-- ============================== -->
+<section id="api-reference" class="guide-section">
+  <div class="section-header">
+    <h2>&#128268; API 참조</h2>
+  </div>
+  <div class="section-summary">
+    <p>관리자 시스템에서 사용하는 28개 API 엔드포인트 목록입니다. (개발자/시스템 관리자용)</p>
+  </div>
+
+  <div class="feature-table">
+    <table>
+      <thead><tr><th>카테고리</th><th>엔드포인트</th><th>메서드</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td rowspan="2">이벤트</td><td><code>/api/admin/events</code></td><td>GET, POST</td><td>목록/생성</td></tr>
+        <tr><td><code>/api/admin/events/[id]</code></td><td>PATCH, DELETE</td><td>수정/삭제</td></tr>
+        <tr><td rowspan="2">팝업</td><td><code>/api/admin/popups</code></td><td>GET, POST</td><td>목록/생성</td></tr>
+        <tr><td><code>/api/admin/popups/[id]</code></td><td>PATCH, DELETE</td><td>수정/삭제</td></tr>
+        <tr><td rowspan="2">운영</td><td><code>/api/admin/operations</code></td><td>GET, POST</td><td>목록/생성</td></tr>
+        <tr><td><code>/api/admin/operations/[id]</code></td><td>PATCH, DELETE</td><td>수정/삭제</td></tr>
+        <tr><td rowspan="7">재고</td><td><code>/api/admin/inventory</code></td><td>GET, POST</td><td>목록/생성</td></tr>
+        <tr><td><code>/api/admin/inventory/[id]</code></td><td>PATCH, DELETE</td><td>수정/삭제</td></tr>
+        <tr><td><code>/api/admin/inventory/use</code></td><td>POST</td><td>사용 등록 (RPC)</td></tr>
+        <tr><td><code>/api/admin/inventory/restock</code></td><td>POST</td><td>입고 등록</td></tr>
+        <tr><td><code>/api/admin/inventory/transactions</code></td><td>GET</td><td>거래 이력</td></tr>
+        <tr><td><code>/api/admin/inventory/stats</code></td><td>GET</td><td>재고 통계</td></tr>
+        <tr><td><code>/api/admin/inventory/recipes</code></td><td>GET</td><td>시술 레시피</td></tr>
+        <tr><td rowspan="5">알림</td><td><code>/api/admin/notifications/today</code></td><td>GET</td><td>오늘 발송 대상</td></tr>
+        <tr><td><code>/api/admin/notifications/complete</code></td><td>POST</td><td>발송/스킵 처리</td></tr>
+        <tr><td><code>/api/admin/notifications/history</code></td><td>GET</td><td>발송 이력</td></tr>
+        <tr><td><code>/api/admin/notification-templates</code></td><td>GET, POST</td><td>템플릿 관리</td></tr>
+        <tr><td><code>/api/admin/notification-templates/[id]</code></td><td>PATCH, DELETE</td><td>템플릿 수정/삭제</td></tr>
+        <tr><td rowspan="2">환자치료</td><td><code>/api/admin/patient-treatments</code></td><td>GET, POST</td><td>목록/생성</td></tr>
+        <tr><td><code>/api/admin/patient-treatments/[id]</code></td><td>PATCH, DELETE</td><td>수정/삭제</td></tr>
+        <tr><td>리포트</td><td><code>/api/admin/reports</code></td><td>GET</td><td>월간 리포트</td></tr>
+        <tr><td>매출</td><td><code>/api/admin/revenue</code></td><td>GET</td><td>매출 데이터</td></tr>
+        <tr><td rowspan="6">설정</td><td><code>/api/admin/settings/clinic</code></td><td>GET, PUT</td><td>병원 정보</td></tr>
+        <tr><td><code>/api/admin/settings/treatments</code></td><td>GET, POST</td><td>시술 마스터</td></tr>
+        <tr><td><code>/api/admin/settings/treatments/[id]</code></td><td>PATCH, DELETE</td><td>시술 수정/삭제</td></tr>
+        <tr><td><code>/api/admin/settings/staff</code></td><td>GET, POST</td><td>직원 관리</td></tr>
+        <tr><td><code>/api/admin/settings/staff/[id]</code></td><td>PATCH, DELETE</td><td>직원 수정/삭제</td></tr>
+        <tr><td><code>/api/admin/settings/audit-logs</code></td><td>GET</td><td>감사 로그</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<div style="margin-top:80px; padding:24px 0; border-top:2px solid var(--color-border); text-align:center; color:var(--color-text-light); font-size:13px;">
+  <p><strong>LIV CLINIC</strong> &mdash; 관리자 시스템 사용 설명서</p>
+  <p style="margin-top:4px;">v1.0 &middot; 2026-02-08 &middot; LIV Plastic Surgery</p>
+</div>
+
+</main>
+
+<!-- ===== Back to Top ===== -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="맨 위로">&#8593;</button>
+
+<!-- ===== JavaScript ===== -->
+<script>
+// Sidebar navigation - active state on scroll
+const sections = document.querySelectorAll('.guide-section');
+const navLinks = document.querySelectorAll('.nav-link');
+
+function updateActiveNav() {
+  let current = '';
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 100) current = section.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href') === '#' + current) {
+      link.classList.add('active');
+    }
+  });
+}
+
+// Back to top button
+function updateBackToTop() {
+  const btn = document.getElementById('back-to-top');
+  if (window.scrollY > 400) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+}
+
+window.addEventListener('scroll', () => {
+  updateActiveNav();
+  updateBackToTop();
+}, { passive: true });
+
+// Mobile menu
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+const overlay = document.getElementById('overlay');
+
+menuToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('open');
+  overlay.style.display = sidebar.classList.contains('open') ? 'block' : 'none';
+});
+
+overlay.addEventListener('click', () => {
+  sidebar.classList.remove('open');
+  overlay.style.display = 'none';
+});
+
+// Close mobile menu on nav click
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    if (window.innerWidth < 1024) {
+      sidebar.classList.remove('open');
+      overlay.style.display = 'none';
+    }
+  });
+});
+
+// Role tabs
+function switchRole(role) {
+  document.querySelectorAll('.role-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.role-content').forEach(c => c.classList.remove('active'));
+  document.querySelector(`[data-role="${role}"]`).classList.add('active');
+  document.getElementById(`role-${role}`).classList.add('active');
+}
+
+// Initialize
+updateActiveNav();
+</script>
+</body>
+</html>

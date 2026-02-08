@@ -354,6 +354,7 @@ export interface Database {
           notification_cycle_days: number | null
           next_notification_at: string | null
           notification_sent: boolean
+          auto_send: boolean
           notes: string | null
           created_at: string
           updated_at: string
@@ -369,6 +370,7 @@ export interface Database {
           notification_cycle_days?: number | null
           next_notification_at?: string | null
           notification_sent?: boolean
+          auto_send?: boolean
           notes?: string | null
           created_at?: string
           updated_at?: string
@@ -384,6 +386,7 @@ export interface Database {
           notification_cycle_days?: number | null
           next_notification_at?: string | null
           notification_sent?: boolean
+          auto_send?: boolean
           notes?: string | null
           created_at?: string
           updated_at?: string
@@ -436,6 +439,10 @@ export interface Database {
           sent_at: string
           status: string
           notes: string | null
+          solapi_message_id: string | null
+          solapi_status: string | null
+          fallback_channel: string | null
+          error_message: string | null
         }
         Insert: {
           id?: string
@@ -446,6 +453,10 @@ export interface Database {
           sent_at?: string
           status?: string
           notes?: string | null
+          solapi_message_id?: string | null
+          solapi_status?: string | null
+          fallback_channel?: string | null
+          error_message?: string | null
         }
         Update: {
           id?: string
@@ -456,6 +467,10 @@ export interface Database {
           sent_at?: string
           status?: string
           notes?: string | null
+          solapi_message_id?: string | null
+          solapi_status?: string | null
+          fallback_channel?: string | null
+          error_message?: string | null
         }
         Relationships: [
           {
@@ -485,6 +500,8 @@ export interface Database {
           discount_krw: number | null
           payment_method: string | null
           payment_status: string | null
+          import_batch_id: string | null
+          import_source: string
           created_at: string
           updated_at: string
         }
@@ -506,6 +523,8 @@ export interface Database {
           discount_krw?: number | null
           payment_method?: string | null
           payment_status?: string | null
+          import_batch_id?: string | null
+          import_source?: string
           created_at?: string
           updated_at?: string
         }
@@ -527,6 +546,8 @@ export interface Database {
           discount_krw?: number | null
           payment_method?: string | null
           payment_status?: string | null
+          import_batch_id?: string | null
+          import_source?: string
           created_at?: string
           updated_at?: string
         }
@@ -575,6 +596,7 @@ export interface Database {
           notify_low_stock_alert: boolean
           notify_new_consultation: boolean
           revenue_target: number
+          csv_column_mapping: Json
         }
         Insert: {
           id?: number
@@ -591,6 +613,7 @@ export interface Database {
           notify_low_stock_alert?: boolean
           notify_new_consultation?: boolean
           revenue_target?: number
+          csv_column_mapping?: Json
         }
         Update: {
           id?: number
@@ -607,6 +630,7 @@ export interface Database {
           notify_low_stock_alert?: boolean
           notify_new_consultation?: boolean
           revenue_target?: number
+          csv_column_mapping?: Json
         }
         Relationships: []
       }
@@ -648,6 +672,8 @@ export interface Database {
           price_range: string
           duration: number
           is_active: boolean
+          default_cycle_days: number | null
+          notification_template_id: string | null
           created_at: string
         }
         Insert: {
@@ -657,6 +683,8 @@ export interface Database {
           price_range?: string
           duration?: number
           is_active?: boolean
+          default_cycle_days?: number | null
+          notification_template_id?: string | null
           created_at?: string
         }
         Update: {
@@ -666,9 +694,54 @@ export interface Database {
           price_range?: string
           duration?: number
           is_active?: boolean
+          default_cycle_days?: number | null
+          notification_template_id?: string | null
           created_at?: string
         }
         Relationships: []
+      }
+      consultation_timeline: {
+        Row: {
+          id: string
+          consultation_id: string
+          event_type: string
+          description: string
+          actor: string | null
+          old_value: string | null
+          new_value: string | null
+          metadata: Json
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          consultation_id: string
+          event_type: string
+          description: string
+          actor?: string | null
+          old_value?: string | null
+          new_value?: string | null
+          metadata?: Json
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          consultation_id?: string
+          event_type?: string
+          description?: string
+          actor?: string | null
+          old_value?: string | null
+          new_value?: string | null
+          metadata?: Json
+          created_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: 'consultation_timeline_consultation_id_fkey'
+            columns: ['consultation_id']
+            referencedRelation: 'consultation_requests'
+            referencedColumns: ['id']
+          }
+        ]
       }
       inventory_counts: {
         Row: {

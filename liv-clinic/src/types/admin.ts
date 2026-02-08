@@ -589,6 +589,8 @@ export interface TreatmentMaster {
   priceRange: string;
   duration: number; // minutes
   isActive: boolean;
+  defaultCycleDays: number | null;
+  notificationTemplateId: string | null;
 }
 
 export type StaffRole = 'owner' | 'admin' | 'staff';
@@ -688,3 +690,114 @@ export const RELATED_TREATMENT_OPTIONS = [
   { value: '/antiaging/skinbooster', label: '스킨부스터' },
   { value: '/laser', label: '레이저' },
 ] as const;
+
+// ==========================================
+// V2 Enhancement Types
+// ==========================================
+
+// Phase 1: Notification Send Result
+export type NotificationSendResult = 'sent' | 'failed' | 'fallback_sms';
+
+// Phase 2: CSV Import
+export interface CsvColumnMapping {
+  date: string;
+  patientName: string;
+  procedureName: string;
+  category?: string;
+  doctor: string;
+  priceKrw: string;
+  discountKrw?: string;
+  paymentMethod?: string;
+  paymentStatus?: string;
+}
+
+export interface CsvImportResult {
+  imported: number;
+  skipped: number;
+  errors: { row: number; field: string; message: string }[];
+  batchId: string;
+}
+
+// Phase 3: Consultation Timeline
+export type TimelineEventType =
+  | 'status_change'
+  | 'note_added'
+  | 'callback_set'
+  | 'assigned'
+  | 'call_made'
+  | 'tag_added'
+  | 'budget_updated';
+
+export interface ConsultationTimelineEntry {
+  id: string;
+  consultationId: string;
+  eventType: TimelineEventType;
+  description: string;
+  actor: string | null;
+  oldValue: string | null;
+  newValue: string | null;
+  metadata: Record<string, unknown>;
+  createdAt: string;
+}
+
+export const TIMELINE_EVENT_LABELS: Record<TimelineEventType, string> = {
+  status_change: '상태 변경',
+  note_added: '메모 추가',
+  callback_set: '콜백 설정',
+  assigned: '담당자 배정',
+  call_made: '통화',
+  tag_added: '태그 추가',
+  budget_updated: '예산 수정',
+};
+
+export const TIMELINE_EVENT_ICONS: Record<TimelineEventType, string> = {
+  status_change: '🔄',
+  note_added: '📝',
+  callback_set: '📞',
+  assigned: '👤',
+  call_made: '☎️',
+  tag_added: '🏷️',
+  budget_updated: '💰',
+};
+
+// Phase 4: Inventory Burndown
+export interface InventoryBurndown {
+  itemId: string;
+  name: string;
+  currentStock: number;
+  dailyRate: number;
+  daysUntilEmpty: number;
+  estimatedDate: string;
+  severity: 'safe' | 'warning' | 'critical';
+}
+
+export interface CategorySummary {
+  category: InventoryCategory;
+  totalItems: number;
+  totalValue: number;
+  criticalCount: number;
+  warningCount: number;
+}
+
+// Phase 5: Patient Profile
+export interface PatientSearchResult {
+  name: string;
+  phone: string;
+  treatmentCount: number;
+  consultationCount: number;
+  lastVisit: string;
+  totalSpent: number;
+}
+
+export interface PatientProfile {
+  patient: { name: string; phone: string };
+  treatments: PatientTreatmentRow[];
+  consultations: ConsultationRow[];
+  notifications: NotificationHistoryRow[];
+  revenue: {
+    totalSpent: number;
+    visitCount: number;
+    avgPerVisit: number;
+    procedures: { name: string; count: number; total: number }[];
+  };
+}

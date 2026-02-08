@@ -4,6 +4,10 @@ import { useState, useEffect, useCallback, Fragment } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 import type { ConsultationRow } from '@/types/admin';
 import VoiceNoteInput from '@/components/admin/VoiceNoteInput';
+import ConsultationTimeline from '@/components/admin/ConsultationTimeline';
+import { useConsultationRealtime } from '@/hooks/useConsultationRealtime';
+import { useBrowserNotification } from '@/hooks/useBrowserNotification';
+import { useCallbackChecker } from '@/hooks/useCallbackChecker';
 import {
   LEAD_STATUS_LABELS,
   LEAD_STATUS_COLORS,
@@ -51,6 +55,11 @@ export default function ConsultationsPage() {
   // Unique assignees for filter
   const [assignees, setAssignees] = useState<string[]>([]);
 
+  // Realtime & Notification
+  const [notificationsEnabled, setNotificationsEnabled] = useState(false);
+  const [toast, setToast] = useState<{ message: string; type: 'info' | 'warning' } | null>(null);
+  const { requestPermission, showNotification } = useBrowserNotification();
+
   const fetchConsultations = useCallback(async () => {
     setLoading(true);
     let query = supabase
@@ -83,6 +92,44 @@ export default function ConsultationsPage() {
     setTotal(count ?? 0);
     setLoading(false);
   }, [statusFilter, searchQuery, assigneeFilter, todayCallbackOnly, page, supabase]);
+
+  // Realtime subscription
+  useConsultationRealtime({
+    onInsert: (row) => {
+      setConsultations((prev) => [row, ...prev]);
+      setTotal((prev) => prev + 1);
+      showNotification('새 상담 접수', {
+        body: `${row.name} - ${row.treatment_type}`,
+        tag: `consultation-${row.id}`,
+      });
+      setToast({ message: `새 상담: ${row.name} (${row.treatment_type})`, type: 'info' });
+      setTimeout(() => setToast(null), 5000);
+    },
+    onUpdate: (row) => {
+      setConsultations((prev) =>
+        prev.map((c) => (c.id === row.id ? row : c))
+      );
+    },
+    onDelete: (id) => {
+      setConsultations((prev) => prev.filter((c) => c.id !== id));
+      setTotal((prev) => Math.max(0, prev - 1));
+    },
+  });
+
+  // Callback checker - alerts when scheduled callbacks are due
+  useCallbackChecker(consultations, (c) => {
+    showNotification('콜백 알림', {
+      body: `${c.name} - ${c.treatment_type} 콜백 시간입니다`,
+      tag: `callback-${c.id}`,
+    });
+    setToast({ message: `콜백 시간: ${c.name} (${c.treatment_type})`, type: 'warning' });
+    setTimeout(() => setToast(null), 8000);
+  });
+
+  // Request notification permission on mount
+  useEffect(() => {
+    requestPermission().then(setNotificationsEnabled);
+  }, [requestPermission]);
 
   // Fetch unique assignees on mount
   useEffect(() => {
@@ -150,6 +197,18 @@ export default function ConsultationsPage() {
       const oldLabel = CONSULTATION_STATUS_LABELS[oldStatus] || oldStatus;
       const newLabel = CONSULTATION_STATUS_LABELS[newStatus] || newStatus;
       logAudit('update', `상담 - ${target.name}`, `상태 변경: ${oldLabel} → ${newLabel}`);
+      // Record timeline
+      fetch(`/api/admin/consultations/${id}/timeline`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventType: 'status_change',
+          description: `${oldLabel} → ${newLabel}`,
+          actor: 'admin',
+          oldValue: oldStatus,
+          newValue: newStatus,
+        }),
+      }).catch(() => {});
     }
     fetchConsultations();
   };
@@ -239,14 +298,40 @@ export default function ConsultationsPage() {
 
   return (
     <div>
+      {/* Toast notification */}
+      {toast && (
+        <div className={`fixed top-4 right-4 z-50 px-4 py-3 rounded-xl shadow-lg text-sm animate-pulse ${
+          toast.type === 'warning' ? 'bg-amber-500 text-white' : 'bg-[#6d4e42] text-white'
+        }`}>
+          {toast.message}
+          <button onClick={() => setToast(null)} className="ml-3 text-white/70 hover:text-white cursor-pointer">&times;</button>
+        </div>
+      )}
+
       <div className="flex items-center justify-between mb-4 lg:mb-6">
         <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">상담관리</h2>
-        <button
-          onClick={downloadCSV}
-          className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm bg-white border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
-        >
-          CSV 다운로드
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={async () => {
+              const enabled = await requestPermission();
+              setNotificationsEnabled(enabled);
+            }}
+            className={`px-3 py-1.5 lg:py-2 text-xs lg:text-sm rounded-lg border transition-colors cursor-pointer ${
+              notificationsEnabled
+                ? 'bg-[#b4988d] text-white border-[#b4988d]'
+                : 'bg-white text-[#575756] border-[#e5e5e5] hover:bg-[#f6f6f6]'
+            }`}
+            title={notificationsEnabled ? '알림 활성화됨' : '알림 허용 필요'}
+          >
+            🔔 {notificationsEnabled ? '알림 ON' : '알림 OFF'}
+          </button>
+          <button
+            onClick={downloadCSV}
+            className="px-3 lg:px-4 py-1.5 lg:py-2 text-xs lg:text-sm bg-white border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+          >
+            CSV 다운로드
+          </button>
+        </div>
       </div>
 
       {/* Filters */}
@@ -533,6 +618,8 @@ export default function ConsultationsPage() {
                           </p>
                         )}
                       </div>
+                      {/* Timeline */}
+                      <ConsultationTimeline consultationId={c.id} />
                     </div>
                   </div>
                 )}
@@ -837,6 +924,10 @@ export default function ConsultationsPage() {
                                   {c.notes || <span className="text-[#c0c0c0]">클릭하여 메모 추가</span>}
                                 </p>
                               )}
+                            </div>
+                            {/* Timeline */}
+                            <div className="md:col-span-3">
+                              <ConsultationTimeline consultationId={c.id} />
                             </div>
                           </div>
                         </td>

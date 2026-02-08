@@ -2,6 +2,7 @@
 
 import { INVENTORY_CATEGORY_LABELS, getStockStatus } from '@/types/admin';
 import type { InventoryItem } from '@/types/admin';
+import { BURNDOWN_SEVERITY_CONFIG, type BurndownResult } from '@/lib/inventory-utils';
 
 const STOCK_STATUS_CONFIG = {
   normal: { label: '정상', bg: 'bg-emerald-50', text: 'text-emerald-700', ring: 'ring-emerald-200', stroke: '#34d399', trail: '#ecfdf5' },
@@ -14,6 +15,7 @@ interface StockCardViewProps {
   selectedItemId: string | null;
   onSelectItem: (id: string | null) => void;
   onStockModal: (v: { item: InventoryItem; type: 'in' | 'out' }) => void;
+  burndownMap?: Map<string, BurndownResult>;
 }
 
 export default function StockCardView({
@@ -21,6 +23,7 @@ export default function StockCardView({
   selectedItemId,
   onSelectItem,
   onStockModal,
+  burndownMap,
 }: StockCardViewProps) {
   if (items.length === 0) {
     return (
@@ -116,6 +119,19 @@ export default function StockCardView({
                   <span className="text-[#a09080]">단가</span>
                   <span className="text-[#575756] tabular-nums">{item.unit_price.toLocaleString('ko-KR')}원</span>
                 </div>
+                {burndownMap && (() => {
+                  const bd = burndownMap.get(item.id);
+                  if (!bd || bd.daysUntilEmpty === Infinity) return null;
+                  const scfg = BURNDOWN_SEVERITY_CONFIG[bd.severity];
+                  return (
+                    <div className="flex justify-between text-xs items-center">
+                      <span className="text-[#a09080]">예상 소진</span>
+                      <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${scfg.bg} ${scfg.text} ${bd.severity === 'critical' ? 'animate-pulse' : ''}`}>
+                        {bd.daysUntilEmpty}일 ({bd.dailyRate}/일)
+                      </span>
+                    </div>
+                  );
+                })()}
               </div>
             </div>
 

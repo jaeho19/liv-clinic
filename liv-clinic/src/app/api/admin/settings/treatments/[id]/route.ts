@@ -21,6 +21,8 @@ export async function PATCH(
   if (body.priceRange !== undefined) updateObj.price_range = body.priceRange;
   if (body.duration !== undefined) updateObj.duration = body.duration;
   if (body.isActive !== undefined) updateObj.is_active = body.isActive;
+  if (body.defaultCycleDays !== undefined) updateObj.default_cycle_days = body.defaultCycleDays;
+  if (body.notificationTemplateId !== undefined) updateObj.notification_template_id = body.notificationTemplateId;
 
   try {
     const { data, error } = await admin
@@ -44,6 +46,8 @@ export async function PATCH(
       priceRange: data.price_range,
       duration: data.duration,
       isActive: data.is_active,
+      defaultCycleDays: data.default_cycle_days ?? null,
+      notificationTemplateId: data.notification_template_id ?? null,
     });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';

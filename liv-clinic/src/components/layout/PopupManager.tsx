@@ -45,7 +45,6 @@ function getActiveStaticPopups(): PopupRow[] {
 
 export default function PopupManager() {
   const [popups, setPopups] = useState<PopupRow[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [visible, setVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -91,35 +90,25 @@ export default function PopupManager() {
     loadPopups();
   }, []);
 
-  const currentPopup = popups[currentIndex];
+  // 모바일 필터링: 배열 레벨에서 일괄 적용
+  const displayPopups = isMobile
+    ? popups.filter((p) => p.show_on_mobile)
+    : popups;
 
-  if (!currentPopup || !visible) return null;
-
-  // Hide on mobile if configured
-  if (isMobile && !currentPopup.show_on_mobile) {
-    // Skip to next popup
-    if (currentIndex < popups.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
-    }
-    return null;
-  }
+  if (displayPopups.length === 0 || !visible) return null;
 
   const handleClose = () => {
-    if (currentIndex < popups.length - 1) {
-      setCurrentIndex((prev) => prev + 1);
-    } else {
-      setVisible(false);
-    }
+    setVisible(false);
   };
 
   const handleDismissToday = () => {
-    dismissToday(currentPopup.id);
-    handleClose();
+    displayPopups.forEach((p) => dismissToday(p.id));
+    setVisible(false);
   };
 
   return (
     <PopupModal
-      popup={currentPopup}
+      popups={displayPopups}
       onClose={handleClose}
       onDismissToday={handleDismissToday}
     />

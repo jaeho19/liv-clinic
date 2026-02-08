@@ -75,7 +75,7 @@
     "inmode": "インモード",
     "shurink": "シュリンク",
     "thread": "スレッドリフト",
-    "aptos": "アプトス ナミカ",
+    "aptos": "アプトス バイオリフティング",
     "antiaging": "アンチエイジング",
     "botox": "ボトックス",
     "filler": "フィラー",
@@ -1644,8 +1644,8 @@
         }
       },
       "aptos": {
-        "name": "アプトス ナミカ",
-        "fullName": "APTOS Namica",
+        "name": "アプトス バイオリフティング",
+        "fullName": "APTOS Bio Lifting",
         "tagline": "プレミアムスレッドリフト",
         "description": "ジョージア産プレミアムリフティング糸で自然で長持ちするリフティング効果を提供します。",
         "detail": {
@@ -1725,7 +1725,7 @@
             "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
           },
           "cta": {
-            "title": "APTOS NAMICA相談予約",
+            "title": "APTOS Bio Lifting相談予約",
             "description": "グローバル認証トレーニングを修了した専門医が1:1オーダーメイド相談を提供します",
             "button": "相談予約する"
           }

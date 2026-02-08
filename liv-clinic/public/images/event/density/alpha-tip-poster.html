@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIV - Density Alpha Tip Launching Event</title>
+<style>
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('/fonts/Paperlogy-4Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('/fonts/Paperlogy-6SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'Paperlogy';
+    src: url('/fonts/Paperlogy-7Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --primary: #b4988d;
+    --secondary: #6d4e42;
+    --gold: #c8a882;
+    --gold-light: #dfc9a8;
+    --dark: #1a1a1a;
+    --white: #ffffff;
+    --gray: #8a8a8a;
+    --gray-light: #b0b0b0;
+  }
+
+  body {
+    font-family: 'Paperlogy', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+  }
+
+  .poster {
+    width: 750px;
+    background: linear-gradient(180deg, #191919 0%, #1e1e1e 30%, #212121 60%, #191919 100%);
+    position: relative;
+    overflow: hidden;
+    color: var(--white);
+  }
+
+  /* Background glow behind device area */
+  .poster::before {
+    content: '';
+    position: absolute;
+    top: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(ellipse, rgba(200,168,130,0.07) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .poster > * { position: relative; z-index: 1; }
+
+  /* ── Top Section ── */
+  .top-section {
+    padding: 52px 60px 24px;
+    text-align: center;
+  }
+
+  .launching-badge {
+    display: inline-block;
+    border: 1px solid rgba(200,168,130,0.5);
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    padding: 9px 32px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .sub-title {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    font-weight: 400;
+    color: var(--gold);
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+
+  .main-title {
+    font-size: 56px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 8px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .generation-label {
+    font-size: 12.5px;
+    color: var(--gray);
+    letter-spacing: 2.5px;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 28px auto;
+  }
+
+  .divider-wide {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 5%, rgba(200,168,130,0.2) 50%, transparent 95%);
+    margin: 0 auto;
+  }
+
+  /* ── Device Section ── */
+  .device-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px 20px;
+    gap: 0;
+    position: relative;
+  }
+
+  .device-img {
+    height: 400px;
+    object-fit: contain;
+    filter: drop-shadow(0 24px 48px rgba(0,0,0,0.6));
+    position: relative;
+    z-index: 2;
+  }
+
+  .handpiece-img {
+    height: 220px;
+    object-fit: contain;
+    filter: drop-shadow(0 12px 32px rgba(0,0,0,0.5));
+    transform: rotate(-12deg) translateX(-30px);
+    position: relative;
+    z-index: 3;
+  }
+
+  /* ── Features Section ── */
+  .features-section {
+    padding: 24px 56px 28px;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 24px;
+  }
+
+  .feature-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 16px;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(200,168,130,0.1);
+    border-radius: 3px;
+  }
+
+  .feature-icon {
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(200,168,130,0.4);
+    border-radius: 50%;
+  }
+
+  .icon-svg {
+    width: 16px;
+    height: 16px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+  }
+
+  .feature-text {
+    font-size: 12.5px;
+    color: var(--gray-light);
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+  }
+
+  .feature-text strong {
+    color: var(--white);
+    font-weight: 600;
+    display: block;
+    font-size: 13.5px;
+    margin-bottom: 1px;
+  }
+
+  /* ── Price Section ── */
+  .price-section {
+    padding: 40px 60px 36px;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(200,168,130,0.05) 0%, rgba(200,168,130,0.015) 100%);
+    border-top: 1px solid rgba(200,168,130,0.12);
+    border-bottom: 1px solid rgba(200,168,130,0.12);
+    margin: 0 32px;
+  }
+
+  .package-label {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .package-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 2px;
+    margin-bottom: 4px;
+  }
+
+  .package-plus {
+    font-size: 20px;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 2px;
+  }
+
+  .package-detail {
+    font-size: 18px;
+    color: var(--gold-light);
+    font-weight: 600;
+    margin-bottom: 28px;
+    letter-spacing: 1px;
+  }
+
+  .price-tag-label {
+    font-size: 13px;
+    color: var(--gold);
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .price-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+
+  .price-amount {
+    font-size: 82px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -2px;
+  }
+
+  .price-unit {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--gold-light);
+    margin-left: 4px;
+  }
+
+  .price-sub {
+    font-size: 14px;
+    color: var(--gray);
+    letter-spacing: 0.5px;
+  }
+
+  .price-sub-highlight {
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  /* ── Period Section ── */
+  .period-section {
+    padding: 24px 60px 20px;
+    text-align: center;
+  }
+
+  .period-label {
+    font-size: 11px;
+    color: var(--gray);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .period-date {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 4px;
+  }
+
+  /* ── Footer ── */
+  .footer {
+    padding: 24px 60px 44px;
+    text-align: center;
+    border-top: 1px solid rgba(200,168,130,0.08);
+  }
+
+  .footer-logo-text {
+    margin-bottom: 12px;
+    color: var(--gray-light);
+    font-size: 14px;
+    letter-spacing: 5px;
+    font-weight: 400;
+  }
+
+  .footer-logo-text .liv {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--primary);
+    letter-spacing: 3px;
+    font-style: italic;
+    margin-right: 8px;
+  }
+
+  .footer-phone {
+    font-size: 20px;
+    color: var(--white);
+    font-weight: 700;
+    letter-spacing: 4px;
+    margin-bottom: 10px;
+  }
+
+  .footer-address {
+    font-size: 12px;
+    color: rgba(138,138,138,0.7);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: rgba(138,138,138,0.45);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Decorative Corners ── */
+  .corner-tl, .corner-br {
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    z-index: 2;
+  }
+  .corner-tl {
+    top: 22px; left: 22px;
+    border-top: 1px solid rgba(200,168,130,0.2);
+    border-left: 1px solid rgba(200,168,130,0.2);
+  }
+  .corner-br {
+    bottom: 22px; right: 22px;
+    border-bottom: 1px solid rgba(200,168,130,0.2);
+    border-right: 1px solid rgba(200,168,130,0.2);
+  }
+
+</style>
+</head>
+<body>
+
+<div class="poster">
+  <div class="corner-tl"></div>
+  <div class="corner-br"></div>
+
+  <!-- Title -->
+  <div class="top-section">
+    <div class="launching-badge">Launching Event</div>
+    <div class="sub-title">Density Alpha-F Tip</div>
+    <h1 class="main-title">덴서티 알파팁</h1>
+    <div class="generation-label">3rd Generation Premium Dual RF Lifting</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Device -->
+  <div class="device-section">
+    <img class="device-img" src="/images/equipment/density-new1.png" alt="Density Device">
+    <img class="handpiece-img" src="/images/equipment/density-new2.png" alt="Alpha Tip Handpiece">
+  </div>
+
+  <!-- Features -->
+  <div class="features-section">
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="feature-text">
+          <strong>Dual RF 구조</strong>
+          모노폴라 + 바이폴라 동시
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke-linecap="round"/></svg>
+        </div>
+        <div class="feature-text">
+          <strong>6.78MHz / 400W</strong>
+          고출력 에너지 전달
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 000-7.78z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="feature-text">
+          <strong>5단계 쿨링</strong>
+          통증 최소화 시스템
+        </div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">
+          <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" stroke-linecap="round"/><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <div class="feature-text">
+          <strong>즉각 + 장기 효과</strong>
+          타이트닝 & 리프팅
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="padding: 0 32px;"><div class="divider-wide"></div></div>
+
+  <!-- Price -->
+  <div class="price-section">
+    <div class="package-label">Special Package</div>
+    <div class="package-name">덴서티 알파팁 600샷</div>
+    <div class="package-plus">+</div>
+    <div class="package-detail">얼굴 전체 스킨보톡스</div>
+
+    <div class="price-tag-label">런칭가</div>
+    <div class="price-row">
+      <span class="price-amount">179</span><span class="price-unit">만원</span>
+    </div>
+    <div class="price-sub">
+      수입보톡스 변경 시 <span class="price-sub-highlight">+15만원</span>
+    </div>
+  </div>
+
+  <!-- Period -->
+  <div class="period-section">
+    <div class="period-label">Event Period</div>
+    <div class="period-date">~ 2026. 3. 31</div>
+  </div>
+
+  <div style="padding: 0 60px;"><div class="divider-wide"></div></div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-logo-text">
+      <span class="liv">LiV</span> PLASTIC SURGERY
+    </div>
+    <div class="footer-phone">02-797-2773</div>
+    <div class="footer-address">서울 강남구 압구정로 10길 21 4층 리브성형외과</div>
+    <div class="footer-note">* 부가세 별도 | 기간한정 런칭이벤트</div>
+  </div>
+</div>
+
+</body>
+</html>

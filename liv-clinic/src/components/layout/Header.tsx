@@ -107,8 +107,8 @@ export default function Header() {
         { key: 'density', label: t('density'), href: '/lifting/density' },
         { key: 'inmode', label: t('inmode'), href: '/lifting/inmode' },
         { key: 'shurink', label: t('shurink'), href: '/lifting/shurink' },
-        { key: 'thread', label: t('thread'), href: '/lifting/thread' },
         { key: 'aptos', label: t('aptos'), href: '/lifting/aptos' },
+        { key: 'thread', label: t('thread'), href: '/lifting/thread' },
       ],
     },
     {

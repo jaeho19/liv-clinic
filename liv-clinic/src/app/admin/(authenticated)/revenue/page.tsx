@@ -8,6 +8,7 @@ import {
   type PaymentMethod,
   type PaymentStatus,
 } from '@/types/admin';
+import CsvUploadModal from '@/components/admin/CsvUploadModal';
 
 // ─── 타입 ──────────────────────────────────────
 interface Transaction {
@@ -96,6 +97,7 @@ export default function RevenuePage() {
   const [editPrice, setEditPrice] = useState('');
   const [editMethod, setEditMethod] = useState<PaymentMethod>('CARD');
   const [saving, setSaving] = useState(false);
+  const [csvModalOpen, setCsvModalOpen] = useState(false);
 
   const fetchData = useCallback(async () => {
     setLoading(true);
@@ -177,6 +179,12 @@ export default function RevenuePage() {
               {p === 'today' ? '오늘' : p === 'week' ? '이번주' : '이번달'}
             </button>
           ))}
+          <button
+            onClick={() => setCsvModalOpen(true)}
+            className="px-3 py-1.5 text-sm rounded-lg bg-[#b4988d] text-white hover:bg-[#a08878] transition-colors cursor-pointer"
+          >
+            CSV 업로드
+          </button>
           <button
             onClick={() => data && exportCSV(filteredTransactions)}
             className="px-3 py-1.5 text-sm rounded-lg bg-white border border-[#e5e5e5] text-[#575756] hover:bg-[#f6f6f6] transition-colors cursor-pointer"
@@ -367,6 +375,13 @@ export default function RevenuePage() {
           </div>
         </>
       )}
+
+      {/* CSV Upload Modal */}
+      <CsvUploadModal
+        open={csvModalOpen}
+        onClose={() => setCsvModalOpen(false)}
+        onComplete={() => fetchData()}
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import { ProgressBar } from './StockGauge';
 import { INVENTORY_CATEGORY_LABELS, getStockStatus } from '@/types/admin';
 import type { InventoryItem } from '@/types/admin';
+import { BURNDOWN_SEVERITY_CONFIG, type BurndownResult } from '@/lib/inventory-utils';
 
 const STOCK_STATUS_CONFIG = {
   normal: { label: '정상', bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-400' },
@@ -15,6 +16,7 @@ interface StockTableViewProps {
   selectedItemId: string | null;
   onSelectItem: (id: string | null) => void;
   onStockModal: (v: { item: InventoryItem; type: 'in' | 'out' }) => void;
+  burndownMap?: Map<string, BurndownResult>;
 }
 
 export default function StockTableView({
@@ -22,6 +24,7 @@ export default function StockTableView({
   selectedItemId,
   onSelectItem,
   onStockModal,
+  burndownMap,
 }: StockTableViewProps) {
   return (
     <div className="bg-white rounded-2xl border border-[#ebe7e4] overflow-hidden"
@@ -36,6 +39,8 @@ export default function StockTableView({
               <th className="text-left py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider w-36">재고 수준</th>
               <th className="text-right py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">현재 / 최소</th>
               <th className="text-center py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">상태</th>
+              {burndownMap && <th className="text-center py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">예상 소진</th>}
+              {burndownMap && <th className="text-right py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">일평균</th>}
               <th className="text-left py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">공급사</th>
               <th className="text-center py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider w-28">입출고</th>
             </tr>
@@ -43,7 +48,7 @@ export default function StockTableView({
           <tbody>
             {items.length === 0 ? (
               <tr>
-                <td colSpan={7} className="text-center py-20 text-[#a09080]">
+                <td colSpan={burndownMap ? 9 : 7} className="text-center py-20 text-[#a09080]">
                   <div className="flex flex-col items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl bg-[#f6f4f2] flex items-center justify-center">
                       <svg className="w-6 h-6 text-[#c5b8b0]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -102,6 +107,31 @@ export default function StockTableView({
                         {cfg.label}
                       </span>
                     </td>
+                    {/* 예상 소진 */}
+                    {burndownMap && (() => {
+                      const bd = burndownMap.get(item.id);
+                      if (!bd || bd.daysUntilEmpty === Infinity) {
+                        return (
+                          <>
+                            <td className="py-3.5 px-4 text-center text-xs text-[#c5b8b0]">-</td>
+                            <td className="py-3.5 px-4 text-right text-xs text-[#c5b8b0]">-</td>
+                          </>
+                        );
+                      }
+                      const scfg = BURNDOWN_SEVERITY_CONFIG[bd.severity];
+                      return (
+                        <>
+                          <td className="py-3.5 px-4 text-center">
+                            <span className={`inline-flex items-center gap-1 text-[11px] px-2.5 py-1 rounded-full font-semibold ${scfg.bg} ${scfg.text} ${bd.severity === 'critical' ? 'animate-pulse' : ''}`}>
+                              {bd.daysUntilEmpty}일
+                            </span>
+                          </td>
+                          <td className="py-3.5 px-4 text-right text-xs text-[#8a8a8a] tabular-nums">
+                            {bd.dailyRate}/일
+                          </td>
+                        </>
+                      );
+                    })()}
                     {/* 공급사 */}
                     <td className="py-3.5 px-4 text-[#a09080] text-xs">{item.supplier || '-'}</td>
                     {/* 입출고 */}

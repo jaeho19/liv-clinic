@@ -12,6 +12,8 @@ function formatTreatment(r: Record<string, unknown>) {
     priceRange: r.price_range,
     duration: r.duration,
     isActive: r.is_active,
+    defaultCycleDays: r.default_cycle_days ?? null,
+    notificationTemplateId: r.notification_template_id ?? null,
   };
 }
 
@@ -26,7 +28,7 @@ export async function GET() {
   try {
     const { data, error } = await admin
       .from('treatment_masters')
-      .select('id, name, category, price_range, duration, is_active, created_at')
+      .select('id, name, category, price_range, duration, is_active, default_cycle_days, notification_template_id, created_at')
       .order('name', { ascending: true });
 
     if (error) throw error;

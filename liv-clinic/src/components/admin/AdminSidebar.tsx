@@ -27,6 +27,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/notifications', label: '알림관리', icon: '🔔' },
       { href: '/admin/reports', label: '리포트', icon: '📈' },
       { href: '/admin/revenue', label: '매출관리', icon: '💰' },
+      { href: '/admin/patients', label: '환자조회', icon: '👤' },
     ],
   },
   {

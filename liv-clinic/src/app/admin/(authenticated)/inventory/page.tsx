@@ -14,6 +14,8 @@ import type {
   ProcedureRecipe,
 } from '@/types/admin';
 
+import type { BurndownResult } from '@/lib/inventory-utils';
+
 // ─── New visual components ─────────────────────
 import StockDashboard from '@/components/admin/inventory/StockDashboard';
 import StockTableView from '@/components/admin/inventory/StockTableView';
@@ -43,6 +45,25 @@ async function fetchRecipes(): Promise<ProcedureRecipe[]> {
   return res.json();
 }
 
+interface BurndownApiItem {
+  itemId: string;
+  dailyRate: number;
+  daysUntilEmpty: number;
+  estimatedDate: string;
+  severity: 'safe' | 'warning' | 'critical';
+}
+
+interface BurndownApiResponse {
+  items: BurndownApiItem[];
+  categorySummary: { category: string; totalItems: number; totalValue: number; criticalCount: number; warningCount: number }[];
+}
+
+async function fetchBurndown(): Promise<BurndownApiResponse> {
+  const res = await fetch('/api/admin/inventory/burndown');
+  if (!res.ok) return { items: [], categorySummary: [] };
+  return res.json();
+}
+
 // ─── Types ──────────────────────────────────────
 type TabId = 'stock' | 'history' | 'restock';
 type ViewMode = 'table' | 'card' | 'group';
@@ -64,6 +85,8 @@ export default function InventoryPage() {
   const [showUseModal, setShowUseModal] = useState(false);
   const [stockModal, setStockModal] = useState<{ item: InventoryItem; type: 'in' | 'out' } | null>(null);
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+  const [burndownMap, setBurndownMap] = useState<Map<string, BurndownResult>>(new Map());
+  const [categorySummary, setCategorySummary] = useState<BurndownApiResponse['categorySummary']>([]);
 
   // Dismissed alert IDs (persisted in localStorage)
   const [dismissedAlertIds, setDismissedAlertIds] = useState<Set<string>>(() => {
@@ -96,14 +119,28 @@ export default function InventoryPage() {
   const loadData = useCallback(async () => {
     try {
       setError(null);
-      const [itemsData, txData, recipesData] = await Promise.all([
+      const [itemsData, txData, recipesData, burndownData] = await Promise.all([
         fetchItems(),
         fetchTransactions(),
         fetchRecipes(),
+        fetchBurndown(),
       ]);
       setItems(itemsData);
       setTransactions(txData);
       setRecipes(recipesData);
+
+      // Build burndown map
+      const map = new Map<string, BurndownResult>();
+      for (const bd of burndownData.items) {
+        map.set(bd.itemId, {
+          dailyRate: bd.dailyRate,
+          daysUntilEmpty: bd.daysUntilEmpty,
+          estimatedDate: bd.estimatedDate,
+          severity: bd.severity,
+        });
+      }
+      setBurndownMap(map);
+      setCategorySummary(burndownData.categorySummary);
     } catch (e) {
       setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
     } finally {
@@ -343,7 +380,7 @@ export default function InventoryPage() {
       </div>
 
       {/* Dashboard */}
-      <StockDashboard items={items} />
+      <StockDashboard items={items} categorySummary={categorySummary} />
 
       {/* Alerts */}
       <AlertBanner
@@ -448,6 +485,7 @@ export default function InventoryPage() {
                   selectedItemId={selectedItemId}
                   onSelectItem={setSelectedItemId}
                   onStockModal={setStockModal}
+                  burndownMap={burndownMap}
                 />
               )}
               {viewMode === 'card' && (
@@ -456,6 +494,7 @@ export default function InventoryPage() {
                   selectedItemId={selectedItemId}
                   onSelectItem={setSelectedItemId}
                   onStockModal={setStockModal}
+                  burndownMap={burndownMap}
                 />
               )}
               {viewMode === 'group' && (

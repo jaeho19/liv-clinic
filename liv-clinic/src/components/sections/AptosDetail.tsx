@@ -406,17 +406,26 @@ export default function AptosDetail() {
             className="p-6 rounded-xl bg-secondary/5 border border-secondary/10 flex flex-col md:flex-row items-center gap-6"
           >
             <Link
-              href="/images/aptos/certificate.pdf"
+              href="/images/aptos/certificate.jpg"
               target="_blank"
-              className="flex-shrink-0 w-20 h-28 rounded-lg bg-secondary flex items-center justify-center hover:bg-secondary/90 transition-colors"
+              className="flex-shrink-0 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
             >
-              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-              </svg>
+              <img
+                src="/images/aptos/certificate.jpg"
+                alt="APTOS Professional Course Certificate – Kim Sooyoung"
+                className="w-48 sm:w-60 md:w-72 h-auto"
+                draggable={false}
+              />
             </Link>
             <div>
               <h4 className="font-medium text-secondary mb-1">
-                {t('lifting.aptos.detail.trainingSection.certificateTitle')}
+                <Link
+                  href="/images/aptos/certificate.jpg"
+                  target="_blank"
+                  className="hover:underline"
+                >
+                  {t('lifting.aptos.detail.trainingSection.certificateTitle')}
+                </Link>
               </h4>
               <p className="text-sm text-mono mb-2">
                 {t('lifting.aptos.detail.trainingSection.certificateName')}
@@ -426,6 +435,139 @@ export default function AptosDetail() {
               </p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* 실의 종류 라인업 Section */}
+      <section className="py-20 md:py-28 bg-background">
+        <div className="container-custom">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-4xl font-light text-secondary mb-4">
+              모든 얼굴형에 대응하는 압도적인 라인업
+            </h2>
+            <p className="text-mono-light max-w-2xl mx-auto">
+              APTOS는 시술 부위와 목적에 따라 세분화된 실 라인업으로 최적의 리프팅 결과를 제공합니다.
+            </p>
+          </motion.div>
+
+          {/* Top row: Text description cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0 }}
+              className="p-6 rounded-2xl bg-white shadow-lg"
+            >
+              <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-4">
+                Light Lift 25
+              </div>
+              <h3 className="text-lg font-medium text-secondary mb-2">정밀한 소영역 리프팅</h3>
+              <p className="text-sm text-mono-light leading-relaxed">
+                25mm 길이의 소형 코그로 눈꼬리, 미간, 입꼬리 등 섬세한 부위의 미세 리프팅에 특화된 실입니다.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-6 rounded-2xl bg-white shadow-lg ring-2 ring-primary/20"
+            >
+              <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary text-white mb-4">
+                NAMICA 19
+              </div>
+              <h3 className="text-lg font-medium text-secondary mb-2">HA 코팅 차세대 실</h3>
+              <p className="text-sm text-mono-light leading-relaxed">
+                히알루론산 마이크로캡슐이 코팅된 혁신적인 실로 리프팅과 동시에 피부 재생·수분 공급 효과를 제공합니다.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="p-6 rounded-2xl bg-white shadow-lg"
+            >
+              <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-4">
+                Light Lift 50
+              </div>
+              <h3 className="text-lg font-medium text-secondary mb-2">강력한 대영역 리프팅</h3>
+              <p className="text-sm text-mono-light leading-relaxed">
+                50mm 길이의 대형 코그로 볼, 턱라인, 이중턱 등 넓은 영역의 강력한 리프팅에 최적화된 실입니다.
+              </p>
+            </motion.div>
+          </div>
+
+          {/* Bottom row: Product image cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="rounded-2xl bg-white shadow-lg overflow-hidden"
+            >
+              <div className="aspect-[4/3] relative bg-gray-50">
+                <img
+                  src="/images/aptos/Gemini_Generated_Image_8ht5zd8ht5zd8ht5.png"
+                  alt="압토스 Light Lift 25 패키지 이미지"
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h4 className="font-medium text-secondary">Light Lift 25</h4>
+                <p className="text-xs text-mono-light mt-1">소영역 정밀 리프팅</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="rounded-2xl bg-white shadow-lg overflow-hidden ring-2 ring-primary/20"
+            >
+              <div className="aspect-[4/3] relative bg-gray-50">
+                <img
+                  src="/images/aptos/Gemini_Generated_Image_1kxewx1kxewx1kxe.png"
+                  alt="압토스 NAMICA 19 패키지 이미지"
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h4 className="font-medium text-secondary">NAMICA 19</h4>
+                <p className="text-xs text-mono-light mt-1">HA 코팅 차세대 리프팅</p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="rounded-2xl bg-white shadow-lg overflow-hidden"
+            >
+              <div className="aspect-[4/3] relative bg-gray-50">
+                <img
+                  src="/images/aptos/Gemini_Generated_Image_8ht5zd8ht5zd8ht5.png"
+                  alt="압토스 Light Lift 50 패키지 이미지"
+                  className="w-full h-full object-contain p-4"
+                />
+              </div>
+              <div className="p-4 text-center">
+                <h4 className="font-medium text-secondary">Light Lift 50</h4>
+                <p className="text-xs text-mono-light mt-1">대영역 강력 리프팅</p>
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 

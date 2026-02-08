@@ -75,7 +75,7 @@
     "inmode": "InMode",
     "shurink": "Shurink",
     "thread": "Thread Lift",
-    "aptos": "APTOS NAMICA",
+    "aptos": "APTOS Bio Lifting",
     "antiaging": "Anti-aging",
     "botox": "Botox",
     "filler": "Filler",
@@ -1644,8 +1644,8 @@
         }
       },
       "aptos": {
-        "name": "APTOS Namica",
-        "fullName": "APTOS Namica",
+        "name": "APTOS Bio Lifting",
+        "fullName": "APTOS Bio Lifting",
         "tagline": "Premium Thread Lifting",
         "description": "Premium lifting threads from Georgia providing natural and long-lasting lifting effects.",
         "detail": {
@@ -1725,7 +1725,7 @@
             "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
           },
           "cta": {
-            "title": "Book APTOS NAMICA Consultation",
+            "title": "Book APTOS Bio Lifting Consultation",
             "description": "Our globally certified specialist provides personalized 1:1 consultation",
             "button": "Book Consultation"
           }

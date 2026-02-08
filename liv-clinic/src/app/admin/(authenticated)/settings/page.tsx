@@ -239,6 +239,7 @@ function TreatmentMasterTab() {
                 <th className="text-left py-3 px-4 text-[#8a8a8a] font-medium">카테고리</th>
                 <th className="text-left py-3 px-4 text-[#8a8a8a] font-medium">가격대</th>
                 <th className="text-right py-3 px-4 text-[#8a8a8a] font-medium">소요시간</th>
+                <th className="text-right py-3 px-4 text-[#8a8a8a] font-medium">알림 주기</th>
                 <th className="text-center py-3 px-4 text-[#8a8a8a] font-medium">상태</th>
                 <th className="text-center py-3 px-4 text-[#8a8a8a] font-medium">관리</th>
               </tr>
@@ -254,6 +255,13 @@ function TreatmentMasterTab() {
                   </td>
                   <td className="py-3 px-4 text-[#575756]">{t.priceRange}</td>
                   <td className="py-3 px-4 text-right text-[#575756]">{t.duration}분</td>
+                  <td className="py-3 px-4 text-right text-[#575756]">
+                    {t.defaultCycleDays ? (
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-blue-50 text-blue-700">{t.defaultCycleDays}일</span>
+                    ) : (
+                      <span className="text-xs text-[#ccc]">-</span>
+                    )}
+                  </td>
                   <td className="py-3 px-4 text-center">
                     <button
                       onClick={() => handleToggleActive(t.id)}
@@ -317,6 +325,8 @@ function TreatmentModal({
     priceRange: initial?.priceRange || '',
     duration: initial?.duration || 30,
     isActive: initial?.isActive ?? true,
+    defaultCycleDays: initial?.defaultCycleDays ?? '',
+    notificationTemplateId: initial?.notificationTemplateId ?? '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -329,6 +339,8 @@ function TreatmentModal({
       priceRange: form.priceRange.trim() || '-',
       duration: form.duration,
       isActive: form.isActive,
+      defaultCycleDays: form.defaultCycleDays ? Number(form.defaultCycleDays) : null,
+      notificationTemplateId: form.notificationTemplateId || null,
     });
   };
 
@@ -375,15 +387,28 @@ function TreatmentModal({
               />
             </div>
           </div>
-          <div>
-            <label className="block text-sm font-medium text-[#575756] mb-1">가격대</label>
-            <input
-              type="text"
-              value={form.priceRange}
-              onChange={(e) => setForm((f) => ({ ...f, priceRange: e.target.value }))}
-              placeholder="예: 50~100만원"
-              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
-            />
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">가격대</label>
+              <input
+                type="text"
+                value={form.priceRange}
+                onChange={(e) => setForm((f) => ({ ...f, priceRange: e.target.value }))}
+                placeholder="예: 50~100만원"
+                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">기본 알림 주기 (일)</label>
+              <input
+                type="number"
+                min={0}
+                value={form.defaultCycleDays}
+                onChange={(e) => setForm((f) => ({ ...f, defaultCycleDays: e.target.value }))}
+                placeholder="예: 90"
+                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+              />
+            </div>
           </div>
           <div className="flex items-center gap-2">
             <input

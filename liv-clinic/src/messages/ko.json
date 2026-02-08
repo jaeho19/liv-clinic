@@ -75,7 +75,7 @@
     "inmode": "인모드",
     "shurink": "슈링크",
     "thread": "실리프팅",
-    "aptos": "압토스 나미카",
+    "aptos": "압토스 바이오 리프팅",
     "antiaging": "안티에이징",
     "botox": "보톡스",
     "filler": "필러",
@@ -1646,8 +1646,8 @@
         }
       },
       "aptos": {
-        "name": "압토스 나미카",
-        "fullName": "APTOS Namica",
+        "name": "압토스 바이오 리프팅",
+        "fullName": "APTOS Bio Lifting",
         "tagline": "프리미엄 실리프팅",
         "description": "조지아산 프리미엄 리프팅 실로 자연스럽고 오래 지속되는 리프팅 효과를 제공합니다.",
         "detail": {
@@ -1727,7 +1727,7 @@
             "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
           },
           "cta": {
-            "title": "APTOS NAMICA 상담 예약",
+            "title": "APTOS Bio Lifting 상담 예약",
             "description": "글로벌 인증 트레이닝을 수료한 전문의가 1:1 맞춤 상담을 제공합니다",
             "button": "상담 예약하기"
           }

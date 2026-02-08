@@ -75,7 +75,7 @@
     "inmode": "InMode",
     "shurink": "Shurink",
     "thread": "线雕",
-    "aptos": "APTOS NAMICA",
+    "aptos": "APTOS 生物提升",
     "antiaging": "抗衰老",
     "botox": "肉毒素",
     "filler": "玻尿酸",
@@ -1644,8 +1644,8 @@
         }
       },
       "aptos": {
-        "name": "APTOS Namica",
-        "fullName": "APTOS Namica",
+        "name": "APTOS 生物提升",
+        "fullName": "APTOS Bio Lifting",
         "tagline": "高端线雕",
         "description": "格鲁吉亚高端提升线，提供自然持久的提升效果。",
         "detail": {
@@ -1725,7 +1725,7 @@
             "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
           },
           "cta": {
-            "title": "预约APTOS NAMICA咨询",
+            "title": "预约APTOS Bio Lifting咨询",
             "description": "完成全球认证培训的专家提供1:1定制咨询",
             "button": "预约咨询"
           }
