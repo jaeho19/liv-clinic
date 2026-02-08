@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-02-08T13:20:47.960Z",
+  "lastUpdated": "2026-02-08T13:39:21.835Z",
   "activeFeatures": [
     "admin-v2-enhancement",
     "lifting",
@@ -656,7 +656,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-08T12:21:58.673Z",
-        "lastUpdated": "2026-02-08T13:20:47.960Z"
+        "lastUpdated": "2026-02-08T13:39:21.835Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\guide\\page.tsx"
     }
@@ -669,7 +669,7 @@
   "session": {
     "startedAt": "2026-01-30T22:26:49.658Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-02-08T13:20:47.960Z"
+    "lastActivity": "2026-02-08T13:39:21.835Z"
   },
   "history": [
     {
@@ -2078,6 +2078,18 @@
     },
     {
       "timestamp": "2026-02-08T13:20:47.960Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T13:38:05.737Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-08T13:39:21.835Z",
       "feature": "guide",
       "phase": "do",
       "action": "updated"

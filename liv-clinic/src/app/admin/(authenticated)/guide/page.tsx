@@ -184,6 +184,15 @@ export default function GuidePage() {
           </div>
         </div>
 
+        {/* Logout */}
+        <div className="bg-white border border-[#e5e5e5] rounded-xl p-5 mt-4">
+          <h3 className="text-sm font-semibold text-[#6d4e42] mb-3">로그아웃 방법</h3>
+          <div className="space-y-2 text-xs text-[#575756]">
+            <p><strong>PC:</strong> 좌측 사이드바 하단의 <code className="bg-[#f6f6f6] px-1.5 py-0.5 rounded text-[#b4988d]">로그아웃</code> 버튼 클릭</p>
+            <p><strong>모바일:</strong> 좌측 상단 ☰ 메뉴 열기 → 하단 <code className="bg-[#f6f6f6] px-1.5 py-0.5 rounded text-[#b4988d]">로그아웃</code> 버튼 클릭</p>
+          </div>
+        </div>
+
         <TipBox>
           <strong>모바일에서 앱처럼 사용하기:</strong> Chrome &gt; 메뉴 &gt; &quot;홈 화면에 추가&quot; 또는 Safari &gt; 공유 &gt; &quot;홈 화면에 추가&quot;를 하면
           앱 아이콘처럼 바로 접속할 수 있습니다.
@@ -362,19 +371,43 @@ export default function GuidePage() {
         <h2 className="text-lg font-bold text-[#6d4e42] mb-1">🔔 알림관리</h2>
         <p className="text-xs text-[#8a8a8a] mb-4">환자 시술 기록 및 재방문 알림 발송 (카카오톡/SMS)</p>
 
-        <h3 className="text-sm font-semibold text-[#b4988d] mb-2">시나리오: 시술 후 재방문 알림 발송</h3>
+        <h3 className="text-sm font-semibold text-[#b4988d] mb-2">시나리오 A: 시술 후 재방문 알림 발송</h3>
         <ScenarioCard icon="🔔" when="시술 후 환자 기록을 남기고 재방문 알림을 설정할 때" where="알림관리" result="설정일에 자동 알림 발송" />
         <div className="mb-6">
-          <StepItem number={1} title="시술 기록 추가" desc="'시술 기록 추가' 버튼 → 환자명, 전화번호, 시술명, 시술일, 주기(일) 입력" />
+          <StepItem number={1} title="시술 기록 추가" desc="'+ 시술 기록' 버튼 → 환자명, 전화번호, 시술명, 카테고리, 담당의, 시술일, 알림 주기(일) 입력" />
           <StepItem number={2} title="알림 주기 설정" desc="예: 보톡스 90일, 써마지 365일. 시술일 + 주기일 후 자동 알림 예정됩니다." />
-          <StepItem number={3} title="알림 발송" desc="발송 예정일이 되면 목록에 표시됩니다. '발송' 클릭 → 카카오톡 또는 SMS로 전송됩니다." />
+          <StepItem number={3} title="발송 대상 확인" desc="KPI 카드에서 오늘 발송 대상, 미발송 건수, 이번 주 예정을 확인합니다." />
+          <StepItem number={4} title="알림 발송" desc="발송 예정 목록에서 '발송 처리' 클릭 → 채널(카카오톡/SMS) 선택 → 담당자 입력 → '실제 발송' 클릭" />
         </div>
 
+        {/* Scenario B: History */}
+        <h3 className="text-sm font-semibold text-[#b4988d] mb-2">시나리오 B: 발송 이력 확인</h3>
+        <ScenarioCard icon="🔔" when="이전 발송 결과를 확인하거나 CSV로 내보낼 때" where="알림관리 &gt; 발송 이력" result="채널별/상태별 발송 내역 조회 및 다운로드" />
+        <div className="mb-6">
+          <StepItem number={1} title="'발송 이력' 버튼 클릭" desc="알림관리 페이지 상단 우측의 '발송 이력' 버튼을 클릭합니다." />
+          <StepItem number={2} title="필터 설정" desc="채널(카카오톡/문자/전화), 상태(발송완료/실패/건너뜀), 기간(시작일~종료일)으로 필터링합니다." />
+          <StepItem number={3} title="이력 테이블 확인" desc="환자명, 전화번호, 시술, 채널, 상태, 담당자, 발송일시, 메모가 표 형태로 표시됩니다." />
+          <StepItem number={4} title="CSV 내보내기 (선택)" desc="우측 상단 'CSV 내보내기' 버튼으로 필터링된 이력을 다운로드합니다." />
+        </div>
+
+        {/* Scenario C: Templates */}
+        <h3 className="text-sm font-semibold text-[#b4988d] mb-2">시나리오 C: 알림 템플릿 관리</h3>
+        <ScenarioCard icon="🔔" when="발송 메시지를 시술별로 미리 작성해두고 싶을 때" where="알림관리 &gt; 템플릿" result="시술별 맞춤 알림 메시지 템플릿 관리" />
+        <div className="mb-6">
+          <StepItem number={1} title="'템플릿' 버튼 클릭" desc="알림관리 페이지 상단 우측의 '템플릿' 버튼을 클릭합니다." />
+          <StepItem number={2} title="새 템플릿 추가" desc="'+ 템플릿 추가' 버튼 → 시술명, 유형(재방문 안내/사후관리), 제목, 메시지 내용을 입력합니다." />
+          <StepItem number={3} title="변수 활용" desc={'메시지에 {name}(환자명), {treatment}(시술명), {days}(경과일), {event}(진행중 이벤트) 변수를 넣으면 발송 시 자동 치환됩니다.'} />
+          <StepItem number={4} title="영상 URL 첨부 (선택)" desc="YouTube 등 관리 영상 URL을 첨부하면 알림과 함께 전송됩니다." />
+          <StepItem number={5} title="활성/비활성 관리" desc="사용하지 않는 템플릿은 비활성화하여 숨길 수 있습니다. 삭제도 가능합니다." />
+        </div>
+
+        <h3 className="text-sm font-semibold text-[#6d4e42] mb-2">주요 기능 요약</h3>
         <FeatureTable items={[
-          { label: '시술 기록', desc: '환자별 시술 이력 및 재방문 주기 관리' },
-          { label: '알림 발송', desc: '카카오톡 우선 발송, 실패 시 SMS 자동 전환 (Solapi 연동)' },
-          { label: '발송 이력', desc: '발송 성공/실패 내역 조회 (발송이력 페이지)' },
-          { label: '템플릿', desc: '알림 메시지 템플릿 관리 (템플릿 페이지)' },
+          { label: '시술 기록', desc: '환자별 시술 이력 및 재방문 주기 관리 (환자명, 전화번호, 시술명, 담당의, 주기)' },
+          { label: '알림 발송', desc: '카카오톡 우선 발송, 실패 시 SMS 자동 전환 (Solapi 연동). 건너뛰기도 가능' },
+          { label: 'KPI 카드', desc: '오늘 발송 대상, 미발송 건수, 이번 주 예정 건수 표시' },
+          { label: '발송 이력', desc: '채널/상태/기간 필터, 환자명 검색, CSV 내보내기, 페이지네이션 (20건씩)' },
+          { label: '템플릿', desc: '시술별 재방문 안내/사후관리 메시지 템플릿 (변수 치환, 영상 URL, 활성/비활성 관리)' },
           { label: '미발송 경고', desc: '발송 예정이지만 아직 안 보낸 건수 경고 배너' },
         ]} />
 
