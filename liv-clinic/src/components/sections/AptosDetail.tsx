@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -160,10 +160,31 @@ const galleryImageSrcs = [
   '/images/aptos/consultation.jpg',
 ];
 
+// 제품 이미지 소스
+const productImages = [
+  '/images/aptos/Gemini_Generated_Image_8ht5zd8ht5zd8ht5.png',
+  '/images/aptos/Gemini_Generated_Image_1kxewx1kxewx1kxe.png',
+  '/images/aptos/Gemini_Generated_Image_8ht5zd8ht5zd8ht5.png',
+];
+
 export default function AptosDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
   const [activeImage, setActiveImage] = useState<number | null>(null);
+  const [showCertificate, setShowCertificate] = useState(false);
+
+  // ESC 키로 모달 닫기 (글로벌 키보드 리스너)
+  useEffect(() => {
+    if (!showCertificate && activeImage === null) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowCertificate(false);
+        setActiveImage(null);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [showCertificate, activeImage]);
 
   // 번역 데이터 로드
   const namicaIllustration = t.raw('lifting.aptos.detail.namicaIllustration') as { title: string; subtitle: string };
@@ -171,6 +192,8 @@ export default function AptosDetail() {
   const certifications = t.raw('lifting.aptos.detail.certifications') as Array<{ label: string; value: string }>;
   const gallery = t.raw('lifting.aptos.detail.gallery') as Array<{ alt: string; caption: string }>;
   const namicaSection = t.raw('lifting.aptos.detail.namicaSection') as { title: string; description: string; features: Array<{ icon: string; text: string }> };
+  const lineupPositioning = t.raw('lifting.aptos.detail.lineupSection.positioning') as Array<{ code: string; desc: string }>;
+  const lineupProducts = t.raw('lifting.aptos.detail.lineupSection.products') as Array<{ name: string; desc: string }>;
 
   return (
     <div className="min-h-screen bg-white">
@@ -405,10 +428,11 @@ export default function AptosDetail() {
             viewport={{ once: true }}
             className="p-6 rounded-xl bg-secondary/5 border border-secondary/10 flex flex-col md:flex-row items-center gap-6"
           >
-            <Link
-              href="/images/aptos/certificate.jpg"
-              target="_blank"
-              className="flex-shrink-0 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow"
+            <button
+              type="button"
+              onClick={() => setShowCertificate(true)}
+              className="flex-shrink-0 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
+              aria-label="APTOS Professional Course Certificate 확대 보기"
             >
               <img
                 src="/images/aptos/certificate.jpg"
@@ -416,16 +440,16 @@ export default function AptosDetail() {
                 className="w-48 sm:w-60 md:w-72 h-auto"
                 draggable={false}
               />
-            </Link>
+            </button>
             <div>
               <h4 className="font-medium text-secondary mb-1">
-                <Link
-                  href="/images/aptos/certificate.jpg"
-                  target="_blank"
-                  className="hover:underline"
+                <button
+                  type="button"
+                  onClick={() => setShowCertificate(true)}
+                  className="hover:underline cursor-pointer text-left"
                 >
                   {t('lifting.aptos.detail.trainingSection.certificateTitle')}
-                </Link>
+                </button>
               </h4>
               <p className="text-sm text-mono mb-2">
                 {t('lifting.aptos.detail.trainingSection.certificateName')}
@@ -448,125 +472,57 @@ export default function AptosDetail() {
             className="text-center mb-16"
           >
             <h2 className="text-3xl md:text-4xl font-light text-secondary mb-4">
-              모든 얼굴형에 대응하는 압도적인 라인업
+              {t('lifting.aptos.detail.lineupSection.title')}
             </h2>
-            <p className="text-mono-light max-w-2xl mx-auto">
-              APTOS는 시술 부위와 목적에 따라 세분화된 실 라인업으로 최적의 리프팅 결과를 제공합니다.
-            </p>
           </motion.div>
 
-          {/* Top row: Text description cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0 }}
-              className="p-6 rounded-2xl bg-white shadow-lg"
-            >
-              <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-4">
-                Light Lift 25
+          {/* 제품 포지셔닝 */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row justify-center gap-6 md:gap-10 mb-16"
+          >
+            {lineupPositioning.map((item, index) => (
+              <div
+                key={item.code}
+                className={`flex items-center gap-3 px-6 py-4 rounded-xl bg-white shadow-md${index === 1 ? ' ring-2 ring-primary/20' : ''}`}
+              >
+                <span className="text-2xl font-bold text-primary">{item.code}</span>
+                <span className="text-mono">{item.desc}</span>
               </div>
-              <h3 className="text-lg font-medium text-secondary mb-2">정밀한 소영역 리프팅</h3>
-              <p className="text-sm text-mono-light leading-relaxed">
-                25mm 길이의 소형 코그로 눈꼬리, 미간, 입꼬리 등 섬세한 부위의 미세 리프팅에 특화된 실입니다.
-              </p>
-            </motion.div>
+            ))}
+          </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="p-6 rounded-2xl bg-white shadow-lg ring-2 ring-primary/20"
-            >
-              <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary text-white mb-4">
-                NAMICA 19
-              </div>
-              <h3 className="text-lg font-medium text-secondary mb-2">HA 코팅 차세대 실</h3>
-              <p className="text-sm text-mono-light leading-relaxed">
-                히알루론산 마이크로캡슐이 코팅된 혁신적인 실로 리프팅과 동시에 피부 재생·수분 공급 효과를 제공합니다.
-              </p>
-            </motion.div>
+          {/* 구분선 */}
+          <div className="border-t border-border mb-16" />
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="p-6 rounded-2xl bg-white shadow-lg"
-            >
-              <div className="inline-block px-3 py-1 rounded-full text-xs font-medium bg-primary/10 text-primary mb-4">
-                Light Lift 50
-              </div>
-              <h3 className="text-lg font-medium text-secondary mb-2">강력한 대영역 리프팅</h3>
-              <p className="text-sm text-mono-light leading-relaxed">
-                50mm 길이의 대형 코그로 볼, 턱라인, 이중턱 등 넓은 영역의 강력한 리프팅에 최적화된 실입니다.
-              </p>
-            </motion.div>
-          </div>
-
-          {/* Bottom row: Product image cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="rounded-2xl bg-white shadow-lg overflow-hidden"
-            >
-              <div className="aspect-[4/3] relative bg-gray-50">
-                <img
-                  src="/images/aptos/Gemini_Generated_Image_8ht5zd8ht5zd8ht5.png"
-                  alt="압토스 Light Lift 25 패키지 이미지"
-                  className="w-full h-full object-contain p-4"
-                />
-              </div>
-              <div className="p-4 text-center">
-                <h4 className="font-medium text-secondary">Light Lift 25</h4>
-                <p className="text-xs text-mono-light mt-1">소영역 정밀 리프팅</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="rounded-2xl bg-white shadow-lg overflow-hidden ring-2 ring-primary/20"
-            >
-              <div className="aspect-[4/3] relative bg-gray-50">
-                <img
-                  src="/images/aptos/Gemini_Generated_Image_1kxewx1kxewx1kxe.png"
-                  alt="압토스 NAMICA 19 패키지 이미지"
-                  className="w-full h-full object-contain p-4"
-                />
-              </div>
-              <div className="p-4 text-center">
-                <h4 className="font-medium text-secondary">NAMICA 19</h4>
-                <p className="text-xs text-mono-light mt-1">HA 코팅 차세대 리프팅</p>
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="rounded-2xl bg-white shadow-lg overflow-hidden"
-            >
-              <div className="aspect-[4/3] relative bg-gray-50">
-                <img
-                  src="/images/aptos/Gemini_Generated_Image_8ht5zd8ht5zd8ht5.png"
-                  alt="압토스 Light Lift 50 패키지 이미지"
-                  className="w-full h-full object-contain p-4"
-                />
-              </div>
-              <div className="p-4 text-center">
-                <h4 className="font-medium text-secondary">Light Lift 50</h4>
-                <p className="text-xs text-mono-light mt-1">대영역 강력 리프팅</p>
-              </div>
-            </motion.div>
+          {/* 제품 라인업 상세 */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {lineupProducts.map((product, index) => (
+              <motion.div
+                key={product.name}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className={`rounded-2xl bg-white shadow-lg overflow-hidden${index === 1 ? ' ring-2 ring-primary/20' : ''}`}
+              >
+                <div className="aspect-[4/3] relative bg-gray-50">
+                  <img
+                    src={productImages[index]}
+                    alt={product.name}
+                    className="w-full h-full object-contain p-4"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-medium text-secondary mb-3">{product.name}</h3>
+                  <p className="text-sm text-mono-light leading-relaxed">
+                    {product.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
@@ -621,6 +577,42 @@ export default function AptosDetail() {
             <button
               className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
               onClick={() => setActiveImage(null)}
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Certificate Modal */}
+      {showCertificate && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setShowCertificate(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="APTOS Professional Course Certificate"
+        >
+          <motion.div
+            initial={{ scale: 0.9 }}
+            animate={{ scale: 1 }}
+            className="relative max-w-3xl w-full"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src="/images/aptos/certificate.jpg"
+              alt="APTOS Professional Course Certificate – Kim Sooyoung"
+              className="w-full h-auto rounded-lg"
+            />
+            <button
+              className="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/20 flex items-center justify-center text-white hover:bg-white/30 transition-colors"
+              onClick={() => setShowCertificate(false)}
+              aria-label="닫기"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
