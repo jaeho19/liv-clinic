@@ -12,6 +12,9 @@ import {
 } from '@/types/admin';
 import type { OperationCase, TreatmentType, CaseStatus } from '@/types/admin';
 import FloorMap from '@/components/admin/floormap/FloorMap';
+import VoiceNoteInput from '@/components/admin/VoiceNoteInput';
+import { mapVoiceToCase } from '@/types/voice-templates';
+import type { TemplateData } from '@/types/voice-templates';
 
 // ─── API fetch ──────────────────────────────────────────
 async function fetchCases(): Promise<OperationCase[]> {
@@ -383,6 +386,8 @@ function AddCaseModal({
   onAdd: (data: Omit<OperationCase, 'id' | 'createdAt'>) => void;
   onClose: () => void;
 }) {
+  const [inputTab, setInputTab] = useState<'manual' | 'voice'>('manual');
+  const [voiceText, setVoiceText] = useState('');
   const [form, setForm] = useState({
     patientName: '',
     treatmentType: 'PROCEDURE' as TreatmentType,
@@ -401,6 +406,20 @@ function AddCaseModal({
       procedure: procedures[0] as string,
       expectedDurationMin: config?.defaultDurationMin || 60,
     }));
+  };
+
+  const handleVoiceComplete = (data: TemplateData) => {
+    const mapped = mapVoiceToCase(data);
+    setForm(f => ({
+      ...f,
+      patientName: mapped.patientName || f.patientName,
+      treatmentType: mapped.treatmentType || f.treatmentType,
+      procedure: mapped.procedure || f.procedure,
+      doctor: mapped.doctor || f.doctor,
+      expectedDurationMin: mapped.expectedDurationMin || f.expectedDurationMin,
+      memo: mapped.memo || f.memo,
+    }));
+    setInputTab('manual');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -427,117 +446,172 @@ function AddCaseModal({
         <div className="px-6 py-4 border-b border-[#e5e5e5]">
           <h3 className="font-bold text-[#6d4e42]">새 케이스 추가</h3>
         </div>
-        <form onSubmit={handleSubmit} className="p-6 space-y-4">
-          {/* 환자명 */}
-          <div>
-            <label className="block text-sm font-medium text-[#575756] mb-1">
-              환자명 <span className="text-red-400">*</span>
-            </label>
-            <input
-              type="text"
-              value={form.patientName}
-              onChange={(e) => setForm((f) => ({ ...f, patientName: e.target.value }))}
-              placeholder="홍길동"
-              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
-              required
-              autoFocus
+
+        {/* 탭 선택 */}
+        <div className="flex border-b border-[#e5e5e5]">
+          <button
+            type="button"
+            onClick={() => setInputTab('manual')}
+            className={`flex-1 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
+              inputTab === 'manual'
+                ? 'text-[#6d4e42] border-b-2 border-[#b4988d]'
+                : 'text-[#8a8a8a] hover:text-[#575756]'
+            }`}
+          >
+            수동 입력
+          </button>
+          <button
+            type="button"
+            onClick={() => setInputTab('voice')}
+            className={`flex-1 py-2.5 text-sm font-medium transition-colors cursor-pointer flex items-center justify-center gap-1.5 ${
+              inputTab === 'voice'
+                ? 'text-[#6d4e42] border-b-2 border-[#b4988d]'
+                : 'text-[#8a8a8a] hover:text-[#575756]'
+            }`}
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+            </svg>
+            음성 입력
+          </button>
+        </div>
+
+        {inputTab === 'voice' ? (
+          <div className="p-6">
+            <p className="text-xs text-[#8a8a8a] mb-3">
+              음성으로 환자명, 시술, 담당의 등을 순서대로 말씀하세요. 완료 후 수동 입력 탭에서 확인/수정할 수 있습니다.
+            </p>
+            <VoiceNoteInput
+              value={voiceText}
+              onChange={setVoiceText}
+              templateType="operation"
+              mobileOptimized={true}
+              onTemplateComplete={handleVoiceComplete}
+              rows={4}
             />
-          </div>
-
-          {/* 유형 */}
-          <div>
-            <label className="block text-sm font-medium text-[#575756] mb-1">
-              유형 <span className="text-red-400">*</span>
-            </label>
-            <div className="grid grid-cols-4 gap-2">
-              {TREATMENT_TYPES.map((type) => (
-                <button
-                  key={type}
-                  type="button"
-                  onClick={() => handleTreatmentTypeChange(type)}
-                  className={`py-2 px-2 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
-                    form.treatmentType === type
-                      ? 'border-[#b4988d] bg-[#b4988d]/10 text-[#6d4e42]'
-                      : 'border-[#e5e5e5] text-[#8a8a8a] hover:border-[#b4988d]/50'
-                  }`}
-                >
-                  {TREATMENT_TYPE_ICONS[type]} {TREATMENT_TYPE_LABELS[type]}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* 시술 + 소요시간 */}
-          <div className="grid grid-cols-3 gap-3">
-            <div className="col-span-2">
-              <label className="block text-sm font-medium text-[#575756] mb-1">시술</label>
-              <select
-                value={form.procedure}
-                onChange={(e) => setForm((f) => ({ ...f, procedure: e.target.value }))}
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+            <div className="flex gap-2 pt-4">
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex-1 py-2.5 border border-[#e5e5e5] rounded-lg text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] transition-colors cursor-pointer"
               >
-                {procedureOptions.map((p) => (
-                  <option key={p} value={p}>{p}</option>
-                ))}
-              </select>
+                취소
+              </button>
             </div>
+          </div>
+        ) : (
+          <form onSubmit={handleSubmit} className="p-6 space-y-4">
+            {/* 환자명 */}
             <div>
-              <label className="block text-sm font-medium text-[#575756] mb-1">소요(분)</label>
+              <label className="block text-sm font-medium text-[#575756] mb-1">
+                환자명 <span className="text-red-400">*</span>
+              </label>
+              <input
+                type="text"
+                value={form.patientName}
+                onChange={(e) => setForm((f) => ({ ...f, patientName: e.target.value }))}
+                placeholder="홍길동"
+                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                required
+                autoFocus
+              />
+            </div>
+
+            {/* 유형 */}
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">
+                유형 <span className="text-red-400">*</span>
+              </label>
+              <div className="grid grid-cols-4 gap-2">
+                {TREATMENT_TYPES.map((type) => (
+                  <button
+                    key={type}
+                    type="button"
+                    onClick={() => handleTreatmentTypeChange(type)}
+                    className={`py-2 px-2 rounded-lg text-xs font-medium border transition-all cursor-pointer ${
+                      form.treatmentType === type
+                        ? 'border-[#b4988d] bg-[#b4988d]/10 text-[#6d4e42]'
+                        : 'border-[#e5e5e5] text-[#8a8a8a] hover:border-[#b4988d]/50'
+                    }`}
+                  >
+                    {TREATMENT_TYPE_ICONS[type]} {TREATMENT_TYPE_LABELS[type]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* 시술 + 소요시간 */}
+            <div className="grid grid-cols-3 gap-3">
+              <div className="col-span-2">
+                <label className="block text-sm font-medium text-[#575756] mb-1">시술</label>
+                <select
+                  value={form.procedure}
+                  onChange={(e) => setForm((f) => ({ ...f, procedure: e.target.value }))}
+                  className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                >
+                  {procedureOptions.map((p) => (
+                    <option key={p} value={p}>{p}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-[#575756] mb-1">소요(분)</label>
+                <select
+                  value={form.expectedDurationMin}
+                  onChange={(e) => setForm((f) => ({ ...f, expectedDurationMin: parseInt(e.target.value) }))}
+                  className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+                >
+                  {DURATION_OPTIONS.map((d) => (
+                    <option key={d} value={d}>{d}분</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
+            {/* 담당의 */}
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">담당의</label>
               <select
-                value={form.expectedDurationMin}
-                onChange={(e) => setForm((f) => ({ ...f, expectedDurationMin: parseInt(e.target.value) }))}
+                value={form.doctor}
+                onChange={(e) => setForm((f) => ({ ...f, doctor: e.target.value }))}
                 className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
               >
-                {DURATION_OPTIONS.map((d) => (
-                  <option key={d} value={d}>{d}분</option>
+                {DOCTOR_OPTIONS.map((d) => (
+                  <option key={d} value={d}>{d}</option>
                 ))}
               </select>
             </div>
-          </div>
 
-          {/* 담당의 */}
-          <div>
-            <label className="block text-sm font-medium text-[#575756] mb-1">담당의</label>
-            <select
-              value={form.doctor}
-              onChange={(e) => setForm((f) => ({ ...f, doctor: e.target.value }))}
-              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
-            >
-              {DOCTOR_OPTIONS.map((d) => (
-                <option key={d} value={d}>{d}</option>
-              ))}
-            </select>
-          </div>
+            {/* 메모 */}
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">메모</label>
+              <textarea
+                value={form.memo}
+                onChange={(e) => setForm((f) => ({ ...f, memo: e.target.value }))}
+                placeholder="특이사항, 요청사항 등"
+                rows={2}
+                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d] resize-none"
+              />
+            </div>
 
-          {/* 메모 */}
-          <div>
-            <label className="block text-sm font-medium text-[#575756] mb-1">메모</label>
-            <textarea
-              value={form.memo}
-              onChange={(e) => setForm((f) => ({ ...f, memo: e.target.value }))}
-              placeholder="특이사항, 요청사항 등"
-              rows={2}
-              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d] resize-none"
-            />
-          </div>
-
-          {/* 버튼 */}
-          <div className="flex gap-2 pt-2">
-            <button
-              type="button"
-              onClick={onClose}
-              className="flex-1 py-2.5 border border-[#e5e5e5] rounded-lg text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] transition-colors cursor-pointer"
-            >
-              취소
-            </button>
-            <button
-              type="submit"
-              className="flex-1 py-2.5 bg-[#b4988d] text-white rounded-lg text-sm font-medium hover:bg-[#a08878] transition-colors cursor-pointer"
-            >
-              추가
-            </button>
-          </div>
-        </form>
+            {/* 버튼 */}
+            <div className="flex gap-2 pt-2">
+              <button
+                type="button"
+                onClick={onClose}
+                className="flex-1 py-2.5 border border-[#e5e5e5] rounded-lg text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+              >
+                취소
+              </button>
+              <button
+                type="submit"
+                className="flex-1 py-2.5 bg-[#b4988d] text-white rounded-lg text-sm font-medium hover:bg-[#a08878] transition-colors cursor-pointer"
+              >
+                추가
+              </button>
+            </div>
+          </form>
+        )}
       </div>
     </div>
   );

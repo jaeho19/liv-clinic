@@ -1,6 +1,11 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react';
+import {
+  TEMPLATE_CONFIGS,
+  templateDataToText,
+} from '@/types/voice-templates';
+import type { TemplateType, TemplateData } from '@/types/voice-templates';
 
 // Web Speech API 타입 선언
 interface SpeechRecognitionEvent extends Event {
@@ -33,35 +38,27 @@ declare global {
   }
 }
 
-// 상담 템플릿 필드 정의
+/** @deprecated Use TemplateData from voice-templates.ts instead */
 export interface ConsultationTemplate {
-  patientName?: string;    // 환자명
-  consultType?: string;    // 상담 유형 (초진/재진/시술후관리)
-  mainConcern?: string;    // 주요 호소
-  consultNote?: string;    // 상담 내용
-  recommended?: string;    // 권장 시술
-  estimatedCost?: string;  // 예상 비용
-  nextStep?: string;       // 다음 단계
-  memo?: string;           // 메모
+  patientName?: string;
+  consultType?: string;
+  mainConcern?: string;
+  consultNote?: string;
+  recommended?: string;
+  estimatedCost?: string;
+  nextStep?: string;
+  memo?: string;
 }
 
-const TEMPLATE_FIELDS = [
-  { key: 'patientName', label: '환자명', placeholder: '환자 이름을 말씀해주세요' },
-  { key: 'consultType', label: '상담 유형', placeholder: '초진, 재진, 시술후관리 중 하나를 말씀해주세요' },
-  { key: 'mainConcern', label: '주요 호소', placeholder: '환자의 주요 고민이나 원하는 부위를 말씀해주세요' },
-  { key: 'consultNote', label: '상담 내용', placeholder: '상담한 내용을 말씀해주세요' },
-  { key: 'recommended', label: '권장 시술', placeholder: '추천 시술을 말씀해주세요' },
-  { key: 'estimatedCost', label: '예상 비용', placeholder: '예상 비용을 말씀해주세요' },
-  { key: 'nextStep', label: '다음 단계', placeholder: '예약확정, 재연락, 검토중 등을 말씀해주세요' },
-  { key: 'memo', label: '메모', placeholder: '추가 메모를 말씀해주세요' },
-] as const;
-
-type InputMode = 'free' | 'template';
+type InputMode = 'free' | TemplateType;
 
 interface VoiceNoteInputProps {
   value: string;
   onChange: (value: string) => void;
-  onTemplateComplete?: (template: ConsultationTemplate) => void;
+  onTemplateComplete?: (data: TemplateData) => void;
+  templateType?: TemplateType;
+  availableTemplates?: TemplateType[];
+  mobileOptimized?: boolean;
   placeholder?: string;
   rows?: number;
   className?: string;
@@ -71,6 +68,9 @@ export default function VoiceNoteInput({
   value,
   onChange,
   onTemplateComplete,
+  templateType,
+  availableTemplates,
+  mobileOptimized = false,
   placeholder = '메모를 입력하세요...',
   rows = 4,
   className = '',
@@ -78,12 +78,34 @@ export default function VoiceNoteInput({
   const [isListening, setIsListening] = useState(false);
   const [isSupported, setIsSupported] = useState(false);
   const [interimText, setInterimText] = useState('');
-  const [inputMode, setInputMode] = useState<InputMode>('free');
-  const [templateData, setTemplateData] = useState<ConsultationTemplate>({});
+  const [inputMode, setInputMode] = useState<InputMode>(templateType || 'free');
+  const [templateData, setTemplateData] = useState<TemplateData>({});
   const [currentFieldIdx, setCurrentFieldIdx] = useState(0);
   const [showModeSelector, setShowModeSelector] = useState(false);
   const recognitionRef = useRef<SpeechRecognition | null>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // 현재 활성 템플릿 설정
+  const activeConfig = inputMode !== 'free' ? TEMPLATE_CONFIGS[inputMode] : null;
+  const currentFields = activeConfig?.fields || [];
+  const currentField = currentFields[currentFieldIdx];
+
+  // 모드 옵션 목록
+  const modeOptions = useMemo(() => {
+    const options: { mode: InputMode; label: string }[] = [
+      { mode: 'free', label: '자유 입력' },
+    ];
+    const templates = availableTemplates || (['consultation', 'operation', 'quickNote'] as TemplateType[]);
+    for (const t of templates) {
+      options.push({ mode: t, label: TEMPLATE_CONFIGS[t].label });
+    }
+    return options;
+  }, [availableTemplates]);
+
+  // 현재 모드 라벨
+  const currentModeLabel = inputMode === 'free'
+    ? '자유입력'
+    : TEMPLATE_CONFIGS[inputMode].label;
 
   // 브라우저 지원 여부 확인
   useEffect(() => {
@@ -91,19 +113,20 @@ export default function VoiceNoteInput({
     setIsSupported(!!SpeechRecognitionClass);
   }, []);
 
+  // templateType prop 변경 시 모드 동기화
+  useEffect(() => {
+    if (templateType) {
+      setInputMode(templateType);
+      setCurrentFieldIdx(0);
+      setTemplateData({});
+    }
+  }, [templateType]);
+
   // 템플릿 데이터 → 텍스트 변환
-  const templateToText = useCallback((data: ConsultationTemplate): string => {
-    const lines: string[] = [];
-    if (data.patientName) lines.push(`[환자명] ${data.patientName}`);
-    if (data.consultType) lines.push(`[상담유형] ${data.consultType}`);
-    if (data.mainConcern) lines.push(`[주요호소] ${data.mainConcern}`);
-    if (data.consultNote) lines.push(`[상담내용] ${data.consultNote}`);
-    if (data.recommended) lines.push(`[권장시술] ${data.recommended}`);
-    if (data.estimatedCost) lines.push(`[예상비용] ${data.estimatedCost}`);
-    if (data.nextStep) lines.push(`[다음단계] ${data.nextStep}`);
-    if (data.memo) lines.push(`[메모] ${data.memo}`);
-    return lines.join('\n');
-  }, []);
+  const templateToText = useCallback((data: TemplateData): string => {
+    if (!activeConfig) return '';
+    return templateDataToText(data, activeConfig);
+  }, [activeConfig]);
 
   // 음성 인식 시작
   const startListening = useCallback(() => {
@@ -135,15 +158,16 @@ export default function VoiceNoteInput({
       setInterimText(interimTranscript);
 
       if (finalTranscript) {
-        if (inputMode === 'template') {
+        if (inputMode !== 'free' && currentField) {
           // 템플릿 모드: 현재 필드에 텍스트 추가
-          const fieldKey = TEMPLATE_FIELDS[currentFieldIdx].key as keyof ConsultationTemplate;
+          const fieldKey = currentField.key;
           setTemplateData(prev => {
             const updated = {
               ...prev,
               [fieldKey]: (prev[fieldKey] ? prev[fieldKey] + ' ' : '') + finalTranscript.trim(),
             };
-            onChange(templateToText(updated));
+            const config = TEMPLATE_CONFIGS[inputMode as TemplateType];
+            onChange(templateDataToText(updated, config));
             return updated;
           });
         } else {
@@ -168,7 +192,7 @@ export default function VoiceNoteInput({
 
     recognitionRef.current = recognition;
     recognition.start();
-  }, [inputMode, currentFieldIdx, value, onChange, templateToText]);
+  }, [inputMode, currentField, value, onChange]);
 
   // 음성 인식 중지
   const stopListening = useCallback(() => {
@@ -183,13 +207,13 @@ export default function VoiceNoteInput({
   // 다음 필드로 이동 (템플릿 모드)
   const nextField = useCallback(() => {
     stopListening();
-    if (currentFieldIdx < TEMPLATE_FIELDS.length - 1) {
+    if (currentFieldIdx < currentFields.length - 1) {
       setCurrentFieldIdx(prev => prev + 1);
     } else {
       // 템플릿 완성
       onTemplateComplete?.(templateData);
     }
-  }, [currentFieldIdx, stopListening, templateData, onTemplateComplete]);
+  }, [currentFieldIdx, currentFields.length, stopListening, templateData, onTemplateComplete]);
 
   // 이전 필드로 이동
   const prevField = useCallback(() => {
@@ -209,7 +233,7 @@ export default function VoiceNoteInput({
     stopListening();
     setInputMode(mode);
     setShowModeSelector(false);
-    if (mode === 'template') {
+    if (mode !== 'free') {
       setCurrentFieldIdx(0);
       setTemplateData({});
     }
@@ -217,8 +241,8 @@ export default function VoiceNoteInput({
 
   // 현재 필드 텍스트 초기화
   const clearCurrentField = useCallback(() => {
-    if (inputMode === 'template') {
-      const fieldKey = TEMPLATE_FIELDS[currentFieldIdx].key as keyof ConsultationTemplate;
+    if (inputMode !== 'free' && currentField) {
+      const fieldKey = currentField.key;
       setTemplateData(prev => {
         const updated = { ...prev };
         delete updated[fieldKey];
@@ -226,10 +250,12 @@ export default function VoiceNoteInput({
         return updated;
       });
     }
-  }, [inputMode, currentFieldIdx, onChange, templateToText]);
+  }, [inputMode, currentField, onChange, templateToText]);
+
+  // 모바일 최적화 스타일
+  const mobile = mobileOptimized;
 
   if (!isSupported) {
-    // Web Speech API 미지원 시 일반 textarea만 표시
     return (
       <textarea
         ref={textareaRef}
@@ -248,41 +274,50 @@ export default function VoiceNoteInput({
       <div className="flex items-center justify-between mb-1.5">
         <div className="flex items-center gap-1.5">
           {/* 모드 토글 */}
-          <div className="relative">
-            <button
-              type="button"
-              onClick={() => setShowModeSelector(!showModeSelector)}
-              className="flex items-center gap-1 px-2 py-0.5 text-[10px] font-medium rounded-md bg-[#f6f4f2] text-[#6d4e42] hover:bg-[#ebe7e4] transition-colors cursor-pointer"
-            >
-              {inputMode === 'free' ? '자유입력' : '템플릿'}
-              <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
-            {showModeSelector && (
-              <div className="absolute top-full left-0 mt-1 bg-white border border-[#ebe7e4] rounded-lg shadow-lg z-10 min-w-[120px]">
-                <button
-                  type="button"
-                  onClick={() => switchMode('free')}
-                  className={`w-full text-left px-3 py-2 text-xs hover:bg-[#faf8f7] cursor-pointer ${inputMode === 'free' ? 'text-[#b4988d] font-semibold' : 'text-[#575756]'}`}
-                >
-                  자유 입력
-                </button>
-                <button
-                  type="button"
-                  onClick={() => switchMode('template')}
-                  className={`w-full text-left px-3 py-2 text-xs hover:bg-[#faf8f7] cursor-pointer ${inputMode === 'template' ? 'text-[#b4988d] font-semibold' : 'text-[#575756]'}`}
-                >
-                  템플릿 가이드
-                </button>
-              </div>
-            )}
-          </div>
+          {!templateType && (
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setShowModeSelector(!showModeSelector)}
+                className={`flex items-center gap-1 font-medium rounded-md bg-[#f6f4f2] text-[#6d4e42] hover:bg-[#ebe7e4] transition-colors cursor-pointer ${
+                  mobile ? 'px-3 py-1.5 text-xs' : 'px-2 py-0.5 text-[10px]'
+                }`}
+              >
+                {currentModeLabel}
+                <svg className={mobile ? 'w-4 h-4' : 'w-3 h-3'} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {showModeSelector && (
+                <div className="absolute top-full left-0 mt-1 bg-white border border-[#ebe7e4] rounded-lg shadow-lg z-10 min-w-[140px]">
+                  {modeOptions.map(opt => (
+                    <button
+                      key={opt.mode}
+                      type="button"
+                      onClick={() => switchMode(opt.mode)}
+                      className={`w-full text-left px-3 py-2 text-xs hover:bg-[#faf8f7] cursor-pointer ${
+                        inputMode === opt.mode ? 'text-[#b4988d] font-semibold' : 'text-[#575756]'
+                      }`}
+                    >
+                      {opt.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* templateType 고정 모드일 때 라벨 표시 */}
+          {templateType && inputMode !== 'free' && (
+            <span className={`font-medium text-[#6d4e42] ${mobile ? 'text-xs' : 'text-[10px]'}`}>
+              {currentModeLabel}
+            </span>
+          )}
 
           {/* 템플릿 모드: 현재 필드 표시 */}
-          {inputMode === 'template' && (
-            <span className="text-[10px] text-[#a09080]">
-              {currentFieldIdx + 1}/{TEMPLATE_FIELDS.length}: {TEMPLATE_FIELDS[currentFieldIdx].label}
+          {inputMode !== 'free' && currentField && (
+            <span className={`text-[#a09080] ${mobile ? 'text-xs' : 'text-[10px]'}`}>
+              {currentFieldIdx + 1}/{currentFields.length}: {currentField.label}
             </span>
           )}
         </div>
@@ -291,7 +326,9 @@ export default function VoiceNoteInput({
         <button
           type="button"
           onClick={isListening ? stopListening : startListening}
-          className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-xs font-medium transition-all duration-200 cursor-pointer ${
+          className={`flex items-center gap-1 rounded-lg font-medium transition-all duration-200 cursor-pointer ${
+            mobile ? 'px-4 py-2 text-sm' : 'px-2.5 py-1 text-xs'
+          } ${
             isListening
               ? 'bg-red-50 text-red-600 ring-2 ring-red-200'
               : 'bg-[#f6f4f2] text-[#6d4e42] hover:bg-[#ebe7e4]'
@@ -299,15 +336,15 @@ export default function VoiceNoteInput({
         >
           {isListening ? (
             <>
-              <span className="relative flex h-2.5 w-2.5">
+              <span className={`relative flex ${mobile ? 'h-3 w-3' : 'h-2.5 w-2.5'}`}>
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500" />
+                <span className={`relative inline-flex rounded-full bg-red-500 ${mobile ? 'h-3 w-3' : 'h-2.5 w-2.5'}`} />
               </span>
               녹음 중...
             </>
           ) : (
             <>
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className={mobile ? 'w-5 h-5' : 'w-3.5 h-3.5'} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
               </svg>
               음성 입력
@@ -317,19 +354,21 @@ export default function VoiceNoteInput({
       </div>
 
       {/* 템플릿 모드: 가이드 프롬프트 */}
-      {inputMode === 'template' && (
-        <div className="bg-[#faf8f7] rounded-lg px-3 py-2 mb-2 border border-[#ebe7e4]/60">
-          <p className="text-xs text-[#a09080] mb-1.5">{TEMPLATE_FIELDS[currentFieldIdx].placeholder}</p>
+      {inputMode !== 'free' && currentField && (
+        <div className={`bg-[#faf8f7] rounded-lg border border-[#ebe7e4]/60 mb-2 ${mobile ? 'px-4 py-3' : 'px-3 py-2'}`}>
+          <p className={`text-[#a09080] mb-1.5 ${mobile ? 'text-sm' : 'text-xs'}`}>
+            {currentField.placeholder}
+          </p>
           {/* 현재 필드 값 미리보기 */}
-          {templateData[TEMPLATE_FIELDS[currentFieldIdx].key as keyof ConsultationTemplate] && (
+          {templateData[currentField.key] && (
             <div className="flex items-center gap-2">
-              <p className="text-sm text-[#575756] flex-1">
-                {templateData[TEMPLATE_FIELDS[currentFieldIdx].key as keyof ConsultationTemplate]}
+              <p className={`text-[#575756] flex-1 ${mobile ? 'text-base' : 'text-sm'}`}>
+                {templateData[currentField.key]}
               </p>
               <button
                 type="button"
                 onClick={clearCurrentField}
-                className="text-[10px] text-red-400 hover:text-red-600 cursor-pointer"
+                className={`text-red-400 hover:text-red-600 cursor-pointer ${mobile ? 'text-xs px-2 py-1' : 'text-[10px]'}`}
               >
                 지우기
               </button>
@@ -337,7 +376,7 @@ export default function VoiceNoteInput({
           )}
           {/* interim 텍스트 */}
           {interimText && (
-            <p className="text-sm text-[#b4988d] italic">{interimText}</p>
+            <p className={`text-[#b4988d] italic ${mobile ? 'text-base' : 'text-sm'}`}>{interimText}</p>
           )}
           {/* 네비게이션 */}
           <div className="flex items-center gap-2 mt-2">
@@ -345,34 +384,40 @@ export default function VoiceNoteInput({
               type="button"
               onClick={prevField}
               disabled={currentFieldIdx === 0}
-              className="px-2 py-0.5 text-[10px] rounded bg-white border border-[#ebe7e4] text-[#a09080] hover:bg-[#f6f4f2] disabled:opacity-30 cursor-pointer"
+              className={`rounded bg-white border border-[#ebe7e4] text-[#a09080] hover:bg-[#f6f4f2] disabled:opacity-30 cursor-pointer ${
+                mobile ? 'px-4 py-2 text-xs' : 'px-2 py-0.5 text-[10px]'
+              }`}
             >
               이전
             </button>
             <button
               type="button"
               onClick={skipField}
-              className="px-2 py-0.5 text-[10px] rounded bg-white border border-[#ebe7e4] text-[#a09080] hover:bg-[#f6f4f2] cursor-pointer"
+              className={`rounded bg-white border border-[#ebe7e4] text-[#a09080] hover:bg-[#f6f4f2] cursor-pointer ${
+                mobile ? 'px-4 py-2 text-xs' : 'px-2 py-0.5 text-[10px]'
+              }`}
             >
               건너뛰기
             </button>
             <button
               type="button"
               onClick={nextField}
-              className={`px-2 py-0.5 text-[10px] rounded cursor-pointer ${
-                currentFieldIdx < TEMPLATE_FIELDS.length - 1
+              className={`rounded cursor-pointer ${
+                mobile ? 'px-4 py-2 text-xs' : 'px-2 py-0.5 text-[10px]'
+              } ${
+                currentFieldIdx < currentFields.length - 1
                   ? 'bg-[#6d4e42] text-white hover:bg-[#5a3d33]'
                   : 'bg-[#b4988d] text-white hover:bg-[#a08878]'
               }`}
             >
-              {currentFieldIdx < TEMPLATE_FIELDS.length - 1 ? '다음' : '완료'}
+              {currentFieldIdx < currentFields.length - 1 ? '다음' : '완료'}
             </button>
             {/* 진행바 */}
             <div className="flex-1 flex gap-0.5 ml-2">
-              {TEMPLATE_FIELDS.map((_, idx) => (
+              {currentFields.map((_, idx) => (
                 <div
                   key={idx}
-                  className={`h-1 flex-1 rounded-full transition-colors ${
+                  className={`flex-1 rounded-full transition-colors ${mobile ? 'h-2' : 'h-1'} ${
                     idx < currentFieldIdx ? 'bg-[#b4988d]'
                     : idx === currentFieldIdx ? 'bg-[#6d4e42]'
                     : 'bg-[#ebe7e4]'
@@ -384,13 +429,13 @@ export default function VoiceNoteInput({
         </div>
       )}
 
-      {/* 자유입력 모드: 텍스트 영역 */}
+      {/* 텍스트 영역 */}
       <div className="relative">
         <textarea
           ref={textareaRef}
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          placeholder={inputMode === 'template' ? '위 가이드에 따라 음성으로 입력하세요. 텍스트가 여기에 정리됩니다.' : placeholder}
+          placeholder={inputMode !== 'free' ? '위 가이드에 따라 음성으로 입력하세요. 텍스트가 여기에 정리됩니다.' : placeholder}
           rows={rows}
           className={`text-sm border border-[#ebe7e4] rounded-xl px-3 py-2 w-full resize-none focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow ${
             isListening ? 'ring-2 ring-red-100 border-red-200' : ''

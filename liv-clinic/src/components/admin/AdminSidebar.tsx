@@ -28,6 +28,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/reports', label: '리포트', icon: '📈' },
       { href: '/admin/revenue', label: '매출관리', icon: '💰' },
       { href: '/admin/patients', label: '환자조회', icon: '👤' },
+      { href: '/admin/voice-note', label: '음성 노트', icon: '🎤' },
     ],
   },
   {
@@ -41,6 +42,7 @@ const NAV_SECTIONS: NavSection[] = [
     title: '시스템',
     items: [
       { href: '/admin/settings', label: '설정', icon: '⚙️' },
+      { href: '/admin/guide', label: '사용 가이드', icon: '📖' },
     ],
   },
 ];

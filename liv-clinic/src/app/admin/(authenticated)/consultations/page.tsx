@@ -589,6 +589,7 @@ export default function ConsultationsPage() {
                             <VoiceNoteInput
                               value={editValue}
                               onChange={setEditValue}
+                              availableTemplates={['consultation', 'quickNote']}
                               placeholder="클릭하여 메모 추가 (음성 입력 가능)"
                               rows={3}
                             />
@@ -896,6 +897,7 @@ export default function ConsultationsPage() {
                                   <VoiceNoteInput
                                     value={editValue}
                                     onChange={setEditValue}
+                                    availableTemplates={['consultation', 'quickNote']}
                                     placeholder="클릭하여 메모 추가 (음성 입력 가능)"
                                     rows={4}
                                   />

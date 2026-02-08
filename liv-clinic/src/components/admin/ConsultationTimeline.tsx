@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { CONSULTATION_STATUS_LABELS } from '@/types/admin';
+import VoiceNoteInput from '@/components/admin/VoiceNoteInput';
 
 interface TimelineEvent {
   id: string;
@@ -50,6 +51,7 @@ export default function ConsultationTimeline({ consultationId, onAddNote }: Prop
   const [loading, setLoading] = useState(true);
   const [noteInput, setNoteInput] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [isVoiceMode, setIsVoiceMode] = useState(false);
 
   const fetchTimeline = useCallback(async () => {
     try {
@@ -80,6 +82,7 @@ export default function ConsultationTimeline({ consultationId, onAddNote }: Prop
       });
       if (res.ok) {
         setNoteInput('');
+        setIsVoiceMode(false);
         fetchTimeline();
         onAddNote?.(noteInput.trim());
       }
@@ -92,22 +95,60 @@ export default function ConsultationTimeline({ consultationId, onAddNote }: Prop
       <p className="text-xs font-medium text-[#6d4e42] mb-2">📋 상담 타임라인</p>
 
       {/* Add note */}
-      <div className="flex gap-2 mb-3">
-        <input
-          type="text"
-          value={noteInput}
-          onChange={(e) => setNoteInput(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter') addNote(); }}
-          placeholder="메모 추가..."
-          className="flex-1 px-2.5 py-1.5 text-xs border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#b4988d]"
-        />
-        <button
-          onClick={addNote}
-          disabled={submitting || !noteInput.trim()}
-          className="px-3 py-1.5 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] disabled:opacity-50 cursor-pointer"
-        >
-          추가
-        </button>
+      <div className="mb-3">
+        {isVoiceMode ? (
+          <div>
+            <VoiceNoteInput
+              value={noteInput}
+              onChange={setNoteInput}
+              templateType="quickNote"
+              placeholder="음성으로 메모를 추가하세요"
+              rows={2}
+            />
+            <div className="flex gap-2 mt-1.5">
+              <button
+                onClick={addNote}
+                disabled={submitting || !noteInput.trim()}
+                className="px-3 py-1.5 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] disabled:opacity-50 cursor-pointer"
+              >
+                추가
+              </button>
+              <button
+                onClick={() => setIsVoiceMode(false)}
+                className="px-3 py-1.5 text-xs text-[#8a8a8a] bg-white border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] cursor-pointer"
+              >
+                텍스트 입력
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex gap-2">
+            <input
+              type="text"
+              value={noteInput}
+              onChange={(e) => setNoteInput(e.target.value)}
+              onKeyDown={(e) => { if (e.key === 'Enter') addNote(); }}
+              placeholder="메모 추가..."
+              className="flex-1 px-2.5 py-1.5 text-xs border border-[#e5e5e5] rounded-lg focus:outline-none focus:ring-1 focus:ring-[#b4988d]"
+            />
+            <button
+              onClick={() => setIsVoiceMode(true)}
+              className="px-2 py-1.5 text-xs text-[#6d4e42] bg-[#f6f4f2] rounded-lg hover:bg-[#ebe7e4] cursor-pointer"
+              title="음성 입력"
+            >
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+              </svg>
+            </button>
+            <button
+              onClick={addNote}
+              disabled={submitting || !noteInput.trim()}
+              className="px-3 py-1.5 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] disabled:opacity-50 cursor-pointer"
+            >
+              추가
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Timeline */}
