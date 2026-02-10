@@ -2,103 +2,88 @@
 
 import { useState, useCallback } from 'react';
 import VoiceNoteInput from '@/components/admin/VoiceNoteInput';
-import { mapVoiceToCase } from '@/types/voice-templates';
-import type { TemplateType, TemplateData } from '@/types/voice-templates';
-import {
-  TREATMENT_TYPE_LABELS,
-  TREATMENT_TYPE_ICONS,
-  DOCTOR_OPTIONS,
-  PROCEDURE_OPTIONS_BY_TYPE,
-  DURATION_OPTIONS,
-} from '@/types/admin';
-import type { TreatmentType } from '@/types/admin';
+import HybridForm from '@/components/admin/hybrid-form/HybridForm';
+import FormTemplateSelector from '@/components/admin/hybrid-form/FormTemplateSelector';
+import type { SmartFormTemplate, HybridFormData } from '@/types/smart-forms';
+import { hybridFormDataToText, getSmartFormById } from '@/types/smart-forms';
+import { parseRoomId, parseDuration, matchProcedure, matchDoctor, inferTreatmentType } from '@/types/voice-templates';
 
-type ViewState = 'select' | 'input' | 'success';
-
-const TEMPLATE_OPTIONS: { type: TemplateType | 'free'; label: string; icon: string; description: string }[] = [
-  { type: 'operation', label: '운영 현황', icon: '🏥', description: '환자 입실, 시술 배정, 소요시간 기록' },
-  { type: 'consultation', label: '상담 기록', icon: '📋', description: '상담 내용을 정형화된 포맷으로 기록' },
-  { type: 'quickNote', label: '퀵노트', icon: '📝', description: '빠르게 간단한 메모 기록' },
-  { type: 'free', label: '자유 입력', icon: '✏️', description: '자유 형식으로 음성 메모' },
-];
+type ViewState = 'select' | 'hybrid' | 'free' | 'success';
 
 export default function VoiceNotePage() {
   const [viewState, setViewState] = useState<ViewState>('select');
-  const [selectedTemplate, setSelectedTemplate] = useState<TemplateType | 'free' | null>(null);
+  const [selectedTemplate, setSelectedTemplate] = useState<SmartFormTemplate | null>(null);
   const [voiceText, setVoiceText] = useState('');
   const [saving, setSaving] = useState(false);
   const [lastSavedNote, setLastSavedNote] = useState<string | null>(null);
 
-  // 운영현황 수동 확인/수정용
-  const [showManualEdit, setShowManualEdit] = useState(false);
-  const [operationForm, setOperationForm] = useState({
-    patientName: '',
-    treatmentType: 'PROCEDURE' as TreatmentType,
-    doctor: DOCTOR_OPTIONS[0] as string,
-    procedure: PROCEDURE_OPTIONS_BY_TYPE['PROCEDURE'][0] as string,
-    expectedDurationMin: 60,
-    memo: '',
-  });
-
-  const handleTemplateSelect = (type: TemplateType | 'free') => {
-    setSelectedTemplate(type);
-    setVoiceText('');
-    setShowManualEdit(false);
-    setViewState('input');
+  const handleTemplateSelect = (template: SmartFormTemplate) => {
+    setSelectedTemplate(template);
+    setViewState('hybrid');
   };
 
-  const handleTemplateComplete = useCallback((data: TemplateData) => {
-    if (selectedTemplate === 'operation') {
-      const mapped = mapVoiceToCase(data);
-      setOperationForm(f => ({
-        ...f,
-        patientName: mapped.patientName || f.patientName,
-        treatmentType: mapped.treatmentType || f.treatmentType,
-        procedure: mapped.procedure || f.procedure,
-        doctor: mapped.doctor || f.doctor,
-        expectedDurationMin: mapped.expectedDurationMin || f.expectedDurationMin,
-        memo: mapped.memo || f.memo,
-      }));
-      setShowManualEdit(true);
-    }
-  }, [selectedTemplate]);
+  const handleFreeInput = () => {
+    setVoiceText('');
+    setViewState('free');
+  };
 
-  const handleSave = async () => {
+  const handleHybridSubmit = useCallback(async (data: HybridFormData, textOutput: string) => {
     setSaving(true);
     try {
-      if (selectedTemplate === 'operation' && showManualEdit) {
+      if (selectedTemplate?.category === 'operation') {
         // 운영현황: operation_cases에 케이스 생성
         const res = await fetch('/api/admin/operations', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            patientName: operationForm.patientName.trim(),
-            treatmentType: operationForm.treatmentType,
+            patientName: (data.patientName || '').trim(),
+            treatmentType: inferTreatmentType(data.procedure),
             status: 'WAITING',
             location: 'LOUNGE',
-            doctor: operationForm.doctor,
-            procedure: operationForm.procedure,
-            expectedDurationMin: operationForm.expectedDurationMin,
-            roomId: 'cons-1',
-            memo: operationForm.memo.trim() || undefined,
+            doctor: matchDoctor(data.doctor),
+            procedure: matchProcedure(data.procedure),
+            expectedDurationMin: parseDuration(data.estimatedDuration),
+            roomId: parseRoomId(data.room),
+            memo: (data.memo || '').trim() || undefined,
           }),
         });
         if (!res.ok) throw new Error('저장 실패');
-        setLastSavedNote(`${operationForm.patientName} - ${operationForm.procedure}`);
+        setLastSavedNote(`${data.patientName} - ${data.procedure || '시술 배정'}`);
       } else {
-        // 퀵노트/자유입력/상담: voice_notes API (또는 단순 저장)
-        // Phase 4 DB가 아직 없으므로 localStorage에 임시 저장
+        // 상담/퀵노트: localStorage 임시 저장
         const notes = JSON.parse(localStorage.getItem('voice_notes') || '[]');
         notes.unshift({
           id: crypto.randomUUID(),
-          templateType: selectedTemplate,
-          rawText: voiceText,
+          templateId: selectedTemplate?.id,
+          templateName: selectedTemplate?.name,
+          structuredData: data,
+          rawText: textOutput,
           createdAt: new Date().toISOString(),
         });
         localStorage.setItem('voice_notes', JSON.stringify(notes.slice(0, 50)));
-        setLastSavedNote(voiceText.substring(0, 50) + (voiceText.length > 50 ? '...' : ''));
+        setLastSavedNote(textOutput.substring(0, 60) + (textOutput.length > 60 ? '...' : ''));
       }
+      setViewState('success');
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '저장에 실패했습니다.');
+    } finally {
+      setSaving(false);
+    }
+  }, [selectedTemplate]);
 
+  const handleFreeSave = async () => {
+    setSaving(true);
+    try {
+      const notes = JSON.parse(localStorage.getItem('voice_notes') || '[]');
+      notes.unshift({
+        id: crypto.randomUUID(),
+        templateId: 'free',
+        templateName: '자유 입력',
+        rawText: voiceText,
+        createdAt: new Date().toISOString(),
+      });
+      localStorage.setItem('voice_notes', JSON.stringify(notes.slice(0, 50)));
+      setLastSavedNote(voiceText.substring(0, 60) + (voiceText.length > 60 ? '...' : ''));
       setViewState('success');
     } catch (e) {
       alert(e instanceof Error ? e.message : '저장에 실패했습니다.');
@@ -111,8 +96,8 @@ export default function VoiceNotePage() {
     setViewState('select');
     setSelectedTemplate(null);
     setVoiceText('');
-    setShowManualEdit(false);
     setLastSavedNote(null);
+    setSaving(false);
   };
 
   return (
@@ -131,165 +116,62 @@ export default function VoiceNotePage() {
         )}
         <div>
           <h2 className="text-lg font-bold text-[#6d4e42]">음성 노트</h2>
-          <p className="text-xs text-[#8a8a8a]">음성으로 빠르게 기록하세요</p>
+          <p className="text-xs text-[#8a8a8a]">
+            {viewState === 'select'
+              ? '양식을 선택하고 음성으로 빠르게 기록하세요'
+              : viewState === 'free'
+              ? '자유롭게 음성으로 입력하세요'
+              : viewState === 'hybrid' && selectedTemplate
+              ? `${selectedTemplate.icon} ${selectedTemplate.name}`
+              : '저장 완료'}
+          </p>
         </div>
       </div>
 
-      {/* 템플릿 선택 */}
+      {/* 양식 선택 */}
       {viewState === 'select' && (
-        <div className="grid grid-cols-2 gap-3">
-          {TEMPLATE_OPTIONS.map((opt) => (
-            <button
-              key={opt.type}
-              onClick={() => handleTemplateSelect(opt.type)}
-              className="p-4 bg-white border border-[#e5e5e5] rounded-xl text-left hover:border-[#b4988d] hover:shadow-md transition-all cursor-pointer group"
-            >
-              <span className="text-2xl block mb-2">{opt.icon}</span>
-              <p className="font-medium text-sm text-[#6d4e42] group-hover:text-[#b4988d]">{opt.label}</p>
-              <p className="text-[10px] text-[#8a8a8a] mt-1 leading-tight">{opt.description}</p>
-            </button>
-          ))}
-        </div>
+        <FormTemplateSelector
+          onSelect={handleTemplateSelect}
+          onFreeInput={handleFreeInput}
+        />
       )}
 
-      {/* 음성 입력 */}
-      {viewState === 'input' && selectedTemplate && (
+      {/* 하이브리드 폼 */}
+      {viewState === 'hybrid' && selectedTemplate && (
+        <HybridForm
+          template={selectedTemplate}
+          onSubmit={handleHybridSubmit}
+          onCancel={handleReset}
+          saving={saving}
+        />
+      )}
+
+      {/* 자유 입력 */}
+      {viewState === 'free' && (
         <div>
-          {!showManualEdit ? (
-            <>
-              <VoiceNoteInput
-                value={voiceText}
-                onChange={setVoiceText}
-                templateType={selectedTemplate === 'free' ? undefined : selectedTemplate}
-                mobileOptimized={true}
-                onTemplateComplete={handleTemplateComplete}
-                rows={5}
-                placeholder="음성으로 메모를 입력하세요..."
-              />
+          <VoiceNoteInput
+            value={voiceText}
+            onChange={setVoiceText}
+            mobileOptimized
+            rows={6}
+            placeholder="음성으로 자유롭게 메모를 입력하세요..."
+          />
 
-              {/* 자유입력/퀵노트/상담: 바로 저장 가능 */}
-              {(selectedTemplate !== 'operation' || !showManualEdit) && voiceText.trim() && (
-                <div className="flex gap-2 mt-4">
-                  <button
-                    onClick={handleReset}
-                    className="flex-1 py-3 border border-[#e5e5e5] rounded-xl text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] cursor-pointer"
-                  >
-                    취소
-                  </button>
-                  <button
-                    onClick={handleSave}
-                    disabled={saving || !voiceText.trim()}
-                    className="flex-1 py-3 bg-[#b4988d] text-white rounded-xl text-sm font-medium hover:bg-[#a08878] disabled:opacity-50 cursor-pointer"
-                  >
-                    {saving ? '저장 중...' : '저장'}
-                  </button>
-                </div>
-              )}
-            </>
-          ) : (
-            /* 운영현황: 수동 확인/수정 폼 */
-            <div className="space-y-4">
-              <div className="bg-[#faf8f7] rounded-xl p-4 border border-[#ebe7e4]">
-                <p className="text-xs text-[#a09080] mb-3">음성 인식 결과를 확인하고 수정하세요</p>
-
-                <div className="space-y-3">
-                  <div>
-                    <label className="block text-xs font-medium text-[#575756] mb-1">환자명 *</label>
-                    <input
-                      type="text"
-                      value={operationForm.patientName}
-                      onChange={(e) => setOperationForm(f => ({ ...f, patientName: e.target.value }))}
-                      className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-[#575756] mb-1">유형</label>
-                    <div className="grid grid-cols-4 gap-1.5">
-                      {(['CONSULT', 'SKINCARE', 'ANESTHESIA', 'PROCEDURE'] as TreatmentType[]).map((type) => (
-                        <button
-                          key={type}
-                          type="button"
-                          onClick={() => setOperationForm(f => ({ ...f, treatmentType: type }))}
-                          className={`py-2 rounded-lg text-xs font-medium border cursor-pointer ${
-                            operationForm.treatmentType === type
-                              ? 'border-[#b4988d] bg-[#b4988d]/10 text-[#6d4e42]'
-                              : 'border-[#e5e5e5] text-[#8a8a8a]'
-                          }`}
-                        >
-                          {TREATMENT_TYPE_ICONS[type]} {TREATMENT_TYPE_LABELS[type]}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-medium text-[#575756] mb-1">시술</label>
-                      <select
-                        value={operationForm.procedure}
-                        onChange={(e) => setOperationForm(f => ({ ...f, procedure: e.target.value }))}
-                        className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2.5 text-sm"
-                      >
-                        {PROCEDURE_OPTIONS_BY_TYPE[operationForm.treatmentType].map((p) => (
-                          <option key={p} value={p}>{p}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-[#575756] mb-1">소요(분)</label>
-                      <select
-                        value={operationForm.expectedDurationMin}
-                        onChange={(e) => setOperationForm(f => ({ ...f, expectedDurationMin: parseInt(e.target.value) }))}
-                        className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2.5 text-sm"
-                      >
-                        {DURATION_OPTIONS.map((d) => (
-                          <option key={d} value={d}>{d}분</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-[#575756] mb-1">담당의</label>
-                    <select
-                      value={operationForm.doctor}
-                      onChange={(e) => setOperationForm(f => ({ ...f, doctor: e.target.value }))}
-                      className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2.5 text-sm"
-                    >
-                      {DOCTOR_OPTIONS.map((d) => (
-                        <option key={d} value={d}>{d}</option>
-                      ))}
-                    </select>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-medium text-[#575756] mb-1">메모</label>
-                    <textarea
-                      value={operationForm.memo}
-                      onChange={(e) => setOperationForm(f => ({ ...f, memo: e.target.value }))}
-                      rows={2}
-                      className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2.5 text-sm resize-none"
-                    />
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setShowManualEdit(false)}
-                  className="flex-1 py-3 border border-[#e5e5e5] rounded-xl text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] cursor-pointer"
-                >
-                  다시 입력
-                </button>
-                <button
-                  onClick={handleSave}
-                  disabled={saving || !operationForm.patientName.trim()}
-                  className="flex-1 py-3 bg-[#b4988d] text-white rounded-xl text-sm font-medium hover:bg-[#a08878] disabled:opacity-50 cursor-pointer"
-                >
-                  {saving ? '저장 중...' : '케이스 추가'}
-                </button>
-              </div>
+          {voiceText.trim() && (
+            <div className="flex gap-2 mt-4">
+              <button
+                onClick={handleReset}
+                className="flex-1 py-3 border border-[#e5e5e5] rounded-xl text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] cursor-pointer"
+              >
+                취소
+              </button>
+              <button
+                onClick={handleFreeSave}
+                disabled={saving || !voiceText.trim()}
+                className="flex-1 py-3 bg-[#b4988d] text-white rounded-xl text-sm font-medium hover:bg-[#a08878] disabled:opacity-50 cursor-pointer"
+              >
+                {saving ? '저장 중...' : '저장'}
+              </button>
             </div>
           )}
         </div>
@@ -305,7 +187,7 @@ export default function VoiceNotePage() {
           </div>
           <p className="font-medium text-[#6d4e42] mb-1">저장 완료</p>
           {lastSavedNote && (
-            <p className="text-xs text-[#8a8a8a] mb-6">{lastSavedNote}</p>
+            <p className="text-xs text-[#8a8a8a] mb-6 whitespace-pre-wrap">{lastSavedNote}</p>
           )}
           <button
             onClick={handleReset}

@@ -12,9 +12,8 @@ import {
 } from '@/types/admin';
 import type { OperationCase, TreatmentType, CaseStatus } from '@/types/admin';
 import FloorMap from '@/components/admin/floormap/FloorMap';
-import VoiceNoteInput from '@/components/admin/VoiceNoteInput';
-import { mapVoiceToCase } from '@/types/voice-templates';
-import type { TemplateData } from '@/types/voice-templates';
+import VoiceFieldRecorder from '@/components/admin/hybrid-form/VoiceFieldRecorder';
+import type { HybridFormField } from '@/types/smart-forms';
 
 // ─── API fetch ──────────────────────────────────────────
 async function fetchCases(): Promise<OperationCase[]> {
@@ -386,8 +385,6 @@ function AddCaseModal({
   onAdd: (data: Omit<OperationCase, 'id' | 'createdAt'>) => void;
   onClose: () => void;
 }) {
-  const [inputTab, setInputTab] = useState<'manual' | 'voice'>('manual');
-  const [voiceText, setVoiceText] = useState('');
   const [form, setForm] = useState({
     patientName: '',
     treatmentType: 'PROCEDURE' as TreatmentType,
@@ -406,20 +403,6 @@ function AddCaseModal({
       procedure: procedures[0] as string,
       expectedDurationMin: config?.defaultDurationMin || 60,
     }));
-  };
-
-  const handleVoiceComplete = (data: TemplateData) => {
-    const mapped = mapVoiceToCase(data);
-    setForm(f => ({
-      ...f,
-      patientName: mapped.patientName || f.patientName,
-      treatmentType: mapped.treatmentType || f.treatmentType,
-      procedure: mapped.procedure || f.procedure,
-      doctor: mapped.doctor || f.doctor,
-      expectedDurationMin: mapped.expectedDurationMin || f.expectedDurationMin,
-      memo: mapped.memo || f.memo,
-    }));
-    setInputTab('manual');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -447,60 +430,7 @@ function AddCaseModal({
           <h3 className="font-bold text-[#6d4e42]">새 케이스 추가</h3>
         </div>
 
-        {/* 탭 선택 */}
-        <div className="flex border-b border-[#e5e5e5]">
-          <button
-            type="button"
-            onClick={() => setInputTab('manual')}
-            className={`flex-1 py-2.5 text-sm font-medium transition-colors cursor-pointer ${
-              inputTab === 'manual'
-                ? 'text-[#6d4e42] border-b-2 border-[#b4988d]'
-                : 'text-[#8a8a8a] hover:text-[#575756]'
-            }`}
-          >
-            수동 입력
-          </button>
-          <button
-            type="button"
-            onClick={() => setInputTab('voice')}
-            className={`flex-1 py-2.5 text-sm font-medium transition-colors cursor-pointer flex items-center justify-center gap-1.5 ${
-              inputTab === 'voice'
-                ? 'text-[#6d4e42] border-b-2 border-[#b4988d]'
-                : 'text-[#8a8a8a] hover:text-[#575756]'
-            }`}
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-            </svg>
-            음성 입력
-          </button>
-        </div>
-
-        {inputTab === 'voice' ? (
-          <div className="p-6">
-            <p className="text-xs text-[#8a8a8a] mb-3">
-              음성으로 환자명, 시술, 담당의 등을 순서대로 말씀하세요. 완료 후 수동 입력 탭에서 확인/수정할 수 있습니다.
-            </p>
-            <VoiceNoteInput
-              value={voiceText}
-              onChange={setVoiceText}
-              templateType="operation"
-              mobileOptimized={true}
-              onTemplateComplete={handleVoiceComplete}
-              rows={4}
-            />
-            <div className="flex gap-2 pt-4">
-              <button
-                type="button"
-                onClick={onClose}
-                className="flex-1 py-2.5 border border-[#e5e5e5] rounded-lg text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] transition-colors cursor-pointer"
-              >
-                취소
-              </button>
-            </div>
-          </div>
-        ) : (
-          <form onSubmit={handleSubmit} className="p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="p-6 space-y-4">
             {/* 환자명 */}
             <div>
               <label className="block text-sm font-medium text-[#575756] mb-1">
@@ -582,15 +512,26 @@ function AddCaseModal({
               </select>
             </div>
 
-            {/* 메모 */}
+            {/* 메모 (음성 입력 지원 - VoiceFieldRecorder) */}
             <div>
-              <label className="block text-sm font-medium text-[#575756] mb-1">메모</label>
-              <textarea
+              <label className="block text-sm font-medium text-[#575756] mb-1">메모/특이사항</label>
+              <VoiceFieldRecorder
+                field={{
+                  key: 'memo',
+                  label: '메모/특이사항',
+                  inputMethod: 'voice',
+                  fieldType: 'textarea',
+                  voicePrompt: '특이사항이나 메모를 말씀해주세요',
+                  placeholder: '예: 마취크림 도포 완료, 보호자 대기 중...',
+                } as HybridFormField}
                 value={form.memo}
-                onChange={(e) => setForm((f) => ({ ...f, memo: e.target.value }))}
-                placeholder="특이사항, 요청사항 등"
-                rows={2}
-                className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d] resize-none"
+                onChange={(v) => setForm((f) => ({ ...f, memo: v }))}
+                onNext={() => {}}
+                onPrev={() => {}}
+                onSkip={() => {}}
+                fieldIndex={0}
+                totalFields={1}
+                isLast={true}
               />
             </div>
 
@@ -611,7 +552,6 @@ function AddCaseModal({
               </button>
             </div>
           </form>
-        )}
       </div>
     </div>
   );

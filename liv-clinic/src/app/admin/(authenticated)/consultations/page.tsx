@@ -4,7 +4,11 @@ import { useState, useEffect, useCallback, Fragment } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 import type { ConsultationRow } from '@/types/admin';
 import VoiceNoteInput from '@/components/admin/VoiceNoteInput';
+import HybridForm from '@/components/admin/hybrid-form/HybridForm';
+import FormTemplateSelector from '@/components/admin/hybrid-form/FormTemplateSelector';
 import ConsultationTimeline from '@/components/admin/ConsultationTimeline';
+import type { SmartFormTemplate, HybridFormData } from '@/types/smart-forms';
+import { hybridFormDataToText } from '@/types/smart-forms';
 import { useConsultationRealtime } from '@/hooks/useConsultationRealtime';
 import { useBrowserNotification } from '@/hooks/useBrowserNotification';
 import { useCallbackChecker } from '@/hooks/useCallbackChecker';
@@ -47,6 +51,10 @@ export default function ConsultationsPage() {
   // Inline edit states
   const [editingField, setEditingField] = useState<{ id: string; field: string } | null>(null);
   const [editValue, setEditValue] = useState('');
+
+  // Smart Form states
+  const [smartFormTemplate, setSmartFormTemplate] = useState<SmartFormTemplate | null>(null);
+  const [smartFormMode, setSmartFormMode] = useState<'selector' | 'form' | 'legacy'>('selector');
 
   // Bulk selection
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
@@ -586,34 +594,69 @@ export default function ConsultationsPage() {
                         <p className="text-[#8a8a8a] text-xs mb-1">메모</p>
                         {editingField?.id === c.id && editingField.field === 'notes' ? (
                           <div>
-                            <VoiceNoteInput
-                              value={editValue}
-                              onChange={setEditValue}
-                              availableTemplates={['consultation', 'quickNote']}
-                              placeholder="클릭하여 메모 추가 (음성 입력 가능)"
-                              rows={3}
-                            />
-                            <div className="flex gap-2 mt-1.5">
-                              <button
-                                type="button"
-                                onClick={() => updateField(c.id, 'notes', editValue)}
-                                className="px-3 py-1 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] transition-colors cursor-pointer"
-                              >
-                                저장
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => setEditingField(null)}
-                                className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
-                              >
-                                취소
-                              </button>
-                            </div>
+                            {smartFormMode === 'selector' && (
+                              <div className="mb-2">
+                                <p className="text-xs text-[#a09080] mb-2">양식을 선택하세요</p>
+                                <FormTemplateSelector
+                                  categories={['consultation', 'quickNote']}
+                                  onSelect={(t) => { setSmartFormTemplate(t); setSmartFormMode('form'); }}
+                                  onFreeInput={() => setSmartFormMode('legacy')}
+                                  compact
+                                />
+                              </div>
+                            )}
+                            {smartFormMode === 'form' && smartFormTemplate && (
+                              <HybridForm
+                                template={smartFormTemplate}
+                                initialData={{ patientName: c.name }}
+                                onSubmit={(_data, textOutput) => {
+                                  updateField(c.id, 'notes', (c.notes ? c.notes + '\n\n' : '') + textOutput);
+                                  setSmartFormMode('selector');
+                                  setSmartFormTemplate(null);
+                                }}
+                                onCancel={() => { setSmartFormMode('selector'); setSmartFormTemplate(null); }}
+                                compact
+                              />
+                            )}
+                            {smartFormMode === 'legacy' && (
+                              <>
+                                <VoiceNoteInput
+                                  value={editValue}
+                                  onChange={setEditValue}
+                                  availableTemplates={['consultation', 'quickNote']}
+                                  placeholder="클릭하여 메모 추가 (음성 입력 가능)"
+                                  rows={3}
+                                />
+                                <div className="flex gap-2 mt-1.5">
+                                  <button
+                                    type="button"
+                                    onClick={() => updateField(c.id, 'notes', editValue)}
+                                    className="px-3 py-1 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] transition-colors cursor-pointer"
+                                  >
+                                    저장
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => { setSmartFormMode('selector'); }}
+                                    className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+                                  >
+                                    양식 선택
+                                  </button>
+                                  <button
+                                    type="button"
+                                    onClick={() => setEditingField(null)}
+                                    className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+                                  >
+                                    취소
+                                  </button>
+                                </div>
+                              </>
+                            )}
                           </div>
                         ) : (
                           <p
                             className="text-[#575756] whitespace-pre-wrap bg-white rounded-lg p-2.5 border border-[#e5e5e5] cursor-pointer hover:border-[#b4988d] min-h-[40px] text-sm"
-                            onClick={() => { setEditingField({ id: c.id, field: 'notes' }); setEditValue(c.notes || ''); }}
+                            onClick={() => { setEditingField({ id: c.id, field: 'notes' }); setEditValue(c.notes || ''); setSmartFormMode('selector'); setSmartFormTemplate(null); }}
                           >
                             {c.notes || <span className="text-[#c0c0c0]">클릭하여 메모 추가</span>}
                           </p>
@@ -894,34 +937,69 @@ export default function ConsultationsPage() {
                               <p className="text-[#8a8a8a] text-xs mb-1">메모</p>
                               {editingField?.id === c.id && editingField.field === 'notes' ? (
                                 <div>
-                                  <VoiceNoteInput
-                                    value={editValue}
-                                    onChange={setEditValue}
-                                    availableTemplates={['consultation', 'quickNote']}
-                                    placeholder="클릭하여 메모 추가 (음성 입력 가능)"
-                                    rows={4}
-                                  />
-                                  <div className="flex gap-2 mt-1.5">
-                                    <button
-                                      type="button"
-                                      onClick={() => updateField(c.id, 'notes', editValue)}
-                                      className="px-3 py-1 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] transition-colors cursor-pointer"
-                                    >
-                                      저장
-                                    </button>
-                                    <button
-                                      type="button"
-                                      onClick={() => setEditingField(null)}
-                                      className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
-                                    >
-                                      취소
-                                    </button>
-                                  </div>
+                                  {smartFormMode === 'selector' && (
+                                    <div className="mb-2">
+                                      <p className="text-xs text-[#a09080] mb-2">양식을 선택하세요</p>
+                                      <FormTemplateSelector
+                                        categories={['consultation', 'quickNote']}
+                                        onSelect={(t) => { setSmartFormTemplate(t); setSmartFormMode('form'); }}
+                                        onFreeInput={() => setSmartFormMode('legacy')}
+                                        compact
+                                      />
+                                    </div>
+                                  )}
+                                  {smartFormMode === 'form' && smartFormTemplate && (
+                                    <HybridForm
+                                      template={smartFormTemplate}
+                                      initialData={{ patientName: c.name }}
+                                      onSubmit={(_data, textOutput) => {
+                                        updateField(c.id, 'notes', (c.notes ? c.notes + '\n\n' : '') + textOutput);
+                                        setSmartFormMode('selector');
+                                        setSmartFormTemplate(null);
+                                      }}
+                                      onCancel={() => { setSmartFormMode('selector'); setSmartFormTemplate(null); }}
+                                      compact
+                                    />
+                                  )}
+                                  {smartFormMode === 'legacy' && (
+                                    <>
+                                      <VoiceNoteInput
+                                        value={editValue}
+                                        onChange={setEditValue}
+                                        availableTemplates={['consultation', 'quickNote']}
+                                        placeholder="클릭하여 메모 추가 (음성 입력 가능)"
+                                        rows={4}
+                                      />
+                                      <div className="flex gap-2 mt-1.5">
+                                        <button
+                                          type="button"
+                                          onClick={() => updateField(c.id, 'notes', editValue)}
+                                          className="px-3 py-1 text-xs bg-[#6d4e42] text-white rounded-lg hover:bg-[#5a3d33] transition-colors cursor-pointer"
+                                        >
+                                          저장
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => { setSmartFormMode('selector'); }}
+                                          className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+                                        >
+                                          양식 선택
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={() => setEditingField(null)}
+                                          className="px-3 py-1 text-xs bg-white border border-[#e5e5e5] text-[#8a8a8a] rounded-lg hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+                                        >
+                                          취소
+                                        </button>
+                                      </div>
+                                    </>
+                                  )}
                                 </div>
                               ) : (
                                 <p
                                   className="text-[#575756] whitespace-pre-wrap bg-white rounded-lg p-3 border border-[#e5e5e5] cursor-pointer hover:border-[#b4988d] min-h-[50px]"
-                                  onClick={() => { setEditingField({ id: c.id, field: 'notes' }); setEditValue(c.notes || ''); }}
+                                  onClick={() => { setEditingField({ id: c.id, field: 'notes' }); setEditValue(c.notes || ''); setSmartFormMode('selector'); setSmartFormTemplate(null); }}
                                 >
                                   {c.notes || <span className="text-[#c0c0c0]">클릭하여 메모 추가</span>}
                                 </p>

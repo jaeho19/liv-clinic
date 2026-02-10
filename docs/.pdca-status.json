@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-02-10T08:01:16.237Z",
+  "lastUpdated": "2026-02-10T10:14:45.352Z",
   "activeFeatures": [
     "admin-v2-enhancement",
     "lifting",
@@ -45,9 +45,10 @@
     "sections",
     "voice-note",
     "guide",
-    "google"
+    "google",
+    "hybrid-form"
   ],
-  "primaryFeature": "popup-auto-rolling",
+  "primaryFeature": "voice-hybrid-forms",
   "features": {
     "popup-auto-rolling": {
       "phase": "check",
@@ -120,9 +121,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T00:55:17.745Z",
-        "lastUpdated": "2026-02-10T07:18:39.179Z"
+        "lastUpdated": "2026-02-10T09:52:58.285Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\lib\\ga4-queries.ts"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\types\\smart-forms.ts"
     },
     "scratchpad": {
       "phase": "do",
@@ -328,7 +329,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T08:31:24.902Z",
-        "lastUpdated": "2026-02-08T12:08:31.077Z"
+        "lastUpdated": "2026-02-10T09:56:13.415Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\consultations\\page.tsx"
     },
@@ -341,7 +342,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T09:04:42.111Z",
-        "lastUpdated": "2026-02-08T11:53:43.810Z"
+        "lastUpdated": "2026-02-10T10:14:22.406Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\operations\\page.tsx"
     },
@@ -644,7 +645,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-08T11:57:22.862Z",
-        "lastUpdated": "2026-02-08T11:57:22.862Z"
+        "lastUpdated": "2026-02-10T09:57:01.594Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\voice-note\\page.tsx"
     },
@@ -699,6 +700,45 @@
         "lastUpdated": "2026-02-10T07:55:51.539Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\analytics\\google\\route.ts"
+    },
+    "hybrid-form": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-10T09:53:44.334Z",
+        "lastUpdated": "2026-02-10T10:14:45.352Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\admin\\hybrid-form\\VoiceFieldRecorder.tsx"
+    },
+    "voice-hybrid-forms": {
+      "phase": "check",
+      "phaseNumber": 4,
+      "matchRate": 100,
+      "iterationCount": 1,
+      "requirements": [
+        "FR-01: 하이브리드 폼 (수동+음성 혼합)",
+        "FR-02: 필드별 입력방식 지정 (manual/voice/both)",
+        "FR-03: 음성 양식 원클릭 시작",
+        "FR-04: 상담기록 하이브리드 적용",
+        "FR-05: 운영현황 하이브리드 적용",
+        "FR-06: 양식 선택 UI (카드)",
+        "FR-07: 음성 필드 자동 포커스",
+        "FR-08: 양식 결과 미리보기"
+      ],
+      "documents": {
+        "plan": "docs/01-plan/features/voice-hybrid-forms.plan.md",
+        "design": "docs/02-design/features/voice-hybrid-forms.design.md",
+        "analysis": "docs/03-analysis/voice-hybrid-forms.analysis.md"
+      },
+      "timestamps": {
+        "started": "2026-02-10T09:00:00.000Z",
+        "lastUpdated": "2026-02-10T11:00:00.000Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\docs\\03-analysis\\voice-hybrid-forms.analysis.md"
     }
   },
   "pipeline": {
@@ -709,7 +749,7 @@
   "session": {
     "startedAt": "2026-01-30T22:26:49.658Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-02-10T08:01:16.237Z"
+    "lastActivity": "2026-02-10T10:14:45.352Z"
   },
   "history": [
     {
@@ -2395,6 +2435,168 @@
     {
       "timestamp": "2026-02-10T08:01:16.237Z",
       "feature": "analytics",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:52:58.285Z",
+      "feature": "liv-clinic",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:53:44.334Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:54:49.358Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:55:05.261Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:55:15.692Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:55:31.999Z",
+      "feature": "consultations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:55:37.811Z",
+      "feature": "consultations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:55:57.813Z",
+      "feature": "consultations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:56:13.415Z",
+      "feature": "consultations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:56:20.101Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:56:28.585Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:57:01.594Z",
+      "feature": "voice-note",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T09:57:35.345Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:00:06.516Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:00:10.612Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:00:13.999Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:00:18.674Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:13:46.217Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:13:50.784Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:13:55.390Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:14:06.475Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:14:12.266Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:14:22.406Z",
+      "feature": "operations",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:14:27.835Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:14:32.769Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:14:39.110Z",
+      "feature": "hybrid-form",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T10:14:45.352Z",
+      "feature": "hybrid-form",
       "phase": "do",
       "action": "updated"
     }
