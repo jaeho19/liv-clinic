@@ -51,6 +51,7 @@ interface ClinicInfo {
   hours: { weekday: string; saturday: string; sunday: string; lunch: string };
   notifications: { callbackReminder: boolean; lowStockAlert: boolean; newConsultation: boolean };
   revenueTarget: number;
+  analytics: { gaTrackingId: string; naverWcsId: string; gaEnabled: boolean; naverEnabled: boolean };
 }
 
 async function fetchClinicInfo(): Promise<ClinicInfo> {
@@ -917,6 +918,7 @@ function ClinicInfoTab() {
     hours: { weekday: '', saturday: '', sunday: '', lunch: '' },
     notifications: { callbackReminder: true, lowStockAlert: true, newConsultation: true },
     revenueTarget: 250000000,
+    analytics: { gaTrackingId: '', naverWcsId: '', gaEnabled: true, naverEnabled: true },
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -1125,6 +1127,47 @@ function ClinicInfoTab() {
           <p className="text-xs text-[#8a8a8a] mt-1">
             현재 목표: {(form.revenueTarget / 100000000).toFixed(1)}억원 (리포트 대시보드에 반영)
           </p>
+        </div>
+      </div>
+
+      {/* Analytics 설정 */}
+      <div className="bg-white rounded-xl border border-[#e5e5e5] p-6 mb-6">
+        <h3 className="font-bold text-sm text-[#6d4e42] mb-4">Analytics 설정</h3>
+        <div className="space-y-4">
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-[#575756]">Google Analytics</label>
+              <ToggleSwitch
+                checked={form.analytics.gaEnabled}
+                onChange={(v) => setForm((f) => ({ ...f, analytics: { ...f.analytics, gaEnabled: v } }))}
+              />
+            </div>
+            <input
+              type="text"
+              value={form.analytics.gaTrackingId}
+              onChange={(e) => setForm((f) => ({ ...f, analytics: { ...f.analytics, gaTrackingId: e.target.value } }))}
+              placeholder="G-XXXXXXXXXX"
+              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+            />
+            <p className="text-xs text-[#8a8a8a] mt-1">Google Analytics 4 Measurement ID</p>
+          </div>
+          <div>
+            <div className="flex items-center justify-between mb-2">
+              <label className="block text-sm font-medium text-[#575756]">Naver Analytics</label>
+              <ToggleSwitch
+                checked={form.analytics.naverEnabled}
+                onChange={(v) => setForm((f) => ({ ...f, analytics: { ...f.analytics, naverEnabled: v } }))}
+              />
+            </div>
+            <input
+              type="text"
+              value={form.analytics.naverWcsId}
+              onChange={(e) => setForm((f) => ({ ...f, analytics: { ...f.analytics, naverWcsId: e.target.value } }))}
+              placeholder="16b70780eac2fd0"
+              className="w-full border border-[#e5e5e5] rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/30 focus:border-[#b4988d]"
+            />
+            <p className="text-xs text-[#8a8a8a] mt-1">Naver Web Analytics WCS ID</p>
+          </div>
         </div>
       </div>
 

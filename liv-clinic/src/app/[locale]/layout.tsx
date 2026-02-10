@@ -8,7 +8,31 @@ import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import NaverAnalytics from '@/components/analytics/NaverAnalytics';
 import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema, BASE_URL } from '@/lib/seo';
+import { createAdminClient } from '@/lib/supabase-admin';
 import '../globals.css';
+
+async function getAnalyticsSettings() {
+  try {
+    const admin = createAdminClient();
+    const { data } = await admin
+      .from('clinic_settings')
+      .select('ga_tracking_id, naver_wcs_id, ga_enabled, naver_enabled')
+      .eq('id', 1)
+      .single();
+
+    if (data) {
+      return {
+        gaTrackingId: data.ga_tracking_id || undefined,
+        naverWcsId: data.naver_wcs_id || undefined,
+        gaEnabled: data.ga_enabled,
+        naverEnabled: data.naver_enabled,
+      };
+    }
+  } catch {
+    // DB query failed - fall back to env variables
+  }
+  return null;
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -45,6 +69,7 @@ export default async function LocaleLayout({
 
   const localBusinessSchema = generateLocalBusinessSchema(locale);
   const webSiteSchema = generateWebSiteSchema();
+  const analytics = await getAnalyticsSettings();
 
   const skipToContentText = {
     ko: '본문으로 건너뛰기',
@@ -80,8 +105,8 @@ export default async function LocaleLayout({
             __html: JSON.stringify(webSiteSchema),
           }}
         />
-        <GoogleAnalytics />
-        <NaverAnalytics />
+        <GoogleAnalytics trackingId={analytics?.gaTrackingId} enabled={analytics?.gaEnabled} />
+        <NaverAnalytics wcsId={analytics?.naverWcsId} enabled={analytics?.naverEnabled} />
       </head>
       <body className="antialiased overflow-x-clip w-full">
         <a href="#main-content" className="skip-link">

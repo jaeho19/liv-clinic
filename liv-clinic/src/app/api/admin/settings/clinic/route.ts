@@ -22,6 +22,12 @@ function formatClinicData(row: Record<string, unknown>) {
       newConsultation: row.notify_new_consultation,
     },
     revenueTarget: row.revenue_target ?? 250000000,
+    analytics: {
+      gaTrackingId: row.ga_tracking_id ?? '',
+      naverWcsId: row.naver_wcs_id ?? '',
+      gaEnabled: row.ga_enabled ?? true,
+      naverEnabled: row.naver_enabled ?? true,
+    },
   };
 }
 
@@ -64,23 +70,35 @@ export async function PUT(request: NextRequest) {
   const body = await request.json();
 
   try {
+    const updateObj: Record<string, unknown> = {
+      name: body.name,
+      phone: body.phone,
+      address: body.address,
+      email: body.email,
+      kakao: body.kakao,
+      hours_weekday: body.hours?.weekday,
+      hours_saturday: body.hours?.saturday,
+      hours_sunday: body.hours?.sunday,
+      hours_lunch: body.hours?.lunch,
+      notify_callback_reminder: body.notifications?.callbackReminder,
+      notify_low_stock_alert: body.notifications?.lowStockAlert,
+      notify_new_consultation: body.notifications?.newConsultation,
+    };
+
+    if (body.revenueTarget !== undefined) {
+      updateObj.revenue_target = body.revenueTarget;
+    }
+
+    if (body.analytics) {
+      if (body.analytics.gaTrackingId !== undefined) updateObj.ga_tracking_id = body.analytics.gaTrackingId;
+      if (body.analytics.naverWcsId !== undefined) updateObj.naver_wcs_id = body.analytics.naverWcsId;
+      if (body.analytics.gaEnabled !== undefined) updateObj.ga_enabled = body.analytics.gaEnabled;
+      if (body.analytics.naverEnabled !== undefined) updateObj.naver_enabled = body.analytics.naverEnabled;
+    }
+
     const { data, error } = await admin
       .from('clinic_settings')
-      .update({
-        name: body.name,
-        phone: body.phone,
-        address: body.address,
-        email: body.email,
-        kakao: body.kakao,
-        hours_weekday: body.hours?.weekday,
-        hours_saturday: body.hours?.saturday,
-        hours_sunday: body.hours?.sunday,
-        hours_lunch: body.hours?.lunch,
-        notify_callback_reminder: body.notifications?.callbackReminder,
-        notify_low_stock_alert: body.notifications?.lowStockAlert,
-        notify_new_consultation: body.notifications?.newConsultation,
-        ...(body.revenueTarget !== undefined && { revenue_target: body.revenueTarget }),
-      })
+      .update(updateObj)
       .eq('id', 1)
       .select()
       .single();

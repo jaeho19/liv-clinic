@@ -597,6 +597,10 @@ export interface Database {
           notify_new_consultation: boolean
           revenue_target: number
           csv_column_mapping: Json
+          ga_tracking_id: string
+          naver_wcs_id: string
+          ga_enabled: boolean
+          naver_enabled: boolean
         }
         Insert: {
           id?: number
@@ -614,6 +618,10 @@ export interface Database {
           notify_new_consultation?: boolean
           revenue_target?: number
           csv_column_mapping?: Json
+          ga_tracking_id?: string
+          naver_wcs_id?: string
+          ga_enabled?: boolean
+          naver_enabled?: boolean
         }
         Update: {
           id?: number
@@ -631,6 +639,10 @@ export interface Database {
           notify_new_consultation?: boolean
           revenue_target?: number
           csv_column_mapping?: Json
+          ga_tracking_id?: string
+          naver_wcs_id?: string
+          ga_enabled?: boolean
+          naver_enabled?: boolean
         }
         Relationships: []
       }
