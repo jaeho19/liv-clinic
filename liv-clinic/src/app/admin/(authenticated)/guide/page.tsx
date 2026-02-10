@@ -383,7 +383,7 @@ export default function GuidePage() {
       <div className="bg-white border-2 border-[#b4988d]/20 rounded-2xl p-5 mb-8 shadow-sm hover:shadow-md transition-shadow">
         <div className="flex items-center gap-2 mb-3">
           <span className="text-base">🔍</span>
-          <p className="text-sm font-semibold text-[#6d4e42]">AI 검색</p>
+          <p className="text-sm font-semibold text-[#6d4e42]">검색</p>
         </div>
         <div className="relative">
           <input

@@ -37,6 +37,7 @@ const slideTransition = {
 export default function PopupModal({ popups, onClose, onDismissToday }: PopupModalProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const touchStartX = useRef(0);
@@ -62,8 +63,10 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
 
   const pauseAndResume = useCallback(() => {
     stopAutoPlay();
+    setIsPaused(true);
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     resumeTimerRef.current = setTimeout(() => {
+      setIsPaused(false);
       startAutoPlay();
     }, RESUME_DELAY);
   }, [stopAutoPlay, startAutoPlay]);
@@ -134,7 +137,7 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
           }}
           onClick={(e) => e.stopPropagation()}
           onMouseEnter={() => isMultiple && stopAutoPlay()}
-          onMouseLeave={() => isMultiple && startAutoPlay()}
+          onMouseLeave={() => isMultiple && !isPaused && startAutoPlay()}
         >
           {/* Close button */}
           <button
@@ -182,14 +185,14 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
               <>
                 <button
                   onClick={goPrev}
-                  className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white/80 hover:bg-black/50 hover:text-white transition-colors cursor-pointer text-lg"
+                  className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors cursor-pointer text-lg"
                   aria-label="이전"
                 >
                   ‹
                 </button>
                 <button
                   onClick={goNext}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white/80 hover:bg-black/50 hover:text-white transition-colors cursor-pointer text-lg"
+                  className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors cursor-pointer text-lg"
                   aria-label="다음"
                 >
                   ›

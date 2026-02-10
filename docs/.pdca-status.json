@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-02-10T06:43:41.564Z",
+  "lastUpdated": "2026-02-10T07:25:20.977Z",
   "activeFeatures": [
     "admin-v2-enhancement",
     "lifting",
@@ -44,7 +44,8 @@
     "patients",
     "sections",
     "voice-note",
-    "guide"
+    "guide",
+    "google"
   ],
   "primaryFeature": "popup-auto-rolling",
   "features": {
@@ -119,9 +120,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T00:55:17.745Z",
-        "lastUpdated": "2026-02-10T06:41:50.168Z"
+        "lastUpdated": "2026-02-10T07:18:39.179Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\types\\supabase.ts"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\lib\\ga4-queries.ts"
     },
     "scratchpad": {
       "phase": "do",
@@ -145,9 +146,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T01:28:49.858Z",
-        "lastUpdated": "2026-02-10T06:43:02.166Z"
+        "lastUpdated": "2026-02-10T07:20:21.306Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\analytics\\NaverAnalytics.tsx"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\analytics\\page.tsx"
     },
     "[locale]": {
       "phase": "do",
@@ -171,9 +172,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T01:58:48.469Z",
-        "lastUpdated": "2026-02-08T14:18:35.841Z"
+        "lastUpdated": "2026-02-10T07:25:20.977Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\layout\\MobileMenu.tsx"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\layout\\PopupModal.tsx"
     },
     "ui": {
       "phase": "do",
@@ -301,7 +302,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T08:27:55.186Z",
-        "lastUpdated": "2026-02-06T08:28:07.279Z"
+        "lastUpdated": "2026-02-10T07:14:23.152Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\events\\[eventId]\\page.tsx"
     },
@@ -314,7 +315,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T08:31:08.830Z",
-        "lastUpdated": "2026-02-08T12:22:09.297Z"
+        "lastUpdated": "2026-02-10T07:20:37.574Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\admin\\AdminSidebar.tsx"
     },
@@ -656,7 +657,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-08T12:21:58.673Z",
-        "lastUpdated": "2026-02-08T14:22:54.145Z"
+        "lastUpdated": "2026-02-10T07:21:17.402Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\guide\\page.tsx"
     },
@@ -685,6 +686,19 @@
         "lastUpdated": "2026-02-08T15:45:00.000Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\guide\\page.tsx"
+    },
+    "google": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-10T07:19:04.764Z",
+        "lastUpdated": "2026-02-10T07:19:04.764Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\analytics\\google\\route.ts"
     }
   },
   "pipeline": {
@@ -695,7 +709,7 @@
   "session": {
     "startedAt": "2026-01-30T22:26:49.658Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-02-10T06:43:41.564Z"
+    "lastActivity": "2026-02-10T07:25:20.977Z"
   },
   "history": [
     {
@@ -2255,6 +2269,96 @@
     {
       "timestamp": "2026-02-10T06:43:41.564Z",
       "feature": "[locale]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:14:06.533Z",
+      "feature": "[eventId]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:14:23.152Z",
+      "feature": "[eventId]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:18:14.997Z",
+      "feature": "liv-clinic",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:18:18.543Z",
+      "feature": "liv-clinic",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:18:39.179Z",
+      "feature": "liv-clinic",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:19:04.764Z",
+      "feature": "google",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:20:21.306Z",
+      "feature": "analytics",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:20:29.991Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:20:37.574Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:21:17.402Z",
+      "feature": "guide",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:25:02.070Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:25:07.239Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:25:11.085Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:25:16.338Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-10T07:25:20.977Z",
+      "feature": "layout",
       "phase": "do",
       "action": "updated"
     }

@@ -2,7 +2,7 @@
 
 > **Feature**: popup-auto-rolling
 > **Design**: [popup-auto-rolling.design.md](../02-design/features/popup-auto-rolling.design.md)
-> **Analyzed**: 2026-02-08
+> **Analyzed**: 2026-02-10 (v1.1)
 > **Match Rate**: 93%
 
 ---
@@ -27,7 +27,7 @@
 | 3 | PopupManager: `displayPopups` 배열 전달 | MATCH |
 | 4 | PopupManager: `handleDismissToday` 전체 dismiss | MATCH |
 | 5 | PopupModal: props `popups: PopupRow[]` | MATCH |
-| 6 | PopupModal: `currentIndex` + `direction` 상태 | MATCH |
+| 6 | PopupModal: `currentIndex` + `direction` 상태 | MINOR GAP |
 | 7 | PopupModal: 자동 롤링 (2.5초 setInterval) | MATCH |
 | 8 | PopupModal: 마우스 호버 일시정지/재개 | MINOR GAP |
 | 9 | PopupModal: 사용자 조작 5초 일시정지 후 재개 | MINOR GAP |
@@ -42,7 +42,7 @@
 
 ---
 
-## Minor Gaps (3)
+## Minor Gaps (3) - Unchanged from v1.0
 
 | # | 항목 | Design | Implementation | 영향 |
 |---|------|--------|----------------|------|
@@ -50,9 +50,35 @@
 | 2 | `onMouseLeave` 가드 | `!isPaused && startAutoPlay()` | `startAutoPlay()` (가드 없음) | Low - #1과 동일 엣지케이스 |
 | 3 | 화살표 텍스트 색상 | `text-white` | `text-white/80 hover:text-white` | Cosmetic - 기본 상태 약간 투명 |
 
+### 엣지 케이스 시나리오 (Gap #1 + #2)
+
+1. 사용자가 화살표 클릭 → `pauseAndResume()` 호출 → 자동 롤링 정지, 5초 타이머 시작
+2. 5초 이내에 마우스가 모달 밖으로 이동
+3. **설계 동작**: `!isPaused` 가드로 `startAutoPlay()` 차단 → 5초 타이머 지속
+4. **실제 동작**: `startAutoPlay()` 즉시 호출 → 자동 롤링 조기 재개
+
+---
+
+## Recommended Fix (Option A - 3 small changes)
+
+1. `PopupModal.tsx`에 `isPaused` 상태 추가: `const [isPaused, setIsPaused] = useState(false);`
+2. `pauseAndResume`에서 `setIsPaused(true)` / `setIsPaused(false)` 추가
+3. `onMouseLeave`에 `!isPaused` 가드 추가
+4. (Optional) 화살표 색상 `text-white/80` → `text-white`로 변경
+
+---
+
+## Version History
+
+| Version | Date | Match Rate | Changes |
+|---------|------|-----------|---------|
+| 1.0 | 2026-02-08 | 93% | 초기 분석, 3개 minor gap 발견 |
+| 1.1 | 2026-02-10 | 93% | 재분석: 3개 gap 미수정, 신규 gap 없음 |
+
 ---
 
 ## Verdict
 
-모든 17개 기능 항목이 구현되었으며, 3개의 minor gap은 코스메틱/엣지케이스 수준입니다.
-93% Match Rate로 PASS 기준(90%) 충족.
+14/17 완전 일치, 3/17 minor gap (Low/Cosmetic).
+모든 17개 기능이 작동하며, 93% Match Rate로 PASS 기준(90%) 충족.
+프로덕션 배포 가능 상태.
