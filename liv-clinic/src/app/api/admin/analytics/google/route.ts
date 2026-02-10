@@ -44,6 +44,7 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(data);
   } catch (e: unknown) {
+    console.error('[GA4 API Error]', e);
     const msg = e instanceof Error ? e.message : 'Unknown error';
 
     if (msg === 'GA4_CREDENTIALS_MISSING' || msg === 'GA4_PROPERTY_ID_MISSING') {
@@ -53,6 +54,7 @@ export async function GET(request: NextRequest) {
       }, { status: 503 });
     }
 
-    return NextResponse.json({ error: msg }, { status: 500 });
+    const detail = e instanceof Error ? e.stack || e.message : String(e);
+    return NextResponse.json({ error: msg, detail }, { status: 500 });
   }
 }

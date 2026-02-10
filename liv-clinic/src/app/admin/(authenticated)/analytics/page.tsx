@@ -17,7 +17,10 @@ async function fetchAnalytics(period: AnalyticsPeriod): Promise<GA4AnalyticsData
     const body = await res.json();
     throw new Error(body.message || 'GA4_NOT_CONFIGURED');
   }
-  if (!res.ok) throw new Error('Analytics 데이터를 불러오지 못했습니다.');
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.detail || body.error || 'Analytics 데이터를 불러오지 못했습니다.');
+  }
   return res.json();
 }
 
@@ -46,7 +49,7 @@ const PERIOD_LABELS: Record<AnalyticsPeriod, string> = {
   '90d': '최근 90일',
 };
 
-const NAVER_ANALYTICS_URL = 'https://analytics.naver.com';
+const NAVER_ANALYTICS_URL = 'https://analytics.naver.com/';
 
 // ─── 메인 컴포넌트 ──────────────────────────────────
 export default function AnalyticsPage() {
@@ -423,22 +426,32 @@ function TopPagesTable({ pages, totalPageviews }: { pages: GA4TopPage[]; totalPa
 
 // ─── Naver Analytics 바로가기 ──────────────────────────
 function NaverAnalyticsCard() {
+  const naverWcsId = process.env.NEXT_PUBLIC_NAVER_WCS_ID;
+
   return (
     <div className="bg-[#03C75A]/5 border border-[#03C75A]/20 rounded-xl p-5">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h3 className="font-bold text-sm text-[#03C75A] mb-1">Naver Analytics</h3>
+          <div className="flex items-center gap-2 mb-1">
+            <h3 className="font-bold text-sm text-[#03C75A]">Naver Analytics</h3>
+            {naverWcsId && (
+              <span className="text-[10px] px-1.5 py-0.5 bg-[#03C75A]/10 text-[#03C75A] rounded font-mono">
+                {naverWcsId}
+              </span>
+            )}
+          </div>
           <p className="text-xs text-[#575756]">
-            네이버 애널리틱스는 별도 대시보드에서 확인할 수 있습니다.
+            네이버 애널리틱스는 공개 API가 없어 데이터를 직접 불러올 수 없습니다.
+            아래 버튼으로 대시보드에 바로 접속하세요.
           </p>
         </div>
         <a
           href={NAVER_ANALYTICS_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-2.5 bg-[#03C75A] text-white rounded-lg text-sm font-medium hover:bg-[#02b351] transition-colors"
+          className="flex items-center gap-2 px-4 py-2.5 bg-[#03C75A] text-white rounded-lg text-sm font-medium hover:bg-[#02b351] transition-colors shrink-0"
         >
-          바로가기
+          대시보드 열기
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
             <polyline points="15 3 21 3 21 9" />
