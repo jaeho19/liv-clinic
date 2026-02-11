@@ -1,6 +1,12 @@
 'use client';
 
 import Script from 'next/script';
+import { usePathname } from 'next/navigation';
+import { useEffect, useRef } from 'react';
+
+declare global {
+  function gtag(...args: unknown[]): void;
+}
 
 interface GoogleAnalyticsProps {
   trackingId?: string;
@@ -9,6 +15,19 @@ interface GoogleAnalyticsProps {
 
 export default function GoogleAnalytics({ trackingId, enabled }: GoogleAnalyticsProps) {
   const id = trackingId || process.env.NEXT_PUBLIC_GA_ID;
+  const pathname = usePathname();
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    // SPA 라우트 변경 시 페이지뷰 재전송
+    if (typeof gtag === 'function') {
+      gtag('config', id, { page_path: pathname });
+    }
+  }, [pathname, id]);
 
   if (!id || enabled === false) {
     return null;

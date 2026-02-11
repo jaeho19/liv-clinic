@@ -105,10 +105,10 @@ export default async function LocaleLayout({
             __html: JSON.stringify(webSiteSchema),
           }}
         />
-        <GoogleAnalytics trackingId={analytics?.gaTrackingId} enabled={analytics?.gaEnabled} />
-        <NaverAnalytics wcsId={analytics?.naverWcsId} enabled={analytics?.naverEnabled} />
       </head>
       <body className="antialiased overflow-x-clip w-full">
+        <GoogleAnalytics trackingId={analytics?.gaTrackingId} enabled={analytics?.gaEnabled} />
+        <NaverAnalytics wcsId={analytics?.naverWcsId} enabled={analytics?.naverEnabled} />
         <a href="#main-content" className="skip-link">
           {skipToContentText[locale as keyof typeof skipToContentText] || skipToContentText.en}
         </a>
