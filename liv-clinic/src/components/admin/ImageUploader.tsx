@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase-browser';
 import Image from 'next/image';
 
 interface ImageUploaderProps {
-  bucket: 'events' | 'popups';
+  bucket: 'events' | 'popups' | 'patient-photos';
   folder: string;
   value: string | null;
   onChange: (url: string | null) => void;

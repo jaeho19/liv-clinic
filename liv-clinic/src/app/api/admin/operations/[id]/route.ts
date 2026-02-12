@@ -35,7 +35,14 @@ export async function PATCH(
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { id } = await params;
-  const body = await request.json();
+
+  let body;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
+  }
+
   const admin = createAdminClient();
 
   // 요청에 포함된 필드만 업데이트 객체에 추가
@@ -57,6 +64,17 @@ export async function PATCH(
   if (body.paymentStatus !== undefined) updateObj.payment_status = body.paymentStatus;
 
   try {
+    // If completing, check current status first to prevent duplicate deduction
+    let previousStatus: string | null = null;
+    if (body.status === 'COMPLETED') {
+      const { data: current } = await admin
+        .from('operation_cases')
+        .select('status')
+        .eq('id', id)
+        .single();
+      previousStatus = current?.status ?? null;
+    }
+
     const { data, error } = await admin
       .from('operation_cases')
       .update(updateObj)
@@ -71,7 +89,44 @@ export async function PATCH(
       throw error;
     }
 
-    return NextResponse.json(toCamelCase(data));
+    // Auto-deduct inventory when case is completed
+    let inventoryDeducted: { success: boolean; items: string[]; errors: string[] } | undefined;
+    if (body.status === 'COMPLETED' && data.procedure_name && previousStatus !== 'COMPLETED') {
+      inventoryDeducted = { success: true, items: [], errors: [] };
+      try {
+        const { data: recipes, error: recipeErr } = await admin.rpc('get_procedure_recipes', {
+          p_procedure: data.procedure_name,
+        });
+        if (recipeErr) throw recipeErr;
+        const recipeList = (recipes as { id: string; procedure_name: string; item_id: string; item_name: string; default_qty: number; note: string | null }[]) || [];
+
+        for (const recipe of recipeList) {
+          try {
+            await admin.rpc('use_inventory_item', {
+              p_item_id: recipe.item_id,
+              p_quantity: recipe.default_qty,
+              p_patient_name: data.patient_name ?? undefined,
+              p_chart_number: undefined,
+              p_note: `자동차감: ${data.procedure_name}`,
+              p_confirmed_by: undefined,
+              p_created_by: session.user.email ?? undefined,
+            });
+            inventoryDeducted.items.push(recipe.item_name || recipe.item_id);
+          } catch (itemErr: unknown) {
+            const itemMsg = itemErr instanceof Error ? itemErr.message : 'Unknown error';
+            inventoryDeducted.errors.push(`${recipe.item_name || recipe.item_id}: ${itemMsg}`);
+          }
+        }
+        if (inventoryDeducted.errors.length > 0) inventoryDeducted.success = false;
+      } catch {
+        // Recipe fetch failed — skip deduction, case completion still succeeds
+        inventoryDeducted.success = false;
+        inventoryDeducted.errors.push('레시피 조회 실패');
+      }
+    }
+
+    const result = toCamelCase(data);
+    return NextResponse.json(inventoryDeducted ? { ...result, inventoryDeducted } : result);
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Unknown error';
     return NextResponse.json({ error: msg }, { status: 500 });

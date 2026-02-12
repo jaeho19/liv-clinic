@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useCallback } from 'react';
+import PatientPhotoGallery from '@/components/admin/PatientPhotoGallery';
 
 // ─── Types ──────────────────────────────────────
 interface PatientSearchResult {
@@ -78,7 +79,7 @@ export default function PatientsPage() {
   const [profile, setProfile] = useState<PatientProfile | null>(null);
   const [loadingProfile, setLoadingProfile] = useState(false);
 
-  const [activeTab, setActiveTab] = useState<'treatments' | 'consultations' | 'notifications' | 'revenue'>('treatments');
+  const [activeTab, setActiveTab] = useState<'treatments' | 'consultations' | 'notifications' | 'revenue' | 'photos'>('treatments');
 
   const handleSearch = useCallback(async () => {
     if (!query.trim() || query.trim().length < 2) return;
@@ -322,6 +323,7 @@ export default function PatientsPage() {
                     { id: 'consultations' as const, label: '상담 이력', count: profile.consultations.length },
                     { id: 'notifications' as const, label: '알림 발송', count: profile.notifications.length },
                     { id: 'revenue' as const, label: '시술별 매출', count: profile.revenue.procedures.length },
+                    { id: 'photos' as const, label: '사진', count: null },
                   ]).map(tab => (
                     <button
                       key={tab.id}
@@ -333,9 +335,11 @@ export default function PatientsPage() {
                       }`}
                     >
                       {tab.label}
-                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full tabular-nums ${
-                        activeTab === tab.id ? 'bg-[#b4988d]/15 text-[#b4988d]' : 'bg-[#e0d8d4]/50 text-[#a09080]'
-                      }`}>{tab.count}</span>
+                      {tab.count !== null && (
+                        <span className={`text-[10px] px-1.5 py-0.5 rounded-full tabular-nums ${
+                          activeTab === tab.id ? 'bg-[#b4988d]/15 text-[#b4988d]' : 'bg-[#e0d8d4]/50 text-[#a09080]'
+                        }`}>{tab.count}</span>
+                      )}
                     </button>
                   ))}
                 </div>
@@ -509,6 +513,14 @@ export default function PatientsPage() {
                         </table>
                       </div>
                     )
+                  )}
+
+                  {/* Photos tab */}
+                  {activeTab === 'photos' && (
+                    <PatientPhotoGallery
+                      patientName={profile.patient.name}
+                      phone={profile.patient.phone}
+                    />
                   )}
                 </div>
               </div>

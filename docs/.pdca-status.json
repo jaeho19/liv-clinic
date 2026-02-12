@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-02-11T22:00:47.553Z",
+  "lastUpdated": "2026-02-12T14:59:52.254Z",
   "activeFeatures": [
     "admin-v2-enhancement",
     "lifting",
@@ -46,7 +46,9 @@
     "voice-note",
     "guide",
     "google",
-    "hybrid-form"
+    "hybrid-form",
+    "photos",
+    "kiosk"
   ],
   "primaryFeature": "voice-hybrid-forms",
   "features": {
@@ -121,9 +123,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T00:55:17.745Z",
-        "lastUpdated": "2026-02-10T09:52:58.285Z"
+        "lastUpdated": "2026-02-12T13:58:42.029Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\types\\smart-forms.ts"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\types\\supabase.ts"
     },
     "scratchpad": {
       "phase": "do",
@@ -199,7 +201,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T08:25:24.818Z",
-        "lastUpdated": "2026-02-08T09:20:04.058Z"
+        "lastUpdated": "2026-02-12T14:04:18.458Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\inventory\\page.tsx"
     },
@@ -212,9 +214,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T08:25:30.332Z",
-        "lastUpdated": "2026-02-08T07:47:10.315Z"
+        "lastUpdated": "2026-02-12T14:58:27.731Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\settings\\treatments\\[id]\\route.ts"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\operations\\[id]\\route.ts"
     },
     "stats": {
       "phase": "do",
@@ -316,9 +318,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T08:31:08.830Z",
-        "lastUpdated": "2026-02-10T07:20:37.574Z"
+        "lastUpdated": "2026-02-12T14:59:43.943Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\admin\\AdminSidebar.tsx"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\admin\\PatientPhotoGallery.tsx"
     },
     "consultations": {
       "phase": "do",
@@ -619,7 +621,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-08T09:55:47.073Z",
-        "lastUpdated": "2026-02-08T09:55:47.073Z"
+        "lastUpdated": "2026-02-12T14:02:50.534Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\patients\\page.tsx"
     },
@@ -740,6 +742,32 @@
         "lastUpdated": "2026-02-10T12:00:00.000Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\docs\\04-report\\voice-hybrid-forms.report.md"
+    },
+    "photos": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-12T14:01:09.290Z",
+        "lastUpdated": "2026-02-12T14:58:38.834Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\patients\\photos\\route.ts"
+    },
+    "kiosk": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-02-12T14:03:04.430Z",
+        "lastUpdated": "2026-02-12T14:59:52.254Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\inventory\\kiosk\\layout.tsx"
     }
   },
   "pipeline": {
@@ -750,7 +778,7 @@
   "session": {
     "startedAt": "2026-01-30T22:26:49.658Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-02-11T22:00:47.553Z"
+    "lastActivity": "2026-02-12T14:59:52.254Z"
   },
   "history": [
     {
@@ -2616,6 +2644,216 @@
     {
       "timestamp": "2026-02-11T22:00:47.552Z",
       "feature": "analytics",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T13:58:42.029Z",
+      "feature": "liv-clinic",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T13:58:45.809Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T13:59:02.454Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T13:59:13.409Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T13:59:19.624Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T13:59:24.468Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T13:59:31.104Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:00:03.099Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:00:09.036Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:01:09.290Z",
+      "feature": "photos",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:01:18.610Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:02:14.649Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:02:20.191Z",
+      "feature": "patients",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:02:25.421Z",
+      "feature": "patients",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:02:33.817Z",
+      "feature": "patients",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:02:41.287Z",
+      "feature": "patients",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:02:50.534Z",
+      "feature": "patients",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:03:04.430Z",
+      "feature": "kiosk",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:04:01.104Z",
+      "feature": "kiosk",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:04:07.128Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:04:18.458Z",
+      "feature": "inventory",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:58:16.026Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:58:23.521Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:58:27.731Z",
+      "feature": "[id]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:58:35.174Z",
+      "feature": "photos",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:58:38.834Z",
+      "feature": "photos",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:58:50.766Z",
+      "feature": "kiosk",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:58:56.501Z",
+      "feature": "kiosk",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:59:10.150Z",
+      "feature": "kiosk",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:59:14.958Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:59:20.249Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:59:27.429Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:59:34.669Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:59:43.943Z",
+      "feature": "admin",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-02-12T14:59:52.254Z",
+      "feature": "kiosk",
       "phase": "do",
       "action": "updated"
     }

@@ -17,6 +17,7 @@ import type {
 import type { BurndownResult } from '@/lib/inventory-utils';
 
 // ─── New visual components ─────────────────────
+import Link from 'next/link';
 import StockDashboard from '@/components/admin/inventory/StockDashboard';
 import StockTableView from '@/components/admin/inventory/StockTableView';
 import StockCardView from '@/components/admin/inventory/StockCardView';
@@ -358,6 +359,15 @@ export default function InventoryPage() {
           <p className="text-xs text-[#a09080] mt-1">품목 재고 현황을 한눈에 확인하고 관리합니다</p>
         </div>
         <div className="flex gap-2.5">
+          <Link
+            href="/admin/inventory/kiosk"
+            className="px-4 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-semibold hover:bg-emerald-700 transition-all duration-150 flex items-center gap-2 shadow-sm hover:shadow-md"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            키오스크 모드
+          </Link>
           <button
             onClick={() => setShowUseModal(true)}
             className="px-4 py-2.5 bg-[#6d4e42] text-white rounded-xl text-sm font-semibold hover:bg-[#5a3d33] transition-all duration-150 cursor-pointer flex items-center gap-2 shadow-sm hover:shadow-md"
@@ -537,6 +547,7 @@ export default function InventoryPage() {
           onDismiss={handleDismissAlert}
           onUndismiss={handleUndismissAlert}
           onStockModal={setStockModal}
+          burndownMap={burndownMap}
         />
       )}
 

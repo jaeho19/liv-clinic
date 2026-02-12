@@ -755,6 +755,45 @@ export interface Database {
           }
         ]
       }
+      patient_photos: {
+        Row: {
+          id: string
+          patient_name: string
+          phone: string | null
+          photo_type: string
+          photo_url: string
+          procedure_name: string | null
+          memo: string | null
+          taken_at: string
+          uploaded_by: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          patient_name: string
+          phone?: string | null
+          photo_type?: string
+          photo_url: string
+          procedure_name?: string | null
+          memo?: string | null
+          taken_at?: string
+          uploaded_by?: string | null
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          patient_name?: string
+          phone?: string | null
+          photo_type?: string
+          photo_url?: string
+          procedure_name?: string | null
+          memo?: string | null
+          taken_at?: string
+          uploaded_by?: string | null
+          created_at?: string
+        }
+        Relationships: []
+      }
       inventory_counts: {
         Row: {
           id: string
