@@ -7,7 +7,6 @@ import { Header, Footer, QuickConsultBar } from '@/components/layout';
 import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import NaverAnalytics from '@/components/analytics/NaverAnalytics';
-import ConsentBanner from '@/components/analytics/ConsentBanner';
 import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema } from '@/lib/seo';
 import { createAdminClient } from '@/lib/supabase-admin';
 import '../globals.css';
@@ -151,7 +150,6 @@ export default async function LocaleLayout({
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />
-          <ConsentBanner />
         </NextIntlClientProvider>
       </body>
     </html>
