@@ -46,6 +46,8 @@ export default function GoogleAnalytics({ trackingId, enabled }: GoogleAnalytics
           gtag('js', new Date());
           gtag('config', '${id}', {
             page_path: window.location.pathname,
+            send_page_view: true,
+            cookie_flags: 'SameSite=None;Secure',
           });
         `}
       </Script>

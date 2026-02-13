@@ -137,5 +137,6 @@ export async function fetchGA4Analytics(period: AnalyticsPeriod): Promise<GA4Ana
     devices,
     period,
     fetchedAt: new Date().toISOString(),
+    propertyId,
   };
 }

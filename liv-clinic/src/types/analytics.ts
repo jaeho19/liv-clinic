@@ -38,4 +38,5 @@ export interface GA4AnalyticsData {
   devices: GA4Device[];
   period: AnalyticsPeriod;
   fetchedAt: string;
+  propertyId?: string | null;
 }

@@ -9,6 +9,7 @@ import { motion } from 'framer-motion';
 import { AnimateOnScroll, Button, Card, NaverMap } from '@/components/ui';
 import { FAQ } from '@/components/sections';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
+import { trackFormSubmit, trackContact } from '@/lib/analytics-events';
 
 export default function ContactPage() {
   const t = useTranslations();
@@ -100,6 +101,7 @@ export default function ContactPage() {
         throw new Error(result.error || '상담 신청에 실패했습니다.');
       }
 
+      trackFormSubmit('consultation', data.treatment);
       setIsSubmitted(true);
       reset();
     } catch (error) {
@@ -132,7 +134,7 @@ export default function ContactPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <AnimateOnScroll>
-              <a href={`tel:${SITE_INFO.phone}`} className="block">
+              <a href={`tel:${SITE_INFO.phone}`} onClick={() => trackContact('phone', '/contact')} className="block">
                 <Card padding="lg" className="text-center hover:border-primary transition-colors cursor-pointer h-full">
                   <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -147,7 +149,7 @@ export default function ContactPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll>
-              <a href={SOCIAL_LINKS.kakao} target="_blank" rel="noopener noreferrer" className="block">
+              <a href={SOCIAL_LINKS.kakao} onClick={() => trackContact('kakao', '/contact')} target="_blank" rel="noopener noreferrer" className="block">
                 <Card padding="lg" className="text-center hover:border-primary transition-colors cursor-pointer h-full">
                   <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#FEE500] flex items-center justify-center">
                     <svg className="w-7 h-7 text-[#3C1E1E]" viewBox="0 0 24 24" fill="currentColor">

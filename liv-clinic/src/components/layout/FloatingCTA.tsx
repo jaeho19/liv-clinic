@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { SITE_INFO, SOCIAL_LINKS } from '@/lib/constants';
+import { trackContact } from '@/lib/analytics-events';
 
 // CTA 버튼 정의
 const ctaButtons = {
@@ -98,6 +99,7 @@ export default function FloatingCTA() {
               href={button.href}
               target={button.href.startsWith('http') || button.href.startsWith('weixin') ? '_blank' : undefined}
               rel={button.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+              onClick={() => trackContact(button.id as 'phone' | 'kakao' | 'wechat' | 'line')}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
@@ -117,6 +119,7 @@ export default function FloatingCTA() {
         href={main.href}
         target={main.href.startsWith('http') || main.href.startsWith('weixin') ? '_blank' : undefined}
         rel={main.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        onClick={() => trackContact(main.id as 'phone' | 'kakao' | 'wechat' | 'line')}
         className={`relative flex items-center gap-2 ${main.color} ${main.textColor} rounded-full shadow-lg transition-all pl-3 pr-4 sm:pl-4 sm:pr-5 h-11 sm:h-12`}
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

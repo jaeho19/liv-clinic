@@ -87,6 +87,8 @@ export default async function LocaleLayout({
         <link rel="manifest" href="/manifest.json" />
         <meta name="theme-color" content="#b4988d" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
+        {/* Google Search Console */}
+        <meta name="google-site-verification" content="XBntgcmReJ3Xf1PKBZrdhRcAq5KDEzjcQwyXK5Ehx8A" />
         {/* Naver Search Advisor */}
         {process.env.NEXT_PUBLIC_NAVER_VERIFICATION && (
           <meta name="naver-site-verification" content={process.env.NEXT_PUBLIC_NAVER_VERIFICATION} />

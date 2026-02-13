@@ -58,6 +58,7 @@ export default function AnalyticsPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [notConfigured, setNotConfigured] = useState(false);
+  const [showGuide, setShowGuide] = useState(false);
 
   const loadData = useCallback(async (p: AnalyticsPeriod) => {
     setLoading(true);
@@ -146,6 +147,9 @@ export default function AnalyticsPage() {
 
       {/* 데이터 표시 */}
       {!loading && !error && data && <>
+        {/* GA4 대시보드 바로가기 */}
+        {data.propertyId && <GA4DashboardCard propertyId={data.propertyId} />}
+
         {/* KPI 카드 */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
           <KpiCard
@@ -187,6 +191,9 @@ export default function AnalyticsPage() {
         {/* 인기 페이지 테이블 */}
         <TopPagesTable pages={data.topPages} totalPageviews={data.overview.pageviews} />
       </>}
+
+      {/* GA4 설정 가이드 */}
+      <GA4SetupGuide open={showGuide} onToggle={() => setShowGuide(!showGuide)} />
 
       {/* Naver Analytics 바로가기 */}
       <NaverAnalyticsCard />
@@ -420,6 +427,168 @@ function TopPagesTable({ pages, totalPageviews }: { pages: GA4TopPage[]; totalPa
           </tbody>
         </table>
       </div>
+    </div>
+  );
+}
+
+// ─── 외부 링크 아이콘 ──────────────────────────────────
+function ExternalLinkIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="inline-block ml-1 opacity-60">
+      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+      <polyline points="15 3 21 3 21 9" />
+      <line x1="10" y1="14" x2="21" y2="3" />
+    </svg>
+  );
+}
+
+// ─── GA4 대시보드 바로가기 ──────────────────────────────
+function GA4DashboardCard({ propertyId }: { propertyId: string }) {
+  const baseUrl = `https://analytics.google.com/analytics/web/#/p${propertyId}`;
+
+  const links = [
+    {
+      label: '대시보드',
+      desc: '전체 보고서',
+      href: `${baseUrl}/reports/dashboard`,
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="3" y="3" width="7" height="7" /><rect x="14" y="3" width="7" height="7" /><rect x="3" y="14" width="7" height="7" /><rect x="14" y="14" width="7" height="7" />
+        </svg>
+      ),
+    },
+    {
+      label: '트래픽 획득',
+      desc: '소스/매체/캠페인',
+      href: `${baseUrl}/reports/explorer?params=_u..nav%3Dmaui&r=lifecycle-traffic-acquisition-v2`,
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      ),
+    },
+    {
+      label: '인구통계',
+      desc: '위치/국가/연령',
+      href: `${baseUrl}/reports/explorer?params=_u..nav%3Dmaui&r=user-demographics-detail`,
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <circle cx="12" cy="12" r="10" /><line x1="2" y1="12" x2="22" y2="12" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+        </svg>
+      ),
+    },
+    {
+      label: '실시간',
+      desc: '현재 방문자',
+      href: `${baseUrl}/reports/realtime`,
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+        </svg>
+      ),
+    },
+    {
+      label: 'Search Console',
+      desc: '검색 키워드/노출/CTR',
+      href: 'https://search.google.com/search-console',
+      icon: (
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+        </svg>
+      ),
+    },
+  ];
+
+  return (
+    <div className="bg-[#4285F4]/5 border border-[#4285F4]/20 rounded-xl p-5 mb-6">
+      <div className="mb-4">
+        <h3 className="font-bold text-sm text-[#4285F4] mb-1">Google Analytics 대시보드</h3>
+        <p className="text-xs text-[#575756]">
+          트래픽 획득 경로, 위치/국가, 시간대, 키워드 등 상세 분석은 GA4에서 직접 확인하세요.
+        </p>
+      </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2">
+        {links.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center gap-1.5 p-3 rounded-lg bg-white border border-[#e5e5e5] hover:border-[#4285F4]/40 hover:shadow-sm transition-all text-center group"
+          >
+            <span className="text-[#4285F4] group-hover:scale-110 transition-transform">{link.icon}</span>
+            <span className="text-xs font-medium text-[#6d4e42]">{link.label}</span>
+            <span className="text-[10px] text-[#8a8a8a]">{link.desc}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── GA4 설정 가이드 ──────────────────────────────────
+function GA4SetupGuide({ open, onToggle }: { open: boolean; onToggle: () => void }) {
+  const guideItems = [
+    {
+      title: 'Enhanced Measurement 활성화',
+      desc: 'GA4 속성 > 데이터 스트림 > 향상된 측정 켜기 (스크롤, 외부 링크 클릭, 사이트 검색 등 자동 추적)',
+      href: 'https://support.google.com/analytics/answer/9216061',
+    },
+    {
+      title: 'Google Search Console 연동',
+      desc: 'GA4 관리 > 제품 링크 > Search Console 연결 > 검색 키워드, 노출수, CTR 데이터 확인 가능',
+      href: 'https://support.google.com/analytics/answer/9379420',
+    },
+    {
+      title: '전환 이벤트 설정',
+      desc: 'GA4 > 이벤트 > generate_lead / contact 이벤트를 "전환으로 표시" > 상담 신청, 전화 클릭 전환율 추적',
+      href: 'https://support.google.com/analytics/answer/9267568',
+    },
+    {
+      title: '데이터 보관 기간 (14개월 권장)',
+      desc: 'GA4 관리 > 데이터 설정 > 데이터 보관 > 14개월로 변경 (기본 2개월)',
+      href: 'https://support.google.com/analytics/answer/7667196',
+    },
+  ];
+
+  return (
+    <div className="bg-white rounded-xl border border-[#e5e5e5] mb-4 overflow-hidden">
+      <button
+        onClick={onToggle}
+        className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-[#f6f6f6] transition-colors cursor-pointer"
+      >
+        <h3 className="font-bold text-sm text-[#6d4e42]">GA4 설정 가이드</h3>
+        <svg
+          className={`w-4 h-4 text-[#8a8a8a] transition-transform ${open ? 'rotate-180' : ''}`}
+          fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+        >
+          <polyline points="6 9 12 15 18 9" />
+        </svg>
+      </button>
+      {open && (
+        <div className="px-5 pb-5 space-y-4 border-t border-[#e5e5e5] pt-4">
+          {guideItems.map((item, i) => (
+            <div key={i} className="flex gap-3">
+              <span className="text-xs font-bold text-[#4285F4] bg-[#4285F4]/10 w-6 h-6 rounded-full flex items-center justify-center shrink-0 mt-0.5">
+                {i + 1}
+              </span>
+              <div className="flex-1">
+                <p className="text-sm font-medium text-[#6d4e42] mb-1">{item.title}</p>
+                <p className="text-xs text-[#8a8a8a] mb-1.5">{item.desc}</p>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-[#4285F4] hover:underline inline-flex items-center"
+                >
+                  설정 바로가기
+                  <ExternalLinkIcon />
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
