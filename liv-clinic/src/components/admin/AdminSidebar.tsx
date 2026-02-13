@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 
@@ -20,8 +20,8 @@ const NAV_SECTIONS: NavSection[] = [
   {
     title: '재고관리',
     items: [
-      { href: '/admin/inventory', label: '일반 재고', icon: '📦' },
-      { href: '/admin/inventory?tab=cosmetics', label: '화장품 재고', icon: '💄' },
+      { href: '/admin/inventory', label: '물품 사용 기록', icon: '📋' },
+      { href: '/admin/inventory/overview', label: '재고 현황', icon: '📊' },
     ],
   },
   {
@@ -47,9 +47,7 @@ interface AdminSidebarProps {
 
 export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
-  const currentUrl = searchParams.toString() ? `${pathname}?${searchParams.toString()}` : pathname;
 
   // Close sidebar on route change (mobile)
   useEffect(() => {
@@ -111,10 +109,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
               </p>
               <ul className="space-y-0.5">
                 {section.items.map((item) => {
-                  const hasQuery = item.href.includes('?');
-                  const isActive = hasQuery
-                    ? currentUrl === item.href
-                    : pathname.startsWith(item.href.split('?')[0]) && !searchParams.get('tab');
+                  const isActive = pathname === item.href || (pathname.startsWith(item.href + '/') && item.href !== '/admin/inventory');
                   return (
                     <li key={item.href}>
                       <Link
