@@ -3,10 +3,15 @@
 import { useState, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { useInventoryData } from '@/hooks/useInventoryData';
+import { getStockStatus } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
 import CompactStatsBar from '@/components/admin/inventory/CompactStatsBar';
 import CategoryGrid from '@/components/admin/inventory/CategoryGrid';
 import CategoryDetailSection from '@/components/admin/inventory/CategoryDetailSection';
+import HistoryTab from '@/components/admin/inventory/HistoryTab';
+import RestockTab from '@/components/admin/inventory/RestockTab';
+
+type TabId = 'stock' | 'history' | 'restock';
 
 // ─── Modal components (reused from inventory page) ─────
 // StockModal is needed for the detail section's stock operations
@@ -104,10 +109,26 @@ function StockModal({
 
 // ─── Main Component ─────────────────────────────
 export default function InventoryOverviewPage() {
-  const { items, transactions, loading, error, burndownMap, loadData } = useInventoryData();
+  const { items, transactions, loading, error, burndownMap, alertItems, loadData } = useInventoryData();
+  const [activeTab, setActiveTab] = useState<TabId>('stock');
   const [selectedCategory, setSelectedCategory] = useState<InventoryCategory | null>(null);
   const [stockModal, setStockModal] = useState<{ item: InventoryItem; type: 'in' | 'out' } | null>(null);
   const [submitting, setSubmitting] = useState(false);
+
+  const consumptionData = useMemo(() => {
+    const useTxs = transactions.filter(t => t.tx_type === 'use');
+    const byItem: Record<string, number> = {};
+    for (const tx of useTxs) {
+      byItem[tx.item_id] = (byItem[tx.item_id] || 0) + tx.quantity;
+    }
+    return Object.entries(byItem)
+      .map(([itemId, qty]) => ({
+        item: items.find(i => i.id === itemId),
+        quantity: qty,
+      }))
+      .filter(d => d.item)
+      .sort((a, b) => b.quantity - a.quantity);
+  }, [transactions, items]);
 
   // Dismissed alert IDs (persisted in localStorage)
   const [dismissedAlertIds, setDismissedAlertIds] = useState<Set<string>>(() => {
@@ -218,24 +239,72 @@ export default function InventoryOverviewPage() {
       {/* Compact stats bar */}
       <CompactStatsBar items={items} />
 
-      {/* Category grid */}
-      <CategoryGrid
-        items={items}
-        selectedCategory={selectedCategory}
-        onSelectCategory={setSelectedCategory}
-      />
+      {/* Tab Navigation */}
+      <div className="flex gap-0.5 bg-[#f6f4f2] p-1 rounded-xl w-fit mb-5">
+        {([
+          { id: 'stock' as TabId, label: '재고 현황', icon: <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" /></svg> },
+          { id: 'history' as TabId, label: '사용 이력', icon: <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg> },
+          { id: 'restock' as TabId, label: '입고 관리', icon: <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" /></svg> },
+        ]).map(tab => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`flex items-center gap-1.5 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-150 cursor-pointer ${
+              activeTab === tab.id
+                ? 'bg-white text-[#6d4e42] shadow-sm'
+                : 'text-[#a09080] hover:text-[#575756]'
+            }`}
+          >
+            {tab.icon}
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
-      {/* Category detail section */}
-      {selectedCategory && (
-        <CategoryDetailSection
-          category={selectedCategory}
-          items={items}
+      {/* Tab Content */}
+      {activeTab === 'stock' && (
+        <>
+          {/* Category grid */}
+          <CategoryGrid
+            items={items}
+            selectedCategory={selectedCategory}
+            onSelectCategory={setSelectedCategory}
+          />
+
+          {/* Category detail section */}
+          {selectedCategory && (
+            <CategoryDetailSection
+              category={selectedCategory}
+              items={items}
+              transactions={transactions}
+              burndownMap={burndownMap}
+              onStockModal={setStockModal}
+              dismissedAlertIds={dismissedAlertIds}
+              onDismissAlert={handleDismissAlert}
+              onUndismissAlert={handleUndismissAlert}
+            />
+          )}
+        </>
+      )}
+
+      {activeTab === 'history' && (
+        <HistoryTab
           transactions={transactions}
-          burndownMap={burndownMap}
+          items={items}
+          consumptionData={consumptionData}
+        />
+      )}
+
+      {activeTab === 'restock' && (
+        <RestockTab
+          transactions={transactions}
+          items={items}
+          alertItems={alertItems}
+          dismissedIds={dismissedAlertIds}
+          onDismiss={handleDismissAlert}
+          onUndismiss={handleUndismissAlert}
           onStockModal={setStockModal}
-          dismissedAlertIds={dismissedAlertIds}
-          onDismissAlert={handleDismissAlert}
-          onUndismissAlert={handleUndismissAlert}
+          burndownMap={burndownMap}
         />
       )}
 
