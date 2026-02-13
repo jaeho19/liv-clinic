@@ -223,6 +223,193 @@ export const PROCEDURE_NAMES = [
   '쥬베룩 스킨부스터 시술',
 ] as const;
 
+// ─── 시술 2단계 선택 체계 ─────────────────────
+export type ProcedureCategoryId = 'lifting' | 'antiaging' | 'skinbooster';
+
+export interface ProcedureOption {
+  label: string;
+  recipeName: string;
+}
+
+export interface ProcedureType {
+  id: string;
+  name: string;
+  category: ProcedureCategoryId;
+  options: ProcedureOption[];
+}
+
+export const PROCEDURE_CATEGORY_LABELS: Record<ProcedureCategoryId, string> = {
+  lifting: '리프팅',
+  antiaging: '안티에이징',
+  skinbooster: '스킨부스터/기타',
+};
+
+export const PROCEDURE_CATALOG: ProcedureType[] = [
+  // ─── 리프팅 ─────────────────
+  {
+    id: 'ulthera',
+    name: '울쎄라 프라임',
+    category: 'lifting',
+    options: [
+      { label: '상안면', recipeName: '울쎄라 상안면' },
+      { label: '하안면', recipeName: '울쎄라 하안면' },
+      { label: '전안면', recipeName: '울쎄라 전안면' },
+      { label: '전안면+목', recipeName: '울쎄라 전안면+목' },
+    ],
+  },
+  {
+    id: 'thermage',
+    name: '써마지 FLX',
+    category: 'lifting',
+    options: [
+      { label: '225샷 (눈가)', recipeName: '아이써마지' },
+      { label: '400샷', recipeName: '써마지 FLX 400' },
+      { label: '600샷', recipeName: '써마지 FLX 600' },
+      { label: '900샷', recipeName: '써마지 FLX 900' },
+    ],
+  },
+  {
+    id: 'density',
+    name: '덴서티',
+    category: 'lifting',
+    options: [],
+  },
+  {
+    id: 'shurink',
+    name: '슈링크 유니버스',
+    category: 'lifting',
+    options: [
+      { label: '1.5mm', recipeName: '슈링크 1.5mm' },
+      { label: '3.0mm', recipeName: '슈링크 3.0mm' },
+      { label: '4.5mm', recipeName: '슈링크 4.5mm' },
+      { label: '6.0/9.0mm', recipeName: '슈링크 6.0mm' },
+    ],
+  },
+  {
+    id: 'inmode_forma',
+    name: '인모드 포르마',
+    category: 'lifting',
+    options: [],
+  },
+  {
+    id: 'inmode_morpheus',
+    name: '인모드 모피어스8',
+    category: 'lifting',
+    options: [],
+  },
+  {
+    id: 'thread',
+    name: '실리프팅',
+    category: 'lifting',
+    options: [
+      { label: 'PDO', recipeName: '실리프팅 PDO' },
+      { label: 'PLLA', recipeName: '실리프팅 PLLA' },
+      { label: 'PCL', recipeName: '실리프팅 PCL' },
+      { label: 'APTOS', recipeName: '실리프팅 APTOS' },
+    ],
+  },
+  // ─── 안티에이징 ─────────────
+  {
+    id: 'botox_xeomin',
+    name: '보톡스 (제오민)',
+    category: 'antiaging',
+    options: [],
+  },
+  {
+    id: 'botox_hutox',
+    name: '보톡스 (하이톡스)',
+    category: 'antiaging',
+    options: [],
+  },
+  {
+    id: 'botox_jetema',
+    name: '보톡스 (제테마더)',
+    category: 'antiaging',
+    options: [],
+  },
+  {
+    id: 'filler_volbella',
+    name: '필러 (볼벨라)',
+    category: 'antiaging',
+    options: [],
+  },
+  {
+    id: 'filler_voluma',
+    name: '필러 (볼루마)',
+    category: 'antiaging',
+    options: [],
+  },
+  {
+    id: 'filler_volift',
+    name: '필러 (볼리프트)',
+    category: 'antiaging',
+    options: [],
+  },
+  {
+    id: 'filler_volux',
+    name: '필러 (볼룩스)',
+    category: 'antiaging',
+    options: [],
+  },
+  // ─── 스킨부스터/기타 ────────
+  {
+    id: 'rejuran_hb',
+    name: '리쥬란 HB',
+    category: 'skinbooster',
+    options: [],
+  },
+  {
+    id: 'rejuran_healer',
+    name: '리쥬란 힐러',
+    category: 'skinbooster',
+    options: [],
+  },
+  {
+    id: 'rejuran_eye',
+    name: '리쥬란 아이',
+    category: 'skinbooster',
+    options: [],
+  },
+  {
+    id: 'sculptra',
+    name: '스컬트라',
+    category: 'skinbooster',
+    options: [],
+  },
+  {
+    id: 'juvelook_volume',
+    name: '쥬베룩 볼륨',
+    category: 'skinbooster',
+    options: [],
+  },
+  {
+    id: 'juvelook_skin',
+    name: '쥬베룩 스킨부스터',
+    category: 'skinbooster',
+    options: [],
+  },
+];
+
+/** 기존 PROCEDURE_NAMES(recipe name)와의 매핑 (하위 호환) */
+export const PROCEDURE_RECIPE_MAP: Record<string, string> = {
+  density: '덴서티',
+  inmode_forma: '인모드 포르마',
+  inmode_morpheus: '인모드 모피어스8',
+  botox_xeomin: '보톡스 시술 (제오민)',
+  botox_hutox: '보톡스 시술 (하이톡스)',
+  botox_jetema: '보톡스 시술 (제테마더)',
+  filler_volbella: '필러 시술 (볼벨라)',
+  filler_voluma: '필러 시술 (볼루마)',
+  filler_volift: '필러 시술 (볼리프트)',
+  filler_volux: '필러 시술 (볼룩스)',
+  rejuran_hb: '리쥬란 HB 시술',
+  rejuran_healer: '리쥬란 힐러 시술',
+  rejuran_eye: '리쥬란 아이 시술',
+  sculptra: '스컬트라 시술',
+  juvelook_volume: '쥬베룩 볼륨 시술',
+  juvelook_skin: '쥬베룩 스킨부스터 시술',
+};
+
 // Burndown analysis
 export interface InventoryBurndown {
   itemId: string;

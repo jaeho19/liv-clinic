@@ -3,13 +3,19 @@
 import { useState, useCallback, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  PROCEDURE_NAMES,
+  PROCEDURE_CATALOG,
+  PROCEDURE_CATEGORY_LABELS,
+  PROCEDURE_RECIPE_MAP,
   NURSE_OPTIONS,
 } from '@/types/admin';
 import type {
   InventoryItem,
   ProcedureRecipe,
+  ProcedureType,
+  ProcedureOption,
+  ProcedureCategoryId,
 } from '@/types/admin';
+import DailyUsageLog from './DailyUsageLog';
 
 // ─── Types ──────────────────────────────────────
 interface UsageItem {
@@ -20,32 +26,32 @@ interface UsageItem {
   quantity: number;
 }
 
-// Procedure categories for the grid grouping
-const PROCEDURE_GROUPS: { label: string; filter: (name: string) => boolean }[] = [
-  { label: '리프팅/레이저', filter: (n) => /써마지|아이써마지/.test(n) },
-  { label: '필러', filter: (n) => /필러/.test(n) },
-  { label: '보톡스', filter: (n) => /보톡스/.test(n) },
-  { label: '스킨부스터/기타', filter: (n) => /리쥬란|스컬트라|쥬베룩/.test(n) },
-];
+// ─── Helpers ────────────────────────────────────
+function groupByCategory(catalog: ProcedureType[]) {
+  const groups: { category: ProcedureCategoryId; label: string; procedures: ProcedureType[] }[] = [];
+  const categoryOrder: ProcedureCategoryId[] = ['lifting', 'antiaging', 'skinbooster'];
 
-function groupProcedures(names: readonly string[]) {
-  const result: { label: string; procedures: string[] }[] = [];
-  const used = new Set<string>();
-
-  for (const group of PROCEDURE_GROUPS) {
-    const matching = names.filter(n => group.filter(n) && !used.has(n));
-    if (matching.length > 0) {
-      result.push({ label: group.label, procedures: matching });
-      matching.forEach(n => used.add(n));
+  for (const cat of categoryOrder) {
+    const procs = catalog.filter(p => p.category === cat);
+    if (procs.length > 0) {
+      groups.push({
+        category: cat,
+        label: PROCEDURE_CATEGORY_LABELS[cat],
+        procedures: procs,
+      });
     }
   }
+  return groups;
+}
 
-  const remaining = names.filter(n => !used.has(n));
-  if (remaining.length > 0) {
-    result.push({ label: '기타', procedures: [...remaining] });
-  }
+function getRecipeName(proc: ProcedureType, option?: ProcedureOption | null): string {
+  if (option) return option.recipeName;
+  return PROCEDURE_RECIPE_MAP[proc.id] ?? proc.name;
+}
 
-  return result;
+function getProcedureLabel(proc: ProcedureType, option?: ProcedureOption | null): string {
+  if (option) return `${proc.name} ${option.label}`;
+  return proc.name;
 }
 
 // ─── Main Component ─────────────────────────────
@@ -56,13 +62,15 @@ interface KioskViewProps {
 }
 
 export default function KioskView({ items, recipes, loadData }: KioskViewProps) {
-  const [selectedProcedure, setSelectedProcedure] = useState('');
+  const [selectedType, setSelectedType] = useState<ProcedureType | null>(null);
+  const [selectedOption, setSelectedOption] = useState<ProcedureOption | null>(null);
   const [patientName, setPatientName] = useState('');
   const [chartNumber, setChartNumber] = useState('');
   const [confirmedBy, setConfirmedBy] = useState('');
   const [usageItems, setUsageItems] = useState<UsageItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const [refetchKey, setRefetchKey] = useState(0);
 
   // Auto-dismiss toast
   useEffect(() => {
@@ -71,12 +79,12 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     return () => clearTimeout(timer);
   }, [toast]);
 
-  const procedureGroups = useMemo(() => groupProcedures(PROCEDURE_NAMES), []);
+  const procedureGroups = useMemo(() => groupByCategory(PROCEDURE_CATALOG), []);
 
-  const handleSelectProcedure = useCallback((procedureName: string) => {
-    setSelectedProcedure(procedureName);
+  // ─── Load recipe items by name ────────────────
+  const loadRecipeItems = useCallback((recipeName: string) => {
     const recipeItems = recipes
-      .filter(r => r.procedure_name === procedureName)
+      .filter(r => r.procedure_name === recipeName)
       .map(r => {
         const item = items.find(i => i.id === r.item_id);
         return {
@@ -90,6 +98,42 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     setUsageItems(recipeItems);
   }, [recipes, items]);
 
+  // ─── Check if a recipe exists for a procedure/option ──
+  const hasRecipeFor = useCallback((proc: ProcedureType, option?: ProcedureOption): boolean => {
+    const recipeName = option ? option.recipeName : (PROCEDURE_RECIPE_MAP[proc.id] ?? proc.name);
+    return recipes.some(r => r.procedure_name === recipeName);
+  }, [recipes]);
+
+  // ─── Step 1: Select procedure type ────────────
+  const handleSelectType = useCallback((proc: ProcedureType) => {
+    if (selectedType?.id === proc.id) {
+      // Toggle off
+      setSelectedType(null);
+      setSelectedOption(null);
+      setUsageItems([]);
+      return;
+    }
+
+    setSelectedType(proc);
+    setSelectedOption(null);
+
+    if (proc.options.length === 0) {
+      // No options → load items directly
+      const recipeName = getRecipeName(proc);
+      loadRecipeItems(recipeName);
+    } else {
+      // Has options → wait for step 2
+      setUsageItems([]);
+    }
+  }, [selectedType, loadRecipeItems]);
+
+  // ─── Step 2: Select option ────────────────────
+  const handleSelectOption = useCallback((option: ProcedureOption) => {
+    setSelectedOption(option);
+    loadRecipeItems(option.recipeName);
+  }, [loadRecipeItems]);
+
+  // ─── Quantity change ──────────────────────────
   const handleQtyChange = (idx: number, delta: number) => {
     setUsageItems(prev => prev.map((item, i) => {
       if (i !== idx) return item;
@@ -97,11 +141,13 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     }));
   };
 
+  // ─── Submit ───────────────────────────────────
   const handleSubmit = async () => {
     const activeItems = usageItems.filter(u => u.quantity > 0);
-    if (activeItems.length === 0) return;
+    if (activeItems.length === 0 || !selectedType) return;
 
     setSubmitting(true);
+    const label = getProcedureLabel(selectedType, selectedOption);
     try {
       const res = await fetch('/api/admin/inventory/use', {
         method: 'POST',
@@ -111,18 +157,19 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
           patient_name: patientName.trim() || undefined,
           chart_number: chartNumber.trim() || undefined,
           confirmed_by: confirmedBy || undefined,
-          note: `키오스크: ${selectedProcedure}`,
+          note: `키오스크: ${label}`,
         }),
       });
 
       if (res.ok) {
-        setToast({ message: `${selectedProcedure} - 재고 차감 완료!`, type: 'success' });
-        // Auto reset
-        setSelectedProcedure('');
+        setToast({ message: `${label} - 재고 차감 완료!`, type: 'success' });
+        setSelectedType(null);
+        setSelectedOption(null);
         setPatientName('');
         setChartNumber('');
         setConfirmedBy('');
         setUsageItems([]);
+        setRefetchKey(k => k + 1);
         await loadData();
       } else {
         const err = await res.json();
@@ -135,8 +182,10 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     }
   };
 
+  // ─── Reset ────────────────────────────────────
   const handleReset = () => {
-    setSelectedProcedure('');
+    setSelectedType(null);
+    setSelectedOption(null);
     setPatientName('');
     setChartNumber('');
     setConfirmedBy('');
@@ -144,6 +193,12 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
   };
 
   const activeCount = usageItems.filter(u => u.quantity > 0).length;
+  const displayName = selectedType
+    ? selectedOption
+      ? `${selectedType.name} - ${selectedOption.label}`
+      : selectedType.name
+    : '사용 물품';
+  const waitingForOption = selectedType && selectedType.options.length > 0 && !selectedOption;
 
   return (
     <div>
@@ -170,7 +225,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
             물품 사용 기록
           </h2>
           <p className="text-xs text-[#a09080] mt-1">
-            시술 선택 → 수량 확인 → 차감 완료
+            시술 선택 → 옵션 선택 → 수량 확인 → 차감 완료
           </p>
         </div>
         <Link
@@ -198,41 +253,81 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
             </div>
             <div className="p-4 space-y-4 max-h-[calc(100vh-280px)] overflow-y-auto">
               {procedureGroups.map(group => (
-                <div key={group.label}>
+                <div key={group.category}>
                   <p className="text-[10px] font-semibold text-[#b4988d] uppercase tracking-wider px-1 mb-2">
                     {group.label}
                   </p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {group.procedures.map(name => {
-                      const hasRecipe = recipes.some(r => r.procedure_name === name);
-                      const isSelected = selectedProcedure === name;
-                      const recipeCount = recipes.filter(r => r.procedure_name === name).length;
-                      return (
-                        <button
-                          key={name}
-                          onClick={() => handleSelectProcedure(name)}
-                          disabled={!hasRecipe}
-                          className={`p-3.5 rounded-xl border-2 text-left transition-all cursor-pointer ${
-                            isSelected
-                              ? 'bg-[#6d4e42] border-[#6d4e42] text-white shadow-md'
-                              : hasRecipe
-                                ? 'bg-white border-[#ebe7e4] hover:border-[#b4988d] hover:shadow-sm active:scale-[0.98]'
-                                : 'bg-[#f6f4f2] border-[#ebe7e4] opacity-40 cursor-not-allowed'
-                          }`}
-                        >
-                          <div className={`text-sm font-bold truncate ${isSelected ? 'text-white' : 'text-[#6d4e42]'}`}>
-                            {name}
-                          </div>
-                          {hasRecipe ? (
-                            <span className={`text-[10px] ${isSelected ? 'text-white/70' : 'text-[#b4988d]'}`}>
-                              {recipeCount}개 물품
-                            </span>
-                          ) : (
-                            <span className="text-[10px] text-[#c5b8b0]">레시피 미등록</span>
-                          )}
-                        </button>
-                      );
-                    })}
+                  <div className="space-y-2">
+                    {/* Procedure buttons grid */}
+                    <div className="grid grid-cols-2 gap-2">
+                      {group.procedures.map(proc => {
+                        const isSelected = selectedType?.id === proc.id;
+                        const hasAnyRecipe = proc.options.length > 0
+                          ? proc.options.some(opt => hasRecipeFor(proc, opt))
+                          : hasRecipeFor(proc);
+
+                        return (
+                          <button
+                            key={proc.id}
+                            onClick={() => handleSelectType(proc)}
+                            disabled={!hasAnyRecipe}
+                            className={`p-3.5 rounded-xl border-2 text-left transition-all cursor-pointer ${
+                              isSelected
+                                ? 'bg-[#6d4e42] border-[#6d4e42] text-white shadow-md'
+                                : hasAnyRecipe
+                                  ? 'bg-white border-[#ebe7e4] hover:border-[#b4988d] hover:shadow-sm active:scale-[0.98]'
+                                  : 'bg-[#f6f4f2] border-[#ebe7e4] opacity-40 cursor-not-allowed'
+                            }`}
+                          >
+                            <div className={`text-sm font-bold truncate ${isSelected ? 'text-white' : 'text-[#6d4e42]'}`}>
+                              {proc.name}
+                            </div>
+                            {hasAnyRecipe ? (
+                              <span className={`text-[10px] ${isSelected ? 'text-white/70' : 'text-[#b4988d]'}`}>
+                                {proc.options.length > 0
+                                  ? `${proc.options.length}개 옵션`
+                                  : `${recipes.filter(r => r.procedure_name === (PROCEDURE_RECIPE_MAP[proc.id] ?? proc.name)).length}개 물품`
+                                }
+                              </span>
+                            ) : (
+                              <span className="text-[10px] text-[#c5b8b0]">레시피 미등록</span>
+                            )}
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Step 2: Option pills (inline, below selected procedure) */}
+                    {selectedType && group.procedures.some(p => p.id === selectedType.id) && selectedType.options.length > 0 && (
+                      <div className="bg-[#faf8f7] rounded-xl p-3 border border-[#ebe7e4]">
+                        <p className="text-[10px] font-semibold text-[#a09080] mb-2">
+                          {selectedType.name} 옵션 선택
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedType.options.map(opt => {
+                            const isOptSelected = selectedOption?.recipeName === opt.recipeName;
+                            const hasRecipe = recipes.some(r => r.procedure_name === opt.recipeName);
+                            return (
+                              <button
+                                key={opt.recipeName}
+                                onClick={() => handleSelectOption(opt)}
+                                disabled={!hasRecipe}
+                                className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
+                                  isOptSelected
+                                    ? 'bg-[#6d4e42] text-white shadow-sm'
+                                    : hasRecipe
+                                      ? 'bg-white text-[#575756] border border-[#ebe7e4] hover:border-[#b4988d] hover:text-[#6d4e42]'
+                                      : 'bg-[#f6f4f2] text-[#c5b8b0] border border-[#ebe7e4] opacity-40 cursor-not-allowed'
+                                }`}
+                              >
+                                {opt.label}
+                                {!hasRecipe && <span className="text-[9px] ml-1">(미등록)</span>}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               ))}
@@ -248,13 +343,18 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
             <div className="px-5 py-4 border-b border-[#ebe7e4] bg-[#faf8f7] flex items-center justify-between">
               <div>
                 <h3 className="text-sm font-bold text-[#6d4e42] tracking-tight">
-                  {selectedProcedure || '사용 물품'}
+                  {displayName}
                 </h3>
                 <p className="text-[10px] text-[#a09080] mt-0.5">
-                  {selectedProcedure ? `${activeCount}개 물품 선택됨` : '좌측에서 시술을 선택하세요'}
+                  {waitingForOption
+                    ? '옵션을 선택하세요'
+                    : selectedType
+                      ? `${activeCount}개 물품 선택됨`
+                      : '좌측에서 시술을 선택하세요'
+                  }
                 </p>
               </div>
-              {selectedProcedure && (
+              {selectedType && (
                 <button
                   onClick={handleReset}
                   className="text-xs text-[#a09080] hover:text-[#6d4e42] transition-colors cursor-pointer px-2 py-1 rounded-lg hover:bg-[#f6f4f2]"
@@ -313,7 +413,12 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                   <svg className="w-12 h-12 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
-                  <p className="text-sm font-medium">시술을 선택하면 물품이 표시됩니다</p>
+                  <p className="text-sm font-medium">
+                    {waitingForOption
+                      ? '옵션을 선택하면 물품이 표시됩니다'
+                      : '시술을 선택하면 물품이 표시됩니다'
+                    }
+                  </p>
                 </div>
               ) : (
                 <div className="space-y-2">
@@ -384,6 +489,9 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
           </div>
         </div>
       </div>
+
+      {/* Daily usage log */}
+      <DailyUsageLog refetchKey={refetchKey} />
     </div>
   );
 }
