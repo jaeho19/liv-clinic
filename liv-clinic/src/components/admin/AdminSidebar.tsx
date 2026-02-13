@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 
@@ -18,18 +18,10 @@ interface NavSection {
 
 const NAV_SECTIONS: NavSection[] = [
   {
-    title: '병원 운영',
+    title: '재고관리',
     items: [
-      { href: '/admin/dashboard', label: '대시보드', icon: '📊' },
-      { href: '/admin/consultations', label: '상담관리', icon: '📋' },
-      { href: '/admin/operations', label: '운영현황', icon: '🏥' },
-      { href: '/admin/inventory', label: '재고관리', icon: '📦' },
-      { href: '/admin/notifications', label: '알림관리', icon: '🔔' },
-      { href: '/admin/reports', label: '리포트', icon: '📈' },
-      { href: '/admin/analytics', label: 'Analytics', icon: '🌐' },
-      { href: '/admin/revenue', label: '매출관리', icon: '💰' },
-      { href: '/admin/patients', label: '환자조회', icon: '👤' },
-      { href: '/admin/voice-note', label: '음성 노트', icon: '🎤' },
+      { href: '/admin/inventory', label: '일반 재고', icon: '📦' },
+      { href: '/admin/inventory?tab=cosmetics', label: '화장품 재고', icon: '💄' },
     ],
   },
   {
@@ -37,13 +29,13 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { href: '/admin/events', label: '이벤트관리', icon: '🎉' },
       { href: '/admin/popups', label: '팝업관리', icon: '🪟' },
+      { href: '/admin/analytics', label: 'Analytics', icon: '🌐' },
     ],
   },
   {
     title: '시스템',
     items: [
       { href: '/admin/settings', label: '설정', icon: '⚙️' },
-      { href: '/admin/guide', label: '사용 가이드', icon: '📖' },
     ],
   },
 ];
@@ -55,7 +47,9 @@ interface AdminSidebarProps {
 
 export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
+  const currentUrl = searchParams.toString() ? `${pathname}?${searchParams.toString()}` : pathname;
 
   // Close sidebar on route change (mobile)
   useEffect(() => {
@@ -90,9 +84,9 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
       >
         {/* Header */}
         <div className="p-5 border-b border-[#e5e5e5] flex items-center justify-between">
-          <Link href="/admin/dashboard" onClick={onClose}>
+          <Link href="/admin/inventory" onClick={onClose}>
             <h1 className="text-lg font-bold text-[#6d4e42]">LIV 관리자</h1>
-            <p className="text-xs text-[#8a8a8a] mt-0.5">병원 운영 관리 시스템</p>
+            <p className="text-xs text-[#8a8a8a] mt-0.5">재고 & 홈페이지 관리</p>
           </Link>
           {/* Mobile close button */}
           <button
@@ -117,7 +111,10 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
               </p>
               <ul className="space-y-0.5">
                 {section.items.map((item) => {
-                  const isActive = pathname.startsWith(item.href);
+                  const hasQuery = item.href.includes('?');
+                  const isActive = hasQuery
+                    ? currentUrl === item.href
+                    : pathname.startsWith(item.href.split('?')[0]) && !searchParams.get('tab');
                   return (
                     <li key={item.href}>
                       <Link

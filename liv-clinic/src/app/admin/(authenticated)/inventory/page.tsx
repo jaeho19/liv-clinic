@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   INVENTORY_CATEGORY_LABELS,
+  GENERAL_INVENTORY_CATEGORIES,
   NURSE_OPTIONS,
   PROCEDURE_NAMES,
   getStockStatus,
@@ -71,6 +73,9 @@ type ViewMode = 'table' | 'card' | 'group';
 
 // ─── Main Component ─────────────────────────────
 export default function InventoryPage() {
+  const searchParams = useSearchParams();
+  const isCosmetics = searchParams.get('tab') === 'cosmetics';
+
   const [items, setItems] = useState<InventoryItem[]>([]);
   const [transactions, setTransactions] = useState<InventoryTransaction[]>([]);
   const [recipes, setRecipes] = useState<ProcedureRecipe[]>([]);
@@ -155,6 +160,12 @@ export default function InventoryPage() {
   const filtered = useMemo(() => {
     return items.filter((item) => {
       if (!item.is_active) return false;
+      // 화장품 탭: cosmetics만 / 일반 탭: cosmetics 제외
+      if (isCosmetics) {
+        if (item.category !== 'cosmetics') return false;
+      } else {
+        if (item.category === 'cosmetics') return false;
+      }
       if (categoryFilter !== 'all' && item.category !== categoryFilter) return false;
       if (statusFilter !== 'all' && getStockStatus(item) !== statusFilter) return false;
       if (searchQuery) {
@@ -163,7 +174,7 @@ export default function InventoryPage() {
       }
       return true;
     });
-  }, [items, categoryFilter, statusFilter, searchQuery]);
+  }, [items, categoryFilter, statusFilter, searchQuery, isCosmetics]);
 
   // Alert items
   const alertItems = useMemo(() => {
@@ -355,8 +366,12 @@ export default function InventoryPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-5 lg:mb-7">
         <div>
-          <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42] tracking-tight">재고관리</h2>
-          <p className="text-xs text-[#a09080] mt-1">품목 재고 현황을 한눈에 확인하고 관리합니다</p>
+          <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42] tracking-tight">
+            {isCosmetics ? '화장품 재고관리' : '일반 재고관리'}
+          </h2>
+          <p className="text-xs text-[#a09080] mt-1">
+            {isCosmetics ? '데스크 화장품 재고를 관리합니다' : '시술 재료 및 소모품 재고를 관리합니다'}
+          </p>
         </div>
         <div className="flex gap-2.5">
           <Link
@@ -462,16 +477,18 @@ export default function InventoryPage() {
                   className="border border-[#ebe7e4] rounded-xl pl-9 pr-3 py-2 text-sm w-64 focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow placeholder:text-[#c5b8b0]"
                 />
               </div>
-              <select
-                value={categoryFilter}
-                onChange={(e) => setCategoryFilter(e.target.value)}
-                className="border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] text-[#575756] transition-shadow"
-              >
-                <option value="all">전체 카테고리</option>
-                {(Object.entries(INVENTORY_CATEGORY_LABELS) as [InventoryCategory, string][]).map(([k, v]) => (
-                  <option key={k} value={k}>{v}</option>
-                ))}
-              </select>
+              {!isCosmetics && (
+                <select
+                  value={categoryFilter}
+                  onChange={(e) => setCategoryFilter(e.target.value)}
+                  className="border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] text-[#575756] transition-shadow"
+                >
+                  <option value="all">전체 카테고리</option>
+                  {GENERAL_INVENTORY_CATEGORIES.map((k) => (
+                    <option key={k} value={k}>{INVENTORY_CATEGORY_LABELS[k]}</option>
+                  ))}
+                </select>
+              )}
               <select
                 value={statusFilter}
                 onChange={(e) => setStatusFilter(e.target.value)}
@@ -580,6 +597,7 @@ export default function InventoryPage() {
 
       {showAddModal && (
         <AddItemModal
+          defaultCategory={isCosmetics ? 'cosmetics' : 'device_tip'}
           onAdd={(data) => {
             handleAddItem(data);
             setShowAddModal(false);
@@ -933,17 +951,19 @@ function StockModal({
 
 // ─── AddItemModal ───────────────────────────────
 function AddItemModal({
+  defaultCategory = 'device_tip',
   onAdd,
   onClose,
   submitting = false,
 }: {
+  defaultCategory?: InventoryCategory;
   onAdd: (data: Omit<InventoryItem, 'id' | 'created_at' | 'updated_at' | 'is_active'>) => void | Promise<void>;
   onClose: () => void;
   submitting?: boolean;
 }) {
   const [form, setForm] = useState({
     name: '',
-    category: 'device_tip' as InventoryCategory,
+    category: defaultCategory as InventoryCategory,
     sub_category: '',
     specification: '',
     current_stock: 0,

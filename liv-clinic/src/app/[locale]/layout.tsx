@@ -7,7 +7,8 @@ import { Header, Footer, QuickConsultBar } from '@/components/layout';
 import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import NaverAnalytics from '@/components/analytics/NaverAnalytics';
-import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema, BASE_URL } from '@/lib/seo';
+import ConsentBanner from '@/components/analytics/ConsentBanner';
+import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema } from '@/lib/seo';
 import { createAdminClient } from '@/lib/supabase-admin';
 import '../globals.css';
 
@@ -107,6 +108,36 @@ export default async function LocaleLayout({
             __html: JSON.stringify(webSiteSchema),
           }}
         />
+        {/* Google Consent Mode v2 - must load BEFORE gtag.js */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer=window.dataLayer||[];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('consent','default',{
+                'analytics_storage':'denied',
+                'ad_storage':'denied',
+                'ad_user_data':'denied',
+                'ad_personalization':'denied',
+                'functionality_storage':'granted',
+                'personalization_storage':'denied',
+                'security_storage':'granted',
+                'wait_for_update':500
+              });
+              try{
+                if(localStorage.getItem('liv_analytics_consent')==='granted'){
+                  gtag('consent','update',{
+                    'analytics_storage':'granted',
+                    'ad_storage':'granted',
+                    'ad_user_data':'granted',
+                    'ad_personalization':'granted',
+                    'personalization_storage':'granted'
+                  });
+                }
+              }catch(e){}
+            `,
+          }}
+        />
       </head>
       <body className="antialiased overflow-x-clip w-full">
         <GoogleAnalytics trackingId={analytics?.gaTrackingId} enabled={analytics?.gaEnabled} />
@@ -120,6 +151,7 @@ export default async function LocaleLayout({
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />
+          <ConsentBanner />
         </NextIntlClientProvider>
       </body>
     </html>

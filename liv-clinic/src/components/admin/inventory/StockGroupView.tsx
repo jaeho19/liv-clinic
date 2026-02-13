@@ -18,6 +18,7 @@ const CATEGORY_ICONS: Record<InventoryCategory, string> = {
   consumable: '\uD83E\uDDF4',
   skincare: '\u2728',
   medicine: '\uD83D\uDC8A',
+  cosmetics: '\uD83D\uDC84',
 };
 
 interface StockGroupViewProps {
