@@ -311,7 +311,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
                     type="text"
                     value={memo}
                     onChange={e => setMemo(e.target.value)}
-                    placeholder="사용 목적 (선택)"
+                    placeholder="환자명/차트번호"
                     className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
                   />
                 </div>

@@ -202,7 +202,7 @@ export function getStockStatus(item: InventoryItem): InventoryStockStatus {
   return 'normal';
 }
 
-export const NURSE_OPTIONS = ['김수정', '김지연'] as const;
+export const NURSE_OPTIONS = ['최이연', '김태희'] as const;
 
 export const PROCEDURE_NAMES = [
   '리쥬란 HB 시술',
@@ -286,18 +286,6 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     ],
   },
   {
-    id: 'inmode_forma',
-    name: '인모드 포르마',
-    category: 'lifting',
-    options: [],
-  },
-  {
-    id: 'inmode_morpheus',
-    name: '인모드 모피어스8',
-    category: 'lifting',
-    options: [],
-  },
-  {
     id: 'thread',
     name: '실리프팅',
     category: 'lifting',
@@ -324,6 +312,12 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
   {
     id: 'botox_jetema',
     name: '보톡스 (제테마더)',
+    category: 'antiaging',
+    options: [],
+  },
+  {
+    id: 'botox_allergan',
+    name: '보톡스 (엘러간)',
     category: 'antiaging',
     options: [],
   },
@@ -388,16 +382,27 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     category: 'skinbooster',
     options: [],
   },
+  {
+    id: 'rituo',
+    name: '리투오',
+    category: 'skinbooster',
+    options: [],
+  },
+  {
+    id: 'radiesse',
+    name: '레디어스',
+    category: 'skinbooster',
+    options: [],
+  },
 ];
 
 /** 기존 PROCEDURE_NAMES(recipe name)와의 매핑 (하위 호환) */
 export const PROCEDURE_RECIPE_MAP: Record<string, string> = {
   density: '덴서티',
-  inmode_forma: '인모드 포르마',
-  inmode_morpheus: '인모드 모피어스8',
   botox_xeomin: '보톡스 시술 (제오민)',
   botox_hutox: '보톡스 시술 (하이톡스)',
   botox_jetema: '보톡스 시술 (제테마더)',
+  botox_allergan: '보톡스 시술 (엘러간)',
   filler_volbella: '필러 시술 (볼벨라)',
   filler_voluma: '필러 시술 (볼루마)',
   filler_volift: '필러 시술 (볼리프트)',
@@ -408,6 +413,8 @@ export const PROCEDURE_RECIPE_MAP: Record<string, string> = {
   sculptra: '스컬트라 시술',
   juvelook_volume: '쥬베룩 볼륨 시술',
   juvelook_skin: '쥬베룩 스킨부스터 시술',
+  rituo: '리투오 시술',
+  radiesse: '레디어스 시술',
 };
 
 // Burndown analysis
