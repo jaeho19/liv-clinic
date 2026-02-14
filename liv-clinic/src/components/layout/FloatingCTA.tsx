@@ -86,8 +86,8 @@ export default function FloatingCTA() {
 
   return (
     <div
-      className="fixed right-3 sm:right-6 z-40 flex flex-col items-end gap-2 sm:gap-3"
-      style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
+      className="fixed right-2 sm:right-4 md:right-6 z-40 flex flex-col items-end gap-1.5 sm:gap-2 md:gap-3"
+      style={{ bottom: 'calc(60px + env(safe-area-inset-bottom, 0px))' }}
     >
       {/* Secondary Buttons - 항상 표시 */}
       <div className="flex flex-col gap-2">

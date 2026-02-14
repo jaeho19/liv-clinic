@@ -497,6 +497,12 @@ body {
     opacity: 0.9;
     transition: transform 0.1s ease, opacity 0.1s ease;
   }
+
+  /* 키오스크/관리자 터치 최적화 - 더블탭 줌 비활성화로 300ms 딜레이 제거 */
+  button,
+  [role="button"] {
+    touch-action: manipulation;
+  }
 }
 
 /* 호버 가능한 디바이스에서만 호버 효과 적용 */

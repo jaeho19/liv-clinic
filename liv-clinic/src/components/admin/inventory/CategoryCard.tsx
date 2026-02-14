@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, memo } from 'react';
 import { getStockStatus } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
 
@@ -71,7 +71,7 @@ interface CategoryCardProps {
   topUsedItem?: string;
 }
 
-export default function CategoryCard({
+const CategoryCard = memo(function CategoryCard({
   category,
   label,
   items,
@@ -185,6 +185,7 @@ export default function CategoryCard({
       )}
     </button>
   );
-}
+});
 
+export default CategoryCard;
 export { CATEGORY_COLORS, CATEGORY_ICONS };

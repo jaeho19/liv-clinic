@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
       p_item_id: body.item_id,
       p_quantity: body.quantity,
       p_note: body.note ?? undefined,
-      p_created_by: session.user.email ?? undefined,
+      p_created_by: user.email ?? undefined,
     });
 
     if (error) throw new Error(error.message);
