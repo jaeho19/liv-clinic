@@ -44,6 +44,8 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [refetchKey, setRefetchKey] = useState(0);
+  // Mobile wizard step
+  const [mobileStep, setMobileStep] = useState<'select' | 'items'>('select');
 
   // Auto-dismiss toast
   useEffect(() => {
@@ -94,9 +96,15 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
           quantity: 0,
         })),
       );
+      setMobileStep('items');
     },
     [cosmeticsItems],
   );
+
+  // ─── Mobile: Back to category selection ────────
+  const handleBackToSelect = useCallback(() => {
+    setMobileStep('select');
+  }, []);
 
   // Init: load all on first render when items are available
   useEffect(() => {
@@ -139,6 +147,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
         setToast({ message: `${label} - 차감 완료!`, type: 'success' });
         setMemo('');
         setConfirmedBy('');
+        setMobileStep('select');
         setRefetchKey(k => k + 1);
         await loadData();
         // Re-apply current filter with refreshed data
@@ -178,6 +187,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
     setMemo('');
     setConfirmedBy('');
     setUsageItems(prev => prev.map(u => ({ ...u, quantity: 0 })));
+    setMobileStep('select');
   };
 
   const activeCount = usageItems.filter(u => u.quantity > 0).length;
@@ -206,8 +216,8 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
 
       {/* 2-column layout */}
       <div className="flex flex-col lg:flex-row gap-5">
-        {/* Left: Subcategory selection (40%) */}
-        <div className="lg:w-[40%] lg:flex-shrink-0">
+        {/* Left: Subcategory selection (40%) - hidden on mobile when viewing items */}
+        <div className={`lg:w-[40%] lg:flex-shrink-0 ${mobileStep !== 'select' ? 'hidden lg:block' : ''}`}>
           <div
             className="bg-white rounded-2xl border border-[#ebe7e4] overflow-hidden"
             style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
@@ -256,8 +266,19 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
           </div>
         </div>
 
-        {/* Right: Usage items + save (60%) */}
-        <div className="lg:flex-1">
+        {/* Right: Usage items + save (60%) - hidden on mobile when selecting category */}
+        <div className={`lg:flex-1 ${mobileStep !== 'items' ? 'hidden lg:block' : ''}`}>
+          {/* Mobile: Back to category selection */}
+          <button
+            onClick={handleBackToSelect}
+            className="lg:hidden flex items-center gap-2 mb-3 px-1 py-2 text-sm font-semibold text-[#6d4e42] active:opacity-70 transition-opacity cursor-pointer"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>{subcategoryLabel}</span>
+          </button>
+
           <div
             className="bg-white rounded-2xl border border-[#ebe7e4] overflow-hidden"
             style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}

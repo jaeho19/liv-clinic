@@ -160,6 +160,8 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
   const [submitting, setSubmitting] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [refetchKey, setRefetchKey] = useState(0);
+  // Mobile wizard step: 'select' = procedure selection, 'items' = quantity adjustment
+  const [mobileStep, setMobileStep] = useState<'select' | 'items'>('select');
 
   // Auto-dismiss toast
   useEffect(() => {
@@ -212,6 +214,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
       setSelectedType(null);
       setSelectedOption(null);
       setUsageItems([]);
+      setMobileStep('select');
       return;
     }
 
@@ -219,11 +222,12 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     setSelectedOption(null);
 
     if (proc.options.length === 0) {
-      // No options → load items directly
+      // No options → load items directly + go to items step on mobile
       const recipeName = getRecipeName(proc);
       loadRecipeItems(recipeName);
+      setMobileStep('items');
     } else {
-      // Has options → wait for step 2
+      // Has options → wait for option selection
       setUsageItems([]);
     }
   }, [selectedType, loadRecipeItems]);
@@ -232,7 +236,16 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
   const handleSelectOption = useCallback((option: ProcedureOption) => {
     setSelectedOption(option);
     loadRecipeItems(option.recipeName);
+    setMobileStep('items');
   }, [loadRecipeItems]);
+
+  // ─── Mobile: Back to selection ────────────────
+  const handleBackToSelect = useCallback(() => {
+    setSelectedType(null);
+    setSelectedOption(null);
+    setUsageItems([]);
+    setMobileStep('select');
+  }, []);
 
   // ─── Quantity change (stable ref for memo children) ──
   const handleQtyChange = useCallback((idx: number, delta: number) => {
@@ -265,6 +278,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     setChartNumber('');
     setConfirmedBy('');
     setUsageItems([]);
+    setMobileStep('select');
     setRefetchKey(k => k + 1);
 
     try {
@@ -298,6 +312,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     setChartNumber('');
     setConfirmedBy('');
     setUsageItems([]);
+    setMobileStep('select');
   };
 
   const activeCount = useMemo(() => usageItems.filter(u => u.quantity > 0).length, [usageItems]);
@@ -330,8 +345,8 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
 
       {/* 2-column layout */}
       <div className="flex flex-col lg:flex-row gap-5">
-        {/* Left: Procedure selection (40%) */}
-        <div className="lg:w-[40%] lg:flex-shrink-0">
+        {/* Left: Procedure selection (40%) - hidden on mobile when viewing items */}
+        <div className={`lg:w-[40%] lg:flex-shrink-0 ${mobileStep !== 'select' ? 'hidden lg:block' : ''}`}>
           <div className="bg-white rounded-2xl border border-[#ebe7e4] overflow-hidden"
             style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
           >
@@ -404,8 +419,19 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
           </div>
         </div>
 
-        {/* Right: Usage items + save (60%) */}
-        <div className="lg:flex-1">
+        {/* Right: Usage items + save (60%) - hidden on mobile when selecting procedure */}
+        <div className={`lg:flex-1 ${mobileStep !== 'items' ? 'hidden lg:block' : ''}`}>
+          {/* Mobile: Back to procedure selection */}
+          <button
+            onClick={handleBackToSelect}
+            className="lg:hidden flex items-center gap-2 mb-3 px-1 py-2 text-sm font-semibold text-[#6d4e42] active:opacity-70 transition-opacity cursor-pointer"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span>{displayName}</span>
+          </button>
+
           <div className="bg-white rounded-2xl border border-[#ebe7e4] overflow-hidden"
             style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
           >
