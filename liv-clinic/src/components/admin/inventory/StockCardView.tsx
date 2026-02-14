@@ -16,6 +16,7 @@ interface StockCardViewProps {
   onSelectItem: (id: string | null) => void;
   onStockModal: (v: { item: InventoryItem; type: 'in' | 'out' }) => void;
   burndownMap?: Map<string, BurndownResult>;
+  todayItemUsage?: Map<string, number>;
 }
 
 export default function StockCardView({
@@ -24,6 +25,7 @@ export default function StockCardView({
   onSelectItem,
   onStockModal,
   burndownMap,
+  todayItemUsage,
 }: StockCardViewProps) {
   if (items.length === 0) {
     return (
@@ -134,6 +136,26 @@ export default function StockCardView({
                 })()}
               </div>
             </div>
+
+            {/* Today usage insight */}
+            {(() => {
+              const todayUsed = todayItemUsage?.get(item.id);
+              const dailyRate = burndownMap?.get(item.id)?.dailyRate;
+              if (!todayUsed && !dailyRate) return null;
+              return (
+                <div className="flex items-center gap-2 text-[10px] text-[#a09080] mt-3">
+                  {todayUsed && todayUsed > 0 && (
+                    <span className="flex items-center gap-1 text-[#b4988d] font-semibold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#b4988d]" />
+                      오늘 {todayUsed}개 사용
+                    </span>
+                  )}
+                  {dailyRate && dailyRate > 0 && (
+                    <span className="ml-auto tabular-nums">일평균 {dailyRate.toFixed(1)}/일</span>
+                  )}
+                </div>
+              );
+            })()}
 
             {/* Action buttons */}
             <div className="flex gap-2 mt-4 pt-3 border-t border-[#f0eeec]" onClick={(e) => e.stopPropagation()}>

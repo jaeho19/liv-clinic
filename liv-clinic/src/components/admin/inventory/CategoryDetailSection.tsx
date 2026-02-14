@@ -25,6 +25,7 @@ interface CategoryDetailSectionProps {
   dismissedAlertIds: Set<string>;
   onDismissAlert: (id: string) => void;
   onUndismissAlert: (id: string) => void;
+  todayItemUsage?: Map<string, number>;
 }
 
 export default function CategoryDetailSection({
@@ -36,6 +37,7 @@ export default function CategoryDetailSection({
   dismissedAlertIds,
   onDismissAlert,
   onUndismissAlert,
+  todayItemUsage,
 }: CategoryDetailSectionProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('card');
   const [searchQuery, setSearchQuery] = useState('');
@@ -173,6 +175,7 @@ export default function CategoryDetailSection({
               onSelectItem={setSelectedItemId}
               onStockModal={onStockModal}
               burndownMap={burndownMap}
+              todayItemUsage={todayItemUsage}
             />
           ) : (
             <StockTableView

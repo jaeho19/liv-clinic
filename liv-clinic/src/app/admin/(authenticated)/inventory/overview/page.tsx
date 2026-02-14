@@ -5,7 +5,8 @@ import Link from 'next/link';
 import { useInventoryData } from '@/hooks/useInventoryData';
 import { getStockStatus } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
-import CompactStatsBar from '@/components/admin/inventory/CompactStatsBar';
+import DashboardStatsCards from '@/components/admin/inventory/DashboardStatsCards';
+import TodayUsageSummary from '@/components/admin/inventory/TodayUsageSummary';
 import CategoryGrid from '@/components/admin/inventory/CategoryGrid';
 import CategoryDetailSection from '@/components/admin/inventory/CategoryDetailSection';
 import HistoryTab from '@/components/admin/inventory/HistoryTab';
@@ -109,7 +110,10 @@ function StockModal({
 
 // ─── Main Component ─────────────────────────────
 export default function InventoryOverviewPage() {
-  const { items, transactions, loading, error, burndownMap, alertItems, loadData } = useInventoryData();
+  const {
+    items, transactions, loading, error, burndownMap, alertItems, loadData,
+    todayUsageSessions, todayCategoryUsage, todayItemUsage, weeklyItemUsage,
+  } = useInventoryData();
   const [activeTab, setActiveTab] = useState<TabId>('stock');
   const [selectedCategory, setSelectedCategory] = useState<InventoryCategory | null>(null);
   const [stockModal, setStockModal] = useState<{ item: InventoryItem; type: 'in' | 'out' } | null>(null);
@@ -236,8 +240,13 @@ export default function InventoryOverviewPage() {
         </Link>
       </div>
 
-      {/* Compact stats bar */}
-      <CompactStatsBar items={items} />
+      {/* Dashboard stats */}
+      <DashboardStatsCards
+        items={items}
+        todayCategoryUsage={todayCategoryUsage}
+        alertItems={alertItems}
+        onAlertClick={() => setActiveTab('restock')}
+      />
 
       {/* Tab Navigation */}
       <div className="flex gap-0.5 bg-[#f6f4f2] p-1 rounded-xl w-fit mb-5">
@@ -264,11 +273,21 @@ export default function InventoryOverviewPage() {
       {/* Tab Content */}
       {activeTab === 'stock' && (
         <>
+          {/* Today usage summary */}
+          <TodayUsageSummary
+            sessions={todayUsageSessions}
+            items={items}
+            transactions={transactions}
+          />
+
           {/* Category grid */}
           <CategoryGrid
             items={items}
             selectedCategory={selectedCategory}
             onSelectCategory={setSelectedCategory}
+            todayCategoryUsage={todayCategoryUsage}
+            weeklyItemUsage={weeklyItemUsage}
+            todayItemUsage={todayItemUsage}
           />
 
           {/* Category detail section */}
@@ -282,6 +301,7 @@ export default function InventoryOverviewPage() {
               dismissedAlertIds={dismissedAlertIds}
               onDismissAlert={handleDismissAlert}
               onUndismissAlert={handleUndismissAlert}
+              todayItemUsage={todayItemUsage}
             />
           )}
         </>

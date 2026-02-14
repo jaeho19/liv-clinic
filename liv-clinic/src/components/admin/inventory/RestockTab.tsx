@@ -132,6 +132,31 @@ export default function RestockTab({ transactions, items, alertItems, dismissedI
   );
 }
 
+// ─── Countdown Bar ──────────────────────────────
+function CountdownBar({ days, maxDays = 30 }: { days: number; maxDays?: number }) {
+  const pct = Math.min(100, Math.max(0, (days / maxDays) * 100));
+  const color = days <= 3 ? '#ef4444' : days <= 7 ? '#f59e0b' : '#34d399';
+  const bgColor = days <= 3 ? '#fef2f2' : days <= 7 ? '#fffbeb' : '#ecfdf5';
+  const label = days === 0 ? 'D-Day' : `D-${days}`;
+
+  return (
+    <div className="flex items-center gap-2 w-full">
+      <span className={`text-[10px] font-bold tabular-nums flex-shrink-0 w-9 text-center px-1.5 py-0.5 rounded ${
+        days <= 3 ? 'text-red-700 bg-red-100' : days <= 7 ? 'text-amber-700 bg-amber-100' : 'text-emerald-700 bg-emerald-100'
+      }`}>
+        {label}
+      </span>
+      <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ backgroundColor: bgColor }}>
+        <div
+          className="h-full rounded-full transition-all duration-500"
+          style={{ width: `${pct}%`, backgroundColor: color }}
+        />
+      </div>
+      <span className="text-[10px] text-[#a09080] tabular-nums flex-shrink-0">{days}일</span>
+    </div>
+  );
+}
+
 // ─── Restock card ────────────────────────────────
 function RestockCard({
   item,
@@ -153,10 +178,12 @@ function RestockCard({
     : 0;
   const suggestedQty = Math.max(baseSuggestedQty, burndownSuggestedQty);
 
-  const daysText = burndown && burndown.dailyRate > 0
-    ? burndown.daysUntilEmpty === Infinity
-      ? null
-      : `약 ${burndown.daysUntilEmpty}일 뒤 소진 예상`
+  const daysUntilEmpty = burndown && burndown.dailyRate > 0 && burndown.daysUntilEmpty !== Infinity
+    ? burndown.daysUntilEmpty
+    : null;
+
+  const daysText = daysUntilEmpty !== null
+    ? `약 ${daysUntilEmpty}일 뒤 소진 예상`
     : null;
 
   const severityCfg = burndown ? BURNDOWN_SEVERITY_CONFIG[burndown.severity] : null;
@@ -203,6 +230,12 @@ function RestockCard({
               {item.current_stock}/{item.min_stock} {item.unit}
             </span>
           </div>
+          {/* Countdown bar */}
+          {daysUntilEmpty !== null && (
+            <div className="mb-2.5">
+              <CountdownBar days={daysUntilEmpty} />
+            </div>
+          )}
           {daysText && severityCfg && (
             <div className={`flex items-center gap-1.5 mb-2 px-2 py-1 rounded-lg text-[10px] font-semibold ${severityCfg.bg} ${severityCfg.text}`}>
               <span className={`w-1.5 h-1.5 rounded-full ${severityCfg.dot}`} />

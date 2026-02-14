@@ -14,9 +14,19 @@ interface CategoryGridProps {
   items: InventoryItem[];
   selectedCategory: InventoryCategory | null;
   onSelectCategory: (cat: InventoryCategory | null) => void;
+  todayCategoryUsage?: Map<InventoryCategory, number>;
+  weeklyItemUsage?: Map<string, number[]>;
+  todayItemUsage?: Map<string, number>;
 }
 
-export default function CategoryGrid({ items, selectedCategory, onSelectCategory }: CategoryGridProps) {
+export default function CategoryGrid({
+  items,
+  selectedCategory,
+  onSelectCategory,
+  todayCategoryUsage,
+  weeklyItemUsage,
+  todayItemUsage,
+}: CategoryGridProps) {
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
 
   const activeItems = useMemo(() => items.filter(i => i.is_active), [items]);
@@ -43,6 +53,44 @@ export default function CategoryGrid({ items, selectedCategory, onSelectCategory
         items: map.get(cat)!,
       }));
   }, [activeItems, filterMode]);
+
+  // 카테고리별 주간 스파크라인 계산 (해당 카테고리 품목의 일별 합산)
+  const categorySparklines = useMemo(() => {
+    if (!weeklyItemUsage) return new Map<InventoryCategory, number[]>();
+
+    const result = new Map<InventoryCategory, number[]>();
+    for (const cat of categories) {
+      const sparkline = [0, 0, 0, 0, 0, 0, 0];
+      for (const item of cat.items) {
+        const weekly = weeklyItemUsage.get(item.id);
+        if (weekly) {
+          for (let i = 0; i < 7; i++) sparkline[i] += weekly[i];
+        }
+      }
+      result.set(cat.category, sparkline);
+    }
+    return result;
+  }, [categories, weeklyItemUsage]);
+
+  // 카테고리별 가장 많이 사용된 품목
+  const categoryTopItems = useMemo(() => {
+    if (!todayItemUsage) return new Map<InventoryCategory, string>();
+
+    const result = new Map<InventoryCategory, string>();
+    for (const cat of categories) {
+      let maxQty = 0;
+      let topName = '';
+      for (const item of cat.items) {
+        const qty = todayItemUsage.get(item.id) || 0;
+        if (qty > maxQty) {
+          maxQty = qty;
+          topName = item.name;
+        }
+      }
+      if (topName) result.set(cat.category, topName);
+    }
+    return result;
+  }, [categories, todayItemUsage]);
 
   const FILTERS: { id: FilterMode; label: string }[] = [
     { id: 'all', label: '전체' },
@@ -79,6 +127,9 @@ export default function CategoryGrid({ items, selectedCategory, onSelectCategory
             items={cat.items}
             isSelected={selectedCategory === cat.category}
             onClick={() => onSelectCategory(selectedCategory === cat.category ? null : cat.category)}
+            todayUsageCount={todayCategoryUsage?.get(cat.category)}
+            weeklySparkline={categorySparklines.get(cat.category)}
+            topUsedItem={categoryTopItems.get(cat.category)}
           />
         ))}
       </div>

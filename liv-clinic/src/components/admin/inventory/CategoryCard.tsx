@@ -24,15 +24,63 @@ const CATEGORY_ICONS: Record<InventoryCategory, string> = {
   cosmetics: '\uD83D\uDC84',
 };
 
+// ─── Mini Sparkline ─────────────────────────────
+function MiniSparkline({ data, color = '#b4988d', width = 80, height = 20 }: {
+  data: number[];
+  color?: string;
+  width?: number;
+  height?: number;
+}) {
+  if (data.length < 2 || data.every(d => d === 0)) return null;
+
+  const max = Math.max(...data, 1);
+  const points = data.map((v, i) => {
+    const x = (i / (data.length - 1)) * width;
+    const y = height - (v / max) * (height - 4) - 2;
+    return `${x},${y}`;
+  }).join(' ');
+
+  const lastX = width;
+  const lastY = height - (data[data.length - 1] / max) * (height - 4) - 2;
+
+  return (
+    <svg width={width} height={height} className="flex-shrink-0">
+      <polyline
+        points={points}
+        fill="none"
+        stroke={color}
+        strokeWidth={1.5}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        opacity={0.6}
+      />
+      <circle cx={lastX} cy={lastY} r={2.5} fill={color} />
+    </svg>
+  );
+}
+
+// ─── Category Card ──────────────────────────────
 interface CategoryCardProps {
   category: InventoryCategory;
   label: string;
   items: InventoryItem[];
   isSelected: boolean;
   onClick: () => void;
+  todayUsageCount?: number;
+  weeklySparkline?: number[];
+  topUsedItem?: string;
 }
 
-export default function CategoryCard({ category, label, items, isSelected, onClick }: CategoryCardProps) {
+export default function CategoryCard({
+  category,
+  label,
+  items,
+  isSelected,
+  onClick,
+  todayUsageCount,
+  weeklySparkline,
+  topUsedItem,
+}: CategoryCardProps) {
   const stats = useMemo(() => {
     const total = items.length;
     const normal = items.filter(i => getStockStatus(i) === 'normal').length;
@@ -108,8 +156,29 @@ export default function CategoryCard({ category, label, items, isSelected, onCli
         )}
       </div>
 
-      {/* Value */}
-      {stats.totalValue > 0 && (
+      {/* Sparkline + Today usage badge */}
+      {(weeklySparkline || (todayUsageCount !== undefined && todayUsageCount > 0)) && (
+        <div className="mt-3 pt-3 border-t border-[#f0eeec] flex items-center justify-between gap-2">
+          <div className="flex items-center gap-2 min-w-0">
+            {todayUsageCount !== undefined && todayUsageCount > 0 && (
+              <span className="text-[10px] text-[#b4988d] font-semibold flex-shrink-0">
+                오늘 {todayUsageCount}건
+              </span>
+            )}
+            {topUsedItem && (
+              <span className="text-[10px] text-[#a09080] truncate">
+                TOP: {topUsedItem}
+              </span>
+            )}
+          </div>
+          {weeklySparkline && (
+            <MiniSparkline data={weeklySparkline} color={color} />
+          )}
+        </div>
+      )}
+
+      {/* Value - only show if no sparkline section */}
+      {!weeklySparkline && !(todayUsageCount !== undefined && todayUsageCount > 0) && stats.totalValue > 0 && (
         <div className="mt-2 text-[10px] text-[#a09080]">
           재고가치 <span className="font-semibold text-[#6d4e42]">{(stats.totalValue / 10000).toFixed(0)}만원</span>
         </div>

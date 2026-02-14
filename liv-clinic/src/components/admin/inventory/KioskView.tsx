@@ -14,6 +14,7 @@ import type {
   ProcedureOption,
   ProcedureCategoryId,
 } from '@/types/admin';
+import Link from 'next/link';
 import DailyUsageLog from './DailyUsageLog';
 
 // ─── Types ──────────────────────────────────────
@@ -465,6 +466,29 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Quick link to overview */}
+      <div className="mt-5 mb-3">
+        <Link
+          href="/admin/inventory/overview"
+          className="flex items-center justify-between w-full px-5 py-3.5 bg-gradient-to-r from-[#faf8f7] to-white rounded-2xl border border-[#ebe7e4] hover:border-[#b4988d] hover:shadow-sm transition-all group"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-[#f6f4f2] flex items-center justify-center group-hover:bg-[#ebe7e4] transition-colors">
+              <svg className="w-4 h-4 text-[#6d4e42]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
+            </div>
+            <div>
+              <span className="text-sm font-bold text-[#6d4e42]">재고 현황 보기</span>
+              <p className="text-[10px] text-[#a09080]">카테고리별 재고 현황, 소진 예측, 사용 통계</p>
+            </div>
+          </div>
+          <svg className="w-4 h-4 text-[#c5b8b0] group-hover:text-[#6d4e42] group-hover:translate-x-0.5 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </Link>
       </div>
 
       {/* Daily usage log */}
