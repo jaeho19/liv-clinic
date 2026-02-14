@@ -18,8 +18,8 @@ interface UseRequest {
 // POST /api/admin/inventory/use - 물품 사용 (재고 차감)
 export async function POST(request: NextRequest) {
   const supabase = await createServerClient();
-  const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body: UseRequest = await request.json();
 
@@ -40,7 +40,7 @@ export async function POST(request: NextRequest) {
         p_chart_number: body.chart_number ?? undefined,
         p_note: body.note ?? undefined,
         p_confirmed_by: body.confirmed_by ?? undefined,
-        p_created_by: session.user.email ?? undefined,
+        p_created_by: user.email ?? undefined,
       });
 
       if (error) throw new Error(error.message);

@@ -28,8 +28,8 @@ export default function AdminLoginPage() {
       return;
     }
 
-    router.push('/admin/inventory');
-    router.refresh();
+    // Full page reload to ensure middleware processes the new session cookies
+    window.location.href = '/admin/inventory';
   };
 
   return (

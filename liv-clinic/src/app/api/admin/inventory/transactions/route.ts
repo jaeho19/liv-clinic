@@ -5,8 +5,8 @@ import { createAdminClient } from '@/lib/supabase-admin';
 // GET /api/admin/inventory/transactions - 트랜잭션 이력 조회
 export async function GET(request: NextRequest) {
   const supabase = await createServerClient();
-  const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
   const txType = searchParams.get('type') ?? undefined;

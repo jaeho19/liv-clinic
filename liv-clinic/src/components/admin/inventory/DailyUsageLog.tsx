@@ -15,6 +15,7 @@ interface UsageSession {
 
 interface DailyUsageLogProps {
   refetchKey: number;
+  filterPrefix?: string;
 }
 
 // ─── Helpers ────────────────────────────────────
@@ -72,9 +73,11 @@ function groupIntoSessions(txs: InventoryTransaction[]): UsageSession[] {
 function buildSession(txs: InventoryTransaction[]): UsageSession {
   const first = txs[0];
   let procedureLabel = first.note || '';
-  // Remove "키오스크: " prefix if present
+  // Remove known prefixes
   if (procedureLabel.startsWith('키오스크: ')) {
     procedureLabel = procedureLabel.replace('키오스크: ', '');
+  } else if (procedureLabel.startsWith('화장품: ')) {
+    procedureLabel = procedureLabel.replace('화장품: ', '');
   }
 
   return {
@@ -88,7 +91,7 @@ function buildSession(txs: InventoryTransaction[]): UsageSession {
 }
 
 // ─── Component ──────────────────────────────────
-export default function DailyUsageLog({ refetchKey }: DailyUsageLogProps) {
+export default function DailyUsageLog({ refetchKey, filterPrefix }: DailyUsageLogProps) {
   const [transactions, setTransactions] = useState<InventoryTransaction[]>([]);
   const [loading, setLoading] = useState(true);
   const [todayStr, setTodayStr] = useState(getTodayString);
@@ -102,7 +105,11 @@ export default function DailyUsageLog({ refetchKey }: DailyUsageLogProps) {
         `/api/admin/inventory/transactions?type=use&dateFrom=${today}&dateTo=${today}&limit=100`
       );
       if (res.ok) {
-        const data: InventoryTransaction[] = await res.json();
+        let data: InventoryTransaction[] = await res.json();
+        // Filter by note prefix if specified
+        if (filterPrefix) {
+          data = data.filter(tx => tx.note?.startsWith(filterPrefix));
+        }
         setTransactions(data);
       }
     } catch {
@@ -110,7 +117,7 @@ export default function DailyUsageLog({ refetchKey }: DailyUsageLogProps) {
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [filterPrefix]);
 
   // Initial load + refetch on key change
   useEffect(() => {

@@ -73,15 +73,13 @@ export function useInventoryData(): UseInventoryDataReturn {
   const loadData = useCallback(async () => {
     try {
       setError(null);
-      const [itemsData, txData, recipesData, burndownData] = await Promise.all([
-        fetchItems(),
-        fetchTransactions(),
-        fetchRecipes(),
-        fetchBurndown(),
-      ]);
+      const itemsData = await fetchItems();
       setItems(itemsData);
-      setTransactions(txData);
+      const recipesData = await fetchRecipes();
       setRecipes(recipesData);
+      const txData = await fetchTransactions();
+      setTransactions(txData);
+      const burndownData = await fetchBurndown();
 
       const map = new Map<string, BurndownResult>();
       for (const bd of burndownData.items) {

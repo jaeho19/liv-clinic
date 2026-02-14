@@ -5,8 +5,8 @@ import { createAdminClient } from '@/lib/supabase-admin';
 // GET /api/admin/inventory/recipes - 시술 레시피 조회
 export async function GET(request: NextRequest) {
   const supabase = await createServerClient();
-  const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const { searchParams } = new URL(request.url);
   const procedureName = searchParams.get('procedure') ?? undefined;
@@ -29,8 +29,8 @@ export async function GET(request: NextRequest) {
 // POST /api/admin/inventory/recipes - 레시피 추가
 export async function POST(request: NextRequest) {
   const supabase = await createServerClient();
-  const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await request.json();
   const admin = createAdminClient();

@@ -8,9 +8,9 @@ export default async function AuthenticatedAdminLayout({
   children: React.ReactNode;
 }) {
   const supabase = await createServerClient();
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { user } } = await supabase.auth.getUser();
 
-  if (!session) {
+  if (!user) {
     redirect('/admin/login');
   }
 

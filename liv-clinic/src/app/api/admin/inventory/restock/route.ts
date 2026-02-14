@@ -11,8 +11,8 @@ interface RestockRequest {
 // POST /api/admin/inventory/restock - 입고 (재고 증가)
 export async function POST(request: NextRequest) {
   const supabase = await createServerClient();
-  const { data: { session } } = await supabase.auth.getSession();
-  if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body: RestockRequest = await request.json();
 

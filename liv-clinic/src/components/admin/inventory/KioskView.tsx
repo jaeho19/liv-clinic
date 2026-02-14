@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useCallback, useMemo, useEffect } from 'react';
-import Link from 'next/link';
 import {
   PROCEDURE_CATALOG,
   PROCEDURE_CATEGORY_LABELS,
@@ -217,28 +216,6 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
           {toast.message}
         </div>
       )}
-
-      {/* Header */}
-      <div className="flex items-center justify-between mb-5 lg:mb-7">
-        <div>
-          <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42] tracking-tight">
-            물품 사용 기록
-          </h2>
-          <p className="text-xs text-[#a09080] mt-1">
-            시술 선택 → 옵션 선택 → 수량 확인 → 차감 완료
-          </p>
-        </div>
-        <Link
-          href="/admin/inventory/overview"
-          className="px-4 py-2.5 bg-white border border-[#ebe7e4] text-[#6d4e42] rounded-xl text-sm font-semibold hover:bg-[#faf8f7] transition-all duration-150 flex items-center gap-2"
-          style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          재고 현황 보기
-        </Link>
-      </div>
 
       {/* 2-column layout */}
       <div className="flex flex-col lg:flex-row gap-5">
@@ -491,7 +468,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
       </div>
 
       {/* Daily usage log */}
-      <DailyUsageLog refetchKey={refetchKey} />
+      <DailyUsageLog refetchKey={refetchKey} filterPrefix="키오스크:" />
     </div>
   );
 }
