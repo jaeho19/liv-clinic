@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-02-08T13:21:32.296Z",
+  "timestamp": "2026-02-19T01:20:34.395Z",
   "reason": "compaction",
   "status": {
     "version": "2.0",
-    "lastUpdated": "2026-02-08T13:20:47.960Z",
+    "lastUpdated": "2026-02-19T00:59:34.919Z",
     "activeFeatures": [
       "admin-v2-enhancement",
       "lifting",
@@ -47,10 +47,46 @@
       "patients",
       "sections",
       "voice-note",
-      "guide"
+      "guide",
+      "google",
+      "hybrid-form",
+      "photos",
+      "kiosk",
+      "contact",
+      "login",
+      "overview",
+      "(authenticated)",
+      "hospital_data"
     ],
-    "primaryFeature": "popup-auto-rolling",
+    "primaryFeature": "inventory-overview-ux",
     "features": {
+      "inventory-overview-ux": {
+        "phase": "completed",
+        "phaseNumber": 6,
+        "matchRate": 93,
+        "iterationCount": 0,
+        "requirements": [
+          "FR-01: 대시보드 통계 카드 시각 개선",
+          "FR-02: 카테고리 카드에 오늘 사용 뱃지/스파크라인",
+          "FR-03: 재고현황에 오늘의 사용 기록 통합",
+          "FR-04: 품목별 사용 빈도 인사이트",
+          "FR-05: 사용 이력 시각화 강화 (히트맵/도넛)",
+          "FR-06: 입고 관리 우선순위 시각화",
+          "FR-07: 양방향 네비게이션 개선",
+          "FR-08: 실시간 데이터 동기화"
+        ],
+        "documents": {
+          "plan": "docs/01-plan/features/inventory-overview-ux.plan.md",
+          "design": "docs/02-design/features/inventory-overview-ux.design.md",
+          "analysis": "docs/03-analysis/inventory-overview-ux.analysis.md",
+          "report": "docs/04-report/inventory-overview-ux.report.md"
+        },
+        "timestamps": {
+          "started": "2026-02-14T10:00:00.000Z",
+          "lastUpdated": "2026-02-14T15:00:00.000Z"
+        },
+        "lastFile": "docs/04-report/inventory-overview-ux.report.md"
+      },
       "popup-auto-rolling": {
         "phase": "check",
         "phaseNumber": 4,
@@ -122,9 +158,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T00:55:17.745Z",
-          "lastUpdated": "2026-02-08T11:49:00.749Z"
+          "lastUpdated": "2026-02-14T11:49:00.444Z"
         },
-        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\types\\voice-templates.ts"
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\types\\admin.ts"
       },
       "scratchpad": {
         "phase": "do",
@@ -148,9 +184,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T01:28:49.858Z",
-          "lastUpdated": "2026-02-06T01:28:49.858Z"
+          "lastUpdated": "2026-02-13T07:46:51.120Z"
         },
-        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\analytics\\NaverAnalytics.tsx"
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\analytics\\GoogleAnalytics.tsx"
       },
       "[locale]": {
         "phase": "do",
@@ -161,9 +197,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T01:28:58.473Z",
-          "lastUpdated": "2026-02-06T01:29:06.882Z"
+          "lastUpdated": "2026-02-18T15:14:50.947Z"
         },
-        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\layout.tsx"
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\page.tsx"
       },
       "layout": {
         "phase": "do",
@@ -174,9 +210,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T01:58:48.469Z",
-          "lastUpdated": "2026-02-08T10:43:40.231Z"
+          "lastUpdated": "2026-02-18T15:15:42.592Z"
         },
-        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\layout\\Header.tsx"
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\layout\\Footer.tsx"
       },
       "ui": {
         "phase": "do",
@@ -200,9 +236,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:25:24.818Z",
-          "lastUpdated": "2026-02-08T09:20:04.058Z"
+          "lastUpdated": "2026-02-14T11:47:48.586Z"
         },
-        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\inventory\\page.tsx"
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\admin\\inventory\\CosmeticsKioskView.tsx"
       },
       "[id]": {
         "phase": "do",
@@ -213,9 +249,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:25:30.332Z",
-          "lastUpdated": "2026-02-08T07:47:10.315Z"
+          "lastUpdated": "2026-02-12T14:58:27.731Z"
         },
-        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\settings\\treatments\\[id]\\route.ts"
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\operations\\[id]\\route.ts"
       },
       "stats": {
         "phase": "do",
@@ -239,7 +275,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:25:36.631Z",
-          "lastUpdated": "2026-02-06T08:26:19.624Z"
+          "lastUpdated": "2026-02-14T01:27:51.308Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\inventory\\transactions\\route.ts"
       },
@@ -252,7 +288,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:25:41.740Z",
-          "lastUpdated": "2026-02-06T08:26:34.828Z"
+          "lastUpdated": "2026-02-14T01:27:54.968Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\inventory\\recipes\\route.ts"
       },
@@ -265,7 +301,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:25:48.334Z",
-          "lastUpdated": "2026-02-06T08:26:30.497Z"
+          "lastUpdated": "2026-02-14T01:51:59.223Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\inventory\\use\\route.ts"
       },
@@ -278,7 +314,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:25:52.360Z",
-          "lastUpdated": "2026-02-06T08:26:22.672Z"
+          "lastUpdated": "2026-02-14T02:51:21.211Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\inventory\\restock\\route.ts"
       },
@@ -304,7 +340,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:27:55.186Z",
-          "lastUpdated": "2026-02-06T08:28:07.279Z"
+          "lastUpdated": "2026-02-10T07:14:23.152Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\events\\[eventId]\\page.tsx"
       },
@@ -317,7 +353,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:31:08.830Z",
-          "lastUpdated": "2026-02-08T12:22:09.297Z"
+          "lastUpdated": "2026-02-13T22:54:38.468Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\admin\\AdminSidebar.tsx"
       },
@@ -330,7 +366,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T08:31:24.902Z",
-          "lastUpdated": "2026-02-08T12:08:31.077Z"
+          "lastUpdated": "2026-02-10T09:56:13.415Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\consultations\\page.tsx"
       },
@@ -343,7 +379,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T09:04:42.111Z",
-          "lastUpdated": "2026-02-08T11:53:43.810Z"
+          "lastUpdated": "2026-02-10T10:14:22.406Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\operations\\page.tsx"
       },
@@ -382,7 +418,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T09:05:55.471Z",
-          "lastUpdated": "2026-02-06T09:16:18.733Z"
+          "lastUpdated": "2026-02-10T06:42:11.119Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\settings\\clinic\\route.ts"
       },
@@ -434,7 +470,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-06T09:16:49.429Z",
-          "lastUpdated": "2026-02-08T07:49:24.148Z"
+          "lastUpdated": "2026-02-10T06:42:44.103Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\settings\\page.tsx"
       },
@@ -473,9 +509,9 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-08T02:47:56.351Z",
-          "lastUpdated": "2026-02-08T13:00:47.654Z"
+          "lastUpdated": "2026-02-19T00:59:34.919Z"
         },
-        "lastFile": "C:\\dev\\LIV_homepage\\capture_guide.py"
+        "lastFile": "C:\\dev\\LIV_homepage\\analyze_hospitals.py"
       },
       "admin-user-guide": {
         "phase": "check",
@@ -581,7 +617,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-08T09:12:01.854Z",
-          "lastUpdated": "2026-02-08T09:12:01.854Z"
+          "lastUpdated": "2026-02-14T01:27:58.881Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\inventory\\burndown\\route.ts"
       },
@@ -620,7 +656,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-08T09:55:47.073Z",
-          "lastUpdated": "2026-02-08T09:55:47.073Z"
+          "lastUpdated": "2026-02-12T14:02:50.534Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\patients\\page.tsx"
       },
@@ -646,7 +682,7 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-08T11:57:22.862Z",
-          "lastUpdated": "2026-02-08T11:57:22.862Z"
+          "lastUpdated": "2026-02-10T09:57:01.594Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\voice-note\\page.tsx"
       },
@@ -659,9 +695,179 @@
         "documents": {},
         "timestamps": {
           "started": "2026-02-08T12:21:58.673Z",
-          "lastUpdated": "2026-02-08T13:20:47.960Z"
+          "lastUpdated": "2026-02-10T07:21:17.402Z"
         },
         "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\guide\\page.tsx"
+      },
+      "guide-ai-search": {
+        "phase": "check",
+        "phaseNumber": 4,
+        "matchRate": 96,
+        "iterationCount": 0,
+        "requirements": [
+          "F1: 검색 입력 UI (가이드 상단 검색바, debounce 실시간 검색)",
+          "F2: 검색 결과 카드 (섹션 아이콘 + 제목 + 내용 발췌 + 이동 버튼)",
+          "F3: 추천 검색어 Quick Tags (10개 태그, 클릭 시 자동 검색)",
+          "F4: FAQ 우선 매칭 (FAQ 타입 +3점 보너스)",
+          "F5: 한글 조사 제거 + 동의어 매핑 (12개 그룹)",
+          "F6: 가중 스코어링 (제목 10점 / 키워드 5점 / 내용 2점 / FAQ +3점)",
+          "F7: 검색 인덱스 ~50개 항목 (14개 섹션 기반)",
+          "F8: 결과 클릭 시 scrollTo 연동 (기존 함수 재사용)"
+        ],
+        "documents": {
+          "plan": "docs/01-plan/features/guide-ai-search.plan.md",
+          "design": "docs/02-design/features/guide-ai-search.design.md",
+          "analysis": "docs/03-analysis/guide-ai-search.analysis.md"
+        },
+        "timestamps": {
+          "started": "2026-02-08T15:00:00.000Z",
+          "lastUpdated": "2026-02-08T15:45:00.000Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\guide\\page.tsx"
+      },
+      "google": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-10T07:19:04.764Z",
+          "lastUpdated": "2026-02-10T07:55:51.539Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\analytics\\google\\route.ts"
+      },
+      "hybrid-form": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-10T09:53:44.334Z",
+          "lastUpdated": "2026-02-10T10:14:45.352Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\admin\\hybrid-form\\VoiceFieldRecorder.tsx"
+      },
+      "voice-hybrid-forms": {
+        "phase": "completed",
+        "phaseNumber": 5,
+        "matchRate": 100,
+        "iterationCount": 1,
+        "requirements": [
+          "FR-01: 하이브리드 폼 (수동+음성 혼합)",
+          "FR-02: 필드별 입력방식 지정 (manual/voice/both)",
+          "FR-03: 음성 양식 원클릭 시작",
+          "FR-04: 상담기록 하이브리드 적용",
+          "FR-05: 운영현황 하이브리드 적용",
+          "FR-06: 양식 선택 UI (카드)",
+          "FR-07: 음성 필드 자동 포커스",
+          "FR-08: 양식 결과 미리보기"
+        ],
+        "documents": {
+          "plan": "docs/01-plan/features/voice-hybrid-forms.plan.md",
+          "design": "docs/02-design/features/voice-hybrid-forms.design.md",
+          "analysis": "docs/03-analysis/voice-hybrid-forms.analysis.md",
+          "report": "docs/04-report/voice-hybrid-forms.report.md"
+        },
+        "timestamps": {
+          "started": "2026-02-10T09:00:00.000Z",
+          "lastUpdated": "2026-02-10T12:00:00.000Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\docs\\04-report\\voice-hybrid-forms.report.md"
+      },
+      "photos": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T14:01:09.290Z",
+          "lastUpdated": "2026-02-12T14:58:38.834Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\api\\admin\\patients\\photos\\route.ts"
+      },
+      "kiosk": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-12T14:03:04.430Z",
+          "lastUpdated": "2026-02-12T14:59:52.254Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\inventory\\kiosk\\layout.tsx"
+      },
+      "contact": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-13T05:56:03.988Z",
+          "lastUpdated": "2026-02-13T05:56:17.393Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\contact\\page.tsx"
+      },
+      "login": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-13T22:36:05.956Z",
+          "lastUpdated": "2026-02-14T01:26:02.843Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\login\\page.tsx"
+      },
+      "overview": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-13T22:52:30.385Z",
+          "lastUpdated": "2026-02-14T02:28:53.859Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\inventory\\overview\\page.tsx"
+      },
+      "(authenticated)": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-14T01:24:54.250Z",
+          "lastUpdated": "2026-02-14T01:24:54.250Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\admin\\(authenticated)\\layout.tsx"
+      },
+      "hospital_data": {
+        "phase": "do",
+        "phaseNumber": 3,
+        "matchRate": null,
+        "iterationCount": 0,
+        "requirements": [],
+        "documents": {},
+        "timestamps": {
+          "started": "2026-02-18T15:59:11.923Z",
+          "lastUpdated": "2026-02-18T15:59:11.924Z"
+        },
+        "lastFile": "C:\\dev\\LIV_homepage\\hospital_data\\fetch_hospital_data.py"
       }
     },
     "pipeline": {
@@ -672,7 +878,7 @@
     "session": {
       "startedAt": "2026-01-30T22:26:49.658Z",
       "onboardingCompleted": false,
-      "lastActivity": "2026-02-08T13:20:47.960Z"
+      "lastActivity": "2026-02-19T00:59:34.919Z"
     },
     "history": [
       {
@@ -2082,6 +2288,1626 @@
       {
         "timestamp": "2026-02-08T13:20:47.960Z",
         "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T13:38:05.737Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T13:39:21.835Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T13:49:45.927Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:08:09.721Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:09:49.583Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:10:16.354Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:11:08.884Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:18:06.441Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:18:17.785Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:18:35.841Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:22:00.740Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:22:18.122Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:22:35.285Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-08T14:22:54.145Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:41:50.168Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:42:02.464Z",
+        "feature": "clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:42:11.119Z",
+        "feature": "clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:42:23.380Z",
+        "feature": "settings",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:42:28.895Z",
+        "feature": "settings",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:42:44.103Z",
+        "feature": "settings",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:42:56.073Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:43:02.166Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:43:32.419Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:43:36.992Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T06:43:41.564Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:14:06.533Z",
+        "feature": "[eventId]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:14:23.152Z",
+        "feature": "[eventId]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:18:14.997Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:18:18.543Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:18:39.179Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:19:04.764Z",
+        "feature": "google",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:20:21.306Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:20:29.991Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:20:37.574Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:21:17.402Z",
+        "feature": "guide",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:25:02.070Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:25:07.239Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:25:11.085Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:25:16.338Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:25:20.977Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:54:59.067Z",
+        "feature": "google",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:55:51.539Z",
+        "feature": "google",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:56:00.354Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:59:31.479Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T07:59:44.290Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T08:01:16.237Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:52:58.285Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:53:44.334Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:54:49.358Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:55:05.261Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:55:15.692Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:55:31.999Z",
+        "feature": "consultations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:55:37.811Z",
+        "feature": "consultations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:55:57.813Z",
+        "feature": "consultations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:56:13.415Z",
+        "feature": "consultations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:56:20.101Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:56:28.585Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:57:01.594Z",
+        "feature": "voice-note",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T09:57:35.345Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:00:06.516Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:00:10.612Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:00:13.999Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:00:18.674Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:13:46.217Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:13:50.784Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:13:55.390Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:14:06.475Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:14:12.266Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:14:22.406Z",
+        "feature": "operations",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:14:27.835Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:14:32.769Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:14:39.110Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-10T10:14:45.352Z",
+        "feature": "hybrid-form",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T22:00:30.676Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T22:00:38.493Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-11T22:00:47.552Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T13:58:42.029Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T13:58:45.809Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T13:59:02.454Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T13:59:13.409Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T13:59:19.624Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T13:59:24.468Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T13:59:31.104Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:00:03.099Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:00:09.036Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:01:09.290Z",
+        "feature": "photos",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:01:18.610Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:02:14.649Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:02:20.191Z",
+        "feature": "patients",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:02:25.421Z",
+        "feature": "patients",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:02:33.817Z",
+        "feature": "patients",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:02:41.287Z",
+        "feature": "patients",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:02:50.534Z",
+        "feature": "patients",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:03:04.430Z",
+        "feature": "kiosk",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:04:01.104Z",
+        "feature": "kiosk",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:04:07.128Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:04:18.458Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:58:16.026Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:58:23.521Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:58:27.731Z",
+        "feature": "[id]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:58:35.174Z",
+        "feature": "photos",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:58:38.834Z",
+        "feature": "photos",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:58:50.766Z",
+        "feature": "kiosk",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:58:56.501Z",
+        "feature": "kiosk",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:59:10.150Z",
+        "feature": "kiosk",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:59:14.958Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:59:20.249Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:59:27.429Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:59:34.669Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:59:43.943Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-12T14:59:52.254Z",
+        "feature": "kiosk",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:55:06.756Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:55:21.438Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:55:34.464Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:55:43.792Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:55:50.768Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:56:03.988Z",
+        "feature": "contact",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:56:08.565Z",
+        "feature": "contact",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:56:13.057Z",
+        "feature": "contact",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:56:17.393Z",
+        "feature": "contact",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:56:33.260Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:56:38.036Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:57:08.926Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:57:14.885Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:57:19.401Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T05:57:55.269Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T06:43:45.672Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:40:22.763Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:40:39.533Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:41:19.856Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:41:27.913Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:41:32.074Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:46:51.120Z",
+        "feature": "analytics",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:46:58.236Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T07:47:04.848Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:56:28.852Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:56:34.161Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:56:45.274Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:56:49.454Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:56:53.913Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:56:58.282Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:57:45.770Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:58:07.958Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:58:15.609Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:58:23.633Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:58:30.706Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:58:38.831Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:58:45.014Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:58:51.085Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T10:59:38.814Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T11:00:40.367Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:35:17.487Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:35:28.257Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:36:05.956Z",
+        "feature": "login",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:49:01.662Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:50:12.297Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:50:30.818Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:50:51.000Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:51:04.763Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:51:41.226Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:52:30.385Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:52:52.361Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:52:58.269Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:53:09.259Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:54:29.651Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:54:33.757Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T22:54:38.468Z",
+        "feature": "admin",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:04:25.042Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:04:33.540Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:04:53.548Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:18:45.509Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:19:26.809Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:20:48.044Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:28:04.474Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:29:04.080Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:29:15.133Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:29:19.533Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:29:27.098Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:29:32.574Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:29:56.477Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:30:02.146Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-13T23:30:09.316Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:14:31.404Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:24:54.250Z",
+        "feature": "(authenticated)",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:25:00.003Z",
+        "feature": "login",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:26:02.843Z",
+        "feature": "login",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:27:46.963Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:27:51.308Z",
+        "feature": "transactions",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:27:54.968Z",
+        "feature": "recipes",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:27:58.881Z",
+        "feature": "burndown",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:28:07.446Z",
+        "feature": "use",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:28:11.248Z",
+        "feature": "restock",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:35:58.742Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:46:20.128Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:46:24.768Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:51:59.223Z",
+        "feature": "use",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:55:55.376Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T01:56:00.543Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:20:57.959Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:21:20.522Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:21:54.745Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:22:34.478Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:23:00.655Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:23:34.620Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:23:56.237Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:24:11.946Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:24:16.462Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:24:26.057Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:24:33.103Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:24:37.314Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:24:42.239Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:25:42.471Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:28:24.026Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:28:34.573Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:28:40.463Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:28:45.129Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:28:53.859Z",
+        "feature": "overview",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:28:58.755Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:29:12.519Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:48:13.515Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:48:23.773Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:48:43.491Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:48:49.646Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:48:56.457Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:49:11.209Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:49:17.464Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:49:28.058Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:49:38.684Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:49:46.005Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:49:49.584Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:49:54.231Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:50:09.420Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:50:15.176Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T02:51:21.211Z",
+        "feature": "restock",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:21:43.504Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:21:53.064Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:21:59.312Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:03.585Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:09.596Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:22.877Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:29.102Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:36.497Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:41.223Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:46.467Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:22:51.479Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T03:23:01.822Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:47:45.705Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:47:48.586Z",
+        "feature": "inventory",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:48:44.954Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:48:46.971Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:48:52.368Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:48:59.033Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:49:00.444Z",
+        "feature": "liv-clinic",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:56:48.248Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T11:58:36.567Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-14T12:00:05.331Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T14:40:38.757Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T14:53:33.781Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:07:46.148Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:14:44.160Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:14:50.947Z",
+        "feature": "[locale]",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:15:42.592Z",
+        "feature": "layout",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:21:21.731Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:21:29.292Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:21:36.249Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:47:28.700Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T15:59:11.924Z",
+        "feature": "hospital_data",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T16:00:40.970Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-18T16:03:19.706Z",
+        "feature": "LIV_homepage",
+        "phase": "do",
+        "action": "updated"
+      },
+      {
+        "timestamp": "2026-02-19T00:59:34.919Z",
+        "feature": "LIV_homepage",
         "phase": "do",
         "action": "updated"
       }
