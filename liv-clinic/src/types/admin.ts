@@ -65,7 +65,7 @@ export function getPopupStatus(popup: PopupRow): PopupStatus {
 // Inventory (재고관리)
 // ==========================================
 
-export type InventoryCategory = 'device_tip' | 'injection' | 'thread' | 'consumable' | 'skincare' | 'medicine' | 'cosmetics';
+export type InventoryCategory = 'device_tip' | 'injection' | 'thread' | 'consumable' | 'skincare' | 'medicine' | 'cosmetics' | 'sample';
 
 export const INVENTORY_CATEGORY_LABELS: Record<InventoryCategory, string> = {
   device_tip: '장비 팁/카트리지',
@@ -75,6 +75,7 @@ export const INVENTORY_CATEGORY_LABELS: Record<InventoryCategory, string> = {
   skincare: '스킨케어',
   medicine: '약물/연고',
   cosmetics: '화장품',
+  sample: '샘플 약물',
 };
 
 export const INVENTORY_SUBCATEGORY_LABELS: Record<string, string> = {
@@ -132,7 +133,7 @@ export const INVENTORY_SUBCATEGORY_LABELS: Record<string, string> = {
 export const COSMETICS_SUBCATEGORIES = ['lotion', 'cream', 'serum', 'set', 'mask', 'cosmetics_etc'] as const;
 
 /** 일반 재고 카테고리 (화장품 제외) */
-export const GENERAL_INVENTORY_CATEGORIES: InventoryCategory[] = ['device_tip', 'injection', 'thread', 'consumable', 'skincare', 'medicine'];
+export const GENERAL_INVENTORY_CATEGORIES: InventoryCategory[] = ['device_tip', 'injection', 'thread', 'consumable', 'skincare', 'medicine', 'sample'];
 
 export type InventoryStockStatus = 'normal' | 'low' | 'out';
 
@@ -158,6 +159,8 @@ export interface InventoryItem {
   supplier?: string;
   storage_note?: string;
   is_active: boolean;
+  is_refrigerated: boolean;
+  volume_cc?: number;
   created_at: string;
   updated_at: string;
 }
@@ -276,7 +279,7 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
   },
   {
     id: 'shurink',
-    name: '슈링크 유니버스',
+    name: '슈링크',
     category: 'lifting',
     options: [
       { label: '1.5mm', recipeName: '슈링크 1.5mm' },
@@ -285,15 +288,60 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
       { label: '6.0/9.0mm', recipeName: '슈링크 6.0mm' },
     ],
   },
+  // ─── 실리프팅 (브랜드별 분류) ─────
   {
-    id: 'thread',
-    name: '실리프팅',
+    id: 'thread_aptos',
+    name: '압토스 (APTOS)',
     category: 'lifting',
     options: [
-      { label: 'PDO', recipeName: '실리프팅 PDO' },
-      { label: 'PLLA', recipeName: '실리프팅 PLLA' },
-      { label: 'PCL', recipeName: '실리프팅 PCL' },
-      { label: 'APTOS', recipeName: '실리프팅 APTOS' },
+      { label: 'visage', recipeName: '압토스 visage' },
+      { label: 'light lift 500mm', recipeName: '압토스 light lift 500mm' },
+      { label: 'light lift 250mm', recipeName: '압토스 light lift 250mm' },
+    ],
+  },
+  {
+    id: 'thread_mint',
+    name: '민트실',
+    category: 'lifting',
+    options: [
+      { label: '리프트업', recipeName: '민트실 리프트업' },
+    ],
+  },
+  {
+    id: 'thread_silhouette',
+    name: '실루엣 소프트',
+    category: 'lifting',
+    options: [
+      { label: '8콘', recipeName: '실루엣소프트 8콘' },
+      { label: '12콘', recipeName: '실루엣소프트 12콘' },
+    ],
+  },
+  {
+    id: 'thread_neodoctor',
+    name: '네오닥터 JAMBER',
+    category: 'lifting',
+    options: [
+      { label: '23G×60', recipeName: '네오닥터 JAMBER 23G×60' },
+      { label: '27G×50', recipeName: '네오닥터 JAMBER 27G×50' },
+    ],
+  },
+  {
+    id: 'thread_epiticon',
+    name: '에피티콘',
+    category: 'lifting',
+    options: [
+      { label: 'Thin', recipeName: '에피티콘 Thin' },
+      { label: 'jamber 25G×50', recipeName: '에피티콘 jamber 25G×50' },
+    ],
+  },
+  {
+    id: 'thread_conseltina',
+    name: '콘셀티나',
+    category: 'lifting',
+    options: [
+      { label: '19×100', recipeName: '콘셀티나 19×100' },
+      { label: '19×60', recipeName: '콘셀티나 19×60' },
+      { label: '19×40', recipeName: '콘셀티나 19×40' },
     ],
   },
   // ─── 안티에이징 ─────────────
@@ -501,4 +549,66 @@ export interface AuditLog {
   target: string;
   detail: string;
   createdAt: string;
+}
+
+// ==========================================
+// Device Shot Tracking (샷 수 추적) - #2, #3-2
+// ==========================================
+
+export type DeviceType = 'ulthera' | 'shurink';
+
+export interface DeviceTipShot {
+  id: string;
+  item_id: string;
+  tip_type: string;
+  device_type: DeviceType;
+  initial_shots: number;
+  remaining_shots: number;
+  is_active: boolean;
+  registered_at: string;
+  exhausted_at: string | null;
+}
+
+export interface DeviceShotLog {
+  id: string;
+  tip_id: string;
+  shots_used: number;
+  patient_name?: string;
+  chart_number?: string;
+  procedure_area?: string;
+  note?: string;
+  created_by?: string;
+  created_at: string;
+}
+
+/** 장비별 팁 초기 샷 수 설정 */
+export const DEVICE_INITIAL_SHOTS: Record<DeviceType, Record<string, number>> = {
+  ulthera: {
+    '1.5': 2400,
+    '3.0': 2400,
+    '4.5': 2400,
+  },
+  shurink: {
+    '4.5': 20000,
+    '3.0': 20000,
+    '2.0': 20000,
+    '1.5': 12000,
+    'v슈링크': 15000,
+    'S슈링크': 15000,
+  },
+};
+
+// ==========================================
+// Inventory Batches (배치별 유효기간) - #12, #20
+// ==========================================
+
+export interface InventoryBatch {
+  id: string;
+  item_id: string;
+  batch_quantity: number;
+  remaining_quantity: number;
+  expiry_date: string | null;
+  received_at: string;
+  note?: string;
+  created_at: string;
 }

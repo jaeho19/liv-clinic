@@ -19,6 +19,7 @@ const CATEGORY_ICONS: Record<InventoryCategory, string> = {
   skincare: '\u2728',
   medicine: '\uD83D\uDC8A',
   cosmetics: '\uD83D\uDC84',
+  sample: '\uD83E\uDDEA',
 };
 
 interface StockGroupViewProps {
@@ -41,7 +42,7 @@ export default function StockGroupView({
       list.push(item);
       map.set(item.category, list);
     }
-    const order: InventoryCategory[] = ['device_tip', 'injection', 'thread', 'consumable', 'skincare', 'medicine'];
+    const order: InventoryCategory[] = ['device_tip', 'injection', 'thread', 'consumable', 'skincare', 'medicine', 'sample'];
     return order
       .filter(cat => map.has(cat))
       .map(cat => ({

@@ -12,6 +12,7 @@ const CATEGORY_COLORS: Record<InventoryCategory, string> = {
   skincare: '#ec4899',
   medicine: '#10b981',
   cosmetics: '#f472b6',
+  sample: '#a78bfa',
 };
 
 const CATEGORY_ICONS: Record<InventoryCategory, string> = {
@@ -22,6 +23,7 @@ const CATEGORY_ICONS: Record<InventoryCategory, string> = {
   skincare: '\u2728',
   medicine: '\uD83D\uDC8A',
   cosmetics: '\uD83D\uDC84',
+  sample: '\uD83E\uDDEA',
 };
 
 // ─── Mini Sparkline ─────────────────────────────

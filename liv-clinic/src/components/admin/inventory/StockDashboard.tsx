@@ -26,6 +26,7 @@ const CATEGORY_COLORS: Record<InventoryCategory, string> = {
   skincare: '#ec4899',
   medicine: '#10b981',
   cosmetics: '#f472b6',
+  sample: '#a78bfa',
 };
 
 export default function StockDashboard({ items, categorySummary }: StockDashboardProps) {
