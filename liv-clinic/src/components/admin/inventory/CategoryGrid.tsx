@@ -4,8 +4,10 @@ import { useMemo, useState } from 'react';
 import {
   INVENTORY_CATEGORY_LABELS,
   GENERAL_INVENTORY_CATEGORIES,
+  getStockStatus,
 } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
+import type { StockFilter } from './DashboardStatsCards';
 import CategoryCard from './CategoryCard';
 
 type FilterMode = 'all' | 'general' | 'cosmetics';
@@ -17,6 +19,7 @@ interface CategoryGridProps {
   todayCategoryUsage?: Map<InventoryCategory, number>;
   weeklyItemUsage?: Map<string, number[]>;
   todayItemUsage?: Map<string, number>;
+  stockFilter?: StockFilter;
 }
 
 export default function CategoryGrid({
@@ -26,6 +29,7 @@ export default function CategoryGrid({
   todayCategoryUsage,
   weeklyItemUsage,
   todayItemUsage,
+  stockFilter,
 }: CategoryGridProps) {
   const [filterMode, setFilterMode] = useState<FilterMode>('all');
 
@@ -34,6 +38,10 @@ export default function CategoryGrid({
   const categories = useMemo(() => {
     const map = new Map<InventoryCategory, InventoryItem[]>();
     for (const item of activeItems) {
+      if (stockFilter && stockFilter !== 'all') {
+        const status = getStockStatus(item);
+        if (stockFilter !== status) continue;
+      }
       const list = map.get(item.category) || [];
       list.push(item);
       map.set(item.category, list);
@@ -52,7 +60,7 @@ export default function CategoryGrid({
         label: INVENTORY_CATEGORY_LABELS[cat],
         items: map.get(cat)!,
       }));
-  }, [activeItems, filterMode]);
+  }, [activeItems, filterMode, stockFilter]);
 
   // 카테고리별 주간 스파크라인 계산 (해당 카테고리 품목의 일별 합산)
   const categorySparklines = useMemo(() => {

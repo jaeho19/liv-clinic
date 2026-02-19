@@ -8,6 +8,8 @@ import {
 } from '@/types/admin';
 import type { InventoryItem } from '@/types/admin';
 import DailyUsageLog from './DailyUsageLog';
+import ExpiryBadge from './ExpiryBadge';
+import InventoryEditModal from './InventoryEditModal';
 
 // ─── Types ──────────────────────────────────────
 interface UsageItem {
@@ -19,6 +21,7 @@ interface UsageItem {
 }
 
 type SubcategoryId = (typeof COSMETICS_SUBCATEGORIES)[number] | 'all';
+type ViewMode = 'cosmetics' | 'sample';
 
 const SUBCATEGORY_ORDER: { id: SubcategoryId; label: string; icon: string }[] = [
   { id: 'all', label: '전체', icon: '📋' },
@@ -46,6 +49,12 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
   const [refetchKey, setRefetchKey] = useState(0);
   // Mobile wizard step
   const [mobileStep, setMobileStep] = useState<'select' | 'items'>('select');
+  // 화장품/샘플 뷰 모드
+  const [viewMode, setViewMode] = useState<ViewMode>('cosmetics');
+  // 유효기간 맵
+  const [expiryMap, setExpiryMap] = useState<Map<string, string>>(new Map());
+  // 수량 수정 모달
+  const [editItem, setEditItem] = useState<InventoryItem | null>(null);
 
   // Auto-dismiss toast
   useEffect(() => {
@@ -54,6 +63,18 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
     return () => clearTimeout(timer);
   }, [toast]);
 
+  // Fetch expiry map
+  const fetchExpiryMap = useCallback(async () => {
+    try {
+      const res = await fetch('/api/admin/inventory/batches?all=true');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.expiryMap) setExpiryMap(new Map(Object.entries(data.expiryMap)));
+      }
+    } catch { /* silent */ }
+  }, []);
+  useEffect(() => { fetchExpiryMap(); }, [fetchExpiryMap]);
+
   // Filter cosmetics items by sub_category (DB stores as 'skincare' category)
   const COSMETICS_SUBS = new Set<string>(COSMETICS_SUBCATEGORIES);
   const cosmeticsItems = useMemo(
@@ -61,16 +82,25 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
     [items], // eslint-disable-line react-hooks/exhaustive-deps
   );
 
+  // 샘플 약물 아이템
+  const sampleItems = useMemo(
+    () => items.filter(i => i.is_active && i.category === 'sample'),
+    [items],
+  );
+
+  // 현재 뷰 모드에 따른 아이템
+  const activeItems = viewMode === 'cosmetics' ? cosmeticsItems : sampleItems;
+
   // Group by subcategory for count display
   const subcategoryCounts = useMemo(() => {
     const counts: Record<string, number> = {};
-    for (const item of cosmeticsItems) {
+    for (const item of activeItems) {
       const sub = item.sub_category || 'cosmetics_etc';
       counts[sub] = (counts[sub] || 0) + 1;
     }
-    counts['all'] = cosmeticsItems.length;
+    counts['all'] = activeItems.length;
     return counts;
-  }, [cosmeticsItems]);
+  }, [activeItems]);
 
   // Available subcategories (only show those with items)
   const visibleSubcategories = useMemo(
@@ -84,8 +114,8 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
       setSelectedSubcategory(subId);
       const filtered =
         subId === 'all'
-          ? cosmeticsItems
-          : cosmeticsItems.filter(i => (i.sub_category || 'cosmetics_etc') === subId);
+          ? activeItems
+          : activeItems.filter(i => (i.sub_category || 'cosmetics_etc') === subId);
 
       setUsageItems(
         filtered.map(i => ({
@@ -98,7 +128,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
       );
       setMobileStep('items');
     },
-    [cosmeticsItems],
+    [activeItems],
   );
 
   // ─── Mobile: Back to category selection ────────
@@ -108,10 +138,27 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
 
   // Init: load all on first render when items are available
   useEffect(() => {
-    if (cosmeticsItems.length > 0 && usageItems.length === 0) {
+    if (activeItems.length > 0 && usageItems.length === 0) {
       handleSelectSubcategory('all');
     }
-  }, [cosmeticsItems.length]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [activeItems.length]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 뷰모드 전환 시 리셋
+  useEffect(() => {
+    setSelectedSubcategory('all');
+    setMobileStep('select');
+    if (activeItems.length > 0) {
+      setUsageItems(
+        activeItems.map(i => ({
+          itemId: i.id,
+          itemName: i.name,
+          unit: i.unit,
+          currentStock: i.current_stock,
+          quantity: 0,
+        })),
+      );
+    }
+  }, [viewMode]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // ─── Quantity change ──────────────────────────
   const handleQtyChange = (idx: number, delta: number) => {
@@ -139,7 +186,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
         body: JSON.stringify({
           items: activeItems.map(u => ({ item_id: u.itemId, quantity: u.quantity })),
           confirmed_by: confirmedBy || undefined,
-          note: `화장품: ${itemNames}${memo.trim() ? ` (${memo.trim()})` : ''}`,
+          note: `${viewMode === 'sample' ? '샘플' : '화장품'}: ${itemNames}${memo.trim() ? ` (${memo.trim()})` : ''}`,
         }),
       });
 
@@ -150,6 +197,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
         setMobileStep('select');
         setRefetchKey(k => k + 1);
         await loadData();
+        fetchExpiryMap();
         // Re-apply current filter with refreshed data
         // items prop will be updated, usageItems will be rebuilt via effect below
       } else {
@@ -165,11 +213,11 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
 
   // Re-sync usageItems when items (stock) refresh
   useEffect(() => {
-    if (cosmeticsItems.length === 0) return;
+    if (activeItems.length === 0) return;
     const filtered =
       selectedSubcategory === 'all'
-        ? cosmeticsItems
-        : cosmeticsItems.filter(i => (i.sub_category || 'cosmetics_etc') === selectedSubcategory);
+        ? activeItems
+        : activeItems.filter(i => (i.sub_category || 'cosmetics_etc') === selectedSubcategory);
 
     setUsageItems(
       filtered.map(i => ({
@@ -180,7 +228,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
         quantity: 0,
       })),
     );
-  }, [cosmeticsItems, selectedSubcategory]);
+  }, [activeItems, selectedSubcategory]);
 
   // ─── Reset ────────────────────────────────────
   const handleReset = () => {
@@ -192,9 +240,11 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
 
   const activeCount = usageItems.filter(u => u.quantity > 0).length;
   const subcategoryLabel =
-    selectedSubcategory === 'all'
-      ? '전체 화장품'
-      : INVENTORY_SUBCATEGORY_LABELS[selectedSubcategory] || selectedSubcategory;
+    viewMode === 'sample'
+      ? '샘플 약물'
+      : selectedSubcategory === 'all'
+        ? '전체 화장품'
+        : INVENTORY_SUBCATEGORY_LABELS[selectedSubcategory] || selectedSubcategory;
 
   return (
     <div>
@@ -214,6 +264,30 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
         </div>
       )}
 
+      {/* 화장품/샘플 뷰 모드 토글 */}
+      <div className="flex gap-1.5 mb-4">
+        <button
+          onClick={() => setViewMode('cosmetics')}
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+            viewMode === 'cosmetics'
+              ? 'bg-[#6d4e42] text-white shadow-sm'
+              : 'bg-white text-[#6d4e42] border border-[#ebe7e4] hover:bg-[#faf8f7]'
+          }`}
+        >
+          화장품
+        </button>
+        <button
+          onClick={() => setViewMode('sample')}
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all cursor-pointer ${
+            viewMode === 'sample'
+              ? 'bg-[#6d4e42] text-white shadow-sm'
+              : 'bg-white text-[#6d4e42] border border-[#ebe7e4] hover:bg-[#faf8f7]'
+          }`}
+        >
+          샘플 약물
+        </button>
+      </div>
+
       {/* 2-column layout */}
       <div className="flex flex-col lg:flex-row gap-5">
         {/* Left: Subcategory selection (40%) - hidden on mobile when viewing items */}
@@ -223,8 +297,12 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
             style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
           >
             <div className="px-5 py-4 border-b border-[#ebe7e4] bg-[#faf8f7]">
-              <h3 className="text-sm font-bold text-[#6d4e42] tracking-tight">카테고리 선택</h3>
-              <p className="text-[10px] text-[#a09080] mt-0.5">카테고리를 탭하면 제품이 표시됩니다</p>
+              <h3 className="text-sm font-bold text-[#6d4e42] tracking-tight">
+                {viewMode === 'cosmetics' ? '카테고리 선택' : '샘플 약물'}
+              </h3>
+              <p className="text-[10px] text-[#a09080] mt-0.5">
+                {viewMode === 'cosmetics' ? '카테고리를 탭하면 제품이 표시됩니다' : '샘플 약물 수량을 조정하세요'}
+              </p>
             </div>
             <div className="p-4 space-y-2">
               {visibleSubcategories.map(sub => {
@@ -256,10 +334,10 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
                 );
               })}
 
-              {cosmeticsItems.length === 0 && (
+              {activeItems.length === 0 && (
                 <div className="text-center py-8 text-[#c5b8b0]">
-                  <p className="text-sm">등록된 화장품이 없습니다</p>
-                  <p className="text-xs mt-1">재고 현황에서 화장품을 등록해주세요</p>
+                  <p className="text-sm">{viewMode === 'cosmetics' ? '등록된 화장품이 없습니다' : '등록된 샘플 약물이 없습니다'}</p>
+                  <p className="text-xs mt-1">재고 현황에서 등록해주세요</p>
                 </div>
               )}
             </div>
@@ -343,7 +421,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
                   <svg className="w-12 h-12 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
-                  <p className="text-sm font-medium">등록된 화장품이 없습니다</p>
+                  <p className="text-sm font-medium">{viewMode === 'cosmetics' ? '등록된 화장품이 없습니다' : '등록된 샘플 약물이 없습니다'}</p>
                 </div>
               ) : (
                 <div className="space-y-2 max-h-[calc(100vh-420px)] overflow-y-auto">
@@ -361,11 +439,30 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
                         }`}
                       >
                         <div className="flex-1 min-w-0">
-                          <div className="text-sm font-bold text-[#6d4e42] truncate">{usage.itemName}</div>
-                          <div className="text-[10px] text-[#a09080] mt-0.5">
-                            재고: {usage.currentStock}
-                            {usage.unit}
-                            {isOverStock && <span className="text-red-500 ml-2 font-semibold">재고 부족!</span>}
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-sm font-bold text-[#6d4e42] truncate">{usage.itemName}</span>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                const found = items.find(i => i.id === usage.itemId);
+                                if (found) setEditItem(found);
+                              }}
+                              className="flex-shrink-0 w-6 h-6 rounded-lg hover:bg-blue-50 flex items-center justify-center cursor-pointer transition-colors"
+                              title="수량 수정"
+                            >
+                              <svg className="w-3 h-3 text-[#b4988d] hover:text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="flex items-center gap-2 mt-0.5">
+                            <span className="text-[10px] text-[#a09080]">
+                              재고: {usage.currentStock}{usage.unit}
+                            </span>
+                            {isOverStock && <span className="text-[10px] text-red-500 font-semibold">재고 부족!</span>}
+                            {expiryMap.get(usage.itemId) && (
+                              <ExpiryBadge expiryDate={expiryMap.get(usage.itemId)!} size="sm" showRemaining={false} />
+                            )}
                           </div>
                         </div>
                         <div className="flex items-center gap-1">
@@ -414,8 +511,22 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
         </div>
       </div>
 
-      {/* Daily usage log (cosmetics only) */}
-      <DailyUsageLog refetchKey={refetchKey} filterPrefix="화장품:" />
+      {/* Daily usage log */}
+      <DailyUsageLog refetchKey={refetchKey} filterPrefix={viewMode === 'sample' ? '샘플:' : '화장품:'} />
+
+      {/* 수량 수정 모달 */}
+      {editItem && (
+        <InventoryEditModal
+          item={editItem}
+          isOpen={true}
+          onClose={() => setEditItem(null)}
+          onSaved={async () => {
+            setEditItem(null);
+            await loadData();
+            fetchExpiryMap();
+          }}
+        />
+      )}
     </div>
   );
 }

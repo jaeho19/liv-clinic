@@ -2,6 +2,9 @@
 
 import { INVENTORY_CATEGORY_LABELS, INVENTORY_SUBCATEGORY_LABELS, INVENTORY_TX_LABELS, getStockStatus } from '@/types/admin';
 import type { InventoryItem, InventoryTransaction, InventoryTxType } from '@/types/admin';
+import { getDisplayName } from '@/lib/inventory-utils';
+import BatchManager from './BatchManager';
+import ExpiryBadge from './ExpiryBadge';
 
 const STOCK_STATUS_CONFIG = {
   normal: { label: '정상', bg: 'bg-emerald-50', text: 'text-emerald-700', stroke: '#34d399', trail: '#ecfdf5' },
@@ -30,9 +33,11 @@ interface DetailPanelProps {
   txs: InventoryTransaction[];
   onClose: () => void;
   onDelete: () => void;
+  onAdjust?: (item: InventoryItem) => void;
+  expiryDate?: string | null;
 }
 
-export default function DetailPanel({ item, txs, onClose, onDelete }: DetailPanelProps) {
+export default function DetailPanel({ item, txs, onClose, onDelete, onAdjust, expiryDate }: DetailPanelProps) {
   const status = getStockStatus(item);
   const cfg = STOCK_STATUS_CONFIG[status];
 
@@ -82,7 +87,7 @@ export default function DetailPanel({ item, txs, onClose, onDelete }: DetailPane
             </div>
           </div>
           <div className="flex-1 min-w-0">
-            <h4 className="font-bold text-[#6d4e42] mb-1.5 truncate">{item.name}</h4>
+            <h4 className="font-bold text-[#6d4e42] mb-1.5 truncate">{getDisplayName(item)}</h4>
             <span className={`inline-flex items-center gap-1.5 text-xs px-2.5 py-0.5 rounded-full font-semibold ${cfg.bg} ${cfg.text}`}>
               {cfg.label}
             </span>
@@ -119,8 +124,34 @@ export default function DetailPanel({ item, txs, onClose, onDelete }: DetailPane
                 <div className="text-[#575756]">{item.supplier}</div>
               </>
             )}
+            {item.is_refrigerated && (
+              <>
+                <div className="text-[#a09080]">보관</div>
+                <div className="flex items-center gap-1">
+                  <span className="inline-flex items-center gap-0.5 text-[10px] font-semibold text-sky-600 bg-sky-50 px-1.5 py-0.5 rounded-md">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18l4 4m-4-4L8 7m4 14l4-4m-4 4l-4-4M3 12h18M3 12l4-4m-4 4l4 4m14-4l-4-4m4 4l-4 4" />
+                    </svg>
+                    냉장 보관
+                  </span>
+                </div>
+              </>
+            )}
           </div>
         </div>
+
+        {/* Expiry badge */}
+        {expiryDate && (
+          <div className="bg-[#faf8f7] rounded-xl p-3">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-[#a09080]">유효기간</span>
+              <ExpiryBadge expiryDate={expiryDate} size="md" />
+            </div>
+          </div>
+        )}
+
+        {/* Batch Manager */}
+        <BatchManager itemId={item.id} itemName={item.name} itemUnit={item.unit} />
 
         {item.storage_note && (
           <div className="flex items-start gap-2.5 text-xs bg-[#b4988d]/5 rounded-xl p-3">
@@ -156,13 +187,23 @@ export default function DetailPanel({ item, txs, onClose, onDelete }: DetailPane
           )}
         </div>
 
-        {/* Delete button */}
-        <button
-          onClick={onDelete}
-          className="w-full text-xs text-red-400 hover:text-red-600 py-2.5 border border-red-200 rounded-xl hover:bg-red-50 transition-colors cursor-pointer font-medium"
-        >
-          품목 삭제
-        </button>
+        {/* Action buttons */}
+        <div className="space-y-2">
+          {onAdjust && (
+            <button
+              onClick={() => onAdjust(item)}
+              className="w-full text-xs text-blue-600 hover:text-blue-800 py-2.5 border border-blue-200 rounded-xl hover:bg-blue-50 transition-colors cursor-pointer font-medium"
+            >
+              수량 보정
+            </button>
+          )}
+          <button
+            onClick={onDelete}
+            className="w-full text-xs text-red-400 hover:text-red-600 py-2.5 border border-red-200 rounded-xl hover:bg-red-50 transition-colors cursor-pointer font-medium"
+          >
+            품목 삭제
+          </button>
+        </div>
       </div>
     </div>
   );

@@ -2,7 +2,8 @@
 
 import { INVENTORY_CATEGORY_LABELS, getStockStatus } from '@/types/admin';
 import type { InventoryItem } from '@/types/admin';
-import { BURNDOWN_SEVERITY_CONFIG, type BurndownResult } from '@/lib/inventory-utils';
+import { BURNDOWN_SEVERITY_CONFIG, getDisplayName, type BurndownResult } from '@/lib/inventory-utils';
+import ExpiryBadge from './ExpiryBadge';
 
 const STOCK_STATUS_CONFIG = {
   normal: { label: '정상', bg: 'bg-emerald-50', text: 'text-emerald-700', ring: 'ring-emerald-200', stroke: '#34d399', trail: '#ecfdf5' },
@@ -17,6 +18,7 @@ interface StockCardViewProps {
   onStockModal: (v: { item: InventoryItem; type: 'in' | 'out' }) => void;
   burndownMap?: Map<string, BurndownResult>;
   todayItemUsage?: Map<string, number>;
+  expiryMap?: Map<string, string>;
 }
 
 export default function StockCardView({
@@ -26,6 +28,7 @@ export default function StockCardView({
   onStockModal,
   burndownMap,
   todayItemUsage,
+  expiryMap,
 }: StockCardViewProps) {
   if (items.length === 0) {
     return (
@@ -71,7 +74,15 @@ export default function StockCardView({
             {/* Top row: name + status badge */}
             <div className="flex items-start justify-between gap-2 mb-4">
               <div className="min-w-0 flex-1">
-                <h4 className="text-sm font-bold text-[#6d4e42] truncate leading-tight">{item.name}</h4>
+                <h4 className="text-sm font-bold text-[#6d4e42] truncate leading-tight">{getDisplayName(item)}</h4>
+                {item.is_refrigerated && (
+                  <span className="inline-flex items-center gap-0.5 text-[10px] font-semibold text-sky-600 bg-sky-50 px-1.5 py-0.5 rounded-md mt-1 w-fit">
+                    <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18l4 4m-4-4L8 7m4 14l4-4m-4 4l-4-4M3 12h18M3 12l4-4m-4 4l4 4m14-4l-4-4m4 4l-4 4" />
+                    </svg>
+                    냉장
+                  </span>
+                )}
                 <p className="text-[10px] text-[#a09080] mt-1">
                   {INVENTORY_CATEGORY_LABELS[item.category]}
                   {item.specification && (
@@ -80,6 +91,11 @@ export default function StockCardView({
                     </span>
                   )}
                 </p>
+                {expiryMap?.get(item.id) && (
+                  <div className="mt-1.5">
+                    <ExpiryBadge expiryDate={expiryMap.get(item.id)!} size="sm" />
+                  </div>
+                )}
               </div>
               <span className={`flex-shrink-0 text-[10px] font-semibold px-2 py-0.5 rounded-full ${cfg.bg} ${cfg.text}`}>
                 {cfg.label}

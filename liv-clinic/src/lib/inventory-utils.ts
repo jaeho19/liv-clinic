@@ -46,6 +46,17 @@ export function calculateBurndown(
   };
 }
 
+/**
+ * 물품 표시명 반환. volume_cc가 있으면 "이름 Ncc" 형태로 반환.
+ * 예: { name: '리쥬란 힐러', volume_cc: 2 } → '리쥬란 힐러 2cc'
+ */
+export function getDisplayName(item: { name: string; volume_cc?: number | null }): string {
+  if (item.volume_cc && item.volume_cc > 0) {
+    return `${item.name} ${item.volume_cc}cc`;
+  }
+  return item.name;
+}
+
 export const BURNDOWN_SEVERITY_CONFIG = {
   safe: { label: '안전', bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-400' },
   warning: { label: '주의', bg: 'bg-amber-50', text: 'text-amber-700', dot: 'bg-amber-400' },

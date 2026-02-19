@@ -45,6 +45,28 @@ export async function POST(request: NextRequest) {
 
       if (error) throw new Error(error.message);
       txIds.push(data as string);
+
+      // FIFO 배치 차감: 유효기간 빠른 순서대로 잔여 수량 차감
+      const { data: batches } = await admin
+        .from('inventory_batches' as any)
+        .select('id, remaining_quantity')
+        .eq('item_id', item.item_id)
+        .gt('remaining_quantity', 0)
+        .order('expiry_date', { ascending: true, nullsFirst: false })
+        .order('received_at', { ascending: true }) as { data: { id: string; remaining_quantity: number }[] | null };
+
+      if (batches && batches.length > 0) {
+        let remaining = item.quantity;
+        for (const batch of batches) {
+          if (remaining <= 0) break;
+          const deduct = Math.min(remaining, batch.remaining_quantity);
+          await admin
+            .from('inventory_batches' as any)
+            .update({ remaining_quantity: batch.remaining_quantity - deduct })
+            .eq('id', batch.id);
+          remaining -= deduct;
+        }
+      }
     } catch (e: unknown) {
       const msg = e instanceof Error ? e.message : 'Unknown error';
       errors.push(`${item.item_id}: ${msg}`);

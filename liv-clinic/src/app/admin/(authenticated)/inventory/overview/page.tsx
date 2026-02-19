@@ -5,12 +5,15 @@ import Link from 'next/link';
 import { useInventoryData } from '@/hooks/useInventoryData';
 import { getStockStatus } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
-import DashboardStatsCards from '@/components/admin/inventory/DashboardStatsCards';
+import DashboardStatsCards, { type StockFilter } from '@/components/admin/inventory/DashboardStatsCards';
 import TodayUsageSummary from '@/components/admin/inventory/TodayUsageSummary';
 import CategoryGrid from '@/components/admin/inventory/CategoryGrid';
 import CategoryDetailSection from '@/components/admin/inventory/CategoryDetailSection';
 import HistoryTab from '@/components/admin/inventory/HistoryTab';
 import RestockTab from '@/components/admin/inventory/RestockTab';
+import StockAdjustModal from '@/components/admin/inventory/StockAdjustModal';
+import AddItemModal from '@/components/admin/inventory/AddItemModal';
+import type { NewItemData } from '@/components/admin/inventory/AddItemModal';
 
 type TabId = 'stock' | 'history' | 'restock';
 
@@ -25,19 +28,20 @@ function StockModal({
 }: {
   item: InventoryItem;
   type: 'in' | 'out';
-  onSubmit: (qty: number, note: string) => void | Promise<void>;
+  onSubmit: (qty: number, note: string, expiryDate?: string) => void | Promise<void>;
   onClose: () => void;
   submitting?: boolean;
 }) {
   const [quantity, setQuantity] = useState(1);
   const [note, setNote] = useState('');
+  const [expiryDate, setExpiryDate] = useState('');
   const isIn = type === 'in';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (quantity <= 0) return;
     if (!isIn && quantity > item.current_stock) return;
-    onSubmit(quantity, note.trim() || (isIn ? '입고' : '출고'));
+    onSubmit(quantity, note.trim() || (isIn ? '입고' : '출고'), expiryDate || undefined);
   };
 
   return (
@@ -74,6 +78,18 @@ function StockModal({
               <p className="text-xs text-red-500 mt-1">현재 재고보다 많이 출고할 수 없습니다.</p>
             )}
           </div>
+          {isIn && (
+            <div>
+              <label className="block text-sm font-medium text-[#575756] mb-1">유효기간</label>
+              <input
+                type="date"
+                value={expiryDate}
+                onChange={(e) => setExpiryDate(e.target.value)}
+                className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
+              />
+              <p className="text-[10px] text-[#a09080] mt-1">입력 시 배치가 자동 생성됩니다</p>
+            </div>
+          )}
           <div>
             <label className="block text-sm font-medium text-[#575756] mb-1">사유</label>
             <input
@@ -118,6 +134,9 @@ export default function InventoryOverviewPage() {
   const [selectedCategory, setSelectedCategory] = useState<InventoryCategory | null>(null);
   const [stockModal, setStockModal] = useState<{ item: InventoryItem; type: 'in' | 'out' } | null>(null);
   const [submitting, setSubmitting] = useState(false);
+  const [stockFilter, setStockFilter] = useState<StockFilter>('all');
+  const [adjustModal, setAdjustModal] = useState<InventoryItem | null>(null);
+  const [showAddItem, setShowAddItem] = useState(false);
 
   const consumptionData = useMemo(() => {
     const useTxs = transactions.filter(t => t.tx_type === 'use');
@@ -161,12 +180,12 @@ export default function InventoryOverviewPage() {
     });
   }, []);
 
-  const handleStockChange = useCallback(async (itemId: string, type: 'in' | 'out', quantity: number, note: string) => {
+  const handleStockChange = useCallback(async (itemId: string, type: 'in' | 'out', quantity: number, note: string, expiryDate?: string) => {
     setSubmitting(true);
     try {
       const endpoint = type === 'in' ? '/api/admin/inventory/restock' : '/api/admin/inventory/use';
       const body = type === 'in'
-        ? { item_id: itemId, quantity, note }
+        ? { item_id: itemId, quantity, note, expiry_date: expiryDate }
         : { items: [{ item_id: itemId, quantity }], note };
       const res = await fetch(endpoint, {
         method: 'POST',
@@ -177,6 +196,47 @@ export default function InventoryOverviewPage() {
         const err = await res.json();
         throw new Error(err.error || '처리에 실패했습니다.');
       }
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    } finally {
+      setSubmitting(false);
+    }
+  }, [loadData]);
+
+  const handleAdjust = useCallback(async (itemId: string, newQuantity: number, reason: string) => {
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/admin/inventory/adjust', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ item_id: itemId, new_quantity: newQuantity, reason }),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || '처리에 실패했습니다.');
+      }
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    } finally {
+      setSubmitting(false);
+    }
+  }, [loadData]);
+
+  const handleAddItem = useCallback(async (data: NewItemData) => {
+    setSubmitting(true);
+    try {
+      const res = await fetch('/api/admin/inventory', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || '등록에 실패했습니다.');
+      }
+      setShowAddItem(false);
       await loadData();
     } catch (e) {
       alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
@@ -229,15 +289,26 @@ export default function InventoryOverviewPage() {
             카테고리별 재고 현황을 한눈에 확인합니다
           </p>
         </div>
-        <Link
-          href="/admin/inventory"
-          className="px-4 py-2.5 bg-[#6d4e42] text-white rounded-xl text-sm font-semibold hover:bg-[#5a3d33] transition-all duration-150 flex items-center gap-2 shadow-sm hover:shadow-md"
-        >
-          <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-          </svg>
-          물품 사용 기록
-        </Link>
+        <div className="flex gap-2">
+          <button
+            onClick={() => setShowAddItem(true)}
+            className="px-4 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-semibold hover:bg-emerald-700 transition-all duration-150 flex items-center gap-2 shadow-sm hover:shadow-md cursor-pointer"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v12m6-6H6" />
+            </svg>
+            새 물품 추가
+          </button>
+          <Link
+            href="/admin/inventory"
+            className="px-4 py-2.5 bg-[#6d4e42] text-white rounded-xl text-sm font-semibold hover:bg-[#5a3d33] transition-all duration-150 flex items-center gap-2 shadow-sm hover:shadow-md"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+            </svg>
+            물품 사용 기록
+          </Link>
+        </div>
       </div>
 
       {/* Dashboard stats */}
@@ -246,6 +317,8 @@ export default function InventoryOverviewPage() {
         todayCategoryUsage={todayCategoryUsage}
         alertItems={alertItems}
         onAlertClick={() => setActiveTab('restock')}
+        activeFilter={stockFilter}
+        onFilterChange={setStockFilter}
       />
 
       {/* Tab Navigation */}
@@ -288,6 +361,7 @@ export default function InventoryOverviewPage() {
             todayCategoryUsage={todayCategoryUsage}
             weeklyItemUsage={weeklyItemUsage}
             todayItemUsage={todayItemUsage}
+            stockFilter={stockFilter}
           />
 
           {/* Category detail section */}
@@ -302,6 +376,8 @@ export default function InventoryOverviewPage() {
               onDismissAlert={handleDismissAlert}
               onUndismissAlert={handleUndismissAlert}
               todayItemUsage={todayItemUsage}
+              stockFilter={stockFilter}
+              onAdjust={setAdjustModal}
             />
           )}
         </>
@@ -333,11 +409,33 @@ export default function InventoryOverviewPage() {
         <StockModal
           item={stockModal.item}
           type={stockModal.type}
-          onSubmit={(qty, note) => {
-            handleStockChange(stockModal.item.id, stockModal.type, qty, note);
+          onSubmit={(qty, note, expiryDate) => {
+            handleStockChange(stockModal.item.id, stockModal.type, qty, note, expiryDate);
             setStockModal(null);
           }}
           onClose={() => setStockModal(null)}
+          submitting={submitting}
+        />
+      )}
+
+      {/* Adjust modal */}
+      {adjustModal && (
+        <StockAdjustModal
+          item={adjustModal}
+          onSubmit={async (newQty, reason) => {
+            await handleAdjust(adjustModal.id, newQty, reason);
+            setAdjustModal(null);
+          }}
+          onClose={() => setAdjustModal(null)}
+          submitting={submitting}
+        />
+      )}
+
+      {/* Add item modal */}
+      {showAddItem && (
+        <AddItemModal
+          onSubmit={handleAddItem}
+          onClose={() => setShowAddItem(false)}
           submitting={submitting}
         />
       )}

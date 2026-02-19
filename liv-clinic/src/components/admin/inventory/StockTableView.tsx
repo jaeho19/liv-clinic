@@ -3,7 +3,8 @@
 import { ProgressBar } from './StockGauge';
 import { INVENTORY_CATEGORY_LABELS, getStockStatus } from '@/types/admin';
 import type { InventoryItem } from '@/types/admin';
-import { BURNDOWN_SEVERITY_CONFIG, type BurndownResult } from '@/lib/inventory-utils';
+import { BURNDOWN_SEVERITY_CONFIG, getDisplayName, type BurndownResult } from '@/lib/inventory-utils';
+import ExpiryBadge from './ExpiryBadge';
 
 const STOCK_STATUS_CONFIG = {
   normal: { label: '정상', bg: 'bg-emerald-50', text: 'text-emerald-700', dot: 'bg-emerald-400' },
@@ -17,6 +18,7 @@ interface StockTableViewProps {
   onSelectItem: (id: string | null) => void;
   onStockModal: (v: { item: InventoryItem; type: 'in' | 'out' }) => void;
   burndownMap?: Map<string, BurndownResult>;
+  expiryMap?: Map<string, string>;
 }
 
 export default function StockTableView({
@@ -25,6 +27,7 @@ export default function StockTableView({
   onSelectItem,
   onStockModal,
   burndownMap,
+  expiryMap,
 }: StockTableViewProps) {
   return (
     <div className="bg-white rounded-2xl border border-[#ebe7e4] overflow-hidden"
@@ -39,6 +42,7 @@ export default function StockTableView({
               <th className="text-left py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider w-36">재고 수준</th>
               <th className="text-right py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">현재 / 최소</th>
               <th className="text-center py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">상태</th>
+              {expiryMap && <th className="text-center py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">유효기간</th>}
               {burndownMap && <th className="text-center py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">예상 소진</th>}
               {burndownMap && <th className="text-right py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">일평균</th>}
               <th className="text-left py-3.5 px-4 text-[10px] text-[#a09080] font-semibold uppercase tracking-wider">공급사</th>
@@ -48,7 +52,7 @@ export default function StockTableView({
           <tbody>
             {items.length === 0 ? (
               <tr>
-                <td colSpan={burndownMap ? 9 : 7} className="text-center py-20 text-[#a09080]">
+                <td colSpan={(burndownMap ? 9 : 7) + (expiryMap ? 1 : 0)} className="text-center py-20 text-[#a09080]">
                   <div className="flex flex-col items-center gap-3">
                     <div className="w-12 h-12 rounded-2xl bg-[#f6f4f2] flex items-center justify-center">
                       <svg className="w-6 h-6 text-[#c5b8b0]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -78,7 +82,15 @@ export default function StockTableView({
                     <td className="py-3.5 px-5">
                       <div className="flex items-center gap-2.5">
                         <span className={`w-1.5 h-1.5 rounded-full flex-shrink-0 ${cfg.dot}`} />
-                        <span className="font-semibold text-[#6d4e42]">{item.name}</span>
+                        <span className="font-semibold text-[#6d4e42]">{getDisplayName(item)}</span>
+                        {item.is_refrigerated && (
+                          <span className="inline-flex items-center gap-0.5 text-[9px] font-semibold text-sky-600 bg-sky-50 px-1 py-0.5 rounded">
+                            <svg className="w-2.5 h-2.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v18m0-18l4 4m-4-4L8 7m4 14l4-4m-4 4l-4-4M3 12h18M3 12l4-4m-4 4l4 4m14-4l-4-4m4 4l-4 4" />
+                            </svg>
+                            냉장
+                          </span>
+                        )}
                         {item.specification && (
                           <span className="text-[10px] text-[#b4988d] bg-[#b4988d]/8 px-1.5 py-0.5 rounded-md font-medium">
                             {item.specification}
@@ -107,6 +119,16 @@ export default function StockTableView({
                         {cfg.label}
                       </span>
                     </td>
+                    {/* 유효기간 */}
+                    {expiryMap && (
+                      <td className="py-3.5 px-4 text-center">
+                        {expiryMap.get(item.id) ? (
+                          <ExpiryBadge expiryDate={expiryMap.get(item.id)!} size="sm" />
+                        ) : (
+                          <span className="text-xs text-[#c5b8b0]">-</span>
+                        )}
+                      </td>
+                    )}
                     {/* 예상 소진 */}
                     {burndownMap && (() => {
                       const bd = burndownMap.get(item.id);

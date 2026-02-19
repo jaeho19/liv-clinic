@@ -13,9 +13,11 @@ import type {
   ProcedureType,
   ProcedureOption,
   ProcedureCategoryId,
+  DeviceType,
 } from '@/types/admin';
 import Link from 'next/link';
 import DailyUsageLog from './DailyUsageLog';
+import { useShotTracking } from '@/hooks/useShotTracking';
 
 // ─── Types ──────────────────────────────────────
 interface UsageItem {
@@ -163,6 +165,22 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
   // Mobile wizard step: 'select' = procedure selection, 'items' = quantity adjustment
   const [mobileStep, setMobileStep] = useState<'select' | 'items'>('select');
 
+  // ─── Shot tracking state ───────────────────────
+  const [selectedTipId, setSelectedTipId] = useState('');
+  const [shotsToUse, setShotsToUse] = useState(0);
+
+  // Device type detection for shot tracking
+  const deviceType: DeviceType | null = useMemo(() => {
+    if (selectedType?.id === 'ulthera') return 'ulthera';
+    if (selectedType?.id === 'shurink') return 'shurink';
+    return null;
+  }, [selectedType]);
+  const isDeviceProcedure = deviceType !== null;
+
+  const { tips: deviceTips, refresh: refreshShots } = useShotTracking(deviceType ?? undefined);
+  const activeTips = useMemo(() => deviceTips.filter(t => t.is_active), [deviceTips]);
+  const selectedTip = useMemo(() => activeTips.find(t => t.id === selectedTipId), [activeTips, selectedTipId]);
+
   // Auto-dismiss toast
   useEffect(() => {
     if (!toast) return;
@@ -258,47 +276,76 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
   // ─── Submit (Optimistic UI) ──────────────────
   const handleSubmit = async () => {
     const activeItems = usageItems.filter(u => u.quantity > 0);
-    if (activeItems.length === 0 || !selectedType) return;
+    const hasShots = isDeviceProcedure && selectedTipId && shotsToUse > 0;
+    if (activeItems.length === 0 && !hasShots) return;
+    if (!selectedType) return;
 
     setSubmitting(true);
     const label = getProcedureLabel(selectedType, selectedOption);
-    const body = JSON.stringify({
-      items: activeItems.map(u => ({ item_id: u.itemId, quantity: u.quantity })),
-      patient_name: patientName.trim() || undefined,
-      chart_number: chartNumber.trim() || undefined,
-      confirmed_by: confirmedBy || undefined,
-      note: `키오스크: ${label}`,
-    });
 
     // Optimistic: 즉시 UI 초기화 (사용자 체감 즉각 반응)
-    setToast({ message: `${label} - 재고 차감 완료!`, type: 'success' });
+    const shotLabel = hasShots ? ` + ${shotsToUse}샷` : '';
+    setToast({ message: `${label} - 재고 차감 완료!${shotLabel}`, type: 'success' });
     setSelectedType(null);
     setSelectedOption(null);
     setPatientName('');
     setChartNumber('');
     setConfirmedBy('');
     setUsageItems([]);
+    setSelectedTipId('');
+    setShotsToUse(0);
     setMobileStep('select');
     setRefetchKey(k => k + 1);
 
     try {
-      const res = await fetch('/api/admin/inventory/use', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body,
-      });
+      const promises: Promise<Response>[] = [];
 
-      if (res.ok) {
-        // 백그라운드 데이터 동기화
+      // 1. 기존 물품 차감
+      if (activeItems.length > 0) {
+        promises.push(fetch('/api/admin/inventory/use', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            items: activeItems.map(u => ({ item_id: u.itemId, quantity: u.quantity })),
+            patient_name: patientName.trim() || undefined,
+            chart_number: chartNumber.trim() || undefined,
+            confirmed_by: confirmedBy || undefined,
+            note: `키오스크: ${label}`,
+          }),
+        }));
+      }
+
+      // 2. 샷 차감 (울쎄라/슈링크)
+      if (hasShots) {
+        promises.push(fetch('/api/admin/inventory/shots/use', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            tip_id: selectedTipId,
+            shots_used: shotsToUse,
+            patient_name: patientName.trim() || undefined,
+            chart_number: chartNumber.trim() || undefined,
+            procedure_area: selectedOption?.label || undefined,
+            note: `키오스크: ${label}`,
+          }),
+        }));
+      }
+
+      const results = await Promise.all(promises);
+      const allOk = results.every(r => r.ok);
+
+      if (allOk) {
         loadData();
+        refreshShots();
       } else {
-        const err = await res.json();
-        setToast({ message: err.error || '차감 실패', type: 'error' });
-        loadData(); // 서버 상태로 복원
+        setToast({ message: '일부 처리 실패', type: 'error' });
+        loadData();
+        refreshShots();
       }
     } catch {
       setToast({ message: '네트워크 오류', type: 'error' });
-      loadData(); // 서버 상태로 복원
+      loadData();
+      refreshShots();
     } finally {
       setSubmitting(false);
     }
@@ -312,6 +359,8 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     setChartNumber('');
     setConfirmedBy('');
     setUsageItems([]);
+    setSelectedTipId('');
+    setShotsToUse(0);
     setMobileStep('select');
   };
 
@@ -503,7 +552,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
               </div>
 
               {/* Items list */}
-              {usageItems.length === 0 ? (
+              {usageItems.length === 0 && !isDeviceProcedure ? (
                 <div className="flex flex-col items-center justify-center py-12 text-[#c5b8b0]">
                   <svg className="w-12 h-12 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
@@ -528,10 +577,61 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                 </div>
               )}
 
+              {/* ─── Shot tracking section (울쎄라/슈링크) ─── */}
+              {isDeviceProcedure && !waitingForOption && activeTips.length > 0 && (
+                <div className="bg-[#faf8f7] rounded-xl p-4 border border-[#ebe7e4] space-y-3">
+                  <p className="text-[10px] font-semibold text-[#b4988d] uppercase tracking-wider">
+                    팁 샷 차감
+                  </p>
+
+                  {/* 팁 선택 */}
+                  <select
+                    value={selectedTipId}
+                    onChange={e => { setSelectedTipId(e.target.value); setShotsToUse(0); }}
+                    className="w-full border border-[#ebe7e4] rounded-xl px-3 py-2.5 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-[#b4988d]/20 focus:border-[#b4988d] transition-shadow"
+                  >
+                    <option value="">팁을 선택하세요</option>
+                    {activeTips.map(tip => (
+                      <option key={tip.id} value={tip.id}>
+                        {tip.tip_type}팁 — 잔여 {tip.remaining_shots.toLocaleString()} / {tip.initial_shots.toLocaleString()} 샷
+                      </option>
+                    ))}
+                  </select>
+
+                  {/* 사용 샷 수 입력 */}
+                  {selectedTipId && selectedTip && (
+                    <div className="flex items-center gap-3">
+                      <label className="text-sm text-[#6d4e42] font-medium flex-shrink-0">사용 샷:</label>
+                      <input
+                        type="number"
+                        min={0}
+                        max={selectedTip.remaining_shots}
+                        value={shotsToUse || ''}
+                        onChange={e => setShotsToUse(Math.max(0, parseInt(e.target.value) || 0))}
+                        placeholder="0"
+                        className={`w-28 border rounded-xl px-3 py-2 text-sm text-center tabular-nums focus:outline-none focus:ring-2 transition-shadow ${
+                          shotsToUse > selectedTip.remaining_shots
+                            ? 'border-red-300 focus:ring-red-200'
+                            : 'border-[#ebe7e4] focus:ring-[#b4988d]/20 focus:border-[#b4988d]'
+                        }`}
+                      />
+                      <span className="text-xs text-[#a09080] tabular-nums">
+                        잔여: {(selectedTip.remaining_shots - (shotsToUse > selectedTip.remaining_shots ? 0 : shotsToUse)).toLocaleString()} 샷
+                      </span>
+                    </div>
+                  )}
+
+                  {/* 잔여 초과 경고 */}
+                  {selectedTip && shotsToUse > selectedTip.remaining_shots && (
+                    <p className="text-xs text-red-500 font-medium">잔여 샷을 초과했습니다!</p>
+                  )}
+                </div>
+              )}
+
               {/* Submit button */}
               <button
                 onClick={handleSubmit}
-                disabled={submitting || activeCount === 0}
+                disabled={submitting || (activeCount === 0 && !(isDeviceProcedure && shotsToUse > 0))}
                 className="w-full py-4 bg-[#6d4e42] text-white rounded-2xl text-base font-bold hover:bg-[#5a3d33] transition-all cursor-pointer disabled:opacity-40 active:scale-[0.99] shadow-sm hover:shadow-md"
               >
                 {submitting ? (
@@ -539,11 +639,12 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                     <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     처리 중...
                   </span>
-                ) : activeCount > 0 ? (
-                  `차감 완료 (${activeCount}개 품목)`
-                ) : (
-                  '차감 완료'
-                )}
+                ) : (() => {
+                  const parts: string[] = [];
+                  if (activeCount > 0) parts.push(`${activeCount}개 물품`);
+                  if (isDeviceProcedure && shotsToUse > 0) parts.push(`${shotsToUse}샷`);
+                  return parts.length > 0 ? `차감 완료 (${parts.join(' + ')})` : '차감 완료';
+                })()}
               </button>
             </div>
           </div>

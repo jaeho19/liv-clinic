@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import {
   INVENTORY_CATEGORY_LABELS,
   INVENTORY_SUBCATEGORY_LABELS,
@@ -8,6 +8,7 @@ import {
 } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
 import type { BurndownResult } from '@/lib/inventory-utils';
+import type { StockFilter } from './DashboardStatsCards';
 import StockTableView from './StockTableView';
 import StockCardView from './StockCardView';
 import AlertBanner from './AlertBanner';
@@ -26,6 +27,8 @@ interface CategoryDetailSectionProps {
   onDismissAlert: (id: string) => void;
   onUndismissAlert: (id: string) => void;
   todayItemUsage?: Map<string, number>;
+  stockFilter?: StockFilter;
+  onAdjust?: (item: InventoryItem) => void;
 }
 
 export default function CategoryDetailSection({
@@ -38,11 +41,29 @@ export default function CategoryDetailSection({
   onDismissAlert,
   onUndismissAlert,
   todayItemUsage,
+  stockFilter,
+  onAdjust,
 }: CategoryDetailSectionProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('card');
   const [searchQuery, setSearchQuery] = useState('');
   const [subCategoryFilter, setSubCategoryFilter] = useState<string>('all');
   const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+  const [expiryMap, setExpiryMap] = useState<Map<string, string>>(new Map());
+
+  // Fetch expiry map for all items
+  const fetchExpiryMap = useCallback(async () => {
+    try {
+      const res = await fetch('/api/admin/inventory/batches?all=true');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.expiryMap) {
+          setExpiryMap(new Map(Object.entries(data.expiryMap)));
+        }
+      }
+    } catch { /* silent */ }
+  }, []);
+
+  useEffect(() => { fetchExpiryMap(); }, [fetchExpiryMap]);
 
   const categoryItems = useMemo(() => {
     return items.filter(i => i.is_active && i.category === category);
@@ -59,6 +80,10 @@ export default function CategoryDetailSection({
 
   const filtered = useMemo(() => {
     return categoryItems.filter(item => {
+      if (stockFilter && stockFilter !== 'all') {
+        const status = getStockStatus(item);
+        if (stockFilter !== status) return false;
+      }
       if (subCategoryFilter !== 'all' && item.sub_category !== subCategoryFilter) return false;
       if (searchQuery) {
         const q = searchQuery.toLowerCase();
@@ -66,7 +91,7 @@ export default function CategoryDetailSection({
       }
       return true;
     });
-  }, [categoryItems, subCategoryFilter, searchQuery]);
+  }, [categoryItems, subCategoryFilter, searchQuery, stockFilter]);
 
   const selectedItem = items.find(i => i.id === selectedItemId);
   const selectedTxs = useMemo(() => {
@@ -176,6 +201,7 @@ export default function CategoryDetailSection({
               onStockModal={onStockModal}
               burndownMap={burndownMap}
               todayItemUsage={todayItemUsage}
+              expiryMap={expiryMap}
             />
           ) : (
             <StockTableView
@@ -184,6 +210,7 @@ export default function CategoryDetailSection({
               onSelectItem={setSelectedItemId}
               onStockModal={onStockModal}
               burndownMap={burndownMap}
+              expiryMap={expiryMap}
             />
           )}
         </div>
@@ -194,6 +221,8 @@ export default function CategoryDetailSection({
             txs={selectedTxs}
             onClose={() => setSelectedItemId(null)}
             onDelete={() => {}}
+            onAdjust={onAdjust}
+            expiryDate={expiryMap.get(selectedItem.id)}
           />
         )}
       </div>

@@ -54,6 +54,8 @@ export async function POST(request: NextRequest) {
         unit_price: body.unit_price || 0,
         supplier: body.supplier || undefined,
         storage_note: body.storage_note || undefined,
+        is_refrigerated: body.is_refrigerated ?? false,
+        volume_cc: body.volume_cc || undefined,
       },
     });
 

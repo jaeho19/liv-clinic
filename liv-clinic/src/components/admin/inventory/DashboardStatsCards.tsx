@@ -5,14 +5,18 @@ import { getStockStatus } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
 import { ProgressBar } from './StockGauge';
 
+export type StockFilter = 'all' | 'normal' | 'low' | 'out';
+
 interface DashboardStatsCardsProps {
   items: InventoryItem[];
   todayCategoryUsage: Map<InventoryCategory, number>;
   alertItems: InventoryItem[];
   onAlertClick?: () => void;
+  activeFilter?: StockFilter;
+  onFilterChange?: (filter: StockFilter) => void;
 }
 
-export default function DashboardStatsCards({ items, todayCategoryUsage, alertItems, onAlertClick }: DashboardStatsCardsProps) {
+export default function DashboardStatsCards({ items, todayCategoryUsage, alertItems, onAlertClick, activeFilter = 'all', onFilterChange }: DashboardStatsCardsProps) {
   const stats = useMemo(() => {
     const active = items.filter(i => i.is_active);
     const total = active.length;
@@ -23,14 +27,12 @@ export default function DashboardStatsCards({ items, todayCategoryUsage, alertIt
     return { total, normal, low, out, healthPercent };
   }, [items]);
 
-  // 오늘 전체 사용 건수
   const todayTotalUsage = useMemo(() => {
     let sum = 0;
     todayCategoryUsage.forEach(v => { sum += v; });
     return sum;
   }, [todayCategoryUsage]);
 
-  // 부족 품목 이름 요약
   const lowItemSummary = useMemo(() => {
     const lowItems = alertItems.filter(i => getStockStatus(i) === 'low');
     if (lowItems.length === 0) return null;
@@ -45,10 +47,20 @@ export default function DashboardStatsCards({ items, todayCategoryUsage, alertIt
     return `${outItems[0].name} 외 ${outItems.length - 1}개`;
   }, [alertItems]);
 
+  const handleClick = (filter: StockFilter) => {
+    if (onFilterChange) {
+      onFilterChange(activeFilter === filter ? 'all' : filter);
+    }
+  };
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-5">
       {/* 총 품목 */}
-      <div className="bg-gradient-to-br from-[#faf8f7] to-white rounded-2xl border border-[#ebe7e4] p-5"
+      <button
+        onClick={() => handleClick('all')}
+        className={`text-left bg-gradient-to-br from-[#faf8f7] to-white rounded-2xl border p-5 transition-all cursor-pointer hover:shadow-md ${
+          activeFilter === 'all' ? 'border-[#6d4e42] ring-2 ring-[#6d4e42]/20' : 'border-[#ebe7e4]'
+        }`}
         style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
       >
         <div className="flex items-center gap-3 mb-3">
@@ -63,10 +75,14 @@ export default function DashboardStatsCards({ items, todayCategoryUsage, alertIt
         {todayTotalUsage > 0 && (
           <span className="text-[11px] text-[#b4988d]">오늘 {todayTotalUsage}건 사용</span>
         )}
-      </div>
+      </button>
 
       {/* 정상 재고 */}
-      <div className="bg-gradient-to-br from-emerald-50/50 to-white rounded-2xl border border-[#ebe7e4] p-5"
+      <button
+        onClick={() => handleClick('normal')}
+        className={`text-left bg-gradient-to-br from-emerald-50/50 to-white rounded-2xl border p-5 transition-all cursor-pointer hover:shadow-md ${
+          activeFilter === 'normal' ? 'border-emerald-400 ring-2 ring-emerald-300' : 'border-[#ebe7e4]'
+        }`}
         style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
       >
         <div className="flex items-center gap-3 mb-3">
@@ -84,10 +100,16 @@ export default function DashboardStatsCards({ items, todayCategoryUsage, alertIt
           </div>
           <span className="text-[10px] font-semibold text-emerald-600 tabular-nums">{stats.healthPercent}%</span>
         </div>
-      </div>
+      </button>
 
       {/* 부족 경고 */}
-      <div className={`bg-gradient-to-br from-amber-50/50 to-white rounded-2xl border border-[#ebe7e4] p-5 ${stats.low > 0 ? 'ring-1 ring-amber-200' : ''}`}
+      <button
+        onClick={() => handleClick('low')}
+        className={`text-left bg-gradient-to-br from-amber-50/50 to-white rounded-2xl border p-5 transition-all cursor-pointer hover:shadow-md ${
+          activeFilter === 'low'
+            ? 'border-amber-400 ring-2 ring-amber-300'
+            : stats.low > 0 ? 'border-[#ebe7e4] ring-1 ring-amber-200' : 'border-[#ebe7e4]'
+        }`}
         style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
       >
         <div className="flex items-center gap-3 mb-3">
@@ -102,16 +124,17 @@ export default function DashboardStatsCards({ items, todayCategoryUsage, alertIt
         {lowItemSummary && (
           <span className="text-[11px] text-amber-600 truncate block">{lowItemSummary}</span>
         )}
-      </div>
+      </button>
 
       {/* 긴급 소진 */}
       <button
-        onClick={onAlertClick}
-        className={`text-left bg-gradient-to-br from-red-50/50 to-white rounded-2xl border border-[#ebe7e4] p-5 transition-all ${
-          stats.out > 0 ? 'ring-1 ring-red-200 cursor-pointer hover:shadow-md' : ''
+        onClick={() => { handleClick('out'); if (onAlertClick) onAlertClick(); }}
+        className={`text-left bg-gradient-to-br from-red-50/50 to-white rounded-2xl border p-5 transition-all cursor-pointer hover:shadow-md ${
+          activeFilter === 'out'
+            ? 'border-red-400 ring-2 ring-red-300'
+            : stats.out > 0 ? 'border-[#ebe7e4] ring-1 ring-red-200' : 'border-[#ebe7e4]'
         }`}
         style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04)' }}
-        disabled={stats.out === 0}
       >
         <div className="flex items-center gap-3 mb-3">
           <div className={`w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center ${stats.out > 0 ? 'animate-pulse' : ''}`}>
