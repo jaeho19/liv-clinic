@@ -3,7 +3,7 @@
 import { useState, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import { useInventoryData } from '@/hooks/useInventoryData';
-import { getStockStatus } from '@/types/admin';
+import { getStockStatus, INVENTORY_CATEGORY_LABELS } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
 import DashboardStatsCards, { type StockFilter } from '@/components/admin/inventory/DashboardStatsCards';
 import TodayUsageSummary from '@/components/admin/inventory/TodayUsageSummary';
@@ -137,6 +137,31 @@ export default function InventoryOverviewPage() {
   const [stockFilter, setStockFilter] = useState<StockFilter>('all');
   const [adjustModal, setAdjustModal] = useState<InventoryItem | null>(null);
   const [showAddItem, setShowAddItem] = useState(false);
+
+  const handleExportCSV = useCallback(() => {
+    const STATUS_LABELS: Record<string, string> = { normal: '정상', low: '부족', out: '소진' };
+    const headers = ['품목명', '카테고리', '현재재고', '최소재고', '단위', '상태', '공급사', '냉장여부'];
+    const rows = items.map(item => [
+      item.name,
+      INVENTORY_CATEGORY_LABELS[item.category] || item.category,
+      item.current_stock,
+      item.min_stock,
+      item.unit,
+      STATUS_LABELS[getStockStatus(item)] || '',
+      item.supplier || '',
+      item.is_refrigerated ? 'Y' : '',
+    ]);
+
+    const BOM = '\uFEFF';
+    const csv = BOM + [headers, ...rows].map(r => r.map(c => `"${c}"`).join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `재고현황_${new Date().toISOString().slice(0, 10)}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
+  }, [items]);
 
   const consumptionData = useMemo(() => {
     const useTxs = transactions.filter(t => t.tx_type === 'use');
@@ -290,6 +315,15 @@ export default function InventoryOverviewPage() {
           </p>
         </div>
         <div className="flex gap-2">
+          <button
+            onClick={handleExportCSV}
+            className="px-4 py-2.5 border border-[#ebe7e4] text-[#6d4e42] rounded-xl text-sm font-semibold hover:bg-[#faf8f7] transition-all duration-150 flex items-center gap-2 cursor-pointer"
+          >
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            CSV
+          </button>
           <button
             onClick={() => setShowAddItem(true)}
             className="px-4 py-2.5 bg-emerald-600 text-white rounded-xl text-sm font-semibold hover:bg-emerald-700 transition-all duration-150 flex items-center gap-2 shadow-sm hover:shadow-md cursor-pointer"

@@ -43,6 +43,7 @@ function TipCard({ tip, onUse }: TipCardProps) {
         current={tip.remaining_shots}
         min={tip.initial_shots * 0.2}
         max={tip.initial_shots}
+        showLabel
       />
 
       <div className="flex items-baseline justify-between mt-2">
