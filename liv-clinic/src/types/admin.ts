@@ -465,17 +465,6 @@ export const PROCEDURE_RECIPE_MAP: Record<string, string> = {
   radiesse: '레디어스 시술',
 };
 
-// Burndown analysis
-export interface InventoryBurndown {
-  itemId: string;
-  name: string;
-  currentStock: number;
-  dailyRate: number;
-  daysUntilEmpty: number;
-  estimatedDate: string;
-  severity: 'safe' | 'warning' | 'critical';
-}
-
 export interface CategorySummary {
   category: InventoryCategory;
   totalItems: number;
