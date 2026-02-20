@@ -5,17 +5,8 @@ import { DonutChart, MiniBar } from './StockGauge';
 import { INVENTORY_CATEGORY_LABELS, getStockStatus } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
 
-interface CategoryBurndownSummary {
-  category: string;
-  totalItems: number;
-  totalValue: number;
-  criticalCount: number;
-  warningCount: number;
-}
-
 interface StockDashboardProps {
   items: InventoryItem[];
-  categorySummary?: CategoryBurndownSummary[];
 }
 
 const CATEGORY_COLORS: Record<InventoryCategory, string> = {
@@ -29,7 +20,7 @@ const CATEGORY_COLORS: Record<InventoryCategory, string> = {
   sample: '#a78bfa',
 };
 
-export default function StockDashboard({ items, categorySummary }: StockDashboardProps) {
+export default function StockDashboard({ items }: StockDashboardProps) {
   const activeItems = useMemo(() => items.filter(i => i.is_active), [items]);
 
   const stats = useMemo(() => {
@@ -139,39 +130,17 @@ export default function StockDashboard({ items, categorySummary }: StockDashboar
         />
       </div>
 
-      {/* Category distribution + burndown summary */}
+      {/* Category distribution */}
       <div className="lg:col-span-4 bg-white rounded-2xl border border-[#ebe7e4] p-6"
         style={{ boxShadow: '0 1px 3px rgba(109,78,66,0.04), 0 4px 12px rgba(109,78,66,0.03)' }}
       >
         <h3 className="text-sm font-bold text-[#6d4e42] mb-4 tracking-tight">카테고리별 분포</h3>
         <div className="space-y-2.5">
-          {categoryDist.map(({ category, label, count, color }) => {
-            const summary = categorySummary?.find((s) => s.category === category);
-            return (
-              <div key={category}>
-                <MiniBar label={label} value={count} maxValue={maxCategoryCount} color={color} />
-                {summary && (summary.criticalCount > 0 || summary.warningCount > 0) && (
-                  <div className="flex gap-2 ml-1 mt-0.5">
-                    {summary.criticalCount > 0 && (
-                      <span className="text-[9px] text-red-600 bg-red-50 px-1.5 py-0.5 rounded-full font-semibold">
-                        긴급 {summary.criticalCount}
-                      </span>
-                    )}
-                    {summary.warningCount > 0 && (
-                      <span className="text-[9px] text-amber-600 bg-amber-50 px-1.5 py-0.5 rounded-full font-semibold">
-                        주의 {summary.warningCount}
-                      </span>
-                    )}
-                    {summary.totalValue > 0 && (
-                      <span className="text-[9px] text-[#8a8a8a]">
-                        {(summary.totalValue / 10000).toFixed(0)}만원
-                      </span>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+          {categoryDist.map(({ category, label, count, color }) => (
+            <div key={category}>
+              <MiniBar label={label} value={count} maxValue={maxCategoryCount} color={color} />
+            </div>
+          ))}
         </div>
       </div>
     </div>

@@ -4,8 +4,6 @@ import { useState, useMemo } from 'react';
 import { ProgressBar } from './StockGauge';
 import { getStockStatus, INVENTORY_CATEGORY_LABELS } from '@/types/admin';
 import type { InventoryItem, InventoryTransaction } from '@/types/admin';
-import type { BurndownResult } from '@/lib/inventory-utils';
-import { BURNDOWN_SEVERITY_CONFIG } from '@/lib/inventory-utils';
 
 function formatDate(iso: string): string {
   const d = new Date(iso);
@@ -20,10 +18,9 @@ interface RestockTabProps {
   onDismiss: (id: string) => void;
   onUndismiss: (id: string) => void;
   onStockModal: (v: { item: InventoryItem; type: 'in' }) => void;
-  burndownMap?: Map<string, BurndownResult>;
 }
 
-export default function RestockTab({ transactions, items, alertItems, dismissedIds, onDismiss, onUndismiss, onStockModal, burndownMap }: RestockTabProps) {
+export default function RestockTab({ transactions, items, alertItems, dismissedIds, onDismiss, onUndismiss, onStockModal }: RestockTabProps) {
   const restockTxs = useMemo(() => {
     return transactions
       .filter(t => t.tx_type === 'restock')
@@ -68,10 +65,10 @@ export default function RestockTab({ transactions, items, alertItems, dismissedI
           ) : (
             <div className="divide-y divide-[#f0eeec] max-h-[500px] overflow-y-auto">
               {outItems.map(item => (
-                <RestockCard key={item.id} item={item} urgency="critical" burndown={burndownMap?.get(item.id)} onRestock={() => onStockModal({ item, type: 'in' })} onDismiss={() => onDismiss(item.id)} />
+                <RestockCard key={item.id} item={item} urgency="critical" onRestock={() => onStockModal({ item, type: 'in' })} onDismiss={() => onDismiss(item.id)} />
               ))}
               {lowItems.map(item => (
-                <RestockCard key={item.id} item={item} urgency="warning" burndown={burndownMap?.get(item.id)} onRestock={() => onStockModal({ item, type: 'in' })} onDismiss={() => onDismiss(item.id)} />
+                <RestockCard key={item.id} item={item} urgency="warning" onRestock={() => onStockModal({ item, type: 'in' })} onDismiss={() => onDismiss(item.id)} />
               ))}
             </div>
           )}
@@ -132,61 +129,20 @@ export default function RestockTab({ transactions, items, alertItems, dismissedI
   );
 }
 
-// ─── Countdown Bar ──────────────────────────────
-function CountdownBar({ days, maxDays = 30 }: { days: number; maxDays?: number }) {
-  const pct = Math.min(100, Math.max(0, (days / maxDays) * 100));
-  const color = days <= 3 ? '#ef4444' : days <= 7 ? '#f59e0b' : '#34d399';
-  const bgColor = days <= 3 ? '#fef2f2' : days <= 7 ? '#fffbeb' : '#ecfdf5';
-  const label = days === 0 ? 'D-Day' : `D-${days}`;
-
-  return (
-    <div className="flex items-center gap-2 w-full">
-      <span className={`text-[10px] font-bold tabular-nums flex-shrink-0 w-9 text-center px-1.5 py-0.5 rounded ${
-        days <= 3 ? 'text-red-700 bg-red-100' : days <= 7 ? 'text-amber-700 bg-amber-100' : 'text-emerald-700 bg-emerald-100'
-      }`}>
-        {label}
-      </span>
-      <div className="flex-1 h-2 rounded-full overflow-hidden" style={{ backgroundColor: bgColor }}>
-        <div
-          className="h-full rounded-full transition-all duration-500"
-          style={{ width: `${pct}%`, backgroundColor: color }}
-        />
-      </div>
-      <span className="text-[10px] text-[#a09080] tabular-nums flex-shrink-0">{days}일</span>
-    </div>
-  );
-}
-
 // ─── Restock card ────────────────────────────────
 function RestockCard({
   item,
   urgency,
-  burndown,
   onRestock,
   onDismiss,
 }: {
   item: InventoryItem;
   urgency: 'critical' | 'warning';
-  burndown?: BurndownResult;
   onRestock: () => void;
   onDismiss: () => void;
 }) {
   const isCritical = urgency === 'critical';
-  const baseSuggestedQty = Math.max(item.min_stock * 2 - item.current_stock, item.min_stock);
-  const burndownSuggestedQty = burndown && burndown.dailyRate > 0
-    ? Math.ceil(burndown.dailyRate * 30)
-    : 0;
-  const suggestedQty = Math.max(baseSuggestedQty, burndownSuggestedQty);
-
-  const daysUntilEmpty = burndown && burndown.dailyRate > 0 && burndown.daysUntilEmpty !== Infinity
-    ? burndown.daysUntilEmpty
-    : null;
-
-  const daysText = daysUntilEmpty !== null
-    ? `약 ${daysUntilEmpty}일 뒤 소진 예상`
-    : null;
-
-  const severityCfg = burndown ? BURNDOWN_SEVERITY_CONFIG[burndown.severity] : null;
+  const suggestedQty = Math.max(item.min_stock * 2 - item.current_stock, item.min_stock);
 
   return (
     <div className={`px-5 py-4 ${isCritical ? 'bg-red-50/20' : ''}`}>
@@ -230,27 +186,9 @@ function RestockCard({
               {item.current_stock}/{item.min_stock} {item.unit}
             </span>
           </div>
-          {/* Countdown bar */}
-          {daysUntilEmpty !== null && (
-            <div className="mb-2.5">
-              <CountdownBar days={daysUntilEmpty} />
-            </div>
-          )}
-          {daysText && severityCfg && (
-            <div className={`flex items-center gap-1.5 mb-2 px-2 py-1 rounded-lg text-[10px] font-semibold ${severityCfg.bg} ${severityCfg.text}`}>
-              <span className={`w-1.5 h-1.5 rounded-full ${severityCfg.dot}`} />
-              {daysText}
-              {burndown && burndown.dailyRate > 0 && (
-                <span className="ml-auto opacity-75">일 {burndown.dailyRate.toFixed(1)}{item.unit} 사용</span>
-              )}
-            </div>
-          )}
           <div className="flex items-center justify-between">
             <span className="text-[10px] text-[#b4988d] tabular-nums">
               권장 발주량: {suggestedQty}{item.unit}
-              {burndownSuggestedQty > baseSuggestedQty && (
-                <span className="ml-1 text-[#a09080]">(30일치)</span>
-              )}
             </span>
             <div className="flex gap-1.5">
               <button

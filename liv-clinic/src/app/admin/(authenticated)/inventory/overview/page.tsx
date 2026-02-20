@@ -127,7 +127,7 @@ function StockModal({
 // ─── Main Component ─────────────────────────────
 export default function InventoryOverviewPage() {
   const {
-    items, transactions, loading, error, burndownMap, alertItems, loadData,
+    items, transactions, loading, error, alertItems, loadData,
     todayUsageSessions, todayCategoryUsage, todayItemUsage, weeklyItemUsage,
   } = useInventoryData();
   const [activeTab, setActiveTab] = useState<TabId>('stock');
@@ -249,6 +249,23 @@ export default function InventoryOverviewPage() {
     }
   }, [loadData]);
 
+  const handleDeleteItem = useCallback(async (item: InventoryItem) => {
+    if (!confirm(`"${item.name}" 품목을 삭제하시겠습니까?\n(비활성화 처리되며, 시술 레시피에서 제외됩니다)`)) return;
+    setSubmitting(true);
+    try {
+      const res = await fetch(`/api/admin/inventory/${item.id}`, { method: 'DELETE' });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error || '삭제에 실패했습니다.');
+      }
+      await loadData();
+    } catch (e) {
+      alert(e instanceof Error ? e.message : '오류가 발생했습니다.');
+    } finally {
+      setSubmitting(false);
+    }
+  }, [loadData]);
+
   const handleAddItem = useCallback(async (data: NewItemData) => {
     setSubmitting(true);
     try {
@@ -350,7 +367,6 @@ export default function InventoryOverviewPage() {
         items={items}
         todayCategoryUsage={todayCategoryUsage}
         alertItems={alertItems}
-        onAlertClick={() => setActiveTab('restock')}
         activeFilter={stockFilter}
         onFilterChange={setStockFilter}
       />
@@ -404,7 +420,6 @@ export default function InventoryOverviewPage() {
               category={selectedCategory}
               items={items}
               transactions={transactions}
-              burndownMap={burndownMap}
               onStockModal={setStockModal}
               dismissedAlertIds={dismissedAlertIds}
               onDismissAlert={handleDismissAlert}
@@ -412,6 +427,7 @@ export default function InventoryOverviewPage() {
               todayItemUsage={todayItemUsage}
               stockFilter={stockFilter}
               onAdjust={setAdjustModal}
+              onDelete={handleDeleteItem}
             />
           )}
         </>
@@ -434,7 +450,7 @@ export default function InventoryOverviewPage() {
           onDismiss={handleDismissAlert}
           onUndismiss={handleUndismissAlert}
           onStockModal={setStockModal}
-          burndownMap={burndownMap}
+
         />
       )}
 

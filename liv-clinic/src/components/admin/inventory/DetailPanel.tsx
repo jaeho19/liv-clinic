@@ -32,7 +32,7 @@ interface DetailPanelProps {
   item: InventoryItem;
   txs: InventoryTransaction[];
   onClose: () => void;
-  onDelete: () => void;
+  onDelete?: () => void;
   onAdjust?: (item: InventoryItem) => void;
   expiryDate?: string | null;
 }
@@ -197,12 +197,14 @@ export default function DetailPanel({ item, txs, onClose, onDelete, onAdjust, ex
               수량 보정
             </button>
           )}
-          <button
-            onClick={onDelete}
-            className="w-full text-xs text-red-400 hover:text-red-600 py-2.5 border border-red-200 rounded-xl hover:bg-red-50 transition-colors cursor-pointer font-medium"
-          >
-            품목 삭제
-          </button>
+          {onDelete && (
+            <button
+              onClick={onDelete}
+              className="w-full text-xs text-red-400 hover:text-red-600 py-2.5 border border-red-200 rounded-xl hover:bg-red-50 transition-colors cursor-pointer font-medium"
+            >
+              품목 삭제
+            </button>
+          )}
         </div>
       </div>
     </div>

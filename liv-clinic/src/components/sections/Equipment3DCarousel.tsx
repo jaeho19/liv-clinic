@@ -49,7 +49,7 @@ const devices: DeviceItem[] = [
   {
     id: '04',
     title: 'Shurink',
-    subTitle: '슈링크 유니버스',
+    subTitle: '슈링크',
     desc: '정교한 HIFU로 V라인 완성',
     image: '/images/equipment/shurink.png',
     link: '/lifting/shurink',

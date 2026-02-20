@@ -13,39 +13,48 @@ ON CONFLICT DO NOTHING;
 
 -- ─── 2) 개별 제품 유통기한 배치 등록 ────────────────
 -- 각 제품의 현재 재고를 배치 수량으로 사용
+-- 주의: 품목명은 015_cosmetics_seed + 017_madeca_spec_update 기준
+
+-- 시트팩 (증정용) → 유통기한 2028-08-18
 INSERT INTO inventory_batches (item_id, batch_quantity, remaining_quantity, expiry_date, received_at, note)
 SELECT id, GREATEST(current_stock, 1), GREATEST(current_stock, 1), '2028-08-18'::date, CURRENT_DATE, '초기 유통기한 등록'
-FROM inventory_items WHERE name = '시트마스크' AND is_active = true
+FROM inventory_items WHERE name = '시트팩 (증정용)' AND category = 'cosmetics' AND is_active = true
   AND NOT EXISTS (SELECT 1 FROM inventory_batches WHERE item_id = inventory_items.id);
 
+-- 베리덤 쉴드 MD크림 35g → 유통기한 2028-04-15
 INSERT INTO inventory_batches (item_id, batch_quantity, remaining_quantity, expiry_date, received_at, note)
 SELECT id, GREATEST(current_stock, 1), GREATEST(current_stock, 1), '2028-04-15'::date, CURRENT_DATE, '초기 유통기한 등록'
-FROM inventory_items WHERE name = '배리덤 쉴드 크림엠디 35g' AND is_active = true
+FROM inventory_items WHERE name = '베리덤 쉴드 MD크림' AND specification = '35g' AND is_active = true
   AND NOT EXISTS (SELECT 1 FROM inventory_batches WHERE item_id = inventory_items.id);
 
+-- 베리덤 쉴드 MD크림 80g → 유통기한 2028-04-15
 INSERT INTO inventory_batches (item_id, batch_quantity, remaining_quantity, expiry_date, received_at, note)
 SELECT id, GREATEST(current_stock, 1), GREATEST(current_stock, 1), '2028-04-15'::date, CURRENT_DATE, '초기 유통기한 등록'
-FROM inventory_items WHERE name = '배리덤 쉴드 크림엠디 80g' AND is_active = true
+FROM inventory_items WHERE name = '베리덤 쉴드 MD크림' AND specification = '80g' AND is_active = true
   AND NOT EXISTS (SELECT 1 FROM inventory_batches WHERE item_id = inventory_items.id);
 
+-- 마데카MD 로션 200ml → 유통기한 2027-10-29
 INSERT INTO inventory_batches (item_id, batch_quantity, remaining_quantity, expiry_date, received_at, note)
 SELECT id, GREATEST(current_stock, 1), GREATEST(current_stock, 1), '2027-10-29'::date, CURRENT_DATE, '초기 유통기한 등록'
-FROM inventory_items WHERE name LIKE 'MD 마데카로션 200%' AND is_active = true
+FROM inventory_items WHERE name = '마데카MD 로션 200ml' AND is_active = true
   AND NOT EXISTS (SELECT 1 FROM inventory_batches WHERE item_id = inventory_items.id);
 
+-- 마데카MD 로션 500ml → 유통기한 2027-11-13
 INSERT INTO inventory_batches (item_id, batch_quantity, remaining_quantity, expiry_date, received_at, note)
 SELECT id, GREATEST(current_stock, 1), GREATEST(current_stock, 1), '2027-11-13'::date, CURRENT_DATE, '초기 유통기한 등록'
-FROM inventory_items WHERE name LIKE 'MD 마데카로션 500%' AND is_active = true
+FROM inventory_items WHERE name = '마데카MD 로션 500ml' AND is_active = true
   AND NOT EXISTS (SELECT 1 FROM inventory_batches WHERE item_id = inventory_items.id);
 
+-- 마데카MD 크림 250g → 유통기한 2027-06-26
 INSERT INTO inventory_batches (item_id, batch_quantity, remaining_quantity, expiry_date, received_at, note)
 SELECT id, GREATEST(current_stock, 1), GREATEST(current_stock, 1), '2027-06-26'::date, CURRENT_DATE, '초기 유통기한 등록'
-FROM inventory_items WHERE name LIKE 'MD 마데카크림 250%' AND is_active = true
+FROM inventory_items WHERE name = '마데카MD 크림' AND specification = '250g' AND is_active = true
   AND NOT EXISTS (SELECT 1 FROM inventory_batches WHERE item_id = inventory_items.id);
 
+-- EGF 재생크림 → 유통기한 2028-08-21
 INSERT INTO inventory_batches (item_id, batch_quantity, remaining_quantity, expiry_date, received_at, note)
 SELECT id, GREATEST(current_stock, 1), GREATEST(current_stock, 1), '2028-08-21'::date, CURRENT_DATE, '초기 유통기한 등록'
-FROM inventory_items WHERE name LIKE '테오리아 EGF%' AND is_active = true
+FROM inventory_items WHERE name = 'EGF 재생크림' AND is_active = true
   AND NOT EXISTS (SELECT 1 FROM inventory_batches WHERE item_id = inventory_items.id);
 
 -- ─── 3) 하라셀 수분 세트 대표 유통기한 ─────────────

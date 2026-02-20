@@ -7,7 +7,6 @@ import {
   getStockStatus,
 } from '@/types/admin';
 import type { InventoryItem, InventoryCategory } from '@/types/admin';
-import type { BurndownResult } from '@/lib/inventory-utils';
 import type { StockFilter } from './DashboardStatsCards';
 import StockTableView from './StockTableView';
 import StockCardView from './StockCardView';
@@ -21,7 +20,6 @@ interface CategoryDetailSectionProps {
   category: InventoryCategory;
   items: InventoryItem[];
   transactions: InventoryTransaction[];
-  burndownMap: Map<string, BurndownResult>;
   onStockModal: (v: { item: InventoryItem; type: 'in' | 'out' }) => void;
   dismissedAlertIds: Set<string>;
   onDismissAlert: (id: string) => void;
@@ -29,13 +27,13 @@ interface CategoryDetailSectionProps {
   todayItemUsage?: Map<string, number>;
   stockFilter?: StockFilter;
   onAdjust?: (item: InventoryItem) => void;
+  onDelete?: (item: InventoryItem) => void;
 }
 
 export default function CategoryDetailSection({
   category,
   items,
   transactions,
-  burndownMap,
   onStockModal,
   dismissedAlertIds,
   onDismissAlert,
@@ -43,6 +41,7 @@ export default function CategoryDetailSection({
   todayItemUsage,
   stockFilter,
   onAdjust,
+  onDelete,
 }: CategoryDetailSectionProps) {
   const [viewMode, setViewMode] = useState<ViewMode>('card');
   const [searchQuery, setSearchQuery] = useState('');
@@ -199,7 +198,6 @@ export default function CategoryDetailSection({
               selectedItemId={selectedItemId}
               onSelectItem={setSelectedItemId}
               onStockModal={onStockModal}
-              burndownMap={burndownMap}
               todayItemUsage={todayItemUsage}
               expiryMap={expiryMap}
             />
@@ -209,7 +207,6 @@ export default function CategoryDetailSection({
               selectedItemId={selectedItemId}
               onSelectItem={setSelectedItemId}
               onStockModal={onStockModal}
-              burndownMap={burndownMap}
               expiryMap={expiryMap}
             />
           )}
@@ -220,7 +217,7 @@ export default function CategoryDetailSection({
             item={selectedItem}
             txs={selectedTxs}
             onClose={() => setSelectedItemId(null)}
-            onDelete={() => {}}
+            onDelete={onDelete ? () => onDelete(selectedItem) : undefined}
             onAdjust={onAdjust}
             expiryDate={expiryMap.get(selectedItem.id)}
           />

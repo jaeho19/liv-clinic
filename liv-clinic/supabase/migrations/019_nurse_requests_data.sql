@@ -118,9 +118,9 @@ ON CONFLICT DO NOTHING;
 -- 6. 스컬트라 주사용수 연동 (#7)
 -- ============================================
 
--- 스컬트라 시술 시 멸균증류수 1L을 함께 차감
+-- 스컬트라 시술 시 멸균증류수 1L을 함께 차감 (스컬트라 기본 2바이알이므로 주사용수도 2개)
 INSERT INTO procedure_recipes (procedure_name, item_id, default_qty, note)
-SELECT '스컬트라 시술', id, 1, '스컬트라 1바이알당 주사용수 1개 소모'
+SELECT '스컬트라 시술', id, 2, '스컬트라 1바이알당 주사용수 1개 소모'
 FROM inventory_items WHERE name = '멸균증류수 1L'
 ON CONFLICT DO NOTHING;
 

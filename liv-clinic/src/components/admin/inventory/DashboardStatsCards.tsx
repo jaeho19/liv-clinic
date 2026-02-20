@@ -11,12 +11,11 @@ interface DashboardStatsCardsProps {
   items: InventoryItem[];
   todayCategoryUsage: Map<InventoryCategory, number>;
   alertItems: InventoryItem[];
-  onAlertClick?: () => void;
   activeFilter?: StockFilter;
   onFilterChange?: (filter: StockFilter) => void;
 }
 
-export default function DashboardStatsCards({ items, todayCategoryUsage, alertItems, onAlertClick, activeFilter = 'all', onFilterChange }: DashboardStatsCardsProps) {
+export default function DashboardStatsCards({ items, todayCategoryUsage, alertItems, activeFilter = 'all', onFilterChange }: DashboardStatsCardsProps) {
   const stats = useMemo(() => {
     const active = items.filter(i => i.is_active);
     const total = active.length;
@@ -128,7 +127,7 @@ export default function DashboardStatsCards({ items, todayCategoryUsage, alertIt
 
       {/* 긴급 소진 */}
       <button
-        onClick={() => { handleClick('out'); if (onAlertClick) onAlertClick(); }}
+        onClick={() => handleClick('out')}
         className={`text-left bg-gradient-to-br from-red-50/50 to-white rounded-2xl border p-5 transition-all cursor-pointer hover:shadow-md ${
           activeFilter === 'out'
             ? 'border-red-400 ring-2 ring-red-300'

@@ -8,7 +8,6 @@ import type {
   InventoryCategory,
   ProcedureRecipe,
 } from '@/types/admin';
-import type { BurndownResult } from '@/lib/inventory-utils';
 import { groupIntoSessions, getTodayString, type UsageSession } from '@/lib/usage-session-utils';
 
 // ─── API fetch ──────────────────────────────────
@@ -30,38 +29,15 @@ async function fetchRecipes(): Promise<ProcedureRecipe[]> {
   return res.json();
 }
 
-interface BurndownApiItem {
-  itemId: string;
-  dailyRate: number;
-  daysUntilEmpty: number;
-  estimatedDate: string;
-  severity: 'safe' | 'warning' | 'critical';
-}
-
-interface BurndownApiResponse {
-  items: BurndownApiItem[];
-  categorySummary: { category: string; totalItems: number; totalValue: number; criticalCount: number; warningCount: number }[];
-}
-
-async function fetchBurndown(): Promise<BurndownApiResponse> {
-  const res = await fetch('/api/admin/inventory/burndown');
-  if (!res.ok) return { items: [], categorySummary: [] };
-  return res.json();
-}
-
-export type CategorySummaryItem = BurndownApiResponse['categorySummary'][number];
-
 export interface UseInventoryDataReturn {
   items: InventoryItem[];
   transactions: InventoryTransaction[];
   recipes: ProcedureRecipe[];
   loading: boolean;
   error: string | null;
-  burndownMap: Map<string, BurndownResult>;
-  categorySummary: CategorySummaryItem[];
   alertItems: InventoryItem[];
   loadData: () => Promise<void>;
-  // 신규: 오늘 사용 데이터
+  // 오늘 사용 데이터
   todayUsageSessions: UsageSession[];
   todayCategoryUsage: Map<InventoryCategory, number>;
   todayItemUsage: Map<string, number>;
@@ -138,34 +114,19 @@ export function useInventoryData(): UseInventoryDataReturn {
   const [recipes, setRecipes] = useState<ProcedureRecipe[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [burndownMap, setBurndownMap] = useState<Map<string, BurndownResult>>(new Map());
-  const [categorySummary, setCategorySummary] = useState<CategorySummaryItem[]>([]);
 
   const loadData = useCallback(async () => {
     try {
       setError(null);
-      const [itemsData, recipesData, txData, burndownData] = await Promise.all([
+      const [itemsData, recipesData, txData] = await Promise.all([
         fetchItems(),
         fetchRecipes(),
         fetchTransactions(),
-        fetchBurndown(),
       ]);
 
       setItems(itemsData);
       setRecipes(recipesData);
       setTransactions(txData);
-
-      const map = new Map<string, BurndownResult>();
-      for (const bd of burndownData.items) {
-        map.set(bd.itemId, {
-          dailyRate: bd.dailyRate,
-          daysUntilEmpty: bd.daysUntilEmpty,
-          estimatedDate: bd.estimatedDate,
-          severity: bd.severity,
-        });
-      }
-      setBurndownMap(map);
-      setCategorySummary(burndownData.categorySummary);
     } catch (e) {
       setError(e instanceof Error ? e.message : '데이터를 불러오지 못했습니다.');
     } finally {
@@ -198,8 +159,6 @@ export function useInventoryData(): UseInventoryDataReturn {
     recipes,
     loading,
     error,
-    burndownMap,
-    categorySummary,
     alertItems,
     loadData,
     todayUsageSessions,

@@ -2,7 +2,7 @@
 
 import { INVENTORY_CATEGORY_LABELS, getStockStatus } from '@/types/admin';
 import type { InventoryItem } from '@/types/admin';
-import { BURNDOWN_SEVERITY_CONFIG, getDisplayName, type BurndownResult } from '@/lib/inventory-utils';
+import { getDisplayName } from '@/lib/inventory-utils';
 import ExpiryBadge from './ExpiryBadge';
 
 const STOCK_STATUS_CONFIG = {
@@ -16,7 +16,6 @@ interface StockCardViewProps {
   selectedItemId: string | null;
   onSelectItem: (id: string | null) => void;
   onStockModal: (v: { item: InventoryItem; type: 'in' | 'out' }) => void;
-  burndownMap?: Map<string, BurndownResult>;
   todayItemUsage?: Map<string, number>;
   expiryMap?: Map<string, string>;
 }
@@ -26,7 +25,6 @@ export default function StockCardView({
   selectedItemId,
   onSelectItem,
   onStockModal,
-  burndownMap,
   todayItemUsage,
   expiryMap,
 }: StockCardViewProps) {
@@ -137,38 +135,19 @@ export default function StockCardView({
                   <span className="text-[#a09080]">단가</span>
                   <span className="text-[#575756] tabular-nums">{item.unit_price.toLocaleString('ko-KR')}원</span>
                 </div>
-                {burndownMap && (() => {
-                  const bd = burndownMap.get(item.id);
-                  if (!bd || bd.daysUntilEmpty === Infinity) return null;
-                  const scfg = BURNDOWN_SEVERITY_CONFIG[bd.severity];
-                  return (
-                    <div className="flex justify-between text-xs items-center">
-                      <span className="text-[#a09080]">예상 소진</span>
-                      <span className={`text-[10px] font-semibold px-1.5 py-0.5 rounded-full ${scfg.bg} ${scfg.text} ${bd.severity === 'critical' ? 'animate-pulse' : ''}`}>
-                        {bd.daysUntilEmpty}일 ({bd.dailyRate}/일)
-                      </span>
-                    </div>
-                  );
-                })()}
               </div>
             </div>
 
             {/* Today usage insight */}
             {(() => {
               const todayUsed = todayItemUsage?.get(item.id);
-              const dailyRate = burndownMap?.get(item.id)?.dailyRate;
-              if (!todayUsed && !dailyRate) return null;
+              if (!todayUsed || todayUsed <= 0) return null;
               return (
                 <div className="flex items-center gap-2 text-[10px] text-[#a09080] mt-3">
-                  {todayUsed && todayUsed > 0 && (
-                    <span className="flex items-center gap-1 text-[#b4988d] font-semibold">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#b4988d]" />
-                      오늘 {todayUsed}개 사용
-                    </span>
-                  )}
-                  {dailyRate && dailyRate > 0 && (
-                    <span className="ml-auto tabular-nums">일평균 {dailyRate.toFixed(1)}/일</span>
-                  )}
+                  <span className="flex items-center gap-1 text-[#b4988d] font-semibold">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#b4988d]" />
+                    오늘 {todayUsed}개 사용
+                  </span>
                 </div>
               );
             })()}
