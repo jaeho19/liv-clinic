@@ -28,6 +28,10 @@ interface UsageItem {
   quantity: number;
 }
 
+// ─── Constants ──────────────────────────────────
+/** 장비 시술 ID (레시피 없이 팁/샷 트래킹으로 동작) */
+const DEVICE_PROCEDURE_IDS: string[] = ['ulthera', 'shurink'];
+
 // ─── Helpers ────────────────────────────────────
 function groupByCategory(catalog: ProcedureType[]) {
   const groups: { category: ProcedureCategoryId; label: string; procedures: ProcedureType[] }[] = [];
@@ -83,7 +87,11 @@ const ProcedureButton = memo(function ProcedureButton({
       <div className={`text-sm font-bold truncate ${isSelected ? 'text-white' : 'text-[#6d4e42]'}`}>
         {proc.name}
       </div>
-      {hasAnyRecipe ? (
+      {DEVICE_PROCEDURE_IDS.includes(proc.id) ? (
+        <span className={`text-[10px] ${isSelected ? 'text-white/70' : 'text-[#b4988d]'}`}>
+          팁/샷 트래킹
+        </span>
+      ) : hasAnyRecipe ? (
         <span className={`text-[10px] ${isSelected ? 'text-white/70' : 'text-[#b4988d]'}`}>
           {proc.options.length > 0 ? `${proc.options.length}개 옵션` : `${recipeCount}개 물품`}
         </span>
@@ -413,9 +421,11 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                     {/* Procedure buttons grid */}
                     <div className="grid grid-cols-2 gap-2">
                       {group.procedures.map(proc => {
-                        const hasAnyRecipe = proc.options.length > 0
-                          ? proc.options.some(opt => hasRecipeFor(proc, opt))
-                          : hasRecipeFor(proc);
+                        const hasAnyRecipe = DEVICE_PROCEDURE_IDS.includes(proc.id) || (
+                          proc.options.length > 0
+                            ? proc.options.some(opt => hasRecipeFor(proc, opt))
+                            : hasRecipeFor(proc)
+                        );
 
                         return (
                           <ProcedureButton
