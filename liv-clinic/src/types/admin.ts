@@ -273,7 +273,12 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     id: 'ulthera',
     name: '울쎄라 프라임',
     category: 'lifting',
-    options: [],
+    options: [
+      { label: '상안면', recipeName: '울쎄라 상안면' },
+      { label: '하안면', recipeName: '울쎄라 하안면' },
+      { label: '전안면', recipeName: '울쎄라 전안면' },
+      { label: '전안면+목', recipeName: '울쎄라 전안면+목' },
+    ],
   },
   {
     id: 'thermage',
@@ -296,7 +301,12 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     id: 'shurink',
     name: '슈링크',
     category: 'lifting',
-    options: [],
+    options: [
+      { label: '1.5mm', recipeName: '슈링크 1.5mm' },
+      { label: '3.0mm', recipeName: '슈링크 3.0mm' },
+      { label: '4.5mm', recipeName: '슈링크 4.5mm' },
+      { label: '6.0/9.0mm', recipeName: '슈링크 6.0mm' },
+    ],
   },
   // ─── 실리프팅 (브랜드별 분류) ─────
   {

@@ -449,7 +449,8 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                         <div className="flex flex-wrap gap-2">
                           {selectedType.options.map(opt => {
                             const isOptSelected = selectedOption?.recipeName === opt.recipeName;
-                            const hasRecipe = recipes.some(r => r.procedure_name === opt.recipeName);
+                            const isDevice = DEVICE_PROCEDURE_IDS.includes(selectedType.id);
+                            const hasRecipe = isDevice || recipes.some(r => r.procedure_name === opt.recipeName);
                             return (
                               <button
                                 key={opt.recipeName}
