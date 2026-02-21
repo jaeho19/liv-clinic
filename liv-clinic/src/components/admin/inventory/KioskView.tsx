@@ -246,6 +246,8 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
 
     setSelectedType(proc);
     setSelectedOption(null);
+    setSelectedTipId('');
+    setShotsToUse(0);
 
     if (proc.options.length === 0) {
       // No options → load items directly + go to items step on mobile
