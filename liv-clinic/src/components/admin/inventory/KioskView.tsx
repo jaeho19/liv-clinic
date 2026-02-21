@@ -449,8 +449,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                         <div className="flex flex-wrap gap-2">
                           {selectedType.options.map(opt => {
                             const isOptSelected = selectedOption?.recipeName === opt.recipeName;
-                            const isDevice = DEVICE_PROCEDURE_IDS.includes(selectedType.id);
-                            const hasRecipe = isDevice || recipes.some(r => r.procedure_name === opt.recipeName);
+                            const hasRecipe = DEVICE_PROCEDURE_IDS.includes(selectedType.id) || recipes.some(r => r.procedure_name === opt.recipeName);
                             return (
                               <button
                                 key={opt.recipeName}
@@ -589,6 +588,15 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
               )}
 
               {/* ─── Shot tracking section (울쎄라/슈링크) ─── */}
+              {isDeviceProcedure && !waitingForOption && activeTips.length === 0 && (
+                <div className="flex flex-col items-center justify-center py-8 text-[#c5b8b0]">
+                  <svg className="w-10 h-10 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" />
+                  </svg>
+                  <p className="text-sm font-medium">등록된 팁이 없습니다</p>
+                  <p className="text-xs mt-1">재고 현황에서 팁을 먼저 등록해주세요</p>
+                </div>
+              )}
               {isDeviceProcedure && !waitingForOption && activeTips.length > 0 && (
                 <div className="bg-[#faf8f7] rounded-xl p-4 border border-[#ebe7e4] space-y-3">
                   <p className="text-[10px] font-semibold text-[#b4988d] uppercase tracking-wider">
