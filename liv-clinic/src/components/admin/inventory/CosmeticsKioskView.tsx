@@ -4,7 +4,7 @@ import { useState, useCallback, useMemo, useEffect } from 'react';
 import {
   COSMETICS_SUBCATEGORIES,
   INVENTORY_SUBCATEGORY_LABELS,
-  NURSE_OPTIONS,
+  COSMETICS_STAFF_OPTIONS,
 } from '@/types/admin';
 import type { InventoryItem } from '@/types/admin';
 import DailyUsageLog from './DailyUsageLog';
@@ -398,7 +398,7 @@ export default function CosmeticsKioskView({ items, loadData }: CosmeticsKioskVi
                     담당
                   </label>
                   <div className="flex gap-1.5">
-                    {NURSE_OPTIONS.map(name => (
+                    {COSMETICS_STAFF_OPTIONS.map(name => (
                       <button
                         key={name}
                         onClick={() => setConfirmedBy(confirmedBy === name ? '' : name)}

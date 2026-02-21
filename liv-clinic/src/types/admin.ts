@@ -205,7 +205,8 @@ export function getStockStatus(item: InventoryItem): InventoryStockStatus {
   return 'normal';
 }
 
-export const NURSE_OPTIONS = ['최이연', '김태희'] as const;
+export const NURSE_OPTIONS = ['김지연', '김수정'] as const;
+export const COSMETICS_STAFF_OPTIONS = ['최이연', '김태희'] as const;
 
 export const PROCEDURE_NAMES = [
   '리쥬란 HB 시술',
@@ -215,9 +216,28 @@ export const PROCEDURE_NAMES = [
   '필러 시술 (볼루마)',
   '필러 시술 (볼리프트)',
   '필러 시술 (볼룩스)',
+  '필러 시술 (레스틸렌 DEFYNE)',
+  '필러 시술 (레스틸렌 VOLYME)',
+  '필러 시술 (레스틸렌 KYSSE)',
+  '필러 시술 (레스틸렌 Vital)',
+  '필러 시술 (레스틸렌 리프트)',
+  '필러 시술 (벨로테로 소프트)',
+  '필러 시술 (벨로테로 볼룸)',
+  '필러 시술 (벨로테로 인텐스)',
+  '필러 시술 (벨로테로 발란스)',
+  '필러 시술 (벨로테로 리바이브)',
+  '필러 시술 (뉴라미스 Silver)',
+  '필러 시술 (뉴라미스 Volume)',
+  '필러 시술 (뉴라미스 DEEP)',
+  '필러 시술 (로리앙 no2)',
+  '필러 시술 (로리앙 no4)',
+  '필러 시술 (로리앙 no6)',
+  '필러 시술 (큐티필 Fine)',
+  '필러 시술 (순수필 100)',
   '보톡스 시술 (제오민)',
   '보톡스 시술 (하이톡스)',
   '보톡스 시술 (제테마더)',
+  '보톡스 시술 (엘러간)',
   '써마지 FLX 600',
   '써마지 FLX 900',
   '아이써마지',
@@ -253,12 +273,7 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     id: 'ulthera',
     name: '울쎄라 프라임',
     category: 'lifting',
-    options: [
-      { label: '상안면', recipeName: '울쎄라 상안면' },
-      { label: '하안면', recipeName: '울쎄라 하안면' },
-      { label: '전안면', recipeName: '울쎄라 전안면' },
-      { label: '전안면+목', recipeName: '울쎄라 전안면+목' },
-    ],
+    options: [],
   },
   {
     id: 'thermage',
@@ -281,12 +296,7 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     id: 'shurink',
     name: '슈링크',
     category: 'lifting',
-    options: [
-      { label: '1.5mm', recipeName: '슈링크 1.5mm' },
-      { label: '3.0mm', recipeName: '슈링크 3.0mm' },
-      { label: '4.5mm', recipeName: '슈링크 4.5mm' },
-      { label: '6.0/9.0mm', recipeName: '슈링크 6.0mm' },
-    ],
+    options: [],
   },
   // ─── 실리프팅 (브랜드별 분류) ─────
   {
@@ -370,28 +380,54 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     options: [],
   },
   {
-    id: 'filler_volbella',
-    name: '필러 (볼벨라)',
+    id: 'filler_juvederm',
+    name: '필러 (쥬비덤)',
     category: 'antiaging',
-    options: [],
+    options: [
+      { label: '볼벨라', recipeName: '필러 시술 (볼벨라)' },
+      { label: '볼루마', recipeName: '필러 시술 (볼루마)' },
+      { label: '볼리프트', recipeName: '필러 시술 (볼리프트)' },
+      { label: '볼룩스', recipeName: '필러 시술 (볼룩스)' },
+    ],
   },
   {
-    id: 'filler_voluma',
-    name: '필러 (볼루마)',
+    id: 'filler_restylane',
+    name: '필러 (레스틸렌)',
     category: 'antiaging',
-    options: [],
+    options: [
+      { label: 'DEFYNE', recipeName: '필러 시술 (레스틸렌 DEFYNE)' },
+      { label: 'VOLYME', recipeName: '필러 시술 (레스틸렌 VOLYME)' },
+      { label: 'KYSSE', recipeName: '필러 시술 (레스틸렌 KYSSE)' },
+      { label: 'Vital', recipeName: '필러 시술 (레스틸렌 Vital)' },
+      { label: '리프트', recipeName: '필러 시술 (레스틸렌 리프트)' },
+    ],
   },
   {
-    id: 'filler_volift',
-    name: '필러 (볼리프트)',
+    id: 'filler_belotero',
+    name: '필러 (벨로테로)',
     category: 'antiaging',
-    options: [],
+    options: [
+      { label: '소프트', recipeName: '필러 시술 (벨로테로 소프트)' },
+      { label: '볼룸', recipeName: '필러 시술 (벨로테로 볼룸)' },
+      { label: '인텐스', recipeName: '필러 시술 (벨로테로 인텐스)' },
+      { label: '발란스', recipeName: '필러 시술 (벨로테로 발란스)' },
+      { label: '리바이브', recipeName: '필러 시술 (벨로테로 리바이브)' },
+    ],
   },
   {
-    id: 'filler_volux',
-    name: '필러 (볼룩스)',
+    id: 'filler_domestic',
+    name: '필러 (국산)',
     category: 'antiaging',
-    options: [],
+    options: [
+      { label: '뉴라미스 Silver', recipeName: '필러 시술 (뉴라미스 Silver)' },
+      { label: '뉴라미스 Volume', recipeName: '필러 시술 (뉴라미스 Volume)' },
+      { label: '뉴라미스 DEEP', recipeName: '필러 시술 (뉴라미스 DEEP)' },
+      { label: '로리앙 no2', recipeName: '필러 시술 (로리앙 no2)' },
+      { label: '로리앙 no4', recipeName: '필러 시술 (로리앙 no4)' },
+      { label: '로리앙 no6', recipeName: '필러 시술 (로리앙 no6)' },
+      { label: '큐티필 Fine', recipeName: '필러 시술 (큐티필 Fine)' },
+      { label: '순수필 100', recipeName: '필러 시술 (순수필 100)' },
+    ],
   },
   // ─── 스킨부스터/기타 ────────
   {
@@ -451,10 +487,6 @@ export const PROCEDURE_RECIPE_MAP: Record<string, string> = {
   botox_hutox: '보톡스 시술 (하이톡스)',
   botox_jetema: '보톡스 시술 (제테마더)',
   botox_allergan: '보톡스 시술 (엘러간)',
-  filler_volbella: '필러 시술 (볼벨라)',
-  filler_voluma: '필러 시술 (볼루마)',
-  filler_volift: '필러 시술 (볼리프트)',
-  filler_volux: '필러 시술 (볼룩스)',
   rejuran_hb: '리쥬란 HB 시술',
   rejuran_healer: '리쥬란 힐러 시술',
   rejuran_eye: '리쥬란 아이 시술',
