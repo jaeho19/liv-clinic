@@ -135,7 +135,7 @@ export default function StockGroupView({
                     >
                       <span className={`w-2 h-2 rounded-full flex-shrink-0 ${STATUS_DOT[status]}`} />
                       <span className="text-sm font-medium text-[#6d4e42] flex-1 truncate">{item.name}</span>
-                      {item.specification && (
+                      {item.specification && item.specification !== '-' && (
                         <span className="text-[10px] text-[#b4988d] bg-[#b4988d]/8 px-1.5 py-0.5 rounded-md flex-shrink-0 font-medium">
                           {item.specification}
                         </span>

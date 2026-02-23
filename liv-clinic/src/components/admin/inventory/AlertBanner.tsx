@@ -237,7 +237,7 @@ function AlertRow({
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2">
           <span className="text-sm font-semibold text-[#6d4e42] truncate">{item.name}</span>
-          {item.specification && (
+          {item.specification && item.specification !== '-' && (
             <span className="text-[10px] text-[#b4988d] bg-[#b4988d]/8 px-1 py-0.5 rounded-md flex-shrink-0 font-medium">
               {item.specification}
             </span>

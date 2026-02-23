@@ -53,10 +53,10 @@ INSERT INTO inventory_items (name, category, sub_category, specification, unit, 
   ('벨로테로 발란스', 'injection', 'filler_belotero', '-', '시린지', 10, 5, 200000, '머즈코리아', NULL),
   ('벨로테로 리바이브', 'injection', 'filler_belotero', '-', '시린지', 13, 5, 200000, '머즈코리아', NULL),
   -- 쥬비덤 (수입)
-  ('쥬비덤 볼벨라', 'injection', 'filler_juvederm', '-', '시린지', 30, 10, 250000, '엘러간코리아', '유효기한: 27.03.17'),
-  ('쥬비덤 볼루마', 'injection', 'filler_juvederm', '-', '시린지', 25, 10, 280000, '엘러간코리아', '유효기한: 27.02.26'),
-  ('쥬비덤 볼리프트', 'injection', 'filler_juvederm', '-', '시린지', 24, 10, 260000, '엘러간코리아', '유효기한: 27.03.15'),
-  ('쥬비덤 볼룩스', 'injection', 'filler_juvederm', '-', '시린지', 24, 10, 300000, '엘러간코리아', '유효기한: 26.12.22'),
+  ('쥬비덤 볼벨라', 'injection', 'filler_juvederm', '-', '바이알', 30, 10, 250000, '엘러간코리아', '유효기한: 27.03.17'),
+  ('쥬비덤 볼루마', 'injection', 'filler_juvederm', '-', '바이알', 25, 10, 280000, '엘러간코리아', '유효기한: 27.02.26'),
+  ('쥬비덤 볼리프트', 'injection', 'filler_juvederm', '-', '바이알', 24, 10, 260000, '엘러간코리아', '유효기한: 27.03.15'),
+  ('쥬비덤 볼룩스', 'injection', 'filler_juvederm', '-', '바이알', 24, 10, 300000, '엘러간코리아', '유효기한: 26.12.22'),
   -- 로리앙 (국프)
   ('로리앙 no2', 'injection', 'filler_domestic', 'no2', '시린지', 6, 3, 80000, '로리앙', NULL),
   ('로리앙 no4', 'injection', 'filler_domestic', 'no4', '시린지', 14, 5, 80000, '로리앙', NULL),
@@ -74,10 +74,10 @@ INSERT INTO inventory_items (name, category, sub_category, specification, unit, 
 -- 3. 주사제 - 보톡스 (injection/botox)
 -- ============================================
 INSERT INTO inventory_items (name, category, sub_category, specification, unit, current_stock, min_stock, unit_price, supplier, storage_note) VALUES
-  ('제오민', 'injection', 'botox', '-', '바이알', 18, 5, 150000, '머즈코리아', '★냉장보관, 유효기한: 27.09.30'),
-  ('앨러간', 'injection', 'botox', '-', '바이알', 12, 5, 180000, '엘러간코리아', '★냉장보관, 유효기한: 27.09.28'),
-  ('제테마더톡신주', 'injection', 'botox', '-', '바이알', 78, 20, 30000, '제테마', '국산 프리미엄, 유효기한: 28.02.19'),
-  ('하이톡스', 'injection', 'botox', '-', '바이알', 138, 30, 15000, '휴온스', '국산, 유효기한: 27.07.02');
+  ('제오민', 'injection', 'botox', '100u', '바이알', 18, 5, 150000, '머즈코리아', '★냉장보관, 유효기한: 27.09.30'),
+  ('앨러간', 'injection', 'botox', '50u', '바이알', 12, 5, 180000, '엘러간코리아', '★냉장보관, 유효기한: 27.09.28'),
+  ('제테마더톡신주', 'injection', 'botox', '100u', '바이알', 78, 20, 30000, '제테마', '국산 프리미엄, 유효기한: 28.02.19'),
+  ('하이톡스', 'injection', 'botox', '200u', '바이알', 138, 30, 15000, '휴온스', '국산, 유효기한: 27.07.02');
 
 -- ============================================
 -- 4. 주사제 - 스킨부스터 (injection/skinbooster)
@@ -86,12 +86,12 @@ INSERT INTO inventory_items (name, category, sub_category, specification, unit, 
   ('리쥬란힐러', 'injection', 'skinbooster', '-', '시린지', 34, 10, 180000, '파마리서치', NULL),
   ('리쥬란 아이', 'injection', 'skinbooster', '-', '시린지', 80, 20, 180000, '파마리서치', NULL),
   ('리쥬란 HB', 'injection', 'skinbooster', '-', '시린지', 119, 30, 150000, '파마리서치', '★냉장보관, 유효기한: 27.05.09'),
-  ('쥬베룩 볼륨', 'injection', 'skinbooster', '-', '시린지', 24, 10, 200000, '에이미셀', '★냉장보관, 유효기한: 27.08.24'),
-  ('쥬베룩 스킨부스터', 'injection', 'skinbooster', '-', '시린지', 31, 10, 150000, '에이미셀', NULL),
+  ('쥬베룩 볼륨', 'injection', 'skinbooster', '-', '바이알', 24, 10, 200000, '에이미셀', '★냉장보관, 유효기한: 27.08.24'),
+  ('쥬베룩 스킨부스터', 'injection', 'skinbooster', '-', '바이알', 31, 10, 150000, '에이미셀', NULL),
   ('스컬트라', 'injection', 'skinbooster', '-', '바이알', 6, 3, 300000, '갈더마', '유효기한: 28.01'),
   ('리투오', 'injection', 'skinbooster', '-', '시린지', 30, 10, 120000, NULL, '유효기한: 29.12.23'),
   ('LAFULLEN', 'injection', 'skinbooster', '-', '시린지', 2, 2, 100000, NULL, '유효기한: 27.05.17'),
-  ('큐티셀 블랙 오리진', 'injection', 'skinbooster', '-', '시린지', 17, 5, 150000, NULL, '★냉장보관, 유효기한: 27.03.17'),
+  ('큐티셀 블랙 오리진', 'injection', 'skinbooster', '-', '바이알', 17, 5, 150000, NULL, '★냉장보관, 유효기한: 27.03.17'),
   ('로리앙엘리멘트 1제', 'injection', 'skinbooster', '앰플/투명', '시린지', 4, 2, 100000, '로리앙', '★냉장보관, 유효기한: 27.02.07'),
   ('로리앙엘리멘트 2제', 'injection', 'skinbooster', '가루/갈색', '시린지', 4, 2, 100000, '로리앙', '★냉장보관, 유효기한: 27.05.02'),
   ('레디어스', 'injection', 'skinbooster', '-', '시린지', 16, 5, 200000, NULL, '유효기한: 27.02.14'),

@@ -87,7 +87,7 @@ export default function StockTableView({
                             냉장
                           </span>
                         )}
-                        {item.specification && (
+                        {item.specification && item.specification !== '-' && (
                           <span className="text-[10px] text-[#b4988d] bg-[#b4988d]/8 px-1.5 py-0.5 rounded-md font-medium">
                             {item.specification}
                           </span>

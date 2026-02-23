@@ -83,7 +83,7 @@ export default function StockCardView({
                 )}
                 <p className="text-[10px] text-[#a09080] mt-1">
                   {INVENTORY_CATEGORY_LABELS[item.category]}
-                  {item.specification && (
+                  {item.specification && item.specification !== '-' && (
                     <span className="ml-1.5 text-[#b4988d] bg-[#b4988d]/8 px-1 py-0.5 rounded">
                       {item.specification}
                     </span>

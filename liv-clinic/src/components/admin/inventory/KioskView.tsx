@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useCallback, useMemo, useEffect, memo } from 'react';
+import { useState, useCallback, useMemo, useEffect, useRef, memo } from 'react';
 import {
   PROCEDURE_CATALOG,
   PROCEDURE_CATEGORY_LABELS,
@@ -24,6 +24,7 @@ interface UsageItem {
   itemId: string;
   itemName: string;
   unit: string;
+  specification?: string;
   currentStock: number;
   quantity: number;
 }
@@ -123,7 +124,14 @@ const UsageItemRow = memo(function UsageItemRow({
       }`}
     >
       <div className="flex-1 min-w-0">
-        <div className="text-sm font-bold text-[#6d4e42] truncate">{usage.itemName}</div>
+        <div className="text-sm font-bold text-[#6d4e42] truncate">
+          {usage.itemName}
+          {usage.specification && usage.specification !== '-' && (
+            <span className="ml-1.5 text-[10px] font-medium text-[#b4988d] bg-[#b4988d]/8 px-1.5 py-0.5 rounded-md">
+              {usage.specification}
+            </span>
+          )}
+        </div>
         <div className="text-[10px] text-[#a09080] mt-0.5">
           재고: {usage.currentStock}{usage.unit}
           {isOverStock && (
@@ -168,6 +176,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
   const [confirmedBy, setConfirmedBy] = useState('');
   const [usageItems, setUsageItems] = useState<UsageItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
+  const optionPanelRef = useRef<HTMLDivElement>(null);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [refetchKey, setRefetchKey] = useState(0);
   // Mobile wizard step: 'select' = procedure selection, 'items' = quantity adjustment
@@ -220,6 +229,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
           itemId: r.item_id,
           itemName: item?.name || r.item_id,
           unit: item?.unit || '개',
+          specification: item?.specification,
           currentStock: item?.current_stock || 0,
           quantity: r.default_qty,
         };
@@ -257,6 +267,10 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
     } else {
       // Has options → wait for option selection
       setUsageItems([]);
+      // Auto-scroll to option panel after render
+      requestAnimationFrame(() => {
+        optionPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
     }
   }, [selectedType, loadRecipeItems]);
 
@@ -444,7 +458,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
 
                     {/* Step 2: Option pills (inline, below selected procedure) */}
                     {selectedType && group.procedures.some(p => p.id === selectedType.id) && selectedType.options.length > 0 && (
-                      <div className="bg-[#faf8f7] rounded-xl p-3 border border-[#ebe7e4]">
+                      <div ref={optionPanelRef} className="bg-[#faf8f7] rounded-xl p-3 border border-[#ebe7e4]">
                         <p className="text-[10px] font-semibold text-[#a09080] mb-2">
                           {selectedType.name} 옵션 선택
                         </p>

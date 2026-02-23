@@ -108,7 +108,7 @@ export default function DetailPanel({ item, txs, onClose, onDelete, onAdjust, ex
                 <div className="text-[#575756]">{INVENTORY_SUBCATEGORY_LABELS[item.sub_category] || item.sub_category}</div>
               </>
             )}
-            {item.specification && (
+            {item.specification && item.specification !== '-' && (
               <>
                 <div className="text-[#a09080]">규격</div>
                 <div className="text-[#575756]">{item.specification}</div>
