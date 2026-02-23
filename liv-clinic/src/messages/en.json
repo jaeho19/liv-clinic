@@ -779,9 +779,7 @@
             "title": "Customized Tips by Area",
             "subtitle": "Various tip sizes allow optimized treatment for each area",
             "items": [
-              { "shots": "900", "area": "Body", "desc": "Large areas" },
               { "shots": "600", "area": "Face", "desc": "Cheeks, Forehead" },
-              { "shots": "400", "area": "Mid-face", "desc": "Cheeks, Jawline" },
               { "shots": "225", "area": "Eyes/Mouth", "desc": "Delicate areas" }
             ]
           },

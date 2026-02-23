@@ -382,14 +382,12 @@ const GenerationTable = ({
 // Tip Types Component with Images
 const TipTypes = ({ items }: { items: TipItem[] }) => {
   const tipImages: Record<string, string> = {
-    '900': '/images/lifting/thermage/tips/total-tip-900.png',
     '600': '/images/lifting/thermage/tips/total-tip-600.png',
-    '400': '/images/lifting/thermage/tips/total-tip-400.png',
     '225': '/images/lifting/thermage/tips/total-tip-225.png',
   };
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div className="grid grid-cols-2 gap-6 max-w-md mx-auto">
       {items.map((tip, index) => (
         <motion.div
           key={tip.shots}
@@ -402,7 +400,7 @@ const TipTypes = ({ items }: { items: TipItem[] }) => {
         >
           <div className="relative w-24 h-24 mx-auto mb-4 rounded-2xl overflow-hidden shadow-lg bg-gradient-to-br from-[#FF6B35]/10 to-primary/10">
             <img
-              src={tipImages[tip.shots] || tipImages['900']}
+              src={tipImages[tip.shots] || tipImages['600']}
               alt={`Total Tip ${tip.shots}`}
               className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
             />

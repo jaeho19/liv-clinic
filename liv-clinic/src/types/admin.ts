@@ -239,7 +239,6 @@ export const PROCEDURE_NAMES = [
   '보톡스 시술 (제테마더)',
   '보톡스 시술 (엘러간)',
   '써마지 FLX 600',
-  '써마지 FLX 900',
   '아이써마지',
   '스컬트라 시술',
   '쥬베룩 볼륨 시술',
@@ -281,9 +280,7 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     category: 'lifting',
     options: [
       { label: '225샷 (눈가)', recipeName: '아이써마지' },
-      { label: '400샷', recipeName: '써마지 FLX 400' },
       { label: '600샷', recipeName: '써마지 FLX 600' },
-      { label: '900샷', recipeName: '써마지 FLX 900' },
     ],
   },
   {
