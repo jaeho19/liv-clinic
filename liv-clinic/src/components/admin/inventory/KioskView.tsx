@@ -31,7 +31,7 @@ interface UsageItem {
 
 // ─── Constants ──────────────────────────────────
 /** 장비 시술 ID (레시피 없이 팁/샷 트래킹으로 동작) */
-const DEVICE_PROCEDURE_IDS: string[] = ['ulthera', 'shurink'];
+const DEVICE_PROCEDURE_IDS: string[] = ['ulthera', 'shurink', 'thermage'];
 
 // ─── Helpers ────────────────────────────────────
 function groupByCategory(catalog: ProcedureType[]) {

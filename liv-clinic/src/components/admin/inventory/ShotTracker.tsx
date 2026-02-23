@@ -7,7 +7,7 @@ import { useShotTracking } from '@/hooks/useShotTracking';
 import { ProgressBar } from './StockGauge';
 
 // ─── Types ──────────────────────────────────────
-const DEVICE_LABELS: Record<DeviceType, string> = { ulthera: '울쎄라', shurink: '슈링크' };
+const DEVICE_LABELS: Record<DeviceType, string> = { ulthera: '울쎄라', shurink: '슈링크', thermage: '써마지 FLX' };
 
 const ULTHERA_AREAS = ['상안면', '하안면', '전안면', '전안면+목'] as const;
 

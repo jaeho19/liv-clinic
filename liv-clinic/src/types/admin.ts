@@ -576,7 +576,7 @@ export interface AuditLog {
 // Device Shot Tracking (샷 수 추적) - #2, #3-2
 // ==========================================
 
-export type DeviceType = 'ulthera' | 'shurink';
+export type DeviceType = 'ulthera' | 'shurink' | 'thermage';
 
 export interface DeviceTipShot {
   id: string;
@@ -616,6 +616,10 @@ export const DEVICE_INITIAL_SHOTS: Record<DeviceType, Record<string, number>> = 
     '1.5': 12000,
     'v슈링크': 15000,
     'S슈링크': 15000,
+  },
+  thermage: {
+    '225': 225,
+    '600': 600,
   },
 };
 
