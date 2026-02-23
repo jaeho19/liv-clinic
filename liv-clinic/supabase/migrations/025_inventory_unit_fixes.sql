@@ -2,10 +2,9 @@
 -- 025: 재고 단위/규격 수정 (간호팀 요청 2026-02-23)
 -- ============================================
 
--- 1. 쥬비덤 4종: unit 시린지 → 바이알
-UPDATE inventory_items SET unit = '바이알'
-WHERE sub_category = 'filler_juvederm'
-  AND unit = '시린지';
+-- 1. 쥬비덤 4종: unit → 실린지
+UPDATE inventory_items SET unit = '실린지'
+WHERE sub_category = 'filler_juvederm';
 
 -- 2. 보톡스 유닛(specification) 표기 추가
 UPDATE inventory_items SET specification = '100u' WHERE name = '제오민' AND sub_category = 'botox';
