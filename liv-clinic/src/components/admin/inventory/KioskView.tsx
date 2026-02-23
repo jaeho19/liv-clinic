@@ -263,15 +263,11 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
       // No options → load items directly + go to items step on mobile
       const recipeName = getRecipeName(proc);
       loadRecipeItems(recipeName);
-      setMobileStep('items');
     } else {
-      // Has options → wait for option selection
+      // Has options → wait for option selection (shown in right panel)
       setUsageItems([]);
-      // Auto-scroll to option panel after render
-      requestAnimationFrame(() => {
-        optionPanelRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      });
     }
+    setMobileStep('items');
   }, [selectedType, loadRecipeItems]);
 
   // ─── Step 2: Select option ────────────────────
@@ -456,37 +452,7 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                       })}
                     </div>
 
-                    {/* Step 2: Option pills (inline, below selected procedure) */}
-                    {selectedType && group.procedures.some(p => p.id === selectedType.id) && selectedType.options.length > 0 && (
-                      <div ref={optionPanelRef} className="bg-[#faf8f7] rounded-xl p-3 border border-[#ebe7e4]">
-                        <p className="text-[10px] font-semibold text-[#a09080] mb-2">
-                          {selectedType.name} 옵션 선택
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {selectedType.options.map(opt => {
-                            const isOptSelected = selectedOption?.recipeName === opt.recipeName;
-                            const hasRecipe = DEVICE_PROCEDURE_IDS.includes(selectedType.id) || recipes.some(r => r.procedure_name === opt.recipeName);
-                            return (
-                              <button
-                                key={opt.recipeName}
-                                onClick={() => handleSelectOption(opt)}
-                                disabled={!hasRecipe}
-                                className={`px-3.5 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer ${
-                                  isOptSelected
-                                    ? 'bg-[#6d4e42] text-white shadow-sm'
-                                    : hasRecipe
-                                      ? 'bg-white text-[#575756] border border-[#ebe7e4] hover:border-[#b4988d] hover:text-[#6d4e42]'
-                                      : 'bg-[#f6f4f2] text-[#c5b8b0] border border-[#ebe7e4] opacity-40 cursor-not-allowed'
-                                }`}
-                              >
-                                {opt.label}
-                                {!hasRecipe && <span className="text-[9px] ml-1">(미등록)</span>}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    )}
+                    {/* Options are now shown in the right panel */}
                   </div>
                 </div>
               ))}
@@ -577,18 +543,45 @@ export default function KioskView({ items, recipes, loadData }: KioskViewProps) 
                 </div>
               </div>
 
+              {/* Option pills (same position as 울쎄라 tip selection) */}
+              {waitingForOption && selectedType && (
+                <div ref={optionPanelRef} className="bg-[#faf8f7] rounded-xl p-4 border border-[#ebe7e4]">
+                  <p className="text-[10px] font-semibold text-[#b4988d] uppercase tracking-wider mb-2.5">
+                    {selectedType.name} 옵션 선택
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedType.options.map(opt => {
+                      const isOptSelected = selectedOption?.recipeName === opt.recipeName;
+                      const hasRecipe = recipes.some(r => r.procedure_name === opt.recipeName);
+                      return (
+                        <button
+                          key={opt.recipeName}
+                          onClick={() => handleSelectOption(opt)}
+                          disabled={!hasRecipe}
+                          className={`px-4 py-2 rounded-xl text-sm font-medium transition-all cursor-pointer ${
+                            isOptSelected
+                              ? 'bg-[#6d4e42] text-white shadow-sm'
+                              : hasRecipe
+                                ? 'bg-white text-[#575756] border border-[#ebe7e4] hover:border-[#b4988d] hover:text-[#6d4e42]'
+                                : 'bg-[#f6f4f2] text-[#c5b8b0] border border-[#ebe7e4] opacity-40 cursor-not-allowed'
+                          }`}
+                        >
+                          {opt.label}
+                          {!hasRecipe && <span className="text-[9px] ml-1">(미등록)</span>}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
               {/* Items list */}
-              {usageItems.length === 0 && !isDeviceProcedure ? (
+              {usageItems.length === 0 && !isDeviceProcedure && !waitingForOption ? (
                 <div className="flex flex-col items-center justify-center py-12 text-[#c5b8b0]">
                   <svg className="w-12 h-12 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                   </svg>
-                  <p className="text-sm font-medium">
-                    {waitingForOption
-                      ? '옵션을 선택하면 물품이 표시됩니다'
-                      : '시술을 선택하면 물품이 표시됩니다'
-                    }
-                  </p>
+                  <p className="text-sm font-medium">시술을 선택하면 물품이 표시됩니다</p>
                 </div>
               ) : (
                 <div className="space-y-2">
