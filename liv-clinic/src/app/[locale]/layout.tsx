@@ -71,6 +71,10 @@ export default async function LocaleLayout({
   const webSiteSchema = generateWebSiteSchema();
   const analytics = await getAnalyticsSettings();
 
+  // GA ID: DB 설정 우선, env var 폴백, 형식 검증 (G-XXXXXXXXXX)
+  const rawGaId = analytics?.gaTrackingId || process.env.NEXT_PUBLIC_GA_ID;
+  const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
+
   const skipToContentText = {
     ko: '본문으로 건너뛰기',
     en: 'Skip to main content',
@@ -114,29 +118,36 @@ export default async function LocaleLayout({
               window.dataLayer=window.dataLayer||[];
               function gtag(){dataLayer.push(arguments);}
               gtag('consent','default',{
-                'analytics_storage':'denied',
+                'analytics_storage':'granted',
                 'ad_storage':'denied',
                 'ad_user_data':'denied',
                 'ad_personalization':'denied',
                 'functionality_storage':'granted',
                 'personalization_storage':'denied',
-                'security_storage':'granted',
-                'wait_for_update':500
+                'security_storage':'granted'
               });
-              try{
-                if(localStorage.getItem('liv_analytics_consent')==='granted'){
-                  gtag('consent','update',{
-                    'analytics_storage':'granted',
-                    'ad_storage':'granted',
-                    'ad_user_data':'granted',
-                    'ad_personalization':'granted',
-                    'personalization_storage':'granted'
-                  });
-                }
-              }catch(e){}
             `,
           }}
         />
+        {/* Google Analytics - gtag.js (head 삽입) */}
+        {gaId && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+                  gtag('js', new Date());
+                  gtag('config', '${gaId}', {
+                    page_path: window.location.pathname,
+                    send_page_view: true,
+                    cookie_flags: 'SameSite=None;Secure',
+                    language: document.documentElement.lang || 'ko'
+                  });
+                `,
+              }}
+            />
+          </>
+        )}
       </head>
       <body className="antialiased overflow-x-clip w-full">
         <GoogleAnalytics trackingId={analytics?.gaTrackingId} enabled={analytics?.gaEnabled ?? undefined} />
