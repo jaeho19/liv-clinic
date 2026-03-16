@@ -31,7 +31,7 @@ export const SOCIAL_LINKS = {
   naver: 'https://blog.naver.com/liv_clinic',
   youtube: 'https://www.youtube.com/@리브성형외과',
   wechat: 'weixin://dl/chat?livps', // WeChat ID: livps
-  line: 'https://line.me/ti/p/~icps7972773', // LINE ID: icps7972773
+  line: 'https://line.me/R/ti/p/~icps7972773', // LINE ID: icps7972773 (앱 직접 실행)
 } as const;
 
 // 인증 정보
