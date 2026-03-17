@@ -27,7 +27,7 @@ export function trackEvent(eventName: string, params?: Record<string, string | n
 
 /** 연락 이벤트 (전화, 카카오, 위챗 등) */
 export function trackContact(
-  method: 'phone' | 'kakao' | 'wechat' | 'line' | 'naver_map' | 'kakao_map',
+  method: 'phone' | 'kakao' | 'wechat' | 'line' | 'whatsapp' | 'naver_map' | 'kakao_map',
   pagePath?: string,
 ) {
   trackEvent('contact', {

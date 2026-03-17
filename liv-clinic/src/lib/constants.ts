@@ -32,6 +32,7 @@ export const SOCIAL_LINKS = {
   youtube: 'https://www.youtube.com/@리브성형외과',
   wechat: 'weixin://dl/chat?livps', // WeChat ID: livps
   line: 'https://line.me/R/ti/p/~icps7972773', // LINE ID: icps7972773 (앱 직접 실행)
+  whatsapp: 'https://wa.me/821068882773?text=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%2C%20%EB%A6%AC%EB%B8%8C%EC%84%B1%ED%98%95%EC%99%B8%EA%B3%BC%EC%9E%85%EB%8B%88%EB%8B%A4!', // +82 10-6888-2773
 } as const;
 
 // 인증 정보
