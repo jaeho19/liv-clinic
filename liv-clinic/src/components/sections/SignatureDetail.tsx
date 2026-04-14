@@ -556,42 +556,6 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
             {program.number}
           </motion.span>
 
-          {/* Before/After Indicator - 부드러운 전환 */}
-          <AnimatePresence>
-            {isActive && (
-              <motion.div
-                className="absolute top-6 left-6 flex items-center gap-2"
-                initial={{ opacity: 0, x: -15, filter: 'blur(4px)' }}
-                animate={{ opacity: 1, x: 0, filter: 'blur(0px)' }}
-                exit={{ opacity: 0, x: -10, filter: 'blur(4px)' }}
-                transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              >
-                <motion.span
-                  className="px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide"
-                  animate={{
-                    backgroundColor: showAfter ? 'rgba(255, 255, 255, 0.2)' : 'rgba(255, 255, 255, 1)',
-                    color: showAfter ? 'rgba(255, 255, 255, 0.6)' : 'var(--color-secondary)',
-                    boxShadow: showAfter ? 'none' : '0 4px 12px rgba(0, 0, 0, 0.15)',
-                  }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                >
-                  BEFORE
-                </motion.span>
-                <motion.span
-                  className="px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide"
-                  animate={{
-                    backgroundColor: showAfter ? 'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0.2)',
-                    color: showAfter ? 'var(--color-secondary)' : 'rgba(255, 255, 255, 0.6)',
-                    boxShadow: showAfter ? '0 4px 12px rgba(0, 0, 0, 0.15)' : 'none',
-                  }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                >
-                  AFTER
-                </motion.span>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
           {/* Title Section - 고정 높이로 제목 정렬 통일 */}
           <div className="mb-3">
             <motion.p
