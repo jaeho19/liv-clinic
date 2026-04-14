@@ -42,13 +42,13 @@ export default function BeforeAfterModal({ open, imageUrl, title, category, onCl
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.96, opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="relative max-w-[95vw] max-h-[90vh] flex flex-col items-center"
+            className="relative flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={onClose}
               aria-label="닫기"
-              className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/90 text-[#6d4e42] hover:bg-white flex items-center justify-center transition-colors"
+              className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/90 text-[#6d4e42] hover:bg-white flex items-center justify-center transition-colors z-10"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <line x1="18" y1="6" x2="6" y2="18" />
@@ -56,13 +56,22 @@ export default function BeforeAfterModal({ open, imageUrl, title, category, onCl
               </svg>
             </button>
 
-            <div className="relative w-full" style={{ maxWidth: 'min(95vw, 1400px)', aspectRatio: '2 / 1' }}>
+            {/* 2:1 aspect image. Width targets ~90vw OR 2x of max-allowed-height,
+               whichever is smaller — so on wide monitors the image grows to ~90% width,
+               and on short viewports it still fits within ~80% of the viewport height. */}
+            <div
+              className="relative bg-black/20 rounded-sm overflow-hidden"
+              style={{
+                width: 'min(90vw, calc(80vh * 2))',
+                aspectRatio: '2 / 1',
+              }}
+            >
               <Image
                 src={imageUrl}
                 alt={title || category || 'Before and After'}
                 fill
                 className="object-contain"
-                sizes="95vw"
+                sizes="90vw"
                 priority
               />
             </div>
