@@ -3846,5 +3846,130 @@
       "title": "イベント | リブ形成外科",
       "description": "リブ形成外科の最新イベントと特別プロモーションをご確認ください。ウルセラ、サーマジ、ボトックス、フィラーなど様々な施術の割引特典をご覧ください。"
     }
+  },
+  "pricing": {
+    "sectionTitle": "施術価格",
+    "header": {
+      "treatment": "施術名",
+      "option": "部位 / オプション",
+      "price": "価格"
+    },
+    "consultRequired": "相談後決定",
+    "suffix": {
+      "starting": "ウォン ~",
+      "perPiece": "ウォン ~ (1本あたり)",
+      "per100iu": "ウォン ~ (100IUあたり)"
+    },
+    "note": "※ 上記は1回あたりの価格です。正確な価格は相談後に決定します。",
+    "labels": {
+      "ulthera": {
+        "name": "ウルセラピープライム",
+        "upperFace": "上顔面 (250〜400ショット)",
+        "lowerFace": "下顔面 (〜600ショット)",
+        "fullFace": "全顔 (800〜1,100ショット)",
+        "fullFaceNeck": "全顔 + 首 (〜1,200ショット)"
+      },
+      "thermage": {
+        "name": "サーマジレーザー",
+        "shot300": "300ショット",
+        "shot600": "600ショット",
+        "shot900": "900ショット",
+        "eyeTip225": "アイチップ 225ショット",
+        "eyeTip450": "アイチップ 450ショット"
+      },
+      "shurink": {
+        "shurinkLaser": "シュリンクレーザー",
+        "shurinkAreas": "Vライン/頬/額/二重あご/首のシワ/目の下",
+        "ultheraLaser": "ウルセラレーザー",
+        "ultheraAreas": "Vライン/頬/二重あご/首のシワ",
+        "shot300": "300ショット",
+        "shot600": "600ショット",
+        "shot900": "900ショット"
+      },
+      "density": {
+        "hiTip": "デンシティレーザー (ハイチップ)",
+        "alphaTip": "デンシティレーザー (アルファチップ)",
+        "shot300": "300ショット",
+        "shot600": "600ショット"
+      },
+      "inmode": {
+        "name": "インモードレーザー",
+        "fxForma": "FX / FORMA モード",
+        "fx": "FX モード",
+        "forma": "FORMA モード"
+      },
+      "thread": {
+        "name": "糸リフト",
+        "domestic": "国産",
+        "domesticPremium": "国産プレミアム",
+        "xeomin": "ゼオミン",
+        "allergan": "アラガン",
+        "allerganSalivary": "アラガン (唾液腺)"
+      },
+      "botox": {
+        "botoxContour": "ボトックス (輪郭)",
+        "contourAreas": "エラ/こめかみ",
+        "botoxBody": "ボトックス (ボディ)",
+        "bodyAreas": "僧帽筋/二の腕/ふくらはぎ/太もも (100IUあたり)",
+        "domestic": "国産",
+        "domesticPremium": "国産プレミアム",
+        "xeomin": "ゼオミン",
+        "allergan": "アラガン"
+      },
+      "filler": {
+        "chanelInjection": "シャネル注射",
+        "volume3cc": "3 cc",
+        "otherFillers": "その他フィラー",
+        "consultOnly": "詳細価格は相談時にご案内いたします"
+      },
+      "skinbooster": {
+        "juvelook": "ジュベルックスキンブースター",
+        "elementWhitening": "エレメント美白ブースター",
+        "stemcell": "幹細胞スキンブースター",
+        "melasma": "シミ注射",
+        "glow": "ミジャンセン注射",
+        "rejuranHbPlus": "リジュラン HB plus",
+        "eyeRejuran": "アイリジュラン",
+        "rejuran": "リジュラン",
+        "volume1cc": "1 cc",
+        "volume2cc": "2 cc",
+        "volume4cc": "4 cc",
+        "volume5cc": "5 cc",
+        "volume10cc": "10 cc"
+      },
+      "pigmentation": {
+        "dualToning": "デュアルトーニングレーザー (クラリティ + ルカス)",
+        "dualToningDesc": "シミ/くすみ/毛穴/ニキビ跡",
+        "potenza": "ポテンツァ",
+        "single": "1回",
+        "pumpingTip": "パンピングチップ"
+      },
+      "vascular": {
+        "dualToning": "デュアルトーニングレーザー (クラリティ + ルカス)",
+        "dualToningDesc": "赤ら顔/血管改善",
+        "single": "1回"
+      },
+      "skintone": {
+        "dualToning": "デュアルトーニングレーザー (クラリティ + ルカス)",
+        "dualToningDesc": "肌トーン改善",
+        "single": "1回"
+      },
+      "hairRemoval": {
+        "dualToning": "デュアルトーニングレーザー (クラリティ + ルカス)",
+        "dualToningDesc": "脱毛ケア",
+        "single": "1回"
+      },
+      "tattoo": {
+        "tattooLucas": "入れ墨除去レーザー (ルカス)",
+        "onePart": "1箇所",
+        "co2Laser": "CO2レーザー",
+        "co2Desc": "ほくろ/扁平疣贅/シミなど",
+        "dia3mm": "直径 ≤ 3mm (1個)",
+        "dia5mm": "3mm < 直径 ≤ 5mm (1個)",
+        "diaOver5mm": "直径 > 5mm (1個)",
+        "faceFull": "顔全体 (50個以上)",
+        "neckFull": "首全体 (50個以上)"
+      }
+    }
   }
 }

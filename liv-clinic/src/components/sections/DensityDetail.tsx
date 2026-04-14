@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink } from '@/components/ui';
+import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 // TypeScript interfaces for translated data
@@ -609,6 +609,9 @@ export default function DensityDetail() {
           </svg>
         </motion.div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="density" />
 
       {/* About Section */}
       <section className="section-gap bg-white">

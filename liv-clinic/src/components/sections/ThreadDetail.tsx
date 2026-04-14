@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
+import { PriceTable } from '@/components/ui';
 
 const treatment = TREATMENTS.lifting.thread;
 
@@ -824,6 +825,9 @@ export default function ThreadDetail() {
           </div>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="thread" />
 
       {/* 실리프팅 특장점 섹션 */}
       <section className="py-20 bg-white">

@@ -3848,5 +3848,130 @@
       "title": "이벤트 | 리브성형외과",
       "description": "리브성형외과의 최신 이벤트와 특별 프로모션을 확인하세요. 울쎄라피, 써마지, 보톡스, 필러 등 다양한 시술 할인 혜택을 만나보세요."
     }
+  },
+  "pricing": {
+    "sectionTitle": "시술 가격",
+    "header": {
+      "treatment": "시술명",
+      "option": "옵션/부위",
+      "price": "가격"
+    },
+    "consultRequired": "상담 후 결정",
+    "suffix": {
+      "starting": "원 ~",
+      "perPiece": "원 ~ (개당)",
+      "per100iu": "원 ~ (100IU당)"
+    },
+    "note": "※ 위 가격은 1회 기준이며, 정확한 가격은 상담 후 결정됩니다.",
+    "labels": {
+      "ulthera": {
+        "name": "울쎄라피 프라임",
+        "upperFace": "상안면 (250-400샷)",
+        "lowerFace": "하안면 (~600샷)",
+        "fullFace": "전안면 (800-1,100샷)",
+        "fullFaceNeck": "전안면 + 목 (~1,200샷)"
+      },
+      "thermage": {
+        "name": "써마지 레이저",
+        "shot300": "300샷",
+        "shot600": "600샷",
+        "shot900": "900샷",
+        "eyeTip225": "아이팁 225샷",
+        "eyeTip450": "아이팁 450샷"
+      },
+      "shurink": {
+        "shurinkLaser": "슈링크 레이저",
+        "shurinkAreas": "브이라인/앞볼/이마/이중턱/목주름/눈밑눈가",
+        "ultheraLaser": "울쎄라 레이저",
+        "ultheraAreas": "브이라인/앞볼/이중턱/목주름",
+        "shot300": "300샷",
+        "shot600": "600샷",
+        "shot900": "900샷"
+      },
+      "density": {
+        "hiTip": "덴서티 레이저 (하이팁)",
+        "alphaTip": "덴서티 레이저 (알파팁)",
+        "shot300": "300샷",
+        "shot600": "600샷"
+      },
+      "inmode": {
+        "name": "인모드 레이저",
+        "fxForma": "FX / FORMA 모드",
+        "fx": "FX 모드",
+        "forma": "FORMA 모드"
+      },
+      "thread": {
+        "name": "실리프팅",
+        "domestic": "국산",
+        "domesticPremium": "국산 프리미엄",
+        "xeomin": "제오민",
+        "allergan": "앨러간",
+        "allerganSalivary": "앨러간 (침샘)"
+      },
+      "botox": {
+        "botoxContour": "보톡스 (윤곽)",
+        "contourAreas": "사각턱/관자",
+        "botoxBody": "보톡스 (바디)",
+        "bodyAreas": "승모근/팔뚝/종아리/허벅지 (100IU당)",
+        "domestic": "국산",
+        "domesticPremium": "국산 프리미엄",
+        "xeomin": "제오민",
+        "allergan": "앨러간"
+      },
+      "filler": {
+        "chanelInjection": "사넬주사",
+        "volume3cc": "3cc",
+        "otherFillers": "기타 필러",
+        "consultOnly": "상세 가격은 상담 시 안내"
+      },
+      "skinbooster": {
+        "juvelook": "쥬베룩 스킨부스터",
+        "elementWhitening": "엘리멘트 미백부스터",
+        "stemcell": "줄기세포 스킨부스터",
+        "melasma": "기미주사",
+        "glow": "물광주사",
+        "rejuranHbPlus": "리쥬란 HB plus",
+        "eyeRejuran": "아이리쥬란",
+        "rejuran": "리쥬란",
+        "volume1cc": "1cc",
+        "volume2cc": "2cc",
+        "volume4cc": "4cc",
+        "volume5cc": "5cc",
+        "volume10cc": "10cc"
+      },
+      "pigmentation": {
+        "dualToning": "듀얼토닝 레이저 (클라리티 + 루카스)",
+        "dualToningDesc": "기미/잡티/모공/여드름 흉터",
+        "potenza": "포텐자",
+        "single": "1회",
+        "pumpingTip": "펌핑팁"
+      },
+      "vascular": {
+        "dualToning": "듀얼토닝 레이저 (클라리티 + 루카스)",
+        "dualToningDesc": "홍조/혈관 완화",
+        "single": "1회"
+      },
+      "skintone": {
+        "dualToning": "듀얼토닝 레이저 (클라리티 + 루카스)",
+        "dualToningDesc": "피부톤 개선",
+        "single": "1회"
+      },
+      "hairRemoval": {
+        "dualToning": "듀얼토닝 레이저 (클라리티 + 루카스)",
+        "dualToningDesc": "제모 케어",
+        "single": "1회"
+      },
+      "tattoo": {
+        "tattooLucas": "문신제거 레이저 (루카스)",
+        "onePart": "1부위",
+        "co2Laser": "CO2 레이저",
+        "co2Desc": "점/편평사마귀/검버섯 등",
+        "dia3mm": "직경 ≤ 3mm 1개",
+        "dia5mm": "3mm < 직경 ≤ 5mm 1개",
+        "diaOver5mm": "5mm < 직경 1개",
+        "faceFull": "얼굴 전체 (50개 이상)",
+        "neckFull": "목 전체 (50개 이상)"
+      }
+    }
   }
 }

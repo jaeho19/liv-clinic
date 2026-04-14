@@ -16,6 +16,7 @@ import {
   CollapsibleSection,
   ExpandableList,
   SectionHeader,
+  PriceTable,
 } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
@@ -682,6 +683,9 @@ export default function UltheraDetail() {
           </svg>
         </motion.div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="ulthera" />
 
       {/* About Section - 울쎄라란? */}
       <section className="section-gap-lg bg-white">

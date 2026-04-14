@@ -5,6 +5,7 @@ import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { TREATMENTS, LASER_CATEGORIES } from '@/lib/constants';
+import { PriceTable } from '@/components/ui';
 
 const category = LASER_CATEGORIES[0]; // pigmentation
 const clarityData = TREATMENTS.laser.clarity;
@@ -420,6 +421,9 @@ export default function PigmentationDetail() {
           </div>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="pigmentation" />
 
       {/* 3단계 치료 시스템 */}
       <section className="py-20 bg-gray-50">

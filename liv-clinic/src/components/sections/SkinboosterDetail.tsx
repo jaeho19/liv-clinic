@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { MEDICAL_QA } from '@/lib/constants';
+import { PriceTable } from '@/components/ui';
 
 // Premium color palette - Aqua Serenity
 const colors = {
@@ -421,6 +422,9 @@ export default function SkinboosterDetail() {
           </div>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="skinbooster" />
 
       {/* Benefits Section */}
       <section className="py-32 bg-white relative">

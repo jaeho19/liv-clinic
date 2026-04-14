@@ -5,7 +5,7 @@ import { useRef, useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink } from '@/components/ui';
+import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 const treatment = TREATMENTS.lifting.shurink;
@@ -629,6 +629,9 @@ export default function ShurinkDetail() {
           </svg>
         </motion.div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="shurink" />
 
       {/* About Section - 슈링크란? (써마지/덴서티와 동일한 구조) */}
       <section className="section-gap bg-white">

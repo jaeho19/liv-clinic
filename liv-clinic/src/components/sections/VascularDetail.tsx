@@ -5,6 +5,7 @@ import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { LASER_CATEGORIES } from '@/lib/constants';
+import { PriceTable } from '@/components/ui';
 
 // Get category info (static data that doesn't need translation)
 const categoryStatic = LASER_CATEGORIES[1]; // vascular
@@ -327,6 +328,9 @@ export default function VascularDetail() {
           </div>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="vascular" />
 
       {/* 홍조 유형별 치료 */}
       <section className="py-20 bg-gray-50">

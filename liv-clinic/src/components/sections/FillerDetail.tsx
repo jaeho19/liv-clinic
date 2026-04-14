@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { MEDICAL_QA } from '@/lib/constants';
+import { PriceTable } from '@/components/ui';
 
 // TypeScript interfaces for translations
 interface BenefitItem {
@@ -1020,6 +1021,9 @@ export default function FillerDetail() {
           </div>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="filler" />
 
       {/* Benefits Section - Premium Cards */}
       <section className="py-32 bg-white relative">

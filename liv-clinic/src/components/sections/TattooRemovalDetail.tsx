@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AnimateOnScroll } from '@/components/ui';
+import { AnimateOnScroll, PriceTable } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 import { LASER_EQUIPMENT } from '@/lib/constants';
 
@@ -504,6 +504,9 @@ export default function TattooRemovalDetail() {
           </AnimateOnScroll>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="tattoo" />
 
       {/* 피코레이저 원리 섹션 */}
       <section className="py-16 md:py-24">

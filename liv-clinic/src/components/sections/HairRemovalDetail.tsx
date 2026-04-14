@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AnimateOnScroll } from '@/components/ui';
+import { AnimateOnScroll, PriceTable } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 
 // TypeScript interfaces for translations
@@ -480,6 +480,9 @@ export default function HairRemovalDetail() {
           </AnimateOnScroll>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="hairRemoval" />
 
       {/* Clarity II 소개 섹션 */}
       <section className="py-16 md:py-24">

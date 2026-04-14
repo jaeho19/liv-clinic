@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink } from '@/components/ui';
+import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 // SVG Icons
@@ -692,6 +692,9 @@ export default function ThermageDetail() {
           </svg>
         </motion.div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="thermage" />
 
       {/* About Section - 써마지란? */}
       <section className="section-gap bg-white">

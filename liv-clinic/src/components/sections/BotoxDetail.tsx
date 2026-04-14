@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { MEDICAL_QA } from '@/lib/constants';
+import { PriceTable } from '@/components/ui';
 
 // Premium color palette - Rose Gold theme
 const colors = {
@@ -895,6 +896,9 @@ export default function BotoxDetail() {
           </div>
         </div>
       </section>
+
+      {/* Price Table Section */}
+      <PriceTable treatmentId="botox" />
 
       {/* Benefits - Premium Card Grid */}
       <section className="py-32 bg-white relative">

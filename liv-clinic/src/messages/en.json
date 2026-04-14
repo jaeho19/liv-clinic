@@ -3846,5 +3846,130 @@
       "title": "Events | LIV Plastic Surgery",
       "description": "Discover the latest events and special promotions at LIV Plastic Surgery. Special offers on Ultherapy, Thermage, Botox, Filler and more."
     }
+  },
+  "pricing": {
+    "sectionTitle": "Treatment Pricing",
+    "header": {
+      "treatment": "Treatment",
+      "option": "Area / Option",
+      "price": "Price"
+    },
+    "consultRequired": "Consultation Required",
+    "suffix": {
+      "starting": " KRW ~",
+      "perPiece": " KRW ~ / piece",
+      "per100iu": " KRW ~ / 100IU"
+    },
+    "note": "* Prices are per session. Final pricing is determined after consultation.",
+    "labels": {
+      "ulthera": {
+        "name": "Ultherapy Prime",
+        "upperFace": "Upper Face (250–400 shots)",
+        "lowerFace": "Lower Face (~600 shots)",
+        "fullFace": "Full Face (800–1,100 shots)",
+        "fullFaceNeck": "Full Face + Neck (~1,200 shots)"
+      },
+      "thermage": {
+        "name": "Thermage Laser",
+        "shot300": "300 shots",
+        "shot600": "600 shots",
+        "shot900": "900 shots",
+        "eyeTip225": "Eye Tip 225 shots",
+        "eyeTip450": "Eye Tip 450 shots"
+      },
+      "shurink": {
+        "shurinkLaser": "Shurink Laser",
+        "shurinkAreas": "V-line / Cheeks / Forehead / Double Chin / Neck Wrinkles / Under Eye",
+        "ultheraLaser": "Ulthera Laser",
+        "ultheraAreas": "V-line / Cheeks / Double Chin / Neck Wrinkles",
+        "shot300": "300 shots",
+        "shot600": "600 shots",
+        "shot900": "900 shots"
+      },
+      "density": {
+        "hiTip": "Density Laser (Hi-Tip)",
+        "alphaTip": "Density Laser (Alpha-Tip)",
+        "shot300": "300 shots",
+        "shot600": "600 shots"
+      },
+      "inmode": {
+        "name": "InMode Laser",
+        "fxForma": "FX / FORMA Mode",
+        "fx": "FX Mode",
+        "forma": "FORMA Mode"
+      },
+      "thread": {
+        "name": "Thread Lifting",
+        "domestic": "Domestic",
+        "domesticPremium": "Domestic Premium",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan",
+        "allerganSalivary": "Allergan (Salivary Gland)"
+      },
+      "botox": {
+        "botoxContour": "Botox (Contour)",
+        "contourAreas": "Jaw / Temple",
+        "botoxBody": "Botox (Body)",
+        "bodyAreas": "Trapezius / Arms / Calves / Thighs (per 100IU)",
+        "domestic": "Domestic",
+        "domesticPremium": "Domestic Premium",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan"
+      },
+      "filler": {
+        "chanelInjection": "Chanel Injection",
+        "volume3cc": "3 cc",
+        "otherFillers": "Other Fillers",
+        "consultOnly": "Detailed pricing provided during consultation"
+      },
+      "skinbooster": {
+        "juvelook": "Juvelook Skin Booster",
+        "elementWhitening": "Element Whitening Booster",
+        "stemcell": "Stem Cell Skin Booster",
+        "melasma": "Melasma Injection",
+        "glow": "Glow Injection",
+        "rejuranHbPlus": "Rejuran HB plus",
+        "eyeRejuran": "Eye Rejuran",
+        "rejuran": "Rejuran",
+        "volume1cc": "1 cc",
+        "volume2cc": "2 cc",
+        "volume4cc": "4 cc",
+        "volume5cc": "5 cc",
+        "volume10cc": "10 cc"
+      },
+      "pigmentation": {
+        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
+        "dualToningDesc": "Melasma / Blemishes / Pores / Acne Scars",
+        "potenza": "Potenza",
+        "single": "Single Session",
+        "pumpingTip": "Pumping Tip"
+      },
+      "vascular": {
+        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
+        "dualToningDesc": "Redness / Vascular Relief",
+        "single": "Single Session"
+      },
+      "skintone": {
+        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
+        "dualToningDesc": "Skin Tone Improvement",
+        "single": "Single Session"
+      },
+      "hairRemoval": {
+        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
+        "dualToningDesc": "Hair Removal Care",
+        "single": "Single Session"
+      },
+      "tattoo": {
+        "tattooLucas": "Tattoo Removal Laser (Lucas)",
+        "onePart": "Per Area",
+        "co2Laser": "CO2 Laser",
+        "co2Desc": "Moles / Flat Warts / Age Spots, etc.",
+        "dia3mm": "Diameter ≤ 3mm (1 spot)",
+        "dia5mm": "3mm < Diameter ≤ 5mm (1 spot)",
+        "diaOver5mm": "Diameter > 5mm (1 spot)",
+        "faceFull": "Full Face (50+ spots)",
+        "neckFull": "Full Neck (50+ spots)"
+      }
+    }
   }
 }

@@ -3846,5 +3846,130 @@
       "title": "活动 | LIV整形外科",
       "description": "查看LIV整形外科的最新活动和特别促销。超声刀、热玛吉、肉毒素、玻尿酸等各种项目优惠。"
     }
+  },
+  "pricing": {
+    "sectionTitle": "项目价格",
+    "header": {
+      "treatment": "项目",
+      "option": "部位 / 选项",
+      "price": "价格"
+    },
+    "consultRequired": "咨询后决定",
+    "suffix": {
+      "starting": "韩元 ~",
+      "perPiece": "韩元 ~ / 根",
+      "per100iu": "韩元 ~ / 100IU"
+    },
+    "note": "※ 以上为单次价格,准确价格以咨询为准。",
+    "labels": {
+      "ulthera": {
+        "name": "超声刀 Prime",
+        "upperFace": "上面部 (250-400发)",
+        "lowerFace": "下面部 (~600发)",
+        "fullFace": "全面部 (800-1,100发)",
+        "fullFaceNeck": "全面部 + 颈部 (~1,200发)"
+      },
+      "thermage": {
+        "name": "热玛吉激光",
+        "shot300": "300发",
+        "shot600": "600发",
+        "shot900": "900发",
+        "eyeTip225": "眼部探头 225发",
+        "eyeTip450": "眼部探头 450发"
+      },
+      "shurink": {
+        "shurinkLaser": "Shurink激光",
+        "shurinkAreas": "V脸/苹果肌/额头/双下巴/颈纹/眼下",
+        "ultheraLaser": "超声刀激光",
+        "ultheraAreas": "V脸/苹果肌/双下巴/颈纹",
+        "shot300": "300发",
+        "shot600": "600发",
+        "shot900": "900发"
+      },
+      "density": {
+        "hiTip": "Density激光 (Hi-Tip)",
+        "alphaTip": "Density激光 (Alpha-Tip)",
+        "shot300": "300发",
+        "shot600": "600发"
+      },
+      "inmode": {
+        "name": "InMode激光",
+        "fxForma": "FX / FORMA 模式",
+        "fx": "FX 模式",
+        "forma": "FORMA 模式"
+      },
+      "thread": {
+        "name": "埋线提升",
+        "domestic": "国产",
+        "domesticPremium": "国产高级",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan",
+        "allerganSalivary": "Allergan (腮腺)"
+      },
+      "botox": {
+        "botoxContour": "肉毒素 (轮廓)",
+        "contourAreas": "方形脸/太阳穴",
+        "botoxBody": "肉毒素 (身体)",
+        "bodyAreas": "斜方肌/手臂/小腿/大腿 (100IU)",
+        "domestic": "国产",
+        "domesticPremium": "国产高级",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan"
+      },
+      "filler": {
+        "chanelInjection": "香奈儿注射",
+        "volume3cc": "3 cc",
+        "otherFillers": "其他玻尿酸",
+        "consultOnly": "详细价格咨询时告知"
+      },
+      "skinbooster": {
+        "juvelook": "Juvelook 皮肤助推器",
+        "elementWhitening": "Element 美白助推器",
+        "stemcell": "干细胞皮肤助推器",
+        "melasma": "祛斑针",
+        "glow": "水光针",
+        "rejuranHbPlus": "Rejuran HB plus",
+        "eyeRejuran": "眼部Rejuran",
+        "rejuran": "Rejuran",
+        "volume1cc": "1 cc",
+        "volume2cc": "2 cc",
+        "volume4cc": "4 cc",
+        "volume5cc": "5 cc",
+        "volume10cc": "10 cc"
+      },
+      "pigmentation": {
+        "dualToning": "双波长激光 (Clarity + Lucas)",
+        "dualToningDesc": "色斑/雀斑/毛孔/痘印",
+        "potenza": "Potenza",
+        "single": "单次",
+        "pumpingTip": "Pumping 探头"
+      },
+      "vascular": {
+        "dualToning": "双波长激光 (Clarity + Lucas)",
+        "dualToningDesc": "红血丝/血管改善",
+        "single": "单次"
+      },
+      "skintone": {
+        "dualToning": "双波长激光 (Clarity + Lucas)",
+        "dualToningDesc": "肤色改善",
+        "single": "单次"
+      },
+      "hairRemoval": {
+        "dualToning": "双波长激光 (Clarity + Lucas)",
+        "dualToningDesc": "脱毛护理",
+        "single": "单次"
+      },
+      "tattoo": {
+        "tattooLucas": "纹身祛除激光 (Lucas)",
+        "onePart": "1部位",
+        "co2Laser": "CO2激光",
+        "co2Desc": "痣/扁平疣/老年斑等",
+        "dia3mm": "直径 ≤ 3mm (1个)",
+        "dia5mm": "3mm < 直径 ≤ 5mm (1个)",
+        "diaOver5mm": "直径 > 5mm (1个)",
+        "faceFull": "全脸 (50个以上)",
+        "neckFull": "全颈 (50个以上)"
+      }
+    }
   }
 }
