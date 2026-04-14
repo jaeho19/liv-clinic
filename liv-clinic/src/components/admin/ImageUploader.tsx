@@ -5,22 +5,23 @@ import { createClient } from '@/lib/supabase-browser';
 import Image from 'next/image';
 
 interface ImageUploaderProps {
-  bucket: 'events' | 'popups' | 'patient-photos';
+  bucket: 'events' | 'popups' | 'patient-photos' | 'before-after';
   folder: string;
   value: string | null;
   onChange: (url: string | null) => void;
   label?: string;
+  maxSizeMb?: number;
 }
 
-export default function ImageUploader({ bucket, folder, value, onChange, label }: ImageUploaderProps) {
+export default function ImageUploader({ bucket, folder, value, onChange, label, maxSizeMb = 5 }: ImageUploaderProps) {
   const supabase = createClient();
   const [uploading, setUploading] = useState(false);
   const [dragOver, setDragOver] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const uploadFile = async (file: File) => {
-    if (file.size > 5 * 1024 * 1024) {
-      alert('파일 크기는 5MB 이하여야 합니다.');
+    if (file.size > maxSizeMb * 1024 * 1024) {
+      alert(`파일 크기는 ${maxSizeMb}MB 이하여야 합니다.`);
       return;
     }
 
@@ -104,7 +105,7 @@ export default function ImageUploader({ bucket, folder, value, onChange, label }
           ) : (
             <>
               <p className="text-sm text-[#8a8a8a] mb-1">클릭하거나 파일을 드래그하세요</p>
-              <p className="text-xs text-[#b4b4b4]">JPG, PNG, WebP (최대 5MB)</p>
+              <p className="text-xs text-[#b4b4b4]">JPG, PNG, WebP (최대 {maxSizeMb}MB)</p>
             </>
           )}
         </div>

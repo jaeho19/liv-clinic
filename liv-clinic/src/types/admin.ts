@@ -42,6 +42,14 @@ export const RELATED_TREATMENT_OPTIONS = [
 ] as const;
 
 // ==========================================
+// Before / After Photos (전후사진)
+// ==========================================
+
+export type BeforeAfterRow = Database['public']['Tables']['before_after']['Row'];
+export type BeforeAfterInsert = Database['public']['Tables']['before_after']['Insert'];
+export type BeforeAfterUpdate = Database['public']['Tables']['before_after']['Update'];
+
+// ==========================================
 // Popups (팝업)
 // ==========================================
 

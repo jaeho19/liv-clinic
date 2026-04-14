@@ -28,6 +28,7 @@ const NAV_SECTIONS: NavSection[] = [
     title: '홈페이지 관리',
     items: [
       { href: '/admin/events', label: '이벤트관리', icon: '🎉' },
+      { href: '/admin/before-after', label: '전후사진관리', icon: '📷' },
       { href: '/admin/popups', label: '팝업관리', icon: '🪟' },
       { href: '/admin/analytics', label: 'Analytics', icon: '🌐' },
     ],
