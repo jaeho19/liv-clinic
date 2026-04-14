@@ -128,6 +128,11 @@ export default function Header() {
       href: '/laser',
     },
     {
+      key: 'beforeAfter',
+      label: t('beforeAfter'),
+      href: '/before-after',
+    },
+    {
       key: 'medical',
       label: t('medical'),
       href: '/medical',

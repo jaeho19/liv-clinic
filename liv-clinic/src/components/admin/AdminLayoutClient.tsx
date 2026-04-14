@@ -15,6 +15,7 @@ const PAGE_TITLES: Record<string, string> = {
   '/admin/revenue': '매출관리',
   '/admin/patients': '환자조회',
   '/admin/events': '이벤트관리',
+  '/admin/before-after': '전후사진관리',
   '/admin/popups': '팝업관리',
   '/admin/settings': '설정',
 };

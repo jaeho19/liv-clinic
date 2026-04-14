@@ -311,6 +311,48 @@ export type Database = {
           },
         ]
       }
+      before_after: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          image_url: string
+          is_visible: boolean
+          sort_order: number
+          title_en: string
+          title_ja: string
+          title_ko: string
+          title_zh: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id?: string
+          image_url: string
+          is_visible?: boolean
+          sort_order?: number
+          title_en?: string
+          title_ja?: string
+          title_ko?: string
+          title_zh?: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          image_url?: string
+          is_visible?: boolean
+          sort_order?: number
+          title_en?: string
+          title_ja?: string
+          title_ko?: string
+          title_zh?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       events: {
         Row: {
           category: string
