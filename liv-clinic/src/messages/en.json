@@ -108,6 +108,8 @@
   "sections": {
     "certification": {
       "title": "Certified Clinic",
+      "officialPartner": "Certifications",
+      "visitSite": "Visit Official Site",
       "ulthera": "Ultherapy Prime Certified",
       "ultheraEn": "Ultherapy Prime Certified",
       "ultheraDesc": "FDA Approved HIFU Lifting",
@@ -357,7 +359,11 @@
       "freeParking": "Free Parking Available",
       "parkingDetail": "Electric vehicles and large vehicles can park on the 1st floor when space is available. If no parking space is available, please use nearby paid parking lots.",
       "naverMap": "Naver Map",
-      "kakaoMap": "Kakao Map"
+      "kakaoMap": "Kakao Map",
+      "markerTitle": "LIV Plastic Surgery",
+      "infoWindowSubway": "1 min walk from Sinsa Station Exit 4",
+      "mapLoading": "Loading map...",
+      "mapError": "Unable to load map"
     }
   },
   "footer": {
@@ -3678,6 +3684,14 @@
         "title": "Location",
         "subtitle": "Visit Us"
       }
+    },
+    "locationPage": {
+      "sectionLabel": "Location",
+      "heroTitle": "How to Visit",
+      "heroDescription": "Just 1 minute walk from Sinsa Station Exit 4. Conveniently accessible LIV Plastic Surgery.",
+      "addressLabel": "Address",
+      "buildingDetail": "4F, Jaeun Building",
+      "phoneLabel": "Phone"
     }
   },
   "equipmentPage": {

@@ -1,7 +1,8 @@
 'use client';
 
 import { useState, useCallback, useRef } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import {
@@ -495,7 +496,8 @@ const TRANSDUCERS: Transducer[] = [
 export default function UltheraDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
-  const treatment = TREATMENTS.lifting.ulthera;
+  const locale = useLocale();
+  const treatment = getLocalizedTreatment(TREATMENTS.lifting.ulthera, 'ulthera', locale);
 
   // Get translated data for detail page
   const skinLayerLabels = {
@@ -1567,6 +1569,7 @@ export default function UltheraDetail() {
                   TREATMENTS.laser[relatedId as keyof typeof TREATMENTS.laser];
 
                 if (!related) return null;
+                const l10n = getRelatedTreatmentLabel(relatedId, locale);
 
                 return (
                   <AnimateOnScroll key={relatedId}>
@@ -1576,9 +1579,9 @@ export default function UltheraDetail() {
                           <div>
                             <p className="font-serif text-primary mb-1">{related.nameEn}</p>
                             <h3 className="text-h4 text-secondary group-hover:text-primary transition-colors">
-                              {related.name}
+                              {l10n?.name ?? related.name}
                             </h3>
-                            <p className="text-small text-mono-light mt-2">{related.shortDesc}</p>
+                            <p className="text-small text-mono-light mt-2">{l10n?.desc ?? related.shortDesc}</p>
                           </div>
                           <svg className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

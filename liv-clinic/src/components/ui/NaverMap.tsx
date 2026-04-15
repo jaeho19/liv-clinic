@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 
 interface NaverMapProps {
   lat: number;
@@ -8,6 +9,7 @@ interface NaverMapProps {
   zoom?: number;
   className?: string;
   markerTitle?: string;
+  infoWindowText?: string;
 }
 
 declare global {
@@ -18,13 +20,26 @@ declare global {
   }
 }
 
+function escapeHtml(input: string): string {
+  return input
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export default function NaverMap({
   lat,
   lng,
   zoom = 17,
   className = '',
-  markerTitle = '리브성형외과'
+  markerTitle,
+  infoWindowText,
 }: NaverMapProps) {
+  const t = useTranslations('sections.location');
+  const resolvedMarkerTitle = markerTitle ?? t('markerTitle');
+  const resolvedInfoWindowText = infoWindowText ?? t('infoWindowSubway');
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<naver.maps.Map | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -61,12 +76,14 @@ export default function NaverMap({
     const marker = new window.naver.maps.Marker({
       position: position,
       map: map,
-      title: markerTitle,
+      title: resolvedMarkerTitle,
       animation: window.naver.maps.Animation.DROP,
     });
 
+    const safeTitle = escapeHtml(resolvedMarkerTitle);
+    const safeText = escapeHtml(resolvedInfoWindowText);
     const infoWindow = new window.naver.maps.InfoWindow({
-      content: '<div style="padding: 12px 16px; min-width: 180px;"><h4 style="margin: 0 0 4px 0; font-weight: 600; color: #6d4e42;">리브성형외과</h4><p style="margin: 0; font-size: 13px; color: #575756;">신사역 4번 출구 도보 1분</p></div>',
+      content: `<div style="padding: 12px 16px; min-width: 180px;"><h4 style="margin: 0 0 4px 0; font-weight: 600; color: #6d4e42;">${safeTitle}</h4><p style="margin: 0; font-size: 13px; color: #575756;">${safeText}</p></div>`,
       borderWidth: 0,
       backgroundColor: 'white',
       anchorSkew: true,
@@ -82,7 +99,7 @@ export default function NaverMap({
         infoWindow.open(map, marker);
       }
     });
-  }, [lat, lng, zoom, markerTitle]);
+  }, [lat, lng, zoom, resolvedMarkerTitle, resolvedInfoWindowText]);
 
   // 스크립트 로딩
   useEffect(() => {
@@ -201,7 +218,7 @@ export default function NaverMap({
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
-          <p className="text-mono-light">지도를 불러올 수 없습니다</p>
+          <p className="text-mono-light">{t('mapError')}</p>
           {typeof error === 'string' && (
             <p className="text-xs text-mono-light/60 mt-2">{error}</p>
           )}
@@ -219,7 +236,7 @@ export default function NaverMap({
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-            <p className="text-mono-light">지도 로딩 중...</p>
+            <p className="text-mono-light">{t('mapLoading')}</p>
           </div>
         </div>
       )}

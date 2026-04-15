@@ -70,7 +70,7 @@ export default function Certification() {
         <AnimateOnScroll>
           <div className="text-center mb-8 md:mb-12">
             <p className="text-small text-primary tracking-widest uppercase mb-2">
-              Official Partner
+              {t('officialPartner')}
             </p>
             <h2 className="text-h2 text-secondary">{t('title')}</h2>
           </div>
@@ -109,7 +109,7 @@ export default function Certification() {
 
                   {/* Visit Official Site */}
                   <span className="inline-flex items-center justify-center gap-1.5 text-small text-primary mt-4 group-hover:gap-2 transition-all">
-                    공식 사이트 방문
+                    {t('visitSite')}
                     <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                     </svg>

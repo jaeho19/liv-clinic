@@ -1,11 +1,12 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
+import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 
 // SVG Icons
 const CheckIcon = () => (
@@ -306,7 +307,8 @@ const ProcessStep = ({ step, title, desc, isLast }: { step: number; title: strin
 export default function InModeDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
-  const treatment = TREATMENTS.lifting.inmode;
+  const locale = useLocale();
+  const treatment = getLocalizedTreatment(TREATMENTS.lifting.inmode, 'inmode', locale);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<'forma' | 'morpheus' | 'facetite'>('morpheus');
   const faqRefs = useRef<Map<number, HTMLDivElement>>(new Map());
@@ -1001,6 +1003,7 @@ export default function InModeDetail() {
                   TREATMENTS.laser[relatedId as keyof typeof TREATMENTS.laser];
 
                 if (!related) return null;
+                const l10n = getRelatedTreatmentLabel(relatedId, locale);
 
                 return (
                   <AnimateOnScroll key={relatedId}>
@@ -1010,9 +1013,9 @@ export default function InModeDetail() {
                           <div>
                             <p className="font-serif text-[#E91E63] mb-1">{related.nameEn}</p>
                             <h3 className="text-h4 text-secondary group-hover:text-[#E91E63] transition-colors">
-                              {related.name}
+                              {l10n?.name ?? related.name}
                             </h3>
-                            <p className="text-small text-mono-light mt-2">{related.shortDesc}</p>
+                            <p className="text-small text-mono-light mt-2">{l10n?.desc ?? related.shortDesc}</p>
                           </div>
                           <svg className="w-6 h-6 text-[#E91E63] group-hover:translate-x-2 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

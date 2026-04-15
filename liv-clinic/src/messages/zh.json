@@ -3,7 +3,7 @@
     "home": "首页",
     "siteName": "LIV整形外科",
     "siteNameEn": "LIV Plastic Surgery",
-    "slogan": "Slow Aging, Natural Beauty",
+    "slogan": "慢老化，自然之美",
     "consultation": "咨询预约",
     "learnMore": "了解更多",
     "viewAll": "查看全部",
@@ -108,11 +108,13 @@
   "sections": {
     "certification": {
       "title": "官方认证医院",
-      "ulthera": "超声刀正品认证",
-      "ultheraEn": "Ultherapy Prime Certified",
+      "officialPartner": "官方认证",
+      "visitSite": "访问官方网站",
+      "ulthera": "超声刀Prime 正品认证",
+      "ultheraEn": "超声刀Prime 正品认证",
       "ultheraDesc": "FDA认证 HIFU提升",
-      "thermage": "热玛吉FLX合作伙伴",
-      "thermageEn": "Thermage FLX Partner",
+      "thermage": "热玛吉FLX 合作伙伴",
+      "thermageEn": "热玛吉FLX 合作伙伴",
       "thermageDesc": "Solta Medical 官方合作伙伴",
       "density": "Density官方合作伙伴",
       "densityEn": "Density Official Partner",
@@ -343,7 +345,7 @@
     "location": {
       "title": "Location",
       "subtitle": "交通指南",
-      "address": "首尔特别市瑞草区Naruteo路80 Jaeun大厦4楼",
+      "address": "首尔市瑞草区纳鲁特路80号 自恩大厦4层",
       "subway": "新沙站4号出口步行1分钟",
       "subwayInfo": "3号线·新盆唐线 新沙站4号出口",
       "walkMinutes": "步行1分钟",
@@ -357,7 +359,11 @@
       "freeParking": "免费停车",
       "parkingDetail": "电动汽车和大型车辆仅在1楼停车场有空位时可停车。如无停车位，请使用附近的收费停车场。",
       "naverMap": "Naver地图",
-      "kakaoMap": "Kakao地图"
+      "kakaoMap": "Kakao地图",
+      "markerTitle": "LIV整形外科",
+      "infoWindowSubway": "新沙站4号出口步行1分钟",
+      "mapLoading": "地图加载中...",
+      "mapError": "无法加载地图"
     }
   },
   "footer": {
@@ -587,7 +593,7 @@
           },
           "hero": {
             "badge": "FDA唯一批准提升设备",
-            "premiumLifting": "Premium Lifting",
+            "premiumLifting": "高端提升",
             "title": "超声刀",
             "description": "唯一能到达深层SMAS的非侵入式提升。\n实时DeepSEE可视化技术，精准安全。",
             "stats": {
@@ -637,7 +643,7 @@
               }
             },
             "clinicalEvidence": {
-              "label": "Clinical Evidence",
+              "label": "临床证据",
               "papers": "临床研究论文",
               "aestheticImprovement": "美学改善率",
               "satisfaction": "患者满意度",
@@ -670,7 +676,7 @@
           },
           "treatmentInfo": {
             "sectionLabel": "Details",
-            "labelEn": "Treatment Info",
+            "labelEn": "治疗信息",
             "title": "治疗信息",
             "labels": {
               "duration": "治疗时间",
@@ -718,7 +724,7 @@
             "location": "新沙站4号出口 步行3分钟"
           },
           "related": {
-            "labelEn": "Related Treatments",
+            "labelEn": "相关治疗",
             "title": "相关治疗"
           }
         }
@@ -893,7 +899,7 @@
             "sectionLabel": "Treatment Process"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
+            "sectionLabel": "治疗信息",
             "title": "治疗信息",
             "labels": {
               "duration": "治疗时间",
@@ -938,7 +944,7 @@
             "location": "新沙站4号出口步行3分钟"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
+            "sectionLabel": "相关推荐治疗",
             "title": "相关推荐治疗"
           }
         }
@@ -1112,7 +1118,7 @@
             "sectionLabel": "Treatment Process"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
+            "sectionLabel": "治疗信息",
             "title": "治疗信息",
             "labels": {
               "duration": "治疗时间",
@@ -1136,7 +1142,7 @@
             "location": "新沙站4号出口步行3分钟"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
+            "sectionLabel": "相关推荐治疗",
             "title": "相关推荐治疗"
           }
         }
@@ -1273,7 +1279,7 @@
             "sectionLabel": "Treatment Process"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
+            "sectionLabel": "治疗信息",
             "title": "治疗信息",
             "labels": {
               "duration": "治疗时间",
@@ -1297,7 +1303,7 @@
             "location": "新沙站4号出口步行3分钟"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
+            "sectionLabel": "相关推荐治疗",
             "title": "相关推荐治疗"
           }
         }
@@ -3662,7 +3668,7 @@
       "title": "四大核心价值"
     },
     "certifications": {
-      "subtitle": "Certifications",
+      "subtitle": "官方认证",
       "title": "官方认证医院"
     },
     "quickLinks": {
@@ -3678,6 +3684,14 @@
         "title": "位置指南",
         "subtitle": "Location"
       }
+    },
+    "locationPage": {
+      "sectionLabel": "交通指南",
+      "heroTitle": "如何到达",
+      "heroDescription": "新沙站4号出口步行1分钟，交通便捷的LIV整形外科。",
+      "addressLabel": "地址",
+      "buildingDetail": "自恩大厦4层",
+      "phoneLabel": "电话号码"
     }
   },
   "equipmentPage": {

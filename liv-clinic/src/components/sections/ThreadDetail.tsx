@@ -1,14 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 import { PriceTable } from '@/components/ui';
-
-const treatment = TREATMENTS.lifting.thread;
+import { getLocalizedTreatment } from '@/lib/treatmentsI18n';
 
 // SVG 일러스트레이션에서 사용할 타입
 interface SkinLayersLabels {
@@ -738,6 +737,8 @@ const TreatmentAreasIllustration = ({ areas }: { areas: TreatmentAreasLabels }) 
 export default function ThreadDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const treatment = getLocalizedTreatment(TREATMENTS.lifting.thread, 'thread', locale);
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   // 번역 데이터 로드

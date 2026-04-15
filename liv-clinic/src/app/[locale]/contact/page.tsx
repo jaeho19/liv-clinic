@@ -467,7 +467,6 @@ export default function ContactPage() {
                 lng={SITE_INFO.coordinates.lng}
                 zoom={17}
                 className="absolute inset-0"
-                markerTitle="리브성형외과"
               />
             </div>
 

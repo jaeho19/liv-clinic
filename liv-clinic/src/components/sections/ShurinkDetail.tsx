@@ -1,14 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRef, useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
-
-const treatment = TREATMENTS.lifting.shurink;
+import { getLocalizedTreatment } from '@/lib/treatmentsI18n';
 
 // 슈링크 HIFU 에너지 전달 일러스트
 const HIFURapidFireIllustration = () => (
@@ -426,6 +425,8 @@ const HIFUIcon = () => (
 export default function ShurinkDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const treatment = getLocalizedTreatment(TREATMENTS.lifting.shurink, 'shurink', locale);
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
   const [currentLabelIndex, setCurrentLabelIndex] = useState(0);
 

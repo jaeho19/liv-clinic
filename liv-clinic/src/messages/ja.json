@@ -108,6 +108,8 @@
   "sections": {
     "certification": {
       "title": "公式認証病院",
+      "officialPartner": "公式認証",
+      "visitSite": "公式サイトを訪問",
       "ulthera": "ウルセラ正品認証",
       "ultheraEn": "Ultherapy Prime Certified",
       "ultheraDesc": "FDA承認 HIFUリフティング",
@@ -357,7 +359,11 @@
       "freeParking": "無料駐車可能",
       "parkingDetail": "電気自動車および大型車両は1階駐車場のスペースがある場合のみ駐車可能です。駐車スペースがない場合は、近隣の有料駐車場をご利用ください。",
       "naverMap": "ネイバーマップ",
-      "kakaoMap": "カカオマップ"
+      "kakaoMap": "カカオマップ",
+      "markerTitle": "LIV整形外科",
+      "infoWindowSubway": "新沙駅4番出口から徒歩1分",
+      "mapLoading": "地図を読み込み中...",
+      "mapError": "地図を読み込めません"
     }
   },
   "footer": {
@@ -3678,6 +3684,14 @@
         "title": "アクセス",
         "subtitle": "Location"
       }
+    },
+    "locationPage": {
+      "sectionLabel": "Location",
+      "heroTitle": "アクセス",
+      "heroDescription": "新沙駅4番出口から徒歩1分、アクセス便利なLIV整形外科です。",
+      "addressLabel": "住所",
+      "buildingDetail": "ジャウンビル4階",
+      "phoneLabel": "電話番号"
     }
   },
   "equipmentPage": {

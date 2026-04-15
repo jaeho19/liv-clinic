@@ -47,6 +47,7 @@ const transportations = [
 export default function LocationPage() {
   const t = useTranslations();
   const tFooter = useTranslations('footer');
+  const tLoc = useTranslations('aboutPage.locationPage');
 
   return (
     <>
@@ -55,12 +56,10 @@ export default function LocationPage() {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="max-w-3xl">
-              <p className="font-serif text-h3 text-primary mb-4">Location</p>
-              <h1 className="text-display text-secondary mb-6">오시는 길</h1>
+              <p className="font-serif text-h3 text-primary mb-4">{tLoc('sectionLabel')}</p>
+              <h1 className="text-display text-secondary mb-6">{tLoc('heroTitle')}</h1>
               <p className="text-h4 text-mono leading-relaxed">
-                신사역 4번 출구에서 도보 1분,
-                <br />
-                편리한 접근성의 리브성형외과입니다.
+                {tLoc('heroDescription')}
               </p>
             </div>
           </AnimateOnScroll>
@@ -80,7 +79,6 @@ export default function LocationPage() {
                   lng={SITE_INFO.coordinates.lng}
                   zoom={17}
                   className="absolute inset-0"
-                  markerTitle="리브성형외과"
                 />
               </div>
             </AnimateOnScroll>
@@ -98,9 +96,9 @@ export default function LocationPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-h4 text-secondary mb-2">주소</h3>
-                      <p className="text-body text-mono mb-1">{SITE_INFO.address.ko}</p>
-                      <p className="text-small text-mono-light">자은빌딩 4층</p>
+                      <h3 className="text-h4 text-secondary mb-2">{tLoc('addressLabel')}</h3>
+                      <p className="text-body text-mono mb-1">{t('sections.location.address')}</p>
+                      <p className="text-small text-mono-light">{tLoc('buildingDetail')}</p>
                     </div>
                   </div>
                 </Card>
@@ -114,7 +112,7 @@ export default function LocationPage() {
                       </svg>
                     </div>
                     <div>
-                      <h3 className="text-h4 text-secondary mb-2">전화번호</h3>
+                      <h3 className="text-h4 text-secondary mb-2">{tLoc('phoneLabel')}</h3>
                       <a
                         href={`tel:${SITE_INFO.phone}`}
                         className="text-h3 text-primary hover:text-secondary transition-colors"
