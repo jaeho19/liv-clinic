@@ -1,10 +1,13 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { SITE_INFO, SOCIAL_LINKS } from '@/lib/constants';
 import { trackContact } from '@/lib/analytics-events';
+
+const INSTAGRAM_CTA_URL = 'https://www.instagram.com/livclinic_after/';
 
 // CTA 버튼 정의
 const ctaButtons = {
@@ -73,14 +76,26 @@ const ctaButtons = {
     color: 'bg-[#25D366] hover:bg-[#1DA851]',
     textColor: 'text-white',
   },
+  instagram: {
+    id: 'instagram',
+    label: { ko: '인스타그램', en: 'Instagram', ja: 'インスタグラム', zh: 'Instagram' },
+    icon: null,
+    image: {
+      src: '/images/insta.jpg',
+      alt: 'Instagram',
+    },
+    href: INSTAGRAM_CTA_URL,
+    color: 'bg-white hover:bg-gray-50',
+    textColor: 'text-white',
+  },
 };
 
-// 로케일별 버튼 순서 (첫 번째가 메인 CTA, 4개만 표시)
+// 로케일별 버튼 순서 (첫 번째가 메인 CTA, 보조 버튼 최상단에 instagram 고정)
 const buttonOrderByLocale: Record<string, (keyof typeof ctaButtons)[]> = {
-  ko: ['kakao', 'phone', 'whatsapp', 'line'],
-  en: ['phone', 'whatsapp', 'kakao', 'line'],
-  ja: ['line', 'phone', 'whatsapp', 'kakao'],
-  zh: ['wechat', 'phone', 'whatsapp', 'kakao'],
+  ko: ['kakao', 'instagram', 'phone', 'whatsapp', 'line'],
+  en: ['phone', 'instagram', 'whatsapp', 'kakao', 'line'],
+  ja: ['line', 'instagram', 'phone', 'whatsapp', 'kakao'],
+  zh: ['wechat', 'instagram', 'phone', 'whatsapp', 'kakao'],
 };
 
 export default function FloatingCTA() {
@@ -105,22 +120,37 @@ export default function FloatingCTA() {
       <div className="flex flex-col gap-2">
         {secondaryButtons.map((buttonKey, index) => {
           const button = ctaButtons[buttonKey];
+          const isImageButton = 'image' in button && button.image;
           return (
             <motion.a
               key={button.id}
               href={button.href}
               target={button.href.startsWith('http') || button.href.startsWith('weixin') ? '_blank' : undefined}
               rel={button.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              onClick={() => trackContact(button.id as 'phone' | 'kakao' | 'wechat' | 'line' | 'whatsapp')}
+              onClick={() =>
+                trackContact(button.id as 'phone' | 'kakao' | 'wechat' | 'line' | 'whatsapp' | 'instagram')
+              }
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.1 }}
-              className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center ${button.color} ${button.textColor} transition-all`}
+              className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center ${
+                isImageButton ? 'bg-white overflow-hidden' : `${button.color} ${button.textColor}`
+              } transition-all`}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
               aria-label={button.label[locale as keyof typeof button.label] || button.label.ko}
             >
-              {button.icon}
+              {isImageButton ? (
+                <Image
+                  src={button.image.src}
+                  alt={button.image.alt}
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-cover"
+                />
+              ) : (
+                button.icon
+              )}
             </motion.a>
           );
         })}
