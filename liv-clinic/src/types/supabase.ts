@@ -851,6 +851,7 @@ export type Database = {
           is_active: boolean
           link_target: string
           link_url: string
+          rolling_interval_ms: number
           show_on_mobile: boolean
           sort_order: number
           title: string
@@ -866,6 +867,7 @@ export type Database = {
           is_active?: boolean
           link_target?: string
           link_url?: string
+          rolling_interval_ms?: number
           show_on_mobile?: boolean
           sort_order?: number
           title: string
@@ -881,6 +883,7 @@ export type Database = {
           is_active?: boolean
           link_target?: string
           link_url?: string
+          rolling_interval_ms?: number
           show_on_mobile?: boolean
           sort_order?: number
           title?: string

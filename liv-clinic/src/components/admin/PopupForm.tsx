@@ -31,6 +31,9 @@ export default function PopupForm({ popup }: PopupFormProps) {
     width: popup?.width ?? 480,
     sort_order: popup?.sort_order ?? 0,
     show_on_mobile: popup?.show_on_mobile ?? true,
+    rolling_interval_sec: popup?.rolling_interval_ms
+      ? Math.round(popup.rolling_interval_ms / 1000)
+      : 5,
   });
 
   const [saving, setSaving] = useState(false);
@@ -51,10 +54,14 @@ export default function PopupForm({ popup }: PopupFormProps) {
 
     setSaving(true);
 
+    const clampedSec = Math.max(2, Math.min(30, form.rolling_interval_sec || 5));
+    const { rolling_interval_sec: _sec, ...rest } = form;
+    void _sec;
     const payload = {
-      ...form,
+      ...rest,
       display_start: new Date(form.display_start).toISOString(),
       display_end: new Date(form.display_end).toISOString(),
+      rolling_interval_ms: clampedSec * 1000,
     };
 
     try {
@@ -165,7 +172,7 @@ export default function PopupForm({ popup }: PopupFormProps) {
       </div>
 
       {/* Settings */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div>
           <label className="block text-sm font-medium text-[#575756] mb-1.5">팝업 너비 (px)</label>
           <input
@@ -186,6 +193,19 @@ export default function PopupForm({ popup }: PopupFormProps) {
             className="w-full px-3 py-2 border border-[#e5e5e5] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]"
           />
           <p className="text-xs text-[#b4b4b4] mt-1">숫자가 작을수록 먼저 표시됩니다.</p>
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-[#575756] mb-1.5">롤링 시간 (초)</label>
+          <input
+            type="number"
+            value={form.rolling_interval_sec}
+            onChange={(e) => updateField('rolling_interval_sec', parseInt(e.target.value) || 5)}
+            className="w-full px-3 py-2 border border-[#e5e5e5] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]"
+            min={2}
+            max={30}
+            step={1}
+          />
+          <p className="text-xs text-[#b4b4b4] mt-1">자동 전환 간격 (2~30초). 복수 팝업일 때 머무는 시간.</p>
         </div>
       </div>
 

@@ -98,6 +98,7 @@ export default function PopupsAdminPage() {
                     <p className="text-xs text-[#8a8a8a]">
                       {new Date(popup.display_start).toLocaleDateString('ko-KR')} ~ {new Date(popup.display_end).toLocaleDateString('ko-KR')}
                       {!popup.show_on_mobile && ' · 모바일 숨김'}
+                      {` · 롤링 ${Math.round((popup.rolling_interval_ms ?? 5000) / 1000)}초`}
                     </p>
                   </div>
                 </div>

@@ -10,7 +10,7 @@ interface PopupModalProps {
   onDismissToday: () => void;
 }
 
-const AUTO_INTERVAL = 2500;
+const DEFAULT_INTERVAL_MS = 5000;
 const RESUME_DELAY = 5000;
 const SWIPE_THRESHOLD = 50;
 
@@ -38,46 +38,41 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const autoPlayRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const autoPlayRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resumeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const touchStartX = useRef(0);
 
   const currentPopup = popups[currentIndex];
   const isMultiple = popups.length > 1;
 
-  const stopAutoPlay = useCallback(() => {
-    if (autoPlayRef.current) {
-      clearInterval(autoPlayRef.current);
-      autoPlayRef.current = null;
-    }
-  }, []);
-
-  const startAutoPlay = useCallback(() => {
-    if (!isMultiple) return;
-    stopAutoPlay();
-    autoPlayRef.current = setInterval(() => {
-      setDirection(1);
-      setCurrentIndex(prev => (prev + 1) % popups.length);
-    }, AUTO_INTERVAL);
-  }, [isMultiple, popups.length, stopAutoPlay]);
-
   const pauseAndResume = useCallback(() => {
-    stopAutoPlay();
     setIsPaused(true);
     if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     resumeTimerRef.current = setTimeout(() => {
       setIsPaused(false);
-      startAutoPlay();
     }, RESUME_DELAY);
-  }, [stopAutoPlay, startAutoPlay]);
+  }, []);
 
   useEffect(() => {
-    startAutoPlay();
+    if (!isMultiple || isPaused) return;
+    const intervalMs = popups[currentIndex]?.rolling_interval_ms || DEFAULT_INTERVAL_MS;
+    autoPlayRef.current = setTimeout(() => {
+      setDirection(1);
+      setCurrentIndex((prev) => (prev + 1) % popups.length);
+    }, intervalMs);
     return () => {
-      stopAutoPlay();
+      if (autoPlayRef.current) {
+        clearTimeout(autoPlayRef.current);
+        autoPlayRef.current = null;
+      }
+    };
+  }, [currentIndex, isMultiple, isPaused, popups]);
+
+  useEffect(() => {
+    return () => {
       if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
     };
-  }, [startAutoPlay, stopAutoPlay]);
+  }, []);
 
   const goToSlide = (index: number) => {
     setDirection(index > currentIndex ? 1 : -1);
@@ -136,8 +131,15 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
             maxHeight: '85dvh',
           }}
           onClick={(e) => e.stopPropagation()}
-          onMouseEnter={() => isMultiple && stopAutoPlay()}
-          onMouseLeave={() => isMultiple && !isPaused && startAutoPlay()}
+          onMouseEnter={() => isMultiple && setIsPaused(true)}
+          onMouseLeave={() => {
+            if (!isMultiple) return;
+            if (resumeTimerRef.current) {
+              clearTimeout(resumeTimerRef.current);
+              resumeTimerRef.current = null;
+            }
+            setIsPaused(false);
+          }}
         >
           {/* Close button */}
           <button
