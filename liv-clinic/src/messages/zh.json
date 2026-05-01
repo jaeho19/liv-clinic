@@ -3986,5 +3986,13 @@
         "neckFull": "全颈 (50个以上)"
       }
     }
+  },
+  "wechatPage": {
+    "title": "添加 LIV 微信好友",
+    "qrLabel": "微信二维码",
+    "idLabel": "微信号",
+    "copy": "复制",
+    "copied": "已复制 ✓",
+    "instruction": "请使用微信扫描二维码，或搜索 ID 添加好友。"
   }
 }
