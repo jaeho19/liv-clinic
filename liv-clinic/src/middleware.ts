@@ -8,6 +8,12 @@ const intlMiddleware = createMiddleware(routing);
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // /wechat 안내 페이지는 zh 전용. 다른 로케일 접근은 /zh/wechat으로 redirect.
+  const wechatNonZh = pathname.match(/^\/(ko|en|ja)\/wechat(\/.*)?$/);
+  if (wechatNonZh) {
+    return NextResponse.redirect(new URL('/zh/wechat', request.url));
+  }
+
   // /admin routes: refresh Supabase session cookies
   if (pathname.startsWith('/admin')) {
     let supabaseResponse = NextResponse.next({ request });
