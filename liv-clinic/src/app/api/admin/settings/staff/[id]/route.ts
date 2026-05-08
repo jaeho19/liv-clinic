@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
 import { createAdminClient } from '@/lib/supabase-admin';
+import type { TablesUpdate } from '@/types/supabase';
 
 // PATCH /api/admin/settings/staff/[id] - 직원 수정
 export async function PATCH(
@@ -15,7 +16,7 @@ export async function PATCH(
   const body = await request.json();
   const admin = createAdminClient();
 
-  const updateObj: Record<string, unknown> = {};
+  const updateObj: TablesUpdate<'staff_members'> = {};
   if (body.name !== undefined) updateObj.name = body.name;
   if (body.email !== undefined) updateObj.email = body.email;
   if (body.role !== undefined) updateObj.role = body.role;
