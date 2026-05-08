@@ -14,6 +14,7 @@ export interface ChatMessage {
   translated_text: string | null;
   translated_lang: 'ko' | 'en' | 'ja' | 'zh' | null;
   translation_status: TranslationStatus;
+  translation_error: string | null;
   created_at: string;
 }
 
@@ -89,6 +90,17 @@ export async function sendOperatorMessage(
   }
   const json = (await res.json()) as { message: ChatMessage };
   return json.message;
+}
+
+export async function closeSession(sessionId: string): Promise<void> {
+  const res = await fetch(`/api/chat/sessions/${sessionId}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+  });
+  if (!res.ok) {
+    const err = await safeJson(res);
+    throw new ChatApiError(res.status, err?.error ?? 'close_failed', err);
+  }
 }
 
 export async function fetchPresence(): Promise<{

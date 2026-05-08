@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase-browser';
-import { sendOperatorMessage, ChatApiError, type ChatMessage } from '@/lib/chat/chatApi';
+import { sendOperatorMessage, closeSession, ChatApiError, type ChatMessage } from '@/lib/chat/chatApi';
 
 interface SessionMeta {
   id: string;
@@ -37,6 +37,8 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
   const [text, setText] = useState('');
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [sessionStatus, setSessionStatus] = useState<SessionMeta['status']>(session.status);
+  const [closing, setClosing] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Realtime: postgres_changes 구독 (어드민은 authenticated 토큰)
@@ -87,6 +89,24 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
     const el = scrollRef.current;
     if (el) el.scrollTop = el.scrollHeight;
   }, [messages.length]);
+
+  const handleClose = async () => {
+    if (!window.confirm('이 대화를 종료하시겠습니까? 방문자에게 종료 안내 메시지가 전송됩니다.')) return;
+    setClosing(true);
+    setError(null);
+    try {
+      await closeSession(session.id);
+      setSessionStatus('closed');
+    } catch (err) {
+      if (err instanceof ChatApiError) {
+        setError(`종료 실패: ${err.code}`);
+      } else {
+        setError('종료 실패');
+      }
+    } finally {
+      setClosing(false);
+    }
+  };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
@@ -141,15 +161,27 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
                 시작 {formatTime(session.created_at)}
               </div>
             </div>
-            <span
-              className={`text-xs px-2 py-1 rounded-md whitespace-nowrap ${
-                session.status === 'open'
-                  ? 'bg-green-50 text-green-700 border border-green-100'
-                  : 'bg-gray-100 text-gray-500'
-              }`}
-            >
-              {session.status === 'open' ? '진행 중' : session.status}
-            </span>
+            <div className="flex items-center gap-2 flex-shrink-0">
+              <span
+                className={`text-xs px-2 py-1 rounded-md whitespace-nowrap ${
+                  sessionStatus === 'open'
+                    ? 'bg-green-50 text-green-700 border border-green-100'
+                    : 'bg-gray-100 text-gray-500'
+                }`}
+              >
+                {sessionStatus === 'open' ? '진행 중' : '종료'}
+              </span>
+              {sessionStatus === 'open' && (
+                <button
+                  type="button"
+                  onClick={() => void handleClose()}
+                  disabled={closing}
+                  className="text-xs px-3 min-h-[32px] rounded-md border border-red-200 text-red-600 hover:bg-red-50 disabled:opacity-50 transition whitespace-nowrap"
+                >
+                  {closing ? '종료 중...' : '대화 종료'}
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -179,7 +211,7 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
             }}
             placeholder="한국어로 입력하세요. 자동으로 방문자 언어로 번역됩니다."
             rows={3}
-            disabled={session.status !== 'open'}
+            disabled={sessionStatus !== 'open'}
             enterKeyHint="enter"
             className="px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[#b4988d] resize-none max-h-[200px] disabled:bg-gray-50 disabled:text-gray-400"
           />
@@ -192,7 +224,7 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
                 sending ||
                 text.trim().length === 0 ||
                 text.length > MAX_LEN ||
-                session.status !== 'open'
+                sessionStatus !== 'open'
               }
               className="bg-[#b4988d] text-white text-sm font-medium px-5 min-h-[44px] rounded-md hover:bg-[#a3877d] disabled:opacity-50 transition flex-shrink-0"
             >

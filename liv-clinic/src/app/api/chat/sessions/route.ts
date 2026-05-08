@@ -4,6 +4,9 @@ import { createChatAdminClient } from '@/lib/chat/db';
 import { isBusinessHours } from '@/lib/chat/businessHours';
 import { checkIpSessionDailyLimit } from '@/lib/chat/rateLimit';
 import { extractIp, hashIp } from '@/lib/chat/ipHash';
+import { broadcastToSession } from '@/lib/chat/broadcast';
+import { getChatSystemMessage } from '@/lib/chat/serverI18n';
+import { createServerClient } from '@/lib/supabase-server';
 
 export const runtime = 'nodejs';
 
@@ -55,6 +58,33 @@ export async function POST(req: NextRequest) {
   // 운영자 presence: MVP는 단순 운영시간 판정으로 대체 (정확한 presence는 후속)
   const businessHours = isBusinessHours();
 
+  // §5.1, §6.2: 세션 생성 직후 system 메시지 1건 자동 INSERT
+  const systemKey = businessHours ? 'welcome' : 'delayedResponseNotice';
+  const systemText = getChatSystemMessage(visitorLocale, systemKey);
+
+  const { data: systemMsg, error: msgError } = await admin
+    .from('chat_messages')
+    .insert({
+      session_id: session.id,
+      sender: 'system',
+      original_text: systemText,
+      original_lang: visitorLocale,
+      translation_status: 'skipped',
+    })
+    .select('id')
+    .single();
+
+  if (msgError) {
+    // system 메시지 실패는 세션 생성 자체를 막지 않음 — warn만 기록
+    console.warn('[chat/sessions] system message insert failed:', msgError);
+  } else if (systemMsg) {
+    // 방문자 위젯이 broadcast로 system 메시지를 수신할 수 있도록 알림
+    await broadcastToSession(session.id, {
+      type: 'message_created',
+      payload: { messageId: systemMsg.id },
+    });
+  }
+
   return NextResponse.json(
     {
       sessionId: session.id,
@@ -91,12 +121,14 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ session: data });
   }
 
-  // Admin 측: 인증 확인
-  const auth = req.headers.get('authorization');
-  // 어드민 인증은 Supabase 쿠키 기반이라 별도 체크 어려움 → service_role 사용 시 외부 호출 차단을 위해
-  // 별도 서버 측 페이지에서만 호출하도록 유도 (이 GET 무인증 분기는 어드민 페이지의 fetch에서만 사용)
-  // MVP에서는 service_role로 단순 조회. 어드민 외부 노출 위험은 next.config의 도메인/CORS로 통제.
-  void auth;
+  // Admin 측: 쿠키 기반 Supabase 세션으로 인증 확인
+  const supabase = await createServerClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  if (!user) {
+    return NextResponse.json({ error: 'unauthorized' }, { status: 401 });
+  }
 
   const status = url.searchParams.get('status') ?? 'open';
   const { data, error } = await admin

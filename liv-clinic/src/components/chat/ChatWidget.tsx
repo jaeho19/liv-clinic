@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
+import { trackChatOpen } from '@/lib/analytics-events';
 import ChatPanel from './ChatPanel';
 
 interface Props {
@@ -20,7 +21,12 @@ export default function ChatWidget({ locale }: Props) {
       {/* 토글 버튼 (좌하단) — 터치 타겟 ≥ 48×48 */}
       <button
         type="button"
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => {
+          setOpen((v) => {
+            if (!v) trackChatOpen(locale);
+            return !v;
+          });
+        }}
         aria-label={t('openButton')}
         aria-expanded={open}
         className="fixed left-2 sm:left-4 md:left-6 z-40 flex items-center justify-center gap-2 bg-[#b4988d] text-white shadow-lg hover:bg-[#a3877d] active:scale-[0.97] transition-all rounded-full min-w-[48px] min-h-[48px] px-3 sm:px-4 md:px-5"

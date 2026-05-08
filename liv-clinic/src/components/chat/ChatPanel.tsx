@@ -5,6 +5,11 @@ import { useTranslations } from 'next-intl';
 import { useChatSession } from '@/hooks/useChatSession';
 import { useChatRealtime } from '@/hooks/useChatRealtime';
 import { sendVisitorMessage, fetchPresence, ChatApiError } from '@/lib/chat/chatApi';
+import {
+  trackChatFirstMessage,
+  trackChatMessage,
+  trackChatTranslationFailure,
+} from '@/lib/analytics-events';
 import MessageBubble from './MessageBubble';
 
 interface Props {
@@ -90,10 +95,18 @@ export default function ChatPanel({ locale, open, onClose }: Props) {
     if (!session) return;
     const trimmed = text.trim();
     if (!trimmed || trimmed.length > MAX_LEN || sending) return;
+    // wasFirst: appendOptimistic 호출 전 visitor 메시지 수 판정 (§8.1)
+    const wasFirst =
+      messages.filter((m) => m.sender === 'visitor').length === 0;
     setSending(true);
     setSendError(null);
     try {
       const created = await sendVisitorMessage(session.sessionToken, trimmed);
+      trackChatMessage('sent', locale);
+      if (wasFirst) trackChatFirstMessage(locale);
+      if (created.translation_status === 'failed') {
+        trackChatTranslationFailure(created.translation_error ?? 'unknown');
+      }
       appendOptimistic(created);
       setText('');
     } catch (err) {
