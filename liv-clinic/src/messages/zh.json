@@ -4017,6 +4017,8 @@
     "tooLong": "消息不能超过 1000 个字符。",
     "sessionEnded": "本次对话已结束。如需进一步咨询，请开始新的对话。",
     "consent": "消息将被保存以提升咨询质量。",
+    "tooltipText": "需要帮助吗？我们可以用中文聊天 — 自动翻译给客服 ✨",
+    "tooltipDismiss": "关闭",
     "namePlaceholder": "昵称 (可选)",
     "emailPlaceholder": "邮箱 (可选，便于回访)",
     "startChat": "开始咨询",
