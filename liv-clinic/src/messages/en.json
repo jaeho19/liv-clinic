@@ -3986,5 +3986,34 @@
         "neckFull": "Full Neck (50+ spots)"
       }
     }
+  },
+  "chat": {
+    "openButton": "Live Chat",
+    "openButtonShort": "Chat",
+    "title": "LIV Live Chat",
+    "subtitle": "Auto-translated to Korean",
+    "online": "We're online",
+    "offline": "We'll reply soon — please leave a message",
+    "welcome": "Hello! How can we help you today?",
+    "delayedResponseNotice": "We're outside business hours (Weekdays 10:00–19:00, Sat 10:00–16:00 KST). Leave a message and we'll reply once we're back online. Please include your email for a faster response.",
+    "allOperatorsBusyNotice": "Our staff are momentarily away. Leave a message and we'll reply shortly.",
+    "followupNotice": "Apologies for the delay — we'll respond as soon as possible.",
+    "businessHours": "Hours: Weekdays 10:00–19:00, Sat 10:00–16:00 (KST), Closed Sun",
+    "placeholder": "Type a message...",
+    "send": "Send",
+    "showOriginal": "Show original",
+    "hideOriginal": "Hide original",
+    "close": "Close chat",
+    "translationFailed": "(translation failed — original only)",
+    "rateLimited": "You're sending messages too quickly. Please try again in a moment.",
+    "tooLong": "Messages cannot exceed 1000 characters.",
+    "sessionEnded": "This conversation has ended. Start a new chat for further questions.",
+    "consent": "Messages are stored to improve our consultation quality.",
+    "tooltipText": "Need help? Chat with us in English — auto-translated for our team ✨",
+    "tooltipDismiss": "Dismiss",
+    "namePlaceholder": "Nickname (optional)",
+    "emailPlaceholder": "Email (optional, for callbacks)",
+    "startChat": "Start Chat",
+    "messageCountdown": "{count}/1000"
   }
 }

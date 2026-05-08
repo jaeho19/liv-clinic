@@ -45,6 +45,29 @@ export function trackContact(
   });
 }
 
+/** 채팅 위젯 열기 */
+export function trackChatOpen(locale: 'en' | 'ja' | 'zh') {
+  trackEvent('chat_open', { locale });
+}
+
+/** 채팅 첫 메시지 전송 (세션 생성 직후) */
+export function trackChatFirstMessage(locale: 'en' | 'ja' | 'zh') {
+  trackEvent('chat_first_message', { locale });
+}
+
+/** 채팅 메시지 전송/수신 */
+export function trackChatMessage(
+  direction: 'sent' | 'received',
+  locale: 'en' | 'ja' | 'zh',
+) {
+  trackEvent('chat_message', { direction, locale });
+}
+
+/** 번역 실패 */
+export function trackChatTranslationFailure(reason: string) {
+  trackEvent('chat_translation_error', { reason });
+}
+
 /** 상담 폼 제출 이벤트 */
 export function trackFormSubmit(formType: string, treatment?: string) {
   trackEvent('generate_lead', {
