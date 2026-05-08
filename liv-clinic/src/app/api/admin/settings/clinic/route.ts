@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
 import { createAdminClient } from '@/lib/supabase-admin';
+import type { TablesUpdate } from '@/types/supabase';
 
 // 응답 포맷 변환
 function formatClinicData(row: Record<string, unknown>) {
@@ -70,7 +71,7 @@ export async function PUT(request: NextRequest) {
   const body = await request.json();
 
   try {
-    const updateObj: Record<string, unknown> = {
+    const updateObj: TablesUpdate<'clinic_settings'> = {
       name: body.name,
       phone: body.phone,
       address: body.address,
