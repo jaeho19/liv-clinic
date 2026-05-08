@@ -41,6 +41,152 @@ export type Database = {
         }
         Relationships: []
       }
+      before_after: {
+        Row: {
+          category: string
+          created_at: string
+          id: string
+          image_url: string
+          is_visible: boolean
+          sort_order: number
+          title_en: string
+          title_ja: string
+          title_ko: string
+          title_zh: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          id?: string
+          image_url: string
+          is_visible?: boolean
+          sort_order?: number
+          title_en?: string
+          title_ja?: string
+          title_ko?: string
+          title_zh?: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          id?: string
+          image_url?: string
+          is_visible?: boolean
+          sort_order?: number
+          title_en?: string
+          title_ja?: string
+          title_ko?: string
+          title_zh?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      chat_messages: {
+        Row: {
+          created_at: string
+          id: string
+          original_lang: string
+          original_text: string
+          sender: string
+          sender_admin_id: string | null
+          session_id: string
+          translated_lang: string | null
+          translated_text: string | null
+          translation_error: string | null
+          translation_latency_ms: number | null
+          translation_status: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          original_lang: string
+          original_text: string
+          sender: string
+          sender_admin_id?: string | null
+          session_id: string
+          translated_lang?: string | null
+          translated_text?: string | null
+          translation_error?: string | null
+          translation_latency_ms?: number | null
+          translation_status?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          original_lang?: string
+          original_text?: string
+          sender?: string
+          sender_admin_id?: string | null
+          session_id?: string
+          translated_lang?: string | null
+          translated_text?: string | null
+          translation_error?: string | null
+          translation_latency_ms?: number | null
+          translation_status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "chat_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_sessions: {
+        Row: {
+          assigned_admin_id: string | null
+          closed_at: string | null
+          created_at: string
+          id: string
+          ip_hash: string | null
+          last_message_at: string | null
+          session_token: string
+          status: string
+          unread_admin_count: number
+          updated_at: string
+          user_agent: string | null
+          visitor_email: string | null
+          visitor_locale: string
+          visitor_name: string | null
+        }
+        Insert: {
+          assigned_admin_id?: string | null
+          closed_at?: string | null
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          last_message_at?: string | null
+          session_token?: string
+          status?: string
+          unread_admin_count?: number
+          updated_at?: string
+          user_agent?: string | null
+          visitor_email?: string | null
+          visitor_locale: string
+          visitor_name?: string | null
+        }
+        Update: {
+          assigned_admin_id?: string | null
+          closed_at?: string | null
+          created_at?: string
+          id?: string
+          ip_hash?: string | null
+          last_message_at?: string | null
+          session_token?: string
+          status?: string
+          unread_admin_count?: number
+          updated_at?: string
+          user_agent?: string | null
+          visitor_email?: string | null
+          visitor_locale?: string
+          visitor_name?: string | null
+        }
+        Relationships: []
+      }
       clinic_settings: {
         Row: {
           address: string
@@ -310,48 +456,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
-      }
-      before_after: {
-        Row: {
-          category: string
-          created_at: string
-          id: string
-          image_url: string
-          is_visible: boolean
-          sort_order: number
-          title_en: string
-          title_ja: string
-          title_ko: string
-          title_zh: string
-          updated_at: string
-        }
-        Insert: {
-          category: string
-          created_at?: string
-          id?: string
-          image_url: string
-          is_visible?: boolean
-          sort_order?: number
-          title_en?: string
-          title_ja?: string
-          title_ko?: string
-          title_zh?: string
-          updated_at?: string
-        }
-        Update: {
-          category?: string
-          created_at?: string
-          id?: string
-          image_url?: string
-          is_visible?: boolean
-          sort_order?: number
-          title_en?: string
-          title_ja?: string
-          title_ko?: string
-          title_zh?: string
-          updated_at?: string
-        }
-        Relationships: []
       }
       events: {
         Row: {
