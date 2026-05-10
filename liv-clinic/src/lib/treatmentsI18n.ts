@@ -27,7 +27,7 @@ export interface TreatmentL10n {
   faqs?: readonly FAQ[];
 }
 
-type Locale = 'ko' | 'en' | 'zh' | 'ja';
+import type { Locale } from '@/i18n/routing';
 
 type LocaleMap = Record<string, TreatmentL10n>;
 

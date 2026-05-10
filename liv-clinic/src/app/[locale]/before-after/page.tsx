@@ -7,8 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
 import BeforeAfterModal from '@/components/sections/BeforeAfterModal';
 import type { BeforeAfterRow } from '@/types/admin';
-
-type Locale = 'ko' | 'en' | 'ja' | 'zh';
+import type { Locale } from '@/i18n/routing';
 
 const PAGE_TEXT: Record<Locale, { eyebrow: string; title: string; subtitle: string; all: string; empty: string; error: string; retry: string }> = {
   ko: {

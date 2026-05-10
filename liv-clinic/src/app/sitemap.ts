@@ -1,11 +1,15 @@
 import { MetadataRoute } from 'next';
-import { routing } from '@/i18n/routing';
+import { LOCALES } from '@/i18n/routing';
 import { TREATMENTS } from '@/lib/constants';
 
 const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://livps.co.kr';
 
+/** Build per-locale alternate URL map for a path — derived from LOCALES SSOT */
+function buildLanguagesMap(path: string): Record<string, string> {
+  return Object.fromEntries(LOCALES.map((code) => [code, `${BASE_URL}/${code}${path}`]));
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  const locales = routing.locales;
   const currentDate = new Date().toISOString();
 
   // Static pages
@@ -48,10 +52,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const allPages = [...staticPages, ...liftingTreatments, ...antiagingTreatments, ...laserCategories];
 
-  // Generate sitemap entries for all locales
+  // Generate sitemap entries for all locales — uses LOCALES SSOT
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
-  for (const locale of locales) {
+  for (const locale of LOCALES) {
     for (const page of allPages) {
       sitemapEntries.push({
         url: `${BASE_URL}/${locale}${page.path}`,
@@ -59,12 +63,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         changeFrequency: page.changeFrequency,
         priority: page.priority,
         alternates: {
-          languages: {
-            ko: `${BASE_URL}/ko${page.path}`,
-            en: `${BASE_URL}/en${page.path}`,
-            ja: `${BASE_URL}/ja${page.path}`,
-            zh: `${BASE_URL}/zh${page.path}`,
-          },
+          languages: buildLanguagesMap(page.path),
         },
       });
     }

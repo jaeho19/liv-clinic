@@ -2,6 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AnimateOnScroll, Button } from '@/components/ui';
 import { ScrollLink } from '@/components/ui';
@@ -13,7 +14,7 @@ type FilterStatus = 'all' | 'active' | 'ended';
 
 export default function EventsPage() {
   const t = useTranslations('events');
-  const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
+  const locale = useLocale() as Locale;
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
   const [allEvents, setAllEvents] = useState<EventItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);

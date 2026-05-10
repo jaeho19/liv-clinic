@@ -3,6 +3,7 @@
 import { useMemo, useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -18,7 +19,7 @@ export default function EventDetailClient() {
   const eventId = params.eventId as string;
   const t = useTranslations('events');
   const tNav = useTranslations('nav');
-  const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
+  const locale = useLocale() as Locale;
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [event, setEvent] = useState<EventItem | undefined>(undefined);
   const [allEvents, setAllEvents] = useState<EventItem[]>([]);

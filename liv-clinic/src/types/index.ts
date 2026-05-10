@@ -1,7 +1,7 @@
-// 다국어 지원 로케일
-export type Locale = 'ko' | 'en' | 'ja' | 'zh';
-
-export const locales: Locale[] = ['ko', 'en', 'ja', 'zh'];
+// 다국어 지원 로케일 — Single Source of Truth: src/i18n/routing.ts
+import { LOCALES, type Locale as RoutingLocale } from '@/i18n/routing';
+export type Locale = RoutingLocale;
+export const locales: readonly Locale[] = LOCALES;
 export const defaultLocale: Locale = 'ko';
 
 // 시술 카테고리
