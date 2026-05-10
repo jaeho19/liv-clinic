@@ -136,6 +136,27 @@ export type Database = {
           },
         ]
       }
+      chat_operator_status: {
+        Row: {
+          last_seen_at: string
+          operator_id: string
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          last_seen_at?: string
+          operator_id: string
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          last_seen_at?: string
+          operator_id?: string
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       chat_sessions: {
         Row: {
           assigned_admin_id: string | null
