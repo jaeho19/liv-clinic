@@ -68,6 +68,50 @@ export function trackChatTranslationFailure(reason: string) {
   trackEvent('chat_translation_error', { reason });
 }
 
+/**
+ * Session ID를 GA4용 16자 hex 해시로 변환 (PII 보호).
+ * Web Crypto SubtleCrypto를 사용해 클라이언트 측에서 SHA-256 후 앞 8바이트만 사용.
+ * 64-bit 엔트로피로 GA4 cardinality 충분 + 평문 외부 노출 방지.
+ */
+async function hashSessionId(sessionId: string): Promise<string> {
+  if (typeof window === 'undefined' || !window.crypto?.subtle) {
+    return 'unsupported';
+  }
+  try {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(sessionId);
+    const buf = await window.crypto.subtle.digest('SHA-256', data);
+    return Array.from(new Uint8Array(buf))
+      .slice(0, 8)
+      .map((b) => b.toString(16).padStart(2, '0'))
+      .join('');
+  } catch {
+    return 'hash_failed';
+  }
+}
+
+export type ChatCloseReason = 'visitor_close' | 'operator_close' | 'session_timeout';
+
+/**
+ * 채팅 세션 종료 이벤트 (방문자 패널 닫기 또는 어드민 종료).
+ * Fire-and-forget 패턴: await 없이 호출해도 안전.
+ * sessionId는 SHA-256 16자 해시로 변환되어 평문 노출 없음.
+ */
+export async function trackChatClose(
+  reason: ChatCloseReason,
+  durationSec: number,
+  sessionId: string,
+  locale?: 'en' | 'ja' | 'zh',
+): Promise<void> {
+  const sessionIdHash = await hashSessionId(sessionId);
+  trackEvent('chat_close', {
+    reason,
+    duration_sec: Math.max(0, Math.round(durationSec)),
+    session_id_hash: sessionIdHash,
+    ...(locale && { locale }),
+  });
+}
+
 /** 상담 폼 제출 이벤트 */
 export function trackFormSubmit(formType: string, treatment?: string) {
   trackEvent('generate_lead', {

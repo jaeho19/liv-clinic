@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase-browser';
 import { sendOperatorMessage, closeSession, ChatApiError, type ChatMessage } from '@/lib/chat/chatApi';
+import { trackChatClose } from '@/lib/analytics-events';
 
 interface SessionMeta {
   id: string;
@@ -97,6 +98,9 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
     try {
       await closeSession(session.id);
       setSessionStatus('closed');
+      // G-03: 어드민 종료 분석 이벤트 (PII-safe session hash, fire-and-forget)
+      const durationSec = (Date.now() - new Date(session.created_at).getTime()) / 1000;
+      void trackChatClose('operator_close', durationSec, session.id, session.visitor_locale);
     } catch (err) {
       if (err instanceof ChatApiError) {
         setError(`종료 실패: ${err.code}`);
