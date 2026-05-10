@@ -1,8 +1,17 @@
 import { Metadata } from 'next';
 import { SITE_INFO } from './constants';
+import { LOCALES, type Locale } from '@/i18n/routing';
+import { LOCALE_META } from '@/i18n/locales-meta';
 
 // Base URL for the site
 export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://livps.co.kr';
+
+/** Build hreflang alternates map from LOCALE_META — keeps SEO in sync with routing.ts */
+function buildHreflangMap(path: string): Record<string, string> {
+  return Object.fromEntries(
+    LOCALES.map((code) => [LOCALE_META[code].hreflang, `${BASE_URL}/${code}${path}`]),
+  );
+}
 
 // Default SEO configuration
 export const defaultSEO = {
@@ -158,19 +167,14 @@ export function generatePageMetadata({
     metadataBase: new URL(BASE_URL),
     alternates: {
       canonical: url,
-      languages: {
-        'ko-KR': `${BASE_URL}/ko${path}`,
-        'en-US': `${BASE_URL}/en${path}`,
-        'ja-JP': `${BASE_URL}/ja${path}`,
-        'zh-CN': `${BASE_URL}/zh${path}`,
-      },
+      languages: buildHreflangMap(path),
     },
     openGraph: {
       title: pageTitle,
       description: pageDescription,
       url,
       siteName: defaultSEO.siteName,
-      locale: locale === 'ko' ? 'ko_KR' : locale === 'ja' ? 'ja_JP' : locale === 'zh' ? 'zh_CN' : 'en_US',
+      locale: LOCALE_META[locale as Locale]?.ogLocale ?? 'en_US',
       type: 'website',
       images: images.length > 0 ? images : [defaultImage],
     },
@@ -200,34 +204,30 @@ export function generatePageMetadata({
 
 // Schema.org structured data for LocalBusiness (확장된 버전 - E-E-A-T 강화 + 다국어)
 export function generateLocalBusinessSchema(locale: string = 'ko') {
-  // 다국어 설명
-  const descriptions: Record<string, string> = {
-    ko: seoConfig.ko.description,
-    en: seoConfig.en.description,
-    ja: seoConfig.ja.description,
-    zh: seoConfig.zh.description,
-  };
+  // 다국어 설명 — locale별 seoConfig.description 사용, 미정의 시 ko fallback
+  const description = seoConfig[locale]?.description ?? seoConfig.ko.description;
 
-  // 다국어 병원명
-  const names: Record<string, string> = {
+  // 다국어 병원명 — Phase 1 신규 locale은 LIV 영문 표기 통일 (i18n-glossary 합의)
+  const NAMES: Record<string, string> = {
     ko: '리브성형외과',
     en: 'LIV Plastic Surgery',
     ja: 'リブ形成外科',
     zh: 'LIV整形外科',
   };
+  const name = NAMES[locale] ?? 'LIV Plastic Surgery';
 
   return {
     '@context': 'https://schema.org',
     '@type': ['MedicalBusiness', 'MedicalOrganization'],
     '@id': `${BASE_URL}/#organization`,
-    name: names[locale] || SITE_INFO.name,
+    name,
     alternateName: [
       SITE_INFO.nameEn,
       'リブ形成外科',
       'LIV整形外科',
       '리브성형외과',
     ],
-    description: descriptions[locale] || seoConfig.ko.description,
+    description,
     url: BASE_URL,
     logo: `${BASE_URL}/images/logo.png`,
     image: `${BASE_URL}/images/og-image.jpg`,

@@ -5,8 +5,7 @@ import { motion } from 'framer-motion';
 import { useLocale } from 'next-intl';
 import { SITE_INFO, SOCIAL_LINKS } from '@/lib/constants';
 import { trackContact } from '@/lib/analytics-events';
-
-type Locale = 'ko' | 'en' | 'ja' | 'zh';
+import type { Locale } from '@/i18n/routing';
 type ContactMethod = 'instagram' | 'youtube' | 'phone' | 'kakao' | 'line' | 'whatsapp' | 'wechat';
 
 type CtaButton = {

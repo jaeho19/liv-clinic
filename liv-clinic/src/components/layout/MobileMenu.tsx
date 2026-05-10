@@ -3,7 +3,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Link, useRouter, usePathname } from '@/i18n/routing';
+import { Link, useRouter, usePathname, type Locale } from '@/i18n/routing';
+import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -20,12 +21,11 @@ interface MobileMenuProps {
   navItems: NavItem[];
 }
 
-const languages = [
-  { code: 'ko', label: '한국어', flag: '🇰🇷' },
-  { code: 'zh', label: '中文', flag: '🇨🇳' },
-  { code: 'en', label: 'English', flag: '🇺🇸' },
-  { code: 'ja', label: '日本語', flag: '🇯🇵' },
-];
+const languages = LOCALE_ORDER.map((code) => ({
+  code,
+  label: LOCALE_META[code].name,
+  flag: LOCALE_META[code].flag,
+}));
 
 export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
   const t = useTranslations('common');
@@ -72,7 +72,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
 
   // useCallback으로 메모이제이션 (Vercel Best Practice: rerender-functional-setstate)
   const handleLanguageChange = useCallback((langCode: string) => {
-    router.replace(pathname, { locale: langCode as 'ko' | 'en' | 'ja' | 'zh' });
+    router.replace(pathname, { locale: langCode as Locale });
     onClose();
   }, [router, pathname, onClose]);
 

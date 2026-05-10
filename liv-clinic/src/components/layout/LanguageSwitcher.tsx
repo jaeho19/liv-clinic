@@ -2,19 +2,15 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from '@/i18n/routing';
+import { usePathname, useRouter, type Locale } from '@/i18n/routing';
+import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface LanguageSwitcherProps {
   isScrolled?: boolean;
 }
 
-const languages = [
-  { code: 'ko', label: 'KOR', flag: '🇰🇷', name: '한국어' },
-  { code: 'zh', label: 'CHN', flag: '🇨🇳', name: '中文' },
-  { code: 'en', label: 'ENG', flag: '🇺🇸', name: 'English' },
-  { code: 'ja', label: 'JPN', flag: '🇯🇵', name: '日本語' },
-];
+const languages = LOCALE_ORDER.map((code) => LOCALE_META[code]);
 
 export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,7 +21,7 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
   const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0];
 
   const handleLanguageChange = (langCode: string) => {
-    router.replace(pathname, { locale: langCode as 'ko' | 'en' | 'ja' | 'zh' });
+    router.replace(pathname, { locale: langCode as Locale });
     setIsOpen(false);
   };
 

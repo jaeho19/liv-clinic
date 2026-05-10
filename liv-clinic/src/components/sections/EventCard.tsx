@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
+import type { Locale } from '@/i18n/routing';
 import { EventItem, getEventStatus, EventStatus } from '@/lib/constants';
 
 interface EventCardProps {
@@ -14,7 +15,7 @@ interface EventCardProps {
 
 export default function EventCard({ event, index = 0, featured = false }: EventCardProps) {
   const t = useTranslations('events');
-  const locale = useLocale() as 'ko' | 'en' | 'ja' | 'zh';
+  const locale = useLocale() as Locale;
   const status: EventStatus = getEventStatus(event);
   const isEnded = status === 'ended';
   const isPlaceholder = !event.posterImage || event.posterImage.includes('placeholder');

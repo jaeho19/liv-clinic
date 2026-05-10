@@ -1,7 +1,8 @@
 import { NextIntlClientProvider } from 'next-intl';
-import { getMessages, setRequestLocale } from 'next-intl/server';
+import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
+import { LOCALE_META } from '@/i18n/locales-meta';
 import { pretendard, cormorant } from '@/styles/fonts';
 import { Header, Footer, QuickConsultBar } from '@/components/layout';
 import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
@@ -58,7 +59,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
 
   // Validate locale
-  if (!routing.locales.includes(locale as 'ko' | 'en' | 'ja' | 'zh')) {
+  if (!routing.locales.includes(locale as Locale)) {
     notFound();
   }
 
@@ -67,6 +68,7 @@ export default async function LocaleLayout({
 
   // Get messages for the current locale
   const messages = await getMessages();
+  const tCommon = await getTranslations({ locale, namespace: 'common' });
 
   const localBusinessSchema = generateLocalBusinessSchema(locale);
   const webSiteSchema = generateWebSiteSchema();
@@ -76,15 +78,10 @@ export default async function LocaleLayout({
   const rawGaId = analytics?.gaTrackingId || process.env.NEXT_PUBLIC_GA_ID;
   const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
 
-  const skipToContentText = {
-    ko: '본문으로 건너뛰기',
-    en: 'Skip to main content',
-    ja: 'メインコンテンツにスキップ',
-    zh: '跳转到主要内容',
-  };
+  const htmlLang = LOCALE_META[locale as Locale]?.htmlLang ?? locale;
 
   return (
-    <html lang={locale} className={`${pretendard.variable} ${cormorant.variable}`}>
+    <html lang={htmlLang} className={`${pretendard.variable} ${cormorant.variable}`}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -154,7 +151,7 @@ export default async function LocaleLayout({
         <GoogleAnalytics trackingId={analytics?.gaTrackingId} enabled={analytics?.gaEnabled ?? undefined} />
         <NaverAnalytics wcsId={analytics?.naverWcsId} enabled={analytics?.naverEnabled ?? undefined} />
         <a href="#main-content" className="skip-link">
-          {skipToContentText[locale as keyof typeof skipToContentText] || skipToContentText.en}
+          {tCommon('skipToContent')}
         </a>
         <NextIntlClientProvider messages={messages}>
           <Header />
