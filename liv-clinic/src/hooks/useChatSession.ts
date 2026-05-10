@@ -53,6 +53,8 @@ function clearStored(locale: VisitorLocale) {
   window.localStorage.removeItem(storageKey(locale));
 }
 
+export type { StoredSession };
+
 export interface UseChatSessionReturn {
   session: StoredSession | null;
   loading: boolean;

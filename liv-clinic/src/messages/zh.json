@@ -4023,6 +4023,7 @@
     "namePlaceholder": "昵称 (可选)",
     "emailPlaceholder": "邮箱 (可选，便于回访)",
     "startChat": "开始咨询",
-    "messageCountdown": "{count}/1000"
+    "messageCountdown": "{count}/1000",
+    "unreadAria": "{count} 条新消息"
   }
 }

@@ -78,7 +78,7 @@ export async function PATCH(
   } else if (sysMsg) {
     await broadcastToSession(sessionId, {
       type: 'message_created',
-      payload: { messageId: sysMsg.id },
+      payload: { messageId: sysMsg.id, sender: 'system' },
     });
   }
 

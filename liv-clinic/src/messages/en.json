@@ -4015,6 +4015,7 @@
     "namePlaceholder": "Nickname (optional)",
     "emailPlaceholder": "Email (optional, for callbacks)",
     "startChat": "Start Chat",
-    "messageCountdown": "{count}/1000"
+    "messageCountdown": "{count}/1000",
+    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
   }
 }

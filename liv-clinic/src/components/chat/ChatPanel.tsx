@@ -2,13 +2,14 @@
 
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
-import { useChatSession } from '@/hooks/useChatSession';
+import type { UseChatSessionReturn } from '@/hooks/useChatSession';
 import { useChatRealtime } from '@/hooks/useChatRealtime';
 import { sendVisitorMessage, fetchPresence, ChatApiError } from '@/lib/chat/chatApi';
 import {
   trackChatFirstMessage,
   trackChatMessage,
   trackChatTranslationFailure,
+  trackChatClose,
 } from '@/lib/analytics-events';
 import MessageBubble from './MessageBubble';
 
@@ -16,13 +17,16 @@ interface Props {
   locale: 'en' | 'ja' | 'zh';
   open: boolean;
   onClose: () => void;
+  // ChatWidget이 단일 useChatSession 인스턴스를 소유하고 props로 주입.
+  // 새 세션 생성 시 ChatWidget의 unread broadcast 구독이 즉시 활성화되도록 하는 G-07 fix.
+  sessionState: UseChatSessionReturn;
 }
 
 const MAX_LEN = 1000;
 
-export default function ChatPanel({ locale, open, onClose }: Props) {
+export default function ChatPanel({ locale, open, onClose, sessionState }: Props) {
   const t = useTranslations('chat');
-  const { session, start, loading: starting } = useChatSession(locale);
+  const { session, start, loading: starting } = sessionState;
   const [presence, setPresence] = useState<{ online: boolean; businessHours: boolean } | null>(null);
   const [text, setText] = useState('');
   const [sendError, setSendError] = useState<string | null>(null);
@@ -30,6 +34,8 @@ export default function ChatPanel({ locale, open, onClose }: Props) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
+  // G-03: 패널 열린 시각 추적 — close 이벤트의 duration 산출용
+  const openedAtRef = useRef<number | null>(null);
   // 데스크톱(hover+fine pointer)에서만 Enter=전송. 모바일은 Enter=줄바꿈 + Send 버튼만 사용.
   const [isDesktop, setIsDesktop] = useState(false);
   useEffect(() => {
@@ -84,6 +90,20 @@ export default function ChatPanel({ locale, open, onClose }: Props) {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open, onClose]);
+
+  // G-03: open 전환 추적 → 닫힐 때 trackChatClose 발화 (모든 close 경로 커버: Esc, X, toggle)
+  useEffect(() => {
+    if (open && session) {
+      openedAtRef.current = Date.now();
+      return;
+    }
+    if (!open && openedAtRef.current !== null && session) {
+      const durationSec = (Date.now() - openedAtRef.current) / 1000;
+      const sessionId = session.sessionId;
+      openedAtRef.current = null;
+      void trackChatClose('visitor_close', durationSec, sessionId, locale);
+    }
+  }, [open, session, locale]);
 
   const handleStart = async (e: FormEvent) => {
     e.preventDefault();

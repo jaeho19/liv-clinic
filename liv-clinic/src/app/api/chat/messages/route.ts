@@ -167,7 +167,7 @@ async function persistAndBroadcast(
   // 4. Broadcast (방문자 측 위젯 도달용. 어드민은 postgres_changes로 자체 수신)
   void broadcastToSession(sessionId, {
     type: 'message_created',
-    payload: { messageId: updated.id },
+    payload: { messageId: updated.id, sender: updated.sender as 'visitor' | 'operator' | 'system' },
   });
 
   return NextResponse.json({ message: updated }, { status: 201 });

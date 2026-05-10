@@ -81,7 +81,7 @@ export async function POST(req: NextRequest) {
     // 방문자 위젯이 broadcast로 system 메시지를 수신할 수 있도록 알림
     await broadcastToSession(session.id, {
       type: 'message_created',
-      payload: { messageId: systemMsg.id },
+      payload: { messageId: systemMsg.id, sender: 'system' },
     });
   }
 

@@ -5,7 +5,7 @@ import { createAdminClient } from '@/lib/supabase-admin';
 // 채널명은 session_id(UUID) 단위로 격리. 운영자는 postgres_changes로 직접 구독하므로 broadcast 의존 없음.
 
 export type BroadcastEvent =
-  | { type: 'message_created'; payload: { messageId: string } }
+  | { type: 'message_created'; payload: { messageId: string; sender?: 'visitor' | 'operator' | 'system' } }
   | { type: 'session_closed'; payload: { sessionId: string } };
 
 export async function broadcastToSession(sessionId: string, event: BroadcastEvent) {

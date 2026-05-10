@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { trackChatOpen } from '@/lib/analytics-events';
+import { useChatSession } from '@/hooks/useChatSession';
+import { useUnreadIndicator } from '@/hooks/useUnreadIndicator';
+import { createClient } from '@/lib/supabase-browser';
 import ChatPanel from './ChatPanel';
 
 interface Props {
@@ -26,6 +29,42 @@ export default function ChatWidget({ locale }: Props) {
   const [open, setOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showPulse, setShowPulse] = useState(true);
+
+  // G-07: 위젯 레벨에서 세션을 단일 소스로 관리. ChatPanel은 props로 전달받아
+  // 동일 인스턴스를 공유한다 (ChatPanel이 새 세션을 생성하면 위젯도 즉시 인지).
+  const sessionState = useChatSession(locale);
+  const sessionId = sessionState.session?.sessionId ?? null;
+  const { count: unreadCount, increment: incrementUnread, reset: resetUnread } =
+    useUnreadIndicator(sessionId);
+
+  // G-07: 패널이 닫힌 동안에도 broadcast 구독 → operator/system 메시지 도착 시 unread 증가
+  // 서버 lib/chat/broadcast.ts와 동일한 채널명 `chat:${sessionId}` 사용 (호환성).
+  useEffect(() => {
+    if (!sessionId || open) return;
+    const supabase = createClient();
+    const channel = supabase.channel(`chat:${sessionId}`, {
+      config: { broadcast: { self: false } },
+    });
+    channel.on('broadcast', { event: 'message_created' }, (msg) => {
+      const innerPayload = (msg as { payload?: { sender?: string } }).payload;
+      const sender = innerPayload?.sender;
+      // sender가 명시되지 않은 레거시 broadcast는 무시 (visitor 자기 메시지 카운트 방지)
+      if (sender && sender !== 'visitor') {
+        incrementUnread();
+      }
+    });
+    channel.subscribe();
+    return () => {
+      void supabase.removeChannel(channel);
+    };
+  }, [sessionId, open, incrementUnread]);
+
+  // 패널 열릴 때 unread 카운트 리셋
+  useEffect(() => {
+    if (open && unreadCount > 0) {
+      resetUnread();
+    }
+  }, [open, unreadCount, resetUnread]);
 
   // 첫 5초 펄스 글로우 (마운트 시 1회)
   useEffect(() => {
@@ -119,7 +158,11 @@ export default function ChatWidget({ locale }: Props) {
       <motion.button
         type="button"
         onClick={handleToggle}
-        aria-label={t('openButton')}
+        aria-label={
+          unreadCount > 0
+            ? `${t('openButton')} — ${t('unreadAria', { count: unreadCount })}`
+            : t('openButton')
+        }
         aria-expanded={open}
         className="fixed left-2 sm:left-4 md:left-6 z-40 flex items-center justify-center gap-2 bg-[#b4988d] text-white shadow-lg hover:bg-[#a3877d] active:scale-[0.97] transition-colors rounded-full min-h-[48px] px-3 sm:px-4"
         style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
@@ -167,9 +210,21 @@ export default function ChatWidget({ locale }: Props) {
           <span className="opacity-80">↔</span>
           🇰🇷
         </span>
+        {/* G-07: 미확인 메시지 빨간 점 배지 */}
+        {unreadCount > 0 && !open && (
+          <span
+            className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-600 ring-2 ring-white"
+            aria-hidden
+          />
+        )}
       </motion.button>
 
-      <ChatPanel locale={locale} open={open} onClose={() => setOpen(false)} />
+      <ChatPanel
+        locale={locale}
+        open={open}
+        onClose={() => setOpen(false)}
+        sessionState={sessionState}
+      />
     </>
   );
 }

@@ -4015,6 +4015,7 @@
     "namePlaceholder": "ニックネーム (任意)",
     "emailPlaceholder": "メールアドレス (任意、お返事用)",
     "startChat": "チャットを開始",
-    "messageCountdown": "{count}/1000"
+    "messageCountdown": "{count}/1000",
+    "unreadAria": "{count}件の新しいメッセージ"
   }
 }
