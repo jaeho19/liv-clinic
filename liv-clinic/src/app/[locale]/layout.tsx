@@ -6,6 +6,7 @@ import { LOCALE_META } from '@/i18n/locales-meta';
 import { pretendard, cormorant } from '@/styles/fonts';
 import { Header, Footer, QuickConsultBar } from '@/components/layout';
 import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
+import ChatWidget from '@/components/chat/ChatWidget';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import NaverAnalytics from '@/components/analytics/NaverAnalytics';
 import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema } from '@/lib/seo';
@@ -158,6 +159,9 @@ export default async function LocaleLayout({
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />
+          {locale !== 'ko' && (
+            <ChatWidget locale={locale as 'en' | 'ja' | 'zh'} />
+          )}
         </NextIntlClientProvider>
       </body>
     </html>

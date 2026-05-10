@@ -1,0 +1,48 @@
+import { notFound } from 'next/navigation';
+import { createChatAdminClient } from '@/lib/chat/db';
+import type { ChatMessage } from '@/lib/chat/chatApi';
+import ChatDetailClient from './ChatDetailClient';
+
+export const dynamic = 'force-dynamic';
+
+export default async function AdminChatDetailPage({
+  params,
+}: {
+  params: Promise<{ sessionId: string }>;
+}) {
+  const { sessionId } = await params;
+  const admin = createChatAdminClient();
+
+  const { data: session } = await admin
+    .from('chat_sessions')
+    .select(
+      'id, visitor_locale, visitor_name, visitor_email, status, last_message_at, unread_admin_count, created_at'
+    )
+    .eq('id', sessionId)
+    .single();
+
+  if (!session) notFound();
+
+  const { data: messages } = await admin
+    .from('chat_messages')
+    .select(
+      'id, session_id, sender, original_text, original_lang, translated_text, translated_lang, translation_status, created_at'
+    )
+    .eq('session_id', sessionId)
+    .order('created_at', { ascending: true })
+    .limit(200);
+
+  return (
+    <ChatDetailClient
+      session={{
+        id: session.id,
+        visitor_locale: session.visitor_locale as 'en' | 'ja' | 'zh',
+        visitor_name: session.visitor_name,
+        visitor_email: session.visitor_email,
+        status: session.status as 'open' | 'closed' | 'abandoned',
+        created_at: session.created_at,
+      }}
+      initialMessages={(messages ?? []) as unknown as ChatMessage[]}
+    />
+  );
+}

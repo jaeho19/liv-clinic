@@ -3987,5 +3987,34 @@
         "neckFull": "首全体 (50個以上)"
       }
     }
+  },
+  "chat": {
+    "openButton": "ライブチャット",
+    "openButtonShort": "チャット",
+    "title": "LIVライブチャット",
+    "subtitle": "韓国語に自動翻訳されます",
+    "online": "オンライン対応中",
+    "offline": "メッセージをお残しください",
+    "welcome": "こんにちは！どのようなご質問でしょうか？",
+    "delayedResponseNotice": "現在、営業時間外です（平日10:00〜19:00、土曜10:00〜16:00 KST）。メッセージをお残しいただければ営業時間開始後にご返信いたします。早めの回答をご希望の場合はメールアドレスもお知らせください。",
+    "allOperatorsBusyNotice": "スタッフが少し席を外しております。メッセージをお残しください。後ほどご返信いたします。",
+    "followupNotice": "お返事が遅れており申し訳ございません。早急にご対応いたします。",
+    "businessHours": "営業時間: 平日 10:00〜19:00、土 10:00〜16:00 (KST)、日曜定休",
+    "placeholder": "メッセージを入力...",
+    "send": "送信",
+    "showOriginal": "原文を表示",
+    "hideOriginal": "原文を隠す",
+    "close": "チャットを閉じる",
+    "translationFailed": "(翻訳に失敗しました — 原文のみ表示)",
+    "rateLimited": "メッセージの送信が早すぎます。しばらくしてからお試しください。",
+    "tooLong": "メッセージは1000文字を超えることはできません。",
+    "sessionEnded": "この会話は終了しました。追加のご質問は新しいチャットを開始してください。",
+    "consent": "メッセージは相談品質向上のため保存されます。",
+    "tooltipText": "お困りですか？日本語でチャットできます — 自動翻訳でスタッフへ ✨",
+    "tooltipDismiss": "閉じる",
+    "namePlaceholder": "ニックネーム (任意)",
+    "emailPlaceholder": "メールアドレス (任意、お返事用)",
+    "startChat": "チャットを開始",
+    "messageCountdown": "{count}/1000"
   }
 }
