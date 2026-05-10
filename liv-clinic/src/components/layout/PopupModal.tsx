@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import type { PopupRow } from '@/types/admin';
 
 interface PopupModalProps {
@@ -35,6 +36,8 @@ const slideTransition = {
 };
 
 export default function PopupModal({ popups, onClose, onDismissToday }: PopupModalProps) {
+  const tCommon = useTranslations('common');
+  const tPopup = useTranslations('popup');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -145,7 +148,7 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
           <button
             onClick={onClose}
             className="absolute top-2 right-2 z-10 w-7 h-7 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-sm text-white hover:bg-black/60 transition-colors cursor-pointer text-xs"
-            aria-label="닫기"
+            aria-label={tCommon('close')}
           >
             ✕
           </button>
@@ -188,14 +191,14 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
                 <button
                   onClick={goPrev}
                   className="absolute left-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors cursor-pointer text-lg"
-                  aria-label="이전"
+                  aria-label={tCommon('previous')}
                 >
                   ‹
                 </button>
                 <button
                   onClick={goNext}
                   className="absolute right-1 top-1/2 -translate-y-1/2 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-black/30 text-white hover:bg-black/50 transition-colors cursor-pointer text-lg"
-                  aria-label="다음"
+                  aria-label={tCommon('next')}
                 >
                   ›
                 </button>
@@ -227,13 +230,13 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
               onClick={onDismissToday}
               className="hover:text-white transition-colors cursor-pointer"
             >
-              오늘 하루 보지 않기
+              {tPopup('dismissToday')}
             </button>
             <button
               onClick={onClose}
               className="hover:text-white transition-colors cursor-pointer"
             >
-              닫기
+              {tCommon('close')}
             </button>
           </div>
         </motion.div>

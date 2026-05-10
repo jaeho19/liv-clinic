@@ -4,9 +4,11 @@ import { useState, useRef, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 import { consultationFormSchema, TREATMENT_OPTIONS, type ConsultationFormData } from '@/types/consultation';
 
 export default function FloatingConsultation() {
+  const t = useTranslations('consultation.floating');
   const [isOpen, setIsOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -65,7 +67,7 @@ export default function FloatingConsultation() {
       const result = await response.json();
 
       if (!response.ok) {
-        throw new Error(result.error || '상담 신청에 실패했습니다');
+        throw new Error(result.error || t('errorDefault'));
       }
 
       setSubmitStatus('success');
@@ -80,7 +82,7 @@ export default function FloatingConsultation() {
     } catch (error) {
       console.error('Consultation submission error:', error);
       setSubmitStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : '상담 신청에 실패했습니다');
+      setErrorMessage(error instanceof Error ? error.message : t('errorDefault'));
 
       // 5초 후 에러 메시지 숨김 (기존 타이머 정리 후 새로 설정)
       if (errorTimerRef.current) clearTimeout(errorTimerRef.current);
@@ -132,9 +134,9 @@ export default function FloatingConsultation() {
                       />
                     </svg>
                     <div className="text-left">
-                      <p className="font-semibold text-lg">빠른 상담 신청</p>
+                      <p className="font-semibold text-lg">{t('quickTitle')}</p>
                       <p className="text-sm text-white/80">
-                        전문 상담사가 친절하게 안내해 드립니다
+                        {t('subtitle')}
                       </p>
                     </div>
                   </div>
@@ -164,15 +166,15 @@ export default function FloatingConsultation() {
               >
                 <div className="flex items-center justify-between mb-6">
                   <div>
-                    <h3 className="text-h3 text-secondary font-semibold">상담 신청</h3>
+                    <h3 className="text-h3 text-secondary font-semibold">{t('title')}</h3>
                     <p className="text-sm text-mono-light mt-1">
-                      전문 상담사가 친절하게 안내해 드립니다
+                      {t('subtitle')}
                     </p>
                   </div>
                   <button
                     onClick={() => setIsOpen(false)}
                     className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                    aria-label="닫기"
+                    aria-label={t('close')}
                   >
                     <svg
                       className="w-6 h-6 text-mono"
@@ -198,7 +200,7 @@ export default function FloatingConsultation() {
                       <input
                         {...register('name')}
                         type="text"
-                        placeholder="성함"
+                        placeholder={t('namePlaceholder')}
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.name
                             ? 'border-red-500 focus:ring-red-500'
@@ -216,7 +218,7 @@ export default function FloatingConsultation() {
                       <input
                         {...register('password')}
                         type="password"
-                        placeholder="비밀번호 (선택)"
+                        placeholder={t('passwordPlaceholder')}
                         className={`w-full px-4 py-3 rounded-lg border ${
                           errors.password
                             ? 'border-red-500 focus:ring-red-500'
@@ -266,7 +268,7 @@ export default function FloatingConsultation() {
                           paddingRight: '2.5rem',
                         }}
                       >
-                        <option value="">진료과목 선택</option>
+                        <option value="">{t('departmentSelect')}</option>
                         {TREATMENT_OPTIONS.map((option) => (
                           <option key={option} value={option}>
                             {option}
@@ -309,10 +311,10 @@ export default function FloatingConsultation() {
                                 d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                               />
                             </svg>
-                            <span>전송 중...</span>
+                            <span>{t('submitting')}</span>
                           </>
                         ) : (
-                          <span>상담신청</span>
+                          <span>{t('submit')}</span>
                         )}
                       </button>
                     </div>
@@ -331,8 +333,7 @@ export default function FloatingConsultation() {
                       htmlFor="agreePrivacy"
                       className="text-sm text-mono-light cursor-pointer flex-1"
                     >
-                      <span className="text-secondary font-medium">[필수]</span> 개인정보 수집 및
-                      이용에 동의합니다. (성함, 연락처는 상담 목적으로만 사용됩니다)
+                      <span className="text-secondary font-medium">{t('consentRequired')}</span> {t('consentText')}
                     </label>
                   </div>
                   {errors.agreePrivacy && (
@@ -377,8 +378,8 @@ export default function FloatingConsultation() {
                     />
                   </svg>
                   <div>
-                    <p className="font-medium">상담신청이 완료되었습니다</p>
-                    <p className="text-sm opacity-90">곧 연락드리겠습니다</p>
+                    <p className="font-medium">{t('successTitle')}</p>
+                    <p className="text-sm opacity-90">{t('successDesc')}</p>
                   </div>
                 </>
               ) : (
@@ -397,8 +398,8 @@ export default function FloatingConsultation() {
                     />
                   </svg>
                   <div>
-                    <p className="font-medium">상담신청에 실패했습니다</p>
-                    <p className="text-sm opacity-90">{errorMessage || '다시 시도해주세요'}</p>
+                    <p className="font-medium">{t('errorTitle')}</p>
+                    <p className="text-sm opacity-90">{errorMessage || t('errorRetry')}</p>
                   </div>
                 </>
               )}

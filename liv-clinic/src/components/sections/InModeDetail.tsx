@@ -24,7 +24,9 @@ const INMODE_COLORS = {
 };
 
 // Forma Illustration
-const FormaIllustration = () => (
+const FormaIllustration = () => {
+  const tUi = useTranslations('treatments.lifting.inmode.ui');
+  return (
   <svg viewBox="0 0 200 160" className="w-full h-40">
     <defs>
       <linearGradient id="formaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -60,12 +62,15 @@ const FormaIllustration = () => (
       />
     ))}
     <text x="100" y="85" fill="white" fontSize="14" fontWeight="bold" textAnchor="middle">FORMA</text>
-    <text x="100" y="145" fill="#4CAF50" fontSize="10" fontWeight="bold" textAnchor="middle">피부 탄력</text>
+    <text x="100" y="145" fill="#4CAF50" fontSize="10" fontWeight="bold" textAnchor="middle">{tUi('skinElasticity')}</text>
   </svg>
-);
+  );
+};
 
 // Morpheus8 Illustration
-const Morpheus8Illustration = () => (
+const Morpheus8Illustration = () => {
+  const tUi = useTranslations('treatments.lifting.inmode.ui');
+  return (
   <svg viewBox="0 0 200 160" className="w-full h-40">
     <defs>
       <linearGradient id="morphGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -102,12 +107,15 @@ const Morpheus8Illustration = () => (
       animate={{ pathLength: [0, 1, 0] }}
       transition={{ duration: 2, repeat: Infinity }}
     />
-    <text x="100" y="145" fill="#9C27B0" fontSize="10" fontWeight="bold" textAnchor="middle">마이크로니들 RF</text>
+    <text x="100" y="145" fill="#9C27B0" fontSize="10" fontWeight="bold" textAnchor="middle">{tUi('microneedleRf')}</text>
   </svg>
-);
+  );
+};
 
 // FaceTite Illustration
-const FaceTiteIllustration = () => (
+const FaceTiteIllustration = () => {
+  const tUi = useTranslations('treatments.lifting.inmode.ui');
+  return (
   <svg viewBox="0 0 200 160" className="w-full h-40">
     <defs>
       <linearGradient id="faceGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -149,9 +157,10 @@ const FaceTiteIllustration = () => (
       animate={{ rx: [25, 20, 25], opacity: [0.5, 1, 0.5] }}
       transition={{ duration: 2, repeat: Infinity }}
     />
-    <text x="100" y="145" fill="#FF9800" fontSize="10" fontWeight="bold" textAnchor="middle">지방 타이트닝</text>
+    <text x="100" y="145" fill="#FF9800" fontSize="10" fontWeight="bold" textAnchor="middle">{tUi('fatTightening')}</text>
   </svg>
-);
+  );
+};
 
 // Treatment Card Component for each handpiece
 const TreatmentCard = ({

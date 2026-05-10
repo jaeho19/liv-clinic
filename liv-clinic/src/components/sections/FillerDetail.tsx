@@ -373,6 +373,7 @@ const FillerImageWithMarkers = ({
 }: {
   selectedAreaId: number | null;
 }) => {
+  const tUi = useTranslations('treatments.antiaging.filler.ui');
   const selectedPoint = selectedAreaId ? getPointData(selectedAreaId) : null;
 
   return (
@@ -380,7 +381,7 @@ const FillerImageWithMarkers = ({
       {/* Base Image */}
       <Image
         src="/images/Gemini_Generated_Image_c8gix4c8gix4c8gi.png"
-        alt="필러 시술 부위 - Filler Treatment Areas"
+        alt={tUi('imageAlt')}
         width={520}
         height={650}
         className="w-full h-auto"
@@ -1105,19 +1106,19 @@ export default function FillerDetail() {
             <div className="flex flex-wrap items-center justify-center gap-4 mt-8 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-[#D4C4B8]/30 max-w-xl mx-auto">
               <span className="flex items-center gap-2 text-xs text-[#D4A5A5]">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#D4A5A5]" />
-                주름 개선
+                {t('antiaging.filler.ui.wrinkles')}
               </span>
               <span className="flex items-center gap-2 text-xs text-[#A89080]">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#A89080]" />
-                볼륨
+                {t('antiaging.filler.ui.volume')}
               </span>
               <span className="flex items-center gap-2 text-xs text-[#6D5A4D]">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#6D5A4D]" />
-                윤곽
+                {t('antiaging.filler.ui.contour')}
               </span>
               <span className="flex items-center gap-2 text-xs text-[#C9A86C]">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#C9A86C]" />
-                리프팅
+                {t('antiaging.filler.ui.lifting')}
               </span>
             </div>
           </motion.div>
@@ -1180,7 +1181,7 @@ export default function FillerDetail() {
 
               {/* Hint text */}
               <p className="text-xs text-gray-400 text-center mt-4">
-                * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+                {t('antiaging.filler.ui.interactionHint')}
               </p>
             </motion.div>
 
@@ -1251,7 +1252,7 @@ export default function FillerDetail() {
                 />
               ))}
               <p className="text-xs text-gray-400 text-center pt-4">
-                * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+                {t('antiaging.filler.ui.interactionHint')}
               </p>
             </div>
           </div>
@@ -1310,7 +1311,7 @@ export default function FillerDetail() {
 
             {/* Hint text */}
             <p className="text-xs text-gray-400 text-center mt-6">
-              * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+              {t('antiaging.filler.ui.interactionHint')}
             </p>
           </div>
         </div>
@@ -1388,7 +1389,7 @@ export default function FillerDetail() {
 
                 {/* Hint text */}
                 <p className="text-xs text-gray-400 text-center mt-4">
-                  * 각 부위를 클릭하면 이미지에서 위치를 확인할 수 있습니다
+                  {t('antiaging.filler.ui.interactionHint')}
                 </p>
               </motion.div>
 

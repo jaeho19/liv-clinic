@@ -65,12 +65,12 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                   <ScrollLink href="/contact">
                     <Button variant="primary" size="lg">
-                      상담 예약하기
+                      {t('treatmentDetail.ctaReserve')}
                     </Button>
                   </ScrollLink>
                   <a href="tel:02-797-2773">
                     <Button variant="outline" size="lg">
-                      전화 상담
+                      {t('treatmentDetail.ctaCall')}
                     </Button>
                   </a>
                 </div>
@@ -121,7 +121,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
           <AnimateOnScroll>
             <div className="text-center mb-8 md:mb-16">
               <p className="font-serif text-h3 text-primary mb-2">Benefits</p>
-              <h2 className="text-h1 text-secondary">{treatment.name}의 장점</h2>
+              <h2 className="text-h1 text-secondary">{t('treatmentDetail.advantages', { name: treatment.name })}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -147,7 +147,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
           <AnimateOnScroll>
             <div className="text-center mb-8 md:mb-16">
               <p className="font-serif text-h3 text-primary mb-2">Process</p>
-              <h2 className="text-h1 text-secondary">시술 과정</h2>
+              <h2 className="text-h1 text-secondary">{t('treatmentDetail.process')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -190,7 +190,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
           <AnimateOnScroll>
             <div className="text-center mb-12">
               <p className="font-serif text-h3 opacity-80 mb-2">Treatment Info</p>
-              <h2 className="text-h1">시술 정보</h2>
+              <h2 className="text-h1">{t('treatmentDetail.info')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -202,7 +202,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">시술 시간</p>
+                <p className="text-small opacity-70 mb-1">{t('treatmentDetail.duration')}</p>
                 <p className="font-medium">{treatment.duration}</p>
               </div>
             </AnimateOnScroll>
@@ -213,7 +213,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">마취</p>
+                <p className="text-small opacity-70 mb-1">{t('treatmentDetail.anesthesia')}</p>
                 <p className="font-medium">{treatment.anesthesia}</p>
               </div>
             </AnimateOnScroll>
@@ -224,7 +224,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">회복 기간</p>
+                <p className="text-small opacity-70 mb-1">{t('treatmentDetail.recovery')}</p>
                 <p className="font-medium">{treatment.recovery}</p>
               </div>
             </AnimateOnScroll>
@@ -235,7 +235,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                 </div>
-                <p className="text-small opacity-70 mb-1">효과 지속</p>
+                <p className="text-small opacity-70 mb-1">{t('treatmentDetail.effectDuration')}</p>
                 <p className="font-medium">{treatment.results}</p>
               </div>
             </AnimateOnScroll>
@@ -255,7 +255,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
-                  시술 부위
+                  {t('treatmentDetail.areas')}
                 </h3>
                 <div className="flex flex-wrap gap-3">
                   {treatment.targetAreas.map((area, index) => (
@@ -277,7 +277,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                   </svg>
-                  이런 분께 추천
+                  {t('treatmentDetail.recommendedFor')}
                 </h3>
                 <ul className="space-y-3">
                   {treatment.idealFor.map((item, index) => (
@@ -305,7 +305,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
                   <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
                   </svg>
-                  시술 전후 주의사항
+                  {t('treatmentDetail.precautions')}
                 </h3>
                 <ul className="space-y-3">
                   {treatment.cautions.map((caution, index) => (
@@ -327,7 +327,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
           <AnimateOnScroll>
             <div className="text-center mb-8 md:mb-16">
               <p className="font-serif text-h3 text-primary mb-2">FAQ</p>
-              <h2 className="text-h1 text-secondary">자주 묻는 질문</h2>
+              <h2 className="text-h1 text-secondary">{t('treatmentDetail.faq')}</h2>
             </div>
           </AnimateOnScroll>
 
@@ -356,13 +356,13 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             <AnimateOnScroll>
               <div className="text-center mb-12">
                 <p className="font-serif text-h3 text-primary mb-2">Medical Info</p>
-                <h2 className="text-h1 text-secondary">{treatment.name} 관련 의료정보</h2>
+                <h2 className="text-h1 text-secondary">{t('treatmentDetail.relatedMedical', { name: treatment.name })}</h2>
                 <p className="text-body text-mono-light mt-4">
-                  더 자세한 정보는{' '}
+                  {t('treatmentDetail.moreInfoPrefix')}{' '}
                   <Link href="/medical" className="text-primary hover:underline">
-                    의료정보 Q&A
+                    {t('treatmentDetail.moreInfoLink')}
                   </Link>
-                  에서 확인하세요
+                  {t('treatmentDetail.moreInfoSuffix')}
                 </p>
               </div>
             </AnimateOnScroll>
@@ -447,19 +447,19 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
         <div className="container-custom">
           <AnimateOnScroll>
             <div className="text-center">
-              <h2 className="text-h1 mb-4">{treatment.name} 상담 예약</h2>
+              <h2 className="text-h1 mb-4">{t('treatmentDetail.consultationTitle', { name: treatment.name })}</h2>
               <p className="text-h4 opacity-80 mb-8">
-                전문 의료진과 1:1 맞춤 상담을 받아보세요.
+                {t('treatmentDetail.consultationDesc')}
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
                 <ScrollLink href="/contact">
                   <Button variant="primary" size="lg" className="bg-primary text-white hover:bg-secondary">
-                    상담 예약하기
+                    {t('treatmentDetail.ctaReserve')}
                   </Button>
                 </ScrollLink>
                 <a href="tel:02-797-2773">
                   <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                    전화 상담
+                    {t('treatmentDetail.ctaCall')}
                   </Button>
                 </a>
               </div>
@@ -475,7 +475,7 @@ export default function TreatmentDetail({ treatment }: TreatmentDetailProps) {
             <AnimateOnScroll>
               <div className="text-center mb-8 md:mb-16">
                 <p className="font-serif text-h3 text-primary mb-2">Related</p>
-                <h2 className="text-h1 text-secondary">함께 보면 좋은 시술</h2>
+                <h2 className="text-h1 text-secondary">{t('treatmentDetail.related')}</h2>
               </div>
             </AnimateOnScroll>
 

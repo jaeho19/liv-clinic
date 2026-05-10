@@ -1020,7 +1020,7 @@ export default function ThreadDetail() {
               <div className="relative w-full max-w-[500px] mx-auto">
                 <Image
                   src="/images/lifting/Gemini_Generated_Image_h2bh3zh2bh3zh2bh.png"
-                  alt="실리프팅 Thread Lift 시술 부위 다이어그램 - 이마, 눈썹, 볼, 턱선, 목선"
+                  alt={t('lifting.thread.ui.diagramAlt')}
                   width={500}
                   height={600}
                   className="w-full h-auto object-contain"

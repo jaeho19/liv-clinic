@@ -174,6 +174,7 @@ const BotoxImageWithMarkers = ({
 }: {
   selectedAreaId: number | null;
 }) => {
+  const tUi = useTranslations('treatments.antiaging.botox.ui');
   // Render SVG shape (circle or ellipse) at specific position
   const renderSVGMarker = (
     x: number,
@@ -275,7 +276,7 @@ const BotoxImageWithMarkers = ({
     <div className="relative rounded-2xl overflow-hidden shadow-2xl shadow-[#C4A484]/20">
       <Image
         src="/images/Gemini_Generated_Image_khwxm0khwxm0khwx.png"
-        alt="보톡스 시술 부위 - Botox Treatment Areas"
+        alt={tUi('imageAlt')}
         width={520}
         height={650}
         className="w-full h-auto"
@@ -350,7 +351,7 @@ const BotoxImageWithMarkers = ({
           className="absolute bottom-4 right-4 bg-[#8B7355] text-white px-3 py-2 rounded-lg text-sm shadow-lg"
         >
           <span className="font-medium">07</span>
-          <span className="ml-2">종아리 시술 부위</span>
+          <span className="ml-2">{tUi('calvesArea')}</span>
         </motion.div>
       )}
     </div>
@@ -980,18 +981,18 @@ export default function BotoxDetail() {
 
           {/* Category Legend - Centered above layout */}
           <div className="flex flex-wrap items-center justify-center gap-4 mb-8 p-4 bg-white/60 backdrop-blur-sm rounded-xl border border-[#E8D5C4]/30 max-w-md mx-auto">
-            <span className="text-xs text-gray-500 mr-2">카테고리:</span>
+            <span className="text-xs text-gray-500 mr-2">{t('antiaging.botox.ui.category')}</span>
             <span className="flex items-center gap-2 text-xs text-[#E8B4B8]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#E8B4B8]" />
-              표정 주름
+              {t('antiaging.botox.ui.expressionWrinkles')}
             </span>
             <span className="flex items-center gap-2 text-xs text-[#C4A484]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#C4A484]" />
-              윤곽 정리
+              {t('antiaging.botox.ui.contouring')}
             </span>
             <span className="flex items-center gap-2 text-xs text-[#8B7355]">
               <span className="w-2.5 h-2.5 rounded-full bg-[#8B7355]" />
-              바디
+              {t('antiaging.botox.ui.body')}
             </span>
           </div>
 
@@ -1176,7 +1177,7 @@ export default function BotoxDetail() {
 
             {/* Hint text */}
             <p className="text-xs text-gray-400 text-center pt-8">
-              * 각 부위를 클릭하거나 마우스를 올리면 이미지에서 위치를 확인할 수 있습니다
+              {t('antiaging.botox.ui.interactionHint')}
             </p>
           </div>
         </div>

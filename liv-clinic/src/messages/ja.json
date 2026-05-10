@@ -45,7 +45,9 @@
     "targetAreas": "施術部位",
     "recommended": "こんな方におすすめ",
     "precautions": "施術前後の注意事項",
-    "onlineConsultation": "オンライン相談"
+    "onlineConsultation": "オンライン相談",
+    "previous": "前へ",
+    "next": "次へ"
   },
   "categories": {
     "lifting": "リフティング",
@@ -86,7 +88,8 @@
     "beforeAfter": "ビフォーアフター",
     "medical": "医療情報",
     "events": "イベント",
-    "contact": "お問い合わせ"
+    "contact": "お問い合わせ",
+    "admin": "管理者"
   },
   "hero": {
     "slide1": {
@@ -178,6 +181,12 @@
           "subTitle": "ウルブラン",
           "desc": "低刺激ホワイトニングレーザー"
         }
+      },
+      "ui": {
+        "introLine1": "リブ整形外科は正規品認証されたプレミアム装備のみを使用します。",
+        "introLine2": "最新技術で安全かつ効果的な施術を提供します。",
+        "viewMore": "詳しく見る",
+        "navigationHint": "ドラッグまたはスクロールで探索"
       }
     },
     "signature": {
@@ -189,21 +198,33 @@
           "titleEn": "LIFTING",
           "subtitle": "ウルセラプライム & サーマジ",
           "description": "非手術リフティングの頂点、プレミアム正規品機器で自然なリフティング効果を体験してください。",
-          "features": ["ウルセラプライム正品認証", "サーマジFLXパートナー", "カスタム複合施術"]
+          "features": [
+            "ウルセラプライム正品認証",
+            "サーマジFLXパートナー",
+            "カスタム複合施術"
+          ]
         },
         "antiaging": {
           "title": "アンチエイジング",
           "titleEn": "ANTI-AGING",
           "subtitle": "フィラー & ボトックス",
           "description": "繊細なタッチで完成するボリュームと輪郭、自然な美しさを追求します。",
-          "features": ["正規品フィラー使用", "解剖学的アプローチ", "自然な結果"]
+          "features": [
+            "正規品フィラー使用",
+            "解剖学的アプローチ",
+            "自然な結果"
+          ]
         },
         "rejuvenation": {
           "title": "肌再生",
           "titleEn": "REJUVENATION",
           "subtitle": "メディカルスキンケア",
           "description": "肌本来の健康を取り戻すカスタムケア、科学的アプローチで肌改善をサポートします。",
-          "features": ["スキンブースター", "レーザートーニング", "カスタムスキンケア"]
+          "features": [
+            "スキンブースター",
+            "レーザートーニング",
+            "カスタムスキンケア"
+          ]
         }
       }
     },
@@ -275,6 +296,9 @@
         "subtitle": "リブ院長の施術ストーリー",
         "subscribe": "リブYouTubeチャンネル登録",
         "description": "施術情報、院長インタビュー、ビフォーアフター動画をご覧ください"
+      },
+      "ui": {
+        "playVideo": "動画を再生"
       }
     },
     "doctors": {
@@ -546,11 +570,31 @@
           },
           "timeline": {
             "items": [
-              { "time": "施術直後", "effect": "コラーゲン収縮", "desc": "即時タイトニング" },
-              { "time": "1ヶ月", "effect": "新生コラーゲン", "desc": "タイプIII生成開始" },
-              { "time": "3ヶ月", "effect": "目に見える変化", "desc": "フェイスライン明確に" },
-              { "time": "6ヶ月", "effect": "最大効果", "desc": "タイプIコラーゲン成熟" },
-              { "time": "12-24ヶ月", "effect": "効果維持", "desc": "段階的維持" }
+              {
+                "time": "施術直後",
+                "effect": "コラーゲン収縮",
+                "desc": "即時タイトニング"
+              },
+              {
+                "time": "1ヶ月",
+                "effect": "新生コラーゲン",
+                "desc": "タイプIII生成開始"
+              },
+              {
+                "time": "3ヶ月",
+                "effect": "目に見える変化",
+                "desc": "フェイスライン明確に"
+              },
+              {
+                "time": "6ヶ月",
+                "effect": "最大効果",
+                "desc": "タイプIコラーゲン成熟"
+              },
+              {
+                "time": "12-24ヶ月",
+                "effect": "効果維持",
+                "desc": "段階的維持"
+              }
             ],
             "note": "ウルセラ施術後、コラーゲンが再生され徐々に効果が現れます"
           },
@@ -564,13 +608,48 @@
               "thermage": "サーマジ"
             },
             "rows": [
-              { "feature": "エネルギー種類", "ulthera": "MFU-V（超音波）", "shurink": "HIFU（超音波）", "thermage": "RF（高周波）" },
-              { "feature": "リアルタイム可視化", "ulthera": "DeepSEE O", "shurink": "X", "thermage": "X" },
-              { "feature": "FDAリフティング承認", "ulthera": "唯一承認", "shurink": "X", "thermage": "X" },
-              { "feature": "最大深度", "ulthera": "4.5mm（SMAS）", "shurink": "4.5mm", "thermage": "真皮層" },
-              { "feature": "臨床研究", "ulthera": "110+論文", "shurink": "少数", "thermage": "多数" },
-              { "feature": "効果持続", "ulthera": "1-2年", "shurink": "6-12ヶ月", "thermage": "6-12ヶ月" },
-              { "feature": "最適適応症", "ulthera": "重度たるみ/リフティング", "shurink": "維持管理", "thermage": "弾力/肌質" }
+              {
+                "feature": "エネルギー種類",
+                "ulthera": "MFU-V（超音波）",
+                "shurink": "HIFU（超音波）",
+                "thermage": "RF（高周波）"
+              },
+              {
+                "feature": "リアルタイム可視化",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "FDAリフティング承認",
+                "ulthera": "唯一承認",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "最大深度",
+                "ulthera": "4.5mm（SMAS）",
+                "shurink": "4.5mm",
+                "thermage": "真皮層"
+              },
+              {
+                "feature": "臨床研究",
+                "ulthera": "110+論文",
+                "shurink": "少数",
+                "thermage": "多数"
+              },
+              {
+                "feature": "効果持続",
+                "ulthera": "1-2年",
+                "shurink": "6-12ヶ月",
+                "thermage": "6-12ヶ月"
+              },
+              {
+                "feature": "最適適応症",
+                "ulthera": "重度たるみ/リフティング",
+                "shurink": "維持管理",
+                "thermage": "弾力/肌質"
+              }
             ],
             "synergy": {
               "title": "ウルセラ + サーマジ シナジー",
@@ -584,12 +663,57 @@
             "deep": "深層（3.0mm - 4.5mm）",
             "energyDelivery": "に正確にエネルギーを伝達します",
             "items": {
-              "ds-10-1_5": { "target": "表皮-真皮境界", "applications": ["小じわ", "目元", "口元", "肌質"] },
-              "ds-10-1_5-n": { "target": "狭い部位", "applications": ["目元のしわ", "目の下", "まぶた"] },
-              "ds-7-3_0": { "target": "真皮下層", "applications": ["頬", "額", "頬骨", "フェイスライン"] },
-              "ds-7-3_0-n": { "target": "狭い真皮層", "applications": ["目元のしわ", "口元", "手の甲"] },
-              "ds-4-4_5": { "target": "SMAS層", "applications": ["中顔面", "下顔面", "首", "デコルテ"] },
-              "ds-7-4_5": { "target": "高解像度SMAS", "applications": ["フェイスライン", "二重あご", "頬たるみ"] }
+              "ds-10-1_5": {
+                "target": "表皮-真皮境界",
+                "applications": [
+                  "小じわ",
+                  "目元",
+                  "口元",
+                  "肌質"
+                ]
+              },
+              "ds-10-1_5-n": {
+                "target": "狭い部位",
+                "applications": [
+                  "目元のしわ",
+                  "目の下",
+                  "まぶた"
+                ]
+              },
+              "ds-7-3_0": {
+                "target": "真皮下層",
+                "applications": [
+                  "頬",
+                  "額",
+                  "頬骨",
+                  "フェイスライン"
+                ]
+              },
+              "ds-7-3_0-n": {
+                "target": "狭い真皮層",
+                "applications": [
+                  "目元のしわ",
+                  "口元",
+                  "手の甲"
+                ]
+              },
+              "ds-4-4_5": {
+                "target": "SMAS層",
+                "applications": [
+                  "中顔面",
+                  "下顔面",
+                  "首",
+                  "デコルテ"
+                ]
+              },
+              "ds-7-4_5": {
+                "target": "高解像度SMAS",
+                "applications": [
+                  "フェイスライン",
+                  "二重あご",
+                  "頬たるみ"
+                ]
+              }
             }
           },
           "hero": {
@@ -728,6 +852,10 @@
             "labelEn": "Related Treatments",
             "title": "関連施術"
           }
+        },
+        "ui": {
+          "comparisonTitle": "ウルセラ プライム vs 他装置",
+          "comparisonSubtitle": "同じHIFUでも技術力と臨床的根拠には大きな差があります"
         }
       },
       "thermage": {
@@ -738,16 +866,34 @@
         "detail": {
           "heroLabels": [
             {
-              "top": { "title": "AccuREP", "subtitle": "自動エネルギー調節" },
-              "bottom": { "title": "Comfort Pulse", "subtitle": "振動痛み緩和" }
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "自動エネルギー調節"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "振動痛み緩和"
+              }
             },
             {
-              "top": { "title": "RF Technology", "subtitle": "コラーゲン収縮＆再生" },
-              "bottom": { "title": "14M+", "subtitle": "世界施術件数" }
+              "top": {
+                "title": "RF Technology",
+                "subtitle": "コラーゲン収縮＆再生"
+              },
+              "bottom": {
+                "title": "14M+",
+                "subtitle": "世界施術件数"
+              }
             },
             {
-              "top": { "title": "AccuTip", "subtitle": "3.0cm²精密面積" },
-              "bottom": { "title": "メルツコリア", "subtitle": "公式認定クリニック" }
+              "top": {
+                "title": "AccuTip",
+                "subtitle": "3.0cm²精密面積"
+              },
+              "bottom": {
+                "title": "メルツコリア",
+                "subtitle": "公式認定クリニック"
+              }
             }
           ],
           "skinLayers": {
@@ -758,11 +904,31 @@
           },
           "timeline": {
             "items": [
-              { "time": "施術直後", "effect": "即時弾力", "desc": "コラーゲン収縮効果" },
-              { "time": "1ヶ月", "effect": "弾力改善", "desc": "コラーゲン再生開始" },
-              { "time": "3ヶ月", "effect": "目に見える変化", "desc": "新生コラーゲン増加" },
-              { "time": "6ヶ月", "effect": "最大効果", "desc": "コラーゲンリモデリング完了" },
-              { "time": "12ヶ月+", "effect": "効果維持", "desc": "年1回維持推奨" }
+              {
+                "time": "施術直後",
+                "effect": "即時弾力",
+                "desc": "コラーゲン収縮効果"
+              },
+              {
+                "time": "1ヶ月",
+                "effect": "弾力改善",
+                "desc": "コラーゲン再生開始"
+              },
+              {
+                "time": "3ヶ月",
+                "effect": "目に見える変化",
+                "desc": "新生コラーゲン増加"
+              },
+              {
+                "time": "6ヶ月",
+                "effect": "最大効果",
+                "desc": "コラーゲンリモデリング完了"
+              },
+              {
+                "time": "12ヶ月+",
+                "effect": "効果維持",
+                "desc": "年1回維持推奨"
+              }
             ]
           },
           "comparison": {
@@ -775,20 +941,58 @@
               "nxt": "NXT（第2世代）"
             },
             "rows": [
-              { "feature": "技術", "flx": "AccuREP自動調節", "cpt": "手動エネルギー設定", "nxt": "第1世代技術" },
-              { "feature": "施術時間", "flx": "25%短縮", "cpt": "標準", "nxt": "最長" },
-              { "feature": "痛み", "flx": "振動技術で最小化", "cpt": "中間", "nxt": "高い" },
-              { "feature": "効果均一性", "flx": "最適自動調節", "cpt": "施術者依存", "nxt": "不均一可能" },
-              { "feature": "チップ種類", "flx": "900/600/400/225", "cpt": "900/600/400", "nxt": "制限的" },
-              { "feature": "目元専用", "flx": "Total Tip O", "cpt": "Eye Tip O", "nxt": "X" }
+              {
+                "feature": "技術",
+                "flx": "AccuREP自動調節",
+                "cpt": "手動エネルギー設定",
+                "nxt": "第1世代技術"
+              },
+              {
+                "feature": "施術時間",
+                "flx": "25%短縮",
+                "cpt": "標準",
+                "nxt": "最長"
+              },
+              {
+                "feature": "痛み",
+                "flx": "振動技術で最小化",
+                "cpt": "中間",
+                "nxt": "高い"
+              },
+              {
+                "feature": "効果均一性",
+                "flx": "最適自動調節",
+                "cpt": "施術者依存",
+                "nxt": "不均一可能"
+              },
+              {
+                "feature": "チップ種類",
+                "flx": "900/600/400/225",
+                "cpt": "900/600/400",
+                "nxt": "制限的"
+              },
+              {
+                "feature": "目元専用",
+                "flx": "Total Tip O",
+                "cpt": "Eye Tip O",
+                "nxt": "X"
+              }
             ]
           },
           "tips": {
             "title": "部位別カスタムチップ",
             "subtitle": "様々なサイズのチップで部位に応じた最適化施術が可能です",
             "items": [
-              { "shots": "600", "area": "顔", "desc": "頬、額" },
-              { "shots": "225", "area": "目元/口元", "desc": "繊細な部位" }
+              {
+                "shots": "600",
+                "area": "顔",
+                "desc": "頬、額"
+              },
+              {
+                "shots": "225",
+                "area": "目元/口元",
+                "desc": "繊細な部位"
+              }
             ]
           },
           "hero": {
@@ -796,9 +1000,18 @@
             "title": "サーマジFLX",
             "description": "AccuREP技術で肌状態に合った最適エネルギーを自動調節。<br />振動技術で痛みは減らし、効果は高める高周波リフティング。",
             "stats": {
-              "treatments": { "value": "14M+", "label": "世界施術件数" },
-              "time": { "value": "25%", "label": "施術時間短縮" },
-              "satisfaction": { "value": "93%", "label": "患者満足度" }
+              "treatments": {
+                "value": "14M+",
+                "label": "世界施術件数"
+              },
+              "time": {
+                "value": "25%",
+                "label": "施術時間短縮"
+              },
+              "satisfaction": {
+                "value": "93%",
+                "label": "患者満足度"
+              }
             }
           },
           "about": {
@@ -847,10 +1060,22 @@
             },
             "globalTrust": {
               "title": "Global Trust",
-              "treatments": { "value": "14M+", "label": "世界施術件数" },
-              "satisfaction": { "value": "93%", "label": "患者満足度" },
-              "time": { "value": "25%", "label": "施術時間短縮" },
-              "duration": { "value": "1年+", "label": "効果持続期間" },
+              "treatments": {
+                "value": "14M+",
+                "label": "世界施術件数"
+              },
+              "satisfaction": {
+                "value": "93%",
+                "label": "患者満足度"
+              },
+              "time": {
+                "value": "25%",
+                "label": "施術時間短縮"
+              },
+              "duration": {
+                "value": "1年+",
+                "label": "効果持続期間"
+              },
               "source": "出典：Solta Medical公式臨床データ"
             }
           },
@@ -910,10 +1135,22 @@
             },
             "recommendedShots": {
               "title": "部位別推奨ショット数",
-              "fullFace": { "shots": "300-400", "label": "全顔" },
-              "lowerFace": { "shots": "200-300", "label": "下顔面" },
-              "eye": { "shots": "225", "label": "目元（アイ）" },
-              "fullFaceNeck": { "shots": "500-900", "label": "全顔＋首" }
+              "fullFace": {
+                "shots": "300-400",
+                "label": "全顔"
+              },
+              "lowerFace": {
+                "shots": "200-300",
+                "label": "下顔面"
+              },
+              "eye": {
+                "shots": "225",
+                "label": "目元（アイ）"
+              },
+              "fullFaceNeck": {
+                "shots": "500-900",
+                "label": "全顔＋首"
+              }
             }
           },
           "faq": {
@@ -948,6 +1185,9 @@
             "sectionLabel": "Related Treatments",
             "title": "一緒に見ると良い施術"
           }
+        },
+        "ui": {
+          "collagenShrinkRegen": "コラーゲン収縮 & 再生"
         }
       },
       "density": {
@@ -980,11 +1220,36 @@
           },
           "timeline": {
             "items": [
-              { "time": "施術直後", "effect": "即時の引き締め", "desc": "コラーゲン収縮", "percent": 40 },
-              { "time": "2週間", "effect": "弾力改善", "desc": "RF効果発現", "percent": 55 },
-              { "time": "1ヶ月", "effect": "肌質改善", "desc": "コラーゲン再生開始", "percent": 70 },
-              { "time": "3ヶ月", "effect": "最大効果", "desc": "RFコラーゲンリモデリング", "percent": 100 },
-              { "time": "6ヶ月+", "effect": "効果持続", "desc": "定期メンテナンス推奨", "percent": 90 }
+              {
+                "time": "施術直後",
+                "effect": "即時の引き締め",
+                "desc": "コラーゲン収縮",
+                "percent": 40
+              },
+              {
+                "time": "2週間",
+                "effect": "弾力改善",
+                "desc": "RF効果発現",
+                "percent": 55
+              },
+              {
+                "time": "1ヶ月",
+                "effect": "肌質改善",
+                "desc": "コラーゲン再生開始",
+                "percent": 70
+              },
+              {
+                "time": "3ヶ月",
+                "effect": "最大効果",
+                "desc": "RFコラーゲンリモデリング",
+                "percent": 100
+              },
+              {
+                "time": "6ヶ月+",
+                "effect": "効果持続",
+                "desc": "定期メンテナンス推奨",
+                "percent": 90
+              }
             ]
           },
           "comparison": {
@@ -995,13 +1260,48 @@
               "thermage": "サーマジ"
             },
             "rows": [
-              { "feature": "エネルギー種類", "density": "RF (高周波)", "ulthera": "HIFU (超音波)", "thermage": "RF (高周波)" },
-              { "feature": "ターゲット深さ", "density": "真皮層中心", "ulthera": "SMAS中心", "thermage": "真皮層中心" },
-              { "feature": "エネルギー分布", "density": "均一で精密", "ulthera": "集束型", "thermage": "広範囲" },
-              { "feature": "痛み", "density": "低い", "ulthera": "中〜高", "thermage": "低い" },
-              { "feature": "施術時間", "density": "30-40分", "ulthera": "60-90分", "thermage": "45-60分" },
-              { "feature": "価格帯", "density": "リーズナブル", "ulthera": "プレミアム", "thermage": "プレミアム" },
-              { "feature": "おすすめ対象", "density": "弾力/毛穴ケア", "ulthera": "たるみが激しい場合", "thermage": "弾力低下" }
+              {
+                "feature": "エネルギー種類",
+                "density": "RF (高周波)",
+                "ulthera": "HIFU (超音波)",
+                "thermage": "RF (高周波)"
+              },
+              {
+                "feature": "ターゲット深さ",
+                "density": "真皮層中心",
+                "ulthera": "SMAS中心",
+                "thermage": "真皮層中心"
+              },
+              {
+                "feature": "エネルギー分布",
+                "density": "均一で精密",
+                "ulthera": "集束型",
+                "thermage": "広範囲"
+              },
+              {
+                "feature": "痛み",
+                "density": "低い",
+                "ulthera": "中〜高",
+                "thermage": "低い"
+              },
+              {
+                "feature": "施術時間",
+                "density": "30-40分",
+                "ulthera": "60-90分",
+                "thermage": "45-60分"
+              },
+              {
+                "feature": "価格帯",
+                "density": "リーズナブル",
+                "ulthera": "プレミアム",
+                "thermage": "プレミアム"
+              },
+              {
+                "feature": "おすすめ対象",
+                "density": "弾力/毛穴ケア",
+                "ulthera": "たるみが激しい場合",
+                "thermage": "弾力低下"
+              }
             ]
           },
           "extendedFaqs": [
@@ -1023,13 +1323,28 @@
             "title": "デンシティ",
             "description": "高周波(RF)エネルギーで肌の中のコラーゲンを緻密にリモデリング。<br />精密で均一なエネルギーで弾力のある肌を完成させます。",
             "stats": {
-              "energy": { "value": "RF", "label": "高周波エネルギー" },
-              "layers": { "value": "4層", "label": "多層ターゲティング" },
-              "effect": { "value": "即時", "label": "リフティング効果" }
+              "energy": {
+                "value": "RF",
+                "label": "高周波エネルギー"
+              },
+              "layers": {
+                "value": "4層",
+                "label": "多層ターゲティング"
+              },
+              "effect": {
+                "value": "即時",
+                "label": "リフティング効果"
+              }
             },
             "floatingBadges": {
-              "rf": { "title": "RF", "subtitle": "精密高周波" },
-              "skin": { "title": "RF", "subtitle": "肌弾力" }
+              "rf": {
+                "title": "RF",
+                "subtitle": "精密高周波"
+              },
+              "skin": {
+                "title": "RF",
+                "subtitle": "肌弾力"
+              }
             }
           },
           "about": {
@@ -1077,10 +1392,22 @@
             "clinicalBanner": {
               "label": "RF Lifting Benefits",
               "stats": {
-                "energy": { "value": "RF", "label": "高周波エネルギー" },
-                "precision": { "value": "精密", "label": "均一な分布" },
-                "duration": { "value": "40分", "label": "速い施術" },
-                "effect": { "value": "即時", "label": "効果確認" }
+                "energy": {
+                  "value": "RF",
+                  "label": "高周波エネルギー"
+                },
+                "precision": {
+                  "value": "精密",
+                  "label": "均一な分布"
+                },
+                "duration": {
+                  "value": "40分",
+                  "label": "速い施術"
+                },
+                "effect": {
+                  "value": "即時",
+                  "label": "効果確認"
+                }
               }
             }
           },
@@ -1168,13 +1495,48 @@
           "comparison": {
             "header": "比較項目",
             "rows": {
-              "method": { "feature": "施術方式", "forma": "RF高周波", "morpheus": "マイクロニードル+RF", "facetite": "カニューレ+RF" },
-              "invasiveness": { "feature": "侵襲度", "forma": "非侵襲", "morpheus": "最小侵襲", "facetite": "最小侵襲" },
-              "anesthesia": { "feature": "麻酔", "forma": "不要", "morpheus": "麻酔クリーム", "facetite": "局所麻酔" },
-              "downtime": { "feature": "ダウンタイム", "forma": "なし", "morpheus": "3-5日", "facetite": "5-7日" },
-              "onset": { "feature": "効果発現", "forma": "段階的", "morpheus": "段階的", "facetite": "即時" },
-              "sessions": { "feature": "施術回数", "forma": "4-6回", "morpheus": "2-3回", "facetite": "1回" },
-              "target": { "feature": "主なターゲット", "forma": "弾力", "morpheus": "毛穴/傷跡", "facetite": "脂肪/たるみ" }
+              "method": {
+                "feature": "施術方式",
+                "forma": "RF高周波",
+                "morpheus": "マイクロニードル+RF",
+                "facetite": "カニューレ+RF"
+              },
+              "invasiveness": {
+                "feature": "侵襲度",
+                "forma": "非侵襲",
+                "morpheus": "最小侵襲",
+                "facetite": "最小侵襲"
+              },
+              "anesthesia": {
+                "feature": "麻酔",
+                "forma": "不要",
+                "morpheus": "麻酔クリーム",
+                "facetite": "局所麻酔"
+              },
+              "downtime": {
+                "feature": "ダウンタイム",
+                "forma": "なし",
+                "morpheus": "3-5日",
+                "facetite": "5-7日"
+              },
+              "onset": {
+                "feature": "効果発現",
+                "forma": "段階的",
+                "morpheus": "段階的",
+                "facetite": "即時"
+              },
+              "sessions": {
+                "feature": "施術回数",
+                "forma": "4-6回",
+                "morpheus": "2-3回",
+                "facetite": "1回"
+              },
+              "target": {
+                "feature": "主なターゲット",
+                "forma": "弾力",
+                "morpheus": "毛穴/傷跡",
+                "facetite": "脂肪/たるみ"
+              }
             }
           },
           "treatmentOptions": {
@@ -1182,28 +1544,55 @@
               "name": "Forma",
               "nameKo": "フォルマ",
               "description": "非侵襲RF高周波でコラーゲンの収縮と再生を誘導し肌弾力を改善します。痛みがほとんどなくダウンタイムがないため日常生活に支障がありません。",
-              "benefits": ["即時の肌引き締め", "コラーゲン再生促進", "小じわ改善", "無痛施術"],
+              "benefits": [
+                "即時の肌引き締め",
+                "コラーゲン再生促進",
+                "小じわ改善",
+                "無痛施術"
+              ],
               "duration": "20-30分",
               "downtime": "なし",
-              "idealFor": ["弾力低下", "小じわ", "予防管理"]
+              "idealFor": [
+                "弾力低下",
+                "小じわ",
+                "予防管理"
+              ]
             },
             "morpheus": {
               "name": "Morpheus8",
               "nameKo": "モーフィアス8",
               "description": "24本の金メッキマイクロニードルが真皮層までRFエネルギーを伝達し肌リモデリングを誘導します。毛穴、傷跡、肌質、弾力を同時に改善します。",
-              "benefits": ["毛穴縮小", "ニキビ跡改善", "肌質改善", "真皮層リモデリング"],
+              "benefits": [
+                "毛穴縮小",
+                "ニキビ跡改善",
+                "肌質改善",
+                "真皮層リモデリング"
+              ],
               "duration": "30-45分",
               "downtime": "3-5日",
-              "idealFor": ["開いた毛穴", "ニキビ跡", "肌質"]
+              "idealFor": [
+                "開いた毛穴",
+                "ニキビ跡",
+                "肌質"
+              ]
             },
             "facetite": {
               "name": "FaceTite",
               "nameKo": "フェイスタイト",
               "description": "細いカニューレを通じて脂肪層に直接RFエネルギーを伝達し脂肪を溶かし肌をタイトニングします。ミニリフト級の効果を提供します。",
-              "benefits": ["脂肪減少", "肌タイトニング", "フェイスライン改善", "二重あご改善"],
+              "benefits": [
+                "脂肪減少",
+                "肌タイトニング",
+                "フェイスライン改善",
+                "二重あご改善"
+              ],
               "duration": "60-90分",
               "downtime": "5-7日",
-              "idealFor": ["二重あご", "頬の脂肪", "フェイスラインのたるみ"]
+              "idealFor": [
+                "二重あご",
+                "頬の脂肪",
+                "フェイスラインのたるみ"
+              ]
             }
           },
           "recommendations": {
@@ -1239,13 +1628,28 @@
             "title": "インモード",
             "description": "高周波（RF）エネルギーで脂肪減少とリフティングを同時に。<br />顔の脂肪がお悩みならインモードが答えです。",
             "stats": {
-              "rf": { "value": "RF", "label": "高周波エネルギー" },
-              "fda": { "value": "FDA", "label": "承認機器" },
-              "custom": { "value": "カスタム", "label": "個人別施術" }
+              "rf": {
+                "value": "RF",
+                "label": "高周波エネルギー"
+              },
+              "fda": {
+                "value": "FDA",
+                "label": "承認機器"
+              },
+              "custom": {
+                "value": "カスタム",
+                "label": "個人別施術"
+              }
             },
             "floatingBadges": {
-              "morpheus": { "title": "Morpheus8", "subtitle": "マイクロニードルRF" },
-              "custom": { "title": "カスタム施術", "subtitle": "悩み別最適化" }
+              "morpheus": {
+                "title": "Morpheus8",
+                "subtitle": "マイクロニードルRF"
+              },
+              "custom": {
+                "title": "カスタム施術",
+                "subtitle": "悩み別最適化"
+              }
             }
           },
           "about": {
@@ -1307,6 +1711,11 @@
             "sectionLabel": "Related Treatments",
             "title": "一緒に見ると良い施術"
           }
+        },
+        "ui": {
+          "skinElasticity": "肌の弾力",
+          "microneedleRf": "マイクロニードルRF",
+          "fatTightening": "脂肪タイトニング"
         }
       },
       "shurink": {
@@ -1378,12 +1787,24 @@
           },
           "heroLabels": [
             {
-              "top": { "title": "高速連射技術", "subtitle": "毎秒7ショット以上" },
-              "bottom": { "title": "短時間施術", "subtitle": "約30分" }
+              "top": {
+                "title": "高速連射技術",
+                "subtitle": "毎秒7ショット以上"
+              },
+              "bottom": {
+                "title": "短時間施術",
+                "subtitle": "約30分"
+              }
             },
             {
-              "top": { "title": "カスタムカートリッジ", "subtitle": "4段階深さ選択" },
-              "bottom": { "title": "均一な効果", "subtitle": "精密エネルギー伝達" }
+              "top": {
+                "title": "カスタムカートリッジ",
+                "subtitle": "4段階深さ選択"
+              },
+              "bottom": {
+                "title": "均一な効果",
+                "subtitle": "精密エネルギー伝達"
+              }
             }
           ],
           "about": {
@@ -1465,13 +1886,41 @@
               "shurink": "シュリンク"
             },
             "rows": [
-              { "item": "エネルギー種類", "ulthera": "HIFU", "shurink": "HIFU" },
-              { "item": "施術時間", "ulthera": "60-90分", "shurink": "30-45分" },
-              { "item": "可視化機能", "ulthera": "DeepSEE技術", "shurink": "なし" },
-              { "item": "痛み", "ulthera": "中〜高", "shurink": "低〜中" },
-              { "item": "効果持続", "ulthera": "1-2年", "shurink": "3-6ヶ月" },
-              { "item": "適した方", "ulthera": "深いリフティング希望", "shurink": "短時間施術、維持管理" },
-              { "item": "費用", "ulthera": "プレミアム", "shurink": "リーズナブル" }
+              {
+                "item": "エネルギー種類",
+                "ulthera": "HIFU",
+                "shurink": "HIFU"
+              },
+              {
+                "item": "施術時間",
+                "ulthera": "60-90分",
+                "shurink": "30-45分"
+              },
+              {
+                "item": "可視化機能",
+                "ulthera": "DeepSEE技術",
+                "shurink": "なし"
+              },
+              {
+                "item": "痛み",
+                "ulthera": "中〜高",
+                "shurink": "低〜中"
+              },
+              {
+                "item": "効果持続",
+                "ulthera": "1-2年",
+                "shurink": "3-6ヶ月"
+              },
+              {
+                "item": "適した方",
+                "ulthera": "深いリフティング希望",
+                "shurink": "短時間施術、維持管理"
+              },
+              {
+                "item": "費用",
+                "ulthera": "プレミアム",
+                "shurink": "リーズナブル"
+              }
             ]
           },
           "faq": {
@@ -1490,6 +1939,26 @@
             "onlineButton": "オンライン相談予約",
             "phoneButton": "電話相談"
           }
+        },
+        "ui": {
+          "layerEpidermis": "表皮",
+          "layerDermis": "真皮",
+          "layerFascia": "筋膜",
+          "layerEpidermisBox": "表皮層",
+          "layerDermisBox": "真皮層",
+          "layerDeepBox": "深層",
+          "fineWrinklesPores": "小じわ・毛穴",
+          "collagenRegen": "コラーゲン再生",
+          "liftingEffect": "リフティング効果",
+          "bodyDoubleChin": "ボディ・二重あご",
+          "legacyHifu": "従来のHIFU",
+          "shurinkLabel": "シュリンク",
+          "shotsLegacy": "毎秒1-2ショット",
+          "timeLegacy": "施術時間60分+",
+          "shotsShurink": "毎秒7ショット以上",
+          "timeShurink": "施術時間30分台",
+          "threeXFaster": "3倍速い",
+          "diagramAlt": "シュリンクHIFU施術部位ダイアグラム"
         }
       },
       "thread": {
@@ -1621,13 +2090,41 @@
               "thread": "スレッドリフト"
             },
             "rows": [
-              { "item": "原理", "laser": "熱エネルギーでコラーゲン収縮", "thread": "物理的リフティング + コラーゲン促進" },
-              { "item": "効果発現", "laser": "段階的（2-3ヶ月）", "thread": "即時" },
-              { "item": "効果持続", "laser": "6ヶ月-2年", "thread": "6-18ヶ月（糸の種類による）" },
-              { "item": "ダウンタイム", "laser": "ほぼなし", "thread": "3-7日（あざ、腫れ）" },
-              { "item": "麻酔", "laser": "麻酔クリームまたは無麻酔", "thread": "局所麻酔" },
-              { "item": "適合対象", "laser": "初期たるみ、ハリ低下", "thread": "中程度のたるみ、ボリューム低下" },
-              { "item": "併用施術", "laser": "単独または併用", "thread": "レーザーとの併用で相乗効果" }
+              {
+                "item": "原理",
+                "laser": "熱エネルギーでコラーゲン収縮",
+                "thread": "物理的リフティング + コラーゲン促進"
+              },
+              {
+                "item": "効果発現",
+                "laser": "段階的（2-3ヶ月）",
+                "thread": "即時"
+              },
+              {
+                "item": "効果持続",
+                "laser": "6ヶ月-2年",
+                "thread": "6-18ヶ月（糸の種類による）"
+              },
+              {
+                "item": "ダウンタイム",
+                "laser": "ほぼなし",
+                "thread": "3-7日（あざ、腫れ）"
+              },
+              {
+                "item": "麻酔",
+                "laser": "麻酔クリームまたは無麻酔",
+                "thread": "局所麻酔"
+              },
+              {
+                "item": "適合対象",
+                "laser": "初期たるみ、ハリ低下",
+                "thread": "中程度のたるみ、ボリューム低下"
+              },
+              {
+                "item": "併用施術",
+                "laser": "単独または併用",
+                "thread": "レーザーとの併用で相乗効果"
+              }
             ]
           },
           "recommended": {
@@ -1647,6 +2144,9 @@
             "consultButton": "オンライン相談予約",
             "callButton": "電話相談 02-797-2773"
           }
+        },
+        "ui": {
+          "diagramAlt": "糸リフティング施術部位ダイアグラム"
         }
       },
       "aptos": {
@@ -1680,10 +2180,22 @@
             }
           ],
           "certifications": [
-            { "label": "KFDA", "value": "医療機器4等級正式許可" },
-            { "label": "CE", "value": "欧州CE認証" },
-            { "label": "ISO", "value": "ISO 13485品質マネジメント" },
-            { "label": "FDA", "value": "MDSAP認証" }
+            {
+              "label": "KFDA",
+              "value": "医療機器4等級正式許可"
+            },
+            {
+              "label": "CE",
+              "value": "欧州CE認証"
+            },
+            {
+              "label": "ISO",
+              "value": "ISO 13485品質マネジメント"
+            },
+            {
+              "label": "FDA",
+              "value": "MDSAP認証"
+            }
           ],
           "gallery": [
             {
@@ -1710,10 +2222,22 @@
             "title": "NAMICA Technology",
             "description": "<strong class=\"text-secondary\">NAMICA(Nano & Micro Encapsulated Particles)</strong>はヒアルロン酸40mgをナノ、サブマイクロ、マイクロ単位でカプセル化し、段階的に放出する革新的な薬物送達システムです。",
             "features": [
-              { "icon": "🌍", "text": "世界100カ国以上で使用" },
-              { "icon": "✅", "text": "KFDA医療機器4等級正式許可" },
-              { "icon": "⏱️", "text": "効果持続：最大24ヶ月" },
-              { "icon": "🧬", "text": "バイオスティミュレーション（コラーゲン生成促進）" }
+              {
+                "icon": "🌍",
+                "text": "世界100カ国以上で使用"
+              },
+              {
+                "icon": "✅",
+                "text": "KFDA医療機器4等級正式許可"
+              },
+              {
+                "icon": "⏱️",
+                "text": "効果持続：最大24ヶ月"
+              },
+              {
+                "icon": "🧬",
+                "text": "バイオスティミュレーション（コラーゲン生成促進）"
+              }
             ]
           },
           "phaseSection": {
@@ -1738,9 +2262,18 @@
           "lineupSection": {
             "title": "あらゆる顔型に対応する圧倒的なラインナップ",
             "positioning": [
-              { "code": "LL25", "desc": "重い頬の脂肪を引き上げたい時" },
-              { "code": "NAMICA", "desc": "全体的なハリと肌質改善" },
-              { "code": "LL50", "desc": "二重あごとフェイスラインのディテール" }
+              {
+                "code": "LL25",
+                "desc": "重い頬の脂肪を引き上げたい時"
+              },
+              {
+                "code": "NAMICA",
+                "desc": "全体的なハリと肌質改善"
+              },
+              {
+                "code": "LL50",
+                "desc": "二重あごとフェイスラインのディテール"
+              }
             ],
             "products": [
               {
@@ -1773,7 +2306,25 @@
             "description": "ボツリヌストキシンを使用して表情ジワを改善し、エラの筋肉を縮小してスリムなフェイスラインを作ります。"
           },
           "benefits": {
-            "title": "ボトックスのメリット"
+            "title": "ボトックスのメリット",
+            "items": [
+              {
+                "title": "表情ジワ改善",
+                "desc": "額、眉間、目尻のシワを効果的に緩和"
+              },
+              {
+                "title": "輪郭整形",
+                "desc": "エラ、僧帽筋のボリューム減少"
+              },
+              {
+                "title": "素早い施術",
+                "desc": "10〜20分程度の短い施術時間"
+              },
+              {
+                "title": "自然な表情",
+                "desc": "適正量で自然な表情を維持"
+              }
+            ]
           },
           "targetAreas": {
             "title": "施術部位",
@@ -1825,10 +2376,30 @@
           "timeline": {
             "title": "施術後のタイムライン",
             "items": [
-              { "time": "1日目", "title": "施術当日", "desc": "簡単な施術後すぐに日常生活に復帰可能", "percentage": 0 },
-              { "time": "3-7日", "title": "効果開始", "desc": "筋肉が徐々に弛緩し始めます", "percentage": 30 },
-              { "time": "2-4週", "title": "最大効果", "desc": "自然なシワ改善効果が最大化されます", "percentage": 100 },
-              { "time": "3-6ヶ月", "title": "効果維持", "desc": "個人により効果の持続期間が異なります", "percentage": 70 }
+              {
+                "time": "1日目",
+                "title": "施術当日",
+                "desc": "簡単な施術後すぐに日常生活に復帰可能",
+                "percentage": 0
+              },
+              {
+                "time": "3-7日",
+                "title": "効果開始",
+                "desc": "筋肉が徐々に弛緩し始めます",
+                "percentage": 30
+              },
+              {
+                "time": "2-4週",
+                "title": "最大効果",
+                "desc": "自然なシワ改善効果が最大化されます",
+                "percentage": 100
+              },
+              {
+                "time": "3-6ヶ月",
+                "title": "効果維持",
+                "desc": "個人により効果の持続期間が異なります",
+                "percentage": 70
+              }
             ]
           },
           "mechanismLabel": "精密注入マッピング",
@@ -1838,26 +2409,49 @@
             "recovery": "回復期間",
             "results": "効果持続"
           },
-          "benefits": {
-            "title": "ボトックスのメリット",
-            "items": [
-              { "title": "表情ジワ改善", "desc": "額、眉間、目尻のシワを効果的に緩和" },
-              { "title": "輪郭整形", "desc": "エラ、僧帽筋のボリューム減少" },
-              { "title": "素早い施術", "desc": "10〜20分程度の短い施術時間" },
-              { "title": "自然な表情", "desc": "適正量で自然な表情を維持" }
-            ]
-          },
           "process": {
             "items": [
-              { "step": 1, "title": "カウンセリング", "desc": "シワ分析と希望する結果の相談" },
-              { "step": 2, "title": "洗顔", "desc": "メイク落としと消毒" },
-              { "step": 3, "title": "麻酔", "desc": "必要に応じて麻酔クリーム塗布" },
-              { "step": 4, "title": "マーキング", "desc": "施術ポイントのマーキング" },
-              { "step": 5, "title": "施術", "desc": "微細注射でボトックス注入" },
-              { "step": 6, "title": "完了", "desc": "注意事項のご案内" }
+              {
+                "step": 1,
+                "title": "カウンセリング",
+                "desc": "シワ分析と希望する結果の相談"
+              },
+              {
+                "step": 2,
+                "title": "洗顔",
+                "desc": "メイク落としと消毒"
+              },
+              {
+                "step": 3,
+                "title": "麻酔",
+                "desc": "必要に応じて麻酔クリーム塗布"
+              },
+              {
+                "step": 4,
+                "title": "マーキング",
+                "desc": "施術ポイントのマーキング"
+              },
+              {
+                "step": 5,
+                "title": "施術",
+                "desc": "微細注射でボトックス注入"
+              },
+              {
+                "step": 6,
+                "title": "完了",
+                "desc": "注意事項のご案内"
+              }
             ]
           },
-          "targetAreasItems": ["額", "眉間", "目尻", "エラ", "口角", "僧帽筋", "ふくらはぎ"],
+          "targetAreasItems": [
+            "額",
+            "眉間",
+            "目尻",
+            "エラ",
+            "口角",
+            "僧帽筋",
+            "ふくらはぎ"
+          ],
           "idealFor": {
             "items": [
               "表情ジワが気になる方",
@@ -1875,9 +2469,21 @@
           },
           "faqs": {
             "items": [
-              { "q": "ボトックスを打つと表情が不自然になりますか？", "shortA": "適正量であれば自然な表情を維持できます。", "a": "適正量を正確な位置に注入すれば、自然な表情を維持しながらシワだけ改善されます。過剰投与は不自然になる可能性があるため、熟練した医療スタッフによる施術が重要です。" },
-              { "q": "ボトックスの効果はどれくらい持続しますか？", "shortA": "個人差はありますが、通常3〜6ヶ月持続します。", "a": "個人差はありますが、通常3〜6ヶ月程度持続します。定期的に施術を受けると筋肉が弱くなり、効果がより長持ちする可能性があります。" },
-              { "q": "ボトックスの種類によって違いはありますか？", "shortA": "製品ごとに発現時間、拡散度、持続時間が異なります。", "a": "製品ごとに効果発現時間、拡散度、持続時間に違いがあります。部位と目的に合った製品を選ぶことが重要です。" }
+              {
+                "q": "ボトックスを打つと表情が不自然になりますか？",
+                "shortA": "適正量であれば自然な表情を維持できます。",
+                "a": "適正量を正確な位置に注入すれば、自然な表情を維持しながらシワだけ改善されます。過剰投与は不自然になる可能性があるため、熟練した医療スタッフによる施術が重要です。"
+              },
+              {
+                "q": "ボトックスの効果はどれくらい持続しますか？",
+                "shortA": "個人差はありますが、通常3〜6ヶ月持続します。",
+                "a": "個人差はありますが、通常3〜6ヶ月程度持続します。定期的に施術を受けると筋肉が弱くなり、効果がより長持ちする可能性があります。"
+              },
+              {
+                "q": "ボトックスの種類によって違いはありますか？",
+                "shortA": "製品ごとに発現時間、拡散度、持続時間が異なります。",
+                "a": "製品ごとに効果発現時間、拡散度、持続時間に違いがあります。部位と目的に合った製品を選ぶことが重要です。"
+              }
             ]
           },
           "treatmentValues": {
@@ -1886,6 +2492,15 @@
             "recovery": "すぐに日常生活に復帰",
             "results": "3〜7日後に効果開始、3〜6ヶ月持続"
           }
+        },
+        "ui": {
+          "calvesArea": "ふくらはぎ施術部位",
+          "category": "カテゴリ:",
+          "expressionWrinkles": "表情ジワ",
+          "contouring": "輪郭整形",
+          "body": "ボディ",
+          "interactionHint": "* 各部位をクリックまたはマウスオーバーすると、画像上の位置を確認できます",
+          "imageAlt": "ボトックス施術部位"
         }
       },
       "filler": {
@@ -1902,19 +2517,51 @@
           "benefits": {
             "title": "フィラーのメリット",
             "items": [
-              { "title": "即時効果", "desc": "施術直後にボリューム改善を確認可能" },
-              { "title": "自然な触感", "desc": "ヒアルロン酸の柔らかい質感" },
-              { "title": "可逆的施術", "desc": "必要時に溶かすことができ安全" },
-              { "title": "多様な適用", "desc": "ボリューム、シワ、輪郭など多目的使用" }
+              {
+                "title": "即時効果",
+                "desc": "施術直後にボリューム改善を確認可能"
+              },
+              {
+                "title": "自然な触感",
+                "desc": "ヒアルロン酸の柔らかい質感"
+              },
+              {
+                "title": "可逆的施術",
+                "desc": "必要時に溶かすことができ安全"
+              },
+              {
+                "title": "多様な適用",
+                "desc": "ボリューム、シワ、輪郭など多目的使用"
+              }
             ]
           },
           "process": {
             "items": [
-              { "step": 1, "title": "カウンセリング", "desc": "顔分析と施術計画立案" },
-              { "step": 2, "title": "洗顔", "desc": "メイク除去と消毒" },
-              { "step": 3, "title": "麻酔", "desc": "麻酔クリームまたは神経ブロック" },
-              { "step": 4, "title": "施術", "desc": "部位別カスタムフィラー注入" },
-              { "step": 5, "title": "仕上げ", "desc": "形状整え、アフターケア案内" }
+              {
+                "step": 1,
+                "title": "カウンセリング",
+                "desc": "顔分析と施術計画立案"
+              },
+              {
+                "step": 2,
+                "title": "洗顔",
+                "desc": "メイク除去と消毒"
+              },
+              {
+                "step": 3,
+                "title": "麻酔",
+                "desc": "麻酔クリームまたは神経ブロック"
+              },
+              {
+                "step": 4,
+                "title": "施術",
+                "desc": "部位別カスタムフィラー注入"
+              },
+              {
+                "step": 5,
+                "title": "仕上げ",
+                "desc": "形状整え、アフターケア案内"
+              }
             ]
           },
           "idealFor": {
@@ -1935,9 +2582,21 @@
           },
           "faqs": {
             "items": [
-              { "q": "フィラーが固まったり不自然になりませんか？", "shortA": "適正量と熟練した医療スタッフの施術なら自然です。", "a": "正規フィラーを適正量使用し、解剖学的知識を持つ医療スタッフが施術すれば自然な結果が得られます。過度な施術は不自然になる可能性があるため、適正量の施術が重要です。" },
-              { "q": "フィラー施術後すぐに日常生活ができますか？", "shortA": "ほとんどの方がすぐに日常復帰できます。", "a": "ほとんどの方がすぐに日常復帰が可能です。ただし、施術部位によっては腫れやあざが出ることがあるため、大切なご予定の前には余裕を持って施術をお受けください。" },
-              { "q": "フィラーは溶かせますか？", "shortA": "はい、ヒアルロニダーゼで安全に溶かせます。", "a": "ヒアルロン酸フィラーはヒアルロニダーゼで溶かすことができます。施術結果にご満足いただけない場合や合併症が発生した場合に安全に除去できます。" }
+              {
+                "q": "フィラーが固まったり不自然になりませんか？",
+                "shortA": "適正量と熟練した医療スタッフの施術なら自然です。",
+                "a": "正規フィラーを適正量使用し、解剖学的知識を持つ医療スタッフが施術すれば自然な結果が得られます。過度な施術は不自然になる可能性があるため、適正量の施術が重要です。"
+              },
+              {
+                "q": "フィラー施術後すぐに日常生活ができますか？",
+                "shortA": "ほとんどの方がすぐに日常復帰できます。",
+                "a": "ほとんどの方がすぐに日常復帰が可能です。ただし、施術部位によっては腫れやあざが出ることがあるため、大切なご予定の前には余裕を持って施術をお受けください。"
+              },
+              {
+                "q": "フィラーは溶かせますか？",
+                "shortA": "はい、ヒアルロニダーゼで安全に溶かせます。",
+                "a": "ヒアルロン酸フィラーはヒアルロニダーゼで溶かすことができます。施術結果にご満足いただけない場合や合併症が発生した場合に安全に除去できます。"
+              }
             ]
           },
           "treatmentValues": {
@@ -1950,26 +2609,86 @@
             "title": "施術部位",
             "subtitle": "顔の様々な部位にボリュームを補い輪郭を整えます",
             "areas": [
-              { "id": 1, "name": "額", "description": "額のシワ改善" },
-              { "id": 2, "name": "こめかみ", "description": "ボリューム損失の回復" },
-              { "id": 3, "name": "鼻", "description": "鼻筋/鼻先形成" },
-              { "id": 4, "name": "頬骨", "description": "頬骨ボリューム" },
-              { "id": 5, "name": "ほうれい線", "description": "ほうれい線改善" },
-              { "id": 6, "name": "横頬", "description": "頬のたるみ改善" },
-              { "id": 7, "name": "あご先", "description": "あごボリューム形成" },
-              { "id": 8, "name": "涙袋", "description": "目の下のボリューム" },
-              { "id": 9, "name": "唇", "description": "唇ボリューム" },
-              { "id": 10, "name": "眉", "description": "眉リフト" }
+              {
+                "id": 1,
+                "name": "額",
+                "description": "額のシワ改善"
+              },
+              {
+                "id": 2,
+                "name": "こめかみ",
+                "description": "ボリューム損失の回復"
+              },
+              {
+                "id": 3,
+                "name": "鼻",
+                "description": "鼻筋/鼻先形成"
+              },
+              {
+                "id": 4,
+                "name": "頬骨",
+                "description": "頬骨ボリューム"
+              },
+              {
+                "id": 5,
+                "name": "ほうれい線",
+                "description": "ほうれい線改善"
+              },
+              {
+                "id": 6,
+                "name": "横頬",
+                "description": "頬のたるみ改善"
+              },
+              {
+                "id": 7,
+                "name": "あご先",
+                "description": "あごボリューム形成"
+              },
+              {
+                "id": 8,
+                "name": "涙袋",
+                "description": "目の下のボリューム"
+              },
+              {
+                "id": 9,
+                "name": "唇",
+                "description": "唇ボリューム"
+              },
+              {
+                "id": 10,
+                "name": "眉",
+                "description": "眉リフト"
+              }
             ]
           },
           "bodyAreas": {
             "title": "ボディフィラー",
             "subtitle": "ボディラインのボリュームを改善し、美しいシルエットを完成させます",
             "areas": [
-              { "id": 1, "name": "肩フィラー", "description": "丸くて柔らかい肩ライン", "detail": "僧帽筋ラインを滑らかにし、女性らしい肩のシルエットを作ります" },
-              { "id": 2, "name": "ヒップフィラー", "description": "ボリューム感のあるヒップライン", "detail": "平らなヒップやボリューム不足のヒップに自然なボリュームを与えます" },
-              { "id": 3, "name": "骨盤フィラー", "description": "滑らかな骨盤輪郭", "detail": "出っ張った骨盤骨を自然にカバーし、滑らかなボディラインを完成させます" },
-              { "id": 4, "name": "ヒップディップフィラー", "description": "ヒップディップ（太もも-ヒップの凹み）改善", "detail": "ヒップと太ももの間の凹みを埋めて、滑らかなシルエットを作ります" }
+              {
+                "id": 1,
+                "name": "肩フィラー",
+                "description": "丸くて柔らかい肩ライン",
+                "detail": "僧帽筋ラインを滑らかにし、女性らしい肩のシルエットを作ります"
+              },
+              {
+                "id": 2,
+                "name": "ヒップフィラー",
+                "description": "ボリューム感のあるヒップライン",
+                "detail": "平らなヒップやボリューム不足のヒップに自然なボリュームを与えます"
+              },
+              {
+                "id": 3,
+                "name": "骨盤フィラー",
+                "description": "滑らかな骨盤輪郭",
+                "detail": "出っ張った骨盤骨を自然にカバーし、滑らかなボディラインを完成させます"
+              },
+              {
+                "id": 4,
+                "name": "ヒップディップフィラー",
+                "description": "ヒップディップ（太もも-ヒップの凹み）改善",
+                "detail": "ヒップと太ももの間の凹みを埋めて、滑らかなシルエットを作ります"
+              }
             ],
             "notice": "ボディフィラーは大容量ヒアルロン酸フィラーを使用し、個人の体型に合わせて施術します。",
             "imageAlt": "肩、ヒップ、骨盤、ヒップディップのボディフィラー施術部位を示す医療イラスト"
@@ -1978,18 +2697,42 @@
             "title": "部位別カスタムフィラー",
             "subtitle": "施術部位と目的に応じて最適なフィラー硬度を選択します",
             "types": [
-              { "type": "Soft", "areas": "唇、目の下", "desc": "自然な触感" },
-              { "type": "Medium", "areas": "ほうれい線、頬", "desc": "ボリューム+支持力" },
-              { "type": "Firm", "areas": "鼻、あご、額", "desc": "強い支持力" }
+              {
+                "type": "Soft",
+                "areas": "唇、目の下",
+                "desc": "自然な触感"
+              },
+              {
+                "type": "Medium",
+                "areas": "ほうれい線、頬",
+                "desc": "ボリューム+支持力"
+              },
+              {
+                "type": "Firm",
+                "areas": "鼻、あご、額",
+                "desc": "強い支持力"
+              }
             ]
           },
           "safety": {
             "title": "可逆的施術",
             "subtitle": "ヒアルロン酸フィラーは必要時に溶かすことができ安全です",
             "steps": [
-              { "step": "01", "title": "フィラー注入", "desc": "ボリューム形成" },
-              { "step": "02", "title": "ヒアルロニダーゼ", "desc": "必要時に溶解" },
-              { "step": "03", "title": "原状回復", "desc": "安全に除去" }
+              {
+                "step": "01",
+                "title": "フィラー注入",
+                "desc": "ボリューム形成"
+              },
+              {
+                "step": "02",
+                "title": "ヒアルロニダーゼ",
+                "desc": "必要時に溶解"
+              },
+              {
+                "step": "03",
+                "title": "原状回復",
+                "desc": "安全に除去"
+              }
             ]
           },
           "treatmentInfo": {
@@ -2008,6 +2751,14 @@
           },
           "volumeIllustrationLabel": "ボリューム復元マッピング",
           "heroImageAlt": "フィラー - ボリュームと輪郭のアート"
+        },
+        "ui": {
+          "imageAlt": "フィラー施術部位",
+          "wrinkles": "シワ改善",
+          "volume": "ボリューム",
+          "contour": "輪郭",
+          "lifting": "リフティング",
+          "interactionHint": "* 各部位をクリックすると画像上の位置を確認できます"
         }
       },
       "skinbooster": {
@@ -2026,28 +2777,80 @@
           },
           "courseTimeline": {
             "items": [
-              { "session": "1回目", "week": "0週", "effect": 20, "desc": "基礎的な水分補給" },
-              { "session": "2回目", "week": "2-3週", "effect": 50, "desc": "水分バリア強化" },
-              { "session": "3回目", "week": "4-6週", "effect": 80, "desc": "コラーゲン活性化" },
-              { "session": "4回目", "week": "6-8週", "effect": 100, "desc": "最大効果達成" }
+              {
+                "session": "1回目",
+                "week": "0週",
+                "effect": 20,
+                "desc": "基礎的な水分補給"
+              },
+              {
+                "session": "2回目",
+                "week": "2-3週",
+                "effect": 50,
+                "desc": "水分バリア強化"
+              },
+              {
+                "session": "3回目",
+                "week": "4-6週",
+                "effect": 80,
+                "desc": "コラーゲン活性化"
+              },
+              {
+                "session": "4回目",
+                "week": "6-8週",
+                "effect": 100,
+                "desc": "最大効果達成"
+              }
             ]
           },
           "benefits": {
             "title": "スキンブースターのメリット",
             "items": [
-              { "title": "深い水分補給", "desc": "ヒアルロン酸を真皮層まで浸透" },
-              { "title": "肌の弾力改善", "desc": "コラーゲン、エラスチン生成促進" },
-              { "title": "自然な輝き", "desc": "肌の内側から健康的な輝き" },
-              { "title": "肌質改善", "desc": "小じわ、毛穴改善効果" }
+              {
+                "title": "深い水分補給",
+                "desc": "ヒアルロン酸を真皮層まで浸透"
+              },
+              {
+                "title": "肌の弾力改善",
+                "desc": "コラーゲン、エラスチン生成促進"
+              },
+              {
+                "title": "自然な輝き",
+                "desc": "肌の内側から健康的な輝き"
+              },
+              {
+                "title": "肌質改善",
+                "desc": "小じわ、毛穴改善効果"
+              }
             ]
           },
           "process": {
             "items": [
-              { "step": 1, "title": "カウンセリング", "desc": "肌状態分析と製品選択" },
-              { "step": 2, "title": "洗顔", "desc": "メイク除去と肌の整え" },
-              { "step": 3, "title": "麻酔", "desc": "麻酔クリーム塗布" },
-              { "step": 4, "title": "施術", "desc": "微細注射または機器で注入" },
-              { "step": 5, "title": "仕上げ", "desc": "鎮静ケアと日焼け止め" }
+              {
+                "step": 1,
+                "title": "カウンセリング",
+                "desc": "肌状態分析と製品選択"
+              },
+              {
+                "step": 2,
+                "title": "洗顔",
+                "desc": "メイク除去と肌の整え"
+              },
+              {
+                "step": 3,
+                "title": "麻酔",
+                "desc": "麻酔クリーム塗布"
+              },
+              {
+                "step": 4,
+                "title": "施術",
+                "desc": "微細注射または機器で注入"
+              },
+              {
+                "step": 5,
+                "title": "仕上げ",
+                "desc": "鎮静ケアと日焼け止め"
+              }
             ]
           },
           "idealFor": {
@@ -2068,9 +2871,21 @@
           },
           "faqs": {
             "items": [
-              { "q": "スキンブースターと水光注射は同じですか？", "shortA": "似ていますが、スキンブースターはより多様な成分を含みます。", "a": "似た概念ですが、スキンブースターは多様な成分（ヒアルロン酸、ポリヌクレオチドなど）を含みます。水光注射は主にヒアルロン酸ベースの水分補給に焦点を当てています。" },
-              { "q": "効果はいつから現れますか？", "shortA": "直後に潤い＋2～4週間後に弾力・輝き改善。", "a": "施術直後から潤いを感じることができ、2-4週間後から肌の弾力、輝きが改善されます。最適な効果のために2-4週間隔で3-4回の施術を推奨します。" },
-              { "q": "どの製品がいいですか？", "shortA": "肌の状態と目的に応じてカウンセリング後に選択します。", "a": "リジュラン、ジュベルック、リバイブ、ビタル、リトゥオなど様々な製品があり、肌の状態と目的に応じて選択します。カウンセリングを通じてご自身に合った製品を決定します。" }
+              {
+                "q": "スキンブースターと水光注射は同じですか？",
+                "shortA": "似ていますが、スキンブースターはより多様な成分を含みます。",
+                "a": "似た概念ですが、スキンブースターは多様な成分（ヒアルロン酸、ポリヌクレオチドなど）を含みます。水光注射は主にヒアルロン酸ベースの水分補給に焦点を当てています。"
+              },
+              {
+                "q": "効果はいつから現れますか？",
+                "shortA": "直後に潤い＋2～4週間後に弾力・輝き改善。",
+                "a": "施術直後から潤いを感じることができ、2-4週間後から肌の弾力、輝きが改善されます。最適な効果のために2-4週間隔で3-4回の施術を推奨します。"
+              },
+              {
+                "q": "どの製品がいいですか？",
+                "shortA": "肌の状態と目的に応じてカウンセリング後に選択します。",
+                "a": "リジュラン、ジュベルック、リバイブ、ビタル、リトゥオなど様々な製品があり、肌の状態と目的に応じて選択します。カウンセリングを通じてご自身に合った製品を決定します。"
+              }
             ]
           },
           "treatmentValues": {
@@ -2082,9 +2897,21 @@
           "effects": {
             "title": "スキンブースターの効果",
             "items": [
-              { "icon": "droplet", "title": "深い水分補給", "desc": "真皮層まで浸透" },
-              { "icon": "bounce", "title": "弾力改善", "desc": "コラーゲン生成促進" },
-              { "icon": "glow", "title": "自然な輝き", "desc": "肌の奥から輝く" }
+              {
+                "icon": "droplet",
+                "title": "深い水分補給",
+                "desc": "真皮層まで浸透"
+              },
+              {
+                "icon": "bounce",
+                "title": "弾力改善",
+                "desc": "コラーゲン生成促進"
+              },
+              {
+                "icon": "glow",
+                "title": "自然な輝き",
+                "desc": "肌の奥から輝く"
+              }
             ]
           },
           "treatmentCourse": {
@@ -2096,9 +2923,21 @@
             "title": "スキンブースター製品",
             "subtitle": "肌の状態と目的に合わせて最適な製品を選択します",
             "items": [
-              { "name": "ジュベルック", "desc": "コラーゲンブースト", "feature": "PDRN + HA" },
-              { "name": "リジュラン", "desc": "肌再生", "feature": "PN" },
-              { "name": "ボルベラ", "desc": "水分 + 弾力", "feature": "ボリューマHA" }
+              {
+                "name": "ジュベルック",
+                "desc": "コラーゲンブースト",
+                "feature": "PDRN + HA"
+              },
+              {
+                "name": "リジュラン",
+                "desc": "肌再生",
+                "feature": "PN"
+              },
+              {
+                "name": "ボルベラ",
+                "desc": "水分 + 弾力",
+                "feature": "ボリューマHA"
+              }
             ]
           },
           "treatmentInfo": {
@@ -2337,10 +3176,26 @@
           },
           "viewMore": "詳しく見る",
           "stats": [
-            { "label": "保有機器", "value": "4種類", "desc": "プレミアムレーザー" },
-            { "label": "治療領域", "value": "5種類", "desc": "肌悩み解決" },
-            { "label": "経験", "value": "10年以上", "desc": "レーザー施術経験" },
-            { "label": "安全性", "value": "認証済", "desc": "FDA承認機器" }
+            {
+              "label": "保有機器",
+              "value": "4種類",
+              "desc": "プレミアムレーザー"
+            },
+            {
+              "label": "治療領域",
+              "value": "5種類",
+              "desc": "肌悩み解決"
+            },
+            {
+              "label": "経験",
+              "value": "10年以上",
+              "desc": "レーザー施術経験"
+            },
+            {
+              "label": "安全性",
+              "value": "認証済",
+              "desc": "FDA承認機器"
+            }
           ],
           "categories": {
             "title": "お肌の悩み別カスタマイズ治療",
@@ -2351,7 +3206,11 @@
                 "name": "シミ/色素改善",
                 "nameEn": "Pigmentation & Melasma",
                 "description": "シミ、そばかす、老人性色素斑などをピコレーザーとレーザートーニングで効果的に改善します。",
-                "equipment": ["Lucas", "レーザートーニング", "Clarity II"],
+                "equipment": [
+                  "Lucas",
+                  "レーザートーニング",
+                  "Clarity II"
+                ],
                 "icon": "☀️"
               },
               {
@@ -2359,7 +3218,9 @@
                 "name": "赤ら顔/血管治療",
                 "nameEn": "Redness & Vascular",
                 "description": "顔の赤み、毛細血管拡張症、血管腫をClarity IIデュアル波長で治療します。",
-                "equipment": ["Clarity II"],
+                "equipment": [
+                  "Clarity II"
+                ],
                 "icon": "🔴"
               },
               {
@@ -2367,7 +3228,10 @@
                 "name": "肌トーン均一化",
                 "nameEn": "Skin Tone Brightening",
                 "description": "くすんだ肌をレーザートーニングとウルブランで明るく改善します。",
-                "equipment": ["レーザートーニング", "ウルブラン"],
+                "equipment": [
+                  "レーザートーニング",
+                  "ウルブラン"
+                ],
                 "icon": "✨"
               },
               {
@@ -2375,7 +3239,9 @@
                 "name": "プレミアム脱毛",
                 "nameEn": "Premium Hair Removal",
                 "description": "Clarity IIデュアル波長とIntelliTrak技術で全ての肌タイプに安全な脱毛。",
-                "equipment": ["Clarity II"],
+                "equipment": [
+                  "Clarity II"
+                ],
                 "icon": "💎"
               },
               {
@@ -2383,7 +3249,9 @@
                 "name": "タトゥー除去",
                 "nameEn": "Tattoo Removal",
                 "description": "Lucasピコレーザーで傷跡なく全ての色のタトゥーを効果的に除去します。",
-                "equipment": ["Lucas"],
+                "equipment": [
+                  "Lucas"
+                ],
                 "icon": "🎨"
               }
             ]
@@ -2393,8 +3261,19 @@
             "title": "どんな悩みも解決できる機器ラインナップ",
             "subtitle": "LIVレーザーセンターの4種プレミアム機器が全ての肌悩みをカバーします",
             "chartTitle": "肌悩み × 機器マトリックス",
-            "equipment": ["Clarity II", "Lucas", "レーザートーニング", "ウルブラン"],
-            "concerns": ["シミ/色素", "赤み/血管", "肌トーン", "脱毛", "タトゥー除去"]
+            "equipment": [
+              "Clarity II",
+              "Lucas",
+              "レーザートーニング",
+              "ウルブラン"
+            ],
+            "concerns": [
+              "シミ/色素",
+              "赤み/血管",
+              "肌トーン",
+              "脱毛",
+              "タトゥー除去"
+            ]
           },
           "equipmentSection": {
             "badge": "LIV保有機器",
@@ -2411,7 +3290,12 @@
                 "nameKo": "クラリティII",
                 "wavelength": "755nm + 1064nm",
                 "feature": "デュアル波長 + IntelliTrak技術",
-                "targets": ["色素", "血管", "脱毛", "肌トーン"],
+                "targets": [
+                  "色素",
+                  "血管",
+                  "脱毛",
+                  "肌トーン"
+                ],
                 "highlight": true
               },
               {
@@ -2419,7 +3303,11 @@
                 "nameKo": "ルーカス",
                 "wavelength": "532/755/1064nm",
                 "feature": "ピコ秒パルス (450ps)",
-                "targets": ["シミ", "色素", "タトゥー除去"],
+                "targets": [
+                  "シミ",
+                  "色素",
+                  "タトゥー除去"
+                ],
                 "highlight": false
               },
               {
@@ -2427,7 +3315,11 @@
                 "nameKo": "レーザートーニング",
                 "wavelength": "1064nm Nd:YAG",
                 "feature": "低出力反復照射",
-                "targets": ["肌トーン", "毛穴", "肌質"],
+                "targets": [
+                  "肌トーン",
+                  "毛穴",
+                  "肌質"
+                ],
                 "highlight": false
               },
               {
@@ -2435,7 +3327,10 @@
                 "nameKo": "ウルブラン",
                 "wavelength": "専用波長",
                 "feature": "メラニン選択的ターゲット",
-                "targets": ["美白", "トーン均一化"],
+                "targets": [
+                  "美白",
+                  "トーン均一化"
+                ],
                 "highlight": false
               }
             ]
@@ -2445,18 +3340,43 @@
             "title": "Clarity II + Lucas シナジー効果",
             "subtitle": "2つのプレミアム機器の組み合わせで、単独施術より早く効果的な結果が期待できます",
             "benefits": [
-              { "title": "マルチ波長カバレッジ", "desc": "532nm〜1064nmまで<br/>全ての深さのターゲットにアクセス" },
-              { "title": "複合適応症治療", "desc": "シミ+赤み、色素+毛穴など<br/>複合悩みを同時解決" },
-              { "title": "早い効果発現", "desc": "単独施術比<br/>1.5〜2倍速い結果" }
+              {
+                "title": "マルチ波長カバレッジ",
+                "desc": "532nm〜1064nmまで<br/>全ての深さのターゲットにアクセス"
+              },
+              {
+                "title": "複合適応症治療",
+                "desc": "シミ+赤み、色素+毛穴など<br/>複合悩みを同時解決"
+              },
+              {
+                "title": "早い効果発現",
+                "desc": "単独施術比<br/>1.5〜2倍速い結果"
+              }
             ]
           },
           "process": {
             "title": "レーザー施術プロセス",
             "steps": [
-              { "step": 1, "title": "肌分析", "desc": "専門医相談および肌タイプ、悩みの精密分析" },
-              { "step": 2, "title": "カスタマイズ設計", "desc": "個人別最適レーザー組み合わせと治療計画策定" },
-              { "step": 3, "title": "レーザー施術", "desc": "熟練した専門医による安全で精密な施術" },
-              { "step": 4, "title": "アフターケア", "desc": "施術後ケアと定期点検、維持管理" }
+              {
+                "step": 1,
+                "title": "肌分析",
+                "desc": "専門医相談および肌タイプ、悩みの精密分析"
+              },
+              {
+                "step": 2,
+                "title": "カスタマイズ設計",
+                "desc": "個人別最適レーザー組み合わせと治療計画策定"
+              },
+              {
+                "step": 3,
+                "title": "レーザー施術",
+                "desc": "熟練した専門医による安全で精密な施術"
+              },
+              {
+                "step": 4,
+                "title": "アフターケア",
+                "desc": "施術後ケアと定期点検、維持管理"
+              }
             ]
           },
           "faq": {
@@ -2501,9 +3421,24 @@
             "title": "LIVの3段階色素治療システム",
             "subtitle": "軽度から難治性シミまで、段階別カスタム治療で効果的な色素改善",
             "stages": [
-              { "stage": "1段階", "title": "集中治療", "equipment": "ルーカス ピコ", "description": "ピコセカンドパルスで深い色素を集中分解" },
-              { "stage": "2段階", "title": "精密ターゲット", "equipment": "クラリティII 755nm", "description": "アレキサンドライト波長で浅い色素を精密治療" },
-              { "stage": "3段階", "title": "維持管理", "equipment": "トーニング + ウルブラン", "description": "低刺激繰り返し施術で効果維持と再発防止" }
+              {
+                "stage": "1段階",
+                "title": "集中治療",
+                "equipment": "ルーカス ピコ",
+                "description": "ピコセカンドパルスで深い色素を集中分解"
+              },
+              {
+                "stage": "2段階",
+                "title": "精密ターゲット",
+                "equipment": "クラリティII 755nm",
+                "description": "アレキサンドライト波長で浅い色素を精密治療"
+              },
+              {
+                "stage": "3段階",
+                "title": "維持管理",
+                "equipment": "トーニング + ウルブラン",
+                "description": "低刺激繰り返し施術で効果維持と再発防止"
+              }
             ]
           },
           "picoVsNano": {
@@ -2544,9 +3479,27 @@
           },
           "protocol": {
             "title": "症状別推奨プロトコル",
-            "mild": { "level": "軽度", "description": "軽いシミ、そばかす", "treatment": "レーザートーニング", "sessions": "5-10回", "interval": "2週間隔" },
-            "moderate": { "level": "中等度", "description": "中間深度色素", "treatment": "クラリティII 755nm", "sessions": "3-5回", "interval": "3-4週間隔" },
-            "severe": { "level": "重度 / 難治性", "description": "深いシミ、難治性", "treatment": "ルーカス ピコ + トーニング", "sessions": "5-10回", "interval": "2-4週間隔" }
+            "mild": {
+              "level": "軽度",
+              "description": "軽いシミ、そばかす",
+              "treatment": "レーザートーニング",
+              "sessions": "5-10回",
+              "interval": "2週間隔"
+            },
+            "moderate": {
+              "level": "中等度",
+              "description": "中間深度色素",
+              "treatment": "クラリティII 755nm",
+              "sessions": "3-5回",
+              "interval": "3-4週間隔"
+            },
+            "severe": {
+              "level": "重度 / 難治性",
+              "description": "深いシミ、難治性",
+              "treatment": "ルーカス ピコ + トーニング",
+              "sessions": "5-10回",
+              "interval": "2-4週間隔"
+            }
           },
           "idealFor": [
             "シミが濃くなり広がっている方",
@@ -2557,15 +3510,32 @@
             "ダウンタイムなく継続的にケアしたい方"
           ],
           "faq": [
-            { "q": "シミは完治可能ですか？", "a": "シミは完治より「管理」の概念でアプローチする必要があります。集中治療で大きく改善した後、定期的な維持管理と紫外線遮断で再発を最小化します。LIVの3段階システムは治療と維持管理の両方を含みます。" },
-            { "q": "ピコレーザーとトーニング、どちらが良いですか？", "a": "目的によって異なります。難治性シミや深い色素はピコレーザーで集中治療し、軽微な色素や維持管理はトーニングが適しています。多くの場合、ピコ治療後トーニングで維持する複合プロトコルが効果的です。" },
-            { "q": "レーザー後に色素が濃くなることもありますか？", "a": "一時的な色素沈着（PIH）が発生する可能性があります。これは2-4週以内に自然に改善され、紫外線遮断を徹底すれば予防できます。LIVでは施術後のケア案内を徹底しています。" },
-            { "q": "妊娠中でも色素レーザーは可能ですか？", "a": "妊娠中や授乳中はレーザー施術をお勧めしません。出産および授乳完了後の施術をお勧めします。妊娠中は紫外線遮断と保湿に集中してください。" }
+            {
+              "q": "シミは完治可能ですか？",
+              "a": "シミは完治より「管理」の概念でアプローチする必要があります。集中治療で大きく改善した後、定期的な維持管理と紫外線遮断で再発を最小化します。LIVの3段階システムは治療と維持管理の両方を含みます。"
+            },
+            {
+              "q": "ピコレーザーとトーニング、どちらが良いですか？",
+              "a": "目的によって異なります。難治性シミや深い色素はピコレーザーで集中治療し、軽微な色素や維持管理はトーニングが適しています。多くの場合、ピコ治療後トーニングで維持する複合プロトコルが効果的です。"
+            },
+            {
+              "q": "レーザー後に色素が濃くなることもありますか？",
+              "a": "一時的な色素沈着（PIH）が発生する可能性があります。これは2-4週以内に自然に改善され、紫外線遮断を徹底すれば予防できます。LIVでは施術後のケア案内を徹底しています。"
+            },
+            {
+              "q": "妊娠中でも色素レーザーは可能ですか？",
+              "a": "妊娠中や授乳中はレーザー施術をお勧めしません。出産および授乳完了後の施術をお勧めします。妊娠中は紫外線遮断と保湿に集中してください。"
+            }
           ],
           "cta": {
             "title": "シミ/色素 無料相談",
             "description": "肌状態に合ったカスタム色素治療計画をご相談いたします。専門医相談で最適な治療を始めてください。"
           }
+        },
+        "ui": {
+          "duration": "施術時間",
+          "downtime": "ダウンタイム",
+          "recommendedSessions": "推奨回数"
         }
       },
       "vascular": {
@@ -2583,10 +3553,26 @@
             "subtitle": "赤みの原因と深さに応じて最適な波長とエネルギーで治療します",
             "recommendedTreatment": "推奨治療",
             "types": [
-              { "type": "顔面紅潮", "description": "感情や温度変化で顔が赤くなりやすい症状", "treatment": "クラリティII 1064nm 低出力" },
-              { "type": "毛細血管拡張", "description": "鼻、頬周辺に細い血管が透けて見える症状", "treatment": "クラリティII 1064nm 高出力" },
-              { "type": "酒さ (Rosacea)", "description": "慢性的な赤みと丘疹、膿疱を伴う皮膚疾患", "treatment": "クラリティII + スキンケア併用" },
-              { "type": "血管腫 / 血管奇形", "description": "先天性または後天性血管病変", "treatment": "クラリティII 集中治療" }
+              {
+                "type": "顔面紅潮",
+                "description": "感情や温度変化で顔が赤くなりやすい症状",
+                "treatment": "クラリティII 1064nm 低出力"
+              },
+              {
+                "type": "毛細血管拡張",
+                "description": "鼻、頬周辺に細い血管が透けて見える症状",
+                "treatment": "クラリティII 1064nm 高出力"
+              },
+              {
+                "type": "酒さ (Rosacea)",
+                "description": "慢性的な赤みと丘疹、膿疱を伴う皮膚疾患",
+                "treatment": "クラリティII + スキンケア併用"
+              },
+              {
+                "type": "血管腫 / 血管奇形",
+                "description": "先天性または後天性血管病変",
+                "treatment": "クラリティII 集中治療"
+              }
             ]
           },
           "dualWavelength": {
@@ -2598,11 +3584,19 @@
             "deep1064": "1064nm - 深い血管ターゲット",
             "alexandrite": {
               "title": "755nm アレキサンドライト",
-              "points": ["表皮近くの浅い血管ターゲット", "毛細血管拡張治療に効果的", "ヘモグロビン吸収率が高い"]
+              "points": [
+                "表皮近くの浅い血管ターゲット",
+                "毛細血管拡張治療に効果的",
+                "ヘモグロビン吸収率が高い"
+              ]
             },
             "ndyag": {
               "title": "1064nm Nd:YAG",
-              "points": ["真皮層の深い血管まで到達", "慢性赤ら顔、酒さ治療に効果的", "暗い肌にも安全"]
+              "points": [
+                "真皮層の深い血管まで到達",
+                "慢性赤ら顔、酒さ治療に効果的",
+                "暗い肌にも安全"
+              ]
             }
           },
           "clarity": {
@@ -2613,10 +3607,22 @@
             "whyDesc": "LIV整形外科が保有する機器の中で血管治療に最も適した機器です。1064nm Nd:YAG波長が血管のヘモグロビンに選択的に吸収され、周辺組織損傷なく血管だけを治療します。",
             "recommendedSessions": "3-8回 (症状により)",
             "benefits": [
-              { "title": "デュアル波長", "desc": "755nm(色素/脱毛) + 1064nm(血管/深部色素) マルチソリューション" },
-              { "title": "IntelliTrak技術", "desc": "自動18%オーバーラップで均一なエネルギー照射" },
-              { "title": "全ての肌タイプ", "desc": "スキンタイプI-VIまで安全な施術" },
-              { "title": "クライオゲン冷却", "desc": "施術中の皮膚保護と痛み最小化" }
+              {
+                "title": "デュアル波長",
+                "desc": "755nm(色素/脱毛) + 1064nm(血管/深部色素) マルチソリューション"
+              },
+              {
+                "title": "IntelliTrak技術",
+                "desc": "自動18%オーバーラップで均一なエネルギー照射"
+              },
+              {
+                "title": "全ての肌タイプ",
+                "desc": "スキンタイプI-VIまで安全な施術"
+              },
+              {
+                "title": "クライオゲン冷却",
+                "desc": "施術中の皮膚保護と痛み最小化"
+              }
             ],
             "duration": "15-30分",
             "anesthesia": "無麻酔（クライオゲン冷却）",
@@ -2624,9 +3630,27 @@
           },
           "protocol": {
             "title": "症状別推奨プロトコル",
-            "mild": { "level": "軽度", "description": "軽い赤ら顔、初期毛細血管", "sessions": "3-5回", "interval": "3-4週間隔", "treatment": "クラリティII 1064nm" },
-            "moderate": { "level": "中等度", "description": "慢性赤ら顔、拡張した毛細血管", "sessions": "5-8回", "interval": "3-4週間隔", "treatment": "クラリティII 1064nm" },
-            "severe": { "level": "重度", "description": "酒さ、重度の血管拡張", "sessions": "8-10回以上", "interval": "2-3週間隔", "treatment": "クラリティII 1064nm" }
+            "mild": {
+              "level": "軽度",
+              "description": "軽い赤ら顔、初期毛細血管",
+              "sessions": "3-5回",
+              "interval": "3-4週間隔",
+              "treatment": "クラリティII 1064nm"
+            },
+            "moderate": {
+              "level": "中等度",
+              "description": "慢性赤ら顔、拡張した毛細血管",
+              "sessions": "5-8回",
+              "interval": "3-4週間隔",
+              "treatment": "クラリティII 1064nm"
+            },
+            "severe": {
+              "level": "重度",
+              "description": "酒さ、重度の血管拡張",
+              "sessions": "8-10回以上",
+              "interval": "2-3週間隔",
+              "treatment": "クラリティII 1064nm"
+            }
           },
           "idealFor": [
             "感情や温度変化で顔が赤くなりやすい方",
@@ -2637,10 +3661,22 @@
             "顔面紅潮で対人関係が不便な方"
           ],
           "faq": [
-            { "q": "赤ら顔治療後すぐに効果が出ますか？", "a": "施術直後は一時的に赤みがひどく見えることがあります。これは正常な反応で、2-3日以内に落ち着きます。実際の効果は3-4週後から徐々に現れ、繰り返し施術により段階的に改善されます。" },
-            { "q": "赤みは完全になくなりますか？", "a": "赤みの原因と深刻度によって異なります。ほとんどの場合50-80%改善が期待でき、完全に無くすよりは症状を大幅に緩和させることが目標です。維持管理施術で効果を持続させることができます。" },
-            { "q": "酒さもレーザーで治療できますか？", "a": "酒さの血管拡張症状はレーザーで効果的に治療できます。ただし酒さは複合的な皮膚疾患なので、レーザー治療とともにスキンケア、薬物治療を併用することが効果的です。" },
-            { "q": "施術後の注意点はありますか？", "a": "施術後2-3日間はサウナ、飲酒、激しい運動を避けてください。紫外線遮断を徹底し、刺激的な化粧品の使用を控えてください。施術部位が一時的に赤くなったり腫れることは正常です。" }
+            {
+              "q": "赤ら顔治療後すぐに効果が出ますか？",
+              "a": "施術直後は一時的に赤みがひどく見えることがあります。これは正常な反応で、2-3日以内に落ち着きます。実際の効果は3-4週後から徐々に現れ、繰り返し施術により段階的に改善されます。"
+            },
+            {
+              "q": "赤みは完全になくなりますか？",
+              "a": "赤みの原因と深刻度によって異なります。ほとんどの場合50-80%改善が期待でき、完全に無くすよりは症状を大幅に緩和させることが目標です。維持管理施術で効果を持続させることができます。"
+            },
+            {
+              "q": "酒さもレーザーで治療できますか？",
+              "a": "酒さの血管拡張症状はレーザーで効果的に治療できます。ただし酒さは複合的な皮膚疾患なので、レーザー治療とともにスキンケア、薬物治療を併用することが効果的です。"
+            },
+            {
+              "q": "施術後の注意点はありますか？",
+              "a": "施術後2-3日間はサウナ、飲酒、激しい運動を避けてください。紫外線遮断を徹底し、刺激的な化粧品の使用を控えてください。施術部位が一時的に赤くなったり腫れることは正常です。"
+            }
           ],
           "cta": {
             "title": "赤ら顔/血管 無料相談",
@@ -2664,10 +3700,41 @@
             "subtitle": "肌トーンの不均一の原因は様々です。お悩み別のカスタムソリューションをご提案します。",
             "customSolution": "カスタムソリューション",
             "concerns": [
-              { "title": "全体的にくすんだ肌", "description": "日光、ストレス、疲労などで肌全体が暗く生気がないように見える状態", "solution": "レーザートーニングで全体的な肌の明るさを改善", "equipment": ["レーザートーニング", "ウルブラン"] },
-              { "title": "部分的な色素沈着", "description": "頬、額、頬骨周辺に部分的に暗い色素が沈着している状態", "solution": "レーザートーニング集中治療 + ピコレーザー併用", "equipment": ["レーザートーニング", "Lucas"] },
-              { "title": "毛穴/肌質の悩み", "description": "広がった毛穴と荒れた肌質により肌トーンが不均一に見える状態", "solution": "レーザートーニングのコラーゲンリモデリング効果を活用", "equipment": ["レーザートーニング"] },
-              { "title": "肌の透明感低下", "description": "肌がくすんで透明感がなく健康に見えない状態", "solution": "ウルブランで肌の透明感と光沢を回復", "equipment": ["ウルブラン", "レーザートーニング"] }
+              {
+                "title": "全体的にくすんだ肌",
+                "description": "日光、ストレス、疲労などで肌全体が暗く生気がないように見える状態",
+                "solution": "レーザートーニングで全体的な肌の明るさを改善",
+                "equipment": [
+                  "レーザートーニング",
+                  "ウルブラン"
+                ]
+              },
+              {
+                "title": "部分的な色素沈着",
+                "description": "頬、額、頬骨周辺に部分的に暗い色素が沈着している状態",
+                "solution": "レーザートーニング集中治療 + ピコレーザー併用",
+                "equipment": [
+                  "レーザートーニング",
+                  "Lucas"
+                ]
+              },
+              {
+                "title": "毛穴/肌質の悩み",
+                "description": "広がった毛穴と荒れた肌質により肌トーンが不均一に見える状態",
+                "solution": "レーザートーニングのコラーゲンリモデリング効果を活用",
+                "equipment": [
+                  "レーザートーニング"
+                ]
+              },
+              {
+                "title": "肌の透明感低下",
+                "description": "肌がくすんで透明感がなく健康に見えない状態",
+                "solution": "ウルブランで肌の透明感と光沢を回復",
+                "equipment": [
+                  "ウルブラン",
+                  "レーザートーニング"
+                ]
+              }
             ]
           },
           "toningSection": {
@@ -2677,9 +3744,18 @@
             "description2": "従来の高出力レーザーと異なり、<strong>低エネルギーを広い範囲に均一に</strong>照射して肌への刺激を最小限に抑えながら効果を最大化します。",
             "effectsTitle": "レーザートーニングの3つの効果",
             "effects": [
-              { "title": "メラニン分解", "desc": "肌の中の色素を徐々に分解" },
-              { "title": "コラーゲン生成", "desc": "真皮層刺激で肌の弾力を改善" },
-              { "title": "毛穴縮小", "desc": "皮脂腺機能調節と毛穴タイトニング" }
+              {
+                "title": "メラニン分解",
+                "desc": "肌の中の色素を徐々に分解"
+              },
+              {
+                "title": "コラーゲン生成",
+                "desc": "真皮層刺激で肌の弾力を改善"
+              },
+              {
+                "title": "毛穴縮小",
+                "desc": "皮脂腺機能調節と毛穴タイトニング"
+              }
             ]
           },
           "beforeAfterSection": {
@@ -2703,7 +3779,13 @@
               "wavelength": "1064nm Nd:YAG",
               "feature": "低出力繰り返し照射（MLAモード）",
               "advantage": "ダウンタイムゼロ、すぐに日常生活可能",
-              "targets": ["くすんだ肌", "小じわ", "毛穴", "肌質", "明るさ改善"]
+              "targets": [
+                "くすんだ肌",
+                "小じわ",
+                "毛穴",
+                "肌質",
+                "明るさ改善"
+              ]
             },
             "ulblanc": {
               "name": "ウルブラン",
@@ -2711,7 +3793,13 @@
               "wavelength": "専用ホワイトニング波長",
               "feature": "メラニン選択的ターゲティング",
               "advantage": "刺激なく肌トーン改善",
-              "targets": ["肌美白", "トーン均一化", "透明感", "光沢", "くすみ"]
+              "targets": [
+                "肌美白",
+                "トーン均一化",
+                "透明感",
+                "光沢",
+                "くすみ"
+              ]
             },
             "synergyTitle": "レーザートーニング + ウルブラン シナジー効果",
             "synergyDesc": "レーザートーニングで肌全体のコンディションを改善し、ウルブランでメラニンを直接ターゲティングすると、単独施術に比べて<strong>1.5〜2倍速い効果</strong>が期待できます。両機器ともダウンタイムがないため、負担なく併用治療が可能です。"
@@ -2721,29 +3809,74 @@
             "title": "3ステップ肌トーン改善プログラム",
             "subtitle": "体系的な段階別治療で自然で持続的な肌トーン改善を実現します",
             "steps": [
-              { "step": 1, "title": "肌コンディショニング", "equipment": "レーザートーニング", "description": "1064nm波長で肌全体に低出力エネルギーを均一に照射し、肌のベースコンディションを改善します。", "sessions": "週1回、4-5回" },
-              { "step": 2, "title": "メラニンターゲティング", "equipment": "ウルブラン", "description": "メラニンに選択的に作用する専用波長で色素を徐々に分解し、肌の美白を促します。", "sessions": "2週間間隔、3-4回" },
-              { "step": 3, "title": "維持管理", "equipment": "レーザートーニング + ウルブラン", "description": "月1回の定期的なケアで明るくなった肌トーンを維持し、新たな色素沈着を予防します。", "sessions": "月1回維持" }
+              {
+                "step": 1,
+                "title": "肌コンディショニング",
+                "equipment": "レーザートーニング",
+                "description": "1064nm波長で肌全体に低出力エネルギーを均一に照射し、肌のベースコンディションを改善します。",
+                "sessions": "週1回、4-5回"
+              },
+              {
+                "step": 2,
+                "title": "メラニンターゲティング",
+                "equipment": "ウルブラン",
+                "description": "メラニンに選択的に作用する専用波長で色素を徐々に分解し、肌の美白を促します。",
+                "sessions": "2週間間隔、3-4回"
+              },
+              {
+                "step": 3,
+                "title": "維持管理",
+                "equipment": "レーザートーニング + ウルブラン",
+                "description": "月1回の定期的なケアで明るくなった肌トーンを維持し、新たな色素沈着を予防します。",
+                "sessions": "月1回維持"
+              }
             ]
           },
           "advantagesSection": {
             "title": "レーザートーニングのメリット",
             "subtitle": "忙しい現代人のための負担のない肌ケア",
             "items": [
-              { "title": "ダウンタイムゼロ", "desc": "施術直後から日常生活可能" },
-              { "title": "ランチタイム施術", "desc": "15-20分で手軽" },
-              { "title": "自然な効果", "desc": "徐々に明るくなる肌" },
-              { "title": "複合改善", "desc": "トーン、毛穴、弾力を同時ケア" }
+              {
+                "title": "ダウンタイムゼロ",
+                "desc": "施術直後から日常生活可能"
+              },
+              {
+                "title": "ランチタイム施術",
+                "desc": "15-20分で手軽"
+              },
+              {
+                "title": "自然な効果",
+                "desc": "徐々に明るくなる肌"
+              },
+              {
+                "title": "複合改善",
+                "desc": "トーン、毛穴、弾力を同時ケア"
+              }
             ]
           },
           "faq": {
             "title": "肌トーン改善FAQ",
             "items": [
-              { "q": "レーザートーニングは何回くらい受ければ効果を実感できますか？", "a": "一般的に4-5回治療後から目に見える効果を感じられます。肌の状態により個人差があり、10回程度治療すると最適な結果が期待できます。その後月1回の維持治療で明るくなった肌トーンを長く維持できます。" },
-              { "q": "レーザートーニング施術後、日常生活に制限はありますか？", "a": "レーザートーニングの最大のメリットは「ダウンタイムゼロ」です。施術直後に軽い赤みが出ることがありますが、30分〜1時間以内に落ち着き、洗顔、メイク、外出など日常生活がすぐに可能です。ただし、施術当日はサウナや激しい運動を避け、紫外線対策に気をつけてください。" },
-              { "q": "ウルブランとレーザートーニングの違いは何ですか？", "a": "レーザートーニングは1064nm Nd:YAGレーザーで肌全体の色素を徐々に改善し、コラーゲン生成を促進します。ウルブランはメラニンに特化した専用波長でより直接的な美白効果を提供します。両施術を併用するとシナジー効果でより早く効果的な結果が得られます。" },
-              { "q": "敏感肌でもレーザートーニングは可能ですか？", "a": "はい、可能です。レーザートーニングは低出力で照射するため、敏感肌にも比較的安全です。ただし、初回施術時はエネルギー設定を低くして肌の反応を確認した後、徐々に調整します。カウンセリング時に肌の状態を正確にお伝えいただければ、カスタム治療計画を立てます。" },
-              { "q": "肝斑治療と肌トーン改善治療はどう違いますか？", "a": "肝斑治療は明確な境界がある色素病変をターゲットにピコレーザーなど高出力機器で集中治療します。一方、肌トーン改善は全体的なくすみ、微細な色素沈着、肌質改善を目標にレーザートーニングとウルブランを活用します。肝斑がありながら全体の肌トーンも改善したい場合は、両方の治療を併用するのが効果的です。" }
+              {
+                "q": "レーザートーニングは何回くらい受ければ効果を実感できますか？",
+                "a": "一般的に4-5回治療後から目に見える効果を感じられます。肌の状態により個人差があり、10回程度治療すると最適な結果が期待できます。その後月1回の維持治療で明るくなった肌トーンを長く維持できます。"
+              },
+              {
+                "q": "レーザートーニング施術後、日常生活に制限はありますか？",
+                "a": "レーザートーニングの最大のメリットは「ダウンタイムゼロ」です。施術直後に軽い赤みが出ることがありますが、30分〜1時間以内に落ち着き、洗顔、メイク、外出など日常生活がすぐに可能です。ただし、施術当日はサウナや激しい運動を避け、紫外線対策に気をつけてください。"
+              },
+              {
+                "q": "ウルブランとレーザートーニングの違いは何ですか？",
+                "a": "レーザートーニングは1064nm Nd:YAGレーザーで肌全体の色素を徐々に改善し、コラーゲン生成を促進します。ウルブランはメラニンに特化した専用波長でより直接的な美白効果を提供します。両施術を併用するとシナジー効果でより早く効果的な結果が得られます。"
+              },
+              {
+                "q": "敏感肌でもレーザートーニングは可能ですか？",
+                "a": "はい、可能です。レーザートーニングは低出力で照射するため、敏感肌にも比較的安全です。ただし、初回施術時はエネルギー設定を低くして肌の反応を確認した後、徐々に調整します。カウンセリング時に肌の状態を正確にお伝えいただければ、カスタム治療計画を立てます。"
+              },
+              {
+                "q": "肝斑治療と肌トーン改善治療はどう違いますか？",
+                "a": "肝斑治療は明確な境界がある色素病変をターゲットにピコレーザーなど高出力機器で集中治療します。一方、肌トーン改善は全体的なくすみ、微細な色素沈着、肌質改善を目標にレーザートーニングとウルブランを活用します。肝斑がありながら全体の肌トーンも改善したい場合は、両方の治療を併用するのが効果的です。"
+              }
             ]
           },
           "illustrationLabels": {
@@ -2806,33 +3939,93 @@
               "interval": "施術間隔"
             },
             "items": [
-              { "area": "ワキ", "sessions": "6-8回", "interval": "4-6週", "description": "最も人気のある脱毛部位。汗、臭いの管理にも効果的です。" },
-              { "area": "腕/脚", "sessions": "6-10回", "interval": "6-8週", "description": "広い部位も素早く施術。滑らかな肌を長く維持します。" },
-              { "area": "ビキニライン", "sessions": "8-10回", "interval": "4-6週", "description": "デリケートな部位に最適化されたセッティングで安全かつ効果的な施術。" },
-              { "area": "顔（鼻の下、フェイスライン）", "sessions": "8-12回", "interval": "3-4週", "description": "繊細な顔の毛の除去。産毛までクリアに整えます。" },
-              { "area": "背中/胸（男性）", "sessions": "8-12回", "interval": "6-8週", "description": "男性脱毛専門。自然な減毛から完全脱毛まで。" },
-              { "area": "全身脱毛", "sessions": "8-12回", "interval": "部位別調整", "description": "全身トータルケア。パッケージプログラムでお得な価格。" }
+              {
+                "area": "ワキ",
+                "sessions": "6-8回",
+                "interval": "4-6週",
+                "description": "最も人気のある脱毛部位。汗、臭いの管理にも効果的です。"
+              },
+              {
+                "area": "腕/脚",
+                "sessions": "6-10回",
+                "interval": "6-8週",
+                "description": "広い部位も素早く施術。滑らかな肌を長く維持します。"
+              },
+              {
+                "area": "ビキニライン",
+                "sessions": "8-10回",
+                "interval": "4-6週",
+                "description": "デリケートな部位に最適化されたセッティングで安全かつ効果的な施術。"
+              },
+              {
+                "area": "顔（鼻の下、フェイスライン）",
+                "sessions": "8-12回",
+                "interval": "3-4週",
+                "description": "繊細な顔の毛の除去。産毛までクリアに整えます。"
+              },
+              {
+                "area": "背中/胸（男性）",
+                "sessions": "8-12回",
+                "interval": "6-8週",
+                "description": "男性脱毛専門。自然な減毛から完全脱毛まで。"
+              },
+              {
+                "area": "全身脱毛",
+                "sessions": "8-12回",
+                "interval": "部位別調整",
+                "description": "全身トータルケア。パッケージプログラムでお得な価格。"
+              }
             ]
           },
           "advantages": {
             "title": "Clarity II の利点",
             "subtitle": "なぜClarity IIで脱毛するのか？",
             "items": [
-              { "title": "デュアル波長", "description": "755nm + 1064nmですべての肌タイプに安全で効果的" },
-              { "title": "IntelliTrak™", "description": "リアルタイム肌追跡で均一なエネルギー照射、火傷リスク最小化" },
-              { "title": "大面積スポット", "description": "最大3cm²スポットサイズで広い部位も素早く施術" },
-              { "title": "統合クーリング", "description": "クライオジェンクーリングシステムで施術中の痛みと不快感を最小化" }
+              {
+                "title": "デュアル波長",
+                "description": "755nm + 1064nmですべての肌タイプに安全で効果的"
+              },
+              {
+                "title": "IntelliTrak™",
+                "description": "リアルタイム肌追跡で均一なエネルギー照射、火傷リスク最小化"
+              },
+              {
+                "title": "大面積スポット",
+                "description": "最大3cm²スポットサイズで広い部位も素早く施術"
+              },
+              {
+                "title": "統合クーリング",
+                "description": "クライオジェンクーリングシステムで施術中の痛みと不快感を最小化"
+              }
             ]
           },
           "faq": {
             "title": "脱毛FAQ",
             "items": [
-              { "q": "レーザー脱毛は永久的ですか？", "a": "レーザー脱毛は「永久減毛（Permanent Hair Reduction）」に分類されます。成長期の毛包をターゲットにするため、完了後80-90%の永久的な減毛効果が期待できます。一部の休止期毛包が成長期に移行すると若干の再発がある可能性があるため、年1-2回のメンテナンス治療をお勧めします。" },
-              { "q": "脱毛レーザーは痛いですか？", "a": "Clarity IIは内蔵のクライオジェンクーリングシステムが施術中に肌を持続的に冷却し、痛みを最小化します。ほとんどの方が「輪ゴムで弾かれる程度」の軽い刺激と表現されます。必要に応じて麻酔クリームを事前に塗布できます。" },
-              { "q": "明るい色（金髪、白髪）の毛も除去できますか？", "a": "レーザー脱毛はメラニンをターゲットにするため、メラニンの少ない白、金髪、明るい色の毛には効果が限定的です。このような場合は電気脱毛が代替案となります。カウンセリング時に毛の色を確認し、最適な方法をご案内します。" },
-              { "q": "肌が黒い方ですが脱毛しても大丈夫ですか？", "a": "はい、Clarity IIの1064nm Nd:YAG波長は暗い肌（Fitzpatrick Type IV-VI）でも安全に使用可能です。755nmアレキサンドライトは明るい肌に、1064nmは暗い肌に最適化されており、すべての肌タイプにカスタマイズ施術が可能です。" },
-              { "q": "脱毛前後の注意事項はありますか？", "a": "施術前：2週間前からワックス、毛抜き、除毛剤の使用を避け、シェービングのみ行ってください。施術当日は過度な日焼けを避けてください。施術後：24-48時間サウナ、激しい運動を避け、日焼け止めをしっかり塗ってください。" },
-              { "q": "何回くらい受ければ効果が出ますか？", "a": "部位と個人の毛髪特性によりますが、一般的に6-10回施術後に最適な結果が期待できます。毛髪成長周期中の成長期（Anagen）にのみレーザーが効果的なため、4-8週間隔で複数回施術し、様々な周期の毛包をターゲティングします。" }
+              {
+                "q": "レーザー脱毛は永久的ですか？",
+                "a": "レーザー脱毛は「永久減毛（Permanent Hair Reduction）」に分類されます。成長期の毛包をターゲットにするため、完了後80-90%の永久的な減毛効果が期待できます。一部の休止期毛包が成長期に移行すると若干の再発がある可能性があるため、年1-2回のメンテナンス治療をお勧めします。"
+              },
+              {
+                "q": "脱毛レーザーは痛いですか？",
+                "a": "Clarity IIは内蔵のクライオジェンクーリングシステムが施術中に肌を持続的に冷却し、痛みを最小化します。ほとんどの方が「輪ゴムで弾かれる程度」の軽い刺激と表現されます。必要に応じて麻酔クリームを事前に塗布できます。"
+              },
+              {
+                "q": "明るい色（金髪、白髪）の毛も除去できますか？",
+                "a": "レーザー脱毛はメラニンをターゲットにするため、メラニンの少ない白、金髪、明るい色の毛には効果が限定的です。このような場合は電気脱毛が代替案となります。カウンセリング時に毛の色を確認し、最適な方法をご案内します。"
+              },
+              {
+                "q": "肌が黒い方ですが脱毛しても大丈夫ですか？",
+                "a": "はい、Clarity IIの1064nm Nd:YAG波長は暗い肌（Fitzpatrick Type IV-VI）でも安全に使用可能です。755nmアレキサンドライトは明るい肌に、1064nmは暗い肌に最適化されており、すべての肌タイプにカスタマイズ施術が可能です。"
+              },
+              {
+                "q": "脱毛前後の注意事項はありますか？",
+                "a": "施術前：2週間前からワックス、毛抜き、除毛剤の使用を避け、シェービングのみ行ってください。施術当日は過度な日焼けを避けてください。施術後：24-48時間サウナ、激しい運動を避け、日焼け止めをしっかり塗ってください。"
+              },
+              {
+                "q": "何回くらい受ければ効果が出ますか？",
+                "a": "部位と個人の毛髪特性によりますが、一般的に6-10回施術後に最適な結果が期待できます。毛髪成長周期中の成長期（Anagen）にのみレーザーが効果的なため、4-8週間隔で複数回施術し、様々な周期の毛包をターゲティングします。"
+              }
             ]
           },
           "cta": {
@@ -2857,15 +4050,40 @@
             "description2": "重複/漏れなく正確な照射"
           },
           "intellitrakFeatures": [
-            { "title": "リアルタイム追跡", "desc": "ハンドピースの動きをリアルタイムで感知して照射位置を把握" },
-            { "title": "均一なカバレッジ", "desc": "重複/漏れなく治療領域全体に均一なエネルギー照射" },
-            { "title": "火傷予防", "desc": "同一部位への重複照射防止で火傷および過治療リスク最小化" }
+            {
+              "title": "リアルタイム追跡",
+              "desc": "ハンドピースの動きをリアルタイムで感知して照射位置を把握"
+            },
+            {
+              "title": "均一なカバレッジ",
+              "desc": "重複/漏れなく治療領域全体に均一なエネルギー照射"
+            },
+            {
+              "title": "火傷予防",
+              "desc": "同一部位への重複照射防止で火傷および過治療リスク最小化"
+            }
           ],
           "processSteps": [
-            { "step": 1, "title": "カウンセリング & 肌分析", "desc": "肌タイプ、毛髪特性分析後にカスタム治療計画を策定" },
-            { "step": 2, "title": "事前準備", "desc": "治療部位の剃毛および必要に応じて麻酔クリーム塗布" },
-            { "step": 3, "title": "レーザー照射", "desc": "IntelliTrak™で正確かつ均一なエネルギー照射" },
-            { "step": 4, "title": "アフターケア", "desc": "クーリングおよび鎮静ケア、次回施術日程のご案内" }
+            {
+              "step": 1,
+              "title": "カウンセリング & 肌分析",
+              "desc": "肌タイプ、毛髪特性分析後にカスタム治療計画を策定"
+            },
+            {
+              "step": 2,
+              "title": "事前準備",
+              "desc": "治療部位の剃毛および必要に応じて麻酔クリーム塗布"
+            },
+            {
+              "step": 3,
+              "title": "レーザー照射",
+              "desc": "IntelliTrak™で正確かつ均一なエネルギー照射"
+            },
+            {
+              "step": 4,
+              "title": "アフターケア",
+              "desc": "クーリングおよび鎮静ケア、次回施術日程のご案内"
+            }
           ]
         }
       },
@@ -2890,9 +4108,18 @@
             "description1": "従来のナノ秒(10⁻⁹秒)レーザーは熱作用(Photothermal)でインクを分解していました。ピコ秒(10⁻¹²秒)レーザーは1000倍速いパルスで光音響作用(Photoacoustic)を起こします。",
             "description2": "この衝撃波がインク粒子を微細な粉塵レベルまで粉砕し、私たちの体の免疫システムが簡単に除去できるようにします。",
             "benefits": [
-              { "title": "より少ない施術回数", "desc": "微細粒子粉砕で効率的除去" },
-              { "title": "より少ない熱損傷", "desc": "短いパルスで周辺組織保護" },
-              { "title": "より少ない副作用", "desc": "傷跡、色素変化リスク最小化" }
+              {
+                "title": "より少ない施術回数",
+                "desc": "微細粒子粉砕で効率的除去"
+              },
+              {
+                "title": "より少ない熱損傷",
+                "desc": "短いパルスで周辺組織保護"
+              },
+              {
+                "title": "より少ない副作用",
+                "desc": "傷跡、色素変化リスク最小化"
+              }
             ],
             "illustration": {
               "title": "インク粒子粉砕メカニズム",
@@ -2914,16 +4141,44 @@
             "subtitle": "Lucasピコレーザーは多重波長で様々な色のインクを効果的に分解します",
             "illustrationTitle": "インク色別最適波長",
             "colors": {
-              "black": { "name": "黒", "wavelength": "1064nm", "difficulty": "最も簡単" },
-              "red": { "name": "赤", "wavelength": "532nm", "difficulty": "比較的簡単" },
-              "blue": { "name": "青", "wavelength": "755nm", "difficulty": "やや難しい" },
-              "green": { "name": "緑", "wavelength": "755nm", "difficulty": "最も難しい" }
+              "black": {
+                "name": "黒",
+                "wavelength": "1064nm",
+                "difficulty": "最も簡単"
+              },
+              "red": {
+                "name": "赤",
+                "wavelength": "532nm",
+                "difficulty": "比較的簡単"
+              },
+              "blue": {
+                "name": "青",
+                "wavelength": "755nm",
+                "difficulty": "やや難しい"
+              },
+              "green": {
+                "name": "緑",
+                "wavelength": "755nm",
+                "difficulty": "最も難しい"
+              }
             },
             "lucasNote": "Lucas: 多重波長ですべての色をターゲティング可能",
             "wavelengths": [
-              { "wavelength": "1064nm", "colors": "黒、濃い青、茶色", "note": "最も深い浸透、ほとんどのタトゥー" },
-              { "wavelength": "755nm", "colors": "青、緑", "note": "中間深度、特殊色ターゲット" },
-              { "wavelength": "532nm", "colors": "赤、オレンジ、黄色", "note": "表皮層、明るい色専用" }
+              {
+                "wavelength": "1064nm",
+                "colors": "黒、濃い青、茶色",
+                "note": "最も深い浸透、ほとんどのタトゥー"
+              },
+              {
+                "wavelength": "755nm",
+                "colors": "青、緑",
+                "note": "中間深度、特殊色ターゲット"
+              },
+              {
+                "wavelength": "532nm",
+                "colors": "赤、オレンジ、黄色",
+                "note": "表皮層、明るい色専用"
+              }
             ]
           },
           "tattooTypes": {
@@ -2937,32 +4192,94 @@
               "hard": "やや難しい"
             },
             "types": [
-              { "type": "アマチュアタトゥー", "description": "非専門家が施術したタトゥー。インクが浅く入っているため除去が比較的容易です。", "sessions": "3-5回", "notes": "墨、ペンインクなど単色タトゥーがほとんど" },
-              { "type": "プロタトゥー（白黒）", "description": "プロのタトゥーアーティストが施術した白黒タトゥー。インクが深く均一に入っています。", "sessions": "6-10回", "notes": "黒インクはレーザー反応が最も良い" },
-              { "type": "プロタトゥー（カラー）", "description": "複数の色が使用されたカラータトゥー。色別に異なる波長が必要です。", "sessions": "8-15回以上", "notes": "緑、青はより多くの回数が必要" },
-              { "type": "アートメイク", "description": "眉、アイライン、唇などのアートメイク。一般タトゥーより浅く施術されています。", "sessions": "3-6回", "notes": "目元施術時は特殊保護具使用" },
-              { "type": "外傷性タトゥー", "description": "事故による異物沈着。アスファルト、黒鉛などが皮膚に埋まった場合。", "sessions": "4-8回", "notes": "深さと範囲により異なる" },
-              { "type": "カバーアップタトゥー", "description": "既存タトゥーの上に重ねたタトゥー。インク層が厚く除去が難しいです。", "sessions": "10-20回以上", "notes": "段階的除去後新しいタトゥー可能" }
+              {
+                "type": "アマチュアタトゥー",
+                "description": "非専門家が施術したタトゥー。インクが浅く入っているため除去が比較的容易です。",
+                "sessions": "3-5回",
+                "notes": "墨、ペンインクなど単色タトゥーがほとんど"
+              },
+              {
+                "type": "プロタトゥー（白黒）",
+                "description": "プロのタトゥーアーティストが施術した白黒タトゥー。インクが深く均一に入っています。",
+                "sessions": "6-10回",
+                "notes": "黒インクはレーザー反応が最も良い"
+              },
+              {
+                "type": "プロタトゥー（カラー）",
+                "description": "複数の色が使用されたカラータトゥー。色別に異なる波長が必要です。",
+                "sessions": "8-15回以上",
+                "notes": "緑、青はより多くの回数が必要"
+              },
+              {
+                "type": "アートメイク",
+                "description": "眉、アイライン、唇などのアートメイク。一般タトゥーより浅く施術されています。",
+                "sessions": "3-6回",
+                "notes": "目元施術時は特殊保護具使用"
+              },
+              {
+                "type": "外傷性タトゥー",
+                "description": "事故による異物沈着。アスファルト、黒鉛などが皮膚に埋まった場合。",
+                "sessions": "4-8回",
+                "notes": "深さと範囲により異なる"
+              },
+              {
+                "type": "カバーアップタトゥー",
+                "description": "既存タトゥーの上に重ねたタトゥー。インク層が厚く除去が難しいです。",
+                "sessions": "10-20回以上",
+                "notes": "段階的除去後新しいタトゥー可能"
+              }
             ]
           },
           "process": {
             "badge": "治療プロセス",
             "title": "タトゥー除去プロセス",
             "steps": [
-              { "step": 1, "title": "相談＆評価", "description": "タトゥーのサイズ、色、深さ、肌タイプを評価し、予想治療回数と費用をご案内します。", "duration": "約30分" },
-              { "step": 2, "title": "ピコレーザー施術", "description": "Lucasピコレーザーでインク粒子を微細に粉砕します。施術時間はサイズにより異なります。", "duration": "15-60分" },
-              { "step": 3, "title": "回復期間", "description": "皮膚が粉砕されたインクを自然に排出します。かさぶた、軽い腫れが現れることがあります。", "duration": "2-4週" },
-              { "step": 4, "title": "次回施術", "description": "6-8週間隔で繰り返し施術。毎回タトゥーが薄くなることを確認できます。", "duration": "6-8週間隔" }
+              {
+                "step": 1,
+                "title": "相談＆評価",
+                "description": "タトゥーのサイズ、色、深さ、肌タイプを評価し、予想治療回数と費用をご案内します。",
+                "duration": "約30分"
+              },
+              {
+                "step": 2,
+                "title": "ピコレーザー施術",
+                "description": "Lucasピコレーザーでインク粒子を微細に粉砕します。施術時間はサイズにより異なります。",
+                "duration": "15-60分"
+              },
+              {
+                "step": 3,
+                "title": "回復期間",
+                "description": "皮膚が粉砕されたインクを自然に排出します。かさぶた、軽い腫れが現れることがあります。",
+                "duration": "2-4週"
+              },
+              {
+                "step": 4,
+                "title": "次回施術",
+                "description": "6-8週間隔で繰り返し施術。毎回タトゥーが薄くなることを確認できます。",
+                "duration": "6-8週間隔"
+              }
             ]
           },
           "lucas": {
             "title": "Lucas",
             "subtitle": "ピコ秒タトゥー除去の新しい基準",
             "specs": {
-              "pulseDuration": { "label": "パルス持続時間", "value": "450ピコ秒" },
-              "wavelength": { "label": "波長", "value": "532 / 755 / 1064nm" },
-              "repetitionRate": { "label": "繰り返し率", "value": "最大10Hz" },
-              "energy": { "label": "エネルギー", "value": "最大1.8J" }
+              "pulseDuration": {
+                "label": "パルス持続時間",
+                "value": "450ピコ秒"
+              },
+              "wavelength": {
+                "label": "波長",
+                "value": "532 / 755 / 1064nm"
+              },
+              "repetitionRate": {
+                "label": "繰り返し率",
+                "value": "最大10Hz"
+              },
+              "energy": {
+                "label": "エネルギー",
+                "value": "最大1.8J"
+              }
             },
             "strengths": {
               "title": "Lucasの強み",
@@ -2994,12 +4311,30 @@
             }
           },
           "faq": [
-            { "q": "タトゥー除去は完全に可能ですか？", "a": "ほとんどのタトゥーは90%以上除去可能です。完全除去可否はインク色、深さ、タトゥーの年数、肌タイプなどにより異なります。黒インクが最もよく除去され、緑や青はより多くの回数が必要な場合があります。相談時に正確な予想をご案内します。" },
-            { "q": "タトゥー除去はどれくらい痛いですか？", "a": "痛みの程度は「輪ゴムでパチパチ弾く感覚」から「チクチクする感覚」まで個人差があります。Lucasピコレーザーは従来のナノ秒レーザーよりパルス時間が1000倍短く熱蓄積が少なく、その分痛みも軽減されます。必要時は麻酔クリームを塗布して痛みを最小化します。" },
-            { "q": "施術後に傷跡が残りますか？", "a": "ピコレーザーは熱損傷を最小化し傷跡リスクが非常に低いです。適切なエネルギー設定と施術間隔を守ればほとんど傷跡なく回復します。施術後のケア指針（紫外線遮断、かさぶた除去禁止など）をよく守っていただければきれいな肌が期待できます。" },
-            { "q": "古いタトゥーと新しいタトゥー、どちらがよく消えますか？", "a": "一般的に古いタトゥーがよく消えます。時間が経つにつれ私たちの体の免疫システムが一部のインク粒子を自然に除去するためです。しかし新しいタトゥーもピコレーザーで効果的に除去でき、むしろインクが鮮明に残っているためレーザーターゲティングが容易な利点もあります。" },
-            { "q": "すべての色のタトゥーが除去可能ですか？", "a": "ほとんどの色は除去可能です。Lucasピコレーザーは多重波長（532nm、755nm、1064nm）を提供し様々な色に対応します。" },
-            { "q": "施術間隔がなぜ6-8週なのですか？", "a": "レーザーで粉砕されたインク粒子は私たちの体のマクロファージが吸収しリンパ系を通じて排出します。この自然治癒過程に4-6週が必要で、皮膚が完全に回復した後に次の施術を行う必要があります。あまりに短い間隔で施術すると皮膚損傷と傷跡リスクが高まります。" }
+            {
+              "q": "タトゥー除去は完全に可能ですか？",
+              "a": "ほとんどのタトゥーは90%以上除去可能です。完全除去可否はインク色、深さ、タトゥーの年数、肌タイプなどにより異なります。黒インクが最もよく除去され、緑や青はより多くの回数が必要な場合があります。相談時に正確な予想をご案内します。"
+            },
+            {
+              "q": "タトゥー除去はどれくらい痛いですか？",
+              "a": "痛みの程度は「輪ゴムでパチパチ弾く感覚」から「チクチクする感覚」まで個人差があります。Lucasピコレーザーは従来のナノ秒レーザーよりパルス時間が1000倍短く熱蓄積が少なく、その分痛みも軽減されます。必要時は麻酔クリームを塗布して痛みを最小化します。"
+            },
+            {
+              "q": "施術後に傷跡が残りますか？",
+              "a": "ピコレーザーは熱損傷を最小化し傷跡リスクが非常に低いです。適切なエネルギー設定と施術間隔を守ればほとんど傷跡なく回復します。施術後のケア指針（紫外線遮断、かさぶた除去禁止など）をよく守っていただければきれいな肌が期待できます。"
+            },
+            {
+              "q": "古いタトゥーと新しいタトゥー、どちらがよく消えますか？",
+              "a": "一般的に古いタトゥーがよく消えます。時間が経つにつれ私たちの体の免疫システムが一部のインク粒子を自然に除去するためです。しかし新しいタトゥーもピコレーザーで効果的に除去でき、むしろインクが鮮明に残っているためレーザーターゲティングが容易な利点もあります。"
+            },
+            {
+              "q": "すべての色のタトゥーが除去可能ですか？",
+              "a": "ほとんどの色は除去可能です。Lucasピコレーザーは多重波長（532nm、755nm、1064nm）を提供し様々な色に対応します。"
+            },
+            {
+              "q": "施術間隔がなぜ6-8週なのですか？",
+              "a": "レーザーで粉砕されたインク粒子は私たちの体のマクロファージが吸収しリンパ系を通じて排出します。この自然治癒過程に4-6週が必要で、皮膚が完全に回復した後に次の施術を行う必要があります。あまりに短い間隔で施術すると皮膚損傷と傷跡リスクが高まります。"
+            }
           ],
           "cta": {
             "title": "新しい始まりへの第一歩",
@@ -3033,8 +4368,17 @@
         "question": "ウルセラとサーマジの違いは何ですか？",
         "shortAnswer": "ウルセラは超音波で深い層を、サーマジは高周波で弾力を改善します。",
         "answer": "ウルセラはHIFU（高密度焦点式超音波）技術を使用して、皮膚の深い層であるSMASまでエネルギーを伝達します。一方、サーマジはRF（高周波）エネルギーを使用して真皮層のコラーゲンを収縮させ、再生を促進します。ウルセラはたるんだ肌のリフティングに効果的で、サーマジは全体的な肌の弾力改善に効果的です。両方の施術を併用すると相乗効果が得られます。",
-        "relatedTreatments": ["ulthera", "thermage"],
-        "tags": ["ウルセラ", "サーマジ", "リフティング", "HIFU", "高周波"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "ウルセラ",
+          "サーマジ",
+          "リフティング",
+          "HIFU",
+          "高周波"
+        ]
       },
       {
         "id": "lifting-pain",
@@ -3042,8 +4386,16 @@
         "question": "リフティング施術はどのくらい痛いですか？",
         "shortAnswer": "麻酔クリーム後に施術を行い、ほとんどの方が耐えられる程度です。",
         "answer": "リフティング施術の痛みは、施術の種類や個人差によって異なります。ウルセラとサーマジFLXは、施術前に約30分間麻酔クリームを塗った後に行います。特にサーマジFLXは振動技術（Vibrating Tip）が適用されており、痛みが大幅に軽減されています。ほとんどの患者様が快適に施術を受けることができます。痛みに敏感な方は追加の痛み調節が可能ですので、ご相談時にお知らせください。",
-        "relatedTreatments": ["ulthera", "thermage", "shurink"],
-        "tags": ["リフティング", "痛み", "麻酔"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage",
+          "shurink"
+        ],
+        "tags": [
+          "リフティング",
+          "痛み",
+          "麻酔"
+        ]
       },
       {
         "id": "lifting-frequency",
@@ -3051,8 +4403,16 @@
         "question": "リフティング施術はどのくらいの頻度で受けるべきですか？",
         "shortAnswer": "ウルセラは1-2年に1回、サーマジは6ヶ月-1年に1回をお勧めします。",
         "answer": "ウルセラは1-2年に1回、サーマジは6ヶ月-1年に1回をお勧めします。シュリンクやインモードなどのメンテナンス施術は3-6ヶ月間隔で受けることができます。肌の状態やご希望の効果によって施術周期が異なる場合がありますので、正確な周期はご相談を通じて決定することをお勧めします。",
-        "relatedTreatments": ["ulthera", "thermage", "shurink"],
-        "tags": ["リフティング", "施術周期", "メンテナンス"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage",
+          "shurink"
+        ],
+        "tags": [
+          "リフティング",
+          "施術周期",
+          "メンテナンス"
+        ]
       },
       {
         "id": "lifting-duration",
@@ -3060,8 +4420,15 @@
         "question": "リフティング効果はどのくらい持続しますか？",
         "shortAnswer": "ウルセラは約1-2年、サーマジは6ヶ月-1年持続します。",
         "answer": "ウルセラの効果は約1年、サーマジは6ヶ月-1年程度持続します。ただし、効果の持続期間は個人の肌状態、年齢、生活習慣によって異なる場合があります。定期的なメンテナンス施術を受けると、効果をより長く維持できます。",
-        "relatedTreatments": ["ulthera", "thermage"],
-        "tags": ["リフティング", "効果持続", "維持期間"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "リフティング",
+          "効果持続",
+          "維持期間"
+        ]
       },
       {
         "id": "botox-natural",
@@ -3069,8 +4436,14 @@
         "question": "ボトックスを打つと表情が不自然になりますか？",
         "shortAnswer": "適切な量を正確な位置に注入すれば、自然な表情が維持されます。",
         "answer": "適切な量を正確な位置に注入すれば、自然な表情を維持しながらシワだけを改善できます。不自然な表情は主に過剰投与や不適切な注入位置によって発生します。リブ形成外科では、熟練した専門医が個人の筋肉特性に合わせて適切な量を施術するため、自然な結果を期待できます。",
-        "relatedTreatments": ["botox"],
-        "tags": ["ボトックス", "表情", "自然"]
+        "relatedTreatments": [
+          "botox"
+        ],
+        "tags": [
+          "ボトックス",
+          "表情",
+          "自然"
+        ]
       },
       {
         "id": "botox-duration",
@@ -3078,8 +4451,14 @@
         "question": "ボトックス効果はどのくらい持続しますか？",
         "shortAnswer": "通常3-6ヶ月程度持続し、定期的な施術でより長く維持されます。",
         "answer": "ボトックス効果は個人差がありますが、通常3-6ヶ月程度持続します。定期的に施術を受けると、筋肉が徐々に弱化して効果がより長く持続し、施術間隔も延びる可能性があります。初回施術後2-3週間後に追加タッチアップが必要な場合がありますので、経過を確認することをお勧めします。",
-        "relatedTreatments": ["botox"],
-        "tags": ["ボトックス", "効果持続", "施術周期"]
+        "relatedTreatments": [
+          "botox"
+        ],
+        "tags": [
+          "ボトックス",
+          "効果持続",
+          "施術周期"
+        ]
       },
       {
         "id": "filler-dissolve",
@@ -3087,8 +4466,14 @@
         "question": "フィラーは溶かすことができますか？",
         "shortAnswer": "はい、ヒアルロン酸フィラーは溶解注射で安全に除去できます。",
         "answer": "はい、ヒアルロン酸フィラーはヒアルロニダーゼ（溶解注射）で溶かすことができます。施術結果に満足できない場合や副作用が発生した場合に安全に除去できます。これはヒアルロン酸フィラーの大きな利点の一つです。ただし、不可逆的なフィラー（例：アテコール）は溶かすことができないので、フィラー選択時にこの点を考慮してください。",
-        "relatedTreatments": ["filler"],
-        "tags": ["フィラー", "ヒアルロン酸", "溶解注射"]
+        "relatedTreatments": [
+          "filler"
+        ],
+        "tags": [
+          "フィラー",
+          "ヒアルロン酸",
+          "溶解注射"
+        ]
       },
       {
         "id": "filler-lumps",
@@ -3096,8 +4481,14 @@
         "question": "フィラーが凸凹になることはありますか？",
         "shortAnswer": "熟練した医師が正規品を使用すればほとんど発生しません。",
         "answer": "正規品フィラーを適切な量使用し、解剖学的知識を持った熟練した医師が施術すれば、このような問題はほとんど発生しません。時々発生する凸凹は大部分マッサージで解決でき、必要に応じてヒアルロニダーゼで調整できます。施術後に不快感がありましたら、すぐにご相談ください。",
-        "relatedTreatments": ["filler"],
-        "tags": ["フィラー", "副作用", "凸凹"]
+        "relatedTreatments": [
+          "filler"
+        ],
+        "tags": [
+          "フィラー",
+          "副作用",
+          "凸凹"
+        ]
       },
       {
         "id": "skinbooster-frequency",
@@ -3105,8 +4496,14 @@
         "question": "スキンブースターは何回受ければ効果がありますか？",
         "shortAnswer": "基本3-4回コース後、2-3ヶ月ごとにメンテナンス施術をお勧めします。",
         "answer": "スキンブースターは2-4週間隔で3-4回施術を基本コースとしてお勧めします。1回施術後でも保湿感の改善を感じることができますが、最適な効果のためにはコース施術が必要です。その後は2-3ヶ月ごとにメンテナンス施術を受けることをお勧めします。",
-        "relatedTreatments": ["skinbooster"],
-        "tags": ["スキンブースター", "水光注射", "施術回数"]
+        "relatedTreatments": [
+          "skinbooster"
+        ],
+        "tags": [
+          "スキンブースター",
+          "水光注射",
+          "施術回数"
+        ]
       },
       {
         "id": "laser-sun",
@@ -3114,8 +4511,14 @@
         "question": "レーザー施術後は日光を避けるべきですか？",
         "shortAnswer": "はい、最低2-4週間SPF 50+日焼け止めが必須です。",
         "answer": "はい、レーザー施術後は紫外線遮断が非常に重要です。施術後、肌が敏感になり、紫外線による色素沈着のリスクが高まります。最低2-4週間は日焼け止め（SPF 50+）を丁寧に塗り、帽子や日傘を使用することをお勧めします。野外活動が多い時期にはレーザー施術を避けることをお勧めします。",
-        "relatedTreatments": ["clarity"],
-        "tags": ["レーザー", "紫外線", "色素沈着"]
+        "relatedTreatments": [
+          "clarity"
+        ],
+        "tags": [
+          "レーザー",
+          "紫外線",
+          "色素沈着"
+        ]
       },
       {
         "id": "laser-downtime",
@@ -3123,8 +4526,14 @@
         "question": "レーザー施術後のダウンタイムはどのくらいですか？",
         "shortAnswer": "トーニングはダウンタイムなし、色素レーザーは3-5日程度です。",
         "answer": "レーザーの種類によって異なります。レーザートーニングの場合、ダウンタイムがほとんどなく、すぐに日常生活が可能です。クラリティIIレーザーで表皮色素を治療した場合、3-5日程度色素が濃くなったり、薄いかさぶたができたりしてから自然に剥がれます。",
-        "relatedTreatments": ["clarity"],
-        "tags": ["レーザー", "ダウンタイム", "回復期間"]
+        "relatedTreatments": [
+          "clarity"
+        ],
+        "tags": [
+          "レーザー",
+          "ダウンタイム",
+          "回復期間"
+        ]
       },
       {
         "id": "thread-duration",
@@ -3132,8 +4541,14 @@
         "question": "糸リフト効果はどのくらい維持されますか？",
         "shortAnswer": "PDO糸は6-8ヶ月、PCL糸は12-18ヶ月効果が維持されます。",
         "answer": "糸の種類によって異なります。PDO（溶ける糸）は6-8ヶ月、PLLAやPCL糸は12-18ヶ月程度効果が維持されます。糸が溶けながらコラーゲン再生を促進するため、糸が完全に溶けた後も一定期間効果が維持されます。定期的なメンテナンス施術で効果を持続させることができます。",
-        "relatedTreatments": ["thread"],
-        "tags": ["糸リフト", "効果持続", "PDO"]
+        "relatedTreatments": [
+          "thread"
+        ],
+        "tags": [
+          "糸リフト",
+          "効果持続",
+          "PDO"
+        ]
       },
       {
         "id": "consultation-fee",
@@ -3142,7 +4557,11 @@
         "shortAnswer": "はい、相談費1万ウォンで、当日施術時に全額差し引かれます。",
         "answer": "はい、相談だけでも大丈夫です。1:1専門相談費用は1万ウォンで、当日施術を行う場合は施術金額から全額差し引かれます。形成外科専門医が直接肌の状態を診断し、最適な施術プランをご提案いたします。十分にご検討いただいてからお決めいただいて大丈夫です。",
         "relatedTreatments": [],
-        "tags": ["相談", "相談費", "予約"]
+        "tags": [
+          "相談",
+          "相談費",
+          "予約"
+        ]
       },
       {
         "id": "payment-installment",
@@ -3151,7 +4570,11 @@
         "shortAnswer": "はい、カード分割払いが可能で、無利息特典はカード会社によって異なります。",
         "answer": "はい、カード分割払いが可能です。無利息分割払い特典はカード会社と決済金額によって異なる場合がありますので、ご相談時にお問い合わせください。また、施術別に様々なプロモーションやパッケージ割引もありますのでご確認ください。",
         "relatedTreatments": [],
-        "tags": ["費用", "分割", "決済"]
+        "tags": [
+          "費用",
+          "分割",
+          "決済"
+        ]
       },
       {
         "id": "pregnant-treatment",
@@ -3160,7 +4583,11 @@
         "shortAnswer": "いいえ、妊娠/授乳中はほとんどの美容施術がお勧めされません。",
         "answer": "妊娠中や授乳中はほとんどの美容施術がお勧めされません。ボトックス、フィラー、リフティング施術はすべて胎児や母乳への影響に対する安全性が十分に検証されていないためです。妊娠と授乳が終わった後に施術を受けることをお勧めします。",
         "relatedTreatments": [],
-        "tags": ["妊娠", "授乳", "禁忌事項"]
+        "tags": [
+          "妊娠",
+          "授乳",
+          "禁忌事項"
+        ]
       },
       {
         "id": "liv-specialty",
@@ -3168,8 +4595,16 @@
         "question": "リブ形成外科で一番得意な施術は何ですか？",
         "shortAnswer": "ウルセラとサーマジFLX認証病院として、非手術リフティング専門です。",
         "answer": "リブ形成外科はウルセラ正規認証とサーマジFLXパートナー病院として、非手術リフティング施術を専門としています。形成外科専門医がSCI論文4編の学術経験を基に、患者様一人一人に合わせた施術を提供しています。新沙駅4番出口から徒歩1分の場所に位置しています。",
-        "relatedTreatments": ["ulthera", "thermage"],
-        "tags": ["リブ形成外科", "専門分野", "ウルセラ", "サーマジ"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "リブ形成外科",
+          "専門分野",
+          "ウルセラ",
+          "サーマジ"
+        ]
       },
       {
         "id": "first-visit",
@@ -3178,7 +4613,11 @@
         "shortAnswer": "電話またはカカオトークで予約後、ご来院いただくと専門医との1:1相談を受けられます。",
         "answer": "電話（02-797-2773）またはカカオトークで相談予約をお願いいたします。ご来院時、形成外科専門医が直接肌の状態を診断し、患者様のお悩みとご希望の結果に合わせた最適な施術プランをご提案いたします。ご相談後、十分にご検討いただいてから施術をお決めいただいて大丈夫です。",
         "relatedTreatments": [],
-        "tags": ["初回訪問", "予約", "相談手順"]
+        "tags": [
+          "初回訪問",
+          "予約",
+          "相談手順"
+        ]
       }
     ]
   },
@@ -3204,7 +4643,11 @@
         "subtitle": "ウルセラリフトプライム & サーマジ",
         "tagline": "非手術リフティングの頂点",
         "description": "ウルセラリフトプライムのSMASリフティングとサーマジFLXのコラーゲンリモデリングが出会い、重力に逆らう強力なリフティング効果を体験してください。たるんだ肌を引き上げ、くっきりとハリのある輪郭を取り戻します。",
-        "features": ["ウルセラリフトプライム認定SMASリフティング", "サーマジFLXコラーゲン再生", "シナジー複合施術"],
+        "features": [
+          "ウルセラリフトプライム認定SMASリフティング",
+          "サーマジFLXコラーゲン再生",
+          "シナジー複合施術"
+        ],
         "duration": "約2時間",
         "recommended": "たるみ、弾力低下、輪郭のぼやけ"
       },
@@ -3213,7 +4656,11 @@
         "subtitle": "ボトックス & フィラー",
         "tagline": "繊細なボリュームと輪郭",
         "description": "解剖学的理解に基づき、自然なボリュームとシワ改善を実現します。過度でない、本来の美しさを追求する繊細な施術で、細かいシワからボリュームまで満たします。",
-        "features": ["正規品フィラーで自然なボリューム", "ボトックスシワ改善", "解剖学的カスタム施術"],
+        "features": [
+          "正規品フィラーで自然なボリューム",
+          "ボトックスシワ改善",
+          "解剖学的カスタム施術"
+        ],
         "duration": "約1時間",
         "recommended": "シワ、ボリューム減少、輪郭改善"
       },
@@ -3222,7 +4669,11 @@
         "subtitle": "スキンブースター & 再生",
         "tagline": "肌本来の輝き",
         "description": "コラーゲン再生と深い保湿で肌のテクスチャーを根本的に改善します。くすんで荒れた肌を澄んで輝く肌に変え、内側から輝く健康的なツヤを取り戻してください。",
-        "features": ["スキンブースター水分供給", "コラーゲンブースティング", "肌質テクスチャー改善"],
+        "features": [
+          "スキンブースター水分供給",
+          "コラーゲンブースティング",
+          "肌質テクスチャー改善"
+        ],
         "duration": "約1時間",
         "recommended": "くすみ肌、乾燥、毛穴/肌質"
       },
@@ -3231,7 +4682,11 @@
         "subtitle": "シルエットリフティング",
         "tagline": "完璧なトータルケア",
         "description": "リフティング、ボリューム、肌質まで一度にケアするプレミアムパッケージです。顔全体がリフトアップされ、くっきりとするシネマティックな変化を体験してください。",
-        "features": ["複合リフティング施術", "ボリューム再構築", "トータル肌再生"],
+        "features": [
+          "複合リフティング施術",
+          "ボリューム再構築",
+          "トータル肌再生"
+        ],
         "duration": "カスタム設計",
         "recommended": "総合的なアンチエイジング、特別な日"
       }
@@ -3536,22 +4991,38 @@
       "clarity": {
         "name": "クラリティII",
         "spec": "デュアル波長 + IntelliTrak技術",
-        "tags": ["色素", "血管", "脱毛", "肌トーン"]
+        "tags": [
+          "色素",
+          "血管",
+          "脱毛",
+          "肌トーン"
+        ]
       },
       "lucas": {
         "name": "ルーカス",
         "spec": "ピコ秒パルス (450ps)",
-        "tags": ["シミ", "色素", "タトゥー除去"]
+        "tags": [
+          "シミ",
+          "色素",
+          "タトゥー除去"
+        ]
       },
       "toning": {
         "name": "レーザートーニング",
         "spec": "低出力反復照射",
-        "tags": ["肌トーン", "毛穴", "肌質"]
+        "tags": [
+          "肌トーン",
+          "毛穴",
+          "肌質"
+        ]
       },
       "ulblanc": {
         "name": "ウルブラン",
         "spec": "メラニン選択的ターゲット",
-        "tags": ["美白", "トーン均一化"]
+        "tags": [
+          "美白",
+          "トーン均一化"
+        ]
       }
     },
     "synergy": {
@@ -3732,77 +5203,121 @@
         "name": "Ultherapy Prime",
         "nameKo": "ウルセラプライム",
         "description": "FDA承認超音波リフティング – 深い層からしっかりと",
-        "features": ["SMAS層までエネルギー伝達", "自然なリフティング効果", "施術直後から日常生活可能"],
+        "features": [
+          "SMAS層までエネルギー伝達",
+          "自然なリフティング効果",
+          "施術直後から日常生活可能"
+        ],
         "certification": "FDA、KFDA承認"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameKo": "サーマジFLX",
         "description": "高周波リフティングの精髄 – 肌の奥からハリを",
-        "features": ["AccuREP技術", "クーリングシステム", "コラーゲン再生"],
+        "features": [
+          "AccuREP技術",
+          "クーリングシステム",
+          "コラーゲン再生"
+        ],
         "certification": "FDA、KFDA承認"
       },
       "density": {
         "name": "Density",
         "nameKo": "デンシティ",
         "description": "高周波エネルギーで緻密に – 精密コラーゲンリフティング",
-        "features": ["高周波(RF)リフティング", "均一なエネルギー分布", "リーズナブルな価格"],
+        "features": [
+          "高周波(RF)リフティング",
+          "均一なエネルギー分布",
+          "リーズナブルな価格"
+        ],
         "certification": "KFDA承認"
       },
       "shurink": {
         "name": "Shurink",
         "nameKo": "シュリンク",
         "description": "デイリーリフティングの代表 – リーズナブルな超音波弾力施術",
-        "features": ["無痛または低痛", "短い施術時間", "経済的な価格"],
+        "features": [
+          "無痛または低痛",
+          "短い施術時間",
+          "経済的な価格"
+        ],
         "certification": "KFDA承認"
       },
       "inmode": {
         "name": "InMode",
         "nameKo": "インモード",
         "description": "脂肪減少 + 弾力改善を一度に",
-        "features": ["脂肪減少とリフティング同時", "局所部位集中", "ダウンタイムが少ない"],
+        "features": [
+          "脂肪減少とリフティング同時",
+          "局所部位集中",
+          "ダウンタイムが少ない"
+        ],
         "certification": "FDA、KFDA承認"
       },
       "potenza": {
         "name": "Potenza",
         "nameKo": "ポテンザ",
         "description": "毛穴、肌質、弾力まで – 肌リモデリングの新基準",
-        "features": ["RFマイクロニードル", "パンピングチップスキンブースター", "毛穴縮小"],
+        "features": [
+          "RFマイクロニードル",
+          "パンピングチップスキンブースター",
+          "毛穴縮小"
+        ],
         "certification": "FDA、KFDA承認"
       },
       "clarity": {
         "name": "Clarity II",
         "nameKo": "クラリティII",
         "description": "より速く、より精密に – デュアル波長レーザー",
-        "features": ["755nm/1064nmデュアル", "色素/血管治療", "プレミアム脱毛"],
+        "features": [
+          "755nm/1064nmデュアル",
+          "色素/血管治療",
+          "プレミアム脱毛"
+        ],
         "certification": "FDA承認"
       },
       "lucas": {
         "name": "Lucas",
         "nameKo": "ルーカス",
         "description": "肌の奥から明るく透明に – 色素治療の新基準",
-        "features": ["高出力Qスイッチ", "シミ/くすみ治療", "タトゥー除去"],
+        "features": [
+          "高出力Qスイッチ",
+          "シミ/くすみ治療",
+          "タトゥー除去"
+        ],
         "certification": "KFDA承認"
       },
       "co2": {
         "name": "CO2 Laser",
         "nameKo": "CO2レーザー",
         "description": "精密ピーリングと肌再生 – 深い傷跡と小じわ改善",
-        "features": ["フラクショナル技術", "傷跡/毛穴治療", "肌再生促進"],
+        "features": [
+          "フラクショナル技術",
+          "傷跡/毛穴治療",
+          "肌再生促進"
+        ],
         "certification": "KFDA承認"
       },
       "ulblanc": {
         "name": "Ulblanc",
         "nameKo": "ウルブラン",
         "description": "低刺激ホワイトニングレーザー",
-        "features": ["メラニンターゲティング", "肌トーン均一化", "低刺激施術"],
+        "features": [
+          "メラニンターゲティング",
+          "肌トーン均一化",
+          "低刺激施術"
+        ],
         "certification": "KFDA承認"
       },
       "markvu": {
         "name": "Mark VU",
         "nameKo": "マークビュー",
         "description": "1,800万画素の超高解像度カメラで、肉眼では確認できない肌の問題を12項目で精密分析する先進的な肌診断機器です。",
-        "features": ["1,800万画素の解像度", "4種類の光源分析", "肌タイプ診断"],
+        "features": [
+          "1,800万画素の解像度",
+          "4種類の光源分析",
+          "肌タイプ診断"
+        ],
         "certification": "1,800万画素 超高解像度"
       }
     },
@@ -4017,5 +5532,83 @@
     "startChat": "チャットを開始",
     "messageCountdown": "{count}/1000",
     "unreadAria": "{count}件の新しいメッセージ"
+  },
+  "consultation": {
+    "floating": {
+      "quickTitle": "簡単カウンセリング予約",
+      "subtitle": "専門カウンセラーが丁寧にご案内いたします",
+      "title": "カウンセリング予約",
+      "close": "閉じる",
+      "namePlaceholder": "お名前",
+      "passwordPlaceholder": "パスワード (任意)",
+      "departmentSelect": "診療科目を選択",
+      "submit": "カウンセリング予約",
+      "submitting": "送信中...",
+      "consentRequired": "[必須]",
+      "consentText": "個人情報の収集および利用に同意します。(お名前・連絡先はカウンセリング目的のみに使用されます)",
+      "successTitle": "カウンセリング予約が完了しました",
+      "successDesc": "まもなくご連絡いたします",
+      "errorTitle": "カウンセリング予約に失敗しました",
+      "errorRetry": "もう一度お試しください",
+      "errorDefault": "カウンセリング予約に失敗しました"
+    }
+  },
+  "treatmentDetail": {
+    "advantages": "{name}の特長",
+    "process": "施術の流れ",
+    "info": "施術情報",
+    "duration": "施術時間",
+    "anesthesia": "麻酔",
+    "recovery": "回復期間",
+    "effectDuration": "効果持続",
+    "areas": "施術部位",
+    "recommendedFor": "こんな方におすすめ",
+    "precautions": "施術前後の注意事項",
+    "faq": "よくある質問",
+    "relatedMedical": "{name}関連の医療情報",
+    "moreInfoPrefix": "詳しくは",
+    "moreInfoLink": "医療情報Q&A",
+    "moreInfoSuffix": "をご覧ください",
+    "consultationTitle": "{name}カウンセリング予約",
+    "consultationDesc": "専門医による1対1のカウンセリングをご利用ください。",
+    "ctaReserve": "カウンセリング予約",
+    "ctaCall": "電話相談",
+    "related": "あわせておすすめの施術"
+  },
+  "medicalBlog": {
+    "ui": {
+      "title": "関連ブログ記事",
+      "subtitle": "より詳しい医療情報をご覧ください",
+      "visitBlogDesktop": "Naverブログを訪問",
+      "visitBlogMobile": "Naverブログでもっと見る"
+    }
+  },
+  "instagram": {
+    "ui": {
+      "intro": "リブ整形外科の日常と施術情報をチェック。",
+      "showMore": "もっと見る",
+      "followCta": "Instagramをフォロー",
+      "followers": "フォロワー",
+      "posts": "投稿",
+      "update": "更新",
+      "viewDetails": "詳細を見る"
+    }
+  },
+  "popup": {
+    "dismissToday": "今日は表示しない"
+  },
+  "beforeAfter": {
+    "ui": {
+      "title": "実際の施術事例",
+      "description": "リブで体験されたお客様の実際の変化をご覧ください",
+      "consent": "* すべての事例は患者様の同意のもとに掲載されています。",
+      "viewMore": "さらに多くの事例を見る"
+    }
+  },
+  "ui": {
+    "stickyCta": {
+      "phone": "電話相談",
+      "kakao": "カカオ相談"
+    }
   }
 }

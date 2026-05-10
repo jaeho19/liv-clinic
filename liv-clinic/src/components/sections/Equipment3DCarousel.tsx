@@ -280,8 +280,9 @@ export default function Equipment3DCarousel() {
               <h2 className="text-h1 text-secondary">{t('subtitle')}</h2>
             </div>
             <p className="text-body text-mono-light max-w-md">
-              리브성형외과는 정품 인증된 프리미엄 장비만을 사용합니다.
-              최신 기술로 안전하고 효과적인 시술을 제공합니다.
+              {t('ui.introLine1')}
+              {' '}
+              {t('ui.introLine2')}
             </p>
           </div>
         </AnimateOnScroll>
@@ -403,7 +404,7 @@ export default function Equipment3DCarousel() {
                       }}
                       onClick={(e) => e.stopPropagation()}
                     >
-                      자세히 보기
+                      {t('ui.viewMore')}
                       <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
@@ -479,7 +480,7 @@ export default function Equipment3DCarousel() {
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
             </svg>
-            <span>드래그 또는 스크롤로 탐색</span>
+            <span>{t('ui.navigationHint')}</span>
           </div>
         </div>
       </div>

@@ -45,7 +45,9 @@
     "targetAreas": "治疗部位",
     "recommended": "适合人群",
     "precautions": "治疗前后注意事项",
-    "onlineConsultation": "在线咨询"
+    "onlineConsultation": "在线咨询",
+    "previous": "上一个",
+    "next": "下一个"
   },
   "categories": {
     "lifting": "提升",
@@ -86,7 +88,8 @@
     "beforeAfter": "术前术后",
     "medical": "医疗信息",
     "events": "活动",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "admin": "管理员"
   },
   "hero": {
     "slide1": {
@@ -178,6 +181,12 @@
           "subTitle": "Ulblanc",
           "desc": "温和美白激光"
         }
+      },
+      "ui": {
+        "introLine1": "LIV整形外科仅使用经过正品认证的高端设备。",
+        "introLine2": "我们以最新技术提供安全有效的施术。",
+        "viewMore": "查看详情",
+        "navigationHint": "拖拽或滚动以浏览"
       }
     },
     "signature": {
@@ -189,21 +198,33 @@
           "titleEn": "LIFTING",
           "subtitle": "超声刀 & 热玛吉",
           "description": "非手术提升的顶点，使用高端正品设备体验自然提升效果。",
-          "features": ["超声刀正品认证", "热玛吉FLX合作伙伴", "定制复合治疗"]
+          "features": [
+            "超声刀正品认证",
+            "热玛吉FLX合作伙伴",
+            "定制复合治疗"
+          ]
         },
         "antiaging": {
           "title": "抗衰老",
           "titleEn": "ANTI-AGING",
           "subtitle": "玻尿酸 & 肉毒素",
           "description": "以细腻的手法完成体积和轮廓，追求自然之美。",
-          "features": ["使用正品玻尿酸", "解剖学方法", "自然效果"]
+          "features": [
+            "使用正品玻尿酸",
+            "解剖学方法",
+            "自然效果"
+          ]
         },
         "rejuvenation": {
           "title": "肌肤再生",
           "titleEn": "REJUVENATION",
           "subtitle": "医疗护肤",
           "description": "恢复肌肤天然健康的定制护理，以科学方法帮助改善肌肤。",
-          "features": ["水光针", "激光嫩肤", "定制护肤"]
+          "features": [
+            "水光针",
+            "激光嫩肤",
+            "定制护肤"
+          ]
         }
       }
     },
@@ -275,6 +296,9 @@
         "subtitle": "LIV院长的治疗故事",
         "subscribe": "订阅LIV YouTube频道",
         "description": "观看治疗信息、院长访谈、前后对比视频"
+      },
+      "ui": {
+        "playVideo": "播放视频"
       }
     },
     "doctors": {
@@ -546,11 +570,31 @@
           },
           "timeline": {
             "items": [
-              { "time": "治疗后即刻", "effect": "胶原收缩", "desc": "即时紧致" },
-              { "time": "1个月", "effect": "新生胶原", "desc": "III型胶原开始生成" },
-              { "time": "3个月", "effect": "明显变化", "desc": "下颌线清晰" },
-              { "time": "6个月", "effect": "最佳效果", "desc": "I型胶原成熟" },
-              { "time": "12-24个月", "effect": "效果维持", "desc": "渐进维持" }
+              {
+                "time": "治疗后即刻",
+                "effect": "胶原收缩",
+                "desc": "即时紧致"
+              },
+              {
+                "time": "1个月",
+                "effect": "新生胶原",
+                "desc": "III型胶原开始生成"
+              },
+              {
+                "time": "3个月",
+                "effect": "明显变化",
+                "desc": "下颌线清晰"
+              },
+              {
+                "time": "6个月",
+                "effect": "最佳效果",
+                "desc": "I型胶原成熟"
+              },
+              {
+                "time": "12-24个月",
+                "effect": "效果维持",
+                "desc": "渐进维持"
+              }
             ],
             "note": "超声刀治疗后，胶原蛋白再生，效果逐渐显现"
           },
@@ -564,13 +608,48 @@
               "thermage": "热玛吉"
             },
             "rows": [
-              { "feature": "能量类型", "ulthera": "MFU-V（超声波）", "shurink": "HIFU（超声波）", "thermage": "RF（射频）" },
-              { "feature": "实时可视化", "ulthera": "DeepSEE O", "shurink": "X", "thermage": "X" },
-              { "feature": "FDA提升批准", "ulthera": "唯一批准", "shurink": "X", "thermage": "X" },
-              { "feature": "最大深度", "ulthera": "4.5mm（SMAS）", "shurink": "4.5mm", "thermage": "真皮层" },
-              { "feature": "临床研究", "ulthera": "110+论文", "shurink": "少量", "thermage": "大量" },
-              { "feature": "效果持续", "ulthera": "1-2年", "shurink": "6-12个月", "thermage": "6-12个月" },
-              { "feature": "最佳适应症", "ulthera": "严重下垂/提升", "shurink": "维护保养", "thermage": "弹性/肤质" }
+              {
+                "feature": "能量类型",
+                "ulthera": "MFU-V（超声波）",
+                "shurink": "HIFU（超声波）",
+                "thermage": "RF（射频）"
+              },
+              {
+                "feature": "实时可视化",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "FDA提升批准",
+                "ulthera": "唯一批准",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "最大深度",
+                "ulthera": "4.5mm（SMAS）",
+                "shurink": "4.5mm",
+                "thermage": "真皮层"
+              },
+              {
+                "feature": "临床研究",
+                "ulthera": "110+论文",
+                "shurink": "少量",
+                "thermage": "大量"
+              },
+              {
+                "feature": "效果持续",
+                "ulthera": "1-2年",
+                "shurink": "6-12个月",
+                "thermage": "6-12个月"
+              },
+              {
+                "feature": "最佳适应症",
+                "ulthera": "严重下垂/提升",
+                "shurink": "维护保养",
+                "thermage": "弹性/肤质"
+              }
             ],
             "synergy": {
               "title": "超声刀 + 热玛吉 协同效应",
@@ -584,12 +663,57 @@
             "deep": "深层（3.0mm - 4.5mm）",
             "energyDelivery": "精准传递能量",
             "items": {
-              "ds-10-1_5": { "target": "表皮-真皮交界", "applications": ["细纹", "眼周", "唇周", "肤质"] },
-              "ds-10-1_5-n": { "target": "狭窄部位", "applications": ["眼纹", "眼下", "眼睑"] },
-              "ds-7-3_0": { "target": "真皮下层", "applications": ["脸颊", "额头", "颧骨", "下颌线"] },
-              "ds-7-3_0-n": { "target": "狭窄真皮层", "applications": ["眼周皱纹", "唇周", "手背"] },
-              "ds-4-4_5": { "target": "SMAS层", "applications": ["中面部", "下面部", "颈部", "胸前"] },
-              "ds-7-4_5": { "target": "高分辨率SMAS", "applications": ["下颌线", "双下巴", "脸颊下垂"] }
+              "ds-10-1_5": {
+                "target": "表皮-真皮交界",
+                "applications": [
+                  "细纹",
+                  "眼周",
+                  "唇周",
+                  "肤质"
+                ]
+              },
+              "ds-10-1_5-n": {
+                "target": "狭窄部位",
+                "applications": [
+                  "眼纹",
+                  "眼下",
+                  "眼睑"
+                ]
+              },
+              "ds-7-3_0": {
+                "target": "真皮下层",
+                "applications": [
+                  "脸颊",
+                  "额头",
+                  "颧骨",
+                  "下颌线"
+                ]
+              },
+              "ds-7-3_0-n": {
+                "target": "狭窄真皮层",
+                "applications": [
+                  "眼周皱纹",
+                  "唇周",
+                  "手背"
+                ]
+              },
+              "ds-4-4_5": {
+                "target": "SMAS层",
+                "applications": [
+                  "中面部",
+                  "下面部",
+                  "颈部",
+                  "胸前"
+                ]
+              },
+              "ds-7-4_5": {
+                "target": "高分辨率SMAS",
+                "applications": [
+                  "下颌线",
+                  "双下巴",
+                  "脸颊下垂"
+                ]
+              }
             }
           },
           "hero": {
@@ -728,6 +852,10 @@
             "labelEn": "相关治疗",
             "title": "相关治疗"
           }
+        },
+        "ui": {
+          "comparisonTitle": "优赛拉 Prime vs 其他设备",
+          "comparisonSubtitle": "即使是HIFU,技术水平与临床依据也有很大差异"
         }
       },
       "thermage": {
@@ -738,16 +866,34 @@
         "detail": {
           "heroLabels": [
             {
-              "top": { "title": "AccuREP", "subtitle": "自动能量调节" },
-              "bottom": { "title": "Comfort Pulse", "subtitle": "振动疼痛缓解" }
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "自动能量调节"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "振动疼痛缓解"
+              }
             },
             {
-              "top": { "title": "RF Technology", "subtitle": "胶原蛋白收缩与再生" },
-              "bottom": { "title": "14M+", "subtitle": "全球治疗次数" }
+              "top": {
+                "title": "RF Technology",
+                "subtitle": "胶原蛋白收缩与再生"
+              },
+              "bottom": {
+                "title": "14M+",
+                "subtitle": "全球治疗次数"
+              }
             },
             {
-              "top": { "title": "AccuTip", "subtitle": "3.0cm²精准面积" },
-              "bottom": { "title": "默茨韩国", "subtitle": "官方认证诊所" }
+              "top": {
+                "title": "AccuTip",
+                "subtitle": "3.0cm²精准面积"
+              },
+              "bottom": {
+                "title": "默茨韩国",
+                "subtitle": "官方认证诊所"
+              }
             }
           ],
           "skinLayers": {
@@ -758,11 +904,31 @@
           },
           "timeline": {
             "items": [
-              { "time": "治疗后立即", "effect": "即时紧致", "desc": "胶原蛋白收缩效果" },
-              { "time": "1个月", "effect": "弹性改善", "desc": "胶原蛋白再生开始" },
-              { "time": "3个月", "effect": "显著变化", "desc": "新生胶原蛋白增加" },
-              { "time": "6个月", "effect": "最大效果", "desc": "胶原蛋白重塑完成" },
-              { "time": "12个月+", "effect": "效果维持", "desc": "建议每年维护" }
+              {
+                "time": "治疗后立即",
+                "effect": "即时紧致",
+                "desc": "胶原蛋白收缩效果"
+              },
+              {
+                "time": "1个月",
+                "effect": "弹性改善",
+                "desc": "胶原蛋白再生开始"
+              },
+              {
+                "time": "3个月",
+                "effect": "显著变化",
+                "desc": "新生胶原蛋白增加"
+              },
+              {
+                "time": "6个月",
+                "effect": "最大效果",
+                "desc": "胶原蛋白重塑完成"
+              },
+              {
+                "time": "12个月+",
+                "effect": "效果维持",
+                "desc": "建议每年维护"
+              }
             ]
           },
           "comparison": {
@@ -775,20 +941,58 @@
               "nxt": "NXT（第2代）"
             },
             "rows": [
-              { "feature": "技术", "flx": "AccuREP自动调节", "cpt": "手动能量设置", "nxt": "第1代技术" },
-              { "feature": "治疗时间", "flx": "缩短25%", "cpt": "标准", "nxt": "最长" },
-              { "feature": "疼痛", "flx": "振动技术最小化", "cpt": "中等", "nxt": "高" },
-              { "feature": "效果均匀性", "flx": "最佳自动调节", "cpt": "依赖操作者", "nxt": "可能不均匀" },
-              { "feature": "治疗头种类", "flx": "900/600/400/225", "cpt": "900/600/400", "nxt": "有限" },
-              { "feature": "眼部专用", "flx": "Total Tip O", "cpt": "Eye Tip O", "nxt": "X" }
+              {
+                "feature": "技术",
+                "flx": "AccuREP自动调节",
+                "cpt": "手动能量设置",
+                "nxt": "第1代技术"
+              },
+              {
+                "feature": "治疗时间",
+                "flx": "缩短25%",
+                "cpt": "标准",
+                "nxt": "最长"
+              },
+              {
+                "feature": "疼痛",
+                "flx": "振动技术最小化",
+                "cpt": "中等",
+                "nxt": "高"
+              },
+              {
+                "feature": "效果均匀性",
+                "flx": "最佳自动调节",
+                "cpt": "依赖操作者",
+                "nxt": "可能不均匀"
+              },
+              {
+                "feature": "治疗头种类",
+                "flx": "900/600/400/225",
+                "cpt": "900/600/400",
+                "nxt": "有限"
+              },
+              {
+                "feature": "眼部专用",
+                "flx": "Total Tip O",
+                "cpt": "Eye Tip O",
+                "nxt": "X"
+              }
             ]
           },
           "tips": {
             "title": "分部位定制治疗头",
             "subtitle": "各种尺寸的治疗头可针对不同部位进行优化治疗",
             "items": [
-              { "shots": "600", "area": "面部", "desc": "脸颊、额头" },
-              { "shots": "225", "area": "眼周/唇周", "desc": "精细部位" }
+              {
+                "shots": "600",
+                "area": "面部",
+                "desc": "脸颊、额头"
+              },
+              {
+                "shots": "225",
+                "area": "眼周/唇周",
+                "desc": "精细部位"
+              }
             ]
           },
           "hero": {
@@ -796,9 +1000,18 @@
             "title": "热玛吉FLX",
             "description": "AccuREP技术根据皮肤状态自动调节最佳能量。<br />振动技术减少疼痛，同时提升效果的射频提升。",
             "stats": {
-              "treatments": { "value": "14M+", "label": "全球治疗次数" },
-              "time": { "value": "25%", "label": "治疗时间缩短" },
-              "satisfaction": { "value": "93%", "label": "患者满意度" }
+              "treatments": {
+                "value": "14M+",
+                "label": "全球治疗次数"
+              },
+              "time": {
+                "value": "25%",
+                "label": "治疗时间缩短"
+              },
+              "satisfaction": {
+                "value": "93%",
+                "label": "患者满意度"
+              }
             }
           },
           "about": {
@@ -847,10 +1060,22 @@
             },
             "globalTrust": {
               "title": "Global Trust",
-              "treatments": { "value": "14M+", "label": "全球治疗次数" },
-              "satisfaction": { "value": "93%", "label": "患者满意度" },
-              "time": { "value": "25%", "label": "治疗时间缩短" },
-              "duration": { "value": "1年+", "label": "效果持续时间" },
+              "treatments": {
+                "value": "14M+",
+                "label": "全球治疗次数"
+              },
+              "satisfaction": {
+                "value": "93%",
+                "label": "患者满意度"
+              },
+              "time": {
+                "value": "25%",
+                "label": "治疗时间缩短"
+              },
+              "duration": {
+                "value": "1年+",
+                "label": "效果持续时间"
+              },
               "source": "来源：Solta Medical官方临床数据"
             }
           },
@@ -910,10 +1135,22 @@
             },
             "recommendedShots": {
               "title": "分部位推荐发数",
-              "fullFace": { "shots": "300-400", "label": "全脸" },
-              "lowerFace": { "shots": "200-300", "label": "下半脸" },
-              "eye": { "shots": "225", "label": "眼部" },
-              "fullFaceNeck": { "shots": "500-900", "label": "全脸+颈部" }
+              "fullFace": {
+                "shots": "300-400",
+                "label": "全脸"
+              },
+              "lowerFace": {
+                "shots": "200-300",
+                "label": "下半脸"
+              },
+              "eye": {
+                "shots": "225",
+                "label": "眼部"
+              },
+              "fullFaceNeck": {
+                "shots": "500-900",
+                "label": "全脸+颈部"
+              }
             }
           },
           "faq": {
@@ -948,6 +1185,9 @@
             "sectionLabel": "相关推荐治疗",
             "title": "相关推荐治疗"
           }
+        },
+        "ui": {
+          "collagenShrinkRegen": "胶原蛋白收缩 & 再生"
         }
       },
       "density": {
@@ -980,11 +1220,36 @@
           },
           "timeline": {
             "items": [
-              { "time": "治疗后即刻", "effect": "即刻紧致", "desc": "胶原蛋白收缩", "percent": 40 },
-              { "time": "2周", "effect": "弹力改善", "desc": "RF效果显现", "percent": 55 },
-              { "time": "1个月", "effect": "肤质改善", "desc": "胶原蛋白再生开始", "percent": 70 },
-              { "time": "3个月", "effect": "最佳效果", "desc": "RF胶原蛋白重塑", "percent": 100 },
-              { "time": "6个月+", "effect": "效果维持", "desc": "建议定期护理", "percent": 90 }
+              {
+                "time": "治疗后即刻",
+                "effect": "即刻紧致",
+                "desc": "胶原蛋白收缩",
+                "percent": 40
+              },
+              {
+                "time": "2周",
+                "effect": "弹力改善",
+                "desc": "RF效果显现",
+                "percent": 55
+              },
+              {
+                "time": "1个月",
+                "effect": "肤质改善",
+                "desc": "胶原蛋白再生开始",
+                "percent": 70
+              },
+              {
+                "time": "3个月",
+                "effect": "最佳效果",
+                "desc": "RF胶原蛋白重塑",
+                "percent": 100
+              },
+              {
+                "time": "6个月+",
+                "effect": "效果维持",
+                "desc": "建议定期护理",
+                "percent": 90
+              }
             ]
           },
           "comparison": {
@@ -995,13 +1260,48 @@
               "thermage": "热玛吉"
             },
             "rows": [
-              { "feature": "能量类型", "density": "RF (射频)", "ulthera": "HIFU (超声波)", "thermage": "RF (射频)" },
-              { "feature": "靶向深度", "density": "真皮层为主", "ulthera": "SMAS层为主", "thermage": "真皮层为主" },
-              { "feature": "能量分布", "density": "均匀精密", "ulthera": "聚焦型", "thermage": "广范围" },
-              { "feature": "疼痛感", "density": "低", "ulthera": "中等-高", "thermage": "低" },
-              { "feature": "治疗时间", "density": "30-40分钟", "ulthera": "60-90分钟", "thermage": "45-60分钟" },
-              { "feature": "价格", "density": "实惠", "ulthera": "高端", "thermage": "高端" },
-              { "feature": "推荐对象", "density": "弹力/毛孔护理", "ulthera": "严重下垂", "thermage": "弹力下降" }
+              {
+                "feature": "能量类型",
+                "density": "RF (射频)",
+                "ulthera": "HIFU (超声波)",
+                "thermage": "RF (射频)"
+              },
+              {
+                "feature": "靶向深度",
+                "density": "真皮层为主",
+                "ulthera": "SMAS层为主",
+                "thermage": "真皮层为主"
+              },
+              {
+                "feature": "能量分布",
+                "density": "均匀精密",
+                "ulthera": "聚焦型",
+                "thermage": "广范围"
+              },
+              {
+                "feature": "疼痛感",
+                "density": "低",
+                "ulthera": "中等-高",
+                "thermage": "低"
+              },
+              {
+                "feature": "治疗时间",
+                "density": "30-40分钟",
+                "ulthera": "60-90分钟",
+                "thermage": "45-60分钟"
+              },
+              {
+                "feature": "价格",
+                "density": "实惠",
+                "ulthera": "高端",
+                "thermage": "高端"
+              },
+              {
+                "feature": "推荐对象",
+                "density": "弹力/毛孔护理",
+                "ulthera": "严重下垂",
+                "thermage": "弹力下降"
+              }
             ]
           },
           "extendedFaqs": [
@@ -1023,13 +1323,28 @@
             "title": "Density",
             "description": "射频(RF)能量精密重塑皮肤深层胶原蛋白。<br />精准均匀的能量打造紧致弹力肌肤。",
             "stats": {
-              "energy": { "value": "RF", "label": "射频能量" },
-              "layers": { "value": "4层", "label": "多层靶向" },
-              "effect": { "value": "即刻", "label": "提升效果" }
+              "energy": {
+                "value": "RF",
+                "label": "射频能量"
+              },
+              "layers": {
+                "value": "4层",
+                "label": "多层靶向"
+              },
+              "effect": {
+                "value": "即刻",
+                "label": "提升效果"
+              }
             },
             "floatingBadges": {
-              "rf": { "title": "RF", "subtitle": "精密射频" },
-              "skin": { "title": "RF", "subtitle": "肌肤弹力" }
+              "rf": {
+                "title": "RF",
+                "subtitle": "精密射频"
+              },
+              "skin": {
+                "title": "RF",
+                "subtitle": "肌肤弹力"
+              }
             }
           },
           "about": {
@@ -1077,10 +1392,22 @@
             "clinicalBanner": {
               "label": "RF Lifting Benefits",
               "stats": {
-                "energy": { "value": "RF", "label": "射频能量" },
-                "precision": { "value": "精准", "label": "均匀分布" },
-                "duration": { "value": "40分钟", "label": "快速治疗" },
-                "effect": { "value": "即刻", "label": "效果可见" }
+                "energy": {
+                  "value": "RF",
+                  "label": "射频能量"
+                },
+                "precision": {
+                  "value": "精准",
+                  "label": "均匀分布"
+                },
+                "duration": {
+                  "value": "40分钟",
+                  "label": "快速治疗"
+                },
+                "effect": {
+                  "value": "即刻",
+                  "label": "效果可见"
+                }
               }
             }
           },
@@ -1168,13 +1495,48 @@
           "comparison": {
             "header": "比较项目",
             "rows": {
-              "method": { "feature": "治疗方式", "forma": "射频高频", "morpheus": "微针+射频", "facetite": "套管+射频" },
-              "invasiveness": { "feature": "侵入性", "forma": "非侵入", "morpheus": "微创", "facetite": "微创" },
-              "anesthesia": { "feature": "麻醉", "forma": "不需要", "morpheus": "麻醉膏", "facetite": "局部麻醉" },
-              "downtime": { "feature": "恢复期", "forma": "无", "morpheus": "3-5天", "facetite": "5-7天" },
-              "onset": { "feature": "效果显现", "forma": "渐进", "morpheus": "渐进", "facetite": "即刻" },
-              "sessions": { "feature": "治疗次数", "forma": "4-6次", "morpheus": "2-3次", "facetite": "1次" },
-              "target": { "feature": "主要目标", "forma": "弹性", "morpheus": "毛孔/疤痕", "facetite": "脂肪/松弛" }
+              "method": {
+                "feature": "治疗方式",
+                "forma": "射频高频",
+                "morpheus": "微针+射频",
+                "facetite": "套管+射频"
+              },
+              "invasiveness": {
+                "feature": "侵入性",
+                "forma": "非侵入",
+                "morpheus": "微创",
+                "facetite": "微创"
+              },
+              "anesthesia": {
+                "feature": "麻醉",
+                "forma": "不需要",
+                "morpheus": "麻醉膏",
+                "facetite": "局部麻醉"
+              },
+              "downtime": {
+                "feature": "恢复期",
+                "forma": "无",
+                "morpheus": "3-5天",
+                "facetite": "5-7天"
+              },
+              "onset": {
+                "feature": "效果显现",
+                "forma": "渐进",
+                "morpheus": "渐进",
+                "facetite": "即刻"
+              },
+              "sessions": {
+                "feature": "治疗次数",
+                "forma": "4-6次",
+                "morpheus": "2-3次",
+                "facetite": "1次"
+              },
+              "target": {
+                "feature": "主要目标",
+                "forma": "弹性",
+                "morpheus": "毛孔/疤痕",
+                "facetite": "脂肪/松弛"
+              }
             }
           },
           "treatmentOptions": {
@@ -1182,28 +1544,55 @@
               "name": "Forma",
               "nameKo": "Forma",
               "description": "非侵入性射频高频诱导胶原蛋白收缩和再生，改善皮肤弹性。几乎无痛且无恢复期，不影响日常生活。",
-              "benefits": ["即刻皮肤紧致", "促进胶原蛋白再生", "改善细纹", "无痛治疗"],
+              "benefits": [
+                "即刻皮肤紧致",
+                "促进胶原蛋白再生",
+                "改善细纹",
+                "无痛治疗"
+              ],
               "duration": "20-30分钟",
               "downtime": "无",
-              "idealFor": ["弹性下降", "细纹", "预防护理"]
+              "idealFor": [
+                "弹性下降",
+                "细纹",
+                "预防护理"
+              ]
             },
             "morpheus": {
               "name": "Morpheus8",
               "nameKo": "Morpheus8",
               "description": "24根镀金微针将射频能量传递到真皮层，诱导皮肤重塑。同时改善毛孔、疤痕、肤质和弹性。",
-              "benefits": ["缩小毛孔", "改善痤疮疤痕", "改善肤质", "真皮层重塑"],
+              "benefits": [
+                "缩小毛孔",
+                "改善痤疮疤痕",
+                "改善肤质",
+                "真皮层重塑"
+              ],
               "duration": "30-45分钟",
               "downtime": "3-5天",
-              "idealFor": ["毛孔粗大", "痤疮疤痕", "肤质"]
+              "idealFor": [
+                "毛孔粗大",
+                "痤疮疤痕",
+                "肤质"
+              ]
             },
             "facetite": {
               "name": "FaceTite",
               "nameKo": "FaceTite",
               "description": "通过细套管将射频能量直接传递到脂肪层，溶解脂肪并紧致皮肤。提供迷你拉皮级别的效果。",
-              "benefits": ["减少脂肪", "紧致皮肤", "改善下颌线", "改善双下巴"],
+              "benefits": [
+                "减少脂肪",
+                "紧致皮肤",
+                "改善下颌线",
+                "改善双下巴"
+              ],
               "duration": "60-90分钟",
               "downtime": "5-7天",
-              "idealFor": ["双下巴", "脸颊脂肪", "下颌线松弛"]
+              "idealFor": [
+                "双下巴",
+                "脸颊脂肪",
+                "下颌线松弛"
+              ]
             }
           },
           "recommendations": {
@@ -1239,13 +1628,28 @@
             "title": "InMode",
             "description": "通过射频(RF)能量同时实现减脂和提升。<br />如果面部脂肪是您的困扰，InMode就是答案。",
             "stats": {
-              "rf": { "value": "RF", "label": "射频能量" },
-              "fda": { "value": "FDA", "label": "认证设备" },
-              "custom": { "value": "定制", "label": "个性化治疗" }
+              "rf": {
+                "value": "RF",
+                "label": "射频能量"
+              },
+              "fda": {
+                "value": "FDA",
+                "label": "认证设备"
+              },
+              "custom": {
+                "value": "定制",
+                "label": "个性化治疗"
+              }
             },
             "floatingBadges": {
-              "morpheus": { "title": "Morpheus8", "subtitle": "微针射频" },
-              "custom": { "title": "定制治疗", "subtitle": "针对问题优化" }
+              "morpheus": {
+                "title": "Morpheus8",
+                "subtitle": "微针射频"
+              },
+              "custom": {
+                "title": "定制治疗",
+                "subtitle": "针对问题优化"
+              }
             }
           },
           "about": {
@@ -1307,6 +1711,11 @@
             "sectionLabel": "相关推荐治疗",
             "title": "相关推荐治疗"
           }
+        },
+        "ui": {
+          "skinElasticity": "皮肤弹性",
+          "microneedleRf": "微针RF",
+          "fatTightening": "脂肪紧致"
         }
       },
       "shurink": {
@@ -1378,12 +1787,24 @@
           },
           "heroLabels": [
             {
-              "top": { "title": "高速连发技术", "subtitle": "每秒7发以上" },
-              "bottom": { "title": "快速治疗", "subtitle": "约30分钟" }
+              "top": {
+                "title": "高速连发技术",
+                "subtitle": "每秒7发以上"
+              },
+              "bottom": {
+                "title": "快速治疗",
+                "subtitle": "约30分钟"
+              }
             },
             {
-              "top": { "title": "定制探头", "subtitle": "4种深度选择" },
-              "bottom": { "title": "均匀效果", "subtitle": "精准能量传递" }
+              "top": {
+                "title": "定制探头",
+                "subtitle": "4种深度选择"
+              },
+              "bottom": {
+                "title": "均匀效果",
+                "subtitle": "精准能量传递"
+              }
             }
           ],
           "about": {
@@ -1465,13 +1886,41 @@
               "shurink": "Shurink"
             },
             "rows": [
-              { "item": "能量类型", "ulthera": "HIFU", "shurink": "HIFU" },
-              { "item": "治疗时间", "ulthera": "60-90分钟", "shurink": "30-45分钟" },
-              { "item": "可视化功能", "ulthera": "DeepSEE技术", "shurink": "无" },
-              { "item": "疼痛程度", "ulthera": "中~高", "shurink": "低~中" },
-              { "item": "效果持续", "ulthera": "1-2年", "shurink": "3-6个月" },
-              { "item": "适合人群", "ulthera": "希望深层提升", "shurink": "快速治疗、维护保养" },
-              { "item": "费用", "ulthera": "高端", "shurink": "实惠" }
+              {
+                "item": "能量类型",
+                "ulthera": "HIFU",
+                "shurink": "HIFU"
+              },
+              {
+                "item": "治疗时间",
+                "ulthera": "60-90分钟",
+                "shurink": "30-45分钟"
+              },
+              {
+                "item": "可视化功能",
+                "ulthera": "DeepSEE技术",
+                "shurink": "无"
+              },
+              {
+                "item": "疼痛程度",
+                "ulthera": "中~高",
+                "shurink": "低~中"
+              },
+              {
+                "item": "效果持续",
+                "ulthera": "1-2年",
+                "shurink": "3-6个月"
+              },
+              {
+                "item": "适合人群",
+                "ulthera": "希望深层提升",
+                "shurink": "快速治疗、维护保养"
+              },
+              {
+                "item": "费用",
+                "ulthera": "高端",
+                "shurink": "实惠"
+              }
             ]
           },
           "faq": {
@@ -1490,6 +1939,26 @@
             "onlineButton": "在线预约咨询",
             "phoneButton": "电话咨询"
           }
+        },
+        "ui": {
+          "layerEpidermis": "表皮",
+          "layerDermis": "真皮",
+          "layerFascia": "筋膜",
+          "layerEpidermisBox": "表皮层",
+          "layerDermisBox": "真皮层",
+          "layerDeepBox": "深层",
+          "fineWrinklesPores": "细纹、毛孔",
+          "collagenRegen": "胶原再生",
+          "liftingEffect": "提升效果",
+          "bodyDoubleChin": "身体、双下巴",
+          "legacyHifu": "传统HIFU",
+          "shurinkLabel": "舒匀克",
+          "shotsLegacy": "每秒1-2发",
+          "timeLegacy": "施术60分以上",
+          "shotsShurink": "每秒7发以上",
+          "timeShurink": "施术约30分钟",
+          "threeXFaster": "3倍更快",
+          "diagramAlt": "舒匀克HIFU施术部位图"
         }
       },
       "thread": {
@@ -1621,13 +2090,41 @@
               "thread": "线雕"
             },
             "rows": [
-              { "item": "原理", "laser": "热能收缩胶原蛋白", "thread": "物理提升 + 胶原蛋白促进" },
-              { "item": "效果显现", "laser": "渐进式（2-3个月）", "thread": "即刻" },
-              { "item": "效果持续", "laser": "6个月-2年", "thread": "6-18个月（因线材类型而异）" },
-              { "item": "恢复期", "laser": "几乎没有", "thread": "3-7天（淤青、肿胀）" },
-              { "item": "麻醉", "laser": "麻醉膏或无麻醉", "thread": "局部麻醉" },
-              { "item": "适合对象", "laser": "初期松弛、弹性下降", "thread": "中度松弛、容量流失" },
-              { "item": "联合治疗", "laser": "单独或联合", "thread": "与激光联合有协同效应" }
+              {
+                "item": "原理",
+                "laser": "热能收缩胶原蛋白",
+                "thread": "物理提升 + 胶原蛋白促进"
+              },
+              {
+                "item": "效果显现",
+                "laser": "渐进式（2-3个月）",
+                "thread": "即刻"
+              },
+              {
+                "item": "效果持续",
+                "laser": "6个月-2年",
+                "thread": "6-18个月（因线材类型而异）"
+              },
+              {
+                "item": "恢复期",
+                "laser": "几乎没有",
+                "thread": "3-7天（淤青、肿胀）"
+              },
+              {
+                "item": "麻醉",
+                "laser": "麻醉膏或无麻醉",
+                "thread": "局部麻醉"
+              },
+              {
+                "item": "适合对象",
+                "laser": "初期松弛、弹性下降",
+                "thread": "中度松弛、容量流失"
+              },
+              {
+                "item": "联合治疗",
+                "laser": "单独或联合",
+                "thread": "与激光联合有协同效应"
+              }
             ]
           },
           "recommended": {
@@ -1647,6 +2144,9 @@
             "consultButton": "在线预约咨询",
             "callButton": "电话咨询 02-797-2773"
           }
+        },
+        "ui": {
+          "diagramAlt": "埋线提升施术部位图"
         }
       },
       "aptos": {
@@ -1680,10 +2180,22 @@
             }
           ],
           "certifications": [
-            { "label": "KFDA", "value": "医疗器械4等级正式许可" },
-            { "label": "CE", "value": "欧洲CE认证" },
-            { "label": "ISO", "value": "ISO 13485质量管理体系" },
-            { "label": "FDA", "value": "MDSAP认证" }
+            {
+              "label": "KFDA",
+              "value": "医疗器械4等级正式许可"
+            },
+            {
+              "label": "CE",
+              "value": "欧洲CE认证"
+            },
+            {
+              "label": "ISO",
+              "value": "ISO 13485质量管理体系"
+            },
+            {
+              "label": "FDA",
+              "value": "MDSAP认证"
+            }
           ],
           "gallery": [
             {
@@ -1710,10 +2222,22 @@
             "title": "NAMICA Technology",
             "description": "<strong class=\"text-secondary\">NAMICA(Nano & Micro Encapsulated Particles)</strong>是将透明质酸40mg封装成纳米、亚微米、微米单位，实现分阶段释放的创新药物递送系统。",
             "features": [
-              { "icon": "🌍", "text": "全球100多个国家使用" },
-              { "icon": "✅", "text": "KFDA医疗器械4等级正式许可" },
-              { "icon": "⏱️", "text": "效果持续：最长24个月" },
-              { "icon": "🧬", "text": "生物刺激（胶原蛋白生成促进）" }
+              {
+                "icon": "🌍",
+                "text": "全球100多个国家使用"
+              },
+              {
+                "icon": "✅",
+                "text": "KFDA医疗器械4等级正式许可"
+              },
+              {
+                "icon": "⏱️",
+                "text": "效果持续：最长24个月"
+              },
+              {
+                "icon": "🧬",
+                "text": "生物刺激（胶原蛋白生成促进）"
+              }
             ]
           },
           "phaseSection": {
@@ -1738,9 +2262,18 @@
           "lineupSection": {
             "title": "适应各种脸型的压倒性产品阵容",
             "positioning": [
-              { "code": "LL25", "desc": "提升沉重的面颊脂肪时" },
-              { "code": "NAMICA", "desc": "整体弹性和肤质改善" },
-              { "code": "LL50", "desc": "双下巴和下颌线细节" }
+              {
+                "code": "LL25",
+                "desc": "提升沉重的面颊脂肪时"
+              },
+              {
+                "code": "NAMICA",
+                "desc": "整体弹性和肤质改善"
+              },
+              {
+                "code": "LL50",
+                "desc": "双下巴和下颌线细节"
+              }
             ],
             "products": [
               {
@@ -1773,7 +2306,25 @@
             "description": "使用肉毒杆菌素改善表情纹，缩小咬肌，打造精致脸型。"
           },
           "benefits": {
-            "title": "肉毒素的优点"
+            "title": "肉毒素的优点",
+            "items": [
+              {
+                "title": "表情纹改善",
+                "desc": "有效缓解额头、眉间、眼角皱纹"
+              },
+              {
+                "title": "轮廓塑形",
+                "desc": "减少咬肌、斜方肌体积"
+              },
+              {
+                "title": "快速治疗",
+                "desc": "仅需10-20分钟的短暂治疗时间"
+              },
+              {
+                "title": "自然表情",
+                "desc": "适当剂量保持自然表情"
+              }
+            ]
           },
           "targetAreas": {
             "title": "治疗部位",
@@ -1825,10 +2376,30 @@
           "timeline": {
             "title": "术后时间线",
             "items": [
-              { "time": "第1天", "title": "治疗当天", "desc": "简单治疗后可立即恢复日常生活", "percentage": 0 },
-              { "time": "3-7天", "title": "效果开始", "desc": "肌肉开始逐渐放松", "percentage": 30 },
-              { "time": "2-4周", "title": "最佳效果", "desc": "自然除皱效果达到最大化", "percentage": 100 },
-              { "time": "3-6个月", "title": "效果维持", "desc": "效果持续时间因人而异", "percentage": 70 }
+              {
+                "time": "第1天",
+                "title": "治疗当天",
+                "desc": "简单治疗后可立即恢复日常生活",
+                "percentage": 0
+              },
+              {
+                "time": "3-7天",
+                "title": "效果开始",
+                "desc": "肌肉开始逐渐放松",
+                "percentage": 30
+              },
+              {
+                "time": "2-4周",
+                "title": "最佳效果",
+                "desc": "自然除皱效果达到最大化",
+                "percentage": 100
+              },
+              {
+                "time": "3-6个月",
+                "title": "效果维持",
+                "desc": "效果持续时间因人而异",
+                "percentage": 70
+              }
             ]
           },
           "mechanismLabel": "精准注射定位图",
@@ -1838,26 +2409,49 @@
             "recovery": "恢复期",
             "results": "效果持续"
           },
-          "benefits": {
-            "title": "肉毒素的优点",
-            "items": [
-              { "title": "表情纹改善", "desc": "有效缓解额头、眉间、眼角皱纹" },
-              { "title": "轮廓塑形", "desc": "减少咬肌、斜方肌体积" },
-              { "title": "快速治疗", "desc": "仅需10-20分钟的短暂治疗时间" },
-              { "title": "自然表情", "desc": "适当剂量保持自然表情" }
-            ]
-          },
           "process": {
             "items": [
-              { "step": 1, "title": "咨询", "desc": "皱纹分析及期望效果咨询" },
-              { "step": 2, "title": "洁面", "desc": "卸妆及消毒" },
-              { "step": 3, "title": "麻醉", "desc": "必要时涂抹麻醉膏" },
-              { "step": 4, "title": "标记", "desc": "标记注射点" },
-              { "step": 5, "title": "治疗", "desc": "微针注射肉毒素" },
-              { "step": 6, "title": "完成", "desc": "术后注意事项说明" }
+              {
+                "step": 1,
+                "title": "咨询",
+                "desc": "皱纹分析及期望效果咨询"
+              },
+              {
+                "step": 2,
+                "title": "洁面",
+                "desc": "卸妆及消毒"
+              },
+              {
+                "step": 3,
+                "title": "麻醉",
+                "desc": "必要时涂抹麻醉膏"
+              },
+              {
+                "step": 4,
+                "title": "标记",
+                "desc": "标记注射点"
+              },
+              {
+                "step": 5,
+                "title": "治疗",
+                "desc": "微针注射肉毒素"
+              },
+              {
+                "step": 6,
+                "title": "完成",
+                "desc": "术后注意事项说明"
+              }
             ]
           },
-          "targetAreasItems": ["额头", "眉间", "眼角", "咬肌", "嘴角", "斜方肌", "小腿"],
+          "targetAreasItems": [
+            "额头",
+            "眉间",
+            "眼角",
+            "咬肌",
+            "嘴角",
+            "斜方肌",
+            "小腿"
+          ],
           "idealFor": {
             "items": [
               "担心表情纹的人士",
@@ -1875,9 +2469,21 @@
           },
           "faqs": {
             "items": [
-              { "q": "打肉毒素会使表情不自然吗？", "shortA": "适当剂量可以保持自然表情。", "a": "在正确位置注射适当剂量，可以在保持自然表情的同时改善皱纹。过量使用可能导致不自然，因此由经验丰富的医疗人员进行治疗非常重要。" },
-              { "q": "肉毒素效果能持续多久？", "shortA": "因人而异，通常持续3-6个月。", "a": "因人而异，但通常持续3-6个月左右。定期治疗可使肌肉弱化，效果可能更持久。" },
-              { "q": "不同品牌的肉毒素有什么区别？", "shortA": "每种产品的起效时间、扩散度、持续时间各不相同。", "a": "每种产品的效果起效时间、扩散度、持续时间都有差异。根据部位和目的选择合适的产品很重要。" }
+              {
+                "q": "打肉毒素会使表情不自然吗？",
+                "shortA": "适当剂量可以保持自然表情。",
+                "a": "在正确位置注射适当剂量，可以在保持自然表情的同时改善皱纹。过量使用可能导致不自然，因此由经验丰富的医疗人员进行治疗非常重要。"
+              },
+              {
+                "q": "肉毒素效果能持续多久？",
+                "shortA": "因人而异，通常持续3-6个月。",
+                "a": "因人而异，但通常持续3-6个月左右。定期治疗可使肌肉弱化，效果可能更持久。"
+              },
+              {
+                "q": "不同品牌的肉毒素有什么区别？",
+                "shortA": "每种产品的起效时间、扩散度、持续时间各不相同。",
+                "a": "每种产品的效果起效时间、扩散度、持续时间都有差异。根据部位和目的选择合适的产品很重要。"
+              }
             ]
           },
           "treatmentValues": {
@@ -1886,6 +2492,15 @@
             "recovery": "立即恢复日常生活",
             "results": "3-7天后开始见效，持续3-6个月"
           }
+        },
+        "ui": {
+          "calvesArea": "小腿施术部位",
+          "category": "分类:",
+          "expressionWrinkles": "表情纹",
+          "contouring": "轮廓修整",
+          "body": "身体",
+          "interactionHint": "* 点击或悬停在任意部位即可在图片上查看位置",
+          "imageAlt": "肉毒杆菌施术部位"
         }
       },
       "filler": {
@@ -1902,19 +2517,51 @@
           "benefits": {
             "title": "玻尿酸的优点",
             "items": [
-              { "title": "即时效果", "desc": "治疗后立即可见体积改善" },
-              { "title": "自然触感", "desc": "透明质酸柔软的质地" },
-              { "title": "可逆性治疗", "desc": "需要时可溶解，安全可靠" },
-              { "title": "多功能应用", "desc": "适用于体积、皱纹、轮廓等多种用途" }
+              {
+                "title": "即时效果",
+                "desc": "治疗后立即可见体积改善"
+              },
+              {
+                "title": "自然触感",
+                "desc": "透明质酸柔软的质地"
+              },
+              {
+                "title": "可逆性治疗",
+                "desc": "需要时可溶解，安全可靠"
+              },
+              {
+                "title": "多功能应用",
+                "desc": "适用于体积、皱纹、轮廓等多种用途"
+              }
             ]
           },
           "process": {
             "items": [
-              { "step": 1, "title": "咨询", "desc": "面部分析及治疗方案制定" },
-              { "step": 2, "title": "洁面", "desc": "卸妆及消毒" },
-              { "step": 3, "title": "麻醉", "desc": "麻醉膏或神经阻滞" },
-              { "step": 4, "title": "治疗", "desc": "分部位定制填充剂注射" },
-              { "step": 5, "title": "完成", "desc": "塑形及术后护理指导" }
+              {
+                "step": 1,
+                "title": "咨询",
+                "desc": "面部分析及治疗方案制定"
+              },
+              {
+                "step": 2,
+                "title": "洁面",
+                "desc": "卸妆及消毒"
+              },
+              {
+                "step": 3,
+                "title": "麻醉",
+                "desc": "麻醉膏或神经阻滞"
+              },
+              {
+                "step": 4,
+                "title": "治疗",
+                "desc": "分部位定制填充剂注射"
+              },
+              {
+                "step": 5,
+                "title": "完成",
+                "desc": "塑形及术后护理指导"
+              }
             ]
           },
           "idealFor": {
@@ -1935,9 +2582,21 @@
           },
           "faqs": {
             "items": [
-              { "q": "填充剂会结块或看起来不自然吗？", "shortA": "适量+熟练的医疗人员操作，效果自然。", "a": "使用正品填充剂，由具有解剖学知识的医疗人员进行适量注射，可获得自然效果。过度注射可能导致不自然，因此适量治疗很重要。" },
-              { "q": "填充剂治疗后可以立即恢复日常活动吗？", "shortA": "大多数人可以立即恢复日常活动。", "a": "大多数人可以立即恢复日常活动。但根据治疗部位，可能会出现淤青或肿胀，因此建议在重要活动前预留时间。" },
-              { "q": "填充剂可以溶解吗？", "shortA": "是的，可以用透明质酸酶安全溶解。", "a": "透明质酸填充剂可以用透明质酸酶溶解。如果对治疗效果不满意或出现并发症，可以安全去除。" }
+              {
+                "q": "填充剂会结块或看起来不自然吗？",
+                "shortA": "适量+熟练的医疗人员操作，效果自然。",
+                "a": "使用正品填充剂，由具有解剖学知识的医疗人员进行适量注射，可获得自然效果。过度注射可能导致不自然，因此适量治疗很重要。"
+              },
+              {
+                "q": "填充剂治疗后可以立即恢复日常活动吗？",
+                "shortA": "大多数人可以立即恢复日常活动。",
+                "a": "大多数人可以立即恢复日常活动。但根据治疗部位，可能会出现淤青或肿胀，因此建议在重要活动前预留时间。"
+              },
+              {
+                "q": "填充剂可以溶解吗？",
+                "shortA": "是的，可以用透明质酸酶安全溶解。",
+                "a": "透明质酸填充剂可以用透明质酸酶溶解。如果对治疗效果不满意或出现并发症，可以安全去除。"
+              }
             ]
           },
           "treatmentValues": {
@@ -1950,26 +2609,86 @@
             "title": "治疗部位",
             "subtitle": "在面部各个部位填充体积并塑造轮廓",
             "areas": [
-              { "id": 1, "name": "额头", "description": "额头皱纹改善" },
-              { "id": 2, "name": "太阳穴", "description": "体积流失恢复" },
-              { "id": 3, "name": "鼻子", "description": "鼻梁/鼻尖塑形" },
-              { "id": 4, "name": "苹果肌", "description": "颧骨体积" },
-              { "id": 5, "name": "法令纹", "description": "法令纹改善" },
-              { "id": 6, "name": "侧脸", "description": "脸颊下垂改善" },
-              { "id": 7, "name": "下巴尖", "description": "下巴体积塑形" },
-              { "id": 8, "name": "卧蚕", "description": "眼下体积" },
-              { "id": 9, "name": "嘴唇", "description": "嘴唇体积" },
-              { "id": 10, "name": "眉毛", "description": "眉毛提升" }
+              {
+                "id": 1,
+                "name": "额头",
+                "description": "额头皱纹改善"
+              },
+              {
+                "id": 2,
+                "name": "太阳穴",
+                "description": "体积流失恢复"
+              },
+              {
+                "id": 3,
+                "name": "鼻子",
+                "description": "鼻梁/鼻尖塑形"
+              },
+              {
+                "id": 4,
+                "name": "苹果肌",
+                "description": "颧骨体积"
+              },
+              {
+                "id": 5,
+                "name": "法令纹",
+                "description": "法令纹改善"
+              },
+              {
+                "id": 6,
+                "name": "侧脸",
+                "description": "脸颊下垂改善"
+              },
+              {
+                "id": 7,
+                "name": "下巴尖",
+                "description": "下巴体积塑形"
+              },
+              {
+                "id": 8,
+                "name": "卧蚕",
+                "description": "眼下体积"
+              },
+              {
+                "id": 9,
+                "name": "嘴唇",
+                "description": "嘴唇体积"
+              },
+              {
+                "id": 10,
+                "name": "眉毛",
+                "description": "眉毛提升"
+              }
             ]
           },
           "bodyAreas": {
             "title": "身体填充",
             "subtitle": "改善身体曲线的体积，打造美丽的轮廓",
             "areas": [
-              { "id": 1, "name": "肩部填充", "description": "圆润柔和的肩线", "detail": "柔化斜方肌线条，打造女性化的肩部轮廓" },
-              { "id": 2, "name": "臀部填充", "description": "丰满的臀部曲线", "detail": "为扁平或缺乏体积的臀部增添自然丰满感" },
-              { "id": 3, "name": "骨盆填充", "description": "平滑的骨盆轮廓", "detail": "自然遮盖突出的髋骨，完成平滑的身体曲线" },
-              { "id": 4, "name": "臀凹填充", "description": "改善臀凹（大腿-臀部凹陷）", "detail": "填充臀部与大腿之间的凹陷部位，打造平滑轮廓" }
+              {
+                "id": 1,
+                "name": "肩部填充",
+                "description": "圆润柔和的肩线",
+                "detail": "柔化斜方肌线条，打造女性化的肩部轮廓"
+              },
+              {
+                "id": 2,
+                "name": "臀部填充",
+                "description": "丰满的臀部曲线",
+                "detail": "为扁平或缺乏体积的臀部增添自然丰满感"
+              },
+              {
+                "id": 3,
+                "name": "骨盆填充",
+                "description": "平滑的骨盆轮廓",
+                "detail": "自然遮盖突出的髋骨，完成平滑的身体曲线"
+              },
+              {
+                "id": 4,
+                "name": "臀凹填充",
+                "description": "改善臀凹（大腿-臀部凹陷）",
+                "detail": "填充臀部与大腿之间的凹陷部位，打造平滑轮廓"
+              }
             ],
             "notice": "身体填充使用大容量透明质酸填充剂，根据个人体型定制治疗方案。",
             "imageAlt": "展示肩部、臀部、骨盆、臀凹身体填充治疗部位的医学插图"
@@ -1978,18 +2697,42 @@
             "title": "部位定制填充剂",
             "subtitle": "根据治疗部位和目的选择最佳填充剂硬度",
             "types": [
-              { "type": "柔软型", "areas": "嘴唇、眼下", "desc": "自然触感" },
-              { "type": "中等型", "areas": "法令纹、脸颊", "desc": "体积+支撑力" },
-              { "type": "坚固型", "areas": "鼻子、下巴、额头", "desc": "强支撑力" }
+              {
+                "type": "柔软型",
+                "areas": "嘴唇、眼下",
+                "desc": "自然触感"
+              },
+              {
+                "type": "中等型",
+                "areas": "法令纹、脸颊",
+                "desc": "体积+支撑力"
+              },
+              {
+                "type": "坚固型",
+                "areas": "鼻子、下巴、额头",
+                "desc": "强支撑力"
+              }
             ]
           },
           "safety": {
             "title": "可逆性治疗",
             "subtitle": "透明质酸填充剂可在需要时溶解，安全可靠",
             "steps": [
-              { "step": "01", "title": "填充剂注射", "desc": "体积塑形" },
-              { "step": "02", "title": "透明质酸酶", "desc": "需要时溶解" },
-              { "step": "03", "title": "恢复原状", "desc": "安全去除" }
+              {
+                "step": "01",
+                "title": "填充剂注射",
+                "desc": "体积塑形"
+              },
+              {
+                "step": "02",
+                "title": "透明质酸酶",
+                "desc": "需要时溶解"
+              },
+              {
+                "step": "03",
+                "title": "恢复原状",
+                "desc": "安全去除"
+              }
             ]
           },
           "treatmentInfo": {
@@ -2008,6 +2751,14 @@
           },
           "volumeIllustrationLabel": "容量恢复映射图",
           "heroImageAlt": "玻尿酸 - 体积与轮廓的艺术"
+        },
+        "ui": {
+          "imageAlt": "填充剂施术部位",
+          "wrinkles": "改善皱纹",
+          "volume": "体积",
+          "contour": "轮廓",
+          "lifting": "提升",
+          "interactionHint": "* 点击任意部位即可在图片上查看位置"
         }
       },
       "skinbooster": {
@@ -2026,28 +2777,80 @@
           },
           "courseTimeline": {
             "items": [
-              { "session": "第1次", "week": "第0周", "effect": 20, "desc": "基础补水" },
-              { "session": "第2次", "week": "第2-3周", "effect": 50, "desc": "强化水分屏障" },
-              { "session": "第3次", "week": "第4-6周", "effect": 80, "desc": "激活胶原蛋白" },
-              { "session": "第4次", "week": "第6-8周", "effect": 100, "desc": "达到最佳效果" }
+              {
+                "session": "第1次",
+                "week": "第0周",
+                "effect": 20,
+                "desc": "基础补水"
+              },
+              {
+                "session": "第2次",
+                "week": "第2-3周",
+                "effect": 50,
+                "desc": "强化水分屏障"
+              },
+              {
+                "session": "第3次",
+                "week": "第4-6周",
+                "effect": 80,
+                "desc": "激活胶原蛋白"
+              },
+              {
+                "session": "第4次",
+                "week": "第6-8周",
+                "effect": 100,
+                "desc": "达到最佳效果"
+              }
             ]
           },
           "benefits": {
             "title": "水光针的优势",
             "items": [
-              { "title": "深层补水", "desc": "透明质酸直达真皮层" },
-              { "title": "改善肌肤弹性", "desc": "促进胶原蛋白和弹性蛋白生成" },
-              { "title": "自然光泽", "desc": "从肌底绽放健康光彩" },
-              { "title": "改善肤质", "desc": "改善细纹和毛孔" }
+              {
+                "title": "深层补水",
+                "desc": "透明质酸直达真皮层"
+              },
+              {
+                "title": "改善肌肤弹性",
+                "desc": "促进胶原蛋白和弹性蛋白生成"
+              },
+              {
+                "title": "自然光泽",
+                "desc": "从肌底绽放健康光彩"
+              },
+              {
+                "title": "改善肤质",
+                "desc": "改善细纹和毛孔"
+              }
             ]
           },
           "process": {
             "items": [
-              { "step": 1, "title": "咨询", "desc": "肌肤状态分析及产品选择" },
-              { "step": 2, "title": "洁面", "desc": "卸妆及肌肤调理" },
-              { "step": 3, "title": "麻醉", "desc": "涂抹麻醉膏" },
-              { "step": 4, "title": "治疗", "desc": "微针或仪器注入" },
-              { "step": 5, "title": "完成", "desc": "镇静护理及防晒" }
+              {
+                "step": 1,
+                "title": "咨询",
+                "desc": "肌肤状态分析及产品选择"
+              },
+              {
+                "step": 2,
+                "title": "洁面",
+                "desc": "卸妆及肌肤调理"
+              },
+              {
+                "step": 3,
+                "title": "麻醉",
+                "desc": "涂抹麻醉膏"
+              },
+              {
+                "step": 4,
+                "title": "治疗",
+                "desc": "微针或仪器注入"
+              },
+              {
+                "step": 5,
+                "title": "完成",
+                "desc": "镇静护理及防晒"
+              }
             ]
           },
           "idealFor": {
@@ -2068,9 +2871,21 @@
           },
           "faqs": {
             "items": [
-              { "q": "水光针和水光注射一样吗？", "shortA": "类似，但水光针含有更多成分。", "a": "概念相似，但水光针包含多种成分（透明质酸、多聚核苷酸等）。水光注射主要聚焦于透明质酸为主的补水。" },
-              { "q": "什么时候能看到效果？", "shortA": "立即感受水润+2-4周后弹性·光泽改善。", "a": "治疗后立即可感受到水润感，2-4周后肌肤弹性和光泽改善。为获得最佳效果，建议每隔2-4周进行3-4次治疗。" },
-              { "q": "哪种产品最好？", "shortA": "根据肌肤状态和目标咨询后选择。", "a": "有丽珠兰、婕斯、Revive、Vital、Rituo等多种产品，根据肌肤状态和目标选择。通过咨询确定最适合您的产品。" }
+              {
+                "q": "水光针和水光注射一样吗？",
+                "shortA": "类似，但水光针含有更多成分。",
+                "a": "概念相似，但水光针包含多种成分（透明质酸、多聚核苷酸等）。水光注射主要聚焦于透明质酸为主的补水。"
+              },
+              {
+                "q": "什么时候能看到效果？",
+                "shortA": "立即感受水润+2-4周后弹性·光泽改善。",
+                "a": "治疗后立即可感受到水润感，2-4周后肌肤弹性和光泽改善。为获得最佳效果，建议每隔2-4周进行3-4次治疗。"
+              },
+              {
+                "q": "哪种产品最好？",
+                "shortA": "根据肌肤状态和目标咨询后选择。",
+                "a": "有丽珠兰、婕斯、Revive、Vital、Rituo等多种产品，根据肌肤状态和目标选择。通过咨询确定最适合您的产品。"
+              }
             ]
           },
           "treatmentValues": {
@@ -2082,9 +2897,21 @@
           "effects": {
             "title": "水光针效果",
             "items": [
-              { "icon": "droplet", "title": "深层补水", "desc": "直达真皮层" },
-              { "icon": "bounce", "title": "改善弹性", "desc": "促进胶原蛋白生成" },
-              { "icon": "glow", "title": "自然光泽", "desc": "从肌底绽放光彩" }
+              {
+                "icon": "droplet",
+                "title": "深层补水",
+                "desc": "直达真皮层"
+              },
+              {
+                "icon": "bounce",
+                "title": "改善弹性",
+                "desc": "促进胶原蛋白生成"
+              },
+              {
+                "icon": "glow",
+                "title": "自然光泽",
+                "desc": "从肌底绽放光彩"
+              }
             ]
           },
           "treatmentCourse": {
@@ -2096,9 +2923,21 @@
             "title": "水光针产品",
             "subtitle": "根据肌肤状态和目标选择最适合的产品",
             "items": [
-              { "name": "婕斯", "desc": "胶原蛋白提升", "feature": "PDRN + HA" },
-              { "name": "丽珠兰", "desc": "肌肤再生", "feature": "PN" },
-              { "name": "乔雅登", "desc": "补水 + 弹性", "feature": "Voluma HA" }
+              {
+                "name": "婕斯",
+                "desc": "胶原蛋白提升",
+                "feature": "PDRN + HA"
+              },
+              {
+                "name": "丽珠兰",
+                "desc": "肌肤再生",
+                "feature": "PN"
+              },
+              {
+                "name": "乔雅登",
+                "desc": "补水 + 弹性",
+                "feature": "Voluma HA"
+              }
             ]
           },
           "treatmentInfo": {
@@ -2337,10 +3176,26 @@
           },
           "viewMore": "了解详情",
           "stats": [
-            { "label": "设备", "value": "4种", "desc": "高端激光" },
-            { "label": "治疗领域", "value": "5种", "desc": "肌肤问题解决" },
-            { "label": "经验", "value": "10年以上", "desc": "激光治疗经验" },
-            { "label": "安全性", "value": "已认证", "desc": "FDA批准设备" }
+            {
+              "label": "设备",
+              "value": "4种",
+              "desc": "高端激光"
+            },
+            {
+              "label": "治疗领域",
+              "value": "5种",
+              "desc": "肌肤问题解决"
+            },
+            {
+              "label": "经验",
+              "value": "10年以上",
+              "desc": "激光治疗经验"
+            },
+            {
+              "label": "安全性",
+              "value": "已认证",
+              "desc": "FDA批准设备"
+            }
           ],
           "categories": {
             "title": "针对肌肤问题的定制治疗",
@@ -2351,7 +3206,11 @@
                 "name": "色斑/色素改善",
                 "nameEn": "Pigmentation & Melasma",
                 "description": "通过皮秒激光和激光调色有效改善黄褐斑、色斑、老年斑等色素问题。",
-                "equipment": ["Lucas", "激光调色", "Clarity II"],
+                "equipment": [
+                  "Lucas",
+                  "激光调色",
+                  "Clarity II"
+                ],
                 "icon": "☀️"
               },
               {
@@ -2359,7 +3218,9 @@
                 "name": "红血丝/血管治疗",
                 "nameEn": "Redness & Vascular",
                 "description": "使用Clarity II双波长治疗面部潮红、毛细血管扩张、血管瘤。",
-                "equipment": ["Clarity II"],
+                "equipment": [
+                  "Clarity II"
+                ],
                 "icon": "🔴"
               },
               {
@@ -2367,7 +3228,10 @@
                 "name": "肤色均匀化",
                 "nameEn": "Skin Tone Brightening",
                 "description": "通过激光调色和Ulblanc改善暗沉肌肤，使肤色更加明亮。",
-                "equipment": ["激光调色", "Ulblanc"],
+                "equipment": [
+                  "激光调色",
+                  "Ulblanc"
+                ],
                 "icon": "✨"
               },
               {
@@ -2375,7 +3239,9 @@
                 "name": "高端脱毛",
                 "nameEn": "Premium Hair Removal",
                 "description": "Clarity II双波长和IntelliTrak技术，适用于所有肤质的安全脱毛。",
-                "equipment": ["Clarity II"],
+                "equipment": [
+                  "Clarity II"
+                ],
                 "icon": "💎"
               },
               {
@@ -2383,7 +3249,9 @@
                 "name": "纹身去除",
                 "nameEn": "Tattoo Removal",
                 "description": "Lucas皮秒激光无疤痕有效去除各种颜色的纹身。",
-                "equipment": ["Lucas"],
+                "equipment": [
+                  "Lucas"
+                ],
                 "icon": "🎨"
               }
             ]
@@ -2393,8 +3261,19 @@
             "title": "解决任何肌肤问题的设备阵容",
             "subtitle": "LIV激光中心的4种高端设备覆盖所有肌肤问题",
             "chartTitle": "肌肤问题 × 设备矩阵",
-            "equipment": ["Clarity II", "Lucas", "激光调色", "Ulblanc"],
-            "concerns": ["色斑/色素", "红血丝/血管", "肤色", "脱毛", "纹身去除"]
+            "equipment": [
+              "Clarity II",
+              "Lucas",
+              "激光调色",
+              "Ulblanc"
+            ],
+            "concerns": [
+              "色斑/色素",
+              "红血丝/血管",
+              "肤色",
+              "脱毛",
+              "纹身去除"
+            ]
           },
           "equipmentSection": {
             "badge": "LIV设备",
@@ -2411,7 +3290,12 @@
                 "nameKo": "Clarity II",
                 "wavelength": "755nm + 1064nm",
                 "feature": "双波长 + IntelliTrak技术",
-                "targets": ["色素", "血管", "脱毛", "肤色"],
+                "targets": [
+                  "色素",
+                  "血管",
+                  "脱毛",
+                  "肤色"
+                ],
                 "highlight": true
               },
               {
@@ -2419,7 +3303,11 @@
                 "nameKo": "Lucas",
                 "wavelength": "532/755/1064nm",
                 "feature": "皮秒脉冲 (450ps)",
-                "targets": ["黄褐斑", "色素", "纹身去除"],
+                "targets": [
+                  "黄褐斑",
+                  "色素",
+                  "纹身去除"
+                ],
                 "highlight": false
               },
               {
@@ -2427,7 +3315,11 @@
                 "nameKo": "激光调色",
                 "wavelength": "1064nm Nd:YAG",
                 "feature": "低能量重复照射",
-                "targets": ["肤色", "毛孔", "肤质"],
+                "targets": [
+                  "肤色",
+                  "毛孔",
+                  "肤质"
+                ],
                 "highlight": false
               },
               {
@@ -2435,7 +3327,10 @@
                 "nameKo": "Ulblanc",
                 "wavelength": "专用波长",
                 "feature": "选择性黑色素靶向",
-                "targets": ["美白", "均匀肤色"],
+                "targets": [
+                  "美白",
+                  "均匀肤色"
+                ],
                 "highlight": false
               }
             ]
@@ -2445,18 +3340,43 @@
             "title": "Clarity II + Lucas 协同效果",
             "subtitle": "两款高端设备的组合，比单一治疗更快速有效",
             "benefits": [
-              { "title": "多波长覆盖", "desc": "从532nm到1064nm<br/>覆盖所有深度的靶点" },
-              { "title": "复合适应症治疗", "desc": "色斑+红血丝、色素+毛孔等<br/>同时解决多种问题" },
-              { "title": "快速见效", "desc": "比单一治疗<br/>快1.5-2倍的效果" }
+              {
+                "title": "多波长覆盖",
+                "desc": "从532nm到1064nm<br/>覆盖所有深度的靶点"
+              },
+              {
+                "title": "复合适应症治疗",
+                "desc": "色斑+红血丝、色素+毛孔等<br/>同时解决多种问题"
+              },
+              {
+                "title": "快速见效",
+                "desc": "比单一治疗<br/>快1.5-2倍的效果"
+              }
             ]
           },
           "process": {
             "title": "激光治疗流程",
             "steps": [
-              { "step": 1, "title": "皮肤分析", "desc": "专家咨询及皮肤类型、问题精密分析" },
-              { "step": 2, "title": "定制方案", "desc": "为每位客户制定最佳激光组合和治疗计划" },
-              { "step": 3, "title": "激光治疗", "desc": "经验丰富的专家进行安全精准的治疗" },
-              { "step": 4, "title": "术后护理", "desc": "治疗后护理、定期检查和维护管理" }
+              {
+                "step": 1,
+                "title": "皮肤分析",
+                "desc": "专家咨询及皮肤类型、问题精密分析"
+              },
+              {
+                "step": 2,
+                "title": "定制方案",
+                "desc": "为每位客户制定最佳激光组合和治疗计划"
+              },
+              {
+                "step": 3,
+                "title": "激光治疗",
+                "desc": "经验丰富的专家进行安全精准的治疗"
+              },
+              {
+                "step": 4,
+                "title": "术后护理",
+                "desc": "治疗后护理、定期检查和维护管理"
+              }
             ]
           },
           "faq": {
@@ -2501,9 +3421,24 @@
             "title": "LIV三阶段色素治疗系统",
             "subtitle": "从轻度到顽固性黄褐斑，分阶段定制治疗实现有效色素改善",
             "stages": [
-              { "stage": "第1阶段", "title": "集中治疗", "equipment": "Lucas皮秒", "description": "皮秒脉冲集中分解深层色素" },
-              { "stage": "第2阶段", "title": "精准靶向", "equipment": "Clarity II 755nm", "description": "亚历山大波长精准治疗浅层色素" },
-              { "stage": "第3阶段", "title": "维持护理", "equipment": "调光 + 美白激光", "description": "低刺激重复治疗维持效果预防复发" }
+              {
+                "stage": "第1阶段",
+                "title": "集中治疗",
+                "equipment": "Lucas皮秒",
+                "description": "皮秒脉冲集中分解深层色素"
+              },
+              {
+                "stage": "第2阶段",
+                "title": "精准靶向",
+                "equipment": "Clarity II 755nm",
+                "description": "亚历山大波长精准治疗浅层色素"
+              },
+              {
+                "stage": "第3阶段",
+                "title": "维持护理",
+                "equipment": "调光 + 美白激光",
+                "description": "低刺激重复治疗维持效果预防复发"
+              }
             ]
           },
           "picoVsNano": {
@@ -2544,9 +3479,27 @@
           },
           "protocol": {
             "title": "症状推荐方案",
-            "mild": { "level": "轻度", "description": "轻微黄褐斑、色斑", "treatment": "激光调光", "sessions": "5-10次", "interval": "2周间隔" },
-            "moderate": { "level": "中度", "description": "中等深度色素", "treatment": "Clarity II 755nm", "sessions": "3-5次", "interval": "3-4周间隔" },
-            "severe": { "level": "重度 / 顽固性", "description": "深层黄褐斑、顽固性", "treatment": "Lucas皮秒 + 调光", "sessions": "5-10次", "interval": "2-4周间隔" }
+            "mild": {
+              "level": "轻度",
+              "description": "轻微黄褐斑、色斑",
+              "treatment": "激光调光",
+              "sessions": "5-10次",
+              "interval": "2周间隔"
+            },
+            "moderate": {
+              "level": "中度",
+              "description": "中等深度色素",
+              "treatment": "Clarity II 755nm",
+              "sessions": "3-5次",
+              "interval": "3-4周间隔"
+            },
+            "severe": {
+              "level": "重度 / 顽固性",
+              "description": "深层黄褐斑、顽固性",
+              "treatment": "Lucas皮秒 + 调光",
+              "sessions": "5-10次",
+              "interval": "2-4周间隔"
+            }
           },
           "idealFor": [
             "黄褐斑越来越深且扩大的人",
@@ -2557,15 +3510,32 @@
             "想要无恢复期持续护理的人"
           ],
           "faq": [
-            { "q": "黄褐斑可以根治吗？", "a": "黄褐斑需要以'管理'而非根治的理念来对待。集中治疗后大幅改善，通过定期维护和防晒将复发降到最低。LIV的三阶段系统包含治疗和维护两个环节。" },
-            { "q": "皮秒激光和调光，哪个更好？", "a": "取决于目的。顽固性黄褐斑或深层色素用皮秒激光集中治疗，轻微色素或维护则调光更合适。很多情况下，皮秒治疗后用调光维护的复合方案最为有效。" },
-            { "q": "激光后色素会加深吗？", "a": "可能出现暂时性色素沉着（PIH）。这会在2-4周内自然改善，做好防晒可以预防。LIV会彻底做好术后护理指导。" },
-            { "q": "怀孕期间可以做色素激光吗？", "a": "不建议在怀孕或哺乳期间做激光治疗。建议在分娩和哺乳结束后进行治疗。怀孕期间请专注于防晒和保湿。" }
+            {
+              "q": "黄褐斑可以根治吗？",
+              "a": "黄褐斑需要以'管理'而非根治的理念来对待。集中治疗后大幅改善，通过定期维护和防晒将复发降到最低。LIV的三阶段系统包含治疗和维护两个环节。"
+            },
+            {
+              "q": "皮秒激光和调光，哪个更好？",
+              "a": "取决于目的。顽固性黄褐斑或深层色素用皮秒激光集中治疗，轻微色素或维护则调光更合适。很多情况下，皮秒治疗后用调光维护的复合方案最为有效。"
+            },
+            {
+              "q": "激光后色素会加深吗？",
+              "a": "可能出现暂时性色素沉着（PIH）。这会在2-4周内自然改善，做好防晒可以预防。LIV会彻底做好术后护理指导。"
+            },
+            {
+              "q": "怀孕期间可以做色素激光吗？",
+              "a": "不建议在怀孕或哺乳期间做激光治疗。建议在分娩和哺乳结束后进行治疗。怀孕期间请专注于防晒和保湿。"
+            }
           ],
           "cta": {
             "title": "黄褐斑/色素 免费咨询",
             "description": "我们将根据您的肤质提供定制色素治疗方案。通过专家咨询开始最佳治疗。"
           }
+        },
+        "ui": {
+          "duration": "施术时间",
+          "downtime": "恢复期",
+          "recommendedSessions": "推荐次数"
         }
       },
       "vascular": {
@@ -2583,10 +3553,26 @@
             "subtitle": "根据发红的原因和深度选择最佳波长和能量进行治疗",
             "recommendedTreatment": "推荐治疗",
             "types": [
-              { "type": "面部潮红", "description": "情绪或温度变化时脸容易发红的症状", "treatment": "Clarity II 1064nm 低功率" },
-              { "type": "毛细血管扩张", "description": "鼻子、脸颊周围可见细小血管的症状", "treatment": "Clarity II 1064nm 高功率" },
-              { "type": "酒糟鼻 (Rosacea)", "description": "伴有慢性发红、丘疹、脓疱的皮肤病", "treatment": "Clarity II + 皮肤护理联合" },
-              { "type": "血管瘤 / 血管畸形", "description": "先天性或后天性血管病变", "treatment": "Clarity II 集中治疗" }
+              {
+                "type": "面部潮红",
+                "description": "情绪或温度变化时脸容易发红的症状",
+                "treatment": "Clarity II 1064nm 低功率"
+              },
+              {
+                "type": "毛细血管扩张",
+                "description": "鼻子、脸颊周围可见细小血管的症状",
+                "treatment": "Clarity II 1064nm 高功率"
+              },
+              {
+                "type": "酒糟鼻 (Rosacea)",
+                "description": "伴有慢性发红、丘疹、脓疱的皮肤病",
+                "treatment": "Clarity II + 皮肤护理联合"
+              },
+              {
+                "type": "血管瘤 / 血管畸形",
+                "description": "先天性或后天性血管病变",
+                "treatment": "Clarity II 集中治疗"
+              }
             ]
           },
           "dualWavelength": {
@@ -2598,11 +3584,19 @@
             "deep1064": "1064nm - 靶向深层血管",
             "alexandrite": {
               "title": "755nm 亚历山大",
-              "points": ["靶向表皮附近的浅层血管", "对毛细血管扩张治疗有效", "血红蛋白吸收率高"]
+              "points": [
+                "靶向表皮附近的浅层血管",
+                "对毛细血管扩张治疗有效",
+                "血红蛋白吸收率高"
+              ]
             },
             "ndyag": {
               "title": "1064nm Nd:YAG",
-              "points": ["可到达真皮层的深层血管", "对慢性红血丝、酒糟鼻治疗有效", "对深色皮肤也安全"]
+              "points": [
+                "可到达真皮层的深层血管",
+                "对慢性红血丝、酒糟鼻治疗有效",
+                "对深色皮肤也安全"
+              ]
             }
           },
           "clarity": {
@@ -2613,10 +3607,22 @@
             "whyDesc": "是LIV整形外科拥有的设备中最适合血管治疗的设备。1064nm Nd:YAG波长选择性吸收血管中的血红蛋白，在不损伤周围组织的情况下只治疗血管。",
             "recommendedSessions": "3-8次 (视症状而定)",
             "benefits": [
-              { "title": "双波长", "desc": "755nm(色素/脱毛) + 1064nm(血管/深层色素) 多功能方案" },
-              { "title": "IntelliTrak技术", "desc": "自动18%重叠，均匀传递能量" },
-              { "title": "所有肤质适用", "desc": "皮肤类型I-VI均可安全治疗" },
-              { "title": "低温气体冷却", "desc": "治疗中保护皮肤并最大程度减少疼痛" }
+              {
+                "title": "双波长",
+                "desc": "755nm(色素/脱毛) + 1064nm(血管/深层色素) 多功能方案"
+              },
+              {
+                "title": "IntelliTrak技术",
+                "desc": "自动18%重叠，均匀传递能量"
+              },
+              {
+                "title": "所有肤质适用",
+                "desc": "皮肤类型I-VI均可安全治疗"
+              },
+              {
+                "title": "低温气体冷却",
+                "desc": "治疗中保护皮肤并最大程度减少疼痛"
+              }
             ],
             "duration": "15-30分钟",
             "anesthesia": "无麻醉（低温气体冷却）",
@@ -2624,9 +3630,27 @@
           },
           "protocol": {
             "title": "症状推荐方案",
-            "mild": { "level": "轻度", "description": "轻微红血丝、初期毛细血管", "sessions": "3-5次", "interval": "3-4周间隔", "treatment": "Clarity II 1064nm" },
-            "moderate": { "level": "中度", "description": "慢性红血丝、扩张的毛细血管", "sessions": "5-8次", "interval": "3-4周间隔", "treatment": "Clarity II 1064nm" },
-            "severe": { "level": "重度", "description": "酒糟鼻、严重血管扩张", "sessions": "8-10次以上", "interval": "2-3周间隔", "treatment": "Clarity II 1064nm" }
+            "mild": {
+              "level": "轻度",
+              "description": "轻微红血丝、初期毛细血管",
+              "sessions": "3-5次",
+              "interval": "3-4周间隔",
+              "treatment": "Clarity II 1064nm"
+            },
+            "moderate": {
+              "level": "中度",
+              "description": "慢性红血丝、扩张的毛细血管",
+              "sessions": "5-8次",
+              "interval": "3-4周间隔",
+              "treatment": "Clarity II 1064nm"
+            },
+            "severe": {
+              "level": "重度",
+              "description": "酒糟鼻、严重血管扩张",
+              "sessions": "8-10次以上",
+              "interval": "2-3周间隔",
+              "treatment": "Clarity II 1064nm"
+            }
           },
           "idealFor": [
             "情绪或温度变化时脸容易发红的人",
@@ -2637,10 +3661,22 @@
             "因面部潮红影响社交的人"
           ],
           "faq": [
-            { "q": "红血丝治疗后马上见效吗？", "a": "治疗后可能暂时看起来更红。这是正常反应，2-3天内会消退。实际效果会在3-4周后逐渐显现，随着重复治疗会逐步改善。" },
-            { "q": "红血丝能完全消除吗？", "a": "取决于发红的原因和严重程度。大多数情况下可期待50-80%的改善，目标是大幅缓解症状而非完全消除。通过维护治疗可以保持效果。" },
-            { "q": "酒糟鼻也能用激光治疗吗？", "a": "酒糟鼻的血管扩张症状可以用激光有效治疗。但酒糟鼻是复杂的皮肤病，激光治疗配合皮肤护理、药物治疗效果更好。" },
-            { "q": "治疗后有什么注意事项？", "a": "治疗后2-3天内避免桑拿、饮酒、剧烈运动。做好防晒，避免使用刺激性化妆品。治疗部位暂时发红或肿胀是正常的。" }
+            {
+              "q": "红血丝治疗后马上见效吗？",
+              "a": "治疗后可能暂时看起来更红。这是正常反应，2-3天内会消退。实际效果会在3-4周后逐渐显现，随着重复治疗会逐步改善。"
+            },
+            {
+              "q": "红血丝能完全消除吗？",
+              "a": "取决于发红的原因和严重程度。大多数情况下可期待50-80%的改善，目标是大幅缓解症状而非完全消除。通过维护治疗可以保持效果。"
+            },
+            {
+              "q": "酒糟鼻也能用激光治疗吗？",
+              "a": "酒糟鼻的血管扩张症状可以用激光有效治疗。但酒糟鼻是复杂的皮肤病，激光治疗配合皮肤护理、药物治疗效果更好。"
+            },
+            {
+              "q": "治疗后有什么注意事项？",
+              "a": "治疗后2-3天内避免桑拿、饮酒、剧烈运动。做好防晒，避免使用刺激性化妆品。治疗部位暂时发红或肿胀是正常的。"
+            }
           ],
           "cta": {
             "title": "红血丝/血管 免费咨询",
@@ -2664,10 +3700,41 @@
             "subtitle": "肤色不均的原因多种多样。我们针对您的具体问题提供定制方案。",
             "customSolution": "定制方案",
             "concerns": [
-              { "title": "整体暗沉", "description": "因日晒、压力、疲劳等导致肤色整体暗淡无光", "solution": "激光嫩肤整体提亮肤色", "equipment": ["激光嫩肤", "Ulblanc"] },
-              { "title": "局部色素沉着", "description": "脸颊、额头、颧骨周围局部出现深色色素沉着", "solution": "激光嫩肤密集治疗 + 皮秒激光联合", "equipment": ["激光嫩肤", "Lucas"] },
-              { "title": "毛孔/肤质问题", "description": "因毛孔粗大、肤质粗糙导致肤色看起来不均匀", "solution": "利用激光嫩肤的胶原蛋白重塑效果", "equipment": ["激光嫩肤"] },
-              { "title": "肌肤透明度下降", "description": "肌肤暗淡无透明感，看起来不健康", "solution": "Ulblanc恢复肌肤透明度和光泽", "equipment": ["Ulblanc", "激光嫩肤"] }
+              {
+                "title": "整体暗沉",
+                "description": "因日晒、压力、疲劳等导致肤色整体暗淡无光",
+                "solution": "激光嫩肤整体提亮肤色",
+                "equipment": [
+                  "激光嫩肤",
+                  "Ulblanc"
+                ]
+              },
+              {
+                "title": "局部色素沉着",
+                "description": "脸颊、额头、颧骨周围局部出现深色色素沉着",
+                "solution": "激光嫩肤密集治疗 + 皮秒激光联合",
+                "equipment": [
+                  "激光嫩肤",
+                  "Lucas"
+                ]
+              },
+              {
+                "title": "毛孔/肤质问题",
+                "description": "因毛孔粗大、肤质粗糙导致肤色看起来不均匀",
+                "solution": "利用激光嫩肤的胶原蛋白重塑效果",
+                "equipment": [
+                  "激光嫩肤"
+                ]
+              },
+              {
+                "title": "肌肤透明度下降",
+                "description": "肌肤暗淡无透明感，看起来不健康",
+                "solution": "Ulblanc恢复肌肤透明度和光泽",
+                "equipment": [
+                  "Ulblanc",
+                  "激光嫩肤"
+                ]
+              }
             ]
           },
           "toningSection": {
@@ -2677,9 +3744,18 @@
             "description2": "与传统高能量激光不同，<strong>以低能量均匀覆盖大面积</strong>，最大程度减少对皮肤的刺激，同时最大化效果。",
             "effectsTitle": "激光嫩肤的3大效果",
             "effects": [
-              { "title": "黑色素分解", "desc": "逐步分解皮肤中的色素" },
-              { "title": "胶原蛋白生成", "desc": "刺激真皮层改善皮肤弹性" },
-              { "title": "毛孔收缩", "desc": "调节皮脂腺功能、收紧毛孔" }
+              {
+                "title": "黑色素分解",
+                "desc": "逐步分解皮肤中的色素"
+              },
+              {
+                "title": "胶原蛋白生成",
+                "desc": "刺激真皮层改善皮肤弹性"
+              },
+              {
+                "title": "毛孔收缩",
+                "desc": "调节皮脂腺功能、收紧毛孔"
+              }
             ]
           },
           "beforeAfterSection": {
@@ -2703,7 +3779,13 @@
               "wavelength": "1064nm Nd:YAG",
               "feature": "低能量重复照射（MLA模式）",
               "advantage": "零恢复期，立即恢复日常生活",
-              "targets": ["暗沉肌肤", "细纹", "毛孔", "肤质", "提亮"]
+              "targets": [
+                "暗沉肌肤",
+                "细纹",
+                "毛孔",
+                "肤质",
+                "提亮"
+              ]
             },
             "ulblanc": {
               "name": "Ulblanc",
@@ -2711,7 +3793,13 @@
               "wavelength": "专用美白波长",
               "feature": "选择性靶向黑色素",
               "advantage": "无刺激改善肤色",
-              "targets": ["美白", "均匀肤色", "透明感", "光泽", "暗沉"]
+              "targets": [
+                "美白",
+                "均匀肤色",
+                "透明感",
+                "光泽",
+                "暗沉"
+              ]
             },
             "synergyTitle": "激光嫩肤 + Ulblanc 协同效果",
             "synergyDesc": "激光嫩肤改善整体肤质，Ulblanc直接靶向黑色素，与单独治疗相比可期待<strong>1.5-2倍更快的效果</strong>。两种设备都无恢复期，可轻松进行联合治疗。"
@@ -2721,29 +3809,74 @@
             "title": "3步肤色改善计划",
             "subtitle": "系统性分阶段治疗，实现自然持久的肤色改善",
             "steps": [
-              { "step": 1, "title": "肌肤调理", "equipment": "激光嫩肤", "description": "使用1064nm波长均匀地向皮肤照射低能量，改善皮肤基础状态。", "sessions": "每周1次，4-5次" },
-              { "step": 2, "title": "黑色素靶向", "equipment": "Ulblanc", "description": "使用选择性作用于黑色素的专用波长，逐步分解色素，促进皮肤美白。", "sessions": "每2周，3-4次" },
-              { "step": 3, "title": "维护管理", "equipment": "激光嫩肤 + Ulblanc", "description": "每月定期护理维持提亮后的肤色，预防新的色素沉着。", "sessions": "每月1次维护" }
+              {
+                "step": 1,
+                "title": "肌肤调理",
+                "equipment": "激光嫩肤",
+                "description": "使用1064nm波长均匀地向皮肤照射低能量，改善皮肤基础状态。",
+                "sessions": "每周1次，4-5次"
+              },
+              {
+                "step": 2,
+                "title": "黑色素靶向",
+                "equipment": "Ulblanc",
+                "description": "使用选择性作用于黑色素的专用波长，逐步分解色素，促进皮肤美白。",
+                "sessions": "每2周，3-4次"
+              },
+              {
+                "step": 3,
+                "title": "维护管理",
+                "equipment": "激光嫩肤 + Ulblanc",
+                "description": "每月定期护理维持提亮后的肤色，预防新的色素沉着。",
+                "sessions": "每月1次维护"
+              }
             ]
           },
           "advantagesSection": {
             "title": "激光嫩肤的优势",
             "subtitle": "为忙碌现代人提供轻松护肤方案",
             "items": [
-              { "title": "零恢复期", "desc": "治疗后立即恢复日常活动" },
-              { "title": "午休时段治疗", "desc": "仅需15-20分钟" },
-              { "title": "自然效果", "desc": "肌肤逐渐变亮" },
-              { "title": "综合改善", "desc": "肤色、毛孔、弹性同步改善" }
+              {
+                "title": "零恢复期",
+                "desc": "治疗后立即恢复日常活动"
+              },
+              {
+                "title": "午休时段治疗",
+                "desc": "仅需15-20分钟"
+              },
+              {
+                "title": "自然效果",
+                "desc": "肌肤逐渐变亮"
+              },
+              {
+                "title": "综合改善",
+                "desc": "肤色、毛孔、弹性同步改善"
+              }
             ]
           },
           "faq": {
             "title": "肤色改善常见问题",
             "items": [
-              { "q": "激光嫩肤需要几次才能看到效果？", "a": "通常4-5次治疗后可以看到明显效果。根据皮肤状况因人而异，治疗约10次可达到最佳效果。之后每月1次维护治疗可长期保持提亮后的肤色。" },
-              { "q": "激光嫩肤后日常生活有限制吗？", "a": "激光嫩肤最大的优点是「零恢复期」。治疗后可能出现轻微泛红，但30分钟至1小时内会消退，可以立即洗脸、化妆、外出。但治疗当天请避免桑拿和剧烈运动，并注意防晒。" },
-              { "q": "Ulblanc和激光嫩肤有什么区别？", "a": "激光嫩肤使用1064nm Nd:YAG激光逐步改善整体皮肤色素沉着并促进胶原蛋白生成。Ulblanc使用专门针对黑色素的专用波长，提供更直接的美白效果。两种治疗联合使用可产生协同效果，获得更快更有效的结果。" },
-              { "q": "敏感肌肤可以做激光嫩肤吗？", "a": "可以。激光嫩肤使用低能量，对敏感肌肤相对安全。但首次治疗时会从较低能量设置开始，确认皮肤反应后逐步调整。咨询时请准确描述您的皮肤状况，我们将制定个性化治疗方案。" },
-              { "q": "黄褐斑治疗与肤色改善治疗有何不同？", "a": "黄褐斑治疗针对边界清晰的色素病变，使用皮秒激光等高能量设备进行集中治疗。而肤色改善针对整体暗沉、细微色素沉着、肤质改善，使用激光嫩肤和Ulblanc。如果有黄褐斑同时想改善整体肤色，联合两种治疗效果最佳。" }
+              {
+                "q": "激光嫩肤需要几次才能看到效果？",
+                "a": "通常4-5次治疗后可以看到明显效果。根据皮肤状况因人而异，治疗约10次可达到最佳效果。之后每月1次维护治疗可长期保持提亮后的肤色。"
+              },
+              {
+                "q": "激光嫩肤后日常生活有限制吗？",
+                "a": "激光嫩肤最大的优点是「零恢复期」。治疗后可能出现轻微泛红，但30分钟至1小时内会消退，可以立即洗脸、化妆、外出。但治疗当天请避免桑拿和剧烈运动，并注意防晒。"
+              },
+              {
+                "q": "Ulblanc和激光嫩肤有什么区别？",
+                "a": "激光嫩肤使用1064nm Nd:YAG激光逐步改善整体皮肤色素沉着并促进胶原蛋白生成。Ulblanc使用专门针对黑色素的专用波长，提供更直接的美白效果。两种治疗联合使用可产生协同效果，获得更快更有效的结果。"
+              },
+              {
+                "q": "敏感肌肤可以做激光嫩肤吗？",
+                "a": "可以。激光嫩肤使用低能量，对敏感肌肤相对安全。但首次治疗时会从较低能量设置开始，确认皮肤反应后逐步调整。咨询时请准确描述您的皮肤状况，我们将制定个性化治疗方案。"
+              },
+              {
+                "q": "黄褐斑治疗与肤色改善治疗有何不同？",
+                "a": "黄褐斑治疗针对边界清晰的色素病变，使用皮秒激光等高能量设备进行集中治疗。而肤色改善针对整体暗沉、细微色素沉着、肤质改善，使用激光嫩肤和Ulblanc。如果有黄褐斑同时想改善整体肤色，联合两种治疗效果最佳。"
+              }
             ]
           },
           "illustrationLabels": {
@@ -2806,33 +3939,93 @@
               "interval": "治疗间隔"
             },
             "items": [
-              { "area": "腋下", "sessions": "6-8次", "interval": "4-6周", "description": "最受欢迎的脱毛部位。对汗液和异味管理也很有效。" },
-              { "area": "手臂/腿部", "sessions": "6-10次", "interval": "6-8周", "description": "大面积部位也能快速治疗。长期保持光滑肌肤。" },
-              { "area": "比基尼线", "sessions": "8-10次", "interval": "4-6周", "description": "针对敏感部位优化设置，安全有效。" },
-              { "area": "面部（人中、下颌线）", "sessions": "8-12次", "interval": "3-4周", "description": "细腻面部毛发去除。连绒毛也能彻底清除。" },
-              { "area": "背部/胸部（男性）", "sessions": "8-12次", "interval": "6-8周", "description": "男性脱毛专业服务。从自然减毛到完全脱毛。" },
-              { "area": "全身脱毛", "sessions": "8-12次", "interval": "按部位调整", "description": "全身护理。套餐项目价格优惠。" }
+              {
+                "area": "腋下",
+                "sessions": "6-8次",
+                "interval": "4-6周",
+                "description": "最受欢迎的脱毛部位。对汗液和异味管理也很有效。"
+              },
+              {
+                "area": "手臂/腿部",
+                "sessions": "6-10次",
+                "interval": "6-8周",
+                "description": "大面积部位也能快速治疗。长期保持光滑肌肤。"
+              },
+              {
+                "area": "比基尼线",
+                "sessions": "8-10次",
+                "interval": "4-6周",
+                "description": "针对敏感部位优化设置，安全有效。"
+              },
+              {
+                "area": "面部（人中、下颌线）",
+                "sessions": "8-12次",
+                "interval": "3-4周",
+                "description": "细腻面部毛发去除。连绒毛也能彻底清除。"
+              },
+              {
+                "area": "背部/胸部（男性）",
+                "sessions": "8-12次",
+                "interval": "6-8周",
+                "description": "男性脱毛专业服务。从自然减毛到完全脱毛。"
+              },
+              {
+                "area": "全身脱毛",
+                "sessions": "8-12次",
+                "interval": "按部位调整",
+                "description": "全身护理。套餐项目价格优惠。"
+              }
             ]
           },
           "advantages": {
             "title": "Clarity II 优势",
             "subtitle": "为什么选择Clarity II脱毛？",
             "items": [
-              { "title": "双波长", "description": "755nm + 1064nm，适合所有肤质，安全有效" },
-              { "title": "IntelliTrak™", "description": "实时皮肤追踪，均匀输出能量，最大程度降低烫伤风险" },
-              { "title": "大光斑", "description": "最大3cm²光斑尺寸，大面积部位也能快速治疗" },
-              { "title": "集成冷却", "description": "低温气体冷却系统，最大程度减少治疗中的疼痛和不适" }
+              {
+                "title": "双波长",
+                "description": "755nm + 1064nm，适合所有肤质，安全有效"
+              },
+              {
+                "title": "IntelliTrak™",
+                "description": "实时皮肤追踪，均匀输出能量，最大程度降低烫伤风险"
+              },
+              {
+                "title": "大光斑",
+                "description": "最大3cm²光斑尺寸，大面积部位也能快速治疗"
+              },
+              {
+                "title": "集成冷却",
+                "description": "低温气体冷却系统，最大程度减少治疗中的疼痛和不适"
+              }
             ]
           },
           "faq": {
             "title": "脱毛常见问题",
             "items": [
-              { "q": "激光脱毛是永久的吗？", "a": "激光脱毛被归类为「永久性减毛（Permanent Hair Reduction）」。由于针对生长期毛囊，完成治疗后可期待80-90%的永久减毛效果。部分休止期毛囊可能转入生长期导致轻微复发，因此建议每年1-2次维护治疗。" },
-              { "q": "激光脱毛疼吗？", "a": "Clarity II内置的低温气体冷却系统在治疗过程中持续冷却皮肤，最大程度减少疼痛。大多数客人形容为「橡皮筋轻弹」程度的轻微刺激。如需要，可提前涂抹麻醉膏。" },
-              { "q": "浅色（金色、白色）毛发也能去除吗？", "a": "激光脱毛针对黑色素，因此对黑色素含量少的白色、金色、浅色毛发效果有限。这种情况可考虑电解脱毛作为替代方案。咨询时会确认毛发颜色并推荐最佳方法。" },
-              { "q": "皮肤较深可以脱毛吗？", "a": "可以，Clarity II的1064nm Nd:YAG波长对深色皮肤（Fitzpatrick Type IV-VI）也安全适用。755nm亚历山大激光适合浅色皮肤，1064nm适合深色皮肤，可为所有肤质定制治疗。" },
-              { "q": "脱毛前后有什么注意事项？", "a": "治疗前：提前2周避免蜡脱、拔毛、脱毛膏，只进行剃毛。治疗当天避免过度日晒。治疗后：24-48小时避免桑拿、剧烈运动，认真涂抹防晒霜。" },
-              { "q": "需要多少次治疗才能看到效果？", "a": "根据部位和个人毛发特性不同，通常6-10次治疗后可达到最佳效果。由于激光仅在生长期（Anagen）有效，需要间隔4-8周进行多次治疗，以针对不同周期的毛囊。" }
+              {
+                "q": "激光脱毛是永久的吗？",
+                "a": "激光脱毛被归类为「永久性减毛（Permanent Hair Reduction）」。由于针对生长期毛囊，完成治疗后可期待80-90%的永久减毛效果。部分休止期毛囊可能转入生长期导致轻微复发，因此建议每年1-2次维护治疗。"
+              },
+              {
+                "q": "激光脱毛疼吗？",
+                "a": "Clarity II内置的低温气体冷却系统在治疗过程中持续冷却皮肤，最大程度减少疼痛。大多数客人形容为「橡皮筋轻弹」程度的轻微刺激。如需要，可提前涂抹麻醉膏。"
+              },
+              {
+                "q": "浅色（金色、白色）毛发也能去除吗？",
+                "a": "激光脱毛针对黑色素，因此对黑色素含量少的白色、金色、浅色毛发效果有限。这种情况可考虑电解脱毛作为替代方案。咨询时会确认毛发颜色并推荐最佳方法。"
+              },
+              {
+                "q": "皮肤较深可以脱毛吗？",
+                "a": "可以，Clarity II的1064nm Nd:YAG波长对深色皮肤（Fitzpatrick Type IV-VI）也安全适用。755nm亚历山大激光适合浅色皮肤，1064nm适合深色皮肤，可为所有肤质定制治疗。"
+              },
+              {
+                "q": "脱毛前后有什么注意事项？",
+                "a": "治疗前：提前2周避免蜡脱、拔毛、脱毛膏，只进行剃毛。治疗当天避免过度日晒。治疗后：24-48小时避免桑拿、剧烈运动，认真涂抹防晒霜。"
+              },
+              {
+                "q": "需要多少次治疗才能看到效果？",
+                "a": "根据部位和个人毛发特性不同，通常6-10次治疗后可达到最佳效果。由于激光仅在生长期（Anagen）有效，需要间隔4-8周进行多次治疗，以针对不同周期的毛囊。"
+              }
             ]
           },
           "cta": {
@@ -2857,15 +4050,40 @@
             "description2": "无重叠无遗漏的精准照射"
           },
           "intellitrakFeatures": [
-            { "title": "实时追踪", "desc": "实时感知手柄移动，准确把握照射位置" },
-            { "title": "均匀覆盖", "desc": "无重叠无遗漏地向整个治疗区域均匀输出能量" },
-            { "title": "烫伤预防", "desc": "防止同一部位重复照射，最大程度降低烫伤和过度治疗风险" }
+            {
+              "title": "实时追踪",
+              "desc": "实时感知手柄移动，准确把握照射位置"
+            },
+            {
+              "title": "均匀覆盖",
+              "desc": "无重叠无遗漏地向整个治疗区域均匀输出能量"
+            },
+            {
+              "title": "烫伤预防",
+              "desc": "防止同一部位重复照射，最大程度降低烫伤和过度治疗风险"
+            }
           ],
           "processSteps": [
-            { "step": 1, "title": "咨询 & 皮肤分析", "desc": "分析皮肤类型和毛发特性，制定定制治疗方案" },
-            { "step": 2, "title": "术前准备", "desc": "剃除治疗部位毛发，必要时涂抹麻醉膏" },
-            { "step": 3, "title": "激光治疗", "desc": "通过IntelliTrak™精确均匀地输出能量" },
-            { "step": 4, "title": "术后护理", "desc": "冷却和舒缓护理，安排下次治疗时间" }
+            {
+              "step": 1,
+              "title": "咨询 & 皮肤分析",
+              "desc": "分析皮肤类型和毛发特性，制定定制治疗方案"
+            },
+            {
+              "step": 2,
+              "title": "术前准备",
+              "desc": "剃除治疗部位毛发，必要时涂抹麻醉膏"
+            },
+            {
+              "step": 3,
+              "title": "激光治疗",
+              "desc": "通过IntelliTrak™精确均匀地输出能量"
+            },
+            {
+              "step": 4,
+              "title": "术后护理",
+              "desc": "冷却和舒缓护理，安排下次治疗时间"
+            }
           ]
         }
       },
@@ -2890,9 +4108,18 @@
             "description1": "传统纳秒(10⁻⁹秒)激光通过热作用(Photothermal)分解墨水。皮秒(10⁻¹²秒)激光以快1000倍的脉冲产生光声作用(Photoacoustic)。",
             "description2": "这种冲击波将墨水颗粒粉碎到微尘级别，使我们身体的免疫系统能够轻松清除。",
             "benefits": [
-              { "title": "更少的治疗次数", "desc": "微粒粉碎实现高效清除" },
-              { "title": "更少的热损伤", "desc": "短脉冲保护周围组织" },
-              { "title": "更少的副作用", "desc": "最大限度降低疤痕、色素变化风险" }
+              {
+                "title": "更少的治疗次数",
+                "desc": "微粒粉碎实现高效清除"
+              },
+              {
+                "title": "更少的热损伤",
+                "desc": "短脉冲保护周围组织"
+              },
+              {
+                "title": "更少的副作用",
+                "desc": "最大限度降低疤痕、色素变化风险"
+              }
             ],
             "illustration": {
               "title": "墨水颗粒粉碎机制",
@@ -2914,16 +4141,44 @@
             "subtitle": "Lucas皮秒激光通过多波长有效分解各种颜色的墨水",
             "illustrationTitle": "墨水颜色最佳波长",
             "colors": {
-              "black": { "name": "黑色", "wavelength": "1064nm", "difficulty": "最容易" },
-              "red": { "name": "红色", "wavelength": "532nm", "difficulty": "比较容易" },
-              "blue": { "name": "蓝色", "wavelength": "755nm", "difficulty": "较难" },
-              "green": { "name": "绿色", "wavelength": "755nm", "difficulty": "最难" }
+              "black": {
+                "name": "黑色",
+                "wavelength": "1064nm",
+                "difficulty": "最容易"
+              },
+              "red": {
+                "name": "红色",
+                "wavelength": "532nm",
+                "difficulty": "比较容易"
+              },
+              "blue": {
+                "name": "蓝色",
+                "wavelength": "755nm",
+                "difficulty": "较难"
+              },
+              "green": {
+                "name": "绿色",
+                "wavelength": "755nm",
+                "difficulty": "最难"
+              }
             },
             "lucasNote": "Lucas：多波长可靶向所有颜色",
             "wavelengths": [
-              { "wavelength": "1064nm", "colors": "黑色、深蓝色、棕色", "note": "最深穿透，大多数纹身" },
-              { "wavelength": "755nm", "colors": "蓝色、绿色", "note": "中等深度，特殊颜色靶向" },
-              { "wavelength": "532nm", "colors": "红色、橙色、黄色", "note": "表皮层，浅色专用" }
+              {
+                "wavelength": "1064nm",
+                "colors": "黑色、深蓝色、棕色",
+                "note": "最深穿透，大多数纹身"
+              },
+              {
+                "wavelength": "755nm",
+                "colors": "蓝色、绿色",
+                "note": "中等深度，特殊颜色靶向"
+              },
+              {
+                "wavelength": "532nm",
+                "colors": "红色、橙色、黄色",
+                "note": "表皮层，浅色专用"
+              }
             ]
           },
           "tattooTypes": {
@@ -2937,32 +4192,94 @@
               "hard": "较难"
             },
             "types": [
-              { "type": "业余纹身", "description": "非专业人士做的纹身。墨水较浅，去除相对容易。", "sessions": "3-5次", "notes": "多为墨汁、笔墨等单色纹身" },
-              { "type": "专业纹身（黑白）", "description": "专业纹身师做的黑白纹身。墨水深且均匀。", "sessions": "6-10次", "notes": "黑色墨水对激光反应最好" },
-              { "type": "专业纹身（彩色）", "description": "使用多种颜色的彩色纹身。不同颜色需要不同波长。", "sessions": "8-15次以上", "notes": "绿色、蓝色需要更多次数" },
-              { "type": "半永久化妆", "description": "眉毛、眼线、唇部等半永久化妆。比一般纹身做得较浅。", "sessions": "3-6次", "notes": "眼部治疗使用特殊防护设备" },
-              { "type": "外伤性纹身", "description": "事故造成的异物沉积。沥青、石墨等嵌入皮肤的情况。", "sessions": "4-8次", "notes": "根据深度和范围而定" },
-              { "type": "遮盖纹身", "description": "在原有纹身上重新做的纹身。墨水层较厚，去除较难。", "sessions": "10-20次以上", "notes": "分阶段去除后可做新纹身" }
+              {
+                "type": "业余纹身",
+                "description": "非专业人士做的纹身。墨水较浅，去除相对容易。",
+                "sessions": "3-5次",
+                "notes": "多为墨汁、笔墨等单色纹身"
+              },
+              {
+                "type": "专业纹身（黑白）",
+                "description": "专业纹身师做的黑白纹身。墨水深且均匀。",
+                "sessions": "6-10次",
+                "notes": "黑色墨水对激光反应最好"
+              },
+              {
+                "type": "专业纹身（彩色）",
+                "description": "使用多种颜色的彩色纹身。不同颜色需要不同波长。",
+                "sessions": "8-15次以上",
+                "notes": "绿色、蓝色需要更多次数"
+              },
+              {
+                "type": "半永久化妆",
+                "description": "眉毛、眼线、唇部等半永久化妆。比一般纹身做得较浅。",
+                "sessions": "3-6次",
+                "notes": "眼部治疗使用特殊防护设备"
+              },
+              {
+                "type": "外伤性纹身",
+                "description": "事故造成的异物沉积。沥青、石墨等嵌入皮肤的情况。",
+                "sessions": "4-8次",
+                "notes": "根据深度和范围而定"
+              },
+              {
+                "type": "遮盖纹身",
+                "description": "在原有纹身上重新做的纹身。墨水层较厚，去除较难。",
+                "sessions": "10-20次以上",
+                "notes": "分阶段去除后可做新纹身"
+              }
             ]
           },
           "process": {
             "badge": "治疗流程",
             "title": "纹身去除流程",
             "steps": [
-              { "step": 1, "title": "咨询 & 评估", "description": "评估纹身大小、颜色、深度、肤质，告知预计治疗次数和费用。", "duration": "约30分钟" },
-              { "step": 2, "title": "皮秒激光治疗", "description": "用Lucas皮秒激光将墨水颗粒微细粉碎。治疗时间因大小而异。", "duration": "15-60分钟" },
-              { "step": 3, "title": "恢复期", "description": "皮肤自然排出粉碎的墨水。可能出现结痂、轻微肿胀。", "duration": "2-4周" },
-              { "step": 4, "title": "下次治疗", "description": "间隔6-8周重复治疗。每次治疗都能看到纹身变淡。", "duration": "间隔6-8周" }
+              {
+                "step": 1,
+                "title": "咨询 & 评估",
+                "description": "评估纹身大小、颜色、深度、肤质，告知预计治疗次数和费用。",
+                "duration": "约30分钟"
+              },
+              {
+                "step": 2,
+                "title": "皮秒激光治疗",
+                "description": "用Lucas皮秒激光将墨水颗粒微细粉碎。治疗时间因大小而异。",
+                "duration": "15-60分钟"
+              },
+              {
+                "step": 3,
+                "title": "恢复期",
+                "description": "皮肤自然排出粉碎的墨水。可能出现结痂、轻微肿胀。",
+                "duration": "2-4周"
+              },
+              {
+                "step": 4,
+                "title": "下次治疗",
+                "description": "间隔6-8周重复治疗。每次治疗都能看到纹身变淡。",
+                "duration": "间隔6-8周"
+              }
             ]
           },
           "lucas": {
             "title": "Lucas",
             "subtitle": "皮秒纹身去除的新标准",
             "specs": {
-              "pulseDuration": { "label": "脉冲持续时间", "value": "450皮秒" },
-              "wavelength": { "label": "波长", "value": "532 / 755 / 1064nm" },
-              "repetitionRate": { "label": "重复率", "value": "最高10Hz" },
-              "energy": { "label": "能量", "value": "最高1.8J" }
+              "pulseDuration": {
+                "label": "脉冲持续时间",
+                "value": "450皮秒"
+              },
+              "wavelength": {
+                "label": "波长",
+                "value": "532 / 755 / 1064nm"
+              },
+              "repetitionRate": {
+                "label": "重复率",
+                "value": "最高10Hz"
+              },
+              "energy": {
+                "label": "能量",
+                "value": "最高1.8J"
+              }
             },
             "strengths": {
               "title": "Lucas的优势",
@@ -2994,12 +4311,30 @@
             }
           },
           "faq": [
-            { "q": "纹身能完全去除吗？", "a": "大多数纹身可以去除90%以上。能否完全去除取决于墨水颜色、深度、纹身年龄、肤质等因素。黑色墨水最容易去除，绿色和蓝色可能需要更多次数。咨询时会给出准确的预估。" },
-            { "q": "纹身去除有多痛？", "a": "疼痛程度从'橡皮筋弹的感觉'到'刺痛感'因人而异。Lucas皮秒激光的脉冲时间比传统纳秒激光短1000倍，热量积累少，疼痛也相应减轻。必要时涂抹麻醉膏来最小化疼痛。" },
-            { "q": "治疗后会留疤吗？", "a": "皮秒激光最小化热损伤，疤痕风险非常低。遵循适当的能量设置和治疗间隔，大多数情况下可以无疤痕恢复。遵循治疗后护理指南（防晒、不剥结痂等），可期待干净的皮肤。" },
-            { "q": "旧纹身和新纹身，哪个更容易去除？", "a": "通常旧纹身更容易去除。随着时间推移，我们身体的免疫系统会自然清除部分墨水颗粒。但新纹身也可以用皮秒激光有效去除，而且墨水清晰残留，激光靶向更容易也是优点。" },
-            { "q": "所有颜色的纹身都能去除吗？", "a": "大多数颜色都可以去除。Lucas皮秒激光提供多波长（532nm、755nm、1064nm）来应对各种颜色。" },
-            { "q": "治疗间隔为什么是6-8周？", "a": "激光粉碎的墨水颗粒由我们身体的巨噬细胞吸收，通过淋巴系统排出。这个自然愈合过程需要4-6周，皮肤完全恢复后才能进行下次治疗。间隔太短会增加皮肤损伤和疤痕风险。" }
+            {
+              "q": "纹身能完全去除吗？",
+              "a": "大多数纹身可以去除90%以上。能否完全去除取决于墨水颜色、深度、纹身年龄、肤质等因素。黑色墨水最容易去除，绿色和蓝色可能需要更多次数。咨询时会给出准确的预估。"
+            },
+            {
+              "q": "纹身去除有多痛？",
+              "a": "疼痛程度从'橡皮筋弹的感觉'到'刺痛感'因人而异。Lucas皮秒激光的脉冲时间比传统纳秒激光短1000倍，热量积累少，疼痛也相应减轻。必要时涂抹麻醉膏来最小化疼痛。"
+            },
+            {
+              "q": "治疗后会留疤吗？",
+              "a": "皮秒激光最小化热损伤，疤痕风险非常低。遵循适当的能量设置和治疗间隔，大多数情况下可以无疤痕恢复。遵循治疗后护理指南（防晒、不剥结痂等），可期待干净的皮肤。"
+            },
+            {
+              "q": "旧纹身和新纹身，哪个更容易去除？",
+              "a": "通常旧纹身更容易去除。随着时间推移，我们身体的免疫系统会自然清除部分墨水颗粒。但新纹身也可以用皮秒激光有效去除，而且墨水清晰残留，激光靶向更容易也是优点。"
+            },
+            {
+              "q": "所有颜色的纹身都能去除吗？",
+              "a": "大多数颜色都可以去除。Lucas皮秒激光提供多波长（532nm、755nm、1064nm）来应对各种颜色。"
+            },
+            {
+              "q": "治疗间隔为什么是6-8周？",
+              "a": "激光粉碎的墨水颗粒由我们身体的巨噬细胞吸收，通过淋巴系统排出。这个自然愈合过程需要4-6周，皮肤完全恢复后才能进行下次治疗。间隔太短会增加皮肤损伤和疤痕风险。"
+            }
           ],
           "cta": {
             "title": "新起点的第一步",
@@ -3033,8 +4368,17 @@
         "question": "超声刀和热玛吉有什么区别？",
         "shortAnswer": "超声刀用超声波针对深层，热玛吉用射频改善弹性。",
         "answer": "超声刀使用HIFU（高强度聚焦超声波）技术将能量传递到皮肤深层的SMAS层。热玛吉则使用RF（射频）能量收缩并促进真皮层的胶原蛋白再生。超声刀有效提升下垂皮肤，热玛吉则有效改善整体皮肤弹性。两种治疗结合使用可产生协同效果。",
-        "relatedTreatments": ["ulthera", "thermage"],
-        "tags": ["超声刀", "热玛吉", "提升", "HIFU", "射频"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "超声刀",
+          "热玛吉",
+          "提升",
+          "HIFU",
+          "射频"
+        ]
       },
       {
         "id": "lifting-pain",
@@ -3042,8 +4386,16 @@
         "question": "提升治疗有多疼？",
         "shortAnswer": "涂抹麻醉膏后进行治疗，大多数人能够承受。",
         "answer": "提升治疗的疼痛程度因治疗类型和个人差异而异。超声刀和热玛吉FLX治疗前都会涂抹约30分钟的麻醉膏。特别是热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛，大多数患者都能舒适地接受治疗。如果您对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知我们。",
-        "relatedTreatments": ["ulthera", "thermage", "shurink"],
-        "tags": ["提升", "疼痛", "麻醉"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage",
+          "shurink"
+        ],
+        "tags": [
+          "提升",
+          "疼痛",
+          "麻醉"
+        ]
       },
       {
         "id": "lifting-frequency",
@@ -3051,8 +4403,16 @@
         "question": "提升治疗多久做一次？",
         "shortAnswer": "超声刀建议1-2年做一次，热玛吉建议6个月-1年做一次。",
         "answer": "超声刀建议1-2年做一次，热玛吉建议6个月-1年做一次。Shurink或InMode等维护性治疗可以每3-6个月进行一次。根据您的皮肤状况和期望效果，治疗周期可能会有所不同，建议通过咨询确定准确的周期。",
-        "relatedTreatments": ["ulthera", "thermage", "shurink"],
-        "tags": ["提升", "治疗周期", "维护"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage",
+          "shurink"
+        ],
+        "tags": [
+          "提升",
+          "治疗周期",
+          "维护"
+        ]
       },
       {
         "id": "lifting-duration",
@@ -3060,8 +4420,15 @@
         "question": "提升效果能维持多久？",
         "shortAnswer": "超声刀约1-2年，热玛吉约6个月-1年。",
         "answer": "超声刀的效果约持续1年，热玛吉约6个月-1年。但效果持续时间可能因个人皮肤状况、年龄和生活习惯而异。定期进行维护治疗可以延长效果持续时间。",
-        "relatedTreatments": ["ulthera", "thermage"],
-        "tags": ["提升", "效果持续", "维持时间"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "提升",
+          "效果持续",
+          "维持时间"
+        ]
       },
       {
         "id": "botox-natural",
@@ -3069,8 +4436,14 @@
         "question": "注射肉毒素后表情会不自然吗？",
         "shortAnswer": "在正确位置注射适量可保持自然表情。",
         "answer": "在正确位置注射适量可以在保持自然表情的同时只改善皱纹。不自然的表情通常是由于用量过多或注射位置不正确造成的。在LIV整形外科，熟练的专家会根据每个人的肌肉特点注射适量，您可以期待自然的效果。",
-        "relatedTreatments": ["botox"],
-        "tags": ["肉毒素", "表情", "自然"]
+        "relatedTreatments": [
+          "botox"
+        ],
+        "tags": [
+          "肉毒素",
+          "表情",
+          "自然"
+        ]
       },
       {
         "id": "botox-duration",
@@ -3078,8 +4451,14 @@
         "question": "肉毒素效果能维持多久？",
         "shortAnswer": "通常持续3-6个月，定期治疗可延长效果。",
         "answer": "肉毒素效果因人而异，通常持续3-6个月。定期治疗可以使肌肉逐渐弱化，效果维持更久，治疗间隔也会延长。首次治疗后2-3周可能需要补打，建议观察恢复情况。",
-        "relatedTreatments": ["botox"],
-        "tags": ["肉毒素", "效果持续", "治疗周期"]
+        "relatedTreatments": [
+          "botox"
+        ],
+        "tags": [
+          "肉毒素",
+          "效果持续",
+          "治疗周期"
+        ]
       },
       {
         "id": "filler-dissolve",
@@ -3087,8 +4466,14 @@
         "question": "玻尿酸可以溶解吗？",
         "shortAnswer": "是的，玻尿酸可以用溶解针安全去除。",
         "answer": "是的，玻尿酸可以用透明质酸酶（溶解针）溶解。如果您对治疗效果不满意或出现副作用，可以安全去除。这是玻尿酸的一大优点。但不可逆的填充物（如Artecoll）无法溶解，选择填充物时请考虑这一点。",
-        "relatedTreatments": ["filler"],
-        "tags": ["玻尿酸", "透明质酸", "溶解针"]
+        "relatedTreatments": [
+          "filler"
+        ],
+        "tags": [
+          "玻尿酸",
+          "透明质酸",
+          "溶解针"
+        ]
       },
       {
         "id": "filler-lumps",
@@ -3096,8 +4481,14 @@
         "question": "玻尿酸会结块或凹凸不平吗？",
         "shortAnswer": "由熟练医生使用正品几乎不会发生这种情况。",
         "answer": "使用适量正品填充物，由具有解剖学知识的熟练医生施术，这类问题几乎不会发生。偶尔出现的凹凸不平大多可以通过按摩解决，必要时可以用透明质酸酶调整。如果治疗后有任何不适，请立即咨询。",
-        "relatedTreatments": ["filler"],
-        "tags": ["玻尿酸", "副作用", "结块"]
+        "relatedTreatments": [
+          "filler"
+        ],
+        "tags": [
+          "玻尿酸",
+          "副作用",
+          "结块"
+        ]
       },
       {
         "id": "skinbooster-frequency",
@@ -3105,8 +4496,13 @@
         "question": "水光针需要做几次才有效？",
         "shortAnswer": "建议基础3-4次疗程，然后每2-3个月维护一次。",
         "answer": "水光针建议每2-4周进行3-4次作为基础疗程。单次治疗后即可感受到水润改善，但最佳效果需要完成整个疗程。之后建议每2-3个月进行维护治疗。",
-        "relatedTreatments": ["skinbooster"],
-        "tags": ["水光针", "治疗次数"]
+        "relatedTreatments": [
+          "skinbooster"
+        ],
+        "tags": [
+          "水光针",
+          "治疗次数"
+        ]
       },
       {
         "id": "laser-sun",
@@ -3114,8 +4510,14 @@
         "question": "激光治疗后需要避免阳光吗？",
         "shortAnswer": "是的，至少2-4周内必须使用SPF 50+防晒霜。",
         "answer": "是的，激光治疗后防晒非常重要。治疗后皮肤变得敏感，紫外线导致色素沉着的风险增加。至少2-4周内应仔细涂抹防晒霜（SPF 50+），并使用帽子或遮阳伞。户外活动较多的季节最好避免激光治疗。",
-        "relatedTreatments": ["clarity"],
-        "tags": ["激光", "紫外线", "色素沉着"]
+        "relatedTreatments": [
+          "clarity"
+        ],
+        "tags": [
+          "激光",
+          "紫外线",
+          "色素沉着"
+        ]
       },
       {
         "id": "laser-downtime",
@@ -3123,8 +4525,14 @@
         "question": "激光治疗后需要多长恢复期？",
         "shortAnswer": "调Q几乎没有恢复期，色素激光约3-5天。",
         "answer": "取决于激光类型。激光调Q几乎没有恢复期，可以立即恢复日常生活。用Clarity II激光治疗表皮色素的情况下，色素会加深或形成薄痂，3-5天后自然脱落。",
-        "relatedTreatments": ["clarity"],
-        "tags": ["激光", "恢复期", "休息时间"]
+        "relatedTreatments": [
+          "clarity"
+        ],
+        "tags": [
+          "激光",
+          "恢复期",
+          "休息时间"
+        ]
       },
       {
         "id": "thread-duration",
@@ -3132,8 +4540,14 @@
         "question": "线雕效果能维持多久？",
         "shortAnswer": "PDO线6-8个月，PCL线12-18个月。",
         "answer": "取决于线的类型。PDO（可溶解线）6-8个月，PLLA或PCL线12-18个月。线溶解时会促进胶原蛋白再生，所以线完全溶解后效果也会持续一段时间。通过定期维护治疗可以延长效果。",
-        "relatedTreatments": ["thread"],
-        "tags": ["线雕", "效果持续", "PDO"]
+        "relatedTreatments": [
+          "thread"
+        ],
+        "tags": [
+          "线雕",
+          "效果持续",
+          "PDO"
+        ]
       },
       {
         "id": "consultation-fee",
@@ -3142,7 +4556,11 @@
         "shortAnswer": "是的，咨询费1万韩元，当天治疗可全额抵扣。",
         "answer": "是的，可以只进行咨询。1对1专业咨询费用为1万韩元，当天进行治疗时可从治疗费用中全额抵扣。整形外科专家会亲自诊断您的皮肤状况并推荐最佳治疗方案。您可以充分考虑后再做决定。",
         "relatedTreatments": [],
-        "tags": ["咨询", "咨询费", "预约"]
+        "tags": [
+          "咨询",
+          "咨询费",
+          "预约"
+        ]
       },
       {
         "id": "payment-installment",
@@ -3151,7 +4569,11 @@
         "shortAnswer": "是的，可以信用卡分期，免息优惠因卡而异。",
         "answer": "是的，可以信用卡分期付款。免息分期优惠可能因信用卡公司和付款金额而异，请在咨询时询问。此外，各种治疗都有促销和套餐折扣，请查看。",
         "relatedTreatments": [],
-        "tags": ["费用", "分期", "付款"]
+        "tags": [
+          "费用",
+          "分期",
+          "付款"
+        ]
       },
       {
         "id": "pregnant-treatment",
@@ -3160,7 +4582,11 @@
         "shortAnswer": "不可以，怀孕/哺乳期不建议进行大多数美容治疗。",
         "answer": "怀孕或哺乳期不建议进行大多数美容治疗。肉毒素、玻尿酸、提升治疗对胎儿或母乳的影响安全性尚未充分验证。建议在怀孕和哺乳结束后再进行治疗。",
         "relatedTreatments": [],
-        "tags": ["怀孕", "哺乳", "禁忌"]
+        "tags": [
+          "怀孕",
+          "哺乳",
+          "禁忌"
+        ]
       },
       {
         "id": "liv-specialty",
@@ -3168,8 +4594,16 @@
         "question": "LIV整形外科最擅长什么治疗？",
         "shortAnswer": "作为超声刀和热玛吉FLX认证医院，专注于非手术提升。",
         "answer": "LIV整形外科是超声刀正品认证和热玛吉FLX合作医院，专注于非手术提升治疗。整形外科专家基于4篇SCI论文的学术经验，为每位患者提供定制治疗。位于新沙站4号出口步行1分钟处。",
-        "relatedTreatments": ["ulthera", "thermage"],
-        "tags": ["LIV整形外科", "专业领域", "超声刀", "热玛吉"]
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "LIV整形外科",
+          "专业领域",
+          "超声刀",
+          "热玛吉"
+        ]
       },
       {
         "id": "first-visit",
@@ -3178,7 +4612,11 @@
         "shortAnswer": "通过电话或KakaoTalk预约后来访，可接受专家1对1咨询。",
         "answer": "请通过电话(02-797-2773)或KakaoTalk预约咨询。来访时，整形外科专家会亲自诊断您的皮肤状况，并根据您的需求和期望效果推荐最佳治疗方案。咨询后您可以充分考虑再决定是否治疗。",
         "relatedTreatments": [],
-        "tags": ["首次来访", "预约", "咨询流程"]
+        "tags": [
+          "首次来访",
+          "预约",
+          "咨询流程"
+        ]
       }
     ]
   },
@@ -3204,7 +4642,11 @@
         "subtitle": "超声刀Prime & 热玛吉",
         "tagline": "非手术提升的巅峰",
         "description": "体验超声刀Prime的SMAS提升与热玛吉FLX的胶原蛋白重塑相结合，对抗重力的强效提升效果。提升下垂的皮肤，恢复清晰紧致的面部轮廓。",
-        "features": ["超声刀Prime认证SMAS提升", "热玛吉FLX胶原蛋白再生", "协同复合治疗"],
+        "features": [
+          "超声刀Prime认证SMAS提升",
+          "热玛吉FLX胶原蛋白再生",
+          "协同复合治疗"
+        ],
         "duration": "约2小时",
         "recommended": "皮肤下垂、弹性下降、轮廓模糊"
       },
@@ -3213,7 +4655,11 @@
         "subtitle": "肉毒素 & 填充剂",
         "tagline": "精致的体积与轮廓",
         "description": "基于解剖学理解，实现自然的体积和皱纹改善。通过追求自然美的精细治疗，从细纹到体积都能填充。",
-        "features": ["正品填充剂自然丰盈", "肉毒素皱纹改善", "解剖学定制治疗"],
+        "features": [
+          "正品填充剂自然丰盈",
+          "肉毒素皱纹改善",
+          "解剖学定制治疗"
+        ],
         "duration": "约1小时",
         "recommended": "皱纹、体积流失、轮廓改善"
       },
@@ -3222,7 +4668,11 @@
         "subtitle": "水光针 & 再生",
         "tagline": "肌肤本来的光彩",
         "description": "通过胶原蛋白再生和深层保湿从根本上改善皮肤质地。将暗沉粗糙的皮肤变成清透明亮的皮肤，恢复由内而外的健康光泽。",
-        "features": ["水光针补水", "胶原蛋白促进", "肤质改善"],
+        "features": [
+          "水光针补水",
+          "胶原蛋白促进",
+          "肤质改善"
+        ],
         "duration": "约1小时",
         "recommended": "暗沉皮肤、干燥、毛孔/肤质"
       },
@@ -3231,7 +4681,11 @@
         "subtitle": "轮廓提升",
         "tagline": "完美的整体护理",
         "description": "一次性护理提升、丰盈和肤质的高端套餐。体验整个面部提升和清晰的电影级变化。",
-        "features": ["复合提升治疗", "体积重塑", "全面皮肤再生"],
+        "features": [
+          "复合提升治疗",
+          "体积重塑",
+          "全面皮肤再生"
+        ],
         "duration": "定制设计",
         "recommended": "综合抗衰老、特殊场合"
       }
@@ -3536,22 +4990,38 @@
       "clarity": {
         "name": "Clarity II",
         "spec": "双波长 + IntelliTrak技术",
-        "tags": ["色素", "血管", "脱毛", "肤色"]
+        "tags": [
+          "色素",
+          "血管",
+          "脱毛",
+          "肤色"
+        ]
       },
       "lucas": {
         "name": "Lucas",
         "spec": "皮秒脉冲 (450ps)",
-        "tags": ["黄褐斑", "色素", "纹身去除"]
+        "tags": [
+          "黄褐斑",
+          "色素",
+          "纹身去除"
+        ]
       },
       "toning": {
         "name": "激光嫩肤",
         "spec": "低功率重复照射",
-        "tags": ["肤色", "毛孔", "肤质"]
+        "tags": [
+          "肤色",
+          "毛孔",
+          "肤质"
+        ]
       },
       "ulblanc": {
         "name": "Ulblanc",
         "spec": "黑色素选择性靶向",
-        "tags": ["皮肤美白", "肤色均匀"]
+        "tags": [
+          "皮肤美白",
+          "肤色均匀"
+        ]
       }
     },
     "synergy": {
@@ -3732,77 +5202,121 @@
         "name": "Ultherapy Prime",
         "nameKo": "超声刀Prime",
         "description": "FDA批准超声提升 – 从深层开始紧致",
-        "features": ["能量直达SMAS层", "自然提升效果", "术后即可恢复日常"],
+        "features": [
+          "能量直达SMAS层",
+          "自然提升效果",
+          "术后即可恢复日常"
+        ],
         "certification": "FDA、KFDA认证"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameKo": "热玛吉FLX",
         "description": "射频提升的精髓 – 从皮肤深处紧致",
-        "features": ["AccuREP技术", "冷却系统", "胶原蛋白再生"],
+        "features": [
+          "AccuREP技术",
+          "冷却系统",
+          "胶原蛋白再生"
+        ],
         "certification": "FDA、KFDA认证"
       },
       "density": {
         "name": "Density",
         "nameKo": "Density",
         "description": "射频能量精准紧致 – 精密胶原蛋白提升",
-        "features": ["射频(RF)提升", "能量均匀分布", "性价比高"],
+        "features": [
+          "射频(RF)提升",
+          "能量均匀分布",
+          "性价比高"
+        ],
         "certification": "KFDA认证"
       },
       "shurink": {
         "name": "Shurink",
         "nameKo": "Shurink",
         "description": "日常提升的代表 – 性价比高的超声弹力治疗",
-        "features": ["无痛或低痛", "快速治疗", "价格实惠"],
+        "features": [
+          "无痛或低痛",
+          "快速治疗",
+          "价格实惠"
+        ],
         "certification": "KFDA认证"
       },
       "inmode": {
         "name": "InMode",
         "nameKo": "InMode",
         "description": "减脂 + 紧致一次完成",
-        "features": ["减脂和提升同步", "局部集中", "恢复期短"],
+        "features": [
+          "减脂和提升同步",
+          "局部集中",
+          "恢复期短"
+        ],
         "certification": "FDA、KFDA认证"
       },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
         "description": "毛孔、肤质、弹性 – 皮肤重塑的新标准",
-        "features": ["RF微针", "注氧导入仪", "毛孔收缩"],
+        "features": [
+          "RF微针",
+          "注氧导入仪",
+          "毛孔收缩"
+        ],
         "certification": "FDA、KFDA认证"
       },
       "clarity": {
         "name": "Clarity II",
         "nameKo": "Clarity II",
         "description": "更快、更精准 – 双波长激光",
-        "features": ["755nm/1064nm双波长", "色素/血管治疗", "高端脱毛"],
+        "features": [
+          "755nm/1064nm双波长",
+          "色素/血管治疗",
+          "高端脱毛"
+        ],
         "certification": "FDA认证"
       },
       "lucas": {
         "name": "Lucas",
         "nameKo": "Lucas",
         "description": "从皮肤深处明亮清透 – 色素治疗的新标准",
-        "features": ["高功率Q开关", "黄褐斑/色斑治疗", "纹身去除"],
+        "features": [
+          "高功率Q开关",
+          "黄褐斑/色斑治疗",
+          "纹身去除"
+        ],
         "certification": "KFDA认证"
       },
       "co2": {
         "name": "CO2 Laser",
         "nameKo": "CO2激光",
         "description": "精准换肤和皮肤再生 – 深层疤痕和细纹改善",
-        "features": ["点阵技术", "疤痕/毛孔治疗", "促进皮肤再生"],
+        "features": [
+          "点阵技术",
+          "疤痕/毛孔治疗",
+          "促进皮肤再生"
+        ],
         "certification": "KFDA认证"
       },
       "ulblanc": {
         "name": "Ulblanc",
         "nameKo": "Ulblanc",
         "description": "低刺激美白激光",
-        "features": ["黑色素靶向", "肤色均匀化", "低刺激治疗"],
+        "features": [
+          "黑色素靶向",
+          "肤色均匀化",
+          "低刺激治疗"
+        ],
         "certification": "KFDA认证"
       },
       "markvu": {
         "name": "Mark VU",
         "nameKo": "Mark VU",
         "description": "配备1800万像素超高清摄像头的先进皮肤诊断仪，能够精准分析肉眼无法看到的12种皮肤问题。",
-        "features": ["1800万像素分辨率", "4种光源分析", "皮肤类型诊断"],
+        "features": [
+          "1800万像素分辨率",
+          "4种光源分析",
+          "皮肤类型诊断"
+        ],
         "certification": "1800万像素超高清"
       }
     },
@@ -4025,5 +5539,83 @@
     "startChat": "开始咨询",
     "messageCountdown": "{count}/1000",
     "unreadAria": "{count} 条新消息"
+  },
+  "consultation": {
+    "floating": {
+      "quickTitle": "快速咨询预约",
+      "subtitle": "专业咨询师将为您提供亲切的指导",
+      "title": "咨询预约",
+      "close": "关闭",
+      "namePlaceholder": "姓名",
+      "passwordPlaceholder": "密码 (可选)",
+      "departmentSelect": "选择诊疗科目",
+      "submit": "预约咨询",
+      "submitting": "发送中...",
+      "consentRequired": "[必填]",
+      "consentText": "我同意收集和使用个人信息。(姓名、联系方式仅用于咨询目的)",
+      "successTitle": "咨询预约已完成",
+      "successDesc": "我们将尽快与您联系",
+      "errorTitle": "咨询预约失败",
+      "errorRetry": "请重试",
+      "errorDefault": "咨询预约失败"
+    }
+  },
+  "treatmentDetail": {
+    "advantages": "{name}的优势",
+    "process": "施术流程",
+    "info": "施术信息",
+    "duration": "施术时间",
+    "anesthesia": "麻醉",
+    "recovery": "恢复期",
+    "effectDuration": "效果持续",
+    "areas": "施术部位",
+    "recommendedFor": "推荐人群",
+    "precautions": "施术前后注意事项",
+    "faq": "常见问题",
+    "relatedMedical": "{name} 相关医疗信息",
+    "moreInfoPrefix": "更多详情请见",
+    "moreInfoLink": "医疗信息Q&A",
+    "moreInfoSuffix": "。",
+    "consultationTitle": "{name} 咨询预约",
+    "consultationDesc": "享受专业医师1对1的定制咨询。",
+    "ctaReserve": "预约咨询",
+    "ctaCall": "电话咨询",
+    "related": "推荐相关施术"
+  },
+  "medicalBlog": {
+    "ui": {
+      "title": "相关博客文章",
+      "subtitle": "查看更多医疗信息",
+      "visitBlogDesktop": "访问Naver博客",
+      "visitBlogMobile": "在Naver博客查看更多"
+    }
+  },
+  "instagram": {
+    "ui": {
+      "intro": "查看LIV整形外科的日常和施术信息。",
+      "showMore": "查看更多",
+      "followCta": "关注Instagram",
+      "followers": "粉丝",
+      "posts": "帖子",
+      "update": "更新",
+      "viewDetails": "查看详情"
+    }
+  },
+  "popup": {
+    "dismissToday": "今天不再显示"
+  },
+  "beforeAfter": {
+    "ui": {
+      "title": "实际施术案例",
+      "description": "查看LIV客户的真实变化",
+      "consent": "* 所有案例均在患者同意下发布。",
+      "viewMore": "查看更多案例"
+    }
+  },
+  "ui": {
+    "stickyCta": {
+      "phone": "电话咨询",
+      "kakao": "KakaoTalk咨询"
+    }
   }
 }

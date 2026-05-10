@@ -140,7 +140,9 @@ const ComfortPlusIllustration = () => (
 );
 
 // Collagen Remodeling Illustration
-const CollagenIllustration = () => (
+const CollagenIllustration = () => {
+  const tUi = useTranslations('treatments.lifting.thermage.ui');
+  return (
   <svg viewBox="0 0 200 160" className="w-full h-40">
     <defs>
       <linearGradient id="collagenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -196,9 +198,10 @@ const CollagenIllustration = () => (
       />
     </g>
     {/* Labels */}
-    <text x="100" y="150" fill="#6d4e42" fontSize="10" fontWeight="bold" textAnchor="middle">콜라겐 수축 & 재생</text>
+    <text x="100" y="150" fill="#6d4e42" fontSize="10" fontWeight="bold" textAnchor="middle">{tUi('collagenShrinkRegen')}</text>
   </svg>
-);
+  );
+};
 
 // Image Placeholder Component
 const ImagePlaceholder = ({ label, aspectRatio = "square" }: { label: string; aspectRatio?: "square" | "wide" | "tall" }) => {

@@ -37,6 +37,9 @@ test-results/
 capture_guide.py
 generate_screenshots.py
 
+# Translation work logs (one-off, see translate_messages*.py for reusable scripts)
+translate_*.log
+
 # Working files
 liv_revision/
 logo.png

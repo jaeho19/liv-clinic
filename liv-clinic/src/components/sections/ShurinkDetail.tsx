@@ -10,7 +10,9 @@ import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 import { getLocalizedTreatment } from '@/lib/treatmentsI18n';
 
 // 슈링크 HIFU 에너지 전달 일러스트
-const HIFURapidFireIllustration = () => (
+const HIFURapidFireIllustration = () => {
+  const tUi = useTranslations('treatments.lifting.shurink.ui');
+  return (
   <div className="relative w-full max-w-md mx-auto aspect-square">
     <svg viewBox="0 0 400 400" className="w-full h-full">
       {/* 배경 그라데이션 */}
@@ -147,10 +149,10 @@ const HIFURapidFireIllustration = () => (
       </g>
 
       {/* 레이어 라벨 */}
-      <text x="340" y="215" fill="#666" fontSize="11" fontWeight="500">표피</text>
-      <text x="340" y="245" fill="#666" fontSize="11" fontWeight="500">진피</text>
+      <text x="340" y="215" fill="#666" fontSize="11" fontWeight="500">{tUi('layerEpidermis')}</text>
+      <text x="340" y="245" fill="#666" fontSize="11" fontWeight="500">{tUi('layerDermis')}</text>
       <text x="340" y="285" fill="#666" fontSize="11" fontWeight="500">SMAS</text>
-      <text x="340" y="325" fill="#666" fontSize="11" fontWeight="500">근막</text>
+      <text x="340" y="325" fill="#666" fontSize="11" fontWeight="500">{tUi('layerFascia')}</text>
 
       {/* 에너지 집중점 표시 */}
       <motion.circle
@@ -181,10 +183,13 @@ const HIFURapidFireIllustration = () => (
       </motion.text>
     </svg>
   </div>
-);
+  );
+};
 
 // 다양한 카트리지 일러스트
-const CartridgeSystemIllustration = () => (
+const CartridgeSystemIllustration = () => {
+  const tUi = useTranslations('treatments.lifting.shurink.ui');
+  return (
   <div className="relative w-full max-w-lg mx-auto aspect-[4/3]">
     <svg viewBox="0 0 500 380" className="w-full h-full">
       <defs>
@@ -227,8 +232,8 @@ const CartridgeSystemIllustration = () => (
           animate={{ opacity: [0.3, 0.7, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity }}
         />
-        <text x="75" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">표피층</text>
-        <text x="75" y="210" textAnchor="middle" fill="#666" fontSize="10">잔주름, 모공</text>
+        <text x="75" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">{tUi('layerEpidermisBox')}</text>
+        <text x="75" y="210" textAnchor="middle" fill="#666" fontSize="10">{tUi('fineWrinklesPores')}</text>
       </motion.g>
 
       {/* 카트리지 2: 3.0mm */}
@@ -252,8 +257,8 @@ const CartridgeSystemIllustration = () => (
           animate={{ opacity: [0.3, 0.7, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: 0.3 }}
         />
-        <text x="185" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">진피층</text>
-        <text x="185" y="210" textAnchor="middle" fill="#666" fontSize="10">콜라겐 재생</text>
+        <text x="185" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">{tUi('layerDermisBox')}</text>
+        <text x="185" y="210" textAnchor="middle" fill="#666" fontSize="10">{tUi('collagenRegen')}</text>
       </motion.g>
 
       {/* 카트리지 3: 4.5mm */}
@@ -278,7 +283,7 @@ const CartridgeSystemIllustration = () => (
           transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
         />
         <text x="295" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">SMAS층</text>
-        <text x="295" y="210" textAnchor="middle" fill="#666" fontSize="10">리프팅 효과</text>
+        <text x="295" y="210" textAnchor="middle" fill="#666" fontSize="10">{tUi('liftingEffect')}</text>
       </motion.g>
 
       {/* 카트리지 4: 6.0mm/9.0mm */}
@@ -302,8 +307,8 @@ const CartridgeSystemIllustration = () => (
           animate={{ opacity: [0.3, 0.7, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: 0.9 }}
         />
-        <text x="415" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">심부층</text>
-        <text x="415" y="210" textAnchor="middle" fill="#666" fontSize="10">바디, 이중턱</text>
+        <text x="415" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">{tUi('layerDeepBox')}</text>
+        <text x="415" y="210" textAnchor="middle" fill="#666" fontSize="10">{tUi('bodyDoubleChin')}</text>
       </motion.g>
 
       {/* 피부 단면 다이어그램 */}
@@ -334,15 +339,18 @@ const CartridgeSystemIllustration = () => (
       </defs>
     </svg>
   </div>
-);
+  );
+};
 
 // 고속 연사 비교 일러스트
-const RapidShotComparisonIllustration = () => (
+const RapidShotComparisonIllustration = () => {
+  const tUi = useTranslations('treatments.lifting.shurink.ui');
+  return (
   <div className="relative w-full max-w-2xl mx-auto">
     <svg viewBox="0 0 600 250" className="w-full h-auto">
       {/* 기존 방식 */}
       <g>
-        <text x="150" y="30" textAnchor="middle" fill="#999" fontSize="14" fontWeight="600">기존 HIFU</text>
+        <text x="150" y="30" textAnchor="middle" fill="#999" fontSize="14" fontWeight="600">{tUi('legacyHifu')}</text>
         <rect x="50" y="50" width="200" height="80" rx="10" fill="#f5f5f5" stroke="#ddd" strokeWidth="1" />
 
         {/* 느린 단일 샷 */}
@@ -360,13 +368,13 @@ const RapidShotComparisonIllustration = () => (
           </motion.g>
         ))}
 
-        <text x="150" y="155" textAnchor="middle" fill="#999" fontSize="11">1초당 1-2샷</text>
-        <text x="150" y="175" textAnchor="middle" fill="#999" fontSize="11">시술시간 60분+</text>
+        <text x="150" y="155" textAnchor="middle" fill="#999" fontSize="11">{tUi('shotsLegacy')}</text>
+        <text x="150" y="175" textAnchor="middle" fill="#999" fontSize="11">{tUi('timeLegacy')}</text>
       </g>
 
       {/* 슈링크 방식 */}
       <g>
-        <text x="450" y="30" textAnchor="middle" fill="#00D4FF" fontSize="14" fontWeight="600">슈링크</text>
+        <text x="450" y="30" textAnchor="middle" fill="#00D4FF" fontSize="14" fontWeight="600">{tUi('shurinkLabel')}</text>
         <rect x="350" y="50" width="200" height="80" rx="10" fill="#E6F9FF" stroke="#00D4FF" strokeWidth="1" />
 
         {/* 고속 연사 */}
@@ -384,8 +392,8 @@ const RapidShotComparisonIllustration = () => (
           </motion.g>
         ))}
 
-        <text x="450" y="155" textAnchor="middle" fill="#00D4FF" fontSize="11" fontWeight="500">1초당 7샷 이상</text>
-        <text x="450" y="175" textAnchor="middle" fill="#00D4FF" fontSize="11" fontWeight="500">시술시간 30분대</text>
+        <text x="450" y="155" textAnchor="middle" fill="#00D4FF" fontSize="11" fontWeight="500">{tUi('shotsShurink')}</text>
+        <text x="450" y="175" textAnchor="middle" fill="#00D4FF" fontSize="11" fontWeight="500">{tUi('timeShurink')}</text>
       </g>
 
       {/* 화살표 */}
@@ -403,11 +411,12 @@ const RapidShotComparisonIllustration = () => (
         transition={{ delay: 1 }}
       >
         <rect x="265" y="190" width="70" height="30" rx="15" fill="#00D4FF" />
-        <text x="300" y="210" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="bold">3배 빠름</text>
+        <text x="300" y="210" textAnchor="middle" fill="#fff" fontSize="12" fontWeight="bold">{tUi('threeXFaster')}</text>
       </motion.g>
     </svg>
   </div>
-);
+  );
+};
 
 // Hero 레이블 타입 정의
 interface HeroLabel {
@@ -875,7 +884,7 @@ export default function ShurinkDetail() {
               <div className="relative w-full max-w-[500px] mx-auto">
                 <Image
                   src="/images/lifting/Gemini_Generated_Image_qy64jzqy64jzqy64.png"
-                  alt="슈링크 HIFU 시술 부위 다이어그램 - 이마, 눈가, 볼, 턱선, 목선"
+                  alt={t('lifting.shurink.ui.diagramAlt')}
                   width={500}
                   height={600}
                   className="w-full h-auto object-contain"

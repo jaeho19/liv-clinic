@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button } from '@/components/ui';
 
 interface BlogPost {
@@ -135,6 +136,7 @@ function BlogCard({ post }: { post: BlogPost }) {
 }
 
 export default function MedicalBlogSection() {
+  const t = useTranslations('medicalBlog.ui');
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -154,8 +156,8 @@ export default function MedicalBlogSection() {
                 <span className="text-white font-bold text-lg">N</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-secondary" style={{ fontFamily: 'Paperlogy' }}>관련 블로그 포스트</h3>
-                <p className="text-sm text-mono-light">더 자세한 의료 정보를 확인하세요</p>
+                <h3 className="text-xl font-semibold text-secondary" style={{ fontFamily: 'Paperlogy' }}>{t('title')}</h3>
+                <p className="text-sm text-mono-light">{t('subtitle')}</p>
               </div>
             </div>
 
@@ -166,7 +168,7 @@ export default function MedicalBlogSection() {
               rel="noopener noreferrer"
               className="hidden md:flex items-center gap-2 text-[#03C75A] hover:underline font-medium"
             >
-              네이버 블로그 방문
+              {t('visitBlogDesktop')}
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>
@@ -202,7 +204,7 @@ export default function MedicalBlogSection() {
               variant="outline"
               className="border-[#03C75A] text-[#03C75A] hover:bg-[#03C75A] hover:text-white"
             >
-              네이버 블로그 더보기
+              {t('visitBlogMobile')}
               <svg className="w-4 h-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
               </svg>

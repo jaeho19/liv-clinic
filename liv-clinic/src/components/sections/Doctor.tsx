@@ -236,7 +236,7 @@ export default function Doctor() {
                   <button
                     onClick={() => setIsVideoPlaying(true)}
                     className="absolute inset-0 w-full h-full group cursor-pointer"
-                    aria-label="영상 재생"
+                    aria-label={t('ui.playVideo')}
                   >
                     {/* Thumbnail Background */}
                     <div

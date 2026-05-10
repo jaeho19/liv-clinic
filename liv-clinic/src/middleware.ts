@@ -9,7 +9,7 @@ export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // /wechat 안내 페이지는 zh 전용. 다른 로케일 접근은 /zh/wechat으로 redirect.
-  const wechatNonZh = pathname.match(/^\/(ko|en|ja)\/wechat(\/.*)?$/);
+  const wechatNonZh = pathname.match(/^\/(ko|en|ja|zh-TW|vi|th|ru)\/wechat(\/.*)?$/);
   if (wechatNonZh) {
     return NextResponse.redirect(new URL('/zh/wechat', request.url));
   }
@@ -51,6 +51,7 @@ export default async function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     '/((?!api|_next|_vercel|.*\\..*).*)',
-    '/(ko|en|ja|zh)/:path*'
+    // LOCALES (src/i18n/routing.ts)와 동기화 — 추가 시 함께 수정
+    '/(ko|en|ja|zh|zh-TW|vi|th|ru)/:path*'
   ]
 };

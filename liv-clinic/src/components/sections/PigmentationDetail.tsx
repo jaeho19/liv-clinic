@@ -166,7 +166,9 @@ const EquipmentCard = ({
   equipment: EquipmentData;
   isFeatured?: boolean;
   color: string;
-}) => (
+}) => {
+  const tUi = useTranslations('treatments.laser.pigmentation.ui');
+  return (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
@@ -220,20 +222,21 @@ const EquipmentCard = ({
 
     <div className="mt-6 pt-4 border-t border-gray-200 grid grid-cols-3 gap-4">
       <div>
-        <div className="text-xs text-gray-500">시술 시간</div>
+        <div className="text-xs text-gray-500">{tUi('duration')}</div>
         <div className="text-sm font-medium text-gray-900">{equipment.duration}</div>
       </div>
       <div>
-        <div className="text-xs text-gray-500">다운타임</div>
+        <div className="text-xs text-gray-500">{tUi('downtime')}</div>
         <div className="text-sm font-medium text-gray-900">{equipment.recovery}</div>
       </div>
       <div>
-        <div className="text-xs text-gray-500">권장 횟수</div>
+        <div className="text-xs text-gray-500">{tUi('recommendedSessions')}</div>
         <div className="text-sm font-medium text-gray-900">{equipment.results.split(',')[0]}</div>
       </div>
     </div>
   </motion.div>
-);
+  );
+};
 
 export default function PigmentationDetail() {
   const t = useTranslations('treatments');

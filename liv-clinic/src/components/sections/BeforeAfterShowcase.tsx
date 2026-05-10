@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button } from '@/components/ui';
 
@@ -101,6 +102,7 @@ function BeforeAfterCard({ caseItem }: { caseItem: BeforeAfterCase }) {
 }
 
 export default function BeforeAfterShowcase() {
+  const t = useTranslations('beforeAfter.ui');
   return (
     <section className="section-gap bg-background">
       <div className="container-custom">
@@ -123,7 +125,7 @@ export default function BeforeAfterShowcase() {
               viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.8, ease: [0.33, 1, 0.68, 1] }}
             >
-              실제 시술 사례
+              {t('title')}
             </motion.h2>
             <motion.p
               className="text-body text-mono-light max-w-xl mx-auto"
@@ -132,7 +134,7 @@ export default function BeforeAfterShowcase() {
               viewport={{ once: true }}
               transition={{ delay: 0.2, duration: 0.6, ease: [0.33, 1, 0.68, 1] }}
             >
-              리브에서 경험한 고객님들의 실제 변화를 확인하세요
+              {t('description')}
             </motion.p>
             <motion.div
               className="w-24 h-1 bg-primary mx-auto mt-6"
@@ -157,13 +159,13 @@ export default function BeforeAfterShowcase() {
         <AnimateOnScroll>
           <div className="text-center">
             <p className="text-small text-mono-light mb-8">
-              * 모든 사례는 환자분의 동의 하에 게시되었습니다.
+              {t('consent')}
             </p>
 
             {/* CTA 버튼 */}
             <Link href="/gallery">
               <Button variant="outline" size="lg">
-                더 많은 사례 보기
+                {t('viewMore')}
                 <svg
                   className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"
                   fill="none"

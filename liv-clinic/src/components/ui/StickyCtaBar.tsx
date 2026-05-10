@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslations } from 'next-intl';
 
 // Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice)
 function useThrottle<T extends (...args: unknown[]) => void>(
@@ -41,6 +42,7 @@ export default function StickyCtaBar({
   consultUrl,
   className = '',
 }: StickyCtaBarProps) {
+  const t = useTranslations('ui.stickyCta');
   const [isVisible, setIsVisible] = useState(false);
 
   // Throttled 스크롤 핸들러 (150ms 간격)
@@ -86,7 +88,7 @@ export default function StickyCtaBar({
                   d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                 />
               </svg>
-              <span>전화상담</span>
+              <span>{t('phone')}</span>
             </a>
 
             {/* Kakao Button */}
@@ -99,7 +101,7 @@ export default function StickyCtaBar({
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.7-.2.74-.72 2.68-.82 3.1-.13.5.18.49.38.36.16-.1 2.52-1.71 3.54-2.4.78.12 1.58.18 2.4.18 5.52 0 10-3.58 10-8s-4.48-8-10-8z" />
               </svg>
-              <span>카카오 상담</span>
+              <span>{t('kakao')}</span>
             </a>
           </div>
         </motion.div>

@@ -1090,9 +1090,9 @@ export default function UltheraDetail() {
                 <div className="w-12 h-px bg-gradient-to-l from-transparent to-[#D4AF37]" />
               </div>
               <p className="font-serif text-h3 text-primary mb-2">Comparison</p>
-              <h2 className="text-h1 text-secondary mb-4">울쎄라피 프라임 vs 타 장비</h2>
+              <h2 className="text-h1 text-secondary mb-4">{t('lifting.ulthera.ui.comparisonTitle')}</h2>
               <p className="text-body text-mono-light">
-                같은 HIFU라도 기술력과 임상 근거에는 큰 차이가 있습니다
+                {t('lifting.ulthera.ui.comparisonSubtitle')}
               </p>
             </div>
           </AnimateOnScroll>
