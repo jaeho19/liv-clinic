@@ -1,0 +1,5473 @@
+{
+  "common": {
+    "home": "首頁",
+    "skipToContent": "跳轉到主要內容",
+    "siteName": "LIV 整形外科",
+    "siteNameEn": "LIV Plastic Surgery",
+    "slogan": "慢老化，自然之美",
+    "consultation": "諮詢預約",
+    "learnMore": "瞭解更多",
+    "viewAll": "查看全部",
+    "phone": "+82-2-797-2773",
+    "scrollDown": "SCROLL",
+    "total": "共",
+    "items": "個",
+    "questions": "個問題",
+    "noResults": "未找到搜索結果",
+    "tryAnother": "請嘗試其他搜索詞",
+    "relatedTreatments": "相關項目",
+    "close": "關閉",
+    "closeMenu": "關閉菜單",
+    "language": "語言",
+    "backToTop": "返回頂部",
+    "expandAll": "全部展開",
+    "collapseAll": "全部摺疊",
+    "all": "全部",
+    "freeConsultation": "免費諮詢預約",
+    "faq": "常見問題",
+    "duration": "所需時間",
+    "recommendedFor": "適用人群",
+    "cases": "個案例",
+    "notice": "提示",
+    "readMore": "閱讀更多",
+    "minuteRead": "分鐘閱讀",
+    "views": "瀏覽",
+    "posts": "文章",
+    "cumulativeViews": "累計瀏覽量",
+    "update": "更新",
+    "viewMoreBlog": "查看更多博客內容",
+    "noItemsInCategory": "該類別暫無案例",
+    "selectOtherCategory": "請選擇其他類別",
+    "medicalInfoNews": "醫療資訊與動態",
+    "checkLatestNews": "查看LIV 整形外科的最新動態和實用醫療資訊。",
+    "timeline": "治療後時間線",
+    "process": "治療過程",
+    "targetAreas": "治療部位",
+    "recommended": "適合人群",
+    "precautions": "治療前後注意事項",
+    "onlineConsultation": "在線諮詢"
+  },
+  "categories": {
+    "lifting": "拉提",
+    "antiaging": "抗衰老",
+    "skin": "皮膚/激光",
+    "skincare": "護膚",
+    "news": "診所動態",
+    "qna": "問答"
+  },
+  "gallery": {
+    "title": "案例展示",
+    "description": "瀏覽LIV 整形外科的案例。體驗自然美麗的蛻變。",
+    "noticeText": "所有案例均經患者同意後發佈，效果因人而異。",
+    "experienceChange": "想要體驗這樣的蛻變嗎？",
+    "findTreatment": "通過專業諮詢找到適合您的項目。"
+  },
+  "nav": {
+    "about": "關於LIV",
+    "aboutBrand": "LIV品牌",
+    "aboutStaff": "醫療團隊",
+    "aboutEquipment": "設備介紹",
+    "aboutLocation": "位置指南",
+    "signature": "特色項目",
+    "lifting": "拉提",
+    "ulthera": "音波拉提",
+    "thermage": "鳳凰電波 FLX",
+    "density": "Density",
+    "inmode": "InMode",
+    "shurink": "Shurink",
+    "thread": "埋線",
+    "aptos": "APTOS 生物拉提",
+    "antiaging": "抗衰老",
+    "botox": "肉毒桿菌素",
+    "filler": "玻尿酸",
+    "skinbooster": "水光針",
+    "skincare": "皮膚管理",
+    "laser": "激光",
+    "beforeAfter": "術前術後",
+    "medical": "醫療資訊",
+    "events": "活動",
+    "contact": "聯繫我們"
+  },
+  "hero": {
+    "slide1": {
+      "title": "Natural Results",
+      "subtitle": "自然無痕的改變，整形外科專家親自施術"
+    },
+    "slide2": {
+      "title": "Certified Premium",
+      "subtitle": "音波拉提·鳳凰電波官方認證，只使用正品的可信賴醫院"
+    },
+    "slide3": {
+      "title": "Beyond Gravity",
+      "subtitle": "無需手術恢復彈性，體驗十年前的肌膚"
+    },
+    "sideText": {
+      "left": "Premium Anti-Aging Clinic",
+      "right": "Since 2024 Seoul Sinsa"
+    }
+  },
+  "sections": {
+    "certification": {
+      "title": "官方認證醫院",
+      "officialPartner": "官方認證",
+      "visitSite": "訪問官方網站",
+      "ulthera": "音波拉提 Prime 正品認證",
+      "ultheraEn": "音波拉提 Prime 正品認證",
+      "ultheraDesc": "FDA認證 HIFU拉提",
+      "thermage": "鳳凰電波 FLX 合作伙伴",
+      "thermageEn": "鳳凰電波 FLX 合作伙伴",
+      "thermageDesc": "Solta Medical 官方合作伙伴",
+      "density": "Density官方合作伙伴",
+      "densityEn": "Density Official Partner",
+      "densityDesc": "HIFU+RF 雙重拉提",
+      "potenza": "Potenza官方合作伙伴",
+      "potenzaEn": "Potenza Official Partner",
+      "potenzaDesc": "RF 微針治療",
+      "sculptra": "童顏針正品認證",
+      "sculptraEn": "Sculptra Certified",
+      "sculptraDesc": "膠原蛋白刺激填充劑",
+      "juvelook": "Juvelook官方合作伙伴",
+      "juvelookEn": "Juvelook Official Partner",
+      "juvelookDesc": "PDRN 皮膚增強劑"
+    },
+    "equipment": {
+      "title": "Genuine Equipment",
+      "subtitle": "高端正品設備",
+      "description": "LIV 整形外科只使用正品認證的高端設備。我們以最新技術提供安全有效的治療。",
+      "autoScrolling": "AUTO SCROLLING",
+      "premiumDevices": "10 Premium Devices",
+      "learnMore": "瞭解更多",
+      "devices": {
+        "ultherapy": {
+          "subTitle": "音波拉提",
+          "desc": "FDA批准HIFU拉提的全球標準"
+        },
+        "thermage": {
+          "subTitle": "鳳凰電波 FLX",
+          "desc": "第四代射頻拉提技術的巔峰"
+        },
+        "density": {
+          "subTitle": "Density",
+          "desc": "射頻能量重塑膠原蛋白"
+        },
+        "shurink": {
+          "subTitle": "Shurink",
+          "desc": "精準HIFU打造V形臉"
+        },
+        "inmode": {
+          "subTitle": "InMode",
+          "desc": "射頻能量同時減脂和拉提"
+        },
+        "potenza": {
+          "subTitle": "Potenza",
+          "desc": "射頻微針改善彈性和毛孔"
+        },
+        "clarity": {
+          "subTitle": "Clarity II",
+          "desc": "雙波長激光治療色素和血管"
+        },
+        "lucas": {
+          "subTitle": "Lucas",
+          "desc": "高功率Q開關治療頑固色素"
+        },
+        "co2": {
+          "subTitle": "CO2激光",
+          "desc": "精準煥膚和肌膚再生"
+        },
+        "ulblanc": {
+          "subTitle": "Ulblanc",
+          "desc": "溫和美白激光"
+        }
+      }
+    },
+    "signature": {
+      "title": "Signature Programs",
+      "subtitle": "LIV特色項目",
+      "programs": {
+        "lifting": {
+          "title": "拉提",
+          "titleEn": "LIFTING",
+          "subtitle": "音波拉提 & 鳳凰電波",
+          "description": "非手術拉提的頂點，使用高端正品設備體驗自然拉提效果。",
+          "features": [
+            "音波拉提正品認證",
+            "鳳凰電波 FLX合作伙伴",
+            "定製複合治療"
+          ]
+        },
+        "antiaging": {
+          "title": "抗衰老",
+          "titleEn": "ANTI-AGING",
+          "subtitle": "玻尿酸 & 肉毒桿菌素",
+          "description": "以細膩的手法完成體積和輪廓，追求自然之美。",
+          "features": [
+            "使用正品玻尿酸",
+            "解剖學方法",
+            "自然效果"
+          ]
+        },
+        "rejuvenation": {
+          "title": "肌膚再生",
+          "titleEn": "REJUVENATION",
+          "subtitle": "醫療護膚",
+          "description": "恢復肌膚天然健康的定製護理，以科學方法幫助改善肌膚。",
+          "features": [
+            "水光針",
+            "激光嫩膚",
+            "定製護膚"
+          ]
+        }
+      }
+    },
+    "values": {
+      "title": "Core Values",
+      "subtitle": "LIV四大核心價值",
+      "natural": {
+        "title": "Natural Beauty",
+        "subtitle": "自然之美",
+        "description": "追求不過度的、本真的美麗"
+      },
+      "expertise": {
+        "title": "Clinical Expertise",
+        "subtitle": "專業技術",
+        "description": "憑藉豐富的經驗和專業知識提供最佳效果"
+      },
+      "safety": {
+        "title": "Safety & Ethical Care",
+        "subtitle": "安全與倫理",
+        "description": "遵守正品正量原則和嚴格的安全管理"
+      },
+      "tailored": {
+        "title": "Tailored Aging",
+        "subtitle": "定製抗衰",
+        "description": "通過個性化定製方案設計最佳效果"
+      }
+    },
+    "doctor": {
+      "title": "Medical Staff",
+      "subtitle": "LIV醫療團隊",
+      "name": "金秀英",
+      "nameEn": "Dr. Sooyoung Kim",
+      "directorTitle": "LIV 整形外科代表院長",
+      "directorTitleEn": "Director",
+      "specialty": "整形外科專科醫生",
+      "philosophy": "追求自然之美，這才是真正的美麗。我們幫助您找到不過度的、本真的美麗。",
+      "credentials": "主要經歷",
+      "credentialsList": [
+        "高麗大學醫學院畢業",
+        "高麗大學研究生院整形外科學碩士",
+        "大韓整形外科學會正式會員",
+        "大韓美容整形外科學會正式會員",
+        "美國 MD Anderson Cancer Center 進修"
+      ],
+      "certifications": {
+        "official": "官方認證",
+        "ultheraThermage": "Ultherapy Prime & Thermage",
+        "globalExpert": "全球認證專家",
+        "aptosCertified": "APTOS Certified Expert"
+      },
+      "internationalActivities": "國際活動",
+      "activities": [
+        {
+          "caption": "APTOS總部培訓結業",
+          "location": "格魯吉亞, 2025"
+        },
+        {
+          "caption": "臨床經驗發表",
+          "location": "國際學術會議"
+        },
+        {
+          "caption": "臨床實踐",
+          "location": "臨床治療現場"
+        }
+      ],
+      "viewStaff": "查看醫療團隊詳情",
+      "youtube": {
+        "title": "LIV TV",
+        "subtitle": "LIV院長的治療故事",
+        "subscribe": "訂閱LIV YouTube頻道",
+        "description": "觀看治療資訊、院長訪談、前後對比影片"
+      }
+    },
+    "doctors": {
+      "kim": {
+        "name": "金秀英",
+        "nameEn": "Dr. Sooyoung Kim",
+        "title": "代表院長",
+        "specialty": "整形外科專科醫生",
+        "philosophy": "追求自然之美，這才是真正的美麗。",
+        "education": [
+          "高麗大學醫學院畢業",
+          "高麗大學醫療院住院醫師結業",
+          "高麗大學醫療院整形外科住院醫師結業",
+          "高麗大學研究生院整形外科學碩士",
+          "高麗大學醫學院客座教授",
+          "美國德克薩斯州休斯頓 MD Anderson Cancer Center 進修"
+        ],
+        "experience": [
+          "現) LIV 整形外科代表院長",
+          "前) 梨村整形外科代表院長",
+          "前) FI整形外科院長",
+          "前) Pladen整形外科院長",
+          "前) MadeMe整形外科院長"
+        ],
+        "certifications": [
+          "大韓整形外科醫師會正式會員",
+          "大韓整形外科學會正式會員",
+          "大韓美容整形外科學會正式會員",
+          "大韓頭顱顏面整形外科學會正式會員",
+          "大韓醫學激光學會正式會員"
+        ]
+      },
+      "cheon": {
+        "name": "千信惠",
+        "nameEn": "Dr. Shinhye Cheon",
+        "title": "院長",
+        "specialty": "家庭醫學科專科醫生",
+        "philosophy": "通過細緻的治療創造自然的變化。",
+        "education": [
+          "啟明大學醫學院畢業",
+          "翰林大學江南聖心醫院專科醫師結業",
+          "翰林大學江南聖心醫院客座教授"
+        ],
+        "experience": [
+          "現) LIV 整形外科院長",
+          "前) 梨村整形外科院長",
+          "前) 延世Mien醫院院長",
+          "前) Abiju醫院院長",
+          "前) Roje皮膚科醫院院長"
+        ],
+        "certifications": [
+          "大韓家庭醫學會正式會員",
+          "大韓美容整形激光醫學會正式會員",
+          "大韓肥胖美容治療學會正式會員"
+        ]
+      },
+      "labels": {
+        "education": "學歷",
+        "experience": "經歷",
+        "certifications": "資格認證",
+        "specialties": "主要項目",
+        "publications": "學術論文",
+        "presentations": "學會發表",
+        "globalActivities": "國際活動",
+        "media": "媒體報道",
+        "comingSoon": "即將更新"
+      }
+    },
+    "location": {
+      "title": "Location",
+      "subtitle": "交通指南",
+      "address": "首爾市瑞草區納魯特路80號 自恩大廈4層",
+      "subway": "新沙站4號出口步行1分鐘",
+      "subwayInfo": "3號線·新盆唐線 新沙站4號出口",
+      "walkMinutes": "步行1分鐘",
+      "addressLabel": "地址",
+      "buildingDetail": "(蠶院洞, Jaeun大廈4樓)",
+      "directions": "從新沙站4號出口左轉經過Paik's Coffee直走",
+      "holidayClosed": "每週日及法定節假日休息",
+      "contactLabel": "聯繫方式",
+      "consultTime": "諮詢時間：工作日 10:00 - 19:00",
+      "parkingLabel": "停車指南",
+      "freeParking": "免費停車",
+      "parkingDetail": "電動汽車和大型車輛僅在1樓停車場有空位時可停車。如無停車位，請使用附近的收費停車場。",
+      "naverMap": "Naver地圖",
+      "kakaoMap": "Kakao地圖",
+      "markerTitle": "LIV 整形外科",
+      "infoWindowSubway": "新沙站4號出口步行1分鐘",
+      "mapLoading": "地圖加載中...",
+      "mapError": "無法加載地圖"
+    }
+  },
+  "footer": {
+    "businessHours": "營業時間",
+    "weekday": "工作日",
+    "saturday": "週六",
+    "sunday": "週日休息",
+    "address": "地址",
+    "copyright": "© 2025 LIV 整形外科. All rights reserved.",
+    "quickLinks": "快速鏈接",
+    "followUs": "關注我們",
+    "slogan": "尋找自然、充滿活力的美麗之旅",
+    "privacy": "隱私政策",
+    "terms": "使用條款"
+  },
+  "meta": {
+    "title": "LIV 整形外科 | 高端非手術抗衰老 首爾",
+    "description": "音波拉提、鳳凰電波官方認證醫院。超越地心引力的美麗，Anti-Gravity拉提解決方案。"
+  },
+  "contact": {
+    "title": "諮詢預約",
+    "subtitle": "與LIV 整形外科專業醫療團隊\n進行1:1定製諮詢。",
+    "phone": "電話諮詢",
+    "kakao": "KakaoTalk諮詢",
+    "kakaoDesc": "實時聊天諮詢",
+    "visit": "到店諮詢",
+    "weekdayHours": "工作日 10:00 - 19:00",
+    "always": "全年無休",
+    "onlineReservation": "在線諮詢預約",
+    "directions": "地址",
+    "floor": "Jaeun大廈4樓",
+    "walkTime": "新沙站4號出口步行1分鐘",
+    "naverMap": "Naver地圖",
+    "kakaoMap": "Kakao地圖",
+    "parking": "停車指南",
+    "parkingInfo": "免費停車",
+    "freeParking": "電動車和大型車輛僅在1樓停車場有空位時可停車。如無空位，請使用醫院附近的收費停車場。",
+    "reservationNotice": "諮詢預約須知",
+    "notice1": "諮詢申請後1個工作日內聯繫您。",
+    "notice2": "緊急諮詢請致電+82-2-797-2773。",
+    "notice3": "預約變更/取消需在到訪前一天完成。",
+    "mapLoading": "地圖加載中...",
+    "location": "交通指南",
+    "form": {
+      "name": "姓名",
+      "namePlaceholder": "王小明",
+      "nameError": "請輸入姓名",
+      "phone": "聯繫電話",
+      "phonePlaceholder": "+86-138-1234-5678",
+      "phoneError": "請輸入正確的電話號碼",
+      "email": "電子郵箱",
+      "emailPlaceholder": "email@example.com",
+      "emailError": "請輸入正確的郵箱地址",
+      "treatment": "感興趣的項目",
+      "treatmentPlaceholder": "請選擇項目",
+      "treatmentError": "請選擇感興趣的項目",
+      "preferredDate": "期望日期",
+      "preferredTime": "期望時間",
+      "timePlaceholder": "選擇時間",
+      "message": "諮詢內容",
+      "messagePlaceholder": "請填寫您的問題或想諮詢的內容。",
+      "privacy": "同意收集和使用個人資訊。為了諮詢和預約，將收集姓名、聯繫方式和電子郵件，諮詢完成後保存3個月。",
+      "privacyError": "請同意個人資訊收集條款",
+      "submit": "提交諮詢申請",
+      "submitting": "提交中...",
+      "successTitle": "諮詢申請已完成",
+      "successMessage": "我們將盡快與您聯繫。\n謝謝。",
+      "retry": "重新填寫",
+      "other": "其他 / 諮詢後決定",
+      "privacyShort": "同意隱私政策",
+      "submitError": "諮詢申請失敗。",
+      "submitErrorRetry": "諮詢申請失敗，請稍後再試。",
+      "consultTitle": "諮詢預約",
+      "consultSubtitle": "專業顧問將為您提供細心指導",
+      "password": "密碼（選填）",
+      "treatmentSelect": "選擇項目",
+      "submitButton": "提交諮詢",
+      "successSubtitle": "我們將盡快與您聯繫",
+      "errorSubtitle": "請重試",
+      "required": "[必填]",
+      "privacyConsent": "同意收集和使用個人資訊。（姓名和聯繫方式僅用於諮詢目的）",
+      "treatmentOptions": {
+        "laser": "激光治療",
+        "filler": "玻尿酸注射",
+        "botox": "肉毒桿菌素",
+        "skincare": "皮膚護理",
+        "lifting": "拉提",
+        "antiaging": "抗衰老",
+        "other": "其他"
+      }
+    }
+  },
+  "faq": {
+    "title": "常見問題",
+    "subtitle": "彙總了客戶經常諮詢的問題。",
+    "moreQuestions": "還有其他問題嗎？",
+    "callUs": "電話諮詢",
+    "onlineConsult": "在線諮詢",
+    "items": {
+      "q1": "如何預約諮詢？",
+      "a1": "您可以通過電話（+82-2-797-2773）、KakaoTalk或網站在線預約進行諮詢預約。告訴我們您希望的日期和時間，我們會確認後與您聯繫。",
+      "q2": "治療需要多長時間？",
+      "a2": "根據治療項目不同而異，音波拉提約60-90分鐘，鳳凰電波約30-60分鐘，肉毒桿菌素/玻尿酸約15-30分鐘。諮詢時會提供詳細說明。",
+      "q3": "治療後可以立即恢復日常生活嗎？",
+      "a3": "大多數非手術治療當天即可恢復日常生活。根據治療部位可能會有輕微腫脹或淤青，但通常在1-2周內自然消退。",
+      "q4": "治療價格是多少？",
+      "a4": "價格根據治療部位、範圍和使用產品而異。準確價格可通過諮詢獲得個性化報價。",
+      "q5": "可以停車嗎？",
+      "a5": "是的，可以使用大樓內的地下停車場。治療客戶可享受2小時免費停車。",
+      "q6": "治療前需要做什麼準備？",
+      "a6": "不需要特別準備。但治療當天請化淡妝或卸妝。特定治療可能會提前告知注意事項。",
+      "q7": "外國人可以諮詢嗎？",
+      "a7": "是的，可以提供英語、日語、中文諮詢。預約時請告知是否需要翻譯服務。",
+      "q8": "只使用正品設備嗎？",
+      "a8": "LIV 整形外科是音波拉提、鳳凰電波官方認證醫院，只使用100%正品設備和產品。所有產品都可以查看正品認證書。"
+    }
+  },
+  "treatments": {
+    "common": {
+      "process": "治療流程",
+      "timeline": "效果時間線",
+      "targetAreas": "治療部位",
+      "recommended": "適合人群",
+      "precautions": "治療前後注意事項",
+      "comparison": "設備對比",
+      "transducers": "探頭",
+      "collapse": "收起",
+      "expand": "展開",
+      "bookConsultation": "預約諮詢",
+      "callNow": "電話諮詢",
+      "whyChoose": "為什麼選擇？",
+      "howItWorks": "治療原理",
+      "results": "治療效果",
+      "faq": "常見問題",
+      "relatedTreatments": "相關項目",
+      "duration": "治療時長",
+      "anesthesia": "麻醉方式",
+      "recovery": "恢復期",
+      "maintenance": "維持時間",
+      "before": "治療前",
+      "after": "治療後",
+      "immediately": "治療後即刻",
+      "weeks": "周",
+      "months": "個月",
+      "years": "年",
+      "fdaApproved": "FDA批准",
+      "genuine": "正品認證",
+      "certified": "官方認證醫院",
+      "laserCenter": "激光中心",
+      "freeConsultation": "免費諮詢預約",
+      "onlineConsultation": "在線諮詢",
+      "phoneConsultation": "電話諮詢",
+      "treatmentInfo": "治療資訊",
+      "downtime": "恢復期",
+      "recommendedSessions": "建議次數",
+      "sessionInterval": "治療間隔",
+      "recommendedTreatment": "推薦治療",
+      "otherTreatments": "查看其他項目",
+      "otherLaserTreatments": "查看其他激光項目",
+      "mild": "輕度",
+      "moderate": "中度",
+      "severe": "重度",
+      "benefits": "優勢",
+      "consultationCta": "預約諮詢",
+      "effectDuration": "效果持續"
+    },
+    "lifting": {
+      "ulthera": {
+        "name": "音波拉提",
+        "fullName": "Ultherapy Prime",
+        "tagline": "FDA唯一批准的非手術拉提",
+        "description": "全球唯一獲得FDA批准的非手術拉提。超聲波能量深入SMAS層，提供強效拉提效果。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "upperDermis": "真皮上層",
+            "lowerDermis": "真皮下層",
+            "smas": "SMAS層"
+          },
+          "timeline": {
+            "items": [
+              {
+                "time": "治療後即刻",
+                "effect": "膠原收縮",
+                "desc": "即時緊緻"
+              },
+              {
+                "time": "1個月",
+                "effect": "新生膠原",
+                "desc": "III型膠原開始生成"
+              },
+              {
+                "time": "3個月",
+                "effect": "明顯變化",
+                "desc": "下頜線清晰"
+              },
+              {
+                "time": "6個月",
+                "effect": "最佳效果",
+                "desc": "I型膠原成熟"
+              },
+              {
+                "time": "12-24個月",
+                "effect": "效果維持",
+                "desc": "漸進維持"
+              }
+            ],
+            "note": "音波拉提治療後，膠原蛋白再生，效果逐漸顯現"
+          },
+          "comparison": {
+            "title": "音波拉提 vs 其他設備",
+            "subtitle": "即使同為HIFU，技術力和臨床依據也存在很大差異",
+            "headers": {
+              "feature": "對比項目",
+              "ulthera": "音波拉提",
+              "shurink": "Shurink/Doublo",
+              "thermage": "鳳凰電波"
+            },
+            "rows": [
+              {
+                "feature": "能量類型",
+                "ulthera": "MFU-V（超聲波）",
+                "shurink": "HIFU（超聲波）",
+                "thermage": "RF（射頻）"
+              },
+              {
+                "feature": "實時可視化",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "FDA拉提批准",
+                "ulthera": "唯一批准",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "最大深度",
+                "ulthera": "4.5mm（SMAS）",
+                "shurink": "4.5mm",
+                "thermage": "真皮層"
+              },
+              {
+                "feature": "臨床研究",
+                "ulthera": "110+論文",
+                "shurink": "少量",
+                "thermage": "大量"
+              },
+              {
+                "feature": "效果持續",
+                "ulthera": "1-2年",
+                "shurink": "6-12個月",
+                "thermage": "6-12個月"
+              },
+              {
+                "feature": "最佳適應症",
+                "ulthera": "嚴重下垂/拉提",
+                "shurink": "維護保養",
+                "thermage": "彈性/膚質"
+              }
+            ],
+            "synergy": {
+              "title": "音波拉提 + 鳳凰電波 協同效應",
+              "description": "音波拉提（SMAS層拉提）與鳳凰電波（表皮~真皮層彈性）間隔3個月聯合治療，可實現多層膠原再生，體驗更強大的協同效果。"
+            }
+          },
+          "transducers": {
+            "title": "6種探頭",
+            "subtitle": "6種不同深度和頻率的探頭可實現皮膚層定製治療",
+            "shallow": "淺層（1.5mm - 3.0mm）",
+            "deep": "深層（3.0mm - 4.5mm）",
+            "energyDelivery": "精準傳遞能量",
+            "items": {
+              "ds-10-1_5": {
+                "target": "表皮-真皮交界",
+                "applications": [
+                  "細紋",
+                  "眼周",
+                  "唇周",
+                  "膚質"
+                ]
+              },
+              "ds-10-1_5-n": {
+                "target": "狹窄部位",
+                "applications": [
+                  "眼紋",
+                  "眼下",
+                  "眼瞼"
+                ]
+              },
+              "ds-7-3_0": {
+                "target": "真皮下層",
+                "applications": [
+                  "臉頰",
+                  "額頭",
+                  "顴骨",
+                  "下頜線"
+                ]
+              },
+              "ds-7-3_0-n": {
+                "target": "狹窄真皮層",
+                "applications": [
+                  "眼周皺紋",
+                  "唇周",
+                  "手背"
+                ]
+              },
+              "ds-4-4_5": {
+                "target": "SMAS層",
+                "applications": [
+                  "中面部",
+                  "下面部",
+                  "頸部",
+                  "胸前"
+                ]
+              },
+              "ds-7-4_5": {
+                "target": "高分辨率SMAS",
+                "applications": [
+                  "下頜線",
+                  "雙下巴",
+                  "臉頰下垂"
+                ]
+              }
+            }
+          },
+          "hero": {
+            "badge": "FDA唯一批准拉提設備",
+            "premiumLifting": "高端拉提",
+            "title": "音波拉提",
+            "description": "唯一能到達深層SMAS的非侵入式拉提。\n實時DeepSEE可視化技術，精準安全。",
+            "stats": {
+              "clinicalStudies": "臨床研究",
+              "globalProcedures": "全球治療案例",
+              "improvementRate": "患者改善率"
+            },
+            "deepSee": "實時可視化",
+            "smasTarget": "深層精準定位"
+          },
+          "about": {
+            "sectionLabel": "About Ultherapy Prime",
+            "title": "什麼是音波拉提？",
+            "description": "音波拉提是美國FDA批准<strong>拉提效果的唯一</strong>非侵入式HIFU設備。專利MFU-V（微聚焦超聲可視化）技術將能量精準傳遞至深層SMAS，促進膠原蛋白再生。",
+            "depthTargeting": "深度定製精準治療",
+            "depths": {
+              "1_5": {
+                "title": "1.5mm - 表皮/真皮交界",
+                "description": "對細紋、膚質改善有效。適用於眼周、唇周等精細部位"
+              },
+              "3_0": {
+                "title": "3.0mm - 真皮下層",
+                "description": "膠原誘導，整體彈性改善。適用於臉頰、額頭等較大部位"
+              },
+              "4_5": {
+                "title": "4.5mm - SMAS層",
+                "description": "結構性拉提效果。適用於下頜線、頸部、中面部等下垂嚴重的部位"
+              }
+            }
+          },
+          "whyUlthera": {
+            "sectionLabel": "Premium Quality",
+            "labelEn": "Why Ultherapy Prime?",
+            "title": "為什麼選擇音波拉提？",
+            "cards": {
+              "fda": {
+                "title": "FDA唯一批准",
+                "description": "美國FDA批准非侵入式拉提效果的<strong>唯一</strong>HIFU設備。"
+              },
+              "deepSee": {
+                "title": "DeepSEE可視化",
+                "description": "專利DeepSEE技術<strong>實時確認</strong>皮膚層進行治療。"
+              },
+              "smas": {
+                "title": "SMAS層精準定位",
+                "description": "唯一能<strong>到達SMAS層</strong>的非侵入式設備，與整形手術靶向相同。"
+              }
+            },
+            "clinicalEvidence": {
+              "label": "臨床證據",
+              "papers": "臨床研究論文",
+              "aestheticImprovement": "美學改善率",
+              "satisfaction": "患者滿意度",
+              "duration": "效果持續時間",
+              "source": "來源：2024年系統評價和薈萃分析（PubMed）"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Clinic",
+            "labelEn": "LIV Difference",
+            "title": "LIV的音波拉提",
+            "cards": {
+              "genuine": {
+                "title": "正品認證診所",
+                "description": "Merz Korea官方認證診所，僅使用正品設備和探頭。可驗證序列號。"
+              },
+              "transparency": {
+                "title": "發數透明公開",
+                "description": "透明公開治療前計劃的線數和實際照射的發數。承諾誠信治療。"
+              },
+              "specialist": {
+                "title": "專科醫生親自治療",
+                "description": "皮膚科/整形外科專科醫生從諮詢到治療全程親自進行。制定個人定製治療方案。"
+              }
+            }
+          },
+          "journey": {
+            "sectionLabel": "Journey",
+            "title": "治療流程"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Details",
+            "labelEn": "治療資訊",
+            "title": "治療資訊",
+            "labels": {
+              "duration": "治療時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果持續"
+            },
+            "recommendedLines": {
+              "title": "各部位推薦線數",
+              "upperFace": "上面部",
+              "lowerFace": "下面部",
+              "fullFace": "全面部",
+              "fullFaceNeck": "全面部+頸部"
+            }
+          },
+          "detailedInfo": {
+            "title": "詳細資訊"
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常見問題",
+            "moreButton": "個更多",
+            "medicalQaLink": "查看更多醫療資訊問答",
+            "extended": [
+              {
+                "q": "音波拉提治療後可以立即恢復日常生活嗎？",
+                "a": "是的，音波拉提是非侵入性治療，幾乎沒有恢復期。治療後可能會有輕微紅腫，但通常當天消退。可以立即化妝，不影響日常生活。"
+              },
+              {
+                "q": "音波拉提和鳳凰電波可以一起做嗎？",
+                "a": "是的，音波拉提和鳳凰電波是互補性治療，聯合使用可產生協同效果。音波拉提針對SMAS層深層拉提，鳳凰電波對錶皮~真皮層彈性改善有效。一般間隔3個月進行治療。"
+              },
+              {
+                "q": "如何確認音波拉提是正品？",
+                "a": "LIV 整形外科是Merz Korea官方認證診所。治療時可確認正品探頭的序列號，實際照射的發數也會透明公開。"
+              }
+            ]
+          },
+          "cta": {
+            "labelEn": "Ready for Transformation?",
+            "title": "預約音波拉提諮詢",
+            "description": "通過與專業醫療團隊1:1定製諮詢，\n制定最適合您的治療方案。",
+            "bookButton": "預約免費諮詢",
+            "hours": "工作日 10:00-19:00",
+            "location": "新沙站4號出口 步行3分鐘"
+          },
+          "related": {
+            "labelEn": "相關治療",
+            "title": "相關治療"
+          }
+        }
+      },
+      "thermage": {
+        "name": "鳳凰電波 FLX",
+        "fullName": "Thermage FLX",
+        "tagline": "射頻緊膚解決方案",
+        "description": "第四代鳳凰電波 FLX比傳統方式快25%，同時促進全面的膠原蛋白再生。",
+        "detail": {
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "自動能量調節"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "振動疼痛緩解"
+              }
+            },
+            {
+              "top": {
+                "title": "RF Technology",
+                "subtitle": "膠原蛋白收縮與再生"
+              },
+              "bottom": {
+                "title": "14M+",
+                "subtitle": "全球治療次數"
+              }
+            },
+            {
+              "top": {
+                "title": "AccuTip",
+                "subtitle": "3.0cm²精準面積"
+              },
+              "bottom": {
+                "title": "默茨韓國",
+                "subtitle": "官方認證診所"
+              }
+            }
+          ],
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "subcutaneous": "皮下脂肪",
+            "fascia": "筋膜"
+          },
+          "timeline": {
+            "items": [
+              {
+                "time": "治療後立即",
+                "effect": "即時緊緻",
+                "desc": "膠原蛋白收縮效果"
+              },
+              {
+                "time": "1個月",
+                "effect": "彈性改善",
+                "desc": "膠原蛋白再生開始"
+              },
+              {
+                "time": "3個月",
+                "effect": "顯著變化",
+                "desc": "新生膠原蛋白增加"
+              },
+              {
+                "time": "6個月",
+                "effect": "最大效果",
+                "desc": "膠原蛋白重塑完成"
+              },
+              {
+                "time": "12個月+",
+                "effect": "效果維持",
+                "desc": "建議每年維護"
+              }
+            ]
+          },
+          "comparison": {
+            "title": "鳳凰電波代際比較",
+            "subtitle": "第四代FLX是比前代產品有重大改進的最新技術",
+            "headers": {
+              "feature": "比較項目",
+              "flx": "FLX（第4代）",
+              "cpt": "CPT（第3代）",
+              "nxt": "NXT（第2代）"
+            },
+            "rows": [
+              {
+                "feature": "技術",
+                "flx": "AccuREP自動調節",
+                "cpt": "手動能量設置",
+                "nxt": "第1代技術"
+              },
+              {
+                "feature": "治療時間",
+                "flx": "縮短25%",
+                "cpt": "標準",
+                "nxt": "最長"
+              },
+              {
+                "feature": "疼痛",
+                "flx": "振動技術最小化",
+                "cpt": "中等",
+                "nxt": "高"
+              },
+              {
+                "feature": "效果均勻性",
+                "flx": "最佳自動調節",
+                "cpt": "依賴操作者",
+                "nxt": "可能不均勻"
+              },
+              {
+                "feature": "治療頭種類",
+                "flx": "900/600/400/225",
+                "cpt": "900/600/400",
+                "nxt": "有限"
+              },
+              {
+                "feature": "眼部專用",
+                "flx": "Total Tip O",
+                "cpt": "Eye Tip O",
+                "nxt": "X"
+              }
+            ]
+          },
+          "tips": {
+            "title": "分部位定製治療頭",
+            "subtitle": "各種尺寸的治療頭可針對不同部位進行優化治療",
+            "items": [
+              {
+                "shots": "600",
+                "area": "面部",
+                "desc": "臉頰、額頭"
+              },
+              {
+                "shots": "225",
+                "area": "眼周/唇周",
+                "desc": "精細部位"
+              }
+            ]
+          },
+          "hero": {
+            "badge": "第四代高端射頻",
+            "title": "鳳凰電波 FLX",
+            "description": "AccuREP技術根據皮膚狀態自動調節最佳能量。<br />振動技術減少疼痛，同時拉提效果的射頻拉提。",
+            "stats": {
+              "treatments": {
+                "value": "14M+",
+                "label": "全球治療次數"
+              },
+              "time": {
+                "value": "25%",
+                "label": "治療時間縮短"
+              },
+              "satisfaction": {
+                "value": "93%",
+                "label": "患者滿意度"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Thermage",
+            "title": "什麼是鳳凰電波 FLX？",
+            "description": "鳳凰電波 FLX是<strong>全球超過1400萬次</strong>治療的全球第一射頻拉提設備。專利AccuREP技術實時測量皮膚阻抗自動調節最佳能量，通過膠原蛋白收縮和再生改善皮膚彈性。",
+            "rfPrinciple": {
+              "title": "射頻能量原理",
+              "steps": [
+                {
+                  "num": "1",
+                  "title": "射頻能量傳遞",
+                  "desc": "射頻能量均勻傳遞到真皮層，產生65-75°C的熱量。"
+                },
+                {
+                  "num": "2",
+                  "title": "膠原蛋白收縮",
+                  "desc": "熱能使現有膠原蛋白收縮，產生即時緊緻效果。"
+                },
+                {
+                  "num": "3",
+                  "title": "新生膠原蛋白生成",
+                  "desc": "3-6個月內生成新的膠原蛋白，持續改善皮膚彈性。"
+                }
+              ]
+            },
+            "temperature": "65-75°C",
+            "collagenLabel": "膠原蛋白收縮與再生"
+          },
+          "whyThermage": {
+            "sectionLabel": "Why Thermage FLX?",
+            "title": "為什麼選擇鳳凰電波 FLX？",
+            "cards": {
+              "accuRep": {
+                "title": "AccuREP技術",
+                "desc": "<strong>實時測量</strong>皮膚阻抗，自動調節各部位的最佳能量。保證均勻安全的治療效果。"
+              },
+              "comfortPulse": {
+                "title": "Comfort Pulse",
+                "desc": "專利振動技術<strong>最大限度減少</strong>治療過程中的疼痛。無需麻醉也能舒適接受治療。"
+              },
+              "collagenRemodeling": {
+                "title": "膠原蛋白重塑",
+                "desc": "治療後<strong>即時收縮效果</strong>，加上3-6個月內新生膠原蛋白生成，逐步改善皮膚彈性。"
+              }
+            },
+            "globalTrust": {
+              "title": "Global Trust",
+              "treatments": {
+                "value": "14M+",
+                "label": "全球治療次數"
+              },
+              "satisfaction": {
+                "value": "93%",
+                "label": "患者滿意度"
+              },
+              "time": {
+                "value": "25%",
+                "label": "治療時間縮短"
+              },
+              "duration": {
+                "value": "1年+",
+                "label": "效果持續時間"
+              },
+              "source": "來源：Solta Medical官方臨床數據"
+            }
+          },
+          "tipsSection": {
+            "sectionLabel": "Treatment Tips",
+            "title": "分部位定製治療頭",
+            "subtitle": "各種尺寸的治療頭可針對不同部位進行優化治療",
+            "eye": {
+              "sectionLabel": "Thermage Eye",
+              "title": "鳳凰電波眼部",
+              "desc": "眼部專用Total Tip有效改善眼瞼下垂、眼下皺紋、魚尾紋。眼部皮膚薄而敏感，需要專用治療頭進行精細治療。",
+              "benefits": [
+                "眼瞼彈性改善",
+                "眼下皺紋緩解",
+                "眼周整體緊緻"
+              ]
+            }
+          },
+          "generationCompare": {
+            "sectionLabel": "Generation Comparison",
+            "title": "鳳凰電波代際比較",
+            "subtitle": "第四代FLX是比前代產品有重大改進的最新技術"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV獨有的鳳凰電波",
+            "cards": {
+              "genuine": {
+                "title": "正品認證診所",
+                "desc": "作為Solta Medical官方認證診所，僅使用正品設備和治療頭。可驗證序列號並頒發正品證書。"
+              },
+              "transparent": {
+                "title": "發數透明公開",
+                "desc": "透明公開治療前計劃的發數和實際使用的發數。承諾誠實治療。"
+              },
+              "specialist": {
+                "title": "專家親自操作",
+                "desc": "皮膚科/整形外科專家從諮詢到治療全程親自操作。制定個性化治療方案。"
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "鳳凰電波治療後即時效果與漸進式膠原蛋白再生同時出現"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "治療資訊",
+            "title": "治療資訊",
+            "labels": {
+              "duration": "治療時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果持續"
+            },
+            "recommendedShots": {
+              "title": "分部位推薦發數",
+              "fullFace": {
+                "shots": "300-400",
+                "label": "全臉"
+              },
+              "lowerFace": {
+                "shots": "200-300",
+                "label": "下半臉"
+              },
+              "eye": {
+                "shots": "225",
+                "label": "眼部"
+              },
+              "fullFaceNeck": {
+                "shots": "500-900",
+                "label": "全臉+頸部"
+              }
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常見問題",
+            "extendedFaqs": [
+              {
+                "q": "鳳凰電波和音波拉提 Prime哪個更好？",
+                "a": "兩種治療相輔相成。音波拉提 Prime對SMAS層的深層拉提效果顯著，鳳凰電波通過真皮層膠原蛋白收縮在整體彈性改善方面表現出色。嚴重下垂推薦音波拉提 Prime，彈性問題為主要困擾則推薦鳳凰電波。"
+              },
+              {
+                "q": "鳳凰電波治療過程中會很疼嗎？",
+                "a": "FLX通過振動技術（Comfort Pulse Technology）最大限度減少治療過程中的不適。可無麻醉進行，大多數患者只感到可忍受程度的熱感。"
+              },
+              {
+                "q": "如何確認鳳凰電波是正品？",
+                "a": "LIV 整形外科是Solta Medical官方認證診所。治療前可確認正品治療頭的序列號和實際發數，治療後頒發正品證書。"
+              }
+            ],
+            "moreInfo": "想了解更多醫療資訊？",
+            "viewMedicalQA": "查看醫療資訊Q&A"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "預約鳳凰電波諮詢",
+            "description": "通過與專業醫療團隊的1對1定製諮詢，<br />制定最適合您的治療方案。",
+            "bookConsultation": "預約免費諮詢",
+            "businessHours": "工作日10:00-19:00",
+            "location": "新沙站4號出口步行3分鐘"
+          },
+          "related": {
+            "sectionLabel": "相關推薦治療",
+            "title": "相關推薦治療"
+          }
+        }
+      },
+      "density": {
+        "name": "Density",
+        "fullName": "Density",
+        "tagline": "射頻能量打造彈力緊緻",
+        "description": "射頻(RF)能量精密重塑皮膚深層膠原蛋白，精準均勻的能量打造緊緻彈力肌膚。",
+        "detail": {
+          "illustrations": {
+            "dualEnergy": {
+              "hifu": "超聲波",
+              "rf": "射頻",
+              "synergy": "雙能量協同效應"
+            },
+            "multiLayer": {
+              "epidermis": "表皮 (RF)",
+              "dermis": "真皮 (HIFU+RF)",
+              "smas": "SMAS (HIFU)",
+              "title": "多層靶向"
+            },
+            "cooling": {
+              "title": "冷卻系統"
+            },
+            "diagram": {
+              "epidermis": "表皮",
+              "dermis": "真皮",
+              "subcutaneous": "皮下脂肪",
+              "smas": "SMAS"
+            }
+          },
+          "timeline": {
+            "items": [
+              {
+                "time": "治療後即刻",
+                "effect": "即刻緊緻",
+                "desc": "膠原蛋白收縮",
+                "percent": 40
+              },
+              {
+                "time": "2周",
+                "effect": "彈力改善",
+                "desc": "RF效果顯現",
+                "percent": 55
+              },
+              {
+                "time": "1個月",
+                "effect": "膚質改善",
+                "desc": "膠原蛋白再生開始",
+                "percent": 70
+              },
+              {
+                "time": "3個月",
+                "effect": "最佳效果",
+                "desc": "RF膠原蛋白重塑",
+                "percent": 100
+              },
+              {
+                "time": "6個月+",
+                "effect": "效果維持",
+                "desc": "建議定期護理",
+                "percent": 90
+              }
+            ]
+          },
+          "comparison": {
+            "headers": {
+              "feature": "比較項目",
+              "density": "Density",
+              "ulthera": "音波拉提 Prime",
+              "thermage": "鳳凰電波"
+            },
+            "rows": [
+              {
+                "feature": "能量類型",
+                "density": "RF (射頻)",
+                "ulthera": "HIFU (超聲波)",
+                "thermage": "RF (射頻)"
+              },
+              {
+                "feature": "靶向深度",
+                "density": "真皮層為主",
+                "ulthera": "SMAS層為主",
+                "thermage": "真皮層為主"
+              },
+              {
+                "feature": "能量分佈",
+                "density": "均勻精密",
+                "ulthera": "聚焦型",
+                "thermage": "廣範圍"
+              },
+              {
+                "feature": "疼痛感",
+                "density": "低",
+                "ulthera": "中等-高",
+                "thermage": "低"
+              },
+              {
+                "feature": "治療時間",
+                "density": "30-40分鐘",
+                "ulthera": "60-90分鐘",
+                "thermage": "45-60分鐘"
+              },
+              {
+                "feature": "價格",
+                "density": "實惠",
+                "ulthera": "高端",
+                "thermage": "高端"
+              },
+              {
+                "feature": "推薦對象",
+                "density": "彈力/毛孔護理",
+                "ulthera": "嚴重下垂",
+                "thermage": "彈力下降"
+              }
+            ]
+          },
+          "extendedFaqs": [
+            {
+              "q": "Density只做一次有效果嗎？",
+              "a": "是的，單次治療也能體驗到即刻的拉提效果。但為了獲得最佳效果，建議根據皮膚狀態每3-6個月進行2-3次治療。"
+            },
+            {
+              "q": "Density治療後有恢復期嗎？",
+              "a": "通常幾乎沒有恢復期。治療後可能會出現輕微發紅或腫脹，但大多數情況下當天即可消退。可立即恢復日常生活和化妝。"
+            },
+            {
+              "q": "做過音波拉提 Prime或鳳凰電波，還可以做Density嗎？",
+              "a": "可以的。但建議與之前的治療間隔至少3個月以上。通過諮詢確認皮膚狀態，確定最佳治療時機。"
+            }
+          ],
+          "hero": {
+            "badge": "RF射頻拉提",
+            "title": "Density",
+            "description": "射頻(RF)能量精密重塑皮膚深層膠原蛋白。<br />精準均勻的能量打造緊緻彈力肌膚。",
+            "stats": {
+              "energy": {
+                "value": "RF",
+                "label": "射頻能量"
+              },
+              "layers": {
+                "value": "4層",
+                "label": "多層靶向"
+              },
+              "effect": {
+                "value": "即刻",
+                "label": "拉提效果"
+              }
+            },
+            "floatingBadges": {
+              "rf": {
+                "title": "RF",
+                "subtitle": "精密射頻"
+              },
+              "skin": {
+                "title": "RF",
+                "subtitle": "肌膚彈力"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "About Density",
+            "title": "什麼是Density？",
+            "description": "Density是一款利用<strong>射頻(RF)</strong>能量精密刺激真皮層的高端拉提設備。與鳳凰電波同屬射頻系列，通過精準均勻的能量分佈促進膠原蛋白再生，改善皮膚彈性。",
+            "rfPrinciple": {
+              "title": "RF射頻原理",
+              "cards": {
+                "rf": {
+                  "label": "RF",
+                  "title": "射頻能量",
+                  "desc": "向真皮層精準傳遞熱能，誘導膠原蛋白收縮和再生，改善皮膚彈性。"
+                },
+                "uniform": {
+                  "label": "均勻",
+                  "title": "精準能量分佈",
+                  "desc": "均勻精密的能量傳遞實現有效的膠原蛋白重塑。"
+                },
+                "synergy": {
+                  "label": "+",
+                  "title": "協同效應",
+                  "desc": "雙能量同時作用，比單獨治療產生更強效、更持久的拉提效果。"
+                }
+              }
+            }
+          },
+          "whyDensity": {
+            "sectionLabel": "Why Density?",
+            "title": "為什麼選擇Density？",
+            "cards": {
+              "rf": {
+                "title": "RF射頻",
+                "desc": "精密射頻能量<strong>均勻刺激真皮層膠原蛋白</strong>，同時改善彈力和膚質。"
+              },
+              "affordable": {
+                "title": "價格實惠",
+                "desc": "與鳳凰電波同屬射頻系列，但<strong>價格更實惠</strong>，可持續進行拉提護理。"
+              },
+              "cooling": {
+                "title": "冷卻系統",
+                "desc": "內置冷卻系統<strong>最大程度減少治療時的不適</strong>，保護表皮，實現舒適治療。"
+              }
+            },
+            "clinicalBanner": {
+              "label": "RF Lifting Benefits",
+              "stats": {
+                "energy": {
+                  "value": "RF",
+                  "label": "射頻能量"
+                },
+                "precision": {
+                  "value": "精準",
+                  "label": "均勻分佈"
+                },
+                "duration": {
+                  "value": "40分鐘",
+                  "label": "快速治療"
+                },
+                "effect": {
+                  "value": "即刻",
+                  "label": "效果可見"
+                }
+              }
+            }
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "Density vs 其他設備",
+            "subtitle": "精準RF能量同時護理彈力和毛孔",
+            "combinationNote": {
+              "title": "與HIFU聯合治療",
+              "desc": "Density(RF)與音波拉提 Prime、Shurink(HIFU)系列聯合使用，可實現覆蓋多層的綜合彈力治療。適合希望以實惠價格持續進行拉提護理的人群。"
+            }
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV的Density",
+            "cards": {
+              "custom": {
+                "title": "定製能量設置",
+                "desc": "根據皮膚狀態和關注點優化RF能量強度，進行個性化定製治療。"
+              },
+              "genuine": {
+                "title": "正品設備",
+                "desc": "使用正品Density設備提供安全有效的治療。定期設備檢測保持最佳狀態。"
+              },
+              "specialist": {
+                "title": "專家親自治療",
+                "desc": "皮膚科/整形外科專家從諮詢到治療全程親自進行。豐富經驗確保最佳效果。"
+              }
+            }
+          },
+          "timelineSection": {
+            "sectionLabel": "Results Timeline",
+            "subtitle": "Density治療後即刻效果和漸進改善同時呈現"
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "治療資訊",
+            "title": "治療資訊",
+            "labels": {
+              "duration": "治療時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果持續"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常見問題",
+            "moreInfo": "想了解更多醫療資訊？",
+            "viewMedicalQA": "查看醫療資訊Q&A"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "預約Density諮詢",
+            "description": "通過與專業醫療團隊的1對1定製諮詢，<br />制定最適合您的治療方案。",
+            "bookConsultation": "預約免費諮詢",
+            "businessHours": "工作日10:00-19:00",
+            "location": "新沙站4號出口步行3分鐘"
+          },
+          "related": {
+            "sectionLabel": "相關推薦治療",
+            "title": "相關推薦治療"
+          }
+        }
+      },
+      "inmode": {
+        "name": "InMode",
+        "fullName": "InMode",
+        "tagline": "射頻複合拉提",
+        "description": "利用射頻的複合拉提系統，同時改善皮膚彈性和身體輪廓。",
+        "detail": {
+          "illustrations": {
+            "forma": "皮膚彈性",
+            "morpheus": "微針射頻",
+            "facetite": "脂肪緊緻"
+          },
+          "treatmentCard": {
+            "benefits": "主要效果",
+            "duration": "治療時間",
+            "downtime": "恢復期",
+            "idealFor": "適合人群"
+          },
+          "comparison": {
+            "header": "比較項目",
+            "rows": {
+              "method": {
+                "feature": "治療方式",
+                "forma": "射頻高頻",
+                "morpheus": "微針+射頻",
+                "facetite": "套管+射頻"
+              },
+              "invasiveness": {
+                "feature": "侵入性",
+                "forma": "非侵入",
+                "morpheus": "微創",
+                "facetite": "微創"
+              },
+              "anesthesia": {
+                "feature": "麻醉",
+                "forma": "不需要",
+                "morpheus": "麻醉膏",
+                "facetite": "局部麻醉"
+              },
+              "downtime": {
+                "feature": "恢復期",
+                "forma": "無",
+                "morpheus": "3-5天",
+                "facetite": "5-7天"
+              },
+              "onset": {
+                "feature": "效果顯現",
+                "forma": "漸進",
+                "morpheus": "漸進",
+                "facetite": "即刻"
+              },
+              "sessions": {
+                "feature": "治療次數",
+                "forma": "4-6次",
+                "morpheus": "2-3次",
+                "facetite": "1次"
+              },
+              "target": {
+                "feature": "主要目標",
+                "forma": "彈性",
+                "morpheus": "毛孔/疤痕",
+                "facetite": "脂肪/鬆弛"
+              }
+            }
+          },
+          "treatmentOptions": {
+            "forma": {
+              "name": "Forma",
+              "nameKo": "Forma",
+              "description": "非侵入性射頻高頻誘導膠原蛋白收縮和再生，改善皮膚彈性。幾乎無痛且無恢復期，不影響日常生活。",
+              "benefits": [
+                "即刻皮膚緊緻",
+                "促進膠原蛋白再生",
+                "改善細紋",
+                "無痛治療"
+              ],
+              "duration": "20-30分鐘",
+              "downtime": "無",
+              "idealFor": [
+                "彈性下降",
+                "細紋",
+                "預防護理"
+              ]
+            },
+            "morpheus": {
+              "name": "Morpheus8",
+              "nameKo": "Morpheus8",
+              "description": "24根鍍金微針將射頻能量傳遞到真皮層，誘導皮膚重塑。同時改善毛孔、疤痕、膚質和彈性。",
+              "benefits": [
+                "縮小毛孔",
+                "改善痤瘡疤痕",
+                "改善膚質",
+                "真皮層重塑"
+              ],
+              "duration": "30-45分鐘",
+              "downtime": "3-5天",
+              "idealFor": [
+                "毛孔粗大",
+                "痤瘡疤痕",
+                "膚質"
+              ]
+            },
+            "facetite": {
+              "name": "FaceTite",
+              "nameKo": "FaceTite",
+              "description": "通過細套管將射頻能量直接傳遞到脂肪層，溶解脂肪並緊緻皮膚。提供迷你拉皮級別的效果。",
+              "benefits": [
+                "減少脂肪",
+                "緊緻皮膚",
+                "改善下頜線",
+                "改善雙下巴"
+              ],
+              "duration": "60-90分鐘",
+              "downtime": "5-7天",
+              "idealFor": [
+                "雙下巴",
+                "臉頰脂肪",
+                "下頜線鬆弛"
+              ]
+            }
+          },
+          "recommendations": {
+            "forma": {
+              "title": "Forma推薦",
+              "desc": "希望維持皮膚彈性、預防護理、無恢復期治療的人"
+            },
+            "morpheus": {
+              "title": "Morpheus8推薦",
+              "desc": "希望改善毛孔、疤痕、膚質且可接受短期恢復期的人"
+            },
+            "facetite": {
+              "title": "FaceTite推薦",
+              "desc": "擔心雙下巴、臉頰脂肪等脂肪鬆弛且希望獲得明確效果的人"
+            }
+          },
+          "extendedFaqs": [
+            {
+              "q": "InMode治療中最受歡迎的是什麼？",
+              "a": "Morpheus8最受歡迎。結合微針和射頻，可以同時改善毛孔、疤痕、膚質和彈性，對有各種皮膚問題的人很有效。"
+            },
+            {
+              "q": "可以組合多種InMode治療嗎？",
+              "a": "是的，可以。例如，用Morpheus8改善膚質，用FaceTite緊緻脂肪的組合很受歡迎。通過諮詢確定最佳組合。"
+            },
+            {
+              "q": "InMode與其他拉提治療有什麼區別？",
+              "a": "InMode是一個全能平臺，可以在一個系統中選擇各種治療。特別是Morpheus8通過微針射頻改善膚質和彈性，FaceTite可以進行脂肪緊緻，實現個性化定製治療。"
+            }
+          ],
+          "hero": {
+            "badge": "全能拉提系統",
+            "title": "InMode",
+            "description": "通過射頻(RF)能量同時實現減脂和拉提。<br />如果面部脂肪是您的困擾，InMode就是答案。",
+            "stats": {
+              "rf": {
+                "value": "RF",
+                "label": "射頻能量"
+              },
+              "fda": {
+                "value": "FDA",
+                "label": "認證設備"
+              },
+              "custom": {
+                "value": "定製",
+                "label": "個性化治療"
+              }
+            },
+            "floatingBadges": {
+              "morpheus": {
+                "title": "Morpheus8",
+                "subtitle": "微針射頻"
+              },
+              "custom": {
+                "title": "定製治療",
+                "subtitle": "針對問題優化"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "About InMode",
+            "title": "什麼是InMode？",
+            "description": "InMode是利用<strong>射頻(RF)能量</strong>同時刺激脂肪層和真皮層的多功能拉提設備。對面部脂肪較多或皮膚鬆弛等複合問題非常有效。"
+          },
+          "compare": {
+            "sectionLabel": "Comparison",
+            "title": "手柄比較",
+            "subtitle": "比較各治療的特性，找到適合自己的治療"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV獨有的InMode",
+            "cards": {
+              "genuine": {
+                "title": "正品認證診所",
+                "desc": "作為InMode Korea官方認證診所，僅使用正品設備和探頭。運營最新版本的設備。"
+              },
+              "combination": {
+                "title": "定製組合治療",
+                "desc": "不僅使用單一手柄，還根據皮膚狀態組合多種治療以獲得最佳效果。"
+              },
+              "specialist": {
+                "title": "專家親自治療",
+                "desc": "皮膚科/整形外科專家從諮詢到治療全程親自進行。憑藉豐富的經驗獲得最佳效果。"
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "治療資訊",
+            "title": "治療資訊",
+            "labels": {
+              "duration": "治療時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常見問題",
+            "moreInfo": "想了解更多醫療資訊嗎？",
+            "viewMedicalQA": "查看醫療問答"
+          },
+          "cta": {
+            "sectionLabel": "Ready for Transformation?",
+            "title": "預約InMode諮詢",
+            "description": "通過與專業醫療團隊的1:1定製諮詢，<br />找到最適合您的治療方案。",
+            "bookConsultation": "預約免費諮詢",
+            "businessHours": "工作日 10:00-19:00",
+            "location": "新沙站4號出口步行3分鐘"
+          },
+          "related": {
+            "sectionLabel": "相關推薦治療",
+            "title": "相關推薦治療"
+          }
+        }
+      },
+      "shurink": {
+        "name": "Shurink",
+        "fullName": "Shurink Universe",
+        "tagline": "HIFU拉提",
+        "description": "利用高強度聚焦超聲波的拉提治療，提拉鬆弛的皮膚。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "smas": "SMAS",
+            "fascia": "筋膜"
+          },
+          "cartridges": {
+            "1_5": {
+              "depth": "1.5mm",
+              "layer": "表皮層",
+              "desc": "細紋、毛孔"
+            },
+            "3_0": {
+              "depth": "3.0mm",
+              "layer": "真皮層",
+              "desc": "膠原蛋白再生"
+            },
+            "4_5": {
+              "depth": "4.5mm",
+              "layer": "SMAS層",
+              "desc": "拉提效果"
+            },
+            "6_0_9_0": {
+              "depth": "6.0/9.0mm",
+              "layer": "深層",
+              "desc": "身體、雙下巴"
+            }
+          },
+          "rapidShot": {
+            "highSpeedShot": "⚡ HIGH-SPEED SHOT",
+            "conventional": {
+              "title": "傳統HIFU",
+              "shotsPerSec": "每秒1-2發",
+              "duration": "治療時間60分鐘以上"
+            },
+            "shurink": {
+              "title": "Shurink",
+              "shotsPerSec": "每秒7發以上",
+              "duration": "治療時間30分鐘左右"
+            },
+            "speedBadge": "快3倍"
+          },
+          "hero": {
+            "badge": "HIFU LIFTING",
+            "title": "高速拉提的新標準",
+            "description": "採用韓國技術開發的Shurink，通過<strong>每秒7發</strong>的高速連發技術，快速均勻地傳遞能量。多種探頭可根據皮膚層深度進行精密定製治療。",
+            "stats": {
+              "speed": {
+                "value": "7/秒",
+                "label": "高速連發"
+              },
+              "time": {
+                "value": "30分鐘",
+                "label": "治療時間"
+              },
+              "cartridges": {
+                "value": "4種",
+                "label": "探頭"
+              }
+            }
+          },
+          "heroLabels": [
+            {
+              "top": {
+                "title": "高速連發技術",
+                "subtitle": "每秒7發以上"
+              },
+              "bottom": {
+                "title": "快速治療",
+                "subtitle": "約30分鐘"
+              }
+            },
+            {
+              "top": {
+                "title": "定製探頭",
+                "subtitle": "4種深度選擇"
+              },
+              "bottom": {
+                "title": "均勻效果",
+                "subtitle": "精準能量傳遞"
+              }
+            }
+          ],
+          "about": {
+            "sectionLabel": "About Shurink",
+            "title": "什麼是Shurink？",
+            "description": "Shurink是韓國開發的HIFU（高強度聚焦超聲波）設備，採用<strong>每秒7發以上的高速連發</strong>技術，實現快速均勻的能量傳遞。使用1.5mm至9.0mm多種深度探頭，可精準作用於從表皮到SMAS層的各個層次。",
+            "hifuPrinciple": {
+              "title": "HIFU原理",
+              "steps": [
+                {
+                  "title": "聚焦超聲波",
+                  "desc": "高強度超聲波能量深入皮膚內部聚焦"
+                },
+                {
+                  "title": "熱凝固點形成",
+                  "desc": "在SMAS層形成精密熱凝固點"
+                },
+                {
+                  "title": "膠原蛋白再生",
+                  "desc": "通過自然癒合過程進行膠原蛋白重塑"
+                }
+              ]
+            }
+          },
+          "advantages": {
+            "sectionLabel": "Premium HIFU",
+            "title": "Shurink的<span class=\"text-[#00D4FF]\">優勢</span>",
+            "titlePlain": "Shurink的優勢",
+            "subtitle": "採用韓國技術開發的Shurink，提供快速治療和多種探頭定製拉提"
+          },
+          "rapidShotSection": {
+            "title": "<span class=\"text-[#00D4FF]\">高速連發</span>技術",
+            "titlePlain": "高速連發技術",
+            "subtitle": "Shurink的高速連發技術大幅縮短治療時間，同時均勻傳遞能量",
+            "stats": {
+              "duration": {
+                "value": "30分鐘",
+                "label": "治療時間",
+                "desc": "比以前快50%"
+              },
+              "shotsPerSec": {
+                "value": "7發/秒",
+                "label": "高速連發",
+                "desc": "均勻能量傳遞"
+              },
+              "cartridges": {
+                "value": "4種",
+                "label": "定製探頭",
+                "desc": "各部位優化治療"
+              }
+            }
+          },
+          "cartridgeSection": {
+            "title": "多種<span class=\"text-[#00D4FF]\">探頭</span>系統",
+            "titlePlain": "多種探頭系統",
+            "subtitle": "根據皮膚層深度優化的探頭，可進行精密定製治療"
+          },
+          "targetAreas": {
+            "title": "治療部位",
+            "subtitle": "Shurink可治療整個面部到頸部的各個部位，使用針對各部位優化的探頭進行定製治療。"
+          },
+          "treatmentInfo": {
+            "title": "治療<span class=\"text-[#00D4FF]\">資訊</span>",
+            "titlePlain": "治療資訊",
+            "labels": {
+              "duration": "治療時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果持續"
+            }
+          },
+          "comparison": {
+            "title": "音波拉提 vs <span class=\"text-[#00D4FF]\">Shurink</span>",
+            "titlePlain": "音波拉提 vs Shurink",
+            "subtitle": "比較兩種HIFU設備的特點，選擇適合自己的治療",
+            "headers": {
+              "feature": "比較項目",
+              "ulthera": "音波拉提",
+              "shurink": "Shurink"
+            },
+            "rows": [
+              {
+                "item": "能量類型",
+                "ulthera": "HIFU",
+                "shurink": "HIFU"
+              },
+              {
+                "item": "治療時間",
+                "ulthera": "60-90分鐘",
+                "shurink": "30-45分鐘"
+              },
+              {
+                "item": "可視化功能",
+                "ulthera": "DeepSEE技術",
+                "shurink": "無"
+              },
+              {
+                "item": "疼痛程度",
+                "ulthera": "中~高",
+                "shurink": "低~中"
+              },
+              {
+                "item": "效果持續",
+                "ulthera": "1-2年",
+                "shurink": "3-6個月"
+              },
+              {
+                "item": "適合人群",
+                "ulthera": "希望深層拉提",
+                "shurink": "快速治療、維護保養"
+              },
+              {
+                "item": "費用",
+                "ulthera": "高端",
+                "shurink": "實惠"
+              }
+            ]
+          },
+          "faq": {
+            "title": "常見<span class=\"text-[#00D4FF]\">問題</span>",
+            "titlePlain": "常見問題",
+            "relatedQa": "相關醫療問答",
+            "moreLink": "查看更多問答"
+          },
+          "cautions": {
+            "title": "治療<span class=\"text-[#00D4FF]\">注意事項</span>",
+            "titlePlain": "治療注意事項"
+          },
+          "cta": {
+            "title": "預約Shurink諮詢",
+            "description": "體驗快速有效的HIFU拉提，Shurink帶給您自然年輕的肌膚。專業諮詢為您制定定製治療方案。",
+            "onlineButton": "在線預約諮詢",
+            "phoneButton": "電話諮詢"
+          }
+        }
+      },
+      "thread": {
+        "name": "埋線",
+        "fullName": "Thread Lift",
+        "tagline": "PDO線即刻拉提",
+        "description": "將可降解線植入皮下，產生即刻拉提效果並刺激膠原蛋白生成。",
+        "detail": {
+          "skinLayers": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "subcutaneous": "皮下脂肪",
+            "smas": "SMAS"
+          },
+          "liftingEffect": "↑ LIFTING EFFECT ↑",
+          "threadTypes": {
+            "pdo": {
+              "name": "PDO",
+              "fullName": "Polydioxanone",
+              "absorptionPeriod": "吸收週期：6-8個月",
+              "types": "單絲、鋸齒、螺旋",
+              "note": "最廣泛使用"
+            },
+            "plla": {
+              "name": "PLLA",
+              "fullName": "Poly-L-Lactic Acid",
+              "absorptionPeriod": "吸收週期：12-18個月",
+              "feature": "促進膠原蛋白生成",
+              "note": "高端"
+            },
+            "pcl": {
+              "name": "PCL",
+              "fullName": "Polycaprolactone",
+              "absorptionPeriod": "吸收週期：18-24個月",
+              "feature": "最長持續",
+              "note": "頂級"
+            }
+          },
+          "collagenTimeline": {
+            "immediate": {
+              "phase": "術後即刻",
+              "title": "即刻拉提",
+              "desc": "物理拉提效果"
+            },
+            "oneToTwo": {
+              "phase": "1-2個月後",
+              "title": "膠原蛋白開始生成",
+              "desc": "成纖維細胞激活"
+            },
+            "threeToSix": {
+              "phase": "3-6個月後",
+              "title": "膠原蛋白重塑完成",
+              "desc": "自然彈性"
+            }
+          },
+          "treatmentAreas": {
+            "forehead": "額頭",
+            "cheekbone": "顴骨",
+            "cheek": "臉頰",
+            "nasolabial": "法令紋",
+            "jawline": "下頜線",
+            "neck": "頸部"
+          },
+          "hero": {
+            "badge": "THREAD LIFTING"
+          },
+          "advantages": {
+            "sectionLabel": "Premium Thread",
+            "title": "埋線的<span class=\"text-[#D4AF37]\">優勢</span>",
+            "description": "通過可吸收線同時體驗即刻拉提和長期膠原蛋白再生"
+          },
+          "threadTypesSection": {
+            "title": "多種<span class=\"text-[#D4AF37]\">線材類型</span>",
+            "description": "根據治療目的和期望效果選擇最佳線材",
+            "pdoCard": {
+              "title": "PDO",
+              "subtitle": "最熱門選擇",
+              "features": [
+                "6-8個月自然吸收",
+                "單絲/鋸齒/螺旋類型",
+                "價格合理"
+              ]
+            },
+            "pllaCard": {
+              "title": "PLLA",
+              "subtitle": "膠原蛋白促進劑",
+              "features": [
+                "持續12-18個月",
+                "促進膠原蛋白生成",
+                "漸進式容量改善"
+              ]
+            },
+            "pclCard": {
+              "title": "PCL",
+              "subtitle": "最長持續",
+              "features": [
+                "持續18-24個月",
+                "柔軟質感",
+                "強力支撐"
+              ]
+            }
+          },
+          "collagenSection": {
+            "title": "<span class=\"text-[#D4AF37]\">膠原蛋白再生</span>過程",
+            "description": "線材溶解時刺激膠原蛋白生成，打造自然彈性"
+          },
+          "targetAreasSection": {
+            "title": "治療部位",
+            "description": "從整個面部到頸部，可針對鬆弛部位進行定製化埋線治療。根據各部位特性應用適合的線材類型和數量。"
+          },
+          "processSection": {
+            "title": "治療流程"
+          },
+          "treatmentInfo": {
+            "title": "治療<span class=\"text-[#D4AF37]\">資訊</span>",
+            "labels": {
+              "duration": "治療時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果持續"
+            }
+          },
+          "comparison": {
+            "title": "激光拉提 vs <span class=\"text-[#D4AF37]\">埋線</span>",
+            "description": "比較各治療特性，為自己做出正確選擇",
+            "headers": {
+              "item": "比較項目",
+              "laser": "激光拉提",
+              "thread": "埋線"
+            },
+            "rows": [
+              {
+                "item": "原理",
+                "laser": "熱能收縮膠原蛋白",
+                "thread": "物理拉提 + 膠原蛋白促進"
+              },
+              {
+                "item": "效果顯現",
+                "laser": "漸進式（2-3個月）",
+                "thread": "即刻"
+              },
+              {
+                "item": "效果持續",
+                "laser": "6個月-2年",
+                "thread": "6-18個月（因線材類型而異）"
+              },
+              {
+                "item": "恢復期",
+                "laser": "幾乎沒有",
+                "thread": "3-7天（淤青、腫脹）"
+              },
+              {
+                "item": "麻醉",
+                "laser": "麻醉膏或無麻醉",
+                "thread": "局部麻醉"
+              },
+              {
+                "item": "適合對象",
+                "laser": "初期鬆弛、彈性下降",
+                "thread": "中度鬆弛、容量流失"
+              },
+              {
+                "item": "聯合治療",
+                "laser": "單獨或聯合",
+                "thread": "與激光聯合有協同效應"
+              }
+            ]
+          },
+          "recommended": {
+            "title": "推薦人群"
+          },
+          "faq": {
+            "title": "常見問題",
+            "relatedQA": "相關醫療資訊問答",
+            "moreButton": "查看更多問答"
+          },
+          "cautions": {
+            "title": "治療<span class=\"text-[#D4AF37]\">注意事項</span>"
+          },
+          "cta": {
+            "title": "預約埋線諮詢",
+            "description": "即刻拉提與自然膠原蛋白再生，通過埋線完成V臉。專業諮詢將為您推薦最佳線材類型和治療方案。",
+            "consultButton": "在線預約諮詢",
+            "callButton": "電話諮詢 02-797-2773"
+          }
+        }
+      },
+      "aptos": {
+        "name": "APTOS 生物拉提",
+        "fullName": "APTOS Bio Lifting",
+        "tagline": "高端埋線",
+        "description": "格魯吉亞高端拉提線，提供自然持久的拉提效果。",
+        "detail": {
+          "namicaIllustration": {
+            "title": "NAMICA Technology",
+            "subtitle": "透明質酸40mg分階段釋放"
+          },
+          "phaseEffects": [
+            {
+              "phase": "即時效果",
+              "period": "術後即刻",
+              "description": "微米粒子立即釋放HA",
+              "detail": "大粒子先溶解，立即提供飽滿感和保溼"
+            },
+            {
+              "phase": "中期效果",
+              "period": "1-3個月",
+              "description": "亞微米粒子逐步作用",
+              "detail": "中等粒子逐步促進膠原蛋白生成"
+            },
+            {
+              "phase": "長期效果",
+              "period": "3-6個月",
+              "description": "納米粒子持續供應HA",
+              "detail": "最小粒子長期維持彈性改善效果"
+            }
+          ],
+          "certifications": [
+            {
+              "label": "KFDA",
+              "value": "醫療器械4等級正式許可"
+            },
+            {
+              "label": "CE",
+              "value": "歐洲CE認證"
+            },
+            {
+              "label": "ISO",
+              "value": "ISO 13485質量管理體系"
+            },
+            {
+              "label": "FDA",
+              "value": "MDSAP認證"
+            }
+          ],
+          "gallery": [
+            {
+              "alt": "APTOS Professional Course證書頒發",
+              "caption": "格魯吉亞總部證書頒發"
+            },
+            {
+              "alt": "Clinical Experience發表",
+              "caption": "Clinical Experience發表"
+            },
+            {
+              "alt": "患者諮詢",
+              "caption": "患者診療及諮詢"
+            }
+          ],
+          "hero": {
+            "badge": "第四代生物拉提",
+            "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
+            "description": "在全球100多個國家使用的面部組織固定線的原創品牌",
+            "durationLabel": "效果持續",
+            "durationValue": "最長24個月"
+          },
+          "namicaSection": {
+            "title": "NAMICA Technology",
+            "description": "<strong class=\"text-secondary\">NAMICA(Nano & Micro Encapsulated Particles)</strong>是將透明質酸40mg封裝成納米、亞微米、微米單位，實現分階段釋放的創新藥物遞送系統。",
+            "features": [
+              {
+                "icon": "🌍",
+                "text": "全球100多個國家使用"
+              },
+              {
+                "icon": "✅",
+                "text": "KFDA醫療器械4等級正式許可"
+              },
+              {
+                "icon": "⏱️",
+                "text": "效果持續：最長24個月"
+              },
+              {
+                "icon": "🧬",
+                "text": "生物刺激（膠原蛋白生成促進）"
+              }
+            ]
+          },
+          "phaseSection": {
+            "title": "3階段分步效果",
+            "description": "NAMICA技術的核心是根據粒子大小分階段釋放透明質酸"
+          },
+          "certificationsSection": {
+            "title": "全球標準安全認證"
+          },
+          "trainingSection": {
+            "title": "全球認證培訓",
+            "description": "LIV金秀英院長在格魯吉亞APTOS總部完成了Professional Course，並親自參與手術掌握了最新技術。",
+            "certificateTitle": "APTOS Professional Course Certificate",
+            "certificateName": "Kim Sooyoung · KR0062025",
+            "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
+          },
+          "cta": {
+            "title": "預約APTOS Bio Lifting諮詢",
+            "description": "完成全球認證培訓的專家提供1:1定製諮詢",
+            "button": "預約諮詢"
+          },
+          "lineupSection": {
+            "title": "適應各種臉型的壓倒性產品陣容",
+            "positioning": [
+              {
+                "code": "LL25",
+                "desc": "拉提沉重的面頰脂肪時"
+              },
+              {
+                "code": "NAMICA",
+                "desc": "整體彈性和膚質改善"
+              },
+              {
+                "code": "LL50",
+                "desc": "雙下巴和下頜線細節"
+              }
+            ],
+            "products": [
+              {
+                "name": "APTOS Light Lift 25",
+                "desc": "沿下頜線精細應用，幫助實現自然拉提和彈性改善。考慮部位特性的設計，提供更精確的拉提效果。"
+              },
+              {
+                "name": "APTOS NAMICA 19",
+                "desc": "在深層形成支撐結構，幫助改善中面部和下面部的鬆弛。穩定支撐面部輪廓中心，提供自然的拉提效果。"
+              },
+              {
+                "name": "APTOS Light Lift 50",
+                "desc": "集中應用於雙下巴部位，整齊地整理鬆弛的下巴線條。同時存在脂肪和鬆弛困擾時，提供有效的線條改善。"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "antiaging": {
+      "botox": {
+        "name": "肉毒桿菌素",
+        "fullName": "Botox",
+        "tagline": "除皺 & 瘦臉",
+        "description": "使用肉毒桿菌素改善表情紋，縮小咬肌，打造精緻臉型。",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "肉毒桿菌素",
+            "description": "使用肉毒桿菌素改善表情紋，縮小咬肌，打造精緻臉型。"
+          },
+          "benefits": {
+            "title": "肉毒桿菌素的優點",
+            "items": [
+              {
+                "title": "表情紋改善",
+                "desc": "有效緩解額頭、眉間、眼角皺紋"
+              },
+              {
+                "title": "輪廓塑形",
+                "desc": "減少咬肌、斜方肌體積"
+              },
+              {
+                "title": "快速治療",
+                "desc": "僅需10-20分鐘的短暫治療時間"
+              },
+              {
+                "title": "自然表情",
+                "desc": "適當劑量保持自然表情"
+              }
+            ]
+          },
+          "targetAreas": {
+            "title": "治療部位",
+            "subtitle": "在面部各個部位進行精準注射",
+            "areas": {
+              "forehead": "額頭",
+              "glabella": "眉間",
+              "crowsFeet": "眼角",
+              "nasalis": "鼻翼",
+              "lips": "嘴唇",
+              "masseter": "咬肌",
+              "neckBands": "頸部",
+              "hairline": "髮際線"
+            }
+          },
+          "treatmentInfo": {
+            "title": "治療資訊",
+            "duration": "治療時間",
+            "anesthesia": "麻醉",
+            "recovery": "恢復",
+            "results": "持續時間"
+          },
+          "faq": {
+            "title": "常見問題"
+          },
+          "cta": {
+            "title": "肉毒桿菌素諮詢預約",
+            "description": "自然的除皺效果，通過專家諮詢為您推薦最佳治療方案。"
+          },
+          "treatmentAreasLabels": {
+            "forehead": "額頭",
+            "glabella": "眉間",
+            "crowsFeet": "眼角",
+            "masseter": "咬肌",
+            "mouthCorners": "嘴角",
+            "trapezius": "斜方肌",
+            "calves": "小腿"
+          },
+          "treatmentAreasDescriptions": {
+            "forehead": "改善額頭皺紋，呈現明亮年輕的形象",
+            "glabella": "改善眉間皺紋，呈現輕鬆的表情",
+            "crowsFeet": "改善眼角細紋，改善眼部輪廓",
+            "masseter": "縮小咬肌，打造精緻面部輪廓",
+            "mouthCorners": "改善嘴角下垂，呈現明亮的表情",
+            "trapezius": "減少斜方肌體積，打造優雅的肩部線條",
+            "calves": "整理小腿線條，打造纖細雙腿"
+          },
+          "targetAreasDescription": "從表情紋到面部輪廓，通過分部位定製治療帶來自然改善效果。",
+          "timeline": {
+            "title": "術後時間線",
+            "items": [
+              {
+                "time": "第1天",
+                "title": "治療當天",
+                "desc": "簡單治療後可立即恢復日常生活",
+                "percentage": 0
+              },
+              {
+                "time": "3-7天",
+                "title": "效果開始",
+                "desc": "肌肉開始逐漸放鬆",
+                "percentage": 30
+              },
+              {
+                "time": "2-4周",
+                "title": "最佳效果",
+                "desc": "自然除皺效果達到最大化",
+                "percentage": 100
+              },
+              {
+                "time": "3-6個月",
+                "title": "效果維持",
+                "desc": "效果持續時間因人而異",
+                "percentage": 70
+              }
+            ]
+          },
+          "mechanismLabel": "精準注射定位圖",
+          "treatmentInfoLabels": {
+            "duration": "治療時間",
+            "anesthesia": "麻醉",
+            "recovery": "恢復期",
+            "results": "效果持續"
+          },
+          "process": {
+            "items": [
+              {
+                "step": 1,
+                "title": "諮詢",
+                "desc": "皺紋分析及期望效果諮詢"
+              },
+              {
+                "step": 2,
+                "title": "潔面",
+                "desc": "卸妝及消毒"
+              },
+              {
+                "step": 3,
+                "title": "麻醉",
+                "desc": "必要時塗抹麻醉膏"
+              },
+              {
+                "step": 4,
+                "title": "標記",
+                "desc": "標記注射點"
+              },
+              {
+                "step": 5,
+                "title": "治療",
+                "desc": "微針注射肉毒桿菌素"
+              },
+              {
+                "step": 6,
+                "title": "完成",
+                "desc": "術後注意事項說明"
+              }
+            ]
+          },
+          "targetAreasItems": [
+            "額頭",
+            "眉間",
+            "眼角",
+            "咬肌",
+            "嘴角",
+            "斜方肌",
+            "小腿"
+          ],
+          "idealFor": {
+            "items": [
+              "擔心表情紋的人士",
+              "希望縮小咬肌、斜方肌體積的人士",
+              "希望快速簡便治療的人士",
+              "希望預防性抗衰老的年輕人"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "治療當天避免飲酒和桑拿",
+              "禁止按摩治療部位",
+              "孕婦、哺乳期女性、神經肌肉疾病患者不宜治療"
+            ]
+          },
+          "faqs": {
+            "items": [
+              {
+                "q": "打肉毒桿菌素會使表情不自然嗎？",
+                "shortA": "適當劑量可以保持自然表情。",
+                "a": "在正確位置注射適當劑量，可以在保持自然表情的同時改善皺紋。過量使用可能導致不自然，因此由經驗豐富的醫療人員進行治療非常重要。"
+              },
+              {
+                "q": "肉毒桿菌素效果能持續多久？",
+                "shortA": "因人而異，通常持續3-6個月。",
+                "a": "因人而異，但通常持續3-6個月左右。定期治療可使肌肉弱化，效果可能更持久。"
+              },
+              {
+                "q": "不同品牌的肉毒桿菌素有什麼區別？",
+                "shortA": "每種產品的起效時間、擴散度、持續時間各不相同。",
+                "a": "每種產品的效果起效時間、擴散度、持續時間都有差異。根據部位和目的選擇合適的產品很重要。"
+              }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "10-20分鐘",
+            "anesthesia": "無麻醉或麻醉膏（根據需要）",
+            "recovery": "立即恢復日常生活",
+            "results": "3-7天后開始見效，持續3-6個月"
+          }
+        }
+      },
+      "filler": {
+        "name": "玻尿酸",
+        "fullName": "Filler",
+        "tagline": "填充 & 輪廓塑形",
+        "description": "使用透明質酸填充劑填充凹陷部位，打造自然飽滿效果。",
+        "detail": {
+          "hero": {
+            "badge": "Anti-Aging Treatment",
+            "title": "玻尿酸",
+            "description": "使用透明質酸填充劑填充凹陷部位，打造自然飽滿效果。"
+          },
+          "benefits": {
+            "title": "玻尿酸的優點",
+            "items": [
+              {
+                "title": "即時效果",
+                "desc": "治療後立即可見體積改善"
+              },
+              {
+                "title": "自然觸感",
+                "desc": "透明質酸柔軟的質地"
+              },
+              {
+                "title": "可逆性治療",
+                "desc": "需要時可溶解，安全可靠"
+              },
+              {
+                "title": "多功能應用",
+                "desc": "適用於體積、皺紋、輪廓等多種用途"
+              }
+            ]
+          },
+          "process": {
+            "items": [
+              {
+                "step": 1,
+                "title": "諮詢",
+                "desc": "面部分析及治療方案制定"
+              },
+              {
+                "step": 2,
+                "title": "潔面",
+                "desc": "卸妝及消毒"
+              },
+              {
+                "step": 3,
+                "title": "麻醉",
+                "desc": "麻醉膏或神經阻滯"
+              },
+              {
+                "step": 4,
+                "title": "治療",
+                "desc": "分部位定製填充劑注射"
+              },
+              {
+                "step": 5,
+                "title": "完成",
+                "desc": "塑形及術後護理指導"
+              }
+            ]
+          },
+          "idealFor": {
+            "items": [
+              "想要填充凹陷部位的人士",
+              "擔心法令紋、嘴角皺紋的人士",
+              "想要拉提鼻子、下巴輪廓的人士",
+              "想要豐滿嘴唇的人士"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "治療後可能出現淤青和腫脹",
+              "禁止按摩或按壓治療部位",
+              "3天內避免劇烈運動和桑拿",
+              "有血管阻塞風險，必須由經驗豐富的專業人員進行治療"
+            ]
+          },
+          "faqs": {
+            "items": [
+              {
+                "q": "填充劑會結塊或看起來不自然嗎？",
+                "shortA": "適量+熟練的醫療人員操作，效果自然。",
+                "a": "使用正品填充劑，由具有解剖學知識的醫療人員進行適量注射，可獲得自然效果。過度注射可能導致不自然，因此適量治療很重要。"
+              },
+              {
+                "q": "填充劑治療後可以立即恢復日常活動嗎？",
+                "shortA": "大多數人可以立即恢復日常活動。",
+                "a": "大多數人可以立即恢復日常活動。但根據治療部位，可能會出現淤青或腫脹，因此建議在重要活動前預留時間。"
+              },
+              {
+                "q": "填充劑可以溶解嗎？",
+                "shortA": "是的，可以用透明質酸酶安全溶解。",
+                "a": "透明質酸填充劑可以用透明質酸酶溶解。如果對治療效果不滿意或出現併發症，可以安全去除。"
+              }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "20-40分鐘",
+            "anesthesia": "麻醉膏或神經阻滯麻醉",
+            "recovery": "即時至3天（因部位而異）",
+            "results": "即時效果，持續6-24個月（因產品而異）"
+          },
+          "targetAreas": {
+            "title": "治療部位",
+            "subtitle": "在面部各個部位填充體積並塑造輪廓",
+            "areas": [
+              {
+                "id": 1,
+                "name": "額頭",
+                "description": "額頭皺紋改善"
+              },
+              {
+                "id": 2,
+                "name": "太陽穴",
+                "description": "體積流失恢復"
+              },
+              {
+                "id": 3,
+                "name": "鼻子",
+                "description": "鼻樑/鼻尖塑形"
+              },
+              {
+                "id": 4,
+                "name": "蘋果肌",
+                "description": "顴骨體積"
+              },
+              {
+                "id": 5,
+                "name": "法令紋",
+                "description": "法令紋改善"
+              },
+              {
+                "id": 6,
+                "name": "側臉",
+                "description": "臉頰下垂改善"
+              },
+              {
+                "id": 7,
+                "name": "下巴尖",
+                "description": "下巴體積塑形"
+              },
+              {
+                "id": 8,
+                "name": "臥蠶",
+                "description": "眼下體積"
+              },
+              {
+                "id": 9,
+                "name": "嘴唇",
+                "description": "嘴唇體積"
+              },
+              {
+                "id": 10,
+                "name": "眉毛",
+                "description": "眉毛拉提"
+              }
+            ]
+          },
+          "bodyAreas": {
+            "title": "身體填充",
+            "subtitle": "改善身體曲線的體積，打造美麗的輪廓",
+            "areas": [
+              {
+                "id": 1,
+                "name": "肩部填充",
+                "description": "圓潤柔和的肩線",
+                "detail": "柔化斜方肌線條，打造女性化的肩部輪廓"
+              },
+              {
+                "id": 2,
+                "name": "臀部填充",
+                "description": "豐滿的臀部曲線",
+                "detail": "為扁平或缺乏體積的臀部增添自然豐滿感"
+              },
+              {
+                "id": 3,
+                "name": "骨盆填充",
+                "description": "平滑的骨盆輪廓",
+                "detail": "自然遮蓋突出的髖骨，完成平滑的身體曲線"
+              },
+              {
+                "id": 4,
+                "name": "臀凹填充",
+                "description": "改善臀凹（大腿-臀部凹陷）",
+                "detail": "填充臀部與大腿之間的凹陷部位，打造平滑輪廓"
+              }
+            ],
+            "notice": "身體填充使用大容量透明質酸填充劑，根據個人體型定製治療方案。",
+            "imageAlt": "展示肩部、臀部、骨盆、臀凹身體填充治療部位的醫學插圖"
+          },
+          "fillerTypes": {
+            "title": "部位定製填充劑",
+            "subtitle": "根據治療部位和目的選擇最佳填充劑硬度",
+            "types": [
+              {
+                "type": "柔軟型",
+                "areas": "嘴唇、眼下",
+                "desc": "自然觸感"
+              },
+              {
+                "type": "中等型",
+                "areas": "法令紋、臉頰",
+                "desc": "體積+支撐力"
+              },
+              {
+                "type": "堅固型",
+                "areas": "鼻子、下巴、額頭",
+                "desc": "強支撐力"
+              }
+            ]
+          },
+          "safety": {
+            "title": "可逆性治療",
+            "subtitle": "透明質酸填充劑可在需要時溶解，安全可靠",
+            "steps": [
+              {
+                "step": "01",
+                "title": "填充劑注射",
+                "desc": "體積塑形"
+              },
+              {
+                "step": "02",
+                "title": "透明質酸酶",
+                "desc": "需要時溶解"
+              },
+              {
+                "step": "03",
+                "title": "恢復原狀",
+                "desc": "安全去除"
+              }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "治療資訊",
+            "duration": "治療時間",
+            "anesthesia": "麻醉",
+            "recovery": "恢復",
+            "results": "持續時間"
+          },
+          "faq": {
+            "title": "常見問題"
+          },
+          "cta": {
+            "title": "玻尿酸諮詢預約",
+            "description": "自然的體積和輪廓，通過專家諮詢為您推薦最佳治療方案。"
+          },
+          "volumeIllustrationLabel": "容量恢復映射圖",
+          "heroImageAlt": "玻尿酸 - 體積與輪廓的藝術"
+        }
+      },
+      "skinbooster": {
+        "name": "水光針",
+        "fullName": "Skin Booster",
+        "tagline": "由內而外的深層補水",
+        "description": "向皮膚深層輸送水分和營養，從根本上改善肌膚健康。",
+        "detail": {
+          "heroImageAlt": "水光針 - 從肌底綻放光彩",
+          "hydrationIllustration": {
+            "epidermis": "表皮層",
+            "dehydrated": "乾燥肌膚",
+            "hydrated": "水潤肌膚",
+            "haGrowthFactors": "透明質酸 + 生長因子",
+            "deepHydration": "深層補水直達真皮層"
+          },
+          "courseTimeline": {
+            "items": [
+              {
+                "session": "第1次",
+                "week": "第0周",
+                "effect": 20,
+                "desc": "基礎補水"
+              },
+              {
+                "session": "第2次",
+                "week": "第2-3周",
+                "effect": 50,
+                "desc": "強化水分屏障"
+              },
+              {
+                "session": "第3次",
+                "week": "第4-6周",
+                "effect": 80,
+                "desc": "激活膠原蛋白"
+              },
+              {
+                "session": "第4次",
+                "week": "第6-8周",
+                "effect": 100,
+                "desc": "達到最佳效果"
+              }
+            ]
+          },
+          "benefits": {
+            "title": "水光針的優勢",
+            "items": [
+              {
+                "title": "深層補水",
+                "desc": "透明質酸直達真皮層"
+              },
+              {
+                "title": "改善肌膚彈性",
+                "desc": "促進膠原蛋白和彈性蛋白生成"
+              },
+              {
+                "title": "自然光澤",
+                "desc": "從肌底綻放健康光彩"
+              },
+              {
+                "title": "改善膚質",
+                "desc": "改善細紋和毛孔"
+              }
+            ]
+          },
+          "process": {
+            "items": [
+              {
+                "step": 1,
+                "title": "諮詢",
+                "desc": "肌膚狀態分析及產品選擇"
+              },
+              {
+                "step": 2,
+                "title": "潔面",
+                "desc": "卸妝及肌膚調理"
+              },
+              {
+                "step": 3,
+                "title": "麻醉",
+                "desc": "塗抹麻醉膏"
+              },
+              {
+                "step": 4,
+                "title": "治療",
+                "desc": "微針或儀器注入"
+              },
+              {
+                "step": 5,
+                "title": "完成",
+                "desc": "鎮靜護理及防曬"
+              }
+            ]
+          },
+          "idealFor": {
+            "items": [
+              "肌膚乾燥、缺水困擾的人士",
+              "肌膚彈性下降、細紋困擾的人士",
+              "膚色暗沉、缺乏活力的人士",
+              "激光治療後想要肌膚再生的人士"
+            ]
+          },
+          "cautions": {
+            "items": [
+              "治療後可能出現微針痕跡和發紅",
+              "治療當天避免化妝和飲酒",
+              "注意防曬",
+              "建議每隔2-4周進行3-4次治療"
+            ]
+          },
+          "faqs": {
+            "items": [
+              {
+                "q": "水光針和水光注射一樣嗎？",
+                "shortA": "類似，但水光針含有更多成分。",
+                "a": "概念相似，但水光針包含多種成分（透明質酸、多聚核苷酸等）。水光注射主要聚焦於透明質酸為主的補水。"
+              },
+              {
+                "q": "什麼時候能看到效果？",
+                "shortA": "立即感受水潤+2-4周後彈性·光澤改善。",
+                "a": "治療後立即可感受到水潤感，2-4周後肌膚彈性和光澤改善。為獲得最佳效果，建議每隔2-4周進行3-4次治療。"
+              },
+              {
+                "q": "哪種產品最好？",
+                "shortA": "根據肌膚狀態和目標諮詢後選擇。",
+                "a": "有麗珠蘭、婕斯、Revive、Vital、Rituo等多種產品，根據肌膚狀態和目標選擇。通過諮詢確定最適合您的產品。"
+              }
+            ]
+          },
+          "treatmentValues": {
+            "duration": "30-45分鐘",
+            "anesthesia": "麻醉膏",
+            "recovery": "1-3天（微針痕跡）",
+            "results": "2-4周後見效，建議3-4次療程"
+          },
+          "effects": {
+            "title": "水光針效果",
+            "items": [
+              {
+                "icon": "droplet",
+                "title": "深層補水",
+                "desc": "直達真皮層"
+              },
+              {
+                "icon": "bounce",
+                "title": "改善彈性",
+                "desc": "促進膠原蛋白生成"
+              },
+              {
+                "icon": "glow",
+                "title": "自然光澤",
+                "desc": "從肌底綻放光彩"
+              }
+            ]
+          },
+          "treatmentCourse": {
+            "title": "推薦3-4次療程",
+            "subtitle": "為獲得最佳效果，建議每隔2-4周進行3-4次治療",
+            "maintenanceNote": "療程完成後建議每2-3個月進行維護治療"
+          },
+          "products": {
+            "title": "水光針產品",
+            "subtitle": "根據肌膚狀態和目標選擇最適合的產品",
+            "items": [
+              {
+                "name": "婕斯",
+                "desc": "膠原蛋白拉提",
+                "feature": "PDRN + HA"
+              },
+              {
+                "name": "麗珠蘭",
+                "desc": "肌膚再生",
+                "feature": "PN"
+              },
+              {
+                "name": "喬雅登",
+                "desc": "補水 + 彈性",
+                "feature": "Voluma HA"
+              }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "治療資訊",
+            "labels": {
+              "duration": "治療時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果"
+            }
+          },
+          "faqTitle": "常見問題",
+          "cta": {
+            "title": "預約水光針諮詢",
+            "description": "感受由內而外的水潤與光澤，專業諮詢為您量身定製治療方案。",
+            "buttonOnline": "在線預約諮詢"
+          }
+        }
+      },
+      "skincare": {
+        "name": "皮膚管理",
+        "fullName": "Premium Skincare",
+        "tagline": "專業皮膚管理師打造的高端皮膚護理",
+        "description": "由專業皮膚管理師進行的高端皮膚護理項目，包括水光注射、Plafill等。根據您的膚質和肌膚困擾量身定製護理方案，恢復肌膚本來的健康狀態。",
+        "detail": {
+          "heroSubtitle": "Esthetician Care",
+          "programsSection": {
+            "badge": "Programs",
+            "title": "LIV 整形外科的皮膚管理項目",
+            "subtitle": "專業皮膚管理師提供的定製高端護理",
+            "items": [
+              {
+                "id": "hydration",
+                "icon": "droplet",
+                "title": "補水/鎮靜護理",
+                "subtitle": "Hydration & Soothing",
+                "description": "快速鎮靜敏感肌膚，提供深層補水。",
+                "details": "有效改善術前術後的紅腫、緊繃、灼熱感。"
+              },
+              {
+                "id": "vitaminC",
+                "icon": "sun",
+                "title": "維生素C離子導入",
+                "subtitle": "Vitamin C Iontophoresis",
+                "description": "通過離子導入儀將高濃度維生素C深層滲透至肌膚。",
+                "details": "打造透明感膚色，抗氧化作用恢復肌膚活力。"
+              },
+              {
+                "id": "peeling",
+                "icon": "sparkle",
+                "title": "溫和煥膚護理",
+                "subtitle": "Gentle Peeling (Plafill)",
+                "description": "使用Plafill（鉑金拉拉煥膚）進行安全去角質。",
+                "details": "敏感肌也適用的溫和煥膚，改善膚質。"
+              },
+              {
+                "id": "ultrasound",
+                "icon": "wave",
+                "title": "超聲波拉提/精華導入護理",
+                "subtitle": "Ultrasound Lifting & Boosting",
+                "description": "使用Ulblanc超聲波儀器的高效皮膚護理。",
+                "details": "一次體驗精華滲透、肌膚再生、鎮靜、拉提效果。"
+              },
+              {
+                "id": "acne",
+                "icon": "shield",
+                "title": "痘痘集中護理",
+                "subtitle": "Acne Care Program",
+                "description": "為調節皮脂分泌、消炎鎮靜、預防復發而設計的項目。",
+                "details": "必要時可配合醫療團隊進行消炎注射及清除。"
+              },
+              {
+                "id": "exosome",
+                "icon": "glow",
+                "title": "外泌體/美白精華護理",
+                "subtitle": "Exosome & Brightening Booster",
+                "description": "使用外泌體、高效美白安瓶的皮膚拉提護理。",
+                "details": "同時改善肌膚活力、光澤和彈性。"
+              }
+            ]
+          },
+          "equipmentSection": {
+            "badge": "Equipment",
+            "title": "使用設備陣容",
+            "subtitle": "高端設備帶來更有效的皮膚護理",
+            "items": [
+              {
+                "id": "aqualab",
+                "name": "Aqualab水氧儀",
+                "brand": "Histolab",
+                "icon": "water",
+                "description": "水分深層清潔+去角質+黑頭護理",
+                "feature": "敏感肌也可無刺激護理"
+              },
+              {
+                "id": "ulblanc",
+                "name": "Ulblanc超聲波儀",
+                "brand": "Ulblanc",
+                "icon": "wave",
+                "description": "集鎮靜·再生·精華滲透·拉提於一體的高效超聲波系統",
+                "feature": "全方位超聲波皮膚護理"
+              },
+              {
+                "id": "ionto",
+                "name": "離子導入儀",
+                "brand": "Iontophoresis",
+                "icon": "zap",
+                "description": "幫助高濃縮成分（維生素C、美白劑等）有效滲透肌膚",
+                "feature": "最大化成分滲透力"
+              },
+              {
+                "id": "cryocell",
+                "name": "冷凍鎮靜儀",
+                "brand": "Cryo Cooling",
+                "icon": "snowflake",
+                "description": "緩解術後灼熱感·紅腫，鎮靜肌膚並增強保溼力",
+                "feature": "冷卻鎮靜護理"
+              },
+              {
+                "id": "led",
+                "name": "LED光療系統",
+                "brand": "LED Therapy",
+                "icon": "lightbulb",
+                "description": "可選紅/藍/黃光波長",
+                "feature": "根據肌膚狀態定製的光療護理：痘痘鎮靜、彈力強化、再生促進等"
+              }
+            ]
+          },
+          "differentiatorSection": {
+            "badge": "Why LIV",
+            "title": "LIV皮膚管理的差異化優勢",
+            "subtitle": "不只是普通護理，而是醫療級高端護理",
+            "items": [
+              {
+                "id": "expert",
+                "icon": "award",
+                "title": "10年以上經驗的專業皮膚管理師常駐",
+                "description": "憑藉熟練的技術和豐富的經驗提供最佳效果"
+              },
+              {
+                "id": "genuine",
+                "icon": "verified",
+                "title": "只使用正品產品和高端設備",
+                "description": "使用經過驗證的正品產品和高端設備，安全有效護理"
+              },
+              {
+                "id": "medical",
+                "icon": "stethoscope",
+                "title": "基於皮膚解剖學的醫療團隊協作設計",
+                "description": "必要時可配合專家諮詢及醫療治療的綜合護理"
+              },
+              {
+                "id": "iv",
+                "icon": "heart",
+                "title": "可配合輸液治療",
+                "description": "根據肌膚狀態配合美白、補水、抗氧化等輸液治療"
+              },
+              {
+                "id": "private",
+                "icon": "lock",
+                "title": "在舒適私密的空間進行",
+                "description": "在輕鬆私密的環境中享受專屬護理"
+              }
+            ]
+          },
+          "treatmentInfo": {
+            "title": "治療資訊",
+            "labels": {
+              "duration": "所需時間",
+              "anesthesia": "麻醉",
+              "recovery": "恢復期",
+              "results": "效果"
+            }
+          },
+          "treatmentValues": {
+            "duration": "60-90分鐘",
+            "anesthesia": "無需",
+            "recovery": "無（即可恢復日常）",
+            "results": "即時改善膚色，定期護理效果最大化"
+          },
+          "idealFor": {
+            "title": "推薦人群",
+            "items": [
+              "肌膚乾燥粗糙困擾者",
+              "肌膚彈性下降者",
+              "需要術前術後肌膚調理者",
+              "特殊日子前需要皮膚護理者",
+              "希望定期進行皮膚護理者",
+              "敏感肌需要專業護理者"
+            ]
+          },
+          "faqs": {
+            "title": "常見問題",
+            "items": [
+              {
+                "q": "皮膚管理和水光針的區別是什麼？",
+                "shortA": "皮膚管理是外部護理，水光針是注射治療。",
+                "a": "皮膚管理是由皮膚管理師進行的外部護理項目，包括清潔、補水、鎮靜等基礎護理。水光針是由醫療團隊進行的注射治療，將麗珠蘭、Juvelook等成分直接注入肌膚內部。"
+              },
+              {
+                "q": "多久做一次比較好？",
+                "shortA": "建議每2-4周進行定期護理。",
+                "a": "根據肌膚狀態有所不同，每2-4周定期護理效果最佳。諮詢時會根據個人情況推薦最適合的護理週期。"
+              },
+              {
+                "q": "敏感肌也可以做嗎？",
+                "shortA": "可以，我們會根據膚質調整護理方案。",
+                "a": "敏感肌也可以放心接受護理。我們使用低刺激產品和以鎮靜為主的方案進行定製護理。初次諮詢時會確認肌膚狀態後推薦最適合的方案。"
+              },
+              {
+                "q": "護理後可以馬上化妝嗎？",
+                "shortA": "可以，可以立即化妝。",
+                "a": "皮膚管理後無恢復期，可以立即化妝。您甚至會感覺妝容比平時更服帖。"
+              }
+            ]
+          },
+          "cta": {
+            "title": "預約皮膚管理諮詢",
+            "description": "擁有10年以上經驗的專業皮膚管理師將根據您的膚質和肌膚困擾推薦最適合的護理方案。",
+            "button": "在線預約諮詢"
+          }
+        }
+      }
+    },
+    "laser": {
+      "center": {
+        "name": "激光中心",
+        "fullName": "Laser Center",
+        "tagline": "高端激光全方位解決方案",
+        "description": "色素、血管、膚質、脫毛、紋身去除，一站式解決各種皮膚問題的高端激光中心。",
+        "detail": {
+          "hero": {
+            "title": "激光中心",
+            "subtitle": "針對肌膚問題的定製激光解決方案",
+            "description": "Clarity II + Lucas 組合<br/>從色素到血管、脫毛、紋身去除一站式護理"
+          },
+          "viewMore": "瞭解詳情",
+          "stats": [
+            {
+              "label": "設備",
+              "value": "4種",
+              "desc": "高端激光"
+            },
+            {
+              "label": "治療領域",
+              "value": "5種",
+              "desc": "肌膚問題解決"
+            },
+            {
+              "label": "經驗",
+              "value": "10年以上",
+              "desc": "激光治療經驗"
+            },
+            {
+              "label": "安全性",
+              "value": "已認證",
+              "desc": "FDA批准設備"
+            }
+          ],
+          "categories": {
+            "title": "針對肌膚問題的定製治療",
+            "subtitle": "選擇您的皮膚問題，我們將推薦最佳激光治療方案",
+            "items": [
+              {
+                "id": "pigmentation",
+                "name": "色斑/色素改善",
+                "nameEn": "Pigmentation & Melasma",
+                "description": "通過皮秒激光和激光調色有效改善黃褐斑、色斑、老年斑等色素問題。",
+                "equipment": [
+                  "Lucas",
+                  "激光調色",
+                  "Clarity II"
+                ],
+                "icon": "☀️"
+              },
+              {
+                "id": "vascular",
+                "name": "紅血絲/血管治療",
+                "nameEn": "Redness & Vascular",
+                "description": "使用Clarity II雙波長治療面部潮紅、毛細血管擴張、血管瘤。",
+                "equipment": [
+                  "Clarity II"
+                ],
+                "icon": "🔴"
+              },
+              {
+                "id": "skintone",
+                "name": "膚色均勻化",
+                "nameEn": "Skin Tone Brightening",
+                "description": "通過激光調色和Ulblanc改善暗沉肌膚，使膚色更加明亮。",
+                "equipment": [
+                  "激光調色",
+                  "Ulblanc"
+                ],
+                "icon": "✨"
+              },
+              {
+                "id": "hair-removal",
+                "name": "高端脫毛",
+                "nameEn": "Premium Hair Removal",
+                "description": "Clarity II雙波長和IntelliTrak技術，適用於所有膚質的安全脫毛。",
+                "equipment": [
+                  "Clarity II"
+                ],
+                "icon": "💎"
+              },
+              {
+                "id": "tattoo",
+                "name": "紋身去除",
+                "nameEn": "Tattoo Removal",
+                "description": "Lucas皮秒激光無疤痕有效去除各種顏色的紋身。",
+                "equipment": [
+                  "Lucas"
+                ],
+                "icon": "🎨"
+              }
+            ]
+          },
+          "matrix": {
+            "badge": "設備 × 適應症",
+            "title": "解決任何肌膚問題的設備陣容",
+            "subtitle": "LIV激光中心的4種高端設備覆蓋所有肌膚問題",
+            "chartTitle": "肌膚問題 × 設備矩陣",
+            "equipment": [
+              "Clarity II",
+              "Lucas",
+              "激光調色",
+              "Ulblanc"
+            ],
+            "concerns": [
+              "色斑/色素",
+              "紅血絲/血管",
+              "膚色",
+              "脫毛",
+              "紋身去除"
+            ]
+          },
+          "equipmentSection": {
+            "badge": "LIV設備",
+            "title": "高端激光陣容",
+            "subtitle": "使用FDA批准的最新設備提供安全有效的治療",
+            "labels": {
+              "wavelength": "波長",
+              "feature": "特點",
+              "indications": "適應症"
+            },
+            "items": [
+              {
+                "name": "Clarity II",
+                "nameKo": "Clarity II",
+                "wavelength": "755nm + 1064nm",
+                "feature": "雙波長 + IntelliTrak技術",
+                "targets": [
+                  "色素",
+                  "血管",
+                  "脫毛",
+                  "膚色"
+                ],
+                "highlight": true
+              },
+              {
+                "name": "Lucas",
+                "nameKo": "Lucas",
+                "wavelength": "532/755/1064nm",
+                "feature": "皮秒脈衝 (450ps)",
+                "targets": [
+                  "黃褐斑",
+                  "色素",
+                  "紋身去除"
+                ],
+                "highlight": false
+              },
+              {
+                "name": "Laser Toning",
+                "nameKo": "激光調色",
+                "wavelength": "1064nm Nd:YAG",
+                "feature": "低能量重複照射",
+                "targets": [
+                  "膚色",
+                  "毛孔",
+                  "膚質"
+                ],
+                "highlight": false
+              },
+              {
+                "name": "Ulblanc",
+                "nameKo": "Ulblanc",
+                "wavelength": "專用波長",
+                "feature": "選擇性黑色素靶向",
+                "targets": [
+                  "美白",
+                  "均勻膚色"
+                ],
+                "highlight": false
+              }
+            ]
+          },
+          "synergy": {
+            "badge": "LIV EXCLUSIVE",
+            "title": "Clarity II + Lucas 協同效果",
+            "subtitle": "兩款高端設備的組合，比單一治療更快速有效",
+            "benefits": [
+              {
+                "title": "多波長覆蓋",
+                "desc": "從532nm到1064nm<br/>覆蓋所有深度的靶點"
+              },
+              {
+                "title": "複合適應症治療",
+                "desc": "色斑+紅血絲、色素+毛孔等<br/>同時解決多種問題"
+              },
+              {
+                "title": "快速見效",
+                "desc": "比單一治療<br/>快1.5-2倍的效果"
+              }
+            ]
+          },
+          "process": {
+            "title": "激光治療流程",
+            "steps": [
+              {
+                "step": 1,
+                "title": "皮膚分析",
+                "desc": "專家諮詢及皮膚類型、問題精密分析"
+              },
+              {
+                "step": 2,
+                "title": "定製方案",
+                "desc": "為每位客戶制定最佳激光組合和治療計劃"
+              },
+              {
+                "step": 3,
+                "title": "激光治療",
+                "desc": "經驗豐富的專家進行安全精準的治療"
+              },
+              {
+                "step": 4,
+                "title": "術後護理",
+                "desc": "治療後護理、定期檢查和維護管理"
+              }
+            ]
+          },
+          "faq": {
+            "title": "常見問題",
+            "items": [
+              {
+                "q": "哪種激光適合我？",
+                "a": "最佳激光因皮膚狀況和問題而異。通過免費諮詢，專家將直接分析您的皮膚並推薦定製治療方案。"
+              },
+              {
+                "q": "激光治療疼嗎？",
+                "a": "因設備而異，但大多數人形容為「橡皮筋彈的感覺」。如需要可塗抹麻醉膏以減輕疼痛。Clarity II配備內置冷卻系統，更加舒適。"
+              },
+              {
+                "q": "恢復期需要多長時間？",
+                "a": "取決於激光類型。激光調色、Ulblanc幾乎沒有恢復期，可立即恢復日常生活。皮秒激光可能有3-5天的輕微泛紅。"
+              },
+              {
+                "q": "什麼時候能看到效果？",
+                "a": "治療後立即可感受到膚色改善。2-4周內隨著膠原蛋白重塑，效果會更加明顯。建議完成推薦療程以獲得最佳效果。"
+              }
+            ]
+          },
+          "cta": {
+            "title": "邁向清透健康肌膚的第一步",
+            "description": "我們幫您找到針對肌膚問題的最佳激光<br/>通過免費諮詢確認您的定製治療方案",
+            "buttonConsult": "預約免費諮詢"
+          }
+        }
+      },
+      "pigmentation": {
+        "name": "色素治療",
+        "fullName": "Pigmentation Treatment",
+        "tagline": "黃褐斑、色斑、雀斑改善",
+        "description": "針對各種色素問題的定製激光治療，恢復透亮肌膚。",
+        "detail": {
+          "hero": {
+            "subtitle": "頑固性黃褐斑也能通過LIV三階段系統解決",
+            "description": "從皮秒激光到低刺激調光，4種高端設備完成定製色素治療"
+          },
+          "threeStageSystem": {
+            "title": "LIV三階段色素治療系統",
+            "subtitle": "從輕度到頑固性黃褐斑，分階段定製治療實現有效色素改善",
+            "stages": [
+              {
+                "stage": "第1階段",
+                "title": "集中治療",
+                "equipment": "Lucas皮秒",
+                "description": "皮秒脈衝集中分解深層色素"
+              },
+              {
+                "stage": "第2階段",
+                "title": "精準靶向",
+                "equipment": "Clarity II 755nm",
+                "description": "亞歷山大波長精準治療淺層色素"
+              },
+              {
+                "stage": "第3階段",
+                "title": "維持護理",
+                "equipment": "調光 + 美白激光",
+                "description": "低刺激重複治療維持效果預防復發"
+              }
+            ]
+          },
+          "picoVsNano": {
+            "title": "為什麼選擇皮秒？",
+            "subtitle": "比納秒激光快1000倍的脈衝，更精細地分解色素",
+            "nanosecond": "納秒激光",
+            "picosecond": "皮秒激光",
+            "nanosecondUnit": "十億分之一秒 (10⁻⁹)",
+            "picosecondUnit": "萬億分之一秒 (10⁻¹²)",
+            "largeParticles": "色素顆粒分解較大",
+            "slowDischarge": "排出速度慢",
+            "fineParticles": "色素顆粒分解精細",
+            "fastDischarge": "淋巴排出快",
+            "timesFaster": "快1000倍",
+            "comparison": {
+              "item": "比較項目",
+              "pulseSpeed": "脈衝速度",
+              "particleSize": "色素分解大小",
+              "tissueDamage": "周圍組織損傷",
+              "heatDamage": "熱損傷",
+              "downtime": "恢復期",
+              "sessions": "治療次數",
+              "relativeLarge": "相對較大",
+              "fine": "精細",
+              "exists": "有",
+              "minimal": "最小",
+              "almostNone": "幾乎沒有",
+              "relativeLong": "相對較長",
+              "short": "短",
+              "many": "多",
+              "few": "少"
+            }
+          },
+          "equipment": {
+            "title": "色素治療推薦設備",
+            "subtitle": "LIV 整形外科擁有的4種高端激光實現最佳色素治療",
+            "featured": "FEATURED"
+          },
+          "protocol": {
+            "title": "症狀推薦方案",
+            "mild": {
+              "level": "輕度",
+              "description": "輕微黃褐斑、色斑",
+              "treatment": "激光調光",
+              "sessions": "5-10次",
+              "interval": "2周間隔"
+            },
+            "moderate": {
+              "level": "中度",
+              "description": "中等深度色素",
+              "treatment": "Clarity II 755nm",
+              "sessions": "3-5次",
+              "interval": "3-4周間隔"
+            },
+            "severe": {
+              "level": "重度 / 頑固性",
+              "description": "深層黃褐斑、頑固性",
+              "treatment": "Lucas皮秒 + 調光",
+              "sessions": "5-10次",
+              "interval": "2-4周間隔"
+            }
+          },
+          "idealFor": [
+            "黃褐斑越來越深且擴大的人",
+            "多次做調光但效果不佳的人",
+            "色斑、雀斑較多困擾的人",
+            "開始出現老年斑的人",
+            "膚色暗沉不均勻的人",
+            "想要無恢復期持續護理的人"
+          ],
+          "faq": [
+            {
+              "q": "黃褐斑可以根治嗎？",
+              "a": "黃褐斑需要以'管理'而非根治的理念來對待。集中治療後大幅改善，通過定期維護和防曬將復發降到最低。LIV的三階段系統包含治療和維護兩個環節。"
+            },
+            {
+              "q": "皮秒激光和調光，哪個更好？",
+              "a": "取決於目的。頑固性黃褐斑或深層色素用皮秒激光集中治療，輕微色素或維護則調光更合適。很多情況下，皮秒治療後用調光維護的複合方案最為有效。"
+            },
+            {
+              "q": "激光後色素會加深嗎？",
+              "a": "可能出現暫時性色素沉著（PIH）。這會在2-4周內自然改善，做好防曬可以預防。LIV會徹底做好術後護理指導。"
+            },
+            {
+              "q": "懷孕期間可以做色素激光嗎？",
+              "a": "不建議在懷孕或哺乳期間做激光治療。建議在分娩和哺乳結束後進行治療。懷孕期間請專注於防曬和保溼。"
+            }
+          ],
+          "cta": {
+            "title": "黃褐斑/色素 免費諮詢",
+            "description": "我們將根據您的膚質提供定製色素治療方案。通過專家諮詢開始最佳治療。"
+          }
+        }
+      },
+      "vascular": {
+        "name": "血管治療",
+        "fullName": "Vascular Treatment",
+        "tagline": "紅血絲、毛細血管、痘印",
+        "description": "選擇性治療擴張的血管和發紅，打造均勻膚色。",
+        "detail": {
+          "hero": {
+            "subtitle": "雙波長同時解決紅血絲和血管問題",
+            "description": "Clarity II的1064nm Nd:YAG波長有效改善紅血絲、毛細血管擴張、酒糟鼻"
+          },
+          "rednessTypes": {
+            "title": "紅血絲類型定製治療",
+            "subtitle": "根據發紅的原因和深度選擇最佳波長和能量進行治療",
+            "recommendedTreatment": "推薦治療",
+            "types": [
+              {
+                "type": "面部潮紅",
+                "description": "情緒或溫度變化時臉容易發紅的症狀",
+                "treatment": "Clarity II 1064nm 低功率"
+              },
+              {
+                "type": "毛細血管擴張",
+                "description": "鼻子、臉頰周圍可見細小血管的症狀",
+                "treatment": "Clarity II 1064nm 高功率"
+              },
+              {
+                "type": "酒糟鼻 (Rosacea)",
+                "description": "伴有慢性發紅、丘疹、膿皰的皮膚病",
+                "treatment": "Clarity II + 皮膚護理聯合"
+              },
+              {
+                "type": "血管瘤 / 血管畸形",
+                "description": "先天性或後天性血管病變",
+                "treatment": "Clarity II 集中治療"
+              }
+            ]
+          },
+          "dualWavelength": {
+            "title": "雙波長原理",
+            "subtitle": "755nm和1064nm兩種波長選擇性治療從淺層到深層的血管",
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "shallow755": "755nm - 靶向淺層血管",
+            "deep1064": "1064nm - 靶向深層血管",
+            "alexandrite": {
+              "title": "755nm 亞歷山大",
+              "points": [
+                "靶向表皮附近的淺層血管",
+                "對毛細血管擴張治療有效",
+                "血紅蛋白吸收率高"
+              ]
+            },
+            "ndyag": {
+              "title": "1064nm Nd:YAG",
+              "points": [
+                "可到達真皮層的深層血管",
+                "對慢性紅血絲、酒糟鼻治療有效",
+                "對深色皮膚也安全"
+              ]
+            }
+          },
+          "clarity": {
+            "title": "Clarity II 柯美麗",
+            "subtitle": "針對血管治療優化的雙波長高端激光",
+            "badge": "ONLY OPTION",
+            "why": "為什麼選擇Clarity II？",
+            "whyDesc": "是LIV 整形外科擁有的設備中最適合血管治療的設備。1064nm Nd:YAG波長選擇性吸收血管中的血紅蛋白，在不損傷周圍組織的情況下只治療血管。",
+            "recommendedSessions": "3-8次 (視症狀而定)",
+            "benefits": [
+              {
+                "title": "雙波長",
+                "desc": "755nm(色素/脫毛) + 1064nm(血管/深層色素) 多功能方案"
+              },
+              {
+                "title": "IntelliTrak技術",
+                "desc": "自動18%重疊，均勻傳遞能量"
+              },
+              {
+                "title": "所有膚質適用",
+                "desc": "皮膚類型I-VI均可安全治療"
+              },
+              {
+                "title": "低溫氣體冷卻",
+                "desc": "治療中保護皮膚並最大程度減少疼痛"
+              }
+            ],
+            "duration": "15-30分鐘",
+            "anesthesia": "無麻醉（低溫氣體冷卻）",
+            "recovery": "即刻恢復日常"
+          },
+          "protocol": {
+            "title": "症狀推薦方案",
+            "mild": {
+              "level": "輕度",
+              "description": "輕微紅血絲、初期毛細血管",
+              "sessions": "3-5次",
+              "interval": "3-4周間隔",
+              "treatment": "Clarity II 1064nm"
+            },
+            "moderate": {
+              "level": "中度",
+              "description": "慢性紅血絲、擴張的毛細血管",
+              "sessions": "5-8次",
+              "interval": "3-4周間隔",
+              "treatment": "Clarity II 1064nm"
+            },
+            "severe": {
+              "level": "重度",
+              "description": "酒糟鼻、嚴重血管擴張",
+              "sessions": "8-10次以上",
+              "interval": "2-3周間隔",
+              "treatment": "Clarity II 1064nm"
+            }
+          },
+          "idealFor": [
+            "情緒或溫度變化時臉容易發紅的人",
+            "鼻子、臉頰周圍可見細小血管的人",
+            "因慢性紅血絲化妝不服帖的人",
+            "被診斷為酒糟鼻的人",
+            "激光治療後紅血絲持續較久的人",
+            "因面部潮紅影響社交的人"
+          ],
+          "faq": [
+            {
+              "q": "紅血絲治療後馬上見效嗎？",
+              "a": "治療後可能暫時看起來更紅。這是正常反應，2-3天內會消退。實際效果會在3-4周後逐漸顯現，隨著重複治療會逐步改善。"
+            },
+            {
+              "q": "紅血絲能完全消除嗎？",
+              "a": "取決於發紅的原因和嚴重程度。大多數情況下可期待50-80%的改善，目標是大幅緩解症狀而非完全消除。通過維護治療可以保持效果。"
+            },
+            {
+              "q": "酒糟鼻也能用激光治療嗎？",
+              "a": "酒糟鼻的血管擴張症狀可以用激光有效治療。但酒糟鼻是複雜的皮膚病，激光治療配合皮膚護理、藥物治療效果更好。"
+            },
+            {
+              "q": "治療後有什麼注意事項？",
+              "a": "治療後2-3天內避免桑拿、飲酒、劇烈運動。做好防曬，避免使用刺激性化妝品。治療部位暫時發紅或腫脹是正常的。"
+            }
+          ],
+          "cta": {
+            "title": "紅血絲/血管 免費諮詢",
+            "description": "我們將根據您的紅血絲類型提供定製治療方案。通過專家諮詢恢復健康透亮的肌膚。"
+          }
+        }
+      },
+      "skintone": {
+        "name": "膚質改善",
+        "fullName": "Skin Tone Improvement",
+        "tagline": "毛孔、疤痕、膚質改善",
+        "description": "激光煥膚可實現毛孔縮小、疤痕改善、膚質細膩的效果。",
+        "detail": {
+          "hero": {
+            "title": "膚色均勻化",
+            "subtitle": "Skin Tone Brightening & Whitening",
+            "description": "激光嫩膚與Ulblanc協同作用<br/>讓暗沉肌膚恢復明亮透徹"
+          },
+          "concernsSection": {
+            "title": "您有這些肌膚困擾嗎？",
+            "subtitle": "膚色不均的原因多種多樣。我們針對您的具體問題提供定製方案。",
+            "customSolution": "定製方案",
+            "concerns": [
+              {
+                "title": "整體暗沉",
+                "description": "因日曬、壓力、疲勞等導致膚色整體暗淡無光",
+                "solution": "激光嫩膚整體提亮膚色",
+                "equipment": [
+                  "激光嫩膚",
+                  "Ulblanc"
+                ]
+              },
+              {
+                "title": "局部色素沉著",
+                "description": "臉頰、額頭、顴骨周圍局部出現深色色素沉著",
+                "solution": "激光嫩膚密集治療 + 皮秒激光聯合",
+                "equipment": [
+                  "激光嫩膚",
+                  "Lucas"
+                ]
+              },
+              {
+                "title": "毛孔/膚質問題",
+                "description": "因毛孔粗大、膚質粗糙導致膚色看起來不均勻",
+                "solution": "利用激光嫩膚的膠原蛋白重塑效果",
+                "equipment": [
+                  "激光嫩膚"
+                ]
+              },
+              {
+                "title": "肌膚透明度下降",
+                "description": "肌膚暗淡無透明感，看起來不健康",
+                "solution": "Ulblanc恢復肌膚透明度和光澤",
+                "equipment": [
+                  "Ulblanc",
+                  "激光嫩膚"
+                ]
+              }
+            ]
+          },
+          "toningSection": {
+            "badge": "治療原理",
+            "title": "激光嫩膚的科學",
+            "description1": "激光嫩膚使用<strong>1064nm Nd:YAG激光</strong>以低能量重複照射，逐漸分解皮膚中的黑色素。",
+            "description2": "與傳統高能量激光不同，<strong>以低能量均勻覆蓋大面積</strong>，最大程度減少對皮膚的刺激，同時最大化效果。",
+            "effectsTitle": "激光嫩膚的3大效果",
+            "effects": [
+              {
+                "title": "黑色素分解",
+                "desc": "逐步分解皮膚中的色素"
+              },
+              {
+                "title": "膠原蛋白生成",
+                "desc": "刺激真皮層改善皮膚彈性"
+              },
+              {
+                "title": "毛孔收縮",
+                "desc": "調節皮脂腺功能、收緊毛孔"
+              }
+            ]
+          },
+          "beforeAfterSection": {
+            "title": "膚色變化過程",
+            "subtitle": "激光嫩膚與Ulblanc組合帶來的膚色改變"
+          },
+          "equipmentSection": {
+            "badge": "LIV 設備",
+            "title": "膚色改善專用設備",
+            "subtitle": "不影響日常生活，逐漸提亮膚色的專業設備",
+            "labels": {
+              "wavelength": "波長",
+              "feature": "特點",
+              "advantage": "優勢",
+              "indications": "適應症",
+              "recommendedSessions": "建議次數"
+            },
+            "toning": {
+              "name": "激光嫩膚",
+              "nameEn": "Laser Toning (Spectra XT)",
+              "wavelength": "1064nm Nd:YAG",
+              "feature": "低能量重複照射（MLA模式）",
+              "advantage": "零恢復期，立即恢復日常生活",
+              "targets": [
+                "暗沉肌膚",
+                "細紋",
+                "毛孔",
+                "膚質",
+                "提亮"
+              ]
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc Whitening Laser",
+              "wavelength": "專用美白波長",
+              "feature": "選擇性靶向黑色素",
+              "advantage": "無刺激改善膚色",
+              "targets": [
+                "美白",
+                "均勻膚色",
+                "透明感",
+                "光澤",
+                "暗沉"
+              ]
+            },
+            "synergyTitle": "激光嫩膚 + Ulblanc 協同效果",
+            "synergyDesc": "激光嫩膚改善整體膚質，Ulblanc直接靶向黑色素，與單獨治療相比可期待<strong>1.5-2倍更快的效果</strong>。兩種設備都無恢復期，可輕鬆進行聯合治療。"
+          },
+          "protocolSection": {
+            "badge": "治療流程",
+            "title": "3步膚色改善計劃",
+            "subtitle": "系統性分階段治療，實現自然持久的膚色改善",
+            "steps": [
+              {
+                "step": 1,
+                "title": "肌膚調理",
+                "equipment": "激光嫩膚",
+                "description": "使用1064nm波長均勻地向皮膚照射低能量，改善皮膚基礎狀態。",
+                "sessions": "每週1次，4-5次"
+              },
+              {
+                "step": 2,
+                "title": "黑色素靶向",
+                "equipment": "Ulblanc",
+                "description": "使用選擇性作用於黑色素的專用波長，逐步分解色素，促進皮膚美白。",
+                "sessions": "每2周，3-4次"
+              },
+              {
+                "step": 3,
+                "title": "維護管理",
+                "equipment": "激光嫩膚 + Ulblanc",
+                "description": "每月定期護理維持提亮後的膚色，預防新的色素沉著。",
+                "sessions": "每月1次維護"
+              }
+            ]
+          },
+          "advantagesSection": {
+            "title": "激光嫩膚的優勢",
+            "subtitle": "為忙碌現代人提供輕鬆護膚方案",
+            "items": [
+              {
+                "title": "零恢復期",
+                "desc": "治療後立即恢復日常活動"
+              },
+              {
+                "title": "午休時段治療",
+                "desc": "僅需15-20分鐘"
+              },
+              {
+                "title": "自然效果",
+                "desc": "肌膚逐漸變亮"
+              },
+              {
+                "title": "綜合改善",
+                "desc": "膚色、毛孔、彈性同步改善"
+              }
+            ]
+          },
+          "faq": {
+            "title": "膚色改善常見問題",
+            "items": [
+              {
+                "q": "激光嫩膚需要幾次才能看到效果？",
+                "a": "通常4-5次治療後可以看到明顯效果。根據皮膚狀況因人而異，治療約10次可達到最佳效果。之後每月1次維護治療可長期保持提亮後的膚色。"
+              },
+              {
+                "q": "激光嫩膚後日常生活有限制嗎？",
+                "a": "激光嫩膚最大的優點是「零恢復期」。治療後可能出現輕微泛紅，但30分鐘至1小時內會消退，可以立即洗臉、化妝、外出。但治療當天請避免桑拿和劇烈運動，並注意防曬。"
+              },
+              {
+                "q": "Ulblanc和激光嫩膚有什麼區別？",
+                "a": "激光嫩膚使用1064nm Nd:YAG激光逐步改善整體皮膚色素沉著並促進膠原蛋白生成。Ulblanc使用專門針對黑色素的專用波長，提供更直接的美白效果。兩種治療聯合使用可產生協同效果，獲得更快更有效的結果。"
+              },
+              {
+                "q": "敏感肌膚可以做激光嫩膚嗎？",
+                "a": "可以。激光嫩膚使用低能量，對敏感肌膚相對安全。但首次治療時會從較低能量設置開始，確認皮膚反應後逐步調整。諮詢時請準確描述您的皮膚狀況，我們將制定個性化治療方案。"
+              },
+              {
+                "q": "黃褐斑治療與膚色改善治療有何不同？",
+                "a": "黃褐斑治療針對邊界清晰的色素病變，使用皮秒激光等高能量設備進行集中治療。而膚色改善針對整體暗沉、細微色素沉著、膚質改善，使用激光嫩膚和Ulblanc。如果有黃褐斑同時想改善整體膚色，聯合兩種治療效果最佳。"
+              }
+            ]
+          },
+          "illustrationLabels": {
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "deepDermis": "深層真皮",
+            "laserHead": "1064nm Nd:YAG 低能量照射",
+            "mechanismDesc": "低能量重複照射逐步分解黑色素",
+            "before": "Before",
+            "after": "After",
+            "beforeDesc": "不均勻膚色",
+            "afterDesc": "明亮均勻膚色",
+            "laserToning": "激光嫩膚",
+            "ulblanc": "+ Ulblanc"
+          },
+          "cta": {
+            "title": "找回明亮透徹的膚色",
+            "description": "開始無恢復期、融入日常的<br/>激光嫩膚 & Ulblanc 護膚計劃",
+            "buttonConsult": "預約免費諮詢"
+          }
+        }
+      },
+      "hairRemoval": {
+        "name": "激光脫毛",
+        "fullName": "Laser Hair Removal",
+        "tagline": "永久脫毛解決方案",
+        "description": "醫療級激光選擇性破壞毛囊，實現永久脫毛效果。",
+        "detail": {
+          "hero": {
+            "title": "高端脫毛",
+            "subtitle": "Premium Hair Removal with Clarity II",
+            "description": "雙波長 + IntelliTrak™ 技術<br/>適合所有膚質的安全高效醫療激光脫毛"
+          },
+          "claritySection": {
+            "badge": "LIV 高端設備",
+            "title": "Clarity II",
+            "subtitle": "脫毛新標準",
+            "description1": "Clarity II是一款高端激光系統，在單一平臺上提供<strong>755nm亞歷山大激光</strong>和<strong>1064nm Nd:YAG</strong>兩種波長。",
+            "description2": "<strong>IntelliTrak™</strong>技術實時追蹤皮膚，無重疊無遺漏地均勻輸出能量，最大程度降低燙傷風險，最大化治療效果。",
+            "specs": {
+              "wavelength": "波長",
+              "wavelengthValue": "755nm + 1064nm",
+              "spotSize": "光斑尺寸",
+              "spotSizeValue": "最大3cm²",
+              "pulseTime": "脈衝時間",
+              "pulseTimeValue": "2-400ms",
+              "cooling": "冷卻",
+              "coolingValue": "低溫氣體"
+            }
+          },
+          "intellitrakSection": {
+            "badge": "差異化技術",
+            "title": "IntelliTrak™ 智能治療"
+          },
+          "bodyAreas": {
+            "title": "部位脫毛指南",
+            "subtitle": "Clarity II可實現從面部到全身所有部位的脫毛",
+            "labels": {
+              "sessions": "建議次數",
+              "interval": "治療間隔"
+            },
+            "items": [
+              {
+                "area": "腋下",
+                "sessions": "6-8次",
+                "interval": "4-6周",
+                "description": "最受歡迎的脫毛部位。對汗液和異味管理也很有效。"
+              },
+              {
+                "area": "手臂/腿部",
+                "sessions": "6-10次",
+                "interval": "6-8周",
+                "description": "大面積部位也能快速治療。長期保持光滑肌膚。"
+              },
+              {
+                "area": "比基尼線",
+                "sessions": "8-10次",
+                "interval": "4-6周",
+                "description": "針對敏感部位優化設置，安全有效。"
+              },
+              {
+                "area": "面部（人中、下頜線）",
+                "sessions": "8-12次",
+                "interval": "3-4周",
+                "description": "細膩面部毛髮去除。連絨毛也能徹底清除。"
+              },
+              {
+                "area": "背部/胸部（男性）",
+                "sessions": "8-12次",
+                "interval": "6-8周",
+                "description": "男性脫毛專業服務。從自然減毛到完全脫毛。"
+              },
+              {
+                "area": "全身脫毛",
+                "sessions": "8-12次",
+                "interval": "按部位調整",
+                "description": "全身護理。套餐項目價格優惠。"
+              }
+            ]
+          },
+          "advantages": {
+            "title": "Clarity II 優勢",
+            "subtitle": "為什麼選擇Clarity II脫毛？",
+            "items": [
+              {
+                "title": "雙波長",
+                "description": "755nm + 1064nm，適合所有膚質，安全有效"
+              },
+              {
+                "title": "IntelliTrak™",
+                "description": "實時皮膚追蹤，均勻輸出能量，最大程度降低燙傷風險"
+              },
+              {
+                "title": "大光斑",
+                "description": "最大3cm²光斑尺寸，大面積部位也能快速治療"
+              },
+              {
+                "title": "集成冷卻",
+                "description": "低溫氣體冷卻系統，最大程度減少治療中的疼痛和不適"
+              }
+            ]
+          },
+          "faq": {
+            "title": "脫毛常見問題",
+            "items": [
+              {
+                "q": "激光脫毛是永久的嗎？",
+                "a": "激光脫毛被歸類為「永久性減毛（Permanent Hair Reduction）」。由於針對生長期毛囊，完成治療後可期待80-90%的永久減毛效果。部分休止期毛囊可能轉入生長期導致輕微復發，因此建議每年1-2次維護治療。"
+              },
+              {
+                "q": "激光脫毛疼嗎？",
+                "a": "Clarity II內置的低溫氣體冷卻系統在治療過程中持續冷卻皮膚，最大程度減少疼痛。大多數客人形容為「橡皮筋輕彈」程度的輕微刺激。如需要，可提前塗抹麻醉膏。"
+              },
+              {
+                "q": "淺色（金色、白色）毛髮也能去除嗎？",
+                "a": "激光脫毛針對黑色素，因此對黑色素含量少的白色、金色、淺色毛髮效果有限。這種情況可考慮電解脫毛作為替代方案。諮詢時會確認毛髮顏色並推薦最佳方法。"
+              },
+              {
+                "q": "皮膚較深可以脫毛嗎？",
+                "a": "可以，Clarity II的1064nm Nd:YAG波長對深色皮膚（Fitzpatrick Type IV-VI）也安全適用。755nm亞歷山大激光適合淺色皮膚，1064nm適合深色皮膚，可為所有膚質定製治療。"
+              },
+              {
+                "q": "脫毛前後有什麼注意事項？",
+                "a": "治療前：提前2周避免蠟脫、拔毛、脫毛膏，只進行剃毛。治療當天避免過度日曬。治療後：24-48小時避免桑拿、劇烈運動，認真塗抹防曬霜。"
+              },
+              {
+                "q": "需要多少次治療才能看到效果？",
+                "a": "根據部位和個人毛髮特性不同，通常6-10次治療後可達到最佳效果。由於激光僅在生長期（Anagen）有效，需要間隔4-8周進行多次治療，以針對不同週期的毛囊。"
+              }
+            ]
+          },
+          "cta": {
+            "title": "開啟光滑肌膚之旅",
+            "description": "獲取部位定製脫毛諮詢<br/>免費諮詢瞭解最適合您的脫毛方案",
+            "buttonConsult": "預約免費諮詢"
+          },
+          "wavelengthIllustration": {
+            "title": "各波長毛囊靶向深度",
+            "wavelength755": "755nm 亞歷山大激光",
+            "wavelength755Desc": "黑色素吸收率最佳",
+            "wavelength1064": "1064nm Nd:YAG",
+            "wavelength1064Desc": "深層滲透，適合所有膚色",
+            "epidermis": "表皮",
+            "dermis": "真皮",
+            "lightSkin": "針對淺色皮膚優化",
+            "darkSkin": "深色皮膚/深層毛囊"
+          },
+          "intellitrakIllustration": {
+            "title": "IntelliTrak™ 實時追蹤系統",
+            "description1": "實時皮膚追蹤實現均勻能量傳遞",
+            "description2": "無重疊無遺漏的精準照射"
+          },
+          "intellitrakFeatures": [
+            {
+              "title": "實時追蹤",
+              "desc": "實時感知手柄移動，準確把握照射位置"
+            },
+            {
+              "title": "均勻覆蓋",
+              "desc": "無重疊無遺漏地向整個治療區域均勻輸出能量"
+            },
+            {
+              "title": "燙傷預防",
+              "desc": "防止同一部位重複照射，最大程度降低燙傷和過度治療風險"
+            }
+          ],
+          "processSteps": [
+            {
+              "step": 1,
+              "title": "諮詢 & 皮膚分析",
+              "desc": "分析皮膚類型和毛髮特性，制定定製治療方案"
+            },
+            {
+              "step": 2,
+              "title": "術前準備",
+              "desc": "剃除治療部位毛髮，必要時塗抹麻醉膏"
+            },
+            {
+              "step": 3,
+              "title": "激光治療",
+              "desc": "通過IntelliTrak™精確均勻地輸出能量"
+            },
+            {
+              "step": 4,
+              "title": "術後護理",
+              "desc": "冷卻和舒緩護理，安排下次治療時間"
+            }
+          ]
+        }
+      },
+      "hair-removal": {
+        "name": "激光脫毛"
+      },
+      "tattoo": {
+        "name": "紋身去除",
+        "fullName": "Tattoo Removal",
+        "tagline": "安全去除紋身",
+        "description": "皮秒激光將紋身色素分解成微小顆粒，徹底清除。",
+        "detail": {
+          "breadcrumb": "紋身去除",
+          "hero": {
+            "title": "紋身去除",
+            "subtitle": "Tattoo Removal with Lucas",
+            "description": "皮秒技術無疤痕乾淨地有效去除所有顏色的紋身"
+          },
+          "picoTech": {
+            "badge": "皮秒技術",
+            "title": "為什麼選擇皮秒激光？",
+            "description1": "傳統納秒(10⁻⁹秒)激光通過熱作用(Photothermal)分解墨水。皮秒(10⁻¹²秒)激光以快1000倍的脈衝產生光聲作用(Photoacoustic)。",
+            "description2": "這種衝擊波將墨水顆粒粉碎到微塵級別，使我們身體的免疫系統能夠輕鬆清除。",
+            "benefits": [
+              {
+                "title": "更少的治療次數",
+                "desc": "微粒粉碎實現高效清除"
+              },
+              {
+                "title": "更少的熱損傷",
+                "desc": "短脈衝保護周圍組織"
+              },
+              {
+                "title": "更少的副作用",
+                "desc": "最大限度降低疤痕、色素變化風險"
+              }
+            ],
+            "illustration": {
+              "title": "墨水顆粒粉碎機制",
+              "nanosecond": "納秒 (10⁻⁹秒)",
+              "nanosecondDevice": "傳統Q-Switch激光",
+              "picosecond": "皮秒 (10⁻¹²秒)",
+              "picosecondDevice": "Lucas激光",
+              "before": "Before",
+              "after": "After",
+              "photothermal": "熱作用 (Photothermal)",
+              "photothermalResult": "大顆粒 → 中顆粒",
+              "photoacoustic": "光聲作用 (Photoacoustic)",
+              "photoacousticResult": "大顆粒 → 微小顆粒 ✓"
+            }
+          },
+          "colorWavelength": {
+            "badge": "多波長系統",
+            "title": "靶向所有顏色",
+            "subtitle": "Lucas皮秒激光通過多波長有效分解各種顏色的墨水",
+            "illustrationTitle": "墨水顏色最佳波長",
+            "colors": {
+              "black": {
+                "name": "黑色",
+                "wavelength": "1064nm",
+                "difficulty": "最容易"
+              },
+              "red": {
+                "name": "紅色",
+                "wavelength": "532nm",
+                "difficulty": "比較容易"
+              },
+              "blue": {
+                "name": "藍色",
+                "wavelength": "755nm",
+                "difficulty": "較難"
+              },
+              "green": {
+                "name": "綠色",
+                "wavelength": "755nm",
+                "difficulty": "最難"
+              }
+            },
+            "lucasNote": "Lucas：多波長可靶向所有顏色",
+            "wavelengths": [
+              {
+                "wavelength": "1064nm",
+                "colors": "黑色、深藍色、棕色",
+                "note": "最深穿透，大多數紋身"
+              },
+              {
+                "wavelength": "755nm",
+                "colors": "藍色、綠色",
+                "note": "中等深度，特殊顏色靶向"
+              },
+              {
+                "wavelength": "532nm",
+                "colors": "紅色、橙色、黃色",
+                "note": "表皮層，淺色專用"
+              }
+            ]
+          },
+          "tattooTypes": {
+            "badge": "紋身類型指南",
+            "title": "您想去除什麼樣的紋身？",
+            "subtitle": "根據紋身的類型和特性，治療次數和難度會有所不同",
+            "estimatedSessions": "預計次數",
+            "difficulty": {
+              "easy": "比較容易",
+              "medium": "中等",
+              "hard": "較難"
+            },
+            "types": [
+              {
+                "type": "業餘紋身",
+                "description": "非專業人士做的紋身。墨水較淺，去除相對容易。",
+                "sessions": "3-5次",
+                "notes": "多為墨汁、筆墨等單色紋身"
+              },
+              {
+                "type": "專業紋身（黑白）",
+                "description": "專業紋身師做的黑白紋身。墨水深且均勻。",
+                "sessions": "6-10次",
+                "notes": "黑色墨水對激光反應最好"
+              },
+              {
+                "type": "專業紋身（彩色）",
+                "description": "使用多種顏色的彩色紋身。不同顏色需要不同波長。",
+                "sessions": "8-15次以上",
+                "notes": "綠色、藍色需要更多次數"
+              },
+              {
+                "type": "半永久化妝",
+                "description": "眉毛、眼線、唇部等半永久化妝。比一般紋身做得較淺。",
+                "sessions": "3-6次",
+                "notes": "眼部治療使用特殊防護設備"
+              },
+              {
+                "type": "外傷性紋身",
+                "description": "事故造成的異物沉積。瀝青、石墨等嵌入皮膚的情況。",
+                "sessions": "4-8次",
+                "notes": "根據深度和範圍而定"
+              },
+              {
+                "type": "遮蓋紋身",
+                "description": "在原有紋身上重新做的紋身。墨水層較厚，去除較難。",
+                "sessions": "10-20次以上",
+                "notes": "分階段去除後可做新紋身"
+              }
+            ]
+          },
+          "process": {
+            "badge": "治療流程",
+            "title": "紋身去除流程",
+            "steps": [
+              {
+                "step": 1,
+                "title": "諮詢 & 評估",
+                "description": "評估紋身大小、顏色、深度、膚質，告知預計治療次數和費用。",
+                "duration": "約30分鐘"
+              },
+              {
+                "step": 2,
+                "title": "皮秒激光治療",
+                "description": "用Lucas皮秒激光將墨水顆粒微細粉碎。治療時間因大小而異。",
+                "duration": "15-60分鐘"
+              },
+              {
+                "step": 3,
+                "title": "恢復期",
+                "description": "皮膚自然排出粉碎的墨水。可能出現結痂、輕微腫脹。",
+                "duration": "2-4周"
+              },
+              {
+                "step": 4,
+                "title": "下次治療",
+                "description": "間隔6-8周重複治療。每次治療都能看到紋身變淡。",
+                "duration": "間隔6-8周"
+              }
+            ]
+          },
+          "lucas": {
+            "title": "Lucas",
+            "subtitle": "皮秒紋身去除的新標準",
+            "specs": {
+              "pulseDuration": {
+                "label": "脈衝持續時間",
+                "value": "450皮秒"
+              },
+              "wavelength": {
+                "label": "波長",
+                "value": "532 / 755 / 1064nm"
+              },
+              "repetitionRate": {
+                "label": "重複率",
+                "value": "最高10Hz"
+              },
+              "energy": {
+                "label": "能量",
+                "value": "最高1.8J"
+              }
+            },
+            "strengths": {
+              "title": "Lucas的優勢",
+              "items": [
+                "多波長應對所有顏色",
+                "450ps超短脈衝最小化熱損傷",
+                "點陣鏡頭也可治療疤痕"
+              ]
+            }
+          },
+          "precautions": {
+            "before": {
+              "title": "治療前",
+              "items": [
+                "治療前2周避免過度日曬",
+                "治療部位避免使用刺激性產品",
+                "如有皮膚狀況（炎症、傷口）請提前告知",
+                "告知正在服用的藥物（光敏性藥物等）"
+              ]
+            },
+            "after": {
+              "title": "治療後",
+              "items": [
+                "按指示塗抹處方藥膏",
+                "絕對不要人為去除結痂",
+                "必須使用防曬霜（SPF 30以上）",
+                "1周內避免桑拿、劇烈運動"
+              ]
+            }
+          },
+          "faq": [
+            {
+              "q": "紋身能完全去除嗎？",
+              "a": "大多數紋身可以去除90%以上。能否完全去除取決於墨水顏色、深度、紋身年齡、膚質等因素。黑色墨水最容易去除，綠色和藍色可能需要更多次數。諮詢時會給出準確的預估。"
+            },
+            {
+              "q": "紋身去除有多痛？",
+              "a": "疼痛程度從'橡皮筋彈的感覺'到'刺痛感'因人而異。Lucas皮秒激光的脈衝時間比傳統納秒激光短1000倍，熱量積累少，疼痛也相應減輕。必要時塗抹麻醉膏來最小化疼痛。"
+            },
+            {
+              "q": "治療後會留疤嗎？",
+              "a": "皮秒激光最小化熱損傷，疤痕風險非常低。遵循適當的能量設置和治療間隔，大多數情況下可以無疤痕恢復。遵循治療後護理指南（防曬、不剝結痂等），可期待乾淨的皮膚。"
+            },
+            {
+              "q": "舊紋身和新紋身，哪個更容易去除？",
+              "a": "通常舊紋身更容易去除。隨著時間推移，我們身體的免疫系統會自然清除部分墨水顆粒。但新紋身也可以用皮秒激光有效去除，而且墨水清晰殘留，激光靶向更容易也是優點。"
+            },
+            {
+              "q": "所有顏色的紋身都能去除嗎？",
+              "a": "大多數顏色都可以去除。Lucas皮秒激光提供多波長（532nm、755nm、1064nm）來應對各種顏色。"
+            },
+            {
+              "q": "治療間隔為什麼是6-8周？",
+              "a": "激光粉碎的墨水顆粒由我們身體的巨噬細胞吸收，通過淋巴系統排出。這個自然癒合過程需要4-6周，皮膚完全恢復後才能進行下次治療。間隔太短會增加皮膚損傷和疤痕風險。"
+            }
+          ],
+          "cta": {
+            "title": "新起點的第一步",
+            "description": "不想要的紋身，用皮秒激光乾淨去除。免費諮詢獲取準確的治療方案"
+          }
+        }
+      }
+    }
+  },
+  "medical": {
+    "title": "醫療資訊",
+    "subtitle": "查看關於治療的常見問題\n和實用的醫療資訊。",
+    "searchPlaceholder": "輸入搜索詞 (例如: 音波拉提、疼痛)",
+    "categories": {
+      "all": "全部",
+      "lifting": "拉提",
+      "antiaging": "抗衰老",
+      "laser": "激光",
+      "general": "一般"
+    },
+    "cta": {
+      "title": "還有其他問題嗎？",
+      "subtitle": "專業諮詢師將為您詳細解答。",
+      "reservation": "預約諮詢",
+      "call": "電話諮詢"
+    },
+    "faq": [
+      {
+        "id": "ulthera-vs-thermage",
+        "category": "lifting",
+        "question": "音波拉提和鳳凰電波有什麼區別？",
+        "shortAnswer": "音波拉提用超聲波針對深層，鳳凰電波用射頻改善彈性。",
+        "answer": "音波拉提使用HIFU（高強度聚焦超聲波）技術將能量傳遞到皮膚深層的SMAS層。鳳凰電波則使用RF（射頻）能量收縮並促進真皮層的膠原蛋白再生。音波拉提有效拉提下垂皮膚，鳳凰電波則有效改善整體皮膚彈性。兩種治療結合使用可產生協同效果。",
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "音波拉提",
+          "鳳凰電波",
+          "拉提",
+          "HIFU",
+          "射頻"
+        ]
+      },
+      {
+        "id": "lifting-pain",
+        "category": "lifting",
+        "question": "拉提治療有多疼？",
+        "shortAnswer": "塗抹麻醉膏後進行治療，大多數人能夠承受。",
+        "answer": "拉提治療的疼痛程度因治療類型和個人差異而異。音波拉提和鳳凰電波 FLX治療前都會塗抹約30分鐘的麻醉膏。特別是鳳凰電波 FLX採用振動技術（Vibrating Tip），大大減輕了疼痛，大多數患者都能舒適地接受治療。如果您對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知我們。",
+        "relatedTreatments": [
+          "ulthera",
+          "thermage",
+          "shurink"
+        ],
+        "tags": [
+          "拉提",
+          "疼痛",
+          "麻醉"
+        ]
+      },
+      {
+        "id": "lifting-frequency",
+        "category": "lifting",
+        "question": "拉提治療多久做一次？",
+        "shortAnswer": "音波拉提建議1-2年做一次，鳳凰電波建議6個月-1年做一次。",
+        "answer": "音波拉提建議1-2年做一次，鳳凰電波建議6個月-1年做一次。Shurink或InMode等維護性治療可以每3-6個月進行一次。根據您的皮膚狀況和期望效果，治療週期可能會有所不同，建議通過諮詢確定準確的週期。",
+        "relatedTreatments": [
+          "ulthera",
+          "thermage",
+          "shurink"
+        ],
+        "tags": [
+          "拉提",
+          "治療週期",
+          "維護"
+        ]
+      },
+      {
+        "id": "lifting-duration",
+        "category": "lifting",
+        "question": "拉提效果能維持多久？",
+        "shortAnswer": "音波拉提約1-2年，鳳凰電波約6個月-1年。",
+        "answer": "音波拉提的效果約持續1年，鳳凰電波約6個月-1年。但效果持續時間可能因個人皮膚狀況、年齡和生活習慣而異。定期進行維護治療可以延長效果持續時間。",
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "拉提",
+          "效果持續",
+          "維持時間"
+        ]
+      },
+      {
+        "id": "botox-natural",
+        "category": "antiaging",
+        "question": "注射肉毒桿菌素後表情會不自然嗎？",
+        "shortAnswer": "在正確位置注射適量可保持自然表情。",
+        "answer": "在正確位置注射適量可以在保持自然表情的同時只改善皺紋。不自然的表情通常是由於用量過多或注射位置不正確造成的。在LIV 整形外科，熟練的專家會根據每個人的肌肉特點注射適量，您可以期待自然的效果。",
+        "relatedTreatments": [
+          "botox"
+        ],
+        "tags": [
+          "肉毒桿菌素",
+          "表情",
+          "自然"
+        ]
+      },
+      {
+        "id": "botox-duration",
+        "category": "antiaging",
+        "question": "肉毒桿菌素效果能維持多久？",
+        "shortAnswer": "通常持續3-6個月，定期治療可延長效果。",
+        "answer": "肉毒桿菌素效果因人而異，通常持續3-6個月。定期治療可以使肌肉逐漸弱化，效果維持更久，治療間隔也會延長。首次治療後2-3周可能需要補打，建議觀察恢復情況。",
+        "relatedTreatments": [
+          "botox"
+        ],
+        "tags": [
+          "肉毒桿菌素",
+          "效果持續",
+          "治療週期"
+        ]
+      },
+      {
+        "id": "filler-dissolve",
+        "category": "antiaging",
+        "question": "玻尿酸可以溶解嗎？",
+        "shortAnswer": "是的，玻尿酸可以用溶解針安全去除。",
+        "answer": "是的，玻尿酸可以用透明質酸酶（溶解針）溶解。如果您對治療效果不滿意或出現副作用，可以安全去除。這是玻尿酸的一大優點。但不可逆的填充物（如Artecoll）無法溶解，選擇填充物時請考慮這一點。",
+        "relatedTreatments": [
+          "filler"
+        ],
+        "tags": [
+          "玻尿酸",
+          "透明質酸",
+          "溶解針"
+        ]
+      },
+      {
+        "id": "filler-lumps",
+        "category": "antiaging",
+        "question": "玻尿酸會結塊或凹凸不平嗎？",
+        "shortAnswer": "由熟練醫生使用正品幾乎不會發生這種情況。",
+        "answer": "使用適量正品填充物，由具有解剖學知識的熟練醫生施術，這類問題幾乎不會發生。偶爾出現的凹凸不平大多可以通過按摩解決，必要時可以用透明質酸酶調整。如果治療後有任何不適，請立即諮詢。",
+        "relatedTreatments": [
+          "filler"
+        ],
+        "tags": [
+          "玻尿酸",
+          "副作用",
+          "結塊"
+        ]
+      },
+      {
+        "id": "skinbooster-frequency",
+        "category": "antiaging",
+        "question": "水光針需要做幾次才有效？",
+        "shortAnswer": "建議基礎3-4次療程，然後每2-3個月維護一次。",
+        "answer": "水光針建議每2-4周進行3-4次作為基礎療程。單次治療後即可感受到水潤改善，但最佳效果需要完成整個療程。之後建議每2-3個月進行維護治療。",
+        "relatedTreatments": [
+          "skinbooster"
+        ],
+        "tags": [
+          "水光針",
+          "治療次數"
+        ]
+      },
+      {
+        "id": "laser-sun",
+        "category": "laser",
+        "question": "激光治療後需要避免陽光嗎？",
+        "shortAnswer": "是的，至少2-4周內必須使用SPF 50+防曬霜。",
+        "answer": "是的，激光治療後防曬非常重要。治療後皮膚變得敏感，紫外線導致色素沉著的風險增加。至少2-4周內應仔細塗抹防曬霜（SPF 50+），並使用帽子或遮陽傘。戶外活動較多的季節最好避免激光治療。",
+        "relatedTreatments": [
+          "clarity"
+        ],
+        "tags": [
+          "激光",
+          "紫外線",
+          "色素沉著"
+        ]
+      },
+      {
+        "id": "laser-downtime",
+        "category": "laser",
+        "question": "激光治療後需要多長恢復期？",
+        "shortAnswer": "調Q幾乎沒有恢復期，色素激光約3-5天。",
+        "answer": "取決於激光類型。激光調Q幾乎沒有恢復期，可以立即恢復日常生活。用Clarity II激光治療表皮色素的情況下，色素會加深或形成薄痂，3-5天后自然脫落。",
+        "relatedTreatments": [
+          "clarity"
+        ],
+        "tags": [
+          "激光",
+          "恢復期",
+          "休息時間"
+        ]
+      },
+      {
+        "id": "thread-duration",
+        "category": "lifting",
+        "question": "埋線效果能維持多久？",
+        "shortAnswer": "PDO線6-8個月，PCL線12-18個月。",
+        "answer": "取決於線的類型。PDO（可溶解線）6-8個月，PLLA或PCL線12-18個月。線溶解時會促進膠原蛋白再生，所以線完全溶解後效果也會持續一段時間。通過定期維護治療可以延長效果。",
+        "relatedTreatments": [
+          "thread"
+        ],
+        "tags": [
+          "埋線",
+          "效果持續",
+          "PDO"
+        ]
+      },
+      {
+        "id": "consultation-fee",
+        "category": "general",
+        "question": "可以只諮詢嗎？有費用嗎？",
+        "shortAnswer": "是的，諮詢費1萬韓元，當天治療可全額抵扣。",
+        "answer": "是的，可以只進行諮詢。1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。整形外科專家會親自診斷您的皮膚狀況並推薦最佳治療方案。您可以充分考慮後再做決定。",
+        "relatedTreatments": [],
+        "tags": [
+          "諮詢",
+          "諮詢費",
+          "預約"
+        ]
+      },
+      {
+        "id": "payment-installment",
+        "category": "general",
+        "question": "治療費用可以分期嗎？",
+        "shortAnswer": "是的，可以信用卡分期，免息優惠因卡而異。",
+        "answer": "是的，可以信用卡分期付款。免息分期優惠可能因信用卡公司和付款金額而異，請在諮詢時詢問。此外，各種治療都有促銷和套餐折扣，請查看。",
+        "relatedTreatments": [],
+        "tags": [
+          "費用",
+          "分期",
+          "付款"
+        ]
+      },
+      {
+        "id": "pregnant-treatment",
+        "category": "general",
+        "question": "懷孕或哺乳期可以做治療嗎？",
+        "shortAnswer": "不可以，懷孕/哺乳期不建議進行大多數美容治療。",
+        "answer": "懷孕或哺乳期不建議進行大多數美容治療。肉毒桿菌素、玻尿酸、拉提治療對胎兒或母乳的影響安全性尚未充分驗證。建議在懷孕和哺乳結束後再進行治療。",
+        "relatedTreatments": [],
+        "tags": [
+          "懷孕",
+          "哺乳",
+          "禁忌"
+        ]
+      },
+      {
+        "id": "liv-specialty",
+        "category": "general",
+        "question": "LIV 整形外科最擅長什麼治療？",
+        "shortAnswer": "作為音波拉提和鳳凰電波 FLX認證醫院，專注於非手術拉提。",
+        "answer": "LIV 整形外科是音波拉提正品認證和鳳凰電波 FLX合作醫院，專注於非手術拉提治療。整形外科專家基於4篇SCI論文的學術經驗，為每位患者提供定製治療。位於新沙站4號出口步行1分鐘處。",
+        "relatedTreatments": [
+          "ulthera",
+          "thermage"
+        ],
+        "tags": [
+          "LIV 整形外科",
+          "專業領域",
+          "音波拉提",
+          "鳳凰電波"
+        ]
+      },
+      {
+        "id": "first-visit",
+        "category": "general",
+        "question": "第一次來怎麼進行？",
+        "shortAnswer": "通過電話或KakaoTalk預約後來訪，可接受專家1對1諮詢。",
+        "answer": "請通過電話(02-797-2773)或KakaoTalk預約諮詢。來訪時，整形外科專家會親自診斷您的皮膚狀況，並根據您的需求和期望效果推薦最佳治療方案。諮詢後您可以充分考慮再決定是否治療。",
+        "relatedTreatments": [],
+        "tags": [
+          "首次來訪",
+          "預約",
+          "諮詢流程"
+        ]
+      }
+    ]
+  },
+  "signaturePage": {
+    "hero": {
+      "subtitle": "Signature Program",
+      "title": "簽名項目",
+      "description1": "通過LIV 整形外科獨有的高端抗衰老項目，",
+      "description2": "體驗自然而美麗的變化。"
+    },
+    "photoComparison": {
+      "subtitle": "Premium Anti-aging",
+      "title": "真實前後對比",
+      "description": "將鼠標懸停或點擊卡片，查看治療前後的變化",
+      "viewingDetails": "查看詳情",
+      "clickToViewDetails": "點擊查看詳情",
+      "beforeTreatment": "治療前",
+      "afterTreatment": "治療後"
+    },
+    "programs": {
+      "lifting": {
+        "title": "LIFTING SIGNATURE",
+        "subtitle": "音波拉提 Prime & 鳳凰電波",
+        "tagline": "非手術拉提的巔峰",
+        "description": "體驗音波拉提 Prime的SMAS拉提與鳳凰電波 FLX的膠原蛋白重塑相結合，對抗重力的強效拉提效果。拉提下垂的皮膚，恢復清晰緊緻的面部輪廓。",
+        "features": [
+          "音波拉提 Prime認證SMAS拉提",
+          "鳳凰電波 FLX膠原蛋白再生",
+          "協同複合治療"
+        ],
+        "duration": "約2小時",
+        "recommended": "皮膚下垂、彈性下降、輪廓模糊"
+      },
+      "petit": {
+        "title": "PETIT SIGNATURE",
+        "subtitle": "肉毒桿菌素 & 填充劑",
+        "tagline": "精緻的體積與輪廓",
+        "description": "基於解剖學理解，實現自然的體積和皺紋改善。通過追求自然美的精細治療，從細紋到體積都能填充。",
+        "features": [
+          "正品填充劑自然豐盈",
+          "肉毒桿菌素皺紋改善",
+          "解剖學定製治療"
+        ],
+        "duration": "約1小時",
+        "recommended": "皺紋、體積流失、輪廓改善"
+      },
+      "glow": {
+        "title": "GLOW SIGNATURE",
+        "subtitle": "水光針 & 再生",
+        "tagline": "肌膚本來的光彩",
+        "description": "通過膠原蛋白再生和深層保溼從根本上改善皮膚質地。將暗沉粗糙的皮膚變成清透明亮的皮膚，恢復由內而外的健康光澤。",
+        "features": [
+          "水光針補水",
+          "膠原蛋白促進",
+          "膚質改善"
+        ],
+        "duration": "約1小時",
+        "recommended": "暗沉皮膚、乾燥、毛孔/膚質"
+      },
+      "total": {
+        "title": "TOTAL SIGNATURE",
+        "subtitle": "輪廓拉提",
+        "tagline": "完美的整體護理",
+        "description": "一次性護理拉提、豐盈和膚質的高端套餐。體驗整個面部拉提和清晰的電影級變化。",
+        "features": [
+          "複合拉提治療",
+          "體積重塑",
+          "全面皮膚再生"
+        ],
+        "duration": "定製設計",
+        "recommended": "綜合抗衰老、特殊場合"
+      }
+    },
+    "whySignature": {
+      "subtitle": "Why Signature?",
+      "title": "為什麼選擇簽名項目？",
+      "synergy": {
+        "title": "協同效應",
+        "description": "比單一治療效果高2-3倍的\n複合治療協同效應"
+      },
+      "price": {
+        "title": "合理的價格",
+        "description": "與單獨治療相比最高可享30%折扣的\n套餐特惠價格"
+      },
+      "protocol": {
+        "title": "經過驗證的方案",
+        "description": "通過豐富經驗驗證的\n最佳治療組合"
+      }
+    },
+    "comparison": {
+      "subtitle": "Comparison",
+      "title": "單項治療 vs 簽名項目",
+      "headers": {
+        "item": "項目",
+        "individual": "單項治療",
+        "signature": "簽名項目"
+      },
+      "rows": {
+        "effect": {
+          "label": "效果",
+          "individual": "單一效果",
+          "signature": "2-3倍協同效應"
+        },
+        "price": {
+          "label": "價格",
+          "individual": "原價",
+          "signature": "最高30%折扣"
+        },
+        "time": {
+          "label": "時間",
+          "individual": "多次就診",
+          "signature": "一站式護理"
+        },
+        "result": {
+          "label": "結果",
+          "individual": "局部改善",
+          "signature": "全面解決方案"
+        }
+      }
+    },
+    "cta": {
+      "title": "想知道適合您的項目嗎？",
+      "description": "專業顧問將分析您的皮膚狀況，推薦最佳項目。"
+    }
+  },
+  "liftingPage": {
+    "hero": {
+      "subtitle": "Lifting",
+      "description1": "用對抗重力的高端拉提方案，",
+      "description2": "恢復自然彈性的肌膚。"
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "拉提治療系列"
+    },
+    "whyChoose": {
+      "subtitle": "Why LIV Lifting?",
+      "title": "為什麼選擇LIV拉提？",
+      "certification": {
+        "title": "正品認證",
+        "description1": "作為音波拉提 Prime、鳳凰電波官方認證醫院，",
+        "description2": "只使用正品設備。"
+      },
+      "experts": {
+        "title": "專業醫療團隊",
+        "description1": "擁有豐富治療經驗的",
+        "description2": "專業醫療團隊親自操作。"
+      },
+      "customized": {
+        "title": "定製方案",
+        "description1": "根據個人皮膚狀況，",
+        "description2": "設計最優治療方案。"
+      }
+    },
+    "cta": {
+      "title": "想知道適合您的拉提方案嗎？",
+      "description": "通過專業諮詢找到最優治療。",
+      "button": "免費諮詢預約"
+    },
+    "treatments": {
+      "ulthera": {
+        "name": "音波拉提 Prime",
+        "nameEn": "Ultherapy Prime",
+        "description": "唯一獲得美國FDA批准的HIFU拉提設備，能量可傳達至SMAS層，提供自然的拉提效果。",
+        "duration": "60-90分鐘",
+        "recovery": "無恢復期"
+      },
+      "thermage": {
+        "name": "鳳凰電波 FLX",
+        "nameEn": "Thermage FLX",
+        "description": "第4代高端射頻拉提，AccuREP技術根據皮膚狀態自動調節最佳能量。",
+        "duration": "45-60分鐘",
+        "recovery": "無恢復期"
+      },
+      "density": {
+        "name": "Density",
+        "nameEn": "Density",
+        "description": "射頻(RF)能量均勻傳遞至真皮層，提供平滑的拉提效果。",
+        "duration": "40-60分鐘",
+        "recovery": "無恢復期"
+      },
+      "inmode": {
+        "name": "InMode",
+        "nameEn": "InMode",
+        "description": "射頻(RF)能量同時實現脂肪減少和皮膚彈性改善的多功能拉提設備。",
+        "duration": "30-90分鐘",
+        "recovery": "0-5天"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "nameEn": "Shurink",
+        "description": "基於HIFU的拉提治療，適合定期護理和逐步改善皮膚彈性。",
+        "duration": "30-45分鐘",
+        "recovery": "無恢復期"
+      },
+      "thread": {
+        "name": "埋線拉提",
+        "nameEn": "Thread Lift",
+        "description": "使用可吸收線的拉提，提供即時自然的拉提效果和膠原蛋白刺激效果。",
+        "duration": "30-60分鐘",
+        "recovery": "3-7天"
+      }
+    },
+    "compare": {
+      "subtitle": "Compare",
+      "title": "拉提治療比較",
+      "description": "找到適合您的拉提治療",
+      "table": {
+        "treatment": "治療名稱",
+        "technology": "原理",
+        "duration": "治療時間",
+        "anesthesia": "麻醉",
+        "downtime": "恢復期",
+        "results": "效果持續",
+        "price": "價格區間",
+        "details": "詳情 →",
+        "viewDetails": "查看詳情"
+      },
+      "values": {
+        "anesthesiaCream": "麻醉膏",
+        "noAnesthesia": "無麻醉",
+        "optional": "可選",
+        "varies": "因治療而異",
+        "localAnesthesia": "局部麻醉",
+        "anesthesiaCreamLocal": "麻醉膏 / 局部麻醉",
+        "none": "無",
+        "premium": "高端",
+        "moderate": "中等",
+        "affordable": "實惠",
+        "hifu": "HIFU",
+        "rf": "RF",
+        "hifuRf": "HIFU+RF",
+        "rfNeedle": "RF+微針",
+        "dissolvingThread": "可吸收線"
+      },
+      "data": {
+        "ulthera": {
+          "technology": "HIFU",
+          "duration": "60-90分鐘",
+          "anesthesia": "麻醉膏",
+          "recovery": "無",
+          "results": "1-2年",
+          "price": "高端"
+        },
+        "thermage": {
+          "technology": "RF",
+          "duration": "45-60分鐘",
+          "anesthesia": "麻醉膏",
+          "recovery": "無",
+          "results": "1-2年",
+          "price": "高端"
+        },
+        "density": {
+          "technology": "RF",
+          "duration": "40-60分鐘",
+          "anesthesia": "麻醉膏",
+          "recovery": "無",
+          "results": "6個月-1年",
+          "price": "中等"
+        },
+        "shurink": {
+          "technology": "HIFU",
+          "duration": "30-45分鐘",
+          "anesthesia": "麻醉膏",
+          "recovery": "無",
+          "results": "3-6個月",
+          "price": "實惠"
+        },
+        "inmode": {
+          "technology": "RF",
+          "duration": "30-90分鐘",
+          "anesthesia": "無麻醉",
+          "recovery": "0-5天",
+          "results": "6個月-1年",
+          "price": "因治療而異"
+        },
+        "thread": {
+          "technology": "可吸收線",
+          "duration": "30-60分鐘",
+          "anesthesia": "麻醉膏 / 局部麻醉",
+          "recovery": "3-7天",
+          "results": "1-2年",
+          "price": "中等"
+        }
+      },
+      "cta": {
+        "question": "不確定哪種治療適合您？",
+        "button": "獲取免費諮詢"
+      }
+    }
+  },
+  "antiagingPage": {
+    "hero": {
+      "subtitle": "Anti-aging",
+      "description1": "用逆轉時光的高端抗衰老，",
+      "description2": "恢復年輕活力的肌膚。"
+    },
+    "lineup": {
+      "subtitle": "Our Treatments",
+      "title": "抗衰老治療系列"
+    },
+    "benefits": {
+      "subtitle": "Natural Beauty",
+      "title": "自然的美麗",
+      "description": "LIV 整形外科的抗衰老追求不過度的自然美。只使用正品產品，通過個性化治療創造最佳效果。",
+      "authentic": {
+        "title": "正品正量原則",
+        "description": "只使用FDA批准的正品，遵守規定劑量。"
+      },
+      "customized": {
+        "title": "定製治療設計",
+        "description": "分析面部結構和皮膚狀況，提出最優治療方案。"
+      },
+      "natural": {
+        "title": "自然的效果",
+        "description": "通過不著痕跡的自然變化，恢復本來的美麗。"
+      }
+    },
+    "cta": {
+      "title": "想要恢復青春嗎？",
+      "description": "通過專業諮詢找到適合您的治療。",
+      "button": "免費諮詢預約"
+    }
+  },
+  "laserPage": {
+    "hero": {
+      "title": "激光中心",
+      "subtitle": "針對皮膚問題的定製激光方案",
+      "description1": "通過Clarity II + Lucas組合，",
+      "description2": "從色素到血管、脫毛、紋身去除一站式護理"
+    },
+    "highlights": {
+      "equipment": "設備",
+      "treatments": "治療領域",
+      "experience": "經驗",
+      "safety": "安全性"
+    },
+    "categories": {
+      "title": "針對皮膚問題的定製治療",
+      "description": "選擇您的皮膚問題，我們將為您推薦最佳激光治療",
+      "pigmentation": {
+        "title": "色斑/色素改善",
+        "description": "用皮秒激光和激光嫩膚有效改善黃褐斑、雀斑、老年斑等色素問題。"
+      },
+      "vascular": {
+        "title": "紅血絲/血管治療",
+        "description": "用Clarity II雙波長治療面部潮紅、毛細血管擴張、血管瘤。"
+      },
+      "skintone": {
+        "title": "膚色均勻化",
+        "description": "用激光嫩膚和Ulblanc使暗沉肌膚變得明亮透徹。"
+      },
+      "hairRemoval": {
+        "title": "高端脫毛",
+        "description": "用Clarity II雙波長和IntelliTrak技術，適合所有膚質的安全脫毛。"
+      },
+      "tattoo": {
+        "title": "紋身去除",
+        "description": "用Lucas皮秒激光無疤痕有效去除各種顏色的紋身。"
+      }
+    },
+    "matrix": {
+      "badge": "設備 × 適應症",
+      "title": "解決任何問題的設備陣容",
+      "description": "LIV激光中心的4種高端設備覆蓋所有皮膚問題"
+    },
+    "equipment": {
+      "badge": "LIV設備",
+      "title": "高端激光陣容",
+      "description": "用FDA批准的最新設備提供安全有效的治療",
+      "clarity": {
+        "name": "Clarity II",
+        "spec": "雙波長 + IntelliTrak技術",
+        "tags": [
+          "色素",
+          "血管",
+          "脫毛",
+          "膚色"
+        ]
+      },
+      "lucas": {
+        "name": "Lucas",
+        "spec": "皮秒脈衝 (450ps)",
+        "tags": [
+          "黃褐斑",
+          "色素",
+          "紋身去除"
+        ]
+      },
+      "toning": {
+        "name": "激光嫩膚",
+        "spec": "低功率重複照射",
+        "tags": [
+          "膚色",
+          "毛孔",
+          "膚質"
+        ]
+      },
+      "ulblanc": {
+        "name": "Ulblanc",
+        "spec": "黑色素選擇性靶向",
+        "tags": [
+          "皮膚美白",
+          "膚色均勻"
+        ]
+      }
+    },
+    "synergy": {
+      "title": "Clarity II + Lucas協同效應",
+      "description": "兩種高端設備的組合比單獨治療更快更有效",
+      "multiWave": {
+        "title": "多波長覆蓋",
+        "description": "從532nm到1064nm覆蓋所有深度的靶標"
+      },
+      "combined": {
+        "title": "複合適應症治療",
+        "description": "同時解決黃褐斑+紅血絲、色素+毛孔等複合問題"
+      },
+      "fast": {
+        "title": "快速見效",
+        "description": "比單獨治療快1.5-2倍的效果"
+      }
+    },
+    "process": {
+      "title": "激光治療流程",
+      "steps": {
+        "analysis": {
+          "title": "皮膚分析",
+          "description": "專家諮詢及皮膚類型、問題精準分析"
+        },
+        "design": {
+          "title": "定製設計",
+          "description": "個人最優激光組合及治療計劃制定"
+        },
+        "treatment": {
+          "title": "激光治療",
+          "description": "經驗豐富的專家安全精準操作"
+        },
+        "aftercare": {
+          "title": "術後護理",
+          "description": "治療後護理、定期檢查、維護管理"
+        }
+      }
+    },
+    "faq": {
+      "title": "常見問題",
+      "q1": {
+        "question": "哪種激光適合我？",
+        "answer": "根據皮膚狀況和問題，最佳激光各有不同。通過免費諮詢，專家將直接分析您的皮膚並提出定製治療方案。"
+      },
+      "q2": {
+        "question": "激光治療疼嗎？",
+        "answer": "因設備而異，但大多數人形容為\"像橡皮筋彈一下的感覺\"。需要時塗抹麻醉膏以最小化疼痛。Clarity II配有內置冷卻系統，更加舒適。"
+      },
+      "q3": {
+        "question": "恢復期多長？",
+        "answer": "根據激光類型而定。激光嫩膚、Ulblanc幾乎沒有恢復期，可立即恢復日常生活。皮秒激光可能有3-5天的輕微發紅。"
+      },
+      "q4": {
+        "question": "什麼時候能看到效果？",
+        "answer": "治療後可立即感受到膚色改善，隨著膠原蛋白重塑，效果在2-4周內更加明顯。建議完成推薦次數以獲得最佳效果。"
+      }
+    },
+    "cta": {
+      "title": "邁向清透健康肌膚的第一步",
+      "description1": "為您找到最適合的激光",
+      "description2": "通過免費諮詢確認您的定製治療方案",
+      "button": "免費諮詢預約"
+    },
+    "viewMore": "瞭解更多"
+  },
+  "trust": {
+    "certification": {
+      "title": "官方認證醫院",
+      "subtitle": "音波拉提 Prime · 鳳凰電波"
+    },
+    "doctor": {
+      "title": "金秀英代表院長",
+      "subtitle": "整形外科專業醫師"
+    },
+    "location": {
+      "title": "新沙站4號出口",
+      "subtitle": "步行1分鐘"
+    },
+    "cta": {
+      "consultation": "免費諮詢預約",
+      "kakao": "KakaoTalk諮詢"
+    }
+  },
+  "floatingCta": {
+    "phone": "電話諮詢",
+    "kakao": "KakaoTalk",
+    "call": "電話",
+    "kakaoTalk": "KakaoTalk"
+  },
+  "aboutPage": {
+    "hero": {
+      "subtitle": "About LIV",
+      "title": "LIV品牌",
+      "description1": "追求自然美的高端抗衰老診所，",
+      "description2": "為您介紹LIV 整形外科。"
+    },
+    "philosophy": {
+      "subtitle": "Brand Philosophy",
+      "title1": "Slow Aging,",
+      "title2": "Natural Beauty",
+      "description1": "LIV 整形外科秉承「緩慢老化，自然美麗」的理念，追求不過度的本真之美。",
+      "description2": "比起劇烈的變化，我們通過自然漸進的改善，幫助您長久保持美麗。",
+      "description3": "我們基於高端正品設備和豐富的臨床經驗，提供個性化解決方案。",
+      "imageAlt": "LIV診所大廳"
+    },
+    "brandMessage": {
+      "title": "Beyond Gravity",
+      "description1": "超越重力的美麗，",
+      "description2": "通過LIV獨家的抗重力解決方案",
+      "description3": "體驗自然的拉提效果。"
+    },
+    "coreValues": {
+      "subtitle": "Core Values",
+      "title": "四大核心價值"
+    },
+    "certifications": {
+      "subtitle": "官方認證",
+      "title": "官方認證醫院"
+    },
+    "quickLinks": {
+      "staff": {
+        "title": "醫療團隊介紹",
+        "subtitle": "Medical Staff"
+      },
+      "equipment": {
+        "title": "設備介紹",
+        "subtitle": "Equipment"
+      },
+      "location": {
+        "title": "位置指南",
+        "subtitle": "Location"
+      }
+    },
+    "locationPage": {
+      "sectionLabel": "交通指南",
+      "heroTitle": "如何到達",
+      "heroDescription": "新沙站4號出口步行1分鐘，交通便捷的LIV 整形外科。",
+      "addressLabel": "地址",
+      "buildingDetail": "自恩大廈4層",
+      "phoneLabel": "電話號碼"
+    }
+  },
+  "equipmentPage": {
+    "hero": {
+      "subtitle": "Equipment",
+      "title": "設備介紹",
+      "description1": "使用正品認證的高端設備，",
+      "description2": "提供安全有效的治療。"
+    },
+    "certification": {
+      "subtitle": "Official Certified Clinic",
+      "title1": "只有官方認證醫院才能提供的",
+      "title2": "高端拉提 & 激光",
+      "titleHighlight": "解決方案",
+      "description1": "LIV 整形外科是獲得Ultherapy Prime、Thermage、Shurink等",
+      "description2": "全球品牌官方認證的高端診所。"
+    },
+    "categories": {
+      "lifting": {
+        "name": "拉提設備",
+        "nameEn": "Lifting Equipment",
+        "description": "非手術拉提的巔峰，高端拉提設備"
+      },
+      "laser": {
+        "name": "激光設備",
+        "nameEn": "Laser Equipment",
+        "description": "改善皮膚質地和彈性的激光系統"
+      },
+      "diagnostic": {
+        "name": "皮膚診斷設備",
+        "nameEn": "Skin Diagnostic",
+        "description": "精準分析皮膚狀況，制定個性化治療方案的診斷設備。"
+      }
+    },
+    "equipment": {
+      "ultherapy": {
+        "name": "Ultherapy Prime",
+        "nameKo": "音波拉提 Prime",
+        "description": "FDA批准超聲拉提 – 從深層開始緊緻",
+        "features": [
+          "能量直達SMAS層",
+          "自然拉提效果",
+          "術後即可恢復日常"
+        ],
+        "certification": "FDA、KFDA認證"
+      },
+      "thermage": {
+        "name": "Thermage FLX",
+        "nameKo": "鳳凰電波 FLX",
+        "description": "射頻拉提的精髓 – 從皮膚深處緊緻",
+        "features": [
+          "AccuREP技術",
+          "冷卻系統",
+          "膠原蛋白再生"
+        ],
+        "certification": "FDA、KFDA認證"
+      },
+      "density": {
+        "name": "Density",
+        "nameKo": "Density",
+        "description": "射頻能量精準緊緻 – 精密膠原蛋白拉提",
+        "features": [
+          "射頻(RF)拉提",
+          "能量均勻分佈",
+          "性價比高"
+        ],
+        "certification": "KFDA認證"
+      },
+      "shurink": {
+        "name": "Shurink",
+        "nameKo": "Shurink",
+        "description": "日常拉提的代表 – 性價比高的超聲彈力治療",
+        "features": [
+          "無痛或低痛",
+          "快速治療",
+          "價格實惠"
+        ],
+        "certification": "KFDA認證"
+      },
+      "inmode": {
+        "name": "InMode",
+        "nameKo": "InMode",
+        "description": "減脂 + 緊緻一次完成",
+        "features": [
+          "減脂和拉提同步",
+          "局部集中",
+          "恢復期短"
+        ],
+        "certification": "FDA、KFDA認證"
+      },
+      "potenza": {
+        "name": "Potenza",
+        "nameKo": "Potenza",
+        "description": "毛孔、膚質、彈性 – 皮膚重塑的新標準",
+        "features": [
+          "RF微針",
+          "注氧導入儀",
+          "毛孔收縮"
+        ],
+        "certification": "FDA、KFDA認證"
+      },
+      "clarity": {
+        "name": "Clarity II",
+        "nameKo": "Clarity II",
+        "description": "更快、更精準 – 雙波長激光",
+        "features": [
+          "755nm/1064nm雙波長",
+          "色素/血管治療",
+          "高端脫毛"
+        ],
+        "certification": "FDA認證"
+      },
+      "lucas": {
+        "name": "Lucas",
+        "nameKo": "Lucas",
+        "description": "從皮膚深處明亮清透 – 色素治療的新標準",
+        "features": [
+          "高功率Q開關",
+          "黃褐斑/色斑治療",
+          "紋身去除"
+        ],
+        "certification": "KFDA認證"
+      },
+      "co2": {
+        "name": "CO2 Laser",
+        "nameKo": "CO2激光",
+        "description": "精準換膚和皮膚再生 – 深層疤痕和細紋改善",
+        "features": [
+          "點陣技術",
+          "疤痕/毛孔治療",
+          "促進皮膚再生"
+        ],
+        "certification": "KFDA認證"
+      },
+      "ulblanc": {
+        "name": "Ulblanc",
+        "nameKo": "Ulblanc",
+        "description": "低刺激美白激光",
+        "features": [
+          "黑色素靶向",
+          "膚色均勻化",
+          "低刺激治療"
+        ],
+        "certification": "KFDA認證"
+      },
+      "markvu": {
+        "name": "Mark VU",
+        "nameKo": "Mark VU",
+        "description": "配備1800萬像素超高清攝像頭的先進皮膚診斷儀，能夠精準分析肉眼無法看到的12種皮膚問題。",
+        "features": [
+          "1800萬像素分辨率",
+          "4種光源分析",
+          "皮膚類型診斷"
+        ],
+        "certification": "1800萬像素超高清"
+      }
+    },
+    "cta": {
+      "title": "體驗高端設備治療",
+      "description": "正品認證設備和專業醫師治療，體驗安全有效的效果。",
+      "buttonPrimary": "預約諮詢",
+      "buttonSecondary": "Signature項目"
+    },
+    "quickLinks": {
+      "brand": {
+        "title": "LIV品牌",
+        "subtitle": "About LIV"
+      },
+      "staff": {
+        "title": "醫療團隊介紹",
+        "subtitle": "Medical Staff"
+      },
+      "location": {
+        "title": "位置指南",
+        "subtitle": "Location"
+      }
+    }
+  },
+  "events": {
+    "title": "活動",
+    "subtitle": "查看LIV 整形外科的最新消息和特別優惠",
+    "allTab": "全部",
+    "activeTab": "進行中",
+    "endedTab": "已結束",
+    "activeCount": "進行中",
+    "endedCount": "已結束",
+    "viewDetails": "查看詳情",
+    "bookNow": "預約諮詢",
+    "period": "期間",
+    "category": "類別",
+    "status": {
+      "active": "進行中",
+      "ended": "已結束"
+    },
+    "categories": {
+      "lifting": "拉提",
+      "antiaging": "抗衰老",
+      "laser": "激光",
+      "skincare": "皮膚管理",
+      "all": "全部"
+    },
+    "noEvents": "目前沒有進行中的活動",
+    "noEndedEvents": "沒有已結束的活動",
+    "backToList": "返回列表",
+    "relatedTreatments": "相關項目",
+    "eventDetails": "活動詳情",
+    "share": "分享",
+    "gallery": "活動詳細圖片",
+    "viewLarger": "放大查看",
+    "meta": {
+      "title": "活動 | LIV 整形外科",
+      "description": "查看LIV 整形外科的最新活動和特別促銷。音波拉提、鳳凰電波、肉毒桿菌素、玻尿酸等各種項目優惠。"
+    }
+  },
+  "pricing": {
+    "sectionTitle": "項目價格",
+    "header": {
+      "treatment": "項目",
+      "option": "部位 / 選項",
+      "price": "價格"
+    },
+    "consultRequired": "諮詢後決定",
+    "suffix": {
+      "starting": "韓元 ~",
+      "perPiece": "韓元 ~ / 根",
+      "per100iu": "韓元 ~ / 100IU"
+    },
+    "note": "※ 以上為單次價格,準確價格以諮詢為準。",
+    "labels": {
+      "ulthera": {
+        "name": "音波拉提 Prime",
+        "upperFace": "上面部 (250-400發)",
+        "lowerFace": "下面部 (~600發)",
+        "fullFace": "全面部 (800-1,100發)",
+        "fullFaceNeck": "全面部 + 頸部 (~1,200發)"
+      },
+      "thermage": {
+        "name": "鳳凰電波激光",
+        "shot300": "300發",
+        "shot600": "600發",
+        "shot900": "900發",
+        "eyeTip225": "眼部探頭 225發",
+        "eyeTip450": "眼部探頭 450發"
+      },
+      "shurink": {
+        "shurinkLaser": "Shurink激光",
+        "shurinkAreas": "V臉/蘋果肌/額頭/雙下巴/頸紋/眼下",
+        "ultheraLaser": "音波拉提激光",
+        "ultheraAreas": "V臉/蘋果肌/雙下巴/頸紋",
+        "shot300": "300發",
+        "shot600": "600發",
+        "shot900": "900發"
+      },
+      "density": {
+        "hiTip": "Density激光 (Hi-Tip)",
+        "alphaTip": "Density激光 (Alpha-Tip)",
+        "shot300": "300發",
+        "shot600": "600發"
+      },
+      "inmode": {
+        "name": "InMode激光",
+        "fxForma": "FX / FORMA 模式",
+        "fx": "FX 模式",
+        "forma": "FORMA 模式"
+      },
+      "thread": {
+        "name": "埋線拉提",
+        "domestic": "國產",
+        "domesticPremium": "國產高級",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan",
+        "allerganSalivary": "Allergan (腮腺)"
+      },
+      "botox": {
+        "botoxContour": "肉毒桿菌素 (輪廓)",
+        "contourAreas": "方形臉/太陽穴",
+        "botoxBody": "肉毒桿菌素 (身體)",
+        "bodyAreas": "斜方肌/手臂/小腿/大腿 (100IU)",
+        "domestic": "國產",
+        "domesticPremium": "國產高級",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan"
+      },
+      "filler": {
+        "chanelInjection": "香奈兒注射",
+        "volume3cc": "3 cc",
+        "otherFillers": "其他玻尿酸",
+        "consultOnly": "詳細價格諮詢時告知"
+      },
+      "skinbooster": {
+        "juvelook": "Juvelook 皮膚助推器",
+        "elementWhitening": "Element 美白助推器",
+        "stemcell": "幹細胞皮膚助推器",
+        "melasma": "祛斑針",
+        "glow": "水光針",
+        "rejuranHbPlus": "Rejuran HB plus",
+        "eyeRejuran": "眼部Rejuran",
+        "rejuran": "Rejuran",
+        "volume1cc": "1 cc",
+        "volume2cc": "2 cc",
+        "volume4cc": "4 cc",
+        "volume5cc": "5 cc",
+        "volume10cc": "10 cc"
+      },
+      "pigmentation": {
+        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToningDesc": "色斑/雀斑/毛孔/痘印",
+        "potenza": "Potenza",
+        "single": "單次",
+        "pumpingTip": "Pumping 探頭"
+      },
+      "vascular": {
+        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToningDesc": "紅血絲/血管改善",
+        "single": "單次"
+      },
+      "skintone": {
+        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToningDesc": "膚色改善",
+        "single": "單次"
+      },
+      "hairRemoval": {
+        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToningDesc": "脫毛護理",
+        "single": "單次"
+      },
+      "tattoo": {
+        "tattooLucas": "紋身祛除激光 (Lucas)",
+        "onePart": "1部位",
+        "co2Laser": "CO2激光",
+        "co2Desc": "痣/扁平疣/老年斑等",
+        "dia3mm": "直徑 ≤ 3mm (1個)",
+        "dia5mm": "3mm < 直徑 ≤ 5mm (1個)",
+        "diaOver5mm": "直徑 > 5mm (1個)",
+        "faceFull": "全臉 (50個以上)",
+        "neckFull": "全頸 (50個以上)"
+      }
+    }
+  },
+  "wechatPage": {
+    "title": "添加 LIV 微信好友",
+    "qrLabel": "微信二維碼",
+    "idLabel": "微信號",
+    "copy": "複製",
+    "copied": "已複製 ✓",
+    "instruction": "請使用微信掃描二維碼，或搜索 ID 添加好友。"
+  },
+  "chat": {
+    "openButton": "在線客服",
+    "openButtonShort": "客服",
+    "title": "LIV 在線客服",
+    "subtitle": "自動翻譯為韓語",
+    "online": "客服在線",
+    "offline": "請留言，我們會盡快回復",
+    "welcome": "您好！請問有什麼可以幫您？",
+    "delayedResponseNotice": "現在不在營業時間內（工作日 10:00–19:00, 週六 10:00–16:00 KST）。請留言，營業時間開始後我們會回覆您。如需更快回復，請同時留下您的郵箱。",
+    "allOperatorsBusyNotice": "客服暫時離開，請留言，我們會盡快回復。",
+    "followupNotice": "回覆有所延遲，請見諒，我們會盡快處理。",
+    "businessHours": "營業時間: 工作日 10:00–19:00, 週六 10:00–16:00 (KST)，週日休息",
+    "placeholder": "請輸入消息...",
+    "send": "發送",
+    "showOriginal": "查看原文",
+    "hideOriginal": "隱藏原文",
+    "close": "關閉對話",
+    "translationFailed": "(翻譯失敗 — 僅顯示原文)",
+    "rateLimited": "您發送消息過於頻繁，請稍後再試。",
+    "tooLong": "消息不能超過 1000 個字符。",
+    "sessionEnded": "本次對話已結束。如需進一步諮詢，請開始新的對話。",
+    "consent": "消息將被保存以拉提諮詢質量。",
+    "tooltipText": "需要幫助嗎？我們可以用中文聊天 — 自動翻譯給客服 ✨",
+    "tooltipDismiss": "關閉",
+    "namePlaceholder": "暱稱 (可選)",
+    "emailPlaceholder": "郵箱 (可選，便於回訪)",
+    "startChat": "開始諮詢",
+    "messageCountdown": "{count}/1000"
+  }
+}

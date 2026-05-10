@@ -6,11 +6,13 @@ import { useLocale } from 'next-intl';
 import { SITE_INFO, SOCIAL_LINKS } from '@/lib/constants';
 import { trackContact } from '@/lib/analytics-events';
 import type { Locale } from '@/i18n/routing';
+import { pickLocalized } from '@/lib/i18nFallback';
 type ContactMethod = 'instagram' | 'youtube' | 'phone' | 'kakao' | 'line' | 'whatsapp' | 'wechat';
 
 type CtaButton = {
   id: ContactMethod;
-  label: Record<Locale, string>;
+  // ko/en/ja/zh만 정의해도 OK — 신규 locale은 pickLocalized()로 fallback (en → ko).
+  label: Partial<Record<Locale, string>>;
   href: string;
   color: string;
   textColor: string;
@@ -140,7 +142,7 @@ export default function FloatingCTA() {
             } transition-all`}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            aria-label={button.label[locale] || button.label.ko}
+            aria-label={pickLocalized(button.label, locale)}
           >
             {isImageButton && button.image ? (
               <Image

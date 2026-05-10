@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/i18n/routing';
+import { pickLocalized } from '@/lib/i18nFallback';
 import { EventItem, getEventStatus, EventStatus } from '@/lib/constants';
 
 interface EventCardProps {
@@ -62,7 +63,7 @@ export default function EventCard({ event, index = 0, featured = false }: EventC
             ) : (
               <Image
                 src={event.posterImage}
-                alt={event.title[locale]}
+                alt={pickLocalized(event.title, locale)}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
                 style={{ objectPosition: event.imagePosition || 'center top' }}
@@ -89,10 +90,10 @@ export default function EventCard({ event, index = 0, featured = false }: EventC
           {/* 텍스트 영역 */}
           <div className="p-5">
             <h3 className={`font-medium text-secondary mb-2 ${featured ? 'text-h3' : 'text-h4'} line-clamp-2`}>
-              {event.title[locale]}
+              {pickLocalized(event.title, locale)}
             </h3>
             <p className="text-sm text-mono-light line-clamp-2 mb-3">
-              {event.description[locale]}
+              {pickLocalized(event.description, locale)}
             </p>
             {!isPromotion && (
               <div className="flex items-center gap-2 text-xs text-mono-light">
