@@ -45,7 +45,9 @@
     "targetAreas": "治療部位",
     "recommended": "適合人群",
     "precautions": "治療前後注意事項",
-    "onlineConsultation": "在線諮詢"
+    "onlineConsultation": "在線諮詢",
+    "previous": "以前的",
+    "next": "下一個"
   },
   "categories": {
     "lifting": "拉提",
@@ -86,7 +88,8 @@
     "beforeAfter": "術前術後",
     "medical": "醫療資訊",
     "events": "活動",
-    "contact": "聯繫我們"
+    "contact": "聯繫我們",
+    "admin": "行政"
   },
   "hero": {
     "slide1": {
@@ -178,6 +181,12 @@
           "subTitle": "Ulblanc",
           "desc": "溫和美白激光"
         }
+      },
+      "ui": {
+        "introLine1": "LIV 整形外科僅使用正宗、經過認證的優質設備。",
+        "introLine2": "我們利用尖端技術提供安全有效的治療。",
+        "viewMore": "了解更多",
+        "navigationHint": "拖曳或滾動進行探索"
       }
     },
     "signature": {
@@ -287,6 +296,9 @@
         "subtitle": "LIV院長的治療故事",
         "subscribe": "訂閱LIV YouTube頻道",
         "description": "觀看治療資訊、院長訪談、前後對比影片"
+      },
+      "ui": {
+        "playVideo": "播放影片"
       }
     },
     "doctors": {
@@ -840,6 +852,10 @@
             "labelEn": "相關治療",
             "title": "相關治療"
           }
+        },
+        "ui": {
+          "comparisonTitle": "Ulthera Prime 與其他裝置對比",
+          "comparisonSubtitle": "即使 HIFU 設備在技術和臨床證據上也存在很大差異"
         }
       },
       "thermage": {
@@ -1169,6 +1185,9 @@
             "sectionLabel": "相關推薦治療",
             "title": "相關推薦治療"
           }
+        },
+        "ui": {
+          "collagenShrinkRegen": "膠原蛋白收縮與再生"
         }
       },
       "density": {
@@ -1692,6 +1711,11 @@
             "sectionLabel": "相關推薦治療",
             "title": "相關推薦治療"
           }
+        },
+        "ui": {
+          "skinElasticity": "皮膚彈性",
+          "microneedleRf": "微針射頻",
+          "fatTightening": "脂肪緊縮"
         }
       },
       "shurink": {
@@ -1915,6 +1939,26 @@
             "onlineButton": "在線預約諮詢",
             "phoneButton": "電話諮詢"
           }
+        },
+        "ui": {
+          "layerEpidermis": "表皮",
+          "layerDermis": "真皮",
+          "layerFascia": "筋膜",
+          "layerEpidermisBox": "表層",
+          "layerDermisBox": "真皮層",
+          "layerDeepBox": "深層",
+          "fineWrinklesPores": "細皺紋、毛孔",
+          "collagenRegen": "Collagen regeneration",
+          "liftingEffect": "提升效果",
+          "bodyDoubleChin": "身材、雙下巴",
+          "legacyHifu": "傳統HIFU",
+          "shurinkLabel": "舒林克",
+          "shotsLegacy": "1-2次/秒",
+          "timeLegacy": "60+ 分鐘治療",
+          "shotsShurink": "每秒 7 發以上",
+          "timeShurink": "約 30 分鐘治療",
+          "threeXFaster": "快 3 倍",
+          "diagramAlt": "Shurink HIFU 治療區域圖"
         }
       },
       "thread": {
@@ -2100,6 +2144,9 @@
             "consultButton": "在線預約諮詢",
             "callButton": "電話諮詢 02-797-2773"
           }
+        },
+        "ui": {
+          "diagramAlt": "埋線提升治療區域圖"
         }
       },
       "aptos": {
@@ -2445,6 +2492,15 @@
             "recovery": "立即恢復日常生活",
             "results": "3-7天后開始見效，持續3-6個月"
           }
+        },
+        "ui": {
+          "calvesArea": "小腿治療區",
+          "category": "類別：",
+          "expressionWrinkles": "表情皺紋",
+          "contouring": "輪廓",
+          "body": "身體",
+          "interactionHint": "* 點擊或懸停任何區域以查看其在圖像上的位置",
+          "imageAlt": "肉毒桿菌治療部位"
         }
       },
       "filler": {
@@ -2695,6 +2751,14 @@
           },
           "volumeIllustrationLabel": "容量恢復映射圖",
           "heroImageAlt": "玻尿酸 - 體積與輪廓的藝術"
+        },
+        "ui": {
+          "imageAlt": "填充治療區域",
+          "wrinkles": "皺紋",
+          "volume": "體積",
+          "contour": "輪廓",
+          "lifting": "起重",
+          "interactionHint": "* 點擊任意區域即可查看其在影像上的位置"
         }
       },
       "skinbooster": {
@@ -3467,6 +3531,11 @@
             "title": "黃褐斑/色素 免費諮詢",
             "description": "我們將根據您的膚質提供定製色素治療方案。通過專家諮詢開始最佳治療。"
           }
+        },
+        "ui": {
+          "duration": "期間",
+          "downtime": "停機時間",
+          "recommendedSessions": "推薦課程"
         }
       },
       "vascular": {
@@ -5468,6 +5537,85 @@
     "namePlaceholder": "暱稱 (可選)",
     "emailPlaceholder": "郵箱 (可選，便於回訪)",
     "startChat": "開始諮詢",
-    "messageCountdown": "{count}/1000"
+    "messageCountdown": "{count}/1000",
+    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+  },
+  "consultation": {
+    "floating": {
+      "quickTitle": "快速諮詢",
+      "subtitle": "我們友善的輔導員隨時為您提供協助",
+      "title": "預約諮詢",
+      "close": "關閉",
+      "namePlaceholder": "姓名",
+      "passwordPlaceholder": "密碼（可選）",
+      "departmentSelect": "Select treatment",
+      "submit": "提交",
+      "submitting": "正在發送...",
+      "consentRequired": "[必需的]",
+      "consentText": "我同意收集和使用我的個人資訊。 （姓名和電話號碼僅供諮詢使用）",
+      "successTitle": "收到諮詢請求",
+      "successDesc": "我們將盡快與您聯繫",
+      "errorTitle": "未能提交諮詢請求",
+      "errorRetry": "請重試",
+      "errorDefault": "未能提交諮詢請求"
+    }
+  },
+  "treatmentDetail": {
+    "advantages": "{name} 的優點",
+    "process": "程式步驟",
+    "info": "程式資訊",
+    "duration": "期間",
+    "anesthesia": "麻醉",
+    "recovery": "恢復",
+    "effectDuration": "效果持續時間",
+    "areas": "治療範圍",
+    "recommendedFor": "推薦用於",
+    "precautions": "護理前/護理後",
+    "faq": "常見問題解答",
+    "relatedMedical": "{name} — 醫療信息",
+    "moreInfoPrefix": "有關更多詳細信息，請參閱",
+    "moreInfoLink": "醫療問答",
+    "moreInfoSuffix": "。",
+    "consultationTitle": "預約 {name} 諮詢",
+    "consultationDesc": "Get a one-on-one tailored consultation with our medical experts.",
+    "ctaReserve": "預約諮詢",
+    "ctaCall": "致電我們",
+    "related": "相關治療"
+  },
+  "medicalBlog": {
+    "ui": {
+      "title": "相關部落格文章",
+      "subtitle": "查找更詳細的醫療信息",
+      "visitBlogDesktop": "造訪 Naver 博客",
+      "visitBlogMobile": "在 Naver 部落格上查看更多內容"
+    }
+  },
+  "instagram": {
+    "ui": {
+      "intro": "查看 LIV 整形外科的每日更新和治療資訊。",
+      "showMore": "顯示更多",
+      "followCta": "在 Instagram 上關注",
+      "followers": "追隨者",
+      "posts": "貼文",
+      "update": "更新",
+      "viewDetails": "看詳情"
+    }
+  },
+  "popup": {
+    "dismissToday": "今天不顯示"
+  },
+  "beforeAfter": {
+    "ui": {
+      "title": "真實治療案例",
+      "description": "See real changes from LIV's clients",
+      "consent": "* 所有病例均在患者同意的情況下發布。",
+      "viewMore": "看更多案例"
+    }
+  },
+  "ui": {
+    "stickyCta": {
+      "phone": "稱呼",
+      "kakao": "KakaoTalk"
+    }
   }
 }
