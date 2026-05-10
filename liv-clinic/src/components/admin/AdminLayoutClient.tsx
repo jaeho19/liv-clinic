@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import AdminSidebar from './AdminSidebar';
+import { useOperatorHeartbeat } from '@/hooks/useOperatorHeartbeat';
 
 const PAGE_TITLES: Record<string, string> = {
   '/admin/dashboard': '대시보드',
@@ -31,6 +32,9 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
   const pageTitle = getPageTitle(pathname);
+
+  // 운영자 presence heartbeat (60s) — visitor 위젯의 정확한 온라인 표시용
+  useOperatorHeartbeat();
 
   return (
     <div className="flex min-h-screen">
