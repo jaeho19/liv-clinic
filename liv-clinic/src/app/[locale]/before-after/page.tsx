@@ -9,16 +9,21 @@ import BeforeAfterModal from '@/components/sections/BeforeAfterModal';
 import type { BeforeAfterRow } from '@/types/admin';
 import type { Locale } from '@/i18n/routing';
 
-const PAGE_TEXT: Record<Locale, { eyebrow: string; title: string; subtitle: string; all: string; empty: string; error: string; retry: string }> = {
-  ko: {
-    eyebrow: 'Before & After',
-    title: '전후사진',
-    subtitle: '리브성형외과의 시술 전후 사례를 카테고리별로 확인해보세요.',
-    all: '전체',
-    empty: '등록된 전후사진이 없습니다.',
-    error: '전후사진을 불러오는 중 오류가 발생했습니다.',
-    retry: '다시 시도',
-  },
+// Phase 1 신규 locale (zh-TW/vi/th/ru)은 메시지 키화 전이라 ko fallback 동작 (PAGE_TEXT[locale] ?? KO_TEXT).
+type PageText = { eyebrow: string; title: string; subtitle: string; all: string; empty: string; error: string; retry: string };
+
+const KO_TEXT: PageText = {
+  eyebrow: 'Before & After',
+  title: '전후사진',
+  subtitle: '리브성형외과의 시술 전후 사례를 카테고리별로 확인해보세요.',
+  all: '전체',
+  empty: '등록된 전후사진이 없습니다.',
+  error: '전후사진을 불러오는 중 오류가 발생했습니다.',
+  retry: '다시 시도',
+};
+
+const PAGE_TEXT: Partial<Record<Locale, PageText>> = {
+  ko: KO_TEXT,
   en: {
     eyebrow: 'Before & After',
     title: 'Before & After',
@@ -49,18 +54,20 @@ const PAGE_TEXT: Record<Locale, { eyebrow: string; title: string; subtitle: stri
 };
 
 function pickTitle(row: BeforeAfterRow, locale: Locale): string {
-  const map: Record<Locale, string> = {
+  // Supabase before-after 컬럼은 ko/en/ja/zh만 존재. 신규 locale은 영어 → 한국어 fallback (Phase 1 정책).
+  const map: Partial<Record<Locale, string>> = {
     ko: row.title_ko,
     en: row.title_en,
     ja: row.title_ja,
     zh: row.title_zh,
+    'zh-TW': row.title_zh,
   };
-  return map[locale] || row.title_ko || '';
+  return map[locale] || row.title_en || row.title_ko || '';
 }
 
 export default function BeforeAfterPage() {
   const locale = useLocale() as Locale;
-  const text = PAGE_TEXT[locale] ?? PAGE_TEXT.ko;
+  const text = PAGE_TEXT[locale] ?? KO_TEXT;
 
   const [items, setItems] = useState<BeforeAfterRow[]>([]);
   const [loading, setLoading] = useState(true);

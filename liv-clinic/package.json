@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "verify:i18n": "node scripts/verify-locale-keys.mjs",
+    "prebuild": "npm run verify:i18n"
   },
   "dependencies": {
     "@google-analytics/data": "^5.2.1",

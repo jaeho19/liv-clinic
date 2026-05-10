@@ -159,8 +159,10 @@ export default async function LocaleLayout({
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />
-          {locale !== 'ko' && (
-            <ChatWidget locale={locale as 'en' | 'ja' | 'zh'} />
+          {/* ChatWidget은 PR #3에서 도입된 visitor 채팅 (운영자=ko, 환자=en/ja/zh).
+              Phase 1 신규 locale (zh-TW/vi/th/ru) 지원은 PR #2b의 Step 6에서 추가 예정. */}
+          {(locale === 'en' || locale === 'ja' || locale === 'zh') && (
+            <ChatWidget locale={locale} />
           )}
         </NextIntlClientProvider>
       </body>

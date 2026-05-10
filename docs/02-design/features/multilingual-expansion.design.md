@@ -175,6 +175,57 @@ if (!routing.locales.includes(locale as Locale)) notFound();
 
 구현 위치: `EventCard.tsx`/`EventDetailClient.tsx` 내 콘텐츠 선택 분기 로직. Supabase 컬럼은 `title`, `title_en`, `title_zh`, `title_ja`만 존재하므로 본 PDCA에서는 **컬럼 추가 없이 fallback 전략**만 적용 (DB 다국어화는 별도 PDCA).
 
+### 3-6. ChatWidget Visitor Locale 확장 (Post-merge 추가 사항, 2026-05-10)
+
+**배경**: PR #1 머지 시점에 master에 머지된 PR #3(실시간 번역 채팅)가 다음 하드코딩 union을 도입했음:
+
+```ts
+// src/lib/chat/{db,chatApi,translation,serverI18n}.ts
+export type VisitorLocale = 'en' | 'ja' | 'zh';   // 외국어 환자용 (한국어 = 운영자, 의도적 제외)
+export type ChatLang = 'ko' | 'en' | 'ja' | 'zh'; // 메시지 원본·번역 언어
+
+// src/app/[locale]/layout.tsx
+{locale !== 'ko' && <ChatWidget locale={locale as 'en' | 'ja' | 'zh'} />}
+```
+
+**문제**: Phase 1에서 `zh-TW`/`vi`/`th`/`ru` 추가 시:
+- 신규 visitor가 ChatWidget을 켜면 cast가 잘못 매핑됨 (런타임 분기 오작동)
+- Claude 번역 함수가 신규 locale을 모름
+- ChatWidget UI 라벨(`LOCALE_FLAG`, `LOCALE_LABEL`)이 영어 fallback도 안 됨
+
+**해결 설계** (PR #2 범위에 추가):
+
+1. **`VisitorLocale` 확장**:
+```ts
+// src/lib/chat/db.ts, chatApi.ts, translation.ts, serverI18n.ts
+export type VisitorLocale = 'en' | 'ja' | 'zh' | 'zh-TW' | 'vi' | 'th' | 'ru';
+export type ChatLang = 'ko' | VisitorLocale; // 운영자(ko) + 외국어 환자
+```
+
+2. **Claude 번역 prompt 확장** (`src/lib/chat/translation.ts`):
+   - 4개 신규 locale에 대한 번역 prompt 추가 (ko ↔ vi, ko ↔ th, ko ↔ ru, ko ↔ zh-TW)
+   - `i18n-glossary.md`의 의료 용어집을 system prompt에 주입
+
+3. **ChatWidget UI 라벨 확장** (`src/components/chat/ChatWidget.tsx`):
+```ts
+const LOCALE_FLAG: Record<VisitorLocale, string> = {
+  en: '🇺🇸', ja: '🇯🇵', zh: '🇨🇳',
+  'zh-TW': '🇹🇼', vi: '🇻🇳', th: '🇹🇭', ru: '🇷🇺',
+};
+// 신규 4개 locale별 환영 메시지·placeholder·버튼 라벨도 messages JSON으로 이전
+```
+
+4. **`layout.tsx` cast 정리**:
+```tsx
+{locale !== 'ko' && <ChatWidget locale={locale as VisitorLocale} />}
+```
+
+5. **DB 스키마**: `chat_messages.original_lang`/`translated_lang` 컬럼은 string. 마이그레이션 불필요. 기존 데이터와 호환.
+
+**Out of Scope (별도 PDCA)**:
+- 채팅 운영자(staff)용 admin UI에서 신규 locale 라벨 표시 — 한국어 운영자 화면이라 우선순위 낮음
+- 신규 locale 환자용 회사 운영시간(`businessHours`) 타임존 별도 처리
+
 ---
 
 ## 4. 메시지 파일 설계 (Translation Files)
@@ -425,7 +476,16 @@ const languagesMap = (path: string) =>
 
 **검증**: `/zh-TW/events`에서 zh 콘텐츠 표시 / `/vi/events`에서 en 콘텐츠 표시 / 콘솔 에러 0건.
 
-### Step 6 — 빌드·SEO·sitemap 최종 점검
+### Step 6 — ChatWidget Visitor Locale 확장 (Post-merge 추가)
+1. `src/lib/chat/{db,chatApi,translation,serverI18n}.ts` `VisitorLocale` 확장
+2. `src/lib/chat/translation.ts` Claude 번역 prompt 4개 locale 추가
+3. `src/components/chat/ChatWidget.tsx` `LOCALE_FLAG`/`LOCALE_LABEL` 확장
+4. `src/app/[locale]/layout.tsx` cast 정리 (`as VisitorLocale`)
+5. ChatWidget UI 텍스트의 messages JSON 키화
+
+**검증**: `/zh-TW`, `/vi`, `/th`, `/ru`에서 ChatWidget 정상 노출, 깃발/라벨 현지화, 번역 동작.
+
+### Step 7 — 빌드·SEO·sitemap 최종 점검
 1. `npm run build` → 0 errors / 8 locale × 73 page 모두 prerender 정상
 2. sitemap.xml 8 locale × 73 page entries 확인
 3. hreflang 메타 태그 8개 alternate 확인 (HTML head)
@@ -462,6 +522,20 @@ const languagesMap = (path: string) =>
 | `package.json` | 수정 | `prebuild` 훅 + `verify:i18n` 스크립트 |
 
 **총 변경 파일 수**: ~22개 (그 중 신규 6개)
+
+### Step 6 추가 변경 파일 (ChatWidget locale 확장)
+
+| 파일 | 변경 유형 | 설명 |
+|------|-----------|------|
+| `src/lib/chat/db.ts` | 수정 | `VisitorLocale` 7개로 확장, `ChatLang` 파생화 |
+| `src/lib/chat/chatApi.ts` | 수정 | `VisitorLocale` 동기화 |
+| `src/lib/chat/translation.ts` | 수정 | 4개 신규 locale 번역 prompt 추가, glossary 주입 |
+| `src/lib/chat/serverI18n.ts` | 수정 | `VisitorLocale` 동기화 |
+| `src/components/chat/ChatWidget.tsx` | 수정 | `LOCALE_FLAG`/`LOCALE_LABEL` 확장, 메시지 키화 |
+| `src/components/chat/ChatPanel.tsx` | 수정 | locale prop 타입 확장 |
+| `src/components/chat/MessageBubble.tsx` | 수정 | `visitorLocale` 타입 확장 |
+| `src/app/[locale]/layout.tsx` | 수정 | `as VisitorLocale` cast |
+| `src/messages/{ko,en,ja,zh,zh-TW,vi,th,ru}.json` | 수정 | `chat.welcome`, `chat.placeholder`, `chat.send` 등 키 추가 |
 
 ---
 
@@ -515,6 +589,8 @@ const languagesMap = (path: string) =>
 | Phase 2/3에서 SSOT 한계 노출 (예: locale별 메뉴 차이) | Low | Low | `LOCALE_META` 확장 가능 구조이므로 Phase 2 시 필요 필드 추가만 |
 | sitemap URL 폭증으로 크롤링 부담 | Low | Low | Search Console에서 신규 locale 인덱싱 추적. priority 차등 검토 |
 | 번역 외주 미완으로 일부 locale이 영어 잔존 | Medium | Medium | `verify-locale-keys.mjs`는 키만 체크 — 값 품질은 별도 검수. **베이스라인 = LLM 번역**을 명시하고 후속 검수는 별도 이슈 |
+| **ChatWidget visitor cast 잘못 매핑** | Medium | High | Step 6에서 `VisitorLocale` 확장 + cast 정리 (`as VisitorLocale`). PR #2 머지 전 `/zh-TW`/`/vi`/`/th`/`/ru` 모두에서 ChatWidget 시각 검증 필수 |
+| **Claude 번역 prompt가 신규 locale 미커버** | High | High | Step 6 `translation.ts`에서 4개 locale 추가, `i18n-glossary.md` 주입. 출시 후 환자 메시지 샘플로 번역 품질 모니터링 |
 
 ---
 

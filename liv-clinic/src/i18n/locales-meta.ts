@@ -45,9 +45,18 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     flag: '🇨🇳',
     htmlLang: 'zh-CN',
     ogLocale: 'zh_CN',
-    // PR #1: keep legacy 'zh-CN' to ensure zero SEO regression.
-    // PR #2 may upgrade to 'zh-Hans-CN' once 'zh-Hant-TW' is introduced.
-    hreflang: 'zh-CN',
+    // PR #2: upgraded from 'zh-CN' to 'zh-Hans-CN' for explicit script disambiguation
+    // now that 'zh-Hant-TW' is introduced as a separate locale.
+    hreflang: 'zh-Hans-CN',
+  },
+  'zh-TW': {
+    code: 'zh-TW',
+    label: 'TWN',
+    name: '繁體中文',
+    flag: '🇹🇼',
+    htmlLang: 'zh-TW',
+    ogLocale: 'zh_TW',
+    hreflang: 'zh-Hant-TW',
   },
   ja: {
     code: 'ja',
@@ -67,11 +76,40 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     ogLocale: 'en_US',
     hreflang: 'en-US',
   },
+  vi: {
+    code: 'vi',
+    label: 'VIE',
+    name: 'Tiếng Việt',
+    flag: '🇻🇳',
+    htmlLang: 'vi',
+    ogLocale: 'vi_VN',
+    hreflang: 'vi-VN',
+  },
+  th: {
+    code: 'th',
+    label: 'THA',
+    name: 'ไทย',
+    flag: '🇹🇭',
+    htmlLang: 'th',
+    ogLocale: 'th_TH',
+    hreflang: 'th-TH',
+    fontVariant: 'thai',
+  },
+  ru: {
+    code: 'ru',
+    label: 'RUS',
+    name: 'Русский',
+    flag: '🇷🇺',
+    htmlLang: 'ru',
+    ogLocale: 'ru_RU',
+    hreflang: 'ru-RU',
+  },
 };
 
 /**
  * Display order for locale switcher dropdowns.
- * Ordered by current LIV market priority: ko → zh → ja → en.
- * Phase 2 will insert zh-TW after zh, vi/th/ru after en.
+ * Ordered by 2024 medical-tourism market priority for LIV:
+ *   ko (domestic) → zh (mainland) → zh-TW (Taiwan, +550% YoY) →
+ *   ja (largest visitor) → en → vi → th → ru.
  */
-export const LOCALE_ORDER: Locale[] = ['ko', 'zh', 'ja', 'en'];
+export const LOCALE_ORDER: Locale[] = ['ko', 'zh', 'zh-TW', 'ja', 'en', 'vi', 'th', 'ru'];

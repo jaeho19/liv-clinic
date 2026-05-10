@@ -581,11 +581,17 @@ const JA: LocaleMap = {
   },
 };
 
-const MAPS: Record<Locale, LocaleMap> = {
+const MAPS: Partial<Record<Locale, LocaleMap>> = {
   ko: {}, // ko uses constants.ts as-is
   en: EN,
   zh: ZH,
   ja: JA,
+  // Phase 1 신규 locale: 메시지 파일 번역 1차 완료 후 LocaleMap 추가 예정.
+  // 현 시점은 ko fallback (constants.ts의 한국어 baseline) 동작.
+  'zh-TW': {},
+  vi: {},
+  th: {},
+  ru: {},
 };
 
 /**
@@ -607,7 +613,7 @@ export function getLocalizedTreatment<T extends TreatmentL10n>(
  * Localized "Related Treatments" name/description for zh only.
  * For other locales, components can continue using base Korean names.
  */
-export const RELATED_TREATMENTS_L10N: Record<Locale, Record<string, { name: string; desc: string }>> = {
+export const RELATED_TREATMENTS_L10N: Partial<Record<Locale, Record<string, { name: string; desc: string }>>> = {
   ko: {},
   en: {},
   zh: {

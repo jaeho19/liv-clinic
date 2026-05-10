@@ -4,6 +4,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/i18n/routing';
+import { pickLocalized } from '@/lib/i18nFallback';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -138,7 +139,7 @@ export default function EventDetailClient() {
               {t('title')}
             </Link>
             <span>/</span>
-            <span className="text-secondary">{event.title[locale]}</span>
+            <span className="text-secondary">{pickLocalized(event.title, locale)}</span>
           </nav>
         </div>
       </section>
@@ -150,7 +151,7 @@ export default function EventDetailClient() {
             {/* 포스터 이미지 — EventHero 공통 컴포넌트 */}
             <EventHero
               imageSrc={event.posterImage}
-              imageAlt={event.title[locale]}
+              imageAlt={pickLocalized(event.title, locale)}
               status={status}
               isEnded={isEnded}
               isPromotion={new Date(event.endDate).getFullYear() >= 2099}
@@ -171,7 +172,7 @@ export default function EventDetailClient() {
               )}
 
               {/* 제목 */}
-              <h1 className="text-h2 md:text-h1 text-secondary mb-4">{event.title[locale]}</h1>
+              <h1 className="text-h2 md:text-h1 text-secondary mb-4">{pickLocalized(event.title, locale)}</h1>
 
               {/* 기간 (홍보용은 표시 안 함) */}
               {new Date(event.endDate).getFullYear() < 2099 && (
@@ -193,7 +194,7 @@ export default function EventDetailClient() {
               {/* 설명 */}
               <div className="bg-white rounded-xl p-6 mb-8 shadow-sm">
                 <h2 className="text-h4 text-secondary mb-3">{t('eventDetails')}</h2>
-                <p className="text-body text-mono leading-relaxed">{event.description[locale]}</p>
+                <p className="text-body text-mono leading-relaxed">{pickLocalized(event.description, locale)}</p>
               </div>
 
               {/* 관련 시술 */}
@@ -280,7 +281,7 @@ export default function EventDetailClient() {
                 >
                   <Image
                     src={src}
-                    alt={`${event.title[locale]} - ${idx + 1}`}
+                    alt={`${pickLocalized(event.title, locale)} - ${idx + 1}`}
                     width={800}
                     height={1000}
                     className="w-full h-auto rounded-lg"
@@ -313,7 +314,7 @@ export default function EventDetailClient() {
             >
               <Image
                 src={selectedImage}
-                alt={event.title[locale]}
+                alt={pickLocalized(event.title, locale)}
                 width={1200}
                 height={900}
                 className="object-contain w-full h-full max-h-[85vh] rounded-lg"
