@@ -2297,16 +2297,16 @@
       "botox": {
         "name": "Botox",
         "fullName": "Botox",
-        "tagline": "Wrinkle Reduction & Facial Contouring",
-        "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line.",
+        "tagline": "Үрчлээг бууруулах ба нүүрний загвар",
+        "description": "Ботулинум хорыг ашиглан мимик үрчлээг засаж, эрүүний булчинг багасгаж нарийн нүүрний шугам бий болгоно.",
         "detail": {
           "hero": {
-            "badge": "Anti-Aging Treatment",
+            "badge": "Хөгшрөлтийн эсрэг эмчилгээ",
             "title": "Botox",
-            "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line."
+            "description": "Ботулинум хорыг ашиглан мимик үрчлээг засаж, эрүүний булчинг багасгаж нарийн нүүрний шугам бий болгоно."
           },
           "benefits": {
-            "title": "Benefits of Botox",
+            "title": "Botox-ийн давуу тал",
             "items": [
               {
                 "title": "Expression Wrinkle Improvement",
@@ -2327,54 +2327,54 @@
             ]
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Precise treatment on various facial areas",
+            "title": "Эмчилгээний хэсгүүд",
+            "subtitle": "Нүүрний янз бүрийн хэсэгт нарийвчилсан эмчилгээ",
             "areas": {
-              "forehead": "Forehead",
-              "glabella": "Glabella",
-              "crowsFeet": "Crow's Feet",
-              "nasalis": "Nose",
-              "lips": "Lips",
-              "masseter": "Jaw",
-              "neckBands": "Neck",
-              "hairline": "Hairline"
+              "forehead": "Магнай",
+              "glabella": "Хөмсөг хоорондын зай",
+              "crowsFeet": "Нүдний хажуугийн үрчлээ",
+              "nasalis": "Хамар",
+              "lips": "Уруул",
+              "masseter": "Эрүү",
+              "neckBands": "Хүзүү",
+              "hairline": "Үсний шугам"
             }
           },
           "treatmentInfo": {
-            "title": "Treatment Info",
-            "duration": "Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery",
-            "results": "Results Duration"
+            "title": "Эмчилгээний мэдээлэл",
+            "duration": "Хугацаа",
+            "anesthesia": "Мэдээ алдуулалт",
+            "recovery": "Сэргэлт",
+            "results": "Үр дүнгийн үргэлжлэх хугацаа"
           },
           "faq": {
-            "title": "Frequently Asked Questions"
+            "title": "Түгээмэл асуулт хариулт"
           },
           "cta": {
-            "title": "Botox Consultation",
-            "description": "Natural wrinkle improvement - Get guidance on optimal treatment through specialist consultation."
+            "title": "Botox зөвлөгөө",
+            "description": "Үрчлээг байгалийн жамаар сайжруулна — Мэргэжилтний зөвлөгөөгөөр танд тохирох оновчтой эмчилгээний зөвлөмжийг авна уу."
           },
           "treatmentAreasLabels": {
-            "forehead": "Forehead",
-            "glabella": "Glabella",
-            "crowsFeet": "Crow's Feet",
-            "masseter": "Masseter",
-            "mouthCorners": "Mouth Corners",
-            "trapezius": "Trapezius",
-            "calves": "Calves"
+            "forehead": "Магнай",
+            "glabella": "Хөмсөг хоорондын зай",
+            "crowsFeet": "Нүдний хажуугийн үрчлээ",
+            "masseter": "Масетер булчин",
+            "mouthCorners": "Амны буланд",
+            "trapezius": "Трапец булчин",
+            "calves": "Тугалын булчин"
           },
           "treatmentAreasDescriptions": {
-            "forehead": "Smooths forehead lines for a brighter, younger appearance",
-            "glabella": "Reduces frown lines for a more relaxed expression",
-            "crowsFeet": "Softens crow's feet for improved eye contour",
-            "masseter": "Slims jaw muscles for a more defined facial shape",
-            "mouthCorners": "Lifts mouth corners for a brighter expression",
-            "trapezius": "Reduces trapezius volume for elegant shoulder lines",
-            "calves": "Refines calf lines for slimmer legs"
+            "forehead": "Магнайн үрчлээг арилгаж, илүү гэрэлтэй, залуу харагдуулна",
+            "glabella": "Хөмсөг хоорондын үрчлээг бууруулж тайван илэрхийлэлтэй болгоно",
+            "crowsFeet": "Нүдний хажуугийн үрчлээг зөөлрүүлж нүдний хэлбэрийг сайжруулна",
+            "masseter": "Эрүүний булчинг нарийсгаж нүүрний хэлбэрийг тодруулна",
+            "mouthCorners": "Амны буланг өргөж, илүү гэрэлтэй илэрхийлэл бий болгоно",
+            "trapezius": "Трапец булчинг багасгаж дэгжин мөрний шугам бий болгоно",
+            "calves": "Тугалын шугамыг нарийсгаж, илүү нарийхан хөл бий болгоно"
           },
-          "targetAreasDescription": "From expression wrinkles to facial contouring, we provide customized treatments for natural improvement.",
+          "targetAreasDescription": "Мимик үрчлээнээс эхлээд нүүрний хэлбэрийг загварчлах хүртэл байгалийн сайжралтад зориулсан хувийн эмчилгээг санал болгоно.",
           "timeline": {
-            "title": "Post-Treatment Timeline",
+            "title": "Эмчилгээний дараах хугацаа",
             "items": [
               {
                 "time": "Day 1",
@@ -2402,12 +2402,12 @@
               }
             ]
           },
-          "mechanismLabel": "PRECISION INJECTION MAPPING",
+          "mechanismLabel": "НАРИЙВЧИЛСАН ТАРИЛГЫН ЗУРАГЛАЛ",
           "treatmentInfoLabels": {
-            "duration": "Treatment Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery Period",
-            "results": "Effect Duration"
+            "duration": "Эмчилгээний хугацаа",
+            "anesthesia": "Мэдээ алдуулалт",
+            "recovery": "Сэргэлтийн хугацаа",
+            "results": "Үр нөлөөний үргэлжлэх хугацаа"
           },
           "process": {
             "items": [
@@ -2487,35 +2487,35 @@
             ]
           },
           "treatmentValues": {
-            "duration": "10-20 minutes",
-            "anesthesia": "None or numbing cream (upon request)",
-            "recovery": "Immediate return to daily activities",
-            "results": "Effects begin in 3-7 days, last 3-6 months"
+            "duration": "10-20 минут",
+            "anesthesia": "Шаардлагагүй эсвэл мэдээ алдуулах крем (хүсэлтээр)",
+            "recovery": "Шууд өдөр тутмын үйл ажиллагаагаа үргэлжлүүлэх боломжтой",
+            "results": "3-7 хоногт үр нөлөө илэрч 3-6 сар үргэлжилнэ"
           }
         },
         "ui": {
-          "calvesArea": "Calf treatment area",
-          "category": "Category:",
-          "expressionWrinkles": "Expression wrinkles",
-          "contouring": "Contouring",
-          "body": "Body",
-          "interactionHint": "* Click or hover any area to see its location on the image",
-          "imageAlt": "Botox treatment areas"
+          "calvesArea": "Тугалын эмчилгээний хэсэг",
+          "category": "Ангилал:",
+          "expressionWrinkles": "Мимик үрчлээ",
+          "contouring": "Загварчлал",
+          "body": "Бие",
+          "interactionHint": "* Аль ч хэсэг дээр товшоод эсвэл хулганаа аваачиж тухайн хэсгийн байрлалыг зурган дээрээс харна уу",
+          "imageAlt": "Botox эмчилгээний хэсгүүд"
         }
       },
       "filler": {
         "name": "Filler",
         "fullName": "Filler",
-        "tagline": "Volume & Contour Enhancement",
-        "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume.",
+        "tagline": "Эзлэхүүн ба хэлбэрийг сайжруулах",
+        "description": "Гиалуроны хүчилд суурилсан филлерийг ашиглан хонхойсон хэсгийг дүүргэж байгалийн эзлэхүүн бий болгоно.",
         "detail": {
           "hero": {
-            "badge": "Anti-Aging Treatment",
+            "badge": "Хөгшрөлтийн эсрэг эмчилгээ",
             "title": "Filler",
-            "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume."
+            "description": "Гиалуроны хүчилд суурилсан филлерийг ашиглан хонхойсон хэсгийг дүүргэж байгалийн эзлэхүүн бий болгоно."
           },
           "benefits": {
-            "title": "Benefits of Filler",
+            "title": "Filler-ийн давуу тал",
             "items": [
               {
                 "title": "Immediate Results",
@@ -2600,14 +2600,14 @@
             ]
           },
           "treatmentValues": {
-            "duration": "20-40 minutes",
-            "anesthesia": "Numbing cream or nerve block",
-            "recovery": "Immediate to 3 days (varies by area)",
-            "results": "Immediate effect, lasts 6-24 months (varies by product)"
+            "duration": "20-40 минут",
+            "anesthesia": "Мэдээ алдуулах крем эсвэл мэдрэлийн блок",
+            "recovery": "Шууд буюу 3 хоног хүртэл (хэсгээс хамаарна)",
+            "results": "Шууд үр дүн, 6-24 сар үргэлжилнэ (бүтээгдэхүүнээс хамаарна)"
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Fill volume and refine contours in various facial areas",
+            "title": "Эмчилгээний хэсгүүд",
+            "subtitle": "Нүүрний янз бүрийн хэсгийн эзлэхүүнийг нөхөж хэлбэрийг тодруулна",
             "areas": [
               {
                 "id": 1,
@@ -2662,8 +2662,8 @@
             ]
           },
           "bodyAreas": {
-            "title": "Body Filler",
-            "subtitle": "Enhance body contours for a beautiful silhouette",
+            "title": "Биеийн филлер",
+            "subtitle": "Биеийн хэлбэрийг сайжруулж үзэсгэлэнтэй дүр бий болгоно",
             "areas": [
               {
                 "id": 1,
@@ -2690,12 +2690,12 @@
                 "detail": "Fills the depression between hips and thighs for a smooth silhouette"
               }
             ],
-            "notice": "Body filler uses high-volume hyaluronic acid filler, customized to individual body shape.",
-            "imageAlt": "Medical illustration showing shoulder, hip, pelvis, and hip dip body filler treatment areas"
+            "notice": "Биеийн филлер нь өндөр эзлэхүүний гиалуроны хүчлийн филлерийг ашиглаж, хувь хүний бие байдалд тохируулсан байдаг.",
+            "imageAlt": "Мөр, ташаа, аарцаг болон бүсэлхийн хонхорхой зэрэг биеийн филлер эмчилгээний хэсгийг харуулсан анагаах ухааны зураг"
           },
           "fillerTypes": {
-            "title": "Customized Filler by Area",
-            "subtitle": "Selecting optimal filler firmness based on treatment area and purpose",
+            "title": "Хэсэгт тохируулсан филлер",
+            "subtitle": "Эмчилгээний хэсэг болон зорилгод тулгуурлан филлерийн оновчтой хатууг сонгоно",
             "types": [
               {
                 "type": "Soft",
@@ -2715,8 +2715,8 @@
             ]
           },
           "safety": {
-            "title": "Reversible Treatment",
-            "subtitle": "Hyaluronic acid filler can be dissolved if needed, ensuring safety",
+            "title": "Буцаах боломжтой эмчилгээ",
+            "subtitle": "Гиалуроны хүчлийн филлерийг шаардлагатай үед уусгах боломжтой бөгөөд аюулгүй байдлыг хангадаг",
             "steps": [
               {
                 "step": "01",
@@ -2736,44 +2736,44 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Info",
-            "duration": "Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery",
-            "results": "Results Duration"
+            "title": "Эмчилгээний мэдээлэл",
+            "duration": "Хугацаа",
+            "anesthesia": "Мэдээ алдуулалт",
+            "recovery": "Сэргэлт",
+            "results": "Үр дүнгийн үргэлжлэх хугацаа"
           },
           "faq": {
-            "title": "Frequently Asked Questions"
+            "title": "Түгээмэл асуулт хариулт"
           },
           "cta": {
-            "title": "Filler Consultation",
-            "description": "Natural volume and contours - Get guidance on optimal treatment through specialist consultation."
+            "title": "Filler зөвлөгөө",
+            "description": "Байгалийн эзлэхүүн ба хэлбэр — Мэргэжилтний зөвлөгөөгөөр танд тохирох оновчтой эмчилгээний зөвлөмжийг авна уу."
           },
-          "volumeIllustrationLabel": "VOLUME RESTORATION MAPPING",
-          "heroImageAlt": "Filler - The Art of Volume and Contour"
+          "volumeIllustrationLabel": "ЭЗЛЭХҮҮНИЙГ НӨХӨХ ЗУРАГЛАЛ",
+          "heroImageAlt": "Filler — Эзлэхүүн ба хэлбэрийн урлаг"
         },
         "ui": {
-          "imageAlt": "Filler treatment areas",
-          "wrinkles": "Wrinkles",
-          "volume": "Volume",
-          "contour": "Contour",
-          "lifting": "Lifting",
-          "interactionHint": "* Click any area to see its location on the image"
+          "imageAlt": "Filler эмчилгээний хэсгүүд",
+          "wrinkles": "Үрчлээ",
+          "volume": "Эзлэхүүн",
+          "contour": "Хэлбэр",
+          "lifting": "Лифтинг",
+          "interactionHint": "* Аль ч хэсэг дээр товшоод тухайн хэсгийн байрлалыг зурган дээрээс харна уу"
         }
       },
       "skinbooster": {
         "name": "Skin Booster",
         "fullName": "Skin Booster",
-        "tagline": "Deep Hydration from Within",
-        "description": "Delivering hydration and nutrients deep into the skin to improve overall skin health.",
+        "tagline": "Дотроос гүн чийгшил",
+        "description": "Арьсны гүнд чийг болон шим тэжээлийг дамжуулж арьсны ерөнхий эрүүл мэндийг сайжруулна.",
         "detail": {
-          "heroImageAlt": "Skin Booster - Radiance from Deep Within",
+          "heroImageAlt": "Skin Booster — Гүнээс нь гэрэлтүүлэх",
           "hydrationIllustration": {
-            "epidermis": "EPIDERMIS",
-            "dehydrated": "Dehydrated",
-            "hydrated": "Hydrated",
-            "haGrowthFactors": "HA + Growth Factors",
-            "deepHydration": "Deep Hydration to Dermis"
+            "epidermis": "ЭПИДЕРМИС",
+            "dehydrated": "Хуурайшсан",
+            "hydrated": "Чийгшсэн",
+            "haGrowthFactors": "HA + Өсөлтийн хүчин зүйл",
+            "deepHydration": "Дермис хүртэлх гүн чийгшил"
           },
           "courseTimeline": {
             "items": [
@@ -2804,7 +2804,7 @@
             ]
           },
           "benefits": {
-            "title": "Benefits of Skin Booster",
+            "title": "Skin Booster-ийн давуу тал",
             "items": [
               {
                 "title": "Deep Hydration",
@@ -2889,13 +2889,13 @@
             ]
           },
           "treatmentValues": {
-            "duration": "30-45 minutes",
-            "anesthesia": "Numbing cream",
-            "recovery": "1-3 days (micro injection marks)",
-            "results": "Effects in 2-4 weeks, 3-4 sessions recommended"
+            "duration": "30-45 минут",
+            "anesthesia": "Мэдээ алдуулах крем",
+            "recovery": "1-3 хоног (бичил тарилгын ул мөр)",
+            "results": "2-4 долоо хоногт үр дүн, 3-4 удаа санал болгоно"
           },
           "effects": {
-            "title": "Skin Booster Effects",
+            "title": "Skin Booster-ийн нөлөө",
             "items": [
               {
                 "icon": "droplet",
@@ -2915,13 +2915,13 @@
             ]
           },
           "treatmentCourse": {
-            "title": "3-4 Sessions Recommended",
-            "subtitle": "We recommend 3-4 sessions at 2-4 week intervals for optimal results",
-            "maintenanceNote": "Maintenance treatment recommended every 2-3 months after course completion"
+            "title": "3-4 удаагийн эмчилгээ санал болгоно",
+            "subtitle": "Оновчтой үр дүнд хүрэхийн тулд 2-4 долоо хоногийн зайтай 3-4 удаагийн эмчилгээ хийхийг зөвлөж байна",
+            "maintenanceNote": "Эмчилгээний курс дууссаны дараа 2-3 сард нэг удаагийн арчилгааны эмчилгээг санал болгоно"
           },
           "products": {
-            "title": "Skin Booster Products",
-            "subtitle": "Optimal product selection based on skin condition and goals",
+            "title": "Skin Booster бүтээгдэхүүн",
+            "subtitle": "Арьсны нөхцөл болон зорилгод тулгуурласан оновчтой бүтээгдэхүүний сонголт",
             "items": [
               {
                 "name": "Juvelook",
@@ -2941,33 +2941,33 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Information",
+            "title": "Эмчилгээний мэдээлэл",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results"
+              "duration": "Хугацаа",
+              "anesthesia": "Мэдээ алдуулалт",
+              "recovery": "Сэргэлт",
+              "results": "Үр дүн"
             }
           },
-          "faqTitle": "Frequently Asked Questions",
+          "faqTitle": "Түгээмэл асуулт хариулт",
           "cta": {
-            "title": "Book Skin Booster Consultation",
-            "description": "Experience hydration and radiance from deep within. Get a personalized treatment plan through expert consultation.",
-            "buttonOnline": "Book Online Consultation"
+            "title": "Skin Booster зөвлөгөө захиалах",
+            "description": "Дотроос гэрэлтэх чийгшил болон гялалзах байдлыг мэдрээрэй. Мэргэжилтний зөвлөгөөгөөр хувийн эмчилгээний төлөвлөгөөг авна уу.",
+            "buttonOnline": "Онлайнаар зөвлөгөө захиалах"
           }
         }
       },
       "skincare": {
         "name": "Skincare",
-        "fullName": "Premium Skincare",
-        "tagline": "Premium skincare completed by expert estheticians",
-        "description": "A premium skincare program performed by professional estheticians, including Aqua Tox and Plafill treatments. Customized care based on your skin type and concerns to restore your skin's natural health.",
+        "fullName": "Премиум Skincare",
+        "tagline": "Мэргэжилтэн гоо сайхны эмчээр гүйцэтгэгдэх премиум арьс арчилгаа",
+        "description": "Мэргэжлийн гоо сайхны эмч нараар гүйцэтгэгдэх Aqua Tox болон Plafill эмчилгээг багтаасан премиум арьс арчилгааны хөтөлбөр. Таны арьсны төрөл болон асуудлуудад тохируулсан хувийн арчилгаа нь арьсны байгалийн эрүүл мэндийг сэргээнэ.",
         "detail": {
-          "heroSubtitle": "Esthetician Care",
+          "heroSubtitle": "Гоо сайхны эмчийн арчилгаа",
           "programsSection": {
-            "badge": "Programs",
-            "title": "LIV Skincare Programs",
-            "subtitle": "Customized premium skincare by professional estheticians",
+            "badge": "Хөтөлбөрүүд",
+            "title": "LIV Skincare хөтөлбөрүүд",
+            "subtitle": "Мэргэжлийн гоо сайхны эмчээр гүйцэтгэх хувийн премиум арьс арчилгаа",
             "items": [
               {
                 "id": "hydration",
@@ -3020,9 +3020,9 @@
             ]
           },
           "equipmentSection": {
-            "badge": "Equipment",
-            "title": "Equipment Lineup",
-            "subtitle": "More effective skincare with premium devices",
+            "badge": "Тоног төхөөрөмж",
+            "title": "Тоног төхөөрөмжийн шугам",
+            "subtitle": "Премиум төхөөрөмжтэй илүү үр дүнтэй арьс арчилгаа",
             "items": [
               {
                 "id": "aqualab",
@@ -3067,9 +3067,9 @@
             ]
           },
           "differentiatorSection": {
-            "badge": "Why LIV",
-            "title": "What Makes LIV Different",
-            "subtitle": "Not just skincare, but medical-grade premium care",
+            "badge": "LIV-ийн онцлог",
+            "title": "LIV-ийг ялгаатай болгох зүйл",
+            "subtitle": "Зөвхөн арьс арчилгаа биш, эмнэлгийн зэрэглэлийн премиум арчилгаа",
             "items": [
               {
                 "id": "expert",
@@ -3104,22 +3104,22 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Information",
+            "title": "Эмчилгээний мэдээлэл",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results"
+              "duration": "Хугацаа",
+              "anesthesia": "Мэдээ алдуулалт",
+              "recovery": "Сэргэлт",
+              "results": "Үр дүн"
             }
           },
           "treatmentValues": {
-            "duration": "60-90 min",
-            "anesthesia": "Not required",
-            "recovery": "None (immediate return)",
-            "results": "Immediate skin tone improvement, maximized with regular care"
+            "duration": "60-90 минут",
+            "anesthesia": "Шаардлагагүй",
+            "recovery": "Байхгүй (шууд буцах)",
+            "results": "Арьсны өнгийг шууд сайжруулна, тогтмол арчилгаагаар үр нөлөөг дээд хэмжээнд хүргэнэ"
           },
           "idealFor": {
-            "title": "Recommended For",
+            "title": "Дараах хүмүүст санал болгоно",
             "items": [
               "Those with dry, dull skin concerns",
               "Those with decreased skin elasticity",
@@ -3130,7 +3130,7 @@
             ]
           },
           "faqs": {
-            "title": "Frequently Asked Questions",
+            "title": "Түгээмэл асуулт хариулт",
             "items": [
               {
                 "q": "What's the difference between skincare and skin booster treatments?",
@@ -3155,9 +3155,9 @@
             ]
           },
           "cta": {
-            "title": "Book Skincare Consultation",
-            "description": "Our expert estheticians with 10+ years of experience will guide you to the optimal program for your skin type and concerns.",
-            "button": "Book Online Consultation"
+            "title": "Skincare зөвлөгөө захиалах",
+            "description": "10 гаруй жилийн туршлагатай манай мэргэжилтэн гоо сайхны эмч нар таны арьсны төрөл болон асуудалд тохирох оновчтой хөтөлбөрийг танд танилцуулна.",
+            "button": "Онлайнаар зөвлөгөө захиалах"
           }
         }
       }

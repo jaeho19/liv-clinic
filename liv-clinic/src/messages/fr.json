@@ -2297,16 +2297,16 @@
       "botox": {
         "name": "Botox",
         "fullName": "Botox",
-        "tagline": "Wrinkle Reduction & Facial Contouring",
-        "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line.",
+        "tagline": "Réduction des rides et contour facial",
+        "description": "Utilisation de la toxine botulique pour atténuer les rides d'expression et réduire les muscles maxillaires pour un ovale du visage plus fin.",
         "detail": {
           "hero": {
-            "badge": "Anti-Aging Treatment",
+            "badge": "Traitement anti-âge",
             "title": "Botox",
-            "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line."
+            "description": "Utilisation de la toxine botulique pour atténuer les rides d'expression et réduire les muscles maxillaires pour un ovale du visage plus fin."
           },
           "benefits": {
-            "title": "Benefits of Botox",
+            "title": "Bénéfices du Botox",
             "items": [
               {
                 "title": "Expression Wrinkle Improvement",
@@ -2327,54 +2327,54 @@
             ]
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Precise treatment on various facial areas",
+            "title": "Zones de traitement",
+            "subtitle": "Traitement précis de différentes zones du visage",
             "areas": {
-              "forehead": "Forehead",
-              "glabella": "Glabella",
-              "crowsFeet": "Crow's Feet",
-              "nasalis": "Nose",
-              "lips": "Lips",
-              "masseter": "Jaw",
-              "neckBands": "Neck",
-              "hairline": "Hairline"
+              "forehead": "Front",
+              "glabella": "Glabelle",
+              "crowsFeet": "Pattes-d'oie",
+              "nasalis": "Nez",
+              "lips": "Lèvres",
+              "masseter": "Mâchoire",
+              "neckBands": "Cou",
+              "hairline": "Ligne capillaire"
             }
           },
           "treatmentInfo": {
-            "title": "Treatment Info",
-            "duration": "Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery",
-            "results": "Results Duration"
+            "title": "Informations sur le traitement",
+            "duration": "Durée",
+            "anesthesia": "Anesthésie",
+            "recovery": "Récupération",
+            "results": "Durée des résultats"
           },
           "faq": {
-            "title": "Frequently Asked Questions"
+            "title": "Questions fréquentes"
           },
           "cta": {
-            "title": "Botox Consultation",
-            "description": "Natural wrinkle improvement - Get guidance on optimal treatment through specialist consultation."
+            "title": "Consultation Botox",
+            "description": "Atténuation naturelle des rides — Recevez des recommandations sur le traitement optimal grâce à une consultation spécialisée."
           },
           "treatmentAreasLabels": {
-            "forehead": "Forehead",
-            "glabella": "Glabella",
-            "crowsFeet": "Crow's Feet",
-            "masseter": "Masseter",
-            "mouthCorners": "Mouth Corners",
-            "trapezius": "Trapezius",
-            "calves": "Calves"
+            "forehead": "Front",
+            "glabella": "Glabelle",
+            "crowsFeet": "Pattes-d'oie",
+            "masseter": "Masséter",
+            "mouthCorners": "Coins de la bouche",
+            "trapezius": "Trapèze",
+            "calves": "Mollets"
           },
           "treatmentAreasDescriptions": {
-            "forehead": "Smooths forehead lines for a brighter, younger appearance",
-            "glabella": "Reduces frown lines for a more relaxed expression",
-            "crowsFeet": "Softens crow's feet for improved eye contour",
-            "masseter": "Slims jaw muscles for a more defined facial shape",
-            "mouthCorners": "Lifts mouth corners for a brighter expression",
-            "trapezius": "Reduces trapezius volume for elegant shoulder lines",
-            "calves": "Refines calf lines for slimmer legs"
+            "forehead": "Lisse les rides du front pour un visage plus lumineux et jeune",
+            "glabella": "Réduit les rides du lion pour une expression plus détendue",
+            "crowsFeet": "Adoucit les pattes-d'oie pour un meilleur contour des yeux",
+            "masseter": "Affine les muscles maxillaires pour un ovale du visage plus défini",
+            "mouthCorners": "Rehausse les coins de la bouche pour une expression plus lumineuse",
+            "trapezius": "Réduit le volume du trapèze pour une silhouette d'épaules élégante",
+            "calves": "Affine les mollets pour des jambes plus fines"
           },
-          "targetAreasDescription": "From expression wrinkles to facial contouring, we provide customized treatments for natural improvement.",
+          "targetAreasDescription": "Des rides d'expression au remodelage du visage, nous proposons des traitements personnalisés pour une amélioration naturelle.",
           "timeline": {
-            "title": "Post-Treatment Timeline",
+            "title": "Chronologie post-traitement",
             "items": [
               {
                 "time": "Day 1",
@@ -2402,12 +2402,12 @@
               }
             ]
           },
-          "mechanismLabel": "PRECISION INJECTION MAPPING",
+          "mechanismLabel": "CARTOGRAPHIE D'INJECTION DE PRÉCISION",
           "treatmentInfoLabels": {
-            "duration": "Treatment Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery Period",
-            "results": "Effect Duration"
+            "duration": "Durée du traitement",
+            "anesthesia": "Anesthésie",
+            "recovery": "Période de récupération",
+            "results": "Durée d'effet"
           },
           "process": {
             "items": [
@@ -2488,34 +2488,34 @@
           },
           "treatmentValues": {
             "duration": "10-20 minutes",
-            "anesthesia": "None or numbing cream (upon request)",
-            "recovery": "Immediate return to daily activities",
-            "results": "Effects begin in 3-7 days, last 3-6 months"
+            "anesthesia": "Aucune ou crème anesthésiante (sur demande)",
+            "recovery": "Retour immédiat aux activités quotidiennes",
+            "results": "Effet visible en 3-7 jours, dure 3-6 mois"
           }
         },
         "ui": {
-          "calvesArea": "Calf treatment area",
-          "category": "Category:",
-          "expressionWrinkles": "Expression wrinkles",
-          "contouring": "Contouring",
-          "body": "Body",
-          "interactionHint": "* Click or hover any area to see its location on the image",
-          "imageAlt": "Botox treatment areas"
+          "calvesArea": "Zone de traitement des mollets",
+          "category": "Catégorie :",
+          "expressionWrinkles": "Rides d'expression",
+          "contouring": "Remodelage",
+          "body": "Corps",
+          "interactionHint": "* Cliquez ou survolez une zone pour voir son emplacement sur l'image",
+          "imageAlt": "Zones de traitement Botox"
         }
       },
       "filler": {
         "name": "Filler",
         "fullName": "Filler",
-        "tagline": "Volume & Contour Enhancement",
-        "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume.",
+        "tagline": "Volume et amélioration du contour",
+        "description": "Utilisation de fillers à base d'acide hyaluronique pour combler les zones creuses et créer un volume naturel.",
         "detail": {
           "hero": {
-            "badge": "Anti-Aging Treatment",
+            "badge": "Traitement anti-âge",
             "title": "Filler",
-            "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume."
+            "description": "Utilisation de fillers à base d'acide hyaluronique pour combler les zones creuses et créer un volume naturel."
           },
           "benefits": {
-            "title": "Benefits of Filler",
+            "title": "Bénéfices du Filler",
             "items": [
               {
                 "title": "Immediate Results",
@@ -2601,13 +2601,13 @@
           },
           "treatmentValues": {
             "duration": "20-40 minutes",
-            "anesthesia": "Numbing cream or nerve block",
-            "recovery": "Immediate to 3 days (varies by area)",
-            "results": "Immediate effect, lasts 6-24 months (varies by product)"
+            "anesthesia": "Crème anesthésiante ou bloc nerveux",
+            "recovery": "Immédiat à 3 jours (selon la zone)",
+            "results": "Effet immédiat, dure 6-24 mois (selon le produit)"
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Fill volume and refine contours in various facial areas",
+            "title": "Zones de traitement",
+            "subtitle": "Restaurez le volume et affinez les contours dans différentes zones du visage",
             "areas": [
               {
                 "id": 1,
@@ -2662,8 +2662,8 @@
             ]
           },
           "bodyAreas": {
-            "title": "Body Filler",
-            "subtitle": "Enhance body contours for a beautiful silhouette",
+            "title": "Filler corporel",
+            "subtitle": "Sublimez les contours du corps pour une silhouette harmonieuse",
             "areas": [
               {
                 "id": 1,
@@ -2690,12 +2690,12 @@
                 "detail": "Fills the depression between hips and thighs for a smooth silhouette"
               }
             ],
-            "notice": "Body filler uses high-volume hyaluronic acid filler, customized to individual body shape.",
-            "imageAlt": "Medical illustration showing shoulder, hip, pelvis, and hip dip body filler treatment areas"
+            "notice": "Le filler corporel utilise un filler à base d'acide hyaluronique haut volume, personnalisé selon la morphologie individuelle.",
+            "imageAlt": "Illustration médicale montrant les zones de traitement par filler corporel : épaules, hanches, bassin et creux de hanche"
           },
           "fillerTypes": {
-            "title": "Customized Filler by Area",
-            "subtitle": "Selecting optimal filler firmness based on treatment area and purpose",
+            "title": "Filler personnalisé selon la zone",
+            "subtitle": "Sélection de la fermeté optimale du filler selon la zone et l'objectif du traitement",
             "types": [
               {
                 "type": "Soft",
@@ -2715,8 +2715,8 @@
             ]
           },
           "safety": {
-            "title": "Reversible Treatment",
-            "subtitle": "Hyaluronic acid filler can be dissolved if needed, ensuring safety",
+            "title": "Traitement réversible",
+            "subtitle": "Le filler à base d'acide hyaluronique peut être dissous si nécessaire, garantissant la sécurité",
             "steps": [
               {
                 "step": "01",
@@ -2736,44 +2736,44 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Info",
-            "duration": "Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery",
-            "results": "Results Duration"
+            "title": "Informations sur le traitement",
+            "duration": "Durée",
+            "anesthesia": "Anesthésie",
+            "recovery": "Récupération",
+            "results": "Durée des résultats"
           },
           "faq": {
-            "title": "Frequently Asked Questions"
+            "title": "Questions fréquentes"
           },
           "cta": {
-            "title": "Filler Consultation",
-            "description": "Natural volume and contours - Get guidance on optimal treatment through specialist consultation."
+            "title": "Consultation Filler",
+            "description": "Volume et contours naturels — Recevez des recommandations sur le traitement optimal grâce à une consultation spécialisée."
           },
-          "volumeIllustrationLabel": "VOLUME RESTORATION MAPPING",
-          "heroImageAlt": "Filler - The Art of Volume and Contour"
+          "volumeIllustrationLabel": "CARTOGRAPHIE DE RESTAURATION DU VOLUME",
+          "heroImageAlt": "Filler — L'art du volume et du contour"
         },
         "ui": {
-          "imageAlt": "Filler treatment areas",
-          "wrinkles": "Wrinkles",
+          "imageAlt": "Zones de traitement Filler",
+          "wrinkles": "Rides",
           "volume": "Volume",
           "contour": "Contour",
           "lifting": "Lifting",
-          "interactionHint": "* Click any area to see its location on the image"
+          "interactionHint": "* Cliquez sur une zone pour voir son emplacement sur l'image"
         }
       },
       "skinbooster": {
         "name": "Skin Booster",
         "fullName": "Skin Booster",
-        "tagline": "Deep Hydration from Within",
-        "description": "Delivering hydration and nutrients deep into the skin to improve overall skin health.",
+        "tagline": "Hydratation profonde de l'intérieur",
+        "description": "Délivrer en profondeur hydratation et nutriments pour améliorer la santé globale de la peau.",
         "detail": {
-          "heroImageAlt": "Skin Booster - Radiance from Deep Within",
+          "heroImageAlt": "Skin Booster — Un éclat venu de l'intérieur",
           "hydrationIllustration": {
-            "epidermis": "EPIDERMIS",
-            "dehydrated": "Dehydrated",
-            "hydrated": "Hydrated",
-            "haGrowthFactors": "HA + Growth Factors",
-            "deepHydration": "Deep Hydration to Dermis"
+            "epidermis": "ÉPIDERME",
+            "dehydrated": "Déshydratée",
+            "hydrated": "Hydratée",
+            "haGrowthFactors": "HA + facteurs de croissance",
+            "deepHydration": "Hydratation profonde jusqu'au derme"
           },
           "courseTimeline": {
             "items": [
@@ -2804,7 +2804,7 @@
             ]
           },
           "benefits": {
-            "title": "Benefits of Skin Booster",
+            "title": "Bénéfices du Skin Booster",
             "items": [
               {
                 "title": "Deep Hydration",
@@ -2890,12 +2890,12 @@
           },
           "treatmentValues": {
             "duration": "30-45 minutes",
-            "anesthesia": "Numbing cream",
-            "recovery": "1-3 days (micro injection marks)",
-            "results": "Effects in 2-4 weeks, 3-4 sessions recommended"
+            "anesthesia": "Crème anesthésiante",
+            "recovery": "1-3 jours (légères traces de micro-injection)",
+            "results": "Effets en 2-4 semaines, 3-4 séances recommandées"
           },
           "effects": {
-            "title": "Skin Booster Effects",
+            "title": "Effets du Skin Booster",
             "items": [
               {
                 "icon": "droplet",
@@ -2915,13 +2915,13 @@
             ]
           },
           "treatmentCourse": {
-            "title": "3-4 Sessions Recommended",
-            "subtitle": "We recommend 3-4 sessions at 2-4 week intervals for optimal results",
-            "maintenanceNote": "Maintenance treatment recommended every 2-3 months after course completion"
+            "title": "3-4 séances recommandées",
+            "subtitle": "Nous recommandons 3-4 séances à 2-4 semaines d'intervalle pour des résultats optimaux",
+            "maintenanceNote": "Traitement d'entretien recommandé tous les 2-3 mois après la fin du protocole"
           },
           "products": {
-            "title": "Skin Booster Products",
-            "subtitle": "Optimal product selection based on skin condition and goals",
+            "title": "Produits Skin Booster",
+            "subtitle": "Sélection du produit optimal en fonction de l'état de la peau et des objectifs",
             "items": [
               {
                 "name": "Juvelook",
@@ -2941,33 +2941,33 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Information",
+            "title": "Informations sur le traitement",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results"
+              "duration": "Durée",
+              "anesthesia": "Anesthésie",
+              "recovery": "Récupération",
+              "results": "Résultats"
             }
           },
-          "faqTitle": "Frequently Asked Questions",
+          "faqTitle": "Questions fréquentes",
           "cta": {
-            "title": "Book Skin Booster Consultation",
-            "description": "Experience hydration and radiance from deep within. Get a personalized treatment plan through expert consultation.",
-            "buttonOnline": "Book Online Consultation"
+            "title": "Réservez une consultation Skin Booster",
+            "description": "Retrouvez hydratation et éclat venus de l'intérieur. Bénéficiez d'un plan de traitement personnalisé grâce à une consultation experte.",
+            "buttonOnline": "Réserver une consultation en ligne"
           }
         }
       },
       "skincare": {
         "name": "Skincare",
-        "fullName": "Premium Skincare",
-        "tagline": "Premium skincare completed by expert estheticians",
-        "description": "A premium skincare program performed by professional estheticians, including Aqua Tox and Plafill treatments. Customized care based on your skin type and concerns to restore your skin's natural health.",
+        "fullName": "Skincare premium",
+        "tagline": "Soins premium réalisés par des esthéticiennes expertes",
+        "description": "Un programme de skincare premium réalisé par des esthéticiennes professionnelles, incluant les soins Aqua Tox et Plafill. Soins personnalisés en fonction de votre type de peau et de vos préoccupations pour redonner à votre peau sa santé naturelle.",
         "detail": {
-          "heroSubtitle": "Esthetician Care",
+          "heroSubtitle": "Soin par esthéticienne",
           "programsSection": {
-            "badge": "Programs",
-            "title": "LIV Skincare Programs",
-            "subtitle": "Customized premium skincare by professional estheticians",
+            "badge": "Programmes",
+            "title": "Programmes Skincare LIV",
+            "subtitle": "Soins skincare premium personnalisés par des esthéticiennes professionnelles",
             "items": [
               {
                 "id": "hydration",
@@ -3020,9 +3020,9 @@
             ]
           },
           "equipmentSection": {
-            "badge": "Equipment",
-            "title": "Equipment Lineup",
-            "subtitle": "More effective skincare with premium devices",
+            "badge": "Équipement",
+            "title": "Gamme d'équipements",
+            "subtitle": "Un skincare plus efficace avec des appareils premium",
             "items": [
               {
                 "id": "aqualab",
@@ -3067,9 +3067,9 @@
             ]
           },
           "differentiatorSection": {
-            "badge": "Why LIV",
-            "title": "What Makes LIV Different",
-            "subtitle": "Not just skincare, but medical-grade premium care",
+            "badge": "Pourquoi LIV",
+            "title": "Ce qui distingue LIV",
+            "subtitle": "Pas seulement du skincare, mais des soins premium de qualité médicale",
             "items": [
               {
                 "id": "expert",
@@ -3104,22 +3104,22 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Information",
+            "title": "Informations sur le traitement",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results"
+              "duration": "Durée",
+              "anesthesia": "Anesthésie",
+              "recovery": "Récupération",
+              "results": "Résultats"
             }
           },
           "treatmentValues": {
             "duration": "60-90 min",
-            "anesthesia": "Not required",
-            "recovery": "None (immediate return)",
-            "results": "Immediate skin tone improvement, maximized with regular care"
+            "anesthesia": "Non requise",
+            "recovery": "Aucune (retour immédiat)",
+            "results": "Amélioration immédiate du teint, maximisée par des soins réguliers"
           },
           "idealFor": {
-            "title": "Recommended For",
+            "title": "Recommandé pour",
             "items": [
               "Those with dry, dull skin concerns",
               "Those with decreased skin elasticity",
@@ -3130,7 +3130,7 @@
             ]
           },
           "faqs": {
-            "title": "Frequently Asked Questions",
+            "title": "Questions fréquentes",
             "items": [
               {
                 "q": "What's the difference between skincare and skin booster treatments?",
@@ -3155,9 +3155,9 @@
             ]
           },
           "cta": {
-            "title": "Book Skincare Consultation",
-            "description": "Our expert estheticians with 10+ years of experience will guide you to the optimal program for your skin type and concerns.",
-            "button": "Book Online Consultation"
+            "title": "Réservez une consultation Skincare",
+            "description": "Nos esthéticiennes expertes, fortes de plus de 10 ans d'expérience, vous orienteront vers le programme optimal en fonction de votre type de peau et de vos préoccupations.",
+            "button": "Réserver une consultation en ligne"
           }
         }
       }

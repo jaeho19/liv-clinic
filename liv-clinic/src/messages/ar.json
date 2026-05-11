@@ -2297,16 +2297,16 @@
       "botox": {
         "name": "Botox",
         "fullName": "Botox",
-        "tagline": "Wrinkle Reduction & Facial Contouring",
-        "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line.",
+        "tagline": "تقليل التجاعيد ونحت ملامح الوجه",
+        "description": "استخدام توكسين البوتولينوم لتحسين تجاعيد التعابير وتقليل عضلات الفك للحصول على خط وجه أنحف.",
         "detail": {
           "hero": {
-            "badge": "Anti-Aging Treatment",
+            "badge": "علاج مكافحة الشيخوخة",
             "title": "Botox",
-            "description": "Using botulinum toxin to improve expression wrinkles and reduce jaw muscles for a slimmer facial line."
+            "description": "استخدام توكسين البوتولينوم لتحسين تجاعيد التعابير وتقليل عضلات الفك للحصول على خط وجه أنحف."
           },
           "benefits": {
-            "title": "Benefits of Botox",
+            "title": "فوائد Botox",
             "items": [
               {
                 "title": "Expression Wrinkle Improvement",
@@ -2327,54 +2327,54 @@
             ]
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Precise treatment on various facial areas",
+            "title": "مناطق العلاج",
+            "subtitle": "علاج دقيق في مختلف مناطق الوجه",
             "areas": {
-              "forehead": "Forehead",
-              "glabella": "Glabella",
-              "crowsFeet": "Crow's Feet",
-              "nasalis": "Nose",
-              "lips": "Lips",
-              "masseter": "Jaw",
-              "neckBands": "Neck",
-              "hairline": "Hairline"
+              "forehead": "الجبهة",
+              "glabella": "ما بين الحاجبين",
+              "crowsFeet": "خطوط جانب العين",
+              "nasalis": "الأنف",
+              "lips": "الشفاه",
+              "masseter": "الفك",
+              "neckBands": "الرقبة",
+              "hairline": "خط الشعر"
             }
           },
           "treatmentInfo": {
-            "title": "Treatment Info",
-            "duration": "Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery",
-            "results": "Results Duration"
+            "title": "معلومات العلاج",
+            "duration": "المدة",
+            "anesthesia": "التخدير",
+            "recovery": "فترة التعافي",
+            "results": "مدة استمرار النتائج"
           },
           "faq": {
-            "title": "Frequently Asked Questions"
+            "title": "الأسئلة الشائعة"
           },
           "cta": {
-            "title": "Botox Consultation",
-            "description": "Natural wrinkle improvement - Get guidance on optimal treatment through specialist consultation."
+            "title": "استشارة Botox",
+            "description": "تحسين طبيعي للتجاعيد — احصل على إرشادات حول العلاج الأمثل عبر استشارة متخصصة."
           },
           "treatmentAreasLabels": {
-            "forehead": "Forehead",
-            "glabella": "Glabella",
-            "crowsFeet": "Crow's Feet",
-            "masseter": "Masseter",
-            "mouthCorners": "Mouth Corners",
-            "trapezius": "Trapezius",
-            "calves": "Calves"
+            "forehead": "الجبهة",
+            "glabella": "ما بين الحاجبين",
+            "crowsFeet": "خطوط جانب العين",
+            "masseter": "العضلة الماضغة",
+            "mouthCorners": "زوايا الفم",
+            "trapezius": "العضلة شبه المنحرفة",
+            "calves": "بطّة الساق"
           },
           "treatmentAreasDescriptions": {
-            "forehead": "Smooths forehead lines for a brighter, younger appearance",
-            "glabella": "Reduces frown lines for a more relaxed expression",
-            "crowsFeet": "Softens crow's feet for improved eye contour",
-            "masseter": "Slims jaw muscles for a more defined facial shape",
-            "mouthCorners": "Lifts mouth corners for a brighter expression",
-            "trapezius": "Reduces trapezius volume for elegant shoulder lines",
-            "calves": "Refines calf lines for slimmer legs"
+            "forehead": "يُنعِّم خطوط الجبهة لإطلالة أكثر إشراقاً وشباباً",
+            "glabella": "يقلّل خطوط العبوس لتعبير أكثر استرخاءً",
+            "crowsFeet": "يُلطّف خطوط جانب العين ويُحسّن محيط العين",
+            "masseter": "ينحت عضلات الفك للحصول على شكل وجه أكثر تحديداً",
+            "mouthCorners": "يرفع زوايا الفم لتعبير أكثر إشراقاً",
+            "trapezius": "يقلّل حجم العضلة شبه المنحرفة لخطوط أكتاف أنيقة",
+            "calves": "يُنحّف خطوط الساقين لقوائم أرشق"
           },
-          "targetAreasDescription": "From expression wrinkles to facial contouring, we provide customized treatments for natural improvement.",
+          "targetAreasDescription": "من تجاعيد التعابير إلى نحت ملامح الوجه، نوفّر علاجات مخصصة للتحسين الطبيعي.",
           "timeline": {
-            "title": "Post-Treatment Timeline",
+            "title": "الجدول الزمني لما بعد العلاج",
             "items": [
               {
                 "time": "Day 1",
@@ -2402,12 +2402,12 @@
               }
             ]
           },
-          "mechanismLabel": "PRECISION INJECTION MAPPING",
+          "mechanismLabel": "رسم خرائط الحقن الدقيق",
           "treatmentInfoLabels": {
-            "duration": "Treatment Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery Period",
-            "results": "Effect Duration"
+            "duration": "مدة العلاج",
+            "anesthesia": "التخدير",
+            "recovery": "فترة التعافي",
+            "results": "مدة المفعول"
           },
           "process": {
             "items": [
@@ -2487,35 +2487,35 @@
             ]
           },
           "treatmentValues": {
-            "duration": "10-20 minutes",
-            "anesthesia": "None or numbing cream (upon request)",
-            "recovery": "Immediate return to daily activities",
-            "results": "Effects begin in 3-7 days, last 3-6 months"
+            "duration": "10-20 دقيقة",
+            "anesthesia": "بدون أو كريم مخدّر (عند الطلب)",
+            "recovery": "العودة الفورية إلى النشاطات اليومية",
+            "results": "تظهر النتائج خلال 3-7 أيام وتدوم 3-6 أشهر"
           }
         },
         "ui": {
-          "calvesArea": "Calf treatment area",
-          "category": "Category:",
-          "expressionWrinkles": "Expression wrinkles",
-          "contouring": "Contouring",
-          "body": "Body",
-          "interactionHint": "* Click or hover any area to see its location on the image",
-          "imageAlt": "Botox treatment areas"
+          "calvesArea": "منطقة علاج بطّة الساق",
+          "category": "الفئة:",
+          "expressionWrinkles": "تجاعيد التعابير",
+          "contouring": "نحت الملامح",
+          "body": "الجسم",
+          "interactionHint": "* انقر أو مرّر فوق أي منطقة لرؤية موقعها على الصورة",
+          "imageAlt": "مناطق علاج Botox"
         }
       },
       "filler": {
         "name": "Filler",
         "fullName": "Filler",
-        "tagline": "Volume & Contour Enhancement",
-        "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume.",
+        "tagline": "تعزيز الحجم والكفاف",
+        "description": "استخدام فيلر يعتمد على حمض الهيالورونيك لملء المناطق الغائرة وخلق حجم طبيعي.",
         "detail": {
           "hero": {
-            "badge": "Anti-Aging Treatment",
+            "badge": "علاج مكافحة الشيخوخة",
             "title": "Filler",
-            "description": "Using hyaluronic acid-based fillers to fill hollowed areas and create natural volume."
+            "description": "استخدام فيلر يعتمد على حمض الهيالورونيك لملء المناطق الغائرة وخلق حجم طبيعي."
           },
           "benefits": {
-            "title": "Benefits of Filler",
+            "title": "فوائد Filler",
             "items": [
               {
                 "title": "Immediate Results",
@@ -2600,14 +2600,14 @@
             ]
           },
           "treatmentValues": {
-            "duration": "20-40 minutes",
-            "anesthesia": "Numbing cream or nerve block",
-            "recovery": "Immediate to 3 days (varies by area)",
-            "results": "Immediate effect, lasts 6-24 months (varies by product)"
+            "duration": "20-40 دقيقة",
+            "anesthesia": "كريم مخدّر أو حصار عصبي",
+            "recovery": "فوري إلى 3 أيام (يختلف حسب المنطقة)",
+            "results": "تأثير فوري يدوم 6-24 شهراً (يختلف حسب المنتج)"
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Fill volume and refine contours in various facial areas",
+            "title": "مناطق العلاج",
+            "subtitle": "تعويض الحجم وصقل الكفاف في مختلف مناطق الوجه",
             "areas": [
               {
                 "id": 1,
@@ -2662,8 +2662,8 @@
             ]
           },
           "bodyAreas": {
-            "title": "Body Filler",
-            "subtitle": "Enhance body contours for a beautiful silhouette",
+            "title": "Filler للجسم",
+            "subtitle": "حسّن ملامح الجسم للحصول على قوام جميل",
             "areas": [
               {
                 "id": 1,
@@ -2690,12 +2690,12 @@
                 "detail": "Fills the depression between hips and thighs for a smooth silhouette"
               }
             ],
-            "notice": "Body filler uses high-volume hyaluronic acid filler, customized to individual body shape.",
-            "imageAlt": "Medical illustration showing shoulder, hip, pelvis, and hip dip body filler treatment areas"
+            "notice": "يستخدم Filler الجسم حمض هيالورونيك بحجم كبير، يتم تخصيصه وفق شكل جسم كل فرد.",
+            "imageAlt": "رسم توضيحي طبي يُظهر مناطق علاج فيلر الجسم للكتفين والوركين والحوض ومنحنى الورك"
           },
           "fillerTypes": {
-            "title": "Customized Filler by Area",
-            "subtitle": "Selecting optimal filler firmness based on treatment area and purpose",
+            "title": "Filler مخصص لكل منطقة",
+            "subtitle": "اختيار قوام الفيلر الأمثل وفق منطقة العلاج وهدفه",
             "types": [
               {
                 "type": "Soft",
@@ -2715,8 +2715,8 @@
             ]
           },
           "safety": {
-            "title": "Reversible Treatment",
-            "subtitle": "Hyaluronic acid filler can be dissolved if needed, ensuring safety",
+            "title": "علاج قابل للعكس",
+            "subtitle": "يمكن إذابة فيلر حمض الهيالورونيك عند الحاجة، ما يضمن الأمان",
             "steps": [
               {
                 "step": "01",
@@ -2736,44 +2736,44 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Info",
-            "duration": "Duration",
-            "anesthesia": "Anesthesia",
-            "recovery": "Recovery",
-            "results": "Results Duration"
+            "title": "معلومات العلاج",
+            "duration": "المدة",
+            "anesthesia": "التخدير",
+            "recovery": "فترة التعافي",
+            "results": "مدة استمرار النتائج"
           },
           "faq": {
-            "title": "Frequently Asked Questions"
+            "title": "الأسئلة الشائعة"
           },
           "cta": {
-            "title": "Filler Consultation",
-            "description": "Natural volume and contours - Get guidance on optimal treatment through specialist consultation."
+            "title": "استشارة Filler",
+            "description": "حجم وكفاف طبيعيان — احصل على إرشادات حول العلاج الأمثل عبر استشارة متخصصة."
           },
-          "volumeIllustrationLabel": "VOLUME RESTORATION MAPPING",
-          "heroImageAlt": "Filler - The Art of Volume and Contour"
+          "volumeIllustrationLabel": "خريطة استعادة الحجم",
+          "heroImageAlt": "Filler — فنّ الحجم والكفاف"
         },
         "ui": {
-          "imageAlt": "Filler treatment areas",
-          "wrinkles": "Wrinkles",
-          "volume": "Volume",
-          "contour": "Contour",
-          "lifting": "Lifting",
-          "interactionHint": "* Click any area to see its location on the image"
+          "imageAlt": "مناطق علاج Filler",
+          "wrinkles": "تجاعيد",
+          "volume": "حجم",
+          "contour": "كفاف",
+          "lifting": "شدّ",
+          "interactionHint": "* انقر على أي منطقة لرؤية موقعها على الصورة"
         }
       },
       "skinbooster": {
         "name": "Skin Booster",
         "fullName": "Skin Booster",
-        "tagline": "Deep Hydration from Within",
-        "description": "Delivering hydration and nutrients deep into the skin to improve overall skin health.",
+        "tagline": "ترطيب عميق من الداخل",
+        "description": "توصيل الترطيب والمغذيات إلى أعماق البشرة لتحسين صحتها العامة.",
         "detail": {
-          "heroImageAlt": "Skin Booster - Radiance from Deep Within",
+          "heroImageAlt": "Skin Booster — إشراقة من أعماق البشرة",
           "hydrationIllustration": {
-            "epidermis": "EPIDERMIS",
-            "dehydrated": "Dehydrated",
-            "hydrated": "Hydrated",
-            "haGrowthFactors": "HA + Growth Factors",
-            "deepHydration": "Deep Hydration to Dermis"
+            "epidermis": "البشرة",
+            "dehydrated": "جافة",
+            "hydrated": "مرطّبة",
+            "haGrowthFactors": "HA + عوامل النمو",
+            "deepHydration": "ترطيب عميق حتى الأدمة"
           },
           "courseTimeline": {
             "items": [
@@ -2804,7 +2804,7 @@
             ]
           },
           "benefits": {
-            "title": "Benefits of Skin Booster",
+            "title": "فوائد Skin Booster",
             "items": [
               {
                 "title": "Deep Hydration",
@@ -2889,13 +2889,13 @@
             ]
           },
           "treatmentValues": {
-            "duration": "30-45 minutes",
-            "anesthesia": "Numbing cream",
-            "recovery": "1-3 days (micro injection marks)",
-            "results": "Effects in 2-4 weeks, 3-4 sessions recommended"
+            "duration": "30-45 دقيقة",
+            "anesthesia": "كريم مخدّر",
+            "recovery": "1-3 أيام (آثار حقن دقيقة)",
+            "results": "تظهر النتائج خلال 2-4 أسابيع، يُوصى بـ 3-4 جلسات"
           },
           "effects": {
-            "title": "Skin Booster Effects",
+            "title": "تأثيرات Skin Booster",
             "items": [
               {
                 "icon": "droplet",
@@ -2915,13 +2915,13 @@
             ]
           },
           "treatmentCourse": {
-            "title": "3-4 Sessions Recommended",
-            "subtitle": "We recommend 3-4 sessions at 2-4 week intervals for optimal results",
-            "maintenanceNote": "Maintenance treatment recommended every 2-3 months after course completion"
+            "title": "يُوصى بـ 3-4 جلسات",
+            "subtitle": "نوصي بـ 3-4 جلسات بفاصل 2-4 أسابيع للحصول على أفضل النتائج",
+            "maintenanceNote": "يُوصى بعلاج صيانة كل 2-3 أشهر بعد انتهاء البرنامج"
           },
           "products": {
-            "title": "Skin Booster Products",
-            "subtitle": "Optimal product selection based on skin condition and goals",
+            "title": "منتجات Skin Booster",
+            "subtitle": "اختيار المنتج الأمثل بناءً على حالة البشرة وأهداف العلاج",
             "items": [
               {
                 "name": "Juvelook",
@@ -2941,33 +2941,33 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Information",
+            "title": "معلومات العلاج",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results"
+              "duration": "المدة",
+              "anesthesia": "التخدير",
+              "recovery": "فترة التعافي",
+              "results": "النتائج"
             }
           },
-          "faqTitle": "Frequently Asked Questions",
+          "faqTitle": "الأسئلة الشائعة",
           "cta": {
-            "title": "Book Skin Booster Consultation",
-            "description": "Experience hydration and radiance from deep within. Get a personalized treatment plan through expert consultation.",
-            "buttonOnline": "Book Online Consultation"
+            "title": "احجز استشارة Skin Booster",
+            "description": "اختبر الترطيب والإشراق من أعماق البشرة. احصل على خطة علاج مخصصة عبر استشارة خبير.",
+            "buttonOnline": "حجز استشارة عبر الإنترنت"
           }
         }
       },
       "skincare": {
         "name": "Skincare",
-        "fullName": "Premium Skincare",
-        "tagline": "Premium skincare completed by expert estheticians",
-        "description": "A premium skincare program performed by professional estheticians, including Aqua Tox and Plafill treatments. Customized care based on your skin type and concerns to restore your skin's natural health.",
+        "fullName": "Skincare الفاخر",
+        "tagline": "عناية فاخرة بالبشرة تُنجزها أخصائيات تجميل خبيرات",
+        "description": "برنامج Skincare فاخر تنفّذه أخصائيات تجميل محترفات، يشمل علاجَي Aqua Tox و Plafill. عناية مخصصة وفق نوع بشرتك ومشكلاتها لاستعادة الصحة الطبيعية للبشرة.",
         "detail": {
-          "heroSubtitle": "Esthetician Care",
+          "heroSubtitle": "عناية أخصائية التجميل",
           "programsSection": {
-            "badge": "Programs",
-            "title": "LIV Skincare Programs",
-            "subtitle": "Customized premium skincare by professional estheticians",
+            "badge": "البرامج",
+            "title": "برامج Skincare من LIV",
+            "subtitle": "Skincare فاخر مخصص تنفّذه أخصائيات تجميل محترفات",
             "items": [
               {
                 "id": "hydration",
@@ -3020,9 +3020,9 @@
             ]
           },
           "equipmentSection": {
-            "badge": "Equipment",
-            "title": "Equipment Lineup",
-            "subtitle": "More effective skincare with premium devices",
+            "badge": "المعدات",
+            "title": "تشكيلة المعدات",
+            "subtitle": "عناية بالبشرة أكثر فاعلية بأجهزة فاخرة",
             "items": [
               {
                 "id": "aqualab",
@@ -3067,9 +3067,9 @@
             ]
           },
           "differentiatorSection": {
-            "badge": "Why LIV",
-            "title": "What Makes LIV Different",
-            "subtitle": "Not just skincare, but medical-grade premium care",
+            "badge": "لماذا LIV",
+            "title": "ما يميّز LIV",
+            "subtitle": "ليست مجرد عناية بالبشرة، بل عناية فاخرة بمستوى طبي",
             "items": [
               {
                 "id": "expert",
@@ -3104,22 +3104,22 @@
             ]
           },
           "treatmentInfo": {
-            "title": "Treatment Information",
+            "title": "معلومات العلاج",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results"
+              "duration": "المدة",
+              "anesthesia": "التخدير",
+              "recovery": "فترة التعافي",
+              "results": "النتائج"
             }
           },
           "treatmentValues": {
-            "duration": "60-90 min",
-            "anesthesia": "Not required",
-            "recovery": "None (immediate return)",
-            "results": "Immediate skin tone improvement, maximized with regular care"
+            "duration": "60-90 دقيقة",
+            "anesthesia": "غير مطلوب",
+            "recovery": "لا يوجد (عودة فورية)",
+            "results": "تحسّن فوري في لون البشرة، يبلغ ذروته مع العناية المنتظمة"
           },
           "idealFor": {
-            "title": "Recommended For",
+            "title": "يُنصح به لمن",
             "items": [
               "Those with dry, dull skin concerns",
               "Those with decreased skin elasticity",
@@ -3130,7 +3130,7 @@
             ]
           },
           "faqs": {
-            "title": "Frequently Asked Questions",
+            "title": "الأسئلة الشائعة",
             "items": [
               {
                 "q": "What's the difference between skincare and skin booster treatments?",
@@ -3155,9 +3155,9 @@
             ]
           },
           "cta": {
-            "title": "Book Skincare Consultation",
-            "description": "Our expert estheticians with 10+ years of experience will guide you to the optimal program for your skin type and concerns.",
-            "button": "Book Online Consultation"
+            "title": "احجز استشارة Skincare",
+            "description": "ستوجّهك أخصائيات التجميل الخبيرات لدينا، صاحبات الخبرة التي تتجاوز 10 سنوات، إلى البرنامج الأمثل وفق نوع بشرتك ومشكلاتها.",
+            "button": "حجز استشارة عبر الإنترنت"
           }
         }
       }
