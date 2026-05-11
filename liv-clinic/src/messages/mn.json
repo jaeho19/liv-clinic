@@ -4,7 +4,7 @@
     "skipToContent": "Агуулга руу шилжих",
     "siteName": "LIV Гоо Заслын Эмнэлэг",
     "siteNameEn": "LIV Plastic Surgery",
-    "slogan": "Slow Aging, Natural Beauty",
+    "slogan": "Удаан хөгшрөлт, байгалийн гоо сайхан",
     "consultation": "Зөвлөгөө",
     "learnMore": "Дэлгэрэнгүй",
     "viewAll": "Бүгдийг үзэх",
@@ -36,10 +36,10 @@
     "cumulativeViews": "Нийт үзсэн",
     "update": "Шинэчлэлт",
     "viewMoreBlog": "Naver блогт илүү ихийг үзэх",
-    "noItemsInCategory": "No cases in this category",
-    "selectOtherCategory": "Please select another category",
-    "medicalInfoNews": "Medical Info & News",
-    "checkLatestNews": "Check out the latest news and useful medical information from LIV Plastic Surgery.",
+    "noItemsInCategory": "Энэ ангилалд тохиолдол байхгүй",
+    "selectOtherCategory": "Өөр ангилал сонгоно уу",
+    "medicalInfoNews": "Эмнэлзүйн мэдээлэл ба мэдээ",
+    "checkLatestNews": "LIV Гоо Заслын Эмнэлгийн сүүлийн үеийн мэдээ ба хэрэгцээтэй эмнэлзүйн мэдээллийг үзнэ үү.",
     "timeline": "Цаг хугацааны хүснэгт",
     "process": "Үйл явц",
     "targetAreas": "Зорилтот хэсэг",
@@ -50,19 +50,19 @@
     "next": "Дараах"
   },
   "categories": {
-    "lifting": "Lifting",
-    "antiaging": "Anti-aging",
-    "skin": "Skin/Laser",
-    "skincare": "Skincare",
-    "news": "Clinic News",
-    "qna": "Q&A"
+    "lifting": "Лифтинг",
+    "antiaging": "Хөгшрөлтийн эсрэг",
+    "skin": "Арьс/Лазер",
+    "skincare": "Арьсны арчилгаа",
+    "news": "Эмнэлгийн мэдээ",
+    "qna": "Асуулт/Хариулт"
   },
   "gallery": {
-    "title": "Treatment Gallery",
-    "description": "Browse our treatment cases at LIV Plastic Surgery. Experience natural and beautiful transformations.",
-    "noticeText": "All treatment cases are posted with patient consent. Results may vary by individual.",
-    "experienceChange": "Want to experience this transformation?",
-    "findTreatment": "Find the right treatment for you through a professional consultation."
+    "title": "Эмчилгээний галерей",
+    "description": "LIV Гоо Заслын Эмнэлгийн эмчилгээний тохиолдлуудыг үзнэ үү. Байгалийн бөгөөд сайхан өөрчлөлтийг мэдрэхгүй үү.",
+    "noticeText": "Бүх эмчилгээний тохиолдлууд үйлчлүүлэгчийн зөвшөөрөлтэйгээр нийтлэгдсэн. Үр дүн хувь хүн бүрт ялгаатай байж болно.",
+    "experienceChange": "Энэ өөрчлөлтийг мэдрэхийг хүсэж байна уу?",
+    "findTreatment": "Мэргэжлийн зөвлөгөөгөөр өөрт тохирох эмчилгээг олоорой."
   },
   "nav": {
     "about": "Бидний тухай",
@@ -78,11 +78,11 @@
     "inmode": "InMode",
     "shurink": "Shurink",
     "thread": "Утсан лифтинг",
-    "aptos": "APTOS био лифтинг",
+    "aptos": "APTOS Bio Lifting",
     "antiaging": "Залуужуулалт",
     "botox": "Ботокс",
     "filler": "Филлер",
-    "skinbooster": "Арьс сэргээгч",
+    "skinbooster": "Скин Бустер",
     "skincare": "Арьс арчилгаа",
     "laser": "Лазер",
     "beforeAfter": "Өмнө/Дараа",
@@ -93,111 +93,111 @@
   },
   "hero": {
     "slide1": {
-      "title": "Natural Results",
+      "title": "Байгалийн үр дүн",
       "subtitle": "Илрэхгүй байгалийн өөрчлөлт, мэс заслын мэргэжилтэн биеэрээ үйлчилнэ"
     },
     "slide2": {
-      "title": "Certified Premium",
+      "title": "Баталгаажсан Premium",
       "subtitle": "Ultherapy Prime, Thermage албан ёсны баталгаажуулсан, зөвхөн жинхэнэ бүтээгдэхүүн ашигладаг найдвартай эмнэлэг"
     },
     "slide3": {
-      "title": "Beyond Gravity",
+      "title": "Татах хүчээс илүү",
       "subtitle": "Мэс заслгүйгээр уян хатан байдлыг сэргээж, 10 жилийн өмнөх арьсаа мэдрээрэй"
     },
     "sideText": {
-      "left": "Premium Anti-Aging Clinic",
-      "right": "Since 2024 Seoul Sinsa"
+      "left": "Premium хөгшрөлтийн эсрэг эмнэлэг",
+      "right": "2024 оноос Сөүл Шинса"
     }
   },
   "sections": {
     "certification": {
-      "title": "Certified Clinic",
-      "officialPartner": "Certifications",
-      "visitSite": "Visit Official Site",
-      "ulthera": "Ultherapy Prime Certified",
+      "title": "Баталгаажсан эмнэлэг",
+      "officialPartner": "Гэрчилгээ",
+      "visitSite": "Албан ёсны сайт зочлох",
+      "ulthera": "Ultherapy Prime баталгаажсан",
       "ultheraEn": "Ultherapy Prime Certified",
-      "ultheraDesc": "FDA Approved HIFU Lifting",
-      "thermage": "Thermage FLX Partner",
+      "ultheraDesc": "FDA-аас зөвшөөрөгдсөн HIFU лифтинг",
+      "thermage": "Thermage FLX түнш",
       "thermageEn": "Thermage FLX Partner",
-      "thermageDesc": "Solta Medical Official Partner",
-      "density": "Density Official Partner",
+      "thermageDesc": "Solta Medical-ийн албан ёсны түнш",
+      "density": "Density албан ёсны түнш",
       "densityEn": "Density Official Partner",
-      "densityDesc": "HIFU+RF Dual Lifting",
-      "potenza": "Potenza Official Partner",
+      "densityDesc": "HIFU+RF давхар лифтинг",
+      "potenza": "Potenza албан ёсны түнш",
       "potenzaEn": "Potenza Official Partner",
-      "potenzaDesc": "RF Microneedle Treatment",
-      "sculptra": "Sculptra Certified",
+      "potenzaDesc": "RF микро зүүний эмчилгээ",
+      "sculptra": "Sculptra баталгаажсан",
       "sculptraEn": "Sculptra Certified",
-      "sculptraDesc": "Collagen Stimulating Filler",
-      "juvelook": "Juvelook Official Partner",
+      "sculptraDesc": "Коллагены идэвхжүүлэгч филлер",
+      "juvelook": "Juvelook албан ёсны түнш",
       "juvelookEn": "Juvelook Official Partner",
-      "juvelookDesc": "PDRN Skin Booster"
+      "juvelookDesc": "PDRN Скин Бустер"
     },
     "equipment": {
-      "title": "Genuine Equipment",
-      "subtitle": "Premium authentic devices",
-      "description": "LIV Plastic Surgery uses only certified premium equipment. We provide safe and effective treatments with the latest technology.",
-      "autoScrolling": "AUTO SCROLLING",
-      "premiumDevices": "10 Premium Devices",
-      "learnMore": "Learn More",
+      "title": "Жинхэнэ тоног төхөөрөмж",
+      "subtitle": "Premium жинхэнэ төхөөрөмж",
+      "description": "LIV Гоо Заслын Эмнэлэг зөвхөн баталгаажсан Premium тоног төхөөрөмж ашигладаг. Сүүлийн үеийн технологиор аюулгүй, үр дүнтэй эмчилгээ үзүүлдэг.",
+      "autoScrolling": "АВТО ГҮЙЛГЭЛТ",
+      "premiumDevices": "10 Premium төхөөрөмж",
+      "learnMore": "Дэлгэрэнгүй мэдээлэл",
       "devices": {
         "ultherapy": {
           "subTitle": "Ultherapy Prime",
-          "desc": "The global standard of FDA-approved HIFU lifting"
+          "desc": "FDA-аас зөвшөөрөгдсөн HIFU лифтингийн дэлхийн стандарт"
         },
         "thermage": {
           "subTitle": "Thermage FLX",
-          "desc": "The pinnacle of 4th generation RF lifting technology"
+          "desc": "4-р үеийн RF лифтинг технологийн оргил"
         },
         "density": {
           "subTitle": "Density",
-          "desc": "Collagen remodeling with RF energy"
+          "desc": "RF энергиэр коллаген сэргээх"
         },
         "shurink": {
           "subTitle": "Shurink",
-          "desc": "Precision HIFU for V-line contouring"
+          "desc": "V-хэлбэрийн контурын нарийн HIFU"
         },
         "inmode": {
           "subTitle": "InMode",
-          "desc": "Fat reduction and lifting with RF energy"
+          "desc": "RF энергиэр өөх багасгах ба лифтинг"
         },
         "potenza": {
           "subTitle": "Potenza",
-          "desc": "RF microneedling for elasticity and pore improvement"
+          "desc": "Уян хатан байдал, нүх багасгах RF микро зүү"
         },
         "clarity": {
           "subTitle": "Clarity II",
-          "desc": "Dual-wavelength laser for pigment & vascular treatment"
+          "desc": "Пигмент ба судасны эмчилгээний хос долгионы лазер"
         },
         "lucas": {
           "subTitle": "Lucas",
-          "desc": "High-power Q-switch for stubborn pigmentation"
+          "desc": "Тууштай пигменттэй өндөр чадлын Q-switch"
         },
         "co2": {
-          "subTitle": "CO2 Laser",
-          "desc": "Precision resurfacing and skin regeneration"
+          "subTitle": "CO2 лазер",
+          "desc": "Нарийвчилсан resurfacing ба арьсны сэргэлт"
         },
         "ulblanc": {
           "subTitle": "Ulblanc",
-          "desc": "Gentle whitening laser"
+          "desc": "Зөөлөн цайруулагч лазер"
         }
       },
       "ui": {
-        "introLine1": "LIV Plastic Surgery uses only authentic, certified premium equipment.",
-        "introLine2": "We deliver safe and effective treatments with cutting-edge technology.",
-        "viewMore": "Learn more",
-        "navigationHint": "Drag or scroll to explore"
+        "introLine1": "LIV Гоо Заслын Эмнэлэг зөвхөн жинхэнэ, баталгаажсан Premium тоног төхөөрөмж ашигладаг.",
+        "introLine2": "Дэвшилтэт технологиор аюулгүй, үр дүнтэй эмчилгээг хүргэдэг.",
+        "viewMore": "Дэлгэрэнгүй",
+        "navigationHint": "Чирэх эсвэл гүйлгэж судлах"
       }
     },
     "signature": {
-      "title": "Signature Programs",
-      "subtitle": "LIV's exclusive signature programs",
+      "title": "Онцлох хөтөлбөрүүд",
+      "subtitle": "LIV-ийн онцгой signature хөтөлбөрүүд",
       "programs": {
         "lifting": {
-          "title": "Lifting",
+          "title": "Лифтинг",
           "titleEn": "LIFTING",
           "subtitle": "Ultherapy Prime & Thermage",
-          "description": "The pinnacle of non-surgical lifting. Experience natural lifting effects with premium genuine equipment.",
+          "description": "Мэс заслын бус лифтингийн оргил. Premium жинхэнэ тоног төхөөрөмжөөр байгалийн лифтинг үр дүнг мэдрээрэй.",
           "features": [
             "Ultherapy Prime Certified",
             "Thermage FLX Partner",
@@ -205,10 +205,10 @@
           ]
         },
         "antiaging": {
-          "title": "Anti-Aging",
+          "title": "Хөгшрөлтийн эсрэг",
           "titleEn": "ANTI-AGING",
-          "subtitle": "Filler & Botox",
-          "description": "Achieve volume and contour with delicate touch. We pursue natural beauty.",
+          "subtitle": "Филлер & Ботокс",
+          "description": "Нарийн мэдрэмжтэй гарын хүрэлцээгээр эзлэхүүн ба контур олж авна. Бид байгалийн гоо сайхныг эрэлхийлдэг.",
           "features": [
             "Genuine Fillers",
             "Anatomical Approach",
@@ -216,10 +216,10 @@
           ]
         },
         "rejuvenation": {
-          "title": "Rejuvenation",
+          "title": "Сэргээх",
           "titleEn": "REJUVENATION",
-          "subtitle": "Medical Skincare",
-          "description": "Customized care to restore your skin's natural health. Scientific approach to skin improvement.",
+          "subtitle": "Эмнэлзүйн арьс арчилгаа",
+          "description": "Таны арьсны байгалийн эрүүл мэндийг сэргээх захиалгат арчилгаа. Арьсны сайжруулалтын шинжлэх ухааны хандлага.",
           "features": [
             "Skin Boosters",
             "Laser Toning",
@@ -229,39 +229,39 @@
       }
     },
     "values": {
-      "title": "Core Values",
-      "subtitle": "LIV's 4 core values",
+      "title": "Үндсэн үнэт зүйлс",
+      "subtitle": "LIV-ийн 4 үндсэн үнэт зүйл",
       "natural": {
-        "title": "Natural Beauty",
+        "title": "Байгалийн гоо сайхан",
         "subtitle": "Natural Beauty",
-        "description": "We pursue understated, natural beauty"
+        "description": "Бид даруу, байгалийн гоо сайхныг эрэлхийлдэг"
       },
       "expertise": {
-        "title": "Clinical Expertise",
+        "title": "Эмнэлзүйн мэргэжил",
         "subtitle": "Clinical Expertise",
-        "description": "Delivering optimal results with rich experience"
+        "description": "Баялаг туршлагаар оновчтой үр дүнг хүргэх"
       },
       "safety": {
-        "title": "Safety & Ethical Care",
+        "title": "Аюулгүй байдал ба ёс зүй",
         "subtitle": "Safety & Ethics",
-        "description": "Strict adherence to authentic products and safety protocols"
+        "description": "Жинхэнэ бүтээгдэхүүн ба аюулгүйн журмыг чанд баримтлах"
       },
       "tailored": {
-        "title": "Tailored Aging",
+        "title": "Захиалгат хөгшрөлтийн эсрэг",
         "subtitle": "Customized Anti-aging",
-        "description": "Designing optimal results with personalized solutions"
+        "description": "Хувийн шийдлээр оновчтой үр дүнг зохион байгуулах"
       }
     },
     "doctor": {
-      "title": "Medical Staff",
-      "subtitle": "Our Doctors",
+      "title": "Эмнэлзүйн ажилтнууд",
+      "subtitle": "Манай эмч нар",
       "name": "Sooyoung Kim",
       "nameEn": "Dr. Sooyoung Kim",
-      "directorTitle": "Director, LIV Plastic Surgery",
+      "directorTitle": "Захирал, LIV Гоо Заслын Эмнэлэг",
       "directorTitleEn": "Director",
-      "specialty": "Board-certified Plastic Surgeon",
-      "philosophy": "Pursuing naturalness - that is true beauty. We help you find your understated, authentic beauty.",
-      "credentials": "Credentials",
+      "specialty": "Гэрчилгээт гоо заслын мэс засалч",
+      "philosophy": "Байгалийн чанарыг эрэлхийлэх — энэ нь жинхэнэ гоо сайхан юм. Бид таны даруу, жинхэнэ гоо сайхныг олоход тусална.",
+      "credentials": "Гэрчилгээ",
       "credentialsList": [
         "M.D., Korea University College of Medicine",
         "M.S. in Plastic Surgery, Korea University Graduate School",
@@ -270,12 +270,12 @@
         "Fellowship, MD Anderson Cancer Center, Texas, USA"
       ],
       "certifications": {
-        "official": "Officially Certified",
+        "official": "Албан ёсоор баталгаажсан",
         "ultheraThermage": "Ultherapy Prime & Thermage",
-        "globalExpert": "Global Certified Expert",
-        "aptosCertified": "APTOS Certified Expert"
+        "globalExpert": "Дэлхийн баталгаажсан мэргэжилтэн",
+        "aptosCertified": "APTOS баталгаажсан мэргэжилтэн"
       },
-      "internationalActivities": "International Activities",
+      "internationalActivities": "Олон улсын үйл ажиллагаа",
       "activities": [
         {
           "caption": "APTOS Headquarters Training",
@@ -290,24 +290,24 @@
           "location": "Clinical Procedure Site"
         }
       ],
-      "viewStaff": "View Medical Staff",
+      "viewStaff": "Эмнэлзүйн ажилтнуудыг үзэх",
       "youtube": {
         "title": "LIV TV",
-        "subtitle": "Treatment Stories by Dr. Kim",
-        "subscribe": "Subscribe to LIV YouTube Channel",
-        "description": "Watch treatment info, doctor interviews, and before & after videos"
+        "subtitle": "Dr. Kim-ийн эмчилгээний түүх",
+        "subscribe": "LIV YouTube сувагт бүртгүүл",
+        "description": "Эмчилгээний мэдээлэл, эмчтэй ярилцлага, өмнө/дараа бичлэгүүдийг үзнэ үү"
       },
       "ui": {
-        "playVideo": "Play video"
+        "playVideo": "Бичлэг тоглуулах"
       }
     },
     "doctors": {
       "kim": {
         "name": "Sooyoung Kim",
         "nameEn": "Dr. Sooyoung Kim",
-        "title": "Director",
-        "specialty": "Board-certified Plastic Surgeon",
-        "philosophy": "Pursuing natural beauty - that is true aesthetics.",
+        "title": "Захирал",
+        "specialty": "Гэрчилгээт гоо заслын мэс засалч",
+        "philosophy": "Байгалийн гоо сайхныг эрэлхийлэх — энэ нь жинхэнэ гоо зүй юм.",
         "education": [
           "M.D., Korea University College of Medicine",
           "Internship, Korea University Medical Center",
@@ -334,9 +334,9 @@
       "cheon": {
         "name": "Shinhye Cheon",
         "nameEn": "Dr. Shinhye Cheon",
-        "title": "Medical Director",
-        "specialty": "Board-certified Family Medicine Physician",
-        "philosophy": "Creating natural changes through delicate procedures.",
+        "title": "Эмнэлзүйн захирал",
+        "specialty": "Гэрчилгээт ерөнхий эмч",
+        "philosophy": "Нарийн мэдрэмжтэй процедураар байгалийн өөрчлөлт бий болгох.",
         "education": [
           "M.D., Keimyung University College of Medicine",
           "Residency, Hallym University Kangnam Sacred Heart Hospital",
@@ -356,39 +356,39 @@
         ]
       },
       "labels": {
-        "education": "Education",
-        "experience": "Experience",
-        "certifications": "Certifications",
-        "specialties": "Specialties",
-        "publications": "Publications",
-        "presentations": "Presentations",
-        "globalActivities": "Global Activities",
-        "media": "Media Coverage",
-        "comingSoon": "Coming Soon"
+        "education": "Боловсрол",
+        "experience": "Туршлага",
+        "certifications": "Гэрчилгээ",
+        "specialties": "Мэргэжил",
+        "publications": "Хэвлэгдсэн бүтээл",
+        "presentations": "Илтгэл",
+        "globalActivities": "Олон улсын үйл ажиллагаа",
+        "media": "Хэвлэл мэдээлэл",
+        "comingSoon": "Удахгүй гарна"
       }
     },
     "location": {
-      "title": "Location",
-      "subtitle": "How to visit",
-      "address": "4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea",
-      "subway": "1 min walk from Sinsa Station Exit 4",
-      "subwayInfo": "Line 3 · Sinbundang Line, Sinsa Station Exit 4",
-      "walkMinutes": "1 min walk",
-      "addressLabel": "Address",
-      "buildingDetail": "(Jamwon-dong, Jaeun Building 4F)",
-      "directions": "Turn left at Paik's Coffee from Exit 4 and walk straight",
-      "holidayClosed": "Closed on Sundays and Public Holidays",
-      "contactLabel": "Contact",
-      "consultTime": "Consultation hours: Weekdays 10:00 - 19:00",
-      "parkingLabel": "Parking",
-      "freeParking": "Free Parking Available",
-      "parkingDetail": "Electric vehicles and large vehicles can park on the 1st floor when space is available. If no parking space is available, please use nearby paid parking lots.",
+      "title": "Байршил",
+      "subtitle": "Хэрхэн ирэх",
+      "address": "4F, Jaeun байр, 80 Naruteo-ro, Seocho-gu, Сөүл, БНСУ",
+      "subway": "Шинса метроны 4-р гарцнаас 1 минутын алхаа",
+      "subwayInfo": "3-р шугам · Sinbundang шугам, Шинса метроны 4-р гарц",
+      "walkMinutes": "1 минутын алхаа",
+      "addressLabel": "Хаяг",
+      "buildingDetail": "(Jamwon-dong, Jaeun байр 4F)",
+      "directions": "4-р гарцнаас Paik's Coffee-нд зүүн тийш эргэн чигээрээ алхаарай",
+      "holidayClosed": "Ням гариг ба албан амралтын өдрүүдэд хаалттай",
+      "contactLabel": "Холбоо барих",
+      "consultTime": "Зөвлөгөөний цаг: Ажлын өдрүүд 10:00 - 19:00",
+      "parkingLabel": "Зогсоол",
+      "freeParking": "Үнэгүй зогсоол боломжтой",
+      "parkingDetail": "Цахилгаан тээврийн хэрэгсэл ба том тээврийн хэрэгсэл нь зайтай тохиолдолд 1-р давхарт зогсож болно. Зогсоолын зай байхгүй бол ойролцоох төлбөртэй зогсоолыг ашиглана уу.",
       "naverMap": "Naver Map",
       "kakaoMap": "Kakao Map",
-      "markerTitle": "LIV Plastic Surgery",
-      "infoWindowSubway": "1 min walk from Sinsa Station Exit 4",
-      "mapLoading": "Loading map...",
-      "mapError": "Unable to load map"
+      "markerTitle": "LIV Гоо Заслын Эмнэлэг",
+      "infoWindowSubway": "Шинса метроны 4-р гарцнаас 1 минутын алхаа",
+      "mapLoading": "Газрын зургийг ачаалж байна...",
+      "mapError": "Газрын зургийг ачаалж чадахгүй байна"
     }
   },
   "footer": {
@@ -425,12 +425,12 @@
     "kakaoMap": "Kakao Map",
     "parking": "Зогсоол",
     "parkingInfo": "Үнэгүй зогсоол байгаа",
-    "freeParking": "Electric vehicles and large vehicles can only be parked on the 1st floor parking lot if space is available. If no space is available, please use paid parking lots near the clinic.",
+    "freeParking": "Цахилгаан тээврийн хэрэгсэл ба том тээврийн хэрэгсэл нь зайтай тохиолдолд зөвхөн 1-р давхарын зогсоолд зогсож болно. Хэрэв зай байхгүй бол эмнэлгийн ойролцоох төлбөртэй зогсоолыг ашиглана уу.",
     "reservationNotice": "Захиалгын мэдээлэл",
     "notice1": "Хүсэлт өгсний дараа 1 ажлын өдрийн дотор холбогдоно.",
     "notice2": "Яаралтай тохиолдолд 02-797-2773 утсаар холбогдоно уу.",
     "notice3": "Захиалгыг ирэхээс өмнөх өдрийг хүртэл өөрчлөх/цуцлах боломжтой.",
-    "mapLoading": "Loading map...",
+    "mapLoading": "Газрын зургийг ачаалж байна...",
     "location": "Байршил",
     "form": {
       "name": "Нэр",
@@ -448,7 +448,7 @@
       "preferredDate": "Хүссэн өдөр",
       "preferredTime": "Хүссэн цаг",
       "timePlaceholder": "Цаг сонгох",
-      "message": "Мессеж",
+      "message": "Зурвас",
       "messagePlaceholder": "Асуух зүйл эсвэл зөвлөгөө авах сэдвээ бичнэ үү.",
       "privacy": "Хувийн мэдээлэл цуглуулах, ашиглахыг зөвшөөрч байна. Нэр, утас, и-мэйл нь зөвлөгөөний зорилгоор цуглуулагдаж 3 сар хадгалагдана.",
       "privacyError": "Хувийн мэдээлэл цуглуулахыг зөвшөөрнө үү",
@@ -459,17 +459,17 @@
       "retry": "Дахин оролдох",
       "other": "Бусад / Зөвлөгөөний дараа шийдэх",
       "privacyShort": "Хувийн мэдээлэл зөвшөөрөх",
-      "submitError": "Consultation request failed.",
-      "submitErrorRetry": "Consultation request failed. Please try again later.",
-      "consultTitle": "Book Consultation",
-      "consultSubtitle": "Our specialists will guide you with care",
-      "password": "Password (Optional)",
-      "treatmentSelect": "Select Treatment",
+      "submitError": "Зөвлөгөөний хүсэлт амжилтгүй боллоо.",
+      "submitErrorRetry": "Зөвлөгөөний хүсэлт амжилтгүй боллоо. Дараа дахин оролдоно уу.",
+      "consultTitle": "Зөвлөгөө захиалах",
+      "consultSubtitle": "Манай мэргэжилтнүүд анхааралтайгаар таныг чиглүүлнэ",
+      "password": "Нууц үг (Сонголтоор)",
+      "treatmentSelect": "Эмчилгээ сонгох",
       "submitButton": "Илгээх",
-      "successSubtitle": "We will contact you soon",
-      "errorSubtitle": "Please try again",
-      "required": "[Required]",
-      "privacyConsent": "I agree to the collection and use of personal information. (Name and contact are used for consultation purposes only)",
+      "successSubtitle": "Бид удахгүй холбоо барина",
+      "errorSubtitle": "Дахин оролдоно уу",
+      "required": "[Заавал]",
+      "privacyConsent": "Хувийн мэдээллийг цуглуулах, ашиглахыг зөвшөөрч байна. (Нэр ба холбоо барих мэдээллийг зөвхөн зөвлөгөөний зорилгоор ашиглана)",
       "treatmentOptions": {
         "laser": "Лазер",
         "filler": "Филлер",
@@ -482,78 +482,78 @@
     }
   },
   "faq": {
-    "title": "Frequently Asked Questions",
-    "subtitle": "Find answers to common questions from our patients.",
-    "moreQuestions": "Have more questions?",
-    "callUs": "Call Us",
-    "onlineConsult": "Online Consultation",
+    "title": "Түгээмэл асуултууд",
+    "subtitle": "Үйлчлүүлэгчдийн түгээмэл асуултуудын хариултыг олно уу.",
+    "moreQuestions": "Өөр асуулт байна уу?",
+    "callUs": "Бидэнд залгах",
+    "onlineConsult": "Онлайн зөвлөгөө",
     "items": {
-      "q1": "How do I book a consultation?",
-      "a1": "You can book a consultation by phone (+82-2-797-2773), KakaoTalk, or through our online reservation form. Let us know your preferred date and time, and we'll confirm your appointment.",
-      "q2": "How long does a treatment take?",
-      "a2": "Treatment duration varies: Ultherapy Prime takes about 60-90 minutes, Thermage about 30-60 minutes, and Botox/Filler about 15-30 minutes. You'll receive detailed information during your consultation.",
-      "q3": "Can I return to daily activities after treatment?",
-      "a3": "Most non-surgical treatments allow same-day return to daily activities. Some temporary swelling or bruising may occur depending on the treatment area, but typically resolves within 1-2 weeks.",
-      "q4": "What are the treatment prices?",
-      "a4": "Prices vary based on treatment area, scope, and products used. Accurate pricing can be provided through a personalized consultation tailored to your needs.",
-      "q5": "Is parking available?",
-      "a5": "Yes, underground parking is available in the building. Treatment customers receive 2 hours of free parking.",
-      "q6": "How should I prepare for treatment?",
-      "a6": "No special preparation is required. However, please come with light or no makeup on the treatment day. Specific pre-treatment instructions may be provided for certain procedures.",
-      "q7": "Can foreigners receive consultations?",
-      "a7": "Yes, consultations are available in English, Japanese, and Chinese. Please let us know if you need interpretation services when booking your appointment.",
-      "q8": "Do you use only genuine equipment?",
-      "a8": "LIV Plastic Surgery is an officially certified Ultherapy Prime and Thermage clinic, using only 100% genuine equipment and products. Authenticity certificates are available for all products."
+      "q1": "Зөвлөгөөг хэрхэн захиалах вэ?",
+      "a1": "Та утсаар (+82-2-797-2773), KakaoTalk-аар эсвэл онлайн захиалгын маягтаар зөвлөгөө захиалах боломжтой. Хүссэн огноо, цагаа мэдэгдвэл бид цаг товлоно.",
+      "q2": "Эмчилгээ хэр удаан үргэлжлэх вэ?",
+      "a2": "Эмчилгээний хугацаа янз бүр: Ultherapy Prime 60-90 минут, Thermage 30-60 минут, Ботокс/Филлер 15-30 минут. Зөвлөгөөний үеэр дэлгэрэнгүй мэдээлэл авна.",
+      "q3": "Эмчилгээний дараа өдөр тутмын үйл ажиллагаандаа эргэх боломжтой юу?",
+      "a3": "Ихэнх мэс заслын бус эмчилгээ нь өдөр тутмын үйл ажиллагаандаа тэр өдөртөө эргэх боломжийг олгодог. Эмчилгээний хэсгээс хамаарч түр зуурын хавдар, хөхрөлт гарч болох ч ихэвчлэн 1-2 долоо хоногт арилдаг.",
+      "q4": "Эмчилгээний үнэ ямар вэ?",
+      "a4": "Үнэ нь эмчилгээний хэсэг, цар хүрээ, ашигласан бүтээгдэхүүнээс хамаарч өөр өөр байна. Танд тохирсон хувийн зөвлөгөөгөөр үнийг тодорхой мэдэх боломжтой.",
+      "q5": "Зогсоол байна уу?",
+      "a5": "Тийм, барилгын дотор газар доорх зогсоол байна. Эмчилгээний үйлчлүүлэгчдэд 2 цагийн үнэгүй зогсоол олгоно.",
+      "q6": "Эмчилгээний өмнө хэрхэн бэлдэх вэ?",
+      "a6": "Тусгай бэлтгэл шаардлагагүй. Гэхдээ эмчилгээний өдөр хөнгөн будалт эсвэл будалтгүй ирнэ үү. Тодорхой процедурын хувьд эмчилгээний өмнөх тусгай заавар өгч болно.",
+      "q7": "Гадаадын иргэд зөвлөгөө авч болох уу?",
+      "a7": "Тийм, англи, япон, хятад хэлээр зөвлөгөө авах боломжтой. Захиалгын үед орчуулагч хэрэгтэй бол мэдэгдээрэй.",
+      "q8": "Та зөвхөн жинхэнэ тоног төхөөрөмж ашигладаг уу?",
+      "a8": "LIV Гоо Заслын Эмнэлэг бол Ultherapy Prime, Thermage-ийн албан ёсоор баталгаажсан эмнэлэг бөгөөд зөвхөн 100% жинхэнэ тоног төхөөрөмж, бүтээгдэхүүн ашигладаг. Бүх бүтээгдэхүүний үнэн бодит байдлыг батлах гэрчилгээ боломжтой."
     }
   },
   "treatments": {
     "common": {
-      "process": "Treatment Process",
-      "timeline": "Results Timeline",
-      "targetAreas": "Treatment Areas",
-      "recommended": "Recommended For",
-      "precautions": "Pre & Post Care",
-      "comparison": "Device Comparison",
-      "transducers": "Transducers",
-      "collapse": "Collapse",
-      "expand": "Expand",
-      "bookConsultation": "Book Consultation",
-      "callNow": "Call Now",
-      "whyChoose": "Why Choose This?",
-      "howItWorks": "How It Works",
-      "results": "Results",
-      "faq": "FAQ",
-      "relatedTreatments": "Related Treatments",
-      "duration": "Duration",
-      "anesthesia": "Anesthesia",
-      "recovery": "Recovery",
-      "maintenance": "Maintenance",
-      "before": "Before",
-      "after": "After",
-      "immediately": "Immediately After",
-      "weeks": "weeks",
-      "months": "months",
-      "years": "years",
-      "fdaApproved": "FDA Approved",
-      "genuine": "Genuine Certified",
-      "certified": "Certified Clinic",
-      "laserCenter": "Laser Center",
-      "freeConsultation": "Free Consultation",
-      "onlineConsultation": "Online Consultation",
-      "phoneConsultation": "Phone Consultation",
-      "treatmentInfo": "Treatment Info",
-      "downtime": "Downtime",
-      "recommendedSessions": "Recommended Sessions",
-      "sessionInterval": "Session Interval",
-      "recommendedTreatment": "Recommended Treatment",
-      "otherTreatments": "Other Treatments",
-      "otherLaserTreatments": "Other Laser Treatments",
-      "mild": "Mild",
-      "moderate": "Moderate",
-      "severe": "Severe",
-      "benefits": "Benefits",
-      "consultationCta": "Book Consultation",
-      "effectDuration": "Effect Duration"
+      "process": "Эмчилгээний үйл явц",
+      "timeline": "Үр дүнгийн цаг хугацаа",
+      "targetAreas": "Эмчилгээний хэсэг",
+      "recommended": "Зөвлөмжтэй",
+      "precautions": "Эмчилгээний өмнөх ба дараах арчилгаа",
+      "comparison": "Төхөөрөмжийн харьцуулалт",
+      "transducers": "Дамжуулагч",
+      "collapse": "Хураах",
+      "expand": "Дэлгэх",
+      "bookConsultation": "Зөвлөгөө захиалах",
+      "callNow": "Одоо залгах",
+      "whyChoose": "Яагаад үүнийг сонгох вэ?",
+      "howItWorks": "Хэрхэн ажилладаг",
+      "results": "Үр дүн",
+      "faq": "Түгээмэл асуулт",
+      "relatedTreatments": "Холбогдох эмчилгээ",
+      "duration": "Үргэлжлэх хугацаа",
+      "anesthesia": "Мэдээ алдуулалт",
+      "recovery": "Сэргэлт",
+      "maintenance": "Арчилгаа",
+      "before": "Өмнө",
+      "after": "Дараа",
+      "immediately": "Шууд дараа",
+      "weeks": "долоо хоног",
+      "months": "сар",
+      "years": "жил",
+      "fdaApproved": "FDA-аас зөвшөөрөгдсөн",
+      "genuine": "Жинхэнэ баталгаажсан",
+      "certified": "Баталгаажсан эмнэлэг",
+      "laserCenter": "Лазер төв",
+      "freeConsultation": "Үнэгүй зөвлөгөө",
+      "onlineConsultation": "Онлайн зөвлөгөө",
+      "phoneConsultation": "Утсан зөвлөгөө",
+      "treatmentInfo": "Эмчилгээний мэдээлэл",
+      "downtime": "Сэргэх хугацаа",
+      "recommendedSessions": "Зөвлөмжтэй сессийн тоо",
+      "sessionInterval": "Сессийн хоорондох завсар",
+      "recommendedTreatment": "Зөвлөмжтэй эмчилгээ",
+      "otherTreatments": "Бусад эмчилгээ",
+      "otherLaserTreatments": "Бусад лазер эмчилгээ",
+      "mild": "Хөнгөн",
+      "moderate": "Дунд зэргийн",
+      "severe": "Хүнд",
+      "benefits": "Давуу тал",
+      "consultationCta": "Зөвлөгөө захиалах",
+      "effectDuration": "Үр нөлөөний хугацаа"
     },
     "lifting": {
       "ulthera": {
@@ -4345,21 +4345,21 @@
     }
   },
   "medical": {
-    "title": "Medical Information",
-    "subtitle": "Find answers to frequently asked questions\nand useful medical information.",
-    "searchPlaceholder": "Search (e.g., Ultherapy Prime, pain)",
+    "title": "Эмнэлзүйн мэдээлэл",
+    "subtitle": "Түгээмэл асуултуудын хариулт\nба хэрэгцээтэй эмнэлзүйн мэдээллийг олно уу.",
+    "searchPlaceholder": "Хайх (жишээ: Ultherapy Prime, өвдөлт)",
     "categories": {
-      "all": "All",
-      "lifting": "Lifting",
-      "antiaging": "Anti-aging",
-      "laser": "Laser",
-      "general": "General"
+      "all": "Бүгд",
+      "lifting": "Лифтинг",
+      "antiaging": "Хөгшрөлтийн эсрэг",
+      "laser": "Лазер",
+      "general": "Ерөнхий"
     },
     "cta": {
-      "title": "Have more questions?",
-      "subtitle": "Our specialists are ready to help you.",
-      "reservation": "Book Consultation",
-      "call": "Call Us"
+      "title": "Өөр асуулт байна уу?",
+      "subtitle": "Манай мэргэжилтнүүд танд туслахад бэлэн байна.",
+      "reservation": "Зөвлөгөө захиалах",
+      "call": "Бидэнд залгах"
     },
     "faq": [
       {
@@ -5090,26 +5090,26 @@
   },
   "trust": {
     "certification": {
-      "title": "Officially Certified Clinic",
+      "title": "Албан ёсоор баталгаажсан эмнэлэг",
       "subtitle": "Ultherapy Prime · Thermage"
     },
     "doctor": {
       "title": "Dr. Kim Soo-young",
-      "subtitle": "Board-Certified Plastic Surgeon"
+      "subtitle": "Гэрчилгээт гоо заслын мэс засалч"
     },
     "location": {
-      "title": "Sinsa Station Exit 4",
-      "subtitle": "1 min walk"
+      "title": "Шинса метроны 4-р гарц",
+      "subtitle": "1 минутын алхаа"
     },
     "cta": {
-      "consultation": "Book Free Consultation",
-      "kakao": "KakaoTalk Consultation"
+      "consultation": "Үнэгүй зөвлөгөө захиалах",
+      "kakao": "KakaoTalk зөвлөгөө"
     }
   },
   "floatingCta": {
-    "phone": "Call",
+    "phone": "Залгах",
     "kakao": "KakaoTalk",
-    "call": "Call",
+    "call": "Залгах",
     "kakaoTalk": "KakaoTalk"
   },
   "aboutPage": {
@@ -5503,110 +5503,110 @@
     }
   },
   "chat": {
-    "openButton": "Live Chat",
-    "openButtonShort": "Chat",
-    "title": "LIV Live Chat",
-    "subtitle": "Auto-translated to Korean",
-    "online": "We're online",
-    "offline": "We'll reply soon — please leave a message",
-    "welcome": "Hello! How can we help you today?",
-    "delayedResponseNotice": "We're outside business hours (Weekdays 10:00–19:00, Sat 10:00–16:00 KST). Leave a message and we'll reply once we're back online. Please include your email for a faster response.",
-    "allOperatorsBusyNotice": "Our staff are momentarily away. Leave a message and we'll reply shortly.",
-    "followupNotice": "Apologies for the delay — we'll respond as soon as possible.",
-    "businessHours": "Hours: Weekdays 10:00–19:00, Sat 10:00–16:00 (KST), Closed Sun",
-    "placeholder": "Type a message...",
-    "send": "Send",
-    "showOriginal": "Show original",
-    "hideOriginal": "Hide original",
-    "close": "Close chat",
-    "translationFailed": "(translation failed — original only)",
-    "rateLimited": "You're sending messages too quickly. Please try again in a moment.",
-    "tooLong": "Messages cannot exceed 1000 characters.",
-    "sessionEnded": "This conversation has ended. Start a new chat for further questions.",
-    "consent": "Messages are stored to improve our consultation quality.",
-    "tooltipText": "Need help? Chat with us in English — auto-translated for our team ✨",
-    "tooltipDismiss": "Dismiss",
-    "namePlaceholder": "Nickname (optional)",
-    "emailPlaceholder": "Email (optional, for callbacks)",
-    "startChat": "Start Chat",
+    "openButton": "Шууд чат",
+    "openButtonShort": "Чат",
+    "title": "LIV Шууд чат",
+    "subtitle": "Солонгос руу автоматаар орчуулна",
+    "online": "Бид онлайнд байна",
+    "offline": "Бид удахгүй хариулна — зурвас үлдээгээрэй",
+    "welcome": "Сайн байна уу! Өнөөдөр бид танд хэрхэн туслах вэ?",
+    "delayedResponseNotice": "Ажлын цагаас гадуур (Даваа-Баасан 10:00–19:00, Бямба 10:00–16:00 KST). Зурвас үлдээгээрэй, бид онлайнд эргэж ороход хариулна. Илүү хурдан хариулт авахын тулд имэйлээ оруулна уу.",
+    "allOperatorsBusyNotice": "Манай ажилтнууд түр зуурын завгүй байна. Зурвас үлдээгээрэй, бид удахгүй хариулна.",
+    "followupNotice": "Хүлээлгэсэнд хүлцэл өчье — боломжтой бол хурдан хариулна.",
+    "businessHours": "Цаг: Даваа-Баасан 10:00–19:00, Бямба 10:00–16:00 (KST), Ням амарна",
+    "placeholder": "Зурвас бичих...",
+    "send": "Илгээх",
+    "showOriginal": "Эх зурвас харах",
+    "hideOriginal": "Эх зурвас нуух",
+    "close": "Чат хаах",
+    "translationFailed": "(орчуулга амжилтгүй — зөвхөн эх зурвас)",
+    "rateLimited": "Та хэт хурдан зурвас илгээж байна. Мөч хүлээж дахин оролдоно уу.",
+    "tooLong": "Зурвас 1000 тэмдэгтээс хэтрэхгүй байх ёстой.",
+    "sessionEnded": "Энэ яриа дууссан. Нэмэлт асуултын хувьд шинэ чат эхлүүлнэ үү.",
+    "consent": "Зөвлөгөөний чанарыг сайжруулах зорилгоор зурвасуудыг хадгална.",
+    "tooltipText": "Тусламж хэрэгтэй юу? Бидэнтэй монгол хэлээр чат хийгээрэй — манай багт автоматаар орчуулна ✨",
+    "tooltipDismiss": "Хаах",
+    "namePlaceholder": "Хоч нэр (сонголтоор)",
+    "emailPlaceholder": "Имэйл (сонголтоор, эргэх холбоо)",
+    "startChat": "Чат эхлүүлэх",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+    "unreadAria": "{count, plural, one {1 шинэ зурвас} other {# шинэ зурвас}}"
   },
   "consultation": {
     "floating": {
-      "quickTitle": "Quick Consultation",
-      "subtitle": "Our friendly counselors are here to help",
-      "title": "Book a Consultation",
-      "close": "Close",
-      "namePlaceholder": "Name",
-      "passwordPlaceholder": "Password (optional)",
-      "departmentSelect": "Select treatment",
-      "submit": "Submit",
-      "submitting": "Sending...",
-      "consentRequired": "[Required]",
-      "consentText": "I agree to the collection and use of my personal information. (Name and phone number are used only for consultation purposes)",
-      "successTitle": "Consultation request received",
-      "successDesc": "We'll be in touch shortly",
-      "errorTitle": "Failed to submit consultation request",
-      "errorRetry": "Please try again",
-      "errorDefault": "Failed to submit consultation request"
+      "quickTitle": "Шуурхай зөвлөгөө",
+      "subtitle": "Манай эелдэг зөвлөхүүд танд туслахад бэлэн байна",
+      "title": "Зөвлөгөө захиалах",
+      "close": "Хаах",
+      "namePlaceholder": "Нэр",
+      "passwordPlaceholder": "Нууц үг (сонголтоор)",
+      "departmentSelect": "Эмчилгээ сонгох",
+      "submit": "Илгээх",
+      "submitting": "Илгээж байна...",
+      "consentRequired": "[Заавал]",
+      "consentText": "Хувийн мэдээллээ цуглуулах, ашиглахыг зөвшөөрч байна. (Нэр ба утасны дугаарыг зөвхөн зөвлөгөөний зорилгоор ашиглана)",
+      "successTitle": "Зөвлөгөөний хүсэлт хүлээж авлаа",
+      "successDesc": "Бид удахгүй холбоо барина",
+      "errorTitle": "Зөвлөгөөний хүсэлт амжилтгүй боллоо",
+      "errorRetry": "Дахин оролдоно уу",
+      "errorDefault": "Зөвлөгөөний хүсэлт амжилтгүй боллоо"
     }
   },
   "treatmentDetail": {
-    "advantages": "Advantages of {name}",
-    "process": "Procedure Steps",
-    "info": "Procedure Info",
-    "duration": "Duration",
-    "anesthesia": "Anesthesia",
-    "recovery": "Recovery",
-    "effectDuration": "Effect Duration",
-    "areas": "Treatment Areas",
-    "recommendedFor": "Recommended For",
-    "precautions": "Pre/Post-care",
-    "faq": "Frequently Asked Questions",
-    "relatedMedical": "{name} — Medical Information",
-    "moreInfoPrefix": "For more details, see",
-    "moreInfoLink": "Medical Q&A",
+    "advantages": "{name}-ийн давуу тал",
+    "process": "Процедурын алхамууд",
+    "info": "Процедурын мэдээлэл",
+    "duration": "Үргэлжлэх хугацаа",
+    "anesthesia": "Мэдээ алдуулалт",
+    "recovery": "Сэргэлт",
+    "effectDuration": "Үр нөлөөний хугацаа",
+    "areas": "Эмчилгээний хэсэг",
+    "recommendedFor": "Зөвлөмжтэй",
+    "precautions": "Өмнөх/Дараах арчилгаа",
+    "faq": "Түгээмэл асуултууд",
+    "relatedMedical": "{name} — Эмнэлзүйн мэдээлэл",
+    "moreInfoPrefix": "Дэлгэрэнгүйг харна уу",
+    "moreInfoLink": "Эмнэлзүйн асуулт/хариулт",
     "moreInfoSuffix": ".",
-    "consultationTitle": "Book a {name} Consultation",
-    "consultationDesc": "Get a one-on-one tailored consultation with our medical experts.",
-    "ctaReserve": "Book Consultation",
-    "ctaCall": "Call Us",
-    "related": "Related Treatments"
+    "consultationTitle": "{name} зөвлөгөө захиалах",
+    "consultationDesc": "Манай эмнэлзүйн мэргэжилтнүүдтэй хувийн захиалгат зөвлөгөө аваарай.",
+    "ctaReserve": "Зөвлөгөө захиалах",
+    "ctaCall": "Бидэнд залгах",
+    "related": "Холбогдох эмчилгээ"
   },
   "medicalBlog": {
     "ui": {
-      "title": "Related Blog Posts",
-      "subtitle": "Find more detailed medical information",
-      "visitBlogDesktop": "Visit Naver Blog",
-      "visitBlogMobile": "View more on Naver Blog"
+      "title": "Холбогдох блогийн нийтлэлүүд",
+      "subtitle": "Илүү дэлгэрэнгүй эмнэлзүйн мэдээллийг олно уу",
+      "visitBlogDesktop": "Naver блог зочлох",
+      "visitBlogMobile": "Naver блогт илүү ихийг үзэх"
     }
   },
   "instagram": {
     "ui": {
-      "intro": "Check out LIV Plastic Surgery's daily updates and treatment info.",
-      "showMore": "Show more",
-      "followCta": "Follow on Instagram",
-      "followers": "Followers",
-      "posts": "Posts",
-      "update": "Updates",
-      "viewDetails": "View details"
+      "intro": "LIV Гоо Заслын Эмнэлгийн өдөр тутмын шинэчлэлт, эмчилгээний мэдээллийг үзнэ үү.",
+      "showMore": "Илүү харах",
+      "followCta": "Instagram-д дагах",
+      "followers": "Дагагч",
+      "posts": "Нийтлэл",
+      "update": "Шинэчлэлт",
+      "viewDetails": "Дэлгэрэнгүй үзэх"
     }
   },
   "popup": {
-    "dismissToday": "Don't show today"
+    "dismissToday": "Өнөөдөр харуулахгүй"
   },
   "beforeAfter": {
     "ui": {
-      "title": "Real Treatment Cases",
-      "description": "See real changes from LIV's clients",
-      "consent": "* All cases are posted with patient consent.",
-      "viewMore": "View more cases"
+      "title": "Бодит эмчилгээний тохиолдол",
+      "description": "LIV-ийн үйлчлүүлэгчдийн жинхэнэ өөрчлөлтийг үзнэ үү",
+      "consent": "* Бүх тохиолдол үйлчлүүлэгчийн зөвшөөрөлтэйгээр нийтлэгдсэн.",
+      "viewMore": "Илүү олон тохиолдол үзэх"
     }
   },
   "ui": {
     "stickyCta": {
-      "phone": "Call",
+      "phone": "Залгах",
       "kakao": "KakaoTalk"
     }
   }

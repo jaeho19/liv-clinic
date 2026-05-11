@@ -4,7 +4,7 @@
     "skipToContent": "الانتقال إلى المحتوى",
     "siteName": "مستشفى ليف للتجميل",
     "siteNameEn": "LIV Plastic Surgery",
-    "slogan": "Slow Aging, Natural Beauty",
+    "slogan": "شيخوخة بطيئة، جمال طبيعي",
     "consultation": "حجز استشارة",
     "learnMore": "اعرف المزيد",
     "viewAll": "عرض الكل",
@@ -36,10 +36,10 @@
     "cumulativeViews": "إجمالي المشاهدات",
     "update": "تحديث",
     "viewMoreBlog": "عرض المزيد على Naver Blog",
-    "noItemsInCategory": "No cases in this category",
-    "selectOtherCategory": "Please select another category",
-    "medicalInfoNews": "Medical Info & News",
-    "checkLatestNews": "Check out the latest news and useful medical information from LIV Plastic Surgery.",
+    "noItemsInCategory": "لا توجد حالات في هذه الفئة",
+    "selectOtherCategory": "يرجى اختيار فئة أخرى",
+    "medicalInfoNews": "معلومات طبية وأخبار",
+    "checkLatestNews": "اطلع على أحدث الأخبار والمعلومات الطبية المفيدة من مستشفى ليف للتجميل.",
     "timeline": "الجدول الزمني",
     "process": "الإجراء",
     "targetAreas": "مناطق العلاج",
@@ -50,19 +50,19 @@
     "next": "التالي"
   },
   "categories": {
-    "lifting": "Lifting",
-    "antiaging": "Anti-aging",
-    "skin": "Skin/Laser",
-    "skincare": "Skincare",
-    "news": "Clinic News",
-    "qna": "Q&A"
+    "lifting": "شد الوجه",
+    "antiaging": "مكافحة الشيخوخة",
+    "skin": "البشرة/الليزر",
+    "skincare": "العناية بالبشرة",
+    "news": "أخبار المستشفى",
+    "qna": "أسئلة وأجوبة"
   },
   "gallery": {
-    "title": "Treatment Gallery",
-    "description": "Browse our treatment cases at LIV Plastic Surgery. Experience natural and beautiful transformations.",
-    "noticeText": "All treatment cases are posted with patient consent. Results may vary by individual.",
-    "experienceChange": "Want to experience this transformation?",
-    "findTreatment": "Find the right treatment for you through a professional consultation."
+    "title": "معرض العلاجات",
+    "description": "تصفح حالات العلاج لدى مستشفى ليف للتجميل. اختبر التحولات الطبيعية والجميلة.",
+    "noticeText": "تُنشر جميع حالات العلاج بموافقة المريض. قد تختلف النتائج من شخص لآخر.",
+    "experienceChange": "هل ترغب في تجربة هذا التحول؟",
+    "findTreatment": "اعثر على العلاج المناسب لك من خلال استشارة متخصصة."
   },
   "nav": {
     "about": "من نحن",
@@ -72,13 +72,13 @@
     "aboutLocation": "الموقع",
     "signature": "البرامج المميزة",
     "lifting": "شد الوجه",
-    "ulthera": "ألثيرابي برايم",
-    "thermage": "ثيرماج FLX",
-    "density": "دينسيتي",
-    "inmode": "إنمود",
-    "shurink": "شورينك",
+    "ulthera": "Ultherapy Prime",
+    "thermage": "Thermage FLX",
+    "density": "Density",
+    "inmode": "InMode",
+    "shurink": "Shurink",
     "thread": "شد بالخيوط",
-    "aptos": "APTOS بيو ليفتينج",
+    "aptos": "APTOS Bio Lifting",
     "antiaging": "مكافحة الشيخوخة",
     "botox": "البوتوكس",
     "filler": "الفيلر",
@@ -93,111 +93,111 @@
   },
   "hero": {
     "slide1": {
-      "title": "Natural Results",
+      "title": "نتائج طبيعية",
       "subtitle": "تغيير طبيعي غير ملحوظ، يقوم به جراح التجميل الاختصاصي بنفسه"
     },
     "slide2": {
-      "title": "Certified Premium",
+      "title": "بريميوم معتمد",
       "subtitle": "مستشفى معتمد رسمياً لـ Ultherapy Prime و Thermage، يستخدم منتجات أصلية 100٪"
     },
     "slide3": {
-      "title": "Beyond Gravity",
+      "title": "ما وراء الجاذبية",
       "subtitle": "استعد المرونة بدون جراحة، اختبر بشرتك قبل 10 سنوات"
     },
     "sideText": {
-      "left": "Premium Anti-Aging Clinic",
-      "right": "Since 2024 Seoul Sinsa"
+      "left": "عيادة مكافحة الشيخوخة الفاخرة",
+      "right": "منذ 2024، سيول سينسا"
     }
   },
   "sections": {
     "certification": {
-      "title": "Certified Clinic",
-      "officialPartner": "Certifications",
-      "visitSite": "Visit Official Site",
-      "ulthera": "Ultherapy Prime Certified",
+      "title": "عيادة معتمدة",
+      "officialPartner": "الاعتمادات",
+      "visitSite": "زيارة الموقع الرسمي",
+      "ulthera": "معتمدة Ultherapy Prime",
       "ultheraEn": "Ultherapy Prime Certified",
-      "ultheraDesc": "FDA Approved HIFU Lifting",
-      "thermage": "Thermage FLX Partner",
+      "ultheraDesc": "شد HIFU معتمد من FDA",
+      "thermage": "شريك Thermage FLX",
       "thermageEn": "Thermage FLX Partner",
-      "thermageDesc": "Solta Medical Official Partner",
-      "density": "Density Official Partner",
+      "thermageDesc": "شريك Solta Medical الرسمي",
+      "density": "شريك Density الرسمي",
       "densityEn": "Density Official Partner",
-      "densityDesc": "HIFU+RF Dual Lifting",
-      "potenza": "Potenza Official Partner",
+      "densityDesc": "شد مزدوج HIFU+RF",
+      "potenza": "شريك Potenza الرسمي",
       "potenzaEn": "Potenza Official Partner",
-      "potenzaDesc": "RF Microneedle Treatment",
-      "sculptra": "Sculptra Certified",
+      "potenzaDesc": "علاج بالإبر الدقيقة RF",
+      "sculptra": "معتمدة Sculptra",
       "sculptraEn": "Sculptra Certified",
-      "sculptraDesc": "Collagen Stimulating Filler",
-      "juvelook": "Juvelook Official Partner",
+      "sculptraDesc": "فيلر محفز للكولاجين",
+      "juvelook": "شريك Juvelook الرسمي",
       "juvelookEn": "Juvelook Official Partner",
-      "juvelookDesc": "PDRN Skin Booster"
+      "juvelookDesc": "حقن البشرة PDRN"
     },
     "equipment": {
-      "title": "Genuine Equipment",
-      "subtitle": "Premium authentic devices",
-      "description": "LIV Plastic Surgery uses only certified premium equipment. We provide safe and effective treatments with the latest technology.",
-      "autoScrolling": "AUTO SCROLLING",
-      "premiumDevices": "10 Premium Devices",
-      "learnMore": "Learn More",
+      "title": "أجهزة أصلية",
+      "subtitle": "أجهزة فاخرة أصلية",
+      "description": "تستخدم عيادة ليف للتجميل أجهزة بريميوم معتمدة فقط. نقدم علاجات آمنة وفعالة بأحدث التقنيات.",
+      "autoScrolling": "تمرير تلقائي",
+      "premiumDevices": "10 أجهزة بريميوم",
+      "learnMore": "اعرف المزيد",
       "devices": {
         "ultherapy": {
           "subTitle": "Ultherapy Prime",
-          "desc": "The global standard of FDA-approved HIFU lifting"
+          "desc": "المعيار العالمي لشد HIFU المعتمد من FDA"
         },
         "thermage": {
           "subTitle": "Thermage FLX",
-          "desc": "The pinnacle of 4th generation RF lifting technology"
+          "desc": "قمة تقنية الشد بالترددات الراديوية من الجيل الرابع"
         },
         "density": {
           "subTitle": "Density",
-          "desc": "Collagen remodeling with RF energy"
+          "desc": "إعادة تشكيل الكولاجين بطاقة RF"
         },
         "shurink": {
           "subTitle": "Shurink",
-          "desc": "Precision HIFU for V-line contouring"
+          "desc": "HIFU دقيق لكونتور V"
         },
         "inmode": {
           "subTitle": "InMode",
-          "desc": "Fat reduction and lifting with RF energy"
+          "desc": "تقليل الدهون والشد بطاقة RF"
         },
         "potenza": {
           "subTitle": "Potenza",
-          "desc": "RF microneedling for elasticity and pore improvement"
+          "desc": "إبر دقيقة RF لمرونة البشرة وتحسين المسامات"
         },
         "clarity": {
           "subTitle": "Clarity II",
-          "desc": "Dual-wavelength laser for pigment & vascular treatment"
+          "desc": "ليزر مزدوج الموجة لعلاج التصبغ والأوعية"
         },
         "lucas": {
           "subTitle": "Lucas",
-          "desc": "High-power Q-switch for stubborn pigmentation"
+          "desc": "Q-switch عالي القدرة للتصبغات العنيدة"
         },
         "co2": {
-          "subTitle": "CO2 Laser",
-          "desc": "Precision resurfacing and skin regeneration"
+          "subTitle": "ليزر CO2",
+          "desc": "إعادة تسطيح دقيقة وتجديد البشرة"
         },
         "ulblanc": {
           "subTitle": "Ulblanc",
-          "desc": "Gentle whitening laser"
+          "desc": "ليزر تبييض لطيف"
         }
       },
       "ui": {
-        "introLine1": "LIV Plastic Surgery uses only authentic, certified premium equipment.",
-        "introLine2": "We deliver safe and effective treatments with cutting-edge technology.",
-        "viewMore": "Learn more",
-        "navigationHint": "Drag or scroll to explore"
+        "introLine1": "تستخدم عيادة ليف للتجميل فقط أجهزة بريميوم أصلية ومعتمدة.",
+        "introLine2": "نقدم علاجات آمنة وفعالة بتقنيات متقدمة.",
+        "viewMore": "اعرف المزيد",
+        "navigationHint": "اسحب أو مرر للاستكشاف"
       }
     },
     "signature": {
-      "title": "Signature Programs",
-      "subtitle": "LIV's exclusive signature programs",
+      "title": "البرامج المميزة",
+      "subtitle": "برامج LIV المميزة الحصرية",
       "programs": {
         "lifting": {
-          "title": "Lifting",
+          "title": "شد الوجه",
           "titleEn": "LIFTING",
-          "subtitle": "Ultherapy Prime & Thermage",
-          "description": "The pinnacle of non-surgical lifting. Experience natural lifting effects with premium genuine equipment.",
+          "subtitle": "Ultherapy Prime و Thermage",
+          "description": "قمة الشد غير الجراحي. اختبر تأثير الشد الطبيعي مع أجهزة بريميوم أصلية.",
           "features": [
             "Ultherapy Prime Certified",
             "Thermage FLX Partner",
@@ -205,10 +205,10 @@
           ]
         },
         "antiaging": {
-          "title": "Anti-Aging",
+          "title": "مكافحة الشيخوخة",
           "titleEn": "ANTI-AGING",
-          "subtitle": "Filler & Botox",
-          "description": "Achieve volume and contour with delicate touch. We pursue natural beauty.",
+          "subtitle": "فيلر و بوتوكس",
+          "description": "احصل على الحجم والكنتور بلمسة دقيقة. نسعى لتحقيق الجمال الطبيعي.",
           "features": [
             "Genuine Fillers",
             "Anatomical Approach",
@@ -216,10 +216,10 @@
           ]
         },
         "rejuvenation": {
-          "title": "Rejuvenation",
+          "title": "التجديد",
           "titleEn": "REJUVENATION",
-          "subtitle": "Medical Skincare",
-          "description": "Customized care to restore your skin's natural health. Scientific approach to skin improvement.",
+          "subtitle": "العناية الطبية بالبشرة",
+          "description": "رعاية مخصصة لاستعادة الصحة الطبيعية لبشرتك. نهج علمي لتحسين البشرة.",
           "features": [
             "Skin Boosters",
             "Laser Toning",
@@ -229,39 +229,39 @@
       }
     },
     "values": {
-      "title": "Core Values",
-      "subtitle": "LIV's 4 core values",
+      "title": "القيم الأساسية",
+      "subtitle": "قيم LIV الأربع الأساسية",
       "natural": {
-        "title": "Natural Beauty",
+        "title": "الجمال الطبيعي",
         "subtitle": "Natural Beauty",
-        "description": "We pursue understated, natural beauty"
+        "description": "نسعى لجمال طبيعي راقٍ"
       },
       "expertise": {
-        "title": "Clinical Expertise",
+        "title": "الخبرة السريرية",
         "subtitle": "Clinical Expertise",
-        "description": "Delivering optimal results with rich experience"
+        "description": "تقديم نتائج مثلى بخبرة غنية"
       },
       "safety": {
-        "title": "Safety & Ethical Care",
+        "title": "السلامة والأخلاقيات",
         "subtitle": "Safety & Ethics",
-        "description": "Strict adherence to authentic products and safety protocols"
+        "description": "التزام صارم بالمنتجات الأصلية وبروتوكولات السلامة"
       },
       "tailored": {
-        "title": "Tailored Aging",
+        "title": "مكافحة الشيخوخة المخصصة",
         "subtitle": "Customized Anti-aging",
-        "description": "Designing optimal results with personalized solutions"
+        "description": "تصميم نتائج مثلى بحلول مخصصة"
       }
     },
     "doctor": {
-      "title": "Medical Staff",
-      "subtitle": "Our Doctors",
+      "title": "الفريق الطبي",
+      "subtitle": "أطباؤنا",
       "name": "Sooyoung Kim",
       "nameEn": "Dr. Sooyoung Kim",
-      "directorTitle": "Director, LIV Plastic Surgery",
+      "directorTitle": "المديرة، عيادة ليف للتجميل",
       "directorTitleEn": "Director",
-      "specialty": "Board-certified Plastic Surgeon",
-      "philosophy": "Pursuing naturalness - that is true beauty. We help you find your understated, authentic beauty.",
-      "credentials": "Credentials",
+      "specialty": "جراحة تجميل معتمدة",
+      "philosophy": "السعي وراء الطبيعية — هذا هو الجمال الحقيقي. نساعدك على اكتشاف جمالك الراقي والأصيل.",
+      "credentials": "المؤهلات",
       "credentialsList": [
         "M.D., Korea University College of Medicine",
         "M.S. in Plastic Surgery, Korea University Graduate School",
@@ -270,12 +270,12 @@
         "Fellowship, MD Anderson Cancer Center, Texas, USA"
       ],
       "certifications": {
-        "official": "Officially Certified",
-        "ultheraThermage": "Ultherapy Prime & Thermage",
-        "globalExpert": "Global Certified Expert",
-        "aptosCertified": "APTOS Certified Expert"
+        "official": "معتمد رسميًا",
+        "ultheraThermage": "Ultherapy Prime و Thermage",
+        "globalExpert": "خبير معتمد عالميًا",
+        "aptosCertified": "خبير معتمد APTOS"
       },
-      "internationalActivities": "International Activities",
+      "internationalActivities": "الأنشطة الدولية",
       "activities": [
         {
           "caption": "APTOS Headquarters Training",
@@ -290,24 +290,24 @@
           "location": "Clinical Procedure Site"
         }
       ],
-      "viewStaff": "View Medical Staff",
+      "viewStaff": "عرض الفريق الطبي",
       "youtube": {
         "title": "LIV TV",
-        "subtitle": "Treatment Stories by Dr. Kim",
-        "subscribe": "Subscribe to LIV YouTube Channel",
-        "description": "Watch treatment info, doctor interviews, and before & after videos"
+        "subtitle": "قصص العلاج مع د. كيم",
+        "subscribe": "اشترك في قناة LIV على YouTube",
+        "description": "شاهد معلومات العلاجات، ومقابلات الأطباء، وفيديوهات قبل/بعد"
       },
       "ui": {
-        "playVideo": "Play video"
+        "playVideo": "تشغيل الفيديو"
       }
     },
     "doctors": {
       "kim": {
         "name": "Sooyoung Kim",
         "nameEn": "Dr. Sooyoung Kim",
-        "title": "Director",
-        "specialty": "Board-certified Plastic Surgeon",
-        "philosophy": "Pursuing natural beauty - that is true aesthetics.",
+        "title": "المديرة",
+        "specialty": "جراحة تجميل معتمدة",
+        "philosophy": "السعي وراء الجمال الطبيعي — هذا هو الجمال الحقيقي.",
         "education": [
           "M.D., Korea University College of Medicine",
           "Internship, Korea University Medical Center",
@@ -334,9 +334,9 @@
       "cheon": {
         "name": "Shinhye Cheon",
         "nameEn": "Dr. Shinhye Cheon",
-        "title": "Medical Director",
-        "specialty": "Board-certified Family Medicine Physician",
-        "philosophy": "Creating natural changes through delicate procedures.",
+        "title": "المدير الطبي",
+        "specialty": "طبيبة الأسرة المعتمدة",
+        "philosophy": "إحداث تغييرات طبيعية من خلال إجراءات دقيقة.",
         "education": [
           "M.D., Keimyung University College of Medicine",
           "Residency, Hallym University Kangnam Sacred Heart Hospital",
@@ -356,39 +356,39 @@
         ]
       },
       "labels": {
-        "education": "Education",
-        "experience": "Experience",
-        "certifications": "Certifications",
-        "specialties": "Specialties",
-        "publications": "Publications",
-        "presentations": "Presentations",
-        "globalActivities": "Global Activities",
-        "media": "Media Coverage",
-        "comingSoon": "Coming Soon"
+        "education": "التعليم",
+        "experience": "الخبرة",
+        "certifications": "الاعتمادات",
+        "specialties": "التخصصات",
+        "publications": "المنشورات",
+        "presentations": "العروض التقديمية",
+        "globalActivities": "الأنشطة الدولية",
+        "media": "التغطية الإعلامية",
+        "comingSoon": "قريبًا"
       }
     },
     "location": {
-      "title": "Location",
-      "subtitle": "How to visit",
-      "address": "4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea",
-      "subway": "1 min walk from Sinsa Station Exit 4",
-      "subwayInfo": "Line 3 · Sinbundang Line, Sinsa Station Exit 4",
-      "walkMinutes": "1 min walk",
-      "addressLabel": "Address",
-      "buildingDetail": "(Jamwon-dong, Jaeun Building 4F)",
-      "directions": "Turn left at Paik's Coffee from Exit 4 and walk straight",
-      "holidayClosed": "Closed on Sundays and Public Holidays",
-      "contactLabel": "Contact",
-      "consultTime": "Consultation hours: Weekdays 10:00 - 19:00",
-      "parkingLabel": "Parking",
-      "freeParking": "Free Parking Available",
-      "parkingDetail": "Electric vehicles and large vehicles can park on the 1st floor when space is available. If no parking space is available, please use nearby paid parking lots.",
+      "title": "الموقع",
+      "subtitle": "كيفية الوصول",
+      "address": "الطابق الرابع، مبنى Jaeun، 80 Naruteo-ro، Seocho-gu، سيول، كوريا",
+      "subway": "دقيقة واحدة سيرًا من مخرج 4 محطة Sinsa",
+      "subwayInfo": "الخط 3 · خط Sinbundang، مخرج 4 محطة Sinsa",
+      "walkMinutes": "دقيقة واحدة سيرًا",
+      "addressLabel": "العنوان",
+      "buildingDetail": "(Jamwon-dong، مبنى Jaeun الطابق الرابع)",
+      "directions": "انعطف يسارًا عند Paik's Coffee من المخرج 4 وامشِ مباشرة",
+      "holidayClosed": "مغلق أيام الأحد والعطلات الرسمية",
+      "contactLabel": "للتواصل",
+      "consultTime": "ساعات الاستشارة: أيام العمل 10:00 - 19:00",
+      "parkingLabel": "الموقف",
+      "freeParking": "موقف مجاني متاح",
+      "parkingDetail": "يمكن للسيارات الكهربائية والمركبات الكبيرة الوقوف في الطابق الأول عند توفر المكان. إذا لم يتوفر مكان، يرجى استخدام مواقف السيارات المدفوعة القريبة.",
       "naverMap": "Naver Map",
       "kakaoMap": "Kakao Map",
-      "markerTitle": "LIV Plastic Surgery",
-      "infoWindowSubway": "1 min walk from Sinsa Station Exit 4",
-      "mapLoading": "Loading map...",
-      "mapError": "Unable to load map"
+      "markerTitle": "مستشفى ليف للتجميل",
+      "infoWindowSubway": "دقيقة واحدة سيرًا من مخرج 4 محطة Sinsa",
+      "mapLoading": "جارٍ تحميل الخريطة...",
+      "mapError": "تعذر تحميل الخريطة"
     }
   },
   "footer": {
@@ -425,12 +425,12 @@
     "kakaoMap": "Kakao Map",
     "parking": "مواقف السيارات",
     "parkingInfo": "مواقف مجانية متاحة",
-    "freeParking": "Electric vehicles and large vehicles can only be parked on the 1st floor parking lot if space is available. If no space is available, please use paid parking lots near the clinic.",
+    "freeParking": "يمكن للسيارات الكهربائية والمركبات الكبيرة الوقوف في موقف الطابق الأول فقط عند توفر المكان. إذا لم يتوفر مكان، يرجى استخدام مواقف السيارات المدفوعة بالقرب من العيادة.",
     "reservationNotice": "معلومات الحجز",
     "notice1": "سنتواصل معك خلال يوم عمل واحد بعد طلب الاستشارة.",
     "notice2": "للاستشارات العاجلة، يُرجى الاتصال على 02-797-2773.",
     "notice3": "يمكن تعديل/إلغاء الحجز حتى اليوم السابق للزيارة.",
-    "mapLoading": "Loading map...",
+    "mapLoading": "جارٍ تحميل الخريطة...",
     "location": "الموقع",
     "form": {
       "name": "الاسم",
@@ -459,17 +459,17 @@
       "retry": "إعادة المحاولة",
       "other": "أخرى / تحديد بعد الاستشارة",
       "privacyShort": "الموافقة على الخصوصية",
-      "submitError": "Consultation request failed.",
-      "submitErrorRetry": "Consultation request failed. Please try again later.",
-      "consultTitle": "Book Consultation",
-      "consultSubtitle": "Our specialists will guide you with care",
-      "password": "Password (Optional)",
-      "treatmentSelect": "Select Treatment",
+      "submitError": "فشلت عملية حجز الاستشارة.",
+      "submitErrorRetry": "فشلت عملية حجز الاستشارة. يرجى المحاولة مرة أخرى لاحقًا.",
+      "consultTitle": "احجز استشارة",
+      "consultSubtitle": "سيقوم متخصصونا بإرشادك بعناية",
+      "password": "كلمة المرور (اختياري)",
+      "treatmentSelect": "اختر العلاج",
       "submitButton": "إرسال",
-      "successSubtitle": "We will contact you soon",
-      "errorSubtitle": "Please try again",
-      "required": "[Required]",
-      "privacyConsent": "I agree to the collection and use of personal information. (Name and contact are used for consultation purposes only)",
+      "successSubtitle": "سنتواصل معك قريبًا",
+      "errorSubtitle": "يرجى المحاولة مرة أخرى",
+      "required": "[مطلوب]",
+      "privacyConsent": "أوافق على جمع واستخدام المعلومات الشخصية. (يُستخدم الاسم وبيانات الاتصال لأغراض الاستشارة فقط)",
       "treatmentOptions": {
         "laser": "علاج بالليزر",
         "filler": "الفيلر",
@@ -482,78 +482,78 @@
     }
   },
   "faq": {
-    "title": "Frequently Asked Questions",
-    "subtitle": "Find answers to common questions from our patients.",
-    "moreQuestions": "Have more questions?",
-    "callUs": "Call Us",
-    "onlineConsult": "Online Consultation",
+    "title": "الأسئلة الشائعة",
+    "subtitle": "اعثر على إجابات للأسئلة الشائعة من مرضانا.",
+    "moreQuestions": "هل لديك المزيد من الأسئلة؟",
+    "callUs": "اتصل بنا",
+    "onlineConsult": "استشارة عبر الإنترنت",
     "items": {
-      "q1": "How do I book a consultation?",
-      "a1": "You can book a consultation by phone (+82-2-797-2773), KakaoTalk, or through our online reservation form. Let us know your preferred date and time, and we'll confirm your appointment.",
-      "q2": "How long does a treatment take?",
-      "a2": "Treatment duration varies: Ultherapy Prime takes about 60-90 minutes, Thermage about 30-60 minutes, and Botox/Filler about 15-30 minutes. You'll receive detailed information during your consultation.",
-      "q3": "Can I return to daily activities after treatment?",
-      "a3": "Most non-surgical treatments allow same-day return to daily activities. Some temporary swelling or bruising may occur depending on the treatment area, but typically resolves within 1-2 weeks.",
-      "q4": "What are the treatment prices?",
-      "a4": "Prices vary based on treatment area, scope, and products used. Accurate pricing can be provided through a personalized consultation tailored to your needs.",
-      "q5": "Is parking available?",
-      "a5": "Yes, underground parking is available in the building. Treatment customers receive 2 hours of free parking.",
-      "q6": "How should I prepare for treatment?",
-      "a6": "No special preparation is required. However, please come with light or no makeup on the treatment day. Specific pre-treatment instructions may be provided for certain procedures.",
-      "q7": "Can foreigners receive consultations?",
-      "a7": "Yes, consultations are available in English, Japanese, and Chinese. Please let us know if you need interpretation services when booking your appointment.",
-      "q8": "Do you use only genuine equipment?",
-      "a8": "LIV Plastic Surgery is an officially certified Ultherapy Prime and Thermage clinic, using only 100% genuine equipment and products. Authenticity certificates are available for all products."
+      "q1": "كيف يمكنني حجز استشارة؟",
+      "a1": "يمكنك حجز استشارة عبر الهاتف (+82-2-797-2773)، أو KakaoTalk، أو نموذج الحجز عبر الإنترنت. أخبرنا بالتاريخ والوقت المفضلين، وسنؤكد موعدك.",
+      "q2": "كم تستغرق الجلسة؟",
+      "a2": "تختلف مدة العلاج: Ultherapy Prime يستغرق حوالي 60-90 دقيقة، Thermage حوالي 30-60 دقيقة، والبوتوكس/الفيلر حوالي 15-30 دقيقة. ستتلقى معلومات مفصلة خلال الاستشارة.",
+      "q3": "هل يمكنني العودة إلى نشاطاتي اليومية بعد العلاج؟",
+      "a3": "تسمح معظم العلاجات غير الجراحية بالعودة إلى الأنشطة اليومية في نفس اليوم. قد يحدث تورم أو كدمات مؤقتة حسب منطقة العلاج، ولكنها عادةً تختفي خلال 1-2 أسبوع.",
+      "q4": "ما هي أسعار العلاجات؟",
+      "a4": "تختلف الأسعار حسب منطقة العلاج، ونطاقه، والمنتجات المستخدمة. يمكن تقديم تسعير دقيق من خلال استشارة شخصية مصممة وفقًا لاحتياجاتك.",
+      "q5": "هل يتوفر موقف للسيارات؟",
+      "a5": "نعم، يتوفر موقف تحت الأرض في المبنى. يحصل عملاء العلاج على ساعتين من الوقوف المجاني.",
+      "q6": "كيف أستعد للعلاج؟",
+      "a6": "لا تُطلب أي تحضيرات خاصة. ومع ذلك، يُرجى الحضور بمكياج خفيف أو دون مكياج في يوم العلاج. قد تُقدَّم تعليمات محددة قبل بعض الإجراءات.",
+      "q7": "هل يمكن للأجانب الحصول على استشارات؟",
+      "a7": "نعم، تتوفر الاستشارات باللغة الإنجليزية واليابانية والصينية. يرجى إعلامنا إذا كنت بحاجة إلى خدمات الترجمة عند الحجز.",
+      "q8": "هل تستخدمون فقط أجهزة أصلية؟",
+      "a8": "مستشفى ليف للتجميل عيادة معتمدة رسميًا من Ultherapy Prime و Thermage، وتستخدم فقط أجهزة ومنتجات أصلية 100%. شهادات الأصالة متاحة لجميع المنتجات."
     }
   },
   "treatments": {
     "common": {
-      "process": "Treatment Process",
-      "timeline": "Results Timeline",
-      "targetAreas": "Treatment Areas",
-      "recommended": "Recommended For",
-      "precautions": "Pre & Post Care",
-      "comparison": "Device Comparison",
-      "transducers": "Transducers",
-      "collapse": "Collapse",
-      "expand": "Expand",
-      "bookConsultation": "Book Consultation",
-      "callNow": "Call Now",
-      "whyChoose": "Why Choose This?",
-      "howItWorks": "How It Works",
-      "results": "Results",
-      "faq": "FAQ",
-      "relatedTreatments": "Related Treatments",
-      "duration": "Duration",
-      "anesthesia": "Anesthesia",
-      "recovery": "Recovery",
-      "maintenance": "Maintenance",
-      "before": "Before",
-      "after": "After",
-      "immediately": "Immediately After",
-      "weeks": "weeks",
-      "months": "months",
-      "years": "years",
-      "fdaApproved": "FDA Approved",
-      "genuine": "Genuine Certified",
-      "certified": "Certified Clinic",
-      "laserCenter": "Laser Center",
-      "freeConsultation": "Free Consultation",
-      "onlineConsultation": "Online Consultation",
-      "phoneConsultation": "Phone Consultation",
-      "treatmentInfo": "Treatment Info",
-      "downtime": "Downtime",
-      "recommendedSessions": "Recommended Sessions",
-      "sessionInterval": "Session Interval",
-      "recommendedTreatment": "Recommended Treatment",
-      "otherTreatments": "Other Treatments",
-      "otherLaserTreatments": "Other Laser Treatments",
-      "mild": "Mild",
-      "moderate": "Moderate",
-      "severe": "Severe",
-      "benefits": "Benefits",
-      "consultationCta": "Book Consultation",
-      "effectDuration": "Effect Duration"
+      "process": "خطوات العلاج",
+      "timeline": "الجدول الزمني للنتائج",
+      "targetAreas": "مناطق العلاج",
+      "recommended": "موصى به لـ",
+      "precautions": "العناية قبل وبعد العلاج",
+      "comparison": "مقارنة الأجهزة",
+      "transducers": "المحولات",
+      "collapse": "طي",
+      "expand": "توسيع",
+      "bookConsultation": "احجز استشارة",
+      "callNow": "اتصل الآن",
+      "whyChoose": "لماذا تختار هذا؟",
+      "howItWorks": "كيف يعمل",
+      "results": "النتائج",
+      "faq": "الأسئلة الشائعة",
+      "relatedTreatments": "علاجات ذات صلة",
+      "duration": "المدة",
+      "anesthesia": "التخدير",
+      "recovery": "التعافي",
+      "maintenance": "الصيانة",
+      "before": "قبل",
+      "after": "بعد",
+      "immediately": "مباشرة بعد",
+      "weeks": "أسابيع",
+      "months": "أشهر",
+      "years": "سنوات",
+      "fdaApproved": "معتمد من FDA",
+      "genuine": "أصلي معتمد",
+      "certified": "عيادة معتمدة",
+      "laserCenter": "مركز الليزر",
+      "freeConsultation": "استشارة مجانية",
+      "onlineConsultation": "استشارة عبر الإنترنت",
+      "phoneConsultation": "استشارة هاتفية",
+      "treatmentInfo": "معلومات العلاج",
+      "downtime": "فترة النقاهة",
+      "recommendedSessions": "الجلسات الموصى بها",
+      "sessionInterval": "الفاصل بين الجلسات",
+      "recommendedTreatment": "العلاج الموصى به",
+      "otherTreatments": "علاجات أخرى",
+      "otherLaserTreatments": "علاجات ليزر أخرى",
+      "mild": "خفيف",
+      "moderate": "متوسط",
+      "severe": "شديد",
+      "benefits": "الفوائد",
+      "consultationCta": "احجز استشارة",
+      "effectDuration": "مدة التأثير"
     },
     "lifting": {
       "ulthera": {
@@ -4345,21 +4345,21 @@
     }
   },
   "medical": {
-    "title": "Medical Information",
-    "subtitle": "Find answers to frequently asked questions\nand useful medical information.",
-    "searchPlaceholder": "Search (e.g., Ultherapy Prime, pain)",
+    "title": "المعلومات الطبية",
+    "subtitle": "اعثر على إجابات للأسئلة الشائعة\nومعلومات طبية مفيدة.",
+    "searchPlaceholder": "ابحث (مثل: Ultherapy Prime، الألم)",
     "categories": {
-      "all": "All",
-      "lifting": "Lifting",
-      "antiaging": "Anti-aging",
-      "laser": "Laser",
-      "general": "General"
+      "all": "الكل",
+      "lifting": "شد الوجه",
+      "antiaging": "مكافحة الشيخوخة",
+      "laser": "الليزر",
+      "general": "عام"
     },
     "cta": {
-      "title": "Have more questions?",
-      "subtitle": "Our specialists are ready to help you.",
-      "reservation": "Book Consultation",
-      "call": "Call Us"
+      "title": "هل لديك المزيد من الأسئلة؟",
+      "subtitle": "متخصصونا مستعدون لمساعدتك.",
+      "reservation": "احجز استشارة",
+      "call": "اتصل بنا"
     },
     "faq": [
       {
@@ -5090,26 +5090,26 @@
   },
   "trust": {
     "certification": {
-      "title": "Officially Certified Clinic",
+      "title": "عيادة معتمدة رسميًا",
       "subtitle": "Ultherapy Prime · Thermage"
     },
     "doctor": {
-      "title": "Dr. Kim Soo-young",
-      "subtitle": "Board-Certified Plastic Surgeon"
+      "title": "د. كيم سو-يونج",
+      "subtitle": "جراحة تجميل معتمدة"
     },
     "location": {
-      "title": "Sinsa Station Exit 4",
-      "subtitle": "1 min walk"
+      "title": "مخرج 4 محطة Sinsa",
+      "subtitle": "دقيقة واحدة سيرًا"
     },
     "cta": {
-      "consultation": "Book Free Consultation",
-      "kakao": "KakaoTalk Consultation"
+      "consultation": "احجز استشارة مجانية",
+      "kakao": "استشارة KakaoTalk"
     }
   },
   "floatingCta": {
-    "phone": "Call",
+    "phone": "اتصل",
     "kakao": "KakaoTalk",
-    "call": "Call",
+    "call": "اتصل",
     "kakaoTalk": "KakaoTalk"
   },
   "aboutPage": {
@@ -5503,110 +5503,110 @@
     }
   },
   "chat": {
-    "openButton": "Live Chat",
-    "openButtonShort": "Chat",
-    "title": "LIV Live Chat",
-    "subtitle": "Auto-translated to Korean",
-    "online": "We're online",
-    "offline": "We'll reply soon — please leave a message",
-    "welcome": "Hello! How can we help you today?",
-    "delayedResponseNotice": "We're outside business hours (Weekdays 10:00–19:00, Sat 10:00–16:00 KST). Leave a message and we'll reply once we're back online. Please include your email for a faster response.",
-    "allOperatorsBusyNotice": "Our staff are momentarily away. Leave a message and we'll reply shortly.",
-    "followupNotice": "Apologies for the delay — we'll respond as soon as possible.",
-    "businessHours": "Hours: Weekdays 10:00–19:00, Sat 10:00–16:00 (KST), Closed Sun",
-    "placeholder": "Type a message...",
-    "send": "Send",
-    "showOriginal": "Show original",
-    "hideOriginal": "Hide original",
-    "close": "Close chat",
-    "translationFailed": "(translation failed — original only)",
-    "rateLimited": "You're sending messages too quickly. Please try again in a moment.",
-    "tooLong": "Messages cannot exceed 1000 characters.",
-    "sessionEnded": "This conversation has ended. Start a new chat for further questions.",
-    "consent": "Messages are stored to improve our consultation quality.",
-    "tooltipText": "Need help? Chat with us in English — auto-translated for our team ✨",
-    "tooltipDismiss": "Dismiss",
-    "namePlaceholder": "Nickname (optional)",
-    "emailPlaceholder": "Email (optional, for callbacks)",
-    "startChat": "Start Chat",
+    "openButton": "محادثة مباشرة",
+    "openButtonShort": "محادثة",
+    "title": "LIV محادثة مباشرة",
+    "subtitle": "ترجمة تلقائية إلى الكورية",
+    "online": "نحن متصلون",
+    "offline": "سنرد قريبًا — يرجى ترك رسالة",
+    "welcome": "مرحبًا! كيف يمكننا مساعدتك اليوم؟",
+    "delayedResponseNotice": "نحن خارج ساعات العمل (الاثنين-الجمعة 10:00–19:00، السبت 10:00–16:00 KST). اترك رسالة وسنرد عندما نعود. يرجى إدراج بريدك الإلكتروني للحصول على رد أسرع.",
+    "allOperatorsBusyNotice": "موظفونا مشغولون لحظيًا. اترك رسالة وسنرد قريبًا.",
+    "followupNotice": "نعتذر عن التأخير — سنرد في أقرب وقت ممكن.",
+    "businessHours": "الساعات: الاثنين-الجمعة 10:00–19:00، السبت 10:00–16:00 (KST)، مغلق يوم الأحد",
+    "placeholder": "اكتب رسالة...",
+    "send": "إرسال",
+    "showOriginal": "إظهار النص الأصلي",
+    "hideOriginal": "إخفاء النص الأصلي",
+    "close": "إغلاق المحادثة",
+    "translationFailed": "(فشلت الترجمة — النص الأصلي فقط)",
+    "rateLimited": "أنت ترسل الرسائل بسرعة كبيرة. يرجى المحاولة مرة أخرى بعد لحظات.",
+    "tooLong": "لا يمكن أن تتجاوز الرسائل 1000 حرف.",
+    "sessionEnded": "انتهت هذه المحادثة. ابدأ محادثة جديدة لمزيد من الأسئلة.",
+    "consent": "تُخزَّن الرسائل لتحسين جودة استشارتنا.",
+    "tooltipText": "هل تحتاج إلى مساعدة؟ تحدث معنا بالعربية — ترجمة تلقائية لفريقنا ✨",
+    "tooltipDismiss": "تجاهل",
+    "namePlaceholder": "اسم مستعار (اختياري)",
+    "emailPlaceholder": "البريد الإلكتروني (اختياري، للرد)",
+    "startChat": "ابدأ المحادثة",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+    "unreadAria": "{count, plural, one {رسالة جديدة واحدة} other {# رسائل جديدة}}"
   },
   "consultation": {
     "floating": {
-      "quickTitle": "Quick Consultation",
-      "subtitle": "Our friendly counselors are here to help",
-      "title": "Book a Consultation",
-      "close": "Close",
-      "namePlaceholder": "Name",
-      "passwordPlaceholder": "Password (optional)",
-      "departmentSelect": "Select treatment",
-      "submit": "Submit",
-      "submitting": "Sending...",
-      "consentRequired": "[Required]",
-      "consentText": "I agree to the collection and use of my personal information. (Name and phone number are used only for consultation purposes)",
-      "successTitle": "Consultation request received",
-      "successDesc": "We'll be in touch shortly",
-      "errorTitle": "Failed to submit consultation request",
-      "errorRetry": "Please try again",
-      "errorDefault": "Failed to submit consultation request"
+      "quickTitle": "استشارة سريعة",
+      "subtitle": "مستشارونا الودودون مستعدون لمساعدتك",
+      "title": "احجز استشارة",
+      "close": "إغلاق",
+      "namePlaceholder": "الاسم",
+      "passwordPlaceholder": "كلمة المرور (اختياري)",
+      "departmentSelect": "اختر العلاج",
+      "submit": "إرسال",
+      "submitting": "جارٍ الإرسال...",
+      "consentRequired": "[مطلوب]",
+      "consentText": "أوافق على جمع واستخدام معلوماتي الشخصية. (يُستخدم الاسم ورقم الهاتف لأغراض الاستشارة فقط)",
+      "successTitle": "تم استلام طلب الاستشارة",
+      "successDesc": "سنتواصل معك قريبًا",
+      "errorTitle": "فشل تقديم طلب الاستشارة",
+      "errorRetry": "يرجى المحاولة مرة أخرى",
+      "errorDefault": "فشل تقديم طلب الاستشارة"
     }
   },
   "treatmentDetail": {
-    "advantages": "Advantages of {name}",
-    "process": "Procedure Steps",
-    "info": "Procedure Info",
-    "duration": "Duration",
-    "anesthesia": "Anesthesia",
-    "recovery": "Recovery",
-    "effectDuration": "Effect Duration",
-    "areas": "Treatment Areas",
-    "recommendedFor": "Recommended For",
-    "precautions": "Pre/Post-care",
-    "faq": "Frequently Asked Questions",
-    "relatedMedical": "{name} — Medical Information",
-    "moreInfoPrefix": "For more details, see",
-    "moreInfoLink": "Medical Q&A",
+    "advantages": "مزايا {name}",
+    "process": "خطوات الإجراء",
+    "info": "معلومات الإجراء",
+    "duration": "المدة",
+    "anesthesia": "التخدير",
+    "recovery": "التعافي",
+    "effectDuration": "مدة التأثير",
+    "areas": "مناطق العلاج",
+    "recommendedFor": "موصى به لـ",
+    "precautions": "العناية قبل/بعد",
+    "faq": "الأسئلة الشائعة",
+    "relatedMedical": "{name} — المعلومات الطبية",
+    "moreInfoPrefix": "لمزيد من التفاصيل، انظر",
+    "moreInfoLink": "الأسئلة الطبية",
     "moreInfoSuffix": ".",
-    "consultationTitle": "Book a {name} Consultation",
-    "consultationDesc": "Get a one-on-one tailored consultation with our medical experts.",
-    "ctaReserve": "Book Consultation",
-    "ctaCall": "Call Us",
-    "related": "Related Treatments"
+    "consultationTitle": "احجز استشارة {name}",
+    "consultationDesc": "احصل على استشارة شخصية مع خبرائنا الطبيين.",
+    "ctaReserve": "احجز استشارة",
+    "ctaCall": "اتصل بنا",
+    "related": "علاجات ذات صلة"
   },
   "medicalBlog": {
     "ui": {
-      "title": "Related Blog Posts",
-      "subtitle": "Find more detailed medical information",
-      "visitBlogDesktop": "Visit Naver Blog",
-      "visitBlogMobile": "View more on Naver Blog"
+      "title": "مقالات المدونة ذات الصلة",
+      "subtitle": "اعثر على المزيد من المعلومات الطبية التفصيلية",
+      "visitBlogDesktop": "زيارة Naver Blog",
+      "visitBlogMobile": "عرض المزيد على Naver Blog"
     }
   },
   "instagram": {
     "ui": {
-      "intro": "Check out LIV Plastic Surgery's daily updates and treatment info.",
-      "showMore": "Show more",
-      "followCta": "Follow on Instagram",
-      "followers": "Followers",
-      "posts": "Posts",
-      "update": "Updates",
-      "viewDetails": "View details"
+      "intro": "اطلع على تحديثات مستشفى ليف للتجميل اليومية ومعلومات العلاجات.",
+      "showMore": "إظهار المزيد",
+      "followCta": "تابعنا على Instagram",
+      "followers": "متابعون",
+      "posts": "منشورات",
+      "update": "تحديثات",
+      "viewDetails": "عرض التفاصيل"
     }
   },
   "popup": {
-    "dismissToday": "Don't show today"
+    "dismissToday": "لا تعرض اليوم"
   },
   "beforeAfter": {
     "ui": {
-      "title": "Real Treatment Cases",
-      "description": "See real changes from LIV's clients",
-      "consent": "* All cases are posted with patient consent.",
-      "viewMore": "View more cases"
+      "title": "حالات علاج حقيقية",
+      "description": "شاهد التغييرات الحقيقية لعملاء LIV",
+      "consent": "* تُنشر جميع الحالات بموافقة المريض.",
+      "viewMore": "عرض المزيد من الحالات"
     }
   },
   "ui": {
     "stickyCta": {
-      "phone": "Call",
+      "phone": "اتصل",
       "kakao": "KakaoTalk"
     }
   }

@@ -4,7 +4,7 @@
     "skipToContent": "Aller au contenu",
     "siteName": "LIV Chirurgie Esthétique",
     "siteNameEn": "LIV Plastic Surgery",
-    "slogan": "Slow Aging, Natural Beauty",
+    "slogan": "Vieillir lentement, beauté naturelle",
     "consultation": "Réservation",
     "learnMore": "En savoir plus",
     "viewAll": "Voir tout",
@@ -36,10 +36,10 @@
     "cumulativeViews": "Vues cumulées",
     "update": "Mise à jour",
     "viewMoreBlog": "Voir plus sur Naver Blog",
-    "noItemsInCategory": "No cases in this category",
-    "selectOtherCategory": "Please select another category",
-    "medicalInfoNews": "Medical Info & News",
-    "checkLatestNews": "Check out the latest news and useful medical information from LIV Plastic Surgery.",
+    "noItemsInCategory": "Aucun cas dans cette catégorie",
+    "selectOtherCategory": "Veuillez sélectionner une autre catégorie",
+    "medicalInfoNews": "Infos médicales & Actualités",
+    "checkLatestNews": "Consultez les dernières actualités et informations médicales utiles de LIV Chirurgie Esthétique.",
     "timeline": "Chronologie",
     "process": "Processus",
     "targetAreas": "Zones de traitement",
@@ -51,18 +51,18 @@
   },
   "categories": {
     "lifting": "Lifting",
-    "antiaging": "Anti-aging",
-    "skin": "Skin/Laser",
-    "skincare": "Skincare",
-    "news": "Clinic News",
-    "qna": "Q&A"
+    "antiaging": "Anti-âge",
+    "skin": "Peau/Laser",
+    "skincare": "Soins de la peau",
+    "news": "Actualités de la clinique",
+    "qna": "Q&R"
   },
   "gallery": {
-    "title": "Treatment Gallery",
-    "description": "Browse our treatment cases at LIV Plastic Surgery. Experience natural and beautiful transformations.",
-    "noticeText": "All treatment cases are posted with patient consent. Results may vary by individual.",
-    "experienceChange": "Want to experience this transformation?",
-    "findTreatment": "Find the right treatment for you through a professional consultation."
+    "title": "Galerie des traitements",
+    "description": "Parcourez nos cas de traitement chez LIV Chirurgie Esthétique. Découvrez des transformations naturelles et belles.",
+    "noticeText": "Tous les cas de traitement sont publiés avec le consentement du patient. Les résultats peuvent varier selon les individus.",
+    "experienceChange": "Vous souhaitez vivre cette transformation ?",
+    "findTreatment": "Trouvez le traitement adapté grâce à une consultation professionnelle."
   },
   "nav": {
     "about": "À propos",
@@ -93,111 +93,111 @@
   },
   "hero": {
     "slide1": {
-      "title": "Natural Results",
+      "title": "Résultats naturels",
       "subtitle": "Une transformation naturelle imperceptible, réalisée par un chirurgien plasticien spécialiste"
     },
     "slide2": {
-      "title": "Certified Premium",
+      "title": "Premium certifié",
       "subtitle": "Clinique certifiée officielle Ultherapy Prime et Thermage, garantissant des produits 100% authentiques"
     },
     "slide3": {
-      "title": "Beyond Gravity",
+      "title": "Au-delà de la gravité",
       "subtitle": "Retrouvez la fermeté sans chirurgie, revivez la peau d'il y a 10 ans"
     },
     "sideText": {
-      "left": "Premium Anti-Aging Clinic",
-      "right": "Since 2024 Seoul Sinsa"
+      "left": "Clinique anti-âge premium",
+      "right": "Depuis 2024, Séoul Sinsa"
     }
   },
   "sections": {
     "certification": {
-      "title": "Certified Clinic",
+      "title": "Clinique certifiée",
       "officialPartner": "Certifications",
-      "visitSite": "Visit Official Site",
-      "ulthera": "Ultherapy Prime Certified",
+      "visitSite": "Visiter le site officiel",
+      "ulthera": "Ultherapy Prime certifié",
       "ultheraEn": "Ultherapy Prime Certified",
-      "ultheraDesc": "FDA Approved HIFU Lifting",
-      "thermage": "Thermage FLX Partner",
+      "ultheraDesc": "Lifting HIFU approuvé par la FDA",
+      "thermage": "Partenaire Thermage FLX",
       "thermageEn": "Thermage FLX Partner",
-      "thermageDesc": "Solta Medical Official Partner",
-      "density": "Density Official Partner",
+      "thermageDesc": "Partenaire officiel Solta Medical",
+      "density": "Partenaire officiel Density",
       "densityEn": "Density Official Partner",
-      "densityDesc": "HIFU+RF Dual Lifting",
-      "potenza": "Potenza Official Partner",
+      "densityDesc": "Lifting double HIFU+RF",
+      "potenza": "Partenaire officiel Potenza",
       "potenzaEn": "Potenza Official Partner",
-      "potenzaDesc": "RF Microneedle Treatment",
-      "sculptra": "Sculptra Certified",
+      "potenzaDesc": "Traitement RF microneedling",
+      "sculptra": "Sculptra certifié",
       "sculptraEn": "Sculptra Certified",
-      "sculptraDesc": "Collagen Stimulating Filler",
-      "juvelook": "Juvelook Official Partner",
+      "sculptraDesc": "Filler stimulant le collagène",
+      "juvelook": "Partenaire officiel Juvelook",
       "juvelookEn": "Juvelook Official Partner",
-      "juvelookDesc": "PDRN Skin Booster"
+      "juvelookDesc": "Skin Booster PDRN"
     },
     "equipment": {
-      "title": "Genuine Equipment",
-      "subtitle": "Premium authentic devices",
-      "description": "LIV Plastic Surgery uses only certified premium equipment. We provide safe and effective treatments with the latest technology.",
-      "autoScrolling": "AUTO SCROLLING",
-      "premiumDevices": "10 Premium Devices",
-      "learnMore": "Learn More",
+      "title": "Équipement authentique",
+      "subtitle": "Appareils premium authentiques",
+      "description": "LIV Chirurgie Esthétique utilise uniquement des équipements premium certifiés. Nous offrons des traitements sûrs et efficaces avec les dernières technologies.",
+      "autoScrolling": "DÉFILEMENT AUTO",
+      "premiumDevices": "10 appareils premium",
+      "learnMore": "En savoir plus",
       "devices": {
         "ultherapy": {
           "subTitle": "Ultherapy Prime",
-          "desc": "The global standard of FDA-approved HIFU lifting"
+          "desc": "Le standard mondial du lifting HIFU approuvé par la FDA"
         },
         "thermage": {
           "subTitle": "Thermage FLX",
-          "desc": "The pinnacle of 4th generation RF lifting technology"
+          "desc": "Le summum de la technologie de lifting RF de 4e génération"
         },
         "density": {
           "subTitle": "Density",
-          "desc": "Collagen remodeling with RF energy"
+          "desc": "Remodelage du collagène par énergie RF"
         },
         "shurink": {
           "subTitle": "Shurink",
-          "desc": "Precision HIFU for V-line contouring"
+          "desc": "HIFU de précision pour un contour en V"
         },
         "inmode": {
           "subTitle": "InMode",
-          "desc": "Fat reduction and lifting with RF energy"
+          "desc": "Réduction de graisse et lifting par énergie RF"
         },
         "potenza": {
           "subTitle": "Potenza",
-          "desc": "RF microneedling for elasticity and pore improvement"
+          "desc": "Microneedling RF pour l'élasticité et l'amélioration des pores"
         },
         "clarity": {
           "subTitle": "Clarity II",
-          "desc": "Dual-wavelength laser for pigment & vascular treatment"
+          "desc": "Laser bi-longueur d'onde pour traitement pigmentaire et vasculaire"
         },
         "lucas": {
           "subTitle": "Lucas",
-          "desc": "High-power Q-switch for stubborn pigmentation"
+          "desc": "Q-switch haute puissance pour pigmentations tenaces"
         },
         "co2": {
-          "subTitle": "CO2 Laser",
-          "desc": "Precision resurfacing and skin regeneration"
+          "subTitle": "Laser CO2",
+          "desc": "Resurfaçage de précision et régénération cutanée"
         },
         "ulblanc": {
           "subTitle": "Ulblanc",
-          "desc": "Gentle whitening laser"
+          "desc": "Laser blanchissant doux"
         }
       },
       "ui": {
-        "introLine1": "LIV Plastic Surgery uses only authentic, certified premium equipment.",
-        "introLine2": "We deliver safe and effective treatments with cutting-edge technology.",
-        "viewMore": "Learn more",
-        "navigationHint": "Drag or scroll to explore"
+        "introLine1": "LIV Chirurgie Esthétique n'utilise que des équipements premium authentiques et certifiés.",
+        "introLine2": "Nous offrons des traitements sûrs et efficaces avec des technologies de pointe.",
+        "viewMore": "En savoir plus",
+        "navigationHint": "Faites glisser ou défilez pour explorer"
       }
     },
     "signature": {
-      "title": "Signature Programs",
-      "subtitle": "LIV's exclusive signature programs",
+      "title": "Programmes Signature",
+      "subtitle": "Les programmes signature exclusifs de LIV",
       "programs": {
         "lifting": {
           "title": "Lifting",
           "titleEn": "LIFTING",
           "subtitle": "Ultherapy Prime & Thermage",
-          "description": "The pinnacle of non-surgical lifting. Experience natural lifting effects with premium genuine equipment.",
+          "description": "Le summum du lifting non chirurgical. Vivez des effets de lifting naturels avec des équipements premium authentiques.",
           "features": [
             "Ultherapy Prime Certified",
             "Thermage FLX Partner",
@@ -205,10 +205,10 @@
           ]
         },
         "antiaging": {
-          "title": "Anti-Aging",
+          "title": "Anti-âge",
           "titleEn": "ANTI-AGING",
           "subtitle": "Filler & Botox",
-          "description": "Achieve volume and contour with delicate touch. We pursue natural beauty.",
+          "description": "Obtenez volume et contour grâce à un toucher délicat. Nous recherchons une beauté naturelle.",
           "features": [
             "Genuine Fillers",
             "Anatomical Approach",
@@ -216,10 +216,10 @@
           ]
         },
         "rejuvenation": {
-          "title": "Rejuvenation",
+          "title": "Rajeunissement",
           "titleEn": "REJUVENATION",
-          "subtitle": "Medical Skincare",
-          "description": "Customized care to restore your skin's natural health. Scientific approach to skin improvement.",
+          "subtitle": "Soins médicaux de la peau",
+          "description": "Soins personnalisés pour restaurer la santé naturelle de votre peau. Approche scientifique pour l'amélioration cutanée.",
           "features": [
             "Skin Boosters",
             "Laser Toning",
@@ -229,39 +229,39 @@
       }
     },
     "values": {
-      "title": "Core Values",
-      "subtitle": "LIV's 4 core values",
+      "title": "Valeurs fondamentales",
+      "subtitle": "Les 4 valeurs fondamentales de LIV",
       "natural": {
-        "title": "Natural Beauty",
+        "title": "Beauté naturelle",
         "subtitle": "Natural Beauty",
-        "description": "We pursue understated, natural beauty"
+        "description": "Nous recherchons une beauté sobre et naturelle"
       },
       "expertise": {
-        "title": "Clinical Expertise",
+        "title": "Expertise clinique",
         "subtitle": "Clinical Expertise",
-        "description": "Delivering optimal results with rich experience"
+        "description": "Offrir des résultats optimaux grâce à une riche expérience"
       },
       "safety": {
-        "title": "Safety & Ethical Care",
+        "title": "Sécurité et éthique",
         "subtitle": "Safety & Ethics",
-        "description": "Strict adherence to authentic products and safety protocols"
+        "description": "Adhésion stricte aux produits authentiques et aux protocoles de sécurité"
       },
       "tailored": {
-        "title": "Tailored Aging",
+        "title": "Anti-âge sur mesure",
         "subtitle": "Customized Anti-aging",
-        "description": "Designing optimal results with personalized solutions"
+        "description": "Concevoir des résultats optimaux avec des solutions personnalisées"
       }
     },
     "doctor": {
-      "title": "Medical Staff",
-      "subtitle": "Our Doctors",
+      "title": "Équipe médicale",
+      "subtitle": "Nos médecins",
       "name": "Sooyoung Kim",
       "nameEn": "Dr. Sooyoung Kim",
-      "directorTitle": "Director, LIV Plastic Surgery",
+      "directorTitle": "Directrice, LIV Chirurgie Esthétique",
       "directorTitleEn": "Director",
-      "specialty": "Board-certified Plastic Surgeon",
-      "philosophy": "Pursuing naturalness - that is true beauty. We help you find your understated, authentic beauty.",
-      "credentials": "Credentials",
+      "specialty": "Chirurgienne plasticienne certifiée",
+      "philosophy": "Rechercher le naturel — c'est cela la vraie beauté. Nous vous aidons à trouver votre beauté authentique et sobre.",
+      "credentials": "Diplômes",
       "credentialsList": [
         "M.D., Korea University College of Medicine",
         "M.S. in Plastic Surgery, Korea University Graduate School",
@@ -270,12 +270,12 @@
         "Fellowship, MD Anderson Cancer Center, Texas, USA"
       ],
       "certifications": {
-        "official": "Officially Certified",
+        "official": "Officiellement certifié",
         "ultheraThermage": "Ultherapy Prime & Thermage",
-        "globalExpert": "Global Certified Expert",
-        "aptosCertified": "APTOS Certified Expert"
+        "globalExpert": "Expert mondialement certifié",
+        "aptosCertified": "Expert certifié APTOS"
       },
-      "internationalActivities": "International Activities",
+      "internationalActivities": "Activités internationales",
       "activities": [
         {
           "caption": "APTOS Headquarters Training",
@@ -290,24 +290,24 @@
           "location": "Clinical Procedure Site"
         }
       ],
-      "viewStaff": "View Medical Staff",
+      "viewStaff": "Voir l'équipe médicale",
       "youtube": {
         "title": "LIV TV",
-        "subtitle": "Treatment Stories by Dr. Kim",
-        "subscribe": "Subscribe to LIV YouTube Channel",
-        "description": "Watch treatment info, doctor interviews, and before & after videos"
+        "subtitle": "Histoires de traitement par Dr. Kim",
+        "subscribe": "Abonnez-vous à la chaîne YouTube LIV",
+        "description": "Regardez des infos sur les traitements, des interviews de médecins et des vidéos avant/après"
       },
       "ui": {
-        "playVideo": "Play video"
+        "playVideo": "Lire la vidéo"
       }
     },
     "doctors": {
       "kim": {
         "name": "Sooyoung Kim",
         "nameEn": "Dr. Sooyoung Kim",
-        "title": "Director",
-        "specialty": "Board-certified Plastic Surgeon",
-        "philosophy": "Pursuing natural beauty - that is true aesthetics.",
+        "title": "Directrice",
+        "specialty": "Chirurgienne plasticienne certifiée",
+        "philosophy": "Rechercher la beauté naturelle — c'est cela la vraie esthétique.",
         "education": [
           "M.D., Korea University College of Medicine",
           "Internship, Korea University Medical Center",
@@ -334,9 +334,9 @@
       "cheon": {
         "name": "Shinhye Cheon",
         "nameEn": "Dr. Shinhye Cheon",
-        "title": "Medical Director",
-        "specialty": "Board-certified Family Medicine Physician",
-        "philosophy": "Creating natural changes through delicate procedures.",
+        "title": "Directrice médicale",
+        "specialty": "Médecin de famille certifiée",
+        "philosophy": "Créer des changements naturels grâce à des procédures délicates.",
         "education": [
           "M.D., Keimyung University College of Medicine",
           "Residency, Hallym University Kangnam Sacred Heart Hospital",
@@ -356,39 +356,39 @@
         ]
       },
       "labels": {
-        "education": "Education",
-        "experience": "Experience",
+        "education": "Éducation",
+        "experience": "Expérience",
         "certifications": "Certifications",
-        "specialties": "Specialties",
+        "specialties": "Spécialités",
         "publications": "Publications",
-        "presentations": "Presentations",
-        "globalActivities": "Global Activities",
-        "media": "Media Coverage",
-        "comingSoon": "Coming Soon"
+        "presentations": "Présentations",
+        "globalActivities": "Activités internationales",
+        "media": "Couverture médiatique",
+        "comingSoon": "Bientôt disponible"
       }
     },
     "location": {
-      "title": "Location",
-      "subtitle": "How to visit",
-      "address": "4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea",
-      "subway": "1 min walk from Sinsa Station Exit 4",
-      "subwayInfo": "Line 3 · Sinbundang Line, Sinsa Station Exit 4",
-      "walkMinutes": "1 min walk",
-      "addressLabel": "Address",
-      "buildingDetail": "(Jamwon-dong, Jaeun Building 4F)",
-      "directions": "Turn left at Paik's Coffee from Exit 4 and walk straight",
-      "holidayClosed": "Closed on Sundays and Public Holidays",
+      "title": "Emplacement",
+      "subtitle": "Comment nous rejoindre",
+      "address": "4F, Bâtiment Jaeun, 80 Naruteo-ro, Seocho-gu, Séoul, Corée",
+      "subway": "1 min à pied de la sortie 4 de la station Sinsa",
+      "subwayInfo": "Ligne 3 · Ligne Sinbundang, sortie 4 de la station Sinsa",
+      "walkMinutes": "1 min à pied",
+      "addressLabel": "Adresse",
+      "buildingDetail": "(Jamwon-dong, Bâtiment Jaeun 4F)",
+      "directions": "Tournez à gauche au Paik's Coffee depuis la sortie 4 et continuez tout droit",
+      "holidayClosed": "Fermé les dimanches et jours fériés",
       "contactLabel": "Contact",
-      "consultTime": "Consultation hours: Weekdays 10:00 - 19:00",
-      "parkingLabel": "Parking",
-      "freeParking": "Free Parking Available",
-      "parkingDetail": "Electric vehicles and large vehicles can park on the 1st floor when space is available. If no parking space is available, please use nearby paid parking lots.",
+      "consultTime": "Heures de consultation : Jours ouvrables 10h00 - 19h00",
+      "parkingLabel": "Stationnement",
+      "freeParking": "Stationnement gratuit disponible",
+      "parkingDetail": "Les véhicules électriques et grands véhicules peuvent stationner au 1er étage lorsque l'espace le permet. Si aucun espace n'est disponible, veuillez utiliser les parkings payants à proximité.",
       "naverMap": "Naver Map",
       "kakaoMap": "Kakao Map",
-      "markerTitle": "LIV Plastic Surgery",
-      "infoWindowSubway": "1 min walk from Sinsa Station Exit 4",
-      "mapLoading": "Loading map...",
-      "mapError": "Unable to load map"
+      "markerTitle": "LIV Chirurgie Esthétique",
+      "infoWindowSubway": "1 min à pied de la sortie 4 de la station Sinsa",
+      "mapLoading": "Chargement de la carte...",
+      "mapError": "Impossible de charger la carte"
     }
   },
   "footer": {
@@ -425,12 +425,12 @@
     "kakaoMap": "Kakao Map",
     "parking": "Stationnement",
     "parkingInfo": "Parking gratuit disponible",
-    "freeParking": "Electric vehicles and large vehicles can only be parked on the 1st floor parking lot if space is available. If no space is available, please use paid parking lots near the clinic.",
+    "freeParking": "Les véhicules électriques et grands véhicules ne peuvent stationner au 1er étage que si l'espace le permet. Sinon, veuillez utiliser les parkings payants à proximité de la clinique.",
     "reservationNotice": "Informations de réservation",
     "notice1": "Nous vous contacterons dans un délai d'un jour ouvré après votre demande.",
     "notice2": "Pour les consultations urgentes, contactez-nous au 02-797-2773.",
     "notice3": "Les modifications/annulations sont possibles jusqu'à la veille de la visite.",
-    "mapLoading": "Loading map...",
+    "mapLoading": "Chargement de la carte...",
     "location": "Plan d'accès",
     "form": {
       "name": "Nom",
@@ -440,7 +440,7 @@
       "phonePlaceholder": "+33 6 12 34 56 78",
       "phoneError": "Veuillez saisir un numéro de téléphone valide",
       "email": "E-mail",
-      "emailPlaceholder": "email@example.com",
+      "emailPlaceholder": "email@exemple.com",
       "emailError": "Format d'e-mail invalide",
       "treatment": "Traitement souhaité",
       "treatmentPlaceholder": "Sélectionnez un traitement",
@@ -459,17 +459,17 @@
       "retry": "Recommencer",
       "other": "Autre / Décider après consultation",
       "privacyShort": "Accepter la confidentialité",
-      "submitError": "Consultation request failed.",
-      "submitErrorRetry": "Consultation request failed. Please try again later.",
-      "consultTitle": "Book Consultation",
-      "consultSubtitle": "Our specialists will guide you with care",
-      "password": "Password (Optional)",
-      "treatmentSelect": "Select Treatment",
+      "submitError": "Échec de la demande de consultation.",
+      "submitErrorRetry": "Échec de la demande de consultation. Veuillez réessayer plus tard.",
+      "consultTitle": "Réserver une consultation",
+      "consultSubtitle": "Nos spécialistes vous accompagneront avec soin",
+      "password": "Mot de passe (Optionnel)",
+      "treatmentSelect": "Sélectionnez un traitement",
       "submitButton": "Envoyer",
-      "successSubtitle": "We will contact you soon",
-      "errorSubtitle": "Please try again",
-      "required": "[Required]",
-      "privacyConsent": "I agree to the collection and use of personal information. (Name and contact are used for consultation purposes only)",
+      "successSubtitle": "Nous vous contacterons bientôt",
+      "errorSubtitle": "Veuillez réessayer",
+      "required": "[Obligatoire]",
+      "privacyConsent": "J'accepte la collecte et l'utilisation de mes données personnelles. (Le nom et le contact sont utilisés uniquement à des fins de consultation)",
       "treatmentOptions": {
         "laser": "Traitement laser",
         "filler": "Filler",
@@ -482,78 +482,78 @@
     }
   },
   "faq": {
-    "title": "Frequently Asked Questions",
-    "subtitle": "Find answers to common questions from our patients.",
-    "moreQuestions": "Have more questions?",
-    "callUs": "Call Us",
-    "onlineConsult": "Online Consultation",
+    "title": "Questions fréquentes",
+    "subtitle": "Trouvez des réponses aux questions courantes de nos patients.",
+    "moreQuestions": "D'autres questions ?",
+    "callUs": "Appelez-nous",
+    "onlineConsult": "Consultation en ligne",
     "items": {
-      "q1": "How do I book a consultation?",
-      "a1": "You can book a consultation by phone (+82-2-797-2773), KakaoTalk, or through our online reservation form. Let us know your preferred date and time, and we'll confirm your appointment.",
-      "q2": "How long does a treatment take?",
-      "a2": "Treatment duration varies: Ultherapy Prime takes about 60-90 minutes, Thermage about 30-60 minutes, and Botox/Filler about 15-30 minutes. You'll receive detailed information during your consultation.",
-      "q3": "Can I return to daily activities after treatment?",
-      "a3": "Most non-surgical treatments allow same-day return to daily activities. Some temporary swelling or bruising may occur depending on the treatment area, but typically resolves within 1-2 weeks.",
-      "q4": "What are the treatment prices?",
-      "a4": "Prices vary based on treatment area, scope, and products used. Accurate pricing can be provided through a personalized consultation tailored to your needs.",
-      "q5": "Is parking available?",
-      "a5": "Yes, underground parking is available in the building. Treatment customers receive 2 hours of free parking.",
-      "q6": "How should I prepare for treatment?",
-      "a6": "No special preparation is required. However, please come with light or no makeup on the treatment day. Specific pre-treatment instructions may be provided for certain procedures.",
-      "q7": "Can foreigners receive consultations?",
-      "a7": "Yes, consultations are available in English, Japanese, and Chinese. Please let us know if you need interpretation services when booking your appointment.",
-      "q8": "Do you use only genuine equipment?",
-      "a8": "LIV Plastic Surgery is an officially certified Ultherapy Prime and Thermage clinic, using only 100% genuine equipment and products. Authenticity certificates are available for all products."
+      "q1": "Comment puis-je réserver une consultation ?",
+      "a1": "Vous pouvez réserver une consultation par téléphone (+82-2-797-2773), KakaoTalk, ou via notre formulaire de réservation en ligne. Indiquez-nous votre date et heure préférées, et nous confirmerons votre rendez-vous.",
+      "q2": "Combien de temps dure un traitement ?",
+      "a2": "La durée varie : Ultherapy Prime dure environ 60-90 minutes, Thermage environ 30-60 minutes, et Botox/Filler environ 15-30 minutes. Vous recevrez des informations détaillées lors de votre consultation.",
+      "q3": "Puis-je reprendre mes activités quotidiennes après le traitement ?",
+      "a3": "La plupart des traitements non chirurgicaux permettent une reprise immédiate des activités. Un gonflement ou des bleus temporaires peuvent apparaître selon la zone traitée, mais disparaissent généralement en 1-2 semaines.",
+      "q4": "Quels sont les tarifs des traitements ?",
+      "a4": "Les prix varient selon la zone, l'étendue et les produits utilisés. Des tarifs précis peuvent être communiqués lors d'une consultation personnalisée adaptée à vos besoins.",
+      "q5": "Y a-t-il un parking disponible ?",
+      "a5": "Oui, un parking souterrain est disponible dans le bâtiment. Les clients bénéficient de 2 heures de stationnement gratuit.",
+      "q6": "Comment dois-je me préparer pour le traitement ?",
+      "a6": "Aucune préparation particulière n'est requise. Toutefois, venez avec peu ou pas de maquillage le jour du traitement. Des instructions spécifiques peuvent être fournies pour certaines procédures.",
+      "q7": "Les étrangers peuvent-ils être reçus en consultation ?",
+      "a7": "Oui, les consultations sont disponibles en anglais, japonais et chinois. Indiquez-nous si vous avez besoin d'un service d'interprétation lors de la réservation.",
+      "q8": "Utilisez-vous uniquement des équipements authentiques ?",
+      "a8": "LIV Chirurgie Esthétique est une clinique officiellement certifiée Ultherapy Prime et Thermage, utilisant uniquement 100 % d'équipements et produits authentiques. Des certificats d'authenticité sont disponibles pour tous les produits."
     }
   },
   "treatments": {
     "common": {
-      "process": "Treatment Process",
-      "timeline": "Results Timeline",
-      "targetAreas": "Treatment Areas",
-      "recommended": "Recommended For",
-      "precautions": "Pre & Post Care",
-      "comparison": "Device Comparison",
-      "transducers": "Transducers",
-      "collapse": "Collapse",
-      "expand": "Expand",
-      "bookConsultation": "Book Consultation",
-      "callNow": "Call Now",
-      "whyChoose": "Why Choose This?",
-      "howItWorks": "How It Works",
-      "results": "Results",
+      "process": "Processus du traitement",
+      "timeline": "Chronologie des résultats",
+      "targetAreas": "Zones de traitement",
+      "recommended": "Recommandé pour",
+      "precautions": "Soins pré et post",
+      "comparison": "Comparaison des appareils",
+      "transducers": "Transducteurs",
+      "collapse": "Réduire",
+      "expand": "Développer",
+      "bookConsultation": "Réserver une consultation",
+      "callNow": "Appeler maintenant",
+      "whyChoose": "Pourquoi choisir cela ?",
+      "howItWorks": "Comment ça marche",
+      "results": "Résultats",
       "faq": "FAQ",
-      "relatedTreatments": "Related Treatments",
-      "duration": "Duration",
-      "anesthesia": "Anesthesia",
-      "recovery": "Recovery",
-      "maintenance": "Maintenance",
-      "before": "Before",
-      "after": "After",
-      "immediately": "Immediately After",
-      "weeks": "weeks",
-      "months": "months",
-      "years": "years",
-      "fdaApproved": "FDA Approved",
-      "genuine": "Genuine Certified",
-      "certified": "Certified Clinic",
-      "laserCenter": "Laser Center",
-      "freeConsultation": "Free Consultation",
-      "onlineConsultation": "Online Consultation",
-      "phoneConsultation": "Phone Consultation",
-      "treatmentInfo": "Treatment Info",
-      "downtime": "Downtime",
-      "recommendedSessions": "Recommended Sessions",
-      "sessionInterval": "Session Interval",
-      "recommendedTreatment": "Recommended Treatment",
-      "otherTreatments": "Other Treatments",
-      "otherLaserTreatments": "Other Laser Treatments",
-      "mild": "Mild",
-      "moderate": "Moderate",
-      "severe": "Severe",
-      "benefits": "Benefits",
-      "consultationCta": "Book Consultation",
-      "effectDuration": "Effect Duration"
+      "relatedTreatments": "Traitements associés",
+      "duration": "Durée",
+      "anesthesia": "Anesthésie",
+      "recovery": "Récupération",
+      "maintenance": "Entretien",
+      "before": "Avant",
+      "after": "Après",
+      "immediately": "Immédiatement après",
+      "weeks": "semaines",
+      "months": "mois",
+      "years": "ans",
+      "fdaApproved": "Approuvé par la FDA",
+      "genuine": "Authentique certifié",
+      "certified": "Clinique certifiée",
+      "laserCenter": "Centre laser",
+      "freeConsultation": "Consultation gratuite",
+      "onlineConsultation": "Consultation en ligne",
+      "phoneConsultation": "Consultation téléphonique",
+      "treatmentInfo": "Infos sur le traitement",
+      "downtime": "Temps d'arrêt",
+      "recommendedSessions": "Séances recommandées",
+      "sessionInterval": "Intervalle entre séances",
+      "recommendedTreatment": "Traitement recommandé",
+      "otherTreatments": "Autres traitements",
+      "otherLaserTreatments": "Autres traitements laser",
+      "mild": "Léger",
+      "moderate": "Modéré",
+      "severe": "Sévère",
+      "benefits": "Avantages",
+      "consultationCta": "Réserver une consultation",
+      "effectDuration": "Durée de l'effet"
     },
     "lifting": {
       "ulthera": {
@@ -4345,21 +4345,21 @@
     }
   },
   "medical": {
-    "title": "Medical Information",
-    "subtitle": "Find answers to frequently asked questions\nand useful medical information.",
-    "searchPlaceholder": "Search (e.g., Ultherapy Prime, pain)",
+    "title": "Informations médicales",
+    "subtitle": "Trouvez des réponses aux questions fréquentes\net des informations médicales utiles.",
+    "searchPlaceholder": "Rechercher (ex. : Ultherapy Prime, douleur)",
     "categories": {
-      "all": "All",
+      "all": "Tout",
       "lifting": "Lifting",
-      "antiaging": "Anti-aging",
+      "antiaging": "Anti-âge",
       "laser": "Laser",
-      "general": "General"
+      "general": "Général"
     },
     "cta": {
-      "title": "Have more questions?",
-      "subtitle": "Our specialists are ready to help you.",
-      "reservation": "Book Consultation",
-      "call": "Call Us"
+      "title": "D'autres questions ?",
+      "subtitle": "Nos spécialistes sont là pour vous aider.",
+      "reservation": "Réserver une consultation",
+      "call": "Appelez-nous"
     },
     "faq": [
       {
@@ -5090,26 +5090,26 @@
   },
   "trust": {
     "certification": {
-      "title": "Officially Certified Clinic",
+      "title": "Clinique officiellement certifiée",
       "subtitle": "Ultherapy Prime · Thermage"
     },
     "doctor": {
       "title": "Dr. Kim Soo-young",
-      "subtitle": "Board-Certified Plastic Surgeon"
+      "subtitle": "Chirurgienne plasticienne certifiée"
     },
     "location": {
-      "title": "Sinsa Station Exit 4",
-      "subtitle": "1 min walk"
+      "title": "Sortie 4, station Sinsa",
+      "subtitle": "1 min à pied"
     },
     "cta": {
-      "consultation": "Book Free Consultation",
-      "kakao": "KakaoTalk Consultation"
+      "consultation": "Réserver une consultation gratuite",
+      "kakao": "Consultation KakaoTalk"
     }
   },
   "floatingCta": {
-    "phone": "Call",
+    "phone": "Appeler",
     "kakao": "KakaoTalk",
-    "call": "Call",
+    "call": "Appeler",
     "kakaoTalk": "KakaoTalk"
   },
   "aboutPage": {
@@ -5503,110 +5503,110 @@
     }
   },
   "chat": {
-    "openButton": "Live Chat",
+    "openButton": "Chat en direct",
     "openButtonShort": "Chat",
     "title": "LIV Live Chat",
-    "subtitle": "Auto-translated to Korean",
-    "online": "We're online",
-    "offline": "We'll reply soon — please leave a message",
-    "welcome": "Hello! How can we help you today?",
-    "delayedResponseNotice": "We're outside business hours (Weekdays 10:00–19:00, Sat 10:00–16:00 KST). Leave a message and we'll reply once we're back online. Please include your email for a faster response.",
-    "allOperatorsBusyNotice": "Our staff are momentarily away. Leave a message and we'll reply shortly.",
-    "followupNotice": "Apologies for the delay — we'll respond as soon as possible.",
-    "businessHours": "Hours: Weekdays 10:00–19:00, Sat 10:00–16:00 (KST), Closed Sun",
-    "placeholder": "Type a message...",
-    "send": "Send",
-    "showOriginal": "Show original",
-    "hideOriginal": "Hide original",
-    "close": "Close chat",
-    "translationFailed": "(translation failed — original only)",
-    "rateLimited": "You're sending messages too quickly. Please try again in a moment.",
-    "tooLong": "Messages cannot exceed 1000 characters.",
-    "sessionEnded": "This conversation has ended. Start a new chat for further questions.",
-    "consent": "Messages are stored to improve our consultation quality.",
-    "tooltipText": "Need help? Chat with us in English — auto-translated for our team ✨",
-    "tooltipDismiss": "Dismiss",
-    "namePlaceholder": "Nickname (optional)",
-    "emailPlaceholder": "Email (optional, for callbacks)",
-    "startChat": "Start Chat",
+    "subtitle": "Traduction automatique en coréen",
+    "online": "Nous sommes en ligne",
+    "offline": "Nous répondrons bientôt — veuillez laisser un message",
+    "welcome": "Bonjour ! Comment pouvons-nous vous aider aujourd'hui ?",
+    "delayedResponseNotice": "Nous sommes en dehors des heures d'ouverture (lun-ven 10h00–19h00, sam 10h00–16h00 KST). Laissez un message et nous répondrons dès notre retour. Indiquez votre email pour une réponse plus rapide.",
+    "allOperatorsBusyNotice": "Notre équipe est momentanément absente. Laissez un message et nous répondrons sous peu.",
+    "followupNotice": "Désolés pour le délai — nous répondrons dès que possible.",
+    "businessHours": "Horaires : lun-ven 10h00–19h00, sam 10h00–16h00 (KST), fermé le dimanche",
+    "placeholder": "Tapez un message...",
+    "send": "Envoyer",
+    "showOriginal": "Afficher l'original",
+    "hideOriginal": "Masquer l'original",
+    "close": "Fermer le chat",
+    "translationFailed": "(échec de la traduction — original uniquement)",
+    "rateLimited": "Vous envoyez des messages trop rapidement. Veuillez réessayer dans un instant.",
+    "tooLong": "Les messages ne peuvent pas dépasser 1 000 caractères.",
+    "sessionEnded": "Cette conversation est terminée. Démarrez un nouveau chat pour d'autres questions.",
+    "consent": "Les messages sont stockés pour améliorer la qualité de notre consultation.",
+    "tooltipText": "Besoin d'aide ? Discutez avec nous en français — traduction automatique pour notre équipe ✨",
+    "tooltipDismiss": "Fermer",
+    "namePlaceholder": "Pseudo (optionnel)",
+    "emailPlaceholder": "Email (optionnel, pour rappel)",
+    "startChat": "Démarrer le chat",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+    "unreadAria": "{count, plural, one {1 nouveau message} other {# nouveaux messages}}"
   },
   "consultation": {
     "floating": {
-      "quickTitle": "Quick Consultation",
-      "subtitle": "Our friendly counselors are here to help",
-      "title": "Book a Consultation",
-      "close": "Close",
-      "namePlaceholder": "Name",
-      "passwordPlaceholder": "Password (optional)",
-      "departmentSelect": "Select treatment",
-      "submit": "Submit",
-      "submitting": "Sending...",
-      "consentRequired": "[Required]",
-      "consentText": "I agree to the collection and use of my personal information. (Name and phone number are used only for consultation purposes)",
-      "successTitle": "Consultation request received",
-      "successDesc": "We'll be in touch shortly",
-      "errorTitle": "Failed to submit consultation request",
-      "errorRetry": "Please try again",
-      "errorDefault": "Failed to submit consultation request"
+      "quickTitle": "Consultation rapide",
+      "subtitle": "Nos conseillers attentionnés sont là pour vous aider",
+      "title": "Réserver une consultation",
+      "close": "Fermer",
+      "namePlaceholder": "Nom",
+      "passwordPlaceholder": "Mot de passe (optionnel)",
+      "departmentSelect": "Sélectionnez un traitement",
+      "submit": "Envoyer",
+      "submitting": "Envoi en cours...",
+      "consentRequired": "[Obligatoire]",
+      "consentText": "J'accepte la collecte et l'utilisation de mes données personnelles. (Nom et téléphone utilisés uniquement à des fins de consultation)",
+      "successTitle": "Demande de consultation reçue",
+      "successDesc": "Nous vous recontacterons sous peu",
+      "errorTitle": "Échec de la demande de consultation",
+      "errorRetry": "Veuillez réessayer",
+      "errorDefault": "Échec de la demande de consultation"
     }
   },
   "treatmentDetail": {
-    "advantages": "Advantages of {name}",
-    "process": "Procedure Steps",
-    "info": "Procedure Info",
-    "duration": "Duration",
-    "anesthesia": "Anesthesia",
-    "recovery": "Recovery",
-    "effectDuration": "Effect Duration",
-    "areas": "Treatment Areas",
-    "recommendedFor": "Recommended For",
-    "precautions": "Pre/Post-care",
-    "faq": "Frequently Asked Questions",
-    "relatedMedical": "{name} — Medical Information",
-    "moreInfoPrefix": "For more details, see",
-    "moreInfoLink": "Medical Q&A",
+    "advantages": "Avantages de {name}",
+    "process": "Étapes de la procédure",
+    "info": "Informations sur la procédure",
+    "duration": "Durée",
+    "anesthesia": "Anesthésie",
+    "recovery": "Récupération",
+    "effectDuration": "Durée de l'effet",
+    "areas": "Zones de traitement",
+    "recommendedFor": "Recommandé pour",
+    "precautions": "Soins pré/post",
+    "faq": "Questions fréquentes",
+    "relatedMedical": "{name} — Informations médicales",
+    "moreInfoPrefix": "Pour plus de détails, voir",
+    "moreInfoLink": "Q&R médicales",
     "moreInfoSuffix": ".",
-    "consultationTitle": "Book a {name} Consultation",
-    "consultationDesc": "Get a one-on-one tailored consultation with our medical experts.",
-    "ctaReserve": "Book Consultation",
-    "ctaCall": "Call Us",
-    "related": "Related Treatments"
+    "consultationTitle": "Réserver une consultation {name}",
+    "consultationDesc": "Bénéficiez d'une consultation personnalisée en tête-à-tête avec nos experts médicaux.",
+    "ctaReserve": "Réserver une consultation",
+    "ctaCall": "Appelez-nous",
+    "related": "Traitements associés"
   },
   "medicalBlog": {
     "ui": {
-      "title": "Related Blog Posts",
-      "subtitle": "Find more detailed medical information",
-      "visitBlogDesktop": "Visit Naver Blog",
-      "visitBlogMobile": "View more on Naver Blog"
+      "title": "Articles de blog associés",
+      "subtitle": "Trouvez plus d'informations médicales détaillées",
+      "visitBlogDesktop": "Visiter Naver Blog",
+      "visitBlogMobile": "Voir plus sur Naver Blog"
     }
   },
   "instagram": {
     "ui": {
-      "intro": "Check out LIV Plastic Surgery's daily updates and treatment info.",
-      "showMore": "Show more",
-      "followCta": "Follow on Instagram",
-      "followers": "Followers",
-      "posts": "Posts",
-      "update": "Updates",
-      "viewDetails": "View details"
+      "intro": "Découvrez les mises à jour quotidiennes et infos sur les traitements de LIV Chirurgie Esthétique.",
+      "showMore": "Afficher plus",
+      "followCta": "Suivez sur Instagram",
+      "followers": "Abonnés",
+      "posts": "Publications",
+      "update": "Mises à jour",
+      "viewDetails": "Voir les détails"
     }
   },
   "popup": {
-    "dismissToday": "Don't show today"
+    "dismissToday": "Ne plus afficher aujourd'hui"
   },
   "beforeAfter": {
     "ui": {
-      "title": "Real Treatment Cases",
-      "description": "See real changes from LIV's clients",
-      "consent": "* All cases are posted with patient consent.",
-      "viewMore": "View more cases"
+      "title": "Cas de traitement réels",
+      "description": "Voyez les vrais changements chez les clients de LIV",
+      "consent": "* Tous les cas sont publiés avec le consentement du patient.",
+      "viewMore": "Voir plus de cas"
     }
   },
   "ui": {
     "stickyCta": {
-      "phone": "Call",
+      "phone": "Appeler",
       "kakao": "KakaoTalk"
     }
   }
