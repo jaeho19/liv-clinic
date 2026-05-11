@@ -1,29 +1,34 @@
 {
-  "sessionCount": 194,
+  "sessionCount": 198,
   "lastSession": {
-    "startedAt": "2026-05-10T12:18:59.354Z",
+    "startedAt": "2026-05-11T00:35:38.388Z",
     "platform": "claude",
     "level": "Starter"
   },
-  "currentFeature": "i18n-language-switcher",
+  "currentFeature": "i18n-treatments-fr-mn-ar",
   "pdca": {
     "phase": "completed",
-    "feature": "i18n-language-switcher",
-    "matchRate": 96,
-    "overallScore": 96,
-    "iterationCount": 1,
-    "startedAt": "2026-05-10",
-    "completedAt": "2026-05-11",
-    "lastAnalyzedAt": "2026-05-10",
-    "lastIteratedAt": "2026-05-10",
-    "overallScore": 0,
+    "feature": "i18n-treatments-fr-mn-ar",
+    "matchRate": 98,
+    "overallScore": 98,
     "iterationCount": 0,
-    "startedAt": "2026-05-10"
+    "completionType": "unconditional",
+    "completionReason": "Discharges prior PDCA i18n-fr-mn-ar 84% conditional hotfix obligation. FR/MN/AR LocaleMap added for 6 lifting treatments + RELATED_TREATMENTS_L10N. 98% static match; visual rendering and native review tracked as out-of-scope manual QA.",
+    "startedAt": "2026-05-11",
+    "designedAt": "2026-05-11",
+    "doStartedAt": "2026-05-11",
+    "doCompletedAt": "2026-05-11",
+    "buildVerified": true,
+    "lastAnalyzedAt": "2026-05-11",
+    "completedAt": "2026-05-11",
+    "lastIteratedAt": null
   },
   "previousFeature": {
-    "feature": "chat-followups-g03-g05-g07",
+    "feature": "i18n-fr-mn-ar",
     "phase": "completed",
-    "matchRate": 98,
-    "completedAt": "2026-05-10"
+    "matchRate": 84,
+    "completionType": "conditional",
+    "completionReason": "User-agreed hotfix separation: treatmentsI18n LocaleMap deferred to i18n-treatments-fr-mn-ar PDCA",
+    "completedAt": "2026-05-11"
   }
 }

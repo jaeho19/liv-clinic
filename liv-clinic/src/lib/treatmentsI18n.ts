@@ -581,6 +581,720 @@ const JA: LocaleMap = {
   },
 };
 
+// ----- French (fr) -----
+// Standard French (France), medical-tourism oriented. Glossary: see docs/02-design/features/i18n-treatments-fr-mn-ar.design.md §3
+const FR: LocaleMap = {
+  ulthera: {
+    targetAreas: ['Front', 'Contour des yeux', 'Joues', 'Mâchoire', 'Cou'],
+    idealFor: [
+      'Personnes recherchant un lifting non chirurgical',
+      'Personnes préoccupées par le relâchement cutané et la perte d\'élasticité',
+      'Personnes recherchant un résultat naturel',
+      'Personnes ne souhaitant aucun temps d\'arrêt',
+    ],
+    cautions: [
+      'De légers gonflements ou rougeurs peuvent apparaître après le traitement',
+      'Des troubles sensoriels temporaires sont possibles selon la zone',
+      'Contre-indiqué pour les femmes enceintes ou allaitantes',
+      'Consultation requise en cas d\'implants métalliques dans la zone traitée',
+    ],
+    duration: '60-90 minutes',
+    anesthesia: 'Crème anesthésiante topique (30 min)',
+    recovery: 'Reprise immédiate des activités quotidiennes',
+    results: 'Amélioration progressive sur 3-6 mois, durée 1-2 ans',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Analyse de la peau et planification du traitement' },
+      { step: 2, title: 'Nettoyage', desc: 'Démaquillage et préparation de la peau' },
+      { step: 3, title: 'Anesthésie', desc: 'Application de crème anesthésiante pour le confort' },
+      { step: 4, title: 'Traitement', desc: 'Traitement de précision guidé par DeepSEE en temps réel' },
+      { step: 5, title: 'Soins après', desc: 'Apaisement de la zone et conseils post-traitement' },
+    ],
+    faqs: [
+      {
+        q: 'Le traitement Ultherapy Prime est-il douloureux ?',
+        shortA: 'Avec la crème anesthésiante, la plupart le tolèrent bien.',
+        a: 'Nous appliquons une crème anesthésiante topique avant le traitement, ce qui le rend tolérable pour la plupart des patients. Une gestion supplémentaire de la douleur est disponible pour les patients sensibles.',
+      },
+      {
+        q: 'Quand les résultats apparaissent-ils ?',
+        shortA: 'Effet immédiat + amélioration progressive sur 3-6 mois.',
+        a: 'Un léger effet de lifting est ressenti immédiatement, puis une amélioration progressive sur 3-6 mois à mesure que le collagène se régénère.',
+      },
+      {
+        q: 'Quelle est la différence entre Ultherapy Prime et Thermage ?',
+        shortA: 'Ultherapy utilise les HIFU (ultrasons), Thermage utilise les RF.',
+        a: 'Ultherapy Prime utilise les HIFU (ultrasons) et atteint les couches profondes de lifting. Thermage utilise les RF (radiofréquence) et améliore l\'élasticité globale. Combiner les deux produit des effets synergiques.',
+      },
+    ],
+  },
+  thermage: {
+    targetAreas: ['Visage entier', 'Contour des yeux', 'Cou', 'Corps'],
+    idealFor: [
+      'Personnes préoccupées par la perte d\'élasticité cutanée',
+      'Personnes souhaitant améliorer les ridules',
+      'Personnes recherchant un changement naturel et progressif',
+      'Personnes préférant un traitement sans anesthésie',
+    ],
+    cautions: [
+      'Des rougeurs temporaires peuvent apparaître après le traitement',
+      'Contre-indiqué pour les porteurs de stimulateur cardiaque',
+      'Contre-indiqué pour les femmes enceintes ou allaitantes',
+      'Consultation requise en cas d\'implants métalliques dans la zone traitée',
+    ],
+    duration: '45-60 minutes',
+    anesthesia: 'Sans anesthésie (la technologie vibratoire réduit l\'inconfort)',
+    recovery: 'Reprise immédiate des activités quotidiennes',
+    results: 'Amélioration immédiate de l\'élasticité, régénération du collagène sur 3-6 mois',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Analyse de la peau et planification du traitement' },
+      { step: 2, title: 'Nettoyage', desc: 'Démaquillage et préparation de la peau' },
+      { step: 3, title: 'Marquage', desc: 'Application d\'une grille de traitement sur la zone cible' },
+      { step: 4, title: 'Traitement', desc: 'Énergie personnalisée via la technologie AccuREP' },
+      { step: 5, title: 'Soins après', desc: 'Apaisement de la zone et conseils post-traitement' },
+    ],
+    faqs: [
+      {
+        q: 'En quoi Thermage FLX diffère-t-il des versions précédentes ?',
+        shortA: 'AccuREP ajuste automatiquement l\'énergie ; 25 % plus rapide.',
+        a: 'La 4e génération FLX utilise AccuREP pour adapter automatiquement l\'énergie à l\'impédance cutanée, raccourcit le temps de traitement de 25 % et réduit l\'inconfort.',
+      },
+      {
+        q: 'À quelle fréquence faut-il faire le traitement ?',
+        shortA: 'Nous recommandons 1 à 2 séances par an.',
+        a: 'Généralement 1 à 2 fois par an. La cadence exacte dépend de l\'état de la peau et est déterminée lors de la consultation.',
+      },
+      {
+        q: 'Thermage peut-il être utilisé sur le contour des yeux ?',
+        shortA: 'Oui, Thermage Eye traite le contour des yeux.',
+        a: 'Oui. Thermage Eye utilise un embout dédié au contour des yeux et est efficace pour l\'élasticité des paupières et des cernes.',
+      },
+    ],
+  },
+  density: {
+    targetAreas: ['Front', 'Contour des yeux', 'Joues', 'Mâchoire', 'Cou'],
+    idealFor: [
+      'Personnes recherchant un effet lifting combiné',
+      'Personnes souhaitant un effet immédiat associé à une amélioration à long terme',
+      'Personnes insatisfaites des traitements de lifting précédents',
+    ],
+    cautions: [
+      'De légers gonflements ou rougeurs peuvent apparaître après le traitement',
+      'Consultation requise selon l\'état de la peau pour confirmer l\'éligibilité',
+      'Contre-indiqué pour les femmes enceintes ou allaitantes',
+    ],
+    duration: '40-60 minutes',
+    anesthesia: 'Crème anesthésiante (en option)',
+    recovery: 'Reprise immédiate des activités quotidiennes',
+    results: 'Lifting immédiat + régénération du collagène sur 3-6 mois',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Analyse de la peau et planification du traitement' },
+      { step: 2, title: 'Nettoyage', desc: 'Démaquillage et préparation de la peau' },
+      { step: 3, title: 'Anesthésie', desc: 'Application de crème anesthésiante si nécessaire' },
+      { step: 4, title: 'Traitement', desc: 'Lifting par radiofréquence RF' },
+      { step: 5, title: 'Soins après', desc: 'Apaisement de la zone et conseils post-traitement' },
+    ],
+    faqs: [
+      {
+        q: 'En quoi Densiti diffère-t-il d\'Ultherapy Prime et de Thermage ?',
+        shortA: 'Densiti est un appareil RF d\'entrée de gamme avec un excellent rapport qualité-prix.',
+        a: 'Densiti appartient à la catégorie du lifting par radiofréquence (RF) comme Thermage, mais offre un prix plus accessible et moins d\'inconfort, idéal pour débuter une gestion du lifting. Combiné aux appareils HIFU comme Ultherapy Prime ou Shurink, il permet un traitement d\'élasticité multi-couches.',
+      },
+      {
+        q: 'Quel intervalle entre les traitements est recommandé ?',
+        shortA: 'Un intervalle de 3 à 6 mois est recommandé.',
+        a: 'Un traitement tous les 3 à 6 mois est généralement recommandé, à ajuster selon l\'état de la peau.',
+      },
+    ],
+  },
+  inmode: {
+    targetAreas: ['Sous le menton', 'Joues', 'Contour du visage', 'Double menton', 'Joues profondes'],
+    idealFor: [
+      'Personnes souhaitant réduire la graisse du menton et renforcer l\'élasticité',
+      'Personnes souhaitant améliorer le lifting des joues et le contour du visage',
+      'Personnes souhaitant améliorer le double menton et les joues profondes',
+      'Personnes souhaitant favoriser la régénération du collagène et atténuer les ridules',
+    ],
+    cautions: [
+      'De légers gonflements ou rougeurs peuvent apparaître après le traitement',
+      'Consultation requise selon l\'état de la peau pour confirmer l\'éligibilité',
+      'Contre-indiqué pour les femmes enceintes ou allaitantes',
+    ],
+    duration: '30-60 minutes',
+    anesthesia: 'Sans anesthésie ou crème anesthésiante',
+    recovery: 'Reprise immédiate des activités quotidiennes',
+    results: 'Élasticité immédiate + régénération progressive du collagène',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Analyse de la peau et sélection de l\'embout adapté' },
+      { step: 2, title: 'Nettoyage', desc: 'Démaquillage et préparation de la peau' },
+      { step: 3, title: 'Anesthésie', desc: 'Anesthésie locale selon le type de traitement' },
+      { step: 4, title: 'Traitement', desc: 'Traitement personnalisé avec l\'embout sélectionné' },
+      { step: 5, title: 'Soins après', desc: 'Apaisement de la zone et conseils post-traitement' },
+    ],
+    faqs: [
+      {
+        q: 'À qui InMode convient-il ?',
+        shortA: 'Aux personnes ayant un excès de graisse faciale ou un relâchement cutané combinés.',
+        a: 'Recommandé aux patients présentant à la fois un excès de graisse faciale et un relâchement cutané. InMode stimule simultanément la couche graisseuse et le derme, offrant un double effet lifting et amincissement.',
+      },
+      {
+        q: 'Est-il plus efficace combiné avec Thermage ?',
+        shortA: 'Oui, la synergie RF offre une amélioration d\'élasticité accrue.',
+        a: 'Oui, combiner InMode avec Thermage permet d\'obtenir une amélioration d\'élasticité supérieure grâce à la synergie des deux technologies RF.',
+      },
+    ],
+  },
+  shurink: {
+    targetAreas: ['Front', 'Contour des yeux', 'Joues', 'Mâchoire', 'Cou'],
+    idealFor: [
+      'Personnes recevant un traitement lifting pour la première fois',
+      'Personnes souhaitant un traitement de courte durée',
+      'Personnes recherchant un lifting à un prix raisonnable',
+      'Personnes souhaitant un entretien régulier',
+    ],
+    cautions: [
+      'De légères rougeurs peuvent apparaître après le traitement',
+      'Consultation préalable requise pour les peaux sensibles',
+      'Contre-indiqué pour les femmes enceintes ou allaitantes',
+    ],
+    duration: '30-45 minutes',
+    anesthesia: 'Crème anesthésiante (en option)',
+    recovery: 'Reprise immédiate des activités quotidiennes',
+    results: 'Premiers effets visibles à 2-4 semaines, résultat maximal à 3 mois',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Analyse de la peau et planification du traitement' },
+      { step: 2, title: 'Nettoyage', desc: 'Démaquillage et préparation de la peau' },
+      { step: 3, title: 'Anesthésie', desc: 'Crème anesthésiante en option' },
+      { step: 4, title: 'Traitement', desc: 'Sélection de l\'embout adapté à chaque zone' },
+      { step: 5, title: 'Soins après', desc: 'Apaisement de la zone et conseils post-traitement' },
+    ],
+    faqs: [
+      {
+        q: 'Quelle est la différence entre Ultherapy Prime et Shurink ?',
+        shortA: 'Les deux sont HIFU, mais Shurink offre un meilleur rapport qualité-prix pour l\'entretien.',
+        a: 'Les deux reposent sur la technologie HIFU. Ultherapy Prime dispose de la visualisation DeepSEE et atteint des couches plus profondes ; Shurink est plus rapide, à prix raisonnable, et idéal pour une gestion régulière.',
+      },
+      {
+        q: 'Quel est le cycle de traitement ?',
+        shortA: 'Intervalle de 3 à 6 mois, idéal pour l\'entretien.',
+        a: 'Un traitement tous les 3 à 6 mois est généralement recommandé. Shurink convient également comme traitement d\'entretien entre des séances Ultherapy Prime ou Thermage.',
+      },
+    ],
+  },
+  thread: {
+    targetAreas: ['Joues', 'Sillons nasogéniens', 'Mâchoire', 'Cou'],
+    idealFor: [
+      'Personnes recherchant un effet lifting immédiat',
+      'Personnes souhaitant améliorer le relâchement facial',
+      'Personnes recherchant un contour en V',
+      'Personnes souhaitant à la fois un lifting et une stimulation du collagène',
+    ],
+    cautions: [
+      'Un gonflement ou des ecchymoses peuvent apparaître après le traitement',
+      'Éviter les expressions excessives et les massages pendant environ 1 à 2 semaines',
+      'Contre-indiqué pour les femmes enceintes ou allaitantes',
+    ],
+    duration: '30-60 minutes',
+    anesthesia: 'Anesthésie locale',
+    recovery: '1-7 jours (selon la zone)',
+    results: 'Lifting immédiat + stimulation du collagène sur 6-12 mois',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Analyse du degré de relâchement et conception de l\'objectif' },
+      { step: 2, title: 'Anesthésie', desc: 'Anesthésie locale' },
+      { step: 3, title: 'Conception', desc: 'Marquage du tracé des fils' },
+      { step: 4, title: 'Traitement', desc: 'Lifting avec des fils résorbables' },
+      { step: 5, title: 'Soins après', desc: 'Compression hémostatique et conseils post-traitement' },
+    ],
+    faqs: [
+      {
+        q: 'Combien de temps durent les effets du lifting par fils ?',
+        shortA: 'L\'effet lifting dure 6-12 mois, la stimulation du collagène est plus longue.',
+        a: 'L\'effet lifting dure généralement 6-12 mois. Une fois les fils résorbés, la stimulation du collagène prolonge les bénéfices au-delà.',
+      },
+      {
+        q: 'Y a-t-il une sensation de corps étranger après le traitement ?',
+        shortA: 'Une légère sensation initiale qui disparaît en 2-4 semaines.',
+        a: 'Une légère sensation de corps étranger peut apparaître les premiers jours et disparaît progressivement en 2 à 4 semaines, restaurant une sensation naturelle.',
+      },
+    ],
+  },
+};
+
+// ----- Mongolian (mn, Cyrillic) -----
+// Khalkha Mongolian in Cyrillic. Foreign technical names: Cyrillic transliteration + English in parentheses on first mention.
+const MN: LocaleMap = {
+  ulthera: {
+    targetAreas: ['Дух', 'Нүдний эргэн тойрон', 'Хацар', 'Эрүүний шугам', 'Хүзүү'],
+    idealFor: [
+      'Мэс заслын бус лифтинг хүсэж буй хүмүүс',
+      'Арьс уналт, уян хатан байдал буурахад санаа зовж буй хүмүүс',
+      'Байгалийн өөрчлөлт хүсэж буй хүмүүс',
+      'Сэргэх хугацаа шаардахгүй эмчилгээ хүсэж буй хүмүүс',
+    ],
+    cautions: [
+      'Эмчилгээний дараа бага зэргийн хавдар, улайлт гарч болно',
+      'Хэсгээс хамаарч түр зуурын мэдрэхүйн өөрчлөлт гарч болно',
+      'Жирэмсэн эх, хөхүүл эхэд эмчилгээ хийх боломжгүй',
+      'Эмчилгээний хэсэгт металл суулгац байгаа тохиолдолд урьдчилан зөвлөгөө шаардлагатай',
+    ],
+    duration: '60-90 минут',
+    anesthesia: 'Мэдээ алдуулах тос (30 минут)',
+    recovery: 'Шууд өдөр тутмын амьдралд эргэн орох боломжтой',
+    results: '3-6 сарын турш аажмаар сайжирч, 1-2 жил үргэлжилнэ',
+    process: [
+      { step: 1, title: 'Зөвлөгөө', desc: 'Арьсны төлөв байдлыг шинжилж эмчилгээний төлөвлөгөө гаргах' },
+      { step: 2, title: 'Цэвэрлэгээ', desc: 'Гоо сайхны бүтээгдэхүүн арилгаж арьсыг бэлдэх' },
+      { step: 3, title: 'Мэдээгүйжүүлэлт', desc: 'Тав тухтай эмчилгээний төлөө мэдээ алдуулах тос түрхэх' },
+      { step: 4, title: 'Эмчилгээ', desc: 'DeepSEE-ээр харж нарийн эмчилгээ хийх' },
+      { step: 5, title: 'Дараах арчилгаа', desc: 'Эмчилгээний хэсгийг тайвшруулж сэргээлтийн заавар өгөх' },
+    ],
+    faqs: [
+      {
+        q: 'Ultherapy Prime (Ультерапи Прайм) эмчилгээ өвдөх үү?',
+        shortA: 'Мэдээ алдуулах тосоор ихэнх хүн тэвчиж чадна.',
+        a: 'Эмчилгээний өмнө мэдээ алдуулах тос түрхдэг тул ихэнх хүн тэвчиж чадна. Өвдөлтөд мэдрэмтгий хүмүүст нэмэлт өвдөлт намдаах боломжтой.',
+      },
+      {
+        q: 'Үр дүн хэзээнээс гарч эхлэх вэ?',
+        shortA: 'Эмчилгээний дараа шууд + 3~6 сарын аажмаар сайжралт.',
+        a: 'Эмчилгээний дараа бага зэргийн лифтинг мэдрэгдэж, коллагены сэргэлтийн дагуу 3-6 сарын турш аажмаар сайжирна.',
+      },
+      {
+        q: 'Ultherapy Prime болон Thermage хоёрын ялгаа юу вэ?',
+        shortA: 'Ultherapy нь ультра-авиа (HIFU), Thermage нь радио давтамж (RF).',
+        a: 'Ultherapy Prime нь HIFU (ультра-авиа) ашиглаж гүн давхаргад хүрч лифтинг хийдэг бол Thermage нь RF (радио давтамж) энергиэр ерөнхий уян хатан байдлыг сайжруулдаг. Хосолж ашиглавал нөхөн нэмэгдэх үр дүн гарна.',
+      },
+    ],
+  },
+  thermage: {
+    targetAreas: ['Бүх нүүр', 'Нүдний эргэн тойрон', 'Хүзүү', 'Бие'],
+    idealFor: [
+      'Арьсны уян хатан байдал буурахад санаа зовж буй хүмүүс',
+      'Жижиг үрчлээг сайжруулахыг хүсэж буй хүмүүс',
+      'Байгалийн, аажмаар өөрчлөлт хүсэж буй хүмүүс',
+      'Мэдээгүйжүүлэлтгүй эмчилгээ хүсэж буй хүмүүс',
+    ],
+    cautions: [
+      'Эмчилгээний дараа түр зуурын улайлт гарч болно',
+      'Зүрхний хэмнэлзүүлэгчтэй хүмүүст эмчилгээ хийх боломжгүй',
+      'Жирэмсэн эх, хөхүүл эхэд эмчилгээ хийх боломжгүй',
+      'Эмчилгээний хэсэгт металл суулгац байгаа тохиолдолд зөвлөгөө шаардлагатай',
+    ],
+    duration: '45-60 минут',
+    anesthesia: 'Мэдээгүйжүүлэлтгүй (доргионы технологиор өвдөлт багасгана)',
+    recovery: 'Шууд өдөр тутмын амьдралд эргэн орох боломжтой',
+    results: 'Шууд уян хатан байдал сайжирч, 3-6 сард коллаген сэргэнэ',
+    process: [
+      { step: 1, title: 'Зөвлөгөө', desc: 'Арьсны төлөв байдлыг шинжилж эмчилгээний төлөвлөгөө гаргах' },
+      { step: 2, title: 'Цэвэрлэгээ', desc: 'Гоо сайхны бүтээгдэхүүн арилгаж арьсыг бэлдэх' },
+      { step: 3, title: 'Тэмдэглэгээ', desc: 'Эмчилгээний хэсэгт тор тэмдэглэх' },
+      { step: 4, title: 'Эмчилгээ', desc: 'AccuREP технологиор тохирсон энерги өгөх' },
+      { step: 5, title: 'Дараах арчилгаа', desc: 'Эмчилгээний хэсгийг тайвшруулж заавар өгөх' },
+    ],
+    faqs: [
+      {
+        q: 'Thermage FLX (Термаж FLX) хуучин хувилбараас ямар ялгаатай вэ?',
+        shortA: 'AccuREP энерги автоматаар тохируулдаг, 25% хурдан.',
+        a: '4-р үеийн FLX нь AccuREP технологиор арьсанд тохирсон энергийг автоматаар тохируулж, эмчилгээний хугацааг 25%-иар богиносгож, өвдөлтийг бууруулсан.',
+      },
+      {
+        q: 'Эмчилгээний давтамж хэр байх вэ?',
+        shortA: 'Жилд 1-2 удаа эмчилгээ хийхийг зөвлөж байна.',
+        a: 'Ерөнхийдөө жилд 1-2 удаа санал болгодог. Арьсны төлөв байдлаас хамаарч өөр өөр байх тул зөвлөгөөгөөр тогтооно.',
+      },
+      {
+        q: 'Thermage нүдний эргэн тойрон ашиглаж болох уу?',
+        shortA: 'Тийм, Thermage Eye тусгай үзүүрээр боломжтой.',
+        a: 'Тийм, Thermage Eye нь нүдний эргэн тойрон зориулсан тусгай үзүүртэй бөгөөд зовхи, нүдний доорх уян хатан байдлыг сайжруулахад үр дүнтэй.',
+      },
+    ],
+  },
+  density: {
+    targetAreas: ['Дух', 'Нүдний эргэн тойрон', 'Хацар', 'Эрүүний шугам', 'Хүзүү'],
+    idealFor: [
+      'Хосолсон лифтинг үр дүн хүсэж буй хүмүүс',
+      'Шууд үр дүн ба урт хугацааны сайжралтыг хослуулахыг хүсэж буй хүмүүс',
+      'Өмнөх лифтинг эмчилгээнд сэтгэл хангалуун бус хүмүүс',
+    ],
+    cautions: [
+      'Эмчилгээний дараа бага зэргийн хавдар, улайлт гарч болно',
+      'Арьсны төлөв байдлаас хамаарч эмчилгээ хийх боломжтой эсэхийг зөвлөгөөгөөр тогтооно',
+      'Жирэмсэн эх, хөхүүл эхэд эмчилгээ хийх боломжгүй',
+    ],
+    duration: '40-60 минут',
+    anesthesia: 'Мэдээ алдуулах тос (сонголтоор)',
+    recovery: 'Шууд өдөр тутмын амьдралд эргэн орох боломжтой',
+    results: 'Шууд лифтинг + 3-6 сарын коллаген сэргэлт',
+    process: [
+      { step: 1, title: 'Зөвлөгөө', desc: 'Арьсны төлөв байдлыг шинжилж эмчилгээний төлөвлөгөө гаргах' },
+      { step: 2, title: 'Цэвэрлэгээ', desc: 'Гоо сайхны бүтээгдэхүүн арилгаж арьсыг бэлдэх' },
+      { step: 3, title: 'Мэдээгүйжүүлэлт', desc: 'Шаардлагатай тохиолдолд мэдээ алдуулах тос түрхэх' },
+      { step: 4, title: 'Эмчилгээ', desc: 'RF радио давтамжийн лифтинг эмчилгээ' },
+      { step: 5, title: 'Дараах арчилгаа', desc: 'Эмчилгээний хэсгийг тайвшруулж заавар өгөх' },
+    ],
+    faqs: [
+      {
+        q: 'Densiti (Денсити) нь Ultherapy Prime, Thermage-ээс юугаараа ялгаатай вэ?',
+        shortA: 'Densiti нь зардал багатай эхлэл RF лифтинг төхөөрөмж.',
+        a: 'Densiti нь Thermage-тай адил RF (радио давтамжийн) лифтинг ангилалд багтдаг боловч илүү боломжийн үнэ, бага өвдөлттэй тул лифтинг эмчилгээг эхлүүлэхэд тохиромжтой. Ultherapy Prime, Shurink зэрэг HIFU төхөөрөмжтэй хослуулан давхар уян хатан эмчилгээ хийж болно.',
+      },
+      {
+        q: 'Эмчилгээний хоорондох завсар хэр байх вэ?',
+        shortA: '3~6 сарын завсар санал болгож байна.',
+        a: 'Ерөнхийдөө 3-6 сар тутамд нэг эмчилгээ хийхийг зөвлөж, арьсны төлөв байдлаас хамаарч тохируулна.',
+      },
+    ],
+  },
+  inmode: {
+    targetAreas: ['Эрүүний доод хэсэг', 'Хацар', 'Нүүрний хэлбэр', 'Давхар эрүү', 'Гүн хацар'],
+    idealFor: [
+      'Эрүүний өөхийг багасгаж уян хатан байдлыг нэмэгдүүлэхийг хүсэж буй хүмүүс',
+      'Хацрын лифтинг ба нүүрний хэлбэр сайжруулахыг хүсэж буй хүмүүс',
+      'Давхар эрүү, гүн хацрын асуудлыг сайжруулахыг хүсэж буй хүмүүс',
+      'Коллагены сэргэлтийг идэвхжүүлж жижиг үрчлээг сайжруулахыг хүсэж буй хүмүүс',
+    ],
+    cautions: [
+      'Эмчилгээний дараа бага зэргийн хавдар, улайлт гарч болно',
+      'Арьсны төлөв байдлаас хамаарч эмчилгээ хийх боломжтой эсэхийг зөвлөгөөгөөр тогтооно',
+      'Жирэмсэн эх, хөхүүл эхэд эмчилгээ хийх боломжгүй',
+    ],
+    duration: '30-60 минут',
+    anesthesia: 'Мэдээгүйжүүлэлтгүй эсвэл мэдээ алдуулах тос',
+    recovery: 'Шууд өдөр тутмын амьдралд эргэн орох боломжтой',
+    results: 'Шууд уян хатан байдал + аажмаар коллагены сэргэлт',
+    process: [
+      { step: 1, title: 'Зөвлөгөө', desc: 'Арьсны төлөв байдлыг шинжилж тохирсон үзүүр сонгох' },
+      { step: 2, title: 'Цэвэрлэгээ', desc: 'Гоо сайхны бүтээгдэхүүн арилгаж арьсыг бэлдэх' },
+      { step: 3, title: 'Мэдээгүйжүүлэлт', desc: 'Эмчилгээний төрлөөс хамаарч хэсэгчилсэн мэдээгүйжүүлэлт' },
+      { step: 4, title: 'Эмчилгээ', desc: 'Сонгосон үзүүрээр захиалгат эмчилгээ хийх' },
+      { step: 5, title: 'Дараах арчилгаа', desc: 'Эмчилгээний хэсгийг тайвшруулж заавар өгөх' },
+    ],
+    faqs: [
+      {
+        q: 'InMode (ИнМоуд) хэн бэлэн вэ?',
+        shortA: 'Нүүрний өөх ихтэй эсвэл арьс уналт хосолсон асуудалтай хүмүүст.',
+        a: 'Нүүрэндээ өөх ихтэй, арьс уналт зэрэг хосолсон асуудалтай үйлчлүүлэгчдэд санал болгодог. Өөхний давхарга ба дермисийн давхаргыг нэгэн зэрэг идэвхжүүлж лифтинг ба нарийсгах хос үр дүнг үзүүлнэ.',
+      },
+      {
+        q: 'Thermage-тай хослуулбал илүү үр дүнтэй юу?',
+        shortA: 'Тийм, RF синерги нэмэгдсэн уян хатан байдлыг өгнө.',
+        a: 'Тийм, InMode-ийг Thermage-тай хослуулбал хоёр RF технологийн синергигээр илүү хүчтэй уян хатан байдлыг олж авах боломжтой.',
+      },
+    ],
+  },
+  shurink: {
+    targetAreas: ['Дух', 'Нүдний эргэн тойрон', 'Хацар', 'Эрүүний шугам', 'Хүзүү'],
+    idealFor: [
+      'Лифтинг эмчилгээг анх удаа хийх хүмүүс',
+      'Эмчилгээний хугацаа богино байхыг хүсэж буй хүмүүс',
+      'Боломжийн үнээр лифтинг хийхийг хүсэж буй хүмүүс',
+      'Тогтмол арчилгаа хийхийг хүсэж буй хүмүүс',
+    ],
+    cautions: [
+      'Эмчилгээний дараа бага зэргийн улайлт гарч болно',
+      'Мэдрэмтгий арьстай хүмүүс урьдчилан зөвлөгөө шаардлагатай',
+      'Жирэмсэн эх, хөхүүл эхэд эмчилгээ хийх боломжгүй',
+    ],
+    duration: '30-45 минут',
+    anesthesia: 'Мэдээ алдуулах тос (сонголтоор)',
+    recovery: 'Шууд өдөр тутмын амьдралд эргэн орох боломжтой',
+    results: '2-4 долоо хоногийн дараа үр дүн харагдаж, 3 сард дээд хэмжээнд хүрнэ',
+    process: [
+      { step: 1, title: 'Зөвлөгөө', desc: 'Арьсны төлөв байдлыг шинжилж эмчилгээний төлөвлөгөө гаргах' },
+      { step: 2, title: 'Цэвэрлэгээ', desc: 'Гоо сайхны бүтээгдэхүүн арилгаж арьсыг бэлдэх' },
+      { step: 3, title: 'Мэдээгүйжүүлэлт', desc: 'Сонголтоор мэдээ алдуулах тос' },
+      { step: 4, title: 'Эмчилгээ', desc: 'Хэсэгт тохирсон үзүүрийг сонгож эмчилгээ хийх' },
+      { step: 5, title: 'Дараах арчилгаа', desc: 'Эмчилгээний хэсгийг тайвшруулж заавар өгөх' },
+    ],
+    faqs: [
+      {
+        q: 'Ultherapy Prime болон Shurink (Шүрэнк) ямар ялгаатай вэ?',
+        shortA: 'Хоёулаа HIFU, гэхдээ Shurink нь өдөр тутмын арчилгаанд тохиромжтой үнэтэй.',
+        a: 'Хоёр төхөөрөмж хоёулаа HIFU зарчимд тулгуурладаг. Ultherapy Prime нь DeepSEE харагдах технологитой, гүн давхаргад хүрдэг. Shurink нь хурдан, үнийн хувьд боломжийн тул тогтмол арчилгаанд тохиромжтой.',
+      },
+      {
+        q: 'Эмчилгээний давтамж яаж тогтоох вэ?',
+        shortA: '3~6 сарын завсар, арчилгааны эмчилгээнд тохиромжтой.',
+        a: 'Ерөнхийдөө 3-6 сар тутамд нэг удаа санал болгож, Ultherapy Prime эсвэл Thermage хоорондох арчилгааны эмчилгээ болгон ашиглах боломжтой.',
+      },
+    ],
+  },
+  thread: {
+    targetAreas: ['Хацар', 'Хамар амны нугарал', 'Эрүүний шугам', 'Хүзүү'],
+    idealFor: [
+      'Шууд лифтинг үр дүн хүсэж буй хүмүүс',
+      'Нүүрний уналтыг сайжруулахыг хүсэж буй хүмүүс',
+      'V хэлбэрийн контур хүсэж буй хүмүүс',
+      'Лифтинг болон коллагены идэвхжүүлэлтийг хосолж хүсэж буй хүмүүс',
+    ],
+    cautions: [
+      'Эмчилгээний дараа хавдар, хөхрөлт гарч болно',
+      '1-2 долоо хоног хэт их нүүрний хөдөлгөөн, иллэгийг хязгаарлах хэрэгтэй',
+      'Жирэмсэн эх, хөхүүл эхэд эмчилгээ хийх боломжгүй',
+    ],
+    duration: '30-60 минут',
+    anesthesia: 'Хэсэгчилсэн мэдээгүйжүүлэлт',
+    recovery: '1-7 хоног (хэсгээс хамаарч)',
+    results: 'Шууд лифтинг + 6-12 сарын коллагены идэвхжүүлэлт',
+    process: [
+      { step: 1, title: 'Зөвлөгөө', desc: 'Нүүрний уналтын хэмжээг шинжилж зорилтот дизайн гаргах' },
+      { step: 2, title: 'Мэдээгүйжүүлэлт', desc: 'Хэсэгчилсэн мэдээгүйжүүлэлт хийх' },
+      { step: 3, title: 'Дизайн', desc: 'Утсан лифтингийн чиглэлийг тэмдэглэх' },
+      { step: 4, title: 'Эмчилгээ', desc: 'Шингээгдэх утсаар лифтинг хийх' },
+      { step: 5, title: 'Дараах арчилгаа', desc: 'Цусыг зогсооход дарж заавар өгөх' },
+    ],
+    faqs: [
+      {
+        q: 'Утсан лифтингийн (Thread lifting) үр дүн хэр удаан үргэлжлэх вэ?',
+        shortA: 'Лифтинг үр дүн 6-12 сар, коллагены идэвхжүүлэлт илүү удаан.',
+        a: 'Лифтинг үр дүн ерөнхийдөө 6-12 сар үргэлжилнэ. Утас уусаны дараа ч коллагены идэвхжүүлэлтийн үр дүн илүү удаан үргэлжлэнэ.',
+      },
+      {
+        q: 'Утсан лифтингийн дараа гадны мэдрэмж байх уу?',
+        shortA: 'Эхэн үед бага зэрэг, 2-4 долоо хоногт алга болно.',
+        a: 'Эмчилгээний эхэн үед бага зэргийн гадны мэдрэмж байж болох ч 2-4 долоо хоногийн дотор аажмаар алга болж, байгалийн мэдрэмжээ сэргээнэ.',
+      },
+    ],
+  },
+};
+
+// ----- Arabic (ar, MSA, RTL) -----
+// Modern Standard Arabic. Western numerals (60-90) used per international medical convention.
+const AR: LocaleMap = {
+  ulthera: {
+    targetAreas: ['الجبهة', 'محيط العين', 'الخدود', 'خط الفك', 'الرقبة'],
+    idealFor: [
+      'الباحثون عن شد غير جراحي',
+      'المعانون من ترهل الجلد وفقدان المرونة',
+      'الراغبون في نتائج طبيعية',
+      'الراغبون في علاج بدون فترة نقاهة',
+    ],
+    cautions: [
+      'قد يظهر تورم خفيف أو احمرار بعد العلاج',
+      'قد تحدث تغيرات حسية مؤقتة حسب المنطقة',
+      'غير مناسب للحوامل أو المرضعات',
+      'يتطلب استشارة في حالة وجود زرعات معدنية في منطقة العلاج',
+    ],
+    duration: '60-90 دقيقة',
+    anesthesia: 'كريم مخدر موضعي (30 دقيقة)',
+    recovery: 'العودة الفورية إلى الحياة اليومية',
+    results: 'تحسن تدريجي على مدى 3-6 أشهر، يستمر 1-2 سنة',
+    process: [
+      { step: 1, title: 'الاستشارة', desc: 'تحليل البشرة وتخطيط العلاج' },
+      { step: 2, title: 'التنظيف', desc: 'إزالة المكياج وتحضير البشرة' },
+      { step: 3, title: 'التخدير', desc: 'تطبيق كريم مخدر للراحة' },
+      { step: 4, title: 'العلاج', desc: 'علاج دقيق بتوجيه نظام DeepSEE في الوقت الفعلي' },
+      { step: 5, title: 'الرعاية بعد العلاج', desc: 'تهدئة المنطقة وشرح الرعاية اللاحقة' },
+    ],
+    faqs: [
+      {
+        q: 'هل علاج ألثرابي برايم (Ultherapy Prime) مؤلم؟',
+        shortA: 'مع الكريم المخدر، يتحمله معظم المرضى.',
+        a: 'نقوم بتطبيق كريم مخدر موضعي قبل العلاج، فيتحمله معظم الناس. كما تتوفر إدارة إضافية للألم للمرضى الحساسين.',
+      },
+      {
+        q: 'متى تظهر النتائج؟',
+        shortA: 'تأثير فوري + تحسن تدريجي على مدى 3-6 أشهر.',
+        a: 'يُلاحظ تأثير شد طفيف فوراً بعد العلاج، ثم يتحسن تدريجياً خلال 3-6 أشهر مع تجدد الكولاجين.',
+      },
+      {
+        q: 'ما الفرق بين ألثرابي برايم وثيرماج (Thermage)؟',
+        shortA: 'ألثرابي يستخدم HIFU (الموجات فوق الصوتية)، وثيرماج يستخدم RF.',
+        a: 'يستخدم ألثرابي برايم تقنية HIFU (الموجات فوق الصوتية المركزة) ويصل إلى طبقات الشد العميقة، بينما يستخدم ثيرماج تقنية RF (الترددات الراديوية) ويُحسّن المرونة الكلية. يُحقق الجمع بينهما تأثيراً تآزرياً.',
+      },
+    ],
+  },
+  thermage: {
+    targetAreas: ['الوجه بأكمله', 'محيط العين', 'الرقبة', 'الجسم'],
+    idealFor: [
+      'المعانون من انخفاض مرونة البشرة',
+      'الراغبون في تحسين الخطوط الدقيقة',
+      'الراغبون في تغير طبيعي وتدريجي',
+      'المفضلون لعلاج بدون تخدير',
+    ],
+    cautions: [
+      'قد يظهر احمرار مؤقت بعد العلاج',
+      'غير مناسب لمرضى منظم ضربات القلب',
+      'غير مناسب للحوامل أو المرضعات',
+      'يتطلب استشارة في حالة وجود زرعات معدنية في منطقة العلاج',
+    ],
+    duration: '45-60 دقيقة',
+    anesthesia: 'بدون تخدير (تقنية الاهتزاز تُقلل من الإحساس بالألم)',
+    recovery: 'العودة الفورية إلى الحياة اليومية',
+    results: 'تحسن فوري في المرونة، وتجدد الكولاجين على مدى 3-6 أشهر',
+    process: [
+      { step: 1, title: 'الاستشارة', desc: 'تحليل البشرة وتخطيط العلاج' },
+      { step: 2, title: 'التنظيف', desc: 'إزالة المكياج وتحضير البشرة' },
+      { step: 3, title: 'التحديد', desc: 'تطبيق شبكة العلاج على المنطقة المستهدفة' },
+      { step: 4, title: 'العلاج', desc: 'طاقة مخصصة عبر تقنية AccuREP' },
+      { step: 5, title: 'الرعاية بعد العلاج', desc: 'تهدئة المنطقة وشرح الرعاية اللاحقة' },
+    ],
+    faqs: [
+      {
+        q: 'كيف يختلف ثيرماج FLX عن الإصدارات السابقة؟',
+        shortA: 'تقنية AccuREP تُعدّل الطاقة تلقائياً، أسرع بنسبة 25%.',
+        a: 'يستخدم الجيل الرابع FLX تقنية AccuREP لمطابقة الطاقة تلقائياً مع مقاومة البشرة، ويُقلل وقت العلاج بنسبة 25% ويُخفف الإحساس بالألم.',
+      },
+      {
+        q: 'ما هو الفاصل الزمني المُوصى به بين العلاجات؟',
+        shortA: 'نوصي بجلسة إلى جلستين سنوياً.',
+        a: 'عموماً 1-2 مرة سنوياً. يعتمد الإيقاع الدقيق على حالة البشرة، ويُحدَّد خلال الاستشارة.',
+      },
+      {
+        q: 'هل يمكن استخدام ثيرماج على محيط العين؟',
+        shortA: 'نعم، يستخدم Thermage Eye قطعة مخصصة لمحيط العين.',
+        a: 'نعم. يستخدم Thermage Eye قطعة مخصصة لمحيط العين، وهو فعّال لتحسين مرونة الجفون وما تحت العينين.',
+      },
+    ],
+  },
+  density: {
+    targetAreas: ['الجبهة', 'محيط العين', 'الخدود', 'خط الفك', 'الرقبة'],
+    idealFor: [
+      'الباحثون عن تأثير شد مُركب',
+      'الراغبون في الجمع بين التأثير الفوري والتحسن طويل الأمد',
+      'غير الراضين عن علاجات الشد السابقة',
+    ],
+    cautions: [
+      'قد يظهر تورم خفيف أو احمرار بعد العلاج',
+      'يتطلب استشارة حسب حالة البشرة للتأكد من الأهلية',
+      'غير مناسب للحوامل أو المرضعات',
+    ],
+    duration: '40-60 دقيقة',
+    anesthesia: 'كريم مخدر (اختياري)',
+    recovery: 'العودة الفورية إلى الحياة اليومية',
+    results: 'شد فوري + تجدد الكولاجين على مدى 3-6 أشهر',
+    process: [
+      { step: 1, title: 'الاستشارة', desc: 'تحليل البشرة وتخطيط العلاج' },
+      { step: 2, title: 'التنظيف', desc: 'إزالة المكياج وتحضير البشرة' },
+      { step: 3, title: 'التخدير', desc: 'تطبيق كريم مخدر عند الحاجة' },
+      { step: 4, title: 'العلاج', desc: 'شد بتقنية الترددات الراديوية RF' },
+      { step: 5, title: 'الرعاية بعد العلاج', desc: 'تهدئة المنطقة وشرح الرعاية اللاحقة' },
+    ],
+    faqs: [
+      {
+        q: 'ما الفرق بين دنسيتي (Densiti) وألثرابي برايم وثيرماج؟',
+        shortA: 'دنسيتي جهاز RF اقتصادي للبدء بإدارة الشد.',
+        a: 'ينتمي دنسيتي إلى فئة الشد بالترددات الراديوية (RF) مثل ثيرماج، لكنه يُقدّم سعراً أكثر معقولية وألماً أقل، مما يجعله مناسباً للبدء بإدارة الشد. وعند دمجه مع أجهزة HIFU مثل ألثرابي برايم أو شورينك، يُحقق علاجاً مُركباً للمرونة عبر طبقات متعددة.',
+      },
+      {
+        q: 'ما هو الفاصل الزمني المُوصى به بين العلاجات؟',
+        shortA: 'يُوصى بفاصل 3-6 أشهر.',
+        a: 'يُوصى عادةً بجلسة كل 3-6 أشهر، مع تعديلها حسب حالة البشرة.',
+      },
+    ],
+  },
+  inmode: {
+    targetAreas: ['تحت الذقن', 'الخدود', 'كنتور الوجه', 'الذقن المزدوج', 'الخدود العميقة'],
+    idealFor: [
+      'الراغبون في تقليل دهون الذقن وتعزيز المرونة',
+      'الراغبون في تحسين شد الخدود وكنتور الوجه',
+      'الراغبون في تحسين الذقن المزدوج والخدود العميقة',
+      'الراغبون في تعزيز تجدد الكولاجين وتحسين الخطوط الدقيقة',
+    ],
+    cautions: [
+      'قد يظهر تورم خفيف أو احمرار بعد العلاج',
+      'يتطلب استشارة حسب حالة البشرة للتأكد من الأهلية',
+      'غير مناسب للحوامل أو المرضعات',
+    ],
+    duration: '30-60 دقيقة',
+    anesthesia: 'بدون تخدير أو كريم مخدر',
+    recovery: 'العودة الفورية إلى الحياة اليومية',
+    results: 'مرونة فورية + تجدد تدريجي للكولاجين',
+    process: [
+      { step: 1, title: 'الاستشارة', desc: 'تحليل حالة البشرة واختيار القطعة المناسبة' },
+      { step: 2, title: 'التنظيف', desc: 'إزالة المكياج وتحضير البشرة' },
+      { step: 3, title: 'التخدير', desc: 'تخدير موضعي حسب نوع العلاج' },
+      { step: 4, title: 'العلاج', desc: 'علاج مخصص بالقطعة المختارة' },
+      { step: 5, title: 'الرعاية بعد العلاج', desc: 'تهدئة المنطقة وشرح الرعاية اللاحقة' },
+    ],
+    faqs: [
+      {
+        q: 'لمن يُناسب علاج إن مود (InMode)؟',
+        shortA: 'للأشخاص الذين يعانون من دهون وجهية وترهل جلدي مُجتمعَين.',
+        a: 'يُوصى به للمرضى الذين يعانون من زيادة دهون الوجه وترهل الجلد معاً. يُحفّز InMode طبقة الدهون والأدمة معاً، مُحققاً تأثيراً مزدوجاً للشد وتنحيف الوجه.',
+      },
+      {
+        q: 'هل دمجه مع ثيرماج يُعطي نتائج أفضل؟',
+        shortA: 'نعم، التآزر بين تقنيتي RF يُحسّن المرونة بشكل أكبر.',
+        a: 'نعم، دمج إن مود مع ثيرماج يُحقق تحسناً أكبر في المرونة بفضل تآزر تقنيتي الترددات الراديوية.',
+      },
+    ],
+  },
+  shurink: {
+    targetAreas: ['الجبهة', 'محيط العين', 'الخدود', 'خط الفك', 'الرقبة'],
+    idealFor: [
+      'الذين يخضعون لعلاج شد لأول مرة',
+      'الراغبون في علاج قصير المدة',
+      'الباحثون عن شد بسعر معقول',
+      'الراغبون في الصيانة الدورية',
+    ],
+    cautions: [
+      'قد يظهر احمرار خفيف بعد العلاج',
+      'يتطلب استشارة مسبقة لأصحاب البشرة الحساسة',
+      'غير مناسب للحوامل أو المرضعات',
+    ],
+    duration: '30-45 دقيقة',
+    anesthesia: 'كريم مخدر (اختياري)',
+    recovery: 'العودة الفورية إلى الحياة اليومية',
+    results: 'تظهر النتائج الأولى بعد 2-4 أسابيع، وتصل الذروة في 3 أشهر',
+    process: [
+      { step: 1, title: 'الاستشارة', desc: 'تحليل البشرة وتخطيط العلاج' },
+      { step: 2, title: 'التنظيف', desc: 'إزالة المكياج وتحضير البشرة' },
+      { step: 3, title: 'التخدير', desc: 'كريم مخدر اختياري' },
+      { step: 4, title: 'العلاج', desc: 'اختيار القطعة المناسبة لكل منطقة' },
+      { step: 5, title: 'الرعاية بعد العلاج', desc: 'تهدئة المنطقة وشرح الرعاية اللاحقة' },
+    ],
+    faqs: [
+      {
+        q: 'ما الفرق بين ألثرابي برايم وشورينك (Shurink)؟',
+        shortA: 'كلاهما HIFU، لكن شورينك يُقدّم قيمة أفضل للصيانة.',
+        a: 'يعتمد كلاهما على تقنية HIFU. يتميز ألثرابي برايم بتقنية الرؤية DeepSEE ويصل إلى طبقات أعمق، بينما شورينك أسرع وبسعر معقول، مناسب للإدارة الدورية.',
+      },
+      {
+        q: 'ما هو دورة العلاج؟',
+        shortA: 'فاصل 3-6 أشهر، مناسب للعلاج التحفيظي.',
+        a: 'يُوصى عادةً بجلسة كل 3-6 أشهر. يُعدّ شورينك أيضاً مناسباً كعلاج صيانة بين جلسات ألثرابي برايم أو ثيرماج.',
+      },
+    ],
+  },
+  thread: {
+    targetAreas: ['الخدود', 'الخطوط الأنفية الشفوية', 'خط الفك', 'الرقبة'],
+    idealFor: [
+      'الراغبون في تأثير شد فوري',
+      'الراغبون في تحسين ترهل الوجه',
+      'الباحثون عن كنتور على شكل V',
+      'الراغبون في الشد وتحفيز الكولاجين معاً',
+    ],
+    cautions: [
+      'قد يظهر تورم أو كدمات بعد العلاج',
+      'يجب تجنب التعابير المُفرطة والتدليك لمدة 1-2 أسبوع',
+      'غير مناسب للحوامل أو المرضعات',
+    ],
+    duration: '30-60 دقيقة',
+    anesthesia: 'تخدير موضعي',
+    recovery: '1-7 أيام (حسب المنطقة)',
+    results: 'شد فوري + تحفيز الكولاجين على مدى 6-12 شهراً',
+    process: [
+      { step: 1, title: 'الاستشارة', desc: 'تحليل درجة الترهل وتصميم الهدف' },
+      { step: 2, title: 'التخدير', desc: 'تخدير موضعي' },
+      { step: 3, title: 'التصميم', desc: 'رسم اتجاه الخيوط' },
+      { step: 4, title: 'العلاج', desc: 'الشد بخيوط قابلة للذوبان' },
+      { step: 5, title: 'الرعاية بعد العلاج', desc: 'الضغط لوقف النزيف وشرح الرعاية اللاحقة' },
+    ],
+    faqs: [
+      {
+        q: 'كم تدوم نتائج شد الخيوط (Thread lifting)؟',
+        shortA: 'تأثير الشد يدوم 6-12 شهراً، وتحفيز الكولاجين أطول.',
+        a: 'يدوم تأثير الشد عادةً 6-12 شهراً. وبعد ذوبان الخيوط، يستمر تأثير تحفيز الكولاجين لفترة أطول.',
+      },
+      {
+        q: 'هل يوجد إحساس بجسم غريب بعد العلاج؟',
+        shortA: 'إحساس طفيف في البداية، يختفي خلال 2-4 أسابيع.',
+        a: 'قد يظهر إحساس طفيف بجسم غريب في الأيام الأولى، ويختفي تدريجياً خلال 2-4 أسابيع، مما يُعيد الإحساس الطبيعي.',
+      },
+    ],
+  },
+};
+
 const MAPS: Partial<Record<Locale, LocaleMap>> = {
   ko: {}, // ko uses constants.ts as-is
   en: EN,
@@ -592,6 +1306,10 @@ const MAPS: Partial<Record<Locale, LocaleMap>> = {
   vi: {},
   th: {},
   ru: {},
+  // i18n-treatments-fr-mn-ar (2026-05-11): 6 lifting treatments per locale. Antiaging uses messages/*.json directly.
+  fr: FR,
+  mn: MN,
+  ar: AR,
 };
 
 /**
@@ -629,6 +1347,42 @@ export const RELATED_TREATMENTS_L10N: Partial<Record<Locale, Record<string, { na
     laser: { name: '激光中心', desc: '多种激光治疗提升肌肤状态' },
   },
   ja: {},
+  fr: {
+    ulthera: { name: 'Ultherapy Prime', desc: 'Standard mondial du lifting HIFU, approuvé par la FDA américaine et la KFDA' },
+    thermage: { name: 'Thermage FLX', desc: 'Le summum reconnu mondialement du lifting par radiofréquence' },
+    shurink: { name: 'Shurink Universe', desc: 'Soin d\'élasticité ultrasonique au rapport qualité-prix raisonnable' },
+    thread: { name: 'Lifting par fils', desc: 'Lifting en V avec fils résorbables' },
+    inmode: { name: 'InMode', desc: 'Réduction de graisse et lifting simultanés grâce à l\'énergie RF' },
+    density: { name: 'Densiti', desc: 'Lifting uniforme et lisse grâce à l\'énergie RF haute fréquence' },
+    botox: { name: 'Botox', desc: 'Amélioration naturelle des rides et affinage du contour' },
+    filler: { name: 'Acide hyaluronique', desc: 'Volume naturel par injection d\'acide hyaluronique' },
+    skinbooster: { name: 'Skinbooster', desc: 'Injection dermique pour hydratation, régénération et élasticité' },
+    laser: { name: 'Centre laser', desc: 'Diverses thérapies laser pour améliorer l\'état de la peau' },
+  },
+  mn: {
+    ulthera: { name: 'Ultherapy Prime (Ультерапи Прайм)', desc: 'АНУ-ын FDA болон Солонгосын KFDA-ээс зөвшөөрөгдсөн HIFU лифтингийн дэлхийн стандарт' },
+    thermage: { name: 'Thermage FLX (Термаж FLX)', desc: 'Радио давтамжийн лифтингийн дэлхийн нэр хүндтэй шилдэг бүтээгдэхүүн' },
+    shurink: { name: 'Shurink Universe (Шүрэнк Юниверс)', desc: 'Хүртээмжтэй үнэтэй ультра-авианы уян хатан эмчилгээ' },
+    thread: { name: 'Утсан лифтинг (Thread lifting)', desc: 'Шингээгдэх утсаар V-хэлбэрийн лифтинг' },
+    inmode: { name: 'InMode (ИнМоуд)', desc: 'RF энергийг ашиглан өөхний бууралт болон лифтингийг нэгэн зэрэг' },
+    density: { name: 'Densiti (Денсити)', desc: 'Өндөр давтамжийн (RF) энергийг ашиглан тэгш гөлгөр лифтинг' },
+    botox: { name: 'Ботокс (Botox)', desc: 'Үрчлээний байгалийн сайжралт ба контур засвар' },
+    filler: { name: 'Филлер (Filler)', desc: 'Гиалуроны хүчилээр байгалийн эзлэхүүн' },
+    skinbooster: { name: 'Скинбүүстер (Skinbooster)', desc: 'Чийгшил, сэргэлт, уян хатан байдлыг сайжруулах дермисийн тарилга' },
+    laser: { name: 'Лазер төв (Laser Center)', desc: 'Арьсны төлөв сайжруулах олон төрлийн лазер эмчилгээ' },
+  },
+  ar: {
+    ulthera: { name: 'ألثرابي برايم (Ultherapy Prime)', desc: 'المعيار العالمي للشد بتقنية HIFU، معتمد من إدارة الغذاء والدواء الأمريكية والكورية' },
+    thermage: { name: 'ثيرماج FLX (Thermage FLX)', desc: 'الجوهرة المعترف بها عالمياً لشد البشرة بالترددات الراديوية' },
+    shurink: { name: 'شورينك يونيفرس (Shurink Universe)', desc: 'علاج مرونة بالموجات فوق الصوتية بسعر معقول' },
+    thread: { name: 'شد الخيوط', desc: 'شد على شكل V بخيوط قابلة للذوبان' },
+    inmode: { name: 'إن مود (InMode)', desc: 'تقليل الدهون والشد في آن واحد بطاقة الترددات الراديوية' },
+    density: { name: 'دنسيتي (Densiti)', desc: 'شد متجانس وناعم بطاقة الترددات الراديوية العالية' },
+    botox: { name: 'البوتوكس', desc: 'تحسين طبيعي للتجاعيد وتنسيق الكنتور' },
+    filler: { name: 'الفيلر / حمض الهيالورونيك', desc: 'حجم طبيعي بحقن حمض الهيالورونيك' },
+    skinbooster: { name: 'سكين بوستر', desc: 'حقن في الأدمة لتحسين الترطيب والتجديد والمرونة' },
+    laser: { name: 'مركز الليزر', desc: 'علاجات ليزر متنوعة لتحسين حالة البشرة' },
+  },
 };
 
 export function getRelatedTreatmentLabel(
