@@ -1,14 +1,14 @@
 # i18n Tier 2 번역 인계 문서
 
 > **작성일**: 2026-05-11 (최초)
-> **갱신일**: 2026-05-11 (Batch 3, 4, 5a, 5b, 6 추가 진행)
-> **상태**: 진행 중 (9 commits, 4,896 strings 번역 완료)
-> **잔여**: fr 527 / mn 466 / ar 460 keys (~1,500 strings)
+> **갱신일**: 2026-05-11 (Batch 7, 8a, 8b 완료 — Tier 2 종결)
+> **상태**: ✅ **완료** (12 commits, 약 6,758 strings 번역 완료)
+> **잔여**: fr 273 / mn 222 / ar 209 keys — **거의 전부 의도적 영문 유지 (브랜드명/기술약어/지표값)**
 > **목적**: fr/mn/ar locale의 영어 잔존 문자열을 모두 현지어로 번역
 
 ---
 
-## 1. 현재 상태 (master 브랜치, 9 commits push 완료)
+## 1. 현재 상태 (master 브랜치, 12 commits push 완료)
 
 | commit | 내용 | strings |
 |--------|------|---------:|
@@ -21,23 +21,34 @@
 | `b34592a` | Tier 2 batch 5a: treatments.laser.{center, pigmentation, vascular} | 393 |
 | `5ad7cda` | Tier 2 batch 5b: treatments.laser.{skintone, hairRemoval, tattoo} | 498 |
 | `e952713` | Tier 2 batch 6: liftingPage + antiagingPage + laserPage 카테고리 메인 | 588 |
+| `dbfad41` | Tier 2 batch 7: signaturePage + aboutPage + equipmentPage + events | 582 |
+| `5bf4862` | Tier 2 batch 8a: pricing + sections + nav + 자투리 leftovers | 540 |
+| `af8c98f` | Tier 2 batch 8b: treatments + liftingPage + laserPage + 잔여 leftovers | 740 |
 
 **완료 페이지** (3 locale 모두 정상 표시):
 - 홈(`/`), 모든 nav/sections, footer, contact, faq, chat
 - `/lifting` 메인 + 시술 상세 7개 (ulthera, thermage, density, inmode, shurink, thread, aptos)
 - `/antiaging` 메인 + 시술 상세 4개 (botox, filler, skinbooster, skincare)
 - `/laser` 메인 + 시술 상세 6개 (center, pigmentation, vascular, skintone, hairRemoval, tattoo)
-- **= 모든 시술 상세 페이지 + 3개 카테고리 메인 페이지 번역 완료**
+- `/signature` 시그니처 프로그램 페이지 (4 programs: lifting/petit/glow/total)
+- `/about` 브랜드 소개 + `/about/equipment` + `/about/location`
+- `/pricing` 가격표 페이지 (전체 라벨/카테고리/단가)
+- `/events` 이벤트 페이지
+- **= 모든 시술 상세 + 카테고리 메인 + 정적 페이지 번역 완료**
 
-**영어 잔존 페이지**:
-- `/about/equipment`, `/about` 잔여 항목
-- `/signature` 페이지 body
-- `/pricing` 페이지
-- `/events`
+**잔여 키 (의도적 영문 유지)**:
+- 브랜드명: Ultherapy Prime, Thermage FLX, Density, InMode, Shurink, Potenza, Clarity II, Lucas, Ulblanc, Mark VU, CO2 Laser, Sculptra, Juvelook, Xeomin, Allergan, Rejuran, Forma, Morpheus8, FaceTite, APTOS, Spectra XT 등
+- 기술 약어: HIFU, RF, FDA, KFDA, SMAS, PDO, PLLA, PCL 등
+- 지표값: 14M+/14 сая+/14 مليون+, 25%, 93%, 7/sec 등
+- 영어 섹션 라벨 (디자인 의도): LIV Difference, LIV EXCLUSIVE, FAQ, Why Ultherapy Prime?, Ready for Transformation?, ONLY OPTION 등
+- 한국 서비스: Naver Map, Kakao Map, KakaoTalk, LIV TV
+- 의사 이름 (romanized): Sooyoung Kim, Shinhye Cheon, Dr. Sooyoung Kim
+- fr 동음이의: Lifting, Laser, Botox, Filler, Premium (프랑스어에서 동일 표기)
+- → extract 스크립트는 value === en.json 이면 untranslated로 표시하지만, **의미상 번역 완료** 상태
 
 ---
 
-## 2. 잔여 작업 — 권장 batch 순서
+## 2. 작업 이력 (모든 batch 완료)
 
 각 batch별 1 commit씩 처리. 시술명/브랜드명은 영문 유지(Ultherapy/Thermage/Density/InMode/Shurink/Morpheus8/FaceTite/Forma/Sculptra/Juvelook/Potenza/Clarity II/Lucas/Ulblanc/HIFU/RF/FDA/KFDA 등).
 
@@ -51,20 +62,27 @@
 
 ### ~~Batch 6~~ ✅ — page-specific 1 (liftingPage + antiagingPage + laserPage) — 588 strings → `e952713`
 
-### Batch 7 — page-specific 2 (signaturePage + equipmentPage + aboutPage + events) — **~194 keys × 3 = 582 strings**
-- `signaturePage.*` (~62 keys)
-- `equipmentPage.*` (~73 keys)
-- `aboutPage.*` (~31 keys)
-- `events.*` (~28 keys)
+### ~~Batch 7~~ ✅ — page-specific 2 (signaturePage + aboutPage + equipmentPage + events) — 582 strings → `dbfad41`
+- `signaturePage.*` (62 keys): hero, photoComparison, programs (lifting/petit/glow/total), whySignature, comparison, cta
+- `aboutPage.*` (31 keys): hero, philosophy, brandMessage, coreValues, certifications, quickLinks, locationPage
+- `equipmentPage.*` (73 keys): hero, certification, categories, equipment (12 devices), cta, quickLinks
+- `events.*` (28 keys): tabs, status, categories, gallery, meta
 
-### Batch 8 — pricing + 잔여 자투리 — **~333 keys × 3 = ~1,000 strings**
-- `pricing.*` (~89 keys, 라벨/헤더/카테고리/시술명)
-- `treatments.*` 잔여 (~132 keys, lifting/antiaging/laser의 nav/categories/공통 항목)
-- `sections.*` 잔여 (~40 keys)
-- `liftingPage.*` 잔여 (~35 keys, 추가 항목)
-- 기타 자투리 (`nav`, `contact`, `chat`, `common`, `medical`, `trust`, `floatingCta`, etc. ~30 keys)
+### ~~Batch 8a~~ ✅ — pricing + sections + nav + 자투리 — 540 strings → `5bf4862`
+- `pricing.*` (89 keys per locale): 전체 시술별 가격 라벨 (ulthera/thermage/shurink/density/inmode shot 단위, thread/botox 브랜드, filler/skinbooster 용량, dual toning laser, tattoo 제거)
+- `sections.*` (~30 keys): values subtitles, doctor titles, youtube
+- `nav.*` (12 keys for fr): signature/lifting/laser + 브랜드명 nav
+- 브랜드/장비 leftovers + common/chat/medical/trust/floatingCta/aboutPage/equipmentPage/events/categories/treatmentDetail/ui
 
-**잔여 약 527 unique keys (fr) × 3 locale ≈ 1,500 strings (locale별 일부 중복 포함, 의도적 영문 유지 키 제외)**
+### ~~Batch 8b~~ ✅ — treatments + liftingPage + laserPage + 잔여 leftovers — 740 strings → `af8c98f`
+- `treatments.lifting.*` (132 keys): 상세 페이지 라벨, 비교 헤더, 통계, FAQ 섹션 라벨, training certificates
+- `treatments.antiaging.*` (16 keys): botox/filler/skinbooster/skincare 제목 + durations
+- `treatments.laser.*` (24 keys): center, pigmentation/vascular/skintone/hairRemoval/tattoo 상세 라벨, 장비명
+- `liftingPage.*` (35 keys): treatments durations + compare 기술값
+- `laserPage.*` (5 keys): hero + equipment names
+- 브랜드명 leftovers (의도적 영문 유지) 통일
+
+**총 약 6,758 strings 번역 완료 (12 commits)** — Tier 2 작업 종결
 
 ---
 
