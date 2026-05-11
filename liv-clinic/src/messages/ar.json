@@ -559,14 +559,14 @@
       "ulthera": {
         "name": "Ultherapy Prime",
         "fullName": "Ultherapy Prime",
-        "tagline": "The Only FDA-Approved Non-Surgical Lifting",
-        "description": "The world's only FDA-approved non-surgical lifting. Ultrasound energy reaches deep into the SMAS layer for powerful lifting effects.",
+        "tagline": "الشد غير الجراحي الوحيد المعتمد من FDA",
+        "description": "الشد غير الجراحي الوحيد في العالم المعتمد من FDA. تصل طاقة الموجات فوق الصوتية إلى عمق طبقة SMAS لتأثير شد قوي.",
         "detail": {
           "skinLayers": {
-            "epidermis": "Epidermis",
-            "upperDermis": "Upper Dermis",
-            "lowerDermis": "Lower Dermis",
-            "smas": "SMAS Layer"
+            "epidermis": "البشرة",
+            "upperDermis": "الأدمة العلوية",
+            "lowerDermis": "الأدمة السفلية",
+            "smas": "طبقة SMAS"
           },
           "timeline": {
             "items": [
@@ -596,13 +596,13 @@
                 "desc": "Gradual Maintenance"
               }
             ],
-            "note": "After Ultherapy Prime, collagen regenerates and results gradually appear"
+            "note": "بعد Ultherapy Prime، يتجدد الكولاجين وتظهر النتائج تدريجياً"
           },
           "comparison": {
-            "title": "Ultherapy Prime vs Other Devices",
-            "subtitle": "Even among HIFU devices, there are significant differences in technology and clinical evidence",
+            "title": "Ultherapy Prime مقابل الأجهزة الأخرى",
+            "subtitle": "حتى بين أجهزة HIFU، توجد فروقات كبيرة في التقنية والأدلة السريرية",
             "headers": {
-              "feature": "Feature",
+              "feature": "الميزة",
               "ulthera": "Ultherapy Prime",
               "shurink": "Shurink/Doublo",
               "thermage": "Thermage"
@@ -652,19 +652,19 @@
               }
             ],
             "synergy": {
-              "title": "Ultherapy Prime + Thermage Synergy",
-              "description": "Combining Ultherapy Prime (SMAS layer lifting) with Thermage (epidermis-dermis elasticity) at 3-month intervals creates a powerful multi-layer collagen regeneration synergy."
+              "title": "تآزر Ultherapy Prime + Thermage",
+              "description": "الجمع بين Ultherapy Prime (شد طبقة SMAS) و Thermage (مرونة الأدمة-البشرة) بفواصل 3 أشهر يخلق تآزراً قوياً لتجديد الكولاجين متعدد الطبقات."
             }
           },
           "transducers": {
-            "title": "6 Specialized Transducers",
-            "subtitle": "Six transducers with different depths and frequencies enable customized treatment for each skin layer",
-            "shallow": "Shallow (1.5mm - 3.0mm)",
-            "deep": "Deep (3.0mm - 4.5mm)",
-            "energyDelivery": " delivers energy precisely",
+            "title": "6 محولات متخصصة",
+            "subtitle": "ستة محولات بأعماق وترددات مختلفة تتيح علاجاً مخصصاً لكل طبقة من البشرة",
+            "shallow": "سطحي (1.5 مم - 3.0 مم)",
+            "deep": "عميق (3.0 مم - 4.5 مم)",
+            "energyDelivery": " يوصل الطاقة بدقة",
             "items": {
               "ds-10-1_5": {
-                "target": "Epidermis-Dermis Junction",
+                "target": "ملتقى البشرة-الأدمة",
                 "applications": [
                   "Fine Lines",
                   "Eye Area",
@@ -673,7 +673,7 @@
                 ]
               },
               "ds-10-1_5-n": {
-                "target": "Narrow Areas",
+                "target": "المناطق الضيقة",
                 "applications": [
                   "Eye Wrinkles",
                   "Under Eye",
@@ -681,7 +681,7 @@
                 ]
               },
               "ds-7-3_0": {
-                "target": "Lower Dermis",
+                "target": "الأدمة السفلية",
                 "applications": [
                   "Cheeks",
                   "Forehead",
@@ -690,7 +690,7 @@
                 ]
               },
               "ds-7-3_0-n": {
-                "target": "Narrow Dermis",
+                "target": "الأدمة الضيقة",
                 "applications": [
                   "Eye Wrinkles",
                   "Mouth Area",
@@ -698,7 +698,7 @@
                 ]
               },
               "ds-4-4_5": {
-                "target": "SMAS Layer",
+                "target": "طبقة SMAS",
                 "applications": [
                   "Mid-face",
                   "Lower Face",
@@ -707,7 +707,7 @@
                 ]
               },
               "ds-7-4_5": {
-                "target": "High-Resolution SMAS",
+                "target": "SMAS عالي الدقة",
                 "applications": [
                   "Jawline",
                   "Double Chin",
@@ -717,114 +717,114 @@
             }
           },
           "hero": {
-            "badge": "The Only FDA-Approved Lifting Device",
-            "premiumLifting": "Premium Lifting",
+            "badge": "الجهاز الوحيد للشد المعتمد من FDA",
+            "premiumLifting": "شد بريميوم",
             "title": "Ultherapy Prime",
-            "description": "The only non-invasive lifting that reaches the deep SMAS layer.\nPrecise and safe with real-time DeepSEE visualization technology.",
+            "description": "الشد غير الجراحي الوحيد الذي يصل إلى طبقة SMAS العميقة.\nدقيق وآمن مع تقنية الرؤية DeepSEE في الوقت الفعلي.",
             "stats": {
-              "clinicalStudies": "Clinical Studies",
-              "globalProcedures": "Global Procedures",
-              "improvementRate": "Improvement Rate"
+              "clinicalStudies": "الدراسات السريرية",
+              "globalProcedures": "الإجراءات العالمية",
+              "improvementRate": "معدل التحسن"
             },
-            "deepSee": "Real-time Visualization",
-            "smasTarget": "Deep Layer Targeting"
+            "deepSee": "الرؤية في الوقت الفعلي",
+            "smasTarget": "استهداف الطبقات العميقة"
           },
           "about": {
-            "sectionLabel": "About Ultherapy Prime",
-            "title": "What is Ultherapy Prime?",
-            "description": "Ultherapy Prime is the <strong>only</strong> non-invasive HIFU device with FDA-approved lifting efficacy. Its patented MFU-V (Micro-focused Ultrasound with Visualization) technology precisely delivers energy to the deep SMAS layer to stimulate collagen regeneration.",
-            "depthTargeting": "Customized Depth Targeting",
+            "sectionLabel": "حول Ultherapy Prime",
+            "title": "ما هو Ultherapy Prime؟",
+            "description": "Ultherapy Prime هو جهاز HIFU غير الجراحي <strong>الوحيد</strong> الحاصل على اعتماد FDA لفعالية الشد. تقنيته المسجلة MFU-V (الموجات فوق الصوتية المركزة الدقيقة بالرؤية) توصل الطاقة بدقة إلى طبقة SMAS العميقة لتحفيز تجديد الكولاجين.",
+            "depthTargeting": "استهداف عمق مخصص",
             "depths": {
               "1_5": {
-                "title": "1.5mm - Epidermis/Dermis Junction",
-                "description": "Effective for fine lines and skin texture. Applied to delicate areas like eye and mouth areas"
+                "title": "1.5 مم - ملتقى البشرة/الأدمة",
+                "description": "فعّال للخطوط الدقيقة وملمس البشرة. يُطبق على المناطق الحساسة مثل محيط العين والفم"
               },
               "3_0": {
-                "title": "3.0mm - Lower Dermis",
-                "description": "Collagen induction and overall elasticity improvement. Applied to larger areas like cheeks and forehead"
+                "title": "3.0 مم - الأدمة السفلية",
+                "description": "تحفيز الكولاجين وتحسين المرونة الإجمالية. يُطبق على المناطق الأكبر مثل الخدود والجبهة"
               },
               "4_5": {
-                "title": "4.5mm - SMAS Layer",
-                "description": "Structural lifting effect. Applied to areas with severe sagging like jawline, neck, and mid-face"
+                "title": "4.5 مم - طبقة SMAS",
+                "description": "تأثير شد بنيوي. يُطبق على المناطق ذات الترهل الشديد مثل خط الفك والرقبة ووسط الوجه"
               }
             }
           },
           "whyUlthera": {
-            "sectionLabel": "Premium Quality",
+            "sectionLabel": "جودة بريميوم",
             "labelEn": "Why Ultherapy Prime?",
-            "title": "Why Ultherapy Prime?",
+            "title": "لماذا Ultherapy Prime؟",
             "cards": {
               "fda": {
-                "title": "Only FDA Approved",
-                "description": "The <strong>only</strong> HIFU device with FDA approval for non-invasive lifting efficacy."
+                "title": "الوحيد المعتمد من FDA",
+                "description": "جهاز HIFU <strong>الوحيد</strong> الحاصل على اعتماد FDA لفعالية الشد غير الجراحي."
               },
               "deepSee": {
-                "title": "DeepSEE Visualization",
-                "description": "Patented DeepSEE technology allows <strong>real-time visualization</strong> of skin layers during treatment."
+                "title": "رؤية DeepSEE",
+                "description": "تقنية DeepSEE المسجلة تتيح <strong>الرؤية في الوقت الفعلي</strong> لطبقات البشرة أثناء العلاج."
               },
               "smas": {
-                "title": "SMAS Layer Targeting",
-                "description": "The only non-invasive device that <strong>reaches the SMAS layer</strong>, the same target as surgical facelifts."
+                "title": "استهداف طبقة SMAS",
+                "description": "الجهاز غير الجراحي الوحيد الذي <strong>يصل إلى طبقة SMAS</strong>، نفس الهدف الذي تستهدفه عمليات شد الوجه الجراحية."
               }
             },
             "clinicalEvidence": {
-              "label": "Clinical Evidence",
-              "papers": "Clinical Research Papers",
-              "aestheticImprovement": "Aesthetic Improvement",
-              "satisfaction": "Patient Satisfaction",
-              "duration": "Effect Duration",
-              "source": "Source: 2024 Systematic Review and Meta-analysis (PubMed)"
+              "label": "الأدلة السريرية",
+              "papers": "الأبحاث السريرية المنشورة",
+              "aestheticImprovement": "التحسن الجمالي",
+              "satisfaction": "رضا المرضى",
+              "duration": "مدة التأثير",
+              "source": "المصدر: مراجعة منهجية وتحليل تلوي 2024 (PubMed)"
             }
           },
           "livDifference": {
-            "sectionLabel": "LIV Clinic",
+            "sectionLabel": "عيادة LIV",
             "labelEn": "LIV Difference",
-            "title": "Ultherapy Prime at LIV",
+            "title": "Ultherapy Prime في LIV",
             "cards": {
               "genuine": {
-                "title": "Certified Genuine Clinic",
-                "description": "Official Merz Korea certified clinic using only genuine equipment and transducers. Serial number verification available."
+                "title": "عيادة معتمدة بأجهزة أصلية",
+                "description": "عيادة معتمدة رسمياً من Merz Korea تستخدم فقط الأجهزة والمحولات الأصلية. التحقق من الرقم التسلسلي متاح."
               },
               "transparency": {
-                "title": "Transparent Shot Count",
-                "description": "We transparently disclose planned line counts and actual shots delivered. We promise honest treatment."
+                "title": "عدد shots شفاف",
+                "description": "نكشف بشفافية عن أعداد الخطوط المخططة و shots المُسلَّمة فعلياً. نعد بعلاج صادق."
               },
               "specialist": {
-                "title": "Specialist Direct Treatment",
-                "description": "Board-certified dermatologist/plastic surgeon conducts consultations and treatments directly. Personalized treatment plans for each patient."
+                "title": "علاج مباشر من اختصاصي",
+                "description": "طبيب أمراض جلدية/جراح تجميل معتمد يجري الاستشارات والعلاجات مباشرة. خطط علاج شخصية لكل مريض."
               }
             }
           },
           "journey": {
-            "sectionLabel": "Journey",
-            "title": "Treatment Journey"
+            "sectionLabel": "الرحلة",
+            "title": "رحلة العلاج"
           },
           "treatmentInfo": {
-            "sectionLabel": "Details",
+            "sectionLabel": "التفاصيل",
             "labelEn": "Treatment Info",
-            "title": "Treatment Information",
+            "title": "معلومات العلاج",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Effect Duration"
+              "duration": "مدة العلاج",
+              "anesthesia": "التخدير",
+              "recovery": "فترة التعافي",
+              "results": "مدة التأثير"
             },
             "recommendedLines": {
-              "title": "Recommended Lines by Area",
-              "upperFace": "Upper Face",
-              "lowerFace": "Lower Face",
-              "fullFace": "Full Face",
-              "fullFaceNeck": "Full Face + Neck"
+              "title": "الخطوط الموصى بها لكل منطقة",
+              "upperFace": "الوجه العلوي",
+              "lowerFace": "الوجه السفلي",
+              "fullFace": "الوجه بأكمله",
+              "fullFaceNeck": "الوجه بأكمله + الرقبة"
             }
           },
           "detailedInfo": {
-            "title": "Detailed Information"
+            "title": "معلومات تفصيلية"
           },
           "faq": {
-            "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreButton": " more",
-            "medicalQaLink": "View More Medical Q&A",
+            "sectionLabel": "الأسئلة الشائعة",
+            "title": "الأسئلة الشائعة",
+            "moreButton": " المزيد",
+            "medicalQaLink": "عرض المزيد من الأسئلة الطبية",
             "extended": [
               {
                 "q": "Can I return to daily activities immediately after Ultherapy Prime?",
@@ -842,27 +842,27 @@
           },
           "cta": {
             "labelEn": "Ready for Transformation?",
-            "title": "Book Ultherapy Prime Consultation",
-            "description": "Through 1:1 personalized consultation with our specialists,\nestablish the optimal treatment plan tailored to you.",
-            "bookButton": "Book Free Consultation",
-            "hours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "title": "احجز استشارة Ultherapy Prime",
+            "description": "من خلال استشارة شخصية مع اختصاصيينا،\nضع خطة العلاج المثلى المخصصة لك.",
+            "bookButton": "احجز استشارة مجانية",
+            "hours": "الإثنين-الجمعة 10:00-19:00",
+            "location": "3 دقائق سيراً من مخرج 4 محطة Sinsa"
           },
           "related": {
             "labelEn": "Related Treatments",
-            "title": "Related Treatments"
+            "title": "علاجات ذات صلة"
           }
         },
         "ui": {
-          "comparisonTitle": "Ulthera Prime vs Other Devices",
-          "comparisonSubtitle": "Even HIFU devices differ greatly in technology and clinical evidence"
+          "comparisonTitle": "Ultherapy Prime مقابل الأجهزة الأخرى",
+          "comparisonSubtitle": "حتى أجهزة HIFU تختلف بشكل كبير في التقنية والأدلة السريرية"
         }
       },
       "thermage": {
         "name": "Thermage FLX",
         "fullName": "Thermage FLX",
-        "tagline": "RF Skin Tightening Solution",
-        "description": "4th generation Thermage FLX offers 25% faster treatment while promoting comprehensive collagen regeneration.",
+        "tagline": "حل شد البشرة بالترددات الراديوية",
+        "description": "Thermage FLX من الجيل الرابع يقدم علاجاً أسرع بنسبة 25٪ مع تعزيز تجديد الكولاجين الشامل.",
         "detail": {
           "heroLabels": [
             {
@@ -897,10 +897,10 @@
             }
           ],
           "skinLayers": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "subcutaneous": "Subcutaneous Fat",
-            "fascia": "Fascia"
+            "epidermis": "البشرة",
+            "dermis": "الأدمة",
+            "subcutaneous": "الدهون تحت الجلد",
+            "fascia": "اللفافة"
           },
           "timeline": {
             "items": [
@@ -932,13 +932,13 @@
             ]
           },
           "comparison": {
-            "title": "Thermage Generation Comparison",
-            "subtitle": "4th generation FLX features dramatically improved technology over previous generations",
+            "title": "مقارنة أجيال Thermage",
+            "subtitle": "يتميز الجيل الرابع FLX بتقنية مُحسَّنة بشكل كبير مقارنة بالأجيال السابقة",
             "headers": {
-              "feature": "Feature",
-              "flx": "FLX (4th Gen)",
-              "cpt": "CPT (3rd Gen)",
-              "nxt": "NXT (2nd Gen)"
+              "feature": "الميزة",
+              "flx": "FLX (الجيل الرابع)",
+              "cpt": "CPT (الجيل الثالث)",
+              "nxt": "NXT (الجيل الثاني)"
             },
             "rows": [
               {
@@ -980,8 +980,8 @@
             ]
           },
           "tips": {
-            "title": "Customized Tips by Area",
-            "subtitle": "Various tip sizes allow optimized treatment for each area",
+            "title": "أطراف مخصصة حسب المنطقة",
+            "subtitle": "أحجام أطراف متنوعة تتيح علاجاً مُحسَّناً لكل منطقة",
             "items": [
               {
                 "shots": "600",
@@ -996,30 +996,30 @@
             ]
           },
           "hero": {
-            "badge": "4th Gen Premium RF",
+            "badge": "RF بريميوم الجيل الرابع",
             "title": "Thermage FLX",
-            "description": "AccuREP technology automatically adjusts optimal energy for your skin condition.<br />Vibration technology reduces pain while enhancing results.",
+            "description": "تقنية AccuREP تُعدِّل الطاقة المُثلى تلقائياً وفقاً لحالة بشرتك.<br />تقنية الاهتزاز تُقلل الألم وتُعزز النتائج.",
             "stats": {
               "treatments": {
                 "value": "14M+",
-                "label": "Global Treatments"
+                "label": "العلاجات العالمية"
               },
               "time": {
                 "value": "25%",
-                "label": "Reduced Treatment Time"
+                "label": "تقليل وقت العلاج"
               },
               "satisfaction": {
                 "value": "93%",
-                "label": "Patient Satisfaction"
+                "label": "رضا المرضى"
               }
             }
           },
           "about": {
-            "sectionLabel": "About Thermage",
-            "title": "What is Thermage FLX?",
-            "description": "Thermage FLX is the global No.1 RF lifting device with <strong>over 14 million treatments worldwide</strong>. The patented AccuREP technology measures skin impedance in real-time to automatically adjust optimal energy, improving skin elasticity through collagen contraction and regeneration.",
+            "sectionLabel": "حول Thermage",
+            "title": "ما هو Thermage FLX؟",
+            "description": "Thermage FLX هو الجهاز رقم 1 عالمياً في الشد بالترددات الراديوية مع <strong>أكثر من 14 مليون علاج حول العالم</strong>. تقنية AccuREP المسجلة تقيس مقاومة البشرة في الوقت الفعلي لتعديل الطاقة المثلى تلقائياً، مما يحسن مرونة البشرة عبر انكماش وتجديد الكولاجين.",
             "rfPrinciple": {
-              "title": "RF Energy Principle",
+              "title": "مبدأ طاقة RF",
               "steps": [
                 {
                   "num": "1",
@@ -1038,55 +1038,55 @@
                 }
               ]
             },
-            "temperature": "65-75°C",
-            "collagenLabel": "Collagen Contraction & Regeneration"
+            "temperature": "65-75 درجة مئوية",
+            "collagenLabel": "انكماش وتجديد الكولاجين"
           },
           "whyThermage": {
-            "sectionLabel": "Why Thermage FLX?",
-            "title": "Why Choose Thermage FLX?",
+            "sectionLabel": "لماذا Thermage FLX؟",
+            "title": "لماذا تختار Thermage FLX؟",
             "cards": {
               "accuRep": {
-                "title": "AccuREP Technology",
-                "desc": "<strong>Real-time measurement</strong> of skin impedance automatically adjusts optimal energy for each area. Ensures uniform and safe treatment results."
+                "title": "تقنية AccuREP",
+                "desc": "<strong>قياس فوري</strong> لمقاومة البشرة يُعدِّل الطاقة المثلى تلقائياً لكل منطقة. يضمن نتائج علاج موحدة وآمنة."
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
-                "desc": "Patented vibration technology <strong>minimizes pain</strong> during treatment. Comfortable treatment possible without anesthesia."
+                "desc": "تقنية الاهتزاز المسجلة <strong>تُقلل الألم</strong> أثناء العلاج. علاج مريح ممكن بدون تخدير."
               },
               "collagenRemodeling": {
-                "title": "Collagen Remodeling",
-                "desc": "<strong>Immediate contraction effect</strong> after treatment, followed by gradual elasticity improvement through new collagen production over 3-6 months."
+                "title": "إعادة تشكيل الكولاجين",
+                "desc": "<strong>تأثير انكماش فوري</strong> بعد العلاج، يتبعه تحسن تدريجي للمرونة عبر إنتاج كولاجين جديد خلال 3-6 أشهر."
               }
             },
             "globalTrust": {
-              "title": "Global Trust",
+              "title": "ثقة عالمية",
               "treatments": {
                 "value": "14M+",
-                "label": "Global Treatments"
+                "label": "العلاجات العالمية"
               },
               "satisfaction": {
                 "value": "93%",
-                "label": "Patient Satisfaction"
+                "label": "رضا المرضى"
               },
               "time": {
                 "value": "25%",
-                "label": "Reduced Treatment Time"
+                "label": "تقليل وقت العلاج"
               },
               "duration": {
-                "value": "1 Year+",
-                "label": "Effect Duration"
+                "value": "1 سنة+",
+                "label": "مدة التأثير"
               },
-              "source": "Source: Solta Medical Official Clinical Data"
+              "source": "المصدر: بيانات سريرية رسمية من Solta Medical"
             }
           },
           "tipsSection": {
-            "sectionLabel": "Treatment Tips",
-            "title": "Customized Tips by Area",
-            "subtitle": "Various tip sizes allow optimized treatment for each area",
+            "sectionLabel": "أطراف العلاج",
+            "title": "أطراف مخصصة حسب المنطقة",
+            "subtitle": "أحجام أطراف متنوعة تتيح علاجاً مُحسَّناً لكل منطقة",
             "eye": {
               "sectionLabel": "Thermage Eye",
               "title": "Thermage Eye",
-              "desc": "The dedicated Total Tip for eyes effectively improves eyelid sagging, under-eye wrinkles, and crow's feet. Eye skin is thin and sensitive, requiring delicate treatment with a dedicated tip.",
+              "desc": "Total Tip المخصص للعينين يُحسِّن بفعالية ترهل الجفون والتجاعيد تحت العينين وخطوط أقدام الغراب. بشرة العين رقيقة وحساسة، وتتطلب علاجاً دقيقاً بطرف مخصص.",
               "benefits": [
                 "Eyelid elasticity improvement",
                 "Under-eye wrinkle reduction",
@@ -1095,67 +1095,67 @@
             }
           },
           "generationCompare": {
-            "sectionLabel": "Generation Comparison",
-            "title": "Thermage Generation Comparison",
-            "subtitle": "4th generation FLX features dramatically improved technology over previous generations"
+            "sectionLabel": "مقارنة الأجيال",
+            "title": "مقارنة أجيال Thermage",
+            "subtitle": "يتميز الجيل الرابع FLX بتقنية مُحسَّنة بشكل كبير مقارنة بالأجيال السابقة"
           },
           "livDifference": {
             "sectionLabel": "LIV Difference",
-            "title": "LIV's Thermage Difference",
+            "title": "تميُّز Thermage في LIV",
             "cards": {
               "genuine": {
-                "title": "Certified Genuine Clinic",
-                "desc": "As an official Solta Medical certified clinic, we only use genuine equipment and tips. Serial number verification and authenticity certificates available."
+                "title": "عيادة معتمدة بأجهزة أصلية",
+                "desc": "كعيادة معتمدة رسمياً من Solta Medical، نستخدم فقط الأجهزة والأطراف الأصلية. التحقق من الرقم التسلسلي وشهادات الأصالة متاحة."
               },
               "transparent": {
-                "title": "Transparent Shot Count",
-                "desc": "We transparently disclose planned and actual shot counts before and after treatment. We promise honest treatment."
+                "title": "عدد shots شفاف",
+                "desc": "نكشف بشفافية عن أعداد shots المخططة والفعلية قبل وبعد العلاج. نعد بعلاج صادق."
               },
               "specialist": {
-                "title": "Specialist Direct Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons conduct consultation through treatment. Personalized treatment plans are established."
+                "title": "علاج مباشر من اختصاصي",
+                "desc": "أطباء أمراض جلدية/جراحو تجميل معتمدون يجرون الاستشارة والعلاج. يتم وضع خطط علاج شخصية."
               }
             }
           },
           "timelineSection": {
-            "sectionLabel": "Results Timeline",
-            "subtitle": "Experience immediate effects and gradual collagen regeneration after Thermage treatment"
+            "sectionLabel": "الجدول الزمني للنتائج",
+            "subtitle": "اختبر التأثيرات الفورية والتجديد التدريجي للكولاجين بعد علاج Thermage"
           },
           "processSection": {
-            "sectionLabel": "Treatment Process"
+            "sectionLabel": "خطوات العلاج"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
+            "sectionLabel": "معلومات العلاج",
+            "title": "معلومات العلاج",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Effect Duration"
+              "duration": "مدة العلاج",
+              "anesthesia": "التخدير",
+              "recovery": "فترة التعافي",
+              "results": "مدة التأثير"
             },
             "recommendedShots": {
-              "title": "Recommended Shots by Area",
+              "title": "Shots الموصى بها حسب المنطقة",
               "fullFace": {
                 "shots": "300-400",
-                "label": "Full Face"
+                "label": "الوجه بأكمله"
               },
               "lowerFace": {
                 "shots": "200-300",
-                "label": "Lower Face"
+                "label": "الوجه السفلي"
               },
               "eye": {
                 "shots": "225",
-                "label": "Eye Area"
+                "label": "محيط العين"
               },
               "fullFaceNeck": {
                 "shots": "500-900",
-                "label": "Full Face + Neck"
+                "label": "الوجه بأكمله + الرقبة"
               }
             }
           },
           "faq": {
-            "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
+            "sectionLabel": "الأسئلة الشائعة",
+            "title": "الأسئلة الشائعة",
             "extendedFaqs": [
               {
                 "q": "Which is better, Thermage or Ultherapy Prime?",
@@ -1170,24 +1170,24 @@
                 "a": "LIV Plastic Surgery is an official Solta Medical certified clinic. You can verify the serial number and actual shot count of genuine tips before treatment, and receive an authenticity certificate after treatment."
               }
             ],
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
+            "moreInfo": "هل تريد المزيد من المعلومات الطبية؟",
+            "viewMedicalQA": "عرض الأسئلة الطبية"
           },
           "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book Thermage Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />establish the optimal treatment plan for you.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "sectionLabel": "هل أنت مستعد للتحول؟",
+            "title": "احجز استشارة Thermage",
+            "description": "من خلال استشارة شخصية مع فريقنا الطبي،<br />ضع خطة العلاج المثلى لك.",
+            "bookConsultation": "احجز استشارة مجانية",
+            "businessHours": "الإثنين-الجمعة 10:00-19:00",
+            "location": "3 دقائق سيراً من مخرج 4 محطة Sinsa"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
+            "sectionLabel": "علاجات ذات صلة",
+            "title": "علاجات ذات صلة"
           }
         },
         "ui": {
-          "collagenShrinkRegen": "Collagen Contraction & Regeneration"
+          "collagenShrinkRegen": "انكماش وتجديد الكولاجين"
         }
       },
       "density": {
