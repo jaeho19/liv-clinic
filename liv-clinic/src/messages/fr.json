@@ -1005,11 +1005,11 @@
                 "label": "Traitements mondiaux"
               },
               "time": {
-                "value": "25%",
+                "value": "25 %",
                 "label": "Temps de traitement réduit"
               },
               "satisfaction": {
-                "value": "93%",
+                "value": "93 %",
                 "label": "Satisfaction des patients"
               }
             }
@@ -1065,11 +1065,11 @@
                 "label": "Traitements mondiaux"
               },
               "satisfaction": {
-                "value": "93%",
+                "value": "93 %",
                 "label": "Satisfaction des patients"
               },
               "time": {
-                "value": "25%",
+                "value": "25 %",
                 "label": "Temps de traitement réduit"
               },
               "duration": {
@@ -1772,7 +1772,7 @@
             "description": "Développé avec la technologie coréenne, Shurink délivre <strong>7 tirs par seconde</strong> grâce à une technologie de tir rapide pour une diffusion d'énergie rapide et uniforme. Plusieurs cartouches permettent un traitement précis et personnalisé à chaque profondeur des couches cutanées.",
             "stats": {
               "speed": {
-                "value": "7/sec",
+                "value": "7/s",
                 "label": "Tirs rapides"
               },
               "time": {
@@ -1846,7 +1846,7 @@
                 "desc": "50 % plus rapide qu'avant"
               },
               "shotsPerSec": {
-                "value": "7/sec",
+                "value": "7/s",
                 "label": "Tirs rapides",
                 "desc": "Diffusion d'énergie uniforme"
               },
@@ -1979,7 +1979,7 @@
               "name": "PDO",
               "fullName": "Polydioxanone",
               "absorptionPeriod": "Absorption : 6-8 mois",
-              "types": "Mono, Cog, Screw",
+              "types": "Mono, Cog, Vis",
               "note": "Le plus utilisé"
             },
             "plla": {
@@ -2504,14 +2504,14 @@
         }
       },
       "filler": {
-        "name": "Filler",
-        "fullName": "Filler",
+        "name": "Acide hyaluronique",
+        "fullName": "Acide hyaluronique",
         "tagline": "Volume et amélioration du contour",
         "description": "Utilisation de fillers à base d'acide hyaluronique pour combler les zones creuses et créer un volume naturel.",
         "detail": {
           "hero": {
             "badge": "Traitement anti-âge",
-            "title": "Filler",
+            "title": "Acide hyaluronique",
             "description": "Utilisation de fillers à base d'acide hyaluronique pour combler les zones creuses et créer un volume naturel."
           },
           "benefits": {
@@ -2958,7 +2958,7 @@
         }
       },
       "skincare": {
-        "name": "Skincare",
+        "name": "Soins de la peau",
         "fullName": "Skincare premium",
         "tagline": "Soins premium réalisés par des esthéticiennes expertes",
         "description": "Un programme de skincare premium réalisé par des esthéticiennes professionnelles, incluant les soins Aqua Tox et Plafill. Soins personnalisés en fonction de votre type de peau et de vos préoccupations pour redonner à votre peau sa santé naturelle.",
@@ -3164,13 +3164,13 @@
     },
     "laser": {
       "center": {
-        "name": "Laser Center",
-        "fullName": "Laser Center",
+        "name": "Centre laser",
+        "fullName": "Centre laser",
         "tagline": "Solution laser globale avancée",
         "description": "Un centre laser premium répondant à diverses préoccupations cutanées, de la pigmentation aux problèmes vasculaires, en passant par la texture de la peau, l'épilation et le détatouage.",
         "detail": {
           "hero": {
-            "title": "Laser Center",
+            "title": "Centre laser",
             "subtitle": "Solutions laser personnalisées pour vos préoccupations cutanées",
             "description": "Combinaison Clarity II + Lucas<br/>Soin tout-en-un, de la pigmentation aux vaisseaux, en passant par l'épilation et le détatouage"
           },
@@ -3462,7 +3462,7 @@
               "downtime": "Temps d'arrêt",
               "sessions": "Nombre de séances requises",
               "relativeLarge": "Relativement grande",
-              "fine": "Fine",
+              "fine": "Fin",
               "exists": "Présents",
               "minimal": "Minimes",
               "almostNone": "Quasi inexistants",
@@ -3924,7 +3924,7 @@
               "pulseTime": "Durée d'impulsion",
               "pulseTimeValue": "2-400 ms",
               "cooling": "Refroidissement",
-              "coolingValue": "Cryogen"
+              "coolingValue": "Cryogène"
             }
           },
           "intellitrakSection": {
@@ -4943,7 +4943,7 @@
   },
   "laserPage": {
     "hero": {
-      "title": "Laser Center",
+      "title": "Centre laser",
       "subtitle": "Solutions laser personnalisées pour vos préoccupations cutanées",
       "description1": "Grâce à la combinaison Clarity II + Lucas,",
       "description2": "soin tout-en-un, de la pigmentation aux vaisseaux, en passant par l'épilation et le détatouage"

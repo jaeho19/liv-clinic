@@ -1001,7 +1001,7 @@
             "description": "تقنية AccuREP تُعدِّل الطاقة المُثلى تلقائياً وفقاً لحالة بشرتك.<br />تقنية الاهتزاز تُقلل الألم وتُعزز النتائج.",
             "stats": {
               "treatments": {
-                "value": "14M+",
+                "value": "14 مليون+",
                 "label": "العلاجات العالمية"
               },
               "time": {
@@ -1061,7 +1061,7 @@
             "globalTrust": {
               "title": "ثقة عالمية",
               "treatments": {
-                "value": "14M+",
+                "value": "14 مليون+",
                 "label": "العلاجات العالمية"
               },
               "satisfaction": {
@@ -1979,7 +1979,7 @@
               "name": "PDO",
               "fullName": "Polydioxanone",
               "absorptionPeriod": "الامتصاص: 6-8 أشهر",
-              "types": "Mono, Cog, Screw",
+              "types": "أحادي، Cog، لولبي",
               "note": "الأكثر استخداماً"
             },
             "plla": {
@@ -2958,7 +2958,7 @@
         }
       },
       "skincare": {
-        "name": "Skincare",
+        "name": "العناية بالبشرة",
         "fullName": "Skincare الفاخر",
         "tagline": "عناية فاخرة بالبشرة تُنجزها أخصائيات تجميل خبيرات",
         "description": "برنامج Skincare فاخر تنفّذه أخصائيات تجميل محترفات، يشمل علاجَي Aqua Tox و Plafill. عناية مخصصة وفق نوع بشرتك ومشكلاتها لاستعادة الصحة الطبيعية للبشرة.",
@@ -3164,13 +3164,13 @@
     },
     "laser": {
       "center": {
-        "name": "Laser Center",
-        "fullName": "Laser Center",
+        "name": "مركز الليزر",
+        "fullName": "مركز الليزر",
         "tagline": "حل ليزر متكامل ومتطور",
         "description": "مركز ليزر فاخر يعالج مختلف مشاكل البشرة من التصبغات، المشكلات الوعائية، ملمس البشرة، إزالة الشعر، إلى إزالة الوشم.",
         "detail": {
           "hero": {
-            "title": "Laser Center",
+            "title": "مركز الليزر",
             "subtitle": "حلول ليزر مخصصة لمشكلات بشرتك",
             "description": "مع دمج Clarity II + Lucas<br/>عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"
           },
@@ -3924,7 +3924,7 @@
               "pulseTime": "مدة النبضة",
               "pulseTimeValue": "2-400 مللي ثانية",
               "cooling": "التبريد",
-              "coolingValue": "Cryogen"
+              "coolingValue": "مبرد كرايوجين"
             }
           },
           "intellitrakSection": {
@@ -4943,7 +4943,7 @@
   },
   "laserPage": {
     "hero": {
-      "title": "Laser Center",
+      "title": "مركز الليزر",
       "subtitle": "حلول ليزر مخصصة لمشكلات بشرتك",
       "description1": "مع دمج Clarity II + Lucas،",
       "description2": "عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"

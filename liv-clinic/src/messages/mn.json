@@ -1001,7 +1001,7 @@
             "description": "AccuREP технологи нь танай арьсны байдалд оновчтой энергийг автоматаар тохируулдаг.<br />Доргионы технологи нь өвдөлтийг бууруулж үр дүнг сайжруулна.",
             "stats": {
               "treatments": {
-                "value": "14M+",
+                "value": "14 сая+",
                 "label": "Дэлхийн эмчилгээ"
               },
               "time": {
@@ -1061,7 +1061,7 @@
             "globalTrust": {
               "title": "Дэлхийн итгэл",
               "treatments": {
-                "value": "14M+",
+                "value": "14 сая+",
                 "label": "Дэлхийн эмчилгээ"
               },
               "satisfaction": {
@@ -1979,7 +1979,7 @@
               "name": "PDO",
               "fullName": "Polydioxanone",
               "absorptionPeriod": "Шингээлт: 6-8 сар",
-              "types": "Mono, Cog, Screw",
+              "types": "Моно, Cog, Шураг",
               "note": "Хамгийн өргөн хэрэглэдэг"
             },
             "plla": {
@@ -2250,7 +2250,7 @@
           "trainingSection": {
             "title": "Олон улсын хэмжээнд баталгаажсан сургалт",
             "description": "LIV-ийн доктор Kim Sooyoung Гүрж улс дахь APTOS төв байранд Professional Course-ыг төгсөж, шинэхэн техникүүдийг эзэмшихийн тулд эмчилгээнд оролцсон.",
-            "certificateTitle": "APTOS Professional Course Certificate",
+            "certificateTitle": "APTOS мэргэжлийн курсын гэрчилгээ",
             "certificateName": "Kim Sooyoung · KR0062025",
             "certificateIssuer": "G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD нараар гэрчлэгдсэн"
           },
@@ -2958,7 +2958,7 @@
         }
       },
       "skincare": {
-        "name": "Skincare",
+        "name": "Арьс арчилгаа",
         "fullName": "Премиум Skincare",
         "tagline": "Мэргэжилтэн гоо сайхны эмчээр гүйцэтгэгдэх премиум арьс арчилгаа",
         "description": "Мэргэжлийн гоо сайхны эмч нараар гүйцэтгэгдэх Aqua Tox болон Plafill эмчилгээг багтаасан премиум арьс арчилгааны хөтөлбөр. Таны арьсны төрөл болон асуудлуудад тохируулсан хувийн арчилгаа нь арьсны байгалийн эрүүл мэндийг сэргээнэ.",
@@ -3164,13 +3164,13 @@
     },
     "laser": {
       "center": {
-        "name": "Laser Center",
-        "fullName": "Laser Center",
+        "name": "Лазер төв",
+        "fullName": "Лазер төв",
         "tagline": "Дэвшилтэт лазерийн иж бүрэн шийдэл",
         "description": "Пигментаци, судасны асуудал, арьсны бүтэц, үс арилгах, шивээс арилгах зэрэг арьсны янз бүрийн асуудлыг шийдэх премиум лазер төв.",
         "detail": {
           "hero": {
-            "title": "Laser Center",
+            "title": "Лазер төв",
             "subtitle": "Таны арьсны асуудалд тохирсон лазерийн шийдэл",
             "description": "Clarity II + Lucas хослолтой<br/>Пигментациас эхлээд судас, үс арилгах, шивээс арилгах хүртэлх нэг цэгийн арчилгаа"
           },
@@ -3924,7 +3924,7 @@
               "pulseTime": "Импульсийн хугацаа",
               "pulseTimeValue": "2-400 мс",
               "cooling": "Хөргөлт",
-              "coolingValue": "Cryogen"
+              "coolingValue": "Криоген"
             }
           },
           "intellitrakSection": {
@@ -4943,7 +4943,7 @@
   },
   "laserPage": {
     "hero": {
-      "title": "Laser Center",
+      "title": "Лазер төв",
       "subtitle": "Таны арьсны асуудалд тохирсон лазерийн шийдэл",
       "description1": "Clarity II + Lucas хослолтой,",
       "description2": "пигментациас эхлээд судас, үс арилгах, шивээс арилгах хүртэлх нэг цэгийн арчилгаа"
