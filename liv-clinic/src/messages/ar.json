@@ -4622,124 +4622,124 @@
   },
   "signaturePage": {
     "hero": {
-      "subtitle": "Signature Program",
-      "title": "Signature Program",
-      "description1": "With LIV Plastic Surgery's premium anti-aging program,",
-      "description2": "experience natural and beautiful transformation."
+      "subtitle": "برنامج Signature",
+      "title": "برنامج Signature",
+      "description1": "مع برنامج مكافحة الشيخوخة الفاخر من عيادة LIV Plastic Surgery،",
+      "description2": "اختبر تحولاً طبيعياً وجميلاً."
     },
     "photoComparison": {
-      "subtitle": "Premium Anti-aging",
-      "title": "Photo-Real Before & After",
-      "description": "Hover over or tap the card to see before and after treatment changes",
-      "viewingDetails": "Viewing details",
-      "clickToViewDetails": "Click to view details",
-      "beforeTreatment": "Before treatment",
-      "afterTreatment": "After treatment"
+      "subtitle": "مكافحة الشيخوخة الفاخرة",
+      "title": "صور واقعية قبل وبعد",
+      "description": "مرر فوق البطاقة أو اضغط عليها لرؤية التغيرات قبل العلاج وبعده",
+      "viewingDetails": "عرض التفاصيل",
+      "clickToViewDetails": "اضغط لعرض التفاصيل",
+      "beforeTreatment": "قبل العلاج",
+      "afterTreatment": "بعد العلاج"
     },
     "programs": {
       "lifting": {
         "title": "LIFTING SIGNATURE",
         "subtitle": "Ultherapy Prime & Thermage",
-        "tagline": "The Pinnacle of Non-Surgical Lifting",
-        "description": "Experience powerful lifting effects that defy gravity with Ultherapy Prime's SMAS lifting and Thermage FLX's collagen remodeling. Lift sagging skin and restore clear, firm facial contours.",
+        "tagline": "ذروة الشدّ غير الجراحي",
+        "description": "اختبر تأثيرات شدّ قوية تتحدى الجاذبية مع شدّ SMAS من Ultherapy Prime وإعادة تشكيل الكولاجين من Thermage FLX. اشدد البشرة المترهلة واستعد ملامح وجه واضحة ومشدودة.",
         "features": [
           "Ultherapy Prime Certified SMAS Lifting",
           "Thermage FLX Collagen Regeneration",
           "Synergistic Combination Treatment"
         ],
-        "duration": "About 2 hours",
-        "recommended": "Sagging skin, loss of elasticity, blurred contours"
+        "duration": "حوالي ساعتين",
+        "recommended": "بشرة مترهلة، فقدان المرونة، ملامح غير واضحة"
       },
       "petit": {
         "title": "PETIT SIGNATURE",
         "subtitle": "Botox & Filler",
-        "tagline": "Delicate Volume and Contour",
-        "description": "Achieve natural volume and wrinkle improvement based on anatomical understanding. From fine wrinkles to volume restoration with delicate procedures pursuing natural beauty.",
+        "tagline": "حجم وملامح دقيقة",
+        "description": "احصل على حجم طبيعي وتحسين للتجاعيد مبني على فهم تشريحي. من التجاعيد الدقيقة إلى استعادة الحجم بإجراءات دقيقة تسعى للجمال الطبيعي.",
         "features": [
           "Natural Volume with Authentic Filler",
           "Botox Wrinkle Improvement",
           "Anatomically Customized Treatment"
         ],
-        "duration": "About 1 hour",
-        "recommended": "Wrinkles, volume loss, contour improvement"
+        "duration": "حوالي ساعة واحدة",
+        "recommended": "التجاعيد، فقدان الحجم، تحسين الملامح"
       },
       "glow": {
         "title": "GLOW SIGNATURE",
-        "subtitle": "Skin Booster & Regeneration",
-        "tagline": "Natural Radiance of Your Skin",
-        "description": "Fundamentally improve skin texture with collagen regeneration and deep hydration. Transform dull, rough skin into clear, radiant skin with healthy glow from within.",
+        "subtitle": "Skin Booster والتجديد",
+        "tagline": "الإشراق الطبيعي لبشرتك",
+        "description": "حسّن ملمس البشرة جذرياً عبر تجديد الكولاجين والترطيب العميق. حوّل البشرة الباهتة والخشنة إلى بشرة صافية ومشرقة بإشراق صحي ينبع من الداخل.",
         "features": [
           "Skin Booster Hydration",
           "Collagen Boosting",
           "Texture Improvement"
         ],
-        "duration": "About 1 hour",
-        "recommended": "Dull skin, dryness, pores/texture"
+        "duration": "حوالي ساعة واحدة",
+        "recommended": "بشرة باهتة، جفاف، مسام/ملمس"
       },
       "total": {
         "title": "TOTAL SIGNATURE",
-        "subtitle": "Silhouette Lifting",
-        "tagline": "Perfect Total Care",
-        "description": "A premium package that cares for lifting, volume, and skin texture all at once. Experience cinematic transformation as your entire face is lifted and defined.",
+        "subtitle": "شدّ القوام الكامل",
+        "tagline": "عناية شاملة مثالية",
+        "description": "باقة فاخرة تعتني بالشدّ والحجم وملمس البشرة في وقت واحد. اختبر تحولاً سينمائياً حيث يُشدّ وجهك بأكمله وتُحدّد ملامحه.",
         "features": [
           "Combined Lifting Treatment",
           "Volume Restructuring",
           "Total Skin Regeneration"
         ],
-        "duration": "Custom Design",
-        "recommended": "Comprehensive anti-aging, special occasions"
+        "duration": "تصميم مخصص",
+        "recommended": "مكافحة شيخوخة شاملة، مناسبات خاصة"
       }
     },
     "whySignature": {
-      "subtitle": "Why Signature?",
-      "title": "Why Choose Signature?",
+      "subtitle": "لماذا Signature؟",
+      "title": "لماذا تختار Signature؟",
       "synergy": {
-        "title": "Synergy Effect",
-        "description": "2-3 times more effective than\nsingle treatments with synergistic effects"
+        "title": "تأثير التآزر",
+        "description": "أكثر فعالية بـ 2 إلى 3 أضعاف من\nالعلاجات الفردية بفضل التأثيرات التآزرية"
       },
       "price": {
-        "title": "Reasonable Price",
-        "description": "Up to 30% discount compared to\nindividual treatments with special package pricing"
+        "title": "سعر معقول",
+        "description": "خصم يصل إلى 30% مقارنة بـ\nالعلاجات الفردية مع تسعير باقة خاص"
       },
       "protocol": {
-        "title": "Verified Protocol",
-        "description": "Optimal treatment combinations\nverified through extensive experience"
+        "title": "بروتوكول معتمد",
+        "description": "تركيبات علاج مثالية\nمعتمدة بخبرة واسعة"
       }
     },
     "comparison": {
-      "subtitle": "Comparison",
-      "title": "Individual Treatment vs Signature Program",
+      "subtitle": "مقارنة",
+      "title": "العلاج الفردي مقابل برنامج Signature",
       "headers": {
-        "item": "Item",
-        "individual": "Individual",
+        "item": "العنصر",
+        "individual": "فردي",
         "signature": "Signature"
       },
       "rows": {
         "effect": {
-          "label": "Effect",
-          "individual": "Single Effect",
-          "signature": "2-3x Synergy"
+          "label": "التأثير",
+          "individual": "تأثير منفرد",
+          "signature": "تآزر 2 إلى 3 أضعاف"
         },
         "price": {
-          "label": "Price",
-          "individual": "Regular Price",
-          "signature": "Up to 30% Off"
+          "label": "السعر",
+          "individual": "السعر العادي",
+          "signature": "خصم حتى 30%"
         },
         "time": {
-          "label": "Time",
-          "individual": "Multiple Visits",
-          "signature": "One-Stop Care"
+          "label": "الوقت",
+          "individual": "عدة زيارات",
+          "signature": "عناية متكاملة"
         },
         "result": {
-          "label": "Result",
-          "individual": "Partial Improvement",
-          "signature": "Total Solution"
+          "label": "النتيجة",
+          "individual": "تحسن جزئي",
+          "signature": "حل شامل"
         }
       }
     },
     "cta": {
-      "title": "Curious about the right program for you?",
-      "description": "Our expert consultants will analyze your skin condition and recommend the optimal program."
+      "title": "هل تتساءل عن البرنامج المناسب لك؟",
+      "description": "سيقوم مستشارونا الخبراء بتحليل حالة بشرتك والتوصية بالبرنامج الأمثل."
     }
   },
   "liftingPage": {
@@ -5114,267 +5114,267 @@
   },
   "aboutPage": {
     "hero": {
-      "subtitle": "About LIV",
-      "title": "Our Brand",
-      "description1": "A premium anti-aging clinic pursuing natural beauty,",
-      "description2": "introducing LIV Plastic Surgery."
+      "subtitle": "عن LIV",
+      "title": "علامتنا التجارية",
+      "description1": "عيادة مكافحة شيخوخة فاخرة تسعى للجمال الطبيعي،",
+      "description2": "نقدم لكم LIV Plastic Surgery."
     },
     "philosophy": {
-      "subtitle": "Brand Philosophy",
-      "title1": "Slow Aging,",
-      "title2": "Natural Beauty",
-      "description1": "LIV Plastic Surgery pursues natural, understated beauty under the philosophy of \"Slow Aging, Natural Beauty.\"",
-      "description2": "Rather than dramatic changes, we help you maintain your beauty over time through natural, gradual improvements.",
-      "description3": "We provide personalized solutions based on premium authentic equipment and extensive clinical experience.",
-      "imageAlt": "LIV Clinic Lobby"
+      "subtitle": "فلسفة العلامة التجارية",
+      "title1": "شيخوخة بطيئة،",
+      "title2": "جمال طبيعي",
+      "description1": "تسعى LIV Plastic Surgery للجمال الطبيعي والمتواضع تحت فلسفة \"شيخوخة بطيئة، جمال طبيعي\".",
+      "description2": "بدلاً من التغيرات الجذرية، نساعدك في الحفاظ على جمالك مع مرور الوقت من خلال تحسينات طبيعية وتدريجية.",
+      "description3": "نوفر حلولاً مخصصة مبنية على أجهزة فاخرة أصلية وخبرة سريرية واسعة.",
+      "imageAlt": "ردهة عيادة LIV"
     },
     "brandMessage": {
       "title": "Beyond Gravity",
-      "description1": "Beauty beyond gravity,",
-      "description2": "Experience natural lifting with",
-      "description3": "LIV's exclusive Anti-Gravity solution."
+      "description1": "جمال يتجاوز الجاذبية،",
+      "description2": "اختبر الشدّ الطبيعي مع",
+      "description3": "حل Anti-Gravity الحصري من LIV."
     },
     "coreValues": {
-      "subtitle": "Core Values",
-      "title": "Our 4 Core Values"
+      "subtitle": "القيم الأساسية",
+      "title": "قيمنا الأساسية الأربعة"
     },
     "certifications": {
-      "subtitle": "Certifications",
-      "title": "Officially Certified Clinic"
+      "subtitle": "الشهادات",
+      "title": "عيادة معتمدة رسمياً"
     },
     "quickLinks": {
       "staff": {
-        "title": "Medical Staff",
-        "subtitle": "Meet Our Team"
+        "title": "الفريق الطبي",
+        "subtitle": "تعرّف على فريقنا"
       },
       "equipment": {
-        "title": "Equipment",
-        "subtitle": "Our Technology"
+        "title": "الأجهزة",
+        "subtitle": "تقنياتنا"
       },
       "location": {
-        "title": "Location",
-        "subtitle": "Visit Us"
+        "title": "الموقع",
+        "subtitle": "تفضل بزيارتنا"
       }
     },
     "locationPage": {
-      "sectionLabel": "Location",
-      "heroTitle": "How to Visit",
-      "heroDescription": "Just 1 minute walk from Sinsa Station Exit 4. Conveniently accessible LIV Plastic Surgery.",
-      "addressLabel": "Address",
-      "buildingDetail": "4F, Jaeun Building",
-      "phoneLabel": "Phone"
+      "sectionLabel": "الموقع",
+      "heroTitle": "كيفية الوصول",
+      "heroDescription": "على بعد دقيقة واحدة سيراً على الأقدام من مخرج 4 من محطة Sinsa. عيادة LIV Plastic Surgery يسهل الوصول إليها.",
+      "addressLabel": "العنوان",
+      "buildingDetail": "الطابق الرابع، Jaeun Building",
+      "phoneLabel": "الهاتف"
     }
   },
   "equipmentPage": {
     "hero": {
-      "subtitle": "Equipment",
-      "title": "Our Equipment",
-      "description1": "With certified premium equipment,",
-      "description2": "we provide safe and effective treatments."
+      "subtitle": "الأجهزة",
+      "title": "أجهزتنا",
+      "description1": "بأجهزة فاخرة معتمدة،",
+      "description2": "نقدم علاجات آمنة وفعّالة."
     },
     "certification": {
-      "subtitle": "Official Certified Clinic",
-      "title1": "Premium Lifting & Laser",
-      "title2": "Solutions Available Only at",
-      "titleHighlight": "Certified Clinics",
-      "description1": "LIV Plastic Surgery is an officially certified clinic for global brands",
-      "description2": "including Ultherapy Prime, Thermage, and Shurink."
+      "subtitle": "عيادة معتمدة رسمياً",
+      "title1": "حلول شدّ وليزر فاخرة",
+      "title2": "متوفرة فقط في",
+      "titleHighlight": "العيادات المعتمدة",
+      "description1": "عيادة LIV Plastic Surgery معتمدة رسمياً للعلامات التجارية العالمية",
+      "description2": "بما في ذلك Ultherapy Prime وThermage وShurink."
     },
     "categories": {
       "lifting": {
-        "name": "Lifting Equipment",
+        "name": "أجهزة الشدّ",
         "nameEn": "Lifting Equipment",
-        "description": "The pinnacle of non-surgical lifting with premium devices"
+        "description": "ذروة الشدّ غير الجراحي بأجهزة فاخرة"
       },
       "laser": {
-        "name": "Laser Equipment",
+        "name": "أجهزة الليزر",
         "nameEn": "Laser Equipment",
-        "description": "Laser systems for skin texture improvement and elasticity"
+        "description": "أنظمة ليزر لتحسين ملمس البشرة ومرونتها"
       },
       "diagnostic": {
-        "name": "Skin Diagnostic",
+        "name": "تشخيص البشرة",
         "nameEn": "Skin Diagnostic",
-        "description": "Advanced diagnostic equipment for precise skin analysis and personalized treatment planning."
+        "description": "أجهزة تشخيص متقدمة لتحليل دقيق للبشرة وتخطيط علاج مخصص."
       }
     },
     "equipment": {
       "ultherapy": {
         "name": "Ultherapy Prime",
         "nameKo": "Ultherapy Prime",
-        "description": "FDA-approved ultrasound lifting – firming from the deepest layers",
+        "description": "شدّ بالموجات فوق الصوتية معتمد من FDA – شدّ من الطبقات الأعمق",
         "features": [
           "Energy delivery to SMAS layer",
           "Natural lifting effect",
           "Resume daily activities immediately"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "معتمد من FDA و KFDA"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameKo": "Thermage FLX",
-        "description": "The essence of RF lifting – tightening from within",
+        "description": "جوهر شدّ RF – شدّ من الداخل",
         "features": [
           "AccuREP technology",
           "Cooling system",
           "Collagen regeneration"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "معتمد من FDA و KFDA"
       },
       "density": {
         "name": "Density",
         "nameKo": "Density",
-        "description": "Precise tightening with RF energy – precision collagen lifting",
+        "description": "شدّ دقيق بطاقة RF – شدّ كولاجين دقيق",
         "features": [
           "RF lifting",
           "Uniform energy distribution",
           "Affordable price"
         ],
-        "certification": "KFDA Approved"
+        "certification": "معتمد من KFDA"
       },
       "shurink": {
         "name": "Shurink",
         "nameKo": "Shurink",
-        "description": "The leader in daily lifting – affordable ultrasound elasticity treatment",
+        "description": "رائد الشدّ اليومي – علاج مرونة بالموجات فوق الصوتية بأسعار معقولة",
         "features": [
           "Painless or low pain",
           "Quick treatment time",
           "Economical pricing"
         ],
-        "certification": "KFDA Approved"
+        "certification": "معتمد من KFDA"
       },
       "inmode": {
         "name": "InMode",
         "nameKo": "InMode",
-        "description": "Fat reduction + elasticity improvement in one session",
+        "description": "تقليل الدهون + تحسين المرونة في جلسة واحدة",
         "features": [
           "Simultaneous fat reduction and lifting",
           "Targeted treatment",
           "Minimal downtime"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "معتمد من FDA و KFDA"
       },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
-        "description": "Pores, skin texture, elasticity – a new standard in skin remodeling",
+        "description": "المسام وملمس البشرة والمرونة – معيار جديد في إعادة تشكيل البشرة",
         "features": [
           "RF microneedling",
           "Skin booster pumping tip",
           "Pore reduction"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "معتمد من FDA و KFDA"
       },
       "clarity": {
         "name": "Clarity II",
         "nameKo": "Clarity II",
-        "description": "Faster, more precise – dual wavelength laser",
+        "description": "أسرع وأدق – ليزر ثنائي الطول الموجي",
         "features": [
           "755nm/1064nm dual wavelength",
           "Pigment/vascular treatment",
           "Premium hair removal"
         ],
-        "certification": "FDA Approved"
+        "certification": "معتمد من FDA"
       },
       "lucas": {
         "name": "Lucas",
         "nameKo": "Lucas",
-        "description": "Bright and clear from within – a new standard in pigment treatment",
+        "description": "ساطع وصافٍ من الداخل – معيار جديد في علاج التصبغات",
         "features": [
           "High-power Q-switch",
           "Melasma/spot treatment",
           "Tattoo removal"
         ],
-        "certification": "KFDA Approved"
+        "certification": "معتمد من KFDA"
       },
       "co2": {
         "name": "CO2 Laser",
         "nameKo": "CO2 Laser",
-        "description": "Precision resurfacing and skin regeneration – deep scar and fine line improvement",
+        "description": "تجديد دقيق وإعادة بناء البشرة – تحسين الندبات العميقة والخطوط الدقيقة",
         "features": [
           "Fractional technology",
           "Scar/pore treatment",
           "Skin regeneration promotion"
         ],
-        "certification": "KFDA Approved"
+        "certification": "معتمد من KFDA"
       },
       "ulblanc": {
         "name": "Ulblanc",
         "nameKo": "Ulblanc",
-        "description": "Low-irritation whitening laser",
+        "description": "ليزر تبييض منخفض التهيج",
         "features": [
           "Melanin targeting",
           "Skin tone evening",
           "Low-irritation treatment"
         ],
-        "certification": "KFDA Approved"
+        "certification": "معتمد من KFDA"
       },
       "markvu": {
         "name": "Mark VU",
         "nameKo": "Mark VU",
-        "description": "Advanced skin diagnostic device with 18-megapixel ultra-high resolution camera that precisely analyzes 12 skin conditions invisible to the naked eye.",
+        "description": "جهاز تشخيص بشرة متطور بكاميرا بدقة 18 ميجابكسل فائقة الوضوح يحلل بدقة 12 حالة جلدية غير مرئية للعين المجردة.",
         "features": [
           "18MP Resolution",
           "4 Light Source Analysis",
           "Skin Type Diagnosis"
         ],
-        "certification": "18MP Ultra High Resolution"
+        "certification": "دقة فائقة 18 ميجابكسل"
       }
     },
     "cta": {
-      "title": "Experience Premium Equipment Treatments",
-      "description": "Experience safe and effective results with certified equipment and specialist treatments.",
-      "buttonPrimary": "Book Consultation",
-      "buttonSecondary": "Signature Programs"
+      "title": "اختبر علاجات بأجهزة فاخرة",
+      "description": "اختبر نتائج آمنة وفعّالة بأجهزة معتمدة وعلاجات متخصصة.",
+      "buttonPrimary": "احجز استشارة",
+      "buttonSecondary": "برامج Signature"
     },
     "quickLinks": {
       "brand": {
-        "title": "LIV Brand",
-        "subtitle": "About LIV"
+        "title": "علامة LIV",
+        "subtitle": "عن LIV"
       },
       "staff": {
-        "title": "Medical Staff",
-        "subtitle": "Medical Staff"
+        "title": "الفريق الطبي",
+        "subtitle": "الفريق الطبي"
       },
       "location": {
-        "title": "Location",
-        "subtitle": "Location"
+        "title": "الموقع",
+        "subtitle": "الموقع"
       }
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "Discover the latest news and special offers from LIV Plastic Surgery",
-    "allTab": "All",
-    "activeTab": "Active",
-    "endedTab": "Ended",
-    "activeCount": "Active",
-    "endedCount": "Ended",
-    "viewDetails": "View Details",
-    "bookNow": "Book Consultation",
-    "period": "Period",
-    "category": "Category",
+    "title": "الفعاليات",
+    "subtitle": "اكتشف أحدث الأخبار والعروض الخاصة من LIV Plastic Surgery",
+    "allTab": "الكل",
+    "activeTab": "الجارية",
+    "endedTab": "المنتهية",
+    "activeCount": "جارية",
+    "endedCount": "منتهية",
+    "viewDetails": "عرض التفاصيل",
+    "bookNow": "احجز استشارة",
+    "period": "الفترة",
+    "category": "الفئة",
     "status": {
-      "active": "Active",
-      "ended": "Ended"
+      "active": "جارية",
+      "ended": "منتهية"
     },
     "categories": {
-      "lifting": "Lifting",
-      "antiaging": "Anti-aging",
-      "laser": "Laser",
-      "skincare": "Skincare",
-      "all": "All"
+      "lifting": "الشدّ",
+      "antiaging": "مكافحة الشيخوخة",
+      "laser": "الليزر",
+      "skincare": "العناية بالبشرة",
+      "all": "الكل"
     },
-    "noEvents": "No active events at the moment",
-    "noEndedEvents": "No past events",
-    "backToList": "Back to List",
-    "relatedTreatments": "Related Treatments",
-    "eventDetails": "Event Details",
-    "share": "Share",
-    "gallery": "Event Gallery",
-    "viewLarger": "View larger",
+    "noEvents": "لا توجد فعاليات جارية حالياً",
+    "noEndedEvents": "لا توجد فعاليات سابقة",
+    "backToList": "العودة إلى القائمة",
+    "relatedTreatments": "العلاجات ذات الصلة",
+    "eventDetails": "تفاصيل الفعالية",
+    "share": "مشاركة",
+    "gallery": "معرض الفعالية",
+    "viewLarger": "عرض بحجم أكبر",
     "meta": {
-      "title": "Events | LIV Plastic Surgery",
-      "description": "Discover the latest events and special promotions at LIV Plastic Surgery. Special offers on Ultherapy, Thermage, Botox, Filler and more."
+      "title": "الفعاليات | LIV Plastic Surgery",
+      "description": "اكتشف أحدث الفعاليات والعروض الخاصة في LIV Plastic Surgery. عروض خاصة على Ultherapy وThermage وBotox وFiller والمزيد."
     }
   },
   "pricing": {

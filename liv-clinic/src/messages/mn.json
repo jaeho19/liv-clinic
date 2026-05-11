@@ -4622,124 +4622,124 @@
   },
   "signaturePage": {
     "hero": {
-      "subtitle": "Signature Program",
-      "title": "Signature Program",
-      "description1": "With LIV Plastic Surgery's premium anti-aging program,",
-      "description2": "experience natural and beautiful transformation."
+      "subtitle": "Signature хөтөлбөр",
+      "title": "Signature хөтөлбөр",
+      "description1": "LIV Plastic Surgery-ийн премиум залуужуулах хөтөлбөрөөр,",
+      "description2": "байгалийн бөгөөд үзэсгэлэнтэй өөрчлөлтийг мэдэрнэ үү."
     },
     "photoComparison": {
-      "subtitle": "Premium Anti-aging",
+      "subtitle": "Премиум залуужуулалт",
       "title": "Photo-Real Before & After",
-      "description": "Hover over or tap the card to see before and after treatment changes",
-      "viewingDetails": "Viewing details",
-      "clickToViewDetails": "Click to view details",
-      "beforeTreatment": "Before treatment",
-      "afterTreatment": "After treatment"
+      "description": "Эмчилгээний өмнөх ба дараах өөрчлөлтийг харахын тулд картан дээр хулганаа аваачих эсвэл хүрнэ үү",
+      "viewingDetails": "Дэлгэрэнгүй мэдээлэл харагдаж байна",
+      "clickToViewDetails": "Дэлгэрэнгүйг үзэхийн тулд дарна уу",
+      "beforeTreatment": "Эмчилгээний өмнө",
+      "afterTreatment": "Эмчилгээний дараа"
     },
     "programs": {
       "lifting": {
         "title": "LIFTING SIGNATURE",
         "subtitle": "Ultherapy Prime & Thermage",
-        "tagline": "The Pinnacle of Non-Surgical Lifting",
-        "description": "Experience powerful lifting effects that defy gravity with Ultherapy Prime's SMAS lifting and Thermage FLX's collagen remodeling. Lift sagging skin and restore clear, firm facial contours.",
+        "tagline": "Мэс заслын бус лифтингийн оргил",
+        "description": "Ultherapy Prime-ийн SMAS лифтинг ба Thermage FLX-ийн коллагены засваруудаар таталцлын хүчийг үл тоомсорлох хүчтэй лифтингийн үр дүнг мэдэрнэ үү. Унжсан арьсыг татаж, тодорхой бөгөөд чанга нүүрний хэлбэрийг сэргээнэ.",
         "features": [
           "Ultherapy Prime Certified SMAS Lifting",
           "Thermage FLX Collagen Regeneration",
           "Synergistic Combination Treatment"
         ],
-        "duration": "About 2 hours",
-        "recommended": "Sagging skin, loss of elasticity, blurred contours"
+        "duration": "Ойролцоогоор 2 цаг",
+        "recommended": "Унжсан арьс, уян хатан байдал алдагдсан, тодорхой бус хэлбэр"
       },
       "petit": {
         "title": "PETIT SIGNATURE",
         "subtitle": "Botox & Filler",
-        "tagline": "Delicate Volume and Contour",
-        "description": "Achieve natural volume and wrinkle improvement based on anatomical understanding. From fine wrinkles to volume restoration with delicate procedures pursuing natural beauty.",
+        "tagline": "Нарийн эзэлхүүн ба хэлбэр",
+        "description": "Анатомийн ойлголтод тулгуурлан байгалийн эзэлхүүн ба үрчлээний сайжруулалтыг олж аваарай. Нарийн үрчлээнээс эзэлхүүний сэргэлт хүртэл байгалийн гоо сайхныг эрэлхийлсэн нарийн процедуруудаар.",
         "features": [
           "Natural Volume with Authentic Filler",
           "Botox Wrinkle Improvement",
           "Anatomically Customized Treatment"
         ],
-        "duration": "About 1 hour",
-        "recommended": "Wrinkles, volume loss, contour improvement"
+        "duration": "Ойролцоогоор 1 цаг",
+        "recommended": "Үрчлээ, эзэлхүүний алдагдал, хэлбэрийн сайжруулалт"
       },
       "glow": {
         "title": "GLOW SIGNATURE",
-        "subtitle": "Skin Booster & Regeneration",
-        "tagline": "Natural Radiance of Your Skin",
-        "description": "Fundamentally improve skin texture with collagen regeneration and deep hydration. Transform dull, rough skin into clear, radiant skin with healthy glow from within.",
+        "subtitle": "Skin Booster ба сэргэлт",
+        "tagline": "Таны арьсны байгалийн гялбаа",
+        "description": "Коллаген сэргэлт ба гүн чийгшилтээр арьсны бүтцийг үндсээр нь сайжруулна. Бүдэг, барзгар арьсыг дотроос нь эрүүл гялбаатай тунгалаг, гэрэлтэх арьс болгон өөрчилнө.",
         "features": [
           "Skin Booster Hydration",
           "Collagen Boosting",
           "Texture Improvement"
         ],
-        "duration": "About 1 hour",
-        "recommended": "Dull skin, dryness, pores/texture"
+        "duration": "Ойролцоогоор 1 цаг",
+        "recommended": "Бүдэг арьс, хуурайшилт, нүх сүв/бүтэц"
       },
       "total": {
         "title": "TOTAL SIGNATURE",
-        "subtitle": "Silhouette Lifting",
-        "tagline": "Perfect Total Care",
-        "description": "A premium package that cares for lifting, volume, and skin texture all at once. Experience cinematic transformation as your entire face is lifted and defined.",
+        "subtitle": "Силуэт лифтинг",
+        "tagline": "Төгс цогц арчилгаа",
+        "description": "Лифтинг, эзэлхүүн, арьсны бүтцийг нэг дор арчлах премиум багц. Таны бүх нүүр татагдаж, тодорхой болохын хирэн кино шиг өөрчлөлтийг мэдрэнэ үү.",
         "features": [
           "Combined Lifting Treatment",
           "Volume Restructuring",
           "Total Skin Regeneration"
         ],
-        "duration": "Custom Design",
-        "recommended": "Comprehensive anti-aging, special occasions"
+        "duration": "Захиалгат дизайн",
+        "recommended": "Иж бүрэн залуужуулалт, онцгой үйл явдлууд"
       }
     },
     "whySignature": {
-      "subtitle": "Why Signature?",
-      "title": "Why Choose Signature?",
+      "subtitle": "Яагаад Signature вэ?",
+      "title": "Яагаад Signature-г сонгох вэ?",
       "synergy": {
-        "title": "Synergy Effect",
-        "description": "2-3 times more effective than\nsingle treatments with synergistic effects"
+        "title": "Синержийн нөлөө",
+        "description": "Ганц эмчилгээнээс 2-3 дахин\nүр дүнтэй синержийн нөлөөгөөр"
       },
       "price": {
-        "title": "Reasonable Price",
-        "description": "Up to 30% discount compared to\nindividual treatments with special package pricing"
+        "title": "Хямд үнэ",
+        "description": "Тус тусдаа эмчилгээтэй харьцуулахад\n30% хүртэлх хямдрал багц онцгой үнээр"
       },
       "protocol": {
-        "title": "Verified Protocol",
-        "description": "Optimal treatment combinations\nverified through extensive experience"
+        "title": "Баталгаажсан протокол",
+        "description": "Өргөн туршлагаар баталгаажсан\nоновчтой эмчилгээний хослолууд"
       }
     },
     "comparison": {
-      "subtitle": "Comparison",
-      "title": "Individual Treatment vs Signature Program",
+      "subtitle": "Харьцуулалт",
+      "title": "Тус тусдаа эмчилгээ vs Signature хөтөлбөр",
       "headers": {
-        "item": "Item",
-        "individual": "Individual",
+        "item": "Зүйл",
+        "individual": "Тус тусдаа",
         "signature": "Signature"
       },
       "rows": {
         "effect": {
-          "label": "Effect",
-          "individual": "Single Effect",
-          "signature": "2-3x Synergy"
+          "label": "Үр нөлөө",
+          "individual": "Ганц нөлөө",
+          "signature": "2-3 дахин синержи"
         },
         "price": {
-          "label": "Price",
-          "individual": "Regular Price",
-          "signature": "Up to 30% Off"
+          "label": "Үнэ",
+          "individual": "Жирийн үнэ",
+          "signature": "30% хүртэлх хямдрал"
         },
         "time": {
-          "label": "Time",
-          "individual": "Multiple Visits",
-          "signature": "One-Stop Care"
+          "label": "Цаг",
+          "individual": "Олон удаагийн зочлолт",
+          "signature": "Нэг удаагийн арчилгаа"
         },
         "result": {
-          "label": "Result",
-          "individual": "Partial Improvement",
-          "signature": "Total Solution"
+          "label": "Үр дүн",
+          "individual": "Хэсэгчилсэн сайжруулалт",
+          "signature": "Цогц шийдэл"
         }
       }
     },
     "cta": {
-      "title": "Curious about the right program for you?",
-      "description": "Our expert consultants will analyze your skin condition and recommend the optimal program."
+      "title": "Танд тохирох хөтөлбөрийг сонирхож байна уу?",
+      "description": "Манай мэргэжилтэн зөвлөхүүд таны арьсны байдлыг шинжилж, оновчтой хөтөлбөрийг санал болгоно."
     }
   },
   "liftingPage": {
@@ -5114,267 +5114,267 @@
   },
   "aboutPage": {
     "hero": {
-      "subtitle": "About LIV",
-      "title": "Our Brand",
-      "description1": "A premium anti-aging clinic pursuing natural beauty,",
-      "description2": "introducing LIV Plastic Surgery."
+      "subtitle": "LIV-ийн тухай",
+      "title": "Манай брэнд",
+      "description1": "Байгалийн гоо сайхныг эрэлхийлж буй премиум залуужуулах эмнэлэг,",
+      "description2": "LIV Plastic Surgery-г танилцуулж байна."
     },
     "philosophy": {
-      "subtitle": "Brand Philosophy",
-      "title1": "Slow Aging,",
-      "title2": "Natural Beauty",
-      "description1": "LIV Plastic Surgery pursues natural, understated beauty under the philosophy of \"Slow Aging, Natural Beauty.\"",
-      "description2": "Rather than dramatic changes, we help you maintain your beauty over time through natural, gradual improvements.",
-      "description3": "We provide personalized solutions based on premium authentic equipment and extensive clinical experience.",
-      "imageAlt": "LIV Clinic Lobby"
+      "subtitle": "Брэндийн философи",
+      "title1": "Удаан хөгшрөлт,",
+      "title2": "Байгалийн гоо сайхан",
+      "description1": "LIV Plastic Surgery нь \"Удаан хөгшрөлт, байгалийн гоо сайхан\" гэсэн философийн дор байгалийн, эгэл гоо сайхныг эрэлхийлдэг.",
+      "description2": "Гэнэтийн өөрчлөлтийн оронд бид танд цаг хугацааны явцад байгалийн, аажмаар сайжруулалтаар гоо сайхнаа хадгалахад тусална.",
+      "description3": "Бид премиум жинхэнэ тоног төхөөрөмж ба өргөн клиник туршлагад тулгуурласан хувийн шийдлийг үзүүлдэг.",
+      "imageAlt": "LIV эмнэлгийн лобби"
     },
     "brandMessage": {
       "title": "Beyond Gravity",
-      "description1": "Beauty beyond gravity,",
-      "description2": "Experience natural lifting with",
-      "description3": "LIV's exclusive Anti-Gravity solution."
+      "description1": "Таталцлаас давсан гоо сайхан,",
+      "description2": "LIV-ийн онцгой Anti-Gravity шийдлээр",
+      "description3": "байгалийн лифтингийг мэдэрнэ үү."
     },
     "coreValues": {
-      "subtitle": "Core Values",
-      "title": "Our 4 Core Values"
+      "subtitle": "Үндсэн үнэт зүйлс",
+      "title": "Манай 4 үндсэн үнэт зүйл"
     },
     "certifications": {
-      "subtitle": "Certifications",
-      "title": "Officially Certified Clinic"
+      "subtitle": "Сертификатууд",
+      "title": "Албан ёсоор баталгаажсан эмнэлэг"
     },
     "quickLinks": {
       "staff": {
-        "title": "Medical Staff",
-        "subtitle": "Meet Our Team"
+        "title": "Эмнэлгийн ажилтнууд",
+        "subtitle": "Манай багтай танилцана уу"
       },
       "equipment": {
-        "title": "Equipment",
-        "subtitle": "Our Technology"
+        "title": "Тоног төхөөрөмж",
+        "subtitle": "Манай технологи"
       },
       "location": {
-        "title": "Location",
-        "subtitle": "Visit Us"
+        "title": "Байршил",
+        "subtitle": "Бидэн дээр ирээрэй"
       }
     },
     "locationPage": {
-      "sectionLabel": "Location",
-      "heroTitle": "How to Visit",
-      "heroDescription": "Just 1 minute walk from Sinsa Station Exit 4. Conveniently accessible LIV Plastic Surgery.",
-      "addressLabel": "Address",
-      "buildingDetail": "4F, Jaeun Building",
-      "phoneLabel": "Phone"
+      "sectionLabel": "Байршил",
+      "heroTitle": "Очих зам",
+      "heroDescription": "Sinsa Station-ы 4-р гарцаас явганаар 1 минутын зайтай. Хүртээмжтэй LIV Plastic Surgery.",
+      "addressLabel": "Хаяг",
+      "buildingDetail": "Jaeun Building, 4 давхар",
+      "phoneLabel": "Утас"
     }
   },
   "equipmentPage": {
     "hero": {
-      "subtitle": "Equipment",
-      "title": "Our Equipment",
-      "description1": "With certified premium equipment,",
-      "description2": "we provide safe and effective treatments."
+      "subtitle": "Тоног төхөөрөмж",
+      "title": "Манай тоног төхөөрөмж",
+      "description1": "Гэрчилгээтэй премиум тоног төхөөрөмжөөр,",
+      "description2": "бид аюулгүй бөгөөд үр дүнтэй эмчилгээ үзүүлдэг."
     },
     "certification": {
-      "subtitle": "Official Certified Clinic",
-      "title1": "Premium Lifting & Laser",
-      "title2": "Solutions Available Only at",
-      "titleHighlight": "Certified Clinics",
-      "description1": "LIV Plastic Surgery is an officially certified clinic for global brands",
-      "description2": "including Ultherapy Prime, Thermage, and Shurink."
+      "subtitle": "Албан ёсоор баталгаажсан эмнэлэг",
+      "title1": "Премиум лифтинг ба лазер",
+      "title2": "Зөвхөн дараах газарт боломжтой шийдлүүд",
+      "titleHighlight": "Гэрчилгээтэй эмнэлгүүд",
+      "description1": "LIV Plastic Surgery нь дэлхийн брэндүүдийн албан ёсоор баталгаажсан эмнэлэг бөгөөд",
+      "description2": "үүнд Ultherapy Prime, Thermage, Shurink багтана."
     },
     "categories": {
       "lifting": {
-        "name": "Lifting Equipment",
+        "name": "Лифтинг тоног төхөөрөмж",
         "nameEn": "Lifting Equipment",
-        "description": "The pinnacle of non-surgical lifting with premium devices"
+        "description": "Премиум төхөөрөмжтэй мэс заслын бус лифтингийн оргил"
       },
       "laser": {
-        "name": "Laser Equipment",
+        "name": "Лазер тоног төхөөрөмж",
         "nameEn": "Laser Equipment",
-        "description": "Laser systems for skin texture improvement and elasticity"
+        "description": "Арьсны бүтэц ба уян хатан байдлыг сайжруулах лазер системүүд"
       },
       "diagnostic": {
-        "name": "Skin Diagnostic",
+        "name": "Арьс оношилгоо",
         "nameEn": "Skin Diagnostic",
-        "description": "Advanced diagnostic equipment for precise skin analysis and personalized treatment planning."
+        "description": "Арьсны нарийвчилсан шинжилгээ ба хувийн эмчилгээ төлөвлөхөд зориулсан дэвшилтэт оношилгооны тоног төхөөрөмж."
       }
     },
     "equipment": {
       "ultherapy": {
         "name": "Ultherapy Prime",
         "nameKo": "Ultherapy Prime",
-        "description": "FDA-approved ultrasound lifting – firming from the deepest layers",
+        "description": "FDA-ийн зөвшөөрсөн хэт авианы лифтинг – хамгийн гүн давхаргаас чангаруулна",
         "features": [
           "Energy delivery to SMAS layer",
           "Natural lifting effect",
           "Resume daily activities immediately"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "FDA, KFDA баталгаажсан"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameKo": "Thermage FLX",
-        "description": "The essence of RF lifting – tightening from within",
+        "description": "RF лифтингийн мөн чанар – дотроос нь чангаруулна",
         "features": [
           "AccuREP technology",
           "Cooling system",
           "Collagen regeneration"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "FDA, KFDA баталгаажсан"
       },
       "density": {
         "name": "Density",
         "nameKo": "Density",
-        "description": "Precise tightening with RF energy – precision collagen lifting",
+        "description": "RF эрчим хүчээр нарийн чангаруулалт – нарийвчилсан коллаген лифтинг",
         "features": [
           "RF lifting",
           "Uniform energy distribution",
           "Affordable price"
         ],
-        "certification": "KFDA Approved"
+        "certification": "KFDA баталгаажсан"
       },
       "shurink": {
         "name": "Shurink",
         "nameKo": "Shurink",
-        "description": "The leader in daily lifting – affordable ultrasound elasticity treatment",
+        "description": "Өдөр тутмын лифтингийн тэргүүн – хүртээмжтэй хэт авианы уян хатан байдлын эмчилгээ",
         "features": [
           "Painless or low pain",
           "Quick treatment time",
           "Economical pricing"
         ],
-        "certification": "KFDA Approved"
+        "certification": "KFDA баталгаажсан"
       },
       "inmode": {
         "name": "InMode",
         "nameKo": "InMode",
-        "description": "Fat reduction + elasticity improvement in one session",
+        "description": "Өөх тосны бууралт + уян хатан байдлын сайжруулалт нэг сесст",
         "features": [
           "Simultaneous fat reduction and lifting",
           "Targeted treatment",
           "Minimal downtime"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "FDA, KFDA баталгаажсан"
       },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
-        "description": "Pores, skin texture, elasticity – a new standard in skin remodeling",
+        "description": "Нүх сүв, арьсны бүтэц, уян хатан байдал – арьс засварлалын шинэ стандарт",
         "features": [
           "RF microneedling",
           "Skin booster pumping tip",
           "Pore reduction"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "FDA, KFDA баталгаажсан"
       },
       "clarity": {
         "name": "Clarity II",
         "nameKo": "Clarity II",
-        "description": "Faster, more precise – dual wavelength laser",
+        "description": "Илүү хурдан, илүү нарийн – давхар долгионы уртын лазер",
         "features": [
           "755nm/1064nm dual wavelength",
           "Pigment/vascular treatment",
           "Premium hair removal"
         ],
-        "certification": "FDA Approved"
+        "certification": "FDA баталгаажсан"
       },
       "lucas": {
         "name": "Lucas",
         "nameKo": "Lucas",
-        "description": "Bright and clear from within – a new standard in pigment treatment",
+        "description": "Дотроосоо гэрэлтэх тунгалаг – пигментийн эмчилгээний шинэ стандарт",
         "features": [
           "High-power Q-switch",
           "Melasma/spot treatment",
           "Tattoo removal"
         ],
-        "certification": "KFDA Approved"
+        "certification": "KFDA баталгаажсан"
       },
       "co2": {
         "name": "CO2 Laser",
         "nameKo": "CO2 Laser",
-        "description": "Precision resurfacing and skin regeneration – deep scar and fine line improvement",
+        "description": "Нарийн засвар ба арьсны сэргэлт – гүн сорви ба нарийн шугамын сайжруулалт",
         "features": [
           "Fractional technology",
           "Scar/pore treatment",
           "Skin regeneration promotion"
         ],
-        "certification": "KFDA Approved"
+        "certification": "KFDA баталгаажсан"
       },
       "ulblanc": {
         "name": "Ulblanc",
         "nameKo": "Ulblanc",
-        "description": "Low-irritation whitening laser",
+        "description": "Бага цочроох цайруулагч лазер",
         "features": [
           "Melanin targeting",
           "Skin tone evening",
           "Low-irritation treatment"
         ],
-        "certification": "KFDA Approved"
+        "certification": "KFDA баталгаажсан"
       },
       "markvu": {
         "name": "Mark VU",
         "nameKo": "Mark VU",
-        "description": "Advanced skin diagnostic device with 18-megapixel ultra-high resolution camera that precisely analyzes 12 skin conditions invisible to the naked eye.",
+        "description": "18 мегапиксел өндөр нягтралтай камертай дэвшилтэт арьс оношлогооны төхөөрөмж бөгөөд нүдэнд харагдахгүй 12 төрлийн арьсны байдлыг нарийн шинжилнэ.",
         "features": [
           "18MP Resolution",
           "4 Light Source Analysis",
           "Skin Type Diagnosis"
         ],
-        "certification": "18MP Ultra High Resolution"
+        "certification": "18MP өндөр нягтрал"
       }
     },
     "cta": {
-      "title": "Experience Premium Equipment Treatments",
-      "description": "Experience safe and effective results with certified equipment and specialist treatments.",
-      "buttonPrimary": "Book Consultation",
-      "buttonSecondary": "Signature Programs"
+      "title": "Премиум тоног төхөөрөмжийн эмчилгээг туршаарай",
+      "description": "Баталгаажсан тоног төхөөрөмж ба мэргэжилтний эмчилгээгээр аюулгүй, үр дүнтэй үр дүнг мэдэрнэ үү.",
+      "buttonPrimary": "Зөвлөгөөн захиалах",
+      "buttonSecondary": "Signature хөтөлбөрүүд"
     },
     "quickLinks": {
       "brand": {
-        "title": "LIV Brand",
-        "subtitle": "About LIV"
+        "title": "LIV брэнд",
+        "subtitle": "LIV-ийн тухай"
       },
       "staff": {
-        "title": "Medical Staff",
-        "subtitle": "Medical Staff"
+        "title": "Эмнэлгийн ажилтнууд",
+        "subtitle": "Эмнэлгийн ажилтнууд"
       },
       "location": {
-        "title": "Location",
-        "subtitle": "Location"
+        "title": "Байршил",
+        "subtitle": "Байршил"
       }
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "Discover the latest news and special offers from LIV Plastic Surgery",
-    "allTab": "All",
-    "activeTab": "Active",
-    "endedTab": "Ended",
-    "activeCount": "Active",
-    "endedCount": "Ended",
-    "viewDetails": "View Details",
-    "bookNow": "Book Consultation",
-    "period": "Period",
-    "category": "Category",
+    "title": "Үйл явдлууд",
+    "subtitle": "LIV Plastic Surgery-ийн сүүлийн үеийн мэдээ ба онцгой саналуудыг олж аваарай",
+    "allTab": "Бүгд",
+    "activeTab": "Идэвхтэй",
+    "endedTab": "Дууссан",
+    "activeCount": "Идэвхтэй",
+    "endedCount": "Дууссан",
+    "viewDetails": "Дэлгэрэнгүй үзэх",
+    "bookNow": "Зөвлөгөөн захиалах",
+    "period": "Хугацаа",
+    "category": "Ангилал",
     "status": {
-      "active": "Active",
-      "ended": "Ended"
+      "active": "Идэвхтэй",
+      "ended": "Дууссан"
     },
     "categories": {
-      "lifting": "Lifting",
-      "antiaging": "Anti-aging",
-      "laser": "Laser",
-      "skincare": "Skincare",
-      "all": "All"
+      "lifting": "Лифтинг",
+      "antiaging": "Залуужуулалт",
+      "laser": "Лазер",
+      "skincare": "Арьс арчилгаа",
+      "all": "Бүгд"
     },
-    "noEvents": "No active events at the moment",
-    "noEndedEvents": "No past events",
-    "backToList": "Back to List",
-    "relatedTreatments": "Related Treatments",
-    "eventDetails": "Event Details",
-    "share": "Share",
-    "gallery": "Event Gallery",
-    "viewLarger": "View larger",
+    "noEvents": "Одоогоор идэвхтэй үйл явдал байхгүй",
+    "noEndedEvents": "Өнгөрсөн үйл явдал байхгүй",
+    "backToList": "Жагсаалт руу буцах",
+    "relatedTreatments": "Холбогдох эмчилгээ",
+    "eventDetails": "Үйл явдлын дэлгэрэнгүй",
+    "share": "Хуваалцах",
+    "gallery": "Үйл явдлын галерей",
+    "viewLarger": "Томоор үзэх",
     "meta": {
-      "title": "Events | LIV Plastic Surgery",
-      "description": "Discover the latest events and special promotions at LIV Plastic Surgery. Special offers on Ultherapy, Thermage, Botox, Filler and more."
+      "title": "Үйл явдлууд | LIV Plastic Surgery",
+      "description": "LIV Plastic Surgery-ийн сүүлийн үеийн үйл явдал ба тусгай урамшууллыг олж аваарай. Ultherapy, Thermage, Botox, Filler болон бусад зүйлсэд онцгой санал."
     }
   },
   "pricing": {

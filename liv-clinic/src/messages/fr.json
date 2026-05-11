@@ -4622,124 +4622,124 @@
   },
   "signaturePage": {
     "hero": {
-      "subtitle": "Signature Program",
-      "title": "Signature Program",
-      "description1": "With LIV Plastic Surgery's premium anti-aging program,",
-      "description2": "experience natural and beautiful transformation."
+      "subtitle": "Programme Signature",
+      "title": "Programme Signature",
+      "description1": "Avec le programme anti-âge premium de la clinique LIV Plastic Surgery,",
+      "description2": "vivez une transformation naturelle et belle."
     },
     "photoComparison": {
-      "subtitle": "Premium Anti-aging",
-      "title": "Photo-Real Before & After",
-      "description": "Hover over or tap the card to see before and after treatment changes",
-      "viewingDetails": "Viewing details",
-      "clickToViewDetails": "Click to view details",
-      "beforeTreatment": "Before treatment",
-      "afterTreatment": "After treatment"
+      "subtitle": "Anti-âge Premium",
+      "title": "Avant et après photoréalistes",
+      "description": "Survolez ou touchez la carte pour voir les changements avant et après le traitement",
+      "viewingDetails": "Affichage des détails",
+      "clickToViewDetails": "Cliquez pour voir les détails",
+      "beforeTreatment": "Avant le traitement",
+      "afterTreatment": "Après le traitement"
     },
     "programs": {
       "lifting": {
         "title": "LIFTING SIGNATURE",
         "subtitle": "Ultherapy Prime & Thermage",
-        "tagline": "The Pinnacle of Non-Surgical Lifting",
-        "description": "Experience powerful lifting effects that defy gravity with Ultherapy Prime's SMAS lifting and Thermage FLX's collagen remodeling. Lift sagging skin and restore clear, firm facial contours.",
+        "tagline": "Le summum du lifting non chirurgical",
+        "description": "Découvrez de puissants effets de lifting qui défient la gravité grâce au lifting SMAS d'Ultherapy Prime et au remodelage du collagène de Thermage FLX. Liftez la peau relâchée et restaurez des contours du visage nets et fermes.",
         "features": [
           "Ultherapy Prime Certified SMAS Lifting",
           "Thermage FLX Collagen Regeneration",
           "Synergistic Combination Treatment"
         ],
-        "duration": "About 2 hours",
-        "recommended": "Sagging skin, loss of elasticity, blurred contours"
+        "duration": "Environ 2 heures",
+        "recommended": "Peau relâchée, perte d'élasticité, contours flous"
       },
       "petit": {
         "title": "PETIT SIGNATURE",
-        "subtitle": "Botox & Filler",
-        "tagline": "Delicate Volume and Contour",
-        "description": "Achieve natural volume and wrinkle improvement based on anatomical understanding. From fine wrinkles to volume restoration with delicate procedures pursuing natural beauty.",
+        "subtitle": "Botox & Acide hyaluronique",
+        "tagline": "Volume et contour délicats",
+        "description": "Obtenez un volume naturel et une amélioration des rides basés sur une compréhension anatomique. Des rides fines à la restauration du volume avec des procédures délicates recherchant la beauté naturelle.",
         "features": [
           "Natural Volume with Authentic Filler",
           "Botox Wrinkle Improvement",
           "Anatomically Customized Treatment"
         ],
-        "duration": "About 1 hour",
-        "recommended": "Wrinkles, volume loss, contour improvement"
+        "duration": "Environ 1 heure",
+        "recommended": "Rides, perte de volume, amélioration des contours"
       },
       "glow": {
         "title": "GLOW SIGNATURE",
-        "subtitle": "Skin Booster & Regeneration",
-        "tagline": "Natural Radiance of Your Skin",
-        "description": "Fundamentally improve skin texture with collagen regeneration and deep hydration. Transform dull, rough skin into clear, radiant skin with healthy glow from within.",
+        "subtitle": "Skin Booster et régénération",
+        "tagline": "L'éclat naturel de votre peau",
+        "description": "Améliorez fondamentalement la texture de la peau grâce à la régénération du collagène et à une hydratation profonde. Transformez une peau terne et rugueuse en une peau claire et radieuse, avec un éclat sain venant de l'intérieur.",
         "features": [
           "Skin Booster Hydration",
           "Collagen Boosting",
           "Texture Improvement"
         ],
-        "duration": "About 1 hour",
-        "recommended": "Dull skin, dryness, pores/texture"
+        "duration": "Environ 1 heure",
+        "recommended": "Peau terne, sécheresse, pores/texture"
       },
       "total": {
         "title": "TOTAL SIGNATURE",
-        "subtitle": "Silhouette Lifting",
-        "tagline": "Perfect Total Care",
-        "description": "A premium package that cares for lifting, volume, and skin texture all at once. Experience cinematic transformation as your entire face is lifted and defined.",
+        "subtitle": "Lifting silhouette",
+        "tagline": "Soin total parfait",
+        "description": "Un forfait premium qui prend soin du lifting, du volume et de la texture de la peau en une seule fois. Vivez une transformation cinématographique alors que tout votre visage est lifté et défini.",
         "features": [
           "Combined Lifting Treatment",
           "Volume Restructuring",
           "Total Skin Regeneration"
         ],
-        "duration": "Custom Design",
-        "recommended": "Comprehensive anti-aging, special occasions"
+        "duration": "Conception personnalisée",
+        "recommended": "Anti-âge global, occasions spéciales"
       }
     },
     "whySignature": {
-      "subtitle": "Why Signature?",
-      "title": "Why Choose Signature?",
+      "subtitle": "Pourquoi Signature ?",
+      "title": "Pourquoi choisir Signature ?",
       "synergy": {
-        "title": "Synergy Effect",
-        "description": "2-3 times more effective than\nsingle treatments with synergistic effects"
+        "title": "Effet de synergie",
+        "description": "2 à 3 fois plus efficace que les\ntraitements individuels grâce aux effets synergiques"
       },
       "price": {
-        "title": "Reasonable Price",
-        "description": "Up to 30% discount compared to\nindividual treatments with special package pricing"
+        "title": "Prix raisonnable",
+        "description": "Jusqu'à 30 % de réduction par rapport aux\ntraitements individuels avec une tarification spéciale en forfait"
       },
       "protocol": {
-        "title": "Verified Protocol",
-        "description": "Optimal treatment combinations\nverified through extensive experience"
+        "title": "Protocole vérifié",
+        "description": "Combinaisons de traitements optimales\nvérifiées par une vaste expérience"
       }
     },
     "comparison": {
-      "subtitle": "Comparison",
-      "title": "Individual Treatment vs Signature Program",
+      "subtitle": "Comparaison",
+      "title": "Traitement individuel vs Programme Signature",
       "headers": {
-        "item": "Item",
-        "individual": "Individual",
+        "item": "Élément",
+        "individual": "Individuel",
         "signature": "Signature"
       },
       "rows": {
         "effect": {
-          "label": "Effect",
-          "individual": "Single Effect",
-          "signature": "2-3x Synergy"
+          "label": "Effet",
+          "individual": "Effet unique",
+          "signature": "Synergie 2 à 3 fois"
         },
         "price": {
-          "label": "Price",
-          "individual": "Regular Price",
-          "signature": "Up to 30% Off"
+          "label": "Prix",
+          "individual": "Prix régulier",
+          "signature": "Jusqu'à 30 % de réduction"
         },
         "time": {
-          "label": "Time",
-          "individual": "Multiple Visits",
-          "signature": "One-Stop Care"
+          "label": "Temps",
+          "individual": "Plusieurs visites",
+          "signature": "Soin tout-en-un"
         },
         "result": {
-          "label": "Result",
-          "individual": "Partial Improvement",
-          "signature": "Total Solution"
+          "label": "Résultat",
+          "individual": "Amélioration partielle",
+          "signature": "Solution complète"
         }
       }
     },
     "cta": {
-      "title": "Curious about the right program for you?",
-      "description": "Our expert consultants will analyze your skin condition and recommend the optimal program."
+      "title": "Vous vous demandez quel programme vous convient ?",
+      "description": "Nos consultants experts analyseront l'état de votre peau et vous recommanderont le programme optimal."
     }
   },
   "liftingPage": {
@@ -5114,267 +5114,267 @@
   },
   "aboutPage": {
     "hero": {
-      "subtitle": "About LIV",
-      "title": "Our Brand",
-      "description1": "A premium anti-aging clinic pursuing natural beauty,",
-      "description2": "introducing LIV Plastic Surgery."
+      "subtitle": "À propos de LIV",
+      "title": "Notre marque",
+      "description1": "Une clinique anti-âge premium recherchant la beauté naturelle,",
+      "description2": "voici LIV Plastic Surgery."
     },
     "philosophy": {
-      "subtitle": "Brand Philosophy",
-      "title1": "Slow Aging,",
-      "title2": "Natural Beauty",
-      "description1": "LIV Plastic Surgery pursues natural, understated beauty under the philosophy of \"Slow Aging, Natural Beauty.\"",
-      "description2": "Rather than dramatic changes, we help you maintain your beauty over time through natural, gradual improvements.",
-      "description3": "We provide personalized solutions based on premium authentic equipment and extensive clinical experience.",
-      "imageAlt": "LIV Clinic Lobby"
+      "subtitle": "Philosophie de la marque",
+      "title1": "Vieillissement lent,",
+      "title2": "Beauté naturelle",
+      "description1": "LIV Plastic Surgery recherche une beauté naturelle et discrète sous la philosophie « Vieillissement lent, Beauté naturelle ».",
+      "description2": "Plutôt que des changements spectaculaires, nous vous aidons à conserver votre beauté au fil du temps grâce à des améliorations naturelles et progressives.",
+      "description3": "Nous proposons des solutions personnalisées basées sur des équipements premium authentiques et une vaste expérience clinique.",
+      "imageAlt": "Hall de la clinique LIV"
     },
     "brandMessage": {
       "title": "Beyond Gravity",
-      "description1": "Beauty beyond gravity,",
-      "description2": "Experience natural lifting with",
-      "description3": "LIV's exclusive Anti-Gravity solution."
+      "description1": "Beauté au-delà de la gravité,",
+      "description2": "Découvrez le lifting naturel grâce à",
+      "description3": "la solution Anti-Gravity exclusive de LIV."
     },
     "coreValues": {
-      "subtitle": "Core Values",
-      "title": "Our 4 Core Values"
+      "subtitle": "Valeurs fondamentales",
+      "title": "Nos 4 valeurs fondamentales"
     },
     "certifications": {
       "subtitle": "Certifications",
-      "title": "Officially Certified Clinic"
+      "title": "Clinique officiellement certifiée"
     },
     "quickLinks": {
       "staff": {
-        "title": "Medical Staff",
-        "subtitle": "Meet Our Team"
+        "title": "Équipe médicale",
+        "subtitle": "Rencontrez notre équipe"
       },
       "equipment": {
-        "title": "Equipment",
-        "subtitle": "Our Technology"
+        "title": "Équipements",
+        "subtitle": "Notre technologie"
       },
       "location": {
-        "title": "Location",
-        "subtitle": "Visit Us"
+        "title": "Emplacement",
+        "subtitle": "Venez nous voir"
       }
     },
     "locationPage": {
-      "sectionLabel": "Location",
-      "heroTitle": "How to Visit",
-      "heroDescription": "Just 1 minute walk from Sinsa Station Exit 4. Conveniently accessible LIV Plastic Surgery.",
-      "addressLabel": "Address",
-      "buildingDetail": "4F, Jaeun Building",
-      "phoneLabel": "Phone"
+      "sectionLabel": "Emplacement",
+      "heroTitle": "Comment nous trouver",
+      "heroDescription": "À seulement 1 minute à pied de la sortie 4 de la station Sinsa. LIV Plastic Surgery, facilement accessible.",
+      "addressLabel": "Adresse",
+      "buildingDetail": "4ème étage, Jaeun Building",
+      "phoneLabel": "Téléphone"
     }
   },
   "equipmentPage": {
     "hero": {
-      "subtitle": "Equipment",
-      "title": "Our Equipment",
-      "description1": "With certified premium equipment,",
-      "description2": "we provide safe and effective treatments."
+      "subtitle": "Équipements",
+      "title": "Nos équipements",
+      "description1": "Avec des équipements premium certifiés,",
+      "description2": "nous offrons des traitements sûrs et efficaces."
     },
     "certification": {
-      "subtitle": "Official Certified Clinic",
-      "title1": "Premium Lifting & Laser",
-      "title2": "Solutions Available Only at",
-      "titleHighlight": "Certified Clinics",
-      "description1": "LIV Plastic Surgery is an officially certified clinic for global brands",
-      "description2": "including Ultherapy Prime, Thermage, and Shurink."
+      "subtitle": "Clinique officiellement certifiée",
+      "title1": "Solutions premium de lifting et laser",
+      "title2": "Disponibles uniquement dans les",
+      "titleHighlight": "Cliniques certifiées",
+      "description1": "LIV Plastic Surgery est une clinique officiellement certifiée pour les marques mondiales",
+      "description2": "telles qu'Ultherapy Prime, Thermage et Shurink."
     },
     "categories": {
       "lifting": {
-        "name": "Lifting Equipment",
+        "name": "Équipement de lifting",
         "nameEn": "Lifting Equipment",
-        "description": "The pinnacle of non-surgical lifting with premium devices"
+        "description": "Le summum du lifting non chirurgical avec des appareils premium"
       },
       "laser": {
-        "name": "Laser Equipment",
+        "name": "Équipement laser",
         "nameEn": "Laser Equipment",
-        "description": "Laser systems for skin texture improvement and elasticity"
+        "description": "Systèmes laser pour l'amélioration de la texture et de l'élasticité de la peau"
       },
       "diagnostic": {
-        "name": "Skin Diagnostic",
+        "name": "Diagnostic cutané",
         "nameEn": "Skin Diagnostic",
-        "description": "Advanced diagnostic equipment for precise skin analysis and personalized treatment planning."
+        "description": "Équipement de diagnostic avancé pour une analyse précise de la peau et une planification de traitement personnalisée."
       }
     },
     "equipment": {
       "ultherapy": {
         "name": "Ultherapy Prime",
         "nameKo": "Ultherapy Prime",
-        "description": "FDA-approved ultrasound lifting – firming from the deepest layers",
+        "description": "Lifting par ultrasons approuvé par la FDA – raffermissement depuis les couches les plus profondes",
         "features": [
           "Energy delivery to SMAS layer",
           "Natural lifting effect",
           "Resume daily activities immediately"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "Approuvé FDA, KFDA"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameKo": "Thermage FLX",
-        "description": "The essence of RF lifting – tightening from within",
+        "description": "L'essence du lifting RF – tonification de l'intérieur",
         "features": [
           "AccuREP technology",
           "Cooling system",
           "Collagen regeneration"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "Approuvé FDA, KFDA"
       },
       "density": {
         "name": "Density",
         "nameKo": "Density",
-        "description": "Precise tightening with RF energy – precision collagen lifting",
+        "description": "Tonification précise par énergie RF – lifting collagène de précision",
         "features": [
           "RF lifting",
           "Uniform energy distribution",
           "Affordable price"
         ],
-        "certification": "KFDA Approved"
+        "certification": "Approuvé KFDA"
       },
       "shurink": {
         "name": "Shurink",
         "nameKo": "Shurink",
-        "description": "The leader in daily lifting – affordable ultrasound elasticity treatment",
+        "description": "Le leader du lifting au quotidien – traitement d'élasticité par ultrasons abordable",
         "features": [
           "Painless or low pain",
           "Quick treatment time",
           "Economical pricing"
         ],
-        "certification": "KFDA Approved"
+        "certification": "Approuvé KFDA"
       },
       "inmode": {
         "name": "InMode",
         "nameKo": "InMode",
-        "description": "Fat reduction + elasticity improvement in one session",
+        "description": "Réduction des graisses + amélioration de l'élasticité en une seule séance",
         "features": [
           "Simultaneous fat reduction and lifting",
           "Targeted treatment",
           "Minimal downtime"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "Approuvé FDA, KFDA"
       },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
-        "description": "Pores, skin texture, elasticity – a new standard in skin remodeling",
+        "description": "Pores, texture de la peau, élasticité – une nouvelle norme dans le remodelage cutané",
         "features": [
           "RF microneedling",
           "Skin booster pumping tip",
           "Pore reduction"
         ],
-        "certification": "FDA, KFDA Approved"
+        "certification": "Approuvé FDA, KFDA"
       },
       "clarity": {
         "name": "Clarity II",
         "nameKo": "Clarity II",
-        "description": "Faster, more precise – dual wavelength laser",
+        "description": "Plus rapide, plus précis – laser à double longueur d'onde",
         "features": [
           "755nm/1064nm dual wavelength",
           "Pigment/vascular treatment",
           "Premium hair removal"
         ],
-        "certification": "FDA Approved"
+        "certification": "Approuvé FDA"
       },
       "lucas": {
         "name": "Lucas",
         "nameKo": "Lucas",
-        "description": "Bright and clear from within – a new standard in pigment treatment",
+        "description": "Lumineux et clair de l'intérieur – une nouvelle norme dans le traitement des pigments",
         "features": [
           "High-power Q-switch",
           "Melasma/spot treatment",
           "Tattoo removal"
         ],
-        "certification": "KFDA Approved"
+        "certification": "Approuvé KFDA"
       },
       "co2": {
         "name": "CO2 Laser",
         "nameKo": "CO2 Laser",
-        "description": "Precision resurfacing and skin regeneration – deep scar and fine line improvement",
+        "description": "Resurfaçage de précision et régénération de la peau – amélioration des cicatrices profondes et des ridules",
         "features": [
           "Fractional technology",
           "Scar/pore treatment",
           "Skin regeneration promotion"
         ],
-        "certification": "KFDA Approved"
+        "certification": "Approuvé KFDA"
       },
       "ulblanc": {
         "name": "Ulblanc",
         "nameKo": "Ulblanc",
-        "description": "Low-irritation whitening laser",
+        "description": "Laser blanchissant à faible irritation",
         "features": [
           "Melanin targeting",
           "Skin tone evening",
           "Low-irritation treatment"
         ],
-        "certification": "KFDA Approved"
+        "certification": "Approuvé KFDA"
       },
       "markvu": {
         "name": "Mark VU",
         "nameKo": "Mark VU",
-        "description": "Advanced skin diagnostic device with 18-megapixel ultra-high resolution camera that precisely analyzes 12 skin conditions invisible to the naked eye.",
+        "description": "Appareil de diagnostic cutané avancé doté d'une caméra ultra-haute résolution de 18 mégapixels qui analyse précisément 12 conditions cutanées invisibles à l'œil nu.",
         "features": [
           "18MP Resolution",
           "4 Light Source Analysis",
           "Skin Type Diagnosis"
         ],
-        "certification": "18MP Ultra High Resolution"
+        "certification": "Ultra haute résolution 18 MP"
       }
     },
     "cta": {
-      "title": "Experience Premium Equipment Treatments",
-      "description": "Experience safe and effective results with certified equipment and specialist treatments.",
-      "buttonPrimary": "Book Consultation",
-      "buttonSecondary": "Signature Programs"
+      "title": "Découvrez les traitements avec équipements premium",
+      "description": "Découvrez des résultats sûrs et efficaces grâce à des équipements certifiés et à des traitements spécialisés.",
+      "buttonPrimary": "Réserver une consultation",
+      "buttonSecondary": "Programmes Signature"
     },
     "quickLinks": {
       "brand": {
-        "title": "LIV Brand",
-        "subtitle": "About LIV"
+        "title": "Marque LIV",
+        "subtitle": "À propos de LIV"
       },
       "staff": {
-        "title": "Medical Staff",
-        "subtitle": "Medical Staff"
+        "title": "Équipe médicale",
+        "subtitle": "Équipe médicale"
       },
       "location": {
-        "title": "Location",
-        "subtitle": "Location"
+        "title": "Emplacement",
+        "subtitle": "Emplacement"
       }
     }
   },
   "events": {
-    "title": "Events",
-    "subtitle": "Discover the latest news and special offers from LIV Plastic Surgery",
-    "allTab": "All",
-    "activeTab": "Active",
-    "endedTab": "Ended",
-    "activeCount": "Active",
-    "endedCount": "Ended",
-    "viewDetails": "View Details",
-    "bookNow": "Book Consultation",
-    "period": "Period",
-    "category": "Category",
+    "title": "Événements",
+    "subtitle": "Découvrez les dernières actualités et offres spéciales de LIV Plastic Surgery",
+    "allTab": "Tous",
+    "activeTab": "En cours",
+    "endedTab": "Terminés",
+    "activeCount": "En cours",
+    "endedCount": "Terminés",
+    "viewDetails": "Voir les détails",
+    "bookNow": "Réserver une consultation",
+    "period": "Période",
+    "category": "Catégorie",
     "status": {
-      "active": "Active",
-      "ended": "Ended"
+      "active": "En cours",
+      "ended": "Terminé"
     },
     "categories": {
       "lifting": "Lifting",
-      "antiaging": "Anti-aging",
+      "antiaging": "Anti-âge",
       "laser": "Laser",
-      "skincare": "Skincare",
-      "all": "All"
+      "skincare": "Soins de la peau",
+      "all": "Tous"
     },
-    "noEvents": "No active events at the moment",
-    "noEndedEvents": "No past events",
-    "backToList": "Back to List",
-    "relatedTreatments": "Related Treatments",
-    "eventDetails": "Event Details",
-    "share": "Share",
-    "gallery": "Event Gallery",
-    "viewLarger": "View larger",
+    "noEvents": "Aucun événement en cours pour le moment",
+    "noEndedEvents": "Aucun événement passé",
+    "backToList": "Retour à la liste",
+    "relatedTreatments": "Traitements associés",
+    "eventDetails": "Détails de l'événement",
+    "share": "Partager",
+    "gallery": "Galerie de l'événement",
+    "viewLarger": "Voir en grand",
     "meta": {
-      "title": "Events | LIV Plastic Surgery",
-      "description": "Discover the latest events and special promotions at LIV Plastic Surgery. Special offers on Ultherapy, Thermage, Botox, Filler and more."
+      "title": "Événements | LIV Plastic Surgery",
+      "description": "Découvrez les derniers événements et promotions spéciales chez LIV Plastic Surgery. Offres spéciales sur Ultherapy, Thermage, Botox, acide hyaluronique et plus encore."
     }
   },
   "pricing": {
