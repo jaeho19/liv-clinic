@@ -233,22 +233,22 @@
       "subtitle": "قيم LIV الأربع الأساسية",
       "natural": {
         "title": "الجمال الطبيعي",
-        "subtitle": "Natural Beauty",
+        "subtitle": "الجمال الطبيعي",
         "description": "نسعى لجمال طبيعي راقٍ"
       },
       "expertise": {
         "title": "الخبرة السريرية",
-        "subtitle": "Clinical Expertise",
+        "subtitle": "الخبرة السريرية",
         "description": "تقديم نتائج مثلى بخبرة غنية"
       },
       "safety": {
         "title": "السلامة والأخلاقيات",
-        "subtitle": "Safety & Ethics",
+        "subtitle": "السلامة والأخلاقيات",
         "description": "التزام صارم بالمنتجات الأصلية وبروتوكولات السلامة"
       },
       "tailored": {
         "title": "مكافحة الشيخوخة المخصصة",
-        "subtitle": "Customized Anti-aging",
+        "subtitle": "مكافحة شيخوخة مخصصة",
         "description": "تصميم نتائج مثلى بحلول مخصصة"
       }
     },
@@ -258,7 +258,7 @@
       "name": "Sooyoung Kim",
       "nameEn": "Dr. Sooyoung Kim",
       "directorTitle": "المديرة، عيادة ليف للتجميل",
-      "directorTitleEn": "Director",
+      "directorTitleEn": "المدير",
       "specialty": "جراحة تجميل معتمدة",
       "philosophy": "السعي وراء الطبيعية — هذا هو الجمال الحقيقي. نساعدك على اكتشاف جمالك الراقي والأصيل.",
       "credentials": "المؤهلات",
@@ -5378,127 +5378,127 @@
     }
   },
   "pricing": {
-    "sectionTitle": "Treatment Pricing",
+    "sectionTitle": "أسعار العلاجات",
     "header": {
-      "treatment": "Treatment",
-      "option": "Area / Option",
-      "price": "Price"
+      "treatment": "العلاج",
+      "option": "المنطقة / الخيار",
+      "price": "السعر"
     },
-    "consultRequired": "Consultation Required",
+    "consultRequired": "تتطلب استشارة",
     "suffix": {
       "starting": " KRW ~",
-      "perPiece": " KRW ~ / piece",
-      "per100iu": " KRW ~ / 100IU"
+      "perPiece": " KRW ~ / قطعة",
+      "per100iu": " KRW ~ / 100 وحدة دولية"
     },
-    "note": "* Prices are per session. Final pricing is determined after consultation.",
+    "note": "* الأسعار لكل جلسة. يُحدد السعر النهائي بعد الاستشارة.",
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "Upper Face (250–400 shots)",
-        "lowerFace": "Lower Face (~600 shots)",
-        "fullFace": "Full Face (800–1,100 shots)",
-        "fullFaceNeck": "Full Face + Neck (~1,200 shots)"
+        "upperFace": "الجزء العلوي من الوجه (250 إلى 400 لقطة)",
+        "lowerFace": "الجزء السفلي من الوجه (~600 لقطة)",
+        "fullFace": "الوجه بالكامل (800 إلى 1,100 لقطة)",
+        "fullFaceNeck": "الوجه + الرقبة (~1,200 لقطة)"
       },
       "thermage": {
-        "name": "Thermage Laser",
-        "shot300": "300 shots",
-        "shot600": "600 shots",
-        "shot900": "900 shots",
-        "eyeTip225": "Eye Tip 225 shots",
-        "eyeTip450": "Eye Tip 450 shots"
+        "name": "ليزر Thermage",
+        "shot300": "300 لقطة",
+        "shot600": "600 لقطة",
+        "shot900": "900 لقطة",
+        "eyeTip225": "Eye Tip 225 لقطة",
+        "eyeTip450": "Eye Tip 450 لقطة"
       },
       "shurink": {
-        "shurinkLaser": "Shurink Laser",
-        "shurinkAreas": "V-line / Cheeks / Forehead / Double Chin / Neck Wrinkles / Under Eye",
-        "ultheraLaser": "Ulthera Laser",
-        "ultheraAreas": "V-line / Cheeks / Double Chin / Neck Wrinkles",
-        "shot300": "300 shots",
-        "shot600": "600 shots",
-        "shot900": "900 shots"
+        "shurinkLaser": "ليزر Shurink",
+        "shurinkAreas": "خط V / الخدود / الجبهة / الذقن المزدوج / تجاعيد الرقبة / تحت العين",
+        "ultheraLaser": "ليزر Ulthera",
+        "ultheraAreas": "خط V / الخدود / الذقن المزدوج / تجاعيد الرقبة",
+        "shot300": "300 لقطة",
+        "shot600": "600 لقطة",
+        "shot900": "900 لقطة"
       },
       "density": {
-        "hiTip": "Density Laser (Hi-Tip)",
-        "alphaTip": "Density Laser (Alpha-Tip)",
-        "shot300": "300 shots",
-        "shot600": "600 shots"
+        "hiTip": "ليزر Density (Hi-Tip)",
+        "alphaTip": "ليزر Density (Alpha-Tip)",
+        "shot300": "300 لقطة",
+        "shot600": "600 لقطة"
       },
       "inmode": {
-        "name": "InMode Laser",
-        "fxForma": "FX / FORMA Mode",
-        "fx": "FX Mode",
-        "forma": "FORMA Mode"
+        "name": "ليزر InMode",
+        "fxForma": "وضع FX / FORMA",
+        "fx": "وضع FX",
+        "forma": "وضع FORMA"
       },
       "thread": {
-        "name": "Thread Lifting",
-        "domestic": "Domestic",
-        "domesticPremium": "Domestic Premium",
+        "name": "شدّ بالخيوط",
+        "domestic": "محلي",
+        "domesticPremium": "محلي فاخر",
         "xeomin": "Xeomin",
         "allergan": "Allergan",
-        "allerganSalivary": "Allergan (Salivary Gland)"
+        "allerganSalivary": "Allergan (الغدة اللعابية)"
       },
       "botox": {
-        "botoxContour": "Botox (Contour)",
-        "contourAreas": "Jaw / Temple",
-        "botoxBody": "Botox (Body)",
-        "bodyAreas": "Trapezius / Arms / Calves / Thighs (per 100IU)",
-        "domestic": "Domestic",
-        "domesticPremium": "Domestic Premium",
+        "botoxContour": "Botox (الكفاف)",
+        "contourAreas": "الفك / الصدغ",
+        "botoxBody": "Botox (الجسم)",
+        "bodyAreas": "العضلة شبه المنحرفة / الذراعان / الساقان / الفخذان (لكل 100 وحدة دولية)",
+        "domestic": "محلي",
+        "domesticPremium": "محلي فاخر",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
       "filler": {
-        "chanelInjection": "Chanel Injection",
-        "volume3cc": "3 cc",
-        "otherFillers": "Other Fillers",
-        "consultOnly": "Detailed pricing provided during consultation"
+        "chanelInjection": "حقن Chanel",
+        "volume3cc": "3 سم³",
+        "otherFillers": "فيلر أخرى",
+        "consultOnly": "يتم تقديم تفاصيل الأسعار أثناء الاستشارة"
       },
       "skinbooster": {
         "juvelook": "Juvelook Skin Booster",
         "elementWhitening": "Element Whitening Booster",
-        "stemcell": "Stem Cell Skin Booster",
-        "melasma": "Melasma Injection",
-        "glow": "Glow Injection",
+        "stemcell": "Skin Booster بالخلايا الجذعية",
+        "melasma": "حقن الكلف",
+        "glow": "حقن Glow",
         "rejuranHbPlus": "Rejuran HB plus",
         "eyeRejuran": "Eye Rejuran",
         "rejuran": "Rejuran",
-        "volume1cc": "1 cc",
-        "volume2cc": "2 cc",
-        "volume4cc": "4 cc",
-        "volume5cc": "5 cc",
-        "volume10cc": "10 cc"
+        "volume1cc": "1 سم³",
+        "volume2cc": "2 سم³",
+        "volume4cc": "4 سم³",
+        "volume5cc": "5 سم³",
+        "volume10cc": "10 سم³"
       },
       "pigmentation": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Melasma / Blemishes / Pores / Acne Scars",
+        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
+        "dualToningDesc": "الكلف / البقع / المسام / ندبات حب الشباب",
         "potenza": "Potenza",
-        "single": "Single Session",
+        "single": "جلسة واحدة",
         "pumpingTip": "Pumping Tip"
       },
       "vascular": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Redness / Vascular Relief",
-        "single": "Single Session"
+        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
+        "dualToningDesc": "احمرار / تخفيف الأوعية الدموية",
+        "single": "جلسة واحدة"
       },
       "skintone": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Skin Tone Improvement",
-        "single": "Single Session"
+        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
+        "dualToningDesc": "تحسين لون البشرة",
+        "single": "جلسة واحدة"
       },
       "hairRemoval": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Hair Removal Care",
-        "single": "Single Session"
+        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
+        "dualToningDesc": "العناية بإزالة الشعر",
+        "single": "جلسة واحدة"
       },
       "tattoo": {
-        "tattooLucas": "Tattoo Removal Laser (Lucas)",
-        "onePart": "Per Area",
-        "co2Laser": "CO2 Laser",
-        "co2Desc": "Moles / Flat Warts / Age Spots, etc.",
-        "dia3mm": "Diameter ≤ 3mm (1 spot)",
-        "dia5mm": "3mm < Diameter ≤ 5mm (1 spot)",
-        "diaOver5mm": "Diameter > 5mm (1 spot)",
-        "faceFull": "Full Face (50+ spots)",
-        "neckFull": "Full Neck (50+ spots)"
+        "tattooLucas": "ليزر إزالة الوشم (Lucas)",
+        "onePart": "لكل منطقة",
+        "co2Laser": "ليزر CO2",
+        "co2Desc": "الشامات / الثآليل المسطحة / بقع الشيخوخة، إلخ.",
+        "dia3mm": "القطر ≤ 3 مم (نقطة واحدة)",
+        "dia5mm": "3 مم < القطر ≤ 5 مم (نقطة واحدة)",
+        "diaOver5mm": "القطر > 5 مم (نقطة واحدة)",
+        "faceFull": "الوجه بالكامل (أكثر من 50 نقطة)",
+        "neckFull": "الرقبة بالكامل (أكثر من 50 نقطة)"
       }
     }
   },

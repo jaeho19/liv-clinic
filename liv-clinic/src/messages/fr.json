@@ -81,7 +81,7 @@
     "aptos": "APTOS Bio Lifting",
     "antiaging": "Anti-âge",
     "botox": "Botox",
-    "filler": "Filler",
+    "filler": "Acide hyaluronique",
     "skinbooster": "Skin Booster",
     "skincare": "Soins de la peau",
     "laser": "Laser",
@@ -207,7 +207,7 @@
         "antiaging": {
           "title": "Anti-âge",
           "titleEn": "ANTI-AGING",
-          "subtitle": "Filler & Botox",
+          "subtitle": "Acide hyaluronique & Botox",
           "description": "Obtenez volume et contour grâce à un toucher délicat. Nous recherchons une beauté naturelle.",
           "features": [
             "Genuine Fillers",
@@ -233,22 +233,22 @@
       "subtitle": "Les 4 valeurs fondamentales de LIV",
       "natural": {
         "title": "Beauté naturelle",
-        "subtitle": "Natural Beauty",
+        "subtitle": "Beauté naturelle",
         "description": "Nous recherchons une beauté sobre et naturelle"
       },
       "expertise": {
         "title": "Expertise clinique",
-        "subtitle": "Clinical Expertise",
+        "subtitle": "Expertise clinique",
         "description": "Offrir des résultats optimaux grâce à une riche expérience"
       },
       "safety": {
         "title": "Sécurité et éthique",
-        "subtitle": "Safety & Ethics",
+        "subtitle": "Sécurité et éthique",
         "description": "Adhésion stricte aux produits authentiques et aux protocoles de sécurité"
       },
       "tailored": {
         "title": "Anti-âge sur mesure",
-        "subtitle": "Customized Anti-aging",
+        "subtitle": "Anti-âge personnalisé",
         "description": "Concevoir des résultats optimaux avec des solutions personnalisées"
       }
     },
@@ -258,7 +258,7 @@
       "name": "Sooyoung Kim",
       "nameEn": "Dr. Sooyoung Kim",
       "directorTitle": "Directrice, LIV Chirurgie Esthétique",
-      "directorTitleEn": "Director",
+      "directorTitleEn": "Directeur",
       "specialty": "Chirurgienne plasticienne certifiée",
       "philosophy": "Rechercher le naturel — c'est cela la vraie beauté. Nous vous aidons à trouver votre beauté authentique et sobre.",
       "credentials": "Diplômes",
@@ -5378,86 +5378,86 @@
     }
   },
   "pricing": {
-    "sectionTitle": "Treatment Pricing",
+    "sectionTitle": "Tarifs des traitements",
     "header": {
-      "treatment": "Treatment",
-      "option": "Area / Option",
-      "price": "Price"
+      "treatment": "Traitement",
+      "option": "Zone / Option",
+      "price": "Prix"
     },
-    "consultRequired": "Consultation Required",
+    "consultRequired": "Consultation requise",
     "suffix": {
       "starting": " KRW ~",
-      "perPiece": " KRW ~ / piece",
-      "per100iu": " KRW ~ / 100IU"
+      "perPiece": " KRW ~ / unité",
+      "per100iu": " KRW ~ / 100 UI"
     },
-    "note": "* Prices are per session. Final pricing is determined after consultation.",
+    "note": "* Les prix sont par séance. Le tarif final est déterminé après consultation.",
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "Upper Face (250–400 shots)",
-        "lowerFace": "Lower Face (~600 shots)",
-        "fullFace": "Full Face (800–1,100 shots)",
-        "fullFaceNeck": "Full Face + Neck (~1,200 shots)"
+        "upperFace": "Partie supérieure du visage (250 à 400 lignes)",
+        "lowerFace": "Partie inférieure du visage (~600 lignes)",
+        "fullFace": "Visage complet (800 à 1 100 lignes)",
+        "fullFaceNeck": "Visage complet + cou (~1 200 lignes)"
       },
       "thermage": {
-        "name": "Thermage Laser",
-        "shot300": "300 shots",
-        "shot600": "600 shots",
-        "shot900": "900 shots",
-        "eyeTip225": "Eye Tip 225 shots",
-        "eyeTip450": "Eye Tip 450 shots"
+        "name": "Laser Thermage",
+        "shot300": "300 lignes",
+        "shot600": "600 lignes",
+        "shot900": "900 lignes",
+        "eyeTip225": "Eye Tip 225 lignes",
+        "eyeTip450": "Eye Tip 450 lignes"
       },
       "shurink": {
-        "shurinkLaser": "Shurink Laser",
-        "shurinkAreas": "V-line / Cheeks / Forehead / Double Chin / Neck Wrinkles / Under Eye",
-        "ultheraLaser": "Ulthera Laser",
-        "ultheraAreas": "V-line / Cheeks / Double Chin / Neck Wrinkles",
-        "shot300": "300 shots",
-        "shot600": "600 shots",
-        "shot900": "900 shots"
+        "shurinkLaser": "Laser Shurink",
+        "shurinkAreas": "Ligne V / joues / front / double menton / rides du cou / contour des yeux",
+        "ultheraLaser": "Laser Ulthera",
+        "ultheraAreas": "Ligne V / joues / double menton / rides du cou",
+        "shot300": "300 lignes",
+        "shot600": "600 lignes",
+        "shot900": "900 lignes"
       },
       "density": {
-        "hiTip": "Density Laser (Hi-Tip)",
-        "alphaTip": "Density Laser (Alpha-Tip)",
-        "shot300": "300 shots",
-        "shot600": "600 shots"
+        "hiTip": "Laser Density (Hi-Tip)",
+        "alphaTip": "Laser Density (Alpha-Tip)",
+        "shot300": "300 lignes",
+        "shot600": "600 lignes"
       },
       "inmode": {
-        "name": "InMode Laser",
-        "fxForma": "FX / FORMA Mode",
-        "fx": "FX Mode",
-        "forma": "FORMA Mode"
+        "name": "Laser InMode",
+        "fxForma": "Mode FX / FORMA",
+        "fx": "Mode FX",
+        "forma": "Mode FORMA"
       },
       "thread": {
-        "name": "Thread Lifting",
-        "domestic": "Domestic",
-        "domesticPremium": "Domestic Premium",
+        "name": "Lifting par fils",
+        "domestic": "Domestique",
+        "domesticPremium": "Domestique Premium",
         "xeomin": "Xeomin",
         "allergan": "Allergan",
-        "allerganSalivary": "Allergan (Salivary Gland)"
+        "allerganSalivary": "Allergan (glande salivaire)"
       },
       "botox": {
-        "botoxContour": "Botox (Contour)",
-        "contourAreas": "Jaw / Temple",
-        "botoxBody": "Botox (Body)",
-        "bodyAreas": "Trapezius / Arms / Calves / Thighs (per 100IU)",
-        "domestic": "Domestic",
-        "domesticPremium": "Domestic Premium",
+        "botoxContour": "Botox (contour)",
+        "contourAreas": "Mâchoire / temps",
+        "botoxBody": "Botox (corps)",
+        "bodyAreas": "Trapèzes / bras / mollets / cuisses (par 100 UI)",
+        "domestic": "Domestique",
+        "domesticPremium": "Domestique Premium",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
       "filler": {
-        "chanelInjection": "Chanel Injection",
+        "chanelInjection": "Injection Chanel",
         "volume3cc": "3 cc",
-        "otherFillers": "Other Fillers",
-        "consultOnly": "Detailed pricing provided during consultation"
+        "otherFillers": "Autres acides hyaluroniques",
+        "consultOnly": "Tarification détaillée fournie lors de la consultation"
       },
       "skinbooster": {
-        "juvelook": "Juvelook Skin Booster",
+        "juvelook": "Skin Booster Juvelook",
         "elementWhitening": "Element Whitening Booster",
-        "stemcell": "Stem Cell Skin Booster",
-        "melasma": "Melasma Injection",
-        "glow": "Glow Injection",
+        "stemcell": "Skin Booster aux cellules souches",
+        "melasma": "Injection mélasma",
+        "glow": "Injection Glow",
         "rejuranHbPlus": "Rejuran HB plus",
         "eyeRejuran": "Eye Rejuran",
         "rejuran": "Rejuran",
@@ -5468,37 +5468,37 @@
         "volume10cc": "10 cc"
       },
       "pigmentation": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Melasma / Blemishes / Pores / Acne Scars",
+        "dualToning": "Laser à tonification double (Clarity + Lucas)",
+        "dualToningDesc": "Mélasma / taches / pores / cicatrices d'acné",
         "potenza": "Potenza",
-        "single": "Single Session",
+        "single": "Séance unique",
         "pumpingTip": "Pumping Tip"
       },
       "vascular": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Redness / Vascular Relief",
-        "single": "Single Session"
+        "dualToning": "Laser à tonification double (Clarity + Lucas)",
+        "dualToningDesc": "Rougeurs / soulagement vasculaire",
+        "single": "Séance unique"
       },
       "skintone": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Skin Tone Improvement",
-        "single": "Single Session"
+        "dualToning": "Laser à tonification double (Clarity + Lucas)",
+        "dualToningDesc": "Amélioration du teint",
+        "single": "Séance unique"
       },
       "hairRemoval": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Hair Removal Care",
-        "single": "Single Session"
+        "dualToning": "Laser à tonification double (Clarity + Lucas)",
+        "dualToningDesc": "Soins épilation",
+        "single": "Séance unique"
       },
       "tattoo": {
-        "tattooLucas": "Tattoo Removal Laser (Lucas)",
-        "onePart": "Per Area",
-        "co2Laser": "CO2 Laser",
-        "co2Desc": "Moles / Flat Warts / Age Spots, etc.",
-        "dia3mm": "Diameter ≤ 3mm (1 spot)",
-        "dia5mm": "3mm < Diameter ≤ 5mm (1 spot)",
-        "diaOver5mm": "Diameter > 5mm (1 spot)",
-        "faceFull": "Full Face (50+ spots)",
-        "neckFull": "Full Neck (50+ spots)"
+        "tattooLucas": "Laser de détatouage (Lucas)",
+        "onePart": "Par zone",
+        "co2Laser": "Laser CO2",
+        "co2Desc": "Grains de beauté / verrues plates / taches de vieillesse, etc.",
+        "dia3mm": "Diamètre ≤ 3 mm (1 point)",
+        "dia5mm": "3 mm < Diamètre ≤ 5 mm (1 point)",
+        "diaOver5mm": "Diamètre > 5 mm (1 point)",
+        "faceFull": "Visage complet (plus de 50 points)",
+        "neckFull": "Cou complet (plus de 50 points)"
       }
     }
   },

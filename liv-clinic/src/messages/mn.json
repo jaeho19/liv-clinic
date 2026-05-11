@@ -233,22 +233,22 @@
       "subtitle": "LIV-ийн 4 үндсэн үнэт зүйл",
       "natural": {
         "title": "Байгалийн гоо сайхан",
-        "subtitle": "Natural Beauty",
+        "subtitle": "Байгалийн гоо сайхан",
         "description": "Бид даруу, байгалийн гоо сайхныг эрэлхийлдэг"
       },
       "expertise": {
         "title": "Эмнэлзүйн мэргэжил",
-        "subtitle": "Clinical Expertise",
+        "subtitle": "Клиникийн мэргэжлийн ур чадвар",
         "description": "Баялаг туршлагаар оновчтой үр дүнг хүргэх"
       },
       "safety": {
         "title": "Аюулгүй байдал ба ёс зүй",
-        "subtitle": "Safety & Ethics",
+        "subtitle": "Аюулгүй байдал ба ёс зүй",
         "description": "Жинхэнэ бүтээгдэхүүн ба аюулгүйн журмыг чанд баримтлах"
       },
       "tailored": {
         "title": "Захиалгат хөгшрөлтийн эсрэг",
-        "subtitle": "Customized Anti-aging",
+        "subtitle": "Хувийн залуужуулалт",
         "description": "Хувийн шийдлээр оновчтой үр дүнг зохион байгуулах"
       }
     },
@@ -258,7 +258,7 @@
       "name": "Sooyoung Kim",
       "nameEn": "Dr. Sooyoung Kim",
       "directorTitle": "Захирал, LIV Гоо Заслын Эмнэлэг",
-      "directorTitleEn": "Director",
+      "directorTitleEn": "Захирал",
       "specialty": "Гэрчилгээт гоо заслын мэс засалч",
       "philosophy": "Байгалийн чанарыг эрэлхийлэх — энэ нь жинхэнэ гоо сайхан юм. Бид таны даруу, жинхэнэ гоо сайхныг олоход тусална.",
       "credentials": "Гэрчилгээ",
@@ -5378,86 +5378,86 @@
     }
   },
   "pricing": {
-    "sectionTitle": "Treatment Pricing",
+    "sectionTitle": "Эмчилгээний үнэ",
     "header": {
-      "treatment": "Treatment",
-      "option": "Area / Option",
-      "price": "Price"
+      "treatment": "Эмчилгээ",
+      "option": "Хэсэг / сонголт",
+      "price": "Үнэ"
     },
-    "consultRequired": "Consultation Required",
+    "consultRequired": "Зөвлөгөө шаардлагатай",
     "suffix": {
       "starting": " KRW ~",
-      "perPiece": " KRW ~ / piece",
+      "perPiece": " KRW ~ / ширхэг",
       "per100iu": " KRW ~ / 100IU"
     },
-    "note": "* Prices are per session. Final pricing is determined after consultation.",
+    "note": "* Үнэ нэг сесст хамаарна. Эцсийн үнийг зөвлөгөөний дараа тогтооно.",
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "Upper Face (250–400 shots)",
-        "lowerFace": "Lower Face (~600 shots)",
-        "fullFace": "Full Face (800–1,100 shots)",
-        "fullFaceNeck": "Full Face + Neck (~1,200 shots)"
+        "upperFace": "Нүүрний дээд хэсэг (250–400 цохилт)",
+        "lowerFace": "Нүүрний доод хэсэг (~600 цохилт)",
+        "fullFace": "Бүх нүүр (800–1,100 цохилт)",
+        "fullFaceNeck": "Бүх нүүр + хүзүү (~1,200 цохилт)"
       },
       "thermage": {
-        "name": "Thermage Laser",
-        "shot300": "300 shots",
-        "shot600": "600 shots",
-        "shot900": "900 shots",
-        "eyeTip225": "Eye Tip 225 shots",
-        "eyeTip450": "Eye Tip 450 shots"
+        "name": "Thermage лазер",
+        "shot300": "300 цохилт",
+        "shot600": "600 цохилт",
+        "shot900": "900 цохилт",
+        "eyeTip225": "Eye Tip 225 цохилт",
+        "eyeTip450": "Eye Tip 450 цохилт"
       },
       "shurink": {
-        "shurinkLaser": "Shurink Laser",
-        "shurinkAreas": "V-line / Cheeks / Forehead / Double Chin / Neck Wrinkles / Under Eye",
-        "ultheraLaser": "Ulthera Laser",
-        "ultheraAreas": "V-line / Cheeks / Double Chin / Neck Wrinkles",
-        "shot300": "300 shots",
-        "shot600": "600 shots",
-        "shot900": "900 shots"
+        "shurinkLaser": "Shurink лазер",
+        "shurinkAreas": "V шугам / хацар / магнай / давхар эрүү / хүзүүний үрчлээ / нүдний доод хэсэг",
+        "ultheraLaser": "Ulthera лазер",
+        "ultheraAreas": "V шугам / хацар / давхар эрүү / хүзүүний үрчлээ",
+        "shot300": "300 цохилт",
+        "shot600": "600 цохилт",
+        "shot900": "900 цохилт"
       },
       "density": {
-        "hiTip": "Density Laser (Hi-Tip)",
-        "alphaTip": "Density Laser (Alpha-Tip)",
-        "shot300": "300 shots",
-        "shot600": "600 shots"
+        "hiTip": "Density лазер (Hi-Tip)",
+        "alphaTip": "Density лазер (Alpha-Tip)",
+        "shot300": "300 цохилт",
+        "shot600": "600 цохилт"
       },
       "inmode": {
-        "name": "InMode Laser",
-        "fxForma": "FX / FORMA Mode",
-        "fx": "FX Mode",
-        "forma": "FORMA Mode"
+        "name": "InMode лазер",
+        "fxForma": "FX / FORMA горим",
+        "fx": "FX горим",
+        "forma": "FORMA горим"
       },
       "thread": {
-        "name": "Thread Lifting",
-        "domestic": "Domestic",
-        "domesticPremium": "Domestic Premium",
+        "name": "Утсан лифтинг",
+        "domestic": "Дотоодын",
+        "domesticPremium": "Дотоодын Premium",
         "xeomin": "Xeomin",
         "allergan": "Allergan",
-        "allerganSalivary": "Allergan (Salivary Gland)"
+        "allerganSalivary": "Allergan (шүлсний булчирхай)"
       },
       "botox": {
-        "botoxContour": "Botox (Contour)",
-        "contourAreas": "Jaw / Temple",
-        "botoxBody": "Botox (Body)",
-        "bodyAreas": "Trapezius / Arms / Calves / Thighs (per 100IU)",
-        "domestic": "Domestic",
-        "domesticPremium": "Domestic Premium",
+        "botoxContour": "Botox (контур)",
+        "contourAreas": "Эрүү / чамархай",
+        "botoxBody": "Botox (бие)",
+        "bodyAreas": "Мөрний булчин / гар / шилбэ / гуя (100IU тутамд)",
+        "domestic": "Дотоодын",
+        "domesticPremium": "Дотоодын Premium",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
       "filler": {
-        "chanelInjection": "Chanel Injection",
+        "chanelInjection": "Chanel тарилга",
         "volume3cc": "3 cc",
-        "otherFillers": "Other Fillers",
-        "consultOnly": "Detailed pricing provided during consultation"
+        "otherFillers": "Бусад филлерүүд",
+        "consultOnly": "Дэлгэрэнгүй үнэ зөвлөгөөний үед олгогдоно"
       },
       "skinbooster": {
         "juvelook": "Juvelook Skin Booster",
         "elementWhitening": "Element Whitening Booster",
-        "stemcell": "Stem Cell Skin Booster",
-        "melasma": "Melasma Injection",
-        "glow": "Glow Injection",
+        "stemcell": "Үүдэл эсийн Skin Booster",
+        "melasma": "Меласма тарилга",
+        "glow": "Glow тарилга",
         "rejuranHbPlus": "Rejuran HB plus",
         "eyeRejuran": "Eye Rejuran",
         "rejuran": "Rejuran",
@@ -5468,37 +5468,37 @@
         "volume10cc": "10 cc"
       },
       "pigmentation": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Melasma / Blemishes / Pores / Acne Scars",
+        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
+        "dualToningDesc": "Меласма / толбо / нүх сүв / батганы сорви",
         "potenza": "Potenza",
-        "single": "Single Session",
+        "single": "Нэг удаагийн сесс",
         "pumpingTip": "Pumping Tip"
       },
       "vascular": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Redness / Vascular Relief",
-        "single": "Single Session"
+        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
+        "dualToningDesc": "Улайлт / судасны намжаалт",
+        "single": "Нэг удаагийн сесс"
       },
       "skintone": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Skin Tone Improvement",
-        "single": "Single Session"
+        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
+        "dualToningDesc": "Арьсны өнгийг сайжруулах",
+        "single": "Нэг удаагийн сесс"
       },
       "hairRemoval": {
-        "dualToning": "Dual Toning Laser (Clarity + Lucas)",
-        "dualToningDesc": "Hair Removal Care",
-        "single": "Single Session"
+        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
+        "dualToningDesc": "Үс арилгах арчилгаа",
+        "single": "Нэг удаагийн сесс"
       },
       "tattoo": {
-        "tattooLucas": "Tattoo Removal Laser (Lucas)",
-        "onePart": "Per Area",
-        "co2Laser": "CO2 Laser",
-        "co2Desc": "Moles / Flat Warts / Age Spots, etc.",
-        "dia3mm": "Diameter ≤ 3mm (1 spot)",
-        "dia5mm": "3mm < Diameter ≤ 5mm (1 spot)",
-        "diaOver5mm": "Diameter > 5mm (1 spot)",
-        "faceFull": "Full Face (50+ spots)",
-        "neckFull": "Full Neck (50+ spots)"
+        "tattooLucas": "Шивээс арилгах лазер (Lucas)",
+        "onePart": "Хэсэг тутамд",
+        "co2Laser": "CO2 лазер",
+        "co2Desc": "Мэнгэ / хавтгай үүлдэр / нас ахисны толбо гэх мэт.",
+        "dia3mm": "Диаметр ≤ 3 мм (1 цэг)",
+        "dia5mm": "3 мм < Диаметр ≤ 5 мм (1 цэг)",
+        "diaOver5mm": "Диаметр > 5 мм (1 цэг)",
+        "faceFull": "Бүх нүүр (50+ цэг)",
+        "neckFull": "Бүх хүзүү (50+ цэг)"
       }
     }
   },
