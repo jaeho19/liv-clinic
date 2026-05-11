@@ -1721,67 +1721,67 @@
       "shurink": {
         "name": "Shurink",
         "fullName": "Shurink Universe",
-        "tagline": "HIFU Lifting",
-        "description": "A lifting treatment using high-intensity focused ultrasound to lift sagging skin.",
+        "tagline": "HIFU лифтинг",
+        "description": "Өндөр эрчимт фокусласан хэт авианы тусламжтайгаар сулрсан арьсыг татаж өргөдөг лифтинг эмчилгээ.",
         "detail": {
           "skinLayers": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
+            "epidermis": "Эпидермис",
+            "dermis": "Дермис",
             "smas": "SMAS",
-            "fascia": "Fascia"
+            "fascia": "Фасци"
           },
           "cartridges": {
             "1_5": {
-              "depth": "1.5mm",
-              "layer": "Epidermis",
-              "desc": "Fine lines, pores"
+              "depth": "1.5 мм",
+              "layer": "Эпидермис",
+              "desc": "Нарийн үрчлээ, нүхнүүд"
             },
             "3_0": {
-              "depth": "3.0mm",
-              "layer": "Dermis",
-              "desc": "Collagen regeneration"
+              "depth": "3.0 мм",
+              "layer": "Дермис",
+              "desc": "Коллагены нөхөн төлжилт"
             },
             "4_5": {
-              "depth": "4.5mm",
-              "layer": "SMAS Layer",
-              "desc": "Lifting effect"
+              "depth": "4.5 мм",
+              "layer": "SMAS давхарга",
+              "desc": "Лифтинг нөлөө"
             },
             "6_0_9_0": {
-              "depth": "6.0/9.0mm",
-              "layer": "Deep Layer",
-              "desc": "Body, double chin"
+              "depth": "6.0/9.0 мм",
+              "layer": "Гүн давхарга",
+              "desc": "Бие, эрүүний доод хэсэг"
             }
           },
           "rapidShot": {
-            "highSpeedShot": "⚡ HIGH-SPEED SHOT",
+            "highSpeedShot": "⚡ ӨНДӨР ХУРДНЫ ШИДЭЛТ",
             "conventional": {
-              "title": "Conventional HIFU",
-              "shotsPerSec": "1-2 shots/sec",
-              "duration": "60+ min treatment"
+              "title": "Уламжлалт HIFU",
+              "shotsPerSec": "1-2 шидэлт/сек",
+              "duration": "60+ мин эмчилгээ"
             },
             "shurink": {
               "title": "Shurink",
-              "shotsPerSec": "7+ shots/sec",
-              "duration": "30 min treatment"
+              "shotsPerSec": "7+ шидэлт/сек",
+              "duration": "30 мин эмчилгээ"
             },
-            "speedBadge": "3x Faster"
+            "speedBadge": "3 дахин хурдан"
           },
           "hero": {
-            "badge": "HIFU LIFTING",
-            "title": "The New Standard of High-Speed Lifting",
-            "description": "Developed with Korean technology, Shurink delivers <strong>7 shots per second</strong> with rapid-fire technology for fast and uniform energy delivery. Multiple cartridges enable precise customized treatment for each skin layer depth.",
+            "badge": "HIFU ЛИФТИНГ",
+            "title": "Өндөр хурдны лифтингийн шинэ стандарт",
+            "description": "Солонгосын технологиор хөгжүүлсэн Shurink нь хурдан, жигд эрчим хүчний дамжуулалттай <strong>секундэд 7 шидэлт</strong> хийдэг түргэн шидэлтийн технологийг ашигладаг. Олон төрлийн картрижууд нь арьсны давхарга бүрийн гүнд тохирсон нарийвчилсан, тохируулсан эмчилгээ хийх боломжийг олгоно.",
             "stats": {
               "speed": {
-                "value": "7/sec",
-                "label": "Rapid Shots"
+                "value": "7/сек",
+                "label": "Түргэн шидэлт"
               },
               "time": {
-                "value": "30min",
-                "label": "Treatment Time"
+                "value": "30 мин",
+                "label": "Эмчилгээний хугацаа"
               },
               "cartridges": {
-                "value": "4 Types",
-                "label": "Cartridges"
+                "value": "4 төрөл",
+                "label": "Картриж"
               }
             }
           },
@@ -1808,11 +1808,11 @@
             }
           ],
           "about": {
-            "sectionLabel": "About Shurink",
-            "title": "What is Shurink?",
-            "description": "Shurink is a HIFU (High-Intensity Focused Ultrasound) device developed in Korea, featuring <strong>7+ rapid shots per second</strong> technology for fast and uniform energy delivery. With cartridges ranging from 1.5mm to 9.0mm depths, it precisely targets from the epidermis to the SMAS layer.",
+            "sectionLabel": "Shurink-ийн тухай",
+            "title": "Shurink гэж юу вэ?",
+            "description": "Shurink бол Солонгост хөгжүүлсэн HIFU (Өндөр эрчимт фокусласан хэт авиан) төхөөрөмж бөгөөд хурдан, жигд эрчим хүчний дамжуулалтад <strong>секундэд 7+ түргэн шидэлт</strong>-ийн технологийг ашиглана. 1.5 мм-ээс 9.0 мм хүртэлх гүнтэй картрижуудтайгаар эпидермисээс эхлэн SMAS давхрагыг хүртэл нарийн чанартай чиглүүлдэг.",
             "hifuPrinciple": {
-              "title": "HIFU Principle",
+              "title": "HIFU-ийн зарчим",
               "steps": [
                 {
                   "title": "Focused Ultrasound",
@@ -1830,58 +1830,58 @@
             }
           },
           "advantages": {
-            "sectionLabel": "Premium HIFU",
-            "title": "Shurink <span class=\"text-[#00D4FF]\">Advantages</span>",
-            "titlePlain": "Shurink Advantages",
-            "subtitle": "Developed with Korean technology, Shurink offers fast treatment and customized lifting with various cartridges"
+            "sectionLabel": "Премиум HIFU",
+            "title": "Shurink-ийн <span class=\"text-[#00D4FF]\">давуу талууд</span>",
+            "titlePlain": "Shurink-ийн давуу талууд",
+            "subtitle": "Солонгосын технологиор хөгжүүлсэн Shurink нь хурдан эмчилгээ болон олон төрлийн картрижтай хувийн лифтинг үйлчилгээг санал болгодог"
           },
           "rapidShotSection": {
-            "title": "<span class=\"text-[#00D4FF]\">Rapid Shot</span> Technology",
-            "titlePlain": "Rapid Shot Technology",
-            "subtitle": "Shurink's rapid shot technology significantly reduces treatment time while delivering uniform energy",
+            "title": "<span class=\"text-[#00D4FF]\">Rapid Shot</span> технологи",
+            "titlePlain": "Rapid Shot технологи",
+            "subtitle": "Shurink-ийн түргэн шидэлтийн технологи нь эрчим хүчийг жигд дамжуулахын зэрэгцээ эмчилгээний хугацааг ихээхэн багасгадаг",
             "stats": {
               "duration": {
-                "value": "30 min",
-                "label": "Treatment Time",
-                "desc": "50% faster than before"
+                "value": "30 мин",
+                "label": "Эмчилгээний хугацаа",
+                "desc": "Өмнөхтэй харьцуулахад 50% хурдан"
               },
               "shotsPerSec": {
-                "value": "7/sec",
-                "label": "Rapid Shots",
-                "desc": "Uniform energy delivery"
+                "value": "7/сек",
+                "label": "Түргэн шидэлт",
+                "desc": "Жигд эрчим хүчний дамжуулалт"
               },
               "cartridges": {
-                "value": "4 Types",
-                "label": "Custom Cartridges",
-                "desc": "Optimized for each area"
+                "value": "4 төрөл",
+                "label": "Тохируулсан картриж",
+                "desc": "Хэсэг бүрд оновчтой"
               }
             }
           },
           "cartridgeSection": {
-            "title": "Multiple <span class=\"text-[#00D4FF]\">Cartridge</span> System",
-            "titlePlain": "Multiple Cartridge System",
-            "subtitle": "Precise customized treatment with cartridges optimized for each skin layer depth"
+            "title": "Олон <span class=\"text-[#00D4FF]\">картрижтай</span> систем",
+            "titlePlain": "Олон картрижтай систем",
+            "subtitle": "Арьсны давхарга бүрийн гүнд оновчтой картрижуудаар нарийвчилсан, тохируулсан эмчилгээ"
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Shurink can treat the entire face and neck area, with customized treatment using optimized cartridges for each area."
+            "title": "Эмчилгээний хэсгүүд",
+            "subtitle": "Shurink нь нүүр, хүзүүний бүх хэсгийг эмчилж чадах ба хэсэг бүрд тохируулсан оновчтой картрижуудыг ашигладаг."
           },
           "treatmentInfo": {
-            "title": "Treatment <span class=\"text-[#00D4FF]\">Info</span>",
-            "titlePlain": "Treatment Info",
+            "title": "Эмчилгээний <span class=\"text-[#00D4FF]\">мэдээлэл</span>",
+            "titlePlain": "Эмчилгээний мэдээлэл",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results Duration"
+              "duration": "Эмчилгээний хугацаа",
+              "anesthesia": "Мэдээ алдуулалт",
+              "recovery": "Сэргэлт",
+              "results": "Үр дүнгийн үргэлжлэх хугацаа"
             }
           },
           "comparison": {
             "title": "Ultherapy Prime vs <span class=\"text-[#00D4FF]\">Shurink</span>",
             "titlePlain": "Ultherapy Prime vs Shurink",
-            "subtitle": "Compare the characteristics of both HIFU devices to choose the right treatment for you",
+            "subtitle": "HIFU хоёр төхөөрөмжийн онцлогийг харьцуулж танд тохирох эмчилгээг сонгоорой",
             "headers": {
-              "feature": "Comparison",
+              "feature": "Харьцуулалт",
               "ulthera": "Ultherapy Prime",
               "shurink": "Shurink"
             },
@@ -1924,118 +1924,118 @@
             ]
           },
           "faq": {
-            "title": "Frequently Asked <span class=\"text-[#00D4FF]\">Questions</span>",
-            "titlePlain": "Frequently Asked Questions",
-            "relatedQa": "Related Medical Q&A",
-            "moreLink": "View More Q&A"
+            "title": "Түгээмэл асуулт <span class=\"text-[#00D4FF]\">хариулт</span>",
+            "titlePlain": "Түгээмэл асуулт хариулт",
+            "relatedQa": "Холбоотой эмнэлгийн Q&A",
+            "moreLink": "Илүү олон Q&A үзэх"
           },
           "cautions": {
-            "title": "Treatment <span class=\"text-[#00D4FF]\">Precautions</span>",
-            "titlePlain": "Treatment Precautions"
+            "title": "Эмчилгээний <span class=\"text-[#00D4FF]\">анхааруулга</span>",
+            "titlePlain": "Эмчилгээний анхааруулга"
           },
           "cta": {
-            "title": "Book Shurink Consultation",
-            "description": "Experience youthful skin with fast and effective HIFU lifting. Our experts will create a customized treatment plan for you.",
-            "onlineButton": "Book Online Consultation",
-            "phoneButton": "Phone Consultation"
+            "title": "Shurink зөвлөгөө захиалах",
+            "description": "Хурдан бөгөөд үр дүнтэй HIFU лифтингээр залуу арьсыг эргүүлэн авна уу. Манай мэргэжилтнүүд танд зориулсан хувийн эмчилгээний төлөвлөгөө гаргана.",
+            "onlineButton": "Онлайнаар зөвлөгөө захиалах",
+            "phoneButton": "Утсаар зөвлөгөө"
           }
         },
         "ui": {
-          "layerEpidermis": "Epidermis",
-          "layerDermis": "Dermis",
-          "layerFascia": "Fascia",
-          "layerEpidermisBox": "Epidermal Layer",
-          "layerDermisBox": "Dermal Layer",
-          "layerDeepBox": "Deep Layer",
-          "fineWrinklesPores": "Fine wrinkles, pores",
-          "collagenRegen": "Collagen regeneration",
-          "liftingEffect": "Lifting effect",
-          "bodyDoubleChin": "Body, double chin",
-          "legacyHifu": "Legacy HIFU",
+          "layerEpidermis": "Эпидермис",
+          "layerDermis": "Дермис",
+          "layerFascia": "Фасци",
+          "layerEpidermisBox": "Эпидермисийн давхарга",
+          "layerDermisBox": "Дермисийн давхарга",
+          "layerDeepBox": "Гүн давхарга",
+          "fineWrinklesPores": "Нарийн үрчлээ, нүхнүүд",
+          "collagenRegen": "Коллагены нөхөн төлжилт",
+          "liftingEffect": "Лифтинг нөлөө",
+          "bodyDoubleChin": "Бие, эрүүний доод хэсэг",
+          "legacyHifu": "Уламжлалт HIFU",
           "shurinkLabel": "Shurink",
-          "shotsLegacy": "1-2 shots/sec",
-          "timeLegacy": "60+ min treatment",
-          "shotsShurink": "7+ shots/sec",
-          "timeShurink": "~30 min treatment",
-          "threeXFaster": "3× faster",
-          "diagramAlt": "Shurink HIFU treatment area diagram"
+          "shotsLegacy": "1-2 шидэлт/сек",
+          "timeLegacy": "60+ мин эмчилгээ",
+          "shotsShurink": "7+ шидэлт/сек",
+          "timeShurink": "~30 мин эмчилгээ",
+          "threeXFaster": "3× хурдан",
+          "diagramAlt": "Shurink HIFU эмчилгээний хэсгийн диаграмм"
         }
       },
       "thread": {
-        "name": "Thread Lift",
-        "fullName": "Thread Lift",
-        "tagline": "Immediate Lifting with PDO Threads",
-        "description": "Biodegradable threads are inserted under the skin for immediate lifting effect and collagen stimulation.",
+        "name": "Утсан лифтинг",
+        "fullName": "Утсан лифтинг",
+        "tagline": "PDO утсаар яаралтай лифтинг",
+        "description": "Биологийн задралд орох утсуудыг арьсан доор оруулж, шууд лифтинг нөлөө болон коллагены идэвхжүүлэлтийг бий болгоно.",
         "detail": {
           "skinLayers": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "subcutaneous": "Subcutaneous",
+            "epidermis": "Эпидермис",
+            "dermis": "Дермис",
+            "subcutaneous": "Арьсан доорхи",
             "smas": "SMAS"
           },
-          "liftingEffect": "↑ LIFTING EFFECT ↑",
+          "liftingEffect": "↑ ЛИФТИНГИЙН НӨЛӨӨ ↑",
           "threadTypes": {
             "pdo": {
               "name": "PDO",
               "fullName": "Polydioxanone",
-              "absorptionPeriod": "Absorption: 6-8 months",
+              "absorptionPeriod": "Шингээлт: 6-8 сар",
               "types": "Mono, Cog, Screw",
-              "note": "Most widely used"
+              "note": "Хамгийн өргөн хэрэглэдэг"
             },
             "plla": {
               "name": "PLLA",
               "fullName": "Poly-L-Lactic Acid",
-              "absorptionPeriod": "Absorption: 12-18 months",
-              "feature": "Collagen stimulation",
-              "note": "Premium"
+              "absorptionPeriod": "Шингээлт: 12-18 сар",
+              "feature": "Коллагены идэвхжүүлэлт",
+              "note": "Премиум"
             },
             "pcl": {
               "name": "PCL",
               "fullName": "Polycaprolactone",
-              "absorptionPeriod": "Absorption: 18-24 months",
-              "feature": "Longest lasting",
-              "note": "High-end"
+              "absorptionPeriod": "Шингээлт: 18-24 сар",
+              "feature": "Хамгийн удаан үргэлжилдэг",
+              "note": "Дээд зэргийн"
             }
           },
           "collagenTimeline": {
             "immediate": {
-              "phase": "Immediately After",
-              "title": "Instant Lifting",
-              "desc": "Physical pulling effect"
+              "phase": "Шууд дараа",
+              "title": "Шууд лифтинг",
+              "desc": "Физик татах нөлөө"
             },
             "oneToTwo": {
-              "phase": "1-2 Months Later",
-              "title": "Collagen Production Begins",
-              "desc": "Fibroblast activation"
+              "phase": "1-2 сарын дараа",
+              "title": "Коллагены үйлдвэрлэл эхлэх",
+              "desc": "Фибробластыг идэвхжүүлэх"
             },
             "threeToSix": {
-              "phase": "3-6 Months Later",
-              "title": "Collagen Remodeling Complete",
-              "desc": "Natural elasticity"
+              "phase": "3-6 сарын дараа",
+              "title": "Коллагены дахин загварчлал дуусах",
+              "desc": "Байгалийн уян хатан байдал"
             }
           },
           "treatmentAreas": {
-            "forehead": "Forehead",
-            "cheekbone": "Cheekbone",
-            "cheek": "Cheek",
-            "nasolabial": "Nasolabial Folds",
-            "jawline": "Jawline",
-            "neck": "Neck"
+            "forehead": "Магнай",
+            "cheekbone": "Зулай",
+            "cheek": "Хацар",
+            "nasolabial": "Хамар-уруулын нугалаа",
+            "jawline": "Эрүүний шугам",
+            "neck": "Хүзүү"
           },
           "hero": {
-            "badge": "THREAD LIFTING"
+            "badge": "УТСАН ЛИФТИНГ"
           },
           "advantages": {
-            "sectionLabel": "Premium Thread",
-            "title": "<span class=\"text-[#D4AF37]\">Benefits</span> of Thread Lifting",
-            "description": "Experience immediate lifting and long-term collagen regeneration with dissolvable threads"
+            "sectionLabel": "Премиум утас",
+            "title": "Утсан лифтингийн <span class=\"text-[#D4AF37]\">давуу талууд</span>",
+            "description": "Уусдаг утсуудаар шууд лифтинг болон удаан хугацааны коллагены нөхөн төлжилтийг мэдэрнэ үү"
           },
           "threadTypesSection": {
-            "title": "Various <span class=\"text-[#D4AF37]\">Thread Types</span>",
-            "description": "Select the optimal thread type based on treatment goals and desired results",
+            "title": "Янз бүрийн <span class=\"text-[#D4AF37]\">утасны төрөл</span>",
+            "description": "Эмчилгээний зорилго болон хүсэн хүлээж буй үр дүнд тулгуурлан утасны оновчтой төрлийг сонгоорой",
             "pdoCard": {
               "title": "PDO",
-              "subtitle": "Most Popular Choice",
+              "subtitle": "Хамгийн алдартай сонголт",
               "features": [
                 "Natural absorption in 6-8 months",
                 "Mono/Cog/Screw types",
@@ -2044,7 +2044,7 @@
             },
             "pllaCard": {
               "title": "PLLA",
-              "subtitle": "Collagen Booster",
+              "subtitle": "Коллагены бустер",
               "features": [
                 "Lasts 12-18 months",
                 "Stimulates collagen production",
@@ -2053,7 +2053,7 @@
             },
             "pclCard": {
               "title": "PCL",
-              "subtitle": "Longest Lasting",
+              "subtitle": "Хамгийн удаан үргэлжилдэг",
               "features": [
                 "Lasts 18-24 months",
                 "Soft texture",
@@ -2062,32 +2062,32 @@
             }
           },
           "collagenSection": {
-            "title": "<span class=\"text-[#D4AF37]\">Collagen Regeneration</span> Process",
-            "description": "As the threads dissolve, they stimulate collagen production for natural elasticity"
+            "title": "<span class=\"text-[#D4AF37]\">Коллагены нөхөн төлжилтийн</span> үйл явц",
+            "description": "Утсууд уусахын хэрээр коллагены үйлдвэрлэлийг идэвхжүүлж байгалийн уян хатан байдлыг бий болгодог"
           },
           "targetAreasSection": {
-            "title": "Treatment Areas",
-            "description": "Customized thread treatment is available from the entire face to the neck. The appropriate thread type and quantity are applied according to each area's characteristics."
+            "title": "Эмчилгээний хэсгүүд",
+            "description": "Бүх нүүрнээс хүзүү хүртэлх хэсэгт тохируулсан утсан эмчилгээг хийх боломжтой. Хэсэг бүрийн онцлогт тохирсон утасны төрөл болон тоо хэмжээг хэрэглэдэг."
           },
           "processSection": {
-            "title": "Treatment Process"
+            "title": "Эмчилгээний явц"
           },
           "treatmentInfo": {
-            "title": "Treatment <span class=\"text-[#D4AF37]\">Information</span>",
+            "title": "Эмчилгээний <span class=\"text-[#D4AF37]\">мэдээлэл</span>",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results Last"
+              "duration": "Үргэлжлэх хугацаа",
+              "anesthesia": "Мэдээ алдуулалт",
+              "recovery": "Сэргэлт",
+              "results": "Үр дүн үргэлжлэх"
             }
           },
           "comparison": {
-            "title": "Laser Lifting vs <span class=\"text-[#D4AF37]\">Thread Lifting</span>",
-            "description": "Compare the characteristics of each treatment to make the right choice for you",
+            "title": "Лазер лифтинг vs <span class=\"text-[#D4AF37]\">Утсан лифтинг</span>",
+            "description": "Эмчилгээ бүрийн онцлогийг харьцуулж танд тохирох сонголт хийгээрэй",
             "headers": {
-              "item": "Comparison",
-              "laser": "Laser Lifting",
-              "thread": "Thread Lifting"
+              "item": "Харьцуулалт",
+              "laser": "Лазер лифтинг",
+              "thread": "Утсан лифтинг"
             },
             "rows": [
               {
@@ -2128,36 +2128,36 @@
             ]
           },
           "recommended": {
-            "title": "Recommended For"
+            "title": "Дараах хүмүүст санал болгоно"
           },
           "faq": {
-            "title": "Frequently Asked Questions",
-            "relatedQA": "Related Medical Q&A",
-            "moreButton": "View More Q&A"
+            "title": "Түгээмэл асуулт хариулт",
+            "relatedQA": "Холбоотой эмнэлгийн Q&A",
+            "moreButton": "Илүү олон Q&A үзэх"
           },
           "cautions": {
-            "title": "Treatment <span class=\"text-[#D4AF37]\">Precautions</span>"
+            "title": "Эмчилгээний <span class=\"text-[#D4AF37]\">анхааруулга</span>"
           },
           "cta": {
-            "title": "Book Thread Lift Consultation",
-            "description": "Achieve a V-line with instant lifting and natural collagen regeneration. Our expert consultation will guide you to the optimal thread type and treatment plan.",
-            "consultButton": "Book Online Consultation",
-            "callButton": "Call 02-797-2773"
+            "title": "Утсан лифтинг зөвлөгөө захиалах",
+            "description": "Шууд лифтинг болон байгалийн коллагены нөхөн төлжилтөөр V-шугамыг бий болгоорой. Манай мэргэжилтэн зөвлөгөөгөөр танд оновчтой утасны төрөл болон эмчилгээний төлөвлөгөөг танилцуулна.",
+            "consultButton": "Онлайнаар зөвлөгөө захиалах",
+            "callButton": "02-797-2773 руу залгах"
           }
         },
         "ui": {
-          "diagramAlt": "Thread Lift treatment area diagram"
+          "diagramAlt": "Утсан лифтингийн эмчилгээний хэсгийн диаграмм"
         }
       },
       "aptos": {
         "name": "APTOS Bio Lifting",
         "fullName": "APTOS Bio Lifting",
-        "tagline": "Premium Thread Lifting",
-        "description": "Premium lifting threads from Georgia providing natural and long-lasting lifting effects.",
+        "tagline": "Премиум утсан лифтинг",
+        "description": "Гүрж улсаас ирсэн премиум лифтингийн утсууд бөгөөд байгалийн, удаан үргэлжлэх лифтинг үр дүнг бий болгоно.",
         "detail": {
           "namicaIllustration": {
-            "title": "NAMICA Technology",
-            "subtitle": "40mg Hyaluronic Acid Staged Release"
+            "title": "NAMICA технологи",
+            "subtitle": "40 мг гиалуроны хүчлийн үе шаттай ялгаралт"
           },
           "phaseEffects": [
             {
@@ -2212,15 +2212,15 @@
             }
           ],
           "hero": {
-            "badge": "4th Generation Bio Lifting",
+            "badge": "4-р үеийн Био Лифтинг",
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
-            "description": "The original brand of facial tissue fixation threads used in over 100 countries worldwide",
-            "durationLabel": "Duration",
-            "durationValue": "Up to 24 months"
+            "description": "Дэлхийн 100 гаруй улсад хэрэглэгддэг нүүрний эдийг бэхлэх утсуудын анхны брэнд",
+            "durationLabel": "Үргэлжлэх хугацаа",
+            "durationValue": "24 сар хүртэл"
           },
           "namicaSection": {
-            "title": "NAMICA Technology",
-            "description": "<strong class=\"text-secondary\">NAMICA (Nano & Micro Encapsulated Particles)</strong> is an innovative drug delivery system that encapsulates 40mg of hyaluronic acid into nano, sub-micro, and micro units for staged release.",
+            "title": "NAMICA технологи",
+            "description": "<strong class=\"text-secondary\">NAMICA (Nano & Micro Encapsulated Particles)</strong> бол 40 мг гиалуроны хүчлийг нано, суб-микро болон микро нэгжид багцалж үе шаттайгаар ялгаруулдаг шинэлэг эмийн дамжуулагч систем юм.",
             "features": [
               {
                 "icon": "🌍",
@@ -2241,26 +2241,26 @@
             ]
           },
           "phaseSection": {
-            "title": "3-Phase Staged Effect",
-            "description": "The core of NAMICA technology is staged hyaluronic acid release based on particle size"
+            "title": "3 үе шаттай үр нөлөө",
+            "description": "NAMICA технологийн гол цөм нь хэсэглэгчийн хэмжээнд тулгуурласан гиалуроны хүчлийн үе шаттай ялгаралт юм"
           },
           "certificationsSection": {
-            "title": "Global Standard Safety Certifications"
+            "title": "Дэлхийн стандартын аюулгүй байдлын гэрчилгээ"
           },
           "trainingSection": {
-            "title": "Globally Certified Training",
-            "description": "Dr. Kim Sooyoung of LIV completed the Professional Course at APTOS headquarters in Georgia and participated in procedures to acquire the latest techniques.",
+            "title": "Олон улсын хэмжээнд баталгаажсан сургалт",
+            "description": "LIV-ийн доктор Kim Sooyoung Гүрж улс дахь APTOS төв байранд Professional Course-ыг төгсөж, шинэхэн техникүүдийг эзэмшихийн тулд эмчилгээнд оролцсон.",
             "certificateTitle": "APTOS Professional Course Certificate",
             "certificateName": "Kim Sooyoung · KR0062025",
-            "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
+            "certificateIssuer": "G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD нараар гэрчлэгдсэн"
           },
           "cta": {
-            "title": "Book APTOS Bio Lifting Consultation",
-            "description": "Our globally certified specialist provides personalized 1:1 consultation",
-            "button": "Book Consultation"
+            "title": "APTOS Bio Lifting зөвлөгөө захиалах",
+            "description": "Дэлхийн хэмжээнд баталгаажсан мэргэжилтэн 1:1 хувийн зөвлөгөө өгнө",
+            "button": "Зөвлөгөө захиалах"
           },
           "lineupSection": {
-            "title": "An Overwhelming Lineup for Every Face Shape",
+            "title": "Нүүрний бүх төрөлд тохирсон давуу шугам",
             "positioning": [
               {
                 "code": "LL25",

@@ -1721,67 +1721,67 @@
       "shurink": {
         "name": "Shurink",
         "fullName": "Shurink Universe",
-        "tagline": "HIFU Lifting",
-        "description": "A lifting treatment using high-intensity focused ultrasound to lift sagging skin.",
+        "tagline": "Lifting HIFU",
+        "description": "Un traitement de lifting utilisant des ultrasons focalisés de haute intensité pour redresser la peau relâchée.",
         "detail": {
           "skinLayers": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
+            "epidermis": "Épiderme",
+            "dermis": "Derme",
             "smas": "SMAS",
             "fascia": "Fascia"
           },
           "cartridges": {
             "1_5": {
-              "depth": "1.5mm",
-              "layer": "Epidermis",
-              "desc": "Fine lines, pores"
+              "depth": "1,5 mm",
+              "layer": "Épiderme",
+              "desc": "Ridules, pores"
             },
             "3_0": {
-              "depth": "3.0mm",
-              "layer": "Dermis",
-              "desc": "Collagen regeneration"
+              "depth": "3,0 mm",
+              "layer": "Derme",
+              "desc": "Régénération du collagène"
             },
             "4_5": {
-              "depth": "4.5mm",
-              "layer": "SMAS Layer",
-              "desc": "Lifting effect"
+              "depth": "4,5 mm",
+              "layer": "Couche SMAS",
+              "desc": "Effet liftant"
             },
             "6_0_9_0": {
-              "depth": "6.0/9.0mm",
-              "layer": "Deep Layer",
-              "desc": "Body, double chin"
+              "depth": "6,0/9,0 mm",
+              "layer": "Couche profonde",
+              "desc": "Corps, double menton"
             }
           },
           "rapidShot": {
-            "highSpeedShot": "⚡ HIGH-SPEED SHOT",
+            "highSpeedShot": "⚡ TIR HAUTE VITESSE",
             "conventional": {
-              "title": "Conventional HIFU",
-              "shotsPerSec": "1-2 shots/sec",
-              "duration": "60+ min treatment"
+              "title": "HIFU conventionnel",
+              "shotsPerSec": "1-2 tirs/sec",
+              "duration": "Traitement de plus de 60 min"
             },
             "shurink": {
               "title": "Shurink",
-              "shotsPerSec": "7+ shots/sec",
-              "duration": "30 min treatment"
+              "shotsPerSec": "7+ tirs/sec",
+              "duration": "Traitement de 30 min"
             },
-            "speedBadge": "3x Faster"
+            "speedBadge": "3× plus rapide"
           },
           "hero": {
-            "badge": "HIFU LIFTING",
-            "title": "The New Standard of High-Speed Lifting",
-            "description": "Developed with Korean technology, Shurink delivers <strong>7 shots per second</strong> with rapid-fire technology for fast and uniform energy delivery. Multiple cartridges enable precise customized treatment for each skin layer depth.",
+            "badge": "LIFTING HIFU",
+            "title": "Le nouveau standard du lifting haute vitesse",
+            "description": "Développé avec la technologie coréenne, Shurink délivre <strong>7 tirs par seconde</strong> grâce à une technologie de tir rapide pour une diffusion d'énergie rapide et uniforme. Plusieurs cartouches permettent un traitement précis et personnalisé à chaque profondeur des couches cutanées.",
             "stats": {
               "speed": {
                 "value": "7/sec",
-                "label": "Rapid Shots"
+                "label": "Tirs rapides"
               },
               "time": {
-                "value": "30min",
-                "label": "Treatment Time"
+                "value": "30 min",
+                "label": "Durée du traitement"
               },
               "cartridges": {
-                "value": "4 Types",
-                "label": "Cartridges"
+                "value": "4 types",
+                "label": "Cartouches"
               }
             }
           },
@@ -1808,11 +1808,11 @@
             }
           ],
           "about": {
-            "sectionLabel": "About Shurink",
-            "title": "What is Shurink?",
-            "description": "Shurink is a HIFU (High-Intensity Focused Ultrasound) device developed in Korea, featuring <strong>7+ rapid shots per second</strong> technology for fast and uniform energy delivery. With cartridges ranging from 1.5mm to 9.0mm depths, it precisely targets from the epidermis to the SMAS layer.",
+            "sectionLabel": "À propos de Shurink",
+            "title": "Qu'est-ce que Shurink ?",
+            "description": "Shurink est un appareil HIFU (ultrasons focalisés de haute intensité) développé en Corée, doté d'une technologie de <strong>plus de 7 tirs rapides par seconde</strong> pour une diffusion d'énergie rapide et uniforme. Avec des cartouches couvrant des profondeurs de 1,5 mm à 9,0 mm, il cible précisément de l'épiderme à la couche SMAS.",
             "hifuPrinciple": {
-              "title": "HIFU Principle",
+              "title": "Principe du HIFU",
               "steps": [
                 {
                   "title": "Focused Ultrasound",
@@ -1830,58 +1830,58 @@
             }
           },
           "advantages": {
-            "sectionLabel": "Premium HIFU",
-            "title": "Shurink <span class=\"text-[#00D4FF]\">Advantages</span>",
-            "titlePlain": "Shurink Advantages",
-            "subtitle": "Developed with Korean technology, Shurink offers fast treatment and customized lifting with various cartridges"
+            "sectionLabel": "HIFU premium",
+            "title": "<span class=\"text-[#00D4FF]\">Avantages</span> de Shurink",
+            "titlePlain": "Avantages de Shurink",
+            "subtitle": "Développé avec la technologie coréenne, Shurink offre un traitement rapide et un lifting personnalisé avec différentes cartouches"
           },
           "rapidShotSection": {
-            "title": "<span class=\"text-[#00D4FF]\">Rapid Shot</span> Technology",
-            "titlePlain": "Rapid Shot Technology",
-            "subtitle": "Shurink's rapid shot technology significantly reduces treatment time while delivering uniform energy",
+            "title": "Technologie <span class=\"text-[#00D4FF]\">Rapid Shot</span>",
+            "titlePlain": "Technologie Rapid Shot",
+            "subtitle": "La technologie de tir rapide de Shurink réduit considérablement la durée du traitement tout en délivrant une énergie uniforme",
             "stats": {
               "duration": {
                 "value": "30 min",
-                "label": "Treatment Time",
-                "desc": "50% faster than before"
+                "label": "Durée du traitement",
+                "desc": "50 % plus rapide qu'avant"
               },
               "shotsPerSec": {
                 "value": "7/sec",
-                "label": "Rapid Shots",
-                "desc": "Uniform energy delivery"
+                "label": "Tirs rapides",
+                "desc": "Diffusion d'énergie uniforme"
               },
               "cartridges": {
-                "value": "4 Types",
-                "label": "Custom Cartridges",
-                "desc": "Optimized for each area"
+                "value": "4 types",
+                "label": "Cartouches personnalisées",
+                "desc": "Optimisées pour chaque zone"
               }
             }
           },
           "cartridgeSection": {
-            "title": "Multiple <span class=\"text-[#00D4FF]\">Cartridge</span> System",
-            "titlePlain": "Multiple Cartridge System",
-            "subtitle": "Precise customized treatment with cartridges optimized for each skin layer depth"
+            "title": "Système de <span class=\"text-[#00D4FF]\">cartouches</span> multiples",
+            "titlePlain": "Système de cartouches multiples",
+            "subtitle": "Traitement précis et personnalisé grâce à des cartouches optimisées pour chaque profondeur des couches cutanées"
           },
           "targetAreas": {
-            "title": "Treatment Areas",
-            "subtitle": "Shurink can treat the entire face and neck area, with customized treatment using optimized cartridges for each area."
+            "title": "Zones de traitement",
+            "subtitle": "Shurink peut traiter l'ensemble du visage et du cou, avec un traitement personnalisé utilisant des cartouches optimisées pour chaque zone."
           },
           "treatmentInfo": {
-            "title": "Treatment <span class=\"text-[#00D4FF]\">Info</span>",
-            "titlePlain": "Treatment Info",
+            "title": "<span class=\"text-[#00D4FF]\">Informations</span> sur le traitement",
+            "titlePlain": "Informations sur le traitement",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results Duration"
+              "duration": "Durée du traitement",
+              "anesthesia": "Anesthésie",
+              "recovery": "Récupération",
+              "results": "Durée des résultats"
             }
           },
           "comparison": {
             "title": "Ultherapy Prime vs <span class=\"text-[#00D4FF]\">Shurink</span>",
             "titlePlain": "Ultherapy Prime vs Shurink",
-            "subtitle": "Compare the characteristics of both HIFU devices to choose the right treatment for you",
+            "subtitle": "Comparez les caractéristiques des deux appareils HIFU pour choisir le traitement qui vous convient",
             "headers": {
-              "feature": "Comparison",
+              "feature": "Comparaison",
               "ulthera": "Ultherapy Prime",
               "shurink": "Shurink"
             },
@@ -1924,118 +1924,118 @@
             ]
           },
           "faq": {
-            "title": "Frequently Asked <span class=\"text-[#00D4FF]\">Questions</span>",
-            "titlePlain": "Frequently Asked Questions",
-            "relatedQa": "Related Medical Q&A",
-            "moreLink": "View More Q&A"
+            "title": "<span class=\"text-[#00D4FF]\">Questions</span> fréquentes",
+            "titlePlain": "Questions fréquentes",
+            "relatedQa": "Q&R médicales associées",
+            "moreLink": "Voir plus de Q&R"
           },
           "cautions": {
-            "title": "Treatment <span class=\"text-[#00D4FF]\">Precautions</span>",
-            "titlePlain": "Treatment Precautions"
+            "title": "<span class=\"text-[#00D4FF]\">Précautions</span> liées au traitement",
+            "titlePlain": "Précautions liées au traitement"
           },
           "cta": {
-            "title": "Book Shurink Consultation",
-            "description": "Experience youthful skin with fast and effective HIFU lifting. Our experts will create a customized treatment plan for you.",
-            "onlineButton": "Book Online Consultation",
-            "phoneButton": "Phone Consultation"
+            "title": "Réservez une consultation Shurink",
+            "description": "Retrouvez une peau jeune grâce à un lifting HIFU rapide et efficace. Nos experts élaboreront un plan de traitement personnalisé pour vous.",
+            "onlineButton": "Réserver une consultation en ligne",
+            "phoneButton": "Consultation téléphonique"
           }
         },
         "ui": {
-          "layerEpidermis": "Epidermis",
-          "layerDermis": "Dermis",
+          "layerEpidermis": "Épiderme",
+          "layerDermis": "Derme",
           "layerFascia": "Fascia",
-          "layerEpidermisBox": "Epidermal Layer",
-          "layerDermisBox": "Dermal Layer",
-          "layerDeepBox": "Deep Layer",
-          "fineWrinklesPores": "Fine wrinkles, pores",
-          "collagenRegen": "Collagen regeneration",
-          "liftingEffect": "Lifting effect",
-          "bodyDoubleChin": "Body, double chin",
-          "legacyHifu": "Legacy HIFU",
+          "layerEpidermisBox": "Couche épidermique",
+          "layerDermisBox": "Couche dermique",
+          "layerDeepBox": "Couche profonde",
+          "fineWrinklesPores": "Ridules, pores",
+          "collagenRegen": "Régénération du collagène",
+          "liftingEffect": "Effet liftant",
+          "bodyDoubleChin": "Corps, double menton",
+          "legacyHifu": "HIFU traditionnel",
           "shurinkLabel": "Shurink",
-          "shotsLegacy": "1-2 shots/sec",
-          "timeLegacy": "60+ min treatment",
-          "shotsShurink": "7+ shots/sec",
-          "timeShurink": "~30 min treatment",
-          "threeXFaster": "3× faster",
-          "diagramAlt": "Shurink HIFU treatment area diagram"
+          "shotsLegacy": "1-2 tirs/sec",
+          "timeLegacy": "Traitement de plus de 60 min",
+          "shotsShurink": "7+ tirs/sec",
+          "timeShurink": "Traitement d'env. 30 min",
+          "threeXFaster": "3× plus rapide",
+          "diagramAlt": "Schéma des zones de traitement HIFU Shurink"
         }
       },
       "thread": {
-        "name": "Thread Lift",
-        "fullName": "Thread Lift",
-        "tagline": "Immediate Lifting with PDO Threads",
-        "description": "Biodegradable threads are inserted under the skin for immediate lifting effect and collagen stimulation.",
+        "name": "Lifting par fils",
+        "fullName": "Lifting par fils",
+        "tagline": "Lifting immédiat avec fils PDO",
+        "description": "Des fils biodégradables sont insérés sous la peau pour un effet liftant immédiat et une stimulation du collagène.",
         "detail": {
           "skinLayers": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "subcutaneous": "Subcutaneous",
+            "epidermis": "Épiderme",
+            "dermis": "Derme",
+            "subcutaneous": "Sous-cutané",
             "smas": "SMAS"
           },
-          "liftingEffect": "↑ LIFTING EFFECT ↑",
+          "liftingEffect": "↑ EFFET LIFTANT ↑",
           "threadTypes": {
             "pdo": {
               "name": "PDO",
               "fullName": "Polydioxanone",
-              "absorptionPeriod": "Absorption: 6-8 months",
+              "absorptionPeriod": "Absorption : 6-8 mois",
               "types": "Mono, Cog, Screw",
-              "note": "Most widely used"
+              "note": "Le plus utilisé"
             },
             "plla": {
               "name": "PLLA",
-              "fullName": "Poly-L-Lactic Acid",
-              "absorptionPeriod": "Absorption: 12-18 months",
-              "feature": "Collagen stimulation",
+              "fullName": "Acide poly-L-lactique",
+              "absorptionPeriod": "Absorption : 12-18 mois",
+              "feature": "Stimulation du collagène",
               "note": "Premium"
             },
             "pcl": {
               "name": "PCL",
               "fullName": "Polycaprolactone",
-              "absorptionPeriod": "Absorption: 18-24 months",
-              "feature": "Longest lasting",
-              "note": "High-end"
+              "absorptionPeriod": "Absorption : 18-24 mois",
+              "feature": "Durée la plus longue",
+              "note": "Haut de gamme"
             }
           },
           "collagenTimeline": {
             "immediate": {
-              "phase": "Immediately After",
-              "title": "Instant Lifting",
-              "desc": "Physical pulling effect"
+              "phase": "Immédiatement après",
+              "title": "Lifting instantané",
+              "desc": "Effet de traction physique"
             },
             "oneToTwo": {
-              "phase": "1-2 Months Later",
-              "title": "Collagen Production Begins",
-              "desc": "Fibroblast activation"
+              "phase": "1-2 mois plus tard",
+              "title": "Début de la production de collagène",
+              "desc": "Activation des fibroblastes"
             },
             "threeToSix": {
-              "phase": "3-6 Months Later",
-              "title": "Collagen Remodeling Complete",
-              "desc": "Natural elasticity"
+              "phase": "3-6 mois plus tard",
+              "title": "Remodelage du collagène terminé",
+              "desc": "Élasticité naturelle"
             }
           },
           "treatmentAreas": {
-            "forehead": "Forehead",
-            "cheekbone": "Cheekbone",
-            "cheek": "Cheek",
-            "nasolabial": "Nasolabial Folds",
-            "jawline": "Jawline",
-            "neck": "Neck"
+            "forehead": "Front",
+            "cheekbone": "Pommettes",
+            "cheek": "Joues",
+            "nasolabial": "Sillons nasogéniens",
+            "jawline": "Ovale du visage",
+            "neck": "Cou"
           },
           "hero": {
-            "badge": "THREAD LIFTING"
+            "badge": "LIFTING PAR FILS"
           },
           "advantages": {
-            "sectionLabel": "Premium Thread",
-            "title": "<span class=\"text-[#D4AF37]\">Benefits</span> of Thread Lifting",
-            "description": "Experience immediate lifting and long-term collagen regeneration with dissolvable threads"
+            "sectionLabel": "Fils premium",
+            "title": "<span class=\"text-[#D4AF37]\">Bénéfices</span> du lifting par fils",
+            "description": "Profitez d'un lifting immédiat et d'une régénération à long terme du collagène grâce à des fils résorbables"
           },
           "threadTypesSection": {
-            "title": "Various <span class=\"text-[#D4AF37]\">Thread Types</span>",
-            "description": "Select the optimal thread type based on treatment goals and desired results",
+            "title": "Différents <span class=\"text-[#D4AF37]\">types de fils</span>",
+            "description": "Choisissez le type de fil optimal en fonction des objectifs du traitement et des résultats souhaités",
             "pdoCard": {
               "title": "PDO",
-              "subtitle": "Most Popular Choice",
+              "subtitle": "Le choix le plus populaire",
               "features": [
                 "Natural absorption in 6-8 months",
                 "Mono/Cog/Screw types",
@@ -2044,7 +2044,7 @@
             },
             "pllaCard": {
               "title": "PLLA",
-              "subtitle": "Collagen Booster",
+              "subtitle": "Booster de collagène",
               "features": [
                 "Lasts 12-18 months",
                 "Stimulates collagen production",
@@ -2053,7 +2053,7 @@
             },
             "pclCard": {
               "title": "PCL",
-              "subtitle": "Longest Lasting",
+              "subtitle": "Durée la plus longue",
               "features": [
                 "Lasts 18-24 months",
                 "Soft texture",
@@ -2062,32 +2062,32 @@
             }
           },
           "collagenSection": {
-            "title": "<span class=\"text-[#D4AF37]\">Collagen Regeneration</span> Process",
-            "description": "As the threads dissolve, they stimulate collagen production for natural elasticity"
+            "title": "Processus de <span class=\"text-[#D4AF37]\">régénération du collagène</span>",
+            "description": "À mesure que les fils se dissolvent, ils stimulent la production de collagène pour une élasticité naturelle"
           },
           "targetAreasSection": {
-            "title": "Treatment Areas",
-            "description": "Customized thread treatment is available from the entire face to the neck. The appropriate thread type and quantity are applied according to each area's characteristics."
+            "title": "Zones de traitement",
+            "description": "Un traitement personnalisé par fils est disponible de l'ensemble du visage jusqu'au cou. Le type et la quantité de fils appropriés sont appliqués selon les caractéristiques de chaque zone."
           },
           "processSection": {
-            "title": "Treatment Process"
+            "title": "Déroulement du traitement"
           },
           "treatmentInfo": {
-            "title": "Treatment <span class=\"text-[#D4AF37]\">Information</span>",
+            "title": "<span class=\"text-[#D4AF37]\">Informations</span> sur le traitement",
             "labels": {
-              "duration": "Duration",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery",
-              "results": "Results Last"
+              "duration": "Durée",
+              "anesthesia": "Anesthésie",
+              "recovery": "Récupération",
+              "results": "Durée des résultats"
             }
           },
           "comparison": {
-            "title": "Laser Lifting vs <span class=\"text-[#D4AF37]\">Thread Lifting</span>",
-            "description": "Compare the characteristics of each treatment to make the right choice for you",
+            "title": "Lifting laser vs <span class=\"text-[#D4AF37]\">Lifting par fils</span>",
+            "description": "Comparez les caractéristiques de chaque traitement pour faire le bon choix",
             "headers": {
-              "item": "Comparison",
-              "laser": "Laser Lifting",
-              "thread": "Thread Lifting"
+              "item": "Comparaison",
+              "laser": "Lifting laser",
+              "thread": "Lifting par fils"
             },
             "rows": [
               {
@@ -2128,36 +2128,36 @@
             ]
           },
           "recommended": {
-            "title": "Recommended For"
+            "title": "Recommandé pour"
           },
           "faq": {
-            "title": "Frequently Asked Questions",
-            "relatedQA": "Related Medical Q&A",
-            "moreButton": "View More Q&A"
+            "title": "Questions fréquentes",
+            "relatedQA": "Q&R médicales associées",
+            "moreButton": "Voir plus de Q&R"
           },
           "cautions": {
-            "title": "Treatment <span class=\"text-[#D4AF37]\">Precautions</span>"
+            "title": "<span class=\"text-[#D4AF37]\">Précautions</span> liées au traitement"
           },
           "cta": {
-            "title": "Book Thread Lift Consultation",
-            "description": "Achieve a V-line with instant lifting and natural collagen regeneration. Our expert consultation will guide you to the optimal thread type and treatment plan.",
-            "consultButton": "Book Online Consultation",
-            "callButton": "Call 02-797-2773"
+            "title": "Réservez une consultation Lifting par fils",
+            "description": "Obtenez une ligne en V grâce à un lifting instantané et à une régénération naturelle du collagène. Notre consultation spécialisée vous guidera vers le type de fil et le plan de traitement optimaux.",
+            "consultButton": "Réserver une consultation en ligne",
+            "callButton": "Appeler le 02-797-2773"
           }
         },
         "ui": {
-          "diagramAlt": "Thread Lift treatment area diagram"
+          "diagramAlt": "Schéma des zones de traitement du lifting par fils"
         }
       },
       "aptos": {
         "name": "APTOS Bio Lifting",
         "fullName": "APTOS Bio Lifting",
-        "tagline": "Premium Thread Lifting",
-        "description": "Premium lifting threads from Georgia providing natural and long-lasting lifting effects.",
+        "tagline": "Lifting par fils premium",
+        "description": "Fils de lifting premium en provenance de Géorgie offrant un effet liftant naturel et durable.",
         "detail": {
           "namicaIllustration": {
-            "title": "NAMICA Technology",
-            "subtitle": "40mg Hyaluronic Acid Staged Release"
+            "title": "Technologie NAMICA",
+            "subtitle": "Libération étagée de 40 mg d'acide hyaluronique"
           },
           "phaseEffects": [
             {
@@ -2212,15 +2212,15 @@
             }
           ],
           "hero": {
-            "badge": "4th Generation Bio Lifting",
+            "badge": "Bio Lifting de 4ᵉ génération",
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
-            "description": "The original brand of facial tissue fixation threads used in over 100 countries worldwide",
-            "durationLabel": "Duration",
-            "durationValue": "Up to 24 months"
+            "description": "La marque d'origine des fils de fixation tissulaire faciale utilisée dans plus de 100 pays à travers le monde",
+            "durationLabel": "Durée",
+            "durationValue": "Jusqu'à 24 mois"
           },
           "namicaSection": {
-            "title": "NAMICA Technology",
-            "description": "<strong class=\"text-secondary\">NAMICA (Nano & Micro Encapsulated Particles)</strong> is an innovative drug delivery system that encapsulates 40mg of hyaluronic acid into nano, sub-micro, and micro units for staged release.",
+            "title": "Technologie NAMICA",
+            "description": "<strong class=\"text-secondary\">NAMICA (Nano & Micro Encapsulated Particles)</strong> est un système innovant d'administration de médicaments qui encapsule 40 mg d'acide hyaluronique en unités nano, sub-micro et micro pour une libération étagée.",
             "features": [
               {
                 "icon": "🌍",
@@ -2241,26 +2241,26 @@
             ]
           },
           "phaseSection": {
-            "title": "3-Phase Staged Effect",
-            "description": "The core of NAMICA technology is staged hyaluronic acid release based on particle size"
+            "title": "Effet étagé en 3 phases",
+            "description": "Le cœur de la technologie NAMICA est la libération étagée de l'acide hyaluronique selon la taille des particules"
           },
           "certificationsSection": {
-            "title": "Global Standard Safety Certifications"
+            "title": "Certifications de sécurité conformes aux normes mondiales"
           },
           "trainingSection": {
-            "title": "Globally Certified Training",
-            "description": "Dr. Kim Sooyoung of LIV completed the Professional Course at APTOS headquarters in Georgia and participated in procedures to acquire the latest techniques.",
-            "certificateTitle": "APTOS Professional Course Certificate",
+            "title": "Formation certifiée à l'échelle mondiale",
+            "description": "Le Dr Kim Sooyoung de LIV a suivi le cours professionnel au siège d'APTOS en Géorgie et a participé à des procédures pour acquérir les techniques les plus récentes.",
+            "certificateTitle": "Certificat du cours professionnel APTOS",
             "certificateName": "Kim Sooyoung · KR0062025",
-            "certificateIssuer": "Certified by G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
+            "certificateIssuer": "Certifié par G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
           },
           "cta": {
-            "title": "Book APTOS Bio Lifting Consultation",
-            "description": "Our globally certified specialist provides personalized 1:1 consultation",
-            "button": "Book Consultation"
+            "title": "Réservez une consultation APTOS Bio Lifting",
+            "description": "Notre spécialiste certifié à l'échelle mondiale propose une consultation personnalisée 1:1",
+            "button": "Réserver une consultation"
           },
           "lineupSection": {
-            "title": "An Overwhelming Lineup for Every Face Shape",
+            "title": "Une gamme exhaustive pour chaque forme de visage",
             "positioning": [
               {
                 "code": "LL25",
