@@ -7,10 +7,11 @@ import { trackChatOpen } from '@/lib/analytics-events';
 import { useChatSession } from '@/hooks/useChatSession';
 import { useUnreadIndicator } from '@/hooks/useUnreadIndicator';
 import { createClient } from '@/lib/supabase-browser';
+import type { VisitorLocale } from '@/lib/chat/chatApi';
 import ChatPanel from './ChatPanel';
 
 interface Props {
-  locale: 'en' | 'ja' | 'zh';
+  locale: VisitorLocale;
 }
 
 const TOOLTIP_STORAGE_KEY = 'liv-chat-tooltip-seen-v1';
@@ -18,10 +19,13 @@ const TOOLTIP_APPEAR_MS = 3_000;
 const TOOLTIP_AUTO_HIDE_MS = 12_000; // 9초 동안 노출 후 자동 사라짐
 const PULSE_DURATION_MS = 5_000;
 
-const LOCALE_FLAG: Record<'en' | 'ja' | 'zh', string> = {
+const LOCALE_FLAG: Record<VisitorLocale, string> = {
   en: '🇬🇧',
   ja: '🇯🇵',
   zh: '🇨🇳',
+  fr: '🇫🇷',
+  mn: '🇲🇳',
+  ar: '🇸🇦',
 };
 
 export default function ChatWidget({ locale }: Props) {

@@ -7,7 +7,7 @@ import { createNavigation } from 'next-intl/navigation';
  * Adding a locale: extend this array AND add a matching entry in
  * `./locales-meta.ts`. Type-level consumers derive `Locale` automatically.
  */
-export const LOCALES = ['ko', 'en', 'ja', 'zh', 'zh-TW', 'vi', 'th', 'ru'] as const;
+export const LOCALES = ['ko', 'en', 'ja', 'zh', 'zh-TW', 'vi', 'th', 'ru', 'fr', 'mn', 'ar'] as const;
 export type Locale = (typeof LOCALES)[number];
 
 export const routing = defineRouting({

@@ -11,10 +11,11 @@ import {
   trackChatTranslationFailure,
   trackChatClose,
 } from '@/lib/analytics-events';
+import type { VisitorLocale } from '@/lib/chat/chatApi';
 import MessageBubble from './MessageBubble';
 
 interface Props {
-  locale: 'en' | 'ja' | 'zh';
+  locale: VisitorLocale;
   open: boolean;
   onClose: () => void;
   // ChatWidget이 단일 useChatSession 인스턴스를 소유하고 props로 주입.

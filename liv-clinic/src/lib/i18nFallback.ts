@@ -2,9 +2,10 @@
  * Localized content fallback helper for legacy Supabase columns
  * that only have ko/en/ja/zh fields (events, popups, before-after, etc.)
  *
- * Phase 1 신규 locale (zh-TW/vi/th/ru) 정책 (i18n-glossary.md 합의):
+ * Locale 정책 (i18n-glossary.md 합의):
  *   - zh-TW: zh (간체) → en → ko
  *   - vi/th/ru: en → ko
+ *   - fr/mn/ar (i18n-fr-mn-ar PDCA): en → ko (의료관광 환자 영어 가독성 우선)
  */
 import type { Locale } from '@/i18n/routing';
 
@@ -20,6 +21,9 @@ const FALLBACK_CHAIN: Record<Locale, readonly LegacyLocaleKey[]> = {
   vi: ['en', 'ko'],
   th: ['en', 'ko'],
   ru: ['en', 'ko'],
+  fr: ['en', 'ko'],
+  mn: ['en', 'ko'],
+  ar: ['en', 'ko'],
 };
 
 /**

@@ -60,7 +60,7 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full right-0 mt-2 z-50"
+              className="absolute top-full end-0 mt-2 z-50"
             >
               <div className="bg-white rounded-xl shadow-lg py-2 min-w-[140px]">
                 {languages.map((lang) => (

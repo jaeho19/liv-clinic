@@ -168,10 +168,10 @@ export default function Hero() {
         </div>
       </div>
 
-      <motion.div className="absolute left-8 top-1/2 -translate-y-1/2 hidden xl:block" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 0.3, x: 0 }} transition={{ delay: 2 }}>
+      <motion.div className="absolute start-8 top-1/2 -translate-y-1/2 hidden xl:block" initial={{ opacity: 0, x: -20 }} animate={{ opacity: 0.3, x: 0 }} transition={{ delay: 2 }}>
         <p className="text-white text-xs tracking-[0.5em] uppercase" style={{ writingMode: 'vertical-rl' }}>{t('hero.sideText.left')}</p>
       </motion.div>
-      <motion.div className="absolute right-8 top-1/2 -translate-y-1/2 hidden xl:block" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 0.3, x: 0 }} transition={{ delay: 2.2 }}>
+      <motion.div className="absolute end-8 top-1/2 -translate-y-1/2 hidden xl:block" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 0.3, x: 0 }} transition={{ delay: 2.2 }}>
         <p className="text-white text-xs tracking-[0.5em] uppercase" style={{ writingMode: 'vertical-rl' }}>{t('hero.sideText.right')}</p>
       </motion.div>
     </section>

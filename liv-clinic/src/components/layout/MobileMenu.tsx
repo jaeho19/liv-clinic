@@ -7,6 +7,7 @@ import { Link, useRouter, usePathname, type Locale } from '@/i18n/routing';
 import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useDirection } from '@/hooks/useDirection';
 
 interface NavItem {
   key: string;
@@ -34,8 +35,12 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+  const dir = useDirection();
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+
+  // RTL에서는 왼쪽에서 슬라이드 인, LTR에서는 오른쪽에서 슬라이드 인
+  const slideInitial = dir === 'rtl' ? '-100%' : '100%';
 
   // Escape 키로 메뉴 닫기
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -94,11 +99,11 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
           {/* Menu Panel */}
           <motion.div
             ref={menuRef}
-            initial={{ x: '100%' }}
+            initial={{ x: slideInitial }}
             animate={{ x: 0 }}
-            exit={{ x: '100%' }}
+            exit={{ x: slideInitial }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 right-0 bottom-0 w-[min(300px,85vw)] bg-white z-50 lg:hidden overflow-y-auto safe-area-pr"
+            className="fixed top-0 end-0 bottom-0 w-[min(300px,85vw)] bg-white z-50 lg:hidden overflow-y-auto safe-area-pr"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"
@@ -181,7 +186,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                             transition={{ duration: 0.2 }}
                             className="overflow-hidden"
                           >
-                            <div className="pb-4 pl-4 space-y-1">
+                            <div className="pb-4 ps-4 space-y-1">
                               {item.children.map((child) => (
                                 <Link
                                   key={child.key}

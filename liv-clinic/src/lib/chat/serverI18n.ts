@@ -1,6 +1,6 @@
 import 'server-only';
 
-export type VisitorLocale = 'en' | 'ja' | 'zh';
+export type VisitorLocale = 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar';
 export type SystemMessageKey =
   | 'welcome'
   | 'delayedResponseNotice'
@@ -35,6 +35,33 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
     allOperatorsBusyNotice: '客服暂时离开，请留言，我们会尽快回复。',
     sessionEnded:
       '本次对话已结束。如需进一步咨询，请开始新的对话。',
+  },
+  fr: {
+    welcome: 'Bonjour ! Comment pouvons-nous vous aider aujourd\'hui ?',
+    delayedResponseNotice:
+      'Nous sommes en dehors des heures d\'ouverture (en semaine 10h00–19h00, samedi 10h00–16h00 KST). Laissez-nous un message, nous répondrons dès notre retour. Indiquez votre adresse e-mail pour une réponse plus rapide.',
+    allOperatorsBusyNotice:
+      'Notre équipe est momentanément absente. Laissez un message, nous vous répondrons sous peu.',
+    sessionEnded:
+      'Cette conversation est terminée. Démarrez une nouvelle discussion pour toute autre question.',
+  },
+  mn: {
+    welcome: 'Сайн байна уу! Бид танд яаж туслах вэ?',
+    delayedResponseNotice:
+      'Бид одоо ажлын цагаас гадуур байна (Даваа–Баасан 10:00–19:00, Бямба 10:00–16:00 KST). Мессеж үлдээгээрэй, бид ажлын цагт хариулна. Илүү хурдан хариу авахын тулд имэйл хаягаа үлдээнэ үү.',
+    allOperatorsBusyNotice:
+      'Манай ажилтан түр зуур байхгүй байна. Мессеж үлдээвэл бид удахгүй хариулна.',
+    sessionEnded:
+      'Энэ ярилцлага дууссан. Шинэ асуулт байвал шинээр чат эхлүүлнэ үү.',
+  },
+  ar: {
+    welcome: 'مرحباً! كيف يمكننا مساعدتك اليوم؟',
+    delayedResponseNotice:
+      'نحن خارج ساعات العمل حالياً (أيام الأسبوع 10:00–19:00، السبت 10:00–16:00 بتوقيت كوريا). اترك رسالتك وسنرد عليك عند عودتنا. يُرجى تضمين بريدك الإلكتروني للحصول على رد أسرع.',
+    allOperatorsBusyNotice:
+      'فريقنا غير متاح مؤقتاً. اترك رسالة وسنرد عليك قريباً.',
+    sessionEnded:
+      'انتهت هذه المحادثة. ابدأ محادثة جديدة لأي استفسارات أخرى.',
   },
 };
 

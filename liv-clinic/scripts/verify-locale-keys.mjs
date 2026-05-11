@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const MESSAGES_DIR = path.join(__dirname, '..', 'src', 'messages');
 const MASTER = 'ko';
-const LOCALES = ['ko', 'en', 'ja', 'zh', 'zh-TW', 'vi', 'th', 'ru'];
+const LOCALES = ['ko', 'en', 'ja', 'zh', 'zh-TW', 'vi', 'th', 'ru', 'fr', 'mn', 'ar'];
 
 function flatKeys(obj, prefix = '') {
   if (obj === null || typeof obj !== 'object' || Array.isArray(obj)) return [];

@@ -3,7 +3,7 @@ import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server
 import { notFound } from 'next/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { LOCALE_META } from '@/i18n/locales-meta';
-import { pretendard, cormorant } from '@/styles/fonts';
+import { pretendard, cormorant, notoSansArabic } from '@/styles/fonts';
 import { Header, Footer, QuickConsultBar } from '@/components/layout';
 import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
 import ChatWidget from '@/components/chat/ChatWidget';
@@ -78,10 +78,18 @@ export default async function LocaleLayout({
   const rawGaId = analytics?.gaTrackingId || process.env.NEXT_PUBLIC_GA_ID;
   const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
 
-  const htmlLang = LOCALE_META[locale as Locale]?.htmlLang ?? locale;
+  const meta = LOCALE_META[locale as Locale];
+  const htmlLang = meta?.htmlLang ?? locale;
+  const htmlDir = meta?.dir ?? 'ltr';
+
+  const fontClasses = [
+    pretendard.variable,
+    cormorant.variable,
+    locale === 'ar' ? notoSansArabic.variable : '',
+  ].filter(Boolean).join(' ');
 
   return (
-    <html lang={htmlLang} className={`${pretendard.variable} ${cormorant.variable}`}>
+    <html lang={htmlLang} dir={htmlDir} className={fontClasses}>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
@@ -159,9 +167,10 @@ export default async function LocaleLayout({
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />
-          {/* ChatWidget은 PR #3에서 도입된 visitor 채팅 (운영자=ko, 환자=en/ja/zh).
-              Phase 1 신규 locale (zh-TW/vi/th/ru) 지원은 PR #2b의 Step 6에서 추가 예정. */}
-          {(locale === 'en' || locale === 'ja' || locale === 'zh') && (
+          {/* ChatWidget: 운영자(ko) ↔ 환자(non-ko). VisitorLocale 화이트리스트로 활성.
+              en/ja/zh + fr/mn/ar (i18n-fr-mn-ar PDCA에서 추가). zh-TW/vi/th/ru은 추후 별도 확장. */}
+          {(locale === 'en' || locale === 'ja' || locale === 'zh' ||
+            locale === 'fr' || locale === 'mn' || locale === 'ar') && (
             <ChatWidget locale={locale} />
           )}
         </NextIntlClientProvider>

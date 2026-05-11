@@ -1,7 +1,7 @@
 // 클라이언트(브라우저) 측 fetch 래퍼.
 // 서버 라우트(/api/chat/*)와 1:1 매핑.
 
-export type VisitorLocale = 'en' | 'ja' | 'zh';
+export type VisitorLocale = 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar';
 export type MessageSender = 'visitor' | 'operator' | 'system';
 export type TranslationStatus = 'pending' | 'success' | 'failed' | 'skipped';
 

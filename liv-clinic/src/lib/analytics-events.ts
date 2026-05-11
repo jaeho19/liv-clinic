@@ -46,19 +46,19 @@ export function trackContact(
 }
 
 /** 채팅 위젯 열기 */
-export function trackChatOpen(locale: 'en' | 'ja' | 'zh') {
+export function trackChatOpen(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
   trackEvent('chat_open', { locale });
 }
 
 /** 채팅 첫 메시지 전송 (세션 생성 직후) */
-export function trackChatFirstMessage(locale: 'en' | 'ja' | 'zh') {
+export function trackChatFirstMessage(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
   trackEvent('chat_first_message', { locale });
 }
 
 /** 채팅 메시지 전송/수신 */
 export function trackChatMessage(
   direction: 'sent' | 'received',
-  locale: 'en' | 'ja' | 'zh',
+  locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar',
 ) {
   trackEvent('chat_message', { direction, locale });
 }
@@ -101,7 +101,7 @@ export async function trackChatClose(
   reason: ChatCloseReason,
   durationSec: number,
   sessionId: string,
-  locale?: 'en' | 'ja' | 'zh',
+  locale?: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar',
 ): Promise<void> {
   const sessionIdHash = await hashSessionId(sessionId);
   trackEvent('chat_close', {

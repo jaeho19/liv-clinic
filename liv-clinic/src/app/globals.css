@@ -706,3 +706,16 @@ img {
 .animate-slide-up {
   animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
+/* ────────────────────────────────────────────────
+   RTL Support (i18n-fr-mn-ar)
+   - 아랍어 locale에서만 활성화
+   - Arabic 폰트 우선순위 + 화살표 SVG 반전 유틸리티
+   ──────────────────────────────────────────────── */
+html[lang="ar"] body {
+  font-family: var(--font-arabic), var(--font-pretendard), system-ui, sans-serif;
+}
+
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}

@@ -104,12 +104,48 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     ogLocale: 'ru_RU',
     hreflang: 'ru-RU',
   },
+  fr: {
+    code: 'fr',
+    label: 'FRA',
+    name: 'Français',
+    flag: '🇫🇷',
+    htmlLang: 'fr',
+    ogLocale: 'fr_FR',
+    hreflang: 'fr-FR',
+  },
+  mn: {
+    code: 'mn',
+    label: 'MNG',
+    name: 'Монгол',
+    flag: '🇲🇳',
+    htmlLang: 'mn',
+    ogLocale: 'mn_MN',
+    hreflang: 'mn-MN',
+  },
+  ar: {
+    code: 'ar',
+    label: 'ARA',
+    name: 'العربية',
+    flag: '🇸🇦',
+    htmlLang: 'ar',
+    ogLocale: 'ar_SA',
+    hreflang: 'ar',
+    dir: 'rtl',
+  },
 };
 
 /**
  * Display order for locale switcher dropdowns.
  * Ordered by 2024 medical-tourism market priority for LIV:
  *   ko (domestic) → zh (mainland) → zh-TW (Taiwan, +550% YoY) →
- *   ja (largest visitor) → en → vi → th → ru.
+ *   ja (largest visitor) → en → fr (European medical tourism) →
+ *   vi → th → mn (anti-aging high spenders) → ru → ar (RTL last).
  */
-export const LOCALE_ORDER: Locale[] = ['ko', 'zh', 'zh-TW', 'ja', 'en', 'vi', 'th', 'ru'];
+export const LOCALE_ORDER: Locale[] = [
+  'ko', 'zh', 'zh-TW', 'ja', 'en',
+  'fr',
+  'vi', 'th',
+  'mn',
+  'ru',
+  'ar',
+];

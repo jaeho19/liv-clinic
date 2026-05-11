@@ -200,7 +200,7 @@ export default function Header() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-0 pt-4"
+                          className="absolute top-full start-0 pt-4"
                         >
                           <div className="bg-white rounded-xl shadow-lg py-3 min-w-[180px]">
                             {item.children.map((child) => (

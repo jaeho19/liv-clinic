@@ -121,6 +121,40 @@ export const seoConfig: Record<string, {
       '韩国医疗旅游', '韩国医美', '明星同款诊所', '首尔高端医美'
     ],
   },
+  fr: {
+    title: 'LIV Chirurgie Esthétique | Anti-âge premium non chirurgical à Sinsa Séoul',
+    description: 'Clinique officielle certifiée Ultherapy Prime et Thermage FLX à Séoul, Corée. Solution de lifting Anti-Gravity au-delà de la gravité. À 1 min de la station Sinsa sortie 4. Spécialistes Botox, fillers, skin boosters, fils tenseurs, laser.',
+    keywords: [
+      'LIV Chirurgie Esthétique', 'clinique Séoul', 'chirurgie esthétique Corée',
+      'lifting non chirurgical Séoul', 'Ultherapy Corée', 'Thermage Séoul',
+      'Botox Séoul', 'filler Corée', 'skin booster', 'fils tenseurs Corée',
+      'anti-âge premium Séoul', 'tourisme médical Corée', 'clinique K-beauty',
+      'HIFU Corée', 'radiofréquence visage', 'rajeunissement Séoul',
+      'station Sinsa', 'Gangnam clinique', 'lifting visage sans chirurgie',
+    ],
+  },
+  mn: {
+    title: 'LIV Гоо Заслын Эмнэлэг | Шинса дахь премиум мэс заслын бус залуужуулалт',
+    description: 'Ultherapy Prime, Thermage FLX-ийн албан ёсны баталгаажуулсан эмнэлэг. Таталцлаас давсан гоо сайхан, Anti-Gravity лифтинг шийдэл. Шинса метроны 4-р гарцаас 1 минутын зайтай.',
+    keywords: [
+      'LIV гоо заслын эмнэлэг', 'Сөүл лазер', 'Солонгос мэс заслын бус залуужуулалт',
+      'Ultherapy Солонгос', 'Thermage Сөүл', 'Ботокс Солонгос', 'Филлер',
+      'Утсан лифтинг', 'HIFU лифтинг', 'RF лифтинг',
+      'Премиум залуужуулалт', 'Анагаах ухааны аялал жуулчлал Солонгос',
+      'Шинса', 'Каннам', 'Солонгос гоо сайхны эмнэлэг', 'K-beauty',
+    ],
+  },
+  ar: {
+    title: 'مستشفى ليف للتجميل | مكافحة الشيخوخة المتقدمة بدون جراحة في سيول',
+    description: 'مستشفى معتمد رسمياً لـ Ultherapy Prime و Thermage FLX في سيول، كوريا. حل شد بشرة Anti-Gravity متجاوزاً الجاذبية. على بُعد دقيقة واحدة من محطة سينسا، المخرج 4. متخصصون في البوتوكس والفيلر وحقن البشرة والخيوط والليزر.',
+    keywords: [
+      'مستشفى ليف للتجميل', 'تجميل كوريا', 'شد الوجه بدون جراحة سيول',
+      'ألثيرابي كوريا', 'ثيرماج سيول', 'بوتوكس كوريا', 'فيلر سيول',
+      'حقن البشرة', 'خيوط شد الوجه', 'HIFU كوريا',
+      'مكافحة الشيخوخة سيول', 'السياحة العلاجية كوريا', 'عيادة K-beauty',
+      'محطة سينسا', 'عيادة جانغنام', 'شد بدون جراحة',
+    ],
+  },
 };
 
 // Generate metadata for a page
@@ -207,12 +241,19 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
   // 다국어 설명 — locale별 seoConfig.description 사용, 미정의 시 ko fallback
   const description = seoConfig[locale]?.description ?? seoConfig.ko.description;
 
-  // 다국어 병원명 — Phase 1 신규 locale은 LIV 영문 표기 통일 (i18n-glossary 합의)
+  // 다국어 병원명 — 11개 locale 모두 매핑 (i18n-glossary 합의)
   const NAMES: Record<string, string> = {
     ko: '리브성형외과',
     en: 'LIV Plastic Surgery',
     ja: 'リブ形成外科',
     zh: 'LIV整形外科',
+    'zh-TW': 'LIV整形外科',
+    vi: 'Phẫu thuật Thẩm mỹ LIV',
+    th: 'ศัลยกรรมความงาม LIV',
+    ru: 'Пластическая хирургия LIV',
+    fr: 'LIV Chirurgie Esthétique',
+    mn: 'LIV Гоо Заслын Эмнэлэг',
+    ar: 'مستشفى ليف للتجميل',
   };
   const name = NAMES[locale] ?? 'LIV Plastic Surgery';
 
@@ -658,7 +699,10 @@ export function generateWebSiteSchema() {
     alternateName: SITE_INFO.nameEn,
     url: BASE_URL,
     description: seoConfig.ko.description,
-    inLanguage: ['ko-KR', 'en-US', 'ja-JP', 'zh-CN'],
+    inLanguage: [
+      'ko-KR', 'en-US', 'ja-JP', 'zh-CN', 'zh-TW', 'vi-VN', 'th-TH', 'ru-RU',
+      'fr-FR', 'mn-MN', 'ar',
+    ],
     publisher: {
       '@type': 'MedicalBusiness',
       '@id': `${BASE_URL}/#organization`,
@@ -697,7 +741,7 @@ export function generateWebPageSchema(page: {
     url: `${BASE_URL}${page.path}`,
     datePublished: page.datePublished || '2024-01-01',
     dateModified: page.dateModified || new Date().toISOString().split('T')[0],
-    inLanguage: page.locale === 'ko' ? 'ko-KR' : page.locale === 'ja' ? 'ja-JP' : page.locale === 'zh' ? 'zh-CN' : 'en-US',
+    inLanguage: LOCALE_META[page.locale as Locale]?.hreflang ?? 'en-US',
     isPartOf: {
       '@type': 'WebSite',
       '@id': `${BASE_URL}/#website`,

@@ -2,11 +2,11 @@
 
 import { useState } from 'react';
 import { useTranslations } from 'next-intl';
-import type { ChatMessage } from '@/lib/chat/chatApi';
+import type { ChatMessage, VisitorLocale } from '@/lib/chat/chatApi';
 
 interface Props {
   message: ChatMessage;
-  visitorLocale: 'en' | 'ja' | 'zh';
+  visitorLocale: VisitorLocale;
 }
 
 export default function MessageBubble({ message, visitorLocale }: Props) {
