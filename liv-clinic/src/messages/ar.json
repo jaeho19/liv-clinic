@@ -1193,28 +1193,28 @@
       "density": {
         "name": "Density",
         "fullName": "Density",
-        "tagline": "RF Energy for Elasticity Lifting",
-        "description": "RF (radiofrequency) energy densely remodels collagen within the skin. Precise and uniform energy for firm, elastic skin.",
+        "tagline": "طاقة RF لشد المرونة",
+        "description": "طاقة RF (الترددات الراديوية) تعيد تشكيل الكولاجين في البشرة بكثافة. طاقة دقيقة وموحدة لبشرة مشدودة ومرنة.",
         "detail": {
           "illustrations": {
             "dualEnergy": {
-              "hifu": "Ultrasound",
-              "rf": "Radiofrequency",
-              "synergy": "Dual Energy Synergy"
+              "hifu": "الموجات فوق الصوتية",
+              "rf": "الترددات الراديوية",
+              "synergy": "تآزر الطاقة المزدوجة"
             },
             "multiLayer": {
-              "epidermis": "Epidermis (RF)",
-              "dermis": "Dermis (HIFU+RF)",
+              "epidermis": "البشرة (RF)",
+              "dermis": "الأدمة (HIFU+RF)",
               "smas": "SMAS (HIFU)",
-              "title": "Multi-Layer Targeting"
+              "title": "استهداف متعدد الطبقات"
             },
             "cooling": {
-              "title": "Cooling System"
+              "title": "نظام التبريد"
             },
             "diagram": {
-              "epidermis": "Epidermis",
-              "dermis": "Dermis",
-              "subcutaneous": "Subcutaneous",
+              "epidermis": "البشرة",
+              "dermis": "الأدمة",
+              "subcutaneous": "تحت الجلد",
               "smas": "SMAS"
             }
           },
@@ -1254,7 +1254,7 @@
           },
           "comparison": {
             "headers": {
-              "feature": "Comparison",
+              "feature": "المقارنة",
               "density": "Density",
               "ulthera": "Ultherapy Prime",
               "thermage": "Thermage"
@@ -1319,223 +1319,223 @@
             }
           ],
           "hero": {
-            "badge": "RF Radiofrequency Lifting",
+            "badge": "شد بالترددات الراديوية RF",
             "title": "Density",
-            "description": "RF (radiofrequency) energy densely remodels collagen within the skin.<br />Precise and uniform energy for firm, elastic skin.",
+            "description": "طاقة RF (الترددات الراديوية) تعيد تشكيل الكولاجين بكثافة في البشرة.<br />طاقة دقيقة وموحدة لبشرة مشدودة ومرنة.",
             "stats": {
               "energy": {
                 "value": "RF",
-                "label": "Radiofrequency Energy"
+                "label": "طاقة الترددات الراديوية"
               },
               "layers": {
-                "value": "4 Layers",
-                "label": "Multi-Layer Targeting"
+                "value": "4 طبقات",
+                "label": "استهداف متعدد الطبقات"
               },
               "effect": {
-                "value": "Instant",
-                "label": "Lifting Effect"
+                "value": "فوري",
+                "label": "تأثير الشد"
               }
             },
             "floatingBadges": {
               "rf": {
                 "title": "RF",
-                "subtitle": "Precision RF"
+                "subtitle": "RF دقيق"
               },
               "skin": {
                 "title": "RF",
-                "subtitle": "Skin Elasticity"
+                "subtitle": "مرونة البشرة"
               }
             }
           },
           "about": {
-            "sectionLabel": "About Density",
-            "title": "What is Density?",
-            "description": "Density is a premium lifting device that precisely stimulates the dermal layer using <strong>RF (radiofrequency)</strong> energy. Part of the same radiofrequency family as Thermage, it promotes collagen regeneration and improves skin elasticity through precise and uniform energy distribution.",
+            "sectionLabel": "حول Density",
+            "title": "ما هو Density؟",
+            "description": "Density هو جهاز شد بريميوم يحفز طبقة الأدمة بدقة باستخدام طاقة <strong>RF (الترددات الراديوية)</strong>. ينتمي إلى نفس عائلة الترددات الراديوية مثل Thermage، ويعزز تجدد الكولاجين ويحسن مرونة البشرة من خلال توزيع طاقة دقيق وموحد.",
             "rfPrinciple": {
-              "title": "How RF Works",
+              "title": "كيف تعمل تقنية RF",
               "cards": {
                 "rf": {
                   "label": "RF",
-                  "title": "Radiofrequency Energy",
-                  "desc": "Delivers heat energy precisely to the dermal layer, inducing collagen contraction and regeneration to improve skin elasticity."
+                  "title": "طاقة الترددات الراديوية",
+                  "desc": "تُسلم طاقة حرارية بدقة إلى طبقة الأدمة، مما يحفز انكماش وتجدد الكولاجين لتحسين مرونة البشرة."
                 },
                 "uniform": {
-                  "label": "Uniform",
-                  "title": "Precise Energy Distribution",
-                  "desc": "Uniform and precise energy delivery enables effective collagen remodeling."
+                  "label": "موحد",
+                  "title": "توزيع طاقة دقيق",
+                  "desc": "توصيل طاقة موحد ودقيق يتيح إعادة تشكيل فعالة للكولاجين."
                 },
                 "synergy": {
                   "label": "+",
-                  "title": "Synergy Effect",
-                  "desc": "The simultaneous action of dual energies provides more powerful and lasting lifting effects compared to single treatments."
+                  "title": "تأثير التآزر",
+                  "desc": "الإجراء المتزامن للطاقات المزدوجة يوفر تأثيرات شد أقوى وأطول مقارنة بالعلاجات الفردية."
                 }
               }
             }
           },
           "whyDensity": {
-            "sectionLabel": "Why Density?",
-            "title": "Why Choose Density?",
+            "sectionLabel": "لماذا Density؟",
+            "title": "لماذا تختار Density؟",
             "cards": {
               "rf": {
-                "title": "RF Radiofrequency",
-                "desc": "Precise radiofrequency energy <strong>uniformly stimulates dermal collagen</strong> to improve both elasticity and skin texture simultaneously."
+                "title": "ترددات راديوية RF",
+                "desc": "طاقة الترددات الراديوية الدقيقة <strong>تحفز كولاجين الأدمة بشكل موحد</strong> لتحسين كل من المرونة وملمس البشرة في وقت واحد."
               },
               "affordable": {
-                "title": "Affordable Price",
-                "desc": "Same radiofrequency family as Thermage but at a <strong>more affordable cost</strong>, making consistent lifting maintenance possible."
+                "title": "سعر معقول",
+                "desc": "نفس عائلة الترددات الراديوية مثل Thermage ولكن بتكلفة <strong>أكثر معقولية</strong>، مما يجعل صيانة الشد المنتظمة ممكنة."
               },
               "cooling": {
-                "title": "Cooling System",
-                "desc": "Built-in cooling system <strong>minimizes discomfort during treatment</strong> and protects the epidermis for a comfortable experience."
+                "title": "نظام التبريد",
+                "desc": "نظام التبريد المدمج <strong>يقلل الانزعاج أثناء العلاج</strong> ويحمي البشرة لتجربة مريحة."
               }
             },
             "clinicalBanner": {
-              "label": "RF Lifting Benefits",
+              "label": "مزايا شد RF",
               "stats": {
                 "energy": {
                   "value": "RF",
-                  "label": "Radiofrequency Energy"
+                  "label": "طاقة الترددات الراديوية"
                 },
                 "precision": {
-                  "value": "Precise",
-                  "label": "Uniform Distribution"
+                  "value": "دقيق",
+                  "label": "توزيع موحد"
                 },
                 "duration": {
-                  "value": "40 min",
-                  "label": "Fast Treatment"
+                  "value": "40 دقيقة",
+                  "label": "علاج سريع"
                 },
                 "effect": {
-                  "value": "Instant",
-                  "label": "Visible Results"
+                  "value": "فوري",
+                  "label": "نتائج مرئية"
                 }
               }
             }
           },
           "compare": {
-            "sectionLabel": "Comparison",
-            "title": "Density vs Other Devices",
-            "subtitle": "Precise RF energy for elasticity and pore care simultaneously",
+            "sectionLabel": "المقارنة",
+            "title": "Density مقابل الأجهزة الأخرى",
+            "subtitle": "طاقة RF دقيقة للمرونة والعناية بالمسامات في وقت واحد",
             "combinationNote": {
-              "title": "Combination with HIFU",
-              "desc": "Density (RF) can be combined with HIFU treatments like Ultherapy Prime and Shurink for comprehensive multi-layer elasticity treatment. Ideal for those seeking consistent lifting maintenance at a reasonable cost."
+              "title": "الجمع مع HIFU",
+              "desc": "يمكن دمج Density (RF) مع علاجات HIFU مثل Ultherapy Prime و Shurink لعلاج مرونة شامل متعدد الطبقات. مثالي لمن يبحثون عن صيانة شد منتظمة بتكلفة معقولة."
             }
           },
           "livDifference": {
             "sectionLabel": "LIV Difference",
-            "title": "Density at LIV",
+            "title": "Density في LIV",
             "cards": {
               "custom": {
-                "title": "Customized Energy Settings",
-                "desc": "RF energy intensity is optimized based on your skin condition and concerns for personalized treatment."
+                "title": "إعدادات طاقة مخصصة",
+                "desc": "تُحسَّن شدة طاقة RF بناءً على حالة بشرتك ومخاوفك للحصول على علاج شخصي."
               },
               "genuine": {
-                "title": "Genuine Equipment",
-                "desc": "We provide safe and effective treatments using genuine Density equipment. Regular equipment maintenance ensures optimal performance."
+                "title": "أجهزة أصلية",
+                "desc": "نقدم علاجات آمنة وفعالة باستخدام أجهزة Density الأصلية. تضمن الصيانة المنتظمة للأجهزة الأداء الأمثل."
               },
               "specialist": {
-                "title": "Specialist Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+                "title": "علاج من اختصاصي",
+                "desc": "أطباء أمراض جلدية/جراحو تجميل معتمدون يجرون الاستشارات والعلاجات مباشرة. تضمن خبرتنا الواسعة نتائج مثلى."
               }
             }
           },
           "timelineSection": {
-            "sectionLabel": "Results Timeline",
-            "subtitle": "Experience both immediate effects and gradual improvement after Density treatment"
+            "sectionLabel": "الجدول الزمني للنتائج",
+            "subtitle": "اختبر التأثيرات الفورية والتحسن التدريجي بعد علاج Density"
           },
           "processSection": {
-            "sectionLabel": "Treatment Process"
+            "sectionLabel": "خطوات العلاج"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
+            "sectionLabel": "معلومات العلاج",
+            "title": "معلومات العلاج",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Results Duration"
+              "duration": "مدة العلاج",
+              "anesthesia": "التخدير",
+              "recovery": "فترة التعافي",
+              "results": "مدة النتائج"
             }
           },
           "faq": {
-            "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
+            "sectionLabel": "الأسئلة الشائعة",
+            "title": "الأسئلة الشائعة",
+            "moreInfo": "هل تريد المزيد من المعلومات الطبية؟",
+            "viewMedicalQA": "عرض الأسئلة الطبية"
           },
           "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book Density Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />establish the optimal treatment plan for you.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "sectionLabel": "هل أنت مستعد للتحول؟",
+            "title": "احجز استشارة Density",
+            "description": "من خلال استشارة شخصية مع فريقنا الطبي،<br />ضع خطة العلاج المثلى لك.",
+            "bookConsultation": "احجز استشارة مجانية",
+            "businessHours": "الإثنين-الجمعة 10:00-19:00",
+            "location": "3 دقائق سيراً من مخرج 4 محطة Sinsa"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
+            "sectionLabel": "علاجات ذات صلة",
+            "title": "علاجات ذات صلة"
           }
         }
       },
       "inmode": {
         "name": "InMode",
         "fullName": "InMode",
-        "tagline": "RF-Based Combination Lifting",
-        "description": "A comprehensive lifting system using radiofrequency to improve skin elasticity and body contouring simultaneously.",
+        "tagline": "شد مدمج قائم على RF",
+        "description": "نظام شد شامل يستخدم الترددات الراديوية لتحسين مرونة البشرة وكنتور الجسم في وقت واحد.",
         "detail": {
           "illustrations": {
-            "forma": "Skin Elasticity",
-            "morpheus": "Microneedle RF",
-            "facetite": "Fat Tightening"
+            "forma": "مرونة البشرة",
+            "morpheus": "إبر دقيقة RF",
+            "facetite": "شد الدهون"
           },
           "treatmentCard": {
-            "benefits": "Key Benefits",
-            "duration": "Treatment Time",
-            "downtime": "Downtime",
-            "idealFor": "Ideal For"
+            "benefits": "الفوائد الرئيسية",
+            "duration": "مدة العلاج",
+            "downtime": "فترة النقاهة",
+            "idealFor": "مثالي لـ"
           },
           "comparison": {
-            "header": "Comparison",
+            "header": "المقارنة",
             "rows": {
               "method": {
-                "feature": "Method",
-                "forma": "RF Radiofrequency",
-                "morpheus": "Microneedle + RF",
-                "facetite": "Cannula + RF"
+                "feature": "الطريقة",
+                "forma": "RF ترددات راديوية",
+                "morpheus": "إبر دقيقة + RF",
+                "facetite": "كانيولا + RF"
               },
               "invasiveness": {
-                "feature": "Invasiveness",
-                "forma": "Non-invasive",
-                "morpheus": "Minimally invasive",
-                "facetite": "Minimally invasive"
+                "feature": "درجة التدخل",
+                "forma": "غير جراحي",
+                "morpheus": "تدخل بسيط",
+                "facetite": "تدخل بسيط"
               },
               "anesthesia": {
-                "feature": "Anesthesia",
-                "forma": "Not required",
-                "morpheus": "Numbing cream",
-                "facetite": "Local anesthesia"
+                "feature": "التخدير",
+                "forma": "غير مطلوب",
+                "morpheus": "كريم مخدر",
+                "facetite": "تخدير موضعي"
               },
               "downtime": {
-                "feature": "Downtime",
-                "forma": "None",
-                "morpheus": "3-5 days",
-                "facetite": "5-7 days"
+                "feature": "فترة النقاهة",
+                "forma": "لا يوجد",
+                "morpheus": "3-5 أيام",
+                "facetite": "5-7 أيام"
               },
               "onset": {
-                "feature": "Effect Onset",
-                "forma": "Gradual",
-                "morpheus": "Gradual",
-                "facetite": "Immediate"
+                "feature": "بداية التأثير",
+                "forma": "تدريجي",
+                "morpheus": "تدريجي",
+                "facetite": "فوري"
               },
               "sessions": {
-                "feature": "Sessions",
-                "forma": "4-6 sessions",
-                "morpheus": "2-3 sessions",
-                "facetite": "1 session"
+                "feature": "الجلسات",
+                "forma": "4-6 جلسات",
+                "morpheus": "2-3 جلسات",
+                "facetite": "جلسة واحدة"
               },
               "target": {
-                "feature": "Main Target",
-                "forma": "Elasticity",
-                "morpheus": "Pores/Scars",
-                "facetite": "Fat/Sagging"
+                "feature": "الهدف الرئيسي",
+                "forma": "المرونة",
+                "morpheus": "المسامات/الندوب",
+                "facetite": "الدهون/الترهل"
               }
             }
           },
@@ -1543,15 +1543,15 @@
             "forma": {
               "name": "Forma",
               "nameKo": "Forma",
-              "description": "Non-invasive RF radiofrequency induces collagen contraction and regeneration to improve skin elasticity. Virtually painless with no downtime, allowing you to resume daily activities immediately.",
+              "description": "الترددات الراديوية RF غير الجراحية تحفز انكماش وتجدد الكولاجين لتحسين مرونة البشرة. تكاد تكون غير مؤلمة وبدون فترة نقاهة، مما يسمح لك باستئناف الأنشطة اليومية فوراً.",
               "benefits": [
                 "Instant skin tightening",
                 "Collagen regeneration",
                 "Fine wrinkle improvement",
                 "Pain-free treatment"
               ],
-              "duration": "20-30 min",
-              "downtime": "None",
+              "duration": "20-30 دقيقة",
+              "downtime": "لا يوجد",
               "idealFor": [
                 "Loss of elasticity",
                 "Fine wrinkles",
@@ -1561,15 +1561,15 @@
             "morpheus": {
               "name": "Morpheus8",
               "nameKo": "Morpheus8",
-              "description": "24 gold-plated microneedles deliver RF energy to the dermal layer for skin remodeling. Simultaneously improves pores, scars, skin texture, and elasticity.",
+              "description": "24 إبرة دقيقة مطلية بالذهب توصل طاقة RF إلى طبقة الأدمة لإعادة تشكيل البشرة. تحسن المسامات والندوب وملمس البشرة والمرونة في وقت واحد.",
               "benefits": [
                 "Pore reduction",
                 "Acne scar improvement",
                 "Skin texture refinement",
                 "Dermal remodeling"
               ],
-              "duration": "30-45 min",
-              "downtime": "3-5 days",
+              "duration": "30-45 دقيقة",
+              "downtime": "3-5 أيام",
               "idealFor": [
                 "Large pores",
                 "Acne scars",
@@ -1579,15 +1579,15 @@
             "facetite": {
               "name": "FaceTite",
               "nameKo": "FaceTite",
-              "description": "A thin cannula delivers RF energy directly to the fat layer to melt fat and tighten skin. Provides mini facelift-level results.",
+              "description": "كانيولا رفيعة تُوصل طاقة RF مباشرة إلى طبقة الدهون لإذابة الدهون وشد البشرة. توفر نتائج بمستوى شد الوجه المصغر.",
               "benefits": [
                 "Fat reduction",
                 "Skin tightening",
                 "Jawline improvement",
                 "Double chin reduction"
               ],
-              "duration": "60-90 min",
-              "downtime": "5-7 days",
+              "duration": "60-90 دقيقة",
+              "downtime": "5-7 أيام",
               "idealFor": [
                 "Double chin",
                 "Cheek fat",
@@ -1597,16 +1597,16 @@
           },
           "recommendations": {
             "forma": {
-              "title": "Forma Recommended",
-              "desc": "For maintaining skin elasticity, preventive care, and those who want treatment without downtime"
+              "title": "Forma موصى به",
+              "desc": "للحفاظ على مرونة البشرة، والرعاية الوقائية، ومن يريدون علاجاً بدون فترة نقاهة"
             },
             "morpheus": {
-              "title": "Morpheus8 Recommended",
-              "desc": "For those wanting pore, scar, and texture improvement who can accommodate short-term downtime"
+              "title": "Morpheus8 موصى به",
+              "desc": "لمن يريدون تحسين المسامات والندوب والملمس ويمكنهم تحمل فترة نقاهة قصيرة"
             },
             "facetite": {
-              "title": "FaceTite Recommended",
-              "desc": "For those concerned about double chin, cheek fat, and sagging who want definitive results"
+              "title": "FaceTite موصى به",
+              "desc": "لمن يقلقون بشأن الذقن المزدوج ودهون الخدود والترهل ويريدون نتائج حاسمة"
             }
           },
           "extendedFaqs": [
@@ -1624,98 +1624,98 @@
             }
           ],
           "hero": {
-            "badge": "All-in-One Lifting System",
+            "badge": "نظام شد شامل في جهاز واحد",
             "title": "InMode",
-            "description": "Fat reduction and lifting simultaneously with RF energy.<br />If facial fat is your concern, InMode is the answer.",
+            "description": "تقليل الدهون والشد في وقت واحد بطاقة RF.<br />إذا كانت الدهون الوجهية هي مصدر قلقك، فإن InMode هو الإجابة.",
             "stats": {
               "rf": {
                 "value": "RF",
-                "label": "Radiofrequency Energy"
+                "label": "طاقة الترددات الراديوية"
               },
               "fda": {
                 "value": "FDA",
-                "label": "Approved Device"
+                "label": "جهاز معتمد"
               },
               "custom": {
-                "value": "Custom",
-                "label": "Personalized Treatment"
+                "value": "مخصص",
+                "label": "علاج شخصي"
               }
             },
             "floatingBadges": {
               "morpheus": {
                 "title": "Morpheus8",
-                "subtitle": "Microneedle RF"
+                "subtitle": "إبر دقيقة RF"
               },
               "custom": {
-                "title": "Custom Treatment",
-                "subtitle": "Concern-Based Optimization"
+                "title": "علاج مخصص",
+                "subtitle": "تحسين قائم على المخاوف"
               }
             }
           },
           "about": {
-            "sectionLabel": "About InMode",
-            "title": "What is InMode?",
-            "description": "InMode is a multi-lifting device that uses <strong>radiofrequency (RF) energy</strong> to stimulate both the fat layer and dermal layer simultaneously. It's effective for those with excess facial fat or combined concerns of loose skin."
+            "sectionLabel": "حول InMode",
+            "title": "ما هو InMode؟",
+            "description": "InMode هو جهاز شد متعدد يستخدم <strong>طاقة الترددات الراديوية (RF)</strong> لتحفيز كل من طبقة الدهون وطبقة الأدمة في وقت واحد. فعال لمن يعانون من فائض دهون الوجه أو مخاوف مدمجة من ترهل البشرة."
           },
           "compare": {
-            "sectionLabel": "Comparison",
-            "title": "Handpiece Comparison",
-            "subtitle": "Compare the characteristics of each treatment to find the right one for you"
+            "sectionLabel": "المقارنة",
+            "title": "مقارنة قطع اليد",
+            "subtitle": "قارن خصائص كل علاج لتجد الأنسب لك"
           },
           "livDifference": {
             "sectionLabel": "LIV Difference",
-            "title": "InMode at LIV",
+            "title": "InMode في LIV",
             "cards": {
               "genuine": {
-                "title": "Certified Clinic",
-                "desc": "As an officially certified InMode Korea clinic, we only use genuine equipment and tips. We operate the latest version of equipment."
+                "title": "عيادة معتمدة",
+                "desc": "كعيادة معتمدة رسمياً من InMode Korea، نستخدم فقط الأجهزة والأطراف الأصلية. نشغل أحدث إصدار من الأجهزة."
               },
               "combination": {
-                "title": "Customized Combination Treatment",
-                "desc": "Rather than using just one handpiece, we combine multiple treatments based on skin condition for optimal results."
+                "title": "علاج مدمج مخصص",
+                "desc": "بدلاً من استخدام قطعة يد واحدة فقط، نجمع علاجات متعددة بناءً على حالة البشرة للحصول على نتائج مثلى."
               },
               "specialist": {
-                "title": "Specialist Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+                "title": "علاج من اختصاصي",
+                "desc": "أطباء أمراض جلدية/جراحو تجميل معتمدون يجرون الاستشارات والعلاجات مباشرة. تضمن خبرتنا الواسعة نتائج مثلى."
               }
             }
           },
           "processSection": {
-            "sectionLabel": "Treatment Process"
+            "sectionLabel": "خطوات العلاج"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
+            "sectionLabel": "معلومات العلاج",
+            "title": "معلومات العلاج",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Results"
+              "duration": "مدة العلاج",
+              "anesthesia": "التخدير",
+              "recovery": "فترة التعافي",
+              "results": "النتائج"
             }
           },
           "faq": {
-            "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
+            "sectionLabel": "الأسئلة الشائعة",
+            "title": "الأسئلة الشائعة",
+            "moreInfo": "هل تريد المزيد من المعلومات الطبية؟",
+            "viewMedicalQA": "عرض الأسئلة الطبية"
           },
           "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book InMode Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />find the optimal treatment for your concerns.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "sectionLabel": "هل أنت مستعد للتحول؟",
+            "title": "احجز استشارة InMode",
+            "description": "من خلال استشارة شخصية مع فريقنا الطبي،<br />جد العلاج الأمثل لمخاوفك.",
+            "bookConsultation": "احجز استشارة مجانية",
+            "businessHours": "الإثنين-الجمعة 10:00-19:00",
+            "location": "3 دقائق سيراً من مخرج 4 محطة Sinsa"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
+            "sectionLabel": "علاجات ذات صلة",
+            "title": "علاجات ذات صلة"
           }
         },
         "ui": {
-          "skinElasticity": "Skin Elasticity",
-          "microneedleRf": "Microneedle RF",
-          "fatTightening": "Fat Tightening"
+          "skinElasticity": "مرونة البشرة",
+          "microneedleRf": "إبر دقيقة RF",
+          "fatTightening": "شد الدهون"
         }
       },
       "shurink": {

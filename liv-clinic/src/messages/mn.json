@@ -1193,28 +1193,28 @@
       "density": {
         "name": "Density",
         "fullName": "Density",
-        "tagline": "RF Energy for Elasticity Lifting",
-        "description": "RF (radiofrequency) energy densely remodels collagen within the skin. Precise and uniform energy for firm, elastic skin.",
+        "tagline": "Уян хатан лифтингийн RF энерги",
+        "description": "RF (радио давтамж) энерги нь арьсан доторх коллагенийг нягт сэргээнэ. Бөх, уян хатан арьсанд нарийн, жигд энерги.",
         "detail": {
           "illustrations": {
             "dualEnergy": {
-              "hifu": "Ultrasound",
-              "rf": "Radiofrequency",
-              "synergy": "Dual Energy Synergy"
+              "hifu": "Ультра-авиа",
+              "rf": "Радио давтамж",
+              "synergy": "Хос энергийн синерги"
             },
             "multiLayer": {
-              "epidermis": "Epidermis (RF)",
-              "dermis": "Dermis (HIFU+RF)",
+              "epidermis": "Эпидермис (RF)",
+              "dermis": "Дермис (HIFU+RF)",
               "smas": "SMAS (HIFU)",
-              "title": "Multi-Layer Targeting"
+              "title": "Олон давхаргат чиглэл"
             },
             "cooling": {
-              "title": "Cooling System"
+              "title": "Хөргөх систем"
             },
             "diagram": {
-              "epidermis": "Epidermis",
-              "dermis": "Dermis",
-              "subcutaneous": "Subcutaneous",
+              "epidermis": "Эпидермис",
+              "dermis": "Дермис",
+              "subcutaneous": "Арьсан доорх",
               "smas": "SMAS"
             }
           },
@@ -1254,7 +1254,7 @@
           },
           "comparison": {
             "headers": {
-              "feature": "Comparison",
+              "feature": "Харьцуулалт",
               "density": "Density",
               "ulthera": "Ultherapy Prime",
               "thermage": "Thermage"
@@ -1319,223 +1319,223 @@
             }
           ],
           "hero": {
-            "badge": "RF Radiofrequency Lifting",
+            "badge": "RF радио давтамжийн лифтинг",
             "title": "Density",
-            "description": "RF (radiofrequency) energy densely remodels collagen within the skin.<br />Precise and uniform energy for firm, elastic skin.",
+            "description": "RF (радио давтамж) энерги нь арьсан доторх коллагенийг нягт сэргээнэ.<br />Бөх, уян хатан арьсанд нарийн, жигд энерги.",
             "stats": {
               "energy": {
                 "value": "RF",
-                "label": "Radiofrequency Energy"
+                "label": "Радио давтамжийн энерги"
               },
               "layers": {
-                "value": "4 Layers",
-                "label": "Multi-Layer Targeting"
+                "value": "4 давхарга",
+                "label": "Олон давхаргат чиглэл"
               },
               "effect": {
-                "value": "Instant",
-                "label": "Lifting Effect"
+                "value": "Шууд",
+                "label": "Лифтингийн нөлөө"
               }
             },
             "floatingBadges": {
               "rf": {
                 "title": "RF",
-                "subtitle": "Precision RF"
+                "subtitle": "Нарийвчилсан RF"
               },
               "skin": {
                 "title": "RF",
-                "subtitle": "Skin Elasticity"
+                "subtitle": "Арьсны уян хатан"
               }
             }
           },
           "about": {
-            "sectionLabel": "About Density",
-            "title": "What is Density?",
-            "description": "Density is a premium lifting device that precisely stimulates the dermal layer using <strong>RF (radiofrequency)</strong> energy. Part of the same radiofrequency family as Thermage, it promotes collagen regeneration and improves skin elasticity through precise and uniform energy distribution.",
+            "sectionLabel": "Density тухай",
+            "title": "Density гэж юу вэ?",
+            "description": "Density бол <strong>RF (радио давтамж)</strong> энергиэр дермисийн давхаргыг нарийн идэвхжүүлдэг premium лифтинг төхөөрөмж юм. Thermage-тай ижил радио давтамжийн төрөлд багтаж, нарийн, жигд энергийн тархалтаар коллагены сэргэлтийг идэвхжүүлж арьсны уян хатан байдлыг сайжруулдаг.",
             "rfPrinciple": {
-              "title": "How RF Works",
+              "title": "RF хэрхэн ажилладаг",
               "cards": {
                 "rf": {
                   "label": "RF",
-                  "title": "Radiofrequency Energy",
-                  "desc": "Delivers heat energy precisely to the dermal layer, inducing collagen contraction and regeneration to improve skin elasticity."
+                  "title": "Радио давтамжийн энерги",
+                  "desc": "Дулааны энергийг дермисийн давхаргад нарийн хүргэж, коллагены агшилт ба сэргэлтийг үүсгэн арьсны уян хатан байдлыг сайжруулна."
                 },
                 "uniform": {
-                  "label": "Uniform",
-                  "title": "Precise Energy Distribution",
-                  "desc": "Uniform and precise energy delivery enables effective collagen remodeling."
+                  "label": "Жигд",
+                  "title": "Нарийн энергийн тархалт",
+                  "desc": "Жигд, нарийн энергийн хүргэлт нь үр дүнтэй коллагены сэргэлтийг боломжтой болгоно."
                 },
                 "synergy": {
                   "label": "+",
-                  "title": "Synergy Effect",
-                  "desc": "The simultaneous action of dual energies provides more powerful and lasting lifting effects compared to single treatments."
+                  "title": "Синергийн нөлөө",
+                  "desc": "Хос энергийн нэгэн зэргийн үйлдэл нь дан эмчилгээтэй харьцуулахад илүү хүчтэй, удаан үргэлжлэх лифтингийн нөлөөг өгдөг."
                 }
               }
             }
           },
           "whyDensity": {
-            "sectionLabel": "Why Density?",
-            "title": "Why Choose Density?",
+            "sectionLabel": "Яагаад Density?",
+            "title": "Яагаад Density-ийг сонгох вэ?",
             "cards": {
               "rf": {
-                "title": "RF Radiofrequency",
-                "desc": "Precise radiofrequency energy <strong>uniformly stimulates dermal collagen</strong> to improve both elasticity and skin texture simultaneously."
+                "title": "RF радио давтамж",
+                "desc": "Нарийн радио давтамжийн энерги нь <strong>дермисийн коллагенийг жигд идэвхжүүлж</strong> уян хатан байдал ба арьсны бүтцийг зэрэгцээ сайжруулдаг."
               },
               "affordable": {
-                "title": "Affordable Price",
-                "desc": "Same radiofrequency family as Thermage but at a <strong>more affordable cost</strong>, making consistent lifting maintenance possible."
+                "title": "Боломжийн үнэ",
+                "desc": "Thermage-тай ижил радио давтамжийн төрөл боловч <strong>илүү боломжийн зардлаар</strong> тогтмол лифтинг арчилгаа боломжтой."
               },
               "cooling": {
-                "title": "Cooling System",
-                "desc": "Built-in cooling system <strong>minimizes discomfort during treatment</strong> and protects the epidermis for a comfortable experience."
+                "title": "Хөргөх систем",
+                "desc": "Суурилуулсан хөргөх систем нь <strong>эмчилгээний явцад тав тух эвдрэхийг багасгаж</strong> эпидермисийг хамгаалан тав тухтай туршлагыг олгодог."
               }
             },
             "clinicalBanner": {
-              "label": "RF Lifting Benefits",
+              "label": "RF лифтингийн давуу тал",
               "stats": {
                 "energy": {
                   "value": "RF",
-                  "label": "Radiofrequency Energy"
+                  "label": "Радио давтамжийн энерги"
                 },
                 "precision": {
-                  "value": "Precise",
-                  "label": "Uniform Distribution"
+                  "value": "Нарийн",
+                  "label": "Жигд тархалт"
                 },
                 "duration": {
-                  "value": "40 min",
-                  "label": "Fast Treatment"
+                  "value": "40 минут",
+                  "label": "Хурдан эмчилгээ"
                 },
                 "effect": {
-                  "value": "Instant",
-                  "label": "Visible Results"
+                  "value": "Шууд",
+                  "label": "Харагдах үр дүн"
                 }
               }
             }
           },
           "compare": {
-            "sectionLabel": "Comparison",
-            "title": "Density vs Other Devices",
-            "subtitle": "Precise RF energy for elasticity and pore care simultaneously",
+            "sectionLabel": "Харьцуулалт",
+            "title": "Density vs бусад төхөөрөмж",
+            "subtitle": "Уян хатан ба сүв арчилгаанд зэрэгцээ нарийн RF энерги",
             "combinationNote": {
-              "title": "Combination with HIFU",
-              "desc": "Density (RF) can be combined with HIFU treatments like Ultherapy Prime and Shurink for comprehensive multi-layer elasticity treatment. Ideal for those seeking consistent lifting maintenance at a reasonable cost."
+              "title": "HIFU-тэй хослуулах",
+              "desc": "Density (RF)-ийг Ultherapy Prime, Shurink зэрэг HIFU эмчилгээтэй хослуулан иж бүрэн олон давхаргат уян хатан эмчилгээ хийж болно. Боломжийн үнээр тогтмол лифтинг арчилгааг хайж буй хүмүүст тохиромжтой."
             }
           },
           "livDifference": {
             "sectionLabel": "LIV Difference",
-            "title": "Density at LIV",
+            "title": "LIV дэх Density",
             "cards": {
               "custom": {
-                "title": "Customized Energy Settings",
-                "desc": "RF energy intensity is optimized based on your skin condition and concerns for personalized treatment."
+                "title": "Захиалгат энергийн тохиргоо",
+                "desc": "RF энергийн эрчмийг арьсны байдал ба санаа зовнилд тань үндэслэн хувийн эмчилгээний хувьд оновчилно."
               },
               "genuine": {
-                "title": "Genuine Equipment",
-                "desc": "We provide safe and effective treatments using genuine Density equipment. Regular equipment maintenance ensures optimal performance."
+                "title": "Жинхэнэ тоног төхөөрөмж",
+                "desc": "Жинхэнэ Density тоног төхөөрөмжөөр аюулгүй, үр дүнтэй эмчилгээ үзүүлдэг. Тогтмол тоног төхөөрөмжийн засвар оновчтой үйл ажиллагааг баталгаажуулна."
               },
               "specialist": {
-                "title": "Specialist Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+                "title": "Мэргэжилтний эмчилгээ",
+                "desc": "Гэрчилгээт арьс судлаач/гоо заслын мэс засалч өөрөө зөвлөгөө, эмчилгээ хийдэг. Манай баялаг туршлага нь оновчтой үр дүнг баталгаажуулна."
               }
             }
           },
           "timelineSection": {
-            "sectionLabel": "Results Timeline",
-            "subtitle": "Experience both immediate effects and gradual improvement after Density treatment"
+            "sectionLabel": "Үр дүнгийн цаг хугацаа",
+            "subtitle": "Density эмчилгээний дараа шууд үр нөлөө ба аажим сайжралтыг хоёуланг нь мэдрээрэй"
           },
           "processSection": {
-            "sectionLabel": "Treatment Process"
+            "sectionLabel": "Эмчилгээний үйл явц"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
+            "sectionLabel": "Эмчилгээний мэдээлэл",
+            "title": "Эмчилгээний мэдээлэл",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Results Duration"
+              "duration": "Эмчилгээний хугацаа",
+              "anesthesia": "Мэдээ алдуулалт",
+              "recovery": "Сэргэх хугацаа",
+              "results": "Үр дүнгийн хугацаа"
             }
           },
           "faq": {
-            "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
+            "sectionLabel": "Түгээмэл асуулт",
+            "title": "Түгээмэл асуултууд",
+            "moreInfo": "Илүү эмнэлзүйн мэдээлэл хүсэж байна уу?",
+            "viewMedicalQA": "Эмнэлзүйн Q&A харах"
           },
           "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book Density Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />establish the optimal treatment plan for you.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "sectionLabel": "Өөрчлөлтөд бэлэн үү?",
+            "title": "Density зөвлөгөө захиалах",
+            "description": "Манай эмнэлзүйн багтай 1:1 хувийн зөвлөгөөгөөр,<br />танд оновчтой эмчилгээний төлөвлөгөөг гаргана.",
+            "bookConsultation": "Үнэгүй зөвлөгөө захиалах",
+            "businessHours": "Даваа-Баасан 10:00-19:00",
+            "location": "Шинса метроны 4-р гарцнаас 3 минутын алхаа"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
+            "sectionLabel": "Холбогдох эмчилгээ",
+            "title": "Холбогдох эмчилгээ"
           }
         }
       },
       "inmode": {
         "name": "InMode",
         "fullName": "InMode",
-        "tagline": "RF-Based Combination Lifting",
-        "description": "A comprehensive lifting system using radiofrequency to improve skin elasticity and body contouring simultaneously.",
+        "tagline": "RF дээр суурилсан хосолсон лифтинг",
+        "description": "Арьсны уян хатан, биеийн хэлбэрийг нэгэн зэрэг сайжруулдаг радио давтамж ашигладаг иж бүрэн лифтинг систем.",
         "detail": {
           "illustrations": {
-            "forma": "Skin Elasticity",
-            "morpheus": "Microneedle RF",
-            "facetite": "Fat Tightening"
+            "forma": "Арьсны уян хатан",
+            "morpheus": "Микро зүү RF",
+            "facetite": "Өөх чангатгах"
           },
           "treatmentCard": {
-            "benefits": "Key Benefits",
-            "duration": "Treatment Time",
-            "downtime": "Downtime",
-            "idealFor": "Ideal For"
+            "benefits": "Гол давуу тал",
+            "duration": "Эмчилгээний хугацаа",
+            "downtime": "Сэргэх хугацаа",
+            "idealFor": "Тохиромжтой"
           },
           "comparison": {
-            "header": "Comparison",
+            "header": "Харьцуулалт",
             "rows": {
               "method": {
-                "feature": "Method",
-                "forma": "RF Radiofrequency",
-                "morpheus": "Microneedle + RF",
-                "facetite": "Cannula + RF"
+                "feature": "Арга",
+                "forma": "RF радио давтамж",
+                "morpheus": "Микро зүү + RF",
+                "facetite": "Канул + RF"
               },
               "invasiveness": {
-                "feature": "Invasiveness",
-                "forma": "Non-invasive",
-                "morpheus": "Minimally invasive",
-                "facetite": "Minimally invasive"
+                "feature": "Инвазив байдал",
+                "forma": "Инвазив бус",
+                "morpheus": "Хамгийн бага инвазив",
+                "facetite": "Хамгийн бага инвазив"
               },
               "anesthesia": {
-                "feature": "Anesthesia",
-                "forma": "Not required",
-                "morpheus": "Numbing cream",
-                "facetite": "Local anesthesia"
+                "feature": "Мэдээ алдуулалт",
+                "forma": "Шаардлагагүй",
+                "morpheus": "Мэдээ алдуулах тос",
+                "facetite": "Орон нутгийн мэдээ алдуулалт"
               },
               "downtime": {
-                "feature": "Downtime",
-                "forma": "None",
-                "morpheus": "3-5 days",
-                "facetite": "5-7 days"
+                "feature": "Сэргэх хугацаа",
+                "forma": "Үгүй",
+                "morpheus": "3-5 хоног",
+                "facetite": "5-7 хоног"
               },
               "onset": {
-                "feature": "Effect Onset",
-                "forma": "Gradual",
-                "morpheus": "Gradual",
-                "facetite": "Immediate"
+                "feature": "Үр нөлөө гарах",
+                "forma": "Аажмаар",
+                "morpheus": "Аажмаар",
+                "facetite": "Шууд"
               },
               "sessions": {
-                "feature": "Sessions",
-                "forma": "4-6 sessions",
-                "morpheus": "2-3 sessions",
-                "facetite": "1 session"
+                "feature": "Сесси",
+                "forma": "4-6 сесси",
+                "morpheus": "2-3 сесси",
+                "facetite": "1 сесси"
               },
               "target": {
-                "feature": "Main Target",
-                "forma": "Elasticity",
-                "morpheus": "Pores/Scars",
-                "facetite": "Fat/Sagging"
+                "feature": "Гол зорилт",
+                "forma": "Уян хатан",
+                "morpheus": "Сүв/Сорви",
+                "facetite": "Өөх/Уналт"
               }
             }
           },
@@ -1543,15 +1543,15 @@
             "forma": {
               "name": "Forma",
               "nameKo": "Forma",
-              "description": "Non-invasive RF radiofrequency induces collagen contraction and regeneration to improve skin elasticity. Virtually painless with no downtime, allowing you to resume daily activities immediately.",
+              "description": "Инвазив бус RF радио давтамж нь коллагены агшилт ба сэргэлтийг үүсгэн арьсны уян хатан байдлыг сайжруулна. Бараг өвдөлтгүй, сэргэх хугацаагүй тул өдөр тутмын үйл ажиллагаандаа шууд эргэн орох боломжтой.",
               "benefits": [
                 "Instant skin tightening",
                 "Collagen regeneration",
                 "Fine wrinkle improvement",
                 "Pain-free treatment"
               ],
-              "duration": "20-30 min",
-              "downtime": "None",
+              "duration": "20-30 минут",
+              "downtime": "Үгүй",
               "idealFor": [
                 "Loss of elasticity",
                 "Fine wrinkles",
@@ -1561,15 +1561,15 @@
             "morpheus": {
               "name": "Morpheus8",
               "nameKo": "Morpheus8",
-              "description": "24 gold-plated microneedles deliver RF energy to the dermal layer for skin remodeling. Simultaneously improves pores, scars, skin texture, and elasticity.",
+              "description": "Алтаар бүрсэн 24 микро зүү нь RF энергийг дермисийн давхаргад хүргэж арьс сэргээнэ. Сүв, сорви, арьсны бүтэц ба уян хатан байдлыг зэрэгцээ сайжруулна.",
               "benefits": [
                 "Pore reduction",
                 "Acne scar improvement",
                 "Skin texture refinement",
                 "Dermal remodeling"
               ],
-              "duration": "30-45 min",
-              "downtime": "3-5 days",
+              "duration": "30-45 минут",
+              "downtime": "3-5 хоног",
               "idealFor": [
                 "Large pores",
                 "Acne scars",
@@ -1579,15 +1579,15 @@
             "facetite": {
               "name": "FaceTite",
               "nameKo": "FaceTite",
-              "description": "A thin cannula delivers RF energy directly to the fat layer to melt fat and tighten skin. Provides mini facelift-level results.",
+              "description": "Нимгэн канул нь RF энергийг өөхний давхаргад шууд хүргэж өөхийг хайлуулж арьсыг чангатгана. Мини нүүрний лифтингийн түвшний үр дүнг өгдөг.",
               "benefits": [
                 "Fat reduction",
                 "Skin tightening",
                 "Jawline improvement",
                 "Double chin reduction"
               ],
-              "duration": "60-90 min",
-              "downtime": "5-7 days",
+              "duration": "60-90 минут",
+              "downtime": "5-7 хоног",
               "idealFor": [
                 "Double chin",
                 "Cheek fat",
@@ -1597,16 +1597,16 @@
           },
           "recommendations": {
             "forma": {
-              "title": "Forma Recommended",
-              "desc": "For maintaining skin elasticity, preventive care, and those who want treatment without downtime"
+              "title": "Forma зөвлөмжтэй",
+              "desc": "Арьсны уян хатан байдлыг хадгалах, урьдчилан сэргийлэх арчилгаа, сэргэх хугацаагүй эмчилгээ хүсэгчдэд"
             },
             "morpheus": {
-              "title": "Morpheus8 Recommended",
-              "desc": "For those wanting pore, scar, and texture improvement who can accommodate short-term downtime"
+              "title": "Morpheus8 зөвлөмжтэй",
+              "desc": "Сүв, сорви, бүтцийг сайжруулахыг хүсэж богино хугацааны сэргэлт хүлээж авах боломжтой хүмүүст"
             },
             "facetite": {
-              "title": "FaceTite Recommended",
-              "desc": "For those concerned about double chin, cheek fat, and sagging who want definitive results"
+              "title": "FaceTite зөвлөмжтэй",
+              "desc": "Давхар эрүү, хацрын өөх, уналтад санаа зовж тодорхой үр дүн хүсэгчдэд"
             }
           },
           "extendedFaqs": [
@@ -1624,98 +1624,98 @@
             }
           ],
           "hero": {
-            "badge": "All-in-One Lifting System",
+            "badge": "Бүх-нэг-нэгээр лифтинг систем",
             "title": "InMode",
-            "description": "Fat reduction and lifting simultaneously with RF energy.<br />If facial fat is your concern, InMode is the answer.",
+            "description": "RF энергиэр өөхийг багасгах ба лифтингийг нэгэн зэрэг.<br />Нүүрний өөх таны санаа зовнил бол InMode хариулт.",
             "stats": {
               "rf": {
                 "value": "RF",
-                "label": "Radiofrequency Energy"
+                "label": "Радио давтамжийн энерги"
               },
               "fda": {
                 "value": "FDA",
-                "label": "Approved Device"
+                "label": "Зөвшөөрөгдсөн төхөөрөмж"
               },
               "custom": {
-                "value": "Custom",
-                "label": "Personalized Treatment"
+                "value": "Захиалгат",
+                "label": "Хувийн эмчилгээ"
               }
             },
             "floatingBadges": {
               "morpheus": {
                 "title": "Morpheus8",
-                "subtitle": "Microneedle RF"
+                "subtitle": "Микро зүү RF"
               },
               "custom": {
-                "title": "Custom Treatment",
-                "subtitle": "Concern-Based Optimization"
+                "title": "Захиалгат эмчилгээ",
+                "subtitle": "Санаа зовнилд тулгуурласан оновчлол"
               }
             }
           },
           "about": {
-            "sectionLabel": "About InMode",
-            "title": "What is InMode?",
-            "description": "InMode is a multi-lifting device that uses <strong>radiofrequency (RF) energy</strong> to stimulate both the fat layer and dermal layer simultaneously. It's effective for those with excess facial fat or combined concerns of loose skin."
+            "sectionLabel": "InMode тухай",
+            "title": "InMode гэж юу вэ?",
+            "description": "InMode бол өөхний давхарга ба дермисийн давхаргыг нэгэн зэрэг идэвхжүүлэхийн тулд <strong>радио давтамжийн (RF) энерги</strong>-г ашигладаг олон-лифтинг төхөөрөмж юм. Нүүрэндээ өөх ихтэй эсвэл арьс уналттай хосолсон асуудалтай хүмүүст үр дүнтэй."
           },
           "compare": {
-            "sectionLabel": "Comparison",
-            "title": "Handpiece Comparison",
-            "subtitle": "Compare the characteristics of each treatment to find the right one for you"
+            "sectionLabel": "Харьцуулалт",
+            "title": "Гар хэрэгслийн харьцуулалт",
+            "subtitle": "Эмчилгээ бүрийн шинж чанарыг харьцуулж танд тохирохыг олоорой"
           },
           "livDifference": {
             "sectionLabel": "LIV Difference",
-            "title": "InMode at LIV",
+            "title": "LIV дэх InMode",
             "cards": {
               "genuine": {
-                "title": "Certified Clinic",
-                "desc": "As an officially certified InMode Korea clinic, we only use genuine equipment and tips. We operate the latest version of equipment."
+                "title": "Баталгаажсан эмнэлэг",
+                "desc": "InMode Korea-ийн албан ёсоор баталгаажсан эмнэлгийн хувьд зөвхөн жинхэнэ тоног төхөөрөмж, tips ашигладаг. Тоног төхөөрөмжийн хамгийн сүүлийн хувилбарыг ажиллуулна."
               },
               "combination": {
-                "title": "Customized Combination Treatment",
-                "desc": "Rather than using just one handpiece, we combine multiple treatments based on skin condition for optimal results."
+                "title": "Захиалгат хосолсон эмчилгээ",
+                "desc": "Нэг гар хэрэгсэл ашиглах оронд арьсны байдалд үндэслэн олон эмчилгээг хослуулж оновчтой үр дүнг өгнө."
               },
               "specialist": {
-                "title": "Specialist Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+                "title": "Мэргэжилтний эмчилгээ",
+                "desc": "Гэрчилгээт арьс судлаач/гоо заслын мэс засалч өөрөө зөвлөгөө, эмчилгээ хийдэг. Манай баялаг туршлага нь оновчтой үр дүнг баталгаажуулна."
               }
             }
           },
           "processSection": {
-            "sectionLabel": "Treatment Process"
+            "sectionLabel": "Эмчилгээний үйл явц"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
+            "sectionLabel": "Эмчилгээний мэдээлэл",
+            "title": "Эмчилгээний мэдээлэл",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Results"
+              "duration": "Эмчилгээний хугацаа",
+              "anesthesia": "Мэдээ алдуулалт",
+              "recovery": "Сэргэх хугацаа",
+              "results": "Үр дүн"
             }
           },
           "faq": {
-            "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
+            "sectionLabel": "Түгээмэл асуулт",
+            "title": "Түгээмэл асуултууд",
+            "moreInfo": "Илүү эмнэлзүйн мэдээлэл хүсэж байна уу?",
+            "viewMedicalQA": "Эмнэлзүйн Q&A харах"
           },
           "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book InMode Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />find the optimal treatment for your concerns.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "sectionLabel": "Өөрчлөлтөд бэлэн үү?",
+            "title": "InMode зөвлөгөө захиалах",
+            "description": "Манай эмнэлзүйн багтай 1:1 хувийн зөвлөгөөгөөр,<br />таны санаа зовнилд оновчтой эмчилгээг олоорой.",
+            "bookConsultation": "Үнэгүй зөвлөгөө захиалах",
+            "businessHours": "Даваа-Баасан 10:00-19:00",
+            "location": "Шинса метроны 4-р гарцнаас 3 минутын алхаа"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
+            "sectionLabel": "Холбогдох эмчилгээ",
+            "title": "Холбогдох эмчилгээ"
           }
         },
         "ui": {
-          "skinElasticity": "Skin Elasticity",
-          "microneedleRf": "Microneedle RF",
-          "fatTightening": "Fat Tightening"
+          "skinElasticity": "Арьсны уян хатан",
+          "microneedleRf": "Микро зүү RF",
+          "fatTightening": "Өөх чангатгах"
         }
       },
       "shurink": {

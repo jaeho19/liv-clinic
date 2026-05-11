@@ -1193,28 +1193,28 @@
       "density": {
         "name": "Density",
         "fullName": "Density",
-        "tagline": "RF Energy for Elasticity Lifting",
-        "description": "RF (radiofrequency) energy densely remodels collagen within the skin. Precise and uniform energy for firm, elastic skin.",
+        "tagline": "Énergie RF pour le lifting d'élasticité",
+        "description": "L'énergie RF (radiofréquence) remodèle densément le collagène dans la peau. Énergie précise et uniforme pour une peau ferme et élastique.",
         "detail": {
           "illustrations": {
             "dualEnergy": {
-              "hifu": "Ultrasound",
-              "rf": "Radiofrequency",
-              "synergy": "Dual Energy Synergy"
+              "hifu": "Ultrasons",
+              "rf": "Radiofréquence",
+              "synergy": "Synergie à double énergie"
             },
             "multiLayer": {
-              "epidermis": "Epidermis (RF)",
-              "dermis": "Dermis (HIFU+RF)",
+              "epidermis": "Épiderme (RF)",
+              "dermis": "Derme (HIFU+RF)",
               "smas": "SMAS (HIFU)",
-              "title": "Multi-Layer Targeting"
+              "title": "Ciblage multicouche"
             },
             "cooling": {
-              "title": "Cooling System"
+              "title": "Système de refroidissement"
             },
             "diagram": {
-              "epidermis": "Epidermis",
-              "dermis": "Dermis",
-              "subcutaneous": "Subcutaneous",
+              "epidermis": "Épiderme",
+              "dermis": "Derme",
+              "subcutaneous": "Sous-cutané",
               "smas": "SMAS"
             }
           },
@@ -1254,7 +1254,7 @@
           },
           "comparison": {
             "headers": {
-              "feature": "Comparison",
+              "feature": "Comparaison",
               "density": "Density",
               "ulthera": "Ultherapy Prime",
               "thermage": "Thermage"
@@ -1319,223 +1319,223 @@
             }
           ],
           "hero": {
-            "badge": "RF Radiofrequency Lifting",
+            "badge": "Lifting par radiofréquence RF",
             "title": "Density",
-            "description": "RF (radiofrequency) energy densely remodels collagen within the skin.<br />Precise and uniform energy for firm, elastic skin.",
+            "description": "L'énergie RF (radiofréquence) remodèle densément le collagène dans la peau.<br />Énergie précise et uniforme pour une peau ferme et élastique.",
             "stats": {
               "energy": {
                 "value": "RF",
-                "label": "Radiofrequency Energy"
+                "label": "Énergie radiofréquence"
               },
               "layers": {
-                "value": "4 Layers",
-                "label": "Multi-Layer Targeting"
+                "value": "4 couches",
+                "label": "Ciblage multicouche"
               },
               "effect": {
-                "value": "Instant",
-                "label": "Lifting Effect"
+                "value": "Instantané",
+                "label": "Effet lifting"
               }
             },
             "floatingBadges": {
               "rf": {
                 "title": "RF",
-                "subtitle": "Precision RF"
+                "subtitle": "RF de précision"
               },
               "skin": {
                 "title": "RF",
-                "subtitle": "Skin Elasticity"
+                "subtitle": "Élasticité cutanée"
               }
             }
           },
           "about": {
-            "sectionLabel": "About Density",
-            "title": "What is Density?",
-            "description": "Density is a premium lifting device that precisely stimulates the dermal layer using <strong>RF (radiofrequency)</strong> energy. Part of the same radiofrequency family as Thermage, it promotes collagen regeneration and improves skin elasticity through precise and uniform energy distribution.",
+            "sectionLabel": "À propos de Density",
+            "title": "Qu'est-ce que Density ?",
+            "description": "Density est un appareil de lifting premium qui stimule précisément la couche dermique grâce à l'énergie <strong>RF (radiofréquence)</strong>. Faisant partie de la même famille radiofréquence que Thermage, il favorise la régénération du collagène et améliore l'élasticité cutanée par une distribution d'énergie précise et uniforme.",
             "rfPrinciple": {
-              "title": "How RF Works",
+              "title": "Fonctionnement de la RF",
               "cards": {
                 "rf": {
                   "label": "RF",
-                  "title": "Radiofrequency Energy",
-                  "desc": "Delivers heat energy precisely to the dermal layer, inducing collagen contraction and regeneration to improve skin elasticity."
+                  "title": "Énergie radiofréquence",
+                  "desc": "Délivre une énergie thermique précise à la couche dermique, induisant la contraction et la régénération du collagène pour améliorer l'élasticité cutanée."
                 },
                 "uniform": {
-                  "label": "Uniform",
-                  "title": "Precise Energy Distribution",
-                  "desc": "Uniform and precise energy delivery enables effective collagen remodeling."
+                  "label": "Uniforme",
+                  "title": "Distribution d'énergie précise",
+                  "desc": "Une délivrance d'énergie uniforme et précise permet un remodelage efficace du collagène."
                 },
                 "synergy": {
                   "label": "+",
-                  "title": "Synergy Effect",
-                  "desc": "The simultaneous action of dual energies provides more powerful and lasting lifting effects compared to single treatments."
+                  "title": "Effet de synergie",
+                  "desc": "L'action simultanée des doubles énergies offre des effets de lifting plus puissants et durables par rapport aux traitements uniques."
                 }
               }
             }
           },
           "whyDensity": {
-            "sectionLabel": "Why Density?",
-            "title": "Why Choose Density?",
+            "sectionLabel": "Pourquoi Density ?",
+            "title": "Pourquoi choisir Density ?",
             "cards": {
               "rf": {
-                "title": "RF Radiofrequency",
-                "desc": "Precise radiofrequency energy <strong>uniformly stimulates dermal collagen</strong> to improve both elasticity and skin texture simultaneously."
+                "title": "Radiofréquence RF",
+                "desc": "L'énergie radiofréquence précise <strong>stimule uniformément le collagène dermique</strong> pour améliorer simultanément l'élasticité et la texture cutanée."
               },
               "affordable": {
-                "title": "Affordable Price",
-                "desc": "Same radiofrequency family as Thermage but at a <strong>more affordable cost</strong>, making consistent lifting maintenance possible."
+                "title": "Prix abordable",
+                "desc": "Même famille radiofréquence que Thermage mais à un <strong>coût plus abordable</strong>, rendant possible un entretien lifting régulier."
               },
               "cooling": {
-                "title": "Cooling System",
-                "desc": "Built-in cooling system <strong>minimizes discomfort during treatment</strong> and protects the epidermis for a comfortable experience."
+                "title": "Système de refroidissement",
+                "desc": "Le système de refroidissement intégré <strong>minimise l'inconfort pendant le traitement</strong> et protège l'épiderme pour une expérience confortable."
               }
             },
             "clinicalBanner": {
-              "label": "RF Lifting Benefits",
+              "label": "Avantages du lifting RF",
               "stats": {
                 "energy": {
                   "value": "RF",
-                  "label": "Radiofrequency Energy"
+                  "label": "Énergie radiofréquence"
                 },
                 "precision": {
-                  "value": "Precise",
-                  "label": "Uniform Distribution"
+                  "value": "Précis",
+                  "label": "Distribution uniforme"
                 },
                 "duration": {
                   "value": "40 min",
-                  "label": "Fast Treatment"
+                  "label": "Traitement rapide"
                 },
                 "effect": {
-                  "value": "Instant",
-                  "label": "Visible Results"
+                  "value": "Instantané",
+                  "label": "Résultats visibles"
                 }
               }
             }
           },
           "compare": {
-            "sectionLabel": "Comparison",
-            "title": "Density vs Other Devices",
-            "subtitle": "Precise RF energy for elasticity and pore care simultaneously",
+            "sectionLabel": "Comparaison",
+            "title": "Density vs autres appareils",
+            "subtitle": "Énergie RF précise pour l'élasticité et les pores simultanément",
             "combinationNote": {
-              "title": "Combination with HIFU",
-              "desc": "Density (RF) can be combined with HIFU treatments like Ultherapy Prime and Shurink for comprehensive multi-layer elasticity treatment. Ideal for those seeking consistent lifting maintenance at a reasonable cost."
+              "title": "Combinaison avec HIFU",
+              "desc": "Density (RF) peut être combiné avec des traitements HIFU comme Ultherapy Prime et Shurink pour un traitement complet d'élasticité multicouche. Idéal pour ceux qui recherchent un entretien lifting régulier à un coût raisonnable."
             }
           },
           "livDifference": {
             "sectionLabel": "LIV Difference",
-            "title": "Density at LIV",
+            "title": "Density chez LIV",
             "cards": {
               "custom": {
-                "title": "Customized Energy Settings",
-                "desc": "RF energy intensity is optimized based on your skin condition and concerns for personalized treatment."
+                "title": "Paramètres d'énergie personnalisés",
+                "desc": "L'intensité de l'énergie RF est optimisée selon l'état de votre peau et vos préoccupations pour un traitement personnalisé."
               },
               "genuine": {
-                "title": "Genuine Equipment",
-                "desc": "We provide safe and effective treatments using genuine Density equipment. Regular equipment maintenance ensures optimal performance."
+                "title": "Équipement authentique",
+                "desc": "Nous offrons des traitements sûrs et efficaces avec un équipement Density authentique. La maintenance régulière garantit des performances optimales."
               },
               "specialist": {
-                "title": "Specialist Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+                "title": "Traitement par spécialiste",
+                "desc": "Des dermatologues/chirurgiens plasticiens certifiés réalisent directement les consultations et traitements. Notre vaste expérience garantit des résultats optimaux."
               }
             }
           },
           "timelineSection": {
-            "sectionLabel": "Results Timeline",
-            "subtitle": "Experience both immediate effects and gradual improvement after Density treatment"
+            "sectionLabel": "Chronologie des résultats",
+            "subtitle": "Découvrez à la fois des effets immédiats et une amélioration progressive après le traitement Density"
           },
           "processSection": {
-            "sectionLabel": "Treatment Process"
+            "sectionLabel": "Processus du traitement"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
+            "sectionLabel": "Infos sur le traitement",
+            "title": "Informations sur le traitement",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Results Duration"
+              "duration": "Durée du traitement",
+              "anesthesia": "Anesthésie",
+              "recovery": "Période de récupération",
+              "results": "Durée des résultats"
             }
           },
           "faq": {
             "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
+            "title": "Questions fréquentes",
+            "moreInfo": "Vous voulez plus d'informations médicales ?",
+            "viewMedicalQA": "Voir les Q&R médicales"
           },
           "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book Density Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />establish the optimal treatment plan for you.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "sectionLabel": "Prêt pour la transformation ?",
+            "title": "Réserver une consultation Density",
+            "description": "Grâce à une consultation personnalisée en tête-à-tête avec notre équipe médicale,<br />établissez le plan de traitement optimal pour vous.",
+            "bookConsultation": "Réserver une consultation gratuite",
+            "businessHours": "Lun-Ven 10:00-19:00",
+            "location": "3 min à pied de la sortie 4 de la station Sinsa"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
+            "sectionLabel": "Traitements associés",
+            "title": "Traitements associés"
           }
         }
       },
       "inmode": {
         "name": "InMode",
         "fullName": "InMode",
-        "tagline": "RF-Based Combination Lifting",
-        "description": "A comprehensive lifting system using radiofrequency to improve skin elasticity and body contouring simultaneously.",
+        "tagline": "Lifting combiné basé sur la RF",
+        "description": "Un système de lifting complet utilisant la radiofréquence pour améliorer simultanément l'élasticité cutanée et le contour corporel.",
         "detail": {
           "illustrations": {
-            "forma": "Skin Elasticity",
-            "morpheus": "Microneedle RF",
-            "facetite": "Fat Tightening"
+            "forma": "Élasticité cutanée",
+            "morpheus": "Micro-aiguille RF",
+            "facetite": "Raffermissement graisseux"
           },
           "treatmentCard": {
-            "benefits": "Key Benefits",
-            "duration": "Treatment Time",
-            "downtime": "Downtime",
-            "idealFor": "Ideal For"
+            "benefits": "Principaux avantages",
+            "duration": "Durée du traitement",
+            "downtime": "Temps d'arrêt",
+            "idealFor": "Idéal pour"
           },
           "comparison": {
-            "header": "Comparison",
+            "header": "Comparaison",
             "rows": {
               "method": {
-                "feature": "Method",
-                "forma": "RF Radiofrequency",
-                "morpheus": "Microneedle + RF",
-                "facetite": "Cannula + RF"
+                "feature": "Méthode",
+                "forma": "RF Radiofréquence",
+                "morpheus": "Micro-aiguille + RF",
+                "facetite": "Canule + RF"
               },
               "invasiveness": {
-                "feature": "Invasiveness",
-                "forma": "Non-invasive",
-                "morpheus": "Minimally invasive",
-                "facetite": "Minimally invasive"
+                "feature": "Caractère invasif",
+                "forma": "Non invasif",
+                "morpheus": "Mini-invasif",
+                "facetite": "Mini-invasif"
               },
               "anesthesia": {
-                "feature": "Anesthesia",
-                "forma": "Not required",
-                "morpheus": "Numbing cream",
-                "facetite": "Local anesthesia"
+                "feature": "Anesthésie",
+                "forma": "Non requise",
+                "morpheus": "Crème anesthésiante",
+                "facetite": "Anesthésie locale"
               },
               "downtime": {
-                "feature": "Downtime",
-                "forma": "None",
-                "morpheus": "3-5 days",
-                "facetite": "5-7 days"
+                "feature": "Temps d'arrêt",
+                "forma": "Aucun",
+                "morpheus": "3-5 jours",
+                "facetite": "5-7 jours"
               },
               "onset": {
-                "feature": "Effect Onset",
-                "forma": "Gradual",
-                "morpheus": "Gradual",
-                "facetite": "Immediate"
+                "feature": "Apparition des effets",
+                "forma": "Progressif",
+                "morpheus": "Progressif",
+                "facetite": "Immédiat"
               },
               "sessions": {
-                "feature": "Sessions",
-                "forma": "4-6 sessions",
-                "morpheus": "2-3 sessions",
-                "facetite": "1 session"
+                "feature": "Séances",
+                "forma": "4-6 séances",
+                "morpheus": "2-3 séances",
+                "facetite": "1 séance"
               },
               "target": {
-                "feature": "Main Target",
-                "forma": "Elasticity",
-                "morpheus": "Pores/Scars",
-                "facetite": "Fat/Sagging"
+                "feature": "Cible principale",
+                "forma": "Élasticité",
+                "morpheus": "Pores/Cicatrices",
+                "facetite": "Graisse/Relâchement"
               }
             }
           },
@@ -1543,7 +1543,7 @@
             "forma": {
               "name": "Forma",
               "nameKo": "Forma",
-              "description": "Non-invasive RF radiofrequency induces collagen contraction and regeneration to improve skin elasticity. Virtually painless with no downtime, allowing you to resume daily activities immediately.",
+              "description": "La radiofréquence RF non invasive induit la contraction et la régénération du collagène pour améliorer l'élasticité cutanée. Pratiquement indolore sans temps d'arrêt, vous pouvez reprendre vos activités immédiatement.",
               "benefits": [
                 "Instant skin tightening",
                 "Collagen regeneration",
@@ -1551,7 +1551,7 @@
                 "Pain-free treatment"
               ],
               "duration": "20-30 min",
-              "downtime": "None",
+              "downtime": "Aucun",
               "idealFor": [
                 "Loss of elasticity",
                 "Fine wrinkles",
@@ -1561,7 +1561,7 @@
             "morpheus": {
               "name": "Morpheus8",
               "nameKo": "Morpheus8",
-              "description": "24 gold-plated microneedles deliver RF energy to the dermal layer for skin remodeling. Simultaneously improves pores, scars, skin texture, and elasticity.",
+              "description": "24 micro-aiguilles plaquées or délivrent l'énergie RF à la couche dermique pour le remodelage cutané. Améliore simultanément pores, cicatrices, texture et élasticité.",
               "benefits": [
                 "Pore reduction",
                 "Acne scar improvement",
@@ -1569,7 +1569,7 @@
                 "Dermal remodeling"
               ],
               "duration": "30-45 min",
-              "downtime": "3-5 days",
+              "downtime": "3-5 jours",
               "idealFor": [
                 "Large pores",
                 "Acne scars",
@@ -1579,7 +1579,7 @@
             "facetite": {
               "name": "FaceTite",
               "nameKo": "FaceTite",
-              "description": "A thin cannula delivers RF energy directly to the fat layer to melt fat and tighten skin. Provides mini facelift-level results.",
+              "description": "Une fine canule délivre l'énergie RF directement à la couche graisseuse pour faire fondre la graisse et raffermir la peau. Offre des résultats équivalents à un mini-lifting.",
               "benefits": [
                 "Fat reduction",
                 "Skin tightening",
@@ -1587,7 +1587,7 @@
                 "Double chin reduction"
               ],
               "duration": "60-90 min",
-              "downtime": "5-7 days",
+              "downtime": "5-7 jours",
               "idealFor": [
                 "Double chin",
                 "Cheek fat",
@@ -1597,16 +1597,16 @@
           },
           "recommendations": {
             "forma": {
-              "title": "Forma Recommended",
-              "desc": "For maintaining skin elasticity, preventive care, and those who want treatment without downtime"
+              "title": "Forma recommandé",
+              "desc": "Pour maintenir l'élasticité cutanée, les soins préventifs et ceux qui veulent un traitement sans temps d'arrêt"
             },
             "morpheus": {
-              "title": "Morpheus8 Recommended",
-              "desc": "For those wanting pore, scar, and texture improvement who can accommodate short-term downtime"
+              "title": "Morpheus8 recommandé",
+              "desc": "Pour ceux qui veulent améliorer pores, cicatrices et texture, et peuvent accommoder un court temps d'arrêt"
             },
             "facetite": {
-              "title": "FaceTite Recommended",
-              "desc": "For those concerned about double chin, cheek fat, and sagging who want definitive results"
+              "title": "FaceTite recommandé",
+              "desc": "Pour ceux préoccupés par double menton, graisse des joues et relâchement, voulant des résultats définitifs"
             }
           },
           "extendedFaqs": [
@@ -1624,98 +1624,98 @@
             }
           ],
           "hero": {
-            "badge": "All-in-One Lifting System",
+            "badge": "Système de lifting tout-en-un",
             "title": "InMode",
-            "description": "Fat reduction and lifting simultaneously with RF energy.<br />If facial fat is your concern, InMode is the answer.",
+            "description": "Réduction de graisse et lifting simultanés avec l'énergie RF.<br />Si la graisse faciale est votre préoccupation, InMode est la réponse.",
             "stats": {
               "rf": {
                 "value": "RF",
-                "label": "Radiofrequency Energy"
+                "label": "Énergie radiofréquence"
               },
               "fda": {
                 "value": "FDA",
-                "label": "Approved Device"
+                "label": "Appareil approuvé"
               },
               "custom": {
-                "value": "Custom",
-                "label": "Personalized Treatment"
+                "value": "Personnalisé",
+                "label": "Traitement personnalisé"
               }
             },
             "floatingBadges": {
               "morpheus": {
                 "title": "Morpheus8",
-                "subtitle": "Microneedle RF"
+                "subtitle": "Micro-aiguille RF"
               },
               "custom": {
-                "title": "Custom Treatment",
-                "subtitle": "Concern-Based Optimization"
+                "title": "Traitement personnalisé",
+                "subtitle": "Optimisation selon les préoccupations"
               }
             }
           },
           "about": {
-            "sectionLabel": "About InMode",
-            "title": "What is InMode?",
-            "description": "InMode is a multi-lifting device that uses <strong>radiofrequency (RF) energy</strong> to stimulate both the fat layer and dermal layer simultaneously. It's effective for those with excess facial fat or combined concerns of loose skin."
+            "sectionLabel": "À propos d'InMode",
+            "title": "Qu'est-ce qu'InMode ?",
+            "description": "InMode est un appareil de lifting multiple qui utilise <strong>l'énergie radiofréquence (RF)</strong> pour stimuler simultanément la couche graisseuse et la couche dermique. Efficace pour ceux ayant un excès de graisse faciale ou des préoccupations combinées de peau relâchée."
           },
           "compare": {
-            "sectionLabel": "Comparison",
-            "title": "Handpiece Comparison",
-            "subtitle": "Compare the characteristics of each treatment to find the right one for you"
+            "sectionLabel": "Comparaison",
+            "title": "Comparaison des pièces à main",
+            "subtitle": "Comparez les caractéristiques de chaque traitement pour trouver celui qui vous convient"
           },
           "livDifference": {
             "sectionLabel": "LIV Difference",
-            "title": "InMode at LIV",
+            "title": "InMode chez LIV",
             "cards": {
               "genuine": {
-                "title": "Certified Clinic",
-                "desc": "As an officially certified InMode Korea clinic, we only use genuine equipment and tips. We operate the latest version of equipment."
+                "title": "Clinique certifiée",
+                "desc": "En tant que clinique officiellement certifiée par InMode Korea, nous utilisons uniquement des équipements et embouts authentiques. Nous utilisons la dernière version de l'équipement."
               },
               "combination": {
-                "title": "Customized Combination Treatment",
-                "desc": "Rather than using just one handpiece, we combine multiple treatments based on skin condition for optimal results."
+                "title": "Traitement combiné personnalisé",
+                "desc": "Plutôt qu'une seule pièce à main, nous combinons plusieurs traitements selon l'état de la peau pour des résultats optimaux."
               },
               "specialist": {
-                "title": "Specialist Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
+                "title": "Traitement par spécialiste",
+                "desc": "Des dermatologues/chirurgiens plasticiens certifiés réalisent directement les consultations et traitements. Notre vaste expérience garantit des résultats optimaux."
               }
             }
           },
           "processSection": {
-            "sectionLabel": "Treatment Process"
+            "sectionLabel": "Processus du traitement"
           },
           "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
+            "sectionLabel": "Infos sur le traitement",
+            "title": "Informations sur le traitement",
             "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Results"
+              "duration": "Durée du traitement",
+              "anesthesia": "Anesthésie",
+              "recovery": "Période de récupération",
+              "results": "Résultats"
             }
           },
           "faq": {
             "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
+            "title": "Questions fréquentes",
+            "moreInfo": "Vous voulez plus d'informations médicales ?",
+            "viewMedicalQA": "Voir les Q&R médicales"
           },
           "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book InMode Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />find the optimal treatment for your concerns.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
+            "sectionLabel": "Prêt pour la transformation ?",
+            "title": "Réserver une consultation InMode",
+            "description": "Grâce à une consultation personnalisée en tête-à-tête avec notre équipe médicale,<br />trouvez le traitement optimal pour vos préoccupations.",
+            "bookConsultation": "Réserver une consultation gratuite",
+            "businessHours": "Lun-Ven 10:00-19:00",
+            "location": "3 min à pied de la sortie 4 de la station Sinsa"
           },
           "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
+            "sectionLabel": "Traitements associés",
+            "title": "Traitements associés"
           }
         },
         "ui": {
-          "skinElasticity": "Skin Elasticity",
-          "microneedleRf": "Microneedle RF",
-          "fatTightening": "Fat Tightening"
+          "skinElasticity": "Élasticité cutanée",
+          "microneedleRf": "Micro-aiguille RF",
+          "fatTightening": "Raffermissement graisseux"
         }
       },
       "shurink": {
