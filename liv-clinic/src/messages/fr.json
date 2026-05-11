@@ -3166,15 +3166,15 @@
       "center": {
         "name": "Laser Center",
         "fullName": "Laser Center",
-        "tagline": "Advanced Laser Total Solution",
-        "description": "A premium laser center addressing various skin concerns from pigmentation, vascular issues, skin texture, hair removal, to tattoo removal.",
+        "tagline": "Solution laser globale avancée",
+        "description": "Un centre laser premium répondant à diverses préoccupations cutanées, de la pigmentation aux problèmes vasculaires, en passant par la texture de la peau, l'épilation et le détatouage.",
         "detail": {
           "hero": {
             "title": "Laser Center",
-            "subtitle": "Customized Laser Solutions for Your Skin Concerns",
-            "description": "With Clarity II + Lucas combination<br/>One-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+            "subtitle": "Solutions laser personnalisées pour vos préoccupations cutanées",
+            "description": "Combinaison Clarity II + Lucas<br/>Soin tout-en-un, de la pigmentation aux vaisseaux, en passant par l'épilation et le détatouage"
           },
-          "viewMore": "Learn More",
+          "viewMore": "En savoir plus",
           "stats": [
             {
               "label": "Equipment",
@@ -3198,8 +3198,8 @@
             }
           ],
           "categories": {
-            "title": "Customized Treatment for Your Skin Concerns",
-            "subtitle": "Select your skin concern and we'll recommend the optimal laser treatment",
+            "title": "Traitement personnalisé pour vos préoccupations cutanées",
+            "subtitle": "Sélectionnez votre préoccupation cutanée et nous vous recommanderons le traitement laser optimal",
             "items": [
               {
                 "id": "pigmentation",
@@ -3257,10 +3257,10 @@
             ]
           },
           "matrix": {
-            "badge": "Equipment × Indications",
-            "title": "Equipment Lineup for Any Skin Concern",
-            "subtitle": "LIV Laser Center's 4 premium devices cover all skin concerns",
-            "chartTitle": "Skin Concern × Equipment Matrix",
+            "badge": "Équipement × Indications",
+            "title": "Une gamme d'équipements pour chaque préoccupation cutanée",
+            "subtitle": "Les 4 appareils premium du LIV Laser Center couvrent toutes les préoccupations cutanées",
+            "chartTitle": "Matrice préoccupation cutanée × équipement",
             "equipment": [
               "Clarity II",
               "Lucas",
@@ -3276,12 +3276,12 @@
             ]
           },
           "equipmentSection": {
-            "badge": "LIV Equipment",
-            "title": "Premium Laser Lineup",
-            "subtitle": "Safe and effective treatments with the latest FDA-approved equipment",
+            "badge": "Équipement LIV",
+            "title": "Gamme laser premium",
+            "subtitle": "Traitements sûrs et efficaces grâce aux derniers équipements approuvés par la FDA",
             "labels": {
-              "wavelength": "Wavelength",
-              "feature": "Feature",
+              "wavelength": "Longueur d'onde",
+              "feature": "Caractéristique",
               "indications": "Indications"
             },
             "items": [
@@ -3337,8 +3337,8 @@
           },
           "synergy": {
             "badge": "LIV EXCLUSIVE",
-            "title": "Clarity II + Lucas Synergy Effect",
-            "subtitle": "Expect faster and more effective results compared to single treatment with this premium equipment combination",
+            "title": "Effet synergique Clarity II + Lucas",
+            "subtitle": "Attendez-vous à des résultats plus rapides et plus efficaces qu'avec un traitement seul grâce à cette combinaison premium d'équipements",
             "benefits": [
               {
                 "title": "Multi-Wavelength Coverage",
@@ -3355,7 +3355,7 @@
             ]
           },
           "process": {
-            "title": "Laser Treatment Process",
+            "title": "Déroulement du traitement laser",
             "steps": [
               {
                 "step": 1,
@@ -3380,7 +3380,7 @@
             ]
           },
           "faq": {
-            "title": "Frequently Asked Questions",
+            "title": "Questions fréquentes",
             "items": [
               {
                 "q": "Which laser is right for me?",
@@ -3401,25 +3401,25 @@
             ]
           },
           "cta": {
-            "title": "Your First Step to Clear, Healthy Skin",
-            "description": "We'll help you find the optimal laser for your skin concerns<br/>Confirm your customized treatment plan with a free consultation",
-            "buttonConsult": "Book Free Consultation"
+            "title": "Votre premier pas vers une peau claire et saine",
+            "description": "Nous vous aidons à trouver le laser optimal pour vos préoccupations cutanées<br/>Confirmez votre plan de traitement personnalisé lors d'une consultation gratuite",
+            "buttonConsult": "Réserver une consultation gratuite"
           }
         }
       },
       "pigmentation": {
-        "name": "Pigmentation Treatment",
-        "fullName": "Pigmentation Treatment",
-        "tagline": "Melasma, Spots & Freckle Treatment",
-        "description": "Customized laser treatments for various pigmentation conditions to restore clear, radiant skin.",
+        "name": "Traitement de la pigmentation",
+        "fullName": "Traitement de la pigmentation",
+        "tagline": "Mélasma, taches et taches de rousseur",
+        "description": "Traitements laser personnalisés pour diverses affections pigmentaires afin de restaurer une peau claire et lumineuse.",
         "detail": {
           "hero": {
-            "subtitle": "Even stubborn melasma with our 3-stage system",
-            "description": "From picosecond laser to gentle toning, customized pigmentation treatment with 4 premium devices"
+            "subtitle": "Même le mélasma tenace avec notre système en 3 étapes",
+            "description": "Du laser picoseconde au toning doux, traitement personnalisé de la pigmentation avec 4 appareils premium"
           },
           "threeStageSystem": {
-            "title": "LIV's 3-Stage Pigmentation Treatment System",
-            "subtitle": "From mild to stubborn melasma, effective pigmentation improvement with step-by-step customized treatment",
+            "title": "Système de traitement de la pigmentation en 3 étapes de LIV",
+            "subtitle": "Du mélasma léger au plus tenace, amélioration efficace de la pigmentation grâce à un traitement personnalisé étape par étape",
             "stages": [
               {
                 "stage": "Stage 1",
@@ -3442,63 +3442,63 @@
             ]
           },
           "picoVsNano": {
-            "title": "Why Picosecond?",
-            "subtitle": "1000x faster pulse than nanosecond laser breaks down pigment into finer particles",
-            "nanosecond": "Nanosecond Laser",
-            "picosecond": "Picosecond Laser",
-            "nanosecondUnit": "Billionth of a second (10⁻⁹)",
-            "picosecondUnit": "Trillionth of a second (10⁻¹²)",
-            "largeParticles": "Pigment particles broken into larger pieces",
-            "slowDischarge": "Slow discharge",
-            "fineParticles": "Pigment particles broken into fine particles",
-            "fastDischarge": "Fast lymphatic discharge",
-            "timesFaster": "1000x Faster",
+            "title": "Pourquoi la picoseconde ?",
+            "subtitle": "Une impulsion 1000× plus rapide que le laser nanoseconde fragmente le pigment en particules plus fines",
+            "nanosecond": "Laser nanoseconde",
+            "picosecond": "Laser picoseconde",
+            "nanosecondUnit": "Milliardième de seconde (10⁻⁹)",
+            "picosecondUnit": "Mille milliardième de seconde (10⁻¹²)",
+            "largeParticles": "Particules de pigment fragmentées en morceaux plus grands",
+            "slowDischarge": "Évacuation lente",
+            "fineParticles": "Particules de pigment fragmentées en fines particules",
+            "fastDischarge": "Évacuation lymphatique rapide",
+            "timesFaster": "1000× plus rapide",
             "comparison": {
-              "item": "Comparison",
-              "pulseSpeed": "Pulse Speed",
-              "particleSize": "Particle Size",
-              "tissueDamage": "Tissue Damage",
-              "heatDamage": "Heat Damage",
-              "downtime": "Downtime",
-              "sessions": "Sessions Required",
-              "relativeLarge": "Relatively Large",
+              "item": "Comparaison",
+              "pulseSpeed": "Vitesse d'impulsion",
+              "particleSize": "Taille des particules",
+              "tissueDamage": "Dommages tissulaires",
+              "heatDamage": "Dommages thermiques",
+              "downtime": "Temps d'arrêt",
+              "sessions": "Nombre de séances requises",
+              "relativeLarge": "Relativement grande",
               "fine": "Fine",
-              "exists": "Present",
-              "minimal": "Minimal",
-              "almostNone": "Almost None",
-              "relativeLong": "Relatively Long",
-              "short": "Short",
-              "many": "Many",
-              "few": "Few"
+              "exists": "Présents",
+              "minimal": "Minimes",
+              "almostNone": "Quasi inexistants",
+              "relativeLong": "Relativement long",
+              "short": "Court",
+              "many": "Nombreuses",
+              "few": "Peu nombreuses"
             }
           },
           "equipment": {
-            "title": "Recommended Pigmentation Treatment Devices",
-            "subtitle": "Optimal pigmentation treatment with 4 premium lasers at LIV Clinic",
-            "featured": "FEATURED"
+            "title": "Appareils recommandés pour le traitement de la pigmentation",
+            "subtitle": "Traitement optimal de la pigmentation avec 4 lasers premium à LIV Clinic",
+            "featured": "À LA UNE"
           },
           "protocol": {
-            "title": "Treatment Protocol by Severity",
+            "title": "Protocole de traitement selon la sévérité",
             "mild": {
-              "level": "Mild",
-              "description": "Light melasma, spots",
+              "level": "Légère",
+              "description": "Mélasma léger, taches",
               "treatment": "Laser Toning",
-              "sessions": "5-10 sessions",
-              "interval": "2-week interval"
+              "sessions": "5-10 séances",
+              "interval": "Intervalle de 2 semaines"
             },
             "moderate": {
-              "level": "Moderate",
-              "description": "Medium-depth pigmentation",
-              "treatment": "Clarity II 755nm",
-              "sessions": "3-5 sessions",
-              "interval": "3-4 week interval"
+              "level": "Modérée",
+              "description": "Pigmentation de profondeur moyenne",
+              "treatment": "Clarity II 755 nm",
+              "sessions": "3-5 séances",
+              "interval": "Intervalle de 3-4 semaines"
             },
             "severe": {
-              "level": "Severe / Stubborn",
-              "description": "Deep melasma, stubborn",
+              "level": "Sévère / Tenace",
+              "description": "Mélasma profond, tenace",
               "treatment": "Lucas Pico + Toning",
-              "sessions": "5-10 sessions",
-              "interval": "2-4 week interval"
+              "sessions": "5-10 séances",
+              "interval": "Intervalle de 2-4 semaines"
             }
           },
           "idealFor": [
@@ -3528,30 +3528,30 @@
             }
           ],
           "cta": {
-            "title": "Free Melasma/Pigmentation Consultation",
-            "description": "Get a customized pigmentation treatment plan tailored to your skin condition. Start optimal treatment with specialist consultation."
+            "title": "Consultation gratuite mélasma / pigmentation",
+            "description": "Bénéficiez d'un plan de traitement de la pigmentation personnalisé selon l'état de votre peau. Commencez un traitement optimal grâce à une consultation spécialisée."
           }
         },
         "ui": {
-          "duration": "Duration",
-          "downtime": "Downtime",
-          "recommendedSessions": "Recommended Sessions"
+          "duration": "Durée",
+          "downtime": "Temps d'arrêt",
+          "recommendedSessions": "Nombre de séances recommandé"
         }
       },
       "vascular": {
-        "name": "Vascular Treatment",
-        "fullName": "Vascular Treatment",
-        "tagline": "Redness, Spider Veins & Acne Scars",
-        "description": "Selectively treating dilated blood vessels and redness for an even skin tone.",
+        "name": "Traitement vasculaire",
+        "fullName": "Traitement vasculaire",
+        "tagline": "Rougeurs, télangiectasies et cicatrices d'acné",
+        "description": "Traitement sélectif des vaisseaux sanguins dilatés et des rougeurs pour un teint uniforme.",
         "detail": {
           "hero": {
-            "subtitle": "Dual wavelength treats redness and vessels simultaneously",
-            "description": "Clarity II's 1064nm Nd:YAG wavelength effectively improves redness, capillary dilation, and rosacea"
+            "subtitle": "Une double longueur d'onde traite simultanément les rougeurs et les vaisseaux",
+            "description": "La longueur d'onde 1064 nm Nd:YAG du Clarity II améliore efficacement les rougeurs, la dilatation capillaire et la rosacée"
           },
           "rednessTypes": {
-            "title": "Customized Treatment by Redness Type",
-            "subtitle": "Optimal wavelength and energy treatment based on the cause and depth of redness",
-            "recommendedTreatment": "Recommended Treatment",
+            "title": "Traitement personnalisé selon le type de rougeur",
+            "subtitle": "Traitement avec longueur d'onde et énergie optimales selon la cause et la profondeur des rougeurs",
+            "recommendedTreatment": "Traitement recommandé",
             "types": [
               {
                 "type": "Facial Flushing",
@@ -3576,14 +3576,14 @@
             ]
           },
           "dualWavelength": {
-            "title": "Dual Wavelength Principle",
-            "subtitle": "755nm and 1064nm wavelengths selectively treat from shallow to deep vessels",
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "shallow755": "755nm - Shallow Vessel Target",
-            "deep1064": "1064nm - Deep Vessel Target",
+            "title": "Principe de la double longueur d'onde",
+            "subtitle": "Les longueurs d'onde 755 nm et 1064 nm traitent sélectivement des vaisseaux superficiels aux vaisseaux profonds",
+            "epidermis": "Épiderme",
+            "dermis": "Derme",
+            "shallow755": "755 nm — Cible vaisseaux superficiels",
+            "deep1064": "1064 nm — Cible vaisseaux profonds",
             "alexandrite": {
-              "title": "755nm Alexandrite",
+              "title": "Alexandrite 755 nm",
               "points": [
                 "Targets shallow vessels near epidermis",
                 "Effective for capillary dilation treatment",
@@ -3591,7 +3591,7 @@
               ]
             },
             "ndyag": {
-              "title": "1064nm Nd:YAG",
+              "title": "Nd:YAG 1064 nm",
               "points": [
                 "Reaches deep vessels in dermis",
                 "Effective for chronic redness and rosacea",
@@ -3601,11 +3601,11 @@
           },
           "clarity": {
             "title": "Clarity II",
-            "subtitle": "Premium dual-wavelength laser optimized for vascular treatment",
+            "subtitle": "Laser premium à double longueur d'onde optimisé pour le traitement vasculaire",
             "badge": "ONLY OPTION",
-            "why": "Why Clarity II?",
-            "whyDesc": "The most suitable device for vascular treatment among LIV's equipment. The 1064nm Nd:YAG wavelength is selectively absorbed by hemoglobin in blood vessels, treating only vessels without surrounding tissue damage.",
-            "recommendedSessions": "3-8 sessions (depending on severity)",
+            "why": "Pourquoi Clarity II ?",
+            "whyDesc": "L'appareil le plus adapté au traitement vasculaire parmi les équipements de LIV. La longueur d'onde 1064 nm Nd:YAG est absorbée sélectivement par l'hémoglobine des vaisseaux sanguins, traitant uniquement les vaisseaux sans endommager les tissus environnants.",
+            "recommendedSessions": "3-8 séances (selon la sévérité)",
             "benefits": [
               {
                 "title": "Dual Wavelength",
@@ -3625,31 +3625,31 @@
               }
             ],
             "duration": "15-30 minutes",
-            "anesthesia": "No anesthesia (Cryogen cooling)",
-            "recovery": "Immediate return to daily activities"
+            "anesthesia": "Sans anesthésie (refroidissement Cryogen)",
+            "recovery": "Retour immédiat aux activités quotidiennes"
           },
           "protocol": {
-            "title": "Treatment Protocol by Severity",
+            "title": "Protocole de traitement selon la sévérité",
             "mild": {
-              "level": "Mild",
-              "description": "Light flushing, early capillaries",
-              "sessions": "3-5 sessions",
-              "interval": "3-4 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "Légère",
+              "description": "Bouffées légères, capillaires précoces",
+              "sessions": "3-5 séances",
+              "interval": "Intervalle de 3-4 semaines",
+              "treatment": "Clarity II 1064 nm"
             },
             "moderate": {
-              "level": "Moderate",
-              "description": "Chronic redness, dilated capillaries",
-              "sessions": "5-8 sessions",
-              "interval": "3-4 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "Modérée",
+              "description": "Rougeurs chroniques, capillaires dilatés",
+              "sessions": "5-8 séances",
+              "interval": "Intervalle de 3-4 semaines",
+              "treatment": "Clarity II 1064 nm"
             },
             "severe": {
-              "level": "Severe",
-              "description": "Rosacea, severe vascular dilation",
-              "sessions": "8-10+ sessions",
-              "interval": "2-3 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "Sévère",
+              "description": "Rosacée, dilatation vasculaire sévère",
+              "sessions": "8-10+ séances",
+              "interval": "Intervalle de 2-3 semaines",
+              "treatment": "Clarity II 1064 nm"
             }
           },
           "idealFor": [
@@ -3679,8 +3679,8 @@
             }
           ],
           "cta": {
-            "title": "Free Redness/Vascular Consultation",
-            "description": "Get a customized treatment plan tailored to your redness type. Regain healthy, clear skin with specialist consultation."
+            "title": "Consultation gratuite rougeurs / vasculaire",
+            "description": "Bénéficiez d'un plan de traitement personnalisé selon votre type de rougeur. Retrouvez une peau saine et claire grâce à une consultation spécialisée."
           }
         }
       },

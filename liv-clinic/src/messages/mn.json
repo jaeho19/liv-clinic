@@ -3166,15 +3166,15 @@
       "center": {
         "name": "Laser Center",
         "fullName": "Laser Center",
-        "tagline": "Advanced Laser Total Solution",
-        "description": "A premium laser center addressing various skin concerns from pigmentation, vascular issues, skin texture, hair removal, to tattoo removal.",
+        "tagline": "Дэвшилтэт лазерийн иж бүрэн шийдэл",
+        "description": "Пигментаци, судасны асуудал, арьсны бүтэц, үс арилгах, шивээс арилгах зэрэг арьсны янз бүрийн асуудлыг шийдэх премиум лазер төв.",
         "detail": {
           "hero": {
             "title": "Laser Center",
-            "subtitle": "Customized Laser Solutions for Your Skin Concerns",
-            "description": "With Clarity II + Lucas combination<br/>One-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+            "subtitle": "Таны арьсны асуудалд тохирсон лазерийн шийдэл",
+            "description": "Clarity II + Lucas хослолтой<br/>Пигментациас эхлээд судас, үс арилгах, шивээс арилгах хүртэлх нэг цэгийн арчилгаа"
           },
-          "viewMore": "Learn More",
+          "viewMore": "Дэлгэрэнгүй мэдээлэл",
           "stats": [
             {
               "label": "Equipment",
@@ -3198,8 +3198,8 @@
             }
           ],
           "categories": {
-            "title": "Customized Treatment for Your Skin Concerns",
-            "subtitle": "Select your skin concern and we'll recommend the optimal laser treatment",
+            "title": "Таны арьсны асуудалд тохирсон хувийн эмчилгээ",
+            "subtitle": "Арьсны асуудлаа сонгоход бид танд тохирох оновчтой лазер эмчилгээг санал болгоно",
             "items": [
               {
                 "id": "pigmentation",
@@ -3257,10 +3257,10 @@
             ]
           },
           "matrix": {
-            "badge": "Equipment × Indications",
-            "title": "Equipment Lineup for Any Skin Concern",
-            "subtitle": "LIV Laser Center's 4 premium devices cover all skin concerns",
-            "chartTitle": "Skin Concern × Equipment Matrix",
+            "badge": "Тоног төхөөрөмж × Заалт",
+            "title": "Аливаа арьсны асуудалд зориулсан тоног төхөөрөмжийн шугам",
+            "subtitle": "LIV Laser Center-ийн 4 премиум төхөөрөмж нь арьсны бүх асуудлыг хамарна",
+            "chartTitle": "Арьсны асуудал × Тоног төхөөрөмжийн матриц",
             "equipment": [
               "Clarity II",
               "Lucas",
@@ -3276,13 +3276,13 @@
             ]
           },
           "equipmentSection": {
-            "badge": "LIV Equipment",
-            "title": "Premium Laser Lineup",
-            "subtitle": "Safe and effective treatments with the latest FDA-approved equipment",
+            "badge": "LIV тоног төхөөрөмж",
+            "title": "Премиум лазер шугам",
+            "subtitle": "FDA-аар батлагдсан хамгийн сүүлийн үеийн тоног төхөөрөмжөөр аюулгүй, үр дүнтэй эмчилгээ",
             "labels": {
-              "wavelength": "Wavelength",
-              "feature": "Feature",
-              "indications": "Indications"
+              "wavelength": "Долгионы урт",
+              "feature": "Онцлог",
+              "indications": "Заалт"
             },
             "items": [
               {
@@ -3337,8 +3337,8 @@
           },
           "synergy": {
             "badge": "LIV EXCLUSIVE",
-            "title": "Clarity II + Lucas Synergy Effect",
-            "subtitle": "Expect faster and more effective results compared to single treatment with this premium equipment combination",
+            "title": "Clarity II + Lucas синергийн нөлөө",
+            "subtitle": "Энэхүү премиум тоног төхөөрөмжийн хослол нь ганц эмчилгээтэй харьцуулахад илүү хурдан, илүү үр дүнтэй үр дүн өгнө",
             "benefits": [
               {
                 "title": "Multi-Wavelength Coverage",
@@ -3355,7 +3355,7 @@
             ]
           },
           "process": {
-            "title": "Laser Treatment Process",
+            "title": "Лазер эмчилгээний явц",
             "steps": [
               {
                 "step": 1,
@@ -3380,7 +3380,7 @@
             ]
           },
           "faq": {
-            "title": "Frequently Asked Questions",
+            "title": "Түгээмэл асуулт хариулт",
             "items": [
               {
                 "q": "Which laser is right for me?",
@@ -3401,25 +3401,25 @@
             ]
           },
           "cta": {
-            "title": "Your First Step to Clear, Healthy Skin",
-            "description": "We'll help you find the optimal laser for your skin concerns<br/>Confirm your customized treatment plan with a free consultation",
-            "buttonConsult": "Book Free Consultation"
+            "title": "Тунгалаг, эрүүл арьс руу хийх таны анхны алхам",
+            "description": "Бид танай арьсны асуудалд тохирсон оновчтой лазерийг олоход тусална<br/>Үнэгүй зөвлөгөөгөөр өөрийн хувийн эмчилгээний төлөвлөгөөг баталгаажуулаарай",
+            "buttonConsult": "Үнэгүй зөвлөгөө захиалах"
           }
         }
       },
       "pigmentation": {
-        "name": "Pigmentation Treatment",
-        "fullName": "Pigmentation Treatment",
-        "tagline": "Melasma, Spots & Freckle Treatment",
-        "description": "Customized laser treatments for various pigmentation conditions to restore clear, radiant skin.",
+        "name": "Пигментацийн эмчилгээ",
+        "fullName": "Пигментацийн эмчилгээ",
+        "tagline": "Мелазма, толбо, эрээний эмчилгээ",
+        "description": "Тунгалаг, гэрэлтэй арьсыг сэргээхийн тулд пигментацийн янз бүрийн нөхцөлд тохируулсан лазер эмчилгээ.",
         "detail": {
           "hero": {
-            "subtitle": "Even stubborn melasma with our 3-stage system",
-            "description": "From picosecond laser to gentle toning, customized pigmentation treatment with 4 premium devices"
+            "subtitle": "Тууштай мелазмыг ч манай 3 үе шаттай системээр",
+            "description": "Пикосекундын лазераас зөөлөн тонинг хүртэл, 4 премиум төхөөрөмжөөр хувийн пигментацийн эмчилгээ"
           },
           "threeStageSystem": {
-            "title": "LIV's 3-Stage Pigmentation Treatment System",
-            "subtitle": "From mild to stubborn melasma, effective pigmentation improvement with step-by-step customized treatment",
+            "title": "LIV-ийн 3 үе шаттай пигментацийн эмчилгээний систем",
+            "subtitle": "Хөнгөнөөс эхлэн тууштай мелазма хүртэл үе шаттай хувийн эмчилгээгээр пигментацийн үр дүнтэй сайжруулалт",
             "stages": [
               {
                 "stage": "Stage 1",
@@ -3442,63 +3442,63 @@
             ]
           },
           "picoVsNano": {
-            "title": "Why Picosecond?",
-            "subtitle": "1000x faster pulse than nanosecond laser breaks down pigment into finer particles",
-            "nanosecond": "Nanosecond Laser",
-            "picosecond": "Picosecond Laser",
-            "nanosecondUnit": "Billionth of a second (10⁻⁹)",
-            "picosecondUnit": "Trillionth of a second (10⁻¹²)",
-            "largeParticles": "Pigment particles broken into larger pieces",
-            "slowDischarge": "Slow discharge",
-            "fineParticles": "Pigment particles broken into fine particles",
-            "fastDischarge": "Fast lymphatic discharge",
-            "timesFaster": "1000x Faster",
+            "title": "Яагаад пикосекунд?",
+            "subtitle": "Нанокесундын лазераас 1000 дахин хурдан импульс пигментийн ширхгийг илүү жижиг ширхэгт хуваадаг",
+            "nanosecond": "Наносекундын лазер",
+            "picosecond": "Пикосекундын лазер",
+            "nanosecondUnit": "Секундийн тэрбумны нэг (10⁻⁹)",
+            "picosecondUnit": "Секундийн их наядны нэг (10⁻¹²)",
+            "largeParticles": "Пигментийн ширхэг том хэсэг болж хуваагдана",
+            "slowDischarge": "Удаан гадагшилна",
+            "fineParticles": "Пигментийн ширхэг нарийн ширхэгт хуваагдана",
+            "fastDischarge": "Лимфийн системээр хурдан гадагшилна",
+            "timesFaster": "1000 дахин хурдан",
             "comparison": {
-              "item": "Comparison",
-              "pulseSpeed": "Pulse Speed",
-              "particleSize": "Particle Size",
-              "tissueDamage": "Tissue Damage",
-              "heatDamage": "Heat Damage",
-              "downtime": "Downtime",
-              "sessions": "Sessions Required",
-              "relativeLarge": "Relatively Large",
-              "fine": "Fine",
-              "exists": "Present",
-              "minimal": "Minimal",
-              "almostNone": "Almost None",
-              "relativeLong": "Relatively Long",
-              "short": "Short",
-              "many": "Many",
-              "few": "Few"
+              "item": "Харьцуулалт",
+              "pulseSpeed": "Импульсийн хурд",
+              "particleSize": "Ширхгийн хэмжээ",
+              "tissueDamage": "Эдийн гэмтэл",
+              "heatDamage": "Дулааны гэмтэл",
+              "downtime": "Сэргэлтийн хугацаа",
+              "sessions": "Шаардлагатай удаагийн тоо",
+              "relativeLarge": "Харьцангуй том",
+              "fine": "Нарийн",
+              "exists": "Бий",
+              "minimal": "Маш бага",
+              "almostNone": "Бараг байхгүй",
+              "relativeLong": "Харьцангуй урт",
+              "short": "Богино",
+              "many": "Олон",
+              "few": "Цөөн"
             }
           },
           "equipment": {
-            "title": "Recommended Pigmentation Treatment Devices",
-            "subtitle": "Optimal pigmentation treatment with 4 premium lasers at LIV Clinic",
-            "featured": "FEATURED"
+            "title": "Пигментацийн эмчилгээнд санал болгох төхөөрөмжүүд",
+            "subtitle": "LIV Clinic-ийн 4 премиум лазерээр пигментацийн оновчтой эмчилгээ",
+            "featured": "ОНЦГОЙ"
           },
           "protocol": {
-            "title": "Treatment Protocol by Severity",
+            "title": "Хүндрэлээс хамаарсан эмчилгээний протокол",
             "mild": {
-              "level": "Mild",
-              "description": "Light melasma, spots",
+              "level": "Хөнгөн",
+              "description": "Хөнгөн мелазма, толбонууд",
               "treatment": "Laser Toning",
-              "sessions": "5-10 sessions",
-              "interval": "2-week interval"
+              "sessions": "5-10 удаа",
+              "interval": "2 долоо хоногийн зайтай"
             },
             "moderate": {
-              "level": "Moderate",
-              "description": "Medium-depth pigmentation",
-              "treatment": "Clarity II 755nm",
-              "sessions": "3-5 sessions",
-              "interval": "3-4 week interval"
+              "level": "Дунд",
+              "description": "Дунд гүний пигментаци",
+              "treatment": "Clarity II 755 нм",
+              "sessions": "3-5 удаа",
+              "interval": "3-4 долоо хоногийн зайтай"
             },
             "severe": {
-              "level": "Severe / Stubborn",
-              "description": "Deep melasma, stubborn",
+              "level": "Хүнд / Тууштай",
+              "description": "Гүн мелазма, тууштай",
               "treatment": "Lucas Pico + Toning",
-              "sessions": "5-10 sessions",
-              "interval": "2-4 week interval"
+              "sessions": "5-10 удаа",
+              "interval": "2-4 долоо хоногийн зайтай"
             }
           },
           "idealFor": [
@@ -3528,30 +3528,30 @@
             }
           ],
           "cta": {
-            "title": "Free Melasma/Pigmentation Consultation",
-            "description": "Get a customized pigmentation treatment plan tailored to your skin condition. Start optimal treatment with specialist consultation."
+            "title": "Мелазма/пигментацийн үнэгүй зөвлөгөө",
+            "description": "Танай арьсны нөхцөлд тохируулсан хувийн пигментацийн эмчилгээний төлөвлөгөөг авна уу. Мэргэжилтний зөвлөгөөгөөр оновчтой эмчилгээг эхлүүлээрэй."
           }
         },
         "ui": {
-          "duration": "Duration",
-          "downtime": "Downtime",
-          "recommendedSessions": "Recommended Sessions"
+          "duration": "Хугацаа",
+          "downtime": "Сэргэлтийн хугацаа",
+          "recommendedSessions": "Санал болгох удаагийн тоо"
         }
       },
       "vascular": {
-        "name": "Vascular Treatment",
-        "fullName": "Vascular Treatment",
-        "tagline": "Redness, Spider Veins & Acne Scars",
-        "description": "Selectively treating dilated blood vessels and redness for an even skin tone.",
+        "name": "Судасны эмчилгээ",
+        "fullName": "Судасны эмчилгээ",
+        "tagline": "Улайлт, аалзан судас, батгаын сорви",
+        "description": "Өргөссөн судас болон улайлтыг сонгомлоор эмчилж жигд арьсны өнгийг бий болгоно.",
         "detail": {
           "hero": {
-            "subtitle": "Dual wavelength treats redness and vessels simultaneously",
-            "description": "Clarity II's 1064nm Nd:YAG wavelength effectively improves redness, capillary dilation, and rosacea"
+            "subtitle": "Давхар долгионы урт нь улайлт болон судсыг зэрэг эмчилнэ",
+            "description": "Clarity II-ийн 1064 нм Nd:YAG долгионы урт нь улайлт, хялгасан судасны өргөсөл, розацеаг үр дүнтэй сайжруулна"
           },
           "rednessTypes": {
-            "title": "Customized Treatment by Redness Type",
-            "subtitle": "Optimal wavelength and energy treatment based on the cause and depth of redness",
-            "recommendedTreatment": "Recommended Treatment",
+            "title": "Улайлтын төрлөөс хамаарсан хувийн эмчилгээ",
+            "subtitle": "Улайлтын шалтгаан, гүнд тулгуурлан оновчтой долгионы урт, энергээр эмчилгээ хийнэ",
+            "recommendedTreatment": "Санал болгох эмчилгээ",
             "types": [
               {
                 "type": "Facial Flushing",
@@ -3576,14 +3576,14 @@
             ]
           },
           "dualWavelength": {
-            "title": "Dual Wavelength Principle",
-            "subtitle": "755nm and 1064nm wavelengths selectively treat from shallow to deep vessels",
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "shallow755": "755nm - Shallow Vessel Target",
-            "deep1064": "1064nm - Deep Vessel Target",
+            "title": "Давхар долгионы уртын зарчим",
+            "subtitle": "755 нм болон 1064 нм долгионы урт нь өнгөц судаснаас гүн судас хүртэл сонгомлоор эмчилнэ",
+            "epidermis": "Эпидермис",
+            "dermis": "Дермис",
+            "shallow755": "755 нм — Өнгөц судасны зорилт",
+            "deep1064": "1064 нм — Гүн судасны зорилт",
             "alexandrite": {
-              "title": "755nm Alexandrite",
+              "title": "755 нм Alexandrite",
               "points": [
                 "Targets shallow vessels near epidermis",
                 "Effective for capillary dilation treatment",
@@ -3591,7 +3591,7 @@
               ]
             },
             "ndyag": {
-              "title": "1064nm Nd:YAG",
+              "title": "1064 нм Nd:YAG",
               "points": [
                 "Reaches deep vessels in dermis",
                 "Effective for chronic redness and rosacea",
@@ -3601,11 +3601,11 @@
           },
           "clarity": {
             "title": "Clarity II",
-            "subtitle": "Premium dual-wavelength laser optimized for vascular treatment",
+            "subtitle": "Судасны эмчилгээнд оновчилсон премиум давхар долгионы лазер",
             "badge": "ONLY OPTION",
-            "why": "Why Clarity II?",
-            "whyDesc": "The most suitable device for vascular treatment among LIV's equipment. The 1064nm Nd:YAG wavelength is selectively absorbed by hemoglobin in blood vessels, treating only vessels without surrounding tissue damage.",
-            "recommendedSessions": "3-8 sessions (depending on severity)",
+            "why": "Яагаад Clarity II?",
+            "whyDesc": "LIV-ийн тоног төхөөрөмжүүдээс судасны эмчилгээнд хамгийн тохиромжтой төхөөрөмж юм. 1064 нм Nd:YAG долгионы уртыг цусны судсан дахь гемоглобин сонгомлоор шингээдэг тул эргэн тойрны эдийг гэмтээхгүйгээр зөвхөн судасыг эмчилнэ.",
+            "recommendedSessions": "3-8 удаа (хүндрэлээс хамаарна)",
             "benefits": [
               {
                 "title": "Dual Wavelength",
@@ -3624,32 +3624,32 @@
                 "desc": "Skin protection and pain minimization during treatment"
               }
             ],
-            "duration": "15-30 minutes",
-            "anesthesia": "No anesthesia (Cryogen cooling)",
-            "recovery": "Immediate return to daily activities"
+            "duration": "15-30 минут",
+            "anesthesia": "Мэдээ алдуулалтгүй (Cryogen хөргөлт)",
+            "recovery": "Шууд өдөр тутмын үйл ажиллагаагаа үргэлжлүүлэх боломжтой"
           },
           "protocol": {
-            "title": "Treatment Protocol by Severity",
+            "title": "Хүндрэлээс хамаарсан эмчилгээний протокол",
             "mild": {
-              "level": "Mild",
-              "description": "Light flushing, early capillaries",
-              "sessions": "3-5 sessions",
-              "interval": "3-4 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "Хөнгөн",
+              "description": "Хөнгөн улайралт, эхэн үеийн хялгасан судас",
+              "sessions": "3-5 удаа",
+              "interval": "3-4 долоо хоногийн зайтай",
+              "treatment": "Clarity II 1064 нм"
             },
             "moderate": {
-              "level": "Moderate",
-              "description": "Chronic redness, dilated capillaries",
-              "sessions": "5-8 sessions",
-              "interval": "3-4 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "Дунд",
+              "description": "Архаг улайлт, өргөссөн хялгасан судас",
+              "sessions": "5-8 удаа",
+              "interval": "3-4 долоо хоногийн зайтай",
+              "treatment": "Clarity II 1064 нм"
             },
             "severe": {
-              "level": "Severe",
-              "description": "Rosacea, severe vascular dilation",
-              "sessions": "8-10+ sessions",
-              "interval": "2-3 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "Хүнд",
+              "description": "Розацеа, судасны хүнд өргөсөл",
+              "sessions": "8-10+ удаа",
+              "interval": "2-3 долоо хоногийн зайтай",
+              "treatment": "Clarity II 1064 нм"
             }
           },
           "idealFor": [
@@ -3679,8 +3679,8 @@
             }
           ],
           "cta": {
-            "title": "Free Redness/Vascular Consultation",
-            "description": "Get a customized treatment plan tailored to your redness type. Regain healthy, clear skin with specialist consultation."
+            "title": "Улайлт/судасны үнэгүй зөвлөгөө",
+            "description": "Танай улайлтын төрөлд тохируулсан хувийн эмчилгээний төлөвлөгөөг авна уу. Мэргэжилтний зөвлөгөөгөөр эрүүл, тунгалаг арьсыг эргүүлэн авна уу."
           }
         }
       },

@@ -3166,15 +3166,15 @@
       "center": {
         "name": "Laser Center",
         "fullName": "Laser Center",
-        "tagline": "Advanced Laser Total Solution",
-        "description": "A premium laser center addressing various skin concerns from pigmentation, vascular issues, skin texture, hair removal, to tattoo removal.",
+        "tagline": "حل ليزر متكامل ومتطور",
+        "description": "مركز ليزر فاخر يعالج مختلف مشاكل البشرة من التصبغات، المشكلات الوعائية، ملمس البشرة، إزالة الشعر، إلى إزالة الوشم.",
         "detail": {
           "hero": {
             "title": "Laser Center",
-            "subtitle": "Customized Laser Solutions for Your Skin Concerns",
-            "description": "With Clarity II + Lucas combination<br/>One-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+            "subtitle": "حلول ليزر مخصصة لمشكلات بشرتك",
+            "description": "مع دمج Clarity II + Lucas<br/>عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"
           },
-          "viewMore": "Learn More",
+          "viewMore": "اعرف المزيد",
           "stats": [
             {
               "label": "Equipment",
@@ -3198,8 +3198,8 @@
             }
           ],
           "categories": {
-            "title": "Customized Treatment for Your Skin Concerns",
-            "subtitle": "Select your skin concern and we'll recommend the optimal laser treatment",
+            "title": "علاج مخصص لمشكلات بشرتك",
+            "subtitle": "اختر مشكلتك الجلدية وسنوصي بعلاج الليزر الأمثل",
             "items": [
               {
                 "id": "pigmentation",
@@ -3257,10 +3257,10 @@
             ]
           },
           "matrix": {
-            "badge": "Equipment × Indications",
-            "title": "Equipment Lineup for Any Skin Concern",
-            "subtitle": "LIV Laser Center's 4 premium devices cover all skin concerns",
-            "chartTitle": "Skin Concern × Equipment Matrix",
+            "badge": "المعدات × الاستطبابات",
+            "title": "تشكيلة معدات لأي مشكلة جلدية",
+            "subtitle": "تغطي 4 أجهزة فاخرة في LIV Laser Center جميع مشكلات البشرة",
+            "chartTitle": "مصفوفة المشكلة الجلدية × المعدات",
             "equipment": [
               "Clarity II",
               "Lucas",
@@ -3276,13 +3276,13 @@
             ]
           },
           "equipmentSection": {
-            "badge": "LIV Equipment",
-            "title": "Premium Laser Lineup",
-            "subtitle": "Safe and effective treatments with the latest FDA-approved equipment",
+            "badge": "معدات LIV",
+            "title": "تشكيلة الليزر الفاخرة",
+            "subtitle": "علاجات آمنة وفعّالة بأحدث المعدات المعتمدة من FDA",
             "labels": {
-              "wavelength": "Wavelength",
-              "feature": "Feature",
-              "indications": "Indications"
+              "wavelength": "الطول الموجي",
+              "feature": "الميزة",
+              "indications": "الاستطبابات"
             },
             "items": [
               {
@@ -3337,8 +3337,8 @@
           },
           "synergy": {
             "badge": "LIV EXCLUSIVE",
-            "title": "Clarity II + Lucas Synergy Effect",
-            "subtitle": "Expect faster and more effective results compared to single treatment with this premium equipment combination",
+            "title": "أثر تآزر Clarity II + Lucas",
+            "subtitle": "توقّع نتائج أسرع وأكثر فاعلية مقارنة بالعلاج الفردي بفضل هذه المجموعة الفاخرة من المعدات",
             "benefits": [
               {
                 "title": "Multi-Wavelength Coverage",
@@ -3355,7 +3355,7 @@
             ]
           },
           "process": {
-            "title": "Laser Treatment Process",
+            "title": "إجراءات علاج الليزر",
             "steps": [
               {
                 "step": 1,
@@ -3380,7 +3380,7 @@
             ]
           },
           "faq": {
-            "title": "Frequently Asked Questions",
+            "title": "الأسئلة الشائعة",
             "items": [
               {
                 "q": "Which laser is right for me?",
@@ -3401,25 +3401,25 @@
             ]
           },
           "cta": {
-            "title": "Your First Step to Clear, Healthy Skin",
-            "description": "We'll help you find the optimal laser for your skin concerns<br/>Confirm your customized treatment plan with a free consultation",
-            "buttonConsult": "Book Free Consultation"
+            "title": "خطوتك الأولى نحو بشرة صافية وصحية",
+            "description": "سنساعدك على إيجاد الليزر الأمثل لمشكلات بشرتك<br/>أكّد خطة علاجك المخصصة عبر استشارة مجانية",
+            "buttonConsult": "حجز استشارة مجانية"
           }
         }
       },
       "pigmentation": {
-        "name": "Pigmentation Treatment",
-        "fullName": "Pigmentation Treatment",
-        "tagline": "Melasma, Spots & Freckle Treatment",
-        "description": "Customized laser treatments for various pigmentation conditions to restore clear, radiant skin.",
+        "name": "علاج التصبغات",
+        "fullName": "علاج التصبغات",
+        "tagline": "علاج الكلف والبقع والنمش",
+        "description": "علاجات ليزر مخصصة لمختلف حالات التصبغ لاستعادة بشرة صافية ومشرقة.",
         "detail": {
           "hero": {
-            "subtitle": "Even stubborn melasma with our 3-stage system",
-            "description": "From picosecond laser to gentle toning, customized pigmentation treatment with 4 premium devices"
+            "subtitle": "حتى الكلف العنيد عبر نظامنا المؤلف من 3 مراحل",
+            "description": "من ليزر البيكوسيكند إلى التونينغ اللطيف، علاج مخصص للتصبغات بـ 4 أجهزة فاخرة"
           },
           "threeStageSystem": {
-            "title": "LIV's 3-Stage Pigmentation Treatment System",
-            "subtitle": "From mild to stubborn melasma, effective pigmentation improvement with step-by-step customized treatment",
+            "title": "نظام LIV لعلاج التصبغات في 3 مراحل",
+            "subtitle": "من الخفيف إلى الكلف العنيد، تحسّن فعّال للتصبغات عبر علاج مخصص بخطوات تدريجية",
             "stages": [
               {
                 "stage": "Stage 1",
@@ -3442,63 +3442,63 @@
             ]
           },
           "picoVsNano": {
-            "title": "Why Picosecond?",
-            "subtitle": "1000x faster pulse than nanosecond laser breaks down pigment into finer particles",
-            "nanosecond": "Nanosecond Laser",
-            "picosecond": "Picosecond Laser",
-            "nanosecondUnit": "Billionth of a second (10⁻⁹)",
-            "picosecondUnit": "Trillionth of a second (10⁻¹²)",
-            "largeParticles": "Pigment particles broken into larger pieces",
-            "slowDischarge": "Slow discharge",
-            "fineParticles": "Pigment particles broken into fine particles",
-            "fastDischarge": "Fast lymphatic discharge",
-            "timesFaster": "1000x Faster",
+            "title": "لماذا البيكوسيكند؟",
+            "subtitle": "نبضة أسرع بمعدل 1000 مرة من ليزر النانوسيكند تفتّت الصبغة إلى جزيئات أدق",
+            "nanosecond": "ليزر النانوسيكند",
+            "picosecond": "ليزر البيكوسيكند",
+            "nanosecondUnit": "جزء من مليار من الثانية (10⁻⁹)",
+            "picosecondUnit": "جزء من تريليون من الثانية (10⁻¹²)",
+            "largeParticles": "تنكسر جزيئات الصبغة إلى قطع أكبر",
+            "slowDischarge": "تصريف بطيء",
+            "fineParticles": "تنكسر جزيئات الصبغة إلى جزيئات دقيقة",
+            "fastDischarge": "تصريف لمفاوي سريع",
+            "timesFaster": "أسرع بـ 1000 مرة",
             "comparison": {
-              "item": "Comparison",
-              "pulseSpeed": "Pulse Speed",
-              "particleSize": "Particle Size",
-              "tissueDamage": "Tissue Damage",
-              "heatDamage": "Heat Damage",
-              "downtime": "Downtime",
-              "sessions": "Sessions Required",
-              "relativeLarge": "Relatively Large",
-              "fine": "Fine",
-              "exists": "Present",
-              "minimal": "Minimal",
-              "almostNone": "Almost None",
-              "relativeLong": "Relatively Long",
-              "short": "Short",
-              "many": "Many",
-              "few": "Few"
+              "item": "مقارنة",
+              "pulseSpeed": "سرعة النبضة",
+              "particleSize": "حجم الجزيئات",
+              "tissueDamage": "ضرر الأنسجة",
+              "heatDamage": "الضرر الحراري",
+              "downtime": "فترة التوقف",
+              "sessions": "عدد الجلسات اللازمة",
+              "relativeLarge": "كبير نسبياً",
+              "fine": "دقيق",
+              "exists": "موجود",
+              "minimal": "ضئيل",
+              "almostNone": "شبه معدوم",
+              "relativeLong": "طويلة نسبياً",
+              "short": "قصيرة",
+              "many": "كثيرة",
+              "few": "قليلة"
             }
           },
           "equipment": {
-            "title": "Recommended Pigmentation Treatment Devices",
-            "subtitle": "Optimal pigmentation treatment with 4 premium lasers at LIV Clinic",
+            "title": "الأجهزة الموصى بها لعلاج التصبغات",
+            "subtitle": "علاج التصبغات الأمثل بـ 4 ليزرات فاخرة في LIV Clinic",
             "featured": "FEATURED"
           },
           "protocol": {
-            "title": "Treatment Protocol by Severity",
+            "title": "بروتوكول العلاج حسب درجة الشدة",
             "mild": {
-              "level": "Mild",
-              "description": "Light melasma, spots",
+              "level": "خفيفة",
+              "description": "كلف خفيف، بقع",
               "treatment": "Laser Toning",
-              "sessions": "5-10 sessions",
-              "interval": "2-week interval"
+              "sessions": "5-10 جلسات",
+              "interval": "بفاصل أسبوعين"
             },
             "moderate": {
-              "level": "Moderate",
-              "description": "Medium-depth pigmentation",
-              "treatment": "Clarity II 755nm",
-              "sessions": "3-5 sessions",
-              "interval": "3-4 week interval"
+              "level": "متوسطة",
+              "description": "تصبغ متوسط العمق",
+              "treatment": "Clarity II 755 نانومتر",
+              "sessions": "3-5 جلسات",
+              "interval": "بفاصل 3-4 أسابيع"
             },
             "severe": {
-              "level": "Severe / Stubborn",
-              "description": "Deep melasma, stubborn",
+              "level": "شديدة / عنيدة",
+              "description": "كلف عميق، عنيد",
               "treatment": "Lucas Pico + Toning",
-              "sessions": "5-10 sessions",
-              "interval": "2-4 week interval"
+              "sessions": "5-10 جلسات",
+              "interval": "بفاصل 2-4 أسابيع"
             }
           },
           "idealFor": [
@@ -3528,30 +3528,30 @@
             }
           ],
           "cta": {
-            "title": "Free Melasma/Pigmentation Consultation",
-            "description": "Get a customized pigmentation treatment plan tailored to your skin condition. Start optimal treatment with specialist consultation."
+            "title": "استشارة مجانية للكلف/التصبغات",
+            "description": "احصل على خطة علاج تصبغات مخصصة لحالة بشرتك. ابدأ العلاج الأمثل عبر استشارة متخصصة."
           }
         },
         "ui": {
-          "duration": "Duration",
-          "downtime": "Downtime",
-          "recommendedSessions": "Recommended Sessions"
+          "duration": "المدة",
+          "downtime": "فترة التوقف",
+          "recommendedSessions": "عدد الجلسات الموصى بها"
         }
       },
       "vascular": {
-        "name": "Vascular Treatment",
-        "fullName": "Vascular Treatment",
-        "tagline": "Redness, Spider Veins & Acne Scars",
-        "description": "Selectively treating dilated blood vessels and redness for an even skin tone.",
+        "name": "العلاج الوعائي",
+        "fullName": "العلاج الوعائي",
+        "tagline": "الاحمرار، الشعيرات الدموية وندبات حب الشباب",
+        "description": "علاج انتقائي للأوعية الدموية المتمدّدة والاحمرار للحصول على لون بشرة موحّد.",
         "detail": {
           "hero": {
-            "subtitle": "Dual wavelength treats redness and vessels simultaneously",
-            "description": "Clarity II's 1064nm Nd:YAG wavelength effectively improves redness, capillary dilation, and rosacea"
+            "subtitle": "طول موجي مزدوج يعالج الاحمرار والأوعية في آن واحد",
+            "description": "يعالج الطول الموجي 1064 نانومتر Nd:YAG في Clarity II الاحمرار وتوسّع الشعيرات والوردية بفاعلية"
           },
           "rednessTypes": {
-            "title": "Customized Treatment by Redness Type",
-            "subtitle": "Optimal wavelength and energy treatment based on the cause and depth of redness",
-            "recommendedTreatment": "Recommended Treatment",
+            "title": "علاج مخصص بحسب نوع الاحمرار",
+            "subtitle": "علاج بأمثل طول موجي وطاقة بناءً على سبب الاحمرار وعمقه",
+            "recommendedTreatment": "العلاج الموصى به",
             "types": [
               {
                 "type": "Facial Flushing",
@@ -3576,14 +3576,14 @@
             ]
           },
           "dualWavelength": {
-            "title": "Dual Wavelength Principle",
-            "subtitle": "755nm and 1064nm wavelengths selectively treat from shallow to deep vessels",
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "shallow755": "755nm - Shallow Vessel Target",
-            "deep1064": "1064nm - Deep Vessel Target",
+            "title": "مبدأ الطول الموجي المزدوج",
+            "subtitle": "يعالج الطولان الموجيان 755 نانومتر و 1064 نانومتر الأوعية السطحية والعميقة انتقائياً",
+            "epidermis": "البشرة",
+            "dermis": "الأدمة",
+            "shallow755": "755 نانومتر — استهداف الأوعية السطحية",
+            "deep1064": "1064 نانومتر — استهداف الأوعية العميقة",
             "alexandrite": {
-              "title": "755nm Alexandrite",
+              "title": "Alexandrite 755 نانومتر",
               "points": [
                 "Targets shallow vessels near epidermis",
                 "Effective for capillary dilation treatment",
@@ -3591,7 +3591,7 @@
               ]
             },
             "ndyag": {
-              "title": "1064nm Nd:YAG",
+              "title": "Nd:YAG 1064 نانومتر",
               "points": [
                 "Reaches deep vessels in dermis",
                 "Effective for chronic redness and rosacea",
@@ -3601,11 +3601,11 @@
           },
           "clarity": {
             "title": "Clarity II",
-            "subtitle": "Premium dual-wavelength laser optimized for vascular treatment",
+            "subtitle": "ليزر فاخر بطول موجي مزدوج محسَّن للعلاج الوعائي",
             "badge": "ONLY OPTION",
-            "why": "Why Clarity II?",
-            "whyDesc": "The most suitable device for vascular treatment among LIV's equipment. The 1064nm Nd:YAG wavelength is selectively absorbed by hemoglobin in blood vessels, treating only vessels without surrounding tissue damage.",
-            "recommendedSessions": "3-8 sessions (depending on severity)",
+            "why": "لماذا Clarity II؟",
+            "whyDesc": "الجهاز الأكثر ملاءمة للعلاج الوعائي من بين معدات LIV. يُمتص الطول الموجي 1064 نانومتر Nd:YAG انتقائياً بواسطة الهيموغلوبين في الأوعية الدموية، فيعالج الأوعية فقط دون الإضرار بالأنسجة المحيطة.",
+            "recommendedSessions": "3-8 جلسات (حسب درجة الشدة)",
             "benefits": [
               {
                 "title": "Dual Wavelength",
@@ -3624,32 +3624,32 @@
                 "desc": "Skin protection and pain minimization during treatment"
               }
             ],
-            "duration": "15-30 minutes",
-            "anesthesia": "No anesthesia (Cryogen cooling)",
-            "recovery": "Immediate return to daily activities"
+            "duration": "15-30 دقيقة",
+            "anesthesia": "بدون تخدير (تبريد Cryogen)",
+            "recovery": "العودة الفورية إلى النشاطات اليومية"
           },
           "protocol": {
-            "title": "Treatment Protocol by Severity",
+            "title": "بروتوكول العلاج حسب درجة الشدة",
             "mild": {
-              "level": "Mild",
-              "description": "Light flushing, early capillaries",
-              "sessions": "3-5 sessions",
-              "interval": "3-4 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "خفيفة",
+              "description": "هبّات احمرار خفيفة، شعيرات في بداياتها",
+              "sessions": "3-5 جلسات",
+              "interval": "بفاصل 3-4 أسابيع",
+              "treatment": "Clarity II 1064 نانومتر"
             },
             "moderate": {
-              "level": "Moderate",
-              "description": "Chronic redness, dilated capillaries",
-              "sessions": "5-8 sessions",
-              "interval": "3-4 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "متوسطة",
+              "description": "احمرار مزمن، شعيرات متمدّدة",
+              "sessions": "5-8 جلسات",
+              "interval": "بفاصل 3-4 أسابيع",
+              "treatment": "Clarity II 1064 نانومتر"
             },
             "severe": {
-              "level": "Severe",
-              "description": "Rosacea, severe vascular dilation",
-              "sessions": "8-10+ sessions",
-              "interval": "2-3 week interval",
-              "treatment": "Clarity II 1064nm"
+              "level": "شديدة",
+              "description": "وردية، تمدّد وعائي شديد",
+              "sessions": "8-10+ جلسات",
+              "interval": "بفاصل 2-3 أسابيع",
+              "treatment": "Clarity II 1064 نانومتر"
             }
           },
           "idealFor": [
@@ -3679,8 +3679,8 @@
             }
           ],
           "cta": {
-            "title": "Free Redness/Vascular Consultation",
-            "description": "Get a customized treatment plan tailored to your redness type. Regain healthy, clear skin with specialist consultation."
+            "title": "استشارة مجانية للاحمرار/الأوعية",
+            "description": "احصل على خطة علاج مخصصة وفق نوع الاحمرار لديك. استعد بشرة صحية وصافية عبر استشارة متخصصة."
           }
         }
       },
