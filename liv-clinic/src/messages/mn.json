@@ -3685,20 +3685,20 @@
         }
       },
       "skintone": {
-        "name": "Skin Texture",
-        "fullName": "Skin Tone Improvement",
-        "tagline": "Pores, Scars & Texture Refinement",
-        "description": "Laser resurfacing for pore reduction, scar improvement, and skin texture refinement.",
+        "name": "Арьсны бүтэц",
+        "fullName": "Арьсны өнгийг сайжруулах",
+        "tagline": "Нүх сүв, сорви, бүтцийг сайжруулах",
+        "description": "Нүх сүвийг багасгах, сорвийг сайжруулах, арьсны бүтцийг тэгшлэх лазер resurfacing.",
         "detail": {
           "hero": {
-            "title": "Skin Tone Evenness",
-            "subtitle": "Skin Tone Brightening & Whitening",
-            "description": "With the synergy of laser toning and Ulblanc,<br/>restore dull skin to bright, clear complexion"
+            "title": "Арьсны өнгийн жигдрэлт",
+            "subtitle": "Арьсны өнгийг гэрэлтүүлэх ба цайруулах",
+            "description": "Laser Toning болон Ulblanc-ийн синергээр<br/>гундуу арьсыг гэрэлтэй, тунгалаг өнгөтэй болгож сэргээнэ"
           },
           "concernsSection": {
-            "title": "Do you have these skin concerns?",
-            "subtitle": "There are various causes of uneven skin tone. We offer customized solutions for your specific concerns.",
-            "customSolution": "Custom Solution",
+            "title": "Та эдгээр арьсны асуудалтай юу?",
+            "subtitle": "Тэгш бус арьсны өнгөнд олон шалтгаан байдаг. Бид таны асуудалд тохирох хувийн шийдлүүдийг санал болгодог.",
+            "customSolution": "Хувийн шийдэл",
             "concerns": [
               {
                 "title": "Overall Dull Skin",
@@ -3738,11 +3738,11 @@
             ]
           },
           "toningSection": {
-            "badge": "Treatment Principle",
-            "title": "The Science of Laser Toning",
-            "description1": "Laser toning uses <strong>1064nm Nd:YAG laser</strong> at low power with repeated pulses to gradually break down melanin in the skin.",
-            "description2": "Unlike conventional high-power lasers, it delivers <strong>low energy uniformly over a wide area</strong> to minimize skin irritation while maximizing results.",
-            "effectsTitle": "3 Effects of Laser Toning",
+            "badge": "Эмчилгээний зарчим",
+            "title": "Laser Toning-ийн шинжлэх ухаан",
+            "description1": "Laser Toning нь <strong>1064 нм Nd:YAG лазер</strong>-ыг бага хүчээр давтан хэрэглэн арьсан дахь меланиныг аажмаар задалдаг.",
+            "description2": "Уламжлалт өндөр хүчтэй лазераас ялгаатай нь <strong>бага энергийг өргөн талбайд жигд</strong> түгээдэг тул арьсны өдөөлтийг хамгийн бага болгох зэрэгцээ үр дүнг дээд зэргээр сайжруулна.",
+            "effectsTitle": "Laser Toning-ийн 3 нөлөө",
             "effects": [
               {
                 "title": "Melanin Breakdown",
@@ -3759,26 +3759,26 @@
             ]
           },
           "beforeAfterSection": {
-            "title": "Skin Tone Transformation",
-            "subtitle": "Skin tone changes with the combination of laser toning and Ulblanc"
+            "title": "Арьсны өнгийн өөрчлөлт",
+            "subtitle": "Laser Toning болон Ulblanc-ийн хослолоор үүсэх арьсны өнгийн өөрчлөлт"
           },
           "equipmentSection": {
-            "badge": "LIV Equipment",
-            "title": "Dedicated Skin Tone Improvement Equipment",
-            "subtitle": "Professional equipment for gradual skin brightening without disrupting daily life",
+            "badge": "LIV тоног төхөөрөмж",
+            "title": "Арьсны өнгийг сайжруулах зориулалтын тоног төхөөрөмж",
+            "subtitle": "Өдөр тутмын амьдралд саад болохгүй аажмаар арьсыг гэрэлтүүлэх мэргэжлийн тоног төхөөрөмж",
             "labels": {
-              "wavelength": "Wavelength",
-              "feature": "Feature",
-              "advantage": "Advantage",
-              "indications": "Indications",
-              "recommendedSessions": "Recommended Sessions"
+              "wavelength": "Долгионы урт",
+              "feature": "Онцлог",
+              "advantage": "Давуу тал",
+              "indications": "Заалт",
+              "recommendedSessions": "Санал болгох удаагийн тоо"
             },
             "toning": {
               "name": "Laser Toning",
               "nameEn": "Laser Toning (Spectra XT)",
-              "wavelength": "1064nm Nd:YAG",
-              "feature": "Low-power repeated irradiation (MLA mode)",
-              "advantage": "Zero downtime, immediate return to daily activities",
+              "wavelength": "1064 нм Nd:YAG",
+              "feature": "Бага хүчтэй давтан цацаргалт (MLA mode)",
+              "advantage": "Сэргэлтийн хугацаагүй, шууд өдөр тутмын үйл ажиллагаагаа үргэлжлүүлэх",
               "targets": [
                 "Dull Skin",
                 "Fine Lines",
@@ -3790,9 +3790,9 @@
             "ulblanc": {
               "name": "Ulblanc",
               "nameEn": "Ulblanc Whitening Laser",
-              "wavelength": "Dedicated whitening wavelength",
-              "feature": "Selective melanin targeting",
-              "advantage": "Improve skin tone without irritation",
+              "wavelength": "Цайруулах зориулалтын долгионы урт",
+              "feature": "Меланиныг сонгомлоор онилох",
+              "advantage": "Өдөөлтгүйгээр арьсны өнгийг сайжруулна",
               "targets": [
                 "Skin Whitening",
                 "Tone Evenness",
@@ -3801,13 +3801,13 @@
                 "Dullness"
               ]
             },
-            "synergyTitle": "Laser Toning + Ulblanc Synergy Effect",
-            "synergyDesc": "By improving overall skin condition with laser toning and directly targeting melanin with Ulblanc, you can expect <strong>1.5-2x faster results</strong> compared to single treatments. Both devices have no downtime, making combination therapy easy."
+            "synergyTitle": "Laser Toning + Ulblanc-ийн синерги нөлөө",
+            "synergyDesc": "Laser Toning-аар арьсны нийт нөхцөлийг сайжруулж, Ulblanc-аар меланиныг шууд онилоход <strong>ганц эмчилгээтэй харьцуулахад 1.5-2 дахин хурдан үр дүн</strong> хүлээгдэнэ. Хоёр төхөөрөмж аль аль нь сэргэлтийн хугацаагүй учир хосолсон эмчилгээг хийхэд хялбар."
           },
           "protocolSection": {
-            "badge": "Treatment Process",
-            "title": "3-Step Skin Tone Improvement Program",
-            "subtitle": "Systematic step-by-step treatment for natural and lasting skin tone improvement",
+            "badge": "Эмчилгээний явц",
+            "title": "Арьсны өнгийг сайжруулах 3 алхамт хөтөлбөр",
+            "subtitle": "Байгалийн бөгөөд тогтвортой арьсны өнгийн сайжруулалтыг хангах системтэй үе шаттай эмчилгээ",
             "steps": [
               {
                 "step": 1,
@@ -3833,8 +3833,8 @@
             ]
           },
           "advantagesSection": {
-            "title": "Advantages of Laser Toning",
-            "subtitle": "Convenient skin care for busy modern lifestyles",
+            "title": "Laser Toning-ийн давуу тал",
+            "subtitle": "Завгүй орчин үеийн амьдралын хэв маягт тохирох тав тухтай арьс арчилгаа",
             "items": [
               {
                 "title": "Zero Downtime",
@@ -3855,7 +3855,7 @@
             ]
           },
           "faq": {
-            "title": "Skin Tone Improvement FAQ",
+            "title": "Арьсны өнгийн сайжруулалт FAQ",
             "items": [
               {
                 "q": "How many laser toning sessions are needed to see results?",
@@ -3880,63 +3880,63 @@
             ]
           },
           "illustrationLabels": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "deepDermis": "Deep Dermis",
-            "laserHead": "1064nm Nd:YAG Low Power",
-            "mechanismDesc": "Gradual melanin breakdown through repeated low-power irradiation",
-            "before": "Before",
-            "after": "After",
-            "beforeDesc": "Uneven Skin Tone",
-            "afterDesc": "Clear, Even Skin Tone",
+            "epidermis": "Эпидермис",
+            "dermis": "Дермис",
+            "deepDermis": "Гүн дермис",
+            "laserHead": "1064 нм Nd:YAG бага хүчтэй",
+            "mechanismDesc": "Бага хүчтэй давтан цацаргалтаар меланиныг аажмаар задлах",
+            "before": "Өмнө",
+            "after": "Дараа",
+            "beforeDesc": "Тэгш бус арьсны өнгө",
+            "afterDesc": "Тунгалаг, жигд арьсны өнгө",
             "laserToning": "Laser Toning",
             "ulblanc": "+ Ulblanc"
           },
           "cta": {
-            "title": "Restore Your Clear, Bright Skin Tone",
-            "description": "Start your laser toning & Ulblanc program<br/>with no downtime, managed in your daily routine",
-            "buttonConsult": "Book Free Consultation"
+            "title": "Тунгалаг, гэрэлтэй арьсны өнгөө сэргээгээрэй",
+            "description": "Сэргэлтийн хугацаагүй, өдөр тутмын амьдралд тохирох<br/>Laser Toning & Ulblanc хөтөлбөрөө эхлүүлээрэй",
+            "buttonConsult": "Үнэгүй зөвлөгөө захиалах"
           }
         }
       },
       "hairRemoval": {
-        "name": "Laser Hair Removal",
-        "fullName": "Laser Hair Removal",
-        "tagline": "Permanent Hair Removal Solution",
-        "description": "Medical-grade lasers selectively destroy hair follicles for permanent hair removal results.",
+        "name": "Лазерээр үс арилгах",
+        "fullName": "Лазерээр үс арилгах",
+        "tagline": "Бүрэн үс арилгах шийдэл",
+        "description": "Эмнэлгийн зэрэглэлийн лазерүүд үсний уутыг сонгомлоор устгаж бүрэн үс арилгах үр дүнг өгнө.",
         "detail": {
           "hero": {
-            "title": "Premium Hair Removal",
-            "subtitle": "Premium Hair Removal with Clarity II",
-            "description": "Dual wavelength + IntelliTrak™ technology for<br/>safe and effective medical laser hair removal for all skin types"
+            "title": "Премиум үс арилгах",
+            "subtitle": "Clarity II-аар премиум үс арилгах",
+            "description": "Давхар долгионы урт + IntelliTrak™ технологитой<br/>бүх арьсны төрөлд аюулгүй, үр дүнтэй эмнэлгийн лазер үс арилгалт"
           },
           "claritySection": {
-            "badge": "LIV Premium Equipment",
+            "badge": "LIV-ийн премиум тоног төхөөрөмж",
             "title": "Clarity II",
-            "subtitle": "The New Standard in Hair Removal",
-            "description1": "Clarity II is a premium laser system that offers two wavelengths—<strong>755nm Alexandrite</strong> and <strong>1064nm Nd:YAG</strong>—on a single platform.",
-            "description2": "<strong>IntelliTrak™</strong> technology tracks the skin in real-time, delivering uniform energy without overlap or missed spots, minimizing burn risk and maximizing effectiveness.",
+            "subtitle": "Үс арилгалтын шинэ стандарт",
+            "description1": "Clarity II бол <strong>755 нм Alexandrite</strong> болон <strong>1064 нм Nd:YAG</strong> хоёр долгионы уртыг нэг платформ дээр санал болгодог премиум лазер систем.",
+            "description2": "<strong>IntelliTrak™</strong> технологи нь арьсыг бодит цаг хугацаанд хянаж, давхцалгүй, орхигдсон цэггүй жигд энерги түгээж түлэгдэх эрсдлийг хамгийн бага болгож үр дүнг дээд хэмжээнд хүргэнэ.",
             "specs": {
-              "wavelength": "Wavelength",
-              "wavelengthValue": "755nm + 1064nm",
-              "spotSize": "Spot Size",
-              "spotSizeValue": "Up to 3cm²",
-              "pulseTime": "Pulse Duration",
-              "pulseTimeValue": "2-400ms",
-              "cooling": "Cooling",
+              "wavelength": "Долгионы урт",
+              "wavelengthValue": "755 нм + 1064 нм",
+              "spotSize": "Цэгийн хэмжээ",
+              "spotSizeValue": "3 см² хүртэл",
+              "pulseTime": "Импульсийн хугацаа",
+              "pulseTimeValue": "2-400 мс",
+              "cooling": "Хөргөлт",
               "coolingValue": "Cryogen"
             }
           },
           "intellitrakSection": {
-            "badge": "Differentiating Technology",
-            "title": "IntelliTrak™ Smart Treatment"
+            "badge": "Ялгарах технологи",
+            "title": "IntelliTrak™ ухаалаг эмчилгээ"
           },
           "bodyAreas": {
-            "title": "Body Area Hair Removal Guide",
-            "subtitle": "Clarity II enables hair removal from face to full body",
+            "title": "Биеийн хэсэг тус бүрийн үс арилгах заавар",
+            "subtitle": "Clarity II нь нүүрнээс эхлээд бие бүхэлд нь үс арилгах боломжтой",
             "labels": {
-              "sessions": "Recommended Sessions",
-              "interval": "Treatment Interval"
+              "sessions": "Санал болгох удаагийн тоо",
+              "interval": "Эмчилгээний зайн хугацаа"
             },
             "items": [
               {
@@ -3978,8 +3978,8 @@
             ]
           },
           "advantages": {
-            "title": "Clarity II Advantages",
-            "subtitle": "Why choose Clarity II for hair removal?",
+            "title": "Clarity II-ийн давуу тал",
+            "subtitle": "Яагаад үс арилгахдаа Clarity II-ийг сонгох вэ?",
             "items": [
               {
                 "title": "Dual Wavelength",
@@ -4000,7 +4000,7 @@
             ]
           },
           "faq": {
-            "title": "Hair Removal FAQ",
+            "title": "Үс арилгалт FAQ",
             "items": [
               {
                 "q": "Is laser hair removal permanent?",
@@ -4029,25 +4029,25 @@
             ]
           },
           "cta": {
-            "title": "Start Your Journey to Smooth Skin",
-            "description": "Get a customized hair removal consultation<br/>Discover your optimal hair removal plan with a free consultation",
-            "buttonConsult": "Book Free Consultation"
+            "title": "Тунгалаг, гөлгөр арьс руу хийх таны аялал",
+            "description": "Танд тохирсон үс арилгах зөвлөгөөг авна уу<br/>Үнэгүй зөвлөгөөгөөр өөрийн оновчтой үс арилгах төлөвлөгөөг олж мэдээрэй",
+            "buttonConsult": "Үнэгүй зөвлөгөө захиалах"
           },
           "wavelengthIllustration": {
-            "title": "Follicle Targeting Depth by Wavelength",
-            "wavelength755": "755nm Alexandrite",
-            "wavelength755Desc": "Optimal melanin absorption",
-            "wavelength1064": "1064nm Nd:YAG",
-            "wavelength1064Desc": "Deep penetration, all skin tones",
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "lightSkin": "Optimized for light skin",
-            "darkSkin": "Dark skin/deep follicles"
+            "title": "Долгионы уртаас хамаарсан фолликул онилох гүн",
+            "wavelength755": "755 нм Alexandrite",
+            "wavelength755Desc": "Меланиныг оновчтой шингээх",
+            "wavelength1064": "1064 нм Nd:YAG",
+            "wavelength1064Desc": "Гүн нэвтрэх, бүх арьсны өнгөнд",
+            "epidermis": "Эпидермис",
+            "dermis": "Дермис",
+            "lightSkin": "Цайвар арьсанд оновчилсон",
+            "darkSkin": "Хар арьс / гүн фолликул"
           },
           "intellitrakIllustration": {
-            "title": "IntelliTrak™ Real-Time Tracking System",
-            "description1": "Uniform energy delivery with real-time skin tracking",
-            "description2": "Precise treatment without overlap or gaps"
+            "title": "IntelliTrak™ бодит цаг хугацааны хяналтын систем",
+            "description1": "Арьсыг бодит цаг хугацаанд хянан жигд энерги түгээх",
+            "description2": "Давхцал болон цөөрөлгүй нарийн эмчилгээ"
           },
           "intellitrakFeatures": [
             {
@@ -4088,25 +4088,25 @@
         }
       },
       "hair-removal": {
-        "name": "Laser Hair Removal"
+        "name": "Лазерээр үс арилгах"
       },
       "tattoo": {
-        "name": "Tattoo Removal",
-        "fullName": "Tattoo Removal",
-        "tagline": "Safe Tattoo Removal",
-        "description": "Picosecond laser breaks down tattoo pigments into fine particles for clean removal.",
+        "name": "Шивээс арилгах",
+        "fullName": "Шивээс арилгах",
+        "tagline": "Аюулгүй шивээс арилгалт",
+        "description": "Пикосекундын лазер шивээсний пигментийг нарийн ширхэгт хувааж цэвэрхэн арилгадаг.",
         "detail": {
-          "breadcrumb": "Tattoo Removal",
+          "breadcrumb": "Шивээс арилгах",
           "hero": {
-            "title": "Tattoo Removal",
-            "subtitle": "Tattoo Removal with Lucas",
-            "description": "Picosecond technology for scar-free, clean removal of all ink colors"
+            "title": "Шивээс арилгах",
+            "subtitle": "Lucas-аар шивээс арилгах",
+            "description": "Бүх өнгийн бэхийг сорвигүй, цэвэрхэн арилгах пикосекундын технологи"
           },
           "picoTech": {
-            "badge": "Picosecond Technology",
-            "title": "Why Pico Laser?",
-            "description1": "Traditional nanosecond (10⁻⁹s) lasers used photothermal effect to break down ink. Picosecond (10⁻¹²s) lasers deliver 1000x faster pulses creating photoacoustic effects.",
-            "description2": "This shockwave shatters ink particles to dust-level size, allowing easy removal by the body's immune system.",
+            "badge": "Пикосекундын технологи",
+            "title": "Яагаад Pico лазер?",
+            "description1": "Уламжлалт наносекунд (10⁻⁹ с) лазерүүд бэхийг задлахын тулд фотодулааны нөлөөг ашигладаг байсан. Пикосекунд (10⁻¹² с) лазер 1000 дахин хурдан импульс дамжуулж фотоакустик нөлөө бий болгодог.",
+            "description2": "Энэхүү цохилтын долгион нь бэхийн ширхгийг тоосны хэмжээнд хүртэл бутчиж, биеийн дархлааны систем хялбар арилгах боломжийг олгоно.",
             "benefits": [
               {
                 "title": "Fewer Sessions",
@@ -4122,47 +4122,47 @@
               }
             ],
             "illustration": {
-              "title": "Ink Particle Shattering Mechanism",
-              "nanosecond": "Nanosecond (10⁻⁹s)",
-              "nanosecondDevice": "Traditional Q-Switch Laser",
-              "picosecond": "Picosecond (10⁻¹²s)",
-              "picosecondDevice": "Lucas Laser",
-              "before": "Before",
-              "after": "After",
-              "photothermal": "Photothermal",
-              "photothermalResult": "Large → Medium particles",
-              "photoacoustic": "Photoacoustic",
-              "photoacousticResult": "Large → Fine particles ✓"
+              "title": "Бэхийн ширхгийг бутлах механизм",
+              "nanosecond": "Наносекунд (10⁻⁹ с)",
+              "nanosecondDevice": "Уламжлалт Q-Switch лазер",
+              "picosecond": "Пикосекунд (10⁻¹² с)",
+              "picosecondDevice": "Lucas лазер",
+              "before": "Өмнө",
+              "after": "Дараа",
+              "photothermal": "Фотодулаан",
+              "photothermalResult": "Том → дунд ширхэгт",
+              "photoacoustic": "Фотоакустик",
+              "photoacousticResult": "Том → нарийн ширхэгт ✓"
             }
           },
           "colorWavelength": {
-            "badge": "Multi-Wavelength System",
-            "title": "Targeting All Colors",
-            "subtitle": "Lucas pico laser effectively breaks down various ink colors with multiple wavelengths",
-            "illustrationTitle": "Optimal Wavelength by Ink Color",
+            "badge": "Олон долгионы уртын систем",
+            "title": "Бүх өнгийг онилох",
+            "subtitle": "Lucas pico лазер олон долгионы уртаар янз бүрийн өнгийн бэхийг үр дүнтэйгээр задалдаг",
+            "illustrationTitle": "Бэхийн өнгөнд тохирсон оновчтой долгионы урт",
             "colors": {
               "black": {
-                "name": "Black",
-                "wavelength": "1064nm",
-                "difficulty": "Easiest"
+                "name": "Хар",
+                "wavelength": "1064 нм",
+                "difficulty": "Хамгийн хялбар"
               },
               "red": {
-                "name": "Red",
-                "wavelength": "532nm",
-                "difficulty": "Relatively Easy"
+                "name": "Улаан",
+                "wavelength": "532 нм",
+                "difficulty": "Харьцангуй хялбар"
               },
               "blue": {
-                "name": "Blue",
-                "wavelength": "755nm",
-                "difficulty": "Somewhat Difficult"
+                "name": "Цэнхэр",
+                "wavelength": "755 нм",
+                "difficulty": "Бага зэрэг хүндрэлтэй"
               },
               "green": {
-                "name": "Green",
-                "wavelength": "755nm",
-                "difficulty": "Most Difficult"
+                "name": "Ногоон",
+                "wavelength": "755 нм",
+                "difficulty": "Хамгийн хүнд"
               }
             },
-            "lucasNote": "Lucas: Multi-wavelength for all color targeting",
+            "lucasNote": "Lucas: бүх өнгийг онилох олон долгионы урт",
             "wavelengths": [
               {
                 "wavelength": "1064nm",
@@ -4182,14 +4182,14 @@
             ]
           },
           "tattooTypes": {
-            "badge": "Tattoo Type Guide",
-            "title": "What Type of Tattoo Do You Want to Remove?",
-            "subtitle": "Treatment sessions and difficulty vary by tattoo type and characteristics",
-            "estimatedSessions": "Estimated Sessions",
+            "badge": "Шивээсний төрлийн заавар",
+            "title": "Та ямар төрлийн шивээсийг арилгахыг хүсэж байна вэ?",
+            "subtitle": "Эмчилгээний удаагийн тоо болон хүндрэл нь шивээсний төрөл болон шинж чанараас хамаардаг",
+            "estimatedSessions": "Тооцоолсон удаагийн тоо",
             "difficulty": {
-              "easy": "Relatively Easy",
-              "medium": "Medium",
-              "hard": "Somewhat Difficult"
+              "easy": "Харьцангуй хялбар",
+              "medium": "Дунд",
+              "hard": "Бага зэрэг хүндрэлтэй"
             },
             "types": [
               {
@@ -4231,8 +4231,8 @@
             ]
           },
           "process": {
-            "badge": "Treatment Process",
-            "title": "Tattoo Removal Process",
+            "badge": "Эмчилгээний явц",
+            "title": "Шивээс арилгах үйл явц",
             "steps": [
               {
                 "step": 1,
@@ -4262,27 +4262,27 @@
           },
           "lucas": {
             "title": "Lucas",
-            "subtitle": "The New Standard in Picosecond Tattoo Removal",
+            "subtitle": "Пикосекундын шивээс арилгалтын шинэ стандарт",
             "specs": {
               "pulseDuration": {
-                "label": "Pulse Duration",
-                "value": "450 Picoseconds"
+                "label": "Импульсийн хугацаа",
+                "value": "450 пикосекунд"
               },
               "wavelength": {
-                "label": "Wavelength",
-                "value": "532 / 755 / 1064nm"
+                "label": "Долгионы урт",
+                "value": "532 / 755 / 1064 нм"
               },
               "repetitionRate": {
-                "label": "Repetition Rate",
-                "value": "Up to 10Hz"
+                "label": "Давтамжийн хурд",
+                "value": "10 Гц хүртэл"
               },
               "energy": {
-                "label": "Energy",
-                "value": "Up to 1.8J"
+                "label": "Энерги",
+                "value": "1.8 Ж хүртэл"
               }
             },
             "strengths": {
-              "title": "Lucas Advantages",
+              "title": "Lucas-ийн давуу тал",
               "items": [
                 "Multi-wavelength for all color response",
                 "450ps ultra-short pulse minimizes heat damage",
@@ -4292,7 +4292,7 @@
           },
           "precautions": {
             "before": {
-              "title": "Before Treatment",
+              "title": "Эмчилгээний өмнө",
               "items": [
                 "Avoid excessive sun exposure 2 weeks before treatment",
                 "Avoid irritating products on treatment area",
@@ -4301,7 +4301,7 @@
               ]
             },
             "after": {
-              "title": "After Treatment",
+              "title": "Эмчилгээний дараа",
               "items": [
                 "Apply prescribed ointment as directed",
                 "Never remove scabs artificially",
@@ -4337,8 +4337,8 @@
             }
           ],
           "cta": {
-            "title": "The First Step Toward a Fresh Start",
-            "description": "Remove unwanted tattoos cleanly with pico laser. Get accurate treatment planning through free consultation"
+            "title": "Шинэ эхлэл рүү хийх анхны алхам",
+            "description": "Хүсээгүй шивээсийг pico лазераар цэвэрхэн арилга. Үнэгүй зөвлөгөөгөөр нарийн эмчилгээний төлөвлөгөө аваарай"
           }
         }
       }

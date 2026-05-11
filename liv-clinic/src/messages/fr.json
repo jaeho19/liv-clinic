@@ -3685,20 +3685,20 @@
         }
       },
       "skintone": {
-        "name": "Skin Texture",
-        "fullName": "Skin Tone Improvement",
-        "tagline": "Pores, Scars & Texture Refinement",
-        "description": "Laser resurfacing for pore reduction, scar improvement, and skin texture refinement.",
+        "name": "Texture de la peau",
+        "fullName": "Amélioration du teint",
+        "tagline": "Pores, cicatrices et affinement de la texture",
+        "description": "Resurfaçage laser pour réduire les pores, améliorer les cicatrices et affiner la texture de la peau.",
         "detail": {
           "hero": {
-            "title": "Skin Tone Evenness",
-            "subtitle": "Skin Tone Brightening & Whitening",
-            "description": "With the synergy of laser toning and Ulblanc,<br/>restore dull skin to bright, clear complexion"
+            "title": "Uniformité du teint",
+            "subtitle": "Éclaircissement et illumination du teint",
+            "description": "Avec la synergie du laser toning et d'Ulblanc,<br/>redonnez à votre peau terne un teint clair et lumineux"
           },
           "concernsSection": {
-            "title": "Do you have these skin concerns?",
-            "subtitle": "There are various causes of uneven skin tone. We offer customized solutions for your specific concerns.",
-            "customSolution": "Custom Solution",
+            "title": "Avez-vous ces préoccupations cutanées ?",
+            "subtitle": "Les causes d'un teint irrégulier sont multiples. Nous proposons des solutions personnalisées pour vos préoccupations spécifiques.",
+            "customSolution": "Solution personnalisée",
             "concerns": [
               {
                 "title": "Overall Dull Skin",
@@ -3738,11 +3738,11 @@
             ]
           },
           "toningSection": {
-            "badge": "Treatment Principle",
-            "title": "The Science of Laser Toning",
-            "description1": "Laser toning uses <strong>1064nm Nd:YAG laser</strong> at low power with repeated pulses to gradually break down melanin in the skin.",
-            "description2": "Unlike conventional high-power lasers, it delivers <strong>low energy uniformly over a wide area</strong> to minimize skin irritation while maximizing results.",
-            "effectsTitle": "3 Effects of Laser Toning",
+            "badge": "Principe du traitement",
+            "title": "La science du laser toning",
+            "description1": "Le laser toning utilise un <strong>laser Nd:YAG 1064 nm</strong> à faible puissance avec des impulsions répétées pour décomposer progressivement la mélanine dans la peau.",
+            "description2": "Contrairement aux lasers conventionnels à haute puissance, il délivre <strong>une faible énergie de manière uniforme sur une large surface</strong> pour minimiser l'irritation cutanée tout en maximisant les résultats.",
+            "effectsTitle": "3 effets du laser toning",
             "effects": [
               {
                 "title": "Melanin Breakdown",
@@ -3759,26 +3759,26 @@
             ]
           },
           "beforeAfterSection": {
-            "title": "Skin Tone Transformation",
-            "subtitle": "Skin tone changes with the combination of laser toning and Ulblanc"
+            "title": "Transformation du teint",
+            "subtitle": "Évolution du teint grâce à la combinaison du laser toning et d'Ulblanc"
           },
           "equipmentSection": {
-            "badge": "LIV Equipment",
-            "title": "Dedicated Skin Tone Improvement Equipment",
-            "subtitle": "Professional equipment for gradual skin brightening without disrupting daily life",
+            "badge": "Équipement LIV",
+            "title": "Équipement dédié à l'amélioration du teint",
+            "subtitle": "Équipement professionnel pour un éclaircissement progressif sans perturber la vie quotidienne",
             "labels": {
-              "wavelength": "Wavelength",
-              "feature": "Feature",
-              "advantage": "Advantage",
+              "wavelength": "Longueur d'onde",
+              "feature": "Caractéristique",
+              "advantage": "Avantage",
               "indications": "Indications",
-              "recommendedSessions": "Recommended Sessions"
+              "recommendedSessions": "Séances recommandées"
             },
             "toning": {
               "name": "Laser Toning",
               "nameEn": "Laser Toning (Spectra XT)",
-              "wavelength": "1064nm Nd:YAG",
-              "feature": "Low-power repeated irradiation (MLA mode)",
-              "advantage": "Zero downtime, immediate return to daily activities",
+              "wavelength": "Nd:YAG 1064 nm",
+              "feature": "Irradiation répétée à faible puissance (mode MLA)",
+              "advantage": "Zéro temps d'arrêt, retour immédiat aux activités quotidiennes",
               "targets": [
                 "Dull Skin",
                 "Fine Lines",
@@ -3790,9 +3790,9 @@
             "ulblanc": {
               "name": "Ulblanc",
               "nameEn": "Ulblanc Whitening Laser",
-              "wavelength": "Dedicated whitening wavelength",
-              "feature": "Selective melanin targeting",
-              "advantage": "Improve skin tone without irritation",
+              "wavelength": "Longueur d'onde dédiée à l'éclaircissement",
+              "feature": "Ciblage sélectif de la mélanine",
+              "advantage": "Amélioration du teint sans irritation",
               "targets": [
                 "Skin Whitening",
                 "Tone Evenness",
@@ -3801,13 +3801,13 @@
                 "Dullness"
               ]
             },
-            "synergyTitle": "Laser Toning + Ulblanc Synergy Effect",
-            "synergyDesc": "By improving overall skin condition with laser toning and directly targeting melanin with Ulblanc, you can expect <strong>1.5-2x faster results</strong> compared to single treatments. Both devices have no downtime, making combination therapy easy."
+            "synergyTitle": "Effet synergique Laser Toning + Ulblanc",
+            "synergyDesc": "En améliorant l'état général de la peau grâce au laser toning et en ciblant directement la mélanine avec Ulblanc, vous pouvez espérer <strong>des résultats 1,5 à 2× plus rapides</strong> qu'avec un traitement unique. Les deux appareils n'imposent aucun temps d'arrêt, rendant la thérapie combinée très accessible."
           },
           "protocolSection": {
-            "badge": "Treatment Process",
-            "title": "3-Step Skin Tone Improvement Program",
-            "subtitle": "Systematic step-by-step treatment for natural and lasting skin tone improvement",
+            "badge": "Déroulement du traitement",
+            "title": "Programme d'amélioration du teint en 3 étapes",
+            "subtitle": "Traitement systématique et progressif pour une amélioration naturelle et durable du teint",
             "steps": [
               {
                 "step": 1,
@@ -3833,8 +3833,8 @@
             ]
           },
           "advantagesSection": {
-            "title": "Advantages of Laser Toning",
-            "subtitle": "Convenient skin care for busy modern lifestyles",
+            "title": "Avantages du laser toning",
+            "subtitle": "Soin de la peau pratique pour des modes de vie urbains chargés",
             "items": [
               {
                 "title": "Zero Downtime",
@@ -3855,7 +3855,7 @@
             ]
           },
           "faq": {
-            "title": "Skin Tone Improvement FAQ",
+            "title": "FAQ — Amélioration du teint",
             "items": [
               {
                 "q": "How many laser toning sessions are needed to see results?",
@@ -3880,63 +3880,63 @@
             ]
           },
           "illustrationLabels": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "deepDermis": "Deep Dermis",
-            "laserHead": "1064nm Nd:YAG Low Power",
-            "mechanismDesc": "Gradual melanin breakdown through repeated low-power irradiation",
-            "before": "Before",
-            "after": "After",
-            "beforeDesc": "Uneven Skin Tone",
-            "afterDesc": "Clear, Even Skin Tone",
+            "epidermis": "Épiderme",
+            "dermis": "Derme",
+            "deepDermis": "Derme profond",
+            "laserHead": "Nd:YAG 1064 nm faible puissance",
+            "mechanismDesc": "Décomposition progressive de la mélanine par irradiation répétée à faible puissance",
+            "before": "Avant",
+            "after": "Après",
+            "beforeDesc": "Teint irrégulier",
+            "afterDesc": "Teint clair et uniforme",
             "laserToning": "Laser Toning",
             "ulblanc": "+ Ulblanc"
           },
           "cta": {
-            "title": "Restore Your Clear, Bright Skin Tone",
-            "description": "Start your laser toning & Ulblanc program<br/>with no downtime, managed in your daily routine",
-            "buttonConsult": "Book Free Consultation"
+            "title": "Retrouvez un teint clair et lumineux",
+            "description": "Démarrez votre programme Laser Toning & Ulblanc<br/>sans temps d'arrêt, intégré à votre routine quotidienne",
+            "buttonConsult": "Réserver une consultation gratuite"
           }
         }
       },
       "hairRemoval": {
-        "name": "Laser Hair Removal",
-        "fullName": "Laser Hair Removal",
-        "tagline": "Permanent Hair Removal Solution",
-        "description": "Medical-grade lasers selectively destroy hair follicles for permanent hair removal results.",
+        "name": "Épilation laser",
+        "fullName": "Épilation laser",
+        "tagline": "Solution d'épilation définitive",
+        "description": "Des lasers de qualité médicale détruisent sélectivement les follicules pileux pour une épilation définitive.",
         "detail": {
           "hero": {
-            "title": "Premium Hair Removal",
-            "subtitle": "Premium Hair Removal with Clarity II",
-            "description": "Dual wavelength + IntelliTrak™ technology for<br/>safe and effective medical laser hair removal for all skin types"
+            "title": "Épilation premium",
+            "subtitle": "Épilation premium avec Clarity II",
+            "description": "Double longueur d'onde + technologie IntelliTrak™ pour<br/>une épilation laser médicale sûre et efficace, adaptée à tous les types de peau"
           },
           "claritySection": {
-            "badge": "LIV Premium Equipment",
+            "badge": "Équipement premium LIV",
             "title": "Clarity II",
-            "subtitle": "The New Standard in Hair Removal",
-            "description1": "Clarity II is a premium laser system that offers two wavelengths—<strong>755nm Alexandrite</strong> and <strong>1064nm Nd:YAG</strong>—on a single platform.",
-            "description2": "<strong>IntelliTrak™</strong> technology tracks the skin in real-time, delivering uniform energy without overlap or missed spots, minimizing burn risk and maximizing effectiveness.",
+            "subtitle": "Le nouveau standard de l'épilation",
+            "description1": "Clarity II est un système laser premium qui propose deux longueurs d'onde — <strong>Alexandrite 755 nm</strong> et <strong>Nd:YAG 1064 nm</strong> — sur une seule plateforme.",
+            "description2": "La technologie <strong>IntelliTrak™</strong> suit la peau en temps réel, délivrant une énergie uniforme sans chevauchement ni zone manquée, ce qui minimise le risque de brûlure et maximise l'efficacité.",
             "specs": {
-              "wavelength": "Wavelength",
-              "wavelengthValue": "755nm + 1064nm",
-              "spotSize": "Spot Size",
-              "spotSizeValue": "Up to 3cm²",
-              "pulseTime": "Pulse Duration",
-              "pulseTimeValue": "2-400ms",
-              "cooling": "Cooling",
+              "wavelength": "Longueur d'onde",
+              "wavelengthValue": "755 nm + 1064 nm",
+              "spotSize": "Taille du spot",
+              "spotSizeValue": "Jusqu'à 3 cm²",
+              "pulseTime": "Durée d'impulsion",
+              "pulseTimeValue": "2-400 ms",
+              "cooling": "Refroidissement",
               "coolingValue": "Cryogen"
             }
           },
           "intellitrakSection": {
-            "badge": "Differentiating Technology",
-            "title": "IntelliTrak™ Smart Treatment"
+            "badge": "Technologie différenciante",
+            "title": "IntelliTrak™ — Traitement intelligent"
           },
           "bodyAreas": {
-            "title": "Body Area Hair Removal Guide",
-            "subtitle": "Clarity II enables hair removal from face to full body",
+            "title": "Guide d'épilation par zone corporelle",
+            "subtitle": "Clarity II permet l'épilation du visage jusqu'à l'ensemble du corps",
             "labels": {
-              "sessions": "Recommended Sessions",
-              "interval": "Treatment Interval"
+              "sessions": "Séances recommandées",
+              "interval": "Intervalle entre les séances"
             },
             "items": [
               {
@@ -3978,8 +3978,8 @@
             ]
           },
           "advantages": {
-            "title": "Clarity II Advantages",
-            "subtitle": "Why choose Clarity II for hair removal?",
+            "title": "Avantages de Clarity II",
+            "subtitle": "Pourquoi choisir Clarity II pour l'épilation ?",
             "items": [
               {
                 "title": "Dual Wavelength",
@@ -4000,7 +4000,7 @@
             ]
           },
           "faq": {
-            "title": "Hair Removal FAQ",
+            "title": "FAQ — Épilation",
             "items": [
               {
                 "q": "Is laser hair removal permanent?",
@@ -4029,25 +4029,25 @@
             ]
           },
           "cta": {
-            "title": "Start Your Journey to Smooth Skin",
-            "description": "Get a customized hair removal consultation<br/>Discover your optimal hair removal plan with a free consultation",
-            "buttonConsult": "Book Free Consultation"
+            "title": "Commencez votre parcours vers une peau lisse",
+            "description": "Bénéficiez d'une consultation d'épilation personnalisée<br/>Découvrez votre plan d'épilation optimal grâce à une consultation gratuite",
+            "buttonConsult": "Réserver une consultation gratuite"
           },
           "wavelengthIllustration": {
-            "title": "Follicle Targeting Depth by Wavelength",
-            "wavelength755": "755nm Alexandrite",
-            "wavelength755Desc": "Optimal melanin absorption",
-            "wavelength1064": "1064nm Nd:YAG",
-            "wavelength1064Desc": "Deep penetration, all skin tones",
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "lightSkin": "Optimized for light skin",
-            "darkSkin": "Dark skin/deep follicles"
+            "title": "Profondeur de ciblage des follicules selon la longueur d'onde",
+            "wavelength755": "Alexandrite 755 nm",
+            "wavelength755Desc": "Absorption optimale de la mélanine",
+            "wavelength1064": "Nd:YAG 1064 nm",
+            "wavelength1064Desc": "Pénétration profonde, tous les phototypes",
+            "epidermis": "Épiderme",
+            "dermis": "Derme",
+            "lightSkin": "Optimisé pour les peaux claires",
+            "darkSkin": "Peaux foncées / follicules profonds"
           },
           "intellitrakIllustration": {
-            "title": "IntelliTrak™ Real-Time Tracking System",
-            "description1": "Uniform energy delivery with real-time skin tracking",
-            "description2": "Precise treatment without overlap or gaps"
+            "title": "Système de suivi en temps réel IntelliTrak™",
+            "description1": "Diffusion d'énergie uniforme grâce au suivi de la peau en temps réel",
+            "description2": "Traitement précis sans chevauchement ni zone manquée"
           },
           "intellitrakFeatures": [
             {
@@ -4088,25 +4088,25 @@
         }
       },
       "hair-removal": {
-        "name": "Laser Hair Removal"
+        "name": "Épilation laser"
       },
       "tattoo": {
-        "name": "Tattoo Removal",
-        "fullName": "Tattoo Removal",
-        "tagline": "Safe Tattoo Removal",
-        "description": "Picosecond laser breaks down tattoo pigments into fine particles for clean removal.",
+        "name": "Détatouage",
+        "fullName": "Détatouage",
+        "tagline": "Détatouage en toute sécurité",
+        "description": "Le laser picoseconde fragmente les pigments du tatouage en fines particules pour une élimination nette.",
         "detail": {
-          "breadcrumb": "Tattoo Removal",
+          "breadcrumb": "Détatouage",
           "hero": {
-            "title": "Tattoo Removal",
-            "subtitle": "Tattoo Removal with Lucas",
-            "description": "Picosecond technology for scar-free, clean removal of all ink colors"
+            "title": "Détatouage",
+            "subtitle": "Détatouage avec Lucas",
+            "description": "Technologie picoseconde pour une élimination nette et sans cicatrice de toutes les couleurs d'encre"
           },
           "picoTech": {
-            "badge": "Picosecond Technology",
-            "title": "Why Pico Laser?",
-            "description1": "Traditional nanosecond (10⁻⁹s) lasers used photothermal effect to break down ink. Picosecond (10⁻¹²s) lasers deliver 1000x faster pulses creating photoacoustic effects.",
-            "description2": "This shockwave shatters ink particles to dust-level size, allowing easy removal by the body's immune system.",
+            "badge": "Technologie picoseconde",
+            "title": "Pourquoi un laser Pico ?",
+            "description1": "Les lasers nanoseconde classiques (10⁻⁹ s) utilisaient un effet photothermique pour fragmenter l'encre. Les lasers picoseconde (10⁻¹² s) délivrent des impulsions 1000× plus rapides, créant un effet photoacoustique.",
+            "description2": "Cette onde de choc pulvérise les particules d'encre jusqu'à une taille proche de la poussière, permettant leur élimination facile par le système immunitaire.",
             "benefits": [
               {
                 "title": "Fewer Sessions",
@@ -4122,47 +4122,47 @@
               }
             ],
             "illustration": {
-              "title": "Ink Particle Shattering Mechanism",
-              "nanosecond": "Nanosecond (10⁻⁹s)",
-              "nanosecondDevice": "Traditional Q-Switch Laser",
-              "picosecond": "Picosecond (10⁻¹²s)",
-              "picosecondDevice": "Lucas Laser",
-              "before": "Before",
-              "after": "After",
-              "photothermal": "Photothermal",
-              "photothermalResult": "Large → Medium particles",
-              "photoacoustic": "Photoacoustic",
-              "photoacousticResult": "Large → Fine particles ✓"
+              "title": "Mécanisme de fragmentation des particules d'encre",
+              "nanosecond": "Nanoseconde (10⁻⁹ s)",
+              "nanosecondDevice": "Laser Q-Switch classique",
+              "picosecond": "Picoseconde (10⁻¹² s)",
+              "picosecondDevice": "Laser Lucas",
+              "before": "Avant",
+              "after": "Après",
+              "photothermal": "Photothermique",
+              "photothermalResult": "Grosses → moyennes particules",
+              "photoacoustic": "Photoacoustique",
+              "photoacousticResult": "Grosses → fines particules ✓"
             }
           },
           "colorWavelength": {
-            "badge": "Multi-Wavelength System",
-            "title": "Targeting All Colors",
-            "subtitle": "Lucas pico laser effectively breaks down various ink colors with multiple wavelengths",
-            "illustrationTitle": "Optimal Wavelength by Ink Color",
+            "badge": "Système multi-longueurs d'onde",
+            "title": "Tous les coloris ciblés",
+            "subtitle": "Le laser pico Lucas fragmente efficacement diverses couleurs d'encre grâce à plusieurs longueurs d'onde",
+            "illustrationTitle": "Longueur d'onde optimale par couleur d'encre",
             "colors": {
               "black": {
-                "name": "Black",
-                "wavelength": "1064nm",
-                "difficulty": "Easiest"
+                "name": "Noir",
+                "wavelength": "1064 nm",
+                "difficulty": "Le plus facile"
               },
               "red": {
-                "name": "Red",
-                "wavelength": "532nm",
-                "difficulty": "Relatively Easy"
+                "name": "Rouge",
+                "wavelength": "532 nm",
+                "difficulty": "Relativement facile"
               },
               "blue": {
-                "name": "Blue",
-                "wavelength": "755nm",
-                "difficulty": "Somewhat Difficult"
+                "name": "Bleu",
+                "wavelength": "755 nm",
+                "difficulty": "Plutôt difficile"
               },
               "green": {
-                "name": "Green",
-                "wavelength": "755nm",
-                "difficulty": "Most Difficult"
+                "name": "Vert",
+                "wavelength": "755 nm",
+                "difficulty": "Le plus difficile"
               }
             },
-            "lucasNote": "Lucas: Multi-wavelength for all color targeting",
+            "lucasNote": "Lucas : multi-longueurs d'onde pour cibler toutes les couleurs",
             "wavelengths": [
               {
                 "wavelength": "1064nm",
@@ -4182,14 +4182,14 @@
             ]
           },
           "tattooTypes": {
-            "badge": "Tattoo Type Guide",
-            "title": "What Type of Tattoo Do You Want to Remove?",
-            "subtitle": "Treatment sessions and difficulty vary by tattoo type and characteristics",
-            "estimatedSessions": "Estimated Sessions",
+            "badge": "Guide des types de tatouage",
+            "title": "Quel type de tatouage souhaitez-vous retirer ?",
+            "subtitle": "Le nombre de séances et la difficulté varient selon le type et les caractéristiques du tatouage",
+            "estimatedSessions": "Séances estimées",
             "difficulty": {
-              "easy": "Relatively Easy",
-              "medium": "Medium",
-              "hard": "Somewhat Difficult"
+              "easy": "Relativement facile",
+              "medium": "Moyen",
+              "hard": "Plutôt difficile"
             },
             "types": [
               {
@@ -4231,8 +4231,8 @@
             ]
           },
           "process": {
-            "badge": "Treatment Process",
-            "title": "Tattoo Removal Process",
+            "badge": "Déroulement du traitement",
+            "title": "Processus de détatouage",
             "steps": [
               {
                 "step": 1,
@@ -4262,27 +4262,27 @@
           },
           "lucas": {
             "title": "Lucas",
-            "subtitle": "The New Standard in Picosecond Tattoo Removal",
+            "subtitle": "Le nouveau standard du détatouage picoseconde",
             "specs": {
               "pulseDuration": {
-                "label": "Pulse Duration",
-                "value": "450 Picoseconds"
+                "label": "Durée d'impulsion",
+                "value": "450 picosecondes"
               },
               "wavelength": {
-                "label": "Wavelength",
-                "value": "532 / 755 / 1064nm"
+                "label": "Longueur d'onde",
+                "value": "532 / 755 / 1064 nm"
               },
               "repetitionRate": {
-                "label": "Repetition Rate",
-                "value": "Up to 10Hz"
+                "label": "Cadence de répétition",
+                "value": "Jusqu'à 10 Hz"
               },
               "energy": {
-                "label": "Energy",
-                "value": "Up to 1.8J"
+                "label": "Énergie",
+                "value": "Jusqu'à 1,8 J"
               }
             },
             "strengths": {
-              "title": "Lucas Advantages",
+              "title": "Avantages de Lucas",
               "items": [
                 "Multi-wavelength for all color response",
                 "450ps ultra-short pulse minimizes heat damage",
@@ -4292,7 +4292,7 @@
           },
           "precautions": {
             "before": {
-              "title": "Before Treatment",
+              "title": "Avant le traitement",
               "items": [
                 "Avoid excessive sun exposure 2 weeks before treatment",
                 "Avoid irritating products on treatment area",
@@ -4301,7 +4301,7 @@
               ]
             },
             "after": {
-              "title": "After Treatment",
+              "title": "Après le traitement",
               "items": [
                 "Apply prescribed ointment as directed",
                 "Never remove scabs artificially",
@@ -4337,8 +4337,8 @@
             }
           ],
           "cta": {
-            "title": "The First Step Toward a Fresh Start",
-            "description": "Remove unwanted tattoos cleanly with pico laser. Get accurate treatment planning through free consultation"
+            "title": "Le premier pas vers un nouveau départ",
+            "description": "Effacez les tatouages indésirables proprement grâce au laser pico. Obtenez un plan de traitement précis grâce à une consultation gratuite"
           }
         }
       }

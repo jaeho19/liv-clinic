@@ -3685,20 +3685,20 @@
         }
       },
       "skintone": {
-        "name": "Skin Texture",
-        "fullName": "Skin Tone Improvement",
-        "tagline": "Pores, Scars & Texture Refinement",
-        "description": "Laser resurfacing for pore reduction, scar improvement, and skin texture refinement.",
+        "name": "ملمس البشرة",
+        "fullName": "تحسين لون البشرة",
+        "tagline": "تصغير المسام والندوب وصقل الملمس",
+        "description": "إعادة تسطيح بالليزر لتصغير المسام، تحسين الندوب، وصقل ملمس البشرة.",
         "detail": {
           "hero": {
-            "title": "Skin Tone Evenness",
-            "subtitle": "Skin Tone Brightening & Whitening",
-            "description": "With the synergy of laser toning and Ulblanc,<br/>restore dull skin to bright, clear complexion"
+            "title": "توحيد لون البشرة",
+            "subtitle": "تفتيح وإشراق لون البشرة",
+            "description": "مع تآزر Laser Toning و Ulblanc<br/>أعد للبشرة الباهتة بشرتها المشرقة والصافية"
           },
           "concernsSection": {
-            "title": "Do you have these skin concerns?",
-            "subtitle": "There are various causes of uneven skin tone. We offer customized solutions for your specific concerns.",
-            "customSolution": "Custom Solution",
+            "title": "هل تعانين من هذه المشكلات الجلدية؟",
+            "subtitle": "هناك أسباب متعددة لتفاوت لون البشرة. نوفّر حلولاً مخصصة لمشكلاتك تحديداً.",
+            "customSolution": "حلّ مخصص",
             "concerns": [
               {
                 "title": "Overall Dull Skin",
@@ -3738,11 +3738,11 @@
             ]
           },
           "toningSection": {
-            "badge": "Treatment Principle",
-            "title": "The Science of Laser Toning",
-            "description1": "Laser toning uses <strong>1064nm Nd:YAG laser</strong> at low power with repeated pulses to gradually break down melanin in the skin.",
-            "description2": "Unlike conventional high-power lasers, it delivers <strong>low energy uniformly over a wide area</strong> to minimize skin irritation while maximizing results.",
-            "effectsTitle": "3 Effects of Laser Toning",
+            "badge": "مبدأ العلاج",
+            "title": "علم Laser Toning",
+            "description1": "يستخدم Laser Toning ليزر <strong>Nd:YAG 1064 نانومتر</strong> بطاقة منخفضة مع نبضات متكررة لتفتيت الميلانين تدريجياً في البشرة.",
+            "description2": "بخلاف الليزرات التقليدية عالية الطاقة، يوصّل <strong>طاقة منخفضة بشكل موحّد على مساحة واسعة</strong> لتقليل تهيّج البشرة إلى أدنى حد مع تعظيم النتائج.",
+            "effectsTitle": "3 تأثيرات لـ Laser Toning",
             "effects": [
               {
                 "title": "Melanin Breakdown",
@@ -3759,26 +3759,26 @@
             ]
           },
           "beforeAfterSection": {
-            "title": "Skin Tone Transformation",
-            "subtitle": "Skin tone changes with the combination of laser toning and Ulblanc"
+            "title": "تحوّل لون البشرة",
+            "subtitle": "تغيّرات لون البشرة بفضل دمج Laser Toning و Ulblanc"
           },
           "equipmentSection": {
-            "badge": "LIV Equipment",
-            "title": "Dedicated Skin Tone Improvement Equipment",
-            "subtitle": "Professional equipment for gradual skin brightening without disrupting daily life",
+            "badge": "معدات LIV",
+            "title": "معدات مخصصة لتحسين لون البشرة",
+            "subtitle": "معدات احترافية لتفتيح البشرة تدريجياً دون التأثير على الحياة اليومية",
             "labels": {
-              "wavelength": "Wavelength",
-              "feature": "Feature",
-              "advantage": "Advantage",
-              "indications": "Indications",
-              "recommendedSessions": "Recommended Sessions"
+              "wavelength": "الطول الموجي",
+              "feature": "الميزة",
+              "advantage": "الفائدة",
+              "indications": "الاستطبابات",
+              "recommendedSessions": "الجلسات الموصى بها"
             },
             "toning": {
               "name": "Laser Toning",
               "nameEn": "Laser Toning (Spectra XT)",
-              "wavelength": "1064nm Nd:YAG",
-              "feature": "Low-power repeated irradiation (MLA mode)",
-              "advantage": "Zero downtime, immediate return to daily activities",
+              "wavelength": "Nd:YAG 1064 نانومتر",
+              "feature": "إشعاع متكرر منخفض الطاقة (وضع MLA)",
+              "advantage": "بدون فترة توقف، عودة فورية إلى النشاطات اليومية",
               "targets": [
                 "Dull Skin",
                 "Fine Lines",
@@ -3790,9 +3790,9 @@
             "ulblanc": {
               "name": "Ulblanc",
               "nameEn": "Ulblanc Whitening Laser",
-              "wavelength": "Dedicated whitening wavelength",
-              "feature": "Selective melanin targeting",
-              "advantage": "Improve skin tone without irritation",
+              "wavelength": "طول موجي مخصص للتفتيح",
+              "feature": "استهداف انتقائي للميلانين",
+              "advantage": "تحسين لون البشرة دون تهيّج",
               "targets": [
                 "Skin Whitening",
                 "Tone Evenness",
@@ -3801,13 +3801,13 @@
                 "Dullness"
               ]
             },
-            "synergyTitle": "Laser Toning + Ulblanc Synergy Effect",
-            "synergyDesc": "By improving overall skin condition with laser toning and directly targeting melanin with Ulblanc, you can expect <strong>1.5-2x faster results</strong> compared to single treatments. Both devices have no downtime, making combination therapy easy."
+            "synergyTitle": "تأثير تآزر Laser Toning + Ulblanc",
+            "synergyDesc": "بتحسين الحالة العامة للبشرة عبر Laser Toning واستهداف الميلانين مباشرة بـ Ulblanc، يمكنك توقّع <strong>نتائج أسرع بمعدل 1.5-2 مرة</strong> مقارنة بالعلاج الفردي. كلا الجهازين لا يفرضان فترة توقف، مما يجعل العلاج المركّب سهلاً."
           },
           "protocolSection": {
-            "badge": "Treatment Process",
-            "title": "3-Step Skin Tone Improvement Program",
-            "subtitle": "Systematic step-by-step treatment for natural and lasting skin tone improvement",
+            "badge": "إجراءات العلاج",
+            "title": "برنامج تحسين لون البشرة في 3 خطوات",
+            "subtitle": "علاج منهجي تدريجي لتحسين لون البشرة بشكل طبيعي ومستدام",
             "steps": [
               {
                 "step": 1,
@@ -3833,8 +3833,8 @@
             ]
           },
           "advantagesSection": {
-            "title": "Advantages of Laser Toning",
-            "subtitle": "Convenient skin care for busy modern lifestyles",
+            "title": "مزايا Laser Toning",
+            "subtitle": "عناية مريحة بالبشرة لأنماط الحياة العصرية المزدحمة",
             "items": [
               {
                 "title": "Zero Downtime",
@@ -3855,7 +3855,7 @@
             ]
           },
           "faq": {
-            "title": "Skin Tone Improvement FAQ",
+            "title": "الأسئلة الشائعة — تحسين لون البشرة",
             "items": [
               {
                 "q": "How many laser toning sessions are needed to see results?",
@@ -3880,63 +3880,63 @@
             ]
           },
           "illustrationLabels": {
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "deepDermis": "Deep Dermis",
-            "laserHead": "1064nm Nd:YAG Low Power",
-            "mechanismDesc": "Gradual melanin breakdown through repeated low-power irradiation",
-            "before": "Before",
-            "after": "After",
-            "beforeDesc": "Uneven Skin Tone",
-            "afterDesc": "Clear, Even Skin Tone",
+            "epidermis": "البشرة",
+            "dermis": "الأدمة",
+            "deepDermis": "الأدمة العميقة",
+            "laserHead": "Nd:YAG 1064 نانومتر منخفض الطاقة",
+            "mechanismDesc": "تفتيت تدريجي للميلانين عبر إشعاع متكرر منخفض الطاقة",
+            "before": "قبل",
+            "after": "بعد",
+            "beforeDesc": "لون بشرة غير موحّد",
+            "afterDesc": "لون بشرة صافٍ وموحّد",
             "laserToning": "Laser Toning",
             "ulblanc": "+ Ulblanc"
           },
           "cta": {
-            "title": "Restore Your Clear, Bright Skin Tone",
-            "description": "Start your laser toning & Ulblanc program<br/>with no downtime, managed in your daily routine",
-            "buttonConsult": "Book Free Consultation"
+            "title": "استعد لون بشرتك الصافي والمشرق",
+            "description": "ابدأ برنامج Laser Toning & Ulblanc<br/>بدون فترة توقف، ضمن روتينك اليومي",
+            "buttonConsult": "حجز استشارة مجانية"
           }
         }
       },
       "hairRemoval": {
-        "name": "Laser Hair Removal",
-        "fullName": "Laser Hair Removal",
-        "tagline": "Permanent Hair Removal Solution",
-        "description": "Medical-grade lasers selectively destroy hair follicles for permanent hair removal results.",
+        "name": "إزالة الشعر بالليزر",
+        "fullName": "إزالة الشعر بالليزر",
+        "tagline": "حلّ دائم لإزالة الشعر",
+        "description": "تدمّر الليزرات الطبية بصلات الشعر انتقائياً لتحقيق نتائج إزالة شعر دائمة.",
         "detail": {
           "hero": {
-            "title": "Premium Hair Removal",
-            "subtitle": "Premium Hair Removal with Clarity II",
-            "description": "Dual wavelength + IntelliTrak™ technology for<br/>safe and effective medical laser hair removal for all skin types"
+            "title": "إزالة شعر فاخرة",
+            "subtitle": "إزالة شعر فاخرة بـ Clarity II",
+            "description": "طول موجي مزدوج + تقنية IntelliTrak™ لـ<br/>إزالة شعر طبية بالليزر آمنة وفعّالة لجميع أنواع البشرة"
           },
           "claritySection": {
-            "badge": "LIV Premium Equipment",
+            "badge": "معدات LIV الفاخرة",
             "title": "Clarity II",
-            "subtitle": "The New Standard in Hair Removal",
-            "description1": "Clarity II is a premium laser system that offers two wavelengths—<strong>755nm Alexandrite</strong> and <strong>1064nm Nd:YAG</strong>—on a single platform.",
-            "description2": "<strong>IntelliTrak™</strong> technology tracks the skin in real-time, delivering uniform energy without overlap or missed spots, minimizing burn risk and maximizing effectiveness.",
+            "subtitle": "المعيار الجديد في إزالة الشعر",
+            "description1": "Clarity II نظام ليزر فاخر يقدّم طولين موجيين — <strong>Alexandrite 755 نانومتر</strong> و <strong>Nd:YAG 1064 نانومتر</strong> — على منصة واحدة.",
+            "description2": "تتعقّب تقنية <strong>IntelliTrak™</strong> البشرة في الوقت الفعلي، وتوصل طاقة موحّدة دون تداخل أو نقاط مفقودة، ما يقلّل خطر الحرق ويعظّم الفاعلية.",
             "specs": {
-              "wavelength": "Wavelength",
-              "wavelengthValue": "755nm + 1064nm",
-              "spotSize": "Spot Size",
-              "spotSizeValue": "Up to 3cm²",
-              "pulseTime": "Pulse Duration",
-              "pulseTimeValue": "2-400ms",
-              "cooling": "Cooling",
+              "wavelength": "الطول الموجي",
+              "wavelengthValue": "755 نانومتر + 1064 نانومتر",
+              "spotSize": "حجم البقعة",
+              "spotSizeValue": "حتى 3 سم²",
+              "pulseTime": "مدة النبضة",
+              "pulseTimeValue": "2-400 مللي ثانية",
+              "cooling": "التبريد",
               "coolingValue": "Cryogen"
             }
           },
           "intellitrakSection": {
-            "badge": "Differentiating Technology",
-            "title": "IntelliTrak™ Smart Treatment"
+            "badge": "تقنية مميّزة",
+            "title": "IntelliTrak™ — علاج ذكي"
           },
           "bodyAreas": {
-            "title": "Body Area Hair Removal Guide",
-            "subtitle": "Clarity II enables hair removal from face to full body",
+            "title": "دليل إزالة الشعر حسب منطقة الجسم",
+            "subtitle": "يتيح Clarity II إزالة الشعر من الوجه إلى الجسم بالكامل",
             "labels": {
-              "sessions": "Recommended Sessions",
-              "interval": "Treatment Interval"
+              "sessions": "الجلسات الموصى بها",
+              "interval": "الفاصل بين الجلسات"
             },
             "items": [
               {
@@ -3978,8 +3978,8 @@
             ]
           },
           "advantages": {
-            "title": "Clarity II Advantages",
-            "subtitle": "Why choose Clarity II for hair removal?",
+            "title": "مزايا Clarity II",
+            "subtitle": "لماذا تختار Clarity II لإزالة الشعر؟",
             "items": [
               {
                 "title": "Dual Wavelength",
@@ -4000,7 +4000,7 @@
             ]
           },
           "faq": {
-            "title": "Hair Removal FAQ",
+            "title": "الأسئلة الشائعة — إزالة الشعر",
             "items": [
               {
                 "q": "Is laser hair removal permanent?",
@@ -4029,25 +4029,25 @@
             ]
           },
           "cta": {
-            "title": "Start Your Journey to Smooth Skin",
-            "description": "Get a customized hair removal consultation<br/>Discover your optimal hair removal plan with a free consultation",
-            "buttonConsult": "Book Free Consultation"
+            "title": "ابدأ رحلتك نحو بشرة ناعمة",
+            "description": "احصل على استشارة إزالة شعر مخصصة<br/>اكتشف خطّتك المثلى لإزالة الشعر عبر استشارة مجانية",
+            "buttonConsult": "حجز استشارة مجانية"
           },
           "wavelengthIllustration": {
-            "title": "Follicle Targeting Depth by Wavelength",
-            "wavelength755": "755nm Alexandrite",
-            "wavelength755Desc": "Optimal melanin absorption",
-            "wavelength1064": "1064nm Nd:YAG",
-            "wavelength1064Desc": "Deep penetration, all skin tones",
-            "epidermis": "Epidermis",
-            "dermis": "Dermis",
-            "lightSkin": "Optimized for light skin",
-            "darkSkin": "Dark skin/deep follicles"
+            "title": "عمق استهداف البصيلات حسب الطول الموجي",
+            "wavelength755": "Alexandrite 755 نانومتر",
+            "wavelength755Desc": "امتصاص أمثل للميلانين",
+            "wavelength1064": "Nd:YAG 1064 نانومتر",
+            "wavelength1064Desc": "اختراق عميق، يناسب جميع درجات لون البشرة",
+            "epidermis": "البشرة",
+            "dermis": "الأدمة",
+            "lightSkin": "محسَّن للبشرة الفاتحة",
+            "darkSkin": "البشرة الداكنة / البصيلات العميقة"
           },
           "intellitrakIllustration": {
-            "title": "IntelliTrak™ Real-Time Tracking System",
-            "description1": "Uniform energy delivery with real-time skin tracking",
-            "description2": "Precise treatment without overlap or gaps"
+            "title": "نظام تتبّع آني IntelliTrak™",
+            "description1": "توصيل طاقة موحّدة عبر تتبّع البشرة في الوقت الفعلي",
+            "description2": "علاج دقيق دون تداخل أو فجوات"
           },
           "intellitrakFeatures": [
             {
@@ -4088,25 +4088,25 @@
         }
       },
       "hair-removal": {
-        "name": "Laser Hair Removal"
+        "name": "إزالة الشعر بالليزر"
       },
       "tattoo": {
-        "name": "Tattoo Removal",
-        "fullName": "Tattoo Removal",
-        "tagline": "Safe Tattoo Removal",
-        "description": "Picosecond laser breaks down tattoo pigments into fine particles for clean removal.",
+        "name": "إزالة الوشم",
+        "fullName": "إزالة الوشم",
+        "tagline": "إزالة آمنة للوشم",
+        "description": "يفتّت ليزر البيكوسيكند صبغات الوشم إلى جزيئات دقيقة لإزالة نظيفة.",
         "detail": {
-          "breadcrumb": "Tattoo Removal",
+          "breadcrumb": "إزالة الوشم",
           "hero": {
-            "title": "Tattoo Removal",
-            "subtitle": "Tattoo Removal with Lucas",
-            "description": "Picosecond technology for scar-free, clean removal of all ink colors"
+            "title": "إزالة الوشم",
+            "subtitle": "إزالة الوشم بـ Lucas",
+            "description": "تقنية البيكوسيكند لإزالة نظيفة ومن دون ندوب لجميع ألوان الحبر"
           },
           "picoTech": {
-            "badge": "Picosecond Technology",
-            "title": "Why Pico Laser?",
-            "description1": "Traditional nanosecond (10⁻⁹s) lasers used photothermal effect to break down ink. Picosecond (10⁻¹²s) lasers deliver 1000x faster pulses creating photoacoustic effects.",
-            "description2": "This shockwave shatters ink particles to dust-level size, allowing easy removal by the body's immune system.",
+            "badge": "تقنية البيكوسيكند",
+            "title": "لماذا ليزر Pico؟",
+            "description1": "كانت ليزرات النانوسيكند التقليدية (10⁻⁹ ث) تستخدم التأثير الضوء-حراري لتفتيت الحبر. تقدّم ليزرات البيكوسيكند (10⁻¹² ث) نبضات أسرع بمعدل 1000 مرة محدِثةً تأثيرات ضوء-صوتية.",
+            "description2": "هذه الموجة الصدمية تحطّم جزيئات الحبر إلى حجم يشبه الغبار، مما يتيح إزالتها بسهولة عن طريق الجهاز المناعي للجسم.",
             "benefits": [
               {
                 "title": "Fewer Sessions",
@@ -4122,47 +4122,47 @@
               }
             ],
             "illustration": {
-              "title": "Ink Particle Shattering Mechanism",
-              "nanosecond": "Nanosecond (10⁻⁹s)",
-              "nanosecondDevice": "Traditional Q-Switch Laser",
-              "picosecond": "Picosecond (10⁻¹²s)",
-              "picosecondDevice": "Lucas Laser",
-              "before": "Before",
-              "after": "After",
-              "photothermal": "Photothermal",
-              "photothermalResult": "Large → Medium particles",
-              "photoacoustic": "Photoacoustic",
-              "photoacousticResult": "Large → Fine particles ✓"
+              "title": "آلية تحطيم جزيئات الحبر",
+              "nanosecond": "نانوسيكند (10⁻⁹ ث)",
+              "nanosecondDevice": "ليزر Q-Switch تقليدي",
+              "picosecond": "بيكوسيكند (10⁻¹² ث)",
+              "picosecondDevice": "ليزر Lucas",
+              "before": "قبل",
+              "after": "بعد",
+              "photothermal": "ضوء-حراري",
+              "photothermalResult": "جزيئات كبيرة → متوسطة",
+              "photoacoustic": "ضوء-صوتي",
+              "photoacousticResult": "جزيئات كبيرة → دقيقة ✓"
             }
           },
           "colorWavelength": {
-            "badge": "Multi-Wavelength System",
-            "title": "Targeting All Colors",
-            "subtitle": "Lucas pico laser effectively breaks down various ink colors with multiple wavelengths",
-            "illustrationTitle": "Optimal Wavelength by Ink Color",
+            "badge": "نظام متعدد الأطوال الموجية",
+            "title": "استهداف جميع الألوان",
+            "subtitle": "يفتّت ليزر Lucas Pico مختلف ألوان الحبر بفاعلية بفضل أطوال موجية متعددة",
+            "illustrationTitle": "الطول الموجي الأمثل حسب لون الحبر",
             "colors": {
               "black": {
-                "name": "Black",
-                "wavelength": "1064nm",
-                "difficulty": "Easiest"
+                "name": "أسود",
+                "wavelength": "1064 نانومتر",
+                "difficulty": "الأسهل"
               },
               "red": {
-                "name": "Red",
-                "wavelength": "532nm",
-                "difficulty": "Relatively Easy"
+                "name": "أحمر",
+                "wavelength": "532 نانومتر",
+                "difficulty": "سهل نسبياً"
               },
               "blue": {
-                "name": "Blue",
-                "wavelength": "755nm",
-                "difficulty": "Somewhat Difficult"
+                "name": "أزرق",
+                "wavelength": "755 نانومتر",
+                "difficulty": "صعب نوعاً ما"
               },
               "green": {
-                "name": "Green",
-                "wavelength": "755nm",
-                "difficulty": "Most Difficult"
+                "name": "أخضر",
+                "wavelength": "755 نانومتر",
+                "difficulty": "الأصعب"
               }
             },
-            "lucasNote": "Lucas: Multi-wavelength for all color targeting",
+            "lucasNote": "Lucas: أطوال موجية متعددة لاستهداف جميع الألوان",
             "wavelengths": [
               {
                 "wavelength": "1064nm",
@@ -4182,14 +4182,14 @@
             ]
           },
           "tattooTypes": {
-            "badge": "Tattoo Type Guide",
-            "title": "What Type of Tattoo Do You Want to Remove?",
-            "subtitle": "Treatment sessions and difficulty vary by tattoo type and characteristics",
-            "estimatedSessions": "Estimated Sessions",
+            "badge": "دليل أنواع الوشم",
+            "title": "أيّ نوع من الوشم تريد إزالته؟",
+            "subtitle": "تختلف عدد الجلسات ودرجة الصعوبة باختلاف نوع الوشم وخصائصه",
+            "estimatedSessions": "عدد الجلسات التقديري",
             "difficulty": {
-              "easy": "Relatively Easy",
-              "medium": "Medium",
-              "hard": "Somewhat Difficult"
+              "easy": "سهل نسبياً",
+              "medium": "متوسط",
+              "hard": "صعب نوعاً ما"
             },
             "types": [
               {
@@ -4231,8 +4231,8 @@
             ]
           },
           "process": {
-            "badge": "Treatment Process",
-            "title": "Tattoo Removal Process",
+            "badge": "إجراءات العلاج",
+            "title": "عملية إزالة الوشم",
             "steps": [
               {
                 "step": 1,
@@ -4262,27 +4262,27 @@
           },
           "lucas": {
             "title": "Lucas",
-            "subtitle": "The New Standard in Picosecond Tattoo Removal",
+            "subtitle": "المعيار الجديد في إزالة الوشم بالبيكوسيكند",
             "specs": {
               "pulseDuration": {
-                "label": "Pulse Duration",
-                "value": "450 Picoseconds"
+                "label": "مدة النبضة",
+                "value": "450 بيكوسيكند"
               },
               "wavelength": {
-                "label": "Wavelength",
-                "value": "532 / 755 / 1064nm"
+                "label": "الطول الموجي",
+                "value": "532 / 755 / 1064 نانومتر"
               },
               "repetitionRate": {
-                "label": "Repetition Rate",
-                "value": "Up to 10Hz"
+                "label": "معدّل التكرار",
+                "value": "حتى 10 هرتز"
               },
               "energy": {
-                "label": "Energy",
-                "value": "Up to 1.8J"
+                "label": "الطاقة",
+                "value": "حتى 1.8 جول"
               }
             },
             "strengths": {
-              "title": "Lucas Advantages",
+              "title": "مزايا Lucas",
               "items": [
                 "Multi-wavelength for all color response",
                 "450ps ultra-short pulse minimizes heat damage",
@@ -4292,7 +4292,7 @@
           },
           "precautions": {
             "before": {
-              "title": "Before Treatment",
+              "title": "قبل العلاج",
               "items": [
                 "Avoid excessive sun exposure 2 weeks before treatment",
                 "Avoid irritating products on treatment area",
@@ -4301,7 +4301,7 @@
               ]
             },
             "after": {
-              "title": "After Treatment",
+              "title": "بعد العلاج",
               "items": [
                 "Apply prescribed ointment as directed",
                 "Never remove scabs artificially",
@@ -4337,8 +4337,8 @@
             }
           ],
           "cta": {
-            "title": "The First Step Toward a Fresh Start",
-            "description": "Remove unwanted tattoos cleanly with pico laser. Get accurate treatment planning through free consultation"
+            "title": "الخطوة الأولى نحو بداية جديدة",
+            "description": "أزل الوشم غير المرغوب فيه بشكل نظيف باستخدام ليزر pico. احصل على خطة علاج دقيقة عبر استشارة مجانية"
           }
         }
       }
