@@ -4744,252 +4744,252 @@
   },
   "liftingPage": {
     "hero": {
-      "subtitle": "Lifting",
-      "description1": "With premium lifting solutions that defy gravity,",
-      "description2": "restore natural and elastic skin."
+      "subtitle": "شدّ",
+      "description1": "بفضل حلول شدّ فاخرة تتحدّى الجاذبية،",
+      "description2": "استعد بشرة طبيعية ومرنة."
     },
     "lineup": {
-      "subtitle": "Our Treatments",
-      "title": "Lifting Treatment Lineup"
+      "subtitle": "علاجاتنا",
+      "title": "تشكيلة علاجات الشدّ"
     },
     "whyChoose": {
-      "subtitle": "Why LIV Lifting?",
-      "title": "Why Choose LIV Lifting?",
+      "subtitle": "لماذا LIV للشدّ؟",
+      "title": "لماذا تختار LIV للشدّ؟",
       "certification": {
-        "title": "Authentic Certification",
-        "description1": "As an officially certified Ultherapy Prime and Thermage clinic,",
-        "description2": "we only use genuine equipment."
+        "title": "اعتماد رسمي",
+        "description1": "بصفتنا عيادة معتمدة رسمياً لـ Ultherapy Prime و Thermage,",
+        "description2": "نستخدم فقط المعدات الأصلية."
       },
       "experts": {
-        "title": "Expert Medical Team",
-        "description1": "Experienced medical professionals",
-        "description2": "perform all treatments directly."
+        "title": "فريق طبي متخصص",
+        "description1": "كوادر طبية ذات خبرة",
+        "description2": "تنفّذ جميع العلاجات مباشرة."
       },
       "customized": {
-        "title": "Customized Solution",
-        "description1": "We design optimal treatments",
-        "description2": "tailored to individual skin conditions."
+        "title": "حلّ مخصص",
+        "description1": "نصمّم العلاجات المثلى",
+        "description2": "بما يتناسب مع حالة بشرة كل فرد."
       }
     },
     "cta": {
-      "title": "Curious about the right lifting for you?",
-      "description": "Find the optimal treatment through expert consultation.",
-      "button": "Book Free Consultation"
+      "title": "هل تتساءلين عن نوع الشدّ المناسب لك؟",
+      "description": "اعثري على العلاج الأمثل عبر استشارة متخصصة.",
+      "button": "حجز استشارة مجانية"
     },
     "treatments": {
       "ulthera": {
         "name": "Ultherapy Prime",
         "nameEn": "Ultherapy Prime",
-        "description": "The only FDA-approved HIFU lifting device that delivers energy deep into the SMAS layer for natural lifting effects.",
-        "duration": "60-90 min",
-        "recovery": "No downtime"
+        "description": "جهاز شدّ HIFU الوحيد المعتمد من FDA الذي يوصّل الطاقة عميقاً إلى طبقة SMAS للحصول على تأثيرات شدّ طبيعية.",
+        "duration": "60-90 دقيقة",
+        "recovery": "بدون فترة توقف"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameEn": "Thermage FLX",
-        "description": "4th generation premium RF lifting with AccuREP technology for optimal energy delivery and skin tightening.",
-        "duration": "45-60 min",
-        "recovery": "No downtime"
+        "description": "شدّ RF فاخر من الجيل الرابع بتقنية AccuREP لتوصيل طاقة أمثل وشدّ البشرة.",
+        "duration": "45-60 دقيقة",
+        "recovery": "بدون فترة توقف"
       },
       "density": {
         "name": "Density",
         "nameEn": "Density",
-        "description": "RF energy-based lifting that delivers uniform energy distribution for even and smooth lifting results.",
-        "duration": "40-60 min",
-        "recovery": "No downtime"
+        "description": "شدّ يعتمد على طاقة RF يوصّل توزيع طاقة موحّد لنتائج شدّ متّسقة وناعمة.",
+        "duration": "40-60 دقيقة",
+        "recovery": "بدون فترة توقف"
       },
       "inmode": {
         "name": "InMode",
         "nameEn": "InMode",
-        "description": "Multi-functional RF technology for simultaneous fat reduction and skin tightening effects.",
-        "duration": "30-90 min",
-        "recovery": "0-5 days"
+        "description": "تقنية RF متعددة الوظائف لتقليل الدهون وشدّ البشرة في آن واحد.",
+        "duration": "30-90 دقيقة",
+        "recovery": "0-5 أيام"
       },
       "shurink": {
         "name": "Shurink",
         "nameEn": "Shurink",
-        "description": "HIFU-based lifting treatment ideal for regular maintenance and gradual skin tightening.",
-        "duration": "30-45 min",
-        "recovery": "No downtime"
+        "description": "علاج شدّ مبني على HIFU، مثالي للصيانة الدورية وشدّ البشرة التدريجي.",
+        "duration": "30-45 دقيقة",
+        "recovery": "بدون فترة توقف"
       },
       "thread": {
-        "name": "Thread Lift",
+        "name": "شدّ بالخيوط",
         "nameEn": "Thread Lift",
-        "description": "Absorbable thread lifting for immediate and natural-looking lifting results with collagen stimulation.",
-        "duration": "30-60 min",
-        "recovery": "3-7 days"
+        "description": "شدّ بخيوط قابلة للذوبان لنتائج شدّ فورية وطبيعية المظهر مع تحفيز إنتاج الكولاجين.",
+        "duration": "30-60 دقيقة",
+        "recovery": "3-7 أيام"
       }
     },
     "compare": {
-      "subtitle": "Compare",
-      "title": "Compare Lifting Treatments",
-      "description": "Find the right lifting treatment for you",
+      "subtitle": "مقارنة",
+      "title": "قارن بين علاجات الشدّ",
+      "description": "اعثر على علاج الشدّ المناسب لك",
       "table": {
-        "treatment": "Treatment",
-        "technology": "Technology",
-        "duration": "Duration",
-        "anesthesia": "Anesthesia",
-        "downtime": "Downtime",
-        "results": "Results Duration",
-        "price": "Price Range",
-        "details": "Details →",
-        "viewDetails": "View Details"
+        "treatment": "العلاج",
+        "technology": "التقنية",
+        "duration": "المدة",
+        "anesthesia": "التخدير",
+        "downtime": "فترة التوقف",
+        "results": "مدة استمرار النتائج",
+        "price": "نطاق السعر",
+        "details": "التفاصيل ←",
+        "viewDetails": "عرض التفاصيل"
       },
       "values": {
-        "anesthesiaCream": "Numbing cream",
-        "noAnesthesia": "No anesthesia",
-        "optional": "Optional",
-        "varies": "Varies",
-        "localAnesthesia": "Local anesthesia",
-        "anesthesiaCreamLocal": "Anesthetic Cream / Local Anesthesia",
-        "none": "None",
-        "premium": "Premium",
-        "moderate": "Moderate",
-        "affordable": "Affordable",
+        "anesthesiaCream": "كريم مخدّر",
+        "noAnesthesia": "بدون تخدير",
+        "optional": "اختياري",
+        "varies": "يختلف",
+        "localAnesthesia": "تخدير موضعي",
+        "anesthesiaCreamLocal": "كريم مخدّر / تخدير موضعي",
+        "none": "لا يوجد",
+        "premium": "فاخر",
+        "moderate": "متوسط",
+        "affordable": "اقتصادي",
         "hifu": "HIFU",
         "rf": "RF",
         "hifuRf": "HIFU+RF",
-        "rfNeedle": "RF+Needle",
-        "dissolvingThread": "PDO Thread"
+        "rfNeedle": "RF+إبرة",
+        "dissolvingThread": "خيط PDO"
       },
       "data": {
         "ulthera": {
           "technology": "HIFU",
-          "duration": "60-90 min",
-          "anesthesia": "Numbing cream",
-          "recovery": "None",
-          "results": "1-2 years",
-          "price": "Premium"
+          "duration": "60-90 دقيقة",
+          "anesthesia": "كريم مخدّر",
+          "recovery": "لا يوجد",
+          "results": "1-2 سنة",
+          "price": "فاخر"
         },
         "thermage": {
           "technology": "RF",
-          "duration": "45-60 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "1-2 years",
-          "price": "Premium"
+          "duration": "45-60 دقيقة",
+          "anesthesia": "كريم مخدّر",
+          "recovery": "لا يوجد",
+          "results": "1-2 سنة",
+          "price": "فاخر"
         },
         "density": {
           "technology": "RF",
-          "duration": "40-60 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "6 months - 1 year",
-          "price": "Moderate"
+          "duration": "40-60 دقيقة",
+          "anesthesia": "كريم مخدّر",
+          "recovery": "لا يوجد",
+          "results": "6 أشهر - 1 سنة",
+          "price": "متوسط"
         },
         "shurink": {
           "technology": "HIFU",
-          "duration": "30-45 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "3-6 months",
-          "price": "Affordable"
+          "duration": "30-45 دقيقة",
+          "anesthesia": "كريم مخدّر",
+          "recovery": "لا يوجد",
+          "results": "3-6 أشهر",
+          "price": "اقتصادي"
         },
         "inmode": {
           "technology": "RF",
-          "duration": "30-90 min",
-          "anesthesia": "No Anesthesia",
-          "recovery": "0-5 days",
-          "results": "6 months - 1 year",
-          "price": "Varies"
+          "duration": "30-90 دقيقة",
+          "anesthesia": "بدون تخدير",
+          "recovery": "0-5 أيام",
+          "results": "6 أشهر - 1 سنة",
+          "price": "يختلف"
         },
         "thread": {
-          "technology": "PDO Thread",
-          "duration": "30-60 min",
-          "anesthesia": "Anesthetic Cream / Local Anesthesia",
-          "recovery": "3-7 days",
-          "results": "1-2 years",
-          "price": "Moderate"
+          "technology": "خيط PDO",
+          "duration": "30-60 دقيقة",
+          "anesthesia": "كريم مخدّر / تخدير موضعي",
+          "recovery": "3-7 أيام",
+          "results": "1-2 سنة",
+          "price": "متوسط"
         }
       },
       "cta": {
-        "question": "Not sure which treatment is right for you?",
-        "button": "Get Free Consultation"
+        "question": "غير متأكد من العلاج المناسب لك؟",
+        "button": "احصل على استشارة مجانية"
       }
     }
   },
   "antiagingPage": {
     "hero": {
-      "subtitle": "Anti-aging",
-      "description1": "With premium anti-aging that turns back time,",
-      "description2": "restore youthful, vibrant skin."
+      "subtitle": "مكافحة الشيخوخة",
+      "description1": "بفضل برنامج فاخر لمكافحة الشيخوخة يعيد الزمن إلى الوراء،",
+      "description2": "استعد بشرة شابة ومفعمة بالحيوية."
     },
     "lineup": {
-      "subtitle": "Our Treatments",
-      "title": "Anti-Aging Treatment Lineup"
+      "subtitle": "علاجاتنا",
+      "title": "تشكيلة علاجات مكافحة الشيخوخة"
     },
     "benefits": {
-      "subtitle": "Natural Beauty",
-      "title": "Natural Beauty",
-      "description": "LIV Plastic Surgery's anti-aging pursues natural beauty without excess. We only use authentic products and create optimal results with personalized treatments.",
+      "subtitle": "جمال طبيعي",
+      "title": "جمال طبيعي",
+      "description": "نهج مكافحة الشيخوخة في LIV Plastic Surgery يسعى إلى جمال طبيعي بلا مبالغة. نستخدم فقط منتجات أصلية ونحقّق نتائج مثلى عبر علاجات مخصصة.",
       "authentic": {
-        "title": "Authentic Product Principle",
-        "description": "We only use FDA-approved products and adhere to proper dosages."
+        "title": "مبدأ المنتجات الأصلية",
+        "description": "نستخدم فقط منتجات معتمدة من FDA ونلتزم بالجرعات الصحيحة."
       },
       "customized": {
-        "title": "Customized Treatment Design",
-        "description": "We analyze facial structure and skin condition to propose optimal treatments."
+        "title": "تصميم علاج مخصص",
+        "description": "نحلّل بنية الوجه وحالة البشرة لاقتراح العلاجات المثلى."
       },
       "natural": {
-        "title": "Natural Results",
-        "description": "Restore your natural beauty with unnoticeable, natural changes."
+        "title": "نتائج طبيعية",
+        "description": "استعد جمالك الطبيعي بتغييرات هادئة وطبيعية لا تكاد تلاحَظ."
       }
     },
     "cta": {
-      "title": "Want to regain your youth?",
-      "description": "Find the right treatment for you through expert consultation.",
-      "button": "Book Free Consultation"
+      "title": "هل ترغبين في استعادة شبابك؟",
+      "description": "اعثري على العلاج المناسب لك عبر استشارة متخصصة.",
+      "button": "حجز استشارة مجانية"
     }
   },
   "laserPage": {
     "hero": {
       "title": "Laser Center",
-      "subtitle": "Customized Laser Solutions for Your Skin Concerns",
-      "description1": "With Clarity II + Lucas combination,",
-      "description2": "one-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+      "subtitle": "حلول ليزر مخصصة لمشكلات بشرتك",
+      "description1": "مع دمج Clarity II + Lucas،",
+      "description2": "عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"
     },
     "highlights": {
-      "equipment": "Equipment",
-      "treatments": "Treatment Areas",
-      "experience": "Experience",
-      "safety": "Safety"
+      "equipment": "المعدات",
+      "treatments": "مناطق العلاج",
+      "experience": "الخبرة",
+      "safety": "الأمان"
     },
     "categories": {
-      "title": "Customized Treatment for Your Skin Concerns",
-      "description": "Select your skin concern and we'll guide you to the optimal laser treatment",
+      "title": "علاج مخصص لمشكلات بشرتك",
+      "description": "اختر مشكلتك الجلدية وسنرشدك إلى علاج الليزر الأمثل",
       "pigmentation": {
-        "title": "Pigmentation Improvement",
-        "description": "Effectively improve melasma, age spots, and other pigment conditions with pico laser and laser toning."
+        "title": "تحسين التصبغات",
+        "description": "حسّن الكلف وبقع التقدّم في العمر وغيرها من حالات التصبغ بفاعلية باستخدام Pico Laser و Laser Toning."
       },
       "vascular": {
-        "title": "Redness/Vascular Treatment",
-        "description": "Treat facial redness, spider veins, and hemangioma with Clarity II dual wavelength."
+        "title": "علاج الاحمرار/الأوعية",
+        "description": "عالج احمرار الوجه والشعيرات الدموية والورم الوعائي بالطول الموجي المزدوج لـ Clarity II."
       },
       "skintone": {
-        "title": "Skin Tone Evenness",
-        "description": "Brighten dull skin with laser toning and Ulblanc for clear, radiant complexion."
+        "title": "توحيد لون البشرة",
+        "description": "أشرق البشرة الباهتة باستخدام Laser Toning و Ulblanc للحصول على بشرة صافية ومشرقة."
       },
       "hairRemoval": {
-        "title": "Premium Hair Removal",
-        "description": "Safe hair removal for all skin types with Clarity II dual wavelength and IntelliTrak technology."
+        "title": "إزالة شعر فاخرة",
+        "description": "إزالة شعر آمنة لجميع أنواع البشرة بفضل الطول الموجي المزدوج لـ Clarity II وتقنية IntelliTrak."
       },
       "tattoo": {
-        "title": "Tattoo Removal",
-        "description": "Effectively remove all colors of tattoos without scarring using Lucas pico laser."
+        "title": "إزالة الوشم",
+        "description": "أزل جميع ألوان الوشم بفاعلية ومن دون ندوب باستخدام ليزر Lucas Pico."
       }
     },
     "matrix": {
-      "badge": "Equipment × Indications",
-      "title": "Equipment Lineup to Solve Any Concern",
-      "description": "LIV Laser Center's 4 premium devices cover all skin concerns"
+      "badge": "المعدات × الاستطبابات",
+      "title": "تشكيلة معدات لحلّ أي مشكلة",
+      "description": "تغطي 4 أجهزة فاخرة في LIV Laser Center جميع مشكلات البشرة"
     },
     "equipment": {
-      "badge": "LIV Equipment",
-      "title": "Premium Laser Lineup",
-      "description": "Safe and effective treatments with FDA-approved latest equipment",
+      "badge": "معدات LIV",
+      "title": "تشكيلة الليزر الفاخرة",
+      "description": "علاجات آمنة وفعّالة بأحدث المعدات المعتمدة من FDA",
       "clarity": {
         "name": "Clarity II",
-        "spec": "Dual Wavelength + IntelliTrak Technology",
+        "spec": "طول موجي مزدوج + تقنية IntelliTrak",
         "tags": [
           "Pigmentation",
           "Vascular",
@@ -4999,7 +4999,7 @@
       },
       "lucas": {
         "name": "Lucas",
-        "spec": "Picosecond Pulse (450ps)",
+        "spec": "نبضة بيكوسيكند (450 ps)",
         "tags": [
           "Melasma",
           "Pigmentation",
@@ -5008,7 +5008,7 @@
       },
       "toning": {
         "name": "Laser Toning",
-        "spec": "Low-Power Repeated Irradiation",
+        "spec": "إشعاع متكرر منخفض الطاقة",
         "tags": [
           "Skin Tone",
           "Pores",
@@ -5017,7 +5017,7 @@
       },
       "ulblanc": {
         "name": "Ulblanc",
-        "spec": "Melanin Selective Targeting",
+        "spec": "استهداف انتقائي للميلانين",
         "tags": [
           "Skin Whitening",
           "Tone Evenness"
@@ -5025,68 +5025,68 @@
       }
     },
     "synergy": {
-      "title": "Clarity II + Lucas Synergy Effect",
-      "description": "The combination of two premium devices delivers faster and more effective results than standalone treatments",
+      "title": "أثر تآزر Clarity II + Lucas",
+      "description": "يقدّم دمج جهازين فاخرين نتائج أسرع وأكثر فاعلية من العلاج المنفرد",
       "multiWave": {
-        "title": "Multi-Wavelength Coverage",
-        "description": "Access targets at all depths from 532nm to 1064nm"
+        "title": "تغطية متعددة الأطوال الموجية",
+        "description": "الوصول إلى الأهداف على جميع الأعماق من 532 نانومتر إلى 1064 نانومتر"
       },
       "combined": {
-        "title": "Combined Indication Treatment",
-        "description": "Simultaneously solve complex concerns like melasma+redness, pigmentation+pores"
+        "title": "علاج استطبابات مدمج",
+        "description": "عالج المخاوف المعقدة في آنٍ واحد، مثل الكلف+الاحمرار، والتصبغ+المسام"
       },
       "fast": {
-        "title": "Fast Results",
-        "description": "1.5-2x faster results compared to standalone treatments"
+        "title": "نتائج سريعة",
+        "description": "نتائج أسرع بمعدل 1.5-2 مرة مقارنة بالعلاج المنفرد"
       }
     },
     "process": {
-      "title": "Laser Treatment Process",
+      "title": "إجراءات علاج الليزر",
       "steps": {
         "analysis": {
-          "title": "Skin Analysis",
-          "description": "Expert consultation and precise analysis of skin type and concerns"
+          "title": "تحليل البشرة",
+          "description": "استشارة متخصصة وتحليل دقيق لنوع البشرة والمشكلات"
         },
         "design": {
-          "title": "Custom Design",
-          "description": "Individual optimal laser combination and treatment planning"
+          "title": "تصميم مخصص",
+          "description": "تركيبة ليزر وخطة علاج مثلى مخصصة لكل فرد"
         },
         "treatment": {
-          "title": "Laser Treatment",
-          "description": "Safe and precise treatment by experienced specialists"
+          "title": "العلاج بالليزر",
+          "description": "علاج آمن ودقيق ينفّذه اختصاصيون ذوو خبرة"
         },
         "aftercare": {
-          "title": "Aftercare",
-          "description": "Post-treatment care, regular check-ups, and maintenance"
+          "title": "العناية بعد العلاج",
+          "description": "العناية ما بعد العلاج، الفحوصات الدورية، والصيانة"
         }
       }
     },
     "faq": {
-      "title": "Frequently Asked Questions",
+      "title": "الأسئلة الشائعة",
       "q1": {
-        "question": "Which laser is right for me?",
-        "answer": "The optimal laser varies depending on skin condition and concerns. Through free consultation, our specialists will directly analyze your skin and propose a customized treatment plan."
+        "question": "أيّ ليزر يناسبني؟",
+        "answer": "يختلف الليزر الأمثل بحسب حالة البشرة والمشكلات. عبر استشارة مجانية، سيُحلّل اختصاصيونا بشرتك مباشرة ويقترحون خطة علاج مخصصة."
       },
       "q2": {
-        "question": "Is laser treatment painful?",
-        "answer": "It varies by device, but most describe it as \"like a rubber band snapping.\" We minimize pain with numbing cream when needed. Clarity II has a built-in cooling system for added comfort."
+        "question": "هل علاج الليزر مؤلم؟",
+        "answer": "يختلف ذلك حسب الجهاز، لكن معظم الأشخاص يصفونه بأنه \"كنقرة شريط مطاطي\". نقلّل الألم عند الحاجة بكريم مخدّر. يحوي Clarity II نظام تبريد مدمج لمزيد من الراحة."
       },
       "q3": {
-        "question": "How long is the downtime?",
-        "answer": "It depends on the laser type. Laser toning and Ulblanc have almost no downtime, allowing immediate return to daily activities. Pico laser may cause mild redness for 3-5 days."
+        "question": "كم تستغرق فترة التوقف؟",
+        "answer": "يعتمد على نوع الليزر. لا يفرض Laser Toning و Ulblanc تقريباً أي فترة توقف، مما يتيح العودة الفورية إلى النشاطات اليومية. قد يسبّب ليزر Pico احمراراً خفيفاً لمدة 3-5 أيام."
       },
       "q4": {
-        "question": "When will I see results?",
-        "answer": "You can feel skin tone improvement immediately after treatment, with effects becoming more prominent over 2-4 weeks as collagen remodeling occurs. We recommend completing the suggested number of sessions for optimal results."
+        "question": "متى أرى النتائج؟",
+        "answer": "يمكنك ملاحظة تحسّن لون البشرة فور انتهاء العلاج، وتتضح النتائج أكثر خلال 2-4 أسابيع مع حدوث إعادة هيكلة الكولاجين. نوصي بإكمال عدد الجلسات المقترح للحصول على النتائج المثلى."
       }
     },
     "cta": {
-      "title": "The First Step to Clear, Healthy Skin",
-      "description1": "We'll find the optimal laser for your skin concerns",
-      "description2": "Confirm your customized treatment plan with free consultation",
-      "button": "Book Free Consultation"
+      "title": "الخطوة الأولى نحو بشرة صافية وصحية",
+      "description1": "سنجد الليزر الأمثل لمشكلات بشرتك",
+      "description2": "أكّد خطة علاجك المخصصة عبر استشارة مجانية",
+      "button": "حجز استشارة مجانية"
     },
-    "viewMore": "Learn More"
+    "viewMore": "اعرف المزيد"
   },
   "trust": {
     "certification": {

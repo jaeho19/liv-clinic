@@ -4745,251 +4745,251 @@
   "liftingPage": {
     "hero": {
       "subtitle": "Lifting",
-      "description1": "With premium lifting solutions that defy gravity,",
-      "description2": "restore natural and elastic skin."
+      "description1": "Grâce à des solutions de lifting premium qui défient la gravité,",
+      "description2": "retrouvez une peau naturelle et élastique."
     },
     "lineup": {
-      "subtitle": "Our Treatments",
-      "title": "Lifting Treatment Lineup"
+      "subtitle": "Nos traitements",
+      "title": "Gamme de traitements liftants"
     },
     "whyChoose": {
-      "subtitle": "Why LIV Lifting?",
-      "title": "Why Choose LIV Lifting?",
+      "subtitle": "Pourquoi LIV Lifting ?",
+      "title": "Pourquoi choisir LIV Lifting ?",
       "certification": {
-        "title": "Authentic Certification",
-        "description1": "As an officially certified Ultherapy Prime and Thermage clinic,",
-        "description2": "we only use genuine equipment."
+        "title": "Certification authentique",
+        "description1": "En tant que clinique officiellement certifiée Ultherapy Prime et Thermage,",
+        "description2": "nous n'utilisons que des équipements authentiques."
       },
       "experts": {
-        "title": "Expert Medical Team",
-        "description1": "Experienced medical professionals",
-        "description2": "perform all treatments directly."
+        "title": "Équipe médicale experte",
+        "description1": "Des professionnels de santé expérimentés",
+        "description2": "réalisent tous les traitements en personne."
       },
       "customized": {
-        "title": "Customized Solution",
-        "description1": "We design optimal treatments",
-        "description2": "tailored to individual skin conditions."
+        "title": "Solution personnalisée",
+        "description1": "Nous concevons des traitements optimaux",
+        "description2": "adaptés à l'état de peau de chacun."
       }
     },
     "cta": {
-      "title": "Curious about the right lifting for you?",
-      "description": "Find the optimal treatment through expert consultation.",
-      "button": "Book Free Consultation"
+      "title": "Vous vous demandez quel lifting vous convient ?",
+      "description": "Trouvez le traitement optimal grâce à une consultation spécialisée.",
+      "button": "Réserver une consultation gratuite"
     },
     "treatments": {
       "ulthera": {
         "name": "Ultherapy Prime",
         "nameEn": "Ultherapy Prime",
-        "description": "The only FDA-approved HIFU lifting device that delivers energy deep into the SMAS layer for natural lifting effects.",
+        "description": "Le seul appareil de lifting HIFU approuvé par la FDA, qui délivre l'énergie en profondeur jusqu'à la couche SMAS pour un effet liftant naturel.",
         "duration": "60-90 min",
-        "recovery": "No downtime"
+        "recovery": "Aucun temps d'arrêt"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameEn": "Thermage FLX",
-        "description": "4th generation premium RF lifting with AccuREP technology for optimal energy delivery and skin tightening.",
+        "description": "Lifting RF premium de 4ᵉ génération avec la technologie AccuREP pour une diffusion d'énergie optimale et un raffermissement cutané.",
         "duration": "45-60 min",
-        "recovery": "No downtime"
+        "recovery": "Aucun temps d'arrêt"
       },
       "density": {
         "name": "Density",
         "nameEn": "Density",
-        "description": "RF energy-based lifting that delivers uniform energy distribution for even and smooth lifting results.",
+        "description": "Lifting à base d'énergie RF offrant une diffusion uniforme pour des résultats de lifting réguliers et doux.",
         "duration": "40-60 min",
-        "recovery": "No downtime"
+        "recovery": "Aucun temps d'arrêt"
       },
       "inmode": {
         "name": "InMode",
         "nameEn": "InMode",
-        "description": "Multi-functional RF technology for simultaneous fat reduction and skin tightening effects.",
+        "description": "Technologie RF multifonction pour une réduction simultanée des graisses et un raffermissement cutané.",
         "duration": "30-90 min",
-        "recovery": "0-5 days"
+        "recovery": "0-5 jours"
       },
       "shurink": {
         "name": "Shurink",
         "nameEn": "Shurink",
-        "description": "HIFU-based lifting treatment ideal for regular maintenance and gradual skin tightening.",
+        "description": "Traitement liftant à base de HIFU, idéal pour un entretien régulier et un raffermissement cutané progressif.",
         "duration": "30-45 min",
-        "recovery": "No downtime"
+        "recovery": "Aucun temps d'arrêt"
       },
       "thread": {
-        "name": "Thread Lift",
+        "name": "Lifting par fils",
         "nameEn": "Thread Lift",
-        "description": "Absorbable thread lifting for immediate and natural-looking lifting results with collagen stimulation.",
+        "description": "Lifting par fils résorbables pour des résultats liftants immédiats et naturels avec stimulation du collagène.",
         "duration": "30-60 min",
-        "recovery": "3-7 days"
+        "recovery": "3-7 jours"
       }
     },
     "compare": {
-      "subtitle": "Compare",
-      "title": "Compare Lifting Treatments",
-      "description": "Find the right lifting treatment for you",
+      "subtitle": "Comparer",
+      "title": "Comparer les traitements liftants",
+      "description": "Trouvez le traitement liftant qui vous convient",
       "table": {
-        "treatment": "Treatment",
-        "technology": "Technology",
-        "duration": "Duration",
-        "anesthesia": "Anesthesia",
-        "downtime": "Downtime",
-        "results": "Results Duration",
-        "price": "Price Range",
-        "details": "Details →",
-        "viewDetails": "View Details"
+        "treatment": "Traitement",
+        "technology": "Technologie",
+        "duration": "Durée",
+        "anesthesia": "Anesthésie",
+        "downtime": "Temps d'arrêt",
+        "results": "Durée des résultats",
+        "price": "Gamme de prix",
+        "details": "Détails →",
+        "viewDetails": "Voir les détails"
       },
       "values": {
-        "anesthesiaCream": "Numbing cream",
-        "noAnesthesia": "No anesthesia",
-        "optional": "Optional",
-        "varies": "Varies",
-        "localAnesthesia": "Local anesthesia",
-        "anesthesiaCreamLocal": "Anesthetic Cream / Local Anesthesia",
-        "none": "None",
+        "anesthesiaCream": "Crème anesthésiante",
+        "noAnesthesia": "Sans anesthésie",
+        "optional": "Optionnelle",
+        "varies": "Variable",
+        "localAnesthesia": "Anesthésie locale",
+        "anesthesiaCreamLocal": "Crème anesthésiante / Anesthésie locale",
+        "none": "Aucun",
         "premium": "Premium",
-        "moderate": "Moderate",
-        "affordable": "Affordable",
+        "moderate": "Modéré",
+        "affordable": "Abordable",
         "hifu": "HIFU",
         "rf": "RF",
         "hifuRf": "HIFU+RF",
-        "rfNeedle": "RF+Needle",
-        "dissolvingThread": "PDO Thread"
+        "rfNeedle": "RF+Aiguille",
+        "dissolvingThread": "Fil PDO"
       },
       "data": {
         "ulthera": {
           "technology": "HIFU",
           "duration": "60-90 min",
-          "anesthesia": "Numbing cream",
-          "recovery": "None",
-          "results": "1-2 years",
+          "anesthesia": "Crème anesthésiante",
+          "recovery": "Aucun",
+          "results": "1-2 ans",
           "price": "Premium"
         },
         "thermage": {
           "technology": "RF",
           "duration": "45-60 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "1-2 years",
+          "anesthesia": "Crème anesthésiante",
+          "recovery": "Aucun",
+          "results": "1-2 ans",
           "price": "Premium"
         },
         "density": {
           "technology": "RF",
           "duration": "40-60 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "6 months - 1 year",
-          "price": "Moderate"
+          "anesthesia": "Crème anesthésiante",
+          "recovery": "Aucun",
+          "results": "6 mois - 1 an",
+          "price": "Modéré"
         },
         "shurink": {
           "technology": "HIFU",
           "duration": "30-45 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "3-6 months",
-          "price": "Affordable"
+          "anesthesia": "Crème anesthésiante",
+          "recovery": "Aucun",
+          "results": "3-6 mois",
+          "price": "Abordable"
         },
         "inmode": {
           "technology": "RF",
           "duration": "30-90 min",
-          "anesthesia": "No Anesthesia",
-          "recovery": "0-5 days",
-          "results": "6 months - 1 year",
-          "price": "Varies"
+          "anesthesia": "Sans anesthésie",
+          "recovery": "0-5 jours",
+          "results": "6 mois - 1 an",
+          "price": "Variable"
         },
         "thread": {
-          "technology": "PDO Thread",
+          "technology": "Fil PDO",
           "duration": "30-60 min",
-          "anesthesia": "Anesthetic Cream / Local Anesthesia",
-          "recovery": "3-7 days",
-          "results": "1-2 years",
-          "price": "Moderate"
+          "anesthesia": "Crème anesthésiante / Anesthésie locale",
+          "recovery": "3-7 jours",
+          "results": "1-2 ans",
+          "price": "Modéré"
         }
       },
       "cta": {
-        "question": "Not sure which treatment is right for you?",
-        "button": "Get Free Consultation"
+        "question": "Vous ne savez pas quel traitement vous convient ?",
+        "button": "Obtenir une consultation gratuite"
       }
     }
   },
   "antiagingPage": {
     "hero": {
-      "subtitle": "Anti-aging",
-      "description1": "With premium anti-aging that turns back time,",
-      "description2": "restore youthful, vibrant skin."
+      "subtitle": "Anti-âge",
+      "description1": "Grâce à un programme anti-âge premium qui remonte le temps,",
+      "description2": "retrouvez une peau jeune et éclatante."
     },
     "lineup": {
-      "subtitle": "Our Treatments",
-      "title": "Anti-Aging Treatment Lineup"
+      "subtitle": "Nos traitements",
+      "title": "Gamme de traitements anti-âge"
     },
     "benefits": {
-      "subtitle": "Natural Beauty",
-      "title": "Natural Beauty",
-      "description": "LIV Plastic Surgery's anti-aging pursues natural beauty without excess. We only use authentic products and create optimal results with personalized treatments.",
+      "subtitle": "Beauté naturelle",
+      "title": "Beauté naturelle",
+      "description": "L'approche anti-âge de LIV Plastic Surgery recherche une beauté naturelle sans excès. Nous n'utilisons que des produits authentiques et créons des résultats optimaux grâce à des traitements personnalisés.",
       "authentic": {
-        "title": "Authentic Product Principle",
-        "description": "We only use FDA-approved products and adhere to proper dosages."
+        "title": "Principe des produits authentiques",
+        "description": "Nous utilisons exclusivement des produits approuvés par la FDA et respectons les dosages corrects."
       },
       "customized": {
-        "title": "Customized Treatment Design",
-        "description": "We analyze facial structure and skin condition to propose optimal treatments."
+        "title": "Conception de traitement personnalisée",
+        "description": "Nous analysons la structure du visage et l'état de la peau pour proposer des traitements optimaux."
       },
       "natural": {
-        "title": "Natural Results",
-        "description": "Restore your natural beauty with unnoticeable, natural changes."
+        "title": "Résultats naturels",
+        "description": "Retrouvez votre beauté naturelle grâce à des changements discrets et naturels."
       }
     },
     "cta": {
-      "title": "Want to regain your youth?",
-      "description": "Find the right treatment for you through expert consultation.",
-      "button": "Book Free Consultation"
+      "title": "Envie de retrouver votre jeunesse ?",
+      "description": "Trouvez le traitement qui vous convient grâce à une consultation spécialisée.",
+      "button": "Réserver une consultation gratuite"
     }
   },
   "laserPage": {
     "hero": {
       "title": "Laser Center",
-      "subtitle": "Customized Laser Solutions for Your Skin Concerns",
-      "description1": "With Clarity II + Lucas combination,",
-      "description2": "one-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+      "subtitle": "Solutions laser personnalisées pour vos préoccupations cutanées",
+      "description1": "Grâce à la combinaison Clarity II + Lucas,",
+      "description2": "soin tout-en-un, de la pigmentation aux vaisseaux, en passant par l'épilation et le détatouage"
     },
     "highlights": {
-      "equipment": "Equipment",
-      "treatments": "Treatment Areas",
-      "experience": "Experience",
-      "safety": "Safety"
+      "equipment": "Équipement",
+      "treatments": "Zones de traitement",
+      "experience": "Expérience",
+      "safety": "Sécurité"
     },
     "categories": {
-      "title": "Customized Treatment for Your Skin Concerns",
-      "description": "Select your skin concern and we'll guide you to the optimal laser treatment",
+      "title": "Traitement personnalisé pour vos préoccupations cutanées",
+      "description": "Sélectionnez votre préoccupation cutanée et nous vous orienterons vers le traitement laser optimal",
       "pigmentation": {
-        "title": "Pigmentation Improvement",
-        "description": "Effectively improve melasma, age spots, and other pigment conditions with pico laser and laser toning."
+        "title": "Amélioration de la pigmentation",
+        "description": "Améliorez efficacement le mélasma, les taches de vieillesse et autres affections pigmentaires avec le laser pico et le laser toning."
       },
       "vascular": {
-        "title": "Redness/Vascular Treatment",
-        "description": "Treat facial redness, spider veins, and hemangioma with Clarity II dual wavelength."
+        "title": "Traitement des rougeurs / vasculaire",
+        "description": "Traitez les rougeurs du visage, les télangiectasies et les hémangiomes avec la double longueur d'onde de Clarity II."
       },
       "skintone": {
-        "title": "Skin Tone Evenness",
-        "description": "Brighten dull skin with laser toning and Ulblanc for clear, radiant complexion."
+        "title": "Uniformité du teint",
+        "description": "Illuminez les peaux ternes avec le laser toning et Ulblanc pour un teint clair et lumineux."
       },
       "hairRemoval": {
-        "title": "Premium Hair Removal",
-        "description": "Safe hair removal for all skin types with Clarity II dual wavelength and IntelliTrak technology."
+        "title": "Épilation premium",
+        "description": "Épilation sûre pour tous les types de peau grâce à la double longueur d'onde de Clarity II et à la technologie IntelliTrak."
       },
       "tattoo": {
-        "title": "Tattoo Removal",
-        "description": "Effectively remove all colors of tattoos without scarring using Lucas pico laser."
+        "title": "Détatouage",
+        "description": "Éliminez efficacement toutes les couleurs de tatouage sans cicatrice grâce au laser pico Lucas."
       }
     },
     "matrix": {
-      "badge": "Equipment × Indications",
-      "title": "Equipment Lineup to Solve Any Concern",
-      "description": "LIV Laser Center's 4 premium devices cover all skin concerns"
+      "badge": "Équipement × Indications",
+      "title": "Une gamme d'équipements pour résoudre toute préoccupation",
+      "description": "Les 4 appareils premium du LIV Laser Center couvrent toutes les préoccupations cutanées"
     },
     "equipment": {
-      "badge": "LIV Equipment",
-      "title": "Premium Laser Lineup",
-      "description": "Safe and effective treatments with FDA-approved latest equipment",
+      "badge": "Équipement LIV",
+      "title": "Gamme laser premium",
+      "description": "Traitements sûrs et efficaces grâce aux derniers équipements approuvés par la FDA",
       "clarity": {
         "name": "Clarity II",
-        "spec": "Dual Wavelength + IntelliTrak Technology",
+        "spec": "Double longueur d'onde + technologie IntelliTrak",
         "tags": [
           "Pigmentation",
           "Vascular",
@@ -4999,7 +4999,7 @@
       },
       "lucas": {
         "name": "Lucas",
-        "spec": "Picosecond Pulse (450ps)",
+        "spec": "Impulsion picoseconde (450 ps)",
         "tags": [
           "Melasma",
           "Pigmentation",
@@ -5008,7 +5008,7 @@
       },
       "toning": {
         "name": "Laser Toning",
-        "spec": "Low-Power Repeated Irradiation",
+        "spec": "Irradiation répétée à faible puissance",
         "tags": [
           "Skin Tone",
           "Pores",
@@ -5017,7 +5017,7 @@
       },
       "ulblanc": {
         "name": "Ulblanc",
-        "spec": "Melanin Selective Targeting",
+        "spec": "Ciblage sélectif de la mélanine",
         "tags": [
           "Skin Whitening",
           "Tone Evenness"
@@ -5025,68 +5025,68 @@
       }
     },
     "synergy": {
-      "title": "Clarity II + Lucas Synergy Effect",
-      "description": "The combination of two premium devices delivers faster and more effective results than standalone treatments",
+      "title": "Effet synergique Clarity II + Lucas",
+      "description": "La combinaison de deux appareils premium offre des résultats plus rapides et plus efficaces qu'un traitement isolé",
       "multiWave": {
-        "title": "Multi-Wavelength Coverage",
-        "description": "Access targets at all depths from 532nm to 1064nm"
+        "title": "Couverture multi-longueurs d'onde",
+        "description": "Atteignez des cibles à toutes les profondeurs, de 532 nm à 1064 nm"
       },
       "combined": {
-        "title": "Combined Indication Treatment",
-        "description": "Simultaneously solve complex concerns like melasma+redness, pigmentation+pores"
+        "title": "Traitement combiné d'indications",
+        "description": "Traitez simultanément les préoccupations complexes comme mélasma+rougeurs, pigmentation+pores"
       },
       "fast": {
-        "title": "Fast Results",
-        "description": "1.5-2x faster results compared to standalone treatments"
+        "title": "Résultats rapides",
+        "description": "Résultats 1,5 à 2× plus rapides qu'avec un traitement isolé"
       }
     },
     "process": {
-      "title": "Laser Treatment Process",
+      "title": "Déroulement du traitement laser",
       "steps": {
         "analysis": {
-          "title": "Skin Analysis",
-          "description": "Expert consultation and precise analysis of skin type and concerns"
+          "title": "Analyse de la peau",
+          "description": "Consultation spécialisée et analyse précise du type de peau et des préoccupations"
         },
         "design": {
-          "title": "Custom Design",
-          "description": "Individual optimal laser combination and treatment planning"
+          "title": "Conception sur mesure",
+          "description": "Combinaison laser et plan de traitement optimaux individualisés"
         },
         "treatment": {
-          "title": "Laser Treatment",
-          "description": "Safe and precise treatment by experienced specialists"
+          "title": "Traitement laser",
+          "description": "Traitement sûr et précis réalisé par des spécialistes expérimentés"
         },
         "aftercare": {
-          "title": "Aftercare",
-          "description": "Post-treatment care, regular check-ups, and maintenance"
+          "title": "Suivi post-traitement",
+          "description": "Soins post-traitement, contrôles réguliers et entretien"
         }
       }
     },
     "faq": {
-      "title": "Frequently Asked Questions",
+      "title": "Questions fréquentes",
       "q1": {
-        "question": "Which laser is right for me?",
-        "answer": "The optimal laser varies depending on skin condition and concerns. Through free consultation, our specialists will directly analyze your skin and propose a customized treatment plan."
+        "question": "Quel laser me convient ?",
+        "answer": "Le laser optimal varie selon l'état de la peau et les préoccupations. Lors d'une consultation gratuite, nos spécialistes analyseront directement votre peau et vous proposeront un plan de traitement personnalisé."
       },
       "q2": {
-        "question": "Is laser treatment painful?",
-        "answer": "It varies by device, but most describe it as \"like a rubber band snapping.\" We minimize pain with numbing cream when needed. Clarity II has a built-in cooling system for added comfort."
+        "question": "Le traitement laser est-il douloureux ?",
+        "answer": "Cela varie selon l'appareil, mais la plupart le décrivent comme « le claquement d'un élastique ». Nous minimisons la douleur avec une crème anesthésiante au besoin. Clarity II intègre un système de refroidissement pour un confort accru."
       },
       "q3": {
-        "question": "How long is the downtime?",
-        "answer": "It depends on the laser type. Laser toning and Ulblanc have almost no downtime, allowing immediate return to daily activities. Pico laser may cause mild redness for 3-5 days."
+        "question": "Combien de temps dure le temps d'arrêt ?",
+        "answer": "Cela dépend du type de laser. Le laser toning et Ulblanc n'imposent quasiment aucun temps d'arrêt, permettant un retour immédiat aux activités quotidiennes. Le laser pico peut provoquer de légères rougeurs pendant 3-5 jours."
       },
       "q4": {
-        "question": "When will I see results?",
-        "answer": "You can feel skin tone improvement immediately after treatment, with effects becoming more prominent over 2-4 weeks as collagen remodeling occurs. We recommend completing the suggested number of sessions for optimal results."
+        "question": "Quand verrai-je les résultats ?",
+        "answer": "Une amélioration du teint est perceptible dès la fin du traitement, et les effets deviennent plus visibles sur 2-4 semaines à mesure que le remodelage du collagène s'opère. Nous recommandons de compléter le nombre de séances suggéré pour des résultats optimaux."
       }
     },
     "cta": {
-      "title": "The First Step to Clear, Healthy Skin",
-      "description1": "We'll find the optimal laser for your skin concerns",
-      "description2": "Confirm your customized treatment plan with free consultation",
-      "button": "Book Free Consultation"
+      "title": "Le premier pas vers une peau claire et saine",
+      "description1": "Nous trouverons le laser optimal pour vos préoccupations cutanées",
+      "description2": "Confirmez votre plan de traitement personnalisé lors d'une consultation gratuite",
+      "button": "Réserver une consultation gratuite"
     },
-    "viewMore": "Learn More"
+    "viewMore": "En savoir plus"
   },
   "trust": {
     "certification": {

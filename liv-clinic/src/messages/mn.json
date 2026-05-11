@@ -4744,252 +4744,252 @@
   },
   "liftingPage": {
     "hero": {
-      "subtitle": "Lifting",
-      "description1": "With premium lifting solutions that defy gravity,",
-      "description2": "restore natural and elastic skin."
+      "subtitle": "Лифтинг",
+      "description1": "Татах хүчийг үл тоомсорлох премиум лифтингийн шийдлээр,",
+      "description2": "байгалийн, уян хатан арьсыг сэргээгээрэй."
     },
     "lineup": {
-      "subtitle": "Our Treatments",
-      "title": "Lifting Treatment Lineup"
+      "subtitle": "Манай эмчилгээ",
+      "title": "Лифтинг эмчилгээний шугам"
     },
     "whyChoose": {
-      "subtitle": "Why LIV Lifting?",
-      "title": "Why Choose LIV Lifting?",
+      "subtitle": "Яагаад LIV Лифтинг?",
+      "title": "Яагаад LIV Лифтингийг сонгох вэ?",
       "certification": {
-        "title": "Authentic Certification",
-        "description1": "As an officially certified Ultherapy Prime and Thermage clinic,",
-        "description2": "we only use genuine equipment."
+        "title": "Албан ёсны баталгаажуулалт",
+        "description1": "Албан ёсоор баталгаажсан Ultherapy Prime болон Thermage эмнэлгийн хувьд,",
+        "description2": "бид зөвхөн жинхэнэ тоног төхөөрөмжийг ашигладаг."
       },
       "experts": {
-        "title": "Expert Medical Team",
-        "description1": "Experienced medical professionals",
-        "description2": "perform all treatments directly."
+        "title": "Мэргэжлийн эмнэлгийн баг",
+        "description1": "Туршлагатай эмнэлгийн мэргэжилтнүүд",
+        "description2": "бүх эмчилгээг өөрсдөө шууд хийнэ."
       },
       "customized": {
-        "title": "Customized Solution",
-        "description1": "We design optimal treatments",
-        "description2": "tailored to individual skin conditions."
+        "title": "Хувийн шийдэл",
+        "description1": "Хувь хүний арьсны нөхцөл байдалд тохирсон",
+        "description2": "оновчтой эмчилгээг бид зохион байгуулна."
       }
     },
     "cta": {
-      "title": "Curious about the right lifting for you?",
-      "description": "Find the optimal treatment through expert consultation.",
-      "button": "Book Free Consultation"
+      "title": "Танд аль лифтинг тохирох вэ?",
+      "description": "Мэргэжилтний зөвлөгөөгөөр танд тохирох оновчтой эмчилгээг олно уу.",
+      "button": "Үнэгүй зөвлөгөө захиалах"
     },
     "treatments": {
       "ulthera": {
         "name": "Ultherapy Prime",
         "nameEn": "Ultherapy Prime",
-        "description": "The only FDA-approved HIFU lifting device that delivers energy deep into the SMAS layer for natural lifting effects.",
-        "duration": "60-90 min",
-        "recovery": "No downtime"
+        "description": "FDA-аар батлагдсан цорын ганц HIFU лифтинг төхөөрөмж бөгөөд SMAS давхрагын гүн рүү энерги дамжуулж байгалийн лифтинг үр дүнг өгнө.",
+        "duration": "60-90 мин",
+        "recovery": "Сэргэлтийн хугацаагүй"
       },
       "thermage": {
         "name": "Thermage FLX",
         "nameEn": "Thermage FLX",
-        "description": "4th generation premium RF lifting with AccuREP technology for optimal energy delivery and skin tightening.",
-        "duration": "45-60 min",
-        "recovery": "No downtime"
+        "description": "AccuREP технологитой 4-р үеийн премиум RF лифтинг бөгөөд эрчим хүчийг оновчтой түгээж арьсыг чангатгана.",
+        "duration": "45-60 мин",
+        "recovery": "Сэргэлтийн хугацаагүй"
       },
       "density": {
         "name": "Density",
         "nameEn": "Density",
-        "description": "RF energy-based lifting that delivers uniform energy distribution for even and smooth lifting results.",
-        "duration": "40-60 min",
-        "recovery": "No downtime"
+        "description": "Жигд эрчим хүчний түгээлтээр гөлгөр, тэгш лифтинг үр дүн өгдөг RF энергид суурилсан лифтинг.",
+        "duration": "40-60 мин",
+        "recovery": "Сэргэлтийн хугацаагүй"
       },
       "inmode": {
         "name": "InMode",
         "nameEn": "InMode",
-        "description": "Multi-functional RF technology for simultaneous fat reduction and skin tightening effects.",
-        "duration": "30-90 min",
-        "recovery": "0-5 days"
+        "description": "Олон үйлдэлт RF технологиор өөхийг бууруулах болон арьсыг чангатгах нөлөөг зэрэг үзүүлнэ.",
+        "duration": "30-90 мин",
+        "recovery": "0-5 хоног"
       },
       "shurink": {
         "name": "Shurink",
         "nameEn": "Shurink",
-        "description": "HIFU-based lifting treatment ideal for regular maintenance and gradual skin tightening.",
-        "duration": "30-45 min",
-        "recovery": "No downtime"
+        "description": "Тогтмол арчилгаа болон арьсыг аажмаар чангатгахад тохиромжтой HIFU-д суурилсан лифтинг эмчилгээ.",
+        "duration": "30-45 мин",
+        "recovery": "Сэргэлтийн хугацаагүй"
       },
       "thread": {
-        "name": "Thread Lift",
+        "name": "Утсан лифтинг",
         "nameEn": "Thread Lift",
-        "description": "Absorbable thread lifting for immediate and natural-looking lifting results with collagen stimulation.",
-        "duration": "30-60 min",
-        "recovery": "3-7 days"
+        "description": "Шингэх утсаар хийгдэх лифтинг бөгөөд шууд, байгалийн лифтинг үр дүн болон коллагены идэвхжүүлэлтийг бий болгоно.",
+        "duration": "30-60 мин",
+        "recovery": "3-7 хоног"
       }
     },
     "compare": {
-      "subtitle": "Compare",
-      "title": "Compare Lifting Treatments",
-      "description": "Find the right lifting treatment for you",
+      "subtitle": "Харьцуулах",
+      "title": "Лифтинг эмчилгээг харьцуулах",
+      "description": "Танд тохирох лифтинг эмчилгээг олоорой",
       "table": {
-        "treatment": "Treatment",
-        "technology": "Technology",
-        "duration": "Duration",
-        "anesthesia": "Anesthesia",
-        "downtime": "Downtime",
-        "results": "Results Duration",
-        "price": "Price Range",
-        "details": "Details →",
-        "viewDetails": "View Details"
+        "treatment": "Эмчилгээ",
+        "technology": "Технологи",
+        "duration": "Хугацаа",
+        "anesthesia": "Мэдээ алдуулалт",
+        "downtime": "Сэргэлтийн хугацаа",
+        "results": "Үр дүнгийн үргэлжлэх хугацаа",
+        "price": "Үнийн хүрээ",
+        "details": "Дэлгэрэнгүй →",
+        "viewDetails": "Дэлгэрэнгүй харах"
       },
       "values": {
-        "anesthesiaCream": "Numbing cream",
-        "noAnesthesia": "No anesthesia",
-        "optional": "Optional",
-        "varies": "Varies",
-        "localAnesthesia": "Local anesthesia",
-        "anesthesiaCreamLocal": "Anesthetic Cream / Local Anesthesia",
-        "none": "None",
-        "premium": "Premium",
-        "moderate": "Moderate",
-        "affordable": "Affordable",
+        "anesthesiaCream": "Мэдээ алдуулах крем",
+        "noAnesthesia": "Мэдээ алдуулалтгүй",
+        "optional": "Сонголтоор",
+        "varies": "Өөр өөр",
+        "localAnesthesia": "Орон нутгийн мэдээ алдуулалт",
+        "anesthesiaCreamLocal": "Мэдээ алдуулах крем / Орон нутгийн мэдээ алдуулалт",
+        "none": "Байхгүй",
+        "premium": "Премиум",
+        "moderate": "Дунд зэрэг",
+        "affordable": "Боломжийн",
         "hifu": "HIFU",
         "rf": "RF",
         "hifuRf": "HIFU+RF",
-        "rfNeedle": "RF+Needle",
-        "dissolvingThread": "PDO Thread"
+        "rfNeedle": "RF+Зүү",
+        "dissolvingThread": "PDO утас"
       },
       "data": {
         "ulthera": {
           "technology": "HIFU",
-          "duration": "60-90 min",
-          "anesthesia": "Numbing cream",
-          "recovery": "None",
-          "results": "1-2 years",
-          "price": "Premium"
+          "duration": "60-90 мин",
+          "anesthesia": "Мэдээ алдуулах крем",
+          "recovery": "Байхгүй",
+          "results": "1-2 жил",
+          "price": "Премиум"
         },
         "thermage": {
           "technology": "RF",
-          "duration": "45-60 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "1-2 years",
-          "price": "Premium"
+          "duration": "45-60 мин",
+          "anesthesia": "Мэдээ алдуулах крем",
+          "recovery": "Байхгүй",
+          "results": "1-2 жил",
+          "price": "Премиум"
         },
         "density": {
           "technology": "RF",
-          "duration": "40-60 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "6 months - 1 year",
-          "price": "Moderate"
+          "duration": "40-60 мин",
+          "anesthesia": "Мэдээ алдуулах крем",
+          "recovery": "Байхгүй",
+          "results": "6 сар - 1 жил",
+          "price": "Дунд зэрэг"
         },
         "shurink": {
           "technology": "HIFU",
-          "duration": "30-45 min",
-          "anesthesia": "Anesthetic Cream",
-          "recovery": "None",
-          "results": "3-6 months",
-          "price": "Affordable"
+          "duration": "30-45 мин",
+          "anesthesia": "Мэдээ алдуулах крем",
+          "recovery": "Байхгүй",
+          "results": "3-6 сар",
+          "price": "Боломжийн"
         },
         "inmode": {
           "technology": "RF",
-          "duration": "30-90 min",
-          "anesthesia": "No Anesthesia",
-          "recovery": "0-5 days",
-          "results": "6 months - 1 year",
-          "price": "Varies"
+          "duration": "30-90 мин",
+          "anesthesia": "Мэдээ алдуулалтгүй",
+          "recovery": "0-5 хоног",
+          "results": "6 сар - 1 жил",
+          "price": "Өөр өөр"
         },
         "thread": {
-          "technology": "PDO Thread",
-          "duration": "30-60 min",
-          "anesthesia": "Anesthetic Cream / Local Anesthesia",
-          "recovery": "3-7 days",
-          "results": "1-2 years",
-          "price": "Moderate"
+          "technology": "PDO утас",
+          "duration": "30-60 мин",
+          "anesthesia": "Мэдээ алдуулах крем / Орон нутгийн мэдээ алдуулалт",
+          "recovery": "3-7 хоног",
+          "results": "1-2 жил",
+          "price": "Дунд зэрэг"
         }
       },
       "cta": {
-        "question": "Not sure which treatment is right for you?",
-        "button": "Get Free Consultation"
+        "question": "Аль эмчилгээ танд тохирох эсэхэд эргэлзэж байна уу?",
+        "button": "Үнэгүй зөвлөгөө авах"
       }
     }
   },
   "antiagingPage": {
     "hero": {
-      "subtitle": "Anti-aging",
-      "description1": "With premium anti-aging that turns back time,",
-      "description2": "restore youthful, vibrant skin."
+      "subtitle": "Хөгшрөлтийн эсрэг",
+      "description1": "Цагийг буцаан эргүүлдэг премиум хөгшрөлтийн эсрэг эмчилгээгээр,",
+      "description2": "залуу, эрч хүчтэй арьсыг сэргээгээрэй."
     },
     "lineup": {
-      "subtitle": "Our Treatments",
-      "title": "Anti-Aging Treatment Lineup"
+      "subtitle": "Манай эмчилгээ",
+      "title": "Хөгшрөлтийн эсрэг эмчилгээний шугам"
     },
     "benefits": {
-      "subtitle": "Natural Beauty",
-      "title": "Natural Beauty",
-      "description": "LIV Plastic Surgery's anti-aging pursues natural beauty without excess. We only use authentic products and create optimal results with personalized treatments.",
+      "subtitle": "Байгалийн гоо сайхан",
+      "title": "Байгалийн гоо сайхан",
+      "description": "LIV Plastic Surgery-ийн хөгшрөлтийн эсрэг арга нь хэтрэлгүй байгалийн гоо сайхныг эрэлхийлдэг. Бид зөвхөн жинхэнэ бүтээгдэхүүн ашиглаж, хувийн эмчилгээгээр оновчтой үр дүнг бий болгоно.",
       "authentic": {
-        "title": "Authentic Product Principle",
-        "description": "We only use FDA-approved products and adhere to proper dosages."
+        "title": "Жинхэнэ бүтээгдэхүүний зарчим",
+        "description": "Бид зөвхөн FDA-аар батлагдсан бүтээгдэхүүн ашиглаж, зөв тунг сахидаг."
       },
       "customized": {
-        "title": "Customized Treatment Design",
-        "description": "We analyze facial structure and skin condition to propose optimal treatments."
+        "title": "Хувийн эмчилгээний загвар",
+        "description": "Нүүрний бүтэц болон арьсны нөхцөлийг шинжилж оновчтой эмчилгээг санал болгоно."
       },
       "natural": {
-        "title": "Natural Results",
-        "description": "Restore your natural beauty with unnoticeable, natural changes."
+        "title": "Байгалийн үр дүн",
+        "description": "Анзаарагдахгүй, байгалийн өөрчлөлтөөр таны байгалийн гоо сайхныг сэргээнэ."
       }
     },
     "cta": {
-      "title": "Want to regain your youth?",
-      "description": "Find the right treatment for you through expert consultation.",
-      "button": "Book Free Consultation"
+      "title": "Залуу насаа эргүүлэн авахыг хүсэж байна уу?",
+      "description": "Мэргэжилтний зөвлөгөөгөөр танд тохирох эмчилгээг олоорой.",
+      "button": "Үнэгүй зөвлөгөө захиалах"
     }
   },
   "laserPage": {
     "hero": {
       "title": "Laser Center",
-      "subtitle": "Customized Laser Solutions for Your Skin Concerns",
-      "description1": "With Clarity II + Lucas combination,",
-      "description2": "one-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+      "subtitle": "Таны арьсны асуудалд тохирсон лазерийн шийдэл",
+      "description1": "Clarity II + Lucas хослолтой,",
+      "description2": "пигментациас эхлээд судас, үс арилгах, шивээс арилгах хүртэлх нэг цэгийн арчилгаа"
     },
     "highlights": {
-      "equipment": "Equipment",
-      "treatments": "Treatment Areas",
-      "experience": "Experience",
-      "safety": "Safety"
+      "equipment": "Тоног төхөөрөмж",
+      "treatments": "Эмчилгээний хэсгүүд",
+      "experience": "Туршлага",
+      "safety": "Аюулгүй байдал"
     },
     "categories": {
-      "title": "Customized Treatment for Your Skin Concerns",
-      "description": "Select your skin concern and we'll guide you to the optimal laser treatment",
+      "title": "Таны арьсны асуудалд тохирсон хувийн эмчилгээ",
+      "description": "Арьсны асуудлаа сонгоход бид танд тохирох оновчтой лазер эмчилгээг танилцуулна",
       "pigmentation": {
-        "title": "Pigmentation Improvement",
-        "description": "Effectively improve melasma, age spots, and other pigment conditions with pico laser and laser toning."
+        "title": "Пигментацийг сайжруулах",
+        "description": "Pico лазер болон Laser Toning-аар мелазма, насжилтын толбо болон бусад пигментийн нөхцөлийг үр дүнтэйгээр сайжруулна."
       },
       "vascular": {
-        "title": "Redness/Vascular Treatment",
-        "description": "Treat facial redness, spider veins, and hemangioma with Clarity II dual wavelength."
+        "title": "Улайлт/судасны эмчилгээ",
+        "description": "Clarity II-ийн давхар долгионы уртаар нүүрний улайлт, аалзан судас, цусан хавдрыг эмчилнэ."
       },
       "skintone": {
-        "title": "Skin Tone Evenness",
-        "description": "Brighten dull skin with laser toning and Ulblanc for clear, radiant complexion."
+        "title": "Арьсны өнгийн жигдрэлт",
+        "description": "Laser Toning болон Ulblanc-аар гундуу арьсыг гэрэлтүүлж тунгалаг, гэрэлтэй өнгөтэй болгоно."
       },
       "hairRemoval": {
-        "title": "Premium Hair Removal",
-        "description": "Safe hair removal for all skin types with Clarity II dual wavelength and IntelliTrak technology."
+        "title": "Премиум үс арилгах",
+        "description": "Clarity II-ийн давхар долгионы урт болон IntelliTrak технологиор бүх арьсны төрөлд аюулгүй үс арилгах."
       },
       "tattoo": {
-        "title": "Tattoo Removal",
-        "description": "Effectively remove all colors of tattoos without scarring using Lucas pico laser."
+        "title": "Шивээс арилгах",
+        "description": "Lucas pico лазераар бүх өнгийн шивээсийг сорвигүй үр дүнтэйгээр арилгана."
       }
     },
     "matrix": {
-      "badge": "Equipment × Indications",
-      "title": "Equipment Lineup to Solve Any Concern",
-      "description": "LIV Laser Center's 4 premium devices cover all skin concerns"
+      "badge": "Тоног төхөөрөмж × Заалт",
+      "title": "Аливаа асуудлыг шийдэх тоног төхөөрөмжийн шугам",
+      "description": "LIV Laser Center-ийн 4 премиум төхөөрөмж нь арьсны бүх асуудлыг хамарна"
     },
     "equipment": {
-      "badge": "LIV Equipment",
-      "title": "Premium Laser Lineup",
-      "description": "Safe and effective treatments with FDA-approved latest equipment",
+      "badge": "LIV тоног төхөөрөмж",
+      "title": "Премиум лазер шугам",
+      "description": "FDA-аар батлагдсан хамгийн сүүлийн үеийн тоног төхөөрөмжөөр аюулгүй, үр дүнтэй эмчилгээ",
       "clarity": {
         "name": "Clarity II",
-        "spec": "Dual Wavelength + IntelliTrak Technology",
+        "spec": "Давхар долгионы урт + IntelliTrak технологи",
         "tags": [
           "Pigmentation",
           "Vascular",
@@ -4999,7 +4999,7 @@
       },
       "lucas": {
         "name": "Lucas",
-        "spec": "Picosecond Pulse (450ps)",
+        "spec": "Пикосекундын импульс (450 пс)",
         "tags": [
           "Melasma",
           "Pigmentation",
@@ -5008,7 +5008,7 @@
       },
       "toning": {
         "name": "Laser Toning",
-        "spec": "Low-Power Repeated Irradiation",
+        "spec": "Бага хүчтэй давтан цацаргалт",
         "tags": [
           "Skin Tone",
           "Pores",
@@ -5017,7 +5017,7 @@
       },
       "ulblanc": {
         "name": "Ulblanc",
-        "spec": "Melanin Selective Targeting",
+        "spec": "Меланиныг сонгомлоор онилох",
         "tags": [
           "Skin Whitening",
           "Tone Evenness"
@@ -5025,68 +5025,68 @@
       }
     },
     "synergy": {
-      "title": "Clarity II + Lucas Synergy Effect",
-      "description": "The combination of two premium devices delivers faster and more effective results than standalone treatments",
+      "title": "Clarity II + Lucas-ийн синерги нөлөө",
+      "description": "Хоёр премиум төхөөрөмжийн хослол нь ганц эмчилгээтэй харьцуулахад илүү хурдан, илүү үр дүнтэй үр дүн өгдөг",
       "multiWave": {
-        "title": "Multi-Wavelength Coverage",
-        "description": "Access targets at all depths from 532nm to 1064nm"
+        "title": "Олон долгионы уртын хамрах хүрээ",
+        "description": "532 нм-ээс 1064 нм хүртэлх бүх гүний онилолтод хүрэх боломж"
       },
       "combined": {
-        "title": "Combined Indication Treatment",
-        "description": "Simultaneously solve complex concerns like melasma+redness, pigmentation+pores"
+        "title": "Хосолсон заалтын эмчилгээ",
+        "description": "Мелазма+улайлт, пигментаци+нүх сүв зэрэг нийлмэл асуудлуудыг зэрэг шийднэ"
       },
       "fast": {
-        "title": "Fast Results",
-        "description": "1.5-2x faster results compared to standalone treatments"
+        "title": "Хурдан үр дүн",
+        "description": "Ганц эмчилгээтэй харьцуулахад 1.5-2 дахин хурдан үр дүн"
       }
     },
     "process": {
-      "title": "Laser Treatment Process",
+      "title": "Лазер эмчилгээний явц",
       "steps": {
         "analysis": {
-          "title": "Skin Analysis",
-          "description": "Expert consultation and precise analysis of skin type and concerns"
+          "title": "Арьсны шинжилгээ",
+          "description": "Мэргэжилтний зөвлөгөө болон арьсны төрөл, асуудлын нарийн шинжилгээ"
         },
         "design": {
-          "title": "Custom Design",
-          "description": "Individual optimal laser combination and treatment planning"
+          "title": "Хувийн загвар",
+          "description": "Хувь хүний оновчтой лазерийн хослол болон эмчилгээний төлөвлөгөө"
         },
         "treatment": {
-          "title": "Laser Treatment",
-          "description": "Safe and precise treatment by experienced specialists"
+          "title": "Лазер эмчилгээ",
+          "description": "Туршлагатай мэргэжилтнүүдээр аюулгүй, нарийн эмчилгээ"
         },
         "aftercare": {
-          "title": "Aftercare",
-          "description": "Post-treatment care, regular check-ups, and maintenance"
+          "title": "Дараах арчилгаа",
+          "description": "Эмчилгээний дараах арчилгаа, тогтмол үзлэг, засвар үйлчилгээ"
         }
       }
     },
     "faq": {
-      "title": "Frequently Asked Questions",
+      "title": "Түгээмэл асуулт хариулт",
       "q1": {
-        "question": "Which laser is right for me?",
-        "answer": "The optimal laser varies depending on skin condition and concerns. Through free consultation, our specialists will directly analyze your skin and propose a customized treatment plan."
+        "question": "Аль лазер надад тохирох вэ?",
+        "answer": "Оновчтой лазер нь арьсны нөхцөл болон асуудлаас хамаарч өөр өөр байдаг. Үнэгүй зөвлөгөөгөөр манай мэргэжилтэн таны арьсыг шууд шинжилж танд тохирох хувийн эмчилгээний төлөвлөгөөг санал болгоно."
       },
       "q2": {
-        "question": "Is laser treatment painful?",
-        "answer": "It varies by device, but most describe it as \"like a rubber band snapping.\" We minimize pain with numbing cream when needed. Clarity II has a built-in cooling system for added comfort."
+        "question": "Лазер эмчилгээ өвдөлттэй юу?",
+        "answer": "Төхөөрөмж бүрд өөр өөр боловч ихэнх хүмүүс \"резинэн уяа цохиосон шиг\" гэж тайлбарладаг. Шаардлагатай үед мэдээ алдуулах кремээр өвдөлтийг бууруулдаг. Clarity II-д суурилуулсан хөргөлтийн систем нь нэмэлт тав тух өгдөг."
       },
       "q3": {
-        "question": "How long is the downtime?",
-        "answer": "It depends on the laser type. Laser toning and Ulblanc have almost no downtime, allowing immediate return to daily activities. Pico laser may cause mild redness for 3-5 days."
+        "question": "Сэргэлтийн хугацаа ямар вэ?",
+        "answer": "Лазерийн төрлөөс хамаарна. Laser Toning болон Ulblanc нь бараг сэргэлтийн хугацаагүй тул шууд өдөр тутмын үйл ажиллагаагаа үргэлжлүүлэх боломжтой. Pico лазер нь 3-5 хоног хөнгөн улайралт үүсгэж болно."
       },
       "q4": {
-        "question": "When will I see results?",
-        "answer": "You can feel skin tone improvement immediately after treatment, with effects becoming more prominent over 2-4 weeks as collagen remodeling occurs. We recommend completing the suggested number of sessions for optimal results."
+        "question": "Үр дүнг хэзээ харах вэ?",
+        "answer": "Эмчилгээний дараа арьсны өнгийн сайжруулалтыг шууд мэдэрч болох ба коллагены дахин загварчлал явагдсаны дараа 2-4 долоо хоногт үр нөлөө нь илүү тодорхой болно. Оновчтой үр дүнд хүрэхийн тулд санал болгосон удаагийн тоог гүйцээхийг зөвлөж байна."
       }
     },
     "cta": {
-      "title": "The First Step to Clear, Healthy Skin",
-      "description1": "We'll find the optimal laser for your skin concerns",
-      "description2": "Confirm your customized treatment plan with free consultation",
-      "button": "Book Free Consultation"
+      "title": "Тунгалаг, эрүүл арьсны эхний алхам",
+      "description1": "Бид танай арьсны асуудалд тохирох оновчтой лазерийг олно",
+      "description2": "Үнэгүй зөвлөгөөгөөр өөрийн хувийн эмчилгээний төлөвлөгөөг баталгаажуулаарай",
+      "button": "Үнэгүй зөвлөгөө захиалах"
     },
-    "viewMore": "Learn More"
+    "viewMore": "Дэлгэрэнгүй мэдээлэл"
   },
   "trust": {
     "certification": {
