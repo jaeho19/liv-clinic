@@ -1,13 +1,14 @@
 # i18n Tier 2 번역 인계 문서
 
-> **작성일**: 2026-05-11
-> **상태**: 진행 중 (4 commits, 2,346 strings 번역 완료)
-> **잔여**: fr 1,271 / mn 1,241 / ar 1,237 keys (~3,750 strings)
+> **작성일**: 2026-05-11 (최초)
+> **갱신일**: 2026-05-11 (Batch 3, 4, 5a 추가 진행)
+> **상태**: 진행 중 (7 commits, 3,810 strings 번역 완료)
+> **잔여**: fr 839 / mn 795 / ar 789 keys (~2,420 strings)
 > **목적**: fr/mn/ar locale의 영어 잔존 문자열을 모두 현지어로 번역
 
 ---
 
-## 1. 현재 상태 (master 브랜치, 4 commits push 완료)
+## 1. 현재 상태 (master 브랜치, 7 commits push 완료)
 
 | commit | 내용 | strings |
 |--------|------|---------:|
@@ -15,16 +16,20 @@
 | `7886544` | Tier 1: common/sections/contact/faq/chat 등 사용자 가시 핵심 영역 | 1,134 |
 | `bf6bed4` | Tier 2 batch 1: treatments.lifting.{ulthera, thermage} 상세 | 591 |
 | `1e668da` | Tier 2 batch 2: treatments.lifting.{density, inmode} 상세 | 621 |
+| `5603a1e` | Tier 2 batch 3: treatments.lifting.{shurink, thread, aptos} 상세 | 609 |
+| `d1dbeec` | Tier 2 batch 4: treatments.antiaging.{botox, filler, skinbooster, skincare} | 462 |
+| `b34592a` | Tier 2 batch 5a: treatments.laser.{center, pigmentation, vascular} | 393 |
 
 **완료 페이지** (3 locale 모두 정상 표시):
 - 홈(`/`), 모든 nav/sections, footer, contact, faq, chat
-- `/lifting/ulthera`, `/lifting/thermage`, `/lifting/density`, `/lifting/inmode` (4개 시술 상세)
+- `/lifting/{ulthera, thermage, density, inmode, shurink, thread, aptos}` (7개 시술 상세)
+- `/antiaging/{botox, filler, skinbooster, skincare}` 상세 (4개)
+- `/laser` 메인, `/laser/pigmentation`, `/laser/vascular`
 
 **영어 잔존 페이지**:
-- `/lifting/shurink`, `/lifting/thread`, `/lifting/aptos` (3개 시술 상세)
-- `/antiaging/{botox, filler, skinbooster}` 상세 body
-- `/laser/*` 모든 시술 상세
-- `/lifting`, `/antiaging`, `/laser`, `/about/equipment`, `/signature`, `/pricing` 페이지 body
+- `/laser/{skintone, hairRemoval, tattoo}` 상세
+- `/lifting`, `/antiaging`, `/laser` 페이지 body (page-specific keys)
+- `/about/equipment`, `/signature`, `/pricing` 페이지 body
 
 ---
 
@@ -32,24 +37,18 @@
 
 각 batch별 1 commit씩 처리. 시술명/브랜드명은 영문 유지(Ultherapy/Thermage/Density/InMode/Shurink/Morpheus8/FaceTite/Forma/Sculptra/Juvelook/Potenza/Clarity II/Lucas/Ulblanc/HIFU/RF/FDA/KFDA 등).
 
-### Batch 3 — treatments.lifting 잔여 (shurink + thread + aptos) — **~270 keys × 3 = 810 strings**
-- `treatments.lifting.shurink.*` (~100 keys)
-- `treatments.lifting.thread.*` (~75 keys)
-- `treatments.lifting.aptos.*` (~25 keys)
+### ~~Batch 3~~ ✅ — treatments.lifting 잔여 (shurink + thread + aptos) — 609 strings → `5603a1e`
 
-### Batch 4 — treatments.antiaging 전체 (botox + filler + skinbooster + skincare) — **~154 keys × 3 = 462 strings**
-- `treatments.antiaging.botox.*`
-- `treatments.antiaging.filler.*`
-- `treatments.antiaging.skinbooster.*`
-- `treatments.antiaging.skincare.*`
+### ~~Batch 4~~ ✅ — treatments.antiaging 전체 (botox + filler + skinbooster + skincare) — 462 strings → `d1dbeec`
 
-### Batch 5 — treatments.laser 전체 — **~297 keys × 3 = 891 strings**
-- `treatments.laser.center.*` (laser 메인 페이지)
-- `treatments.laser.pigmentation.*` (색소)
-- `treatments.laser.vascular.*` (혈관)
-- `treatments.laser.skintone.*` (피부톤)
-- `treatments.laser.hairRemoval.*` (제모)
-- `treatments.laser.tattoo.*` (문신 제거)
+### ~~Batch 5a~~ ✅ — treatments.laser (center + pigmentation + vascular) — 393 strings → `b34592a`
+
+### Batch 5b — treatments.laser 잔여 (skintone + hairRemoval + tattoo) — **~166 keys × 3 = 498 strings**
+- `treatments.laser.skintone.*` (~57 keys, 피부톤)
+- `treatments.laser.hairRemoval.*` (~44 keys, 제모) + `hair-removal` (1)
+- `treatments.laser.tattoo.*` (~64 keys, 문신 제거)
+
+브랜드명: Clarity II, Lucas, Picosecond/Pico, Alexandrite, Nd:YAG, FDA, Cryogen, Lumenis, IPL 등 영문 유지.
 
 ### Batch 6 — page-specific 1 (liftingPage + antiagingPage + laserPage) — **~140 keys × 3 = 420 strings**
 - `liftingPage.compare.*`, `liftingPage.treatments.*`, `liftingPage.whyChoose.*`, etc.
@@ -185,15 +184,15 @@ EOF
 LIV 홈페이지 i18n 번역 작업을 이어서 진행해주세요.
 
 ## 이전 세션 진행 상황
-- 4 commits master에 push됨 (50c55df, 7886544, bf6bed4, 1e668da)
-- 총 2,346 strings 번역 완료 (Tier 1 + Batch 1/2)
-- 잔여 ~3,750 strings (fr 1,271 / mn 1,241 / ar 1,237 keys × 3 locale에서 일부 중복)
+- 7 commits master에 push됨 (50c55df, 7886544, bf6bed4, 1e668da, 5603a1e, d1dbeec, b34592a)
+- 총 3,810 strings 번역 완료 (Tier 1 + Batch 1-5a)
+- 잔여 ~2,420 strings (fr 839 / mn 795 / ar 789 keys × 3 locale에서 일부 중복)
 
 ## 인계 문서 (먼저 읽기)
 `docs/05-handoff/i18n-tier2-translation-handoff.md` 파일에 전체 컨텍스트, 파이프라인, batch 계획, caveats 정리되어 있어요. 이걸 먼저 읽어주세요.
 
 ## 작업
-docs/05-handoff/i18n-tier2-translation-handoff.md 의 §2 권장 batch 순서대로 진행해주세요. Batch 3 (shurink + thread + aptos)부터 시작.
+docs/05-handoff/i18n-tier2-translation-handoff.md 의 §2 권장 batch 순서대로 진행해주세요. Batch 5b (laser skintone + hairRemoval + tattoo)부터 시작.
 
 각 batch:
 1. node scripts/i18n-extract-untranslated.mjs 실행
