@@ -10,31 +10,11 @@ import ChatWidget from '@/components/chat/ChatWidget';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import NaverAnalytics from '@/components/analytics/NaverAnalytics';
 import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema } from '@/lib/seo';
-import { createAdminClient } from '@/lib/supabase-admin';
 import '../globals.css';
 
-async function getAnalyticsSettings() {
-  try {
-    const admin = createAdminClient();
-    const { data } = await admin
-      .from('clinic_settings')
-      .select('ga_tracking_id, naver_wcs_id, ga_enabled, naver_enabled')
-      .eq('id', 1)
-      .single();
-
-    if (data) {
-      return {
-        gaTrackingId: data.ga_tracking_id || undefined,
-        naverWcsId: data.naver_wcs_id || undefined,
-        gaEnabled: data.ga_enabled,
-        naverEnabled: data.naver_enabled,
-      };
-    }
-  } catch {
-    // DB query failed - fall back to env variables
-  }
-  return null;
-}
+// ISR: 공개 페이지는 1시간 단위로 재생성하여 TTFB 최소화
+// (admin 영역은 force-dynamic이 자동 적용되므로 영향 없음)
+export const revalidate = 3600;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -72,10 +52,9 @@ export default async function LocaleLayout({
 
   const localBusinessSchema = generateLocalBusinessSchema(locale);
   const webSiteSchema = generateWebSiteSchema();
-  const analytics = await getAnalyticsSettings();
 
-  // GA ID: DB 설정 우선, env var 폴백, 형식 검증 (G-XXXXXXXXXX)
-  const rawGaId = analytics?.gaTrackingId || process.env.NEXT_PUBLIC_GA_ID;
+  // GA ID: 환경변수 한정 (DB 호출 제거로 TTFB 최적화). 형식 검증 (G-XXXXXXXXXX)
+  const rawGaId = process.env.NEXT_PUBLIC_GA_ID;
   const gaId = rawGaId && /^G-[A-Z0-9]+$/i.test(rawGaId) ? rawGaId : undefined;
 
   const meta = LOCALE_META[locale as Locale];
@@ -95,6 +74,8 @@ export default async function LocaleLayout({
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
+        {/* Hero LCP 가속: poster 이미지 preload */}
+        <link rel="preload" as="image" href="/images/hero/hero-1.jpg" fetchPriority="high" />
         <meta name="theme-color" content="#b4988d" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
         {/* Google Search Console */}
@@ -156,8 +137,8 @@ export default async function LocaleLayout({
         )}
       </head>
       <body className="antialiased overflow-x-clip w-full">
-        <GoogleAnalytics trackingId={analytics?.gaTrackingId} enabled={analytics?.gaEnabled ?? undefined} />
-        <NaverAnalytics wcsId={analytics?.naverWcsId} enabled={analytics?.naverEnabled ?? undefined} />
+        <GoogleAnalytics />
+        <NaverAnalytics />
         <a href="#main-content" className="skip-link">
           {tCommon('skipToContent')}
         </a>

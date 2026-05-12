@@ -5,7 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const HERO_VIDEO = '/videos/hero.mp4?v=20251231';
-const HERO_POSTER = '/images/hero-poster.jpg'; // 비디오 로드 전 표시할 포스터 이미지
+const HERO_POSTER = '/images/hero/hero-1.jpg'; // 비디오 로드 전 표시할 포스터 이미지 (LCP candidate)
 
 const slides = [
   { id: 1, titleKey: 'hero.slide1.title', subtitleKey: 'hero.slide1.subtitle' },
