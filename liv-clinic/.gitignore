@@ -44,3 +44,8 @@ next-env.d.ts
 .netlify
 
 .vercel
+
+# i18n translation pipeline scratch (per i18n-tier2-final report R2)
+scripts/_subset.*.json
+scripts/_translated.*.json
+scripts/_untranslated.*.json
