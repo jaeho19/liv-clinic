@@ -4,11 +4,16 @@ import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect } from 'react';
 import { createClient } from '@/lib/supabase-browser';
+import { UnreadBadge } from './notifications/UnreadBadge';
+import { SoundToggle } from './notifications/SoundToggle';
+
+type BadgeKind = 'chat-unread';
 
 interface NavItem {
   href: string;
   label: string;
   icon: string;
+  badge?: BadgeKind;
 }
 
 interface NavSection {
@@ -30,7 +35,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/events', label: '이벤트관리', icon: '🎉' },
       { href: '/admin/before-after', label: '전후사진관리', icon: '📷' },
       { href: '/admin/popups', label: '팝업관리', icon: '🪟' },
-      { href: '/admin/chat', label: '채팅 상담', icon: '💬' },
+      { href: '/admin/chat', label: '채팅 상담', icon: '💬', badge: 'chat-unread' },
       { href: '/admin/analytics', label: 'Analytics', icon: '🌐' },
     ],
   },
@@ -123,7 +128,8 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
                         }`}
                       >
                         <span className="text-base">{item.icon}</span>
-                        {item.label}
+                        <span className="flex-1">{item.label}</span>
+                        {item.badge === 'chat-unread' && <UnreadBadge />}
                       </Link>
                     </li>
                   );
@@ -135,6 +141,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
 
         {/* Footer */}
         <div className="p-3 border-t border-[#e5e5e5]">
+          <SoundToggle />
           <Link
             href="/"
             target="_blank"
