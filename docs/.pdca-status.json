@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-05-11T00:57:32.912Z",
+  "lastUpdated": "2026-05-12T00:30:00.000Z",
   "activeFeatures": [
     "admin-v2-enhancement",
     "lifting",
@@ -171,9 +171,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T00:55:17.745Z",
-        "lastUpdated": "2026-05-11T00:57:32.912Z"
+        "lastUpdated": "2026-05-11T01:23:53.756Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\lib\\treatmentsI18n.ts"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\middleware.ts"
     },
     "scratchpad": {
       "phase": "do",
@@ -1089,6 +1089,36 @@
         "lastUpdated": "2026-05-10T12:01:31.279Z"
       },
       "lastFile": "C:\\dev\\paperclip-sync\\run-server.cmd"
+    },
+    "i18n-tier2-final": {
+      "phase": "check",
+      "phaseNumber": 4,
+      "matchRate": 99,
+      "iterationCount": 0,
+      "startedAt": "2026-05-11T00:00:00.000Z",
+      "lastAnalyzedAt": "2026-05-12T00:30:00.000Z",
+      "analysisPath": "docs/03-analysis/i18n-tier2-final.analysis.md",
+      "specBasis": "docs/05-handoff/i18n-tier2-translation-handoff.md",
+      "commits": [
+        "7886544",
+        "bf6bed4",
+        "1e668da",
+        "5603a1e",
+        "d1dbeec",
+        "b34592a",
+        "5ad7cda",
+        "e952713",
+        "dbfad41",
+        "5bf4862",
+        "af8c98f",
+        "c540f32"
+      ],
+      "stringsTranslated": 6758,
+      "locales": [
+        "fr",
+        "mn",
+        "ar"
+      ]
     }
   },
   "pipeline": {
@@ -1099,7 +1129,7 @@
   "session": {
     "startedAt": "2026-01-30T22:26:49.658Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-05-11T00:57:32.912Z"
+    "lastActivity": "2026-05-11T01:23:53.756Z"
   },
   "history": [
     {
@@ -7188,6 +7218,18 @@
     },
     {
       "timestamp": "2026-05-11T00:57:32.912Z",
+      "feature": "liv-clinic",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-11T01:23:38.255Z",
+      "feature": "liv-clinic",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-11T01:23:53.756Z",
       "feature": "liv-clinic",
       "phase": "do",
       "action": "updated"
