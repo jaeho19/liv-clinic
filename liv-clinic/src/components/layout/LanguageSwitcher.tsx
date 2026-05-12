@@ -29,14 +29,14 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2 text-sm font-medium transition-colors min-h-[44px] px-2 ${
+        className={`flex items-center gap-2.5 md:gap-3 text-base md:text-lg font-medium transition-colors min-h-[48px] md:min-h-[52px] px-3 md:px-4 ${
           isScrolled ? 'text-mono hover:text-primary' : 'text-white hover:text-white/80'
         }`}
       >
-        <span>{currentLanguage.flag}</span>
-        <span className="hidden sm:inline">{currentLanguage.label}</span>
+        <span className="text-xl md:text-2xl leading-none">{currentLanguage.flag}</span>
+        <span className="inline font-semibold tracking-wide">{currentLanguage.label}</span>
         <svg
-          className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-5 h-5 md:w-6 md:h-6 transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -67,11 +67,11 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
                   <button
                     key={lang.code}
                     onClick={() => handleLanguageChange(lang.code)}
-                    className={`w-full flex items-center gap-3 px-4 py-3 text-sm transition-colors hover:bg-background min-h-[44px] ${
+                    className={`w-full flex items-center gap-3 px-4 py-3.5 text-base transition-colors hover:bg-background min-h-[48px] ${
                       lang.code === locale ? 'text-primary font-medium' : 'text-mono'
                     }`}
                   >
-                    <span>{lang.flag}</span>
+                    <span className="text-xl leading-none">{lang.flag}</span>
                     <span>{lang.name}</span>
                   </button>
                 ))}
