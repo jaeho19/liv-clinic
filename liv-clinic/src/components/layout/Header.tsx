@@ -10,6 +10,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import { MAIN_NAV } from '@/lib/constants';
+import { LOCALES } from '@/i18n/routing';
+
+// LOCALES SSOT 기반 홈 경로 매칭 — 새 locale 추가 시 자동 동기화
+const LOCALE_HOME_RE = new RegExp(`^/(${LOCALES.map((l) => l.replace(/\./g, '\\.')).join('|')})$`);
 
 // Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice: rerender-dependencies)
 function useThrottle<T extends (...args: unknown[]) => void>(
@@ -49,7 +53,7 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
   // Check if we're on the homepage (has dark hero background)
-  const isHomePage = pathname === '/' || /^\/(ko|en|ja|zh)$/.test(pathname);
+  const isHomePage = pathname === '/' || LOCALE_HOME_RE.test(pathname);
 
   // Use dark styling on non-homepage or when scrolled
   const useDarkStyle = isScrolled || !isHomePage;
@@ -227,8 +231,8 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* Right Side: CTA + Language Switcher */}
-            <div className="flex items-center gap-2 md:gap-3 xl:gap-4">
+            {/* Right Side: CTA + Language Switcher (shrink-0: 우측 영역 절대 압축 금지 → LanguageSwitcher 항상 노출 보장) */}
+            <div className="flex items-center gap-2 md:gap-3 xl:gap-4 shrink-0">
               {/* Consultation Button - Desktop */}
               <Link
                 href="/contact"
