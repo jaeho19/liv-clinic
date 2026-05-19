@@ -5,6 +5,18 @@ import { BASE_URL } from '@/lib/seo';
 import { SITE_INFO } from '@/lib/constants';
 import EventDetailClient from './EventDetailClient';
 
+// 이벤트 상세 메타데이터는 자주 갱신되도록 짧은 ISR 적용
+// (관리자에서 이벤트 정보 수정 시 탭 제목/OG 정보가 빠르게 반영되어야 함)
+export const revalidate = 60;
+
+// 언어별 이벤트 페이지 기본 제목 (이벤트를 찾지 못했을 때 fallback)
+const FALLBACK_TITLES: Record<string, string> = {
+  ko: '이벤트 | 리브성형외과',
+  en: 'Events | LIV Plastic Surgery',
+  ja: 'イベント | リブ形成外科',
+  zh: '活动 | LIV整形外科',
+};
+
 // Server-side: Supabase에서 이벤트 데이터 가져오기
 async function getEvent(slug: string) {
   const supabase = createClient<Database>(
@@ -32,8 +44,10 @@ export async function generateMetadata({
   const event = await getEvent(eventId);
 
   if (!event) {
+    // 사용자에게 "찾을 수 없음" 같은 부정 문구가 탭/주소창에 노출되지 않도록
+    // 중립적인 이벤트 페이지 기본 제목을 fallback으로 사용
     return {
-      title: '이벤트를 찾을 수 없습니다 | 리브성형외과',
+      title: FALLBACK_TITLES[locale] || FALLBACK_TITLES.ko,
     };
   }
 
