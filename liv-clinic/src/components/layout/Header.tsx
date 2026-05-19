@@ -172,7 +172,13 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className={`hidden lg:flex items-center transition-all duration-300 ${isScrolled ? 'gap-6' : 'gap-8'}`}>
+            <nav
+              className={`hidden lg:flex items-center transition-all duration-300 ${
+                isScrolled
+                  ? 'gap-4 xl:gap-5 2xl:gap-6'
+                  : 'gap-5 xl:gap-6 2xl:gap-8'
+              }`}
+            >
               {navItems.map((item) => (
                 <div
                   key={item.key}
@@ -182,8 +188,8 @@ export default function Header() {
                 >
                   <Link
                     href={item.href}
-                    className={`font-medium tracking-[0.02em] transition-all duration-300 hover:text-primary ${
-                      isScrolled ? 'text-sm' : 'text-[15px]'
+                    className={`whitespace-nowrap font-medium tracking-[0.02em] transition-all duration-300 hover:text-primary ${
+                      isScrolled ? 'text-[13px] xl:text-sm' : 'text-sm xl:text-[15px]'
                     } ${
                       useDarkStyle ? 'text-mono' : 'text-white text-shadow-light'
                     }`}
@@ -222,12 +228,12 @@ export default function Header() {
             </nav>
 
             {/* Right Side: CTA + Language Switcher */}
-            <div className="flex items-center gap-3 md:gap-4">
+            <div className="flex items-center gap-2 md:gap-3 xl:gap-4">
               {/* Consultation Button - Desktop */}
               <Link
                 href="/contact"
-                className={`hidden md:block btn-primary transition-all duration-300 ${
-                  isScrolled ? 'text-xs py-2 px-4' : 'text-sm py-2.5 px-6'
+                className={`hidden md:inline-block whitespace-nowrap btn-primary transition-all duration-300 ${
+                  isScrolled ? 'text-xs py-2 px-3 xl:px-4' : 'text-sm py-2.5 px-4 xl:px-6'
                 } ${
                   !useDarkStyle && 'bg-white/20 hover:bg-white/30 backdrop-blur-sm'
                 }`}

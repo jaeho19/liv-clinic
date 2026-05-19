@@ -29,14 +29,14 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-2.5 md:gap-3 text-base md:text-lg font-medium transition-colors min-h-[48px] md:min-h-[52px] px-3 md:px-4 ${
+        className={`flex items-center gap-2.5 md:gap-3 lg:gap-2 text-base md:text-lg lg:text-sm xl:text-[15px] font-medium transition-colors min-h-[48px] md:min-h-[52px] lg:min-h-[40px] px-3 md:px-4 lg:px-2 xl:px-2.5 ${
           isScrolled ? 'text-mono hover:text-primary' : 'text-white hover:text-white/80'
         }`}
       >
-        <span className="text-xl md:text-2xl leading-none">{currentLanguage.flag}</span>
+        <span className="text-xl md:text-2xl lg:text-base xl:text-lg leading-none">{currentLanguage.flag}</span>
         <span className="inline font-semibold tracking-wide">{currentLanguage.label}</span>
         <svg
-          className={`w-5 h-5 md:w-6 md:h-6 transition-transform ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-5 h-5 md:w-6 md:h-6 lg:w-4 lg:h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
