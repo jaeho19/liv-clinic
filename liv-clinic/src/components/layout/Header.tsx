@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { Link } from '@/i18n/routing';
 import NextLink from 'next/link';
@@ -10,10 +10,17 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu from './MobileMenu';
 import { MAIN_NAV } from '@/lib/constants';
-import { LOCALES } from '@/i18n/routing';
+import { LOCALES, type Locale } from '@/i18n/routing';
 
 // LOCALES SSOT 기반 홈 경로 매칭 — 새 locale 추가 시 자동 동기화
 const LOCALE_HOME_RE = new RegExp(`^/(${LOCALES.map((l) => l.replace(/\./g, '\\.')).join('|')})$`);
+
+// 번역 라벨이 길어 데스크톱 nav가 우측 영역(언어 스위처 포함)을 viewport 밖으로
+// 밀어내는 locale. 측정 결과 1440px 기준:
+//   mn=64px / fr=63px / ru=94px / ja=17px overflow.
+// 이 locale들은 lg+ 에서도 데스크톱 nav 대신 햄버거 메뉴를 강제해 언어 스위처
+// 가시성을 보장한다. 다른 locale은 기존 lg:flex 동작 유지.
+const COMPACT_NAV_LOCALES = new Set<Locale>(['ja', 'fr', 'mn', 'ru']);
 
 // Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice: rerender-dependencies)
 function useThrottle<T extends (...args: unknown[]) => void>(
@@ -48,6 +55,8 @@ export default function Header() {
   const t = useTranslations('nav');
   const tCommon = useTranslations('common');
   const pathname = usePathname();
+  const locale = useLocale() as Locale;
+  const useCompactMenu = COMPACT_NAV_LOCALES.has(locale);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -72,8 +81,9 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Close mobile menu on resize
+  // Close mobile menu on resize — compact-nav locale은 lg+ 에서도 햄버거 메뉴를 유지하므로 제외
   useEffect(() => {
+    if (useCompactMenu) return;
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setIsMobileMenuOpen(false);
@@ -82,7 +92,7 @@ export default function Header() {
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [useCompactMenu]);
 
   const navItems = [
     {
@@ -175,9 +185,10 @@ export default function Header() {
               />
             </Link>
 
-            {/* Desktop Navigation */}
+            {/* Desktop Navigation — 긴 라벨 locale(COMPACT_NAV_LOCALES)은 데스크톱 nav를 숨겨
+                 우측 언어 스위처가 가려지지 않게 한다 (햄버거로 fallback) */}
             <nav
-              className={`hidden lg:flex items-center transition-all duration-300 ${
+              className={`${useCompactMenu ? 'hidden' : 'hidden lg:flex'} items-center transition-all duration-300 ${
                 isScrolled
                   ? 'gap-4 xl:gap-5 2xl:gap-6'
                   : 'gap-5 xl:gap-6 2xl:gap-8'
@@ -263,10 +274,10 @@ export default function Header() {
               {/* Language Switcher */}
               <LanguageSwitcher isScrolled={useDarkStyle} />
 
-              {/* Mobile Menu Button */}
+              {/* Mobile Menu Button — 긴 라벨 locale은 데스크톱에서도 햄버거 유지 */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className="lg:hidden p-3 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                className={`${useCompactMenu ? '' : 'lg:hidden'} p-3 min-w-[44px] min-h-[44px] flex items-center justify-center`}
                 aria-label="Open menu"
               >
                 <svg
