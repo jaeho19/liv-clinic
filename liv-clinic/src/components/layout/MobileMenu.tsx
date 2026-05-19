@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
-import { Link, useRouter, usePathname, type Locale } from '@/i18n/routing';
+import { Link, usePathname } from '@/i18n/routing';
 import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -33,7 +33,6 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
   const tNav = useTranslations('nav');
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
   const dir = useDirection();
   const menuRef = useRef<HTMLDivElement>(null);
@@ -76,11 +75,13 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
     );
   }, []);
 
-  // useCallback으로 메모이제이션 (Vercel Best Practice: rerender-functional-setstate)
+  // Hard navigation: next-intl 소프트 라우팅 + AnimatePresence(메뉴 슬라이드 exit) 동시 발생 시
+  // React reconciler가 "removeChild ... not a child of this node" 예외로 페이지를 깨뜨림.
+  // locale 전환은 폰트·dir·서버 컴포넌트 모두 새로 받아야 하므로 전체 리로드가 안전·정합.
   const handleLanguageChange = useCallback((langCode: string) => {
-    router.replace(pathname, { locale: langCode as Locale });
-    onClose();
-  }, [router, pathname, onClose]);
+    const suffix = pathname === '/' ? '' : pathname;
+    window.location.assign(`/${langCode}${suffix}`);
+  }, [pathname]);
 
   return (
     <AnimatePresence>

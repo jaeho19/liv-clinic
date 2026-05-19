@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter, type Locale } from '@/i18n/routing';
+import { usePathname } from '@/i18n/routing';
 import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -15,14 +15,16 @@ const languages = LOCALE_ORDER.map((code) => LOCALE_META[code]);
 export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcherProps) {
   const [isOpen, setIsOpen] = useState(false);
   const locale = useLocale();
-  const router = useRouter();
   const pathname = usePathname();
 
   const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0];
 
+  // Hard navigation: next-intl 소프트 라우팅 + AnimatePresence(드롭다운 exit) 동시 발생 시
+  // React reconciler가 "removeChild ... not a child of this node" 예외로 페이지를 깨뜨림.
+  // locale 전환은 폰트·dir·서버 컴포넌트 모두 새로 받아야 하므로 전체 리로드가 안전·정합.
   const handleLanguageChange = (langCode: string) => {
-    router.replace(pathname, { locale: langCode as Locale });
-    setIsOpen(false);
+    const suffix = pathname === '/' ? '' : pathname;
+    window.location.assign(`/${langCode}${suffix}`);
   };
 
   return (
