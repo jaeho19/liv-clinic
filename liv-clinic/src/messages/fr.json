@@ -1,4 +1,27 @@
 {
+  "mediaNews": {
+    "label": "Media & News",
+    "title": "La philosophie de soin de LIV, partagée à travers les médias et l'actualité",
+    "description": "Fondée sur une philosophie d'anti-âge naturel, de lifting précis et de régénération, LIV Plastic Surgery partage son histoire à travers des émissions, des interviews dans des médias spécialisés, des activités académiques, des programmes internationaux et l'actualité LIV.",
+    "description2": "Plutôt que des changements spectaculaires, nous privilégions des actes mesurés, adaptés à la structure du visage et à l'état de peau de chacun.",
+    "viewAll": "Voir tous les médias",
+    "reservation": "Prendre rendez-vous",
+    "page": {
+      "title": "Media & News",
+      "subtitle": "La philosophie de soin de LIV, partagée à travers la presse et l'actualité LIV",
+      "description": "Retrouvez en un seul endroit les apparitions télévisées, les interviews dans des médias spécialisés, les activités académiques, les certifications internationales et l'actualité de la clinique LIV Plastic Surgery. Fondée sur un anti-âge naturel et des soins personnalisés précis, LIV partage sa philosophie et ses activités professionnelles à travers divers canaux, en Corée et à l'international."
+    },
+    "filters": {
+      "all": "Tout",
+      "press": "Presse",
+      "news": "Actualités LIV",
+      "academic_global": "Académique et international",
+      "visit": "Visites"
+    },
+    "readArticle": "Lire l'article",
+    "readMore": "En savoir plus",
+    "empty": "Aucune actualité à afficher."
+  },
   "common": {
     "home": "Accueil",
     "skipToContent": "Aller au contenu",
