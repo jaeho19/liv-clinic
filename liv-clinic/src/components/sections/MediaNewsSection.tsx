@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, ScrollLink } from '@/components/ui';
@@ -8,9 +9,25 @@ import MediaNewsCard from './MediaNewsCard';
 
 export default function MediaNewsSection() {
   const t = useTranslations('mediaNews');
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // 다른 페이지에서 `/{locale}#media-news`로 진입한 경우, 이 섹션(동적 임포트)이
+  // 마운트되는 시점에 직접 스크롤한다. Next.js 기본 해시 스크롤은 해당 청크가
+  // 늦게 로드되면 대상 요소를 찾지 못해 동작하지 않을 수 있기 때문이다.
+  useEffect(() => {
+    if (window.location.hash !== '#media-news') return;
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const timer = setTimeout(() => {
+      sectionRef.current?.scrollIntoView({
+        behavior: prefersReduced ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <section className="section-gap bg-background">
+    <section ref={sectionRef} id="media-news" className="section-gap bg-background scroll-mt-24">
       <div className="container-custom">
         {/* Header */}
         <AnimateOnScroll>

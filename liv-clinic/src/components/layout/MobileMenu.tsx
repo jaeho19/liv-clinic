@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, type ComponentProps } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link, usePathname } from '@/i18n/routing';
@@ -8,11 +8,19 @@ import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDirection } from '@/hooks/useDirection';
+import { useHashNavigation } from '@/hooks/useHashNavigation';
 
-interface NavItem {
+// href는 일반 경로 문자열('/about') 외에 홈+해시 앵커({ pathname: '/', hash: 'media-news' })도
+// 허용해야 하므로 next-intl Link의 href 타입을 그대로 사용한다.
+type NavHref = ComponentProps<typeof Link>['href'];
+
+export interface NavItem {
   key: string;
   label: string;
-  href: string;
+  href: NavHref;
+  // 홈 섹션 앵커 항목이면 대상 요소 id(예: 'media-news'). 지정 시 소프트 라우팅 대신
+  // useHashNavigation으로 처리한다.
+  hash?: string;
   children?: NavItem[];
 }
 
@@ -35,6 +43,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
   const locale = useLocale();
   const pathname = usePathname();
   const dir = useDirection();
+  const handleHashNav = useHashNavigation();
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -188,16 +197,28 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                             className="overflow-hidden"
                           >
                             <div className="pb-4 ps-4 space-y-1">
-                              {item.children.map((child) => (
-                                <Link
-                                  key={child.key}
-                                  href={child.href}
-                                  onClick={onClose}
-                                  className="block py-3 text-sm text-mono-light hover:text-primary transition-colors min-h-[44px] flex items-center"
-                                >
-                                  {child.label}
-                                </Link>
-                              ))}
+                              {item.children.map((child) =>
+                                // 홈 섹션 앵커 항목은 일반 <a>로 렌더(소프트 라우팅 회피)
+                                child.hash ? (
+                                  <a
+                                    key={child.key}
+                                    href={`/${locale}#${child.hash}`}
+                                    onClick={(e) => handleHashNav(e, child.hash!)}
+                                    className="block py-3 text-sm text-mono-light hover:text-primary transition-colors min-h-[44px] flex items-center"
+                                  >
+                                    {child.label}
+                                  </a>
+                                ) : (
+                                  <Link
+                                    key={child.key}
+                                    href={child.href}
+                                    onClick={onClose}
+                                    className="block py-3 text-sm text-mono-light hover:text-primary transition-colors min-h-[44px] flex items-center"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                )
+                              )}
                             </div>
                           </motion.div>
                         )}
