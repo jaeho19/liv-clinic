@@ -91,6 +91,7 @@
     "about": "Бидний тухай",
     "aboutBrand": "LIV брэнд",
     "aboutStaff": "Эмч нар",
+    "aboutMediaNews": "Хэвлэл мэдээлэл",
     "aboutEquipment": "Тоног төхөөрөмж",
     "aboutLocation": "Байршил",
     "signature": "Онцлох",
@@ -5476,6 +5477,7 @@
         "consultOnly": "Дэлгэрэнгүй үнэ зөвлөгөөний үед олгогдоно"
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Juvelook Skin Booster",
         "elementWhitening": "Element Whitening Booster",
         "stemcell": "Үүдэл эсийн Skin Booster",

@@ -91,6 +91,7 @@
     "about": "เกี่ยวกับ",
     "aboutBrand": "แบรนด์ของเรา",
     "aboutStaff": "เจ้าหน้าที่การแพทย์",
+    "aboutMediaNews": "สื่อและข่าวสาร",
     "aboutEquipment": "อุปกรณ์",
     "aboutLocation": "ที่ตั้ง",
     "signature": "ลายเซ็น",
@@ -5476,6 +5477,7 @@
         "consultOnly": "ราคาโดยละเอียดให้ไว้ในระหว่างการให้คำปรึกษา"
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Juvelook สกินบูสเตอร์",
         "elementWhitening": "องค์ประกอบไวท์เทนนิ่งบูสเตอร์",
         "stemcell": "สเต็มเซลล์ผิวบูสเตอร์",

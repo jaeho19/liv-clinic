@@ -91,6 +91,7 @@
     "about": "About",
     "aboutBrand": "Our Brand",
     "aboutStaff": "Medical Staff",
+    "aboutMediaNews": "Media & News",
     "aboutEquipment": "Equipment",
     "aboutLocation": "Location",
     "signature": "Signature",
@@ -5476,6 +5477,7 @@
         "consultOnly": "Detailed pricing provided during consultation"
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Juvelook Skin Booster",
         "elementWhitening": "Element Whitening Booster",
         "stemcell": "Stem Cell Skin Booster",

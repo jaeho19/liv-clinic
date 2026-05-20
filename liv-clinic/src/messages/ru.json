@@ -91,6 +91,7 @@
     "about": "О",
     "aboutBrand": "Наш бренд",
     "aboutStaff": "Медицинский персонал",
+    "aboutMediaNews": "СМИ и новости",
     "aboutEquipment": "Оборудование",
     "aboutLocation": "Расположение",
     "signature": "Подпись",
@@ -5476,6 +5477,7 @@
         "consultOnly": "Подробную стоимость уточняйте при консультации."
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Бустер для кожи Juvelook",
         "elementWhitening": "Элементный отбеливающий усилитель",
         "stemcell": "Усилитель кожи со стволовыми клетками",

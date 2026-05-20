@@ -183,6 +183,12 @@ export const PRICING: Record<string, TreatmentPricing> = {
     id: 'skinbooster',
     groups: [
       {
+        groupKey: 'hilowave',
+        rows: [
+          { rowKey: 'volume2cc', price: '500,000', suffix: 'starting' },
+        ],
+      },
+      {
         groupKey: 'juvelook',
         rows: [
           { rowKey: 'volume10cc', price: '270,000', suffix: 'starting' },
