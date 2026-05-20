@@ -8,7 +8,8 @@ import NextLink from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
-import MobileMenu from './MobileMenu';
+import MobileMenu, { type NavItem } from './MobileMenu';
+import { useHashNavigation } from '@/hooks/useHashNavigation';
 import { MAIN_NAV } from '@/lib/constants';
 import { LOCALES, type Locale } from '@/i18n/routing';
 
@@ -60,6 +61,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const handleHashNav = useHashNavigation();
 
   // Check if we're on the homepage (has dark hero background)
   const isHomePage = pathname === '/' || LOCALE_HOME_RE.test(pathname);
@@ -94,7 +96,7 @@ export default function Header() {
     return () => window.removeEventListener('resize', handleResize);
   }, [useCompactMenu]);
 
-  const navItems = [
+  const navItems: NavItem[] = [
     {
       key: 'about',
       label: t('about'),
@@ -102,7 +104,7 @@ export default function Header() {
       children: [
         { key: 'aboutBrand', label: t('aboutBrand'), href: '/about' },
         { key: 'aboutStaff', label: t('aboutStaff'), href: '/about/staff' },
-        { key: 'aboutMediaNews', label: t('aboutMediaNews'), href: { pathname: '/', hash: 'media-news' } },
+        { key: 'aboutMediaNews', label: t('aboutMediaNews'), href: { pathname: '/', hash: 'media-news' }, hash: 'media-news' },
         { key: 'aboutEquipment', label: t('aboutEquipment'), href: '/about/equipment' },
         { key: 'aboutLocation', label: t('aboutLocation'), href: '/about/location' },
       ],
@@ -225,15 +227,31 @@ export default function Header() {
                           className="absolute top-full start-0 pt-4"
                         >
                           <div className="bg-white rounded-xl shadow-lg py-3 min-w-[180px]">
-                            {item.children.map((child) => (
-                              <Link
-                                key={child.key}
-                                href={child.href}
-                                className="block px-5 py-3 text-sm text-mono hover:text-primary hover:bg-background transition-colors min-h-[44px] flex items-center"
-                              >
-                                {child.label}
-                              </Link>
-                            ))}
+                            {item.children.map((child) =>
+                              // 홈 섹션 앵커 항목은 next-intl Link(소프트 라우팅) 대신 일반 <a>로
+                              // 렌더한다. onClick에서 setState/scroll을 동기 호출하면 드롭다운
+                              // AnimatePresence exit와 겹쳐 reconciler가 깨지므로, 클릭 시 React
+                              // 작업을 전혀 하지 않고 브라우저 네이티브 해시 스크롤에 맡긴다.
+                              // (드롭다운은 스크롤 후 mouseleave로 자연스럽게 닫힘)
+                              child.hash ? (
+                                <a
+                                  key={child.key}
+                                  href={`/${locale}#${child.hash}`}
+                                  onClick={(e) => handleHashNav(e, child.hash!)}
+                                  className="block px-5 py-3 text-sm text-mono hover:text-primary hover:bg-background transition-colors min-h-[44px] flex items-center"
+                                >
+                                  {child.label}
+                                </a>
+                              ) : (
+                                <Link
+                                  key={child.key}
+                                  href={child.href}
+                                  className="block px-5 py-3 text-sm text-mono hover:text-primary hover:bg-background transition-colors min-h-[44px] flex items-center"
+                                >
+                                  {child.label}
+                                </Link>
+                              )
+                            )}
                           </div>
                         </motion.div>
                       )}
