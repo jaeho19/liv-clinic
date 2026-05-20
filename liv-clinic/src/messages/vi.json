@@ -91,6 +91,7 @@
     "about": "Về",
     "aboutBrand": "Thương hiệu của chúng tôi",
     "aboutStaff": "nhân viên y tế",
+    "aboutMediaNews": "Truyền thông & Tin tức",
     "aboutEquipment": "Thiết bị",
     "aboutLocation": "Vị trí",
     "signature": "Chữ ký",
@@ -5476,6 +5477,7 @@
         "consultOnly": "Báo giá chi tiết khi tư vấn"
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Tăng cường da Juvelook",
         "elementWhitening": "Yếu tố tăng cường làm trắng",
         "stemcell": "Tăng cường tế bào gốc cho da",

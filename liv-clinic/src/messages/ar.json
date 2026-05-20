@@ -91,6 +91,7 @@
     "about": "من نحن",
     "aboutBrand": "علامة ليف",
     "aboutStaff": "الفريق الطبي",
+    "aboutMediaNews": "الإعلام والأخبار",
     "aboutEquipment": "المعدات",
     "aboutLocation": "الموقع",
     "signature": "البرامج المميزة",
@@ -5476,6 +5477,7 @@
         "consultOnly": "يتم تقديم تفاصيل الأسعار أثناء الاستشارة"
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Juvelook Skin Booster",
         "elementWhitening": "Element Whitening Booster",
         "stemcell": "Skin Booster بالخلايا الجذعية",

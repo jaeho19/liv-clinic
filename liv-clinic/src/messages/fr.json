@@ -91,6 +91,7 @@
     "about": "À propos",
     "aboutBrand": "Marque LIV",
     "aboutStaff": "Équipe médicale",
+    "aboutMediaNews": "Médias & Actualités",
     "aboutEquipment": "Équipements",
     "aboutLocation": "Plan d'accès",
     "signature": "Signature",
@@ -5476,6 +5477,7 @@
         "consultOnly": "Tarification détaillée fournie lors de la consultation"
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Skin Booster Juvelook",
         "elementWhitening": "Element Whitening Booster",
         "stemcell": "Skin Booster aux cellules souches",

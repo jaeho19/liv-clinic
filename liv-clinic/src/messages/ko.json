@@ -91,6 +91,7 @@
     "about": "리브 소개",
     "aboutBrand": "리브 브랜드",
     "aboutStaff": "의료진 소개",
+    "aboutMediaNews": "미디어 & 뉴스",
     "aboutEquipment": "보유 장비",
     "aboutLocation": "오시는 길",
     "signature": "시그니처",
@@ -5479,6 +5480,7 @@
         "consultOnly": "상세 가격은 상담 시 안내"
       },
       "skinbooster": {
+        "hilowave": "힐로웨이브",
         "juvelook": "쥬베룩 스킨부스터",
         "elementWhitening": "엘리멘트 미백부스터",
         "stemcell": "줄기세포 스킨부스터",

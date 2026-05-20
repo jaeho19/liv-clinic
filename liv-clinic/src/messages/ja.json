@@ -91,6 +91,7 @@
     "about": "リブ紹介",
     "aboutBrand": "リブブランド",
     "aboutStaff": "医療スタッフ",
+    "aboutMediaNews": "メディア & ニュース",
     "aboutEquipment": "保有機器",
     "aboutLocation": "アクセス",
     "signature": "シグネチャー",
@@ -5477,6 +5478,7 @@
         "consultOnly": "詳細価格は相談時にご案内いたします"
       },
       "skinbooster": {
+        "hilowave": "ヒロウェーブ",
         "juvelook": "ジュベルックスキンブースター",
         "elementWhitening": "エレメント美白ブースター",
         "stemcell": "幹細胞スキンブースター",

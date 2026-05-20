@@ -91,6 +91,7 @@
     "about": "关于LIV",
     "aboutBrand": "LIV品牌",
     "aboutStaff": "医疗团队",
+    "aboutMediaNews": "媒体与新闻",
     "aboutEquipment": "设备介绍",
     "aboutLocation": "位置指南",
     "signature": "特色项目",
@@ -5476,6 +5477,7 @@
         "consultOnly": "详细价格咨询时告知"
       },
       "skinbooster": {
+        "hilowave": "Hilowave",
         "juvelook": "Juvelook 皮肤助推器",
         "elementWhitening": "Element 美白助推器",
         "stemcell": "干细胞皮肤助推器",
