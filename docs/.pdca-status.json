@@ -1,6 +1,6 @@
 {
   "version": "2.0",
-  "lastUpdated": "2026-05-12T21:56:14.824Z",
+  "lastUpdated": "2026-05-20T09:46:55.000Z",
   "activeFeatures": [
     "admin-v2-enhancement",
     "lifting",
@@ -71,9 +71,11 @@
     "i18n",
     "paperclip-sync",
     "__tests__",
-    "scripts"
+    "scripts",
+    "data",
+    "media"
   ],
-  "primaryFeature": "inventory-overview-ux",
+  "primaryFeature": "media-news",
   "features": {
     "inventory-overview-ux": {
       "phase": "completed",
@@ -212,9 +214,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T01:28:58.473Z",
-        "lastUpdated": "2026-05-12T21:56:14.824Z"
+        "lastUpdated": "2026-05-20T09:34:40.917Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\layout.tsx"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\page.tsx"
     },
     "layout": {
       "phase": "do",
@@ -225,7 +227,7 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T01:58:48.469Z",
-        "lastUpdated": "2026-05-12T01:04:02.853Z"
+        "lastUpdated": "2026-05-19T09:57:51.097Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\layout\\Header.tsx"
     },
@@ -355,9 +357,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-06T08:27:55.186Z",
-        "lastUpdated": "2026-05-10T08:36:01.108Z"
+        "lastUpdated": "2026-05-19T07:01:05.279Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\events\\[eventId]\\EventDetailClient.tsx"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\events\\[eventId]\\page.tsx"
     },
     "admin": {
       "phase": "do",
@@ -524,9 +526,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-08T02:47:56.351Z",
-        "lastUpdated": "2026-05-10T13:17:58.575Z"
+        "lastUpdated": "2026-05-20T09:32:55.031Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\translate_messages_pass2.py"
+      "lastFile": "C:\\dev\\LIV_homepage\\_add_medianews_i18n.py"
     },
     "admin-user-guide": {
       "phase": "check",
@@ -684,9 +686,9 @@
       "documents": {},
       "timestamps": {
         "started": "2026-02-08T10:53:02.537Z",
-        "lastUpdated": "2026-05-12T21:55:58.333Z"
+        "lastUpdated": "2026-05-20T09:40:21.076Z"
       },
-      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\sections\\Hero.tsx"
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\components\\sections\\MediaNewsCard.tsx"
     },
     "voice-note": {
       "phase": "do",
@@ -1149,6 +1151,82 @@
         "lastUpdated": "2026-05-12T04:07:32.297Z"
       },
       "lastFile": "C:\\dev\\LIV_homepage\\scripts\\generate-notification-sound.py"
+    },
+    "page-speed-optimization": {
+      "phase": "completed",
+      "phaseNumber": 6,
+      "matchRate": 100,
+      "iterationCount": 0,
+      "requirements": [
+        "FR-01: getAnalyticsSettings() DB 호출 제거",
+        "FR-02: 공개 페이지 ISR (revalidate=3600) 적용",
+        "FR-03: Hero poster 404 수정 (/images/hero/hero-1.jpg)",
+        "FR-04: Hero poster preload + fetchPriority=high",
+        "FR-05: GA/Naver Analytics 환경변수 폴백",
+        "FR-06: [User-deferred] Hero 비디오 ffmpeg 압축"
+      ],
+      "documents": {
+        "plan": "docs/01-plan/features/page-speed-optimization.plan.md",
+        "design": "docs/02-design/features/page-speed-optimization.design.md",
+        "analysis": "docs/03-analysis/page-speed-optimization.analysis.md",
+        "report": "docs/04-report/features/page-speed-optimization.report.md"
+      },
+      "timestamps": {
+        "started": "2026-05-13T07:30:00.000Z",
+        "lastUpdated": "2026-05-13T00:39:06.397182Z",
+        "completedAt": "2026-05-13T00:39:06.397182Z"
+      },
+      "lastFile": "docs/04-report/features/page-speed-optimization.report.md"
+    },
+    "media-news": {
+      "phase": "completed",
+      "phaseNumber": 6,
+      "matchRate": 99,
+      "iterationCount": 0,
+      "requirements": [
+        "FR-1~5: 메인 Media & News 섹션 (제목/설명/6카드/CTA 2개, Doctor-Location 사이)",
+        "FR-6~14: /[locale]/media 상세 아카이브 (히어로/필터 5탭/연도그룹/카드/모달/SEO)",
+        "FR-15: press/news 은은한 색·라벨 구분",
+        "FR-16: 11개 로케일 mediaNews 네임스페이스 추가"
+      ],
+      "documents": {
+        "plan": "docs/01-plan/features/media-news.plan.md",
+        "design": "docs/02-design/features/media-news.design.md",
+        "analysis": "docs/03-analysis/media-news.analysis.md",
+        "report": "docs/04-report/features/media-news.report.md"
+      },
+      "timestamps": {
+        "started": "2026-05-20T09:21:05.000Z",
+        "lastUpdated": "2026-05-20T09:46:55.000Z",
+        "completedAt": "2026-05-20T09:46:55.000Z"
+      },
+      "lastFile": "docs/04-report/features/media-news.report.md"
+    },
+    "data": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-05-20T09:30:24.796Z",
+        "lastUpdated": "2026-05-20T09:30:24.796Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\lib\\data\\mediaNewsData.ts"
+    },
+    "media": {
+      "phase": "do",
+      "phaseNumber": 3,
+      "matchRate": null,
+      "iterationCount": 0,
+      "requirements": [],
+      "documents": {},
+      "timestamps": {
+        "started": "2026-05-20T09:35:02.786Z",
+        "lastUpdated": "2026-05-20T09:35:46.548Z"
+      },
+      "lastFile": "C:\\dev\\LIV_homepage\\liv-clinic\\src\\app\\[locale]\\media\\layout.tsx"
     }
   },
   "pipeline": {
@@ -1159,7 +1237,7 @@
   "session": {
     "startedAt": "2026-01-30T22:26:49.658Z",
     "onboardingCompleted": false,
-    "lastActivity": "2026-05-12T21:56:14.824Z"
+    "lastActivity": "2026-05-20T09:40:21.076Z"
   },
   "history": [
     {
@@ -7435,6 +7513,270 @@
     {
       "timestamp": "2026-05-12T21:56:14.824Z",
       "feature": "[locale]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T04:56:17.457Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T04:56:52.866Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T04:57:24.408Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T04:58:14.586Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T04:59:03.649Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T06:13:04.240Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T06:13:36.715Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T06:14:49.211Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T06:59:55.590Z",
+      "feature": "[eventId]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T07:01:05.279Z",
+      "feature": "[eventId]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:04:25.032Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:08:10.142Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:10:55.316Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:22:09.248Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:27:22.278Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:27:52.143Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:28:17.169Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:28:41.304Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T08:49:13.262Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:34:47.228Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:39:47.772Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:43:09.187Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:47:59.491Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:55:49.819Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:56:19.526Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:56:51.689Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:57:17.922Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T09:57:51.097Z",
+      "feature": "layout",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T10:19:25.199Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T10:29:10.441Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-19T10:57:55.049Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:30:24.796Z",
+      "feature": "data",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:32:55.031Z",
+      "feature": "LIV_homepage",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:33:34.971Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:33:56.224Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:34:09.867Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:34:21.739Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:34:28.131Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:34:37.047Z",
+      "feature": "[locale]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:34:40.917Z",
+      "feature": "[locale]",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:35:02.786Z",
+      "feature": "media",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:35:46.548Z",
+      "feature": "media",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:39:17.902Z",
+      "feature": "sections",
+      "phase": "do",
+      "action": "updated"
+    },
+    {
+      "timestamp": "2026-05-20T09:40:21.076Z",
+      "feature": "sections",
       "phase": "do",
       "action": "updated"
     }

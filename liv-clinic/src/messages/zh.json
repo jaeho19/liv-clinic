@@ -1,4 +1,27 @@
 {
+  "mediaNews": {
+    "label": "Media & News",
+    "title": "通过媒体与资讯传递LIV的诊疗理念",
+    "description": "LIV整形外科秉持自然抗衰、精密提升、再生为核心的诊疗理念，通过电视节目、专业媒体采访、学术活动、全球项目及LIV资讯传递多样的故事。",
+    "description2": "比起夸张的改变，我们更注重根据个人面部结构与肌肤状态进行节制的施术。",
+    "viewAll": "查看全部媒体",
+    "reservation": "预约咨询",
+    "page": {
+      "title": "Media & News",
+      "subtitle": "通过媒体报道与LIV资讯传递LIV的诊疗理念",
+      "description": "您可在此一站查看LIV整形外科的节目出演、专业媒体采访、学术活动、全球认证及医院资讯。LIV以自然抗衰与精密定制诊疗为基础，通过国内外多种渠道传递诊疗理念与专业活动。"
+    },
+    "filters": {
+      "all": "全部",
+      "press": "媒体报道",
+      "news": "LIV资讯",
+      "academic_global": "学术·全球",
+      "visit": "来访资讯"
+    },
+    "readArticle": "查看文章",
+    "readMore": "查看详情",
+    "empty": "暂无可显示的资讯。"
+  },
   "common": {
     "home": "首页",
     "skipToContent": "跳转到主要内容",

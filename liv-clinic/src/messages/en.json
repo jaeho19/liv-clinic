@@ -1,4 +1,27 @@
 {
+  "mediaNews": {
+    "label": "Media & News",
+    "title": "LIV's care philosophy, shared through media and news",
+    "description": "Grounded in a philosophy of natural anti-aging, precise lifting, and regeneration, LIV Plastic Surgery shares its story through broadcasts, professional media interviews, academic activities, global programs, and LIV news.",
+    "description2": "Rather than dramatic change, we pursue restrained procedures tailored to each individual's facial structure and skin condition.",
+    "viewAll": "View all media",
+    "reservation": "Book a consultation",
+    "page": {
+      "title": "Media & News",
+      "subtitle": "LIV's care philosophy, shared through press coverage and LIV news",
+      "description": "Find LIV Plastic Surgery's broadcast appearances, professional media interviews, academic activities, global certifications, and clinic news in one place. Built on natural anti-aging and precise, personalized care, LIV shares its philosophy and professional activities through diverse channels at home and abroad."
+    },
+    "filters": {
+      "all": "All",
+      "press": "Press",
+      "news": "LIV News",
+      "academic_global": "Academic & Global",
+      "visit": "Visits"
+    },
+    "readArticle": "Read article",
+    "readMore": "Learn more",
+    "empty": "No news to display."
+  },
   "common": {
     "home": "Home",
     "skipToContent": "Skip to main content",

@@ -1,4 +1,27 @@
 {
+  "mediaNews": {
+    "label": "Media & News",
+    "title": "Triết lý điều trị của LIV qua truyền thông và tin tức",
+    "description": "Dựa trên triết lý chống lão hóa tự nhiên, nâng cơ chính xác và tái tạo, LIV Plastic Surgery chia sẻ câu chuyện của mình qua các chương trình truyền hình, phỏng vấn báo chí chuyên ngành, hoạt động học thuật, chương trình toàn cầu và tin tức LIV.",
+    "description2": "Thay vì những thay đổi cường điệu, chúng tôi theo đuổi các thủ thuật tiết chế phù hợp với cấu trúc khuôn mặt và tình trạng da của từng cá nhân.",
+    "viewAll": "Xem tất cả truyền thông",
+    "reservation": "Đặt lịch tư vấn",
+    "page": {
+      "title": "Media & News",
+      "subtitle": "Triết lý điều trị của LIV qua báo chí và tin tức LIV",
+      "description": "Xem các lần xuất hiện trên truyền hình, phỏng vấn báo chí chuyên ngành, hoạt động học thuật, chứng nhận toàn cầu và tin tức phòng khám của LIV Plastic Surgery tại một nơi. Dựa trên chống lão hóa tự nhiên và điều trị cá nhân hóa chính xác, LIV chia sẻ triết lý và hoạt động chuyên môn qua nhiều kênh trong và ngoài nước."
+    },
+    "filters": {
+      "all": "Tất cả",
+      "press": "Báo chí",
+      "news": "Tin LIV",
+      "academic_global": "Học thuật & Toàn cầu",
+      "visit": "Lượt ghé thăm"
+    },
+    "readArticle": "Xem bài viết",
+    "readMore": "Tìm hiểu thêm",
+    "empty": "Không có tin tức để hiển thị."
+  },
   "common": {
     "home": "Trang chủ",
     "skipToContent": "Chuyển đến nội dung chính",
