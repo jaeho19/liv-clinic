@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef, type ComponentProps } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link, usePathname } from '@/i18n/routing';
@@ -9,10 +9,14 @@ import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDirection } from '@/hooks/useDirection';
 
+// href는 일반 경로 문자열('/about') 외에 홈+해시 앵커({ pathname: '/', hash: 'media-news' })도
+// 허용해야 하므로 next-intl Link의 href 타입을 그대로 사용한다.
+type NavHref = ComponentProps<typeof Link>['href'];
+
 interface NavItem {
   key: string;
   label: string;
-  href: string;
+  href: NavHref;
   children?: NavItem[];
 }
 

@@ -102,6 +102,7 @@ export default function Header() {
       children: [
         { key: 'aboutBrand', label: t('aboutBrand'), href: '/about' },
         { key: 'aboutStaff', label: t('aboutStaff'), href: '/about/staff' },
+        { key: 'aboutMediaNews', label: t('aboutMediaNews'), href: { pathname: '/', hash: 'media-news' } },
         { key: 'aboutEquipment', label: t('aboutEquipment'), href: '/about/equipment' },
         { key: 'aboutLocation', label: t('aboutLocation'), href: '/about/location' },
       ],
