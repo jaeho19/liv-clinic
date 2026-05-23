@@ -20,6 +20,10 @@ export interface MediaNewsItem {
   source?: string;
   link?: string;
   isExternal?: boolean;
+  /** 카드 썸네일(로컬 경로). 없으면 images[0] → 폴백 순으로 해상 */
+  image?: string;
+  /** 카드 썸네일 초점(object-position, 예: '52% 14%'). 얼굴 검출 기반, 없으면 중앙 */
+  imagePosition?: string;
   /** 내부 소식 상세 모달용 본문(문단 배열). 없으면 description으로 폴백 */
   body?: string[];
   /** 내부 소식 상세 모달용 이미지 경로 배열 */
@@ -36,6 +40,10 @@ export interface FeaturedMediaCard {
   description: string;
   link: string;
   isExternal: boolean;
+  /** 카드 썸네일(로컬 경로). 없으면 폴백 플레이스홀더 */
+  image?: string;
+  /** 카드 썸네일 초점(object-position, 예: '52% 14%'). 얼굴 검출 기반, 없으면 중앙 */
+  imagePosition?: string;
   /** 내부 소식 카드 클릭 시 /media에서 자동 오픈할 상세 항목 id (mediaNewsData.id 참조) */
   newsId?: string;
 }
@@ -73,6 +81,7 @@ export const mediaNewsData: MediaNewsItem[] = [
       '/images/media-news/medical-aesthetic-1.jpg',
       '/images/media-news/medical-aesthetic-2.jpg',
     ],
+    imagePosition: '63% 57%',
     link: '/media',
     isExternal: false,
   },
@@ -86,6 +95,8 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: '하이뉴스',
     description:
       '김수영 리브성형외과 대표원장이 글로벌 실리프팅 브랜드 APTOS의 본사 공식 트레이너, International Trainer 자격을 획득했습니다. 임상 경험과 시술 숙련도를 바탕으로 리프팅 시술에 대한 전문성을 인정받은 사례입니다.',
+    image: '/images/media-news/og/1.jpg',
+    imagePosition: '25% 30%',
     link: 'https://www.hinews.co.kr/view.php?ud=202604081129541521dacadeb388_48',
     isExternal: true,
   },
@@ -100,6 +111,8 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: 'SBS / Vegan News',
     description:
       '피부 탄력, 생활습관 노화, 콜라겐 재생에 대한 내용을 중심으로 안티에이징 관리에 대한 전문가 의견을 전했습니다.',
+    image: '/images/media-news/og/2.png',
+    imagePosition: '52% 14%',
     link: 'https://www.vegannews.co.kr/news/article.html?no=354684',
     isExternal: true,
   },
@@ -113,6 +126,7 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: '이슈메이커',
     description:
       'APTOS 본사 초청 한국 대표 의료진으로 소개되며, 리프팅 시술과 관련한 국제 프로그램에 참여했습니다.',
+    image: '/images/media-news/og/3.jpg',
     link: 'https://www.issuemaker.kr/news/articleView.html?idxno=51127',
     isExternal: true,
   },
@@ -126,6 +140,8 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: '이슈메이커',
     description:
       '슬로우에이징 철학, 재생 시술, 신사역 확장에 관한 리브성형외과의 브랜드 방향성과 진료 철학이 소개되었습니다.',
+    image: '/images/media-news/og/4.jpg',
+    imagePosition: '83% 18%',
     link: 'https://www.issuemaker.kr/news/articleView.html?idxno=50870',
     isExternal: true,
   },
@@ -139,6 +155,8 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: '헤모필리아 라이프',
     description:
       'Ultherapy-Prime 도입과 정밀한 SMAS 타깃 리프팅에 대한 리브성형외과의 접근을 소개했습니다.',
+    image: '/images/media-news/og/5.png',
+    imagePosition: '49% 30%',
     link: 'http://www.hemophilia.co.kr/news/articleView.html?idxno=32088',
     isExternal: true,
   },
@@ -152,6 +170,8 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: '메디컬투데이',
     description:
       '52가지 색조와 FDA 승인 색소를 활용한 흉터 및 저색소 부위의 자연스러운 톤 재건 시술이 소개되었습니다.',
+    image: '/images/media-news/og/6.jpg',
+    imagePosition: '51% 17%',
     link: 'https://mdtoday.co.kr/news/view/1065576613797810',
     isExternal: true,
   },
@@ -244,6 +264,8 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: '이슈메이커',
     description:
       '동부이촌동 첫 성형외과 개원 과정과 정직한 진료 철학, 자연스러운 아름다움을 지향하는 리브성형외과의 방향성이 소개되었습니다.',
+    image: '/images/media-news/og/13.jpg',
+    imagePosition: '63% 33%',
     link: 'https://www.issuemaker.kr/news/articleView.html?idxno=32976',
     isExternal: true,
   },
@@ -257,6 +279,8 @@ export const mediaNewsData: MediaNewsItem[] = [
     source: '메디컬투데이',
     description:
       '피부 두께와 구조에 따라 에너지 강도, 깊이, 샷 분배를 조절해야 하는 맞춤형 리프팅 접근에 대해 설명했습니다.',
+    image: '/images/media-news/og/14.jpg',
+    imagePosition: '67% 27%',
     link: 'https://mdtoday.co.kr/news/view/179516865175686',
     isExternal: true,
   },
@@ -275,6 +299,8 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     title: '‘메디컬 에스테틱’ 인터뷰 진행',
     description:
       '미용·의료기기 전문 매체 ‘메디컬 에스테틱’과 공식 인터뷰를 진행하며 Slow Aging 철학과 글로벌 리프팅 APTOS 시술을 조명했습니다.',
+    image: '/images/media-news/medical-aesthetic-1.jpg',
+    imagePosition: '63% 57%',
     link: '/media',
     isExternal: false,
     newsId: '15',
@@ -286,6 +312,8 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     year: '2025',
     title: 'SBS 좋은아침 방송 출연',
     description: '피부 탄력, 생활습관 노화, 콜라겐 재생에 대한 전문가 의견을 전했습니다.',
+    image: '/images/media-news/og/2.png',
+    imagePosition: '52% 14%',
     link: 'https://www.vegannews.co.kr/news/article.html?no=354684',
     isExternal: true,
   },
@@ -296,6 +324,8 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     year: '2025',
     title: '이슈메이커 커버스토리',
     description: '슬로우에이징 철학, 재생 시술, 신사역 확장에 관한 리브성형외과의 방향성을 소개했습니다.',
+    image: '/images/media-news/og/4.jpg',
+    imagePosition: '83% 18%',
     link: 'https://www.issuemaker.kr/news/articleView.html?idxno=50870',
     isExternal: true,
   },
@@ -306,6 +336,8 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     year: '2026',
     title: 'APTOS 공식 트레이너 인증',
     description: '김수영 대표원장이 글로벌 실리프팅 브랜드 APTOS의 International Trainer 자격을 획득했습니다.',
+    image: '/images/media-news/og/1.jpg',
+    imagePosition: '25% 30%',
     link: 'https://www.hinews.co.kr/view.php?ud=202604081129541521dacadeb388_48',
     isExternal: true,
   },

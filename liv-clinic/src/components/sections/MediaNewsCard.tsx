@@ -4,12 +4,15 @@ import { motion } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import type { MediaNewsItem, FeaturedMediaCard } from '@/lib/data/mediaNewsData';
+import MediaNewsCardMedia from './MediaNewsCardMedia';
 
 interface MediaNewsCardProps {
   item: MediaNewsItem | FeaturedMediaCard;
   /** 제공 시 내부 소식 클릭 → 모달 (아카이브). 미제공 시 내부 소식은 /media로 이동 (메인) */
   onSelect?: (item: MediaNewsItem) => void;
   index?: number;
+  /** 홈 1행(첫 3장)만 true → LCP 대상 최소화. 아카이브는 기본 false(lazy) */
+  priority?: boolean;
 }
 
 // press/news 은은한 색·라벨 구분 (브라운 톤 vs 더스티 로즈 톤)
@@ -18,8 +21,9 @@ const badgeStyles: Record<'press' | 'news', string> = {
   news: 'bg-primary/10 text-primary',
 };
 
+// Design Ref: §4.2(b) — 이미지가 카드 모서리까지 닿도록 외곽 패딩 제거(p-6→내부), overflow-hidden 추가
 const cardClass =
-  'group flex h-full flex-col rounded-2xl border border-border bg-white p-6 text-left transition-shadow duration-300 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50';
+  'group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-white text-left transition-shadow duration-300 hover:shadow-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-primary/50';
 
 function CardBody({
   item,
@@ -73,10 +77,44 @@ function CardBody({
   );
 }
 
-export default function MediaNewsCard({ item, onSelect, index = 0 }: MediaNewsCardProps) {
+// Design Ref: §4.2(c) — 미디어 슬롯 + 패딩된 본문. 3개 wrapper(a/button/Link) 공용으로 중복 제거
+function CardContent({
+  item,
+  ctaLabel,
+  imageSrc,
+  priority,
+}: {
+  item: MediaNewsItem | FeaturedMediaCard;
+  ctaLabel: string;
+  imageSrc: string | null;
+  priority?: boolean;
+}) {
+  return (
+    <>
+      <MediaNewsCardMedia
+        src={imageSrc}
+        alt={item.title}
+        type={item.type}
+        badge={item.badge}
+        priority={priority}
+        imagePosition={item.imagePosition}
+      />
+      {/* mt-auto(CTA) 동작 위해 flex-col flex-1 명시 */}
+      <div className="flex flex-1 flex-col p-6">
+        <CardBody item={item} ctaLabel={ctaLabel} />
+      </div>
+    </>
+  );
+}
+
+export default function MediaNewsCard({ item, onSelect, index = 0, priority }: MediaNewsCardProps) {
   const t = useTranslations('mediaNews');
   const isExternal = item.isExternal === true;
   const ctaLabel = isExternal ? t('readArticle') : t('readMore');
+
+  // 썸네일 해상: image → images[0] → 폴백(null)
+  const imageSrc =
+    item.image ?? ('images' in item ? item.images?.[0] : undefined) ?? null;
 
   const motionProps = {
     initial: { opacity: 0, y: 16 },
@@ -96,7 +134,7 @@ export default function MediaNewsCard({ item, onSelect, index = 0 }: MediaNewsCa
         className={cardClass}
         {...motionProps}
       >
-        <CardBody item={item} ctaLabel={ctaLabel} />
+        <CardContent item={item} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
       </motion.a>
     );
   }
@@ -111,7 +149,7 @@ export default function MediaNewsCard({ item, onSelect, index = 0 }: MediaNewsCa
         className={cardClass}
         {...motionProps}
       >
-        <CardBody item={item} ctaLabel={ctaLabel} />
+        <CardContent item={item} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
       </motion.button>
     );
   }
@@ -124,7 +162,7 @@ export default function MediaNewsCard({ item, onSelect, index = 0 }: MediaNewsCa
   return (
     <Link href={mediaHref} className="block h-full focus:outline-none">
       <motion.div className={cardClass} {...motionProps}>
-        <CardBody item={item} ctaLabel={ctaLabel} />
+        <CardContent item={item} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
       </motion.div>
     </Link>
   );

@@ -42,7 +42,7 @@ export default function MediaNewsSection() {
         {/* Featured cards (6) */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {featuredMediaNews.map((card, index) => (
-            <MediaNewsCard key={card.id} item={card} index={index} />
+            <MediaNewsCard key={card.id} item={card} index={index} priority={index < 3} />
           ))}
         </div>
 
