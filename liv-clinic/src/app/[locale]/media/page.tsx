@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import { AnimateOnScroll } from '@/components/ui';
 import MediaNewsCard from '@/components/sections/MediaNewsCard';
@@ -23,6 +23,16 @@ export default function MediaPage() {
   const [selected, setSelected] = useState<MediaNewsItem | null>(null);
 
   const filtered = useMemo(() => filterByCategory(mediaNewsData, active), [active]);
+
+  // /media?news=<id> 진입 시 해당 내부 소식 모달 자동 오픈 (메인 카드 → 상세)
+  useEffect(() => {
+    const id = new URLSearchParams(window.location.search).get('news');
+    if (!id) return;
+    const item = mediaNewsData.find((i) => i.id === id);
+    // URL 쿼리(외부 소스) 기반 1회 초기화 — MediaNewsModal setMounted와 동일 패턴
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (item && !item.isExternal) setSelected(item);
+  }, []);
 
   return (
     <>

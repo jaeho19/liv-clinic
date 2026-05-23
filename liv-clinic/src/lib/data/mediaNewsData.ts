@@ -20,6 +20,10 @@ export interface MediaNewsItem {
   source?: string;
   link?: string;
   isExternal?: boolean;
+  /** 내부 소식 상세 모달용 본문(문단 배열). 없으면 description으로 폴백 */
+  body?: string[];
+  /** 내부 소식 상세 모달용 이미지 경로 배열 */
+  images?: string[];
 }
 
 /** 메인 노출용 대표 카드 — 일부는 항목 요약, f6은 집계형(셀럽 실명 미노출) */
@@ -32,6 +36,8 @@ export interface FeaturedMediaCard {
   description: string;
   link: string;
   isExternal: boolean;
+  /** 내부 소식 카드 클릭 시 /media에서 자동 오픈할 상세 항목 id (mediaNewsData.id 참조) */
+  newsId?: string;
 }
 
 /** 연도 표시 순서(내림차순) — 그룹 렌더 기준 */
@@ -44,6 +50,32 @@ export const MEDIA_YEARS = ['2026', '2025', '2021'] as const;
  */
 export const mediaNewsData: MediaNewsItem[] = [
   // ── 2026 ──
+  {
+    id: '15',
+    type: 'press',
+    category: 'press',
+    badge: 'MEDIA INTERVIEW',
+    year: '2026',
+    title: '김수영 대표원장, ‘메디컬 에스테틱’ 인터뷰 진행',
+    source: '메디컬 에스테틱',
+    description:
+      '김수영 대표원장이 미용성형·의료기기 전문 매체 ‘메디컬 에스테틱’과 공식 인터뷰를 진행했습니다. 리브의 Slow Aging 철학과 글로벌 리프팅 브랜드 APTOS 시술, 부위별 맞춤형 알고리즘에 대한 의학적 지견을 전했습니다.',
+    body: [
+      '안녕하세요, 리브성형외과입니다.',
+      '최근 리브성형외과의 김수영 대표원장님이 미용성형 및 의료기기 분야의 공신력 있는 언론사 ‘메디컬 에스테틱(Medical Aesthetic)’과 공식 인터뷰 및 기사 촬영을 진행하셨습니다.',
+      '국내외 미용성형 시장의 트렌드를 선도하는 의료진을 주목하는 이번 인터뷰에서, 김수영 대표원장님은 리브성형외과가 지향하는 ‘Slow Aging(슬로우 에이징)’ 철학과 함께, 최근 메디컬 업계에서 가장 주목받고 있는 글로벌 리프팅 브랜드 ‘압토스(APTOS)’ 시술에 대한 심도 있는 의학적 지견을 전하셨습니다.',
+      '특히 압토스 본사 공식 트레이너(International Trainer) 자격을 보유한 김 원장님은, 압토스 고유의 독보적인 기술력이 리브성형외과의 해부학적 층별 접근법인 ‘Site-specific algorithm(부위별 맞춤형 알고리즘)’과 만났을 때 발휘되는 시너지 효과를 심도 있게 설명하셨습니다. 인위적인 당김이 아닌, 조직의 처짐을 해부학적으로 정확히 재배치하여 본연의 입체감과 우아함을 이끌어내는 리브만의 고난도 실리프팅 노하우는 현장 취재팀의 큰 관심과 감탄을 자아냈습니다.',
+      '글로벌 브랜드와 의료 미용 전문가들이 먼저 깊은 신뢰를 보내고 주목하는 리브성형외과. 앞으로도 세계적 수준으로 인정받은 정밀한 기술력과 끊임없는 학술 연구를 바탕으로, 국경을 넘어 리브를 찾아주시는 모든 분께 안전하고 차별화된 프리미엄 안티에이징의 기준을 제시하겠습니다.',
+      '본 인터뷰의 자세한 전문은 추후 공식 기사 발행과 함께 다시 한번 공유해 드리겠습니다.',
+      '감사합니다.',
+    ],
+    images: [
+      '/images/media-news/medical-aesthetic-1.jpg',
+      '/images/media-news/medical-aesthetic-2.jpg',
+    ],
+    link: '/media',
+    isExternal: false,
+  },
   {
     id: '1',
     type: 'press',
@@ -236,6 +268,18 @@ export const mediaNewsData: MediaNewsItem[] = [
  */
 export const featuredMediaNews: FeaturedMediaCard[] = [
   {
+    id: 'f7',
+    type: 'press',
+    badge: 'MEDIA INTERVIEW',
+    year: '2026',
+    title: '‘메디컬 에스테틱’ 인터뷰 진행',
+    description:
+      '미용·의료기기 전문 매체 ‘메디컬 에스테틱’과 공식 인터뷰를 진행하며 Slow Aging 철학과 글로벌 리프팅 APTOS 시술을 조명했습니다.',
+    link: '/media',
+    isExternal: false,
+    newsId: '15',
+  },
+  {
     id: 'f1',
     type: 'press',
     badge: 'BROADCAST',
@@ -272,16 +316,6 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     year: '2025',
     title: 'Aesthetic Plastic Surgery Korea 초청 강연',
     description: '김수영 대표원장이 ‘Site-specific algorithm for facial rejuvenation’을 주제로 공식 초청 구연 발표를 진행했습니다.',
-    link: '/media',
-    isExternal: false,
-  },
-  {
-    id: 'f5',
-    type: 'news',
-    badge: 'LIV NEWS',
-    year: '2025',
-    title: 'APTOS 글로벌 트레이너 공식 인증패 수여',
-    description: 'APTOS 본사 공식 트레이너 인증패가 리브성형외과에 전달되며, 글로벌 교육 활동의 기반을 확장했습니다.',
     link: '/media',
     isExternal: false,
   },

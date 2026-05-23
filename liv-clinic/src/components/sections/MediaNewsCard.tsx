@@ -116,9 +116,13 @@ export default function MediaNewsCard({ item, onSelect, index = 0 }: MediaNewsCa
     );
   }
 
-  // 내부 소식 (메인) → /media 이동
+  // 내부 소식 (메인) → /media 이동 (newsId 있으면 상세 모달 자동 오픈)
+  const mediaHref =
+    'newsId' in item && item.newsId
+      ? { pathname: '/media', query: { news: item.newsId } }
+      : { pathname: '/media' };
   return (
-    <Link href="/media" className="block h-full focus:outline-none">
+    <Link href={mediaHref} className="block h-full focus:outline-none">
       <motion.div className={cardClass} {...motionProps}>
         <CardBody item={item} ctaLabel={ctaLabel} />
       </motion.div>

@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import type { MediaNewsItem } from '@/lib/data/mediaNewsData';
@@ -82,7 +83,7 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
               left: '50%',
               transform: 'translate(-50%, -50%)',
               zIndex: 101,
-              width: 'min(92vw, 36rem)',
+              width: item.images?.length ? 'min(92vw, 42rem)' : 'min(92vw, 36rem)',
               maxHeight: '85vh',
               overflowY: 'auto',
             }}
@@ -129,10 +130,39 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
                 {item.title}
               </h3>
 
-              {/* 전체 설명 */}
-              <p className="text-body leading-relaxed text-mono whitespace-pre-line">
-                {item.description}
-              </p>
+              {/* 사진 (내부 소식 상세) */}
+              {item.images && item.images.length > 0 && (
+                <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                  {item.images.map((src, i) => (
+                    <div
+                      key={src}
+                      className="relative overflow-hidden rounded-xl bg-background"
+                      style={{ aspectRatio: '3 / 4' }}
+                    >
+                      <Image
+                        src={src}
+                        alt={`${item.title} 현장 사진 ${i + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 672px) 92vw, 21rem"
+                      />
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {/* 본문: body(문단 배열) 우선, 없으면 description 폴백 */}
+              {item.body && item.body.length > 0 ? (
+                <div className="space-y-4 text-body leading-relaxed text-mono">
+                  {item.body.map((para, i) => (
+                    <p key={i}>{para}</p>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-body leading-relaxed text-mono whitespace-pre-line">
+                  {item.description}
+                </p>
+              )}
             </motion.div>
           </div>
         </>
