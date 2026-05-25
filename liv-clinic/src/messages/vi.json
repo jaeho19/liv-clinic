@@ -87,7 +87,55 @@
     "experienceChange": "Bạn muốn trải nghiệm sự chuyển đổi này?",
     "findTreatment": "Tìm phương pháp điều trị phù hợp cho bạn thông qua tư vấn chuyên nghiệp."
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "Bảng giá dịch vụ",
+      "description": "Bảng giá các dịch vụ chính của Phẫu thuật Thẩm mỹ LIV. Giá dưới đây tính cho một lần thực hiện; chi phí cuối cùng có thể thay đổi sau khi tư vấn tùy theo tình trạng cá nhân và phạm vi điều trị."
+    },
+    "tableHeader": {
+      "treatment": "Dịch vụ",
+      "basis": "Tiêu chuẩn",
+      "price": "Giá"
+    },
+    "categories": {
+      "thread": "Căng chỉ",
+      "filler": "Filler",
+      "thermage": "Thermage",
+      "ulthera": "Ultherapy"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10 sợi", "price": "KRW 3,000,000~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2 sợi", "price": "KRW 1,500,000~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2 sợi", "price": "KRW 2,500,000~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2 sợi", "price": "KRW 1,000,000~" },
+        "mint": { "name": "MINT", "basis": "8 sợi", "price": "KRW 800,000~" }
+      },
+      "filler": {
+        "domestic": { "name": "Nội địa", "basis": "1cc", "price": "KRW 200,000~" },
+        "domesticPremium": { "name": "Nội địa Premium", "basis": "1cc", "price": "KRW 300,000~" },
+        "imported": { "name": "Nhập khẩu", "basis": "1cc", "price": "KRW 400,000~" }
+      },
+      "thermage": {
+        "flx600": { "name": "Thermage FLX", "basis": "600 shots", "price": "KRW 2,400,000~" },
+        "eye225": { "name": "Thermage mắt", "basis": "225 shots", "price": "KRW 1,000,000~" },
+        "eye450": { "name": "Thermage mắt", "basis": "450 shots", "price": "KRW 1,600,000~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "Vùng mặt trên", "basis": "200-300 shots", "price": "KRW 780,000~" },
+        "lowerFace": { "name": "Vùng mặt dưới", "basis": "300-400 shots", "price": "KRW 1,170,000~" },
+        "fullFace": { "name": "Toàn mặt", "basis": "400-800 shots", "price": "KRW 1,560,000~" },
+        "fullFaceNeck": { "name": "Toàn mặt + cổ", "basis": "600 shots~", "price": "KRW 2,340,000~" }
+      }
+    },
+    "notes": {
+      "vat": "※ Tất cả giá chưa bao gồm VAT.",
+      "perSession": "※ Giá trên tính cho một lần; giá chính xác được quyết định sau khi tư vấn.",
+      "individual": "※ Chi phí cuối cùng có thể thay đổi tùy theo tình trạng da, phạm vi điều trị và sản phẩm sử dụng."
+    }
+  },
   "nav": {
+    "pricing": "Bảng giá",
     "about": "Về",
     "aboutBrand": "Thương hiệu của chúng tôi",
     "aboutStaff": "nhân viên y tế",

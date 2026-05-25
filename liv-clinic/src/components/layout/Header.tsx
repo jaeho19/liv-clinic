@@ -145,6 +145,11 @@ export default function Header() {
       href: '/laser',
     },
     {
+      key: 'pricing',
+      label: t('pricing'),
+      href: '/pricing',
+    },
+    {
       key: 'beforeAfter',
       label: t('beforeAfter'),
       href: '/before-after',

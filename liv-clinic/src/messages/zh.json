@@ -87,7 +87,55 @@
     "experienceChange": "想要体验这样的蜕变吗？",
     "findTreatment": "通过专业咨询找到适合您的项目。"
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "项目价格指南",
+      "description": "为您介绍LIV整形外科主要项目的价格。以下价格为单次基准，最终费用可能因个人状况及治疗范围在咨询后有所不同。"
+    },
+    "tableHeader": {
+      "treatment": "项目",
+      "basis": "标准",
+      "price": "价格"
+    },
+    "categories": {
+      "thread": "埋线提升",
+      "filler": "玻尿酸",
+      "thermage": "热玛吉",
+      "ulthera": "超声刀"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10根", "price": "300万韩元~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2根", "price": "150万韩元~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2根", "price": "250万韩元~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2根", "price": "100万韩元~" },
+        "mint": { "name": "MINT", "basis": "8根", "price": "80万韩元~" }
+      },
+      "filler": {
+        "domestic": { "name": "国产", "basis": "1cc", "price": "20万韩元~" },
+        "domesticPremium": { "name": "国产高端", "basis": "1cc", "price": "30万韩元~" },
+        "imported": { "name": "进口", "basis": "1cc", "price": "40万韩元~" }
+      },
+      "thermage": {
+        "flx600": { "name": "热玛吉FLX", "basis": "600发", "price": "240万韩元~" },
+        "eye225": { "name": "眼部热玛吉", "basis": "225发", "price": "100万韩元~" },
+        "eye450": { "name": "眼部热玛吉", "basis": "450发", "price": "160万韩元~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "上面部", "basis": "200~300发", "price": "78万韩元~" },
+        "lowerFace": { "name": "下面部", "basis": "300~400发", "price": "117万韩元~" },
+        "fullFace": { "name": "全面部", "basis": "400~800发", "price": "156万韩元~" },
+        "fullFaceNeck": { "name": "全面部 + 颈部", "basis": "600发~", "price": "234万韩元~" }
+      }
+    },
+    "notes": {
+      "vat": "※ 所有价格均不含增值税(VAT)。",
+      "perSession": "※ 以上价格为单次基准，准确价格将在咨询后确定。",
+      "individual": "※ 最终费用可能因个人皮肤状况、治疗范围及所用产品而有所不同。"
+    }
+  },
   "nav": {
+    "pricing": "价格指南",
     "about": "关于LIV",
     "aboutBrand": "LIV品牌",
     "aboutStaff": "医疗团队",

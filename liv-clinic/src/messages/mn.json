@@ -87,7 +87,55 @@
     "experienceChange": "Энэ өөрчлөлтийг мэдрэхийг хүсэж байна уу?",
     "findTreatment": "Мэргэжлийн зөвлөгөөгөөр өөрт тохирох эмчилгээг олоорой."
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "Үйлчилгээний үнийн мэдээлэл",
+      "description": "LIV Гоо Заслын Эмнэлгийн үндсэн үйлчилгээний үнийг танилцуулж байна. Доорх үнэ нь нэг удаагийн жишиг бөгөөд хувь хүний байдал, үйлчилгээний хүрээнээс хамаарч эцсийн төлбөр зөвлөгөөний дараа өөрчлөгдөж болно."
+    },
+    "tableHeader": {
+      "treatment": "Үйлчилгээ",
+      "basis": "Хэмжээ",
+      "price": "Үнэ"
+    },
+    "categories": {
+      "thread": "Утсан лифтинг",
+      "filler": "Филлер",
+      "thermage": "Thermage",
+      "ulthera": "Ultherapy"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10 утас", "price": "KRW 3,000,000~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2 утас", "price": "KRW 1,500,000~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2 утас", "price": "KRW 2,500,000~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2 утас", "price": "KRW 1,000,000~" },
+        "mint": { "name": "MINT", "basis": "8 утас", "price": "KRW 800,000~" }
+      },
+      "filler": {
+        "domestic": { "name": "Дотоодын", "basis": "1cc", "price": "KRW 200,000~" },
+        "domesticPremium": { "name": "Дотоодын Премиум", "basis": "1cc", "price": "KRW 300,000~" },
+        "imported": { "name": "Импортын", "basis": "1cc", "price": "KRW 400,000~" }
+      },
+      "thermage": {
+        "flx600": { "name": "Thermage FLX", "basis": "600 цохилт", "price": "KRW 2,400,000~" },
+        "eye225": { "name": "Нүдний Thermage", "basis": "225 цохилт", "price": "KRW 1,000,000~" },
+        "eye450": { "name": "Нүдний Thermage", "basis": "450 цохилт", "price": "KRW 1,600,000~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "Нүүрний дээд хэсэг", "basis": "200-300 цохилт", "price": "KRW 780,000~" },
+        "lowerFace": { "name": "Нүүрний доод хэсэг", "basis": "300-400 цохилт", "price": "KRW 1,170,000~" },
+        "fullFace": { "name": "Бүх нүүр", "basis": "400-800 цохилт", "price": "KRW 1,560,000~" },
+        "fullFaceNeck": { "name": "Бүх нүүр + хүзүү", "basis": "600 цохилт~", "price": "KRW 2,340,000~" }
+      }
+    },
+    "notes": {
+      "vat": "※ Бүх үнэ НӨАТ-гүй.",
+      "perSession": "※ Дээрх үнэ нэг удаагийн жишиг бөгөөд яг үнэ зөвлөгөөний дараа тогтоогдоно.",
+      "individual": "※ Эцсийн зардал нь арьсны байдал, үйлчилгээний хүрээ, ашигласан бүтээгдэхүүнээс хамаарч өөр байж болно."
+    }
+  },
   "nav": {
+    "pricing": "Үнэ",
     "about": "Бидний тухай",
     "aboutBrand": "LIV брэнд",
     "aboutStaff": "Эмч нар",

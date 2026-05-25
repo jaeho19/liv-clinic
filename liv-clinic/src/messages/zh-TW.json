@@ -87,7 +87,55 @@
     "experienceChange": "想要體驗這樣的蛻變嗎？",
     "findTreatment": "通過專業諮詢找到適合您的項目。"
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "項目價格指南",
+      "description": "為您介紹LIV整形外科主要項目的價格。以下價格為單次基準，最終費用可能因個人狀況及治療範圍在諮詢後有所不同。"
+    },
+    "tableHeader": {
+      "treatment": "項目",
+      "basis": "標準",
+      "price": "價格"
+    },
+    "categories": {
+      "thread": "埋線拉提",
+      "filler": "玻尿酸",
+      "thermage": "鳳凰電波",
+      "ulthera": "音波拉提"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10根", "price": "300萬韓元～" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2根", "price": "150萬韓元～" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2根", "price": "250萬韓元～" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2根", "price": "100萬韓元～" },
+        "mint": { "name": "MINT", "basis": "8根", "price": "80萬韓元～" }
+      },
+      "filler": {
+        "domestic": { "name": "國產", "basis": "1cc", "price": "20萬韓元～" },
+        "domesticPremium": { "name": "國產高端", "basis": "1cc", "price": "30萬韓元～" },
+        "imported": { "name": "進口", "basis": "1cc", "price": "40萬韓元～" }
+      },
+      "thermage": {
+        "flx600": { "name": "鳳凰電波 FLX", "basis": "600發", "price": "240萬韓元～" },
+        "eye225": { "name": "眼部鳳凰電波", "basis": "225發", "price": "100萬韓元～" },
+        "eye450": { "name": "眼部鳳凰電波", "basis": "450發", "price": "160萬韓元～" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "上面部", "basis": "200~300發", "price": "78萬韓元～" },
+        "lowerFace": { "name": "下面部", "basis": "300~400發", "price": "117萬韓元～" },
+        "fullFace": { "name": "全面部", "basis": "400~800發", "price": "156萬韓元～" },
+        "fullFaceNeck": { "name": "全面部 + 頸部", "basis": "600發~", "price": "234萬韓元～" }
+      }
+    },
+    "notes": {
+      "vat": "※ 所有價格均不含加值稅(VAT)。",
+      "perSession": "※ 以上價格為單次基準，準確價格將於諮詢後確定。",
+      "individual": "※ 最終費用可能因個人皮膚狀況、治療範圍及所用產品而有所不同。"
+    }
+  },
   "nav": {
+    "pricing": "價格指南",
     "about": "關於LIV",
     "aboutBrand": "LIV品牌",
     "aboutStaff": "醫療團隊",

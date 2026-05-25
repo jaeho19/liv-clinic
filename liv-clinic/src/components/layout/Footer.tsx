@@ -100,6 +100,14 @@ export default function Footer() {
               </li>
               <li>
                 <Link
+                  href="/pricing"
+                  className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
+                >
+                  {tNav('pricing')}
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/medical"
                   className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
                 >

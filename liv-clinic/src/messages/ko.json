@@ -87,7 +87,55 @@
     "experienceChange": "나도 이런 변화를 경험하고 싶다면?",
     "findTreatment": "전문 상담을 통해 나에게 맞는 시술을 찾아보세요."
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "시술 가격 안내",
+      "description": "리브성형외과의 주요 시술 가격을 안내드립니다. 아래 가격은 1회 기준이며, 개인의 상태와 시술 범위에 따라 최종 비용은 상담 후 달라질 수 있습니다."
+    },
+    "tableHeader": {
+      "treatment": "시술명",
+      "basis": "기준",
+      "price": "가격"
+    },
+    "categories": {
+      "thread": "실리프팅",
+      "filler": "필러",
+      "thermage": "써마지",
+      "ulthera": "울쎄라"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "압토스 NAMICA", "basis": "10줄", "price": "300만원~" },
+        "aptosLight25": { "name": "압토스 Light Lift 25", "basis": "2줄", "price": "150만원~" },
+        "aptosLight50": { "name": "압토스 Light Lift 50", "basis": "2줄", "price": "250만원~" },
+        "silhouette": { "name": "실루엣소프트", "basis": "2줄", "price": "100만원~" },
+        "mint": { "name": "민트", "basis": "8줄", "price": "80만원~" }
+      },
+      "filler": {
+        "domestic": { "name": "국산", "basis": "1cc", "price": "20만원~" },
+        "domesticPremium": { "name": "국산 프리미엄", "basis": "1cc", "price": "30만원~" },
+        "imported": { "name": "수입", "basis": "1cc", "price": "40만원~" }
+      },
+      "thermage": {
+        "flx600": { "name": "써마지 FLX", "basis": "600샷", "price": "240만원~" },
+        "eye225": { "name": "아이써마지", "basis": "225샷", "price": "100만원~" },
+        "eye450": { "name": "아이써마지", "basis": "450샷", "price": "160만원~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "상안면", "basis": "200~300샷", "price": "78만원~" },
+        "lowerFace": { "name": "하안면", "basis": "300~400샷", "price": "117만원~" },
+        "fullFace": { "name": "전안면", "basis": "400~800샷", "price": "156만원~" },
+        "fullFaceNeck": { "name": "전안면 + 목", "basis": "600샷~", "price": "234만원~" }
+      }
+    },
+    "notes": {
+      "vat": "※ 모든 가격은 VAT 별도 기준입니다.",
+      "perSession": "※ 위 가격은 1회 기준이며, 정확한 가격은 상담 후 결정됩니다.",
+      "individual": "※ 개인의 피부 상태, 시술 범위, 사용 제품에 따라 최종 비용은 달라질 수 있습니다."
+    }
+  },
   "nav": {
+    "pricing": "가격 안내",
     "about": "리브 소개",
     "aboutBrand": "리브 브랜드",
     "aboutStaff": "의료진 소개",

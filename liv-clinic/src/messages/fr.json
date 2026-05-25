@@ -87,7 +87,55 @@
     "experienceChange": "Vous souhaitez vivre cette transformation ?",
     "findTreatment": "Trouvez le traitement adapté grâce à une consultation professionnelle."
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "Guide des tarifs",
+      "description": "Voici les tarifs des principaux soins de LIV Chirurgie Esthétique. Les prix ci-dessous sont par séance ; le coût final peut varier après consultation selon votre état individuel et l'étendue du soin."
+    },
+    "tableHeader": {
+      "treatment": "Soin",
+      "basis": "Base",
+      "price": "Prix"
+    },
+    "categories": {
+      "thread": "Lifting par fils",
+      "filler": "Fillers",
+      "thermage": "Thermage",
+      "ulthera": "Ultherapy"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10 fils", "price": "KRW 3,000,000~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2 fils", "price": "KRW 1,500,000~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2 fils", "price": "KRW 2,500,000~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2 fils", "price": "KRW 1,000,000~" },
+        "mint": { "name": "MINT", "basis": "8 fils", "price": "KRW 800,000~" }
+      },
+      "filler": {
+        "domestic": { "name": "National", "basis": "1cc", "price": "KRW 200,000~" },
+        "domesticPremium": { "name": "National Premium", "basis": "1cc", "price": "KRW 300,000~" },
+        "imported": { "name": "Importé", "basis": "1cc", "price": "KRW 400,000~" }
+      },
+      "thermage": {
+        "flx600": { "name": "Thermage FLX", "basis": "600 tirs", "price": "KRW 2,400,000~" },
+        "eye225": { "name": "Thermage Yeux", "basis": "225 tirs", "price": "KRW 1,000,000~" },
+        "eye450": { "name": "Thermage Yeux", "basis": "450 tirs", "price": "KRW 1,600,000~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "Visage supérieur", "basis": "200-300 tirs", "price": "KRW 780,000~" },
+        "lowerFace": { "name": "Visage inférieur", "basis": "300-400 tirs", "price": "KRW 1,170,000~" },
+        "fullFace": { "name": "Visage entier", "basis": "400-800 tirs", "price": "KRW 1,560,000~" },
+        "fullFaceNeck": { "name": "Visage entier + cou", "basis": "600 tirs~", "price": "KRW 2,340,000~" }
+      }
+    },
+    "notes": {
+      "vat": "※ Tous les prix s'entendent hors TVA.",
+      "perSession": "※ Les prix ci-dessus sont par séance ; le prix exact est déterminé après consultation.",
+      "individual": "※ Le coût final peut varier selon l'état de la peau, l'étendue du soin et les produits utilisés."
+    }
+  },
   "nav": {
+    "pricing": "Tarifs",
     "about": "À propos",
     "aboutBrand": "Marque LIV",
     "aboutStaff": "Équipe médicale",

@@ -87,7 +87,55 @@
     "experienceChange": "このような変化を体験してみませんか？",
     "findTreatment": "専門相談を通じてあなたに合った施術を見つけましょう。"
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "施術料金のご案内",
+      "description": "リブ形成外科の主要施術の料金をご案内いたします。以下の料金は1回あたりの基準であり、個人の状態や施術範囲により最終費用はカウンセリング後に変わる場合があります。"
+    },
+    "tableHeader": {
+      "treatment": "施術名",
+      "basis": "基準",
+      "price": "料金"
+    },
+    "categories": {
+      "thread": "糸リフト",
+      "filler": "フィラー",
+      "thermage": "サーマジ",
+      "ulthera": "ウルセラ"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10本", "price": "300万ウォン～" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2本", "price": "150万ウォン～" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2本", "price": "250万ウォン～" },
+        "silhouette": { "name": "シルエットソフト", "basis": "2本", "price": "100万ウォン～" },
+        "mint": { "name": "ミント", "basis": "8本", "price": "80万ウォン～" }
+      },
+      "filler": {
+        "domestic": { "name": "国産", "basis": "1cc", "price": "20万ウォン～" },
+        "domesticPremium": { "name": "国産プレミアム", "basis": "1cc", "price": "30万ウォン～" },
+        "imported": { "name": "輸入", "basis": "1cc", "price": "40万ウォン～" }
+      },
+      "thermage": {
+        "flx600": { "name": "サーマジFLX", "basis": "600ショット", "price": "240万ウォン～" },
+        "eye225": { "name": "アイサーマジ", "basis": "225ショット", "price": "100万ウォン～" },
+        "eye450": { "name": "アイサーマジ", "basis": "450ショット", "price": "160万ウォン～" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "上顔面", "basis": "200~300ショット", "price": "78万ウォン～" },
+        "lowerFace": { "name": "下顔面", "basis": "300~400ショット", "price": "117万ウォン～" },
+        "fullFace": { "name": "全顔", "basis": "400~800ショット", "price": "156万ウォン～" },
+        "fullFaceNeck": { "name": "全顔 + 首", "basis": "600ショット~", "price": "234万ウォン～" }
+      }
+    },
+    "notes": {
+      "vat": "※ すべての料金はVAT(付加価値税)別途です。",
+      "perSession": "※ 上記の料金は1回あたりの基準であり、正確な料金はカウンセリング後に決定されます。",
+      "individual": "※ 個人の肌の状態、施術範囲、使用製品により最終費用は変わる場合があります。"
+    }
+  },
   "nav": {
+    "pricing": "料金案内",
     "about": "リブ紹介",
     "aboutBrand": "リブブランド",
     "aboutStaff": "医療スタッフ",
