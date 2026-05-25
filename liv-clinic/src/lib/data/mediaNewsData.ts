@@ -372,6 +372,7 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     year: '2025',
     title: '셀럽과 글로벌 인플루언서의 리브 방문',
     description: '방송인, 아나운서, 글로벌 인플루언서 등 다양한 방문 소식을 통해 리브의 Slow Aging 케어 철학을 전합니다.',
+    image: '/images/media-news/visit-china-influencer.jpg',
     link: '/media',
     isExternal: false,
   },
