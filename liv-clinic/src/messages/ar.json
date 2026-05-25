@@ -87,7 +87,55 @@
     "experienceChange": "هل ترغب في تجربة هذا التحول؟",
     "findTreatment": "اعثر على العلاج المناسب لك من خلال استشارة متخصصة."
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "دليل أسعار الإجراءات",
+      "description": "نقدم لكم أسعار الإجراءات الرئيسية في مستشفى ليف للتجميل. الأسعار أدناه لكل جلسة، وقد تختلف التكلفة النهائية بعد الاستشارة حسب الحالة الفردية ونطاق الإجراء."
+    },
+    "tableHeader": {
+      "treatment": "الإجراء",
+      "basis": "المعيار",
+      "price": "السعر"
+    },
+    "categories": {
+      "thread": "شد بالخيوط",
+      "filler": "الفيلر",
+      "thermage": "ثيرماج",
+      "ulthera": "ألثيرابي"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10 خيوط", "price": "KRW 3,000,000~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2 خيط", "price": "KRW 1,500,000~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2 خيط", "price": "KRW 2,500,000~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2 خيط", "price": "KRW 1,000,000~" },
+        "mint": { "name": "MINT", "basis": "8 خيوط", "price": "KRW 800,000~" }
+      },
+      "filler": {
+        "domestic": { "name": "محلي", "basis": "1cc", "price": "KRW 200,000~" },
+        "domesticPremium": { "name": "محلي بريميوم", "basis": "1cc", "price": "KRW 300,000~" },
+        "imported": { "name": "مستورد", "basis": "1cc", "price": "KRW 400,000~" }
+      },
+      "thermage": {
+        "flx600": { "name": "ثيرماج FLX", "basis": "600 نبضة", "price": "KRW 2,400,000~" },
+        "eye225": { "name": "ثيرماج للعيون", "basis": "225 نبضة", "price": "KRW 1,000,000~" },
+        "eye450": { "name": "ثيرماج للعيون", "basis": "450 نبضة", "price": "KRW 1,600,000~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "الوجه العلوي", "basis": "200-300 نبضة", "price": "KRW 780,000~" },
+        "lowerFace": { "name": "الوجه السفلي", "basis": "300-400 نبضة", "price": "KRW 1,170,000~" },
+        "fullFace": { "name": "الوجه بالكامل", "basis": "400-800 نبضة", "price": "KRW 1,560,000~" },
+        "fullFaceNeck": { "name": "الوجه بالكامل + الرقبة", "basis": "600 نبضة~", "price": "KRW 2,340,000~" }
+      }
+    },
+    "notes": {
+      "vat": "※ جميع الأسعار غير شاملة لضريبة القيمة المضافة.",
+      "perSession": "※ الأسعار أعلاه لكل جلسة، ويُحدَّد السعر الدقيق بعد الاستشارة.",
+      "individual": "※ قد تختلف التكلفة النهائية حسب حالة البشرة ونطاق الإجراء والمنتجات المستخدمة."
+    }
+  },
   "nav": {
+    "pricing": "الأسعار",
     "about": "من نحن",
     "aboutBrand": "علامة ليف",
     "aboutStaff": "الفريق الطبي",

@@ -87,7 +87,55 @@
     "experienceChange": "Want to experience this transformation?",
     "findTreatment": "Find the right treatment for you through a professional consultation."
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "Treatment Price Guide",
+      "description": "Here is the pricing for the main treatments at LIV Plastic Surgery. The prices below are per session; the final cost may vary after consultation depending on your individual condition and the scope of treatment."
+    },
+    "tableHeader": {
+      "treatment": "Treatment",
+      "basis": "Standard",
+      "price": "Price"
+    },
+    "categories": {
+      "thread": "Thread Lift",
+      "filler": "Filler",
+      "thermage": "Thermage",
+      "ulthera": "Ultherapy"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10 threads", "price": "KRW 3,000,000~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2 threads", "price": "KRW 1,500,000~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2 threads", "price": "KRW 2,500,000~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2 threads", "price": "KRW 1,000,000~" },
+        "mint": { "name": "MINT", "basis": "8 threads", "price": "KRW 800,000~" }
+      },
+      "filler": {
+        "domestic": { "name": "Domestic", "basis": "1cc", "price": "KRW 200,000~" },
+        "domesticPremium": { "name": "Domestic Premium", "basis": "1cc", "price": "KRW 300,000~" },
+        "imported": { "name": "Imported", "basis": "1cc", "price": "KRW 400,000~" }
+      },
+      "thermage": {
+        "flx600": { "name": "Thermage FLX", "basis": "600 shots", "price": "KRW 2,400,000~" },
+        "eye225": { "name": "Eye Thermage", "basis": "225 shots", "price": "KRW 1,000,000~" },
+        "eye450": { "name": "Eye Thermage", "basis": "450 shots", "price": "KRW 1,600,000~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "Upper face", "basis": "200-300 shots", "price": "KRW 780,000~" },
+        "lowerFace": { "name": "Lower face", "basis": "300-400 shots", "price": "KRW 1,170,000~" },
+        "fullFace": { "name": "Full face", "basis": "400-800 shots", "price": "KRW 1,560,000~" },
+        "fullFaceNeck": { "name": "Full face + neck", "basis": "600 shots~", "price": "KRW 2,340,000~" }
+      }
+    },
+    "notes": {
+      "vat": "※ All prices are exclusive of VAT.",
+      "perSession": "※ The prices above are per session; the exact price is determined after consultation.",
+      "individual": "※ The final cost may vary depending on individual skin condition, treatment scope, and products used."
+    }
+  },
   "nav": {
+    "pricing": "Pricing",
     "about": "About",
     "aboutBrand": "Our Brand",
     "aboutStaff": "Medical Staff",

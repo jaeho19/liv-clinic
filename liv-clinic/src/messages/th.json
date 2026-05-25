@@ -87,7 +87,55 @@
     "experienceChange": "ต้องการสัมผัสกับการเปลี่ยนแปลงนี้หรือไม่?",
     "findTreatment": "ค้นหาการรักษาที่เหมาะสมสำหรับคุณผ่านการให้คำปรึกษาอย่างมืออาชีพ"
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "คู่มือราคาบริการ",
+      "description": "ขอแนะนำราคาบริการหลักของ LIV Plastic Surgery ราคาด้านล่างเป็นราคาต่อครั้ง ค่าใช้จ่ายสุดท้ายอาจเปลี่ยนแปลงหลังการปรึกษา ขึ้นอยู่กับสภาพของแต่ละบุคคลและขอบเขตการรักษา"
+    },
+    "tableHeader": {
+      "treatment": "บริการ",
+      "basis": "เกณฑ์",
+      "price": "ราคา"
+    },
+    "categories": {
+      "thread": "ร้อยไหม",
+      "filler": "ฟิลเลอร์",
+      "thermage": "Thermage",
+      "ulthera": "Ultherapy"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10 เส้น", "price": "KRW 3,000,000~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2 เส้น", "price": "KRW 1,500,000~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2 เส้น", "price": "KRW 2,500,000~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2 เส้น", "price": "KRW 1,000,000~" },
+        "mint": { "name": "MINT", "basis": "8 เส้น", "price": "KRW 800,000~" }
+      },
+      "filler": {
+        "domestic": { "name": "ในประเทศ", "basis": "1cc", "price": "KRW 200,000~" },
+        "domesticPremium": { "name": "ในประเทศ พรีเมียม", "basis": "1cc", "price": "KRW 300,000~" },
+        "imported": { "name": "นำเข้า", "basis": "1cc", "price": "KRW 400,000~" }
+      },
+      "thermage": {
+        "flx600": { "name": "Thermage FLX", "basis": "600 ช็อต", "price": "KRW 2,400,000~" },
+        "eye225": { "name": "Thermage รอบดวงตา", "basis": "225 ช็อต", "price": "KRW 1,000,000~" },
+        "eye450": { "name": "Thermage รอบดวงตา", "basis": "450 ช็อต", "price": "KRW 1,600,000~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "ใบหน้าส่วนบน", "basis": "200-300 ช็อต", "price": "KRW 780,000~" },
+        "lowerFace": { "name": "ใบหน้าส่วนล่าง", "basis": "300-400 ช็อต", "price": "KRW 1,170,000~" },
+        "fullFace": { "name": "ทั้งใบหน้า", "basis": "400-800 ช็อต", "price": "KRW 1,560,000~" },
+        "fullFaceNeck": { "name": "ทั้งใบหน้า + คอ", "basis": "600 ช็อต~", "price": "KRW 2,340,000~" }
+      }
+    },
+    "notes": {
+      "vat": "※ ราคาทั้งหมดยังไม่รวม VAT",
+      "perSession": "※ ราคาข้างต้นเป็นราคาต่อครั้ง ราคาที่แน่นอนจะกำหนดหลังการปรึกษา",
+      "individual": "※ ค่าใช้จ่ายสุดท้ายอาจแตกต่างกันขึ้นอยู่กับสภาพผิว ขอบเขตการรักษา และผลิตภัณฑ์ที่ใช้"
+    }
+  },
   "nav": {
+    "pricing": "ราคา",
     "about": "เกี่ยวกับ",
     "aboutBrand": "แบรนด์ของเรา",
     "aboutStaff": "เจ้าหน้าที่การแพทย์",

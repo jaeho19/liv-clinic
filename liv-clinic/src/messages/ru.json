@@ -87,7 +87,55 @@
     "experienceChange": "Хотите испытать эту трансформацию?",
     "findTreatment": "Найдите подходящее для вас лечение на профессиональной консультации."
   },
+  "pricingGuide": {
+    "hero": {
+      "title": "Цены на процедуры",
+      "description": "Представляем цены на основные процедуры клиники LIV. Указанные цены — за один сеанс; итоговая стоимость может измениться после консультации в зависимости от индивидуального состояния и объёма процедуры."
+    },
+    "tableHeader": {
+      "treatment": "Процедура",
+      "basis": "Норма",
+      "price": "Цена"
+    },
+    "categories": {
+      "thread": "Нитевой лифтинг",
+      "filler": "Филлеры",
+      "thermage": "Thermage",
+      "ulthera": "Ultherapy"
+    },
+    "rows": {
+      "thread": {
+        "aptosNamica": { "name": "APTOS NAMICA", "basis": "10 нитей", "price": "KRW 3,000,000~" },
+        "aptosLight25": { "name": "APTOS Light Lift 25", "basis": "2 нити", "price": "KRW 1,500,000~" },
+        "aptosLight50": { "name": "APTOS Light Lift 50", "basis": "2 нити", "price": "KRW 2,500,000~" },
+        "silhouette": { "name": "Silhouette Soft", "basis": "2 нити", "price": "KRW 1,000,000~" },
+        "mint": { "name": "MINT", "basis": "8 нитей", "price": "KRW 800,000~" }
+      },
+      "filler": {
+        "domestic": { "name": "Отечественный", "basis": "1cc", "price": "KRW 200,000~" },
+        "domesticPremium": { "name": "Отечественный премиум", "basis": "1cc", "price": "KRW 300,000~" },
+        "imported": { "name": "Импортный", "basis": "1cc", "price": "KRW 400,000~" }
+      },
+      "thermage": {
+        "flx600": { "name": "Thermage FLX", "basis": "600 импульсов", "price": "KRW 2,400,000~" },
+        "eye225": { "name": "Thermage для глаз", "basis": "225 импульсов", "price": "KRW 1,000,000~" },
+        "eye450": { "name": "Thermage для глаз", "basis": "450 импульсов", "price": "KRW 1,600,000~" }
+      },
+      "ulthera": {
+        "upperFace": { "name": "Верхняя часть лица", "basis": "200-300 импульсов", "price": "KRW 780,000~" },
+        "lowerFace": { "name": "Нижняя часть лица", "basis": "300-400 импульсов", "price": "KRW 1,170,000~" },
+        "fullFace": { "name": "Всё лицо", "basis": "400-800 импульсов", "price": "KRW 1,560,000~" },
+        "fullFaceNeck": { "name": "Всё лицо + шея", "basis": "600 импульсов~", "price": "KRW 2,340,000~" }
+      }
+    },
+    "notes": {
+      "vat": "※ Все цены указаны без НДС.",
+      "perSession": "※ Указанные цены — за один сеанс; точная цена определяется после консультации.",
+      "individual": "※ Итоговая стоимость может различаться в зависимости от состояния кожи, объёма процедуры и используемых препаратов."
+    }
+  },
   "nav": {
+    "pricing": "Цены",
     "about": "О",
     "aboutBrand": "Наш бренд",
     "aboutStaff": "Медицинский персонал",
