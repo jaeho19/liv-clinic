@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useEffect } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
-import type { Locale } from '@/i18n/routing';
+import { Link, type Locale } from '@/i18n/routing';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AnimateOnScroll, Button } from '@/components/ui';
 import { ScrollLink } from '@/components/ui';
@@ -14,6 +14,7 @@ type FilterStatus = 'all' | 'active' | 'ended';
 
 export default function EventsPage() {
   const t = useTranslations('events');
+  const tFv = useTranslations('firstVisit');
   const locale = useLocale() as Locale;
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
   const [allEvents, setAllEvents] = useState<EventItem[]>([]);
@@ -72,6 +73,30 @@ export default function EventsPage() {
               </p>
             </div>
           </AnimateOnScroll>
+        </div>
+      </section>
+
+      {/* 첫방문 체험가 프로모 배너 → /events/first-visit (Design Ref: §7 진입점) */}
+      <section className="pt-8 bg-background">
+        <div className="container-custom">
+          <Link
+            href="/events/first-visit"
+            className="group flex items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/5 px-6 py-5 transition-colors hover:bg-primary/10"
+          >
+            <div className="min-w-0">
+              <p className="font-serif text-small text-primary">{tFv('eyebrow')}</p>
+              <p className="text-h4 text-secondary">{tFv('banner.title')}</p>
+              <p className="text-small text-mono-light">{tFv('banner.subtitle')}</p>
+            </div>
+            <span
+              className="shrink-0 text-primary transition-transform group-hover:translate-x-1"
+              aria-hidden="true"
+            >
+              <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5-5 5M5 12h13" />
+              </svg>
+            </span>
+          </Link>
         </div>
       </section>
 

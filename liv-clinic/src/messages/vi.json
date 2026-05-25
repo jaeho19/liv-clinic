@@ -5449,6 +5449,43 @@
       "description": "Khám phá những sự kiện mới nhất và chương trình khuyến mãi đặc biệt tại Bệnh viện phẫu thuật thẩm mỹ LIV. Ưu đãi đặc biệt về Ultherapy, Thermage, Botox, Filler và nhiều sản phẩm khác."
     }
   },
+  "firstVisit": {
+    "eyebrow": "First Visit",
+    "title": "Giá trải nghiệm lần đầu",
+    "subtitle": "Ưu đãi trải nghiệm 1 lần dành cho khách hàng lần đầu đến LIV",
+    "trialOnceNote": "Chỉ áp dụng 1 lần trong lần đầu đến khám",
+    "trialBadge": "Giá trải nghiệm",
+    "unit": " KRW",
+    "originalLabel": "Giá gốc",
+    "categories": {
+      "hairRemoval": "Triệt lông",
+      "skincare": "Chăm sóc da",
+      "botox": "Botox",
+      "injection": "Rejuran & Truyền tĩnh mạch",
+      "lifting": "Nâng cơ"
+    },
+    "items": {
+      "armpitHairRemoval": { "name": "Triệt lông nách (1 lần)", "desc": "Liệu trình laser phá hủy chọn lọc nang lông vùng nách." },
+      "lipHairRemoval": { "name": "Triệt lông ria mép (1 lần)", "desc": "Liệu trình laser loại bỏ lông tơ vùng ria mép để tạo vẻ sạch sẽ." },
+      "premiumSkincare": { "name": "Chăm sóc da cao cấp", "desc": "Chương trình chăm sóc cá nhân hóa giúp cấp ẩm, tẩy tế bào chết và làm dịu da theo loại da.", "option": "Chọn 1 trong Ulblanc Ultrasound / Mul-tox / Plafil · Phòng riêng" },
+      "botoxKr": { "name": "Botox góc hàm 50U (Hàn Quốc)", "desc": "Tạm thời giảm thể tích cơ hàm phát triển quá mức (cơ cắn) để cải thiện đường nét mặt dưới." },
+      "botoxDe": { "name": "Botox góc hàm 50U (Đức)", "desc": "Tạm thời giảm thể tích cơ hàm phát triển quá mức (cơ cắn) để cải thiện đường nét mặt dưới." },
+      "botoxUs": { "name": "Botox góc hàm 50U (Mỹ)", "desc": "Tạm thời giảm thể tích cơ hàm phát triển quá mức (cơ cắn) để cải thiện đường nét mặt dưới." },
+      "rejuran2cc": { "name": "Rejuran Healer 2cc", "desc": "Đưa thành phần chiết xuất từ cá hồi (PN) vào lớp hạ bì để tăng khả năng tự phục hồi của da." },
+      "rejuran2cc3x": { "name": "Rejuran Healer 2cc · 3 lần (chăm sóc 12 tuần)", "desc": "Đưa thành phần chiết xuất từ cá hồi (PN) vào lớp hạ bì để tăng khả năng tự phục hồi của da." },
+      "ivCustom": { "name": "Truyền dịch theo nhu cầu", "desc": "Liệu pháp bổ sung vitamin và dưỡng chất cần thiết qua đường tĩnh mạch theo thể trạng cá nhân." },
+      "inmode": { "name": "Nâng cơ InMode (2 chế độ)", "desc": "Sử dụng năng lượng RF để đồng thời giảm tế bào mỡ và kích thích sản sinh collagen." },
+      "ulthera300": { "name": "Ultherapy Prime 300 shots", "desc": "Truyền sóng siêu âm hội tụ cường độ cao (HIFU) vào sâu trong da để săn chắc và nâng cơ." }
+    },
+    "disclaimer": "Mọi liệu trình đều có thể gây tác dụng phụ như sưng, bầm tím hoặc viêm tùy theo từng người, vì vậy cần tư vấn kỹ với đội ngũ y tế.",
+    "vatNote": "Giá hiển thị chưa bao gồm VAT.",
+    "cta": { "title": "Đặt lịch tư vấn lần đầu", "book": "Đặt lịch tư vấn", "call": "Gọi điện" },
+    "banner": { "title": "Giá trải nghiệm lần đầu", "subtitle": "Từ 5,000 KRW — ưu đãi dành riêng cho khách lần đầu" },
+    "meta": {
+      "title": "Giá trải nghiệm lần đầu | LIV Plastic Surgery",
+      "description": "Giá trải nghiệm lần đầu tại LIV Plastic Surgery. Từ triệt lông 5,000 KRW đến Botox, Rejuran, InMode và Ultherapy — giảm tới 47%."
+    }
+  },
   "pricing": {
     "sectionTitle": "Giá điều trị",
     "header": {

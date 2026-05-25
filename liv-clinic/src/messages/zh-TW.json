@@ -5449,6 +5449,43 @@
       "description": "查看LIV 整形外科的最新活動和特別促銷。音波拉提、鳳凰電波、肉毒桿菌素、玻尿酸等各種項目優惠。"
     }
   },
+  "firstVisit": {
+    "eyebrow": "First Visit",
+    "title": "首次1次體驗價",
+    "subtitle": "獻給首次蒞臨 LIV 的顧客的1次體驗優惠",
+    "trialOnceNote": "首次到院僅限1次適用",
+    "trialBadge": "體驗價",
+    "unit": "韓元",
+    "originalLabel": "原價",
+    "categories": {
+      "hairRemoval": "脫毛",
+      "skincare": "皮膚護理",
+      "botox": "肉毒桿菌素",
+      "injection": "嬰兒針·營養點滴",
+      "lifting": "拉提"
+    },
+    "items": {
+      "armpitHairRemoval": { "name": "腋下脫毛 (1次)", "desc": "透過雷射選擇性破壞腋下部位毛根的療程。" },
+      "lipHairRemoval": { "name": "唇上脫毛 (1次)", "desc": "以雷射去除唇上細毛，打造乾淨印象的療程。" },
+      "premiumSkincare": { "name": "高級皮膚護理", "desc": "依膚質量身打造的補水、去角質與舒緩護理療程。", "option": "Ulblanc 超音波 / Mul-tox / Plafil 中選1 · 提供單人房" },
+      "botoxKr": { "name": "方下顎肉毒桿菌素 50U (韓國產)", "desc": "暫時減少過度發達的下顎肌肉(咬肌)體積，改善下面部線條。" },
+      "botoxDe": { "name": "方下顎肉毒桿菌素 50U (德國產)", "desc": "暫時減少過度發達的下顎肌肉(咬肌)體積，改善下面部線條。" },
+      "botoxUs": { "name": "方下顎肉毒桿菌素 50U (美國產)", "desc": "暫時減少過度發達的下顎肌肉(咬肌)體積，改善下面部線條。" },
+      "rejuran2cc": { "name": "嬰兒針 (Rejuran) 再生注射 2cc", "desc": "將鮭魚來源成分(PN)輸送至真皮層，提升肌膚自我修復力並改善環境。" },
+      "rejuran2cc3x": { "name": "嬰兒針 (Rejuran) 2cc · 3次 (12週護理)", "desc": "將鮭魚來源成分(PN)輸送至真皮層，提升肌膚自我修復力並改善環境。" },
+      "ivCustom": { "name": "客製營養點滴", "desc": "依個人狀態透過靜脈補充所需維他命或營養成分的療法。" },
+      "inmode": { "name": "InMode 拉提 (2種模式)", "desc": "運用射頻能量同時誘導多餘脂肪細胞消減與膠原蛋白生成。" },
+      "ulthera300": { "name": "超音波拉提 Prime 300發", "desc": "將高強度聚焦超音波(HIFU)傳遞至肌膚深層，帶來緊緻與拉提效果。" }
+    },
+    "disclaimer": "所有療程可能因個人差異出現腫脹、瘀青、發炎等副作用，須與醫療團隊充分溝通。",
+    "vatNote": "標示價格不含加值稅(VAT)。",
+    "cta": { "title": "預約首次到院諮詢", "book": "預約諮詢", "call": "電話諮詢" },
+    "banner": { "title": "首次1次體驗價", "subtitle": "脫毛5,000韓元起 — 首次到院顧客專屬優惠" },
+    "meta": {
+      "title": "首次1次體驗價 | LIV 整形外科",
+      "description": "LIV 整形外科首次到院專屬體驗價。脫毛5,000韓元起，肉毒桿菌素·嬰兒針·InMode·超音波拉提最高47%折扣。"
+    }
+  },
   "pricing": {
     "sectionTitle": "項目價格",
     "header": {

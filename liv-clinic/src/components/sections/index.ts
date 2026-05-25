@@ -34,6 +34,7 @@ export { default as SignatureProgramsSection } from './SignatureProgramsSection'
 export { default as ConsultationForm } from './ConsultationForm';
 export { default as FloatingConsultation } from './FloatingConsultation';
 export { default as EventCard } from './EventCard';
+export { default as FirstVisitTrialSection } from './FirstVisitTrialSection';
 export { default as MediaNewsSection } from './MediaNewsSection';
 export { default as MediaNewsCard } from './MediaNewsCard';
 export { default as PricingGuide } from './PricingGuide';
