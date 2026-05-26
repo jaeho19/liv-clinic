@@ -5449,6 +5449,43 @@
       "description": "Discover the latest events and special promotions at LIV Plastic Surgery. Special offers on Ultherapy, Thermage, Botox, Filler and more."
     }
   },
+  "firstVisit": {
+    "eyebrow": "First Visit",
+    "title": "First Visit Trial Price",
+    "subtitle": "A one-time trial offer for first-time guests at LIV",
+    "trialOnceNote": "Valid once, on your first visit only",
+    "trialBadge": "Trial price",
+    "unit": " KRW",
+    "originalLabel": "Original price",
+    "categories": {
+      "hairRemoval": "Hair Removal",
+      "skincare": "Skin Care",
+      "botox": "Botox",
+      "injection": "Rejuran & IV Injections",
+      "lifting": "Lifting"
+    },
+    "items": {
+      "armpitHairRemoval": { "name": "Underarm Hair Removal (1 session)", "desc": "A laser treatment that selectively destroys hair follicles in the underarm area." },
+      "lipHairRemoval": { "name": "Upper Lip Hair Removal (1 session)", "desc": "A laser treatment that removes fine hair on the upper lip for a clean look." },
+      "premiumSkincare": { "name": "Premium Skin Care", "desc": "A customized care program for hydration, exfoliation, and soothing, tailored to your skin type.", "option": "Choose 1 of Ulblanc Ultrasound / Mul-tox / Plafil · Private room provided" },
+      "botoxKr": { "name": "Square Jaw Botox 50U (Korean)", "desc": "Temporarily reduces the volume of overdeveloped jaw muscles (masseter) to refine the lower face." },
+      "botoxDe": { "name": "Square Jaw Botox 50U (German)", "desc": "Temporarily reduces the volume of overdeveloped jaw muscles (masseter) to refine the lower face." },
+      "botoxUs": { "name": "Square Jaw Botox 50U (USA)", "desc": "Temporarily reduces the volume of overdeveloped jaw muscles (masseter) to refine the lower face." },
+      "rejuran2cc": { "name": "Rejuran Healer 2cc", "desc": "Delivers salmon-derived PN into the dermis to boost the skin's self-renewal and improve its condition." },
+      "rejuran2cc3x": { "name": "Rejuran Healer 2cc · 3 sessions (12-week care)", "desc": "Delivers salmon-derived PN into the dermis to boost the skin's self-renewal and improve its condition." },
+      "ivCustom": { "name": "Custom IV Therapy", "desc": "Replenishes vitamins and nutrients intravenously based on your personal condition." },
+      "inmode": { "name": "InMode Lifting (2 modes)", "desc": "Uses RF energy to simultaneously induce fat cell reduction and collagen production." },
+      "ulthera300": { "name": "Ultherapy Prime 300 shots", "desc": "Delivers high-intensity focused ultrasound (HIFU) deep into the skin for firming and lifting." }
+    },
+    "disclaimer": "All procedures may cause side effects such as swelling, bruising, or inflammation depending on the individual, so thorough consultation with our medical staff is required.",
+    "vatNote": "Prices shown are exclusive of VAT.",
+    "cta": { "title": "Book your first-visit consultation", "book": "Book a Consultation", "call": "Call us" },
+    "banner": { "title": "First Visit Trial Price", "subtitle": "From 5,000 KRW — an exclusive offer for first-time guests" },
+    "meta": {
+      "title": "First Visit Trial Price | LIV Plastic Surgery",
+      "description": "LIV Plastic Surgery first-visit trial prices. From 5,000 KRW hair removal to Botox, Rejuran, InMode and Ultherapy — up to 47% off."
+    }
+  },
   "pricing": {
     "sectionTitle": "Treatment Pricing",
     "header": {

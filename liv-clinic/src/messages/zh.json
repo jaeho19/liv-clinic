@@ -5449,6 +5449,43 @@
       "description": "查看LIV整形外科的最新活动和特别促销。超声刀、热玛吉、肉毒素、玻尿酸等各种项目优惠。"
     }
   },
+  "firstVisit": {
+    "eyebrow": "First Visit",
+    "title": "首次1次体验价",
+    "subtitle": "献给首次到访 LIV 的顾客的1次体验优惠",
+    "trialOnceNote": "首次到院仅限1次适用",
+    "trialBadge": "体验价",
+    "unit": "韩元",
+    "originalLabel": "原价",
+    "categories": {
+      "hairRemoval": "脱毛",
+      "skincare": "皮肤护理",
+      "botox": "肉毒素",
+      "injection": "婴儿针·营养点滴",
+      "lifting": "提升"
+    },
+    "items": {
+      "armpitHairRemoval": { "name": "腋下脱毛 (1次)", "desc": "通过激光选择性破坏腋下部位毛根的项目。" },
+      "lipHairRemoval": { "name": "唇上脱毛 (1次)", "desc": "用激光去除唇上汗毛，打造干净印象的项目。" },
+      "premiumSkincare": { "name": "高级皮肤护理", "desc": "根据肤质定制的补水、去角质及舒缓护理项目。", "option": "Ulblanc 超声波 / Mul-tox / Plafil 中选1 · 提供单人间" },
+      "botoxKr": { "name": "方下颌肉毒素 50U (韩国产)", "desc": "暂时减少过度发达的下颌肌肉(咬肌)体积，改善下面部线条。" },
+      "botoxDe": { "name": "方下颌肉毒素 50U (德国产)", "desc": "暂时减少过度发达的下颌肌肉(咬肌)体积，改善下面部线条。" },
+      "botoxUs": { "name": "方下颌肉毒素 50U (美国产)", "desc": "暂时减少过度发达的下颌肌肉(咬肌)体积，改善下面部线条。" },
+      "rejuran2cc": { "name": "婴儿针 (Rejuran) 再生注射 2cc", "desc": "将三文鱼来源成分(PN)输送至真皮层，提升肌肤自我修复力并改善环境。" },
+      "rejuran2cc3x": { "name": "婴儿针 (Rejuran) 2cc · 3次 (12周护理)", "desc": "将三文鱼来源成分(PN)输送至真皮层，提升肌肤自我修复力并改善环境。" },
+      "ivCustom": { "name": "定制营养点滴", "desc": "根据个人状态通过静脉补充所需维生素或营养成分的疗法。" },
+      "inmode": { "name": "InMode 提升 (2种模式)", "desc": "利用射频能量同时诱导多余脂肪细胞消减与胶原蛋白生成。" },
+      "ulthera300": { "name": "超声刀 Prime 300发", "desc": "将高强度聚焦超声(HIFU)传递至肌肤深层，带来紧致与提升效果。" }
+    },
+    "disclaimer": "所有项目可能因个人差异出现肿胀、淤青、炎症等副作用，需与医疗团队充分沟通。",
+    "vatNote": "所示价格不含增值税(VAT)。",
+    "cta": { "title": "预约首次到院咨询", "book": "预约咨询", "call": "电话咨询" },
+    "banner": { "title": "首次1次体验价", "subtitle": "脱毛5,000韩元起 — 首次到院顾客专属优惠" },
+    "meta": {
+      "title": "首次1次体验价 | LIV整形外科",
+      "description": "LIV整形外科首次到院专属体验价。脱毛5,000韩元起，肉毒素·婴儿针·InMode·超声刀最高47%折扣。"
+    }
+  },
   "pricing": {
     "sectionTitle": "项目价格",
     "header": {

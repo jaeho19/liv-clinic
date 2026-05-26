@@ -5449,6 +5449,43 @@
       "description": "Découvrez les derniers événements et promotions spéciales chez LIV Plastic Surgery. Offres spéciales sur Ultherapy, Thermage, Botox, acide hyaluronique et plus encore."
     }
   },
+  "firstVisit": {
+    "eyebrow": "First Visit",
+    "title": "Tarif découverte première visite",
+    "subtitle": "Une offre découverte unique pour les nouveaux clients de LIV",
+    "trialOnceNote": "Valable une seule fois, lors de la première visite",
+    "trialBadge": "Tarif découverte",
+    "unit": " KRW",
+    "originalLabel": "Prix normal",
+    "categories": {
+      "hairRemoval": "Épilation",
+      "skincare": "Soin de la peau",
+      "botox": "Botox",
+      "injection": "Rejuran & perfusions",
+      "lifting": "Lifting"
+    },
+    "items": {
+      "armpitHairRemoval": { "name": "Épilation des aisselles (1 séance)", "desc": "Traitement laser qui détruit sélectivement les follicules pileux des aisselles." },
+      "lipHairRemoval": { "name": "Épilation de la lèvre supérieure (1 séance)", "desc": "Traitement laser qui élimine le duvet de la lèvre supérieure pour un rendu net." },
+      "premiumSkincare": { "name": "Soin de la peau premium", "desc": "Programme de soin personnalisé d'hydratation, d'exfoliation et d'apaisement adapté à votre type de peau.", "option": "Au choix 1 parmi Ulblanc Ultrasound / Mul-tox / Plafil · Cabine privée" },
+      "botoxKr": { "name": "Botox des masséters 50U (Corée)", "desc": "Réduit temporairement le volume du muscle masséter hypertrophié pour affiner le bas du visage." },
+      "botoxDe": { "name": "Botox des masséters 50U (Allemagne)", "desc": "Réduit temporairement le volume du muscle masséter hypertrophié pour affiner le bas du visage." },
+      "botoxUs": { "name": "Botox des masséters 50U (États-Unis)", "desc": "Réduit temporairement le volume du muscle masséter hypertrophié pour affiner le bas du visage." },
+      "rejuran2cc": { "name": "Rejuran Healer 2cc", "desc": "Délivre un composant issu du saumon (PN) dans le derme pour stimuler l'auto-régénération de la peau." },
+      "rejuran2cc3x": { "name": "Rejuran Healer 2cc · 3 séances (cure de 12 semaines)", "desc": "Délivre un composant issu du saumon (PN) dans le derme pour stimuler l'auto-régénération de la peau." },
+      "ivCustom": { "name": "Perfusion personnalisée", "desc": "Thérapie d'apport en vitamines et nutriments par voie intraveineuse selon votre état." },
+      "inmode": { "name": "Lifting InMode (2 modes)", "desc": "Utilise l'énergie RF pour réduire les cellules graisseuses et stimuler le collagène simultanément." },
+      "ulthera300": { "name": "Ultherapy Prime 300 tirs", "desc": "Délivre des ultrasons focalisés de haute intensité (HIFU) en profondeur pour fermeté et lifting." }
+    },
+    "disclaimer": "Toutes les procédures peuvent entraîner des effets secondaires tels que gonflement, ecchymoses ou inflammation selon les individus ; une consultation approfondie avec l'équipe médicale est nécessaire.",
+    "vatNote": "Les prix affichés s'entendent hors TVA.",
+    "cta": { "title": "Réservez votre consultation de première visite", "book": "Prendre rendez-vous", "call": "Appelez-nous" },
+    "banner": { "title": "Tarif découverte première visite", "subtitle": "À partir de 5 000 KRW — offre exclusive pour les nouveaux clients" },
+    "meta": {
+      "title": "Tarif découverte première visite | LIV Plastic Surgery",
+      "description": "Tarifs découverte première visite chez LIV Plastic Surgery. De l'épilation à 5 000 KRW au Botox, Rejuran, InMode et Ultherapy — jusqu'à -47%."
+    }
+  },
   "pricing": {
     "sectionTitle": "Tarifs des traitements",
     "header": {
