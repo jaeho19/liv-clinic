@@ -156,6 +156,7 @@
     "filler": "Филлер",
     "skinbooster": "Скин Бустер",
     "skincare": "Арьс арчилгаа",
+    "hilowave": "HILO WAVE",
     "laser": "Лазер",
     "beforeAfter": "Өмнө/Дараа",
     "medical": "Эмнэлзүйн мэдээлэл",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "Анхны айлчлалын туршилтын үнэ | LIV Plastic Surgery",
       "description": "LIV Plastic Surgery-ийн анхны айлчлалын туршилтын үнэ. Үс авалт 5,000 KRW-аас Ботокс, Rejuran, InMode, Ultherapy хүртэл 47% хүртэл хямдрал."
+    },
+    "slimBanner": {
+      "text": "Анхны үзлэгийн үнэ · 47% хүртэл хямдрал",
+      "textShort": "Анхны үнэ",
+      "cta": "Үзэх"
     }
   },
   "pricing": {

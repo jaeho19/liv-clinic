@@ -1,8 +1,10 @@
 import dynamic from 'next/dynamic';
-import { Hero } from '@/components/sections';
+import { Hero, HomeFirstVisitSlimBanner } from '@/components/sections';
 
 // 동적 임포트 - below-fold 섹션 지연 로드 (Vercel Best Practice: bundle-dynamic-imports)
-// Hero만 정적 import로 LCP 보호, 나머지는 코드 스플리팅으로 초기 번들 감소
+// Hero + HomeFirstVisitSlimBanner만 정적 import (LCP 영역 / 헤더 직하 즉시 노출).
+// 나머지는 코드 스플리팅으로 초기 번들 감소
+// Design Ref: §6.1 — SlimBanner 정적(D6) 유지. HomePromo는 사용자 결정으로 미사용.
 const Equipment = dynamic(() => import('@/components/sections/Equipment'), { ssr: true });
 const Signature = dynamic(() => import('@/components/sections/Signature'), { ssr: true });
 const CoreValues = dynamic(() => import('@/components/sections/CoreValues'), { ssr: true });
@@ -22,6 +24,7 @@ const Location = dynamic(() => import('@/components/sections/Location'), { ssr: 
 export default function HomePage() {
   return (
     <>
+      <HomeFirstVisitSlimBanner />
       <Hero />
       <Equipment />
       <Signature />

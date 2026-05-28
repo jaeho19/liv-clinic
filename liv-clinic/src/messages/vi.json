@@ -156,6 +156,7 @@
     "filler": "Filler",
     "skinbooster": "Tăng cường da",
     "skincare": "Chăm sóc da",
+    "hilowave": "HILO WAVE",
     "laser": "Tia laze",
     "beforeAfter": "Trước & Sau",
     "medical": "Thông tin y tế",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "Giá trải nghiệm lần đầu | LIV Plastic Surgery",
       "description": "Giá trải nghiệm lần đầu tại LIV Plastic Surgery. Từ triệt lông 5,000 KRW đến Botox, Rejuran, InMode và Ultherapy — giảm tới 47%."
+    },
+    "slimBanner": {
+      "text": "Giá trải nghiệm lần đầu · Giảm tới 47%",
+      "textShort": "Giá trải nghiệm",
+      "cta": "Xem"
     }
   },
   "pricing": {

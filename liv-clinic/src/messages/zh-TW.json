@@ -156,6 +156,7 @@
     "filler": "玻尿酸",
     "skinbooster": "水光針",
     "skincare": "皮膚管理",
+    "hilowave": "HILO WAVE",
     "laser": "激光",
     "beforeAfter": "術前術後",
     "medical": "醫療資訊",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "首次1次體驗價 | LIV 整形外科",
       "description": "LIV 整形外科首次到院專屬體驗價。脫毛5,000韓元起，肉毒桿菌素·嬰兒針·InMode·超音波拉提最高47%折扣。"
+    },
+    "slimBanner": {
+      "text": "首次體驗價 · 最高優惠47%",
+      "textShort": "首次體驗價",
+      "cta": "查看"
     }
   },
   "pricing": {
