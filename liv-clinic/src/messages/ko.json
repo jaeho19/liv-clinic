@@ -156,6 +156,7 @@
     "filler": "필러",
     "skinbooster": "스킨부스터",
     "skincare": "스킨케어",
+    "hilowave": "HILO WAVE",
     "laser": "레이저",
     "beforeAfter": "전후사진",
     "medical": "의료정보",
@@ -5487,6 +5488,11 @@
     "meta": {
       "title": "첫방문 1회 체험가 | 리브성형외과",
       "description": "리브성형외과 첫방문 고객 전용 1회 체험가. 제모 5,000원부터 보톡스·리쥬란·인모드·울쎄라까지 최대 47% 할인 혜택을 확인하세요."
+    },
+    "slimBanner": {
+      "text": "첫방문 1회 체험가 · 최대 47% 할인",
+      "textShort": "첫방문 체험가",
+      "cta": "보기"
     }
   },
   "pricing": {

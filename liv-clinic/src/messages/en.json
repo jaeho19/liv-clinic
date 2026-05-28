@@ -156,6 +156,7 @@
     "filler": "Filler",
     "skinbooster": "Skin Booster",
     "skincare": "Skincare",
+    "hilowave": "HILO WAVE",
     "laser": "Laser",
     "beforeAfter": "Before & After",
     "medical": "Medical Info",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "First Visit Trial Price | LIV Plastic Surgery",
       "description": "LIV Plastic Surgery first-visit trial prices. From 5,000 KRW hair removal to Botox, Rejuran, InMode and Ultherapy — up to 47% off."
+    },
+    "slimBanner": {
+      "text": "First Visit Trial · Up to 47% Off",
+      "textShort": "First Visit Trial",
+      "cta": "View"
     }
   },
   "pricing": {

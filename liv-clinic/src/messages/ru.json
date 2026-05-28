@@ -156,6 +156,7 @@
     "filler": "Filler",
     "skinbooster": "Усилитель кожи",
     "skincare": "Уход за кожей",
+    "hilowave": "HILO WAVE",
     "laser": "Лазер",
     "beforeAfter": "До и После",
     "medical": "Медицинская информация",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "Пробная цена для первого визита | LIV Plastic Surgery",
       "description": "Пробные цены для первого визита в LIV Plastic Surgery. От эпиляции за 5,000 KRW до Ботокса, Реюрана, InMode и Ультерапии — скидки до 47%."
+    },
+    "slimBanner": {
+      "text": "Цена первого визита · Скидка до 47%",
+      "textShort": "Первый визит",
+      "cta": "Открыть"
     }
   },
   "pricing": {

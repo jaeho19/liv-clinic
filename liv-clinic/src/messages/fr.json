@@ -156,6 +156,7 @@
     "filler": "Acide hyaluronique",
     "skinbooster": "Skin Booster",
     "skincare": "Soins de la peau",
+    "hilowave": "HILO WAVE",
     "laser": "Laser",
     "beforeAfter": "Avant/Après",
     "medical": "Informations médicales",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "Tarif découverte première visite | LIV Plastic Surgery",
       "description": "Tarifs découverte première visite chez LIV Plastic Surgery. De l'épilation à 5 000 KRW au Botox, Rejuran, InMode et Ultherapy — jusqu'à -47%."
+    },
+    "slimBanner": {
+      "text": "Tarif Première Visite · Jusqu'à -47%",
+      "textShort": "Première visite",
+      "cta": "Voir"
     }
   },
   "pricing": {

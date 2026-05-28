@@ -156,6 +156,7 @@
     "filler": "الفيلر",
     "skinbooster": "حقن البشرة",
     "skincare": "العناية بالبشرة",
+    "hilowave": "HILO WAVE",
     "laser": "الليزر",
     "beforeAfter": "قبل/بعد",
     "medical": "معلومات طبية",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "سعر التجربة للزيارة الأولى | LIV Plastic Surgery",
       "description": "أسعار التجربة للزيارة الأولى في LIV Plastic Surgery. من إزالة الشعر بـ 5,000 KRW إلى البوتوكس وريجوران وInMode وألتيرا — خصم حتى 47%."
+    },
+    "slimBanner": {
+      "text": "سعر الزيارة الأولى · خصم حتى 47%",
+      "textShort": "سعر الزيارة الأولى",
+      "cta": "عرض"
     }
   },
   "pricing": {

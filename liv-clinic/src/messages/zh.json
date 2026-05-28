@@ -156,6 +156,7 @@
     "filler": "玻尿酸",
     "skinbooster": "水光针",
     "skincare": "皮肤管理",
+    "hilowave": "HILO WAVE",
     "laser": "激光",
     "beforeAfter": "术前术后",
     "medical": "医疗信息",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "首次1次体验价 | LIV整形外科",
       "description": "LIV整形外科首次到院专属体验价。脱毛5,000韩元起，肉毒素·婴儿针·InMode·超声刀最高47%折扣。"
+    },
+    "slimBanner": {
+      "text": "首次体验价 · 最高优惠47%",
+      "textShort": "首次体验价",
+      "cta": "查看"
     }
   },
   "pricing": {

@@ -156,6 +156,7 @@
     "filler": "フィラー",
     "skinbooster": "スキンブースター",
     "skincare": "スキンケア",
+    "hilowave": "HILO WAVE",
     "laser": "レーザー",
     "beforeAfter": "ビフォーアフター",
     "medical": "医療情報",
@@ -5485,6 +5486,11 @@
     "meta": {
       "title": "初回1回体験価格 | リブ形成外科",
       "description": "リブ形成外科の初回来院限定体験価格。脱毛5,000ウォンからボトックス・リジュラン・InMode・ウルセラまで最大47%割引。"
+    },
+    "slimBanner": {
+      "text": "初回限定 1回体験価格 · 最大47%OFF",
+      "textShort": "初回体験価格",
+      "cta": "見る"
     }
   },
   "pricing": {

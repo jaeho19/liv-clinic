@@ -156,6 +156,7 @@
     "filler": "Filler",
     "skinbooster": "บูสเตอร์ผิว",
     "skincare": "ผลิตภัณฑ์ดูแลผิว",
+    "hilowave": "HILO WAVE",
     "laser": "เลเซอร์",
     "beforeAfter": "ก่อนและหลัง",
     "medical": "ข้อมูลทางการแพทย์",
@@ -5484,6 +5485,11 @@
     "meta": {
       "title": "ราคาทดลองครั้งแรก | LIV Plastic Surgery",
       "description": "ราคาทดลองครั้งแรกของ LIV Plastic Surgery ตั้งแต่กำจัดขน 5,000 KRW ไปจนถึงโบท็อกซ์ รีจูรัน InMode และอัลเทอร์รา ลดสูงสุด 47%"
+    },
+    "slimBanner": {
+      "text": "ราคาทดลองครั้งแรก · ลดสูงสุด 47%",
+      "textShort": "ราคาทดลอง",
+      "cta": "ดู"
     }
   },
   "pricing": {
