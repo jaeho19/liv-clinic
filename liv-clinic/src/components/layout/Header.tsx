@@ -137,6 +137,8 @@ export default function Header() {
         { key: 'filler', label: t('filler'), href: '/antiaging/filler' },
         { key: 'skinbooster', label: t('skinbooster'), href: '/antiaging/skinbooster' },
         { key: 'skincare', label: t('skincare'), href: '/antiaging/skincare' },
+        { key: 'hilowave', label: t('hilowave'), href: '/antiaging/hilowave' },
+        { key: 'hilowaveV2', label: t('hilowaveV2'), href: '/antiaging/hilowave-v2' },
       ],
     },
     {

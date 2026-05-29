@@ -157,6 +157,7 @@
     "skinbooster": "Skin Booster",
     "skincare": "Skincare",
     "hilowave": "HILO WAVE",
+    "hilowaveV2": "HILO WAVE (v2)",
     "laser": "Laser",
     "beforeAfter": "Before & After",
     "medical": "Medical Info",
@@ -2367,6 +2368,119 @@
       }
     },
     "antiaging": {
+      "hilowave": {
+        "name": "What is HILO WAVE",
+        "fullName": "HILO WAVE",
+        "heroBadge": "HILO WAVE",
+        "heroTitle": "The flow of elasticity rising deep within the skin",
+        "heroDesc": "It restores elasticity from deep within and completes a naturally refined facial contour that lasts over time.",
+        "symptoms": {
+          "title": "Do you notice these changes?",
+          "subtitle": "Rediscover your confidence with subtle changes that begin deep within the skin.",
+          "items": [
+            {
+              "title": "Loss of elasticity",
+              "desc": "Are sagging skin and collapsed volume a concern?"
+            },
+            {
+              "title": "Lack of facial volume",
+              "desc": "Do sunken volume and reduced contour make you look older?"
+            },
+            {
+              "title": "Rough skin texture",
+              "desc": "Are rough texture and dryness bothering you?"
+            }
+          ]
+        },
+        "about": {
+          "title": "What is HILO WAVE",
+          "body": "High and low molecular Dual-HA spreads naturally deep into the skin, filling elasticity and density to create a healthy change.",
+          "points": [
+            {
+              "en": "Skin Density",
+              "ko": "Improves skin density"
+            },
+            {
+              "en": "Elastic Flow",
+              "ko": "Enhances elasticity and contour"
+            },
+            {
+              "en": "Natural Volume",
+              "ko": "Natural volume"
+            }
+          ]
+        },
+        "differentiators": {
+          "title": "Not excessive, yet clearly effective",
+          "items": [
+            {
+              "en": "Personalized Design",
+              "ko": "A tailored design that follows each individual's facial flow"
+            },
+            {
+              "en": "Natural Tightening",
+              "ko": "Natural elasticity improvement without excess"
+            },
+            {
+              "en": "Premium Care",
+              "ko": "Sinsa-dong premium anti-aging care"
+            }
+          ]
+        },
+        "idealFor": {
+          "title": "Recommended for",
+          "subtitle": "HILO WAVE is especially satisfying for those who want natural change.",
+          "items": [
+            "Those who want natural lifting",
+            "Those uncomfortable with artificial changes",
+            "Those who want to improve texture and elasticity together",
+            "Those who want change that stays natural over time"
+          ]
+        },
+        "program": {
+          "title": "Experience the change that rises over time.",
+          "items": [
+            {
+              "name": "HILO WAVE 2cc",
+              "desc": "A premium anti-aging program for skin density and natural elasticity",
+              "price": "KRW 539,000"
+            },
+            {
+              "name": "HILO WAVE 4cc",
+              "desc": "An intensive program for deeper volume and elasticity improvement",
+              "price": "KRW 880,000"
+            }
+          ],
+          "note": "Program composition may vary depending on individual skin condition."
+        },
+        "mood": {
+          "badge": "Created by HILO WAVE",
+          "title": "The mood of natural change"
+        },
+        "doctors": {
+          "title": "We delicately design the balance of natural change.",
+          "subtitle": "Considering each individual's facial structure and skin flow, we pursue natural change without excess.",
+          "items": [
+            {
+              "name": "Dr. Kim Su-young",
+              "desc": "Focusing on anti-aging and lifting, she pursues natural change tailored to each individual's facial flow."
+            },
+            {
+              "name": "Dr. Cheon Shin-hye",
+              "desc": "Considering the flow of skin and face, she pursues anti-aging that stays natural over time."
+            }
+          ]
+        },
+        "experience": {
+          "title": "From comfort to privacy, LIV completes its own premium experience.",
+          "caption": "Premium care completed within comfort, only at LIV"
+        },
+        "cta": {
+          "title": "The start of natural change",
+          "description": "If you would like to know more about HILO WAVE, feel free to book a consultation.",
+          "button": "Book a consultation"
+        }
+      },
       "botox": {
         "name": "Botox",
         "fullName": "Botox",

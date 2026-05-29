@@ -157,6 +157,7 @@
     "skinbooster": "水光針",
     "skincare": "皮膚管理",
     "hilowave": "HILO WAVE",
+    "hilowaveV2": "HILO WAVE (v2)",
     "laser": "激光",
     "beforeAfter": "術前術後",
     "medical": "醫療資訊",
@@ -2367,6 +2368,119 @@
       }
     },
     "antiaging": {
+      "hilowave": {
+        "name": "什麼是HILO WAVE",
+        "fullName": "HILO WAVE",
+        "heroBadge": "HILO WAVE",
+        "heroTitle": "自肌膚深處充盈而起的彈力之流",
+        "heroDesc": "由內而外充盈彈力，打造歷久彌新的自然臉部線條。",
+        "symptoms": {
+          "title": "您是否正感受到這些變化？",
+          "subtitle": "以源自肌膚深處的細膩變化，重拾自信。",
+          "items": [
+            {
+              "title": "彈力下降的感覺",
+              "desc": "鬆弛的肌膚與流失的體積令您困擾嗎？"
+            },
+            {
+              "title": "臉部體積不足",
+              "desc": "體積凹陷與立體感下降讓您顯老嗎？"
+            },
+            {
+              "title": "膚質變粗糙",
+              "desc": "粗糙的膚質與乾燥讓您在意嗎？"
+            }
+          ]
+        },
+        "about": {
+          "title": "什麼是HILO WAVE",
+          "body": "高·低分子Dual-HA自然滲透至肌膚深層，填充彈力與密度，帶來健康的改變。",
+          "points": [
+            {
+              "en": "Skin Density",
+              "ko": "改善肌膚密度"
+            },
+            {
+              "en": "Elastic Flow",
+              "ko": "提升彈力與輪廓"
+            },
+            {
+              "en": "Natural Volume",
+              "ko": "自然體積"
+            }
+          ]
+        },
+        "differentiators": {
+          "title": "不過度，卻確實有效",
+          "items": [
+            {
+              "en": "Personalized Design",
+              "ko": "依據每個人臉部走向的客製化設計"
+            },
+            {
+              "en": "Natural Tightening",
+              "ko": "不過度的自然彈力改善"
+            },
+            {
+              "en": "Premium Care",
+              "ko": "新沙洞高端抗衰護理"
+            }
+          ]
+        },
+        "idealFor": {
+          "title": "推薦族群",
+          "subtitle": "HILO WAVE對追求自然改變的族群尤其滿意度高。",
+          "items": [
+            "希望自然提升的人",
+            "對人工感變化有顧慮的人",
+            "希望同時改善膚質與彈力的人",
+            "希望隨時間推移仍自然的人"
+          ]
+        },
+        "program": {
+          "title": "體驗隨時間充盈而起的改變。",
+          "items": [
+            {
+              "name": "HILO WAVE 2cc",
+              "desc": "針對肌膚密度與自然彈力的高端抗衰療程",
+              "price": "539,000韓元"
+            },
+            {
+              "name": "HILO WAVE 4cc",
+              "desc": "針對更深層體積與彈力改善的集中療程",
+              "price": "880,000韓元"
+            }
+          ],
+          "note": "療程構成可能因個人肌膚狀況而有所不同。"
+        },
+        "mood": {
+          "badge": "HILO WAVE打造",
+          "title": "自然改變的氛圍"
+        },
+        "doctors": {
+          "title": "細膩設計自然改變的平衡。",
+          "subtitle": "考量每個人的臉部結構與肌膚走向，追求不過度的自然改變。",
+          "items": [
+            {
+              "name": "金秀英 代表院長",
+              "desc": "以抗衰與提升為核心，追求貼合每個人臉部走向的自然改變。"
+            },
+            {
+              "name": "千信惠 代表院長",
+              "desc": "考量肌膚與臉部的走向，追求歷久自然的抗衰。"
+            }
+          ]
+        },
+        "experience": {
+          "title": "從舒適到私密，成就LIV專屬的高端體驗。",
+          "caption": "在舒適中成就的LIV專屬高端護理"
+        },
+        "cta": {
+          "title": "自然改變的開始",
+          "description": "若想進一步了解HILO WAVE，歡迎隨時諮詢。",
+          "button": "預約諮詢"
+        }
+      },
       "botox": {
         "name": "肉毒桿菌素",
         "fullName": "Botox",
