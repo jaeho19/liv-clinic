@@ -157,6 +157,7 @@
     "skinbooster": "Tăng cường da",
     "skincare": "Chăm sóc da",
     "hilowave": "HILO WAVE",
+    "hilowaveV2": "HILO WAVE (v2)",
     "laser": "Tia laze",
     "beforeAfter": "Trước & Sau",
     "medical": "Thông tin y tế",
@@ -2367,6 +2368,119 @@
       }
     },
     "antiaging": {
+      "hilowave": {
+        "name": "HILO WAVE là gì",
+        "fullName": "HILO WAVE",
+        "heroBadge": "HILO WAVE",
+        "heroTitle": "Dòng chảy đàn hồi dâng đầy từ sâu trong da",
+        "heroDesc": "Lấp đầy độ đàn hồi từ sâu bên trong và hoàn thiện đường nét khuôn mặt tự nhiên theo thời gian.",
+        "symptoms": {
+          "title": "Bạn có đang cảm nhận những thay đổi này?",
+          "subtitle": "Tìm lại sự tự tin với những thay đổi tinh tế bắt đầu từ sâu trong da.",
+          "items": [
+            {
+              "title": "Cảm giác mất độ đàn hồi",
+              "desc": "Da chảy xệ và mất thể tích có làm bạn lo lắng?"
+            },
+            {
+              "title": "Khuôn mặt thiếu thể tích",
+              "desc": "Thể tích lõm và giảm độ căng có khiến bạn trông già hơn?"
+            },
+            {
+              "title": "Kết cấu da thô ráp",
+              "desc": "Kết cấu thô ráp và khô có làm bạn bận tâm?"
+            }
+          ]
+        },
+        "about": {
+          "title": "HILO WAVE là gì",
+          "body": "Dual-HA phân tử cao và thấp lan tỏa tự nhiên sâu vào da, lấp đầy độ đàn hồi và mật độ, tạo nên thay đổi khỏe mạnh.",
+          "points": [
+            {
+              "en": "Skin Density",
+              "ko": "Cải thiện mật độ da"
+            },
+            {
+              "en": "Elastic Flow",
+              "ko": "Nâng cao đàn hồi và đường nét"
+            },
+            {
+              "en": "Natural Volume",
+              "ko": "Thể tích tự nhiên"
+            }
+          ]
+        },
+        "differentiators": {
+          "title": "Không thái quá, nhưng hiệu quả rõ rệt",
+          "items": [
+            {
+              "en": "Personalized Design",
+              "ko": "Thiết kế riêng theo dòng chảy khuôn mặt mỗi người"
+            },
+            {
+              "en": "Natural Tightening",
+              "ko": "Cải thiện đàn hồi tự nhiên không thái quá"
+            },
+            {
+              "en": "Premium Care",
+              "ko": "Chăm sóc chống lão hóa cao cấp tại Sinsa-dong"
+            }
+          ]
+        },
+        "idealFor": {
+          "title": "Được khuyên dùng cho",
+          "subtitle": "HILO WAVE đặc biệt được hài lòng bởi những ai mong muốn thay đổi tự nhiên.",
+          "items": [
+            "Người mong muốn nâng cơ tự nhiên",
+            "Người ngại thay đổi nhân tạo",
+            "Người muốn cải thiện kết cấu và đàn hồi cùng lúc",
+            "Người muốn thay đổi vẫn tự nhiên theo thời gian"
+          ]
+        },
+        "program": {
+          "title": "Trải nghiệm sự thay đổi dâng đầy theo thời gian.",
+          "items": [
+            {
+              "name": "HILO WAVE 2cc",
+              "desc": "Chương trình chống lão hóa cao cấp cho mật độ da và đàn hồi tự nhiên",
+              "price": "539.000 KRW"
+            },
+            {
+              "name": "HILO WAVE 4cc",
+              "desc": "Chương trình chuyên sâu cho thể tích và đàn hồi sâu hơn",
+              "price": "880.000 KRW"
+            }
+          ],
+          "note": "Cấu trúc chương trình có thể khác nhau tùy tình trạng da mỗi người."
+        },
+        "mood": {
+          "badge": "Được tạo bởi HILO WAVE",
+          "title": "Cảm hứng của thay đổi tự nhiên"
+        },
+        "doctors": {
+          "title": "Chúng tôi thiết kế tinh tế sự cân bằng của thay đổi tự nhiên.",
+          "subtitle": "Xem xét cấu trúc khuôn mặt và dòng chảy da mỗi người, chúng tôi hướng tới thay đổi tự nhiên không thái quá.",
+          "items": [
+            {
+              "name": "BS. Kim Su-young",
+              "desc": "Tập trung vào chống lão hóa và nâng cơ, hướng tới thay đổi tự nhiên theo dòng chảy khuôn mặt mỗi người."
+            },
+            {
+              "name": "BS. Cheon Shin-hye",
+              "desc": "Xem xét dòng chảy của da và khuôn mặt, hướng tới chống lão hóa tự nhiên theo thời gian."
+            }
+          ]
+        },
+        "experience": {
+          "title": "Từ sự thoải mái đến riêng tư, LIV hoàn thiện trải nghiệm cao cấp của riêng mình.",
+          "caption": "Chăm sóc cao cấp hoàn thiện trong sự thoải mái, chỉ có tại LIV"
+        },
+        "cta": {
+          "title": "Khởi đầu của thay đổi tự nhiên",
+          "description": "Nếu muốn biết thêm về HILO WAVE, hãy thoải mái đặt lịch tư vấn.",
+          "button": "Đặt lịch tư vấn"
+        }
+      },
       "botox": {
         "name": "Botox",
         "fullName": "Botox",
