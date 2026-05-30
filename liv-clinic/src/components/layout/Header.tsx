@@ -276,7 +276,7 @@ export default function Header() {
               <Link
                 href="/contact"
                 className={`hidden md:inline-block whitespace-nowrap btn-primary transition-all duration-300 xl:ms-2 2xl:ms-3 ${
-                  isScrolled ? 'text-xs py-2 px-3 xl:px-4' : 'text-sm py-2.5 px-4 xl:px-6'
+                  isScrolled ? 'text-xs py-1.5 px-3 xl:px-4' : 'text-xs py-1.5 px-3 xl:px-4'
                 } ${
                   !useDarkStyle && 'bg-white/20 hover:bg-white/30 backdrop-blur-sm'
                 }`}
