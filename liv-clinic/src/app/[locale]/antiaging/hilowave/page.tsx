@@ -12,11 +12,22 @@ const DEBUG = false;
 
 const IMG_DIR = '/images/antiaging/hilowave';
 
+// 통이미지 위에 % 절대좌표로 얹는 영상 오버레이 (피부 단면 다이어그램 → 애니메이션)
+interface VideoOverlay {
+  src: string;
+  poster: string;
+  topPct: number;
+  leftPct: number;
+  widthPct: number;
+  heightPct: number;
+}
+
 interface StackImage {
   src: string;
   width: number;
   height: number;
   alt: string;
+  videoOverlay?: VideoOverlay;
 }
 
 interface HeroButton {
@@ -64,7 +75,21 @@ const HERO_BUTTONS: HeroButton[] = [
 // Design Ref: §3.1 — IMAGES manifest
 const IMAGES: StackImage[] = [
   { src: `${IMG_DIR}/hilowave-2.jpg`, width: 1920, height: 1071, alt: '지금 이런 변화가 느껴지시나요' },
-  { src: `${IMG_DIR}/hilowave-3.jpg`, width: 1920, height: 988, alt: '힐로웨이브란 — 피부 단면 다이어그램' },
+  {
+    src: `${IMG_DIR}/hilowave-3.jpg`,
+    width: 1920,
+    height: 988,
+    alt: '힐로웨이브란 — 피부 단면 다이어그램',
+    // 우측 피부 단면 다이어그램 자리를 동일 디자인의 애니메이션 영상으로 대체
+    videoOverlay: {
+      src: '/videos/hilowave-skin.mp4',
+      poster: '/videos/hilowave-skin-poster.jpg',
+      topPct: 28.34,
+      leftPct: 40.94,
+      widthPct: 57.29,
+      heightPct: 58.81,
+    },
+  },
   { src: `${IMG_DIR}/hilowave-4.jpg`, width: 1920, height: 1145, alt: '이런 분께 추천합니다' },
   { src: `${IMG_DIR}/hilowave-5.jpg`, width: 1920, height: 1128, alt: '자연스러운 변화의 무드' },
   { src: `${IMG_DIR}/hilowave-6.jpg`, width: 1920, height: 972, alt: 'HILO WAVE PROGRAM 가격 안내' },
@@ -76,6 +101,7 @@ const IMAGES: StackImage[] = [
 // 스크롤 진입 시 fade-up + 미세 hover 효과 블록
 // Plan SC7 — fade-up / Design Ref: §5.1 D4 — 미세 hover
 function FadeUpImage({ img }: { img: StackImage }) {
+  const v = img.videoOverlay;
   return (
     <motion.div
       className="relative w-full max-w-[1920px] mx-auto transition-transform transition-shadow duration-500 hover:scale-[1.005] hover:shadow-[0_8px_40px_rgba(0,0,0,0.06)]"
@@ -93,6 +119,25 @@ function FadeUpImage({ img }: { img: StackImage }) {
         sizes="100vw"
         className="block w-full h-auto"
       />
+      {v && (
+        <video
+          src={v.src}
+          poster={v.poster}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="metadata"
+          aria-hidden="true"
+          className="absolute z-[1] object-cover pointer-events-none"
+          style={{
+            top: `${v.topPct}%`,
+            left: `${v.leftPct}%`,
+            width: `${v.widthPct}%`,
+            height: `${v.heightPct}%`,
+          }}
+        />
+      )}
     </motion.div>
   );
 }
