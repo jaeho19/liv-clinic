@@ -16,12 +16,14 @@ import { LOCALES, type Locale } from '@/i18n/routing';
 // LOCALES SSOT 기반 홈 경로 매칭 — 새 locale 추가 시 자동 동기화
 const LOCALE_HOME_RE = new RegExp(`^/(${LOCALES.map((l) => l.replace(/\./g, '\\.')).join('|')})$`);
 
-// 번역 라벨이 길어 데스크톱 nav가 우측 영역(언어 스위처 포함)을 viewport 밖으로
-// 밀어내는 locale. 측정 결과 1440px 기준:
-//   mn=64px / fr=63px / ru=94px / ja=17px overflow.
-// 이 locale들은 lg+ 에서도 데스크톱 nav 대신 햄버거 메뉴를 강제해 언어 스위처
-// 가시성을 보장한다. 다른 locale은 기존 lg:flex 동작 유지.
-const COMPACT_NAV_LOCALES = new Set<Locale>(['ja', 'fr', 'mn', 'ru']);
+// 번역 라벨이 길어 데스크톱 nav(9개 항목)가 우측 영역(언어 스위처 포함)을
+// viewport 밖으로 밀어내는 locale. 측정 결과(2026-05, 9개 항목 기준):
+//   xl(1280px)에서도 overflow → en=+209px / vi=+148px / th=+143px,
+//   mn/fr/ru/ja도 1440px overflow. 이 locale들은 모든 폭에서 데스크톱 nav 대신
+//   햄버거 메뉴를 강제해 언어 스위처 가시성을 보장한다.
+// 나머지(ko/zh/zh-TW/ar)는 xl(1280px)+ 에서만 데스크톱 nav를 노출(xl:flex)하고
+//   그 미만(태블릿)은 햄버거로 fallback — lg 구간 언어 스위처 클리핑(G-1) 방지.
+const COMPACT_NAV_LOCALES = new Set<Locale>(['ja', 'fr', 'mn', 'ru', 'en', 'vi', 'th']);
 
 // Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice: rerender-dependencies)
 function useThrottle<T extends (...args: unknown[]) => void>(
@@ -83,11 +85,12 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Close mobile menu on resize — compact-nav locale은 lg+ 에서도 햄버거 메뉴를 유지하므로 제외
+  // Close mobile menu on resize — compact-nav locale은 모든 폭에서 햄버거 메뉴를 유지하므로 제외
+  // 데스크톱 nav는 xl(1280px)+ 에서만 노출되므로, 그 이상으로 넓어지면 모바일 메뉴를 닫는다.
   useEffect(() => {
     if (useCompactMenu) return;
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         setIsMobileMenuOpen(false);
       }
     };
@@ -197,7 +200,7 @@ export default function Header() {
             {/* Desktop Navigation — 긴 라벨 locale(COMPACT_NAV_LOCALES)은 데스크톱 nav를 숨겨
                  우측 언어 스위처가 가려지지 않게 한다 (햄버거로 fallback) */}
             <nav
-              className={`${useCompactMenu ? 'hidden' : 'hidden lg:flex'} items-center transition-all duration-300 xl:ms-4 2xl:ms-8 ${
+              className={`${useCompactMenu ? 'hidden' : 'hidden xl:flex'} items-center transition-all duration-300 xl:ms-4 2xl:ms-8 ${
                 isScrolled
                   ? 'gap-4 xl:gap-6 2xl:gap-7'
                   : 'gap-5 xl:gap-7 2xl:gap-9'
@@ -299,10 +302,10 @@ export default function Header() {
               {/* Language Switcher */}
               <LanguageSwitcher isScrolled={useDarkStyle} />
 
-              {/* Mobile Menu Button — 긴 라벨 locale은 데스크톱에서도 햄버거 유지 */}
+              {/* Mobile Menu Button — 긴 라벨 locale은 모든 폭에서, 그 외는 xl 미만(태블릿)에서 햄버거 */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className={`${useCompactMenu ? '' : 'lg:hidden'} p-3 min-w-[44px] min-h-[44px] flex items-center justify-center`}
+                className={`${useCompactMenu ? '' : 'xl:hidden'} p-3 min-w-[44px] min-h-[44px] flex items-center justify-center`}
                 aria-label="Open menu"
               >
                 <svg
