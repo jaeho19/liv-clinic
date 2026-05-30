@@ -162,10 +162,10 @@ export default function HiloWaveV2Page() {
                 {/* r2 일러스트 (텍스트 없는 라인 일러스트만 크롭) — 크게 표시 */}
                 <div className="relative w-full h-32 mb-5">
                   <Image
-                    src={`${IMG}/sym-${i + 1}.jpg`}
+                    src={`${IMG}/sym-${i + 1}.png`}
                     alt=""
                     fill
-                    className="object-contain mix-blend-multiply"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </div>
@@ -224,14 +224,17 @@ export default function HiloWaveV2Page() {
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
                 className="rounded-[2rem] overflow-hidden shadow-2xl shadow-[#D4A5A5]/20 bg-white"
               >
-                <Image
-                  src={`${IMG}/diagram.jpg`}
-                  alt={t(`${k}.about.title`)}
-                  width={960}
-                  height={879}
-                  className="w-full h-auto"
-                  quality={95}
-                  sizes="(max-width: 1024px) 100vw, 50vw"
+                {/* 피부 단면 다이어그램 → 동일 디자인 애니메이션 영상 */}
+                <video
+                  src="/videos/hilowave-skin.mp4"
+                  poster="/videos/hilowave-skin-poster.jpg"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  aria-label={t(`${k}.about.title`)}
+                  className="block w-full h-auto"
                 />
               </motion.div>
             </motion.div>
