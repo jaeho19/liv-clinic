@@ -185,7 +185,7 @@ export default function HiloWaveV2Page() {
       {/* S3. About — diagram + points */}
       <section className="py-28 bg-gradient-to-br from-[#FDF8F8] to-white">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr_1.35fr] gap-12 items-center max-w-7xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -216,7 +216,7 @@ export default function HiloWaveV2Page() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, ease: 'easeOut' }}
-              className="max-w-lg mx-auto"
+              className="w-full max-w-2xl mx-auto"
             >
               {/* 부드러운 float (이전 fill+aspect 구조가 16x16로 collapse되던 버그 → 명시 width/height로 수정) */}
               <motion.div
@@ -277,7 +277,7 @@ export default function HiloWaveV2Page() {
               className="relative aspect-[3/4] rounded-[2rem] overflow-hidden shadow-2xl shadow-[#D4A5A5]/20 max-w-md mx-auto lg:mx-0"
             >
               <Image
-                src={`${IMG}/ideal-model.jpg`}
+                src={`${IMG}/ideal-photo.jpg`}
                 alt={t(`${k}.idealFor.title`)}
                 fill
                 className="object-cover object-top"
