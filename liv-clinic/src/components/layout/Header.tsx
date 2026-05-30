@@ -198,10 +198,10 @@ export default function Header() {
             {/* Desktop Navigation — 긴 라벨 locale(COMPACT_NAV_LOCALES)은 데스크톱 nav를 숨겨
                  우측 언어 스위처가 가려지지 않게 한다 (햄버거로 fallback) */}
             <nav
-              className={`${useCompactMenu ? 'hidden' : 'hidden lg:flex'} items-center transition-all duration-300 ${
+              className={`${useCompactMenu ? 'hidden' : 'hidden lg:flex'} items-center transition-all duration-300 xl:ms-4 2xl:ms-8 ${
                 isScrolled
-                  ? 'gap-4 xl:gap-5 2xl:gap-6'
-                  : 'gap-5 xl:gap-6 2xl:gap-8'
+                  ? 'gap-4 xl:gap-6 2xl:gap-7'
+                  : 'gap-5 xl:gap-7 2xl:gap-9'
               }`}
             >
               {navItems.map((item) => (
@@ -269,11 +269,11 @@ export default function Header() {
             </nav>
 
             {/* Right Side: CTA + Language Switcher (shrink-0: 우측 영역 절대 압축 금지 → LanguageSwitcher 항상 노출 보장) */}
-            <div className="flex items-center gap-2 md:gap-3 xl:gap-4 shrink-0">
+            <div className="flex items-center gap-2 md:gap-3 xl:gap-5 shrink-0">
               {/* Consultation Button - Desktop */}
               <Link
                 href="/contact"
-                className={`hidden md:inline-block whitespace-nowrap btn-primary transition-all duration-300 ${
+                className={`hidden md:inline-block whitespace-nowrap btn-primary transition-all duration-300 xl:ms-2 2xl:ms-3 ${
                   isScrolled ? 'text-xs py-2 px-3 xl:px-4' : 'text-sm py-2.5 px-4 xl:px-6'
                 } ${
                   !useDarkStyle && 'bg-white/20 hover:bg-white/30 backdrop-blur-sm'
