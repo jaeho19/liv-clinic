@@ -74,7 +74,7 @@ export default function PopupsAdminPage() {
             const status = getPopupStatus(popup);
             const badge = STATUS_BADGES[status];
             return (
-              <div key={popup.id} className="bg-white rounded-xl border border-[#e5e5e5] p-3 lg:p-4">
+              <div key={popup.id} className="relative bg-white rounded-xl border border-[#e5e5e5] p-3 lg:p-4">
                 <div className="flex items-start gap-3 lg:gap-4">
                   {popup.image_url ? (
                     <img
