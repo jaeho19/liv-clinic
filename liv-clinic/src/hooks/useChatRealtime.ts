@@ -61,7 +61,6 @@ export function useChatRealtime(args: UseChatRealtimeArgs): UseChatRealtimeRetur
   useEffect(() => {
     if (!enabled || !sessionToken) return;
     lastFetchedAtRef.current = null;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMessages([]);
     void refresh();
   }, [enabled, sessionToken, refresh]);

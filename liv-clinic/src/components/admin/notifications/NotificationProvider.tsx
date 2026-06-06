@@ -22,7 +22,6 @@ const IS_DEV = process.env.NODE_ENV !== 'production';
 
 function debug(...args: unknown[]): void {
   if (IS_DEV) {
-    // eslint-disable-next-line no-console
     console.log('[notif-provider]', ...args);
   }
 }

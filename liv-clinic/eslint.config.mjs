@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Generated deploy output (in .gitignore but flat config does not read it):
+    ".netlify/**",
   ]),
 ]);
 
