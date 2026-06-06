@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server';
-import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL } from '@/lib/seo';
+import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { LASER_CATEGORIES, SITE_INFO } from '@/lib/constants';
 
 // Get static category data (color, href, etc.)
@@ -107,12 +107,7 @@ export async function generateMetadata({ params }: MetadataProps) {
     },
     alternates: {
       canonical: `${BASE_URL}/${locale}/laser/vascular`,
-      languages: {
-        'ko': `${BASE_URL}/ko/laser/vascular`,
-        'en': `${BASE_URL}/en/laser/vascular`,
-        'zh': `${BASE_URL}/zh/laser/vascular`,
-        'ja': `${BASE_URL}/ja/laser/vascular`,
-      },
+      languages: buildHreflangMap('/laser/vascular'),
     },
   };
 }

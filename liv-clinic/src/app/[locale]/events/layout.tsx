@@ -1,4 +1,4 @@
-import { BASE_URL } from '@/lib/seo';
+import { BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { SITE_INFO, EVENTS } from '@/lib/constants';
 
 export default function EventsLayout({
@@ -177,12 +177,7 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: `${BASE_URL}/${locale}/events`,
-      languages: {
-        ko: `${BASE_URL}/ko/events`,
-        en: `${BASE_URL}/en/events`,
-        ja: `${BASE_URL}/ja/events`,
-        zh: `${BASE_URL}/zh/events`,
-      },
+      languages: buildHreflangMap('/events'),
     },
   };
 }
