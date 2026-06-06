@@ -564,6 +564,7 @@ export default function DensityDetail() {
                         loop
                         muted
                         playsInline
+                        preload="metadata"
                         className="absolute inset-0 w-full h-full object-cover"
                       />
 

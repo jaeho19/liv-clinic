@@ -633,6 +633,7 @@ export default function UltheraDetail() {
                     loop
                     muted
                     playsInline
+                    preload="metadata"
                     className="absolute inset-0 w-full h-full object-cover"
                   >
                     <source src="/images/lifting/ulthera/videos/ultherapy-device.mp4" type="video/mp4" />
