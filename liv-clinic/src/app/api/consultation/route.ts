@@ -58,7 +58,7 @@ export async function POST(request: NextRequest) {
         {
           success: false,
           message: '상담 신청 저장에 실패했습니다',
-          error: error.message,
+          error: 'Internal error',
         },
         { status: 500 }
       );
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       {
         success: false,
         message: '서버 오류가 발생했습니다',
-        error: error instanceof Error ? error.message : 'Unknown error',
+        error: 'Internal error',
       },
       { status: 500 }
     );

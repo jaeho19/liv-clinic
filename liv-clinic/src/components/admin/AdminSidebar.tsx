@@ -145,6 +145,7 @@ export default function AdminSidebar({ isOpen, onClose }: AdminSidebarProps) {
           <Link
             href="/"
             target="_blank"
+            rel="noopener noreferrer"
             className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-[#8a8a8a] hover:bg-[#f6f6f6] transition-colors mb-1"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
