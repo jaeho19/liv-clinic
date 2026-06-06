@@ -141,7 +141,7 @@ export default function ContactPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-2">{tContact('phone')}</h3>
+                  <h2 className="text-h4 text-secondary mb-2">{tContact('phone')}</h2>
                   <p className="text-h3 text-primary">{SITE_INFO.phone}</p>
                   <p className="text-small text-mono-light mt-2">{tContact('weekdayHours')}</p>
                 </Card>
@@ -156,7 +156,7 @@ export default function ContactPage() {
                       <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.652 1.783 4.985 4.47 6.347-.145.53-.529 1.925-.606 2.226-.095.373.137.368.287.268.118-.079 1.878-1.238 2.645-1.745.387.055.783.084 1.204.084 5.523 0 10-3.463 10-7.691C20 6.463 17.523 3 12 3z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-2">{tContact('kakao')}</h3>
+                  <h2 className="text-h4 text-secondary mb-2">{tContact('kakao')}</h2>
                   <p className="text-body text-mono">{tContact('kakaoDesc')}</p>
                   <p className="text-small text-mono-light mt-2">{tContact('always')}</p>
                 </Card>
@@ -171,7 +171,7 @@ export default function ContactPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <h3 className="text-h4 text-secondary mb-2">{tContact('visit')}</h3>
+                <h2 className="text-h4 text-secondary mb-2">{tContact('visit')}</h2>
                 <p className="text-body text-mono">{tContact('walkTime')}</p>
                 <p className="text-small text-mono-light mt-2">{tContact('floor')}</p>
               </Card>
@@ -215,10 +215,11 @@ export default function ContactPage() {
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                     {/* Name */}
                     <div>
-                      <label className="block text-body text-secondary mb-2">
+                      <label htmlFor="contact-name" className="block text-body text-secondary mb-2">
                         {tContact('form.name')} <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="contact-name"
                         type="text"
                         {...register('name')}
                         className={`w-full px-4 py-3 rounded-xl border ${errors.name ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none transition-colors`}
@@ -231,10 +232,11 @@ export default function ContactPage() {
 
                     {/* Phone */}
                     <div>
-                      <label className="block text-body text-secondary mb-2">
+                      <label htmlFor="contact-phone" className="block text-body text-secondary mb-2">
                         {tContact('form.phone')} <span className="text-red-500">*</span>
                       </label>
                       <input
+                        id="contact-phone"
                         type="tel"
                         {...register('phone')}
                         className={`w-full px-4 py-3 rounded-xl border ${errors.phone ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none transition-colors`}
@@ -247,8 +249,9 @@ export default function ContactPage() {
 
                     {/* Email (optional) */}
                     <div>
-                      <label className="block text-body text-secondary mb-2">{tContact('form.email')}</label>
+                      <label htmlFor="contact-email" className="block text-body text-secondary mb-2">{tContact('form.email')}</label>
                       <input
+                        id="contact-email"
                         type="email"
                         {...register('email')}
                         className={`w-full px-4 py-3 rounded-xl border ${errors.email ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none transition-colors`}
@@ -261,10 +264,11 @@ export default function ContactPage() {
 
                     {/* Treatment */}
                     <div>
-                      <label className="block text-body text-secondary mb-2">
+                      <label htmlFor="contact-treatment" className="block text-body text-secondary mb-2">
                         {tContact('form.treatment')} <span className="text-red-500">*</span>
                       </label>
                       <select
+                        id="contact-treatment"
                         {...register('treatment')}
                         className={`w-full px-4 py-3 rounded-xl border ${errors.treatment ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none transition-colors bg-white`}
                       >
@@ -282,16 +286,18 @@ export default function ContactPage() {
                     {/* Preferred Date & Time */}
                     <div className="grid grid-cols-2 gap-4">
                       <div>
-                        <label className="block text-body text-secondary mb-2">{tContact('form.preferredDate')}</label>
+                        <label htmlFor="contact-preferred-date" className="block text-body text-secondary mb-2">{tContact('form.preferredDate')}</label>
                         <input
+                          id="contact-preferred-date"
                           type="date"
                           {...register('preferredDate')}
                           className="w-full px-4 py-3 rounded-xl border border-border focus:border-primary focus:outline-none transition-colors"
                         />
                       </div>
                       <div>
-                        <label className="block text-body text-secondary mb-2">{tContact('form.preferredTime')}</label>
+                        <label htmlFor="contact-preferred-time" className="block text-body text-secondary mb-2">{tContact('form.preferredTime')}</label>
                         <select
+                          id="contact-preferred-time"
                           {...register('preferredTime')}
                           className="w-full px-4 py-3 rounded-xl border border-border focus:border-primary focus:outline-none transition-colors bg-white"
                         >
@@ -306,8 +312,9 @@ export default function ContactPage() {
 
                     {/* Message */}
                     <div>
-                      <label className="block text-body text-secondary mb-2">{tContact('form.message')}</label>
+                      <label htmlFor="contact-message" className="block text-body text-secondary mb-2">{tContact('form.message')}</label>
                       <textarea
+                        id="contact-message"
                         {...register('message')}
                         rows={4}
                         className="w-full px-4 py-3 rounded-xl border border-border focus:border-primary focus:outline-none transition-colors resize-none"

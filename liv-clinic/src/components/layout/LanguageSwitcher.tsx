@@ -31,6 +31,9 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
     <div className="relative">
       <button
         onClick={() => setIsOpen(!isOpen)}
+        aria-haspopup="menu"
+        aria-expanded={isOpen}
+        aria-controls="language-switcher-dropdown"
         className={`flex items-center gap-2.5 md:gap-3 lg:gap-2 text-base md:text-lg lg:text-sm xl:text-[15px] font-medium transition-colors min-h-[48px] md:min-h-[52px] lg:min-h-[40px] px-3 md:px-4 lg:px-2 xl:px-2.5 ${
           isScrolled ? 'text-mono hover:text-primary' : 'text-white hover:text-white/80'
         }`}
@@ -64,7 +67,7 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
               transition={{ duration: 0.2 }}
               className="absolute top-full end-0 mt-2 z-50"
             >
-              <div className="bg-white rounded-xl shadow-lg py-2 min-w-[140px]">
+              <div id="language-switcher-dropdown" className="bg-white rounded-xl shadow-lg py-2 min-w-[140px]">
                 {languages.map((lang) => (
                   <button
                     key={lang.code}
