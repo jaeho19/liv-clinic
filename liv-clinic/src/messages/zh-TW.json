@@ -5741,6 +5741,7 @@
     "instruction": "請使用微信掃描二維碼，或搜索 ID 添加好友。"
   },
   "chat": {
+    "startFailed": "聊天連線失敗，請稍後重試。",
     "openButton": "在線客服",
     "openButtonShort": "客服",
     "title": "LIV 在線客服",

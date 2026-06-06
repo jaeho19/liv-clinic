@@ -5733,6 +5733,7 @@
     }
   },
   "chat": {
+    "startFailed": "Échec du démarrage de la discussion. Veuillez réessayer.",
     "openButton": "Chat en direct",
     "openButtonShort": "Chat",
     "title": "LIV Live Chat",

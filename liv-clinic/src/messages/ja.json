@@ -5734,6 +5734,7 @@
     }
   },
   "chat": {
+    "startFailed": "チャットを開始できませんでした。しばらくしてからもう一度お試しください。",
     "openButton": "ライブチャット",
     "openButtonShort": "チャット",
     "title": "LIVライブチャット",

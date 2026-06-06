@@ -7,7 +7,6 @@ const IS_DEV = process.env.NODE_ENV !== 'production';
 
 function debug(...args: unknown[]): void {
   if (IS_DEV) {
-    // eslint-disable-next-line no-console
     console.log('[chat-notif]', ...args);
   }
 }
@@ -192,6 +191,7 @@ export function useChatNotifications(
                 metaCacheRef.current.set(sid, meta);
               }
             }
+            if (cancelled) return;
             const flag = FLAG_BY_LOCALE[meta?.visitor_locale ?? ''] ?? '🌐';
             const name = meta?.visitor_name ?? '익명';
             const visitorLabel = `${flag} ${name}`;

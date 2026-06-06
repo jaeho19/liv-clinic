@@ -5733,6 +5733,7 @@
     }
   },
   "chat": {
+    "startFailed": "ไม่สามารถเริ่มการแชทได้ กรุณาลองใหม่อีกครั้ง",
     "openButton": "แชทสด",
     "openButtonShort": "แชท",
     "title": "แชทสด LIV",
