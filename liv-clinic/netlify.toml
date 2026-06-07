@@ -108,9 +108,15 @@
   to = "/ko/gallery"
   status = 301
 
+# 은퇴한 /promotion 페이지 → 이벤트로 리다이렉트 (bare + 로케일 경로)
 [[redirects]]
   from = "/promotion"
-  to = "/ko/promotion"
+  to = "/ko/events"
+  status = 301
+
+[[redirects]]
+  from = "/:locale/promotion"
+  to = "/:locale/events"
   status = 301
 
 [[redirects]]
