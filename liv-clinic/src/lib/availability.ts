@@ -11,11 +11,12 @@ export interface AvailabilityStatus {
  */
 export function getAvailabilityStatus(): AvailabilityStatus {
   const now = new Date();
-  const koreaTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Seoul' }));
+  // KST(UTC+9) 명시 계산 — toLocaleString round-trip의 환경별 파싱 불안정을 회피
+  const kst = new Date(now.getTime() + 9 * 60 * 60 * 1000);
 
-  const day = koreaTime.getDay();
-  const hours = koreaTime.getHours();
-  const minutes = koreaTime.getMinutes();
+  const day = kst.getUTCDay();
+  const hours = kst.getUTCHours();
+  const minutes = kst.getUTCMinutes();
   const currentTime = hours * 60 + minutes;
 
   const parseTime = (timeStr: string): number => {
