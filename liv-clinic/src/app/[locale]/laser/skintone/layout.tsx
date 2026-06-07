@@ -1,4 +1,4 @@
-import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL } from '@/lib/seo';
+import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { LASER_CATEGORIES, TREATMENTS, SITE_INFO } from '@/lib/constants';
 
 // 카테고리 데이터 가져오기
@@ -60,7 +60,8 @@ export default function SkintoneLayout({
   );
 }
 
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return {
     title: `${category.name} | ${SITE_INFO.name}`,
     description: category.description,
@@ -68,9 +69,13 @@ export async function generateMetadata() {
     openGraph: {
       title: `${category.name} | ${SITE_INFO.name}`,
       description: category.shortDesc,
-      url: `${BASE_URL}/laser/skintone`,
+      url: `${BASE_URL}/${locale}/laser/skintone`,
       siteName: SITE_INFO.name,
       type: 'website',
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/laser/skintone`,
+      languages: buildHreflangMap('/laser/skintone'),
     },
   };
 }
