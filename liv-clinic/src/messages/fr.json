@@ -1,4 +1,22 @@
 {
+  "inquiry": {
+    "title": "Suivi de votre demande",
+    "description": "Consultez votre demande avec le numéro de téléphone et le mot de passe saisis lors de la demande.\nSeules les demandes avec un mot de passe défini peuvent être consultées.",
+    "phoneLabel": "Numéro de téléphone",
+    "phonePlaceholder": "010-0000-0000",
+    "passwordLabel": "Mot de passe",
+    "passwordPlaceholder": "Mot de passe défini lors de la demande",
+    "submit": "Consulter",
+    "submitting": "Consultation...",
+    "error": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    "rateLimited": "Trop de tentatives. Veuillez réessayer plus tard.",
+    "notFound": "Aucune demande correspondante. Vérifiez votre numéro de téléphone et votre mot de passe.",
+    "resultsTitle": "Vos demandes",
+    "fieldTreatment": "Traitement",
+    "fieldPreferred": "Horaire souhaité",
+    "fieldMessage": "Message",
+    "statusPending": "Reçue"
+  },
   "mediaNews": {
     "label": "Media & News",
     "title": "La philosophie de soin de LIV, partagée à travers les médias et l'actualité",
@@ -466,6 +484,7 @@
     }
   },
   "footer": {
+    "inquiry": "Suivre ma demande",
     "businessHours": "Horaires d'ouverture",
     "weekday": "Semaine",
     "saturday": "Samedi",

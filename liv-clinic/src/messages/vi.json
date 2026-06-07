@@ -1,4 +1,22 @@
 {
+  "inquiry": {
+    "title": "Tra cứu yêu cầu tư vấn",
+    "description": "Tra cứu bằng số điện thoại và mật khẩu bạn đã nhập khi gửi yêu cầu.\nChỉ những yêu cầu đã đặt mật khẩu mới có thể tra cứu.",
+    "phoneLabel": "Số điện thoại",
+    "phonePlaceholder": "010-0000-0000",
+    "passwordLabel": "Mật khẩu",
+    "passwordPlaceholder": "Mật khẩu đã đặt khi gửi yêu cầu",
+    "submit": "Tra cứu",
+    "submitting": "Đang tra cứu...",
+    "error": "Đã xảy ra lỗi. Vui lòng thử lại sau.",
+    "rateLimited": "Quá nhiều lần thử. Vui lòng thử lại sau.",
+    "notFound": "Không tìm thấy yêu cầu phù hợp. Vui lòng kiểm tra số điện thoại và mật khẩu.",
+    "resultsTitle": "Yêu cầu của bạn",
+    "fieldTreatment": "Dịch vụ quan tâm",
+    "fieldPreferred": "Thời gian mong muốn",
+    "fieldMessage": "Nội dung",
+    "statusPending": "Đã tiếp nhận"
+  },
   "mediaNews": {
     "label": "Media & News",
     "title": "Triết lý điều trị của LIV qua truyền thông và tin tức",
@@ -466,6 +484,7 @@
     }
   },
   "footer": {
+    "inquiry": "Tra cứu yêu cầu của tôi",
     "businessHours": "Giờ làm việc",
     "weekday": "Các ngày trong tuần",
     "saturday": "Thứ bảy",

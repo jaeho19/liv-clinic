@@ -1,4 +1,22 @@
 {
+  "inquiry": {
+    "title": "咨询查询",
+    "description": "请使用咨询时填写的电话号码和密码进行查询。\n仅可查询设置了密码的咨询。",
+    "phoneLabel": "电话号码",
+    "phonePlaceholder": "010-0000-0000",
+    "passwordLabel": "密码",
+    "passwordPlaceholder": "咨询时设置的密码",
+    "submit": "查询",
+    "submitting": "查询中...",
+    "error": "查询时发生错误，请稍后重试。",
+    "rateLimited": "尝试次数过多，请稍后重试。",
+    "notFound": "未找到匹配的咨询，请确认电话号码和密码。",
+    "resultsTitle": "查询到的咨询",
+    "fieldTreatment": "关注项目",
+    "fieldPreferred": "期望时间",
+    "fieldMessage": "咨询内容",
+    "statusPending": "已受理"
+  },
   "mediaNews": {
     "label": "Media & News",
     "title": "通过媒体与资讯传递LIV的诊疗理念",
@@ -466,6 +484,7 @@
     }
   },
   "footer": {
+    "inquiry": "查询我的咨询",
     "businessHours": "营业时间",
     "weekday": "工作日",
     "saturday": "周六",

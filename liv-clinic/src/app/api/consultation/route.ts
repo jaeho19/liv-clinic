@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase-admin';
 import { consultationFormSchema } from '@/types/consultation';
 import type { ConsultationResponse } from '@/types/consultation';
+import { hashInquiryPassword } from '@/lib/inquiryPassword';
 
 export async function POST(request: NextRequest) {
   try {
@@ -48,6 +49,8 @@ export async function POST(request: NextRequest) {
         agree_privacy: agreePrivacy,
         status: 'pending',
         source: 'consultation-form',
+        // 고객 본인 조회용 비밀번호 — 해시로만 저장(평문 저장 안 함)
+        password: password ? hashInquiryPassword(password) : null,
       })
       .select('id, created_at')
       .single();

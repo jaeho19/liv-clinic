@@ -1,4 +1,22 @@
 {
+  "inquiry": {
+    "title": "상담 문의 조회",
+    "description": "문의 시 입력하신 전화번호와 비밀번호로 조회하세요.\n비밀번호를 설정한 문의만 조회됩니다.",
+    "phoneLabel": "전화번호",
+    "phonePlaceholder": "010-0000-0000",
+    "passwordLabel": "비밀번호",
+    "passwordPlaceholder": "문의 시 설정한 비밀번호",
+    "submit": "조회하기",
+    "submitting": "조회 중...",
+    "error": "조회 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.",
+    "rateLimited": "조회 시도가 너무 많습니다. 잠시 후 다시 시도해 주세요.",
+    "notFound": "일치하는 문의가 없습니다. 전화번호와 비밀번호를 확인해 주세요.",
+    "resultsTitle": "조회된 문의",
+    "fieldTreatment": "관심 시술",
+    "fieldPreferred": "희망 일시",
+    "fieldMessage": "문의 내용",
+    "statusPending": "접수 완료"
+  },
   "mediaNews": {
     "label": "Media & News",
     "title": "언론과 소식을 통해 전하는 리브의 진료 철학",
@@ -468,6 +486,7 @@
     }
   },
   "footer": {
+    "inquiry": "내 문의 조회",
     "businessHours": "영업시간",
     "weekday": "평일",
     "saturday": "토요일",
