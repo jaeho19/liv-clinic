@@ -5733,6 +5733,7 @@
     }
   },
   "chat": {
+    "startFailed": "Чат эхлүүлж чадсангүй. Дараа дахин оролдоно уу.",
     "openButton": "Шууд чат",
     "openButtonShort": "Чат",
     "title": "LIV Шууд чат",

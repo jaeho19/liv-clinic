@@ -27,7 +27,7 @@ const MAX_LEN = 1000;
 
 export default function ChatPanel({ locale, open, onClose, sessionState }: Props) {
   const t = useTranslations('chat');
-  const { session, start, loading: starting } = sessionState;
+  const { session, start, loading: starting, error: startError } = sessionState;
   const [presence, setPresence] = useState<{ online: boolean; businessHours: boolean } | null>(null);
   const [text, setText] = useState('');
   const [sendError, setSendError] = useState<string | null>(null);
@@ -42,7 +42,6 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
   useEffect(() => {
     if (typeof window === 'undefined' || !window.matchMedia) return;
     const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsDesktop(mq.matches);
     const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
     mq.addEventListener?.('change', handler);
@@ -219,6 +218,7 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
             >
               {starting ? '...' : t('startChat')}
             </button>
+            {startError && <div className="text-[11px] text-red-500">{t('startFailed')}</div>}
           </form>
         </div>
       ) : (

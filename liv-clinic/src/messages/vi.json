@@ -5733,6 +5733,7 @@
     }
   },
   "chat": {
+    "startFailed": "Không thể bắt đầu trò chuyện. Vui lòng thử lại sau.",
     "openButton": "Trò chuyện trực tiếp",
     "openButtonShort": "Trò chuyện",
     "title": "Trò chuyện trực tiếp LIV",

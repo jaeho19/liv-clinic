@@ -7,7 +7,7 @@ import { LOCALE_META } from '@/i18n/locales-meta';
 export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://livps.co.kr';
 
 /** Build hreflang alternates map from LOCALE_META — keeps SEO in sync with routing.ts */
-function buildHreflangMap(path: string): Record<string, string> {
+export function buildHreflangMap(path: string): Record<string, string> {
   return Object.fromEntries(
     LOCALES.map((code) => [LOCALE_META[code].hreflang, `${BASE_URL}/${code}${path}`]),
   );

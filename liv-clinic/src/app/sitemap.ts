@@ -22,6 +22,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/contact', priority: 0.9, changeFrequency: 'weekly' as const },
     { path: '/laser', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/medical', priority: 0.8, changeFrequency: 'weekly' as const },
+    { path: '/signature', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/gallery', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/before-after', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/promotion', priority: 0.6, changeFrequency: 'weekly' as const },
+    { path: '/media', priority: 0.6, changeFrequency: 'weekly' as const },
+    { path: '/pricing', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/events', priority: 0.7, changeFrequency: 'weekly' as const },
   ];
 
   // Treatment pages

@@ -66,12 +66,12 @@ export function checkSessionMessageLimit(sessionId: string): RateLimitDecision {
   trimIfTooLarge(sessionMinute);
 
   const totals = sessionTotal.get(sessionId) ?? { total: 0, firstAtMs: now };
+  if (totals.total >= PER_SESSION_TOTAL) {
+    return { allowed: false, reason: 'per_session' };
+  }
   totals.total += 1;
   sessionTotal.set(sessionId, totals);
   trimIfTooLarge(sessionTotal);
-  if (totals.total > PER_SESSION_TOTAL) {
-    return { allowed: false, reason: 'per_session' };
-  }
 
   return { allowed: true };
 }

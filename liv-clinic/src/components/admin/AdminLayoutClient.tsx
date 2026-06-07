@@ -66,6 +66,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
             <Link
               href="/"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs text-[#8a8a8a] border border-[#e5e5e5] rounded-lg hover:bg-[#f6f6f6] transition-colors"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

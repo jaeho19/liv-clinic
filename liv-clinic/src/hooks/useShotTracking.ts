@@ -102,6 +102,7 @@ export function useShotTracking(deviceType?: DeviceType): UseShotTrackingReturn 
     } catch (e) {
       setError(e instanceof Error ? e.message : '샷 차감 실패');
       await refresh();
+      throw e;
     }
   }, [refresh]);
 

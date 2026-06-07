@@ -12,10 +12,9 @@ function formatPhoneNumber(value: string): string {
   return `${numbers.slice(0, 3)}-${numbers.slice(3, 7)}-${numbers.slice(7, 11)}`;
 }
 
-// 전화번호 유효성 검사
+// 전화번호 유효성 검사 (서버 검증 정규식과 일치 — 클라이언트가 더 느슨하지 않도록)
 function isValidPhone(phone: string): boolean {
-  const numbers = phone.replace(/[^\d]/g, '');
-  return numbers.length >= 10 && numbers.length <= 11;
+  return /^01[0-9]-?\d{3,4}-?\d{4}$/.test(phone);
 }
 
 export default function QuickConsultBar() {

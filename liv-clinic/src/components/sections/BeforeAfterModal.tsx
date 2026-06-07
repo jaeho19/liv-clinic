@@ -81,6 +81,9 @@ export default function BeforeAfterModal({ open, imageUrl, title, category, onCl
             }}
           >
             <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label={title || category || 'Before and After'}
               initial={{ scale: 0.96, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.96, opacity: 0 }}

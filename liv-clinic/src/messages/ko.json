@@ -5736,6 +5736,7 @@
     }
   },
   "chat": {
+    "startFailed": "채팅 연결에 실패했습니다. 잠시 후 다시 시도해 주세요.",
     "openButton": "실시간 상담",
     "openButtonShort": "상담",
     "title": "LIV 실시간 상담",

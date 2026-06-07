@@ -106,6 +106,7 @@ export default function ConsultationForm() {
                   {...register('name')}
                   type="text"
                   placeholder={t('namePlaceholder')}
+                  aria-label={t('namePlaceholder')}
                   className={`w-full px-4 py-3.5 rounded-xl border ${
                     errors.name
                       ? 'border-red-500 focus:ring-red-500'
@@ -124,6 +125,7 @@ export default function ConsultationForm() {
                   {...register('password')}
                   type="password"
                   placeholder={t('password')}
+                  aria-label={t('password')}
                   className={`w-full px-4 py-3.5 rounded-xl border ${
                     errors.password
                       ? 'border-red-500 focus:ring-red-500'
@@ -142,6 +144,7 @@ export default function ConsultationForm() {
                   {...register('phone')}
                   type="tel"
                   placeholder={t('phonePlaceholder')}
+                  aria-label={t('phonePlaceholder')}
                   maxLength={13}
                   onChange={(e) => {
                     e.target.value = formatPhoneNumber(e.target.value);
@@ -162,6 +165,7 @@ export default function ConsultationForm() {
               <div className="lg:col-span-1">
                 <select
                   {...register('treatment')}
+                  aria-label={t('treatmentSelect')}
                   className={`w-full px-4 py-3.5 rounded-xl border ${
                     errors.treatment
                       ? 'border-red-500 focus:ring-red-500'

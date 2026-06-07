@@ -158,31 +158,45 @@ export default function NaverMap({
     }
 
     // 새로 로드
+    let mounted = true;
+    let waitReadyId: ReturnType<typeof setInterval> | undefined;
+    let sdkTimeoutId: ReturnType<typeof setTimeout> | undefined;
+
     const script = document.createElement('script');
     script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}`;
     script.async = true;
 
+    // 전체 로딩 타임아웃 — onload/onerror가 모두 발화하지 않는 경우(네트워크 행, 광고차단 등)
+    // "지도 로딩 중..." 무한 상태 방지
+    const loadTimeout = setTimeout(() => {
+      if (mounted && !window.naver?.maps) {
+        console.error('[NaverMap] 스크립트 로딩 타임아웃 (10초)');
+        setError('스크립트 로딩 타임아웃');
+      }
+    }, 10000);
+
     script.onload = () => {
+      clearTimeout(loadTimeout);
       // SDK가 실제로 준비되었는지 확인
       if (window.naver?.maps) {
-        setIsLoaded(true);
+        if (mounted) setIsLoaded(true);
         // 대기 중인 다른 컴포넌트들에게도 알림
         window.__naverMapCallbacks?.forEach(cb => cb());
         window.__naverMapCallbacks = [];
       } else {
         // SDK 초기화 대기 (드문 경우)
-        const waitReady = setInterval(() => {
+        waitReadyId = setInterval(() => {
           if (window.naver?.maps) {
-            setIsLoaded(true);
+            if (mounted) setIsLoaded(true);
             window.__naverMapCallbacks?.forEach(cb => cb());
             window.__naverMapCallbacks = [];
-            clearInterval(waitReady);
+            if (waitReadyId) clearInterval(waitReadyId);
           }
         }, 50);
 
-        setTimeout(() => {
-          clearInterval(waitReady);
-          if (!window.naver?.maps) {
+        sdkTimeoutId = setTimeout(() => {
+          if (waitReadyId) clearInterval(waitReadyId);
+          if (mounted && !window.naver?.maps) {
             setError('SDK 초기화 실패');
           }
         }, 5000);
@@ -190,11 +204,19 @@ export default function NaverMap({
     };
 
     script.onerror = () => {
+      clearTimeout(loadTimeout);
       console.error('[NaverMap] 스크립트 로딩 실패 - 네트워크 또는 URL 확인');
-      setError('스크립트 로딩 실패');
+      if (mounted) setError('스크립트 로딩 실패');
     };
 
     document.head.appendChild(script);
+
+    return () => {
+      mounted = false;
+      clearTimeout(loadTimeout);
+      if (waitReadyId) clearInterval(waitReadyId);
+      if (sdkTimeoutId) clearTimeout(sdkTimeoutId);
+    };
   }, []);
 
   // 지도 초기화

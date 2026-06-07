@@ -72,7 +72,6 @@ export function useChatSession(locale: VisitorLocale): UseChatSessionReturn {
   useEffect(() => {
     const stored = readStored(locale);
     if (stored) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
       setSession(stored);
     }
   }, [locale]);

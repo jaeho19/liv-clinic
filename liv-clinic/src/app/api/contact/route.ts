@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase-admin';
+import { z } from 'zod';
 
 // 시술 옵션 매핑
 const treatmentLabels: Record<string, string> = {
@@ -16,18 +17,29 @@ const treatmentLabels: Record<string, string> = {
   'other': '기타 / 상담 후 결정',
 };
 
+// 서버측 입력 검증 (클라이언트 zod만 신뢰하지 않음). 기존 required/optional 의미 보존 + 길이 상한.
+const contactFormSchema = z.object({
+  name: z.string().min(1, '필수 항목을 입력해주세요.').max(50),
+  phone: z.string().min(1, '필수 항목을 입력해주세요.').max(30),
+  email: z.string().max(100).nullish(),
+  treatment: z.string().min(1, '필수 항목을 입력해주세요.').max(100),
+  preferredDate: z.string().max(50).nullish(),
+  preferredTime: z.string().max(50).nullish(),
+  message: z.string().max(2000).nullish(),
+});
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, phone, email, treatment, preferredDate, preferredTime, message } = body;
 
-    // 유효성 검사
-    if (!name || !phone || !treatment) {
+    const parsed = contactFormSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: '필수 항목을 입력해주세요.' },
+        { error: parsed.error.issues[0]?.message || '필수 항목을 입력해주세요.' },
         { status: 400 }
       );
     }
+    const { name, phone, email, treatment, preferredDate, preferredTime, message } = parsed.data;
 
     const treatmentLabel = treatmentLabels[treatment] || treatment;
 
@@ -66,6 +78,15 @@ export async function POST(request: NextRequest) {
         const formattedDate = preferredDate || '미정';
         const formattedTime = preferredTime || '미정';
 
+        // 사용자 입력을 이메일 HTML 본문에 넣기 전 escape (HTML 인젝션 방지)
+        const esc = (s: string) =>
+          String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+
         await resend.emails.send({
           from: 'LIV 상담예약 <noreply@livps.co.kr>',
           to: [process.env.CLINIC_EMAIL || 'info@livps.co.kr'],
@@ -73,13 +94,13 @@ export async function POST(request: NextRequest) {
           html: `
             <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
               <h2 style="color: #b4988d;">새로운 상담 예약</h2>
-              <p><strong>이름:</strong> ${name}</p>
-              <p><strong>연락처:</strong> ${phone}</p>
-              <p><strong>이메일:</strong> ${email || '-'}</p>
-              <p><strong>관심 시술:</strong> ${treatmentLabel}</p>
-              <p><strong>희망 날짜:</strong> ${formattedDate}</p>
-              <p><strong>희망 시간:</strong> ${formattedTime}</p>
-              ${message ? `<p><strong>문의 내용:</strong> ${message}</p>` : ''}
+              <p><strong>이름:</strong> ${esc(name)}</p>
+              <p><strong>연락처:</strong> ${esc(phone)}</p>
+              <p><strong>이메일:</strong> ${esc(email || '-')}</p>
+              <p><strong>관심 시술:</strong> ${esc(treatmentLabel)}</p>
+              <p><strong>희망 날짜:</strong> ${esc(formattedDate)}</p>
+              <p><strong>희망 시간:</strong> ${esc(formattedTime)}</p>
+              ${message ? `<p><strong>문의 내용:</strong> ${esc(message)}</p>` : ''}
             </div>
           `,
         });

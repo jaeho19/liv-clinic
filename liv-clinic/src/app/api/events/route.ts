@@ -15,6 +15,9 @@ export async function GET() {
     .order('sort_order', { ascending: true })
     .order('start_date', { ascending: false });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error('events fetch error:', error);
+    return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+  }
   return NextResponse.json(data);
 }

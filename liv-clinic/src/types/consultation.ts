@@ -30,7 +30,7 @@ export const consultationFormSchema = z.object({
   treatment: z
     .string()
     .min(1, '진료과목을 선택해주세요')
-    .refine((val) => TREATMENT_OPTIONS.includes(val as any), {
+    .refine((val) => TREATMENT_OPTIONS.includes(val as (typeof TREATMENT_OPTIONS)[number]), {
       message: '올바른 진료과목을 선택해주세요',
     }),
   agreePrivacy: z
