@@ -1,4 +1,22 @@
 {
+  "inquiry": {
+    "title": "諮詢查詢",
+    "description": "請使用諮詢時填寫的電話號碼與密碼進行查詢。\n僅可查詢設定了密碼的諮詢。",
+    "phoneLabel": "電話號碼",
+    "phonePlaceholder": "010-0000-0000",
+    "passwordLabel": "密碼",
+    "passwordPlaceholder": "諮詢時設定的密碼",
+    "submit": "查詢",
+    "submitting": "查詢中...",
+    "error": "查詢時發生錯誤，請稍後再試。",
+    "rateLimited": "嘗試次數過多，請稍後再試。",
+    "notFound": "找不到符合的諮詢，請確認電話號碼與密碼。",
+    "resultsTitle": "查詢到的諮詢",
+    "fieldTreatment": "關注項目",
+    "fieldPreferred": "期望時間",
+    "fieldMessage": "諮詢內容",
+    "statusPending": "已受理"
+  },
   "mediaNews": {
     "label": "Media & News",
     "title": "透過媒體與消息傳遞LIV的診療理念",
@@ -466,6 +484,7 @@
     }
   },
   "footer": {
+    "inquiry": "查詢我的諮詢",
     "businessHours": "營業時間",
     "weekday": "工作日",
     "saturday": "週六",

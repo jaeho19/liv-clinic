@@ -1,4 +1,22 @@
 {
+  "inquiry": {
+    "title": "お問い合わせ確認",
+    "description": "お問い合わせ時に入力された電話番号とパスワードで確認できます。\nパスワードを設定したお問い合わせのみ照会できます。",
+    "phoneLabel": "電話番号",
+    "phonePlaceholder": "010-0000-0000",
+    "passwordLabel": "パスワード",
+    "passwordPlaceholder": "お問い合わせ時に設定したパスワード",
+    "submit": "照会する",
+    "submitting": "照会中...",
+    "error": "エラーが発生しました。しばらくしてから再度お試しください。",
+    "rateLimited": "試行回数が多すぎます。しばらくしてからお試しください。",
+    "notFound": "一致するお問い合わせがありません。電話番号とパスワードをご確認ください。",
+    "resultsTitle": "照会されたお問い合わせ",
+    "fieldTreatment": "ご関心の施術",
+    "fieldPreferred": "ご希望日時",
+    "fieldMessage": "お問い合わせ内容",
+    "statusPending": "受付完了"
+  },
   "mediaNews": {
     "label": "Media & News",
     "title": "メディアとニュースで伝えるリブの診療哲学",
@@ -466,6 +484,7 @@
     }
   },
   "footer": {
+    "inquiry": "お問い合わせ確認",
     "businessHours": "営業時間",
     "weekday": "平日",
     "saturday": "土曜日",

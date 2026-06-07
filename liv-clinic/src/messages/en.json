@@ -1,4 +1,22 @@
 {
+  "inquiry": {
+    "title": "Check Your Inquiry",
+    "description": "Look up your inquiry with the phone number and password you entered.\nOnly inquiries with a password set can be retrieved.",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "010-0000-0000",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Password set when you inquired",
+    "submit": "Look up",
+    "submitting": "Looking up...",
+    "error": "An error occurred. Please try again in a moment.",
+    "rateLimited": "Too many attempts. Please try again later.",
+    "notFound": "No matching inquiry found. Please check your phone number and password.",
+    "resultsTitle": "Your inquiries",
+    "fieldTreatment": "Treatment",
+    "fieldPreferred": "Preferred time",
+    "fieldMessage": "Message",
+    "statusPending": "Received"
+  },
   "mediaNews": {
     "label": "Media & News",
     "title": "LIV's care philosophy, shared through media and news",
@@ -466,6 +484,7 @@
     }
   },
   "footer": {
+    "inquiry": "Check my inquiry",
     "businessHours": "Business Hours",
     "weekday": "Weekdays",
     "saturday": "Saturday",
