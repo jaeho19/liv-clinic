@@ -1,4 +1,4 @@
-import { generateVoiceOptimizedFAQSchema, generateWebPageSchema, BASE_URL } from '@/lib/seo';
+import { generateVoiceOptimizedFAQSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { MEDICAL_QA, SITE_INFO } from '@/lib/constants';
 
 export default function MedicalLayout({
@@ -52,7 +52,8 @@ export default function MedicalLayout({
 }
 
 // 메타데이터 생성
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return {
     title: '의료정보 Q&A | 리브성형외과',
     description: '울쎄라, 써마지, 보톡스, 필러 등 미용 시술에 대한 자주 묻는 질문과 전문 답변. 성형외과 전문의가 알려주는 정확한 의료정보. 신사역 프리미엄 안티에이징 클리닉.',
@@ -60,9 +61,13 @@ export async function generateMetadata() {
     openGraph: {
       title: '의료정보 Q&A | 리브성형외과',
       description: '미용 시술에 대한 자주 묻는 질문과 전문 답변',
-      url: `${BASE_URL}/medical`,
+      url: `${BASE_URL}/${locale}/medical`,
       siteName: SITE_INFO.name,
       type: 'website',
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/medical`,
+      languages: buildHreflangMap('/medical'),
     },
   };
 }

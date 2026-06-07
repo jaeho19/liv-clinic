@@ -161,13 +161,18 @@ export async function POST() {
 
     const data = await response.json();
 
-    // 새 토큰과 만료 시간 반환
+    // 보안: 갱신된 access_token을 HTTP 응답으로 노출하지 않는다.
+    // 새 토큰은 서버 로그에서 확인해 환경변수(INSTAGRAM_ACCESS_TOKEN)를 업데이트한다.
+    console.log(
+      '[instagram] access token refreshed — update env INSTAGRAM_ACCESS_TOKEN. token:',
+      data.access_token,
+      'expires_in(s):',
+      data.expires_in
+    );
+
     return NextResponse.json({
       success: true,
-      access_token: data.access_token,
-      token_type: data.token_type,
-      expires_in: data.expires_in, // 초 단위 (약 60일)
-      message: '새 토큰을 환경변수에 업데이트하세요.',
+      message: '토큰이 갱신되었습니다. 서버 로그에서 새 토큰을 확인해 환경변수를 업데이트하세요.',
     });
   } catch (error) {
     console.error('Token refresh error:', error);

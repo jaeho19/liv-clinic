@@ -1,4 +1,4 @@
-import { generateMedicalServiceSchema, generateHowToSchema, generateWebPageSchema, BASE_URL } from '@/lib/seo';
+import { generateMedicalServiceSchema, generateHowToSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { TREATMENTS, SITE_INFO } from '@/lib/constants';
 
 // 시술 데이터 가져오기
@@ -73,7 +73,8 @@ export default function AptosLayout({
 }
 
 // 메타데이터 생성
-export async function generateMetadata() {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
   return {
     title: `${treatment.name} | ${SITE_INFO.name}`,
     description: treatment.description,
@@ -81,9 +82,13 @@ export async function generateMetadata() {
     openGraph: {
       title: `${treatment.name} | ${SITE_INFO.name}`,
       description: treatment.shortDesc,
-      url: `${BASE_URL}/lifting/aptos`,
+      url: `${BASE_URL}/${locale}/lifting/aptos`,
       siteName: SITE_INFO.name,
       type: 'website',
+    },
+    alternates: {
+      canonical: `${BASE_URL}/${locale}/lifting/aptos`,
+      languages: buildHreflangMap('/lifting/aptos'),
     },
   };
 }

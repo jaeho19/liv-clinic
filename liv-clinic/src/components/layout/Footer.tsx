@@ -193,14 +193,7 @@ export default function Footer() {
         <div className="container-custom py-4 md:py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-white/50">
             <p className="text-center md:text-left">{t('copyright')}</p>
-            <div className="flex gap-4 sm:gap-6">
-              <Link href="/privacy" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
-                {t('privacy')}
-              </Link>
-              <Link href="/terms" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
-                {t('terms')}
-              </Link>
-            </div>
+            {/* 개인정보처리방침/이용약관 링크: 해당 페이지(/privacy, /terms) 제작 전까지 숨김 (404 방지) */}
           </div>
         </div>
       </div>

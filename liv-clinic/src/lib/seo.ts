@@ -735,10 +735,10 @@ export function generateWebPageSchema(page: {
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': page.type || 'WebPage',
-    '@id': `${BASE_URL}${page.path}`,
+    '@id': `${BASE_URL}/${page.locale}${page.path}`,
     name: page.title,
     description: page.description,
-    url: `${BASE_URL}${page.path}`,
+    url: `${BASE_URL}/${page.locale}${page.path}`,
     datePublished: page.datePublished || '2024-01-01',
     dateModified: page.dateModified || new Date().toISOString().split('T')[0],
     inLanguage: LOCALE_META[page.locale as Locale]?.hreflang ?? 'en-US',

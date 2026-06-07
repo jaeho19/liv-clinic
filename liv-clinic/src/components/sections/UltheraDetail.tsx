@@ -16,7 +16,6 @@ import {
   TabSection,
   CollapsibleSection,
   ExpandableList,
-  SectionHeader,
   PriceTable,
 } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
