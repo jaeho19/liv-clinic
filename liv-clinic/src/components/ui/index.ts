@@ -19,7 +19,5 @@ export { default as HorizontalScrollCards, ScrollCard } from './HorizontalScroll
 export { default as TabSection } from './TabSection';
 export { default as CollapsibleSection } from './CollapsibleSection';
 export { default as StickyCtaBar } from './StickyCtaBar';
-export { default as CompactGallery } from './CompactGallery';
-export { default as SectionHeader, GoldAccent } from './SectionHeader';
 export { default as ExpandableList } from './ExpandableList';
 export { default as PriceTable } from './PriceTable';
