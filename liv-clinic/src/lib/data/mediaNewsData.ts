@@ -28,6 +28,8 @@ export interface MediaNewsItem {
   body?: string[];
   /** 내부 소식 상세 모달용 이미지 경로 배열 */
   images?: string[];
+  /** 모달 이미지 배치 — 'stack'이면 상하로 쌓아 원본 비율로 넓게 표시(가로형 사진용). 기본은 3:4 2열 그리드 */
+  imageLayout?: 'grid' | 'stack';
 }
 
 /** 메인 노출용 대표 카드 — 일부는 항목 요약, f6은 집계형(셀럽 실명 미노출) */
@@ -80,6 +82,7 @@ export const mediaNewsData: MediaNewsItem[] = [
       '/images/media-news/aptos-bio-lifting-1.jpg',
       '/images/media-news/aptos-bio-lifting-2.jpg',
     ],
+    imageLayout: 'stack',
     imagePosition: '50% 11%',
     link: '/media',
     isExternal: false,

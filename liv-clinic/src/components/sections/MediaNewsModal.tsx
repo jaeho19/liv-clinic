@@ -130,24 +130,43 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
                 {item.title}
               </h3>
 
-              {/* 사진 (내부 소식 상세) */}
+              {/* 사진 (내부 소식 상세) — stack: 상하 배치·원본 비율(가로형), 기본: 3:4 2열 그리드(세로형) */}
               {item.images && item.images.length > 0 && (
-                <div className="mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                  {item.images.map((src, i) => (
-                    <div
-                      key={src}
-                      className="relative overflow-hidden rounded-xl bg-background"
-                      style={{ aspectRatio: '3 / 4' }}
-                    >
-                      <Image
-                        src={src}
-                        alt={`${item.title} 현장 사진 ${i + 1}`}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 672px) 92vw, 21rem"
-                      />
-                    </div>
-                  ))}
+                <div
+                  className={
+                    item.imageLayout === 'stack'
+                      ? 'mb-6 space-y-3'
+                      : 'mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2'
+                  }
+                >
+                  {item.images.map((src, i) =>
+                    item.imageLayout === 'stack' ? (
+                      <div key={src} className="overflow-hidden rounded-xl bg-background">
+                        <Image
+                          src={src}
+                          alt={`${item.title} 현장 사진 ${i + 1}`}
+                          width={1200}
+                          height={750}
+                          className="h-auto w-full"
+                          sizes="(max-width: 672px) 92vw, 42rem"
+                        />
+                      </div>
+                    ) : (
+                      <div
+                        key={src}
+                        className="relative overflow-hidden rounded-xl bg-background"
+                        style={{ aspectRatio: '3 / 4' }}
+                      >
+                        <Image
+                          src={src}
+                          alt={`${item.title} 현장 사진 ${i + 1}`}
+                          fill
+                          className="object-cover"
+                          sizes="(max-width: 672px) 92vw, 21rem"
+                        />
+                      </div>
+                    ),
+                  )}
                 </div>
               )}
 
