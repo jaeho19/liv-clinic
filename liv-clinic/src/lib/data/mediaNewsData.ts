@@ -59,6 +59,32 @@ export const MEDIA_YEARS = ['2026', '2025', '2021'] as const;
 export const mediaNewsData: MediaNewsItem[] = [
   // ── 2026 ──
   {
+    id: '16',
+    type: 'press',
+    category: 'press',
+    badge: 'MEDIA INTERVIEW',
+    year: '2026',
+    title: '김수영 대표원장, APTOS Bio-Lifting 임상 인터뷰 참여',
+    source: '메디컬 에스테틱',
+    description:
+      '김수영 리브성형외과 대표원장이 미용의학 전문 매체 『Medical Aesthetic』의 APTOS Bio-Lifting 인터뷰에 참여했습니다. 이번 기사는 APTOS 공식 트레이너로 인증받은 국내 의료진들이 실제 임상 현장에서 APTOS를 어떻게 활용하고 있는지 조명한 내용으로, 김수영 대표원장은 얼굴 구조와 조직 상태를 고려한 정밀한 리프팅 디자인, 자연스러운 변화, 환자 맞춤형 Bio-Lifting 접근의 중요성을 전했습니다.',
+    body: [
+      '김수영 리브성형외과 대표원장이 미용의학 전문 매체 『Medical Aesthetic』의 기사 「APTOS Bio-Lifting, 한국 임상 현장에서 어떻게 활용되고 있나」에 참여했습니다.',
+      '이번 기사는 글로벌 실리프팅 브랜드 APTOS가 한국 시장에서 공식 트레이너 중심의 학술 활동을 확대하고 있는 흐름을 다루며, APTOS를 단순히 처진 조직을 당기는 실리프팅 제품이 아니라 얼굴 구조와 조직 상태에 따라 정교한 vector design이 필요한 Bio-Lifting 시술 플랫폼으로 소개했습니다.',
+      '김수영 대표원장은 APTOS 공식 트레이너로서 제품별 구조와 적응증, 조직 상태에 따른 디자인, 시술 plane과 fixation point의 중요성을 강조했습니다. 특히 APTOS Bio-Lifting은 단순한 물리적 리프팅을 넘어, 환자 개개인의 노화 양상과 얼굴 구조를 고려해 필요한 부위에 조직 지지와 리프팅 방향을 설계하는 접근이라는 점에서 리브성형외과의 Slow Aging 철학과 맞닿아 있습니다.',
+      '리브성형외과는 과한 변화보다 자연스럽고 세련된 개선을 지향합니다. 김수영 대표원장은 인터뷰를 통해 국내 환자들이 최근에는 과교정이나 부자연스러운 결과보다 얼굴선 정리, 중안면과 하안면의 안정적인 개선, 자연스러운 회복 과정을 중요하게 여긴다고 설명했습니다. 이는 리브성형외과가 추구하는 절제된 안티에이징, 정밀한 리프팅, 개인별 맞춤 진료 방향과도 일치합니다.',
+      '또한 APTOS는 단독 리프팅 시술뿐 아니라 피부 탄력, 볼륨 저하, 얼굴선 변화 등 환자의 상태에 따라 에너지 기반 장비, 스킨부스터, 필러, 보툴리눔 톡신 등과 병합해 활용할 수 있는 시술로 소개되었습니다. 리브성형외과는 얼굴의 구조적 지지와 vector correction을 중심으로, 피부 질감과 볼륨, 표정근 조절을 함께 고려하는 통합적 안티에이징 접근을 이어가고 있습니다.',
+      '이번 인터뷰는 김수영 대표원장이 APTOS 공식 트레이너로서 국내외 환자에게 보다 안전하고 재현성 있는 리프팅 시술을 제공하기 위해 학술적 교육과 임상 경험을 지속적으로 확장하고 있음을 보여주는 사례입니다.',
+    ],
+    images: [
+      '/images/media-news/aptos-bio-lifting-1.jpg',
+      '/images/media-news/aptos-bio-lifting-2.jpg',
+    ],
+    imagePosition: '50% 11%',
+    link: '/media',
+    isExternal: false,
+  },
+  {
     id: '15',
     type: 'press',
     category: 'press',
@@ -300,9 +326,23 @@ export const mediaNewsData: MediaNewsItem[] = [
 
 /**
  * 메인 노출용 대표 카드 6개 (요청서 §2 — 메인용 짧은 카피).
- * f6은 14개 항목에 없는 집계형 카드(셀럽 실명 미노출, 브랜드 신뢰·전문성 중심).
+ * 최신 소식을 맨 앞에 추가하고 가장 오래된 카드를 제거해 항상 6개를 유지한다.
  */
 export const featuredMediaNews: FeaturedMediaCard[] = [
+  {
+    id: 'f8',
+    type: 'press',
+    badge: 'MEDIA INTERVIEW',
+    year: '2026',
+    title: '김수영 대표원장, APTOS Bio-Lifting 임상 인터뷰 참여',
+    description:
+      '미용의학 전문 매체 『Medical Aesthetic』의 APTOS Bio-Lifting 인터뷰에 참여해 얼굴 구조와 조직 상태를 고려한 정밀한 리프팅 디자인과 환자 맞춤형 Bio-Lifting 접근을 전했습니다.',
+    image: '/images/media-news/aptos-bio-lifting-1.jpg',
+    imagePosition: '50% 11%',
+    link: '/media',
+    isExternal: false,
+    newsId: '16',
+  },
   {
     id: 'f7',
     type: 'press',
@@ -362,17 +402,6 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     description: '김수영 대표원장이 ‘Site-specific algorithm for facial rejuvenation’을 주제로 공식 초청 구연 발표를 진행했습니다.',
     image: '/images/media-news/academic-lecture.jpg',
     imagePosition: '50% 72%',
-    link: '/media',
-    isExternal: false,
-  },
-  {
-    id: 'f6',
-    type: 'news',
-    badge: 'LIV VISIT',
-    year: '2025',
-    title: '셀럽과 글로벌 인플루언서의 리브 방문',
-    description: '방송인, 아나운서, 글로벌 인플루언서 등 다양한 방문 소식을 통해 리브의 Slow Aging 케어 철학을 전합니다.',
-    image: '/images/media-news/visit-china-influencer.jpg',
     link: '/media',
     isExternal: false,
   },
