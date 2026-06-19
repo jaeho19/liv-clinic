@@ -5788,7 +5788,9 @@
     "emailPlaceholder": "郵箱 (可選，便於回訪)",
     "startChat": "開始諮詢",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
+    "promoTitle": "線上客服直接預約，享5%折扣",
+    "promoBody": "透過本線上客服直接預約並到院，即可享有5%折扣或精美贈品。無需仲介，更快更優惠。"
   },
   "consultation": {
     "floating": {

@@ -5780,7 +5780,9 @@
     "emailPlaceholder": "البريد الإلكتروني (اختياري، للرد)",
     "startChat": "ابدأ المحادثة",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {رسالة جديدة واحدة} other {# رسائل جديدة}}"
+    "unreadAria": "{count, plural, one {رسالة جديدة واحدة} other {# رسائل جديدة}}",
+    "promoTitle": "خصم 5% عند الحجز المباشر عبر الدردشة",
+    "promoBody": "احجز وتفضل بالزيارة مباشرة عبر هذه الدردشة المباشرة للحصول على خصم 5% أو هدية مجانية — أسرع وأوفر وبدون وسيط."
   },
   "consultation": {
     "floating": {

@@ -5780,7 +5780,9 @@
     "emailPlaceholder": "Имэйл (сонголтоор, эргэх холбоо)",
     "startChat": "Чат эхлүүлэх",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {1 шинэ зурвас} other {# шинэ зурвас}}"
+    "unreadAria": "{count, plural, one {1 шинэ зурвас} other {# шинэ зурвас}}",
+    "promoTitle": "Шууд захиалгад 5% хямдрал",
+    "promoBody": "Энэхүү лайв чатаар шууд захиалж ирснээр 5% хямдрал эсвэл бэлэг авна — зуучлалгүйгээр илүү хурдан, хямд."
   },
   "consultation": {
     "floating": {

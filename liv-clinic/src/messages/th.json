@@ -5780,7 +5780,9 @@
     "emailPlaceholder": "อีเมล (ไม่บังคับ สำหรับการติดต่อกลับ)",
     "startChat": "เริ่มแชท",
     "messageCountdown": "{count} /1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
+    "promoTitle": "ลด 5% เมื่อจองตรงผ่านไลฟ์แชท",
+    "promoBody": "จองและเข้ารับบริการโดยตรงผ่านไลฟ์แชทนี้ รับส่วนลด 5% หรือของสมนาคุณ รวดเร็วและคุ้มกว่า ไม่ผ่านคนกลาง"
   },
   "consultation": {
     "floating": {

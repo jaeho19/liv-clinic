@@ -5780,7 +5780,9 @@
     "emailPlaceholder": "Email (optionnel, pour rappel)",
     "startChat": "Démarrer le chat",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {1 nouveau message} other {# nouveaux messages}}"
+    "unreadAria": "{count, plural, one {1 nouveau message} other {# nouveaux messages}}",
+    "promoTitle": "5% de réduction en réservant directement via le chat",
+    "promoBody": "Réservez et venez directement via ce chat en direct pour bénéficier de 5% de réduction ou d un cadeau — plus rapide et plus avantageux, sans intermédiaire."
   },
   "consultation": {
     "floating": {
