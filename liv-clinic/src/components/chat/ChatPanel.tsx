@@ -190,6 +190,13 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
       {!session ? (
         <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3">
           <p className="text-sm text-gray-600">{t('welcome')}</p>
+          {/* zh 직접예약 프로모션 — 라이브챗을 통한 직접 유입 유도 (에이전시 fee 절감) */}
+          {locale === 'zh' && (
+            <div className="rounded-lg border border-[#b4988d]/40 bg-[#b4988d]/10 px-3 py-2.5">
+              <p className="text-[13px] font-semibold text-[#6d4e42]">🎁 {t('promoTitle')}</p>
+              <p className="text-[11px] text-[#8a6f63] mt-0.5 leading-relaxed">{t('promoBody')}</p>
+            </div>
+          )}
           <p className="text-[11px] text-gray-400 leading-relaxed">{t('businessHours')}</p>
           <p className="text-[11px] text-gray-400 leading-relaxed">{t('consent')}</p>
           <form onSubmit={handleStart} className="flex flex-col gap-2 mt-2">

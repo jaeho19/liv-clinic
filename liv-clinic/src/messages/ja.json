@@ -5781,7 +5781,9 @@
     "emailPlaceholder": "メールアドレス (任意、お返事用)",
     "startChat": "チャットを開始",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count}件の新しいメッセージ"
+    "unreadAria": "{count}件の新しいメッセージ",
+    "promoTitle": "ライブチャットから直接予約で5%割引",
+    "promoBody": "このライブチャットから直接ご予約・ご来院いただくと、5%割引または記念品をプレゼント。仲介なしでより早く、お得に。"
   },
   "consultation": {
     "floating": {

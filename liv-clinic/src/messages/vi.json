@@ -5780,7 +5780,9 @@
     "emailPlaceholder": "Email (tùy chọn, để gọi lại)",
     "startChat": "Bắt đầu trò chuyện",
     "messageCountdown": "{count} /1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
+    "promoTitle": "Giảm 5% khi đặt lịch trực tiếp qua chat",
+    "promoBody": "Đặt lịch và đến khám trực tiếp qua khung chat này để nhận giảm 5% hoặc quà tặng — nhanh hơn, lợi hơn, không qua trung gian."
   },
   "consultation": {
     "floating": {

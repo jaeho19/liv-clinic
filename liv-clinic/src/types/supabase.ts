@@ -966,6 +966,66 @@ export type Database = {
         }
         Relationships: []
       }
+      inflow_leads: {
+        Row: {
+          agency: string | null
+          channel: string
+          contact_date: string
+          created_at: string
+          id: string
+          is_returning: boolean
+          kakao_id: string | null
+          name: string | null
+          note: string | null
+          phone: string | null
+          reserved: boolean
+          reserved_date: string | null
+          treatment: string | null
+          updated_at: string
+          visited: boolean
+          visited_date: string | null
+          wechat_id: string | null
+        }
+        Insert: {
+          agency?: string | null
+          channel?: string
+          contact_date?: string
+          created_at?: string
+          id?: string
+          is_returning?: boolean
+          kakao_id?: string | null
+          name?: string | null
+          note?: string | null
+          phone?: string | null
+          reserved?: boolean
+          reserved_date?: string | null
+          treatment?: string | null
+          updated_at?: string
+          visited?: boolean
+          visited_date?: string | null
+          wechat_id?: string | null
+        }
+        Update: {
+          agency?: string | null
+          channel?: string
+          contact_date?: string
+          created_at?: string
+          id?: string
+          is_returning?: boolean
+          kakao_id?: string | null
+          name?: string | null
+          note?: string | null
+          phone?: string | null
+          reserved?: boolean
+          reserved_date?: string | null
+          treatment?: string | null
+          updated_at?: string
+          visited?: boolean
+          visited_date?: string | null
+          wechat_id?: string | null
+        }
+        Relationships: []
+      }
       popups: {
         Row: {
           created_at: string

@@ -5780,7 +5780,9 @@
     "emailPlaceholder": "Email (optional, for callbacks)",
     "startChat": "Start Chat",
     "messageCountdown": "{count}/1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}"
+    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
+    "promoTitle": "5% off when you book directly via live chat",
+    "promoBody": "Book and visit directly through this live chat to get a 5% discount or a free gift — faster and better value, with no middleman."
   },
   "consultation": {
     "floating": {

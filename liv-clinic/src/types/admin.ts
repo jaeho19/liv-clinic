@@ -70,6 +70,75 @@ export function getPopupStatus(popup: PopupRow): PopupStatus {
 }
 
 // ==========================================
+// Inflow Leads (유입 통계 - 신규 연락/예약/내원)
+// ==========================================
+
+export type InflowLeadRow = Database['public']['Tables']['inflow_leads']['Row'];
+export type InflowLeadInsert = Database['public']['Tables']['inflow_leads']['Insert'];
+export type InflowLeadUpdate = Database['public']['Tables']['inflow_leads']['Update'];
+
+/** 유입 채널 코드 */
+export type InflowChannel =
+  | 'wechat'
+  | 'kakao'
+  | 'naver'
+  | 'phone'
+  | 'walk_in'
+  | 'website'
+  | 'livechat'
+  | 'etc';
+
+export const INFLOW_CHANNELS: InflowChannel[] = [
+  'wechat',
+  'kakao',
+  'naver',
+  'phone',
+  'walk_in',
+  'website',
+  'livechat',
+  'etc',
+];
+
+export const INFLOW_CHANNEL_LABELS: Record<InflowChannel, string> = {
+  wechat: '위챗',
+  kakao: '카카오톡',
+  naver: '네이버',
+  phone: '전화',
+  walk_in: '워크인',
+  website: '홈페이지',
+  livechat: '라이브챗',
+  etc: '기타',
+};
+
+/** 채널 막대 색상 (analytics 페이지 톤과 통일) */
+export const INFLOW_CHANNEL_COLORS: Record<InflowChannel, string> = {
+  wechat: 'bg-green-400',
+  kakao: 'bg-yellow-400',
+  naver: 'bg-emerald-500',
+  phone: 'bg-blue-400',
+  walk_in: 'bg-purple-400',
+  website: 'bg-[#b4988d]',
+  livechat: 'bg-sky-400',
+  etc: 'bg-gray-300',
+};
+
+export function getInflowChannelLabel(channel: string): string {
+  return INFLOW_CHANNEL_LABELS[channel as InflowChannel] ?? channel;
+}
+
+/** 자주 쓰는 에이전시 프리셋 (입력 편의용 — 자유 입력도 허용) */
+export const AGENCY_PRESETS = ['바이올렛'] as const;
+
+/** 깔때기 단계 */
+export type InflowStage = 'contact' | 'reserved' | 'visited';
+
+export const INFLOW_STAGE_LABELS: Record<InflowStage, string> = {
+  contact: '신규 연락',
+  reserved: '예약',
+  visited: '내원',
+};
+
+// ==========================================
 // Inventory (재고관리)
 // ==========================================
 

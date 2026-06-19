@@ -100,6 +100,15 @@ CREATE POLICY "Authenticated users can view consultations"
    - `created_at` (TIMESTAMPTZ)
    - `updated_at` (TIMESTAMPTZ)
 
+### 3-4. 유입 통계 테이블 생성 (어드민 > 유입 통계)
+
+신규 연락 → 예약 → 내원 흐름을 채널/에이전시별로 기록하는 `inflow_leads` 테이블을 추가합니다.
+
+1. Supabase 대시보드 > **SQL Editor**
+2. 루트의 **`inflow-leads-table.sql`** 파일 내용을 복사하여 붙여넣고 **RUN**
+3. **Table Editor**에서 `inflow_leads` 테이블 생성 확인 (RLS: 인증된 관리자 전용)
+4. 어드민(`/admin/inflow`) > **유입 통계** 메뉴에서 입력/통계 사용
+
 ---
 
 ## 4단계: 개발 서버 실행 및 테스트
