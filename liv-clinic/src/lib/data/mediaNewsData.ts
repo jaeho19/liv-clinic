@@ -61,6 +61,29 @@ export const MEDIA_YEARS = ['2026', '2025', '2021'] as const;
 export const mediaNewsData: MediaNewsItem[] = [
   // ── 2026 ──
   {
+    id: '17',
+    type: 'news',
+    category: 'academic_global',
+    badge: 'ACADEMIC',
+    year: '2026',
+    title: '김수영 대표원장, 글로벌 리프팅 전문가 콘퍼런스 AXA(Aptos Expert Alliance) 초청 발표',
+    source: 'LIV 소식',
+    description:
+      '리브성형외과 김수영 대표원장이 글로벌 실리프팅 브랜드 APTOS가 주최한 전문가 콘퍼런스 AXA(Aptos Expert Alliance)에 초청되어 발표를 성공적으로 마쳤습니다.',
+    body: [
+      '안녕하세요. 리브성형외과입니다.',
+      '지난 2026년 6월 20일, 리브성형외과 김수영 대표원장이 글로벌 실리프팅 브랜드 APTOS가 주최한 전문가 콘퍼런스 AXA(Aptos Expert Alliance)에 초청되어 발표를 성공적으로 마쳤습니다.',
+      'AXA(Aptos Expert Alliance)는 세계 각국의 APTOS 마스터 및 전문가들이 최신 임상 경험과 시술 노하우를 공유하는 국제 학술 포럼으로, 글로벌 리프팅 분야의 최신 지견과 다양한 임상 사례를 나누는 권위 있는 학술 행사입니다.',
+      '김수영 대표원장님은 APTOS International Trainer(국제 공식 트레이너) 자격을 보유하고 있으며, 이번 발표에서는 리브성형외과의 다양한 임상 케이스와 실리프팅 노하우를 공유하며 참석한 의료진들과 뜻깊은 학술 교류의 시간을 가졌습니다.',
+      '리브성형외과는 앞으로도 국내를 넘어 세계적인 의료진과의 학술 교류를 지속하며, 끊임없는 연구와 임상 경험을 바탕으로 더욱 안전하고 정교한 프리미엄 안티에이징 의료 서비스를 제공하기 위해 최선을 다하겠습니다.',
+      '감사합니다.',
+    ],
+    images: ['/images/media-news/axa-conference-2026.jpg'],
+    imagePosition: '50% 30%',
+    link: '/media',
+    isExternal: false,
+  },
+  {
     id: '16',
     type: 'press',
     category: 'press',
@@ -333,6 +356,20 @@ export const mediaNewsData: MediaNewsItem[] = [
  */
 export const featuredMediaNews: FeaturedMediaCard[] = [
   {
+    id: 'f9',
+    type: 'news',
+    badge: 'ACADEMIC',
+    year: '2026',
+    title: 'AXA(Aptos Expert Alliance) 초청 발표',
+    description:
+      '김수영 대표원장이 글로벌 실리프팅 브랜드 APTOS 주최 전문가 콘퍼런스 AXA에 초청되어 임상 케이스와 실리프팅 노하우를 발표했습니다.',
+    image: '/images/media-news/axa-conference-2026.jpg',
+    imagePosition: '50% 30%',
+    link: '/media',
+    isExternal: false,
+    newsId: '17',
+  },
+  {
     id: 'f8',
     type: 'press',
     badge: 'MEDIA INTERVIEW',
@@ -395,18 +432,6 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     imagePosition: '25% 30%',
     link: 'https://www.hinews.co.kr/view.php?ud=202604081129541521dacadeb388_48',
     isExternal: true,
-  },
-  {
-    id: 'f4',
-    type: 'news',
-    badge: 'ACADEMIC',
-    year: '2025',
-    title: 'Aesthetic Plastic Surgery Korea 초청 강연',
-    description: '김수영 대표원장이 ‘Site-specific algorithm for facial rejuvenation’을 주제로 공식 초청 구연 발표를 진행했습니다.',
-    image: '/images/media-news/academic-lecture.jpg',
-    imagePosition: '50% 72%',
-    link: '/media',
-    isExternal: false,
   },
 ];
 
