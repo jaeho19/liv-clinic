@@ -68,7 +68,7 @@ export default async function LocaleLayout({
   ].filter(Boolean).join(' ');
 
   return (
-    <html lang={htmlLang} dir={htmlDir} className={fontClasses}>
+    <html lang={htmlLang} dir={htmlDir} className={fontClasses} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
