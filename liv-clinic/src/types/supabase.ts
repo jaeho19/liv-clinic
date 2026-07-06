@@ -489,9 +489,15 @@ export type Database = {
           end_date: string
           featured: boolean
           gallery_images: string[]
+          gallery_images_en: string[]
+          gallery_images_ja: string[]
+          gallery_images_zh: string[]
           id: string
           is_published: boolean
           poster_image: string | null
+          poster_image_en: string | null
+          poster_image_ja: string | null
+          poster_image_zh: string | null
           related_treatments: string[]
           slug: string
           sort_order: number
@@ -513,9 +519,15 @@ export type Database = {
           end_date: string
           featured?: boolean
           gallery_images?: string[]
+          gallery_images_en?: string[]
+          gallery_images_ja?: string[]
+          gallery_images_zh?: string[]
           id?: string
           is_published?: boolean
           poster_image?: string | null
+          poster_image_en?: string | null
+          poster_image_ja?: string | null
+          poster_image_zh?: string | null
           related_treatments?: string[]
           slug: string
           sort_order?: number
@@ -537,9 +549,15 @@ export type Database = {
           end_date?: string
           featured?: boolean
           gallery_images?: string[]
+          gallery_images_en?: string[]
+          gallery_images_ja?: string[]
+          gallery_images_zh?: string[]
           id?: string
           is_published?: boolean
           poster_image?: string | null
+          poster_image_en?: string | null
+          poster_image_ja?: string | null
+          poster_image_zh?: string | null
           related_treatments?: string[]
           slug?: string
           sort_order?: number
@@ -1033,6 +1051,9 @@ export type Database = {
           display_start: string
           id: string
           image_url: string | null
+          image_url_en: string | null
+          image_url_ja: string | null
+          image_url_zh: string | null
           is_active: boolean
           link_target: string
           link_url: string
@@ -1049,6 +1070,9 @@ export type Database = {
           display_start: string
           id?: string
           image_url?: string | null
+          image_url_en?: string | null
+          image_url_ja?: string | null
+          image_url_zh?: string | null
           is_active?: boolean
           link_target?: string
           link_url?: string
@@ -1065,6 +1089,9 @@ export type Database = {
           display_start?: string
           id?: string
           image_url?: string | null
+          image_url_en?: string | null
+          image_url_ja?: string | null
+          image_url_zh?: string | null
           is_active?: boolean
           link_target?: string
           link_url?: string

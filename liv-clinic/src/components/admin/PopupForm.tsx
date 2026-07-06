@@ -23,6 +23,9 @@ export default function PopupForm({ popup }: PopupFormProps) {
   const [form, setForm] = useState({
     title: popup?.title ?? '',
     image_url: popup?.image_url ?? null,
+    image_url_en: popup?.image_url_en ?? null,
+    image_url_ja: popup?.image_url_ja ?? null,
+    image_url_zh: popup?.image_url_zh ?? null,
     link_url: popup?.link_url ?? '',
     link_target: popup?.link_target ?? '_self',
     display_start: popup ? toLocalDatetimeString(popup.display_start) : '',
@@ -109,13 +112,37 @@ export default function PopupForm({ popup }: PopupFormProps) {
       </div>
 
       {/* Image */}
-      <ImageUploader
-        bucket="popups"
-        folder={popup?.id ?? 'new'}
-        value={form.image_url}
-        onChange={(url) => updateField('image_url', url)}
-        label="팝업 이미지"
-      />
+      <div className="grid gap-4">
+        <ImageUploader
+          bucket="popups"
+          folder={popup?.id ?? 'new'}
+          value={form.image_url}
+          onChange={(url) => updateField('image_url', url)}
+          label="팝업 이미지 (한국어·기본)"
+        />
+        <ImageUploader
+          bucket="popups"
+          folder={popup?.id ?? 'new'}
+          value={form.image_url_en}
+          onChange={(url) => updateField('image_url_en', url)}
+          label="팝업 이미지 (English)"
+        />
+        <ImageUploader
+          bucket="popups"
+          folder={popup?.id ?? 'new'}
+          value={form.image_url_ja}
+          onChange={(url) => updateField('image_url_ja', url)}
+          label="팝업 이미지 (日本語)"
+        />
+        <ImageUploader
+          bucket="popups"
+          folder={popup?.id ?? 'new'}
+          value={form.image_url_zh}
+          onChange={(url) => updateField('image_url_zh', url)}
+          label="팝업 이미지 (中文)"
+        />
+        <p className="text-xs text-[#b4b4b4]">외국어 이미지를 등록하지 않으면 해당 언어 페이지에는 한국어 이미지가 표시됩니다.</p>
+      </div>
 
       {/* Link */}
       <div className="grid grid-cols-3 gap-4">

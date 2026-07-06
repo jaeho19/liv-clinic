@@ -11,6 +11,15 @@ interface EventFormProps {
   event?: EventRow;
 }
 
+const GALLERY_FIELDS = [
+  { key: 'gallery_images', label: '갤러리 이미지 (한국어·기본)' },
+  { key: 'gallery_images_en', label: '갤러리 이미지 (English)' },
+  { key: 'gallery_images_ja', label: '갤러리 이미지 (日本語)' },
+  { key: 'gallery_images_zh', label: '갤러리 이미지 (中文)' },
+] as const;
+
+type GalleryFieldKey = (typeof GALLERY_FIELDS)[number]['key'];
+
 export default function EventForm({ event }: EventFormProps) {
   const router = useRouter();
   const supabase = createClient();
@@ -27,8 +36,14 @@ export default function EventForm({ event }: EventFormProps) {
     description_ja: event?.description_ja ?? '',
     description_zh: event?.description_zh ?? '',
     poster_image: event?.poster_image ?? null,
+    poster_image_en: event?.poster_image_en ?? null,
+    poster_image_ja: event?.poster_image_ja ?? null,
+    poster_image_zh: event?.poster_image_zh ?? null,
     thumbnail_image: event?.thumbnail_image ?? null,
     gallery_images: event?.gallery_images ?? [],
+    gallery_images_en: event?.gallery_images_en ?? [],
+    gallery_images_ja: event?.gallery_images_ja ?? [],
+    gallery_images_zh: event?.gallery_images_zh ?? [],
     start_date: event?.start_date ?? '',
     end_date: event?.end_date ?? '',
     category: event?.category ?? 'all',
@@ -90,14 +105,14 @@ export default function EventForm({ event }: EventFormProps) {
     router.refresh();
   };
 
-  const addGalleryImage = (url: string | null) => {
+  const addGalleryImage = (key: GalleryFieldKey, url: string | null) => {
     if (url) {
-      updateField('gallery_images', [...form.gallery_images, url]);
+      updateField(key, [...form[key], url]);
     }
   };
 
-  const removeGalleryImage = (index: number) => {
-    updateField('gallery_images', form.gallery_images.filter((_, i) => i !== index));
+  const removeGalleryImage = (key: GalleryFieldKey, index: number) => {
+    updateField(key, form[key].filter((_, i) => i !== index));
   };
 
   const toggleTreatment = (value: string) => {
@@ -229,13 +244,35 @@ export default function EventForm({ event }: EventFormProps) {
       {/* Images */}
       <fieldset className="border border-[#e5e5e5] rounded-lg p-4">
         <legend className="text-sm font-medium text-[#575756] px-2">이미지</legend>
+        <p className="text-xs text-[#b4b4b4] mb-4">외국어 이미지를 등록하지 않으면 해당 언어 페이지에는 한국어 이미지가 표시됩니다.</p>
         <div className="grid gap-4">
           <ImageUploader
             bucket="events"
             folder={form.slug || 'temp'}
             value={form.poster_image}
             onChange={(url) => updateField('poster_image', url)}
-            label="포스터 이미지"
+            label="포스터 이미지 (한국어·기본)"
+          />
+          <ImageUploader
+            bucket="events"
+            folder={form.slug || 'temp'}
+            value={form.poster_image_en}
+            onChange={(url) => updateField('poster_image_en', url)}
+            label="포스터 이미지 (English)"
+          />
+          <ImageUploader
+            bucket="events"
+            folder={form.slug || 'temp'}
+            value={form.poster_image_ja}
+            onChange={(url) => updateField('poster_image_ja', url)}
+            label="포스터 이미지 (日本語)"
+          />
+          <ImageUploader
+            bucket="events"
+            folder={form.slug || 'temp'}
+            value={form.poster_image_zh}
+            onChange={(url) => updateField('poster_image_zh', url)}
+            label="포스터 이미지 (中文)"
           />
           <ImageUploader
             bucket="events"
@@ -244,29 +281,31 @@ export default function EventForm({ event }: EventFormProps) {
             onChange={(url) => updateField('thumbnail_image', url)}
             label="썸네일 이미지"
           />
-          <div>
-            <label className="block text-sm font-medium text-[#575756] mb-1.5">갤러리 이미지</label>
-            <div className="flex flex-wrap gap-2 mb-2">
-              {form.gallery_images.map((img, i) => (
-                <div key={i} className="relative">
-                  <img src={img} alt="" className="w-20 h-20 rounded-lg object-cover border border-[#e5e5e5]" />
-                  <button
-                    type="button"
-                    onClick={() => removeGalleryImage(i)}
-                    className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center cursor-pointer"
-                  >
-                    ✕
-                  </button>
-                </div>
-              ))}
+          {GALLERY_FIELDS.map((field) => (
+            <div key={field.key}>
+              <label className="block text-sm font-medium text-[#575756] mb-1.5">{field.label}</label>
+              <div className="flex flex-wrap gap-2 mb-2">
+                {form[field.key].map((img, i) => (
+                  <div key={i} className="relative">
+                    <img src={img} alt="" className="w-20 h-20 rounded-lg object-cover border border-[#e5e5e5]" />
+                    <button
+                      type="button"
+                      onClick={() => removeGalleryImage(field.key, i)}
+                      className="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white rounded-full text-xs flex items-center justify-center cursor-pointer"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                ))}
+              </div>
+              <ImageUploader
+                bucket="events"
+                folder={form.slug || 'temp'}
+                value={null}
+                onChange={(url) => addGalleryImage(field.key, url)}
+              />
             </div>
-            <ImageUploader
-              bucket="events"
-              folder={form.slug || 'temp'}
-              value={null}
-              onChange={addGalleryImage}
-            />
-          </div>
+          ))}
         </div>
       </fieldset>
 

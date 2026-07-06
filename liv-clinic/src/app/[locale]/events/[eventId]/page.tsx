@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/supabase';
 import { BASE_URL } from '@/lib/seo';
 import { SITE_INFO } from '@/lib/constants';
+import { pickLocalized } from '@/lib/i18nFallback';
+import type { Locale } from '@/i18n/routing';
 import EventDetailClient from './EventDetailClient';
 
 // 이벤트 상세 메타데이터는 자주 갱신되도록 짧은 ISR 적용
@@ -68,8 +70,13 @@ export async function generateMetadata({
   const title = titleMap[locale] || event.title_ko;
   const description = descMap[locale] || event.description_ko;
 
-  // 포스터 이미지 URL (전체 경로로 변환)
-  const posterImage = event.poster_image || '/images/placeholder-event.jpg';
+  // 포스터 이미지 URL (언어별 포스터 우선, 전체 경로로 변환)
+  const posterImage = pickLocalized({
+    ko: event.poster_image,
+    en: event.poster_image_en,
+    ja: event.poster_image_ja,
+    zh: event.poster_image_zh,
+  }, locale as Locale) || '/images/placeholder-event.jpg';
   const imageUrl = posterImage.startsWith('http') ? posterImage : `${BASE_URL}${posterImage}`;
 
   return {

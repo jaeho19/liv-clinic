@@ -19,7 +19,8 @@ export default function EventCard({ event, index = 0, featured = false }: EventC
   const locale = useLocale() as Locale;
   const status: EventStatus = getEventStatus(event);
   const isEnded = status === 'ended';
-  const isPlaceholder = !event.posterImage || event.posterImage.includes('placeholder');
+  const posterSrc = pickLocalized(event.posterImageLocalized, locale) || event.posterImage;
+  const isPlaceholder = !posterSrc || posterSrc.includes('placeholder');
   const isPromotion = new Date(event.endDate).getFullYear() >= 2099;
 
   // 날짜 포맷팅
@@ -62,7 +63,7 @@ export default function EventCard({ event, index = 0, featured = false }: EventC
               </div>
             ) : (
               <Image
-                src={event.posterImage}
+                src={posterSrc}
                 alt={pickLocalized(event.title, locale)}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

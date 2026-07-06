@@ -4,7 +4,7 @@ import { useMemo, useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import { useTranslations, useLocale } from 'next-intl';
 import type { Locale } from '@/i18n/routing';
-import { pickLocalized } from '@/lib/i18nFallback';
+import { pickLocalized, pickLocalizedImages } from '@/lib/i18nFallback';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
@@ -124,6 +124,9 @@ export default function EventDetailClient() {
 
   const status = getEventStatus(event);
   const isEnded = status === 'ended';
+  const posterSrc = pickLocalized(event.posterImageLocalized, locale) || event.posterImage;
+  const resolvedGallery = pickLocalizedImages(event.galleryImagesLocalized, locale);
+  const galleryImages = resolvedGallery.length > 0 ? resolvedGallery : (event.galleryImages ?? []);
 
   return (
     <>
@@ -150,7 +153,7 @@ export default function EventDetailClient() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
             {/* 포스터 이미지 — EventHero 공통 컴포넌트 */}
             <EventHero
-              imageSrc={event.posterImage}
+              imageSrc={posterSrc}
               imageAlt={pickLocalized(event.title, locale)}
               status={status}
               isEnded={isEnded}
@@ -265,11 +268,11 @@ export default function EventDetailClient() {
       </section>
 
       {/* 이미지 갤러리 - 모든 이벤트 동일한 세로 스크롤 레이아웃 */}
-      {event.galleryImages && event.galleryImages.length > 0 && (
+      {galleryImages.length > 0 && (
         <section className="py-12 md:py-16 bg-white">
           <div className="max-w-[800px] mx-auto px-4">
             <div className="flex flex-col gap-4">
-              {event.galleryImages.map((src, idx) => (
+              {galleryImages.map((src, idx) => (
                 <motion.div
                   key={src}
                   initial={{ opacity: 0 }}
@@ -328,9 +331,9 @@ export default function EventDetailClient() {
                 </svg>
               </button>
               {/* 갤러리 네비게이션 */}
-              {event.galleryImages && event.galleryImages.length > 1 && (
+              {galleryImages.length > 1 && (
                 <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                  {event.galleryImages.map((src, idx) => (
+                  {galleryImages.map((src, idx) => (
                     <button
                       key={src}
                       onClick={() => setSelectedImage(src)}

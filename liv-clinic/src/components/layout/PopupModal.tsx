@@ -2,8 +2,10 @@
 
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import type { PopupRow } from '@/types/admin';
+import type { Locale } from '@/i18n/routing';
+import { pickLocalized } from '@/lib/i18nFallback';
 
 interface PopupModalProps {
   popups: PopupRow[];
@@ -38,6 +40,7 @@ const slideTransition = {
 export default function PopupModal({ popups, onClose, onDismissToday }: PopupModalProps) {
   const tCommon = useTranslations('common');
   const tPopup = useTranslations('popup');
+  const locale = useLocale() as Locale;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -47,6 +50,12 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
 
   const currentPopup = popups[currentIndex];
   const isMultiple = popups.length > 1;
+  const popupImageSrc = pickLocalized({
+    ko: currentPopup.image_url,
+    en: currentPopup.image_url_en,
+    ja: currentPopup.image_url_ja,
+    zh: currentPopup.image_url_zh,
+  }, locale) || currentPopup.image_url;
 
   const pauseAndResume = useCallback(() => {
     setIsPaused(true);
@@ -169,13 +178,13 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
                 exit="exit"
                 transition={slideTransition}
               >
-                {currentPopup.image_url && (
+                {popupImageSrc && (
                   <div
                     className={currentPopup.link_url ? 'cursor-pointer' : ''}
                     onClick={handleImageClick}
                   >
                     <img
-                      src={currentPopup.image_url}
+                      src={popupImageSrc}
                       alt={currentPopup.title}
                       className="w-full h-auto block"
                       draggable={false}

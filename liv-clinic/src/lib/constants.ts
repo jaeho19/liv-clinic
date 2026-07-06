@@ -1,3 +1,5 @@
+import type { LocalizedImage, LocalizedImageList } from '@/lib/i18nFallback';
+
 // 사이트 정보
 export const SITE_INFO = {
   name: '리브성형외과',
@@ -1318,8 +1320,10 @@ export interface EventItem {
     zh: string;
   };
   posterImage: string;
+  posterImageLocalized?: LocalizedImage;      // 언어별 포스터 (ko = posterImage와 동일 값)
   thumbnailImage?: string;
   galleryImages?: string[]; // 상세 페이지에서 표시할 이미지 갤러리
+  galleryImagesLocalized?: LocalizedImageList; // 언어별 상세 갤러리 (ko = galleryImages와 동일 값)
   imagePosition?: string; // CSS object-position (기본값: 'center top') — hero 이미지 focal point
   startDate: string; // ISO 8601 format (YYYY-MM-DD)
   endDate: string;
