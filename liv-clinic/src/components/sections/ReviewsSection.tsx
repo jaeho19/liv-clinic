@@ -36,10 +36,13 @@ const getTopReviews = unstable_cache(
   { revalidate: 3600, tags: ['reviews'] },
 );
 
-/** 홈 소셜프루프 블록: 최신 게시 후기 3개. 후기가 없으면 아무것도 렌더하지 않는다. */
+/**
+ * 홈 소셜프루프 블록: 최신 게시 후기 3개.
+ * 게시 후기가 0건이어도 섹션은 유지한다 — Google 리뷰 링크(외부 신뢰 신호)와
+ * 후기 작성 CTA는 자체 후기가 쌓이기 전 단계에서 오히려 더 중요하다.
+ */
 export default async function ReviewsSection() {
   const reviews = await getTopReviews();
-  if (reviews.length === 0) return null;
 
   const t = await getTranslations('reviews');
 
@@ -57,6 +60,7 @@ export default async function ReviewsSection() {
           </div>
         </AnimateOnScroll>
 
+        {reviews.length > 0 && (
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {reviews.map((review) => (
             <article
@@ -94,8 +98,9 @@ export default async function ReviewsSection() {
             </article>
           ))}
         </div>
+        )}
 
-        <div className="mt-12 flex flex-col items-center gap-4">
+        <div className={`flex flex-col items-center gap-4 ${reviews.length > 0 ? 'mt-12' : 'mt-2'}`}>
           <Link
             href="/reviews"
             className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-primary px-8 py-3.5 font-medium text-white transition-colors hover:bg-secondary"
