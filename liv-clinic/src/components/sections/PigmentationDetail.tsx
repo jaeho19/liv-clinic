@@ -5,7 +5,7 @@ import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { TREATMENTS, LASER_CATEGORIES } from '@/lib/constants';
-import { PriceTable } from '@/components/ui';
+import { PriceTable, Breadcrumb } from '@/components/ui';
 
 const category = LASER_CATEGORIES[0]; // pigmentation
 const clarityData = TREATMENTS.laser.clarity;
@@ -347,6 +347,8 @@ export default function PigmentationDetail() {
 
   return (
     <main className="bg-white">
+      <Breadcrumb items={[{ navKey: 'laser', href: '/laser' }, { label: t('laser.pigmentation.name') }]} />
+
       {/* 히어로 섹션 */}
       <section className="relative min-h-70-dvh flex items-center justify-center overflow-hidden bg-gradient-to-b from-amber-50 to-white">
         <div className="absolute inset-0 opacity-10">

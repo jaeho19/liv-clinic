@@ -3,8 +3,10 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from '@/i18n/routing';
 
-const HERO_VIDEO = '/videos/hero.mp4?v=20251231';
+const HERO_VIDEO_WEBM = '/videos/hero.webm?v=20260707';
+const HERO_VIDEO = '/videos/hero.mp4?v=20260707';
 const HERO_POSTER = '/images/hero/hero-1.jpg'; // 비디오 로드 전 표시할 포스터 이미지 (LCP candidate)
 
 const slides = [
@@ -115,6 +117,7 @@ export default function Hero() {
           onLoadedData={() => setIsVideoLoaded(true)}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
         >
+          <source src={HERO_VIDEO_WEBM} type="video/webm" />
           <source src={HERO_VIDEO} type="video/mp4" />
         </video>
         <div className="absolute inset-0 hero-gradient" />
@@ -139,11 +142,17 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center text-white container-custom">
+        {/* SEO H1 — 정적·SSR 노출(JS 없이도 표시). 회전 슬로건과 독립적으로 키워드 제공.
+            tracking/uppercase는 아랍어 연결서체·CJK를 깨뜨리므로 사용하지 않음. */}
+        <h1 className="text-small sm:text-base font-light text-white/85 mb-5 sm:mb-6 max-w-3xl text-shadow">
+          {t('heroSeo.h1')}
+        </h1>
         <AnimatePresence mode="wait">
           <motion.div key={currentSlide} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.6 }} className="max-w-4xl">
-            <motion.h1 className="font-serif text-display mb-6 text-shadow-strong">
+            {/* 회전 슬로건 — 디자인 동일하게 유지, H1 시맨틱만 위 정적 요소로 이동 */}
+            <motion.div aria-live="polite" className="font-serif text-display mb-6 text-shadow-strong">
               <AnimatedTitle text={t(slides[currentSlide].titleKey)} delay={0.2} />
-            </motion.h1>
+            </motion.div>
             <motion.p className="text-h4 md:text-h3 opacity-90 mb-10 font-light text-shadow"
               initial={{ opacity: 0, y: 30, filter: 'blur(10px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
@@ -153,6 +162,17 @@ export default function Hero() {
             <motion.div className="w-24 h-px bg-white/50 mx-auto" initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} transition={{ delay: 1.2, duration: 0.8 }} />
           </motion.div>
         </AnimatePresence>
+
+        {/* Primary CTA — 서버 렌더 텍스트(JS 없이도 노출), 슬라이드 애니메이션과 독립 */}
+        <Link
+          href="/contact"
+          className="mt-8 sm:mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-medium text-white shadow-lg transition-all duration-300 hover:bg-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-white/60 min-h-[52px]"
+        >
+          {t('common.consultation')}
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2} aria-hidden>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </Link>
 
         <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2">
           <motion.div className="flex flex-col items-center gap-2" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.5 }}>

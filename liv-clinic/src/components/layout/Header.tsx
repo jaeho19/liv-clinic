@@ -57,6 +57,7 @@ function useThrottle<T extends (...args: unknown[]) => void>(
 export default function Header() {
   const t = useTranslations('nav');
   const tCommon = useTranslations('common');
+  const tLang = useTranslations('langSupport');
   const pathname = usePathname();
   const locale = useLocale() as Locale;
   const useCompactMenu = COMPACT_NAV_LOCALES.has(locale);
@@ -299,8 +300,40 @@ export default function Header() {
                 </svg>
               </NextLink>
 
+              {/* Multilingual support trust chip - Desktop.
+                  Compact-nav locales hide the desktop nav → room to show at xl.
+                  Non-compact locales show the nav at xl, so defer the chip to 2xl to avoid crowding. */}
+              <span
+                title={tLang('badgeAria')}
+                className={`${useCompactMenu ? 'hidden xl:inline-flex' : 'hidden 2xl:inline-flex'} items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors ${
+                  useDarkStyle
+                    ? 'border-primary/30 bg-primary/5 text-primary/90'
+                    : 'border-white/40 bg-white/10 text-white/90 backdrop-blur-sm'
+                }`}
+              >
+                <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3M3.6 9h16.8M3.6 15h16.8" />
+                </svg>
+                {tLang('badge')}
+              </span>
+
               {/* Language Switcher */}
               <LanguageSwitcher isScrolled={useDarkStyle} />
+
+              {/* Consultation CTA - Mobile (compact, always visible < md; 데스크톱은 위 텍스트 버튼이 담당) */}
+              <Link
+                href="/contact"
+                aria-label={tCommon('consultation')}
+                className={`md:hidden flex items-center justify-center w-10 h-10 rounded-full shrink-0 transition-colors ${
+                  useDarkStyle
+                    ? 'bg-primary text-white hover:bg-secondary'
+                    : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
+                }`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+              </Link>
 
               {/* Mobile Menu Button — 긴 라벨 locale은 모든 폭에서, 그 외는 xl 미만(태블릿)에서 햄버거 */}
               <button

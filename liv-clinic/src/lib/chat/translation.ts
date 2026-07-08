@@ -6,13 +6,16 @@ import 'server-only';
 // - 시스템 프롬프트로 LIV 클리닉 시술/브랜드명 보존 지시
 // - 빈/이모지/URL만 입력은 호출 생략(skipped)
 
-export type SupportedLang = 'ko' | 'en' | 'ja' | 'zh';
+export type SupportedLang = 'ko' | 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar';
 
 const LANG_NAMES: Record<SupportedLang, string> = {
   ko: 'Korean',
   en: 'English',
   ja: 'Japanese',
   zh: 'Chinese (Simplified)',
+  fr: 'French',
+  mn: 'Mongolian',
+  ar: 'Arabic',
 };
 
 export type TranslationStatus = 'success' | 'failed' | 'skipped';

@@ -4,7 +4,7 @@ import { useState, useMemo, useCallback, useRef } from 'react';
 import { useTranslations, useMessages } from 'next-intl';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { AnimateOnScroll, Button, Card, ScrollLink } from '@/components/ui';
+import { AnimateOnScroll, Button, Card, ScrollLink, Breadcrumb } from '@/components/ui';
 import { MedicalBlogSection } from '@/components/sections';
 import { TREATMENTS } from '@/lib/constants';
 
@@ -104,6 +104,8 @@ export default function MedicalPage() {
 
   return (
     <>
+      <Breadcrumb items={[{ navKey: 'medical' }]} />
+
       {/* Hero - 컴팩트하게 최적화 */}
       <section className="relative pt-20 pb-4 md:pt-24 md:pb-8 bg-gradient-to-b from-primary/10 to-background">
         <div className="container-custom">

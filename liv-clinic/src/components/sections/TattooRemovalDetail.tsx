@@ -3,7 +3,7 @@
 import { useTranslations } from 'next-intl';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AnimateOnScroll, PriceTable } from '@/components/ui';
+import { AnimateOnScroll, PriceTable, Breadcrumb } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 import { LASER_EQUIPMENT } from '@/lib/constants';
 
@@ -479,6 +479,8 @@ export default function TattooRemovalDetail() {
 
   return (
     <main className="min-h-screen bg-[var(--color-background)]">
+      <Breadcrumb items={[{ navKey: 'laser', href: '/laser' }, { label: t('laser.tattoo.name') }]} />
+
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 bg-gradient-to-b from-white to-[var(--color-background)]">
         <div className="container mx-auto px-4">

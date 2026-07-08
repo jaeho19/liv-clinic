@@ -1,10 +1,13 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { SITE_INFO, SOCIAL_LINKS } from '@/lib/constants';
 import { trackContact } from '@/lib/analytics-events';
+import { buildWhatsAppLink } from '@/lib/messengerLinks';
+import WeChatQRModal from '@/components/ui/WeChatQRModal';
 import type { Locale } from '@/i18n/routing';
 import { pickLocalized } from '@/lib/i18nFallback';
 type ContactMethod = 'instagram' | 'youtube' | 'phone' | 'kakao' | 'line' | 'whatsapp' | 'wechat';
@@ -93,7 +96,8 @@ const ctaButtons: Record<ContactMethod, CtaButton> = {
   wechat: {
     id: 'wechat',
     label: { ko: 'WeChat', en: 'WeChat', ja: 'WeChat', zh: '微信' },
-    href: '/zh/wechat',
+    // 모바일: weixin:// 앱 딥링크. 데스크톱: QR 모달로 대체(아래 렌더 분기).
+    href: SOCIAL_LINKS.wechat,
     image: { src: '/images/wechat-icon.png', alt: 'WeChat' },
     color: 'bg-white hover:bg-gray-50',
     textColor: 'text-white',
@@ -113,38 +117,46 @@ const BUTTON_ORDER_NON_KO: ContactMethod[] = [
 
 export default function FloatingCTA() {
   const locale = useLocale() as Locale;
+  const t = useTranslations('messengers');
   const buttonOrder =
     locale === 'ko' ? BUTTON_ORDER_KO : locale === 'zh' ? BUTTON_ORDER_ZH : BUTTON_ORDER_NON_KO;
 
-  return (
-    <div
-      className="fixed end-2 sm:end-4 md:end-6 z-40 flex flex-col items-end gap-2"
-      style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
-    >
-      {buttonOrder.map((key, index) => {
-        const button = ctaButtons[key];
-        const isImageButton = !!button.image;
-        const isExternal =
-          button.href.startsWith('http') || button.href.startsWith('weixin');
+  // 데스크톱(hover+fine pointer) 판정 — WeChat은 데스크톱에서 QR 모달, 모바일에선 딥링크.
+  const [isDesktop, setIsDesktop] = useState(
+    () =>
+      typeof window !== 'undefined' &&
+      !!window.matchMedia &&
+      window.matchMedia('(hover: hover) and (pointer: fine)').matches,
+  );
+  const [wechatOpen, setWechatOpen] = useState(false);
+  useEffect(() => {
+    if (typeof window === 'undefined' || !window.matchMedia) return;
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)');
+    const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
+    mq.addEventListener?.('change', handler);
+    return () => mq.removeEventListener?.('change', handler);
+  }, []);
 
-        return (
-          <motion.a
-            key={button.id}
-            href={button.href}
-            target={isExternal ? '_blank' : undefined}
-            rel={button.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-            onClick={() => trackContact(button.id)}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: index * 0.1 }}
-            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center ${
-              isImageButton ? 'bg-white overflow-hidden' : `${button.color} ${button.textColor}`
-            } transition-all`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
-            aria-label={pickLocalized(button.label, locale)}
-          >
-            {isImageButton && button.image ? (
+  const buttonClass = (button: CtaButton, isImageButton: boolean) =>
+    `w-11 h-11 sm:w-12 sm:h-12 rounded-full shadow-lg flex items-center justify-center ${
+      isImageButton ? 'bg-white overflow-hidden' : `${button.color} ${button.textColor}`
+    } transition-all`;
+
+  return (
+    <>
+      <div
+        className="fixed end-2 sm:end-4 md:end-6 z-40 flex flex-col items-end gap-2"
+        style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
+      >
+        {buttonOrder.map((key, index) => {
+          const button = ctaButtons[key];
+          const isImageButton = !!button.image;
+          // M3a: whatsapp 링크를 렌더 시점에 로케일별 prefill로 조립.
+          const href = key === 'whatsapp' ? buildWhatsAppLink(t('whatsappPrefill')) : button.href;
+          const isHttp = href.startsWith('http');
+
+          const content =
+            isImageButton && button.image ? (
               <Image
                 src={button.image.src}
                 alt={button.image.alt}
@@ -154,10 +166,52 @@ export default function FloatingCTA() {
               />
             ) : (
               button.icon
-            )}
-          </motion.a>
-        );
-      })}
-    </div>
+            );
+
+          // M3b: WeChat 데스크톱 — 죽은 weixin:// 딥링크 대신 QR 모달을 연다(모바일은 딥링크 유지).
+          if (key === 'wechat' && isDesktop) {
+            return (
+              <motion.button
+                key={button.id}
+                type="button"
+                onClick={() => {
+                  trackContact('wechat');
+                  setWechatOpen(true);
+                }}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.1 }}
+                className={buttonClass(button, isImageButton)}
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                aria-label={pickLocalized(button.label, locale)}
+              >
+                {content}
+              </motion.button>
+            );
+          }
+
+          return (
+            <motion.a
+              key={button.id}
+              href={href}
+              target={isHttp ? '_blank' : undefined}
+              rel={isHttp ? 'noopener noreferrer' : undefined}
+              onClick={() => trackContact(button.id)}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: index * 0.1 }}
+              className={buttonClass(button, isImageButton)}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              aria-label={pickLocalized(button.label, locale)}
+            >
+              {content}
+            </motion.a>
+          );
+        })}
+      </div>
+      <WeChatQRModal open={wechatOpen} onClose={() => setWechatOpen(false)} />
+    </>
   );
 }

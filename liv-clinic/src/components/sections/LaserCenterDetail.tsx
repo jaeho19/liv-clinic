@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import React, { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { AnimateOnScroll } from '@/components/ui';
+import { AnimateOnScroll, Breadcrumb } from '@/components/ui';
 import { LASER_EQUIPMENT, LASER_CATEGORIES } from '@/lib/constants';
 
 // TypeScript interfaces for translation data
@@ -337,6 +337,8 @@ export default function LaserCenterDetail() {
 
   return (
     <main className="min-h-screen bg-[var(--color-background)]">
+      <Breadcrumb items={[{ navKey: 'laser' }]} />
+
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 bg-gradient-to-b from-white to-[var(--color-background)]">
         <div className="container mx-auto px-4">

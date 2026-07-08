@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, useReducedMotion, useInView, AnimatePresence, useMotionValue, useTransform, useSpring } from 'framer-motion';
-import { AnimateOnScroll, Button, ScrollLink } from '@/components/ui';
+import { AnimateOnScroll, Button, ScrollLink, Breadcrumb } from '@/components/ui';
 import { useScrollToSection } from '@/hooks';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
@@ -898,6 +898,8 @@ export default function SignatureDetail() {
 
   return (
     <>
+      <Breadcrumb items={[{ navKey: 'signature' }]} />
+
       {/* Hero Section - Immersive Background */}
       <section className="relative pt-32 pb-20 bg-gradient-to-b from-secondary/5 via-background to-background overflow-hidden">
         {/* Animated background elements */}

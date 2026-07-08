@@ -10,7 +10,11 @@ const quickConsultSchema = z.object({
     .max(50, '성함은 50자 이하로 입력해주세요'),
   phone: z
     .string()
-    .regex(/^01[0-9]-?\d{3,4}-?\d{4}$/, '올바른 휴대폰 번호를 입력해주세요'),
+    .trim()
+    // 국내·해외 번호 모두 허용: 선택적 '+' 뒤 7~20자(숫자/공백/하이픈/괄호/점)
+    .regex(/^\+?[\d\s().-]{7,20}$/, '올바른 연락처를 입력해주세요')
+    // 실제 숫자 최소 7개 sanity check
+    .refine((val) => (val.match(/\d/g)?.length ?? 0) >= 7, '올바른 연락처를 입력해주세요'),
   agreePrivacy: z
     .boolean()
     .refine((val) => val === true, {
@@ -50,8 +54,8 @@ export async function POST(request: NextRequest) {
 
     const { name, phone, agreePrivacy, source } = validationResult.data;
 
-    // 전화번호에서 하이픈 제거
-    const cleanPhone = phone.replace(/-/g, '');
+    // 저장 정규화: 공백·하이픈·괄호·점 제거 (국내번호는 기존과 동일한 숫자열, 해외번호는 '+' 보존)
+    const cleanPhone = phone.trim().replace(/[\s().-]/g, '');
 
     // consultation_requests 테이블에 통합 저장 (admin client로 RLS 우회)
     const admin = createAdminClient();

@@ -83,6 +83,54 @@ export type Database = {
         }
         Relationships: []
       }
+      reviews: {
+        Row: {
+          author_name: string
+          content: string
+          country: string | null
+          created_at: string
+          id: string
+          is_published: boolean
+          is_verified: boolean
+          locale: string
+          rating: number
+          source: string
+          treatment_category: string
+          updated_at: string
+          video_url: string | null
+        }
+        Insert: {
+          author_name: string
+          content: string
+          country?: string | null
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          is_verified?: boolean
+          locale: string
+          rating: number
+          source?: string
+          treatment_category: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Update: {
+          author_name?: string
+          content?: string
+          country?: string | null
+          created_at?: string
+          id?: string
+          is_published?: boolean
+          is_verified?: boolean
+          locale?: string
+          rating?: number
+          source?: string
+          treatment_category?: string
+          updated_at?: string
+          video_url?: string | null
+        }
+        Relationships: []
+      }
       chat_messages: {
         Row: {
           created_at: string

@@ -24,7 +24,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { name, password, phone, treatment, agreePrivacy } = validationResult.data;
+    const { name, password, phone, treatment, agreePrivacy, email, country, preferredDate, preferredTime } =
+      validationResult.data;
 
     // 개인정보 동의 확인
     if (!agreePrivacy) {
@@ -51,6 +52,12 @@ export async function POST(request: NextRequest) {
         source: 'consultation-form',
         // 고객 본인 조회용 비밀번호 — 해시로만 저장(평문 저장 안 함)
         password: password ? hashInquiryPassword(password) : null,
+        // 희망 상담 일시 — 기존 컬럼에 매핑
+        preferred_date: preferredDate || null,
+        preferred_time: preferredTime || null,
+        // 이메일·국가는 전용 컬럼이 없어 message 텍스트로 접어 보관
+        message:
+          [email && `Email: ${email}`, country && `Country: ${country}`].filter(Boolean).join(' / ') || null,
       })
       .select('id, created_at')
       .single();

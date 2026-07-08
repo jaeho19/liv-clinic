@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { createChatAdminClient } from '@/lib/chat/db';
-import type { ChatMessage } from '@/lib/chat/chatApi';
+import type { ChatMessage, VisitorLocale } from '@/lib/chat/chatApi';
 import ChatDetailClient from './ChatDetailClient';
 
 export const dynamic = 'force-dynamic';
@@ -36,7 +36,7 @@ export default async function AdminChatDetailPage({
     <ChatDetailClient
       session={{
         id: session.id,
-        visitor_locale: session.visitor_locale as 'en' | 'ja' | 'zh',
+        visitor_locale: session.visitor_locale as VisitorLocale,
         visitor_name: session.visitor_name,
         visitor_email: session.visitor_email,
         status: session.status as 'open' | 'closed' | 'abandoned',

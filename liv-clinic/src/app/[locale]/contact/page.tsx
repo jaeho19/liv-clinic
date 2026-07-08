@@ -1,14 +1,16 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll, Button, Card, NaverMap } from '@/components/ui';
 import { FAQ } from '@/components/sections';
+import { Link } from '@/i18n/routing';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
+import { primaryMessengerFor, buildWhatsAppLink } from '@/lib/messengerLinks';
 import { trackFormSubmit, trackContact } from '@/lib/analytics-events';
 
 export default function ContactPage() {
@@ -16,6 +18,17 @@ export default function ContactPage() {
   const tContact = useTranslations('contact');
   const tFooter = useTranslations('footer');
   const tNav = useTranslations('nav');
+  const tLang = useTranslations('langSupport');
+  const tExtra = useTranslations('formExtras');
+  const locale = useLocale();
+
+  // 해외 로케일용 1순위 메신저 카드 메타(카카오 카드 대체)
+  const messenger = primaryMessengerFor(locale); // 'line' | 'wechat' | 'whatsapp'
+  const messengerCard = {
+    line: { title: 'LINE', desc: tExtra('lineDesc'), href: SOCIAL_LINKS.line },
+    wechat: { title: 'WeChat', desc: tExtra('wechatDesc'), href: SOCIAL_LINKS.wechat },
+    whatsapp: { title: 'WhatsApp', desc: tExtra('whatsappDesc'), href: buildWhatsAppLink() },
+  }[messenger];
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -148,20 +161,37 @@ export default function ContactPage() {
               </a>
             </AnimateOnScroll>
 
-            <AnimateOnScroll>
-              <a href={SOCIAL_LINKS.kakao} onClick={() => trackContact('kakao', '/contact')} target="_blank" rel="noopener noreferrer" className="block">
-                <Card padding="lg" className="text-center hover:border-primary transition-colors cursor-pointer h-full">
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#FEE500] flex items-center justify-center">
-                    <svg className="w-7 h-7 text-[#3C1E1E]" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.652 1.783 4.985 4.47 6.347-.145.53-.529 1.925-.606 2.226-.095.373.137.368.287.268.118-.079 1.878-1.238 2.645-1.745.387.055.783.084 1.204.084 5.523 0 10-3.463 10-7.691C20 6.463 17.523 3 12 3z" />
-                    </svg>
-                  </div>
-                  <h2 className="text-h4 text-secondary mb-2">{tContact('kakao')}</h2>
-                  <p className="text-body text-mono">{tContact('kakaoDesc')}</p>
-                  <p className="text-small text-mono-light mt-2">{tContact('always')}</p>
-                </Card>
-              </a>
-            </AnimateOnScroll>
+            {locale === 'ko' ? (
+              <AnimateOnScroll>
+                <a href={SOCIAL_LINKS.kakao} onClick={() => trackContact('kakao', '/contact')} target="_blank" rel="noopener noreferrer" className="block">
+                  <Card padding="lg" className="text-center hover:border-primary transition-colors cursor-pointer h-full">
+                    <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-[#FEE500] flex items-center justify-center">
+                      <svg className="w-7 h-7 text-[#3C1E1E]" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 3C6.477 3 2 6.463 2 10.691c0 2.652 1.783 4.985 4.47 6.347-.145.53-.529 1.925-.606 2.226-.095.373.137.368.287.268.118-.079 1.878-1.238 2.645-1.745.387.055.783.084 1.204.084 5.523 0 10-3.463 10-7.691C20 6.463 17.523 3 12 3z" />
+                      </svg>
+                    </div>
+                    <h2 className="text-h4 text-secondary mb-2">{tContact('kakao')}</h2>
+                    <p className="text-body text-mono">{tContact('kakaoDesc')}</p>
+                    <p className="text-small text-mono-light mt-2">{tContact('always')}</p>
+                  </Card>
+                </a>
+              </AnimateOnScroll>
+            ) : (
+              <AnimateOnScroll>
+                <a href={messengerCard.href} onClick={() => trackContact(messenger, '/contact')} target="_blank" rel="noopener noreferrer" className="block">
+                  <Card padding="lg" className="text-center hover:border-primary transition-colors cursor-pointer h-full">
+                    <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
+                      <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 01-4-.8L3 20l1.3-3.9A7.9 7.9 0 013 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <h2 className="text-h4 text-secondary mb-2">{messengerCard.title}</h2>
+                    <p className="text-body text-mono">{messengerCard.desc}</p>
+                    <p className="text-small text-mono-light mt-2">{tContact('always')}</p>
+                  </Card>
+                </a>
+              </AnimateOnScroll>
+            )}
 
             <AnimateOnScroll>
               <Card padding="lg" className="text-center h-full">
@@ -187,6 +217,13 @@ export default function ContactPage() {
             {/* Form */}
             <AnimateOnScroll animation="fadeInLeft">
               <div>
+                {/* Multilingual support note - prominent above the form */}
+                <div className="mb-6 flex items-start gap-3 rounded-xl bg-primary/10 px-4 py-3">
+                  <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5} aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3M3.6 9h16.8M3.6 15h16.8" />
+                  </svg>
+                  <p className="text-small text-secondary font-medium leading-relaxed">{tLang('contactNote')}</p>
+                </div>
                 <h2 className="text-h2 text-secondary mb-8">{tContact('onlineReservation')}</h2>
 
                 {isSubmitted ? (
@@ -356,6 +393,14 @@ export default function ContactPage() {
                     >
                       {isSubmitting ? tContact('form.submitting') : tContact('form.submit')}
                     </Button>
+
+                    {/* 안심 문구 + 개인정보처리방침 링크 */}
+                    <p className="text-small text-mono-light text-center">
+                      {tExtra('reassurance')}{' '}
+                      <Link href="/privacy" className="underline hover:text-primary transition-colors">
+                        {tExtra('privacyPolicy')}
+                      </Link>
+                    </p>
                   </form>
                 )}
               </div>

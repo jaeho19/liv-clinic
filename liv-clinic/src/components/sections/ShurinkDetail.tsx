@@ -5,9 +5,9 @@ import { useRef, useCallback, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
+import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
-import { getLocalizedTreatment } from '@/lib/treatmentsI18n';
+import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 
 // 슈링크 HIFU 에너지 전달 일러스트
 const HIFURapidFireIllustration = () => {
@@ -483,6 +483,8 @@ export default function ShurinkDetail() {
 
   return (
     <>
+      <Breadcrumb items={[{ navKey: 'lifting', href: '/lifting' }, { navKey: 'shurink' }]} />
+
       {/* Hero Section - Premium Full Screen (써마지/덴서티와 동일한 스타일) */}
       <section className="relative min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         {/* Background gradient - 슈링크 색상 유지 */}
@@ -1201,6 +1203,47 @@ export default function ShurinkDetail() {
           </motion.div>
         </div>
       </section>
+
+      {/* Related Treatments */}
+      {treatment.relatedTreatments && treatment.relatedTreatments.length > 0 && (
+        <section className="section-gap-sm bg-white pb-24 md:pb-32">
+          <div className="container-custom">
+            <AnimateOnScroll>
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className="text-h1 text-secondary">{tCommon('relatedTreatments')}</h2>
+              </div>
+            </AnimateOnScroll>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+              {treatment.relatedTreatments.slice(0, 3).map((relatedId) => {
+                const related =
+                  TREATMENTS.lifting[relatedId as keyof typeof TREATMENTS.lifting] ||
+                  TREATMENTS.antiaging[relatedId as keyof typeof TREATMENTS.antiaging] ||
+                  TREATMENTS.laser[relatedId as keyof typeof TREATMENTS.laser];
+                if (!related) return null;
+                const l10n = getRelatedTreatmentLabel(relatedId, locale);
+                return (
+                  <AnimateOnScroll key={relatedId}>
+                    <Link href={`/${related.category}/${related.id}`}>
+                      <Card padding="lg" className="group cursor-pointer h-full">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="font-serif text-primary mb-1">{related.nameEn}</p>
+                            <h3 className="text-h4 text-secondary group-hover:text-primary transition-colors">{l10n?.name ?? related.name}</h3>
+                            <p className="text-small text-mono-light mt-2">{l10n?.desc ?? related.shortDesc}</p>
+                          </div>
+                          <svg className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </div>
+                      </Card>
+                    </Link>
+                  </AnimateOnScroll>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

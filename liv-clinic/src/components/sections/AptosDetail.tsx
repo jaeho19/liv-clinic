@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
+import { Breadcrumb } from '@/components/ui';
 
 // NAMICA 일러스트 Props 타입
 interface NamicaIllustrationProps {
@@ -197,6 +198,8 @@ export default function AptosDetail() {
 
   return (
     <div className="min-h-screen bg-white">
+      <Breadcrumb items={[{ navKey: 'lifting', href: '/lifting' }, { navKey: 'aptos' }]} />
+
       {/* Hero Section */}
       <section className="relative h-60-dvh min-h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">

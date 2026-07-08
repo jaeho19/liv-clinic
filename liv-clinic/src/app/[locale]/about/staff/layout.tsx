@@ -1,5 +1,6 @@
-import { generatePhysicianSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
-import { SITE_INFO } from '@/lib/constants';
+import { generatePhysicianSchema, BASE_URL } from '@/lib/seo';
+import { localizedWebPageSchema } from '@/lib/schemaI18n';
+import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
 // 의료진 데이터 (서버 컴포넌트에서 스키마 생성용)
 const doctorsSchemaData = {
@@ -102,28 +103,30 @@ const doctorsSchemaData = {
   },
 };
 
-export default function StaffLayout({
+export default async function StaffLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  // 의료진 스키마 생성
+  const { locale } = await params;
+
+  // 의료진 스키마 생성 (의료진 정보는 고유 데이터이므로 로케일 불변)
   const kimSchema = generatePhysicianSchema(doctorsSchemaData.kim);
   const cheonSchema = generatePhysicianSchema(doctorsSchemaData.cheon);
 
-  // 페이지 스키마 생성 (mainEntity로 의료진 연결 - Google Rich Results 요구사항)
-  const pageSchema = generateWebPageSchema({
+  // ProfilePage 스키마 (로케일별 title/description/breadcrumb, mainEntity로 의료진 연결)
+  const pageSchema = await localizedWebPageSchema({
+    locale,
+    metaKey: 'staff',
     path: '/about/staff',
-    title: '의료진 소개 | 리브성형외과',
-    description: '리브성형외과 김수영 대표원장. 성형외과 전문의, SCI 논문 4편, 울쎄라피 프라임·써마지 FLX 전문. 신사역 프리미엄 안티에이징 클리닉.',
-    locale: 'ko',
     type: 'ProfilePage',
     breadcrumbs: [
-      { name: '홈', url: '/' },
-      { name: '소개', url: '/about' },
-      { name: '의료진', url: '/about/staff' },
+      { home: true },
+      { navKey: 'about', url: '/about' },
+      { navKey: 'aboutStaff', url: '/about/staff' },
     ],
-    // ProfilePage mainEntity - 의료진 참조
     mainEntity: [
       { '@id': `${BASE_URL}/about/staff#dr-kim` },
       { '@id': `${BASE_URL}/about/staff#dr-cheon` },
@@ -137,7 +140,7 @@ export default function StaffLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(kimSchema) }}
       />
-      {/* Physician Schema - 천형준 원장 */}
+      {/* Physician Schema - 천신혜 원장 */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(cheonSchema) }}
@@ -155,20 +158,5 @@ export default function StaffLayout({
 // 메타데이터 생성
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return {
-    title: '의료진 소개 | 리브성형외과',
-    description: '리브성형외과 김수영 대표원장. 성형외과 전문의, SCI 논문 4편, 울쎄라피 프라임·써마지 FLX 전문. 15년 이상 경력의 숙련된 의료진이 1:1 맞춤 상담을 제공합니다.',
-    keywords: ['리브성형외과', '김수영 원장', '성형외과 전문의', '신사역 피부과', '울쎄라피 프라임', '써마지'],
-    openGraph: {
-      title: '의료진 소개 | 리브성형외과',
-      description: '성형외과 전문의, SCI 논문 4편. 울쎄라피 프라임·써마지 FLX 전문 의료진.',
-      url: `${BASE_URL}/${locale}/about/staff`,
-      siteName: SITE_INFO.name,
-      type: 'profile',
-    },
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/about/staff`,
-      languages: buildHreflangMap('/about/staff'),
-    },
-  };
+  return buildLocalizedMetadata(locale, 'staff', '/about/staff');
 }

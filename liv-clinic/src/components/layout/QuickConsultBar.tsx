@@ -2,23 +2,45 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
+import { trackFormSubmit, trackCTAClick } from '@/lib/analytics-events';
+import { openLivChat, CHAT_VISITOR_LOCALES } from '@/lib/chat/chatApi';
+import {
+  primaryMessengerFor,
+  buildWhatsAppLink,
+  LINE_LINK,
+} from '@/lib/messengerLinks';
 
-// 전화번호 포맷팅 함수
+// 전화번호 입력 포맷터
+// - 국내(010…) 번호: 자동 하이픈(3-4-4)
+// - 해외 번호(+ 또는 공백/괄호 포함): 허용 문자만 남기고 입력 형태 보존
 function formatPhoneNumber(value: string): string {
-  const numbers = value.replace(/[^\d]/g, '');
-  if (numbers.length <= 3) return numbers;
-  if (numbers.length <= 7) return `${numbers.slice(0, 3)}-${numbers.slice(3)}`;
-  return `${numbers.slice(0, 3)}-${numbers.slice(3, 7)}-${numbers.slice(7, 11)}`;
+  const cleaned = value.replace(/[^\d\s+()-]/g, '');
+  const digits = cleaned.replace(/\D/g, '');
+  const isDomestic =
+    !cleaned.includes('+') && /^[\d-]*$/.test(cleaned) && digits.startsWith('0') && digits.length <= 11;
+  if (!isDomestic) return cleaned;
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 7) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
+  return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7, 11)}`;
 }
 
-// 전화번호 유효성 검사 (서버 검증 정규식과 일치 — 클라이언트가 더 느슨하지 않도록)
+// 전화번호 유효성 검사 (서버 zod와 동일 규칙) — 국내/해외 모두 허용.
+// 선택적 '+' 뒤 7~20자(숫자/공백/하이픈/괄호), 실제 숫자 7개 이상.
 function isValidPhone(phone: string): boolean {
-  return /^01[0-9]-?\d{3,4}-?\d{4}$/.test(phone);
+  const trimmed = phone.trim();
+  if (!/^\+?[\d\s().-]{7,20}$/.test(trimmed)) return false;
+  return (trimmed.match(/\d/g)?.length ?? 0) >= 7;
 }
 
 export default function QuickConsultBar() {
   const t = useTranslations();
+  const tCta = useTranslations('stickyCta');
+  const tMsg = useTranslations('messengers');
+  const locale = useLocale();
+  const isKo = locale === 'ko';
+  // 라이브챗은 6개 방문자 로케일에서만 마운트됨(레이아웃 화이트리스트와 동일).
+  const chatEnabled = (CHAT_VISITOR_LOCALES as readonly string[]).includes(locale);
   const [isFormOpen, setIsFormOpen] = useState(false); // 모바일 바텀시트
   const [isMinimized, setIsMinimized] = useState(false); // 데스크톱 최소화
   const [name, setName] = useState('');
@@ -120,6 +142,9 @@ export default function QuickConsultBar() {
         throw new Error(data.message || t('contact.form.submitError'));
       }
 
+      // H7: 전환 추적 — 확정된 성공 응답에서만 lead 이벤트 발생
+      trackFormSubmit('quick_consult');
+
       setShowSuccess(true);
       setName('');
       setPhone('');
@@ -136,6 +161,34 @@ export default function QuickConsultBar() {
       setIsSubmitting(false);
     }
   };
+
+  // ── 비-ko 전환 바(H8): 로케일 1순위 메신저 + 채팅/콜백 ──────────
+  const messenger = primaryMessengerFor(locale);
+  const messengerHref =
+    messenger === 'line'
+      ? LINE_LINK
+      : messenger === 'wechat'
+      ? `/${locale}/wechat` // 데스크톱에서도 죽지 않도록 QR 페이지로(모바일 딥링크 대신)
+      : buildWhatsAppLink(tMsg('whatsappPrefill'));
+  const messengerLabel =
+    messenger === 'line' ? tCta('line') : messenger === 'wechat' ? tCta('wechat') : tCta('whatsapp');
+  const messengerBg =
+    messenger === 'line'
+      ? 'bg-[#00B900] hover:bg-[#00A000]'
+      : messenger === 'wechat'
+      ? 'bg-[#07C160] hover:bg-[#06AD56]'
+      : 'bg-[#25D366] hover:bg-[#1DA851]';
+  const messengerExternal = messenger === 'line' || messenger === 'whatsapp';
+
+  const handleOpenChat = () => {
+    trackCTAClick('quick_consult', 'chat');
+    openLivChat();
+  };
+  const handleOpenCallback = () => {
+    trackCTAClick('quick_consult', 'callback');
+    setIsFormOpen(true);
+  };
+  const handleMessengerClick = () => trackCTAClick('quick_consult', messenger);
 
   // 공통 성공 메시지 UI
   const successMessage = (
@@ -154,7 +207,8 @@ export default function QuickConsultBar() {
 
   return (
     <>
-      {/* ===== 모바일: 하단 CTA 버튼 바 (< md) ===== */}
+      {/* ===== 모바일: 하단 CTA 버튼 바 (< md) — ko 전용 ===== */}
+      {isKo && (
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 safe-area-pb">
         <AnimatePresence mode="wait">
           {showSuccess && !isFormOpen ? (
@@ -195,14 +249,106 @@ export default function QuickConsultBar() {
           ) : null}
         </AnimatePresence>
       </div>
+      )}
 
-      {/* ===== 모바일: 바텀시트 폼 (< md) ===== */}
+      {/* ===== 비-ko 전환 바 (H8): 채팅 · 메신저 · 콜백 ===== */}
+      {!isKo && (
+        <AnimatePresence mode="wait">
+          {showSuccess && !isFormOpen ? (
+            <motion.div
+              key="nonko-success"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-border px-4 py-3 safe-area-pb"
+            >
+              {successMessage}
+            </motion.div>
+          ) : isMinimized ? (
+            <motion.button
+              key="nonko-minimized"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
+              onClick={() => setIsMinimized(false)}
+              className={`fixed bottom-6 z-50 bg-primary text-white px-4 py-2.5 rounded-full shadow-lg hover:bg-primary/90 transition-colors flex items-center gap-2 text-sm font-medium min-h-[44px] ${
+                chatEnabled ? 'right-4 sm:right-6' : 'left-4 sm:left-6'
+              }`}
+              aria-label={t('contact.onlineReservation')}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+              </svg>
+              <span>{t('common.consultation')}</span>
+            </motion.button>
+          ) : (
+            <motion.div
+              key="nonko-expanded"
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 100 }}
+              className="fixed bottom-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-t border-border shadow-[0_-4px_20px_rgba(0,0,0,0.1)] safe-area-pb"
+            >
+              <div className="max-w-2xl mx-auto px-3 py-2.5 sm:py-3">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  {chatEnabled && (
+                    <button
+                      type="button"
+                      onClick={handleOpenChat}
+                      className="flex-1 min-h-[48px] bg-primary text-white rounded-lg font-medium text-sm sm:text-base hover:bg-primary/90 active:scale-[0.98] transition-all flex items-center justify-center gap-2"
+                    >
+                      <svg className="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                      <span className="truncate">{tCta('chat')}</span>
+                    </button>
+                  )}
+                  <a
+                    href={messengerHref}
+                    target={messengerExternal ? '_blank' : undefined}
+                    rel={messengerExternal ? 'noopener noreferrer' : undefined}
+                    onClick={handleMessengerClick}
+                    className={`min-h-[48px] px-3 sm:px-4 rounded-lg font-medium text-sm text-white ${messengerBg} active:scale-[0.98] transition-all flex items-center justify-center gap-2 ${
+                      chatEnabled ? '' : 'flex-1'
+                    }`}
+                    aria-label={messengerLabel}
+                  >
+                    <svg className="w-5 h-5 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 3C6.48 3 2 6.58 2 11c0 2.8 1.8 5.27 4.5 6.7-.2.74-.72 2.68-.82 3.1-.13.5.18.49.38.36.16-.1 2.52-1.71 3.54-2.4.78.12 1.58.18 2.4.18 5.52 0 10-3.58 10-8s-4.48-8-10-8z" />
+                    </svg>
+                    <span className={chatEnabled ? 'hidden sm:inline' : ''}>{messengerLabel}</span>
+                  </a>
+                  <button
+                    type="button"
+                    onClick={handleOpenCallback}
+                    className="min-h-[48px] px-3 sm:px-4 rounded-lg border border-border bg-white text-secondary font-medium text-sm hover:bg-gray-50 active:scale-[0.98] transition-all flex items-center justify-center whitespace-nowrap"
+                  >
+                    {tCta('callback')}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setIsMinimized(true)}
+                    className="p-2 text-mono-light hover:text-secondary transition-colors shrink-0"
+                    aria-label={t('common.close')}
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
+
+      {/* ===== 콜백 바텀시트 폼 (공유: ko=모바일 전용, 비-ko=전 사이즈) ===== */}
       <AnimatePresence>
         {isFormOpen && (
           <>
             {/* 백드롭 오버레이 */}
             <motion.div
-              className="md:hidden fixed inset-0 z-[55] bg-black/40"
+              className={`${isKo ? 'md:hidden' : ''} fixed inset-0 z-[55] bg-black/40`}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -212,7 +358,7 @@ export default function QuickConsultBar() {
             {/* 바텀시트 */}
             <motion.div
               id="mobile-consult-sheet"
-              className="md:hidden fixed bottom-0 left-0 right-0 z-[60] bg-white rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] safe-area-pb"
+              className={`${isKo ? 'md:hidden' : ''} fixed bottom-0 left-0 right-0 z-[60] bg-white rounded-t-2xl shadow-[0_-8px_30px_rgba(0,0,0,0.12)] safe-area-pb`}
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
@@ -383,7 +529,8 @@ export default function QuickConsultBar() {
         )}
       </AnimatePresence>
 
-      {/* ===== 데스크톱: 인라인 폼 바 (>= md) ===== */}
+      {/* ===== 데스크톱: 인라인 폼 바 (>= md) — ko 전용 ===== */}
+      {isKo && (
       <AnimatePresence>
         {isMinimized ? (
           <motion.button
@@ -559,6 +706,7 @@ export default function QuickConsultBar() {
           </motion.div>
         )}
       </AnimatePresence>
+      )}
     </>
   );
 }

@@ -1,12 +1,22 @@
 import { MetadataRoute } from 'next';
 import { LOCALES } from '@/i18n/routing';
+import { LOCALE_META } from '@/i18n/locales-meta';
 import { TREATMENTS } from '@/lib/constants';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://livps.co.kr';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://liv-clinic.net';
 
-/** Build per-locale alternate URL map for a path — derived from LOCALES SSOT */
+/**
+ * Build per-locale alternate URL map for a path.
+ * Keys use BCP-47 hreflang values from LOCALE_META so sitemap alternates match
+ * the page-level metadata tags (seo.ts buildHreflangMap); adds x-default → /en.
+ */
 function buildLanguagesMap(path: string): Record<string, string> {
-  return Object.fromEntries(LOCALES.map((code) => [code, `${BASE_URL}/${code}${path}`]));
+  return {
+    ...Object.fromEntries(
+      LOCALES.map((code) => [LOCALE_META[code].hreflang, `${BASE_URL}/${code}${path}`]),
+    ),
+    'x-default': `${BASE_URL}/en${path}`,
+  };
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -20,14 +30,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/about/equipment', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/about/location', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/contact', priority: 0.9, changeFrequency: 'weekly' as const },
+    { path: '/international', priority: 0.9, changeFrequency: 'monthly' as const },
+    { path: '/lifting', priority: 0.8, changeFrequency: 'monthly' as const },
+    { path: '/antiaging', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/laser', priority: 0.8, changeFrequency: 'monthly' as const },
     { path: '/medical', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/signature', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/gallery', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/before-after', priority: 0.7, changeFrequency: 'monthly' as const },
+    { path: '/reviews', priority: 0.8, changeFrequency: 'weekly' as const },
     { path: '/media', priority: 0.6, changeFrequency: 'weekly' as const },
     { path: '/pricing', priority: 0.7, changeFrequency: 'monthly' as const },
     { path: '/events', priority: 0.7, changeFrequency: 'weekly' as const },
+    { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
   ];
 
   // Treatment pages

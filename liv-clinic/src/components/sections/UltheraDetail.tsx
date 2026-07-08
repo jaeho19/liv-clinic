@@ -17,6 +17,7 @@ import {
   CollapsibleSection,
   ExpandableList,
   PriceTable,
+  Breadcrumb,
 } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
@@ -548,6 +549,8 @@ export default function UltheraDetail() {
     <>
       {/* Sticky CTA Bar (Mobile Only) */}
       <StickyCtaBar phoneNumber="02-797-2773" />
+
+      <Breadcrumb items={[{ navKey: 'lifting', href: '/lifting' }, { navKey: 'ulthera' }]} />
 
       {/* Hero Section - Premium Full Screen with Video */}
       <section className="relative min-h-70-dvh md:min-h-screen-dvh flex items-center pt-20 overflow-hidden">

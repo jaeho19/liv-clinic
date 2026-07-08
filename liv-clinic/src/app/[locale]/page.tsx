@@ -10,6 +10,7 @@ const Signature = dynamic(() => import('@/components/sections/Signature'), { ssr
 const CoreValues = dynamic(() => import('@/components/sections/CoreValues'), { ssr: true });
 const Doctor = dynamic(() => import('@/components/sections/Doctor'), { ssr: true });
 const MediaNewsSection = dynamic(() => import('@/components/sections/MediaNewsSection'), { ssr: true });
+const ReviewsSection = dynamic(() => import('@/components/sections/ReviewsSection'), { ssr: true });
 // TODO: 인스타그램 연동 구현 후 다시 활성화
 // const InstagramFeed = dynamic(() => import('@/components/sections/InstagramFeed'), { ssr: true });
 
@@ -31,6 +32,7 @@ export default function HomePage() {
       <CoreValues />
       <Doctor />
       <MediaNewsSection />
+      <ReviewsSection />
       {/* TODO: 인스타그램 연동 구현 후 다시 활성화 */}
       {/* <InstagramFeed /> */}
       {/* TODO: 실제 전후 사진 확보 후 다시 활성화 */}

@@ -32,10 +32,20 @@ export const SOCIAL_LINKS = {
   instagram: 'https://www.instagram.com/livps_official/',
   naver: 'https://blog.naver.com/liv_clinic',
   youtube: 'https://www.youtube.com/@리브성형외과',
-  wechat: 'weixin://dl/chat?livps', // WeChat ID: livps
+  wechat: 'weixin://dl/chat?livps0414', // WeChat ID: livps0414 (QR 모달 WeChatInfo와 동일)
   line: 'https://line.me/R/ti/p/~icps7972773', // LINE ID: icps7972773 (앱 직접 실행)
-  whatsapp: 'https://wa.me/821068882773?text=%EC%95%88%EB%85%95%ED%95%98%EC%84%B8%EC%9A%94%2C%20%EB%A6%AC%EB%B8%8C%EC%84%B1%ED%98%95%EC%99%B8%EA%B3%BC%EC%9E%85%EB%8B%88%EB%8B%A4!', // +82 10-6888-2773
+  // 하이픈 없는 국제 형식의 순수 번호만 유지. wa.me 딥링크는 로케일별 prefill과 함께
+  // 렌더 시점에 buildWhatsAppLink()로 조립한다(외국인에게 한국어 인사말 노출 방지).
+  whatsapp: 'https://wa.me/821068882773', // +82 10-6888-2773
 } as const;
+
+// WhatsApp 비즈니스 번호(하이픈 없는 국제 형식) — wa.me 딥링크 조립용 기준값.
+export const WHATSAPP_NUMBER = '821068882773';
+
+// Google Business(구글 지도) 후기 페이지 URL — 홈 ReviewsSection의 외부 신뢰 링크.
+// cid 단축형: 로케일·세션 파라미터 없이 항상 리브성형외과 신사(LIV Clinic Sinsa)
+// 지도 상세(후기 포함)로 연결된다. 빈 문자열이면 링크는 렌더링되지 않는다.
+export const GOOGLE_BUSINESS_URL = 'https://maps.google.com/?cid=10425699337245289463';
 
 // 인증 정보
 export const CERTIFICATIONS = [
@@ -1097,6 +1107,118 @@ export const MEDICAL_QA = [
     answer: '전화(02-797-2773) 또는 카카오톡으로 상담 예약을 해주시면 됩니다. 방문 시 성형외과 전문의가 직접 피부 상태를 진단하고, 환자분의 고민과 원하시는 결과에 맞는 최적의 시술 플랜을 제안해 드립니다. 상담 후 충분히 고민하신 뒤 시술 여부를 결정하셔도 됩니다.',
     relatedTreatments: [],
     tags: ['첫방문', '예약', '상담절차'],
+  },
+  {
+    id: 'foreign-consultation-language',
+    category: 'general',
+    question: '영어·일본어·중국어 상담이 가능한가요?',
+    questionVariants: [
+      '영어 상담 되나요?',
+      '일본어 상담 가능해요?',
+      '중국어 통역 있어요?',
+    ],
+    shortAnswer: '네, 외국어 상담이 가능하며 통역은 무료로 준비해 드립니다.',
+    answer: '네, 영어·일본어·중국어 상담을 지원하며 통역은 무료로 준비해 드립니다. 왓츠앱(WhatsApp), 라인(LINE), 위챗(WeChat) 또는 홈페이지 실시간 채팅으로 편하게 예약하실 수 있습니다. 방문 상담 시에도 언어에 맞춰 안내해 드리니 걱정 없이 문의해 주세요.',
+    relatedTreatments: [],
+    tags: ['외국어 상담', '통역', '영어', '일본어', '중국어'],
+  },
+  {
+    id: 'foreign-booking-overseas',
+    category: 'general',
+    question: '해외에서 어떻게 예약하나요?',
+    questionVariants: [
+      '해외에서 예약하려면?',
+      '외국에서 어떻게 예약해요?',
+      '온라인으로 예약 가능해요?',
+    ],
+    shortAnswer: '실시간 채팅·왓츠앱·라인·위챗 또는 상담 폼으로 예약하며, 영업일 기준 1일 이내 답변드립니다.',
+    answer: '해외에서는 홈페이지 실시간 채팅, 왓츠앱(WhatsApp), 라인(LINE), 위챗(WeChat), 또는 상담 신청 폼으로 예약하실 수 있습니다. 문의는 영업일 기준 1일 이내에 답변드립니다. 상담 예약에는 예약금이 필요하지 않습니다.',
+    relatedTreatments: [],
+    tags: ['해외 예약', '온라인 예약', '왓츠앱', '라인', '위챗'],
+  },
+  {
+    id: 'foreign-pricing-same',
+    category: 'general',
+    question: '외국인 환자는 비용을 더 내나요?',
+    questionVariants: [
+      '외국인은 더 비싸요?',
+      '외국인 가격 달라요?',
+      '외국인도 같은 가격이에요?',
+    ],
+    shortAnswer: '아니요, 한국인 환자와 동일한 가격표가 적용됩니다.',
+    answer: '아니요. 외국인 환자도 한국인 환자와 동일한 가격표가 적용됩니다. 시술 가격은 가격 안내 페이지에 공개되어 있어 방문 전에 확인하실 수 있습니다. 추가 언어 상담이나 통역에 대한 별도 비용도 없습니다.',
+    relatedTreatments: [],
+    tags: ['외국인 가격', '동일 가격', '가격 안내'],
+  },
+  {
+    id: 'foreign-stay-duration',
+    category: 'general',
+    question: '시술을 위해 서울에 며칠 머물러야 하나요?',
+    questionVariants: [
+      '서울에 며칠 있어야 해요?',
+      '시술 며칠 걸려요?',
+      '입원해야 하나요?',
+    ],
+    shortAnswer: '대부분의 비수술 리프팅·안티에이징은 당일 시술로 끝나며 입원이 필요 없습니다.',
+    answer: '대부분의 비수술 리프팅·안티에이징 시술은 30~90분 내외로 당일에 끝나며 입원이 필요 없습니다. 울쎄라피 프라임과 써마지는 재방문 없이 1회로 마무리됩니다. 실리프팅은 필요 시 1주 후 경과 확인을 권장하지만 선택 사항입니다.',
+    relatedTreatments: ['ulthera', 'thermage'],
+    tags: ['체류 기간', '당일 시술', '입원 불필요'],
+  },
+  {
+    id: 'foreign-aftercare-remote',
+    category: 'general',
+    question: '귀국 후에도 사후 관리가 가능한가요?',
+    questionVariants: [
+      '귀국 후 관리 되나요?',
+      '돌아가서도 상담 가능해요?',
+      '해외에서 사후관리 어떻게 해요?',
+    ],
+    shortAnswer: '네, 사진과 함께 채팅·메신저로 사후 관리를 도와드립니다.',
+    answer: '네, 귀국 후에도 채팅이나 메신저로 사진을 보내주시면 경과를 확인하고 관리를 도와드립니다. 영어·일본어·중국어로 된 사후 관리 안내문도 제공해 드립니다. 궁금한 점이 있으면 언제든 편하게 문의해 주세요.',
+    relatedTreatments: [],
+    tags: ['사후 관리', '귀국 후 관리', '원격 상담'],
+  },
+  {
+    id: 'foreign-airport-access',
+    category: 'general',
+    question: '인천공항에서 병원까지 어떻게 오나요?',
+    questionVariants: [
+      '인천공항에서 얼마나 걸려요?',
+      '공항에서 오는 법',
+      '신사역까지 어떻게 가요?',
+    ],
+    shortAnswer: '공항철도·리무진버스로 3호선 신사역 4번 출구까지 오시면 도보 1분입니다.',
+    answer: '인천공항에서 공항철도나 리무진버스를 이용해 지하철 3호선 신사역으로 오시면 됩니다. 신사역 4번 출구에서 도보 1분 거리에 위치합니다. 대중교통은 약 70~90분, 택시는 약 60분 소요됩니다.',
+    relatedTreatments: [],
+    tags: ['인천공항', '오시는 길', '신사역', '교통'],
+  },
+  {
+    id: 'foreign-payment-methods',
+    category: 'general',
+    question: '외국인 환자는 어떤 결제 수단을 사용하나요?',
+    questionVariants: [
+      '외국 카드 되나요?',
+      '해외 카드 결제 가능해요?',
+      '현금 결제 되나요?',
+    ],
+    shortAnswer: '해외 카드(Visa·Master·Amex·UnionPay·JCB)와 원화 현금 결제가 가능합니다.',
+    answer: '외국인 환자는 Visa, Mastercard, American Express, UnionPay(은련), JCB 등 해외 발급 카드로 결제하실 수 있습니다. 원화(KRW) 현금 결제도 가능합니다. 결제 관련 문의는 상담 시 미리 말씀해 주시면 안내해 드립니다.',
+    relatedTreatments: [],
+    tags: ['결제 수단', '해외 카드', '현금'],
+  },
+  {
+    id: 'foreign-device-authentic',
+    category: 'general',
+    question: '사용하는 장비는 정품인가요?',
+    questionVariants: [
+      '장비 정품 맞아요?',
+      '정품 써마지예요?',
+      '울쎄라 정품인가요?',
+    ],
+    shortAnswer: '네, 울쎄라피 프라임 정품 인증과 써마지 FLX 파트너 병원으로 정품 인증 팁만 사용합니다.',
+    answer: '네, 리브성형외과는 울쎄라피 프라임 정품 인증 병원이자 써마지 FLX 파트너 병원입니다. 정품 인증 핸드피스(팁)만 사용하여 시술합니다. 정품 사용 여부는 시술 전에 직접 확인하실 수 있습니다.',
+    relatedTreatments: ['ulthera', 'thermage'],
+    tags: ['정품', '울쎄라피 프라임', '써마지 FLX', '정품 인증'],
   },
 ] as const;
 

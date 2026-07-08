@@ -4,7 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
+import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 
@@ -484,6 +484,8 @@ export default function DensityDetail() {
 
   return (
     <>
+      <Breadcrumb items={[{ navKey: 'lifting', href: '/lifting' }, { navKey: 'density' }]} />
+
       {/* Hero Section - Premium Full Screen with Gold Accent */}
       <section className="relative min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         {/* Background gradient */}

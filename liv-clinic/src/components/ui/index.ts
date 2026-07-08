@@ -13,6 +13,7 @@ export {
 } from './Skeleton';
 export { default as NaverMap } from './NaverMap';
 export { default as ScrollLink } from './ScrollLink';
+export { default as Breadcrumb } from './Breadcrumb';
 
 // Phase 5: UX 리디자인 공통 컴포넌트
 export { default as HorizontalScrollCards, ScrollCard } from './HorizontalScrollCards';

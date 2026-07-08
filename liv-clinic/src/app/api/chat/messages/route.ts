@@ -3,6 +3,7 @@ import { z } from 'zod';
 import { createChatAdminClient, type ChatAdminClient } from '@/lib/chat/db';
 import { createServerClient } from '@/lib/supabase-server';
 import { translate, type SupportedLang } from '@/lib/chat/translation';
+import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import { checkSessionMessageLimit } from '@/lib/chat/rateLimit';
 import { broadcastToSession } from '@/lib/chat/broadcast';
 
@@ -59,7 +60,7 @@ async function handleVisitorMessage(body: unknown) {
     );
   }
 
-  const visitorLocale = session.visitor_locale as 'en' | 'ja' | 'zh';
+  const visitorLocale = session.visitor_locale as VisitorLocale;
   return persistAndBroadcast(admin, {
     sessionId: session.id,
     sender: 'visitor',
@@ -97,7 +98,7 @@ async function handleOperatorMessage(body: unknown) {
     return NextResponse.json({ error: 'session_closed' }, { status: 409 });
   }
 
-  const visitorLocale = session.visitor_locale as 'en' | 'ja' | 'zh';
+  const visitorLocale = session.visitor_locale as VisitorLocale;
   return persistAndBroadcast(admin, {
     sessionId: session.id,
     sender: 'operator',

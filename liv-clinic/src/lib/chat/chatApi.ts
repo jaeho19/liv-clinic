@@ -2,6 +2,8 @@
 // 서버 라우트(/api/chat/*)와 1:1 매핑.
 
 export type VisitorLocale = 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar';
+// 클라이언트에서 라이브챗 활성 로케일을 판정하는 런타임 목록([locale]/layout.tsx 화이트리스트와 동일).
+export const CHAT_VISITOR_LOCALES = ['en', 'ja', 'zh', 'fr', 'mn', 'ar'] as const;
 export type MessageSender = 'visitor' | 'operator' | 'system';
 export type TranslationStatus = 'pending' | 'success' | 'failed' | 'skipped';
 
@@ -10,9 +12,9 @@ export interface ChatMessage {
   session_id: string;
   sender: MessageSender;
   original_text: string;
-  original_lang: 'ko' | 'en' | 'ja' | 'zh';
+  original_lang: 'ko' | VisitorLocale;
   translated_text: string | null;
-  translated_lang: 'ko' | 'en' | 'ja' | 'zh' | null;
+  translated_lang: 'ko' | VisitorLocale | null;
   translation_status: TranslationStatus;
   translation_error: string | null;
   created_at: string;
@@ -130,5 +132,15 @@ async function safeJson(res: Response): Promise<{ error?: string } | null> {
     return await res.json();
   } catch {
     return null;
+  }
+}
+
+// ChatWidget을 외부 컴포넌트(QuickConsultBar 등)에서 여는 경량 메커니즘.
+// ChatWidget이 window에서 이 이벤트를 구독한다 — 컨텍스트 프로바이더/의존성 없이 동작.
+export const OPEN_CHAT_EVENT = 'liv:open-chat';
+
+export function openLivChat(): void {
+  if (typeof window !== 'undefined') {
+    window.dispatchEvent(new CustomEvent(OPEN_CHAT_EVENT));
   }
 }

@@ -3,12 +3,12 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase-browser';
-import { sendOperatorMessage, closeSession, ChatApiError, type ChatMessage } from '@/lib/chat/chatApi';
+import { sendOperatorMessage, closeSession, ChatApiError, type ChatMessage, type VisitorLocale } from '@/lib/chat/chatApi';
 import { trackChatClose } from '@/lib/analytics-events';
 
 interface SessionMeta {
   id: string;
-  visitor_locale: 'en' | 'ja' | 'zh';
+  visitor_locale: VisitorLocale;
   visitor_name: string | null;
   visitor_email: string | null;
   status: 'open' | 'closed' | 'abandoned';
@@ -22,10 +22,13 @@ interface Props {
 
 const MAX_LEN = 1000;
 
-const LOCALE_LABEL: Record<'en' | 'ja' | 'zh', string> = {
+const LOCALE_LABEL: Record<VisitorLocale, string> = {
   en: '🇬🇧 English',
   ja: '🇯🇵 日本語',
   zh: '🇨🇳 中文',
+  fr: '🇫🇷 Français',
+  mn: '🇲🇳 Монгол',
+  ar: '🇸🇦 العربية',
 };
 
 function formatTime(iso: string): string {
@@ -154,7 +157,7 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
               <div className="text-base font-semibold text-[#6d4e42] flex flex-wrap items-baseline gap-x-2">
                 <span className="truncate max-w-[200px]">{session.visitor_name || '익명'}</span>
                 <span className="text-xs text-gray-400 whitespace-nowrap">
-                  {LOCALE_LABEL[session.visitor_locale]}
+                  {LOCALE_LABEL[session.visitor_locale] ?? `🌐 ${session.visitor_locale}`}
                 </span>
               </div>
               <div className="text-xs text-gray-500 mt-1 break-all">

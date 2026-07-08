@@ -1,12 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { MEDICAL_QA } from '@/lib/constants';
-import { PriceTable } from '@/components/ui';
+import { MEDICAL_QA, TREATMENTS } from '@/lib/constants';
+import { AnimateOnScroll, Card, PriceTable, Breadcrumb } from '@/components/ui';
+import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 
 // Premium color palette - Aqua Serenity
 const colors = {
@@ -289,6 +290,8 @@ const PremiumCourseTimeline = ({ courseData }: { courseData: CourseTimelineItem[
 export default function SkinboosterDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const treatment = getLocalizedTreatment(TREATMENTS.antiaging.skinbooster, 'skinbooster', locale);
   const faqRefs = useRef<Map<number, HTMLDetailsElement>>(new Map());
 
   // Load translation data using t.raw() for arrays
@@ -352,6 +355,8 @@ export default function SkinboosterDetail() {
 
   return (
     <main className="bg-white overflow-hidden">
+      <Breadcrumb items={[{ navKey: 'antiaging', href: '/antiaging' }, { navKey: 'skinbooster' }]} />
+
       {/* Hero Section - Premium */}
       <section className="relative min-h-screen-dvh flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -893,6 +898,47 @@ export default function SkinboosterDetail() {
           </motion.div>
         </div>
       </section>
+
+      {/* Related Treatments */}
+      {treatment.relatedTreatments && treatment.relatedTreatments.length > 0 && (
+        <section className="section-gap-sm bg-white pb-24 md:pb-32">
+          <div className="container-custom">
+            <AnimateOnScroll>
+              <div className="text-center mb-8 md:mb-12">
+                <h2 className="text-h1 text-secondary">{tCommon('relatedTreatments')}</h2>
+              </div>
+            </AnimateOnScroll>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8">
+              {treatment.relatedTreatments.slice(0, 3).map((relatedId) => {
+                const related =
+                  TREATMENTS.lifting[relatedId as keyof typeof TREATMENTS.lifting] ||
+                  TREATMENTS.antiaging[relatedId as keyof typeof TREATMENTS.antiaging] ||
+                  TREATMENTS.laser[relatedId as keyof typeof TREATMENTS.laser];
+                if (!related) return null;
+                const l10n = getRelatedTreatmentLabel(relatedId, locale);
+                return (
+                  <AnimateOnScroll key={relatedId}>
+                    <Link href={`/${related.category}/${related.id}`}>
+                      <Card padding="lg" className="group cursor-pointer h-full">
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="font-serif text-primary mb-1">{related.nameEn}</p>
+                            <h3 className="text-h4 text-secondary group-hover:text-primary transition-colors">{l10n?.name ?? related.name}</h3>
+                            <p className="text-small text-mono-light mt-2">{l10n?.desc ?? related.shortDesc}</p>
+                          </div>
+                          <svg className="w-6 h-6 text-primary group-hover:translate-x-2 transition-transform flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </div>
+                      </Card>
+                    </Link>
+                  </AnimateOnScroll>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      )}
     </main>
   );
 }

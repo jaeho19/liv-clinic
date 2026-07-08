@@ -4,15 +4,22 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { consultationFormSchema, type ConsultationFormData } from '@/types/consultation';
 import { AnimateOnScroll } from '@/components/ui';
+import { Link } from '@/i18n/routing';
+import { trackFormSubmit } from '@/lib/analytics-events';
 
 // 진료과목 옵션 키 (번역 파일의 treatmentOptions와 매핑)
 const TREATMENT_OPTION_KEYS = ['laser', 'filler', 'botox', 'skincare', 'lifting', 'antiaging', 'other'] as const;
 
+// 희망 상담 시간 슬롯
+const TIME_SLOTS = ['10:00', '11:00', '12:00', '14:00', '15:00', '16:00', '17:00', '18:00'] as const;
+
 export default function ConsultationForm() {
   const t = useTranslations('contact.form');
+  const tExtra = useTranslations('formExtras');
+  const locale = useLocale();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -30,16 +37,24 @@ export default function ConsultationForm() {
       password: '',
       phone: '',
       treatment: '',
+      email: '',
+      country: '',
+      preferredDate: '',
+      preferredTime: '',
       agreePrivacy: false,
     },
   });
 
-  // 전화번호 자동 하이픈 추가
+  // 전화번호 입력 포맷터 — 국내(010…)는 자동 하이픈, 해외 번호는 입력 형태 보존
   const formatPhoneNumber = (value: string) => {
-    const numbers = value.replace(/[^\d]/g, '');
-    if (numbers.length <= 3) return numbers;
-    if (numbers.length <= 7) return `${numbers.slice(0, 3)}-${numbers.slice(3)}`;
-    return `${numbers.slice(0, 3)}-${numbers.slice(3, 7)}-${numbers.slice(7, 11)}`;
+    const cleaned = value.replace(/[^\d\s+()-]/g, '');
+    const digits = cleaned.replace(/\D/g, '');
+    const isDomestic =
+      !cleaned.includes('+') && /^[\d-]*$/.test(cleaned) && digits.startsWith('0') && digits.length <= 11;
+    if (!isDomestic) return cleaned;
+    if (digits.length <= 3) return digits;
+    if (digits.length <= 7) return `${digits.slice(0, 3)}-${digits.slice(3)}`;
+    return `${digits.slice(0, 3)}-${digits.slice(3, 7)}-${digits.slice(7, 11)}`;
   };
 
   const onSubmit = async (data: ConsultationFormData) => {
@@ -61,6 +76,9 @@ export default function ConsultationForm() {
       if (!response.ok) {
         throw new Error(result.error || t('submitError'));
       }
+
+      // H7: 전환 추적 — 확정된 성공 응답에서만 lead 이벤트 발생
+      trackFormSubmit('treatment_consultation', data.treatment);
 
       setSubmitStatus('success');
       reset();
@@ -124,8 +142,8 @@ export default function ConsultationForm() {
                 <input
                   {...register('password')}
                   type="password"
-                  placeholder={t('password')}
-                  aria-label={t('password')}
+                  placeholder={tExtra('passwordOptional')}
+                  aria-label={tExtra('passwordOptional')}
                   className={`w-full px-4 py-3.5 rounded-xl border ${
                     errors.password
                       ? 'border-red-500 focus:ring-red-500'
@@ -145,7 +163,7 @@ export default function ConsultationForm() {
                   type="tel"
                   placeholder={t('phonePlaceholder')}
                   aria-label={t('phonePlaceholder')}
-                  maxLength={13}
+                  maxLength={22}
                   onChange={(e) => {
                     e.target.value = formatPhoneNumber(e.target.value);
                   }}
@@ -230,6 +248,77 @@ export default function ConsultationForm() {
               </div>
             </div>
 
+            {/* 선택 입력 — 이메일 · 국가(해외) · 희망 상담일시 (메인 CTA 행과 분리) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+              {/* 이메일 (선택) */}
+              <div>
+                <input
+                  {...register('email')}
+                  type="email"
+                  placeholder={t('emailPlaceholder')}
+                  aria-label={t('email')}
+                  className={`w-full px-4 py-3.5 rounded-xl border ${
+                    errors.email
+                      ? 'border-red-500 focus:ring-red-500'
+                      : 'border-border focus:ring-primary'
+                  } focus:outline-none focus:ring-2 transition-all bg-white text-mono placeholder:text-mono-light`}
+                  disabled={isSubmitting}
+                />
+                {errors.email && (
+                  <p className="text-xs text-red-500 mt-1.5 ml-1">{errors.email.message}</p>
+                )}
+              </div>
+
+              {/* 국가 (해외 로케일만 노출) */}
+              {locale !== 'ko' && (
+                <div>
+                  <input
+                    {...register('country')}
+                    type="text"
+                    placeholder={tExtra('countryPlaceholder')}
+                    aria-label={tExtra('country')}
+                    className="w-full px-4 py-3.5 rounded-xl border border-border focus:ring-primary focus:outline-none focus:ring-2 transition-all bg-white text-mono placeholder:text-mono-light"
+                    disabled={isSubmitting}
+                  />
+                </div>
+              )}
+
+              {/* 희망 상담일 (선택) */}
+              <div>
+                <input
+                  {...register('preferredDate')}
+                  type="date"
+                  aria-label={t('preferredDate')}
+                  className="w-full px-4 py-3.5 rounded-xl border border-border focus:ring-primary focus:outline-none focus:ring-2 transition-all bg-white text-mono placeholder:text-mono-light"
+                  disabled={isSubmitting}
+                />
+              </div>
+
+              {/* 희망 시간 (선택) */}
+              <div>
+                <select
+                  {...register('preferredTime')}
+                  aria-label={t('preferredTime')}
+                  className="w-full px-4 py-3.5 rounded-xl border border-border focus:ring-primary focus:outline-none focus:ring-2 transition-all bg-white text-mono appearance-none cursor-pointer"
+                  disabled={isSubmitting}
+                  style={{
+                    backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`,
+                    backgroundPosition: 'right 0.5rem center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '1.5em 1.5em',
+                    paddingRight: '2.5rem',
+                  }}
+                >
+                  <option value="">{t('timePlaceholder')}</option>
+                  {TIME_SLOTS.map((slot) => (
+                    <option key={slot} value={slot}>
+                      {slot}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+
             {/* 개인정보 동의 - 터치 영역 확대 */}
             <div className="flex items-start gap-3 max-w-3xl mx-auto">
               <div className="relative flex items-center justify-center w-6 h-6 mt-0.5">
@@ -250,6 +339,14 @@ export default function ConsultationForm() {
                 {errors.agreePrivacy.message}
               </p>
             )}
+
+            {/* 안심 문구 + 개인정보처리방침 링크 */}
+            <p className="text-xs text-mono-light text-center mt-4">
+              {tExtra('reassurance')}{' '}
+              <Link href="/privacy" className="underline hover:text-primary transition-colors">
+                {tExtra('privacyPolicy')}
+              </Link>
+            </p>
           </form>
         </AnimateOnScroll>
 

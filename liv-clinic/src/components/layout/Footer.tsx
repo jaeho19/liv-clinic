@@ -9,6 +9,8 @@ export default function Footer() {
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
   const tCommon = useTranslations('common');
+  const tIntl = useTranslations('international');
+  const tReviews = useTranslations('reviews');
 
   return (
     <footer className="bg-secondary text-white pb-24 sm:pb-20 md:pb-16">
@@ -122,6 +124,22 @@ export default function Footer() {
                   {tNav('contact')}
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/international"
+                  className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
+                >
+                  {tIntl('footerLabel')}
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/reviews"
+                  className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
+                >
+                  {tReviews('footerLabel')}
+                </Link>
+              </li>
             </ul>
 
             {/* Social Links */}
@@ -197,7 +215,10 @@ export default function Footer() {
               <Link href="/inquiry" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
                 {t('inquiry')}
               </Link>
-              {/* 개인정보처리방침/이용약관: 해당 페이지 제작 전까지 숨김 (404 방지) */}
+              <Link href="/privacy" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
+                {t('privacy')}
+              </Link>
+              {/* 이용약관(/terms): 해당 페이지 제작 전까지 숨김 (404 방지) */}
             </div>
           </div>
         </div>

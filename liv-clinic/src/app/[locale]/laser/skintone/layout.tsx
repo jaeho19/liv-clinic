@@ -1,11 +1,14 @@
-import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
-import { LASER_CATEGORIES, TREATMENTS, SITE_INFO } from '@/lib/constants';
+import { getTranslations } from 'next-intl/server';
+import { generateMedicalServiceSchema } from '@/lib/seo';
+import { localizedWebPageSchema } from '@/lib/schemaI18n';
+import { LASER_CATEGORIES, TREATMENTS } from '@/lib/constants';
+import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
 // 카테고리 데이터 가져오기
 const category = LASER_CATEGORIES.find(c => c.id === 'skintone')!;
 const featuredEquipment = TREATMENTS.laser[category.featuredEquipment as keyof typeof TREATMENTS.laser];
 
-// MedicalService 스키마용 데이터
+// MedicalService 스키마용 데이터 (이름/설명은 로케일별로 오버라이드)
 const serviceData = {
   id: category.id,
   category: 'laser',
@@ -26,22 +29,32 @@ const serviceData = {
   faqs: featuredEquipment?.faqs || [],
 };
 
-export default function SkintoneLayout({
+export default async function SkintoneLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  const serviceSchema = generateMedicalServiceSchema(serviceData);
-  const pageSchema = generateWebPageSchema({
+  const { locale } = await params;
+  const tT = await getTranslations({ locale, namespace: 'treatments' });
+  const tMeta = await getTranslations({ locale, namespace: 'metaSeo' });
+  const name = (tT.raw('laser') as Record<string, { name: string }>)[category.id].name;
+  const description = tMeta('laserSkintone.description');
+
+  const serviceSchema = generateMedicalServiceSchema(
+    { ...serviceData, name, description },
+    { reservationWord: tT('common.consultationCta') },
+  );
+  const pageSchema = await localizedWebPageSchema({
+    locale,
+    metaKey: 'laserSkintone',
     path: '/laser/skintone',
-    title: `${category.name} | ${SITE_INFO.name}`,
-    description: category.description,
-    locale: 'ko',
     type: 'MedicalWebPage',
     breadcrumbs: [
-      { name: '홈', url: '/' },
-      { name: '레이저', url: '/laser' },
-      { name: category.name, url: '/laser/skintone' },
+      { home: true },
+      { navKey: 'laser', url: '/laser' },
+      { name, url: '/laser/skintone' },
     ],
   });
 
@@ -62,20 +75,5 @@ export default function SkintoneLayout({
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return {
-    title: `${category.name} | ${SITE_INFO.name}`,
-    description: category.description,
-    keywords: [category.name, category.nameEn, '피부톤 개선', '레이저 토닝', '화이트닝', '울블랑', '신사역 피부과'],
-    openGraph: {
-      title: `${category.name} | ${SITE_INFO.name}`,
-      description: category.shortDesc,
-      url: `${BASE_URL}/${locale}/laser/skintone`,
-      siteName: SITE_INFO.name,
-      type: 'website',
-    },
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/laser/skintone`,
-      languages: buildHreflangMap('/laser/skintone'),
-    },
-  };
+  return buildLocalizedMetadata(locale, 'laserSkintone', '/laser/skintone');
 }

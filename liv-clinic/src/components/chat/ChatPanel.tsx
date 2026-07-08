@@ -10,6 +10,7 @@ import {
   trackChatMessage,
   trackChatTranslationFailure,
   trackChatClose,
+  trackPromoClick,
 } from '@/lib/analytics-events';
 import type { VisitorLocale } from '@/lib/chat/chatApi';
 import MessageBubble from './MessageBubble';
@@ -37,6 +38,9 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
   const scrollRef = useRef<HTMLDivElement>(null);
   // G-03: 패널 열린 시각 추적 — close 이벤트의 duration 산출용
   const openedAtRef = useRef<number | null>(null);
+  // M2: en/ja/zh 사전-세션 화면에 직접예약 프로모션 노출 + select_promotion 추적
+  const promoViewedRef = useRef(false);
+  const showPromo = locale === 'en' || locale === 'ja' || locale === 'zh';
   // 데스크톱(hover+fine pointer)에서만 Enter=전송. 모바일은 Enter=줄바꿈 + Send 버튼만 사용.
   const [isDesktop, setIsDesktop] = useState(false);
   useEffect(() => {
@@ -105,8 +109,23 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
     }
   }, [open, session, locale]);
 
+  // M2: 프로모션 노출 1회 추적 (사전-세션 화면이 실제로 보일 때)
+  useEffect(() => {
+    if (open && !session && showPromo && !promoViewedRef.current) {
+      promoViewedRef.current = true;
+      trackPromoClick('chat_direct_booking', 'view');
+    }
+  }, [open, session, showPromo]);
+
   const handleStart = async (e: FormEvent) => {
     e.preventDefault();
+    await start({ name: name.trim() || undefined, email: email.trim() || undefined });
+  };
+
+  // M2: 프로모션 CTA — 직접예약 초안 메시지를 미리 채운 뒤 세션 시작(방문자는 전송만 하면 됨).
+  const handlePromoStart = async () => {
+    trackPromoClick('chat_direct_booking', 'cta');
+    setText(t('promoDraft'));
     await start({ name: name.trim() || undefined, email: email.trim() || undefined });
   };
 
@@ -190,11 +209,19 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
       {!session ? (
         <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3">
           <p className="text-sm text-gray-600">{t('welcome')}</p>
-          {/* zh 직접예약 프로모션 — 라이브챗을 통한 직접 유입 유도 (에이전시 fee 절감) */}
-          {locale === 'zh' && (
+          {/* en/ja/zh 직접예약 프로모션 — 라이브챗을 통한 직접 유입 유도 (에이전시 fee 절감) */}
+          {showPromo && (
             <div className="rounded-lg border border-[#b4988d]/40 bg-[#b4988d]/10 px-3 py-2.5">
               <p className="text-[13px] font-semibold text-[#6d4e42]">🎁 {t('promoTitle')}</p>
               <p className="text-[11px] text-[#8a6f63] mt-0.5 leading-relaxed">{t('promoBody')}</p>
+              <button
+                type="button"
+                onClick={() => void handlePromoStart()}
+                disabled={starting}
+                className="mt-2 w-full bg-[#b4988d] text-white text-[12px] font-medium min-h-[44px] rounded-md hover:bg-[#a3877d] disabled:opacity-60 transition"
+              >
+                {t('promoCta')} →
+              </button>
             </div>
           )}
           <p className="text-[11px] text-gray-400 leading-relaxed">{t('businessHours')}</p>

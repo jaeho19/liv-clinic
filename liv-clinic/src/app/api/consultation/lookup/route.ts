@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'invalid_input' }, { status: 400 });
     }
 
-    const phone = parsed.data.phone.replace(/-/g, '');
+    const phone = parsed.data.phone.replace(/[\s().-]/g, '');
     const { password } = parsed.data;
 
     if (isRateLimited(phone, Date.now())) {

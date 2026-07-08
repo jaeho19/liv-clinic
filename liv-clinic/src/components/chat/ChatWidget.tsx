@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
 import { trackChatOpen } from '@/lib/analytics-events';
+import { OPEN_CHAT_EVENT } from '@/lib/chat/chatApi';
 import { useChatSession } from '@/hooks/useChatSession';
 import { useUnreadIndicator } from '@/hooks/useUnreadIndicator';
 import { createClient } from '@/lib/supabase-browser';
@@ -99,6 +100,25 @@ export default function ChatWidget({ locale }: Props) {
       clearTimeout(hideTimer);
     };
   }, [open]);
+
+  // 외부 컴포넌트(QuickConsultBar 등)에서 `liv:open-chat` 이벤트로 패널 열기.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const handler = () => {
+      setOpen((v) => {
+        if (!v) trackChatOpen(locale);
+        return true;
+      });
+      setShowTooltip(false);
+      try {
+        window.localStorage.setItem(TOOLTIP_STORAGE_KEY, '1');
+      } catch {
+        // ignore
+      }
+    };
+    window.addEventListener(OPEN_CHAT_EVENT, handler);
+    return () => window.removeEventListener(OPEN_CHAT_EVENT, handler);
+  }, [locale]);
 
   // 방어적 안전장치: ko가 prop으로 들어오면 렌더 차단 (모든 hook 호출 이후에 위치 — rules-of-hooks)
   if ((locale as string) === 'ko') return null;

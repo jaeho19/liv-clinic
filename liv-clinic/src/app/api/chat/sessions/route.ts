@@ -5,13 +5,13 @@ import { isBusinessHours } from '@/lib/chat/businessHours';
 import { checkIpSessionDailyLimit } from '@/lib/chat/rateLimit';
 import { extractIp, hashIp } from '@/lib/chat/ipHash';
 import { broadcastToSession } from '@/lib/chat/broadcast';
-import { getChatSystemMessage } from '@/lib/chat/serverI18n';
+import { getChatSystemMessage, VISITOR_LOCALES } from '@/lib/chat/serverI18n';
 import { createServerClient } from '@/lib/supabase-server';
 
 export const runtime = 'nodejs';
 
 const CreateSessionSchema = z.object({
-  visitorLocale: z.enum(['en', 'ja', 'zh']),
+  visitorLocale: z.enum(VISITOR_LOCALES),
   visitorName: z.string().trim().max(60).optional().or(z.literal('')),
   visitorEmail: z.string().trim().email().optional().or(z.literal('')),
 });

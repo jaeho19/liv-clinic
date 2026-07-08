@@ -5,7 +5,7 @@ import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { LASER_CATEGORIES } from '@/lib/constants';
-import { PriceTable } from '@/components/ui';
+import { PriceTable, Breadcrumb } from '@/components/ui';
 
 // Get category info (static data that doesn't need translation)
 const categoryStatic = LASER_CATEGORIES[1]; // vascular
@@ -251,6 +251,8 @@ export default function VascularDetail() {
 
   return (
     <main className="bg-white">
+      <Breadcrumb items={[{ navKey: 'laser', href: '/laser' }, { label: t('laser.vascular.name') }]} />
+
       {/* 히어로 섹션 */}
       <section className="relative min-h-70-dvh flex items-center justify-center overflow-hidden bg-gradient-to-b from-red-50 to-white">
         <div className="absolute inset-0 opacity-10">

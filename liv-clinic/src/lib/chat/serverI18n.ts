@@ -1,6 +1,8 @@
 import 'server-only';
 
-export type VisitorLocale = 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar';
+// 방문자 채팅 지원 로케일(SSOT) — 세션 생성 검증·번역·시스템 메시지가 모두 이 목록을 따른다.
+export const VISITOR_LOCALES = ['en', 'ja', 'zh', 'fr', 'mn', 'ar'] as const;
+export type VisitorLocale = (typeof VISITOR_LOCALES)[number];
 export type SystemMessageKey =
   | 'welcome'
   | 'delayedResponseNotice'

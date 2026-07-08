@@ -1,15 +1,21 @@
 import { useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
-import { AnimateOnScroll, Button, Card, ScrollLink } from '@/components/ui';
+import { AnimateOnScroll, Button, Card, ScrollLink, Breadcrumb } from '@/components/ui';
 import { TreatmentComparison } from '@/components/sections';
 import { routing } from '@/i18n/routing';
+import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
 // Treatment IDs for lifting category
 const liftingTreatmentIds = ['aptos', 'ulthera', 'thermage', 'density', 'inmode', 'shurink', 'thread'];
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  return buildLocalizedMetadata(locale, 'lifting', '/lifting');
 }
 
 export default function LiftingPage({
@@ -25,6 +31,8 @@ export default function LiftingPage({
 
   return (
     <>
+      <Breadcrumb items={[{ navKey: 'lifting' }]} />
+
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-gradient-to-b from-primary/10 to-background">
         <div className="container-custom">

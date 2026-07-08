@@ -4,13 +4,34 @@ import { LOCALES, type Locale } from '@/i18n/routing';
 import { LOCALE_META } from '@/i18n/locales-meta';
 
 // Base URL for the site
-export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://livps.co.kr';
+export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://liv-clinic.net';
 
-/** Build hreflang alternates map from LOCALE_META — keeps SEO in sync with routing.ts */
+// 다국어 병원명 매핑 (11 locale, i18n-glossary 합의) — LocalBusiness/AggregateRating 스키마 공용
+export const CLINIC_NAME_BY_LOCALE: Record<string, string> = {
+  ko: '리브성형외과',
+  en: 'LIV Plastic Surgery',
+  ja: 'リブ形成外科',
+  zh: 'LIV整形外科',
+  'zh-TW': 'LIV整形外科',
+  vi: 'Phẫu thuật Thẩm mỹ LIV',
+  th: 'ศัลยกรรมความงาม LIV',
+  ru: 'Пластическая хирургия LIV',
+  fr: 'LIV Chirurgie Esthétique',
+  mn: 'LIV Гоо Заслын Эмнэлэг',
+  ar: 'مستشفى ليف للتجميل',
+};
+
+/**
+ * Build hreflang alternates map from LOCALE_META — keeps SEO in sync with routing.ts.
+ * Adds x-default → /en so crawlers have an unambiguous fallback locale.
+ */
 export function buildHreflangMap(path: string): Record<string, string> {
-  return Object.fromEntries(
-    LOCALES.map((code) => [LOCALE_META[code].hreflang, `${BASE_URL}/${code}${path}`]),
-  );
+  return {
+    ...Object.fromEntries(
+      LOCALES.map((code) => [LOCALE_META[code].hreflang, `${BASE_URL}/${code}${path}`]),
+    ),
+    'x-default': `${BASE_URL}/en${path}`,
+  };
 }
 
 // Default SEO configuration
@@ -182,7 +203,7 @@ export function generatePageMetadata({
   const defaultImage = {
     url: `${BASE_URL}/images/og-image.jpg`,
     width: 1200,
-    height: 630,
+    height: 800, // matches the actual og-image.jpg pixel dimensions
     alt: defaultSEO.siteName,
   };
 
@@ -229,10 +250,10 @@ export function generatePageMetadata({
         'max-snippet': -1,
       },
     },
-    verification: {
-      google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION,
-      // naver: process.env.NEXT_PUBLIC_NAVER_VERIFICATION,
-    },
+    // Site verification lives in a single source of truth: the hardcoded
+    // <meta> tags in [locale]/layout.tsx head. NEXT_PUBLIC_GOOGLE_VERIFICATION
+    // is unset, so an env-based verification field here would only emit an
+    // empty duplicate — omitted to avoid the duplication.
   };
 }
 
@@ -242,20 +263,7 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
   const description = seoConfig[locale]?.description ?? seoConfig.ko.description;
 
   // 다국어 병원명 — 11개 locale 모두 매핑 (i18n-glossary 합의)
-  const NAMES: Record<string, string> = {
-    ko: '리브성형외과',
-    en: 'LIV Plastic Surgery',
-    ja: 'リブ形成外科',
-    zh: 'LIV整形外科',
-    'zh-TW': 'LIV整形外科',
-    vi: 'Phẫu thuật Thẩm mỹ LIV',
-    th: 'ศัลยกรรมความงาม LIV',
-    ru: 'Пластическая хирургия LIV',
-    fr: 'LIV Chirurgie Esthétique',
-    mn: 'LIV Гоо Заслын Эмнэлэг',
-    ar: 'مستشفى ليف للتجميل',
-  };
-  const name = NAMES[locale] ?? 'LIV Plastic Surgery';
+  const name = CLINIC_NAME_BY_LOCALE[locale] ?? 'LIV Plastic Surgery';
 
   return {
     '@context': 'https://schema.org',
@@ -782,13 +790,16 @@ interface VoiceOptimizedQA {
   tags: string[];
 }
 
-export function generateVoiceOptimizedFAQSchema(faqs: VoiceOptimizedQA[]) {
+export function generateVoiceOptimizedFAQSchema(
+  faqs: VoiceOptimizedQA[],
+  opts?: { name?: string; description?: string },
+) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
     '@id': `${BASE_URL}/medical#faq`,
-    name: '리브성형외과 의료정보 Q&A',
-    description: '울쎄라, 써마지, 보톡스, 필러 등 미용 시술에 대한 자주 묻는 질문과 답변',
+    name: opts?.name ?? '리브성형외과 의료정보 Q&A',
+    description: opts?.description ?? '울쎄라, 써마지, 보톡스, 필러 등 미용 시술에 대한 자주 묻는 질문과 답변',
     mainEntity: faqs.map(faq => ({
       '@type': 'Question',
       name: faq.question,
@@ -834,7 +845,11 @@ interface TreatmentData {
   faqs?: readonly { readonly q: string; readonly a: string }[];
 }
 
-export function generateMedicalServiceSchema(treatment: TreatmentData) {
+export function generateMedicalServiceSchema(
+  treatment: TreatmentData,
+  opts?: { reservationWord?: string },
+) {
+  const reservationWord = opts?.reservationWord ?? '상담 예약';
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalProcedure',
@@ -848,11 +863,11 @@ export function generateMedicalServiceSchema(treatment: TreatmentData) {
     followup: treatment.recovery || '시술 후 관리 안내',
     bodyLocation: treatment.targetAreas?.join(', ') || 'Face',
 
-    // 시술 소요시간
+    // 비용은 상담 후 결정 — MonetaryAmount.value에 비수치 문자열을 넣으면
+    // 스키마 위반이므로 통화만 명시하고 value는 생략한다.
     estimatedCost: {
       '@type': 'MonetaryAmount',
       currency: 'KRW',
-      value: '상담 후 결정',
     },
 
     // 제공 기관
@@ -875,7 +890,7 @@ export function generateMedicalServiceSchema(treatment: TreatmentData) {
       },
       result: {
         '@type': 'Reservation',
-        name: `${treatment.name} 상담 예약`,
+        name: `${treatment.name} ${reservationWord}`,
       },
     },
 
@@ -907,7 +922,11 @@ interface TreatmentProcess {
   process: { step: number; title: string; desc: string }[];
 }
 
-export function generateHowToSchema(treatment: TreatmentProcess) {
+export function generateHowToSchema(
+  treatment: TreatmentProcess,
+  opts?: { processWord?: string },
+) {
+  const processWord = opts?.processWord ?? '시술 과정';
   // duration에서 숫자만 추출 (예: "60-90분" -> "60")
   const durationMatch = treatment.duration.match(/\d+/);
   const durationMinutes = durationMatch ? durationMatch[0] : '60';
@@ -915,7 +934,7 @@ export function generateHowToSchema(treatment: TreatmentProcess) {
   return {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
-    name: `${treatment.name} 시술 과정`,
+    name: `${treatment.name} ${processWord}`,
     description: treatment.description,
     totalTime: `PT${durationMinutes}M`,
     step: treatment.process.map((step) => ({
@@ -978,4 +997,87 @@ export function generatePageSchemas(options: {
   }
 
   return schemas;
+}
+
+// ============================================
+// 환자 후기 집계 스키마 (AggregateRating + Review)
+// ============================================
+
+/** 집계 스키마에 필요한 최소 후기 필드 (온사이트·게시 후기만 전달할 것). */
+interface OnsiteReviewInput {
+  author_name: string;
+  rating: number;
+  content: string;
+  created_at: string;
+}
+
+/**
+ * MedicalBusiness AggregateRating 스키마 (온사이트·게시 후기 전용).
+ *
+ * 정책(하드): 온사이트·게시 후기가 3개 미만이면 `null`을 반환하여 별점 스키마를
+ * 아예 방출하지 않는다. `@id`는 generateLocalBusinessSchema와 동일한
+ * `${BASE_URL}/#organization`을 사용하여 동일 엔티티로 병합되게 한다.
+ *
+ * - ratingValue: 전달된 모든 온사이트·게시 후기 평균(소수 1자리)
+ * - reviewCount: 온사이트·게시 후기 총 개수
+ * - review: 가장 최근 3개 (reviewBody는 약 200자로 절삭)
+ */
+export function generateReviewsAggregateSchema(
+  onsitePublished: OnsiteReviewInput[],
+  locale: string,
+) {
+  if (onsitePublished.length < 3) return null;
+
+  const name = CLINIC_NAME_BY_LOCALE[locale] ?? SITE_INFO.name;
+
+  const count = onsitePublished.length;
+  // (user-submitted strings flow into this schema — serialize with safeJsonLd)
+  const average = onsitePublished.reduce((sum, review) => sum + review.rating, 0) / count;
+  const ratingValue = Math.round(average * 10) / 10;
+
+  const mostRecent = [...onsitePublished]
+    .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime())
+    .slice(0, 3);
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'MedicalBusiness',
+    '@id': `${BASE_URL}/#organization`,
+    name,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue,
+      reviewCount: count,
+      bestRating: 5,
+      worstRating: 1,
+    },
+    review: mostRecent.map((review) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: review.author_name,
+      },
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.rating,
+        bestRating: 5,
+        worstRating: 1,
+      },
+      reviewBody:
+        review.content.length > 200 ? `${review.content.slice(0, 200)}…` : review.content,
+      datePublished: review.created_at.slice(0, 10),
+    })),
+  };
+}
+
+/**
+ * Serialize a JSON-LD object for <script> injection.
+ * Escapes `<` (blocks `</script>` breakout from user-submitted strings)
+ * and U+2028/U+2029 (invalid in inline JS).
+ */
+export function safeJsonLd(schema: unknown): string {
+  return JSON.stringify(schema)
+    .replace(/</g, '\\u003c')
+    .replace(/\u2028/g, '\\u2028')
+    .replace(/\u2029/g, '\\u2029');
 }

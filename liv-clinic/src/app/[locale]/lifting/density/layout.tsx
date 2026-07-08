@@ -1,72 +1,31 @@
-import { generateMedicalServiceSchema, generateHowToSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
-import { TREATMENTS, SITE_INFO } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
+import { buildTreatmentLeafSchemas } from '@/lib/schemaI18n';
+import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
-// 시술 데이터 가져오기
-const treatment = TREATMENTS.lifting.density;
-
-// MedicalService 스키마용 데이터 변환
-const serviceData = {
-  id: treatment.id,
-  category: treatment.category,
-  name: treatment.name,
-  nameEn: treatment.nameEn,
-  description: treatment.description,
-  shortDesc: treatment.shortDesc,
-  duration: treatment.duration,
-  anesthesia: treatment.anesthesia,
-  recovery: treatment.recovery,
-  targetAreas: [...treatment.targetAreas],
-  benefits: [...treatment.benefits],
-  faqs: [...treatment.faqs],
-};
-
-// HowTo 스키마용 데이터 변환
-const processData = {
-  name: treatment.name,
-  nameEn: treatment.nameEn,
-  description: treatment.description,
-  duration: treatment.duration,
-  process: [...treatment.process],
-};
-
-export default function DensityLayout({
+export default async function DensityLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
-  // 스키마 생성
-  const serviceSchema = generateMedicalServiceSchema(serviceData);
-  const howToSchema = generateHowToSchema(processData);
-  const pageSchema = generateWebPageSchema({
-    path: '/lifting/density',
-    title: `${treatment.name} | ${SITE_INFO.name}`,
-    description: treatment.description,
-    locale: 'ko',
-    type: 'MedicalWebPage',
-    breadcrumbs: [
-      { name: '홈', url: '/' },
-      { name: '리프팅', url: '/lifting' },
-      { name: treatment.name, url: '/lifting/density' },
-    ],
+  const { locale } = await params;
+  const schemas = await buildTreatmentLeafSchemas({
+    locale,
+    base: TREATMENTS.lifting.density,
+    category: 'lifting',
+    howTo: true,
   });
 
   return (
     <>
-      {/* MedicalService Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
-      {/* HowTo Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-      />
-      {/* WebPage Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
-      />
+      {schemas.map((schema, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      ))}
       {children}
     </>
   );
@@ -75,20 +34,5 @@ export default function DensityLayout({
 // 메타데이터 생성
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return {
-    title: `${treatment.name} | ${SITE_INFO.name}`,
-    description: treatment.description,
-    keywords: [treatment.name, treatment.nameEn, '리프팅', 'RF 고주파', '덴서티', '비수술 리프팅', '신사역 피부과'],
-    openGraph: {
-      title: `${treatment.name} | ${SITE_INFO.name}`,
-      description: treatment.shortDesc,
-      url: `${BASE_URL}/${locale}/lifting/density`,
-      siteName: SITE_INFO.name,
-      type: 'website',
-    },
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/lifting/density`,
-      languages: buildHreflangMap('/lifting/density'),
-    },
-  };
+  return buildLocalizedMetadata(locale, 'density', '/lifting/density');
 }

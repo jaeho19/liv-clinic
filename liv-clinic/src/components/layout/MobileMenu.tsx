@@ -39,6 +39,7 @@ const languages = LOCALE_ORDER.map((code) => ({
 export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProps) {
   const t = useTranslations('common');
   const tNav = useTranslations('nav');
+  const tLang = useTranslations('langSupport');
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
   const locale = useLocale();
   const pathname = usePathname();
@@ -250,6 +251,16 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
 
             {/* Language Switcher */}
             <div className="px-5 py-4 border-t border-border">
+              {/* Multilingual support trust badge */}
+              <div
+                title={tLang('badgeAria')}
+                className="mb-3 flex items-center gap-2 rounded-lg bg-primary/5 px-3 py-2 text-xs font-medium text-primary"
+              >
+                <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5} aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0 0c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3M3.6 9h16.8M3.6 15h16.8" />
+                </svg>
+                <span>{tLang('badge')}</span>
+              </div>
               <p className="text-sm text-mono-light mb-3">{t('language')}</p>
               <div className="grid grid-cols-2 gap-2">
                 {languages.map((lang) => (

@@ -5,7 +5,7 @@ import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatment
 import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable } from '@/components/ui';
+import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
 import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
 
 // SVG Icons
@@ -541,6 +541,8 @@ export default function ThermageDetail() {
 
   return (
     <>
+      <Breadcrumb items={[{ navKey: 'lifting', href: '/lifting' }, { navKey: 'thermage' }]} />
+
       {/* Hero Section - Premium Full Screen with Gold Accent */}
       <section className="relative min-h-screen-dvh flex items-center pt-20 overflow-hidden">
         {/* Background gradient */}
