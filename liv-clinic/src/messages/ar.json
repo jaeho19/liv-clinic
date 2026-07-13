@@ -1022,6 +1022,7 @@
             "stats": {
               "clinicalStudies": "الدراسات السريرية",
               "globalProcedures": "الإجراءات العالمية",
+              "globalProceduresValue": "+1.75 مليون",
               "improvementRate": "معدل التحسن"
             },
             "deepSee": "الرؤية في الوقت الفعلي",
@@ -1071,6 +1072,7 @@
               "aestheticImprovement": "التحسن الجمالي",
               "satisfaction": "رضا المرضى",
               "duration": "مدة التأثير",
+              "durationValue": "1-2 سنة",
               "source": "المصدر: مراجعة منهجية وتحليل تلوي 2024 (PubMed)"
             }
           },
@@ -2449,6 +2451,7 @@
           "layerEpidermisBox": "طبقة البشرة",
           "layerDermisBox": "طبقة الأدمة",
           "layerDeepBox": "الطبقة العميقة",
+          "layerSmasBox": "طبقة SMAS",
           "fineWrinklesPores": "الخطوط الدقيقة والمسام",
           "collagenRegen": "تجديد الكولاجين",
           "liftingEffect": "تأثير الشدّ",
@@ -5958,9 +5961,9 @@
         "nameKo": "Ultherapy Prime",
         "description": "شدّ بالموجات فوق الصوتية معتمد من FDA – شدّ من الطبقات الأعمق",
         "features": [
-          "Energy delivery to SMAS layer",
-          "Natural lifting effect",
-          "Resume daily activities immediately"
+          "توصيل الطاقة إلى طبقة SMAS",
+          "تأثير شدّ طبيعي",
+          "العودة إلى النشاط اليومي بعد الجلسة مباشرة"
         ],
         "certification": "معتمد من FDA و KFDA"
       },
@@ -5969,9 +5972,9 @@
         "nameKo": "Thermage FLX",
         "description": "جوهر شدّ RF – شدّ من الداخل",
         "features": [
-          "AccuREP technology",
-          "Cooling system",
-          "Collagen regeneration"
+          "تقنية AccuREP",
+          "نظام التبريد",
+          "تجديد الكولاجين"
         ],
         "certification": "معتمد من FDA و KFDA"
       },
@@ -5980,9 +5983,9 @@
         "nameKo": "Density",
         "description": "شدّ دقيق بطاقة RF – شدّ كولاجين دقيق",
         "features": [
-          "RF lifting",
-          "Uniform energy distribution",
-          "Affordable price"
+          "شدّ بالترددات الراديوية (RF)",
+          "توزيع متجانس للطاقة",
+          "سعر معقول"
         ],
         "certification": "معتمد من KFDA"
       },
@@ -5991,9 +5994,9 @@
         "nameKo": "Shurink",
         "description": "رائد الشدّ اليومي – علاج مرونة بالموجات فوق الصوتية بأسعار معقولة",
         "features": [
-          "Painless or low pain",
-          "Quick treatment time",
-          "Economical pricing"
+          "بلا ألم أو بألم خفيف",
+          "مدة جلسة قصيرة",
+          "سعر اقتصادي"
         ],
         "certification": "معتمد من KFDA"
       },
@@ -6002,9 +6005,9 @@
         "nameKo": "InMode",
         "description": "تقليل الدهون + تحسين المرونة في جلسة واحدة",
         "features": [
-          "Simultaneous fat reduction and lifting",
-          "Targeted treatment",
-          "Minimal downtime"
+          "تقليل الدهون والشدّ في آن واحد",
+          "تركيز على مناطق موضعية",
+          "فترة توقف قصيرة"
         ],
         "certification": "معتمد من FDA و KFDA"
       },
@@ -6024,9 +6027,9 @@
         "nameKo": "Potenza",
         "description": "المسام وملمس البشرة والمرونة – معيار جديد في إعادة تشكيل البشرة",
         "features": [
-          "RF microneedling",
-          "Skin booster pumping tip",
-          "Pore reduction"
+          "إبر دقيقة RF",
+          "Skin Booster برأس ضخّ",
+          "تصغير المسام"
         ],
         "certification": "معتمد من FDA و KFDA"
       },
@@ -6035,9 +6038,9 @@
         "nameKo": "Clarity II",
         "description": "أسرع وأدق – ليزر ثنائي الطول الموجي",
         "features": [
-          "755nm/1064nm dual wavelength",
-          "Pigment/vascular treatment",
-          "Premium hair removal"
+          "طولان موجيان 755nm/1064nm",
+          "علاج التصبغات والأوعية",
+          "إزالة شعر بريميوم"
         ],
         "certification": "معتمد من FDA"
       },
@@ -6046,9 +6049,9 @@
         "nameKo": "Lucas",
         "description": "ساطع وصافٍ من الداخل – معيار جديد في علاج التصبغات",
         "features": [
-          "High-power Q-switch",
-          "Melasma/spot treatment",
-          "Tattoo removal"
+          "Q-switch عالي الطاقة",
+          "علاج الكلف والبقع",
+          "إزالة الوشم"
         ],
         "certification": "معتمد من KFDA"
       },
@@ -6057,9 +6060,9 @@
         "nameKo": "CO2 Laser",
         "description": "تجديد دقيق وإعادة بناء البشرة – تحسين الندبات العميقة والخطوط الدقيقة",
         "features": [
-          "Fractional technology",
-          "Scar/pore treatment",
-          "Skin regeneration promotion"
+          "تقنية فراكشنال",
+          "علاج الندبات والمسام",
+          "تحفيز تجديد البشرة"
         ],
         "certification": "معتمد من KFDA"
       },
@@ -6068,9 +6071,9 @@
         "nameKo": "Ulblanc",
         "description": "ليزر تبييض منخفض التهيج",
         "features": [
-          "Melanin targeting",
-          "Skin tone evening",
-          "Low-irritation treatment"
+          "استهداف الميلانين",
+          "توحيد لون البشرة",
+          "علاج منخفض التهيج"
         ],
         "certification": "معتمد من KFDA"
       },
@@ -6079,9 +6082,9 @@
         "nameKo": "Mark VU",
         "description": "جهاز تشخيص بشرة متطور بكاميرا بدقة 18 ميجابكسل فائقة الوضوح يحلل بدقة 12 حالة جلدية غير مرئية للعين المجردة.",
         "features": [
-          "18MP Resolution",
-          "4 Light Source Analysis",
-          "Skin Type Diagnosis"
+          "دقة 18 ميجابكسل",
+          "تحليل بأربعة مصادر ضوئية",
+          "تشخيص نوع البشرة"
         ],
         "certification": "دقة فائقة 18 ميجابكسل"
       }

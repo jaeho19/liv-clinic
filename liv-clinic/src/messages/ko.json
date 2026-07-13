@@ -1024,6 +1024,7 @@
             "stats": {
               "clinicalStudies": "임상 연구",
               "globalProcedures": "전세계 시술 건수",
+              "globalProceduresValue": "175만+",
               "improvementRate": "환자 개선율"
             },
             "deepSee": "실시간 시각화",
@@ -1073,6 +1074,7 @@
               "aestheticImprovement": "심미적 개선율",
               "satisfaction": "환자 만족도",
               "duration": "효과 지속 기간",
+              "durationValue": "1-2년",
               "source": "출처: 2024 체계적 문헌고찰 및 메타분석 (PubMed)"
             }
           },
@@ -2451,6 +2453,7 @@
           "layerEpidermisBox": "표피층",
           "layerDermisBox": "진피층",
           "layerDeepBox": "심부층",
+          "layerSmasBox": "SMAS층",
           "fineWrinklesPores": "잔주름, 모공",
           "collagenRegen": "콜라겐 재생",
           "liftingEffect": "리프팅 효과",

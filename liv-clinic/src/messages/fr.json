@@ -1022,6 +1022,7 @@
             "stats": {
               "clinicalStudies": "Études cliniques",
               "globalProcedures": "Procédures mondiales",
+              "globalProceduresValue": "1,75 M+",
               "improvementRate": "Taux d'amélioration"
             },
             "deepSee": "Visualisation en temps réel",
@@ -1071,6 +1072,7 @@
               "aestheticImprovement": "Amélioration esthétique",
               "satisfaction": "Satisfaction des patients",
               "duration": "Durée de l'effet",
+              "durationValue": "1-2 ans",
               "source": "Source : Revue systématique et méta-analyse 2024 (PubMed)"
             }
           },
@@ -2449,6 +2451,7 @@
           "layerEpidermisBox": "Couche épidermique",
           "layerDermisBox": "Couche dermique",
           "layerDeepBox": "Couche profonde",
+          "layerSmasBox": "Couche SMAS",
           "fineWrinklesPores": "Ridules, pores",
           "collagenRegen": "Régénération du collagène",
           "liftingEffect": "Effet liftant",
@@ -5958,9 +5961,9 @@
         "nameKo": "Ultherapy Prime",
         "description": "Lifting par ultrasons approuvé par la FDA – raffermissement depuis les couches les plus profondes",
         "features": [
-          "Energy delivery to SMAS layer",
-          "Natural lifting effect",
-          "Resume daily activities immediately"
+          "Diffusion de l'énergie jusqu'à la couche SMAS",
+          "Effet lifting naturel",
+          "Reprise des activités quotidiennes juste après la séance"
         ],
         "certification": "Approuvé FDA, KFDA"
       },
@@ -5969,9 +5972,9 @@
         "nameKo": "Thermage FLX",
         "description": "L'essence du lifting RF – tonification de l'intérieur",
         "features": [
-          "AccuREP technology",
-          "Cooling system",
-          "Collagen regeneration"
+          "Technologie AccuREP",
+          "Système de refroidissement",
+          "Régénération du collagène"
         ],
         "certification": "Approuvé FDA, KFDA"
       },
@@ -5980,9 +5983,9 @@
         "nameKo": "Density",
         "description": "Tonification précise par énergie RF – lifting collagène de précision",
         "features": [
-          "RF lifting",
-          "Uniform energy distribution",
-          "Affordable price"
+          "Lifting par radiofréquence (RF)",
+          "Distribution uniforme de l'énergie",
+          "Tarif raisonnable"
         ],
         "certification": "Approuvé KFDA"
       },
@@ -5991,9 +5994,9 @@
         "nameKo": "Shurink",
         "description": "Le leader du lifting au quotidien – traitement d'élasticité par ultrasons abordable",
         "features": [
-          "Painless or low pain",
-          "Quick treatment time",
-          "Economical pricing"
+          "Sans douleur ou peu douloureux",
+          "Durée de séance courte",
+          "Prix économique"
         ],
         "certification": "Approuvé KFDA"
       },
@@ -6002,9 +6005,9 @@
         "nameKo": "InMode",
         "description": "Réduction des graisses + amélioration de l'élasticité en une seule séance",
         "features": [
-          "Simultaneous fat reduction and lifting",
-          "Targeted treatment",
-          "Minimal downtime"
+          "Réduction des graisses et lifting simultanés",
+          "Ciblage des zones localisées",
+          "Temps d'arrêt réduit"
         ],
         "certification": "Approuvé FDA, KFDA"
       },
@@ -6024,9 +6027,9 @@
         "nameKo": "Potenza",
         "description": "Pores, texture de la peau, élasticité – une nouvelle norme dans le remodelage cutané",
         "features": [
-          "RF microneedling",
-          "Skin booster pumping tip",
-          "Pore reduction"
+          "Micro-aiguilles RF",
+          "Skin Booster à embout pompant",
+          "Réduction des pores"
         ],
         "certification": "Approuvé FDA, KFDA"
       },
@@ -6035,9 +6038,9 @@
         "nameKo": "Clarity II",
         "description": "Plus rapide, plus précis – laser à double longueur d'onde",
         "features": [
-          "755nm/1064nm dual wavelength",
-          "Pigment/vascular treatment",
-          "Premium hair removal"
+          "Double longueur d'onde 755nm/1064nm",
+          "Traitement pigmentaire et vasculaire",
+          "Épilation premium"
         ],
         "certification": "Approuvé FDA"
       },
@@ -6046,9 +6049,9 @@
         "nameKo": "Lucas",
         "description": "Lumineux et clair de l'intérieur – une nouvelle norme dans le traitement des pigments",
         "features": [
-          "High-power Q-switch",
-          "Melasma/spot treatment",
-          "Tattoo removal"
+          "Q-switch haute puissance",
+          "Traitement du mélasma et des taches",
+          "Détatouage"
         ],
         "certification": "Approuvé KFDA"
       },
@@ -6057,9 +6060,9 @@
         "nameKo": "CO2 Laser",
         "description": "Resurfaçage de précision et régénération de la peau – amélioration des cicatrices profondes et des ridules",
         "features": [
-          "Fractional technology",
-          "Scar/pore treatment",
-          "Skin regeneration promotion"
+          "Technologie fractionnée",
+          "Traitement des cicatrices et des pores",
+          "Stimulation de la régénération cutanée"
         ],
         "certification": "Approuvé KFDA"
       },
@@ -6068,9 +6071,9 @@
         "nameKo": "Ulblanc",
         "description": "Laser blanchissant à faible irritation",
         "features": [
-          "Melanin targeting",
-          "Skin tone evening",
-          "Low-irritation treatment"
+          "Ciblage de la mélanine",
+          "Uniformisation du teint",
+          "Traitement à faible irritation"
         ],
         "certification": "Approuvé KFDA"
       },
@@ -6079,9 +6082,9 @@
         "nameKo": "Mark VU",
         "description": "Appareil de diagnostic cutané avancé doté d'une caméra ultra-haute résolution de 18 mégapixels qui analyse précisément 12 conditions cutanées invisibles à l'œil nu.",
         "features": [
-          "18MP Resolution",
-          "4 Light Source Analysis",
-          "Skin Type Diagnosis"
+          "Résolution de 18 mégapixels",
+          "Analyse par 4 sources lumineuses",
+          "Diagnostic du type de peau"
         ],
         "certification": "Ultra haute résolution 18 MP"
       }

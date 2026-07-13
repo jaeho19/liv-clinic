@@ -5,8 +5,9 @@ import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
-import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
+import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 
 // SVG Icons
 const CheckIcon = () => (
@@ -322,7 +323,8 @@ export default function InModeDetail() {
   const [activeTab, setActiveTab] = useState<'forma' | 'morpheus' | 'facetite'>('morpheus');
   const faqRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
-  const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
+  const medicalQA = useLocalizedMedicalQA();
+  const relatedMedicalQA = medicalQA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'inmode')
   );
 

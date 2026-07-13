@@ -5,9 +5,10 @@ import { useRef, useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
-import { MEDICAL_QA, TREATMENTS } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
 import { AnimateOnScroll, Card, PriceTable, Breadcrumb } from '@/components/ui';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
+import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 
 // Premium color palette - Rose Gold theme
 const colors = {
@@ -804,7 +805,8 @@ export default function BotoxDetail() {
     description: t('antiaging.botox.description'),
   };
 
-  const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
+  const medicalQA = useLocalizedMedicalQA();
+  const relatedMedicalQA = medicalQA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'botox')
   );
 

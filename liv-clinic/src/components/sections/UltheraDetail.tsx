@@ -19,7 +19,8 @@ import {
   PriceTable,
   Breadcrumb,
 } from '@/components/ui';
-import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
+import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 
 // SVG Icons
 const CheckIcon = () => (
@@ -520,7 +521,8 @@ export default function UltheraDetail() {
   const [activeTransducer, setActiveTransducer] = useState<string | null>(null);
   const faqRefs = useRef<Map<number, HTMLDivElement>>(new Map());
 
-  const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
+  const medicalQA = useLocalizedMedicalQA();
+  const relatedMedicalQA = medicalQA.filter((qa) =>
     qa.relatedTreatments?.some((id) => id === 'ulthera')
   );
 
@@ -613,7 +615,7 @@ export default function UltheraDetail() {
                     <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.clinicalStudies')}</p>
                   </div>
                   <div>
-                    <p className="text-h2 text-primary font-serif">175만+</p>
+                    <p className="text-h2 text-primary font-serif">{t('lifting.ulthera.detail.hero.stats.globalProceduresValue')}</p>
                     <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.globalProcedures')}</p>
                   </div>
                   <div>
@@ -1067,7 +1069,7 @@ export default function UltheraDetail() {
                   <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.satisfaction')}</p>
                 </div>
                 <div>
-                  <p className="text-h1 font-serif">1-2년</p>
+                  <p className="text-h1 font-serif">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.durationValue')}</p>
                   <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.duration')}</p>
                 </div>
               </div>

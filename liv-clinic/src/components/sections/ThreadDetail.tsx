@@ -5,9 +5,10 @@ import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
-import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
 import { AnimateOnScroll, Card, PriceTable, Breadcrumb } from '@/components/ui';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
+import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 
 // SVG 일러스트레이션에서 사용할 타입
 interface SkinLayersLabels {
@@ -762,7 +763,8 @@ export default function ThreadDetail() {
   };
 
   // 관련 Q&A 필터링
-  const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
+  const medicalQA = useLocalizedMedicalQA();
+  const relatedMedicalQA = medicalQA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'thread')
   );
 

@@ -6,8 +6,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
-import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
+import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 
 // 슈링크 HIFU 에너지 전달 일러스트
 const HIFURapidFireIllustration = () => {
@@ -282,7 +283,7 @@ const CartridgeSystemIllustration = () => {
           animate={{ opacity: [0.3, 0.7, 0.3] }}
           transition={{ duration: 1.5, repeat: Infinity, delay: 0.6 }}
         />
-        <text x="295" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">SMAS층</text>
+        <text x="295" y="195" textAnchor="middle" fill="#333" fontSize="11" fontWeight="500">{tUi('layerSmasBox')}</text>
         <text x="295" y="210" textAnchor="middle" fill="#666" fontSize="10">{tUi('liftingEffect')}</text>
       </motion.g>
 
@@ -461,7 +462,8 @@ export default function ShurinkDetail() {
   }, [heroLabels.length]);
 
   // 관련 Q&A 필터링
-  const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
+  const medicalQA = useLocalizedMedicalQA();
+  const relatedMedicalQA = medicalQA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'shurink' || (id as string) === 'ulthera')
   );
 

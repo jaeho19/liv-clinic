@@ -1022,6 +1022,7 @@
             "stats": {
               "clinicalStudies": "Эмнэлзүйн судалгаа",
               "globalProcedures": "Дэлхийн эмчилгээ",
+              "globalProceduresValue": "1.75 сая+",
               "improvementRate": "Сайжралтын хувь"
             },
             "deepSee": "Бодит цагийн харагдац",
@@ -1071,6 +1072,7 @@
               "aestheticImprovement": "Гоо зүйн сайжралт",
               "satisfaction": "Үйлчлүүлэгчийн сэтгэл ханамж",
               "duration": "Үр нөлөөний хугацаа",
+              "durationValue": "1-2 жил",
               "source": "Эх сурвалж: 2024 системчилсэн тойм ба мета-анализ (PubMed)"
             }
           },
@@ -2449,6 +2451,7 @@
           "layerEpidermisBox": "Эпидермисийн давхарга",
           "layerDermisBox": "Дермисийн давхарга",
           "layerDeepBox": "Гүн давхарга",
+          "layerSmasBox": "SMAS давхарга",
           "fineWrinklesPores": "Нарийн үрчлээ, нүхнүүд",
           "collagenRegen": "Коллагены нөхөн төлжилт",
           "liftingEffect": "Лифтинг нөлөө",
@@ -5958,9 +5961,9 @@
         "nameKo": "Ultherapy Prime",
         "description": "FDA-ийн зөвшөөрсөн хэт авианы лифтинг – хамгийн гүн давхаргаас чангаруулна",
         "features": [
-          "Energy delivery to SMAS layer",
-          "Natural lifting effect",
-          "Resume daily activities immediately"
+          "SMAS давхарга хүртэл энерги дамжуулна",
+          "Байгалийн жам ёсны лифтингийн нөлөө",
+          "Эмчилгээний дараа шууд өдөр тутмын амьдралдаа орно"
         ],
         "certification": "FDA, KFDA баталгаажсан"
       },
@@ -5969,9 +5972,9 @@
         "nameKo": "Thermage FLX",
         "description": "RF лифтингийн мөн чанар – дотроос нь чангаруулна",
         "features": [
-          "AccuREP technology",
-          "Cooling system",
-          "Collagen regeneration"
+          "AccuREP технологи",
+          "Хөргөх систем",
+          "Коллагены сэргэлт"
         ],
         "certification": "FDA, KFDA баталгаажсан"
       },
@@ -5980,9 +5983,9 @@
         "nameKo": "Density",
         "description": "RF эрчим хүчээр нарийн чангаруулалт – нарийвчилсан коллаген лифтинг",
         "features": [
-          "RF lifting",
-          "Uniform energy distribution",
-          "Affordable price"
+          "Радио давтамжийн (RF) лифтинг",
+          "Жигд энергийн тархалт",
+          "Боломжийн үнэ"
         ],
         "certification": "KFDA баталгаажсан"
       },
@@ -5991,9 +5994,9 @@
         "nameKo": "Shurink",
         "description": "Өдөр тутмын лифтингийн тэргүүн – хүртээмжтэй хэт авианы уян хатан байдлын эмчилгээ",
         "features": [
-          "Painless or low pain",
-          "Quick treatment time",
-          "Economical pricing"
+          "Өвдөлтгүй буюу бага өвдөлттэй",
+          "Богино эмчилгээний хугацаа",
+          "Хэмнэлттэй үнэ"
         ],
         "certification": "KFDA баталгаажсан"
       },
@@ -6002,9 +6005,9 @@
         "nameKo": "InMode",
         "description": "Өөх тосны бууралт + уян хатан байдлын сайжруулалт нэг сесст",
         "features": [
-          "Simultaneous fat reduction and lifting",
-          "Targeted treatment",
-          "Minimal downtime"
+          "Өөх бууралт ба лифтинг зэрэг",
+          "Тодорхой хэсэгт төвлөрсөн эмчилгээ",
+          "Сэргэх хугацаа бага"
         ],
         "certification": "FDA, KFDA баталгаажсан"
       },
@@ -6024,9 +6027,9 @@
         "nameKo": "Potenza",
         "description": "Нүх сүв, арьсны бүтэц, уян хатан байдал – арьс засварлалын шинэ стандарт",
         "features": [
-          "RF microneedling",
-          "Skin booster pumping tip",
-          "Pore reduction"
+          "RF микро зүү",
+          "Пампинг үзүүртэй Skin Booster",
+          "Нүх сүв багасгах"
         ],
         "certification": "FDA, KFDA баталгаажсан"
       },
@@ -6035,9 +6038,9 @@
         "nameKo": "Clarity II",
         "description": "Илүү хурдан, илүү нарийн – давхар долгионы уртын лазер",
         "features": [
-          "755nm/1064nm dual wavelength",
-          "Pigment/vascular treatment",
-          "Premium hair removal"
+          "755nm/1064nm давхар долгионы урт",
+          "Пигмент/судасны эмчилгээ",
+          "Премиум үс арилгалт"
         ],
         "certification": "FDA баталгаажсан"
       },
@@ -6046,9 +6049,9 @@
         "nameKo": "Lucas",
         "description": "Дотроосоо гэрэлтэх тунгалаг – пигментийн эмчилгээний шинэ стандарт",
         "features": [
-          "High-power Q-switch",
-          "Melasma/spot treatment",
-          "Tattoo removal"
+          "Өндөр чадлын Q-switch",
+          "Мелазма/толбоны эмчилгээ",
+          "Шивээс арилгах"
         ],
         "certification": "KFDA баталгаажсан"
       },
@@ -6057,9 +6060,9 @@
         "nameKo": "CO2 Laser",
         "description": "Нарийн засвар ба арьсны сэргэлт – гүн сорви ба нарийн шугамын сайжруулалт",
         "features": [
-          "Fractional technology",
-          "Scar/pore treatment",
-          "Skin regeneration promotion"
+          "Фракционал технологи",
+          "Сорви/нүх сүвний эмчилгээ",
+          "Арьсны сэргэлтийг дэмжинэ"
         ],
         "certification": "KFDA баталгаажсан"
       },
@@ -6068,9 +6071,9 @@
         "nameKo": "Ulblanc",
         "description": "Бага цочроох цайруулагч лазер",
         "features": [
-          "Melanin targeting",
-          "Skin tone evening",
-          "Low-irritation treatment"
+          "Меланиныг онилох",
+          "Арьсны өнгийг жигдрүүлэх",
+          "Бага цочроох эмчилгээ"
         ],
         "certification": "KFDA баталгаажсан"
       },
@@ -6079,9 +6082,9 @@
         "nameKo": "Mark VU",
         "description": "18 мегапиксел өндөр нягтралтай камертай дэвшилтэт арьс оношлогооны төхөөрөмж бөгөөд нүдэнд харагдахгүй 12 төрлийн арьсны байдлыг нарийн шинжилнэ.",
         "features": [
-          "18MP Resolution",
-          "4 Light Source Analysis",
-          "Skin Type Diagnosis"
+          "18 мегапиксел нягтрал",
+          "4 төрлийн гэрлийн эх үүсвэрийн шинжилгээ",
+          "Арьсны төрлийн оношилгоо"
         ],
         "certification": "18MP өндөр нягтрал"
       }

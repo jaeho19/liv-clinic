@@ -5,8 +5,9 @@ import { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
-import { TREATMENTS, MEDICAL_QA } from '@/lib/constants';
+import { TREATMENTS } from '@/lib/constants';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
+import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 
 // TypeScript interfaces for translated data
 interface TimelineItem {
@@ -459,7 +460,8 @@ export default function DensityDetail() {
   const comparisonHeaders = t.raw('lifting.density.detail.comparison.headers') as ComparisonHeaders;
   const extendedFaqsData = t.raw('lifting.density.detail.extendedFaqs') as ExtendedFaq[];
 
-  const relatedMedicalQA = MEDICAL_QA.filter((qa) =>
+  const medicalQA = useLocalizedMedicalQA();
+  const relatedMedicalQA = medicalQA.filter((qa) =>
     qa.relatedTreatments?.some((id) => (id as string) === 'density')
   );
 
