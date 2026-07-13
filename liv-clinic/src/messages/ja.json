@@ -370,6 +370,7 @@
     "thermage": "サーマジFLX",
     "density": "デンシティ",
     "inmode": "インモード",
+    "onda": "オンダ",
     "shurink": "シュリンク",
     "thread": "スレッドリフト",
     "aptos": "アプトス バイオリフティング",
@@ -1485,6 +1486,210 @@
         },
         "ui": {
           "collagenShrinkRegen": "コラーゲン収縮 & 再生"
+        }
+      },
+      "onda": {
+        "name": "オンダ",
+        "fullName": "ONDA Coolwaves",
+        "tagline": "マイクロ波コンタリング",
+        "description": "2.45GHzのマイクロ波エネルギーが皮下脂肪層に選択的に作用し、脂肪減少と弾力改善を同時に導きます。",
+        "detail": {
+          "hero": {
+            "badge": "マイクロ波コンタリング",
+            "title": "オンダ",
+            "description": "2.45GHzのマイクロ波が皮下脂肪層に選択的に作用します。<br />脂肪減少と弾力改善を一度に。",
+            "deviceImageAlt": "オンダ（ONDA）マイクロ波機器",
+            "stats": {
+              "frequency": {
+                "value": "2.45GHz",
+                "label": "マイクロ波"
+              },
+              "anesthesia": {
+                "value": "麻酔なし",
+                "label": "麻酔なしで施術"
+              },
+              "downtime": {
+                "value": "なし",
+                "label": "ダウンタイム"
+              }
+            },
+            "floatingBadges": {
+              "cooling": {
+                "title": "接触冷却",
+                "subtitle": "約5°Cで表皮を保護"
+              },
+              "layers": {
+                "title": "真皮20%・脂肪80%",
+                "subtitle": "エネルギー配分"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "About ONDA",
+            "title": "オンダとは？",
+            "description": "オンダ（ONDA Coolwaves）はイタリア<strong>DEKA</strong>社の<strong>2.45GHzマイクロ波</strong>機器です。マイクロ波エネルギーが皮下脂肪層に選択的に吸収されて脂肪細胞の細胞膜を損傷させ、損傷した脂肪はマクロファージによって徐々に除去されます。同時に真皮層には熱刺激が伝わり、コラーゲン再生を導きます。"
+          },
+          "mechanism": {
+            "sectionLabel": "How It Works",
+            "title": "作用原理",
+            "subtitle": "エネルギーの約20%は真皮層に、約80%は皮下脂肪層に作用します",
+            "steps": [
+              {
+                "title": "マイクロ波の照射",
+                "desc": "2.45GHzのマイクロ波エネルギーが皮膚を通過して皮下脂肪層まで届きます。"
+              },
+              {
+                "title": "脂肪細胞膜の損傷",
+                "desc": "皮下脂肪層に選択的に吸収されたエネルギーが脂肪細胞の細胞膜を損傷させます。"
+              },
+              {
+                "title": "マクロファージによる除去",
+                "desc": "損傷した脂肪はマクロファージによって徐々に除去されます。"
+              },
+              {
+                "title": "コラーゲン再生",
+                "desc": "同時に真皮層に伝わった熱刺激がコラーゲン再生を導き、弾力改善に役立ちます。"
+              }
+            ],
+            "energySplit": {
+              "dermis": {
+                "label": "真皮層",
+                "value": "約20%",
+                "desc": "熱刺激 → コラーゲン再生"
+              },
+              "fat": {
+                "label": "皮下脂肪層",
+                "value": "約80%",
+                "desc": "脂肪細胞膜の損傷 → マクロファージによる除去"
+              }
+            },
+            "cooling": {
+              "title": "接触冷却",
+              "desc": "ハンドピースの接触冷却（約5°C）が表皮を保護しながら深い層を加熱します。"
+            }
+          },
+          "positioning": {
+            "sectionLabel": "Positioning",
+            "title": "どのような場合にオンダですか？",
+            "subtitle": "エネルギーの種類と主に作用する層がそれぞれ異なります",
+            "cards": {
+              "onda": {
+                "title": "たるみに皮下脂肪を伴う場合",
+                "desc": "弾力低下と局所的な脂肪が一緒にある場合にオンダを検討します。マイクロ波が皮下脂肪層と真皮層の両方に作用します。"
+              },
+              "hifuRf": {
+                "title": "脂肪がなく弾力低下のみの場合",
+                "desc": "皮下脂肪がなく弾力低下のみの場合はHIFU・RF系を検討します。どの施術が適しているかは診療相談で決定します。"
+              }
+            },
+            "comparison": {
+              "header": "比較項目",
+              "columns": {
+                "onda": "オンダ",
+                "hifu": "HIFU系",
+                "rf": "RF系"
+              },
+              "rows": {
+                "energy": {
+                  "feature": "エネルギーの種類",
+                  "onda": "マイクロ波（2.45GHz）",
+                  "hifu": "集束超音波",
+                  "rf": "高周波（RF）"
+                },
+                "layer": {
+                  "feature": "主に作用する層",
+                  "onda": "皮下脂肪層＋真皮層",
+                  "hifu": "筋膜層・真皮層",
+                  "rf": "真皮層"
+                },
+                "anesthesia": {
+                  "feature": "麻酔",
+                  "onda": "不要",
+                  "hifu": "施術により異なる",
+                  "rf": "施術により異なる"
+                }
+              },
+              "note": "上記の表はエネルギーの種類と作用する層の違いを整理したもので、施術間の優劣を意味するものではありません。どの施術が適しているかは肌の状態と目標に応じて診療相談で決定します。"
+            }
+          },
+          "durationByArea": {
+            "sectionLabel": "Treatment Time",
+            "title": "部位別の施術時間",
+            "items": [
+              {
+                "area": "顔（頬・フェイスライン）",
+                "time": "約15〜30分"
+              },
+              {
+                "area": "ボディ（1部位あたり）",
+                "time": "約10分"
+              }
+            ],
+            "note": "施術部位と部位数によって、総所要時間は変わります。"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIVだけのオンダ",
+            "cards": {
+              "specialist": {
+                "title": "専門医直接施術",
+                "desc": "皮膚科・形成外科専門医が相談から施術まで直接行います。"
+              },
+              "custom": {
+                "title": "部位別カスタム設計",
+                "desc": "顔とボディのどの部位をどの強度で施術するか、施術回数を何回にするかは、部位と肌の状態に応じて診療相談で決定します。"
+              },
+              "safety": {
+                "title": "施術前の安全確認",
+                "desc": "妊娠・授乳の有無、ペースメーカー・体内金属インプラントの有無、施術部位の炎症・感染の有無などを施術前の問診で確認します。"
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "施術情報",
+            "labels": {
+              "duration": "施術時間",
+              "anesthesia": "麻酔",
+              "recovery": "ダウンタイム",
+              "results": "効果の発現"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "よくある質問",
+            "moreInfo": "もっと医療情報が気になりますか？",
+            "viewMedicalQA": "医療情報Q&Aをもっと見る"
+          },
+          "extendedFaqs": [
+            {
+              "q": "ダウンタイムはありますか？",
+              "a": "オンダにダウンタイムはありません。施術直後に一時的な赤みや温感が生じることがありますが、通常は短時間で落ち着き、すぐに日常生活が可能です。"
+            },
+            {
+              "q": "何回受ければよいですか？",
+              "a": "施術回数は部位と肌の状態によって異なります。診療相談で決定します。"
+            },
+            {
+              "q": "顔とボディを一緒に受けられますか？",
+              "a": "はい。オンダは顔（頬・フェイスライン）や二重あごはもちろん、腹部、脇腹、太もも、腕などボディにも適用できます。部位によって施術時間が異なり、顔は約15〜30分、ボディは1部位あたり約10分ほどかかります。"
+            }
+          ],
+          "cta": {
+            "sectionLabel": "Ready for Contouring?",
+            "title": "オンダ相談予約",
+            "description": "専門医療陣との1:1カスタム相談を通じて<br />自分に合った施術部位と回数を確認してみてください。",
+            "bookConsultation": "無料相談予約",
+            "businessHours": "平日10:00-19:00",
+            "location": "新沙駅4番出口徒歩3分"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "一緒に見ると良い施術"
+          }
         }
       },
       "density": {
@@ -5304,6 +5509,14 @@
       "button": "無料相談申込"
     },
     "treatments": {
+      "aptos": {
+        "name": "アプトス糸リフト",
+        "nameEn": "APTOS",
+        "description": "特殊な医療用糸を使用し、自然なリフティングとボリューム改善を提供します。",
+        "duration": "30-60分",
+        "recovery": "3-7日",
+        "imageAlt": "APTOS糸リフト製品"
+      },
       "ulthera": {
         "name": "ウルセラプライム",
         "nameEn": "Ultherapy Prime",
@@ -5332,6 +5545,14 @@
         "duration": "30-90分",
         "recovery": "0-5日"
       },
+      "onda": {
+        "name": "オンダ",
+        "nameEn": "ONDA",
+        "description": "マイクロ波エネルギーで顔とボディの脂肪減少と弾力改善を同時に提供します。",
+        "duration": "30-60分",
+        "recovery": "ダウンタイムなし",
+        "imageAlt": "ONDA 顔・ボディリフティング機器"
+      },
       "shurink": {
         "name": "シュリンク",
         "nameEn": "Shurink",
@@ -5395,6 +5616,14 @@
           "recovery": "なし",
           "results": "1-2年",
           "price": "プレミアム"
+        },
+        "onda": {
+          "technology": "マイクロ波",
+          "duration": "30-60分",
+          "anesthesia": "麻酔なし",
+          "recovery": "なし",
+          "results": "6ヶ月-1年",
+          "price": "中間"
         },
         "density": {
           "technology": "RF",
@@ -5780,6 +6009,17 @@
         ],
         "certification": "FDA、KFDA承認"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameKo": "オンダ",
+        "description": "マイクロ波技術で顔とボディを同時にケア",
+        "features": [
+          "フェイスリフティング & ボディコントゥアリング",
+          "マイクロ波技術を適用",
+          "脂肪減少と弾力改善"
+        ],
+        "imageAlt": "ONDA マイクロ波リフティング機器"
+      },
       "potenza": {
         "name": "Potenza",
         "nameKo": "ポテンザ",
@@ -6614,6 +6854,20 @@
         "RF リフト ソウル",
         "小顔 輪郭",
         "あご下 リフト",
+        "新沙駅",
+        "江南 美容皮膚科"
+      ]
+    },
+    "onda": {
+      "title": "オンダ（ONDA） | マイクロ波 顔・ボディ コンタリング | LIV美容クリニック（江南）",
+      "description": "韓国・江南のLIV美容クリニックのオンダ。2.45GHzのマイクロ波が皮下脂肪層に選択的に作用し、脂肪減少と弾力改善を同時に。麻酔・ダウンタイムなし。新沙駅徒歩1分。",
+      "keywords": [
+        "オンダ",
+        "ONDA 韓国",
+        "マイクロ波 リフティング",
+        "ボディ コンタリング ソウル",
+        "脂肪減少 韓国",
+        "引き締め 韓国",
         "新沙駅",
         "江南 美容皮膚科"
       ]

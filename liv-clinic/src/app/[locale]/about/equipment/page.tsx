@@ -14,7 +14,7 @@ const PROCESSED_IMAGE_PATH = '/images/equipment/processed';
 const EQUIPMENT_CATEGORIES = [
   {
     id: 'lifting',
-    equipmentIds: ['ultherapy', 'thermage', 'density', 'shurink', 'inmode'],
+    equipmentIds: ['ultherapy', 'thermage', 'density', 'shurink', 'inmode', 'onda'],
   },
   {
     id: 'laser',
@@ -33,6 +33,7 @@ const EQUIPMENT_IMAGES: Record<string, string> = {
   density: `${PROCESSED_IMAGE_PATH}/equipment_density.png`,
   shurink: `${PROCESSED_IMAGE_PATH}/equipment_shurink.png`,
   inmode: `${PROCESSED_IMAGE_PATH}/equipment_inmode.png`,
+  onda: `${PROCESSED_IMAGE_PATH}/equipment_onda.png`,
   potenza: `${PROCESSED_IMAGE_PATH}/equipment_potenza.png`,
   clarity: `${PROCESSED_IMAGE_PATH}/equipment_clarity.png`,
   lucas: '/images/000.jpg',
@@ -118,14 +119,18 @@ export default function EquipmentPage() {
             <StaggerChildren className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {category.equipmentIds.map((equipmentId) => (
                 <StaggerItem key={equipmentId}>
-                  <Card padding="none" className="overflow-hidden h-full">
+                  <Card id={equipmentId} padding="none" className="overflow-hidden h-full scroll-mt-32">
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                       {/* Image - 정사각형 비율 고정 (1:1), 배지 제거됨 */}
                       <div className="relative aspect-square bg-gradient-to-b from-gray-50/50 to-gray-100/50">
                         {EQUIPMENT_IMAGES[equipmentId] ? (
                           <Image
                             src={EQUIPMENT_IMAGES[equipmentId]}
-                            alt={`${t(`equipment.${equipmentId}.nameKo`)} (${t(`equipment.${equipmentId}.name`)})`}
+                            alt={
+                              t.has(`equipment.${equipmentId}.imageAlt`)
+                                ? t(`equipment.${equipmentId}.imageAlt`)
+                                : `${t(`equipment.${equipmentId}.nameKo`)} (${t(`equipment.${equipmentId}.name`)})`
+                            }
                             fill
                             sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 400px"
                             className="object-contain"
@@ -154,9 +159,11 @@ export default function EquipmentPage() {
                           </p>
 
                           {/* 인증 정보 - 텍스트로 표시 */}
-                          <p className="text-small text-primary/80 mb-4">
-                            {t(`equipment.${equipmentId}.certification`)}
-                          </p>
+                          {t.has(`equipment.${equipmentId}.certification`) && (
+                            <p className="text-small text-primary/80 mb-4">
+                              {t(`equipment.${equipmentId}.certification`)}
+                            </p>
+                          )}
 
                           <p className="text-body text-mono mb-4">
                             {t(`equipment.${equipmentId}.description`)}

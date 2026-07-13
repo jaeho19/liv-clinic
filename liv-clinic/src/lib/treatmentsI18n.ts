@@ -123,6 +123,49 @@ const ZH: LocaleMap = {
       },
     ],
   },
+  onda: {
+    tagline: '微波塑形',
+    targetAreas: ['面部（脸颊·下颌线）', '双下巴', '腹部', '腰侧', '大腿', '手臂'],
+    idealFor: [
+      '弹力下降与局部脂肪同时存在者',
+      '希望无恢复期改善者',
+      '希望面部与身体一同管理者',
+    ],
+    cautions: [
+      '妊娠中或哺乳期请在咨询时务必告知',
+      '装有心脏起搏器或体内金属植入物请在咨询时务必告知',
+      '治疗部位有炎症、感染、伤口请在咨询时务必告知',
+      '有未受控糖尿病等基础疾病请在咨询时务必告知',
+    ],
+    duration: '面部15-30分钟 / 身体每个部位约10分钟',
+    anesthesia: '无需麻醉',
+    recovery: '无恢复期（治疗后即可恢复日常生活）',
+    results: '4-12周内逐渐显现（存在个体差异）',
+    process: [
+      { step: 1, title: '咨询', desc: '确认皮肤与皮下脂肪状态，决定治疗部位' },
+      { step: 2, title: '洁面', desc: '卸妆并整理皮肤' },
+      { step: 3, title: '准备', desc: '标记治疗部位并做治疗准备' },
+      { step: 4, title: '治疗', desc: '使用微波手具依部位进行治疗' },
+      { step: 5, title: '结束', desc: '整理治疗部位并提供护理指导' },
+    ],
+    faqs: [
+      {
+        q: 'ONDA是射频(RF)治疗吗？',
+        shortA: '不是。ONDA使用2.45GHz微波。',
+        a: '不是。ONDA是使用2.45GHz微波能量的设备。与RF（射频）、HIFU（超声波）在能量种类以及主要作用的皮肤层次上不同。',
+      },
+      {
+        q: '会痛吗？需要麻醉吗？',
+        shortA: '无需麻醉，感受被报告为类似温热按摩。',
+        a: 'ONDA无需麻醉即可进行。治疗中的感受被报告为类似温热按摩的程度，手具的接触冷却（约5°C）可保护皮肤表面。',
+      },
+      {
+        q: '效果什么时候出现？',
+        shortA: '并非即刻，4~12周内逐渐显现。',
+        a: 'ONDA的效果并非即刻出现。受损的脂肪被巨噬细胞逐渐清除，效果在4-12周内逐渐显现，存在个体差异。',
+      },
+    ],
+  },
   density: {
     targetAreas: ['额头', '眼周', '面颊', '下颌线', '颈部'],
     idealFor: [
@@ -489,6 +532,49 @@ const EN: LocaleMap = {
       },
     ],
   },
+  onda: {
+    tagline: 'Microwave Contouring',
+    targetAreas: ['Face (cheeks, jawline)', 'Double chin', 'Abdomen', 'Flanks', 'Thighs', 'Arms'],
+    idealFor: [
+      'Those with both reduced elasticity and localized fat',
+      'Those seeking improvement without downtime',
+      'Those who want to treat the face and body together',
+    ],
+    cautions: [
+      'Please tell us during the consultation if you are pregnant or breastfeeding',
+      'Please tell us during the consultation if you have a pacemaker or metal implants in your body',
+      'Please tell us during the consultation if the treatment area has inflammation, infection, or open wounds',
+      'Please tell us during the consultation if you have an underlying condition such as uncontrolled diabetes',
+    ],
+    duration: 'Face 15-30 minutes / about 10 minutes per body area',
+    anesthesia: 'No anesthesia required',
+    recovery: 'No downtime (return to daily life right after the treatment)',
+    results: 'Appears gradually over 4-12 weeks (varies by individual)',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Check skin and subcutaneous fat condition, decide the treatment areas' },
+      { step: 2, title: 'Cleansing', desc: 'Remove makeup and prepare the skin' },
+      { step: 3, title: 'Preparation', desc: 'Mark the treatment area and prepare for the session' },
+      { step: 4, title: 'Treatment', desc: 'Area-by-area treatment with the microwave handpiece' },
+      { step: 5, title: 'Aftercare', desc: 'Settle the treated area and explain aftercare' },
+    ],
+    faqs: [
+      {
+        q: 'Is ONDA an RF (radiofrequency) treatment?',
+        shortA: 'No. ONDA uses 2.45 GHz microwave energy.',
+        a: 'No. ONDA is a device that uses 2.45 GHz microwave energy. It differs from RF (radiofrequency) and HIFU (ultrasound) in the type of energy used and in the layers it mainly acts on.',
+      },
+      {
+        q: 'Is it painful? Is anesthesia needed?',
+        shortA: 'It is performed without anesthesia, and is reported to feel similar to a warm massage.',
+        a: 'ONDA is performed without anesthesia. The sensation during the treatment is reported to be similar to a warm massage, and the contact cooling of the handpiece (about 5°C) protects the skin surface.',
+      },
+      {
+        q: 'When do the results appear?',
+        shortA: 'Not immediately — they appear gradually over 4-12 weeks.',
+        a: 'ONDA does not produce immediate results. As the damaged fat is gradually cleared by macrophages, changes appear over 4-12 weeks, and results vary from person to person.',
+      },
+    ],
+  },
 };
 
 // ----- Japanese (ja) -----
@@ -576,6 +662,49 @@ const JA: LocaleMap = {
         q: '目もとにも施術できますか？',
         shortA: 'はい、サーマジアイ専用チップで可能です。',
         a: 'はい、サーマジアイは目もと専用のチップで、まぶたや目の下の弾力改善に効果的です。',
+      },
+    ],
+  },
+  onda: {
+    tagline: 'マイクロ波コンタリング',
+    targetAreas: ['顔（頬・フェイスライン）', '二重あご', '腹部', '脇腹', '太もも', '腕'],
+    idealFor: [
+      '弾力低下と部分的な脂肪の両方が気になる方',
+      'ダウンタイムなしで改善を希望される方',
+      '顔とボディを一緒にケアしたい方',
+    ],
+    cautions: [
+      '妊娠中・授乳中の場合はカウンセリング時に必ずお知らせください',
+      'ペースメーカーや体内金属インプラントがある場合はカウンセリング時に必ずお知らせください',
+      '施術部位に炎症・感染・傷がある場合はカウンセリング時に必ずお知らせください',
+      'コントロールされていない糖尿病などの基礎疾患がある場合はカウンセリング時に必ずお知らせください',
+    ],
+    duration: '顔15-30分 / ボディは1部位あたり約10分',
+    anesthesia: '麻酔不要',
+    recovery: 'ダウンタイムなし（施術直後から日常生活可能）',
+    results: '4-12週間かけて徐々に現れます（個人差あり）',
+    process: [
+      { step: 1, title: 'カウンセリング', desc: '肌と皮下脂肪の状態を確認し、施術部位を決定' },
+      { step: 2, title: '洗顔', desc: 'メイク除去と肌の整え' },
+      { step: 3, title: '準備', desc: '施術部位のマーキングと施術準備' },
+      { step: 4, title: '施術', desc: 'マイクロ波ハンドピースで部位ごとに施術' },
+      { step: 5, title: 'アフターケア', desc: '施術部位を整えアフターケアを案内' },
+    ],
+    faqs: [
+      {
+        q: 'オンダは高周波（RF）施術ですか？',
+        shortA: 'いいえ。オンダは2.45GHzのマイクロ波を使用します。',
+        a: 'いいえ。オンダは2.45GHzのマイクロ波エネルギーを使用する機器です。RF（高周波）やHIFU（超音波）とは、エネルギーの種類と主に作用する層が異なります。',
+      },
+      {
+        q: '痛みますか？麻酔は必要ですか？',
+        shortA: '麻酔なしで行い、温かいマッサージに近い感覚と報告されています。',
+        a: 'オンダは麻酔なしで行います。施術中の感覚は温かいマッサージに近い程度と報告されており、ハンドピースの接触冷却（約5°C）が皮膚表面を保護します。',
+      },
+      {
+        q: '効果はいつ現れますか？',
+        shortA: '即時ではなく、4~12週間かけて徐々に現れます。',
+        a: 'オンダの効果は即時には現れません。ダメージを受けた脂肪がマクロファージによって徐々に処理されるのに伴い、4-12週間かけて段階的に現れ、個人差があります。',
       },
     ],
   },
@@ -667,6 +796,49 @@ const FR: LocaleMap = {
         q: 'Thermage peut-il être utilisé sur le contour des yeux ?',
         shortA: 'Oui, Thermage Eye traite le contour des yeux.',
         a: 'Oui. Thermage Eye utilise un embout dédié au contour des yeux et est efficace pour l\'élasticité des paupières et des cernes.',
+      },
+    ],
+  },
+  onda: {
+    tagline: 'Contouring par micro-ondes',
+    targetAreas: ['Visage (joues, mâchoire)', 'Double menton', 'Abdomen', 'Flancs', 'Cuisses', 'Bras'],
+    idealFor: [
+      'Personnes présentant à la fois une perte d\'élasticité et des amas graisseux localisés',
+      'Personnes souhaitant une amélioration sans temps d\'arrêt',
+      'Personnes souhaitant traiter le visage et le corps ensemble',
+    ],
+    cautions: [
+      'Merci de nous informer lors de la consultation en cas de grossesse ou d\'allaitement',
+      'Merci de nous informer lors de la consultation en cas de stimulateur cardiaque ou d\'implants métalliques dans le corps',
+      'Merci de nous informer lors de la consultation en cas d\'inflammation, d\'infection ou de plaie dans la zone à traiter',
+      'Merci de nous informer lors de la consultation en cas de pathologie sous-jacente, comme un diabète non équilibré',
+    ],
+    duration: 'Visage 15-30 minutes / environ 10 minutes par zone corporelle',
+    anesthesia: 'Aucune anesthésie nécessaire',
+    recovery: 'Aucun temps d\'arrêt (reprise des activités quotidiennes juste après le traitement)',
+    results: 'Apparition progressive sur 4-12 semaines (variable selon les personnes)',
+    process: [
+      { step: 1, title: 'Consultation', desc: 'Évaluation de la peau et de la graisse sous-cutanée, choix des zones à traiter' },
+      { step: 2, title: 'Nettoyage', desc: 'Démaquillage et préparation de la peau' },
+      { step: 3, title: 'Préparation', desc: 'Marquage de la zone à traiter et préparation de la séance' },
+      { step: 4, title: 'Traitement', desc: 'Traitement zone par zone avec la pièce à main à micro-ondes' },
+      { step: 5, title: 'Soins après', desc: 'Apaisement de la zone traitée et conseils post-traitement' },
+    ],
+    faqs: [
+      {
+        q: 'ONDA est-il un traitement par radiofréquence (RF) ?',
+        shortA: 'Non. ONDA utilise des micro-ondes à 2,45 GHz.',
+        a: 'Non. ONDA est un appareil qui utilise une énergie micro-ondes à 2,45 GHz. Il se distingue de la RF (radiofréquence) et des HIFU (ultrasons) par le type d\'énergie employé et par les couches sur lesquelles il agit principalement.',
+      },
+      {
+        q: 'Est-ce douloureux ? Une anesthésie est-elle nécessaire ?',
+        shortA: 'Le traitement se fait sans anesthésie ; la sensation est décrite comme proche d\'un massage chaud.',
+        a: 'ONDA se pratique sans anesthésie. La sensation pendant le traitement est décrite comme proche d\'un massage chaud, et le refroidissement par contact de la pièce à main (environ 5 °C) protège la surface de la peau.',
+      },
+      {
+        q: 'Quand les résultats apparaissent-ils ?',
+        shortA: 'Pas immédiatement : progressivement sur 4-12 semaines.',
+        a: 'Les résultats d\'ONDA ne sont pas immédiats. À mesure que les cellules graisseuses altérées sont éliminées progressivement par les macrophages, les changements apparaissent sur 4 à 12 semaines, avec des variations selon les personnes.',
       },
     ],
   },
@@ -908,6 +1080,49 @@ const MN: LocaleMap = {
       },
     ],
   },
+  onda: {
+    tagline: 'Микро долгионы контуринг',
+    targetAreas: ['Нүүр (хацар, эрүүний шугам)', 'Давхар эрүү', 'Хэвлий', 'Хажуу тал', 'Гуя', 'Гар'],
+    idealFor: [
+      'Уян хатан байдал буурсан бөгөөд хэсэгчилсэн өөх хуримтлагдсан хүмүүс',
+      'Сэргэх хугацаагүйгээр сайжруулалт хүсэж буй хүмүүс',
+      'Нүүр болон биеийг хамтад нь арчлахыг хүсэж буй хүмүүс',
+    ],
+    cautions: [
+      'Жирэмсэн эсвэл хөхүүл байгаа бол зөвлөгөөний үеэр заавал мэдэгдэнэ үү',
+      'Зүрхний хэмнэлзүүлэгч, биед металл суулгацтай бол зөвлөгөөний үеэр заавал мэдэгдэнэ үү',
+      'Эмчилгээний хэсэгт үрэвсэл, халдвар, шарх байгаа бол зөвлөгөөний үеэр заавал мэдэгдэнэ үү',
+      'Хяналтгүй чихрийн шижин зэрэг суурь өвчтэй бол зөвлөгөөний үеэр заавал мэдэгдэнэ үү',
+    ],
+    duration: 'Нүүр 15-30 минут / биеийн хэсэг тус бүр ойролцоогоор 10 минут',
+    anesthesia: 'Мэдээгүйжүүлэлт шаардлагагүй',
+    recovery: 'Сэргэх хугацаагүй (эмчилгээний дараа шууд өдөр тутмын амьдралд эргэн орно)',
+    results: '4-12 долоо хоногийн турш аажмаар илэрнэ (хүн бүрд харилцан адилгүй)',
+    process: [
+      { step: 1, title: 'Зөвлөгөө', desc: 'Арьс болон арьсан доорх өөхний байдлыг шалгаж, эмчилгээний хэсгийг тогтоох' },
+      { step: 2, title: 'Цэвэрлэгээ', desc: 'Гоо сайхны бүтээгдэхүүн арилгаж арьсыг бэлдэх' },
+      { step: 3, title: 'Бэлтгэл', desc: 'Эмчилгээний хэсгийг тэмдэглэж бэлтгэх' },
+      { step: 4, title: 'Эмчилгээ', desc: 'Микро долгионы хандпистаар хэсэг тус бүрээр эмчилгээ хийх' },
+      { step: 5, title: 'Дараах арчилгаа', desc: 'Эмчилгээний хэсгийг цэгцэлж арчилгааны заавар өгөх' },
+    ],
+    faqs: [
+      {
+        q: 'ONDA (Онда) нь радио давтамжийн (RF) эмчилгээ мөн үү?',
+        shortA: 'Үгүй. ONDA нь 2.45GHz микро долгион ашигладаг.',
+        a: 'Үгүй. ONDA нь 2.45GHz микро долгионы энерги ашигладаг төхөөрөмж юм. RF (радио давтамж), HIFU (ультра-авиа)-аас энергийн төрөл болон гол үйлчлэх давхаргаараа ялгаатай.',
+      },
+      {
+        q: 'Өвдөх үү? Мэдээгүйжүүлэлт хэрэгтэй юу?',
+        shortA: 'Мэдээгүйжүүлэлтгүй хийдэг, дулаан иллэгтэй төстэй мэдрэмж гэж тэмдэглэгддэг.',
+        a: 'ONDA-г мэдээгүйжүүлэлтгүйгээр хийдэг. Эмчилгээний үеийн мэдрэмжийг дулаан иллэгтэй төстэй хэмээн тэмдэглэсэн бөгөөд хандпистын хүрэлцээт хөргөлт (ойролцоогоор 5°C) арьсны гадаргууг хамгаална.',
+      },
+      {
+        q: 'Үр дүн хэзээ илрэх вэ?',
+        shortA: 'Шууд биш, 4~12 долоо хоногийн турш аажмаар илэрнэ.',
+        a: 'ONDA-ийн үр дүн шууд илэрдэггүй. Гэмтсэн өөхийг макрофаг эсүүд аажмаар зайлуулах явцад өөрчлөлт 4-12 долоо хоногийн турш аажмаар илэрч, хүн бүрд харилцан адилгүй байна.',
+      },
+    ],
+  },
   density: {
     targetAreas: ['Дух', 'Нүдний эргэн тойрон', 'Хацар', 'Эрүүний шугам', 'Хүзүү'],
     idealFor: [
@@ -1143,6 +1358,49 @@ const AR: LocaleMap = {
         q: 'هل يمكن استخدام ثيرماج على محيط العين؟',
         shortA: 'نعم، يستخدم Thermage Eye قطعة مخصصة لمحيط العين.',
         a: 'نعم. يستخدم Thermage Eye قطعة مخصصة لمحيط العين، وهو فعّال لتحسين مرونة الجفون وما تحت العينين.',
+      },
+    ],
+  },
+  onda: {
+    tagline: 'نحت بالموجات الميكروية',
+    targetAreas: ['الوجه (الخدود، خط الفك)', 'الذقن المزدوج', 'البطن', 'الخاصرتان', 'الفخذان', 'الذراعان'],
+    idealFor: [
+      'من يعانون من انخفاض المرونة مع تجمعات دهنية موضعية',
+      'الراغبون في تحسّن دون فترة نقاهة',
+      'الراغبون في العناية بالوجه والجسم معاً',
+    ],
+    cautions: [
+      'يُرجى إخبارنا أثناء الاستشارة في حال الحمل أو الرضاعة',
+      'يُرجى إخبارنا أثناء الاستشارة في حال وجود منظم لضربات القلب أو زرعات معدنية في الجسم',
+      'يُرجى إخبارنا أثناء الاستشارة في حال وجود التهاب أو عدوى أو جرح في منطقة العلاج',
+      'يُرجى إخبارنا أثناء الاستشارة في حال وجود مرض مزمن مثل السكري غير المنضبط',
+    ],
+    duration: 'الوجه 15-30 دقيقة / حوالي 10 دقائق لكل منطقة من الجسم',
+    anesthesia: 'لا يتطلب تخديراً',
+    recovery: 'بدون فترة نقاهة (العودة إلى الحياة اليومية مباشرة بعد العلاج)',
+    results: 'تظهر تدريجياً على مدى 4-12 أسبوعاً (تختلف من شخص لآخر)',
+    process: [
+      { step: 1, title: 'الاستشارة', desc: 'تقييم حالة البشرة والدهون تحت الجلد وتحديد مناطق العلاج' },
+      { step: 2, title: 'التنظيف', desc: 'إزالة المكياج وتحضير البشرة' },
+      { step: 3, title: 'التحضير', desc: 'تحديد منطقة العلاج والتحضير للجلسة' },
+      { step: 4, title: 'العلاج', desc: 'علاج كل منطقة بقطعة اليد العاملة بالموجات الميكروية' },
+      { step: 5, title: 'الرعاية بعد العلاج', desc: 'تهدئة المنطقة المعالجة وشرح الرعاية اللاحقة' },
+    ],
+    faqs: [
+      {
+        q: 'هل ONDA (أوندا) علاج بالترددات الراديوية (RF)؟',
+        shortA: 'لا. يستخدم أوندا موجات ميكروية بتردد 2.45 غيغاهرتز.',
+        a: 'لا. أوندا جهاز يستخدم طاقة الموجات الميكروية بتردد 2.45 غيغاهرتز. ويختلف عن RF (الترددات الراديوية) وHIFU (الموجات فوق الصوتية) في نوع الطاقة وفي الطبقات التي يعمل عليها بشكل رئيسي.',
+      },
+      {
+        q: 'هل هو مؤلم؟ وهل يتطلب تخديراً؟',
+        shortA: 'يُجرى بدون تخدير، ويُوصف الإحساس بأنه قريب من مساج دافئ.',
+        a: 'يُجرى أوندا بدون تخدير. ويُوصف الإحساس أثناء الجلسة بأنه قريب من مساج دافئ، كما يحمي التبريد التلامسي لقطعة اليد (حوالي 5 درجات مئوية) سطح البشرة.',
+      },
+      {
+        q: 'متى تظهر النتائج؟',
+        shortA: 'ليست فورية، بل تظهر تدريجياً على مدى 4-12 أسبوعاً.',
+        a: 'نتائج أوندا ليست فورية. فمع إزالة الخلايا الدهنية المتضررة تدريجياً بواسطة البلاعم، تظهر التغيرات على مدى 4 إلى 12 أسبوعاً، وتختلف من شخص لآخر.',
       },
     ],
   },

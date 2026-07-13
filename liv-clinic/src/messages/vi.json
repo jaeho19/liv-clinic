@@ -370,6 +370,7 @@
     "thermage": "Nhiệt FLX",
     "density": "Density",
     "inmode": "InMode",
+    "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "Nâng sợi chỉ",
     "aptos": "Nâng cơ sinh học APTOS",
@@ -1485,6 +1486,210 @@
         },
         "ui": {
           "collagenShrinkRegen": "Co rút & tái tạo collagen"
+        }
+      },
+      "onda": {
+        "name": "ONDA",
+        "fullName": "ONDA Coolwaves",
+        "tagline": "Tạo đường nét bằng vi sóng",
+        "description": "Năng lượng vi sóng 2.45GHz tác động chọn lọc lên lớp mỡ dưới da, giúp giảm mỡ và cải thiện độ đàn hồi cùng lúc.",
+        "detail": {
+          "hero": {
+            "badge": "Tạo đường nét bằng vi sóng",
+            "title": "ONDA",
+            "description": "Vi sóng 2.45GHz tác động chọn lọc lên lớp mỡ dưới da.<br />Giảm mỡ và cải thiện độ đàn hồi trong một lần điều trị.",
+            "deviceImageAlt": "Thiết bị vi sóng ONDA",
+            "stats": {
+              "frequency": {
+                "value": "2.45GHz",
+                "label": "Vi sóng"
+              },
+              "anesthesia": {
+                "value": "Không gây mê",
+                "label": "Thực hiện không cần gây mê"
+              },
+              "downtime": {
+                "value": "Không có",
+                "label": "Thời gian nghỉ dưỡng"
+              }
+            },
+            "floatingBadges": {
+              "cooling": {
+                "title": "Làm mát tiếp xúc",
+                "subtitle": "Bảo vệ lớp thượng bì ở khoảng 5°C"
+              },
+              "layers": {
+                "title": "Hạ bì 20% · Mỡ 80%",
+                "subtitle": "Phân bổ năng lượng"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "Về ONDA",
+            "title": "ONDA là gì?",
+            "description": "ONDA (ONDA Coolwaves) là thiết bị <strong>vi sóng 2.45GHz</strong> của hãng <strong>DEKA</strong> (Ý). Năng lượng vi sóng được hấp thụ chọn lọc tại lớp mỡ dưới da, làm tổn thương màng tế bào mỡ, và phần mỡ bị tổn thương được các đại thực bào loại bỏ dần. Đồng thời, kích thích nhiệt truyền tới lớp hạ bì giúp thúc đẩy tái tạo collagen."
+          },
+          "mechanism": {
+            "sectionLabel": "Cách thức hoạt động",
+            "title": "Nguyên lý tác động",
+            "subtitle": "Khoảng 20% năng lượng tác động lên lớp hạ bì và khoảng 80% lên lớp mỡ dưới da",
+            "steps": [
+              {
+                "title": "Chiếu vi sóng",
+                "desc": "Năng lượng vi sóng 2.45GHz đi xuyên qua da và truyền tới lớp mỡ dưới da."
+              },
+              {
+                "title": "Tổn thương màng tế bào mỡ",
+                "desc": "Năng lượng được hấp thụ chọn lọc tại lớp mỡ dưới da làm tổn thương màng tế bào mỡ."
+              },
+              {
+                "title": "Loại bỏ bởi đại thực bào",
+                "desc": "Phần mỡ bị tổn thương được các đại thực bào loại bỏ dần."
+              },
+              {
+                "title": "Tái tạo collagen",
+                "desc": "Đồng thời, kích thích nhiệt truyền tới lớp hạ bì thúc đẩy tái tạo collagen, giúp cải thiện độ đàn hồi."
+              }
+            ],
+            "energySplit": {
+              "dermis": {
+                "label": "Lớp hạ bì",
+                "value": "Khoảng 20%",
+                "desc": "Kích thích nhiệt → tái tạo collagen"
+              },
+              "fat": {
+                "label": "Lớp mỡ dưới da",
+                "value": "Khoảng 80%",
+                "desc": "Tổn thương màng tế bào mỡ → đại thực bào loại bỏ"
+              }
+            },
+            "cooling": {
+              "title": "Làm mát tiếp xúc",
+              "desc": "Hệ thống làm mát tiếp xúc của tay cầm (khoảng 5°C) bảo vệ lớp thượng bì trong khi các lớp sâu hơn được làm nóng."
+            }
+          },
+          "positioning": {
+            "sectionLabel": "Định vị",
+            "title": "Khi nào nên cân nhắc ONDA?",
+            "subtitle": "Mỗi phương pháp sử dụng loại năng lượng khác nhau và tác động chính lên lớp khác nhau",
+            "cards": {
+              "onda": {
+                "title": "Da chùng nhão kèm mỡ dưới da",
+                "desc": "Khi độ đàn hồi giảm đi kèm mỡ khu trú, có thể cân nhắc ONDA. Vi sóng tác động lên cả lớp mỡ dưới da và lớp hạ bì."
+              },
+              "hifuRf": {
+                "title": "Chỉ giảm đàn hồi, không có mỡ",
+                "desc": "Nếu chỉ giảm độ đàn hồi mà không có mỡ dưới da, có thể cân nhắc các phương pháp HIFU·RF. Phương pháp nào phù hợp sẽ được quyết định khi thăm khám."
+              }
+            },
+            "comparison": {
+              "header": "Hạng mục so sánh",
+              "columns": {
+                "onda": "ONDA",
+                "hifu": "Nhóm HIFU",
+                "rf": "Nhóm RF"
+              },
+              "rows": {
+                "energy": {
+                  "feature": "Loại năng lượng",
+                  "onda": "Vi sóng (2.45GHz)",
+                  "hifu": "Sóng siêu âm hội tụ",
+                  "rf": "Sóng cao tần (RF)"
+                },
+                "layer": {
+                  "feature": "Lớp tác động chính",
+                  "onda": "Lớp mỡ dưới da + lớp hạ bì",
+                  "hifu": "Lớp cân cơ (SMAS) · lớp hạ bì",
+                  "rf": "Lớp hạ bì"
+                },
+                "anesthesia": {
+                  "feature": "Gây tê",
+                  "onda": "Không cần",
+                  "hifu": "Khác nhau tùy phương pháp",
+                  "rf": "Khác nhau tùy phương pháp"
+                }
+              },
+              "note": "Bảng trên tổng hợp sự khác biệt về loại năng lượng và lớp tác động, không hàm ý phương pháp nào hơn kém. Phương pháp phù hợp sẽ được quyết định khi thăm khám, dựa trên tình trạng da và mục tiêu của bạn."
+            }
+          },
+          "durationByArea": {
+            "sectionLabel": "Thời gian điều trị",
+            "title": "Thời gian điều trị theo vùng",
+            "items": [
+              {
+                "area": "Khuôn mặt (má · đường viền hàm)",
+                "time": "Khoảng 15-30 phút"
+              },
+              {
+                "area": "Cơ thể (mỗi vùng)",
+                "time": "Khoảng 10 phút"
+              }
+            ],
+            "note": "Tổng thời gian thay đổi tùy vùng điều trị và số lượng vùng."
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Sự khác biệt",
+            "title": "ONDA tại LIV",
+            "cards": {
+              "specialist": {
+                "title": "Điều trị chuyên khoa",
+                "desc": "Bác sĩ da liễu · bác sĩ phẫu thuật thẩm mỹ trực tiếp thực hiện từ tư vấn đến điều trị."
+              },
+              "custom": {
+                "title": "Thiết kế riêng theo từng vùng",
+                "desc": "Điều trị vùng nào trên khuôn mặt hay cơ thể, với cường độ ra sao và bao nhiêu lần sẽ được quyết định khi thăm khám, tùy theo vùng và tình trạng da."
+              },
+              "safety": {
+                "title": "Kiểm tra an toàn trước điều trị",
+                "desc": "Tình trạng mang thai · cho con bú, máy tạo nhịp tim · vật liệu kim loại cấy ghép trong cơ thể, tình trạng viêm · nhiễm trùng tại vùng điều trị đều được kiểm tra khi hỏi bệnh trước điều trị."
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Quy trình xử lý"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Thông tin điều trị",
+            "title": "Thông tin điều trị",
+            "labels": {
+              "duration": "Thời gian điều trị",
+              "anesthesia": "Gây tê",
+              "recovery": "Thời gian nghỉ dưỡng",
+              "results": "Thời điểm thấy hiệu quả"
+            }
+          },
+          "faq": {
+            "sectionLabel": "Câu hỏi thường gặp",
+            "title": "Câu hỏi thường gặp",
+            "moreInfo": "Muốn biết thêm thông tin y tế?",
+            "viewMedicalQA": "Xem Hỏi đáp Y tế"
+          },
+          "extendedFaqs": [
+            {
+              "q": "Có thời gian nghỉ dưỡng không?",
+              "a": "ONDA không có thời gian nghỉ dưỡng. Ngay sau khi điều trị có thể xuất hiện đỏ nhẹ hoặc cảm giác ấm tạm thời, nhưng thường dịu đi nhanh chóng và bạn có thể sinh hoạt bình thường ngay."
+            },
+            {
+              "q": "Cần thực hiện bao nhiêu lần?",
+              "a": "Số lần điều trị thay đổi tùy theo vùng và tình trạng da, và được quyết định khi thăm khám."
+            },
+            {
+              "q": "Có thể điều trị mặt và cơ thể cùng lúc không?",
+              "a": "Có. ONDA có thể áp dụng cho khuôn mặt (má · đường viền hàm) và cằm đôi, cũng như các vùng cơ thể như bụng, hông, đùi và cánh tay. Thời gian khác nhau theo vùng: khoảng 15-30 phút cho khuôn mặt và khoảng 10 phút cho mỗi vùng cơ thể."
+            }
+          ],
+          "cta": {
+            "sectionLabel": "Sẵn sàng tạo đường nét?",
+            "title": "Đặt lịch tư vấn ONDA",
+            "description": "Thông qua tư vấn cá nhân 1:1 với đội ngũ y tế của chúng tôi,<br />hãy tìm ra vùng điều trị và số lần phù hợp với bạn.",
+            "bookConsultation": "Đặt chỗ tư vấn miễn phí",
+            "businessHours": "Các ngày trong tuần 10:00-19:00",
+            "location": "3 phút đi bộ từ Ga Sinsa Lối ra 4"
+          },
+          "related": {
+            "sectionLabel": "Phương pháp điều trị liên quan",
+            "title": "Phương pháp điều trị liên quan"
+          }
         }
       },
       "density": {
@@ -5303,6 +5508,14 @@
       "button": "Đặt chỗ tư vấn miễn phí"
     },
     "treatments": {
+      "aptos": {
+        "name": "Nâng chỉ APTOS",
+        "nameEn": "APTOS",
+        "description": "Sử dụng chỉ y tế đặc biệt để mang lại hiệu quả nâng cơ tự nhiên và cải thiện thể tích.",
+        "duration": "30-60 phút",
+        "recovery": "3-7 ngày",
+        "imageAlt": "Sản phẩm nâng chỉ APTOS"
+      },
       "ulthera": {
         "name": "Ultherapy Prime",
         "nameEn": "Ultherapy Prime",
@@ -5331,6 +5544,14 @@
         "duration": "30-90 phút",
         "recovery": "0-5 ngày"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameEn": "ONDA",
+        "description": "Năng lượng vi sóng giúp giảm mỡ và cải thiện độ đàn hồi cho khuôn mặt và cơ thể cùng lúc.",
+        "duration": "30-60 phút",
+        "recovery": "Không có thời gian chết",
+        "imageAlt": "Thiết bị nâng cơ mặt và cơ thể ONDA"
+      },
       "shurink": {
         "name": "Shurink",
         "nameEn": "Shurink",
@@ -5394,6 +5615,14 @@
           "recovery": "Không có",
           "results": "1-2 năm",
           "price": "Phần thưởng"
+        },
+        "onda": {
+          "technology": "Vi sóng",
+          "duration": "30-60 phút",
+          "anesthesia": "Không gây mê",
+          "recovery": "Không có",
+          "results": "6 tháng - 1 năm",
+          "price": "Vừa phải"
         },
         "density": {
           "technology": "RF",
@@ -5779,6 +6008,17 @@
         ],
         "certification": "FDA, KFDA được phê duyệt"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameKo": "ONDA",
+        "description": "Công nghệ vi sóng chăm sóc khuôn mặt và cơ thể cùng lúc",
+        "features": [
+          "Nâng cơ mặt & tạo đường nét cơ thể",
+          "Ứng dụng công nghệ vi sóng",
+          "Giảm mỡ và cải thiện độ đàn hồi"
+        ],
+        "imageAlt": "Thiết bị nâng cơ vi sóng ONDA"
+      },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
@@ -6614,6 +6854,20 @@
         "face contouring Seoul",
         "jawline lifting Korea",
         "Gangnam InMode",
+        "Sinsa Station clinic"
+      ]
+    },
+    "onda": {
+      "title": "ONDA Microwave Contouring in Seoul | Face & Body | LIV Clinic",
+      "description": "ONDA at LIV Clinic in Gangnam, Seoul — 2.45GHz microwave energy acts selectively on the subcutaneous fat layer for fat reduction and firmer skin. No anesthesia, no downtime. 1 min from Sinsa Station Exit 4.",
+      "keywords": [
+        "ONDA Korea",
+        "ONDA lifting Seoul",
+        "microwave contouring Korea",
+        "body contouring Seoul",
+        "fat reduction Korea",
+        "skin tightening Seoul",
+        "Gangnam ONDA",
         "Sinsa Station clinic"
       ]
     },

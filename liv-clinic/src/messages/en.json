@@ -370,6 +370,7 @@
     "thermage": "Thermage FLX",
     "density": "Density",
     "inmode": "InMode",
+    "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "Thread Lift",
     "aptos": "APTOS Bio Lifting",
@@ -1485,6 +1486,210 @@
         },
         "ui": {
           "collagenShrinkRegen": "Collagen Contraction & Regeneration"
+        }
+      },
+      "onda": {
+        "name": "ONDA",
+        "fullName": "ONDA Coolwaves",
+        "tagline": "Microwave Contouring",
+        "description": "2.45GHz microwave energy acts selectively on the subcutaneous fat layer, supporting fat reduction and improved firmness at the same time.",
+        "detail": {
+          "hero": {
+            "badge": "Microwave Contouring",
+            "title": "ONDA",
+            "description": "2.45GHz microwaves act selectively on the subcutaneous fat layer.<br />Fat reduction and improved firmness in one treatment.",
+            "deviceImageAlt": "ONDA microwave device",
+            "stats": {
+              "frequency": {
+                "value": "2.45GHz",
+                "label": "Microwave"
+              },
+              "anesthesia": {
+                "value": "No anesthesia",
+                "label": "Performed without anesthesia"
+              },
+              "downtime": {
+                "value": "None",
+                "label": "Downtime"
+              }
+            },
+            "floatingBadges": {
+              "cooling": {
+                "title": "Contact Cooling",
+                "subtitle": "Protects the epidermis at approx. 5°C"
+              },
+              "layers": {
+                "title": "Dermis 20% · Fat 80%",
+                "subtitle": "Energy distribution"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "About ONDA",
+            "title": "What is ONDA?",
+            "description": "ONDA (ONDA Coolwaves) is a <strong>2.45GHz microwave</strong> device from the Italian manufacturer <strong>DEKA</strong>. Microwave energy is selectively absorbed by the subcutaneous fat layer and disrupts the membranes of fat cells; the damaged fat is then gradually cleared by macrophages. At the same time, thermal stimulation reaches the dermis and induces collagen regeneration."
+          },
+          "mechanism": {
+            "sectionLabel": "How It Works",
+            "title": "Mechanism of Action",
+            "subtitle": "About 20% of the energy acts on the dermis and about 80% on the subcutaneous fat layer",
+            "steps": [
+              {
+                "title": "Microwave Delivery",
+                "desc": "2.45GHz microwave energy passes through the skin and reaches the subcutaneous fat layer."
+              },
+              {
+                "title": "Fat Cell Membrane Disruption",
+                "desc": "Energy selectively absorbed in the subcutaneous fat layer disrupts the membranes of fat cells."
+              },
+              {
+                "title": "Clearance by Macrophages",
+                "desc": "The damaged fat is gradually cleared by macrophages."
+              },
+              {
+                "title": "Collagen Regeneration",
+                "desc": "At the same time, thermal stimulation delivered to the dermis induces collagen regeneration and helps improve firmness."
+              }
+            ],
+            "energySplit": {
+              "dermis": {
+                "label": "Dermis",
+                "value": "Approx. 20%",
+                "desc": "Thermal stimulation → collagen regeneration"
+              },
+              "fat": {
+                "label": "Subcutaneous fat layer",
+                "value": "Approx. 80%",
+                "desc": "Fat cell membrane disruption → clearance by macrophages"
+              }
+            },
+            "cooling": {
+              "title": "Contact Cooling",
+              "desc": "Contact cooling in the handpiece (approx. 5°C) protects the epidermis while the deeper layers are heated."
+            }
+          },
+          "positioning": {
+            "sectionLabel": "Positioning",
+            "title": "When is ONDA considered?",
+            "subtitle": "Treatments differ in the type of energy they use and the layer they mainly act on",
+            "cards": {
+              "onda": {
+                "title": "Skin laxity together with subcutaneous fat",
+                "desc": "When reduced firmness and localized fat occur together, ONDA is one option to consider. Microwaves act on both the subcutaneous fat layer and the dermis."
+              },
+              "hifuRf": {
+                "title": "Laxity only, without fat",
+                "desc": "When there is reduced firmness without subcutaneous fat, HIFU or RF treatments are considered. Which treatment is suitable is decided during a medical consultation."
+              }
+            },
+            "comparison": {
+              "header": "Feature",
+              "columns": {
+                "onda": "ONDA",
+                "hifu": "HIFU treatments",
+                "rf": "RF treatments"
+              },
+              "rows": {
+                "energy": {
+                  "feature": "Type of energy",
+                  "onda": "Microwave (2.45GHz)",
+                  "hifu": "Focused ultrasound",
+                  "rf": "Radiofrequency (RF)"
+                },
+                "layer": {
+                  "feature": "Main target layer",
+                  "onda": "Subcutaneous fat layer + dermis",
+                  "hifu": "Fascial (SMAS) layer · dermis",
+                  "rf": "Dermis"
+                },
+                "anesthesia": {
+                  "feature": "Anesthesia",
+                  "onda": "Not required",
+                  "hifu": "Varies by treatment",
+                  "rf": "Varies by treatment"
+                }
+              },
+              "note": "This table summarizes differences in the type of energy and the layers each treatment acts on; it does not imply that one treatment is superior to another. Which treatment is suitable is decided during a medical consultation, based on your skin condition and goals."
+            }
+          },
+          "durationByArea": {
+            "sectionLabel": "Treatment Time",
+            "title": "Treatment Time by Area",
+            "items": [
+              {
+                "area": "Face (cheeks · jawline)",
+                "time": "Approx. 15-30 min"
+              },
+              {
+                "area": "Body (per area)",
+                "time": "Approx. 10 min"
+              }
+            ],
+            "note": "Total treatment time varies with the areas treated and how many areas are covered."
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "ONDA at LIV",
+            "cards": {
+              "specialist": {
+                "title": "Specialist Treatment",
+                "desc": "Board-certified dermatologists and plastic surgeons handle everything from consultation to treatment."
+              },
+              "custom": {
+                "title": "Area-by-Area Planning",
+                "desc": "Which areas of the face or body to treat, at what intensity, and how many sessions to plan are decided during a medical consultation, based on the area and your skin condition."
+              },
+              "safety": {
+                "title": "Pre-Treatment Safety Check",
+                "desc": "Pregnancy or breastfeeding, a pacemaker or metal implants in the body, and inflammation or infection in the treatment area are all checked in the pre-treatment interview."
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Treatment Info",
+            "title": "Treatment Information",
+            "labels": {
+              "duration": "Treatment Time",
+              "anesthesia": "Anesthesia",
+              "recovery": "Downtime",
+              "results": "Onset of Results"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "Frequently Asked Questions",
+            "moreInfo": "Want more medical information?",
+            "viewMedicalQA": "View Medical Q&A"
+          },
+          "extendedFaqs": [
+            {
+              "q": "Is there any downtime?",
+              "a": "ONDA involves no downtime. Temporary redness or a feeling of warmth may occur right after the treatment, but it usually subsides quickly and you can return to daily activities immediately."
+            },
+            {
+              "q": "How many sessions do I need?",
+              "a": "The number of sessions depends on the area and your skin condition. It is decided during a medical consultation."
+            },
+            {
+              "q": "Can the face and body be treated together?",
+              "a": "Yes. ONDA can be applied to the face (cheeks · jawline) and double chin, as well as body areas such as the abdomen, flanks, thighs and arms. Treatment time differs by area: approximately 15-30 minutes for the face and about 10 minutes per body area."
+            }
+          ],
+          "cta": {
+            "sectionLabel": "Ready for Contouring?",
+            "title": "Book an ONDA Consultation",
+            "description": "Through a 1:1 personalized consultation with our medical team,<br />find the treatment areas and number of sessions that suit you.",
+            "bookConsultation": "Book Free Consultation",
+            "businessHours": "Weekdays 10:00-19:00",
+            "location": "3 min walk from Sinsa Station Exit 4"
+          },
+          "related": {
+            "sectionLabel": "Related Treatments",
+            "title": "Related Treatments"
+          }
         }
       },
       "density": {
@@ -5303,6 +5508,14 @@
       "button": "Book Free Consultation"
     },
     "treatments": {
+      "aptos": {
+        "name": "APTOS Thread Lift",
+        "nameEn": "APTOS",
+        "description": "Specialized medical threads deliver natural lifting and improved volume.",
+        "duration": "30-60 min",
+        "recovery": "3-7 days",
+        "imageAlt": "APTOS thread lift product"
+      },
       "ulthera": {
         "name": "Ultherapy Prime",
         "nameEn": "Ultherapy Prime",
@@ -5331,6 +5544,14 @@
         "duration": "30-90 min",
         "recovery": "0-5 days"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameEn": "ONDA",
+        "description": "Microwave energy delivers fat reduction and improved elasticity for the face and body at the same time.",
+        "duration": "30-60 min",
+        "recovery": "No downtime",
+        "imageAlt": "ONDA face and body lifting device"
+      },
       "shurink": {
         "name": "Shurink",
         "nameEn": "Shurink",
@@ -5394,6 +5615,14 @@
           "recovery": "None",
           "results": "1-2 years",
           "price": "Premium"
+        },
+        "onda": {
+          "technology": "Microwave",
+          "duration": "30-60 min",
+          "anesthesia": "No anesthesia",
+          "recovery": "None",
+          "results": "6 months - 1 year",
+          "price": "Moderate"
         },
         "density": {
           "technology": "RF",
@@ -5779,6 +6008,17 @@
         ],
         "certification": "FDA, KFDA Approved"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameKo": "ONDA",
+        "description": "Microwave technology caring for the face and body at once",
+        "features": [
+          "Face lifting & body contouring",
+          "Microwave technology applied",
+          "Fat reduction and elasticity improvement"
+        ],
+        "imageAlt": "ONDA microwave lifting device"
+      },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
@@ -6614,6 +6854,20 @@
         "face contouring Seoul",
         "jawline lifting Korea",
         "Gangnam InMode",
+        "Sinsa Station clinic"
+      ]
+    },
+    "onda": {
+      "title": "ONDA Microwave Contouring in Seoul | Face & Body | LIV Clinic",
+      "description": "ONDA at LIV Clinic in Gangnam, Seoul — 2.45GHz microwave energy acts selectively on the subcutaneous fat layer for fat reduction and firmer skin. No anesthesia, no downtime. 1 min from Sinsa Station Exit 4.",
+      "keywords": [
+        "ONDA Korea",
+        "ONDA lifting Seoul",
+        "microwave contouring Korea",
+        "body contouring Seoul",
+        "fat reduction Korea",
+        "skin tightening Seoul",
+        "Gangnam ONDA",
         "Sinsa Station clinic"
       ]
     },

@@ -370,6 +370,7 @@
     "thermage": "热玛吉FLX",
     "density": "Density",
     "inmode": "InMode",
+    "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "线雕",
     "aptos": "APTOS 生物提升",
@@ -1485,6 +1486,210 @@
         },
         "ui": {
           "collagenShrinkRegen": "胶原蛋白收缩 & 再生"
+        }
+      },
+      "onda": {
+        "name": "ONDA",
+        "fullName": "ONDA Coolwaves",
+        "tagline": "微波塑形",
+        "description": "2.45GHz微波能量选择性作用于皮下脂肪层，同时带来脂肪减少与弹性改善。",
+        "detail": {
+          "hero": {
+            "badge": "微波塑形",
+            "title": "ONDA",
+            "description": "2.45GHz微波选择性作用于皮下脂肪层。<br />一次实现脂肪减少与弹性改善。",
+            "deviceImageAlt": "ONDA 微波设备",
+            "stats": {
+              "frequency": {
+                "value": "2.45GHz",
+                "label": "微波"
+              },
+              "anesthesia": {
+                "value": "无麻醉",
+                "label": "无需麻醉进行"
+              },
+              "downtime": {
+                "value": "无",
+                "label": "恢复期"
+              }
+            },
+            "floatingBadges": {
+              "cooling": {
+                "title": "接触式冷却",
+                "subtitle": "约5°C保护表皮"
+              },
+              "layers": {
+                "title": "真皮20% · 脂肪80%",
+                "subtitle": "能量分配"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "About ONDA",
+            "title": "什么是ONDA？",
+            "description": "ONDA（ONDA Coolwaves）是意大利<strong>DEKA</strong>公司的<strong>2.45GHz微波</strong>设备。微波能量被皮下脂肪层选择性吸收，破坏脂肪细胞的细胞膜，受损的脂肪由巨噬细胞逐步清除。同时，热刺激传递至真皮层，促进胶原蛋白再生。"
+          },
+          "mechanism": {
+            "sectionLabel": "How It Works",
+            "title": "作用原理",
+            "subtitle": "约20%的能量作用于真皮层，约80%作用于皮下脂肪层",
+            "steps": [
+              {
+                "title": "微波照射",
+                "desc": "2.45GHz微波能量穿过皮肤，抵达皮下脂肪层。"
+              },
+              {
+                "title": "脂肪细胞膜受损",
+                "desc": "被皮下脂肪层选择性吸收的能量会破坏脂肪细胞的细胞膜。"
+              },
+              {
+                "title": "巨噬细胞清除",
+                "desc": "受损的脂肪由巨噬细胞逐步清除。"
+              },
+              {
+                "title": "胶原蛋白再生",
+                "desc": "同时，传递至真皮层的热刺激促进胶原蛋白再生，有助于改善弹性。"
+              }
+            ],
+            "energySplit": {
+              "dermis": {
+                "label": "真皮层",
+                "value": "约20%",
+                "desc": "热刺激 → 胶原蛋白再生"
+              },
+              "fat": {
+                "label": "皮下脂肪层",
+                "value": "约80%",
+                "desc": "脂肪细胞膜受损 → 巨噬细胞清除"
+              }
+            },
+            "cooling": {
+              "title": "接触式冷却",
+              "desc": "手具的接触式冷却（约5°C）在加热深层的同时保护表皮。"
+            }
+          },
+          "positioning": {
+            "sectionLabel": "Positioning",
+            "title": "什么情况下考虑ONDA？",
+            "subtitle": "各类治疗的能量种类与主要作用层各不相同",
+            "cards": {
+              "onda": {
+                "title": "松弛同时伴有皮下脂肪",
+                "desc": "当弹性下降与局部脂肪同时存在时，可考虑ONDA。微波会同时作用于皮下脂肪层与真皮层。"
+              },
+              "hifuRf": {
+                "title": "没有脂肪，仅有弹性下降",
+                "desc": "若没有皮下脂肪、仅有弹性下降，可考虑HIFU·RF类治疗。哪种治疗合适将在面诊中确定。"
+              }
+            },
+            "comparison": {
+              "header": "比较项目",
+              "columns": {
+                "onda": "ONDA",
+                "hifu": "HIFU类",
+                "rf": "RF类"
+              },
+              "rows": {
+                "energy": {
+                  "feature": "能量种类",
+                  "onda": "微波（2.45GHz）",
+                  "hifu": "聚焦超声",
+                  "rf": "射频（RF）"
+                },
+                "layer": {
+                  "feature": "主要作用层",
+                  "onda": "皮下脂肪层＋真皮层",
+                  "hifu": "筋膜层·真皮层",
+                  "rf": "真皮层"
+                },
+                "anesthesia": {
+                  "feature": "麻醉",
+                  "onda": "无需",
+                  "hifu": "因治疗而异",
+                  "rf": "因治疗而异"
+                }
+              },
+              "note": "上表整理的是能量种类与作用层的差异，并不代表治疗之间的优劣。哪种治疗合适，将根据皮肤状态与目标在面诊中确定。"
+            }
+          },
+          "durationByArea": {
+            "sectionLabel": "Treatment Time",
+            "title": "各部位治疗时间",
+            "items": [
+              {
+                "area": "面部（脸颊·下颌线）",
+                "time": "约15~30分钟"
+              },
+              {
+                "area": "身体（每个部位）",
+                "time": "约10分钟"
+              }
+            ],
+            "note": "总耗时会因治疗部位与部位数量而有所不同。"
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "LIV的ONDA",
+            "cards": {
+              "specialist": {
+                "title": "专家亲自治疗",
+                "desc": "皮肤科·整形外科专家从咨询到治疗全程亲自进行。"
+              },
+              "custom": {
+                "title": "分部位定制设计",
+                "desc": "面部与身体分别治疗哪些部位、使用何种强度、进行多少次，将根据部位与皮肤状态在面诊中确定。"
+              },
+              "safety": {
+                "title": "治疗前安全确认",
+                "desc": "是否怀孕或哺乳、是否装有心脏起搏器或体内金属植入物、治疗部位是否存在炎症或感染等，都会在治疗前问诊中确认。"
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Treatment Process"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "治疗信息",
+            "title": "治疗信息",
+            "labels": {
+              "duration": "治疗时间",
+              "anesthesia": "麻醉",
+              "recovery": "恢复期",
+              "results": "效果显现"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "常见问题",
+            "moreInfo": "想了解更多医疗信息？",
+            "viewMedicalQA": "查看医疗信息Q&A"
+          },
+          "extendedFaqs": [
+            {
+              "q": "有恢复期吗？",
+              "a": "ONDA没有恢复期。治疗后可能出现暂时性的泛红或温热感，但通常很快消退，可以立即恢复日常生活。"
+            },
+            {
+              "q": "需要做几次？",
+              "a": "治疗次数因部位与皮肤状态而异，将在面诊中确定。"
+            },
+            {
+              "q": "可以同时做面部和身体吗？",
+              "a": "可以。ONDA不仅适用于面部（脸颊·下颌线）和双下巴，也适用于腹部、腰侧、大腿、手臂等身体部位。各部位治疗时间不同，面部约15~30分钟，身体每个部位约10分钟。"
+            }
+          ],
+          "cta": {
+            "sectionLabel": "Ready for Contouring?",
+            "title": "预约ONDA咨询",
+            "description": "通过与专业医疗团队的1对1定制咨询，<br />确认适合您的治疗部位与次数。",
+            "bookConsultation": "预约免费咨询",
+            "businessHours": "工作日10:00-19:00",
+            "location": "新沙站4号出口步行3分钟"
+          },
+          "related": {
+            "sectionLabel": "相关推荐治疗",
+            "title": "相关推荐治疗"
+          }
         }
       },
       "density": {
@@ -5303,6 +5508,14 @@
       "button": "免费咨询预约"
     },
     "treatments": {
+      "aptos": {
+        "name": "APTOS线雕提升",
+        "nameEn": "APTOS",
+        "description": "使用特殊医用线，提供自然的提升效果和容积改善。",
+        "duration": "30-60分钟",
+        "recovery": "3-7天",
+        "imageAlt": "APTOS线雕提升产品"
+      },
       "ulthera": {
         "name": "超声刀Prime",
         "nameEn": "Ultherapy Prime",
@@ -5331,6 +5544,14 @@
         "duration": "30-90分钟",
         "recovery": "0-5天"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameEn": "ONDA",
+        "description": "以微波能量同时实现面部和身体的脂肪减少与弹性改善。",
+        "duration": "30-60分钟",
+        "recovery": "无恢复期",
+        "imageAlt": "ONDA 面部及身体提升设备"
+      },
       "shurink": {
         "name": "Shurink",
         "nameEn": "Shurink",
@@ -5394,6 +5615,14 @@
           "recovery": "无",
           "results": "1-2年",
           "price": "高端"
+        },
+        "onda": {
+          "technology": "微波",
+          "duration": "30-60分钟",
+          "anesthesia": "无麻醉",
+          "recovery": "无",
+          "results": "6个月-1年",
+          "price": "中等"
         },
         "density": {
           "technology": "RF",
@@ -5779,6 +6008,17 @@
         ],
         "certification": "FDA、KFDA认证"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameKo": "ONDA",
+        "description": "以微波技术同时护理面部和身体",
+        "features": [
+          "面部提升 & 身体塑形",
+          "应用微波技术",
+          "减脂与紧致改善"
+        ],
+        "imageAlt": "ONDA 微波提升设备"
+      },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
@@ -6622,6 +6862,20 @@
         "射频提升 首尔",
         "面部轮廓",
         "下巴提升 韩国",
+        "江南医美",
+        "新沙站"
+      ]
+    },
+    "onda": {
+      "title": "ONDA | 微波面部·身体塑形 | LIV整形外科（江南）",
+      "description": "首尔江南LIV整形外科ONDA。2.45GHz微波选择性作用于皮下脂肪层，同时实现脂肪减少与弹性改善。无麻醉、无恢复期。新沙站步行1分钟。",
+      "keywords": [
+        "ONDA",
+        "ONDA 提升",
+        "微波塑形 韩国",
+        "身体塑形 首尔",
+        "脂肪减少 韩国",
+        "紧肤 首尔",
         "江南医美",
         "新沙站"
       ]

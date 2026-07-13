@@ -10,6 +10,7 @@ export { default as UltheraDetail } from './UltheraDetail';
 export { default as ThermageDetail } from './ThermageDetail';
 export { default as DensityDetail } from './DensityDetail';
 export { default as InModeDetail } from './InModeDetail';
+export { default as OndaDetail } from './OndaDetail';
 export { default as ShurinkDetail } from './ShurinkDetail';
 export { default as ThreadDetail } from './ThreadDetail';
 export { default as AptosDetail } from './AptosDetail';

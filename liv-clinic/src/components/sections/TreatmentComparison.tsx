@@ -7,7 +7,7 @@ import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, ScrollLink } from '@/components/ui';
 
 // Treatment IDs for comparison table
-const treatmentIds = ['ulthera', 'thermage', 'density', 'shurink', 'inmode', 'thread'];
+const treatmentIds = ['ulthera', 'thermage', 'onda', 'density', 'shurink', 'inmode', 'thread'];
 
 export default function TreatmentComparison() {
   const [selectedTreatment, setSelectedTreatment] = useState<string | null>(null);

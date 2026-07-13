@@ -370,6 +370,7 @@
     "thermage": "Thermage FLX",
     "density": "Density",
     "inmode": "InMode",
+    "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "Fils tenseurs",
     "aptos": "APTOS Bio Lifting",
@@ -1485,6 +1486,210 @@
         },
         "ui": {
           "collagenShrinkRegen": "Contraction et régénération du collagène"
+        }
+      },
+      "onda": {
+        "name": "ONDA",
+        "fullName": "ONDA Coolwaves",
+        "tagline": "Contouring par micro-ondes",
+        "description": "L'énergie micro-ondes 2,45 GHz agit sélectivement sur la couche de graisse sous-cutanée et favorise à la fois la réduction des graisses et l'amélioration de la fermeté.",
+        "detail": {
+          "hero": {
+            "badge": "Contouring par micro-ondes",
+            "title": "ONDA",
+            "description": "Les micro-ondes 2,45 GHz agissent sélectivement sur la couche de graisse sous-cutanée.<br />Réduction des graisses et fermeté améliorée en une seule séance.",
+            "deviceImageAlt": "Appareil à micro-ondes ONDA",
+            "stats": {
+              "frequency": {
+                "value": "2,45 GHz",
+                "label": "Micro-ondes"
+              },
+              "anesthesia": {
+                "value": "Sans anesthésie",
+                "label": "Réalisé sans anesthésie"
+              },
+              "downtime": {
+                "value": "Aucun",
+                "label": "Temps d'arrêt"
+              }
+            },
+            "floatingBadges": {
+              "cooling": {
+                "title": "Refroidissement par contact",
+                "subtitle": "Protège l'épiderme à environ 5 °C"
+              },
+              "layers": {
+                "title": "Derme 20% · Graisse 80%",
+                "subtitle": "Répartition de l'énergie"
+              }
+            }
+          },
+          "about": {
+            "sectionLabel": "À propos d'ONDA",
+            "title": "Qu'est-ce qu'ONDA ?",
+            "description": "ONDA (ONDA Coolwaves) est un appareil à <strong>micro-ondes 2,45 GHz</strong> du fabricant italien <strong>DEKA</strong>. L'énergie micro-ondes est absorbée sélectivement par la couche de graisse sous-cutanée et altère la membrane des cellules graisseuses ; la graisse endommagée est ensuite éliminée progressivement par les macrophages. Parallèlement, la stimulation thermique atteint le derme et favorise la régénération du collagène."
+          },
+          "mechanism": {
+            "sectionLabel": "Comment ça marche",
+            "title": "Principe d'action",
+            "subtitle": "Environ 20 % de l'énergie agit sur le derme et environ 80 % sur la couche de graisse sous-cutanée",
+            "steps": [
+              {
+                "title": "Émission des micro-ondes",
+                "desc": "L'énergie micro-ondes 2,45 GHz traverse la peau et atteint la couche de graisse sous-cutanée."
+              },
+              {
+                "title": "Altération de la membrane des cellules graisseuses",
+                "desc": "L'énergie absorbée sélectivement dans la couche de graisse sous-cutanée altère la membrane des cellules graisseuses."
+              },
+              {
+                "title": "Élimination par les macrophages",
+                "desc": "La graisse endommagée est éliminée progressivement par les macrophages."
+              },
+              {
+                "title": "Régénération du collagène",
+                "desc": "Parallèlement, la stimulation thermique transmise au derme favorise la régénération du collagène et contribue à améliorer la fermeté."
+              }
+            ],
+            "energySplit": {
+              "dermis": {
+                "label": "Derme",
+                "value": "Environ 20 %",
+                "desc": "Stimulation thermique → régénération du collagène"
+              },
+              "fat": {
+                "label": "Couche de graisse sous-cutanée",
+                "value": "Environ 80 %",
+                "desc": "Altération de la membrane des cellules graisseuses → élimination par les macrophages"
+              }
+            },
+            "cooling": {
+              "title": "Refroidissement par contact",
+              "desc": "Le refroidissement par contact de la pièce à main (environ 5 °C) protège l'épiderme pendant que les couches profondes sont chauffées."
+            }
+          },
+          "positioning": {
+            "sectionLabel": "Positionnement",
+            "title": "Dans quels cas envisager ONDA ?",
+            "subtitle": "Le type d'énergie et la couche principalement ciblée diffèrent d'un traitement à l'autre",
+            "cards": {
+              "onda": {
+                "title": "Relâchement cutané accompagné de graisse sous-cutanée",
+                "desc": "Lorsque la perte de fermeté s'accompagne de graisse localisée, ONDA peut être envisagé. Les micro-ondes agissent à la fois sur la couche de graisse sous-cutanée et sur le derme."
+              },
+              "hifuRf": {
+                "title": "Perte de fermeté seule, sans graisse",
+                "desc": "En l'absence de graisse sous-cutanée, avec une simple perte de fermeté, les traitements HIFU ou RF sont envisagés. Le traitement adapté est déterminé lors de la consultation médicale."
+              }
+            },
+            "comparison": {
+              "header": "Critère",
+              "columns": {
+                "onda": "ONDA",
+                "hifu": "Traitements HIFU",
+                "rf": "Traitements RF"
+              },
+              "rows": {
+                "energy": {
+                  "feature": "Type d'énergie",
+                  "onda": "Micro-ondes (2,45 GHz)",
+                  "hifu": "Ultrasons focalisés",
+                  "rf": "Radiofréquence (RF)"
+                },
+                "layer": {
+                  "feature": "Couche principalement ciblée",
+                  "onda": "Couche de graisse sous-cutanée + derme",
+                  "hifu": "Couche du SMAS · derme",
+                  "rf": "Derme"
+                },
+                "anesthesia": {
+                  "feature": "Anesthésie",
+                  "onda": "Non nécessaire",
+                  "hifu": "Variable selon le traitement",
+                  "rf": "Variable selon le traitement"
+                }
+              },
+              "note": "Ce tableau récapitule les différences de type d'énergie et de couches ciblées ; il n'établit aucune hiérarchie entre les traitements. Le traitement adapté est déterminé lors de la consultation médicale, en fonction de l'état de votre peau et de vos objectifs."
+            }
+          },
+          "durationByArea": {
+            "sectionLabel": "Durée du traitement",
+            "title": "Durée du traitement par zone",
+            "items": [
+              {
+                "area": "Visage (joues · ovale du visage)",
+                "time": "Environ 15-30 min"
+              },
+              {
+                "area": "Corps (par zone)",
+                "time": "Environ 10 min"
+              }
+            ],
+            "note": "La durée totale varie selon les zones traitées et leur nombre."
+          },
+          "livDifference": {
+            "sectionLabel": "LIV Difference",
+            "title": "ONDA chez LIV",
+            "cards": {
+              "specialist": {
+                "title": "Traitement par spécialiste",
+                "desc": "Des dermatologues et chirurgiens plasticiens réalisent eux-mêmes la consultation et le traitement."
+              },
+              "custom": {
+                "title": "Planification zone par zone",
+                "desc": "Les zones à traiter sur le visage ou le corps, l'intensité et le nombre de séances sont déterminés lors de la consultation médicale, selon la zone et l'état de votre peau."
+              },
+              "safety": {
+                "title": "Vérification de sécurité avant le traitement",
+                "desc": "Grossesse ou allaitement, présence d'un stimulateur cardiaque ou d'implants métalliques, inflammation ou infection de la zone à traiter : tout est vérifié lors de l'entretien préalable."
+              }
+            }
+          },
+          "processSection": {
+            "sectionLabel": "Processus du traitement"
+          },
+          "treatmentInfo": {
+            "sectionLabel": "Infos sur le traitement",
+            "title": "Informations sur le traitement",
+            "labels": {
+              "duration": "Durée du traitement",
+              "anesthesia": "Anesthésie",
+              "recovery": "Temps d'arrêt",
+              "results": "Apparition des résultats"
+            }
+          },
+          "faq": {
+            "sectionLabel": "FAQ",
+            "title": "Questions fréquentes",
+            "moreInfo": "Vous voulez plus d'informations médicales ?",
+            "viewMedicalQA": "Voir les Q&R médicales"
+          },
+          "extendedFaqs": [
+            {
+              "q": "Y a-t-il un temps d'arrêt ?",
+              "a": "ONDA n'entraîne pas de temps d'arrêt. Une rougeur ou une sensation de chaleur passagère peut apparaître juste après la séance, mais elle s'atténue généralement rapidement et vous pouvez reprendre vos activités immédiatement."
+            },
+            {
+              "q": "Combien de séances faut-il ?",
+              "a": "Le nombre de séances dépend de la zone et de l'état de votre peau ; il est déterminé lors de la consultation médicale."
+            },
+            {
+              "q": "Peut-on traiter le visage et le corps ensemble ?",
+              "a": "Oui. ONDA s'applique au visage (joues · ovale du visage) et au double menton, ainsi qu'au corps : ventre, flancs, cuisses, bras. La durée varie selon la zone : environ 15-30 minutes pour le visage et environ 10 minutes par zone du corps."
+            }
+          ],
+          "cta": {
+            "sectionLabel": "Prêt pour le contouring ?",
+            "title": "Réserver une consultation ONDA",
+            "description": "Grâce à une consultation personnalisée en tête-à-tête avec notre équipe médicale,<br />identifiez les zones à traiter et le nombre de séances qui vous conviennent.",
+            "bookConsultation": "Réserver une consultation gratuite",
+            "businessHours": "Lun-Ven 10:00-19:00",
+            "location": "3 min à pied de la sortie 4 de la station Sinsa"
+          },
+          "related": {
+            "sectionLabel": "Traitements associés",
+            "title": "Traitements associés"
+          }
         }
       },
       "density": {
@@ -5303,6 +5508,14 @@
       "button": "Réserver une consultation gratuite"
     },
     "treatments": {
+      "aptos": {
+        "name": "Lifting par fils APTOS",
+        "nameEn": "APTOS",
+        "description": "Des fils médicaux spécifiques offrent un lifting naturel et une amélioration du volume.",
+        "duration": "30-60 min",
+        "recovery": "3-7 jours",
+        "imageAlt": "Produit de lifting par fils APTOS"
+      },
       "ulthera": {
         "name": "Ultherapy Prime",
         "nameEn": "Ultherapy Prime",
@@ -5331,6 +5544,14 @@
         "duration": "30-90 min",
         "recovery": "0-5 jours"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameEn": "ONDA",
+        "description": "L'énergie micro-ondes assure simultanément la réduction des graisses et l'amélioration de la fermeté du visage et du corps.",
+        "duration": "30-60 min",
+        "recovery": "Aucun temps d'arrêt",
+        "imageAlt": "Appareil de lifting visage et corps ONDA"
+      },
       "shurink": {
         "name": "Shurink",
         "nameEn": "Shurink",
@@ -5394,6 +5615,14 @@
           "recovery": "Aucun",
           "results": "1-2 ans",
           "price": "Premium"
+        },
+        "onda": {
+          "technology": "Micro-ondes",
+          "duration": "30-60 min",
+          "anesthesia": "Sans anesthésie",
+          "recovery": "Aucun",
+          "results": "6 mois - 1 an",
+          "price": "Modéré"
         },
         "density": {
           "technology": "RF",
@@ -5779,6 +6008,17 @@
         ],
         "certification": "Approuvé FDA, KFDA"
       },
+      "onda": {
+        "name": "ONDA",
+        "nameKo": "ONDA",
+        "description": "La technologie micro-ondes prend soin du visage et du corps en même temps",
+        "features": [
+          "Lifting du visage et remodelage du corps",
+          "Technologie micro-ondes appliquée",
+          "Réduction des graisses et amélioration de l'élasticité"
+        ],
+        "imageAlt": "Appareil de lifting micro-ondes ONDA"
+      },
       "potenza": {
         "name": "Potenza",
         "nameKo": "Potenza",
@@ -6614,6 +6854,20 @@
         "face contouring Seoul",
         "jawline lifting Korea",
         "Gangnam InMode",
+        "Sinsa Station clinic"
+      ]
+    },
+    "onda": {
+      "title": "ONDA Microwave Contouring in Seoul | Face & Body | LIV Clinic",
+      "description": "ONDA at LIV Clinic in Gangnam, Seoul — 2.45GHz microwave energy acts selectively on the subcutaneous fat layer for fat reduction and firmer skin. No anesthesia, no downtime. 1 min from Sinsa Station Exit 4.",
+      "keywords": [
+        "ONDA Korea",
+        "ONDA lifting Seoul",
+        "microwave contouring Korea",
+        "body contouring Seoul",
+        "fat reduction Korea",
+        "skin tightening Seoul",
+        "Gangnam ONDA",
         "Sinsa Station clinic"
       ]
     },

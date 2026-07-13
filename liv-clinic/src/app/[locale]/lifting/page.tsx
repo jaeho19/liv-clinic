@@ -7,7 +7,43 @@ import { routing } from '@/i18n/routing';
 import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
 // Treatment IDs for lifting category
-const liftingTreatmentIds = ['aptos', 'ulthera', 'thermage', 'density', 'inmode', 'shurink', 'thread'];
+const liftingTreatmentIds = ['aptos', 'ulthera', 'thermage', 'onda', 'density', 'inmode', 'shurink', 'thread'];
+
+// Treatment image paths (투명 배경 PNG)
+const TREATMENT_IMAGES: Record<string, string> = {
+  aptos: '/images/treatments/aptos.png',
+  ulthera: '/images/treatments/ulthera.png',
+  thermage: '/images/treatments/thermage.png',
+  onda: '/images/treatments/onda.png',
+  density: '/images/treatments/density.png',
+  inmode: '/images/treatments/inmode.png',
+  shurink: '/images/treatments/shurink.png',
+  thread: '/images/treatments/thread.png',
+};
+
+// Intrinsic image dimensions (CLS 방지용 width/height 속성)
+const TREATMENT_IMAGE_SIZES: Record<string, { width: number; height: number }> = {
+  aptos: { width: 1536, height: 1024 },
+  ulthera: { width: 800, height: 1000 },
+  thermage: { width: 800, height: 1000 },
+  onda: { width: 189, height: 697 },
+  density: { width: 800, height: 1000 },
+  inmode: { width: 800, height: 1000 },
+  shurink: { width: 800, height: 1000 },
+  thread: { width: 1024, height: 681 },
+};
+
+// Card links — 각 시술 상세 페이지로 연결
+const TREATMENT_LINKS: Record<string, string> = {
+  aptos: '/lifting/aptos',
+  ulthera: '/lifting/ulthera',
+  thermage: '/lifting/thermage',
+  onda: '/lifting/onda',
+  density: '/lifting/density',
+  inmode: '/lifting/inmode',
+  shurink: '/lifting/shurink',
+  thread: '/lifting/thread',
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -63,12 +99,18 @@ export default function LiftingPage({
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {liftingTreatmentIds.map((treatmentId) => (
               <AnimateOnScroll key={treatmentId}>
-                <Link href={`/lifting/${treatmentId}`}>
+                <Link href={TREATMENT_LINKS[treatmentId]}>
                   <Card padding="none" className="overflow-hidden group cursor-pointer h-full">
                     <div className="aspect-[4/3] md:aspect-[4/5] bg-gradient-to-b from-white to-background relative overflow-hidden flex items-center justify-center p-4 md:p-6">
                       <img
-                        src={`/images/treatments/${treatmentId}.png`}
-                        alt={t(`treatments.${treatmentId}.name`)}
+                        src={TREATMENT_IMAGES[treatmentId]}
+                        alt={
+                          t.has(`treatments.${treatmentId}.imageAlt`)
+                            ? t(`treatments.${treatmentId}.imageAlt`)
+                            : t(`treatments.${treatmentId}.name`)
+                        }
+                        width={TREATMENT_IMAGE_SIZES[treatmentId].width}
+                        height={TREATMENT_IMAGE_SIZES[treatmentId].height}
                         className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-105"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

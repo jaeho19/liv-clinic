@@ -125,6 +125,7 @@ export default function Header() {
       children: [
         { key: 'ulthera', label: t('ulthera'), href: '/lifting/ulthera' },
         { key: 'thermage', label: t('thermage'), href: '/lifting/thermage' },
+        { key: 'onda', label: t('onda'), href: '/lifting/onda' },
         { key: 'density', label: t('density'), href: '/lifting/density' },
         { key: 'inmode', label: t('inmode'), href: '/lifting/inmode' },
         { key: 'shurink', label: t('shurink'), href: '/lifting/shurink' },
