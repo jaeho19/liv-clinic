@@ -265,6 +265,7 @@
     "relatedTreatments": "Холбогдох үйлчилгээ",
     "close": "Хаах",
     "closeMenu": "Цэс хаах",
+    "viewLarger": "Томруулж харах: {label}",
     "language": "Хэл",
     "backToTop": "Дээш буцах",
     "expandAll": "Бүгдийг дэлгэх",
@@ -2764,7 +2765,8 @@
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
             "description": "Дэлхийн 100 гаруй улсад хэрэглэгддэг нүүрний эдийг бэхлэх утсуудын анхны брэнд",
             "durationLabel": "Үргэлжлэх хугацаа",
-            "durationValue": "24 сар хүртэл"
+            "durationValue": "24 сар хүртэл",
+            "imageAlt": "APTOS NAMICA эмчилгээ"
           },
           "namicaSection": {
             "title": "NAMICA технологи",
@@ -3625,6 +3627,7 @@
         "description": "Мэргэжлийн гоо сайхны эмч нараар гүйцэтгэгдэх Aqua Tox болон Plafill эмчилгээг багтаасан премиум арьс арчилгааны хөтөлбөр. Таны арьсны төрөл болон асуудлуудад тохируулсан хувийн арчилгаа нь арьсны байгалийн эрүүл мэндийг сэргээнэ.",
         "detail": {
           "heroSubtitle": "Гоо сайхны эмчийн арчилгаа",
+          "heroImageAlt": "LIV Гоо Заслын Эмнэлэг — премиум арьс арчилгааны зураг",
           "programsSection": {
             "badge": "Хөтөлбөрүүд",
             "title": "LIV Skincare хөтөлбөрүүд",

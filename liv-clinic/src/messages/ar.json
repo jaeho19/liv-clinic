@@ -265,6 +265,7 @@
     "relatedTreatments": "علاجات ذات صلة",
     "close": "إغلاق",
     "closeMenu": "إغلاق القائمة",
+    "viewLarger": "عرض أكبر: {label}",
     "language": "اللغة",
     "backToTop": "العودة إلى الأعلى",
     "expandAll": "توسيع الكل",
@@ -2764,7 +2765,8 @@
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
             "description": "العلامة التجارية الأصلية لخيوط تثبيت أنسجة الوجه المستخدمة في أكثر من 100 دولة حول العالم",
             "durationLabel": "المدة",
-            "durationValue": "تصل إلى 24 شهراً"
+            "durationValue": "تصل إلى 24 شهراً",
+            "imageAlt": "إجراء APTOS NAMICA"
           },
           "namicaSection": {
             "title": "تقنية NAMICA",
@@ -3625,6 +3627,7 @@
         "description": "برنامج Skincare فاخر تنفّذه أخصائيات تجميل محترفات، يشمل علاجَي Aqua Tox و Plafill. عناية مخصصة وفق نوع بشرتك ومشكلاتها لاستعادة الصحة الطبيعية للبشرة.",
         "detail": {
           "heroSubtitle": "عناية أخصائية التجميل",
+          "heroImageAlt": "رسم توضيحي للعناية الفاخرة بالبشرة في مستشفى ليف للتجميل",
           "programsSection": {
             "badge": "البرامج",
             "title": "برامج Skincare من LIV",

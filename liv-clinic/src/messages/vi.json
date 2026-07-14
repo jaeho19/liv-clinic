@@ -265,6 +265,7 @@
     "relatedTreatments": "Phương pháp điều trị liên quan",
     "close": "Đóng",
     "closeMenu": "Đóng trình đơn",
+    "viewLarger": "Xem ảnh lớn hơn: {label}",
     "language": "Ngôn ngữ",
     "backToTop": "Quay lại đầu trang",
     "expandAll": "Mở rộng tất cả",
@@ -2764,7 +2765,8 @@
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
             "description": "Thương hiệu đầu tiên về chỉ cố định mô mặt được sử dụng tại hơn 100 quốc gia trên toàn thế giới",
             "durationLabel": "Khoảng thời gian",
-            "durationValue": "Lên đến 24 tháng"
+            "durationValue": "Lên đến 24 tháng",
+            "imageAlt": "Thủ thuật APTOS NAMICA"
           },
           "namicaSection": {
             "title": "Công nghệ NAMICA",
@@ -3625,6 +3627,7 @@
         "description": "Một chương trình chăm sóc da cao cấp được thực hiện bởi các chuyên gia thẩm mỹ chuyên nghiệp, bao gồm các liệu pháp Aqua Tox và Plafill. Chăm sóc tùy chỉnh dựa trên loại da và mối quan tâm của bạn để phục hồi sức khỏe tự nhiên cho làn da của bạn.",
         "detail": {
           "heroSubtitle": "Chăm sóc thẩm mỹ",
+          "heroImageAlt": "Minh họa chăm sóc da cao cấp Phẫu thuật thẩm mỹ LIV",
           "programsSection": {
             "badge": "Chương trình",
             "title": "Chương Trình Chăm Sóc Da LIV",

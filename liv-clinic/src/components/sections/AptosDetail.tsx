@@ -205,7 +205,7 @@ export default function AptosDetail() {
         <div className="absolute inset-0">
           <Image
             src="/images/aptos/procedure-main.jpg"
-            alt="APTOS NAMICA 시술"
+            alt={t('lifting.aptos.detail.hero.imageAlt')}
             fill
             className="object-cover"
             priority
@@ -435,7 +435,7 @@ export default function AptosDetail() {
               type="button"
               onClick={() => setShowCertificate(true)}
               className="flex-shrink-0 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-              aria-label="APTOS Professional Course Certificate 확대 보기"
+              aria-label={tCommon('viewLarger', { label: t('lifting.aptos.detail.trainingSection.certificateTitle') })}
             >
               <img
                 src="/images/aptos/certificate.jpg"

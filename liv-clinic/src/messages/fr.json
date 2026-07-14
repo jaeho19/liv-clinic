@@ -265,6 +265,7 @@
     "relatedTreatments": "Traitements associés",
     "close": "Fermer",
     "closeMenu": "Fermer le menu",
+    "viewLarger": "Agrandir : {label}",
     "language": "Langue",
     "backToTop": "Retour en haut",
     "expandAll": "Tout développer",
@@ -2764,7 +2765,8 @@
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
             "description": "La marque d'origine des fils de fixation tissulaire faciale utilisée dans plus de 100 pays à travers le monde",
             "durationLabel": "Durée",
-            "durationValue": "Jusqu'à 24 mois"
+            "durationValue": "Jusqu'à 24 mois",
+            "imageAlt": "Traitement APTOS NAMICA"
           },
           "namicaSection": {
             "title": "Technologie NAMICA",
@@ -3625,6 +3627,7 @@
         "description": "Un programme de skincare premium réalisé par des esthéticiennes professionnelles, incluant les soins Aqua Tox et Plafill. Soins personnalisés en fonction de votre type de peau et de vos préoccupations pour redonner à votre peau sa santé naturelle.",
         "detail": {
           "heroSubtitle": "Soin par esthéticienne",
+          "heroImageAlt": "Illustration des soins de la peau premium LIV Chirurgie Esthétique",
           "programsSection": {
             "badge": "Programmes",
             "title": "Programmes Skincare LIV",

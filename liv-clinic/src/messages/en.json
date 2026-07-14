@@ -265,6 +265,7 @@
     "relatedTreatments": "Related Treatments",
     "close": "Close",
     "closeMenu": "Close menu",
+    "viewLarger": "View larger: {label}",
     "language": "Language",
     "backToTop": "Back to Top",
     "expandAll": "Expand All",
@@ -2764,7 +2765,8 @@
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
             "description": "The original brand of facial tissue fixation threads used in over 100 countries worldwide",
             "durationLabel": "Duration",
-            "durationValue": "Up to 24 months"
+            "durationValue": "Up to 24 months",
+            "imageAlt": "APTOS NAMICA treatment"
           },
           "namicaSection": {
             "title": "NAMICA Technology",
@@ -3625,6 +3627,7 @@
         "description": "A premium skincare program performed by professional estheticians, including Aqua Tox and Plafill treatments. Customized care based on your skin type and concerns to restore your skin's natural health.",
         "detail": {
           "heroSubtitle": "Esthetician Care",
+          "heroImageAlt": "LIV Plastic Surgery premium skincare illustration",
           "programsSection": {
             "badge": "Programs",
             "title": "LIV Skincare Programs",

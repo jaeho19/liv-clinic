@@ -178,6 +178,7 @@ export default function SkincarePage() {
     tagline: t('antiaging.skincare.tagline'),
     description: t('antiaging.skincare.description'),
     heroSubtitle: t('antiaging.skincare.detail.heroSubtitle'),
+    heroImageAlt: t('antiaging.skincare.detail.heroImageAlt'),
     programsSection: {
       badge: t('antiaging.skincare.detail.programsSection.badge'),
       title: t('antiaging.skincare.detail.programsSection.title'),
@@ -269,7 +270,7 @@ export default function SkincarePage() {
               <div className="relative aspect-[4/5] max-w-lg mx-auto rounded-[2rem] overflow-hidden shadow-2xl shadow-[#D4A5A5]/20">
                 <Image
                   src="/images/official/Gemini_Generated_Image_2xgc3c2xgc3c2xgc.png"
-                  alt="리브성형외과 프리미엄 스킨케어 일러스트"
+                  alt={detail.heroImageAlt}
                   fill
                   className="object-cover"
                   quality={95}

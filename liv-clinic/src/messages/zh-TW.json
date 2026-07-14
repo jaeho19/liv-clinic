@@ -265,6 +265,7 @@
     "relatedTreatments": "相關項目",
     "close": "關閉",
     "closeMenu": "關閉菜單",
+    "viewLarger": "放大檢視：{label}",
     "language": "語言",
     "backToTop": "返回頂部",
     "expandAll": "全部展開",
@@ -2764,7 +2765,8 @@
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
             "description": "在全球100多個國家使用的面部組織固定線的原創品牌",
             "durationLabel": "效果持續",
-            "durationValue": "最長24個月"
+            "durationValue": "最長24個月",
+            "imageAlt": "APTOS NAMICA 療程"
           },
           "namicaSection": {
             "title": "NAMICA Technology",
@@ -3625,6 +3627,7 @@
         "description": "由專業皮膚管理師進行的高端皮膚護理項目，包括水光注射、Plafill等。根據您的膚質和肌膚困擾量身定製護理方案，恢復肌膚本來的健康狀態。",
         "detail": {
           "heroSubtitle": "Esthetician Care",
+          "heroImageAlt": "LIV 整形外科 頂級皮膚管理插畫",
           "programsSection": {
             "badge": "Programs",
             "title": "LIV 整形外科的皮膚管理項目",

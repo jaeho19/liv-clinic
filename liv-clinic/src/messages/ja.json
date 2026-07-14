@@ -265,6 +265,7 @@
     "relatedTreatments": "関連施術",
     "close": "閉じる",
     "closeMenu": "メニューを閉じる",
+    "viewLarger": "{label} を拡大表示",
     "language": "言語",
     "backToTop": "トップへ",
     "expandAll": "すべて展開",
@@ -2764,7 +2765,8 @@
             "title": "APTOS <span class=\"text-primary\">NAMICA</span>",
             "description": "世界100カ国以上で使用される顔面組織固定用糸のオリジナルブランド",
             "durationLabel": "効果持続",
-            "durationValue": "最大24ヶ月"
+            "durationValue": "最大24ヶ月",
+            "imageAlt": "APTOS NAMICA 施術"
           },
           "namicaSection": {
             "title": "NAMICA Technology",
@@ -3625,6 +3627,7 @@
         "description": "アクアトックス、プラフィルなど専門エステティシャンが行うプレミアムスキンケアプログラムです。肌タイプとお悩みに合わせたオーダーメイドケアで、お肌本来の健康を取り戻します。",
         "detail": {
           "heroSubtitle": "Esthetician Care",
+          "heroImageAlt": "LIV整形外科 プレミアムスキンケアのイラスト",
           "programsSection": {
             "badge": "Programs",
             "title": "リブ形成外科のスキンケアプログラム",
