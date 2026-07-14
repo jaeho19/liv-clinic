@@ -69,7 +69,7 @@ export default function AntiagingPage({
                     <div className="aspect-[4/3] bg-gradient-to-br from-primary/20 to-secondary/20 relative overflow-hidden">
                       <div
                         className="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                        style={{ backgroundImage: `url(/images/treatments/${treatment.id}.jpg)` }}
+                        style={{ backgroundImage: `url(${treatment.thumbnail})` }}
                       />
                       <div className="absolute inset-0 flex items-center justify-center">
                         <span className="font-serif text-5xl text-white/30">

@@ -511,6 +511,7 @@ export const TREATMENTS = {
       tagline: '표정 주름의 완벽한 해결책',
       shortDesc: '자연스러운 주름 개선과 윤곽 정리',
       heroImage: '/images/treatments/botox-hero.jpg',
+      thumbnail: '/images/Gemini_Generated_Image_7od8k07od8k07od8.png',
       description: '보톡스(보툴리눔 톡신)는 근육의 움직임을 일시적으로 약화시켜 표정에 의한 주름을 개선하고, 턱근육(사각턱)이나 종아리 근육의 볼륨을 줄여주는 시술입니다. 정품 제품과 정확한 용량으로 자연스러운 결과를 제공합니다.',
       benefits: [
         { title: '표정 주름 개선', desc: '이마, 미간, 눈가 주름을 효과적으로 완화' },
@@ -557,6 +558,7 @@ export const TREATMENTS = {
       tagline: '볼륨과 윤곽의 아트',
       shortDesc: '히알루론산으로 채우는 자연스러운 볼륨',
       heroImage: '/images/treatments/filler-hero.jpg',
+      thumbnail: '/images/filler-hero-new.png',
       description: '필러는 히알루론산(HA)을 주성분으로 하여 꺼진 부위에 볼륨을 채우고, 주름을 개선하며, 윤곽을 정돈하는 시술입니다. 다양한 제품과 경도를 활용하여 부위별 맞춤 시술이 가능합니다.',
       benefits: [
         { title: '즉각적 효과', desc: '시술 직후 볼륨 개선 확인 가능' },
@@ -603,6 +605,7 @@ export const TREATMENTS = {
       tagline: '피부 속부터 차오르는 광채',
       shortDesc: '진피층 주입으로 수분, 재생, 탄력 개선',
       heroImage: '/images/treatments/skinbooster-hero.jpg',
+      thumbnail: '/images/Gemini_Generated_Image_a2ghqha2ghqha2gh.png',
       description: '스킨부스터는 다양한 제품을 피부 진피층에 주입하여 수분 공급, 재생, 탄력, 광채를 개선하는 시술입니다. 리쥬란, 쥬베룩, 리바이브, 비탈, 리투오 등 피부 상태에 맞는 제품을 선택하여 피부 컨디션을 끌어올립니다.',
       benefits: [
         { title: '깊은 수분 공급', desc: '진피층까지 히알루론산 전달' },
@@ -648,7 +651,8 @@ export const TREATMENTS = {
       nameEn: 'Skincare',
       tagline: '피부관리사의 전문 터치',
       shortDesc: '물톡스, 플라필 등 피부관리사가 진행하는 프리미엄 스킨케어',
-      heroImage: '/images/treatments/skincare-hero.jpg',
+      heroImage: '/images/official/Gemini_Generated_Image_2xgc3c2xgc3c2xgc.png',
+      thumbnail: '/images/official/Gemini_Generated_Image_2xgc3c2xgc3c2xgc.png',
       description: '리브의 스킨케어는 피부관리사가 직접 진행하는 전문 피부 관리 프로그램입니다. 물톡스(수분 공급), 플라필(피부 재생), 클렌징 등 다양한 프로그램으로 피부 본연의 건강함을 회복시켜 드립니다.',
       benefits: [
         { title: '전문 피부관리사', desc: '숙련된 피부관리사의 정교한 테크닉' },
