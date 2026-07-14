@@ -368,9 +368,13 @@ function DeviceCard({ device, index, activeIndex, setActiveIndex }: DeviceCardPr
             {device.title}
           </h3>
           <p className="text-sm text-mono-light mb-2">{device.subTitle}</p>
+          {/* 설명: 1줄이든 2줄이든 항상 2줄 높이를 점유하도록 고정 */}
+          {/* → 로케일/장비별 문구 길이가 달라도 카드 높이가 동일하게 유지된다 */}
+          {/* 2줄 = 14px * 1.625 * 2 = 45.5px, 아랍어 글리프가 라인박스를 넘어 잘리지 않도록 48px 확보 */}
           <p
             className={`
               text-sm text-mono leading-relaxed transition-all duration-500
+              line-clamp-2 min-h-[48px]
               ${isActive ? 'opacity-100' : 'opacity-70'}
             `}
           >
