@@ -1,9 +1,11 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import type { Locale } from '@/i18n/routing';
 import type { MediaNewsItem, FeaturedMediaCard } from '@/lib/data/mediaNewsData';
+import { getLocalizedMediaItem } from '@/lib/data/mediaNewsI18n';
 import MediaNewsCardMedia from './MediaNewsCardMedia';
 
 interface MediaNewsCardProps {
@@ -109,6 +111,9 @@ function CardContent({
 
 export default function MediaNewsCard({ item, onSelect, index = 0, priority }: MediaNewsCardProps) {
   const t = useTranslations('mediaNews');
+  const locale = useLocale() as Locale;
+  // 표시용 텍스트만 로케일 병합(ko는 원본 그대로). onSelect엔 원본을 넘기고 모달이 다시 해상한다.
+  const localized = getLocalizedMediaItem(item, locale);
   const isExternal = item.isExternal === true;
   const ctaLabel = isExternal ? t('readArticle') : t('readMore');
 
@@ -134,7 +139,7 @@ export default function MediaNewsCard({ item, onSelect, index = 0, priority }: M
         className={cardClass}
         {...motionProps}
       >
-        <CardContent item={item} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
+        <CardContent item={localized} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
       </motion.a>
     );
   }
@@ -149,7 +154,7 @@ export default function MediaNewsCard({ item, onSelect, index = 0, priority }: M
         className={cardClass}
         {...motionProps}
       >
-        <CardContent item={item} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
+        <CardContent item={localized} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
       </motion.button>
     );
   }
@@ -162,7 +167,7 @@ export default function MediaNewsCard({ item, onSelect, index = 0, priority }: M
   return (
     <Link href={mediaHref} className="block h-full focus:outline-none">
       <motion.div className={cardClass} {...motionProps}>
-        <CardContent item={item} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
+        <CardContent item={localized} ctaLabel={ctaLabel} imageSrc={imageSrc} priority={priority} />
       </motion.div>
     </Link>
   );

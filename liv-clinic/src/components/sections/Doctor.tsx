@@ -7,10 +7,9 @@ import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button } from '@/components/ui';
 import { SOCIAL_LINKS } from '@/lib/constants';
 
-// 대표 유튜브 영상
+// 대표 유튜브 영상 (제목은 다국어 메시지에서 조회)
 const FEATURED_VIDEO = {
   id: 'J2ZiPnsORRw',
-  title: '리브 원장이 직접 설명하는 안티에이징 시술',
   thumbnail: 'https://img.youtube.com/vi/J2ZiPnsORRw/maxresdefault.jpg',
 };
 
@@ -26,6 +25,7 @@ const doctorConfig = {
 export default function Doctor() {
   const t = useTranslations('sections.doctor');
   const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+  const featuredVideoTitle = t('featuredVideoTitle');
 
   // 번역된 의사 데이터 생성
   const doctor = {
@@ -227,7 +227,7 @@ export default function Doctor() {
                 {isVideoPlaying ? (
                   <iframe
                     src={`https://www.youtube.com/embed/${FEATURED_VIDEO.id}?autoplay=1&rel=0`}
-                    title={FEATURED_VIDEO.title}
+                    title={featuredVideoTitle}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowFullScreen
                     className="absolute inset-0 w-full h-full"
@@ -258,7 +258,7 @@ export default function Doctor() {
                         </svg>
                       </motion.div>
                       <p className="mt-4 text-white text-body font-medium text-shadow">
-                        {FEATURED_VIDEO.title}
+                        {featuredVideoTitle}
                       </p>
                     </div>
 

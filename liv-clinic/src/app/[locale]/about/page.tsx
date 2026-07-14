@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card } from '@/components/ui';
@@ -15,6 +15,7 @@ const Lottie = dynamic(() => import('lottie-react'), { ssr: false });
 import aboutAnimation from '@/../public/lottie/about-01.json';
 
 export default function AboutPage() {
+  const locale = useLocale();
   const t = useTranslations('aboutPage');
   const sectionsT = useTranslations('sections');
 
@@ -161,30 +162,37 @@ export default function AboutPage() {
           </AnimateOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {CERTIFICATIONS.map((cert) => (
-              <AnimateOnScroll key={cert.id}>
-                <div
-                  onClick={() => window.open(cert.link, '_blank')}
-                  className="cursor-pointer"
-                  role="link"
-                  tabIndex={0}
-                  onKeyDown={(e) => e.key === 'Enter' && window.open(cert.link, '_blank')}
-                >
-                  <Card padding="lg" className="text-center h-full hover:border-primary/30 hover:shadow-lg transition-all">
-                    <div className="w-full h-20 mx-auto mb-6 flex items-center justify-center">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={cert.logo}
-                        alt={cert.name}
-                        className={`object-contain hover:scale-105 transition-transform ${cert.id === "ulthera" ? "w-56" : "w-48"}`}
-                      />
-                    </div>
-                    <h3 className="text-h4 text-secondary mb-2">{cert.name}</h3>
-                    <p className="text-body text-mono-light">{cert.nameEn}</p>
-                  </Card>
-                </div>
-              </AnimateOnScroll>
-            ))}
+            {CERTIFICATIONS.map((cert) => {
+              // ko는 국문명(제목) + 영문명(보조) 2줄, 그 외 로케일은 영문명만 1줄로 노출한다.
+              const certName = locale === 'ko' ? cert.name : cert.nameEn;
+
+              return (
+                <AnimateOnScroll key={cert.id}>
+                  <div
+                    onClick={() => window.open(cert.link, '_blank')}
+                    className="cursor-pointer"
+                    role="link"
+                    tabIndex={0}
+                    onKeyDown={(e) => e.key === 'Enter' && window.open(cert.link, '_blank')}
+                  >
+                    <Card padding="lg" className="text-center h-full hover:border-primary/30 hover:shadow-lg transition-all">
+                      <div className="w-full h-20 mx-auto mb-6 flex items-center justify-center">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src={cert.logo}
+                          alt={certName}
+                          className={`object-contain hover:scale-105 transition-transform ${cert.id === "ulthera" ? "w-56" : "w-48"}`}
+                        />
+                      </div>
+                      <h3 className="text-h4 text-secondary mb-2">{certName}</h3>
+                      {locale === 'ko' && (
+                        <p className="text-body text-mono-light">{cert.nameEn}</p>
+                      )}
+                    </Card>
+                  </div>
+                </AnimateOnScroll>
+              );
+            })}
           </div>
         </div>
       </section>

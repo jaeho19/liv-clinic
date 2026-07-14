@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, ScrollLink, Breadcrumb } from '@/components/ui';
@@ -25,8 +25,10 @@ export default function AntiagingPage({
   const resolvedParams = params as unknown as { locale: string };
   setRequestLocale(resolvedParams.locale);
 
+  const locale = useLocale();
   const t = useTranslations('antiagingPage');
   const tNav = useTranslations('nav');
+  const tTreatments = useTranslations('treatments');
 
   return (
     <>
@@ -79,23 +81,25 @@ export default function AntiagingPage({
                     <div className="p-4 md:p-6">
                       <p className="text-small text-primary mb-1 md:mb-2">{treatment.nameEn}</p>
                       <h3 className="text-h3 text-secondary group-hover:text-primary transition-colors mb-2 md:mb-3">
-                        {treatment.name}
+                        {tTreatments(`antiaging.${treatment.id}.name`)}
                       </h3>
                       <p className="text-body text-mono line-clamp-2 mb-3 md:mb-4">
-                        {treatment.description}
+                        {locale === 'ko'
+                          ? treatment.description
+                          : tTreatments(`antiaging.${treatment.id}.description`)}
                       </p>
                       <div className="flex items-center gap-4 text-small text-mono-light">
                         <span className="flex items-center gap-1">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                           </svg>
-                          {treatment.duration}
+                          {tTreatments(`antiaging.${treatment.id}.detail.treatmentValues.duration`)}
                         </span>
                         <span className="flex items-center gap-1">
                           <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
                           </svg>
-                          {treatment.recovery}
+                          {tTreatments(`antiaging.${treatment.id}.detail.treatmentValues.recovery`)}
                         </span>
                       </div>
                     </div>

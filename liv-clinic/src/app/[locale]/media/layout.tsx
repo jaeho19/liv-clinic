@@ -1,48 +1,22 @@
 import type { Metadata } from 'next';
-import { generatePageMetadata, generateWebPageSchema, BASE_URL } from '@/lib/seo';
-import { SITE_INFO } from '@/lib/constants';
+import { getTranslations } from 'next-intl/server';
+import { buildLocalizedMetadata } from '@/lib/pageMeta';
+import { generateWebPageSchema, getSiteName, BASE_URL } from '@/lib/seo';
+import type { Locale } from '@/i18n/routing';
 import { mediaNewsData } from '@/lib/data/mediaNewsData';
+import { getLocalizedMediaItem } from '@/lib/data/mediaNewsI18n';
 
-const META: Record<string, { title: string; description: string; keywords: string[] }> = {
-  ko: {
-    title: 'Media & News | 리브성형외과',
-    description:
-      '리브성형외과의 방송 출연, 전문 매체 인터뷰, 학술 활동, 글로벌 인증, 병원 소식을 한곳에서 확인하실 수 있습니다.',
-    keywords: ['리브성형외과 언론보도', '리브성형외과 소식', 'APTOS 공식 트레이너', '리브성형외과 방송 출연', '신사역 성형외과 미디어'],
-  },
-  en: {
-    title: 'Media & News | LIV Plastic Surgery',
-    description:
-      'Broadcast appearances, professional media interviews, academic activities, global certifications, and clinic news from LIV Plastic Surgery — all in one place.',
-    keywords: ['LIV Plastic Surgery media', 'LIV news', 'APTOS official trainer', 'LIV press coverage', 'Seoul clinic media'],
-  },
-  ja: {
-    title: 'Media & News | リブ形成外科',
-    description:
-      'リブ形成外科の放送出演、専門メディアのインタビュー、学術活動、グローバル認証、クリニックニュースを一か所でご確認いただけます。',
-    keywords: ['リブ形成外科 メディア', 'リブ形成外科 ニュース', 'APTOS公式トレーナー', 'リブ形成外科 放送'],
-  },
-  zh: {
-    title: 'Media & News | LIV整形外科',
-    description: 'LIV整形外科的节目出演、专业媒体采访、学术活动、全球认证及医院资讯，尽在一处。',
-    keywords: ['LIV整形外科 媒体', 'LIV整形外科 资讯', 'APTOS官方培训师', 'LIV整形外科 报道'],
-  },
-};
+const PATH = '/media';
 
+// 메타데이터 — metaSeo.media(11개 로케일) 기준. 기존 로컬 META 맵(ko/en/ja/zh만 정의 →
+// 나머지 7개 로케일이 한국어로 폴백)을 대체한다. hreflang/canonical은 buildLocalizedMetadata가 처리.
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  const m = META[locale] ?? META.ko;
-  return generatePageMetadata({
-    locale,
-    title: m.title,
-    description: m.description,
-    keywords: m.keywords,
-    path: '/media',
-  });
+  return buildLocalizedMetadata(locale, 'media', PATH);
 }
 
 export default async function MediaLayout({
@@ -53,21 +27,26 @@ export default async function MediaLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  const m = META[locale] ?? META.ko;
+  const t = await getTranslations({ locale, namespace: 'metaSeo' });
+  const siteName = getSiteName(locale);
 
   const webPageSchema = generateWebPageSchema({
-    path: `/${locale}/media`,
-    title: m.title,
-    description: m.description,
+    path: `/${locale}${PATH}`,
+    title: t('media.title'),
+    description: t('media.description'),
     locale,
     breadcrumbs: [
-      { name: SITE_INFO.name, url: `/${locale}` },
-      { name: 'Media & News', url: `/${locale}/media` },
+      { name: siteName, url: `/${locale}` },
+      { name: 'Media & News', url: `/${locale}${PATH}` },
     ],
   });
 
-  // 외부 기사 항목을 NewsArticle ItemList로 노출 (검색 노출 보강)
-  const externalItems = mediaNewsData.filter((item) => item.isExternal && item.link);
+  // 외부 기사 항목을 NewsArticle ItemList로 노출 (검색 노출 보강).
+  // headline·publisher는 로케일 번역본을 쓴다(원문 링크는 한국어 기사 그대로).
+  const externalItems = mediaNewsData
+    .filter((item) => item.isExternal && item.link)
+    .map((item) => getLocalizedMediaItem(item, locale as Locale));
+
   const itemListSchema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
@@ -81,8 +60,8 @@ export default async function MediaLayout({
         headline: item.title,
         datePublished: `${item.year}-01-01`,
         url: item.link,
-        publisher: { '@type': 'Organization', name: item.source || SITE_INFO.name },
-        about: { '@type': 'MedicalBusiness', name: SITE_INFO.name, url: BASE_URL },
+        publisher: { '@type': 'Organization', name: item.source || siteName },
+        about: { '@type': 'MedicalBusiness', name: siteName, url: BASE_URL },
       },
     })),
   };

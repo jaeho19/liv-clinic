@@ -5,6 +5,10 @@ import { LASER_CATEGORIES, SITE_INFO } from '@/lib/constants';
 // Get static category data (color, href, etc.)
 const categoryStatic = LASER_CATEGORIES.find(c => c.id === 'vascular')!;
 
+// SITE_INFO.name is Korean-only, so non-ko locales use the English site name
+// to keep titles / OG / JSON-LD free of Korean.
+const siteNameFor = (locale: string) => (locale === 'ko' ? SITE_INFO.name : SITE_INFO.nameEn);
+
 interface LayoutProps {
   children: React.ReactNode;
   params: Promise<{ locale: string }>;
@@ -45,10 +49,10 @@ export default async function VascularLayout({
     })),
   };
 
-  const serviceSchema = generateMedicalServiceSchema(serviceData);
+  const serviceSchema = generateMedicalServiceSchema(serviceData, { locale });
   const pageSchema = generateWebPageSchema({
     path: '/laser/vascular',
-    title: `${categoryName} | ${SITE_INFO.name}`,
+    title: `${categoryName} | ${siteNameFor(locale)}`,
     description: categoryDescription,
     locale,
     type: 'MedicalWebPage',
@@ -94,15 +98,17 @@ export async function generateMetadata({ params }: MetadataProps) {
     ja: ['赤ら顔治療', '血管レーザー', '毛細血管拡張', '酒さ', '新沙皮膚科'],
   };
 
+  const siteName = siteNameFor(locale);
+
   return {
-    title: `${categoryName} | ${SITE_INFO.name}`,
+    title: `${categoryName} | ${siteName}`,
     description: categoryDescription,
     keywords: [categoryName, categoryStatic.nameEn, ...(keywordsByLocale[locale] || keywordsByLocale.en)],
     openGraph: {
-      title: `${categoryName} | ${SITE_INFO.name}`,
+      title: `${categoryName} | ${siteName}`,
       description: categoryTagline,
       url: `${BASE_URL}/${locale}/laser/vascular`,
-      siteName: SITE_INFO.name,
+      siteName,
       type: 'website',
     },
     alternates: {

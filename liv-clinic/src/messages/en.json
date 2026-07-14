@@ -242,7 +242,9 @@
     },
     "readArticle": "Read article",
     "readMore": "Learn more",
-    "empty": "No news to display."
+    "empty": "No news to display.",
+    "photoAlt": "{title} — photo {index}",
+    "thumbnailAlt": "{badge} feature image"
   },
   "common": {
     "home": "Home",
@@ -483,7 +485,8 @@
         "introLine1": "LIV Plastic Surgery uses only authentic, certified premium equipment.",
         "introLine2": "We deliver safe and effective treatments with cutting-edge technology.",
         "viewMore": "Learn more",
-        "navigationHint": "Drag or scroll to explore"
+        "navigationHint": "Drag or scroll to explore",
+        "swipeHint": "← Swipe to see more →"
       }
     },
     "signature": {
@@ -596,7 +599,8 @@
       },
       "ui": {
         "playVideo": "Play video"
-      }
+      },
+      "featuredVideoTitle": "Anti-Aging Treatments Explained by the LIV Director"
     },
     "doctors": {
       "kim": {
@@ -626,7 +630,39 @@
           "Member, Korean Society of Aesthetic Plastic Surgery",
           "Member, Korean Cleft Palate-Craniofacial Association",
           "Member, Korean Society for Laser Medicine and Surgery"
-        ]
+        ],
+        "specialties": [
+          "Ultherapy Prime Lifting",
+          "Thermage Lifting",
+          "Combination Lifting Treatments",
+          "Anti-Aging Programs"
+        ],
+        "gallery": [
+          {
+            "title": "APTOS Headquarters Training",
+            "subtitle": "Georgia, 2025"
+          },
+          {
+            "title": "APTOS Official Certificate",
+            "subtitle": "KR0062025"
+          },
+          {
+            "title": "Clinical Experience Presentation",
+            "subtitle": "International Conference"
+          },
+          {
+            "title": "Treatment in Practice",
+            "subtitle": "Clinical Practice"
+          }
+        ],
+        "academic": {
+          "thesisInstitution": "Korea University Graduate School",
+          "thesisDegree": "Master's Thesis",
+          "conferenceMips37": "37th Meeting of the Minimally Invasive Plastic Surgery Society (MIPS)",
+          "conferenceMips36": "36th Meeting of the Minimally Invasive Plastic Surgery Society (MIPS)",
+          "conferenceAesthetic": "Korean Society of Aesthetic Plastic Surgery",
+          "conferencePlastic": "Korean Society of Plastic and Reconstructive Surgeons"
+        }
       },
       "cheon": {
         "name": "Shinhye Cheon",
@@ -650,6 +686,13 @@
           "Member, Korean Academy of Family Medicine",
           "Member, Korean Society of Aesthetic Medicine and Laser Surgery",
           "Member, Korean Society of Obesity Medicine and Aesthetic Treatment"
+        ],
+        "specialties": [
+          "Lifting Lasers",
+          "Skin Boosters",
+          "Laser Toning",
+          "Pigmentation & Pore Lasers",
+          "Skin Care Programs"
         ]
       },
       "labels": {
@@ -4031,6 +4074,103 @@
         "tagline": "Melasma, Spots & Freckle Treatment",
         "description": "Customized laser treatments for various pigmentation conditions to restore clear, radiant skin.",
         "detail": {
+          "categoryName": "Melasma & Pigment Improvement",
+          "equipmentCards": {
+            "lucas": {
+              "name": "Lucas Laser",
+              "nameEn": "Lucas Laser",
+              "tagline": "Picosecond technology for even stubborn pigmentation – 1,000x faster pulses",
+              "benefits": [
+                {
+                  "title": "Picosecond Pulse",
+                  "desc": "Ultra-short pulse of one trillionth of a second (10⁻¹²), 1,000x faster than nanosecond"
+                },
+                {
+                  "title": "Fine Pigment Breakdown",
+                  "desc": "Breaks pigment down more finely than nano lasers for faster clearance"
+                },
+                {
+                  "title": "Surrounding Tissue Protection",
+                  "desc": "Minimized thermal damage reduces side effects and speeds recovery"
+                }
+              ],
+              "duration": "20-40 minutes",
+              "recovery": "3-7 days (fine scabbing possible)",
+              "sessions": "3-5 sessions recommended at 2-4 week intervals"
+            },
+            "clarity": {
+              "name": "Clarity II",
+              "nameEn": "Clarity II",
+              "tagline": "The peak of dual-wavelength lasers – all-in-one for pigment, vessels and hair removal",
+              "benefits": [
+                {
+                  "title": "Dual Wavelength",
+                  "desc": "755nm (pigment/hair) + 1064nm (vascular/deep pigment) multi-solution"
+                },
+                {
+                  "title": "IntelliTrak Technology",
+                  "desc": "Automatic 18% overlap delivers uniform energy and minimizes missed areas"
+                },
+                {
+                  "title": "All Skin Types",
+                  "desc": "Safe treatment for Fitzpatrick I-VI"
+                }
+              ],
+              "duration": "15-30 minutes",
+              "recovery": "3-5 days (fine scabbing possible on pigmented areas)",
+              "sessions": "3-5 sessions recommended at 2-4 week intervals"
+            },
+            "toning": {
+              "name": "Laser Toning",
+              "nameEn": "Laser Toning",
+              "tagline": "Gradual improvement through gentle repeat sessions – everyday maintenance",
+              "benefits": [
+                {
+                  "title": "Gentle Treatment",
+                  "desc": "Low-power repeat passes minimize side effects"
+                },
+                {
+                  "title": "No Downtime",
+                  "desc": "Return to daily life immediately after treatment"
+                },
+                {
+                  "title": "Cumulative Effect",
+                  "desc": "Repeat sessions bring gradual, natural improvement"
+                }
+              ],
+              "duration": "5-15 minutes",
+              "recovery": "None (immediate return to daily life)",
+              "sessions": "10+ cumulative sessions recommended"
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc",
+              "tagline": "Melanin-targeting whitening – overall skin tone improvement",
+              "benefits": [
+                {
+                  "title": "Melanin Targeting",
+                  "desc": "Acts selectively on melanin pigment for effective improvement"
+                },
+                {
+                  "title": "Overall Tone-Up",
+                  "desc": "Brightens the entire skin tone evenly, not just spots"
+                },
+                {
+                  "title": "Gentle Treatment",
+                  "desc": "Almost no downtime, immediate return to daily life"
+                }
+              ],
+              "duration": "15-20 minutes",
+              "recovery": "None (immediate return to daily life)",
+              "sessions": "5-10 cumulative sessions recommended"
+            }
+          },
+          "otherCategories": {
+            "vascular": "Redness & Vascular Treatment",
+            "skintone": "Skin Tone Enhancement",
+            "hair-removal": "Premium Hair Removal",
+            "tattoo": "Tattoo Removal"
+          },
           "hero": {
             "subtitle": "Even stubborn melasma with our 3-stage system",
             "description": "From picosecond laser to gentle toning, customized pigmentation treatment with 4 premium devices"
@@ -5920,7 +6060,44 @@
       "heroDescription": "Just 1 minute walk from Sinsa Station Exit 4. Conveniently accessible LIV Plastic Surgery.",
       "addressLabel": "Address",
       "buildingDetail": "4F, Jaeun Building",
-      "phoneLabel": "Phone"
+      "phoneLabel": "Phone",
+      "mapAppsLabel": "Open in Map App",
+      "mapApps": {
+        "naver": "Naver",
+        "kakao": "Kakao",
+        "google": "Google"
+      },
+      "callButton": "Call Us",
+      "transportTitle": "Getting Here",
+      "transport": {
+        "subway": {
+          "title": "Subway",
+          "description": "Sinsa Station Exit 4",
+          "detail": "1-minute walk",
+          "line": "Line 3"
+        },
+        "bus": {
+          "title": "Bus",
+          "description": "Sinsa Station bus stop",
+          "detail": "2-minute walk"
+        },
+        "car": {
+          "title": "Car",
+          "description": "Parking inside the building",
+          "detail": "2 hours free for treatment patients"
+        }
+      },
+      "parking": {
+        "description": "An underground parking garage is available in the building.\nTreatment patients receive <b>2 hours of free parking</b>.",
+        "note": "Parking space can be limited,\nso we recommend using public transportation when possible.",
+        "badgeValue": "2 Hours",
+        "badgeLabel": "Free parking for treatment patients"
+      },
+      "cta": {
+        "title": "Book a Visit Consultation",
+        "description": "Please book in advance for a relaxed consultation.",
+        "book": "Book a Consultation"
+      }
     }
   },
   "equipmentPage": {
@@ -6500,6 +6677,17 @@
     }
   },
   "metaSeo": {
+    "media": {
+      "title": "Media & News | LIV Plastic Surgery",
+      "description": "Broadcast appearances, professional media interviews, academic activities, global certifications, and clinic news from LIV Plastic Surgery — all in one place.",
+      "keywords": [
+        "LIV Plastic Surgery media",
+        "LIV news",
+        "APTOS official trainer",
+        "LIV press coverage",
+        "Seoul clinic media"
+      ]
+    },
     "reviews": {
       "title": "Patient Reviews | Real Stories at LIV Plastic Surgery",
       "description": "Read real reviews from patients who received Ultherapy, Thermage, Botox, filler and more at LIV Plastic Surgery in Seoul, Korea.",

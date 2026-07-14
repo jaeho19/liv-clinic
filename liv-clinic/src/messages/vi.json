@@ -242,7 +242,9 @@
     },
     "readArticle": "Xem bài viết",
     "readMore": "Tìm hiểu thêm",
-    "empty": "Không có tin tức để hiển thị."
+    "empty": "Không có tin tức để hiển thị.",
+    "photoAlt": "{title} — ảnh {index}",
+    "thumbnailAlt": "Ảnh đại diện {badge}"
   },
   "common": {
     "home": "Trang chủ",
@@ -483,7 +485,8 @@
         "introLine1": "Bệnh viện phẫu thuật thẩm mỹ LIV chỉ sử dụng thiết bị cao cấp chính hãng, được chứng nhận.",
         "introLine2": "Chúng tôi cung cấp các phương pháp điều trị an toàn và hiệu quả với công nghệ tiên tiến.",
         "viewMore": "Tìm hiểu thêm",
-        "navigationHint": "Kéo hoặc cuộn để khám phá"
+        "navigationHint": "Kéo hoặc cuộn để khám phá",
+        "swipeHint": "← Vuốt để xem thêm →"
       }
     },
     "signature": {
@@ -596,7 +599,8 @@
       },
       "ui": {
         "playVideo": "Phát video"
-      }
+      },
+      "featuredVideoTitle": "Điều trị chống lão hóa do giám đốc LIV trực tiếp giải thích"
     },
     "doctors": {
       "kim": {
@@ -626,7 +630,39 @@
           "Thành viên, Hiệp hội Phẫu thuật Thẩm mỹ Hàn Quốc",
           "Thành viên, Hiệp hội sứt môi – sọ mặt Hàn Quốc",
           "Thành viên, Hiệp hội Y học và Phẫu thuật Laser Hàn Quốc"
-        ]
+        ],
+        "specialties": [
+          "Nâng cơ Ultherapy Prime",
+          "Nâng cơ Thermage",
+          "Điều trị nâng cơ kết hợp",
+          "Chương trình chống lão hóa"
+        ],
+        "gallery": [
+          {
+            "title": "Đào tạo tại trụ sở APTOS",
+            "subtitle": "Gruzia, 2025"
+          },
+          {
+            "title": "Chứng nhận chính thức APTOS",
+            "subtitle": "KR0062025"
+          },
+          {
+            "title": "Trình bày kinh nghiệm lâm sàng",
+            "subtitle": "Hội nghị quốc tế"
+          },
+          {
+            "title": "Hiện trường điều trị",
+            "subtitle": "Thực hành lâm sàng"
+          }
+        ],
+        "academic": {
+          "thesisInstitution": "Trường Sau đại học Đại học Hàn Quốc",
+          "thesisDegree": "Luận văn thạc sĩ",
+          "conferenceMips37": "Hội nghị lần thứ 37 của Hiệp hội Phẫu thuật Thẩm mỹ Xâm lấn Tối thiểu (MIPS)",
+          "conferenceMips36": "Hội nghị lần thứ 36 của Hiệp hội Phẫu thuật Thẩm mỹ Xâm lấn Tối thiểu (MIPS)",
+          "conferenceAesthetic": "Hiệp hội Phẫu thuật Thẩm mỹ Hàn Quốc",
+          "conferencePlastic": "Hiệp hội bác sĩ phẫu thuật thẩm mỹ và tái tạo Hàn Quốc"
+        }
       },
       "cheon": {
         "name": "Shinhye Cheon",
@@ -650,6 +686,13 @@
           "Thành viên, Học viện Y học Gia đình Hàn Quốc",
           "Thành viên, Hiệp hội Y học Thẩm mỹ và Phẫu thuật Laser Hàn Quốc",
           "Thành viên, Hiệp hội Y học Béo phì và Điều trị Thẩm mỹ Hàn Quốc"
+        ],
+        "specialties": [
+          "Laser nâng cơ",
+          "Skin Booster",
+          "Laser toning",
+          "Laser sắc tố/lỗ chân lông",
+          "Chương trình chăm sóc da"
         ]
       },
       "labels": {
@@ -4031,6 +4074,103 @@
         "tagline": "Điều Trị Nám, Đốm & Tàn Nhang",
         "description": "Các phương pháp điều trị bằng laser tùy chỉnh cho các tình trạng sắc tố khác nhau để phục hồi làn da sáng mịn.",
         "detail": {
+          "categoryName": "Cải thiện nám & sắc tố",
+          "equipmentCards": {
+            "lucas": {
+              "name": "Laser Lucas",
+              "nameEn": "Lucas Laser",
+              "tagline": "Công nghệ picosecond cho cả sắc tố khó trị – xung nhanh gấp 1000 lần",
+              "benefits": [
+                {
+                  "title": "Xung picosecond",
+                  "desc": "Xung siêu ngắn một phần nghìn tỷ giây (10⁻¹²), nhanh gấp 1000 lần nanosecond"
+                },
+                {
+                  "title": "Phân giải sắc tố vi mô",
+                  "desc": "Phân giải sắc tố mịn hơn laser nano, đào thải nhanh hơn"
+                },
+                {
+                  "title": "Bảo vệ mô xung quanh",
+                  "desc": "Giảm thiểu tổn thương nhiệt, ít tác dụng phụ, hồi phục nhanh"
+                }
+              ],
+              "duration": "20-40 phút",
+              "recovery": "3-7 ngày (có thể đóng vảy nhỏ)",
+              "sessions": "Khuyến nghị 3-5 buổi, cách nhau 2-4 tuần"
+            },
+            "clarity": {
+              "name": "Clarity II",
+              "nameEn": "Clarity II",
+              "tagline": "Đỉnh cao laser bước sóng kép – tất cả trong một: sắc tố, mạch máu, triệt lông",
+              "benefits": [
+                {
+                  "title": "Bước sóng kép",
+                  "desc": "Giải pháp đa năng 755nm (sắc tố/tóc) + 1064nm (mạch máu/sắc tố sâu)"
+                },
+                {
+                  "title": "Công nghệ IntelliTrak",
+                  "desc": "Chồng lấn tự động 18% giúp truyền năng lượng đồng đều, hạn chế bỏ sót"
+                },
+                {
+                  "title": "Mọi loại da",
+                  "desc": "Điều trị an toàn cho Fitzpatrick I-VI"
+                }
+              ],
+              "duration": "15-30 phút",
+              "recovery": "3-5 ngày (có thể đóng vảy nhỏ ở vùng sắc tố)",
+              "sessions": "Khuyến nghị 3-5 buổi, cách nhau 2-4 tuần"
+            },
+            "toning": {
+              "name": "Làm săn chắc da bằng laser",
+              "nameEn": "Laser Toning",
+              "tagline": "Cải thiện dần bằng liệu trình lặp lại nhẹ nhàng – duy trì trong sinh hoạt hằng ngày",
+              "benefits": [
+                {
+                  "title": "Liệu trình nhẹ nhàng",
+                  "desc": "Chiếu lặp công suất thấp giúp giảm thiểu tác dụng phụ"
+                },
+                {
+                  "title": "Không thời gian nghỉ",
+                  "desc": "Sinh hoạt bình thường ngay sau khi điều trị"
+                },
+                {
+                  "title": "Hiệu quả tích lũy",
+                  "desc": "Liệu trình lặp lại mang lại cải thiện dần dần, tự nhiên"
+                }
+              ],
+              "duration": "5-15 phút",
+              "recovery": "Không (trở lại sinh hoạt ngay)",
+              "sessions": "Khuyến nghị tích lũy từ 10 buổi trở lên"
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc",
+              "tagline": "Làm sáng nhắm đích melanin – cải thiện tông da tổng thể",
+              "benefits": [
+                {
+                  "title": "Nhắm đích melanin",
+                  "desc": "Tác động chọn lọc lên sắc tố melanin để cải thiện hiệu quả"
+                },
+                {
+                  "title": "Nâng tông toàn diện",
+                  "desc": "Làm sáng đều toàn bộ tông da, không chỉ từng vùng"
+                },
+                {
+                  "title": "Liệu trình nhẹ nhàng",
+                  "desc": "Hầu như không có thời gian nghỉ, trở lại sinh hoạt ngay"
+                }
+              ],
+              "duration": "15-20 phút",
+              "recovery": "Không (trở lại sinh hoạt ngay)",
+              "sessions": "Khuyến nghị tích lũy 5-10 buổi"
+            }
+          },
+          "otherCategories": {
+            "vascular": "Điều trị đỏ da & mạch máu",
+            "skintone": "Đều màu da",
+            "hair-removal": "Triệt lông cao cấp",
+            "tattoo": "Xóa hình xăm"
+          },
           "hero": {
             "subtitle": "Trị nám cứng đầu với hệ thống 3 giai đoạn của chúng tôi",
             "description": "Từ laser picosecond đến làm săn chắc da nhẹ nhàng, điều trị sắc tố tùy chỉnh với 4 thiết bị cao cấp"
@@ -5920,7 +6060,44 @@
       "heroDescription": "Chỉ 1 phút đi bộ từ Lối ra số 4 của Ga Sinsa. Có thể tiếp cận thuận tiện với Bệnh viện Thẩm mỹ LIV.",
       "addressLabel": "Địa chỉ",
       "buildingDetail": "Tầng 4, tòa nhà Jaeun",
-      "phoneLabel": "Điện thoại"
+      "phoneLabel": "Điện thoại",
+      "mapAppsLabel": "Mở trong ứng dụng bản đồ",
+      "mapApps": {
+        "naver": "Naver",
+        "kakao": "Kakao",
+        "google": "Google"
+      },
+      "callButton": "Gọi điện",
+      "transportTitle": "Hướng dẫn di chuyển",
+      "transport": {
+        "subway": {
+          "title": "Tàu điện ngầm",
+          "description": "Ga Sinsa lối ra số 4",
+          "detail": "Đi bộ 1 phút",
+          "line": "Tuyến 3"
+        },
+        "bus": {
+          "title": "Xe buýt",
+          "description": "Trạm xe buýt ga Sinsa",
+          "detail": "Đi bộ 2 phút"
+        },
+        "car": {
+          "title": "Ô tô",
+          "description": "Bãi đậu xe trong tòa nhà",
+          "detail": "Miễn phí 2 giờ cho khách điều trị"
+        }
+      },
+      "parking": {
+        "description": "Quý khách có thể sử dụng bãi đậu xe ngầm trong tòa nhà.\nKhách hàng điều trị được <b>miễn phí đậu xe 2 giờ</b>.",
+        "note": "Chỗ đậu xe có thể hạn chế,\nvì vậy chúng tôi khuyến khích quý khách sử dụng phương tiện công cộng.",
+        "badgeValue": "2 giờ",
+        "badgeLabel": "Miễn phí đậu xe cho khách điều trị"
+      },
+      "cta": {
+        "title": "Đặt lịch tư vấn tại phòng khám",
+        "description": "Vui lòng đặt lịch trước để được tư vấn thoải mái.",
+        "book": "Đặt lịch tư vấn"
+      }
     }
   },
   "equipmentPage": {
@@ -6500,6 +6677,17 @@
     }
   },
   "metaSeo": {
+    "media": {
+      "title": "Media & News | LIV Plastic Surgery",
+      "description": "Xuất hiện trên truyền hình, phỏng vấn báo chí chuyên ngành, hoạt động học thuật, chứng nhận quốc tế và tin tức phòng khám của LIV Plastic Surgery — tất cả ở một nơi.",
+      "keywords": [
+        "truyền thông LIV Plastic Surgery",
+        "tin tức LIV",
+        "giảng viên chính thức APTOS",
+        "báo chí viết về LIV",
+        "phòng khám Seoul trên báo chí"
+      ]
+    },
     "reviews": {
       "title": "Patient Reviews | Real Stories at LIV Plastic Surgery",
       "description": "Read real reviews from patients who received Ultherapy, Thermage, Botox, filler and more at LIV Plastic Surgery in Seoul, Korea.",

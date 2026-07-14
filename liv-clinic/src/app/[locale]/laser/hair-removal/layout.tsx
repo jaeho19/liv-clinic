@@ -44,7 +44,7 @@ export default async function HairRemovalLayout({
 
   const serviceSchema = generateMedicalServiceSchema(
     { ...serviceData, name, description },
-    { reservationWord: tT('common.consultationCta') },
+    { reservationWord: tT('common.consultationCta'), locale },
   );
   const pageSchema = await localizedWebPageSchema({
     locale,

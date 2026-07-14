@@ -4,8 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import type { Locale } from '@/i18n/routing';
 import type { MediaNewsItem } from '@/lib/data/mediaNewsData';
+import { getLocalizedMediaItem } from '@/lib/data/mediaNewsI18n';
 
 interface MediaNewsModalProps {
   open: boolean;
@@ -20,6 +22,8 @@ const badgeStyles: Record<'press' | 'news', string> = {
 
 export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalProps) {
   const tCommon = useTranslations('common');
+  const t = useTranslations('mediaNews');
+  const locale = useLocale() as Locale;
   const [mounted, setMounted] = useState(false);
   const closeBtnRef = useRef<HTMLButtonElement>(null);
   const triggerRef = useRef<Element | null>(null);
@@ -57,10 +61,12 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
   if (!mounted) return null;
 
   const titleId = 'media-news-modal-title';
+  // 기사 텍스트를 현재 로케일로 병합(ko는 원본 그대로 반환)
+  const view = item ? getLocalizedMediaItem(item, locale) : null;
 
   return createPortal(
     <AnimatePresence>
-      {open && item && (
+      {open && view && (
         <>
           {/* Backdrop */}
           <motion.div
@@ -83,7 +89,7 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
               left: '50%',
               transform: 'translate(-50%, -50%)',
               zIndex: 101,
-              width: item.images?.length ? 'min(92vw, 42rem)' : 'min(92vw, 36rem)',
+              width: view.images?.length ? 'min(92vw, 42rem)' : 'min(92vw, 36rem)',
               maxHeight: '85vh',
               overflowY: 'auto',
             }}
@@ -113,38 +119,38 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
 
               {/* 메타 */}
               <div className="mb-4 flex flex-wrap items-center gap-2 pr-10">
-                <span className={`rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.15em] ${badgeStyles[item.type]}`}>
-                  {item.badge}
+                <span className={`rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.15em] ${badgeStyles[view.type]}`}>
+                  {view.badge}
                 </span>
-                <span className="text-xs text-mono-light">{item.year}</span>
-                {item.source && (
+                <span className="text-xs text-mono-light">{view.year}</span>
+                {view.source && (
                   <>
                     <span className="h-1 w-1 rounded-full bg-mono-light/50" />
-                    <span className="text-xs text-mono-light">{item.source}</span>
+                    <span className="text-xs text-mono-light">{view.source}</span>
                   </>
                 )}
               </div>
 
               {/* 제목 */}
               <h3 id={titleId} className="mb-4 text-h3 text-secondary">
-                {item.title}
+                {view.title}
               </h3>
 
               {/* 사진 (내부 소식 상세) — stack: 상하 배치·원본 비율(가로형), 기본: 3:4 2열 그리드(세로형) */}
-              {item.images && item.images.length > 0 && (
+              {view.images && view.images.length > 0 && (
                 <div
                   className={
-                    item.imageLayout === 'stack'
+                    view.imageLayout === 'stack'
                       ? 'mb-6 space-y-3'
                       : 'mb-6 grid grid-cols-1 gap-3 sm:grid-cols-2'
                   }
                 >
-                  {item.images.map((src, i) =>
-                    item.imageLayout === 'stack' ? (
+                  {view.images.map((src, i) =>
+                    view.imageLayout === 'stack' ? (
                       <div key={src} className="overflow-hidden rounded-xl bg-background">
                         <Image
                           src={src}
-                          alt={`${item.title} 현장 사진 ${i + 1}`}
+                          alt={t('photoAlt', { title: view.title, index: i + 1 })}
                           width={1200}
                           height={750}
                           className="h-auto w-full"
@@ -159,7 +165,7 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
                       >
                         <Image
                           src={src}
-                          alt={`${item.title} 현장 사진 ${i + 1}`}
+                          alt={t('photoAlt', { title: view.title, index: i + 1 })}
                           fill
                           className="object-cover"
                           sizes="(max-width: 672px) 92vw, 21rem"
@@ -171,15 +177,15 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
               )}
 
               {/* 본문: body(문단 배열) 우선, 없으면 description 폴백 */}
-              {item.body && item.body.length > 0 ? (
+              {view.body && view.body.length > 0 ? (
                 <div className="space-y-4 text-body leading-relaxed text-mono">
-                  {item.body.map((para, i) => (
+                  {view.body.map((para, i) => (
                     <p key={i}>{para}</p>
                   ))}
                 </div>
               ) : (
                 <p className="text-body leading-relaxed text-mono whitespace-pre-line">
-                  {item.description}
+                  {view.description}
                 </p>
               )}
             </motion.div>

@@ -9,21 +9,19 @@ import BeforeAfterModal from '@/components/sections/BeforeAfterModal';
 import type { BeforeAfterRow } from '@/types/admin';
 import type { Locale } from '@/i18n/routing';
 
-// Phase 1 신규 locale (zh-TW/vi/th/ru)은 메시지 키화 전이라 ko fallback 동작 (PAGE_TEXT[locale] ?? KO_TEXT).
+// 전 로케일 커버 (11종). 미지의 locale은 영어로 폴백 — 한국어가 새지 않도록.
 type PageText = { eyebrow: string; title: string; subtitle: string; all: string; empty: string; error: string; retry: string };
 
-const KO_TEXT: PageText = {
-  eyebrow: 'Before & After',
-  title: '전후사진',
-  subtitle: '리브성형외과의 시술 전후 사례를 카테고리별로 확인해보세요.',
-  all: '전체',
-  empty: '등록된 전후사진이 없습니다.',
-  error: '전후사진을 불러오는 중 오류가 발생했습니다.',
-  retry: '다시 시도',
-};
-
-const PAGE_TEXT: Partial<Record<Locale, PageText>> = {
-  ko: KO_TEXT,
+const PAGE_TEXT: Record<Locale, PageText> = {
+  ko: {
+    eyebrow: 'Before & After',
+    title: '전후사진',
+    subtitle: '리브성형외과의 시술 전후 사례를 카테고리별로 확인해보세요.',
+    all: '전체',
+    empty: '등록된 전후사진이 없습니다.',
+    error: '전후사진을 불러오는 중 오류가 발생했습니다.',
+    retry: '다시 시도',
+  },
   en: {
     eyebrow: 'Before & After',
     title: 'Before & After',
@@ -51,6 +49,69 @@ const PAGE_TEXT: Partial<Record<Locale, PageText>> = {
     error: '加载术前术后照片时出错。',
     retry: '重试',
   },
+  'zh-TW': {
+    eyebrow: 'Before & After',
+    title: '術前術後',
+    subtitle: '按類別查看我們的術前術後案例。',
+    all: '全部',
+    empty: '暫無術前術後照片。',
+    error: '載入術前術後照片時發生錯誤。',
+    retry: '重試',
+  },
+  vi: {
+    eyebrow: 'Before & After',
+    title: 'Trước & Sau',
+    subtitle: 'Xem các ca trước và sau điều trị theo từng danh mục.',
+    all: 'Tất cả',
+    empty: 'Chưa có ảnh trước/sau nào.',
+    error: 'Không thể tải ảnh trước/sau.',
+    retry: 'Thử lại',
+  },
+  th: {
+    eyebrow: 'Before & After',
+    title: 'ก่อนและหลัง',
+    subtitle: 'ดูเคสก่อนและหลังการรักษาของเราแยกตามหมวดหมู่',
+    all: 'ทั้งหมด',
+    empty: 'ยังไม่มีรูปก่อน/หลัง',
+    error: 'ไม่สามารถโหลดรูปก่อน/หลังได้',
+    retry: 'ลองอีกครั้ง',
+  },
+  ru: {
+    eyebrow: 'Before & After',
+    title: 'До и После',
+    subtitle: 'Ознакомьтесь с примерами до и после процедур по категориям.',
+    all: 'Все',
+    empty: 'Фотографий «до и после» пока нет.',
+    error: 'Не удалось загрузить фотографии «до и после».',
+    retry: 'Повторить',
+  },
+  fr: {
+    eyebrow: 'Before & After',
+    title: 'Avant/Après',
+    subtitle: 'Découvrez nos cas avant/après par catégorie.',
+    all: 'Tout',
+    empty: 'Aucune photo avant/après pour le moment.',
+    error: 'Échec du chargement des photos avant/après.',
+    retry: 'Réessayer',
+  },
+  mn: {
+    eyebrow: 'Before & After',
+    title: 'Өмнө/Дараа',
+    subtitle: 'Эмчилгээний өмнөх, дараах тохиолдлуудыг ангиллаар нь үзнэ үү.',
+    all: 'Бүгд',
+    empty: 'Одоогоор өмнө/дараах зураг байхгүй байна.',
+    error: 'Өмнө/дараах зургийг ачаалж чадсангүй.',
+    retry: 'Дахин оролдох',
+  },
+  ar: {
+    eyebrow: 'Before & After',
+    title: 'قبل/بعد',
+    subtitle: 'استعرض حالات ما قبل وبعد العلاج حسب الفئة.',
+    all: 'الكل',
+    empty: 'لا توجد صور قبل/بعد حتى الآن.',
+    error: 'تعذر تحميل صور قبل/بعد.',
+    retry: 'إعادة المحاولة',
+  },
 };
 
 function pickTitle(row: BeforeAfterRow, locale: Locale): string {
@@ -67,7 +128,7 @@ function pickTitle(row: BeforeAfterRow, locale: Locale): string {
 
 export default function BeforeAfterPage() {
   const locale = useLocale() as Locale;
-  const text = PAGE_TEXT[locale] ?? KO_TEXT;
+  const text = PAGE_TEXT[locale] ?? PAGE_TEXT.en;
 
   const [items, setItems] = useState<BeforeAfterRow[]>([]);
   const [loading, setLoading] = useState(true);

@@ -242,7 +242,9 @@
     },
     "readArticle": "قراءة المقال",
     "readMore": "اعرف المزيد",
-    "empty": "لا توجد أخبار للعرض."
+    "empty": "لا توجد أخبار للعرض.",
+    "photoAlt": "{title} — صورة {index}",
+    "thumbnailAlt": "الصورة الرئيسية {badge}"
   },
   "common": {
     "home": "الرئيسية",
@@ -483,7 +485,8 @@
         "introLine1": "تستخدم عيادة ليف للتجميل فقط أجهزة بريميوم أصلية ومعتمدة.",
         "introLine2": "نقدم علاجات آمنة وفعالة بتقنيات متقدمة.",
         "viewMore": "اعرف المزيد",
-        "navigationHint": "اسحب أو مرر للاستكشاف"
+        "navigationHint": "اسحب أو مرر للاستكشاف",
+        "swipeHint": "← اسحب لعرض المزيد →"
       }
     },
     "signature": {
@@ -596,7 +599,8 @@
       },
       "ui": {
         "playVideo": "تشغيل الفيديو"
-      }
+      },
+      "featuredVideoTitle": "علاجات مكافحة الشيخوخة يشرحها مدير عيادة LIV"
     },
     "doctors": {
       "kim": {
@@ -626,7 +630,39 @@
           "Member, Korean Society of Aesthetic Plastic Surgery",
           "Member, Korean Cleft Palate-Craniofacial Association",
           "Member, Korean Society for Laser Medicine and Surgery"
-        ]
+        ],
+        "specialties": [
+          "شد Ultherapy Prime",
+          "شد Thermage",
+          "علاجات الشد المركبة",
+          "برامج مكافحة الشيخوخة"
+        ],
+        "gallery": [
+          {
+            "title": "تدريب في مقر APTOS",
+            "subtitle": "Georgia, 2025"
+          },
+          {
+            "title": "شهادة APTOS الرسمية",
+            "subtitle": "KR0062025"
+          },
+          {
+            "title": "عرض الخبرة السريرية",
+            "subtitle": "مؤتمر دولي"
+          },
+          {
+            "title": "أثناء العلاج",
+            "subtitle": "Clinical Practice"
+          }
+        ],
+        "academic": {
+          "thesisInstitution": "كلية الدراسات العليا بجامعة كوريا",
+          "thesisDegree": "رسالة ماجستير",
+          "conferenceMips37": "الاجتماع السابع والثلاثون لجمعية جراحة التجميل قليلة التوغل (MIPS)",
+          "conferenceMips36": "الاجتماع السادس والثلاثون لجمعية جراحة التجميل قليلة التوغل (MIPS)",
+          "conferenceAesthetic": "الجمعية الكورية لجراحة التجميل التجميلية",
+          "conferencePlastic": "الجمعية الكورية لجراحي التجميل والترميم"
+        }
       },
       "cheon": {
         "name": "Shinhye Cheon",
@@ -650,6 +686,13 @@
           "Member, Korean Academy of Family Medicine",
           "Member, Korean Society of Aesthetic Medicine and Laser Surgery",
           "Member, Korean Society of Obesity Medicine and Aesthetic Treatment"
+        ],
+        "specialties": [
+          "ليزر الشد",
+          "حقن البشرة",
+          "تفتيح البشرة بالليزر",
+          "ليزر التصبغات والمسام",
+          "برامج العناية بالبشرة"
         ]
       },
       "labels": {
@@ -4031,6 +4074,103 @@
         "tagline": "علاج الكلف والبقع والنمش",
         "description": "علاجات ليزر مخصصة لمختلف حالات التصبغ لاستعادة بشرة صافية ومشرقة.",
         "detail": {
+          "categoryName": "تحسين الكلف والتصبغات",
+          "equipmentCards": {
+            "lucas": {
+              "name": "ليزر لوكاس",
+              "nameEn": "Lucas Laser",
+              "tagline": "تقنية البيكوسيكند حتى للتصبغات العنيدة – نبضات أسرع بـ1000 مرة",
+              "benefits": [
+                {
+                  "title": "نبضة بيكوسيكند",
+                  "desc": "نبضة فائقة القصر تبلغ جزءًا من تريليون من الثانية (10⁻¹²)، أسرع بـ1000 مرة من النانوسيكند"
+                },
+                {
+                  "title": "تفتيت دقيق للصبغة",
+                  "desc": "يفتت الصبغة بدقة أكبر من ليزر النانو لتصريف أسرع"
+                },
+                {
+                  "title": "حماية الأنسجة المحيطة",
+                  "desc": "تقليل الضرر الحراري يقلل الآثار الجانبية ويسرّع التعافي"
+                }
+              ],
+              "duration": "20-40 دقيقة",
+              "recovery": "3-7 أيام (احتمال تقشر دقيق)",
+              "sessions": "يوصى بـ3-5 جلسات بفاصل 2-4 أسابيع"
+            },
+            "clarity": {
+              "name": "Clarity II",
+              "nameEn": "Clarity II",
+              "tagline": "قمة ليزر الطول الموجي المزدوج – حل شامل للتصبغ والأوعية وإزالة الشعر",
+              "benefits": [
+                {
+                  "title": "طول موجي مزدوج",
+                  "desc": "755 نانومتر (تصبغ/شعر) + 1064 نانومتر (أوعية/تصبغ عميق) حل متعدد"
+                },
+                {
+                  "title": "تقنية IntelliTrak",
+                  "desc": "تداخل تلقائي بنسبة 18% لتوزيع طاقة منتظم وتقليل المناطق المتجاوَزة"
+                },
+                {
+                  "title": "جميع أنواع البشرة",
+                  "desc": "علاج آمن لأنواع البشرة I-VI وفق فيتزباتريك"
+                }
+              ],
+              "duration": "15-30 دقيقة",
+              "recovery": "3-5 أيام (احتمال تقشر دقيق في مناطق التصبغ)",
+              "sessions": "يوصى بـ3-5 جلسات بفاصل 2-4 أسابيع"
+            },
+            "toning": {
+              "name": "Laser Toning",
+              "nameEn": "Laser Toning",
+              "tagline": "تحسّن تدريجي عبر جلسات لطيفة متكررة – عناية ضمن الروتين اليومي",
+              "benefits": [
+                {
+                  "title": "علاج لطيف",
+                  "desc": "تمريرات متكررة منخفضة الطاقة تقلل الآثار الجانبية"
+                },
+                {
+                  "title": "بدون فترة نقاهة",
+                  "desc": "العودة إلى الحياة اليومية فور انتهاء الجلسة"
+                },
+                {
+                  "title": "أثر تراكمي",
+                  "desc": "الجلسات المتكررة تمنح تحسنًا تدريجيًا وطبيعيًا"
+                }
+              ],
+              "duration": "5-15 دقيقة",
+              "recovery": "لا يوجد (عودة فورية إلى الحياة اليومية)",
+              "sessions": "يوصى بـ10 جلسات تراكمية أو أكثر"
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc",
+              "tagline": "تفتيح يستهدف الميلانين – تحسين لون البشرة بالكامل",
+              "benefits": [
+                {
+                  "title": "استهداف الميلانين",
+                  "desc": "يعمل انتقائيًا على صبغة الميلانين لتحسين فعّال"
+                },
+                {
+                  "title": "تفتيح شامل",
+                  "desc": "يوحّد ويفتّح لون البشرة بالكامل وليس المناطق فقط"
+                },
+                {
+                  "title": "علاج لطيف",
+                  "desc": "دون فترة نقاهة تقريبًا، وعودة فورية إلى الحياة اليومية"
+                }
+              ],
+              "duration": "15-20 دقيقة",
+              "recovery": "لا يوجد (عودة فورية إلى الحياة اليومية)",
+              "sessions": "يوصى بـ5-10 جلسات تراكمية"
+            }
+          },
+          "otherCategories": {
+            "vascular": "علاج الاحمرار والأوعية الدموية",
+            "skintone": "توحيد لون البشرة",
+            "hair-removal": "إزالة الشعر بريميوم",
+            "tattoo": "إزالة الوشم"
+          },
           "hero": {
             "subtitle": "حتى الكلف العنيد عبر نظامنا المؤلف من 3 مراحل",
             "description": "من ليزر البيكوسيكند إلى التونينغ اللطيف، علاج مخصص للتصبغات بـ 4 أجهزة فاخرة"
@@ -5920,7 +6060,44 @@
       "heroDescription": "على بعد دقيقة واحدة سيراً على الأقدام من مخرج 4 من محطة Sinsa. عيادة LIV Plastic Surgery يسهل الوصول إليها.",
       "addressLabel": "العنوان",
       "buildingDetail": "الطابق الرابع، Jaeun Building",
-      "phoneLabel": "الهاتف"
+      "phoneLabel": "الهاتف",
+      "mapAppsLabel": "افتح في تطبيق الخرائط",
+      "mapApps": {
+        "naver": "Naver",
+        "kakao": "Kakao",
+        "google": "Google"
+      },
+      "callButton": "اتصل بنا",
+      "transportTitle": "كيفية الوصول",
+      "transport": {
+        "subway": {
+          "title": "المترو",
+          "description": "محطة Sinsa، المخرج 4",
+          "detail": "دقيقة واحدة سيرًا على الأقدام",
+          "line": "الخط 3"
+        },
+        "bus": {
+          "title": "الحافلة",
+          "description": "موقف حافلات محطة Sinsa",
+          "detail": "دقيقتان سيرًا على الأقدام"
+        },
+        "car": {
+          "title": "السيارة",
+          "description": "موقف سيارات داخل المبنى",
+          "detail": "ساعتان مجانًا لعملاء العلاج"
+        }
+      },
+      "parking": {
+        "description": "يمكنكم استخدام موقف السيارات تحت الأرض داخل المبنى.\nيحصل عملاء العلاج على <b>ساعتين من الركن المجاني</b>.",
+        "note": "قد تكون مساحة الركن محدودة،\nلذا ننصح باستخدام وسائل النقل العام قدر الإمكان.",
+        "badgeValue": "ساعتان",
+        "badgeLabel": "ركن مجاني لعملاء العلاج"
+      },
+      "cta": {
+        "title": "حجز استشارة في العيادة",
+        "description": "يرجى الحجز مسبقًا للحصول على استشارة مريحة.",
+        "book": "احجز استشارة"
+      }
     }
   },
   "equipmentPage": {
@@ -6500,6 +6677,17 @@
     }
   },
   "metaSeo": {
+    "media": {
+      "title": "Media & News | LIV Plastic Surgery",
+      "description": "الظهور التلفزيوني والمقابلات مع الصحافة المتخصصة والأنشطة الأكاديمية والاعتمادات الدولية وأخبار عيادة LIV للجراحة التجميلية — كل ذلك في مكان واحد.",
+      "keywords": [
+        "إعلام LIV Plastic Surgery",
+        "أخبار LIV",
+        "مدرب APTOS المعتمد",
+        "تغطية صحفية LIV",
+        "عيادة سيول في الإعلام"
+      ]
+    },
     "reviews": {
       "title": "Patient Reviews | Real Stories at LIV Plastic Surgery",
       "description": "Read real reviews from patients who received Ultherapy, Thermage, Botox, filler and more at LIV Plastic Surgery in Seoul, Korea.",

@@ -2,7 +2,9 @@
  * Media & News 데이터 (SSOT)
  *
  * 언론보도(press)와 LIV 소식(news)을 단일 소스로 관리한다.
- * - 기사/소식 텍스트는 한국어 단일 소스(전 로케일 공유). UI 크롬만 i18n 처리.
+ * - 기사/소식 텍스트는 한국어 원본(SSOT). 전 로케일 전문 번역은 `./mediaNewsI18n`에서
+ *   항목 id 기준 오버라이드로 제공한다(treatmentsI18n.ts와 동일 패턴).
+ *   렌더 시 `getLocalizedMediaItem(item, locale)`로 병합하며, 누락 필드는 한국어로 폴백한다.
  * - `category`는 필터 기준, `type`은 press/news 색·라벨 구분 전용으로 역할을 분리한다.
  */
 

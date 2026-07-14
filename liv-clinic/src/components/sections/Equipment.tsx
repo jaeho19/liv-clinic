@@ -250,7 +250,7 @@ export default function Equipment() {
           animate={{ opacity: [0.5, 1, 0.5] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          ← 스와이프하여 더 보기 →
+          {t('ui.swipeHint')}
         </motion.span>
       </div>
 

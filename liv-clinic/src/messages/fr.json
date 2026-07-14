@@ -242,7 +242,9 @@
     },
     "readArticle": "Lire l'article",
     "readMore": "En savoir plus",
-    "empty": "Aucune actualité à afficher."
+    "empty": "Aucune actualité à afficher.",
+    "photoAlt": "{title} — photo {index}",
+    "thumbnailAlt": "Image principale {badge}"
   },
   "common": {
     "home": "Accueil",
@@ -483,7 +485,8 @@
         "introLine1": "LIV Chirurgie Esthétique n'utilise que des équipements premium authentiques et certifiés.",
         "introLine2": "Nous offrons des traitements sûrs et efficaces avec des technologies de pointe.",
         "viewMore": "En savoir plus",
-        "navigationHint": "Faites glisser ou défilez pour explorer"
+        "navigationHint": "Faites glisser ou défilez pour explorer",
+        "swipeHint": "← Faites glisser pour voir plus →"
       }
     },
     "signature": {
@@ -596,7 +599,8 @@
       },
       "ui": {
         "playVideo": "Lire la vidéo"
-      }
+      },
+      "featuredVideoTitle": "Les traitements anti-âge expliqués par la directrice de LIV"
     },
     "doctors": {
       "kim": {
@@ -626,7 +630,39 @@
           "Member, Korean Society of Aesthetic Plastic Surgery",
           "Member, Korean Cleft Palate-Craniofacial Association",
           "Member, Korean Society for Laser Medicine and Surgery"
-        ]
+        ],
+        "specialties": [
+          "Lifting Ultherapy Prime",
+          "Lifting Thermage",
+          "Traitements de lifting combinés",
+          "Programmes anti-âge"
+        ],
+        "gallery": [
+          {
+            "title": "Formation au siège d'APTOS",
+            "subtitle": "Georgia, 2025"
+          },
+          {
+            "title": "Certificat officiel APTOS",
+            "subtitle": "KR0062025"
+          },
+          {
+            "title": "Présentation Clinical Experience",
+            "subtitle": "Conférence internationale"
+          },
+          {
+            "title": "Sur le lieu du traitement",
+            "subtitle": "Clinical Practice"
+          }
+        ],
+        "academic": {
+          "thesisInstitution": "École doctorale de l'Université de Corée",
+          "thesisDegree": "Mémoire de master",
+          "conferenceMips37": "37e congrès de la Société de chirurgie plastique mini-invasive (MIPS)",
+          "conferenceMips36": "36e congrès de la Société de chirurgie plastique mini-invasive (MIPS)",
+          "conferenceAesthetic": "Société coréenne de chirurgie plastique esthétique",
+          "conferencePlastic": "Société coréenne de chirurgie plastique et reconstructrice"
+        }
       },
       "cheon": {
         "name": "Shinhye Cheon",
@@ -650,6 +686,13 @@
           "Member, Korean Academy of Family Medicine",
           "Member, Korean Society of Aesthetic Medicine and Laser Surgery",
           "Member, Korean Society of Obesity Medicine and Aesthetic Treatment"
+        ],
+        "specialties": [
+          "Lasers de lifting",
+          "Skin Boosters",
+          "Laser toning",
+          "Lasers pigmentation et pores",
+          "Programmes de soin de la peau"
         ]
       },
       "labels": {
@@ -4031,6 +4074,103 @@
         "tagline": "Mélasma, taches et taches de rousseur",
         "description": "Traitements laser personnalisés pour diverses affections pigmentaires afin de restaurer une peau claire et lumineuse.",
         "detail": {
+          "categoryName": "Amélioration du mélasma et de la pigmentation",
+          "equipmentCards": {
+            "lucas": {
+              "name": "Laser Lucas",
+              "nameEn": "Lucas Laser",
+              "tagline": "Technologie picoseconde jusqu’aux pigments résistants – impulsions 1000x plus rapides",
+              "benefits": [
+                {
+                  "title": "Impulsion picoseconde",
+                  "desc": "Impulsion ultra-courte d’un billionième de seconde (10⁻¹²), 1000x plus rapide que la nanoseconde"
+                },
+                {
+                  "title": "Fragmentation fine du pigment",
+                  "desc": "Fragmente le pigment plus finement que les lasers nano, pour une élimination plus rapide"
+                },
+                {
+                  "title": "Protection des tissus environnants",
+                  "desc": "Dommages thermiques minimisés : moins d’effets secondaires, récupération rapide"
+                }
+              ],
+              "duration": "20-40 minutes",
+              "recovery": "3-7 jours (fines croûtes possibles)",
+              "sessions": "3-5 séances recommandées à 2-4 semaines d’intervalle"
+            },
+            "clarity": {
+              "name": "Clarity II",
+              "nameEn": "Clarity II",
+              "tagline": "Le sommet des lasers double longueur d’onde – tout-en-un : pigment, vaisseaux, épilation",
+              "benefits": [
+                {
+                  "title": "Double longueur d’onde",
+                  "desc": "755 nm (pigment/épilation) + 1064 nm (vasculaire/pigment profond) — solution multiple"
+                },
+                {
+                  "title": "Technologie IntelliTrak",
+                  "desc": "Chevauchement automatique de 18 % : énergie uniforme, zones manquées minimisées"
+                },
+                {
+                  "title": "Tous types de peau",
+                  "desc": "Traitement sûr pour les phototypes Fitzpatrick I-VI"
+                }
+              ],
+              "duration": "15-30 minutes",
+              "recovery": "3-5 jours (fines croûtes possibles sur les zones pigmentées)",
+              "sessions": "3-5 séances recommandées à 2-4 semaines d’intervalle"
+            },
+            "toning": {
+              "name": "Laser Toning",
+              "nameEn": "Laser Toning",
+              "tagline": "Amélioration progressive par séances douces répétées – entretien au quotidien",
+              "benefits": [
+                {
+                  "title": "Traitement doux",
+                  "desc": "Passages répétés à faible puissance : effets secondaires minimisés"
+                },
+                {
+                  "title": "Aucune éviction sociale",
+                  "desc": "Reprise immédiate des activités quotidiennes"
+                },
+                {
+                  "title": "Effet cumulatif",
+                  "desc": "Les séances répétées apportent une amélioration progressive et naturelle"
+                }
+              ],
+              "duration": "5-15 minutes",
+              "recovery": "Aucune (reprise immédiate des activités)",
+              "sessions": "10 séances cumulées ou plus recommandées"
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc",
+              "tagline": "Blanchiment ciblant la mélanine – amélioration du teint global",
+              "benefits": [
+                {
+                  "title": "Ciblage de la mélanine",
+                  "desc": "Agit sélectivement sur le pigment mélanique pour une amélioration efficace"
+                },
+                {
+                  "title": "Éclat global",
+                  "desc": "Éclaircit uniformément l’ensemble du teint, pas seulement les taches"
+                },
+                {
+                  "title": "Traitement doux",
+                  "desc": "Quasiment aucune éviction sociale, reprise immédiate des activités"
+                }
+              ],
+              "duration": "15-20 minutes",
+              "recovery": "Aucune (reprise immédiate des activités)",
+              "sessions": "5-10 séances cumulées recommandées"
+            }
+          },
+          "otherCategories": {
+            "vascular": "Traitement des rougeurs et vaisseaux",
+            "skintone": "Uniformisation du teint",
+            "hair-removal": "Épilation premium",
+            "tattoo": "Détatouage"
+          },
           "hero": {
             "subtitle": "Même le mélasma tenace avec notre système en 3 étapes",
             "description": "Du laser picoseconde au toning doux, traitement personnalisé de la pigmentation avec 4 appareils premium"
@@ -5920,7 +6060,44 @@
       "heroDescription": "À seulement 1 minute à pied de la sortie 4 de la station Sinsa. LIV Plastic Surgery, facilement accessible.",
       "addressLabel": "Adresse",
       "buildingDetail": "4ème étage, Jaeun Building",
-      "phoneLabel": "Téléphone"
+      "phoneLabel": "Téléphone",
+      "mapAppsLabel": "Ouvrir dans l'application de cartes",
+      "mapApps": {
+        "naver": "Naver",
+        "kakao": "Kakao",
+        "google": "Google"
+      },
+      "callButton": "Appeler",
+      "transportTitle": "Comment venir",
+      "transport": {
+        "subway": {
+          "title": "Métro",
+          "description": "Station Sinsa, sortie 4",
+          "detail": "À 1 minute à pied",
+          "line": "Ligne 3"
+        },
+        "bus": {
+          "title": "Bus",
+          "description": "Arrêt de bus Station Sinsa",
+          "detail": "À 2 minutes à pied"
+        },
+        "car": {
+          "title": "Voiture",
+          "description": "Parking dans l'immeuble",
+          "detail": "2 heures offertes aux patients"
+        }
+      },
+      "parking": {
+        "description": "Un parking souterrain est disponible dans l'immeuble.\nLes patients bénéficient de <b>2 heures de stationnement gratuit</b>.",
+        "note": "Les places de stationnement peuvent être limitées,\nnous vous recommandons donc de privilégier les transports en commun.",
+        "badgeValue": "2 heures",
+        "badgeLabel": "Stationnement gratuit pour les patients"
+      },
+      "cta": {
+        "title": "Réserver une consultation sur place",
+        "description": "Merci de réserver à l'avance pour une consultation en toute sérénité.",
+        "book": "Réserver une consultation"
+      }
     }
   },
   "equipmentPage": {
@@ -6500,6 +6677,17 @@
     }
   },
   "metaSeo": {
+    "media": {
+      "title": "Media & News | LIV Plastic Surgery",
+      "description": "Émissions TV, interviews dans la presse spécialisée, activités académiques, certifications internationales et actualités de la clinique LIV Plastic Surgery — réunies en un seul endroit.",
+      "keywords": [
+        "LIV Plastic Surgery médias",
+        "actualités LIV",
+        "formateur officiel APTOS",
+        "presse LIV",
+        "clinique de Séoul dans les médias"
+      ]
+    },
     "reviews": {
       "title": "Patient Reviews | Real Stories at LIV Plastic Surgery",
       "description": "Read real reviews from patients who received Ultherapy, Thermage, Botox, filler and more at LIV Plastic Surgery in Seoul, Korea.",

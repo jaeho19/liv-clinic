@@ -119,7 +119,7 @@ export async function buildTreatmentLeafSchemas(opts: {
   };
 
   const schemas: object[] = [
-    generateMedicalServiceSchema(serviceData, { reservationWord }),
+    generateMedicalServiceSchema(serviceData, { reservationWord, locale }),
   ];
 
   if (opts.howTo) {

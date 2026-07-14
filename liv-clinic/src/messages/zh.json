@@ -242,7 +242,9 @@
     },
     "readArticle": "查看文章",
     "readMore": "查看详情",
-    "empty": "暂无可显示的资讯。"
+    "empty": "暂无可显示的资讯。",
+    "photoAlt": "{title} 现场照片 {index}",
+    "thumbnailAlt": "{badge} 主图"
   },
   "common": {
     "home": "首页",
@@ -483,7 +485,8 @@
         "introLine1": "LIV整形外科仅使用经过正品认证的高端设备。",
         "introLine2": "我们以最新技术提供安全有效的施术。",
         "viewMore": "查看详情",
-        "navigationHint": "拖拽或滚动以浏览"
+        "navigationHint": "拖拽或滚动以浏览",
+        "swipeHint": "← 滑动查看更多 →"
       }
     },
     "signature": {
@@ -596,7 +599,8 @@
       },
       "ui": {
         "playVideo": "播放视频"
-      }
+      },
+      "featuredVideoTitle": "LIV院长亲自讲解的抗衰老治疗"
     },
     "doctors": {
       "kim": {
@@ -626,7 +630,39 @@
           "大韩美容整形外科学会正式会员",
           "大韩头颅颜面整形外科学会正式会员",
           "大韩医学激光学会正式会员"
-        ]
+        ],
+        "specialties": [
+          "超声刀Prime提升",
+          "热玛吉提升",
+          "复合提升治疗",
+          "抗衰老项目"
+        ],
+        "gallery": [
+          {
+            "title": "APTOS总部培训",
+            "subtitle": "格鲁吉亚, 2025"
+          },
+          {
+            "title": "APTOS官方认证证书",
+            "subtitle": "KR0062025"
+          },
+          {
+            "title": "临床经验发表",
+            "subtitle": "国际学术会议"
+          },
+          {
+            "title": "治疗现场",
+            "subtitle": "临床实践"
+          }
+        ],
+        "academic": {
+          "thesisInstitution": "高丽大学研究生院",
+          "thesisDegree": "硕士学位论文",
+          "conferenceMips37": "第37届微创整形外科学会(MIPS)",
+          "conferenceMips36": "第36届微创整形外科学会(MIPS)",
+          "conferenceAesthetic": "大韩美容整形外科学会",
+          "conferencePlastic": "大韩整形外科学会"
+        }
       },
       "cheon": {
         "name": "千信惠",
@@ -650,6 +686,13 @@
           "大韩家庭医学会正式会员",
           "大韩美容整形激光医学会正式会员",
           "大韩肥胖美容治疗学会正式会员"
+        ],
+        "specialties": [
+          "提升激光",
+          "水光针",
+          "激光净肤",
+          "色素/毛孔激光",
+          "皮肤管理项目"
         ]
       },
       "labels": {
@@ -4031,6 +4074,103 @@
         "tagline": "黄褐斑、色斑、雀斑改善",
         "description": "针对各种色素问题的定制激光治疗，恢复透亮肌肤。",
         "detail": {
+          "categoryName": "黄褐斑/色素改善",
+          "equipmentCards": {
+            "lucas": {
+              "name": "Lucas 激光",
+              "nameEn": "Lucas Laser",
+              "tagline": "皮秒技术攻克顽固色素 – 快1000倍的脉冲",
+              "benefits": [
+                {
+                  "title": "皮秒脉冲",
+                  "desc": "万亿分之一秒(10⁻¹²)超短脉冲，比纳秒快1000倍"
+                },
+                {
+                  "title": "色素微细分解",
+                  "desc": "比纳秒激光更微细地分解色素，排出更快"
+                },
+                {
+                  "title": "保护周围组织",
+                  "desc": "热损伤最小化，减少副作用，恢复更快"
+                }
+              ],
+              "duration": "20-40分钟",
+              "recovery": "3-7天(可能出现细微结痂)",
+              "sessions": "建议每2-4周1次，共3-5次"
+            },
+            "clarity": {
+              "name": "Clarity II",
+              "nameEn": "Clarity II",
+              "tagline": "双波长激光的巅峰 – 色素、血管、脱毛一站式",
+              "benefits": [
+                {
+                  "title": "双波长",
+                  "desc": "755nm(色素/脱毛) + 1064nm(血管/深层色素) 多功能方案"
+                },
+                {
+                  "title": "IntelliTrak技术",
+                  "desc": "自动18%重叠，能量传递均匀，最大限度减少遗漏部位"
+                },
+                {
+                  "title": "所有肤质适用",
+                  "desc": "皮肤类型I-VI均可安全治疗"
+                }
+              ],
+              "duration": "15-30分钟",
+              "recovery": "3-5天(色素部位可能出现细微结痂)",
+              "sessions": "建议每2-4周1次，共3-5次"
+            },
+            "toning": {
+              "name": "激光嫩肤",
+              "nameEn": "Laser Toning",
+              "tagline": "低刺激重复治疗，循序渐进改善 – 日常维养",
+              "benefits": [
+                {
+                  "title": "低刺激治疗",
+                  "desc": "低能量重复照射，副作用最小化"
+                },
+                {
+                  "title": "无恢复期",
+                  "desc": "治疗后可立即恢复日常生活"
+                },
+                {
+                  "title": "累积效果",
+                  "desc": "重复治疗带来循序渐进的自然改善"
+                }
+              ],
+              "duration": "5-15分钟",
+              "recovery": "无(可立即恢复日常生活)",
+              "sessions": "建议累计10次以上"
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc",
+              "tagline": "靶向黑色素美白 – 整体肤色改善",
+              "benefits": [
+                {
+                  "title": "靶向黑色素",
+                  "desc": "选择性作用于黑色素，改善更有效"
+                },
+                {
+                  "title": "整体提亮",
+                  "desc": "不只局部，而是均匀提亮整体肤色"
+                },
+                {
+                  "title": "低刺激治疗",
+                  "desc": "几乎无恢复期，可立即恢复日常生活"
+                }
+              ],
+              "duration": "15-20分钟",
+              "recovery": "无(可立即恢复日常生活)",
+              "sessions": "建议累计5-10次"
+            }
+          },
+          "otherCategories": {
+            "vascular": "红血丝/血管治疗",
+            "skintone": "肤色均匀化",
+            "hair-removal": "高端脱毛",
+            "tattoo": "纹身去除"
+          },
           "hero": {
             "subtitle": "顽固性黄褐斑也能通过LIV三阶段系统解决",
             "description": "从皮秒激光到低刺激调光，4种高端设备完成定制色素治疗"
@@ -5920,7 +6060,44 @@
       "heroDescription": "新沙站4号出口步行1分钟，交通便捷的LIV整形外科。",
       "addressLabel": "地址",
       "buildingDetail": "自恩大厦4层",
-      "phoneLabel": "电话号码"
+      "phoneLabel": "电话号码",
+      "mapAppsLabel": "在地图应用中打开",
+      "mapApps": {
+        "naver": "Naver",
+        "kakao": "Kakao",
+        "google": "Google"
+      },
+      "callButton": "拨打电话",
+      "transportTitle": "交通指南",
+      "transport": {
+        "subway": {
+          "title": "地铁",
+          "description": "新沙站4号出口",
+          "detail": "步行1分钟",
+          "line": "3号线"
+        },
+        "bus": {
+          "title": "公交车",
+          "description": "新沙站公交站",
+          "detail": "步行2分钟"
+        },
+        "car": {
+          "title": "自驾",
+          "description": "楼内停车场",
+          "detail": "治疗顾客免费停车2小时"
+        }
+      },
+      "parking": {
+        "description": "可使用楼内的地下停车场。\n接受治疗的顾客可享<b>2小时免费停车</b>。",
+        "note": "停车位可能较为紧张，\n建议尽量使用公共交通。",
+        "badgeValue": "2小时",
+        "badgeLabel": "治疗顾客免费停车"
+      },
+      "cta": {
+        "title": "预约到院咨询",
+        "description": "为了让您从容咨询，请提前预约。",
+        "book": "预约咨询"
+      }
     }
   },
   "equipmentPage": {
@@ -6508,6 +6685,16 @@
     }
   },
   "metaSeo": {
+    "media": {
+      "title": "Media & News | LIV整形外科",
+      "description": "LIV整形外科的节目出演、专业媒体采访、学术活动、全球认证及医院资讯，尽在一处。",
+      "keywords": [
+        "LIV整形外科 媒体",
+        "LIV整形外科 资讯",
+        "APTOS官方培训师",
+        "LIV整形外科 报道"
+      ]
+    },
     "reviews": {
       "title": "真实评价 | LIV整形外科真实顾客评价",
       "description": "查看在LIV整形外科接受Ulthera超声刀、Thermage热玛吉、肉毒素、填充等治疗的真实顾客评价。",

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import type { MediaType } from '@/lib/data/mediaNewsData';
 
 interface MediaNewsCardMediaProps {
@@ -48,6 +49,7 @@ export default function MediaNewsCardMedia({
 
 // 이미지가 없을 때의 브랜드 톤 폴백 (이미지 자산 0 · 순수 CSS)
 function Placeholder({ type, badge }: { type: MediaType; badge: string }) {
+  const t = useTranslations('mediaNews');
   const grad =
     type === 'press'
       ? 'from-secondary to-secondary/60' // 다크 브라운 톤
@@ -55,7 +57,7 @@ function Placeholder({ type, badge }: { type: MediaType; badge: string }) {
   return (
     <div
       role="img"
-      aria-label={`${badge} 대표 이미지`}
+      aria-label={t('thumbnailAlt', { badge })}
       className={`flex h-full w-full flex-col items-center justify-center bg-gradient-to-br ${grad}`}
     >
       <span className="font-serif text-4xl tracking-[0.2em] text-white/95">LIV</span>

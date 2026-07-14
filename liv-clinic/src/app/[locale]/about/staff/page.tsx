@@ -63,96 +63,117 @@ function CollapsibleSection({
   );
 }
 
-// 의료진 기본 정보 (이미지, 논문, 학회발표 등 번역이 필요없는 데이터)
+// 의료진 기본 정보 (이미지 등 번역이 필요없는 데이터)
 const doctorsMeta = {
   kim: {
     id: 'dr-kim',
     image: '/images/doctor/doctor-main.jpg',
-    specialties: ['울쎄라피 프라임 리프팅', '써마지 리프팅', '복합 리프팅 시술', '안티에이징 프로그램'],
-    // SCI/SCIE 논문 4편 + 석사학위 논문 1편
-    publications: [
-      {
-        type: 'sci',
-        authors: 'Rho NK, Kim HS, Kim SY, Lee W.',
-        title: 'Injectable \'Skin Boosters\' in Aging Skin Rejuvenation: A Current Overview',
-        journal: 'Arch Plast Surg.',
-        year: 2024,
-        details: '2024 Nov 13;51(6):528-541.',
-      },
-      {
-        type: 'sci',
-        authors: 'Jang JU, Kim SY, Yoon ES, Kim WK, Park SH, Lee BI, Kim DW.',
-        title: 'Comparison of the Effectiveness of Ablative and Non-Ablative Fractional Laser Treatments for Early Stage Thyroidectomy Scars',
-        journal: 'Arch Plast Surg.',
-        year: 2016,
-        details: '2016 Nov;43(6):575-581.',
-      },
-      {
-        type: 'sci',
-        authors: 'Han SK, Kim SY, Choi RJ, Jeong SH, Kim WK.',
-        title: 'Comparison of tissue-engineered and artificial dermis grafts after removal of basal cell carcinoma on face – a pilot study',
-        journal: 'Dermatol Surg.',
-        year: 2014,
-        details: '2014 Apr;40(4):460-7.',
-      },
-      {
-        type: 'sci',
-        authors: 'Han SK, Kim SY, Gu JH, Jeong SH, Kim WK.',
-        title: 'Influence of the pedicle orientation and length on viability of unipedicled venous island flaps',
-        journal: 'Microsurgery.',
-        year: 2014,
-        details: '2014 Mar;34(3):197-202.',
-      },
-      {
-        type: 'thesis',
-        title: 'Comparison of the Effectiveness of Ablative and Nonablative Fractional Laser Treatment for Thyroidectomy Scar',
-        institution: '고려대학교 대학원',
-        year: 2015,
-        degree: '석사학위논문',
-      },
-    ],
-    // 구두 발표 4건
-    presentations: [
-      {
-        title: 'Winning Patients\' Hearts with Skin Boosters: Practical Tips for Effective Use and Maximizing Satisfaction',
-        conference: '제37회 최소침습성형외과학회(MIPS)',
-        year: 2024,
-        type: 'oral',
-      },
-      {
-        title: 'Types and Efficacy of Skin Boosters',
-        conference: '제36회 최소침습성형외과학회(MIPS)',
-        year: 2024,
-        type: 'oral',
-      },
-      {
-        title: 'Comparison of the effectiveness of nonablative versus ablative fractional laser in thyroidectomy scar',
-        conference: '대한미용성형외과학회',
-        year: 2014,
-        type: 'oral',
-      },
-      {
-        title: 'Tissue engineered dermis graft for fingertip reconstruction',
-        conference: '대한성형외과학회',
-        year: 2012,
-        type: 'oral',
-      },
-    ],
     // 미디어·언론 보도 (추후 업데이트 예정)
-    mediaAppearances: [],
+    mediaAppearances: [] as Array<{ title: string; outlet: string; date: string }>,
   },
   cheon: {
     id: 'dr-cheon',
     image: '/images/doctor/doctor-2.jpg',
-    specialties: ['리프팅 레이저', '스킨부스터', '레이저 토닝', '색소/모공 레이저', '피부 관리 프로그램'],
-    publications: [],
-    presentations: [],
-    mediaAppearances: [],
+    publications: [] as Array<Record<string, unknown>>,
+    presentations: [] as Array<Record<string, unknown>>,
+    mediaAppearances: [] as Array<{ title: string; outlet: string; date: string }>,
   },
 };
 
+// SCI/SCIE 논문 4편 — 저자·제목·저널은 원문 그대로 유지 (번역 대상 아님)
+const KIM_SCI_PUBLICATIONS = [
+  {
+    type: 'sci',
+    authors: 'Rho NK, Kim HS, Kim SY, Lee W.',
+    title: 'Injectable \'Skin Boosters\' in Aging Skin Rejuvenation: A Current Overview',
+    journal: 'Arch Plast Surg.',
+    year: 2024,
+    details: '2024 Nov 13;51(6):528-541.',
+  },
+  {
+    type: 'sci',
+    authors: 'Jang JU, Kim SY, Yoon ES, Kim WK, Park SH, Lee BI, Kim DW.',
+    title: 'Comparison of the Effectiveness of Ablative and Non-Ablative Fractional Laser Treatments for Early Stage Thyroidectomy Scars',
+    journal: 'Arch Plast Surg.',
+    year: 2016,
+    details: '2016 Nov;43(6):575-581.',
+  },
+  {
+    type: 'sci',
+    authors: 'Han SK, Kim SY, Choi RJ, Jeong SH, Kim WK.',
+    title: 'Comparison of tissue-engineered and artificial dermis grafts after removal of basal cell carcinoma on face – a pilot study',
+    journal: 'Dermatol Surg.',
+    year: 2014,
+    details: '2014 Apr;40(4):460-7.',
+  },
+  {
+    type: 'sci',
+    authors: 'Han SK, Kim SY, Gu JH, Jeong SH, Kim WK.',
+    title: 'Influence of the pedicle orientation and length on viability of unipedicled venous island flaps',
+    journal: 'Microsurgery.',
+    year: 2014,
+    details: '2014 Mar;34(3):197-202.',
+  },
+];
+
+// 석사학위 논문 1편 (기관명·학위명은 번역)
+const KIM_THESIS = {
+  type: 'thesis',
+  title: 'Comparison of the Effectiveness of Ablative and Nonablative Fractional Laser Treatment for Thyroidectomy Scar',
+  year: 2015,
+};
+
+// 구두 발표 4건 (학회명은 번역)
+const KIM_PRESENTATIONS = [
+  {
+    title: 'Winning Patients\' Hearts with Skin Boosters: Practical Tips for Effective Use and Maximizing Satisfaction',
+    conferenceKey: 'mips37',
+    year: 2024,
+    type: 'oral',
+  },
+  {
+    title: 'Types and Efficacy of Skin Boosters',
+    conferenceKey: 'mips36',
+    year: 2024,
+    type: 'oral',
+  },
+  {
+    title: 'Comparison of the effectiveness of nonablative versus ablative fractional laser in thyroidectomy scar',
+    conferenceKey: 'aesthetic',
+    year: 2014,
+    type: 'oral',
+  },
+  {
+    title: 'Tissue engineered dermis graft for fingertip reconstruction',
+    conferenceKey: 'plastic',
+    year: 2012,
+    type: 'oral',
+  },
+] as const;
+
+// 국제 활동 갤러리 이미지 (캡션은 번역)
+const KIM_GALLERY_IMAGES = [
+  '/images/aptos/certification-ceremony.jpg',
+  '/images/aptos/certificate.jpg',
+  '/images/aptos/presentation-mips.jpg',
+  '/images/aptos/presentation.jpg',
+];
+
 export default function StaffPage() {
   const t = useTranslations();
+
+  // 학회명 번역 (구두 발표용)
+  const conferenceNames: Record<'mips37' | 'mips36' | 'aesthetic' | 'plastic', string> = {
+    mips37: t('sections.doctors.kim.academic.conferenceMips37'),
+    mips36: t('sections.doctors.kim.academic.conferenceMips36'),
+    aesthetic: t('sections.doctors.kim.academic.conferenceAesthetic'),
+    plastic: t('sections.doctors.kim.academic.conferencePlastic'),
+  };
+
+  // 국제 활동 갤러리 캡션
+  const kimGallery = (t.raw('sections.doctors.kim.gallery') as Array<{ title: string; subtitle: string }>).map(
+    (item, i) => ({ ...item, src: KIM_GALLERY_IMAGES[i] })
+  );
 
   // 번역 데이터에서 의료진 정보 가져오기
   const kimData = {
@@ -164,6 +185,21 @@ export default function StaffPage() {
     education: t.raw('sections.doctors.kim.education') as string[],
     experience: t.raw('sections.doctors.kim.experience') as string[],
     certifications: t.raw('sections.doctors.kim.certifications') as string[],
+    specialties: t.raw('sections.doctors.kim.specialties') as string[],
+    publications: [
+      ...KIM_SCI_PUBLICATIONS,
+      {
+        ...KIM_THESIS,
+        institution: t('sections.doctors.kim.academic.thesisInstitution'),
+        degree: t('sections.doctors.kim.academic.thesisDegree'),
+      },
+    ],
+    presentations: KIM_PRESENTATIONS.map((pres) => ({
+      title: pres.title,
+      year: pres.year,
+      type: pres.type,
+      conference: conferenceNames[pres.conferenceKey],
+    })),
     ...doctorsMeta.kim,
   };
 
@@ -176,6 +212,7 @@ export default function StaffPage() {
     education: t.raw('sections.doctors.cheon.education') as string[],
     experience: t.raw('sections.doctors.cheon.experience') as string[],
     certifications: t.raw('sections.doctors.cheon.certifications') as string[],
+    specialties: t.raw('sections.doctors.cheon.specialties') as string[],
     ...doctorsMeta.cheon,
   };
 
@@ -271,33 +308,12 @@ export default function StaffPage() {
                         <svg className="w-4 h-4 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        국제 활동
+                        {labels.globalActivities}
                       </h3>
 
                       {/* Activity Grid - 2x2 Layout for larger images */}
                       <div className="grid grid-cols-2 gap-3">
-                        {[
-                          {
-                            src: '/images/aptos/certification-ceremony.jpg',
-                            title: 'APTOS 본사 연수',
-                            subtitle: 'Georgia, 2025',
-                          },
-                          {
-                            src: '/images/aptos/certificate.jpg',
-                            title: 'APTOS 공식 인증서',
-                            subtitle: 'KR0062025',
-                          },
-                          {
-                            src: '/images/aptos/presentation-mips.jpg',
-                            title: 'Clinical Experience 발표',
-                            subtitle: '국제 학술대회',
-                          },
-                          {
-                            src: '/images/aptos/presentation.jpg',
-                            title: '시술 현장',
-                            subtitle: 'Clinical Practice',
-                          },
-                        ].map((activity, i) => (
+                        {kimGallery.map((activity, i) => (
                           <motion.div
                             key={i}
                             className="group relative aspect-[4/3] rounded-xl overflow-hidden cursor-pointer shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"

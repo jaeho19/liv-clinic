@@ -51,7 +51,7 @@ export default async function LocaleLayout({
   const tCommon = await getTranslations({ locale, namespace: 'common' });
 
   const localBusinessSchema = generateLocalBusinessSchema(locale);
-  const webSiteSchema = generateWebSiteSchema();
+  const webSiteSchema = generateWebSiteSchema(locale);
 
   // GA ID: 환경변수 한정 (DB 호출 제거로 TTFB 최적화). 형식 검증 (G-XXXXXXXXXX)
   const rawGaId = process.env.NEXT_PUBLIC_GA_ID;

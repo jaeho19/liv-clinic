@@ -242,7 +242,9 @@
     },
     "readArticle": "查看文章",
     "readMore": "查看詳情",
-    "empty": "目前沒有可顯示的消息。"
+    "empty": "目前沒有可顯示的消息。",
+    "photoAlt": "{title} 現場照片 {index}",
+    "thumbnailAlt": "{badge} 主圖"
   },
   "common": {
     "home": "首頁",
@@ -483,7 +485,8 @@
         "introLine1": "LIV 整形外科僅使用正宗、經過認證的優質設備。",
         "introLine2": "我們利用尖端技術提供安全有效的治療。",
         "viewMore": "了解更多",
-        "navigationHint": "拖曳或滾動進行探索"
+        "navigationHint": "拖曳或滾動進行探索",
+        "swipeHint": "← 滑動查看更多 →"
       }
     },
     "signature": {
@@ -596,7 +599,8 @@
       },
       "ui": {
         "playVideo": "播放影片"
-      }
+      },
+      "featuredVideoTitle": "LIV院長親自講解的抗衰老療程"
     },
     "doctors": {
       "kim": {
@@ -626,7 +630,39 @@
           "大韓美容整形外科學會正式會員",
           "大韓頭顱顏面整形外科學會正式會員",
           "大韓醫學激光學會正式會員"
-        ]
+        ],
+        "specialties": [
+          "音波拉提Prime拉提",
+          "鳳凰電波拉提",
+          "複合拉提療程",
+          "抗衰老療程"
+        ],
+        "gallery": [
+          {
+            "title": "APTOS總部培訓",
+            "subtitle": "格魯吉亞, 2025"
+          },
+          {
+            "title": "APTOS官方認證證書",
+            "subtitle": "KR0062025"
+          },
+          {
+            "title": "臨床經驗發表",
+            "subtitle": "國際學術會議"
+          },
+          {
+            "title": "治療現場",
+            "subtitle": "臨床實踐"
+          }
+        ],
+        "academic": {
+          "thesisInstitution": "高麗大學研究生院",
+          "thesisDegree": "碩士學位論文",
+          "conferenceMips37": "第37屆微創整形外科學會(MIPS)",
+          "conferenceMips36": "第36屆微創整形外科學會(MIPS)",
+          "conferenceAesthetic": "大韓美容整形外科學會",
+          "conferencePlastic": "大韓整形外科學會"
+        }
       },
       "cheon": {
         "name": "千信惠",
@@ -650,6 +686,13 @@
           "大韓家庭醫學會正式會員",
           "大韓美容整形激光醫學會正式會員",
           "大韓肥胖美容治療學會正式會員"
+        ],
+        "specialties": [
+          "拉提雷射",
+          "水光針",
+          "雷射淨膚",
+          "色素/毛孔雷射",
+          "皮膚管理療程"
         ]
       },
       "labels": {
@@ -4031,6 +4074,103 @@
         "tagline": "黃褐斑、色斑、雀斑改善",
         "description": "針對各種色素問題的定製激光治療，恢復透亮肌膚。",
         "detail": {
+          "categoryName": "黃褐斑/色素改善",
+          "equipmentCards": {
+            "lucas": {
+              "name": "Lucas 雷射",
+              "nameEn": "Lucas Laser",
+              "tagline": "皮秒技術攻克頑固色素 – 快1000倍的脈衝",
+              "benefits": [
+                {
+                  "title": "皮秒脈衝",
+                  "desc": "萬億分之一秒(10⁻¹²)超短脈衝，比奈秒快1000倍"
+                },
+                {
+                  "title": "色素微細分解",
+                  "desc": "比奈秒雷射更微細地分解色素，排出更快"
+                },
+                {
+                  "title": "保護周圍組織",
+                  "desc": "熱損傷最小化，減少副作用，恢復更快"
+                }
+              ],
+              "duration": "20-40分鐘",
+              "recovery": "3-7天(可能出現細微結痂)",
+              "sessions": "建議每2-4週1次，共3-5次"
+            },
+            "clarity": {
+              "name": "Clarity II",
+              "nameEn": "Clarity II",
+              "tagline": "雙波長雷射的巔峰 – 色素、血管、脫毛一站式",
+              "benefits": [
+                {
+                  "title": "雙波長",
+                  "desc": "755nm(色素/脫毛) + 1064nm(血管/深層色素) 多功能方案"
+                },
+                {
+                  "title": "IntelliTrak技術",
+                  "desc": "自動18%重疊，能量傳遞均勻，最大限度減少遺漏部位"
+                },
+                {
+                  "title": "所有膚質適用",
+                  "desc": "皮膚類型I-VI均可安全治療"
+                }
+              ],
+              "duration": "15-30分鐘",
+              "recovery": "3-5天(色素部位可能出現細微結痂)",
+              "sessions": "建議每2-4週1次，共3-5次"
+            },
+            "toning": {
+              "name": "激光嫩膚",
+              "nameEn": "Laser Toning",
+              "tagline": "低刺激重複治療，循序漸進改善 – 日常維養",
+              "benefits": [
+                {
+                  "title": "低刺激治療",
+                  "desc": "低能量重複照射，副作用最小化"
+                },
+                {
+                  "title": "無恢復期",
+                  "desc": "治療後可立即恢復日常生活"
+                },
+                {
+                  "title": "累積效果",
+                  "desc": "重複治療帶來循序漸進的自然改善"
+                }
+              ],
+              "duration": "5-15分鐘",
+              "recovery": "無(可立即恢復日常生活)",
+              "sessions": "建議累計10次以上"
+            },
+            "ulblanc": {
+              "name": "Ulblanc",
+              "nameEn": "Ulblanc",
+              "tagline": "標靶黑色素美白 – 整體膚色改善",
+              "benefits": [
+                {
+                  "title": "標靶黑色素",
+                  "desc": "選擇性作用於黑色素，改善更有效"
+                },
+                {
+                  "title": "整體提亮",
+                  "desc": "不只局部，而是均勻提亮整體膚色"
+                },
+                {
+                  "title": "低刺激治療",
+                  "desc": "幾乎無恢復期，可立即恢復日常生活"
+                }
+              ],
+              "duration": "15-20分鐘",
+              "recovery": "無(可立即恢復日常生活)",
+              "sessions": "建議累計5-10次"
+            }
+          },
+          "otherCategories": {
+            "vascular": "紅血絲/血管治療",
+            "skintone": "膚色均勻化",
+            "hair-removal": "高端脫毛",
+            "tattoo": "紋身去除"
+          },
           "hero": {
             "subtitle": "頑固性黃褐斑也能通過LIV三階段系統解決",
             "description": "從皮秒激光到低刺激調光，4種高端設備完成定製色素治療"
@@ -5920,7 +6060,44 @@
       "heroDescription": "新沙站4號出口步行1分鐘，交通便捷的LIV 整形外科。",
       "addressLabel": "地址",
       "buildingDetail": "自恩大廈4層",
-      "phoneLabel": "電話號碼"
+      "phoneLabel": "電話號碼",
+      "mapAppsLabel": "在地圖應用程式中開啟",
+      "mapApps": {
+        "naver": "Naver",
+        "kakao": "Kakao",
+        "google": "Google"
+      },
+      "callButton": "撥打電話",
+      "transportTitle": "交通指南",
+      "transport": {
+        "subway": {
+          "title": "地鐵",
+          "description": "新沙站4號出口",
+          "detail": "步行1分鐘",
+          "line": "3號線"
+        },
+        "bus": {
+          "title": "公車",
+          "description": "新沙站公車站",
+          "detail": "步行2分鐘"
+        },
+        "car": {
+          "title": "自駕",
+          "description": "大樓內停車場",
+          "detail": "療程顧客免費停車2小時"
+        }
+      },
+      "parking": {
+        "description": "可使用大樓內的地下停車場。\n接受療程的顧客可享<b>2小時免費停車</b>。",
+        "note": "停車位可能較為有限，\n建議盡量使用大眾運輸。",
+        "badgeValue": "2小時",
+        "badgeLabel": "療程顧客免費停車"
+      },
+      "cta": {
+        "title": "預約到院諮詢",
+        "description": "為了讓您從容諮詢，請提前預約。",
+        "book": "預約諮詢"
+      }
     }
   },
   "equipmentPage": {
@@ -6508,6 +6685,16 @@
     }
   },
   "metaSeo": {
+    "media": {
+      "title": "Media & News | LIV整形外科",
+      "description": "LIV整形外科的節目出演、專業媒體採訪、學術活動、全球認證及醫院資訊，盡在一處。",
+      "keywords": [
+        "LIV整形外科 媒體",
+        "LIV整形外科 資訊",
+        "APTOS官方培訓師",
+        "LIV整形外科 報導"
+      ]
+    },
     "reviews": {
       "title": "眞實評價 | LIV整形外科眞實顧客評價",
       "description": "查看在LIV整形外科接受Ulthera超音波拉提、Thermage電波拉皮、肉毒桿菌、填充等治療的眞實顧客評價。",

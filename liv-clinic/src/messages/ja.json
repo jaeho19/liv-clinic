@@ -242,7 +242,9 @@
     },
     "readArticle": "記事を見る",
     "readMore": "詳しく見る",
-    "empty": "表示するニュースがありません。"
+    "empty": "表示するニュースがありません。",
+    "photoAlt": "{title} 現場写真 {index}",
+    "thumbnailAlt": "{badge} メイン画像"
   },
   "common": {
     "home": "ホーム",
@@ -483,7 +485,8 @@
         "introLine1": "リブ整形外科は正規品認証されたプレミアム装備のみを使用します。",
         "introLine2": "最新技術で安全かつ効果的な施術を提供します。",
         "viewMore": "詳しく見る",
-        "navigationHint": "ドラッグまたはスクロールで探索"
+        "navigationHint": "ドラッグまたはスクロールで探索",
+        "swipeHint": "← スワイプしてもっと見る →"
       }
     },
     "signature": {
@@ -596,7 +599,8 @@
       },
       "ui": {
         "playVideo": "動画を再生"
-      }
+      },
+      "featuredVideoTitle": "リブ院長が直接解説するアンチエイジング施術"
     },
     "doctors": {
       "kim": {
@@ -626,7 +630,39 @@
           "大韓美容形成外科学会正会員",
           "大韓頭蓋顔面形成外科学会正会員",
           "大韓医学レーザー学会正会員"
-        ]
+        ],
+        "specialties": [
+          "ウルセラプライムリフティング",
+          "サーマジリフティング",
+          "複合リフティング施術",
+          "アンチエイジングプログラム"
+        ],
+        "gallery": [
+          {
+            "title": "APTOS本社研修",
+            "subtitle": "Georgia, 2025"
+          },
+          {
+            "title": "APTOS公式認証書",
+            "subtitle": "KR0062025"
+          },
+          {
+            "title": "Clinical Experience発表",
+            "subtitle": "国際学術大会"
+          },
+          {
+            "title": "施術現場",
+            "subtitle": "Clinical Practice"
+          }
+        ],
+        "academic": {
+          "thesisInstitution": "高麗大学校大学院",
+          "thesisDegree": "修士学位論文",
+          "conferenceMips37": "第37回 最小侵襲形成外科学会(MIPS)",
+          "conferenceMips36": "第36回 最小侵襲形成外科学会(MIPS)",
+          "conferenceAesthetic": "大韓美容形成外科学会",
+          "conferencePlastic": "大韓形成外科学会"
+        }
       },
       "cheon": {
         "name": "チョン・シネ",
@@ -650,6 +686,13 @@
           "大韓家庭医学会正会員",
           "大韓美容形成レーザー医学会正会員",
           "大韓肥満美容治療学会正会員"
+        ],
+        "specialties": [
+          "リフティングレーザー",
+          "スキンブースター",
+          "レーザートーニング",
+          "色素・毛穴レーザー",
+          "スキンケアプログラム"
         ]
       },
       "labels": {
@@ -4031,6 +4074,103 @@
         "tagline": "シミ、そばかす、くすみ改善",
         "description": "様々な色素疾患に合わせたレーザー治療で透明感のある肌を取り戻します。",
         "detail": {
+          "categoryName": "シミ・色素改善",
+          "equipmentCards": {
+            "lucas": {
+              "name": "ルーカスレーザー",
+              "nameEn": "Lucas Laser",
+              "tagline": "ピコ秒技術で難治性の色素まで – 1000倍速いパルス",
+              "benefits": [
+                {
+                  "title": "ピコ秒パルス",
+                  "desc": "1兆分の1秒(10⁻¹²)の超短パルスでナノ秒比1000倍の速さ"
+                },
+                {
+                  "title": "微細な色素分解",
+                  "desc": "ナノレーザーより色素を微細に分解し、速やかに排出"
+                },
+                {
+                  "title": "周辺組織の保護",
+                  "desc": "熱損傷を最小限に抑え副作用を軽減、回復も早い"
+                }
+              ],
+              "duration": "20-40分",
+              "recovery": "3-7日(微細なかさぶたの可能性)",
+              "sessions": "2-4週間隔で3-5回の施術を推奨"
+            },
+            "clarity": {
+              "name": "クラリティ II",
+              "nameEn": "Clarity II",
+              "tagline": "デュアル波長レーザーの頂点 – 色素、血管、脱毛までオールインワン",
+              "benefits": [
+                {
+                  "title": "デュアル波長",
+                  "desc": "755nm(色素/脱毛) + 1064nm(血管/深部色素) マルチソリューション"
+                },
+                {
+                  "title": "IntelliTrak技術",
+                  "desc": "自動18%オーバーラップで均一なエネルギー伝達、照射漏れを最小化"
+                },
+                {
+                  "title": "全ての肌タイプ",
+                  "desc": "スキンタイプI-VIまで安全な施術"
+                }
+              ],
+              "duration": "15-30分",
+              "recovery": "3-5日(色素部位に微細なかさぶたの可能性)",
+              "sessions": "2-4週間隔で3-5回の施術を推奨"
+            },
+            "toning": {
+              "name": "レーザートーニング",
+              "nameEn": "Laser Toning",
+              "tagline": "低刺激の反復施術で段階的に改善 – 日常の中のメンテナンス",
+              "benefits": [
+                {
+                  "title": "低刺激施術",
+                  "desc": "低出力の反復照射で副作用を最小限に"
+                },
+                {
+                  "title": "ダウンタイムなし",
+                  "desc": "施術直後から日常生活がすぐに可能"
+                },
+                {
+                  "title": "累積効果",
+                  "desc": "反復施術で段階的かつ自然な改善"
+                }
+              ],
+              "duration": "5-15分",
+              "recovery": "なし(すぐに日常復帰)",
+              "sessions": "10回以上の累積施術を推奨"
+            },
+            "ulblanc": {
+              "name": "ウルブラン",
+              "nameEn": "Ulblanc",
+              "tagline": "メラニンターゲティングホワイトニング – 全体的な肌トーン改善",
+              "benefits": [
+                {
+                  "title": "メラニンターゲティング",
+                  "desc": "メラニン色素に選択的に作用し効果的に改善"
+                },
+                {
+                  "title": "全体トーンアップ",
+                  "desc": "部分ではなく肌全体のトーンを均一に明るく"
+                },
+                {
+                  "title": "低刺激施術",
+                  "desc": "ダウンタイムはほとんどなく、すぐに日常復帰"
+                }
+              ],
+              "duration": "15-20分",
+              "recovery": "なし(すぐに日常復帰)",
+              "sessions": "5-10回の累積施術を推奨"
+            }
+          },
+          "otherCategories": {
+            "vascular": "赤ら顔・血管治療",
+            "skintone": "肌トーン均一化",
+            "hair-removal": "プレミアム脱毛",
+            "tattoo": "タトゥー除去"
+          },
           "hero": {
             "subtitle": "難治性シミもLIVの3段階システムで",
             "description": "ピコセカンドレーザーから低刺激トーニングまで、4つのプレミアム機器で完成するカスタム色素治療"
@@ -5921,7 +6061,44 @@
       "heroDescription": "新沙駅4番出口から徒歩1分、アクセス便利なLIV整形外科です。",
       "addressLabel": "住所",
       "buildingDetail": "ジャウンビル4階",
-      "phoneLabel": "電話番号"
+      "phoneLabel": "電話番号",
+      "mapAppsLabel": "地図アプリで開く",
+      "mapApps": {
+        "naver": "Naver",
+        "kakao": "Kakao",
+        "google": "Google"
+      },
+      "callButton": "電話する",
+      "transportTitle": "交通案内",
+      "transport": {
+        "subway": {
+          "title": "地下鉄",
+          "description": "新沙駅4番出口",
+          "detail": "徒歩1分",
+          "line": "3号線"
+        },
+        "bus": {
+          "title": "バス",
+          "description": "新沙駅バス停",
+          "detail": "徒歩2分"
+        },
+        "car": {
+          "title": "自家用車",
+          "description": "建物内駐車場",
+          "detail": "施術のお客様は2時間無料"
+        }
+      },
+      "parking": {
+        "description": "建物内の地下駐車場をご利用いただけます。\n施術を受けられるお客様には<b>2時間の無料駐車</b>をご提供いたします。",
+        "note": "駐車スペースに限りがある場合がございますので、\nなるべく公共交通機関のご利用をおすすめいたします。",
+        "badgeValue": "2時間",
+        "badgeLabel": "施術のお客様は駐車無料"
+      },
+      "cta": {
+        "title": "来院相談のご予約",
+        "description": "ゆっくりご相談いただけるよう、事前のご予約をお願いいたします。",
+        "book": "相談を予約する"
+      }
     }
   },
   "equipmentPage": {
@@ -6501,6 +6678,16 @@
     }
   },
   "metaSeo": {
+    "media": {
+      "title": "Media & News | リブ形成外科",
+      "description": "リブ形成外科の放送出演、専門メディアのインタビュー、学術活動、グローバル認証、クリニックニュースを一か所でご確認いただけます。",
+      "keywords": [
+        "リブ形成外科 メディア",
+        "リブ形成外科 ニュース",
+        "APTOS公式トレーナー",
+        "リブ形成外科 放送"
+      ]
+    },
     "reviews": {
       "title": "体験談 | LIV美容外科の実際の患者さまの声",
       "description": "LIV美容外科でウルセラ、サーマクール、ボトックス、フィラーなどの施術を受けた実際の患者さまの体験談をご覧ください。",

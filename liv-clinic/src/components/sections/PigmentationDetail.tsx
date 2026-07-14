@@ -4,14 +4,11 @@ import { useTranslations } from 'next-intl';
 import { useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
-import { TREATMENTS, LASER_CATEGORIES } from '@/lib/constants';
+import { LASER_CATEGORIES } from '@/lib/constants';
 import { PriceTable, Breadcrumb } from '@/components/ui';
 
+// Non-text data only (color / href / id). All display copy comes from messages.
 const category = LASER_CATEGORIES[0]; // pigmentation
-const clarityData = TREATMENTS.laser.clarity;
-const lucasData = TREATMENTS.laser.lucas;
-const toningData = TREATMENTS.laser.toning;
-const ulblancData = TREATMENTS.laser.ulblanc;
 
 // 피코초 vs 나노초 비교 일러스트
 interface PicoVsNanoProps {
@@ -148,14 +145,19 @@ const ThreeStageSystemIllustration = ({ stages }: ThreeStageProps) => {
 };
 
 // 장비 카드 컴포넌트
+interface EquipmentBenefit {
+  title: string;
+  desc: string;
+}
+
 interface EquipmentData {
   name: string;
   nameEn: string;
   tagline: string;
-  benefits: readonly { readonly title: string; readonly desc: string }[];
+  benefits: EquipmentBenefit[];
   duration: string;
   recovery: string;
-  results: string;
+  sessions: string;
 }
 
 const EquipmentCard = ({
@@ -196,7 +198,9 @@ const EquipmentCard = ({
       </div>
       <div className="flex-1">
         <h3 className="text-xl font-bold text-gray-900">{equipment.name}</h3>
-        <p className="text-sm text-gray-500 mb-3">{equipment.nameEn}</p>
+        {equipment.nameEn !== equipment.name && (
+          <p className="text-sm text-gray-500 mb-3">{equipment.nameEn}</p>
+        )}
         <p className="text-sm text-gray-600 mb-4">{equipment.tagline}</p>
 
         <div className="space-y-2">
@@ -231,7 +235,7 @@ const EquipmentCard = ({
       </div>
       <div>
         <div className="text-xs text-gray-500">{tUi('recommendedSessions')}</div>
-        <div className="text-sm font-medium text-gray-900">{equipment.results.split(',')[0]}</div>
+        <div className="text-sm font-medium text-gray-900">{equipment.sessions}</div>
       </div>
     </div>
   </motion.div>
@@ -245,6 +249,11 @@ export default function PigmentationDetail() {
 
   // 번역된 데이터 가져오기
   const detail = {
+    categoryName: t('laser.pigmentation.detail.categoryName'),
+    equipmentCards: t.raw('laser.pigmentation.detail.equipmentCards') as Record<
+      'lucas' | 'clarity' | 'toning' | 'ulblanc',
+      EquipmentData
+    >,
     hero: {
       subtitle: t('laser.pigmentation.detail.hero.subtitle'),
       description: t('laser.pigmentation.detail.hero.description'),
@@ -387,7 +396,7 @@ export default function PigmentationDetail() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-900 mb-6"
             >
-              {category.name}
+              {detail.categoryName}
               <span className="block text-2xl md:text-3xl mt-4 font-normal" style={{ color: category.color }}>
                 {detail.hero.subtitle}
               </span>
@@ -523,27 +532,27 @@ export default function PigmentationDetail() {
           <div className="max-w-5xl mx-auto space-y-6">
             {/* Featured: 루카스 레이저 */}
             <EquipmentCard
-              equipment={lucasData}
+              equipment={detail.equipmentCards.lucas}
               isFeatured={true}
               color="#8B5CF6"
             />
 
             {/* 클래리티 II */}
             <EquipmentCard
-              equipment={clarityData}
+              equipment={detail.equipmentCards.clarity}
               color="#10B981"
             />
 
             <div className="grid md:grid-cols-2 gap-6">
               {/* 레이저 토닝 */}
               <EquipmentCard
-                equipment={toningData}
+                equipment={detail.equipmentCards.toning}
                 color="#F59E0B"
               />
 
               {/* 울블랑 */}
               <EquipmentCard
-                equipment={ulblancData}
+                equipment={detail.equipmentCards.ulblanc}
                 color="#EC4899"
               />
             </div>
@@ -734,7 +743,7 @@ export default function PigmentationDetail() {
                 href={cat.href}
                 className="px-6 py-3 bg-white rounded-full text-gray-700 hover:shadow-md transition-all"
               >
-                {cat.name}
+                {t(`laser.pigmentation.detail.otherCategories.${cat.id}`)}
               </Link>
             ))}
           </div>

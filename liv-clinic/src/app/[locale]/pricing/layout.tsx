@@ -5,11 +5,16 @@ import { SITE_INFO } from '@/lib/constants';
 
 type LayoutParams = { params: Promise<{ locale: string }> };
 
+// SITE_INFO.name is Korean-only, so non-ko locales use the English site name
+// to keep titles / OG / JSON-LD free of Korean.
+const siteNameFor = (locale: string) => (locale === 'ko' ? SITE_INFO.name : SITE_INFO.nameEn);
+
 export async function generateMetadata({ params }: LayoutParams): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'pricingGuide' });
 
-  const title = `${t('hero.title')} | ${SITE_INFO.name}`;
+  const siteName = siteNameFor(locale);
+  const title = `${t('hero.title')} | ${siteName}`;
   const description = t('hero.description');
 
   return {
@@ -22,7 +27,7 @@ export async function generateMetadata({ params }: LayoutParams): Promise<Metada
       title,
       description,
       url: `${BASE_URL}/${locale}/pricing`,
-      siteName: SITE_INFO.name,
+      siteName,
       type: 'website',
     },
   };
@@ -41,7 +46,7 @@ export default async function PricingLayout({
 
   const pageSchema = generateWebPageSchema({
     path: '/pricing',
-    title: `${t('hero.title')} | ${SITE_INFO.name}`,
+    title: `${t('hero.title')} | ${siteNameFor(locale)}`,
     description: t('hero.description'),
     locale,
     type: 'WebPage',
