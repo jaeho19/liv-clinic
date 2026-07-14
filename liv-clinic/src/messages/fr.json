@@ -438,7 +438,7 @@
       "subtitle": "Appareils premium authentiques",
       "description": "LIV Chirurgie Esthétique utilise uniquement des équipements premium certifiés. Nous offrons des traitements sûrs et efficaces avec les dernières technologies.",
       "autoScrolling": "DÉFILEMENT AUTO",
-      "premiumDevices": "10 appareils premium",
+      "premiumDevices": "11 appareils premium",
       "learnMore": "En savoir plus",
       "devices": {
         "ultherapy": {
@@ -448,6 +448,10 @@
         "thermage": {
           "subTitle": "Thermage FLX",
           "desc": "Le summum de la technologie de lifting RF de 4e génération"
+        },
+        "onda": {
+          "subTitle": "ONDA",
+          "desc": "Réduction des graisses et raffermissement par micro-ondes 2,45 GHz"
         },
         "density": {
           "subTitle": "Density",

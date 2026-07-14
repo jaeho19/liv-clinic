@@ -438,7 +438,7 @@
       "subtitle": "Premium authentic devices",
       "description": "LIV Plastic Surgery uses only certified premium equipment. We provide safe and effective treatments with the latest technology.",
       "autoScrolling": "AUTO SCROLLING",
-      "premiumDevices": "10 Premium Devices",
+      "premiumDevices": "11 Premium Devices",
       "learnMore": "Learn More",
       "devices": {
         "ultherapy": {
@@ -448,6 +448,10 @@
         "thermage": {
           "subTitle": "Thermage FLX",
           "desc": "The pinnacle of 4th generation RF lifting technology"
+        },
+        "onda": {
+          "subTitle": "ONDA",
+          "desc": "Fat reduction and skin tightening with 2.45GHz microwaves"
         },
         "density": {
           "subTitle": "Density",

@@ -48,18 +48,19 @@ interface DeviceItem {
   translationKey: string;
 }
 
-// 10개 장비 목록 설정 (번역 키와 함께)
+// 11개 장비 목록 설정 (번역 키와 함께)
 const devicesConfig = [
   { id: '01', title: 'Ultherapy Prime', translationKey: 'ultherapy', image: '/images/equipment/ultherapy.png', link: '/lifting/ulthera' },
   { id: '02', title: 'Thermage FLX', translationKey: 'thermage', image: '/images/equipment/thermage-flx.png', link: '/lifting/thermage' },
-  { id: '03', title: 'Density', translationKey: 'density', image: '/images/equipment/density.png', link: '/lifting/density' },
-  { id: '04', title: 'Shurink', translationKey: 'shurink', image: '/images/equipment/shurink.png', link: '/lifting/shurink' },
-  { id: '05', title: 'Inmode', translationKey: 'inmode', image: '/images/equipment/inmode.png', link: '/lifting/inmode' },
-  { id: '06', title: 'Potenza', translationKey: 'potenza', image: '/images/equipment/potenza.png', link: '/laser' },
-  { id: '07', title: 'Clarity II', translationKey: 'clarity', image: '/images/equipment/clarity-ii.png', link: '/laser' },
-  { id: '08', title: 'Lucas', translationKey: 'lucas', image: '/images/000.jpg', link: '/laser' },
-  { id: '09', title: 'CO2 Laser', translationKey: 'co2', image: '/images/equipment/processed/equipment_co2.png', link: '/laser' },
-  { id: '10', title: 'Ulblanc', translationKey: 'ulblanc', image: '/images/equipment/ulblanc.png', link: '/laser' },
+  { id: '03', title: 'Onda', translationKey: 'onda', image: '/images/equipment/onda.png', link: '/lifting/onda' },
+  { id: '04', title: 'Density', translationKey: 'density', image: '/images/equipment/density.png', link: '/lifting/density' },
+  { id: '05', title: 'Shurink', translationKey: 'shurink', image: '/images/equipment/shurink.png', link: '/lifting/shurink' },
+  { id: '06', title: 'Inmode', translationKey: 'inmode', image: '/images/equipment/inmode.png', link: '/lifting/inmode' },
+  { id: '07', title: 'Potenza', translationKey: 'potenza', image: '/images/equipment/potenza.png', link: '/laser' },
+  { id: '08', title: 'Clarity II', translationKey: 'clarity', image: '/images/equipment/clarity-ii.png', link: '/laser' },
+  { id: '09', title: 'Lucas', translationKey: 'lucas', image: '/images/000.jpg', link: '/laser' },
+  { id: '10', title: 'CO2 Laser', translationKey: 'co2', image: '/images/equipment/processed/equipment_co2.png', link: '/laser' },
+  { id: '11', title: 'Ulblanc', translationKey: 'ulblanc', image: '/images/equipment/ulblanc.png', link: '/laser' },
 ];
 
 export default function Equipment() {

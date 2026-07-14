@@ -438,7 +438,7 @@
       "subtitle": "أجهزة فاخرة أصلية",
       "description": "تستخدم عيادة ليف للتجميل أجهزة بريميوم معتمدة فقط. نقدم علاجات آمنة وفعالة بأحدث التقنيات.",
       "autoScrolling": "تمرير تلقائي",
-      "premiumDevices": "10 أجهزة بريميوم",
+      "premiumDevices": "11 أجهزة بريميوم",
       "learnMore": "اعرف المزيد",
       "devices": {
         "ultherapy": {
@@ -448,6 +448,10 @@
         "thermage": {
           "subTitle": "Thermage FLX",
           "desc": "قمة تقنية الشد بالترددات الراديوية من الجيل الرابع"
+        },
+        "onda": {
+          "subTitle": "ONDA",
+          "desc": "تقليل الدهون وشد البشرة بالموجات الدقيقة 2.45GHz"
         },
         "density": {
           "subTitle": "Density",

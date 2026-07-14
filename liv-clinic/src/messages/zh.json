@@ -438,7 +438,7 @@
       "subtitle": "高端正品设备",
       "description": "LIV整形外科只使用正品认证的高端设备。我们以最新技术提供安全有效的治疗。",
       "autoScrolling": "AUTO SCROLLING",
-      "premiumDevices": "10 Premium Devices",
+      "premiumDevices": "11 Premium Devices",
       "learnMore": "了解更多",
       "devices": {
         "ultherapy": {
@@ -448,6 +448,10 @@
         "thermage": {
           "subTitle": "热玛吉FLX",
           "desc": "第四代射频提升技术的巅峰"
+        },
+        "onda": {
+          "subTitle": "ONDA",
+          "desc": "2.45GHz微波同时减脂与紧致肌肤"
         },
         "density": {
           "subTitle": "Density",

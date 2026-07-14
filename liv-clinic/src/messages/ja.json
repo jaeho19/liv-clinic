@@ -438,7 +438,7 @@
       "subtitle": "プレミアム正品機器",
       "description": "リブ形成外科は正品認証されたプレミアム機器のみを使用しております。最新技術で安全かつ効果的な施術を提供します。",
       "autoScrolling": "AUTO SCROLLING",
-      "premiumDevices": "10 Premium Devices",
+      "premiumDevices": "11 Premium Devices",
       "learnMore": "詳しく見る",
       "devices": {
         "ultherapy": {
@@ -448,6 +448,10 @@
         "thermage": {
           "subTitle": "サーマジFLX",
           "desc": "第4世代RFリフティング技術の頂点"
+        },
+        "onda": {
+          "subTitle": "オンダ",
+          "desc": "2.45GHzマイクロ波で脂肪減少と弾力改善"
         },
         "density": {
           "subTitle": "デンシティ",

@@ -438,7 +438,7 @@
       "subtitle": "프리미엄 정품 장비",
       "description": "리브성형외과는 정품 인증된 프리미엄 장비만을 사용합니다. 최신 기술로 안전하고 효과적인 시술을 제공합니다.",
       "autoScrolling": "AUTO SCROLLING",
-      "premiumDevices": "10 Premium Devices",
+      "premiumDevices": "11 Premium Devices",
       "learnMore": "자세히 보기",
       "devices": {
         "ultherapy": {
@@ -448,6 +448,10 @@
         "thermage": {
           "subTitle": "써마지 FLX",
           "desc": "4세대 RF 리프팅 기술의 정점"
+        },
+        "onda": {
+          "subTitle": "온다",
+          "desc": "2.45GHz 마이크로웨이브로 지방 감소와 탄력 개선"
         },
         "density": {
           "subTitle": "덴서티",

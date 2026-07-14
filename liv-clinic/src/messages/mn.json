@@ -438,7 +438,7 @@
       "subtitle": "Premium жинхэнэ төхөөрөмж",
       "description": "LIV Гоо Заслын Эмнэлэг зөвхөн баталгаажсан Premium тоног төхөөрөмж ашигладаг. Сүүлийн үеийн технологиор аюулгүй, үр дүнтэй эмчилгээ үзүүлдэг.",
       "autoScrolling": "АВТО ГҮЙЛГЭЛТ",
-      "premiumDevices": "10 Premium төхөөрөмж",
+      "premiumDevices": "11 Premium төхөөрөмж",
       "learnMore": "Дэлгэрэнгүй мэдээлэл",
       "devices": {
         "ultherapy": {
@@ -448,6 +448,10 @@
         "thermage": {
           "subTitle": "Thermage FLX",
           "desc": "4-р үеийн RF лифтинг технологийн оргил"
+        },
+        "onda": {
+          "subTitle": "ONDA",
+          "desc": "2.45 ГГц микро долгионоор өөх багасгаж, арьсыг чангаруулах"
         },
         "density": {
           "subTitle": "Density",
