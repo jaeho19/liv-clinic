@@ -30,6 +30,11 @@ interface MobileMenuProps {
   navItems: NavItem[];
 }
 
+// 드로어는 aria-modal="true"이고, ru/fr 등 긴 라벨 로케일에서는 데스크톱 폭에서도 이 드로어가
+// 유일한 내비게이션이다. Tab이 뒤 페이지로 새지 않도록 패널 안에서만 순환시킨다.
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 const languages = LOCALE_ORDER.map((code) => ({
   code,
   label: LOCALE_META[code].name,
@@ -47,36 +52,70 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
   const handleHashNav = useHashNavigation();
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  // 드로어를 연 요소(햄버거 버튼) — 닫힐 때 포커스를 되돌려 준다.
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
 
   // RTL에서는 왼쪽에서 슬라이드 인, LTR에서는 오른쪽에서 슬라이드 인
   const slideInitial = dir === 'rtl' ? '-100%' : '100%';
 
-  // Escape 키로 메뉴 닫기
+  // Escape 키로 메뉴 닫기 + Tab 포커스 트랩
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
       onClose();
+      return;
+    }
+    if (e.key !== 'Tab') return;
+
+    const panel = menuRef.current;
+    if (!panel) return;
+    const focusable = panel.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
+    if (focusable.length === 0) return;
+
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    const active = document.activeElement;
+
+    // 패널 밖에 포커스가 있으면 방향에 맞는 끝으로 되돌리고, 끝에 닿으면 반대 끝으로 순환.
+    if (e.shiftKey) {
+      if (active === first || !panel.contains(active)) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else if (active === last || !panel.contains(active)) {
+      e.preventDefault();
+      first.focus();
     }
   }, [onClose]);
 
-  // 메뉴 열릴 때 포커스 트랩 및 Escape 키 리스너
+  // Escape/Tab 키 리스너 — onClose 아이덴티티가 바뀌어도 아래 포커스 효과를 재실행시키지 않도록 분리.
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener('keydown', handleKeyDown);
-      // 메뉴 열릴 때 닫기 버튼에 포커스
-      setTimeout(() => {
-        closeButtonRef.current?.focus();
-      }, 100);
-      // 스크롤 방지
-      document.body.style.overflow = 'hidden';
-    } else {
+    if (!isOpen) return;
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, handleKeyDown]);
+
+  // 메뉴 열릴 때 초기 포커스 + 스크롤 방지, 닫히거나 언마운트되면 원래 포커스 복원
+  useEffect(() => {
+    if (!isOpen) {
       document.body.style.overflow = '';
+      return;
     }
 
+    previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+    // 메뉴 열릴 때 닫기 버튼에 포커스
+    const focusTimer = setTimeout(() => {
+      closeButtonRef.current?.focus();
+    }, 100);
+    // 스크롤 방지
+    document.body.style.overflow = 'hidden';
+
     return () => {
-      document.removeEventListener('keydown', handleKeyDown);
+      clearTimeout(focusTimer);
       document.body.style.overflow = '';
+      previouslyFocusedRef.current?.focus();
+      previouslyFocusedRef.current = null;
     };
-  }, [isOpen, handleKeyDown]);
+  }, [isOpen]);
 
   // useCallback으로 메모이제이션 - 불필요한 리렌더 방지 (Vercel Best Practice: rerender-functional-setstate)
   const toggleExpand = useCallback((key: string) => {
@@ -103,18 +142,20 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 z-50 lg:hidden"
+            className="fixed inset-0 bg-black/50 z-50"
             onClick={onClose}
           />
 
-          {/* Menu Panel */}
+          {/* Menu Panel — no width cap: the hamburger that opens it stays visible up to a
+              locale-specific breakpoint (Header NAV_MIN_WIDTH), so a lg:hidden drawer would
+              open invisibly on desktop while still locking body scroll. */}
           <motion.div
             ref={menuRef}
             initial={{ x: slideInitial }}
             animate={{ x: 0 }}
             exit={{ x: slideInitial }}
             transition={{ type: 'tween', duration: 0.3 }}
-            className="fixed top-0 end-0 bottom-0 w-[min(300px,85vw)] bg-white z-50 lg:hidden overflow-y-auto safe-area-pr"
+            className="fixed top-0 end-0 bottom-0 w-[min(300px,85vw)] bg-white z-50 overflow-y-auto safe-area-pr"
             role="dialog"
             aria-modal="true"
             aria-label="Navigation menu"

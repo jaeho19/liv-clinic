@@ -10,22 +10,87 @@ import { motion, AnimatePresence } from 'framer-motion';
 import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu, { type NavItem } from './MobileMenu';
 import { useHashNavigation } from '@/hooks/useHashNavigation';
-import { MAIN_NAV } from '@/lib/constants';
 import { LOCALES, type Locale } from '@/i18n/routing';
 
 // LOCALES SSOT 기반 홈 경로 매칭 — 새 locale 추가 시 자동 동기화
 const LOCALE_HOME_RE = new RegExp(`^/(${LOCALES.map((l) => l.replace(/\./g, '\\.')).join('|')})$`);
 
-// 번역 라벨이 길어 데스크톱 nav(9개 항목)가 우측 영역(언어 스위처 포함)을
-// viewport 밖으로 밀어내는 locale. 측정 결과(2026-05, 9개 항목 기준):
-//   xl(1280px)에서도 overflow → en=+209px / vi=+148px / th=+143px,
-//   mn/fr/ru/ja도 1440px overflow. 이 locale들은 모든 폭에서 데스크톱 nav 대신
-//   햄버거 메뉴를 강제해 언어 스위처 가시성을 보장한다.
-// 나머지(ko/zh/zh-TW/ar)는 xl(1280px)+ 에서만 데스크톱 nav를 노출(xl:flex)하고
-//   그 미만(태블릿)은 햄버거로 fallback — lg 구간 언어 스위처 클리핑(G-1) 방지.
-// ar 추가(2026-07-27): 아랍어 nav 라벨이 길어 xl(1280~1439px)에서 nav+우측 클러스터가
-// 뷰포트를 넘겨 RTL 방향으로 언어 스위처를 화면 밖으로 밀어냈음 → compact로 편입.
-const COMPACT_NAV_LOCALES = new Set<Locale>(['ja', 'fr', 'mn', 'ru', 'en', 'vi', 'th', 'ar']);
+// Per-locale minimum viewport width at which the 9-item desktop nav is shown. Translated
+// labels differ in length, so every locale gets its own breakpoint instead of the old binary
+// "compact" switch that hid the nav at EVERY width for long-label locales. Below the threshold
+// the hamburger drawer takes over — and the drawer now renders at every width, so no locale is
+// ever left without a way to reach the 9 categories.
+//
+// Measured 2026-07-27 (dev, unscrolled = the widest state) on this header row: content width is
+// viewport − 80px, capped at 1800px. Required row width = logo (172) + nav + right cluster, and
+// the right cluster is dominated by the locale's consultation-CTA label (267px for ko → 353px
+// for ru). Thresholds are the smallest step that leaves ≥30px of slack:
+//   locale     nav   right   required   threshold (slack)
+//   ko         690     267       1140     1280 (+60)   zh 1121 (+79) / zh-TW 1126 (+74)
+//   ar         786     283       1253     1440 (+107)
+//   th         765     342       1291     1440 (+69)
+//   vi         833     288       1304     1440 (+56)
+//   en         839     336       1366     1536 (+90)
+//   ja         956     266       1414     1536 (+42)
+//   mn         945     288       1425     1536 (+31)
+//   fr         951     293       1436     1600 (+84)   only +20 at 1536 → deferred
+//   ru         912     353       1457     1600 (+63)   overflows 1536 by 1px
+// Below its threshold a locale overflows by 50–250px, which is what used to push the language
+// switcher off-screen; the hamburger drawer covers that band.
+type NavBreakpoint = 1280 | 1440 | 1536 | 1600;
+
+const NAV_MIN_WIDTH: Record<Locale, NavBreakpoint> = {
+  ko: 1280,
+  zh: 1280,
+  'zh-TW': 1280,
+  ar: 1440,
+  th: 1440,
+  vi: 1440,
+  en: 1536,
+  ja: 1536,
+  mn: 1536,
+  fr: 1600,
+  ru: 1600,
+};
+
+// Tailwind v4 scans literal class strings, so each threshold's variants are spelled out here
+// instead of being interpolated at runtime.
+const NAV_VISIBILITY_CLASS: Record<NavBreakpoint, string> = {
+  1280: 'hidden xl:flex',
+  1440: 'hidden min-[1440px]:flex',
+  1536: 'hidden 2xl:flex',
+  1600: 'hidden min-[1600px]:flex',
+};
+
+const HAMBURGER_VISIBILITY_CLASS: Record<NavBreakpoint, string> = {
+  1280: 'xl:hidden',
+  1440: 'min-[1440px]:hidden',
+  1536: '2xl:hidden',
+  1600: 'min-[1600px]:hidden',
+};
+
+// Nav item spacing. Long-label locales stop growing the gap at 2xl: the extra 8px per gap costs
+// 64px across the 9 items, which is what keeps en/ja/mn on 1536 and ru on 1600 — without the cap
+// ja/mn need 1600 and ru needs 1700. ko/zh/zh-TW have room to spare, so they keep the airier rhythm.
+const NAV_GAP_WIDE = { top: 'gap-5 xl:gap-7 2xl:gap-9', scrolled: 'gap-4 xl:gap-6 2xl:gap-7' };
+const NAV_GAP_TIGHT = { top: 'gap-5 xl:gap-7', scrolled: 'gap-4 xl:gap-6' };
+
+// The multilingual trust chip only fills the gap left by a hidden nav: show it from xl up to
+// the locale's nav threshold. Locales that already show the nav at xl never get room for it.
+// One stacked min+max variant per threshold rather than `xl:inline-flex` plus a separate
+// `<threshold>:hidden`: Tailwind v4 emits arbitrary min-width variants BEFORE the named `xl`
+// variant, so the two-variant form left `xl:inline-flex` winning and the chip visible next to
+// the nav (measured: +139~144px of right-cluster width).
+// The max-width bound is the threshold itself, not threshold−1: Tailwind v4 compiles
+// `max-[1440px]` to `not (min-width: 1440px)`, i.e. strictly BELOW 1440 — the exact complement
+// of the nav's `min-[1440px]`. Using `max-[1439px]` left a 1px dead band at exactly 1439
+// where neither the chip nor the nav rendered.
+const TRUST_CHIP_VISIBILITY_CLASS: Record<NavBreakpoint, string> = {
+  1280: 'hidden',
+  1440: 'hidden xl:max-[1440px]:inline-flex',
+  1536: 'hidden xl:max-[1536px]:inline-flex',
+  1600: 'hidden xl:max-[1600px]:inline-flex',
+};
 
 // Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice: rerender-dependencies)
 function useThrottle<T extends (...args: unknown[]) => void>(
@@ -62,7 +127,10 @@ export default function Header() {
   const tLang = useTranslations('langSupport');
   const pathname = usePathname();
   const locale = useLocale() as Locale;
-  const useCompactMenu = COMPACT_NAV_LOCALES.has(locale);
+  // ?? 1280: an unexpected locale would otherwise yield undefined and interpolate
+  // `undefined` into the nav/hamburger/chip className lookups.
+  const navMinWidth = NAV_MIN_WIDTH[locale] ?? 1280;
+  const navGap = navMinWidth === 1280 ? NAV_GAP_WIDE : NAV_GAP_TIGHT;
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -88,19 +156,20 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [handleScroll]);
 
-  // Close mobile menu on resize — compact-nav locale은 모든 폭에서 햄버거 메뉴를 유지하므로 제외
-  // 데스크톱 nav는 xl(1280px)+ 에서만 노출되므로, 그 이상으로 넓어지면 모바일 메뉴를 닫는다.
+  // Close the drawer once the viewport is wide enough to show this locale's desktop nav,
+  // so the hamburger and the drawer are never both live at the same width.
   useEffect(() => {
-    if (useCompactMenu) return;
+    if (!isMobileMenuOpen) return;
+
     const handleResize = () => {
-      if (window.innerWidth >= 1280) {
+      if (window.innerWidth >= navMinWidth) {
         setIsMobileMenuOpen(false);
       }
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, [useCompactMenu]);
+  }, [navMinWidth, isMobileMenuOpen]);
 
   const navItems: NavItem[] = [
     {
@@ -183,9 +252,13 @@ export default function Header() {
             : 'bg-secondary/95 backdrop-blur-md shadow-sm'
         }`}
       >
-        {/* overflow-x-visible!: container-custom의 overflow-x:clip이 2xl 폭에서 우측(RTL은 좌측)
-            클러스터 끝(언어 스위처)을 잘라내던 것을 헤더 행에서만 무효화. 가로 스크롤은 body가 이미 clip */}
-        <div className="container-custom overflow-x-visible!">
+        {/* Header-only wrapper instead of .container-custom (1120px content cap + overflow-x:clip):
+            the wider row is what makes the 9-item nav fit for long-label locales, and a plain div
+            can never clip the end of the right cluster (language switcher) the way clip did.
+            Deliberate trade-off: above 1280px this gutter is wider than the page body's
+            .container-custom (1280), so the header row and the page content below it are
+            intentionally NOT left/right aligned — nav fit wins over edge alignment. */}
+        <div className="mx-auto w-full max-w-[1800px] px-6 md:px-8 lg:px-10">
           <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0">
@@ -203,13 +276,11 @@ export default function Header() {
               />
             </Link>
 
-            {/* Desktop Navigation — 긴 라벨 locale(COMPACT_NAV_LOCALES)은 데스크톱 nav를 숨겨
-                 우측 언어 스위처가 가려지지 않게 한다 (햄버거로 fallback) */}
+            {/* Desktop Navigation — shown from this locale's NAV_MIN_WIDTH up; narrower viewports
+                 fall back to the hamburger drawer so the right cluster is never pushed off-screen */}
             <nav
-              className={`${useCompactMenu ? 'hidden' : 'hidden xl:flex'} items-center transition-all duration-300 xl:ms-4 2xl:ms-5 ${
-                isScrolled
-                  ? 'gap-4 xl:gap-6 2xl:gap-7'
-                  : 'gap-5 xl:gap-7 2xl:gap-9'
+              className={`${NAV_VISIBILITY_CLASS[navMinWidth]} items-center transition-all duration-300 xl:ms-4 2xl:ms-5 ${
+                isScrolled ? navGap.scrolled : navGap.top
               }`}
             >
               {navItems.map((item) => (
@@ -306,13 +377,11 @@ export default function Header() {
               </NextLink>
 
               {/* Multilingual support trust chip - Desktop.
-                  Compact-nav locales hide the desktop nav → room to show at xl.
-                  Non-compact locales show the nav at xl, so defer the chip to 2xl to avoid crowding. */}
+                  Only rendered in the band where the desktop nav is still hidden (xl → NAV_MIN_WIDTH),
+                  so it can never compete with the nav for horizontal room. */}
               <span
                 title={tLang('badgeAria')}
-                // 비컴팩트 로케일(ko/zh/zh-TW/ar)은 배지 미노출: 2xl에서 배지(+165px)가 우측
-                // 클러스터를 container-custom clip 밖으로 밀어 언어 스위처가 통째로 잘렸음.
-                className={`${useCompactMenu ? 'hidden xl:inline-flex' : 'hidden'} items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors ${
+                className={`${TRUST_CHIP_VISIBILITY_CLASS[navMinWidth]} items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors ${
                   useDarkStyle
                     ? 'border-primary/30 bg-primary/5 text-primary/90'
                     : 'border-white/40 bg-white/10 text-white/90 backdrop-blur-sm'
@@ -342,10 +411,10 @@ export default function Header() {
                 </svg>
               </Link>
 
-              {/* Mobile Menu Button — 긴 라벨 locale은 모든 폭에서, 그 외는 xl 미만(태블릿)에서 햄버거 */}
+              {/* Mobile Menu Button — visible below this locale's NAV_MIN_WIDTH, hidden above it */}
               <button
                 onClick={() => setIsMobileMenuOpen(true)}
-                className={`${useCompactMenu ? '' : 'xl:hidden'} p-3 min-w-[44px] min-h-[44px] flex items-center justify-center`}
+                className={`${HAMBURGER_VISIBILITY_CLASS[navMinWidth]} p-3 min-w-[44px] min-h-[44px] flex items-center justify-center`}
                 aria-label="Open menu"
               >
                 <svg
