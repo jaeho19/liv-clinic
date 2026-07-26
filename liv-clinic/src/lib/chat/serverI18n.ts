@@ -1,8 +1,11 @@
 import 'server-only';
+import { CHAT_VISITOR_LOCALES, type VisitorLocale } from './chatApi';
 
 // 방문자 채팅 지원 로케일(SSOT) — 세션 생성 검증·번역·시스템 메시지가 모두 이 목록을 따른다.
-export const VISITOR_LOCALES = ['en', 'ja', 'zh', 'fr', 'mn', 'ar'] as const;
-export type VisitorLocale = (typeof VISITOR_LOCALES)[number];
+// 목록 자체는 chatApi(클라이언트/서버 공용, 모듈 스코프 브라우저 접근 없음)가 소유하고,
+// 서버 측 기존 이름(VISITOR_LOCALES)으로 재수출만 한다.
+export const VISITOR_LOCALES = CHAT_VISITOR_LOCALES;
+export type { VisitorLocale };
 export type SystemMessageKey =
   | 'welcome'
   | 'delayedResponseNotice'
@@ -37,6 +40,41 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
     allOperatorsBusyNotice: '客服暂时离开，请留言，我们会尽快回复。',
     sessionEnded:
       '本次对话已结束。如需进一步咨询，请开始新的对话。',
+  },
+  'zh-TW': {
+    welcome: '您好！請問有什麼可以幫您？',
+    delayedResponseNotice:
+      '現在不在營業時間內（工作日 10:00–19:00, 週六 10:00–16:00 KST）。請留言，營業時間開始後我們會回覆您。如需更快回復，請同時留下您的郵箱。',
+    allOperatorsBusyNotice: '客服暫時離開，請留言，我們會盡快回復。',
+    sessionEnded:
+      '本次對話已結束。如需進一步諮詢，請開始新的對話。',
+  },
+  vi: {
+    welcome: 'Xin chào! Hôm nay chúng tôi có thể giúp gì cho bạn?',
+    delayedResponseNotice:
+      'Hiện tại chúng tôi đang ngoài giờ làm việc (các ngày trong tuần 10:00–19:00, thứ Bảy 10:00–16:00 KST). Bạn hãy để lại tin nhắn, chúng tôi sẽ trả lời khi trực tuyến trở lại. Vui lòng để lại email của bạn để được phản hồi nhanh hơn.',
+    allOperatorsBusyNotice:
+      'Nhân viên của chúng tôi đang tạm thời vắng mặt. Bạn hãy để lại tin nhắn, chúng tôi sẽ trả lời trong thời gian ngắn.',
+    sessionEnded:
+      'Cuộc trò chuyện này đã kết thúc. Hãy bắt đầu cuộc trò chuyện mới nếu bạn có thêm câu hỏi.',
+  },
+  th: {
+    welcome: 'สวัสดี! วันนี้เราจะช่วยคุณได้อย่างไร?',
+    delayedResponseNotice:
+      'ขณะนี้อยู่นอกเวลาทำการ (วันธรรมดา 10:00–19:00 น., วันเสาร์ 10:00–16:00 น. KST) กรุณาฝากข้อความไว้ เราจะตอบกลับเมื่อกลับมาออนไลน์ หากต้องการคำตอบที่รวดเร็วยิ่งขึ้น กรุณาแจ้งอีเมลของคุณด้วย',
+    allOperatorsBusyNotice:
+      'เจ้าหน้าที่ของเราไม่อยู่ชั่วครู่ กรุณาฝากข้อความไว้ เราจะตอบกลับในไม่ช้า',
+    sessionEnded:
+      'บทสนทนานี้จบลงแล้ว หากมีคำถามเพิ่มเติม กรุณาเริ่มแชทใหม่',
+  },
+  ru: {
+    welcome: 'Здравствуйте! Чем мы можем помочь вам сегодня?',
+    delayedResponseNotice:
+      'Сейчас нерабочее время (будни 10:00–19:00, суббота 10:00–16:00 по корейскому времени). Оставьте сообщение, и мы ответим, как только снова будем онлайн. Укажите свой адрес электронной почты, чтобы получить ответ быстрее.',
+    allOperatorsBusyNotice:
+      'Наши сотрудники ненадолго отошли. Оставьте сообщение, и мы ответим в ближайшее время.',
+    sessionEnded:
+      'Этот разговор завершён. Для дальнейших вопросов начните новый чат.',
   },
   fr: {
     welcome: 'Bonjour ! Comment pouvons-nous vous aider aujourd\'hui ?',

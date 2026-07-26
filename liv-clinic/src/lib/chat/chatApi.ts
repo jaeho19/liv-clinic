@@ -1,9 +1,30 @@
 // 클라이언트(브라우저) 측 fetch 래퍼.
 // 서버 라우트(/api/chat/*)와 1:1 매핑.
 
-export type VisitorLocale = 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar';
-// 클라이언트에서 라이브챗 활성 로케일을 판정하는 런타임 목록([locale]/layout.tsx 화이트리스트와 동일).
-export const CHAT_VISITOR_LOCALES = ['en', 'ja', 'zh', 'fr', 'mn', 'ar'] as const;
+export type VisitorLocale =
+  | 'en'
+  | 'ja'
+  | 'zh'
+  | 'zh-TW'
+  | 'vi'
+  | 'th'
+  | 'ru'
+  | 'fr'
+  | 'mn'
+  | 'ar';
+// 클라이언트에서 라이브챗 활성 로케일을 판정하는 런타임 목록([locale]/layout.tsx 마운트 게이트가 이 목록을 직접 사용).
+export const CHAT_VISITOR_LOCALES = [
+  'en',
+  'ja',
+  'zh',
+  'zh-TW',
+  'vi',
+  'th',
+  'ru',
+  'fr',
+  'mn',
+  'ar',
+] as const;
 export type MessageSender = 'visitor' | 'operator' | 'system';
 export type TranslationStatus = 'pending' | 'success' | 'failed' | 'skipped';
 

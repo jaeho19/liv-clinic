@@ -6537,15 +6537,15 @@
     "emailPlaceholder": "Электронная почта (необязательно, для обратного звонка)",
     "startChat": "Начать чат",
     "messageCountdown": "{count} /1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
+    "unreadAria": "{count, plural, one {# новое сообщение} few {# новых сообщения} many {# новых сообщений} other {# новых сообщения}}",
     "promoTitle": "Скидка 5% при прямой записи через чат",
     "promoBody": "Запишитесь и приходите напрямую через этот чат — получите скидку 5% или подарок. Быстрее и выгоднее, без посредников.",
-    "promoCta": "Book directly",    "promoTerms": "Скидка 5% применяется, когда обращение через чат приводит к завершённой оплате.",
+    "promoCta": "Записаться напрямую",    "promoTerms": "Скидка 5% применяется, когда обращение через чат приводит к завершённой оплате.",
 
-    "promoDraft": "I'd like to book directly - I saw the 5% direct-booking offer."
+    "promoDraft": "Хочу записаться напрямую. Меня интересует скидка 5% при прямой записи."
   },
   "stickyCta": {
-    "chat": "Chat with us now",
+    "chat": "Написать в чат",
     "callback": "Request a callback",
     "call": "Call now",
     "whatsapp": "WhatsApp",
@@ -6563,7 +6563,7 @@
     "whatsappDesc": "Chat with us on WhatsApp"
   },
   "messengers": {
-    "whatsappPrefill": "Hello, I'd like to ask about a consultation at LIV Plastic Surgery."
+    "whatsappPrefill": "Здравствуйте! Хочу узнать о консультации в клинике LIV Plastic Surgery."
   },
   "consultation": {
     "floating": {

@@ -172,7 +172,7 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
     <div
       role="dialog"
       aria-label={t('title')}
-      className="fixed left-2 sm:left-4 md:left-6 z-50 flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
+      className="fixed start-2 sm:start-4 md:start-6 z-50 flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
       style={{
         bottom: 'calc(140px + env(safe-area-inset-bottom, 0px))',
         width: 'min(360px, calc(100vw - 16px))',

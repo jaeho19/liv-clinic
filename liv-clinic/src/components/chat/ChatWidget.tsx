@@ -30,16 +30,28 @@ const LOCALE_FLAG: Record<VisitorLocale, string> = {
   en: '🇬🇧',
   ja: '🇯🇵',
   zh: '🇨🇳',
+  'zh-TW': '🇹🇼',
+  vi: '🇻🇳',
+  th: '🇹🇭',
+  ru: '🇷🇺',
   fr: '🇫🇷',
   mn: '🇲🇳',
   ar: '🇸🇦',
-};
+} satisfies Record<VisitorLocale, string>;
+
+// The CSS reduced-motion block cannot reach framer-motion's JS-driven keyframes,
+// so the pulse is gated on the media query at runtime instead.
+function prefersReducedMotion(): boolean {
+  if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return false;
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}
 
 export default function ChatWidget({ locale }: Props) {
   const t = useTranslations('chat');
   const [open, setOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
-  const [showPulse, setShowPulse] = useState(true);
+  // Reduced-motion visitors start with the pulse already off, so no keyframe ever runs.
+  const [showPulse, setShowPulse] = useState(() => !prefersReducedMotion());
   // 자동 숨김 타이머 id — 포커스 중에는 취소하고, 포커스 이탈 시 재설정한다.
   const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -193,7 +205,7 @@ export default function ChatWidget({ locale }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.25 }}
-            className="fixed left-2 sm:left-4 md:left-6 z-40 bg-white border border-[#e5e5e5] rounded-2xl shadow-xl max-w-[260px]"
+            className="fixed start-2 sm:start-4 md:start-6 z-40 bg-white border border-[#e5e5e5] rounded-2xl shadow-xl max-w-[260px]"
             style={{
               bottom: 'calc(150px + env(safe-area-inset-bottom, 0px))',
             }}
@@ -202,7 +214,7 @@ export default function ChatWidget({ locale }: Props) {
               type="button"
               onClick={dismissTooltip}
               aria-label={t('tooltipDismiss')}
-              className="absolute -top-1 -right-1 bg-white border border-gray-200 rounded-full w-7 h-7 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-50 text-sm leading-none shadow-sm"
+              className="absolute -top-1 -end-1 bg-white border border-gray-200 rounded-full w-7 h-7 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-50 text-sm leading-none shadow-sm"
             >
               ✕
             </button>
@@ -210,13 +222,13 @@ export default function ChatWidget({ locale }: Props) {
             <button
               type="button"
               onClick={handleTeaserClick}
-              className="block w-full text-start pl-3 pr-7 py-2.5 text-xs sm:text-sm text-[#6d4e42] font-medium leading-relaxed cursor-pointer"
+              className="block w-full text-start ps-3 pe-7 py-2.5 text-xs sm:text-sm text-[#6d4e42] font-medium leading-relaxed cursor-pointer"
             >
               <span role="status">{t('tooltipText')}</span>
             </button>
             {/* 말풍선 꼬리 — 버튼을 가리키도록 아래쪽 */}
             <div
-              className="absolute -bottom-2 left-7 w-4 h-4 bg-white border-r border-b border-[#e5e5e5] transform rotate-45"
+              className="absolute -bottom-2 start-7 w-4 h-4 bg-white border-r border-b border-[#e5e5e5] transform rotate-45"
               aria-hidden
             />
           </motion.div>
@@ -233,14 +245,14 @@ export default function ChatWidget({ locale }: Props) {
             : t('openButton')
         }
         aria-expanded={open}
-        className="fixed left-2 sm:left-4 md:left-6 z-40 flex items-center justify-center gap-2 bg-[#b4988d] text-white shadow-lg hover:bg-[#a3877d] active:scale-[0.97] transition-colors rounded-full min-h-[48px] px-3 sm:px-4"
+        className="fixed start-2 sm:start-4 md:start-6 z-40 flex items-center justify-center gap-2 bg-[#6d4e42] text-white shadow-lg hover:bg-[#5d4136] active:scale-[0.97] transition-colors rounded-full min-h-[48px] px-3 sm:px-4"
         style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
         animate={
           showPulse && !open
             ? {
                 boxShadow: [
                   '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-                  '0 0 0 10px rgba(180, 152, 141, 0.25), 0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                  '0 0 0 10px rgba(109, 78, 66, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.1)',
                   '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
                 ],
               }
@@ -289,7 +301,7 @@ export default function ChatWidget({ locale }: Props) {
         {/* G-07: 미확인 메시지 빨간 점 배지 */}
         {unreadCount > 0 && !open && (
           <span
-            className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-600 ring-2 ring-white"
+            className="absolute -top-1 -end-1 w-3 h-3 rounded-full bg-red-600 ring-2 ring-white"
             aria-hidden
           />
         )}

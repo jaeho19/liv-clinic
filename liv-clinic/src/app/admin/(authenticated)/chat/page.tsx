@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { createChatAdminClient } from '@/lib/chat/db';
+import type { VisitorLocale } from '@/lib/chat/chatApi';
 
 export const dynamic = 'force-dynamic';
 
@@ -14,11 +15,20 @@ interface SessionRow {
   created_at: string;
 }
 
+// 인덱싱은 DB에서 온 임의 문자열(visitor_locale)로 하므로 선언 타입은 Record<string, string>을
+// 유지하고, 누락 로케일은 satisfies로 컴파일 타임에 잡는다.
 const LOCALE_FLAG: Record<string, string> = {
   en: '🇬🇧',
   ja: '🇯🇵',
   zh: '🇨🇳',
-};
+  'zh-TW': '🇹🇼',
+  vi: '🇻🇳',
+  th: '🇹🇭',
+  ru: '🇷🇺',
+  fr: '🇫🇷',
+  mn: '🇲🇳',
+  ar: '🇸🇦',
+} satisfies Record<VisitorLocale, string>;
 
 function relativeTime(iso: string | null): string {
   if (!iso) return '-';

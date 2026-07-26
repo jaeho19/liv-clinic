@@ -2,9 +2,8 @@
 
 // Design Ref: §5.1 — Hero 위 슬림 띠배너. 헤더(fixed h-16/sm:h-20) 영역은
 // 자체 pt-16 sm:pt-20 으로 비워두어 Header.tsx 무수정 (Plan SC-10 / OD-1 option m).
-// 채팅 지원 6로케일: 라이브챗 직접예약 5% 배너(클릭 시 채팅 오픈) / 나머지 5로케일: 기존 첫방문 배너(/events/first-visit 링크).
-// 라이브챗 지원 로케일(CHAT_VISITOR_LOCALES 6개)에서는 첫방문 체험가 대신
-// "라이브챗 직접 예약 5%" 카피를 띄우고 클릭 시 채팅을 연다.
+// 채팅 지원 로케일(CHAT_VISITOR_LOCALES = ko 제외 해외 10개): 라이브챗 직접예약 5% 배너(클릭 시 채팅 오픈)
+// / ko: 기존 첫방문 배너(/events/first-visit 링크).
 
 import { useLocale, useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';

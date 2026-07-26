@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { createClient } from '@/lib/supabase-browser';
+import type { VisitorLocale } from '@/lib/chat/chatApi';
 
 const IS_DEV = process.env.NODE_ENV !== 'production';
 
@@ -11,14 +12,20 @@ function debug(...args: unknown[]): void {
   }
 }
 
+// 인덱싱은 realtime payload의 임의 문자열로 하므로 선언 타입은 Record<string, string>을
+// 유지하고, 누락 로케일은 satisfies로 컴파일 타임에 잡는다.
 const FLAG_BY_LOCALE: Record<string, string> = {
   en: '🇬🇧',
   ja: '🇯🇵',
   zh: '🇨🇳',
+  'zh-TW': '🇹🇼',
+  vi: '🇻🇳',
+  th: '🇹🇭',
+  ru: '🇷🇺',
   fr: '🇫🇷',
   mn: '🇲🇳',
   ar: '🇸🇦',
-};
+} satisfies Record<VisitorLocale, string>;
 
 interface SessionMeta {
   visitor_name: string | null;

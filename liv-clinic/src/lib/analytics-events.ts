@@ -6,6 +6,9 @@
  *   trackContact('phone');
  */
 
+// Chat event locale param follows the chat whitelist SSOT (type-only import — no runtime coupling).
+import type { VisitorLocale } from '@/lib/chat/chatApi';
+
 declare global {
   function gtag(...args: unknown[]): void;
 }
@@ -46,30 +49,30 @@ export function trackContact(
 }
 
 /** 채팅 위젯 열기 */
-export function trackChatOpen(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
+export function trackChatOpen(locale: VisitorLocale) {
   trackEvent('chat_open', { locale });
 }
 
 /** 채팅 첫 메시지 전송 (세션 생성 직후) */
-export function trackChatFirstMessage(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
+export function trackChatFirstMessage(locale: VisitorLocale) {
   trackEvent('chat_first_message', { locale });
 }
 
 /** 채팅 메시지 전송/수신 */
 export function trackChatMessage(
   direction: 'sent' | 'received',
-  locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar',
+  locale: VisitorLocale,
 ) {
   trackEvent('chat_message', { direction, locale });
 }
 
 /** 첫 방문 티저 말풍선 노출 */
-export function trackChatTeaserShown(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
+export function trackChatTeaserShown(locale: VisitorLocale) {
   trackEvent('chat_teaser_shown', { locale });
 }
 
 /** 첫 방문 티저 말풍선 클릭 (채팅 패널 열림) */
-export function trackChatTeaserClick(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
+export function trackChatTeaserClick(locale: VisitorLocale) {
   trackEvent('chat_teaser_click', { locale });
 }
 
@@ -111,7 +114,7 @@ export async function trackChatClose(
   reason: ChatCloseReason,
   durationSec: number,
   sessionId: string,
-  locale?: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar',
+  locale?: VisitorLocale,
 ): Promise<void> {
   const sessionIdHash = await hashSessionId(sessionId);
   trackEvent('chat_close', {

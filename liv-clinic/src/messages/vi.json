@@ -6537,15 +6537,15 @@
     "emailPlaceholder": "Email (tùy chọn, để gọi lại)",
     "startChat": "Bắt đầu trò chuyện",
     "messageCountdown": "{count} /1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
+    "unreadAria": "{count} tin nhắn mới",
     "promoTitle": "Giảm 5% khi đặt lịch trực tiếp qua chat",
     "promoBody": "Đặt lịch và đến khám trực tiếp qua khung chat này để nhận giảm 5% hoặc quà tặng — nhanh hơn, lợi hơn, không qua trung gian.",
-    "promoCta": "Book directly",    "promoTerms": "Giảm 5% được áp dụng khi liên hệ qua khung chat trực tiếp và hoàn tất thanh toán.",
+    "promoCta": "Đặt lịch trực tiếp",    "promoTerms": "Giảm 5% được áp dụng khi liên hệ qua khung chat trực tiếp và hoàn tất thanh toán.",
 
-    "promoDraft": "I'd like to book directly - I saw the 5% direct-booking offer."
+    "promoDraft": "Tôi muốn đặt lịch trực tiếp. Tôi đã thấy ưu đãi giảm 5% khi đặt lịch trực tiếp."
   },
   "stickyCta": {
-    "chat": "Chat with us now",
+    "chat": "Chat trực tiếp ngay",
     "callback": "Request a callback",
     "call": "Call now",
     "whatsapp": "WhatsApp",
@@ -6563,7 +6563,7 @@
     "whatsappDesc": "Chat with us on WhatsApp"
   },
   "messengers": {
-    "whatsappPrefill": "Hello, I'd like to ask about a consultation at LIV Plastic Surgery."
+    "whatsappPrefill": "Xin chào, tôi muốn hỏi về tư vấn tại LIV Plastic Surgery."
   },
   "consultation": {
     "floating": {

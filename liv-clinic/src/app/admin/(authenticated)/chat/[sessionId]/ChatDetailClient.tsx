@@ -26,10 +26,14 @@ const LOCALE_LABEL: Record<VisitorLocale, string> = {
   en: '🇬🇧 English',
   ja: '🇯🇵 日本語',
   zh: '🇨🇳 中文',
+  'zh-TW': '🇹🇼 中文(繁體)',
+  vi: '🇻🇳 Tiếng Việt',
+  th: '🇹🇭 ไทย',
+  ru: '🇷🇺 Русский',
   fr: '🇫🇷 Français',
   mn: '🇲🇳 Монгол',
   ar: '🇸🇦 العربية',
-};
+} satisfies Record<VisitorLocale, string>;
 
 function formatTime(iso: string): string {
   const d = new Date(iso);

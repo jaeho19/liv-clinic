@@ -7,6 +7,7 @@ import { pretendard, cormorant, notoSansArabic } from '@/styles/fonts';
 import { Header, Footer, QuickConsultBar } from '@/components/layout';
 import ClientSideWidgets from '@/components/layout/ClientSideWidgets';
 import ChatWidget from '@/components/chat/ChatWidget';
+import { CHAT_VISITOR_LOCALES, type VisitorLocale } from '@/lib/chat/chatApi';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import NaverAnalytics from '@/components/analytics/NaverAnalytics';
 import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema } from '@/lib/seo';
@@ -18,6 +19,12 @@ export const revalidate = 3600;
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
+}
+
+// Narrows a raw route locale to VisitorLocale so ChatWidget stays type-safe
+// without duplicating the whitelist (SSOT: CHAT_VISITOR_LOCALES).
+function isChatVisitorLocale(value: string): value is VisitorLocale {
+  return (CHAT_VISITOR_LOCALES as readonly string[]).includes(value);
 }
 
 export async function generateMetadata({
@@ -148,12 +155,9 @@ export default async function LocaleLayout({
           <Footer />
           <QuickConsultBar />
           <ClientSideWidgets />
-          {/* ChatWidget: 운영자(ko) ↔ 환자(non-ko). VisitorLocale 화이트리스트로 활성.
-              en/ja/zh + fr/mn/ar (i18n-fr-mn-ar PDCA에서 추가). zh-TW/vi/th/ru은 추후 별도 확장. */}
-          {(locale === 'en' || locale === 'ja' || locale === 'zh' ||
-            locale === 'fr' || locale === 'mn' || locale === 'ar') && (
-            <ChatWidget locale={locale} />
-          )}
+          {/* ChatWidget: 운영자(ko) ↔ 환자(non-ko). CHAT_VISITOR_LOCALES(SSOT)로 활성.
+              ko는 카카오톡 채널로 응대하므로 의도적 제외 — 나머지 외국어 로케일 전체가 대상. */}
+          {isChatVisitorLocale(locale) && <ChatWidget locale={locale} />}
         </NextIntlClientProvider>
       </body>
     </html>

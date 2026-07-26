@@ -6547,7 +6547,7 @@
 
   },
   "stickyCta": {
-    "chat": "Chat with us now",
+    "chat": "Discutez avec nous",
     "callback": "Request a callback",
     "call": "Call now",
     "whatsapp": "WhatsApp",
@@ -6565,7 +6565,7 @@
     "whatsappDesc": "Chat with us on WhatsApp"
   },
   "messengers": {
-    "whatsappPrefill": "Hello, I'd like to ask about a consultation at LIV Plastic Surgery."
+    "whatsappPrefill": "Bonjour, je souhaite me renseigner sur une consultation à la clinique LIV."
   },
   "consultation": {
     "floating": {

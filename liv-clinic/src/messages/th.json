@@ -6537,15 +6537,15 @@
     "emailPlaceholder": "อีเมล (ไม่บังคับ สำหรับการติดต่อกลับ)",
     "startChat": "เริ่มแชท",
     "messageCountdown": "{count} /1000",
-    "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
+    "unreadAria": "ข้อความใหม่ {count} ข้อความ",
     "promoTitle": "ลด 5% เมื่อจองตรงผ่านไลฟ์แชท",
     "promoBody": "จองและเข้ารับบริการโดยตรงผ่านไลฟ์แชทนี้ รับส่วนลด 5% หรือของสมนาคุณ รวดเร็วและคุ้มกว่า ไม่ผ่านคนกลาง",
-    "promoCta": "Book directly",    "promoTerms": "ส่วนลด 5% จะใช้ได้เมื่อการสอบถามผ่านไลฟ์แชทนำไปสู่การชำระเงินจนสำเร็จ",
+    "promoCta": "จองโดยตรง",    "promoTerms": "ส่วนลด 5% จะใช้ได้เมื่อการสอบถามผ่านไลฟ์แชทนำไปสู่การชำระเงินจนสำเร็จ",
 
-    "promoDraft": "I'd like to book directly - I saw the 5% direct-booking offer."
+    "promoDraft": "ต้องการจองโดยตรง เห็นโปรโมชันส่วนลด 5% สำหรับการจองตรงผ่านแชท"
   },
   "stickyCta": {
-    "chat": "Chat with us now",
+    "chat": "แชทกับเราตอนนี้",
     "callback": "Request a callback",
     "call": "Call now",
     "whatsapp": "WhatsApp",
@@ -6563,7 +6563,7 @@
     "whatsappDesc": "Chat with us on WhatsApp"
   },
   "messengers": {
-    "whatsappPrefill": "Hello, I'd like to ask about a consultation at LIV Plastic Surgery."
+    "whatsappPrefill": "สวัสดี ฉันต้องการสอบถามเกี่ยวกับการให้คำปรึกษาที่ LIV Plastic Surgery"
   },
   "consultation": {
     "floating": {

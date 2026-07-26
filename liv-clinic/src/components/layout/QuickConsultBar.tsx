@@ -39,7 +39,7 @@ export default function QuickConsultBar() {
   const tMsg = useTranslations('messengers');
   const locale = useLocale();
   const isKo = locale === 'ko';
-  // 라이브챗은 6개 방문자 로케일에서만 마운트됨(레이아웃 화이트리스트와 동일).
+  // 라이브챗은 ko를 제외한 10개 외국어 방문자 로케일에서만 마운트됨(레이아웃 화이트리스트와 동일).
   const chatEnabled = (CHAT_VISITOR_LOCALES as readonly string[]).includes(locale);
   const [isFormOpen, setIsFormOpen] = useState(false); // 모바일 바텀시트
   const [isMinimized, setIsMinimized] = useState(false); // 데스크톱 최소화
@@ -272,7 +272,7 @@ export default function QuickConsultBar() {
               exit={{ opacity: 0, y: 100 }}
               onClick={() => setIsMinimized(false)}
               className={`fixed bottom-6 z-50 bg-primary text-white px-4 py-2.5 rounded-full shadow-lg hover:bg-primary/90 transition-colors flex items-center gap-2 text-sm font-medium min-h-[44px] ${
-                chatEnabled ? 'right-4 sm:right-6' : 'left-4 sm:left-6'
+                chatEnabled ? 'end-4 sm:end-6' : 'start-4 sm:start-6'
               }`}
               aria-label={t('contact.onlineReservation')}
             >
@@ -539,7 +539,7 @@ export default function QuickConsultBar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
             onClick={() => setIsMinimized(false)}
-            className="hidden md:flex fixed bottom-6 left-6 z-50 bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 transition-colors items-center gap-2 text-sm font-medium"
+            className="hidden md:flex fixed bottom-6 start-6 z-50 bg-primary text-white px-4 py-2 rounded-full shadow-lg hover:bg-primary/90 transition-colors items-center gap-2 text-sm font-medium"
             aria-label={t('contact.onlineReservation')}
           >
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
