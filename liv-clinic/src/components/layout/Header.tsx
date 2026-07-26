@@ -23,7 +23,9 @@ const LOCALE_HOME_RE = new RegExp(`^/(${LOCALES.map((l) => l.replace(/\./g, '\\.
 //   햄버거 메뉴를 강제해 언어 스위처 가시성을 보장한다.
 // 나머지(ko/zh/zh-TW/ar)는 xl(1280px)+ 에서만 데스크톱 nav를 노출(xl:flex)하고
 //   그 미만(태블릿)은 햄버거로 fallback — lg 구간 언어 스위처 클리핑(G-1) 방지.
-const COMPACT_NAV_LOCALES = new Set<Locale>(['ja', 'fr', 'mn', 'ru', 'en', 'vi', 'th']);
+// ar 추가(2026-07-27): 아랍어 nav 라벨이 길어 xl(1280~1439px)에서 nav+우측 클러스터가
+// 뷰포트를 넘겨 RTL 방향으로 언어 스위처를 화면 밖으로 밀어냈음 → compact로 편입.
+const COMPACT_NAV_LOCALES = new Set<Locale>(['ja', 'fr', 'mn', 'ru', 'en', 'vi', 'th', 'ar']);
 
 // Throttle 훅 - 스크롤 성능 최적화 (Vercel Best Practice: rerender-dependencies)
 function useThrottle<T extends (...args: unknown[]) => void>(
@@ -181,7 +183,9 @@ export default function Header() {
             : 'bg-secondary/95 backdrop-blur-md shadow-sm'
         }`}
       >
-        <div className="container-custom">
+        {/* overflow-x-visible!: container-custom의 overflow-x:clip이 2xl 폭에서 우측(RTL은 좌측)
+            클러스터 끝(언어 스위처)을 잘라내던 것을 헤더 행에서만 무효화. 가로 스크롤은 body가 이미 clip */}
+        <div className="container-custom overflow-x-visible!">
           <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0">
@@ -202,7 +206,7 @@ export default function Header() {
             {/* Desktop Navigation — 긴 라벨 locale(COMPACT_NAV_LOCALES)은 데스크톱 nav를 숨겨
                  우측 언어 스위처가 가려지지 않게 한다 (햄버거로 fallback) */}
             <nav
-              className={`${useCompactMenu ? 'hidden' : 'hidden xl:flex'} items-center transition-all duration-300 xl:ms-4 2xl:ms-8 ${
+              className={`${useCompactMenu ? 'hidden' : 'hidden xl:flex'} items-center transition-all duration-300 xl:ms-4 2xl:ms-5 ${
                 isScrolled
                   ? 'gap-4 xl:gap-6 2xl:gap-7'
                   : 'gap-5 xl:gap-7 2xl:gap-9'
@@ -306,7 +310,9 @@ export default function Header() {
                   Non-compact locales show the nav at xl, so defer the chip to 2xl to avoid crowding. */}
               <span
                 title={tLang('badgeAria')}
-                className={`${useCompactMenu ? 'hidden xl:inline-flex' : 'hidden 2xl:inline-flex'} items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors ${
+                // 비컴팩트 로케일(ko/zh/zh-TW/ar)은 배지 미노출: 2xl에서 배지(+165px)가 우측
+                // 클러스터를 container-custom clip 밖으로 밀어 언어 스위처가 통째로 잘렸음.
+                className={`${useCompactMenu ? 'hidden xl:inline-flex' : 'hidden'} items-center gap-1.5 whitespace-nowrap rounded-full border px-2.5 py-1 text-[11px] font-medium transition-colors ${
                   useDarkStyle
                     ? 'border-primary/30 bg-primary/5 text-primary/90'
                     : 'border-white/40 bg-white/10 text-white/90 backdrop-blur-sm'
