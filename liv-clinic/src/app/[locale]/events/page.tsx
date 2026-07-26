@@ -9,13 +9,18 @@ import { ScrollLink } from '@/components/ui';
 import EventCard from '@/components/sections/EventCard';
 import { getEventStatus, EventItem } from '@/lib/constants';
 import { fetchPublishedEvents } from '@/lib/eventApi';
+import { openLivChat, CHAT_VISITOR_LOCALES } from '@/lib/chat/chatApi';
+import { trackPromoClick } from '@/lib/analytics-events';
 
 type FilterStatus = 'all' | 'active' | 'ended';
 
 export default function EventsPage() {
   const t = useTranslations('events');
   const tFv = useTranslations('firstVisit');
+  const tChat = useTranslations('chat');
   const locale = useLocale() as Locale;
+  // 라이브챗 상시 배너는 채팅을 열 수 있는 6개 방문자 로케일에서만
+  const chatEnabled = (CHAT_VISITOR_LOCALES as readonly string[]).includes(locale);
   const [filterStatus, setFilterStatus] = useState<FilterStatus>('all');
   const [allEvents, setAllEvents] = useState<EventItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -89,7 +94,7 @@ export default function EventsPage() {
               <p className="text-small text-mono-light">{tFv('banner.subtitle')}</p>
             </div>
             <span
-              className="shrink-0 text-primary transition-transform group-hover:translate-x-1"
+              className="shrink-0 text-primary transition-transform group-hover:translate-x-1 rtl:rotate-180"
               aria-hidden="true"
             >
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -97,6 +102,36 @@ export default function EventsPage() {
               </svg>
             </span>
           </Link>
+
+          {/* 라이브챗 직접예약 5% 상시 배너 — 채팅 지원 로케일 전용 */}
+          {chatEnabled && (
+            <button
+              type="button"
+              onClick={() => {
+                trackPromoClick('chat_direct_booking', 'events_banner_click');
+                openLivChat();
+              }}
+              aria-label={`${tChat('promoTitle')} – ${tChat('promoCta')}`}
+              className="group mt-4 flex w-full cursor-pointer items-center justify-between gap-4 rounded-2xl border border-primary/30 bg-primary/5 px-6 py-5 text-start transition-colors hover:bg-primary/10"
+            >
+              <span aria-hidden="true" className="block min-w-0">
+                <span className="block text-h4 text-secondary">{tChat('promoTitle')}</span>
+                <span className="block text-small text-mono-light">{tChat('promoBody')}</span>
+                <span className="mt-1 block text-[11px] leading-relaxed text-mono-light">{tChat('promoTerms')}</span>
+              </span>
+              <span className="flex shrink-0 items-center gap-2 whitespace-nowrap text-small font-semibold text-primary">
+                {tChat('promoCta')}
+                <span
+                  className="transition-transform group-hover:translate-x-1 rtl:rotate-180"
+                  aria-hidden="true"
+                >
+                  <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7l5 5-5 5M5 12h13" />
+                  </svg>
+                </span>
+              </span>
+            </button>
+          )}
         </div>
       </section>
 

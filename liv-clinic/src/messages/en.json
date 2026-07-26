@@ -763,6 +763,10 @@
     "visit": "Visit Us",
     "weekdayHours": "Weekdays 10:00 - 19:00",
     "always": "Available 24/7",
+    "chatPromo": {
+      "text": "Prefer to chat? Ask in your own language and get 5% off when you book directly via live chat.",
+      "cta": "Start live chat"
+    },
     "onlineReservation": "Online Consultation Booking",
     "directions": "Directions",
     "floor": "4F, Jaeun Building",
@@ -6369,7 +6373,11 @@
     "slimBanner": {
       "text": "First Visit Trial · Up to 47% Off",
       "textShort": "First Visit Trial",
-      "cta": "View"
+      "cta": "View",
+      "chatText": "Live Chat Direct Booking · 5% Off",
+      "chatTextShort": "Live Chat · 5% Off",
+      "chatCta": "Start chat"
+
     }
   },
   "pricing": {
@@ -6521,7 +6529,9 @@
     "tooLong": "Messages cannot exceed 1000 characters.",
     "sessionEnded": "This conversation has ended. Start a new chat for further questions.",
     "consent": "Messages are stored to improve our consultation quality.",
-    "tooltipText": "Need help? Chat with us in English — auto-translated for our team ✨",
+    "launcherBadge": "5%",
+    "tooltipText": "Chat in English — we reply in English. Book directly via chat & get 5% off.",
+
     "tooltipDismiss": "Dismiss",
     "namePlaceholder": "Nickname (optional)",
     "emailPlaceholder": "Email (optional, for callbacks)",
@@ -6530,7 +6540,8 @@
     "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
     "promoTitle": "5% off when you book directly via live chat",
     "promoBody": "Book and visit directly through this live chat to get a 5% discount or a free gift — faster and better value, with no middleman.",
-    "promoCta": "Book directly",
+    "promoCta": "Book directly",    "promoTerms": "The 5% discount applies when an inquiry made through live chat leads to a completed payment.",
+
     "promoDraft": "I'd like to book directly - I saw the 5% direct-booking offer."
   },
   "stickyCta": {

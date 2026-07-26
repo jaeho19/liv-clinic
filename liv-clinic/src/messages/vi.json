@@ -763,6 +763,10 @@
     "visit": "Ghé thăm chúng tôi",
     "weekdayHours": "Các ngày trong tuần 10:00 - 19:00",
     "always": "Có sẵn 24/7",
+    "chatPromo": {
+      "text": "Bạn thích trò chuyện hơn? Hỏi bằng ngôn ngữ của bạn và giảm 5% khi đặt lịch trực tiếp qua chat.",
+      "cta": "Bắt đầu trò chuyện"
+    },
     "onlineReservation": "Đặt lịch tư vấn trực tuyến",
     "directions": "Chỉ đường",
     "floor": "Tầng 4, tòa nhà Jaeun",
@@ -6369,7 +6373,11 @@
     "slimBanner": {
       "text": "Giá trải nghiệm lần đầu · Giảm tới 47%",
       "textShort": "Giá trải nghiệm",
-      "cta": "Xem"
+      "cta": "Xem",
+      "chatText": "Đặt trực tiếp qua chat · Giảm 5%",
+      "chatTextShort": "Chat · Giảm 5%",
+      "chatCta": "Bắt đầu chat"
+
     }
   },
   "pricing": {
@@ -6521,7 +6529,9 @@
     "tooLong": "Tin nhắn không thể vượt quá 1000 ký tự.",
     "sessionEnded": "Cuộc trò chuyện này đã kết thúc. Bắt đầu một cuộc trò chuyện mới để có thêm câu hỏi.",
     "consent": "Tin nhắn được lưu trữ để cải thiện chất lượng tư vấn của chúng tôi.",
-    "tooltipText": "Cần giúp đỡ? Trò chuyện với chúng tôi bằng tiếng Anh — được dịch tự động cho nhóm của chúng tôi ✨",
+    "launcherBadge": "5%",
+    "tooltipText": "Chat bằng tiếng Việt — chúng tôi trả lời bằng tiếng Việt. Đặt trực tiếp qua chat: giảm 5%.",
+
     "tooltipDismiss": "Miễn nhiệm",
     "namePlaceholder": "Biệt danh (tùy chọn)",
     "emailPlaceholder": "Email (tùy chọn, để gọi lại)",
@@ -6530,7 +6540,8 @@
     "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
     "promoTitle": "Giảm 5% khi đặt lịch trực tiếp qua chat",
     "promoBody": "Đặt lịch và đến khám trực tiếp qua khung chat này để nhận giảm 5% hoặc quà tặng — nhanh hơn, lợi hơn, không qua trung gian.",
-    "promoCta": "Book directly",
+    "promoCta": "Book directly",    "promoTerms": "Giảm 5% được áp dụng khi liên hệ qua khung chat trực tiếp và hoàn tất thanh toán.",
+
     "promoDraft": "I'd like to book directly - I saw the 5% direct-booking offer."
   },
   "stickyCta": {

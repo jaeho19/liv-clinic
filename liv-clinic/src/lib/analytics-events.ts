@@ -63,6 +63,16 @@ export function trackChatMessage(
   trackEvent('chat_message', { direction, locale });
 }
 
+/** 첫 방문 티저 말풍선 노출 */
+export function trackChatTeaserShown(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
+  trackEvent('chat_teaser_shown', { locale });
+}
+
+/** 첫 방문 티저 말풍선 클릭 (채팅 패널 열림) */
+export function trackChatTeaserClick(locale: 'en' | 'ja' | 'zh' | 'fr' | 'mn' | 'ar') {
+  trackEvent('chat_teaser_click', { locale });
+}
+
 /** 번역 실패 */
 export function trackChatTranslationFailure(reason: string) {
   trackEvent('chat_translation_error', { reason });

@@ -1,9 +1,13 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState, type FocusEvent } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations } from 'next-intl';
-import { trackChatOpen } from '@/lib/analytics-events';
+import {
+  trackChatOpen,
+  trackChatTeaserShown,
+  trackChatTeaserClick,
+} from '@/lib/analytics-events';
 import { OPEN_CHAT_EVENT } from '@/lib/chat/chatApi';
 import { useChatSession } from '@/hooks/useChatSession';
 import { useUnreadIndicator } from '@/hooks/useUnreadIndicator';
@@ -15,10 +19,12 @@ interface Props {
   locale: VisitorLocale;
 }
 
-const TOOLTIP_STORAGE_KEY = 'liv-chat-tooltip-seen-v1';
+// v2: 티저 카피를 혜택 선두(직접예약 5%)로 교체 — 키를 올려 기존 방문자에게도 1회 재노출.
+const TOOLTIP_STORAGE_KEY = 'liv-chat-tooltip-seen-v2';
 const TOOLTIP_APPEAR_MS = 3_000;
 const TOOLTIP_AUTO_HIDE_MS = 12_000; // 9초 동안 노출 후 자동 사라짐
 const PULSE_DURATION_MS = 5_000;
+const TOOLTIP_BLUR_GRACE_MS = 3_000; // 말풍선 포커스 이탈 후 숨김까지의 유예
 
 const LOCALE_FLAG: Record<VisitorLocale, string> = {
   en: '🇬🇧',
@@ -34,6 +40,8 @@ export default function ChatWidget({ locale }: Props) {
   const [open, setOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
   const [showPulse, setShowPulse] = useState(true);
+  // 자동 숨김 타이머 id — 포커스 중에는 취소하고, 포커스 이탈 시 재설정한다.
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // G-07: 위젯 레벨에서 세션을 단일 소스로 관리. ChatPanel은 props로 전달받아
   // 동일 인스턴스를 공유한다 (ChatPanel이 새 세션을 생성하면 위젯도 즉시 인지).
@@ -90,16 +98,26 @@ export default function ChatWidget({ locale }: Props) {
     }
     if (seen) return;
 
-    const showTimer = setTimeout(() => setShowTooltip(true), TOOLTIP_APPEAR_MS);
+    const showTimer = setTimeout(() => {
+      setShowTooltip(true);
+      trackChatTeaserShown(locale);
+      // 티저를 실제로 노출한 순간 seen 기록 — 무시한 방문자 재노출·중복 발화 방지
+      try {
+        window.localStorage.setItem(TOOLTIP_STORAGE_KEY, '1');
+      } catch {
+        // ignore
+      }
+    }, TOOLTIP_APPEAR_MS);
     const hideTimer = setTimeout(
       () => setShowTooltip(false),
       TOOLTIP_APPEAR_MS + TOOLTIP_AUTO_HIDE_MS,
     );
+    hideTimerRef.current = hideTimer;
     return () => {
       clearTimeout(showTimer);
       clearTimeout(hideTimer);
     };
-  }, [open]);
+  }, [open, locale]);
 
   // 외부 컴포넌트(QuickConsultBar 등)에서 `liv:open-chat` 이벤트로 패널 열기.
   useEffect(() => {
@@ -132,12 +150,34 @@ export default function ChatWidget({ locale }: Props) {
     }
   };
 
+  // 말풍선에 포커스가 있는 동안에는 자동 숨김을 멈춘다 (WCAG 2.2.1 — 포커스된 콘텐츠 유지).
+  const cancelTeaserHide = () => {
+    if (hideTimerRef.current) {
+      clearTimeout(hideTimerRef.current);
+      hideTimerRef.current = null;
+    }
+  };
+
+  const handleTeaserBlur = (e: FocusEvent<HTMLDivElement>) => {
+    // 포커스가 말풍선 밖으로 나가면 3초 유예 후 숨김 (내부 포커스 이동은 유지)
+    if (!e.currentTarget.contains(e.relatedTarget as Node | null)) {
+      cancelTeaserHide();
+      hideTimerRef.current = setTimeout(() => setShowTooltip(false), TOOLTIP_BLUR_GRACE_MS);
+    }
+  };
+
   const handleToggle = () => {
     setOpen((v) => {
       if (!v) trackChatOpen(locale);
       return !v;
     });
     dismissTooltip();
+  };
+
+  // 티저 말풍선 클릭 = 패널 열기 (말풍선은 패널이 닫힌 동안에만 보이므로 항상 open 방향)
+  const handleTeaserClick = () => {
+    trackChatTeaserClick(locale);
+    handleToggle();
   };
 
   return (
@@ -147,13 +187,13 @@ export default function ChatWidget({ locale }: Props) {
         {showTooltip && !open && (
           <motion.div
             key="chat-tooltip"
-            role="status"
-            aria-live="polite"
+            onFocus={cancelTeaserHide}
+            onBlur={handleTeaserBlur}
             initial={{ opacity: 0, y: 8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.25 }}
-            className="fixed left-2 sm:left-4 md:left-6 z-40 bg-white border border-[#e5e5e5] rounded-2xl shadow-xl px-3 py-2.5 max-w-[260px]"
+            className="fixed left-2 sm:left-4 md:left-6 z-40 bg-white border border-[#e5e5e5] rounded-2xl shadow-xl max-w-[260px]"
             style={{
               bottom: 'calc(150px + env(safe-area-inset-bottom, 0px))',
             }}
@@ -166,9 +206,14 @@ export default function ChatWidget({ locale }: Props) {
             >
               ✕
             </button>
-            <div className="text-xs sm:text-sm text-[#6d4e42] font-medium pr-3 leading-relaxed">
-              {t('tooltipText')}
-            </div>
+            {/* 말풍선 본문 자체가 채팅을 여는 버튼 (닫기 ✕는 형제 요소로 분리) */}
+            <button
+              type="button"
+              onClick={handleTeaserClick}
+              className="block w-full text-start pl-3 pr-7 py-2.5 text-xs sm:text-sm text-[#6d4e42] font-medium leading-relaxed cursor-pointer"
+            >
+              <span role="status">{t('tooltipText')}</span>
+            </button>
             {/* 말풍선 꼬리 — 버튼을 가리키도록 아래쪽 */}
             <div
               className="absolute -bottom-2 left-7 w-4 h-4 bg-white border-r border-b border-[#e5e5e5] transform rotate-45"
@@ -224,6 +269,13 @@ export default function ChatWidget({ locale }: Props) {
         </svg>
         <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
           {t('openButton')}
+        </span>
+        {/* 직접예약 5% 혜택 필 — 패널을 열기 전에도 혜택이 보이도록 라벨 옆 인라인 배치 */}
+        <span
+          className="inline-flex items-center rounded-full bg-white text-[#6d4e42] text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 whitespace-nowrap"
+          aria-hidden="true"
+        >
+          {t('launcherBadge')}
         </span>
         {/* 언어 모핑 배지 — 번역 기능임을 즉시 인지 */}
         <span

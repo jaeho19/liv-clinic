@@ -763,6 +763,10 @@
     "visit": "Visite sur place",
     "weekdayHours": "Semaine 10h00 - 19h00",
     "always": "Disponible 24/7",
+    "chatPromo": {
+      "text": "Vous préférez le chat ? Écrivez dans votre langue et bénéficiez de 5% de réduction en réservant directement via le chat.",
+      "cta": "Démarrer le chat"
+    },
     "onlineReservation": "Réservation en ligne",
     "directions": "Plan d'accès",
     "floor": "Bâtiment Jaeun, 4e étage",
@@ -6369,7 +6373,11 @@
     "slimBanner": {
       "text": "Tarif Première Visite · Jusqu'à -47%",
       "textShort": "Première visite",
-      "cta": "Voir"
+      "cta": "Voir",
+      "chatText": "Réservation directe par chat · 5% de remise",
+      "chatTextShort": "Chat · 5% de remise",
+      "chatCta": "Ouvrir le chat"
+
     }
   },
   "pricing": {
@@ -6521,7 +6529,9 @@
     "tooLong": "Les messages ne peuvent pas dépasser 1 000 caractères.",
     "sessionEnded": "Cette conversation est terminée. Démarrez un nouveau chat pour d'autres questions.",
     "consent": "Les messages sont stockés pour améliorer la qualité de notre consultation.",
-    "tooltipText": "Besoin d'aide ? Discutez avec nous en français — traduction automatique pour notre équipe ✨",
+    "launcherBadge": "5%",
+    "tooltipText": "Discutez en français — nous répondons en français. Réservez via le chat : 5% de remise.",
+
     "tooltipDismiss": "Fermer",
     "namePlaceholder": "Pseudo (optionnel)",
     "emailPlaceholder": "Email (optionnel, pour rappel)",
@@ -6530,8 +6540,11 @@
     "unreadAria": "{count, plural, one {1 nouveau message} other {# nouveaux messages}}",
     "promoTitle": "5% de réduction en réservant directement via le chat",
     "promoBody": "Réservez et venez directement via ce chat en direct pour bénéficier de 5% de réduction ou d un cadeau — plus rapide et plus avantageux, sans intermédiaire.",
-    "promoCta": "Book directly",
-    "promoDraft": "I'd like to book directly - I saw the 5% direct-booking offer."
+    "promoCta": "Réserver directement",
+    "promoTerms": "La réduction de 5% s'applique lorsqu'une demande faite via le chat en direct aboutit à un paiement.",
+
+    "promoDraft": "Je souhaite réserver directement — j'ai vu l'offre de 5% de réduction pour une réservation directe."
+
   },
   "stickyCta": {
     "chat": "Chat with us now",
@@ -7138,6 +7151,6 @@
   "langSupport": {
     "badge": "EN·日本語·中文 OK",
     "badgeAria": "Multilingual consultations available",
-    "contactNote": "Consultations available in English, Japanese & Chinese — interpretation arranged free of charge."
+    "contactNote": "Consultations sur place et par téléphone en anglais, japonais et chinois — sur le chat en direct, écrivez en français et nous vous répondons en français."
   }
 }

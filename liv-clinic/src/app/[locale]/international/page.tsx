@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Card } from '@/components/ui';
 import { openLivChat, CHAT_VISITOR_LOCALES } from '@/lib/chat/chatApi';
+import { trackPromoClick } from '@/lib/analytics-events';
 import { primaryMessengerFor, buildWhatsAppLink, LINE_LINK } from '@/lib/messengerLinks';
 
 type Item = { title: string; desc: string };
@@ -15,6 +16,7 @@ export default function InternationalPage() {
   const t = useTranslations('international');
   const tMsg = useTranslations('messengers');
   const tCta = useTranslations('stickyCta');
+  const tChat = useTranslations('chat');
   const locale = useLocale();
 
   const whyItems = t.raw('why.items') as Item[];
@@ -41,7 +43,10 @@ export default function InternationalPage() {
       {chatEnabled && (
         <button
           type="button"
-          onClick={() => openLivChat()}
+          onClick={() => {
+            trackPromoClick('chat_direct_booking', 'international_landing_click');
+            openLivChat();
+          }}
           className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-white px-7 py-3.5 font-medium hover:bg-secondary transition-colors min-h-[48px]"
         >
           <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -81,6 +86,10 @@ export default function InternationalPage() {
               <h1 className="text-display text-secondary mb-4">{t('hero.title')}</h1>
               <p className="text-h4 text-primary mb-6">{t('hero.langLine')}</p>
               <p className="text-h4 text-mono leading-relaxed mb-8">{t('hero.subtitle')}</p>
+              {/* 라이브챗 CTA 옆 혜택 병기 — 채팅 지원 로케일 전용 */}
+              {chatEnabled && (
+                <p className="text-body font-medium text-secondary mb-4">{tChat('promoTitle')}</p>
+              )}
               {ctaButtons(t('hero.ctaChat'), t('hero.ctaContact'))}
             </div>
           </AnimateOnScroll>
@@ -287,6 +296,10 @@ export default function InternationalPage() {
             <div className="max-w-3xl mx-auto text-center">
               <h2 className="text-h1 mb-4">{t('closing.title')}</h2>
               <p className="text-h4 opacity-80 mb-8">{t('closing.desc')}</p>
+              {/* 라이브챗 CTA 옆 혜택 병기 — 채팅 지원 로케일 전용 */}
+              {chatEnabled && (
+                <p className="text-body font-medium mb-6">{tChat('promoTitle')}</p>
+              )}
               <div className="flex justify-center">
                 {ctaButtons(t('closing.ctaChat'), t('closing.ctaContact'))}
               </div>

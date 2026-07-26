@@ -11,7 +11,8 @@ import { FAQ } from '@/components/sections';
 import { Link } from '@/i18n/routing';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 import { primaryMessengerFor, buildWhatsAppLink } from '@/lib/messengerLinks';
-import { trackFormSubmit, trackContact } from '@/lib/analytics-events';
+import { openLivChat, CHAT_VISITOR_LOCALES } from '@/lib/chat/chatApi';
+import { trackFormSubmit, trackContact, trackPromoClick } from '@/lib/analytics-events';
 
 export default function ContactPage() {
   const t = useTranslations();
@@ -20,7 +21,11 @@ export default function ContactPage() {
   const tNav = useTranslations('nav');
   const tLang = useTranslations('langSupport');
   const tExtra = useTranslations('formExtras');
+  const tChat = useTranslations('chat');
   const locale = useLocale();
+
+  // 라이브챗은 방문자 로케일 6개에서만 열 수 있으므로 채팅 혜택 콜아웃도 동일 조건
+  const chatEnabled = (CHAT_VISITOR_LOCALES as readonly string[]).includes(locale);
 
   // 해외 로케일용 1순위 메신저 카드 메타(카카오 카드 대체)
   const messenger = primaryMessengerFor(locale); // 'line' | 'wechat' | 'whatsapp'
@@ -224,6 +229,30 @@ export default function ContactPage() {
                   </svg>
                   <p className="text-small text-secondary font-medium leading-relaxed">{tLang('contactNote')}</p>
                 </div>
+
+                {/* 라이브챗 직접예약 5% 혜택 — 채팅 지원 로케일 전용 */}
+                {chatEnabled && (
+                  <div className="mb-6 flex items-start gap-3 rounded-xl bg-primary/10 px-4 py-3">
+                    <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5} aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4-.8L3 20l1.3-3.9A7.9 7.9 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z" />
+                    </svg>
+                    <div className="min-w-0">
+                      <p className="text-small text-secondary font-medium leading-relaxed">{tContact('chatPromo.text')}</p>
+                      <p className="mt-1 text-[11px] leading-relaxed text-mono-light">{tChat('promoTerms')}</p>
+                      <Button
+                        variant="primary"
+                        size="sm"
+                        className="mt-3"
+                        onClick={() => {
+                          trackPromoClick('chat_direct_booking', 'contact_callout_click');
+                          openLivChat();
+                        }}
+                      >
+                        {tContact('chatPromo.cta')}
+                      </Button>
+                    </div>
+                  </div>
+                )}
                 <h2 className="text-h2 text-secondary mb-8">{tContact('onlineReservation')}</h2>
 
                 {isSubmitted ? (

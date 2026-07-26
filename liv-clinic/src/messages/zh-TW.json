@@ -763,6 +763,10 @@
     "visit": "到店諮詢",
     "weekdayHours": "工作日 10:00 - 19:00",
     "always": "全年無休",
+    "chatPromo": {
+      "text": "更喜歡線上聊天嗎？可用您的語言諮詢，透過線上客服直接預約還享5%折扣。",
+      "cta": "開始線上諮詢"
+    },
     "onlineReservation": "在線諮詢預約",
     "directions": "地址",
     "floor": "Jaeun大廈4樓",
@@ -6369,7 +6373,11 @@
     "slimBanner": {
       "text": "首次體驗價 · 最高優惠47%",
       "textShort": "首次體驗價",
-      "cta": "查看"
+      "cta": "查看",
+      "chatText": "線上客服直接預約 · 享5%折扣",
+      "chatTextShort": "線上客服 · 5%折扣",
+      "chatCta": "開始諮詢"
+
     }
   },
   "pricing": {
@@ -6529,7 +6537,9 @@
     "tooLong": "消息不能超過 1000 個字符。",
     "sessionEnded": "本次對話已結束。如需進一步諮詢，請開始新的對話。",
     "consent": "消息將被保存以拉提諮詢質量。",
-    "tooltipText": "需要幫助嗎？我們可以用中文聊天 — 自動翻譯給客服 ✨",
+    "launcherBadge": "5%",
+    "tooltipText": "用中文聊天，我們也用中文回覆。透過聊天直接預約享5%折扣。",
+
     "tooltipDismiss": "關閉",
     "namePlaceholder": "暱稱 (可選)",
     "emailPlaceholder": "郵箱 (可選，便於回訪)",
@@ -6538,7 +6548,8 @@
     "unreadAria": "{count, plural, one {1 new message} other {# new messages}}",
     "promoTitle": "線上客服直接預約，享5%折扣",
     "promoBody": "透過本線上客服直接預約並到院，即可享有5%折扣或精美贈品。無需仲介，更快更優惠。",
-    "promoCta": "直接預約",
+    "promoCta": "直接預約",    "promoTerms": "透過線上客服諮詢並完成付款，付款時即可享有5%折扣。",
+
     "promoDraft": "我想直接預約，我看到了5%直接預約優惠。"
   },
   "stickyCta": {

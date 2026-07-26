@@ -38,9 +38,9 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
   const scrollRef = useRef<HTMLDivElement>(null);
   // G-03: 패널 열린 시각 추적 — close 이벤트의 duration 산출용
   const openedAtRef = useRef<number | null>(null);
-  // M2: en/ja/zh 사전-세션 화면에 직접예약 프로모션 노출 + select_promotion 추적
+  // M2: 사전-세션 화면에 직접예약 프로모션 노출 + select_promotion 추적.
+  // 위젯이 뜨는 방문자 로케일 6개 전체 대상 (초기 en/ja/zh 한정 → fr/mn/ar 확장).
   const promoViewedRef = useRef(false);
-  const showPromo = locale === 'en' || locale === 'ja' || locale === 'zh';
   // 데스크톱(hover+fine pointer)에서만 Enter=전송. 모바일은 Enter=줄바꿈 + Send 버튼만 사용.
   const [isDesktop, setIsDesktop] = useState(false);
   useEffect(() => {
@@ -111,11 +111,11 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
 
   // M2: 프로모션 노출 1회 추적 (사전-세션 화면이 실제로 보일 때)
   useEffect(() => {
-    if (open && !session && showPromo && !promoViewedRef.current) {
+    if (open && !session && !promoViewedRef.current) {
       promoViewedRef.current = true;
       trackPromoClick('chat_direct_booking', 'view');
     }
-  }, [open, session, showPromo]);
+  }, [open, session]);
 
   const handleStart = async (e: FormEvent) => {
     e.preventDefault();
@@ -209,21 +209,20 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
       {!session ? (
         <div className="flex-1 overflow-y-auto px-4 py-4 flex flex-col gap-3">
           <p className="text-sm text-gray-600">{t('welcome')}</p>
-          {/* en/ja/zh 직접예약 프로모션 — 라이브챗을 통한 직접 유입 유도 (에이전시 fee 절감) */}
-          {showPromo && (
-            <div className="rounded-lg border border-[#b4988d]/40 bg-[#b4988d]/10 px-3 py-2.5">
-              <p className="text-[13px] font-semibold text-[#6d4e42]">🎁 {t('promoTitle')}</p>
-              <p className="text-[11px] text-[#8a6f63] mt-0.5 leading-relaxed">{t('promoBody')}</p>
-              <button
-                type="button"
-                onClick={() => void handlePromoStart()}
-                disabled={starting}
-                className="mt-2 w-full bg-[#b4988d] text-white text-[12px] font-medium min-h-[44px] rounded-md hover:bg-[#a3877d] disabled:opacity-60 transition"
-              >
-                {t('promoCta')} →
-              </button>
-            </div>
-          )}
+          {/* 직접예약 프로모션 — 라이브챗을 통한 직접 유입 유도 (에이전시 fee 절감) */}
+          <div className="rounded-lg border border-[#b4988d]/40 bg-[#b4988d]/10 px-3 py-2.5">
+            <p className="text-[13px] font-semibold text-[#6d4e42]">🎁 {t('promoTitle')}</p>
+            <p className="text-[11px] text-[#8a6f63] mt-0.5 leading-relaxed">{t('promoBody')}</p>
+            <button
+              type="button"
+              onClick={() => void handlePromoStart()}
+              disabled={starting}
+              className="mt-2 w-full bg-[#b4988d] text-white text-[12px] font-medium min-h-[44px] rounded-md hover:bg-[#a3877d] disabled:opacity-60 transition"
+            >
+              {t('promoCta')} →
+            </button>
+            <p className="mt-1.5 text-[10px] leading-relaxed text-[#8a6f63]/80">{t('promoTerms')}</p>
+          </div>
           <p className="text-[11px] text-gray-400 leading-relaxed">{t('businessHours')}</p>
           <p className="text-[11px] text-gray-400 leading-relaxed">{t('consent')}</p>
           <form onSubmit={handleStart} className="flex flex-col gap-2 mt-2">

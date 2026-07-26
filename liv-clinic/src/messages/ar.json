@@ -763,6 +763,10 @@
     "visit": "زيارة شخصية",
     "weekdayHours": "أيام الأسبوع 10:00 - 19:00",
     "always": "متاح 24/7",
+    "chatPromo": {
+      "text": "تفضّل الدردشة؟ اكتب بلغتك واحصل على خصم 5% عند الحجز مباشرة عبر المحادثة المباشرة.",
+      "cta": "ابدأ المحادثة"
+    },
     "onlineReservation": "حجز عبر الإنترنت",
     "directions": "الاتجاهات",
     "floor": "مبنى جايون، الطابق الرابع",
@@ -6369,7 +6373,11 @@
     "slimBanner": {
       "text": "سعر الزيارة الأولى · خصم حتى 47%",
       "textShort": "سعر الزيارة الأولى",
-      "cta": "عرض"
+      "cta": "عرض",
+      "chatText": "حجز مباشر عبر الدردشة · خصم 5%",
+      "chatTextShort": "دردشة · خصم 5%",
+      "chatCta": "ابدأ المحادثة"
+
     }
   },
   "pricing": {
@@ -6521,7 +6529,9 @@
     "tooLong": "لا يمكن أن تتجاوز الرسائل 1000 حرف.",
     "sessionEnded": "انتهت هذه المحادثة. ابدأ محادثة جديدة لمزيد من الأسئلة.",
     "consent": "تُخزَّن الرسائل لتحسين جودة استشارتنا.",
-    "tooltipText": "هل تحتاج إلى مساعدة؟ تحدث معنا بالعربية — ترجمة تلقائية لفريقنا ✨",
+    "launcherBadge": "5%",
+    "tooltipText": "تحدّث بالعربية — ونرد عليك بالعربية. احجز مباشرة عبر الدردشة واحصل على خصم 5%.",
+
     "tooltipDismiss": "تجاهل",
     "namePlaceholder": "اسم مستعار (اختياري)",
     "emailPlaceholder": "البريد الإلكتروني (اختياري، للرد)",
@@ -6530,8 +6540,11 @@
     "unreadAria": "{count, plural, one {رسالة جديدة واحدة} other {# رسائل جديدة}}",
     "promoTitle": "خصم 5% عند الحجز المباشر عبر الدردشة",
     "promoBody": "احجز وتفضل بالزيارة مباشرة عبر هذه الدردشة المباشرة للحصول على خصم 5% أو هدية مجانية — أسرع وأوفر وبدون وسيط.",
-    "promoCta": "Book directly",
-    "promoDraft": "I'd like to book directly - I saw the 5% direct-booking offer."
+    "promoCta": "احجز مباشرة",
+    "promoTerms": "يُطبَّق خصم 5% عند الدفع إذا أدّى الاستفسار عبر الدردشة المباشرة إلى إتمام الدفع.",
+
+    "promoDraft": "أرغب في الحجز مباشرة — لقد رأيت عرض خصم 5% على الحجز المباشر."
+
   },
   "stickyCta": {
     "chat": "Chat with us now",
@@ -7138,6 +7151,6 @@
   "langSupport": {
     "badge": "EN·日本語·中文 OK",
     "badgeAria": "Multilingual consultations available",
-    "contactNote": "Consultations available in English, Japanese & Chinese — interpretation arranged free of charge."
+    "contactNote": "الاستشارات الحضورية والهاتفية متاحة بالإنجليزية واليابانية والصينية — أما عبر الدردشة المباشرة فاكتب بالعربية وسنرد عليك بالعربية."
   }
 }
