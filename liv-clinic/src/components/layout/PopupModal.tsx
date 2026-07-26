@@ -129,20 +129,20 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[9999] flex items-start justify-start p-3 sm:p-4 pt-4 sm:pt-6 pl-3 sm:pl-6"
-        onClick={onClose}
+        // pointer-events-none: 투명 전체화면 컨테이너가 아래 페이지(헤더 언어 전환 등)의
+        // 클릭을 삼키지 않게 통과시킨다. 닫기는 카드 내부 ✕/오늘 하루 보지 않기 버튼으로만.
+        className="pointer-events-none fixed inset-0 z-[9999] flex items-start justify-start p-3 sm:p-4 pt-4 sm:pt-6 pl-3 sm:pl-6"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
           transition={{ duration: 0.2 }}
-          className="relative rounded-2xl overflow-hidden flex flex-col shadow-lg"
+          className="pointer-events-auto relative rounded-2xl overflow-hidden flex flex-col shadow-lg"
           style={{
             maxWidth: `min(${currentPopup.width || 400}px, 88vw)`,
             maxHeight: '85dvh',
           }}
-          onClick={(e) => e.stopPropagation()}
           onMouseEnter={() => isMultiple && setIsPaused(true)}
           onMouseLeave={() => {
             if (!isMultiple) return;
