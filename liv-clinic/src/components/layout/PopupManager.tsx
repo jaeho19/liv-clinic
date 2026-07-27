@@ -1,9 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useLocale } from 'next-intl';
 import { createClient } from '@/lib/supabase-browser';
-import PopupModal from './PopupModal';
+import PopupModal, { popupImageSources } from './PopupModal';
 import type { PopupRow } from '@/types/admin';
+import type { Locale } from '@/i18n/routing';
+import { pickLocalizedStrict } from '@/lib/i18nFallback';
 
 // ── 로컬 정적 팝업 설정 ──────────────────────────────────
 // Supabase 없이도 표시할 팝업을 여기에 추가하세요.
@@ -44,6 +47,7 @@ function getActiveStaticPopups(): PopupRow[] {
 }
 
 export default function PopupManager() {
+  const locale = useLocale() as Locale;
   const [popups, setPopups] = useState<PopupRow[]>([]);
   const [visible, setVisible] = useState(true);
   const [isMobile, setIsMobile] = useState(false);
@@ -91,9 +95,23 @@ export default function PopupManager() {
   }, []);
 
   // 모바일 필터링: 배열 레벨에서 일괄 적용
-  const displayPopups = isMobile
+  const mobilePopups = isMobile
     ? popups.filter((p) => p.show_on_mobile)
     : popups;
+
+  // 로케일 필터링: 팝업은 방문자가 보는 첫 화면이라 한국어 아트워크가 그대로 뜨면
+  // 외국어 방문자에게는 사이트 전체가 한국어로 읽힌다. pickLocalizedStrict는 ko로
+  // 폴백하지 않으므로, ko가 아닌 로케일에서는 "해당 언어(또는 en) 이미지가 등록된
+  // 팝업"만 통과한다. 오늘 기준 en/ja/zh 이미지가 하나도 없으므로 외국어에서는
+  // 팝업이 뜨지 않고, 어드민 팝업관리에서 언어별 이미지를 업로드하는 즉시
+  // (image_url_en / _ja / _zh 필드가 이미 존재) 해당 언어에서 자동으로 다시 노출된다.
+  // ko는 기존 동작 그대로.
+  const displayPopups =
+    locale === 'ko'
+      ? mobilePopups
+      : mobilePopups.filter(
+          (p) => pickLocalizedStrict(popupImageSources(p), locale) !== null
+        );
 
   if (displayPopups.length === 0 || !visible) return null;
 

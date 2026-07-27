@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import type { PopupRow } from '@/types/admin';
-import type { Locale } from '@/i18n/routing';
+import { LOCALES, type Locale } from '@/i18n/routing';
 import { pickLocalized } from '@/lib/i18nFallback';
 
 interface PopupModalProps {
@@ -37,6 +37,69 @@ const slideTransition = {
   opacity: { duration: 0.2 },
 };
 
+/**
+ * 팝업 행 → 언어별 이미지 소스 맵.
+ * PopupManager의 노출 게이팅과 PopupModal의 렌더가 같은 소스를 보도록 한 곳에 둔다.
+ */
+export function popupImageSources(popup: PopupRow) {
+  return {
+    ko: popup.image_url,
+    en: popup.image_url_en,
+    ja: popup.image_url_ja,
+    zh: popup.image_url_zh,
+  };
+}
+
+/** 경로의 첫 세그먼트가 로케일이면 현재 로케일로 교체한다 (아니면 원본 그대로). */
+function replaceLocaleSegment(pathname: string, locale: Locale): string {
+  const segments = pathname.split('/');
+  const first = segments[1];
+  if (!first || !(LOCALES as readonly string[]).includes(first)) return pathname;
+  return segments.map((segment, index) => (index === 1 ? locale : segment)).join('/');
+}
+
+/**
+ * 팝업 link_url을 현재 로케일로 재작성한다.
+ *
+ * 어드민에 저장된 링크는 `/ko/...` 또는 `https://liv-clinic.net/ko/...`처럼 한국어
+ * 경로로 굳어 있어서, 외국어 방문자가 팝업을 누르면 한국어 사이트로 떨어진다.
+ * DB는 그대로 두고 클릭 시점에만 첫 경로 세그먼트를 현재 로케일로 바꾼다.
+ *
+ *   - `/ko/events/x`                        (ja) → `/ja/events/x`
+ *   - `https://<현재 origin>/ko/events/x`   (ja) → `https://<현재 origin>/ja/events/x`
+ *   - 외부 도메인 · 로케일 세그먼트 없는 경로 · mailto:/tel:/#앵커 → 원본 그대로
+ *
+ * @param origin 비교 기준 origin (미지정 시 window.location.origin, SSR이면 재작성 안 함)
+ */
+export function localizePopupHref(rawUrl: string, locale: Locale, origin?: string): string {
+  const url = rawUrl?.trim();
+  if (!url) return rawUrl;
+
+  // 루트 상대 경로 (`//host` = 프로토콜 상대 URL은 외부로 간주)
+  if (url.startsWith('/') && !url.startsWith('//')) {
+    return replaceLocaleSegment(url, locale);
+  }
+
+  // 절대 URL은 same-origin일 때만 내부 링크로 간주한다.
+  const currentOrigin =
+    origin ?? (typeof window !== 'undefined' ? window.location.origin : '');
+  if (!currentOrigin) return rawUrl;
+
+  try {
+    const parsed = new URL(url);
+    if (parsed.origin !== currentOrigin) return rawUrl;
+    return (
+      parsed.origin +
+      replaceLocaleSegment(parsed.pathname, locale) +
+      parsed.search +
+      parsed.hash
+    );
+  } catch {
+    // mailto:, tel:, #anchor, 상대 경로 등 → 손대지 않는다
+    return rawUrl;
+  }
+}
+
 export default function PopupModal({ popups, onClose, onDismissToday }: PopupModalProps) {
   const tCommon = useTranslations('common');
   const tPopup = useTranslations('popup');
@@ -50,12 +113,8 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
 
   const currentPopup = popups[currentIndex];
   const isMultiple = popups.length > 1;
-  const popupImageSrc = pickLocalized({
-    ko: currentPopup.image_url,
-    en: currentPopup.image_url_en,
-    ja: currentPopup.image_url_ja,
-    zh: currentPopup.image_url_zh,
-  }, locale) || currentPopup.image_url;
+  const popupImageSrc =
+    pickLocalized(popupImageSources(currentPopup), locale) || currentPopup.image_url;
 
   const pauseAndResume = useCallback(() => {
     setIsPaused(true);
@@ -118,7 +177,8 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
 
   const handleImageClick = () => {
     if (currentPopup.link_url) {
-      window.open(currentPopup.link_url, currentPopup.link_target || '_self');
+      const href = localizePopupHref(currentPopup.link_url, locale);
+      window.open(href, currentPopup.link_target || '_self');
       onClose();
     }
   };
@@ -226,7 +286,7 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
                         ? 'w-6 h-2 bg-white'
                         : 'w-2 h-2 bg-white/50 hover:bg-white/70'
                     }`}
-                    aria-label={`슬라이드 ${idx + 1}`}
+                    aria-label={`slide ${idx + 1}`}
                   />
                 ))}
               </div>

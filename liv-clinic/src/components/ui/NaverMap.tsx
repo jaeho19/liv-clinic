@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
 interface NaverMapProps {
   lat: number;
@@ -18,6 +18,21 @@ declare global {
     navermap_authFailure?: () => void;
     __naverMapCallbacks?: Array<() => void>;
   }
+}
+
+/**
+ * 네이버 지도 v3 SDK가 지원하는 언어는 ko / en / ja / zh 뿐이다.
+ * (그 외 로케일은 en으로 — 한국어 타일이 뜨는 것보다 영문이 낫다)
+ */
+const NAVER_MAP_LANGUAGES: Partial<Record<string, string>> = {
+  ko: 'ko',
+  ja: 'ja',
+  zh: 'zh',
+  'zh-TW': 'zh',
+};
+
+function toNaverMapLanguage(locale: string): string {
+  return NAVER_MAP_LANGUAGES[locale] ?? 'en';
 }
 
 function escapeHtml(input: string): string {
@@ -38,6 +53,7 @@ export default function NaverMap({
   infoWindowText,
 }: NaverMapProps) {
   const t = useTranslations('sections.location');
+  const mapLanguage = toNaverMapLanguage(useLocale());
   const resolvedMarkerTitle = markerTitle ?? t('markerTitle');
   const resolvedInfoWindowText = infoWindowText ?? t('infoWindowSubway');
   const mapRef = useRef<HTMLDivElement>(null);
@@ -163,7 +179,10 @@ export default function NaverMap({
     let sdkTimeoutId: ReturnType<typeof setTimeout> | undefined;
 
     const script = document.createElement('script');
-    script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}`;
+    // language: 지도 타일/컨트롤의 표기 언어. SDK는 문서 전체에 싱글턴으로 한 번만
+    // 주입되므로 "페이지 로드 시점의 로케일"로 고정된다. 이 앱에서 로케일 전환은
+    // 하드 내비게이션이라 실사용상 문제는 없다(전환 = 새 문서 = 새 SDK 로드).
+    script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&language=${mapLanguage}`;
     script.async = true;
 
     // 전체 로딩 타임아웃 — onload/onerror가 모두 발화하지 않는 경우(네트워크 행, 광고차단 등)
@@ -217,7 +236,7 @@ export default function NaverMap({
       if (waitReadyId) clearInterval(waitReadyId);
       if (sdkTimeoutId) clearTimeout(sdkTimeoutId);
     };
-  }, []);
+  }, [mapLanguage]);
 
   // 지도 초기화
   useEffect(() => {

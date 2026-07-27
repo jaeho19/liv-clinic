@@ -1,11 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 
 export default function Footer() {
+  const locale = useLocale();
+  const isKorean = locale === 'ko';
   const t = useTranslations('footer');
   const tNav = useTranslations('nav');
   const tCommon = useTranslations('common');
@@ -58,9 +60,10 @@ export default function Footer() {
           {/* Location */}
           <div>
             <h4 className="text-lg font-medium mb-5">{t('address')}</h4>
+            {/* 국문 주소는 ko에서만. 외국어 로케일에서는 영문 주소가 대표 줄이 된다. */}
             <address className="not-italic text-sm text-white/70 space-y-2">
-              <p>{SITE_INFO.address.ko}</p>
-              <p className="text-white/50">{SITE_INFO.address.en}</p>
+              {isKorean && <p>{SITE_INFO.address.ko}</p>}
+              <p className={isKorean ? 'text-white/50' : undefined}>{SITE_INFO.address.en}</p>
             </address>
             <div className="mt-4 space-y-2">
               <a
