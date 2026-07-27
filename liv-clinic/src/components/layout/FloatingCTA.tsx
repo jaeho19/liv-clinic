@@ -144,8 +144,9 @@ export default function FloatingCTA() {
 
   return (
     <>
+      {/* Pinned physically by owner decision (chat left, socials right, all writing directions) — do not convert to logical properties. */}
       <div
-        className="fixed end-2 sm:end-4 md:end-6 z-40 flex flex-col items-end gap-2"
+        className="fixed right-2 sm:right-4 md:right-6 z-40 flex flex-col items-end gap-2"
         style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
       >
         {buttonOrder.map((key, index) => {

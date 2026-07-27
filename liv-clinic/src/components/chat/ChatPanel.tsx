@@ -172,17 +172,18 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
     <div
       role="dialog"
       aria-label={t('title')}
-      className="fixed start-2 sm:start-4 md:start-6 z-50 flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
+      // Pinned physically by owner decision (chat left, socials right, all writing directions) — do not convert to logical properties.
+      className="fixed left-2 sm:left-4 md:left-6 z-50 flex flex-col bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden"
       style={{
-        bottom: 'calc(140px + env(safe-area-inset-bottom, 0px))',
-        width: 'min(360px, calc(100vw - 16px))',
-        // dvh 우선(iOS Safari toolbar 정확 반영). 미지원 브라우저는 70vh로 fallback
-        height: 'min(560px, 70dvh)',
-        maxHeight: 'min(560px, 70vh)',
+        bottom: 'calc(150px + env(safe-area-inset-bottom, 0px))',
+        width: 'min(384px, calc(100vw - 16px))',
+        // dvh 우선(iOS Safari toolbar 정확 반영). 미지원 브라우저는 72vh로 fallback
+        height: 'min(600px, 72dvh)',
+        maxHeight: 'min(600px, 72vh)',
       }}
     >
       {/* Header */}
-      <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 border-b border-gray-100 bg-[#b4988d] text-white">
+      <div className="flex items-center justify-between px-3 sm:px-4 py-2.5 sm:py-3 border-b border-gray-100 bg-[#0f766e] text-white">
         <div className="min-w-0 flex-1">
           <div className="text-sm font-semibold truncate">{t('title')}</div>
           <div className="text-[11px] opacity-90 mt-0.5 flex items-center gap-1.5">
@@ -217,7 +218,7 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
               type="button"
               onClick={() => void handlePromoStart()}
               disabled={starting}
-              className="mt-2 w-full bg-[#b4988d] text-white text-[12px] font-medium min-h-[44px] rounded-md hover:bg-[#a3877d] disabled:opacity-60 transition"
+              className="mt-2 w-full bg-[#0f766e] text-white text-[12px] font-medium min-h-[44px] rounded-md hover:bg-[#115e59] disabled:opacity-60 transition"
             >
               {t('promoCta')} →
             </button>
@@ -233,7 +234,7 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
               placeholder={t('namePlaceholder')}
               maxLength={60}
               autoComplete="nickname"
-              className="px-3 h-11 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[#b4988d]"
+              className="px-3 h-11 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[#0f766e]"
             />
             <input
               type="email"
@@ -242,12 +243,12 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
               placeholder={t('emailPlaceholder')}
               autoComplete="email"
               inputMode="email"
-              className="px-3 h-11 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[#b4988d]"
+              className="px-3 h-11 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[#0f766e]"
             />
             <button
               type="submit"
               disabled={starting}
-              className="mt-1 bg-[#b4988d] text-white text-sm font-medium h-11 rounded-md hover:bg-[#a3877d] disabled:opacity-60 transition"
+              className="mt-1 bg-[#0f766e] text-white text-sm font-medium h-11 rounded-md hover:bg-[#115e59] disabled:opacity-60 transition"
             >
               {starting ? '...' : t('startChat')}
             </button>
@@ -299,12 +300,12 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
                 placeholder={t('placeholder')}
                 rows={2}
                 enterKeyHint="send"
-                className="flex-1 resize-none px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[#b4988d] max-h-[120px]"
+                className="flex-1 resize-none px-3 py-2 text-sm border border-gray-200 rounded-md focus:outline-none focus:border-[#0f766e] max-h-[120px]"
               />
               <button
                 type="submit"
                 disabled={sending || text.trim().length === 0 || overLimit}
-                className="bg-[#b4988d] text-white text-sm px-4 py-2 rounded-md hover:bg-[#a3877d] disabled:opacity-50 transition self-end min-h-[44px] min-w-[60px]"
+                className="bg-[#0f766e] text-white text-sm px-4 py-2 rounded-md hover:bg-[#115e59] disabled:opacity-50 transition self-end min-h-[44px] min-w-[60px]"
               >
                 {t('send')}
               </button>

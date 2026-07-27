@@ -205,16 +205,17 @@ export default function ChatWidget({ locale }: Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.25 }}
-            className="fixed start-2 sm:start-4 md:start-6 z-40 bg-white border border-[#e5e5e5] rounded-2xl shadow-xl max-w-[260px]"
+            // Pinned physically by owner decision (chat left, socials right, all writing directions) — do not convert to logical properties.
+            className="fixed left-2 sm:left-4 md:left-6 z-40 bg-white border border-[#e5e5e5] rounded-2xl shadow-xl max-w-[260px]"
             style={{
-              bottom: 'calc(150px + env(safe-area-inset-bottom, 0px))',
+              bottom: 'calc(160px + env(safe-area-inset-bottom, 0px))',
             }}
           >
             <button
               type="button"
               onClick={dismissTooltip}
               aria-label={t('tooltipDismiss')}
-              className="absolute -top-1 -end-1 bg-white border border-gray-200 rounded-full w-7 h-7 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-50 text-sm leading-none shadow-sm"
+              className="absolute -top-1 -right-1 bg-white border border-gray-200 rounded-full w-8 h-8 flex items-center justify-center text-gray-500 hover:text-gray-700 hover:bg-gray-50 text-sm leading-none shadow-sm"
             >
               ✕
             </button>
@@ -222,13 +223,13 @@ export default function ChatWidget({ locale }: Props) {
             <button
               type="button"
               onClick={handleTeaserClick}
-              className="block w-full text-start ps-3 pe-7 py-2.5 text-xs sm:text-sm text-[#6d4e42] font-medium leading-relaxed cursor-pointer"
+              className="block w-full text-start pl-3 pr-7 py-2.5 text-sm text-[#6d4e42] font-medium leading-relaxed cursor-pointer"
             >
               <span role="status">{t('tooltipText')}</span>
             </button>
             {/* 말풍선 꼬리 — 버튼을 가리키도록 아래쪽 */}
             <div
-              className="absolute -bottom-2 start-7 w-4 h-4 bg-white border-r border-b border-[#e5e5e5] transform rotate-45"
+              className="absolute -bottom-2 left-7 w-4 h-4 bg-white border-r border-b border-[#e5e5e5] transform rotate-45"
               aria-hidden
             />
           </motion.div>
@@ -245,14 +246,15 @@ export default function ChatWidget({ locale }: Props) {
             : t('openButton')
         }
         aria-expanded={open}
-        className="fixed start-2 sm:start-4 md:start-6 z-40 flex items-center justify-center gap-2 bg-[#6d4e42] text-white shadow-lg hover:bg-[#5d4136] active:scale-[0.97] transition-colors rounded-full min-h-[48px] px-3 sm:px-4"
+        // Pinned physically by owner decision (chat left, socials right, all writing directions) — do not convert to logical properties.
+        className="fixed left-2 sm:left-4 md:left-6 z-40 flex items-center justify-center gap-2 bg-[#0f766e] text-white shadow-lg hover:bg-[#115e59] active:scale-[0.97] transition-colors rounded-full min-h-[52px] sm:min-h-[60px] px-4 sm:px-5"
         style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
         animate={
           showPulse && !open
             ? {
                 boxShadow: [
                   '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
-                  '0 0 0 10px rgba(109, 78, 66, 0.3), 0 4px 6px -1px rgb(0 0 0 / 0.1)',
+                  '0 0 0 10px rgba(15, 118, 110, 0.35), 0 4px 6px -1px rgb(0 0 0 / 0.1)',
                   '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
                 ],
               }
@@ -266,7 +268,7 @@ export default function ChatWidget({ locale }: Props) {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="w-5 h-5 flex-shrink-0"
+          className="w-6 h-6 flex-shrink-0"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -279,12 +281,12 @@ export default function ChatWidget({ locale }: Props) {
             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8-1.39 0-2.71-.27-3.86-.76L3 21l1.4-4.18A8.51 8.51 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
           />
         </svg>
-        <span className="text-xs sm:text-sm font-medium whitespace-nowrap">
+        <span className="text-sm sm:text-base font-medium whitespace-nowrap">
           {t('openButton')}
         </span>
         {/* 직접예약 5% 혜택 필 — 패널을 열기 전에도 혜택이 보이도록 라벨 옆 인라인 배치 */}
         <span
-          className="inline-flex items-center rounded-full bg-white text-[#6d4e42] text-[10px] sm:text-[11px] font-bold px-1.5 py-0.5 whitespace-nowrap"
+          className="inline-flex items-center rounded-full bg-white text-[#0f766e] text-[11px] sm:text-xs font-bold px-2 py-0.5 whitespace-nowrap"
           aria-hidden="true"
         >
           {t('launcherBadge')}
@@ -301,7 +303,7 @@ export default function ChatWidget({ locale }: Props) {
         {/* G-07: 미확인 메시지 빨간 점 배지 */}
         {unreadCount > 0 && !open && (
           <span
-            className="absolute -top-1 -end-1 w-3 h-3 rounded-full bg-red-600 ring-2 ring-white"
+            className="absolute -top-1 -right-1 w-3 h-3 rounded-full bg-red-600 ring-2 ring-white"
             aria-hidden
           />
         )}
