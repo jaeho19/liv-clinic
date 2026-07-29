@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { createClient } from '@/lib/supabase-browser';
+import { sanitizeStorageFolder } from '@/lib/storageFolder';
 import Image from 'next/image';
 
 const ALLOWED_MIME_TYPES: readonly string[] = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
@@ -51,7 +52,8 @@ const buildStoragePath = (folder: string, index: number, file: File, contentType
   const suffix = Math.random().toString(36).slice(2, 8).padEnd(6, '0');
   const rawExt = getExtension(file.name);
   const ext = MIME_BY_EXTENSION[rawExt] ? rawExt : EXTENSION_BY_MIME[contentType] ?? 'jpg';
-  return `${folder}/${Date.now()}-${index}-${suffix}.${ext}`;
+  // Korean event slugs reach us verbatim; an unsanitized folder makes Storage answer 400 InvalidKey.
+  return `${sanitizeStorageFolder(folder)}/${Date.now()}-${index}-${suffix}.${ext}`;
 };
 
 interface ImageUploaderBaseProps {
@@ -124,7 +126,10 @@ export default function ImageUploader(props: ImageUploaderProps) {
       });
 
       if (error) {
-        failures = [...failures, { name: file.name, reason: error.message, message: `업로드 실패: ${error.message}` }];
+        failures = [
+          ...failures,
+          { name: file.name, reason: error.message, message: `업로드 실패 (${file.name}): ${error.message}` },
+        ];
         continue;
       }
       const { data: urlData } = supabase.storage.from(bucket).getPublicUrl(path);

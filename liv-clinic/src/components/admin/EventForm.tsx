@@ -246,7 +246,11 @@ export default function EventForm({ event, defaults }: EventFormProps) {
       {/* Images */}
       <fieldset className="border border-[#e5e5e5] rounded-lg p-4">
         <legend className="text-sm font-medium text-[#575756] px-2">이미지</legend>
-        <p className="text-xs text-[#b4b4b4] mb-4">외국어 이미지를 등록하지 않으면 해당 언어 페이지에는 한국어 이미지가 표시됩니다.</p>
+        <p className="text-xs text-[#b4b4b4] mb-4">
+          외국어 이미지를 등록하지 않으면 해당 언어 페이지에는 한국어 이미지가 표시됩니다.
+          <br />
+          포스터는 언어별로 대표 1장만 등록됩니다. 여러 장을 한 번에 올리려면 아래 <span className="font-medium">갤러리 이미지</span>를 이용하세요.
+        </p>
         <div className="grid gap-4">
           <ImageUploader
             bucket="events"
