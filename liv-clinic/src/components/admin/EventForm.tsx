@@ -6,9 +6,12 @@ import { createClient } from '@/lib/supabase-browser';
 import ImageUploader from './ImageUploader';
 import { EVENT_CATEGORY_LABELS, RELATED_TREATMENT_OPTIONS } from '@/types/admin';
 import type { EventCategory, EventRow } from '@/types/admin';
+import type { MonthlyPromotionDraft } from '@/lib/monthlyPromotionTemplate';
 
 interface EventFormProps {
   event?: EventRow;
+  /** 신규 등록 시 미리 채울 값 (매달 프로모션 템플릿 등) — 수정 모드에서는 무시된다. */
+  defaults?: Partial<MonthlyPromotionDraft>;
 }
 
 const GALLERY_FIELDS = [
@@ -20,21 +23,21 @@ const GALLERY_FIELDS = [
 
 type GalleryFieldKey = (typeof GALLERY_FIELDS)[number]['key'];
 
-export default function EventForm({ event }: EventFormProps) {
+export default function EventForm({ event, defaults }: EventFormProps) {
   const router = useRouter();
   const supabase = createClient();
   const isEdit = !!event;
 
   const [form, setForm] = useState({
-    slug: event?.slug ?? '',
-    title_ko: event?.title_ko ?? '',
-    title_en: event?.title_en ?? '',
-    title_ja: event?.title_ja ?? '',
-    title_zh: event?.title_zh ?? '',
-    description_ko: event?.description_ko ?? '',
-    description_en: event?.description_en ?? '',
-    description_ja: event?.description_ja ?? '',
-    description_zh: event?.description_zh ?? '',
+    slug: event?.slug ?? defaults?.slug ?? '',
+    title_ko: event?.title_ko ?? defaults?.title_ko ?? '',
+    title_en: event?.title_en ?? defaults?.title_en ?? '',
+    title_ja: event?.title_ja ?? defaults?.title_ja ?? '',
+    title_zh: event?.title_zh ?? defaults?.title_zh ?? '',
+    description_ko: event?.description_ko ?? defaults?.description_ko ?? '',
+    description_en: event?.description_en ?? defaults?.description_en ?? '',
+    description_ja: event?.description_ja ?? defaults?.description_ja ?? '',
+    description_zh: event?.description_zh ?? defaults?.description_zh ?? '',
     poster_image: event?.poster_image ?? null,
     poster_image_en: event?.poster_image_en ?? null,
     poster_image_ja: event?.poster_image_ja ?? null,
@@ -44,13 +47,13 @@ export default function EventForm({ event }: EventFormProps) {
     gallery_images_en: event?.gallery_images_en ?? [],
     gallery_images_ja: event?.gallery_images_ja ?? [],
     gallery_images_zh: event?.gallery_images_zh ?? [],
-    start_date: event?.start_date ?? '',
-    end_date: event?.end_date ?? '',
-    category: event?.category ?? 'all',
-    featured: event?.featured ?? false,
-    related_treatments: event?.related_treatments ?? [],
+    start_date: event?.start_date ?? defaults?.start_date ?? '',
+    end_date: event?.end_date ?? defaults?.end_date ?? '',
+    category: event?.category ?? defaults?.category ?? 'all',
+    featured: event?.featured ?? defaults?.featured ?? false,
+    related_treatments: event?.related_treatments ?? defaults?.related_treatments ?? [],
     is_published: event?.is_published ?? false,
-    sort_order: event?.sort_order ?? 0,
+    sort_order: event?.sort_order ?? defaults?.sort_order ?? 0,
   });
 
   const [saving, setSaving] = useState(false);
@@ -105,10 +108,9 @@ export default function EventForm({ event }: EventFormProps) {
     router.refresh();
   };
 
-  const addGalleryImage = (key: GalleryFieldKey, url: string | null) => {
-    if (url) {
-      updateField(key, [...form[key], url]);
-    }
+  // 여러 장을 동시에 올리므로 함수형 setState — 업로드가 끝나기 전 값을 읽으면 마지막 장만 남는다.
+  const appendGalleryImages = (key: GalleryFieldKey, urls: string[]) => {
+    setForm((prev) => ({ ...prev, [key]: [...prev[key], ...urls] }));
   };
 
   const removeGalleryImage = (key: GalleryFieldKey, index: number) => {
@@ -252,6 +254,7 @@ export default function EventForm({ event }: EventFormProps) {
             value={form.poster_image}
             onChange={(url) => updateField('poster_image', url)}
             label="포스터 이미지 (한국어·기본)"
+            maxSizeMb={10}
           />
           <ImageUploader
             bucket="events"
@@ -259,6 +262,7 @@ export default function EventForm({ event }: EventFormProps) {
             value={form.poster_image_en}
             onChange={(url) => updateField('poster_image_en', url)}
             label="포스터 이미지 (English)"
+            maxSizeMb={10}
           />
           <ImageUploader
             bucket="events"
@@ -266,6 +270,7 @@ export default function EventForm({ event }: EventFormProps) {
             value={form.poster_image_ja}
             onChange={(url) => updateField('poster_image_ja', url)}
             label="포스터 이미지 (日本語)"
+            maxSizeMb={10}
           />
           <ImageUploader
             bucket="events"
@@ -273,6 +278,7 @@ export default function EventForm({ event }: EventFormProps) {
             value={form.poster_image_zh}
             onChange={(url) => updateField('poster_image_zh', url)}
             label="포스터 이미지 (中文)"
+            maxSizeMb={10}
           />
           <ImageUploader
             bucket="events"
@@ -280,6 +286,7 @@ export default function EventForm({ event }: EventFormProps) {
             value={form.thumbnail_image}
             onChange={(url) => updateField('thumbnail_image', url)}
             label="썸네일 이미지"
+            maxSizeMb={10}
           />
           {GALLERY_FIELDS.map((field) => (
             <div key={field.key}>
@@ -301,8 +308,9 @@ export default function EventForm({ event }: EventFormProps) {
               <ImageUploader
                 bucket="events"
                 folder={form.slug || 'temp'}
-                value={null}
-                onChange={(url) => addGalleryImage(field.key, url)}
+                multiple
+                maxSizeMb={10}
+                onUploadMany={(urls) => appendGalleryImages(field.key, urls)}
               />
             </div>
           ))}
