@@ -140,6 +140,7 @@ export type Database = {
           sender: string
           sender_admin_id: string | null
           session_id: string
+          slack_ts: string | null
           translated_lang: string | null
           translated_text: string | null
           translation_error: string | null
@@ -154,6 +155,7 @@ export type Database = {
           sender: string
           sender_admin_id?: string | null
           session_id: string
+          slack_ts?: string | null
           translated_lang?: string | null
           translated_text?: string | null
           translation_error?: string | null
@@ -168,6 +170,7 @@ export type Database = {
           sender?: string
           sender_admin_id?: string | null
           session_id?: string
+          slack_ts?: string | null
           translated_lang?: string | null
           translated_text?: string | null
           translation_error?: string | null
@@ -214,6 +217,8 @@ export type Database = {
           ip_hash: string | null
           last_message_at: string | null
           session_token: string
+          slack_channel_id: string | null
+          slack_thread_ts: string | null
           status: string
           unread_admin_count: number
           updated_at: string
@@ -230,6 +235,8 @@ export type Database = {
           ip_hash?: string | null
           last_message_at?: string | null
           session_token?: string
+          slack_channel_id?: string | null
+          slack_thread_ts?: string | null
           status?: string
           unread_admin_count?: number
           updated_at?: string
@@ -246,6 +253,8 @@ export type Database = {
           ip_hash?: string | null
           last_message_at?: string | null
           session_token?: string
+          slack_channel_id?: string | null
+          slack_thread_ts?: string | null
           status?: string
           unread_admin_count?: number
           updated_at?: string
@@ -253,6 +262,24 @@ export type Database = {
           visitor_email?: string | null
           visitor_locale?: string
           visitor_name?: string | null
+        }
+        Relationships: []
+      }
+      chat_slack_events: {
+        Row: {
+          event_id: string
+          event_type: string | null
+          received_at: string
+        }
+        Insert: {
+          event_id: string
+          event_type?: string | null
+          received_at?: string
+        }
+        Update: {
+          event_id?: string
+          event_type?: string | null
+          received_at?: string
         }
         Relationships: []
       }
