@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { corsPreflight, withCorsHandler } from '@/lib/chat/cors';
 import { createChatAdminClient } from '@/lib/chat/db';
 import { isBusinessHours } from '@/lib/chat/businessHours';
 import { checkIpSessionDailyLimit } from '@/lib/chat/rateLimit';
@@ -10,13 +11,21 @@ import { createServerClient } from '@/lib/supabase-server';
 
 export const runtime = 'nodejs';
 
+// Method handlers are wrapped with withCorsHandler at the bottom so responses carry CORS headers
+// (function declarations are hoisted, so the exports below can reference them).
+export const POST = withCorsHandler(postHandler);
+export const GET = withCorsHandler(getHandler);
+export function OPTIONS(req: NextRequest) {
+  return corsPreflight(req);
+}
+
 const CreateSessionSchema = z.object({
   visitorLocale: z.enum(VISITOR_LOCALES),
   visitorName: z.string().trim().max(60).optional().or(z.literal('')),
   visitorEmail: z.string().trim().email().optional().or(z.literal('')),
 });
 
-export async function POST(req: NextRequest) {
+async function postHandler(req: NextRequest) {
   let parsed;
   try {
     parsed = CreateSessionSchema.safeParse(await req.json());
@@ -101,7 +110,7 @@ export async function POST(req: NextRequest) {
 
 // Visitor: GET /api/chat/sessions?token=xxx — 세션 메타 조회
 // Admin: GET /api/chat/sessions — 전체 세션 목록(미응답 우선)
-export async function GET(req: NextRequest) {
+async function getHandler(req: NextRequest) {
   const url = new URL(req.url);
   const token = url.searchParams.get('token');
 

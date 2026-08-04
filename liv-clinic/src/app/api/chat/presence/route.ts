@@ -1,10 +1,17 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { corsPreflight, withCorsHandler } from '@/lib/chat/cors';
 import { isBusinessHours, getBusinessHoursConfig } from '@/lib/chat/businessHours';
 import { getOnlineOperatorCount } from '@/lib/chat/operatorPresence';
 
 export const runtime = 'nodejs';
 
-export async function GET() {
+// Wrapped at registration so the response carries CORS headers (declaration is hoisted).
+export const GET = withCorsHandler(getHandler);
+export function OPTIONS(req: NextRequest) {
+  return corsPreflight(req);
+}
+
+async function getHandler() {
   const businessHours = isBusinessHours();
   const config = getBusinessHoursConfig();
 

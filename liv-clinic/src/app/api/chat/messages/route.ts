@@ -1,5 +1,6 @@
 import { after, NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
+import { corsPreflight, withCorsHandler } from '@/lib/chat/cors';
 import { createChatAdminClient, type ChatAdminClient } from '@/lib/chat/db';
 import { createServerClient } from '@/lib/supabase-server';
 import { translate, type SupportedLang } from '@/lib/chat/translation';
@@ -9,6 +10,13 @@ import { broadcastToSession } from '@/lib/chat/broadcast';
 import { relayChatMessageToSlack } from '@/lib/chat/slackRelay';
 
 export const runtime = 'nodejs';
+
+// Wrapped at registration so responses carry CORS headers (declarations are hoisted).
+export const POST = withCorsHandler(postHandler);
+export const GET = withCorsHandler(getHandler);
+export function OPTIONS(req: NextRequest) {
+  return corsPreflight(req);
+}
 
 const VisitorMessageSchema = z.object({
   sessionToken: z.string().uuid(),
@@ -20,7 +28,7 @@ const OperatorMessageSchema = z.object({
   text: z.string().trim().min(1).max(1000),
 });
 
-export async function POST(req: NextRequest) {
+async function postHandler(req: NextRequest) {
   let body: unknown;
   try {
     body = await req.json();
@@ -195,7 +203,7 @@ async function persistAndBroadcast(
 }
 
 // GET /api/chat/messages?sessionToken=xxx (visitor) OR ?sessionId=xxx (admin)
-export async function GET(req: NextRequest) {
+async function getHandler(req: NextRequest) {
   const url = new URL(req.url);
   const sessionToken = url.searchParams.get('sessionToken');
   const sessionIdParam = url.searchParams.get('sessionId');
