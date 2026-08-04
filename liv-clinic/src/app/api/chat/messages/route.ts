@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { after, NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createChatAdminClient, type ChatAdminClient } from '@/lib/chat/db';
 import { createServerClient } from '@/lib/supabase-server';
@@ -6,6 +6,7 @@ import { translate, type SupportedLang } from '@/lib/chat/translation';
 import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import { checkSessionMessageLimit } from '@/lib/chat/rateLimit';
 import { broadcastToSession } from '@/lib/chat/broadcast';
+import { relayChatMessageToSlack } from '@/lib/chat/slackRelay';
 
 export const runtime = 'nodejs';
 
@@ -103,6 +104,8 @@ async function handleOperatorMessage(body: unknown) {
     sessionId: session.id,
     sender: 'operator',
     senderAdminId: user.id,
+    // Slack 스레드에서 누가 답장했는지 구분할 수 있도록 (비공개 채널 내부 표시용)
+    senderLabel: user.email ?? null,
     text,
     fromLang: 'ko',
     toLang: visitorLocale,
@@ -113,6 +116,8 @@ interface PersistArgs {
   sessionId: string;
   sender: 'visitor' | 'operator';
   senderAdminId: string | null;
+  /** Slack에 표시할 작성자 라벨. 방문자 메시지에는 쓰지 않는다. */
+  senderLabel?: string | null;
   text: string;
   fromLang: SupportedLang;
   toLang: SupportedLang;
@@ -122,7 +127,7 @@ async function persistAndBroadcast(
   admin: ChatAdminClient,
   args: PersistArgs
 ) {
-  const { sessionId, sender, senderAdminId, text, fromLang, toLang } = args;
+  const { sessionId, sender, senderAdminId, senderLabel = null, text, fromLang, toLang } = args;
 
   // 1. pending 메시지 INSERT
   const { data: pending, error: insertError } = await admin
@@ -169,6 +174,21 @@ async function persistAndBroadcast(
   void broadcastToSession(sessionId, {
     type: 'message_created',
     payload: { messageId: updated.id, sender: updated.sender as 'visitor' | 'operator' | 'system' },
+  });
+
+  // 5. Slack 채널로 릴레이 — 방문자 메시지와 어드민 UI 답장을 같은 스레드에 미러링한다.
+  //    응답 이후(after)에 처리 — 이미 동기 번역이 걸려 있는 경로에 Slack 왕복까지 얹지 않는다.
+  //    Slack에서 들어온 답글은 이 라우트를 거치지 않고 slackRelay가 직접 INSERT하므로 에코가 없다.
+  const translatedText = updated.translation_status === 'success' ? updated.translated_text : null;
+  after(async () => {
+    await relayChatMessageToSlack({
+      sessionId,
+      messageId: updated.id,
+      sender,
+      originalText: updated.original_text,
+      translatedText,
+      senderLabel,
+    });
   });
 
   return NextResponse.json({ message: updated }, { status: 201 });
