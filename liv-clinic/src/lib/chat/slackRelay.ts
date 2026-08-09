@@ -224,6 +224,58 @@ export async function relayChatMessageToSlack(args: RelayOutboundArgs): Promise<
   }
 }
 
+/** 방문자 연락처 릴레이 본문. (테스트를 위해 export) */
+export function buildContactText(args: {
+  channelLabel: string;
+  handle: string;
+  /** 세션 스레드가 없어 단독 게시될 때만 어드민 링크를 첨부한다. */
+  adminUrl: string | null;
+}): string {
+  const lines = [
+    `📱 *방문자가 연락처를 남겼습니다* — ${args.channelLabel}: ${escapeSlackText(args.handle)}`,
+    '_근무 시작 후 이 연락처로 먼저 연락해 주세요._',
+  ];
+  if (args.adminUrl) {
+    lines.push(`🔗 <${args.adminUrl}|관리자 화면에서 열기>`);
+  }
+  return lines.join('\n');
+}
+
+/**
+ * 방문자가 남긴 메신저 연락처를 세션의 Slack 스레드에 게시한다.
+ * 스태프용 한국어 고정 문구 — RelaySender('visitor'|'operator') 경로와 분리된 전용 헬퍼.
+ * throw-free: 실패해도 연락처 저장 자체를 막지 않는다.
+ */
+export async function relayContactToSlack(args: {
+  sessionId: string;
+  channelLabel: string;
+  handle: string;
+}): Promise<void> {
+  if (!isSlackRelayConfigured()) return;
+  try {
+    const admin = createChatAdminClient();
+    const { data: session } = await admin
+      .from('chat_sessions')
+      .select('id, slack_thread_ts')
+      .eq('id', args.sessionId)
+      .maybeSingle();
+
+    const threadTs = session?.slack_thread_ts ?? null;
+    const text = buildContactText({
+      channelLabel: args.channelLabel,
+      handle: args.handle,
+      adminUrl: threadTs ? null : adminSessionUrl(args.sessionId),
+    });
+
+    const result = await postSlackMessage({ text, threadTs });
+    if (!result.ok) {
+      console.warn('[slack relay] contact post failed:', result.error);
+    }
+  } catch (e) {
+    console.warn('[slack relay] contact relay failed:', e);
+  }
+}
+
 export type InboundOutcome =
   | 'delivered'
   | 'session_not_found'

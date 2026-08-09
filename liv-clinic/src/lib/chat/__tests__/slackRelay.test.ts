@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { buildReplyText, buildRootText } from '../slackRelay';
+import { buildContactText, buildReplyText, buildRootText } from '../slackRelay';
 
 describe('buildReplyText — 방문자 메시지', () => {
   it('한국어 번역을 먼저 보여주고 원문을 인용으로 붙인다', () => {
@@ -141,5 +141,38 @@ describe('buildRootText', () => {
       visitorLocale: 'xx',
     });
     expect(text).toContain('🌐 *새 채팅 문의*');
+  });
+});
+
+describe('buildContactText — 방문자 연락처 릴레이', () => {
+  it('채널 라벨과 핸들, 스태프 안내 문구를 포함한다', () => {
+    const text = buildContactText({
+      channelLabel: 'WhatsApp',
+      handle: '+82 10-1234-5678',
+      adminUrl: null,
+    });
+    expect(text).toBe(
+      '📱 *방문자가 연락처를 남겼습니다* — WhatsApp: +82 10-1234-5678\n' +
+        '_근무 시작 후 이 연락처로 먼저 연락해 주세요._'
+    );
+  });
+
+  it('핸들의 Slack 마크업을 이스케이프한다', () => {
+    const text = buildContactText({
+      channelLabel: 'WeChat',
+      handle: '<!channel>id',
+      adminUrl: null,
+    });
+    expect(text).not.toContain('<!channel>');
+    expect(text).toContain('&lt;!channel&gt;id');
+  });
+
+  it('스레드 없이 단독 게시될 때만 어드민 링크를 붙인다', () => {
+    const text = buildContactText({
+      channelLabel: 'LINE',
+      handle: 'my_line_id',
+      adminUrl: 'https://example.com/admin/chat/abc',
+    });
+    expect(text).toContain('🔗 <https://example.com/admin/chat/abc|관리자 화면에서 열기>');
   });
 });
