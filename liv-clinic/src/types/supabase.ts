@@ -225,6 +225,8 @@ export type Database = {
           user_agent: string | null
           visitor_email: string | null
           visitor_locale: string
+          visitor_messenger_channel: string | null
+          visitor_messenger_handle: string | null
           visitor_name: string | null
         }
         Insert: {
@@ -243,6 +245,8 @@ export type Database = {
           user_agent?: string | null
           visitor_email?: string | null
           visitor_locale: string
+          visitor_messenger_channel?: string | null
+          visitor_messenger_handle?: string | null
           visitor_name?: string | null
         }
         Update: {
@@ -261,6 +265,8 @@ export type Database = {
           user_agent?: string | null
           visitor_email?: string | null
           visitor_locale?: string
+          visitor_messenger_channel?: string | null
+          visitor_messenger_handle?: string | null
           visitor_name?: string | null
         }
         Relationships: []
