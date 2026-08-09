@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase-browser';
 import { sendOperatorMessage, closeSession, ChatApiError, type ChatMessage, type VisitorLocale } from '@/lib/chat/chatApi';
+import { buildChatRefCode } from '@/lib/chat/contactChannels';
 import { trackChatClose } from '@/lib/analytics-events';
 
 interface SessionMeta {
@@ -11,8 +12,18 @@ interface SessionMeta {
   visitor_locale: VisitorLocale;
   visitor_name: string | null;
   visitor_email: string | null;
+  visitor_messenger_channel: string | null;
+  visitor_messenger_handle: string | null;
   status: 'open' | 'closed' | 'abandoned';
   created_at: string;
+}
+
+// 방문자가 남긴 채널 표기 (미지의 값은 원문 그대로 — 채널 확장 대비)
+function messengerLabel(channel: string | null): string {
+  if (channel === 'whatsapp') return 'WhatsApp';
+  if (channel === 'wechat') return 'WeChat';
+  if (channel === 'line') return 'LINE';
+  return channel ?? '';
 }
 
 interface Props {
@@ -163,11 +174,30 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
                 <span className="text-xs text-gray-400 whitespace-nowrap">
                   {LOCALE_LABEL[session.visitor_locale] ?? `🌐 ${session.visitor_locale}`}
                 </span>
+                {/* 메신저 대화(WhatsApp 프리필 등)와 이 세션을 잇는 참조코드 */}
+                <span className="text-xs text-gray-400 whitespace-nowrap font-mono">
+                  #{buildChatRefCode(session.id)}
+                </span>
               </div>
               <div className="text-xs text-gray-500 mt-1 break-all">
                 {session.visitor_email || '이메일 없음'}
                 <span className="hidden sm:inline"> · 시작 {formatTime(session.created_at)}</span>
               </div>
+              {session.visitor_messenger_handle && (
+                <div className="text-xs text-emerald-700 mt-0.5 break-all">
+                  📱 {messengerLabel(session.visitor_messenger_channel)}{' '}
+                  {session.visitor_messenger_handle}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      void navigator.clipboard?.writeText(session.visitor_messenger_handle ?? '');
+                    }}
+                    className="ml-2 text-[11px] text-gray-400 underline underline-offset-2"
+                  >
+                    복사
+                  </button>
+                </div>
+              )}
               <div className="text-[11px] text-gray-400 mt-0.5 sm:hidden">
                 시작 {formatTime(session.created_at)}
               </div>

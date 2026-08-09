@@ -133,7 +133,7 @@ export async function GET(req: NextRequest) {
   const status = url.searchParams.get('status') ?? 'open';
   const { data, error } = await admin
     .from('chat_sessions')
-    .select('id, visitor_locale, visitor_name, visitor_email, status, last_message_at, unread_admin_count, created_at')
+    .select('id, visitor_locale, visitor_name, visitor_email, visitor_messenger_channel, visitor_messenger_handle, status, last_message_at, unread_admin_count, created_at')
     .eq('status', status)
     .order('unread_admin_count', { ascending: false })
     .order('last_message_at', { ascending: false, nullsFirst: false })

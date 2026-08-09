@@ -9,10 +9,20 @@ interface SessionRow {
   visitor_locale: string;
   visitor_name: string | null;
   visitor_email: string | null;
+  visitor_messenger_channel: string | null;
+  visitor_messenger_handle: string | null;
   status: string;
   last_message_at: string | null;
   unread_admin_count: number;
   created_at: string;
+}
+
+// 방문자가 남긴 채널 표기 (미지의 값은 원문 그대로 — 채널 확장 대비)
+function messengerLabel(channel: string | null): string {
+  if (channel === 'whatsapp') return 'WhatsApp';
+  if (channel === 'wechat') return 'WeChat';
+  if (channel === 'line') return 'LINE';
+  return channel ?? '';
 }
 
 // 인덱싱은 DB에서 온 임의 문자열(visitor_locale)로 하므로 선언 타입은 Record<string, string>을
@@ -48,7 +58,7 @@ async function loadSessions(status: string): Promise<SessionRow[]> {
   const { data, error } = await admin
     .from('chat_sessions')
     .select(
-      'id, visitor_locale, visitor_name, visitor_email, status, last_message_at, unread_admin_count, created_at'
+      'id, visitor_locale, visitor_name, visitor_email, visitor_messenger_channel, visitor_messenger_handle, status, last_message_at, unread_admin_count, created_at'
     )
     .eq('status', status)
     .order('unread_admin_count', { ascending: false })
@@ -129,6 +139,12 @@ export default async function AdminChatListPage({
                       <div className="text-xs text-gray-500 truncate">
                         {s.visitor_email || '이메일 없음'}
                       </div>
+                      {s.visitor_messenger_handle && (
+                        <div className="text-xs text-emerald-700 truncate">
+                          📱 {messengerLabel(s.visitor_messenger_channel)}{' '}
+                          {s.visitor_messenger_handle}
+                        </div>
+                      )}
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-1 flex-shrink-0">

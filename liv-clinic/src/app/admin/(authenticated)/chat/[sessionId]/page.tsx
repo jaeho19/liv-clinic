@@ -16,7 +16,7 @@ export default async function AdminChatDetailPage({
   const { data: session } = await admin
     .from('chat_sessions')
     .select(
-      'id, visitor_locale, visitor_name, visitor_email, status, last_message_at, unread_admin_count, created_at'
+      'id, visitor_locale, visitor_name, visitor_email, visitor_messenger_channel, visitor_messenger_handle, status, last_message_at, unread_admin_count, created_at'
     )
     .eq('id', sessionId)
     .single();
@@ -39,6 +39,8 @@ export default async function AdminChatDetailPage({
         visitor_locale: session.visitor_locale as VisitorLocale,
         visitor_name: session.visitor_name,
         visitor_email: session.visitor_email,
+        visitor_messenger_channel: session.visitor_messenger_channel,
+        visitor_messenger_handle: session.visitor_messenger_handle,
         status: session.status as 'open' | 'closed' | 'abandoned',
         created_at: session.created_at,
       }}
