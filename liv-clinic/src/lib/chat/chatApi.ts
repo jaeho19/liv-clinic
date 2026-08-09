@@ -130,6 +130,7 @@ export async function fetchPresence(): Promise<{
   online: boolean;
   operatorCount: number;
   businessHours: boolean;
+  nextOpenAt: string | null;
 }> {
   const res = await fetch('/api/chat/presence');
   if (!res.ok) throw new ChatApiError(res.status, 'presence_failed');
