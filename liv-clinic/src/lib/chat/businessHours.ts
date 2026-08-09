@@ -30,10 +30,12 @@ function loadConfig(): BusinessHoursConfig {
   }
   try {
     const parsed = JSON.parse(raw) as Partial<BusinessHoursConfig>;
+    // 키가 존재하면 명시적 null("휴무")도 그대로 존중한다 — `??`는 null을 기본값으로
+    // 되돌려 휴무 설정을 불가능하게 만들므로 사용하지 않는다.
     cachedConfig = {
-      weekday: parsed.weekday ?? DEFAULT_HOURS.weekday,
-      saturday: parsed.saturday ?? DEFAULT_HOURS.saturday,
-      sunday: parsed.sunday ?? DEFAULT_HOURS.sunday,
+      weekday: 'weekday' in parsed ? (parsed.weekday ?? null) : DEFAULT_HOURS.weekday,
+      saturday: 'saturday' in parsed ? (parsed.saturday ?? null) : DEFAULT_HOURS.saturday,
+      sunday: 'sunday' in parsed ? (parsed.sunday ?? null) : DEFAULT_HOURS.sunday,
     };
     return cachedConfig;
   } catch {
@@ -83,6 +85,30 @@ export function isBusinessHours(now = new Date()): boolean {
   const startMin = start.h * 60 + start.m;
   const endMin = end.h * 60 + end.m;
   return cur >= startMin && cur < endMin;
+}
+
+/**
+ * 다음 오픈 시각(UTC Date). 영업 중이거나 계산 불가(전일 휴무)면 null.
+ * KST 기준으로 오늘부터 최대 7일을 탐색한다.
+ */
+export function getNextOpenAt(now = new Date()): Date | null {
+  if (isBusinessHours(now)) return null;
+  const cfg = loadConfig();
+  const nowMs = now.getTime();
+  const kstNow = new Date(nowMs + 9 * 60 * 60 * 1000);
+  for (let offset = 0; offset <= 7; offset++) {
+    const kstDay = new Date(
+      Date.UTC(kstNow.getUTCFullYear(), kstNow.getUTCMonth(), kstNow.getUTCDate() + offset)
+    );
+    const range = rangeForWeekday(cfg, kstDay.getUTCDay());
+    if (!range) continue;
+    const start = parseHHMM(range[0]);
+    if (!start) continue;
+    const openMs =
+      kstDay.getTime() + (start.h * 60 + start.m) * 60_000 - 9 * 60 * 60 * 1000;
+    if (openMs > nowMs) return new Date(openMs);
+  }
+  return null;
 }
 
 export function getBusinessHoursConfig(): BusinessHoursConfig {

@@ -50,7 +50,16 @@ async function handleVisitorMessage(body: unknown) {
     return NextResponse.json({ error: 'session_not_found' }, { status: 404 });
   }
   if (session.status !== 'open') {
-    return NextResponse.json({ error: 'session_closed' }, { status: 409 });
+    // 자동 재오픈: 방문자가 돌아와 말을 이으면 종료된 상담을 되살린다 (spec §5.4).
+    // 운영자 경로(handleOperatorMessage)는 여전히 409 — 재오픈은 방문자 발신 전용.
+    const { error: reopenError } = await admin
+      .from('chat_sessions')
+      .update({ status: 'open', closed_at: null })
+      .eq('id', session.id);
+    if (reopenError) {
+      console.error('[chat/messages] session reopen failed:', reopenError);
+      return NextResponse.json({ error: 'db_error' }, { status: 500 });
+    }
   }
 
   const limit = checkSessionMessageLimit(session.id);

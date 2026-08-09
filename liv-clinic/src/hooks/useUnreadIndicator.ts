@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 const STORAGE_KEY_PREFIX = 'liv-chat-unread';
-const STORAGE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7일 (chat_session 만료와 동기)
+const STORAGE_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30일 (chat_session 만료와 동기)
 
 interface PersistedUnread {
   count: number;
@@ -46,6 +46,10 @@ export interface UseUnreadIndicatorReturn {
   increment: () => void;
   /** 패널 열림 시 호출 — 카운트 0 + lastSeenAt now() */
   reset: () => void;
+  /** 재방문 시 서버 조회 결과로 카운트를 초기화 — lastSeenAt은 유지 */
+  hydrate: (serverCount: number) => void;
+  /** 영속화된 마지막 열람 시각. 영속값이 없으면(신규 세션) null — 하이드레이션 대상 아님 */
+  lastSeenAt: string | null;
 }
 
 /**
@@ -56,6 +60,7 @@ export interface UseUnreadIndicatorReturn {
  */
 export function useUnreadIndicator(sessionId: string | null): UseUnreadIndicatorReturn {
   const [count, setCount] = useState(0);
+  const [lastSeenAt, setLastSeenAt] = useState<string | null>(null);
   const lastSeenAtRef = useRef<string>(new Date().toISOString());
 
   // sessionId 변경 시 영속화된 값 로드
@@ -63,15 +68,18 @@ export function useUnreadIndicator(sessionId: string | null): UseUnreadIndicator
     if (!sessionId) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
       setCount(0);
+      setLastSeenAt(null);
       lastSeenAtRef.current = new Date().toISOString();
       return;
     }
     const persisted = readPersisted(sessionId);
     if (persisted) {
       setCount(persisted.count);
+      setLastSeenAt(persisted.lastSeenAt);
       lastSeenAtRef.current = persisted.lastSeenAt;
     } else {
       setCount(0);
+      setLastSeenAt(null);
       lastSeenAtRef.current = new Date().toISOString();
     }
   }, [sessionId]);
@@ -96,6 +104,7 @@ export function useUnreadIndicator(sessionId: string | null): UseUnreadIndicator
     }
     const now = new Date().toISOString();
     lastSeenAtRef.current = now;
+    setLastSeenAt(now);
     setCount(0);
     writePersisted(sessionId, {
       count: 0,
@@ -104,5 +113,20 @@ export function useUnreadIndicator(sessionId: string | null): UseUnreadIndicator
     });
   }, [sessionId]);
 
-  return { count, increment, reset };
+  // 재방문 하이드레이션: 부재중 도착 답장 수를 서버 기준으로 반영.
+  // lastSeenAt은 갱신하지 않는다 — 아직 읽지 않았기 때문.
+  const hydrate = useCallback(
+    (serverCount: number) => {
+      if (!sessionId || serverCount <= 0) return;
+      setCount(serverCount);
+      writePersisted(sessionId, {
+        count: serverCount,
+        lastSeenAt: lastSeenAtRef.current,
+        storedAtMs: Date.now(),
+      });
+    },
+    [sessionId]
+  );
+
+  return { count, increment, reset, hydrate, lastSeenAt };
 }

@@ -47,7 +47,7 @@ function kstDateKey(now = new Date()): string {
 
 export interface RateLimitDecision {
   allowed: boolean;
-  reason?: 'per_minute' | 'per_session' | 'per_ip_daily';
+  reason?: 'per_minute' | 'per_session' | 'per_ip_daily' | 'contact_daily';
   retryAfterSec?: number;
 }
 
@@ -92,9 +92,29 @@ export function checkIpSessionDailyLimit(ipHash: string | null): RateLimitDecisi
   return { allowed: true };
 }
 
+const CONTACT_SAVES_PER_DAY = Number(process.env.CHAT_RATE_LIMIT_CONTACT_PER_DAY ?? 5);
+const contactDaily = new Map<string, IpDailyBucket>();
+
+// 오프시간 캡처 블록의 연락처 저장 — 세션당 일일 제한 (마지막 값으로 덮어쓰기 허용)
+export function checkContactSaveLimit(sessionId: string): RateLimitDecision {
+  const dayKey = kstDateKey();
+  const bucket = contactDaily.get(sessionId);
+  if (!bucket || bucket.dayKey !== dayKey) {
+    contactDaily.set(sessionId, { dayKey, count: 1 });
+  } else {
+    if (bucket.count >= CONTACT_SAVES_PER_DAY) {
+      return { allowed: false, reason: 'contact_daily' };
+    }
+    bucket.count += 1;
+  }
+  trimIfTooLarge(contactDaily);
+  return { allowed: true };
+}
+
 // 테스트/개발용 리셋
 export function _resetRateLimitForTesting() {
   sessionMinute.clear();
   sessionTotal.clear();
   ipDaily.clear();
+  contactDaily.clear();
 }

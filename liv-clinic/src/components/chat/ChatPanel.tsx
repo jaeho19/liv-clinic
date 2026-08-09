@@ -14,6 +14,7 @@ import {
 } from '@/lib/analytics-events';
 import type { VisitorLocale } from '@/lib/chat/chatApi';
 import MessageBubble from './MessageBubble';
+import ChatCaptureBlock from './ChatCaptureBlock';
 
 interface Props {
   locale: VisitorLocale;
@@ -29,7 +30,11 @@ const MAX_LEN = 1000;
 export default function ChatPanel({ locale, open, onClose, sessionState }: Props) {
   const t = useTranslations('chat');
   const { session, start, loading: starting, error: startError } = sessionState;
-  const [presence, setPresence] = useState<{ online: boolean; businessHours: boolean } | null>(null);
+  const [presence, setPresence] = useState<{
+    online: boolean;
+    businessHours: boolean;
+    nextOpenAt: string | null;
+  } | null>(null);
   const [text, setText] = useState('');
   const [sendError, setSendError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
@@ -65,7 +70,12 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
     const tick = async () => {
       try {
         const p = await fetchPresence();
-        if (!cancelled) setPresence({ online: p.online, businessHours: p.businessHours });
+        if (!cancelled)
+          setPresence({
+            online: p.online,
+            businessHours: p.businessHours,
+            nextOpenAt: p.nextOpenAt,
+          });
       } catch {
         // ignore
       }
@@ -278,6 +288,19 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
             {messages.map((m) => (
               <MessageBubble key={m.id} message={m} visitorLocale={locale} />
             ))}
+            {/* 오프시간 캡처 블록 — 방문자가 질문을 남긴 직후가 캡처 전환율이 가장 높은 시점 (spec §4).
+                dismissed/saved 판정은 블록 내부(localStorage) 담당. */}
+            {session &&
+              presence &&
+              presence.businessHours === false &&
+              messages.some((m) => m.sender === 'visitor') && (
+                <ChatCaptureBlock
+                  locale={locale}
+                  sessionId={session.sessionId}
+                  sessionToken={session.sessionToken}
+                  nextOpenAt={presence.nextOpenAt}
+                />
+              )}
           </div>
 
           {/* Composer */}

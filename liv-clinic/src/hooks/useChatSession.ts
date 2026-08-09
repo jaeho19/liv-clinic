@@ -8,7 +8,7 @@ import {
 } from '@/lib/chat/chatApi';
 
 const STORAGE_KEY_PREFIX = 'liv-chat-session-v1';
-const SESSION_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7일
+const SESSION_TTL_MS = 30 * 24 * 60 * 60 * 1000; // 30일 (재방문 대화 연속성 — spec §5.3)
 
 interface StoredSession {
   sessionId: string;

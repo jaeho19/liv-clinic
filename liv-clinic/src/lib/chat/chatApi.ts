@@ -1,6 +1,8 @@
 // 클라이언트(브라우저) 측 fetch 래퍼.
 // 서버 라우트(/api/chat/*)와 1:1 매핑.
 
+import type { ContactChannel } from './contactChannels';
+
 export type VisitorLocale =
   | 'en'
   | 'ja'
@@ -115,6 +117,23 @@ export async function sendOperatorMessage(
   return json.message;
 }
 
+// 오프시간 캡처 블록: 방문자 메신저 연락처 저장
+export async function saveContact(
+  sessionToken: string,
+  channel: ContactChannel,
+  handle: string
+): Promise<void> {
+  const res = await fetch('/api/chat/contact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionToken, channel, handle }),
+  });
+  if (!res.ok) {
+    const err = await safeJson(res);
+    throw new ChatApiError(res.status, err?.error ?? 'contact_failed', err);
+  }
+}
+
 export async function closeSession(sessionId: string): Promise<void> {
   const res = await fetch(`/api/chat/sessions/${sessionId}`, {
     method: 'PATCH',
@@ -130,6 +149,7 @@ export async function fetchPresence(): Promise<{
   online: boolean;
   operatorCount: number;
   businessHours: boolean;
+  nextOpenAt: string | null;
 }> {
   const res = await fetch('/api/chat/presence');
   if (!res.ok) throw new ChatApiError(res.status, 'presence_failed');

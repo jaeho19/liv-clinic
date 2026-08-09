@@ -7,8 +7,11 @@ import {
   trackChatOpen,
   trackChatTeaserShown,
   trackChatTeaserClick,
+  trackChatReplyTeaserShown,
+  trackChatReplyTeaserClick,
 } from '@/lib/analytics-events';
-import { OPEN_CHAT_EVENT } from '@/lib/chat/chatApi';
+import { OPEN_CHAT_EVENT, fetchVisitorMessages } from '@/lib/chat/chatApi';
+import { countOfflineReplies } from '@/lib/chat/unread';
 import { useChatSession } from '@/hooks/useChatSession';
 import { useUnreadIndicator } from '@/hooks/useUnreadIndicator';
 import { createClient } from '@/lib/supabase-browser';
@@ -59,8 +62,13 @@ export default function ChatWidget({ locale }: Props) {
   // 동일 인스턴스를 공유한다 (ChatPanel이 새 세션을 생성하면 위젯도 즉시 인지).
   const sessionState = useChatSession(locale);
   const sessionId = sessionState.session?.sessionId ?? null;
-  const { count: unreadCount, increment: incrementUnread, reset: resetUnread } =
-    useUnreadIndicator(sessionId);
+  const {
+    count: unreadCount,
+    increment: incrementUnread,
+    reset: resetUnread,
+    hydrate: hydrateUnread,
+    lastSeenAt,
+  } = useUnreadIndicator(sessionId);
 
   // G-07: 패널이 닫힌 동안에도 broadcast 구독 → operator/system 메시지 도착 시 unread 증가
   // 서버 lib/chat/broadcast.ts와 동일한 채널명 `chat:${sessionId}` 사용 (호환성).
@@ -84,12 +92,45 @@ export default function ChatWidget({ locale }: Props) {
     };
   }, [sessionId, open, incrementUnread]);
 
-  // 패널 열릴 때 unread 카운트 리셋
+  // 패널 열림/닫힘 시 unread 리셋 + lastSeenAt 워터마크 기록.
+  // unread>0일 때만 리셋하면 워터마크가 영영 저장되지 않아, "패널을 열고 대화하다
+  // 떠난" 방문자(오프시간의 전형)의 재방문 하이드레이션(§5.1)이 동작하지 않는다.
+  // cleanup은 닫기·페이지 이탈 시각을 마지막 열람 시각으로 남긴다.
   useEffect(() => {
-    if (open && unreadCount > 0) {
-      resetUnread();
+    if (!open) return;
+    resetUnread();
+    return () => resetUnread();
+  }, [open, resetUnread]);
+
+  // 재방문 하이드레이션: 부재중(사이트 이탈 중) 도착한 답장을 서버에서 1회 조회해
+  // 배지를 복구한다 (spec §5.1 — 기존에는 체류 중 broadcast만 집계되던 갭).
+  const hydratedForRef = useRef<string | null>(null);
+  useEffect(() => {
+    const token = sessionState.session?.sessionToken;
+    if (!sessionId || !token || !lastSeenAt) return;
+    if (hydratedForRef.current === sessionId) return;
+    hydratedForRef.current = sessionId;
+    fetchVisitorMessages(token, lastSeenAt)
+      .then((msgs) => {
+        const n = countOfflineReplies(msgs);
+        if (n > 0) hydrateUnread(n);
+      })
+      .catch(() => {
+        // 조회 실패 시 배지 없이 기존 동작 유지
+      });
+  }, [sessionId, lastSeenAt, sessionState.session?.sessionToken, hydrateUnread]);
+
+  // 재방문 답장 티저 — 첫 방문 seen 플래그와 무관하게 노출, 우선순위 높음 (spec §5.2)
+  const replyTeaserTrackedRef = useRef(false);
+  useEffect(() => {
+    if (open || unreadCount === 0) return;
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- unread 전환 시 1회, useUnreadIndicator와 동일 패턴
+    setShowTooltip(true);
+    if (!replyTeaserTrackedRef.current) {
+      replyTeaserTrackedRef.current = true;
+      trackChatReplyTeaserShown(locale);
     }
-  }, [open, unreadCount, resetUnread]);
+  }, [open, unreadCount, locale]);
 
   // 첫 5초 펄스 글로우 (마운트 시 1회)
   useEffect(() => {
@@ -188,7 +229,11 @@ export default function ChatWidget({ locale }: Props) {
 
   // 티저 말풍선 클릭 = 패널 열기 (말풍선은 패널이 닫힌 동안에만 보이므로 항상 open 방향)
   const handleTeaserClick = () => {
-    trackChatTeaserClick(locale);
+    if (unreadCount > 0) {
+      trackChatReplyTeaserClick(locale);
+    } else {
+      trackChatTeaserClick(locale);
+    }
     handleToggle();
   };
 
@@ -225,7 +270,9 @@ export default function ChatWidget({ locale }: Props) {
               onClick={handleTeaserClick}
               className="block w-full text-start pl-3 pr-7 py-2.5 text-sm text-[#6d4e42] font-medium leading-relaxed cursor-pointer"
             >
-              <span role="status">{t('tooltipText')}</span>
+              <span role="status">
+                {unreadCount > 0 ? t('replyWaitingTeaser') : t('tooltipText')}
+              </span>
             </button>
             {/* 말풍선 꼬리 — 버튼을 가리키도록 아래쪽 */}
             <div

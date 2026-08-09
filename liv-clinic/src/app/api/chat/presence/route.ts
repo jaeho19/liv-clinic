@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { isBusinessHours, getBusinessHoursConfig } from '@/lib/chat/businessHours';
+import { isBusinessHours, getBusinessHoursConfig, getNextOpenAt } from '@/lib/chat/businessHours';
 import { getOnlineOperatorCount } from '@/lib/chat/operatorPresence';
 
 export const runtime = 'nodejs';
@@ -30,6 +30,7 @@ export async function GET() {
     online,
     operatorCount,
     businessHours,
+    nextOpenAt: getNextOpenAt()?.toISOString() ?? null, // 오프시간 캡처 블록의 복귀 시각 안내용
     schedule: config,
     source, // 신규 필드 (디버깅용, 기존 클라이언트는 무시)
   });
