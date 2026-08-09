@@ -76,6 +76,31 @@ export function trackChatTeaserClick(locale: VisitorLocale) {
   trackEvent('chat_teaser_click', { locale });
 }
 
+/** 오프시간 캡처 블록 노출 (세션당 1회) */
+export function trackChatCaptureShown(locale: VisitorLocale) {
+  trackEvent('chat_capture_shown', { locale });
+}
+
+/** 캡처 블록의 메신저 이동 버튼 클릭 */
+export function trackChatCaptureMessengerClick(channel: string, locale: VisitorLocale) {
+  trackEvent('chat_capture_messenger_click', { channel, locale });
+}
+
+/** 캡처 블록에서 연락처 저장 성공 */
+export function trackChatContactSaved(channel: string, locale: VisitorLocale) {
+  trackEvent('chat_capture_contact_saved', { channel, locale });
+}
+
+/** 재방문 시 부재중 답장 티저 노출 */
+export function trackChatReplyTeaserShown(locale: VisitorLocale) {
+  trackEvent('chat_reply_teaser_shown', { locale });
+}
+
+/** 부재중 답장 티저 클릭 (패널 열림) */
+export function trackChatReplyTeaserClick(locale: VisitorLocale) {
+  trackEvent('chat_reply_teaser_click', { locale });
+}
+
 /** 번역 실패 */
 export function trackChatTranslationFailure(reason: string) {
   trackEvent('chat_translation_error', { reason });
