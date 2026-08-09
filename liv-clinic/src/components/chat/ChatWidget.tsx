@@ -92,12 +92,15 @@ export default function ChatWidget({ locale }: Props) {
     };
   }, [sessionId, open, incrementUnread]);
 
-  // 패널 열릴 때 unread 카운트 리셋
+  // 패널 열림/닫힘 시 unread 리셋 + lastSeenAt 워터마크 기록.
+  // unread>0일 때만 리셋하면 워터마크가 영영 저장되지 않아, "패널을 열고 대화하다
+  // 떠난" 방문자(오프시간의 전형)의 재방문 하이드레이션(§5.1)이 동작하지 않는다.
+  // cleanup은 닫기·페이지 이탈 시각을 마지막 열람 시각으로 남긴다.
   useEffect(() => {
-    if (open && unreadCount > 0) {
-      resetUnread();
-    }
-  }, [open, unreadCount, resetUnread]);
+    if (!open) return;
+    resetUnread();
+    return () => resetUnread();
+  }, [open, resetUnread]);
 
   // 재방문 하이드레이션: 부재중(사이트 이탈 중) 도착한 답장을 서버에서 1회 조회해
   // 배지를 복구한다 (spec §5.1 — 기존에는 체류 중 broadcast만 집계되던 갭).
