@@ -5,13 +5,14 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, NaverMap } from '@/components/ui';
 import { SITE_INFO, BUSINESS_HOURS } from '@/lib/constants';
+import { trackContact, trackDirections } from '@/lib/analytics-events';
 
 export default function Location() {
   const t = useTranslations('sections.location');
   const tFooter = useTranslations('footer');
 
   return (
-    <section className="section-gap bg-background">
+    <section className="section-gap bg-white">
       <div className="container-custom">
         <AnimateOnScroll animation="fadeInUpSmooth">
           <div className="text-center mb-16">
@@ -133,6 +134,7 @@ export default function Location() {
                     <h3 className="text-h4 text-secondary mb-2">{t('contactLabel')}</h3>
                     <a
                       href={`tel:${SITE_INFO.phone}`}
+                      onClick={() => trackContact('phone')}
                       className="text-h3 text-primary hover:text-secondary transition-colors"
                     >
                       {SITE_INFO.phone}
@@ -168,6 +170,7 @@ export default function Location() {
                   href={`https://map.naver.com/v5/search/${encodeURIComponent(SITE_INFO.address.ko)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackDirections('naver_map')}
                   className="flex-1"
                 >
                   <Button variant="outline" size="lg" className="w-full">
@@ -178,6 +181,7 @@ export default function Location() {
                   href={`https://map.kakao.com/link/search/${encodeURIComponent(SITE_INFO.address.ko)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackDirections('kakao_map')}
                   className="flex-1"
                 >
                   <Button variant="outline" size="lg" className="w-full">

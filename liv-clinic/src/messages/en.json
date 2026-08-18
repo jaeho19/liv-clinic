@@ -410,6 +410,22 @@
     }
   },
   "sections": {
+    "concerns": {
+      "title": "Personalized Care",
+      "subtitle": "Care That Starts with Your Concern",
+      "description": "Tell us what concerns you today — we will guide you to the right treatment direction through consultation.",
+      "cards": {
+        "sagging": { "title": "Sagging jawline & contours", "desc": "Consultation focused on thread lifting to redefine blurred contours.", "tags": "Aptos · Thread Lifting" },
+        "elasticity": { "title": "Firmness without surgery", "desc": "Non-surgical lifting plans based on ultrasound and RF devices.", "tags": "Ulthera · Thermage · Combination Lifting" },
+        "fundamental": { "title": "Fundamental sagging correction", "desc": "If non-surgical results felt limited, explore a facelift consultation.", "tags": "Facelift Consultation" },
+        "underEye": { "title": "Tired look under the eyes", "desc": "Under-eye fat repositioning consultation to discuss your options.", "tags": "Fat Repositioning Consultation" },
+        "texture": { "title": "Texture, pores & regeneration", "desc": "Step-by-step regenerative treatments after a skin assessment.", "tags": "Potenza · Rejuran · Juvelook" }
+      },
+      "paths": {
+        "domestic": { "title": "For Local Patients", "desc": "Calm, one-on-one consultations for anti-aging and lifting concerns.", "cta": "Book a Consultation" },
+        "international": { "title": "For International Patients", "desc": "Multilingual guidance, scheduling support, and combined treatment planning in one place.", "cta": "International Care Guide" }
+      }
+    },
     "certification": {
       "title": "Certified Clinic",
       "officialPartner": "Certifications",
@@ -434,6 +450,7 @@
       "juvelookDesc": "PDRN Skin Booster"
     },
     "equipment": {
+      "viewAll": "View All Equipment",
       "title": "Genuine Equipment",
       "subtitle": "Premium authentic devices",
       "description": "LIV Plastic Surgery uses only certified premium equipment. We provide safe and effective treatments with the latest technology.",

@@ -5,6 +5,7 @@ import type { Database } from '@/types/supabase';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll } from '@/components/ui';
 import { GOOGLE_BUSINESS_URL } from '@/lib/constants';
+import ClickTracker from '@/components/analytics/ClickTracker';
 import StarRating from '@/components/reviews/StarRating';
 
 type ReviewRow = Database['public']['Tables']['reviews']['Row'];
@@ -50,7 +51,7 @@ export default async function ReviewsSection() {
     t.has(`form.treatmentOptions.${key}`) ? t(`form.treatmentOptions.${key}`) : key;
 
   return (
-    <section className="section-gap bg-white">
+    <section className="section-gap bg-background">
       <div className="container-custom">
         <AnimateOnScroll>
           <div className="mx-auto mb-12 max-w-3xl text-center">
@@ -65,7 +66,7 @@ export default async function ReviewsSection() {
           {reviews.map((review) => (
             <article
               key={review.id}
-              className="flex h-full flex-col rounded-2xl border border-border bg-background p-6"
+              className="flex h-full flex-col rounded-2xl border border-border bg-white p-6"
             >
               <div className="mb-4 flex items-center justify-between gap-2">
                 <StarRating rating={review.rating} size="sm" />
@@ -101,21 +102,25 @@ export default async function ReviewsSection() {
         )}
 
         <div className={`flex flex-col items-center gap-4 ${reviews.length > 0 ? 'mt-12' : 'mt-2'}`}>
-          <Link
-            href="/reviews"
-            className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-primary px-8 py-3.5 font-medium text-white transition-colors hover:bg-secondary"
-          >
-            {t('writeCta')}
-          </Link>
-          {GOOGLE_BUSINESS_URL && (
-            <a
-              href={GOOGLE_BUSINESS_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-small text-mono-light underline transition-colors hover:text-primary"
+          <ClickTracker type="review" id="write_cta">
+            <Link
+              href="/reviews"
+              className="inline-flex min-h-[48px] items-center justify-center rounded-full bg-primary px-8 py-3.5 font-medium text-white transition-colors hover:bg-secondary"
             >
-              {t('googleReviews')}
-            </a>
+              {t('writeCta')}
+            </Link>
+          </ClickTracker>
+          {GOOGLE_BUSINESS_URL && (
+            <ClickTracker type="review" id="google_reviews">
+              <a
+                href={GOOGLE_BUSINESS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-small text-mono-light underline transition-colors hover:text-primary"
+              >
+                {t('googleReviews')}
+              </a>
+            </ClickTracker>
           )}
         </div>
       </div>

@@ -4,6 +4,7 @@ import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
+import { trackCTAClick } from '@/lib/analytics-events';
 
 export default function Footer() {
   const locale = useLocale();
@@ -122,6 +123,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/contact"
+                  onClick={() => trackCTAClick('footer_cta', 'contact')}
                   className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
                 >
                   {tNav('contact')}

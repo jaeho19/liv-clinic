@@ -410,6 +410,22 @@
     }
   },
   "sections": {
+    "concerns": {
+      "title": "Personalized Care",
+      "subtitle": "Chăm sóc bắt đầu từ nỗi băn khoăn của bạn",
+      "description": "Bắt đầu từ băn khoăn hiện tại, chúng tôi tư vấn hướng điều trị phù hợp cho bạn.",
+      "cards": {
+        "sagging": { "title": "Đường viền hàm chảy xệ", "desc": "Tư vấn tập trung vào nâng cơ chỉ để định hình lại đường nét.", "tags": "Aptos · Nâng cơ chỉ" },
+        "elasticity": { "title": "Cải thiện độ săn chắc không phẫu thuật", "desc": "Phác đồ nâng cơ không phẫu thuật bằng sóng siêu âm và RF.", "tags": "Ulthera · Thermage · Nâng cơ kết hợp" },
+        "fundamental": { "title": "Cải thiện chảy xệ tận gốc", "desc": "Nếu phương pháp không phẫu thuật chưa đủ, hãy tư vấn căng da mặt.", "tags": "Tư vấn căng da mặt" },
+        "underEye": { "title": "Quầng mắt và vẻ mệt mỏi", "desc": "Tư vấn tái phân bố mỡ dưới mắt để cải thiện ấn tượng khuôn mặt.", "tags": "Tư vấn tái phân bố mỡ" },
+        "texture": { "title": "Kết cấu da · lỗ chân lông · tái tạo", "desc": "Đề xuất từng bước các liệu trình tái tạo sau khi chẩn đoán da.", "tags": "Potenza · Rejuran · Juvelook" }
+      },
+      "paths": {
+        "domestic": { "title": "Khách hàng trong nước", "desc": "Tư vấn 1:1 tận tình cho các băn khoăn về chống lão hóa và nâng cơ.", "cta": "Đặt lịch tư vấn" },
+        "international": { "title": "Khách hàng quốc tế", "desc": "Hỗ trợ đa ngôn ngữ, sắp xếp lịch hẹn và tư vấn liệu trình kết hợp.", "cta": "Hướng dẫn khám cho người nước ngoài" }
+      }
+    },
     "certification": {
       "title": "Phòng khám được chứng nhận",
       "officialPartner": "Chứng nhận",
@@ -434,6 +450,7 @@
       "juvelookDesc": "Tăng cường da PDRN"
     },
     "equipment": {
+      "viewAll": "Xem tất cả thiết bị",
       "title": "Thiết bị chính hãng",
       "subtitle": "Thiết bị chính hãng cao cấp",
       "description": "Bệnh viện phẫu thuật thẩm mỹ LIV chỉ sử dụng thiết bị cao cấp đã được chứng nhận. Chúng tôi cung cấp các phương pháp điều trị an toàn và hiệu quả với công nghệ mới nhất.",

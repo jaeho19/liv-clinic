@@ -210,12 +210,39 @@ export function trackLanguageSwitch(fromLang: string, toLang: string) {
 
 /** CTA 버튼 클릭 이벤트 */
 export function trackCTAClick(
-  ctaType: 'header_consult' | 'floating_consult' | 'hero_cta' | 'treatment_cta' | 'quick_consult' | 'footer_cta',
+  ctaType:
+    | 'header_consult'
+    | 'floating_consult'
+    | 'hero_cta'
+    | 'treatment_cta'
+    | 'quick_consult'
+    | 'footer_cta'
+    | 'signature_card'
+    | 'concern_path_domestic'
+    | 'foreign_patient',
   label?: string,
 ) {
   trackEvent('cta_click', {
     cta_type: ctaType,
     ...(label && { cta_label: label }),
+    page_path: typeof window !== 'undefined' ? window.location.pathname : '',
+  });
+}
+
+/** 홈 고민별 진입 카드 클릭 (정보구조 개선 §5) */
+export function trackConcernClick(concernId: string, destination: string) {
+  trackEvent('concern_card_click', {
+    concern_id: concernId,
+    destination,
+    page_path: typeof window !== 'undefined' ? window.location.pathname : '',
+  });
+}
+
+/** 홈 콘텐츠 카드 클릭 (언론/미디어·후기·블로그) */
+export function trackContentClick(contentType: 'media' | 'review' | 'blog', contentId?: string) {
+  trackEvent('content_click', {
+    content_type: contentType,
+    ...(contentId && { content_id: contentId }),
     page_path: typeof window !== 'undefined' ? window.location.pathname : '',
   });
 }

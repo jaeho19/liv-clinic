@@ -410,6 +410,22 @@
     }
   },
   "sections": {
+    "concerns": {
+      "title": "Personalized Care",
+      "subtitle": "從您的困擾開始的客製診療",
+      "description": "從當下的困擾出發，透過面診為您規劃合適的治療方向。",
+      "cards": {
+        "sagging": { "title": "臉部輪廓與下顎線鬆弛", "desc": "以線雕拉提為中心，改善模糊的輪廓線條。", "tags": "Aptos線雕 · 埋線拉提" },
+        "elasticity": { "title": "不動刀改善緊緻度", "desc": "以超音波與電波設備為基礎的非手術拉提方案。", "tags": "音波拉提 · 電波拉皮 · 複合拉提" },
+        "fundamental": { "title": "從根本改善鬆弛", "desc": "若非手術效果有限，可透過拉皮手術面診確認改善方向。", "tags": "臉部拉提手術諮詢" },
+        "underEye": { "title": "眼下陰影與疲憊印象", "desc": "透過眼下脂肪重置面診確認改善方向。", "tags": "脂肪重置諮詢" },
+        "texture": { "title": "膚質·毛孔·再生", "desc": "皮膚診斷後，分階段推薦以再生為主的治療。", "tags": "Potenza · 麗珠蘭 · Juvelook" }
+      },
+      "paths": {
+        "domestic": { "title": "本地客戶諮詢", "desc": "針對抗老與拉提困擾，提供一對一的細緻諮詢。", "cta": "預約諮詢" },
+        "international": { "title": "國際客戶指南", "desc": "多語言接待、日程協調與複合治療諮詢一站式服務。", "cta": "外國人診療指南" }
+      }
+    },
     "certification": {
       "title": "官方認證醫院",
       "officialPartner": "官方認證",
@@ -434,6 +450,7 @@
       "juvelookDesc": "PDRN 皮膚增強劑"
     },
     "equipment": {
+      "viewAll": "查看全部設備",
       "title": "Genuine Equipment",
       "subtitle": "高端正品設備",
       "description": "LIV 整形外科只使用正品認證的高端設備。我們以最新技術提供安全有效的治療。",

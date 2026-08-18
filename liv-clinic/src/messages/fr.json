@@ -410,6 +410,22 @@
     }
   },
   "sections": {
+    "concerns": {
+      "title": "Personalized Care",
+      "subtitle": "Des soins qui partent de votre préoccupation",
+      "description": "À partir de votre préoccupation actuelle, nous vous orientons vers le traitement adapté en consultation.",
+      "cards": {
+        "sagging": { "title": "Ovale du visage relâché", "desc": "Consultation centrée sur le lifting par fils pour redessiner les contours.", "tags": "Aptos · Lifting par fils" },
+        "elasticity": { "title": "Fermeté sans chirurgie", "desc": "Programmes de lifting non chirurgical par ultrasons et radiofréquence.", "tags": "Ulthera · Thermage · Lifting combiné" },
+        "fundamental": { "title": "Correction en profondeur du relâchement", "desc": "Si le non-chirurgical ne suffit plus, envisagez une consultation de lifting facial.", "tags": "Consultation lifting facial" },
+        "underEye": { "title": "Cernes et regard fatigué", "desc": "Consultation de repositionnement des poches sous les yeux.", "tags": "Consultation repositionnement graisseux" },
+        "texture": { "title": "Grain de peau, pores, régénération", "desc": "Des soins régénérants proposés étape par étape après un diagnostic de peau.", "tags": "Potenza · Rejuran · Juvelook" }
+      },
+      "paths": {
+        "domestic": { "title": "Patients locaux", "desc": "Des consultations individuelles et posées pour vos préoccupations anti-âge et lifting.", "cta": "Prendre rendez-vous" },
+        "international": { "title": "Patients internationaux", "desc": "Accompagnement multilingue, organisation du planning et projets de soins combinés.", "cta": "Guide des patients étrangers" }
+      }
+    },
     "certification": {
       "title": "Clinique certifiée",
       "officialPartner": "Certifications",
@@ -434,6 +450,7 @@
       "juvelookDesc": "Skin Booster PDRN"
     },
     "equipment": {
+      "viewAll": "Voir tous les équipements",
       "title": "Équipement authentique",
       "subtitle": "Appareils premium authentiques",
       "description": "LIV Chirurgie Esthétique utilise uniquement des équipements premium certifiés. Nous offrons des traitements sûrs et efficaces avec les dernières technologies.",
