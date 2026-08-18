@@ -42,6 +42,7 @@ import {
   computeTrend,
   groupByTreatmentTag,
   groupCounts,
+  splitTopGroups,
   type DimensionFilter,
   type Granularity,
   type StatsLead,
@@ -175,7 +176,8 @@ export default function InflowDashboard({ leads, campaigns, contents, links, onE
   const kpis = useMemo(() => computeKpis(dimFiltered, range), [dimFiltered, range]);
   const trend = useMemo(() => computeTrend(dimFiltered, range, granularity), [dimFiltered, range, granularity]);
   const categoryGroups = useMemo(() => groupCounts(dimFiltered, range, (l) => l.channel_category), [dimFiltered, range]);
-  const treatmentGroups = useMemo(() => groupByTreatmentTag(dimFiltered, range).slice(0, 12), [dimFiltered, range]);
+  const treatmentGroupsAll = useMemo(() => groupByTreatmentTag(dimFiltered, range), [dimFiltered, range]);
+  const treatmentGroups = useMemo(() => treatmentGroupsAll.slice(0, 12), [treatmentGroupsAll]);
   const originGroups = useMemo(() => groupCounts(dimFiltered, range, (l) => l.patient_origin), [dimFiltered, range]);
   const campaignPerf = useMemo(
     () => computeCampaignPerf(dimFiltered, range, campaigns).filter((p) => p.leads > 0 || p.spendKrw != null),
@@ -340,6 +342,7 @@ export default function InflowDashboard({ leads, campaigns, contents, links, onE
         <GroupBarCard
           title="시술별 문의 비교"
           caption="연락일 기준 코호트 · 태그 복수 선택 시 중복 집계 · 괄호는 (내원·결제)"
+          moreCount={treatmentGroupsAll.length - treatmentGroups.length}
           rows={treatmentGroups.map((g) => ({
             key: g.key,
             label: g.key ? getTreatmentTagLabel(g.key) : '태그 없음',
@@ -473,7 +476,7 @@ function FunnelCard({ kpis }: { kpis: ReturnType<typeof computeKpis> }) {
   const max = Math.max(kpis.contacts, 1);
   return (
     <div className="bg-white rounded-xl border border-[#e5e5e5] p-5 mb-6">
-      <h3 className="font-bold text-sm text-[#6d4e42] mb-1">전환 퍼널</h3>
+      <h3 className="font-bold text-sm text-[#6d4e42] mb-1">연락→결제 전환 흐름</h3>
       <p className="text-[11px] text-[#8a8a8a] mb-4">발생일 기준 · 괄호는 직전 단계 대비 전환율</p>
       <div className="space-y-3">
         {LEAD_STAGES.map((s) => (
@@ -500,27 +503,65 @@ function FunnelCard({ kpis }: { kpis: ReturnType<typeof computeKpis> }) {
   );
 }
 
-// ─── 그룹 막대 카드 (유입 경로/시술) ───────────────────
+// ─── 그룹 막대 카드 (유입 경로/시술 — 상위 제외 토글) ──
+const EXCLUDE_TOP_OPTIONS = [
+  { value: 0, label: '전체' },
+  { value: 1, label: '1위 제외' },
+  { value: 2, label: '상위 2 제외' },
+] as const;
+
 function GroupBarCard({
   title,
   caption,
   rows,
+  moreCount = 0,
 }: {
   title: string;
   caption: string;
   rows: { key: string | null; label: string; badgeClass: string; contacts: number; visited: number; paid: number }[];
+  moreCount?: number;
 }) {
-  const max = Math.max(...rows.map((r) => r.contacts), 1);
+  const [excludeTop, setExcludeTop] = useState<0 | 1 | 2>(0);
+  const { excluded, visible } = splitTopGroups(rows, excludeTop);
   const total = rows.reduce((s, r) => s + r.contacts, 0);
+  const excludedTotal = excluded.reduce((s, r) => s + r.contacts, 0);
+  const max = Math.max(...visible.map((r) => r.contacts), 1);
   return (
     <div className="bg-white rounded-xl border border-[#e5e5e5] p-5">
-      <h3 className="font-bold text-sm text-[#6d4e42] mb-1">{title}</h3>
+      <div className="flex items-center justify-between gap-2 mb-1 flex-wrap">
+        <h3 className="font-bold text-sm text-[#6d4e42]">{title}</h3>
+        {rows.length >= 2 && (
+          <div className="flex items-center gap-1 bg-[#f6f6f6] rounded-lg p-0.5" role="group" aria-label="상위 항목 제외">
+            {EXCLUDE_TOP_OPTIONS.map((o) => (
+              <button
+                key={o.value}
+                onClick={() => setExcludeTop(o.value)}
+                disabled={o.value >= rows.length}
+                aria-pressed={excludeTop === o.value}
+                className={`px-2 py-1 text-[11px] rounded-md cursor-pointer disabled:opacity-40 disabled:cursor-default ${
+                  excludeTop === o.value ? 'bg-white text-[#6d4e42] font-medium shadow-sm' : 'text-[#8a8a8a] hover:text-[#575756]'
+                }`}
+              >
+                {o.label}
+              </button>
+            ))}
+          </div>
+        )}
+      </div>
       <p className="text-[11px] text-[#8a8a8a] mb-4">{caption}</p>
+      {excludeTop > 0 && excluded.length > 0 && (
+        <p className="text-[11px] text-[#8a8a8a] -mt-2 mb-3">
+          제외됨: {excluded.map((r) => `${r.label} ${r.contacts}`).join(' · ')}
+          {total > 0 ? ` (전체의 ${Math.round((excludedTotal / total) * 100)}%)` : ''} · 막대는 표시 항목 기준
+        </p>
+      )}
       {rows.length === 0 ? (
         <p className="text-sm text-[#8a8a8a] py-6 text-center">기간 내 데이터가 없습니다.</p>
+      ) : visible.length === 0 ? (
+        <p className="text-sm text-[#8a8a8a] py-6 text-center">제외 후 표시할 항목이 없습니다 — &lsquo;전체&rsquo;를 선택하세요.</p>
       ) : (
         <div className="space-y-3">
-          {rows.map((r) => {
+          {visible.map((r) => {
             const pct = total > 0 ? Math.round((r.contacts / total) * 100) : 0;
             return (
               <div key={r.key ?? '(미분류)'}>
@@ -540,6 +581,9 @@ function GroupBarCard({
             );
           })}
         </div>
+      )}
+      {moreCount > 0 && (
+        <p className="text-[11px] text-[#8a8a8a] mt-3">외 {moreCount}개 항목 생략 — 필터로 좁혀서 확인하세요.</p>
       )}
     </div>
   );
