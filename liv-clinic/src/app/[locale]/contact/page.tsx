@@ -13,6 +13,7 @@ import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 import { primaryMessengerFor, buildWhatsAppLink } from '@/lib/messengerLinks';
 import { openLivChat, CHAT_VISITOR_LOCALES } from '@/lib/chat/chatApi';
 import { trackFormSubmit, trackContact, trackPromoClick } from '@/lib/analytics-events';
+import { storedUtmBody } from '@/lib/utm';
 
 export default function ContactPage() {
   const t = useTranslations();
@@ -110,6 +111,7 @@ export default function ContactPage() {
           preferredDate: data.preferredDate || '',
           preferredTime: data.preferredTime || '',
           message: data.message || '',
+          ...storedUtmBody(),
         }),
       });
 

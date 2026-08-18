@@ -1,6 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { createAdminClient } from '@/lib/supabase-admin';
 import { z } from 'zod';
+import { pickUtmFields } from '@/lib/utm';
+import { importConsultationToInflow, localeFromRequestParts } from '@/lib/inflow/consultationImport';
+import { LOCALES } from '@/i18n/routing';
 
 // 시술 옵션 매핑
 const treatmentLabels: Record<string, string> = {
@@ -57,6 +60,8 @@ export async function POST(request: NextRequest) {
         message: message || '',
         status: 'pending',
         source: 'website',
+        // 세션 첫 터치 UTM (없으면 null)
+        ...pickUtmFields(body),
       })
       .select('id, created_at')
       .single();
@@ -66,6 +71,26 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         { error: '상담 신청 저장에 실패했습니다.' },
         { status: 500 }
+      );
+    }
+
+    // 유입 통계 자동 연동 — 백그라운드 처리 (실패해도 폼 흐름 영향 없음)
+    {
+      const locale = localeFromRequestParts(request.headers.get('referer'), null, LOCALES);
+      after(() =>
+        importConsultationToInflow(
+          admin,
+          {
+            id: data.id,
+            created_at: data.created_at,
+            name,
+            phone,
+            email: email ?? null,
+            treatment_type: treatmentLabel,
+            source: 'website',
+          },
+          { formType: 'contact', locale, utm: pickUtmFields(body) }
+        )
       );
     }
 

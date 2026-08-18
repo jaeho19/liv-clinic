@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslations, useLocale } from 'next-intl';
 import { trackFormSubmit, trackCTAClick } from '@/lib/analytics-events';
+import { storedUtmBody } from '@/lib/utm';
 import { openLivChat, CHAT_VISITOR_LOCALES } from '@/lib/chat/chatApi';
 import {
   primaryMessengerFor,
@@ -133,6 +134,7 @@ export default function QuickConsultBar() {
           phone,
           agreePrivacy: privacyAgreed,
           source: typeof window !== 'undefined' ? window.location.pathname : 'quick-bar',
+          ...storedUtmBody(),
         }),
       });
 

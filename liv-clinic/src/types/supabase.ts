@@ -380,6 +380,10 @@ export type Database = {
           status: string
           treatment_type: string
           updated_at: string
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
         }
         Insert: {
           agree_privacy?: boolean
@@ -402,6 +406,10 @@ export type Database = {
           status?: string
           treatment_type: string
           updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
         }
         Update: {
           agree_privacy?: boolean
@@ -424,6 +432,10 @@ export type Database = {
           status?: string
           treatment_type?: string
           updated_at?: string
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
         }
         Relationships: []
       }
@@ -1068,18 +1080,30 @@ export type Database = {
       inflow_leads: {
         Row: {
           agency: string | null
+          campaign_id: string | null
           channel: string
+          channel_category: string | null
+          channel_detail: string | null
+          classified_at: string | null
+          consultation_id: string | null
           contact_date: string
           created_at: string
           id: string
           is_returning: boolean
           kakao_id: string | null
+          manager: string | null
           name: string | null
           note: string | null
+          outcome: string | null
+          paid: boolean
+          paid_amount_krw: number | null
+          paid_date: string | null
+          patient_origin: string | null
           phone: string | null
           reserved: boolean
           reserved_date: string | null
           treatment: string | null
+          treatment_tags: string[]
           updated_at: string
           visited: boolean
           visited_date: string | null
@@ -1087,18 +1111,30 @@ export type Database = {
         }
         Insert: {
           agency?: string | null
+          campaign_id?: string | null
           channel?: string
+          channel_category?: string | null
+          channel_detail?: string | null
+          classified_at?: string | null
+          consultation_id?: string | null
           contact_date?: string
           created_at?: string
           id?: string
           is_returning?: boolean
           kakao_id?: string | null
+          manager?: string | null
           name?: string | null
           note?: string | null
+          outcome?: string | null
+          paid?: boolean
+          paid_amount_krw?: number | null
+          paid_date?: string | null
+          patient_origin?: string | null
           phone?: string | null
           reserved?: boolean
           reserved_date?: string | null
           treatment?: string | null
+          treatment_tags?: string[]
           updated_at?: string
           visited?: boolean
           visited_date?: string | null
@@ -1106,24 +1142,206 @@ export type Database = {
         }
         Update: {
           agency?: string | null
+          campaign_id?: string | null
           channel?: string
+          channel_category?: string | null
+          channel_detail?: string | null
+          classified_at?: string | null
+          consultation_id?: string | null
           contact_date?: string
           created_at?: string
           id?: string
           is_returning?: boolean
           kakao_id?: string | null
+          manager?: string | null
           name?: string | null
           note?: string | null
+          outcome?: string | null
+          paid?: boolean
+          paid_amount_krw?: number | null
+          paid_date?: string | null
+          patient_origin?: string | null
           phone?: string | null
           reserved?: boolean
           reserved_date?: string | null
           treatment?: string | null
+          treatment_tags?: string[]
           updated_at?: string
           visited?: boolean
           visited_date?: string | null
           wechat_id?: string | null
         }
+        Relationships: [
+          {
+            foreignKeyName: "inflow_leads_consultation_id_fkey"
+            columns: ["consultation_id"]
+            isOneToOne: true
+            referencedRelation: "consultation_requests"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "inflow_leads_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "marketing_campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      lead_content_links: {
+        Row: {
+          attribution: string
+          content_id: string
+          created_at: string
+          id: string
+          lead_id: string
+          note: string | null
+        }
+        Insert: {
+          attribution?: string
+          content_id: string
+          created_at?: string
+          id?: string
+          lead_id: string
+          note?: string | null
+        }
+        Update: {
+          attribution?: string
+          content_id?: string
+          created_at?: string
+          id?: string
+          lead_id?: string
+          note?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "lead_content_links_content_id_fkey"
+            columns: ["content_id"]
+            isOneToOne: false
+            referencedRelation: "marketing_contents"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "lead_content_links_lead_id_fkey"
+            columns: ["lead_id"]
+            isOneToOne: false
+            referencedRelation: "inflow_leads"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      marketing_campaigns: {
+        Row: {
+          channel_category: string | null
+          channel_detail: string | null
+          code: string | null
+          created_at: string
+          end_date: string | null
+          id: string
+          is_active: boolean
+          name: string
+          note: string | null
+          spend_krw: number | null
+          start_date: string | null
+          updated_at: string
+        }
+        Insert: {
+          channel_category?: string | null
+          channel_detail?: string | null
+          code?: string | null
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          is_active?: boolean
+          name: string
+          note?: string | null
+          spend_krw?: number | null
+          start_date?: string | null
+          updated_at?: string
+        }
+        Update: {
+          channel_category?: string | null
+          channel_detail?: string | null
+          code?: string | null
+          created_at?: string
+          end_date?: string | null
+          id?: string
+          is_active?: boolean
+          name?: string
+          note?: string | null
+          spend_krw?: number | null
+          start_date?: string | null
+          updated_at?: string
+        }
         Relationships: []
+      }
+      marketing_contents: {
+        Row: {
+          campaign_id: string | null
+          code: string | null
+          comment_count: number | null
+          content_type: string | null
+          created_at: string
+          id: string
+          inquiry_count: number | null
+          manager: string | null
+          note: string | null
+          platform: string
+          posted_at: string
+          save_count: number | null
+          share_count: number | null
+          title: string
+          updated_at: string
+          url: string | null
+          view_count: number | null
+        }
+        Insert: {
+          campaign_id?: string | null
+          code?: string | null
+          comment_count?: number | null
+          content_type?: string | null
+          created_at?: string
+          id?: string
+          inquiry_count?: number | null
+          manager?: string | null
+          note?: string | null
+          platform?: string
+          posted_at?: string
+          save_count?: number | null
+          share_count?: number | null
+          title: string
+          updated_at?: string
+          url?: string | null
+          view_count?: number | null
+        }
+        Update: {
+          campaign_id?: string | null
+          code?: string | null
+          comment_count?: number | null
+          content_type?: string | null
+          created_at?: string
+          id?: string
+          inquiry_count?: number | null
+          manager?: string | null
+          note?: string | null
+          platform?: string
+          posted_at?: string
+          save_count?: number | null
+          share_count?: number | null
+          title?: string
+          updated_at?: string
+          url?: string | null
+          view_count?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marketing_contents_campaign_id_fkey"
+            columns: ["campaign_id"]
+            isOneToOne: false
+            referencedRelation: "marketing_campaigns"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       popups: {
         Row: {

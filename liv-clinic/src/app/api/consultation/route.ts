@@ -1,8 +1,11 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { createAdminClient } from '@/lib/supabase-admin';
 import { consultationFormSchema } from '@/types/consultation';
 import type { ConsultationResponse } from '@/types/consultation';
 import { hashInquiryPassword } from '@/lib/inquiryPassword';
+import { pickUtmFields } from '@/lib/utm';
+import { importConsultationToInflow, localeFromRequestParts } from '@/lib/inflow/consultationImport';
+import { LOCALES } from '@/i18n/routing';
 
 export async function POST(request: NextRequest) {
   try {
@@ -58,6 +61,8 @@ export async function POST(request: NextRequest) {
         // 이메일·국가는 전용 컬럼이 없어 message 텍스트로 접어 보관
         message:
           [email && `Email: ${email}`, country && `Country: ${country}`].filter(Boolean).join(' / ') || null,
+        // 세션 첫 터치 UTM (없으면 null — 저장 실패 사유가 되지 않는 부가 필드)
+        ...pickUtmFields(body),
       })
       .select('id, created_at')
       .single();
@@ -73,6 +78,24 @@ export async function POST(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    // 유입 통계 자동 연동 — 응답과 무관하게 백그라운드 처리 (실패해도 폼 흐름 영향 없음)
+    const locale = localeFromRequestParts(request.headers.get('referer'), null, LOCALES);
+    after(() =>
+      importConsultationToInflow(
+        admin,
+        {
+          id: data.id,
+          created_at: data.created_at,
+          name,
+          phone,
+          email: email ?? null,
+          treatment_type: treatment,
+          source: 'consultation-form',
+        },
+        { formType: 'consultation', locale, utm: pickUtmFields(body) }
+      )
+    );
 
     // 성공 응답
     return NextResponse.json<ConsultationResponse>(
