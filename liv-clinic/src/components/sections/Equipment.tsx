@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { AnimateOnScroll } from '@/components/ui';
 import { Link } from '@/i18n/routing';
+import { trackEquipmentView } from '@/lib/analytics-events';
 
 // Lazy Loading을 위한 Intersection Observer 훅 (성능 최적화)
 function useImageLazy(threshold = 0.1) {
@@ -197,15 +198,26 @@ export default function Equipment() {
                 {t('subtitle')}
               </motion.h2>
             </div>
-            <motion.p
-              className="text-body text-mono-light max-w-md"
+            <motion.div
+              className="max-w-md"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
             >
-              {t('description')}
-            </motion.p>
+              <p className="text-body text-mono-light">{t('description')}</p>
+              {/* 홈 IA 개선: 대표 노출은 마퀴로, 전체 목록은 상세 페이지로 연결 */}
+              <Link
+                href="/about/equipment"
+                onClick={() => trackEquipmentView('view_all')}
+                className="inline-flex items-center gap-2 mt-3 text-sm font-medium text-primary hover:gap-3 transition-all"
+              >
+                {t('viewAll')}
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </Link>
+            </motion.div>
           </div>
         </AnimateOnScroll>
       </div>
@@ -389,7 +401,10 @@ function DeviceCard({ device, index, activeIndex, setActiveIndex }: DeviceCardPr
               transition-all duration-300 hover:gap-3
               ${isActive ? 'opacity-100' : 'opacity-0'}
             `}
-            onClick={(e) => e.stopPropagation()}
+            onClick={(e) => {
+              e.stopPropagation();
+              trackEquipmentView(device.title);
+            }}
           >
             {device.learnMore}
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">

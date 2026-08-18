@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button } from '@/components/ui';
 import { SOCIAL_LINKS } from '@/lib/constants';
+import { trackDoctorView, trackSocialClick } from '@/lib/analytics-events';
 
 // 대표 유튜브 영상 (제목은 다국어 메시지에서 조회)
 const FEATURED_VIDEO = {
@@ -197,7 +198,7 @@ export default function Doctor() {
               </div>
 
               {/* CTA */}
-              <Link href="/about/staff">
+              <Link href="/about/staff" onClick={() => trackDoctorView('staff_page')}>
                 <Button variant="outline" size="lg">
                   {t('viewStaff')}
                   <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -279,6 +280,7 @@ export default function Doctor() {
                   href={SOCIAL_LINKS.youtube}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackSocialClick('youtube')}
                   className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-full font-medium transition-colors"
                 >
                   <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">

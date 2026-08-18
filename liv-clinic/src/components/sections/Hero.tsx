@@ -4,6 +4,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
+import { trackCTAClick } from '@/lib/analytics-events';
 
 const HERO_VIDEO_WEBM = '/videos/hero.webm?v=20260707';
 const HERO_VIDEO = '/videos/hero.mp4?v=20260707';
@@ -166,6 +167,7 @@ export default function Hero() {
         {/* Primary CTA — 서버 렌더 텍스트(JS 없이도 노출), 슬라이드 애니메이션과 독립 */}
         <Link
           href="/contact"
+          onClick={() => trackCTAClick('hero_cta')}
           className="mt-8 sm:mt-10 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-8 py-4 text-base font-medium text-white shadow-lg transition-all duration-300 hover:bg-white hover:text-primary focus:outline-none focus:ring-2 focus:ring-white/60 min-h-[52px]"
         >
           {t('common.consultation')}

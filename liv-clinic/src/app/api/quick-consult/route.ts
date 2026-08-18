@@ -1,6 +1,9 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse, after } from 'next/server';
 import { createAdminClient } from '@/lib/supabase-admin';
 import { z } from 'zod';
+import { pickUtmFields } from '@/lib/utm';
+import { importConsultationToInflow, localeFromRequestParts } from '@/lib/inflow/consultationImport';
+import { LOCALES } from '@/i18n/routing';
 
 // 빠른 상담 폼 스키마 (간소화)
 const quickConsultSchema = z.object({
@@ -68,6 +71,8 @@ export async function POST(request: NextRequest) {
         agree_privacy: agreePrivacy,
         source: source || 'quick-bar',
         status: 'pending',
+        // 세션 첫 터치 UTM (없으면 null)
+        ...pickUtmFields(body),
       })
       .select('id, created_at')
       .single();
@@ -81,6 +86,26 @@ export async function POST(request: NextRequest) {
           error: 'Internal error',
         },
         { status: 500 }
+      );
+    }
+
+    // 유입 통계 자동 연동 — 백그라운드 처리 (실패해도 폼 흐름 영향 없음)
+    {
+      const sourcePath = source && source.startsWith('/') ? source : null;
+      const locale = localeFromRequestParts(request.headers.get('referer'), sourcePath, LOCALES);
+      after(() =>
+        importConsultationToInflow(
+          admin,
+          {
+            id: data.id,
+            created_at: data.created_at,
+            name,
+            phone: cleanPhone,
+            treatment_type: '빠른 상담',
+            source: sourcePath ?? 'quick-bar',
+          },
+          { formType: 'quick', locale, utm: pickUtmFields(body) }
+        )
       );
     }
 

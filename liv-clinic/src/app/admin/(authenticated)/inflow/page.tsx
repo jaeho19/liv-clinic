@@ -3,6 +3,9 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 import ConfirmDialog from '@/components/admin/ConfirmDialog';
+import InflowDashboard from '@/components/admin/inflow/InflowDashboard';
+import InflowReviewTab from '@/components/admin/inflow/InflowReviewTab';
+import LeadContentLinks from '@/components/admin/inflow/LeadContentLinks';
 import {
   INFLOW_CHANNELS,
   INFLOW_CHANNEL_LABELS,
@@ -12,7 +15,24 @@ import {
   type InflowChannel,
   type InflowLeadRow,
   type InflowLeadInsert,
+  type LeadContentLinkRow,
+  type MarketingCampaignRow,
+  type MarketingContentRow,
 } from '@/types/admin';
+import {
+  CHANNEL_CATEGORIES,
+  CHANNEL_CATEGORY_LABELS,
+  CHANNEL_DETAIL_PRESETS,
+  LEAD_OUTCOMES,
+  LEAD_OUTCOME_LABELS,
+  PATIENT_ORIGINS,
+  PATIENT_ORIGIN_LABELS,
+  TREATMENT_TAGS,
+  TREATMENT_TAG_LABELS,
+  needsReview,
+  type ChannelCategory,
+} from '@/lib/inflow/taxonomy';
+import { buildLeadsCsv } from '@/lib/inflow/csv';
 
 // ─── 날짜 유틸 (로컬 기준 YYYY-MM-DD) ────────────────
 function toDateStr(d: Date): string {
@@ -38,61 +58,70 @@ function formatMD(dateStr: string): string {
 const INPUT_CLS =
   'w-full h-9 px-3 text-sm border border-[#e5e5e5] rounded-lg outline-none focus:border-[#b4988d]';
 
-type Tab = 'entry' | 'stats';
-type StatsPeriod = '7d' | '30d' | '90d' | 'month';
-
-const PERIOD_LABELS: Record<StatsPeriod, string> = {
-  '7d': '최근 7일',
-  '30d': '최근 30일',
-  '90d': '최근 90일',
-  month: '이번 달',
-};
-
-function periodRange(period: StatsPeriod): { from: string; to: string } {
-  const today = new Date();
-  const to = toDateStr(today);
-  if (period === 'month') {
-    const first = new Date(today.getFullYear(), today.getMonth(), 1);
-    return { from: toDateStr(first), to };
-  }
-  const days = period === '7d' ? 6 : period === '30d' ? 29 : 89;
-  return { from: shiftDate(to, -days), to };
-}
-
-function inRange(dateStr: string | null, from: string, to: string): boolean {
-  if (!dateStr) return false;
-  return dateStr >= from && dateStr <= to;
-}
+type Tab = 'entry' | 'stats' | 'review';
 
 // ─── 메인 페이지 ────────────────────────────────────
 export default function InflowPage() {
   const supabase = useMemo(() => createClient(), []);
   const [tab, setTab] = useState<Tab>('entry');
   const [leads, setLeads] = useState<InflowLeadRow[]>([]);
+  const [campaigns, setCampaigns] = useState<MarketingCampaignRow[]>([]);
+  const [contents, setContents] = useState<MarketingContentRow[]>([]);
+  const [links, setLinks] = useState<LeadContentLinkRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  // 대시보드·검토 탭에서 여는 공용 수정 모달
+  const [editLead, setEditLead] = useState<InflowLeadRow | null>(null);
 
+  // 첫 로드는 loading 초기값(true)이 스피너를 담당하고, 이후 갱신은 깜빡임 없이 백그라운드로 반영한다.
   const loadLeads = useCallback(async () => {
-    setLoading(true);
-    setError(null);
-    const { data, error } = await supabase
-      .from('inflow_leads')
-      .select('*')
-      .order('contact_date', { ascending: false })
-      .order('created_at', { ascending: false })
-      .limit(5000);
-    if (error) {
-      setError('데이터를 불러오지 못했습니다. (테이블/권한 확인: inflow-leads-table.sql)');
+    const [leadsRes, campaignsRes, contentsRes, linksRes] = await Promise.all([
+      supabase
+        .from('inflow_leads')
+        .select('*')
+        .order('contact_date', { ascending: false })
+        .order('created_at', { ascending: false })
+        .limit(5000),
+      supabase.from('marketing_campaigns').select('*').order('created_at', { ascending: false }),
+      supabase.from('marketing_contents').select('*').order('posted_at', { ascending: false }),
+      supabase.from('lead_content_links').select('*'),
+    ]);
+    if (leadsRes.error) {
+      setError('데이터를 불러오지 못했습니다. (테이블/권한 확인: supabase/migrations/038_marketing_attribution.sql)');
       setLeads([]);
     } else {
-      setLeads((data ?? []) as InflowLeadRow[]);
+      setError(null);
+      setLeads((leadsRes.data ?? []) as InflowLeadRow[]);
     }
+    // 마케팅 테이블은 없어도 기존 기능이 동작하도록 소프트 실패
+    setCampaigns((campaignsRes.data ?? []) as MarketingCampaignRow[]);
+    setContents((contentsRes.data ?? []) as MarketingContentRow[]);
+    setLinks((linksRes.data ?? []) as LeadContentLinkRow[]);
     setLoading(false);
   }, [supabase]);
 
   useEffect(() => {
     loadLeads();
   }, [loadLeads]);
+
+  const reviewCount = useMemo(
+    () =>
+      leads.filter((l) =>
+        needsReview({
+          patient_origin: l.patient_origin ?? null,
+          channel_category: l.channel_category ?? null,
+          treatment_tags: l.treatment_tags ?? [],
+          classified_at: l.classified_at ?? null,
+        })
+      ).length,
+    [leads]
+  );
+
+  const TAB_LABELS: Record<Tab, string> = {
+    entry: '일일 입력',
+    stats: '통계',
+    review: '표준화 검토',
+  };
 
   return (
     <div>
@@ -101,11 +130,11 @@ export default function InflowPage() {
         <div>
           <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">유입 통계</h2>
           <p className="text-xs text-[#8a8a8a] mt-0.5">
-            신규 연락 → 예약 → 내원 흐름을 채널·에이전시별로 기록·집계합니다.
+            신규 연락 → 예약 → 내원 → 결제 흐름을 채널·시술·캠페인별로 기록·집계합니다.
           </p>
         </div>
         <div className="flex items-center gap-1 bg-[#f6f6f6] rounded-lg p-1 self-start">
-          {(['entry', 'stats'] as Tab[]).map((t) => (
+          {(['entry', 'stats', 'review'] as Tab[]).map((t) => (
             <button
               key={t}
               onClick={() => setTab(t)}
@@ -113,7 +142,12 @@ export default function InflowPage() {
                 tab === t ? 'bg-white text-[#6d4e42] font-medium shadow-sm' : 'text-[#8a8a8a] hover:text-[#575756]'
               }`}
             >
-              {t === 'entry' ? '일일 입력' : '통계'}
+              {TAB_LABELS[t]}
+              {t === 'review' && reviewCount > 0 && (
+                <span className="ml-1.5 text-[10px] px-1.5 py-0.5 rounded-full bg-amber-100 text-amber-700 align-middle">
+                  {reviewCount}
+                </span>
+              )}
             </button>
           ))}
         </div>
@@ -128,9 +162,27 @@ export default function InflowPage() {
           <div className="inline-block w-8 h-8 border-4 border-[#b4988d] border-t-transparent rounded-full animate-spin" />
         </div>
       ) : tab === 'entry' ? (
-        <EntryTab leads={leads} supabase={supabase} onChanged={loadLeads} />
+        <EntryTab leads={leads} supabase={supabase} campaigns={campaigns} contents={contents} onChanged={loadLeads} />
+      ) : tab === 'stats' ? (
+        <InflowDashboard leads={leads} campaigns={campaigns} contents={contents} links={links} onEdit={setEditLead} />
       ) : (
-        <StatsTab leads={leads} />
+        <InflowReviewTab leads={leads} supabase={supabase} onEdit={setEditLead} onApplied={loadLeads} />
+      )}
+
+      {editLead && (
+        <LeadFormModal
+          supabase={supabase}
+          campaigns={campaigns}
+          contents={contents}
+          defaultDate={todayStr()}
+          editTarget={editLead}
+          managerOptions={Array.from(new Set(leads.map((l) => l.manager).filter(Boolean))) as string[]}
+          onClose={() => setEditLead(null)}
+          onSaved={() => {
+            setEditLead(null);
+            loadLeads();
+          }}
+        />
       )}
     </div>
   );
@@ -140,10 +192,14 @@ export default function InflowPage() {
 function EntryTab({
   leads,
   supabase,
+  campaigns,
+  contents,
   onChanged,
 }: {
   leads: InflowLeadRow[];
   supabase: ReturnType<typeof createClient>;
+  campaigns: MarketingCampaignRow[];
+  contents: MarketingContentRow[];
   onChanged: () => void;
 }) {
   const [date, setDate] = useState(todayStr());
@@ -169,13 +225,14 @@ function EntryTab({
     const contacts = leads.filter((l) => l.contact_date === date).length;
     const reserved = leads.filter((l) => l.reserved && l.reserved_date === date).length;
     const visited = leads.filter((l) => l.visited && l.visited_date === date).length;
-    return { contacts, reserved, visited };
+    const paid = leads.filter((l) => l.paid && l.paid_date === date).length;
+    return { contacts, reserved, visited, paid };
   }, [leads, date]);
 
-  const toggleField = async (lead: InflowLeadRow, field: 'reserved' | 'visited') => {
+  const toggleField = async (lead: InflowLeadRow, field: 'reserved' | 'visited' | 'paid') => {
     setBusyId(lead.id);
     const next = !lead[field];
-    const dateField = field === 'reserved' ? 'reserved_date' : 'visited_date';
+    const dateField = field === 'reserved' ? 'reserved_date' : field === 'visited' ? 'visited_date' : 'paid_date';
     const patch: Record<string, unknown> = { [field]: next };
     // 새로 체크 시 날짜 자동 기입(없을 때만), 해제 시 날짜 제거
     patch[dateField] = next ? lead[dateField] ?? todayStr() : null;
@@ -192,42 +249,21 @@ function EntryTab({
   };
 
   const exportCsv = () => {
-    const headers = [
-      '연락일',
-      '채널',
-      '에이전시',
-      '구분',
-      '이름',
-      '위챗ID',
-      '카카오ID',
-      '전화',
-      '시술',
-      '예약',
-      '예약일',
-      '내원',
-      '내원일',
-      '비고',
-    ];
-    const rows = visibleLeads.map((l) => [
-      l.contact_date,
-      getInflowChannelLabel(l.channel),
-      l.agency ?? '',
-      l.is_returning ? '재진' : '신규',
-      l.name ?? '',
-      l.wechat_id ?? '',
-      l.kakao_id ?? '',
-      l.phone ?? '',
-      l.treatment ?? '',
-      l.reserved ? 'O' : '',
-      l.reserved_date ?? '',
-      l.visited ? 'O' : '',
-      l.visited_date ?? '',
-      (l.note ?? '').replace(/"/g, '""'),
-    ]);
-    const BOM = '﻿';
-    const csv =
-      BOM +
-      [headers, ...rows].map((r) => r.map((c) => `"${c}"`).join(',')).join('\n');
+    // 기존 14열 순서를 유지하고 표준화 열(국내외·유입경로·태그·결제 등)을 뒤에 덧붙인다
+    const csv = buildLeadsCsv(
+      visibleLeads.map((l) => ({
+        ...l,
+        paid: l.paid ?? false,
+        paid_date: l.paid_date ?? null,
+        paid_amount_krw: l.paid_amount_krw ?? null,
+        outcome: l.outcome ?? null,
+        patient_origin: l.patient_origin ?? null,
+        channel_category: l.channel_category ?? null,
+        channel_detail: l.channel_detail ?? null,
+        treatment_tags: l.treatment_tags ?? [],
+        manager: l.manager ?? null,
+      }))
+    );
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
@@ -301,10 +337,11 @@ function EntryTab({
 
       {/* 일자 요약 */}
       {!q && (
-        <div className="grid grid-cols-3 gap-2 mb-4">
+        <div className="grid grid-cols-4 gap-2 mb-4">
           <DaySummaryCard label="신규 연락" value={dayStats.contacts} color="text-blue-600" />
           <DaySummaryCard label="예약" value={dayStats.reserved} color="text-amber-600" />
           <DaySummaryCard label="내원" value={dayStats.visited} color="text-emerald-600" />
+          <DaySummaryCard label="결제" value={dayStats.paid} color="text-purple-600" />
         </div>
       )}
 
@@ -335,8 +372,11 @@ function EntryTab({
       {modalOpen && (
         <LeadFormModal
           supabase={supabase}
+          campaigns={campaigns}
+          contents={contents}
           defaultDate={date}
           editTarget={editTarget}
+          managerOptions={Array.from(new Set(leads.map((l) => l.manager).filter(Boolean))) as string[]}
           onClose={() => setModalOpen(false)}
           onSaved={() => {
             setModalOpen(false);
@@ -376,7 +416,7 @@ function LeadRow({
   lead: InflowLeadRow;
   busy: boolean;
   showDate: boolean;
-  onToggle: (lead: InflowLeadRow, field: 'reserved' | 'visited') => void;
+  onToggle: (lead: InflowLeadRow, field: 'reserved' | 'visited' | 'paid') => void;
   onEdit: () => void;
   onDelete: () => void;
 }) {
@@ -418,6 +458,17 @@ function LeadRow({
           activeClass="bg-emerald-500 text-white border-emerald-500"
           label={lead.visited ? `내원 ✓ ${lead.visited_date ? formatMD(lead.visited_date) : ''}` : '내원'}
         />
+        <ToggleChip
+          active={lead.paid ?? false}
+          onClick={() => onToggle(lead, 'paid')}
+          activeClass="bg-purple-500 text-white border-purple-500"
+          label={lead.paid ? `결제 ✓ ${lead.paid_date ? formatMD(lead.paid_date) : ''}` : '결제'}
+        />
+        {lead.outcome && (
+          <span className="text-[11px] px-2 py-0.5 rounded-full bg-red-50 text-red-600">
+            {LEAD_OUTCOME_LABELS[lead.outcome as (typeof LEAD_OUTCOMES)[number]] ?? lead.outcome}
+          </span>
+        )}
         <div className="flex-1" />
         {lead.note && <span className="text-xs text-[#8a8a8a] truncate max-w-[40%]">{lead.note}</span>}
         <button
@@ -463,16 +514,22 @@ function ToggleChip({
 // ─── 리드 입력/수정 모달 ─────────────────────────────
 function LeadFormModal({
   supabase,
+  campaigns,
+  contents,
   defaultDate,
   editTarget,
   onClose,
   onSaved,
+  managerOptions = [],
 }: {
   supabase: ReturnType<typeof createClient>;
+  campaigns: MarketingCampaignRow[];
+  contents: MarketingContentRow[];
   defaultDate: string;
   editTarget: InflowLeadRow | null;
   onClose: () => void;
   onSaved: () => void;
+  managerOptions?: string[];
 }) {
   const [form, setForm] = useState<InflowLeadInsert>(() => ({
     contact_date: editTarget?.contact_date ?? defaultDate,
@@ -489,11 +546,32 @@ function LeadFormModal({
     visited: editTarget?.visited ?? false,
     visited_date: editTarget?.visited_date ?? null,
     note: editTarget?.note ?? '',
+    // 표준화 필드 (미입력 = null 유지, 임의 기본값 금지)
+    patient_origin: editTarget?.patient_origin ?? null,
+    channel_category: editTarget?.channel_category ?? null,
+    channel_detail: editTarget?.channel_detail ?? '',
+    treatment_tags: editTarget?.treatment_tags ?? [],
+    paid: editTarget?.paid ?? false,
+    paid_date: editTarget?.paid_date ?? null,
+    paid_amount_krw: editTarget?.paid_amount_krw ?? null,
+    outcome: editTarget?.outcome ?? null,
+    campaign_id: editTarget?.campaign_id ?? null,
+    manager: editTarget?.manager ?? '',
   }));
   const [saving, setSaving] = useState(false);
 
   const set = <K extends keyof InflowLeadInsert>(key: K, value: InflowLeadInsert[K]) =>
     setForm((f) => ({ ...f, [key]: value }));
+
+  const toggleTag = (tag: string) =>
+    setForm((f) => {
+      const tags = f.treatment_tags ?? [];
+      return { ...f, treatment_tags: tags.includes(tag) ? tags.filter((t) => t !== tag) : [...tags, tag] };
+    });
+
+  const detailPresets = form.channel_category
+    ? CHANNEL_DETAIL_PRESETS[form.channel_category as ChannelCategory] ?? []
+    : [];
 
   const handleSave = async () => {
     setSaving(true);
@@ -517,6 +595,16 @@ function LeadFormModal({
       visited: form.visited,
       visited_date: form.visited ? form.visited_date || form.contact_date : null,
       note: clean(form.note),
+      patient_origin: form.patient_origin ?? null,
+      channel_category: form.channel_category ?? null,
+      channel_detail: clean(form.channel_detail),
+      treatment_tags: form.treatment_tags ?? [],
+      paid: form.paid ?? false,
+      paid_date: form.paid ? form.paid_date || form.contact_date : null,
+      paid_amount_krw: form.paid ? form.paid_amount_krw ?? null : null,
+      outcome: form.outcome ?? null,
+      campaign_id: form.campaign_id || null,
+      manager: clean(form.manager),
     };
     if (editTarget) {
       await supabase.from('inflow_leads').update(payload).eq('id', editTarget.id);
@@ -529,7 +617,7 @@ function LeadFormModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 overflow-y-auto">
-      <div className="bg-white rounded-xl p-5 max-w-lg w-full shadow-xl my-8">
+      <div className="bg-white rounded-xl p-5 max-w-2xl w-full shadow-xl my-8">
         <h3 className="font-bold text-[#6d4e42] mb-4">{editTarget ? '리드 수정' : '신규 리드 추가'}</h3>
 
         <div className="grid grid-cols-2 gap-3">
@@ -542,7 +630,7 @@ function LeadFormModal({
               className={INPUT_CLS}
             />
           </Field>
-          <Field label="채널">
+          <Field label="문의 수단">
             <select
               value={form.channel}
               onChange={(e) => set('channel', e.target.value as InflowChannel)}
@@ -606,8 +694,101 @@ function LeadFormModal({
             <input type="text" value={form.kakao_id ?? ''} onChange={(e) => set('kakao_id', e.target.value)} className={INPUT_CLS} />
           </Field>
 
-          <Field label="관심/예약 시술" full>
+          {/* ─ 표준화: 국내외 / 유입 경로 ─ */}
+          <Field label="국내/해외">
+            <div className="flex gap-1.5 h-9">
+              {[
+                { v: null as string | null, label: '미분류' },
+                ...PATIENT_ORIGINS.map((o) => ({ v: o as string | null, label: PATIENT_ORIGIN_LABELS[o] })),
+              ].map((o) => (
+                <button
+                  key={o.label}
+                  type="button"
+                  onClick={() => set('patient_origin', o.v)}
+                  className={`flex-1 text-sm rounded-lg border transition-colors cursor-pointer ${
+                    (form.patient_origin ?? null) === o.v
+                      ? 'bg-[#6d4e42] text-white border-[#6d4e42]'
+                      : 'border-[#e5e5e5] text-[#8a8a8a] hover:bg-[#f6f6f6]'
+                  }`}
+                >
+                  {o.label}
+                </button>
+              ))}
+            </div>
+          </Field>
+          <Field label="담당자">
+            <input
+              type="text"
+              list="manager-presets"
+              value={form.manager ?? ''}
+              onChange={(e) => set('manager', e.target.value)}
+              className={INPUT_CLS}
+            />
+            <datalist id="manager-presets">
+              {managerOptions.map((m) => (
+                <option key={m} value={m} />
+              ))}
+            </datalist>
+          </Field>
+
+          <Field label="유입 경로 (어디서 알고 왔나)">
+            <select
+              value={form.channel_category ?? ''}
+              onChange={(e) => {
+                set('channel_category', e.target.value || null);
+                if (!e.target.value) set('channel_detail', '');
+              }}
+              className={INPUT_CLS}
+            >
+              <option value="">미분류</option>
+              {CHANNEL_CATEGORIES.map((c) => (
+                <option key={c} value={c}>
+                  {CHANNEL_CATEGORY_LABELS[c]}
+                </option>
+              ))}
+            </select>
+          </Field>
+          <Field label="세부 채널">
+            <input
+              type="text"
+              list="channel-detail-presets"
+              value={form.channel_detail ?? ''}
+              onChange={(e) => set('channel_detail', e.target.value)}
+              placeholder={form.channel_category === 'app' ? '예: 바비톡' : ''}
+              disabled={!form.channel_category}
+              className={`${INPUT_CLS} disabled:opacity-40`}
+            />
+            <datalist id="channel-detail-presets">
+              {detailPresets.map((d) => (
+                <option key={d} value={d} />
+              ))}
+            </datalist>
+          </Field>
+
+          <Field label="관심/예약 시술 (원문)" full>
             <input type="text" value={form.treatment ?? ''} onChange={(e) => set('treatment', e.target.value)} className={INPUT_CLS} />
+          </Field>
+
+          <Field label="시술 태그 (복수 선택)" full>
+            <div className="flex flex-wrap gap-1.5">
+              {TREATMENT_TAGS.map((t) => {
+                const active = (form.treatment_tags ?? []).includes(t);
+                return (
+                  <button
+                    key={t}
+                    type="button"
+                    onClick={() => toggleTag(t)}
+                    className={`px-2.5 py-1 text-xs rounded-full border transition-colors cursor-pointer ${
+                      active
+                        ? 'bg-[#b4988d] text-white border-[#b4988d]'
+                        : 'border-[#e5e5e5] text-[#8a8a8a] hover:bg-[#f6f6f6]'
+                    }`}
+                  >
+                    {TREATMENT_TAG_LABELS[t]}
+                  </button>
+                );
+              })}
+            </div>
           </Field>
 
           {/* 예약 */}
@@ -653,6 +834,76 @@ function LeadFormModal({
               className={`${INPUT_CLS} disabled:opacity-40`}
             />
           </Field>
+
+          {/* 결제 */}
+          <Field label="결제">
+            <label className="flex items-center gap-2 h-9 text-sm cursor-pointer">
+              <input
+                type="checkbox"
+                checked={!!form.paid}
+                onChange={(e) => set('paid', e.target.checked)}
+                className="w-4 h-4 accent-[#b4988d]"
+              />
+              결제 완료
+            </label>
+          </Field>
+          <Field label="결제일">
+            <input
+              type="date"
+              value={form.paid_date ?? ''}
+              disabled={!form.paid}
+              onChange={(e) => set('paid_date', e.target.value || null)}
+              className={`${INPUT_CLS} disabled:opacity-40`}
+            />
+          </Field>
+
+          <Field label="결제금액(원) — 미입력 시 '금액 미입력'으로 집계">
+            <input
+              type="number"
+              min={0}
+              step={10000}
+              value={form.paid_amount_krw ?? ''}
+              disabled={!form.paid}
+              onChange={(e) => set('paid_amount_krw', e.target.value === '' ? null : Number(e.target.value))}
+              className={`${INPUT_CLS} disabled:opacity-40`}
+            />
+          </Field>
+          <Field label="취소/노쇼">
+            <select
+              value={form.outcome ?? ''}
+              onChange={(e) => set('outcome', e.target.value || null)}
+              className={INPUT_CLS}
+            >
+              <option value="">해당 없음</option>
+              {LEAD_OUTCOMES.map((o) => (
+                <option key={o} value={o}>
+                  {LEAD_OUTCOME_LABELS[o]}
+                </option>
+              ))}
+            </select>
+          </Field>
+
+          <Field label="광고 캠페인" full>
+            <select
+              value={form.campaign_id ?? ''}
+              onChange={(e) => set('campaign_id', e.target.value || null)}
+              className={INPUT_CLS}
+            >
+              <option value="">연결 안 함</option>
+              {campaigns.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.name}
+                  {c.code ? ` (${c.code})` : ''}
+                </option>
+              ))}
+            </select>
+          </Field>
+
+          {editTarget && (
+            <Field label="콘텐츠 연결 (귀속: 직접/보조/추정/출처불명)" full>
+              <LeadContentLinks leadId={editTarget.id} contents={contents} supabase={supabase} />
+            </Field>
+          )}
 
           <Field label="비고" full>
             <textarea
@@ -712,304 +963,4 @@ function Field({ label, children, full }: { label: string; children: React.React
     </div>
   );
 }
-
-// ─── 통계 탭 ────────────────────────────────────────
-function StatsTab({ leads }: { leads: InflowLeadRow[] }) {
-  const [period, setPeriod] = useState<StatsPeriod>('30d');
-  const { from, to } = useMemo(() => periodRange(period), [period]);
-
-  const agg = useMemo(() => {
-    const contacts = leads.filter((l) => inRange(l.contact_date, from, to));
-    const reserved = leads.filter((l) => l.reserved && inRange(l.reserved_date, from, to));
-    const visited = leads.filter((l) => l.visited && inRange(l.visited_date, from, to));
-
-    // 채널별 (신규 연락 기준)
-    const channelMap = new Map<string, number>();
-    for (const l of contacts) channelMap.set(l.channel, (channelMap.get(l.channel) ?? 0) + 1);
-    const byChannel = INFLOW_CHANNELS.map((c) => ({ channel: c, count: channelMap.get(c) ?? 0 })).filter(
-      (x) => x.count > 0
-    );
-
-    // 에이전시 vs 직접 (신규 연락 기준)
-    const agencyContacts = contacts.filter((l) => l.agency).length;
-    const directContacts = contacts.length - agencyContacts;
-    const agencyVisited = visited.filter((l) => l.agency).length;
-    const directVisited = visited.length - agencyVisited;
-
-    // 일자별 추세
-    const dayMap = new Map<string, { contact: number; reserved: number; visited: number }>();
-    const ensure = (d: string) => {
-      if (!dayMap.has(d)) dayMap.set(d, { contact: 0, reserved: 0, visited: 0 });
-      return dayMap.get(d)!;
-    };
-    for (const l of contacts) ensure(l.contact_date).contact++;
-    for (const l of reserved) ensure(l.reserved_date!).reserved++;
-    for (const l of visited) ensure(l.visited_date!).visited++;
-    const daily = Array.from(dayMap.entries())
-      .map(([date, v]) => ({ date, ...v }))
-      .sort((a, b) => a.date.localeCompare(b.date));
-
-    const c = contacts.length;
-    return {
-      contacts: c,
-      reserved: reserved.length,
-      visited: visited.length,
-      reserveRate: c > 0 ? (reserved.length / c) * 100 : 0,
-      visitRate: c > 0 ? (visited.length / c) * 100 : 0,
-      byChannel,
-      agencyContacts,
-      directContacts,
-      agencyVisited,
-      directVisited,
-      daily,
-    };
-  }, [leads, from, to]);
-
-  return (
-    <div>
-      {/* 기간 필터 */}
-      <div className="flex items-center gap-2 mb-5 flex-wrap">
-        {(['7d', '30d', '90d', 'month'] as StatsPeriod[]).map((p) => (
-          <button
-            key={p}
-            onClick={() => setPeriod(p)}
-            className={`px-3 py-2 text-sm rounded-lg transition-colors cursor-pointer ${
-              period === p
-                ? 'bg-[#6d4e42] text-white'
-                : 'border border-[#e5e5e5] text-[#575756] hover:bg-[#f6f6f6]'
-            }`}
-          >
-            {PERIOD_LABELS[p]}
-          </button>
-        ))}
-        <span className="text-xs text-[#8a8a8a] ml-1">
-          {formatMD(from)} ~ {formatMD(to)}
-        </span>
-      </div>
-
-      {/* KPI */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-        <KpiCard label="신규 연락" value={agg.contacts} icon="📞" color="bg-blue-50 text-blue-700" />
-        <KpiCard label="예약" value={agg.reserved} icon="📅" color="bg-amber-50 text-amber-700" />
-        <KpiCard label="내원" value={agg.visited} icon="🏥" color="bg-emerald-50 text-emerald-700" />
-        <KpiCard
-          label="전환율"
-          value={`${agg.reserveRate.toFixed(0)}% / ${agg.visitRate.toFixed(0)}%`}
-          sub="예약 / 내원"
-          icon="📈"
-          color="bg-purple-50 text-purple-700"
-        />
-      </div>
-
-      {/* 퍼널 */}
-      <FunnelChart contacts={agg.contacts} reserved={agg.reserved} visited={agg.visited} />
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-6">
-        <ChannelChart data={agg.byChannel} />
-        <AgencyChart
-          agencyContacts={agg.agencyContacts}
-          directContacts={agg.directContacts}
-          agencyVisited={agg.agencyVisited}
-          directVisited={agg.directVisited}
-        />
-      </div>
-
-      {/* 일자별 추세 */}
-      <DailyTrend daily={agg.daily} />
-    </div>
-  );
-}
-
-function KpiCard({
-  label,
-  value,
-  sub,
-  icon,
-  color,
-}: {
-  label: string;
-  value: string | number;
-  sub?: string;
-  icon: string;
-  color: string;
-}) {
-  return (
-    <div className="bg-white rounded-xl p-5 border border-[#e5e5e5]">
-      <div className="flex items-center gap-2 mb-2">
-        <span className="text-base">{icon}</span>
-        <p className="text-sm text-[#8a8a8a]">{label}</p>
-      </div>
-      <p className={`text-2xl font-bold ${color} inline-block px-2 py-0.5 rounded-lg`}>{value}</p>
-      {sub && <p className="text-xs text-[#8a8a8a] mt-2">{sub}</p>}
-    </div>
-  );
-}
-
-function FunnelChart({ contacts, reserved, visited }: { contacts: number; reserved: number; visited: number }) {
-  const max = Math.max(contacts, 1);
-  const rows = [
-    { label: '신규 연락', value: contacts, color: 'bg-blue-400', rate: '' },
-    {
-      label: '예약',
-      value: reserved,
-      color: 'bg-amber-400',
-      rate: contacts > 0 ? `${((reserved / contacts) * 100).toFixed(0)}%` : '',
-    },
-    {
-      label: '내원',
-      value: visited,
-      color: 'bg-emerald-400',
-      rate: contacts > 0 ? `${((visited / contacts) * 100).toFixed(0)}%` : '',
-    },
-  ];
-  return (
-    <div className="bg-white rounded-xl border border-[#e5e5e5] p-5 mb-6">
-      <h3 className="font-bold text-sm text-[#6d4e42] mb-4">전환 퍼널</h3>
-      <div className="space-y-3">
-        {rows.map((r) => (
-          <div key={r.label}>
-            <div className="flex items-center justify-between text-sm mb-1">
-              <span className="text-[#575756]">{r.label}</span>
-              <div className="flex items-center gap-2">
-                <span className="font-medium text-[#6d4e42]">{r.value}</span>
-                {r.rate && <span className="text-xs text-[#8a8a8a]">({r.rate})</span>}
-              </div>
-            </div>
-            <div className="w-full bg-[#f0f0f0] rounded-full h-3">
-              <div className={`h-3 rounded-full ${r.color} transition-all`} style={{ width: `${(r.value / max) * 100}%` }} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function ChannelChart({ data }: { data: { channel: string; count: number }[] }) {
-  const max = Math.max(...data.map((d) => d.count), 1);
-  const total = data.reduce((s, d) => s + d.count, 0);
-  return (
-    <div className="bg-white rounded-xl border border-[#e5e5e5] p-5">
-      <h3 className="font-bold text-sm text-[#6d4e42] mb-4">채널별 신규 연락</h3>
-      {data.length === 0 ? (
-        <p className="text-sm text-[#8a8a8a] py-6 text-center">데이터가 없습니다.</p>
-      ) : (
-        <div className="space-y-3">
-          {data
-            .sort((a, b) => b.count - a.count)
-            .map((d) => {
-              const pct = total > 0 ? ((d.count / total) * 100).toFixed(0) : '0';
-              const color = INFLOW_CHANNEL_COLORS[d.channel as InflowChannel] ?? 'bg-[#b4988d]';
-              return (
-                <div key={d.channel}>
-                  <div className="flex items-center justify-between text-sm mb-1">
-                    <span className="text-[#575756]">{getInflowChannelLabel(d.channel)}</span>
-                    <div className="flex items-center gap-2">
-                      <span className="font-medium text-[#6d4e42]">{d.count}</span>
-                      <span className="text-xs text-[#8a8a8a]">({pct}%)</span>
-                    </div>
-                  </div>
-                  <div className="w-full bg-[#f0f0f0] rounded-full h-2.5">
-                    <div className={`h-2.5 rounded-full ${color} transition-all`} style={{ width: `${(d.count / max) * 100}%` }} />
-                  </div>
-                </div>
-              );
-            })}
-        </div>
-      )}
-    </div>
-  );
-}
-
-function AgencyChart({
-  agencyContacts,
-  directContacts,
-  agencyVisited,
-  directVisited,
-}: {
-  agencyContacts: number;
-  directContacts: number;
-  agencyVisited: number;
-  directVisited: number;
-}) {
-  const rows = [
-    { label: '에이전시', contacts: agencyContacts, visited: agencyVisited, color: 'bg-rose-400' },
-    { label: '직접 유입', contacts: directContacts, visited: directVisited, color: 'bg-[#b4988d]' },
-  ];
-  const max = Math.max(agencyContacts, directContacts, 1);
-  return (
-    <div className="bg-white rounded-xl border border-[#e5e5e5] p-5">
-      <h3 className="font-bold text-sm text-[#6d4e42] mb-1">에이전시 vs 직접 유입</h3>
-      <p className="text-[11px] text-[#8a8a8a] mb-4">신규 연락 기준 · 괄호는 내원 수</p>
-      <div className="space-y-3">
-        {rows.map((r) => (
-          <div key={r.label}>
-            <div className="flex items-center justify-between text-sm mb-1">
-              <span className="text-[#575756]">{r.label}</span>
-              <div className="flex items-center gap-2">
-                <span className="font-medium text-[#6d4e42]">{r.contacts}</span>
-                <span className="text-xs text-emerald-600">(내원 {r.visited})</span>
-              </div>
-            </div>
-            <div className="w-full bg-[#f0f0f0] rounded-full h-2.5">
-              <div className={`h-2.5 rounded-full ${r.color} transition-all`} style={{ width: `${(r.contacts / max) * 100}%` }} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-function DailyTrend({ daily }: { daily: { date: string; contact: number; reserved: number; visited: number }[] }) {
-  const max = Math.max(...daily.map((d) => Math.max(d.contact, d.reserved, d.visited)), 1);
-  return (
-    <div className="bg-white rounded-xl border border-[#e5e5e5] p-5 mb-6">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="font-bold text-sm text-[#6d4e42]">일자별 추세</h3>
-        <div className="flex items-center gap-3 text-xs">
-          <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-sm bg-blue-400" /> 연락
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-sm bg-amber-400" /> 예약
-          </span>
-          <span className="flex items-center gap-1">
-            <span className="w-2.5 h-2.5 rounded-sm bg-emerald-400" /> 내원
-          </span>
-        </div>
-      </div>
-      {daily.length === 0 ? (
-        <p className="text-sm text-[#8a8a8a] py-6 text-center">데이터가 없습니다.</p>
-      ) : (
-        <>
-          <div className="flex items-end gap-1 h-40 overflow-x-auto">
-            {daily.map((d) => (
-              <div key={d.date} className="flex-1 min-w-[16px] flex flex-col items-center gap-px group relative h-full justify-end">
-                <div className="w-full flex items-end justify-center gap-px h-full">
-                  <div className="w-1/3 bg-blue-400 rounded-t-sm min-h-[2px]" style={{ height: `${(d.contact / max) * 100}%` }} />
-                  <div className="w-1/3 bg-amber-400 rounded-t-sm min-h-[2px]" style={{ height: `${(d.reserved / max) * 100}%` }} />
-                  <div className="w-1/3 bg-emerald-400 rounded-t-sm min-h-[2px]" style={{ height: `${(d.visited / max) * 100}%` }} />
-                </div>
-                <div className="absolute -top-16 left-1/2 -translate-x-1/2 hidden group-hover:block bg-[#6d4e42] text-white text-xs rounded px-2 py-1 whitespace-nowrap z-10">
-                  <p className="font-medium">{formatMD(d.date)}</p>
-                  <p>연락 {d.contact} / 예약 {d.reserved} / 내원 {d.visited}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex gap-1 mt-1 overflow-x-auto">
-            {daily.map((d, i) => {
-              const show = daily.length <= 10 || (daily.length <= 35 ? i % 5 === 0 : i % 10 === 0);
-              return (
-                <div key={d.date} className="flex-1 min-w-[16px] text-center">
-                  {show && <span className="text-[9px] text-[#8a8a8a]">{formatMD(d.date).slice(0, -4)}</span>}
-                </div>
-              );
-            })}
-          </div>
-        </>
-      )}
-    </div>
-  );
-}
+

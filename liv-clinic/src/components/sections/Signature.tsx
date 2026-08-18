@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui';
+import { trackCTAClick } from '@/lib/analytics-events';
 
 const programsConfig = [
   {
@@ -41,7 +42,7 @@ export default function Signature() {
   }));
 
   return (
-    <section className="section-gap bg-white">
+    <section className="section-gap bg-background">
       <div className="container-custom">
         <AnimateOnScroll animation="fadeInUpSmooth">
           <div className="text-center mb-6 md:mb-16">
@@ -74,7 +75,11 @@ export default function Signature() {
                 whileHover={{ y: -12, scale: 1.02 }}
                 transition={{ duration: 0.4, ease: [0.25, 1, 0.5, 1] }}
               >
-                <Link href={program.href} className="block h-full">
+                <Link
+                  href={program.href}
+                  onClick={() => trackCTAClick('signature_card', program.id)}
+                  className="block h-full"
+                >
                   <div className="relative h-full bg-white rounded-xl md:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow duration-500">
                     {/* Background Image */}
                     <div className="absolute inset-0">

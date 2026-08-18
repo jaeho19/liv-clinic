@@ -410,6 +410,22 @@
     }
   },
   "sections": {
+    "concerns": {
+      "title": "Personalized Care",
+      "subtitle": "从您的困扰开始的定制诊疗",
+      "description": "从当下的困扰出发，通过面诊为您规划合适的治疗方向。",
+      "cards": {
+        "sagging": { "title": "面部轮廓与下颌线松弛", "desc": "以线雕提升为中心，改善模糊的轮廓线条。", "tags": "Aptos线雕 · 埋线提升" },
+        "elasticity": { "title": "不动刀改善紧致度", "desc": "基于超声与射频设备的非手术提升方案。", "tags": "超声刀 · 热玛吉 · 复合提升" },
+        "fundamental": { "title": "从根本改善松弛", "desc": "若非手术效果有限，可通过拉皮手术面诊确认改善方向。", "tags": "面部提升手术咨询" },
+        "underEye": { "title": "眼下阴影与疲惫印象", "desc": "通过眼底脂肪重置面诊确认改善方向。", "tags": "脂肪重置咨询" },
+        "texture": { "title": "肤质·毛孔·再生", "desc": "皮肤诊断后，分阶段推荐以再生为主的治疗。", "tags": "Potenza · 丽珠兰 · Juvelook" }
+      },
+      "paths": {
+        "domestic": { "title": "本地客户咨询", "desc": "针对抗衰与提升困扰，提供一对一的细致咨询。", "cta": "预约咨询" },
+        "international": { "title": "国际客户指南", "desc": "多语言接待、日程协调与复合治疗咨询一站式服务。", "cta": "外国人诊疗指南" }
+      }
+    },
     "certification": {
       "title": "官方认证医院",
       "officialPartner": "官方认证",
@@ -434,6 +450,7 @@
       "juvelookDesc": "PDRN 皮肤增强剂"
     },
     "equipment": {
+      "viewAll": "查看全部设备",
       "title": "Genuine Equipment",
       "subtitle": "高端正品设备",
       "description": "LIV整形外科只使用正品认证的高端设备。我们以最新技术提供安全有效的治疗。",

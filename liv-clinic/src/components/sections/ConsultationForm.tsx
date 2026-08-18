@@ -9,6 +9,7 @@ import { consultationFormSchema, type ConsultationFormData } from '@/types/consu
 import { AnimateOnScroll } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 import { trackFormSubmit } from '@/lib/analytics-events';
+import { storedUtmBody } from '@/lib/utm';
 
 // 진료과목 옵션 키 (번역 파일의 treatmentOptions와 매핑)
 const TREATMENT_OPTION_KEYS = ['laser', 'filler', 'botox', 'skincare', 'lifting', 'antiaging', 'other'] as const;
@@ -68,7 +69,8 @@ export default function ConsultationForm() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        // 세션 첫 터치 UTM 첨부 (없으면 빈 객체)
+        body: JSON.stringify({ ...data, ...storedUtmBody() }),
       });
 
       const result = await response.json();

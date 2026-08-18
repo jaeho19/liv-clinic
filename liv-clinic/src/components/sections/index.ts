@@ -3,6 +3,7 @@ export { default as TrustBlock } from './TrustBlock';
 export { default as Certification } from './Certification';
 export { default as Equipment } from './Equipment';
 export { default as Signature } from './Signature';
+export { default as ConcernPathways } from './ConcernPathways';
 export { default as CoreValues } from './CoreValues';
 export { default as Doctor } from './Doctor';
 export { default as Location } from './Location';

@@ -10,6 +10,7 @@ import ChatWidget from '@/components/chat/ChatWidget';
 import { CHAT_VISITOR_LOCALES, type VisitorLocale } from '@/lib/chat/chatApi';
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
 import NaverAnalytics from '@/components/analytics/NaverAnalytics';
+import UtmCapture from '@/components/analytics/UtmCapture';
 import { generatePageMetadata, generateLocalBusinessSchema, generateWebSiteSchema } from '@/lib/seo';
 import '../globals.css';
 
@@ -146,6 +147,7 @@ export default async function LocaleLayout({
       <body className="antialiased overflow-x-clip w-full">
         <GoogleAnalytics />
         <NaverAnalytics />
+        <UtmCapture />
         <a href="#main-content" className="skip-link">
           {tCommon('skipToContent')}
         </a>

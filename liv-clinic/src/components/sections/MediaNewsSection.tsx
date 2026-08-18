@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, ScrollLink } from '@/components/ui';
 import { featuredMediaNews } from '@/lib/data/mediaNewsData';
+import { trackContentClick, trackCTAClick } from '@/lib/analytics-events';
 import MediaNewsCard from './MediaNewsCard';
 
 export default function MediaNewsSection() {
@@ -27,7 +28,7 @@ export default function MediaNewsSection() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="media-news" className="section-gap bg-background scroll-mt-24">
+    <section ref={sectionRef} id="media-news" className="section-gap bg-white scroll-mt-24">
       <div className="container-custom">
         {/* Header */}
         <AnimateOnScroll>
@@ -39,22 +40,30 @@ export default function MediaNewsSection() {
           </div>
         </AnimateOnScroll>
 
-        {/* Featured cards (6) */}
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Featured cards (6) — 카드 클릭 계측(blog_content_click 대응: content_click/media) */}
+        <div
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          onClickCapture={(e) => {
+            const card = (e.target as HTMLElement).closest('[data-media-id]');
+            if (card) trackContentClick('media', card.getAttribute('data-media-id') ?? undefined);
+          }}
+        >
           {featuredMediaNews.map((card, index) => (
-            <MediaNewsCard key={card.id} item={card} index={index} priority={index < 3} />
+            <div key={card.id} data-media-id={card.id} className="h-full">
+              <MediaNewsCard item={card} index={index} priority={index < 3} />
+            </div>
           ))}
         </div>
 
         {/* CTA */}
         <AnimateOnScroll>
           <div className="mt-12 flex flex-wrap justify-center gap-4">
-            <Link href="/media">
+            <Link href="/media" onClick={() => trackContentClick('media', 'view_all')}>
               <Button variant="primary" size="lg">
                 {t('viewAll')}
               </Button>
             </Link>
-            <ScrollLink href="/contact">
+            <ScrollLink href="/contact" onClick={() => trackCTAClick('treatment_cta', 'media_news_reservation')}>
               <Button variant="outline" size="lg">
                 {t('reservation')}
               </Button>

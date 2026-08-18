@@ -38,6 +38,7 @@ const NAV_SECTIONS: NavSection[] = [
       { href: '/admin/popups', label: '팝업관리', icon: '🪟' },
       { href: '/admin/chat', label: '채팅 상담', icon: '💬', badge: 'chat-unread' },
       { href: '/admin/inflow', label: '유입 통계', icon: '📈' },
+      { href: '/admin/marketing', label: '마케팅 콘텐츠', icon: '📣' },
       { href: '/admin/analytics', label: 'Analytics', icon: '🌐' },
     ],
   },

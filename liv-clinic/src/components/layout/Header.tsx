@@ -11,6 +11,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 import MobileMenu, { type NavItem } from './MobileMenu';
 import { useHashNavigation } from '@/hooks/useHashNavigation';
 import { LOCALES, type Locale } from '@/i18n/routing';
+import { trackCTAClick } from '@/lib/analytics-events';
 
 // LOCALES SSOT 기반 홈 경로 매칭 — 새 locale 추가 시 자동 동기화
 const LOCALE_HOME_RE = new RegExp(`^/(${LOCALES.map((l) => l.replace(/\./g, '\\.')).join('|')})$`);
@@ -352,6 +353,7 @@ export default function Header() {
               {/* Consultation Button - Desktop */}
               <Link
                 href="/contact"
+                onClick={() => trackCTAClick('header_consult', 'desktop')}
                 className={`hidden md:inline-block whitespace-nowrap btn-primary transition-all duration-300 xl:ms-2 2xl:ms-3 ${
                   isScrolled ? 'text-xs py-1.5! px-3! xl:px-4!' : 'text-xs py-1.5! px-3! xl:px-4!'
                 } ${
@@ -399,6 +401,7 @@ export default function Header() {
               {/* Consultation CTA - Mobile (compact, always visible < md; 데스크톱은 위 텍스트 버튼이 담당) */}
               <Link
                 href="/contact"
+                onClick={() => trackCTAClick('header_consult', 'mobile')}
                 aria-label={tCommon('consultation')}
                 className={`md:hidden flex items-center justify-center w-10 h-10 rounded-full shrink-0 transition-colors ${
                   useDarkStyle

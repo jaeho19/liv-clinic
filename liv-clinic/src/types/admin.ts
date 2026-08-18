@@ -139,6 +139,22 @@ export const INFLOW_STAGE_LABELS: Record<InflowStage, string> = {
 };
 
 // ==========================================
+// Marketing Attribution (마케팅 캠페인/콘텐츠 게시기록)
+// 표준화 택소노미(채널 대분류·시술 태그 등)는 src/lib/inflow/taxonomy.ts 참조
+// ==========================================
+
+export type MarketingCampaignRow = Database['public']['Tables']['marketing_campaigns']['Row'];
+export type MarketingCampaignInsert = Database['public']['Tables']['marketing_campaigns']['Insert'];
+export type MarketingCampaignUpdate = Database['public']['Tables']['marketing_campaigns']['Update'];
+
+export type MarketingContentRow = Database['public']['Tables']['marketing_contents']['Row'];
+export type MarketingContentInsert = Database['public']['Tables']['marketing_contents']['Insert'];
+export type MarketingContentUpdate = Database['public']['Tables']['marketing_contents']['Update'];
+
+export type LeadContentLinkRow = Database['public']['Tables']['lead_content_links']['Row'];
+export type LeadContentLinkInsert = Database['public']['Tables']['lead_content_links']['Insert'];
+
+// ==========================================
 // Inventory (재고관리)
 // ==========================================
 
