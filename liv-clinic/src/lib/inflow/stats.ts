@@ -369,3 +369,23 @@ export function computeCampaignPerf(
     };
   });
 }
+
+// ─── 비교 카드 상위 제외 (UI 토글용) ──────────────────
+export interface TopSplit<T> {
+  excluded: T[];
+  visible: T[];
+}
+
+/**
+ * contacts 상위 excludeTop개를 분리한다. 두 배열 모두 contacts 내림차순
+ * (동률은 입력 순서 유지 — Array.sort 안정성), 입력 배열은 변형하지 않는다.
+ * excludeTop이 음수면 0, 행 수 초과면 전부 excluded.
+ */
+export function splitTopGroups<T extends { contacts: number }>(
+  rows: T[],
+  excludeTop: number
+): TopSplit<T> {
+  const n = Math.max(0, Math.min(Math.trunc(excludeTop), rows.length));
+  const sorted = [...rows].sort((a, b) => b.contacts - a.contacts);
+  return { excluded: sorted.slice(0, n), visible: sorted.slice(n) };
+}
