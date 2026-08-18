@@ -9,6 +9,7 @@ import {
   computeFunnel,
   beforeAfterComparison,
   computeCampaignPerf,
+  splitTopGroups,
 } from '../stats';
 import type { StatsLead } from '../stats';
 
@@ -238,5 +239,45 @@ describe('filterByContactDate', () => {
   test('상세 목록용 — 연락일 기준으로 자른다', () => {
     const rows = [make({ contact_date: '2026-08-01' }), make({ contact_date: '2026-07-31' })];
     expect(filterByContactDate(rows, RANGE)).toHaveLength(1);
+  });
+});
+
+describe('splitTopGroups — 비교 카드 상위 제외', () => {
+  const rows = (ns: number[]) => ns.map((n, i) => ({ contacts: n, id: i }));
+
+  test('excludeTop 0 이하면 전부 visible (정렬만 적용)', () => {
+    const r = rows([5, 3, 1]);
+    expect(splitTopGroups(r, 0)).toEqual({ excluded: [], visible: r });
+    expect(splitTopGroups(r, -1)).toEqual({ excluded: [], visible: r });
+  });
+
+  test('contacts 상위부터 제외한다 (미정렬 입력 포함)', () => {
+    const s = splitTopGroups(rows([3, 10, 7, 1]), 2);
+    expect(s.excluded.map((x) => x.contacts)).toEqual([10, 7]);
+    expect(s.visible.map((x) => x.contacts)).toEqual([3, 1]);
+  });
+
+  test('동률은 입력 순서를 유지한다(안정 분리)', () => {
+    const r = [
+      { contacts: 5, id: 'a' },
+      { contacts: 5, id: 'b' },
+      { contacts: 2, id: 'c' },
+    ];
+    const s = splitTopGroups(r, 1);
+    expect(s.excluded.map((x) => x.id)).toEqual(['a']);
+    expect(s.visible.map((x) => x.id)).toEqual(['b', 'c']);
+  });
+
+  test('행 수 이상을 제외하면 전부 excluded', () => {
+    const s = splitTopGroups(rows([2, 1]), 5);
+    expect(s.visible).toEqual([]);
+    expect(s.excluded.map((x) => x.contacts)).toEqual([2, 1]);
+  });
+
+  test('입력 배열을 변형하지 않는다', () => {
+    const r = rows([1, 9, 4]);
+    const copy = r.map((x) => ({ ...x }));
+    splitTopGroups(r, 1);
+    expect(r).toEqual(copy);
   });
 });

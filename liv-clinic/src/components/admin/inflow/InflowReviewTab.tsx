@@ -147,6 +147,10 @@ export default function InflowReviewTab({ leads, supabase, onEdit, onApplied }: 
       <div className="bg-white rounded-xl border border-[#e5e5e5] p-10 text-center">
         <p className="text-2xl mb-2">✓</p>
         <p className="text-sm text-[#575756] font-medium">표준화 검토가 필요한 항목이 없습니다.</p>
+        <p className="text-xs text-[#8a8a8a] mt-2 max-w-md mx-auto leading-relaxed">
+          이 탭은 리드의 자유 입력 기록을 표준 분류(국내/해외 · 유입 경로 · 시술 태그)로 정리하는
+          곳으로, 규칙 엔진의 제안을 관리자가 확인한 행만 반영됩니다(기존 값은 덮어쓰지 않음).
+        </p>
         <p className="text-xs text-[#8a8a8a] mt-1">
           새 리드에 국내/해외·유입 경로·시술 태그가 비어 있으면 여기에 다시 나타납니다.
         </p>
