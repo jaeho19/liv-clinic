@@ -616,8 +616,9 @@ function LeadFormModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4 overflow-y-auto">
-      <div className="bg-white rounded-xl p-5 max-w-2xl w-full shadow-xl my-8">
+    // items-center 금지: 패널이 화면보다 길면 위쪽이 스크롤 불가 영역이 됨 → 패널 m-auto로 중앙정렬
+    <div className="fixed inset-0 z-50 flex bg-black/40 p-4 overflow-y-auto">
+      <div className="bg-white rounded-xl p-5 max-w-2xl w-full shadow-xl m-auto">
         <h3 className="font-bold text-[#6d4e42] mb-4">{editTarget ? '리드 수정' : '신규 리드 추가'}</h3>
 
         <div className="grid grid-cols-2 gap-3">
