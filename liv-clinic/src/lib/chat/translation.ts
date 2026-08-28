@@ -1,6 +1,7 @@
 import 'server-only';
 
-// OpenAI gpt-4o-mini 기반 번역 래퍼.
+// OpenAI 기반 번역 래퍼 (기본 gpt-4.1-nano, OPENAI_TRANSLATION_MODEL로 교체 가능).
+// 주의: gpt-5 계열은 temperature 파라미터를 거부하므로 코드 수정 없이 지정하지 말 것.
 // - 서버 전용 (server-only import 가드)
 // - 5초 타임아웃 + 1회 재시도
 // - 시스템 프롬프트로 LIV 클리닉 시술/브랜드명 보존 지시
@@ -44,7 +45,7 @@ export interface TranslationResult {
 
 const TIMEOUT_MS = Number(process.env.CHAT_TRANSLATION_TIMEOUT_MS ?? 5000);
 const RETRY_COUNT = Number(process.env.CHAT_TRANSLATION_RETRY ?? 1);
-const MODEL = process.env.OPENAI_TRANSLATION_MODEL ?? 'gpt-4o-mini';
+const MODEL = process.env.OPENAI_TRANSLATION_MODEL ?? 'gpt-4.1-nano';
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
 
 const BRAND_TERMS_KO = '울쎄라, 써마지, 슈링크, 인모드, 보톡스, 필러, 스킨부스터, 리프팅, LIV';
