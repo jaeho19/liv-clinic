@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { buildResult } from '../buildResult';
 import { CONSULT_ONLY } from '../types';
+import { CONCERN_RULES } from '@/lib/data/concernRules.generated';
 
 const SEL = {
   termIds: ['jawline_sagging'],
@@ -48,5 +49,28 @@ describe('buildResult', () => {
     const out = buildResult({ ...SEL, termIds: ['nope'], questionIds: ['nope'] }, 'sagging', 'ko');
     expect(out.terms).toEqual([]);
     expect(out.questions).toEqual([]);
+  });
+
+  // 회귀 방지: TREATMENT_HREF에 규칙표(CONCERN_RULES)의 실제 treatmentId가 하나라도
+  // 빠지면 그 시술의 href가 조용히 null로 새어나간다(toning 누락 사고 재발 방지).
+  // 규칙표 CSV에 새 시술이 추가되고 TREATMENT_HREF를 안 챙기면 이 테스트가 실패해야 한다.
+  it('규칙표의 모든 concern에서, consultOnly가 아닌 시술은 href가 채워진다', () => {
+    const concernIds = [...new Set(CONCERN_RULES.map((r) => r.concernId))];
+    expect(concernIds.length).toBeGreaterThan(0);
+
+    for (const concernId of concernIds) {
+      const treatmentIds = CONCERN_RULES.filter((r) => r.concernId === concernId).map(
+        (r) => r.treatmentId
+      );
+      const out = buildResult(
+        { ...SEL, treatmentIds },
+        concernId,
+        'ko'
+      );
+      for (const t of out.treatments) {
+        if (t.id === CONSULT_ONLY) continue;
+        expect(t.href, `${concernId}/${t.id} href should not be null`).not.toBeNull();
+      }
+    }
   });
 });

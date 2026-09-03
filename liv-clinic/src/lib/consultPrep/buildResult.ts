@@ -1,7 +1,9 @@
 /**
  * 선택 결과(id 목록)를 화면이 그대로 그릴 수 있는 값으로 조립한다.
  *
- * 정렬은 여기서 다시 displayOrder 로 강제한다 — LLM이 돌려준 순서를 믿지 않는다.
+ * 정렬 보장은 rules.ts의 treatmentsFor()가 한다(displayOrder 오름차순).
+ * 여기서는 그 순서를 지키기 위해 LLM이 돌려준 sel.treatmentIds 배열을 순회하지 않고,
+ * treatmentsFor()가 돌려주는 규칙표를 순회하며 선택된 id만 걸러낸다 — LLM 순서를 믿지 않는다.
  */
 import { TREATMENTS } from '@/lib/constants';
 import { treatmentsFor, termsFor, questionsFor, pickText } from './rules';
@@ -21,6 +23,8 @@ const TREATMENT_HREF: Record<string, string> = {
   filler: '/antiaging/filler',
   skinbooster: '/antiaging/skinbooster',
   skincare: '/antiaging/skincare',
+  // 레이저 토닝은 전용 페이지가 없다. 피부톤 페이지로 보낸다 (2026-09-03, 운영 확인 대기).
+  toning: '/laser/skintone',
 };
 
 interface TreatmentMeta {
