@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import {
   treatmentsFor, termsFor, questionsFor, isKnownTerm, isKnownQuestion, pickText,
 } from '../rules';
@@ -60,5 +60,58 @@ describe('pickText', () => {
 
   it('비어 있으면 빈 문자열을 돌려준다 (한국어로 흘리지 않는다)', () => {
     expect(pickText({ ko: '가', en: '', ja: '', zh: '' }, 'en')).toBe('');
+  });
+});
+
+// 정렬 로직 강제 검증 — .sort() 제거 시 반드시 실패해야 함
+describe('treatmentsFor sort enforcement', () => {
+  it('displayOrder가 뒤섞인 데이터도 올바르게 정렬한다', async () => {
+    vi.resetModules();
+
+    // displayOrder가 의도적으로 뒤섞인 가짜 데이터로 mock
+    vi.doMock('@/lib/data/concernRules.generated', () => ({
+      CONCERN_RULES: [
+        {
+          concernId: 'test_sort',
+          treatmentId: 'third',
+          displayOrder: 3,
+          reason: { ko: '', en: '', ja: '', zh: '' },
+          caution: { ko: '', en: '', ja: '', zh: '' },
+          reviewedBy: 'test',
+          reviewedAt: '2026-01-01',
+        },
+        {
+          concernId: 'test_sort',
+          treatmentId: 'first',
+          displayOrder: 1,
+          reason: { ko: '', en: '', ja: '', zh: '' },
+          caution: { ko: '', en: '', ja: '', zh: '' },
+          reviewedBy: 'test',
+          reviewedAt: '2026-01-01',
+        },
+        {
+          concernId: 'test_sort',
+          treatmentId: 'second',
+          displayOrder: 2,
+          reason: { ko: '', en: '', ja: '', zh: '' },
+          caution: { ko: '', en: '', ja: '', zh: '' },
+          reviewedBy: 'test',
+          reviewedAt: '2026-01-01',
+        },
+      ],
+      CONCERN_TERMS: [],
+      PREP_QUESTIONS: [],
+    }));
+
+    // mocked 모듈 재임포트
+    const rulesModule = await import('../rules');
+    const sorted = rulesModule.treatmentsFor('test_sort');
+
+    // 정렬이 제대로 작동하면 [1, 2, 3] 순서
+    // .sort() 호출이 없으면 [3, 1, 2]가 나와 이 테스트는 실패한다
+    expect(sorted.map((r) => r.displayOrder)).toEqual([1, 2, 3]);
+    expect(sorted[0].treatmentId).toBe('first');
+    expect(sorted[1].treatmentId).toBe('second');
+    expect(sorted[2].treatmentId).toBe('third');
   });
 });
