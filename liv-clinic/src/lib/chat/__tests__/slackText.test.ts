@@ -342,4 +342,9 @@ describe('buildDeliveryFailureText', () => {
   it('모르는 사유는 코드 그대로', () => {
     expect(buildDeliveryFailureText('weird')).toContain('사유: weird');
   });
+  it('모르는 사유에 Slack 마크업이 있으면 이스케이프한다', () => {
+    expect(buildDeliveryFailureText('<!channel> & <@U1>')).toBe(
+      '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: &lt;!channel&gt; &amp; &lt;@U1&gt;'
+    );
+  });
 });

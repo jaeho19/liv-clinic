@@ -272,5 +272,5 @@ const FAILURE_REASON_KO: Record<string, string> = {
 };
 
 export function buildDeliveryFailureText(reason: string): string {
-  return `⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: ${FAILURE_REASON_KO[reason] ?? reason}`;
+  return `⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: ${FAILURE_REASON_KO[reason] ?? escapeSlackText(reason)}`;
 }
