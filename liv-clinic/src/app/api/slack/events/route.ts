@@ -1,7 +1,7 @@
 import { after, NextRequest, NextResponse } from 'next/server';
 import { createChatAdminClient } from '@/lib/chat/db';
 import { getSlackChannelId, verifySlackSignature } from '@/lib/chat/slack';
-import { classifySlackEvent, type SlackEnvelope } from '@/lib/chat/slackEvents';
+import { classifySlackEvent, routeInbound, type SlackEnvelope } from '@/lib/chat/slackEvents';
 import { relaySlackReplyToVisitor } from '@/lib/chat/slackRelay';
 
 export const runtime = 'nodejs';
@@ -54,41 +54,45 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'invalid_json' }, { status: 400 });
   }
 
-  // 4. 분류
-  const decision = classifySlackEvent(body, getSlackChannelId());
+  // 4. 분류 (모양) → 라우팅 (채널)
+  const decision = classifySlackEvent(body);
 
   if (decision.action === 'challenge') {
-    // Events API Request URL 등록 핸드셰이크
     return NextResponse.json({ challenge: decision.challenge });
   }
-
   if (decision.action === 'ignore') {
     debug('ignored:', decision.reason);
-    // 무시하는 이벤트도 200 — 재시도를 유발하지 않는다.
     return NextResponse.json({ ok: true, ignored: decision.reason });
   }
+  // Task 9 전 임시: 보관 이벤트와 방 메시지는 아직 처리하지 않는다 (현행 = #해외문의 스레드만)
+  if (decision.action !== 'process') {
+    return NextResponse.json({ ok: true, ignored: decision.action });
+  }
+  const route = routeInbound(decision, getSlackChannelId());
+  if (route.kind !== 'legacy_thread') {
+    return NextResponse.json({ ok: true, ignored: route.kind === 'skip' ? route.reason : 'room_pending' });
+  }
 
-  // 5. event_id 선점 (중복/재시도 차단). 처리 전에 기록해야 재시도가 겹치지 않는다.
+  // 5. event_id 선점 (중복/재시도 차단)
   const claim = await claimEvent(decision.eventId, body.event?.type ?? null);
   if (claim === 'duplicate') {
     debug('duplicate event_id, skipping:', decision.eventId);
     return NextResponse.json({ ok: true, duplicate: true });
   }
 
-  // 6. 무거운 작업은 응답 이후로 — 3초 예산 안에서 200을 먼저 돌려준다.
+  // 6. 무거운 작업은 응답 이후로
   after(async () => {
     const outcome = await relaySlackReplyToVisitor({
-      threadTs: decision.threadTs,
+      threadTs: route.threadTs,
       slackTs: decision.slackTs,
       text: decision.text,
     });
     if (outcome !== 'delivered') {
-      // event_id를 이미 선점했으므로 Slack 재시도로는 복구되지 않는다 — 로그로 남긴다.
       console.warn(
-        `[slack/events] reply not delivered (${outcome}) event_id=${decision.eventId} thread_ts=${decision.threadTs}`
+        `[slack/events] reply not delivered (${outcome}) event_id=${decision.eventId} thread_ts=${route.threadTs}`
       );
     } else {
-      debug('delivered to visitor:', decision.threadTs);
+      debug('delivered to visitor:', route.threadTs);
     }
   });
 
