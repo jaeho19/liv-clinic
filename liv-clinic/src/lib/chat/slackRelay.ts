@@ -4,12 +4,21 @@ import { broadcastToSession } from '@/lib/chat/broadcast';
 import { translate } from '@/lib/chat/translation';
 import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import {
-  escapeSlackText,
   getSlackChannelId,
   isSlackRelayConfigured,
   postSlackMessage,
   slackTextToPlain,
 } from '@/lib/chat/slack';
+import {
+  adminSessionUrl,
+  buildContactText,
+  buildReplyText,
+  buildRootText,
+  type RelaySender,
+} from '@/lib/chat/slackText';
+
+export { buildContactText, buildReplyText, buildRootText };
+export type { RelaySender };
 
 // Slack ↔ chat_sessions/chat_messages 연결 계층.
 // 아웃바운드(방문자 → Slack)와 인바운드(직원 답글 → 방문자) 양방향을 모두 담당한다.
@@ -17,106 +26,6 @@ import {
 
 // chat_messages.original_text CHECK 제약 (028) — 넘기면 23514로 INSERT가 실패한다.
 const MAX_MESSAGE_CHARS = 1000;
-
-const LOCALE_FLAG: Record<string, string> = {
-  en: '🇬🇧',
-  ja: '🇯🇵',
-  zh: '🇨🇳',
-  'zh-TW': '🇹🇼',
-  vi: '🇻🇳',
-  th: '🇹🇭',
-  ru: '🇷🇺',
-  fr: '🇫🇷',
-  mn: '🇲🇳',
-  ar: '🇸🇦',
-};
-
-function adminSessionUrl(sessionId: string): string | null {
-  const base = process.env.NEXT_PUBLIC_SITE_URL;
-  if (!base) return null;
-  return `${base.replace(/\/$/, '')}/admin/chat/${sessionId}`;
-}
-
-/**
- * 메시지 본문 라인.
- * - visitor : 한국어 번역을 먼저 보여주고 외국어 원문을 인용으로 붙인다.
- * - operator: 직원이 쓴 한국어 원문을 보여주고 방문자에게 나간 번역문을 인용으로 붙인다.
- */
-function buildBodyLines(args: {
-  sender: RelaySender;
-  visitorLocale: string;
-  originalText: string;
-  translatedText: string | null;
-}): string[] {
-  const original = escapeSlackText(args.originalText);
-  const translated = args.translatedText?.trim();
-  const hasUsefulTranslation = Boolean(translated && translated !== args.originalText.trim());
-
-  if (args.sender === 'operator') {
-    const lines = [original];
-    if (hasUsefulTranslation) {
-      lines.push(`> _${args.visitorLocale} 전달:_ ${escapeSlackText(translated!)}`);
-    }
-    return lines;
-  }
-
-  if (hasUsefulTranslation) {
-    return [escapeSlackText(translated!), `> _원문:_ ${original}`];
-  }
-  return [original];
-}
-
-/** 어드민 화면에서 보낸 답장임을 Slack 쪽에서 구분할 수 있게 하는 머리말. */
-function operatorPrefix(senderLabel: string | null): string {
-  const who = senderLabel ? ` — ${escapeSlackText(senderLabel)}` : '';
-  return `↩️ _관리자 화면 답장${who}_`;
-}
-
-/** 루트(첫) 메시지 — 세션 컨텍스트를 헤더로 붙인다. (테스트를 위해 export) */
-export function buildRootText(args: {
-  sessionId: string;
-  sender: RelaySender;
-  senderLabel: string | null;
-  visitorName: string | null;
-  visitorLocale: string;
-  visitorEmail: string | null;
-  originalText: string;
-  translatedText: string | null;
-}): string {
-  const flag = LOCALE_FLAG[args.visitorLocale] ?? '🌐';
-  const name = args.visitorName || '익명';
-  // 방문자 메시지가 스레드를 여는 것이 정상 경로. 운영자가 먼저 말을 거는 경우도 열 수 있게 한다.
-  const headline = args.sender === 'visitor' ? '새 채팅 문의' : '채팅 세션';
-  const lines = [`${flag} *${headline}* — ${escapeSlackText(name)} (${args.visitorLocale})`];
-  if (args.visitorEmail) lines.push(`✉️ ${escapeSlackText(args.visitorEmail)}`);
-  lines.push('');
-  if (args.sender === 'operator') lines.push(operatorPrefix(args.senderLabel));
-  lines.push(...buildBodyLines(args));
-
-  const url = adminSessionUrl(args.sessionId);
-  if (url) {
-    lines.push('');
-    lines.push(`🔗 <${url}|관리자 화면에서 열기>`);
-  }
-  lines.push('');
-  lines.push('_이 스레드에 답글을 달면 방문자에게 번역되어 전달됩니다._');
-  return lines.join('\n');
-}
-
-/** 스레드 후속 메시지 — 본문만 (운영자면 머리말 1줄). (테스트를 위해 export) */
-export function buildReplyText(args: {
-  sender: RelaySender;
-  senderLabel: string | null;
-  visitorLocale: string;
-  originalText: string;
-  translatedText: string | null;
-}): string {
-  const lines = args.sender === 'operator' ? [operatorPrefix(args.senderLabel)] : [];
-  lines.push(...buildBodyLines(args));
-  return lines.join('\n');
-}
-
-export type RelaySender = 'visitor' | 'operator';
 
 export interface RelayOutboundArgs {
   sessionId: string;
@@ -222,23 +131,6 @@ export async function relayChatMessageToSlack(args: RelayOutboundArgs): Promise<
   } catch (e) {
     console.warn('[slack relay] outbound failed:', e);
   }
-}
-
-/** 방문자 연락처 릴레이 본문. (테스트를 위해 export) */
-export function buildContactText(args: {
-  channelLabel: string;
-  handle: string;
-  /** 세션 스레드가 없어 단독 게시될 때만 어드민 링크를 첨부한다. */
-  adminUrl: string | null;
-}): string {
-  const lines = [
-    `📱 *방문자가 연락처를 남겼습니다* — ${args.channelLabel}: ${escapeSlackText(args.handle)}`,
-    '_근무 시작 후 이 연락처로 먼저 연락해 주세요._',
-  ];
-  if (args.adminUrl) {
-    lines.push(`🔗 <${args.adminUrl}|관리자 화면에서 열기>`);
-  }
-  return lines.join('\n');
 }
 
 /**
