@@ -311,7 +311,8 @@ async function postInRoom(
       // 해제는 됐는데 재게시가 실패 — 손님 메시지를 잃지 않도록 스레드로 폴백한다.
       // 방을 다시 보관해야 한다. 열린 채로 두면 세션과 끊긴 방에 직원이 답을 쓰고 손님은 못 받는다.
       console.warn('[slack relay] reopened room post failed, switching session to thread mode:', posted.error);
-      await archiveChannel(channelId);
+      const r = await archiveChannel(channelId);
+      if (!r.ok) console.warn('[slack relay] archive failed:', r.error);
       await revertToThreadMode(admin, session.id);
       return 'fallback_thread';
     }
