@@ -6397,6 +6397,37 @@
 
     }
   },
+  "consultPrep": {
+    "title": "Consultation Prep",
+    "step1Title": "Is this your concern?",
+    "step2Title": "What bothers you most about how it looks?",
+    "step2Placeholder": "e.g. My jawline blurs when I smile / It looks saggy by afternoon / I look older in photos",
+    "step2Required": "Please write one line (2+ characters)",
+    "step3Title": "By when do you need this?",
+    "step3None": "No particular date",
+    "step3Wedding": "My child's wedding",
+    "step3Meeting": "Family meeting",
+    "step3Reunion": "Reunion or gathering",
+    "step3Holiday": "Holiday",
+    "step3Stay": "Stay in Korea",
+    "next": "Next",
+    "back": "Back",
+    "submit": "See result",
+    "loading": "Organizing",
+    "card1Title": "What you described is usually called",
+    "card2Title": "Treatments that address this area",
+    "card3Title": "Ask these at your consultation",
+    "card4Title": "Reference",
+    "lowConfidence": "A little more detail would make this more accurate.",
+    "consultOnly": "Needs to be confirmed at consultation",
+    "labelDuration": "Duration",
+    "labelAnesthesia": "Anesthesia",
+    "labelRecovery": "Recovery",
+    "labelCautions": "Cautions",
+    "disclaimer": "This is not a diagnosis. It is reference material to help you prepare for a consultation. Results vary by individual, and whether and how a procedure is performed is decided through consultation with medical staff.",
+    "ctaInquiry": "Send this as an inquiry",
+    "error": "Please try again in a moment."
+  },
   "pricing": {
     "sectionTitle": "項目價格",
     "header": {

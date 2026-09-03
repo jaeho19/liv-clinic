@@ -1,0 +1,12 @@
+question_id,applies_to,text_ko,text_en,text_ja,text_zh,answer_source
+q_sessions,*,몇 회 정도 받아야 하나요?,How many sessions would I need?,何回くらい受ける必要がありますか?,大概需要做几次?,results
+q_duration,*,한 번에 얼마나 걸리나요?,How long does one session take?,1回にどれくらいかかりますか?,一次需要多长时间?,duration
+q_recovery,*,회복은 며칠 걸리나요?,How many days is the recovery?,回復に何日かかりますか?,恢复需要几天?,recovery
+q_anesthesia,*,마취는 어떻게 하나요?,What kind of anesthesia is used?,麻酔はどうしますか?,如何麻醉?,anesthesia
+q_cautions,*,제가 피해야 할 조건이 있나요?,Are there conditions that rule this out for me?,私が避けるべき条件はありますか?,我有需要避免的情况吗?,cautions
+q_maintain,*,효과는 얼마나 유지되나요?,How long do the results last?,効果はどれくらい持続しますか?,效果能维持多久?,results
+q_area,*,제가 신경 쓰는 부위에도 되나요?,Does this apply to the area I care about?,私が気にしている部位にも可能ですか?,我在意的部位也可以做吗?,targetAreas
+q_fit,*,저 같은 경우에 맞는 편인가요?,Is this generally suitable for someone like me?,私のような場合に向いていますか?,像我这样的情况适合吗?,idealFor
+q_process,*,시술은 어떤 순서로 진행되나요?,What are the steps of the procedure?,施術はどんな流れで進みますか?,治疗按什么流程进行?,process
+q_thread_type,concern:sagging,실 종류에 따라 뭐가 달라지나요?,How do the thread types differ?,糸の種類で何が変わりますか?,不同线材有什么区别?,benefits
+q_texture_order,concern:texture,여러 개를 받는다면 순서가 있나요?,"If I do several, is there an order?",複数受ける場合、順番はありますか?,如果做多项，有先后顺序吗?,process

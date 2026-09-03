@@ -340,3 +340,27 @@ export function trackEquipmentView(equipmentName: string) {
     equipment_name: equipmentName,
   });
 }
+
+// ============================================
+// 상담 준비 카드
+// ============================================
+
+/** 1단계 진입 */
+export function trackPrepStarted(concernId: string) {
+  trackEvent('prep_started', { concern_id: concernId });
+}
+
+/** 2단계 자유 서술 제출 */
+export function trackPrepDescribed(concernId: string, length: number) {
+  trackEvent('prep_described', { concern_id: concernId, description_length: length });
+}
+
+/** 결과 카드 노출 */
+export function trackPrepResultShown(concernId: string, lowConfidence: boolean) {
+  trackEvent('prep_result_shown', { concern_id: concernId, low_confidence: lowConfidence });
+}
+
+/** 결과에서 문의로 전환 */
+export function trackPrepToInquiry(concernId: string) {
+  trackEvent('prep_to_inquiry', { concern_id: concernId });
+}

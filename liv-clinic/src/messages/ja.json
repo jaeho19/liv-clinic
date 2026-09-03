@@ -6398,6 +6398,37 @@
 
     }
   },
+  "consultPrep": {
+    "title": "カウンセリング準備カード",
+    "step1Title": "このお悩みで合っていますか?",
+    "step2Title": "見た目でいちばん気になるのはどこですか?",
+    "step2Placeholder": "例) 笑うとフェイスラインがぼやける / 午後になるとたるんで見える / 写真で老けて見える",
+    "step2Required": "一行だけ書いてください (2文字以上)",
+    "step3Title": "いつまでに必要ですか?",
+    "step3None": "特に予定なし",
+    "step3Wedding": "子どもの結婚式",
+    "step3Meeting": "顔合わせ",
+    "step3Reunion": "同窓会・集まり",
+    "step3Holiday": "連休",
+    "step3Stay": "韓国滞在期間",
+    "next": "次へ",
+    "back": "戻る",
+    "submit": "結果を見る",
+    "loading": "整理しています",
+    "card1Title": "おっしゃった内容は通常こう呼ばれます",
+    "card2Title": "この部位を扱う施術",
+    "card3Title": "カウンセリングで聞いてみてください",
+    "card4Title": "参考",
+    "lowConfidence": "もう少し詳しく書いていただくと正確になります。",
+    "consultOnly": "診察での確認が必要です",
+    "labelDuration": "所要時間",
+    "labelAnesthesia": "麻酔",
+    "labelRecovery": "回復",
+    "labelCautions": "注意事項",
+    "disclaimer": "この案内は診断ではなく、カウンセリングを準備するための参考資料です。個人差があり、実際の施術の可否と方法は医療スタッフとの相談で決まります。",
+    "ctaInquiry": "この内容で相談する",
+    "error": "しばらくしてからもう一度お試しください。"
+  },
   "pricing": {
     "sectionTitle": "施術価格",
     "header": {

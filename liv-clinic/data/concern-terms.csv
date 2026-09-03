@@ -1,0 +1,13 @@
+term_id,concern_id,label_ko,label_en,label_ja,label_zh,body_area
+jawline_sagging,sagging,하악선 처짐,Jawline laxity,フェイスラインのたるみ,下颌线松弛,lower_face
+nasolabial,sagging,팔자주름이 깊어진 상태,Deepened nasolabial folds,ほうれい線の深まり,法令纹加深,mid_face
+double_chin,sagging,턱밑 이중 라인,Submental fullness,顎下の二重ライン,下巴双下颌,lower_face
+skin_laxity,elasticity,피부 탄력 저하,Reduced skin elasticity,肌の弾力低下,皮肤弹性下降,full_face
+fine_lines,elasticity,잔주름,Fine lines,小じわ,细纹,full_face
+deep_sagging,fundamental,심부 조직 처짐,Deep tissue descent,深部組織のたるみ,深层组织下垂,full_face
+volume_loss,fundamental,중안면 볼륨 저하,Midface volume loss,中顔面のボリューム低下,中面部容积流失,mid_face
+under_eye_shadow,underEye,눈밑 그늘,Under-eye shadowing,目の下のくま,眼下阴影,under_eye
+under_eye_bag,underEye,눈밑 지방 돌출,Under-eye fat protrusion,目の下の脂肪の突出,眼下脂肪突出,under_eye
+enlarged_pores,texture,모공이 늘어난 상태,Enlarged pores,毛穴の開き,毛孔粗大,full_face
+rough_texture,texture,피부결 거칠어짐,Rough skin texture,肌のキメの粗さ,肤质粗糙,full_face
+dullness,texture,피부톤 칙칙함,Dull skin tone,肌のくすみ,肤色暗沉,full_face

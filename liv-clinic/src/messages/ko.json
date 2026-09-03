@@ -6400,6 +6400,37 @@
 
     }
   },
+  "consultPrep": {
+    "title": "상담 준비 카드",
+    "step1Title": "이 고민이 맞으신가요?",
+    "step2Title": "어떻게 보이는 게 제일 신경 쓰이세요?",
+    "step2Placeholder": "예) 웃을 때 턱선이 흐려 보여요 / 오후만 되면 처져 보여요 / 사진에서 나이 들어 보여요",
+    "step2Required": "한 줄만 적어주세요 (2자 이상)",
+    "step3Title": "언제까지 필요하세요?",
+    "step3None": "특별한 일정 없음",
+    "step3Wedding": "자녀 결혼식",
+    "step3Meeting": "상견례",
+    "step3Reunion": "동창회·모임",
+    "step3Holiday": "명절",
+    "step3Stay": "한국 체류 기간",
+    "next": "다음",
+    "back": "이전",
+    "submit": "결과 보기",
+    "loading": "정리하고 있습니다",
+    "card1Title": "말씀하신 건 보통 이렇게 부릅니다",
+    "card2Title": "이 부위를 다루는 시술",
+    "card3Title": "상담에서 물어보세요",
+    "card4Title": "참고",
+    "lowConfidence": "조금 더 자세히 적어주시면 정확해집니다.",
+    "consultOnly": "상담에서 확인이 필요합니다",
+    "labelDuration": "소요시간",
+    "labelAnesthesia": "마취",
+    "labelRecovery": "회복",
+    "labelCautions": "주의사항",
+    "disclaimer": "이 안내는 진단이 아니며, 상담을 준비하기 위한 참고 자료입니다. 개인차가 있으며 실제 시술 여부와 방법은 의료진 상담으로 결정됩니다.",
+    "ctaInquiry": "이대로 상담 문의하기",
+    "error": "잠시 후 다시 시도해주세요."
+  },
   "pricing": {
     "sectionTitle": "시술 가격",
     "header": {

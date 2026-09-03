@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui';
@@ -16,6 +16,8 @@ import { trackCTAClick, trackConcernClick } from '@/lib/analytics-events';
  * 안면거상·지방재배치는 전용 상세 페이지가 없어 상담(/contact)으로 연결한다
  * (페이지 신설 여부는 운영 결정 사항 — 최종 보고서 참조).
  */
+const PREP_LOCALES = new Set(['ko', 'en', 'ja', 'zh']);
+
 const concernsConfig = [
   { id: 'sagging', href: '/lifting/aptos' },
   { id: 'elasticity', href: '/lifting' },
@@ -27,9 +29,12 @@ const concernsConfig = [
 export default function ConcernPathways() {
   const t = useTranslations('sections.concerns');
   const tCommon = useTranslations('common');
+  const locale = useLocale();
+  const usePrep = PREP_LOCALES.has(locale);
 
   const concerns = concernsConfig.map((config) => ({
     ...config,
+    href: usePrep ? `/consult-prep?concern=${config.id}` : config.href,
     title: t(`cards.${config.id}.title`),
     desc: t(`cards.${config.id}.desc`),
     tags: t(`cards.${config.id}.tags`),
