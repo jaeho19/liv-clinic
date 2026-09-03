@@ -278,7 +278,9 @@ function roomText(
   };
   if (firstInRoom) return buildRoomFirstText({ mentionAll: staff.mentionAll(), receivedAt, ...body });
   // 담당자가 있으면 담당자만, 없으면 전원. 관찰자는 mentionAll에 들어 있지 않다.
-  const mention = session.assigned_slack_user_id ? mentionOf(session.assigned_slack_user_id) : staff.mentionAll();
+  // 명단에서 빠진 담당자를 계속 부르지 않도록 지금도 답변 직원인지 확인한다.
+  const assignee = session.assigned_slack_user_id;
+  const mention = assignee && staff.isResponder(assignee) ? mentionOf(assignee) : staff.mentionAll();
   return buildRoomVisitorText({ mention, receivedAt, reopened, ...body });
 }
 
@@ -307,7 +309,9 @@ async function postInRoom(
     posted = await postSlackMessage({ text: roomText(session, staff, args, receivedAt, false, true), channelId });
     if (!posted.ok || !posted.ts) {
       // 해제는 됐는데 재게시가 실패 — 손님 메시지를 잃지 않도록 스레드로 폴백한다.
+      // 방을 다시 보관해야 한다. 열린 채로 두면 세션과 끊긴 방에 직원이 답을 쓰고 손님은 못 받는다.
       console.warn('[slack relay] reopened room post failed, switching session to thread mode:', posted.error);
+      await archiveChannel(channelId);
       await revertToThreadMode(admin, session.id);
       return 'fallback_thread';
     }
@@ -522,31 +526,47 @@ export interface RelayInboundArgs {
   slackUserId: string | null;
 }
 
-async function findSessionByRoom(admin: ChatAdminClient, channel: string): Promise<RelaySessionRow | null> {
-  const { data } = await admin
+/** 조회 자체가 실패했다는 표식 — "그런 세션 없음"(null)과 구분해야 ⚠️ 알림이 나간다. */
+const LOOKUP_ERROR = Symbol('lookup_error');
+type SessionLookup = RelaySessionRow | null | typeof LOOKUP_ERROR;
+
+async function findSessionByRoom(admin: ChatAdminClient, channel: string): Promise<SessionLookup> {
+  const { data, error } = await admin
     .from('chat_sessions')
     .select(RELAY_SESSION_COLUMNS)
     .eq('slack_channel_id', channel)
     .eq('slack_mode', 'room')
     .maybeSingle();
+  if (error) {
+    console.warn('[slack relay] room session lookup failed:', error.code ?? 'unknown');
+    return LOOKUP_ERROR;
+  }
   return (data as RelaySessionRow | null) ?? null;
 }
 
-async function findSessionByThread(admin: ChatAdminClient, threadTs: string): Promise<RelaySessionRow | null> {
+async function findSessionByThread(admin: ChatAdminClient, threadTs: string): Promise<SessionLookup> {
   // 1. 세션의 대표 스레드
-  const { data: byThread } = await admin
+  const { data: byThread, error: threadError } = await admin
     .from('chat_sessions')
     .select(RELAY_SESSION_COLUMNS)
     .eq('slack_thread_ts', threadTs)
     .maybeSingle();
+  if (threadError) {
+    console.warn('[slack relay] thread session lookup failed:', threadError.code ?? 'unknown');
+    return LOOKUP_ERROR;
+  }
   if (byThread) return byThread as RelaySessionRow;
   // 2. fallback: 해당 ts로 게시된 메시지에서 세션을 찾는다 (경합에서 진 루트, 피드 단독 게시)
-  const { data: byMessage } = await admin
+  const { data: byMessage, error: messageError } = await admin
     .from('chat_messages')
     .select('session_id')
     .eq('slack_ts', threadTs)
     .limit(1)
     .maybeSingle();
+  if (messageError) {
+    console.warn('[slack relay] message session lookup failed:', messageError.code ?? 'unknown');
+    return LOOKUP_ERROR;
+  }
   if (!byMessage) return null;
   return loadSession(admin, byMessage.session_id);
 }
@@ -569,6 +589,8 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
       route.kind === 'room'
         ? await findSessionByRoom(admin, route.channel)
         : await findSessionByThread(admin, route.threadTs);
+    // 조회 실패는 "우리 방이 아님"이 아니다 — 무음 처리하면 직원 답글이 조용히 사라진다.
+    if (session === LOOKUP_ERROR) return 'error';
     if (!session) return route.kind === 'room' ? 'unknown_channel' : 'session_not_found';
 
     if (session.status !== 'open') {
