@@ -3,7 +3,15 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import Link from 'next/link';
 import { createClient } from '@/lib/supabase-browser';
-import { sendOperatorMessage, closeSession, ChatApiError, type ChatMessage, type VisitorLocale } from '@/lib/chat/chatApi';
+import {
+  sendOperatorMessage,
+  closeSession,
+  resolveSession,
+  unresolveSession,
+  ChatApiError,
+  type ChatMessage,
+  type VisitorLocale,
+} from '@/lib/chat/chatApi';
 import { buildChatRefCode } from '@/lib/chat/contactChannels';
 import { trackChatClose } from '@/lib/analytics-events';
 
@@ -16,6 +24,8 @@ interface SessionMeta {
   visitor_messenger_handle: string | null;
   status: 'open' | 'closed' | 'abandoned';
   created_at: string;
+  assigned_label: string | null;
+  resolved_at: string | null;
 }
 
 // 방문자가 남긴 채널 표기 (미지의 값은 원문 그대로 — 채널 확장 대비)
@@ -47,8 +57,7 @@ const LOCALE_LABEL: Record<VisitorLocale, string> = {
 } satisfies Record<VisitorLocale, string>;
 
 function formatTime(iso: string): string {
-  const d = new Date(iso);
-  return d.toLocaleString('ko-KR', { hour12: false });
+  return new Date(iso).toLocaleString('ko-KR', { hour12: false, timeZone: 'Asia/Seoul' });
 }
 
 export default function ChatDetailClient({ session, initialMessages }: Props) {
@@ -57,6 +66,9 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
   const [sending, setSending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sessionStatus, setSessionStatus] = useState<SessionMeta['status']>(session.status);
+  const [assignedLabel, setAssignedLabel] = useState<string | null>(session.assigned_label);
+  const [resolvedAt, setResolvedAt] = useState<string | null>(session.resolved_at);
+  const [resolving, setResolving] = useState(false);
   const [closing, setClosing] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -97,6 +109,16 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
           setMessages((prev) => prev.map((x) => (x.id === m.id ? m : x)));
         }
       )
+      .on(
+        'postgres_changes',
+        { event: 'UPDATE', schema: 'public', table: 'chat_sessions', filter: `id=eq.${session.id}` },
+        (payload) => {
+          const s = payload.new as { status?: SessionMeta['status']; assigned_label?: string | null; resolved_at?: string | null };
+          if (s.status) setSessionStatus(s.status);
+          setAssignedLabel(s.assigned_label ?? null);
+          setResolvedAt(s.resolved_at ?? null);
+        }
+      )
       .subscribe();
 
     return () => {
@@ -127,6 +149,38 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
       }
     } finally {
       setClosing(false);
+    }
+  };
+
+  const handleResolve = async () => {
+    if (
+      !window.confirm(
+        '이 상담을 완료로 표시할까요?\nSlack에서는 이 손님의 방이 보관함으로 들어가고, 대화 기록은 이 화면에 그대로 남습니다.\n손님에게는 아무 메시지도 가지 않습니다.'
+      )
+    )
+      return;
+    setResolving(true);
+    setError(null);
+    try {
+      await resolveSession(session.id);
+      setResolvedAt(new Date().toISOString());
+    } catch (err) {
+      setError(err instanceof ChatApiError ? `완료 처리 실패: ${err.code}` : '완료 처리 실패');
+    } finally {
+      setResolving(false);
+    }
+  };
+
+  const handleUnresolve = async () => {
+    setResolving(true);
+    setError(null);
+    try {
+      await unresolveSession(session.id);
+      setResolvedAt(null);
+    } catch (err) {
+      setError(err instanceof ChatApiError ? `완료 취소 실패: ${err.code}` : '완료 취소 실패');
+    } finally {
+      setResolving(false);
     }
   };
 
@@ -183,6 +237,9 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
                 {session.visitor_email || '이메일 없음'}
                 <span className="hidden sm:inline"> · 시작 {formatTime(session.created_at)}</span>
               </div>
+              <div className="text-xs text-gray-500 mt-0.5">
+                담당: {assignedLabel ?? '미정'}
+              </div>
               {session.visitor_messenger_handle && (
                 <div className="text-xs text-emerald-700 mt-0.5 break-all">
                   📱 {messengerLabel(session.visitor_messenger_channel)}{' '}
@@ -205,21 +262,43 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
             <div className="flex items-center gap-2 flex-shrink-0">
               <span
                 className={`text-xs px-2 py-1 rounded-md whitespace-nowrap ${
-                  sessionStatus === 'open'
-                    ? 'bg-green-50 text-green-700 border border-green-100'
-                    : 'bg-gray-100 text-gray-500'
+                  sessionStatus !== 'open'
+                    ? 'bg-gray-100 text-gray-500'
+                    : resolvedAt
+                    ? 'bg-[#b4988d]/10 text-[#6d4e42] border border-[#b4988d]/30'
+                    : 'bg-green-50 text-green-700 border border-green-100'
                 }`}
               >
-                {sessionStatus === 'open' ? '진행 중' : '종료'}
+                {sessionStatus !== 'open' ? '종료' : resolvedAt ? '완료' : '진행 중'}
               </span>
+              {sessionStatus === 'open' && !resolvedAt && (
+                <button
+                  type="button"
+                  onClick={() => void handleResolve()}
+                  disabled={resolving}
+                  className="text-xs px-3 min-h-[32px] rounded-md bg-[#b4988d] text-white hover:bg-[#a3877d] disabled:opacity-50 transition whitespace-nowrap"
+                >
+                  {resolving ? '처리 중...' : '완료 처리'}
+                </button>
+              )}
+              {sessionStatus === 'open' && resolvedAt && (
+                <button
+                  type="button"
+                  onClick={() => void handleUnresolve()}
+                  disabled={resolving}
+                  className="text-xs px-3 min-h-[32px] rounded-md border border-[#b4988d] text-[#6d4e42] hover:bg-[#b4988d]/10 disabled:opacity-50 transition whitespace-nowrap"
+                >
+                  {resolving ? '처리 중...' : '완료 취소'}
+                </button>
+              )}
               {sessionStatus === 'open' && (
                 <button
                   type="button"
                   onClick={() => void handleClose()}
                   disabled={closing}
-                  className="text-xs px-3 min-h-[32px] rounded-md border border-red-200 text-red-600 hover:bg-red-50 disabled:opacity-50 transition whitespace-nowrap"
+                  className="text-xs px-3 min-h-[32px] rounded-md border border-gray-300 text-gray-500 hover:bg-gray-50 disabled:opacity-50 transition whitespace-nowrap"
                 >
-                  {closing ? '종료 중...' : '대화 종료'}
+                  {closing ? '보내는 중...' : '상담 종료 안내 보내기'}
                 </button>
               )}
             </div>
@@ -332,7 +411,19 @@ function AdminMessageRow({ message }: { message: ChatMessage }) {
       {failed && (
         <div className="mt-0.5 text-[11px] text-red-500">(번역 실패 — 원문만 저장됨)</div>
       )}
-      <div className="mt-0.5 text-[10px] text-gray-400">{formatTime(message.created_at)}</div>
+      <div className="mt-0.5 text-[10px] text-gray-400">
+        {isOperator && (
+          <span className="mr-1">
+            {message.source === 'auto'
+              ? '자동 안내'
+              : message.source === 'slack'
+              ? `Slack · ${message.sender_label ?? 'Slack 직원'}`
+              : '관리자 화면'}
+            {' · '}
+          </span>
+        )}
+        {formatTime(message.created_at)}
+      </div>
     </div>
   );
 }

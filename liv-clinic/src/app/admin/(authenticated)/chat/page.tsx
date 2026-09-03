@@ -15,6 +15,8 @@ interface SessionRow {
   last_message_at: string | null;
   unread_admin_count: number;
   created_at: string;
+  assigned_label: string | null;
+  resolved_at: string | null;
 }
 
 // 방문자가 남긴 채널 표기 (미지의 값은 원문 그대로 — 채널 확장 대비)
@@ -53,14 +55,19 @@ function relativeTime(iso: string | null): string {
   return `${day}일 전`;
 }
 
-async function loadSessions(status: string): Promise<SessionRow[]> {
+type Tab = 'open' | 'resolved' | 'closed';
+
+async function loadSessions(tab: Tab): Promise<SessionRow[]> {
   const admin = createChatAdminClient();
-  const { data, error } = await admin
+  let query = admin
     .from('chat_sessions')
     .select(
-      'id, visitor_locale, visitor_name, visitor_email, visitor_messenger_channel, visitor_messenger_handle, status, last_message_at, unread_admin_count, created_at'
-    )
-    .eq('status', status)
+      'id, visitor_locale, visitor_name, visitor_email, visitor_messenger_channel, visitor_messenger_handle, status, last_message_at, unread_admin_count, created_at, assigned_label, resolved_at'
+    );
+  if (tab === 'open') query = query.eq('status', 'open').is('resolved_at', null);
+  else if (tab === 'resolved') query = query.eq('status', 'open').not('resolved_at', 'is', null);
+  else query = query.eq('status', 'closed');
+  const { data, error } = await query
     .order('unread_admin_count', { ascending: false })
     .order('last_message_at', { ascending: false, nullsFirst: false })
     .limit(100);
@@ -77,8 +84,8 @@ export default async function AdminChatListPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const sp = await searchParams;
-  const status = sp.status === 'closed' ? 'closed' : 'open';
-  const sessions = await loadSessions(status);
+  const tab: Tab = sp.status === 'closed' ? 'closed' : sp.status === 'resolved' ? 'resolved' : 'open';
+  const sessions = await loadSessions(tab);
   const unreadCount = sessions.reduce((acc, s) => acc + (s.unread_admin_count || 0), 0);
 
   return (
@@ -93,29 +100,30 @@ export default async function AdminChatListPage({
           )}
         </h1>
         <div className="flex gap-2 text-sm">
-          <Link
-            href="/admin/chat?status=open"
-            className={`px-3 inline-flex items-center min-h-[40px] rounded-md ${
-              status === 'open' ? 'bg-[#b4988d] text-white' : 'bg-gray-100 text-gray-600'
-            }`}
-          >
-            진행 중
-          </Link>
-          <Link
-            href="/admin/chat?status=closed"
-            className={`px-3 inline-flex items-center min-h-[40px] rounded-md ${
-              status === 'closed' ? 'bg-[#b4988d] text-white' : 'bg-gray-100 text-gray-600'
-            }`}
-          >
-            종료
-          </Link>
+          {(
+            [
+              ['open', '진행 중'],
+              ['resolved', '완료'],
+              ['closed', '종료'],
+            ] as const
+          ).map(([key, label]) => (
+            <Link
+              key={key}
+              href={`/admin/chat?status=${key}`}
+              className={`px-3 inline-flex items-center min-h-[40px] rounded-md ${
+                tab === key ? 'bg-[#b4988d] text-white' : 'bg-gray-100 text-gray-600'
+              }`}
+            >
+              {label}
+            </Link>
+          ))}
         </div>
       </div>
 
       <div className="bg-white border border-[#e5e5e5] rounded-lg overflow-hidden">
         {sessions.length === 0 ? (
           <div className="p-8 text-center text-sm text-gray-400">
-            {status === 'open' ? '진행 중인 대화가 없습니다.' : '종료된 대화가 없습니다.'}
+            {tab === 'open' ? '진행 중인 대화가 없습니다.' : tab === 'resolved' ? '완료한 대화가 없습니다.' : '종료된 대화가 없습니다.'}
           </div>
         ) : (
           <ul className="divide-y divide-[#e5e5e5]">
@@ -148,6 +156,11 @@ export default async function AdminChatListPage({
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                    {s.assigned_label && (
+                      <span className="text-[11px] text-[#6d4e42] bg-[#b4988d]/10 rounded-full px-2 py-0.5 whitespace-nowrap">
+                        담당 {s.assigned_label}
+                      </span>
+                    )}
                     {s.unread_admin_count > 0 && (
                       <span className="inline-flex items-center justify-center text-[11px] bg-red-500 text-white rounded-full px-2 py-0.5 whitespace-nowrap">
                         미응답 {s.unread_admin_count}

@@ -7,6 +7,7 @@ import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import { checkSessionMessageLimit } from '@/lib/chat/rateLimit';
 import { broadcastToSession } from '@/lib/chat/broadcast';
 import { relayChatMessageToSlack } from '@/lib/chat/slackRelay';
+import { sendAutoAckIfDue } from '@/lib/chat/autoAck';
 
 export const runtime = 'nodejs';
 
@@ -145,6 +146,7 @@ async function persistAndBroadcast(
       session_id: sessionId,
       sender,
       sender_admin_id: senderAdminId,
+      sender_label: sender === 'operator' ? senderLabel : null,
       original_text: text,
       original_lang: fromLang,
       translation_status: 'pending',
@@ -197,7 +199,13 @@ async function persistAndBroadcast(
       originalText: updated.original_text,
       translatedText,
       senderLabel,
+      receivedAt: updated.created_at,
     });
+    // 자동 첫 안내 — Slack 릴레이 뒤에 실행해 직원 알림을 늦추지 않는다 (스펙 §4.10)
+    if (sender === 'visitor') {
+      const ack = await sendAutoAckIfDue(sessionId);
+      if (ack === 'error') console.warn('[chat/messages] auto ack failed for session', sessionId);
+    }
   });
 
   return NextResponse.json({ message: updated }, { status: 201 });

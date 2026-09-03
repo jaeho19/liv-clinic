@@ -1,4 +1,5 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { buildSystemPrompt } from '../translation';
 
 // MODEL은 모듈 로드 시점에 고정되므로(translation.ts 상단 const),
 // env 정리 후 매번 새로 import해야 기본값 경로를 검증할 수 있다.
@@ -131,5 +132,23 @@ describe('buildOpenAIBody — 모델 계열 분기', () => {
         { role: 'user', content: 'USER' },
       ]);
     }
+  });
+});
+
+describe('buildSystemPrompt — 말투 (원장님 요청 2026-09-03)', () => {
+  it('한국어 → 손님 언어는 따뜻하고 친근한 안내 데스크 말투를 지시한다', () => {
+    const p = buildSystemPrompt('ko', 'en');
+    expect(p).toContain('warm, friendly and welcoming');
+    expect(p).toContain('Do not add greetings, emojis, or any sentence that is not in the source');
+    expect(p).toContain('English');
+  });
+  it('손님 언어 → 한국어(직원이 읽는 쪽)는 그대로 ~합니다체', () => {
+    const p = buildSystemPrompt('en', 'ko');
+    expect(p).not.toContain('warm, friendly');
+    expect(p).toContain('~합니다체');
+  });
+  it('브랜드 보존 규칙은 양방향에 남아 있다', () => {
+    expect(buildSystemPrompt('ko', 'ja')).toContain('Ulthera');
+    expect(buildSystemPrompt('ja', 'ko')).toContain('울쎄라');
   });
 });

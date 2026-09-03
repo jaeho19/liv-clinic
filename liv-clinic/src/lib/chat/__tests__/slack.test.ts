@@ -1,6 +1,17 @@
-import { describe, it, expect, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
 import { createHmac } from 'crypto';
-import { verifySlackSignature, slackTextToPlain, escapeSlackText } from '../slack';
+import {
+  _internals,
+  archiveChannel,
+  callSlack,
+  createPrivateChannel,
+  inviteToChannel,
+  postSlackMessage,
+  unarchiveChannel,
+  verifySlackSignature,
+  slackTextToPlain,
+  escapeSlackText,
+} from '../slack';
 
 const SECRET = 'test-signing-secret';
 
@@ -146,5 +157,137 @@ describe('escapeSlackText', () => {
   it('round-trips through slackTextToPlain', () => {
     const original = 'a < b & c > d';
     expect(slackTextToPlain(escapeSlackText(original))).toBe(original);
+  });
+});
+
+function jsonResponse(
+  body: unknown,
+  init: { status?: number; headers?: Record<string, string> } = {}
+): Response {
+  return new Response(JSON.stringify(body), {
+    status: init.status ?? 200,
+    headers: { 'content-type': 'application/json', ...(init.headers ?? {}) },
+  });
+}
+
+describe('callSlack / postSlackMessage', () => {
+  const originalFetch = global.fetch;
+
+  beforeEach(() => {
+    process.env.SLACK_BOT_TOKEN = 'xoxb-test';
+    process.env.SLACK_CHANNEL_ID = 'C0FEED';
+    vi.spyOn(_internals, 'sleep').mockResolvedValue(undefined);
+  });
+
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+    delete process.env.SLACK_BOT_TOKEN;
+    delete process.env.SLACK_CHANNEL_ID;
+  });
+
+  it('성공 응답을 기존 PostMessageResult 형태로 돌려준다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true, ts: '1.2', channel: 'C1' }));
+    const r = await postSlackMessage({ text: 'hi', channelId: 'C1' });
+    expect(r).toEqual({ ok: true, ts: '1.2', channel: 'C1' });
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    const body = JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body as string);
+    expect(body.channel).toBe('C1');
+    expect(body.reply_broadcast).toBe(false);
+  });
+
+  it('replyBroadcast는 thread_ts가 있을 때만 켜진다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true, ts: '1.2', channel: 'C1' }));
+    await postSlackMessage({ text: 'hi', channelId: 'C1', threadTs: '1.0', replyBroadcast: true });
+    const body = JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body as string);
+    expect(body.thread_ts).toBe('1.0');
+    expect(body.reply_broadcast).toBe(true);
+  });
+
+  it('429는 Retry-After 뒤 1회 재시도한다', async () => {
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(
+        jsonResponse({ ok: false, error: 'ratelimited' }, { status: 429, headers: { 'retry-after': '1' } })
+      )
+      .mockResolvedValueOnce(jsonResponse({ ok: true, ts: '1.3', channel: 'C1' }));
+    const r = await postSlackMessage({ text: 'hi', channelId: 'C1' });
+    expect(r.ok).toBe(true);
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(_internals.sleep).toHaveBeenCalledWith(1000);
+  });
+
+  it('invalid_auth 같은 영구 오류는 재시도하지 않는다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'invalid_auth' }));
+    const r = await callSlack('chat.postMessage', { channel: 'C1', text: 'x' });
+    expect(r).toEqual({ ok: false, error: 'invalid_auth' });
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+  });
+
+  it('토큰이 없으면 fetch를 부르지 않는다', async () => {
+    delete process.env.SLACK_BOT_TOKEN;
+    global.fetch = vi.fn();
+    expect(await callSlack('chat.postMessage', {})).toEqual({ ok: false, error: 'no_bot_token' });
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  it('네트워크 예외는 network_error로 돌려주고 throw하지 않는다', async () => {
+    global.fetch = vi.fn().mockRejectedValue(new Error('boom'));
+    const r = await callSlack('chat.postMessage', {});
+    expect(r).toEqual({ ok: false, error: 'network_error' });
+  });
+});
+
+describe('채널 관리 메서드', () => {
+  const originalFetch = global.fetch;
+  beforeEach(() => {
+    process.env.SLACK_BOT_TOKEN = 'xoxb-test';
+    vi.spyOn(_internals, 'sleep').mockResolvedValue(undefined);
+  });
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+    delete process.env.SLACK_BOT_TOKEN;
+  });
+
+  it('createPrivateChannel은 is_private로 만들고 채널 id·name을 돌려준다', async () => {
+    global.fetch = vi
+      .fn()
+      .mockResolvedValue(jsonResponse({ ok: true, channel: { id: 'C9', name: 'chat-thu-111111' } }));
+    const r = await createPrivateChannel('chat-thu-111111');
+    expect(r).toEqual({ ok: true, data: expect.objectContaining({ channel: { id: 'C9', name: 'chat-thu-111111' } }) });
+    const call = (global.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[0]).toBe('https://slack.com/api/conversations.create');
+    expect(JSON.parse(call[1].body as string)).toEqual({ name: 'chat-thu-111111', is_private: true });
+  });
+
+  it('createPrivateChannel은 name_taken을 그대로 돌려준다 (접미 재시도는 slackRooms 담당)', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'name_taken' }));
+    expect(await createPrivateChannel('x')).toEqual({ ok: false, error: 'name_taken' });
+  });
+
+  it('inviteToChannel은 already_in_channel을 성공으로 본다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'already_in_channel' }));
+    expect((await inviteToChannel('C1', ['U1'])).ok).toBe(true);
+  });
+
+  it('inviteToChannel은 대상이 없으면 호출하지 않는다', async () => {
+    global.fetch = vi.fn();
+    expect((await inviteToChannel('C1', [])).ok).toBe(true);
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
+  it('inviteToChannel은 ID를 쉼표로 이어 보낸다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true }));
+    await inviteToChannel('C1', ['U1', 'U2']);
+    const body = JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body as string);
+    expect(body).toEqual({ channel: 'C1', users: 'U1,U2' });
+  });
+
+  it('archiveChannel은 already_archived를, unarchiveChannel은 not_archived를 성공으로 본다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'already_archived' }));
+    expect((await archiveChannel('C1')).ok).toBe(true);
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'not_archived' }));
+    expect((await unarchiveChannel('C1')).ok).toBe(true);
   });
 });

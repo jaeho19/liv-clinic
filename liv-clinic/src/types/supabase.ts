@@ -139,8 +139,11 @@ export type Database = {
           original_text: string
           sender: string
           sender_admin_id: string | null
+          sender_label: string | null
           session_id: string
           slack_ts: string | null
+          slack_user_id: string | null
+          source: string
           translated_lang: string | null
           translated_text: string | null
           translation_error: string | null
@@ -154,8 +157,11 @@ export type Database = {
           original_text: string
           sender: string
           sender_admin_id?: string | null
+          sender_label?: string | null
           session_id: string
           slack_ts?: string | null
+          slack_user_id?: string | null
+          source?: string
           translated_lang?: string | null
           translated_text?: string | null
           translation_error?: string | null
@@ -169,8 +175,11 @@ export type Database = {
           original_text?: string
           sender?: string
           sender_admin_id?: string | null
+          sender_label?: string | null
           session_id?: string
           slack_ts?: string | null
+          slack_user_id?: string | null
+          source?: string
           translated_lang?: string | null
           translated_text?: string | null
           translation_error?: string | null
@@ -211,13 +220,23 @@ export type Database = {
       chat_sessions: {
         Row: {
           assigned_admin_id: string | null
+          assigned_at: string | null
+          assigned_label: string | null
+          assigned_slack_user_id: string | null
+          auto_ack_at: string | null
+          awaiting_since: string | null
           closed_at: string | null
           created_at: string
+          escalation_level: number
           id: string
           ip_hash: string | null
           last_message_at: string | null
+          resolved_at: string | null
+          resolved_label: string | null
           session_token: string
           slack_channel_id: string | null
+          slack_mode: string | null
+          slack_room_name: string | null
           slack_thread_ts: string | null
           status: string
           unread_admin_count: number
@@ -231,13 +250,23 @@ export type Database = {
         }
         Insert: {
           assigned_admin_id?: string | null
+          assigned_at?: string | null
+          assigned_label?: string | null
+          assigned_slack_user_id?: string | null
+          auto_ack_at?: string | null
+          awaiting_since?: string | null
           closed_at?: string | null
           created_at?: string
+          escalation_level?: number
           id?: string
           ip_hash?: string | null
           last_message_at?: string | null
+          resolved_at?: string | null
+          resolved_label?: string | null
           session_token?: string
           slack_channel_id?: string | null
+          slack_mode?: string | null
+          slack_room_name?: string | null
           slack_thread_ts?: string | null
           status?: string
           unread_admin_count?: number
@@ -251,13 +280,23 @@ export type Database = {
         }
         Update: {
           assigned_admin_id?: string | null
+          assigned_at?: string | null
+          assigned_label?: string | null
+          assigned_slack_user_id?: string | null
+          auto_ack_at?: string | null
+          awaiting_since?: string | null
           closed_at?: string | null
           created_at?: string
+          escalation_level?: number
           id?: string
           ip_hash?: string | null
           last_message_at?: string | null
+          resolved_at?: string | null
+          resolved_label?: string | null
           session_token?: string
           slack_channel_id?: string | null
+          slack_mode?: string | null
+          slack_room_name?: string | null
           slack_thread_ts?: string | null
           status?: string
           unread_admin_count?: number

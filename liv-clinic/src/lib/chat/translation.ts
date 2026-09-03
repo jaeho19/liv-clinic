@@ -68,7 +68,7 @@ const MAX_OUTPUT_TOKENS = 800;
 const BRAND_TERMS_KO = '울쎄라, 써마지, 슈링크, 인모드, 보톡스, 필러, 스킨부스터, LIV';
 const BRAND_TERMS_EN = 'Ulthera, Thermage, Shurink, InMode, Botox, Filler, Skinbooster, LIV';
 
-function buildSystemPrompt(from: SupportedLang, to: SupportedLang): string {
+export function buildSystemPrompt(from: SupportedLang, to: SupportedLang): string {
   if (to === 'ko') {
     return [
       `You are a professional translator for a Korean cosmetic/aesthetic clinic (LIV Plastic Surgery).`,
@@ -89,7 +89,7 @@ function buildSystemPrompt(from: SupportedLang, to: SupportedLang): string {
     `Rules:`,
     `1. Preserve brand/treatment names: ${BRAND_TERMS_KO} → ${BRAND_TERMS_EN} (or the standard local form).`,
     `2. Preserve numbers, dates, prices, and proper nouns verbatim.`,
-    `3. Maintain a polite, professional tone suitable for a medical clinic.`,
+    `3. Tone: warm, friendly and welcoming, like a caring front-desk consultant speaking to a guest. Stay polite and respectful in the natural courteous register of ${LANG_NAMES[to]}. Convey warmth through word choice and natural phrasing only. Do not add greetings, emojis, or any sentence that is not in the source, and keep every fact, number, and price exactly as written.`,
     `4. Output ONLY the translated text. No explanations, no quotes, no language tags.`,
     `5. If the input is already in ${LANG_NAMES[to]} or untranslatable (single emoji, URL only), return it unchanged.`,
   ].join('\n');

@@ -10,7 +10,9 @@ export type SystemMessageKey =
   | 'welcome'
   | 'delayedResponseNotice'
   | 'allOperatorsBusyNotice'
-  | 'sessionEnded';
+  | 'sessionEnded'
+  | 'autoAck'
+  | 'autoAckOffHours';
 
 // chat.{key} 값을 각 locale별로 하드코딩.
 // messages/*.json에서 복사한 문자열 — 런타임 파일 I/O 의존성 최소화.
@@ -23,6 +25,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       "Our staff are momentarily away. Leave a message and we'll reply shortly.",
     sessionEnded:
       'This conversation has ended. Start a new chat for further questions.',
+    autoAck: "Hello! Thank you for your message. Please hold on a moment, we'll get back to you shortly.",
+    autoAckOffHours: "Hello! Thank you for your message. We're outside consultation hours right now and will reply in order once we're back.",
   },
   ja: {
     welcome: 'こんにちは！どのようなご質問でしょうか？',
@@ -32,6 +36,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       'スタッフが少し席を外しております。メッセージをお残しください。後ほどご返信いたします。',
     sessionEnded:
       'この会話は終了しました。追加のご質問は新しいチャットを開始してください。',
+    autoAck: 'こんにちは！メッセージありがとうございます。少々お待ちください。まもなくご返信いたします。',
+    autoAckOffHours: 'こんにちは！メッセージありがとうございます。ただいま相談時間外のため、営業時間開始後に順番にご返信いたします。',
   },
   zh: {
     welcome: '您好！请问有什么可以帮您？',
@@ -40,6 +46,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
     allOperatorsBusyNotice: '客服暂时离开，请留言，我们会尽快回复。',
     sessionEnded:
       '本次对话已结束。如需进一步咨询，请开始新的对话。',
+    autoAck: '您好！感谢您的留言。请稍等，我们会尽快回复您。',
+    autoAckOffHours: '您好！感谢您的留言。现在是非咨询时间，我们将在营业时间内按顺序回复您。',
   },
   'zh-TW': {
     welcome: '您好！請問有什麼可以幫您？',
@@ -48,6 +56,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
     allOperatorsBusyNotice: '客服暫時離開，請留言，我們會盡快回復。',
     sessionEnded:
       '本次對話已結束。如需進一步諮詢，請開始新的對話。',
+    autoAck: '您好！感謝您的留言。請稍候，我們會盡快回覆您。',
+    autoAckOffHours: '您好！感謝您的留言。現在是非諮詢時間，我們將在營業時間內依序回覆您。',
   },
   vi: {
     welcome: 'Xin chào! Hôm nay chúng tôi có thể giúp gì cho bạn?',
@@ -57,6 +67,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       'Nhân viên của chúng tôi đang tạm thời vắng mặt. Bạn hãy để lại tin nhắn, chúng tôi sẽ trả lời trong thời gian ngắn.',
     sessionEnded:
       'Cuộc trò chuyện này đã kết thúc. Hãy bắt đầu cuộc trò chuyện mới nếu bạn có thêm câu hỏi.',
+    autoAck: 'Xin chào! Cảm ơn bạn đã nhắn tin. Vui lòng đợi trong giây lát, chúng tôi sẽ trả lời bạn ngay.',
+    autoAckOffHours: 'Xin chào! Cảm ơn bạn đã nhắn tin. Hiện đang ngoài giờ tư vấn, chúng tôi sẽ lần lượt trả lời trong giờ làm việc.',
   },
   th: {
     welcome: 'สวัสดี! วันนี้เราจะช่วยคุณได้อย่างไร?',
@@ -66,6 +78,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       'เจ้าหน้าที่ของเราไม่อยู่ชั่วครู่ กรุณาฝากข้อความไว้ เราจะตอบกลับในไม่ช้า',
     sessionEnded:
       'บทสนทนานี้จบลงแล้ว หากมีคำถามเพิ่มเติม กรุณาเริ่มแชทใหม่',
+    autoAck: 'สวัสดีค่ะ! ขอบคุณสำหรับข้อความ กรุณารอสักครู่ เราจะตอบกลับโดยเร็วที่สุด',
+    autoAckOffHours: 'สวัสดีค่ะ! ขอบคุณสำหรับข้อความ ขณะนี้อยู่นอกเวลาให้คำปรึกษา เราจะตอบกลับตามลำดับในเวลาทำการค่ะ',
   },
   ru: {
     welcome: 'Здравствуйте! Чем мы можем помочь вам сегодня?',
@@ -75,6 +89,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       'Наши сотрудники ненадолго отошли. Оставьте сообщение, и мы ответим в ближайшее время.',
     sessionEnded:
       'Этот разговор завершён. Для дальнейших вопросов начните новый чат.',
+    autoAck: 'Здравствуйте! Спасибо за сообщение. Пожалуйста, подождите немного, мы скоро вам ответим.',
+    autoAckOffHours: 'Здравствуйте! Спасибо за сообщение. Сейчас нерабочее время, мы ответим вам в порядке очереди в рабочие часы.',
   },
   fr: {
     welcome: 'Bonjour ! Comment pouvons-nous vous aider aujourd\'hui ?',
@@ -84,6 +100,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       'Notre équipe est momentanément absente. Laissez un message, nous vous répondrons sous peu.',
     sessionEnded:
       'Cette conversation est terminée. Démarrez une nouvelle discussion pour toute autre question.',
+    autoAck: 'Bonjour ! Merci pour votre message. Un instant, nous vous répondons très vite.',
+    autoAckOffHours: "Bonjour ! Merci pour votre message. Nous sommes en dehors des heures de consultation et vous répondrons dans l'ordre à notre retour.",
   },
   mn: {
     welcome: 'Сайн байна уу! Бид танд яаж туслах вэ?',
@@ -93,6 +111,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       'Манай ажилтан түр зуур байхгүй байна. Мессеж үлдээвэл бид удахгүй хариулна.',
     sessionEnded:
       'Энэ ярилцлага дууссан. Шинэ асуулт байвал шинээр чат эхлүүлнэ үү.',
+    autoAck: 'Сайн байна уу! Мессеж үлдээсэнд баярлалаа. Түр хүлээнэ үү, бид удахгүй хариулах болно.',
+    autoAckOffHours: 'Сайн байна уу! Мессеж үлдээсэнд баярлалаа. Одоо зөвлөгөөний цаг биш тул ажлын цагаар дарааллын дагуу хариулах болно.',
   },
   ar: {
     welcome: 'مرحباً! كيف يمكننا مساعدتك اليوم؟',
@@ -102,6 +122,8 @@ const SYSTEM_MESSAGES: Record<VisitorLocale, Record<SystemMessageKey, string>> =
       'فريقنا غير متاح مؤقتاً. اترك رسالة وسنرد عليك قريباً.',
     sessionEnded:
       'انتهت هذه المحادثة. ابدأ محادثة جديدة لأي استفسارات أخرى.',
+    autoAck: 'مرحباً! شكراً لرسالتك. يرجى الانتظار قليلاً، سنرد عليك قريباً.',
+    autoAckOffHours: 'مرحباً! شكراً لرسالتك. نحن حالياً خارج ساعات الاستشارة وسنرد عليك بالترتيب عند عودتنا.',
   },
 };
 
@@ -138,4 +160,19 @@ export function getContactSavedMessage(
 ): string {
   const tpl = CONTACT_SAVED_TEMPLATES[locale] ?? CONTACT_SAVED_TEMPLATES.en;
   return tpl.replace('{channel}', channelLabel).replace('{handle}', handle);
+}
+
+// 자동 첫 안내의 한국어 원문 — 관리자 화면에 "직원 답장"처럼 보이도록 original_text로 저장한다 (스펙 §4.10).
+const AUTO_ACK_KO: Record<'autoAck' | 'autoAckOffHours', string> = {
+  autoAck: '안녕하세요! 메시지 감사합니다. 잠시만 기다려 주세요. 곧 답변을 드리겠습니다.',
+  autoAckOffHours:
+    '안녕하세요! 메시지 감사합니다. 지금은 상담 시간이 아니어서 상담 시간에 순서대로 답변드리겠습니다.',
+};
+
+export function getAutoAckTexts(
+  locale: VisitorLocale,
+  offHours: boolean
+): { ko: string; localized: string } {
+  const key = offHours ? 'autoAckOffHours' : 'autoAck';
+  return { ko: AUTO_ACK_KO[key], localized: getChatSystemMessage(locale, key) };
 }
