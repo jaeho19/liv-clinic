@@ -9,7 +9,6 @@ import { trackPrepToInquiry } from '@/lib/analytics-events';
 interface Props {
   result: PrepCardResult;
   concernId: string;
-  description: string;
 }
 
 function Card({ title, children }: { title: string; children: React.ReactNode }) {
@@ -21,7 +20,7 @@ function Card({ title, children }: { title: string; children: React.ReactNode })
   );
 }
 
-export default function PrepResult({ result, concernId, description }: Props) {
+export default function PrepResult({ result, concernId }: Props) {
   const t = useTranslations('consultPrep');
   const withMeta = result.treatments.filter((x) => !x.consultOnly && x.duration);
 
@@ -98,12 +97,16 @@ export default function PrepResult({ result, concernId, description }: Props) {
 
       <p className="text-small text-mono-light leading-relaxed">{t('disclaimer')}</p>
 
+      {/*
+        손님 자유 서술은 URL로 넘기지 않는다. 히스토리·액세스 로그·애널리틱스에 남는다.
+        /contact가 이 값을 받아 쓰게 될 때는 sessionStorage나 서버 단기 토큰 등
+        로그에 남지 않는 경로로 넘긴다. (2026-09-03)
+      */}
       <Link
         href={{
           pathname: '/contact',
           query: {
             concern: concernId,
-            prep: description.slice(0, 200),
             tags: result.treatments.filter((x) => !x.consultOnly).map((x) => x.id).join(','),
           },
         }}
