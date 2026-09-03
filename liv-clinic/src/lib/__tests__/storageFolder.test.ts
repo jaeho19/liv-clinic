@@ -14,6 +14,7 @@ describe('sanitizeStorageFolder', () => {
   });
 
   it('falls back to temp for empty or whitespace-only input', () => {
+    // 여기서만 temp 다 — 파생시킬 원본 문자열 자체가 없다.
     expect(sanitizeStorageFolder('')).toBe('temp');
     expect(sanitizeStorageFolder('   ')).toBe('temp');
   });
@@ -22,9 +23,21 @@ describe('sanitizeStorageFolder', () => {
     expect(sanitizeStorageFolder('My Event 2026!')).toBe('my-event-2026');
   });
 
-  it('falls back to temp when fewer than two alphanumerics survive', () => {
-    expect(sanitizeStorageFolder('8월-프로모션')).toBe('temp');
-    expect(sanitizeStorageFolder('리브성형외과-5월-프로모션')).toBe('temp');
+  // 예전에는 비ASCII 슬러그가 전부 공용 `temp`로 접혔다. 그 결과 서로 다른 이벤트의
+  // 이미지가 events/temp 한 폴더에 125장까지 쌓여 어느 파일이 어느 이벤트 것인지
+  // 구분할 수 없었다. 슬러그별로 안정적인 고유 폴더를 준다.
+  it('gives a non-ASCII slug its own stable folder instead of the shared temp', () => {
+    const august = sanitizeStorageFolder('8월-프로모션');
+    const july = sanitizeStorageFolder('7월-프로모션');
+
+    expect(august).not.toBe('temp');
+    expect(august).not.toBe(july);
+    // 같은 슬러그는 언제 불러도 같은 폴더여야 한다 (수정 저장 때 흩어지면 안 됨)
+    expect(sanitizeStorageFolder('8월-프로모션')).toBe(august);
+  });
+
+  it('keeps the ASCII part of a mixed slug readable and appends a discriminator', () => {
+    expect(sanitizeStorageFolder('2026-8월-promotion')).toMatch(/^2026-{0,1}-?8-promotion/);
   });
 
   it('caps the result at 60 chars without leaving a trailing separator', () => {

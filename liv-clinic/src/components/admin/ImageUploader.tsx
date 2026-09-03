@@ -3,7 +3,12 @@
 import { useState, useRef } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 import { sanitizeStorageFolder } from '@/lib/storageFolder';
+import { compressForUpload, presetForBucket, type ImagePreset } from '@/lib/imageCompress';
 import Image from 'next/image';
+
+// 1년. 파일명이 타임스탬프 기반이라 같은 URL의 내용이 바뀌지 않으므로 장기 캐시가 안전하다.
+// 기본값 3600으로 두면 어제 방문한 사용자가 오늘 이미지를 전부 다시 받는다.
+const CACHE_CONTROL = '31536000';
 
 const ALLOWED_MIME_TYPES: readonly string[] = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
 
@@ -48,12 +53,16 @@ const validateFile = (file: File, maxSizeMb: number): UploadFailure | null => {
   return null;
 };
 
-const buildStoragePath = (folder: string, index: number, file: File, contentType: string): string => {
+const buildStoragePath = (folder: string, index: number, extension: string): string => {
   const suffix = Math.random().toString(36).slice(2, 8).padEnd(6, '0');
-  const rawExt = getExtension(file.name);
-  const ext = MIME_BY_EXTENSION[rawExt] ? rawExt : EXTENSION_BY_MIME[contentType] ?? 'jpg';
   // Korean event slugs reach us verbatim; an unsanitized folder makes Storage answer 400 InvalidKey.
-  return `${sanitizeStorageFolder(folder)}/${Date.now()}-${index}-${suffix}.${ext}`;
+  return `${sanitizeStorageFolder(folder)}/${Date.now()}-${index}-${suffix}.${extension}`;
+};
+
+/** 변환 실패로 원본을 그대로 올릴 때 쓸 확장자 */
+const fallbackExtensionFor = (file: File, contentType: string): string => {
+  const rawExt = getExtension(file.name);
+  return MIME_BY_EXTENSION[rawExt] ? rawExt : EXTENSION_BY_MIME[contentType] ?? 'jpg';
 };
 
 interface ImageUploaderBaseProps {
@@ -61,6 +70,8 @@ interface ImageUploaderBaseProps {
   folder: string;
   label?: string;
   maxSizeMb?: number;
+  /** 표시 크기가 용도마다 달라 변환 규격도 달라진다. 생략하면 버킷 기준 기본값. */
+  preset?: ImagePreset;
 }
 
 type ImageUploaderProps = ImageUploaderBaseProps &
@@ -70,7 +81,8 @@ type ImageUploaderProps = ImageUploaderBaseProps &
   );
 
 export default function ImageUploader(props: ImageUploaderProps) {
-  const { bucket, folder, label, maxSizeMb = 5 } = props;
+  const { bucket, folder, label, maxSizeMb = 5, preset } = props;
+  const uploadPreset: ImagePreset = preset ?? presetForBucket(bucket);
   const isMultiple = props.multiple === true;
   const supabase = createClient();
   const [uploading, setUploading] = useState(false);
@@ -117,12 +129,19 @@ export default function ImageUploader(props: ImageUploaderProps) {
       const file = accepted[i];
       setProgress({ current: i + 1, total: accepted.length });
 
-      const contentType = resolveContentType(file) ?? 'image/jpeg';
-      const path = buildStoragePath(folder, i, file, contentType);
-      const { error } = await supabase.storage.from(bucket).upload(path, file, {
-        cacheControl: '3600',
+      const sourceContentType = resolveContentType(file) ?? 'image/jpeg';
+      // 업로드 전에 반드시 WebP 변환 + 리사이즈. 원본이 그대로 쌓이면 egress가 다시 터진다.
+      const compressed = await compressForUpload(
+        file,
+        uploadPreset,
+        sourceContentType,
+        fallbackExtensionFor(file, sourceContentType)
+      );
+      const path = buildStoragePath(folder, i, compressed.extension);
+      const { error } = await supabase.storage.from(bucket).upload(path, compressed.blob, {
+        cacheControl: CACHE_CONTROL,
         upsert: false,
-        contentType,
+        contentType: compressed.contentType,
       });
 
       if (error) {
