@@ -1,8 +1,14 @@
 import { after, NextRequest, NextResponse } from 'next/server';
 import { createChatAdminClient } from '@/lib/chat/db';
-import { getSlackChannelId, verifySlackSignature } from '@/lib/chat/slack';
-import { classifySlackEvent, routeInbound, type SlackEnvelope } from '@/lib/chat/slackEvents';
-import { relaySlackReplyToVisitor } from '@/lib/chat/slackRelay';
+import { verifySlackSignature } from '@/lib/chat/slack';
+import { classifySlackEvent, type SlackEnvelope } from '@/lib/chat/slackEvents';
+import {
+  handleRoomArchived,
+  handleRoomUnarchived,
+  notifyDeliveryFailure,
+  relaySlackReplyToVisitor,
+  type RelayInboundArgs,
+} from '@/lib/chat/slackRelay';
 
 export const runtime = 'nodejs';
 // 서명 검증에는 원본 바이트가 필요하므로 어떤 캐싱/변형도 걸리지 않게 한다.
@@ -15,14 +21,10 @@ function debug(...args: unknown[]): void {
 }
 
 /**
- * Slack Events API 수신 엔드포인트 (비공개 채널 → message.groups 구독).
- *
- * 응답 예산: Slack은 3초 내 200을 못 받으면 동일 event_id로 재시도한다.
- * 따라서 동기 구간은 [서명 검증 → 분류 → event_id 선점] 까지만 두고,
- * 번역·DB INSERT·Broadcast는 `after()`로 응답 이후에 처리한다.
+ * Slack Events API 수신 (message.groups + group_archive + group_unarchive).
+ * 동기 구간은 [서명 검증 → 분류 → event_id 선점]까지. 번역·DB INSERT·Broadcast는 after().
  */
 export async function POST(req: NextRequest) {
-  // 1. raw body — JSON.parse 이전의 원문 그대로여야 HMAC이 일치한다.
   let rawBody: string;
   try {
     rawBody = await req.text();
@@ -30,13 +32,11 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'unreadable_body' }, { status: 400 });
   }
 
-  // 2. 서명 검증 (url_verification 요청도 서명되어 오므로 challenge보다 먼저 검증한다)
   const sig = verifySlackSignature({
     rawBody,
     signature: req.headers.get('x-slack-signature'),
     timestamp: req.headers.get('x-slack-request-timestamp'),
   });
-
   if (!sig.valid) {
     if (sig.reason === 'no_signing_secret') {
       console.error('[slack/events] SLACK_SIGNING_SECRET is not configured');
@@ -46,7 +46,6 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'invalid_signature' }, { status: 401 });
   }
 
-  // 3. 파싱
   let body: SlackEnvelope;
   try {
     body = JSON.parse(rawBody) as SlackEnvelope;
@@ -54,9 +53,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'invalid_json' }, { status: 400 });
   }
 
-  // 4. 분류 (모양) → 라우팅 (채널)
   const decision = classifySlackEvent(body);
-
   if (decision.action === 'challenge') {
     return NextResponse.json({ challenge: decision.challenge });
   }
@@ -64,36 +61,41 @@ export async function POST(req: NextRequest) {
     debug('ignored:', decision.reason);
     return NextResponse.json({ ok: true, ignored: decision.reason });
   }
-  // Task 9 전 임시: 보관 이벤트와 방 메시지는 아직 처리하지 않는다 (현행 = #해외문의 스레드만)
-  if (decision.action !== 'process') {
-    return NextResponse.json({ ok: true, ignored: decision.action });
-  }
-  const route = routeInbound(decision, getSlackChannelId());
-  if (route.kind !== 'legacy_thread') {
-    return NextResponse.json({ ok: true, ignored: route.kind === 'skip' ? route.reason : 'room_pending' });
-  }
 
-  // 5. event_id 선점 (중복/재시도 차단)
   const claim = await claimEvent(decision.eventId, body.event?.type ?? null);
   if (claim === 'duplicate') {
     debug('duplicate event_id, skipping:', decision.eventId);
     return NextResponse.json({ ok: true, duplicate: true });
   }
 
-  // 6. 무거운 작업은 응답 이후로
   after(async () => {
-    const outcome = await relaySlackReplyToVisitor({
-      threadTs: route.threadTs,
-      slackTs: decision.slackTs,
-      text: decision.text,
-    });
-    if (outcome !== 'delivered') {
-      console.warn(
-        `[slack/events] reply not delivered (${outcome}) event_id=${decision.eventId} thread_ts=${route.threadTs}`
-      );
-    } else {
-      debug('delivered to visitor:', route.threadTs);
+    if (decision.action === 'room_archived') {
+      await handleRoomArchived(decision.channel);
+      return;
     }
+    if (decision.action === 'room_unarchived') {
+      await handleRoomUnarchived(decision.channel);
+      return;
+    }
+    const inbound: RelayInboundArgs = {
+      channel: decision.channel,
+      slackTs: decision.slackTs,
+      threadTs: decision.threadTs,
+      isTopLevel: decision.isTopLevel,
+      isBroadcast: decision.isBroadcast,
+      text: decision.text,
+      slackUserId: decision.slackUserId,
+    };
+    const outcome = await relaySlackReplyToVisitor(inbound);
+    if (outcome === 'delivered') {
+      debug('delivered to visitor:', decision.channel);
+      return;
+    }
+    // event_id를 이미 선점했으므로 Slack 재시도로는 복구되지 않는다 — 로그 + 같은 방/스레드에 ⚠️ 알림.
+    console.warn(
+      `[slack/events] reply not delivered (${outcome}) event_id=${decision.eventId} channel=${decision.channel}`
+    );
+    await notifyDeliveryFailure(inbound, outcome);
   });
 
   return NextResponse.json({ ok: true });
@@ -101,21 +103,13 @@ export async function POST(req: NextRequest) {
 
 type ClaimResult = 'claimed' | 'duplicate' | 'unknown';
 
-/**
- * chat_slack_events에 event_id를 INSERT하여 처리 권한을 선점한다.
- * PK 충돌(23505) = 이미 처리된 이벤트.
- * 그 외 DB 오류는 'unknown'으로 처리를 진행시킨다 — 중복 전달이 유실보다 낫다.
- */
+/** chat_slack_events에 event_id를 INSERT하여 처리 권한을 선점한다. PK 충돌(23505) = 이미 처리됨. */
 async function claimEvent(eventId: string, eventType: string | null): Promise<ClaimResult> {
   try {
     const admin = createChatAdminClient();
-    const { error } = await admin
-      .from('chat_slack_events')
-      .insert({ event_id: eventId, event_type: eventType });
-
+    const { error } = await admin.from('chat_slack_events').insert({ event_id: eventId, event_type: eventType });
     if (!error) return 'claimed';
     if (error.code === '23505') return 'duplicate';
-
     console.warn('[slack/events] event claim failed:', error.code ?? 'unknown');
     return 'unknown';
   } catch (e) {
@@ -124,7 +118,7 @@ async function claimEvent(eventId: string, eventType: string | null): Promise<Cl
   }
 }
 
-// Slack은 POST만 보낸다. GET은 헬스체크 용도로만 최소 응답.
+// Slack은 POST만 보낸다. GET은 헬스체크(keep-warm 대상) 용도로만 최소 응답.
 export async function GET() {
   return NextResponse.json({ ok: true, endpoint: 'slack-events' });
 }
