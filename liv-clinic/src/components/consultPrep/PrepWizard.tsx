@@ -72,6 +72,9 @@ export default function PrepWizard({ concernId, concernTitle, lang, onResult }: 
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
+            // 이 기능의 필수 입력인데 placeholder 뿐이라 스크린리더에 이름이 없었다.
+            // step2Title 이 이미 그 질문 문장이다 — 새 i18n 키를 만들지 않는다.
+            aria-label={t('step2Title')}
             placeholder={t('step2Placeholder')}
             rows={4}
             maxLength={500}
