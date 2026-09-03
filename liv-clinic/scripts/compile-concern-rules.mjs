@@ -7,6 +7,14 @@
  *
  * 생성물은 커밋한다. 빌드가 깨져도 이전 값으로 돌아갈 수 있고,
  * 규칙표 변경이 diff에 드러난다.
+ *
+ * ⚠️ 이 스크립트는 반드시 `tsx` 로 실행한다 (`package.json` 의 prebuild).
+ *    `node` 로 바꾸지 말 것 — main() 이 `src/lib/constants.ts` 를 동적 import 하는데,
+ *    Netlify 는 `netlify.toml` 에서 NODE_VERSION=20 을 고정하고 있고 Node 20 에는
+ *    타입 스트리핑이 없어 `Unknown file extension ".ts"` 로 빌드가 죽는다.
+ *    로컬 Node 24 는 타입을 기본으로 벗겨내서 이 실패가 보이지 않는다 (2026-09-03 실제 발생).
+ *    로컬에서 Netlify 환경을 흉내내려면:
+ *      node --no-experimental-strip-types ./node_modules/tsx/dist/cli.mjs scripts/compile-concern-rules.mjs
  */
 import fs from 'node:fs';
 import path from 'node:path';
