@@ -24,11 +24,15 @@ export type AutoAckOutcome = 'sent' | 'not_due' | 'lost_race' | 'error';
 export async function sendAutoAckIfDue(sessionId: string, now = new Date()): Promise<AutoAckOutcome> {
   try {
     const admin = createChatAdminClient();
-    const { data: s } = await admin
+    const { data: s, error: readError } = await admin
       .from('chat_sessions')
       .select('id, visitor_locale, awaiting_since, auto_ack_at')
       .eq('id', sessionId)
       .maybeSingle();
+    if (readError) {
+      console.warn('[auto ack] session read failed:', readError.code ?? 'unknown');
+      return 'error';
+    }
     if (!s || !s.awaiting_since) return 'not_due';
     if (!shouldSendAutoAck({ awaitingSince: s.awaiting_since, autoAckAt: s.auto_ack_at })) return 'not_due';
 
