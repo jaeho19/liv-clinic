@@ -61,7 +61,12 @@ export async function PATCH(
     // Task 12 addendum: 이미 완료된 세션은 UPDATE 대상에서 제외해 반복 클릭을 무변경으로 만든다.
     const { data: updated, error } = await admin
       .from('chat_sessions')
-      .update({ resolved_at: new Date().toISOString(), resolved_label: '관리자 화면' })
+      .update({
+        resolved_at: new Date().toISOString(),
+        resolved_label: '관리자 화면',
+        awaiting_since: null,
+        escalation_level: 0,
+      })
       .eq('id', sessionId)
       .is('resolved_at', null)
       .select('id');
@@ -106,6 +111,8 @@ export async function PATCH(
     .update({
       status: 'closed',
       closed_at: new Date().toISOString(),
+      awaiting_since: null,
+      escalation_level: 0,
     })
     .eq('id', sessionId);
 

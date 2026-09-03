@@ -311,9 +311,9 @@ async function postInRoom(
       // 해제는 됐는데 재게시가 실패 — 손님 메시지를 잃지 않도록 스레드로 폴백한다.
       // 방을 다시 보관해야 한다. 열린 채로 두면 세션과 끊긴 방에 직원이 답을 쓰고 손님은 못 받는다.
       console.warn('[slack relay] reopened room post failed, switching session to thread mode:', posted.error);
+      await revertToThreadMode(admin, session.id);
       const r = await archiveChannel(channelId);
       if (!r.ok) console.warn('[slack relay] archive failed:', r.error);
-      await revertToThreadMode(admin, session.id);
       return 'fallback_thread';
     }
     await postFeed(
@@ -328,6 +328,11 @@ async function postInRoom(
   }
 
   if (!posted.ok || !posted.ts) {
+    if (posted.error === 'channel_not_found' || posted.error === 'not_in_channel') {
+      console.warn('[slack relay] room channel gone, switching session to thread mode:', posted.error);
+      await revertToThreadMode(admin, session.id);
+      return 'fallback_thread';
+    }
     console.warn('[slack relay] room post failed:', posted.error);
     return 'failed';
   }
@@ -480,7 +485,12 @@ export async function handleRoomArchived(channel: string): Promise<void> {
     const admin = createChatAdminClient();
     const { error } = await admin
       .from('chat_sessions')
-      .update({ resolved_at: new Date().toISOString(), resolved_label: 'Slack에서 보관' })
+      .update({
+        resolved_at: new Date().toISOString(),
+        resolved_label: 'Slack에서 보관',
+        awaiting_since: null,
+        escalation_level: 0,
+      })
       .eq('slack_channel_id', channel)
       .eq('slack_mode', 'room')
       .is('resolved_at', null);
