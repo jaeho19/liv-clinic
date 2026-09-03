@@ -12,6 +12,7 @@ import 'server-only';
 import { checkAdCopy } from './adGuard';
 import { treatmentsFor, termsFor, questionsFor, isKnownTerm, isKnownQuestion } from './rules';
 import type { PrepLang } from './types';
+import { isReasoningFamily } from '@/lib/chat/translation';
 
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
 const MODEL = process.env.OPENAI_CONSULT_PREP_MODEL ?? 'gpt-5.6-luna';
@@ -80,9 +81,57 @@ function buildPrompt(concernId: string, lang: PrepLang): string {
   ].join('\n');
 }
 
-async function callModel(prompt: string, userText: string): Promise<RawSelection | null> {
+/**
+ * 모델 계열에 맞는 chat.completions 요청 바디.
+ *
+ * reasoning 계열(gpt-5 / o1 / o3 / o4)과 구형 계열(gpt-4o / 4.1 등)은 파라미터 규칙이 다르고
+ * 하나라도 어긋나면 400이 난다 — throw-free 계약이라 400도 조용한 규칙표 폴백이 된다.
+ * translation.ts의 isReasoningFamily로 분기를 코드에 고정한다(buildOpenAIBody는 재사용하지
+ * 않는다 — 그쪽은 MAX_OUTPUT_TOKENS가 800이고 response_format이 없다).
+ */
+function buildRequestBody(model: string, prompt: string, userText: string): Record<string, unknown> {
+  const messages = [
+    { role: 'system', content: prompt },
+    { role: 'user', content: userText },
+  ];
+
+  if (isReasoningFamily(model)) {
+    return {
+      model,
+      messages,
+      max_completion_tokens: MAX_OUTPUT_TOKENS,
+      reasoning_effort: process.env.CONSULT_PREP_REASONING_EFFORT || 'none',
+      response_format: { type: 'json_object' },
+    };
+  }
+
+  return {
+    model,
+    messages,
+    max_tokens: MAX_OUTPUT_TOKENS,
+    temperature: 0.2,
+    response_format: { type: 'json_object' },
+  };
+}
+
+/** 폴백 사유. 로그에는 이 코드와 HTTP 상태만 남긴다 — 손님 입력은 절대 넣지 않는다. */
+type FallbackReason =
+  | 'no_api_key'
+  | 'invalid_json'
+  | 'not_an_object'
+  | 'timeout'
+  | 'fetch_error'
+  | `http_${number}`;
+
+type CallResult = { raw: RawSelection; reason?: undefined } | { raw: null; reason: FallbackReason };
+
+function isAbortError(e: unknown): boolean {
+  return e instanceof Error && (e.name === 'AbortError' || e.message.toLowerCase().includes('abort'));
+}
+
+async function callModel(prompt: string, userText: string): Promise<CallResult> {
   const apiKey = process.env.OPENAI_API_KEY;
-  if (!apiKey) return null;
+  if (!apiKey) return { raw: null, reason: 'no_api_key' };
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
@@ -91,24 +140,27 @@ async function callModel(prompt: string, userText: string): Promise<RawSelection
       method: 'POST',
       signal: controller.signal,
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: [
-          { role: 'system', content: prompt },
-          { role: 'user', content: userText },
-        ],
-        max_completion_tokens: MAX_OUTPUT_TOKENS,
-        reasoning_effort: process.env.CONSULT_PREP_REASONING_EFFORT || 'none',
-        response_format: { type: 'json_object' },
-      }),
+      body: JSON.stringify(buildRequestBody(MODEL, prompt, userText)),
     });
-    if (!res.ok) return null;
+    if (!res.ok) return { raw: null, reason: `http_${res.status}` };
+
     const json = (await res.json()) as { choices?: Array<{ message?: { content?: string } }> };
     const content = json?.choices?.[0]?.message?.content?.trim();
-    if (!content) return null;
-    return JSON.parse(content) as RawSelection;
-  } catch {
-    return null;
+    if (!content) return { raw: null, reason: 'invalid_json' };
+
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(content);
+    } catch {
+      return { raw: null, reason: 'invalid_json' };
+    }
+    // JSON.parse는 성공해도 배열/숫자/문자열/불리언일 수 있다 — 순수 객체가 아니면 폴백.
+    if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+      return { raw: null, reason: 'not_an_object' };
+    }
+    return { raw: parsed as RawSelection };
+  } catch (e) {
+    return { raw: null, reason: isAbortError(e) ? 'timeout' : 'fetch_error' };
   } finally {
     clearTimeout(timer);
   }
@@ -122,19 +174,24 @@ export async function classify(input: {
   const { concernId, description, lang } = input;
   const base = fallback(concernId);
 
-  const raw = await callModel(buildPrompt(concernId, lang), description);
-  if (!raw) return base;
+  const result = await callModel(buildPrompt(concernId, lang), description);
+  if (!result.raw) {
+    // 사유 코드와 HTTP 상태만 남긴다 — description/restatement 등 손님 입력은 로그에 넣지 않는다.
+    console.warn(`[consult-prep] LLM fallback: ${result.reason}`);
+    return base;
+  }
+  const raw = result.raw;
 
   const allowedTreatments = new Set(treatmentsFor(concernId).map((r) => r.treatmentId));
 
-  const termIds = asStringArray(raw.term_ids).filter(isKnownTerm).slice(0, 3);
+  const termIds = [...new Set(asStringArray(raw.term_ids).filter(isKnownTerm))].slice(0, 3);
 
   let treatmentIds = asStringArray(raw.treatment_ids)
     .filter((id) => allowedTreatments.has(id))
     .slice(0, TREATMENT_COUNT);
   if (treatmentIds.length === 0) treatmentIds = base.treatmentIds;
 
-  const questionIds = asStringArray(raw.question_ids).filter(isKnownQuestion);
+  const questionIds = [...new Set(asStringArray(raw.question_ids).filter(isKnownQuestion))];
   for (const q of questionsFor(concernId, treatmentIds)) {
     if (questionIds.length >= QUESTION_COUNT) break;
     if (!questionIds.includes(q.questionId)) questionIds.push(q.questionId);
