@@ -33,10 +33,19 @@ export function questionsFor(concernId: string, treatmentIds: string[]): PrepQue
 const TERM_IDS = new Set(CONCERN_TERMS.map((t) => t.termId));
 const QUESTION_IDS = new Set(PREP_QUESTIONS.map((q) => q.questionId));
 
+/**
+ * ⚠️ 이것은 **전역 존재 검사**일 뿐, 고민 스코프 검사가 아니다.
+ *
+ * LLM 응답 검증에 이걸 쓰면 안 된다 — 다른 고민 소속의 실재 id가 통과해 버리고,
+ * 그 뒤 `termsFor(concernId)` / `questionsFor(concernId, …)` 조회에서 조용히 사라져
+ * 카드가 비어 나온다(2026-09-03 리뷰 Important 2). 검증에는 반드시
+ * `termsFor()` / `questionsFor()` 로 만든 허용 집합을 써라.
+ */
 export function isKnownTerm(id: string): boolean {
   return TERM_IDS.has(id);
 }
 
+/** ⚠️ 전역 존재 검사. 주의사항은 `isKnownTerm` 주석 참조. */
 export function isKnownQuestion(id: string): boolean {
   return QUESTION_IDS.has(id);
 }

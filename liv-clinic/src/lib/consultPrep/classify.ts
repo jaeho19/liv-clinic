@@ -10,7 +10,7 @@ import 'server-only';
  * 실패 시 규칙표만으로 결과를 만들고 lowConfidence 를 세운다.
  */
 import { checkAdCopy } from './adGuard';
-import { treatmentsFor, termsFor, questionsFor, isKnownTerm, isKnownQuestion } from './rules';
+import { treatmentsFor, termsFor, questionsFor } from './rules';
 import type { PrepLang } from './types';
 import { isReasoningFamily } from '@/lib/chat/translation';
 
@@ -193,17 +193,32 @@ export async function classify(input: {
   }
   const raw = result.raw;
 
+  // 세 목록 모두 **이 고민 스코프** 안에서만 검사한다.
+  // 전역 은행 멤버십(isKnownTerm/isKnownQuestion)으로 검사하면, 다른 고민 소속의 실재
+  // id가 여기를 통과한 뒤 buildResult의 termsFor(concernId)/questionsFor(concernId,…)
+  // 조회에서 전부 사라진다 — 카드 1이 빈 목록이 되고 카드 3이 3개를 못 채운다.
   const allowedTreatments = new Set(treatmentsFor(concernId).map((r) => r.treatmentId));
+  const allowedTerms = new Set(termsFor(concernId).map((t) => t.termId));
 
-  const termIds = [...new Set(asStringArray(raw.term_ids).filter(isKnownTerm))].slice(0, 3);
+  const termIds = [
+    ...new Set(asStringArray(raw.term_ids).filter((id) => allowedTerms.has(id))),
+  ].slice(0, 3);
 
   let treatmentIds = asStringArray(raw.treatment_ids)
     .filter((id) => allowedTreatments.has(id))
     .slice(0, TREATMENT_COUNT);
   if (treatmentIds.length === 0) treatmentIds = base.treatmentIds;
 
-  const questionIds = [...new Set(asStringArray(raw.question_ids).filter(isKnownQuestion))];
-  for (const q of questionsFor(concernId, treatmentIds)) {
+  // 질문 스코프는 treatmentIds가 확정된 **뒤에** 계산해야 한다 — appliesTo 에
+  // `treatment:{id}` 형태가 있어 후보 시술에 따라 허용 집합이 달라진다.
+  // 걸러낸 다음 채워야 3개가 된다. 순서를 뒤집으면 카드 3이 2개로 나온다.
+  const scopedQuestions = questionsFor(concernId, treatmentIds);
+  const allowedQuestions = new Set(scopedQuestions.map((q) => q.questionId));
+
+  const questionIds = [
+    ...new Set(asStringArray(raw.question_ids).filter((id) => allowedQuestions.has(id))),
+  ];
+  for (const q of scopedQuestions) {
     if (questionIds.length >= QUESTION_COUNT) break;
     if (!questionIds.includes(q.questionId)) questionIds.push(q.questionId);
   }

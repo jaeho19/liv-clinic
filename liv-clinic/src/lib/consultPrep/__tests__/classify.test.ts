@@ -290,4 +290,59 @@ describe('classify', () => {
     expect(new Set(out.questionIds).size).toBe(3);
     expect(out.questionIds[0]).toBe('q_sessions');
   });
+
+  // --- 리뷰(2026-09-03) Important 2: 용어·질문도 고민 스코프로 검사한다 ---
+  //
+  // 전역 은행 멤버십(isKnownTerm/isKnownQuestion)으로만 검사하면 **다른 고민 소속의
+  // 실재 id** 가 classify 를 통과하고, buildResult 의 termsFor(concernId) /
+  // questionsFor(concernId, …) 조회에서 조용히 사라진다 — 카드 1이 비고 카드 3이 2개가 된다.
+  //
+  // 아래 입력은 리뷰어 실측 그대로다. jawline_sagging·double_chin 은 concern=sagging 소속,
+  // q_thread_type 은 appliesTo=concern:sagging 이라 concern=texture 에서는 조회되지 않는다.
+
+  describe('다른 고민 소속 id (concern=texture)', () => {
+    const TEXTURE = { concernId: 'texture', description: '모공이 넓어 보여요', lang: 'ko' as const };
+
+    const CROSS_CONCERN_RESPONSE = {
+      term_ids: ['jawline_sagging', 'double_chin'],
+      treatment_ids: ['skinbooster'],
+      question_ids: ['q_thread_type', 'q_sessions', 'q_duration'],
+      restatement: '',
+      confidence: 'high',
+    };
+
+    it('다른 고민의 term_id는 버리고, 비면 그 고민의 기본 용어로 폴백한다', async () => {
+      vi.stubGlobal('fetch', vi.fn().mockResolvedValue(okResponse(CROSS_CONCERN_RESPONSE)));
+      const classify = await importClassify();
+      const out = await classify(TEXTURE);
+
+      expect(out.termIds).not.toContain('jawline_sagging');
+      expect(out.termIds).not.toContain('double_chin');
+      // 폴백이 발동해 카드 1이 비지 않는다.
+      expect(out.termIds.length).toBeGreaterThan(0);
+      expect(out.termIds).toEqual(['enlarged_pores']);
+    });
+
+    it('다른 고민의 question_id는 버리고 규칙표에서 채워 정확히 3개를 만든다', async () => {
+      vi.stubGlobal('fetch', vi.fn().mockResolvedValue(okResponse(CROSS_CONCERN_RESPONSE)));
+      const classify = await importClassify();
+      const out = await classify(TEXTURE);
+
+      expect(out.questionIds).not.toContain('q_thread_type');
+      expect(out.questionIds).toHaveLength(3);
+      expect(new Set(out.questionIds).size).toBe(3);
+      // 걸러낸 뒤 채운다 — 순서가 뒤집히면 2개로 나온다.
+      expect(out.questionIds.slice(0, 2)).toEqual(['q_sessions', 'q_duration']);
+    });
+
+    it('buildResult 까지 이어도 카드 1이 비지 않고 카드 3이 3개다', async () => {
+      vi.stubGlobal('fetch', vi.fn().mockResolvedValue(okResponse(CROSS_CONCERN_RESPONSE)));
+      const classify = await importClassify();
+      const { buildResult } = await import('../buildResult');
+
+      const card = buildResult(await classify(TEXTURE), 'texture', 'ko');
+      expect(card.terms.length).toBeGreaterThan(0);
+      expect(card.questions).toHaveLength(3);
+    });
+  });
 });
