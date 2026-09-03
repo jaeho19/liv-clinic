@@ -167,6 +167,42 @@ describe('classify', () => {
     expect(out.treatmentIds).toEqual(['aptos', 'thread', 'ulthera']);
   });
 
+  it("파싱 결과가 빈 객체('{}')면 스키마와 무관한 응답이라 throw 없이 lowConfidence를 세운다", async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ choices: [{ message: { content: '{}' } }] }),
+    }));
+    const classify = await importClassify();
+    const out = await classify(INPUT);
+    expect(out.lowConfidence).toBe(true);
+    expect(out.treatmentIds).toEqual(['aptos', 'thread', 'ulthera']);
+  });
+
+  it('파싱 결과가 순수 객체여도 우리가 읽는 키가 하나도 없으면 lowConfidence를 세운다', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ choices: [{ message: { content: '{"foo":1}' } }] }),
+    }));
+    const classify = await importClassify();
+    const out = await classify(INPUT);
+    expect(out.lowConfidence).toBe(true);
+    expect(out.treatmentIds).toEqual(['aptos', 'thread', 'ulthera']);
+  });
+
+  it('기대 키가 하나라도 있으면(confidence만) 폴백으로 버리지 않고 그 값을 그대로 쓴다', async () => {
+    vi.stubGlobal('fetch', vi.fn().mockResolvedValue({
+      ok: true,
+      json: async () => ({ choices: [{ message: { content: '{"confidence":"high"}' } }] }),
+    }));
+    const classify = await importClassify();
+    const out = await classify(INPUT);
+    // confidence 키 하나만 있어도 "모델이 뭔가 말한 것"이므로 empty_payload로 버리면 안 된다.
+    expect(out.lowConfidence).toBe(false);
+    // 나머지 필드는 응답에 없었으므로 규칙표 폴백/빈 값으로 채워진다.
+    expect(out.treatmentIds).toEqual(['aptos', 'thread', 'ulthera']);
+    expect(out.restatement).toBe('');
+  });
+
   // --- 리뷰 Important 2: 모델 계열 분기 ---
 
   it('비-reasoning 모델(gpt-4o-mini)은 reasoning_effort 없이 max_tokens/temperature를 보낸다', async () => {

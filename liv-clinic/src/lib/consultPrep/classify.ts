@@ -114,11 +114,15 @@ function buildRequestBody(model: string, prompt: string, userText: string): Reco
   };
 }
 
+/** classify가 실제로 읽는 필드 — 이 중 하나도 없으면 응답에 쓸 게 없다. */
+const EXPECTED_KEYS = ['term_ids', 'treatment_ids', 'question_ids', 'restatement', 'confidence'] as const;
+
 /** 폴백 사유. 로그에는 이 코드와 HTTP 상태만 남긴다 — 손님 입력은 절대 넣지 않는다. */
 type FallbackReason =
   | 'no_api_key'
   | 'invalid_json'
   | 'not_an_object'
+  | 'empty_payload'
   | 'timeout'
   | 'fetch_error'
   | `http_${number}`;
@@ -157,6 +161,13 @@ async function callModel(prompt: string, userText: string): Promise<CallResult> 
     // JSON.parse는 성공해도 배열/숫자/문자열/불리언일 수 있다 — 순수 객체가 아니면 폴백.
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
       return { raw: null, reason: 'not_an_object' };
+    }
+    // 순수 객체여도 우리가 읽는 다섯 키(term_ids/treatment_ids/question_ids/restatement/
+    // confidence) 중 단 하나도 없으면 이 응답은 내용이 전혀 없는 것과 같다 — 그대로 두면
+    // 모든 필드가 규칙표 폴백인데 confidence 부재로 lowConfidence만 false로 새어나간다.
+    const hasExpectedKey = EXPECTED_KEYS.some((key) => key in (parsed as Record<string, unknown>));
+    if (!hasExpectedKey) {
+      return { raw: null, reason: 'empty_payload' };
     }
     return { raw: parsed as RawSelection };
   } catch (e) {
