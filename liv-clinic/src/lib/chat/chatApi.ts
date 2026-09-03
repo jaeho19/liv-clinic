@@ -41,6 +41,8 @@ export interface ChatMessage {
   translation_status: TranslationStatus;
   translation_error: string | null;
   created_at: string;
+  sender_label?: string | null;
+  source?: string | null;
 }
 
 export interface CreateSessionResponse {
@@ -143,6 +145,27 @@ export async function closeSession(sessionId: string): Promise<void> {
     const err = await safeJson(res);
     throw new ChatApiError(res.status, err?.error ?? 'close_failed', err);
   }
+}
+
+async function patchSession(sessionId: string, action: 'resolve' | 'unresolve'): Promise<void> {
+  const res = await fetch(`/api/chat/sessions/${sessionId}`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ action }),
+  });
+  if (!res.ok) {
+    const err = await safeJson(res);
+    throw new ChatApiError(res.status, err?.error ?? `${action}_failed`, err);
+  }
+}
+
+/** 완료 처리 — 내부 정리. 손님에게는 아무 메시지도 가지 않는다. */
+export function resolveSession(sessionId: string): Promise<void> {
+  return patchSession(sessionId, 'resolve');
+}
+
+export function unresolveSession(sessionId: string): Promise<void> {
+  return patchSession(sessionId, 'unresolve');
 }
 
 export async function fetchPresence(): Promise<{
