@@ -52,3 +52,6 @@ public/images/aptos/Gemini_Generated_Image_*
 
 # bkit auto-generated memory (auto-updated by SessionStart hook)
 docs/.bkit-memory.json
+
+# Image migration working dir (backup 257MB, dist, scripts)
+image-migration/

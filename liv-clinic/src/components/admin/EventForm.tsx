@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { createClient } from '@/lib/supabase-browser';
 import ImageUploader from './ImageUploader';
+import { finalizeTempImages } from '@/lib/finalizeTempImages';
 import { EVENT_CATEGORY_LABELS, RELATED_TREATMENT_OPTIONS } from '@/types/admin';
 import type { EventCategory, EventRow } from '@/types/admin';
 import type { MonthlyPromotionDraft } from '@/lib/monthlyPromotionTemplate';
@@ -83,10 +84,13 @@ export default function EventForm({ event, defaults }: EventFormProps) {
 
     setSaving(true);
 
+    // 슬러그 입력 전에 올린 이미지는 temp/ 에 있다. 저장이 확정된 지금 정식 폴더로 옮긴다.
+    const payload = await finalizeTempImages(form, { bucket: 'events', folder: form.slug });
+
     if (isEdit) {
       const { error: updateError } = await supabase
         .from('events')
-        .update({ ...form, updated_at: new Date().toISOString() })
+        .update({ ...payload, updated_at: new Date().toISOString() })
         .eq('id', event.id);
 
       if (updateError) {
@@ -95,7 +99,7 @@ export default function EventForm({ event, defaults }: EventFormProps) {
         return;
       }
     } else {
-      const { error: insertError } = await supabase.from('events').insert(form);
+      const { error: insertError } = await supabase.from('events').insert(payload);
 
       if (insertError) {
         setError(insertError.message);
@@ -255,6 +259,7 @@ export default function EventForm({ event, defaults }: EventFormProps) {
           <ImageUploader
             bucket="events"
             folder={form.slug || 'temp'}
+            preset="poster"
             value={form.poster_image}
             onChange={(url) => updateField('poster_image', url)}
             label="포스터 이미지 (한국어·기본)"
@@ -263,6 +268,7 @@ export default function EventForm({ event, defaults }: EventFormProps) {
           <ImageUploader
             bucket="events"
             folder={form.slug || 'temp'}
+            preset="poster"
             value={form.poster_image_en}
             onChange={(url) => updateField('poster_image_en', url)}
             label="포스터 이미지 (English)"
@@ -271,6 +277,7 @@ export default function EventForm({ event, defaults }: EventFormProps) {
           <ImageUploader
             bucket="events"
             folder={form.slug || 'temp'}
+            preset="poster"
             value={form.poster_image_ja}
             onChange={(url) => updateField('poster_image_ja', url)}
             label="포스터 이미지 (日本語)"
@@ -279,6 +286,7 @@ export default function EventForm({ event, defaults }: EventFormProps) {
           <ImageUploader
             bucket="events"
             folder={form.slug || 'temp'}
+            preset="poster"
             value={form.poster_image_zh}
             onChange={(url) => updateField('poster_image_zh', url)}
             label="포스터 이미지 (中文)"
@@ -287,6 +295,7 @@ export default function EventForm({ event, defaults }: EventFormProps) {
           <ImageUploader
             bucket="events"
             folder={form.slug || 'temp'}
+            preset="thumbnail"
             value={form.thumbnail_image}
             onChange={(url) => updateField('thumbnail_image', url)}
             label="썸네일 이미지"
