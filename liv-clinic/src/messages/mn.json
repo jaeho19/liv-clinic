@@ -6414,10 +6414,10 @@
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "Нүүрний дээд хэсэг (250–400 цохилт)",
-        "lowerFace": "Нүүрний доод хэсэг (~600 цохилт)",
-        "fullFace": "Бүх нүүр (800–1,100 цохилт)",
-        "fullFaceNeck": "Бүх нүүр + хүзүү (~1,200 цохилт)"
+        "upperFace": "Нүүрний дээд хэсэг (200-300 цохилт)",
+        "lowerFace": "Нүүрний доод хэсэг (300-400 цохилт)",
+        "fullFace": "Бүх нүүр (400-800 цохилт)",
+        "fullFaceNeck": "Бүх нүүр + хүзүү (600 цохилт~)"
       },
       "thermage": {
         "name": "Thermage лазер",
@@ -6450,11 +6450,11 @@
       },
       "thread": {
         "name": "Утсан лифтинг",
-        "domestic": "Дотоодын",
-        "domesticPremium": "Дотоодын Premium",
-        "xeomin": "Xeomin",
-        "allergan": "Allergan",
-        "allerganSalivary": "Allergan (шүлсний булчирхай)"
+        "aptosNamica": "APTOS NAMICA (10 утас)",
+        "aptosLight25": "APTOS Light Lift 25 (2 утас)",
+        "aptosLight50": "APTOS Light Lift 50 (2 утас)",
+        "silhouette": "Silhouette Soft (2 утас)",
+        "mint": "MINT (8 утас)"
       },
       "botox": {
         "botoxContour": "Botox (контур)",

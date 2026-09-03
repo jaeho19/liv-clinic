@@ -6414,10 +6414,10 @@
     "labels": {
       "ulthera": {
         "name": "音波拉提 Prime",
-        "upperFace": "上面部 (250-400發)",
-        "lowerFace": "下面部 (~600發)",
-        "fullFace": "全面部 (800-1,100發)",
-        "fullFaceNeck": "全面部 + 頸部 (~1,200發)"
+        "upperFace": "上面部 (200~300發)",
+        "lowerFace": "下面部 (300~400發)",
+        "fullFace": "全面部 (400~800發)",
+        "fullFaceNeck": "全面部 + 頸部 (600發~)"
       },
       "thermage": {
         "name": "鳳凰電波激光",
@@ -6450,11 +6450,11 @@
       },
       "thread": {
         "name": "埋線拉提",
-        "domestic": "國產",
-        "domesticPremium": "國產高級",
-        "xeomin": "Xeomin",
-        "allergan": "Allergan",
-        "allerganSalivary": "Allergan (腮腺)"
+        "aptosNamica": "APTOS NAMICA (10根)",
+        "aptosLight25": "APTOS Light Lift 25 (2根)",
+        "aptosLight50": "APTOS Light Lift 50 (2根)",
+        "silhouette": "Silhouette Soft (2根)",
+        "mint": "MINT (8根)"
       },
       "botox": {
         "botoxContour": "肉毒桿菌素 (輪廓)",

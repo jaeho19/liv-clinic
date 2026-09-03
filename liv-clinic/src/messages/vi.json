@@ -6414,10 +6414,10 @@
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "Mặt trên (250–400 ảnh)",
-        "lowerFace": "Mặt dưới (~600 ảnh)",
-        "fullFace": "Toàn mặt (800–1.100 ảnh)",
-        "fullFaceNeck": "Toàn mặt + Cổ (~1.200 ảnh)"
+        "upperFace": "Vùng mặt trên (200-300 shots)",
+        "lowerFace": "Vùng mặt dưới (300-400 shots)",
+        "fullFace": "Toàn mặt (400-800 shots)",
+        "fullFaceNeck": "Toàn mặt + cổ (600 shots~)"
       },
       "thermage": {
         "name": "Laser nhiệt",
@@ -6450,11 +6450,11 @@
       },
       "thread": {
         "name": "Nâng chỉ",
-        "domestic": "Nội địa",
-        "domesticPremium": "Phí bảo hiểm nội địa",
-        "xeomin": "Xeomin",
-        "allergan": "chất gây dị ứng",
-        "allerganSalivary": "Allergan (Tuyến nước bọt)"
+        "aptosNamica": "APTOS NAMICA (10 sợi)",
+        "aptosLight25": "APTOS Light Lift 25 (2 sợi)",
+        "aptosLight50": "APTOS Light Lift 50 (2 sợi)",
+        "silhouette": "Silhouette Soft (2 sợi)",
+        "mint": "MINT (8 sợi)"
       },
       "botox": {
         "botoxContour": "Botox (Đường viền)",

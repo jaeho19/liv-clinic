@@ -6415,10 +6415,10 @@
     "labels": {
       "ulthera": {
         "name": "ウルセラピープライム",
-        "upperFace": "上顔面 (250〜400ショット)",
-        "lowerFace": "下顔面 (〜600ショット)",
-        "fullFace": "全顔 (800〜1,100ショット)",
-        "fullFaceNeck": "全顔 + 首 (〜1,200ショット)"
+        "upperFace": "上顔面 (200~300ショット)",
+        "lowerFace": "下顔面 (300~400ショット)",
+        "fullFace": "全顔 (400~800ショット)",
+        "fullFaceNeck": "全顔 + 首 (600ショット~)"
       },
       "thermage": {
         "name": "サーマジレーザー",
@@ -6451,11 +6451,11 @@
       },
       "thread": {
         "name": "糸リフト",
-        "domestic": "国産",
-        "domesticPremium": "国産プレミアム",
-        "xeomin": "ゼオミン",
-        "allergan": "アラガン",
-        "allerganSalivary": "アラガン (唾液腺)"
+        "aptosNamica": "APTOS NAMICA (10本)",
+        "aptosLight25": "APTOS Light Lift 25 (2本)",
+        "aptosLight50": "APTOS Light Lift 50 (2本)",
+        "silhouette": "シルエットソフト (2本)",
+        "mint": "ミント (8本)"
       },
       "botox": {
         "botoxContour": "ボトックス (輪郭)",

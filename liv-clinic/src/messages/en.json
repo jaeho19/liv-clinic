@@ -6414,10 +6414,10 @@
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "Upper Face (250–400 shots)",
-        "lowerFace": "Lower Face (~600 shots)",
-        "fullFace": "Full Face (800–1,100 shots)",
-        "fullFaceNeck": "Full Face + Neck (~1,200 shots)"
+        "upperFace": "Upper face (200-300 shots)",
+        "lowerFace": "Lower face (300-400 shots)",
+        "fullFace": "Full face (400-800 shots)",
+        "fullFaceNeck": "Full face + neck (600 shots~)"
       },
       "thermage": {
         "name": "Thermage Laser",
@@ -6450,11 +6450,11 @@
       },
       "thread": {
         "name": "Thread Lifting",
-        "domestic": "Domestic",
-        "domesticPremium": "Domestic Premium",
-        "xeomin": "Xeomin",
-        "allergan": "Allergan",
-        "allerganSalivary": "Allergan (Salivary Gland)"
+        "aptosNamica": "APTOS NAMICA (10 threads)",
+        "aptosLight25": "APTOS Light Lift 25 (2 threads)",
+        "aptosLight50": "APTOS Light Lift 50 (2 threads)",
+        "silhouette": "Silhouette Soft (2 threads)",
+        "mint": "MINT (8 threads)"
       },
       "botox": {
         "botoxContour": "Botox (Contour)",

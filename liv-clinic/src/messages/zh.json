@@ -6414,10 +6414,10 @@
     "labels": {
       "ulthera": {
         "name": "超声刀 Prime",
-        "upperFace": "上面部 (250-400发)",
-        "lowerFace": "下面部 (~600发)",
-        "fullFace": "全面部 (800-1,100发)",
-        "fullFaceNeck": "全面部 + 颈部 (~1,200发)"
+        "upperFace": "上面部 (200~300发)",
+        "lowerFace": "下面部 (300~400发)",
+        "fullFace": "全面部 (400~800发)",
+        "fullFaceNeck": "全面部 + 颈部 (600发~)"
       },
       "thermage": {
         "name": "热玛吉激光",
@@ -6450,11 +6450,11 @@
       },
       "thread": {
         "name": "埋线提升",
-        "domestic": "国产",
-        "domesticPremium": "国产高级",
-        "xeomin": "Xeomin",
-        "allergan": "Allergan",
-        "allerganSalivary": "Allergan (腮腺)"
+        "aptosNamica": "APTOS NAMICA (10根)",
+        "aptosLight25": "APTOS Light Lift 25 (2根)",
+        "aptosLight50": "APTOS Light Lift 50 (2根)",
+        "silhouette": "Silhouette Soft (2根)",
+        "mint": "MINT (8根)"
       },
       "botox": {
         "botoxContour": "肉毒素 (轮廓)",
