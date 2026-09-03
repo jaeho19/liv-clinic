@@ -36,7 +36,7 @@ describe('translate model selection', () => {
     else process.env.OPENAI_TRANSLATION_MODEL = originalModel;
   });
 
-  it('requests gpt-4.1-nano when OPENAI_TRANSLATION_MODEL is not set', async () => {
+  it('requests gpt-5.6-luna when OPENAI_TRANSLATION_MODEL is not set', async () => {
     const fetchMock = vi.fn().mockResolvedValue(okResponse('안녕하세요'));
     vi.stubGlobal('fetch', fetchMock);
 
@@ -45,7 +45,8 @@ describe('translate model selection', () => {
 
     expect(result.status).toBe('success');
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(requestedModel(fetchMock)).toBe('gpt-4.1-nano');
+    // gpt-4.1-nano는 2026-10-23 종료. OpenAI 지정 대체 모델이 gpt-5.6-luna다.
+    expect(requestedModel(fetchMock)).toBe('gpt-5.6-luna');
   });
 
   it('honors OPENAI_TRANSLATION_MODEL when set (Netlify env가 코드 기본값을 덮어쓴다)', async () => {
@@ -57,5 +58,78 @@ describe('translate model selection', () => {
     await translate('Hello', 'en', 'ko');
 
     expect(requestedModel(fetchMock)).toBe('custom-model');
+  });
+});
+
+// 파라미터를 하나라도 틀리면 400이 나는데, translate()의 실패 정책이 "원문 그대로 반환"이라
+// 화면은 멀쩡해 보이면서 번역만 조용히 꺼진다. 그래서 바디 조립을 직접 고정한다.
+describe('buildOpenAIBody — 모델 계열 분기', () => {
+  const originalEffort = process.env.OPENAI_TRANSLATION_REASONING_EFFORT;
+
+  afterEach(() => {
+    if (originalEffort === undefined) delete process.env.OPENAI_TRANSLATION_REASONING_EFFORT;
+    else process.env.OPENAI_TRANSLATION_REASONING_EFFORT = originalEffort;
+  });
+
+  async function importBody() {
+    vi.resetModules();
+    return await import('../translation');
+  }
+
+  it('구형 계열(gpt-4.1-mini)은 temperature와 max_tokens를 보낸다', async () => {
+    const { buildOpenAIBody } = await importBody();
+    const body = buildOpenAIBody('gpt-4.1-mini', 'sys', 'hi');
+
+    expect(body.temperature).toBe(0.2);
+    expect(body.max_tokens).toBe(800);
+    expect(body).not.toHaveProperty('max_completion_tokens');
+    expect(body).not.toHaveProperty('reasoning_effort');
+  });
+
+  it('gpt-5 계열은 temperature를 빼고 max_completion_tokens를 보낸다', async () => {
+    const { buildOpenAIBody } = await importBody();
+    const body = buildOpenAIBody('gpt-5.6-luna', 'sys', 'hi');
+
+    // temperature 비기본값은 400 unsupported_value로 거부된다
+    expect(body).not.toHaveProperty('temperature');
+    expect(body).not.toHaveProperty('max_tokens');
+    expect(body.max_completion_tokens).toBe(800);
+  });
+
+  it("gpt-5 계열의 reasoning_effort 기본값은 'none'이다 (지연·비용 방어)", async () => {
+    delete process.env.OPENAI_TRANSLATION_REASONING_EFFORT;
+    const { buildOpenAIBody } = await importBody();
+
+    expect(buildOpenAIBody('gpt-5.6-luna', 'sys', 'hi').reasoning_effort).toBe('none');
+  });
+
+  it('OPENAI_TRANSLATION_REASONING_EFFORT로 override할 수 있다', async () => {
+    process.env.OPENAI_TRANSLATION_REASONING_EFFORT = 'low';
+    const { buildOpenAIBody } = await importBody();
+
+    expect(buildOpenAIBody('gpt-5.6-luna', 'sys', 'hi').reasoning_effort).toBe('low');
+  });
+
+  it('계열 판정: gpt-5*/o1/o3/o4는 reasoning, gpt-4*는 아니다', async () => {
+    const { isReasoningFamily } = await importBody();
+
+    expect(isReasoningFamily('gpt-5.6-luna')).toBe(true);
+    expect(isReasoningFamily('gpt-5-mini')).toBe(true);
+    expect(isReasoningFamily('o3-mini')).toBe(true);
+    expect(isReasoningFamily('gpt-4.1-mini')).toBe(false);
+    expect(isReasoningFamily('gpt-4o-mini')).toBe(false);
+  });
+
+  it('메시지 구조는 계열과 무관하게 동일하다', async () => {
+    const { buildOpenAIBody } = await importBody();
+
+    for (const model of ['gpt-4.1-mini', 'gpt-5.6-luna']) {
+      const body = buildOpenAIBody(model, 'SYSTEM', 'USER');
+      expect(body.model).toBe(model);
+      expect(body.messages).toEqual([
+        { role: 'system', content: 'SYSTEM' },
+        { role: 'user', content: 'USER' },
+      ]);
+    }
   });
 });

@@ -1,11 +1,23 @@
 import 'server-only';
 
-// OpenAI 기반 번역 래퍼 (기본 gpt-4.1-nano, OPENAI_TRANSLATION_MODEL로 교체 가능).
-// 주의: gpt-5 계열은 temperature 파라미터를 거부하므로 코드 수정 없이 지정하지 말 것.
+// OpenAI 기반 번역 래퍼 (기본 gpt-5.6-luna, OPENAI_TRANSLATION_MODEL로 교체 가능).
 // - 서버 전용 (server-only import 가드)
 // - 5초 타임아웃 + 1회 재시도
 // - 시스템 프롬프트로 LIV 클리닉 시술/브랜드명 보존 지시
 // - 빈/이모지/URL만 입력은 호출 생략(skipped)
+//
+// 모델 교체 이력:
+//   gpt-4.1-nano → gpt-5.6-luna  (2026-09) — gpt-4.1-nano가 2026-10-23 종료 공지 대상.
+//   OpenAI가 지정한 공식 대체 모델이 gpt-5.6-luna이며, buildOpenAIBody가 계열별 파라미터를
+//   자동 처리하므로 이후 교체는 OPENAI_TRANSLATION_MODEL 환경변수만 바꾸면 된다.
+//   롤백이 필요하면 gpt-4.1-mini (종료 공지 없음, 구형 파라미터 계열)로 되돌린다.
+//
+// 지연 최적화 시 하지 말 것 (실측/문서 확인 완료, 2026-09-01):
+//   - max_tokens 축소: 출력이 15~27토큰인데 상한만 800이라 개선 0. 긴 문장 잘림 위험만 생긴다.
+//   - 시스템 프롬프트 축소: 절반으로 줄여야 1~5% 개선. 오히려 느려진 측정도 있었다.
+//   - prompt caching 유도: 1,024토큰 이상 프리픽스에서만 동작. 현재 ~200토큰이라 해당 없음.
+//   - service_tier: 'flex': 싸지만 "더 느려지는" 옵션이다. 절대 넣지 말 것.
+//   실제 병목은 첫 토큰 도달(TTFT, 실측 571ms 중 412ms)이며, 이는 모델 파라미터로 줄지 않는다.
 
 export type SupportedLang =
   | 'ko'
@@ -45,11 +57,16 @@ export interface TranslationResult {
 
 const TIMEOUT_MS = Number(process.env.CHAT_TRANSLATION_TIMEOUT_MS ?? 5000);
 const RETRY_COUNT = Number(process.env.CHAT_TRANSLATION_RETRY ?? 1);
-const MODEL = process.env.OPENAI_TRANSLATION_MODEL ?? 'gpt-4.1-nano';
+const MODEL = process.env.OPENAI_TRANSLATION_MODEL ?? 'gpt-5.6-luna';
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
+const MAX_OUTPUT_TOKENS = 800;
 
-const BRAND_TERMS_KO = '울쎄라, 써마지, 슈링크, 인모드, 보톡스, 필러, 스킨부스터, 리프팅, LIV';
-const BRAND_TERMS_EN = 'Ulthera, Thermage, Shurink, InMode, Botox, Filler, Skinbooster, Lifting, LIV';
+// 고유명사(장비·브랜드)만 남긴다. 일반 시술 용어는 목록에서 빼야 각 언어의 현지 표현으로 번역된다.
+// - 2026-09-01: '리프팅/Lifting' 제거 (원장님 결정). 목록에 있으면 모든 언어에서 영어 'Lifting'이
+//   그대로 나가는데, 중국어 '提升'·태국어 등 현지 표현이 있는 언어에서 부자연스럽다.
+//   장비명(울쎄라·써마지·슈링크·인모드)은 고유명사이므로 계속 보존한다.
+const BRAND_TERMS_KO = '울쎄라, 써마지, 슈링크, 인모드, 보톡스, 필러, 스킨부스터, LIV';
+const BRAND_TERMS_EN = 'Ulthera, Thermage, Shurink, InMode, Botox, Filler, Skinbooster, LIV';
 
 function buildSystemPrompt(from: SupportedLang, to: SupportedLang): string {
   if (to === 'ko') {
@@ -94,6 +111,49 @@ function shouldSkip(text: string): boolean {
   return false;
 }
 
+/**
+ * gpt-5 계열(gpt-5.6-luna 등)과 o 시리즈인지. 이 계열은 요청 바디 규칙이 다르다.
+ * (테스트를 위해 export)
+ */
+export function isReasoningFamily(model: string): boolean {
+  return /^(gpt-5|o[134])/.test(model);
+}
+
+/**
+ * 모델 계열에 맞는 chat.completions 요청 바디를 만든다. (테스트를 위해 export)
+ *
+ * gpt-5 계열은 구형 모델과 세 가지가 다르고, **하나라도 어긋나면 400이 난다.**
+ * 그런데 이 파일의 실패 정책은 "원문 그대로 반환"이라, 400이 나도 화면은 멀쩡해 보이면서
+ * 번역만 조용히 꺼진 채로 운영된다. 그래서 분기를 추측이 아니라 코드로 고정한다.
+ *
+ *   1. temperature 비기본값 거부 — `Only the default (1) value is supported`
+ *   2. max_tokens → max_completion_tokens
+ *   3. reasoning_effort 미지정 시 기본값이 'medium'이다. 보이지 않는 추론 토큰이
+ *      출력 토큰으로 과금되고 지연이 수 초 붙는다. 단문 번역에는 'none'이 맞다.
+ */
+export function buildOpenAIBody(
+  model: string,
+  prompt: string,
+  userText: string,
+): Record<string, unknown> {
+  const messages = [
+    { role: 'system', content: prompt },
+    { role: 'user', content: userText },
+  ];
+
+  if (isReasoningFamily(model)) {
+    return {
+      model,
+      messages,
+      max_completion_tokens: MAX_OUTPUT_TOKENS,
+      // 환경변수는 override 용도로만 둔다 — 값을 올리면 그만큼 느려지고 비싸진다.
+      reasoning_effort: process.env.OPENAI_TRANSLATION_REASONING_EFFORT || 'none',
+    };
+  }
+
+  return { model, messages, temperature: 0.2, max_tokens: MAX_OUTPUT_TOKENS };
+}
+
 async function callOpenAI(
   prompt: string,
   userText: string,
@@ -109,15 +169,7 @@ async function callOpenAI(
       'Content-Type': 'application/json',
       Authorization: `Bearer ${apiKey}`,
     },
-    body: JSON.stringify({
-      model: MODEL,
-      temperature: 0.2,
-      max_tokens: 800,
-      messages: [
-        { role: 'system', content: prompt },
-        { role: 'user', content: userText },
-      ],
-    }),
+    body: JSON.stringify(buildOpenAIBody(MODEL, prompt, userText)),
   });
 
   if (!res.ok) {
