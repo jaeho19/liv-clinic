@@ -1,7 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { getTranslations } from 'next-intl/server';
 import { z } from 'zod';
 import { classify } from '@/lib/consultPrep/classify';
-import { buildResult, type PrepCardResult } from '@/lib/consultPrep/buildResult';
+import {
+  buildResult,
+  treatmentGroupOf,
+  type PrepCardResult,
+  type TreatmentNameResolver,
+} from '@/lib/consultPrep/buildResult';
 import { treatmentsFor } from '@/lib/consultPrep/rules';
 import { PREP_LANGS, type PrepLang } from '@/lib/consultPrep/types';
 
@@ -16,6 +22,27 @@ export interface ConsultPrepResponse {
   success: boolean;
   data?: PrepCardResult;
   error?: string;
+}
+
+/**
+ * 손님 언어의 시술명을 `messages/{locale}.json` 에서 꺼내는 resolver.
+ *
+ * `TREATMENTS[...].name` 은 한국어 고정이라 그대로 쓰면 lang='en' 손님에게도 카드 2에
+ * `울쎄라피 프라임`이 뜬다(2026-09-03 리뷰 Important 3). 번역본은 이미
+ * `treatments.{그룹}.{id}.name` 에 있으므로 조회만 붙인다.
+ *
+ * 키가 없으면 undefined 를 돌려 buildResult 가 한국어로 폴백하게 둔다 — `toning`
+ * (레이저 토닝)은 4개 로케일 모두에 키가 없다. `t.has()` 로 먼저 확인하지 않으면
+ * next-intl 이 키 문자열 자체를 이름으로 돌려준다.
+ */
+async function createTreatmentNameResolver(lang: PrepLang): Promise<TreatmentNameResolver> {
+  const t = await getTranslations({ locale: lang, namespace: 'treatments' });
+  return (treatmentId: string) => {
+    const group = treatmentGroupOf(treatmentId);
+    if (!group) return undefined;
+    const key = `${group}.${treatmentId}.name`;
+    return t.has(key) ? t(key) : undefined;
+  };
 }
 
 export async function POST(request: NextRequest) {
@@ -38,9 +65,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const selection = await classify({ concernId, description, lang });
+    const [selection, nameOf] = await Promise.all([
+      classify({ concernId, description, lang }),
+      createTreatmentNameResolver(lang),
+    ]);
     return NextResponse.json<ConsultPrepResponse>(
-      { success: true, data: buildResult(selection, concernId, lang) },
+      { success: true, data: buildResult(selection, concernId, lang, nameOf) },
       { status: 200 }
     );
   } catch (error) {
