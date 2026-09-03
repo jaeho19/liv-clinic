@@ -6397,6 +6397,37 @@
 
     }
   },
+  "consultPrep": {
+    "title": "面诊准备卡",
+    "step1Title": "是这个困扰吗?",
+    "step2Title": "外观上最在意的是什么?",
+    "step2Placeholder": "例) 笑起来下颌线模糊 / 到下午就显得松弛 / 照片里显老",
+    "step2Required": "请写一行 (2个字以上)",
+    "step3Title": "需要在什么时候之前?",
+    "step3None": "没有特别安排",
+    "step3Wedding": "子女婚礼",
+    "step3Meeting": "双方家长见面",
+    "step3Reunion": "同学会·聚会",
+    "step3Holiday": "假期",
+    "step3Stay": "在韩停留期间",
+    "next": "下一步",
+    "back": "上一步",
+    "submit": "查看结果",
+    "loading": "整理中",
+    "card1Title": "您描述的情况通常这样称呼",
+    "card2Title": "处理该部位的项目",
+    "card3Title": "面诊时可以这样问",
+    "card4Title": "参考",
+    "lowConfidence": "再写详细一些会更准确。",
+    "consultOnly": "需要面诊确认",
+    "labelDuration": "所需时间",
+    "labelAnesthesia": "麻醉",
+    "labelRecovery": "恢复",
+    "labelCautions": "注意事项",
+    "disclaimer": "本内容并非诊断，仅为准备面诊的参考资料。个体差异存在，是否进行以及如何进行由医疗人员面诊决定。",
+    "ctaInquiry": "就以此内容咨询",
+    "error": "请稍后再试。"
+  },
   "pricing": {
     "sectionTitle": "项目价格",
     "header": {
