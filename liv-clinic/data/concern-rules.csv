@@ -1,0 +1,16 @@
+concern_id,treatment_id,display_order,reason_ko,reason_en,reason_ja,reason_zh,caution_ko,caution_en,caution_ja,caution_zh,reviewed_by,reviewed_at
+sagging,aptos,1,실을 넣어 처진 조직을 당겨 올리는 방식입니다,Threads are placed to lift sagging tissue,糸を挿入してたるんだ組織を引き上げる方法です,通过埋线提拉下垂组织,실 종류에 따라 유지 기간이 다릅니다,Duration varies by thread type,糸の種類により持続期間が異なります,持续时间因线材种类而异,"원장,실장",2026-09-10
+sagging,thread,2,가는 실을 여러 개 넣어 라인을 정리합니다,Multiple fine threads refine the contour,細い糸を複数入れてラインを整えます,植入多根细线修饰轮廓,,,,,"원장,실장",2026-09-10
+sagging,ulthera,3,초음파로 피부 깊은 층에 열을 전달합니다,Ultrasound delivers heat to deep skin layers,超音波で皮膚の深い層に熱を伝えます,超声波将热能传递至皮肤深层,임신·수유 중에는 시술하지 않습니다,Not performed during pregnancy or breastfeeding,妊娠中・授乳中は施術できません,孕期哺乳期不可进行,"원장,실장",2026-09-10
+elasticity,ulthera,1,초음파로 피부 깊은 층에 열을 전달합니다,Ultrasound delivers heat to deep skin layers,超音波で皮膚の深い層に熱を伝えます,超声波将热能传递至皮肤深层,임신·수유 중에는 시술하지 않습니다,Not performed during pregnancy or breastfeeding,妊娠中・授乳中は施術できません,孕期哺乳期不可进行,"원장,실장",2026-09-10
+elasticity,thermage,2,고주파로 진피층 콜라겐을 자극합니다,Radiofrequency stimulates collagen in the dermis,高周波で真皮層のコラーゲンを刺激します,射频刺激真皮层胶原蛋白,,,,,"원장,실장",2026-09-10
+elasticity,density,3,초음파와 고주파를 함께 쓰는 장비입니다,Combines ultrasound and radiofrequency,超音波と高周波を併用する機器です,结合超声波与射频的设备,,,,,"원장,실장",2026-09-10
+fundamental,consultOnly,1,수술적 방법은 상담에서 확인이 필요합니다,Surgical options require an in-person consultation,外科的方法は診察での確認が必要です,手术方式需面诊确认,,,,,"원장,실장",2026-09-10
+fundamental,aptos,2,실을 넣어 처진 조직을 당겨 올리는 방식입니다,Threads are placed to lift sagging tissue,糸を挿入してたるんだ組織を引き上げる方法です,通过埋线提拉下垂组织,,,,,"원장,실장",2026-09-10
+fundamental,ulthera,3,초음파로 피부 깊은 층에 열을 전달합니다,Ultrasound delivers heat to deep skin layers,超音波で皮膚の深い層に熱を伝えます,超声波将热能传递至皮肤深层,,,,,"원장,실장",2026-09-10
+underEye,consultOnly,1,눈밑 지방 관련 수술은 상담에서 확인이 필요합니다,Under-eye fat procedures require an in-person consultation,目の下の脂肪に関する手術は診察での確認が必要です,眼下脂肪相关手术需面诊确认,,,,,"원장,실장",2026-09-10
+underEye,filler,2,꺼진 부위에 볼륨을 채우는 방식입니다,Filler restores volume in hollow areas,へこんだ部位にボリュームを補います,填充凹陷部位,,,,,"원장,실장",2026-09-10
+underEye,skinbooster,3,피부 자체의 수분과 탄력을 보충합니다,Boosters replenish hydration and elasticity,肌自体の水分と弾力を補います,补充皮肤水分与弹性,,,,,"원장,실장",2026-09-10
+texture,skinbooster,1,피부 자체의 수분과 탄력을 보충합니다,Boosters replenish hydration and elasticity,肌自体の水分と弾力を補います,补充皮肤水分与弹性,,,,,"원장,실장",2026-09-10
+texture,toning,2,레이저로 색소와 피부톤을 다룹니다,Laser addresses pigment and skin tone,レーザーで色素と肌のトーンを扱います,激光处理色素与肤色,,,,,"원장,실장",2026-09-10
+texture,skincare,3,피부 상태에 맞춰 단계적으로 관리합니다,Care is staged to the current skin condition,肌の状態に合わせて段階的にケアします,根据皮肤状态分阶段护理,,,,,"원장,실장",2026-09-10

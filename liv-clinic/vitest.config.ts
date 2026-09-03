@@ -1,10 +1,14 @@
-import { defineConfig } from 'vitest/config';
+import { defineConfig, configDefaults } from 'vitest/config';
 import path from 'path';
 
 export default defineConfig({
   test: {
     globals: true,
     environment: 'node',
+    // scripts/__tests__/*.mjs 는 node:test 러너 전용(빌드 스크립트 테스트).
+    // `npm run test:rules`(node --test)로 별도 실행하며, vitest 기본 글롭에
+    // 걸리면 "No test suite found"로 실패하므로 여기서 제외한다.
+    exclude: [...configDefaults.exclude, 'scripts/**'],
   },
   resolve: {
     alias: {

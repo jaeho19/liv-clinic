@@ -10,7 +10,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "verify:i18n": "node scripts/verify-locale-keys.mjs",
-    "prebuild": "npm run verify:i18n"
+    "prebuild": "node scripts/compile-concern-rules.mjs && npm run verify:i18n",
+    "test:rules": "node --test scripts/__tests__/compile-concern-rules.test.mjs"
   },
   "dependencies": {
     "@google-analytics/data": "^5.2.1",
