@@ -1617,9 +1617,41 @@ ko/en/ja/zh는 실제 번역, 나머지 7개는 en 문구를 넣어 verify:i18n�
 
 **Interfaces:**
 - Consumes: Task 6 `consultPrep` 메시지 · Task 5 `POST /api/consult-prep`
-- Produces: `<PrepWizard concernId={string} lang={PrepLang} onResult={(r: PrepCardResult) => void} />`
+- Produces: `<PrepWizard concernId lang concernTitle onResult={(r: PrepCardResult, description: string) => void} />` · `trackPrepStarted` · `trackPrepDescribed` · `trackPrepResultShown` · `trackPrepToInquiry`
 
-- [ ] **Step 1: 컴포넌트를 쓴다**
+- [ ] **Step 1: GA4 이벤트 4종을 먼저 추가한다**
+
+`PrepWizard`가 이 중 둘을 쓴다. 나중에 넣으면 이 태스크의 커밋이 `tsc`를 통과하지 못한다.
+
+`src/lib/analytics-events.ts` 맨 끝에 덧붙인다:
+
+```ts
+// ============================================
+// 상담 준비 카드
+// ============================================
+
+/** 1단계 진입 */
+export function trackPrepStarted(concernId: string) {
+  trackEvent('prep_started', { concern_id: concernId });
+}
+
+/** 2단계 자유 서술 제출 */
+export function trackPrepDescribed(concernId: string, length: number) {
+  trackEvent('prep_described', { concern_id: concernId, description_length: length });
+}
+
+/** 결과 카드 노출 */
+export function trackPrepResultShown(concernId: string, lowConfidence: boolean) {
+  trackEvent('prep_result_shown', { concern_id: concernId, low_confidence: lowConfidence });
+}
+
+/** 결과에서 문의로 전환 */
+export function trackPrepToInquiry(concernId: string) {
+  trackEvent('prep_to_inquiry', { concern_id: concernId });
+}
+```
+
+- [ ] **Step 2: 컴포넌트를 쓴다**
 
 `src/components/consultPrep/PrepWizard.tsx`:
 
@@ -1637,7 +1669,7 @@ interface Props {
   concernId: string;
   concernTitle: string;
   lang: PrepLang;
-  onResult: (result: PrepCardResult) => void;
+  onResult: (result: PrepCardResult, description: string) => void;
 }
 
 const KO_TIMING_KEYS = ['step3None', 'step3Wedding', 'step3Meeting', 'step3Reunion', 'step3Holiday'] as const;
@@ -1667,7 +1699,7 @@ export default function PrepWizard({ concernId, concernTitle, lang, onResult }: 
         setError(json.error || t('error'));
         return;
       }
-      onResult(json.data as PrepCardResult);
+      onResult(json.data as PrepCardResult, description.trim());
     } catch {
       setError(t('error'));
     } finally {
@@ -1778,17 +1810,17 @@ export default function PrepWizard({ concernId, concernTitle, lang, onResult }: 
 
 > **확인된 사항 (계획 작성 시 검증):** `Button`의 `variant`는 `'primary' | 'secondary' | 'ghost' | 'outline'`이다. `secondary`는 `bg-secondary text-white`인 채워진 진한 버튼이라 '이전'에는 어울리지 않아 `outline`을 쓴다. `isLoading` prop이 이미 있으므로 그대로 쓴다.
 
-- [ ] **Step 2: 타입 검사**
+- [ ] **Step 3: 타입 검사**
 
 Run: `cd liv-clinic && npx tsc --noEmit -p tsconfig.json`
-Expected: `trackPrepStarted` / `trackPrepDescribed` 미정의 오류 2건 — Task 9에서 추가한다. 그 외 오류는 여기서 고친다.
+Expected: 오류 0
 
-- [ ] **Step 3: 커밋**
+- [ ] **Step 4: 커밋**
 
 ```bash
 cd D:/dev/LIV_homepage
-git add liv-clinic/src/components/consultPrep/PrepWizard.tsx
-git commit -m "feat(consult-prep): 3단계 폼
+git add liv-clinic/src/components/consultPrep/PrepWizard.tsx liv-clinic/src/lib/analytics-events.ts
+git commit -m "feat(consult-prep): 3단계 폼 + GA4 이벤트 4종
 
 자유 서술은 필수(최소 2자)이며 비우면 다음 버튼이 잠긴다. 3단계 시기 선택은
 ko 로케일이면 자녀 결혼식·상견례 등 프리셋, 그 외에는 한국 체류 기간 입력.
@@ -1944,6 +1976,7 @@ import PrepWizard from '@/components/consultPrep/PrepWizard';
 import PrepResult from '@/components/consultPrep/PrepResult';
 import type { PrepCardResult } from '@/lib/consultPrep/buildResult';
 import { PREP_LANGS, type PrepLang } from '@/lib/consultPrep/types';
+import { trackPrepResultShown } from '@/lib/analytics-events';
 
 const CONCERN_IDS = ['sagging', 'elasticity', 'fundamental', 'underEye', 'texture'] as const;
 
@@ -1972,7 +2005,11 @@ export default function ConsultPrepPage() {
             concernId={concernId}
             concernTitle={tConcerns(`cards.${concernId}.title`)}
             lang={lang}
-            onResult={(r) => setResult(r)}
+            onResult={(r, d) => {
+              setResult(r);
+              setDescription(d);
+              trackPrepResultShown(concernId, r.lowConfidence);
+            }}
           />
         )}
       </div>
@@ -1981,39 +2018,18 @@ export default function ConsultPrepPage() {
 }
 ```
 
-> `description`을 페이지에서 들고 있어야 결과 카드의 문의 링크에 실을 수 있다. `PrepWizard`가 `onResult` 시점에 서술도 함께 올리도록 다음 단계에서 시그니처를 맞춘다.
+> `description`을 페이지에서 들고 있어야 결과 카드의 문의 링크에 실을 수 있다. `PrepWizard`의 `onResult`는 Task 7에서 이미 `(result, description)` 2인자로 정의돼 있다.
 
-- [ ] **Step 3: `PrepWizard`의 `onResult` 시그니처를 맞춘다**
-
-`PrepWizard.tsx`의 `Props`와 호출부를 바꾼다:
-
-```tsx
-  onResult: (result: PrepCardResult, description: string) => void;
-```
-
-```tsx
-      onResult(json.data as PrepCardResult, description.trim());
-```
-
-`page.tsx`의 호출부:
-
-```tsx
-            onResult={(r, d) => {
-              setResult(r);
-              setDescription(d);
-            }}
-```
-
-- [ ] **Step 4: 타입 검사**
+- [ ] **Step 3: 타입 검사**
 
 Run: `cd liv-clinic && npx tsc --noEmit -p tsconfig.json`
-Expected: `analytics-events`의 3개 함수 미정의 오류만 남는다 (Task 9)
+Expected: 오류 0
 
-- [ ] **Step 5: 커밋**
+- [ ] **Step 4: 커밋**
 
 ```bash
 cd D:/dev/LIV_homepage
-git add liv-clinic/src/components/consultPrep/PrepResult.tsx liv-clinic/src/app/\[locale\]/consult-prep/page.tsx liv-clinic/src/components/consultPrep/PrepWizard.tsx
+git add liv-clinic/src/components/consultPrep/PrepResult.tsx liv-clinic/src/app/\[locale\]/consult-prep/page.tsx
 git commit -m "feat(consult-prep): 결과 카드 4장 + 페이지
 
 카드 2 제목은 '이 부위를 다루는 시술'이며 정렬은 서버가 준 순서를 그대로 쓴다
@@ -2023,64 +2039,16 @@ git commit -m "feat(consult-prep): 결과 카드 4장 + 페이지
 
 ---
 
-## Task 9: 진입점 연결 + 이벤트 + 시연 확인
+## Task 9: 진입점 연결 + 시연 확인
 
 **Files:**
-- Modify: `src/lib/analytics-events.ts`
 - Modify: `src/components/sections/ConcernPathways.tsx:22-28`
 
 **Interfaces:**
-- Produces: `trackPrepStarted(concernId)` · `trackPrepDescribed(concernId, length)` · `trackPrepResultShown(concernId, lowConfidence)` · `trackPrepToInquiry(concernId)`
+- Consumes: Task 7의 GA4 이벤트 4종 · Task 8의 `/consult-prep` 라우트
+- Produces: 홈 고민 카드 → `/consult-prep?concern={id}` (ko/en/ja/zh 한정)
 
-- [ ] **Step 1: 이벤트를 추가한다**
-
-`src/lib/analytics-events.ts` 맨 끝에 덧붙인다:
-
-```ts
-// ============================================
-// 상담 준비 카드
-// ============================================
-
-/** 1단계 진입 */
-export function trackPrepStarted(concernId: string) {
-  trackEvent('prep_started', { concern_id: concernId });
-}
-
-/** 2단계 자유 서술 제출 */
-export function trackPrepDescribed(concernId: string, length: number) {
-  trackEvent('prep_described', { concern_id: concernId, description_length: length });
-}
-
-/** 결과 카드 노출 */
-export function trackPrepResultShown(concernId: string, lowConfidence: boolean) {
-  trackEvent('prep_result_shown', { concern_id: concernId, low_confidence: lowConfidence });
-}
-
-/** 결과에서 문의로 전환 */
-export function trackPrepToInquiry(concernId: string) {
-  trackEvent('prep_to_inquiry', { concern_id: concernId });
-}
-```
-
-- [ ] **Step 2: 결과 노출 이벤트를 발화시킨다**
-
-`src/app/[locale]/consult-prep/page.tsx`의 `onResult` 핸들러에 추가한다:
-
-```tsx
-            onResult={(r, d) => {
-              setResult(r);
-              setDescription(d);
-              trackPrepResultShown(concernId, r.lowConfidence);
-            }}
-```
-
-import에 추가:
-
-```tsx
-import { trackPrepResultShown } from '@/lib/analytics-events';
-```
-
-- [ ] **Step 3: 고민 카드 링크를 바꾼다**
+- [ ] **Step 1: 고민 카드 링크를 바꾼다**
 
 `src/components/sections/ConcernPathways.tsx`의 `concernsConfig`를 바꾼다. **1차 지원 언어에서만 새 경로로 보낸다.**
 
@@ -2114,7 +2082,7 @@ const concernsConfig = [
 
 `import { useLocale, useTranslations } from 'next-intl';` 로 바꾼다.
 
-- [ ] **Step 4: 전체 검증**
+- [ ] **Step 2: 전체 검증**
 
 ```bash
 cd D:/dev/LIV_homepage/liv-clinic
@@ -2125,7 +2093,7 @@ node --test scripts/__tests__/compile-concern-rules.test.mjs
 ```
 Expected: tsc 오류 0 · vitest 전체 통과(기존 194 + 신규 33 = 227) · verify:i18n 통과 · 생성기 테스트 7건 통과
 
-- [ ] **Step 5: 실제로 돌려서 확인한다**
+- [ ] **Step 3: 실제로 돌려서 확인한다**
 
 ```bash
 cd D:/dev/LIV_homepage/liv-clinic
@@ -2142,16 +2110,15 @@ NODE_TLS_REJECT_UNAUTHORIZED=0 npm run dev
 7. `OPENAI_API_KEY`를 잠시 비우고 재시작 → **결과 카드가 그대로 나오는가**(규칙표 폴백). 이게 시연에서 가장 중요한 확인이다
 8. 결과 하단 고지 문구가 보이는가
 
-- [ ] **Step 6: 커밋**
+- [ ] **Step 4: 커밋**
 
 ```bash
 cd D:/dev/LIV_homepage
-git add liv-clinic/src/lib/analytics-events.ts liv-clinic/src/components/sections/ConcernPathways.tsx liv-clinic/src/app/\[locale\]/consult-prep/page.tsx
-git commit -m "feat(consult-prep): 홈 고민 카드 연결 + GA4 이벤트 4종
+git add liv-clinic/src/components/sections/ConcernPathways.tsx
+git commit -m "feat(consult-prep): 홈 고민 카드를 상담 준비 카드로 연결
 
 ko/en/ja/zh 로케일에서만 고민 카드가 /consult-prep으로 향하고, 나머지
-7개 로케일은 기존 시술 페이지 링크를 유지한다.
-prep_started · prep_described · prep_result_shown · prep_to_inquiry 추가."
+7개 로케일은 기존 시술 페이지 링크를 유지한다."
 ```
 
 ---
