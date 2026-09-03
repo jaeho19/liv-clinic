@@ -6445,10 +6445,10 @@
     "labels": {
       "ulthera": {
         "name": "อัลเทอราพี ไพร์ม",
-        "upperFace": "ใบหน้าส่วนบน (250–400 ภาพ)",
-        "lowerFace": "ใบหน้าส่วนล่าง (~600 ช็อต)",
-        "fullFace": "เต็มหน้า (800–1,100 ภาพ)",
-        "fullFaceNeck": "เต็มหน้า + คอ (~1,200 ช็อต)"
+        "upperFace": "ใบหน้าส่วนบน (200-300 ช็อต)",
+        "lowerFace": "ใบหน้าส่วนล่าง (300-400 ช็อต)",
+        "fullFace": "ทั้งใบหน้า (400-800 ช็อต)",
+        "fullFaceNeck": "ทั้งใบหน้า + คอ (600 ช็อต~)"
       },
       "thermage": {
         "name": "เทอร์มาจเลเซอร์",
@@ -6481,11 +6481,11 @@
       },
       "thread": {
         "name": "การร้อยไหม",
-        "domestic": "ภายในประเทศ",
-        "domesticPremium": "เบี้ยประกันภัยในประเทศ",
-        "xeomin": "เซวมิน",
-        "allergan": "อัลเลอร์แกน",
-        "allerganSalivary": "Allergan (ต่อมน้ำลาย)"
+        "aptosNamica": "APTOS NAMICA (10 เส้น)",
+        "aptosLight25": "APTOS Light Lift 25 (2 เส้น)",
+        "aptosLight50": "APTOS Light Lift 50 (2 เส้น)",
+        "silhouette": "Silhouette Soft (2 เส้น)",
+        "mint": "MINT (8 เส้น)"
       },
       "botox": {
         "botoxContour": "โบท็อกซ์ (คอนทัวร์)",

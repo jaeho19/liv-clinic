@@ -32,16 +32,18 @@ export type TreatmentPricing = {
 
 export const PRICING: Record<string, TreatmentPricing> = {
   // ===== Lifting =====
+  // 가격은 /pricing(pricingGuide.ts)의 공개값과 동일하게 유지한다.
+  // 전부 null이라 시술 페이지에서 '상담 후 결정'만 나오던 것을 2026-09-03 정정.
   ulthera: {
     id: 'ulthera',
     groups: [
       {
         groupKey: 'name',
         rows: [
-          { rowKey: 'upperFace', price: null },
-          { rowKey: 'lowerFace', price: null },
-          { rowKey: 'fullFace', price: null },
-          { rowKey: 'fullFaceNeck', price: null },
+          { rowKey: 'upperFace', price: '780,000', suffix: 'starting' },
+          { rowKey: 'lowerFace', price: '1,170,000', suffix: 'starting' },
+          { rowKey: 'fullFace', price: '1,560,000', suffix: 'starting' },
+          { rowKey: 'fullFaceNeck', price: '2,340,000', suffix: 'starting' },
         ],
       },
     ],
@@ -120,17 +122,19 @@ export const PRICING: Record<string, TreatmentPricing> = {
     ],
   },
 
+  // 이 표는 /pricing(pricingGuide.ts)과 같은 값을 써야 한다.
+  // 과거 보톡스 행(제오민/앨러간/침샘)이 잘못 들어가 있었음 — 2026-09-03 정정.
   thread: {
     id: 'thread',
     groups: [
       {
         groupKey: 'name',
         rows: [
-          { rowKey: 'domestic', price: '60,000', suffix: 'perPiece' },
-          { rowKey: 'domesticPremium', price: '110,000', suffix: 'perPiece' },
-          { rowKey: 'xeomin', price: '160,000', suffix: 'perPiece' },
-          { rowKey: 'allergan', price: '190,000', suffix: 'perPiece' },
-          { rowKey: 'allerganSalivary', price: '250,000', suffix: 'perPiece' },
+          { rowKey: 'aptosNamica', price: '3,000,000', suffix: 'starting' },
+          { rowKey: 'aptosLight25', price: '1,500,000', suffix: 'starting' },
+          { rowKey: 'aptosLight50', price: '2,500,000', suffix: 'starting' },
+          { rowKey: 'silhouette', price: '1,000,000', suffix: 'starting' },
+          { rowKey: 'mint', price: '800,000', suffix: 'starting' },
         ],
       },
     ],

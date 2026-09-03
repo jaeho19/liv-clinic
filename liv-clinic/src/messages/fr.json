@@ -6445,10 +6445,10 @@
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "Partie supérieure du visage (250 à 400 lignes)",
-        "lowerFace": "Partie inférieure du visage (~600 lignes)",
-        "fullFace": "Visage complet (800 à 1 100 lignes)",
-        "fullFaceNeck": "Visage complet + cou (~1 200 lignes)"
+        "upperFace": "Visage supérieur (200-300 tirs)",
+        "lowerFace": "Visage inférieur (300-400 tirs)",
+        "fullFace": "Visage entier (400-800 tirs)",
+        "fullFaceNeck": "Visage entier + cou (600 tirs~)"
       },
       "thermage": {
         "name": "Laser Thermage",
@@ -6481,11 +6481,11 @@
       },
       "thread": {
         "name": "Lifting par fils",
-        "domestic": "Domestique",
-        "domesticPremium": "Domestique Premium",
-        "xeomin": "Xeomin",
-        "allergan": "Allergan",
-        "allerganSalivary": "Allergan (glande salivaire)"
+        "aptosNamica": "APTOS NAMICA (10 fils)",
+        "aptosLight25": "APTOS Light Lift 25 (2 fils)",
+        "aptosLight50": "APTOS Light Lift 50 (2 fils)",
+        "silhouette": "Silhouette Soft (2 fils)",
+        "mint": "MINT (8 fils)"
       },
       "botox": {
         "botoxContour": "Botox (contour)",

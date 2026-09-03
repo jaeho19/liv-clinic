@@ -6445,10 +6445,10 @@
     "labels": {
       "ulthera": {
         "name": "Ultherapy Prime",
-        "upperFace": "الجزء العلوي من الوجه (250 إلى 400 لقطة)",
-        "lowerFace": "الجزء السفلي من الوجه (~600 لقطة)",
-        "fullFace": "الوجه بالكامل (800 إلى 1,100 لقطة)",
-        "fullFaceNeck": "الوجه + الرقبة (~1,200 لقطة)"
+        "upperFace": "الوجه العلوي (200-300 نبضة)",
+        "lowerFace": "الوجه السفلي (300-400 نبضة)",
+        "fullFace": "الوجه بالكامل (400-800 نبضة)",
+        "fullFaceNeck": "الوجه بالكامل + الرقبة (600 نبضة~)"
       },
       "thermage": {
         "name": "ليزر Thermage",
@@ -6481,11 +6481,11 @@
       },
       "thread": {
         "name": "شدّ بالخيوط",
-        "domestic": "محلي",
-        "domesticPremium": "محلي فاخر",
-        "xeomin": "Xeomin",
-        "allergan": "Allergan",
-        "allerganSalivary": "Allergan (الغدة اللعابية)"
+        "aptosNamica": "APTOS NAMICA (10 خيوط)",
+        "aptosLight25": "APTOS Light Lift 25 (2 خيط)",
+        "aptosLight50": "APTOS Light Lift 50 (2 خيط)",
+        "silhouette": "Silhouette Soft (2 خيط)",
+        "mint": "MINT (8 خيوط)"
       },
       "botox": {
         "botoxContour": "Botox (الكفاف)",

@@ -6448,10 +6448,10 @@
     "labels": {
       "ulthera": {
         "name": "울쎄라피 프라임",
-        "upperFace": "상안면 (250-400샷)",
-        "lowerFace": "하안면 (~600샷)",
-        "fullFace": "전안면 (800-1,100샷)",
-        "fullFaceNeck": "전안면 + 목 (~1,200샷)"
+        "upperFace": "상안면 (200~300샷)",
+        "lowerFace": "하안면 (300~400샷)",
+        "fullFace": "전안면 (400~800샷)",
+        "fullFaceNeck": "전안면 + 목 (600샷~)"
       },
       "thermage": {
         "name": "써마지 레이저",
@@ -6484,11 +6484,11 @@
       },
       "thread": {
         "name": "실리프팅",
-        "domestic": "국산",
-        "domesticPremium": "국산 프리미엄",
-        "xeomin": "제오민",
-        "allergan": "앨러간",
-        "allerganSalivary": "앨러간 (침샘)"
+        "aptosNamica": "압토스 NAMICA (10줄)",
+        "aptosLight25": "압토스 Light Lift 25 (2줄)",
+        "aptosLight50": "압토스 Light Lift 50 (2줄)",
+        "silhouette": "실루엣소프트 (2줄)",
+        "mint": "민트 (8줄)"
       },
       "botox": {
         "botoxContour": "보톡스 (윤곽)",

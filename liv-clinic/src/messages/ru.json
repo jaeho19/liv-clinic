@@ -6445,10 +6445,10 @@
     "labels": {
       "ulthera": {
         "name": "Ультерапия Прайм",
-        "upperFace": "Верхнее лицо (250–400 кадров)",
-        "lowerFace": "Нижняя часть лица (~600 кадров)",
-        "fullFace": "Анфас (800–1100 снимков)",
-        "fullFaceNeck": "Анфас + шея (~1200 снимков)"
+        "upperFace": "Верхняя часть лица (200-300 импульсов)",
+        "lowerFace": "Нижняя часть лица (300-400 импульсов)",
+        "fullFace": "Всё лицо (400-800 импульсов)",
+        "fullFaceNeck": "Всё лицо + шея (600 импульсов~)"
       },
       "thermage": {
         "name": "Термаж Лазер",
@@ -6481,11 +6481,11 @@
       },
       "thread": {
         "name": "Нитевой лифтинг",
-        "domestic": "Одомашненный",
-        "domesticPremium": "Внутренний премиум",
-        "xeomin": "Ксеомин",
-        "allergan": "Аллерган",
-        "allerganSalivary": "Аллерган (слюнная железа)"
+        "aptosNamica": "APTOS NAMICA (10 нитей)",
+        "aptosLight25": "APTOS Light Lift 25 (2 нити)",
+        "aptosLight50": "APTOS Light Lift 50 (2 нити)",
+        "silhouette": "Silhouette Soft (2 нити)",
+        "mint": "MINT (8 нитей)"
       },
       "botox": {
         "botoxContour": "Ботокс (Контур)",
