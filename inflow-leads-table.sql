@@ -12,7 +12,8 @@ CREATE TABLE IF NOT EXISTS inflow_leads (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   -- 최초 문의(신규 연락)일
   contact_date DATE NOT NULL DEFAULT CURRENT_DATE,
-  -- 유입 채널: wechat | kakao | naver | phone | walk_in | website | livechat | etc
+  -- 문의 수단: wechat | kakao | whatsapp | naver | phone | walk_in | website | livechat | etc
+  -- (CHECK 없음 — 코드 목록은 liv-clinic/src/types/admin.ts INFLOW_CHANNELS 가 기준)
   channel TEXT NOT NULL DEFAULT 'etc',
   -- 연계 에이전시명 (바이올렛 등). 직접 유입이면 NULL
   agency TEXT,

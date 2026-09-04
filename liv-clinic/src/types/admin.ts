@@ -77,10 +77,15 @@ export type InflowLeadRow = Database['public']['Tables']['inflow_leads']['Row'];
 export type InflowLeadInsert = Database['public']['Tables']['inflow_leads']['Insert'];
 export type InflowLeadUpdate = Database['public']['Tables']['inflow_leads']['Update'];
 
-/** 유입 채널 코드 */
+/**
+ * 문의 수단 코드 (inflow_leads.channel — TEXT, DB CHECK 없음).
+ * 새 수단은 여기(타입·목록·라벨·색) 네 곳만 함께 추가하면 입력 폼·목록·CSV에 반영된다.
+ * 왓츠앱은 별도 ID 컬럼 없이 전화번호(phone)로 식별한다.
+ */
 export type InflowChannel =
   | 'wechat'
   | 'kakao'
+  | 'whatsapp'
   | 'naver'
   | 'phone'
   | 'walk_in'
@@ -91,6 +96,7 @@ export type InflowChannel =
 export const INFLOW_CHANNELS: InflowChannel[] = [
   'wechat',
   'kakao',
+  'whatsapp',
   'naver',
   'phone',
   'walk_in',
@@ -102,6 +108,7 @@ export const INFLOW_CHANNELS: InflowChannel[] = [
 export const INFLOW_CHANNEL_LABELS: Record<InflowChannel, string> = {
   wechat: '위챗',
   kakao: '카카오톡',
+  whatsapp: '왓츠앱',
   naver: '네이버',
   phone: '전화',
   walk_in: '워크인',
@@ -110,10 +117,11 @@ export const INFLOW_CHANNEL_LABELS: Record<InflowChannel, string> = {
   etc: '기타',
 };
 
-/** 채널 막대 색상 (analytics 페이지 톤과 통일) */
+/** 채널 막대 색상 (analytics 페이지 톤과 통일). 라벨을 항상 병기하므로 색은 보조 식별용 */
 export const INFLOW_CHANNEL_COLORS: Record<InflowChannel, string> = {
   wechat: 'bg-green-400',
   kakao: 'bg-yellow-400',
+  whatsapp: 'bg-teal-600',
   naver: 'bg-emerald-500',
   phone: 'bg-blue-400',
   walk_in: 'bg-purple-400',

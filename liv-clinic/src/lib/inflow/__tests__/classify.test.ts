@@ -95,6 +95,15 @@ describe('suggestChannel — 레거시 채널/대행사/노트 → 유입 경로
     expect(suggestChannel(lead({ channel: 'phone' }))).toBeNull();
   });
 
+  test('단서 없는 왓츠앱도 후보를 만들지 않는다(메신저일 뿐 어디서 알고 왔는지 단서가 아님)', () => {
+    expect(suggestChannel(lead({ channel: 'whatsapp' }))).toBeNull();
+  });
+
+  test('왓츠앱 문의라도 노트의 텍스트 단서는 그대로 따른다', () => {
+    const s = suggestChannel(lead({ channel: 'whatsapp', note: '인스타 보고 연락' }));
+    expect(s).toMatchObject({ category: 'instagram', confidence: 'medium' });
+  });
+
   test('노트의 지인·소개 키워드는 referral(medium)', () => {
     const s = suggestChannel(lead({ channel: 'phone', note: '지인 소개로 연락' }));
     expect(s).toMatchObject({ category: 'referral', confidence: 'medium' });
@@ -106,6 +115,10 @@ describe('suggestOrigin — 국내/해외 후보', () => {
     expect(suggestOrigin(lead({ channel: 'wechat' }))).toMatchObject({ origin: 'foreign', confidence: 'high' });
     expect(suggestOrigin(lead({ channel: 'kakao', agency: '라미타' }))).toMatchObject({ origin: 'foreign', confidence: 'high' });
     expect(suggestOrigin(lead({ channel: 'etc', wechat_id: 'abc' }))).toMatchObject({ origin: 'foreign', confidence: 'high' });
+  });
+
+  test('왓츠앱 채널은 해외(high) — 국내에서는 쓰지 않는 메신저', () => {
+    expect(suggestOrigin(lead({ channel: 'whatsapp' }))).toMatchObject({ origin: 'foreign', confidence: 'high' });
   });
 
   test('국내 접촉 수단은 국내(medium — 반드시 사람 확인)', () => {

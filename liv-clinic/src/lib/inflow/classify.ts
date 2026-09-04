@@ -122,6 +122,8 @@ export function suggestChannel(lead: LegacyLeadFields): ChannelSuggestion | null
   }
 
   // 3) 레거시 채널 직행 매핑
+  //    카카오·전화·왓츠앱은 순수 연락 수단이라 "어디서 알고 왔나"의 단서가 아니므로
+  //    여기서 매핑하지 않고 4)의 텍스트 단서로만 판단한다.
   switch (lead.channel) {
     case 'wechat':
       return { category: 'foreign_sns', detail: '위챗', confidence: 'high', reason: '위챗 문의' };
@@ -161,6 +163,9 @@ const DOMESTIC_CONTACT_CHANNELS = ['kakao', 'phone', 'naver', 'walk_in', 'websit
 export function suggestOrigin(lead: LegacyLeadFields): OriginSuggestion | null {
   if (lead.wechat_id || lead.channel === 'wechat') {
     return { origin: 'foreign', confidence: 'high', reason: '위챗 채널/ID' };
+  }
+  if (lead.channel === 'whatsapp') {
+    return { origin: 'foreign', confidence: 'high', reason: '왓츠앱 문의(국내 미사용 메신저)' };
   }
   if (lead.agency) {
     return { origin: 'foreign', confidence: 'high', reason: `해외 대행사(${lead.agency}) 경유` };
