@@ -387,10 +387,10 @@ COMMENT ON COLUMN public.chat_sessions.auto_ack_at IS
 **환경변수** (Netlify + `.env.example`에 문서화)
 
 ```
-SLACK_STAFF=U0BMYAJKMJQ:이정현,U0BMYAMNASG:정소월,U0BMUKXLL3C:방애금
+SLACK_STAFF=U0BMYAJKMJQ:이정현,U0BMUKXLL3C:방애금   # 2026-09-04: 정소월 퇴사로 제외, 유다영 ID 확인 후 추가
                                   # 방 초대 + 멘션 대상. "ID:이름" 쉼표 구분, 이름 생략 가능.
                                   # 비우면 방을 만들지 않고 현행 스레드 방식으로 동작(안전 스위치).
-SLACK_OBSERVERS=U0XXXXXXXXX:이재호  # 지켜보기만 하는 계정(원장님). 방에 초대되지만 멘션·담당 대상이 아니다.
+SLACK_OBSERVERS=U0BMNA7292P:이재호  # 지켜보기만 하는 계정(원장님). 방에 초대되지만 멘션·담당 대상이 아니다.
                                   # 형식은 SLACK_STAFF와 같다. 비워도 된다.
 SLACK_ROOM_PREFIX=chat            # 채널 이름 접두어. 한글 가능 여부는 배포 첫날 시험
 SLACK_CHANNEL_ID=(기존 값)         # #해외문의 = 피드 + 스레드 폴백
