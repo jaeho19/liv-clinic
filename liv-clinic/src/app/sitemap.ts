@@ -1,93 +1,63 @@
 import { MetadataRoute } from 'next';
+import { createClient } from '@supabase/supabase-js';
 import { LOCALES } from '@/i18n/routing';
-import { LOCALE_META } from '@/i18n/locales-meta';
-import { TREATMENTS } from '@/lib/constants';
+import { BASE_URL, buildHreflangMap } from '@/lib/seo';
+import { buildSitemapPaths } from '@/lib/sitemapPaths';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://liv-clinic.net';
+// 발행 이벤트 목록이 바뀌면 1시간 안에 반영
+export const revalidate = 3600;
 
-/**
- * Build per-locale alternate URL map for a path.
- * Keys use BCP-47 hreflang values from LOCALE_META so sitemap alternates match
- * the page-level metadata tags (seo.ts buildHreflangMap); adds x-default → /en.
- */
-function buildLanguagesMap(path: string): Record<string, string> {
-  return {
-    ...Object.fromEntries(
-      LOCALES.map((code) => [LOCALE_META[code].hreflang, `${BASE_URL}/${code}${path}`]),
-    ),
-    'x-default': `${BASE_URL}/en${path}`,
-  };
+type PublishedEvent = { slug: string; updated_at: string | null };
+
+async function fetchPublishedEvents(): Promise<PublishedEvent[]> {
+  try {
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    );
+    const { data, error } = await supabase
+      .from('events')
+      .select('slug, updated_at')
+      .eq('is_published', true);
+    if (error) throw error;
+    return (data ?? []) as PublishedEvent[];
+  } catch (err) {
+    console.error('sitemap: events fetch failed', err);
+    return [];
+  }
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const currentDate = new Date().toISOString();
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const entries: MetadataRoute.Sitemap = [];
 
-  // Static pages
-  const staticPages = [
-    { path: '', priority: 1.0, changeFrequency: 'weekly' as const },
-    { path: '/about', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/about/staff', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/about/equipment', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/about/location', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/contact', priority: 0.9, changeFrequency: 'weekly' as const },
-    { path: '/international', priority: 0.9, changeFrequency: 'monthly' as const },
-    { path: '/lifting', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/antiaging', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/laser', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/medical', priority: 0.8, changeFrequency: 'weekly' as const },
-    { path: '/signature', priority: 0.8, changeFrequency: 'monthly' as const },
-    { path: '/before-after', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/reviews', priority: 0.8, changeFrequency: 'weekly' as const },
-    { path: '/media', priority: 0.6, changeFrequency: 'weekly' as const },
-    { path: '/pricing', priority: 0.7, changeFrequency: 'monthly' as const },
-    { path: '/events', priority: 0.7, changeFrequency: 'weekly' as const },
-    { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' as const },
-  ];
-
-  // Treatment pages
-  const liftingTreatments = Object.keys(TREATMENTS.lifting).map((id) => ({
-    path: `/lifting/${id}`,
-    priority: 0.8,
-    changeFrequency: 'monthly' as const,
-  }));
-
-  const antiagingTreatments = Object.keys(TREATMENTS.antiaging).map((id) => ({
-    path: `/antiaging/${id}`,
-    priority: 0.8,
-    changeFrequency: 'monthly' as const,
-  }));
-
-  // Laser category pages (다국어 검색 최적화)
-  const laserCategories = [
-    'pigmentation',  // 기미/색소
-    'vascular',      // 홍조/혈관
-    'skintone',      // 피부톤/미백
-    'hair-removal',  // 제모
-    'tattoo',        // 문신 제거
-  ].map((id) => ({
-    path: `/laser/${id}`,
-    priority: 0.8,
-    changeFrequency: 'monthly' as const,
-  }));
-
-  const allPages = [...staticPages, ...liftingTreatments, ...antiagingTreatments, ...laserCategories];
-
-  // Generate sitemap entries for all locales — uses LOCALES SSOT
-  const sitemapEntries: MetadataRoute.Sitemap = [];
-
-  for (const locale of LOCALES) {
-    for (const page of allPages) {
-      sitemapEntries.push({
+  // 정적·시술 페이지 — lastmod는 실제 수정일을 알 수 없으므로 넣지 않는다
+  // (빌드 시각을 넣으면 매번 바뀌어 구글이 lastmod를 불신한다)
+  for (const page of buildSitemapPaths()) {
+    const locales = page.locales ?? LOCALES;
+    for (const locale of locales) {
+      entries.push({
         url: `${BASE_URL}/${locale}${page.path}`,
-        lastModified: currentDate,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
-        alternates: {
-          languages: buildLanguagesMap(page.path),
-        },
+        // 단일 로케일 페이지는 대체 언어가 없다
+        ...(page.locales ? {} : { alternates: { languages: buildHreflangMap(page.path) } }),
       });
     }
   }
 
-  return sitemapEntries;
+  // 발행 중인 이벤트 상세 — 실제 updated_at을 lastmod로
+  for (const event of await fetchPublishedEvents()) {
+    const path = `/events/${event.slug}`;
+    for (const locale of LOCALES) {
+      entries.push({
+        url: `${BASE_URL}/${locale}${path}`,
+        ...(event.updated_at ? { lastModified: event.updated_at } : {}),
+        changeFrequency: 'weekly',
+        priority: 0.6,
+        alternates: { languages: buildHreflangMap(path) },
+      });
+    }
+  }
+
+  return entries;
 }
