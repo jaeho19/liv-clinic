@@ -2,7 +2,8 @@
 
 > **작성**: 2026-09-06
 > **배경**: P0(기반 정비)는 2026-09-05 배포 완료(master `51bd4df`, 보고서 `docs/04-report/features/foreign-seo-p0.report.md`). 다음 단계 P1(외국인 검색 의도별 가이드 콘텐츠·시술 페이지 보강·후기·이벤트·OG 이미지)은 계정이 필요한 작업과 병원만 아는 사실 정보가 있어야 진행할 수 있다.
-> **전달 방법**: 이 문서의 "답변" 칸을 채우고(구글 문서 사본에 바로 적어도 되고, 이 파일을 편집해도 됨) 파일은 `D:\dev\LIV_homepage\docs\05-handoff\p1-inputs\` 폴더에 넣은 뒤, 새 창에 §D의 문장을 붙여넣으면 된다.
+> **구글 문서 사본(답변 작성용)**: https://docs.google.com/document/d/1JIHsqJTCpmyT1T9N977bsPoamgBFBlb1cnpNxqPuO4w/edit
+> **전달 방법**: 이 문서의 "답변" 칸을 채우고(위 구글 문서에 바로 적어도 되고, 이 파일을 편집해도 됨) 파일은 `D:\dev\LIV_homepage\docs\05-handoff\p1-inputs\` 폴더에 넣은 뒤, 새 창에 §D의 문장을 붙여넣으면 된다.
 > **계획서 원문**: `docs/01-plan/features/foreign-seo-improvement.plan.md` §5 P1·§9 가정 목록
 
 ---
