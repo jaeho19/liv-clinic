@@ -32,6 +32,17 @@
 # Map the most common old paths to new equivalents
 # ──────────────────────────────────────────
 
+# 옛 워드프레스 PHP 진입점 — 미들웨어는 점(.)이 있는 경로를 건너뛰므로 Netlify 규칙으로 처리 (500 방지)
+[[redirects]]
+  from = "/index.php"
+  to = "/ko"
+  status = 301
+
+[[redirects]]
+  from = "/xmlrpc.php"
+  to = "/ko"
+  status = 301
+
 # WordPress admin/login - block gracefully
 [[redirects]]
   from = "/wp-admin/*"
