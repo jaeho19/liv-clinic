@@ -3,12 +3,14 @@ import localFont from 'next/font/local';
 
 // Pretendard Variable - 본문용 (한글/영문/키릴/라틴 diacritics)
 // display: 'swap'으로 FOUT 방지 (Vercel Best Practice)
+// Pretendard Variable(2MB) — globals.css에서 아랍어 페이지 폴백(html[lang="ar"] body)에만 쓰인다.
+// preload를 켜면 모든 로케일이 2MB를 내려받으므로 끈다(브라우저가 필요할 때만 가져온다). 2026-09-05
 export const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
   variable: '--font-pretendard',
   weight: '300 700',
   display: 'swap',
-  preload: true,
+  preload: false,
 });
 
 // Cormorant Garamond - 장식용 (영문)

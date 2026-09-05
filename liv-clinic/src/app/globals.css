@@ -1,28 +1,59 @@
 @import "tailwindcss";
 
-/* Paperlogy 폰트 정의 */
+/* Paperlogy 폰트 — 라틴/한글 woff2 서브셋. unicode-range로 페이지가 쓰는 조각만 내려받는다
+   (라틴 14KB, 한글 126KB × 3 weight; 원본 TTF 680KB × 3 대체). 생성: scripts/build-paperlogy-woff2.sh */
 @font-face {
   font-family: 'Paperlogy';
-  src: url('/fonts/Paperlogy-4Regular.ttf') format('truetype');
+  src: url('/fonts/Paperlogy-4Regular-latin.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F;
 }
 
 @font-face {
   font-family: 'Paperlogy';
-  src: url('/fonts/Paperlogy-6SemiBold.ttf') format('truetype');
+  src: url('/fonts/Paperlogy-4Regular-hangul.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('/fonts/Paperlogy-6SemiBold-latin.woff2') format('woff2');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F;
 }
 
 @font-face {
   font-family: 'Paperlogy';
-  src: url('/fonts/Paperlogy-7Bold.ttf') format('truetype');
+  src: url('/fonts/Paperlogy-6SemiBold-hangul.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('/fonts/Paperlogy-7Bold-latin.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F;
+}
+
+@font-face {
+  font-family: 'Paperlogy';
+  src: url('/fonts/Paperlogy-7Bold-hangul.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF;
 }
 
 /* LIV 성형외과 디자인 시스템 */
