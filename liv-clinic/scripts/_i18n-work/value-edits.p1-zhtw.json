@@ -1,0 +1,13 @@
+[
+  { "file": "zh-TW.json", "find": "国际患者须知", "replace": "國際患者須知", "all": true, "expect": 3 },
+  { "file": "zh-TW.json", "find": "欢迎国际患者", "replace": "歡迎國際患者" },
+  { "file": "zh-TW.json", "find": "首尔特别市瑞草区Naruteo-ro 80号 自恩大厦4层", "replace": "首爾特別市瑞草區Naruteo-ro 80號 自恩大廈4樓" },
+  { "file": "zh-TW.json", "find": "\"treatment\": \"肉毒素\"", "replace": "\"treatment\": \"肉毒桿菌素\"" },
+  { "file": "zh-TW.json", "find": "\"treatment\": \"填充\"", "replace": "\"treatment\": \"玻尿酸\"" },
+  { "file": "zh-TW.json", "find": "\"treatment\": \"水光针\"", "replace": "\"treatment\": \"水光針\"" },
+  { "file": "zh-TW.json", "find": "\"treatment\": \"線雕提升\"", "replace": "\"treatment\": \"埋線拉提\"" },
+  { "file": "zh-TW.json", "find": "银联(UnionPay) · 韩元(KRW)现金", "replace": "銀聯(UnionPay) · 韓元(KRW)現金" },
+  { "file": "zh-TW.json", "find": "还有其他疑问吗？", "replace": "還有其他疑問嗎？" },
+  { "file": "zh-TW.json", "find": "\"country\": \"国家/地区\"", "replace": "\"country\": \"國家/地區\"" },
+  { "file": "zh-TW.json", "find": "韩国抗衰老 中文", "replace": "韓國抗老 中文" }
+]
