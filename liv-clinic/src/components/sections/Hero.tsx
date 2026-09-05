@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
@@ -100,6 +100,15 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
+  // SSR 마크업의 <video>는 하이드레이션 전에 이미 로드를 시작한다. React는 미디어 이벤트 리스너를
+  // 하이드레이션 시점에야 요소에 붙이므로, 캐시된 영상·빠른 회선·느린 기기에서는 loadeddata 가
+  // 그 전에 발화해 onLoadedData 가 영영 호출되지 않고 영상이 opacity-0 로 남는다(재생은 되는데 안 보임).
+  // 콜백 ref 는 리스너가 붙은 뒤 커밋 시점에 실제 노드로 호출되므로, 그때 첫 프레임이 이미
+  // 준비돼 있으면(readyState >= HAVE_CURRENT_DATA) 즉시 노출해 이 경합을 보정한다.
+  const videoRef = useCallback((video: HTMLVideoElement | null) => {
+    if (video && video.readyState >= video.HAVE_CURRENT_DATA) setIsVideoLoaded(true);
+  }, []);
+
   return (
     <section className="relative h-[100vh] h-[100dvh] sm:h-[85vh] sm:h-[85dvh] min-h-[500px] w-full overflow-hidden">
       <div className="absolute inset-0 bg-primary">
@@ -109,6 +118,7 @@ export default function Hero() {
             - poster: 비디오 로드 전 이미지 표시로 LCP 개선
         */}
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
