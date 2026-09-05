@@ -1,7 +1,26 @@
 import { describe, it, expect } from 'vitest';
 import { listGuides, getGuide, guideLocalesFor } from '../index';
 import { GUIDES } from '../guides.generated';
-import { isGuidePublished, publishedGuideCount } from '../publicIndex';
+import { isGuidePublished, publishedGuideCount, localeSwitchPath } from '../publicIndex';
+
+describe('localeSwitchPath', () => {
+  it('leaves non-guide paths alone', () => {
+    expect(localeSwitchPath('/about', 'ko')).toBe('/about');
+    expect(localeSwitchPath('/', 'vi')).toBe('/');
+  });
+  it('sends non-guide locales to the international page from any guide path', () => {
+    expect(localeSwitchPath('/guides', 'ko')).toBe('/international');
+    expect(localeSwitchPath('/guides/ultherapy-cost-seoul', 'vi')).toBe('/international');
+  });
+  it('keeps guide locales on the hub, and on a detail only when that language is published', () => {
+    expect(localeSwitchPath('/guides', 'ja')).toBe('/guides');
+    for (const g of GUIDES) {
+      const expected = g.status === 'published' ? `/guides/${g.slug}` : '/guides';
+      expect(localeSwitchPath(`/guides/${g.slug}`, g.locale)).toBe(expected);
+    }
+    expect(localeSwitchPath('/guides/no-such-slug', 'en')).toBe('/guides');
+  });
+});
 
 describe('guides index', () => {
   it('returns nothing for locales without guides', () => {

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import { Link, usePathname } from '@/i18n/routing';
 import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
+import { localeSwitchPath } from '@/lib/guides/publicIndex';
 import { useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useDirection } from '@/hooks/useDirection';
@@ -128,7 +129,9 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
   // React reconciler가 "removeChild ... not a child of this node" 예외로 페이지를 깨뜨림.
   // locale 전환은 폰트·dir·서버 컴포넌트 모두 새로 받아야 하므로 전체 리로드가 안전·정합.
   const handleLanguageChange = useCallback((langCode: string) => {
-    const suffix = pathname === '/' ? '' : pathname;
+    // 가이드(/guides…)는 4개 언어에만 있어 없는 언어로는 국제환자 페이지/허브로 보낸다(publicIndex.localeSwitchPath).
+    const target = localeSwitchPath(pathname, langCode);
+    const suffix = target === '/' ? '' : target;
     window.location.assign(`/${langCode}${suffix}`);
   }, [pathname]);
 

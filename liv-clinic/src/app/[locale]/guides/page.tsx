@@ -8,6 +8,12 @@ import { GUIDE_UI } from '@/lib/guides/ui';
 import GuideCard from '@/components/guides/GuideCard';
 
 export const revalidate = 3600;
+// 허브도 4개 언어만 정적 생성한다. 그 밖(ko·vi·…)은 404 — notFound()만으로는 프리렌더 결과가 200으로 서빙됐다(로컬 확인).
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return GUIDE_LOCALES.map((locale) => ({ locale }));
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
