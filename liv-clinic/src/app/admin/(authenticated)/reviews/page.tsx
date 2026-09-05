@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import ConfirmDialog from '@/components/admin/ConfirmDialog';
+import ReviewDirectForm from '@/components/admin/ReviewDirectForm';
 import type { Database } from '@/types/supabase';
 
 type ReviewRow = Database['public']['Tables']['reviews']['Row'];
@@ -30,6 +31,7 @@ export default function ReviewsAdminPage() {
   const [filter, setFilter] = useState<FilterKey>('all');
   const [actionId, setActionId] = useState<string | null>(null);
   const [deleteTarget, setDeleteTarget] = useState<ReviewRow | null>(null);
+  const [showForm, setShowForm] = useState(false);
 
   const fetchReviews = async () => {
     setLoading(true);
@@ -93,7 +95,27 @@ export default function ReviewsAdminPage() {
     <div>
       <div className="flex items-center justify-between mb-4 lg:mb-6">
         <h2 className="text-lg lg:text-xl font-bold text-[#6d4e42]">시술 후기 관리</h2>
+        <button
+          type="button"
+          onClick={() => setShowForm((v) => !v)}
+          className={`min-h-[44px] px-4 py-2 text-sm rounded-lg border transition-colors cursor-pointer ${
+            showForm ? 'border-[#e5e5e5] text-[#575756] hover:bg-[#f6f6f6]' : 'bg-[#b4988d] text-white border-[#b4988d] hover:bg-[#a08474]'
+          }`}
+        >
+          {showForm ? '닫기' : '후기 직접 등록'}
+        </button>
       </div>
+
+      {/* 후기 직접 등록 (P1-4) — 환자에게 받은 후기를 관리자가 대신 입력 */}
+      {showForm && (
+        <ReviewDirectForm
+          onSaved={() => {
+            setShowForm(false);
+            fetchReviews();
+          }}
+          onCancel={() => setShowForm(false)}
+        />
+      )}
 
       {/* Filters */}
       <div className="flex flex-wrap items-center gap-2 mb-4">
