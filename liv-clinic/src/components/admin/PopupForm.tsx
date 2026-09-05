@@ -141,7 +141,10 @@ export default function PopupForm({ popup }: PopupFormProps) {
           onChange={(url) => updateField('image_url_zh', url)}
           label="팝업 이미지 (中文)"
         />
-        <p className="text-xs text-[#b4b4b4]">외국어 이미지를 등록하지 않으면 해당 언어 페이지에는 한국어 이미지가 표시됩니다.</p>
+        <p className="text-xs text-[#b4b4b4]">
+          외국어 이미지가 없는 언어 페이지에는 이 팝업이 표시되지 않습니다(한국어 이미지는 외국어 페이지에 노출되지 않음).
+          English 이미지를 등록하면 日本語·中文 이미지가 없는 언어에서는 English 이미지가 대신 표시됩니다.
+        </p>
       </div>
 
       {/* Link */}
