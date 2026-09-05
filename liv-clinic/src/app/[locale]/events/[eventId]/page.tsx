@@ -46,28 +46,24 @@ export async function generateMetadata({
 
   if (!event) {
     // 사용자에게 "찾을 수 없음" 같은 부정 문구가 탭/주소창에 노출되지 않도록
-    // 중립적인 이벤트 페이지 기본 제목을 fallback으로 사용
+    // 중립적인 이벤트 페이지 기본 제목을 fallback으로 사용. 4개 언어 외에는 영어 제목 + 로케일 병원명.
     return {
-      title: FALLBACK_TITLES[locale] || FALLBACK_TITLES.ko,
+      title: FALLBACK_TITLES[locale] || `Events | ${getSiteName(locale)}`,
     };
   }
 
-  // 언어별 제목/설명
-  const titleMap: Record<string, string> = {
-    ko: event.title_ko,
-    en: event.title_en || event.title_ko,
-    ja: event.title_ja || event.title_ko,
-    zh: event.title_zh || event.title_ko,
-  };
-  const descMap: Record<string, string> = {
-    ko: event.description_ko,
-    en: event.description_en || event.description_ko,
-    ja: event.description_ja || event.description_ko,
-    zh: event.description_zh || event.description_ko,
-  };
-
-  const title = titleMap[locale] || event.title_ko;
-  const description = descMap[locale] || event.description_ko;
+  // 언어별 제목/설명 — zh-TW·vi 등 컬럼이 없는 로케일은 본문(EventDetailClient)과 같은 폴백 순서를 따른다
+  // (예전 맵 방식은 zh-TW를 한국어로 떨어뜨려 meta description이 한국어로 나갔다).
+  const title =
+    pickLocalized(
+      { ko: event.title_ko, en: event.title_en, ja: event.title_ja, zh: event.title_zh },
+      locale as Locale,
+    ) || event.title_ko;
+  const description =
+    pickLocalized(
+      { ko: event.description_ko, en: event.description_en, ja: event.description_ja, zh: event.description_zh },
+      locale as Locale,
+    ) || event.description_ko;
 
   // 포스터 이미지 URL (언어별 포스터 우선, 전체 경로로 변환)
   const posterImage = pickLocalized({
