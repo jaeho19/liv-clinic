@@ -1,8 +1,7 @@
 import { Metadata } from 'next';
 import { createClient } from '@supabase/supabase-js';
 import type { Database } from '@/types/supabase';
-import { BASE_URL } from '@/lib/seo';
-import { SITE_INFO } from '@/lib/constants';
+import { BASE_URL, buildHreflangMap, getSiteName } from '@/lib/seo';
 import { pickLocalized } from '@/lib/i18nFallback';
 import type { Locale } from '@/i18n/routing';
 import EventDetailClient from './EventDetailClient';
@@ -15,7 +14,7 @@ export const revalidate = 60;
 const FALLBACK_TITLES: Record<string, string> = {
   ko: '이벤트 | 리브성형외과',
   en: 'Events | LIV Plastic Surgery',
-  ja: 'イベント | リブ形成外科',
+  ja: 'イベント | LIV美容クリニック',
   zh: '活动 | LIV整形外科',
 };
 
@@ -79,14 +78,19 @@ export async function generateMetadata({
   }, locale as Locale) || '/images/placeholder-event.jpg';
   const imageUrl = posterImage.startsWith('http') ? posterImage : `${BASE_URL}${posterImage}`;
 
+  // 병원명은 로케일별 정본(getSiteName) — 외국어 페이지 제목에 한국어 병원명이 새지 않게
+  const siteName = getSiteName(locale);
+  const fullTitle = `${title} | ${siteName}`;
+  const pageUrl = `${BASE_URL}/${locale}/events/${eventId}`;
+
   return {
-    title: `${title} | 리브성형외과`,
+    title: fullTitle,
     description,
     openGraph: {
-      title: `${title} | 리브성형외과`,
+      title: fullTitle,
       description,
-      url: `${BASE_URL}/${locale}/events/${eventId}`,
-      siteName: SITE_INFO.name,
+      url: pageUrl,
+      siteName,
       type: 'article',
       images: [
         {
@@ -99,18 +103,14 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${title} | 리브성형외과`,
+      title: fullTitle,
       description,
       images: [imageUrl],
     },
     alternates: {
-      canonical: `${BASE_URL}/${locale}/events/${eventId}`,
-      languages: {
-        ko: `${BASE_URL}/ko/events/${eventId}`,
-        en: `${BASE_URL}/en/events/${eventId}`,
-        ja: `${BASE_URL}/ja/events/${eventId}`,
-        zh: `${BASE_URL}/zh/events/${eventId}`,
-      },
+      canonical: pageUrl,
+      // 11개 로케일 + x-default, BCP-47 — 사이트 공통 hreflang 맵과 동일한 신호
+      languages: buildHreflangMap(`/events/${eventId}`),
     },
   };
 }

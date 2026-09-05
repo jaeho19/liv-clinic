@@ -10,7 +10,7 @@ export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://liv-clinic.
 export const CLINIC_NAME_BY_LOCALE: Record<string, string> = {
   ko: '리브성형외과',
   en: 'LIV Plastic Surgery',
-  ja: 'リブ形成外科',
+  ja: 'LIV美容クリニック',
   zh: 'LIV整形外科',
   'zh-TW': 'LIV整形外科',
   vi: 'Phẫu thuật Thẩm mỹ LIV',
@@ -37,7 +37,7 @@ export function getSiteName(locale?: string): string {
 }
 
 /** Clinic names in the other languages we publish, used for schema alternateName. */
-const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'リブ形成外科', 'LIV整形外科'] as const;
+const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'LIV美容クリニック', 'リブ形成外科', 'LIV整形外科'] as const;
 
 /**
  * alternateName list for the LocalBusiness entity.
