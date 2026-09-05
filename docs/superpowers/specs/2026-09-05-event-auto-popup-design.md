@@ -81,4 +81,4 @@
    `auto_popup=true`인 행에만 동작).
 2. 9월 팝업 `event_id` 연동.
 3. master 머지·푸시 → Netlify.
-4. 9월 이벤트 `auto_popup=true` → 프로덕션에서 팝업 링크 확인.
+4. 9월 이벤트 `auto_popup=true` → 프로덕션에서 팝업 링크 확인(트리거는 DB 쪽이라 배포 전에 해도 된다).
