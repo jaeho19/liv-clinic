@@ -54,6 +54,7 @@ export default function EventForm({ event, defaults }: EventFormProps) {
     featured: event?.featured ?? defaults?.featured ?? false,
     related_treatments: event?.related_treatments ?? defaults?.related_treatments ?? [],
     is_published: event?.is_published ?? false,
+    auto_popup: event?.auto_popup ?? true, // 새 이벤트는 기본 체크, 기존 이벤트는 저장된 값
     sort_order: event?.sort_order ?? defaults?.sort_order ?? 0,
   });
 
@@ -420,7 +421,20 @@ export default function EventForm({ event, defaults }: EventFormProps) {
           />
           발행 (체크하면 사이트에 공개)
         </label>
+        <label className="flex items-center gap-2 text-sm cursor-pointer">
+          <input
+            type="checkbox"
+            checked={form.auto_popup}
+            onChange={(e) => updateField('auto_popup', e.target.checked)}
+            className="rounded border-[#e5e5e5]"
+          />
+          팝업도 함께 띄우기
+        </label>
       </div>
+      <p className="text-xs text-[#b4b4b4]">
+        팝업도 함께 띄우기: 발행하면 포스터 4장·이벤트 기간·이벤트 주소로 첫 화면 팝업이 자동으로 만들어집니다.
+        발행 전에는 팝업이 꺼진 채 준비만 되고, 체크를 풀면 팝업이 꺼집니다. 창 폭이나 순서는 팝업 관리에서 바꿀 수 있습니다.
+      </p>
 
       {error && <p className="text-sm text-red-500 bg-red-50 px-4 py-2 rounded-lg">{error}</p>}
 

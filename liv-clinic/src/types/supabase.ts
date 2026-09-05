@@ -626,6 +626,7 @@ export type Database = {
           gallery_images_zh: string[]
           id: string
           is_published: boolean
+          auto_popup: boolean
           poster_image: string | null
           poster_image_en: string | null
           poster_image_ja: string | null
@@ -656,6 +657,7 @@ export type Database = {
           gallery_images_zh?: string[]
           id?: string
           is_published?: boolean
+          auto_popup?: boolean
           poster_image?: string | null
           poster_image_en?: string | null
           poster_image_ja?: string | null
@@ -686,6 +688,7 @@ export type Database = {
           gallery_images_zh?: string[]
           id?: string
           is_published?: boolean
+          auto_popup?: boolean
           poster_image?: string | null
           poster_image_en?: string | null
           poster_image_ja?: string | null
@@ -1396,6 +1399,7 @@ export type Database = {
           link_target: string
           link_url: string
           rolling_interval_ms: number
+          event_id: string | null
           show_on_mobile: boolean
           sort_order: number
           title: string
@@ -1415,6 +1419,7 @@ export type Database = {
           link_target?: string
           link_url?: string
           rolling_interval_ms?: number
+          event_id?: string | null
           show_on_mobile?: boolean
           sort_order?: number
           title: string
@@ -1434,6 +1439,7 @@ export type Database = {
           link_target?: string
           link_url?: string
           rolling_interval_ms?: number
+          event_id?: string | null
           show_on_mobile?: boolean
           sort_order?: number
           title?: string
