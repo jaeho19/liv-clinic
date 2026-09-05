@@ -55,6 +55,7 @@ export default function EventsAdminPage() {
         title_ko: `${event.title_ko} (복사본)`,
         title_en: event.title_en ? `${event.title_en} (Copy)` : event.title_en,
         is_published: false,
+        auto_popup: false, // 복제본마다 꺼진 팝업이 쌓이지 않게
       });
       if (!error) await fetchEvents();
     } finally {

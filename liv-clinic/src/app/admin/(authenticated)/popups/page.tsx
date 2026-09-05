@@ -94,6 +94,9 @@ export default function PopupsAdminPage() {
                       <span className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${badge.color}`}>
                         {badge.label}
                       </span>
+                      {popup.event_id && (
+                        <span className="text-xs px-2 py-0.5 rounded-full shrink-0 bg-blue-100 text-blue-700">이벤트 연동</span>
+                      )}
                     </div>
                     <p className="text-xs text-[#8a8a8a]">
                       {new Date(popup.display_start).toLocaleDateString('ko-KR')} ~ {new Date(popup.display_end).toLocaleDateString('ko-KR')}

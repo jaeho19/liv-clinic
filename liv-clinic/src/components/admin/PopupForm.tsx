@@ -95,6 +95,12 @@ export default function PopupForm({ popup }: PopupFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl">
+      {popup?.event_id && (
+        <p className="text-xs text-[#6d4e42] bg-[#f6f0ec] px-4 py-2 rounded-lg">
+          이벤트와 연동된 팝업입니다. 이벤트를 저장하면 제목·이미지·기간·링크가 다시 덮어써집니다(창 폭·순서·전환 간격은 유지).
+          이미지를 따로 쓰려면 이벤트 편집에서 &quot;팝업도 함께 띄우기&quot;를 끄고 새 팝업을 만드세요.
+        </p>
+      )}
       {/* Title */}
       <div>
         <label className="block text-sm font-medium text-[#575756] mb-1.5">

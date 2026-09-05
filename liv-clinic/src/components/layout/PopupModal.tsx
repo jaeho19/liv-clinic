@@ -246,7 +246,10 @@ export default function PopupModal({ popups, onClose, onDismissToday }: PopupMod
                     <img
                       src={popupImageSrc}
                       alt={currentPopup.title}
-                      className="w-full h-auto block"
+                      // 창 높이(85dvh) 안에 들어가도록 축소한다. 44px 은 아래 "오늘 하루 보지 않기/닫기" 바 높이.
+                      // 3:4 포스터·2:3 팝업이 세로 768px 화면에서 잘리는 대신 비율을 유지한 채 작아진다.
+                      className="block h-auto mx-auto"
+                      style={{ maxHeight: 'calc(85dvh - 44px)', width: 'auto', maxWidth: '100%' }}
                       draggable={false}
                     />
                   </div>
