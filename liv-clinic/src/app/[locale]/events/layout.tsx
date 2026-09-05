@@ -19,9 +19,9 @@ const EVENTS_META: Record<string, { title: string; description: string; keywords
     keywords: ['LIV Plastic Surgery events', 'Seoul clinic promotion', 'Ultherapy discount', 'Thermage discount', 'Botox event', 'Filler event', 'anti-aging promotion'],
   },
   ja: {
-    title: 'イベント | リブ形成外科',
-    description: 'リブ形成外科の最新イベントと特別プロモーションをご確認ください。ウルセラ、サーマジ、ボトックス、フィラーなど様々な施術の割引特典。',
-    keywords: ['リブ形成外科イベント', 'ソウルクリニックプロモーション', 'ウルセラ割引', 'サーマジ割引', 'ボトックスイベント', 'フィラーイベント'],
+    title: 'イベント | LIV美容クリニック',
+    description: 'LIV美容クリニックの最新イベントと特別プロモーションをご確認ください。ウルセラ、サーマクール（サーマジ）、ボトックス、フィラーなど様々な施術の割引特典。',
+    keywords: ['LIV美容クリニック イベント', 'ソウルクリニックプロモーション', 'ウルセラ割引', 'サーマクール割引', 'ボトックスイベント', 'フィラーイベント'],
   },
   zh: {
     title: '活动 | LIV整形外科',

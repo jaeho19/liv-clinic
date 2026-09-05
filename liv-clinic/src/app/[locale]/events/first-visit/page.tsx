@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { BASE_URL } from '@/lib/seo';
+import { BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { SITE_INFO } from '@/lib/constants';
-import { LOCALES } from '@/i18n/routing';
 import FirstVisitTrialSection from '@/components/sections/FirstVisitTrialSection';
 
 // Design Ref: §6 Page & Routing — 서버 컴포넌트 + 로케일별 generateMetadata
@@ -35,9 +34,8 @@ export async function generateMetadata({
     },
     alternates: {
       canonical: url,
-      languages: Object.fromEntries(
-        LOCALES.map((l) => [l, `${BASE_URL}/${l}/events/first-visit`])
-      ),
+      // BCP-47 코드 + x-default — 사이트 공통 hreflang 맵과 동일한 신호
+      languages: buildHreflangMap('/events/first-visit'),
     },
   };
 }

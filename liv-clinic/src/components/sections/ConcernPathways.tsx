@@ -108,6 +108,7 @@ export default function ConcernPathways() {
                   <p className="font-serif text-sm text-primary mb-4">{concern.tags}</p>
 
                   <span className="inline-flex items-center gap-2 text-sm font-medium text-secondary/80 group-hover:text-secondary group-hover:gap-3 transition-all">
+                    <span className="sr-only">{concern.title} — </span>
                     {concern.ctaLabel}
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />

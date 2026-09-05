@@ -10,7 +10,7 @@ export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://liv-clinic.
 export const CLINIC_NAME_BY_LOCALE: Record<string, string> = {
   ko: '리브성형외과',
   en: 'LIV Plastic Surgery',
-  ja: 'リブ形成外科',
+  ja: 'LIV美容クリニック',
   zh: 'LIV整形外科',
   'zh-TW': 'LIV整形外科',
   vi: 'Phẫu thuật Thẩm mỹ LIV',
@@ -37,7 +37,7 @@ export function getSiteName(locale?: string): string {
 }
 
 /** Clinic names in the other languages we publish, used for schema alternateName. */
-const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'リブ形成外科', 'LIV整形外科'] as const;
+const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'LIV美容クリニック', 'リブ形成外科', 'LIV整形外科'] as const;
 
 /**
  * alternateName list for the LocalBusiness entity.
@@ -119,12 +119,14 @@ export const seoConfig: Record<string, {
       'melasma treatment Korea', 'pigmentation treatment Seoul', 'rosacea treatment Korea',
       // General keywords
       'anti-aging Seoul', 'skin tightening Korea', 'wrinkle treatment Seoul', 'K-beauty clinic',
-      'medical tourism Korea', 'best dermatologist Seoul', 'celebrity clinic Korea'
+      'medical tourism Korea', 'best dermatologist Seoul', 'celebrity clinic Korea',
+      // Landmark + intent keywords (2026-09 research: Garosu-gil, same-price, English-speaking)
+      'Garosu-gil skin clinic', 'Sinsa Garosu-gil clinic', 'skin clinic Seoul English', 'same price for foreigners Korea clinic'
     ],
   },
   ja: {
-    title: 'リブ形成外科 | ソウル新沙プレミアム非手術アンチエイジング',
-    description: 'ウルセラプライム・サーマジFLX公式認証病院。重力を超えた美しさ、Anti-Gravityリフティングソリューション。新沙駅4番出口徒歩1分。ボトックス、フィラー、スキンブースター、糸リフト、レーザー専門。',
+    title: 'LIV美容クリニック | ソウル新沙・カロスキルの美容皮膚科 非手術アンチエイジング',
+    description: 'ウルセラプライム・サーマクール（サーマジFLX）公式認証クリニック。新沙駅4番出口徒歩1分、カロスキルすぐ。日本語相談対応、料金は韓国人と同一。ボトックス・フィラー・スキンブースター・糸リフト・レーザー専門。',
     keywords: [
       // クリニック名・地域
       'リブ形成外科', 'LIV形成外科', 'ソウル皮膚科', 'ソウル美容クリニック',
@@ -143,12 +145,14 @@ export const seoConfig: Record<string, {
       '肝斑治療韓国', 'シミ治療ソウル', '赤み治療', '毛穴治療',
       // 一般キーワード
       'アンチエイジング韓国', '肌引き締め', 'しわ改善', 'Kビューティー',
-      '韓国医療観光', '韓国美容整形', '芸能人御用達クリニック'
+      '韓国医療観光', '韓国美容整形', '芸能人御用達クリニック',
+      // 実際の日本語検索語（2026-09 調査: サーマクール表記・カロスキル・美容皮膚科）
+      '韓国 サーマクール 料金', '韓国 ウルセラ 値段', '新沙 美容皮膚科 日本語', 'カロスキル 皮膚科', '江南 美容皮膚科 日本語対応'
     ],
   },
   'zh-TW': {
-    title: 'LIV整形外科 | 首爾新沙高端非手術抗老',
-    description: 'Ultherapy Prime、Thermage FLX 官方認證醫院。超越重力的美麗，Anti-Gravity 拉提解決方案。新沙站4號出口步行1分鐘。專精肉毒桿菌素、玻尿酸、水光針、埋線拉提、雷射療程。',
+    title: 'LIV整形外科 | 首爾新沙·林蔭道 醫美抗衰診所（音波拉提·鳳凰電波）',
+    description: '音波拉提（Ultherapy Prime）、鳳凰電波（Thermage FLX）官方認證診所。新沙站4號出口步行1分鐘、林蔭道旁。提供中文諮詢，外國人與韓國人同價。專精肉毒桿菌素、玻尿酸、水光針、埋線拉提、雷射療程。',
     keywords: [
       // 醫院名稱與地區
       'LIV整形外科', 'LIV醫美', '首爾皮膚科', '首爾整形醫院',
@@ -166,7 +170,9 @@ export const seoConfig: Record<string, {
       '肝斑治療韓國', '色斑治療首爾', '泛紅治療', '毛孔治療',
       // 一般關鍵字
       '抗老首爾', '肌膚緊緻', '除皺治療', 'K-beauty',
-      '韓國醫療觀光', '首爾高階醫美'
+      '韓國醫療觀光', '首爾高階醫美',
+      // 台灣·香港 실제 검색어 (2026-09 조사: 鳳凰電波·林蔭道·除刺青·中文)
+      '韓國 音波拉提 價格', '韓國 電波拉提 價格', '鳳凰電波 韓國', '首爾 醫美 中文', '林蔭道 醫美', '首爾 除刺青'
     ],
   },
   vi: {

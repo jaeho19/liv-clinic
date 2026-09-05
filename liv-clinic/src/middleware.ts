@@ -4,6 +4,7 @@ import { createServerClient } from '@supabase/ssr';
 import { routing } from './i18n/routing';
 import { LOCALES } from './i18n/routing';
 import type { Locale } from './i18n/routing';
+import { legacyLangRedirectPath } from './lib/legacyRedirects';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -55,6 +56,19 @@ function detectBookLocale(acceptLanguage: string | null): Locale {
 
 export default async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  // 옛 워드프레스 URL `?lang=xx` → 해당 로케일로 301 (구글에 아직 색인된 /?lang=en 등을 회수한다).
+  // lang 이외의 파라미터(utm 등)는 유지한다.
+  const legacyLang = request.nextUrl.searchParams.get('lang');
+  if (legacyLang) {
+    const target = legacyLangRedirectPath(pathname, legacyLang);
+    if (target) {
+      const url = new URL(target, request.url);
+      request.nextUrl.searchParams.forEach((value, key) => {
+        if (key !== 'lang') url.searchParams.set(key, value);
+      });
+      return NextResponse.redirect(url, 301);
+    }
+  }
 
   // /book 단축 링크 → 브라우저 언어별 예약상담 폼 + UTM 추적.
   if (pathname === '/book') {

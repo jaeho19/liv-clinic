@@ -16,9 +16,33 @@ type ReviewRow = Database['public']['Tables']['reviews']['Row'];
 
 export const revalidate = 3600;
 
+async function countPublishedReviews(locale: string): Promise<number> {
+  const supabase = createClient<Database>(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+  );
+  const { count, error } = await supabase
+    .from('reviews')
+    .select('id', { count: 'exact', head: true })
+    .eq('is_published', true)
+    .eq('locale', locale);
+  if (error) {
+    console.error('reviews count error:', error);
+    return 1; // 오류 시에는 색인 상태를 바꾸지 않는다
+  }
+  return count ?? 0;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  return buildLocalizedMetadata(locale, 'reviews', '/reviews');
+  const base = await buildLocalizedMetadata(locale, 'reviews', '/reviews');
+  // 한국어판은 브랜드 검색("리브성형외과 후기")의 도착 페이지라 후기 수와 무관하게 색인을 유지한다.
+  if (locale === 'ko') return base;
+  const published = await countPublishedReviews(locale);
+  if (published > 0) return base;
+  // 후기가 아직 없는 외국어 로케일은 빈 페이지다 — 색인은 막고 링크는 따라가게 둔다
+  // (GSC "크롤됨 – 현재 색인되지 않음" 72건의 원인 중 하나). 후기가 1건이라도 게시되면 자동 해제.
+  return { ...base, robots: { index: false, follow: true } };
 }
 
 async function getPublishedReviews(): Promise<ReviewRow[]> {

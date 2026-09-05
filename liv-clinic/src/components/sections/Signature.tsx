@@ -10,19 +10,19 @@ const programsConfig = [
   {
     id: 'lifting',
     href: '/lifting',
-    image: '/images/signature/lifting.png',
+    image: '/images/signature/lifting.webp',
     color: 'from-primary/80 to-secondary/90',
   },
   {
     id: 'antiaging',
     href: '/antiaging',
-    image: '/images/signature/petit.png',
+    image: '/images/signature/petit.webp',
     color: 'from-[#c4a99a]/80 to-[#8b6b5d]/90',
   },
   {
     id: 'rejuvenation',
     href: '/laser',
-    image: '/images/signature/care.png',
+    image: '/images/signature/care.webp',
     color: 'from-[#a89080]/80 to-[#6d5a4d]/90',
   },
 ];
@@ -133,6 +133,7 @@ export default function Signature() {
 
                         {/* CTA */}
                         <div className="flex items-center gap-1 md:gap-2 text-[11px] md:text-sm font-medium group-hover:gap-2 md:group-hover:gap-4 transition-all">
+                          <span className="sr-only">{program.title} — </span>
                           <span>{tCommon('learnMore')}</span>
                           <svg
                             className="w-4 h-4 md:w-5 md:h-5 transform group-hover:translate-x-1 transition-transform"

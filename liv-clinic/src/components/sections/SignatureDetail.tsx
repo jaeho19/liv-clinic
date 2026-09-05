@@ -146,32 +146,32 @@ const programConfigs: ProgramConfig[] = [
   {
     id: 'lifting',
     number: '01',
-    beforeImage: '/images/signature/lifting.png',
-    afterImage: '/images/signature/lifting-woman.png',
+    beforeImage: '/images/signature/lifting.webp',
+    afterImage: '/images/signature/lifting-woman.webp',
     accentColor: '#8B5CF6',
     href: '/lifting',
   },
   {
     id: 'total',
     number: '02',
-    beforeImage: '/images/signature/total-antiaging-abstract.png',
-    afterImage: '/images/signature/bridal.png',
+    beforeImage: '/images/signature/total-antiaging-abstract.webp',
+    afterImage: '/images/signature/bridal.webp',
     accentColor: '#F43F5E',
     href: '/lifting/thread',
   },
   {
     id: 'petit',
     number: '03',
-    beforeImage: '/images/signature/petit.png',
-    afterImage: '/images/signature/v-line.png',
+    beforeImage: '/images/signature/petit.webp',
+    afterImage: '/images/signature/v-line.webp',
     accentColor: '#EC4899',
     href: '/antiaging',
   },
   {
     id: 'glow',
     number: '04',
-    beforeImage: '/images/signature/care.png',
-    afterImage: '/images/signature/glow-skin.png',
+    beforeImage: '/images/signature/care.webp',
+    afterImage: '/images/signature/glow-skin.webp',
     accentColor: '#F59E0B',
     href: '/antiaging/skinbooster',
   },
@@ -650,6 +650,7 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
               whileHover={{ x: reducedMotion ? 0 : 6 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
             >
+              <span className="sr-only">{program.title} — </span>
               <span>{tCommon('learnMore')}</span>
               <motion.svg
                 className="w-5 h-5"
@@ -823,6 +824,7 @@ function ProgramDetailPanel({
                     className="text-white"
                     style={{ backgroundColor: program.accentColor }}
                   >
+                    <span className="sr-only">{program.title} — </span>
                     {tCommon('learnMore')}
                   </Button>
                 </ScrollLink>
