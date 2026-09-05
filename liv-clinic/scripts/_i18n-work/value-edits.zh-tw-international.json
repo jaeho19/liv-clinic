@@ -1,0 +1,393 @@
+[
+ {
+  "file": "zh-TW.json",
+  "find": "\"subtitle\": \"LIV整形外科是位于首尔江南、新沙站步行1分钟的非手术抗衰老诊所。提供英语、日语、中文咨询，并可根据需要免费安排翻译。\"",
+  "replace": "\"subtitle\": \"LIV整形外科是位於首爾江南、新沙站步行1分鐘（林蔭道旁）的非手術抗衰老診所。提供英語、日語、中文諮詢，並可根據需要免費安排翻譯。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"ctaChat\": \"开始在线咨询\"",
+  "replace": "\"ctaChat\": \"開始線上諮詢\"",
+  "all": true,
+  "expect": 2
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"ctaContact\": \"预约咨询\"",
+  "replace": "\"ctaContact\": \"預約諮詢\"",
+  "all": true,
+  "expect": 2
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"在首尔安心就诊\"",
+  "replace": "\"title\": \"在首爾安心就診\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"整形外科专科医生亲诊\"",
+  "replace": "\"title\": \"整形外科專科醫生親診\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"所有项目均在发表过SCI论文的整形外科专科医生的诊断与规划下进行。\"",
+  "replace": "\"desc\": \"所有療程均在發表過SCI論文的整形外科專科醫生的診斷與規劃下進行。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"Ultherapy Prime 与 Thermage FLX 官方合作机构\"",
+  "replace": "\"title\": \"Ultherapy Prime 與 Thermage FLX 官方合作機構\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"使用正品 Ultherapy Prime、Thermage FLX 设备及正品探头的官方认证机构。\"",
+  "replace": "\"desc\": \"使用正品 Ultherapy Prime、Thermage FLX 設備及正品探頭的官方認證機構。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"与韩国患者同价\"",
+  "replace": "\"title\": \"與韓國患者同價\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"国际患者适用与本地患者相同的价目表，不收取外国人附加费用。\"",
+  "replace": "\"desc\": \"國際患者適用與本地患者相同的價目表，不收取外國人附加費用。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"专注非手术抗衰老\"",
+  "replace": "\"title\": \"專注非手術抗衰老\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"提升紧致、肉毒素、填充、水光针等，专注于无需手术、追求自然焕活效果的医美项目。\"",
+  "replace": "\"desc\": \"提升緊緻、肉毒桿菌素、填充、水光針等，專注於無需手術、追求自然煥活效果的醫美療程。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"subtitle\": \"咨询语言\"",
+  "replace": "\"subtitle\": \"諮詢語言\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"用您的母语咨询\"",
+  "replace": "\"title\": \"用您的母語諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"提供英语、日语、中文咨询。如有需要，我们免费安排翻译，帮助您准确沟通。\"",
+  "replace": "\"desc\": \"提供英語、日語、中文諮詢。如有需要，我們免費安排翻譯，幫助您準確溝通。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"value\": \"WhatsApp · 网站在线咨询\"",
+  "replace": "\"value\": \"WhatsApp · 網站線上諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"value\": \"LINE · 在线咨询\"",
+  "replace": "\"value\": \"LINE · 線上諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"value\": \"WeChat 微信 · 在线咨询\"",
+  "replace": "\"value\": \"WeChat 微信 · 線上諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"note\": \"就诊前后均可通过同一渠道联系我们。\"",
+  "replace": "\"note\": \"就診前後均可通過同一渠道聯繫我們。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"subtitle\": \"预约流程\"",
+  "replace": "\"subtitle\": \"預約流程\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"大多数非手术项目耗时30至90分钟，无需住院，因此许多患者在就诊当天即可完成治疗。\"",
+  "replace": "\"desc\": \"大多數非手術療程耗時30至90分鐘，無需住院，因此許多患者在就診當天即可完成治療。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"联系我们\"",
+  "replace": "\"title\": \"聯繫我們\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"通过 WhatsApp、LINE、WeChat 或网站在线咨询，用您的语言与我们联系。\"",
+  "replace": "\"desc\": \"通過 WhatsApp、LINE、WeChat 或網站線上諮詢，用您的語言與我們聯繫。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"远程咨询与报价\"",
+  "replace": "\"title\": \"遠程諮詢與報價\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"请分享您的诉求与照片，我们会推荐合适的项目并提供清晰的费用预估。\"",
+  "replace": "\"desc\": \"請分享您的訴求與照片，我們會推薦合適的療程並提供清晰的費用預估。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"预约就诊时间\"",
+  "replace": "\"title\": \"預約就診時間\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"选择符合您行程的日期与时间进行预约。\"",
+  "replace": "\"desc\": \"選擇符合您行程的日期與時間進行預約。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"就诊与当天治疗\"",
+  "replace": "\"title\": \"就診與當天治療\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"与医生进行最终面诊后，大多数情况下当天即可接受治疗。\"",
+  "replace": "\"desc\": \"與醫生進行最終面診後，大多數情況下當天即可接受治療。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"远程术后护理\"",
+  "replace": "\"title\": \"遠程術後護理\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"回国后，我们通过即时通讯或在线咨询跟进恢复情况并解答疑问。\"",
+  "replace": "\"desc\": \"回國後，我們通過即時通訊或線上諮詢跟進恢復情況並解答疑問。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"addressNote\": \"地铁3号线新沙站4号出口步行1分钟，位于江南地区。\"",
+  "replace": "\"addressNote\": \"地鐵3號線新沙站4號出口步行1分鐘，位於江南地區。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"detail\": \"约70–90分钟。可乘坐机场铁路(AREX)、豪华巴士或出租车(约60分钟)。\"",
+  "replace": "\"detail\": \"約70–90分鐘。可乘坐機場鐵路(AREX)、豪華巴士或出租車(約60分鐘)。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"detail\": \"乘出租车或地铁约40分钟。\"",
+  "replace": "\"detail\": \"乘出租車或地鐵約40分鐘。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"detail\": \"3号线4号出口步行1分钟。\"",
+  "replace": "\"detail\": \"3號線4號出口步行1分鐘。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"subtitle\": \"停留时间\"",
+  "replace": "\"subtitle\": \"停留時間\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"非手术项目通常无恢复期、无需复诊，短途行程也能轻松安排。\"",
+  "replace": "\"desc\": \"非手術療程通常無恢復期、無需複診，短途行程也能輕鬆安排。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"colStay\": \"停留 / 复诊\"",
+  "replace": "\"colStay\": \"停留 / 複診\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"note\": \"以上时间为一般参考，具体以面诊为准。\"",
+  "replace": "\"note\": \"以上時間為一般參考，具體以面診為準。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"stay\": \"当天 · 无需复诊\"",
+  "replace": "\"stay\": \"當天 · 無需複診\"",
+  "all": true,
+  "expect": 5
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"treatment\": \"线雕提升\"",
+  "replace": "\"treatment\": \"線雕提升\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"stay\": \"约1周后可选复查，或远程照片复查\"",
+  "replace": "\"stay\": \"約1周後可選複查，或遠程照片複查\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"subtitle\": \"为旅客提供的术后护理\"",
+  "replace": "\"subtitle\": \"為旅客提供的術後護理\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"回国后持续的关怀\"",
+  "replace": "\"title\": \"回國後持續的關懷\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"我们提供英语、日语、中文的术后护理说明，并通过即时通讯或在线咨询进行照片随访，让您在任何地方都能联系我们。\"",
+  "replace": "\"desc\": \"我們提供英語、日語、中文的術後護理說明，並通過即時通訊或線上諮詢進行照片隨訪，讓您在任何地方都能聯繫我們。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"我们接受主要国际信用卡及韩元现金。\"",
+  "replace": "\"desc\": \"我們接受主要國際信用卡及韓元現金。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"查看整形外科专科医生关于项目、安全与恢复的解答。\"",
+  "replace": "\"desc\": \"查看整形外科專科醫生關於療程、安全與恢復的解答。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"cta\": \"查看医疗问答\"",
+  "replace": "\"cta\": \"查看醫療問答\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"title\": \"准备好安排您的就诊了吗？\"",
+  "replace": "\"title\": \"準備好安排您的就診了嗎？\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"desc\": \"请用英语、日语或中文给我们留言，我们将协助您安排每一步。\"",
+  "replace": "\"desc\": \"請用英語、日語或中文給我們留言，我們將協助您安排每一步。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"intro\": \"LIV整形外科(以下简称「本院」)重视用户的个人信息，并遵守韩国《个人信息保护法》等相关法律法规。本政策说明本院收集的个人信息项目、使用目的及保护措施。\"",
+  "replace": "\"intro\": \"LIV整形外科(以下簡稱「本院」)重視用戶的個人資訊，並遵守韓國《個人資訊保護法》等相關法律法規。本政策說明本院收集的個人資訊項目、使用目的及保護措施。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"本院通过咨询表单、聊天和电话收集以下信息：姓名、电话号码、电子邮箱、咨询及问询内容、在线聊天记录。此外，还可能通过Cookie和分析工具收集访问日志、浏览器与设备信息及IP地址。\"",
+  "replace": "\"body\": \"本院通過諮詢表單、聊天和電話收集以下資訊：姓名、電話號碼、電子郵箱、諮詢及問詢內容、線上聊天記錄。此外，還可能通過Cookie和分析工具收集訪問日誌、瀏覽器與設備資訊及IP地址。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"heading\": \"2. 个人信息的收集与使用目的\"",
+  "replace": "\"heading\": \"2. 個人資訊的收集與使用目的\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"收集的个人信息用于回应咨询与问询、受理与管理预约、提供诊疗及客户服务、改进网站与服务。\"",
+  "replace": "\"body\": \"收集的個人資訊用於回應諮詢與問詢、受理與管理預約、提供診療及客戶服務、改進網站與服務。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"heading\": \"3. 个人信息的保留与使用期限\"",
+  "replace": "\"heading\": \"3. 個人資訊的保留與使用期限\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"咨询与预约记录将保留至收集目的达成为止，或保留至相关法律规定的期限(例如诊疗及消费者交易相关记录)。保留期限届满后将立即销毁。\"",
+  "replace": "\"body\": \"諮詢與預約記錄將保留至收集目的達成為止，或保留至相關法律規定的期限(例如診療及消費者交易相關記錄)。保留期限屆滿後將立即銷燬。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"为运营服务，本院将部分业务委托给可信赖的受托方：Supabase(数据库托管)、Google Analytics(网站使用分析)。受托方仅在提供服务所需范围内处理信息。\"",
+  "replace": "\"body\": \"為運營服務，本院將部分業務委託給可信賴的受託方：Supabase(數據庫託管)、Google Analytics(網站使用分析)。受託方僅在提供服務所需範圍內處理資訊。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"用户可随时要求查阅、更正、删除个人信息并撤回同意。如需行使权利，请通过下方联系方式与我们联系。\"",
+  "replace": "\"body\": \"用戶可隨時要求查閱、更正、刪除個人資訊並撤回同意。如需行使權利，請通過下方聯繫方式與我們聯繫。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"heading\": \"7. 个人信息的安全保护措施\"",
+  "replace": "\"heading\": \"7. 個人資訊的安全保護措施\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"本院实施访问控制、传输加密、最小化访问权限等管理与技术保护措施。\"",
+  "replace": "\"body\": \"本院實施訪問控制、傳輸加密、最小化訪問權限等管理與技術保護措施。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"heading\": \"8. Cookie与分析工具\"",
+  "replace": "\"heading\": \"8. Cookie與分析工具\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"本网站使用Cookie和分析工具以了解使用情况并改善体验。您可在浏览器设置中拒绝或删除Cookie，但部分功能可能因此受限。\"",
+  "replace": "\"body\": \"本網站使用Cookie和分析工具以瞭解使用情況並改善體驗。您可在瀏覽器設置中拒絕或刪除Cookie，但部分功能可能因此受限。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"body\": \"有关个人信息的咨询，请通过网站底部提供的电话及渠道与我们联系。\"",
+  "replace": "\"body\": \"有關個人資訊的諮詢，請通過網站底部提供的電話及渠道與我們聯繫。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"passwordOptional\": \"密码（可选 · 用于查询咨询进度）\"",
+  "replace": "\"passwordOptional\": \"密碼（可選 · 用於查詢諮詢進度）\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"countryPlaceholder\": \"请输入国家/地区\"",
+  "replace": "\"countryPlaceholder\": \"請輸入國家/地區\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"reassurance\": \"工作日24小时内回复 · 您的信息将被严格保密\"",
+  "replace": "\"reassurance\": \"工作日24小時內回覆 · 您的資訊將被嚴格保密\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"lineDesc\": \"通过LINE咨询\"",
+  "replace": "\"lineDesc\": \"通過LINE諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"wechatDesc\": \"通过微信咨询\"",
+  "replace": "\"wechatDesc\": \"通過微信諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"whatsappDesc\": \"通过WhatsApp咨询\"",
+  "replace": "\"whatsappDesc\": \"通過WhatsApp諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"description\": \"首尔江南、新沙站步行1分钟的非手术抗衰老诊所。整形外科专科医生，Ultherapy Prime与Thermage FLX官方合作机构，与本地患者同价，提供英语、日语、中文咨询及免费翻译。\"",
+  "replace": "\"description\": \"首爾江南、新沙站步行1分鐘的非手術抗衰老診所。整形外科專科醫生，Ultherapy Prime與Thermage FLX官方合作機構，與本地患者同價，提供英語、日語、中文諮詢及免費翻譯。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"江南医美 中文咨询\"",
+  "replace": "\"江南醫美 中文諮詢\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"新沙站诊所\"",
+  "replace": "\"新沙站診所\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"description\": \"LIV整形外科如何收集、使用、保存和保护个人信息，以及根据韩国《个人信息保护法》您所享有的权利。\"",
+  "replace": "\"description\": \"LIV整形外科如何收集、使用、保存和保護個人資訊，以及根據韓國《個人資訊保護法》您所享有的權利。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"个人信息保护\"",
+  "replace": "\"個人資訊保護\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"description\": \"LIV整形外科位于首爾江南新沙站步行1分鐘，是專注非手術抗衰老的高端醫美診所。正品認證設備與經驗豐富的專科醫生，提供中文諮詢。\"",
+  "replace": "\"description\": \"LIV整形外科位於首爾江南新沙站步行1分鐘，是專注非手術抗衰老的高端醫美診所。正品認證設備與經驗豐富的專科醫生，提供中文諮詢。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"description\": \"LIV整形外科招牌方案，結合提升、抗衰老與激光，依據個人膚質打造高端整体解决方案。首爾江南新沙站步行1分鐘。\"",
+  "replace": "\"description\": \"LIV整形外科招牌方案，結合提升、抗衰老與激光，依據個人膚質打造高端整體解決方案。首爾江南新沙站步行1分鐘。\""
+ },
+ {
+  "file": "zh-TW.json",
+  "find": "\"整体抗衰老 韓國\"",
+  "replace": "\"整體抗衰老 韓國\""
+ }
+]
