@@ -2,7 +2,8 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import Image from 'next/image';
-import { Link } from '@/i18n/routing';
+import { Link, usePathname } from '@/i18n/routing';
+import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 import { trackCTAClick } from '@/lib/analytics-events';
 
@@ -14,6 +15,8 @@ export default function Footer() {
   const tCommon = useTranslations('common');
   const tIntl = useTranslations('international');
   const tReviews = useTranslations('reviews');
+  // 로케일 접두사를 뺀 현재 경로 — 언어 링크가 같은 페이지의 다른 언어판을 가리키게 한다
+  const pathname = usePathname();
 
   return (
     <footer className="bg-secondary text-white pb-24 sm:pb-20 md:pb-16">
@@ -209,6 +212,31 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        {/* 언어 버전 링크 — hreflang 대체 페이지를 크롤러가 따라갈 수 있는 실제 <a>
+            (헤더 언어 전환기는 JS 이동이라 링크로 인식되지 않는다). */}
+        <nav aria-label="Languages" className="mt-10 border-t border-white/10 pt-6">
+          <ul className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
+            {LOCALE_ORDER.map((code) => {
+              const meta = LOCALE_META[code];
+              const href = `/${code}${pathname === '/' ? '' : pathname}`;
+              const isCurrent = code === locale;
+              return (
+                <li key={code}>
+                  <a
+                    href={href}
+                    hrefLang={meta.htmlLang}
+                    lang={meta.htmlLang}
+                    aria-current={isCurrent ? 'page' : undefined}
+                    className={isCurrent ? 'text-white' : 'text-white/60 hover:text-white transition-colors'}
+                  >
+                    {meta.name}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       </div>
 
       {/* Bottom Bar */}
