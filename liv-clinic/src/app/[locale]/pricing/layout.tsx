@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { generateWebPageSchema, BASE_URL } from '@/lib/seo';
 import { SITE_INFO } from '@/lib/constants';
+import { isGuideLocale } from '@/lib/guides/types';
+import { PRICING_FOREIGN } from '@/lib/pricingForeign';
 
 type LayoutParams = { params: Promise<{ locale: string }> };
 
@@ -15,7 +17,10 @@ export async function generateMetadata({ params }: LayoutParams): Promise<Metada
 
   const siteName = siteNameFor(locale);
   const title = `${t('hero.title')} | ${siteName}`;
-  const description = t('hero.description');
+  // 외국어 4개 로케일은 "동일 가격·VAT 별도·해외 카드" 요지를 검색 설명에 덧붙인다(P1-3)
+  const description = isGuideLocale(locale)
+    ? `${t('hero.description')} ${PRICING_FOREIGN[locale].metaSuffix}`
+    : t('hero.description');
 
   return {
     title,
