@@ -111,15 +111,15 @@ async function main() {
   for (const l of ['ja', 'zh', 'zh-TW']) out.push(`- payment.methods(${l}): ${get(msg[l], 'international.payment.methods')}`);
   out.push('- 메신저: WhatsApp +82 10-6888-2773 (wa.me/821068882773), LINE ID icps7972773, WeChat ID livps0414, 카카오채널(국내). 로케일별 1순위: ja→LINE, zh→WeChat, 그 외→WhatsApp (src/lib/messengerLinks.ts)');
 
-  h('6. 외국인 관련 Q&A (MEDICAL_QA foreign-*; ko 원문 — 외국어 답은 medical.faq 메시지 같은 순번)');
-  for (const qa of MEDICAL_QA.filter((q) => q.id.startsWith('foreign-'))) {
-    out.push(`- **${qa.id}** Q ${qa.question} → ${qa.answer}`);
-  }
-  for (const l of LOCALES) {
-    const faq = get(msg[l], 'medical.faq');
-    if (!Array.isArray(faq)) continue;
-    const foreign = faq.filter((f) => typeof f.id === 'string' && f.id.startsWith('foreign-'));
-    for (const f of foreign) out.push(`- (${l}) **${f.id}** Q ${f.question} → ${f.answer}`);
+  h('6. 의료 Q&A 전체 (MEDICAL_QA; ko 원문 + 4개 언어 답) — 상담비·할부·임신·첫 방문·외국인 항목 등 사이트가 이미 답한 질문');
+  out.push('상담비: "1:1 전문 상담비용은 1만원이며 당일 시술 진행 시 시술 금액에서 전액 차감"(consultation-fee). 할부: 카드 할부 가능(payment-installment). 임신·수유 중 시술 비권장(pregnant-treatment). 이 답이 있는 항목은 [검수 필요] 대신 그대로 인용한다.');
+  for (const qa of MEDICAL_QA) {
+    out.push(`\n- **${qa.id}** (ko) Q ${qa.question} → ${qa.answer}`);
+    for (const l of LOCALES) {
+      const faq = get(msg[l], 'medical.faq');
+      const f = Array.isArray(faq) ? faq.find((x) => x.id === qa.id) : null;
+      if (f) out.push(`  - (${l}) Q ${f.question} → ${f.answer}`);
+    }
   }
 
   h('7. 의료진 (sections.doctors.kim, 4개 언어)');
