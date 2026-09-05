@@ -30,14 +30,14 @@ LIV treats with [Ultherapy Prime](/lifting/ulthera) and publishes its prices on 
 
 > Per session · VAT not included · The exact price is confirmed after your consultation and depends on your skin condition and the area treated. For reference only: KRW 780,000 ≈ US$580, KRW 1,560,000 ≈ US$1,160 and KRW 2,340,000 ≈ US$1,730 at 1 USD ≈ 1,350 KRW (4 September 2026). The amount charged to your card depends on the exchange rate on the day.
 
-Two things to know about the numbers. The tilde means "from": the final price is set once the surgeon has seen your face and agreed the shot count with you, so a larger area or more shots moves the price up within the range. And VAT is added on top of the listed price. [검수 필요: 외국인 환자 부가세 환급(택스 리펀드) 가능 여부 — 사이트에 근거 없음]
+Two things to know about the numbers. The tilde means "from": the final price is set once the surgeon has seen your face and agreed the shot count with you, so a larger area or more shots means a higher final price. And VAT is added on top of the listed price. [검수 필요: 외국인 환자 부가세 환급(택스 리펀드) 가능 여부 — 사이트에 근거 없음]
 
 ### What the price covers
 
 - **The shot count for your area.** Ultherapy is priced by the number of shots (pulses of focused ultrasound) delivered. The upper face means roughly 200–300 shots, a full face 400–800, and adding the neck starts from 600 shots. The surgeon decides the count at your consultation.
 - **A genuine Ultherapy Prime system and authentic cartridges.** LIV is an officially certified Ultherapy Prime provider and a Thermage FLX partner clinic. Only genuine, certified handpieces (tips) are used, and you are welcome to check this yourself before treatment.
 - **Language support at no extra charge.** Consultations are available in English, and interpretation is arranged free of charge on request. There is no foreigner surcharge and no fee for language support.
-- **An in-person consultation with the surgeon** before the treatment, on the same visit. [검수 필요: 상담비 유무 — 사이트에 근거 없음]
+- **An in-person consultation with the surgeon** before the treatment, on the same visit. The 1:1 consultation fee is KRW 10,000, and it is fully deducted from the treatment cost if you proceed with treatment on the same day.
 
 ## How long it takes, and whether you need to come back
 

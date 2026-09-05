@@ -1,6 +1,6 @@
 ---
 title: "How to book a skin clinic in Seoul as a foreigner (no agency needed)"
-description: How to book a Seoul skin clinic directly from overseas: which messenger to use, what to send, same price list as Korean patients, no deposit, no agency fee.
+description: How to book a Seoul skin clinic directly from overseas: which messenger to use, what to send, same price list as Korean patients, no deposit, no agency needed.
 keywords:
   - seoul skin clinic foreigner booking
   - korea skin clinic english
@@ -14,9 +14,9 @@ updated: 2026-09-06
 reviewer: clinic
 ---
 
-Many first-time visitors assume they need an agency, a broker or a "medical concierge" to get an appointment at a clinic in Seoul. At LIV Plastic Surgery (LIV) you don't. You message the clinic directly in English, receive a written estimate, pick a date that fits your flights, and pay from the same published price list as Korean patients. No deposit is needed to reserve a consultation, and nobody in between takes a commission.
+Many first-time visitors assume they need an agency, a broker or a "medical concierge" to get an appointment at a clinic in Seoul. At LIV Plastic Surgery (LIV) you don't. You message the clinic directly in English, receive a written estimate, pick a date that fits your flights, and pay from the same published price list as Korean patients. No deposit is needed to reserve a consultation, and no third party is involved.
 
-LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station (Line 3, Exit 4) and next to Garosu-gil. The work here is lifting, skin tightening, botox, filler and skin boosters — treatments that take 30 to 90 minutes and need no hospital stay, which is why most patients are treated on the same day they walk in. This guide is the full process, from the first message to the follow-up after you fly home.
+LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station (Line 3, Exit 4) and next to Garosu-gil. The work here is lifting, skin tightening, botox, filler and skin boosters — treatments that take 30 to 90 minutes and need no hospital stay, which is why many patients are treated on the same day as their visit. This guide is the full process, from the first message to the follow-up after you fly home.
 
 ## Booking directly, in short
 
@@ -41,7 +41,7 @@ Because you are booking without an agent, you are also doing the checking yourse
 | Chinese | WeChat ID livps0414 | Online chat on this site | The same, in Chinese |
 | Any language | [Contact form](/contact) or email info@livps.co.kr | Phone +82-2-797-2773 | The same |
 
-The photos matter more than the wording. Clear pictures of the area you want treated — front and side, in daylight, without heavy makeup — let the team suggest the right treatment and a realistic estimate before you fly. If you don't know which treatment you want, say so; describing what bothers you ("my jawline looks softer than it used to", "fine lines around the eyes") is enough to start.
+The photos matter more than the wording. Clear pictures of the area you want treated — front and side, in daylight, without heavy makeup — let the team suggest suitable treatments and a realistic estimate before you fly. If you don't know which treatment you want, say so; describing what bothers you ("my jawline looks softer than it used to", "fine lines around the eyes") is enough to start.
 
 ### A first message you can copy
 
@@ -83,7 +83,7 @@ If your dates are tight, give two or three possible slots in your first message 
 
 ### Payment
 
-International cards — Visa, Mastercard, American Express, JCB and UnionPay — are accepted, as is cash in Korean won (KRW). There is no deposit and no foreigner surcharge; you pay the published price at the clinic. If you have a question about payment, ask during your consultation.
+International cards — Visa, Mastercard, American Express, JCB and UnionPay — are accepted, as is cash in Korean won (KRW). There is no deposit and no foreigner surcharge; you pay the published price at the clinic. A 1:1 consultation on its own costs KRW 10,000, and the fee is fully deducted from the treatment cost if you proceed with treatment on the same day. If you have a question about payment, ask during your consultation.
 
 ### Language
 
