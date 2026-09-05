@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Link } from '@/i18n/routing';
+import InternationalNotice from '@/components/sections/InternationalNotice';
 
 // Premium color palette - Soft Pink/Lavender
 const colors = {
@@ -546,6 +547,9 @@ export default function SkincarePage() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="skincare" />
 
       {/* FAQ */}
       <section className="py-32 bg-white">

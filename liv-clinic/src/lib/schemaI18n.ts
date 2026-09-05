@@ -25,6 +25,7 @@ import {
   generateBreadcrumbSchema,
 } from './seo';
 import { getLocalizedTreatment, type TreatmentL10n } from './treatmentsI18n';
+import { getTreatmentForeignFaqs, type TreatmentForeignId } from './treatmentsForeign';
 
 /** A breadcrumb node: the site root, a `nav`-namespace key, or a literal label. */
 export type CrumbSpec =
@@ -115,7 +116,11 @@ export async function buildTreatmentLeafSchemas(opts: {
     recovery: loc.recovery,
     targetAreas: [...(loc.targetAreas ?? [])],
     benefits: (base.benefits ?? []).map((b) => ({ title: b.title, desc: b.desc })),
-    faqs: (loc.faqs ?? []).map((f) => ({ q: f.q, a: f.a })),
+    // 외국인 안내 블록(P1-2)의 Q&A 2개를 같은 페이지의 FAQ에 합친다 — en·ja·zh·zh-TW 외에는 빈 배열
+    faqs: [
+      ...(loc.faqs ?? []).map((f) => ({ q: f.q, a: f.a })),
+      ...getTreatmentForeignFaqs(id as TreatmentForeignId, locale),
+    ],
   };
 
   const schemas: object[] = [

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { LASER_CATEGORIES } from '@/lib/constants';
 import { PriceTable, Breadcrumb } from '@/components/ui';
+import InternationalNotice from './InternationalNotice';
 
 // Non-text data only (color / href / id). All display copy comes from messages.
 const category = LASER_CATEGORIES[0]; // pigmentation
@@ -656,6 +657,9 @@ export default function PigmentationDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="pigmentation" />
 
       {/* FAQ */}
       <section className="py-20 bg-white">

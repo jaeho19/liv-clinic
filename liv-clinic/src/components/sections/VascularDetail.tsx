@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { LASER_CATEGORIES } from '@/lib/constants';
 import { PriceTable, Breadcrumb } from '@/components/ui';
+import InternationalNotice from './InternationalNotice';
 
 // Get category info (static data that doesn't need translation)
 const categoryStatic = LASER_CATEGORIES[1]; // vascular
@@ -576,6 +577,9 @@ export default function VascularDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="vascular" />
 
       {/* FAQ */}
       <section className="py-20 bg-white">

@@ -8,6 +8,7 @@ import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
 import { TREATMENTS } from '@/lib/constants';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
+import InternationalNotice from './InternationalNotice';
 
 // SVG Icons
 const CheckIcon = () => (
@@ -1184,6 +1185,9 @@ export default function ThermageDetail() {
           </AnimateOnScroll>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="thermage" />
 
       {/* FAQ Section */}
       <section className="section-gap bg-background">

@@ -9,6 +9,7 @@ import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink
 import { TREATMENTS } from '@/lib/constants';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
+import InternationalNotice from './InternationalNotice';
 
 // 슈링크 HIFU 에너지 전달 일러스트
 const HIFURapidFireIllustration = () => {
@@ -1061,6 +1062,9 @@ export default function ShurinkDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="shurink" />
 
       {/* FAQ 섹션 */}
       <section className="py-20 bg-white">

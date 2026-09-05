@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { LASER_CATEGORIES, SITE_INFO } from '@/lib/constants';
+import { getTreatmentForeignFaqs } from '@/lib/treatmentsForeign';
 
 // Get static category data (color, href, etc.)
 const categoryStatic = LASER_CATEGORIES.find(c => c.id === 'vascular')!;
@@ -43,10 +44,14 @@ export default async function VascularLayout({
       title: t(`laser.vascular.detail.clarity.benefits.${i}.title`),
       desc: t(`laser.vascular.detail.clarity.benefits.${i}.desc`),
     })),
-    faqs: [0, 1, 2, 3].map(i => ({
-      q: t(`laser.vascular.detail.faq.${i}.q`),
-      a: t(`laser.vascular.detail.faq.${i}.a`),
-    })),
+    faqs: [
+      ...[0, 1, 2, 3].map(i => ({
+        q: t(`laser.vascular.detail.faq.${i}.q`),
+        a: t(`laser.vascular.detail.faq.${i}.a`),
+      })),
+      // 외국인 안내 블록(P1-2)의 Q&A 2개 — en·ja·zh·zh-TW 외에는 빈 배열
+      ...getTreatmentForeignFaqs('vascular', locale),
+    ],
   };
 
   const serviceSchema = generateMedicalServiceSchema(serviceData, { locale });

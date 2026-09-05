@@ -37,3 +37,4 @@ export { default as HomeFirstVisitSlimBanner } from './HomeFirstVisitSlimBanner'
 export { default as MediaNewsSection } from './MediaNewsSection';
 export { default as MediaNewsCard } from './MediaNewsCard';
 export { default as PricingGuide } from './PricingGuide';
+export { default as InternationalNotice } from './InternationalNotice';
