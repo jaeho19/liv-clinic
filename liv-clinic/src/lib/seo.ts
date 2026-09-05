@@ -52,14 +52,26 @@ function buildAlternateNames(locale: string, name: string): string[] {
 /**
  * Build hreflang alternates map from LOCALE_META — keeps SEO in sync with routing.ts.
  * Adds x-default → /en so crawlers have an unambiguous fallback locale.
+ * `locales`를 주면 그 로케일만 나열한다(가이드처럼 일부 언어에만 있는 페이지, P1-1).
+ * x-default는 en, en이 없으면 첫 로케일.
  */
-export function buildHreflangMap(path: string): Record<string, string> {
+export function buildHreflangMap(path: string, locales: readonly string[] = LOCALES): Record<string, string> {
+  const xDefault = locales.includes('en') ? 'en' : locales[0];
   return {
     ...Object.fromEntries(
-      LOCALES.map((code) => [LOCALE_META[code].hreflang, `${BASE_URL}/${code}${path}`]),
+      locales.map((code) => [LOCALE_META[code as Locale].hreflang, `${BASE_URL}/${code}${path}`]),
     ),
-    'x-default': `${BASE_URL}/en${path}`,
+    'x-default': `${BASE_URL}/${xDefault}${path}`,
   };
+}
+
+/** 언어별 기본 OG 이미지(P1-6, 1200×630). 없는 로케일은 공용 og-image.jpg(1200×800). */
+export const OG_IMAGE_LOCALES = ['en', 'ja', 'zh', 'zh-TW'] as const;
+export function defaultOgImage(locale: string, alt: string) {
+  if ((OG_IMAGE_LOCALES as readonly string[]).includes(locale)) {
+    return { url: `${BASE_URL}/images/og/og-${locale}.jpg`, width: 1200, height: 630, alt };
+  }
+  return { url: `${BASE_URL}/images/og-image.jpg`, width: 1200, height: 800, alt };
 }
 
 // Default SEO configuration
@@ -889,6 +901,8 @@ export function generatePageMetadata({
   keywords,
   path = '',
   images = [],
+  alternateLocales,
+  ogType = 'website',
 }: {
   locale: string;
   title?: string;
@@ -896,6 +910,9 @@ export function generatePageMetadata({
   keywords?: string[];
   path?: string;
   images?: { url: string; width?: number; height?: number; alt?: string }[];
+  /** 이 페이지가 존재하는 로케일만 hreflang에 나열(생략 = 11개 전체) */
+  alternateLocales?: readonly string[];
+  ogType?: 'website' | 'article';
 }): Metadata {
   // Unknown locale → en, never ko: a locale without its own entry must not ship
   // a Korean <title>/description/keywords to a foreign visitor.
@@ -906,12 +923,8 @@ export function generatePageMetadata({
   const url = `${BASE_URL}/${locale}${path}`;
   const siteName = getSiteName(locale);
 
-  const defaultImage = {
-    url: `${BASE_URL}/images/og-image.jpg`,
-    width: 1200,
-    height: 800, // matches the actual og-image.jpg pixel dimensions
-    alt: siteName,
-  };
+  // 언어별 OG 이미지(en·ja·zh·zh-TW 1200×630), 그 외는 공용 og-image.jpg(1200×800)
+  const defaultImage = defaultOgImage(locale, siteName);
 
   return {
     title: pageTitle,
@@ -928,7 +941,7 @@ export function generatePageMetadata({
     metadataBase: new URL(BASE_URL),
     alternates: {
       canonical: url,
-      languages: buildHreflangMap(path),
+      languages: buildHreflangMap(path, alternateLocales),
     },
     openGraph: {
       title: pageTitle,
@@ -936,7 +949,7 @@ export function generatePageMetadata({
       url,
       siteName,
       locale: LOCALE_META[locale as Locale]?.ogLocale ?? 'en_US',
-      type: 'website',
+      type: ogType,
       images: images.length > 0 ? images : [defaultImage],
     },
     twitter: {

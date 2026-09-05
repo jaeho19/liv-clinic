@@ -1,4 +1,6 @@
 import { TREATMENTS } from '@/lib/constants';
+import { guideLocalesFor, listGuides, publishedGuideSlugs } from '@/lib/guides';
+import { GUIDE_LOCALES } from '@/lib/guides/types';
 
 export type SitemapPath = {
   /** 로케일 접두사 뒤 경로. 홈은 ''. */
@@ -48,9 +50,24 @@ export function buildSitemapPaths(): SitemapPath[] {
     ...LASER_CATEGORIES.map((id) => `/laser/${id}`),
   ].map((path) => ({ path, priority: 0.8, changeFrequency: 'monthly' as const }));
 
+  // 가이드(P1-1): 게시본이 있는 언어에만. 허브는 게시 가이드가 1편 이상인 언어만.
+  // 초안(draft)은 noindex라 사이트맵에 넣지 않는다.
+  const hubLocales = GUIDE_LOCALES.filter((l) => listGuides(l).length > 0);
+  const guides: SitemapPath[] = [
+    ...(hubLocales.length > 0
+      ? [{ path: '/guides', priority: 0.8, changeFrequency: 'weekly' as const, locales: hubLocales }]
+      : []),
+    ...publishedGuideSlugs().map((slug) => ({
+      path: `/guides/${slug}`,
+      priority: 0.8,
+      changeFrequency: 'monthly' as const,
+      locales: guideLocalesFor(slug),
+    })),
+  ];
+
   // 정적 항목이 우선 — 같은 경로가 TREATMENTS에도 있으면 뒤 항목을 버린다
   const seen = new Set<string>();
-  return [...STATIC_PATHS, ...treatments].filter((p) => {
+  return [...STATIC_PATHS, ...treatments, ...guides].filter((p) => {
     if (seen.has(p.path)) return false;
     seen.add(p.path);
     return true;

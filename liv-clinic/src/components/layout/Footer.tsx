@@ -6,6 +6,10 @@ import { Link, usePathname } from '@/i18n/routing';
 import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 import { trackCTAClick } from '@/lib/analytics-events';
+// 가이드 링크: 본문이 든 @/lib/guides가 아니라 작은 색인(publicIndex)만 클라이언트로 보낸다
+import { isGuideLocale } from '@/lib/guides/types';
+import { publishedGuideCount } from '@/lib/guides/publicIndex';
+import { GUIDE_UI } from '@/lib/guides/ui';
 
 export default function Footer() {
   const locale = useLocale();
@@ -140,6 +144,17 @@ export default function Footer() {
                   {tIntl('footerLabel')}
                 </Link>
               </li>
+              {/* 외국인 가이드 허브 — 게시된 가이드가 있는 언어(en·ja·zh·zh-TW)에서만 */}
+              {isGuideLocale(locale) && publishedGuideCount(locale) > 0 && (
+                <li>
+                  <Link
+                    href="/guides"
+                    className="text-white/70 hover:text-white transition-colors inline-flex items-center min-h-[44px] py-2"
+                  >
+                    {GUIDE_UI[locale].guides}
+                  </Link>
+                </li>
+              )}
               <li>
                 <Link
                   href="/reviews"
