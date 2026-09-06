@@ -6,7 +6,7 @@ describe('buildSitemapPaths', () => {
   const byPath = Object.fromEntries(paths.map((p) => [p.path, p]));
 
   it('includes pages that were missing from the sitemap', () => {
-    for (const p of ['/antiaging/hilowave', '/antiaging/hilowave-v2', '/events/first-visit', '/inquiry', '/consult-prep']) {
+    for (const p of ['/antiaging/hilowave', '/antiaging/hilowave-v2', '/events/first-visit', '/inquiry', '/consult-prep', '/terms']) {
       expect(byPath[p], p).toBeDefined();
     }
   });

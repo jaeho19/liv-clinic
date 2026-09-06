@@ -37,6 +37,7 @@ const STATIC_PATHS: SitemapPath[] = [
   // /wechat은 zh 전용 — 다른 로케일은 미들웨어가 /zh/wechat으로 보낸다
   { path: '/wechat', priority: 0.5, changeFrequency: 'yearly', locales: ['zh'] },
   { path: '/privacy', priority: 0.3, changeFrequency: 'yearly' },
+  { path: '/terms', priority: 0.3, changeFrequency: 'yearly' },
 ];
 
 // 레이저 카테고리 페이지 (다국어 검색 최적화)

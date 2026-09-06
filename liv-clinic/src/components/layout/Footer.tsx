@@ -278,7 +278,9 @@ export default function Footer() {
               <Link href="/privacy" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
                 {t('privacy')}
               </Link>
-              {/* 이용약관(/terms): 해당 페이지 제작 전까지 숨김 (404 방지) */}
+              <Link href="/terms" className="hover:text-white transition-colors min-h-[44px] flex items-center py-2">
+                {t('terms')}
+              </Link>
             </div>
           </div>
         </div>

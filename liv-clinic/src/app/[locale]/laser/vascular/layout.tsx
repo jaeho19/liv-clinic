@@ -1,7 +1,8 @@
 import { getTranslations } from 'next-intl/server';
-import { generateMedicalServiceSchema, generateWebPageSchema, BASE_URL, buildHreflangMap } from '@/lib/seo';
+import { generateMedicalServiceSchema, generateWebPageSchema } from '@/lib/seo';
 import { LASER_CATEGORIES, SITE_INFO } from '@/lib/constants';
 import { getTreatmentForeignFaqs } from '@/lib/treatmentsForeign';
+import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
 // Get static category data (color, href, etc.)
 const categoryStatic = LASER_CATEGORIES.find(c => c.id === 'vascular')!;
@@ -87,38 +88,9 @@ interface MetadataProps {
   params: Promise<{ locale: string }>;
 }
 
+// 메타데이터 — 다른 레이저 페이지처럼 metaSeo.laserVascular(11개 로케일) 기준.
+// 기존 방식은 시술 본문 설명(zh 21자·ja 31자)을 그대로 meta description으로 써 Bing에 "짧은 설명"으로 잡혔다.
 export async function generateMetadata({ params }: MetadataProps) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'treatments' });
-
-  const categoryName = t('laser.vascular.name');
-  const categoryDescription = t('laser.vascular.description');
-  const categoryTagline = t('laser.vascular.tagline');
-
-  // Locale-specific keywords
-  const keywordsByLocale: Record<string, string[]> = {
-    ko: ['홍조 치료', '혈관 레이저', '모세혈관 확장', '주사비', '신사역 피부과'],
-    en: ['redness treatment', 'vascular laser', 'spider veins', 'rosacea', 'Sinsa dermatology'],
-    zh: ['红血丝治疗', '血管激光', '毛细血管扩张', '酒糟鼻', '新沙皮肤科'],
-    ja: ['赤ら顔治療', '血管レーザー', '毛細血管拡張', '酒さ', '新沙皮膚科'],
-  };
-
-  const siteName = siteNameFor(locale);
-
-  return {
-    title: `${categoryName} | ${siteName}`,
-    description: categoryDescription,
-    keywords: [categoryName, categoryStatic.nameEn, ...(keywordsByLocale[locale] || keywordsByLocale.en)],
-    openGraph: {
-      title: `${categoryName} | ${siteName}`,
-      description: categoryTagline,
-      url: `${BASE_URL}/${locale}/laser/vascular`,
-      siteName,
-      type: 'website',
-    },
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/laser/vascular`,
-      languages: buildHreflangMap('/laser/vascular'),
-    },
-  };
+  return buildLocalizedMetadata(locale, 'laserVascular', '/laser/vascular');
 }

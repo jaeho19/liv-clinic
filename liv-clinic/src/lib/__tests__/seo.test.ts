@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { BASE_URL, buildHreflangMap, defaultOgImage, generatePageMetadata, getSiteName } from '@/lib/seo';
+import { BASE_URL, buildHreflangMap, defaultOgImage, generatePageMetadata, generateWebPageSchema, getSiteName, stripLocalePrefix } from '@/lib/seo';
 import { LOCALES } from '@/i18n/routing';
 
 describe('buildHreflangMap', () => {
@@ -76,5 +76,25 @@ describe('generatePageMetadata guide options', () => {
     const meta = generatePageMetadata({ locale: 'en', path: '/about' });
     expect(Object.keys(meta.alternates!.languages as Record<string, string>)).toHaveLength(LOCALES.length + 1);
     expect((meta.openGraph as { type?: string }).type).toBe('website');
+  });
+});
+
+describe('generateWebPageSchema never doubles the locale (GSC /ko/ko/media, /mn/mn/media)', () => {
+  const base = { title: 't', description: 'd' };
+
+  it('prefixes a locale-less path once', () => {
+    const s = generateWebPageSchema({ ...base, locale: 'ko', path: '/media' }) as { url: string; '@id': string };
+    expect(s.url).toBe(`${BASE_URL}/ko/media`);
+    expect(s['@id']).toBe(`${BASE_URL}/ko/media`);
+  });
+
+  it('strips a locale prefix a caller passed by mistake', () => {
+    expect((generateWebPageSchema({ ...base, locale: 'mn', path: '/mn/media' }) as { url: string }).url).toBe(`${BASE_URL}/mn/media`);
+    expect((generateWebPageSchema({ ...base, locale: 'zh-TW', path: '/zh-TW' }) as { url: string }).url).toBe(`${BASE_URL}/zh-TW`);
+  });
+
+  it('leaves paths that merely start with the locale letters alone', () => {
+    expect(stripLocalePrefix('/entertainment', 'en')).toBe('/entertainment');
+    expect(stripLocalePrefix('/media', 'ko')).toBe('/media');
   });
 });

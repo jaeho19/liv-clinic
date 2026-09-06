@@ -1326,6 +1326,12 @@ export function generateWebSiteSchema(locale?: string) {
 }
 
 // WebPage 스키마 (AI 오버뷰 최적화)
+/** `/ko/media` → `/media`. 로케일 접두가 없으면 그대로. 홈(`/ko`)은 ''. */
+export function stripLocalePrefix(path: string, locale: string): string {
+  if (path === `/${locale}`) return '';
+  return path.startsWith(`/${locale}/`) ? path.slice(locale.length + 1) : path;
+}
+
 export function generateWebPageSchema(page: {
   path: string;
   title: string;
@@ -1338,13 +1344,17 @@ export function generateWebPageSchema(page: {
   // ProfilePage용 mainEntity (의료진 등 프로필 페이지에서 사용)
   mainEntity?: { '@id': string }[];
 }) {
+  // path는 로케일 없이 받는다. 호출부가 `/${locale}/media`처럼 접두를 붙여 넘기면 url이
+  // /ko/ko/media 가 되어 구글이 실제로 크롤링했다(2026-09-06 GSC 404). 방어적으로 벗긴다.
+  const pagePath = stripLocalePrefix(page.path, page.locale);
+  const pageUrl = `${BASE_URL}/${page.locale}${pagePath}`;
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': page.type || 'WebPage',
-    '@id': `${BASE_URL}/${page.locale}${page.path}`,
+    '@id': pageUrl,
     name: page.title,
     description: page.description,
-    url: `${BASE_URL}/${page.locale}${page.path}`,
+    url: pageUrl,
     datePublished: page.datePublished || '2024-01-01',
     dateModified: page.dateModified || new Date().toISOString().split('T')[0],
     inLanguage: LOCALE_META[page.locale as Locale]?.hreflang ?? 'en-US',
