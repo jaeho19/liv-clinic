@@ -92,14 +92,34 @@
 
 ## 5. 사장님·운영자 작업 (코드로 못 하는 것)
 
-1. **머지·배포 결정** — `git merge feature/search-index-cleanup` 후 푸시. 배포 뒤 §6 확인표.
-2. **Bing Webmaster Tools → IndexNow**: 배포 후 `https://liv-clinic.net/e1df8e0ebf0144d48a69b03b8e4c605a.txt`가 열리는지 확인하고, 이 PC에서 `NODE_TLS_REJECT_UNAUTHORIZED=0 node liv-clinic/scripts/indexnow-submit.mjs --sitemap`으로 전체 URL을 1회 제출. 이후에는 관리자에서 이벤트·후기를 바꿀 때마다 자동 통보된다. Bing 진단의 "IndexNow 미설정" 항목은 첫 제출 뒤 며칠 내 사라진다.
-3. **GBP 예약 링크**를 `https://liv-clinic.net/ko/contact`에서 `https://liv-clinic.net/book`으로 교체(브라우저 언어별 자동 분기 + UTM). 언어별 포스트를 나눠 쓴다면 `/en/book`, `/ja/book`, `/zh-TW/book`.
-4. **이용약관 검수**: `liv-clinic/src/lib/legal/terms.ts`의 한국어 본문(제1~10조)을 읽고 병원 실정에 맞게 고칠 곳을 알려 주면 반영한다. 외국어 10개는 한국어 기준 번역이다.
+1. ~~머지·배포 결정~~ — 2026-09-06 사장님 지시로 완료(§6).
+2. ~~IndexNow 첫 제출~~ — 완료(§6.1). Bing 진단의 "IndexNow 미설정" 항목은 며칠 내 사라진다.
+3. **GBP 예약 링크**: 구글 비즈니스 프로필에 적힌 주소가 `https://liv-clinic.net/book`이면 할 일이 없다(브라우저 언어별 자동 분기 + UTM). `…/ko/contact`로 적혀 있다면 GBP 관리 화면에서 `/book`으로 바꿔야 한다 — 이 값은 코드가 아니라 GBP에 있다. 언어별 포스트를 나눠 쓴다면 `/en/book`, `/ja/book`, `/zh-TW/book`.
+4. **이용약관 검수(선택)**: `liv-clinic/src/lib/legal/terms.ts`의 한국어 본문(제1~10조)은 일반적인 병원 홈페이지 약관이다. 고칠 곳이 생기면 알려 주면 반영한다. 외국어 10개는 한국어 기준 번역이다.
 5. **GSC**: 배포 1~2주 뒤 색인 → 페이지 → "찾을 수 없음(404)" 추이 확인. 이번 변경으로 221건 중 `/notice`(168)·팝업(17)·잔재(11)·`/review`(5)·`/terms`(3)·중복(2) = 206건이 301/410/200으로 바뀐다. "기타 15건"은 CSV가 없어 확인하지 못했다 — CSV를 `docs/05-handoff/p1-inputs/`에 넣어 주면 다음 세션이 마저 본다.
 6. **러시아어 축소 여부**는 별도 검토(사이트맵 `/ru` 52개, hreflang, 언어 선택기 세 곳을 같이 손봐야 한다).
 
-## 6. 배포 후 확인표 (프로덕션)
+## 6. 배포 결과 (2026-09-06)
+
+- master 머지 커밋 `2ccaa23`(사장님 지시로 머지·배포), 푸시 후 132초 만에 Netlify 반영 확인(`/ko/terms` 200).
+- 프로덕션에 §3.2와 같은 검증 스크립트를 돌려 **70건 중 67건 동일, 3건은 프로덕션이 더 나은 결과**: 슬래시 붙은 옛 URL(`/notice/?…`, `/feed/`, `/wp-admin/`)을 Netlify 엣지의 미들웨어가 Next의 308 정규화 없이 바로 301/410으로 처리한다.
+- 핵심 확인: `/notice?…&lang=cn` → 301 `/zh/media`, `/notice?…&lang=ja` → 301 `/ja/media`, `/staff` → 301 `/ko/about/staff`, `/wp-login.php` → 410(matcher의 점 경로가 엣지에 반영됨), `/index.php` → 301 `/ko`, `/en/book` → 307 `/en/contact?utm…`, `/ko/ko/media` 404, `/ko/media` JSON-LD `url`이 `/ko/media`, `/ko/events/6월-프로모션` 제목 `6월 프로모션 | 리브성형외과`(설명 91자), `/en/events/guerrilla-event` 영어 설명 136자, `/ko/events` 제목 19자, `/zh/laser/vascular` 설명 61자, `/zh-TW/privacy` 번체 제목, `/ko/terms` 200 + 푸터 링크, 사이트맵 `/terms` 11개(총 612 URL).
+- IndexNow 첫 제출: 키 파일은 200이지만 Bing 응답 HTTP 403 `SiteVerificationNotCompleted`(새 키의 사이트 검증 대기). §5-2의 명령으로 재시도하면 된다 — 결과는 아래 §6.1.
+
+### 6.1 IndexNow 첫 제출 기록
+
+| 시각 | 결과 |
+|---|---|
+| 19:54 (배포 직후) | HTTP 403 `SiteVerificationNotCompleted` — 새 키를 Bing이 처음 검증하는 대기 상태 |
+| 19:59 | **HTTP 200 접수** — 사이트맵 612 URL 전체 |
+
+이후에는 관리자에서 이벤트·후기를 만들거나 고칠 때 코드가 자동으로 통보하므로 수동 제출은 필요 없다. 대량 변경(가이드 추가, 페이지 신설) 뒤에만 아래 명령으로 다시 제출한다. 403이 나오면 몇 분 뒤 다시 실행하면 된다.
+
+```
+NODE_TLS_REJECT_UNAUTHORIZED=0 node liv-clinic/scripts/indexnow-submit.mjs --sitemap
+```
+
+### 6.2 확인 명령 (재검증용)
 
 ```
 curl -k -sI "https://liv-clinic.net/notice?pageid=1&mod=document&uid=22&lang=cn"   # 301 → /zh/media
