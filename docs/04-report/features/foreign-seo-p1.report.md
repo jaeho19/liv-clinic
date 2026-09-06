@@ -115,5 +115,35 @@
 3. A 자료 도착 시 Task 15(404 맵·Bing·Yandex·GA4).
 4. P2(외부 신뢰도): GBP 다국어, 코네스트·Creatrip, 제조사 인증병원 페이지.
 
-## 8. 프로덕션 검증
-(배포 후 기록)
+## 8. 프로덕션 검증 (2026-09-06, master `6087034` 머지 → Netlify 배포 약 1분 40초 후 `liv-clinic.net`)
+
+| 항목 | 결과 |
+|---|---|
+| 배포 마커 `/images/og/og-en.jpg` | 404 → **200** (54,009B) |
+| `/en|ja|zh|zh-TW/guides` | 200, robots `index, follow`, 허브 카드 6개 |
+| `/ko/guides`, `/vi/guides`, `/ko/guides/<slug>`, 없는 slug | 404 |
+| `/ja/guides/ultherapy-cost-seoul` | 200, `index, follow`, head hreflang en-US·ja-JP·zh-Hans-CN·zh-Hant-TW·x-default, Article/FAQPage/MedicalWebPage 각 1, `og:type=article`, 초안 띠·표식 0 |
+| 사이트맵 | `<loc>` **601** = P0 573 + 가이드 28(허브 4 + 상세 24), ko·vi 가이드 0 |
+| 시술 블록 | `/zh-TW/lifting/ulthera` 표시, `/ko/lifting/ulthera` 없음, `/en/lifting/thermage` JSON-LD에 외국인 Q&A, `/en/laser/tattoo`·`/ja/antiaging/skincare` 표시, `/en/lifting/ulthera`에 가이드 링크 |
+| 푸터 가이드 링크 | `/ja/lifting/ulthera`에 `/ja/guides` 링크 1 |
+| `/ja/pricing` | 외국인 블록 표시, VAT 안내 8회 |
+| OG | `/zh` → `og-zh.jpg`, `/ko` → 기존 `og-image.jpg` |
+| `/zh-TW/international` 간체 | 0건 |
+| `POST /api/admin/reviews` 무세션 | 401 |
+| **이벤트 DB 반영** | `apply-event-2026-09-copy.mjs --commit` 05:26Z — `2026-09-promotion` ko·en·ja·zh 설명 교체(제목 유지). `/en`·`/ja`·`/zh`·`/zh-TW`·`/ko` 상세 본문·meta, `/en/events` 카드에 반영 확인(ISR 60초). 연동 팝업(`24af5104…`)은 트리거로 갱신됐고 이미지 4종·기간(9/1~9/30 KST)·링크 유지 |
+
+### 8.1 모바일 LCP (C5 후속 판단)
+
+Lighthouse 12, 프로덕션 `/en`, 모바일 에뮬레이션 + 시뮬레이션 스로틀링(4G 1.6Mbps·CPU 4배), 사내 프록시 경유(절대값은 참고용):
+
+| 지표 | 값 |
+|---|---|
+| 성능 점수 | 0.59 |
+| LCP | **14.6 s** (요소: 히어로 `<video>`, TTFB 1.1 s + 렌더 지연 13.5 s) |
+| FCP / Speed Index | 2.9 s / 12.9 s |
+| 총 전송 | 4,572 KiB — 최대 항목 `/videos/hero.webm` 1,313 KB |
+| SEO | 1.0 |
+
+LCP 요소가 히어로 영상이고 렌더 지연이 13.5초다. 느린 모바일 회선에서는 1.3MB webm의 첫 프레임이 그려질 때까지 LCP가 잡히지 않는다. 사장님 결정 C5("모바일에서도 영상 유지, 많이 느려지면 다시 알려 달라")의 기준 4초를 크게 넘으므로 **"모바일은 포스터만, PC만 영상"** 전환을 다시 제안한다. 예상 효과: 모바일 LCP는 포스터(149KB, preload) 표시 시점인 2~3초대로 내려가고 총 전송은 약 3.3MB가 된다. 구현은 `Hero.tsx`에서 `(min-width: 768px)` 매치 시에만 `<source>`를 붙이는 방식이며 디자인 결정이라 승인 후 진행한다. 참고로 PageSpeed Insights(구글 회선)로 한 번 더 재면 프록시 영향이 빠진 값을 볼 수 있다.
+
+같은 보고서에서 다음으로 큰 항목은 홈 시그니처 섹션의 `aptos/presentation*.jpg` 2장(333KB, P0에서 이미 축소)과 GTM 스크립트(170KB)다.

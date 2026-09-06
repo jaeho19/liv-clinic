@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-> **실행 결과 (2026-09-06):** Task 0~12 완료, 브랜치 `feature/foreign-seo-p1` 커밋 19개. 가이드 24편은 전부 `draft`(검수 표식 약 117건, 질문 종류 약 20가지 — `docs/05-handoff/p1-review-checklist.md`). Task 13(머지·배포·이벤트 DB 반영·LCP)·14(보고서 마무리)·15(사장님 자료)는 승인·자료 대기. 보고서 `docs/04-report/features/foreign-seo-p1.report.md`. 실행 중 추가된 것: 허브 `dynamicParams=false`(notFound만으로는 200), 가이드 경로의 푸터 언어 링크·언어 전환기를 존재하는 언어로만 잇는 `localeSwitchPath`, 근거 시트에 의료 Q&A 전체와 레이저 상세(유형별 회수) 추가.
+> **실행 결과 (2026-09-06):** Task 0~14 완료. 브랜치 `feature/foreign-seo-p1`(커밋 24개) → master `6087034` 머지·배포, 프로덕션 확인표 통과, 이벤트 설명 DB 반영 완료. 가이드 24편은 사장님 결정("가장 일반적인 내용으로 반영", 기준표 `content/guides/_review-answers.md`)에 따라 표식 117건을 일반 안내 문장으로 바꾸고 **전부 `published`**(사이트맵 28건). Task 15(사장님 자료: 404 CSV·Bing/Yandex·GA4)만 자료 대기. 보고서 `docs/04-report/features/foreign-seo-p1.report.md`. 실행 중 추가된 것: 허브 `dynamicParams=false`(notFound만으로는 200), 가이드 경로의 푸터 언어 링크·언어 전환기를 존재하는 언어로만 잇는 `localeSwitchPath`, 근거 시트에 의료 Q&A 전체와 레이저 상세(유형별 회수) 추가.
 
 **Goal:** `docs/01-plan/features/foreign-seo-improvement.plan.md` §5 P1(P1-1 가이드 허브, P1-2 시술 페이지 외국인 블록, P1-3 가격 페이지, P1-4 후기, P1-5 이벤트 외국어 설명, P1-6 언어별 OG 이미지)을 사장님 결정(`docs/05-handoff/foreign-seo-p1-user-inputs.md` §E, 2026-09-06)에 맞춰 구현한다. 외국인이 검색하는 질문(가격·소요 시간·예약 방법·일정)에 답하는 페이지를 en·ja·zh·zh-TW 4개 언어로 만들고, 검수 전 초안이 색인되지 않게 하는 안전장치를 함께 넣는다.
 
