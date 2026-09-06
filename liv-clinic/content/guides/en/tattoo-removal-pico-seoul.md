@@ -29,7 +29,7 @@ What it is used for:
 - eyebrow tattoos
 - semi-permanent make-up
 
-For colour work, Lucas has three wavelengths (532 nm, 755 nm and 1064 nm), and the clinic combines it with the Clarity laser where needed to cover a wider range of colours.
+For colour work, Lucas has three wavelengths: 1064 nm for black, dark blue and brown, 755 nm for blue and green, and 532 nm for red, orange and yellow. Black responds well; blue and green are harder and need more sessions. For colour tattoos the clinic combines Lucas with the Clarity II laser where needed.
 
 ### A session, minute by minute
 
@@ -65,10 +65,23 @@ You can come in for a consultation without committing to treatment. The 1:1 cons
 Here is exactly what the clinic says.
 
 - **How much comes off:** most tattoos can be removed by more than 90%. Complete removal depends on the ink colour, its depth, the age of the tattoo and your skin type.
-- **Colour:** black ink responds best; green and blue may need more sessions.
+- **Colour:** black ink responds well; green and blue may need more sessions.
 - **Age of the tattoo:** older tattoos are generally easier, because the immune system has already removed some ink over the years; new tattoos can also be removed effectively.
-- **Number of sessions:** the clinic gives you a personal estimate at the consultation. [검수 필요: 평균 회수 — 시술 페이지의 '문신 유형별 예상 회수' 표(3–5회 등)를 가이드에 인용해도 되는지, 근거 시트에는 없음]
+- **Number of sessions:** depends on the type of tattoo — see the table below. Your own estimate is given at the consultation.
 - **Interval:** 6–8 weeks. Clearing the shattered ink takes 4–6 weeks, and the next session should only go ahead once the skin has fully recovered; treating too often increases skin damage and the risk of scarring.
+
+### Estimated sessions by tattoo type
+
+These are the estimates the clinic publishes on its tattoo removal page. They are ranges by type, not a quote for your tattoo.
+
+| Tattoo type | Estimated sessions | Notes |
+|---|---|---|
+| Amateur tattoo | 3–5 | Shallow ink, mostly single-colour (pen ink or india ink) |
+| Professional tattoo, black and white | 6–10 | Deep, even ink; black responds well to the laser |
+| Professional tattoo, colour | 8–15+ | Each colour needs its own wavelength; green and blue need more sessions |
+| Permanent make-up (eyebrows, eyeliner, lips) | 3–6 | Shallower than a regular tattoo; protective equipment is used for the eye area |
+| Traumatic tattoo (asphalt or graphite from an accident) | 4–8 | Varies with depth and extent |
+| Cover-up tattoo | 10–20+ | Thicker ink layers make removal harder |
 
 In practice, a tattoo is a course, not a single appointment: one visit to Seoul covers one session.
 
@@ -76,13 +89,14 @@ In practice, a tattoo is a course, not a single appointment: one visit to Seoul 
 
 ### Session one, during your trip
 
-Yes. Most non-surgical treatments at LIV take 30 to 90 minutes and need no hospitalisation, so many patients are treated on the same day as their consultation, tattoo removal included. Budget for the consultation, about 30 minutes of numbing cream and 15–30 minutes of laser — one slot in a half-day.
+Yes, in most cases. LIV's booking flow for international patients is an in-person consultation followed by treatment the same day in most cases; most of its non-surgical treatments take 30 to 90 minutes and need no hospitalisation. For a tattoo session, budget for the consultation, about 30 minutes of numbing cream and 15–30 minutes of laser — one slot in a half-day.
 
 ### The days after the session
 
-- **Fine scabs for 3–7 days:** keep them intact. [검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]
+- **Fine scabs for 3–7 days:** keep them intact; mild swelling is also possible. [검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]
 - **Sun:** laser-treated skin is more sensitive and the risk of UV pigmentation goes up, so the clinic asks for SPF 50+ sunscreen and a hat or parasol for at least 2–4 weeks, and advises against laser treatment during periods with a lot of outdoor activity.
-- **Swimming, sea water, sauna and hot springs:** [검수 필요: 시술 후 수영·해수욕·사우나·온천 제한 기간 — 사이트에 근거 없음]
+- **Sauna and intense exercise:** avoid for 1 week — this is on the clinic's aftercare list, together with applying the prescribed ointment as directed.
+- **Swimming, sea water and hot springs:** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]
 - **Flying home:** ask at the consultation; the clinic confirms timing with you individually. [검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]
 
 ### Session two onwards
@@ -108,6 +122,8 @@ Practical details:
 
 ## Points to check before you go ahead
 
+- **The two weeks before a session:** avoid excessive sun exposure and irritating products on the area — worth mentioning when you book if your itinerary starts with beach days.
+- **Tell the clinic** about any skin condition on the area (inflammation, wounds) and any medication you take, especially photosensitising drugs.
 - **Pregnancy and breastfeeding:** laser treatments are not recommended during pregnancy or while breastfeeding; the clinic recommends waiting until both are complete.
 - **Realistic expectations:** "more than 90%" is the clinic's typical figure, not a promise that the tattoo disappears completely.
 
@@ -117,7 +133,7 @@ Treatments at LIV are planned and performed under Dr. Sooyoung Kim, a board-cert
 
 ### Can a tattoo be removed completely?
 
-Most tattoos can be removed by more than 90%. Complete removal depends on the ink colour, depth, the age of the tattoo and your skin type; black responds best, while green and blue may need more sessions.
+Most tattoos can be removed by more than 90%. Complete removal depends on the ink colour, depth, the age of the tattoo and your skin type; black responds well, while green and blue may need more sessions.
 
 ### Does pico laser tattoo removal hurt?
 
@@ -125,11 +141,11 @@ From a snapping rubber band to a pinching feeling, depending on the person. The 
 
 ### How many sessions will I need, and how far apart are they?
 
-The number of sessions is estimated at your consultation from the tattoo's colour, depth and age and your skin type. Sessions are 6–8 weeks apart, because the shattered ink takes 4–6 weeks to clear and the skin must fully recover before the next one. [검수 필요: 평균 회수 — 위와 동일]
+It depends on the type of tattoo. The clinic's published estimates by type are 3–5 sessions for an amateur tattoo, 3–6 for permanent make-up such as eyebrows or eyeliner, 6–10 for a professional black-and-white tattoo and 8–15 or more for a professional colour tattoo; your own number is set at the consultation from the ink colour, depth, the age of the tattoo and your skin type. Sessions are 6–8 weeks apart, because the shattered ink takes 4–6 weeks to clear and the skin must fully recover before the next one.
 
 ### Can colour tattoos be removed?
 
-Most colours can be treated. The Lucas pico laser has three wavelengths (532 nm, 755 nm and 1064 nm), and the clinic combines it with the Clarity laser where needed. Green and blue generally need more sessions than black.
+Most colours can be treated. The Lucas pico laser has three wavelengths (532 nm, 755 nm and 1064 nm), and the clinic combines it with the Clarity II laser where needed. Green and blue generally need more sessions than black.
 
 ### Do international patients pay more for tattoo removal in Korea?
 
@@ -137,7 +153,7 @@ Not at LIV. International patients are charged from the same published price lis
 
 ### Can I have the first session on the same day as my consultation?
 
-In most cases, yes. A session takes 15–30 minutes after about 30 minutes of numbing cream and needs no hospitalisation, so it usually fits into the same visit as your consultation. Later sessions follow at 6–8 week intervals.
+In most cases, yes. LIV's standard flow is a final in-person consultation followed by treatment the same day in most cases, and a tattoo session itself takes 15–30 minutes after about 30 minutes of numbing cream, with no hospitalisation. Later sessions follow at 6–8 week intervals.
 
 ## Before you book
 
