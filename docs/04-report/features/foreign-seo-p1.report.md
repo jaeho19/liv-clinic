@@ -77,7 +77,7 @@
 | `/zh-TW/international` 간체 | 본문 0건(HTML 페이로드의 1건은 privacy 메시지 — P0 정책상 제외) |
 
 - Lighthouse 12 데스크톱, 로컬 `/en`(사내 프록시 경유, 변화폭만 유효): 성능 0.87, SEO 1.0, 총 전송 **4,405 KiB**, LCP 2.2s — P0 배포 직후(4,558 KiB, SEO 100)와 같은 수준. 새 블록·페이지로 늘어난 무게 없음.
-- 스크린샷(상위 폴더): `p1-guide-ja.png`(가이드 데스크톱), `p1-guide-ja-mobile.png`(390px), `p1-block-en.png`(시술 페이지 블록), `p1-pricing-zhtw.png`(가격 안내).
+- 스크린샷(상위 폴더): `p1-guide-ja.png`(가이드 데스크톱, 초안 띠 포함), `p1-guide-ja-mobile.png`(390px), `p1-block-en.png`(울쎄라 페이지의 외국인 블록 — 9월 이벤트 팝업이 겹쳐 찍혔는데, 그 팝업 영문판에 "SEPTEMBER EVENT TBA" 배지가 그대로 보인다), `p1-pricing-zhtw.png`(가격 안내 블록; 표 영역은 스크롤 애니메이션 전이라 비어 보임 — 헤드리스 캡처 한계).
 
 ## 4. 알게 된 것 (다음 작업자를 위해)
 
