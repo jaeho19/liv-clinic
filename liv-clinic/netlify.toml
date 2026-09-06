@@ -28,112 +28,19 @@
   status = 302
 
 # ──────────────────────────────────────────
-# Old WordPress URL redirects (SEO preservation)
-# Map the most common old paths to new equivalents
+# Old WordPress URLs
 # ──────────────────────────────────────────
+# ⚠️ 실행 순서: Netlify에서는 Next 미들웨어(엣지 함수)가 이 [[redirects]]보다 먼저 돈다.
+# 점(.)이 없는 경로(/staff, /notice, /feed …)는 미들웨어가 먼저 잡으므로 여기 규칙은 절대
+# 발동하지 않는다(2026-09-06 실측: /staff → 307 /ko/staff). 레거시 매핑·410은 전부
+# src/lib/legacyRedirects.ts + src/middleware.ts 에 있다. 여기에는 미들웨어 matcher가
+# 건너뛰는 점(.) 경로에 대한 예비 규칙만 남긴다. (wp-*.php, xmlrpc.php는 미들웨어 410)
 
-# 옛 워드프레스 PHP 진입점 — 미들웨어는 점(.)이 있는 경로를 건너뛰므로 Netlify 규칙으로 처리 (500 방지)
+# 옛 워드프레스 진입점 — 미들웨어 matcher에도 /index.php를 넣어 엣지에서 301 하지만(500 방지),
+# 엣지 함수가 빠지는 경우를 대비해 Netlify 규칙도 유지한다 (2026-09-05 실측 500, 2026-09-06 이중화)
 [[redirects]]
   from = "/index.php"
   to = "/ko"
-  status = 301
-
-[[redirects]]
-  from = "/xmlrpc.php"
-  to = "/ko"
-  status = 301
-
-# WordPress admin/login - block gracefully
-[[redirects]]
-  from = "/wp-admin/*"
-  to = "/ko"
-  status = 301
-
-[[redirects]]
-  from = "/wp-login.php"
-  to = "/ko"
-  status = 301
-
-[[redirects]]
-  from = "/wp-content/*"
-  to = "/ko"
-  status = 404
-
-# Old WordPress common pages -> new equivalents
-[[redirects]]
-  from = "/about"
-  to = "/ko/about"
-  status = 301
-
-[[redirects]]
-  from = "/about/"
-  to = "/ko/about"
-  status = 301
-
-[[redirects]]
-  from = "/staff"
-  to = "/ko/about/staff"
-  status = 301
-
-[[redirects]]
-  from = "/equipment"
-  to = "/ko/about/equipment"
-  status = 301
-
-[[redirects]]
-  from = "/location"
-  to = "/ko/about/location"
-  status = 301
-
-[[redirects]]
-  from = "/lifting"
-  to = "/ko/lifting"
-  status = 301
-
-[[redirects]]
-  from = "/lifting/*"
-  to = "/ko/lifting/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/antiaging"
-  to = "/ko/antiaging"
-  status = 301
-
-[[redirects]]
-  from = "/antiaging/*"
-  to = "/ko/antiaging/:splat"
-  status = 301
-
-[[redirects]]
-  from = "/laser"
-  to = "/ko/laser"
-  status = 301
-
-[[redirects]]
-  from = "/contact"
-  to = "/ko/contact"
-  status = 301
-
-[[redirects]]
-  from = "/gallery"
-  to = "/ko/gallery"
-  status = 301
-
-# 은퇴한 /promotion 페이지 → 이벤트로 리다이렉트 (bare + 로케일 경로)
-[[redirects]]
-  from = "/promotion"
-  to = "/ko/events"
-  status = 301
-
-[[redirects]]
-  from = "/:locale/promotion"
-  to = "/:locale/events"
-  status = 301
-
-[[redirects]]
-  from = "/reviews"
-  to = "/ko/gallery"
   status = 301
 
 # ──────────────────────────────────────────

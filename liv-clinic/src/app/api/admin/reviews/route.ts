@@ -3,6 +3,7 @@ import { revalidatePath } from 'next/cache';
 import { createServerClient } from '@/lib/supabase-server';
 import { createAdminClient } from '@/lib/supabase-admin';
 import { adminReviewInputSchema, toReviewInsert } from '@/lib/reviews/adminReviewInput';
+import { notifyIndexNow, reviewIndexNowUrls } from '@/lib/indexnow';
 
 // 관리자 직접 등록(P1-4) — 환자에게 받은 후기를 관리자가 대신 입력한다. source는 항상 'onsite'.
 export async function POST(request: NextRequest) {
@@ -33,6 +34,7 @@ export async function POST(request: NextRequest) {
     } catch (revalidateError) {
       console.warn('revalidatePath after review insert failed:', revalidateError);
     }
+    await notifyIndexNow(reviewIndexNowUrls()); // Bing 재크롤 요청 — 실패해도 등록은 성공
     return NextResponse.json(data, { status: 201 });
   } catch (e) {
     console.error('POST /api/admin/reviews error:', e);

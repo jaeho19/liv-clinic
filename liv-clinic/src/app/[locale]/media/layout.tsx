@@ -30,8 +30,10 @@ export default async function MediaLayout({
   const t = await getTranslations({ locale, namespace: 'metaSeo' });
   const siteName = getSiteName(locale);
 
+  // path는 로케일 없이 넘긴다 — generateWebPageSchema가 로케일을 붙인다.
+  // (`/${locale}${PATH}`를 넘겨 JSON-LD url이 /ko/ko/media 가 됐고 구글이 그 URL을 크롤링했다. 2026-09-06 GSC 404)
   const webPageSchema = generateWebPageSchema({
-    path: `/${locale}${PATH}`,
+    path: PATH,
     title: t('media.title'),
     description: t('media.description'),
     locale,

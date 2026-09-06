@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { revalidatePath } from 'next/cache';
 import { createServerClient } from '@/lib/supabase-server';
 import { createAdminClient } from '@/lib/supabase-admin';
+import { notifyIndexNow, reviewIndexNowUrls } from '@/lib/indexnow';
 
 export async function PATCH(
   request: NextRequest,
@@ -50,6 +51,7 @@ export async function PATCH(
     } catch (revalidateError) {
       console.warn('revalidatePath after review update failed:', revalidateError);
     }
+    await notifyIndexNow(reviewIndexNowUrls());
 
     return NextResponse.json(data);
   } catch (e) {
@@ -82,6 +84,7 @@ export async function DELETE(
     } catch (revalidateError) {
       console.warn('revalidatePath after review delete failed:', revalidateError);
     }
+    await notifyIndexNow(reviewIndexNowUrls());
 
     return NextResponse.json({ success: true });
   } catch (e) {
