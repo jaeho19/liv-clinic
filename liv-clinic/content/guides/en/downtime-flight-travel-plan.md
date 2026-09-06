@@ -23,12 +23,12 @@ The table combines LIV's treatment pages (time, anesthesia, recovery) with the i
 
 | Treatment | Time | Anesthesia | Recovery, as listed | Return visit |
 |---|---|---|---|---|
-| [Ultherapy Prime](/lifting/ulthera) | 60–90 min | Topical anesthetic cream (30 min) | Immediate return to daily life | Same day · no revisit required |
-| [Thermage FLX](/lifting/thermage) | 45–60 min | None (vibration reduces discomfort) | Immediate return to daily life | Same day · no revisit required |
-| [Botox](/antiaging/botox) | 10–20 min | None, or topical cream on request | Immediate return to daily life | Same day · no revisit required |
-| [Filler](/antiaging/filler) | 20–40 min | Topical cream or nerve block | Immediate to 3 days (varies by area) | Same day · no revisit required |
-| [Skin booster](/antiaging/skinbooster) | 30–45 min | Topical anesthetic cream | 1–3 days (micro-needle marks) | Same day · no revisit required |
-| [Thread lift](/lifting/thread) | 30–60 min | Local anesthesia | 3–7 days (bruising and swelling possible) | Optional check about 1 week later, or a remote photo check |
+| [Ultherapy Prime](/lifting/ulthera) | 60–90 minutes | Topical anesthetic cream (30 min) | Immediate return to daily life | Same day · no revisit required |
+| [Thermage FLX](/lifting/thermage) | 45–60 minutes | No anesthesia (vibration reduces discomfort) | Immediate return to daily life | Same day · no revisit required |
+| [Botox](/antiaging/botox) | 10–20 minutes | No anesthesia, or topical anesthetic cream on request | Immediate return to daily life | Same day · no revisit required |
+| [Filler](/antiaging/filler) | 20–40 minutes | Topical anesthetic cream or nerve block | Immediate to 3 days (varies by area) | Same day · no revisit required |
+| [Skin booster](/antiaging/skinbooster) | 30–45 minutes | Topical anesthetic cream | 1–3 days (micro-needle marks) | Same day · no revisit required |
+| [Thread lift](/lifting/thread) | 30–60 minutes | Local anesthesia | 3–7 days (bruising and swelling possible) | Optional check about 1 week later, or a remote photo check |
 
 > Time and recovery are quoted from the treatment pages; the return-visit column is from the international patients page, which calls these timelines general guidance confirmed at your consultation. There is deliberately no "earliest flight" column (next section).
 
@@ -42,7 +42,7 @@ Stated on LIV's site, and safe to plan around: Ultherapy Prime, Thermage FLX, Bo
 
 Not stated on the site: any rule of the form "you may fly X hours after treatment". That is confirmed with you individually at the consultation, and this guide will not invent a number. [검수 필요: 시술별(울쎄라·써마지·보톡스·필러·스킨부스터·실리프팅) 비행 가능 시점 — 사이트에 근거 없음]
 
-Before you pick a departure day, note that filler recovery is listed as immediate to 3 days and skin boosters as 1–3 days with micro-needle marks — on a 2-day trip that overlaps with your journey home — and that a thread lift lists 3–7 days of possible bruising and swelling, with its optional one-week check done by photo from home. Whether that is acceptable for you is decided at the consultation.
+Before you pick a departure day, note that filler recovery is listed as immediate to 3 days and skin boosters as 1–3 days with micro-needle marks — on a 2-day trip that overlaps with your journey home — and that a thread lift lists 3–7 days of possible bruising and swelling; its optional one-week check can be done by photo from home. Whether that is acceptable for you is decided at the consultation.
 
 ## Model itinerary A: 2 days / 1 night
 
@@ -61,13 +61,13 @@ Both itineraries are time layouts, not medical advice. They assume you booked be
 
 | Day | Time | Plan |
 |---|---|---|
-| Day 1 | Any time | Arrive and settle in; Garosu-gil is next door for a walk. If you land early enough, the consultation can move to Day 1. |
+| Day 1 | Any time | Arrive and settle in. If you land early enough, the consultation can move to Day 1. |
 | Day 2 | Morning | Consultation → numbing cream (about 30 minutes, where used) → treatment (10–90 minutes by treatment). Same day, no hospitalization. |
 | Day 2 | Afternoon to evening | Free, at your own pace, following the aftercare guide. |
 | Day 3 | Morning | Free time — a full day between treatment and departure. |
 | Day 3 | Afternoon | Departure slot. |
 
-> The departure slots are placeholders for your own flight time. Whether your treatment allows departure on Day 2 or Day 3 is confirmed individually at the consultation, so send the clinic your flight times when you book. [검수 필요: 모델 일정의 Day 2·Day 3 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음] The clinic is closed on Sundays and closes at 16:00 on Saturdays.
+> The departure slots are placeholders for your own flight time. Whether your treatment allows departure on Day 2 or Day 3 is confirmed individually at the consultation, so send the clinic your flight times when you book. [검수 필요: 모델 일정의 Day 2·Day 3 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]
 
 ## After the treatment: what LIV's pages ask you to do
 

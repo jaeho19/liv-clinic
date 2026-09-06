@@ -609,42 +609,42 @@ export const GUIDES: readonly GuideDoc[] = [
         "rows": [
           [
             "[Ultherapy Prime](/lifting/ulthera)",
-            "60–90 min",
+            "60–90 minutes",
             "Topical anesthetic cream (30 min)",
             "Immediate return to daily life",
             "Same day · no revisit required"
           ],
           [
             "[Thermage FLX](/lifting/thermage)",
-            "45–60 min",
-            "None (vibration reduces discomfort)",
+            "45–60 minutes",
+            "No anesthesia (vibration reduces discomfort)",
             "Immediate return to daily life",
             "Same day · no revisit required"
           ],
           [
             "[Botox](/antiaging/botox)",
-            "10–20 min",
-            "None, or topical cream on request",
+            "10–20 minutes",
+            "No anesthesia, or topical anesthetic cream on request",
             "Immediate return to daily life",
             "Same day · no revisit required"
           ],
           [
             "[Filler](/antiaging/filler)",
-            "20–40 min",
-            "Topical cream or nerve block",
+            "20–40 minutes",
+            "Topical anesthetic cream or nerve block",
             "Immediate to 3 days (varies by area)",
             "Same day · no revisit required"
           ],
           [
             "[Skin booster](/antiaging/skinbooster)",
-            "30–45 min",
+            "30–45 minutes",
             "Topical anesthetic cream",
             "1–3 days (micro-needle marks)",
             "Same day · no revisit required"
           ],
           [
             "[Thread lift](/lifting/thread)",
-            "30–60 min",
+            "30–60 minutes",
             "Local anesthesia",
             "3–7 days (bruising and swelling possible)",
             "Optional check about 1 week later, or a remote photo check"
@@ -678,7 +678,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Before you pick a departure day, note that filler recovery is listed as immediate to 3 days and skin boosters as 1–3 days with micro-needle marks — on a 2-day trip that overlaps with your journey home — and that a thread lift lists 3–7 days of possible bruising and swelling, with its optional one-week check done by photo from home. Whether that is acceptable for you is decided at the consultation."
+        "text": "Before you pick a departure day, note that filler recovery is listed as immediate to 3 days and skin boosters as 1–3 days with micro-needle marks — on a 2-day trip that overlaps with your journey home — and that a thread lift lists 3–7 days of possible bruising and swelling; its optional one-week check can be done by photo from home. Whether that is acceptable for you is decided at the consultation."
       },
       {
         "type": "h2",
@@ -745,7 +745,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "Day 1",
             "Any time",
-            "Arrive and settle in; Garosu-gil is next door for a walk. If you land early enough, the consultation can move to Day 1."
+            "Arrive and settle in. If you land early enough, the consultation can move to Day 1."
           ],
           [
             "Day 2",
@@ -771,7 +771,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "The departure slots are placeholders for your own flight time. Whether your treatment allows departure on Day 2 or Day 3 is confirmed individually at the consultation, so send the clinic your flight times when you book. [검수 필요: 모델 일정의 Day 2·Day 3 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음] The clinic is closed on Sundays and closes at 16:00 on Saturdays."
+        "text": "The departure slots are placeholders for your own flight time. Whether your treatment allows departure on Day 2 or Day 3 is confirmed individually at the consultation, so send the clinic your flight times when you book. [검수 필요: 모델 일정의 Day 2·Day 3 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
       },
       {
         "type": "h2",
@@ -903,7 +903,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "For colour work, Lucas has three wavelengths (532 nm, 755 nm and 1064 nm), and the clinic combines it with the Clarity laser where needed to cover a wider range of colours."
+        "text": "For colour work, Lucas has three wavelengths: 1064 nm for black, dark blue and brown, 755 nm for blue and green, and 532 nm for red, orange and yellow. Black responds well; blue and green are harder and need more sessions. For colour tattoos the clinic combines Lucas with the Clarity II laser where needed."
       },
       {
         "type": "h3",
@@ -997,10 +997,58 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "**How much comes off:** most tattoos can be removed by more than 90%. Complete removal depends on the ink colour, its depth, the age of the tattoo and your skin type.",
-          "**Colour:** black ink responds best; green and blue may need more sessions.",
+          "**Colour:** black ink responds well; green and blue may need more sessions.",
           "**Age of the tattoo:** older tattoos are generally easier, because the immune system has already removed some ink over the years; new tattoos can also be removed effectively.",
-          "**Number of sessions:** the clinic gives you a personal estimate at the consultation. [검수 필요: 평균 회수 — 시술 페이지의 '문신 유형별 예상 회수' 표(3–5회 등)를 가이드에 인용해도 되는지, 근거 시트에는 없음]",
+          "**Number of sessions:** depends on the type of tattoo — see the table below. Your own estimate is given at the consultation.",
           "**Interval:** 6–8 weeks. Clearing the shattered ink takes 4–6 weeks, and the next session should only go ahead once the skin has fully recovered; treating too often increases skin damage and the risk of scarring."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Estimated sessions by tattoo type"
+      },
+      {
+        "type": "p",
+        "text": "These are the estimates the clinic publishes on its tattoo removal page. They are ranges by type, not a quote for your tattoo."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Tattoo type",
+          "Estimated sessions",
+          "Notes"
+        ],
+        "rows": [
+          [
+            "Amateur tattoo",
+            "3–5",
+            "Shallow ink, mostly single-colour (pen ink or india ink)"
+          ],
+          [
+            "Professional tattoo, black and white",
+            "6–10",
+            "Deep, even ink; black responds well to the laser"
+          ],
+          [
+            "Professional tattoo, colour",
+            "8–15+",
+            "Each colour needs its own wavelength; green and blue need more sessions"
+          ],
+          [
+            "Permanent make-up (eyebrows, eyeliner, lips)",
+            "3–6",
+            "Shallower than a regular tattoo; protective equipment is used for the eye area"
+          ],
+          [
+            "Traumatic tattoo (asphalt or graphite from an accident)",
+            "4–8",
+            "Varies with depth and extent"
+          ],
+          [
+            "Cover-up tattoo",
+            "10–20+",
+            "Thicker ink layers make removal harder"
+          ]
         ]
       },
       {
@@ -1018,7 +1066,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Yes. Most non-surgical treatments at LIV take 30 to 90 minutes and need no hospitalisation, so many patients are treated on the same day as their consultation, tattoo removal included. Budget for the consultation, about 30 minutes of numbing cream and 15–30 minutes of laser — one slot in a half-day."
+        "text": "Yes, in most cases. LIV's booking flow for international patients is an in-person consultation followed by treatment the same day in most cases; most of its non-surgical treatments take 30 to 90 minutes and need no hospitalisation. For a tattoo session, budget for the consultation, about 30 minutes of numbing cream and 15–30 minutes of laser — one slot in a half-day."
       },
       {
         "type": "h3",
@@ -1027,9 +1075,10 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**Fine scabs for 3–7 days:** keep them intact. [검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**Fine scabs for 3–7 days:** keep them intact; mild swelling is also possible. [검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
           "**Sun:** laser-treated skin is more sensitive and the risk of UV pigmentation goes up, so the clinic asks for SPF 50+ sunscreen and a hat or parasol for at least 2–4 weeks, and advises against laser treatment during periods with a lot of outdoor activity.",
-          "**Swimming, sea water, sauna and hot springs:** [검수 필요: 시술 후 수영·해수욕·사우나·온천 제한 기간 — 사이트에 근거 없음]",
+          "**Sauna and intense exercise:** avoid for 1 week — this is on the clinic's aftercare list, together with applying the prescribed ointment as directed.",
+          "**Swimming, sea water and hot springs:** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
           "**Flying home:** ask at the consultation; the clinic confirms timing with you individually. [검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]"
         ]
       },
@@ -1081,6 +1130,8 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
+          "**The two weeks before a session:** avoid excessive sun exposure and irritating products on the area — worth mentioning when you book if your itinerary starts with beach days.",
+          "**Tell the clinic** about any skin condition on the area (inflammation, wounds) and any medication you take, especially photosensitising drugs.",
           "**Pregnancy and breastfeeding:** laser treatments are not recommended during pregnancy or while breastfeeding; the clinic recommends waiting until both are complete.",
           "**Realistic expectations:** \"more than 90%\" is the clinic's typical figure, not a promise that the tattoo disappears completely."
         ]
@@ -1102,7 +1153,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "Can a tattoo be removed completely?",
-        "a": "Most tattoos can be removed by more than 90%. Complete removal depends on the ink colour, depth, the age of the tattoo and your skin type; black responds best, while green and blue may need more sessions."
+        "a": "Most tattoos can be removed by more than 90%. Complete removal depends on the ink colour, depth, the age of the tattoo and your skin type; black responds well, while green and blue may need more sessions."
       },
       {
         "q": "Does pico laser tattoo removal hurt?",
@@ -1110,11 +1161,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "How many sessions will I need, and how far apart are they?",
-        "a": "The number of sessions is estimated at your consultation from the tattoo's colour, depth and age and your skin type. Sessions are 6–8 weeks apart, because the shattered ink takes 4–6 weeks to clear and the skin must fully recover before the next one. [검수 필요: 평균 회수 — 위와 동일]"
+        "a": "It depends on the type of tattoo. The clinic's published estimates by type are 3–5 sessions for an amateur tattoo, 3–6 for permanent make-up such as eyebrows or eyeliner, 6–10 for a professional black-and-white tattoo and 8–15 or more for a professional colour tattoo; your own number is set at the consultation from the ink colour, depth, the age of the tattoo and your skin type. Sessions are 6–8 weeks apart, because the shattered ink takes 4–6 weeks to clear and the skin must fully recover before the next one."
       },
       {
         "q": "Can colour tattoos be removed?",
-        "a": "Most colours can be treated. The Lucas pico laser has three wavelengths (532 nm, 755 nm and 1064 nm), and the clinic combines it with the Clarity laser where needed. Green and blue generally need more sessions than black."
+        "a": "Most colours can be treated. The Lucas pico laser has three wavelengths (532 nm, 755 nm and 1064 nm), and the clinic combines it with the Clarity II laser where needed. Green and blue generally need more sessions than black."
       },
       {
         "q": "Do international patients pay more for tattoo removal in Korea?",
@@ -1122,11 +1173,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "Can I have the first session on the same day as my consultation?",
-        "a": "In most cases, yes. A session takes 15–30 minutes after about 30 minutes of numbing cream and needs no hospitalisation, so it usually fits into the same visit as your consultation. Later sessions follow at 6–8 week intervals."
+        "a": "In most cases, yes. LIV's standard flow is a final in-person consultation followed by treatment the same day in most cases, and a tattoo session itself takes 15–30 minutes after about 30 minutes of numbing cream, with no hospitalisation. Later sessions follow at 6–8 week intervals."
       }
     ],
-    "readingMinutes": 9,
-    "reviewMarkers": 6
+    "readingMinutes": 11,
+    "reviewMarkers": 4
   },
   {
     "title": "Ultherapy in Seoul: 2026 price guide, what's included and how to plan your visit",
@@ -1455,7 +1506,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change and prefer a treatment without anesthesia. It treats the full face, eye area, neck and body, with a dedicated Thermage Eye tip around the eyes. FLX is the current generation: AccuREP technology auto-tunes the energy and the treatment is 25% faster than earlier versions. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage)."
+        "text": "The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change and prefer a treatment without anesthesia. It treats the full face, eye area, neck and body, with a dedicated Thermage Eye tip around the eyes. Compared with earlier versions, FLX's AccuREP technology auto-tunes the energy and the treatment is 25% faster. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage)."
       },
       {
         "type": "h3",
@@ -1552,7 +1603,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**Remote consultation first.** Send your concerns and a few photos by WhatsApp or the live chat on this site; the clinic suggests suitable treatments and sends a clear price estimate before you travel.",
           "**In-person diagnosis by the surgeon.** At the clinic, the board-certified plastic surgeon diagnoses your skin and recommends a plan based on your concerns and the result you want. Every treatment is planned and performed under Dr. Sooyoung Kim, whose listed specialties include Ultherapy Prime lifting, Thermage lifting and combination lifting treatments; see [our medical team](/about/staff).",
-          "**One treatment, or two together.** Because Ultherapy Prime is described for lifting and Thermage for overall elasticity, the clinic may propose one or both. Shurink is proposed where a shorter, lower-cost session or regular maintenance is the goal.",
+          "**One treatment, or two together.** Because Ultherapy Prime is described for lifting and Thermage for overall elasticity, the clinic may propose one or both. Shurink may be proposed where a quick session, lifting at a reasonable cost or regular maintenance is the goal.",
           "**The frequency follows the choice.** Ultherapy Prime is recommended once every 1–2 years, Thermage once every 6 months to a year, and maintenance treatments such as Shurink every 3–6 months; the exact cycle is set at the consultation.",
           "**You can take your time.** The 1:1 consultation fee is KRW 10,000, fully deducted from the treatment cost if you go ahead the same day. You are free to decide later."
         ]
@@ -1569,7 +1620,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**Booking in five steps.** 1) Message the clinic on WhatsApp (+82 10-6888-2773), the live chat or the [contact form](/contact). 2) Remote consultation and quote. 3) Choose a date that fits your itinerary. 4) Visit, final consultation, treatment the same day in most cases. 5) Remote aftercare through chat after you fly home, with a written aftercare guide in English. Replies come within one business day, and no deposit is needed to reserve a consultation.",
           "**Language.** Consultations are available in English; interpretation is arranged free of charge on request.",
           "**Clinic hours.** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed Sunday (Korea time).",
-          "**Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. About 70–90 minutes from Incheon Airport by AREX train or limousine bus (about 60 by taxi); about 40 minutes from Gimpo Airport. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.",
+          "**Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. About 70–90 minutes from Incheon Airport by AREX train or limousine bus (about 60 by taxi); about 40 minutes from Gimpo Airport by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.",
           "**Payment.** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash; card installments are available.",
           "**Flying home.** None of the three requires a hospital stay; the clinic confirms travel timing with you individually. [검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
         ]
@@ -2219,7 +2270,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[ボトックス](/antiaging/botox)",
             "10〜20分",
-            "無麻酔または麻酔クリーム（希望時）",
+            "無麻酔または麻酔クリーム（ご希望の場合）",
             "すぐに日常復帰可能",
             "当日・再来院不要"
           ],
@@ -2227,7 +2278,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "[ヒアルロン酸（フィラー）](/antiaging/filler)",
             "20〜40分",
             "麻酔クリームまたは神経ブロック麻酔",
-            "すぐ〜3日（部位により異なる）",
+            "すぐに〜3日（部位により異なります）",
             "当日・再来院不要"
           ],
           [
@@ -2269,7 +2320,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "帰国日を決める前に、ヒアルロン酸「すぐ〜3日」、スキンブースター「1〜3日」、糸リフト「3〜7日」という回復欄の表記も見ておいてください。1泊2日ではこの期間が帰国の移動と重なります。許容できるかはカウンセリングで決めることです。"
+        "text": "帰国日を決める前に、ヒアルロン酸「すぐに〜3日」、スキンブースター「1〜3日」、糸リフト「3〜7日」という回復欄の表記も見ておいてください。1泊2日ではこの期間が帰国の移動と重なります。許容できるかはカウンセリングで決めることです。"
       },
       {
         "type": "h2",
@@ -2336,7 +2387,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "1日目",
             "終日",
-            "到着、チェックイン、カロスキルを散歩。早い便ならカウンセリングを1日目に前倒しも可。"
+            "到着、チェックイン。早い便ならカウンセリングを1日目に前倒しも可。"
           ],
           [
             "2日目",
@@ -2362,7 +2413,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "「帰国便の枠」はご自身のフライト時刻に置き換えてください。2日目・3日目の帰国に問題がないかはカウンセリングで確認する事項なので、予約時にフライト時刻もお伝えください。[검수 필요: 모델 일정의 2일째·3일째 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음] 日曜は休診、土曜は16:00までです。"
+        "text": "「帰国便の枠」はご自身のフライト時刻に置き換えてください。2日目・3日目の帰国に問題がないかはカウンセリングで確認する事項なので、予約時にフライト時刻もお伝えください。[검수 필요: 모델 일정의 2일째·3일째 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
       },
       {
         "type": "h2",
@@ -2380,7 +2431,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**糸リフト：** 3〜7日は内出血・腫れの可能性。2週間は大きな表情やマッサージを避ける。軽いメイクは24時間後から。",
           "**レーザー施術を組み合わせる場合：** 医療Q&Aでは、最低2〜4週間は日焼け止め（SPF50+）と帽子・日傘で紫外線対策を徹底し、屋外活動が多い時期はレーザーを避けるのがよいとしています（[レーザー施術](/laser)）。",
           "**ウルセラ・サーマジFLX後の入浴・サウナ・飲酒：** サイトに記載がありません。[검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]",
-          "**必ずお伝えください：** 妊娠中・授乳中（ほとんどの美容施術が推奨されません）、ペースメーカー装着（サーマジFLXは施術不可）、施術部位の金属インプラント（要相談）。"
+          "**事前にお伝えください：** 妊娠中・授乳中（ほとんどの美容施術が推奨されません）、ペースメーカー装着（サーマジFLXは施術不可）、施術部位の金属インプラント（要相談）。"
         ]
       },
       {
@@ -2516,7 +2567,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "1回あたりの料金・VAT（付加価値税）別途・「〜」は「この金額から」の意味で、大きさ・色・深さを院長が確認したうえで確定します。参考換算：50,000ウォン≒約5,800円、500,000ウォン≒約58,000円（2026年9月4日時点、100円≒860ウォンで計算）。実際の金額は為替レートにより変わります。"
+        "text": "1回あたりの料金・VAT（付加価値税）別途・「〜」は「この金額から」の意味で、大きさ・色・深さを院長が確認したうえで確定します。参考換算：50,000ウォン≒5,800円、500,000ウォン≒58,000円（2026年9月4日時点、100円≒860ウォンで計算）。実際の金額は為替レートにより変わります。"
       },
       {
         "type": "p",
@@ -2541,7 +2592,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "対象は、黒いタトゥー、カラータトゥー、アイライン、眉のタトゥー、アートメイク（半永久メイク）です。カラーインクには532nm・755nm・1064nmの3波長で対応し、必要に応じてクラリティ（Clarity）レーザーを併用します。"
+        "text": "対象は、黒いタトゥー、カラータトゥー、アイライン、眉のタトゥー、アートメイク（半永久メイク）です。カラーインクには532nm・755nm・1064nmの3波長で対応します。1064nmは黒・濃い青・茶色、755nmは青・緑、532nmは赤・オレンジ・黄色が対象で、黒はよく反応し、青・緑は難しく回数が増えます。カラータトゥーでは必要に応じてクラリティII（Clarity II）レーザーを併用します。"
       },
       {
         "type": "ul",
@@ -2561,10 +2612,58 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "**どこまで消えるか：** ほとんどのタトゥーは90%以上除去できます。完全に消えるかは、インクの色、深さ、タトゥーの年数、肌タイプによって異なります。",
-          "**色による違い：** 黒が最もよく反応し、緑や青はより多くの回数が必要になることがあります。",
-          "**回数：** 目の前のタトゥーを見たうえで、カウンセリング時に予想回数をご案内します。[검수 필요: 평균 회수 — 시술 페이지의 '문신 유형별 예상 회수' 표(3–5회 등)를 가이드에 인용해도 되는지, 근거 시트에는 없음]",
-          "**間隔：** 6〜8週です。粉砕されたインクの排出に4〜6週かかり、皮膚が完全に回復してから次の施術に進みます。"
+          "**色による違い：** 黒はよく反応し、緑や青はより多くの回数が必要になることがあります。",
+          "**回数：** タトゥーの種類によって異なります（下の表）。実際の回数は、目の前のタトゥーを見たうえでカウンセリング時にご案内します。",
+          "**間隔：** 6〜8週です。粉砕されたインクの排出に4〜6週かかり、皮膚が完全に回復してから次の施術に進みます。間隔が短すぎると皮膚の損傷と傷跡のリスクが高まります。"
         ]
+      },
+      {
+        "type": "h3",
+        "text": "タトゥーの種類別・予想回数（施術ページの目安）"
+      },
+      {
+        "type": "table",
+        "header": [
+          "タトゥーの種類",
+          "予想回数",
+          "備考"
+        ],
+        "rows": [
+          [
+            "アマチュアタトゥー",
+            "3〜5回",
+            "インクが浅く、墨・ペンインクなどの単色がほとんど"
+          ],
+          [
+            "プロタトゥー（白黒）",
+            "6〜10回",
+            "インクが深く均一。黒インクはレーザー反応が良い"
+          ],
+          [
+            "プロタトゥー（カラー）",
+            "8〜15回以上",
+            "色ごとに異なる波長が必要。緑・青は回数が増える"
+          ],
+          [
+            "アートメイク（眉・アイライン・唇）",
+            "3〜6回",
+            "一般のタトゥーより浅い。目元は特殊保護具を使用"
+          ],
+          [
+            "外傷性タトゥー（アスファルト・黒鉛など）",
+            "4〜8回",
+            "深さと範囲による"
+          ],
+          [
+            "カバーアップタトゥー",
+            "10〜20回以上",
+            "インク層が厚く、除去が難しい"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "上の表は施術ページに掲載されている種類別の目安で、あなたのタトゥーの見積もりではありません。回数はカウンセリングで院長が判断します。"
       },
       {
         "type": "p",
@@ -2581,7 +2680,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIVの非手術施術の多くは30〜90分で終わり入院不要のため、多くの方がカウンセリング当日に施術を受けています。カウンセリング＋麻酔クリーム約30分＋レーザー15〜30分を、半日のうちの一枠として確保すれば足ります。"
+        "text": "LIVの外国人患者向けの流れは、来院時に院長の対面カウンセリングを受け、多くの場合その日のうちに施術まで進むというものです（非手術施術の多くは30〜90分で終わり、入院も不要なため）。タトゥー除去の1回目も、カウンセリング＋麻酔クリーム約30分＋レーザー15〜30分を、半日のうちの一枠として確保すれば足ります。"
       },
       {
         "type": "h3",
@@ -2590,9 +2689,10 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**かさぶた（3〜7日）：** 剥がさず自然に取れるのを待ってください。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**かさぶた（3〜7日）：** 剥がさず自然に取れるのを待ってください。軽い腫れが出ることもあります。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
           "**紫外線：** レーザー後の肌は敏感になり、色素沈着のリスクが高まります。最低2〜4週間はSPF50+の日焼け止めと帽子・日傘を。野外活動が多い時期は施術を避けることも勧めているので、屋外の予定が多い旅程なら施術日を事前に相談してください。",
-          "**海水浴・プール・サウナ・温泉：** [검수 필요: 시술 후 수영·해수욕·사우나·온천 제한 기간 — 사이트에 근거 없음]",
+          "**サウナ・激しい運動：** 施術後1週間は避けてください（施術ページの注意事項）。処方された軟膏は指示どおりに塗ります。",
+          "**海水浴・プール・温泉：** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
           "**帰国便：** カウンセリングで個別に確認してください。[검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]"
         ]
       },
@@ -2627,7 +2727,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "**診療時間：** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（日本との時差なし）。",
-          "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分。仁川空港から空港鉄道（AREX）またはリムジンバスで約70〜90分、タクシーで約60分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
+          "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分。仁川空港から空港鉄道（AREX）またはリムジンバスで約70〜90分、タクシーで約60分。金浦空港からはタクシーまたは地下鉄で約40分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
           "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。"
         ]
       },
@@ -2639,6 +2739,8 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
+          "**施術前2週間：** 過度な日焼けを避け、施術部位に刺激の強い製品を使わないでください。施術前にビーチで過ごす日程なら、予約時に伝えておくと安心です。",
+          "**事前に伝えること：** 施術部位の皮膚トラブル（炎症・傷）と、服用中の薬（光線過敏を起こす薬など）。",
           "**妊娠中・授乳中：** レーザー施術はお勧めしていません。出産と授乳が終わってからの施術を勧めています。",
           "**期待値：** 「90%以上」は一般的な目安で、完全に消えることの保証ではありません。"
         ]
@@ -2660,7 +2762,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "タトゥーは完全に消えますか？",
-        "a": "ほとんどのタトゥーは90%以上除去できます。完全に消えるかはインクの色、深さ、年数、肌タイプによって異なり、黒が最もよく消え、緑や青は回数が増えることがあります。"
+        "a": "ほとんどのタトゥーは90%以上除去できます。完全に消えるかはインクの色、深さ、年数、肌タイプによって異なり、黒はよく消え、緑や青は回数が増えることがあります。"
       },
       {
         "q": "痛みはどのくらいですか？",
@@ -2668,11 +2770,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "何回通う必要がありますか？間隔は？",
-        "a": "回数はカウンセリングで、インクの色・深さ・年数と肌タイプをもとにご案内します。間隔は6〜8週で、インクの排出に4〜6週かかり、皮膚が完全に回復してから次に進むためです。[검수 필요: 평균 회수 — 위와 동일]"
+        "a": "タトゥーの種類によります。施術ページの目安は、アマチュアタトゥー3〜5回、アートメイク（眉・アイライン）3〜6回、プロの白黒タトゥー6〜10回、プロのカラータトゥー8〜15回以上です。実際の回数は、インクの色・深さ・年数と肌タイプをもとにカウンセリングでご案内します。間隔は6〜8週で、インクの排出に4〜6週かかり、皮膚が完全に回復してから次に進むためです。"
       },
       {
         "q": "カラータトゥーも消せますか？",
-        "a": "ほとんどの色に対応できます。ルカスは532nm・755nm・1064nmの3波長を備え、必要に応じてクラリティレーザーを併用します。"
+        "a": "ほとんどの色に対応できます。ルカスは532nm・755nm・1064nmの3波長を備え、必要に応じてクラリティII（Clarity II）レーザーを併用します。緑や青は黒より回数が増えるのが一般的です。"
       },
       {
         "q": "外国人だと料金は高くなりますか？",
@@ -2680,11 +2782,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "カウンセリング当日に1回目を受けられますか？",
-        "a": "多くの場合、受けられます。麻酔クリーム約30分の後、レーザー照射は15〜30分で、入院は不要です。2回目以降は6〜8週の間隔で進めます。"
+        "a": "多くの場合、受けられます。LIVの流れは、対面カウンセリングのあと多くの場合その日に施術というもので、タトゥー除去も麻酔クリーム約30分の後にレーザー照射15〜30分、入院は不要です。2回目以降は6〜8週の間隔で進めます。"
       }
     ],
-    "readingMinutes": 8,
-    "reviewMarkers": 6
+    "readingMinutes": 10,
+    "reviewMarkers": 4
   },
   {
     "title": "韓国でウルセラを受ける前に：値段・ショット数・正規品の見分け方（新沙・LIV美容クリニック）",
@@ -2940,7 +3042,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "韓国でリフティングを調べると必ず出てくる3つ——ウルセラ、サーマクール、シュリンク。問い合わせる前に違いを整理したい方向けの記事です。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分・カロスキル隣の非手術アンチエイジング専門クリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人も同一料金で、日本語で直接予約できます。"
+        "text": "韓国でリフティングを調べるとよく目にする3つ——ウルセラ、サーマクール、シュリンク。問い合わせる前に違いを整理したい方向けの記事です。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分・カロスキル隣の非手術アンチエイジング専門クリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人も同一料金で、日本語で直接予約できます。"
       },
       {
         "type": "h2",
@@ -2949,7 +3051,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "ウルセラ（ウルセラプライム）はHIFU（ハイフ＝高密度焦点式超音波）で皮膚の深い層SMASまでエネルギーを届け、サーマクール（サーマジ）FLXはRF（高周波）で真皮層のコラーゲンを収縮させて再生を促します。シュリンクもHIFUで、LIVでは「費用を抑えた定期ケア向き」としています。LIVの[リフティングのページ](/lifting)では、ウルセラはたるんだ肌のリフティング、サーマクールは全体的な弾力改善、シュリンクは初めての方・短時間・定期メンテナンス向きと説明し、ウルセラとサーマクールの併用には相乗効果があるとしています。優劣ではなく、どれが合うかはカウンセリングで決まります。"
+        "text": "ウルセラ（ウルセラプライム）はHIFU（ハイフ＝高密度焦点式超音波）で皮膚の深い層であるSMAS層までエネルギーを届け、サーマクール（サーマジ）FLXはRF（高周波）で真皮層のコラーゲンを収縮させて再生を促します。シュリンクもHIFUで、LIVでは「費用を抑えた定期ケア向き」としています。LIVの[リフティングのページ](/lifting)では、ウルセラはたるんだ肌のリフティング、サーマクールは全体的な弾力改善、シュリンクは初めての方・短時間・定期メンテナンス向きと説明し、ウルセラとサーマクールの併用には相乗効果があるとしています。優劣ではなく、どれが合うかはカウンセリングで決まります。"
       },
       {
         "type": "h2",
@@ -3034,7 +3136,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「初めてリフティングを受ける」「短時間で済ませたい」「費用を抑えたい」「定期的にメンテナンスしたい」方向け。対象部位はウルセラと同じで、3〜6ヶ月間隔で受けられ、維持ケアにも適しています（[シュリンクのページ](/lifting/shurink)）。"
+        "text": "「初めてリフティングを受ける」「短時間で済ませたい」「費用を抑えたい」「定期的にメンテナンスしたい」方向け。対象部位はウルセラと同じ額・目元・頬・顎ライン・首で、施術時間は30〜45分（麻酔クリームは選択）。3〜6ヶ月間隔で受けられ、維持ケアにも適しています（[シュリンクのページ](/lifting/shurink)）。"
       },
       {
         "type": "h2",
@@ -3043,7 +3145,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「韓国では実際いくら？」の答えは公開料金表です。ウルセラとサーマクールは[料金案内ページ](/pricing)、シュリンクは施術ページ（Vライン・頬・額・二重あご・首・目の下）に掲載され、渡韓前に確認できます。"
+        "text": "「韓国では実際いくらかかる？」への答えは、公開されている料金表にあります。ウルセラとサーマクールは[料金案内ページ](/pricing)に、シュリンクは施術ページ（Vライン・頬・額・二重あご・首のしわ・目の下）に掲載されており、渡韓前に確認できます。"
       },
       {
         "type": "table",
@@ -3107,7 +3209,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "1回あたりの料金・VAT（付加価値税）別途・肌の状態や施術範囲、使用製品によりカウンセリング後に確定します。参考換算：1,560,000ウォン≒約181,000円、2,400,000ウォン≒約279,000円、400,000ウォン≒約47,000円（2026年9月4日時点、100円≒860ウォンで計算）。実際の金額は為替レートにより変わります。"
+        "text": "1回あたりの料金・VAT（付加価値税）別途・肌の状態や施術範囲、使用製品によりカウンセリング後に確定します。参考換算：1,560,000ウォン≒181,000円、2,400,000ウォン≒279,000円、400,000ウォン≒47,000円（2026年9月4日時点、100円≒860ウォンで計算）。実際の金額は為替レートにより変わります。"
       },
       {
         "type": "p",
@@ -3122,8 +3224,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ol",
         "items": [
           "**まず遠隔カウンセリング。** LINE（ID：icps7972773）かライブチャットで部位と写真を送ると、施術の提案と見積もりが渡韓前に届きます。",
-          "**院長が対面で診断。** 形成外科専門医のキム・スヨン院長が肌の状態を直接診断し、お悩みと希望に合わせたプランを提案します。専門分野にはウルセラプライム・サーマジ・複合リフティング施術が含まれます（[医療スタッフ](/about/staff)）。",
-          "**1つか、併用か。** 役割の違い（ウルセラ＝リフティング、サーマクール＝全体的な弾力改善）から、一方だけ、または両方を提案することがあります。短時間・低予算・定期メンテナンスならシュリンクが候補です。",
+          "**院長が対面で診断。** 形成外科専門医のキム・スヨン代表院長が肌の状態を直接診断し、お悩みと希望に合わせたプランを提案します。専門分野にはウルセラプライムリフティング・サーマジリフティング・複合リフティング施術が含まれます（[医療スタッフ](/about/staff)）。",
+          "**1つか、併用か。** 役割の違い（ウルセラ＝リフティング、サーマクール＝全体的な弾力改善）から、一方だけ、または両方を提案することがあります。短時間で済ませたい・費用を抑えたい・定期的にメンテナンスしたい場合は、シュリンクが候補になります。",
           "**その場で決めなくて大丈夫。** 1:1専門相談は1万ウォンで、当日施術の場合は施術金額から全額差し引かれます。"
         ]
       },
@@ -3137,8 +3239,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**日帰りで完了。** 非手術施術の多くは30〜90分・入院不要で、多くの方が当日に施術を受けます。ウルセラプライムとサーマクールFLXは再来院不要。",
           "**予約は5ステップ。** LINE・ライブチャット・[お問い合わせフォーム](/contact)で日本語で連絡（通訳は無料） → 遠隔カウンセリングと見積もり → 日時を予約 → 来院・最終カウンセリング・多くは当日施術 → 帰国後はLINEで写真によるアフターケア。返信は営業日1日以内、予約金は不要です。",
-          "**診療時間。** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診。",
-          "**アクセス。** 地下鉄3号線・新沙駅4番出口から徒歩1分。仁川空港から約70〜90分（AREX・リムジンバス）、タクシー約60分。",
+          "**診療時間。** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間）。",
+          "**アクセス。** 地下鉄3号線・新沙駅4番出口から徒歩1分。仁川空港から約70〜90分（AREX・リムジンバス）、タクシーで約60分。金浦空港からはタクシー・地下鉄で約40分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
           "**支払い。** Visa・Mastercard・American Express・JCB・UnionPay・韓国ウォン現金（分割払い可）。",
           "**帰国便。** 搭乗のタイミングはカウンセリングで個別に確認します。[검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
         ]
@@ -3198,7 +3300,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "はい。1:1専門相談は1万ウォンで、当日施術の場合は施術金額から全額差し引かれます。"
       }
     ],
-    "readingMinutes": 8,
+    "readingMinutes": 9,
     "reviewMarkers": 4
   },
   {
@@ -3796,35 +3898,35 @@ export const GUIDES: readonly GuideDoc[] = [
             "60–90分钟",
             "麻醉霜（30分钟）",
             "即刻可恢复日常生活",
-            "当天完成 · 无需复诊"
+            "当天 · 无需复诊"
           ],
           [
             "[热玛吉FLX](/lifting/thermage)",
             "45–60分钟",
             "无需麻醉（振动技术减少疼痛）",
             "即刻可恢复日常生活",
-            "当天完成 · 无需复诊"
+            "当天 · 无需复诊"
           ],
           [
             "[肉毒素](/antiaging/botox)",
             "10–20分钟",
             "无麻醉或麻醉霜（按需）",
             "即刻可恢复日常生活",
-            "当天完成 · 无需复诊"
+            "当天 · 无需复诊"
           ],
           [
             "[玻尿酸](/antiaging/filler)",
             "20–40分钟",
             "麻醉霜或神经阻滞麻醉",
             "即刻～3天（依部位而异）",
-            "当天完成 · 无需复诊"
+            "当天 · 无需复诊"
           ],
           [
             "[水光针](/antiaging/skinbooster)",
             "30–45分钟",
             "麻醉霜",
             "1–3天（微针痕迹）",
-            "当天完成 · 无需复诊"
+            "当天 · 无需复诊"
           ],
           [
             "[线雕](/lifting/thread)",
@@ -3854,7 +3956,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "以下内容官网写得很清楚，可以作为规划的依据：超声刀、热玛吉FLX、肉毒素、玻尿酸、水光针都是\"当天完成 · 无需复诊\"；大多数非手术项目约需30–90分钟、无需住院，所以很多患者到院当天就完成治疗；超声刀、热玛吉FLX、肉毒素的恢复期一栏是\"即刻可恢复日常生活\"。也就是说，没有复诊安排会让你必须延长在首尔的停留。"
+        "text": "官网已写明、可以作为规划依据的是：超声刀、热玛吉FLX、肉毒素、玻尿酸、水光针都是\"当天 · 无需复诊\"；大多数非手术项目约需30–90分钟、无需住院，很多患者到院当天就完成治疗；超声刀、热玛吉FLX、肉毒素的恢复期一栏是\"即刻可恢复日常生活\"。也就是说，不会因为需要复诊而必须延长在首尔的停留。"
       },
       {
         "type": "p",
@@ -3862,7 +3964,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "决定回程日期之前，有两条公开信息值得先看。玻尿酸的恢复期是\"即刻～3天（依部位而异）\"，水光针是\"1–3天（微针痕迹）\"，两天一夜的行程里，这段时间会和回程重叠。线雕的恢复期是\"1–7天（依部位而异）\"，约1周后的复查是可选的，短途行程里会改为远程照片复查。能否接受这一点，由面诊决定。"
+        "text": "决定回程日期之前，有两条公开信息值得先看。玻尿酸的恢复期是\"即刻～3天（依部位而异）\"，水光针是\"1–3天（微针痕迹）\"，两天一夜的行程里，这段时间会和回程重叠。线雕的恢复期是\"1–7天（依部位而异）\"，约1周后的复查是可选的，短途行程里可以改为远程照片复查。能否接受这一点，由面诊决定。"
       },
       {
         "type": "h2",
@@ -3929,7 +4031,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "第1天",
             "全天",
-            "抵达、入住。林荫道就在旁边，可以散步。如果航班到得早，面诊可以提前到第1天。"
+            "抵达、入住。如果航班到得早，面诊可以提前到第1天。"
           ],
           [
             "第2天",
@@ -3955,7 +4057,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "\"回程航班时段\"请替换成你自己的航班时间。你做的项目是否适合第2天或第3天回程，要在面诊时逐一确认，预约时请一并告知航班时间。[검수 필요: 모델 일정의 제2일·제3일 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음] 如果治疗日是周日，诊所休息；周六16:00关门。"
+        "text": "\"回程航班时段\"请替换成你自己的航班时间。你做的项目是否适合第2天或第3天回程，要在面诊时逐一确认，预约时请一并告知航班时间。[검수 필요: 모델 일정의 제2일·제3일 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
       },
       {
         "type": "h2",
@@ -3965,13 +4067,13 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**超声刀：** 可能有轻微肿胀、泛红，部分部位可能出现暂时性感觉异常。几天消退，官网没有写明。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**超声刀：** 可能有轻微肿胀、泛红，部分部位可能出现暂时性感觉异常。需要几天消退，官网没有写明。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
           "**热玛吉FLX：** 可能出现暂时性泛红。",
           "**肉毒素：** 治疗当天避免饮酒和桑拿，不要按摩治疗部位。",
           "**玻尿酸：** 可能有淤青、肿胀；不要按摩或按压治疗部位；3天内避免剧烈运动和桑拿。",
           "**水光针：** 可能有细微针痕和泛红；治疗当天不化妆、不饮酒；做好防晒。",
           "**线雕：** 恢复期1–7天（依部位而异）；2周内避免夸张表情和按摩；可能有牵拉感，初期的轻微异物感会在2–4周内消失；24小时后可以化淡妆。",
-          "**激光项目（如果也在计划内）：** 医疗问答中说，激光后至少2–4周要仔细涂抹防晒霜（SPF 50+）并使用帽子或遮阳伞，户外活动较多的季节建议避免激光治疗——以观光为主的行程要考虑这一点。激光调Q几乎没有恢复期；Clarity II治疗表皮色素时，色素会加深或形成薄痂，3–5天后自然脱落。详见[激光项目](/laser)。",
+          "**激光项目（如果也在计划内）：** 医疗问答中说，激光后至少2–4周要仔细涂抹防晒霜（SPF 50+）并使用帽子或遮阳伞，户外活动较多的季节建议避免激光治疗；Clarity II治疗表皮色素时，色素会加深或形成薄痂，3–5天后自然脱落。详见[激光项目](/laser)。",
           "**超声刀、热玛吉FLX之后的泡澡、桑拿、饮酒：** 官网没有说明。[검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]",
           "**请务必告知诊所：** 怀孕或哺乳期（大多数美容治疗不建议进行）、装有心脏起搏器（热玛吉FLX不能做）、治疗部位有金属植入物（需要先咨询）。"
         ]
@@ -4017,7 +4119,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "做完超声刀或肉毒素，第二天能坐飞机吗？",
-        "a": "两者官网都标注为\"当天完成 · 无需复诊\"\"即刻可恢复日常生活\"，没有复诊安排会让你必须留在首尔。但官网没有公布\"治疗后几小时可以登机\"的标准，回程时间要在面诊时按你的情况确认，预约时请告知航班时间。"
+        "a": "两者官网都标注为\"当天 · 无需复诊\"\"即刻可恢复日常生活\"，不会因为需要复诊而必须留在首尔。但官网没有公布\"治疗后几小时可以登机\"的标准，回程时间要在面诊时按你的情况确认，预约时请告知航班时间。"
       },
       {
         "q": "做项目需要在首尔停留几天？",
@@ -4091,7 +4193,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "针对彩色墨水，Lucas提供532nm、755nm、1064nm三种波长，必要时会联合Clarity激光，以覆盖更多颜色。"
+        "text": "针对彩色墨水，Lucas提供532nm、755nm、1064nm三种波长：1064nm对应黑色、深蓝色、棕色，755nm对应蓝色、绿色，532nm对应红色、橙色、黄色。黑色较容易，蓝色、绿色较难、需要更多次数。彩色纹身必要时会联合Clarity II激光。"
       },
       {
         "type": "p",
@@ -4185,11 +4287,59 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "**能洗掉多少：** 大多数纹身可以去除90%以上。能否完全去除，取决于墨水颜色、深度、纹身年龄和肤质。",
-          "**颜色差异：** 黑色墨水最容易去除，绿色和蓝色可能需要更多次数。",
+          "**颜色差异：** 黑色墨水较容易去除，绿色和蓝色可能需要更多次数。",
           "**新旧纹身：** 通常旧纹身更容易去除，因为免疫系统已经清除了一部分墨水；新纹身同样可以有效去除，而且墨水清晰，激光更容易靶向。",
-          "**次数：** 诊所会在面诊时根据你的纹身给出准确的预估次数。[검수 필요: 평균 회수 — 시술 페이지의 '문신 유형별 예상 회수' 표(3–5회 등)를 가이드에 인용해도 되는지, 근거 시트에는 없음]",
+          "**次数：** 因纹身类型而异（见下表）。你的具体次数由院长面诊时根据纹身情况给出。",
           "**间隔：** 6–8周。被粉碎的墨水需要4–6周由身体排出，皮肤完全恢复后才能进行下一次；间隔太短会增加皮肤损伤和疤痕风险。"
         ]
+      },
+      {
+        "type": "h3",
+        "text": "按纹身类型的预计次数（治疗页面的参考值）"
+      },
+      {
+        "type": "table",
+        "header": [
+          "纹身类型",
+          "预计次数",
+          "说明"
+        ],
+        "rows": [
+          [
+            "业余纹身",
+            "3–5次",
+            "墨水较浅，多为墨汁、笔墨等单色"
+          ],
+          [
+            "专业纹身（黑白）",
+            "6–10次",
+            "墨水深且均匀；黑色墨水对激光反应好"
+          ],
+          [
+            "专业纹身（彩色）",
+            "8–15次以上",
+            "不同颜色需要不同波长；绿色、蓝色需要更多次数"
+          ],
+          [
+            "半永久化妆（眉毛、眼线、唇部）",
+            "3–6次",
+            "比一般纹身浅；眼部治疗使用特殊防护设备"
+          ],
+          [
+            "外伤性纹身（沥青、石墨等嵌入皮肤）",
+            "4–8次",
+            "视深度和范围而定"
+          ],
+          [
+            "遮盖纹身",
+            "10–20次以上",
+            "墨水层较厚，去除较难"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "以上是官网治疗页面按类型给出的参考范围，不是针对你的报价；你的纹身要做几次，由院长面诊后判断。"
       },
       {
         "type": "p",
@@ -4206,7 +4356,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV的大多数非手术项目约需30~90分钟、无需住院，很多患者到院当天就完成治疗，洗纹身也一样。把面诊、约30分钟麻醉膏和15–30分钟激光算在一起，在行程里留出半天中的一个时段就够了。如果提前通过微信发来纹身照片（见下面第2步），出发前就能拿到报价。"
+        "text": "LIV面向外国患者的流程是：到院与院长当面面诊后，多数情况下当天就做治疗（诊所的大多数非手术项目约需30~90分钟、无需住院）。第一次洗纹身也按这个流程安排：把面诊、约30分钟麻醉膏和15–30分钟激光算在一起，在行程里留出半天中的一个时段就够了。如果提前通过微信发来纹身照片（见下面第2步），出发前就能拿到报价。"
       },
       {
         "type": "h3",
@@ -4215,9 +4365,10 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**结痂（3–7天）：** 会有细小的结痂，等它自然脱落，不要抠。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**结痂（3–7天）：** 会有细小的结痂，等它自然脱落，不要抠；也可能有轻微肿胀。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
           "**防晒：** 激光后皮肤敏感，紫外线导致色素沉着的风险增加。至少2–4周内仔细涂抹SPF 50+防晒霜，并使用帽子或遮阳伞。诊所也建议避开户外活动多的时期做激光；如果接下来的行程以户外为主，请提前和诊所商量治疗日期。",
-          "**游泳、海水、桑拿、温泉：** [검수 필요: 시술 후 수영·해수욕·사우나·온천 제한 기간 — 사이트에 근거 없음]",
+          "**桑拿、剧烈运动：** 治疗后1周内避免（治疗页面的注意事项）；处方药膏按指示涂抹。",
+          "**游泳、海水、温泉：** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
           "**回程航班：** 请在面诊时向诊所确认。[검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]"
         ]
       },
@@ -4269,10 +4420,12 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
+          "**治疗前2周：** 避免过度日晒，治疗部位不要用刺激性产品；如果行程前半段有海边日晒，预约时请说明。",
+          "**提前告知：** 治疗部位的皮肤状况（炎症、伤口）以及正在服用的药物（尤其是光敏性药物）。",
           "**怀孕与哺乳期：** 不建议在怀孕或哺乳期间做激光治疗，建议在分娩和哺乳结束后进行。",
           "**防晒：** 每次治疗后至少2–4周SPF 50+和帽子、遮阳伞；不要把治疗排在户外活动密集的时段。",
-          "**术后护理：** 防晒和不抠结痂，是诊所反复强调的两点，做到了才能干净愈合。",
-          "**合理预期：** \"90%以上\"是诊所给出的一般情况，不是完全消失的保证；绿色、蓝色墨水、较深的墨水和某些肤质需要更多次数。"
+          "**术后护理：** 防晒和不抠结痂，是诊所护理指南反复强调的两点；照做才能期待干净愈合。",
+          "**合理预期：** \"90%以上\"是诊所给出的一般情况，不是完全消失的保证；绿色和蓝色墨水可能需要更多次数，墨水深度、纹身年龄和肤质也会影响最终效果。"
         ]
       },
       {
@@ -4292,7 +4445,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "纹身能完全洗掉吗？",
-        "a": "大多数纹身可以去除90%以上。能否完全去除取决于墨水颜色、深度、纹身年龄和肤质：黑色最容易，绿色和蓝色可能需要更多次数。面诊时诊所会给出准确的预估。"
+        "a": "大多数纹身可以去除90%以上。能否完全去除取决于墨水颜色、深度、纹身年龄和肤质：黑色较容易，绿色和蓝色可能需要更多次数。面诊时诊所会给出准确的预估。"
       },
       {
         "q": "皮秒激光洗纹身疼吗？",
@@ -4300,11 +4453,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "要做几次？间隔多久？",
-        "a": "次数根据墨水颜色、深度、纹身年龄和肤质，在面诊时给出预估。间隔为6–8周，因为被粉碎的墨水需要4–6周由身体排出，皮肤完全恢复后才能做下一次。[검수 필요: 평균 회수 — 위와 동일]"
+        "a": "取决于纹身类型。官网治疗页面的参考值是：业余纹身3–5次，半永久化妆（洗眉、洗眼线）3–6次，专业黑白纹身6–10次，专业彩色纹身8–15次以上；你的具体次数由院长面诊时根据墨水颜色、深度、纹身年龄和肤质给出。间隔为6–8周，因为被粉碎的墨水需要4–6周由身体排出，皮肤完全恢复后才能做下一次。"
       },
       {
         "q": "彩色纹身能洗吗？",
-        "a": "大多数颜色都可以。Lucas皮秒激光有532nm、755nm、1064nm三种波长对应不同颜色，必要时联合Clarity激光处理彩色纹身。绿色和蓝色通常比黑色需要更多次数。"
+        "a": "大多数颜色都可以。Lucas皮秒激光有532nm、755nm、1064nm三种波长对应不同颜色，必要时联合Clarity II激光处理彩色纹身。绿色和蓝色通常比黑色需要更多次数。"
       },
       {
         "q": "外国人洗纹身会更贵吗？",
@@ -4312,11 +4465,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "面诊当天能做第一次吗？",
-        "a": "多数情况下可以。涂约30分钟麻醉膏后，激光照射15–30分钟，无需住院，第一次通常和面诊安排在同一次到院。之后每隔6–8周做下一次。"
+        "a": "多数情况下可以。LIV的流程是当面面诊后多数情况下当天治疗；洗纹身本身只需涂约30分钟麻醉膏后照射15–30分钟，无需住院。之后每隔6–8周做下一次。"
       }
     ],
-    "readingMinutes": 8,
-    "reviewMarkers": 6
+    "readingMinutes": 9,
+    "reviewMarkers": 4
   },
   {
     "title": "首尔超声刀(Ultherapy)价格与行程规划：外国人同价、当天完成",
@@ -4555,7 +4708,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "在首尔做提升项目，绕不开三个名字：超声刀、热玛吉、Shurink。很多人卡在\"我到底该做哪个\"这一步，这篇文章就是为你写的：先把三者的差别摆清楚，再说明一家首尔诊所实际上是怎么帮患者决定的。LIV整形外科位于首尔江南新沙站4号出口步行1分钟、林荫道旁，专注非手术抗衰老项目；外国患者与韩国患者使用同一份价目表，可以用中文直接联系诊所预约，不需要中介。"
+        "text": "在首尔做提升项目，绕不开三个名字：超声刀、热玛吉、Shurink。很多人卡在“我到底该做哪个”这一步，这篇文章就是为你写的：先把三者的差别摆清楚，再说明一家首尔诊所实际上是怎么帮患者决定的。LIV整形外科位于首尔江南新沙站4号出口步行1分钟、林荫道旁，专注非手术抗衰老项目；外国患者与韩国患者使用同一份价目表，可以用中文直接联系诊所预约，不需要中介。"
       },
       {
         "type": "h2",
@@ -4564,7 +4717,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "三个项目最根本的差别在于能量类型和作用的皮肤层次。超声刀(Ultherapy Prime)使用HIFU（高强度聚焦超声波）技术，把能量传递到皮肤深层的SMAS层。热玛吉(Thermage FLX)使用RF（射频）能量，收缩真皮层的胶原蛋白并促进其再生。Shurink（中文也常写作\"舒颜萃\"）同样是HIFU，用LIV自己的说法，\"更适合以合理费用做日常维护\"。"
+        "text": "三个项目最根本的差别在于能量类型和作用的皮肤层次。超声刀(Ultherapy Prime)使用HIFU（高强度聚焦超声波）技术，把能量传递到皮肤深层的SMAS层。热玛吉(Thermage FLX)使用RF（射频）能量，收缩真皮层的胶原蛋白并促进其再生。Shurink（LIV 中文页面也写作“舒颜萃”）同样是HIFU，按LIV的说法，适合以合理费用做定期维护。"
       },
       {
         "type": "p",
@@ -4624,7 +4777,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "治疗时间、麻醉、恢复和效果取自LIV各项目页面；超声刀和热玛吉\"无需复诊\"取自国际患者页面。Shurink 没有公开的复诊说明，预约时请询问。关于疼痛：超声刀涂麻醉霜后进行，多数人可以承受；热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛。如果你对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知。[검수 필요: 써마지 마취 — 시술 페이지는 '무마취(진동 기술)', 의료 Q&A(lifting-pain)는 '마취 크림 30분 후 진행'으로 상충, 한 가지로 확정 필요]"
+        "text": "治疗时间、麻醉、恢复和效果取自LIV各项目页面；超声刀和热玛吉“无需复诊”取自国际患者页面。Shurink 没有公开的复诊说明，预约时请询问。关于疼痛：超声刀涂麻醉霜后进行，多数人可以承受；热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛。如果你对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知。[검수 필요: 써마지 마취 — 시술 페이지는 '무마취(진동 기술)', 의료 Q&A(lifting-pain)는 '마취 크림 30분 후 진행'으로 상충, 한 가지로 확정 필요]"
       },
       {
         "type": "h2",
@@ -4637,7 +4790,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "超声刀是HIFU项目。LIV把它描述为适合\"想不做手术就提升的人\"\"在意皮肤下垂、弹性下降的人\"\"希望变化自然的人\"\"不想有恢复期的人\"。治疗部位是额头、眼周、面颊、下颌线和颈部。先涂约30分钟麻醉霜，治疗本身60–90分钟。治疗后立即有一定效果，之后3–6个月逐渐改善，诊所建议1–2年做一次。LIV是超声刀(Ultherapy Prime)正品认证诊所。详见[超声刀页面](/lifting/ulthera)；各部位价格的详细说明见[超声刀价格指南](/guides/ultherapy-cost-seoul)。[검수 필요: 울쎄라 효과 지속 — 시술 페이지 '1–2년 유지'와 의료 Q&A(lifting-duration) '약 1년'이 다름, 표기 통일 필요]"
+        "text": "超声刀是HIFU项目。LIV把它描述为适合“想不做手术就提升的人”“在意皮肤下垂、弹性下降的人”“希望变化自然的人”“不想有恢复期的人”。治疗部位是额头、眼周、面颊、下颌线和颈部。先涂约30分钟麻醉霜，治疗本身60–90分钟。治疗后立即可感受到效果，之后3–6个月逐渐改善，诊所建议1–2年做一次。LIV是超声刀(Ultherapy Prime)正品认证诊所。详见[超声刀页面](/lifting/ulthera)；各部位价格的详细说明见[超声刀价格指南](/guides/ultherapy-cost-seoul)。[검수 필요: 울쎄라 효과 지속 — 시술 페이지 '1–2년 유지'와 의료 Q&A(lifting-duration) '약 1년'이 다름, 표기 통일 필요]"
       },
       {
         "type": "h3",
@@ -4645,7 +4798,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "热玛吉是RF项目，面向\"在意皮肤弹性下降的人\"\"想改善细纹的人\"\"希望自然、渐进变化的人\"\"希望不用麻醉的人\"。治疗部位包括全脸、眼周、颈部和身体，眼周使用热玛吉眼部专用探头。FLX是现行版本：AccuREP技术自动调节能量，速度比旧版本快25%。治疗后即刻改善弹力，3–6个月胶原蛋白再生，诊所建议每年1–2次。LIV是热玛吉(Thermage FLX)合作诊所。详见[热玛吉页面](/lifting/thermage)。"
+        "text": "热玛吉是RF项目，面向“在意皮肤弹性下降的人”“想改善细纹的人”“希望自然、渐进变化的人”“希望不用麻醉的人”。治疗部位包括全脸、眼周、颈部和身体，眼周使用热玛吉眼部专用探头。与旧版本相比，FLX的AccuREP技术会自动调节能量，速度快25%。治疗后即刻改善弹力，3–6个月胶原蛋白再生，诊所建议每年1–2次。LIV是热玛吉(Thermage FLX)合作诊所。详见[热玛吉页面](/lifting/thermage)。"
       },
       {
         "type": "h3",
@@ -4653,7 +4806,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Shurink 同样是HIFU。LIV把它定位给\"第一次做提升项目的人\"\"想快速完成的人\"\"想以合理费用做提升的人\"\"想定期维护的人\"。治疗30–45分钟，麻醉霜可选，部位是额头、眼周、面颊、下颌线和颈部。2–4周后开始见效，3个月达到最大效果；每3–6个月做一次，也适合维护性治疗。详见[Shurink 页面](/lifting/shurink)。"
+        "text": "Shurink 同样是HIFU。LIV把它定位给“第一次做提升项目的人”“想快速完成的人”“想以合理费用做提升的人”“想定期维护的人”。治疗30–45分钟，麻醉霜可选，部位是额头、眼周、面颊、下颌线和颈部。2–4周后开始见效，3个月达到最大效果；每3–6个月做一次，也适合维护性治疗。详见[Shurink 页面](/lifting/shurink)。"
       },
       {
         "type": "h2",
@@ -4730,7 +4883,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "\"起\"表示起价：部位和发数在面诊时与院长确认后，最终价格才会确定。三个项目处于不同的价格区间，但诊所建议哪一个，取决于你的皮肤状态和想要的效果。价目表对外国患者同样适用，翻译不另收费。"
+        "text": "“起”表示起价：部位和发数在面诊时与院长确认后，最终价格才会确定。三个项目处于不同的价格区间，但诊所建议哪一个，取决于你的皮肤状态和想要的效果。价目表对外国患者同样适用，翻译不另收费。"
       },
       {
         "type": "h2",
@@ -4741,8 +4894,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ol",
         "items": [
           "**先远程咨询。** 通过微信(WeChat) ID：livps0414 或本站在线客服，发送你在意的部位和几张照片。诊所会建议合适的项目，并在你出发前给出明确的价格预估。",
-          "**院长当面诊断。** 到院后，整形外科专家会亲自诊断你的皮肤状况，并根据你的需求和期望效果推荐治疗方案。LIV的所有治疗都由整形外科专科医生金秀英院长规划并执行，其专业方向包括超声刀Prime提升、热玛吉提升和复合提升治疗（见[医疗团队](/about/staff)）。",
-          "**做一个，还是两个一起做。** 超声刀侧重提升，热玛吉侧重整体弹性，所以诊所可能根据你的皮肤只建议其中一个，也可能建议两个结合。如果目标是时间短、费用低的一次治疗或定期维护，Shurink 会是候选。",
+          "**院长当面诊断。** 到院后，整形外科专家会亲自诊断你的皮肤状况，并根据你的需求和期望效果推荐治疗方案。LIV的所有治疗都由整形外科专科医生金秀英代表院长规划并执行，其专业方向包括超声刀Prime提升、热玛吉提升和复合提升治疗（见[医疗团队](/about/staff)）。",
+          "**做一个，还是两个一起做。** 超声刀侧重提升，热玛吉侧重整体弹性，所以诊所可能根据你的皮肤只建议其中一个，也可能建议两个结合。如果目标是时间短、费用合理的一次治疗或定期维护，Shurink 会是候选之一。",
           "**周期跟着项目走。** 超声刀建议1–2年一次，热玛吉建议6个月–1年一次，Shurink 这类维护性治疗每3–6个月一次；准确的周期在面诊时确定。",
           "**不用当场决定。** 1对1专业咨询费用为1万韩元，当天进行治疗时可从治疗费用中全额抵扣。你可以充分考虑后再做决定。"
         ]
@@ -4760,7 +4913,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**语言。** 提供中文咨询，需要时免费安排翻译。",
           "**诊疗时间。** 周一至周五 10:00–19:00，周六 10:00–16:00，周日休息（韩国时间）。",
           "**交通。** 地铁3号线新沙站4号出口步行1分钟。从仁川机场乘机场铁路(AREX)或机场大巴约70–90分钟，出租车约60分钟；从金浦机场约40分钟。地址：首尔特别市瑞草区Naruteo-ro 80号 自恩大厦4层。",
-          "**付款。** Visa、Mastercard、American Express、JCB、银联(UnionPay)和韩元现金。可以信用卡分期，免息条件因发卡行和金额而异，请在咨询时询问。",
+          "**付款。** Visa、Mastercard、American Express、JCB、银联(UnionPay)和韩元现金。可以信用卡分期，具体条件请在咨询时询问。",
           "**回程航班。** 三个项目都不需要住院，搭乘航班的时间由诊所在面诊时与你单独确认。[검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
         ]
       },
@@ -4771,7 +4924,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "上面\"适合谁\"的描述来自LIV的项目页面，下面的注意事项也是。第一次留言时就说明这些情况，诊所能从一开始就给出合适的建议。"
+        "text": "上面“适合谁”的描述来自LIV的项目页面，下面的注意事项也是。第一次留言时就说明这些情况，诊所能从一开始就给出合适的建议。"
       },
       {
         "type": "ul",
@@ -5374,7 +5527,7 @@ export const GUIDES: readonly GuideDoc[] = [
   },
   {
     "title": "療程後可以搭飛機嗎？各療程恢復期與首爾 2–3 天醫美行程",
-    "description": "整理LIV整形外科（首爾江南新沙站步行1分鐘、林蔭道旁）官網公開的音波拉提、鳳凰電波、肉毒桿菌素、玻尿酸、水光針、埋線拉提的治療時間、恢復期與是否需要回診，說明關於療程後搭飛機官網能確認什麼、哪些要在面診時確認，並附兩天一夜、三天兩夜的首爾醫美行程範例。",
+    "description": "整理LIV整形外科（首爾江南新沙站步行1分鐘、林蔭道旁）官網公開的音波拉提、鳳凰電波、肉毒桿菌素、玻尿酸、水光針、埋線拉提的治療時間、恢復期與是否需要複診，說明關於療程後搭飛機官網能確認什麼、哪些要在面診時確認，並附兩天一夜、三天兩夜的首爾醫美行程範例。",
     "keywords": [
       "醫美 後 搭飛機",
       "韓國 醫美 行程",
@@ -5394,16 +5547,16 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "如果你只有兩三天在首爾，想知道能不能把拉提療程或肉毒桿菌素排進行程、做完之後能不能照原計畫搭飛機回家，這篇文章把兩類資訊分開：一類是[LIV整形外科](/international)官網已經寫明的（每個療程需要多久、是否需要回診、多快能恢復日常生活），另一類是只能在面診時依你的狀況確認的，其中就包括什麼時候可以搭飛機。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程，提供中文諮詢，需要時免費安排翻譯，外國患者與韓國患者使用同一份價目表。"
+        "text": "如果你只有兩三天在首爾，想知道能不能把拉提療程或肉毒桿菌素排進行程、做完之後能不能照原計畫搭飛機回家，這篇文章把兩類資訊分開：一類是[LIV整形外科](/international)官網已經寫明的（每個療程需要多久、是否需要複診、多快能恢復日常生活），另一類是只能在面診時依你的狀況確認的，其中就包括什麼時候可以搭飛機。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程，提供中文諮詢，需要時免費安排翻譯，外國患者與韓國患者使用同一份價目表。"
       },
       {
         "type": "h2",
-        "text": "各療程：治療時間、麻醉、恢復期、是否回診",
+        "text": "各療程：治療時間、麻醉、恢復期、是否複診",
         "id": "s1"
       },
       {
         "type": "p",
-        "text": "下表合併了LIV官網的療程頁面（時間、麻醉、恢復期）與外國患者專頁（是否需要回診）。"
+        "text": "下表合併了LIV官網的療程頁面（時間、麻醉、恢復期）與外國患者專頁（是否需要複診）。"
       },
       {
         "type": "table",
@@ -5412,7 +5565,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "治療時間",
           "麻醉",
           "恢復期（官網表述）",
-          "是否回診"
+          "是否複診"
         ],
         "rows": [
           [
@@ -5420,52 +5573,52 @@ export const GUIDES: readonly GuideDoc[] = [
             "60–90分鐘",
             "麻醉藥膏（30分鐘）",
             "可立即恢復日常生活",
-            "當天完成 · 不需回診"
+            "當天 · 無需複診"
           ],
           [
             "[鳳凰電波 FLX](/lifting/thermage)",
             "45–60分鐘",
             "不需麻醉（以震動技術減輕疼痛）",
             "可立即恢復日常生活",
-            "當天完成 · 不需回診"
+            "當天 · 無需複診"
           ],
           [
             "[肉毒桿菌素](/antiaging/botox)",
             "10–20分鐘",
             "不麻醉或使用麻醉藥膏（依需求）",
             "立即恢復日常生活",
-            "當天完成 · 不需回診"
+            "當天 · 無需複診"
           ],
           [
             "[玻尿酸](/antiaging/filler)",
             "20–40分鐘",
             "麻醉藥膏或神經阻斷麻醉",
             "立即～3天（依部位而異）",
-            "當天完成 · 不需回診"
+            "當天 · 無需複診"
           ],
           [
             "[水光針](/antiaging/skinbooster)",
             "30–45分鐘",
             "麻醉藥膏",
             "1–3天（細微針痕）",
-            "當天完成 · 不需回診"
+            "當天 · 無需複診"
           ],
           [
             "[埋線拉提](/lifting/thread)",
             "30–60分鐘",
             "局部麻醉",
             "3–7天（可能出現瘀青、腫脹）",
-            "約1週後可選擇回診，或以照片線上追蹤"
+            "約1週後可選複查，或以照片遠距複查"
           ]
         ]
       },
       {
         "type": "note",
-        "text": "治療時間與恢復期引自LIV的療程頁面，是否回診一欄引自外國患者專頁（該頁註明：時間為一般參考，以面診確認為準）。表中刻意沒有「最早可搭機時間」一欄，請見下一節。"
+        "text": "治療時間與恢復期引自LIV的療程頁面，是否複診一欄引自外國患者專頁（該頁註明：時間為一般參考，以面診確認為準）。表中刻意沒有「最早可搭機時間」一欄，請見下一節。"
       },
       {
         "type": "p",
-        "text": "LIV的其他拉提儀器——Shurink（30–45分鐘）、InMode（30–60分鐘）、Density（40–60分鐘）、ONDA（臉部15–30分鐘）——官網也標示為「可立即恢復日常生活」或「無恢復期」，但不在回診清單中，是否需要後續追蹤請在面診時詢問。[검수 필요: 슈링크·인모드·덴서티·온다 재방문 필요 여부 — international 체류 표에 없음]"
+        "text": "LIV的其他拉提儀器——Shurink（30–45分鐘）、InMode（30–60分鐘）、Density（40–60分鐘）、ONDA（臉部15–30分鐘）——官網也標示為「可立即恢復日常生活」或「無恢復期」，但不在複診清單中，是否需要後續追蹤請在面診時詢問。[검수 필요: 슈링크·인모드·덴서티·온다 재방문 필요 여부 — international 체류 표에 없음]"
       },
       {
         "type": "p",
@@ -5478,7 +5631,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "以下內容官網寫得很清楚，可以作為規劃的依據：音波拉提、鳳凰電波 FLX、肉毒桿菌素、玻尿酸、水光針都是「當天完成 · 不需回診」；大多數非手術療程約需30–90分鐘、不需住院，所以很多患者到院當天就完成療程；音波拉提、鳳凰電波 FLX、肉毒桿菌素的恢復期一欄是「立即恢復日常生活」。也就是說，沒有回診安排會讓你必須延長在首爾的停留。"
+        "text": "官網已寫明、可以作為規劃依據的是：音波拉提、鳳凰電波 FLX、肉毒桿菌素、玻尿酸、水光針都是「當天 · 無需複診」；大多數非手術療程約需30–90分鐘、不需住院，很多患者到院當天就完成療程；音波拉提、鳳凰電波 FLX、肉毒桿菌素的恢復期一欄寫的都是可立即恢復日常生活。也就是說，不會因為需要複診而必須延長在首爾的停留。"
       },
       {
         "type": "p",
@@ -5486,7 +5639,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "決定回程日期之前，有兩條公開資訊值得先看。玻尿酸的恢復期是「立即～3天（依部位而異）」，水光針是「1–3天（細微針痕）」，兩天一夜的行程裡，這段時間會與回程重疊。埋線拉提的恢復期是「3–7天（可能出現瘀青、腫脹）」，約1週後的回診是可選的，短程旅行會改為以照片線上追蹤。能否接受這一點，由面診決定。"
+        "text": "決定回程日期之前，有兩條公開資訊值得先看。玻尿酸的恢復期是「立即～3天（依部位而異）」，水光針是「1–3天（細微針痕）」，兩天一夜的行程裡，這段時間會與回程重疊。埋線拉提的恢復期是「3–7天（可能出現瘀青、腫脹）」，約1週後的複查是可選的，短程旅行可以改為以照片遠距複查。能否接受這一點，由面診決定。"
       },
       {
         "type": "h2",
@@ -5553,7 +5706,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "第1天",
             "全天",
-            "抵達、入住。林蔭道就在旁邊，可以散步。如果航班到得早，面診可以提前到第1天。"
+            "抵達、入住。如果航班到得早，面診可以提前到第1天。"
           ],
           [
             "第2天",
@@ -5579,7 +5732,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "「回程航班時段」請換成你自己的航班時間。你做的療程是否適合第2天或第3天回程，要在面診時逐一確認，預約時請一併告知航班時間。[검수 필요: 모델 일정의 제2일·제3일 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음] 如果療程日是週日，診所休診；週六16:00關門。"
+        "text": "「回程航班時段」請換成你自己的航班時間。你做的療程是否適合第2天或第3天回程，要在面診時逐一確認，預約時請一併告知航班時間。[검수 필요: 모델 일정의 제2일·제3일 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
       },
       {
         "type": "h2",
@@ -5589,13 +5742,13 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**音波拉提：** 可能有輕微腫脹、泛紅，部分部位可能出現暫時性感覺異常。幾天會消退，官網沒有寫明。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**音波拉提：** 可能有輕微腫脹、泛紅，部分部位可能出現暫時性感覺異常。需要幾天消退，官網沒有寫明。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
           "**鳳凰電波 FLX：** 可能出現暫時性泛紅。",
           "**肉毒桿菌素：** 治療當天避免飲酒與三溫暖，不要按摩治療部位。",
           "**玻尿酸：** 可能有瘀青、腫脹；不要按摩或按壓治療部位；3天內避免劇烈運動與三溫暖。",
           "**水光針：** 可能有細微針痕與泛紅；治療當天不化妝、不飲酒；做好防曬。",
           "**埋線拉提：** 3–7天可能出現瘀青、腫脹；2週內避免誇張表情與按摩；可能有緊繃感；治療24小時後可以化淡妝。",
-          "**雷射（激光）療程（如果也在計畫內）：** 醫療問答中說，雷射後至少2–4週要仔細塗抹防曬霜（SPF 50+）並使用帽子或陽傘，戶外活動較多的季節建議避免雷射治療——以觀光為主的行程要考慮這一點。雷射調Q幾乎沒有恢復期；Clarity II治療表皮色素時，色素會加深或形成薄痂，3–5天後自然脫落。詳見[雷射療程](/laser)。",
+          "**雷射（激光）療程（如果也在計畫內）：** 醫療問答中說，雷射後至少2–4週要仔細塗抹防曬霜（SPF 50+）並使用帽子或陽傘，戶外活動較多的季節建議避免雷射治療；Clarity II治療表皮色素時，色素會加深或形成薄痂，3–5天後自然脫落。詳見[雷射療程](/laser)。",
           "**音波拉提、鳳凰電波 FLX之後的泡湯、三溫暖、飲酒：** 官網沒有說明。[검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]",
           "**請務必告知診所：** 懷孕或哺乳期（大多數美容治療不建議進行）、裝有心律調節器（鳳凰電波 FLX不能做）、治療部位有金屬植入物（需要先諮詢）。"
         ]
@@ -5607,7 +5760,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "回國後，你可以透過LINE、WhatsApp或線上客服傳送照片，診所會查看恢復情況並指導術後照護，並提供中文的術後照護指南。埋線拉提約1週後的回診，可以用照片線上追蹤完成。肉毒桿菌素3–7天後開始出現效果，官網提到首次治療後2–3週可能需要補打，回國後遇到這種情況怎麼處理，請在面診時先問清楚。[검수 필요: 귀국한 외국인 환자의 보톡스 터치업 처리 방식 — 사이트에 근거 없음] 更多問題見[醫療問答頁](/medical)。"
+        "text": "回國後，你可以透過LINE、WhatsApp或線上客服傳送照片，診所會查看恢復情況並指導術後照護，並提供中文的術後照護指南。埋線拉提約1週後的複查，可以用照片遠距複查完成。肉毒桿菌素3–7天後開始出現效果，官網提到首次治療後2–3週可能需要補打，回國後遇到這種情況怎麼處理，請在面診時先問清楚。[검수 필요: 귀국한 외국인 환자의 보톡스 터치업 처리 방식 — 사이트에 근거 없음] 更多問題見[醫療問答頁](/medical)。"
       },
       {
         "type": "h2",
@@ -5641,15 +5794,15 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "做完音波拉提或肉毒桿菌素，隔天能搭飛機嗎？",
-        "a": "兩者官網都標示為「當天完成 · 不需回診」「立即恢復日常生活」，沒有回診安排會讓你必須留在首爾。但官網沒有公布「療程後幾小時可以登機」的標準，回程時間要在面診時依你的狀況確認，預約時請告知航班時間。"
+        "a": "兩者官網都標示為「當天 · 無需複診」，恢復期為可立即恢復日常生活，不會因為需要複診而必須留在首爾。但官網沒有公布「療程後幾小時可以登機」的標準，回程時間要在面診時依你的狀況確認，預約時請告知航班時間。"
       },
       {
         "q": "做療程需要在首爾停留幾天？",
-        "a": "大多數非手術提拉緊緻與抗衰療程約需30～90分鐘，當天即可完成，無需住院。音波拉提（Ultherapy Prime）和鳳凰電波（Thermage）一次即可完成，無需回診。埋線拉提如有需要建議一週後回診，但並非必需。"
+        "a": "大多數非手術提拉緊緻與抗衰療程約需30～90分鐘，當天即可完成，無需住院。音波拉提（Ultherapy Prime）和鳳凰電波（Thermage）一次即可完成，無需複診。埋線拉提如有需要建議一週後複查，但並非必需。"
       },
       {
         "q": "回國前需要再來診所一次嗎？",
-        "a": "音波拉提、鳳凰電波 FLX、肉毒桿菌素、玻尿酸、水光針都是當天完成、不需回診。埋線拉提約1週後可選擇回診，也可以用照片線上追蹤代替。"
+        "a": "音波拉提、鳳凰電波 FLX、肉毒桿菌素、玻尿酸、水光針都是當天完成、不需複診。埋線拉提約1週後可選複查，也可以用照片遠距複查代替。"
       },
       {
         "q": "回國後還能進行術後照護嗎？",
@@ -5715,7 +5868,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "針對彩色墨水，Lucas提供532nm、755nm、1064nm三種波長，必要時會併用Clarity雷射，以涵蓋更多顏色。"
+        "text": "針對彩色墨水，Lucas提供532nm、755nm、1064nm三種波長：1064nm對應黑色、深藍色、棕色，755nm對應藍色、綠色，532nm對應紅色、橙色、黃色。黑色較容易，藍色、綠色較難、需要更多次數。彩色刺青必要時會併用Clarity II雷射。"
       },
       {
         "type": "p",
@@ -5809,11 +5962,59 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "**能去除多少：** 大多數刺青可以去除90%以上。能否完全去除，取決於墨水顏色、深度、刺青的年數和膚質。",
-          "**顏色差異：** 黑色墨水最容易去除，綠色和藍色可能需要更多次數。",
+          "**顏色差異：** 黑色墨水較容易去除，綠色和藍色可能需要更多次數。",
           "**新舊刺青：** 通常舊刺青更容易去除，因為免疫系統已經清除了一部分墨水；新刺青同樣可以有效去除，而且墨水清晰，雷射更容易瞄準。",
-          "**次數：** 診所會在面診時依你的刺青給出準確的預估次數。[검수 필요: 평균 회수 — 시술 페이지의 '문신 유형별 예상 회수' 표(3–5회 등)를 가이드에 인용해도 되는지, 근거 시트에는 없음]",
+          "**次數：** 因刺青類型而異（見下表）。你的實際次數由院長面診時依刺青情況給出。",
           "**間隔：** 6–8週。被擊碎的墨水需要4–6週由身體排出，皮膚完全恢復後才能進行下一次；間隔太短會增加皮膚損傷和疤痕風險。"
         ]
+      },
+      {
+        "type": "h3",
+        "text": "依刺青類型的預計次數（療程頁面的參考值）"
+      },
+      {
+        "type": "table",
+        "header": [
+          "刺青類型",
+          "預計次數",
+          "說明"
+        ],
+        "rows": [
+          [
+            "業餘刺青",
+            "3–5次",
+            "墨水較淺，多為墨汁、筆墨等單色"
+          ],
+          [
+            "專業刺青（黑白）",
+            "6–10次",
+            "墨水深且均勻；黑色墨水對雷射反應好"
+          ],
+          [
+            "專業刺青（彩色）",
+            "8–15次以上",
+            "不同顏色需要不同波長；綠色、藍色需要更多次數"
+          ],
+          [
+            "半永久化妝（紋眉、眼線、唇部）",
+            "3–6次",
+            "比一般刺青淺；眼部治療使用特殊防護設備"
+          ],
+          [
+            "外傷性刺青（瀝青、石墨等嵌入皮膚）",
+            "4–8次",
+            "視深度和範圍而定"
+          ],
+          [
+            "遮蓋刺青",
+            "10–20次以上",
+            "墨水層較厚，去除較難"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "以上是官網療程頁面依類型給出的參考範圍，不是針對你的報價；你的刺青要做幾次，由院長面診後判斷。"
       },
       {
         "type": "p",
@@ -5842,7 +6043,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV的大多數非手術療程約需30~90分鐘、不需住院，很多患者在面診當天就完成治療，除刺青也一樣。把面診、約30分鐘麻醉藥膏和15–30分鐘雷射加在一起，在行程裡留出半天中的一個時段就夠了。"
+        "text": "LIV針對外國患者的流程是：到院與院長當面面診後，多數情況下當天就做治療（診所的大多數非手術療程約需30~90分鐘、不需住院）。第一次除刺青也依這個流程安排：把面診、約30分鐘麻醉藥膏和15–30分鐘雷射加在一起，在行程裡留出半天中的一個時段就夠了。"
       },
       {
         "type": "table",
@@ -5881,9 +6082,10 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**結痂（3–7天）：** 會有細小的結痂，等它自然脫落，不要摳。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**結痂（3–7天）：** 會有細小的結痂，等它自然脫落，不要摳；也可能有輕微腫脹。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
           "**防曬：** 雷射後皮膚敏感，紫外線導致色素沉澱的風險增加。至少2–4週內仔細塗抹SPF 50+防曬乳，並使用帽子或陽傘。診所也建議避開戶外活動多的時期做雷射；如果接下來的行程以戶外為主，請提前和診所討論治療日期。",
-          "**游泳、海水、三溫暖、泡湯：** [검수 필요: 시술 후 수영·해수욕·사우나·온천 제한 기간 — 사이트에 근거 없음]",
+          "**三溫暖、劇烈運動：** 治療後1週內避免（療程頁面的注意事項）；處方藥膏依指示塗抹。",
+          "**游泳、海水、泡湯：** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
           "**回程航班：** 請在面診時向診所確認。[검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]",
           "**第二次及以後：** 由於間隔6–8週，第二次多半落在旅行結束之後。是配合下次來首爾的時間，還是採用其他安排，請在第一次面診時和院長商定，不要自行假設。兩次治療之間也不是沒人照顧：回國後透過LINE或線上客服傳照片，診所會查看癒合情況、回答問題，並提供中文的術後照護指南。如果你常來首爾，也可以在面診時討論把每次治療安排在每次來訪時。"
         ]
@@ -5910,10 +6112,12 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
+          "**治療前2週：** 避免過度日曬，治療部位不要用刺激性產品；如果行程前半段有海邊日曬，預約時請說明。",
+          "**提前告知：** 治療部位的皮膚狀況（發炎、傷口）以及正在服用的藥物（尤其是光敏性藥物）。",
           "**懷孕與哺乳期：** 不建議在懷孕或哺乳期間做雷射治療，建議在分娩和哺乳結束後進行。",
           "**防曬：** 每次治療後至少2–4週SPF 50+與帽子、陽傘；不要把治療排在戶外活動密集的時段。",
-          "**術後照護：** 防曬和不摳結痂，是診所反覆強調的兩點，做到了才能乾淨癒合。",
-          "**合理期待：** 「90%以上」是診所說明的一般情況，不是完全消失的保證；綠色、藍色墨水、較深的墨水和某些膚質需要更多次數。"
+          "**術後照護：** 防曬和不摳結痂，是診所照護指南反覆強調的兩點；照做才能期待乾淨癒合。",
+          "**合理期待：** 「90%以上」是診所說明的一般情況，不是完全消失的保證；綠色和藍色墨水可能需要更多次數，墨水深度、刺青年數和膚質也會影響最終效果。"
         ]
       },
       {
@@ -5933,7 +6137,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "刺青能完全去除嗎？",
-        "a": "大多數刺青可以去除90%以上。能否完全去除取決於墨水顏色、深度、刺青的年數和膚質：黑色最容易，綠色和藍色可能需要更多次數。面診時診所會給出準確的預估。"
+        "a": "大多數刺青可以去除90%以上。能否完全去除取決於墨水顏色、深度、刺青的年數和膚質：黑色較容易，綠色和藍色可能需要更多次數。面診時診所會給出準確的預估。"
       },
       {
         "q": "皮秒雷射除刺青會痛嗎？",
@@ -5941,11 +6145,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "要做幾次？間隔多久？",
-        "a": "次數依墨水顏色、深度、刺青的年數和膚質，在面診時給出預估。間隔為6–8週，因為被擊碎的墨水需要4–6週由身體排出，皮膚完全恢復後才能做下一次。[검수 필요: 평균 회수 — 위와 동일]"
+        "a": "取決於刺青類型。官網療程頁面的參考值是：業餘刺青3–5次，半永久化妝（洗眉、洗眼線）3–6次，專業黑白刺青6–10次，專業彩色刺青8–15次以上；你的實際次數由院長面診時依墨水顏色、深度、刺青年數和膚質給出。間隔為6–8週，因為被擊碎的墨水需要4–6週由身體排出，皮膚完全恢復後才能做下一次。"
       },
       {
         "q": "彩色刺青能去除嗎？",
-        "a": "大多數顏色都可以。Lucas皮秒雷射有532nm、755nm、1064nm三種波長對應不同顏色，必要時併用Clarity雷射處理彩色刺青。綠色和藍色通常比黑色需要更多次數。"
+        "a": "大多數顏色都可以。Lucas皮秒雷射有532nm、755nm、1064nm三種波長對應不同顏色，必要時併用Clarity II雷射處理彩色刺青。綠色和藍色通常比黑色需要更多次數。"
       },
       {
         "q": "外國人除刺青會比較貴嗎？",
@@ -5953,11 +6157,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "面診當天能做第一次嗎？",
-        "a": "多數情況下可以。塗約30分鐘麻醉藥膏後，雷射照射15–30分鐘，不需住院，第一次通常和面診安排在同一次到院。之後每隔6–8週做下一次。"
+        "a": "多數情況下可以。LIV的流程是當面面診後多數情況下當天治療；除刺青本身只需塗約30分鐘麻醉藥膏後照射15–30分鐘，不需住院。之後每隔6–8週做下一次。"
       }
     ],
-    "readingMinutes": 8,
-    "reviewMarkers": 6
+    "readingMinutes": 9,
+    "reviewMarkers": 4
   },
   {
     "title": "韓國音波拉提(Ultherapy)價格與行程規劃｜首爾新沙 LIV整形外科",
@@ -6234,7 +6438,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "在首爾做拉提療程，繞不開三個名字：音波拉提（Ultherapy）、鳳凰電波（Thermage，也常稱電波拉提或熱瑪吉）與 Shurink（海芙音波）。如果你卡在「到底該做哪一種」，這篇文章寫給你：先把三者的差異整理清楚，再說明一家首爾診所實際上是怎麼替患者決定的。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程（音波、電波、雷射（激光）、肉毒桿菌素與玻尿酸等）；外國患者與韓國患者使用同一份價目表，可以用中文直接聯絡診所預約，不需要透過中介。"
+        "text": "在首爾做拉提療程，繞不開三個名字：音波拉提（Ultherapy）、鳳凰電波（Thermage，也常稱電波拉提或熱瑪吉）與 Shurink（海芙音波）。如果你卡在「到底該做哪一種」，這篇文章寫給你：先把三者的差異整理清楚，再說明一家首爾診所實際上是怎麼替患者決定的。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程，包括音波、電波、雷射（激光）、肉毒桿菌素與玻尿酸等；外國患者與韓國患者使用同一份價目表，可以用中文直接聯絡診所預約，不需要透過中介。"
       },
       {
         "type": "h2",
@@ -6324,7 +6528,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "鳳凰電波是RF療程，面向「在意皮膚彈性下降的人」「想改善細紋的人」「希望自然、漸進變化的人」「希望不麻醉的人」。治療部位包括全臉、眼周、頸部與身體，眼周使用鳳凰電波眼部專用探頭。FLX是現行版本：AccuREP技術自動調節能量，治療速度比舊版本快25%。治療後立即改善彈性，3–6個月膠原蛋白再生，診所建議1年進行1–2次。LIV是鳳凰電波(Thermage FLX)合作診所。詳見[鳳凰電波頁面](/lifting/thermage)。"
+        "text": "鳳凰電波是RF療程，面向「在意皮膚彈性下降的人」「想改善細紋的人」「希望自然、漸進變化的人」「希望不麻醉的人」。治療部位包括全臉、眼周、頸部與身體，眼周使用鳳凰電波眼部專用探頭。與舊版本相比，FLX的AccuREP技術會自動調節能量，治療速度快25%。治療後立即改善彈性，3–6個月膠原蛋白再生，診所建議1年進行1–2次。LIV是鳳凰電波(Thermage FLX)合作診所。詳見[鳳凰電波頁面](/lifting/thermage)。"
       },
       {
         "type": "h3",
@@ -6420,8 +6624,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ol",
         "items": [
           "**先遠端諮詢。** 以 LINE（ID：icps7972773）或 WhatsApp（+82 10-6888-2773）傳送你在意的部位與幾張照片，診所會建議合適的療程，並在出發前提供價格預估。",
-          "**院長當面診斷。** 到院後，整形外科專家會親自診斷你的皮膚狀況，並依你的需求與期望效果推薦治療方案。LIV的所有治療都由整形外科專科醫師金秀英院長規劃並執行，其專長包括音波拉提Prime拉提、鳳凰電波拉提與複合拉提療程（見[醫療團隊](/about/staff)）。",
-          "**做一種，還是兩種一起做。** 音波拉提側重拉提，鳳凰電波側重整體彈性，所以診所可能依你的膚況只建議其中一種，也可能建議兩種結合。如果目標是時間短、費用較低的一次療程或定期維護，Shurink 會是候選。",
+          "**院長當面診斷。** 到院後，整形外科專家會親自診斷你的皮膚狀況，並依你的需求與期望效果推薦治療方案。LIV的所有治療都由整形外科專科醫師金秀英代表院長規劃並執行，其專長包括音波拉提Prime拉提、鳳凰電波拉提與複合拉提療程（見[醫療團隊](/about/staff)）。",
+          "**做一種，還是兩種一起做。** 音波拉提側重拉提，鳳凰電波側重整體彈性，所以診所可能依你的膚況只建議其中一種，也可能建議兩種結合。如果目標是時間短、費用合理的一次療程或定期維護，Shurink 會是候選之一。",
           "**週期跟著療程走。** 音波拉提建議1–2年一次，鳳凰電波建議6個月–1年一次，Shurink 這類維護性療程每3–6個月一次；準確的週期在面診時確定。",
           "**不必當場決定。** 1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。可以考慮後再決定。"
         ]
@@ -6439,7 +6643,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**語言。** 提供中文諮詢，需要時免費安排翻譯。",
           "**診療時間。** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間）。",
           "**交通。** 地鐵3號線新沙站4號出口步行1分鐘。從仁川機場搭機場鐵路(AREX)或機場巴士約70–90分鐘，計程車約60分鐘；從金浦機場約40分鐘。地址：首爾特別市瑞草區Naruteo-ro 80號 自恩大廈4樓。",
-          "**付款。** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)與韓元現金。可以信用卡分期，免息條件因發卡銀行與金額而異，請在諮詢時詢問。",
+          "**付款。** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)與韓元現金。可以信用卡分期，具體條件請在諮詢時詢問。",
           "**回程航班。** 三種療程都不需住院，搭機時間由診所在面診時與你個別確認。[검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
         ]
       },
