@@ -9,6 +9,7 @@ import { TREATMENTS } from '@/lib/constants';
 import { AnimateOnScroll, Card, PriceTable, Breadcrumb } from '@/components/ui';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
+import InternationalNotice from './InternationalNotice';
 
 // Premium color palette - Rose Gold theme
 const colors = {
@@ -1356,6 +1357,9 @@ export default function BotoxDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="botox" />
 
       {/* FAQ - Premium Accordion */}
       <section className="py-32 bg-[#F9F6F3]">

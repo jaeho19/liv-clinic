@@ -39,8 +39,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         url: `${BASE_URL}/${locale}${page.path}`,
         changeFrequency: page.changeFrequency,
         priority: page.priority,
-        // 단일 로케일 페이지는 대체 언어가 없다
-        ...(page.locales ? {} : { alternates: { languages: buildHreflangMap(page.path) } }),
+        // 단일 로케일 페이지는 대체 언어가 없다. 일부 로케일에만 있는 페이지(가이드)는 그 로케일끼리만 묶는다.
+        ...(page.locales
+          ? page.locales.length > 1
+            ? { alternates: { languages: buildHreflangMap(page.path, page.locales) } }
+            : {}
+          : { alternates: { languages: buildHreflangMap(page.path) } }),
       });
     }
   }

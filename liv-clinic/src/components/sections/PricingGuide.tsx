@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { AnimateOnScroll } from '@/components/ui';
 import { PRICING_GUIDE, PRICING_GUIDE_NOTE_KEYS } from '@/lib/pricingGuide';
+import InternationalPricingNote from './InternationalPricingNote';
 
 /**
  * 정식 가격표 페이지 본문.
@@ -78,6 +79,9 @@ export default function PricingGuide() {
                 </div>
               </AnimateOnScroll>
             ))}
+
+            {/* 외국인 환자 안내 (P1-3) — en·ja·zh·zh-TW에서만 렌더 */}
+            <InternationalPricingNote />
 
             {/* 하단 공통 안내문 */}
             <AnimateOnScroll>

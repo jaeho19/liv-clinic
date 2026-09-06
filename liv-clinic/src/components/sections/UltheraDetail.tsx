@@ -21,6 +21,7 @@ import {
 } from '@/components/ui';
 import { TREATMENTS } from '@/lib/constants';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
+import InternationalNotice from './InternationalNotice';
 
 // SVG Icons
 const CheckIcon = () => (
@@ -1408,6 +1409,9 @@ export default function UltheraDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="ulthera" />
 
       {/* FAQ Section - with ExpandableList for mobile */}
       <section className="section-gap-sm bg-background">

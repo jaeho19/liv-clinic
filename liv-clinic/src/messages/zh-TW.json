@@ -1,10 +1,10 @@
 {
   "international": {
-    "footerLabel": "国际患者须知",
+    "footerLabel": "國際患者須知",
     "hero": {
-      "badge": "欢迎国际患者",
+      "badge": "歡迎國際患者",
       "langLine": "English · 日本語 · 中文",
-      "title": "国际患者须知",
+      "title": "國際患者須知",
       "subtitle": "LIV整形外科是位於首爾江南、新沙站步行1分鐘（林蔭道旁）的非手術抗衰老診所。提供英語、日語、中文諮詢，並可根據需要免費安排翻譯。",
       "ctaChat": "開始線上諮詢",
       "ctaContact": "預約諮詢"
@@ -82,7 +82,7 @@
     "gettingHere": {
       "subtitle": "交通指南",
       "title": "新沙站步行1分钟",
-      "address": "首尔特别市瑞草区Naruteo-ro 80号 自恩大厦4层",
+      "address": "首爾特別市瑞草區Naruteo-ro 80號 自恩大廈4樓",
       "addressNote": "地鐵3號線新沙站4號出口步行1分鐘，位於江南地區。",
       "routes": [
         {
@@ -116,19 +116,19 @@
           "stay": "當天 · 無需複診"
         },
         {
-          "treatment": "肉毒素",
+          "treatment": "肉毒桿菌素",
           "stay": "當天 · 無需複診"
         },
         {
-          "treatment": "填充",
+          "treatment": "玻尿酸",
           "stay": "當天 · 無需複診"
         },
         {
-          "treatment": "水光针",
+          "treatment": "水光針",
           "stay": "當天 · 無需複診"
         },
         {
-          "treatment": "線雕提升",
+          "treatment": "埋線拉提",
           "stay": "約1周後可選複查，或遠程照片複查"
         }
       ]
@@ -142,10 +142,10 @@
       "subtitle": "付款",
       "title": "付款方式",
       "desc": "我們接受主要國際信用卡及韓元現金。",
-      "methods": "Visa · Mastercard · American Express · JCB · 银联(UnionPay) · 韩元(KRW)现金"
+      "methods": "Visa · Mastercard · American Express · JCB · 銀聯(UnionPay) · 韓元(KRW)現金"
     },
     "faq": {
-      "title": "还有其他疑问吗？",
+      "title": "還有其他疑問嗎？",
       "desc": "查看整形外科專科醫生關於療程、安全與恢復的解答。",
       "cta": "查看醫療問答"
     },
@@ -6625,7 +6625,7 @@
   },
   "formExtras": {
     "passwordOptional": "密碼（可選 · 用於查詢諮詢進度）",
-    "country": "国家/地区",
+    "country": "國家/地區",
     "countryPlaceholder": "請輸入國家/地區",
     "reassurance": "工作日24小時內回覆 · 您的資訊將被嚴格保密",
     "privacyPolicy": "隐私政策",
@@ -6788,7 +6788,7 @@
       ]
     },
     "international": {
-      "title": "国际患者须知 | English·日本語·中文 | LIV整形外科 首尔",
+      "title": "國際患者須知 | English·日本語·中文 | LIV整形外科 首尔",
       "description": "首爾江南、新沙站步行1分鐘的非手術抗衰老診所。整形外科專科醫生，Ultherapy Prime與Thermage FLX官方合作機構，與本地患者同價，提供英語、日語、中文諮詢及免費翻譯。",
       "keywords": [
         "首尔整形外科 中文",
@@ -6796,7 +6796,7 @@
         "首尔Ultherapy",
         "Thermage 首尔",
         "新沙站診所",
-        "韩国抗衰老 中文"
+        "韓國抗老 中文"
       ]
     },
     "privacy": {

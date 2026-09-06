@@ -6,6 +6,9 @@ import { AnimateOnScroll, StaggerChildren, StaggerItem, Card } from '@/component
 import { openLivChat, CHAT_VISITOR_LOCALES } from '@/lib/chat/chatApi';
 import { trackPromoClick } from '@/lib/analytics-events';
 import { primaryMessengerFor, buildWhatsAppLink, LINE_LINK } from '@/lib/messengerLinks';
+import { isGuideLocale } from '@/lib/guides/types';
+import { publishedGuideCount } from '@/lib/guides/publicIndex';
+import { GUIDE_UI } from '@/lib/guides/ui';
 
 type Item = { title: string; desc: string };
 type Channel = { lang: string; value: string };
@@ -284,6 +287,20 @@ export default function InternationalPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </Link>
+              {/* 외국인 가이드 허브 — 게시된 가이드가 있는 언어에서만 (P1-1) */}
+              {isGuideLocale(locale) && publishedGuideCount(locale) > 0 && (
+                <div className="mt-4">
+                  <Link
+                    href="/guides"
+                    className="inline-flex items-center gap-2 text-primary font-medium hover:text-secondary transition-colors"
+                  >
+                    {GUIDE_UI[locale].guides}
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </Link>
+                </div>
+              )}
             </div>
           </AnimateOnScroll>
         </div>

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import { AnimateOnScroll, PriceTable, Breadcrumb } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 import { LASER_EQUIPMENT } from '@/lib/constants';
+import InternationalNotice from './InternationalNotice';
 
 // 피코초 vs 나노초 비교 일러스트레이션
 interface PicoVsNanoProps {
@@ -766,6 +767,9 @@ export default function TattooRemovalDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="tattoo" />
 
       {/* FAQ 섹션 */}
       <section className="py-16 md:py-24">

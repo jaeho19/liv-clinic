@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { useTranslations } from 'next-intl';
 import { Breadcrumb } from '@/components/ui';
+import InternationalNotice from './InternationalNotice';
 
 // NAMICA 일러스트 Props 타입
 interface NamicaIllustrationProps {
@@ -530,6 +531,9 @@ export default function AptosDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="aptos" />
 
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-secondary to-secondary/90">

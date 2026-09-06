@@ -9,6 +9,7 @@ import { TREATMENTS } from '@/lib/constants';
 import { AnimateOnScroll, Card, PriceTable, Breadcrumb } from '@/components/ui';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
+import InternationalNotice from './InternationalNotice';
 
 // Premium color palette - Aqua Serenity
 const colors = {
@@ -765,6 +766,9 @@ export default function SkinboosterDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="skinbooster" />
 
       {/* FAQ */}
       <section className="py-32 bg-white">

@@ -9,6 +9,7 @@ import { TREATMENTS } from '@/lib/constants';
 import { AnimateOnScroll, Card, PriceTable, Breadcrumb } from '@/components/ui';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
+import InternationalNotice from './InternationalNotice';
 
 // SVG 일러스트레이션에서 사용할 타입
 interface SkinLayersLabels {
@@ -1196,6 +1197,9 @@ export default function ThreadDetail() {
           </div>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="thread" />
 
       {/* FAQ 섹션 */}
       <section className="py-20 bg-white">

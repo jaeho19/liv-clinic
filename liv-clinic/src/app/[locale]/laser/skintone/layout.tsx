@@ -1,6 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import { generateMedicalServiceSchema } from '@/lib/seo';
 import { localizedWebPageSchema } from '@/lib/schemaI18n';
+import { getTreatmentForeignFaqs } from '@/lib/treatmentsForeign';
 import { LASER_CATEGORIES, TREATMENTS } from '@/lib/constants';
 import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
@@ -43,7 +44,8 @@ export default async function SkintoneLayout({
   const description = tMeta('laserSkintone.description');
 
   const serviceSchema = generateMedicalServiceSchema(
-    { ...serviceData, name, description },
+    // 외국인 안내 블록(P1-2)의 Q&A 2개를 FAQ에 합친다 — en·ja·zh·zh-TW 외에는 빈 배열
+    { ...serviceData, name, description, faqs: [...serviceData.faqs, ...getTreatmentForeignFaqs('skintone', locale)] },
     { reservationWord: tT('common.consultationCta'), locale },
   );
   const pageSchema = await localizedWebPageSchema({

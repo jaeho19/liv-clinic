@@ -8,6 +8,7 @@ import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink
 import { TREATMENTS } from '@/lib/constants';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
+import InternationalNotice from './InternationalNotice';
 
 // TypeScript interfaces for translated data
 interface TimelineItem {
@@ -1044,6 +1045,9 @@ export default function DensityDetail() {
           </AnimateOnScroll>
         </div>
       </section>
+
+      {/* 외국인 환자 안내 (P1-2) — en·ja·zh·zh-TW에서만 렌더 */}
+      <InternationalNotice treatmentId="density" />
 
       {/* FAQ Section */}
       <section className="section-gap bg-background">
