@@ -44,7 +44,7 @@ The HIFU treatment the clinic describes for people who want lifting without surg
 
 ### Thermage FLX
 
-The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change and prefer a treatment without anesthesia. It treats the full face, eye area, neck and body, with a dedicated Thermage Eye tip around the eyes. FLX is the current generation: AccuREP technology auto-tunes the energy and the treatment is 25% faster than earlier versions. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage).
+The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change and prefer a treatment without anesthesia. It treats the full face, eye area, neck and body, with a dedicated Thermage Eye tip around the eyes. Compared with earlier versions, FLX's AccuREP technology auto-tunes the energy and the treatment is 25% faster. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage).
 
 ### Shurink
 
@@ -75,7 +75,7 @@ The tilde means "from": the surgeon agrees the area and shot count with you at t
 
 1. **Remote consultation first.** Send your concerns and a few photos by WhatsApp or the live chat on this site; the clinic suggests suitable treatments and sends a clear price estimate before you travel.
 2. **In-person diagnosis by the surgeon.** At the clinic, the board-certified plastic surgeon diagnoses your skin and recommends a plan based on your concerns and the result you want. Every treatment is planned and performed under Dr. Sooyoung Kim, whose listed specialties include Ultherapy Prime lifting, Thermage lifting and combination lifting treatments; see [our medical team](/about/staff).
-3. **One treatment, or two together.** Because Ultherapy Prime is described for lifting and Thermage for overall elasticity, the clinic may propose one or both. Shurink is proposed where a shorter, lower-cost session or regular maintenance is the goal.
+3. **One treatment, or two together.** Because Ultherapy Prime is described for lifting and Thermage for overall elasticity, the clinic may propose one or both. Shurink may be proposed where a quick session, lifting at a reasonable cost or regular maintenance is the goal.
 4. **The frequency follows the choice.** Ultherapy Prime is recommended once every 1–2 years, Thermage once every 6 months to a year, and maintenance treatments such as Shurink every 3–6 months; the exact cycle is set at the consultation.
 5. **You can take your time.** The 1:1 consultation fee is KRW 10,000, fully deducted from the treatment cost if you go ahead the same day. You are free to decide later.
 
@@ -85,7 +85,7 @@ The tilde means "from": the surgeon agrees the area and shot count with you at t
 - **Booking in five steps.** 1) Message the clinic on WhatsApp (+82 10-6888-2773), the live chat or the [contact form](/contact). 2) Remote consultation and quote. 3) Choose a date that fits your itinerary. 4) Visit, final consultation, treatment the same day in most cases. 5) Remote aftercare through chat after you fly home, with a written aftercare guide in English. Replies come within one business day, and no deposit is needed to reserve a consultation.
 - **Language.** Consultations are available in English; interpretation is arranged free of charge on request.
 - **Clinic hours.** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed Sunday (Korea time).
-- **Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. About 70–90 minutes from Incheon Airport by AREX train or limousine bus (about 60 by taxi); about 40 minutes from Gimpo Airport. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.
+- **Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. About 70–90 minutes from Incheon Airport by AREX train or limousine bus (about 60 by taxi); about 40 minutes from Gimpo Airport by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.
 - **Payment.** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash; card installments are available.
 - **Flying home.** None of the three requires a hospital stay; the clinic confirms travel timing with you individually. [검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]
 
