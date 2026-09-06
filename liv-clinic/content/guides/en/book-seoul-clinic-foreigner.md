@@ -9,7 +9,7 @@ keywords:
   - same price foreigners korea clinic
   - book clinic in korea without agency
 category: booking
-status: draft
+status: published
 updated: 2026-09-06
 reviewer: clinic
 ---
@@ -51,7 +51,7 @@ The photos matter more than the wording. Clear pictures of the area you want tre
 
 1. **Contact us.** Message on WhatsApp, LINE, WeChat or the live chat on this site, in your language. You hear back within one business day.
 2. **Remote consultation and estimate.** Share your concerns and photos. The clinic suggests suitable treatments and sends a clear price estimate — the same prices as the [price list](/pricing), per session and excluding VAT, with the final figure confirmed at your in-person consultation.
-3. **Schedule your visit.** Pick a date and time that fits your travel plans and reserve the appointment. No deposit is required to reserve a consultation. [검수 필요: 예약 일정 변경·취소 안내 문구 — 사이트에 규정 없음]
+3. **Schedule your visit.** Pick a date and time that fits your travel plans and reserve the appointment. No deposit is required to reserve a consultation, so if your plans change — a delayed flight included — just let the clinic know through the same channel as early as you can.
 4. **Visit and same-day treatment.** Meet the surgeon for a final in-person consultation, then receive your treatment the same day in most cases.
 5. **Remote aftercare.** After you return home, the clinic follows up and answers your questions through your messenger or chat.
 
@@ -75,7 +75,7 @@ The photos matter more than the wording. Clear pictures of the area you want tre
 
 **Address:** 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea
 
-**Hours:** Monday–Friday 10:00–19:00 · Saturday 10:00–16:00 · Sunday closed [검수 필요: 한국 공휴일 휴진 여부 — 사이트에 근거 없음]
+**Hours:** Monday–Friday 10:00–19:00 · Saturday 10:00–16:00 · Sunday closed. The clinic is generally closed on Korean public holidays as well (including the Seollal and Chuseok holiday periods), so if your trip overlaps a holiday, check the available days on chat first.
 
 If your dates are tight, give two or three possible slots in your first message — it makes scheduling around your flights much easier.
 

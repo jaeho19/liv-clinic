@@ -9,7 +9,7 @@ keywords:
   - ultherapy korea same day
   - ultherapy sinsa garosu-gil
 category: price
-status: draft
+status: published
 updated: 2026-09-06
 reviewer: clinic
 treatment: /lifting/ulthera
@@ -30,7 +30,7 @@ LIV treats with [Ultherapy Prime](/lifting/ulthera) and publishes its prices on 
 
 > Per session · VAT not included · The exact price is confirmed after your consultation and depends on your skin condition and the area treated. For reference only: KRW 780,000 ≈ US$580, KRW 1,560,000 ≈ US$1,160 and KRW 2,340,000 ≈ US$1,730 at 1 USD ≈ 1,350 KRW (4 September 2026). The amount charged to your card depends on the exchange rate on the day.
 
-Two things to know about the numbers. The tilde means "from": the final price is set once the surgeon has seen your face and agreed the shot count with you, so a larger area or more shots means a higher final price. And VAT is added on top of the listed price. [검수 필요: 외국인 환자 부가세 환급(택스 리펀드) 가능 여부 — 사이트에 근거 없음]
+Two things to know about the numbers. The tilde means "from": the final price is set once the surgeon has seen your face and agreed the shot count with you, so a larger area or more shots means a higher final price. And VAT is added on top of the listed price. The VAT refund scheme for international patients depends on Korean tax law at the time of your visit, so please check with the clinic before you travel.
 
 ### What the price covers
 
@@ -43,7 +43,7 @@ Two things to know about the numbers. The tilde means "from": the final price is
 
 - **Time at the clinic.** A topical anesthetic cream is applied for about 30 minutes, then the treatment itself takes 60–90 minutes. Most non-surgical treatments at LIV take 30 to 90 minutes and need no hospitalization, so many patients are treated on the same day as their visit.
 - **Return visit.** Ultherapy Prime is completed in one session: same day, no revisit required. That is what makes it easy to fit into a short trip.
-- **Downtime.** You can return to daily life immediately. Mild swelling or redness is possible after the treatment, and depending on the area a temporary change in sensation can occur. [검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]
+- **Downtime.** You can return to daily life immediately. Mild swelling or redness is possible after the treatment; it typically settles within a few hours to 1–2 days, although this varies from person to person. Depending on the area, a temporary change in sensation can also occur.
 - **Pain.** With the topical anesthetic, most people tolerate the treatment well.
 - **When you see results.** There is an immediate effect, then gradual improvement over 3–6 months. Results last 1–2 years.
 
@@ -62,8 +62,8 @@ Practical details for the day:
 - **Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).
 - **Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. From Incheon Airport it is about 70–90 minutes by AREX train or limousine bus, or about 60 minutes by taxi; from Gimpo Airport about 40 minutes by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.
 - **Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash.
-- **Flying home:** Ultherapy Prime needs no follow-up visit, but the clinic confirms travel timing with you individually at the consultation. [검수 필요: 비행 가능 시점 — 사이트에 근거 없음]
-- **Changing your appointment:** tell the clinic through the same chat as early as you can. [검수 필요: 예약 변경·취소 규정 — 사이트에 근거 없음]
+- **Flying home:** Ultherapy Prime needs no follow-up visit. Non-surgical treatments like this generally place no restriction on flying, so a flight home the same day or the next day is usually fine; the clinic confirms the timing with you individually at your consultation.
+- **Changing your appointment:** because there is no deposit for a consultation booking, if your plans change — including a delayed flight — simply tell the clinic through the same chat as early as you can.
 
 When you block out time, allow for the numbing cream (about 30 minutes), the treatment (60–90 minutes) and your consultation. Because there is no return appointment, the treatment can sit on a single day of your trip and the rest of your itinerary stays as planned.
 

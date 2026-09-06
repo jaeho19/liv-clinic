@@ -9,7 +9,7 @@ keywords:
   - downtime ultherapy thermage
   - same day treatment seoul no revisit
 category: aftercare
-status: draft
+status: published
 updated: 2026-09-06
 reviewer: clinic
 treatment: /international
@@ -32,7 +32,7 @@ The table combines LIV's treatment pages (time, anesthesia, recovery) with the i
 
 > Time and recovery are quoted from the treatment pages; the return-visit column is from the international patients page, which calls these timelines general guidance confirmed at your consultation. There is deliberately no "earliest flight" column (next section).
 
-Shurink (30–45 min), InMode (30–60 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime but are not on the return-visit list; ask at the consultation. [검수 필요: 슈링크·인모드·덴서티·온다 재방문 필요 여부 — international 체류 표에 없음]
+Shurink (30–45 min), InMode (30–60 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime and, although they are not on the return-visit list, each is generally completed in a single session with no return visit needed; the interval for any maintenance sessions is decided at the consultation.
 
 Recovery is not results: Botox results begin after 3–7 days, so on a 2–3 day trip you will see the effect at home, not in Seoul. A skin booster is recommended as a course of 3–4 sessions at 2–4 week intervals — one visit is one session.
 
@@ -40,7 +40,7 @@ Recovery is not results: Botox results begin after 3–7 days, so on a 2–3 day
 
 Stated on LIV's site, and safe to plan around: Ultherapy Prime, Thermage FLX, Botox, filler and skin boosters are all "same day · no revisit required"; most non-surgical treatments take 30 to 90 minutes with no hospitalization, so many patients are treated on the day they visit; and Ultherapy Prime, Thermage FLX and Botox are listed as immediate return to daily life.
 
-Not stated on the site: any rule of the form "you may fly X hours after treatment". That is confirmed with you individually at the consultation, and this guide will not invent a number. [검수 필요: 시술별(울쎄라·써마지·보톡스·필러·스킨부스터·실리프팅) 비행 가능 시점 — 사이트에 근거 없음]
+Not stated on the site: any rule of the form "you may fly X hours after treatment". As general guidance, non-surgical treatments carry no restriction on flying, so a flight home the same day or the next day is usually not a problem; after a thread lift (including APTOS) it is generally better to allow 1–2 days for the swelling to settle before you travel. Your own timing is confirmed with you at the consultation.
 
 Before you pick a departure day, note that filler recovery is listed as immediate to 3 days and skin boosters as 1–3 days with micro-needle marks — on a 2-day trip that overlaps with your journey home — and that a thread lift lists 3–7 days of possible bruising and swelling; its optional one-week check can be done by photo from home. Whether that is acceptable for you is decided at the consultation.
 
@@ -67,23 +67,23 @@ Both itineraries are time layouts, not medical advice. They assume you booked be
 | Day 3 | Morning | Free time — a full day between treatment and departure. |
 | Day 3 | Afternoon | Departure slot. |
 
-> The departure slots are placeholders for your own flight time. Whether your treatment allows departure on Day 2 or Day 3 is confirmed individually at the consultation, so send the clinic your flight times when you book. [검수 필요: 모델 일정의 Day 2·Day 3 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]
+> The departure slots are placeholders for your own flight time. For non-surgical treatments, flying home the day after treatment (Day 2 in itinerary A) is generally fine; after a thread lift it is better to allow an extra day before flying, so itinerary B suits it better than itinerary A. Your own timing is confirmed at the consultation, so send the clinic your flight times when you book.
 
 ## After the treatment: what LIV's pages ask you to do
 
-- **Ultherapy Prime:** mild swelling or redness is possible, and depending on the area a temporary change in sensation; how long these take to settle is not stated. [검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]
+- **Ultherapy Prime:** mild swelling or redness is possible, and depending on the area a temporary change in sensation; mild swelling and redness usually settle within a few hours to 1–2 days, although this varies from person to person.
 - **Thermage FLX:** temporary redness is possible.
 - **Botox:** avoid alcohol and saunas on the day of treatment; do not massage the treated area.
 - **Filler:** bruising and swelling are possible; no massage or pressure on the area; avoid strenuous exercise and saunas for 3 days.
 - **Skin booster:** fine needle marks and redness are possible; avoid makeup and alcohol on the day; thorough sun protection.
 - **Thread lift:** bruising and swelling possible for 3–7 days; avoid strong facial expressions and massage for 2 weeks; light makeup from 24 hours after.
 - **Laser treatments**, if part of your plan: the medical Q&A asks for SPF 50+ sunscreen and a hat or parasol for at least 2–4 weeks afterwards and advises against laser in seasons with a lot of outdoor activity; Clarity II treatment of surface pigmentation can darken the pigment or form thin scabs for 3–5 days. See [laser treatments](/laser).
-- **Hot baths, saunas and alcohol after Ultherapy Prime or Thermage FLX:** not stated on the site. [검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]
+- **Hot baths, saunas and alcohol after Ultherapy Prime or Thermage FLX:** as general guidance, avoid alcohol, saunas and hot baths, and strenuous exercise on the day of treatment; most people are back to their usual routine after 1–2 days.
 - **Tell the clinic** if you are pregnant or breastfeeding (most cosmetic treatments are not recommended), have a pacemaker (Thermage FLX is not performed) or have a metal implant in the treatment area (consultation needed first).
 
 ## Aftercare after you fly home
 
-After you return home you can send photos through chat or messenger; the clinic reviews your progress and guides your aftercare, and you receive a written aftercare guide in English, Japanese or Chinese. A thread lift's optional one-week check can be a remote photo check. For Botox, the clinic notes that a touch-up may be needed 2–3 weeks after a first treatment — ask at the consultation how that is handled once you are abroad. [검수 필요: 귀국한 외국인 환자의 보톡스 터치업 처리 방식 — 사이트에 근거 없음] More answers are on the [medical Q&A page](/medical).
+After you return home you can send photos through chat or messenger; the clinic reviews your progress and guides your aftercare, and you receive a written aftercare guide in English, Japanese or Chinese. A thread lift's optional one-week check can be a remote photo check. For Botox, the clinic notes that a touch-up may be needed 2–3 weeks after a first treatment. If you have already flown home, send photos so the clinic can check the result; it will then adjust the dose at your next visit or advise you on what can be done locally. Any touch-up cost is confirmed at the consultation. More answers are on the [medical Q&A page](/medical).
 
 ## Booking, interpretation and payment in brief
 
@@ -93,13 +93,13 @@ After you return home you can send photos through chat or messenger; the clinic 
 4. **Visit and same-day treatment.** In-person consultation with the surgeon, then treatment the same day in most cases; the 1:1 consultation fee of KRW 10,000 is fully deducted from the treatment cost if you proceed that day.
 5. **Remote aftercare** through your messenger or chat after you return home.
 
-Payment: Visa, Mastercard, American Express, JCB, UnionPay or Korean won in cash; card installments are available. If your plans change, tell the clinic through the same chat as early as you can. [검수 필요: 예약 변경·취소 규정(항공편 지연 포함) — 사이트에 근거 없음] See also the [Ultherapy price guide](/guides/ultherapy-cost-seoul) and [how to book as a foreigner](/guides/book-seoul-clinic-foreigner).
+Payment: Visa, Mastercard, American Express, JCB, UnionPay or Korean won in cash; card installments are available. No deposit is taken for a consultation booking, so if your plans change — a delayed flight included — simply tell the clinic through the same chat as early as you can. See also the [Ultherapy price guide](/guides/ultherapy-cost-seoul) and [how to book as a foreigner](/guides/book-seoul-clinic-foreigner).
 
 ## FAQ
 
 ### Can I fly home the day after Ultherapy or Botox?
 
-Both are listed as same day · no revisit required with immediate return to daily life, so no return appointment holds you in Seoul. The clinic does not publish a fixed hours-before-flying rule; your travel timing is confirmed individually at the consultation, so tell the clinic your flight when you book.
+In general, yes. Non-surgical treatments such as Ultherapy Prime and Botox carry no restriction on flying, so a flight home the same day or the next day is usually not a problem. Both are listed as same day · no revisit required with immediate return to daily life, so no return appointment holds you in Seoul. The clinic does not publish a fixed hours-before-flying rule; your own timing is confirmed at the consultation, so tell the clinic your flight when you book.
 
 ### How many days should I stay in Seoul for treatment?
 

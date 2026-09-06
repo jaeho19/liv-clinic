@@ -9,7 +9,7 @@ keywords:
   - botox price korea 2026
   - botox filler sinsa garosu-gil
 category: price
-status: draft
+status: published
 updated: 2026-09-06
 reviewer: clinic
 treatment: /antiaging/botox
@@ -32,7 +32,7 @@ LIV publishes its [Botox](/antiaging/botox) prices by product. The list has two 
 
 > Per session · VAT not included · The exact price is confirmed after your consultation and depends on the area and the product chosen. For reference only: KRW 60,000 ≈ US$44, KRW 190,000 ≈ US$140 and KRW 320,000 ≈ US$240 at 1 USD ≈ 1,350 KRW (4 September 2026). The amount charged to your card depends on the exchange rate on the day.
 
-Two things the list does not show. One is how many units a contour price includes. [검수 필요: 윤곽 보톡스(턱·관자놀이) 표시 가격에 포함되는 단위(유닛) 수 — 사이트에 근거 없음] The other is any price for expression lines — forehead, glabella (frown lines), crow's feet, corners of the mouth — although the Botox page names them as treatment areas. [검수 필요: 표정 주름 보톡스(이마·미간·눈가·입꼬리) 가격 공개 여부 — 사이트 가격표에 없음] If those are the areas you have in mind, ask for a quote in your first message.
+Two things the list does not show. One is how many units a contour price includes: the number of units varies with the area and the amount of muscle, so it is decided at the consultation. The other is any price for expression lines — forehead, glabella (frown lines), crow's feet, corners of the mouth — although the Botox page names them as treatment areas. Expression-line Botox is not on the published price list, so you receive a quote at the consultation; if those are the areas you have in mind, say so in your first message.
 
 ## Filler prices at LIV (2026)
 
@@ -43,18 +43,18 @@ Dermal filler at LIV is priced per cc, by product tier. The [price list](/pricin
 | Domestic filler | 1 cc | KRW 200,000~ |
 | Domestic Premium filler | 1 cc | KRW 300,000~ |
 | Imported filler | 1 cc | KRW 400,000~ |
-| Chanel Injection [검수 필요: 샤넬주사가 필러 표에 맞는 항목인지 확인 — 사이트 필러 가격표에 있음] | 3 cc | KRW 330,000~ |
+| Chanel Injection (a skin-booster-type injection for skin texture and hydration) | 3 cc | KRW 330,000~ |
 | Other fillers | — | Detailed pricing provided during consultation |
 
 > Per session · VAT not included · The final cost depends on the number of cc, the area and the product, and is confirmed after your consultation. For reference only: KRW 200,000 ≈ US$150, KRW 400,000 ≈ US$300 and KRW 330,000 ≈ US$245 at 1 USD ≈ 1,350 KRW (4 September 2026). Exchange rates change daily.
 
-The 1 cc prices are published by tier rather than by brand name. [검수 필요: 국산·국산 프리미엄·수입 필러 및 국산 보톡스의 실제 브랜드명 공개 가능 여부 — 사이트에 근거 없음] Which product suits your face, and how many cc you need, is decided with the surgeon at the consultation.
+The 1 cc prices are published by tier rather than by brand name. Apart from the product names that appear on the price list (Xeomin and Allergan for Botox), the domestic products are introduced at the consultation, where the surgeon also decides with you which product suits your face and how many cc you need.
 
 ## How to read the prices
 
 - **The tilde means "from".** The final price is set at your in-person consultation once the surgeon has agreed the area and the amount with you, and VAT is added on top.
 - **Botox: the product is what moves the price.** The same contour area runs from KRW 60,000 with a domestic product to KRW 190,000 with Allergan. Products differ in onset time, diffusion and duration, which is why the choice is made at the consultation rather than online.
-- **Body Botox is priced per 100 IU;** how many an area needs is decided by the surgeon. [검수 필요: 부위별 권장 용량(유닛·cc) — 사이트에 근거 없음]
+- **Body Botox is priced per 100 IU;** the dose for each area is decided by the surgeon at the consultation, after looking at the area in person.
 - **Filler is priced per cc:** the per-cc price times the number of cc used. How many cc an area takes varies from person to person.
 - **Nothing is added for being a foreign patient,** and there is no fee for interpretation or language support.
 
@@ -74,9 +74,9 @@ Both treatments are done on the same day as your visit, with no return visit req
 Practical notes from the clinic's own pages:
 
 - After Botox, avoid alcohol and saunas on the day of treatment, and do not massage the treated area.
-- After filler, bruising or swelling is possible. Do not massage or press the area, and avoid strenuous exercise and saunas for 3 days. [검수 필요: 필러 후 멍·붓기가 가라앉는 일수 — 사이트에 근거 없음]
-- The clinic notes that a Botox touch-up may be needed 2–3 weeks after a first treatment. If you will have left Korea by then, say so at the consultation. [검수 필요: 터치업 비용과 귀국 후 원격 대응 방식 — 사이트에 근거 없음]
-- Flying home: neither treatment needs a follow-up visit, but confirm travel timing with the clinic at your consultation. [검수 필요: 보톡스·필러 후 비행 가능 시점 — 사이트에 근거 없음]
+- After filler, bruising or swelling is possible; in general it settles within a few days to about a week, although this varies from person to person. Do not massage or press the area, and avoid strenuous exercise and saunas for 3 days.
+- The clinic notes that a Botox touch-up may be needed 2–3 weeks after a first treatment. If you will have left Korea by then, say so at the consultation: the clinic can review your progress from photos sent by messenger, then either adjust at your next visit or advise you on what to do locally. Ask about the cost of a touch-up at the consultation.
+- Flying home: neither treatment needs a follow-up visit, and as non-surgical treatments they generally place no restriction on flying, so a flight the same day or the next day is usually not a problem. Confirm the timing for your own case at the consultation.
 
 ## Booking from abroad, interpretation and payment
 

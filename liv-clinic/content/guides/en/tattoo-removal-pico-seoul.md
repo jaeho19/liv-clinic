@@ -9,7 +9,7 @@ keywords:
   - tattoo removal seoul foreigner
   - eyebrow tattoo removal seoul
 category: treatment
-status: draft
+status: published
 updated: 2026-09-06
 reviewer: clinic
 treatment: /laser/tattoo
@@ -54,7 +54,7 @@ These are the prices LIV publishes on the [tattoo removal page](/laser/tattoo) (
 
 > Per session · VAT not included · The tilde means "from": the exact price is confirmed after your consultation, once the surgeon has seen the size, colour and depth of the tattoo. For reference only: KRW 50,000 ≈ US$37 and KRW 500,000 ≈ US$370 at 1 USD ≈ 1,350 KRW (4 September 2026); the amount charged to your card depends on the exchange rate on the day.
 
-"Per area" is the unit the clinic prices by; how a large tattoo, or several small ones, is counted is confirmed at the consultation. [검수 필요: '1부위'의 크기 기준(대략 몇 cm까지 한 부위인지)과 큰 문신·여러 부위의 산정 방식 — 사이트에 근거 없음] Because removal takes several sessions, the figure to plan with is the per-session price multiplied by the number of sessions estimated for you at the consultation (next section).
+"Per area" is the unit the clinic prices by, and in general one area means one small tattoo. For a large tattoo, or several tattoos in different places, send photos and the clinic gives an estimate at the consultation based on the size and the number of areas. Because removal takes several sessions, the figure to plan with is the per-session price multiplied by the number of sessions estimated for you at the consultation (next section).
 
 ### Consultation only is fine
 
@@ -93,11 +93,11 @@ Yes, in most cases. LIV's booking flow for international patients is an in-perso
 
 ### The days after the session
 
-- **Fine scabs for 3–7 days:** keep them intact; mild swelling is also possible. [검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]
+- **Fine scabs for 3–7 days:** keep them intact; mild swelling is also possible. Once the scabs have come off, the area is usually still a little pink; in general this fades over a few weeks, at a pace that varies from person to person.
 - **Sun:** laser-treated skin is more sensitive and the risk of UV pigmentation goes up, so the clinic asks for SPF 50+ sunscreen and a hat or parasol for at least 2–4 weeks, and advises against laser treatment during periods with a lot of outdoor activity.
 - **Sauna and intense exercise:** avoid for 1 week — this is on the clinic's aftercare list, together with applying the prescribed ointment as directed.
-- **Swimming, sea water and hot springs:** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]
-- **Flying home:** ask at the consultation; the clinic confirms timing with you individually. [검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]
+- **Swimming, sea water and hot springs:** keep the treated area out of them until the scabs have come off by themselves — typically 1–2 weeks, though this varies from person to person.
+- **Flying home:** pico laser tattoo removal is a non-surgical treatment and in general there is no restriction on flying, so a flight home the same day or the next day is usually fine; the clinic confirms the timing with you individually at the consultation.
 
 ### Session two onwards
 

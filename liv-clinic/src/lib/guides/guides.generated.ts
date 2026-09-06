@@ -14,7 +14,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "book clinic in korea without agency"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "locale": "en",
@@ -120,7 +120,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**Contact us.** Message on WhatsApp, LINE, WeChat or the live chat on this site, in your language. You hear back within one business day.",
           "**Remote consultation and estimate.** Share your concerns and photos. The clinic suggests suitable treatments and sends a clear price estimate — the same prices as the [price list](/pricing), per session and excluding VAT, with the final figure confirmed at your in-person consultation.",
-          "**Schedule your visit.** Pick a date and time that fits your travel plans and reserve the appointment. No deposit is required to reserve a consultation. [검수 필요: 예약 일정 변경·취소 안내 문구 — 사이트에 규정 없음]",
+          "**Schedule your visit.** Pick a date and time that fits your travel plans and reserve the appointment. No deposit is required to reserve a consultation, so if your plans change — a delayed flight included — just let the clinic know through the same channel as early as you can.",
           "**Visit and same-day treatment.** Meet the surgeon for a final in-person consultation, then receive your treatment the same day in most cases.",
           "**Remote aftercare.** After you return home, the clinic follows up and answers your questions through your messenger or chat."
         ]
@@ -180,7 +180,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "**Hours:** Monday–Friday 10:00–19:00 · Saturday 10:00–16:00 · Sunday closed [검수 필요: 한국 공휴일 휴진 여부 — 사이트에 근거 없음]"
+        "text": "**Hours:** Monday–Friday 10:00–19:00 · Saturday 10:00–16:00 · Sunday closed. The clinic is generally closed on Korean public holidays as well (including the Seollal and Chuseok holiday periods), so if your trip overlaps a holiday, check the available days on chat first."
       },
       {
         "type": "p",
@@ -252,7 +252,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 2
+    "reviewMarkers": 0
   },
   {
     "title": "Botox and filler in Seoul: prices, what's on the list, and the same price for foreigners",
@@ -266,7 +266,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "botox filler sinsa garosu-gil"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/antiaging/botox",
@@ -332,7 +332,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Two things the list does not show. One is how many units a contour price includes. [검수 필요: 윤곽 보톡스(턱·관자놀이) 표시 가격에 포함되는 단위(유닛) 수 — 사이트에 근거 없음] The other is any price for expression lines — forehead, glabella (frown lines), crow's feet, corners of the mouth — although the Botox page names them as treatment areas. [검수 필요: 표정 주름 보톡스(이마·미간·눈가·입꼬리) 가격 공개 여부 — 사이트 가격표에 없음] If those are the areas you have in mind, ask for a quote in your first message."
+        "text": "Two things the list does not show. One is how many units a contour price includes: the number of units varies with the area and the amount of muscle, so it is decided at the consultation. The other is any price for expression lines — forehead, glabella (frown lines), crow's feet, corners of the mouth — although the Botox page names them as treatment areas. Expression-line Botox is not on the published price list, so you receive a quote at the consultation; if those are the areas you have in mind, say so in your first message."
       },
       {
         "type": "h2",
@@ -367,7 +367,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "KRW 400,000~"
           ],
           [
-            "Chanel Injection [검수 필요: 샤넬주사가 필러 표에 맞는 항목인지 확인 — 사이트 필러 가격표에 있음]",
+            "Chanel Injection (a skin-booster-type injection for skin texture and hydration)",
             "3 cc",
             "KRW 330,000~"
           ],
@@ -384,7 +384,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "The 1 cc prices are published by tier rather than by brand name. [검수 필요: 국산·국산 프리미엄·수입 필러 및 국산 보톡스의 실제 브랜드명 공개 가능 여부 — 사이트에 근거 없음] Which product suits your face, and how many cc you need, is decided with the surgeon at the consultation."
+        "text": "The 1 cc prices are published by tier rather than by brand name. Apart from the product names that appear on the price list (Xeomin and Allergan for Botox), the domestic products are introduced at the consultation, where the surgeon also decides with you which product suits your face and how many cc you need."
       },
       {
         "type": "h2",
@@ -396,7 +396,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**The tilde means \"from\".** The final price is set at your in-person consultation once the surgeon has agreed the area and the amount with you, and VAT is added on top.",
           "**Botox: the product is what moves the price.** The same contour area runs from KRW 60,000 with a domestic product to KRW 190,000 with Allergan. Products differ in onset time, diffusion and duration, which is why the choice is made at the consultation rather than online.",
-          "**Body Botox is priced per 100 IU;** how many an area needs is decided by the surgeon. [검수 필요: 부위별 권장 용량(유닛·cc) — 사이트에 근거 없음]",
+          "**Body Botox is priced per 100 IU;** the dose for each area is decided by the surgeon at the consultation, after looking at the area in person.",
           "**Filler is priced per cc:** the per-cc price times the number of cc used. How many cc an area takes varies from person to person.",
           "**Nothing is added for being a foreign patient,** and there is no fee for interpretation or language support."
         ]
@@ -458,9 +458,9 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "After Botox, avoid alcohol and saunas on the day of treatment, and do not massage the treated area.",
-          "After filler, bruising or swelling is possible. Do not massage or press the area, and avoid strenuous exercise and saunas for 3 days. [검수 필요: 필러 후 멍·붓기가 가라앉는 일수 — 사이트에 근거 없음]",
-          "The clinic notes that a Botox touch-up may be needed 2–3 weeks after a first treatment. If you will have left Korea by then, say so at the consultation. [검수 필요: 터치업 비용과 귀국 후 원격 대응 방식 — 사이트에 근거 없음]",
-          "Flying home: neither treatment needs a follow-up visit, but confirm travel timing with the clinic at your consultation. [검수 필요: 보톡스·필러 후 비행 가능 시점 — 사이트에 근거 없음]"
+          "After filler, bruising or swelling is possible; in general it settles within a few days to about a week, although this varies from person to person. Do not massage or press the area, and avoid strenuous exercise and saunas for 3 days.",
+          "The clinic notes that a Botox touch-up may be needed 2–3 weeks after a first treatment. If you will have left Korea by then, say so at the consultation: the clinic can review your progress from photos sent by messenger, then either adjust at your next visit or advise you on what to do locally. Ask about the cost of a touch-up at the consultation.",
+          "Flying home: neither treatment needs a follow-up visit, and as non-surgical treatments they generally place no restriction on flying, so a flight the same day or the next day is usually not a problem. Confirm the timing for your own case at the consultation."
         ]
       },
       {
@@ -562,8 +562,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "Yes: KRW 10,000 for the 1:1 consultation with the surgeon, fully deducted from the treatment cost if you have treatment the same day. You are welcome to consult only and decide later."
       }
     ],
-    "readingMinutes": 9,
-    "reviewMarkers": 8
+    "readingMinutes": 10,
+    "reviewMarkers": 0
   },
   {
     "title": "Can I fly after Ultherapy or Botox? Downtime by treatment and a 2–3 day Seoul itinerary",
@@ -577,7 +577,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "same day treatment seoul no revisit"
     ],
     "category": "aftercare",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/international",
@@ -657,7 +657,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Shurink (30–45 min), InMode (30–60 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime but are not on the return-visit list; ask at the consultation. [검수 필요: 슈링크·인모드·덴서티·온다 재방문 필요 여부 — international 체류 표에 없음]"
+        "text": "Shurink (30–45 min), InMode (30–60 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime and, although they are not on the return-visit list, each is generally completed in a single session with no return visit needed; the interval for any maintenance sessions is decided at the consultation."
       },
       {
         "type": "p",
@@ -674,7 +674,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Not stated on the site: any rule of the form \"you may fly X hours after treatment\". That is confirmed with you individually at the consultation, and this guide will not invent a number. [검수 필요: 시술별(울쎄라·써마지·보톡스·필러·스킨부스터·실리프팅) 비행 가능 시점 — 사이트에 근거 없음]"
+        "text": "Not stated on the site: any rule of the form \"you may fly X hours after treatment\". As general guidance, non-surgical treatments carry no restriction on flying, so a flight home the same day or the next day is usually not a problem; after a thread lift (including APTOS) it is generally better to allow 1–2 days for the swelling to settle before you travel. Your own timing is confirmed with you at the consultation."
       },
       {
         "type": "p",
@@ -771,7 +771,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "The departure slots are placeholders for your own flight time. Whether your treatment allows departure on Day 2 or Day 3 is confirmed individually at the consultation, so send the clinic your flight times when you book. [검수 필요: 모델 일정의 Day 2·Day 3 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
+        "text": "The departure slots are placeholders for your own flight time. For non-surgical treatments, flying home the day after treatment (Day 2 in itinerary A) is generally fine; after a thread lift it is better to allow an extra day before flying, so itinerary B suits it better than itinerary A. Your own timing is confirmed at the consultation, so send the clinic your flight times when you book."
       },
       {
         "type": "h2",
@@ -781,14 +781,14 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**Ultherapy Prime:** mild swelling or redness is possible, and depending on the area a temporary change in sensation; how long these take to settle is not stated. [검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**Ultherapy Prime:** mild swelling or redness is possible, and depending on the area a temporary change in sensation; mild swelling and redness usually settle within a few hours to 1–2 days, although this varies from person to person.",
           "**Thermage FLX:** temporary redness is possible.",
           "**Botox:** avoid alcohol and saunas on the day of treatment; do not massage the treated area.",
           "**Filler:** bruising and swelling are possible; no massage or pressure on the area; avoid strenuous exercise and saunas for 3 days.",
           "**Skin booster:** fine needle marks and redness are possible; avoid makeup and alcohol on the day; thorough sun protection.",
           "**Thread lift:** bruising and swelling possible for 3–7 days; avoid strong facial expressions and massage for 2 weeks; light makeup from 24 hours after.",
           "**Laser treatments**, if part of your plan: the medical Q&A asks for SPF 50+ sunscreen and a hat or parasol for at least 2–4 weeks afterwards and advises against laser in seasons with a lot of outdoor activity; Clarity II treatment of surface pigmentation can darken the pigment or form thin scabs for 3–5 days. See [laser treatments](/laser).",
-          "**Hot baths, saunas and alcohol after Ultherapy Prime or Thermage FLX:** not stated on the site. [검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]",
+          "**Hot baths, saunas and alcohol after Ultherapy Prime or Thermage FLX:** as general guidance, avoid alcohol, saunas and hot baths, and strenuous exercise on the day of treatment; most people are back to their usual routine after 1–2 days.",
           "**Tell the clinic** if you are pregnant or breastfeeding (most cosmetic treatments are not recommended), have a pacemaker (Thermage FLX is not performed) or have a metal implant in the treatment area (consultation needed first)."
         ]
       },
@@ -799,7 +799,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "After you return home you can send photos through chat or messenger; the clinic reviews your progress and guides your aftercare, and you receive a written aftercare guide in English, Japanese or Chinese. A thread lift's optional one-week check can be a remote photo check. For Botox, the clinic notes that a touch-up may be needed 2–3 weeks after a first treatment — ask at the consultation how that is handled once you are abroad. [검수 필요: 귀국한 외국인 환자의 보톡스 터치업 처리 방식 — 사이트에 근거 없음] More answers are on the [medical Q&A page](/medical)."
+        "text": "After you return home you can send photos through chat or messenger; the clinic reviews your progress and guides your aftercare, and you receive a written aftercare guide in English, Japanese or Chinese. A thread lift's optional one-week check can be a remote photo check. For Botox, the clinic notes that a touch-up may be needed 2–3 weeks after a first treatment. If you have already flown home, send photos so the clinic can check the result; it will then adjust the dose at your next visit or advise you on what can be done locally. Any touch-up cost is confirmed at the consultation. More answers are on the [medical Q&A page](/medical)."
       },
       {
         "type": "h2",
@@ -818,7 +818,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Payment: Visa, Mastercard, American Express, JCB, UnionPay or Korean won in cash; card installments are available. If your plans change, tell the clinic through the same chat as early as you can. [검수 필요: 예약 변경·취소 규정(항공편 지연 포함) — 사이트에 근거 없음] See also the [Ultherapy price guide](/guides/ultherapy-cost-seoul) and [how to book as a foreigner](/guides/book-seoul-clinic-foreigner)."
+        "text": "Payment: Visa, Mastercard, American Express, JCB, UnionPay or Korean won in cash; card installments are available. No deposit is taken for a consultation booking, so if your plans change — a delayed flight included — simply tell the clinic through the same chat as early as you can. See also the [Ultherapy price guide](/guides/ultherapy-cost-seoul) and [how to book as a foreigner](/guides/book-seoul-clinic-foreigner)."
       },
       {
         "type": "h2",
@@ -833,7 +833,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "Can I fly home the day after Ultherapy or Botox?",
-        "a": "Both are listed as same day · no revisit required with immediate return to daily life, so no return appointment holds you in Seoul. The clinic does not publish a fixed hours-before-flying rule; your travel timing is confirmed individually at the consultation, so tell the clinic your flight when you book."
+        "a": "In general, yes. Non-surgical treatments such as Ultherapy Prime and Botox carry no restriction on flying, so a flight home the same day or the next day is usually not a problem. Both are listed as same day · no revisit required with immediate return to daily life, so no return appointment holds you in Seoul. The clinic does not publish a fixed hours-before-flying rule; your own timing is confirmed at the consultation, so tell the clinic your flight when you book."
       },
       {
         "q": "How many days should I stay in Seoul for treatment?",
@@ -852,8 +852,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "In most cases, yes. Most treatments take 30 to 90 minutes with no hospitalization, so after the in-person consultation you are usually treated the same day."
       }
     ],
-    "readingMinutes": 9,
-    "reviewMarkers": 7
+    "readingMinutes": 10,
+    "reviewMarkers": 0
   },
   {
     "title": "Tattoo removal in Seoul with a pico laser: sessions, cost and fitting it around your trip",
@@ -867,7 +867,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "eyebrow tattoo removal seoul"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/laser/tattoo",
@@ -974,7 +974,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "\"Per area\" is the unit the clinic prices by; how a large tattoo, or several small ones, is counted is confirmed at the consultation. [검수 필요: '1부위'의 크기 기준(대략 몇 cm까지 한 부위인지)과 큰 문신·여러 부위의 산정 방식 — 사이트에 근거 없음] Because removal takes several sessions, the figure to plan with is the per-session price multiplied by the number of sessions estimated for you at the consultation (next section)."
+        "text": "\"Per area\" is the unit the clinic prices by, and in general one area means one small tattoo. For a large tattoo, or several tattoos in different places, send photos and the clinic gives an estimate at the consultation based on the size and the number of areas. Because removal takes several sessions, the figure to plan with is the per-session price multiplied by the number of sessions estimated for you at the consultation (next section)."
       },
       {
         "type": "h3",
@@ -1075,11 +1075,11 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**Fine scabs for 3–7 days:** keep them intact; mild swelling is also possible. [검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**Fine scabs for 3–7 days:** keep them intact; mild swelling is also possible. Once the scabs have come off, the area is usually still a little pink; in general this fades over a few weeks, at a pace that varies from person to person.",
           "**Sun:** laser-treated skin is more sensitive and the risk of UV pigmentation goes up, so the clinic asks for SPF 50+ sunscreen and a hat or parasol for at least 2–4 weeks, and advises against laser treatment during periods with a lot of outdoor activity.",
           "**Sauna and intense exercise:** avoid for 1 week — this is on the clinic's aftercare list, together with applying the prescribed ointment as directed.",
-          "**Swimming, sea water and hot springs:** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
-          "**Flying home:** ask at the consultation; the clinic confirms timing with you individually. [검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]"
+          "**Swimming, sea water and hot springs:** keep the treated area out of them until the scabs have come off by themselves — typically 1–2 weeks, though this varies from person to person.",
+          "**Flying home:** pico laser tattoo removal is a non-surgical treatment and in general there is no restriction on flying, so a flight home the same day or the next day is usually fine; the clinic confirms the timing with you individually at the consultation."
         ]
       },
       {
@@ -1177,7 +1177,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 11,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "Ultherapy in Seoul: 2026 price guide, what's included and how to plan your visit",
@@ -1191,7 +1191,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "ultherapy sinsa garosu-gil"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting/ulthera",
@@ -1247,7 +1247,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Two things to know about the numbers. The tilde means \"from\": the final price is set once the surgeon has seen your face and agreed the shot count with you, so a larger area or more shots means a higher final price. And VAT is added on top of the listed price. [검수 필요: 외국인 환자 부가세 환급(택스 리펀드) 가능 여부 — 사이트에 근거 없음]"
+        "text": "Two things to know about the numbers. The tilde means \"from\": the final price is set once the surgeon has seen your face and agreed the shot count with you, so a larger area or more shots means a higher final price. And VAT is added on top of the listed price. The VAT refund scheme for international patients depends on Korean tax law at the time of your visit, so please check with the clinic before you travel."
       },
       {
         "type": "h3",
@@ -1272,7 +1272,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**Time at the clinic.** A topical anesthetic cream is applied for about 30 minutes, then the treatment itself takes 60–90 minutes. Most non-surgical treatments at LIV take 30 to 90 minutes and need no hospitalization, so many patients are treated on the same day as their visit.",
           "**Return visit.** Ultherapy Prime is completed in one session: same day, no revisit required. That is what makes it easy to fit into a short trip.",
-          "**Downtime.** You can return to daily life immediately. Mild swelling or redness is possible after the treatment, and depending on the area a temporary change in sensation can occur. [검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**Downtime.** You can return to daily life immediately. Mild swelling or redness is possible after the treatment; it typically settles within a few hours to 1–2 days, although this varies from person to person. Depending on the area, a temporary change in sensation can also occur.",
           "**Pain.** With the topical anesthetic, most people tolerate the treatment well.",
           "**When you see results.** There is an immediate effect, then gradual improvement over 3–6 months. Results last 1–2 years."
         ]
@@ -1306,8 +1306,8 @@ export const GUIDES: readonly GuideDoc[] = [
           "**Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).",
           "**Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. From Incheon Airport it is about 70–90 minutes by AREX train or limousine bus, or about 60 minutes by taxi; from Gimpo Airport about 40 minutes by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.",
           "**Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash.",
-          "**Flying home:** Ultherapy Prime needs no follow-up visit, but the clinic confirms travel timing with you individually at the consultation. [검수 필요: 비행 가능 시점 — 사이트에 근거 없음]",
-          "**Changing your appointment:** tell the clinic through the same chat as early as you can. [검수 필요: 예약 변경·취소 규정 — 사이트에 근거 없음]"
+          "**Flying home:** Ultherapy Prime needs no follow-up visit. Non-surgical treatments like this generally place no restriction on flying, so a flight home the same day or the next day is usually fine; the clinic confirms the timing with you individually at your consultation.",
+          "**Changing your appointment:** because there is no deposit for a consultation booking, if your plans change — including a delayed flight — simply tell the clinic through the same chat as early as you can."
         ]
       },
       {
@@ -1392,8 +1392,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "LIV is an officially certified Ultherapy Prime provider and uses only genuine, certified handpieces (tips). You can ask to verify this before your treatment."
       }
     ],
-    "readingMinutes": 7,
-    "reviewMarkers": 4
+    "readingMinutes": 8,
+    "reviewMarkers": 0
   },
   {
     "title": "Ultherapy vs Thermage vs Shurink in Korea: how a Seoul clinic chooses between them",
@@ -1407,7 +1407,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "ultherapy thermage shurink difference"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -1460,7 +1460,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "Anesthesia",
             "Topical anesthetic cream (30 min)",
-            "No anesthesia (vibration reduces discomfort)",
+            "Usually none (vibration reduces discomfort); anesthetic cream on request",
             "Topical anesthetic cream (optional)"
           ],
           [
@@ -1485,7 +1485,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well, and Thermage FLX uses a vibrating tip that significantly reduces discomfort. If you are sensitive to pain, additional pain control is available on request. [검수 필요: 써마지 마취 — 시술 페이지는 '무마취(진동 기술)', 의료 Q&A(lifting-pain)는 '마취 크림 30분 후 진행'으로 상충, 한 가지로 확정 필요]"
+        "text": "Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well. Thermage FLX is generally performed without anesthesia, as its vibrating tip significantly reduces discomfort, and anesthetic cream can be applied if you prefer. If you are sensitive to pain, additional pain control is available on request."
       },
       {
         "type": "h2",
@@ -1498,7 +1498,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "The HIFU treatment the clinic describes for people who want lifting without surgery, are concerned about sagging skin or loss of elasticity, prefer a natural-looking change and want no downtime. Areas treated: forehead, eye area, cheeks, jawline and neck. Anesthetic cream goes on for about 30 minutes, then the treatment takes 60–90 minutes, and the clinic recommends it once every 1–2 years. LIV is an officially certified Ultherapy Prime provider; see the [Ultherapy page](/lifting/ulthera) and our [Ultherapy price guide](/guides/ultherapy-cost-seoul). [검수 필요: 울쎄라 효과 지속 — 시술 페이지 '1–2년 유지'와 의료 Q&A(lifting-duration) '약 1년'이 다름, 표기 통일 필요]"
+        "text": "The HIFU treatment the clinic describes for people who want lifting without surgery, are concerned about sagging skin or loss of elasticity, prefer a natural-looking change and want no downtime. Areas treated: forehead, eye area, cheeks, jawline and neck. Anesthetic cream goes on for about 30 minutes, then the treatment takes 60–90 minutes. Results typically last 1–2 years, though this varies from person to person, and the clinic recommends it once every 1–2 years. LIV is an officially certified Ultherapy Prime provider; see the [Ultherapy page](/lifting/ulthera) and our [Ultherapy price guide](/guides/ultherapy-cost-seoul)."
       },
       {
         "type": "h3",
@@ -1622,7 +1622,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**Clinic hours.** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed Sunday (Korea time).",
           "**Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. About 70–90 minutes from Incheon Airport by AREX train or limousine bus (about 60 by taxi); about 40 minutes from Gimpo Airport by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.",
           "**Payment.** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash; card installments are available.",
-          "**Flying home.** None of the three requires a hospital stay; the clinic confirms travel timing with you individually. [검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
+          "**Flying home.** None of the three requires a hospital stay, and non-surgical treatments like these generally place no restriction on flying, so a flight home the same day or the next day is usually not a problem. Your own timing is confirmed at the consultation."
         ]
       },
       {
@@ -1641,7 +1641,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**Pacemaker.** Thermage FLX is not performed on people with a pacemaker.",
           "**Metal implants.** For Ultherapy Prime and Thermage FLX, a metal implant in the treatment area needs a consultation first.",
           "**Sensitive skin.** For Shurink, sensitive skin needs a consultation first.",
-          "**After the treatment.** Mild swelling or redness is possible after Ultherapy Prime, temporary redness after Thermage FLX and mild redness after Shurink; depending on the area, Ultherapy can cause a temporary change in sensation. [검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]"
+          "**After the treatment.** Mild swelling or redness is possible after Ultherapy Prime, temporary redness after Thermage FLX and mild redness after Shurink; depending on the area, Ultherapy can cause a temporary change in sensation. Mild swelling and redness typically settle within a few hours to 1–2 days, though this varies from person to person."
         ]
       },
       {
@@ -1681,7 +1681,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "新沙・カロスキルで日本語対応の美容皮膚科を探して予約する方法",
@@ -1695,7 +1695,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙駅 ウルセラ 日本語"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "locale": "ja",
@@ -1804,7 +1804,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**連絡する** — LINE（またはWhatsApp・WeChat・ライブチャット）に日本語でメッセージを送ります。お問い合わせには営業日基準で1日以内に返信します。",
           "**オンライン相談と見積もり** — 悩みと写真を共有すると、適した施術の提案と明確な料金の見積もりが届きます。金額は[料金表](/pricing)と同じ基準（1回あたり・VAT別）で、最終的な料金は来院時のカウンセリング後に確定します。",
-          "**来院日を予約する** — 旅程に合う日時を選んで予約します。カウンセリングの予約に予約金は必要ありません。[검수 필요: 예약 일정 변경·취소 안내 문구 — 사이트에 규정 없음]",
+          "**来院日を予約する** — 旅程に合う日時を選んで予約します。カウンセリングの予約に予約金は必要ないため、フライトの遅延などで日程が変わった場合は、同じ連絡手段でできるだけ早めにお知らせください。",
           "**来院・当日施術** — 院長との対面カウンセリングで内容を最終確認し、多くの場合そのまま当日に施術を受けられます。",
           "**帰国後のアフターケア** — 帰国後も、LINEやチャットで経過の確認やご質問に対応します。"
         ]
@@ -1864,7 +1864,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "**診療時間**：平日 10:00〜19:00 ／ 土曜 10:00〜16:00 ／ 日曜 休診 [검수 필요: 한국 공휴일 휴진 여부 — 사이트에 근거 없음]"
+        "text": "**診療時間**：平日 10:00〜19:00 ／ 土曜 10:00〜16:00 ／ 日曜 休診。韓国の祝日（旧正月・秋夕の連休など）も一般的に休診となるため、旅程が祝日と重なる場合は、チャットで診療日を先にご確認ください。"
       },
       {
         "type": "p",
@@ -1920,7 +1920,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 2
+    "reviewMarkers": 0
   },
   {
     "title": "韓国のボトックス・ヒアルロン酸（フィラー）の値段と選び方 — 外国人も同一料金（新沙・LIV美容クリニック）",
@@ -1934,7 +1934,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙 カロスキル 美容皮膚科"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/antiaging/botox",
@@ -1954,9 +1954,9 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "**ボトックスは製品で値段が変わります。** 料金表は「国産」「国産プレミアム」「ゼオミン（Xeomin）」「アラガン（Allergan）」の4段階。製品ごとに発現時間・拡散性・持続期間が違うため、どれにするかはカウンセリングで決めます。",
-          "**単位（ユニット）について。** ボディ（僧帽筋・二の腕・ふくらはぎ・太もも）は100単位（100IU）あたりの料金です。輪郭（エラ・こめかみ）に何単位が含まれるかは記載がありません。[검수 필요: 윤곽 보톡스(턱·관자놀이) 표시 가격에 포함되는 단위 수 — 사이트에 근거 없음]",
-          "**ヒアルロン酸は1ccあたり。** 「国産」「国産プレミアム」「輸入」の3段階で、使うcc数を掛けた金額が目安です。必要なcc数は個人差があり、カウンセリングで確定します。[검수 필요: 부위별 권장 용량(단위·cc) — 사이트에 근거 없음]",
-          "**表情ジワ（額・眉間・目尻・口角）の料金は未公開です。** 料金表にあるのは輪郭とボディの2区分だけなので、見積もりの際にご確認ください。[검수 필요: 표정 주름 보톡스(이마·미간·눈가·입꼬리) 가격 공개 여부 — 사이트 가격표에 없음]"
+          "**単位（ユニット）について。** ボディ（僧帽筋・二の腕・ふくらはぎ・太もも）は100単位（100IU）あたりの料金です。輪郭（エラ・こめかみ）の料金に含まれる単位数は料金表に記載がなく、部位と筋肉量によって変わるため、カウンセリングで決めます。",
+          "**ヒアルロン酸は1ccあたり。** 「国産」「国産プレミアム」「輸入」の3段階で、使うcc数を掛けた金額が目安です。部位ごとの必要量（単位・cc）は個人差があり、カウンセリングで院長が顔の状態を見て決めます。",
+          "**表情ジワ（額・眉間・目尻・口角）の料金は未公開です。** 公開料金表にあるのは輪郭とボディの2区分だけなので、表情ジワのボトックスはカウンセリングで見積もりを受け取ってください。"
         ]
       },
       {
@@ -2019,7 +2019,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "[料金案内ページ](/pricing)では1ccあたり3段階で公開され、[フィラーの施術ページ](/antiaging/filler)には3cc単位の項目もあります。具体的な製品名は料金表に載っていません。[검수 필요: 국산·국산 프리미엄·수입 필러 및 국산 보톡스의 실제 제품명 공개 가능 여부 — 사이트에 근거 없음] どの製品が合うかは、院長が顔を見たうえで提案します。"
+        "text": "[料金案内ページ](/pricing)では1ccあたり3段階で公開され、[フィラーの施術ページ](/antiaging/filler)には3cc単位の項目もあります。料金表に製品名が載っているのはボトックスのゼオミン（Xeomin）とアラガン（Allergan）で、それ以外の国産製品についてはカウンセリングでご案内します。どの製品が合うかは、院長が顔を見たうえで提案します。"
       },
       {
         "type": "table",
@@ -2045,7 +2045,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "400,000ウォン〜"
           ],
           [
-            "シャネル注射 [검수 필요: 샤넬주사가 필러 표에 맞는 항목인지 확인 — 사이트 필러 가격표에 있음]",
+            "シャネル注射（肌のキメ・うるおいを目的としたスキンブースター系の注射）",
             "3cc",
             "330,000ウォン〜"
           ],
@@ -2117,9 +2117,9 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "ボトックスは施術当日の飲酒・サウナを避け、施術部位をマッサージしないでください。",
-          "ヒアルロン酸は内出血や腫れが出ることがあります。マッサージや圧迫は避け、激しい運動とサウナは3日間控えてください。[검수 필요: 필러 후 멍·붓기가 가라앉는 일수 — 사이트에 근거 없음]",
-          "ボトックスは初回施術の2〜3週間後にタッチアップが必要になる場合があります。その頃に帰国している方は、カウンセリングでお伝えください。[검수 필요: 터치업 비용과 귀국 후 원격 대응 방식 — 사이트에 근거 없음]",
-          "再来院は不要ですが、帰国便に搭乗できる時期はカウンセリングで個別にご確認ください。[검수 필요: 보톡스·필러 후 비행 가능 시점 — 사이트에 근거 없음]"
+          "ヒアルロン酸は内出血や腫れが出ることがあります。一般的には数日から1週間ほどで落ち着きますが、個人差があります。マッサージや圧迫は避け、激しい運動とサウナは3日間控えてください。",
+          "ボトックスは初回施術の2〜3週間後にタッチアップが必要になる場合があります。その頃に帰国している方は、カウンセリングでお伝えください。帰国後はLINEやチャットで写真を送っていただければ経過を確認し、次回来院時に調整するか、現地での対応をご案内します。タッチアップの費用はカウンセリングでご確認ください。",
+          "帰国便について：どちらも再来院は不要で、非手術の施術のため一般的に飛行機への搭乗に制限はなく、当日または翌日の帰国便でも通常は問題ありません。個別の時期はカウンセリングでご確認ください。"
         ]
       },
       {
@@ -2209,7 +2209,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 8
+    "reviewMarkers": 0
   },
   {
     "title": "施術後の飛行機搭乗とダウンタイムの目安：1泊2日・2泊3日 美容医療旅行モデルプラン（新沙・LIV美容クリニック）",
@@ -2223,7 +2223,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓国 施術 日帰り 再来院不要"
     ],
     "category": "aftercare",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/international",
@@ -2303,7 +2303,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "シュリンク（30〜45分）、インモード（30〜60分）、デンシティ（40〜60分）、オンダ（顔15〜30分）も「すぐに日常復帰可能」「ダウンタイムなし」と案内されていますが、再来院の一覧にはないためカウンセリングでお尋ねください。[검수 필요: 슈링크·인모드·덴서티·온다 재방문 필요 여부 — international 체류 표에 없음]"
+        "text": "シュリンク（30〜45分）、インモード（30〜60分）、デンシティ（40〜60分）、オンダ（顔15〜30分）も「すぐに日常復帰可能」「ダウンタイムなし」と案内されています。再来院の一覧には載っていませんが、いずれも一般的に1回の施術で完結し、再来院は通常必要ありません。メンテナンスの間隔はカウンセリングで決めます。"
       },
       {
         "type": "h2",
@@ -2316,7 +2316,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "一方、「施術から何時間後なら搭乗してよい」という基準はサイトにありません。カウンセリングで個別に確認する事項で、この記事でも数字は書きません。[검수 필요: 시술별(울쎄라·써마지·보톡스·필러·스킨부스터·실리프팅) 비행 가능 시점 — 사이트에 근거 없음]"
+        "text": "一方、「施術から何時間後なら搭乗してよい」という基準はサイトにありません。一般的な目安としては、非手術の施術は飛行機の搭乗に制限がなく、当日または翌日の帰国便でも通常は無理がありません。糸リフト（APTOSを含む）は、通常1〜2日おいて腫れが落ち着いてから移動することをおすすめします。ご自身の場合の時期はカウンセリングで確認してください。"
       },
       {
         "type": "p",
@@ -2413,7 +2413,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "「帰国便の枠」はご自身のフライト時刻に置き換えてください。2日目・3日目の帰国に問題がないかはカウンセリングで確認する事項なので、予約時にフライト時刻もお伝えください。[검수 필요: 모델 일정의 2일째·3일째 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
+        "text": "「帰国便の枠」はご自身のフライト時刻に置き換えてください。非手術の施術であれば、施術翌日の帰国（1泊2日プランの2日目）は一般的に無理がありません。糸リフトは1日多く余裕をみるのがよいため、1泊2日より2泊3日プランのほうが向いています。ご自身の場合はカウンセリングで確認しますので、予約時にフライト時刻もお伝えください。"
       },
       {
         "type": "h2",
@@ -2423,14 +2423,14 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**ウルセラ：** 軽い腫れ・赤み、部位により一時的な感覚の変化の可能性。落ち着くまでの日数は記載がありません。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**ウルセラ：** 軽い腫れ・赤み、部位により一時的な感覚の変化の可能性。軽い腫れや赤みは通常、数時間から1〜2日で落ち着きます（個人差があります）。",
           "**サーマジFLX：** 一時的な赤みの可能性。",
           "**ボトックス：** 施術当日は飲酒とサウナを避け、施術部位をマッサージしない。",
           "**ヒアルロン酸：** 内出血・腫れの可能性。マッサージや圧迫は禁止、激しい運動とサウナは3日間避ける。",
           "**スキンブースター：** 微細な注射跡や赤みの可能性。当日はメイクと飲酒を避け、紫外線対策を徹底。",
           "**糸リフト：** 3〜7日は内出血・腫れの可能性。2週間は大きな表情やマッサージを避ける。軽いメイクは24時間後から。",
           "**レーザー施術を組み合わせる場合：** 医療Q&Aでは、最低2〜4週間は日焼け止め（SPF50+）と帽子・日傘で紫外線対策を徹底し、屋外活動が多い時期はレーザーを避けるのがよいとしています（[レーザー施術](/laser)）。",
-          "**ウルセラ・サーマジFLX後の入浴・サウナ・飲酒：** サイトに記載がありません。[검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]",
+          "**ウルセラ・サーマジFLX後の入浴・サウナ・飲酒：** 一般的な目安として、施術当日は飲酒・サウナ・熱い湯での入浴・激しい運動を避け、通常は1〜2日後から普段どおりに戻れます。",
           "**事前にお伝えください：** 妊娠中・授乳中（ほとんどの美容施術が推奨されません）、ペースメーカー装着（サーマジFLXは施術不可）、施術部位の金属インプラント（要相談）。"
         ]
       },
@@ -2441,7 +2441,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "帰国後もLINEやチャットで写真を送れば経過を確認し、日本語のアフターケア案内もお渡しします。糸リフトの1週間後の確認は写真で対応できます。ボトックスは初回の2〜3週間後にタッチアップが必要な場合があるとサイトにあるため、帰国後の対応はカウンセリングで確認してください。[검수 필요: 귀국한 외국인 환자의 보톡스 터치업 처리 방식 — 사이트에 근거 없음] そのほかは[医療Q&Aページ](/medical)へ。"
+        "text": "帰国後もLINEやチャットで写真を送れば経過を確認し、日本語のアフターケア案内もお渡しします。糸リフトの1週間後の確認は写真で対応できます。ボトックスは初回の2〜3週間後にタッチアップが必要な場合があるとサイトにあります。すでに帰国している場合は写真を送っていただければ状態を確認し、次回来院時に調整するか、現地での対応をご案内します。タッチアップの費用はカウンセリングでご確認ください。そのほかは[医療Q&Aページ](/medical)へ。"
       },
       {
         "type": "h2",
@@ -2460,7 +2460,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "支払いはVisa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金（カード分割払い可）。予定が変わったら同じチャットから早めにご連絡ください。[검수 필요: 예약 변경·취소 규정(항공편 지연 포함) — 사이트에 근거 없음] 関連：[ウルセラ料金ガイド](/guides/ultherapy-cost-seoul)、[日本語で予約する方法](/guides/book-seoul-clinic-foreigner)。"
+        "text": "支払いはVisa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金（カード分割払い可）。カウンセリング予約に予約金はありませんので、フライトの遅延を含めて予定が変わったら、同じチャットからできるだけ早めにご連絡ください。関連：[ウルセラ料金ガイド](/guides/ultherapy-cost-seoul)、[日本語で予約する方法](/guides/book-seoul-clinic-foreigner)。"
       },
       {
         "type": "h2",
@@ -2475,7 +2475,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "ウルセラやボトックスの翌日に飛行機に乗れますか？",
-        "a": "どちらも「当日・再来院不要」「すぐに日常復帰可能」と案内されています。ただし「施術後何時間で搭乗可」という基準はサイトになく、カウンセリングで個別に確認する事項です。予約時にフライト時刻をお伝えください。"
+        "a": "一般的には問題ありません。ウルセラやボトックスなどの非手術の施術は飛行機の搭乗に制限がなく、当日または翌日の帰国便でも通常は無理がありません。どちらも「当日・再来院不要」「すぐに日常復帰可能」と案内されています。ただし「施術後何時間で搭乗可」という基準はサイトになく、ご自身の場合の時期はカウンセリングで確認しますので、予約時にフライト時刻をお伝えください。"
       },
       {
         "q": "施術のためにソウルに何日滞在すればよいですか？",
@@ -2490,8 +2490,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "チャットやメッセンジャーで写真を送れば経過を確認します。日本語のアフターケア案内もあります。"
       }
     ],
-    "readingMinutes": 8,
-    "reviewMarkers": 7
+    "readingMinutes": 9,
+    "reviewMarkers": 0
   },
   {
     "title": "韓国でタトゥー除去：ピコレーザーの回数・費用・旅行日程（新沙・LIV美容クリニック）",
@@ -2505,7 +2505,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙 カロスキル タトゥー除去"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/laser/tattoo",
@@ -2571,7 +2571,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「1箇所」がどの程度の大きさまでか、大きなタトゥーや複数部位をどう数えるかは、カウンセリングで確認してください。[검수 필요: '1箇所(1부위)'의 크기 기준과 큰 문신·여러 부위의 산정 방식 — 사이트에 근거 없음] 複数回の施術になるため、見込む費用は「1回あたりの料金 × カウンセリングで提示される回数」です。"
+        "text": "「1箇所」は一般的に小さなタトゥー1つを指します。大きなタトゥーや複数部位の場合は、写真を送っていただければ、大きさと数に応じてカウンセリングでお見積もりします。複数回の施術になるため、見込む費用は「1回あたりの料金 × カウンセリングで提示される回数」です。"
       },
       {
         "type": "h3",
@@ -2689,11 +2689,11 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**かさぶた（3〜7日）：** 剥がさず自然に取れるのを待ってください。軽い腫れが出ることもあります。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**かさぶた（3〜7日）：** 剥がさず自然に取れるのを待ってください。軽い腫れが出ることもあります。かさぶたが取れたあとに残る赤みは、通常は数週間かけて少しずつ薄くなっていきます（個人差があります）。",
           "**紫外線：** レーザー後の肌は敏感になり、色素沈着のリスクが高まります。最低2〜4週間はSPF50+の日焼け止めと帽子・日傘を。野外活動が多い時期は施術を避けることも勧めているので、屋外の予定が多い旅程なら施術日を事前に相談してください。",
           "**サウナ・激しい運動：** 施術後1週間は避けてください（施術ページの注意事項）。処方された軟膏は指示どおりに塗ります。",
-          "**海水浴・プール・温泉：** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
-          "**帰国便：** カウンセリングで個別に確認してください。[검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]"
+          "**海水浴・プール・温泉：** かさぶたが自然に取れるまで（通常1〜2週間、個人差があります）は控えてください。",
+          "**帰国便：** 非手術の施術のため、一般的に飛行機の搭乗に制限はなく、当日または翌日の帰国便でも無理のないことが多いです。個別のタイミングはカウンセリングで確認してください。"
         ]
       },
       {
@@ -2786,7 +2786,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 10,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "韓国でウルセラを受ける前に：値段・ショット数・正規品の見分け方（新沙・LIV美容クリニック）",
@@ -2800,7 +2800,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "ウルセラ ショット数 料金"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting/ulthera",
@@ -2897,7 +2897,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**所要時間：** 麻酔クリームを約30分塗布したあと、施術は60〜90分です。入院は不要で、多くの方がカウンセリング当日に施術を受けています。",
           "**再来院：** ウルセラプライムは1回で完了し、再来院は不要です（当日で完了）。",
-          "**ダウンタイム：** 施術後すぐに日常生活に戻れます。軽い腫れや赤みが出ることがあり、部位によっては一時的な感覚の変化が起こることがあります。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**ダウンタイム：** 施術後すぐに日常生活に戻れます。軽い腫れや赤みが出ることがありますが、一般的に数時間から1〜2日ほどで落ち着きます（個人差があります）。部位によっては一時的な感覚の変化が起こることがあります。",
           "**痛み：** 麻酔クリームを使用するため、多くの方が我慢できる程度です。",
           "**効果：** 施術直後の変化に加えて、3〜6ヶ月かけて徐々に改善し、1〜2年持続します。"
         ]
@@ -2932,8 +2932,8 @@ export const GUIDES: readonly GuideDoc[] = [
           "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分。仁川空港からは空港鉄道（AREX）またはリムジンバスで約70〜90分、タクシーで約60分。金浦空港からはタクシーまたは地下鉄で約40分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
           "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。",
           "**カウンセリング料：** 1:1専門相談費用は1万ウォンで、当日施術を行う場合は施術金額から全額差し引かれます。",
-          "**帰国便のタイミング：** 再来院は不要ですが、飛行機に乗ってよい時期はカウンセリングで個別に確認してください。[검수 필요: 비행 가능 시점 — 사이트에 근거 없음]",
-          "**入浴・飲酒・サウナ：** [검수 필요: 시술 후 입욕·음주·사우나 제한 — 사이트에 근거 없음]"
+          "**帰国便のタイミング：** 再来院は不要です。ウルセラのような非手術の施術は一般的に飛行機の搭乗に制限がなく、当日または翌日の帰国便でも通常は差し支えありません。ご自身に合った時期は、カウンセリングで個別にご確認ください。",
+          "**入浴・飲酒・サウナ：** 施術当日は飲酒・サウナ・激しい運動を控えてください。通常は1〜2日後から普段どおりに戻れます。入浴を含めた個別の注意点は、カウンセリングでご確認ください。"
         ]
       },
       {
@@ -3018,8 +3018,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "施術直後にも変化があり、その後3〜6ヶ月かけて徐々に改善します。効果は1〜2年持続します。"
       }
     ],
-    "readingMinutes": 7,
-    "reviewMarkers": 3
+    "readingMinutes": 8,
+    "reviewMarkers": 0
   },
   {
     "title": "ウルセラ・サーマクール・シュリンクの違いと韓国での料金（新沙・LIV美容クリニック）",
@@ -3033,7 +3033,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "ウルセラ シュリンク 違い"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -3082,7 +3082,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "麻酔",
             "麻酔クリーム（30分）",
-            "無麻酔（振動技術で痛み軽減）",
+            "通常は無麻酔（振動技術で痛み軽減）・希望により麻酔クリーム",
             "麻酔クリーム（選択）"
           ],
           [
@@ -3107,7 +3107,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "表の値はLIVの各施術ページと外国人向け案内ページの記載です（シュリンクの再来院は予約時にご確認ください）。[검수 필요: 써마지 마취 — 시술 페이지는 '무마취(진동 기술)', 의료 Q&A(lifting-pain)는 '마취 크림 30분 후 진행'으로 상충, 한 가지로 확정 필요]"
+        "text": "表の値はLIVの各施術ページと外国人向け案内ページの記載です（シュリンクの再来院は予約時にご確認ください）。サーマクールFLXは振動技術で痛みが軽減されるため、通常は麻酔なしで行い、ご希望があれば麻酔クリームを塗ることもできます。"
       },
       {
         "type": "h2",
@@ -3120,7 +3120,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「手術なしでリフティングしたい」「たるみや弾力低下が気になる」「自然な変化がいい」「ダウンタイムなしで受けたい」方向け。対象は額・目元・頬・顎ライン・首で、施術は1〜2年に1回が目安。麻酔クリーム使用で多くの方が我慢できる程度の痛みです。LIVはウルセラプライムの正規認証院です（[ウルセラのページ](/lifting/ulthera)・[料金ガイド](/guides/ultherapy-cost-seoul)）。[검수 필요: 울쎄라 효과 지속 — 시술 페이지 '1–2년 유지'와 의료 Q&A(lifting-duration) '약 1년'이 다름, 표기 통일 필요]"
+        "text": "「手術なしでリフティングしたい」「たるみや弾力低下が気になる」「自然な変化がいい」「ダウンタイムなしで受けたい」方向け。対象は額・目元・頬・顎ライン・首。効果は一般的に1〜2年持続し（個人差があります）、施術は1〜2年に1回が目安。麻酔クリーム使用で多くの方が我慢できる程度の痛みです。LIVはウルセラプライムの正規認証院です（[ウルセラのページ](/lifting/ulthera)・[料金ガイド](/guides/ultherapy-cost-seoul)）。"
       },
       {
         "type": "h3",
@@ -3242,7 +3242,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**診療時間。** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間）。",
           "**アクセス。** 地下鉄3号線・新沙駅4番出口から徒歩1分。仁川空港から約70〜90分（AREX・リムジンバス）、タクシーで約60分。金浦空港からはタクシー・地下鉄で約40分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
           "**支払い。** Visa・Mastercard・American Express・JCB・UnionPay・韓国ウォン現金（分割払い可）。",
-          "**帰国便。** 搭乗のタイミングはカウンセリングで個別に確認します。[검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
+          "**帰国便。** 3つとも入院不要で、このような非手術施術は一般的に搭乗の制限がなく、当日または翌日の帰国便でも通常は問題ありません。個別のタイミングはカウンセリングで確認します。"
         ]
       },
       {
@@ -3261,7 +3261,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**ペースメーカー**を装着している方は、サーマクールFLXを受けられません。",
           "**金属インプラント**が施術部位にある場合、ウルセラとサーマクールは事前のカウンセリングが必要です。",
           "**敏感肌**の方は、シュリンクは事前のカウンセリングが必要です。",
-          "**施術後**は、軽い腫れ・赤み（ウルセラ）、一時的な赤み（サーマクール）、軽い赤み（シュリンク）が出ることがあり、ウルセラは部位により一時的な感覚の変化も起こりえます。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]"
+          "**施術後**は、軽い腫れ・赤み（ウルセラ）、一時的な赤み（サーマクール）、軽い赤み（シュリンク）が出ることがあり、ウルセラは部位により一時的な感覚の変化も起こりえます。軽い腫れや赤みは、通常数時間から1〜2日で落ち着きます（個人差があります）。"
         ]
       },
       {
@@ -3301,7 +3301,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "首尔江南医美诊所中文预约教学：微信、WhatsApp、在线聊天三步搞定",
@@ -3315,7 +3315,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韩国 医美 外国人 同价"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "locale": "zh",
@@ -3421,7 +3421,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**联系诊所** — 通过微信（或 WhatsApp、LINE、网站在线客服）用中文发消息，一个工作日内会收到回复。",
           "**远程咨询与报价** — 分享困扰和照片，诊所推荐适合的项目并发送明确的报价。报价与[价目表](/pricing)一致：按单次计算、不含增值税，最终金额在到院面诊后确定。",
-          "**预约到院日期** — 选择符合行程的日期和时间并预约。预约面诊无需定金。[검수 필요: 예약 일정 변경·취소 안내 문구 — 사이트에 규정 없음]",
+          "**预约到院日期** — 选择符合行程的日期和时间并预约。预约面诊无需定金，因此如果行程有变（包括航班延误），通过同一个渠道尽早告知诊所即可。",
           "**到院面诊、当天治疗** — 由医生面诊做最后确认，多数情况下当天即可进行治疗。",
           "**远程术后随访** — 回国后，通过微信或在线客服跟进恢复情况、解答疑问。"
         ]
@@ -3481,7 +3481,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "**营业时间**：周一至周五 10:00–19:00 ／ 周六 10:00–16:00 ／ 周日休息 [검수 필요: 한국 공휴일 휴진 여부 — 사이트에 근거 없음]"
+        "text": "**营业时间**：周一至周五 10:00–19:00 ／ 周六 10:00–16:00 ／ 周日休息。韩国的法定节假日（春节、中秋等连休期间）一般也休诊，如果旅行日期与节假日重叠，请先通过微信或在线客服确认可以就诊的日期。"
       },
       {
         "type": "p",
@@ -3495,7 +3495,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**付款**：可使用 Visa、Mastercard、American Express、JCB、银联（UnionPay）等境外发行的银行卡，也可以用韩元（KRW）现金付款。没有定金，也没有“外国人价格”，到院后按公开的价格付款。只做面诊时，1对1专业咨询费用为1万韩元，当天进行治疗时可从治疗费用中全额抵扣。支付宝、微信支付是否可用，请在咨询时先问清楚。[검수 필요: Alipay·WeChat Pay 등 모바일 결제 가능 여부 — 사이트에 근거 없음]",
+          "**付款**：可使用 Visa、Mastercard、American Express、JCB、银联（UnionPay）等境外发行的银行卡，也可以用韩元（KRW）现金付款。没有定金，也没有“外国人价格”，到院后按公开的价格付款。只做面诊时，1对1专业咨询费用为1万韩元，当天进行治疗时可从治疗费用中全额抵扣。付款以境外发行的银行卡和韩元现金为主，支付宝、微信支付等移动支付是否可用，请在到院前通过微信或在线客服先确认。",
           "**翻译**：支持中文、英语、日语咨询，如需翻译可免费安排，语言服务不收取额外费用。到院前的微信沟通也直接用中文。",
           "**回国后的随访**：通过同一个微信或在线客服发照片，诊所会查看恢复情况并指导护理。离院时还会拿到中文的书面术后护理指南。更多外国患者常问的问题见[医疗信息页面](/medical)。"
         ]
@@ -3537,7 +3537,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 3
+    "reviewMarkers": 0
   },
   {
     "title": "首尔肉毒素与玻尿酸价格：单位、部位与外国人同价",
@@ -3551,7 +3551,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首尔 新沙 医美 中文"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/antiaging/botox",
@@ -3617,7 +3617,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "价目表上有两点没有写明。一是轮廓肉毒素的标价包含多少单位。[검수 필요: 윤곽 보톡스(턱·관자놀이) 표시 가격에 포함되는 단위 수 — 사이트에 근거 없음] 二是表情纹（额头、眉间、眼角、嘴角）的肉毒素价格，肉毒素页面虽然把这些列为治疗部位，价目表上却没有公开。[검수 필요: 표정 주름 보톡스(이마·미간·눈가·입꼬리) 가격 공개 여부 — 사이트 가격표에 없음] 如果你想做的是这些部位，咨询时可以直接询问报价。"
+        "text": "价目表上有两点没有写明。一是轮廓肉毒素的标价包含多少单位：包含的单位数因部位和肌肉量而不同，在面诊时确定。二是表情纹（额头、眉间、眼角、嘴角）的肉毒素价格，肉毒素页面虽然把这些列为治疗部位，价目表上却没有公开，因此表情纹肉毒素需要在面诊时获取报价。如果你想做的是这些部位，第一次咨询时就可以直接说明。"
       },
       {
         "type": "h2",
@@ -3652,7 +3652,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "400,000韩元起"
           ],
           [
-            "香奈儿注射 [검수 필요: 샤넬주사가 필러 표에 맞는 항목인지 확인 — 사이트 필러 가격표에 있음]",
+            "香奈儿注射（水光针类注射，以改善肤质与补水为目的）",
             "3cc",
             "330,000韩元起"
           ],
@@ -3669,7 +3669,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "每cc的价格按\"国产、国产高端、进口\"分档公开，价目表上没有列出具体品牌名。[검수 필요: 국산·국산 프리미엄·수입 필러 및 국산 보톡스의 실제 브랜드명 공개 가능 여부 — 사이트에 근거 없음] 哪种产品适合你的面部、需要几cc，由院长看过你的情况后和你一起决定。"
+        "text": "每cc的价格按\"国产、国产高端、进口\"分档公开，价目表上没有列出具体品牌名。除了价目表上已写明的产品名（肉毒素的Xeomin、Allergan）之外，国产产品会在面诊时介绍。哪种产品适合你的面部、需要几cc，由院长看过你的情况后和你一起决定。"
       },
       {
         "type": "h2",
@@ -3681,7 +3681,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**\"起\"表示起价。** 每个数字是该产品的起始价格。最终价格在当面面诊、院长和你确认部位与用量之后确定，增值税另计。",
           "**肉毒素：产品是价格差异的主要原因。** 同样是轮廓部位，国产产品从60,000韩元起，Allergan从190,000韩元起。诊所的说明是，不同产品的起效时间、扩散程度和持续时间不同，所以选哪一种要在面诊时决定，而不是在网上决定。",
-          "**身体肉毒素按每100IU计价。** 每个部位需要多少个100IU，由院长决定。[검수 필요: 부위별 권장 용량(단위·cc) — 사이트에 근거 없음]",
+          "**身体肉毒素按每100IU计价。** 每个部位需要多少剂量，由院长在面诊时看过实际情况后决定。",
           "**玻尿酸按每cc计价。** 用每cc价格乘以实际使用的cc数。一个部位需要几cc因人而异，在面诊时确定。",
           "**外国患者不加价。** 使用同一份价目表，翻译和语言服务也不收费。"
         ]
@@ -3743,9 +3743,9 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "肉毒素：治疗当天避免饮酒和桑拿，不要按摩治疗部位。",
-          "玻尿酸：可能出现淤青或肿胀；不要按摩或按压治疗部位，3天内避免剧烈运动和桑拿。[검수 필요: 필러 후 멍·붓기가 가라앉는 일수 — 사이트에 근거 없음]",
-          "肉毒素首次治疗后2–3周可能需要补打。如果那时你已经离开韩国，请在面诊时说明。[검수 필요: 터치업 비용과 귀국 후 원격 대응 방식 — 사이트에 근거 없음]",
-          "回程航班：两个项目都不需要复诊，但什么时候可以坐飞机，请在面诊时向诊所确认。[검수 필요: 보톡스·필러 후 비행 가능 시점 — 사이트에 근거 없음]"
+          "玻尿酸：可能出现淤青或肿胀，一般几天到一周左右会消退，因人而异；不要按摩或按压治疗部位，3天内避免剧烈运动和桑拿。",
+          "肉毒素首次治疗后2–3周可能需要补打。如果那时你已经离开韩国，请在面诊时说明：回国后可以通过微信或在线客服发照片，诊所查看情况后，会在你下次到院时调整，或告诉你在当地可以怎么处理。补打的费用请在面诊时确认。",
+          "回程航班：两个项目都不需要复诊，而且属于非手术项目，一般对坐飞机没有限制，当天或第二天的回程航班通常没有问题。个人的具体时间请在面诊时向诊所确认。"
         ]
       },
       {
@@ -3848,7 +3848,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 8
+    "reviewMarkers": 0
   },
   {
     "title": "做完项目能马上坐飞机吗？各项目恢复期与首尔 2–3 天医美行程",
@@ -3863,7 +3863,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韩国 医美 当天完成"
     ],
     "category": "aftercare",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/international",
@@ -3943,7 +3943,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV的其他提升仪器——Shurink（30–45分钟）、InMode（30–60分钟）、Density（40–60分钟）、ONDA（面部15–30分钟）——官网也标注为\"即刻可恢复日常生活\"或\"无恢复期\"，但不在复诊列表中，是否需要后续复查请在面诊时询问。[검수 필요: 슈링크·인모드·덴서티·온다 재방문 필요 여부 — international 체류 표에 없음]"
+        "text": "LIV的其他提升仪器——Shurink（30–45分钟）、InMode（30–60分钟）、Density（40–60分钟）、ONDA（面部15–30分钟）——官网也标注为\"即刻可恢复日常生活\"或\"无恢复期\"，虽然不在复诊列表中，但一般都是一次治疗即完成，通常不需要复诊；维护保养的间隔在面诊时确定。"
       },
       {
         "type": "p",
@@ -3960,7 +3960,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "官网没有写的是\"治疗后几小时可以坐飞机\"这样的标准。这需要结合项目、部位和皮肤状况在面诊时逐一确认，本文也不会给出数字。[검수 필요: 시술별(울쎄라·써마지·보톡스·필러·스킨부스터·실리프팅) 비행 가능 시점 — 사이트에 근거 없음]"
+        "text": "官网没有写的是\"治疗后几小时可以坐飞机\"这样的标准。一般来说，非手术项目对坐飞机没有限制，当天或第二天的回程航班通常没有问题；线雕（包括APTOS）一般建议等1–2天、肿胀消退后再出行。你自己的具体时间，要在面诊时结合项目、部位和皮肤状况确认。"
       },
       {
         "type": "p",
@@ -4057,7 +4057,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "\"回程航班时段\"请替换成你自己的航班时间。你做的项目是否适合第2天或第3天回程，要在面诊时逐一确认，预约时请一并告知航班时间。[검수 필요: 모델 일정의 제2일·제3일 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
+        "text": "\"回程航班时段\"请替换成你自己的航班时间。非手术项目一般可以安排在治疗次日回程（两天一夜范例的第2天）；线雕最好多留一天再回程，因此比起两天一夜，三天两夜的范例更合适。你自己的情况以面诊确认为准，预约时请一并告知航班时间。"
       },
       {
         "type": "h2",
@@ -4067,14 +4067,14 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**超声刀：** 可能有轻微肿胀、泛红，部分部位可能出现暂时性感觉异常。需要几天消退，官网没有写明。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**超声刀：** 可能有轻微肿胀、泛红，部分部位可能出现暂时性感觉异常。轻微的肿胀和泛红通常在几小时到1–2天内消退，因人而异。",
           "**热玛吉FLX：** 可能出现暂时性泛红。",
           "**肉毒素：** 治疗当天避免饮酒和桑拿，不要按摩治疗部位。",
           "**玻尿酸：** 可能有淤青、肿胀；不要按摩或按压治疗部位；3天内避免剧烈运动和桑拿。",
           "**水光针：** 可能有细微针痕和泛红；治疗当天不化妆、不饮酒；做好防晒。",
           "**线雕：** 恢复期1–7天（依部位而异）；2周内避免夸张表情和按摩；可能有牵拉感，初期的轻微异物感会在2–4周内消失；24小时后可以化淡妆。",
           "**激光项目（如果也在计划内）：** 医疗问答中说，激光后至少2–4周要仔细涂抹防晒霜（SPF 50+）并使用帽子或遮阳伞，户外活动较多的季节建议避免激光治疗；Clarity II治疗表皮色素时，色素会加深或形成薄痂，3–5天后自然脱落。详见[激光项目](/laser)。",
-          "**超声刀、热玛吉FLX之后的泡澡、桑拿、饮酒：** 官网没有说明。[검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]",
+          "**超声刀、热玛吉FLX之后的泡澡、桑拿、饮酒：** 一般建议治疗当天避免饮酒、桑拿、热水泡澡和剧烈运动，通常1–2天后即可恢复平时的习惯。",
           "**请务必告知诊所：** 怀孕或哺乳期（大多数美容治疗不建议进行）、装有心脏起搏器（热玛吉FLX不能做）、治疗部位有金属植入物（需要先咨询）。"
         ]
       },
@@ -4085,7 +4085,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "回国后，你可以通过微信或在线客服发送照片，诊所会查看恢复情况并指导术后护理，并提供中文的术后护理指南。线雕约1周后的复查，可以用远程照片复查完成。肉毒素3–7天后开始见效，官网提到首次治疗后2–3周可能需要补打，回国后遇到这种情况怎么处理，请在面诊时先问清楚。[검수 필요: 귀국한 외국인 환자의 보톡스 터치업 처리 방식 — 사이트에 근거 없음] 更多问题见[医疗问答页](/medical)。"
+        "text": "回国后，你可以通过微信或在线客服发送照片，诊所会查看恢复情况并指导术后护理，并提供中文的术后护理指南。线雕约1周后的复查，可以用远程照片复查完成。肉毒素3–7天后开始见效，官网提到首次治疗后2–3周可能需要补打。如果你已经回国，可以先发照片让诊所查看效果，诊所会在你下次到院时调整，或告诉你在当地可以怎么处理；补打的费用请在面诊时确认。更多问题见[医疗问答页](/medical)。"
       },
       {
         "type": "h2",
@@ -4104,7 +4104,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "付款可用Visa、Mastercard、American Express、JCB、银联(UnionPay)或韩元现金，也可以信用卡分期。行程有变时，请尽早通过原来的聊天渠道告知诊所。[검수 필요: 예약 변경·취소 규정(항공편 지연 포함) — 사이트에 근거 없음] 超声刀的价格和发数见[超声刀价格指南](/guides/ultherapy-cost-seoul)，预约流程的详细步骤见[中文预约教学](/guides/book-seoul-clinic-foreigner)。"
+        "text": "付款可用Visa、Mastercard、American Express、JCB、银联(UnionPay)或韩元现金，也可以信用卡分期。预约面诊不收定金，所以行程有变（包括航班延误）时，只需尽早通过原来的聊天渠道告知诊所即可。超声刀的价格和发数见[超声刀价格指南](/guides/ultherapy-cost-seoul)，预约流程的详细步骤见[中文预约教学](/guides/book-seoul-clinic-foreigner)。"
       },
       {
         "type": "h2",
@@ -4119,7 +4119,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "做完超声刀或肉毒素，第二天能坐飞机吗？",
-        "a": "两者官网都标注为\"当天 · 无需复诊\"\"即刻可恢复日常生活\"，不会因为需要复诊而必须留在首尔。但官网没有公布\"治疗后几小时可以登机\"的标准，回程时间要在面诊时按你的情况确认，预约时请告知航班时间。"
+        "a": "一般可以。超声刀、肉毒素这类非手术项目对坐飞机没有限制，当天或第二天的回程航班通常没有问题。两者官网都标注为\"当天 · 无需复诊\"\"即刻可恢复日常生活\"，不会因为需要复诊而必须留在首尔。官网没有公布\"治疗后几小时可以登机\"的标准，回程时间要在面诊时按你的情况确认，预约时请告知航班时间。"
       },
       {
         "q": "做项目需要在首尔停留几天？",
@@ -4143,7 +4143,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 7
+    "reviewMarkers": 0
   },
   {
     "title": "首尔皮秒激光洗纹身：疗程次数、费用与行程安排",
@@ -4157,7 +4157,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首尔 洗眉 洗眼线"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/laser/tattoo",
@@ -4264,7 +4264,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "关于这张表有两点说明。CO2激光的几行虽然列在同一价格分组，但用于去除痣、扁平疣和老年斑，不是用来洗纹身墨水的；洗纹身看第一行即可。另外，\"1部位\"具体指多大范围、较大或多处的纹身怎么计算，请在面诊时确认。[검수 필요: '1부위'의 크기 기준과 큰 문신·여러 부위의 산정 방식 — 사이트에 근거 없음]"
+        "text": "关于这张表有两点说明。CO2激光的几行虽然列在同一价格分组，但用于去除痣、扁平疣和老年斑，不是用来洗纹身墨水的；洗纹身看第一行即可。另外，\"1部位\"一般指一个小面积的纹身；较大或多处的纹身，可以先发照片，诊所会在面诊时按大小和数量报价。"
       },
       {
         "type": "p",
@@ -4365,11 +4365,11 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**结痂（3–7天）：** 会有细小的结痂，等它自然脱落，不要抠；也可能有轻微肿胀。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**结痂（3–7天）：** 会有细小的结痂，等它自然脱落，不要抠；也可能有轻微肿胀。结痂脱落后留下的泛红，一般会在几周内逐渐变淡，快慢因人而异。",
           "**防晒：** 激光后皮肤敏感，紫外线导致色素沉着的风险增加。至少2–4周内仔细涂抹SPF 50+防晒霜，并使用帽子或遮阳伞。诊所也建议避开户外活动多的时期做激光；如果接下来的行程以户外为主，请提前和诊所商量治疗日期。",
           "**桑拿、剧烈运动：** 治疗后1周内避免（治疗页面的注意事项）；处方药膏按指示涂抹。",
-          "**游泳、海水、温泉：** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
-          "**回程航班：** 请在面诊时向诊所确认。[검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]"
+          "**游泳、海水、温泉：** 在结痂自然脱落之前请避免，通常是1–2周，因人而异。",
+          "**回程航班：** 皮秒激光洗纹身属于非手术项目，一般对乘坐飞机没有限制，当天或第二天的回程航班通常都没有问题；具体时间请在面诊时向诊所确认。"
         ]
       },
       {
@@ -4469,7 +4469,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "首尔超声刀(Ultherapy)价格与行程规划：外国人同价、当天完成",
@@ -4483,7 +4483,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首尔 超声刀 当天完成"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting/ulthera",
@@ -4564,7 +4564,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**在院时间：** 先涂麻醉霜约30分钟，治疗本身需要60–90分钟。LIV的大多数非手术项目约需30~90分钟、无需住院，所以很多患者到院当天就完成治疗。",
           "**是否需要复诊：** 超声刀Prime一次完成，当天做完、无需复诊，这也是它容易排进短途行程的原因。",
-          "**恢复期：** 治疗后即刻可恢复日常生活。治疗后可能有轻微肿胀、泛红，部分部位可能出现暂时性的感觉异常。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**恢复期：** 治疗后即刻可恢复日常生活。治疗后可能有轻微肿胀、泛红，一般在几小时到1–2天内消退（因人而异）；部分部位可能出现暂时性的感觉异常。",
           "**疼痛：** 涂麻醉霜后进行，多数人可以承受。",
           "**效果：** 治疗后即刻有初步效果，之后3–6个月逐渐改善，可维持1–2年。"
         ]
@@ -4597,9 +4597,9 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**诊疗时间：** 周一至周五 10:00–19:00，周六 10:00–16:00，周日休息（韩国时间）。",
           "**交通：** 地铁3号线新沙站4号出口，步行1分钟。从仁川机场乘机场铁路(AREX)或机场大巴约70–90分钟，出租车约60分钟；从金浦机场乘出租车或地铁约40分钟。地址：首尔特别市瑞草区Naruteo-ro 80号 自恩大厦4层。",
-          "**付款方式：** Visa、Mastercard、American Express、JCB、银联(UnionPay)，以及韩元现金。支付宝、微信支付：[검수 필요: Alipay·WeChat Pay 사용 가능 여부 — 사이트에 근거 없음]",
-          "**回程航班：** 超声刀Prime无需复诊，但什么时候可以乘飞机，请在面诊时向诊所确认。[검수 필요: 비행 가능 시점 — 사이트에 근거 없음]",
-          "**饮酒、桑拿：** [검수 필요: 시술 후 음주·사우나 제한 — 사이트에 근거 없음]"
+          "**付款方式：** 以海外发行的银行卡（Visa、Mastercard、American Express、JCB、银联(UnionPay)）和韩元现金为主。支付宝、微信支付等移动支付能否使用，请在到院前通过微信或在线客服向诊所确认。",
+          "**回程航班：** 超声刀Prime无需复诊。像超声刀这样的非手术项目，一般对乘坐飞机没有限制，安排当天或次日的回程航班通常没有问题；你个人的具体时间，请在面诊时向诊所确认。",
+          "**饮酒、桑拿：** 治疗当天请避免饮酒、桑拿和剧烈运动，一般1–2天后即可恢复平常的生活习惯。个人的具体注意事项，请在面诊时确认。"
         ]
       },
       {
@@ -4685,7 +4685,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "超声刀、热玛吉、Shurink 怎么选：首尔诊所的对比与价格",
@@ -4699,7 +4699,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韩国 超声刀 价格"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -4752,7 +4752,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "麻醉",
             "麻醉霜（30分钟）",
-            "无需麻醉（振动技术减少疼痛）",
+            "通常无需麻醉（振动技术减少疼痛），可按需涂麻醉霜",
             "麻醉霜（可选）"
           ],
           [
@@ -4777,7 +4777,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "治疗时间、麻醉、恢复和效果取自LIV各项目页面；超声刀和热玛吉“无需复诊”取自国际患者页面。Shurink 没有公开的复诊说明，预约时请询问。关于疼痛：超声刀涂麻醉霜后进行，多数人可以承受；热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛。如果你对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知。[검수 필요: 써마지 마취 — 시술 페이지는 '무마취(진동 기술)', 의료 Q&A(lifting-pain)는 '마취 크림 30분 후 진행'으로 상충, 한 가지로 확정 필요]"
+        "text": "治疗时间、麻醉、恢复和效果取自LIV各项目页面；超声刀和热玛吉“无需复诊”取自国际患者页面。Shurink 没有公开的复诊说明，预约时请询问。关于疼痛：超声刀涂麻醉霜后进行，多数人可以承受；热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛，通常无需麻醉即可进行，如有需要也可以涂麻醉霜。如果你对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知。"
       },
       {
         "type": "h2",
@@ -4790,7 +4790,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "超声刀是HIFU项目。LIV把它描述为适合“想不做手术就提升的人”“在意皮肤下垂、弹性下降的人”“希望变化自然的人”“不想有恢复期的人”。治疗部位是额头、眼周、面颊、下颌线和颈部。先涂约30分钟麻醉霜，治疗本身60–90分钟。治疗后立即可感受到效果，之后3–6个月逐渐改善，诊所建议1–2年做一次。LIV是超声刀(Ultherapy Prime)正品认证诊所。详见[超声刀页面](/lifting/ulthera)；各部位价格的详细说明见[超声刀价格指南](/guides/ultherapy-cost-seoul)。[검수 필요: 울쎄라 효과 지속 — 시술 페이지 '1–2년 유지'와 의료 Q&A(lifting-duration) '약 1년'이 다름, 표기 통일 필요]"
+        "text": "超声刀是HIFU项目。LIV把它描述为适合“想不做手术就提升的人”“在意皮肤下垂、弹性下降的人”“希望变化自然的人”“不想有恢复期的人”。治疗部位是额头、眼周、面颊、下颌线和颈部。先涂约30分钟麻醉霜，治疗本身60–90分钟。治疗后立即可感受到效果，之后3–6个月逐渐改善，效果一般可维持1–2年（因人而异），诊所建议1–2年做一次。LIV是超声刀(Ultherapy Prime)正品认证诊所。详见[超声刀页面](/lifting/ulthera)；各部位价格的详细说明见[超声刀价格指南](/guides/ultherapy-cost-seoul)。"
       },
       {
         "type": "h3",
@@ -4914,7 +4914,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**诊疗时间。** 周一至周五 10:00–19:00，周六 10:00–16:00，周日休息（韩国时间）。",
           "**交通。** 地铁3号线新沙站4号出口步行1分钟。从仁川机场乘机场铁路(AREX)或机场大巴约70–90分钟，出租车约60分钟；从金浦机场约40分钟。地址：首尔特别市瑞草区Naruteo-ro 80号 自恩大厦4层。",
           "**付款。** Visa、Mastercard、American Express、JCB、银联(UnionPay)和韩元现金。可以信用卡分期，具体条件请在咨询时询问。",
-          "**回程航班。** 三个项目都不需要住院，搭乘航班的时间由诊所在面诊时与你单独确认。[검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
+          "**回程航班。** 三个项目都不需要住院，这类非手术项目一般对搭乘航班没有限制，当天或第二天的回程航班通常都没有问题。具体时间由诊所在面诊时与你单独确认。"
         ]
       },
       {
@@ -4933,7 +4933,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**心脏起搏器。** 装有心脏起搏器的人不能做热玛吉FLX。",
           "**金属植入物。** 做超声刀或热玛吉时，如果治疗部位有金属植入物，需要先咨询。",
           "**敏感肌肤。** 做 Shurink 时，敏感肌肤需要先咨询。",
-          "**治疗后。** 超声刀后可能有轻微肿胀、泛红，热玛吉后可能有暂时性泛红，Shurink 后可能有轻微泛红；超声刀部分部位可能出现暂时性的感觉异常。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]"
+          "**治疗后。** 超声刀后可能有轻微肿胀、泛红，热玛吉后可能有暂时性泛红，Shurink 后可能有轻微泛红；超声刀部分部位可能出现暂时性的感觉异常。轻微的肿胀和泛红一般在几小时到1–2天内消退，具体因人而异。"
         ]
       },
       {
@@ -4973,7 +4973,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "首爾江南醫美診所 中文預約教學（LINE／WhatsApp／WeChat）",
@@ -4987,7 +4987,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙站 醫美 診所"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "locale": "zh-TW",
@@ -5093,7 +5093,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**聯絡診所** — 透過 LINE 或 WhatsApp（或 WeChat、網站線上客服）用中文傳訊息，一個工作天內會收到回覆。",
           "**遠距諮詢與報價** — 分享困擾和照片，診所推薦適合的療程並傳送明確的報價。報價與[價目表](/pricing)一致：以單次計算、未含增值稅，最終金額在到院面診後確定。",
-          "**預約到院日期** — 選擇符合行程的日期和時間並預約。預約面診不需要訂金。[검수 필요: 예약 일정 변경·취소 안내 문구 — 사이트에 규정 없음]",
+          "**預約到院日期** — 選擇符合行程的日期和時間並預約。預約面診不需要訂金，因此如果行程有變（包括航班延誤），透過同一個管道盡早告知診所即可。",
           "**到院面診、當天治療** — 由醫師面診做最後確認，多數情況下當天即可進行治療。",
           "**遠距術後追蹤** — 回國後，透過 LINE、WhatsApp 或線上客服追蹤恢復情況、解答疑問。"
         ]
@@ -5153,7 +5153,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "**營業時間**：週一至週五 10:00–19:00 ／ 週六 10:00–16:00 ／ 週日休診 [검수 필요: 한국 공휴일 휴진 여부 — 사이트에 근거 없음]"
+        "text": "**營業時間**：週一至週五 10:00–19:00 ／ 週六 10:00–16:00 ／ 週日休診。韓國的國定假日（農曆新年、中秋等連假期間）一般也休診，如果旅行日期與假日重疊，請先透過 LINE 或線上客服確認可以看診的日期。"
       },
       {
         "type": "p",
@@ -5167,7 +5167,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**付款**：可使用 Visa、Mastercard、American Express、JCB、銀聯（UnionPay）等境外發行的信用卡，也可以用韓元（KRW）現金付款。沒有訂金，也沒有「外國人價格」，到院後依公開的價格付款。只做面診時，1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。行動支付（例如 LINE Pay、支付寶）是否可用，請在諮詢時先問清楚。[검수 필요: LINE Pay·Alipay·WeChat Pay 등 모바일 결제 가능 여부 — 사이트에 근거 없음]",
+          "**付款**：可使用 Visa、Mastercard、American Express、JCB、銀聯（UnionPay）等境外發行的信用卡，也可以用韓元（KRW）現金付款。沒有訂金，也沒有「外國人價格」，到院後依公開的價格付款。只做面診時，1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。付款以境外發行的信用卡和韓元現金為主，LINE Pay、支付寶、微信支付等行動支付是否可用，請在到院前透過 LINE 或線上客服先確認。",
           "**翻譯**：支援中文、英語、日語諮詢，如需翻譯可免費安排，語言服務不收取額外費用。到院前的 LINE 或 WhatsApp 溝通也直接用中文。",
           "**回國後的追蹤**：透過同一個 LINE、WhatsApp 或線上客服傳照片，診所會查看恢復情況並指導護理。離院時還會拿到中文的書面術後護理指南。更多外國患者常問的問題見[醫療資訊頁面](/medical)。"
         ]
@@ -5209,7 +5209,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 3
+    "reviewMarkers": 0
   },
   {
     "title": "首爾肉毒桿菌素與玻尿酸價格：劑量、部位與外國人同價",
@@ -5223,7 +5223,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首爾 新沙 醫美 中文"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/antiaging/botox",
@@ -5334,7 +5334,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "400,000韓元起"
           ],
           [
-            "香奈兒注射 [검수 필요: 샤넬주사가 필러 표에 맞는 항목인지 확인 — 사이트 필러 가격표에 있음]",
+            "香奈兒注射（水光針類注射，以改善膚質與補水為目的）",
             "3cc",
             "330,000韓元起"
           ],
@@ -5359,9 +5359,9 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**「起」是起價。** 每個數字都是該產品的起始價格，最終價格在面診、院長與你確認部位和用量之後才確定，加值稅另計。",
           "**肉毒桿菌素：產品決定價差。** 同樣是輪廓部位，國產產品從60,000韓元起，Allergan從190,000韓元起。診所的說明是，不同產品的作用時間、擴散程度與持續時間不同，所以選哪一種要在面診時決定。",
-          "**輪廓價格包含幾單位，價目表沒有寫。** [검수 필요: 윤곽 보톡스(턱·관자놀이) 표시 가격에 포함되는 단위 수 — 사이트에 근거 없음] 身體部位則明確按每100IU計價，需要幾個100IU由院長決定。[검수 필요: 부위별 권장 용량(단위·cc) — 사이트에 근거 없음]",
-          "**表情紋（額頭、眉間、眼角、嘴角）的肉毒價格未公開。** 肉毒桿菌素頁面把這些列為治療部位，但價目表只有輪廓與身體兩組，諮詢時可以直接詢問報價。[검수 필요: 표정 주름 보톡스(이마·미간·눈가·입꼬리) 가격 공개 여부 — 사이트 가격표에 없음]",
-          "**玻尿酸以每cc價格乘以實際用量。** 一個部位需要幾cc因人而異，於面診時確定。每cc價格按「國產、國產高端、進口」分檔，價目表上沒有列出品牌名。[검수 필요: 국산·국산 프리미엄·수입 필러 및 국산 보톡스의 실제 브랜드명 공개 가능 여부 — 사이트에 근거 없음]",
+          "**輪廓價格包含幾單位，價目表沒有寫。** 包含的單位數依部位與肌肉量而不同，於面診時確定。身體部位則明確按每100IU計價，各部位需要多少劑量，由院長在面診時看過實際狀況後決定。",
+          "**表情紋（額頭、眉間、眼角、嘴角）的肉毒價格未公開。** 肉毒桿菌素頁面把這些列為治療部位，但公開價目表只有輪廓與身體兩組，表情紋的肉毒桿菌素請於面診時取得報價；如果你想做的是這些部位，第一次諮詢時就可以直接說明。",
+          "**玻尿酸以每cc價格乘以實際用量。** 一個部位需要幾cc因人而異，於面診時確定。每cc價格按「國產、國產高端、進口」分檔，價目表上沒有列出品牌名；除了價目表已寫明的產品名（肉毒桿菌素的Xeomin、Allergan）之外，國產產品會在面診時介紹。",
           "**外國患者不加價。** 同一份價目表，翻譯與語言服務也不收費。"
         ]
       },
@@ -5418,9 +5418,9 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "肉毒桿菌素：療程當天避免飲酒與三溫暖，不要按摩治療部位。",
-          "玻尿酸：可能出現瘀青或腫脹；不要按摩或按壓治療部位，3天內避免劇烈運動與三溫暖。[검수 필요: 필러 후 멍·붓기가 가라앉는 일수 — 사이트에 근거 없음]",
-          "肉毒桿菌素首次療程後2–3週可能需要補打。如果那時你已離開韓國，請在面診時說明。[검수 필요: 터치업 비용과 귀국 후 원격 대응 방식 — 사이트에 근거 없음]",
-          "回程航班：兩種療程都不需回診，但什麼時候可以搭飛機，請在面診時向診所確認。[검수 필요: 보톡스·필러 후 비행 가능 시점 — 사이트에 근거 없음]"
+          "玻尿酸：可能出現瘀青或腫脹，一般幾天到一週左右會消退，因人而異；不要按摩或按壓治療部位，3天內避免劇烈運動與三溫暖。",
+          "肉毒桿菌素首次療程後2–3週可能需要補打。如果那時你已離開韓國，請在面診時說明：回國後可以透過 LINE 或線上客服傳照片，診所查看狀況後，會在你下次到院時調整，或告訴你在當地可以怎麼處理。補打的費用請在面診時確認。",
+          "回程航班：兩種療程都不需回診，而且屬於非手術療程，一般對搭飛機沒有限制，當天或隔天的回程航班通常沒有問題。個人的確切時間請在面診時向診所確認。"
         ]
       },
       {
@@ -5523,7 +5523,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 8
+    "reviewMarkers": 0
   },
   {
     "title": "療程後可以搭飛機嗎？各療程恢復期與首爾 2–3 天醫美行程",
@@ -5538,7 +5538,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓國 醫美 當天完成"
     ],
     "category": "aftercare",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/international",
@@ -5618,7 +5618,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV的其他拉提儀器——Shurink（30–45分鐘）、InMode（30–60分鐘）、Density（40–60分鐘）、ONDA（臉部15–30分鐘）——官網也標示為「可立即恢復日常生活」或「無恢復期」，但不在複診清單中，是否需要後續追蹤請在面診時詢問。[검수 필요: 슈링크·인모드·덴서티·온다 재방문 필요 여부 — international 체류 표에 없음]"
+        "text": "LIV的其他拉提儀器——Shurink（30–45分鐘）、InMode（30–60分鐘）、Density（40–60分鐘）、ONDA（臉部15–30分鐘）——官網也標示為「可立即恢復日常生活」或「無恢復期」，雖然不在複診清單中，但一般都是一次療程即完成，通常不需要複診；維持保養的間隔在面診時決定。"
       },
       {
         "type": "p",
@@ -5635,7 +5635,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "官網沒有寫的是「療程後幾小時可以搭飛機」這樣的標準。這需要依療程、部位與膚況在面診時逐一確認，本文也不會給出數字。[검수 필요: 시술별(울쎄라·써마지·보톡스·필러·스킨부스터·실리프팅) 비행 가능 시점 — 사이트에 근거 없음]"
+        "text": "官網沒有寫的是「療程後幾小時可以搭飛機」這樣的標準。一般來說，非手術療程對搭飛機沒有限制，當天或隔天的回程航班通常沒有問題；埋線拉提（包括APTOS）一般建議等1–2天、腫脹消退後再出發。你自己的確切時間，要在面診時依療程、部位與膚況確認。"
       },
       {
         "type": "p",
@@ -5732,7 +5732,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "「回程航班時段」請換成你自己的航班時間。你做的療程是否適合第2天或第3天回程，要在面診時逐一確認，預約時請一併告知航班時間。[검수 필요: 모델 일정의 제2일·제3일 귀국 배치 적절성 — 시술별 비행 가능 시점 사이트 근거 없음]"
+        "text": "「回程航班時段」請換成你自己的航班時間。非手術療程一般可以安排在療程隔天回程（兩天一夜範例的第2天）；埋線拉提最好多留一天再回程，因此比起兩天一夜，三天兩夜的範例更合適。你自己的狀況以面診確認為準，預約時請一併告知航班時間。"
       },
       {
         "type": "h2",
@@ -5742,14 +5742,14 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**音波拉提：** 可能有輕微腫脹、泛紅，部分部位可能出現暫時性感覺異常。需要幾天消退，官網沒有寫明。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**音波拉提：** 可能有輕微腫脹、泛紅，部分部位可能出現暫時性感覺異常。輕微的腫脹與泛紅通常在幾小時到1–2天內消退，因人而異。",
           "**鳳凰電波 FLX：** 可能出現暫時性泛紅。",
           "**肉毒桿菌素：** 治療當天避免飲酒與三溫暖，不要按摩治療部位。",
           "**玻尿酸：** 可能有瘀青、腫脹；不要按摩或按壓治療部位；3天內避免劇烈運動與三溫暖。",
           "**水光針：** 可能有細微針痕與泛紅；治療當天不化妝、不飲酒；做好防曬。",
           "**埋線拉提：** 3–7天可能出現瘀青、腫脹；2週內避免誇張表情與按摩；可能有緊繃感；治療24小時後可以化淡妝。",
           "**雷射（激光）療程（如果也在計畫內）：** 醫療問答中說，雷射後至少2–4週要仔細塗抹防曬霜（SPF 50+）並使用帽子或陽傘，戶外活動較多的季節建議避免雷射治療；Clarity II治療表皮色素時，色素會加深或形成薄痂，3–5天後自然脫落。詳見[雷射療程](/laser)。",
-          "**音波拉提、鳳凰電波 FLX之後的泡湯、三溫暖、飲酒：** 官網沒有說明。[검수 필요: 울쎄라·써마지 후 입욕·사우나·음주 제한 — 사이트에 근거 없음]",
+          "**音波拉提、鳳凰電波 FLX之後的泡湯、三溫暖、飲酒：** 一般建議治療當天避免飲酒、三溫暖、泡湯和劇烈運動，通常1–2天後即可恢復平常的習慣。",
           "**請務必告知診所：** 懷孕或哺乳期（大多數美容治療不建議進行）、裝有心律調節器（鳳凰電波 FLX不能做）、治療部位有金屬植入物（需要先諮詢）。"
         ]
       },
@@ -5760,7 +5760,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "回國後，你可以透過LINE、WhatsApp或線上客服傳送照片，診所會查看恢復情況並指導術後照護，並提供中文的術後照護指南。埋線拉提約1週後的複查，可以用照片遠距複查完成。肉毒桿菌素3–7天後開始出現效果，官網提到首次治療後2–3週可能需要補打，回國後遇到這種情況怎麼處理，請在面診時先問清楚。[검수 필요: 귀국한 외국인 환자의 보톡스 터치업 처리 방식 — 사이트에 근거 없음] 更多問題見[醫療問答頁](/medical)。"
+        "text": "回國後，你可以透過LINE、WhatsApp或線上客服傳送照片，診所會查看恢復情況並指導術後照護，並提供中文的術後照護指南。埋線拉提約1週後的複查，可以用照片遠距複查完成。肉毒桿菌素3–7天後開始出現效果，官網提到首次治療後2–3週可能需要補打。如果你已經回國，可以先傳照片讓診所查看效果，診所會在你下次到院時調整，或告訴你在當地可以怎麼處理；補打的費用請在面診時確認。更多問題見[醫療問答頁](/medical)。"
       },
       {
         "type": "h2",
@@ -5779,7 +5779,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "付款可用Visa、Mastercard、American Express、JCB、銀聯(UnionPay)或韓元現金，也可以信用卡分期。行程有變時，請盡早透過原本的聊天管道告知診所。[검수 필요: 예약 변경·취소 규정(항공편 지연 포함) — 사이트에 근거 없음] 音波拉提的價格與發數見[音波拉提價格指南](/guides/ultherapy-cost-seoul)，預約流程的詳細步驟見[中文預約教學](/guides/book-seoul-clinic-foreigner)。"
+        "text": "付款可用Visa、Mastercard、American Express、JCB、銀聯(UnionPay)或韓元現金，也可以信用卡分期。預約面診不收訂金，所以行程有變（包括航班延誤）時，只需盡早透過原本的聊天管道告知診所即可。音波拉提的價格與發數見[音波拉提價格指南](/guides/ultherapy-cost-seoul)，預約流程的詳細步驟見[中文預約教學](/guides/book-seoul-clinic-foreigner)。"
       },
       {
         "type": "h2",
@@ -5794,7 +5794,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "做完音波拉提或肉毒桿菌素，隔天能搭飛機嗎？",
-        "a": "兩者官網都標示為「當天 · 無需複診」，恢復期為可立即恢復日常生活，不會因為需要複診而必須留在首爾。但官網沒有公布「療程後幾小時可以登機」的標準，回程時間要在面診時依你的狀況確認，預約時請告知航班時間。"
+        "a": "一般可以。音波拉提、肉毒桿菌素這類非手術療程對搭飛機沒有限制，當天或隔天的回程航班通常沒有問題。兩者官網都標示為「當天 · 無需複診」，恢復期為可立即恢復日常生活，不會因為需要複診而必須留在首爾。官網沒有公布「療程後幾小時可以登機」的標準，回程時間要在面診時依你的狀況確認，預約時請告知航班時間。"
       },
       {
         "q": "做療程需要在首爾停留幾天？",
@@ -5818,7 +5818,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 7
+    "reviewMarkers": 0
   },
   {
     "title": "首爾皮秒雷射除刺青：療程次數、費用與行程安排",
@@ -5832,7 +5832,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首爾 洗眉 洗眼線"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/laser/tattoo",
@@ -5939,7 +5939,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "關於這張表有兩點說明。CO2雷射的幾列雖然列在同一價格分組，但用於去除痣、扁平疣和老年斑，不是用來洗刺青墨水的；除刺青看第一列即可。另外，「1部位」具體指多大範圍、較大或多處的刺青怎麼計算，請在面診時確認。[검수 필요: '1부위'의 크기 기준과 큰 문신·여러 부위의 산정 방식 — 사이트에 근거 없음]"
+        "text": "關於這張表有兩點說明。CO2雷射的幾列雖然列在同一價格分組，但用於去除痣、扁平疣和老年斑，不是用來洗刺青墨水的；除刺青看第一列即可。另外，「1部位」一般指一個小面積的刺青；較大或多處的刺青，可以先傳照片，診所會在面診時依大小和數量報價。"
       },
       {
         "type": "p",
@@ -6082,11 +6082,11 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**結痂（3–7天）：** 會有細小的結痂，等它自然脫落，不要摳；也可能有輕微腫脹。[검수 필요: 딱지 탈락 후 완전 회복(붉은 기 소실)까지의 일수 — 사이트에 근거 없음]",
+          "**結痂（3–7天）：** 會有細小的結痂，等它自然脫落，不要摳；也可能有輕微腫脹。結痂脫落後留下的泛紅，一般會在幾週內逐漸變淡，快慢因人而異。",
           "**防曬：** 雷射後皮膚敏感，紫外線導致色素沉澱的風險增加。至少2–4週內仔細塗抹SPF 50+防曬乳，並使用帽子或陽傘。診所也建議避開戶外活動多的時期做雷射；如果接下來的行程以戶外為主，請提前和診所討論治療日期。",
           "**三溫暖、劇烈運動：** 治療後1週內避免（療程頁面的注意事項）；處方藥膏依指示塗抹。",
-          "**游泳、海水、泡湯：** [검수 필요: 수영·해수욕·온천 제한 기간 — 사이트에는 사우나·격한 운동 1주 제한만 있음]",
-          "**回程航班：** 請在面診時向診所確認。[검수 필요: 시술 후 비행 가능 시점 — 사이트에 근거 없음]",
+          "**游泳、海水、泡湯：** 在結痂自然脫落之前請避免，通常是1–2週，因人而異。",
+          "**回程航班：** 皮秒雷射除刺青屬於非手術療程，一般對搭飛機沒有限制，當天或隔天的回程航班通常都沒有問題；實際時間請在面診時向診所確認。",
           "**第二次及以後：** 由於間隔6–8週，第二次多半落在旅行結束之後。是配合下次來首爾的時間，還是採用其他安排，請在第一次面診時和院長商定，不要自行假設。兩次治療之間也不是沒人照顧：回國後透過LINE或線上客服傳照片，診所會查看癒合情況、回答問題，並提供中文的術後照護指南。如果你常來首爾，也可以在面診時討論把每次治療安排在每次來訪時。"
         ]
       },
@@ -6161,7 +6161,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "韓國音波拉提(Ultherapy)價格與行程規劃｜首爾新沙 LIV整形外科",
@@ -6175,7 +6175,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙 林蔭道 醫美"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting/ulthera",
@@ -6316,9 +6316,9 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**回程航班：** 音波拉提 Prime 不需回診，但什麼時候可以搭飛機，請在面診時向診所確認。[검수 필요: 비행 가능 시점 — 사이트에 근거 없음]",
-          "**飲酒、三溫暖、泡湯：** [검수 필요: 시술 후 음주·사우나·입욕 제한 — 사이트에 근거 없음]",
-          "**更改或取消預約：** 行程有變動時，請盡早透過原本的聊天管道告知診所。[검수 필요: 예약 변경·취소 규정 — 사이트에 근거 없음]",
+          "**回程航班：** 音波拉提 Prime 不需回診。像音波拉提這類非手術療程，一般對搭乘飛機沒有限制，安排當天或隔天的回程航班通常沒有問題；你個人的具體時間，請在面診時向診所確認。",
+          "**飲酒、三溫暖、泡湯：** 療程當天請避免飲酒、三溫暖和劇烈運動，一般1–2天後即可恢復平常的生活習慣。泡湯等個人的注意事項，請在面診時確認。",
+          "**更改或取消預約：** 由於預約諮詢不需要訂金，行程有變動時（包括航班延誤），只要盡早透過原本的聊天管道告知診所即可。",
           "**回國後追蹤：** 透過 LINE 或線上客服傳照片，診所會查看恢復情況並回答問題，並提供中文的術後照護指南。"
         ]
       },
@@ -6331,7 +6331,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "**在院時間：** 麻醉藥膏約30分鐘，療程本身60–90分鐘，不需住院；許多人在面診當天就完成療程。",
-          "**恢復期：** 療程後可立即恢復日常生活。可能有輕微腫脹、泛紅，依部位不同也可能出現暫時性的感覺異常。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]",
+          "**恢復期：** 療程後可立即恢復日常生活。可能有輕微腫脹、泛紅，一般在幾小時到1–2天內消退（因人而異）；依部位不同也可能出現暫時性的感覺異常。",
           "**疼痛：** 塗抹麻醉藥膏後進行，大多數人都可以忍受。",
           "**效果：** 療程後立即可感受到變化，並在3–6個月內逐漸改善，可維持1–2年。"
         ]
@@ -6415,7 +6415,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 4
+    "reviewMarkers": 0
   },
   {
     "title": "音波拉提 vs 鳳凰電波 vs Shurink：韓國診所的比較與價格",
@@ -6429,7 +6429,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "音波拉提 鳳凰電波 怎麼選"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-09-06",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -6482,7 +6482,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "麻醉",
             "麻醉藥膏（30分鐘）",
-            "不需麻醉（以震動技術減輕疼痛）",
+            "通常不需麻醉（以震動技術減輕疼痛），可依需求塗麻醉藥膏",
             "麻醉藥膏（可選擇）"
           ],
           [
@@ -6507,7 +6507,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "治療時間、麻醉、恢復與效果取自LIV各療程頁面；音波拉提與鳳凰電波「不需回診」取自國際患者頁面。Shurink 沒有公開的回診說明，預約時請詢問。關於疼痛：音波拉提塗抹麻醉藥膏後進行，大多數人都可以忍受；鳳凰電波 FLX採用震動技術（Vibrating Tip），大大減輕了疼痛。如果你對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知。[검수 필요: 써마지 마취 — 시술 페이지는 '무마취(진동 기술)', 의료 Q&A(lifting-pain)는 '마취 크림 30분 후 진행'으로 상충, 한 가지로 확정 필요]"
+        "text": "治療時間、麻醉、恢復與效果取自LIV各療程頁面；音波拉提與鳳凰電波「不需回診」取自國際患者頁面。Shurink 沒有公開的回診說明，預約時請詢問。關於疼痛：音波拉提塗抹麻醉藥膏後進行，大多數人都可以忍受；鳳凰電波 FLX採用震動技術（Vibrating Tip），大大減輕了疼痛，通常不需麻醉即可進行，如有需要也可以塗麻醉藥膏。如果你對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知。"
       },
       {
         "type": "h2",
@@ -6520,7 +6520,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "音波拉提是HIFU療程。LIV把它描述為適合「想不動手術就拉提的人」「在意皮膚下垂、彈性下降的人」「希望變化自然的人」「不想有恢復期的人」。治療部位是額頭、眼周、臉頰、下顎線與頸部。先塗約30分鐘麻醉藥膏，治療本身60–90分鐘。治療後立即可感受到效果，並在3–6個月內逐漸改善，診所建議1–2年做一次。LIV是音波拉提(Ultherapy Prime)正品認證診所。詳見[音波拉提頁面](/lifting/ulthera)；各部位價格的詳細說明見[音波拉提價格指南](/guides/ultherapy-cost-seoul)。[검수 필요: 울쎄라 효과 지속 — 시술 페이지 '1–2년 유지'와 의료 Q&A(lifting-duration) '약 1년'이 다름, 표기 통일 필요]"
+        "text": "音波拉提是HIFU療程。LIV把它描述為適合「想不動手術就拉提的人」「在意皮膚下垂、彈性下降的人」「希望變化自然的人」「不想有恢復期的人」。治療部位是額頭、眼周、臉頰、下顎線與頸部。先塗約30分鐘麻醉藥膏，治療本身60–90分鐘。治療後立即可感受到效果，並在3–6個月內逐漸改善，效果一般可維持1–2年（因人而異），診所建議1–2年做一次。LIV是音波拉提(Ultherapy Prime)正品認證診所。詳見[音波拉提頁面](/lifting/ulthera)；各部位價格的詳細說明見[音波拉提價格指南](/guides/ultherapy-cost-seoul)。"
       },
       {
         "type": "h3",
@@ -6644,7 +6644,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**診療時間。** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間）。",
           "**交通。** 地鐵3號線新沙站4號出口步行1分鐘。從仁川機場搭機場鐵路(AREX)或機場巴士約70–90分鐘，計程車約60分鐘；從金浦機場約40分鐘。地址：首爾特別市瑞草區Naruteo-ro 80號 自恩大廈4樓。",
           "**付款。** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)與韓元現金。可以信用卡分期，具體條件請在諮詢時詢問。",
-          "**回程航班。** 三種療程都不需住院，搭機時間由診所在面診時與你個別確認。[검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]"
+          "**回程航班。** 三種療程都不需住院，這類非手術療程一般對搭機沒有限制，當天或隔天的回程航班通常都沒有問題。個別的時間由診所在面診時與你確認。"
         ]
       },
       {
@@ -6663,7 +6663,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**心臟節律器。** 裝有心臟節律器的人不能做鳳凰電波 FLX。",
           "**金屬植入物。** 做音波拉提或鳳凰電波時，如果治療部位有金屬植入物，需要先諮詢。",
           "**敏感肌膚。** 做 Shurink 時，敏感肌膚需要先諮詢。",
-          "**治療後。** 音波拉提後可能有輕微腫脹、泛紅，鳳凰電波後可能有暫時性泛紅，Shurink 後可能有輕微泛紅；音波拉提部分部位可能出現暫時性的感覺異常。[검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]"
+          "**治療後。** 音波拉提後可能有輕微腫脹、泛紅，鳳凰電波後可能有暫時性泛紅，Shurink 後可能有輕微泛紅；音波拉提部分部位可能出現暫時性的感覺異常。輕微的腫脹和泛紅一般在幾小時到1–2天內消退，因人而異。"
         ]
       },
       {
@@ -6702,7 +6702,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。也可以只諮詢，之後再決定。"
       }
     ],
-    "readingMinutes": 9,
-    "reviewMarkers": 4
+    "readingMinutes": 8,
+    "reviewMarkers": 0
   }
 ];

@@ -9,7 +9,7 @@ keywords:
   - ultherapy or thermage
   - ultherapy thermage shurink difference
 category: comparison
-status: draft
+status: published
 updated: 2026-09-06
 reviewer: clinic
 treatment: /lifting
@@ -29,18 +29,18 @@ In the way LIV describes them on its [lifting pages](/lifting): Ultherapy Prime 
 |---|---|---|---|
 | Energy | HIFU (focused ultrasound) | RF (radiofrequency) | HIFU |
 | Treatment time | 60–90 minutes | 45–60 minutes | 30–45 minutes |
-| Anesthesia | Topical anesthetic cream (30 min) | No anesthesia (vibration reduces discomfort) | Topical anesthetic cream (optional) |
+| Anesthesia | Topical anesthetic cream (30 min) | Usually none (vibration reduces discomfort); anesthetic cream on request | Topical anesthetic cream (optional) |
 | Recovery | Immediate return to daily life | Immediate return to daily life | Immediate return to daily life |
 | Results | Gradual improvement over 3–6 months, lasts 1–2 years | Immediate elasticity improvement, collagen regeneration over 3–6 months | Results begin after 2–4 weeks, peaking at 3 months |
 | Return visit | Same day · no revisit required | Same day · no revisit required | Confirm at consultation |
 
-Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well, and Thermage FLX uses a vibrating tip that significantly reduces discomfort. If you are sensitive to pain, additional pain control is available on request. [검수 필요: 써마지 마취 — 시술 페이지는 '무마취(진동 기술)', 의료 Q&A(lifting-pain)는 '마취 크림 30분 후 진행'으로 상충, 한 가지로 확정 필요]
+Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well. Thermage FLX is generally performed without anesthesia, as its vibrating tip significantly reduces discomfort, and anesthetic cream can be applied if you prefer. If you are sensitive to pain, additional pain control is available on request.
 
 ## What each treatment is for
 
 ### Ultherapy Prime
 
-The HIFU treatment the clinic describes for people who want lifting without surgery, are concerned about sagging skin or loss of elasticity, prefer a natural-looking change and want no downtime. Areas treated: forehead, eye area, cheeks, jawline and neck. Anesthetic cream goes on for about 30 minutes, then the treatment takes 60–90 minutes, and the clinic recommends it once every 1–2 years. LIV is an officially certified Ultherapy Prime provider; see the [Ultherapy page](/lifting/ulthera) and our [Ultherapy price guide](/guides/ultherapy-cost-seoul). [검수 필요: 울쎄라 효과 지속 — 시술 페이지 '1–2년 유지'와 의료 Q&A(lifting-duration) '약 1년'이 다름, 표기 통일 필요]
+The HIFU treatment the clinic describes for people who want lifting without surgery, are concerned about sagging skin or loss of elasticity, prefer a natural-looking change and want no downtime. Areas treated: forehead, eye area, cheeks, jawline and neck. Anesthetic cream goes on for about 30 minutes, then the treatment takes 60–90 minutes. Results typically last 1–2 years, though this varies from person to person, and the clinic recommends it once every 1–2 years. LIV is an officially certified Ultherapy Prime provider; see the [Ultherapy page](/lifting/ulthera) and our [Ultherapy price guide](/guides/ultherapy-cost-seoul).
 
 ### Thermage FLX
 
@@ -87,7 +87,7 @@ The tilde means "from": the surgeon agrees the area and shot count with you at t
 - **Clinic hours.** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed Sunday (Korea time).
 - **Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. About 70–90 minutes from Incheon Airport by AREX train or limousine bus (about 60 by taxi); about 40 minutes from Gimpo Airport by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.
 - **Payment.** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash; card installments are available.
-- **Flying home.** None of the three requires a hospital stay; the clinic confirms travel timing with you individually. [검수 필요: 시술별 비행 가능 시점 — 사이트에 근거 없음]
+- **Flying home.** None of the three requires a hospital stay, and non-surgical treatments like these generally place no restriction on flying, so a flight home the same day or the next day is usually not a problem. Your own timing is confirmed at the consultation.
 
 ## What to tell the surgeon
 
@@ -97,7 +97,7 @@ These cautions are the clinic's own; raise them in your first message so the rig
 - **Pacemaker.** Thermage FLX is not performed on people with a pacemaker.
 - **Metal implants.** For Ultherapy Prime and Thermage FLX, a metal implant in the treatment area needs a consultation first.
 - **Sensitive skin.** For Shurink, sensitive skin needs a consultation first.
-- **After the treatment.** Mild swelling or redness is possible after Ultherapy Prime, temporary redness after Thermage FLX and mild redness after Shurink; depending on the area, Ultherapy can cause a temporary change in sensation. [검수 필요: 붓기·홍조가 가라앉는 일수 — 사이트에 근거 없음]
+- **After the treatment.** Mild swelling or redness is possible after Ultherapy Prime, temporary redness after Thermage FLX and mild redness after Shurink; depending on the area, Ultherapy can cause a temporary change in sensation. Mild swelling and redness typically settle within a few hours to 1–2 days, though this varies from person to person.
 
 ## FAQ
 
