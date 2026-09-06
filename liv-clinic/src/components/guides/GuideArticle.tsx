@@ -78,10 +78,12 @@ export default function GuideArticle({ guide }: { guide: GuideDoc }) {
 
   return (
     <article className="pb-16">
-      {isDraft && <div className="bg-amber-100 px-4 py-2 text-center text-small text-amber-900">{ui.draftBanner}</div>}
-
       <header className="bg-gradient-to-b from-primary/10 to-background pt-28 pb-10 md:pt-32 md:pb-14">
         <div className="container-custom max-w-3xl">
+          {/* 초안 띠 — 고정 헤더 아래에 보이도록 히어로 안에 둔다(문서 맨 위에 두면 헤더에 가려진다) */}
+          {isDraft && (
+            <p className="mb-6 rounded-xl border border-amber-300 bg-amber-100 px-4 py-2 text-small text-amber-900">{ui.draftBanner}</p>
+          )}
           <nav className="mb-4 text-small text-mono-light" aria-label="Breadcrumb">
             <Link href={`${prefix}/guides`} className="hover:text-primary">
               {ui.guides}
