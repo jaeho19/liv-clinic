@@ -86,6 +86,7 @@ async function main() {
   }
   out.push('\n### laser 카테고리 (LASER_CATEGORIES; 소요 시간 등은 각 src/app/[locale]/laser/*/layout.tsx serviceData — ko)\n');
   for (const c of LASER_CATEGORIES) out.push(`- ${c.id}: ${c.nameEn} — ${c.shortDesc ?? ''} ${c.description ?? ''}`);
+  out.push('- layout serviceData(ko): pigmentation 20-40분·마취 크림(선택)·3-7일(미세 딱지 가능) / vascular 15-30분 / skintone 30-45분·즉시 일상 복귀 / hair-removal 15-60분(부위에 따라)·즉시 일상 복귀 / tattoo 15-30분·마취 크림(30분)·3-7일(미세 딱지)');
   const laserKeys = ['tattoo', 'hairRemoval', 'pigmentation', 'vascular', 'skintone'];
   for (const key of laserKeys) {
     for (const l of LOCALES) {
@@ -95,6 +96,37 @@ async function main() {
         out.push(`- laser/${key} (${l}, ${name}) FAQ: ` + faq.map((f) => `Q ${f.q ?? f.question} → ${f.a ?? f.answer}`).join(' | '));
       }
     }
+  }
+
+  h('4b. 레이저 상세 페이지의 추가 사실 (treatments.laser.*.detail 메시지 + LASER_CATEGORIES.treatmentProtocol — 회수·간격·유형별 안내가 여기 있다)');
+  const flatten = (obj, prefix, sink) => {
+    if (obj == null) return;
+    if (typeof obj === 'string') {
+      if (obj.trim()) sink.push(`- ${prefix}: ${obj}`);
+      return;
+    }
+    if (Array.isArray(obj)) return obj.forEach((v, i) => flatten(v, `${prefix}[${i}]`, sink));
+    if (typeof obj === 'object') for (const [k, v] of Object.entries(obj)) flatten(v, prefix ? `${prefix}.${k}` : k, sink);
+  };
+  const SKIP = new Set(['hero', 'cta', 'breadcrumb', 'faq', 'illustrationLabels', 'wavelengthIllustration', 'intellitrakIllustration', 'beforeAfterSection', 'categoryName', 'otherCategories', 'equipmentCards']);
+  for (const key of laserKeys) {
+    for (const l of LOCALES) {
+      const detail = get(msg[l], `treatments.laser.${key}.detail`);
+      if (!detail || typeof detail !== 'object') continue;
+      const lines = [];
+      for (const [k, v] of Object.entries(detail)) if (!SKIP.has(k)) flatten(v, k, lines);
+      out.push(`\n### laser/${key} detail (${l})\n`);
+      out.push(...lines);
+    }
+  }
+  out.push('\n### LASER_CATEGORIES treatmentProtocol / TREATMENTS.laser 회수 (ko 원문)\n');
+  for (const c of LASER_CATEGORIES) {
+    if (c.treatmentProtocol) out.push(`- ${c.id}.treatmentProtocol: ${JSON.stringify(c.treatmentProtocol)}`);
+  }
+  for (const [id, eq] of Object.entries(TREATMENTS.laser ?? {})) {
+    const picked = {};
+    for (const k of ['name', 'nameEn', 'duration', 'anesthesia', 'recovery', 'sessions', 'interval', 'results']) if (eq[k]) picked[k] = eq[k];
+    if (Object.keys(picked).length) out.push(`- laser.${id}: ${JSON.stringify(picked)}`);
   }
 
   h('5. 외국인 안내 페이지 사실 (international 네임스페이스, en 기준; 다른 언어는 같은 키)');

@@ -1,6 +1,6 @@
 # 가이드 근거 시트 (자동 생성 — 수정하지 말고 `npx tsx scripts/dump-guide-facts.mjs`로 재생성)
 
-생성: 2026-09-05. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
+생성: 2026-09-06. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
 
 ## 1. 병원 기본 정보 (src/lib/constants.ts SITE_INFO·BUSINESS_HOURS)
 
@@ -356,6 +356,7 @@
 - skintone: Skin Tone Enhancement — 칙칙한 피부톤, 피부 투명감, 전체 화이트닝 울블랑과 토닝의 시너지로 맑고 투명한 피부톤
 - hair-removal: Premium Hair Removal — 얼굴, 겨드랑이, 팔다리, 비키니라인 영구 제모 755nm 알렉산드라이트 - 제모의 골드 스탠다드
 - tattoo: Tattoo Removal — 흑색, 컬러, 아이라인, 눈썹 문신 제거 피코세컨드 기술로 깨끗한 문신 제거
+- layout serviceData(ko): pigmentation 20-40분·마취 크림(선택)·3-7일(미세 딱지 가능) / vascular 15-30분 / skintone 30-45분·즉시 일상 복귀 / hair-removal 15-60분(부위에 따라)·즉시 일상 복귀 / tattoo 15-30분·마취 크림(30분)·3-7일(미세 딱지)
 - laser/tattoo (en, Tattoo Removal) FAQ: Q Can tattoos be completely removed? → Most tattoos can be removed over 90%. Complete removal depends on ink color, depth, tattoo age, and skin type. Black ink removes best, while green and blue may require more sessions. We'll provide accurate estimates during consultation. | Q How painful is tattoo removal? → Pain levels range from 'snapping rubber band' to 'pinching' depending on the individual. Lucas pico laser has 1000x shorter pulse than traditional nanosecond lasers, reducing heat buildup and pain. Numbing cream can be applied to minimize discomfort. | Q Will there be scarring? → Pico laser minimizes heat damage, making scarring risk very low. With proper energy settings and treatment intervals, most recover without scarring. Following post-care guidelines (sun protection, no scab picking) ensures clean healing. | Q Are older or newer tattoos easier to remove? → Generally, older tattoos remove easier as the body's immune system naturally removes some ink particles over time. However, new tattoos can also be effectively removed with pico laser, and their clearer ink can make laser targeting easier. | Q Can all ink colors be removed? → Most colors can be removed. Lucas pico laser offers multiple wavelengths (532nm, 755nm, 1064nm) to address various colors. | Q Why is the treatment interval 6-8 weeks? → Laser-shattered ink particles are absorbed by macrophages and discharged through the lymphatic system. This natural healing process takes 4-6 weeks, and the next treatment should only proceed after complete skin recovery. Too-frequent treatments increase skin damage and scarring risk.
 - laser/tattoo (ja, タトゥー除去) FAQ: Q タトゥー除去は完全に可能ですか？ → ほとんどのタトゥーは90%以上除去可能です。完全除去可否はインク色、深さ、タトゥーの年数、肌タイプなどにより異なります。黒インクが最もよく除去され、緑や青はより多くの回数が必要な場合があります。相談時に正確な予想をご案内します。 | Q タトゥー除去はどれくらい痛いですか？ → 痛みの程度は「輪ゴムでパチパチ弾く感覚」から「チクチクする感覚」まで個人差があります。Lucasピコレーザーは従来のナノ秒レーザーよりパルス時間が1000倍短く熱蓄積が少なく、その分痛みも軽減されます。必要時は麻酔クリームを塗布して痛みを最小化します。 | Q 施術後に傷跡が残りますか？ → ピコレーザーは熱損傷を最小化し傷跡リスクが非常に低いです。適切なエネルギー設定と施術間隔を守ればほとんど傷跡なく回復します。施術後のケア指針（紫外線遮断、かさぶた除去禁止など）をよく守っていただければきれいな肌が期待できます。 | Q 古いタトゥーと新しいタトゥー、どちらがよく消えますか？ → 一般的に古いタトゥーがよく消えます。時間が経つにつれ私たちの体の免疫システムが一部のインク粒子を自然に除去するためです。しかし新しいタトゥーもピコレーザーで効果的に除去でき、むしろインクが鮮明に残っているためレーザーターゲティングが容易な利点もあります。 | Q すべての色のタトゥーが除去可能ですか？ → ほとんどの色は除去可能です。Lucasピコレーザーは多重波長（532nm、755nm、1064nm）を提供し様々な色に対応します。 | Q 施術間隔がなぜ6-8週なのですか？ → レーザーで粉砕されたインク粒子は私たちの体のマクロファージが吸収しリンパ系を通じて排出します。この自然治癒過程に4-6週が必要で、皮膚が完全に回復した後に次の施術を行う必要があります。あまりに短い間隔で施術すると皮膚損傷と傷跡リスクが高まります。
 - laser/tattoo (zh, 纹身去除) FAQ: Q 纹身能完全去除吗？ → 大多数纹身可以去除90%以上。能否完全去除取决于墨水颜色、深度、纹身年龄、肤质等因素。黑色墨水最容易去除，绿色和蓝色可能需要更多次数。咨询时会给出准确的预估。 | Q 纹身去除有多痛？ → 疼痛程度从'橡皮筋弹的感觉'到'刺痛感'因人而异。Lucas皮秒激光的脉冲时间比传统纳秒激光短1000倍，热量积累少，疼痛也相应减轻。必要时涂抹麻醉膏来最小化疼痛。 | Q 治疗后会留疤吗？ → 皮秒激光最小化热损伤，疤痕风险非常低。遵循适当的能量设置和治疗间隔，大多数情况下可以无疤痕恢复。遵循治疗后护理指南（防晒、不剥结痂等），可期待干净的皮肤。 | Q 旧纹身和新纹身，哪个更容易去除？ → 通常旧纹身更容易去除。随着时间推移，我们身体的免疫系统会自然清除部分墨水颗粒。但新纹身也可以用皮秒激光有效去除，而且墨水清晰残留，激光靶向更容易也是优点。 | Q 所有颜色的纹身都能去除吗？ → 大多数颜色都可以去除。Lucas皮秒激光提供多波长（532nm、755nm、1064nm）来应对各种颜色。 | Q 治疗间隔为什么是6-8周？ → 激光粉碎的墨水颗粒由我们身体的巨噬细胞吸收，通过淋巴系统排出。这个自然愈合过程需要4-6周，皮肤完全恢复后才能进行下次治疗。间隔太短会增加皮肤损伤和疤痕风险。
@@ -368,6 +369,1701 @@
 - laser/vascular (ja, 血管治療) FAQ: Q 赤ら顔治療後すぐに効果が出ますか？ → 施術直後は一時的に赤みがひどく見えることがあります。これは正常な反応で、2-3日以内に落ち着きます。実際の効果は3-4週後から徐々に現れ、繰り返し施術により段階的に改善されます。 | Q 赤みは完全になくなりますか？ → 赤みの原因と深刻度によって異なります。ほとんどの場合50-80%改善が期待でき、完全に無くすよりは症状を大幅に緩和させることが目標です。維持管理施術で効果を持続させることができます。 | Q 酒さもレーザーで治療できますか？ → 酒さの血管拡張症状はレーザーで効果的に治療できます。ただし酒さは複合的な皮膚疾患なので、レーザー治療とともにスキンケア、薬物治療を併用することが効果的です。 | Q 施術後の注意点はありますか？ → 施術後2-3日間はサウナ、飲酒、激しい運動を避けてください。紫外線遮断を徹底し、刺激的な化粧品の使用を控えてください。施術部位が一時的に赤くなったり腫れることは正常です。
 - laser/vascular (zh, 血管治疗) FAQ: Q 红血丝治疗后马上见效吗？ → 治疗后可能暂时看起来更红。这是正常反应，2-3天内会消退。实际效果会在3-4周后逐渐显现，随着重复治疗会逐步改善。 | Q 红血丝能完全消除吗？ → 取决于发红的原因和严重程度。大多数情况下可期待50-80%的改善，目标是大幅缓解症状而非完全消除。通过维护治疗可以保持效果。 | Q 酒糟鼻也能用激光治疗吗？ → 酒糟鼻的血管扩张症状可以用激光有效治疗。但酒糟鼻是复杂的皮肤病，激光治疗配合皮肤护理、药物治疗效果更好。 | Q 治疗后有什么注意事项？ → 治疗后2-3天内避免桑拿、饮酒、剧烈运动。做好防晒，避免使用刺激性化妆品。治疗部位暂时发红或肿胀是正常的。
 - laser/vascular (zh-TW, 血管治療) FAQ: Q 紅血絲治療後馬上見效嗎？ → 治療後可能暫時看起來更紅。這是正常反應，2-3天內會消退。實際效果會在3-4周後逐漸顯現，隨著重複治療會逐步改善。 | Q 紅血絲能完全消除嗎？ → 取決於發紅的原因和嚴重程度。大多數情況下可期待50-80%的改善，目標是大幅緩解症狀而非完全消除。通過維護治療可以保持效果。 | Q 酒糟鼻也能用激光治療嗎？ → 酒糟鼻的血管擴張症狀可以用激光有效治療。但酒糟鼻是複雜的皮膚病，激光治療配合皮膚護理、藥物治療效果更好。 | Q 治療後有什麼注意事項？ → 治療後2-3天內避免桑拿、飲酒、劇烈運動。做好防曬，避免使用刺激性化妝品。治療部位暫時發紅或腫脹是正常的。
+
+## 4b. 레이저 상세 페이지의 추가 사실 (treatments.laser.*.detail 메시지 + LASER_CATEGORIES.treatmentProtocol — 회수·간격·유형별 안내가 여기 있다)
+
+
+### laser/tattoo detail (en)
+
+- picoTech.badge: Picosecond Technology
+- picoTech.title: Why Pico Laser?
+- picoTech.description1: Traditional nanosecond (10⁻⁹s) lasers used photothermal effect to break down ink. Picosecond (10⁻¹²s) lasers deliver 1000x faster pulses creating photoacoustic effects.
+- picoTech.description2: This shockwave shatters ink particles to dust-level size, allowing easy removal by the body's immune system.
+- picoTech.benefits[0].title: Fewer Sessions
+- picoTech.benefits[0].desc: Efficient removal with fine particle breakdown
+- picoTech.benefits[1].title: Less Heat Damage
+- picoTech.benefits[1].desc: Short pulse protects surrounding tissue
+- picoTech.benefits[2].title: Fewer Side Effects
+- picoTech.benefits[2].desc: Minimized risk of scarring and pigment changes
+- picoTech.illustration.title: Ink Particle Shattering Mechanism
+- picoTech.illustration.nanosecond: Nanosecond (10⁻⁹s)
+- picoTech.illustration.nanosecondDevice: Traditional Q-Switch Laser
+- picoTech.illustration.picosecond: Picosecond (10⁻¹²s)
+- picoTech.illustration.picosecondDevice: Lucas Laser
+- picoTech.illustration.before: Before
+- picoTech.illustration.after: After
+- picoTech.illustration.photothermal: Photothermal
+- picoTech.illustration.photothermalResult: Large → Medium particles
+- picoTech.illustration.photoacoustic: Photoacoustic
+- picoTech.illustration.photoacousticResult: Large → Fine particles ✓
+- colorWavelength.badge: Multi-Wavelength System
+- colorWavelength.title: Targeting All Colors
+- colorWavelength.subtitle: Lucas pico laser effectively breaks down various ink colors with multiple wavelengths
+- colorWavelength.illustrationTitle: Optimal Wavelength by Ink Color
+- colorWavelength.colors.black.name: Black
+- colorWavelength.colors.black.wavelength: 1064nm
+- colorWavelength.colors.black.difficulty: Easiest
+- colorWavelength.colors.red.name: Red
+- colorWavelength.colors.red.wavelength: 532nm
+- colorWavelength.colors.red.difficulty: Relatively Easy
+- colorWavelength.colors.blue.name: Blue
+- colorWavelength.colors.blue.wavelength: 755nm
+- colorWavelength.colors.blue.difficulty: Somewhat Difficult
+- colorWavelength.colors.green.name: Green
+- colorWavelength.colors.green.wavelength: 755nm
+- colorWavelength.colors.green.difficulty: Most Difficult
+- colorWavelength.lucasNote: Lucas: Multi-wavelength for all color targeting
+- colorWavelength.wavelengths[0].wavelength: 1064nm
+- colorWavelength.wavelengths[0].colors: Black, Dark Blue, Brown
+- colorWavelength.wavelengths[0].note: Deepest penetration, most tattoos
+- colorWavelength.wavelengths[1].wavelength: 755nm
+- colorWavelength.wavelengths[1].colors: Blue, Green
+- colorWavelength.wavelengths[1].note: Medium depth, special color targeting
+- colorWavelength.wavelengths[2].wavelength: 532nm
+- colorWavelength.wavelengths[2].colors: Red, Orange, Yellow
+- colorWavelength.wavelengths[2].note: Epidermal layer, bright colors
+- tattooTypes.badge: Tattoo Type Guide
+- tattooTypes.title: What Type of Tattoo Do You Want to Remove?
+- tattooTypes.subtitle: Treatment sessions and difficulty vary by tattoo type and characteristics
+- tattooTypes.estimatedSessions: Estimated Sessions
+- tattooTypes.difficulty.easy: Relatively Easy
+- tattooTypes.difficulty.medium: Medium
+- tattooTypes.difficulty.hard: Somewhat Difficult
+- tattooTypes.types[0].type: Amateur Tattoo
+- tattooTypes.types[0].description: Non-professional tattoos with shallow ink placement, relatively easy to remove.
+- tattooTypes.types[0].sessions: 3-5 sessions
+- tattooTypes.types[0].notes: Mostly single-color tattoos with pen ink or india ink
+- tattooTypes.types[1].type: Professional Tattoo (B&W)
+- tattooTypes.types[1].description: Professional black and white tattoos with deep, uniform ink placement.
+- tattooTypes.types[1].sessions: 6-10 sessions
+- tattooTypes.types[1].notes: Black ink responds best to laser
+- tattooTypes.types[2].type: Professional Tattoo (Color)
+- tattooTypes.types[2].description: Multi-colored tattoos requiring different wavelengths for each color.
+- tattooTypes.types[2].sessions: 8-15+ sessions
+- tattooTypes.types[2].notes: Green and blue require more sessions
+- tattooTypes.types[3].type: Permanent Makeup
+- tattooTypes.types[3].description: Semi-permanent makeup on eyebrows, eyeliner, lips. Shallower than regular tattoos.
+- tattooTypes.types[3].sessions: 3-6 sessions
+- tattooTypes.types[3].notes: Special protective equipment for eye area
+- tattooTypes.types[4].type: Traumatic Tattoo
+- tattooTypes.types[4].description: Foreign material embedded from accidents. Asphalt, graphite in skin.
+- tattooTypes.types[4].sessions: 4-8 sessions
+- tattooTypes.types[4].notes: Varies by depth and extent
+- tattooTypes.types[5].type: Cover-up Tattoo
+- tattooTypes.types[5].description: Tattoo drawn over existing tattoo. Thicker ink layers make removal difficult.
+- tattooTypes.types[5].sessions: 10-20+ sessions
+- tattooTypes.types[5].notes: New tattoo possible after staged removal
+- process.badge: Treatment Process
+- process.title: Tattoo Removal Process
+- process.steps[0].title: Consultation & Assessment
+- process.steps[0].description: Evaluate tattoo size, color, depth, skin type and provide expected sessions and cost guidance.
+- process.steps[0].duration: About 30 min
+- process.steps[1].title: Pico Laser Treatment
+- process.steps[1].description: Lucas pico laser finely shatters ink particles. Treatment time varies by size.
+- process.steps[1].duration: 15-60 min
+- process.steps[2].title: Recovery Period
+- process.steps[2].description: Skin naturally discharges shattered ink. Scabbing and mild swelling may occur.
+- process.steps[2].duration: 2-4 weeks
+- process.steps[3].title: Next Session
+- process.steps[3].description: Repeat treatment at 6-8 week intervals. Tattoo visibly fades with each session.
+- process.steps[3].duration: 6-8 week interval
+- lucas.title: Lucas
+- lucas.subtitle: The New Standard in Picosecond Tattoo Removal
+- lucas.specs.pulseDuration.label: Pulse Duration
+- lucas.specs.pulseDuration.value: 450 Picoseconds
+- lucas.specs.wavelength.label: Wavelength
+- lucas.specs.wavelength.value: 532 / 755 / 1064nm
+- lucas.specs.repetitionRate.label: Repetition Rate
+- lucas.specs.repetitionRate.value: Up to 10Hz
+- lucas.specs.energy.label: Energy
+- lucas.specs.energy.value: Up to 1.8J
+- lucas.strengths.title: Lucas Advantages
+- lucas.strengths.items[0]: Multi-wavelength for all color response
+- lucas.strengths.items[1]: 450ps ultra-short pulse minimizes heat damage
+- lucas.strengths.items[2]: Fractional lens also treats scars
+- precautions.before.title: Before Treatment
+- precautions.before.items[0]: Avoid excessive sun exposure 2 weeks before treatment
+- precautions.before.items[1]: Avoid irritating products on treatment area
+- precautions.before.items[2]: Inform us of any skin conditions (inflammation, wounds)
+- precautions.before.items[3]: Disclose medications (photosensitizing drugs, etc.)
+- precautions.after.title: After Treatment
+- precautions.after.items[0]: Apply prescribed ointment as directed
+- precautions.after.items[1]: Never remove scabs artificially
+- precautions.after.items[2]: Essential sunscreen (SPF 30+)
+- precautions.after.items[3]: Avoid sauna and intense exercise for 1 week
+
+### laser/tattoo detail (ja)
+
+- picoTech.badge: ピコ秒技術
+- picoTech.title: なぜピコレーザーなのか？
+- picoTech.description1: 従来のナノ秒(10⁻⁹秒)レーザーは熱作用(Photothermal)でインクを分解していました。ピコ秒(10⁻¹²秒)レーザーは1000倍速いパルスで光音響作用(Photoacoustic)を起こします。
+- picoTech.description2: この衝撃波がインク粒子を微細な粉塵レベルまで粉砕し、私たちの体の免疫システムが簡単に除去できるようにします。
+- picoTech.benefits[0].title: より少ない施術回数
+- picoTech.benefits[0].desc: 微細粒子粉砕で効率的除去
+- picoTech.benefits[1].title: より少ない熱損傷
+- picoTech.benefits[1].desc: 短いパルスで周辺組織保護
+- picoTech.benefits[2].title: より少ない副作用
+- picoTech.benefits[2].desc: 傷跡、色素変化リスク最小化
+- picoTech.illustration.title: インク粒子粉砕メカニズム
+- picoTech.illustration.nanosecond: ナノ秒 (10⁻⁹秒)
+- picoTech.illustration.nanosecondDevice: 従来Q-Switchレーザー
+- picoTech.illustration.picosecond: ピコ秒 (10⁻¹²秒)
+- picoTech.illustration.picosecondDevice: Lucasレーザー
+- picoTech.illustration.before: Before
+- picoTech.illustration.after: After
+- picoTech.illustration.photothermal: 熱作用 (Photothermal)
+- picoTech.illustration.photothermalResult: 大粒子 → 中粒子
+- picoTech.illustration.photoacoustic: 光音響作用 (Photoacoustic)
+- picoTech.illustration.photoacousticResult: 大粒子 → 微細粒子 ✓
+- colorWavelength.badge: 多重波長システム
+- colorWavelength.title: すべての色をターゲティング
+- colorWavelength.subtitle: Lucasピコレーザーは多重波長で様々な色のインクを効果的に分解します
+- colorWavelength.illustrationTitle: インク色別最適波長
+- colorWavelength.colors.black.name: 黒
+- colorWavelength.colors.black.wavelength: 1064nm
+- colorWavelength.colors.black.difficulty: 最も簡単
+- colorWavelength.colors.red.name: 赤
+- colorWavelength.colors.red.wavelength: 532nm
+- colorWavelength.colors.red.difficulty: 比較的簡単
+- colorWavelength.colors.blue.name: 青
+- colorWavelength.colors.blue.wavelength: 755nm
+- colorWavelength.colors.blue.difficulty: やや難しい
+- colorWavelength.colors.green.name: 緑
+- colorWavelength.colors.green.wavelength: 755nm
+- colorWavelength.colors.green.difficulty: 最も難しい
+- colorWavelength.lucasNote: Lucas: 多重波長ですべての色をターゲティング可能
+- colorWavelength.wavelengths[0].wavelength: 1064nm
+- colorWavelength.wavelengths[0].colors: 黒、濃い青、茶色
+- colorWavelength.wavelengths[0].note: 最も深い浸透、ほとんどのタトゥー
+- colorWavelength.wavelengths[1].wavelength: 755nm
+- colorWavelength.wavelengths[1].colors: 青、緑
+- colorWavelength.wavelengths[1].note: 中間深度、特殊色ターゲット
+- colorWavelength.wavelengths[2].wavelength: 532nm
+- colorWavelength.wavelengths[2].colors: 赤、オレンジ、黄色
+- colorWavelength.wavelengths[2].note: 表皮層、明るい色専用
+- tattooTypes.badge: タトゥータイプ別ガイド
+- tattooTypes.title: どんなタトゥーを除去したいですか？
+- tattooTypes.subtitle: タトゥーの種類と特性により治療回数と難易度が異なります
+- tattooTypes.estimatedSessions: 予想回数
+- tattooTypes.difficulty.easy: 比較的簡単
+- tattooTypes.difficulty.medium: 中間
+- tattooTypes.difficulty.hard: やや難しい
+- tattooTypes.types[0].type: アマチュアタトゥー
+- tattooTypes.types[0].description: 非専門家が施術したタトゥー。インクが浅く入っているため除去が比較的容易です。
+- tattooTypes.types[0].sessions: 3-5回
+- tattooTypes.types[0].notes: 墨、ペンインクなど単色タトゥーがほとんど
+- tattooTypes.types[1].type: プロタトゥー（白黒）
+- tattooTypes.types[1].description: プロのタトゥーアーティストが施術した白黒タトゥー。インクが深く均一に入っています。
+- tattooTypes.types[1].sessions: 6-10回
+- tattooTypes.types[1].notes: 黒インクはレーザー反応が最も良い
+- tattooTypes.types[2].type: プロタトゥー（カラー）
+- tattooTypes.types[2].description: 複数の色が使用されたカラータトゥー。色別に異なる波長が必要です。
+- tattooTypes.types[2].sessions: 8-15回以上
+- tattooTypes.types[2].notes: 緑、青はより多くの回数が必要
+- tattooTypes.types[3].type: アートメイク
+- tattooTypes.types[3].description: 眉、アイライン、唇などのアートメイク。一般タトゥーより浅く施術されています。
+- tattooTypes.types[3].sessions: 3-6回
+- tattooTypes.types[3].notes: 目元施術時は特殊保護具使用
+- tattooTypes.types[4].type: 外傷性タトゥー
+- tattooTypes.types[4].description: 事故による異物沈着。アスファルト、黒鉛などが皮膚に埋まった場合。
+- tattooTypes.types[4].sessions: 4-8回
+- tattooTypes.types[4].notes: 深さと範囲により異なる
+- tattooTypes.types[5].type: カバーアップタトゥー
+- tattooTypes.types[5].description: 既存タトゥーの上に重ねたタトゥー。インク層が厚く除去が難しいです。
+- tattooTypes.types[5].sessions: 10-20回以上
+- tattooTypes.types[5].notes: 段階的除去後新しいタトゥー可能
+- process.badge: 治療プロセス
+- process.title: タトゥー除去プロセス
+- process.steps[0].title: 相談＆評価
+- process.steps[0].description: タトゥーのサイズ、色、深さ、肌タイプを評価し、予想治療回数と費用をご案内します。
+- process.steps[0].duration: 約30分
+- process.steps[1].title: ピコレーザー施術
+- process.steps[1].description: Lucasピコレーザーでインク粒子を微細に粉砕します。施術時間はサイズにより異なります。
+- process.steps[1].duration: 15-60分
+- process.steps[2].title: 回復期間
+- process.steps[2].description: 皮膚が粉砕されたインクを自然に排出します。かさぶた、軽い腫れが現れることがあります。
+- process.steps[2].duration: 2-4週
+- process.steps[3].title: 次回施術
+- process.steps[3].description: 6-8週間隔で繰り返し施術。毎回タトゥーが薄くなることを確認できます。
+- process.steps[3].duration: 6-8週間隔
+- lucas.title: Lucas
+- lucas.subtitle: ピコ秒タトゥー除去の新しい基準
+- lucas.specs.pulseDuration.label: パルス持続時間
+- lucas.specs.pulseDuration.value: 450ピコ秒
+- lucas.specs.wavelength.label: 波長
+- lucas.specs.wavelength.value: 532 / 755 / 1064nm
+- lucas.specs.repetitionRate.label: 繰り返し率
+- lucas.specs.repetitionRate.value: 最大10Hz
+- lucas.specs.energy.label: エネルギー
+- lucas.specs.energy.value: 最大1.8J
+- lucas.strengths.title: Lucasの強み
+- lucas.strengths.items[0]: 多重波長ですべての色に対応
+- lucas.strengths.items[1]: 450ps超短波パルスで熱損傷最小化
+- lucas.strengths.items[2]: フラクショナルレンズで傷跡治療も可能
+- precautions.before.title: 施術前
+- precautions.before.items[0]: 施術2週前から過度な日光露出を避ける
+- precautions.before.items[1]: 施術部位に刺激的な製品の使用を控える
+- precautions.before.items[2]: 皮膚状態（炎症、傷）があれば事前に伝える
+- precautions.before.items[3]: 服用中の薬（光過敏性誘発薬など）を告知
+- precautions.after.title: 施術後
+- precautions.after.items[0]: 処方された軟膏を指示通りに塗布
+- precautions.after.items[1]: かさぶたは絶対に人為的に剥がさない
+- precautions.after.items[2]: 日焼け止め必須（SPF 30以上）
+- precautions.after.items[3]: 1週間サウナ、激しい運動を避ける
+
+### laser/tattoo detail (zh)
+
+- picoTech.badge: 皮秒技术
+- picoTech.title: 为什么选择皮秒激光？
+- picoTech.description1: 传统纳秒(10⁻⁹秒)激光通过热作用(Photothermal)分解墨水。皮秒(10⁻¹²秒)激光以快1000倍的脉冲产生光声作用(Photoacoustic)。
+- picoTech.description2: 这种冲击波将墨水颗粒粉碎到微尘级别，使我们身体的免疫系统能够轻松清除。
+- picoTech.benefits[0].title: 更少的治疗次数
+- picoTech.benefits[0].desc: 微粒粉碎实现高效清除
+- picoTech.benefits[1].title: 更少的热损伤
+- picoTech.benefits[1].desc: 短脉冲保护周围组织
+- picoTech.benefits[2].title: 更少的副作用
+- picoTech.benefits[2].desc: 最大限度降低疤痕、色素变化风险
+- picoTech.illustration.title: 墨水颗粒粉碎机制
+- picoTech.illustration.nanosecond: 纳秒 (10⁻⁹秒)
+- picoTech.illustration.nanosecondDevice: 传统Q-Switch激光
+- picoTech.illustration.picosecond: 皮秒 (10⁻¹²秒)
+- picoTech.illustration.picosecondDevice: Lucas激光
+- picoTech.illustration.before: Before
+- picoTech.illustration.after: After
+- picoTech.illustration.photothermal: 热作用 (Photothermal)
+- picoTech.illustration.photothermalResult: 大颗粒 → 中颗粒
+- picoTech.illustration.photoacoustic: 光声作用 (Photoacoustic)
+- picoTech.illustration.photoacousticResult: 大颗粒 → 微小颗粒 ✓
+- colorWavelength.badge: 多波长系统
+- colorWavelength.title: 靶向所有颜色
+- colorWavelength.subtitle: Lucas皮秒激光通过多波长有效分解各种颜色的墨水
+- colorWavelength.illustrationTitle: 墨水颜色最佳波长
+- colorWavelength.colors.black.name: 黑色
+- colorWavelength.colors.black.wavelength: 1064nm
+- colorWavelength.colors.black.difficulty: 最容易
+- colorWavelength.colors.red.name: 红色
+- colorWavelength.colors.red.wavelength: 532nm
+- colorWavelength.colors.red.difficulty: 比较容易
+- colorWavelength.colors.blue.name: 蓝色
+- colorWavelength.colors.blue.wavelength: 755nm
+- colorWavelength.colors.blue.difficulty: 较难
+- colorWavelength.colors.green.name: 绿色
+- colorWavelength.colors.green.wavelength: 755nm
+- colorWavelength.colors.green.difficulty: 最难
+- colorWavelength.lucasNote: Lucas：多波长可靶向所有颜色
+- colorWavelength.wavelengths[0].wavelength: 1064nm
+- colorWavelength.wavelengths[0].colors: 黑色、深蓝色、棕色
+- colorWavelength.wavelengths[0].note: 最深穿透，大多数纹身
+- colorWavelength.wavelengths[1].wavelength: 755nm
+- colorWavelength.wavelengths[1].colors: 蓝色、绿色
+- colorWavelength.wavelengths[1].note: 中等深度，特殊颜色靶向
+- colorWavelength.wavelengths[2].wavelength: 532nm
+- colorWavelength.wavelengths[2].colors: 红色、橙色、黄色
+- colorWavelength.wavelengths[2].note: 表皮层，浅色专用
+- tattooTypes.badge: 纹身类型指南
+- tattooTypes.title: 您想去除什么样的纹身？
+- tattooTypes.subtitle: 根据纹身的类型和特性，治疗次数和难度会有所不同
+- tattooTypes.estimatedSessions: 预计次数
+- tattooTypes.difficulty.easy: 比较容易
+- tattooTypes.difficulty.medium: 中等
+- tattooTypes.difficulty.hard: 较难
+- tattooTypes.types[0].type: 业余纹身
+- tattooTypes.types[0].description: 非专业人士做的纹身。墨水较浅，去除相对容易。
+- tattooTypes.types[0].sessions: 3-5次
+- tattooTypes.types[0].notes: 多为墨汁、笔墨等单色纹身
+- tattooTypes.types[1].type: 专业纹身（黑白）
+- tattooTypes.types[1].description: 专业纹身师做的黑白纹身。墨水深且均匀。
+- tattooTypes.types[1].sessions: 6-10次
+- tattooTypes.types[1].notes: 黑色墨水对激光反应最好
+- tattooTypes.types[2].type: 专业纹身（彩色）
+- tattooTypes.types[2].description: 使用多种颜色的彩色纹身。不同颜色需要不同波长。
+- tattooTypes.types[2].sessions: 8-15次以上
+- tattooTypes.types[2].notes: 绿色、蓝色需要更多次数
+- tattooTypes.types[3].type: 半永久化妆
+- tattooTypes.types[3].description: 眉毛、眼线、唇部等半永久化妆。比一般纹身做得较浅。
+- tattooTypes.types[3].sessions: 3-6次
+- tattooTypes.types[3].notes: 眼部治疗使用特殊防护设备
+- tattooTypes.types[4].type: 外伤性纹身
+- tattooTypes.types[4].description: 事故造成的异物沉积。沥青、石墨等嵌入皮肤的情况。
+- tattooTypes.types[4].sessions: 4-8次
+- tattooTypes.types[4].notes: 根据深度和范围而定
+- tattooTypes.types[5].type: 遮盖纹身
+- tattooTypes.types[5].description: 在原有纹身上重新做的纹身。墨水层较厚，去除较难。
+- tattooTypes.types[5].sessions: 10-20次以上
+- tattooTypes.types[5].notes: 分阶段去除后可做新纹身
+- process.badge: 治疗流程
+- process.title: 纹身去除流程
+- process.steps[0].title: 咨询 & 评估
+- process.steps[0].description: 评估纹身大小、颜色、深度、肤质，告知预计治疗次数和费用。
+- process.steps[0].duration: 约30分钟
+- process.steps[1].title: 皮秒激光治疗
+- process.steps[1].description: 用Lucas皮秒激光将墨水颗粒微细粉碎。治疗时间因大小而异。
+- process.steps[1].duration: 15-60分钟
+- process.steps[2].title: 恢复期
+- process.steps[2].description: 皮肤自然排出粉碎的墨水。可能出现结痂、轻微肿胀。
+- process.steps[2].duration: 2-4周
+- process.steps[3].title: 下次治疗
+- process.steps[3].description: 间隔6-8周重复治疗。每次治疗都能看到纹身变淡。
+- process.steps[3].duration: 间隔6-8周
+- lucas.title: Lucas
+- lucas.subtitle: 皮秒纹身去除的新标准
+- lucas.specs.pulseDuration.label: 脉冲持续时间
+- lucas.specs.pulseDuration.value: 450皮秒
+- lucas.specs.wavelength.label: 波长
+- lucas.specs.wavelength.value: 532 / 755 / 1064nm
+- lucas.specs.repetitionRate.label: 重复率
+- lucas.specs.repetitionRate.value: 最高10Hz
+- lucas.specs.energy.label: 能量
+- lucas.specs.energy.value: 最高1.8J
+- lucas.strengths.title: Lucas的优势
+- lucas.strengths.items[0]: 多波长应对所有颜色
+- lucas.strengths.items[1]: 450ps超短脉冲最小化热损伤
+- lucas.strengths.items[2]: 点阵镜头也可治疗疤痕
+- precautions.before.title: 治疗前
+- precautions.before.items[0]: 治疗前2周避免过度日晒
+- precautions.before.items[1]: 治疗部位避免使用刺激性产品
+- precautions.before.items[2]: 如有皮肤状况（炎症、伤口）请提前告知
+- precautions.before.items[3]: 告知正在服用的药物（光敏性药物等）
+- precautions.after.title: 治疗后
+- precautions.after.items[0]: 按指示涂抹处方药膏
+- precautions.after.items[1]: 绝对不要人为去除结痂
+- precautions.after.items[2]: 必须使用防晒霜（SPF 30以上）
+- precautions.after.items[3]: 1周内避免桑拿、剧烈运动
+
+### laser/tattoo detail (zh-TW)
+
+- picoTech.badge: 皮秒技術
+- picoTech.title: 為什麼選擇皮秒激光？
+- picoTech.description1: 傳統納秒(10⁻⁹秒)激光通過熱作用(Photothermal)分解墨水。皮秒(10⁻¹²秒)激光以快1000倍的脈衝產生光聲作用(Photoacoustic)。
+- picoTech.description2: 這種衝擊波將墨水顆粒粉碎到微塵級別，使我們身體的免疫系統能夠輕鬆清除。
+- picoTech.benefits[0].title: 更少的治療次數
+- picoTech.benefits[0].desc: 微粒粉碎實現高效清除
+- picoTech.benefits[1].title: 更少的熱損傷
+- picoTech.benefits[1].desc: 短脈衝保護周圍組織
+- picoTech.benefits[2].title: 更少的副作用
+- picoTech.benefits[2].desc: 最大限度降低疤痕、色素變化風險
+- picoTech.illustration.title: 墨水顆粒粉碎機制
+- picoTech.illustration.nanosecond: 納秒 (10⁻⁹秒)
+- picoTech.illustration.nanosecondDevice: 傳統Q-Switch激光
+- picoTech.illustration.picosecond: 皮秒 (10⁻¹²秒)
+- picoTech.illustration.picosecondDevice: Lucas激光
+- picoTech.illustration.before: Before
+- picoTech.illustration.after: After
+- picoTech.illustration.photothermal: 熱作用 (Photothermal)
+- picoTech.illustration.photothermalResult: 大顆粒 → 中顆粒
+- picoTech.illustration.photoacoustic: 光聲作用 (Photoacoustic)
+- picoTech.illustration.photoacousticResult: 大顆粒 → 微小顆粒 ✓
+- colorWavelength.badge: 多波長系統
+- colorWavelength.title: 靶向所有顏色
+- colorWavelength.subtitle: Lucas皮秒激光通過多波長有效分解各種顏色的墨水
+- colorWavelength.illustrationTitle: 墨水顏色最佳波長
+- colorWavelength.colors.black.name: 黑色
+- colorWavelength.colors.black.wavelength: 1064nm
+- colorWavelength.colors.black.difficulty: 最容易
+- colorWavelength.colors.red.name: 紅色
+- colorWavelength.colors.red.wavelength: 532nm
+- colorWavelength.colors.red.difficulty: 比較容易
+- colorWavelength.colors.blue.name: 藍色
+- colorWavelength.colors.blue.wavelength: 755nm
+- colorWavelength.colors.blue.difficulty: 較難
+- colorWavelength.colors.green.name: 綠色
+- colorWavelength.colors.green.wavelength: 755nm
+- colorWavelength.colors.green.difficulty: 最難
+- colorWavelength.lucasNote: Lucas：多波長可靶向所有顏色
+- colorWavelength.wavelengths[0].wavelength: 1064nm
+- colorWavelength.wavelengths[0].colors: 黑色、深藍色、棕色
+- colorWavelength.wavelengths[0].note: 最深穿透，大多數紋身
+- colorWavelength.wavelengths[1].wavelength: 755nm
+- colorWavelength.wavelengths[1].colors: 藍色、綠色
+- colorWavelength.wavelengths[1].note: 中等深度，特殊顏色靶向
+- colorWavelength.wavelengths[2].wavelength: 532nm
+- colorWavelength.wavelengths[2].colors: 紅色、橙色、黃色
+- colorWavelength.wavelengths[2].note: 表皮層，淺色專用
+- tattooTypes.badge: 紋身類型指南
+- tattooTypes.title: 您想去除什麼樣的紋身？
+- tattooTypes.subtitle: 根據紋身的類型和特性，治療次數和難度會有所不同
+- tattooTypes.estimatedSessions: 預計次數
+- tattooTypes.difficulty.easy: 比較容易
+- tattooTypes.difficulty.medium: 中等
+- tattooTypes.difficulty.hard: 較難
+- tattooTypes.types[0].type: 業餘紋身
+- tattooTypes.types[0].description: 非專業人士做的紋身。墨水較淺，去除相對容易。
+- tattooTypes.types[0].sessions: 3-5次
+- tattooTypes.types[0].notes: 多為墨汁、筆墨等單色紋身
+- tattooTypes.types[1].type: 專業紋身（黑白）
+- tattooTypes.types[1].description: 專業紋身師做的黑白紋身。墨水深且均勻。
+- tattooTypes.types[1].sessions: 6-10次
+- tattooTypes.types[1].notes: 黑色墨水對激光反應最好
+- tattooTypes.types[2].type: 專業紋身（彩色）
+- tattooTypes.types[2].description: 使用多種顏色的彩色紋身。不同顏色需要不同波長。
+- tattooTypes.types[2].sessions: 8-15次以上
+- tattooTypes.types[2].notes: 綠色、藍色需要更多次數
+- tattooTypes.types[3].type: 半永久化妝
+- tattooTypes.types[3].description: 眉毛、眼線、唇部等半永久化妝。比一般紋身做得較淺。
+- tattooTypes.types[3].sessions: 3-6次
+- tattooTypes.types[3].notes: 眼部治療使用特殊防護設備
+- tattooTypes.types[4].type: 外傷性紋身
+- tattooTypes.types[4].description: 事故造成的異物沉積。瀝青、石墨等嵌入皮膚的情況。
+- tattooTypes.types[4].sessions: 4-8次
+- tattooTypes.types[4].notes: 根據深度和範圍而定
+- tattooTypes.types[5].type: 遮蓋紋身
+- tattooTypes.types[5].description: 在原有紋身上重新做的紋身。墨水層較厚，去除較難。
+- tattooTypes.types[5].sessions: 10-20次以上
+- tattooTypes.types[5].notes: 分階段去除後可做新紋身
+- process.badge: 治療流程
+- process.title: 紋身去除流程
+- process.steps[0].title: 諮詢 & 評估
+- process.steps[0].description: 評估紋身大小、顏色、深度、膚質，告知預計治療次數和費用。
+- process.steps[0].duration: 約30分鐘
+- process.steps[1].title: 皮秒激光治療
+- process.steps[1].description: 用Lucas皮秒激光將墨水顆粒微細粉碎。治療時間因大小而異。
+- process.steps[1].duration: 15-60分鐘
+- process.steps[2].title: 恢復期
+- process.steps[2].description: 皮膚自然排出粉碎的墨水。可能出現結痂、輕微腫脹。
+- process.steps[2].duration: 2-4周
+- process.steps[3].title: 下次治療
+- process.steps[3].description: 間隔6-8周重複治療。每次治療都能看到紋身變淡。
+- process.steps[3].duration: 間隔6-8周
+- lucas.title: Lucas
+- lucas.subtitle: 皮秒紋身去除的新標準
+- lucas.specs.pulseDuration.label: 脈衝持續時間
+- lucas.specs.pulseDuration.value: 450皮秒
+- lucas.specs.wavelength.label: 波長
+- lucas.specs.wavelength.value: 532 / 755 / 1064nm
+- lucas.specs.repetitionRate.label: 重複率
+- lucas.specs.repetitionRate.value: 最高10Hz
+- lucas.specs.energy.label: 能量
+- lucas.specs.energy.value: 最高1.8J
+- lucas.strengths.title: Lucas的優勢
+- lucas.strengths.items[0]: 多波長應對所有顏色
+- lucas.strengths.items[1]: 450ps超短脈衝最小化熱損傷
+- lucas.strengths.items[2]: 點陣鏡頭也可治療疤痕
+- precautions.before.title: 治療前
+- precautions.before.items[0]: 治療前2周避免過度日曬
+- precautions.before.items[1]: 治療部位避免使用刺激性產品
+- precautions.before.items[2]: 如有皮膚狀況（炎症、傷口）請提前告知
+- precautions.before.items[3]: 告知正在服用的藥物（光敏性藥物等）
+- precautions.after.title: 治療後
+- precautions.after.items[0]: 按指示塗抹處方藥膏
+- precautions.after.items[1]: 絕對不要人為去除結痂
+- precautions.after.items[2]: 必須使用防曬霜（SPF 30以上）
+- precautions.after.items[3]: 1周內避免桑拿、劇烈運動
+
+### laser/hairRemoval detail (en)
+
+- claritySection.badge: LIV Premium Equipment
+- claritySection.title: Clarity II
+- claritySection.subtitle: The New Standard in Hair Removal
+- claritySection.description1: Clarity II is a premium laser system that offers two wavelengths—<strong>755nm Alexandrite</strong> and <strong>1064nm Nd:YAG</strong>—on a single platform.
+- claritySection.description2: <strong>IntelliTrak™</strong> technology tracks the skin in real-time, delivering uniform energy without overlap or missed spots, minimizing burn risk and maximizing effectiveness.
+- claritySection.specs.wavelength: Wavelength
+- claritySection.specs.wavelengthValue: 755nm + 1064nm
+- claritySection.specs.spotSize: Spot Size
+- claritySection.specs.spotSizeValue: Up to 3cm²
+- claritySection.specs.pulseTime: Pulse Duration
+- claritySection.specs.pulseTimeValue: 2-400ms
+- claritySection.specs.cooling: Cooling
+- claritySection.specs.coolingValue: Cryogen
+- intellitrakSection.badge: Differentiating Technology
+- intellitrakSection.title: IntelliTrak™ Smart Treatment
+- bodyAreas.title: Body Area Hair Removal Guide
+- bodyAreas.subtitle: Clarity II enables hair removal from face to full body
+- bodyAreas.labels.sessions: Recommended Sessions
+- bodyAreas.labels.interval: Treatment Interval
+- bodyAreas.items[0].area: Underarms
+- bodyAreas.items[0].sessions: 6-8 sessions
+- bodyAreas.items[0].interval: 4-6 weeks
+- bodyAreas.items[0].description: Most popular hair removal area. Also effective for sweat and odor management.
+- bodyAreas.items[1].area: Arms/Legs
+- bodyAreas.items[1].sessions: 6-10 sessions
+- bodyAreas.items[1].interval: 6-8 weeks
+- bodyAreas.items[1].description: Fast treatment for large areas. Maintain smooth skin for longer.
+- bodyAreas.items[2].area: Bikini Line
+- bodyAreas.items[2].sessions: 8-10 sessions
+- bodyAreas.items[2].interval: 4-6 weeks
+- bodyAreas.items[2].description: Settings optimized for sensitive areas ensure safe and effective treatment.
+- bodyAreas.items[3].area: Face (Upper Lip, Jawline)
+- bodyAreas.items[3].sessions: 8-12 sessions
+- bodyAreas.items[3].interval: 3-4 weeks
+- bodyAreas.items[3].description: Delicate facial hair removal. Cleanly removes even fine hairs.
+- bodyAreas.items[4].area: Back/Chest (Men)
+- bodyAreas.items[4].sessions: 8-12 sessions
+- bodyAreas.items[4].interval: 6-8 weeks
+- bodyAreas.items[4].description: Specialized in men's hair removal. From natural reduction to complete removal.
+- bodyAreas.items[5].area: Full Body
+- bodyAreas.items[5].sessions: 8-12 sessions
+- bodyAreas.items[5].interval: Varies by area
+- bodyAreas.items[5].description: Total body care. Package programs at reasonable prices.
+- advantages.title: Clarity II Advantages
+- advantages.subtitle: Why choose Clarity II for hair removal?
+- advantages.items[0].title: Dual Wavelength
+- advantages.items[0].description: 755nm + 1064nm for safe and effective treatment on all skin types
+- advantages.items[1].title: IntelliTrak™
+- advantages.items[1].description: Real-time skin tracking for uniform energy delivery, minimizing burn risk
+- advantages.items[2].title: Large Spot Size
+- advantages.items[2].description: Up to 3cm² spot size for fast treatment of large areas
+- advantages.items[3].title: Integrated Cooling
+- advantages.items[3].description: Cryogen cooling system minimizes pain and discomfort during treatment
+- intellitrakFeatures[0].title: Real-Time Tracking
+- intellitrakFeatures[0].desc: Detects handpiece movement in real-time to track treatment position
+- intellitrakFeatures[1].title: Uniform Coverage
+- intellitrakFeatures[1].desc: Delivers uniform energy across the entire treatment area without overlap or gaps
+- intellitrakFeatures[2].title: Burn Prevention
+- intellitrakFeatures[2].desc: Prevents over-treatment by avoiding duplicate exposure to the same area
+- processSteps[0].title: Consultation & Skin Analysis
+- processSteps[0].desc: Analyze skin type and hair characteristics to create a customized treatment plan
+- processSteps[1].title: Pre-Treatment Prep
+- processSteps[1].desc: Shave treatment area and apply numbing cream if needed
+- processSteps[2].title: Laser Treatment
+- processSteps[2].desc: Precise, uniform energy delivery with IntelliTrak™
+- processSteps[3].title: Post-Care
+- processSteps[3].desc: Cooling and soothing care, schedule next appointment
+
+### laser/hairRemoval detail (ja)
+
+- claritySection.badge: LIV プレミアム機器
+- claritySection.title: Clarity II
+- claritySection.subtitle: 脱毛の新しい基準
+- claritySection.description1: Clarity IIは<strong>755nm アレキサンドライト</strong>と<strong>1064nm Nd:YAG</strong>の2つの波長を1つのプラットフォームで提供するプレミアムレーザーシステムです。
+- claritySection.description2: <strong>IntelliTrak™</strong>技術はリアルタイムで肌を追跡し、重複や漏れなく均一なエネルギーを照射、火傷リスクを最小化し効果を最大化します。
+- claritySection.specs.wavelength: 波長
+- claritySection.specs.wavelengthValue: 755nm + 1064nm
+- claritySection.specs.spotSize: スポットサイズ
+- claritySection.specs.spotSizeValue: 最大3cm²
+- claritySection.specs.pulseTime: パルス時間
+- claritySection.specs.pulseTimeValue: 2-400ms
+- claritySection.specs.cooling: クーリング
+- claritySection.specs.coolingValue: クライオジェン
+- intellitrakSection.badge: 差別化技術
+- intellitrakSection.title: IntelliTrak™ スマート施術
+- bodyAreas.title: 部位別脱毛ガイド
+- bodyAreas.subtitle: Clarity IIで顔から全身まですべての部位の脱毛が可能です
+- bodyAreas.labels.sessions: 推奨回数
+- bodyAreas.labels.interval: 施術間隔
+- bodyAreas.items[0].area: ワキ
+- bodyAreas.items[0].sessions: 6-8回
+- bodyAreas.items[0].interval: 4-6週
+- bodyAreas.items[0].description: 最も人気のある脱毛部位。汗、臭いの管理にも効果的です。
+- bodyAreas.items[1].area: 腕/脚
+- bodyAreas.items[1].sessions: 6-10回
+- bodyAreas.items[1].interval: 6-8週
+- bodyAreas.items[1].description: 広い部位も素早く施術。滑らかな肌を長く維持します。
+- bodyAreas.items[2].area: ビキニライン
+- bodyAreas.items[2].sessions: 8-10回
+- bodyAreas.items[2].interval: 4-6週
+- bodyAreas.items[2].description: デリケートな部位に最適化されたセッティングで安全かつ効果的な施術。
+- bodyAreas.items[3].area: 顔（鼻の下、フェイスライン）
+- bodyAreas.items[3].sessions: 8-12回
+- bodyAreas.items[3].interval: 3-4週
+- bodyAreas.items[3].description: 繊細な顔の毛の除去。産毛までクリアに整えます。
+- bodyAreas.items[4].area: 背中/胸（男性）
+- bodyAreas.items[4].sessions: 8-12回
+- bodyAreas.items[4].interval: 6-8週
+- bodyAreas.items[4].description: 男性脱毛専門。自然な減毛から完全脱毛まで。
+- bodyAreas.items[5].area: 全身脱毛
+- bodyAreas.items[5].sessions: 8-12回
+- bodyAreas.items[5].interval: 部位別調整
+- bodyAreas.items[5].description: 全身トータルケア。パッケージプログラムでお得な価格。
+- advantages.title: Clarity II の利点
+- advantages.subtitle: なぜClarity IIで脱毛するのか？
+- advantages.items[0].title: デュアル波長
+- advantages.items[0].description: 755nm + 1064nmですべての肌タイプに安全で効果的
+- advantages.items[1].title: IntelliTrak™
+- advantages.items[1].description: リアルタイム肌追跡で均一なエネルギー照射、火傷リスク最小化
+- advantages.items[2].title: 大面積スポット
+- advantages.items[2].description: 最大3cm²スポットサイズで広い部位も素早く施術
+- advantages.items[3].title: 統合クーリング
+- advantages.items[3].description: クライオジェンクーリングシステムで施術中の痛みと不快感を最小化
+- intellitrakFeatures[0].title: リアルタイム追跡
+- intellitrakFeatures[0].desc: ハンドピースの動きをリアルタイムで感知して照射位置を把握
+- intellitrakFeatures[1].title: 均一なカバレッジ
+- intellitrakFeatures[1].desc: 重複/漏れなく治療領域全体に均一なエネルギー照射
+- intellitrakFeatures[2].title: 火傷予防
+- intellitrakFeatures[2].desc: 同一部位への重複照射防止で火傷および過治療リスク最小化
+- processSteps[0].title: カウンセリング & 肌分析
+- processSteps[0].desc: 肌タイプ、毛髪特性分析後にカスタム治療計画を策定
+- processSteps[1].title: 事前準備
+- processSteps[1].desc: 治療部位の剃毛および必要に応じて麻酔クリーム塗布
+- processSteps[2].title: レーザー照射
+- processSteps[2].desc: IntelliTrak™で正確かつ均一なエネルギー照射
+- processSteps[3].title: アフターケア
+- processSteps[3].desc: クーリングおよび鎮静ケア、次回施術日程のご案内
+
+### laser/hairRemoval detail (zh)
+
+- claritySection.badge: LIV 高端设备
+- claritySection.title: Clarity II
+- claritySection.subtitle: 脱毛新标准
+- claritySection.description1: Clarity II是一款高端激光系统，在单一平台上提供<strong>755nm亚历山大激光</strong>和<strong>1064nm Nd:YAG</strong>两种波长。
+- claritySection.description2: <strong>IntelliTrak™</strong>技术实时追踪皮肤，无重叠无遗漏地均匀输出能量，最大程度降低烫伤风险，最大化治疗效果。
+- claritySection.specs.wavelength: 波长
+- claritySection.specs.wavelengthValue: 755nm + 1064nm
+- claritySection.specs.spotSize: 光斑尺寸
+- claritySection.specs.spotSizeValue: 最大3cm²
+- claritySection.specs.pulseTime: 脉冲时间
+- claritySection.specs.pulseTimeValue: 2-400ms
+- claritySection.specs.cooling: 冷却
+- claritySection.specs.coolingValue: 低温气体
+- intellitrakSection.badge: 差异化技术
+- intellitrakSection.title: IntelliTrak™ 智能治疗
+- bodyAreas.title: 部位脱毛指南
+- bodyAreas.subtitle: Clarity II可实现从面部到全身所有部位的脱毛
+- bodyAreas.labels.sessions: 建议次数
+- bodyAreas.labels.interval: 治疗间隔
+- bodyAreas.items[0].area: 腋下
+- bodyAreas.items[0].sessions: 6-8次
+- bodyAreas.items[0].interval: 4-6周
+- bodyAreas.items[0].description: 最受欢迎的脱毛部位。对汗液和异味管理也很有效。
+- bodyAreas.items[1].area: 手臂/腿部
+- bodyAreas.items[1].sessions: 6-10次
+- bodyAreas.items[1].interval: 6-8周
+- bodyAreas.items[1].description: 大面积部位也能快速治疗。长期保持光滑肌肤。
+- bodyAreas.items[2].area: 比基尼线
+- bodyAreas.items[2].sessions: 8-10次
+- bodyAreas.items[2].interval: 4-6周
+- bodyAreas.items[2].description: 针对敏感部位优化设置，安全有效。
+- bodyAreas.items[3].area: 面部（人中、下颌线）
+- bodyAreas.items[3].sessions: 8-12次
+- bodyAreas.items[3].interval: 3-4周
+- bodyAreas.items[3].description: 细腻面部毛发去除。连绒毛也能彻底清除。
+- bodyAreas.items[4].area: 背部/胸部（男性）
+- bodyAreas.items[4].sessions: 8-12次
+- bodyAreas.items[4].interval: 6-8周
+- bodyAreas.items[4].description: 男性脱毛专业服务。从自然减毛到完全脱毛。
+- bodyAreas.items[5].area: 全身脱毛
+- bodyAreas.items[5].sessions: 8-12次
+- bodyAreas.items[5].interval: 按部位调整
+- bodyAreas.items[5].description: 全身护理。套餐项目价格优惠。
+- advantages.title: Clarity II 优势
+- advantages.subtitle: 为什么选择Clarity II脱毛？
+- advantages.items[0].title: 双波长
+- advantages.items[0].description: 755nm + 1064nm，适合所有肤质，安全有效
+- advantages.items[1].title: IntelliTrak™
+- advantages.items[1].description: 实时皮肤追踪，均匀输出能量，最大程度降低烫伤风险
+- advantages.items[2].title: 大光斑
+- advantages.items[2].description: 最大3cm²光斑尺寸，大面积部位也能快速治疗
+- advantages.items[3].title: 集成冷却
+- advantages.items[3].description: 低温气体冷却系统，最大程度减少治疗中的疼痛和不适
+- intellitrakFeatures[0].title: 实时追踪
+- intellitrakFeatures[0].desc: 实时感知手柄移动，准确把握照射位置
+- intellitrakFeatures[1].title: 均匀覆盖
+- intellitrakFeatures[1].desc: 无重叠无遗漏地向整个治疗区域均匀输出能量
+- intellitrakFeatures[2].title: 烫伤预防
+- intellitrakFeatures[2].desc: 防止同一部位重复照射，最大程度降低烫伤和过度治疗风险
+- processSteps[0].title: 咨询 & 皮肤分析
+- processSteps[0].desc: 分析皮肤类型和毛发特性，制定定制治疗方案
+- processSteps[1].title: 术前准备
+- processSteps[1].desc: 剃除治疗部位毛发，必要时涂抹麻醉膏
+- processSteps[2].title: 激光治疗
+- processSteps[2].desc: 通过IntelliTrak™精确均匀地输出能量
+- processSteps[3].title: 术后护理
+- processSteps[3].desc: 冷却和舒缓护理，安排下次治疗时间
+
+### laser/hairRemoval detail (zh-TW)
+
+- claritySection.badge: LIV 高端設備
+- claritySection.title: Clarity II
+- claritySection.subtitle: 脫毛新標準
+- claritySection.description1: Clarity II是一款高端激光系統，在單一平臺上提供<strong>755nm亞歷山大激光</strong>和<strong>1064nm Nd:YAG</strong>兩種波長。
+- claritySection.description2: <strong>IntelliTrak™</strong>技術實時追蹤皮膚，無重疊無遺漏地均勻輸出能量，最大程度降低燙傷風險，最大化治療效果。
+- claritySection.specs.wavelength: 波長
+- claritySection.specs.wavelengthValue: 755nm + 1064nm
+- claritySection.specs.spotSize: 光斑尺寸
+- claritySection.specs.spotSizeValue: 最大3cm²
+- claritySection.specs.pulseTime: 脈衝時間
+- claritySection.specs.pulseTimeValue: 2-400ms
+- claritySection.specs.cooling: 冷卻
+- claritySection.specs.coolingValue: 低溫氣體
+- intellitrakSection.badge: 差異化技術
+- intellitrakSection.title: IntelliTrak™ 智能治療
+- bodyAreas.title: 部位脫毛指南
+- bodyAreas.subtitle: Clarity II可實現從面部到全身所有部位的脫毛
+- bodyAreas.labels.sessions: 建議次數
+- bodyAreas.labels.interval: 治療間隔
+- bodyAreas.items[0].area: 腋下
+- bodyAreas.items[0].sessions: 6-8次
+- bodyAreas.items[0].interval: 4-6周
+- bodyAreas.items[0].description: 最受歡迎的脫毛部位。對汗液和異味管理也很有效。
+- bodyAreas.items[1].area: 手臂/腿部
+- bodyAreas.items[1].sessions: 6-10次
+- bodyAreas.items[1].interval: 6-8周
+- bodyAreas.items[1].description: 大面積部位也能快速治療。長期保持光滑肌膚。
+- bodyAreas.items[2].area: 比基尼線
+- bodyAreas.items[2].sessions: 8-10次
+- bodyAreas.items[2].interval: 4-6周
+- bodyAreas.items[2].description: 針對敏感部位優化設置，安全有效。
+- bodyAreas.items[3].area: 面部（人中、下頜線）
+- bodyAreas.items[3].sessions: 8-12次
+- bodyAreas.items[3].interval: 3-4周
+- bodyAreas.items[3].description: 細膩面部毛髮去除。連絨毛也能徹底清除。
+- bodyAreas.items[4].area: 背部/胸部（男性）
+- bodyAreas.items[4].sessions: 8-12次
+- bodyAreas.items[4].interval: 6-8周
+- bodyAreas.items[4].description: 男性脫毛專業服務。從自然減毛到完全脫毛。
+- bodyAreas.items[5].area: 全身脫毛
+- bodyAreas.items[5].sessions: 8-12次
+- bodyAreas.items[5].interval: 按部位調整
+- bodyAreas.items[5].description: 全身護理。套餐項目價格優惠。
+- advantages.title: Clarity II 優勢
+- advantages.subtitle: 為什麼選擇Clarity II脫毛？
+- advantages.items[0].title: 雙波長
+- advantages.items[0].description: 755nm + 1064nm，適合所有膚質，安全有效
+- advantages.items[1].title: IntelliTrak™
+- advantages.items[1].description: 實時皮膚追蹤，均勻輸出能量，最大程度降低燙傷風險
+- advantages.items[2].title: 大光斑
+- advantages.items[2].description: 最大3cm²光斑尺寸，大面積部位也能快速治療
+- advantages.items[3].title: 集成冷卻
+- advantages.items[3].description: 低溫氣體冷卻系統，最大程度減少治療中的疼痛和不適
+- intellitrakFeatures[0].title: 實時追蹤
+- intellitrakFeatures[0].desc: 實時感知手柄移動，準確把握照射位置
+- intellitrakFeatures[1].title: 均勻覆蓋
+- intellitrakFeatures[1].desc: 無重疊無遺漏地向整個治療區域均勻輸出能量
+- intellitrakFeatures[2].title: 燙傷預防
+- intellitrakFeatures[2].desc: 防止同一部位重複照射，最大程度降低燙傷和過度治療風險
+- processSteps[0].title: 諮詢 & 皮膚分析
+- processSteps[0].desc: 分析皮膚類型和毛髮特性，制定定製治療方案
+- processSteps[1].title: 術前準備
+- processSteps[1].desc: 剃除治療部位毛髮，必要時塗抹麻醉膏
+- processSteps[2].title: 激光治療
+- processSteps[2].desc: 通過IntelliTrak™精確均勻地輸出能量
+- processSteps[3].title: 術後護理
+- processSteps[3].desc: 冷卻和舒緩護理，安排下次治療時間
+
+### laser/pigmentation detail (en)
+
+- threeStageSystem.title: LIV's 3-Stage Pigmentation Treatment System
+- threeStageSystem.subtitle: From mild to stubborn melasma, effective pigmentation improvement with step-by-step customized treatment
+- threeStageSystem.stages[0].stage: Stage 1
+- threeStageSystem.stages[0].title: Intensive Treatment
+- threeStageSystem.stages[0].equipment: Lucas Pico
+- threeStageSystem.stages[0].description: Deep pigment breakdown with picosecond pulse
+- threeStageSystem.stages[1].stage: Stage 2
+- threeStageSystem.stages[1].title: Precision Targeting
+- threeStageSystem.stages[1].equipment: Clarity II 755nm
+- threeStageSystem.stages[1].description: Precise treatment of shallow pigment with alexandrite wavelength
+- threeStageSystem.stages[2].stage: Stage 3
+- threeStageSystem.stages[2].title: Maintenance
+- threeStageSystem.stages[2].equipment: Toning + Ulblanc
+- threeStageSystem.stages[2].description: Gentle repeated treatment for effect maintenance and recurrence prevention
+- picoVsNano.title: Why Picosecond?
+- picoVsNano.subtitle: 1000x faster pulse than nanosecond laser breaks down pigment into finer particles
+- picoVsNano.nanosecond: Nanosecond Laser
+- picoVsNano.picosecond: Picosecond Laser
+- picoVsNano.nanosecondUnit: Billionth of a second (10⁻⁹)
+- picoVsNano.picosecondUnit: Trillionth of a second (10⁻¹²)
+- picoVsNano.largeParticles: Pigment particles broken into larger pieces
+- picoVsNano.slowDischarge: Slow discharge
+- picoVsNano.fineParticles: Pigment particles broken into fine particles
+- picoVsNano.fastDischarge: Fast lymphatic discharge
+- picoVsNano.timesFaster: 1000x Faster
+- picoVsNano.comparison.item: Comparison
+- picoVsNano.comparison.pulseSpeed: Pulse Speed
+- picoVsNano.comparison.particleSize: Particle Size
+- picoVsNano.comparison.tissueDamage: Tissue Damage
+- picoVsNano.comparison.heatDamage: Heat Damage
+- picoVsNano.comparison.downtime: Downtime
+- picoVsNano.comparison.sessions: Sessions Required
+- picoVsNano.comparison.relativeLarge: Relatively Large
+- picoVsNano.comparison.fine: Fine
+- picoVsNano.comparison.exists: Present
+- picoVsNano.comparison.minimal: Minimal
+- picoVsNano.comparison.almostNone: Almost None
+- picoVsNano.comparison.relativeLong: Relatively Long
+- picoVsNano.comparison.short: Short
+- picoVsNano.comparison.many: Many
+- picoVsNano.comparison.few: Few
+- equipment.title: Recommended Pigmentation Treatment Devices
+- equipment.subtitle: Optimal pigmentation treatment with 4 premium lasers at LIV Clinic
+- equipment.featured: FEATURED
+- protocol.title: Treatment Protocol by Severity
+- protocol.mild.level: Mild
+- protocol.mild.description: Light melasma, spots
+- protocol.mild.treatment: Laser Toning
+- protocol.mild.sessions: 5-10 sessions
+- protocol.mild.interval: 2-week interval
+- protocol.moderate.level: Moderate
+- protocol.moderate.description: Medium-depth pigmentation
+- protocol.moderate.treatment: Clarity II 755nm
+- protocol.moderate.sessions: 3-5 sessions
+- protocol.moderate.interval: 3-4 week interval
+- protocol.severe.level: Severe / Stubborn
+- protocol.severe.description: Deep melasma, stubborn
+- protocol.severe.treatment: Lucas Pico + Toning
+- protocol.severe.sessions: 5-10 sessions
+- protocol.severe.interval: 2-4 week interval
+- idealFor[0]: Those whose melasma is getting darker and wider
+- idealFor[1]: Those who have had multiple toning sessions without results
+- idealFor[2]: Those concerned about many spots and freckles
+- idealFor[3]: Those starting to develop age spots
+- idealFor[4]: Those with dull and uneven skin tone
+- idealFor[5]: Those wanting consistent care without downtime
+
+### laser/pigmentation detail (ja)
+
+- threeStageSystem.title: LIVの3段階色素治療システム
+- threeStageSystem.subtitle: 軽度から難治性シミまで、段階別カスタム治療で効果的な色素改善
+- threeStageSystem.stages[0].stage: 1段階
+- threeStageSystem.stages[0].title: 集中治療
+- threeStageSystem.stages[0].equipment: ルーカス ピコ
+- threeStageSystem.stages[0].description: ピコセカンドパルスで深い色素を集中分解
+- threeStageSystem.stages[1].stage: 2段階
+- threeStageSystem.stages[1].title: 精密ターゲット
+- threeStageSystem.stages[1].equipment: クラリティII 755nm
+- threeStageSystem.stages[1].description: アレキサンドライト波長で浅い色素を精密治療
+- threeStageSystem.stages[2].stage: 3段階
+- threeStageSystem.stages[2].title: 維持管理
+- threeStageSystem.stages[2].equipment: トーニング + ウルブラン
+- threeStageSystem.stages[2].description: 低刺激繰り返し施術で効果維持と再発防止
+- picoVsNano.title: なぜピコセカンドなのか？
+- picoVsNano.subtitle: ナノ秒レーザー比1000倍速いパルスで色素をより微細に分解
+- picoVsNano.nanosecond: ナノ秒レーザー
+- picoVsNano.picosecond: ピコ秒レーザー
+- picoVsNano.nanosecondUnit: 10億分の1秒 (10⁻⁹)
+- picoVsNano.picosecondUnit: 1兆分の1秒 (10⁻¹²)
+- picoVsNano.largeParticles: 色素粒子が大きく分解
+- picoVsNano.slowDischarge: 排出速度が遅い
+- picoVsNano.fineParticles: 色素粒子が微細に分解
+- picoVsNano.fastDischarge: リンパ排出が速い
+- picoVsNano.timesFaster: 1000倍速い
+- picoVsNano.comparison.item: 比較項目
+- picoVsNano.comparison.pulseSpeed: パルス速度
+- picoVsNano.comparison.particleSize: 色素分解サイズ
+- picoVsNano.comparison.tissueDamage: 周辺組織損傷
+- picoVsNano.comparison.heatDamage: 熱損傷
+- picoVsNano.comparison.downtime: ダウンタイム
+- picoVsNano.comparison.sessions: 施術回数
+- picoVsNano.comparison.relativeLarge: 比較的大きい
+- picoVsNano.comparison.fine: 微細
+- picoVsNano.comparison.exists: あり
+- picoVsNano.comparison.minimal: 最小
+- picoVsNano.comparison.almostNone: ほとんどなし
+- picoVsNano.comparison.relativeLong: 比較的長い
+- picoVsNano.comparison.short: 短い
+- picoVsNano.comparison.many: 多い
+- picoVsNano.comparison.few: 少ない
+- equipment.title: 色素治療推奨機器
+- equipment.subtitle: LIV整形外科が保有する4つのプレミアムレーザーで最適な色素治療
+- equipment.featured: FEATURED
+- protocol.title: 症状別推奨プロトコル
+- protocol.mild.level: 軽度
+- protocol.mild.description: 軽いシミ、そばかす
+- protocol.mild.treatment: レーザートーニング
+- protocol.mild.sessions: 5-10回
+- protocol.mild.interval: 2週間隔
+- protocol.moderate.level: 中等度
+- protocol.moderate.description: 中間深度色素
+- protocol.moderate.treatment: クラリティII 755nm
+- protocol.moderate.sessions: 3-5回
+- protocol.moderate.interval: 3-4週間隔
+- protocol.severe.level: 重度 / 難治性
+- protocol.severe.description: 深いシミ、難治性
+- protocol.severe.treatment: ルーカス ピコ + トーニング
+- protocol.severe.sessions: 5-10回
+- protocol.severe.interval: 2-4週間隔
+- idealFor[0]: シミが濃くなり広がっている方
+- idealFor[1]: 何度もトーニングを受けたが効果がない方
+- idealFor[2]: そばかす、くすみが多くて悩んでいる方
+- idealFor[3]: 老人性色素斑が出始めた方
+- idealFor[4]: 肌トーンがくすんで均一でない方
+- idealFor[5]: ダウンタイムなく継続的にケアしたい方
+
+### laser/pigmentation detail (zh)
+
+- threeStageSystem.title: LIV三阶段色素治疗系统
+- threeStageSystem.subtitle: 从轻度到顽固性黄褐斑，分阶段定制治疗实现有效色素改善
+- threeStageSystem.stages[0].stage: 第1阶段
+- threeStageSystem.stages[0].title: 集中治疗
+- threeStageSystem.stages[0].equipment: Lucas皮秒
+- threeStageSystem.stages[0].description: 皮秒脉冲集中分解深层色素
+- threeStageSystem.stages[1].stage: 第2阶段
+- threeStageSystem.stages[1].title: 精准靶向
+- threeStageSystem.stages[1].equipment: Clarity II 755nm
+- threeStageSystem.stages[1].description: 亚历山大波长精准治疗浅层色素
+- threeStageSystem.stages[2].stage: 第3阶段
+- threeStageSystem.stages[2].title: 维持护理
+- threeStageSystem.stages[2].equipment: 调光 + 美白激光
+- threeStageSystem.stages[2].description: 低刺激重复治疗维持效果预防复发
+- picoVsNano.title: 为什么选择皮秒？
+- picoVsNano.subtitle: 比纳秒激光快1000倍的脉冲，更精细地分解色素
+- picoVsNano.nanosecond: 纳秒激光
+- picoVsNano.picosecond: 皮秒激光
+- picoVsNano.nanosecondUnit: 十亿分之一秒 (10⁻⁹)
+- picoVsNano.picosecondUnit: 万亿分之一秒 (10⁻¹²)
+- picoVsNano.largeParticles: 色素颗粒分解较大
+- picoVsNano.slowDischarge: 排出速度慢
+- picoVsNano.fineParticles: 色素颗粒分解精细
+- picoVsNano.fastDischarge: 淋巴排出快
+- picoVsNano.timesFaster: 快1000倍
+- picoVsNano.comparison.item: 比较项目
+- picoVsNano.comparison.pulseSpeed: 脉冲速度
+- picoVsNano.comparison.particleSize: 色素分解大小
+- picoVsNano.comparison.tissueDamage: 周围组织损伤
+- picoVsNano.comparison.heatDamage: 热损伤
+- picoVsNano.comparison.downtime: 恢复期
+- picoVsNano.comparison.sessions: 治疗次数
+- picoVsNano.comparison.relativeLarge: 相对较大
+- picoVsNano.comparison.fine: 精细
+- picoVsNano.comparison.exists: 有
+- picoVsNano.comparison.minimal: 最小
+- picoVsNano.comparison.almostNone: 几乎没有
+- picoVsNano.comparison.relativeLong: 相对较长
+- picoVsNano.comparison.short: 短
+- picoVsNano.comparison.many: 多
+- picoVsNano.comparison.few: 少
+- equipment.title: 色素治疗推荐设备
+- equipment.subtitle: LIV整形外科拥有的4种高端激光实现最佳色素治疗
+- equipment.featured: FEATURED
+- protocol.title: 症状推荐方案
+- protocol.mild.level: 轻度
+- protocol.mild.description: 轻微黄褐斑、色斑
+- protocol.mild.treatment: 激光调光
+- protocol.mild.sessions: 5-10次
+- protocol.mild.interval: 2周间隔
+- protocol.moderate.level: 中度
+- protocol.moderate.description: 中等深度色素
+- protocol.moderate.treatment: Clarity II 755nm
+- protocol.moderate.sessions: 3-5次
+- protocol.moderate.interval: 3-4周间隔
+- protocol.severe.level: 重度 / 顽固性
+- protocol.severe.description: 深层黄褐斑、顽固性
+- protocol.severe.treatment: Lucas皮秒 + 调光
+- protocol.severe.sessions: 5-10次
+- protocol.severe.interval: 2-4周间隔
+- idealFor[0]: 黄褐斑越来越深且扩大的人
+- idealFor[1]: 多次做调光但效果不佳的人
+- idealFor[2]: 色斑、雀斑较多困扰的人
+- idealFor[3]: 开始出现老年斑的人
+- idealFor[4]: 肤色暗沉不均匀的人
+- idealFor[5]: 想要无恢复期持续护理的人
+
+### laser/pigmentation detail (zh-TW)
+
+- threeStageSystem.title: LIV三階段色素治療系統
+- threeStageSystem.subtitle: 從輕度到頑固性黃褐斑，分階段定製治療實現有效色素改善
+- threeStageSystem.stages[0].stage: 第1階段
+- threeStageSystem.stages[0].title: 集中治療
+- threeStageSystem.stages[0].equipment: Lucas皮秒
+- threeStageSystem.stages[0].description: 皮秒脈衝集中分解深層色素
+- threeStageSystem.stages[1].stage: 第2階段
+- threeStageSystem.stages[1].title: 精準靶向
+- threeStageSystem.stages[1].equipment: Clarity II 755nm
+- threeStageSystem.stages[1].description: 亞歷山大波長精準治療淺層色素
+- threeStageSystem.stages[2].stage: 第3階段
+- threeStageSystem.stages[2].title: 維持護理
+- threeStageSystem.stages[2].equipment: 調光 + 美白激光
+- threeStageSystem.stages[2].description: 低刺激重複治療維持效果預防復發
+- picoVsNano.title: 為什麼選擇皮秒？
+- picoVsNano.subtitle: 比納秒激光快1000倍的脈衝，更精細地分解色素
+- picoVsNano.nanosecond: 納秒激光
+- picoVsNano.picosecond: 皮秒激光
+- picoVsNano.nanosecondUnit: 十億分之一秒 (10⁻⁹)
+- picoVsNano.picosecondUnit: 萬億分之一秒 (10⁻¹²)
+- picoVsNano.largeParticles: 色素顆粒分解較大
+- picoVsNano.slowDischarge: 排出速度慢
+- picoVsNano.fineParticles: 色素顆粒分解精細
+- picoVsNano.fastDischarge: 淋巴排出快
+- picoVsNano.timesFaster: 快1000倍
+- picoVsNano.comparison.item: 比較項目
+- picoVsNano.comparison.pulseSpeed: 脈衝速度
+- picoVsNano.comparison.particleSize: 色素分解大小
+- picoVsNano.comparison.tissueDamage: 周圍組織損傷
+- picoVsNano.comparison.heatDamage: 熱損傷
+- picoVsNano.comparison.downtime: 恢復期
+- picoVsNano.comparison.sessions: 治療次數
+- picoVsNano.comparison.relativeLarge: 相對較大
+- picoVsNano.comparison.fine: 精細
+- picoVsNano.comparison.exists: 有
+- picoVsNano.comparison.minimal: 最小
+- picoVsNano.comparison.almostNone: 幾乎沒有
+- picoVsNano.comparison.relativeLong: 相對較長
+- picoVsNano.comparison.short: 短
+- picoVsNano.comparison.many: 多
+- picoVsNano.comparison.few: 少
+- equipment.title: 色素治療推薦設備
+- equipment.subtitle: LIV 整形外科擁有的4種高端激光實現最佳色素治療
+- equipment.featured: FEATURED
+- protocol.title: 症狀推薦方案
+- protocol.mild.level: 輕度
+- protocol.mild.description: 輕微黃褐斑、色斑
+- protocol.mild.treatment: 激光調光
+- protocol.mild.sessions: 5-10次
+- protocol.mild.interval: 2周間隔
+- protocol.moderate.level: 中度
+- protocol.moderate.description: 中等深度色素
+- protocol.moderate.treatment: Clarity II 755nm
+- protocol.moderate.sessions: 3-5次
+- protocol.moderate.interval: 3-4周間隔
+- protocol.severe.level: 重度 / 頑固性
+- protocol.severe.description: 深層黃褐斑、頑固性
+- protocol.severe.treatment: Lucas皮秒 + 調光
+- protocol.severe.sessions: 5-10次
+- protocol.severe.interval: 2-4周間隔
+- idealFor[0]: 黃褐斑越來越深且擴大的人
+- idealFor[1]: 多次做調光但效果不佳的人
+- idealFor[2]: 色斑、雀斑較多困擾的人
+- idealFor[3]: 開始出現老年斑的人
+- idealFor[4]: 膚色暗沉不均勻的人
+- idealFor[5]: 想要無恢復期持續護理的人
+
+### laser/vascular detail (en)
+
+- rednessTypes.title: Customized Treatment by Redness Type
+- rednessTypes.subtitle: Optimal wavelength and energy treatment based on the cause and depth of redness
+- rednessTypes.recommendedTreatment: Recommended Treatment
+- rednessTypes.types[0].type: Facial Flushing
+- rednessTypes.types[0].description: Redness easily triggered by emotional or temperature changes
+- rednessTypes.types[0].treatment: Clarity II 1064nm Low Power
+- rednessTypes.types[1].type: Capillary Dilation
+- rednessTypes.types[1].description: Visible spider veins around nose and cheeks
+- rednessTypes.types[1].treatment: Clarity II 1064nm High Power
+- rednessTypes.types[2].type: Rosacea
+- rednessTypes.types[2].description: Chronic skin condition with redness, papules, and pustules
+- rednessTypes.types[2].treatment: Clarity II + Skincare Combined
+- rednessTypes.types[3].type: Hemangioma / Vascular Malformation
+- rednessTypes.types[3].description: Congenital or acquired vascular lesions
+- rednessTypes.types[3].treatment: Clarity II Intensive Treatment
+- dualWavelength.title: Dual Wavelength Principle
+- dualWavelength.subtitle: 755nm and 1064nm wavelengths selectively treat from shallow to deep vessels
+- dualWavelength.epidermis: Epidermis
+- dualWavelength.dermis: Dermis
+- dualWavelength.shallow755: 755nm - Shallow Vessel Target
+- dualWavelength.deep1064: 1064nm - Deep Vessel Target
+- dualWavelength.alexandrite.title: 755nm Alexandrite
+- dualWavelength.alexandrite.points[0]: Targets shallow vessels near epidermis
+- dualWavelength.alexandrite.points[1]: Effective for capillary dilation treatment
+- dualWavelength.alexandrite.points[2]: High hemoglobin absorption rate
+- dualWavelength.ndyag.title: 1064nm Nd:YAG
+- dualWavelength.ndyag.points[0]: Reaches deep vessels in dermis
+- dualWavelength.ndyag.points[1]: Effective for chronic redness and rosacea
+- dualWavelength.ndyag.points[2]: Safe for darker skin types
+- clarity.title: Clarity II
+- clarity.subtitle: Premium dual-wavelength laser optimized for vascular treatment
+- clarity.badge: ONLY OPTION
+- clarity.why: Why Clarity II?
+- clarity.whyDesc: The most suitable device for vascular treatment among LIV's equipment. The 1064nm Nd:YAG wavelength is selectively absorbed by hemoglobin in blood vessels, treating only vessels without surrounding tissue damage.
+- clarity.recommendedSessions: 3-8 sessions (depending on severity)
+- clarity.benefits[0].title: Dual Wavelength
+- clarity.benefits[0].desc: 755nm (pigment/hair) + 1064nm (vascular/deep pigment) multi-solution
+- clarity.benefits[1].title: IntelliTrak Technology
+- clarity.benefits[1].desc: Auto 18% overlap for uniform energy delivery
+- clarity.benefits[2].title: All Skin Types
+- clarity.benefits[2].desc: Safe treatment for Fitzpatrick I-VI
+- clarity.benefits[3].title: Cryogen Cooling
+- clarity.benefits[3].desc: Skin protection and pain minimization during treatment
+- clarity.duration: 15-30 minutes
+- clarity.anesthesia: No anesthesia (Cryogen cooling)
+- clarity.recovery: Immediate return to daily activities
+- protocol.title: Treatment Protocol by Severity
+- protocol.mild.level: Mild
+- protocol.mild.description: Light flushing, early capillaries
+- protocol.mild.sessions: 3-5 sessions
+- protocol.mild.interval: 3-4 week interval
+- protocol.mild.treatment: Clarity II 1064nm
+- protocol.moderate.level: Moderate
+- protocol.moderate.description: Chronic redness, dilated capillaries
+- protocol.moderate.sessions: 5-8 sessions
+- protocol.moderate.interval: 3-4 week interval
+- protocol.moderate.treatment: Clarity II 1064nm
+- protocol.severe.level: Severe
+- protocol.severe.description: Rosacea, severe vascular dilation
+- protocol.severe.sessions: 8-10+ sessions
+- protocol.severe.interval: 2-3 week interval
+- protocol.severe.treatment: Clarity II 1064nm
+- idealFor[0]: Those who flush easily with emotional or temperature changes
+- idealFor[1]: Those with visible spider veins around nose and cheeks
+- idealFor[2]: Those with chronic redness affecting makeup application
+- idealFor[3]: Those diagnosed with rosacea
+- idealFor[4]: Those with prolonged redness after laser treatment
+- idealFor[5]: Those uncomfortable in social situations due to facial flushing
+
+### laser/vascular detail (ja)
+
+- rednessTypes.title: 赤ら顔タイプ別カスタム治療
+- rednessTypes.subtitle: 赤みの原因と深さに応じて最適な波長とエネルギーで治療します
+- rednessTypes.recommendedTreatment: 推奨治療
+- rednessTypes.types[0].type: 顔面紅潮
+- rednessTypes.types[0].description: 感情や温度変化で顔が赤くなりやすい症状
+- rednessTypes.types[0].treatment: クラリティII 1064nm 低出力
+- rednessTypes.types[1].type: 毛細血管拡張
+- rednessTypes.types[1].description: 鼻、頬周辺に細い血管が透けて見える症状
+- rednessTypes.types[1].treatment: クラリティII 1064nm 高出力
+- rednessTypes.types[2].type: 酒さ (Rosacea)
+- rednessTypes.types[2].description: 慢性的な赤みと丘疹、膿疱を伴う皮膚疾患
+- rednessTypes.types[2].treatment: クラリティII + スキンケア併用
+- rednessTypes.types[3].type: 血管腫 / 血管奇形
+- rednessTypes.types[3].description: 先天性または後天性血管病変
+- rednessTypes.types[3].treatment: クラリティII 集中治療
+- dualWavelength.title: デュアル波長の原理
+- dualWavelength.subtitle: 755nmと1064nmの2波長が浅い血管から深い血管まで選択的に治療
+- dualWavelength.epidermis: 表皮
+- dualWavelength.dermis: 真皮
+- dualWavelength.shallow755: 755nm - 浅い血管ターゲット
+- dualWavelength.deep1064: 1064nm - 深い血管ターゲット
+- dualWavelength.alexandrite.title: 755nm アレキサンドライト
+- dualWavelength.alexandrite.points[0]: 表皮近くの浅い血管ターゲット
+- dualWavelength.alexandrite.points[1]: 毛細血管拡張治療に効果的
+- dualWavelength.alexandrite.points[2]: ヘモグロビン吸収率が高い
+- dualWavelength.ndyag.title: 1064nm Nd:YAG
+- dualWavelength.ndyag.points[0]: 真皮層の深い血管まで到達
+- dualWavelength.ndyag.points[1]: 慢性赤ら顔、酒さ治療に効果的
+- dualWavelength.ndyag.points[2]: 暗い肌にも安全
+- clarity.title: Clarity II クラリティII
+- clarity.subtitle: 血管治療に最適化されたデュアル波長プレミアムレーザー
+- clarity.badge: ONLY OPTION
+- clarity.why: なぜクラリティIIなのか？
+- clarity.whyDesc: LIV整形外科が保有する機器の中で血管治療に最も適した機器です。1064nm Nd:YAG波長が血管のヘモグロビンに選択的に吸収され、周辺組織損傷なく血管だけを治療します。
+- clarity.recommendedSessions: 3-8回 (症状により)
+- clarity.benefits[0].title: デュアル波長
+- clarity.benefits[0].desc: 755nm(色素/脱毛) + 1064nm(血管/深部色素) マルチソリューション
+- clarity.benefits[1].title: IntelliTrak技術
+- clarity.benefits[1].desc: 自動18%オーバーラップで均一なエネルギー照射
+- clarity.benefits[2].title: 全ての肌タイプ
+- clarity.benefits[2].desc: スキンタイプI-VIまで安全な施術
+- clarity.benefits[3].title: クライオゲン冷却
+- clarity.benefits[3].desc: 施術中の皮膚保護と痛み最小化
+- clarity.duration: 15-30分
+- clarity.anesthesia: 無麻酔（クライオゲン冷却）
+- clarity.recovery: 即日日常復帰
+- protocol.title: 症状別推奨プロトコル
+- protocol.mild.level: 軽度
+- protocol.mild.description: 軽い赤ら顔、初期毛細血管
+- protocol.mild.sessions: 3-5回
+- protocol.mild.interval: 3-4週間隔
+- protocol.mild.treatment: クラリティII 1064nm
+- protocol.moderate.level: 中等度
+- protocol.moderate.description: 慢性赤ら顔、拡張した毛細血管
+- protocol.moderate.sessions: 5-8回
+- protocol.moderate.interval: 3-4週間隔
+- protocol.moderate.treatment: クラリティII 1064nm
+- protocol.severe.level: 重度
+- protocol.severe.description: 酒さ、重度の血管拡張
+- protocol.severe.sessions: 8-10回以上
+- protocol.severe.interval: 2-3週間隔
+- protocol.severe.treatment: クラリティII 1064nm
+- idealFor[0]: 感情や温度変化で顔が赤くなりやすい方
+- idealFor[1]: 鼻、頬周辺に細い血管が透けて見える方
+- idealFor[2]: 慢性的な赤みでメイクのりが悪い方
+- idealFor[3]: 酒さと診断された方
+- idealFor[4]: レーザー治療後に赤みが長く続く方
+- idealFor[5]: 顔面紅潮で対人関係が不便な方
+
+### laser/vascular detail (zh)
+
+- rednessTypes.title: 红血丝类型定制治疗
+- rednessTypes.subtitle: 根据发红的原因和深度选择最佳波长和能量进行治疗
+- rednessTypes.recommendedTreatment: 推荐治疗
+- rednessTypes.types[0].type: 面部潮红
+- rednessTypes.types[0].description: 情绪或温度变化时脸容易发红的症状
+- rednessTypes.types[0].treatment: Clarity II 1064nm 低功率
+- rednessTypes.types[1].type: 毛细血管扩张
+- rednessTypes.types[1].description: 鼻子、脸颊周围可见细小血管的症状
+- rednessTypes.types[1].treatment: Clarity II 1064nm 高功率
+- rednessTypes.types[2].type: 酒糟鼻 (Rosacea)
+- rednessTypes.types[2].description: 伴有慢性发红、丘疹、脓疱的皮肤病
+- rednessTypes.types[2].treatment: Clarity II + 皮肤护理联合
+- rednessTypes.types[3].type: 血管瘤 / 血管畸形
+- rednessTypes.types[3].description: 先天性或后天性血管病变
+- rednessTypes.types[3].treatment: Clarity II 集中治疗
+- dualWavelength.title: 双波长原理
+- dualWavelength.subtitle: 755nm和1064nm两种波长选择性治疗从浅层到深层的血管
+- dualWavelength.epidermis: 表皮
+- dualWavelength.dermis: 真皮
+- dualWavelength.shallow755: 755nm - 靶向浅层血管
+- dualWavelength.deep1064: 1064nm - 靶向深层血管
+- dualWavelength.alexandrite.title: 755nm 亚历山大
+- dualWavelength.alexandrite.points[0]: 靶向表皮附近的浅层血管
+- dualWavelength.alexandrite.points[1]: 对毛细血管扩张治疗有效
+- dualWavelength.alexandrite.points[2]: 血红蛋白吸收率高
+- dualWavelength.ndyag.title: 1064nm Nd:YAG
+- dualWavelength.ndyag.points[0]: 可到达真皮层的深层血管
+- dualWavelength.ndyag.points[1]: 对慢性红血丝、酒糟鼻治疗有效
+- dualWavelength.ndyag.points[2]: 对深色皮肤也安全
+- clarity.title: Clarity II 柯美丽
+- clarity.subtitle: 针对血管治疗优化的双波长高端激光
+- clarity.badge: ONLY OPTION
+- clarity.why: 为什么选择Clarity II？
+- clarity.whyDesc: 是LIV整形外科拥有的设备中最适合血管治疗的设备。1064nm Nd:YAG波长选择性吸收血管中的血红蛋白，在不损伤周围组织的情况下只治疗血管。
+- clarity.recommendedSessions: 3-8次 (视症状而定)
+- clarity.benefits[0].title: 双波长
+- clarity.benefits[0].desc: 755nm(色素/脱毛) + 1064nm(血管/深层色素) 多功能方案
+- clarity.benefits[1].title: IntelliTrak技术
+- clarity.benefits[1].desc: 自动18%重叠，均匀传递能量
+- clarity.benefits[2].title: 所有肤质适用
+- clarity.benefits[2].desc: 皮肤类型I-VI均可安全治疗
+- clarity.benefits[3].title: 低温气体冷却
+- clarity.benefits[3].desc: 治疗中保护皮肤并最大程度减少疼痛
+- clarity.duration: 15-30分钟
+- clarity.anesthesia: 无麻醉（低温气体冷却）
+- clarity.recovery: 即刻恢复日常
+- protocol.title: 症状推荐方案
+- protocol.mild.level: 轻度
+- protocol.mild.description: 轻微红血丝、初期毛细血管
+- protocol.mild.sessions: 3-5次
+- protocol.mild.interval: 3-4周间隔
+- protocol.mild.treatment: Clarity II 1064nm
+- protocol.moderate.level: 中度
+- protocol.moderate.description: 慢性红血丝、扩张的毛细血管
+- protocol.moderate.sessions: 5-8次
+- protocol.moderate.interval: 3-4周间隔
+- protocol.moderate.treatment: Clarity II 1064nm
+- protocol.severe.level: 重度
+- protocol.severe.description: 酒糟鼻、严重血管扩张
+- protocol.severe.sessions: 8-10次以上
+- protocol.severe.interval: 2-3周间隔
+- protocol.severe.treatment: Clarity II 1064nm
+- idealFor[0]: 情绪或温度变化时脸容易发红的人
+- idealFor[1]: 鼻子、脸颊周围可见细小血管的人
+- idealFor[2]: 因慢性红血丝化妆不服帖的人
+- idealFor[3]: 被诊断为酒糟鼻的人
+- idealFor[4]: 激光治疗后红血丝持续较久的人
+- idealFor[5]: 因面部潮红影响社交的人
+
+### laser/vascular detail (zh-TW)
+
+- rednessTypes.title: 紅血絲類型定製治療
+- rednessTypes.subtitle: 根據發紅的原因和深度選擇最佳波長和能量進行治療
+- rednessTypes.recommendedTreatment: 推薦治療
+- rednessTypes.types[0].type: 面部潮紅
+- rednessTypes.types[0].description: 情緒或溫度變化時臉容易發紅的症狀
+- rednessTypes.types[0].treatment: Clarity II 1064nm 低功率
+- rednessTypes.types[1].type: 毛細血管擴張
+- rednessTypes.types[1].description: 鼻子、臉頰周圍可見細小血管的症狀
+- rednessTypes.types[1].treatment: Clarity II 1064nm 高功率
+- rednessTypes.types[2].type: 酒糟鼻 (Rosacea)
+- rednessTypes.types[2].description: 伴有慢性發紅、丘疹、膿皰的皮膚病
+- rednessTypes.types[2].treatment: Clarity II + 皮膚護理聯合
+- rednessTypes.types[3].type: 血管瘤 / 血管畸形
+- rednessTypes.types[3].description: 先天性或後天性血管病變
+- rednessTypes.types[3].treatment: Clarity II 集中治療
+- dualWavelength.title: 雙波長原理
+- dualWavelength.subtitle: 755nm和1064nm兩種波長選擇性治療從淺層到深層的血管
+- dualWavelength.epidermis: 表皮
+- dualWavelength.dermis: 真皮
+- dualWavelength.shallow755: 755nm - 靶向淺層血管
+- dualWavelength.deep1064: 1064nm - 靶向深層血管
+- dualWavelength.alexandrite.title: 755nm 亞歷山大
+- dualWavelength.alexandrite.points[0]: 靶向表皮附近的淺層血管
+- dualWavelength.alexandrite.points[1]: 對毛細血管擴張治療有效
+- dualWavelength.alexandrite.points[2]: 血紅蛋白吸收率高
+- dualWavelength.ndyag.title: 1064nm Nd:YAG
+- dualWavelength.ndyag.points[0]: 可到達真皮層的深層血管
+- dualWavelength.ndyag.points[1]: 對慢性紅血絲、酒糟鼻治療有效
+- dualWavelength.ndyag.points[2]: 對深色皮膚也安全
+- clarity.title: Clarity II 柯美麗
+- clarity.subtitle: 針對血管治療優化的雙波長高端激光
+- clarity.badge: ONLY OPTION
+- clarity.why: 為什麼選擇Clarity II？
+- clarity.whyDesc: 是LIV 整形外科擁有的設備中最適合血管治療的設備。1064nm Nd:YAG波長選擇性吸收血管中的血紅蛋白，在不損傷周圍組織的情況下只治療血管。
+- clarity.recommendedSessions: 3-8次 (視症狀而定)
+- clarity.benefits[0].title: 雙波長
+- clarity.benefits[0].desc: 755nm(色素/脫毛) + 1064nm(血管/深層色素) 多功能方案
+- clarity.benefits[1].title: IntelliTrak技術
+- clarity.benefits[1].desc: 自動18%重疊，均勻傳遞能量
+- clarity.benefits[2].title: 所有膚質適用
+- clarity.benefits[2].desc: 皮膚類型I-VI均可安全治療
+- clarity.benefits[3].title: 低溫氣體冷卻
+- clarity.benefits[3].desc: 治療中保護皮膚並最大程度減少疼痛
+- clarity.duration: 15-30分鐘
+- clarity.anesthesia: 無麻醉（低溫氣體冷卻）
+- clarity.recovery: 即刻恢復日常
+- protocol.title: 症狀推薦方案
+- protocol.mild.level: 輕度
+- protocol.mild.description: 輕微紅血絲、初期毛細血管
+- protocol.mild.sessions: 3-5次
+- protocol.mild.interval: 3-4周間隔
+- protocol.mild.treatment: Clarity II 1064nm
+- protocol.moderate.level: 中度
+- protocol.moderate.description: 慢性紅血絲、擴張的毛細血管
+- protocol.moderate.sessions: 5-8次
+- protocol.moderate.interval: 3-4周間隔
+- protocol.moderate.treatment: Clarity II 1064nm
+- protocol.severe.level: 重度
+- protocol.severe.description: 酒糟鼻、嚴重血管擴張
+- protocol.severe.sessions: 8-10次以上
+- protocol.severe.interval: 2-3周間隔
+- protocol.severe.treatment: Clarity II 1064nm
+- idealFor[0]: 情緒或溫度變化時臉容易發紅的人
+- idealFor[1]: 鼻子、臉頰周圍可見細小血管的人
+- idealFor[2]: 因慢性紅血絲化妝不服帖的人
+- idealFor[3]: 被診斷為酒糟鼻的人
+- idealFor[4]: 激光治療後紅血絲持續較久的人
+- idealFor[5]: 因面部潮紅影響社交的人
+
+### laser/skintone detail (en)
+
+- concernsSection.title: Do you have these skin concerns?
+- concernsSection.subtitle: There are various causes of uneven skin tone. We offer customized solutions for your specific concerns.
+- concernsSection.customSolution: Custom Solution
+- concernsSection.concerns[0].title: Overall Dull Skin
+- concernsSection.concerns[0].description: Skin appears dark and lifeless due to sun exposure, stress, or fatigue
+- concernsSection.concerns[0].solution: Laser toning for overall skin brightness improvement
+- concernsSection.concerns[0].equipment[0]: Laser Toning
+- concernsSection.concerns[0].equipment[1]: Ulblanc
+- concernsSection.concerns[1].title: Partial Pigmentation
+- concernsSection.concerns[1].description: Dark pigmentation deposited on cheeks, forehead, or around cheekbones
+- concernsSection.concerns[1].solution: Intensive laser toning + pico laser combination
+- concernsSection.concerns[1].equipment[0]: Laser Toning
+- concernsSection.concerns[1].equipment[1]: Lucas
+- concernsSection.concerns[2].title: Pores/Skin Texture Issues
+- concernsSection.concerns[2].description: Uneven skin tone due to enlarged pores and rough texture
+- concernsSection.concerns[2].solution: Utilizing laser toning's collagen remodeling effect
+- concernsSection.concerns[2].equipment[0]: Laser Toning
+- concernsSection.concerns[3].title: Reduced Skin Transparency
+- concernsSection.concerns[3].description: Skin looks dull and lacks transparency, appearing unhealthy
+- concernsSection.concerns[3].solution: Ulblanc for skin transparency and radiance recovery
+- concernsSection.concerns[3].equipment[0]: Ulblanc
+- concernsSection.concerns[3].equipment[1]: Laser Toning
+- toningSection.badge: Treatment Principle
+- toningSection.title: The Science of Laser Toning
+- toningSection.description1: Laser toning uses <strong>1064nm Nd:YAG laser</strong> at low power with repeated pulses to gradually break down melanin in the skin.
+- toningSection.description2: Unlike conventional high-power lasers, it delivers <strong>low energy uniformly over a wide area</strong> to minimize skin irritation while maximizing results.
+- toningSection.effectsTitle: 3 Effects of Laser Toning
+- toningSection.effects[0].title: Melanin Breakdown
+- toningSection.effects[0].desc: Gradually breaks down pigments in the skin
+- toningSection.effects[1].title: Collagen Production
+- toningSection.effects[1].desc: Stimulates dermis to improve skin elasticity
+- toningSection.effects[2].title: Pore Reduction
+- toningSection.effects[2].desc: Controls sebaceous gland function and tightens pores
+- equipmentSection.badge: LIV Equipment
+- equipmentSection.title: Dedicated Skin Tone Improvement Equipment
+- equipmentSection.subtitle: Professional equipment for gradual skin brightening without disrupting daily life
+- equipmentSection.labels.wavelength: Wavelength
+- equipmentSection.labels.feature: Feature
+- equipmentSection.labels.advantage: Advantage
+- equipmentSection.labels.indications: Indications
+- equipmentSection.labels.recommendedSessions: Recommended Sessions
+- equipmentSection.toning.name: Laser Toning
+- equipmentSection.toning.nameEn: Laser Toning (Spectra XT)
+- equipmentSection.toning.wavelength: 1064nm Nd:YAG
+- equipmentSection.toning.feature: Low-power repeated irradiation (MLA mode)
+- equipmentSection.toning.advantage: Zero downtime, immediate return to daily activities
+- equipmentSection.toning.targets[0]: Dull Skin
+- equipmentSection.toning.targets[1]: Fine Lines
+- equipmentSection.toning.targets[2]: Pores
+- equipmentSection.toning.targets[3]: Texture
+- equipmentSection.toning.targets[4]: Brightness
+- equipmentSection.ulblanc.name: Ulblanc
+- equipmentSection.ulblanc.nameEn: Ulblanc Whitening Laser
+- equipmentSection.ulblanc.wavelength: Dedicated whitening wavelength
+- equipmentSection.ulblanc.feature: Selective melanin targeting
+- equipmentSection.ulblanc.advantage: Improve skin tone without irritation
+- equipmentSection.ulblanc.targets[0]: Skin Whitening
+- equipmentSection.ulblanc.targets[1]: Tone Evenness
+- equipmentSection.ulblanc.targets[2]: Transparency
+- equipmentSection.ulblanc.targets[3]: Radiance
+- equipmentSection.ulblanc.targets[4]: Dullness
+- equipmentSection.synergyTitle: Laser Toning + Ulblanc Synergy Effect
+- equipmentSection.synergyDesc: By improving overall skin condition with laser toning and directly targeting melanin with Ulblanc, you can expect <strong>1.5-2x faster results</strong> compared to single treatments. Both devices have no downtime, making combination therapy easy.
+- protocolSection.badge: Treatment Process
+- protocolSection.title: 3-Step Skin Tone Improvement Program
+- protocolSection.subtitle: Systematic step-by-step treatment for natural and lasting skin tone improvement
+- protocolSection.steps[0].title: Skin Conditioning
+- protocolSection.steps[0].equipment: Laser Toning
+- protocolSection.steps[0].description: Uniformly delivers low-power energy across the skin with 1064nm wavelength to improve baseline skin condition.
+- protocolSection.steps[0].sessions: Weekly, 4-5 sessions
+- protocolSection.steps[1].title: Melanin Targeting
+- protocolSection.steps[1].equipment: Ulblanc
+- protocolSection.steps[1].description: Uses specialized wavelength that selectively acts on melanin to gradually break down pigments and induce skin whitening.
+- protocolSection.steps[1].sessions: Every 2 weeks, 3-4 sessions
+- protocolSection.steps[2].title: Maintenance
+- protocolSection.steps[2].equipment: Laser Toning + Ulblanc
+- protocolSection.steps[2].description: Monthly maintenance to preserve brightened skin tone and prevent new pigmentation.
+- protocolSection.steps[2].sessions: Monthly maintenance
+- advantagesSection.title: Advantages of Laser Toning
+- advantagesSection.subtitle: Convenient skin care for busy modern lifestyles
+- advantagesSection.items[0].title: Zero Downtime
+- advantagesSection.items[0].desc: Return to daily activities immediately
+- advantagesSection.items[1].title: Lunchtime Treatment
+- advantagesSection.items[1].desc: Quick 15-20 minute sessions
+- advantagesSection.items[2].title: Natural Results
+- advantagesSection.items[2].desc: Gradually brightening skin
+- advantagesSection.items[3].title: Comprehensive Care
+- advantagesSection.items[3].desc: Tone, pores, elasticity together
+
+### laser/skintone detail (ja)
+
+- concernsSection.title: このような肌の悩みはありませんか？
+- concernsSection.subtitle: 肌トーンの不均一の原因は様々です。お悩み別のカスタムソリューションをご提案します。
+- concernsSection.customSolution: カスタムソリューション
+- concernsSection.concerns[0].title: 全体的にくすんだ肌
+- concernsSection.concerns[0].description: 日光、ストレス、疲労などで肌全体が暗く生気がないように見える状態
+- concernsSection.concerns[0].solution: レーザートーニングで全体的な肌の明るさを改善
+- concernsSection.concerns[0].equipment[0]: レーザートーニング
+- concernsSection.concerns[0].equipment[1]: ウルブラン
+- concernsSection.concerns[1].title: 部分的な色素沈着
+- concernsSection.concerns[1].description: 頬、額、頬骨周辺に部分的に暗い色素が沈着している状態
+- concernsSection.concerns[1].solution: レーザートーニング集中治療 + ピコレーザー併用
+- concernsSection.concerns[1].equipment[0]: レーザートーニング
+- concernsSection.concerns[1].equipment[1]: Lucas
+- concernsSection.concerns[2].title: 毛穴/肌質の悩み
+- concernsSection.concerns[2].description: 広がった毛穴と荒れた肌質により肌トーンが不均一に見える状態
+- concernsSection.concerns[2].solution: レーザートーニングのコラーゲンリモデリング効果を活用
+- concernsSection.concerns[2].equipment[0]: レーザートーニング
+- concernsSection.concerns[3].title: 肌の透明感低下
+- concernsSection.concerns[3].description: 肌がくすんで透明感がなく健康に見えない状態
+- concernsSection.concerns[3].solution: ウルブランで肌の透明感と光沢を回復
+- concernsSection.concerns[3].equipment[0]: ウルブラン
+- concernsSection.concerns[3].equipment[1]: レーザートーニング
+- toningSection.badge: 治療原理
+- toningSection.title: レーザートーニングの科学
+- toningSection.description1: レーザートーニングは<strong>1064nm Nd:YAGレーザー</strong>を低出力で繰り返し照射し、肌の中のメラニンを徐々に分解する施術です。
+- toningSection.description2: 従来の高出力レーザーと異なり、<strong>低エネルギーを広い範囲に均一に</strong>照射して肌への刺激を最小限に抑えながら効果を最大化します。
+- toningSection.effectsTitle: レーザートーニングの3つの効果
+- toningSection.effects[0].title: メラニン分解
+- toningSection.effects[0].desc: 肌の中の色素を徐々に分解
+- toningSection.effects[1].title: コラーゲン生成
+- toningSection.effects[1].desc: 真皮層刺激で肌の弾力を改善
+- toningSection.effects[2].title: 毛穴縮小
+- toningSection.effects[2].desc: 皮脂腺機能調節と毛穴タイトニング
+- equipmentSection.badge: LIV 保有機器
+- equipmentSection.title: 肌トーン改善専用機器
+- equipmentSection.subtitle: 日常生活に支障なく、徐々に明るくなる肌トーンのための専門機器
+- equipmentSection.labels.wavelength: 波長
+- equipmentSection.labels.feature: 特徴
+- equipmentSection.labels.advantage: メリット
+- equipmentSection.labels.indications: 適応症
+- equipmentSection.labels.recommendedSessions: 推奨回数
+- equipmentSection.toning.name: レーザートーニング
+- equipmentSection.toning.nameEn: Laser Toning (Spectra XT)
+- equipmentSection.toning.wavelength: 1064nm Nd:YAG
+- equipmentSection.toning.feature: 低出力繰り返し照射（MLAモード）
+- equipmentSection.toning.advantage: ダウンタイムゼロ、すぐに日常生活可能
+- equipmentSection.toning.targets[0]: くすんだ肌
+- equipmentSection.toning.targets[1]: 小じわ
+- equipmentSection.toning.targets[2]: 毛穴
+- equipmentSection.toning.targets[3]: 肌質
+- equipmentSection.toning.targets[4]: 明るさ改善
+- equipmentSection.ulblanc.name: ウルブラン
+- equipmentSection.ulblanc.nameEn: Ulblanc Whitening Laser
+- equipmentSection.ulblanc.wavelength: 専用ホワイトニング波長
+- equipmentSection.ulblanc.feature: メラニン選択的ターゲティング
+- equipmentSection.ulblanc.advantage: 刺激なく肌トーン改善
+- equipmentSection.ulblanc.targets[0]: 肌美白
+- equipmentSection.ulblanc.targets[1]: トーン均一化
+- equipmentSection.ulblanc.targets[2]: 透明感
+- equipmentSection.ulblanc.targets[3]: 光沢
+- equipmentSection.ulblanc.targets[4]: くすみ
+- equipmentSection.synergyTitle: レーザートーニング + ウルブラン シナジー効果
+- equipmentSection.synergyDesc: レーザートーニングで肌全体のコンディションを改善し、ウルブランでメラニンを直接ターゲティングすると、単独施術に比べて<strong>1.5〜2倍速い効果</strong>が期待できます。両機器ともダウンタイムがないため、負担なく併用治療が可能です。
+- protocolSection.badge: 治療過程
+- protocolSection.title: 3ステップ肌トーン改善プログラム
+- protocolSection.subtitle: 体系的な段階別治療で自然で持続的な肌トーン改善を実現します
+- protocolSection.steps[0].title: 肌コンディショニング
+- protocolSection.steps[0].equipment: レーザートーニング
+- protocolSection.steps[0].description: 1064nm波長で肌全体に低出力エネルギーを均一に照射し、肌のベースコンディションを改善します。
+- protocolSection.steps[0].sessions: 週1回、4-5回
+- protocolSection.steps[1].title: メラニンターゲティング
+- protocolSection.steps[1].equipment: ウルブラン
+- protocolSection.steps[1].description: メラニンに選択的に作用する専用波長で色素を徐々に分解し、肌の美白を促します。
+- protocolSection.steps[1].sessions: 2週間間隔、3-4回
+- protocolSection.steps[2].title: 維持管理
+- protocolSection.steps[2].equipment: レーザートーニング + ウルブラン
+- protocolSection.steps[2].description: 月1回の定期的なケアで明るくなった肌トーンを維持し、新たな色素沈着を予防します。
+- protocolSection.steps[2].sessions: 月1回維持
+- advantagesSection.title: レーザートーニングのメリット
+- advantagesSection.subtitle: 忙しい現代人のための負担のない肌ケア
+- advantagesSection.items[0].title: ダウンタイムゼロ
+- advantagesSection.items[0].desc: 施術直後から日常生活可能
+- advantagesSection.items[1].title: ランチタイム施術
+- advantagesSection.items[1].desc: 15-20分で手軽
+- advantagesSection.items[2].title: 自然な効果
+- advantagesSection.items[2].desc: 徐々に明るくなる肌
+- advantagesSection.items[3].title: 複合改善
+- advantagesSection.items[3].desc: トーン、毛穴、弾力を同時ケア
+
+### laser/skintone detail (zh)
+
+- concernsSection.title: 您有这些肌肤困扰吗？
+- concernsSection.subtitle: 肤色不均的原因多种多样。我们针对您的具体问题提供定制方案。
+- concernsSection.customSolution: 定制方案
+- concernsSection.concerns[0].title: 整体暗沉
+- concernsSection.concerns[0].description: 因日晒、压力、疲劳等导致肤色整体暗淡无光
+- concernsSection.concerns[0].solution: 激光嫩肤整体提亮肤色
+- concernsSection.concerns[0].equipment[0]: 激光嫩肤
+- concernsSection.concerns[0].equipment[1]: Ulblanc
+- concernsSection.concerns[1].title: 局部色素沉着
+- concernsSection.concerns[1].description: 脸颊、额头、颧骨周围局部出现深色色素沉着
+- concernsSection.concerns[1].solution: 激光嫩肤密集治疗 + 皮秒激光联合
+- concernsSection.concerns[1].equipment[0]: 激光嫩肤
+- concernsSection.concerns[1].equipment[1]: Lucas
+- concernsSection.concerns[2].title: 毛孔/肤质问题
+- concernsSection.concerns[2].description: 因毛孔粗大、肤质粗糙导致肤色看起来不均匀
+- concernsSection.concerns[2].solution: 利用激光嫩肤的胶原蛋白重塑效果
+- concernsSection.concerns[2].equipment[0]: 激光嫩肤
+- concernsSection.concerns[3].title: 肌肤透明度下降
+- concernsSection.concerns[3].description: 肌肤暗淡无透明感，看起来不健康
+- concernsSection.concerns[3].solution: Ulblanc恢复肌肤透明度和光泽
+- concernsSection.concerns[3].equipment[0]: Ulblanc
+- concernsSection.concerns[3].equipment[1]: 激光嫩肤
+- toningSection.badge: 治疗原理
+- toningSection.title: 激光嫩肤的科学
+- toningSection.description1: 激光嫩肤使用<strong>1064nm Nd:YAG激光</strong>以低能量重复照射，逐渐分解皮肤中的黑色素。
+- toningSection.description2: 与传统高能量激光不同，<strong>以低能量均匀覆盖大面积</strong>，最大程度减少对皮肤的刺激，同时最大化效果。
+- toningSection.effectsTitle: 激光嫩肤的3大效果
+- toningSection.effects[0].title: 黑色素分解
+- toningSection.effects[0].desc: 逐步分解皮肤中的色素
+- toningSection.effects[1].title: 胶原蛋白生成
+- toningSection.effects[1].desc: 刺激真皮层改善皮肤弹性
+- toningSection.effects[2].title: 毛孔收缩
+- toningSection.effects[2].desc: 调节皮脂腺功能、收紧毛孔
+- equipmentSection.badge: LIV 设备
+- equipmentSection.title: 肤色改善专用设备
+- equipmentSection.subtitle: 不影响日常生活，逐渐提亮肤色的专业设备
+- equipmentSection.labels.wavelength: 波长
+- equipmentSection.labels.feature: 特点
+- equipmentSection.labels.advantage: 优势
+- equipmentSection.labels.indications: 适应症
+- equipmentSection.labels.recommendedSessions: 建议次数
+- equipmentSection.toning.name: 激光嫩肤
+- equipmentSection.toning.nameEn: Laser Toning (Spectra XT)
+- equipmentSection.toning.wavelength: 1064nm Nd:YAG
+- equipmentSection.toning.feature: 低能量重复照射（MLA模式）
+- equipmentSection.toning.advantage: 零恢复期，立即恢复日常生活
+- equipmentSection.toning.targets[0]: 暗沉肌肤
+- equipmentSection.toning.targets[1]: 细纹
+- equipmentSection.toning.targets[2]: 毛孔
+- equipmentSection.toning.targets[3]: 肤质
+- equipmentSection.toning.targets[4]: 提亮
+- equipmentSection.ulblanc.name: Ulblanc
+- equipmentSection.ulblanc.nameEn: Ulblanc Whitening Laser
+- equipmentSection.ulblanc.wavelength: 专用美白波长
+- equipmentSection.ulblanc.feature: 选择性靶向黑色素
+- equipmentSection.ulblanc.advantage: 无刺激改善肤色
+- equipmentSection.ulblanc.targets[0]: 美白
+- equipmentSection.ulblanc.targets[1]: 均匀肤色
+- equipmentSection.ulblanc.targets[2]: 透明感
+- equipmentSection.ulblanc.targets[3]: 光泽
+- equipmentSection.ulblanc.targets[4]: 暗沉
+- equipmentSection.synergyTitle: 激光嫩肤 + Ulblanc 协同效果
+- equipmentSection.synergyDesc: 激光嫩肤改善整体肤质，Ulblanc直接靶向黑色素，与单独治疗相比可期待<strong>1.5-2倍更快的效果</strong>。两种设备都无恢复期，可轻松进行联合治疗。
+- protocolSection.badge: 治疗流程
+- protocolSection.title: 3步肤色改善计划
+- protocolSection.subtitle: 系统性分阶段治疗，实现自然持久的肤色改善
+- protocolSection.steps[0].title: 肌肤调理
+- protocolSection.steps[0].equipment: 激光嫩肤
+- protocolSection.steps[0].description: 使用1064nm波长均匀地向皮肤照射低能量，改善皮肤基础状态。
+- protocolSection.steps[0].sessions: 每周1次，4-5次
+- protocolSection.steps[1].title: 黑色素靶向
+- protocolSection.steps[1].equipment: Ulblanc
+- protocolSection.steps[1].description: 使用选择性作用于黑色素的专用波长，逐步分解色素，促进皮肤美白。
+- protocolSection.steps[1].sessions: 每2周，3-4次
+- protocolSection.steps[2].title: 维护管理
+- protocolSection.steps[2].equipment: 激光嫩肤 + Ulblanc
+- protocolSection.steps[2].description: 每月定期护理维持提亮后的肤色，预防新的色素沉着。
+- protocolSection.steps[2].sessions: 每月1次维护
+- advantagesSection.title: 激光嫩肤的优势
+- advantagesSection.subtitle: 为忙碌现代人提供轻松护肤方案
+- advantagesSection.items[0].title: 零恢复期
+- advantagesSection.items[0].desc: 治疗后立即恢复日常活动
+- advantagesSection.items[1].title: 午休时段治疗
+- advantagesSection.items[1].desc: 仅需15-20分钟
+- advantagesSection.items[2].title: 自然效果
+- advantagesSection.items[2].desc: 肌肤逐渐变亮
+- advantagesSection.items[3].title: 综合改善
+- advantagesSection.items[3].desc: 肤色、毛孔、弹性同步改善
+
+### laser/skintone detail (zh-TW)
+
+- concernsSection.title: 您有這些肌膚困擾嗎？
+- concernsSection.subtitle: 膚色不均的原因多種多樣。我們針對您的具體問題提供定製方案。
+- concernsSection.customSolution: 定製方案
+- concernsSection.concerns[0].title: 整體暗沉
+- concernsSection.concerns[0].description: 因日曬、壓力、疲勞等導致膚色整體暗淡無光
+- concernsSection.concerns[0].solution: 激光嫩膚整體提亮膚色
+- concernsSection.concerns[0].equipment[0]: 激光嫩膚
+- concernsSection.concerns[0].equipment[1]: Ulblanc
+- concernsSection.concerns[1].title: 局部色素沉著
+- concernsSection.concerns[1].description: 臉頰、額頭、顴骨周圍局部出現深色色素沉著
+- concernsSection.concerns[1].solution: 激光嫩膚密集治療 + 皮秒激光聯合
+- concernsSection.concerns[1].equipment[0]: 激光嫩膚
+- concernsSection.concerns[1].equipment[1]: Lucas
+- concernsSection.concerns[2].title: 毛孔/膚質問題
+- concernsSection.concerns[2].description: 因毛孔粗大、膚質粗糙導致膚色看起來不均勻
+- concernsSection.concerns[2].solution: 利用激光嫩膚的膠原蛋白重塑效果
+- concernsSection.concerns[2].equipment[0]: 激光嫩膚
+- concernsSection.concerns[3].title: 肌膚透明度下降
+- concernsSection.concerns[3].description: 肌膚暗淡無透明感，看起來不健康
+- concernsSection.concerns[3].solution: Ulblanc恢復肌膚透明度和光澤
+- concernsSection.concerns[3].equipment[0]: Ulblanc
+- concernsSection.concerns[3].equipment[1]: 激光嫩膚
+- toningSection.badge: 治療原理
+- toningSection.title: 激光嫩膚的科學
+- toningSection.description1: 激光嫩膚使用<strong>1064nm Nd:YAG激光</strong>以低能量重複照射，逐漸分解皮膚中的黑色素。
+- toningSection.description2: 與傳統高能量激光不同，<strong>以低能量均勻覆蓋大面積</strong>，最大程度減少對皮膚的刺激，同時最大化效果。
+- toningSection.effectsTitle: 激光嫩膚的3大效果
+- toningSection.effects[0].title: 黑色素分解
+- toningSection.effects[0].desc: 逐步分解皮膚中的色素
+- toningSection.effects[1].title: 膠原蛋白生成
+- toningSection.effects[1].desc: 刺激真皮層改善皮膚彈性
+- toningSection.effects[2].title: 毛孔收縮
+- toningSection.effects[2].desc: 調節皮脂腺功能、收緊毛孔
+- equipmentSection.badge: LIV 設備
+- equipmentSection.title: 膚色改善專用設備
+- equipmentSection.subtitle: 不影響日常生活，逐漸提亮膚色的專業設備
+- equipmentSection.labels.wavelength: 波長
+- equipmentSection.labels.feature: 特點
+- equipmentSection.labels.advantage: 優勢
+- equipmentSection.labels.indications: 適應症
+- equipmentSection.labels.recommendedSessions: 建議次數
+- equipmentSection.toning.name: 激光嫩膚
+- equipmentSection.toning.nameEn: Laser Toning (Spectra XT)
+- equipmentSection.toning.wavelength: 1064nm Nd:YAG
+- equipmentSection.toning.feature: 低能量重複照射（MLA模式）
+- equipmentSection.toning.advantage: 零恢復期，立即恢復日常生活
+- equipmentSection.toning.targets[0]: 暗沉肌膚
+- equipmentSection.toning.targets[1]: 細紋
+- equipmentSection.toning.targets[2]: 毛孔
+- equipmentSection.toning.targets[3]: 膚質
+- equipmentSection.toning.targets[4]: 提亮
+- equipmentSection.ulblanc.name: Ulblanc
+- equipmentSection.ulblanc.nameEn: Ulblanc Whitening Laser
+- equipmentSection.ulblanc.wavelength: 專用美白波長
+- equipmentSection.ulblanc.feature: 選擇性靶向黑色素
+- equipmentSection.ulblanc.advantage: 無刺激改善膚色
+- equipmentSection.ulblanc.targets[0]: 美白
+- equipmentSection.ulblanc.targets[1]: 均勻膚色
+- equipmentSection.ulblanc.targets[2]: 透明感
+- equipmentSection.ulblanc.targets[3]: 光澤
+- equipmentSection.ulblanc.targets[4]: 暗沉
+- equipmentSection.synergyTitle: 激光嫩膚 + Ulblanc 協同效果
+- equipmentSection.synergyDesc: 激光嫩膚改善整體膚質，Ulblanc直接靶向黑色素，與單獨治療相比可期待<strong>1.5-2倍更快的效果</strong>。兩種設備都無恢復期，可輕鬆進行聯合治療。
+- protocolSection.badge: 治療流程
+- protocolSection.title: 3步膚色改善計劃
+- protocolSection.subtitle: 系統性分階段治療，實現自然持久的膚色改善
+- protocolSection.steps[0].title: 肌膚調理
+- protocolSection.steps[0].equipment: 激光嫩膚
+- protocolSection.steps[0].description: 使用1064nm波長均勻地向皮膚照射低能量，改善皮膚基礎狀態。
+- protocolSection.steps[0].sessions: 每週1次，4-5次
+- protocolSection.steps[1].title: 黑色素靶向
+- protocolSection.steps[1].equipment: Ulblanc
+- protocolSection.steps[1].description: 使用選擇性作用於黑色素的專用波長，逐步分解色素，促進皮膚美白。
+- protocolSection.steps[1].sessions: 每2周，3-4次
+- protocolSection.steps[2].title: 維護管理
+- protocolSection.steps[2].equipment: 激光嫩膚 + Ulblanc
+- protocolSection.steps[2].description: 每月定期護理維持提亮後的膚色，預防新的色素沉著。
+- protocolSection.steps[2].sessions: 每月1次維護
+- advantagesSection.title: 激光嫩膚的優勢
+- advantagesSection.subtitle: 為忙碌現代人提供輕鬆護膚方案
+- advantagesSection.items[0].title: 零恢復期
+- advantagesSection.items[0].desc: 治療後立即恢復日常活動
+- advantagesSection.items[1].title: 午休時段治療
+- advantagesSection.items[1].desc: 僅需15-20分鐘
+- advantagesSection.items[2].title: 自然效果
+- advantagesSection.items[2].desc: 肌膚逐漸變亮
+- advantagesSection.items[3].title: 綜合改善
+- advantagesSection.items[3].desc: 膚色、毛孔、彈性同步改善
+
+### LASER_CATEGORIES treatmentProtocol / TREATMENTS.laser 회수 (ko 원문)
+
+- pigmentation.treatmentProtocol: {"mild":{"treatment":"레이저 토닝","sessions":"5-10회","interval":"2주"},"moderate":{"treatment":"클래리티 II 755nm","sessions":"3-5회","interval":"3-4주"},"severe":{"treatment":"루카스 피코 + 토닝","sessions":"5-10회","interval":"2-4주"}}
+- vascular.treatmentProtocol: {"mild":{"treatment":"클래리티 II 1064nm","sessions":"3-5회","interval":"3-4주"},"moderate":{"treatment":"클래리티 II 1064nm","sessions":"5-8회","interval":"3-4주"},"severe":{"treatment":"클래리티 II 집중 치료","sessions":"8-10회","interval":"2-3주"}}
+- skintone.treatmentProtocol: {"mild":{"treatment":"울블랑 + 토닝","sessions":"5회","interval":"2주"},"moderate":{"treatment":"울블랑 + 토닝 + 클래리티","sessions":"10회","interval":"2주"},"severe":{"treatment":"집중 복합 관리","sessions":"15회+","interval":"1-2주"}}
+- hair-removal.treatmentProtocol: {"face":{"treatment":"클래리티 II 755nm","sessions":"6-8회","interval":"4-6주"},"body":{"treatment":"클래리티 II 755nm","sessions":"6-10회","interval":"6-8주"},"bikini":{"treatment":"클래리티 II 755nm/1064nm","sessions":"8-10회","interval":"6-8주"}}
+- tattoo.treatmentProtocol: {"black":{"treatment":"루카스 피코","sessions":"5-8회","interval":"6-8주"},"color":{"treatment":"루카스 피코 + 클래리티","sessions":"8-12회","interval":"6-8주"},"cosmetic":{"treatment":"루카스 피코","sessions":"3-5회","interval":"4-6주"}}
+- laser.clarity: {"name":"클래리티 II","nameEn":"Clarity II","duration":"15-30분","anesthesia":"무마취 (크라이오겐 쿨링으로 통증 최소화)","recovery":"3-5일 (색소 부위 미세 딱지 가능)","results":"2-4주 간격 3-5회 시술 권장"}
+- laser.lucas: {"name":"루카스 레이저","nameEn":"Lucas Laser","duration":"20-40분","anesthesia":"마취 크림 (선택)","recovery":"3-7일 (미세 딱지 가능)","results":"2-4주 간격 3-5회 시술 권장"}
+- laser.toning: {"name":"레이저 토닝","nameEn":"Laser Toning","duration":"5-15분","anesthesia":"무마취","recovery":"없음 (즉시 일상 복귀)","results":"10회 이상 누적 시술 권장, 3-4회부터 효과 체감"}
+- laser.ulblanc: {"name":"울블랑","nameEn":"Ulblanc","duration":"15-20분","anesthesia":"무마취","recovery":"없음 (즉시 일상 복귀)","results":"5-10회 누적 시술 권장"}
 
 ## 5. 외국인 안내 페이지 사실 (international 네임스페이스, en 기준; 다른 언어는 같은 키)
 
