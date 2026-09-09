@@ -30,7 +30,7 @@
 | --- | --- | --- |
 | ESLint | **통과: 오류 0, 경고 71** | `seo-stage4-final-lint.json` |
 | TypeScript | **통과**, `tsc --noEmit --incremental false` | `seo-stage4-final-types.log` |
-| 기존 Vitest | **41개 파일, 557개 통과** | `seo-stage4-final-tests.log` |
+| 기존 Vitest 및 환경 회귀 | **41개 파일, 560개 통과** | `seo-stage4-final-tests.log` |
 | 관리자/재고 추가 회귀 | **29개 통과**, 외부 통신 금지·모의 DB | `seo-stage4-final-regression.log` |
 | 규칙 테스트 | **7개 통과** | `seo-stage4-final-rules.log` |
 | 번역 키 | **11개 언어 통과**, 기존 zh/zh-TW 전용 키 안내 유지 | `seo-stage4-final-i18n.log` |
@@ -74,7 +74,11 @@
 - 운영: `https://liv-clinic.net`; 저장소 `jaeho19/liv-clinic`, 운영 브랜치 `master`.
 - 시작 시 운영 소스: `2ccaa23b6fb16bec190868f9f7e11b6f771419fc`, deploy ID `6a9d46ac2f2d890008ca8f30`.
 - 기존 설정: Node 20, `npm run build`, `.next`, `@netlify/plugin-nextjs`. 계정·사이트 연결 확인 완료.
-- preview/production: 커밋 후 Git에 있는 검토된 코드로 빌드·배포하고 결과를 이 절에 갱신한다.
+- 1차 코드 커밋: `9ee0467d6dc97cb28a302a7cfb555145bf5927eb`. PR #36의 실제 preview `6aa0f89e6bf32700092bafe3` 빌드 성공.
+- 실제 preview의 초기 142개 HTTP 검사에서 `/ko`, `/ko/contact` robots 메타 불일치를 발견했다. 다시 요청한 다른 경로도 공개 메타로 바뀌었고 sitemap은 0개에서 594개로 재생성되었다. noindex HTTP 헤더와 robots.txt 차단은 유지되었으므로 이를 공개 색인 허용으로 해석하지 않는다.
+- 원인: 기존 환경 판별은 빌드 전용 `CONTEXT`만 읽었다. Netlify 함수의 SSR/ISR에서는 이 변수가 제공되지 않아 공개 환경으로 잘못 판별했다. 비밀정보가 아닌 빌드 환경 이름만 Next 설정의 `LIV_BUILD_CONTEXT`에 포함해 재생성에서도 유지하도록 수정했다. 런타임 CONTEXT 누락 시 preview/branch의 메타·robots·빈 sitemap 유지와 production 판별에 대한 회귀 3개를 추가했다.
+- 근거: [Netlify 함수 환경변수 범위](https://docs.netlify.com/build/functions/environment-variables/), [Next.js 빌드 시 env 치환](https://nextjs.org/docs/app/api-reference/config/next-config-js/env). 별도 Netlify 비밀 설정이나 의존성 변경 없이 기존 Next 16.1.1의 지원 기능을 사용한다.
+- 보완 커밋의 실제 preview를 다시 검증한 뒤 동일 코드를 production에 배포하고 결과를 이 절에 갱신한다.
 
 ## 미검증 및 별도 운영 조치
 

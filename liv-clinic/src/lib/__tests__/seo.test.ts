@@ -2,10 +2,27 @@ import { describe, it, expect, afterEach, vi } from 'vitest';
 import { BASE_URL, buildHreflangMap, defaultOgImage, generatePageMetadata, generateWebPageSchema, getSiteName, stripLocalePrefix, generateLocalBusinessSchema, generateMedicalServiceSchema, generateHowToSchema, generatePhysicianSchema, generateWebSiteSchema } from '@/lib/seo';
 import { LOCALES } from '@/i18n/routing';
 import robots from '@/app/robots';
+import sitemap from '@/app/sitemap';
 
 afterEach(() => vi.unstubAllEnvs());
 
 describe('technical SEO regression', () => {
+  it.each(['deploy-preview', 'branch-deploy'])('preserves %s indexing after build-only CONTEXT is absent at runtime', async (context) => {
+    vi.stubEnv('LIV_BUILD_CONTEXT', context);
+    vi.stubEnv('CONTEXT', undefined);
+    expect(generatePageMetadata({ locale: 'ko', path: '/contact' }).robots)
+      .toMatchObject({ index: false, follow: false, googleBot: { index: false } });
+    expect(robots()).toEqual({ rules: [{ userAgent: '*', disallow: '/' }] });
+    expect(await sitemap()).toEqual([]);
+  });
+
+  it('keeps a production build indexable regardless of the runtime context label', () => {
+    vi.stubEnv('LIV_BUILD_CONTEXT', 'production');
+    vi.stubEnv('CONTEXT', 'deploy-preview');
+    expect(generatePageMetadata({ locale: 'en', path: '/pricing' }).robots)
+      .toMatchObject({ index: true, follow: true });
+  });
+
   it.each(['deploy-preview', 'branch-deploy'])('blocks indexing in %s without changing canonical identity', (context) => {
     vi.stubEnv('CONTEXT', context);
     const meta = generatePageMetadata({ locale: 'en', path: '/pricing' });

@@ -1,5 +1,5 @@
-/** Netlify sets CONTEXT during the build; local production builds stay indexable. */
-export function isPreviewDeployment(context = process.env.CONTEXT): boolean {
+/** Preserve the build's indexing policy during Netlify SSR/ISR as well. */
+export function isPreviewDeployment(context = process.env.LIV_BUILD_CONTEXT || process.env.CONTEXT): boolean {
   return context === 'deploy-preview' || context === 'branch-deploy';
 }
 

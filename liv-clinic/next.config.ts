@@ -5,6 +5,9 @@ import { isPreviewDeployment } from './src/lib/siteEnvironment';
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  // Netlify's CONTEXT is a build variable, not a guaranteed function-runtime value.
+  // Inline only this non-secret environment label so SSR/ISR keeps the build policy.
+  env: { LIV_BUILD_CONTEXT: process.env.CONTEXT || 'production' },
   // Missing asset URLs have no locale/provider; render their 404 outside localized layouts.
   experimental: { globalNotFound: true },
   async headers() {
