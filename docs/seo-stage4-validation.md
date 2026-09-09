@@ -82,7 +82,7 @@
 - 보완 코드 커밋: `b823c38a3ff01b31cb436e737dbfd5996853dadb`. [PR #36](https://github.com/jaeho19/liv-clinic/pull/36)의 보완 preview deploy ID는 `6aa0fb65e137b00008008db9`이다. [실제 preview](https://deploy-preview-36--liv-clinic-jaeho19.netlify.app)에서 142개 HTTP 검사, JSON-LD 검사, 주요 6페이지 메뉴 조작이 통과했다. 재요청한 홈·상담·ko/en 가격·의료정보·러시아어 의료진 페이지 모두 noindex 메타/헤더를 유지했고, robots.txt는 전체 차단, sitemap은 0개였다. Netlify header·redirect 및 preview 상태 검사도 통과했다. Pages changed 검사는 플랫폼에서 skipping으로 표시했다.
 - preview 검증 후 `master`를 fast-forward push했다. PR #36은 GitHub에서 merged로 확인되었다. 미커밋·미추적 파일이 포함되지 않은 Git 커밋을 Netlify가 직접 빌드했다.
 - production deploy ID: `6aa0fc655cfc1d000866130c`; build ID: `6aa0fc655cfc1d000866130a`; 상태 `ready`; 게시 소스 `b823c38a3ff01b31cb436e737dbfd5996853dadb`; 게시 시각 `2026-09-09T06:29:23.244Z` (15:29:23 KST). `getSite.published_deploy`로 운영 반영을 재확인했다. [배포 관리 기록](https://app.netlify.com/projects/liv-clinic-jaeho19/deploys/6aa0fc655cfc1d000866130c).
-- 최종 결과 문서만 별도 커밋·push하며, 배포한 앱 코드에는 추가 변경을 하지 않는다. 문서 커밋과 위 실제 배포 소스 해시를 구분한다.
+- 결과 문서 커밋 `7699100f475abb8f9796d6c0e3f47b2382ee1ee5`도 `master`에 push했다. 앱 코드는 `b823c38`과 동일하다. 이 문서 전용 push의 Netlify 기록 `6aa0febaf3869f0009ec7d41`은 `Canceled build due to no content change`로 종료됐다(API 상태 표시는 `error`). 이는 사이트 코드 변경이 없어 새 빌드를 생략한 결과이며, 위 `ready` production 게시가 그대로 유지됨을 확인했다. 문서 커밋과 실제 배포 소스 해시를 구분한다.
 
 ## 배포 후 운영 읽기 전용 검사
 
