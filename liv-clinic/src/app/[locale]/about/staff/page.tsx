@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useId, useState } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
@@ -19,10 +20,14 @@ function CollapsibleSection({
   children: React.ReactNode;
 }) {
   const [isOpen, setIsOpen] = useState(false);
+  const contentId = useId();
 
   return (
     <div className="border border-border rounded-xl overflow-hidden">
       <button
+        type="button"
+        aria-expanded={isOpen}
+        aria-controls={contentId}
         onClick={() => setIsOpen(!isOpen)}
         className="w-full px-5 py-4 flex items-center justify-between bg-background hover:bg-primary/5 transition-colors"
       >
@@ -47,6 +52,7 @@ function CollapsibleSection({
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            id={contentId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -63,6 +69,27 @@ function CollapsibleSection({
   );
 }
 
+type JournalPublication = {
+  type: 'journal';
+  authors: string;
+  title: string;
+  journal: string;
+  year: number;
+  details: string;
+  doi: string;
+};
+
+type ThesisPublication = {
+  type: 'thesis';
+  title: string;
+  year: number;
+  institution: string;
+  degree: string;
+};
+
+type Publication = JournalPublication | ThesisPublication;
+type Presentation = { title: string; conference: string; year: number; type: string };
+
 // 의료진 기본 정보 (이미지 등 번역이 필요없는 데이터)
 const doctorsMeta = {
   kim: {
@@ -74,50 +101,54 @@ const doctorsMeta = {
   cheon: {
     id: 'dr-cheon',
     image: '/images/doctor/doctor-2.jpg',
-    publications: [] as Array<Record<string, unknown>>,
-    presentations: [] as Array<Record<string, unknown>>,
+    publications: [] as Publication[],
+    presentations: [] as Presentation[],
     mediaAppearances: [] as Array<{ title: string; outlet: string; date: string }>,
   },
 };
 
-// SCI/SCIE 논문 4편 — 저자·제목·저널은 원문 그대로 유지 (번역 대상 아님)
-const KIM_SCI_PUBLICATIONS = [
+// 저널 논문 4편. 색인 등재 여부와 전체 학술 자료 수는 별도로 구분한다.
+const KIM_JOURNAL_PUBLICATIONS: JournalPublication[] = [
   {
-    type: 'sci',
+    type: 'journal',
     authors: 'Rho NK, Kim HS, Kim SY, Lee W.',
     title: 'Injectable \'Skin Boosters\' in Aging Skin Rejuvenation: A Current Overview',
     journal: 'Arch Plast Surg.',
     year: 2024,
     details: '2024 Nov 13;51(6):528-541.',
+    doi: '10.1055/a-2366-3436',
   },
   {
-    type: 'sci',
+    type: 'journal',
     authors: 'Jang JU, Kim SY, Yoon ES, Kim WK, Park SH, Lee BI, Kim DW.',
     title: 'Comparison of the Effectiveness of Ablative and Non-Ablative Fractional Laser Treatments for Early Stage Thyroidectomy Scars',
     journal: 'Arch Plast Surg.',
     year: 2016,
     details: '2016 Nov;43(6):575-581.',
+    doi: '10.5999/aps.2016.43.6.575',
   },
   {
-    type: 'sci',
+    type: 'journal',
     authors: 'Han SK, Kim SY, Choi RJ, Jeong SH, Kim WK.',
     title: 'Comparison of tissue-engineered and artificial dermis grafts after removal of basal cell carcinoma on face – a pilot study',
     journal: 'Dermatol Surg.',
     year: 2014,
     details: '2014 Apr;40(4):460-7.',
+    doi: '10.1111/dsu.12446',
   },
   {
-    type: 'sci',
+    type: 'journal',
     authors: 'Han SK, Kim SY, Gu JH, Jeong SH, Kim WK.',
     title: 'Influence of the pedicle orientation and length on viability of unipedicled venous island flaps',
     journal: 'Microsurgery.',
     year: 2014,
     details: '2014 Mar;34(3):197-202.',
+    doi: '10.1002/micr.22161',
   },
 ];
 
 // 석사학위 논문 1편 (기관명·학위명은 번역)
-const KIM_THESIS = {
+const KIM_THESIS: Omit<ThesisPublication, 'institution' | 'degree'> = {
   type: 'thesis',
   title: 'Comparison of the Effectiveness of Ablative and Nonablative Fractional Laser Treatment for Thyroidectomy Scar',
   year: 2015,
@@ -187,7 +218,7 @@ export default function StaffPage() {
     certifications: t.raw('sections.doctors.kim.certifications') as string[],
     specialties: t.raw('sections.doctors.kim.specialties') as string[],
     publications: [
-      ...KIM_SCI_PUBLICATIONS,
+      ...KIM_JOURNAL_PUBLICATIONS,
       {
         ...KIM_THESIS,
         institution: t('sections.doctors.kim.academic.thesisInstitution'),
@@ -252,6 +283,7 @@ export default function StaffPage() {
       {doctors.map((doctor, index) => (
         <section
           key={doctor.id}
+          id={doctor.id}
           className={`section-gap ${index % 2 === 0 ? 'bg-white' : 'bg-background'}`}
         >
           <div className="container-custom">
@@ -261,19 +293,13 @@ export default function StaffPage() {
                 <div className="relative">
                   {/* Main Image */}
                   <div className="relative aspect-[3/4] rounded-3xl overflow-hidden bg-gradient-to-br from-primary/20 to-secondary/30">
-                    <div
-                      className="absolute inset-0 bg-cover bg-center"
-                      style={{ backgroundImage: `url(${doctor.image})` }}
+                    <Image
+                      src={doctor.image}
+                      alt={`${doctor.name} ${doctor.title}`}
+                      fill
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="object-cover object-center"
                     />
-                    {/* Placeholder */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center text-white/50">
-                        <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                        <p className="font-serif text-2xl">Doctor Photo</p>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Decorative elements */}
@@ -469,14 +495,25 @@ export default function StaffPage() {
                         }
                         count={doctor.publications.length}
                       >
+                        <p className="text-small text-mono-light mb-4">
+                          {t('sections.doctors.labels.publicationBreakdown', {
+                            journalCount: doctor.publications.filter((pub) => pub.type === 'journal').length,
+                            thesisCount: doctor.publications.filter((pub) => pub.type === 'thesis').length,
+                          })}
+                        </p>
                         <ul className="space-y-4">
-                          {doctor.publications.map((pub: any, i: number) => (
+                          {doctor.publications.map((pub, i) => (
                             <li key={i} className="border-b border-border pb-3 last:border-0 last:pb-0">
-                              {pub.type === 'sci' ? (
+                              {pub.type === 'journal' ? (
                                 <div>
-                                  <span className="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded mb-2">SCI/SCIE</span>
+                                  <span className="inline-block px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded mb-2">{t('sections.doctors.labels.journalArticle')}</span>
                                   <p className="text-small text-mono-light mb-1">{pub.authors}</p>
-                                  <p className="text-body text-secondary font-medium mb-1">&ldquo;{pub.title}&rdquo;</p>
+                                  <a
+                                    href={`https://doi.org/${pub.doi}`}
+                                    className="block text-body text-secondary font-medium mb-1 underline underline-offset-4 hover:text-primary"
+                                  >
+                                    &ldquo;{pub.title}&rdquo;
+                                  </a>
                                   <p className="text-small text-mono">
                                     <span className="italic">{pub.journal}</span> {pub.details}
                                   </p>
@@ -506,7 +543,7 @@ export default function StaffPage() {
                         count={doctor.presentations.length}
                       >
                         <ul className="space-y-3">
-                          {doctor.presentations.map((pres: any, i: number) => (
+                          {doctor.presentations.map((pres, i) => (
                             <li key={i} className="flex items-start gap-3 text-body text-mono border-b border-border pb-3 last:border-0 last:pb-0">
                               <span className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded flex-shrink-0 mt-0.5">
                                 {pres.year}
@@ -534,7 +571,7 @@ export default function StaffPage() {
                       >
                         {doctorsMeta.kim.mediaAppearances.length > 0 ? (
                           <ul className="space-y-3">
-                            {doctorsMeta.kim.mediaAppearances.map((media: any, i: number) => (
+                            {doctorsMeta.kim.mediaAppearances.map((media, i) => (
                               <li key={i} className="flex items-start gap-3 text-body text-mono">
                                 <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 flex-shrink-0" />
                                 <div>

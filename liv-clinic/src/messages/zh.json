@@ -726,7 +726,9 @@
         "presentations": "学会发表",
         "globalActivities": "国际活动",
         "media": "媒体报道",
-        "comingSoon": "即将更新"
+        "comingSoon": "即将更新",
+        "journalArticle": "期刊论文",
+        "publicationBreakdown": "期刊论文 {journalCount}篇 · 学位论文 {thesisCount}篇"
       }
     },
     "location": {
@@ -920,14 +922,19 @@
       "severe": "重度",
       "benefits": "优势",
       "consultationCta": "预约咨询",
-      "effectDuration": "效果持续"
+      "effectDuration": "效果持续",
+      "references": {
+        "title": "参考资料",
+        "note": "美国制造商及机构的英文原文与学术资料。",
+        "clinicianNote": "请在医生介绍中查看专业领域、学历和执业经历。"
+      }
     },
     "lifting": {
       "ulthera": {
         "name": "超声刀",
         "fullName": "Ultherapy Prime",
         "tagline": "FDA唯一批准的非手术提升",
-        "description": "全球唯一获得FDA批准的非手术提升。超声波能量深入SMAS层，提供强效提升效果。",
+        "description": "专利MFU-V（微聚焦超声可视化）技术将能量精准传递至深层SMAS，促进胶原蛋白再生。",
         "detail": {
           "skinLayers": {
             "epidermis": "表皮",
@@ -974,49 +981,37 @@
               "shurink": "Shurink/Doublo",
               "thermage": "热玛吉"
             },
-            "rows": [
-              {
-                "feature": "能量类型",
-                "ulthera": "MFU-V（超声波）",
-                "shurink": "HIFU（超声波）",
-                "thermage": "RF（射频）"
-              },
-              {
-                "feature": "实时可视化",
-                "ulthera": "DeepSEE O",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "FDA提升批准",
-                "ulthera": "唯一批准",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "最大深度",
-                "ulthera": "4.5mm（SMAS）",
-                "shurink": "4.5mm",
-                "thermage": "真皮层"
-              },
-              {
-                "feature": "临床研究",
-                "ulthera": "110+论文",
-                "shurink": "少量",
-                "thermage": "大量"
-              },
-              {
-                "feature": "效果持续",
-                "ulthera": "1-2年",
-                "shurink": "6-12个月",
-                "thermage": "6-12个月"
-              },
-              {
-                "feature": "最佳适应症",
-                "ulthera": "严重下垂/提升",
-                "shurink": "维护保养",
-                "thermage": "弹性/肤质"
-              }
+            "rows": [
+              {
+                "feature": "能量类型",
+                "ulthera": "MFU-V（超声波）",
+                "shurink": "HIFU（超声波）",
+                "thermage": "RF（射频）"
+              },
+              {
+                "feature": "实时可视化",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "最大深度",
+                "ulthera": "4.5mm（SMAS）",
+                "shurink": "4.5mm",
+                "thermage": "真皮层"
+              },
+              {
+                "feature": "效果持续",
+                "ulthera": "1-2年",
+                "shurink": "6-12个月",
+                "thermage": "6-12个月"
+              },
+              {
+                "feature": "最佳适应症",
+                "ulthera": "严重下垂/提升",
+                "shurink": "维护保养",
+                "thermage": "弹性/肤质"
+              }
             ],
             "synergy": {
               "title": "超声刀 + 热玛吉 协同效应",
@@ -1084,23 +1079,17 @@
             }
           },
           "hero": {
-            "badge": "FDA唯一批准提升设备",
+            "badge": "MFU-V · DeepSEE",
             "premiumLifting": "高端提升",
             "title": "超声刀",
-            "description": "唯一能到达深层SMAS的非侵入式提升。\n实时DeepSEE可视化技术，精准安全。",
-            "stats": {
-              "clinicalStudies": "临床研究",
-              "globalProcedures": "全球治疗案例",
-              "globalProceduresValue": "175万+",
-              "improvementRate": "患者改善率"
-            },
+            "description": "可到达深层SMAS的非侵入式提升。\n实时DeepSEE可视化技术，精准安全。",
             "deepSee": "实时可视化",
             "smasTarget": "深层精准定位"
           },
           "about": {
             "sectionLabel": "About Ultherapy Prime",
             "title": "什么是超声刀？",
-            "description": "超声刀是美国FDA批准<strong>提升效果的唯一</strong>非侵入式HIFU设备。专利MFU-V（微聚焦超声可视化）技术将能量精准传递至深层SMAS，促进胶原蛋白再生。",
+            "description": "专利MFU-V（微聚焦超声可视化）技术将能量精准传递至深层SMAS，促进胶原蛋白再生。",
             "depthTargeting": "深度定制精准治疗",
             "depths": {
               "1_5": {
@@ -1123,8 +1112,8 @@
             "title": "为什么选择超声刀？",
             "cards": {
               "fda": {
-                "title": "FDA唯一批准",
-                "description": "美国FDA批准非侵入式提升效果的<strong>唯一</strong>HIFU设备。"
+                "title": "FDA 510(k)",
+                "description": "Ulthera PRIME · K233996"
               },
               "deepSee": {
                 "title": "DeepSEE可视化",
@@ -1132,17 +1121,8 @@
               },
               "smas": {
                 "title": "SMAS层精准定位",
-                "description": "唯一能<strong>到达SMAS层</strong>的非侵入式设备，与整形手术靶向相同。"
+                "description": "可<strong>到达SMAS层</strong>的非侵入式设备，与整形手术靶向相同。"
               }
-            },
-            "clinicalEvidence": {
-              "label": "临床证据",
-              "papers": "临床研究论文",
-              "aestheticImprovement": "美学改善率",
-              "satisfaction": "患者满意度",
-              "duration": "效果持续时间",
-              "durationValue": "1-2年",
-              "source": "来源：2024年系统评价和荟萃分析（PubMed）"
             }
           },
           "livDifference": {
@@ -1157,10 +1137,6 @@
               "transparency": {
                 "title": "发数透明公开",
                 "description": "透明公开治疗前计划的线数和实际照射的发数。承诺诚信治疗。"
-              },
-              "specialist": {
-                "title": "专科医生亲自治疗",
-                "description": "皮肤科/整形外科专科医生从咨询到治疗全程亲自进行。制定个人定制治疗方案。"
               }
             }
           },
@@ -1214,8 +1190,7 @@
             "title": "预约超声刀咨询",
             "description": "通过与专业医疗团队1:1定制咨询，\n制定最适合您的治疗方案。",
             "bookButton": "预约免费咨询",
-            "hours": "工作日 10:00-19:00",
-            "location": "新沙站4号出口 步行3分钟"
+            "hours": "工作日 10:00-19:00"
           },
           "related": {
             "labelEn": "相关治疗",
@@ -1233,37 +1208,17 @@
         "tagline": "射频紧肤解决方案",
         "description": "第四代热玛吉FLX比传统方式快25%，同时促进全面的胶原蛋白再生。",
         "detail": {
-          "heroLabels": [
-            {
-              "top": {
-                "title": "AccuREP",
-                "subtitle": "自动能量调节"
-              },
-              "bottom": {
-                "title": "Comfort Pulse",
-                "subtitle": "振动疼痛缓解"
-              }
-            },
-            {
-              "top": {
-                "title": "RF Technology",
-                "subtitle": "胶原蛋白收缩与再生"
-              },
-              "bottom": {
-                "title": "14M+",
-                "subtitle": "全球治疗次数"
-              }
-            },
-            {
-              "top": {
-                "title": "AccuTip",
-                "subtitle": "3.0cm²精准面积"
-              },
-              "bottom": {
-                "title": "默茨韩国",
-                "subtitle": "官方认证诊所"
-              }
-            }
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "自动能量调节"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "振动疼痛缓解"
+              }
+            }
           ],
           "skinLayers": {
             "epidermis": "表皮",
@@ -1367,26 +1322,12 @@
           "hero": {
             "badge": "第四代高端射频",
             "title": "热玛吉FLX",
-            "description": "AccuREP技术根据皮肤状态自动调节最佳能量。<br />振动技术减少疼痛，同时提升效果的射频提升。",
-            "stats": {
-              "treatments": {
-                "value": "14M+",
-                "label": "全球治疗次数"
-              },
-              "time": {
-                "value": "25%",
-                "label": "治疗时间缩短"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "患者满意度"
-              }
-            }
+            "description": "AccuREP技术根据皮肤状态自动调节最佳能量。<br />振动技术减少疼痛，同时提升效果的射频提升。"
           },
           "about": {
             "sectionLabel": "About Thermage",
             "title": "什么是热玛吉FLX？",
-            "description": "热玛吉FLX是<strong>全球超过1400万次</strong>治疗的全球第一射频提升设备。专利AccuREP技术实时测量皮肤阻抗自动调节最佳能量，通过胶原蛋白收缩和再生改善皮肤弹性。",
+            "description": "专利AccuREP技术实时测量皮肤阻抗自动调节最佳能量，通过胶原蛋白收缩和再生改善皮肤弹性。",
             "rfPrinciple": {
               "title": "射频能量原理",
               "steps": [
@@ -1416,7 +1357,7 @@
             "cards": {
               "accuRep": {
                 "title": "AccuREP技术",
-                "desc": "<strong>实时测量</strong>皮肤阻抗，自动调节各部位的最佳能量。保证均匀安全的治疗效果。"
+                "desc": "专利AccuREP技术实时测量皮肤阻抗自动调节最佳能量，通过胶原蛋白收缩和再生改善皮肤弹性。"
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
@@ -1426,26 +1367,6 @@
                 "title": "胶原蛋白重塑",
                 "desc": "治疗后<strong>即时收缩效果</strong>，加上3-6个月内新生胶原蛋白生成，逐步改善皮肤弹性。"
               }
-            },
-            "globalTrust": {
-              "title": "Global Trust",
-              "treatments": {
-                "value": "14M+",
-                "label": "全球治疗次数"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "患者满意度"
-              },
-              "time": {
-                "value": "25%",
-                "label": "治疗时间缩短"
-              },
-              "duration": {
-                "value": "1年+",
-                "label": "效果持续时间"
-              },
-              "source": "来源：Solta Medical官方临床数据"
             }
           },
           "tipsSection": {
@@ -1479,10 +1400,6 @@
               "transparent": {
                 "title": "发数透明公开",
                 "desc": "透明公开治疗前计划的发数和实际使用的发数。承诺诚实治疗。"
-              },
-              "specialist": {
-                "title": "专家亲自操作",
-                "desc": "皮肤科/整形外科专家从咨询到治疗全程亲自操作。制定个性化治疗方案。"
               }
             }
           },
@@ -1547,8 +1464,7 @@
             "title": "预约热玛吉咨询",
             "description": "通过与专业医疗团队的1对1定制咨询，<br />制定最适合您的治疗方案。",
             "bookConsultation": "预约免费咨询",
-            "businessHours": "工作日10:00-19:00",
-            "location": "新沙站4号出口步行3分钟"
+            "businessHours": "工作日10:00-19:00"
           },
           "related": {
             "sectionLabel": "相关推荐治疗",
@@ -6958,7 +6874,7 @@
     },
     "staff": {
       "title": "医生介绍 | 整形外科专科医生 | LIV整形外科",
-      "description": "LIV整形外科院长为整形外科专科医生，发表4篇SCI论文，专注超声刀Prime与热玛吉FLX。15年以上经验的医生提供1对1咨询。首尔江南。",
+      "description": "了解LIV整形外科金秀英院长与千信惠医生的专业领域、学历、执业经历、学术论文及学会活动。",
       "keywords": [
         "LIV整形外科 医生",
         "整形外科专科医生 首尔",
@@ -7179,7 +7095,7 @@
     },
     "thermage": {
       "title": "热玛吉FLX | 射频紧肤提升 | LIV整形外科（江南）",
-      "description": "热玛吉FLX认证合作诊所——首尔江南LIV整形外科。正品探头刺激真皮胶原，改善弹力与轮廓的射频提升。新沙站步行1分钟。",
+      "description": "LIV整形外科热玛吉FLX介绍：射频技术、探头类型、治疗流程、恢复与注意事项及常见问题。",
       "keywords": [
         "热玛吉FLX 首尔",
         "热玛吉 韩国",
@@ -7191,8 +7107,8 @@
       ]
     },
     "thread": {
-      "title": "线雕 | PDO线即刻提升 | LIV整形外科（江南）",
-      "description": "首尔江南LIV整形外科线雕。PDO线即刻提升松弛部位并促进胶原生成，轮廓自然。新沙站步行1分钟。",
+      "title": "埋线提升 | 线材类型与注意事项 | LIV整形外科",
+      "description": "LIV整形外科埋线提升介绍：线材类型、治疗流程、恢复与注意事项及相关医疗问答。",
       "keywords": [
         "线雕 首尔",
         "PDO线雕 韩国",
@@ -7204,8 +7120,8 @@
       ]
     },
     "ulthera": {
-      "title": "超声刀Prime | FDA认证HIFU提升 | LIV整形外科",
-      "description": "超声刀Prime正品认证诊所——首尔江南LIV整形外科。FDA认证聚焦超声(HIFU)刺激SMAS层，改善松弛的非手术提升。新沙站步行1分钟。",
+      "title": "超声刀Prime | 治疗流程与注意事项 | LIV整形外科",
+      "description": "LIV整形外科超声刀Prime介绍：超声可视化技术、治疗流程、恢复与注意事项、常见问题及参考资料。",
       "keywords": [
         "超声刀 韩国",
         "超声刀Prime",

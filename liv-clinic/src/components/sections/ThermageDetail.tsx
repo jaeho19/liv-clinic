@@ -6,6 +6,8 @@ import { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem, Button, Card, ScrollLink, PriceTable, Breadcrumb } from '@/components/ui';
+import TreatmentGuideLinks from './TreatmentGuideLinks';
+import TreatmentReferences from './TreatmentReferences';
 import { TREATMENTS } from '@/lib/constants';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 import InternationalNotice from './InternationalNotice';
@@ -492,6 +494,7 @@ interface ExtendedFaq {
 export default function ThermageDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
+  const tNav = useTranslations('nav');
   const locale = useLocale();
   const treatment = getLocalizedTreatment(TREATMENTS.lifting.thermage, 'thermage', locale);
   const [expandedFaq, setExpandedFaq] = useState<number | null>(null);
@@ -596,21 +599,6 @@ export default function ThermageDetail() {
                   dangerouslySetInnerHTML={{ __html: t('lifting.thermage.detail.hero.description') }}
                 />
 
-{/* Quick stats */}
-                <div className="flex gap-8 mt-10 pt-8 border-t border-border/50">
-                  <div>
-                    <p className="text-h2 text-[#FF6B35] font-serif">{t('lifting.thermage.detail.hero.stats.treatments.value')}</p>
-                    <p className="text-small text-mono-light">{t('lifting.thermage.detail.hero.stats.treatments.label')}</p>
-                  </div>
-                  <div>
-                    <p className="text-h2 text-[#FF6B35] font-serif">{t('lifting.thermage.detail.hero.stats.time.value')}</p>
-                    <p className="text-small text-mono-light">{t('lifting.thermage.detail.hero.stats.time.label')}</p>
-                  </div>
-                  <div>
-                    <p className="text-h2 text-[#FF6B35] font-serif">{t('lifting.thermage.detail.hero.stats.satisfaction.value')}</p>
-                    <p className="text-small text-mono-light">{t('lifting.thermage.detail.hero.stats.satisfaction.label')}</p>
-                  </div>
-                </div>
               </div>
             </AnimateOnScroll>
 
@@ -706,6 +694,7 @@ export default function ThermageDetail() {
 
       {/* Price Table Section */}
       <PriceTable treatmentId="thermage" />
+      <TreatmentGuideLinks treatmentId="thermage" />
 
       {/* About Section - 써마지란? */}
       <section className="section-gap bg-white">
@@ -814,33 +803,7 @@ export default function ThermageDetail() {
             </StaggerItem>
           </StaggerChildren>
 
-          {/* Clinical evidence banner */}
-          <AnimateOnScroll>
-            <div className="mt-16 p-8 bg-gradient-to-r from-[#FF6B35] to-primary rounded-3xl text-white text-center">
-              <p className="font-serif text-h3 opacity-80 mb-4">{t('lifting.thermage.detail.whyThermage.globalTrust.title')}</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                  <p className="text-h1 font-serif">{t('lifting.thermage.detail.whyThermage.globalTrust.treatments.value')}</p>
-                  <p className="text-small opacity-70">{t('lifting.thermage.detail.whyThermage.globalTrust.treatments.label')}</p>
-                </div>
-                <div>
-                  <p className="text-h1 font-serif">{t('lifting.thermage.detail.whyThermage.globalTrust.satisfaction.value')}</p>
-                  <p className="text-small opacity-70">{t('lifting.thermage.detail.whyThermage.globalTrust.satisfaction.label')}</p>
-                </div>
-                <div>
-                  <p className="text-h1 font-serif">{t('lifting.thermage.detail.whyThermage.globalTrust.time.value')}</p>
-                  <p className="text-small opacity-70">{t('lifting.thermage.detail.whyThermage.globalTrust.time.label')}</p>
-                </div>
-                <div>
-                  <p className="text-h1 font-serif">{t('lifting.thermage.detail.whyThermage.globalTrust.duration.value')}</p>
-                  <p className="text-small opacity-70">{t('lifting.thermage.detail.whyThermage.globalTrust.duration.label')}</p>
-                </div>
-              </div>
-              <p className="text-small opacity-60 mt-6">
-                {t('lifting.thermage.detail.whyThermage.globalTrust.source')}
-              </p>
-            </div>
-          </AnimateOnScroll>
+          <TreatmentReferences treatmentId="thermage" />
         </div>
       </section>
 
@@ -971,9 +934,9 @@ export default function ThermageDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.thermage.detail.livDifference.cards.specialist.title')}</h3>
+                  <h3 className="text-h4 text-secondary mb-3"><Link href="/about/staff" className="underline underline-offset-4 hover:text-primary">{tNav('aboutStaff')}</Link></h3>
                   <p className="text-body text-mono-light">
-                    {t('lifting.thermage.detail.livDifference.cards.specialist.desc')}
+                    {t('common.references.clinicianNote')}
                   </p>
                 </div>
               </Card>
@@ -1271,13 +1234,14 @@ export default function ThermageDetail() {
                 <p className="text-body text-mono-light mb-4">
                   {t('lifting.thermage.detail.faq.moreInfo')}
                 </p>
-                <Link href="/medical">
-                  <Button variant="outline">
-                    {t('lifting.thermage.detail.faq.viewMedicalQA')}
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Button>
+                <Link
+                  href={`/medical#${relatedMedicalQA[0].id}`}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-primary px-5 py-3 text-small text-secondary hover:bg-primary/10 transition-colors"
+                >
+                  {relatedMedicalQA[0].question}
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </Link>
               </div>
             </AnimateOnScroll>
@@ -1330,7 +1294,7 @@ export default function ThermageDetail() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   </svg>
-                  {t('lifting.thermage.detail.cta.location')}
+                  <Link href="/about/location" className="underline underline-offset-4 hover:opacity-80">{tNav('aboutLocation')}</Link>
                 </span>
               </div>
             </div>

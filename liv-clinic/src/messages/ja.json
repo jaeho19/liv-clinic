@@ -726,7 +726,9 @@
         "presentations": "学会発表",
         "globalActivities": "国際活動",
         "media": "メディア掲載",
-        "comingSoon": "近日公開予定"
+        "comingSoon": "近日公開予定",
+        "journalArticle": "学術誌論文",
+        "publicationBreakdown": "学術誌論文 {journalCount}編 · 学位論文 {thesisCount}編"
       }
     },
     "location": {
@@ -920,14 +922,19 @@
       "severe": "重度",
       "benefits": "メリット",
       "consultationCta": "相談予約",
-      "effectDuration": "効果持続"
+      "effectDuration": "効果持続",
+      "references": {
+        "title": "参考資料",
+        "note": "米国のメーカー・機関による英語の原文と学術資料です。",
+        "clinicianNote": "医師紹介で専門分野・学歴・経歴をご確認いただけます。"
+      }
     },
     "lifting": {
       "ulthera": {
         "name": "ウルセラ",
         "fullName": "Ultherapy Prime",
         "tagline": "FDA唯一承認の非手術リフティング",
-        "description": "世界で唯一FDA承認を受けた非手術リフティング。超音波エネルギーがSMAS層まで到達し、強力なリフティング効果を提供します。",
+        "description": "特許取得のMFU-V（Micro-focused Ultrasound with Visualization）技術で深層SMASまでエネルギーを正確に伝達しコラーゲン再生を促進します。",
         "detail": {
           "skinLayers": {
             "epidermis": "表皮",
@@ -974,49 +981,37 @@
               "shurink": "シュリンク/ダブロ",
               "thermage": "サーマジ"
             },
-            "rows": [
-              {
-                "feature": "エネルギー種類",
-                "ulthera": "MFU-V（超音波）",
-                "shurink": "HIFU（超音波）",
-                "thermage": "RF（高周波）"
-              },
-              {
-                "feature": "リアルタイム可視化",
-                "ulthera": "DeepSEE O",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "FDAリフティング承認",
-                "ulthera": "唯一承認",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "最大深度",
-                "ulthera": "4.5mm（SMAS）",
-                "shurink": "4.5mm",
-                "thermage": "真皮層"
-              },
-              {
-                "feature": "臨床研究",
-                "ulthera": "110+論文",
-                "shurink": "少数",
-                "thermage": "多数"
-              },
-              {
-                "feature": "効果持続",
-                "ulthera": "1-2年",
-                "shurink": "6-12ヶ月",
-                "thermage": "6-12ヶ月"
-              },
-              {
-                "feature": "最適適応症",
-                "ulthera": "重度たるみ/リフティング",
-                "shurink": "維持管理",
-                "thermage": "弾力/肌質"
-              }
+            "rows": [
+              {
+                "feature": "エネルギー種類",
+                "ulthera": "MFU-V（超音波）",
+                "shurink": "HIFU（超音波）",
+                "thermage": "RF（高周波）"
+              },
+              {
+                "feature": "リアルタイム可視化",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "最大深度",
+                "ulthera": "4.5mm（SMAS）",
+                "shurink": "4.5mm",
+                "thermage": "真皮層"
+              },
+              {
+                "feature": "効果持続",
+                "ulthera": "1-2年",
+                "shurink": "6-12ヶ月",
+                "thermage": "6-12ヶ月"
+              },
+              {
+                "feature": "最適適応症",
+                "ulthera": "重度たるみ/リフティング",
+                "shurink": "維持管理",
+                "thermage": "弾力/肌質"
+              }
             ],
             "synergy": {
               "title": "ウルセラ + サーマジ シナジー",
@@ -1084,23 +1079,17 @@
             }
           },
           "hero": {
-            "badge": "FDA唯一承認リフティング機器",
+            "badge": "MFU-V · DeepSEE",
             "premiumLifting": "Premium Lifting",
             "title": "ウルセラ",
-            "description": "深層SMAS層まで到達する唯一の非侵襲リフティング。\nリアルタイムDeepSEE可視化技術で正確かつ安全に。",
-            "stats": {
-              "clinicalStudies": "臨床研究",
-              "globalProcedures": "世界施術件数",
-              "globalProceduresValue": "175万+",
-              "improvementRate": "患者改善率"
-            },
+            "description": "深層SMAS層まで到達する非侵襲リフティング。\nリアルタイムDeepSEE可視化技術で正確かつ安全に。",
             "deepSee": "リアルタイム可視化",
             "smasTarget": "深層ターゲティング"
           },
           "about": {
             "sectionLabel": "About Ultherapy Prime",
             "title": "ウルセラとは？",
-            "description": "ウルセラは米国FDAで<strong>リフティング効果が承認された唯一の</strong>非侵襲HIFU機器です。特許取得のMFU-V（Micro-focused Ultrasound with Visualization）技術で深層SMASまでエネルギーを正確に伝達しコラーゲン再生を促進します。",
+            "description": "特許取得のMFU-V（Micro-focused Ultrasound with Visualization）技術で深層SMASまでエネルギーを正確に伝達しコラーゲン再生を促進します。",
             "depthTargeting": "深さ別カスタムターゲティング",
             "depths": {
               "1_5": {
@@ -1123,8 +1112,8 @@
             "title": "なぜウルセラなのか？",
             "cards": {
               "fda": {
-                "title": "FDA唯一承認",
-                "description": "米国FDAで非侵襲リフティング効果が承認された<strong>唯一の</strong>HIFU機器です。"
+                "title": "FDA 510(k)",
+                "description": "Ulthera PRIME · K233996"
               },
               "deepSee": {
                 "title": "DeepSEE可視化",
@@ -1132,17 +1121,8 @@
               },
               "smas": {
                 "title": "SMAS層ターゲティング",
-                "description": "整形手術でターゲットする<strong>SMAS層まで到達</strong>する唯一の非侵襲機器です。"
+                "description": "整形手術でターゲットする<strong>SMAS層まで到達</strong>する非侵襲機器です。"
               }
-            },
-            "clinicalEvidence": {
-              "label": "Clinical Evidence",
-              "papers": "臨床研究論文",
-              "aestheticImprovement": "審美的改善率",
-              "satisfaction": "患者満足度",
-              "duration": "効果持続期間",
-              "durationValue": "1-2年",
-              "source": "出典：2024年系統的レビューおよびメタ分析（PubMed）"
             }
           },
           "livDifference": {
@@ -1157,10 +1137,6 @@
               "transparency": {
                 "title": "ショット数透明公開",
                 "description": "施術前に計画されたライン数と実際に照射されたショット数を透明に公開します。誠実な施術をお約束します。"
-              },
-              "specialist": {
-                "title": "専門医直接施術",
-                "description": "皮膚科/形成外科専門医が直接カウンセリングから施術まで行います。個人別カスタム施術計画を立てます。"
               }
             }
           },
@@ -1214,8 +1190,7 @@
             "title": "ウルセラ カウンセリング予約",
             "description": "専門医療陣との1:1カスタムカウンセリングを通じて\n自分に合った最適な施術計画を立ててみてください。",
             "bookButton": "無料カウンセリング予約",
-            "hours": "平日 10:00-19:00",
-            "location": "新沙駅4番出口 徒歩3分"
+            "hours": "平日 10:00-19:00"
           },
           "related": {
             "labelEn": "Related Treatments",
@@ -1233,37 +1208,17 @@
         "tagline": "RF肌弾力ソリューション",
         "description": "第4世代サーマジFLXは従来比25%速い施術と全面的なコラーゲン再生を誘導します。",
         "detail": {
-          "heroLabels": [
-            {
-              "top": {
-                "title": "AccuREP",
-                "subtitle": "自動エネルギー調節"
-              },
-              "bottom": {
-                "title": "Comfort Pulse",
-                "subtitle": "振動痛み緩和"
-              }
-            },
-            {
-              "top": {
-                "title": "RF Technology",
-                "subtitle": "コラーゲン収縮＆再生"
-              },
-              "bottom": {
-                "title": "14M+",
-                "subtitle": "世界施術件数"
-              }
-            },
-            {
-              "top": {
-                "title": "AccuTip",
-                "subtitle": "3.0cm²精密面積"
-              },
-              "bottom": {
-                "title": "メルツコリア",
-                "subtitle": "公式認定クリニック"
-              }
-            }
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "自動エネルギー調節"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "振動痛み緩和"
+              }
+            }
           ],
           "skinLayers": {
             "epidermis": "表皮",
@@ -1367,26 +1322,12 @@
           "hero": {
             "badge": "第4世代プレミアム高周波",
             "title": "サーマジFLX",
-            "description": "AccuREP技術で肌状態に合った最適エネルギーを自動調節。<br />振動技術で痛みは減らし、効果は高める高周波リフティング。",
-            "stats": {
-              "treatments": {
-                "value": "14M+",
-                "label": "世界施術件数"
-              },
-              "time": {
-                "value": "25%",
-                "label": "施術時間短縮"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "患者満足度"
-              }
-            }
+            "description": "AccuREP技術で肌状態に合った最適エネルギーを自動調節。<br />振動技術で痛みは減らし、効果は高める高周波リフティング。"
           },
           "about": {
             "sectionLabel": "About Thermage",
             "title": "サーマジFLXとは？",
-            "description": "サーマジFLXは<strong>全世界1,400万件以上</strong>施術されたグローバルNo.1高周波（RF）リフティング装備です。特許取得のAccuREP技術で肌インピーダンスをリアルタイム測定し最適なエネルギーを自動調節し、コラーゲン収縮と再生を通じて肌弾力を改善します。",
+            "description": "特許取得のAccuREP技術で肌インピーダンスをリアルタイム測定し最適なエネルギーを自動調節し、コラーゲン収縮と再生を通じて肌弾力を改善します。",
             "rfPrinciple": {
               "title": "高周波エネルギーの原理",
               "steps": [
@@ -1416,7 +1357,7 @@
             "cards": {
               "accuRep": {
                 "title": "AccuREP技術",
-                "desc": "肌インピーダンスを<strong>リアルタイム測定</strong>し各部位に最適化されたエネルギーを自動調節します。均一で安全な施術結果を保証します。"
+                "desc": "特許取得のAccuREP技術で肌インピーダンスをリアルタイム測定し最適なエネルギーを自動調節し、コラーゲン収縮と再生を通じて肌弾力を改善します。"
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
@@ -1426,26 +1367,6 @@
                 "title": "コラーゲンリモデリング",
                 "desc": "施術直後<strong>即座の収縮効果</strong>と共に3-6ヶ月にわたる新生コラーゲン生成で段階的な弾力改善がなされます。"
               }
-            },
-            "globalTrust": {
-              "title": "Global Trust",
-              "treatments": {
-                "value": "14M+",
-                "label": "世界施術件数"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "患者満足度"
-              },
-              "time": {
-                "value": "25%",
-                "label": "施術時間短縮"
-              },
-              "duration": {
-                "value": "1年+",
-                "label": "効果持続期間"
-              },
-              "source": "出典：Solta Medical公式臨床データ"
             }
           },
           "tipsSection": {
@@ -1479,10 +1400,6 @@
               "transparent": {
                 "title": "ショット数透明公開",
                 "desc": "施術前計画されたショット数と実際使用されたショット数を透明に公開します。正直な施術をお約束します。"
-              },
-              "specialist": {
-                "title": "専門医直接施術",
-                "desc": "皮膚科/形成外科専門医が直接相談から施術まで行います。個人別カスタム施術計画を樹立します。"
               }
             }
           },
@@ -1547,8 +1464,7 @@
             "title": "サーマジ相談予約",
             "description": "専門医療陣との1:1カスタム相談を通じて<br />自分に合った最適な施術計画を樹立してみてください。",
             "bookConsultation": "無料相談予約",
-            "businessHours": "平日10:00-19:00",
-            "location": "新沙駅4番出口徒歩3分"
+            "businessHours": "平日10:00-19:00"
           },
           "related": {
             "sectionLabel": "Related Treatments",
@@ -6950,7 +6866,7 @@
     },
     "staff": {
       "title": "医師紹介 | 形成外科専門医 | LIV美容クリニック",
-      "description": "LIV美容クリニックの院長は形成外科専門医、SCI論文4編、ウルセラプライム・サーマジFLX専門。15年以上の経験を持つ医師が1:1で対応します。江南・新沙。",
+      "description": "LIV美容クリニックのキム・スヨン院長とチョン・シネ医師の専門分野、学歴・経歴、学術論文、学会活動をご紹介します。",
       "keywords": [
         "LIV 医師",
         "形成外科専門医 ソウル",
@@ -7171,7 +7087,7 @@
     },
     "thermage": {
       "title": "サーマクール（サーマジ）FLX | 韓国・江南の高周波リフト | LIV美容クリニック",
-      "description": "サーマクール（サーマジ）FLX認定パートナーのLIV美容クリニック（韓国・江南）。純正チップで真皮コラーゲンを刺激し、弾力と輪郭を高める高周波リフティング。料金は韓国人と同一。新沙駅徒歩1分。",
+      "description": "LIV美容クリニックのサーマジFLX。高周波技術、チップの種類、施術の流れ、回復、注意事項、よくある質問をご案内します。",
       "keywords": [
         "サーマクール 韓国",
         "サーマジ 江南",
@@ -7183,8 +7099,8 @@
       ]
     },
     "thread": {
-      "title": "糸リフト | PDO糸 即時リフト | LIV美容クリニック（江南）",
-      "description": "韓国・江南のLIV美容クリニックの糸リフト。PDO糸でたるみを即時に引き上げ、コラーゲン生成を促進。自然な輪郭改善。新沙駅徒歩1分。",
+      "title": "糸リフト | 糸の種類・注意事項 | LIV美容クリニック",
+      "description": "LIV美容クリニックの糸リフト。糸の種類、施術の流れ、回復、注意事項、関連する医療Q&Aをご案内します。",
       "keywords": [
         "糸リフト 韓国",
         "PDO 糸リフト",
@@ -7196,8 +7112,8 @@
       ]
     },
     "ulthera": {
-      "title": "ウルセラプライム | FDA承認HIFUリフト | LIV美容クリニック",
-      "description": "ウルセラプライム正規認証のLIV美容クリニック（韓国・江南）。FDA承認の集束超音波（HIFU）でSMAS層を刺激し、たるみを改善する非手術リフティング。新沙駅徒歩1分。",
+      "title": "ウルセラプライム | 施術の流れ・注意事項 | LIV美容クリニック",
+      "description": "LIV美容クリニックのウルセラプライム。超音波可視化技術、施術の流れ、回復、注意事項、よくある質問と参考資料をご案内します。",
       "keywords": [
         "ウルセラ 韓国",
         "ウルセラプライム",

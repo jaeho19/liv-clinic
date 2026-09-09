@@ -726,7 +726,9 @@
         "presentations": "Илтгэл",
         "globalActivities": "Олон улсын үйл ажиллагаа",
         "media": "Хэвлэл мэдээлэл",
-        "comingSoon": "Удахгүй гарна"
+        "comingSoon": "Удахгүй гарна",
+        "journalArticle": "Сэтгүүлийн өгүүлэл",
+        "publicationBreakdown": "Өгүүлэл: {journalCount} · Зэрэг горилсон бүтээл: {thesisCount}"
       }
     },
     "location": {
@@ -920,14 +922,19 @@
       "severe": "Хүнд",
       "benefits": "Давуу тал",
       "consultationCta": "Зөвлөгөө захиалах",
-      "effectDuration": "Үр нөлөөний хугацаа"
+      "effectDuration": "Үр нөлөөний хугацаа",
+      "references": {
+        "title": "Эх сурвалж",
+        "note": "АНУ-ын үйлдвэрлэгч, байгууллагын англи эх материал болон эрдэм шинжилгээний нийтлэлүүд.",
+        "clinicianNote": "Эмч нарын мэргэжил, боловсрол, туршлагыг танилцуулгаас үзнэ үү."
+      }
     },
     "lifting": {
       "ulthera": {
         "name": "Ultherapy Prime",
         "fullName": "Ultherapy Prime",
         "tagline": "FDA-аас зөвшөөрөгдсөн цорын ганц мэс заслын бус лифтинг",
-        "description": "Дэлхийн цорын ганц FDA-аас зөвшөөрөгдсөн мэс заслын бус лифтинг. Ультра-авианы энерги SMAS давхаргад гүн нэвтэрч хүчтэй лифтингийн нөлөө үзүүлдэг.",
+        "description": "Патентлагдсан MFU-V (Харагдах микро фокус ультра-авиа) технологи нь энергийг SMAS гүн давхаргад нарийн хүргэж коллагены сэргэлтийг идэвхжүүлдэг.",
         "detail": {
           "skinLayers": {
             "epidermis": "Эпидермис",
@@ -974,49 +981,37 @@
               "shurink": "Shurink/Doublo",
               "thermage": "Thermage"
             },
-            "rows": [
-              {
-                "feature": "Energy Type",
-                "ulthera": "MFU-V (Ultrasound)",
-                "shurink": "HIFU (Ultrasound)",
-                "thermage": "RF (Radiofrequency)"
-              },
-              {
-                "feature": "Real-time Visualization",
-                "ulthera": "DeepSEE O",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "FDA Lifting Approval",
-                "ulthera": "Only Approved",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "Max Depth",
-                "ulthera": "4.5mm (SMAS)",
-                "shurink": "4.5mm",
-                "thermage": "Dermis"
-              },
-              {
-                "feature": "Clinical Studies",
-                "ulthera": "110+ Papers",
-                "shurink": "Few",
-                "thermage": "Many"
-              },
-              {
-                "feature": "Duration",
-                "ulthera": "1-2 Years",
-                "shurink": "6-12 Months",
-                "thermage": "6-12 Months"
-              },
-              {
-                "feature": "Best For",
-                "ulthera": "Severe Sagging/Lifting",
-                "shurink": "Maintenance",
-                "thermage": "Elasticity/Texture"
-              }
+            "rows": [
+              {
+                "feature": "Energy Type",
+                "ulthera": "MFU-V (Ultrasound)",
+                "shurink": "HIFU (Ultrasound)",
+                "thermage": "RF (Radiofrequency)"
+              },
+              {
+                "feature": "Real-time Visualization",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "Max Depth",
+                "ulthera": "4.5mm (SMAS)",
+                "shurink": "4.5mm",
+                "thermage": "Dermis"
+              },
+              {
+                "feature": "Duration",
+                "ulthera": "1-2 Years",
+                "shurink": "6-12 Months",
+                "thermage": "6-12 Months"
+              },
+              {
+                "feature": "Best For",
+                "ulthera": "Severe Sagging/Lifting",
+                "shurink": "Maintenance",
+                "thermage": "Elasticity/Texture"
+              }
             ],
             "synergy": {
               "title": "Ultherapy Prime + Thermage синерги",
@@ -1084,23 +1079,17 @@
             }
           },
           "hero": {
-            "badge": "FDA-аас зөвшөөрөгдсөн цорын ганц лифтинг төхөөрөмж",
+            "badge": "MFU-V · DeepSEE",
             "premiumLifting": "Premium лифтинг",
             "title": "Ultherapy Prime",
-            "description": "SMAS-ийн гүн давхаргад хүрэх цорын ганц мэс заслын бус лифтинг.\nDeepSEE харагдах технологиор бодит цагт нарийн, аюулгүй.",
-            "stats": {
-              "clinicalStudies": "Эмнэлзүйн судалгаа",
-              "globalProcedures": "Дэлхийн эмчилгээ",
-              "globalProceduresValue": "1.75 сая+",
-              "improvementRate": "Сайжралтын хувь"
-            },
+            "description": "SMAS-ийн гүн давхаргад хүрэх мэс заслын бус лифтинг.\nDeepSEE харагдах технологиор бодит цагт нарийн, аюулгүй.",
             "deepSee": "Бодит цагийн харагдац",
             "smasTarget": "Гүн давхаргад чиглэсэн"
           },
           "about": {
             "sectionLabel": "Ultherapy Prime тухай",
             "title": "Ultherapy Prime гэж юу вэ?",
-            "description": "Ultherapy Prime бол FDA-аас лифтингийн үр нөлөөг зөвшөөрсөн <strong>цорын ганц</strong> мэс заслын бус HIFU төхөөрөмж юм. Патентлагдсан MFU-V (Харагдах микро фокус ультра-авиа) технологи нь энергийг SMAS гүн давхаргад нарийн хүргэж коллагены сэргэлтийг идэвхжүүлдэг.",
+            "description": "Патентлагдсан MFU-V (Харагдах микро фокус ультра-авиа) технологи нь энергийг SMAS гүн давхаргад нарийн хүргэж коллагены сэргэлтийг идэвхжүүлдэг.",
             "depthTargeting": "Захиалгат гүнд чиглэсэн эмчилгээ",
             "depths": {
               "1_5": {
@@ -1123,8 +1112,8 @@
             "title": "Яагаад Ultherapy Prime?",
             "cards": {
               "fda": {
-                "title": "FDA зөвшөөрсөн цорын ганц",
-                "description": "Мэс заслын бус лифтингийн үр нөлөөгөөр FDA зөвшөөрөл авсан <strong>цорын ганц</strong> HIFU төхөөрөмж."
+                "title": "FDA 510(k)",
+                "description": "Ulthera PRIME · K233996"
               },
               "deepSee": {
                 "title": "DeepSEE харагдац",
@@ -1132,17 +1121,8 @@
               },
               "smas": {
                 "title": "SMAS давхаргад чиглэсэн",
-                "description": "Мэс заслын лифтингийн ижил зорилт болох <strong>SMAS давхаргад хүрэх</strong> цорын ганц мэс заслын бус төхөөрөмж."
+                "description": "Мэс заслын лифтингийн ижил зорилт болох <strong>SMAS давхаргад хүрэх</strong> мэс заслын бус төхөөрөмж."
               }
-            },
-            "clinicalEvidence": {
-              "label": "Эмнэлзүйн нотолгоо",
-              "papers": "Эмнэлзүйн судалгааны нийтлэл",
-              "aestheticImprovement": "Гоо зүйн сайжралт",
-              "satisfaction": "Үйлчлүүлэгчийн сэтгэл ханамж",
-              "duration": "Үр нөлөөний хугацаа",
-              "durationValue": "1-2 жил",
-              "source": "Эх сурвалж: 2024 системчилсэн тойм ба мета-анализ (PubMed)"
             }
           },
           "livDifference": {
@@ -1157,10 +1137,6 @@
               "transparency": {
                 "title": "Ил тод shot тоо",
                 "description": "Төлөвлөсөн шугамын тоо болон бодит хийгдсэн shot-ыг ил тод мэдээлдэг. Шударга эмчилгээ амлалт өгдөг."
-              },
-              "specialist": {
-                "title": "Мэргэжилтний шууд эмчилгээ",
-                "description": "Гэрчилгээт арьс судлаач/гоо заслын мэс засалч өөрөө зөвлөгөө, эмчилгээг гүйцэтгэдэг. Үйлчлүүлэгч бүрд хувийн эмчилгээний төлөвлөгөө."
               }
             }
           },
@@ -1214,8 +1190,7 @@
             "title": "Ultherapy Prime зөвлөгөө захиалах",
             "description": "Манай мэргэжилтнүүдтэй 1:1 хувийн зөвлөгөөгөөр,\nтанд тохирсон оновчтой эмчилгээний төлөвлөгөөг гаргана.",
             "bookButton": "Үнэгүй зөвлөгөө захиалах",
-            "hours": "Даваа-Баасан 10:00-19:00",
-            "location": "Шинса метроны 4-р гарцнаас 3 минутын алхаа"
+            "hours": "Даваа-Баасан 10:00-19:00"
           },
           "related": {
             "labelEn": "Related Treatments",
@@ -1233,37 +1208,17 @@
         "tagline": "RF арьс чангатгах шийдэл",
         "description": "4-р үеийн Thermage FLX нь эмчилгээг 25%-аар хурдан болгож, иж бүрэн коллагены сэргэлтийг идэвхжүүлдэг.",
         "detail": {
-          "heroLabels": [
-            {
-              "top": {
-                "title": "AccuREP",
-                "subtitle": "Auto Energy Control"
-              },
-              "bottom": {
-                "title": "Comfort Pulse",
-                "subtitle": "Vibration Pain Relief"
-              }
-            },
-            {
-              "top": {
-                "title": "RF Technology",
-                "subtitle": "Collagen Contraction & Regeneration"
-              },
-              "bottom": {
-                "title": "14M+",
-                "subtitle": "Global Treatments"
-              }
-            },
-            {
-              "top": {
-                "title": "AccuTip",
-                "subtitle": "3.0cm² Precision Area"
-              },
-              "bottom": {
-                "title": "Merz Korea",
-                "subtitle": "Certified Clinic"
-              }
-            }
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "Auto Energy Control"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "Vibration Pain Relief"
+              }
+            }
           ],
           "skinLayers": {
             "epidermis": "Эпидермис",
@@ -1367,26 +1322,12 @@
           "hero": {
             "badge": "4-р үеийн Premium RF",
             "title": "Thermage FLX",
-            "description": "AccuREP технологи нь танай арьсны байдалд оновчтой энергийг автоматаар тохируулдаг.<br />Доргионы технологи нь өвдөлтийг бууруулж үр дүнг сайжруулна.",
-            "stats": {
-              "treatments": {
-                "value": "14 сая+",
-                "label": "Дэлхийн эмчилгээ"
-              },
-              "time": {
-                "value": "25%",
-                "label": "Эмчилгээний хугацаа багасгасан"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "Үйлчлүүлэгчийн сэтгэл ханамж"
-              }
-            }
+            "description": "AccuREP технологи нь танай арьсны байдалд оновчтой энергийг автоматаар тохируулдаг.<br />Доргионы технологи нь өвдөлтийг бууруулж үр дүнг сайжруулна."
           },
           "about": {
             "sectionLabel": "Thermage тухай",
             "title": "Thermage FLX гэж юу вэ?",
-            "description": "Thermage FLX нь <strong>дэлхий даяар 14 саяас илүү эмчилгээ хийгдсэн</strong> дэлхийн No.1 RF лифтинг төхөөрөмж юм. Патентлагдсан AccuREP технологи нь арьсны эсэргүүцлийг бодит цагт хэмжиж энергийг автоматаар тохируулж, коллагены агшилт ба сэргэлтээр уян хатан байдлыг сайжруулдаг.",
+            "description": "Патентлагдсан AccuREP технологи нь арьсны эсэргүүцлийг бодит цагт хэмжиж энергийг автоматаар тохируулж, коллагены агшилт ба сэргэлтээр уян хатан байдлыг сайжруулдаг.",
             "rfPrinciple": {
               "title": "RF энергийн зарчим",
               "steps": [
@@ -1416,7 +1357,7 @@
             "cards": {
               "accuRep": {
                 "title": "AccuREP технологи",
-                "desc": "Арьсны эсэргүүцлийг <strong>бодит цагт хэмжиж</strong> хэсэг бүрд оновчтой энергийг автоматаар тохируулна. Тэгш, аюулгүй эмчилгээний үр дүнг баталгаажуулна."
+                "desc": "Патентлагдсан AccuREP технологи нь арьсны эсэргүүцлийг бодит цагт хэмжиж энергийг автоматаар тохируулж, коллагены агшилт ба сэргэлтээр уян хатан байдлыг сайжруулдаг."
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
@@ -1426,26 +1367,6 @@
                 "title": "Коллагены сэргэлт",
                 "desc": "Эмчилгээний дараа <strong>шууд агшилтын нөлөө</strong>, дараа нь 3-6 сард шинэ коллаген үйлдвэрлэснээр уян хатан байдал аажмаар сайжирна."
               }
-            },
-            "globalTrust": {
-              "title": "Дэлхийн итгэл",
-              "treatments": {
-                "value": "14 сая+",
-                "label": "Дэлхийн эмчилгээ"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "Үйлчлүүлэгчийн сэтгэл ханамж"
-              },
-              "time": {
-                "value": "25%",
-                "label": "Эмчилгээний хугацаа багасгасан"
-              },
-              "duration": {
-                "value": "1 жил+",
-                "label": "Үр нөлөөний хугацаа"
-              },
-              "source": "Эх сурвалж: Solta Medical-ийн албан ёсны эмнэлзүйн өгөгдөл"
             }
           },
           "tipsSection": {
@@ -1479,10 +1400,6 @@
               "transparent": {
                 "title": "Ил тод shot тоо",
                 "desc": "Эмчилгээний өмнө ба дараа төлөвлөсөн, бодит shot тоог ил тод мэдээлдэг. Шударга эмчилгээ амлалт өгдөг."
-              },
-              "specialist": {
-                "title": "Мэргэжилтний шууд эмчилгээ",
-                "desc": "Гэрчилгээт арьс судлаач/гоо заслын мэс засалч зөвлөгөөнөөс эмчилгээ хүртэлх процессыг гүйцэтгэдэг. Хувийн эмчилгээний төлөвлөгөө боловсруулдаг."
               }
             }
           },
@@ -1547,8 +1464,7 @@
             "title": "Thermage зөвлөгөө захиалах",
             "description": "Манай эмнэлзүйн багтай 1:1 хувийн зөвлөгөөгөөр,<br />танд оновчтой эмчилгээний төлөвлөгөөг гаргана.",
             "bookConsultation": "Үнэгүй зөвлөгөө захиалах",
-            "businessHours": "Даваа-Баасан 10:00-19:00",
-            "location": "Шинса метроны 4-р гарцнаас 3 минутын алхаа"
+            "businessHours": "Даваа-Баасан 10:00-19:00"
           },
           "related": {
             "sectionLabel": "Холбогдох эмчилгээ",
@@ -6952,7 +6868,7 @@
     },
     "staff": {
       "title": "Эмч мэргэжилтэн | Мэргэшсэн мэс засалч | LIV Гоо Заслын Эмнэлэг",
-      "description": "Сөүлийн Каннам дахь LIV эмнэлгийн захирал — мэргэшсэн пластик мэс засалч, SCI-д 4 өгүүлэл нийтлүүлсэн, Ultherapy Prime, Thermage FLX-ийн мэргэжилтэн.",
+      "description": "LIV-ийн Sooyoung Kim, Shinhye Cheon эмч нарын мэргэжил, боловсрол, туршлага, эрдэм шинжилгээний бүтээл, хурлын үйл ажиллагааны танилцуулга.",
       "keywords": [
         "LIV эмнэлгийн эмч",
         "мэргэшсэн пластик мэс засалч Сөүл",
@@ -7173,7 +7089,7 @@
     },
     "thermage": {
       "title": "Thermage FLX Сөүл | RF арьс чангаруулах | LIV Гоо Заслын Эмнэлэг",
-      "description": "Сөүлийн Каннам дахь LIV эмнэлэг бол Thermage FLX гэрчилгээтэй түнш — жинхэнэ типээр дермисийн коллагенийг сэдээж, арьсыг чангаруулж, хэлбэрийг цэгцэлнэ.",
+      "description": "LIV-ийн Thermage FLX: RF технологи, хошууны төрөл, эмчилгээний үе шат, нөхөн сэргэх хугацаа, анхаарах зүйлс, асуулт хариулт.",
       "keywords": [
         "Thermage FLX Сөүл",
         "Thermage Солонгос",
@@ -7185,8 +7101,8 @@
       ]
     },
     "thread": {
-      "title": "Утсан лифтинг Сөүл | PDO утас | LIV Гоо Заслын Эмнэлэг",
-      "description": "Сөүлийн Каннам дахь LIV эмнэлгийн утсан лифтинг — PDO утас унжсан хэсгийг шууд татаж, коллаген үүсэхийг сэдээн байгалийн хэлбэрийг сайжруулна.",
+      "title": "Утсан лифтинг | Утасны төрөл, анхаарах зүйлс | LIV Clinic",
+      "description": "LIV-ийн утсан лифтинг: утасны төрөл, эмчилгээний үе шат, нөхөн сэргэх хугацаа, анхаарах зүйлс, холбогдох эмнэлгийн асуулт хариулт.",
       "keywords": [
         "утсан лифтинг Сөүл",
         "PDO утсан лифтинг Солонгос",
@@ -7198,8 +7114,8 @@
       ]
     },
     "ulthera": {
-      "title": "Ultherapy (Ulthera) Каннам, Сөүл | Prime | LIV Гоо Заслын Эмнэлэг",
-      "description": "Сөүлийн Каннам дахь гэрчилгээтэй LIV эмнэлгийн Ultherapy Prime — FDA-гийн зөвшөөрсөн төвлөрсөн хэт авиа (HIFU) SMAS давхаргад хүрч унжсан арьсыг татна.",
+      "title": "Ultherapy Prime | Үе шат, анхаарах зүйлс | LIV Clinic",
+      "description": "LIV-ийн Ultherapy Prime: хэт авианы дүрслэлийн технологи, эмчилгээний үе шат, нөхөн сэргэх хугацаа, анхаарах зүйлс, асуулт хариулт, эх сурвалж.",
       "keywords": [
         "Ultherapy Солонгос",
         "Ulthera Сөүл",

@@ -1,12 +1,18 @@
 'use client';
 
-import { useState, useMemo, useCallback, useRef } from 'react';
+import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useMessages } from 'next-intl';
 import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, ScrollLink, Breadcrumb } from '@/components/ui';
 import { MedicalBlogSection } from '@/components/sections';
 import { TREATMENTS } from '@/lib/constants';
+
+const treatmentCatalog = [
+  ...Object.values(TREATMENTS.lifting),
+  ...Object.values(TREATMENTS.antiaging),
+  ...Object.values(TREATMENTS.laser),
+];
 
 // Type for FAQ items from translations
 interface FAQItem {
@@ -40,6 +46,30 @@ export default function MedicalPage() {
   const faqData = useMemo(() => {
     return messages?.medical?.faq || [];
   }, [messages]);
+
+  // 소프트 이동 시 질문 목록보다 해시 스크롤이 먼저 실행될 수 있어,
+  // 목록이 마운트된 뒤 실제 질문에 스크롤과 키보드 포커스를 맞춘다.
+  useEffect(() => {
+    let frame = 0;
+    const scrollToLinkedQuestion = () => {
+      const id = window.location.hash.slice(1);
+      if (!faqData.some((qa) => qa.id === id)) return;
+
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const target = document.getElementById(id);
+        target?.scrollIntoView({ block: 'start', behavior: 'instant' });
+        target?.focus({ preventScroll: true });
+      });
+    };
+
+    scrollToLinkedQuestion();
+    window.addEventListener('hashchange', scrollToLinkedQuestion);
+    return () => {
+      cancelAnimationFrame(frame);
+      window.removeEventListener('hashchange', scrollToLinkedQuestion);
+    };
+  }, [faqData]);
 
   const categories = [
     { id: 'all', label: tMedical('categories.all') },
@@ -206,6 +236,9 @@ export default function MedicalPage() {
                   {sortedQA.map((qa) => (
                     <motion.div
                       key={qa.id}
+                      id={qa.id}
+                      tabIndex={-1}
+                      className="scroll-mt-48 md:scroll-mt-44"
                       layout
                       layoutId={qa.id}
                       initial={{ opacity: 0 }}
@@ -219,6 +252,7 @@ export default function MedicalPage() {
                       {/* Question */}
                       <button
                         onClick={() => toggleExpand(qa.id)}
+                        aria-expanded={expandedId === qa.id}
                         className="w-full px-4 py-4 md:px-6 md:py-5 text-left flex items-start justify-between gap-3 md:gap-4 hover:bg-background/50 transition-colors"
                       >
                         <div className="flex items-start gap-3 md:gap-4">
@@ -292,26 +326,21 @@ export default function MedicalPage() {
                                       </p>
                                       <div className="flex flex-wrap gap-2">
                                         {qa.relatedTreatments.map((treatmentId) => {
-                                          const treatment =
-                                            TREATMENTS.lifting[
-                                              treatmentId as keyof typeof TREATMENTS.lifting
-                                            ] ||
-                                            TREATMENTS.antiaging[
-                                              treatmentId as keyof typeof TREATMENTS.antiaging
-                                            ] ||
-                                            TREATMENTS.laser[
-                                              treatmentId as keyof typeof TREATMENTS.laser
-                                            ];
+                                          const treatment = treatmentCatalog.find(
+                                            (item) => item.id === treatmentId
+                                          );
 
                                           if (!treatment) return null;
 
                                           return (
                                             <Link
                                               key={treatmentId}
-                                              href={`/${treatment.category}/${treatment.id}`}
+                                              href={treatment.category === 'laser' ? '/laser' : `/${treatment.category}/${treatment.id}`}
                                             >
                                               <span className="inline-flex items-center gap-1 px-3 py-1.5 bg-primary/10 text-primary rounded-full text-small hover:bg-primary/20 transition-colors cursor-pointer">
-                                                {treatment.name}
+                                                {treatment.category === 'laser'
+                                                  ? tNav('laser')
+                                                  : tNav.has(treatment.id) ? tNav(treatment.id) : treatment.name}
                                                 <svg
                                                   className="w-3 h-3"
                                                   fill="none"

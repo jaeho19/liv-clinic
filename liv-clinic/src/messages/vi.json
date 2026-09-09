@@ -726,7 +726,9 @@
         "presentations": "Bài thuyết trình",
         "globalActivities": "Hoạt động toàn cầu",
         "media": "Tin tức truyền thông",
-        "comingSoon": "Sắp ra mắt"
+        "comingSoon": "Sắp ra mắt",
+        "journalArticle": "Bài báo khoa học",
+        "publicationBreakdown": "Bài báo: {journalCount} · Luận văn: {thesisCount}"
       }
     },
     "location": {
@@ -920,14 +922,19 @@
       "severe": "Nghiêm trọng",
       "benefits": "Những lợi ích",
       "consultationCta": "Tư vấn sách",
-      "effectDuration": "Thời lượng hiệu ứng"
+      "effectDuration": "Thời lượng hiệu ứng",
+      "references": {
+        "title": "Tài liệu tham khảo",
+        "note": "Tài liệu gốc tiếng Anh từ nhà sản xuất, tổ chức tại Mỹ và các công bố học thuật.",
+        "clinicianNote": "Xem chuyên khoa, học vấn và kinh nghiệm trong phần giới thiệu bác sĩ."
+      }
     },
     "lifting": {
       "ulthera": {
         "name": "Ultherapy Prime",
         "fullName": "Ultherapy Prime",
         "tagline": "Phương pháp nâng cơ không phẫu thuật duy nhất được FDA phê chuẩn",
-        "description": "Nâng cơ không phẫu thuật duy nhất trên thế giới được FDA chấp thuận. Năng lượng siêu âm chạm sâu vào lớp SMAS mang lại hiệu quả nâng cơ mạnh mẽ.",
+        "description": "Công nghệ MFU-V (Siêu âm tập trung vi mô với hình ảnh) đã được cấp bằng sáng chế của nó cung cấp năng lượng chính xác đến lớp SMAS sâu để kích thích tái tạo collagen.",
         "detail": {
           "skinLayers": {
             "epidermis": "biểu bì",
@@ -974,49 +981,37 @@
               "shurink": "Thu nhỏ/Doublo",
               "thermage": "Thermage"
             },
-            "rows": [
-              {
-                "feature": "Loại năng lượng",
-                "ulthera": "MFU-V (Siêu âm)",
-                "shurink": "HIFU (Siêu âm)",
-                "thermage": "RF (Tần số vô tuyến)"
-              },
-              {
-                "feature": "Trực quan hóa thời gian thực",
-                "ulthera": "DeepSEE O",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "Phê duyệt nâng cấp của FDA",
-                "ulthera": "Chỉ được phê duyệt",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "Độ sâu tối đa",
-                "ulthera": "4,5mm (SMAS)",
-                "shurink": "4,5mm",
-                "thermage": "hạ bì"
-              },
-              {
-                "feature": "Nghiên cứu lâm sàng",
-                "ulthera": "Hơn 110 giấy tờ",
-                "shurink": "Một vài",
-                "thermage": "Nhiều"
-              },
-              {
-                "feature": "Khoảng thời gian",
-                "ulthera": "1-2 năm",
-                "shurink": "6-12 tháng",
-                "thermage": "6-12 tháng"
-              },
-              {
-                "feature": "Tốt nhất cho",
-                "ulthera": "Độ võng/nâng cơ nghiêm trọng",
-                "shurink": "BẢO TRÌ",
-                "thermage": "Độ đàn hồi/Kết cấu"
-              }
+            "rows": [
+              {
+                "feature": "Loại năng lượng",
+                "ulthera": "MFU-V (Siêu âm)",
+                "shurink": "HIFU (Siêu âm)",
+                "thermage": "RF (Tần số vô tuyến)"
+              },
+              {
+                "feature": "Trực quan hóa thời gian thực",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "Độ sâu tối đa",
+                "ulthera": "4,5mm (SMAS)",
+                "shurink": "4,5mm",
+                "thermage": "hạ bì"
+              },
+              {
+                "feature": "Khoảng thời gian",
+                "ulthera": "1-2 năm",
+                "shurink": "6-12 tháng",
+                "thermage": "6-12 tháng"
+              },
+              {
+                "feature": "Tốt nhất cho",
+                "ulthera": "Độ võng/nâng cơ nghiêm trọng",
+                "shurink": "BẢO TRÌ",
+                "thermage": "Độ đàn hồi/Kết cấu"
+              }
             ],
             "synergy": {
               "title": "Sức mạnh tổng hợp của Ultherapy Prime + Thermage",
@@ -1084,23 +1079,17 @@
             }
           },
           "hero": {
-            "badge": "Thiết bị nâng duy nhất được FDA phê chuẩn",
+            "badge": "MFU-V · DeepSEE",
             "premiumLifting": "Nâng cơ cao cấp",
             "title": "Ultherapy Prime",
-            "description": "Phương pháp nâng cơ không xâm lấn duy nhất chạm tới lớp SMAS sâu.\nChính xác và an toàn với công nghệ hiển thị DeepSEE thời gian thực.",
-            "stats": {
-              "clinicalStudies": "Nghiên cứu lâm sàng",
-              "globalProcedures": "Thủ tục toàn cầu",
-              "globalProceduresValue": "1,75 triệu+",
-              "improvementRate": "Tỷ lệ cải thiện"
-            },
+            "description": "Phương pháp nâng cơ không xâm lấn chạm tới lớp SMAS sâu.\nChính xác và an toàn với công nghệ hiển thị DeepSEE thời gian thực.",
             "deepSee": "Trực quan hóa thời gian thực",
             "smasTarget": "Nhắm mục tiêu lớp sâu"
           },
           "about": {
             "sectionLabel": "Giới thiệu về Ultherapy Prime",
             "title": "Ultherapy Prime là gì?",
-            "description": "Ultherapy Prime là thiết bị HIFU không xâm lấn <strong>duy nhất</strong> có hiệu quả nâng cơ được FDA chấp thuận. Công nghệ MFU-V (Siêu âm tập trung vi mô với hình ảnh) đã được cấp bằng sáng chế của nó cung cấp năng lượng chính xác đến lớp SMAS sâu để kích thích tái tạo collagen.",
+            "description": "Công nghệ MFU-V (Siêu âm tập trung vi mô với hình ảnh) đã được cấp bằng sáng chế của nó cung cấp năng lượng chính xác đến lớp SMAS sâu để kích thích tái tạo collagen.",
             "depthTargeting": "Nhắm mục tiêu theo chiều sâu tùy chỉnh",
             "depths": {
               "1_5": {
@@ -1123,8 +1112,8 @@
             "title": "Tại sao Ultherapy Prime?",
             "cards": {
               "fda": {
-                "title": "Chỉ được FDA chấp thuận",
-                "description": "Thiết bị HIFU <strong>duy nhất</strong> được FDA chấp thuận về hiệu quả nâng cơ không xâm lấn."
+                "title": "FDA 510(k)",
+                "description": "Ulthera PRIME · K233996"
               },
               "deepSee": {
                 "title": "Trực quan hóa DeepSEE",
@@ -1132,17 +1121,8 @@
               },
               "smas": {
                 "title": "Nhắm mục tiêu theo lớp SMAS",
-                "description": "Thiết bị không xâm lấn duy nhất <strong>tiếp cận lớp SMAS</strong>, cùng mục tiêu với phẫu thuật căng da mặt."
+                "description": "Thiết bị không xâm lấn <strong>tiếp cận lớp SMAS</strong>, cùng mục tiêu với phẫu thuật căng da mặt."
               }
-            },
-            "clinicalEvidence": {
-              "label": "Bằng chứng lâm sàng",
-              "papers": "Tài liệu nghiên cứu lâm sàng",
-              "aestheticImprovement": "Cải thiện thẩm mỹ",
-              "satisfaction": "Sự hài lòng của bệnh nhân",
-              "duration": "Thời lượng hiệu ứng",
-              "durationValue": "1-2 năm",
-              "source": "Nguồn: Đánh giá hệ thống và phân tích tổng hợp năm 2024 (PubMed)"
             }
           },
           "livDifference": {
@@ -1157,10 +1137,6 @@
               "transparency": {
                 "title": "Số lần bắn trong suốt",
                 "description": "Chúng tôi tiết lộ minh bạch số lượng dòng theo kế hoạch và số lượng ảnh thực tế được phân phối. Chúng tôi hứa sẽ đối xử trung thực."
-              },
-              "specialist": {
-                "title": "Chuyên gia điều trị trực tiếp",
-                "description": "Bác sĩ da liễu/bác sĩ phẫu thuật thẩm mỹ được hội đồng chứng nhận sẽ tiến hành tư vấn và điều trị trực tiếp. Kế hoạch điều trị cá nhân hóa cho từng bệnh nhân."
               }
             }
           },
@@ -1214,8 +1190,7 @@
             "title": "Sách Tư Vấn Ultherapy Prime",
             "description": "Thông qua tư vấn cá nhân 1:1 với các chuyên gia của chúng tôi,\nthiết lập kế hoạch điều trị tối ưu phù hợp với bạn.",
             "bookButton": "Đặt chỗ tư vấn miễn phí",
-            "hours": "Các ngày trong tuần 10:00-19:00",
-            "location": "3 phút đi bộ từ Ga Sinsa Lối ra 4"
+            "hours": "Các ngày trong tuần 10:00-19:00"
           },
           "related": {
             "labelEn": "Phương pháp điều trị liên quan",
@@ -1233,37 +1208,17 @@
         "tagline": "Giải pháp làm săn chắc da RF",
         "description": "Thermage FLX thế hệ thứ 4 mang lại khả năng điều trị nhanh hơn 25% đồng thời thúc đẩy quá trình tái tạo collagen toàn diện.",
         "detail": {
-          "heroLabels": [
-            {
-              "top": {
-                "title": "AccuREP",
-                "subtitle": "Kiểm soát năng lượng tự động"
-              },
-              "bottom": {
-                "title": "Xung thoải mái",
-                "subtitle": "Giảm đau rung"
-              }
-            },
-            {
-              "top": {
-                "title": "Công nghệ RF",
-                "subtitle": "Co rút & tái tạo collagen"
-              },
-              "bottom": {
-                "title": "14 triệu+",
-                "subtitle": "Phương pháp điều trị toàn cầu"
-              }
-            },
-            {
-              "top": {
-                "title": "AccuTip",
-                "subtitle": "Diện tích chính xác 3,0cm²"
-              },
-              "bottom": {
-                "title": "Merz Hàn Quốc",
-                "subtitle": "Phòng khám được chứng nhận"
-              }
-            }
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "Kiểm soát năng lượng tự động"
+              },
+              "bottom": {
+                "title": "Xung thoải mái",
+                "subtitle": "Giảm đau rung"
+              }
+            }
           ],
           "skinLayers": {
             "epidermis": "biểu bì",
@@ -1367,26 +1322,12 @@
           "hero": {
             "badge": "RF cao cấp thế hệ thứ 4",
             "title": "Nhiệt FLX",
-            "description": "Công nghệ AccuREP tự động điều chỉnh năng lượng tối ưu cho tình trạng da của bạn.<br />Công nghệ rung giúp giảm đau đồng thời nâng cao kết quả.",
-            "stats": {
-              "treatments": {
-                "value": "14 triệu+",
-                "label": "Phương pháp điều trị toàn cầu"
-              },
-              "time": {
-                "value": "25%",
-                "label": "Giảm thời gian điều trị"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "Sự hài lòng của bệnh nhân"
-              }
-            }
+            "description": "Công nghệ AccuREP tự động điều chỉnh năng lượng tối ưu cho tình trạng da của bạn.<br />Công nghệ rung giúp giảm đau đồng thời nâng cao kết quả."
           },
           "about": {
             "sectionLabel": "Về Thermage",
             "title": "Thermage FLX là gì?",
-            "description": "Thermage FLX là thiết bị nâng cơ RF số 1 toàn cầu với <strong>hơn 14 triệu lượt điều trị trên toàn thế giới</strong>. Công nghệ AccuREP được cấp bằng sáng chế đo trở kháng của da theo thời gian thực để tự động điều chỉnh năng lượng tối ưu, cải thiện độ đàn hồi của da thông qua sự co lại và tái tạo collagen.",
+            "description": "Công nghệ AccuREP được cấp bằng sáng chế đo trở kháng của da theo thời gian thực để tự động điều chỉnh năng lượng tối ưu, cải thiện độ đàn hồi của da thông qua sự co lại và tái tạo collagen.",
             "rfPrinciple": {
               "title": "Nguyên lý năng lượng RF",
               "steps": [
@@ -1416,7 +1357,7 @@
             "cards": {
               "accuRep": {
                 "title": "Công nghệ AccuREP",
-                "desc": "<strong>Đo theo thời gian thực</strong> trở kháng của da sẽ tự động điều chỉnh năng lượng tối ưu cho từng vùng. Đảm bảo kết quả điều trị đồng đều và an toàn."
+                "desc": "Công nghệ AccuREP được cấp bằng sáng chế đo trở kháng của da theo thời gian thực để tự động điều chỉnh năng lượng tối ưu, cải thiện độ đàn hồi của da thông qua sự co lại và tái tạo collagen."
               },
               "comfortPulse": {
                 "title": "Xung thoải mái",
@@ -1426,26 +1367,6 @@
                 "title": "Tái tạo collagen",
                 "desc": "<strong>Hiệu quả co lại ngay lập tức</strong> sau khi điều trị, sau đó là cải thiện độ đàn hồi dần dần thông qua sản xuất collagen mới trong vòng 3-6 tháng."
               }
-            },
-            "globalTrust": {
-              "title": "Niềm tin toàn cầu",
-              "treatments": {
-                "value": "14 triệu+",
-                "label": "Phương pháp điều trị toàn cầu"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "Sự hài lòng của bệnh nhân"
-              },
-              "time": {
-                "value": "25%",
-                "label": "Giảm thời gian điều trị"
-              },
-              "duration": {
-                "value": "1 năm+",
-                "label": "Thời lượng hiệu ứng"
-              },
-              "source": "Nguồn: Dữ liệu lâm sàng chính thức của Solta Medical"
             }
           },
           "tipsSection": {
@@ -1479,10 +1400,6 @@
               "transparent": {
                 "title": "Số lần bắn trong suốt",
                 "desc": "Chúng tôi tiết lộ minh bạch số lượng mũi tiêm theo kế hoạch và thực tế trước và sau khi điều trị. Chúng tôi hứa sẽ đối xử trung thực."
-              },
-              "specialist": {
-                "title": "Chuyên gia điều trị trực tiếp",
-                "desc": "Các bác sĩ da liễu/bác sĩ phẫu thuật thẩm mỹ được hội đồng chứng nhận sẽ tiến hành tư vấn thông qua quá trình điều trị. Kế hoạch điều trị cá nhân được thiết lập."
               }
             }
           },
@@ -1547,8 +1464,7 @@
             "title": "Đặt lịch tư vấn Thermage",
             "description": "Thông qua tư vấn cá nhân 1:1 với đội ngũ y tế của chúng tôi,<br />thiết lập kế hoạch điều trị tối ưu cho bạn.",
             "bookConsultation": "Đặt chỗ tư vấn miễn phí",
-            "businessHours": "Các ngày trong tuần 10:00-19:00",
-            "location": "3 phút đi bộ từ Ga Sinsa Lối ra 4"
+            "businessHours": "Các ngày trong tuần 10:00-19:00"
           },
           "related": {
             "sectionLabel": "Phương pháp điều trị liên quan",
@@ -6950,7 +6866,7 @@
     },
     "staff": {
       "title": "Đội ngũ y tế | Bác sĩ chuyên khoa | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Gặp gỡ giám đốc Phẫu thuật Thẩm mỹ LIV — bác sĩ chuyên khoa phẫu thuật thẩm mỹ, 4 bài báo SCI, chuyên sâu Ultherapy Prime và Thermage FLX. Gangnam, Seoul.",
+      "description": "Giới thiệu bác sĩ Kim Sooyoung và Shinhye Cheon tại LIV: chuyên khoa, học vấn, kinh nghiệm, các bài báo và hoạt động học thuật.",
       "keywords": [
         "bác sĩ LIV Clinic",
         "bác sĩ chuyên khoa thẩm mỹ Seoul",
@@ -7171,7 +7087,7 @@
     },
     "thermage": {
       "title": "Thermage FLX Seoul | Săn chắc da bằng RF | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Thermage FLX tại Phẫu thuật Thẩm mỹ LIV, Gangnam, Seoul — đối tác chứng nhận, dùng tip chính hãng kích thích collagen trung bì cho da săn chắc và đường nét gọn hơn.",
+      "description": "Thermage FLX tại LIV: công nghệ RF, các loại đầu điều trị, quy trình, hồi phục, lưu ý và câu hỏi thường gặp.",
       "keywords": [
         "Thermage FLX Seoul",
         "Thermage Hàn Quốc",
@@ -7183,8 +7099,8 @@
       ]
     },
     "thread": {
-      "title": "Căng chỉ Seoul | Chỉ PDO | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Căng chỉ tại Phẫu thuật Thẩm mỹ LIV, Gangnam, Seoul — chỉ PDO nâng ngay vùng da chảy xệ và kích thích collagen, cải thiện đường nét tự nhiên.",
+      "title": "Căng chỉ | Các loại chỉ và lưu ý | LIV Clinic",
+      "description": "Căng chỉ tại LIV: các loại chỉ, quy trình, hồi phục, lưu ý và những câu hỏi y khoa liên quan.",
       "keywords": [
         "căng chỉ Seoul",
         "căng chỉ PDO Hàn Quốc",
@@ -7196,8 +7112,8 @@
       ]
     },
     "ulthera": {
-      "title": "Ultherapy (Ulthera) Gangnam, Seoul | Prime | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Ultherapy Prime tại Phẫu thuật Thẩm mỹ LIV, cơ sở chứng nhận ở Gangnam, Seoul — siêu âm hội tụ (HIFU) được FDA cấp phép, tác động lớp SMAS để nâng da chảy xệ.",
+      "title": "Ultherapy Prime | Quy trình và lưu ý | LIV Clinic",
+      "description": "Ultherapy Prime tại LIV: công nghệ siêu âm có hình ảnh, quy trình, hồi phục, lưu ý, câu hỏi thường gặp và tài liệu tham khảo.",
       "keywords": [
         "Ultherapy Hàn Quốc",
         "Ulthera Seoul",

@@ -728,7 +728,9 @@
         "presentations": "학회 발표",
         "globalActivities": "국제 활동",
         "media": "미디어·언론 보도",
-        "comingSoon": "추후 업데이트 예정"
+        "comingSoon": "추후 업데이트 예정",
+        "journalArticle": "저널 논문",
+        "publicationBreakdown": "저널 논문 {journalCount}편 · 학위논문 {thesisCount}편"
       }
     },
     "location": {
@@ -922,14 +924,19 @@
       "severe": "중증",
       "benefits": "장점",
       "consultationCta": "상담 예약",
-      "effectDuration": "효과 지속"
+      "effectDuration": "효과 지속",
+      "references": {
+        "title": "참고 자료",
+        "note": "미국 제조사·기관의 영문 원문과 학술자료입니다.",
+        "clinicianNote": "의료진 소개에서 학력·경력·전문과목을 확인하세요."
+      }
     },
     "lifting": {
       "ulthera": {
         "name": "울쎄라피 프라임",
         "fullName": "Ultherapy Prime",
         "tagline": "FDA 유일 승인 비수술 리프팅",
-        "description": "전 세계 유일 FDA 승인 비수술 리프팅. 초음파 에너지가 피부 깊숙이 SMAS층까지 도달하여 강력한 리프팅 효과를 제공합니다.",
+        "description": "특허받은 MFU-V(Micro-focused Ultrasound with Visualization) 기술로 피부 깊은 층인 SMAS까지 에너지를 정확하게 전달하여 콜라겐 재생을 촉진합니다.",
         "detail": {
           "skinLayers": {
             "epidermis": "표피",
@@ -976,49 +983,37 @@
               "shurink": "슈링크/더블로",
               "thermage": "써마지"
             },
-            "rows": [
-              {
-                "feature": "에너지 종류",
-                "ulthera": "MFU-V (초음파)",
-                "shurink": "HIFU (초음파)",
-                "thermage": "RF (고주파)"
-              },
-              {
-                "feature": "실시간 시각화",
-                "ulthera": "DeepSEE O",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "FDA 리프팅 승인",
-                "ulthera": "유일하게 승인",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "최대 깊이",
-                "ulthera": "4.5mm (SMAS)",
-                "shurink": "4.5mm",
-                "thermage": "진피층"
-              },
-              {
-                "feature": "임상 연구",
-                "ulthera": "110+ 논문",
-                "shurink": "소수",
-                "thermage": "다수"
-              },
-              {
-                "feature": "효과 지속",
-                "ulthera": "1-2년",
-                "shurink": "6-12개월",
-                "thermage": "6-12개월"
-              },
-              {
-                "feature": "최적 적응증",
-                "ulthera": "심한 처짐/리프팅",
-                "shurink": "유지관리",
-                "thermage": "탄력/피부결"
-              }
+            "rows": [
+              {
+                "feature": "에너지 종류",
+                "ulthera": "MFU-V (초음파)",
+                "shurink": "HIFU (초음파)",
+                "thermage": "RF (고주파)"
+              },
+              {
+                "feature": "실시간 시각화",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "최대 깊이",
+                "ulthera": "4.5mm (SMAS)",
+                "shurink": "4.5mm",
+                "thermage": "진피층"
+              },
+              {
+                "feature": "효과 지속",
+                "ulthera": "1-2년",
+                "shurink": "6-12개월",
+                "thermage": "6-12개월"
+              },
+              {
+                "feature": "최적 적응증",
+                "ulthera": "심한 처짐/리프팅",
+                "shurink": "유지관리",
+                "thermage": "탄력/피부결"
+              }
             ],
             "synergy": {
               "title": "울쎄라피 프라임 + 써마지 시너지",
@@ -1086,23 +1081,17 @@
             }
           },
           "hero": {
-            "badge": "FDA 유일 승인 리프팅 장비",
+            "badge": "MFU-V · DeepSEE",
             "premiumLifting": "Premium Lifting",
             "title": "울쎄라피 프라임",
-            "description": "피부 깊은 층 SMAS까지 도달하는 유일한 비침습 리프팅.\n실시간 시각화 DeepSEE 기술로 정확하고 안전하게.",
-            "stats": {
-              "clinicalStudies": "임상 연구",
-              "globalProcedures": "전세계 시술 건수",
-              "globalProceduresValue": "175만+",
-              "improvementRate": "환자 개선율"
-            },
+            "description": "피부 깊은 층 SMAS까지 도달하는 비침습 리프팅.\n실시간 시각화 DeepSEE 기술로 정확하고 안전하게.",
             "deepSee": "실시간 시각화",
             "smasTarget": "깊은 층 타겟팅"
           },
           "about": {
             "sectionLabel": "About Ultherapy Prime",
             "title": "울쎄라피 프라임이란?",
-            "description": "울쎄라피 프라임은 미국 FDA에서 <strong>리프팅 효과를 승인받은 유일한</strong> 비침습 HIFU 장비입니다. 특허받은 MFU-V(Micro-focused Ultrasound with Visualization) 기술로 피부 깊은 층인 SMAS까지 에너지를 정확하게 전달하여 콜라겐 재생을 촉진합니다.",
+            "description": "특허받은 MFU-V(Micro-focused Ultrasound with Visualization) 기술로 피부 깊은 층인 SMAS까지 에너지를 정확하게 전달하여 콜라겐 재생을 촉진합니다.",
             "depthTargeting": "깊이별 맞춤 타겟팅",
             "depths": {
               "1_5": {
@@ -1125,8 +1114,8 @@
             "title": "왜 울쎄라피 프라임인가?",
             "cards": {
               "fda": {
-                "title": "FDA 유일 승인",
-                "description": "미국 FDA에서 비침습 리프팅 효과를 승인받은 <strong>유일한</strong> HIFU 장비입니다."
+                "title": "FDA 510(k)",
+                "description": "Ulthera PRIME · K233996"
               },
               "deepSee": {
                 "title": "DeepSEE 시각화",
@@ -1134,17 +1123,8 @@
               },
               "smas": {
                 "title": "SMAS층 타겟팅",
-                "description": "성형 수술 시 타겟하는 <strong>SMAS층까지 도달</strong>하는 유일한 비침습 장비입니다."
+                "description": "성형 수술 시 타겟하는 <strong>SMAS층까지 도달</strong>하는 비침습 장비입니다."
               }
-            },
-            "clinicalEvidence": {
-              "label": "Clinical Evidence",
-              "papers": "임상 연구 논문",
-              "aestheticImprovement": "심미적 개선율",
-              "satisfaction": "환자 만족도",
-              "duration": "효과 지속 기간",
-              "durationValue": "1-2년",
-              "source": "출처: 2024 체계적 문헌고찰 및 메타분석 (PubMed)"
             }
           },
           "livDifference": {
@@ -1159,10 +1139,6 @@
               "transparency": {
                 "title": "샷 수 투명 공개",
                 "description": "시술 전 계획된 라인 수와 실제 조사된 샷 수를 투명하게 공개합니다. 정직한 시술을 약속드립니다."
-              },
-              "specialist": {
-                "title": "전문의 직접 시술",
-                "description": "피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다. 개인별 맞춤 시술 계획을 수립합니다."
               }
             }
           },
@@ -1216,8 +1192,7 @@
             "title": "울쎄라피 프라임 상담 예약",
             "description": "전문 의료진과 1:1 맞춤 상담을 통해\n나에게 맞는 최적의 시술 계획을 수립해보세요.",
             "bookButton": "무료 상담 예약하기",
-            "hours": "평일 10:00-19:00",
-            "location": "신사역 4번 출구 도보 3분"
+            "hours": "평일 10:00-19:00"
           },
           "related": {
             "labelEn": "Related Treatments",
@@ -1235,37 +1210,17 @@
         "tagline": "고주파 피부 탄력 솔루션",
         "description": "4세대 써마지 FLX는 기존 대비 25% 빠른 시술과 함께 전면적인 콜라겐 재생을 유도합니다.",
         "detail": {
-          "heroLabels": [
-            {
-              "top": {
-                "title": "AccuREP",
-                "subtitle": "자동 에너지 조절"
-              },
-              "bottom": {
-                "title": "Comfort Pulse",
-                "subtitle": "진동 통증 완화"
-              }
-            },
-            {
-              "top": {
-                "title": "RF Technology",
-                "subtitle": "콜라겐 수축 & 재생"
-              },
-              "bottom": {
-                "title": "14M+",
-                "subtitle": "전세계 시술 건수"
-              }
-            },
-            {
-              "top": {
-                "title": "AccuTip",
-                "subtitle": "3.0cm² 정밀 면적"
-              },
-              "bottom": {
-                "title": "멀츠 코리아",
-                "subtitle": "공식 인증 클리닉"
-              }
-            }
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "자동 에너지 조절"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "진동 통증 완화"
+              }
+            }
           ],
           "skinLayers": {
             "epidermis": "표피",
@@ -1369,26 +1324,12 @@
           "hero": {
             "badge": "4세대 프리미엄 고주파",
             "title": "써마지 FLX",
-            "description": "AccuREP 기술로 피부 상태에 맞는 최적 에너지 자동 조절.<br />진동 기술로 통증은 줄이고, 효과는 높이는 고주파 리프팅.",
-            "stats": {
-              "treatments": {
-                "value": "14M+",
-                "label": "전세계 시술 건수"
-              },
-              "time": {
-                "value": "25%",
-                "label": "시술시간 단축"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "환자 만족도"
-              }
-            }
+            "description": "AccuREP 기술로 피부 상태에 맞는 최적 에너지 자동 조절.<br />진동 기술로 통증은 줄이고, 효과는 높이는 고주파 리프팅."
           },
           "about": {
             "sectionLabel": "About Thermage",
             "title": "써마지 FLX란?",
-            "description": "써마지 FLX는 <strong>전 세계 1,400만 건 이상</strong> 시술된 글로벌 No.1 고주파(RF) 리프팅 장비입니다. 특허받은 AccuREP 기술로 피부 임피던스를 실시간 측정하여 최적의 에너지를 자동으로 조절하며, 콜라겐 수축과 재생을 통해 피부 탄력을 개선합니다.",
+            "description": "특허받은 AccuREP 기술로 피부 임피던스를 실시간 측정하여 최적의 에너지를 자동으로 조절하며, 콜라겐 수축과 재생을 통해 피부 탄력을 개선합니다.",
             "rfPrinciple": {
               "title": "고주파 에너지의 원리",
               "steps": [
@@ -1418,7 +1359,7 @@
             "cards": {
               "accuRep": {
                 "title": "AccuREP 기술",
-                "desc": "피부 임피던스를 <strong>실시간 측정</strong>하여 각 부위에 최적화된 에너지를 자동으로 조절합니다. 균일하고 안전한 시술 결과를 보장합니다."
+                "desc": "특허받은 AccuREP 기술로 피부 임피던스를 실시간 측정하여 최적의 에너지를 자동으로 조절하며, 콜라겐 수축과 재생을 통해 피부 탄력을 개선합니다."
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
@@ -1428,26 +1369,6 @@
                 "title": "콜라겐 리모델링",
                 "desc": "시술 직후 <strong>즉각적 수축 효과</strong>와 함께 3-6개월에 걸친 신생 콜라겐 생성으로 점진적인 탄력 개선이 이루어집니다."
               }
-            },
-            "globalTrust": {
-              "title": "Global Trust",
-              "treatments": {
-                "value": "14M+",
-                "label": "전세계 시술 건수"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "환자 만족도"
-              },
-              "time": {
-                "value": "25%",
-                "label": "시술 시간 단축"
-              },
-              "duration": {
-                "value": "1년+",
-                "label": "효과 지속 기간"
-              },
-              "source": "출처: Solta Medical 공식 임상 데이터"
             }
           },
           "tipsSection": {
@@ -1481,10 +1402,6 @@
               "transparent": {
                 "title": "샷 수 투명 공개",
                 "desc": "시술 전 계획된 샷 수와 실제 사용된 샷 수를 투명하게 공개합니다. 정직한 시술을 약속드립니다."
-              },
-              "specialist": {
-                "title": "전문의 직접 시술",
-                "desc": "피부과/성형외과 전문의가 직접 상담부터 시술까지 진행합니다. 개인별 맞춤 시술 계획을 수립합니다."
               }
             }
           },
@@ -1549,8 +1466,7 @@
             "title": "써마지 상담 예약",
             "description": "전문 의료진과 1:1 맞춤 상담을 통해<br />나에게 맞는 최적의 시술 계획을 수립해보세요.",
             "bookConsultation": "무료 상담 예약하기",
-            "businessHours": "평일 10:00-19:00",
-            "location": "신사역 4번 출구 도보 3분"
+            "businessHours": "평일 10:00-19:00"
           },
           "related": {
             "sectionLabel": "Related Treatments",
@@ -6953,7 +6869,7 @@
     },
     "staff": {
       "title": "의료진 소개 | 리브성형외과 대표원장 김수영",
-      "description": "리브성형외과 김수영 대표원장. 성형외과 전문의, SCI 논문 4편, 울쎄라피 프라임·써마지 FLX 전문. 15년 이상 경력의 의료진이 1:1 맞춤 상담을 제공합니다.",
+      "description": "리브성형외과 김수영 대표원장과 천신혜 원장의 전문과목, 학력과 경력, 학술 논문 및 학회 활동을 소개합니다.",
       "keywords": [
         "리브성형외과 의료진",
         "김수영 원장",
@@ -7174,7 +7090,7 @@
     },
     "thermage": {
       "title": "써마지 FLX | 고주파 피부 탄력 리프팅 | 리브성형외과",
-      "description": "써마지 FLX 파트너 인증 병원 리브성형외과. 정품 팁으로 진피 콜라겐을 자극해 탄력과 윤곽을 개선하는 고주파 리프팅. 신사역 4번 출구 도보 1분.",
+      "description": "리브성형외과 써마지 FLX 안내. 고주파 기술과 팁 종류, 시술 과정, 회복과 주의사항, 자주 묻는 질문을 확인하세요.",
       "keywords": [
         "써마지",
         "써마지 FLX",
@@ -7186,8 +7102,8 @@
       ]
     },
     "thread": {
-      "title": "실리프팅 | PDO 실 즉각 리프팅 | 리브성형외과",
-      "description": "리브성형외과 실리프팅. PDO 실로 처진 부위를 즉각적으로 끌어올리고 콜라겐 생성을 유도합니다. 자연스러운 윤곽 개선. 신사역 4번 출구 도보 1분.",
+      "title": "실리프팅 | 실 종류·시술 과정·주의사항 | 리브성형외과",
+      "description": "리브성형외과 실리프팅 안내. 실 종류, 시술 과정, 회복과 주의사항, 관련 의료정보 Q&A를 확인하세요.",
       "keywords": [
         "실리프팅",
         "PDO 실리프팅",
@@ -7199,8 +7115,8 @@
       ]
     },
     "ulthera": {
-      "title": "울쎄라피 프라임 | FDA 승인 HIFU 리프팅 | 리브성형외과",
-      "description": "울쎄라피 프라임 정품 인증 병원 리브성형외과. FDA 승인 집속 초음파(HIFU)로 SMAS 층을 자극해 처짐을 개선하는 비수술 리프팅. 신사역 4번 출구 도보 1분.",
+      "title": "울쎄라피 프라임 | 시술 과정·주의사항 | 리브성형외과",
+      "description": "리브성형외과 울쎄라피 프라임 안내. 초음파 시각화 기술, 시술 과정, 회복과 주의사항, 자주 묻는 질문과 참고자료를 확인하세요.",
       "keywords": [
         "울쎄라피",
         "울쎄라피 프라임",

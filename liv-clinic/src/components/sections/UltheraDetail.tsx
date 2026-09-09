@@ -22,6 +22,8 @@ import {
 import { TREATMENTS } from '@/lib/constants';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 import InternationalNotice from './InternationalNotice';
+import TreatmentGuideLinks from './TreatmentGuideLinks';
+import TreatmentReferences from './TreatmentReferences';
 
 // SVG Icons
 const CheckIcon = () => (
@@ -498,6 +500,7 @@ const TRANSDUCERS: Transducer[] = [
 export default function UltheraDetail() {
   const t = useTranslations('treatments');
   const tCommon = useTranslations('common');
+  const tNav = useTranslations('nav');
   const locale = useLocale();
   const treatment = getLocalizedTreatment(TREATMENTS.lifting.ulthera, 'ulthera', locale);
 
@@ -582,7 +585,7 @@ export default function UltheraDetail() {
             {/* Left: Text Content */}
             <AnimateOnScroll animation="fadeInLeft">
               <div>
-                {/* FDA Badge with gold accent */}
+                {/* Technology badge with gold accent */}
                 <motion.div
                   className="inline-flex items-center gap-2 px-4 py-2 bg-white/90 backdrop-blur-xl rounded-full shadow-lg border border-[#D4AF37]/20 mb-6"
                   initial={{ opacity: 0, y: -20 }}
@@ -603,27 +606,12 @@ export default function UltheraDetail() {
                   {t('lifting.ulthera.detail.hero.title')}
                 </h1>
                 <p className="font-serif text-xl text-mono-light mb-6 italic">
-                  {treatment.tagline}
+                  {t('lifting.ulthera.detail.hero.badge')}
                 </p>
                 <p className="text-h4 text-mono leading-relaxed mb-8 max-w-lg whitespace-pre-line">
                   {t('lifting.ulthera.detail.hero.description')}
                 </p>
 
-                {/* Quick stats - Gold accented */}
-                <div className="flex gap-8 mt-10 pt-8 border-t border-border/50">
-                  <div>
-                    <p className="text-h2 text-primary font-serif">110+</p>
-                    <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.clinicalStudies')}</p>
-                  </div>
-                  <div>
-                    <p className="text-h2 text-primary font-serif">{t('lifting.ulthera.detail.hero.stats.globalProceduresValue')}</p>
-                    <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.globalProcedures')}</p>
-                  </div>
-                  <div>
-                    <p className="text-h2 text-primary font-serif">89%</p>
-                    <p className="text-small text-mono-light">{t('lifting.ulthera.detail.hero.stats.improvementRate')}</p>
-                  </div>
-                </div>
               </div>
             </AnimateOnScroll>
 
@@ -694,6 +682,7 @@ export default function UltheraDetail() {
 
       {/* Price Table Section */}
       <PriceTable treatmentId="ulthera" />
+      <TreatmentGuideLinks treatmentId="ulthera" />
 
       {/* About Section - 울쎄라란? */}
       <section className="section-gap-lg bg-white">
@@ -1020,7 +1009,12 @@ export default function UltheraDetail() {
                     <FDAIllustration />
                   </div>
                   <h3 className="text-h3 text-secondary mb-4">{t('lifting.ulthera.detail.whyUlthera.cards.fda.title')}</h3>
-                  <p className="text-body text-mono-light leading-relaxed" dangerouslySetInnerHTML={{ __html: t('lifting.ulthera.detail.whyUlthera.cards.fda.description') }} />
+                  <a
+                    href="https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/pmn.cfm?id=K233996"
+                    className="text-body text-mono-light leading-relaxed underline underline-offset-4 hover:text-primary"
+                  >
+                    {t('lifting.ulthera.detail.whyUlthera.cards.fda.description')}
+                  </a>
                 </div>
               </Card>
             </div>
@@ -1052,33 +1046,7 @@ export default function UltheraDetail() {
             </div>
           </div>
 
-          {/* Clinical evidence banner */}
-          <AnimateOnScroll>
-            <div className="mt-16 p-8 bg-secondary rounded-3xl text-white text-center">
-              <p className="font-serif text-h3 opacity-80 mb-4">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.label')}</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                  <p className="text-h1 font-serif">110+</p>
-                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.papers')}</p>
-                </div>
-                <div>
-                  <p className="text-h1 font-serif">89%</p>
-                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.aestheticImprovement')}</p>
-                </div>
-                <div>
-                  <p className="text-h1 font-serif">84%</p>
-                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.satisfaction')}</p>
-                </div>
-                <div>
-                  <p className="text-h1 font-serif">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.durationValue')}</p>
-                  <p className="text-small opacity-70">{t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.duration')}</p>
-                </div>
-              </div>
-              <p className="text-small opacity-60 mt-6">
-                {t('lifting.ulthera.detail.whyUlthera.clinicalEvidence.source')}
-              </p>
-            </div>
-          </AnimateOnScroll>
+          <TreatmentReferences treatmentId="ulthera" />
         </div>
       </section>
 
@@ -1188,9 +1156,9 @@ export default function UltheraDetail() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-h4 text-secondary mb-3">{t('lifting.ulthera.detail.livDifference.cards.specialist.title')}</h3>
+                  <h3 className="text-h4 text-secondary mb-3"><Link href="/about/staff" className="underline underline-offset-4 hover:text-primary">{tNav('aboutStaff')}</Link></h3>
                   <p className="text-body text-mono-light">
-                    {t('lifting.ulthera.detail.livDifference.cards.specialist.description')}
+                    {t('common.references.clinicianNote')}
                   </p>
                 </div>
               </Card>
@@ -1490,16 +1458,14 @@ export default function UltheraDetail() {
           {relatedMedicalQA.length > 0 && (
             <AnimateOnScroll>
               <div className="text-center mt-8 md:mt-12">
-                <Link href="/medical">
-                  <Button variant="outline" size="sm" className="md:hidden">
-                    {t('lifting.ulthera.detail.faq.medicalQaLink')}
-                  </Button>
-                  <Button variant="outline" className="hidden md:inline-flex">
-                    {t('lifting.ulthera.detail.faq.medicalQaLink')}
-                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </Button>
+                <Link
+                  href={`/medical#${relatedMedicalQA[0].id}`}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-primary px-5 py-3 text-small text-secondary hover:bg-primary/10 transition-colors"
+                >
+                  {relatedMedicalQA[0].question}
+                  <svg className="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
                 </Link>
               </div>
             </AnimateOnScroll>
@@ -1551,7 +1517,7 @@ export default function UltheraDetail() {
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                   </svg>
-                  {t('lifting.ulthera.detail.cta.location')}
+                  <Link href="/about/location" className="underline underline-offset-4 hover:opacity-80">{tNav('aboutLocation')}</Link>
                 </span>
               </div>
             </div>

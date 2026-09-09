@@ -47,13 +47,13 @@ export default function ConsultPrepPage() {
   const t = useTranslations('consultPrep');
 
   return (
-    <main className="section-gap bg-background">
+    <div className="section-gap bg-background">
       <div className="container-custom">
         <h1 className="text-h2 text-secondary text-center mb-10">{t('title')}</h1>
         <Suspense fallback={null}>
           <ConsultPrepBody />
         </Suspense>
       </div>
-    </main>
+    </div>
   );
 }

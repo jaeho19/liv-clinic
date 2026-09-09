@@ -148,9 +148,9 @@ export const TREATMENTS = {
       tagline: 'FDA 승인 초음파 리프팅 – 깊은 층부터 탄탄하게',
       shortDesc: '미국 FDA와 국내 식약처 승인, HIFU 리프팅의 글로벌 스탠다드',
       heroImage: '/images/treatments/ulthera-hero.jpg',
-      description: '울쎄라피 프라임은 미국 FDA에서 유일하게 리프팅 효과를 승인받은 HIFU(고강도 집속 초음파) 장비입니다. 피부 깊은 층인 SMAS까지 에너지를 전달하여 콜라겐 재생을 촉진하고, 자연스러운 리프팅 효과를 제공합니다.',
+      description: '울쎄라피 프라임은 초음파 시각화 기술을 사용하는 HIFU(고강도 집속 초음파) 장비입니다. 피부 깊은 층인 SMAS까지 에너지를 전달하여 콜라겐 재생을 촉진하고, 자연스러운 리프팅 효과를 제공합니다.',
       benefits: [
-        { title: 'FDA 유일 승인', desc: '리프팅 효과를 인정받은 유일한 HIFU 장비' },
+        { title: 'FDA 510(k)', desc: 'Ulthera PRIME · K233996' },
         { title: 'DeepSEE 기술', desc: '시술 부위를 실시간으로 확인하며 정확한 시술' },
         { title: '자연스러운 결과', desc: '점진적 콜라겐 재생으로 3-6개월에 걸쳐 개선' },
         { title: '다운타임 최소화', desc: '일상생활에 바로 복귀 가능' },

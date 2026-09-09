@@ -726,7 +726,9 @@
         "presentations": "Présentations",
         "globalActivities": "Activités internationales",
         "media": "Couverture médiatique",
-        "comingSoon": "Bientôt disponible"
+        "comingSoon": "Bientôt disponible",
+        "journalArticle": "Article scientifique",
+        "publicationBreakdown": "Articles : {journalCount} · Thèses : {thesisCount}"
       }
     },
     "location": {
@@ -920,14 +922,19 @@
       "severe": "Sévère",
       "benefits": "Avantages",
       "consultationCta": "Réserver une consultation",
-      "effectDuration": "Durée de l'effet"
+      "effectDuration": "Durée de l'effet",
+      "references": {
+        "title": "Références",
+        "note": "Documents originaux en anglais de fabricants et organismes américains, et publications scientifiques.",
+        "clinicianNote": "Consultez les spécialités, la formation et le parcours de notre équipe médicale."
+      }
     },
     "lifting": {
       "ulthera": {
         "name": "Ultherapy Prime",
         "fullName": "Ultherapy Prime",
         "tagline": "Le seul lifting non chirurgical approuvé par la FDA",
-        "description": "Le seul lifting non chirurgical approuvé par la FDA au monde. L'énergie ultrasonique atteint profondément la couche SMAS pour un puissant effet de lifting.",
+        "description": "Sa technologie brevetée MFU-V (ultrasons micro-focalisés avec visualisation) délivre précisément l'énergie à la couche SMAS profonde pour stimuler la régénération du collagène.",
         "detail": {
           "skinLayers": {
             "epidermis": "Épiderme",
@@ -974,49 +981,37 @@
               "shurink": "Shurink/Doublo",
               "thermage": "Thermage"
             },
-            "rows": [
-              {
-                "feature": "Energy Type",
-                "ulthera": "MFU-V (Ultrasound)",
-                "shurink": "HIFU (Ultrasound)",
-                "thermage": "RF (Radiofrequency)"
-              },
-              {
-                "feature": "Real-time Visualization",
-                "ulthera": "DeepSEE O",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "FDA Lifting Approval",
-                "ulthera": "Only Approved",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "Max Depth",
-                "ulthera": "4.5mm (SMAS)",
-                "shurink": "4.5mm",
-                "thermage": "Dermis"
-              },
-              {
-                "feature": "Clinical Studies",
-                "ulthera": "110+ Papers",
-                "shurink": "Few",
-                "thermage": "Many"
-              },
-              {
-                "feature": "Duration",
-                "ulthera": "1-2 Years",
-                "shurink": "6-12 Months",
-                "thermage": "6-12 Months"
-              },
-              {
-                "feature": "Best For",
-                "ulthera": "Severe Sagging/Lifting",
-                "shurink": "Maintenance",
-                "thermage": "Elasticity/Texture"
-              }
+            "rows": [
+              {
+                "feature": "Energy Type",
+                "ulthera": "MFU-V (Ultrasound)",
+                "shurink": "HIFU (Ultrasound)",
+                "thermage": "RF (Radiofrequency)"
+              },
+              {
+                "feature": "Real-time Visualization",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "Max Depth",
+                "ulthera": "4.5mm (SMAS)",
+                "shurink": "4.5mm",
+                "thermage": "Dermis"
+              },
+              {
+                "feature": "Duration",
+                "ulthera": "1-2 Years",
+                "shurink": "6-12 Months",
+                "thermage": "6-12 Months"
+              },
+              {
+                "feature": "Best For",
+                "ulthera": "Severe Sagging/Lifting",
+                "shurink": "Maintenance",
+                "thermage": "Elasticity/Texture"
+              }
             ],
             "synergy": {
               "title": "Synergie Ultherapy Prime + Thermage",
@@ -1084,23 +1079,17 @@
             }
           },
           "hero": {
-            "badge": "Le seul appareil de lifting approuvé par la FDA",
+            "badge": "MFU-V · DeepSEE",
             "premiumLifting": "Lifting Premium",
             "title": "Ultherapy Prime",
-            "description": "Le seul lifting non invasif qui atteint la couche SMAS profonde.\nPrécis et sûr avec la technologie de visualisation DeepSEE en temps réel.",
-            "stats": {
-              "clinicalStudies": "Études cliniques",
-              "globalProcedures": "Procédures mondiales",
-              "globalProceduresValue": "1,75 M+",
-              "improvementRate": "Taux d'amélioration"
-            },
+            "description": "Un lifting non invasif qui atteint la couche SMAS profonde.\nPrécis et sûr avec la technologie de visualisation DeepSEE en temps réel.",
             "deepSee": "Visualisation en temps réel",
             "smasTarget": "Ciblage des couches profondes"
           },
           "about": {
             "sectionLabel": "À propos d'Ultherapy Prime",
             "title": "Qu'est-ce qu'Ultherapy Prime ?",
-            "description": "Ultherapy Prime est le <strong>seul</strong> appareil HIFU non invasif avec une efficacité de lifting approuvée par la FDA. Sa technologie brevetée MFU-V (ultrasons micro-focalisés avec visualisation) délivre précisément l'énergie à la couche SMAS profonde pour stimuler la régénération du collagène.",
+            "description": "Sa technologie brevetée MFU-V (ultrasons micro-focalisés avec visualisation) délivre précisément l'énergie à la couche SMAS profonde pour stimuler la régénération du collagène.",
             "depthTargeting": "Ciblage de profondeur personnalisé",
             "depths": {
               "1_5": {
@@ -1123,8 +1112,8 @@
             "title": "Pourquoi Ultherapy Prime ?",
             "cards": {
               "fda": {
-                "title": "Seul approuvé par la FDA",
-                "description": "Le <strong>seul</strong> appareil HIFU avec approbation FDA pour l'efficacité du lifting non invasif."
+                "title": "FDA 510(k)",
+                "description": "Ulthera PRIME · K233996"
               },
               "deepSee": {
                 "title": "Visualisation DeepSEE",
@@ -1132,17 +1121,8 @@
               },
               "smas": {
                 "title": "Ciblage de la couche SMAS",
-                "description": "Le seul appareil non invasif qui <strong>atteint la couche SMAS</strong>, la même cible que les liftings chirurgicaux."
+                "description": "Un appareil non invasif qui <strong>atteint la couche SMAS</strong>, la même cible que les liftings chirurgicaux."
               }
-            },
-            "clinicalEvidence": {
-              "label": "Preuves cliniques",
-              "papers": "Études cliniques publiées",
-              "aestheticImprovement": "Amélioration esthétique",
-              "satisfaction": "Satisfaction des patients",
-              "duration": "Durée de l'effet",
-              "durationValue": "1-2 ans",
-              "source": "Source : Revue systématique et méta-analyse 2024 (PubMed)"
             }
           },
           "livDifference": {
@@ -1157,10 +1137,6 @@
               "transparency": {
                 "title": "Comptage transparent des shots",
                 "description": "Nous divulguons de manière transparente le nombre de lignes prévues et les shots réellement délivrés. Nous promettons un traitement honnête."
-              },
-              "specialist": {
-                "title": "Traitement direct par spécialiste",
-                "description": "Dermatologue/chirurgien plasticien certifié réalise consultations et traitements directement. Plans de traitement personnalisés pour chaque patient."
               }
             }
           },
@@ -1214,8 +1190,7 @@
             "title": "Réserver une consultation Ultherapy Prime",
             "description": "Grâce à une consultation personnalisée en tête-à-tête avec nos spécialistes,\nétablissez le plan de traitement optimal adapté à vous.",
             "bookButton": "Réserver une consultation gratuite",
-            "hours": "Lun-Ven 10:00-19:00",
-            "location": "3 min à pied de la sortie 4 de la station Sinsa"
+            "hours": "Lun-Ven 10:00-19:00"
           },
           "related": {
             "labelEn": "Related Treatments",
@@ -1233,37 +1208,17 @@
         "tagline": "Solution de raffermissement cutané par RF",
         "description": "Thermage FLX de 4e génération offre un traitement 25 % plus rapide tout en favorisant une régénération complète du collagène.",
         "detail": {
-          "heroLabels": [
-            {
-              "top": {
-                "title": "AccuREP",
-                "subtitle": "Auto Energy Control"
-              },
-              "bottom": {
-                "title": "Comfort Pulse",
-                "subtitle": "Vibration Pain Relief"
-              }
-            },
-            {
-              "top": {
-                "title": "RF Technology",
-                "subtitle": "Collagen Contraction & Regeneration"
-              },
-              "bottom": {
-                "title": "14M+",
-                "subtitle": "Global Treatments"
-              }
-            },
-            {
-              "top": {
-                "title": "AccuTip",
-                "subtitle": "3.0cm² Precision Area"
-              },
-              "bottom": {
-                "title": "Merz Korea",
-                "subtitle": "Certified Clinic"
-              }
-            }
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "Auto Energy Control"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "Vibration Pain Relief"
+              }
+            }
           ],
           "skinLayers": {
             "epidermis": "Épiderme",
@@ -1367,26 +1322,12 @@
           "hero": {
             "badge": "RF Premium 4e génération",
             "title": "Thermage FLX",
-            "description": "La technologie AccuREP ajuste automatiquement l'énergie optimale à votre état cutané.<br />La technologie vibratoire réduit la douleur tout en améliorant les résultats.",
-            "stats": {
-              "treatments": {
-                "value": "14M+",
-                "label": "Traitements mondiaux"
-              },
-              "time": {
-                "value": "25 %",
-                "label": "Temps de traitement réduit"
-              },
-              "satisfaction": {
-                "value": "93 %",
-                "label": "Satisfaction des patients"
-              }
-            }
+            "description": "La technologie AccuREP ajuste automatiquement l'énergie optimale à votre état cutané.<br />La technologie vibratoire réduit la douleur tout en améliorant les résultats."
           },
           "about": {
             "sectionLabel": "À propos de Thermage",
             "title": "Qu'est-ce que Thermage FLX ?",
-            "description": "Thermage FLX est le n°1 mondial des appareils de lifting RF avec <strong>plus de 14 millions de traitements dans le monde</strong>. La technologie brevetée AccuREP mesure l'impédance cutanée en temps réel pour ajuster automatiquement l'énergie optimale, améliorant l'élasticité par contraction et régénération du collagène.",
+            "description": "La technologie brevetée AccuREP mesure l'impédance cutanée en temps réel pour ajuster automatiquement l'énergie optimale, améliorant l'élasticité par contraction et régénération du collagène.",
             "rfPrinciple": {
               "title": "Principe de l'énergie RF",
               "steps": [
@@ -1416,7 +1357,7 @@
             "cards": {
               "accuRep": {
                 "title": "Technologie AccuREP",
-                "desc": "La <strong>mesure en temps réel</strong> de l'impédance cutanée ajuste automatiquement l'énergie optimale pour chaque zone. Garantit des résultats uniformes et sûrs."
+                "desc": "La technologie brevetée AccuREP mesure l'impédance cutanée en temps réel pour ajuster automatiquement l'énergie optimale, améliorant l'élasticité par contraction et régénération du collagène."
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
@@ -1426,26 +1367,6 @@
                 "title": "Remodelage du collagène",
                 "desc": "<strong>Effet de contraction immédiat</strong> après le traitement, suivi d'une amélioration progressive de l'élasticité par production de nouveau collagène sur 3 à 6 mois."
               }
-            },
-            "globalTrust": {
-              "title": "Confiance mondiale",
-              "treatments": {
-                "value": "14M+",
-                "label": "Traitements mondiaux"
-              },
-              "satisfaction": {
-                "value": "93 %",
-                "label": "Satisfaction des patients"
-              },
-              "time": {
-                "value": "25 %",
-                "label": "Temps de traitement réduit"
-              },
-              "duration": {
-                "value": "1 an+",
-                "label": "Durée de l'effet"
-              },
-              "source": "Source : Données cliniques officielles Solta Medical"
             }
           },
           "tipsSection": {
@@ -1479,10 +1400,6 @@
               "transparent": {
                 "title": "Comptage transparent des shots",
                 "desc": "Nous divulguons de manière transparente les comptes de shots prévus et réels avant et après le traitement. Nous promettons un traitement honnête."
-              },
-              "specialist": {
-                "title": "Traitement direct par spécialiste",
-                "desc": "Des dermatologues/chirurgiens plasticiens certifiés mènent la consultation et le traitement. Des plans de traitement personnalisés sont établis."
               }
             }
           },
@@ -1547,8 +1464,7 @@
             "title": "Réserver une consultation Thermage",
             "description": "Grâce à une consultation personnalisée en tête-à-tête avec notre équipe médicale,<br />établissez le plan de traitement optimal pour vous.",
             "bookConsultation": "Réserver une consultation gratuite",
-            "businessHours": "Lun-Ven 10:00-19:00",
-            "location": "3 min à pied de la sortie 4 de la station Sinsa"
+            "businessHours": "Lun-Ven 10:00-19:00"
           },
           "related": {
             "sectionLabel": "Traitements associés",
@@ -6952,7 +6868,7 @@
     },
     "staff": {
       "title": "Équipe médicale | Chirurgien plasticien | LIV Chirurgie Esthétique",
-      "description": "Le directeur de LIV : chirurgien plasticien diplômé, auteur de 4 articles SCI, spécialiste d'Ultherapy Prime et de Thermage FLX. Gangnam, Séoul.",
+      "description": "Découvrez les médecins Sooyoung Kim et Shinhye Cheon de LIV : spécialités, formation, parcours, publications et activités scientifiques.",
       "keywords": [
         "médecin clinique LIV",
         "chirurgien plasticien diplômé Séoul",
@@ -7173,7 +7089,7 @@
     },
     "thermage": {
       "title": "Thermage FLX à Séoul | Radiofréquence | LIV Chirurgie Esthétique",
-      "description": "Thermage FLX chez LIV, à Gangnam, Séoul : partenaire certifié, embouts d'origine, stimulation du collagène dermique pour fermeté et contours affinés.",
+      "description": "Thermage FLX chez LIV : technologie radiofréquence, types d’embouts, déroulement, récupération, précautions et questions fréquentes.",
       "keywords": [
         "Thermage FLX Séoul",
         "Thermage Corée",
@@ -7185,8 +7101,8 @@
       ]
     },
     "thread": {
-      "title": "Lifting par fils à Séoul | Fils PDO | LIV Chirurgie Esthétique",
-      "description": "Lifting par fils chez LIV, à Gangnam, Séoul : les fils PDO retendent immédiatement les zones relâchées et stimulent le collagène pour des contours naturels.",
+      "title": "Fils tenseurs | Types de fils et précautions | LIV Clinic",
+      "description": "Fils tenseurs chez LIV : types de fils, déroulement, récupération, précautions et questions médicales associées.",
       "keywords": [
         "lifting par fils Séoul",
         "fils PDO Corée",
@@ -7198,8 +7114,8 @@
       ]
     },
     "ulthera": {
-      "title": "Ultherapy (Ulthera) à Séoul | Prime | LIV Chirurgie Esthétique",
-      "description": "Ultherapy Prime chez LIV, clinique certifiée à Gangnam, Séoul : ultrasons focalisés (HIFU) autorisés par la FDA, jusqu'au SMAS, contre le relâchement.",
+      "title": "Ultherapy Prime | Déroulement et précautions | LIV Clinic",
+      "description": "Ultherapy Prime chez LIV : visualisation par ultrasons, déroulement, récupération, précautions, questions fréquentes et références.",
       "keywords": [
         "Ultherapy Corée",
         "Ulthera Séoul",

@@ -726,7 +726,9 @@
         "presentations": "العروض التقديمية",
         "globalActivities": "الأنشطة الدولية",
         "media": "التغطية الإعلامية",
-        "comingSoon": "قريبًا"
+        "comingSoon": "قريبًا",
+        "journalArticle": "مقالة علمية",
+        "publicationBreakdown": "المقالات: {journalCount} · الرسائل الجامعية: {thesisCount}"
       }
     },
     "location": {
@@ -920,14 +922,19 @@
       "severe": "شديد",
       "benefits": "الفوائد",
       "consultationCta": "احجز استشارة",
-      "effectDuration": "مدة التأثير"
+      "effectDuration": "مدة التأثير",
+      "references": {
+        "title": "المراجع",
+        "note": "مواد أصلية باللغة الإنجليزية من مصنّعين ومؤسسات أمريكية، ومنشورات علمية.",
+        "clinicianNote": "اطّلع على تخصصات الأطباء وتعليمهم وخبراتهم في صفحة الفريق الطبي."
+      }
     },
     "lifting": {
       "ulthera": {
         "name": "Ultherapy Prime",
         "fullName": "Ultherapy Prime",
         "tagline": "الشد غير الجراحي الوحيد المعتمد من FDA",
-        "description": "الشد غير الجراحي الوحيد في العالم المعتمد من FDA. تصل طاقة الموجات فوق الصوتية إلى عمق طبقة SMAS لتأثير شد قوي.",
+        "description": "تقنيته المسجلة MFU-V (الموجات فوق الصوتية المركزة الدقيقة بالرؤية) توصل الطاقة بدقة إلى طبقة SMAS العميقة لتحفيز تجديد الكولاجين.",
         "detail": {
           "skinLayers": {
             "epidermis": "البشرة",
@@ -974,49 +981,37 @@
               "shurink": "Shurink/Doublo",
               "thermage": "Thermage"
             },
-            "rows": [
-              {
-                "feature": "Energy Type",
-                "ulthera": "MFU-V (Ultrasound)",
-                "shurink": "HIFU (Ultrasound)",
-                "thermage": "RF (Radiofrequency)"
-              },
-              {
-                "feature": "Real-time Visualization",
-                "ulthera": "DeepSEE O",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "FDA Lifting Approval",
-                "ulthera": "Only Approved",
-                "shurink": "X",
-                "thermage": "X"
-              },
-              {
-                "feature": "Max Depth",
-                "ulthera": "4.5mm (SMAS)",
-                "shurink": "4.5mm",
-                "thermage": "Dermis"
-              },
-              {
-                "feature": "Clinical Studies",
-                "ulthera": "110+ Papers",
-                "shurink": "Few",
-                "thermage": "Many"
-              },
-              {
-                "feature": "Duration",
-                "ulthera": "1-2 Years",
-                "shurink": "6-12 Months",
-                "thermage": "6-12 Months"
-              },
-              {
-                "feature": "Best For",
-                "ulthera": "Severe Sagging/Lifting",
-                "shurink": "Maintenance",
-                "thermage": "Elasticity/Texture"
-              }
+            "rows": [
+              {
+                "feature": "Energy Type",
+                "ulthera": "MFU-V (Ultrasound)",
+                "shurink": "HIFU (Ultrasound)",
+                "thermage": "RF (Radiofrequency)"
+              },
+              {
+                "feature": "Real-time Visualization",
+                "ulthera": "DeepSEE O",
+                "shurink": "X",
+                "thermage": "X"
+              },
+              {
+                "feature": "Max Depth",
+                "ulthera": "4.5mm (SMAS)",
+                "shurink": "4.5mm",
+                "thermage": "Dermis"
+              },
+              {
+                "feature": "Duration",
+                "ulthera": "1-2 Years",
+                "shurink": "6-12 Months",
+                "thermage": "6-12 Months"
+              },
+              {
+                "feature": "Best For",
+                "ulthera": "Severe Sagging/Lifting",
+                "shurink": "Maintenance",
+                "thermage": "Elasticity/Texture"
+              }
             ],
             "synergy": {
               "title": "تآزر Ultherapy Prime + Thermage",
@@ -1084,23 +1079,17 @@
             }
           },
           "hero": {
-            "badge": "الجهاز الوحيد للشد المعتمد من FDA",
+            "badge": "MFU-V · DeepSEE",
             "premiumLifting": "شد بريميوم",
             "title": "Ultherapy Prime",
-            "description": "الشد غير الجراحي الوحيد الذي يصل إلى طبقة SMAS العميقة.\nدقيق وآمن مع تقنية الرؤية DeepSEE في الوقت الفعلي.",
-            "stats": {
-              "clinicalStudies": "الدراسات السريرية",
-              "globalProcedures": "الإجراءات العالمية",
-              "globalProceduresValue": "+1.75 مليون",
-              "improvementRate": "معدل التحسن"
-            },
+            "description": "الشد غير الجراحي الذي يصل إلى طبقة SMAS العميقة.\nدقيق وآمن مع تقنية الرؤية DeepSEE في الوقت الفعلي.",
             "deepSee": "الرؤية في الوقت الفعلي",
             "smasTarget": "استهداف الطبقات العميقة"
           },
           "about": {
             "sectionLabel": "حول Ultherapy Prime",
             "title": "ما هو Ultherapy Prime؟",
-            "description": "Ultherapy Prime هو جهاز HIFU غير الجراحي <strong>الوحيد</strong> الحاصل على اعتماد FDA لفعالية الشد. تقنيته المسجلة MFU-V (الموجات فوق الصوتية المركزة الدقيقة بالرؤية) توصل الطاقة بدقة إلى طبقة SMAS العميقة لتحفيز تجديد الكولاجين.",
+            "description": "تقنيته المسجلة MFU-V (الموجات فوق الصوتية المركزة الدقيقة بالرؤية) توصل الطاقة بدقة إلى طبقة SMAS العميقة لتحفيز تجديد الكولاجين.",
             "depthTargeting": "استهداف عمق مخصص",
             "depths": {
               "1_5": {
@@ -1123,8 +1112,8 @@
             "title": "لماذا Ultherapy Prime؟",
             "cards": {
               "fda": {
-                "title": "الوحيد المعتمد من FDA",
-                "description": "جهاز HIFU <strong>الوحيد</strong> الحاصل على اعتماد FDA لفعالية الشد غير الجراحي."
+                "title": "FDA 510(k)",
+                "description": "Ulthera PRIME · K233996"
               },
               "deepSee": {
                 "title": "رؤية DeepSEE",
@@ -1132,17 +1121,8 @@
               },
               "smas": {
                 "title": "استهداف طبقة SMAS",
-                "description": "الجهاز غير الجراحي الوحيد الذي <strong>يصل إلى طبقة SMAS</strong>، نفس الهدف الذي تستهدفه عمليات شد الوجه الجراحية."
+                "description": "الجهاز غير الجراحي الذي <strong>يصل إلى طبقة SMAS</strong>، نفس الهدف الذي تستهدفه عمليات شد الوجه الجراحية."
               }
-            },
-            "clinicalEvidence": {
-              "label": "الأدلة السريرية",
-              "papers": "الأبحاث السريرية المنشورة",
-              "aestheticImprovement": "التحسن الجمالي",
-              "satisfaction": "رضا المرضى",
-              "duration": "مدة التأثير",
-              "durationValue": "1-2 سنة",
-              "source": "المصدر: مراجعة منهجية وتحليل تلوي 2024 (PubMed)"
             }
           },
           "livDifference": {
@@ -1157,10 +1137,6 @@
               "transparency": {
                 "title": "عدد shots شفاف",
                 "description": "نكشف بشفافية عن أعداد الخطوط المخططة و shots المُسلَّمة فعلياً. نعد بعلاج صادق."
-              },
-              "specialist": {
-                "title": "علاج مباشر من اختصاصي",
-                "description": "طبيب أمراض جلدية/جراح تجميل معتمد يجري الاستشارات والعلاجات مباشرة. خطط علاج شخصية لكل مريض."
               }
             }
           },
@@ -1214,8 +1190,7 @@
             "title": "احجز استشارة Ultherapy Prime",
             "description": "من خلال استشارة شخصية مع اختصاصيينا،\nضع خطة العلاج المثلى المخصصة لك.",
             "bookButton": "احجز استشارة مجانية",
-            "hours": "الإثنين-الجمعة 10:00-19:00",
-            "location": "3 دقائق سيراً من مخرج 4 محطة Sinsa"
+            "hours": "الإثنين-الجمعة 10:00-19:00"
           },
           "related": {
             "labelEn": "Related Treatments",
@@ -1233,37 +1208,17 @@
         "tagline": "حل شد البشرة بالترددات الراديوية",
         "description": "Thermage FLX من الجيل الرابع يقدم علاجاً أسرع بنسبة 25٪ مع تعزيز تجديد الكولاجين الشامل.",
         "detail": {
-          "heroLabels": [
-            {
-              "top": {
-                "title": "AccuREP",
-                "subtitle": "Auto Energy Control"
-              },
-              "bottom": {
-                "title": "Comfort Pulse",
-                "subtitle": "Vibration Pain Relief"
-              }
-            },
-            {
-              "top": {
-                "title": "RF Technology",
-                "subtitle": "Collagen Contraction & Regeneration"
-              },
-              "bottom": {
-                "title": "14M+",
-                "subtitle": "Global Treatments"
-              }
-            },
-            {
-              "top": {
-                "title": "AccuTip",
-                "subtitle": "3.0cm² Precision Area"
-              },
-              "bottom": {
-                "title": "Merz Korea",
-                "subtitle": "Certified Clinic"
-              }
-            }
+          "heroLabels": [
+            {
+              "top": {
+                "title": "AccuREP",
+                "subtitle": "Auto Energy Control"
+              },
+              "bottom": {
+                "title": "Comfort Pulse",
+                "subtitle": "Vibration Pain Relief"
+              }
+            }
           ],
           "skinLayers": {
             "epidermis": "البشرة",
@@ -1367,26 +1322,12 @@
           "hero": {
             "badge": "RF بريميوم الجيل الرابع",
             "title": "Thermage FLX",
-            "description": "تقنية AccuREP تُعدِّل الطاقة المُثلى تلقائياً وفقاً لحالة بشرتك.<br />تقنية الاهتزاز تُقلل الألم وتُعزز النتائج.",
-            "stats": {
-              "treatments": {
-                "value": "14 مليون+",
-                "label": "العلاجات العالمية"
-              },
-              "time": {
-                "value": "25%",
-                "label": "تقليل وقت العلاج"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "رضا المرضى"
-              }
-            }
+            "description": "تقنية AccuREP تُعدِّل الطاقة المُثلى تلقائياً وفقاً لحالة بشرتك.<br />تقنية الاهتزاز تُقلل الألم وتُعزز النتائج."
           },
           "about": {
             "sectionLabel": "حول Thermage",
             "title": "ما هو Thermage FLX؟",
-            "description": "Thermage FLX هو الجهاز رقم 1 عالمياً في الشد بالترددات الراديوية مع <strong>أكثر من 14 مليون علاج حول العالم</strong>. تقنية AccuREP المسجلة تقيس مقاومة البشرة في الوقت الفعلي لتعديل الطاقة المثلى تلقائياً، مما يحسن مرونة البشرة عبر انكماش وتجديد الكولاجين.",
+            "description": "تقنية AccuREP المسجلة تقيس مقاومة البشرة في الوقت الفعلي لتعديل الطاقة المثلى تلقائياً، مما يحسن مرونة البشرة عبر انكماش وتجديد الكولاجين.",
             "rfPrinciple": {
               "title": "مبدأ طاقة RF",
               "steps": [
@@ -1416,7 +1357,7 @@
             "cards": {
               "accuRep": {
                 "title": "تقنية AccuREP",
-                "desc": "<strong>قياس فوري</strong> لمقاومة البشرة يُعدِّل الطاقة المثلى تلقائياً لكل منطقة. يضمن نتائج علاج موحدة وآمنة."
+                "desc": "تقنية AccuREP المسجلة تقيس مقاومة البشرة في الوقت الفعلي لتعديل الطاقة المثلى تلقائياً، مما يحسن مرونة البشرة عبر انكماش وتجديد الكولاجين."
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
@@ -1426,26 +1367,6 @@
                 "title": "إعادة تشكيل الكولاجين",
                 "desc": "<strong>تأثير انكماش فوري</strong> بعد العلاج، يتبعه تحسن تدريجي للمرونة عبر إنتاج كولاجين جديد خلال 3-6 أشهر."
               }
-            },
-            "globalTrust": {
-              "title": "ثقة عالمية",
-              "treatments": {
-                "value": "14 مليون+",
-                "label": "العلاجات العالمية"
-              },
-              "satisfaction": {
-                "value": "93%",
-                "label": "رضا المرضى"
-              },
-              "time": {
-                "value": "25%",
-                "label": "تقليل وقت العلاج"
-              },
-              "duration": {
-                "value": "1 سنة+",
-                "label": "مدة التأثير"
-              },
-              "source": "المصدر: بيانات سريرية رسمية من Solta Medical"
             }
           },
           "tipsSection": {
@@ -1479,10 +1400,6 @@
               "transparent": {
                 "title": "عدد shots شفاف",
                 "desc": "نكشف بشفافية عن أعداد shots المخططة والفعلية قبل وبعد العلاج. نعد بعلاج صادق."
-              },
-              "specialist": {
-                "title": "علاج مباشر من اختصاصي",
-                "desc": "أطباء أمراض جلدية/جراحو تجميل معتمدون يجرون الاستشارة والعلاج. يتم وضع خطط علاج شخصية."
               }
             }
           },
@@ -1547,8 +1464,7 @@
             "title": "احجز استشارة Thermage",
             "description": "من خلال استشارة شخصية مع فريقنا الطبي،<br />ضع خطة العلاج المثلى لك.",
             "bookConsultation": "احجز استشارة مجانية",
-            "businessHours": "الإثنين-الجمعة 10:00-19:00",
-            "location": "3 دقائق سيراً من مخرج 4 محطة Sinsa"
+            "businessHours": "الإثنين-الجمعة 10:00-19:00"
           },
           "related": {
             "sectionLabel": "علاجات ذات صلة",
@@ -6952,7 +6868,7 @@
     },
     "staff": {
       "title": "الفريق الطبي | جراح تجميل معتمد | مستشفى ليف للتجميل",
-      "description": "تعرّف على مدير مستشفى ليف للتجميل — جراح تجميل معتمد له 4 أبحاث SCI، متخصص في Ultherapy Prime وThermage FLX، في غانغنام، سيول.",
+      "description": "تعرّف على الطبيبين Sooyoung Kim وShinhye Cheon في LIV: التخصصات والتعليم والخبرات والمنشورات والأنشطة العلمية.",
       "keywords": [
         "طبيب مستشفى ليف للتجميل",
         "جراح تجميل معتمد سيول",
@@ -7173,7 +7089,7 @@
     },
     "thermage": {
       "title": "Thermage FLX في سيول | شد البشرة | مستشفى ليف للتجميل",
-      "description": "Thermage FLX في مستشفى ليف للتجميل بغانغنام، سيول — شريك معتمد يستخدم أطرافًا أصلية لتحفيز كولاجين الأدمة لبشرة أكثر شدًّا وملامح أدق.",
+      "description": "Thermage FLX في LIV: تقنية الترددات الراديوية، أنواع الرؤوس، خطوات الإجراء، التعافي، الاحتياطات والأسئلة الشائعة.",
       "keywords": [
         "Thermage FLX سيول",
         "Thermage كوريا",
@@ -7185,8 +7101,8 @@
       ]
     },
     "thread": {
-      "title": "شد الوجه بالخيوط في سيول | خيوط PDO | مستشفى ليف للتجميل",
-      "description": "شد الوجه بالخيوط في مستشفى ليف للتجميل بغانغنام، سيول — خيوط PDO ترفع المناطق المترهلة فورًا وتحفّز الكولاجين لتحسين طبيعي للملامح.",
+      "title": "الشد بالخيوط | الأنواع والاحتياطات | LIV Clinic",
+      "description": "الشد بالخيوط في LIV: أنواع الخيوط، خطوات الإجراء، التعافي، الاحتياطات والأسئلة الطبية ذات الصلة.",
       "keywords": [
         "شد الوجه بالخيوط سيول",
         "خيوط PDO كوريا",
@@ -7198,8 +7114,8 @@
       ]
     },
     "ulthera": {
-      "title": "Ultherapy (Ulthera) في غانغنام، سيول | مستشفى ليف للتجميل",
-      "description": "Ultherapy Prime في مستشفى ليف للتجميل، مزوّد معتمد في غانغنام، سيول — موجات فوق صوتية مركّزة (HIFU) معتمدة من FDA تصل إلى طبقة SMAS لشد البشرة المترهلة.",
+      "title": "Ultherapy Prime | خطوات الإجراء والاحتياطات | LIV Clinic",
+      "description": "Ultherapy Prime في LIV: تقنية التصوير بالموجات فوق الصوتية، خطوات الإجراء، التعافي، الاحتياطات، الأسئلة الشائعة والمراجع.",
       "keywords": [
         "Ultherapy كوريا",
         "Ulthera سيول",

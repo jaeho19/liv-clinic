@@ -1,7 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import { AnimateOnScroll } from '@/components/ui';
+import { AnimateOnScroll, Breadcrumb } from '@/components/ui';
+import { Link } from '@/i18n/routing';
 import { PRICING_GUIDE, PRICING_GUIDE_NOTE_KEYS } from '@/lib/pricingGuide';
 import InternationalPricingNote from './InternationalPricingNote';
 
@@ -12,11 +13,13 @@ import InternationalPricingNote from './InternationalPricingNote';
  */
 export default function PricingGuide() {
   const t = useTranslations('pricingGuide');
+  const tNav = useTranslations('nav');
 
   return (
-    <main className="bg-background">
+    <div className="bg-background">
+      <Breadcrumb items={[{ navKey: 'pricing' }]} />
       {/* Hero */}
-      <section className="pt-32 pb-12 md:pt-40 md:pb-16 bg-white">
+      <section className="pt-12 pb-12 md:pt-16 md:pb-16 bg-white">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <AnimateOnScroll>
@@ -36,7 +39,7 @@ export default function PricingGuide() {
           <div className="max-w-4xl mx-auto space-y-12 md:space-y-16">
             {PRICING_GUIDE.map((category) => (
               <AnimateOnScroll key={category.id}>
-                <div>
+                <div id={category.id} className="scroll-mt-28">
                   <h2 className="text-h3 text-secondary mb-4 md:mb-5">
                     {t(`categories.${category.id}`)}
                   </h2>
@@ -62,9 +65,15 @@ export default function PricingGuide() {
                             key={rowId}
                             className="border-t border-border hover:bg-background/50 transition-colors"
                           >
-                            <td className="px-4 py-3 text-mono text-small md:text-body font-medium">
-                              {t(`rows.${category.id}.${rowId}.name`)}
-                            </td>
+                            <th scope="row" className="px-4 text-start text-mono text-small md:text-body font-medium">
+                              <Link
+                                href={category.rowHrefs?.[rowId] ?? category.href}
+                                aria-label={`${t(`categories.${category.id}`)} · ${t(`rows.${category.id}.${rowId}.name`)}`}
+                                className="inline-flex min-h-11 items-center underline decoration-primary/50 underline-offset-4 hover:text-primary transition-colors"
+                              >
+                                {t(`rows.${category.id}.${rowId}.name`)}
+                              </Link>
+                            </th>
                             <td className="px-4 py-3 text-mono-light text-small md:text-body">
                               {t(`rows.${category.id}.${rowId}.basis`)}
                             </td>
@@ -92,10 +101,21 @@ export default function PricingGuide() {
                   </p>
                 ))}
               </div>
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <Link href="/contact" className="inline-flex min-h-11 items-center rounded-full bg-primary px-6 py-3 text-white hover:bg-secondary transition-colors">
+                  {tNav('contact')}
+                </Link>
+                <Link href="/about/staff" className="inline-flex min-h-11 items-center px-4 py-2 text-secondary underline underline-offset-4 hover:text-primary">
+                  {tNav('aboutStaff')}
+                </Link>
+                <Link href="/about/location" className="inline-flex min-h-11 items-center px-4 py-2 text-secondary underline underline-offset-4 hover:text-primary">
+                  {tNav('aboutLocation')}
+                </Link>
+              </div>
             </AnimateOnScroll>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

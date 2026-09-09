@@ -259,18 +259,18 @@ export default function Header() {
             Deliberate trade-off: above 1280px this gutter is wider than the page body's
             .container-custom (1280), so the header row and the page content below it are
             intentionally NOT left/right aligned — nav fit wins over edge alignment. */}
-        <div className="mx-auto w-full max-w-[1800px] px-6 md:px-8 lg:px-10">
+        <div className="mx-auto w-full max-w-[1800px] px-4 md:px-8 lg:px-10">
           <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16' : 'h-20'}`}>
             {/* Logo */}
-            <Link href="/" className="flex items-center shrink-0">
+            <Link href="/" className="flex min-w-0 items-center me-2 md:me-0 md:shrink-0">
               <Image
                 src="/images/logo.png"
                 alt="LIV Plastic Surgery"
                 width={206}
                 height={48}
                 priority
-                className={`object-contain transition-all duration-300 ${
-                  isScrolled ? 'h-8 w-auto' : 'h-10 w-auto'
+                className={`max-w-full object-contain transition-all duration-300 ${
+                  isScrolled ? 'h-8 w-auto' : 'h-8 w-auto md:h-10'
                 } ${
                   useDarkStyle ? '' : 'brightness-0 invert'
                 }`}
@@ -349,7 +349,7 @@ export default function Header() {
             </nav>
 
             {/* Right Side: CTA + Language Switcher (shrink-0: 우측 영역 절대 압축 금지 → LanguageSwitcher 항상 노출 보장) */}
-            <div className="flex items-center gap-2 md:gap-3 xl:gap-5 shrink-0">
+            <div className="flex items-center gap-1 sm:gap-2 md:gap-3 xl:gap-5 shrink-0">
               {/* Consultation Button - Desktop */}
               <Link
                 href="/contact"

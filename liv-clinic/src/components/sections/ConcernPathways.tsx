@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, StaggerChildren, StaggerItem } from '@/components/ui';
 import { trackCTAClick, trackConcernClick } from '@/lib/analytics-events';
+import { PREP_LANGS } from '@/lib/consultPrep/types';
 
 /**
  * 고민별 진입 카드 — 장비가 아니라 고객 고민에서 출발하는 진료 경로 (홈 IA 개선).
@@ -13,22 +14,24 @@ import { trackCTAClick, trackConcernClick } from '@/lib/analytics-events';
  *    검증 불가 표현과 직접적인 연령 표기를 쓰지 않는다. 후기·전후사진·효과 표현은
  *    의료광고 사전심의 대상 — docs/02-design/features/marketing-attribution.design.md §6 참조.
  *
- * 안면거상·지방재배치는 전용 상세 페이지가 없어 상담(/contact)으로 연결한다
- * (페이지 신설 여부는 운영 결정 사항 — 최종 보고서 참조).
+ * 지원 언어에서는 상담 준비 카드로 연결하고, 기존 시술 안내도 함께 제공한다.
+ * 전용 상세 페이지가 없는 안면거상·지방재배치의 안내 경로는 상담을 유지한다.
  */
-const PREP_LOCALES = new Set(['ko', 'en', 'ja', 'zh']);
+const PREP_LOCALES = new Set<string>(PREP_LANGS);
 
 const concernsConfig = [
-  { id: 'sagging', href: '/lifting/aptos' },
-  { id: 'elasticity', href: '/lifting' },
-  { id: 'fundamental', href: '/contact' },
-  { id: 'underEye', href: '/contact' },
-  { id: 'texture', href: '/antiaging/skinbooster' },
+  { id: 'sagging', href: '/lifting/aptos', navKey: 'aptos' },
+  { id: 'elasticity', href: '/lifting', navKey: 'lifting' },
+  { id: 'fundamental', href: '/contact', navKey: 'contact' },
+  { id: 'underEye', href: '/contact', navKey: 'contact' },
+  { id: 'texture', href: '/antiaging/skinbooster', navKey: 'skinbooster' },
 ] as const;
 
 export default function ConcernPathways() {
   const t = useTranslations('sections.concerns');
   const tCommon = useTranslations('common');
+  const tPrep = useTranslations('consultPrep');
+  const tNav = useTranslations('nav');
   const locale = useLocale();
   const usePrep = PREP_LOCALES.has(locale);
 
@@ -38,7 +41,11 @@ export default function ConcernPathways() {
     title: t(`cards.${config.id}.title`),
     desc: t(`cards.${config.id}.desc`),
     tags: t(`cards.${config.id}.tags`),
-    ctaLabel: config.href === '/contact' ? tCommon('consultation') : tCommon('learnMore'),
+    ctaLabel: usePrep
+      ? tPrep('title')
+      : config.href === '/contact' ? tCommon('consultation') : tCommon('learnMore'),
+    treatmentHref: usePrep && config.href !== '/contact' ? config.href : null,
+    treatmentLabel: tNav(config.navKey),
   }));
 
   return (
@@ -85,14 +92,14 @@ export default function ConcernPathways() {
           {concerns.map((concern, index) => (
             <StaggerItem key={concern.id} variant="smooth">
               <motion.div
-                className="group h-full"
+                className="group relative flex h-full flex-col rounded-2xl border border-primary/15 bg-[#faf8f7] transition-all duration-500 hover:border-primary/40 hover:shadow-xl hover:bg-white"
                 whileHover={{ y: -6 }}
                 transition={{ duration: 0.35, ease: [0.25, 1, 0.5, 1] }}
               >
                 <Link
                   href={concern.href}
                   onClick={() => trackConcernClick(concern.id, concern.href)}
-                  className="relative flex h-full flex-col rounded-2xl border border-primary/15 bg-[#faf8f7] p-5 md:p-7 transition-all duration-500 hover:border-primary/40 hover:shadow-xl hover:bg-white"
+                  className="relative flex flex-1 flex-col rounded-2xl p-5 md:p-7"
                 >
                   {/* Number — Signature 카드와 같은 세리프 넘버링 언어 */}
                   <span className="absolute top-4 right-5 font-serif text-3xl md:text-4xl text-primary/20 group-hover:text-primary/40 transition-colors duration-500">
@@ -115,6 +122,15 @@ export default function ConcernPathways() {
                     </svg>
                   </span>
                 </Link>
+                {concern.treatmentHref && (
+                  <Link
+                    href={concern.treatmentHref}
+                    onClick={() => trackConcernClick(concern.id, concern.treatmentHref ?? concern.href)}
+                    className="mx-5 mb-4 inline-flex min-h-11 items-center gap-2 border-t border-primary/15 pt-3 text-sm text-secondary underline underline-offset-4 hover:text-primary md:mx-7 md:mb-5"
+                  >
+                    <span>{tCommon('relatedTreatments')} · {concern.treatmentLabel}</span>
+                  </Link>
+                )}
               </motion.div>
             </StaggerItem>
           ))}

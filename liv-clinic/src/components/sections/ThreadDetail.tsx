@@ -7,6 +7,8 @@ import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { TREATMENTS } from '@/lib/constants';
 import { AnimateOnScroll, Card, PriceTable, Breadcrumb } from '@/components/ui';
+import TreatmentGuideLinks from './TreatmentGuideLinks';
+import TreatmentReferences from './TreatmentReferences';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { useLocalizedMedicalQA } from '@/hooks/useLocalizedMedicalQA';
 import InternationalNotice from './InternationalNotice';
@@ -786,7 +788,7 @@ export default function ThreadDetail() {
   }, []);
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <Breadcrumb items={[{ navKey: 'lifting', href: '/lifting' }, { navKey: 'thread' }]} />
 
       {/* 히어로 섹션 */}
@@ -834,6 +836,7 @@ export default function ThreadDetail() {
 
       {/* Price Table Section */}
       <PriceTable treatmentId="thread" />
+      <TreatmentGuideLinks treatmentId="thread" />
 
       {/* 실리프팅 특장점 섹션 */}
       <section className="py-20 bg-white">
@@ -1275,10 +1278,10 @@ export default function ThreadDetail() {
               </div>
               <div className="text-center mt-6">
                 <Link
-                  href="/medical"
+                  href={`/medical#${relatedMedicalQA[0].id}`}
                   className="text-[#D4AF37] hover:text-[#B8860B] font-medium inline-flex items-center gap-2"
                 >
-                  {t('lifting.thread.detail.faq.moreButton')}
+                  {relatedMedicalQA[0].question}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                   </svg>
@@ -1311,6 +1314,7 @@ export default function ThreadDetail() {
                 ))}
               </ul>
             </div>
+            <TreatmentReferences treatmentId="thread" />
           </motion.div>
         </div>
       </section>
@@ -1387,6 +1391,6 @@ export default function ThreadDetail() {
           </div>
         </section>
       )}
-    </main>
+    </div>
   );
 }
