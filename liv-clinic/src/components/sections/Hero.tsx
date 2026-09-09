@@ -3,6 +3,7 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 import { Link } from '@/i18n/routing';
 import { trackCTAClick } from '@/lib/analytics-events';
 
@@ -113,10 +114,17 @@ export default function Hero() {
     <section className="relative h-[100vh] h-[100dvh] sm:h-[85vh] sm:h-[85dvh] min-h-[500px] w-full overflow-hidden">
       <div className="absolute inset-0 bg-primary">
         <div className="absolute inset-0 bg-gradient-to-b from-primary via-primary/90 to-secondary/70" />
-        {/* 비디오 최적화 (Vercel Best Practice: rendering-hydration-no-flicker)
-            - preload="metadata": 메타데이터만 미리 로드하여 초기 다운로드 최소화
-            - poster: 비디오 로드 전 이미지 표시로 LCP 개선
-        */}
+        {/* Keep the existing poster visible even while the video is transparent,
+            delayed or unable to play. A separate optimized image avoids downloading
+            both the original video poster and a responsive replacement. */}
+        <Image
+          src={HERO_POSTER}
+          alt=""
+          fill
+          preload
+          sizes="100vw"
+          className="object-cover"
+        />
         <video
           ref={videoRef}
           autoPlay
@@ -124,7 +132,7 @@ export default function Hero() {
           loop
           playsInline
           preload="metadata"
-          poster={HERO_POSTER}
+          aria-hidden="true"
           onLoadedData={() => setIsVideoLoaded(true)}
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${isVideoLoaded ? 'opacity-100' : 'opacity-0'}`}
         >

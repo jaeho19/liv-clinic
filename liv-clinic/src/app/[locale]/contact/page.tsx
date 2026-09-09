@@ -154,7 +154,7 @@ export default function ContactPage() {
         <div className="container-custom">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <AnimateOnScroll>
-              <a href={`tel:${SITE_INFO.phone}`} onClick={() => trackContact('phone', '/contact')} className="block">
+              <a href={`tel:${SITE_INFO.phone}`} data-analytics-contact="phone" onClick={() => trackContact('phone', '/contact')} className="block">
                 <Card padding="lg" className="text-center hover:border-primary transition-colors cursor-pointer h-full">
                   <div className="w-14 h-14 mx-auto mb-4 rounded-full bg-primary/10 flex items-center justify-center">
                     <svg className="w-7 h-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">

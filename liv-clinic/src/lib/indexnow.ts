@@ -1,15 +1,16 @@
 import { LOCALES } from '@/i18n/routing';
 import { BASE_URL } from './seo';
+import { isPreviewDeployment } from './siteEnvironment';
 
 /**
  * IndexNow — 페이지가 생기거나 바뀌었을 때 Bing(및 IndexNow 참여 엔진: Naver, Yandex, Seznam…)에
- * 즉시 알리는 프로토콜. ChatGPT 검색·DuckDuckGo가 Bing 색인을 쓰므로 Bing 반영 속도가 곧
- * AI 검색 노출 속도다. (Bing Webmaster 진단 2026-09-06: "IndexNow 미설정" High)
+ * 알리는 프로토콜. 접수 성공은 실제 수집·색인·검색 또는 AI 인용을 보장하지 않는다.
  *
  * - 키는 비밀이 아니다. `https://liv-clinic.net/<key>.txt`에 같은 값이 있으면 소유 증명이 된다
  *   (파일: liv-clinic/public/<key>.txt, 미들웨어 matcher는 점(.) 경로를 건너뛰어 정적으로 서빙된다).
  * - 실패해도 절대 관리자 요청을 막지 않는다 — 결과는 로그만 남긴다.
- * - 개발 환경(NODE_ENV≠production)에서는 보내지 않는다. 수동 제출 스크립트는 force로 보낸다.
+ * - preview/branch 배포에서는 force 여부와 무관하게 보내지 않는다.
+ * - 개발 환경(NODE_ENV≠production)은 수동 스크립트의 force 옵션으로만 보낸다.
  */
 export const INDEXNOW_KEY = process.env.INDEXNOW_KEY || 'e1df8e0ebf0144d48a69b03b8e4c605a';
 export const INDEXNOW_ENDPOINT = 'https://api.indexnow.org/indexnow';
@@ -19,7 +20,7 @@ export const INDEXNOW_MAX_URLS = 10000;
 export type IndexNowResult = {
   ok: boolean;
   status?: number;
-  skipped?: 'no-urls' | 'disabled' | 'not-production';
+  skipped?: 'no-urls' | 'disabled' | 'not-production' | 'preview';
   error?: string;
 };
 
@@ -49,7 +50,7 @@ export function reviewIndexNowUrls(): string[] {
 }
 
 export interface NotifyOptions {
-  /** 개발 환경 게이트를 무시하고 보낸다(수동 스크립트용). */
+  /** 개발 환경 게이트만 무시한다. preview/disabled 차단은 유지한다. */
   force?: boolean;
   fetchImpl?: typeof fetch;
   timeoutMs?: number;
@@ -60,6 +61,12 @@ export async function notifyIndexNow(urls: readonly string[], options: NotifyOpt
   const env = options.env ?? process.env;
   if (urls.length === 0) return { ok: true, skipped: 'no-urls' };
   if (env.INDEXNOW_DISABLED === '1') return { ok: true, skipped: 'disabled' };
+  // The default call must retain literal process.env access inside the shared helper
+  // so Next bakes the build context into SSR/ISR functions as well.
+  const preview = options.env
+    ? isPreviewDeployment(env.LIV_BUILD_CONTEXT || env.CONTEXT)
+    : isPreviewDeployment();
+  if (preview) return { ok: true, skipped: 'preview' };
   if (!options.force && env.NODE_ENV !== 'production') return { ok: true, skipped: 'not-production' };
 
   const payload = {

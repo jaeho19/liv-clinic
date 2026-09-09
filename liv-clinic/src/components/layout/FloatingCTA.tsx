@@ -197,6 +197,7 @@ export default function FloatingCTA() {
               href={href}
               target={isHttp ? '_blank' : undefined}
               rel={isHttp ? 'noopener noreferrer' : undefined}
+              data-analytics-contact={button.id}
               onClick={() => trackContact(button.id)}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}

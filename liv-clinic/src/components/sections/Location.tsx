@@ -134,6 +134,7 @@ export default function Location() {
                     <h3 className="text-h4 text-secondary mb-2">{t('contactLabel')}</h3>
                     <a
                       href={`tel:${SITE_INFO.phone}`}
+                      data-analytics-contact="phone"
                       onClick={() => trackContact('phone')}
                       className="text-h3 text-primary hover:text-secondary transition-colors"
                     >
