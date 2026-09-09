@@ -72,6 +72,33 @@ HTML을 수정하지 않는 별도 프록시에서도 영어 가격 → 일본�
 
 한국어 홈의 선언 canonical은 /ko이지만 Google은 루트 /를 선택했다. 최종 수집 시각은 9월 8일 04:11로 이번 배포 이전이다. 현재 루트의 언어 감지 리디렉션은 방문 언어에 따라 달라지므로 근거 없이 /ko 고정 영구 리디렉션으로 바꾸지 않는다. 색인 보고서의 과거 404·리디렉션·canonical 제외 URL 전부를 장애로 취급하지 않고 실제 목적과 후속 수집 결과를 확인한다.
 
+20개 URL 모두 색인 상세를 열어 선언 canonical·Google 선택·마지막 수집 시각을 저장했다. 색인된 16개는 모두 자체 URL이 Google canonical이며, 영문 울쎄라의 마지막 수집은 6월 20일, 한국어 써마지·울쎄라는 7월 17·18일로 오래된 결과다. 현재 HTTP 정상 여부와 Google이 새 내용을 재수집했는지는 별도 추적한다.
+
+운영 배포 후 sitemap을 한 번 재제출했다. GSC는 **2026-09-09 읽기 성공·발견 594개**로 갱신되어 기존 573개와의 차이가 해소됐다. 위 가이드 3개도 각각 한 번씩 요청하여 **Indexing requested** 접수를 확인했다. 이 결과는 크롤링 우선 대기열 등록이며 실제 색인·검색 상위 노출 확정이 아니다. 일본어 가이드 화면은 sitemap 처리 뒤 discovered 상태로 바뀌었으나 색인 완료는 여전히 미확인이다.
+
+| 우선 URL | GSC 판정 | Google canonical |
+| --- | --- | --- |
+| /ko | 다른 canonical 선택 | https://liv-clinic.net/ |
+| /en, /ja, /zh-TW | 각 URL 색인 | 각 자체 URL |
+| /ko/lifting/ulthera, /ko/lifting/thermage, /ko/lifting/aptos | 각 URL 색인 | 각 자체 URL |
+| /en/lifting/ulthera, /ja/lifting/thermage, /zh-TW/laser/tattoo | 각 URL 색인 | 각 자체 URL |
+| /ko/pricing, /en/pricing | 각 URL 색인 | 각 자체 URL |
+| /ko/about/staff, /ko/about/location | 각 URL 색인 | 각 자체 URL |
+| /en/international, /ko/contact, /ko/medical | 각 URL 색인 | 각 자체 URL |
+| /en/guides/ultherapy-vs-thermage-vs-shurink | 미발견 | N/A |
+| /ja/guides/downtime-flight-travel-plan | 미발견 | N/A |
+| /zh-TW/guides/tattoo-removal-pico-seoul | 미발견 | N/A |
+
+분석 이벤트 정의는 다음처럼 구분한다. 실제 운영 접수나 채팅을 만들지 않았으므로 성공 집계의 운영 수신은 아직 완료 기준에 포함하지 않는다.
+
+| 이벤트 | 현재 의미와 검증 범위 | 성과 집계에서의 사용 |
+| --- | --- | --- |
+| page_view | 초기 head config와 SPA 경로 config. 로컬 호출 확인 | 실제 속성에서 자동 history 중복 여부 확인 후 방문 지표 |
+| scroll_depth / time_on_page | 페이지별 스크롤 단계 / 특정 경과 시점의 가시성 | 콘텐츠 이용 보조 지표 |
+| contact | 전화·메신저·지도·소셜 클릭을 method로 구분 | 상담 접수 건수로 합산하지 않음 |
+| generate_lead | form_type별 폼 성공 처리. contact 페이지 소스에서 비정상 HTTP 응답은 이벤트 전에 예외 처리 | 실제 수신·중복·스팸 구분 확인 전 유효 상담 확정 불가 |
+| chat_open / chat_first_message / chat_capture_contact_saved | 열기·첫 메시지·연락처 저장은 서로 다른 단계 | 열기를 상담 성공으로 취급하지 않음. 실제 채팅 검증 미실행 |
+
 ## 4. 콘텐츠·전체 경로 점검 결과와 다음 순서
 
 현재 sitemap 594개를 페이지군으로 분류했다. 홈 11, about 44, contact 11, international 11, lifting 99, antiaging 77, laser 66, medical 11, signature 11, before-after 11, media 11, pricing 11, events 154, consult-prep 11, wechat 1, privacy 11, terms 11, reviews 4, guides 28(허브 4+본문 24)이다.
@@ -84,12 +111,44 @@ HTML을 수정하지 않는 별도 프록시에서도 영어 가격 → 일본�
 
 ChatGPT·Perplexity·Copilot의 고정 질문 20개 × 서로 다른 두 날 관측은 별도 실행 항목이다. 이번 Google/Bing 공식 보고서를 그 실험 결과로 바꿔 부르지 않는다. 4·8·12주 비교와 지속 모니터링이 자동으로 실행되도록 설정한 상태도 아니다.
 
+계획 항목별 현재 상태:
+
+| 항목 | 이번 실행 결과 | 남은 완료 조건 |
+| --- | --- | --- |
+| A01 계정·기준값 | GSC/Bing 데이터, 20 URL 상세 완료 | GA4 실제 속성·네이버 접근 |
+| A02 AI·봇·IndexNow | Google Include, Bing 수신 이력, preview 전송 차단 완료 | 실제 봇 IP/WAF 로그 |
+| A03 분석 | 페이지별 이벤트와 전화 중복 수정·회귀 완료 | 실제 GA4 수신·자동 page_view 설정·유효 상담 정의 확정 |
+| A04 성능 | 홈 포스터 결함·중복 preload 수정, 정상/실패 영상 회귀 | 6개 유형의 동일 조건 성능 측정, 실사용 데이터 |
+| A05 URL 역할 | sitemap 594개 분류와 힐로웨이브 두 버전 현황 완료 | 두 페이지의 역할·유입을 근거로 유지/통합 결정 |
+| A06 콘텐츠 | 공개 가이드 24편의 질문·링크·검토자·출처 목록 확보 | 우선 6 URL의 실제 근거·의료 검토·번역 검토 |
+| A07 내부 연결 | 내부 목적지 613개 기술 검사 | 주요 20 URL의 양방향 연결과 고립 여부 그래프 확인 |
+| A08 언어 품질 | 실제 검색어·국가·페이지 기준값 확보 | 언어별 표현 검토 및 수정 |
+| A09–A10 외부 프로필·자료 | 후속 작업 | 실제 프로필 현황과 교정안 준비, 허용된 외부 작업 |
+| A11 성과 관측 | Google AI/Bing AI 공식 기준값 확보 | 고정 질문 실험, 주간·4/8/12주 재측정 |
+| A12 경고·hydration | 71개 분류, preview 재현 1건 및 후속 회귀 기록 | 원인 특정과 영향이 있는 경고의 조치 |
+| S01 자격증명 | 비밀값 없이 교체 여부 확인 요청 | 운영자 답변 및 미교체 시 폐기·교체 |
+
 ## 5. 배포와 재현 정보
 
 관련 파일만 명시적으로 커밋한다. 사용자 변경 CLAUDE.md, marketing-attribution.report.md, 기존 미추적 파일, 환경 파일, 원본 계정 보고서, 임시 스크립트·로그·스크린샷을 포함하지 않는다. 상위 폴더의 seo-growth-regression.test.ts와 seo-growth-vitest.config.mts는 재사용할 회귀 테스트이므로 관련 코드와 함께 보관한다.
 
 모든 npm 명령은 liv-clinic에서 실행했다. 추가 회귀 명령은 `npm run test -- --root .. --config seo-growth-vitest.config.mts`다. 브라우저는 공개 GET만 허용하고 실제 상담·채팅·분석 서버 전송을 차단한 검증 프록시를 사용했다. 모의 분석 호출 관측은 실제 GA4 수신 검증을 대신하지 않는다.
 
-커밋·preview·production 결과는 실제 수행 후 이 절에 기록한다.
+수정 커밋은 223468b6269094e69b1dbd73806b3c93d2cb084d, 중복 preload 정리를 포함한 최종 앱 커밋은 **351df0e2e11a6bcd7f68010a48a5a216196d7d69**다. [PR #37](https://github.com/jaeho19/liv-clinic/pull/37)의 최종 preview 검증 후 master에 fast-forward하고 푸시했다. 관련 없는 기존 PR과 사용자 변경은 포함하지 않았다.
+
+| 배포 | 실제 결과 |
+| --- | --- |
+| 최종 preview | [deploy-preview-37](https://deploy-preview-37--liv-clinic-jaeho19.netlify.app), deploy 6aa1120bd87a3e0008bdb076, ready, 소스 351df0e |
+| preview 검증 | 주요 142 URL, noindex/nofollow·X-Robots-Tag·전체 차단 robots·빈 sitemap·운영 canonical·가격 보존 통과. 6개 주요 화면의 언어 메뉴 조작 및 main/H1·가로 넘침 검사 통과, 추가 #418 없음 |
+| production | [liv-clinic.net](https://liv-clinic.net), deploy 6aa11319e137b0000803ad69, ready, published_deploy 소스 351df0e 일치 |
+| 게시 시각 | **2026-09-09 17:06:13 KST** (08:06:13 UTC) |
+| 운영 브라우저 | 홈 영상·포스터 표시, 가격·의료정보·의료진·상담·가이드의 실제 메뉴 조작 정상. 영어 가격 → 일본어 가격 경로·canonical·15행 확인. Chrome 자동 번역 개입은 앞 절과 동일하게 구분 |
+| 운영 HTTP·schema | **142 URL, sitemap 594개, 내부 목적지 613개, FAQ 460개 통과**. canonical·hreflang·robots·JSON-LD 속성 적용 유형/빈 값 오류 **0**. 가격 11개 언어의 전체 본문·description 동일 |
+
+운영 근거는 상위 폴더의 seo-growth-production-validation.json, seo-growth-production-schema-issues.json, seo-growth-production-browser.json, seo-growth-production-language.json, seo-growth-production-home.json과 Netlify 조회 기록이다. GSC 접수 원본은 seo-growth-gsc-sitemap-submitted.txt 및 seo-growth-gsc-requested-*-guide.txt에 보관했다. 이 임시·원본 자료는 커밋하지 않았다.
+
+종료 전 기존 파일 2,025개의 해시를 다시 비교했다. 누락 파일은 0개이며, 변경은 관련 앱 7개와 이번에 갱신·커밋한 SEO 문서뿐이다. CLAUDE.md와 기존 marketing-attribution.report.md 사용자 변경을 보존했다. 빌드가 줄바꿈만 바꾼 생성 파일 3개는 시작 해시와 같은 바이트로 복구했다. 최종 결과 문서 커밋은 배포한 앱 코드를 변경하지 않는다.
+
+첫 preview #418 한 건은 잔여 오류로 남긴다. 최종 preview의 반복 로딩·상호작용과 운영 검증에서 재발하지 않았고 초기 콘텐츠·SEO 출력·가격 보존이 정상임을 근거로 이번 제한된 변경을 배포 가능하다고 판단했다. 모든 방문 조건에서 오류가 사라졌다는 판정은 아니다. [Next.js hydration 오류 안내](https://nextjs.org/docs/messages/react-hydration-error)도 조사 근거로 참고했다.
 
 공식 구현 근거: [Google SPA 측정](https://developers.google.com/analytics/devguides/collection/ga4/single-page-applications), [Google 페이지뷰 측정](https://developers.google.com/analytics/devguides/collection/ga4/views), [Next Image](https://nextjs.org/docs/app/api-reference/components/image). 검색·AI 지표 정의의 공식 링크는 실행 계획서에 포함돼 있다.
