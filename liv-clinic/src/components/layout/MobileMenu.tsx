@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback, useRef, type ComponentProps } from 'react';
 import { useTranslations } from 'next-intl';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import { Link, usePathname } from '@/i18n/routing';
 import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { localeSwitchPath } from '@/lib/guides/publicIndex';
@@ -173,7 +174,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                 className="h-7 w-auto object-contain"
               />
               <div className="flex items-center">
-                <a
+                <NextLink
                   href="/admin/login"
                   onClick={onClose}
                   className="p-3 min-w-[44px] min-h-[44px] flex items-center justify-center text-mono-light/40 hover:text-primary transition-colors"
@@ -182,7 +183,7 @@ export default function MobileMenu({ isOpen, onClose, navItems }: MobileMenuProp
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1.5}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                   </svg>
-                </a>
+                </NextLink>
                 <button
                   ref={closeButtonRef}
                   onClick={onClose}

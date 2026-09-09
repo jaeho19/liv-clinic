@@ -1,6 +1,3 @@
-import { Link } from '@/i18n/routing';
-import { Button } from '@/components/ui';
-
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
@@ -10,12 +7,11 @@ export default function NotFound() {
         <p className="text-body text-mono mb-8">
           찾으시는 페이지가 없거나 이동되었습니다.
         </p>
-        <Link href="/">
-          <Button variant="primary" size="lg">
+        <Link href="/ko" className="inline-flex min-h-12 items-center justify-center rounded-full bg-primary px-8 py-3 text-white">
             홈으로
-          </Button>
         </Link>
       </div>
     </div>
   );
 }
+import Link from 'next/link';

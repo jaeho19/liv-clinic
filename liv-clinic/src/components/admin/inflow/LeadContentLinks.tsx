@@ -27,13 +27,17 @@ export default function LeadContentLinks({ leadId, contents, supabase }: Props) 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  const load = useCallback(async () => {
-    const { data, error } = await supabase.from('lead_content_links').select('*').eq('lead_id', leadId);
-    if (!error) setLinks((data ?? []) as LeadContentLinkRow[]);
+  const load = useCallback((isCurrent: () => boolean = () => true) => {
+    return supabase.from('lead_content_links').select('*').eq('lead_id', leadId).then(({ data, error }) => {
+      if (!isCurrent()) return;
+      if (!error) setLinks((data ?? []) as LeadContentLinkRow[]);
+    });
   }, [supabase, leadId]);
 
   useEffect(() => {
-    load();
+    let active = true;
+    void load(() => active);
+    return () => { active = false; };
   }, [load]);
 
   const addLink = async () => {

@@ -48,12 +48,12 @@ export async function POST(request: NextRequest) {
 
       // FIFO 배치 차감: 유효기간 빠른 순서대로 잔여 수량 차감
       const { data: batches } = await admin
-        .from('inventory_batches' as any)
+        .from('inventory_batches')
         .select('id, remaining_quantity')
         .eq('item_id', item.item_id)
         .gt('remaining_quantity', 0)
         .order('expiry_date', { ascending: true, nullsFirst: false })
-        .order('received_at', { ascending: true }) as { data: { id: string; remaining_quantity: number }[] | null };
+        .order('received_at', { ascending: true });
 
       if (batches && batches.length > 0) {
         let remaining = item.quantity;
@@ -61,7 +61,7 @@ export async function POST(request: NextRequest) {
           if (remaining <= 0) break;
           const deduct = Math.min(remaining, batch.remaining_quantity);
           await admin
-            .from('inventory_batches' as any)
+            .from('inventory_batches')
             .update({ remaining_quantity: batch.remaining_quantity - deduct })
             .eq('id', batch.id);
           remaining -= deduct;

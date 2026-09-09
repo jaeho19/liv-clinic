@@ -479,7 +479,7 @@ export default function TattooRemovalDetail() {
   const difficultyMap = ['easy', 'medium', 'hard', 'medium', 'medium', 'hard'] as const;
 
   return (
-    <main className="min-h-screen bg-[var(--color-background)]">
+    <div className="min-h-screen bg-[var(--color-background)]">
       <Breadcrumb items={[{ navKey: 'laser', href: '/laser' }, { label: t('laser.tattoo.name') }]} />
 
       {/* Hero Section */}
@@ -811,7 +811,7 @@ export default function TattooRemovalDetail() {
                 {detail.cta.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <a
+                <Link
                   href="/contact"
                   className="inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] text-white px-8 py-4 rounded-full font-medium hover:bg-[var(--color-primary)]/90 transition-colors"
                 >
@@ -819,7 +819,7 @@ export default function TattooRemovalDetail() {
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </Link>
                 <a
                   href="tel:02-797-2773"
                   className="inline-flex items-center justify-center gap-2 bg-white text-[var(--color-secondary)] px-8 py-4 rounded-full font-medium border border-[var(--color-border)] hover:border-[var(--color-primary)] transition-colors"
@@ -834,6 +834,6 @@ export default function TattooRemovalDetail() {
           </AnimateOnScroll>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

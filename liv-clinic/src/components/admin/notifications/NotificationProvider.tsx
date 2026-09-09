@@ -7,6 +7,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useSyncExternalStore,
   type ReactNode,
 } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
@@ -96,6 +97,20 @@ function getAudioContextCtor(): AudioCtxConstructor | null {
   return w.AudioContext ?? w.webkitAudioContext ?? null;
 }
 
+function subscribeBrowserSettings(onChange: () => void) {
+  window.addEventListener('storage', onChange);
+  window.addEventListener('focus', onChange);
+  return () => {
+    window.removeEventListener('storage', onChange);
+    window.removeEventListener('focus', onChange);
+  };
+}
+
+const getServerSound = () => false;
+const getServerPermission = (): NotificationPermission => 'default';
+const readNotificationPermission = (): NotificationPermission =>
+  typeof Notification === 'undefined' ? 'default' : Notification.permission;
+
 export function NotificationProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname() ?? '';
   const router = useRouter();
@@ -105,20 +120,14 @@ export function NotificationProvider({ children }: { children: ReactNode }) {
   const audioCtxRef = useRef<AudioContext | null>(null);
   const audioLoadFailedRef = useRef(false);
 
-  const [soundEnabled, setSoundEnabled] = useState<boolean>(false);
-  const [notifPerm, setNotifPerm] = useState<NotificationPermission>('default');
+  const storedSound = useSyncExternalStore(subscribeBrowserSettings, readSoundEnabled, getServerSound);
+  const storedPermission = useSyncExternalStore(subscribeBrowserSettings, readNotificationPermission, getServerPermission);
+  // Local overrides also work when browser storage is unavailable.
+  const [soundOverride, setSoundEnabled] = useState<boolean | null>(null);
+  const [permissionOverride, setNotifPerm] = useState<NotificationPermission | null>(null);
+  const soundEnabled = soundOverride ?? storedSound;
+  const notifPerm = permissionOverride ?? storedPermission;
   const [toasts, setToasts] = useState<ToastItem[]>([]);
-
-  // 1. 초기 로드 (SSR safe)
-  useEffect(() => {
-    setSoundEnabled(readSoundEnabled());
-    if (typeof Notification !== 'undefined') {
-      setNotifPerm(Notification.permission);
-      debug('mount: Notification.permission =', Notification.permission);
-    } else {
-      debug('mount: Notification API unavailable');
-    }
-  }, []);
 
   // 2. soundEnabled 변경 시 audio unlock / AudioContext 준비
   useEffect(() => {

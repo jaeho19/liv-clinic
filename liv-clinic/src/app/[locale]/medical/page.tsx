@@ -1,8 +1,10 @@
 'use client';
 
+import CollapsibleContent from '@/components/ui/CollapsibleContent';
+
 import { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { useTranslations, useMessages } from 'next-intl';
-import { motion, AnimatePresence, LayoutGroup } from 'framer-motion';
+import { motion, LayoutGroup } from 'framer-motion';
 import { Link } from '@/i18n/routing';
 import { AnimateOnScroll, Button, Card, ScrollLink, Breadcrumb } from '@/components/ui';
 import { MedicalBlogSection } from '@/components/sections';
@@ -253,6 +255,7 @@ export default function MedicalPage() {
                       <button
                         onClick={() => toggleExpand(qa.id)}
                         aria-expanded={expandedId === qa.id}
+                        aria-controls={`${qa.id}-answer`}
                         className="w-full px-4 py-4 md:px-6 md:py-5 text-left flex items-start justify-between gap-3 md:gap-4 hover:bg-background/50 transition-colors"
                       >
                         <div className="flex items-start gap-3 md:gap-4">
@@ -281,14 +284,7 @@ export default function MedicalPage() {
                       </button>
 
                       {/* Answer */}
-                      <AnimatePresence>
-                        {expandedId === qa.id && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                          >
+                      <CollapsibleContent open={expandedId === qa.id} id={`${qa.id}-answer`}>
                             <div className="px-4 pb-4 md:px-6 md:pb-6 border-t border-border faq-answer">
                               <div className="flex items-start gap-3 md:gap-4 pt-4 md:pt-5">
                                 <span className="flex-shrink-0 w-7 h-7 md:w-8 md:h-8 rounded-full bg-secondary/10 flex items-center justify-center">
@@ -364,9 +360,7 @@ export default function MedicalPage() {
                                 </div>
                               </div>
                             </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                          </CollapsibleContent>
                       </Card>
                     </motion.div>
                   ))}

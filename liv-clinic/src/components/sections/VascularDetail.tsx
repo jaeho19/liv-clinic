@@ -251,7 +251,7 @@ export default function VascularDetail() {
   }, []);
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <Breadcrumb items={[{ navKey: 'laser', href: '/laser' }, { label: t('laser.vascular.name') }]} />
 
       {/* 히어로 섹션 */}
@@ -673,6 +673,6 @@ export default function VascularDetail() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

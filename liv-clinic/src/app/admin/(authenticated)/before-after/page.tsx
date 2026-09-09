@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { createClient } from '@/lib/supabase-browser';
@@ -8,7 +8,7 @@ import ConfirmDialog from '@/components/admin/ConfirmDialog';
 import type { BeforeAfterRow } from '@/types/admin';
 
 export default function BeforeAfterAdminPage() {
-  const supabase = createClient();
+  const supabase = useMemo(() => createClient(), []);
   const [items, setItems] = useState<BeforeAfterRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [deleteTarget, setDeleteTarget] = useState<BeforeAfterRow | null>(null);
@@ -16,18 +16,29 @@ export default function BeforeAfterAdminPage() {
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [togglingId, setTogglingId] = useState<string | null>(null);
 
-  const fetchItems = async () => {
-    setLoading(true);
-    const { data } = await supabase
+  const fetchItems = useCallback((isCurrent: () => boolean = () => true) => {
+    return supabase
       .from('before_after')
       .select('*')
       .order('sort_order', { ascending: true })
-      .order('created_at', { ascending: false });
-    setItems(data ?? []);
-    setLoading(false);
-  };
+      .order('created_at', { ascending: false })
+      .then(({ data }) => {
+        if (!isCurrent()) return;
+        setItems(data ?? []);
+        setLoading(false);
+      });
+  }, [supabase]);
 
-  useEffect(() => { fetchItems(); }, []);
+  useEffect(() => {
+    let active = true;
+    void fetchItems(() => active);
+    return () => { active = false; };
+  }, [fetchItems]);
+
+  const refreshItems = () => {
+    setLoading(true);
+    return fetchItems();
+  };
 
   const categories = useMemo(() => {
     return Array.from(new Set(items.map((i) => i.category))).sort();
@@ -55,7 +66,7 @@ export default function BeforeAfterAdminPage() {
       .from('before_after')
       .update({ is_visible: !row.is_visible })
       .eq('id', row.id);
-    await fetchItems();
+    await refreshItems();
     setTogglingId(null);
   };
 
@@ -75,7 +86,7 @@ export default function BeforeAfterAdminPage() {
     }
     await supabase.from('before_after').delete().eq('id', deleteTarget.id);
     setDeleteTarget(null);
-    fetchItems();
+    refreshItems();
   };
 
   return (

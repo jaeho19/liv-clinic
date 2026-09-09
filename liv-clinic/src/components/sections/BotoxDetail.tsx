@@ -828,7 +828,7 @@ export default function BotoxDetail() {
   }, []);
 
   return (
-    <main className="bg-[#FAFAFA] overflow-hidden">
+    <div className="bg-[#FAFAFA] overflow-hidden">
       <Breadcrumb items={[{ navKey: 'antiaging', href: '/antiaging' }, { navKey: 'botox' }]} />
 
       {/* Hero - Premium Design */}
@@ -1537,6 +1537,6 @@ export default function BotoxDetail() {
           </div>
         </section>
       )}
-    </main>
+    </div>
   );
 }

@@ -1,5 +1,7 @@
 'use client';
 
+import CollapsibleContent from '@/components/ui/CollapsibleContent';
+
 import { useLocale, useTranslations } from 'next-intl';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
 import { useState, useCallback, useEffect, useRef } from 'react';
@@ -1182,6 +1184,8 @@ export default function ThermageDetail() {
                 >
                   <button
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={expandedFaq === index}
+                    aria-controls={`thermage-faq-${index}-answer`}
                     className="w-full px-6 py-5 text-left flex items-start justify-between gap-4 hover:bg-background/50 transition-colors"
                   >
                     <div className="flex items-start gap-3">
@@ -1202,15 +1206,7 @@ export default function ThermageDetail() {
                     </motion.svg>
                   </button>
 
-                  <AnimatePresence>
-                    {expandedFaq === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
+                  <CollapsibleContent open={expandedFaq === index} id={`thermage-faq-${index}-answer`}>
                         <div className="px-6 pb-5">
                           <div className="flex items-start gap-3 pt-3 border-t border-border">
                             <span className="w-8 h-8 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
@@ -1219,9 +1215,7 @@ export default function ThermageDetail() {
                             <p className="text-body text-mono leading-relaxed pt-1">{faq.a}</p>
                           </div>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      </CollapsibleContent>
                 </Card>
               </motion.div>
             ))}

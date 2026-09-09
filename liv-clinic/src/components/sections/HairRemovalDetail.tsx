@@ -454,7 +454,7 @@ export default function HairRemovalDetail() {
   ];
 
   return (
-    <main className="min-h-screen bg-[var(--color-background)]">
+    <div className="min-h-screen bg-[var(--color-background)]">
       <Breadcrumb items={[{ navKey: 'laser', href: '/laser' }, { label: t('laser.hairRemoval.name') }]} />
 
       {/* Hero Section */}
@@ -737,6 +737,6 @@ export default function HairRemovalDetail() {
           </AnimateOnScroll>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

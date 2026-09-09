@@ -3,6 +3,8 @@ import { createClient } from '@supabase/supabase-js';
 import { LOCALES } from '@/i18n/routing';
 import { BASE_URL, buildHreflangMap } from '@/lib/seo';
 import { buildSitemapPaths } from '@/lib/sitemapPaths';
+import { getIndexableReviewLocales } from '@/lib/reviewIndexing';
+import { isPreviewDeployment } from '@/lib/siteEnvironment';
 
 // 발행 이벤트 목록이 바뀌면 1시간 안에 반영
 export const revalidate = 3600;
@@ -28,11 +30,13 @@ async function fetchPublishedEvents(): Promise<PublishedEvent[]> {
 }
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  if (isPreviewDeployment()) return [];
   const entries: MetadataRoute.Sitemap = [];
+  const reviewLocales = await getIndexableReviewLocales();
 
   // 정적·시술 페이지 — lastmod는 실제 수정일을 알 수 없으므로 넣지 않는다
   // (빌드 시각을 넣으면 매번 바뀌어 구글이 lastmod를 불신한다)
-  for (const page of buildSitemapPaths()) {
+  for (const page of buildSitemapPaths(reviewLocales)) {
     const locales = page.locales ?? LOCALES;
     for (const locale of locales) {
       entries.push({

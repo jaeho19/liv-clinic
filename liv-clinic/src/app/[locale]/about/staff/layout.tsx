@@ -109,14 +109,11 @@ type DoctorKey = keyof typeof doctorsSchemaData;
 /**
  * 로케일별 의료진 스키마 데이터.
  *
- * ko는 위 하드코딩 값을 그대로 사용해 기존 JSON-LD를 바이트 동일하게 유지하고,
- * 그 외 로케일은 의료진 페이지가 실제로 렌더링하는 `sections.doctors.*` 번역을
- * 재사용한다. 한국어 약력·경력(hasOccupation.description 등)이 해외 로케일의
- * 구조화 데이터로 새어나가지 않도록 하기 위함.
+ * All languages reuse the visible biography. Kim's conflicting education sources
+ * require owner verification; omit that claim from JSON-LD without choosing a school.
  */
 async function localizedDoctorData(locale: string, key: DoctorKey) {
   const base = doctorsSchemaData[key];
-  if (locale === 'ko') return base;
 
   const t = await getTranslations({ locale });
   return {
@@ -125,7 +122,7 @@ async function localizedDoctorData(locale: string, key: DoctorKey) {
     title: t(`sections.doctors.${key}.title`),
     specialty: t(`sections.doctors.${key}.specialty`),
     philosophy: t(`sections.doctors.${key}.philosophy`),
-    education: t.raw(`sections.doctors.${key}.education`) as string[],
+    education: key === 'kim' ? [] : t.raw(`sections.doctors.${key}.education`) as string[],
     experience: t.raw(`sections.doctors.${key}.experience`) as string[],
     certifications: t.raw(`sections.doctors.${key}.certifications`) as string[],
     specialties: t.raw(`sections.doctors.${key}.specialties`) as string[],

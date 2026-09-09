@@ -2,9 +2,10 @@ import { Metadata } from 'next';
 import { SITE_INFO } from './constants';
 import { LOCALES, type Locale } from '@/i18n/routing';
 import { LOCALE_META } from '@/i18n/locales-meta';
+import { isPreviewDeployment, SITE_URL } from './siteEnvironment';
 
 // Base URL for the site
-export const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://liv-clinic.net';
+export const BASE_URL = SITE_URL;
 
 // 다국어 병원명 매핑 (11 locale, i18n-glossary 합의) — LocalBusiness/AggregateRating 스키마 공용
 export const CLINIC_NAME_BY_LOCALE: Record<string, string> = {
@@ -959,11 +960,11 @@ export function generatePageMetadata({
       images: images.length > 0 ? images.map(img => img.url) : [defaultImage.url],
     },
     robots: {
-      index: true,
-      follow: true,
+      index: !isPreviewDeployment(),
+      follow: !isPreviewDeployment(),
       googleBot: {
-        index: true,
-        follow: true,
+        index: !isPreviewDeployment(),
+        follow: !isPreviewDeployment(),
         'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1,
@@ -989,7 +990,7 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
 
   return {
     '@context': 'https://schema.org',
-    '@type': ['MedicalBusiness', 'MedicalOrganization'],
+    '@type': 'MedicalClinic',
     '@id': `${BASE_URL}/#organization`,
     name,
     alternateName: buildAlternateNames(locale, name),
@@ -1049,7 +1050,7 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'certification',
       name: l10n.credentials[i],
-      issuedBy: {
+      recognizedBy: {
         '@type': 'Organization',
         name: credential.issuer,
         url: credential.issuerUrl,
@@ -1063,7 +1064,6 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
       '@type': 'MedicalProcedure',
       name: service.name,
       alternateName: l10n.services[i].alternateName,
-      procedureType: 'NoninvasiveProcedure',
       description: l10n.services[i].description,
     })),
 
@@ -1072,7 +1072,7 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
       '@type': 'ReserveAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${BASE_URL}/contact`,
+        urlTemplate: `${BASE_URL}/${locale}/contact`,
         actionPlatform: [
           'http://schema.org/DesktopWebPlatform',
           'http://schema.org/MobileWebPlatform',
@@ -1118,22 +1118,19 @@ export function generateMedicalProcedureSchema(
     name: treatment.name,
     alternateName: treatment.nameEn,
     description: treatment.description,
-    procedureType: 'NoninvasiveProcedure',
     howPerformed: treatment.description,
-    preparation: '마취 크림 도포 (필요시)',
-    followup: '시술 후 관리 안내',
-    status: 'ActiveActionStatus',
-    bodyLocation: 'Face',
-    provider: {
-      '@type': 'MedicalBusiness',
-      name: getSiteName(opts?.locale),
-      url: BASE_URL,
+    '@reverse': {
+      availableService: {
+        '@type': 'MedicalClinic',
+        '@id': `${BASE_URL}/#organization`,
+        name: getSiteName(opts?.locale),
+      },
     },
   };
 }
 
 // Schema.org structured data for BreadcrumbList
-export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+export function generateBreadcrumbSchema(items: { name: string; url: string }[], locale = 'ko') {
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -1141,7 +1138,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
       '@type': 'ListItem',
       position: index + 1,
       name: item.name,
-      item: `${BASE_URL}${item.url}`,
+      item: localizedPageUrl(item.url, locale),
     })),
   };
 }
@@ -1186,14 +1183,14 @@ export function generatePhysicianSchema(doctor: PhysicianData, opts?: { locale?:
   const l10n = getSchemaL10n(opts?.locale);
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': 'Physician',
+    '@type': ['Person', 'Physician'],
     '@id': `${BASE_URL}/about/staff#${doctor.id}`,
+    url: `${BASE_URL}/${opts?.locale ?? 'ko'}/about/staff#${doctor.id}`,
     name: doctor.name,
     alternateName: doctor.nameEn,
     image: doctor.image ? `${BASE_URL}${doctor.image}` : undefined,
     jobTitle: doctor.title,
     description: doctor.philosophy,
-    medicalSpecialty: ['Plastic Surgery', 'Dermatology', 'Anti-aging Medicine'],
 
     // 근무지 주소 (Google Rich Results 요구사항)
     address: buildPostalAddress(opts?.locale),
@@ -1206,10 +1203,10 @@ export function generatePhysicianSchema(doctor: PhysicianData, opts?: { locale?:
     },
 
     // 학력
-    alumniOf: doctor.education.map(edu => ({
+    alumniOf: doctor.education.length ? doctor.education.map(edu => ({
       '@type': 'EducationalOrganization',
       name: edu,
-    })),
+    })) : undefined,
 
     // 자격증/인증
     hasCredential: doctor.certifications.map(cert => ({
@@ -1227,7 +1224,7 @@ export function generatePhysicianSchema(doctor: PhysicianData, opts?: { locale?:
     // 경력 사항
     hasOccupation: {
       '@type': 'Occupation',
-      name: l10n.physicianOccupation,
+      name: doctor.specialty,
       occupationalCategory: 'Physician',
       description: doctor.experience.join(', '),
     },
@@ -1237,7 +1234,7 @@ export function generatePhysicianSchema(doctor: PhysicianData, opts?: { locale?:
   if (doctor.publications && doctor.publications.length > 0) {
     const sciPublications = doctor.publications.filter(p => p.type === 'sci');
     if (sciPublications.length > 0) {
-      schema.performerIn = sciPublications.map(pub => ({
+      schema['@reverse'] = { author: sciPublications.map(pub => ({
         '@type': 'ScholarlyArticle',
         headline: pub.title,
         author: pub.authors?.split(',').map(author => ({
@@ -1249,11 +1246,7 @@ export function generatePhysicianSchema(doctor: PhysicianData, opts?: { locale?:
           '@type': 'Organization',
           name: pub.journal,
         },
-        about: {
-          '@type': 'MedicalProcedure',
-          procedureType: 'NoninvasiveProcedure',
-        },
-      }));
+      })) };
     }
   }
 
@@ -1305,22 +1298,10 @@ export function generateWebSiteSchema(locale?: string) {
     description: locale
       ? (seoConfig[locale]?.description ?? seoConfig.en.description)
       : seoConfig.ko.description,
-    inLanguage: [
-      'ko-KR', 'en-US', 'ja-JP', 'zh-CN', 'zh-TW', 'vi-VN', 'th-TH', 'ru-RU',
-      'fr-FR', 'mn-MN', 'ar',
-    ],
+    inLanguage: LOCALES.map((code) => LOCALE_META[code].htmlLang),
     publisher: {
       '@type': 'MedicalBusiness',
       '@id': `${BASE_URL}/#organization`,
-    },
-    // AI 검색 액션 지원
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${BASE_URL}/medical?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
     },
   };
 }
@@ -1330,6 +1311,13 @@ export function generateWebSiteSchema(locale?: string) {
 export function stripLocalePrefix(path: string, locale: string): string {
   if (path === `/${locale}`) return '';
   return path.startsWith(`/${locale}/`) ? path.slice(locale.length + 1) : path;
+}
+
+/** Breadcrumb destinations follow the document language, while entity IDs stay stable. */
+export function localizedPageUrl(path: string, locale: string): string {
+  if (/^https?:\/\//.test(path)) return path;
+  const pagePath = stripLocalePrefix(path, locale);
+  return `${BASE_URL}/${locale}${pagePath === '/' ? '' : pagePath}`;
 }
 
 export function generateWebPageSchema(page: {
@@ -1355,9 +1343,9 @@ export function generateWebPageSchema(page: {
     name: page.title,
     description: page.description,
     url: pageUrl,
-    datePublished: page.datePublished || '2024-01-01',
-    dateModified: page.dateModified || new Date().toISOString().split('T')[0],
-    inLanguage: LOCALE_META[page.locale as Locale]?.hreflang ?? 'en-US',
+    ...(page.datePublished ? { datePublished: page.datePublished } : {}),
+    ...(page.dateModified ? { dateModified: page.dateModified } : {}),
+    inLanguage: LOCALE_META[page.locale as Locale]?.htmlLang ?? 'en',
     isPartOf: {
       '@type': 'WebSite',
       '@id': `${BASE_URL}/#website`,
@@ -1368,14 +1356,9 @@ export function generateWebPageSchema(page: {
         '@type': 'ListItem',
         position: index + 1,
         name: item.name,
-        item: `${BASE_URL}${item.url}`,
+        item: localizedPageUrl(item.url, page.locale),
       })),
     } : undefined,
-    // 음성검색 최적화 (Speakable)
-    speakable: {
-      '@type': 'SpeakableSpecification',
-      cssSelector: ['.hero-title', '.main-description', '.short-answer', '.faq-answer'],
-    },
   };
 
   // ProfilePage 타입일 때 mainEntity 추가 (Google Rich Results 요구사항)
@@ -1400,12 +1383,12 @@ interface VoiceOptimizedQA {
 
 export function generateVoiceOptimizedFAQSchema(
   faqs: VoiceOptimizedQA[],
-  opts?: { name?: string; description?: string },
+  opts?: { name?: string; description?: string; locale?: string },
 ) {
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    '@id': `${BASE_URL}/medical#faq`,
+    '@id': `${BASE_URL}/${opts?.locale ?? 'ko'}/medical#faq`,
     name: opts?.name ?? '리브성형외과 의료정보 Q&A',
     description: opts?.description ?? '울쎄라, 써마지, 보톡스, 필러 등 미용 시술에 대한 자주 묻는 질문과 답변',
     mainEntity: faqs.map(faq => ({
@@ -1417,11 +1400,6 @@ export function generateVoiceOptimizedFAQSchema(
         '@type': 'Answer',
         // 음성검색용 짧은 답변 + 상세 답변
         text: `${faq.shortAnswer} ${faq.answer}`,
-        // Speakable 지정 (AI가 읽어줄 부분)
-        speakable: {
-          '@type': 'SpeakableSpecification',
-          cssSelector: '.short-answer',
-        },
       },
       // 관련 시술 연결
       about: faq.relatedTreatments.length > 0 ? faq.relatedTreatments.map(treatment => ({
@@ -1429,11 +1407,6 @@ export function generateVoiceOptimizedFAQSchema(
         name: treatment,
       })) : undefined,
     })),
-    // FAQ 페이지 전체에 대한 Speakable
-    speakable: {
-      '@type': 'SpeakableSpecification',
-      cssSelector: ['.short-answer', '.faq-question'],
-    },
   };
 }
 
@@ -1457,32 +1430,29 @@ export function generateMedicalServiceSchema(
   treatment: TreatmentData,
   opts?: { reservationWord?: string; locale?: string },
 ) {
-  const reservationWord = opts?.reservationWord ?? '상담 예약';
+  const locale = opts?.locale ?? 'ko';
+  const reservationWord = opts?.reservationWord ?? getSchemaL10n(locale).reservationWord;
+  const url = `${BASE_URL}/${locale}/${treatment.category}/${treatment.id}`;
   return {
     '@context': 'https://schema.org',
     '@type': 'MedicalProcedure',
     '@id': `${BASE_URL}/${treatment.category}/${treatment.id}`,
+    url,
+    mainEntityOfPage: url,
     name: treatment.name,
     alternateName: treatment.nameEn,
     description: treatment.description,
-    procedureType: 'NoninvasiveProcedure',
     howPerformed: treatment.description,
-    preparation: treatment.anesthesia || '마취 크림 도포 (필요시)',
-    followup: treatment.recovery || '시술 후 관리 안내',
-    bodyLocation: treatment.targetAreas?.join(', ') || 'Face',
-
-    // 비용은 상담 후 결정 — MonetaryAmount.value에 비수치 문자열을 넣으면
-    // 스키마 위반이므로 통화만 명시하고 value는 생략한다.
-    estimatedCost: {
-      '@type': 'MonetaryAmount',
-      currency: 'KRW',
-    },
-
-    // 제공 기관
-    provider: {
-      '@type': 'MedicalBusiness',
-      '@id': `${BASE_URL}/#organization`,
-      name: getSiteName(opts?.locale),
+    ...(treatment.anesthesia ? { preparation: treatment.anesthesia } : {}),
+    ...(treatment.recovery ? { followup: treatment.recovery } : {}),
+    ...(treatment.targetAreas?.length ? { bodyLocation: treatment.targetAreas.join(', ') } : {}),
+    // availableService belongs to the clinic; provider is not a MedicalProcedure property.
+    '@reverse': {
+      availableService: {
+        '@type': 'MedicalClinic',
+        '@id': `${BASE_URL}/#organization`,
+        name: getSiteName(locale),
+      },
     },
 
     // AI 커머스 핵심: 예약 액션
@@ -1490,7 +1460,7 @@ export function generateMedicalServiceSchema(
       '@type': 'ReserveAction',
       target: {
         '@type': 'EntryPoint',
-        urlTemplate: `${BASE_URL}/contact?treatment=${treatment.id}`,
+        urlTemplate: `${BASE_URL}/${locale}/contact?treatment=${treatment.id}`,
         actionPlatform: [
           'http://schema.org/DesktopWebPlatform',
           'http://schema.org/MobileWebPlatform',
@@ -1502,22 +1472,6 @@ export function generateMedicalServiceSchema(
       },
     },
 
-    // 관련 FAQ 연결 (음성검색 최적화)
-    mainEntity: treatment.faqs?.map(faq => ({
-      '@type': 'Question',
-      name: faq.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: faq.a,
-      },
-    })),
-
-    // 시술 장점/특징
-    additionalProperty: treatment.benefits?.map(benefit => ({
-      '@type': 'PropertyValue',
-      name: benefit.title,
-      value: benefit.desc,
-    })),
   };
 }
 
@@ -1535,16 +1489,11 @@ export function generateHowToSchema(
   opts?: { processWord?: string },
 ) {
   const processWord = opts?.processWord ?? '시술 과정';
-  // duration에서 숫자만 추출 (예: "60-90분" -> "60")
-  const durationMatch = treatment.duration.match(/\d+/);
-  const durationMinutes = durationMatch ? durationMatch[0] : '60';
-
   return {
     '@context': 'https://schema.org',
     '@type': 'HowTo',
     name: `${treatment.name} ${processWord}`,
     description: treatment.description,
-    totalTime: `PT${durationMinutes}M`,
     step: treatment.process.map((step) => ({
       '@type': 'HowToStep',
       position: step.step,
@@ -1556,7 +1505,7 @@ export function generateHowToSchema(
       name: treatment.nameEn,
     }],
     // 제공 기관
-    performer: {
+    publisher: {
       '@type': 'MedicalBusiness',
       '@id': `${BASE_URL}/#organization`,
     },

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
-import { generateWebPageSchema, BASE_URL } from '@/lib/seo';
+import { generateWebPageSchema, generatePageMetadata } from '@/lib/seo';
 import { SITE_INFO } from '@/lib/constants';
 import { isGuideLocale } from '@/lib/guides/types';
 import { PRICING_FOREIGN } from '@/lib/pricingForeign';
@@ -22,20 +22,12 @@ export async function generateMetadata({ params }: LayoutParams): Promise<Metada
     ? `${t('hero.description')} ${PRICING_FOREIGN[locale].metaSuffix}`
     : t('hero.description');
 
-  return {
+  return generatePageMetadata({
+    locale,
+    path: '/pricing',
     title,
     description,
-    alternates: {
-      canonical: `${BASE_URL}/${locale}/pricing`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `${BASE_URL}/${locale}/pricing`,
-      siteName,
-      type: 'website',
-    },
-  };
+  });
 }
 
 export default async function PricingLayout({

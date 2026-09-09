@@ -20,7 +20,7 @@ export async function buildGuideSchemas(guide: GuideDoc): Promise<object[]> {
   ]);
   const organization = { '@type': 'MedicalOrganization', '@id': `${BASE_URL}/#organization`, name: siteName, url: BASE_URL };
   const physician = {
-    '@type': 'Physician',
+    '@type': ['Person', 'Physician'],
     '@id': `${BASE_URL}/about/staff#dr-kim`,
     name: tSections('doctors.kim.name'),
     alternateName: tSections('doctors.kim.nameEn'),
@@ -34,7 +34,6 @@ export async function buildGuideSchemas(guide: GuideDoc): Promise<object[]> {
     headline: guide.title,
     description: guide.description,
     inLanguage: LOCALE_META[guide.locale].htmlLang,
-    datePublished: guide.updated,
     dateModified: guide.updated,
     author: guide.reviewer === 'dr-kim' ? physician : organization,
     publisher: {
@@ -55,7 +54,6 @@ export async function buildGuideSchemas(guide: GuideDoc): Promise<object[]> {
     description: guide.description,
     locale: guide.locale,
     type: 'MedicalWebPage',
-    datePublished: guide.updated,
     dateModified: guide.updated,
     breadcrumbs: [
       { name: tCommon('home'), url: '/' },

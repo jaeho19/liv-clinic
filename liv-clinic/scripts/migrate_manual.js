@@ -1,14 +1,14 @@
-const { Client } = require('pg');
-const fs = require('fs');
-const path = require('path');
-
-const connectionString = 'postgresql://postgres:ac0997da@db.vkqeejqbyvcpxrqqshbu.supabase.co:5432/postgres';
-
-const client = new Client({
-  connectionString: connectionString,
-});
-
 async function runMigration() {
+  const [{ default: pg }, fs, path] = await Promise.all([
+    import('pg'),
+    import('node:fs'),
+    import('node:path'),
+  ]);
+  const connectionString = process.env.DATABASE_URL;
+  if (!connectionString) {
+    throw new Error('DATABASE_URL must be set before running this migration.');
+  }
+  const client = new pg.Client({ connectionString });
   try {
     console.log('Connecting to database...');
     await client.connect();

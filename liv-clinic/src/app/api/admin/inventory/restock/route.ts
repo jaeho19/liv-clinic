@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
 
     // 유효기간이 함께 전달되면 배치 자동 생성
     if (body.expiry_date) {
-      await admin.from('inventory_batches' as any).insert({
+      await admin.from('inventory_batches').insert({
         item_id: body.item_id,
         batch_quantity: body.quantity,
         remaining_quantity: body.quantity,

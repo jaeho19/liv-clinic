@@ -78,7 +78,7 @@ export default function HiloWaveV2Page() {
   const programs = t.raw(`${k}.program.items`) as ProgramItem[];
 
   return (
-    <main className="bg-white overflow-x-hidden">
+    <div className="bg-white overflow-x-hidden">
       {/* S1. Hero */}
       <section className="relative min-h-[80vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-[#FDF8F8] via-white to-[#F5E6E8]" />
@@ -391,6 +391,6 @@ export default function HiloWaveV2Page() {
           </div>
         </motion.div>
       </section>
-    </main>
+    </div>
   );
 }

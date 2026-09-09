@@ -954,7 +954,7 @@ export default function FillerDetail() {
   }, []);
 
   return (
-    <main className="bg-white overflow-hidden">
+    <div className="bg-white overflow-hidden">
       <Breadcrumb items={[{ navKey: 'antiaging', href: '/antiaging' }, { navKey: 'filler' }]} />
 
       {/* Hero Section - Premium Design */}
@@ -1888,6 +1888,6 @@ export default function FillerDetail() {
           </div>
         </section>
       )}
-    </main>
+    </div>
   );
 }

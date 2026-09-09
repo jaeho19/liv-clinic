@@ -154,7 +154,6 @@ export function DonutChart({
   }
   const r = (size - strokeWidth) / 2;
   const circumference = 2 * Math.PI * r;
-  let accumulated = 0;
 
   return (
     <div className="relative inline-flex items-center justify-center" style={{ width: size, height: size }}>
@@ -171,8 +170,8 @@ export function DonutChart({
         {segments.map((seg, i) => {
           const pct = seg.value / total;
           const dashLength = pct * circumference;
-          const dashOffset = -(accumulated / total) * circumference;
-          accumulated += seg.value;
+          const precedingValue = segments.slice(0, i).reduce((sum, segment) => sum + segment.value, 0);
+          const dashOffset = -(precedingValue / total) * circumference;
           return (
             <circle
               key={i}

@@ -98,11 +98,16 @@ function useThrottle<T extends (...args: unknown[]) => void>(
   callback: T,
   delay: number
 ): T {
-  const lastRun = useRef(Date.now());
+  const lastRun = useRef(0);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
+  useEffect(() => () => {
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = null;
+  }, [callback, delay]);
+
   return useCallback(
-    ((...args: unknown[]) => {
+    (...args: unknown[]) => {
       const now = Date.now();
       const timeSinceLastRun = now - lastRun.current;
 
@@ -117,7 +122,7 @@ function useThrottle<T extends (...args: unknown[]) => void>(
           timeoutRef.current = null;
         }, delay - timeSinceLastRun);
       }
-    }) as T,
+    },
     [callback, delay]
   ) as T;
 }

@@ -384,7 +384,7 @@ export default function ShotTracker({ items }: ShotTrackerProps) {
   const [showExhausted, setShowExhausted] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
 
-  const { tips, logs, loading, error, registerTip, useShots, refresh } = useShotTracking(deviceTab);
+  const { tips, logs, loading, error, registerTip, useShots: deductShots, refresh } = useShotTracking(deviceTab);
 
   useEffect(() => {
     if (!toast) return;
@@ -400,9 +400,9 @@ export default function ShotTracker({ items }: ShotTrackerProps) {
     meta: { patient_name?: string; chart_number?: string; procedure_area?: string; note?: string },
   ) => {
     if (!useTarget) return;
-    await useShots(useTarget.id, shotsUsed, meta);
+    await deductShots(useTarget.id, shotsUsed, meta);
     setToast({ message: `${useTarget.tip_type}팁 — ${shotsUsed}샷 차감 완료`, type: 'success' });
-  }, [useTarget, useShots]);
+  }, [useTarget, deductShots]);
 
   const handleRegisterSubmit = useCallback(async (tipType: string, itemId: string) => {
     await registerTip(deviceTab, tipType, itemId);

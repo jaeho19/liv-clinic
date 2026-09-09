@@ -65,8 +65,8 @@ const PicoVsNanoIllustration = ({ labels }: PicoVsNanoProps) => (
         {[...Array(25)].map((_, i) => (
           <motion.circle
             key={i}
-            cx={380 + (i % 5) * 35 + Math.random() * 10}
-            cy={130 + Math.floor(i / 5) * 25 + Math.random() * 10}
+            cx={380 + (i % 5) * 35 + ((i * 7 + 3) % 10)}
+            cy={130 + Math.floor(i / 5) * 25 + ((i * 3 + 7) % 10)}
             r="5"
             fill="#D97706"
             initial={{ opacity: 0, scale: 0 }}
@@ -356,7 +356,7 @@ export default function PigmentationDetail() {
   }, []);
 
   return (
-    <main className="bg-white">
+    <div className="bg-white">
       <Breadcrumb items={[{ navKey: 'laser', href: '/laser' }, { label: t('laser.pigmentation.name') }]} />
 
       {/* 히어로 섹션 */}
@@ -753,6 +753,6 @@ export default function PigmentationDetail() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

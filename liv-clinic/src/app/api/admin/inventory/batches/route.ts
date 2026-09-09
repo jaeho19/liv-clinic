@@ -19,7 +19,7 @@ export async function GET(request: NextRequest) {
     if (itemId) {
       // 특정 아이템의 배치 목록 (FIFO 정렬)
       const { data, error } = await admin
-        .from('inventory_batches' as any)
+        .from('inventory_batches')
         .select('*')
         .eq('item_id', itemId)
         .order('expiry_date', { ascending: true, nullsFirst: false })
@@ -32,11 +32,11 @@ export async function GET(request: NextRequest) {
     if (all === 'true') {
       // 전체 배치 (잔여 수량 > 0만, earliest expiry 계산용)
       const { data, error } = await admin
-        .from('inventory_batches' as any)
+        .from('inventory_batches')
         .select('item_id, expiry_date, remaining_quantity')
         .gt('remaining_quantity', 0)
         .not('expiry_date', 'is', null)
-        .order('expiry_date', { ascending: true }) as { data: { item_id: string; expiry_date: string; remaining_quantity: number }[] | null; error: any };
+        .order('expiry_date', { ascending: true });
 
       if (error) throw new Error(error.message);
 
@@ -75,7 +75,7 @@ export async function POST(request: NextRequest) {
   try {
     // 1. 배치 등록
     const { data: batch, error: batchErr } = await admin
-      .from('inventory_batches' as any)
+      .from('inventory_batches')
       .insert({
         item_id,
         batch_quantity,

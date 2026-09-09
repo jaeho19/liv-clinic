@@ -53,7 +53,7 @@ export default function InquiryLookupPage() {
   const statusLabel = (s: string) => (s === 'pending' ? t('statusPending') : s);
 
   return (
-    <main className="min-h-screen bg-background pt-32 pb-20">
+    <div className="min-h-screen bg-background pt-32 pb-20">
       <div className="container-custom max-w-xl">
         <h1 className="text-h2 text-secondary mb-3">{t('title')}</h1>
         <p className="text-body text-mono mb-8 whitespace-pre-line">{t('description')}</p>
@@ -141,6 +141,6 @@ export default function InquiryLookupPage() {
           </div>
         )}
       </div>
-    </main>
+    </div>
   );
 }

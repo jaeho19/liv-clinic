@@ -42,11 +42,11 @@ function ShimmerParticles({ color, isActive }: { color: string; isActive: boolea
   const particles = useMemo(() =>
     Array.from({ length: 12 }, (_, i) => ({
       id: i,
-      left: `${Math.random() * 100}%`,
-      top: `${Math.random() * 100}%`,
-      size: 2 + Math.random() * 3,
-      delay: Math.random() * 2,
-      duration: 2 + Math.random() * 2,
+      left: `${(i * 37 + 11) % 100}%`,
+      top: `${(i * 61 + 23) % 100}%`,
+      size: 2 + ((i * 7) % 30) / 10,
+      delay: ((i * 11) % 20) / 10,
+      duration: 2 + ((i * 13) % 20) / 10,
     })), []
   );
 
@@ -201,13 +201,15 @@ function useSignaturePrograms(): SignatureProgram[] {
 function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onScrollToDetail }: PremiumCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isTapped, setIsTapped] = useState(false);
-  const [showAfter, setShowAfter] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
+  const [crossfade, setCrossfade] = useState({ active: false, showAfter: false });
+  const previewActive = isHovered || isTapped;
+  if (crossfade.active !== previewActive) {
+    setCrossfade({ active: previewActive, showAfter: false });
+  }
+  const showAfter = previewActive && (reducedMotion || crossfade.showAfter);
   const [isMobile, setIsMobile] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(cardRef, { once: true, amount: 0.3 });
-  const crossfadeIntervalRef = useRef<NodeJS.Timeout | null>(null);
-  const hoverDelayRef = useRef<NodeJS.Timeout | null>(null);
   const tCommon = useTranslations('common');
   const tPhoto = useTranslations('signaturePage.photoComparison');
 
@@ -254,55 +256,22 @@ function PremiumCard({ program, index, reducedMotion, onSelect, isSelected, onSc
     setIsHovered(false);
   }, [mouseX, mouseY]);
 
-  // 호버/탭 시 전후 이미지 크로스페이드 효과 (부드러운 전환)
-  const startCrossfade = useCallback(() => {
-    if (reducedMotion) {
-      setShowAfter(true);
-      return;
-    }
-
-    // 호버 후 0.2초 딜레이 후 전환 시작 (의도적 호버 감지)
-    hoverDelayRef.current = setTimeout(() => {
-      setIsTransitioning(true);
-      setShowAfter(true);
-
-      // 2.5초마다 before/after 토글 (더 여유로운 전환)
-      crossfadeIntervalRef.current = setInterval(() => {
-        setShowAfter(prev => !prev);
+  // Preview visibility follows interaction; this effect only owns animation timers.
+  useEffect(() => {
+    if (!previewActive || reducedMotion) return;
+    let interval: ReturnType<typeof setInterval> | undefined;
+    const delay = setTimeout(() => {
+      setCrossfade({ active: true, showAfter: true });
+      interval = setInterval(() => {
+        setCrossfade((previous) => ({ ...previous, showAfter: !previous.showAfter }));
       }, 2500);
     }, 200);
-  }, [reducedMotion]);
-
-  const stopCrossfade = useCallback(() => {
-    if (hoverDelayRef.current) {
-      clearTimeout(hoverDelayRef.current);
-      hoverDelayRef.current = null;
-    }
-    if (crossfadeIntervalRef.current) {
-      clearInterval(crossfadeIntervalRef.current);
-      crossfadeIntervalRef.current = null;
-    }
-    setIsTransitioning(false);
-    setShowAfter(false);
-  }, []);
-
-  // 호버 상태 관리
-  useEffect(() => {
-    if (isHovered || isTapped) {
-      startCrossfade();
-    } else {
-      stopCrossfade();
-    }
 
     return () => {
-      if (hoverDelayRef.current) {
-        clearTimeout(hoverDelayRef.current);
-      }
-      if (crossfadeIntervalRef.current) {
-        clearInterval(crossfadeIntervalRef.current);
-      }
+      clearTimeout(delay);
+      if (interval) clearInterval(interval);
     };
-  }, [isHovered, isTapped, startCrossfade, stopCrossfade]);
+  }, [previewActive, reducedMotion]);
 
   // 모바일 탭 핸들러 + 스크롤
   const handleTap = () => {

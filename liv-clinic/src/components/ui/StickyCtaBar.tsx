@@ -16,16 +16,16 @@ function useThrottle<T extends (...args: unknown[]) => void>(
   callback: T,
   delay: number
 ): T {
-  const lastRun = useRef(Date.now());
+  const lastRun = useRef(0);
 
   return useCallback(
-    ((...args: unknown[]) => {
+    (...args: unknown[]) => {
       const now = Date.now();
       if (now - lastRun.current >= delay) {
         callback(...args);
         lastRun.current = now;
       }
-    }) as T,
+    },
     [callback, delay]
   ) as T;
 }

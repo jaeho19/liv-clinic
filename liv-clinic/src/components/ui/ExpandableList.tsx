@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 interface ExpandableListProps<T> {
   items: T[];
@@ -26,28 +26,20 @@ export default function ExpandableList<T>({
 }: ExpandableListProps<T>) {
   const [isExpanded, setIsExpanded] = useState(false);
 
-  const visibleItems = isExpanded ? items : items.slice(0, initialCount);
   const hasMore = items.length > initialCount;
 
   return (
     <div className={className}>
-      <AnimatePresence mode="sync">
-        {visibleItems.map((item, index) => (
-          <motion.div
-            key={index}
-            initial={index >= initialCount ? { opacity: 0, height: 0 } : false}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            {renderItem(item, index)}
-          </motion.div>
-        ))}
-      </AnimatePresence>
+      {items.map((item, index) => (
+        <div key={index} hidden={!isExpanded && index >= initialCount}>
+          {renderItem(item, index)}
+        </div>
+      ))}
 
       {hasMore && (
         <button
           onClick={() => setIsExpanded(!isExpanded)}
+          aria-expanded={isExpanded}
           className="mt-4 flex items-center gap-2 text-primary font-medium hover:text-primary/80 transition-colors mx-auto"
         >
           <span>{isExpanded ? collapseText : expandText}</span>

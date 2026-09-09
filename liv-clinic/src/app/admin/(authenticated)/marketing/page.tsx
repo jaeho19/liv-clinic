@@ -60,25 +60,29 @@ export default function MarketingPage() {
   const [error, setError] = useState<string | null>(null);
 
   // 첫 로드는 loading 초기값(true)이 스피너를 담당하고, 이후 갱신은 백그라운드로 반영한다.
-  const load = useCallback(async () => {
-    const [contentsRes, campaignsRes, linksRes] = await Promise.all([
+  const load = useCallback((isCurrent: () => boolean = () => true) => {
+    return Promise.all([
       supabase.from('marketing_contents').select('*').order('posted_at', { ascending: false }).order('created_at', { ascending: false }),
       supabase.from('marketing_campaigns').select('*').order('created_at', { ascending: false }),
       supabase.from('lead_content_links').select('*'),
-    ]);
-    if (contentsRes.error || campaignsRes.error) {
-      setError('데이터를 불러오지 못했습니다. (마이그레이션 확인: supabase/migrations/038_marketing_attribution.sql)');
-    } else {
-      setError(null);
-    }
-    setContents((contentsRes.data ?? []) as MarketingContentRow[]);
-    setCampaigns((campaignsRes.data ?? []) as MarketingCampaignRow[]);
-    setLinks((linksRes.data ?? []) as LeadContentLinkRow[]);
-    setLoading(false);
+    ]).then(([contentsRes, campaignsRes, linksRes]) => {
+      if (!isCurrent()) return;
+      if (contentsRes.error || campaignsRes.error) {
+        setError('데이터를 불러오지 못했습니다. (마이그레이션 확인: supabase/migrations/038_marketing_attribution.sql)');
+      } else {
+        setError(null);
+      }
+      setContents((contentsRes.data ?? []) as MarketingContentRow[]);
+      setCampaigns((campaignsRes.data ?? []) as MarketingCampaignRow[]);
+      setLinks((linksRes.data ?? []) as LeadContentLinkRow[]);
+      setLoading(false);
+    });
   }, [supabase]);
 
   useEffect(() => {
-    load();
+    let active = true;
+    void load(() => active);
+    return () => { active = false; };
   }, [load]);
 
   const linkedCounts = useMemo(() => {

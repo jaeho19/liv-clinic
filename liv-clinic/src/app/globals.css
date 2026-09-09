@@ -490,6 +490,23 @@ body {
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
+/* Keep mobile social links in the document and the live-chat launcher inside its dock. */
+html {
+  scroll-padding-bottom: calc(160px + env(safe-area-inset-bottom, 0px));
+}
+
+@media (max-width: 767px) {
+  .mobile-chat-dock {
+    padding-top: 88px;
+  }
+}
+
+@media (min-width: 768px) {
+  .social-contact-links {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 .safe-area-pt {
   padding-top: env(safe-area-inset-top, 0px);
 }

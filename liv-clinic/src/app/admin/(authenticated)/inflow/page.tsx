@@ -74,8 +74,8 @@ export default function InflowPage() {
   const [editLead, setEditLead] = useState<InflowLeadRow | null>(null);
 
   // 첫 로드는 loading 초기값(true)이 스피너를 담당하고, 이후 갱신은 깜빡임 없이 백그라운드로 반영한다.
-  const loadLeads = useCallback(async () => {
-    const [leadsRes, campaignsRes, contentsRes, linksRes] = await Promise.all([
+  const loadLeads = useCallback((isCurrent: () => boolean = () => true) => {
+    return Promise.all([
       supabase
         .from('inflow_leads')
         .select('*')
@@ -85,23 +85,27 @@ export default function InflowPage() {
       supabase.from('marketing_campaigns').select('*').order('created_at', { ascending: false }),
       supabase.from('marketing_contents').select('*').order('posted_at', { ascending: false }),
       supabase.from('lead_content_links').select('*'),
-    ]);
-    if (leadsRes.error) {
-      setError('데이터를 불러오지 못했습니다. (테이블/권한 확인: supabase/migrations/038_marketing_attribution.sql)');
-      setLeads([]);
-    } else {
-      setError(null);
-      setLeads((leadsRes.data ?? []) as InflowLeadRow[]);
-    }
-    // 마케팅 테이블은 없어도 기존 기능이 동작하도록 소프트 실패
-    setCampaigns((campaignsRes.data ?? []) as MarketingCampaignRow[]);
-    setContents((contentsRes.data ?? []) as MarketingContentRow[]);
-    setLinks((linksRes.data ?? []) as LeadContentLinkRow[]);
-    setLoading(false);
+    ]).then(([leadsRes, campaignsRes, contentsRes, linksRes]) => {
+      if (!isCurrent()) return;
+      if (leadsRes.error) {
+        setError('데이터를 불러오지 못했습니다. (테이블/권한 확인: supabase/migrations/038_marketing_attribution.sql)');
+        setLeads([]);
+      } else {
+        setError(null);
+        setLeads((leadsRes.data ?? []) as InflowLeadRow[]);
+      }
+      // 마케팅 테이블은 없어도 기존 기능이 동작하도록 소프트 실패
+      setCampaigns((campaignsRes.data ?? []) as MarketingCampaignRow[]);
+      setContents((contentsRes.data ?? []) as MarketingContentRow[]);
+      setLinks((linksRes.data ?? []) as LeadContentLinkRow[]);
+      setLoading(false);
+    });
   }, [supabase]);
 
   useEffect(() => {
-    loadLeads();
+    let active = true;
+    void loadLeads(() => active);
+    return () => { active = false; };
   }, [loadLeads]);
 
   const reviewCount = useMemo(
@@ -964,4 +968,4 @@ function Field({ label, children, full }: { label: string; children: React.React
     </div>
   );
 }
-
+

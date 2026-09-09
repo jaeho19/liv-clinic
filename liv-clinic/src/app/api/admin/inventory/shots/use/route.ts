@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
   const admin = createAdminClient();
 
   try {
-    const { data, error } = await admin.rpc('use_device_shots' as any, {
+    const { data, error } = await admin.rpc('use_device_shots', {
       p_tip_id: body.tip_id,
       p_shots_used: body.shots_used,
       p_patient_name: body.patient_name ?? null,

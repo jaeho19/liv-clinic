@@ -71,7 +71,7 @@ export async function localizedWebPageSchema(opts: {
 
 /** Standalone localized BreadcrumbList schema (category landing pages). */
 export async function localizedBreadcrumbSchema(locale: string, specs: CrumbSpec[]) {
-  return generateBreadcrumbSchema(await resolveCrumbs(locale, specs));
+  return generateBreadcrumbSchema(await resolveCrumbs(locale, specs), locale);
 }
 
 /** Structural shape read from a TREATMENTS entry. */
@@ -115,7 +115,6 @@ export async function buildTreatmentLeafSchemas(opts: {
     anesthesia: loc.anesthesia,
     recovery: loc.recovery,
     targetAreas: [...(loc.targetAreas ?? [])],
-    benefits: (base.benefits ?? []).map((b) => ({ title: b.title, desc: b.desc })),
     // 외국인 안내 블록(P1-2)의 Q&A 2개를 같은 페이지의 FAQ에 합친다 — en·ja·zh·zh-TW 외에는 빈 배열
     faqs: [
       ...(loc.faqs ?? []).map((f) => ({ q: f.q, a: f.a })),
@@ -138,8 +137,7 @@ export async function buildTreatmentLeafSchemas(opts: {
     schemas.push(generateHowToSchema(processData, { processWord }));
   }
 
-  schemas.push(
-    await localizedWebPageSchema({
+  const pageSchema = await localizedWebPageSchema({
       locale,
       metaKey: id,
       path,
@@ -149,8 +147,21 @@ export async function buildTreatmentLeafSchemas(opts: {
         { navKey: category, url: `/${category}` },
         { navKey: id, url: path },
       ],
-    }),
-  );
+    });
+  // Questions describe the document, not properties of a medical procedure.
+  // Reuse the FAQ copy actually rendered by the detailed UI where it has its own source.
+  const detailFaqKey = id === 'ulthera' ? 'lifting.ulthera.detail.faq.extended'
+    : id === 'thermage' ? 'lifting.thermage.detail.faq.extendedFaqs' : undefined;
+  const detailFaqs = detailFaqKey ? tT.raw(detailFaqKey) : [];
+  const faqs: { q: string; a: string }[] = [
+    ...(loc.faqs ?? []),
+    ...(Array.isArray(detailFaqs) ? detailFaqs : []),
+    ...getTreatmentForeignFaqs(id as TreatmentForeignId, locale),
+  ];
+  pageSchema.hasPart = faqs.map((faq) => ({
+    '@type': 'Question', name: faq.q, acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  }));
+  schemas.push(pageSchema);
 
   return schemas;
 }
@@ -193,6 +204,7 @@ export async function buildMedicalSchemas(locale: string) {
   }));
 
   const faqSchema = generateVoiceOptimizedFAQSchema(faqData, {
+    locale,
     name: tMeta('medical.title'),
     description: tMeta('medical.description'),
   });

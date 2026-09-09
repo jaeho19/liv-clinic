@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
 import { createAdminClient } from '@/lib/supabase-admin';
+import type { Database } from '@/types/supabase';
 
 // PATCH /api/admin/inventory/batches/[id] - 배치 수정
 export async function PATCH(
@@ -13,7 +14,7 @@ export async function PATCH(
 
   const { id } = await params;
   const body = await request.json();
-  const updates: Record<string, unknown> = {};
+  const updates: Database['public']['Tables']['inventory_batches']['Update'] = {};
 
   if (body.remaining_quantity !== undefined) updates.remaining_quantity = body.remaining_quantity;
   if (body.expiry_date !== undefined) updates.expiry_date = body.expiry_date || null;
@@ -27,7 +28,7 @@ export async function PATCH(
 
   try {
     const { data, error } = await admin
-      .from('inventory_batches' as any)
+      .from('inventory_batches')
       .update(updates)
       .eq('id', id)
       .select()
@@ -56,10 +57,10 @@ export async function DELETE(
   try {
     // 1. 배치 정보 조회
     const { data: batch, error: fetchErr } = await admin
-      .from('inventory_batches' as any)
+      .from('inventory_batches')
       .select('item_id, remaining_quantity')
       .eq('id', id)
-      .single() as { data: { item_id: string; remaining_quantity: number } | null; error: any };
+      .single();
 
     if (fetchErr || !batch) {
       return NextResponse.json({ error: '배치를 찾을 수 없습니다.' }, { status: 404 });
@@ -78,7 +79,7 @@ export async function DELETE(
 
     // 3. 배치 삭제
     const { error: delErr } = await admin
-      .from('inventory_batches' as any)
+      .from('inventory_batches')
       .delete()
       .eq('id', id);
 

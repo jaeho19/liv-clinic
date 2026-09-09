@@ -147,7 +147,7 @@ export default function Doctor() {
               {/* Philosophy */}
               <blockquote className="relative pl-6 border-l-4 border-primary mb-6 md:mb-10">
                 <p className="text-h4 text-mono italic leading-relaxed">
-                  "{doctor.philosophy}"
+                  &quot;{doctor.philosophy}&quot;
                 </p>
               </blockquote>
 

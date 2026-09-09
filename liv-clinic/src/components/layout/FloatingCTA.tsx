@@ -146,8 +146,7 @@ export default function FloatingCTA() {
     <>
       {/* Pinned physically by owner decision (chat left, socials right, all writing directions) — do not convert to logical properties. */}
       <div
-        className="fixed right-2 sm:right-4 md:right-6 z-40 flex flex-col items-end gap-2"
-        style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
+        className="social-contact-links flex flex-wrap justify-center gap-3 px-4 pt-4 pb-44 md:fixed md:right-6 md:z-40 md:flex-col md:items-end md:gap-2 md:p-0"
       >
         {buttonOrder.map((key, index) => {
           const button = ctaButtons[key];

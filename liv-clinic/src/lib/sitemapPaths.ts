@@ -25,14 +25,12 @@ const STATIC_PATHS: SitemapPath[] = [
   { path: '/medical', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/signature', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/before-after', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/reviews', priority: 0.8, changeFrequency: 'weekly' },
   { path: '/media', priority: 0.6, changeFrequency: 'weekly' },
   { path: '/pricing', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/events', priority: 0.7, changeFrequency: 'weekly' },
   { path: '/events/first-visit', priority: 0.8, changeFrequency: 'monthly' },
   { path: '/antiaging/hilowave', priority: 0.7, changeFrequency: 'monthly' },
   { path: '/antiaging/hilowave-v2', priority: 0.7, changeFrequency: 'monthly' },
-  { path: '/inquiry', priority: 0.5, changeFrequency: 'monthly' },
   { path: '/consult-prep', priority: 0.5, changeFrequency: 'monthly' },
   // /wechat은 zh 전용 — 다른 로케일은 미들웨어가 /zh/wechat으로 보낸다
   { path: '/wechat', priority: 0.5, changeFrequency: 'yearly', locales: ['zh'] },
@@ -44,7 +42,7 @@ const STATIC_PATHS: SitemapPath[] = [
 const LASER_CATEGORIES = ['pigmentation', 'vascular', 'skintone', 'hair-removal', 'tattoo'];
 
 /** 사이트맵에 넣을 모든 경로(정적 + 시술 상세 + 레이저 카테고리). 이벤트 상세는 DB에서 따로 붙인다. */
-export function buildSitemapPaths(): SitemapPath[] {
+export function buildSitemapPaths(reviewLocales: readonly string[] = ['ko']): SitemapPath[] {
   const treatments: SitemapPath[] = [
     ...Object.keys(TREATMENTS.lifting).map((id) => `/lifting/${id}`),
     ...Object.keys(TREATMENTS.antiaging).map((id) => `/antiaging/${id}`),
@@ -68,7 +66,8 @@ export function buildSitemapPaths(): SitemapPath[] {
 
   // 정적 항목이 우선 — 같은 경로가 TREATMENTS에도 있으면 뒤 항목을 버린다
   const seen = new Set<string>();
-  return [...STATIC_PATHS, ...treatments, ...guides].filter((p) => {
+  const reviews: SitemapPath = { path: '/reviews', priority: 0.8, changeFrequency: 'weekly', locales: reviewLocales };
+  return [...STATIC_PATHS, reviews, ...treatments, ...guides].filter((p) => {
     if (seen.has(p.path)) return false;
     seen.add(p.path);
     return true;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import {
   INVENTORY_CATEGORY_LABELS,
   INVENTORY_SUBCATEGORY_LABELS,
@@ -50,19 +50,20 @@ export default function CategoryDetailSection({
   const [expiryMap, setExpiryMap] = useState<Map<string, string>>(new Map());
 
   // Fetch expiry map for all items
-  const fetchExpiryMap = useCallback(async () => {
-    try {
-      const res = await fetch('/api/admin/inventory/batches?all=true');
-      if (res.ok) {
-        const data = await res.json();
-        if (data.expiryMap) {
-          setExpiryMap(new Map(Object.entries(data.expiryMap)));
+  useEffect(() => {
+    const controller = new AbortController();
+    void fetch('/api/admin/inventory/batches?all=true', { signal: controller.signal })
+      .then(async (res) => {
+        if (res.ok) {
+          const data = await res.json();
+          if (!controller.signal.aborted && data.expiryMap) {
+            setExpiryMap(new Map(Object.entries(data.expiryMap)));
+          }
         }
-      }
-    } catch { /* silent */ }
+      })
+      .catch(() => { /* silent */ });
+    return () => controller.abort();
   }, []);
-
-  useEffect(() => { fetchExpiryMap(); }, [fetchExpiryMap]);
 
   const categoryItems = useMemo(() => {
     return items.filter(i => i.is_active && i.category === category);

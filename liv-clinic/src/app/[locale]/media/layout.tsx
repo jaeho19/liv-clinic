@@ -60,7 +60,7 @@ export default async function MediaLayout({
       item: {
         '@type': 'NewsArticle',
         headline: item.title,
-        datePublished: `${item.year}-01-01`,
+        datePublished: String(item.year),
         url: item.link,
         publisher: { '@type': 'Organization', name: item.source || siteName },
         about: { '@type': 'MedicalBusiness', name: siteName, url: BASE_URL },

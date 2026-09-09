@@ -357,7 +357,7 @@ export default function SkinboosterDetail() {
   }, []);
 
   return (
-    <main className="bg-white overflow-hidden">
+    <div className="bg-white overflow-hidden">
       <Breadcrumb items={[{ navKey: 'antiaging', href: '/antiaging' }, { navKey: 'skinbooster' }]} />
 
       {/* Hero Section - Premium */}
@@ -945,6 +945,6 @@ export default function SkinboosterDetail() {
           </div>
         </section>
       )}
-    </main>
+    </div>
   );
 }

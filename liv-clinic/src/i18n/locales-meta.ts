@@ -74,7 +74,8 @@ export const LOCALE_META: Record<Locale, LocaleMeta> = {
     flag: '🇺🇸',
     htmlLang: 'en',
     ogLocale: 'en_US',
-    hreflang: 'en-US',
+    // The English pages serve international visitors, including outside the US.
+    hreflang: 'en',
   },
   vi: {
     code: 'vi',

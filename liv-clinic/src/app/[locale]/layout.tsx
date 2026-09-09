@@ -79,11 +79,9 @@ export default async function LocaleLayout({
     <html lang={htmlLang} dir={htmlDir} className={fontClasses} suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="icon" href="/icons/icon-192x192.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
-        {/* Hero LCP 가속: poster 이미지 preload */}
-        <link rel="preload" as="image" href="/images/hero/hero-1.jpg" fetchPriority="high" />
         <meta name="theme-color" content="#b4988d" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=5" />
         {/* Google Search Console */}

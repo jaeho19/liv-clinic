@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useSyncExternalStore } from 'react';
 import { createPortal } from 'react-dom';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -14,11 +14,14 @@ interface BeforeAfterModalProps {
   onClose: () => void;
 }
 
+const subscribeToHydration = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
+
 export default function BeforeAfterModal({ open, imageUrl, title, category, onClose }: BeforeAfterModalProps) {
   const tCommon = useTranslations('common');
   // Only enable portal after mount (SSR safety)
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+  const mounted = useSyncExternalStore(subscribeToHydration, getClientSnapshot, getServerSnapshot);
 
   useEffect(() => {
     if (!open) return;
@@ -70,11 +73,8 @@ export default function BeforeAfterModal({ open, imageUrl, title, category, onCl
               transform: 'translate(-50%, -50%)',
               zIndex: 101,
               maxWidth: '100vw',
-              maxHeight: '100vh',
+              maxHeight: '100dvh',
               overflowY: 'auto',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
               padding: '1rem',
               // Allow background click-to-close while the content itself
               // stops propagation below.
@@ -94,7 +94,7 @@ export default function BeforeAfterModal({ open, imageUrl, title, category, onCl
               <button
                 onClick={onClose}
                 aria-label={tCommon('close')}
-                className="absolute -top-12 right-0 w-10 h-10 rounded-full bg-white/90 text-[#6d4e42] hover:bg-white flex items-center justify-center transition-colors z-10"
+                className="self-end shrink-0 mb-2 w-10 h-10 rounded-full bg-white/90 text-[#6d4e42] hover:bg-white flex items-center justify-center transition-colors z-10"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <line x1="18" y1="6" x2="6" y2="18" />

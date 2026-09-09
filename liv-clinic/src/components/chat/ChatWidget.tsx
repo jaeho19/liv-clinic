@@ -251,7 +251,7 @@ export default function ChatWidget({ locale }: Props) {
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.25 }}
             // Pinned physically by owner decision (chat left, socials right, all writing directions) — do not convert to logical properties.
-            className="fixed left-2 sm:left-4 md:left-6 z-40 bg-white border border-[#e5e5e5] rounded-2xl shadow-xl max-w-[260px]"
+            className="fixed left-2 sm:left-4 md:left-6 z-[51] bg-white border border-[#e5e5e5] rounded-2xl shadow-xl max-w-[260px]"
             style={{
               bottom: 'calc(160px + env(safe-area-inset-bottom, 0px))',
             }}
@@ -294,7 +294,7 @@ export default function ChatWidget({ locale }: Props) {
         }
         aria-expanded={open}
         // Pinned physically by owner decision (chat left, socials right, all writing directions) — do not convert to logical properties.
-        className="fixed left-2 sm:left-4 md:left-6 z-40 flex items-center justify-center gap-2 bg-[#0f766e] text-white shadow-lg hover:bg-[#115e59] active:scale-[0.97] transition-colors rounded-full min-h-[52px] sm:min-h-[60px] px-4 sm:px-5"
+        className="chat-launcher fixed left-2 sm:left-4 md:left-6 z-[51] flex items-center justify-center gap-2 bg-[#0f766e] text-white shadow-lg hover:bg-[#115e59] active:scale-[0.97] transition-colors rounded-full min-h-[52px] sm:min-h-[60px] px-4 sm:px-5 max-w-[calc(100vw-32px)]"
         style={{ bottom: 'calc(80px + env(safe-area-inset-bottom, 0px))' }}
         animate={
           showPulse && !open
@@ -328,7 +328,7 @@ export default function ChatWidget({ locale }: Props) {
             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8-1.39 0-2.71-.27-3.86-.76L3 21l1.4-4.18A8.51 8.51 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
           />
         </svg>
-        <span className="text-sm sm:text-base font-medium whitespace-nowrap">
+        <span className="text-sm sm:text-base font-medium whitespace-normal md:whitespace-nowrap">
           {t('openButton')}
         </span>
         {/* 직접예약 5% 혜택 필 — 패널을 열기 전에도 혜택이 보이도록 라벨 옆 인라인 배치 */}

@@ -1,5 +1,7 @@
 'use client';
 
+import CollapsibleContent from '@/components/ui/CollapsibleContent';
+
 import { useState, useCallback, useRef } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { getLocalizedTreatment, getRelatedTreatmentLabel } from '@/lib/treatmentsI18n';
@@ -1409,6 +1411,8 @@ export default function UltheraDetail() {
                 >
                   <button
                     onClick={() => toggleFaq(index)}
+                    aria-expanded={expandedFaq === index}
+                    aria-controls={`ulthera-faq-${index}-answer`}
                     className="w-full px-4 py-4 md:px-6 md:py-5 text-left flex items-start justify-between gap-3 md:gap-4 hover:bg-background/50 transition-colors"
                   >
                     <div className="flex items-start gap-2 md:gap-3">
@@ -1429,15 +1433,7 @@ export default function UltheraDetail() {
                     </motion.svg>
                   </button>
 
-                  <AnimatePresence>
-                    {expandedFaq === index && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
+                  <CollapsibleContent open={expandedFaq === index} id={`ulthera-faq-${index}-answer`}>
                         <div className="px-4 pb-4 md:px-6 md:pb-5">
                           <div className="flex items-start gap-2 md:gap-3 pt-3 border-t border-border">
                             <span className="w-6 h-6 md:w-8 md:h-8 rounded-full bg-secondary/10 flex items-center justify-center flex-shrink-0">
@@ -1446,9 +1442,7 @@ export default function UltheraDetail() {
                             <p className="text-sm md:text-body text-mono leading-relaxed pt-1">{faq.a}</p>
                           </div>
                         </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                      </CollapsibleContent>
                 </Card>
               )}
             />

@@ -145,7 +145,7 @@ function FadeUpImage({ img }: { img: StackImage }) {
 export default function HiloWavePage() {
   return (
     // 가로 스크롤 원천 차단 — Plan SC5
-    <main className="overflow-x-hidden bg-white">
+    <div className="overflow-x-hidden bg-white">
       {/* 히어로 블록 (priority) + 투명 오버레이 버튼 2개 */}
       <section className="relative w-full max-w-[1920px] mx-auto">
         <Image
@@ -195,6 +195,6 @@ export default function HiloWavePage() {
       {IMAGES.map((img) => (
         <FadeUpImage key={img.src} img={img} />
       ))}
-    </main>
+    </div>
   );
 }

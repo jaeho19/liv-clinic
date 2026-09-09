@@ -1,9 +1,17 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
+import { isPreviewDeployment } from './src/lib/siteEnvironment';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  // Missing asset URLs have no locale/provider; render their 404 outside localized layouts.
+  experimental: { globalNotFound: true },
+  async headers() {
+    return isPreviewDeployment()
+      ? [{ source: '/:path*', headers: [{ key: 'X-Robots-Tag', value: 'noindex, nofollow' }] }]
+      : [];
+  },
   // 이미지 최적화 설정
   images: {
     formats: ['image/avif', 'image/webp'],

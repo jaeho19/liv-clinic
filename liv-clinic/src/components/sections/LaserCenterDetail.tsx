@@ -336,7 +336,7 @@ export default function LaserCenterDetail() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-[var(--color-background)]">
+    <div className="min-h-screen bg-[var(--color-background)]">
       <Breadcrumb items={[{ navKey: 'laser' }]} />
 
       {/* Hero Section */}
@@ -612,6 +612,6 @@ export default function LaserCenterDetail() {
           </AnimateOnScroll>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

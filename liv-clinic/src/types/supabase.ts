@@ -1638,11 +1638,11 @@ export type Database = {
       }
       use_device_shots: {
         Args: {
-          p_chart_number?: string
-          p_created_by?: string
-          p_note?: string
-          p_patient_name?: string
-          p_procedure_area?: string
+          p_chart_number?: string | null
+          p_created_by?: string | null
+          p_note?: string | null
+          p_patient_name?: string | null
+          p_procedure_area?: string | null
           p_shots_used: number
           p_tip_id: string
         }

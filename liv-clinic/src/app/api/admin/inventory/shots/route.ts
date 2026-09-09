@@ -19,20 +19,20 @@ export async function GET(request: NextRequest) {
 
   try {
     let query = admin
-      .from('device_tip_shots' as any)
+      .from('device_tip_shots')
       .select('*')
       .order('registered_at', { ascending: false });
 
     if (deviceType) query = query.eq('device_type', deviceType);
     if (activeOnly) query = query.eq('is_active', true);
 
-    const { data: tips, error } = await query as { data: any[] | null; error: any };
+    const { data: tips, error } = await query;
     if (error) throw new Error(error.message);
 
     if (includeLogs && tips && tips.length > 0) {
-      const tipIds = tips.map((t: any) => t.id);
+      const tipIds = tips.map((t) => t.id);
       const { data: logs, error: logErr } = await admin
-        .from('device_shot_logs' as any)
+        .from('device_shot_logs')
         .select('*')
         .in('tip_id', tipIds)
         .order('created_at', { ascending: false })
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
 
   try {
     const { data, error } = await admin
-      .from('device_tip_shots' as any)
+      .from('device_tip_shots')
       .insert({
         item_id,
         tip_type,

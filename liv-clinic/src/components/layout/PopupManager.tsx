@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useSyncExternalStore } from 'react';
 import { useLocale } from 'next-intl';
 import { createClient } from '@/lib/supabase-browser';
 import PopupModal, { popupImageSources } from './PopupModal';
@@ -46,14 +46,23 @@ function getActiveStaticPopups(): PopupRow[] {
   );
 }
 
+function subscribeViewport(onChange: () => void) {
+  const query = window.matchMedia('(max-width: 767px)');
+  query.addEventListener('change', onChange);
+  return () => query.removeEventListener('change', onChange);
+}
+
+const getMobileSnapshot = () => window.innerWidth < 768;
+const getServerMobileSnapshot = () => false;
+
 export default function PopupManager() {
   const locale = useLocale() as Locale;
   const [popups, setPopups] = useState<PopupRow[]>([]);
   const [visible, setVisible] = useState(true);
-  const [isMobile, setIsMobile] = useState(false);
+  const isMobile = useSyncExternalStore(subscribeViewport, getMobileSnapshot, getServerMobileSnapshot);
 
   useEffect(() => {
-    setIsMobile(window.innerWidth < 768);
+    let active = true;
 
     const loadPopups = async () => {
       let dbPopups: PopupRow[] = [];
@@ -87,11 +96,12 @@ export default function PopupManager() {
       ];
 
       // 오늘 이미 닫은 팝업 제외
-      const active = merged.filter((p) => !isDismissedToday(p.id));
-      setPopups(active);
+      const available = merged.filter((p) => !isDismissedToday(p.id));
+      if (active) setPopups(available);
     };
 
     loadPopups();
+    return () => { active = false; };
   }, []);
 
   // 모바일 필터링: 배열 레벨에서 일괄 적용

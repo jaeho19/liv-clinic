@@ -58,17 +58,18 @@ export default function NaverMap({
   const resolvedInfoWindowText = infoWindowText ?? t('infoWindowSubway');
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<naver.maps.Map | null>(null);
+  const retryTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [error, setError] = useState<string | false>(false);
 
-  const initMap = useCallback(() => {
+  const initMap = useCallback(function initializeMap() {
     if (!mapRef.current || !window.naver?.maps) return;
 
     // 컨테이너 크기가 0이면 지도 초기화 불가 - 리사이즈 대기
     const rect = mapRef.current.getBoundingClientRect();
     if (rect.width === 0 || rect.height === 0) {
       console.warn('[NaverMap] 컨테이너 크기 0 감지, 100ms 후 재시도');
-      setTimeout(() => initMap(), 100);
+      retryTimerRef.current = setTimeout(initializeMap, 100);
       return;
     }
 
@@ -244,6 +245,10 @@ export default function NaverMap({
     initMap();
 
     return () => {
+      if (retryTimerRef.current) {
+        clearTimeout(retryTimerRef.current);
+        retryTimerRef.current = null;
+      }
       if (mapInstanceRef.current) {
         mapInstanceRef.current.destroy();
         mapInstanceRef.current = null;

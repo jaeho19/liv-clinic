@@ -219,7 +219,7 @@ export default function SkincarePage() {
   };
 
   return (
-    <main className="bg-white overflow-hidden">
+    <div className="bg-white overflow-hidden">
       {/* Hero Section */}
       <section className="relative min-h-[80vh] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
@@ -642,6 +642,6 @@ export default function SkincarePage() {
           </motion.div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

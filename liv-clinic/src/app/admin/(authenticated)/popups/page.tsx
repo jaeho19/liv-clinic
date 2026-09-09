@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import ConfirmDialog from '@/components/admin/ConfirmDialog';
 import type { PopupRow } from '@/types/admin';
@@ -18,27 +18,34 @@ export default function PopupsAdminPage() {
   const [loading, setLoading] = useState(true);
   const [deleteTarget, setDeleteTarget] = useState<string | null>(null);
 
-  const fetchPopups = async () => {
-    setLoading(true);
-    try {
-      const res = await fetch('/api/admin/popups');
-      if (res.ok) {
-        const data = await res.json();
-        setPopups(data ?? []);
-      }
-    } catch {
-      // fetch error
-    }
-    setLoading(false);
-  };
+  const fetchPopups = useCallback((isCurrent: () => boolean = () => true) => {
+    return fetch('/api/admin/popups')
+      .then(async (res) => {
+        if (res.ok) {
+          const data = await res.json();
+          if (isCurrent()) setPopups(data ?? []);
+        }
+      })
+      .catch(() => { /* fetch error */ })
+      .finally(() => { if (isCurrent()) setLoading(false); });
+  }, []);
 
-  useEffect(() => { fetchPopups(); }, []);
+  useEffect(() => {
+    let active = true;
+    void fetchPopups(() => active);
+    return () => { active = false; };
+  }, [fetchPopups]);
+
+  const refreshPopups = () => {
+    setLoading(true);
+    return fetchPopups();
+  };
 
   const handleDelete = async () => {
     if (!deleteTarget) return;
     await fetch(`/api/admin/popups/${deleteTarget}`, { method: 'DELETE' });
     setDeleteTarget(null);
-    fetchPopups();
+    refreshPopups();
   };
 
   const toggleActive = async (popup: PopupRow) => {
@@ -47,7 +54,7 @@ export default function PopupsAdminPage() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ is_active: !popup.is_active }),
     });
-    fetchPopups();
+    refreshPopups();
   };
 
   return (

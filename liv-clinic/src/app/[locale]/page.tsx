@@ -1,4 +1,7 @@
 import dynamic from 'next/dynamic';
+import { notFound } from 'next/navigation';
+import { setRequestLocale } from 'next-intl/server';
+import { routing, type Locale } from '@/i18n/routing';
 import { Hero, HomeFirstVisitSlimBanner } from '@/components/sections';
 
 // 동적 임포트 - below-fold 섹션 지연 로드 (Vercel Best Practice: bundle-dynamic-imports)
@@ -30,9 +33,16 @@ const Location = dynamic(() => import('@/components/sections/Location'), { ssr: 
  * → 7 의료정보·미디어(MediaNews) → 8 장비(Equipment, 하단 이동) → 9 위치·상담(Location)
  * 장비를 히어로 직후에서 하단으로 옮겨 '장비 중심 병원' 인상 대신 고민·시술 중심으로 재배열.
  */
-export default function HomePage() {
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  // The page can render concurrently with its layout. Reject missing asset paths
+  // here as well, before client sections ask next-intl for request headers.
+  if (!routing.locales.includes(locale as Locale)) notFound();
+  setRequestLocale(locale);
+
   return (
     <>
+      <link rel="preload" as="image" href="/images/hero/hero-1.jpg" fetchPriority="high" />
       <HomeFirstVisitSlimBanner />
       <Hero />
       <CoreValues />
