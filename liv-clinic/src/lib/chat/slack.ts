@@ -58,22 +58,38 @@ export type SlackCallResult<T> =
   | { ok: true; data: T }
   | { ok: false; error: string; retryAfterMs?: number };
 
+export interface SlackCallOptions {
+  /** Slack 읽기 메서드(conversations.members·users.info·conversations.replies·auth.test)는 JSON 본문을 거부한다(invalid_arguments) → form-urlencoded로 보낸다 */
+  form?: boolean;
+}
+
 async function callOnce<T>(
   method: string,
   payload: object,
-  token: string
+  token: string,
+  options: SlackCallOptions = {}
 ): Promise<SlackCallResult<T>> {
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), postTimeoutMs());
   try {
+    const body = options.form
+      ? new URLSearchParams(
+          Object.entries(payload)
+            .filter(([, v]) => v !== undefined && v !== null)
+            .map(([k, v]) => [k, String(v)] as [string, string])
+        ).toString()
+      : JSON.stringify(payload);
+    const contentType = options.form
+      ? 'application/x-www-form-urlencoded; charset=utf-8'
+      : 'application/json; charset=utf-8';
     const res = await fetch(SLACK_API_BASE + method, {
       method: 'POST',
       signal: controller.signal,
       headers: {
-        'Content-Type': 'application/json; charset=utf-8',
+        'Content-Type': contentType,
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify(payload),
+      body,
     });
 
     if (!res.ok) {
@@ -103,14 +119,15 @@ async function callOnce<T>(
  */
 export async function callSlack<T = Record<string, unknown>>(
   method: string,
-  payload: object
+  payload: object,
+  options: SlackCallOptions = {}
 ): Promise<SlackCallResult<T>> {
   const token = getSlackBotToken();
   if (!token) return { ok: false, error: 'no_bot_token' };
 
   let last: SlackCallResult<T> = { ok: false, error: 'not_called' };
   for (let attempt = 0; attempt < 2; attempt++) {
-    last = await callOnce<T>(method, payload, token);
+    last = await callOnce<T>(method, payload, token, options);
     if (last.ok || !RETRYABLE.has(last.error)) return last;
     if (attempt === 0) await _internals.sleep(Math.min(last.retryAfterMs ?? 800, 2000));
   }
@@ -211,7 +228,8 @@ export async function listChannelMembers(channelId: string): Promise<SlackCallRe
   for (let page = 0; page < MEMBERS_MAX_PAGES; page++) {
     const r = await callSlack<{ members?: string[]; response_metadata?: { next_cursor?: string } }>(
       'conversations.members',
-      { channel: channelId, limit: MEMBERS_PAGE_LIMIT, ...(cursor ? { cursor } : {}) }
+      { channel: channelId, limit: MEMBERS_PAGE_LIMIT, ...(cursor ? { cursor } : {}) },
+      { form: true }
     );
     if (!r.ok) return r;
     members.push(...(r.data.members ?? []));
@@ -224,7 +242,7 @@ export async function listChannelMembers(channelId: string): Promise<SlackCallRe
 /** auth.test → 우리 봇의 user_id. 성공 시 인스턴스 수명 동안 캐시(실패는 캐시하지 않는다). */
 export async function getBotUserId(): Promise<string | null> {
   if (botUserIdCache) return botUserIdCache;
-  const r = await callSlack<{ user_id?: string }>('auth.test', {});
+  const r = await callSlack<{ user_id?: string }>('auth.test', {}, { form: true });
   if (!r.ok || !r.data.user_id) return null;
   botUserIdCache = r.data.user_id;
   return botUserIdCache;
@@ -241,7 +259,7 @@ interface SlackUserPayload {
 
 /** users.info (users:read). 권한이 없으면 { ok: false, error: 'missing_scope' }. */
 export async function getUserInfo(userId: string): Promise<SlackCallResult<SlackUserInfo>> {
-  const r = await callSlack<{ user?: SlackUserPayload }>('users.info', { user: userId });
+  const r = await callSlack<{ user?: SlackUserPayload }>('users.info', { user: userId }, { form: true });
   if (!r.ok) return r;
   const u = r.data.user;
   if (!u) return { ok: false, error: 'invalid_response' };
@@ -256,7 +274,11 @@ export async function fetchThreadParent(
 ): Promise<SlackCallResult<{ text: string; botId: string | null; userId: string | null }>> {
   const r = await callSlack<{
     messages?: Array<{ ts?: string; text?: string; bot_id?: string; user?: string }>;
-  }>('conversations.replies', { channel: channelId, ts: threadTs, limit: 1, inclusive: true });
+  }>(
+    'conversations.replies',
+    { channel: channelId, ts: threadTs, limit: 1, inclusive: true },
+    { form: true }
+  );
   if (!r.ok) return r;
   const messages = r.data.messages ?? [];
   const parent = messages.find((m) => m.ts === threadTs) ?? messages[0];

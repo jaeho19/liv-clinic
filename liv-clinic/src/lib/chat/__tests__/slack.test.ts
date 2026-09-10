@@ -195,9 +195,12 @@ describe('callSlack / postSlackMessage', () => {
     const r = await postSlackMessage({ text: 'hi', channelId: 'C1' });
     expect(r).toEqual({ ok: true, ts: '1.2', channel: 'C1' });
     expect(global.fetch).toHaveBeenCalledTimes(1);
-    const body = JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body as string);
+    const call = (global.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    const body = JSON.parse(call[1].body as string);
     expect(body.channel).toBe('C1');
     expect(body.reply_broadcast).toBe(false);
+    const headers = call[1].headers as Record<string, string>;
+    expect(headers['Content-Type']).toMatch(/^application\/json/);
   });
 
   it('replyBroadcast는 thread_ts가 있을 때만 켜진다', async () => {
@@ -239,6 +242,15 @@ describe('callSlack / postSlackMessage', () => {
     global.fetch = vi.fn().mockRejectedValue(new Error('boom'));
     const r = await callSlack('chat.postMessage', {});
     expect(r).toEqual({ ok: false, error: 'network_error' });
+  });
+
+  it('form 옵션은 undefined/null을 빼고 URLSearchParams로 인코딩한다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true }));
+    await callSlack('x.y', { a: 1, b: undefined, c: 'ü' }, { form: true });
+    const call = (global.fetch as ReturnType<typeof vi.fn>).mock.calls[0];
+    expect(call[1].body).toBe('a=1&c=%C3%BC');
+    const headers = call[1].headers as Record<string, string>;
+    expect(headers['Content-Type']).toMatch(/^application\/x-www-form-urlencoded/);
   });
 });
 
@@ -312,8 +324,9 @@ describe('멤버·사용자·스레드 부모 조회', () => {
     _internals.resetCaches();
   });
 
-  function bodyOf(call: number): Record<string, unknown> {
-    return JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[call][1].body as string);
+  function bodyOf(call: number): Record<string, string> {
+    const body = (global.fetch as ReturnType<typeof vi.fn>).mock.calls[call][1].body as string;
+    return Object.fromEntries(new URLSearchParams(body));
   }
 
   it('listChannelMembers는 next_cursor를 따라가며 합친다', async () => {
@@ -326,9 +339,14 @@ describe('멤버·사용자·스레드 부모 조회', () => {
     const r = await listChannelMembers('C0FEED');
     expect(r).toEqual({ ok: true, data: { members: ['U1', 'U2', 'U3'] } });
     expect(global.fetch).toHaveBeenCalledTimes(2);
-    expect(bodyOf(0)).toMatchObject({ channel: 'C0FEED', limit: 200 });
+    expect(bodyOf(0)).toMatchObject({ channel: 'C0FEED', limit: '200' });
     expect(bodyOf(0).cursor).toBeUndefined();
     expect(bodyOf(1)).toMatchObject({ cursor: 'abc' });
+    const headers = (global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].headers as Record<
+      string,
+      string
+    >;
+    expect(headers['Content-Type']).toMatch(/^application\/x-www-form-urlencoded/);
   });
 
   it('listChannelMembers는 첫 오류를 그대로 돌려준다', async () => {
@@ -391,7 +409,7 @@ describe('멤버·사용자·스레드 부모 조회', () => {
       ok: true,
       data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B1', userId: 'U0BOT' },
     });
-    expect(bodyOf(0)).toMatchObject({ channel: 'C0FEED', ts: '1.0', limit: 1, inclusive: true });
+    expect(bodyOf(0)).toMatchObject({ channel: 'C0FEED', ts: '1.0', limit: '1', inclusive: 'true' });
   });
 
   it('fetchThreadParent는 메시지가 없으면 parent_not_found', async () => {
