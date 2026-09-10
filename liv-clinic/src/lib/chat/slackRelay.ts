@@ -6,6 +6,7 @@ import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import {
   _internals,
   archiveChannel,
+  fetchThreadParent,
   getSlackChannelId,
   isSlackRelayConfigured,
   postSlackMessage,
@@ -20,10 +21,12 @@ import {
   buildContactText,
   buildDeliveryFailureText,
   buildFeedLine,
+  buildFeedReplyMirrorText,
   buildReplyText,
   buildRoomFirstText,
   buildRoomVisitorText,
   buildRootText,
+  extractRoomChannelFromFeedText,
   type RelaySender,
   type RoomSessionInfo,
 } from '@/lib/chat/slackText';
@@ -583,6 +586,27 @@ async function findSessionByThread(admin: ChatAdminClient, threadTs: string): Pr
 }
 
 /**
+ * 3단계 — #해외문의 피드 줄("새 문의 · <#방>", "다시 열림", "N분째 미응답")의 스레드.
+ * 부모 메시지를 읽어 <#채널> 링크로 방 세션을 찾는다. 우리 봇의 메시지가 아니거나 링크가 없으면 null.
+ * API 실패도 null — ⚠️ 안내문이 방 본문에 쓰도록 유도한다.
+ */
+async function findSessionByFeedParent(
+  admin: ChatAdminClient,
+  channel: string,
+  threadTs: string
+): Promise<SessionLookup> {
+  const parent = await fetchThreadParent(channel, threadTs);
+  if (!parent.ok) {
+    console.warn('[slack relay] feed parent lookup failed:', parent.error);
+    return null;
+  }
+  if (!parent.data.botId) return null;
+  const roomChannel = extractRoomChannelFromFeedText(parent.data.text);
+  if (!roomChannel) return null;
+  return findSessionByRoom(admin, roomChannel);
+}
+
+/**
  * Slack 메시지를 손님 채팅창으로 전달한다.
  * operator 메시지로 INSERT하므로 040 트리거가 unread_admin_count·awaiting_since를 리셋하고,
  * 어드민 상세(postgres_changes)와 방문자 위젯(broadcast)에 모두 반영된다.
@@ -596,13 +620,19 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
     const plain = slackTextToPlain(args.text).slice(0, MAX_MESSAGE_CHARS);
     if (!plain) return 'empty_text';
 
-    const session =
+    let lookup =
       route.kind === 'room'
         ? await findSessionByRoom(admin, route.channel)
         : await findSessionByThread(admin, route.threadTs);
+    let viaFeed = false;
+    if (lookup === null && route.kind === 'legacy_thread') {
+      lookup = await findSessionByFeedParent(admin, args.channel, route.threadTs);
+      viaFeed = lookup !== null && lookup !== LOOKUP_ERROR;
+    }
     // 조회 실패는 "우리 방이 아님"이 아니다 — 무음 처리하면 직원 답글이 조용히 사라진다.
-    if (session === LOOKUP_ERROR) return 'error';
-    if (!session) return route.kind === 'room' ? 'unknown_channel' : 'session_not_found';
+    if (lookup === LOOKUP_ERROR) return 'error';
+    if (!lookup) return route.kind === 'room' ? 'unknown_channel' : 'session_not_found';
+    const session: RelaySessionRow = lookup;
 
     if (session.status !== 'open') {
       // 종료된 상담에 직원이 답하면 되살려서 전달한다 (09-01 §6.5-B). 손님은 돌아왔을 때 티저로 본다.
@@ -663,6 +693,15 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
       type: 'message_created',
       payload: { messageId: inserted.id, sender: 'operator' },
     });
+
+    if (viaFeed && session.slack_mode === 'room' && session.slack_channel_id) {
+      const mirror = await postSlackMessage({
+        text: buildFeedReplyMirrorText({ senderLabel, text: plain }),
+        channelId: session.slack_channel_id,
+      });
+      if (!mirror.ok) console.warn('[slack relay] feed reply mirror failed:', mirror.error);
+    }
+
     return 'delivered';
   } catch (e) {
     console.error('[slack relay] inbound failed:', e);
