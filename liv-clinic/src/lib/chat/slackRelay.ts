@@ -12,7 +12,7 @@ import {
   slackTextToPlain,
   unarchiveChannel,
 } from '@/lib/chat/slack';
-import { getStaffDirectory, mentionOf, type StaffDirectory } from '@/lib/chat/slackStaff';
+import { loadStaffDirectory, mentionOf, resolveStaffLabel, type StaffDirectory } from '@/lib/chat/slackStaff';
 import { ensureRoom, roomPrefix, type RoomDeps } from '@/lib/chat/slackRooms';
 import { routeInbound } from '@/lib/chat/slackEvents';
 import {
@@ -79,8 +79,8 @@ export function resolveTarget(
 }
 
 /** 답변 직원이 한 명도 없으면 방·피드·실패 알림 등 오늘 없던 Slack 트래픽은 만들지 않는다. */
-function hasResponders(): boolean {
-  return getStaffDirectory().responderIds.length > 0;
+async function hasResponders(): Promise<boolean> {
+  return (await loadStaffDirectory()).responderIds.length > 0;
 }
 
 function sessionInfo(s: RelaySessionRow): RoomSessionInfo {
@@ -207,7 +207,7 @@ export async function relayChatMessageToSlack(args: RelayOutboundArgs): Promise<
     const admin = createChatAdminClient();
     const session = await loadSession(admin, args.sessionId);
     if (!session) return;
-    const staff = getStaffDirectory();
+    const staff = await loadStaffDirectory();
     const legacy = getSlackChannelId();
     const receivedAt = args.receivedAt ?? new Date().toISOString();
 
@@ -438,7 +438,7 @@ export async function relayContactToSlack(args: {
 export async function archiveSessionRoom(sessionId: string, kind: 'resolved' | 'closed'): Promise<void> {
   if (!isSlackRelayConfigured()) return;
   // 답변 직원이 없으면 방도 피드도 없다 = 오늘의 스레드 모드와 100% 동일하게 아무것도 보내지 않는다.
-  if (!hasResponders()) return;
+  if (!(await hasResponders())) return;
   try {
     const admin = createChatAdminClient();
     const session = await loadSession(admin, sessionId);
@@ -616,8 +616,8 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
       }
     }
 
-    const staff = getStaffDirectory();
-    const senderLabel = staff.labelOf(args.slackUserId);
+    const staff = await loadStaffDirectory();
+    const senderLabel = await resolveStaffLabel(args.slackUserId, staff);
     const visitorLocale = session.visitor_locale as VisitorLocale;
     const translation = await translate(plain, 'ko', visitorLocale);
 
@@ -675,7 +675,7 @@ export async function notifyDeliveryFailure(args: RelayInboundArgs, outcome: Inb
   const silent: InboundOutcome[] = ['delivered', 'internal_note', 'legacy_top_level', 'unknown_channel'];
   if (silent.includes(outcome)) return;
   // 답변 직원이 없으면 오늘과 동일하게 라우트의 console.warn만 남긴다.
-  if (!hasResponders()) return;
+  if (!(await hasResponders())) return;
   try {
     const r = await postSlackMessage({
       text: buildDeliveryFailureText(outcome),
