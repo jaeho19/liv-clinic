@@ -266,11 +266,25 @@ export function buildEscalationText(args: {
 }
 
 const FAILURE_REASON_KO: Record<string, string> = {
-  session_not_found: '이 채널과 연결된 상담을 찾지 못했습니다',
+  session_not_found: '이 스레드는 상담과 연결돼 있지 않습니다. 사이드바의 손님 방(chat-…) 본문에 답해 주세요',
   empty_text: '내용이 비어 있습니다',
   error: '서버 오류가 났습니다. 관리자 화면에서 다시 보내 주세요',
 };
 
 export function buildDeliveryFailureText(reason: string): string {
   return `⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: ${FAILURE_REASON_KO[reason] ?? escapeSlackText(reason)}`;
+}
+
+// ── 피드 줄 스레드 답장 (2026-09-10) ─────────────────────────────────────────
+
+/** 피드 줄 본문의 첫 채널 링크 `<#C…>` 또는 `<#C…|이름>` → 채널 ID. 없으면 null. */
+export function extractRoomChannelFromFeedText(text: string): string | null {
+  const m = /<#([CG][A-Z0-9]+)(?:\|[^>]*)?>/.exec(text);
+  return m ? m[1] : null;
+}
+
+/** 피드 스레드에 달린 직원 답장을 손님 방에 남기는 복사본. */
+export function buildFeedReplyMirrorText(args: { senderLabel: string | null; text: string }): string {
+  const who = args.senderLabel ? ` · ${escapeSlackText(args.senderLabel)}` : '';
+  return [`↩️ _피드에서 답함${who}_`, escapeSlackText(args.text)].join('\n');
 }

@@ -9,6 +9,8 @@ import {
   buildRoomTopic,
   buildRoomVisitorText,
   buildRootText,
+  extractRoomChannelFromFeedText,
+  buildFeedReplyMirrorText,
   ROOM_AUTO_ACK_NOTE,
   ROOM_FOOTER,
 } from '../slackText';
@@ -336,7 +338,7 @@ describe('buildEscalationText', () => {
 describe('buildDeliveryFailureText', () => {
   it('알려진 사유는 한국어로', () => {
     expect(buildDeliveryFailureText('session_not_found')).toBe(
-      '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: 이 채널과 연결된 상담을 찾지 못했습니다'
+      '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: 이 스레드는 상담과 연결돼 있지 않습니다. 사이드바의 손님 방(chat-…) 본문에 답해 주세요'
     );
   });
   it('모르는 사유는 코드 그대로', () => {
@@ -346,5 +348,28 @@ describe('buildDeliveryFailureText', () => {
     expect(buildDeliveryFailureText('<!channel> & <@U1>')).toBe(
       '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: &lt;!channel&gt; &amp; &lt;@U1&gt;'
     );
+  });
+});
+
+describe('extractRoomChannelFromFeedText', () => {
+  it('피드 줄의 첫 채널 링크를 뽑는다', () => {
+    expect(extractRoomChannelFromFeedText('🔴 *새 문의* · 익명 · <#C0C0FPY4HC3> · 09/10(목) 00:10 KST')).toBe('C0C0FPY4HC3');
+    expect(extractRoomChannelFromFeedText('🚨 30분째 미응답 · <#C0ROOM|chat-zh-5b0c7c>')).toBe('C0ROOM');
+  });
+  it('링크가 없으면 null', () => {
+    expect(extractRoomChannelFromFeedText('새 채팅 문의 — 익명 (en)')).toBeNull();
+    expect(extractRoomChannelFromFeedText('')).toBeNull();
+    expect(extractRoomChannelFromFeedText('<@U0AAA> 답 없음')).toBeNull();
+  });
+});
+
+describe('buildFeedReplyMirrorText', () => {
+  it('작성자와 본문을 두 줄로, 특수문자는 이스케이프', () => {
+    expect(buildFeedReplyMirrorText({ senderLabel: '유다영', text: '안녕하세요 <b> & 리브' })).toBe(
+      '↩️ _피드에서 답함 · 유다영_\n안녕하세요 &lt;b&gt; &amp; 리브'
+    );
+  });
+  it('작성자를 모르면 이름을 생략한다', () => {
+    expect(buildFeedReplyMirrorText({ senderLabel: null, text: '안녕' })).toBe('↩️ _피드에서 답함_\n안녕');
   });
 });
