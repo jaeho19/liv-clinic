@@ -11,6 +11,10 @@ import {
   verifySlackSignature,
   slackTextToPlain,
   escapeSlackText,
+  fetchThreadParent,
+  getBotUserId,
+  getUserInfo,
+  listChannelMembers,
 } from '../slack';
 
 const SECRET = 'test-signing-secret';
@@ -289,5 +293,109 @@ describe('채널 관리 메서드', () => {
     expect((await archiveChannel('C1')).ok).toBe(true);
     global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'not_archived' }));
     expect((await unarchiveChannel('C1')).ok).toBe(true);
+  });
+});
+
+describe('멤버·사용자·스레드 부모 조회', () => {
+  const originalFetch = global.fetch;
+
+  beforeEach(() => {
+    process.env.SLACK_BOT_TOKEN = 'xoxb-test';
+    vi.spyOn(_internals, 'sleep').mockResolvedValue(undefined);
+    _internals.resetCaches();
+  });
+
+  afterEach(() => {
+    global.fetch = originalFetch;
+    vi.restoreAllMocks();
+    delete process.env.SLACK_BOT_TOKEN;
+    _internals.resetCaches();
+  });
+
+  function bodyOf(call: number): Record<string, unknown> {
+    return JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[call][1].body as string);
+  }
+
+  it('listChannelMembers는 next_cursor를 따라가며 합친다', async () => {
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(
+        jsonResponse({ ok: true, members: ['U1', 'U2'], response_metadata: { next_cursor: 'abc' } })
+      )
+      .mockResolvedValueOnce(jsonResponse({ ok: true, members: ['U3'], response_metadata: { next_cursor: '' } }));
+    const r = await listChannelMembers('C0FEED');
+    expect(r).toEqual({ ok: true, data: { members: ['U1', 'U2', 'U3'] } });
+    expect(global.fetch).toHaveBeenCalledTimes(2);
+    expect(bodyOf(0)).toMatchObject({ channel: 'C0FEED', limit: 200 });
+    expect(bodyOf(0).cursor).toBeUndefined();
+    expect(bodyOf(1)).toMatchObject({ cursor: 'abc' });
+  });
+
+  it('listChannelMembers는 첫 오류를 그대로 돌려준다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'missing_scope' }));
+    const r = await listChannelMembers('C0FEED');
+    expect(r).toEqual({ ok: false, error: 'missing_scope' });
+  });
+
+  it('getBotUserId는 auth.test 결과를 인스턴스 동안 캐시한다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true, user_id: 'U0BOT' }));
+    expect(await getBotUserId()).toBe('U0BOT');
+    expect(await getBotUserId()).toBe('U0BOT');
+    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][0]).toBe('https://slack.com/api/auth.test');
+  });
+
+  it('getBotUserId는 실패하면 null이고 캐시하지 않는다', async () => {
+    global.fetch = vi
+      .fn()
+      .mockResolvedValueOnce(jsonResponse({ ok: false, error: 'invalid_auth' }))
+      .mockResolvedValueOnce(jsonResponse({ ok: true, user_id: 'U0BOT' }));
+    expect(await getBotUserId()).toBeNull();
+    expect(await getBotUserId()).toBe('U0BOT');
+  });
+
+  it('getUserInfo는 표시 이름 → 실명 → 핸들 순으로 이름을 고른다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(
+      jsonResponse({
+        ok: true,
+        user: { id: 'U1', name: 'dayoung', real_name: 'Yoo Dayoung', is_bot: false, deleted: false, profile: { display_name: '유다영', real_name: 'Yoo Dayoung' } },
+      })
+    );
+    expect(await getUserInfo('U1')).toEqual({ ok: true, data: { id: 'U1', name: '유다영', isBot: false, deleted: false } });
+    expect(bodyOf(0)).toEqual({ user: 'U1' });
+  });
+
+  it('getUserInfo는 display_name이 비면 real_name, 그것도 없으면 name', async () => {
+    global.fetch = vi.fn().mockResolvedValue(
+      jsonResponse({ ok: true, user: { id: 'U1', name: 'handle', is_bot: true, deleted: true, profile: { display_name: '' } } })
+    );
+    expect(await getUserInfo('U1')).toEqual({ ok: true, data: { id: 'U1', name: 'handle', isBot: true, deleted: true } });
+  });
+
+  it('getUserInfo는 오류를 그대로 돌려준다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: false, error: 'missing_scope' }));
+    expect(await getUserInfo('U1')).toEqual({ ok: false, error: 'missing_scope' });
+  });
+
+  it('fetchThreadParent는 ts가 일치하는 메시지의 본문·bot_id·user를 돌려준다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(
+      jsonResponse({
+        ok: true,
+        messages: [
+          { ts: '1.0', text: '🔴 새 문의 · <#C0ROOM>', bot_id: 'B1', user: 'U0BOT' },
+          { ts: '2.0', text: '답글' },
+        ],
+      })
+    );
+    expect(await fetchThreadParent('C0FEED', '1.0')).toEqual({
+      ok: true,
+      data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B1', userId: 'U0BOT' },
+    });
+    expect(bodyOf(0)).toMatchObject({ channel: 'C0FEED', ts: '1.0', limit: 1, inclusive: true });
+  });
+
+  it('fetchThreadParent는 메시지가 없으면 parent_not_found', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true, messages: [] }));
+    expect(await fetchThreadParent('C0FEED', '1.0')).toEqual({ ok: false, error: 'parent_not_found' });
   });
 });

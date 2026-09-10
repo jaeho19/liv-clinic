@@ -6,13 +6,15 @@ import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import {
   _internals,
   archiveChannel,
+  fetchThreadParent,
+  getBotUserId,
   getSlackChannelId,
   isSlackRelayConfigured,
   postSlackMessage,
   slackTextToPlain,
   unarchiveChannel,
 } from '@/lib/chat/slack';
-import { getStaffDirectory, mentionOf, type StaffDirectory } from '@/lib/chat/slackStaff';
+import { loadStaffDirectory, mentionOf, resolveStaffLabel, type StaffDirectory } from '@/lib/chat/slackStaff';
 import { ensureRoom, roomPrefix, type RoomDeps } from '@/lib/chat/slackRooms';
 import { routeInbound } from '@/lib/chat/slackEvents';
 import {
@@ -20,10 +22,12 @@ import {
   buildContactText,
   buildDeliveryFailureText,
   buildFeedLine,
+  buildFeedReplyMirrorText,
   buildReplyText,
   buildRoomFirstText,
   buildRoomVisitorText,
   buildRootText,
+  extractRoomChannelFromFeedText,
   type RelaySender,
   type RoomSessionInfo,
 } from '@/lib/chat/slackText';
@@ -79,8 +83,8 @@ export function resolveTarget(
 }
 
 /** 답변 직원이 한 명도 없으면 방·피드·실패 알림 등 오늘 없던 Slack 트래픽은 만들지 않는다. */
-function hasResponders(): boolean {
-  return getStaffDirectory().responderIds.length > 0;
+async function hasResponders(): Promise<boolean> {
+  return (await loadStaffDirectory()).responderIds.length > 0;
 }
 
 function sessionInfo(s: RelaySessionRow): RoomSessionInfo {
@@ -207,7 +211,7 @@ export async function relayChatMessageToSlack(args: RelayOutboundArgs): Promise<
     const admin = createChatAdminClient();
     const session = await loadSession(admin, args.sessionId);
     if (!session) return;
-    const staff = getStaffDirectory();
+    const staff = await loadStaffDirectory();
     const legacy = getSlackChannelId();
     const receivedAt = args.receivedAt ?? new Date().toISOString();
 
@@ -438,7 +442,7 @@ export async function relayContactToSlack(args: {
 export async function archiveSessionRoom(sessionId: string, kind: 'resolved' | 'closed'): Promise<void> {
   if (!isSlackRelayConfigured()) return;
   // 답변 직원이 없으면 방도 피드도 없다 = 오늘의 스레드 모드와 100% 동일하게 아무것도 보내지 않는다.
-  if (!hasResponders()) return;
+  if (!(await hasResponders())) return;
   try {
     const admin = createChatAdminClient();
     const session = await loadSession(admin, sessionId);
@@ -583,6 +587,31 @@ async function findSessionByThread(admin: ChatAdminClient, threadTs: string): Pr
 }
 
 /**
+ * 3단계 — #해외문의 피드 줄("새 문의 · <#방>", "다시 열림", "N분째 미응답")의 스레드.
+ * 부모 메시지를 읽어 <#채널> 링크로 방 세션을 찾는다. 우리 봇의 메시지가 아니거나 링크가 없으면 null.
+ * 봇 판별은 parent의 user_id === 우리 봇 user_id로 한다(다른 앱이 <#C…>를 올려 엉뚱한 손님으로
+ * 라우팅되는 것을 막는다). auth.test 자체가 실패하면(null) 기존 botId 존재 여부로 폴백한다.
+ * API 실패도 null — ⚠️ 안내문이 방 본문에 쓰도록 유도한다.
+ */
+async function findSessionByFeedParent(
+  admin: ChatAdminClient,
+  channel: string,
+  threadTs: string
+): Promise<SessionLookup> {
+  const parent = await fetchThreadParent(channel, threadTs);
+  if (!parent.ok) {
+    console.warn('[slack relay] feed parent lookup failed:', parent.error);
+    return null;
+  }
+  const botUserId = await getBotUserId();
+  const isOurBot = botUserId !== null ? parent.data.userId === botUserId : Boolean(parent.data.botId);
+  if (!isOurBot) return null;
+  const roomChannel = extractRoomChannelFromFeedText(parent.data.text);
+  if (!roomChannel) return null;
+  return findSessionByRoom(admin, roomChannel);
+}
+
+/**
  * Slack 메시지를 손님 채팅창으로 전달한다.
  * operator 메시지로 INSERT하므로 040 트리거가 unread_admin_count·awaiting_since를 리셋하고,
  * 어드민 상세(postgres_changes)와 방문자 위젯(broadcast)에 모두 반영된다.
@@ -596,13 +625,19 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
     const plain = slackTextToPlain(args.text).slice(0, MAX_MESSAGE_CHARS);
     if (!plain) return 'empty_text';
 
-    const session =
+    let lookup =
       route.kind === 'room'
         ? await findSessionByRoom(admin, route.channel)
         : await findSessionByThread(admin, route.threadTs);
+    let viaFeed = false;
+    if (lookup === null && route.kind === 'legacy_thread') {
+      lookup = await findSessionByFeedParent(admin, args.channel, route.threadTs);
+      viaFeed = lookup !== null && lookup !== LOOKUP_ERROR;
+    }
     // 조회 실패는 "우리 방이 아님"이 아니다 — 무음 처리하면 직원 답글이 조용히 사라진다.
-    if (session === LOOKUP_ERROR) return 'error';
-    if (!session) return route.kind === 'room' ? 'unknown_channel' : 'session_not_found';
+    if (lookup === LOOKUP_ERROR) return 'error';
+    if (!lookup) return route.kind === 'room' ? 'unknown_channel' : 'session_not_found';
+    const session: RelaySessionRow = lookup;
 
     if (session.status !== 'open') {
       // 종료된 상담에 직원이 답하면 되살려서 전달한다 (09-01 §6.5-B). 손님은 돌아왔을 때 티저로 본다.
@@ -616,8 +651,8 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
       }
     }
 
-    const staff = getStaffDirectory();
-    const senderLabel = staff.labelOf(args.slackUserId);
+    const staff = await loadStaffDirectory();
+    const senderLabel = await resolveStaffLabel(args.slackUserId, staff);
     const visitorLocale = session.visitor_locale as VisitorLocale;
     const translation = await translate(plain, 'ko', visitorLocale);
 
@@ -663,6 +698,15 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
       type: 'message_created',
       payload: { messageId: inserted.id, sender: 'operator' },
     });
+
+    if (viaFeed && session.slack_mode === 'room' && session.slack_channel_id) {
+      const mirror = await postSlackMessage({
+        text: buildFeedReplyMirrorText({ senderLabel, text: plain }),
+        channelId: session.slack_channel_id,
+      });
+      if (!mirror.ok) console.warn('[slack relay] feed reply mirror failed:', mirror.error);
+    }
+
     return 'delivered';
   } catch (e) {
     console.error('[slack relay] inbound failed:', e);
@@ -675,7 +719,7 @@ export async function notifyDeliveryFailure(args: RelayInboundArgs, outcome: Inb
   const silent: InboundOutcome[] = ['delivered', 'internal_note', 'legacy_top_level', 'unknown_channel'];
   if (silent.includes(outcome)) return;
   // 답변 직원이 없으면 오늘과 동일하게 라우트의 console.warn만 남긴다.
-  if (!hasResponders()) return;
+  if (!(await hasResponders())) return;
   try {
     const r = await postSlackMessage({
       text: buildDeliveryFailureText(outcome),

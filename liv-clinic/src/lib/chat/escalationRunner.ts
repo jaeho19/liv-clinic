@@ -2,7 +2,7 @@ import 'server-only';
 import { createChatAdminClient } from '@/lib/chat/db';
 import { parseThresholds, planEscalation } from '@/lib/chat/escalation';
 import { getSlackChannelId, isSlackRelayConfigured, postSlackMessage } from '@/lib/chat/slack';
-import { getStaffDirectory, mentionOf } from '@/lib/chat/slackStaff';
+import { loadStaffDirectory, mentionOf } from '@/lib/chat/slackStaff';
 import { postFeed, RELAY_SESSION_COLUMNS, resolveTarget, type RelaySessionRow } from '@/lib/chat/slackRelay';
 import { buildEscalationText, buildFeedLine } from '@/lib/chat/slackText';
 
@@ -19,7 +19,7 @@ export async function runEscalations(now: Date): Promise<{ checked: number; esca
   if (!isSlackRelayConfigured()) return { checked: 0, escalated: 0 };
   const admin = createChatAdminClient();
   const thresholds = parseThresholds(process.env.CHAT_ESCALATION_MINUTES);
-  const staff = getStaffDirectory();
+  const staff = await loadStaffDirectory();
   // 답변 직원이 한 명도 없으면 오늘(스레드 전용) 대비 새 Slack 트래픽을 전혀 만들지 않는다 — 안전 스위치.
   if (staff.responderIds.length === 0) return { checked: 0, escalated: 0 };
   const legacy = getSlackChannelId();

@@ -3,6 +3,7 @@
 > 작성: 2026-09-03 · 대상: Slack 릴레이(`liv-clinic/src/lib/chat/slack*.ts`, `src/app/api/slack/events`), 세션 API, 관리자 채팅 화면
 > 관련: `docs/01-plan/features/chat-slack-ops-improvement.plan.md`(2026-09-01, 이하 "09-01 계획서"), `docs/02-design/features/chat-offhours-messenger-bridge.design.md`(구현 완료), 마이그레이션 036·037
 > 결정(2026-09-03, 원장님): **A안 채택** — Slack 유지 + 손님 1명당 비공개 채널 1개. 앱 재설치는 원장님이 직접. 알림은 **첫 문의 전원 → 이후 담당자만 → 담당자가 답을 안 하면 다른 직원에게 확대**.
+> 2026-09-10 개정: §6 직원 명단(`SLACK_STAFF`)은 **`#해외문의` 채널 멤버 자동 산출**로 대체, 피드 줄 스레드 답장은 손님에게 전달 + 방 복사. 자세한 내용은 `2026-09-10-slack-staff-from-channel-design.md`.
 
 ---
 

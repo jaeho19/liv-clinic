@@ -23,9 +23,14 @@ const RETRYABLE = new Set([
   'http_504',
 ]);
 
+let botUserIdCache: string | null = null;
+
 /** 테스트에서 spy 하기 위한 내부 훅. */
 export const _internals = {
   sleep: (ms: number) => new Promise<void>((resolve) => setTimeout(resolve, ms)),
+  resetCaches() {
+    botUserIdCache = null;
+  },
 };
 
 function postTimeoutMs(): number {
@@ -184,6 +189,82 @@ export async function unarchiveChannel(channelId: string): Promise<SlackCallResu
   const r = await callSlack('conversations.unarchive', { channel: channelId });
   if (!r.ok && r.error === 'not_archived') return { ok: true, data: {} };
   return r;
+}
+
+// ── 멤버·사용자·스레드 조회 (groups:read / users:read / groups:history) ─────
+
+export interface SlackUserInfo {
+  id: string;
+  /** profile.display_name ‖ profile.real_name ‖ real_name ‖ name. 전부 비면 null */
+  name: string | null;
+  isBot: boolean;
+  deleted: boolean;
+}
+
+const MEMBERS_PAGE_LIMIT = 200;
+const MEMBERS_MAX_PAGES = 10;
+
+/** conversations.members 커서 순회. 실패하면 첫 오류를 그대로 돌려준다. */
+export async function listChannelMembers(channelId: string): Promise<SlackCallResult<{ members: string[] }>> {
+  const members: string[] = [];
+  let cursor: string | undefined;
+  for (let page = 0; page < MEMBERS_MAX_PAGES; page++) {
+    const r = await callSlack<{ members?: string[]; response_metadata?: { next_cursor?: string } }>(
+      'conversations.members',
+      { channel: channelId, limit: MEMBERS_PAGE_LIMIT, ...(cursor ? { cursor } : {}) }
+    );
+    if (!r.ok) return r;
+    members.push(...(r.data.members ?? []));
+    cursor = r.data.response_metadata?.next_cursor || undefined;
+    if (!cursor) break;
+  }
+  return { ok: true, data: { members } };
+}
+
+/** auth.test → 우리 봇의 user_id. 성공 시 인스턴스 수명 동안 캐시(실패는 캐시하지 않는다). */
+export async function getBotUserId(): Promise<string | null> {
+  if (botUserIdCache) return botUserIdCache;
+  const r = await callSlack<{ user_id?: string }>('auth.test', {});
+  if (!r.ok || !r.data.user_id) return null;
+  botUserIdCache = r.data.user_id;
+  return botUserIdCache;
+}
+
+interface SlackUserPayload {
+  id: string;
+  name?: string;
+  real_name?: string;
+  is_bot?: boolean;
+  deleted?: boolean;
+  profile?: { display_name?: string; real_name?: string };
+}
+
+/** users.info (users:read). 권한이 없으면 { ok: false, error: 'missing_scope' }. */
+export async function getUserInfo(userId: string): Promise<SlackCallResult<SlackUserInfo>> {
+  const r = await callSlack<{ user?: SlackUserPayload }>('users.info', { user: userId });
+  if (!r.ok) return r;
+  const u = r.data.user;
+  if (!u) return { ok: false, error: 'invalid_response' };
+  const name = u.profile?.display_name || u.profile?.real_name || u.real_name || u.name || null;
+  return { ok: true, data: { id: u.id, name, isBot: Boolean(u.is_bot), deleted: Boolean(u.deleted) } };
+}
+
+/** 스레드의 부모(루트) 메시지 1건 — conversations.replies (groups:history). */
+export async function fetchThreadParent(
+  channelId: string,
+  threadTs: string
+): Promise<SlackCallResult<{ text: string; botId: string | null; userId: string | null }>> {
+  const r = await callSlack<{
+    messages?: Array<{ ts?: string; text?: string; bot_id?: string; user?: string }>;
+  }>('conversations.replies', { channel: channelId, ts: threadTs, limit: 1, inclusive: true });
+  if (!r.ok) return r;
+  const messages = r.data.messages ?? [];
+  const parent = messages.find((m) => m.ts === threadTs) ?? messages[0];
+  if (!parent) return { ok: false, error: 'parent_not_found' };
+  return {
+    ok: true,
+    data: { text: parent.text ?? '', botId: parent.bot_id ?? null, userId: parent.user ?? null },
+  };
 }
 
 // ── 서명 검증 / 텍스트 유틸 (변경 없음) ───────────────────────────────────
