@@ -15,8 +15,8 @@
 | C | api.slack.com | 앱 재설치 + 토큰 확인 | A·B 직후 |
 | D | Slack 앱 | 워크스페이스 설정 1개 확인 | 아무 때나 |
 | E | Slack 앱 | 직원·원장님 멤버 ID 확인 | 아무 때나 |
-| F | Netlify | 환경변수 4개 넣기 (`SLACK_STAFF`는 아직 비움) | 코드 배포 **전** |
-| G | Netlify | `SLACK_STAFF`·`SLACK_OBSERVERS` 채우고 재배포 | 코드 배포 후 스모크가 끝난 뒤 |
+| F | Netlify | 환경변수 넣기 (`SLACK_CHANNEL_ID`·`SLACK_OBSERVERS`·`SLACK_ROOMS`) | 코드 배포 **전** |
+| G | (해당 없음) | **이 단계는 없습니다** — 직원 명단은 §5대로 `#해외문의` 채널 멤버로 관리합니다 | (해당 없음) |
 | H | Slack 앱 | 배포 첫날 확인 4가지 | G 직후 |
 | I | 직원들 | 사용법 공유 (아래 §9를 그대로 전달) | G 직후 |
 
