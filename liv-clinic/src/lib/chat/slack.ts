@@ -253,16 +253,18 @@ export async function getUserInfo(userId: string): Promise<SlackCallResult<Slack
 export async function fetchThreadParent(
   channelId: string,
   threadTs: string
-): Promise<SlackCallResult<{ text: string; botId: string | null }>> {
-  const r = await callSlack<{ messages?: Array<{ ts?: string; text?: string; bot_id?: string }> }>(
-    'conversations.replies',
-    { channel: channelId, ts: threadTs, limit: 1, inclusive: true }
-  );
+): Promise<SlackCallResult<{ text: string; botId: string | null; userId: string | null }>> {
+  const r = await callSlack<{
+    messages?: Array<{ ts?: string; text?: string; bot_id?: string; user?: string }>;
+  }>('conversations.replies', { channel: channelId, ts: threadTs, limit: 1, inclusive: true });
   if (!r.ok) return r;
   const messages = r.data.messages ?? [];
   const parent = messages.find((m) => m.ts === threadTs) ?? messages[0];
   if (!parent) return { ok: false, error: 'parent_not_found' };
-  return { ok: true, data: { text: parent.text ?? '', botId: parent.bot_id ?? null } };
+  return {
+    ok: true,
+    data: { text: parent.text ?? '', botId: parent.bot_id ?? null, userId: parent.user ?? null },
+  };
 }
 
 // ── 서명 검증 / 텍스트 유틸 (변경 없음) ───────────────────────────────────

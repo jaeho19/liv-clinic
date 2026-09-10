@@ -377,11 +377,20 @@ describe('멤버·사용자·스레드 부모 조회', () => {
     expect(await getUserInfo('U1')).toEqual({ ok: false, error: 'missing_scope' });
   });
 
-  it('fetchThreadParent는 ts가 일치하는 메시지의 본문과 bot_id를 돌려준다', async () => {
+  it('fetchThreadParent는 ts가 일치하는 메시지의 본문·bot_id·user를 돌려준다', async () => {
     global.fetch = vi.fn().mockResolvedValue(
-      jsonResponse({ ok: true, messages: [{ ts: '1.0', text: '🔴 새 문의 · <#C0ROOM>', bot_id: 'B1' }, { ts: '2.0', text: '답글' }] })
+      jsonResponse({
+        ok: true,
+        messages: [
+          { ts: '1.0', text: '🔴 새 문의 · <#C0ROOM>', bot_id: 'B1', user: 'U0BOT' },
+          { ts: '2.0', text: '답글' },
+        ],
+      })
     );
-    expect(await fetchThreadParent('C0FEED', '1.0')).toEqual({ ok: true, data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B1' } });
+    expect(await fetchThreadParent('C0FEED', '1.0')).toEqual({
+      ok: true,
+      data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B1', userId: 'U0BOT' },
+    });
     expect(bodyOf(0)).toMatchObject({ channel: 'C0FEED', ts: '1.0', limit: 1, inclusive: true });
   });
 

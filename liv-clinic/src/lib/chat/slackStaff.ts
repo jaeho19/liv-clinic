@@ -143,11 +143,11 @@ async function lookupMember(id: string, now: number): Promise<StaffMember> {
  * #해외문의 멤버 → 명단. 60초 캐시. 조회 실패 시 마지막 성공값, 그것도 없으면 빈 명단(= 기존 안전 경로).
  */
 export async function loadStaffDirectory(): Promise<StaffDirectory> {
+  if (roomsDisabled()) return EMPTY_DIRECTORY;
   if (process.env.SLACK_STAFF && !warnedStaffEnv) {
     warnedStaffEnv = true;
     console.warn('[slack staff] SLACK_STAFF is ignored; members of SLACK_CHANNEL_ID are used');
   }
-  if (roomsDisabled()) return EMPTY_DIRECTORY;
   const now = _internals.now();
   if (directoryCache && now - directoryCache.fetchedAt < DIRECTORY_TTL_MS) return directoryCache.directory;
 
@@ -157,19 +157,28 @@ export async function loadStaffDirectory(): Promise<StaffDirectory> {
   const listed = await listChannelMembers(channel);
   if (!listed.ok) {
     console.warn('[slack staff] members lookup failed:', listed.error);
+    // 다음 시도까지 최소 60초를 두어, 장애가 계속돼도 1분에 한 번만 재시도한다.
+    if (directoryCache) directoryCache.fetchedAt = now;
     return directoryCache?.directory ?? EMPTY_DIRECTORY;
   }
 
   const botUserId = await getBotUserId();
-  const observers = observersFromEnv();
-  const members: StaffMember[] = [];
-  for (const id of listed.data.members) {
-    if (id === botUserId || id === SLACKBOT_ID || observers.has(id)) {
-      members.push({ id, name: null, isBot: false, deleted: false }); // 어차피 답변 직원이 아니다 — users.info 생략
-      continue;
-    }
-    members.push(await lookupMember(id, now));
+  if (botUserId === null) {
+    // auth.test 실패 — 봇 자신을 명단에서 뺄 수 없으니 조회 실패로 취급한다(캐시하지 않음: 회복 즉시 재조회).
+    console.warn('[slack staff] auth.test failed — reusing last directory');
+    return directoryCache?.directory ?? EMPTY_DIRECTORY;
   }
+
+  const observers = observersFromEnv();
+  const members = await Promise.all(
+    listed.data.members.map((id): Promise<StaffMember> => {
+      if (id === botUserId || id === SLACKBOT_ID || observers.has(id)) {
+        // 어차피 답변 직원이 아니다 — users.info 생략
+        return Promise.resolve({ id, name: null, isBot: false, deleted: false });
+      }
+      return lookupMember(id, now);
+    })
+  );
   const directory = buildStaffDirectory({ members, botUserId, observers });
   directoryCache = { directory, fetchedAt: now };
   return directory;

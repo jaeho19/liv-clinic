@@ -7,6 +7,7 @@ import {
   _internals,
   archiveChannel,
   fetchThreadParent,
+  getBotUserId,
   getSlackChannelId,
   isSlackRelayConfigured,
   postSlackMessage,
@@ -588,6 +589,8 @@ async function findSessionByThread(admin: ChatAdminClient, threadTs: string): Pr
 /**
  * 3단계 — #해외문의 피드 줄("새 문의 · <#방>", "다시 열림", "N분째 미응답")의 스레드.
  * 부모 메시지를 읽어 <#채널> 링크로 방 세션을 찾는다. 우리 봇의 메시지가 아니거나 링크가 없으면 null.
+ * 봇 판별은 parent의 user_id === 우리 봇 user_id로 한다(다른 앱이 <#C…>를 올려 엉뚱한 손님으로
+ * 라우팅되는 것을 막는다). auth.test 자체가 실패하면(null) 기존 botId 존재 여부로 폴백한다.
  * API 실패도 null — ⚠️ 안내문이 방 본문에 쓰도록 유도한다.
  */
 async function findSessionByFeedParent(
@@ -600,7 +603,9 @@ async function findSessionByFeedParent(
     console.warn('[slack relay] feed parent lookup failed:', parent.error);
     return null;
   }
-  if (!parent.data.botId) return null;
+  const botUserId = await getBotUserId();
+  const isOurBot = botUserId !== null ? parent.data.userId === botUserId : Boolean(parent.data.botId);
+  if (!isOurBot) return null;
   const roomChannel = extractRoomChannelFromFeedText(parent.data.text);
   if (!roomChannel) return null;
   return findSessionByRoom(admin, roomChannel);

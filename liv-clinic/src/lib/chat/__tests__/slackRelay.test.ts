@@ -17,10 +17,11 @@ vi.mock('../slack', async (importOriginal) => ({
   ...(await importOriginal<typeof import('../slack')>()),
   fetchThreadParent: vi.fn(),
   postSlackMessage: vi.fn(),
+  getBotUserId: vi.fn(),
 }));
 
 import { createChatAdminClient } from '../db';
-import { fetchThreadParent, postSlackMessage } from '../slack';
+import { fetchThreadParent, getBotUserId, postSlackMessage } from '../slack';
 import { relaySlackReplyToVisitor, resolveTarget } from '../slackRelay';
 import { fakeAdmin, hasFilter, type FakeOp } from './fakeAdmin';
 
@@ -75,6 +76,7 @@ describe('relaySlackReplyToVisitor — #해외문의 피드 줄 스레드 답장
   const parentMock = vi.mocked(fetchThreadParent);
   const postMock = vi.mocked(postSlackMessage);
   const adminMock = vi.mocked(createChatAdminClient);
+  const botMock = vi.mocked(getBotUserId);
 
   /** 기본 DB: 세션 스레드/메시지 ts로는 못 찾고, 방 채널 C0ROOM으로는 찾는다. */
   function defaultHandler(op: FakeOp) {
@@ -101,6 +103,8 @@ describe('relaySlackReplyToVisitor — #해외문의 피드 줄 스레드 답장
     process.env.SLACK_CHANNEL_ID = 'C0FEED';
     parentMock.mockReset();
     postMock.mockReset();
+    botMock.mockReset();
+    botMock.mockResolvedValue('U0BOT');
     postMock.mockResolvedValue({ ok: true, ts: '9.9', channel: 'C0ROOM' });
   });
 
@@ -112,7 +116,10 @@ describe('relaySlackReplyToVisitor — #해외문의 피드 줄 스레드 답장
   it('부모 피드 줄의 <#채널>로 방 세션을 찾아 전달하고 방에 복사한다', async () => {
     const admin = fakeAdmin(defaultHandler);
     adminMock.mockReturnValue(admin as never);
-    parentMock.mockResolvedValue({ ok: true, data: { text: '🔴 *새 문의* · 익명 · <#C0ROOM> · 09/10(목) 00:10 KST', botId: 'B1' } });
+    parentMock.mockResolvedValue({
+      ok: true,
+      data: { text: '🔴 *새 문의* · 익명 · <#C0ROOM> · 09/10(목) 00:10 KST', botId: 'B1', userId: 'U0BOT' },
+    });
 
     const outcome = await relaySlackReplyToVisitor(INBOUND);
 
@@ -139,7 +146,10 @@ describe('relaySlackReplyToVisitor — #해외문의 피드 줄 스레드 답장
   it('부모에 채널 링크가 없으면 session_not_found, 저장하지 않는다', async () => {
     const admin = fakeAdmin(defaultHandler);
     adminMock.mockReturnValue(admin as never);
-    parentMock.mockResolvedValue({ ok: true, data: { text: '새 채팅 문의 — 익명 (en)', botId: 'B1' } });
+    parentMock.mockResolvedValue({
+      ok: true,
+      data: { text: '새 채팅 문의 — 익명 (en)', botId: 'B1', userId: 'U0BOT' },
+    });
 
     expect(await relaySlackReplyToVisitor(INBOUND)).toBe('session_not_found');
     expect(admin.ops.some((o) => o.op === 'insert')).toBe(false);
@@ -149,8 +159,31 @@ describe('relaySlackReplyToVisitor — #해외문의 피드 줄 스레드 답장
   it('부모가 봇 메시지가 아니면 session_not_found', async () => {
     const admin = fakeAdmin(defaultHandler);
     adminMock.mockReturnValue(admin as never);
-    parentMock.mockResolvedValue({ ok: true, data: { text: '<#C0ROOM> 여기 봐주세요', botId: null } });
+    parentMock.mockResolvedValue({ ok: true, data: { text: '<#C0ROOM> 여기 봐주세요', botId: null, userId: null } });
     expect(await relaySlackReplyToVisitor(INBOUND)).toBe('session_not_found');
+  });
+
+  it('부모가 다른 봇/앱의 메시지면(우리 봇 user_id와 불일치) session_not_found, 저장하지 않는다', async () => {
+    const admin = fakeAdmin(defaultHandler);
+    adminMock.mockReturnValue(admin as never);
+    parentMock.mockResolvedValue({
+      ok: true,
+      data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B9', userId: 'U0OTHER' },
+    });
+    expect(await relaySlackReplyToVisitor(INBOUND)).toBe('session_not_found');
+    expect(admin.ops.some((o) => o.op === 'insert')).toBe(false);
+    expect(postMock).not.toHaveBeenCalled();
+  });
+
+  it('auth.test가 실패(null)해도 기존 botId 존재 여부로 폴백해 정상 전달한다', async () => {
+    const admin = fakeAdmin(defaultHandler);
+    adminMock.mockReturnValue(admin as never);
+    botMock.mockResolvedValue(null);
+    parentMock.mockResolvedValue({
+      ok: true,
+      data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B1', userId: null },
+    });
+    expect(await relaySlackReplyToVisitor(INBOUND)).toBe('delivered');
   });
 
   it('부모 조회가 실패해도 session_not_found (⚠️ 안내로 방에 쓰도록 유도)', async () => {
@@ -162,7 +195,10 @@ describe('relaySlackReplyToVisitor — #해외문의 피드 줄 스레드 답장
   it('방 복사가 실패해도 손님 전달은 delivered', async () => {
     const admin = fakeAdmin(defaultHandler);
     adminMock.mockReturnValue(admin as never);
-    parentMock.mockResolvedValue({ ok: true, data: { text: '🔔 다시 열림 · <#C0ROOM|chat-zh-5b0c7c>', botId: 'B1' } });
+    parentMock.mockResolvedValue({
+      ok: true,
+      data: { text: '🔔 다시 열림 · <#C0ROOM|chat-zh-5b0c7c>', botId: 'B1', userId: 'U0BOT' },
+    });
     postMock.mockResolvedValue({ ok: false, error: 'is_archived' });
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
@@ -174,7 +210,10 @@ describe('relaySlackReplyToVisitor — #해외문의 피드 줄 스레드 답장
   it('관찰자의 피드 답장도 전달되지만 담당자가 되지는 않는다', async () => {
     const admin = fakeAdmin(defaultHandler);
     adminMock.mockReturnValue(admin as never);
-    parentMock.mockResolvedValue({ ok: true, data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B1' } });
+    parentMock.mockResolvedValue({
+      ok: true,
+      data: { text: '🔴 새 문의 · <#C0ROOM>', botId: 'B1', userId: 'U0BOT' },
+    });
 
     expect(await relaySlackReplyToVisitor({ ...INBOUND, slackUserId: 'U0OBS' })).toBe('delivered');
     expect(admin.ops.some((o) => o.table === 'chat_sessions' && o.op === 'update')).toBe(false);

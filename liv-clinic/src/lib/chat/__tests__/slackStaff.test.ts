@@ -205,6 +205,65 @@ describe('loadStaffDirectory — 조회·캐시·실패', () => {
     expect((await loadStaffDirectory()).responderIds).toEqual(['U0AAA']);
   });
 
+  it('멤버 조회 실패 후 캐시가 있으면 fetchedAt을 지금으로 찍어 30초 뒤 재호출하지 않는다 (M1)', async () => {
+    listMock.mockResolvedValueOnce({ ok: true, data: { members: ['U0AAA'] } });
+    expect((await loadStaffDirectory()).responderIds).toEqual(['U0AAA']);
+
+    now += 61_000; // 캐시 만료 → 재조회 시도
+    listMock.mockResolvedValueOnce({ ok: false, error: 'ratelimited' });
+    expect((await loadStaffDirectory()).responderIds).toEqual(['U0AAA']); // 실패 시 이전 값 유지
+    expect(listMock).toHaveBeenCalledTimes(2);
+
+    now += 30_000; // 실패로부터 30초 — 1분 네거티브 캐시 안이면 재호출하지 않는다
+    expect((await loadStaffDirectory()).responderIds).toEqual(['U0AAA']);
+    expect(listMock).toHaveBeenCalledTimes(2);
+
+    now += 31_000; // 실패로부터 61초 — 다시 시도한다
+    listMock.mockResolvedValueOnce({ ok: true, data: { members: ['U0AAA'] } });
+    await loadStaffDirectory();
+    expect(listMock).toHaveBeenCalledTimes(3);
+  });
+
+  it('auth.test 실패(null)는 조회 실패로 취급 — 마지막 명단을 유지하고 users.info를 부르지 않으며 캐시하지 않는다 (F1)', async () => {
+    listMock.mockResolvedValue({ ok: true, data: { members: ['U0AAA'] } });
+    botMock.mockResolvedValue(null);
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const s = await loadStaffDirectory();
+    expect(s.responderIds).toEqual([]);
+    expect(infoMock).not.toHaveBeenCalled();
+    expect(warn.mock.calls.some((c) => String(c[0]).includes('auth.test failed'))).toBe(true);
+
+    // 캐시하지 않았으므로 같은 now에도 다시 부르면 listChannelMembers를 또 호출한다
+    listMock.mockClear();
+    botMock.mockResolvedValue('U0BOT');
+    const s2 = await loadStaffDirectory();
+    expect(listMock).toHaveBeenCalledTimes(1);
+    expect(s2.responderIds).toEqual(['U0AAA']);
+    warn.mockRestore();
+  });
+
+  it('auth.test 실패(null) 시 이전 성공 명단이 있으면 그것을 돌려준다 (F1)', async () => {
+    listMock.mockResolvedValueOnce({ ok: true, data: { members: ['U0AAA'] } });
+    expect((await loadStaffDirectory()).responderIds).toEqual(['U0AAA']);
+
+    now += 61_000;
+    listMock.mockResolvedValueOnce({ ok: true, data: { members: ['U0BBB'] } });
+    botMock.mockResolvedValue(null);
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    expect((await loadStaffDirectory()).responderIds).toEqual(['U0AAA']); // 마지막 성공값 유지
+    warn.mockRestore();
+  });
+
+  it('SLACK_ROOMS=off면 SLACK_STAFF 경고도 남기지 않는다 (M2)', async () => {
+    process.env.SLACK_ROOMS = 'off';
+    process.env.SLACK_STAFF = 'U0OLD:옛직원';
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    await loadStaffDirectory();
+    expect(warn.mock.calls.some((c) => String(c[0]).includes('SLACK_STAFF'))).toBe(false);
+    warn.mockRestore();
+  });
+
   it('SLACK_ROOMS=off면 API를 부르지 않고 빈 명단', async () => {
     process.env.SLACK_ROOMS = 'off';
     expect(roomsDisabled()).toBe(true);
