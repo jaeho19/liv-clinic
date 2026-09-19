@@ -136,6 +136,15 @@ def _live_frame(idx, dim):
     return ImageEnhance.Brightness(clip_frame(BG_KEY, idx)).enhance(1.0 - dim)
 
 
+# 라이브 창에도 켄번즈를 건다. H06 클립 자체가 거의 정지 영상이라
+# (원본 인접 프레임 MAD 중앙값 0.170 · 최댓값 0.272, freezedetect 임계 0.255)
+# 감광까지 걸면 0.048 로 내려가 3초 정지로 잡힌다 - 실제로 C 라이브 창
+# t=54.1~57.3 에서 freezedetect 1건이 났다(1차본은 캐시 오염의 스트로브가
+# 이걸 가리고 있었다). 끝 줌을 1.0 으로 두어 앰비언트(경로 시작 줌 1.0)와
+# 디졸브 지점에서 프레임이 맞는다. 줌 아웃이라 흐린 쪽이 앞이고 끝이 원본 해상도다.
+LIVE_Z0 = 1.17              # 6초 동안 1.17 -> 1.00 (0.028/s, KB_RATE 의 3배)
+
+
 def _live_to(amb, t, cut, dim=BG_DIM):
     """0~cut초는 생성 클립, 이후 0.7초에 걸쳐 앰비언트로 넘긴다.
 
@@ -145,6 +154,9 @@ def _live_to(amb, t, cut, dim=BG_DIM):
     if t >= cut + 0.7:
         return amb
     live = _live_frame(max(1, min(180, int(t * FPS) + 1)), dim)
+    u = clamp01(t / cut)
+    live = cover(live, W, H, 0.5 - 0.03 * (1 - u), 0.5 + 0.02 * (1 - u),
+                 LIVE_Z0 + (1.0 - LIVE_Z0) * u)
     return live if t <= cut else Image.blend(live, amb, eio((t - cut) / 0.7))
 
 
