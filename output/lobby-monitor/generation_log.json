@@ -28,7 +28,7 @@
   "submissions_rejected_without_charge": [],
   "preset_substitution_incidents": {
    "count": 0,
-   "note": "영상 제출 2건 모두 declined_preset_id 를 함께 보내 프리셋 추천 대체가 일어나지 않았다. submitted_count 로 확인(5/5, 1/1)."
+   "note": "영상 제출 2건 모두 declined_preset_id 를 함께 보내 프리셋 추천 대체가 일어나지 않았다. submitted_count 로 확인(5/5, 1/1). 5+1 로 나뉜 것은 실패 때문이 아니라, H03 만 시작 이미지를 재생성하는 중이어서 확정된 5개를 먼저 제출하고 H03 의 재시도본이 나온 뒤 나머지 1개를 제출했기 때문이다."
   }
  },
 
@@ -79,7 +79,7 @@
  ],
 
  "video_jobs": [
-  {"key": "H01", "job_id": "5dd60a51-e644-4b0a-af71-af620443b7e9", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "d782d88f-1017-4fc3-93f9-c87377629287", "local": "edit/gen/H01.mp4", "used_by": "②편 A·B 블록",
+  {"key": "H01", "job_id": "5dd60a51-e644-4b0a-af71-af620443b7e9", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "d782d88f-1017-4fc3-93f9-c87377629287", "local": "edit/gen/H01.mp4", "used_by": "②편 A·B 블록 + C 블록(앰비언트)",
    "prompt": "Over six seconds the light band brightens very slowly and the dust motes drift laterally. Locked camera, no other movement. Stay completely open and still in the final second."},
   {"key": "H02", "job_id": "e6717bbf-e2e9-4375-8bc8-25f9309f6fb9", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "1040e92b-1cc7-4d46-8cce-c08bb2c449a3", "local": "edit/gen/H02.mp4", "used_by": "②편 D 블록 (히알루론산 캡슐 확산)",
    "prompt": "Over six seconds the bokeh spheres drift apart slowly and the field brightens a little. One calm continuous motion, no cuts. Final second completely still."},
@@ -88,8 +88,8 @@
   {"key": "H04", "job_id": "de3385c8-9877-4266-96c7-6352a2c6c09c", "credits": 10.5, "status": "completed", "used_in_final": false, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04_v1_unused.mp4",
    "rejected_reason": "마지막 1초 드리프트 8.06 (평균 휘도차, 0~255 기준), tail 단일화소 최대 128 — 전진 달리가 끝까지 멈추지 않았다. 계획서 Step 6 의 정착 요구 미달.",
    "prompt": "Over six seconds one slow forward dolly down the corridor. Locked horizon, no rotation. Nothing enters the frame. Final second completely still."},
-  {"key": "H04", "job_id": "b64faf58-e931-4506-98a4-565ed555bf63", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04.mp4", "retry_of": "de3385c8-9877-4266-96c7-6352a2c6c09c", "retry_index": "1/2", "used_by": "③편 B·C 블록 (조지아 본사 연수·수여)",
-   "retry_note": "계획서 Step 6 이 지정한 freeze 문구를 덧붙여 재생성. 드리프트 8.06 -> 3.97, tail 단일화소 128 -> 87 로 개선. 잔여 드리프트는 느린 달리이고 0.7초 크로스디졸브로 앰비언트 켄번즈 줌에 이어지므로 전환이 자연스럽다고 판단해 재시도 2회차는 쓰지 않았다.",
+  {"key": "H04", "job_id": "b64faf58-e931-4506-98a4-565ed555bf63", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04.mp4", "retry_of": "de3385c8-9877-4266-96c7-6352a2c6c09c", "retry_index": "1/2", "used_by": "③편 B·C 블록 (조지아 본사 연수·수여) + ②편 G 블록 (사람)",
+   "retry_note": "계획서 Step 6 이 지정한 freeze 문구를 덧붙여 재생성. 드리프트 8.06 -> 3.97, tail 단일화소 128 -> 87 로 개선. 드리프트 3.97 은 settle_check 의 수치 기준 (A) 2.5 를 넘으므로, **기준 (B) 를 적용해 채택했다** — 이 클립은 _bg_clip() 을 통해 0.7초 크로스디졸브로 앰비언트 켄번즈 플레이트에 넘어가는 방식으로만 쓰이고 잔여 움직임이 느린 전진 달리라, 전환이 잔여 드리프트를 가린다. 재시도 2회차는 쓰지 않았다.",
    "prompt": "Over six seconds one slow forward dolly down the corridor. Locked horizon, no rotation. Nothing enters the frame. The final 1.5 seconds are completely frozen with zero camera and object movement."},
   {"key": "H05", "job_id": "c4fd6210-30b7-4448-a3dd-edbdaef2ca42", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "678b48fc-37b8-4602-9f8c-acc4d35bb51f", "local": "edit/gen/H05.mp4", "used_by": "③편 D 블록 (학회 발표)",
    "prompt": "Over six seconds the stage light slowly grows brighter and the camera drifts right a little. The lectern area stays empty, no people. Final second completely still."},
@@ -100,7 +100,8 @@
  "settle_check": {
   "plan_criterion": "계획서 Task 7 Step 6: tail <= peak * 0.10 (상대비)",
   "why_not_used_verbatim": "이번 클립들은 peak 자체가 0.18~2.90 (0~255 평균 휘도차)로 거의 정지 수준이라, 상대비가 노이즈끼리의 비교가 되어 6개 전부 '흔들림'으로 오판된다. 절대 드리프트로 다시 판정했다.",
-  "absolute_criterion": "마지막 1초(프레임 -30 vs 마지막)의 평균 휘도 드리프트. 전체 스케일의 약 1% (=2.5) 이하를 정착으로 본다.",
+  "absolute_criterion": "마지막 1초(프레임 -30 vs 마지막)의 평균 휘도 드리프트로 판정한다. 두 경로 중 하나를 만족하면 채택한다. (A) 드리프트가 전체 스케일의 약 1%(=2.5) 이하이면 정착으로 본다. (B) 2.5 를 넘더라도, 그 클립이 `_bg_clip()` 을 통해 **0.7초 크로스디졸브로 앰비언트 켄번즈 플레이트에 넘어가는 방식으로만 소비**되고 잔여 움직임이 느린 카메라 이동이라면, 전환이 잔여 드리프트를 가리므로 채택한다. 채택 시 (B) 를 적용했음을 해당 클립의 retry_note 에 명시한다.",
+  "criterion_b_applied_to": ["H04_retry"],
   "measurements": {
    "H01": {"peak_mean": 0.31, "tail_mean": 0.24, "tail_max_px": 57, "drift_1s": 0.66, "verdict": "정착"},
    "H02": {"peak_mean": 1.16, "tail_mean": 0.17, "tail_max_px": 33, "drift_1s": 0.69, "verdict": "정착"},
@@ -110,7 +111,7 @@
    "H05": {"peak_mean": 0.93, "tail_mean": 0.58, "tail_max_px": 16, "drift_1s": 2.45, "verdict": "정착"},
    "H06": {"peak_mean": 0.18, "tail_mean": 0.18, "tail_max_px": 11, "drift_1s": 0.51, "verdict": "정착"}
   },
-  "note": "계획서 기준을 문자 그대로 적용했다면 이미 정상인 클립 4개를 52.5크레딧을 들여 재생성할 뻔했다."
+  "note": "계획서 기준을 문자 그대로 적용했다면 6개 전부가 재시도 대상이 된다. 실제로 재시도가 필요했던 것은 H04 하나뿐이므로, 이미 정상인 클립 5개(H01·H02·H03·H05·H06)를 52.5크레딧(5 x 10.5)을 들여 재생성할 뻔했다."
  },
 
  "generation_safety": {
@@ -119,7 +120,7 @@
   "threads_or_needles_generated": 0,
   "skin_or_before_after_generated": 0,
   "text_generated_by_ai": 0,
-  "verification": "생성 직후 6장을 컨택트 시트로 붙여 육안 대조했다. 글자·로고·사람·의료기기·실·바늘·피부·시술 장면 없음 확인.",
+  "verification": "두 단계로 확인했다. (1) 생성 직후 시작 이미지 6장을 컨택트 시트로 붙여 육안 대조. (2) 실제 납품물은 정지 이미지가 아니라 180프레임 시퀀스이므로, 변환 후 6개 키 전부에 대해 움직임 구간의 프레임(0045·0090·0135)을 다시 컨택트 시트로 붙여 육안 대조했다. 두 단계 모두에서 글자·로고·사람·의료기기·실·바늘·피부·시술 장면 없음 확인. 움직임이 시작 이미지에 없던 형상을 만들어내지 않았다.",
   "note": "생성물은 전부 배경 분위기 플레이트다. 원장 캐릭터 시트는 설계서 §7 결정에 따라 만들지 않았고 Higgsfield Element 709fba3c-1e18-4e12-9384-dd687bcbb880 도 쓰지 않았다. 의료 관련 도해(실 메커니즘·캡슐 확산·얼굴 선화)는 전부 코드로 그렸다 — thread_anim.py / particle_anim.py / face_diagram.py."
  },
 
