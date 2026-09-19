@@ -1,0 +1,178 @@
+{
+ "project": "LIV Lifting City 01",
+ "project_slug": "liv-lifting-city-01",
+ "produced_at_utc": "2026-09-18T21:17:46Z ~ 2026-09-18T22:05:00Z",
+ "produced_at_kst": "2026-09-19 06:17 ~ 07:05",
+ "workspace": {
+  "provider": "Higgsfield MCP",
+  "workspace_id": "599c8597-c275-439c-9cc8-4dc7506b0451",
+  "type": "private",
+  "note": "별도 워크스페이스 선택 없이 기본 개인 워크스페이스에서 생성. 결제·충전·구독 변경 없음."
+ },
+
+ "credits": {
+  "cap_from_user": 150,
+  "spent_by_this_session": 114.5,
+  "remaining_under_cap": 35.5,
+  "breakdown": [
+   {"item": "Nano Banana Pro 시작 이미지 (최초)", "count": 8, "unit": 2, "subtotal": 16},
+   {"item": "Nano Banana Pro 시작 이미지 (G03·G05 재생성)", "count": 2, "unit": 2, "subtotal": 4},
+   {"item": "Kling v3.0 6초 영상 (최초)", "count": 8, "unit": 10.5, "subtotal": 84},
+   {"item": "Kling v3.0 6초 영상 (G08 재시도 1회)", "count": 1, "unit": 10.5, "subtotal": 10.5}
+  ],
+  "preflight_estimates_rechecked_before_generating": {
+   "nano_banana_pro_9x16_2k": 2,
+   "kling3_0_9x16_6s_pro_sound_off": 10.5,
+   "checked_at_utc": "2026-09-18T21:15Z",
+   "matches_plan_estimate": true
+  },
+  "submissions_rejected_without_charge": [
+   {"reason": "프리셋 'IN THE DARK' 추천으로 대체되어 job 미생성", "items": ["G02 영상", "G03 영상"],
+    "resolution": "declined_preset_id 를 지정해 재제출"},
+   {"reason": "medias role 오기입(역할 자리에 media id)", "items": ["G07 영상"],
+    "resolution": "role='start_image' 로 수정해 재제출"}
+  ],
+  "account_balance_note": {
+   "balance_before_first_job": 6000,
+   "balance_after_work": 5671.5,
+   "account_delta": 328.5,
+   "explanation": "계정 잔액 차이 328.5 중 이 세션 몫은 114.5다. 나머지 214는 이 세션의 마지막 생성(21:29:18Z) 이후인 21:47:07Z~21:55:55Z 사이에 기록된 Nano Banana Pro 23건·Kling v3.0 16건으로, 이 세션이 제출한 job ID 어디에도 해당하지 않는다(같은 계정의 다른 세션·다른 클라이언트 사용으로 보이며 이 세션은 원인을 확인할 수 없다). 근거는 transactions 타임스탬프와 아래 job ID 목록 대조."
+  }
+ },
+
+ "models": {
+  "image": {"id": "nano_banana_pro", "aspect_ratio": "9:16", "resolution": "2k", "count": 1,
+            "use_unlim": false, "output_px": "1536x2752"},
+  "video": {"id": "kling3_0", "aspect_ratio": "9:16", "duration": 6, "mode": "pro", "sound": "off",
+            "count": 1, "use_unlim": false, "output": "1076x1928 / 24fps / 145frames"}
+ },
+
+ "image_jobs": [
+  {"key": "G01", "job_id": "65675852-4387-438c-8745-547fd0ff0d04", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G01_start.png",
+   "prompt_source": "production_plan.json ai_backgrounds[G01].image_prompt (원문 그대로)"},
+  {"key": "G02", "job_id": "54bc3e00-6ddf-4a1a-8b6f-64b6bfc96b4b", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G02_start.png",
+   "prompt_source": "production_plan.json ai_backgrounds[G02].image_prompt (원문 그대로)"},
+  {"key": "G03", "job_id": "907d7421-06fe-43db-9ee1-9ea5447abe2e", "credits": 2, "status": "completed",
+   "used_in_final": false, "local": "edit/gen/G03_start.png",
+   "reject_reason": "화면 위아래에 강한 아웃포커스 띠가 생겨 세로 전체 구도로 쓰기 어려움",
+   "prompt_source": "production_plan.json ai_backgrounds[G03].image_prompt (원문 그대로)"},
+  {"key": "G04", "job_id": "389b7c37-8e23-4d73-8408-92726d0acbd2", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G04_start.png",
+   "prompt_source": "production_plan.json ai_backgrounds[G04].image_prompt (원문 그대로)"},
+  {"key": "G05", "job_id": "32fa7305-8ebf-4123-b738-26a9586e629d", "credits": 2, "status": "completed",
+   "used_in_final": false, "local": "edit/gen/G05_start.png",
+   "reject_reason": "리본이 작고 아웃포커스 띠가 있어 주제가 약함",
+   "prompt_source": "production_plan.json ai_backgrounds[G05].image_prompt (원문 그대로)"},
+  {"key": "G06", "job_id": "0196f761-f189-48b0-8cd9-1b0d78997195", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G06_start.png",
+   "prompt_source": "production_plan.json ai_backgrounds[G06].image_prompt (원문 그대로)"},
+  {"key": "G07", "job_id": "a4a55ae6-0c61-4abe-9b97-b75b2fb1f7a0", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G07_start.png",
+   "prompt_source": "production_plan.json ai_backgrounds[G07].image_prompt (원문 그대로)"},
+  {"key": "G08", "job_id": "ae70f54a-3a04-41d0-8eac-d464d54c76aa", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G08_start.png",
+   "prompt_source": "production_plan.json ai_backgrounds[G08].image_prompt (원문 그대로)"},
+  {"key": "G03b", "job_id": "091f7658-bec8-4a54-944e-f1e6fe2136e2", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G03b_start.png",
+   "prompt": "계획서 G03 프롬프트 + 'curtains running the full height of the frame. Full-frame edge-to-edge composition, deep focus, every surface sharp, no out-of-focus foreground band, no blurred border, no shallow depth of field, straight-on eye-level camera.'"},
+  {"key": "G05b", "job_id": "4d4eda87-9a5c-4a6a-884b-620429b90b30", "credits": 2, "status": "completed",
+   "used_in_final": true, "local": "edit/gen/G05b_start.png",
+   "prompt": "계획서 G05 프롬프트 + 'One large dusty rose satin ribbon is the dominant central subject ... Full-frame edge-to-edge composition, deep focus, everything sharp, no out-of-focus foreground band, no blurred border, straight-on eye-level camera.'"}
+ ],
+
+ "video_jobs": [
+  {"key": "G01", "job_id": "9db2900a-8d14-418a-8228-fc996e1dd987", "credits": 10.5, "status": "completed",
+   "start_image_job": "65675852-4387-438c-8745-547fd0ff0d04", "used_in_final": true,
+   "scene": "M01", "local": "edit/gen/G01.mp4",
+   "prompt": "Over six seconds, the four nested architectural volumes unfold smoothly around their hinges into a small open courtyard. One calm slow forward camera movement. Settle completely and hold still during the last second. All surfaces stay rigid; no melting, no extra rooms, no cuts, no people, no text, no letters, no logos, no products."},
+  {"key": "G02", "job_id": "15c6c9a9-3b86-41c7-bd54-9736d7737cac", "credits": 10.5, "status": "completed",
+   "start_image_job": "54bc3e00-6ddf-4a1a-8b6f-64b6bfc96b4b", "used_in_final": true,
+   "scene": "M02", "local": "edit/gen/G02.mp4",
+   "prompt": "Over six seconds, the nested travertine arches separate by a short precise distance, creating depth around the empty centre, with a very slow forward dolly. Locked horizon, no rotation, centre stays clear and empty. End in a stable showroom composition, completely still in the final second. No people, no text, no letters, no logos, no products."},
+  {"key": "G03", "job_id": "5ee99ad8-daab-4531-89de-a033bf8e693f", "credits": 10.5, "status": "completed",
+   "start_image_job": "091f7658-bec8-4a54-944e-f1e6fe2136e2", "used_in_final": true,
+   "scene": "M03", "local": "edit/gen/G03.mp4",
+   "prompt": "Over six seconds, the tall satin curtains slide apart laterally to reveal the empty walnut display niche and its plinth. One continuous controlled movement, the fabric settles gently, camera and centre stay stable. Completely still in the final second. No product appears, no people, no text, no letters, no logos."},
+  {"key": "G04", "job_id": "69e0a62a-1e3d-4b2d-a575-424bdb45b529", "credits": 10.5, "status": "completed",
+   "start_image_job": "389b7c37-8e23-4d73-8408-92726d0acbd2", "used_in_final": true,
+   "scene": "M04", "local": "edit/gen/G04.mp4",
+   "prompt": "Over six seconds, the warm stone panels travel along short straight tracks into a clean aligned composition around the empty central plinth. Mechanical precision, believable shadows, locked camera. No folding surfaces, no morphing objects, no people, no text, no letters, no logos, no products. Hold the final alignment perfectly still for the last second."},
+  {"key": "G05", "job_id": "788de60d-e0fd-45c2-b439-05174c00396b", "credits": 10.5, "status": "completed",
+   "start_image_job": "4d4eda87-9a5c-4a6a-884b-620429b90b30", "used_in_final": true,
+   "scene": "M05", "local": "edit/gen/G05.mp4",
+   "prompt": "Over six seconds, the dusty rose satin ribbon ripples slowly and settles into its final graceful arch while the camera pushes in very gently. Clear silhouette, low amplitude motion, stone architecture stays completely rigid. This is an abstract brand sculpture: no depiction of skin, body or bodily change, no people, no text, no letters, no logos, no products. Final second completely still."},
+  {"key": "G06", "job_id": "d2f63326-9ffe-46f8-963c-b8bf598e8e25", "credits": 10.5, "status": "completed",
+   "start_image_job": "0196f761-f189-48b0-8cd9-1b0d78997195", "used_in_final": true,
+   "scene": "M06", "local": "edit/gen/G06.mp4",
+   "prompt": "Over six seconds, the four miniature gallery rooms slide apart along their shared walnut base into an evenly spaced, orderly row, seen with a gentle slow forward camera. Room structures and materials remain stable and rigid, each centre stays empty. No morphing, no new rooms, no people, no text, no letters, no logos, no devices. End on a balanced tableau, still for the last second.",
+   "plan_deviation": "계획서는 2x2 재배치였으나 시작 이미지가 한 줄 배치여서 '가로 한 줄 정렬'로 조정했다(무리한 재배치 요구 시 형태 붕괴 위험). 2x2 구성은 M06 편집 단계의 실제 카드 그리드로 구현했다."},
+  {"key": "G07", "job_id": "8592194c-6b6b-4eb6-9b8d-848e7b85f668", "credits": 10.5, "status": "completed",
+   "start_image_job": "a4a55ae6-0c61-4abe-9b97-b75b2fb1f7a0", "used_in_final": true,
+   "scene": "M07", "local": "edit/gen/G07.mp4",
+   "prompt": "Over six seconds, the outer architectural frame opens like a precise presentation case and the travertine wall lights warm up slightly, with a very gentle forward camera. The inner portrait surface stays frontal, flat, empty and perfectly still. Do not invent a portrait, painting, human figure or any image inside the frame. No people, no text, no letters, no logos. Hold the final framing still for the last second.",
+   "note": "후반부에 프레임이 접이식으로 펼쳐져 평면이 아니게 되므로, 실제 원장 사진 D01은 생성물 위에 합성하지 않고 6초 이후 편집 단계의 자체 제작 월넛 프레임 안에 배치했다."},
+  {"key": "G08", "job_id": "395b5b32-21bd-4a88-8517-df1c45f3754b", "credits": 10.5, "status": "completed",
+   "start_image_job": "ae70f54a-3a04-41d0-8eac-d464d54c76aa", "used_in_final": false,
+   "scene": "M09", "local": "edit/gen/G08.mp4",
+   "reject_reason": "문이 끝까지 열리지 않고 문짝 색이 로즈->다크->로즈로 깜빡임"},
+  {"key": "G08b", "job_id": "50bdfe7d-ad47-4fa3-9406-ca60df8a6bf2", "credits": 10.5, "status": "completed",
+   "start_image_job": "ae70f54a-3a04-41d0-8eac-d464d54c76aa", "used_in_final": true,
+   "scene": "M09", "local": "edit/gen/G08b.mp4", "retry_of": "395b5b32-21bd-4a88-8517-df1c45f3754b",
+   "prompt": "Locked static camera on the tall closed door. In the first second nothing moves. Then the door swings wide open on its hinges, rotating clearly toward the viewer, and comes to rest fully open, revealing a plain dark empty rectangular doorway. The door panel keeps exactly the same colour and material the whole time; no colour change, no flicker, no relighting. The walls, floor and warm cove lighting stay perfectly still. Nothing appears in the doorway: no room, no furniture, no people, no text, no logos. The final second is completely still with the door fully open."}
+ ],
+
+ "generation_safety": {
+  "people_generated": 0,
+  "medical_devices_generated": 0,
+  "skin_or_before_after_generated": 0,
+  "text_generated_by_ai": 0,
+  "note": "모든 생성물은 배경(가상 건축·커튼·리본·문)뿐이다. 인물·장비·피부·문구는 실제 사진과 편집 조판으로만 넣었다. Higgsfield Element 'Caring Authority in White'(709fba3c-...)는 사용하지 않았다."
+ },
+
+ "local_assets_used": {
+  "D01": {"file": "assets/doctor_verified.jpg", "identity_check":
+          "liv-clinic/public/images/doctor/doctor-main.jpg 와 md5 동일(f0ad063e7cd89161e58e5abc08f0aece). staff 페이지의 kim.image 연결, ko.json 기준 이름 '김수영' / 직함 '대표원장' / '성형외과 전문의'", "scenes": ["M07", "M08"]},
+  "I01": {"file": "assets/interior_lobby.jpg", "scenes": ["M01", "M09", "M12"]},
+  "I03": {"file": "assets/interior_02.jpg", "scenes": ["M06", "M09", "M12"]},
+  "I04": {"file": "assets/interior_03.jpg", "scenes": ["M08", "M11"]},
+  "I05": {"file": "assets/interior_04.jpg", "scenes": ["M09"]},
+  "I06": {"file": "assets/interior_05.jpg", "scenes": ["M10"]},
+  "I07": {"file": "assets/interior_06.jpg", "scenes": ["M09", "M11"]},
+  "E01": {"file": "assets/equipment_ultherapy.png", "label": "울쎄라 / 울쎄라피 프라임",
+          "scenes": ["M01", "M02", "M06", "M10"]},
+  "E02": {"file": "assets/equipment_thermage.png", "label": "써마지 FLX",
+          "scenes": ["M01", "M03", "M06", "M10"]},
+  "E03": {"file": "assets/equipment_density.png", "label": "덴서티",
+          "scenes": ["M01", "M04", "M06", "M10"]},
+  "B01": {"file": "assets/liv_logo.png", "scenes": ["전 구간 상단", "M12"]},
+  "E04": {"status": "실물 사진 미확인", "handling":
+          "계획서 대로 악센트 프라임은 사진 없이 한글 조판 + 리본 그래픽으로 완성(M05 전용 히어로 판, M01·M06·M10의 조판 카드). 다른 장비 사진으로 대체하거나 본체를 생성하지 않았다."},
+  "I02": {"file": "assets/interior_01.jpg", "status": "미사용",
+          "reason": "I01과 구도가 거의 같아 중복"}
+ },
+
+ "pipeline": {
+  "frame_conversion": "Kling 1076x1928/24fps -> scale=1080:-2(lanczos) -> crop 1080x1920 -> minterpolate(fps=30, mci/aobmc/bidir/vsbmc) -> jpg q2 180프레임(마지막 1프레임 복제)",
+  "renderer": "edit/render_video.py (Python 3.13 + Pillow 12.3 + numpy). 장면 12개를 프레임 단위로 합성해 각각 900프레임 mp4(CRF12)로 병렬 렌더 후 concat",
+  "fonts": "Pretendard Variable(liv-clinic/public/fonts/PretendardVariable.woff2)에서 fontTools instancer로 400/500/600/700/800 정적 TTF 생성 -> edit/fonts/",
+  "qr": "python qrcode, EC level M, 37모듈 x 11px = 407px 원본을 최종 396px로 NEAREST 배치",
+  "master_encode": "libx264 preset slow, CRF 14, maxrate 16M, bufsize 28M, yuv420p, 30fps CFR, g=60, faststart, 무음(오디오 스트림 없음)",
+  "scene_sources_kept": "edit/scenes/M01.mp4 ~ M12.mp4 (CRF12 중간본) + edit/gen (생성 원본과 프레임 시퀀스)"
+ },
+
+ "outputs": [
+  {"path": "renders/LIV_lifting_city_01_1080x1920_6min_silent.mp4", "role": "최종 마스터(무음)",
+   "spec": "1080x1920 / 30fps CFR / 10800프레임 / 360.000초 / yuv420p / H.264 / 오디오 없음",
+   "size_bytes": 144517467},
+  {"path": "renders/LIV_lifting_city_01_1080x1920_6min_silentAAC.mp4",
+   "role": "오디오 트랙을 요구하는 플레이어용(무음 AAC 48kHz 스테레오, 영상 스트림은 마스터와 동일 복사)",
+   "size_bytes": 144885270},
+  {"path": "renders/LIV_lifting_city_01_preview.mp4", "role": "검토용 프리뷰",
+   "spec": "540x960 / 30fps / 360초", "size_bytes": 4108777},
+  {"path": "edit/", "role": "편집 소스 일체(렌더러·전처리·폰트·생성 원본·장면별 중간본·검수 스틸)"},
+  {"path": "qc_report.md", "role": "검수 보고"},
+  {"path": "edit/qc_result.json", "role": "자동 검사 원자료"}
+ ]
+}

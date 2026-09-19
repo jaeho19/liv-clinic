@@ -1,0 +1,63 @@
+{
+ "master": "LIV_lifting_city_01_1080x1920_6min_silent.mp4",
+ "checks": {
+  "spec": {
+   "width": 1080,
+   "height": 1920,
+   "fps": "30/1",
+   "frames": 10800,
+   "pix_fmt": "yuv420p",
+   "duration_sec": 360.0,
+   "size_bytes": 144517467,
+   "bitrate_bps": 3211499,
+   "audio_streams": 0,
+   "pass": true
+  },
+  "frame_scan": {
+   "sampled_frames": 720,
+   "sample_fps": 2,
+   "min_mean_luma": 34.54,
+   "dark_frames": [],
+   "footer_pill_missing": [],
+   "header_logo_missing": [],
+   "header_clinic_missing": [],
+   "pass": true
+  },
+  "qr_rescan": {
+   "expected": "https://liv-clinic.net/ko/contact",
+   "samples": [
+    {
+     "t": 348.5,
+     "decoded": "https://liv-clinic.net/ko/contact",
+     "match": true
+    },
+    {
+     "t": 350,
+     "decoded": "https://liv-clinic.net/ko/contact",
+     "match": true
+    },
+    {
+     "t": 352.5,
+     "decoded": "https://liv-clinic.net/ko/contact",
+     "match": true
+    },
+    {
+     "t": 355,
+     "decoded": "https://liv-clinic.net/ko/contact",
+     "match": true
+    },
+    {
+     "t": 357.5,
+     "decoded": "https://liv-clinic.net/ko/contact",
+     "match": true
+    },
+    {
+     "t": 359.9,
+     "decoded": "https://liv-clinic.net/ko/contact",
+     "match": true
+    }
+   ],
+   "pass": true
+  }
+ }
+}

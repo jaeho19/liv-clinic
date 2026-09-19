@@ -1,0 +1,616 @@
+{
+ "project_slug": "liv-lifting-city-01",
+ "spec": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "duration_sec": 360,
+  "frame_count": 10800,
+  "codec": "H.264",
+  "pixel_format": "yuv420p",
+  "audio": "silent",
+  "master_bitrate_target": "10 Mbps",
+  "safe_margin_px": 72
+ },
+ "persistent_copy": {
+  "clinic": "리브성형외과",
+  "floor": "이 건물 4층"
+ },
+ "qr": {
+  "url": "https://liv-clinic.net/ko/contact",
+  "start_sec": 348,
+  "duration_sec": 12,
+  "size_px": 320,
+  "note": "연결 페이지 열림 확인 완료. 실제 예약 접수 기능 테스트는 하지 않음. QR 인코딩은 별도 생성하며 AI 그림에 맡기지 않음."
+ },
+ "timeline": [
+  {
+   "id": "M01",
+   "start_sec": 0,
+   "duration_sec": 30,
+   "timecode": "0:00-0:30",
+   "title": "4층이 열린다",
+   "primary_copy": "리프팅,\n이 건물 4층에서",
+   "secondary_copy": "울쎄라 · 써마지 / 덴서티 · 악센트 프라임",
+   "background": "G01",
+   "asset_keys": [
+    "I01",
+    "E01",
+    "E02",
+    "E03"
+   ],
+   "direction": "접힌 건축 모형이 6초 동안 열림. 다음 8초씩 두 장비명 묶음, 4초 실제 로비, 4초 4층 CTA.",
+   "beats": [
+    {
+     "start_sec": 0,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 6,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 14,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 22,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 26,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M02",
+   "start_sec": 30,
+   "duration_sec": 30,
+   "timecode": "0:30-1:00",
+   "title": "울쎄라 쇼룸",
+   "primary_copy": "울쎄라\n울쎄라피 프라임",
+   "secondary_copy": "초음파 기반 장비 / 울쎄라 리프팅 상담",
+   "background": "G02",
+   "asset_keys": [
+    "E01"
+   ],
+   "direction": "아치가 펼쳐지고 장비 사진이 등장. 본체 전체와 화면 부분을 다른 크기로 보여주되 모양은 고정.",
+   "beats": [
+    {
+     "start_sec": 30,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 36,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 44,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 52,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 56,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M03",
+   "start_sec": 60,
+   "duration_sec": 30,
+   "timecode": "1:00-1:30",
+   "title": "써마지 쇼룸",
+   "primary_copy": "써마지 FLX",
+   "secondary_copy": "고주파 기반 장비 / 써마지 상담은 LIV",
+   "background": "G03",
+   "asset_keys": [
+    "E02"
+   ],
+   "direction": "빛을 받은 세로 커튼이 양옆으로 열림. 흰 장비 사진을 브라운 공간 중앙에 배치.",
+   "beats": [
+    {
+     "start_sec": 60,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 66,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 74,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 82,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 86,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M04",
+   "start_sec": 90,
+   "duration_sec": 30,
+   "timecode": "1:30-2:00",
+   "title": "덴서티 쇼룸",
+   "primary_copy": "덴서티",
+   "secondary_copy": "고주파 기반 장비 / 나의 피부 상태에 맞는 상담",
+   "background": "G04",
+   "asset_keys": [
+    "E03"
+   ],
+   "direction": "서로 다른 높이의 패널이 정렬되며 빈 전시대가 드러남. 실제 장비는 별도 레이어로 등장.",
+   "beats": [
+    {
+     "start_sec": 90,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 96,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 104,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 112,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 116,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M05",
+   "start_sec": 120,
+   "duration_sec": 30,
+   "timecode": "2:00-2:30",
+   "title": "악센트 프라임 쇼룸",
+   "primary_copy": "악센트\n프라임",
+   "secondary_copy": "탄력과 라인 고민 / 리브성형외과에서 상담하세요",
+   "background": "G05",
+   "asset_keys": [
+    "B01"
+   ],
+   "direction": "공중의 실크 리본이 아치를 만드는 장면. 장비 실물 미확인 상태에서는 큰 한글 제목으로 완결.",
+   "beats": [
+    {
+     "start_sec": 120,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 126,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 134,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 142,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 146,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M06",
+   "start_sec": 150,
+   "duration_sec": 30,
+   "timecode": "2:30-3:00",
+   "title": "네 개의 방, 한 곳의 상담",
+   "primary_copy": "네 가지 리프팅 상담\n리브성형외과",
+   "secondary_copy": "울쎄라 · 써마지 · 덴서티 · 악센트 프라임",
+   "background": "G06",
+   "asset_keys": [
+    "E01",
+    "E02",
+    "E03",
+    "I03"
+   ],
+   "direction": "네 개의 미니어처 방이 화면에 합쳐짐. 장비명 4개를 한 장씩 충분히 읽히고 로비로 연결.",
+   "beats": [
+    {
+     "start_sec": 150,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 156,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 164,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 172,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 176,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M07",
+   "start_sec": 180,
+   "duration_sec": 30,
+   "timecode": "3:00-3:30",
+   "title": "김수영 원장",
+   "primary_copy": "김수영 대표원장\n성형외과 전문의",
+   "secondary_copy": "얼굴의 상태와 원하는 변화를 / 함께 살피는 리프팅 상담",
+   "background": "G07",
+   "asset_keys": [
+    "D01"
+   ],
+   "direction": "움직이는 브라운 프레임 안에 실제 프로필을 고정. 사진의 표정·손·의상은 그대로 두고 프레임만 이동.",
+   "beats": [
+    {
+     "start_sec": 180,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 186,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 194,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 202,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 206,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M08",
+   "start_sec": 210,
+   "duration_sec": 30,
+   "timecode": "3:30-4:00",
+   "title": "선택의 시작은 상담",
+   "primary_copy": "내게 필요한 리프팅은?",
+   "secondary_copy": "피부 상태 / 고민 부위 / 이전 시술",
+   "background": "native",
+   "asset_keys": [
+    "D01",
+    "I04"
+   ],
+   "direction": "세 장의 카드가 포개졌다 펼쳐짐. 얼굴 상태, 고민 부위, 이전 시술을 하나씩 보여줌.",
+   "beats": [
+    {
+     "start_sec": 210,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 216,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 224,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 232,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 236,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M09",
+   "start_sec": 240,
+   "duration_sec": 30,
+   "timecode": "4:00-4:30",
+   "title": "가상의 문, 실제 공간",
+   "primary_copy": "문 너머, 실제 LIV",
+   "secondary_copy": "이 건물 4층 / 리브성형외과",
+   "background": "G08",
+   "asset_keys": [
+    "I01",
+    "I03",
+    "I05",
+    "I07"
+   ],
+   "direction": "가상의 문이 열린 뒤 실제 접수대 사진으로 명확히 전환. 로비의 다른 구도 3개를 편집.",
+   "beats": [
+    {
+     "start_sec": 240,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 246,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 254,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 262,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 266,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M10",
+   "start_sec": 270,
+   "duration_sec": 30,
+   "timecode": "4:30-5:00",
+   "title": "장비명 다시 기억하기",
+   "primary_copy": "리프팅 상담, LIV",
+   "secondary_copy": "울쎄라 · 써마지 / 덴서티 · 악센트 프라임",
+   "background": "native",
+   "asset_keys": [
+    "E01",
+    "E02",
+    "E03",
+    "I06"
+   ],
+   "direction": "울쎄라·써마지 묶음과 덴서티·악센트 프라임 묶음을 각각 8초 이상. 이름과 장비 사진을 분리해 읽히게 구성.",
+   "beats": [
+    {
+     "start_sec": 270,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 276,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 284,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 292,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 296,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M11",
+   "start_sec": 300,
+   "duration_sec": 30,
+   "timecode": "5:00-5:30",
+   "title": "상담 전 세 가지",
+   "primary_copy": "상담할 때 알려주세요",
+   "secondary_copy": "신경 쓰이는 부위 / 이전에 받은 시술 / 원하는 변화",
+   "background": "native",
+   "asset_keys": [
+    "I04",
+    "I07"
+   ],
+   "direction": "카드 3개를 차례로 제시. 원장 직접 인용처럼 보이지 않게 병원 안내 문구로 조판.",
+   "beats": [
+    {
+     "start_sec": 300,
+     "duration_sec": 6,
+     "label": "시선 확보"
+    },
+    {
+     "start_sec": 306,
+     "duration_sec": 8,
+     "label": "핵심 대상"
+    },
+    {
+     "start_sec": 314,
+     "duration_sec": 8,
+     "label": "한 가지 정보"
+    },
+    {
+     "start_sec": 322,
+     "duration_sec": 4,
+     "label": "장비·병원명 재확인"
+    },
+    {
+     "start_sec": 326,
+     "duration_sec": 4,
+     "label": "4층 안내"
+    }
+   ]
+  },
+  {
+   "id": "M12",
+   "start_sec": 330,
+   "duration_sec": 30,
+   "timecode": "5:30-6:00",
+   "title": "이 건물 4층",
+   "primary_copy": "리브성형외과\n이 건물 4층",
+   "secondary_copy": "02-797-2773 / 상담 안내 QR",
+   "background": "native",
+   "asset_keys": [
+    "I01",
+    "I03",
+    "B01"
+   ],
+   "direction": "6초 로비, 6초 장비명, 6초 4층 안내, 마지막 12초는 QR과 연락처를 고정. 끝과 첫 장면의 배경 색을 맞춤.",
+   "beats": [
+    {
+     "start_sec": 330,
+     "duration_sec": 6,
+     "label": "실제 로비"
+    },
+    {
+     "start_sec": 336,
+     "duration_sec": 6,
+     "label": "장비명"
+    },
+    {
+     "start_sec": 342,
+     "duration_sec": 6,
+     "label": "4층 안내"
+    },
+    {
+     "start_sec": 348,
+     "duration_sec": 12,
+     "label": "QR 고정"
+    }
+   ]
+  }
+ ],
+ "ai_backgrounds": [
+  {
+   "id": "G01",
+   "name": "접힌 도시가 열린다",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. A compact folded architectural maquette stands on a warm stone plinth. Four nested room volumes are visible as a single compact sculptural form. Premium physical materials, precise joinery, soft shadows.",
+   "video_prompt": "Over six seconds, the four architectural volumes unfold smoothly around their hinges into a small open courtyard. One calm forward camera movement. Settle completely during the last second. All surfaces stay rigid; no melting, no extra rooms, no cuts.",
+   "role": "background_only"
+  },
+  {
+   "id": "G02",
+   "name": "울쎄라 아치",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. A symmetrical gallery alcove made of concentric travertine arches, a clear empty centre for a composited product photograph, warm wood at the sides.",
+   "video_prompt": "Over six seconds, the nested arches separate by a short precise distance, creating depth around the empty centre. Locked camera and steady horizon, no rotation around the future product area. End in a stable showroom composition.",
+   "role": "background_only"
+  },
+  {
+   "id": "G03",
+   "name": "써마지 커튼",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. A deep walnut gallery framed by tall satin curtains with subtle bronze highlights. Empty central display area, polished but restrained luxury.",
+   "video_prompt": "Over six seconds, the curtains slide apart laterally to reveal the empty display area. One continuous controlled movement, the fabric settles gently, stable centre and camera. No product appears.",
+   "role": "background_only"
+  },
+  {
+   "id": "G04",
+   "name": "덴서티 패널",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. Three rectangular warm stone panels at staggered depths in a miniature gallery, with a broad empty central display area and a matte plinth.",
+   "video_prompt": "Over six seconds, panels travel along short straight tracks into a clean aligned composition. Mechanical precision and believable shadows. No folding surfaces, no morphing objects. Hold the final alignment.",
+   "role": "background_only"
+  },
+  {
+   "id": "G05",
+   "name": "악센트 프라임 리본",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. A single dusty rose satin ribbon suspended between two architectural frames, forming an elegant spatial arch. No people or product.",
+   "video_prompt": "Over six seconds, one ribbon slowly curls into a graceful stable arch and then settles. Clear silhouette, low amplitude motion, restrained camera push. This is an abstract brand sculpture, with no depiction of skin or bodily change.",
+   "role": "background_only"
+  },
+  {
+   "id": "G06",
+   "name": "네 개의 쇼룸",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. Four distinct miniature gallery rooms on one base: travertine arches, bronze curtains, stone panels, and a rose ribbon. Each room has an empty clear centre.",
+   "video_prompt": "Over six seconds, four rooms slide into an orderly two-by-two arrangement seen from a gentle elevated front angle. Room structures and materials remain stable. No text or devices. End on a balanced tableau.",
+   "role": "background_only"
+  },
+  {
+   "id": "G07",
+   "name": "원장 프로필 프레임",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. An empty tall editorial portrait frame standing in a walnut and travertine gallery. Keep its inner region entirely flat and plain so a real photograph can be composited later.",
+   "video_prompt": "Over six seconds, an outer architectural frame opens like a precise presentation case. The inner portrait surface remains frontal, flat and still. Do not invent a portrait or human figure. Hold the final framing.",
+   "role": "background_only"
+  },
+  {
+   "id": "G08",
+   "name": "실제 로비로 이어지는 문",
+   "duration_sec": 6,
+   "image_prompt": "Vertical 9:16 luxury architectural miniature film. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clearly a surreal designed miniature, not a documentary of an actual building. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no human skin, no clinical mechanism. Leave upper and lower areas quiet for typography added in editing. A single tall closed architectural door in a miniature walnut room with warm cove lighting. The door reveals only a plain dark empty surface for a later transition.",
+   "video_prompt": "Over six seconds, the two door panels open smoothly to the sides, leaving a rectangular clear aperture. Fixed camera and stable aperture corners; no invented clinic interior beyond the opening. Final one second completely still.",
+   "role": "background_only"
+  }
+ ],
+ "cost_plan": {
+  "initial_images": 8,
+  "initial_videos": 8,
+  "initial_credits_estimate": 100,
+  "working_credit_target_with_retries": 150,
+  "estimate_date": "2026-09-18",
+  "not_a_charge": true,
+  "note": "이미지 2 + 무음 Pro 6초 영상 10.5 크레딧, 각 8개. 실제 생성 전 동일 파라미터 재조회. 현재 턴 생성 0개."
+ },
+ "status": "complete_rendered_and_qc_passed",
+ "completion": {
+  "completed_kst": "2026-09-19",
+  "master": "renders/LIV_lifting_city_01_1080x1920_6min_silent.mp4",
+  "verified": "1080x1920 / 30fps CFR / 10800 frames / 360.000s / yuv420p / no audio",
+  "credits_used_by_production": 114.5,
+  "credit_cap": 150,
+  "log": "generation_log.json",
+  "qc": "qc_report.md"
+ }
+}

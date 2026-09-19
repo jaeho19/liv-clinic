@@ -1,0 +1,17 @@
+# 영상 작업 산출물 — 용량이 커서 추적하지 않는다.
+# 추적하는 것: 렌더러/전처리/검수 스크립트(.py), 기획·기록 문서(.json/.md)
+# 추적하지 않는 것: 원본 사진 사본, 생성물, 프레임 시퀀스, 중간 렌더, 최종 MP4
+
+*/assets/
+*/renders/
+*/edit/gen/
+*/edit/prep/
+*/edit/scenes/
+*/edit/stills/
+*/edit/golden/
+*/edit/fonts/
+
+# 혹시 위 경로 밖에 떨어진 대용량 파일
+*.mp4
+*.mov
+*.webm

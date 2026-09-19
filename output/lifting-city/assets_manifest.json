@@ -1,0 +1,507 @@
+{
+  "project": "LIV Lifting City 01",
+  "checked_at": "2026-09-18",
+  "workspace_root": "D:\\dev\\LIV_homepage",
+  "workspace": {
+    "id": "599c8597-c275-439c-9cc8-4dc7506b0451",
+    "type": "private",
+    "selection_at_check": "default private; no explicit selection"
+  },
+  "inventory_scope": {
+    "reference_elements_listed": 8,
+    "reference_element_medias_inspected": 10,
+    "uploaded_images_listed": 100,
+    "uploaded_image_previews_loaded": 96,
+    "has_more_uploads": true,
+    "limitations": "최근 업로드 100개에 병원 인테리어/장비가 식별되지 않음. 전체 히스토리 부재를 뜻하지 않음. 추가 페이지 자동 열람은 하지 않음. 이 문서는 로컬의 기존 병원 사진으로 실행 가능."
+  },
+  "local_assets": [
+    {
+      "key": "D01",
+      "name": "김수영 원장 프로필 기준본",
+      "kind": "local_verified_source",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\doctor\\doctor-main.jpg",
+      "file": "assets/doctor_verified.jpg",
+      "width": 600,
+      "height": 902,
+      "mode": "RGB",
+      "sha256": "1e6e6bd6aeab7d9e3ba34923efd9129cbda0677d99a1f0349b407944c38af585",
+      "higgsfield_media_id": null,
+      "note": "공식 의료진 페이지와 src/app/[locale]/about/staff/page.tsx의 kim.image 연결로 확인. 얼굴 인식으로 신원을 추정하지 않음."
+    },
+    {
+      "key": "I01",
+      "name": "로비 고해상도 전경",
+      "kind": "local_verified_source",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\about\\lobby.jpg",
+      "file": "assets/interior_lobby.jpg",
+      "width": 6000,
+      "height": 4000,
+      "mode": "RGB",
+      "sha256": "7d9e8550cda33e023b1fb36d6bec411dc87e9a1efcdd70eda18494c1c920e71f",
+      "higgsfield_media_id": null,
+      "note": "병원 소개 페이지에서 사용하는 로비 이미지"
+    },
+    {
+      "key": "I02",
+      "name": "공간 사진 1",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\gallery\\1.jpg",
+      "file": "assets/interior_01.jpg",
+      "width": 800,
+      "height": 533,
+      "mode": "RGB",
+      "sha256": "90cc09c6dd8fe56ace81dfa6d6a8ad492972248b9fe2d3d3406978e72a748804",
+      "higgsfield_media_id": null,
+      "note": "프로젝트 보유 사진. 로비와 동일한 공간의 전경/접수대/대기 공간 구도. 유사 구도 포함."
+    },
+    {
+      "key": "I03",
+      "name": "공간 사진 2",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\gallery\\2.jpg",
+      "file": "assets/interior_02.jpg",
+      "width": 800,
+      "height": 533,
+      "mode": "RGB",
+      "sha256": "4a02ddfbe48e8fe9e1d2efa0c3cebdcf565baf82ddca3a4c60860927779576c1",
+      "higgsfield_media_id": null,
+      "note": "프로젝트 보유 사진. 로비와 동일한 공간의 전경/접수대/대기 공간 구도. 유사 구도 포함."
+    },
+    {
+      "key": "I04",
+      "name": "공간 사진 3",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\gallery\\3.jpg",
+      "file": "assets/interior_03.jpg",
+      "width": 800,
+      "height": 533,
+      "mode": "RGB",
+      "sha256": "774d29728c61500198f38c0f7e4ef6ba3b3f1550553fd717885bc6d062a719f9",
+      "higgsfield_media_id": null,
+      "note": "프로젝트 보유 사진. 로비와 동일한 공간의 전경/접수대/대기 공간 구도. 유사 구도 포함."
+    },
+    {
+      "key": "I05",
+      "name": "공간 사진 4",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\gallery\\4.jpg",
+      "file": "assets/interior_04.jpg",
+      "width": 800,
+      "height": 533,
+      "mode": "RGB",
+      "sha256": "e4a7f6d5c8264976b8bb0a8e48c5ba5ffdaeb46525f0aa5caa536deb0050175f",
+      "higgsfield_media_id": null,
+      "note": "프로젝트 보유 사진. 로비와 동일한 공간의 전경/접수대/대기 공간 구도. 유사 구도 포함."
+    },
+    {
+      "key": "I06",
+      "name": "공간 사진 5",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\gallery\\5.jpg",
+      "file": "assets/interior_05.jpg",
+      "width": 800,
+      "height": 533,
+      "mode": "RGB",
+      "sha256": "dd0d4835e817f501cfeb0cc69e1011d932958254ecab1c65580606061357af7d",
+      "higgsfield_media_id": null,
+      "note": "프로젝트 보유 사진. 로비와 동일한 공간의 전경/접수대/대기 공간 구도. 유사 구도 포함."
+    },
+    {
+      "key": "I07",
+      "name": "공간 사진 6",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\gallery\\6.jpg",
+      "file": "assets/interior_06.jpg",
+      "width": 800,
+      "height": 533,
+      "mode": "RGB",
+      "sha256": "c821d498e621b997422ef9a6fa9bda880e71a1140c1e24a924da0ba8357bbc53",
+      "higgsfield_media_id": null,
+      "note": "프로젝트 보유 사진. 로비와 동일한 공간의 전경/접수대/대기 공간 구도. 유사 구도 포함."
+    },
+    {
+      "key": "E01",
+      "name": "울쎄라피 프라임",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\equipment\\processed\\equipment_ultherapy.png",
+      "file": "assets/equipment_ultherapy.png",
+      "width": 1000,
+      "height": 1000,
+      "mode": "RGBA",
+      "sha256": "76b505e9a482b6cb2bd778bef52a75f87a499f420412bec72ac4547f2267bbb3",
+      "higgsfield_media_id": null,
+      "note": "홈페이지 장비 이미지. 투명 배경 PNG. 실제 장비 모델과 원본 대조 후 사용."
+    },
+    {
+      "key": "E02",
+      "name": "써마지 FLX",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\equipment\\processed\\equipment_thermage.png",
+      "file": "assets/equipment_thermage.png",
+      "width": 1000,
+      "height": 1000,
+      "mode": "RGBA",
+      "sha256": "bb321e530f612dd66990a29e02396a19671cb5953ab5d1002c7edec11f02f198",
+      "higgsfield_media_id": null,
+      "note": "홈페이지 장비 이미지. 투명 배경 PNG."
+    },
+    {
+      "key": "E03",
+      "name": "덴서티",
+      "kind": "local_project_asset",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\equipment\\processed\\equipment_density.png",
+      "file": "assets/equipment_density.png",
+      "width": 1000,
+      "height": 1000,
+      "mode": "RGBA",
+      "sha256": "daee23283192b9becc6c4ee4f5dd99bb3285eb8d1742c0bc683855cc77ca995b",
+      "higgsfield_media_id": null,
+      "note": "홈페이지 장비 이미지. 투명 배경 PNG. HIFU라고 표기하지 않음."
+    },
+    {
+      "key": "B01",
+      "name": "LIV 로고",
+      "kind": "local_verified_source",
+      "source_path": "D:\\dev\\LIV_homepage\\liv-clinic\\public\\images\\logo.png",
+      "file": "assets/liv_logo.png",
+      "width": 206,
+      "height": 48,
+      "mode": "RGBA",
+      "sha256": "c450539dc0a2a6f8665b56eeaf0b5614110ce662331375bec6deef27b9364c56",
+      "higgsfield_media_id": null,
+      "note": "206x48 소형 원본. 과도하게 확대하지 않고 병원명은 별도 조판."
+    }
+  ],
+  "higgsfield_reference": {
+    "element_id": "709fba3c-1e18-4e12-9384-dd687bcbb880",
+    "name": "Caring Authority in White",
+    "status": "completed",
+    "category": "character",
+    "identity_note": "Element 메타데이터에는 김수영 이름이 없다. 이름이 명시된 공식 홈페이지 사진 D01을 최종 기준으로 사용. 후보 10개 중 어떤 사진이 본인인지 얼굴 유사도만으로 단정하지 않는다.",
+    "generation_placeholder": "<<<709fba3c-1e18-4e12-9384-dd687bcbb880>>>",
+    "medias": [
+      {
+        "key": "K01",
+        "media_id": "bcc0aa65-865e-4295-a5b9-29e575085f44",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/bcc0aa65-865e-4295-a5b9-29e575085f44.jpg",
+        "width": 1024,
+        "height": 1536,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음.",
+        "file": "assets/reference_K01.jpg",
+        "sha256": "466e651515740860f037b1e28a84615ae012bee1e23eef9bba20a7edbdcec52e"
+      },
+      {
+        "key": "K02",
+        "media_id": "b8ba6aeb-312c-4c24-844d-4e754b725e8b",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/b8ba6aeb-312c-4c24-844d-4e754b725e8b.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음."
+      },
+      {
+        "key": "K03",
+        "media_id": "2eb4d917-bbc8-4422-be24-c6480ca446f8",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/2eb4d917-bbc8-4422-be24-c6480ca446f8.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음."
+      },
+      {
+        "key": "K04",
+        "media_id": "de938a64-38af-46a1-9156-1ba4db08b7a1",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/de938a64-38af-46a1-9156-1ba4db08b7a1.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음."
+      },
+      {
+        "key": "K05",
+        "media_id": "aea6c1c6-3201-4c9d-9dd7-7e48217ec695",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/aea6c1c6-3201-4c9d-9dd7-7e48217ec695.jpg",
+        "width": 1024,
+        "height": 1536,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음.",
+        "file": "assets/reference_K05.jpg",
+        "sha256": "ff00b0033303d87910034d1c7e09a24325e489eac2850a56dc167708314cfb77"
+      },
+      {
+        "key": "K06",
+        "media_id": "dad2e779-471e-427e-9d27-07936618e8ad",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/dad2e779-471e-427e-9d27-07936618e8ad.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음.",
+        "file": "assets/reference_K06.jpg",
+        "sha256": "29f401e760da904cd820e64fcfcf7bd954e1af26961d286b7d81c9a3624d4319"
+      },
+      {
+        "key": "K07",
+        "media_id": "0d8d8440-ec29-4ee4-b5b9-7ebdc6ad94d4",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/0d8d8440-ec29-4ee4-b5b9-7ebdc6ad94d4.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음."
+      },
+      {
+        "key": "K08",
+        "media_id": "2b8c36d0-e848-435b-a481-2eabd39abab5",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/2b8c36d0-e848-435b-a481-2eabd39abab5.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음.",
+        "file": "assets/reference_K08.jpg",
+        "sha256": "75d4a4fb1337161ba3f4c5a15fdc8ab1ea803e6a1bd20fb745a558c7b6bebca8"
+      },
+      {
+        "key": "K09",
+        "media_id": "04447172-2c12-4f3c-b35b-3dadf4b20778",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/04447172-2c12-4f3c-b35b-3dadf4b20778.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음."
+      },
+      {
+        "key": "K10",
+        "media_id": "dd6a7e90-c4ce-4909-a33b-bc3c0ecc9817",
+        "media_type": "media_input",
+        "url": "https://d2ol7oe51mr4n9.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/dd6a7e90-c4ce-4909-a33b-bc3c0ecc9817.jpg",
+        "width": 1024,
+        "height": 1280,
+        "identity_status": "candidate_not_explicitly_named_in_element_metadata",
+        "use": "후보 참조. 김수영 성명 자막의 기본 사진은 D01. 인물 집합 전체를 자동으로 실명에 연결하지 않음."
+      }
+    ]
+  },
+  "missing_assets": [
+    {
+      "key": "E04",
+      "name": "악센트 프라임",
+      "status": "실제 장비 사진과 Higgsfield media ID 미확인",
+      "fallback": "정확한 한글 장비명 + 추상 아치/리본 그래픽으로 장면 완성. 다른 장비 사진이나 가상의 장비 본체로 대체하지 않음.",
+      "clinic_offering_source": "사용자 직접 제공 정보"
+    }
+  ],
+  "excluded": [
+    "다른 진료원/아이돌/상담원 캐릭터 Elements",
+    "출처가 확인되지 않은 clinic-interior.png",
+    "관련 없는 거리 이미지",
+    "김수영으로 실명이 확인되지 않은 후보 인물 사진의 자동 채택"
+  ],
+  "models_and_cost": {
+    "checked_at": "2026-09-18",
+    "image_model": {
+      "id": "nano_banana_pro",
+      "name": "Nano Banana Pro",
+      "provider_name": "Google",
+      "description": "Ultimate quality, text and diagrams",
+      "output_type": "image",
+      "parameters": [
+        {
+          "name": "resolution",
+          "required": "optional",
+          "type": "string",
+          "description": "Output resolution.",
+          "options": [
+            "1k",
+            "2k",
+            "4k"
+          ],
+          "default": "2k"
+        }
+      ],
+      "medias": [
+        {
+          "name": "medias",
+          "type": "image",
+          "roles": [
+            "image_references"
+          ]
+        }
+      ],
+      "aspect_ratios": [
+        "1:1",
+        "3:2",
+        "2:3",
+        "4:3",
+        "3:4",
+        "4:5",
+        "5:4",
+        "9:16",
+        "16:9",
+        "21:9"
+      ],
+      "tags": [
+        "quality",
+        "text-rendering",
+        "diagrams",
+        "photorealistic",
+        "versatile",
+        "4k",
+        "text-to-image",
+        "image-to-image",
+        "unlim"
+      ],
+      "supports_unlim": true,
+      "free_gens": [
+        {
+          "job_set_types": [
+            "hf_mult_motion_control",
+            "hf_mult_replace_object"
+          ],
+          "remaining": 1,
+          "parameters": {
+            "resolution": [
+              "480p",
+              "720p"
+            ]
+          },
+          "max_duration": 30
+        },
+        {
+          "job_set_types": [
+            "viral_hub_video"
+          ],
+          "remaining": 1,
+          "parameters": {
+            "resolution": [
+              "480p",
+              "720p"
+            ]
+          },
+          "max_duration": null
+        }
+      ]
+    },
+    "video_model": {
+      "id": "kling3_0",
+      "name": "Kling v3.0",
+      "provider_name": "Kling",
+      "description": "Multi-shot, audio sync, motion transfer",
+      "output_type": "video",
+      "parameters": [
+        {
+          "name": "duration",
+          "required": "optional",
+          "type": "number",
+          "description": "Duration in seconds (3-15).",
+          "min": 3,
+          "max": 15,
+          "default": 5
+        },
+        {
+          "name": "mode",
+          "required": "optional",
+          "type": "string",
+          "description": "Generation mode: 'std' (standard), 'pro' (higher quality), or '4k' (4K resolution).",
+          "options": [
+            "std",
+            "pro",
+            "4k"
+          ],
+          "default": "std"
+        },
+        {
+          "name": "sound",
+          "required": "optional",
+          "type": "string",
+          "description": "Generate audio. Use 'off' for silent video and lower credits.",
+          "options": [
+            "on",
+            "off"
+          ],
+          "default": "on"
+        }
+      ],
+      "medias": [
+        {
+          "name": "medias",
+          "type": "image",
+          "roles": [
+            "start_image",
+            "end_image"
+          ]
+        }
+      ],
+      "aspect_ratios": [
+        "16:9",
+        "9:16",
+        "1:1"
+      ],
+      "tags": [
+        "multi-shot",
+        "audio",
+        "motion-transfer",
+        "cinematic",
+        "advanced",
+        "unlim"
+      ],
+      "supports_unlim": true,
+      "free_gens": [
+        {
+          "job_set_types": [
+            "hf_mult_motion_control",
+            "hf_mult_replace_object"
+          ],
+          "remaining": 1,
+          "parameters": {
+            "resolution": [
+              "480p",
+              "720p"
+            ]
+          },
+          "max_duration": 30
+        },
+        {
+          "job_set_types": [
+            "viral_hub_video"
+          ],
+          "remaining": 1,
+          "parameters": {
+            "resolution": [
+              "480p",
+              "720p"
+            ]
+          },
+          "max_duration": null
+        }
+      ]
+    },
+    "image_estimate": {
+      "cost": {
+        "credits": 2,
+        "credits_exact": 2
+      }
+    },
+    "video_estimate": {
+      "cost": {
+        "credits": 10.5,
+        "credits_exact": 10.5
+      }
+    }
+  },
+  "source_links": {
+    "clinic": "https://liv-clinic.net/ko",
+    "staff": "https://liv-clinic.net/ko/about/staff",
+    "equipment": "https://liv-clinic.net/ko/about/equipment",
+    "contact": "https://liv-clinic.net/ko/contact"
+  }
+}
