@@ -51,7 +51,7 @@ SCENEDIR = os.path.join(EDIT, "scenes")
 # 얼굴 선화는 A~D 블록 내내 같은 자리에 두고 부위만 바뀌게 한다.
 FACE_BOX = (240, 470, 840, 1270)
 NOTE_DIAGRAM = "개념도"
-NOTE_Y = 1300               # ②편은 1560이지만 여기는 그 자리에 상담 방향 카드가 있다
+NOTE_Y = 1190               # ②편은 1560이지만 여기는 그 아래가 전부 조판이다(선화 오른쪽 아래 빈 곳)
 NOTE_SIZE = 44
 
 
@@ -118,7 +118,6 @@ def _h06(t, run):
               z0, z1, c0[0], c0[1], c1[0], c1[1])
 
 
-@lru_cache(maxsize=8)
 def _live_frame(idx, dim):
     """생성 클립 한 프레임. 블러는 걸지 않고 앰비언트와 같은 정도로만 감광한다.
 
@@ -126,6 +125,13 @@ def _live_frame(idx, dim):
     그대로 돌려줬다. H06 은 6초 내내 평균휘도 145·밝은 픽셀 26~29%로 안 어두워져
     (②편 리뷰 실측) 그 위 흰 조판과 선화의 대비가 무너진다. ④편은 배경이 H06
     하나라 라이브 창이 두 번 다 H06 이므로 여기서 같은 감광을 건다.
+
+    **캐시하지 않는다.** 여기서 돌려준 이미지는 블록 함수와 draw_chrome 이
+    제자리 변형한다. lru_cache 를 걸면 같은 인덱스가 다시 요청될 때 이미 조판이
+    그려진 이미지 위에 또 그려져 프레임이 점점 어두워진다. int(t*FPS)+1 의
+    반올림과 인덱스 1/180 포화 때문에 같은 인덱스는 순차 렌더에서도 반복
+    요청된다(C 진입부에서 인덱스 1이 7프레임 연속). 1차 출고본에서 실제로
+    t=52~58초에 ~7.5Hz 스트로브가 인코딩됐다 - tests/test_video_map.py 가 막는다.
     """
     return ImageEnhance.Brightness(clip_frame(BG_KEY, idx)).enhance(1.0 - dim)
 
@@ -267,8 +273,7 @@ def a_hook(tl):
         softplate(img, W / 2, 1400, 980, 220, a2 * 0.88, a=118, radius=70, blur=30)
         T(img, "어디가 제일 신경 쓰이세요?", W / 2, 1352 + int((1 - r2) * 26), "xb", 84,
           OFFW, "m", "a", a2, shadow=190, blur=20, maxw=W - 2 * SAFE)
-    # A 는 질문 조판이 1290~1510을 쓰므로 표기를 그 위로 올린다.
-    corner_note(img, NOTE_DIAGRAM, eo(p(tl, 1.4, 0.6)), y=1190)
+    corner_note(img, NOTE_DIAGRAM, eo(p(tl, 1.4, 0.6)))
     return img
 
 
@@ -293,20 +298,26 @@ def _concern(tl, k):
     _region_tag(img, region, side, la, lr)
     corner_note(img, NOTE_DIAGRAM, eo(p(tl, lit + 0.4, 0.6)))
 
+    # 하단 스크림(y=1490부터 알파 0->205)이 조판을 깎지 않게 세 줄을 전부 위로
+    # 올렸다. 1차본은 카드 바닥이 알파 73(28.8%), 병원 연결 줄이 91(35.5%)을
+    # 받아 ROSE_T 휘도 203이 실효 152로 떨어졌다(리뷰 M5). 선화 바닥이 1270이라
+    # 남는 높이가 220px 뿐이어서 카드 소제목("상담 방향" 34px)은 뺐다 -
+    # 자막 하한 54px 과 스크림 회피를 같이 만족시키는 유일한 조합이다.
+    # 자리는 실측 잉크 높이로 잡았다(고민 문장 70 · 태그 51 · 병원 연결 49).
+    # 선화가 실제로 끝나는 곳은 FACE_BOX 바닥(1270)이 아니라 턱끝 1222 다.
     a1, r1 = vis(tl, 8.0, None, 0.55)
-    T(img, title, W / 2, 1360 + int((1 - r1) * 26), "xb", 76, OFFW, "m", "a", a1,
+    T(img, title, W / 2, 1268 + int((1 - r1) * 26), "xb", 76, OFFW, "m", "a", a1,
       shadow=190, blur=18, maxw=W - 2 * SAFE)
 
     a2, r2 = vis(tl, 20.0, None, 0.55)
     if a2 > 0:
         dy = int((1 - r2) * 30)
-        CARD(img, SAFE, 1476, W - 2 * SAFE, 168, 26, CREAM, a2, dy=dy)
-        T(img, "상담 방향", W / 2, 1504 + dy, "m", 34, CHAR, "m", "a", a2)
-        T(img, tags, W / 2, 1552 + dy, "b", 54, INK, "m", "a", a2,
+        CARD(img, SAFE, 1362, W - 2 * SAFE, 106, 26, CREAM, a2, dy=dy)
+        T(img, tags, W / 2, 1390 + dy, "b", 56, INK, "m", "a", a2,
           maxw=W - 2 * SAFE - 60)
 
     a3, _ = vis(tl, 32.0, None, 0.5)
-    T(img, "리브성형외과에서 상담합니다", W / 2, 1680, "m", 46, ROSE_T, "m", "a", a3,
+    T(img, "리브성형외과에서 상담합니다", W / 2, 1492, "m", 54, ROSE_T, "m", "a", a3,
       shadow=150, blur=12)
     return img
 
@@ -346,10 +357,12 @@ def e_together(tl):
         a3, r3 = vis(tl, 3.4 + i * 0.7, None, 0.5)
         if a3 <= 0:
             continue
-        y = 1290 + i * 66
-        tw = twidth(title, "m", 42)
-        rule(img, W / 2 - 20 - tw / 2 + int((1 - r3) * 16), y + 18, 20, 6, ROSE, a3)
-        T(img, title, W / 2 + 16, y, "m", 42, OFFW, "m", "a", a3, shadow=160, blur=12)
+        # 영상 전체를 되짚는 주 내용이라 42px -> 54px. 세 줄 잉크가 1272~1472 라
+        # 하단 스크림(1490~)에 안 닿는다.
+        y = 1272 + i * 76
+        tw = twidth(title, "m", 54)
+        rule(img, W / 2 - 22 - tw / 2 + int((1 - r3) * 16), y + 22, 22, 6, ROSE, a3)
+        T(img, title, W / 2 + 18, y, "m", 54, OFFW, "m", "a", a3, shadow=160, blur=12)
     return img
 
 
