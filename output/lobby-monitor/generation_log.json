@@ -1,0 +1,135 @@
+{
+ "project": "LIV Lobby Monitor 02-04 (실이 하는 일 / 조지아에서 배워 왔습니다 / 리프팅 고민 지도)",
+ "project_slug": "liv-lobby-monitor-02-04",
+ "produced_at_kst": "2026-09-19",
+ "plan": "docs/superpowers/plans/2026-09-19-lobby-monitor-video-set.md (Task 7)",
+ "design": "docs/superpowers/specs/2026-09-19-lobby-monitor-video-set-design.md",
+
+ "accounting_note": "이 Higgsfield 계정은 다른 세션과 공용이다. 비용은 잔액 차이가 아니라 아래 job ID 수 x 단가로 계산한다. 1편 제작 때 계정 잔액은 328.5 줄었으나 실제 작업 몫은 114.5였다. 이번 작업 몫은 아래 image_jobs 7건 + video_jobs 7건이 전부다.",
+
+ "credits": {
+  "preflight_estimates_rechecked_before_generating": {
+   "nano_banana_pro_9x16_2k": 2,
+   "kling3_0_9x16_6s_pro_sound_off": 10.5,
+   "matches_plan_estimate": true,
+   "note": "계획서 Task 7 Step 1 대로 get_cost:true, use_unlim:false 로 각 1회 호출해 확인. 계획서 예상치와 동일."
+  },
+  "breakdown": [
+   {"item": "Nano Banana Pro 시작 이미지 (최초 6장)", "count": 6, "unit": 2, "subtotal": 12},
+   {"item": "Nano Banana Pro 시작 이미지 (H03 재시도 1회)", "count": 1, "unit": 2, "subtotal": 2},
+   {"item": "Kling 3.0 6초 영상 (최초 6개)", "count": 6, "unit": 10.5, "subtotal": 63},
+   {"item": "Kling 3.0 6초 영상 (H04 재시도 1회)", "count": 1, "unit": 10.5, "subtotal": 10.5}
+  ],
+  "spent_by_this_session": 87.5,
+  "planned_baseline": 75,
+  "planned_ceiling_guidance": "설계서 §6: 상한 없음이나 무제한 생성은 아님. 컷당 재시도 2회 한도, 150크레딧 내외 예상.",
+  "within_guidance": true,
+  "retry_budget_used": {"H03_image": "1/2", "H04_video": "1/2", "others": "0/2"},
+  "submissions_rejected_without_charge": [],
+  "preset_substitution_incidents": {
+   "count": 0,
+   "note": "영상 제출 2건 모두 declined_preset_id 를 함께 보내 프리셋 추천 대체가 일어나지 않았다. submitted_count 로 확인(5/5, 1/1)."
+  }
+ },
+
+ "models": {
+  "image": {
+   "id": "nano_banana_pro",
+   "aspect_ratio": "9:16",
+   "resolution": "2k",
+   "count": 1,
+   "use_unlim": false,
+   "served_by": "nano_banana_2",
+   "output_px": "1536x2752 (H03 최초 생성만 768x1376 으로 반환되어 재시도)"
+  },
+  "video": {
+   "id": "kling3_0",
+   "aspect_ratio": "9:16",
+   "duration": 6,
+   "mode": "pro",
+   "sound": "off",
+   "count": 1,
+   "use_unlim": false,
+   "declined_preset_id": "24bae836-2c4a-48e0-89b6-49fcc0b21612",
+   "output": "1076x1928 / 24fps / 145frames — 9:16 을 요청해도 이 규격으로 나온다(예고된 동작)",
+   "declined_preset_note": "이 값을 함께 보내지 않으면 프롬프트의 dark 같은 단어 때문에 프리셋 추천으로 대체되어 job 이 조용히 안 만들어진다. submitted_count 로 매번 확인했다."
+  }
+ },
+
+ "prompt_prefix": "Vertical 9:16 premium clinical-editorial background plate. Warm travertine, dark walnut, dusty rose accents, soft amber indirect lighting, charcoal shadows. Clean central composition and stable perspective, no text, no letters, no logos, no people, no medical devices, no threads, no needles, no human skin, no clinical procedure. Leave the middle area calm and uncluttered for graphics added in editing.",
+
+ "image_jobs": [
+  {"key": "H01", "job_id": "d782d88f-1017-4fc3-93f9-c87377629287", "credits": 2, "status": "completed", "used_in_final": true, "px": "1536x2752", "local": "edit/gen/H01_start.png",
+   "prompt_suffix": "A deep charcoal void with one broad soft horizontal band of warm light across the middle third, fine dust motes suspended in the beam. Minimal, almost abstract."},
+  {"key": "H02", "job_id": "1040e92b-1cc7-4d46-8cce-c08bb2c449a3", "credits": 2, "status": "completed", "used_in_final": true, "px": "1536x2752", "local": "edit/gen/H02_start.png",
+   "prompt_suffix": "A soft warm gradient field, out-of-focus rose and cream bokeh spheres of varying size scattered across a dark warm ground. Abstract, no objects."},
+  {"key": "H03", "job_id": "17fabb1d-4860-4e90-bb24-361b9f71c71d", "credits": 2, "status": "completed", "used_in_final": false, "px": "768x1376", "local": "edit/gen/H03_v1_unused_start.png",
+   "rejected_reason": "다른 5장이 1536x2752 로 나온 반면 이것만 768x1376 (절반 해상도)로 반환되었다. 영상 생성의 시작 이미지로 쓰면 결과가 더 무르다.",
+   "prompt_suffix": "A shallow travertine display niche with a matte charcoal grey back panel and a slim walnut ledge, lit by a warm cove light. The niche is completely empty."},
+  {"key": "H03", "job_id": "654a4c0f-1c8c-4f36-bf96-8d451d06adec", "credits": 2, "status": "completed", "used_in_final": true, "px": "1536x2752", "local": "edit/gen/H03_start.png", "retry_of": "17fabb1d-4860-4e90-bb24-361b9f71c71d", "retry_index": "1/2",
+   "retry_note": "해상도 정상화. 결과적으로 구도도 개선되어(빈 차콜 패널이 중앙을 더 크게 차지) ②편 F블록 인증 2x2 카드 배치에 더 적합하다.",
+   "prompt_suffix": "A shallow travertine display niche with a matte charcoal grey back panel and a slim walnut ledge, lit by a warm cove light. The niche is completely empty. High resolution, crisp stone grain detail."},
+  {"key": "H04", "job_id": "c138c98a-76ed-4945-bc85-2823f33fac11", "credits": 2, "status": "completed", "used_in_final": true, "px": "1536x2752", "local": "edit/gen/H04_start.png",
+   "note": "영상은 재시도본을 쓰지만 시작 이미지는 이 한 장을 두 영상 모두에 사용했다(추가 이미지 비용 없음).",
+   "prompt_suffix": "A calm European stone gallery corridor with pale limestone walls, arched openings and a matte charcoal grey floor, daylight from the left."},
+  {"key": "H05", "job_id": "678b48fc-37b8-4602-9f8c-acc4d35bb51f", "credits": 2, "status": "completed", "used_in_final": true, "px": "1536x2752", "local": "edit/gen/H05_start.png",
+   "prompt_suffix": "A dim auditorium interior seen from the side: rows of empty seats, a soft pool of stage light on an empty lectern area, deep charcoal grey surroundings."},
+  {"key": "H06", "job_id": "f0662bc5-2d18-407c-807d-1ea9963c5026", "credits": 2, "status": "completed", "used_in_final": true, "px": "1536x2752", "local": "edit/gen/H06_start.png",
+   "prompt_suffix": "A smooth warm off-white studio backdrop with a very soft top-left light falloff and a faint rose tint at the edges. Completely empty and minimal."}
+ ],
+
+ "video_jobs": [
+  {"key": "H01", "job_id": "5dd60a51-e644-4b0a-af71-af620443b7e9", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "d782d88f-1017-4fc3-93f9-c87377629287", "local": "edit/gen/H01.mp4", "used_by": "②편 A·B 블록",
+   "prompt": "Over six seconds the light band brightens very slowly and the dust motes drift laterally. Locked camera, no other movement. Stay completely open and still in the final second."},
+  {"key": "H02", "job_id": "e6717bbf-e2e9-4375-8bc8-25f9309f6fb9", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "1040e92b-1cc7-4d46-8cce-c08bb2c449a3", "local": "edit/gen/H02.mp4", "used_by": "②편 D 블록 (히알루론산 캡슐 확산)",
+   "prompt": "Over six seconds the bokeh spheres drift apart slowly and the field brightens a little. One calm continuous motion, no cuts. Final second completely still."},
+  {"key": "H03", "job_id": "8b6d296a-2703-42f9-a67f-b7be48febe00", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "654a4c0f-1c8c-4f36-bf96-8d451d06adec", "local": "edit/gen/H03.mp4", "used_by": "②편 F 블록 (인증), ③편 E·F 블록",
+   "prompt": "Over six seconds the cove light warms up and the camera pushes in very gently. The niche stays empty. No object appears. Final second completely still."},
+  {"key": "H04", "job_id": "de3385c8-9877-4266-96c7-6352a2c6c09c", "credits": 10.5, "status": "completed", "used_in_final": false, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04_v1_unused.mp4",
+   "rejected_reason": "마지막 1초 드리프트 8.06 (평균 휘도차, 0~255 기준), tail 단일화소 최대 128 — 전진 달리가 끝까지 멈추지 않았다. 계획서 Step 6 의 정착 요구 미달.",
+   "prompt": "Over six seconds one slow forward dolly down the corridor. Locked horizon, no rotation. Nothing enters the frame. Final second completely still."},
+  {"key": "H04", "job_id": "b64faf58-e931-4506-98a4-565ed555bf63", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04.mp4", "retry_of": "de3385c8-9877-4266-96c7-6352a2c6c09c", "retry_index": "1/2", "used_by": "③편 B·C 블록 (조지아 본사 연수·수여)",
+   "retry_note": "계획서 Step 6 이 지정한 freeze 문구를 덧붙여 재생성. 드리프트 8.06 -> 3.97, tail 단일화소 128 -> 87 로 개선. 잔여 드리프트는 느린 달리이고 0.7초 크로스디졸브로 앰비언트 켄번즈 줌에 이어지므로 전환이 자연스럽다고 판단해 재시도 2회차는 쓰지 않았다.",
+   "prompt": "Over six seconds one slow forward dolly down the corridor. Locked horizon, no rotation. Nothing enters the frame. The final 1.5 seconds are completely frozen with zero camera and object movement."},
+  {"key": "H05", "job_id": "c4fd6210-30b7-4448-a3dd-edbdaef2ca42", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "678b48fc-37b8-4602-9f8c-acc4d35bb51f", "local": "edit/gen/H05.mp4", "used_by": "③편 D 블록 (학회 발표)",
+   "prompt": "Over six seconds the stage light slowly grows brighter and the camera drifts right a little. The lectern area stays empty, no people. Final second completely still."},
+  {"key": "H06", "job_id": "b9b8bc02-c054-4065-9a89-c38b9dcaae2f", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "f0662bc5-2d18-407c-807d-1ea9963c5026", "local": "edit/gen/H06.mp4", "used_by": "②편 E 블록, ④편 전 구간",
+   "prompt": "Over six seconds the light falloff shifts slowly from left to right. Nothing else moves. Final second completely still."}
+ ],
+
+ "settle_check": {
+  "plan_criterion": "계획서 Task 7 Step 6: tail <= peak * 0.10 (상대비)",
+  "why_not_used_verbatim": "이번 클립들은 peak 자체가 0.18~2.90 (0~255 평균 휘도차)로 거의 정지 수준이라, 상대비가 노이즈끼리의 비교가 되어 6개 전부 '흔들림'으로 오판된다. 절대 드리프트로 다시 판정했다.",
+  "absolute_criterion": "마지막 1초(프레임 -30 vs 마지막)의 평균 휘도 드리프트. 전체 스케일의 약 1% (=2.5) 이하를 정착으로 본다.",
+  "measurements": {
+   "H01": {"peak_mean": 0.31, "tail_mean": 0.24, "tail_max_px": 57, "drift_1s": 0.66, "verdict": "정착"},
+   "H02": {"peak_mean": 1.16, "tail_mean": 0.17, "tail_max_px": 33, "drift_1s": 0.69, "verdict": "정착"},
+   "H03": {"peak_mean": 1.43, "tail_mean": 0.36, "tail_max_px": 11, "drift_1s": 1.35, "verdict": "정착"},
+   "H04_v1": {"peak_mean": 2.90, "tail_mean": 1.71, "tail_max_px": 128, "drift_1s": 8.06, "verdict": "미정착 — 폐기"},
+   "H04_retry": {"peak_mean": 2.32, "tail_mean": 0.95, "tail_max_px": 87, "drift_1s": 3.97, "verdict": "허용 (개선 후 채택)"},
+   "H05": {"peak_mean": 0.93, "tail_mean": 0.58, "tail_max_px": 16, "drift_1s": 2.45, "verdict": "정착"},
+   "H06": {"peak_mean": 0.18, "tail_mean": 0.18, "tail_max_px": 11, "drift_1s": 0.51, "verdict": "정착"}
+  },
+  "note": "계획서 기준을 문자 그대로 적용했다면 이미 정상인 클립 4개를 52.5크레딧을 들여 재생성할 뻔했다."
+ },
+
+ "generation_safety": {
+  "people_generated": 0,
+  "medical_devices_generated": 0,
+  "threads_or_needles_generated": 0,
+  "skin_or_before_after_generated": 0,
+  "text_generated_by_ai": 0,
+  "verification": "생성 직후 6장을 컨택트 시트로 붙여 육안 대조했다. 글자·로고·사람·의료기기·실·바늘·피부·시술 장면 없음 확인.",
+  "note": "생성물은 전부 배경 분위기 플레이트다. 원장 캐릭터 시트는 설계서 §7 결정에 따라 만들지 않았고 Higgsfield Element 709fba3c-1e18-4e12-9384-dd687bcbb880 도 쓰지 않았다. 의료 관련 도해(실 메커니즘·캡슐 확산·얼굴 선화)는 전부 코드로 그렸다 — thread_anim.py / particle_anim.py / face_diagram.py."
+ },
+
+ "pipeline": {
+  "frame_conversion": "Kling 1076x1928/24fps -> scale=1080:-2(lanczos) -> crop 1080x1920 -> minterpolate(fps=30, mi_mode=mci, mc_mode=aobmc, me_mode=bidir, vsbmc=1) -> 180 frames. minterpolate 가 마지막 프레임을 버려 179장이 나오므로 0179.jpg 를 0180.jpg 로 복제해 180을 채운다(6개 전부 동일하게 발생).",
+  "verified": "liv_video.media.clip_frame(key, 1..180) 과 ambient_plate(key) 로 6개 키 전부 읽히는 것을 확인했다. clip_frame 은 인덱스를 1~180 으로 clamp 한다.",
+  "consumed_by": "태스크 8·9·10 의 _bg_clip()"
+ },
+
+ "outputs": [
+  "output/lobby-monitor/edit/gen/frames/H01..H06/0001.jpg~0180.jpg (각 180장, 1080x1920)"
+ ]
+}
