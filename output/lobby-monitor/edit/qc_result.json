@@ -1,0 +1,617 @@
+{
+ "masters": {
+  "thread": {
+   "file": "LIV_thread_1080x1920_4min_silent.mp4",
+   "source": "video_thread.py",
+   "blocks": 9,
+   "xf": 12,
+   "checks": {
+    "spec": {
+     "width": 1080,
+     "height": 1920,
+     "fps": "30/1",
+     "codec": "h264",
+     "frames": 7200,
+     "pix_fmt": "yuv420p",
+     "duration_sec": 240.0,
+     "size_bytes": 76107696,
+     "bitrate_bps": 2536923,
+     "audio_streams": 0,
+     "expected_frames": 7200,
+     "expected_duration": 240.0,
+     "pass": true
+    },
+    "frame_scan": {
+     "decoded_frames": 7200,
+     "sampled_frames": 480,
+     "sample_fps": 2,
+     "min_mean_luma": 31.64,
+     "dark_frames": [],
+     "footer_pill_missing": [],
+     "header_logo_missing": [],
+     "header_clinic_missing": [],
+     "pass": true,
+     "decoded_frames_match": true
+    },
+    "strobe": {
+     "pairs": 7199,
+     "mad_mean": 0.2205,
+     "mad_median": 0.0328,
+     "mad_max": 7.8477,
+     "threshold": 5.0,
+     "spikes": 42,
+     "spikes_at_block_boundary": 28,
+     "spikes_outside_boundary": 14,
+     "boundary_window_frames": 6,
+     "off_boundary_pairs": 7095,
+     "off_boundary_mad_max": 7.6527,
+     "outside_detail": [
+      {
+       "frame": 369,
+       "t": 12.3,
+       "block": "B",
+       "offset_frames": 9,
+       "mad1": 7.653,
+       "mad2": 14.428,
+       "ratio": 1.885
+      },
+      {
+       "frame": 370,
+       "t": 12.333,
+       "block": "B",
+       "offset_frames": 10,
+       "mad1": 7.056,
+       "mad2": 13.315,
+       "ratio": 1.887
+      },
+      {
+       "frame": 371,
+       "t": 12.367,
+       "block": "B",
+       "offset_frames": 11,
+       "mad1": 6.647,
+       "mad2": 12.2,
+       "ratio": 1.836
+      },
+      {
+       "frame": 372,
+       "t": 12.4,
+       "block": "B",
+       "offset_frames": 12,
+       "mad1": 5.97,
+       "mad2": 10.609,
+       "ratio": 1.777
+      },
+      {
+       "frame": 373,
+       "t": 12.433,
+       "block": "B",
+       "offset_frames": 13,
+       "mad1": 5.075,
+       "mad2": 9.298,
+       "ratio": 1.832
+      },
+      {
+       "frame": 5464,
+       "t": 182.133,
+       "block": "G",
+       "offset_frames": 364,
+       "mad1": 5.251,
+       "mad2": 7.743,
+       "ratio": 1.475
+      },
+      {
+       "frame": 5465,
+       "t": 182.167,
+       "block": "G",
+       "offset_frames": 365,
+       "mad1": 5.66,
+       "mad2": 7.757,
+       "ratio": 1.371
+      },
+      {
+       "frame": 5466,
+       "t": 182.2,
+       "block": "G",
+       "offset_frames": 366,
+       "mad1": 5.171,
+       "mad2": 7.302,
+       "ratio": 1.412
+      },
+      {
+       "frame": 5468,
+       "t": 182.267,
+       "block": "G",
+       "offset_frames": 368,
+       "mad1": 5.425,
+       "mad2": 7.125,
+       "ratio": 1.313
+      },
+      {
+       "frame": 6847,
+       "t": 228.233,
+       "block": "I",
+       "offset_frames": 7,
+       "mad1": 6.952,
+       "mad2": 13.606,
+       "ratio": 1.957
+      },
+      {
+       "frame": 6848,
+       "t": 228.267,
+       "block": "I",
+       "offset_frames": 8,
+       "mad1": 6.699,
+       "mad2": 12.743,
+       "ratio": 1.902
+      },
+      {
+       "frame": 6849,
+       "t": 228.3,
+       "block": "I",
+       "offset_frames": 9,
+       "mad1": 6.097,
+       "mad2": 11.532,
+       "ratio": 1.891
+      },
+      {
+       "frame": 6850,
+       "t": 228.333,
+       "block": "I",
+       "offset_frames": 10,
+       "mad1": 5.489,
+       "mad2": 10.65,
+       "ratio": 1.94
+      },
+      {
+       "frame": 6851,
+       "t": 228.367,
+       "block": "I",
+       "offset_frames": 11,
+       "mad1": 5.192,
+       "mad2": 10.149,
+       "ratio": 1.955
+      }
+     ],
+     "ratio_min_outside": 1.313,
+     "strobe_suspects": 0,
+     "pass": true
+    },
+    "black_freeze": {
+     "black_count": 0,
+     "black_detail": [],
+     "freeze_count": 0,
+     "freeze_detail": [],
+     "freeze_threshold": "n=0.001 d=3",
+     "pass": true
+    },
+    "qr_rescan": {
+     "expected": "https://liv-clinic.net/ko/contact",
+     "samples": [
+      {
+       "t": 228.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 230.0,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 232.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 235.0,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 237.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 239.9,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      }
+     ],
+     "pass": true
+    }
+   }
+  },
+  "georgia": {
+   "file": "LIV_georgia_1080x1920_3min_silent.mp4",
+   "source": "video_georgia.py",
+   "blocks": 8,
+   "xf": 12,
+   "checks": {
+    "spec": {
+     "width": 1080,
+     "height": 1920,
+     "fps": "30/1",
+     "codec": "h264",
+     "frames": 5400,
+     "pix_fmt": "yuv420p",
+     "duration_sec": 180.0,
+     "size_bytes": 64455798,
+     "bitrate_bps": 2864702,
+     "audio_streams": 0,
+     "expected_frames": 5400,
+     "expected_duration": 180.0,
+     "pass": true
+    },
+    "frame_scan": {
+     "decoded_frames": 5400,
+     "sampled_frames": 360,
+     "sample_fps": 2,
+     "min_mean_luma": 34.44,
+     "dark_frames": [],
+     "footer_pill_missing": [],
+     "header_logo_missing": [],
+     "header_clinic_missing": [],
+     "pass": true,
+     "decoded_frames_match": true
+    },
+    "strobe": {
+     "pairs": 5399,
+     "mad_mean": 0.3503,
+     "mad_median": 0.0316,
+     "mad_max": 7.4506,
+     "threshold": 5.0,
+     "spikes": 38,
+     "spikes_at_block_boundary": 23,
+     "spikes_outside_boundary": 15,
+     "boundary_window_frames": 6,
+     "off_boundary_pairs": 5308,
+     "off_boundary_mad_max": 7.3086,
+     "outside_detail": [
+      {
+       "frame": 2485,
+       "t": 82.833,
+       "block": "D",
+       "offset_frames": 505,
+       "mad1": 5.14,
+       "mad2": 10.554,
+       "ratio": 2.053
+      },
+      {
+       "frame": 2486,
+       "t": 82.867,
+       "block": "D",
+       "offset_frames": 506,
+       "mad1": 5.455,
+       "mad2": 10.704,
+       "ratio": 1.962
+      },
+      {
+       "frame": 2487,
+       "t": 82.9,
+       "block": "D",
+       "offset_frames": 507,
+       "mad1": 5.289,
+       "mad2": 10.821,
+       "ratio": 2.046
+      },
+      {
+       "frame": 2488,
+       "t": 82.933,
+       "block": "D",
+       "offset_frames": 508,
+       "mad1": 5.581,
+       "mad2": 10.65,
+       "ratio": 1.908
+      },
+      {
+       "frame": 2489,
+       "t": 82.967,
+       "block": "D",
+       "offset_frames": 509,
+       "mad1": 5.138,
+       "mad2": 9.557,
+       "ratio": 1.86
+      },
+      {
+       "frame": 4200,
+       "t": 140.0,
+       "block": "F",
+       "offset_frames": 420,
+       "mad1": 7.309,
+       "mad2": 13.6,
+       "ratio": 1.861
+      },
+      {
+       "frame": 4201,
+       "t": 140.033,
+       "block": "F",
+       "offset_frames": 421,
+       "mad1": 6.415,
+       "mad2": 12.137,
+       "ratio": 1.892
+      },
+      {
+       "frame": 4202,
+       "t": 140.067,
+       "block": "F",
+       "offset_frames": 422,
+       "mad1": 5.913,
+       "mad2": 10.792,
+       "ratio": 1.825
+      },
+      {
+       "frame": 4203,
+       "t": 140.1,
+       "block": "F",
+       "offset_frames": 423,
+       "mad1": 5.066,
+       "mad2": 9.0,
+       "ratio": 1.777
+      },
+      {
+       "frame": 5047,
+       "t": 168.233,
+       "block": "H",
+       "offset_frames": 7,
+       "mad1": 6.953,
+       "mad2": 13.609,
+       "ratio": 1.957
+      },
+      {
+       "frame": 5048,
+       "t": 168.267,
+       "block": "H",
+       "offset_frames": 8,
+       "mad1": 6.698,
+       "mad2": 12.747,
+       "ratio": 1.903
+      },
+      {
+       "frame": 5049,
+       "t": 168.3,
+       "block": "H",
+       "offset_frames": 9,
+       "mad1": 6.1,
+       "mad2": 11.532,
+       "ratio": 1.89
+      },
+      {
+       "frame": 5050,
+       "t": 168.333,
+       "block": "H",
+       "offset_frames": 10,
+       "mad1": 5.485,
+       "mad2": 10.647,
+       "ratio": 1.941
+      },
+      {
+       "frame": 5051,
+       "t": 168.367,
+       "block": "H",
+       "offset_frames": 11,
+       "mad1": 5.19,
+       "mad2": 10.154,
+       "ratio": 1.956
+      },
+      {
+       "frame": 5052,
+       "t": 168.4,
+       "block": "H",
+       "offset_frames": 12,
+       "mad1": 5.005,
+       "mad2": 9.168,
+       "ratio": 1.832
+      }
+     ],
+     "ratio_min_outside": 1.777,
+     "strobe_suspects": 0,
+     "pass": true
+    },
+    "black_freeze": {
+     "black_count": 0,
+     "black_detail": [],
+     "freeze_count": 0,
+     "freeze_detail": [],
+     "freeze_threshold": "n=0.001 d=3",
+     "pass": true
+    },
+    "qr_rescan": {
+     "expected": "https://liv-clinic.net/ko/contact",
+     "samples": [
+      {
+       "t": 168.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 170.0,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 172.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 175.0,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 177.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 179.9,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      }
+     ],
+     "pass": true
+    }
+   }
+  },
+  "map": {
+   "file": "LIV_map_1080x1920_3min_silent.mp4",
+   "source": "video_map.py",
+   "blocks": 7,
+   "xf": 12,
+   "checks": {
+    "spec": {
+     "width": 1080,
+     "height": 1920,
+     "fps": "30/1",
+     "codec": "h264",
+     "frames": 5400,
+     "pix_fmt": "yuv420p",
+     "duration_sec": 180.0,
+     "size_bytes": 46011615,
+     "bitrate_bps": 2044960,
+     "audio_streams": 0,
+     "expected_frames": 5400,
+     "expected_duration": 180.0,
+     "pass": true
+    },
+    "frame_scan": {
+     "decoded_frames": 5400,
+     "sampled_frames": 360,
+     "sample_fps": 2,
+     "min_mean_luma": 54.61,
+     "dark_frames": [],
+     "footer_pill_missing": [],
+     "header_logo_missing": [],
+     "header_clinic_missing": [],
+     "pass": true,
+     "decoded_frames_match": true
+    },
+    "strobe": {
+     "pairs": 5399,
+     "mad_mean": 0.142,
+     "mad_median": 0.0269,
+     "mad_max": 7.32,
+     "threshold": 5.0,
+     "spikes": 20,
+     "spikes_at_block_boundary": 14,
+     "spikes_outside_boundary": 6,
+     "boundary_window_frames": 6,
+     "off_boundary_pairs": 5321,
+     "off_boundary_mad_max": 6.9551,
+     "outside_detail": [
+      {
+       "frame": 5047,
+       "t": 168.233,
+       "block": "G",
+       "offset_frames": 7,
+       "mad1": 6.955,
+       "mad2": 13.62,
+       "ratio": 1.958
+      },
+      {
+       "frame": 5048,
+       "t": 168.267,
+       "block": "G",
+       "offset_frames": 8,
+       "mad1": 6.703,
+       "mad2": 12.758,
+       "ratio": 1.903
+      },
+      {
+       "frame": 5049,
+       "t": 168.3,
+       "block": "G",
+       "offset_frames": 9,
+       "mad1": 6.106,
+       "mad2": 11.543,
+       "ratio": 1.89
+      },
+      {
+       "frame": 5050,
+       "t": 168.333,
+       "block": "G",
+       "offset_frames": 10,
+       "mad1": 5.491,
+       "mad2": 10.654,
+       "ratio": 1.94
+      },
+      {
+       "frame": 5051,
+       "t": 168.367,
+       "block": "G",
+       "offset_frames": 11,
+       "mad1": 5.192,
+       "mad2": 10.157,
+       "ratio": 1.956
+      },
+      {
+       "frame": 5052,
+       "t": 168.4,
+       "block": "G",
+       "offset_frames": 12,
+       "mad1": 5.006,
+       "mad2": 9.178,
+       "ratio": 1.833
+      }
+     ],
+     "ratio_min_outside": 1.833,
+     "strobe_suspects": 0,
+     "pass": true
+    },
+    "black_freeze": {
+     "black_count": 0,
+     "black_detail": [],
+     "freeze_count": 0,
+     "freeze_detail": [],
+     "freeze_threshold": "n=0.001 d=3",
+     "pass": true
+    },
+    "qr_rescan": {
+     "expected": "https://liv-clinic.net/ko/contact",
+     "samples": [
+      {
+       "t": 168.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 170.0,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 172.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 175.0,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 177.5,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      },
+      {
+       "t": 179.9,
+       "decoded": "https://liv-clinic.net/ko/contact",
+       "match": true
+      }
+     ],
+     "pass": true
+    }
+   }
+  }
+ },
+ "shared": {
+  "copy_guard": {
+   "exit_code": 0,
+   "banned_terms": 24,
+   "pass": true
+  }
+ }
+}

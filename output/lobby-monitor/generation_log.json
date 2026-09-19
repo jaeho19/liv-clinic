@@ -83,12 +83,12 @@
    "prompt": "Over six seconds the light band brightens very slowly and the dust motes drift laterally. Locked camera, no other movement. Stay completely open and still in the final second."},
   {"key": "H02", "job_id": "e6717bbf-e2e9-4375-8bc8-25f9309f6fb9", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "1040e92b-1cc7-4d46-8cce-c08bb2c449a3", "local": "edit/gen/H02.mp4", "used_by": "②편 D 블록 (히알루론산 캡슐 확산)",
    "prompt": "Over six seconds the bokeh spheres drift apart slowly and the field brightens a little. One calm continuous motion, no cuts. Final second completely still."},
-  {"key": "H03", "job_id": "8b6d296a-2703-42f9-a67f-b7be48febe00", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "654a4c0f-1c8c-4f36-bf96-8d451d06adec", "local": "edit/gen/H03.mp4", "used_by": "②편 F 블록 (인증), ③편 E·F 블록",
+  {"key": "H03", "job_id": "8b6d296a-2703-42f9-a67f-b7be48febe00", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "654a4c0f-1c8c-4f36-bf96-8d451d06adec", "local": "edit/gen/H03.mp4", "used_by": "②편 F 블록 (인증), ③편 E 블록 + F 블록(앰비언트)",
    "prompt": "Over six seconds the cove light warms up and the camera pushes in very gently. The niche stays empty. No object appears. Final second completely still."},
   {"key": "H04", "job_id": "de3385c8-9877-4266-96c7-6352a2c6c09c", "credits": 10.5, "status": "completed", "used_in_final": false, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04_v1_unused.mp4",
    "rejected_reason": "마지막 1초 드리프트 8.06 (평균 휘도차, 0~255 기준), tail 단일화소 최대 128 — 전진 달리가 끝까지 멈추지 않았다. 계획서 Step 6 의 정착 요구 미달.",
    "prompt": "Over six seconds one slow forward dolly down the corridor. Locked horizon, no rotation. Nothing enters the frame. Final second completely still."},
-  {"key": "H04", "job_id": "b64faf58-e931-4506-98a4-565ed555bf63", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04.mp4", "retry_of": "de3385c8-9877-4266-96c7-6352a2c6c09c", "retry_index": "1/2", "used_by": "③편 B·C 블록 (조지아 본사 연수·수여) + ②편 G 블록 (사람)",
+  {"key": "H04", "job_id": "b64faf58-e931-4506-98a4-565ed555bf63", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "c138c98a-76ed-4945-bc85-2823f33fac11", "local": "edit/gen/H04.mp4", "retry_of": "de3385c8-9877-4266-96c7-6352a2c6c09c", "retry_index": "1/2", "used_by": "③편 B 블록 + C 블록(앰비언트) (조지아 본사 연수·수여) + ②편 G 블록 (사람)",
    "retry_note": "계획서 Step 6 이 지정한 freeze 문구를 덧붙여 재생성. 드리프트 8.06 -> 3.97, tail 단일화소 128 -> 87 로 개선. 드리프트 3.97 은 settle_check 의 수치 기준 (A) 2.5 를 넘으므로, **기준 (B) 를 적용해 채택했다** — 이 클립은 _bg_clip() 을 통해 0.7초 크로스디졸브로 앰비언트 켄번즈 플레이트에 넘어가는 방식으로만 쓰이고 잔여 움직임이 느린 전진 달리라, 전환이 잔여 드리프트를 가린다. 재시도 2회차는 쓰지 않았다.",
    "prompt": "Over six seconds one slow forward dolly down the corridor. Locked horizon, no rotation. Nothing enters the frame. The final 1.5 seconds are completely frozen with zero camera and object movement."},
   {"key": "H05", "job_id": "c4fd6210-30b7-4448-a3dd-edbdaef2ca42", "credits": 10.5, "status": "completed", "used_in_final": true, "start_image_job": "678b48fc-37b8-4602-9f8c-acc4d35bb51f", "local": "edit/gen/H05.mp4", "used_by": "③편 D 블록 (학회 발표)",
@@ -131,6 +131,19 @@
  },
 
  "outputs": [
-  "output/lobby-monitor/edit/gen/frames/H01..H06/0001.jpg~0180.jpg (각 180장, 1080x1920)"
- ]
+  "output/lobby-monitor/edit/gen/frames/H01..H06/0001.jpg~0180.jpg (각 180장, 1080x1920) - 중간 산출물",
+
+  "output/lobby-monitor/renders/LIV_thread_1080x1920_4min_silent.mp4 (②편 마스터, 7200프레임 / 240.000초 / 72.6MB / 무음)",
+  "output/lobby-monitor/renders/LIV_georgia_1080x1920_3min_silent.mp4 (③편 마스터, 5400프레임 / 180.000초 / 61.5MB / 무음)",
+  "output/lobby-monitor/renders/LIV_map_1080x1920_3min_silent.mp4 (④편 마스터, 5400프레임 / 180.000초 / 43.9MB / 무음)",
+
+  "output/lobby-monitor/renders/LIV_thread_preview.mp4 (프리뷰 540x960 / 240.000초 / 1.9MB)",
+  "output/lobby-monitor/renders/LIV_georgia_preview.mp4 (프리뷰 540x960 / 180.000초 / 1.8MB)",
+  "output/lobby-monitor/renders/LIV_map_preview.mp4 (프리뷰 540x960 / 180.000초 / 1.1MB)",
+
+  "output/lobby-monitor/qc_report.md · output/lobby-monitor/edit/qc_result.json (통합 검수, 태스크 11)",
+  "output/lobby-monitor/edit/stills/sheet_thread.png · sheet_georgia.png · sheet_map.png (장면 스틸 시트)"
+ ],
+
+ "outputs_note": "①편 output/lifting-city/renders/LIV_lifting_city_01_1080x1920_6min_silent.mp4 (360초)와 합쳐 4편 16분 루프가 된다. renders/ 와 edit/stills/ 는 output/.gitignore 로 추적하지 않는다(용량 정책) - 파일은 이 PC 로컬에 있다."
 }
