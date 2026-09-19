@@ -45,7 +45,7 @@ def main(argv):
                  if os.path.exists(os.path.join(here, n))]
     hits = find_banned(collect_strings(paths))
     for path, line, value, b in hits:
-        print("금지 표현 '%s' — %s:%d — %r" % (b, os.path.basename(path), line, value))
+        print("금지 표현 '%s' - %s:%d - %r" % (b, os.path.basename(path), line, value))
     print("\n검사 파일 %d개, 위반 %d건" % (len(paths), len(hits)))
     return 1 if hits else 0
 
