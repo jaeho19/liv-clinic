@@ -269,12 +269,15 @@ def a_hook(tl):
     eyebrow(img, tl, "리프팅 고민 지도", 430, 0.3)
 
     # 하이라이트를 선화보다 먼저 깔아야 눈·코·입 선이 사각형에 덮이지 않는다.
-    # 기본 ROSE 는 어두운 배경 위에서 탁한 갈색 덩어리로 보여 밝은 ROSE_T 를 쓴다.
+    # 색은 face_diagram 기본값(ROSE)을 쓴다. 채움 사각형 시절에는 ROSE 가 어두운
+    # 배경 위에서 탁한 갈색 덩어리로 보여 밝은 ROSE_T 로 덮어썼지만, 브래킷에는
+    # 채움이 없다. 오히려 ROSE_T(휘도 202)는 선화(226,214,206)와 톤이 붙어 표시가
+    # 선의 일부로 보인다 - ②편이 같은 대조로 확인했고 여기서도 같은 값이 나왔다.
     # 켜질 때 한 번 밝게 올라오고 다음 지점으로 넘어가면 자리만 남긴다 - 세 개가
-    # 계속 밝으면 선화가 판 세 장에 덮인 그림이 된다(스틸 t=5 1차 실측).
+    # 계속 밝으면 얼굴이 표시로 뒤덮인 그림이 된다(스틸 t=5 1차 실측).
     for i, (region, _t, _g, _s, _l, _c) in enumerate(CONCERNS):
         a = eo(p(tl, A_LIT[i], 1.0)) * (1.0 - 0.78 * eio(p(tl, A_LIT[i] + 1.9, 1.3)))
-        fd.highlight(img, FACE_BOX, region, a * _breath(tl, A_LIT[i], 6.0 + i), ROSE_T)
+        fd.highlight(img, FACE_BOX, region, a * _breath(tl, A_LIT[i], 6.0 + i))
     fd.draw_face(img, FACE_BOX, eo(p(tl, 0.4, 1.0)))
     for i, (region, _t, _g, side, _l, _c) in enumerate(CONCERNS):
         la, lr = vis(tl, A_LIT[i] + 0.5, None, 0.5)
@@ -304,7 +307,7 @@ def _concern(tl, k):
              1.0 if i == k else 0.28)
 
     ha = eo(p(tl, lit, 1.2)) * _breath(tl, lit, 7.0 + k)
-    fd.highlight(img, FACE_BOX, region, ha, ROSE_T)
+    fd.highlight(img, FACE_BOX, region, ha)      # 색은 기본 ROSE (a_hook 주석 참조)
     fd.draw_face(img, FACE_BOX, eo(p(tl, 0.2, 0.9)))
     la, lr = vis(tl, lit + 0.8, None, 0.5)
     _region_tag(img, region, side, la, lr)
