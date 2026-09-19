@@ -2,6 +2,11 @@
 """②③④편 에셋 전처리.
 
 인물·장비·제품의 형태는 바꾸지 않는다. EXIF 회전 보정, 크기 정규화, 복사만 한다.
+
+사전조건: output/lifting-city/edit/prep/ 에 ①편 전처리 산출물(I01~I07.jpg,
+E01~E03.png, logo_white.png, logo_ink.png)이 이미 있어야 한다. 없으면 먼저
+`cd output/lifting-city/edit && python prep_assets.py` 를 실행할 것 — 그 폴더는
+output/.gitignore(*/edit/prep/)로 커밋되지 않으므로 새 클론에는 없다.
 """
 import json
 import os
@@ -103,9 +108,19 @@ _save(_fit_h(_load("doctor/doctor-2.jpg").convert("RGB"), 1353), "D02.jpg",
       quality=96, subsampling=0)
 
 print("[4] 1편 전처리 결과 재사용")
-for name in ("I01.jpg", "I02.jpg", "I03.jpg", "I04.jpg", "I05.jpg", "I06.jpg",
-             "I07.jpg", "E01.png", "E02.png", "E03.png",
-             "logo_white.png", "logo_ink.png"):
+CITY_FILES = ("I01.jpg", "I02.jpg", "I03.jpg", "I04.jpg", "I05.jpg", "I06.jpg",
+              "I07.jpg", "E01.png", "E02.png", "E03.png",
+              "logo_white.png", "logo_ink.png")
+_missing = [n for n in CITY_FILES if not os.path.isfile(os.path.join(CITY_PREP, n))]
+if _missing:
+    sys.exit(
+        "①편 전처리 산출물이 없다: %s\n"
+        "  누락 파일(%d/%d): %s\n"
+        "  복구: cd output/lifting-city/edit && python prep_assets.py 를 먼저 실행해\n"
+        "  ①편 prep/ 를 만든 뒤 이 스크립트를 다시 실행할 것."
+        % (CITY_PREP, len(_missing), len(CITY_FILES), ", ".join(_missing))
+    )
+for name in CITY_FILES:
     shutil.copy2(os.path.join(CITY_PREP, name), os.path.join(PREP, name))
     report[name] = "copied"
     print("  %-14s copied" % name)

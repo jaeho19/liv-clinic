@@ -3,6 +3,7 @@ import os
 import subprocess
 import sys
 
+import numpy as np
 import pytest
 from PIL import Image
 
@@ -28,6 +29,25 @@ def test_thread_crop_is_wide_and_large():
     im = Image.open(os.path.join(PREP, "P01T.png"))
     assert im.width == 1600
     assert im.width > im.height * 2, "실은 가로로 긴 형태여야 한다"
+
+
+def test_thread_crop_excludes_purple_box():
+    """P01T의 y축 컷오프가 낮으면 APTOS 박스가 크롭에 섞여 들어오는데,
+    폭/종횡비만 보는 위 테스트는 그 실패를 못 잡는다(실측: 0.42 컷오프일 때
+    1600x580으로 종횡비 조건은 여전히 만족했다). prep_assets.py가 실을 골라낼 때
+    쓰는 것과 같은 보라 판정식(b-r>25, b>90, 불투명 화소 한정)을 그대로 재사용해
+    최종 산출물의 보라 화소 비율을 직접 잰다.
+    실측 기준값: 정상(0.82 컷오프) 크롭은 0.0000%, 박스가 섞였던 0.42 컷오프
+    크롭은 86.7611% — 1%는 두 값 사이에서 압도적인 여유를 둔 경계다."""
+    im = Image.open(os.path.join(PREP, "P01T.png")).convert("RGBA")
+    arr = np.asarray(im)
+    opaque = arr[..., 3] > 40
+    r, g, b = arr[..., 0].astype(int), arr[..., 1].astype(int), arr[..., 2].astype(int)
+    purple = (b - r > 25) & (b > 90)
+    n_opaque = int(opaque.sum())
+    purple_ratio = (int((purple & opaque).sum()) / n_opaque) if n_opaque else 1.0
+    assert purple_ratio < 0.01, (
+        "보라색 박스 화소 비율 %.2f%% - 박스가 섞여 들어왔다" % (purple_ratio * 100))
 
 
 @pytest.mark.parametrize("key", ["A03", "A04"])
