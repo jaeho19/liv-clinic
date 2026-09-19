@@ -3,6 +3,7 @@
 
 사진 대신 선화를 쓴다. 특정 인물의 얼굴이 아니고, 부위를 가리키는 도해다.
 """
+import math
 import os
 import sys
 
@@ -16,14 +17,24 @@ REGIONS = ("cheek", "midface", "jawline", "submental", "texture")
 REGION_LABEL = {"cheek": "볼", "midface": "중안부", "jawline": "턱선",
                 "submental": "이중턱", "texture": "피부결"}
 
-# 얼굴 사각형 안의 상대 좌표 (x0, y0, x1, y1), 0~1
-# 눈썹 y=0.42, 코 y=0.46~0.60, 입 y=0.68, 턱끝 y=0.94 (draw_face 기준)에 맞춰
-# 부위별 밴드가 서로 겹치는 이목구비를 가리지 않도록 배치했다.
+# 얼굴 윤곽 제어점 (얼굴 사각형 w,h에 대한 0~1 비율).
+# draw_face의 선화와 _face_mask의 내부 채움이 반드시 같은 모양을 쓰도록
+# 여기 한 곳에서만 정의한다 (호: 180'->360', 두 폴리라인은 뺨에서 턱끝으로).
+_ARC_BOX = (0.10, 0.04, 0.90, 0.86)
+_LEFT = [(0.10, 0.45), (0.14, 0.66), (0.30, 0.86), (0.50, 0.94)]
+_RIGHT = [(0.90, 0.45), (0.86, 0.66), (0.70, 0.86), (0.50, 0.94)]
+
+# 얼굴 사각형 안의 상대 좌표 (x0, y0, x1, y1), 0~1.
+# 눈썹 y=0.42, 코 y=0.46~0.60, 입 y=0.68, 턱끝 y=0.94 (draw_face 기준) 뿐 아니라
+# _face_mask로 잰 "실제 윤곽 안쪽 담김 비율"까지 맞춰 정했다 — fix round 1 리뷰에서
+# 사각형이 윤곽 밖 빈 배경을 크게 침범한다는 지적(특히 jawline 18~75%, cheek 13~36px)을
+# 받고 좌표를 다시 잡았다. 실측치·근거는 test_face_diagram.py의
+# _MIN_INSIDE_RATIO 주석과 task-5-report.md 표 참조.
 _REL = {
-    "cheek":     (0.08, 0.46, 0.42, 0.66),
+    "cheek":     (0.135, 0.46, 0.42, 0.62),
     "midface":   (0.20, 0.40, 0.80, 0.62),
-    "jawline":   (0.10, 0.70, 0.90, 0.90),
-    "submental": (0.30, 0.78, 0.70, 0.95),
+    "jawline":   (0.22, 0.70, 0.78, 0.87),
+    "submental": (0.32, 0.78, 0.68, 0.94),
     "texture":   (0.20, 0.18, 0.80, 0.42),
 }
 LINE = (226, 214, 206)
@@ -47,6 +58,26 @@ def region_rect(box, region):
             int(fx0 + rx1 * fw), int(fy0 + ry1 * fh))
 
 
+def _face_mask(w, h):
+    """draw_face가 그리는 얼굴 윤곽 내부를 채운 흑백 마스크 (255=안쪽, 0=바깥).
+    _ARC_BOX/_LEFT/_RIGHT를 draw_face와 공유하므로 항상 같은 모양이 나온다.
+    region_rect가 실제로 윤곽 안에 담기는지 재는 용도 (테스트 전용, 비공개)."""
+    cx = 0.5
+    cy = (_ARC_BOX[1] + _ARC_BOX[3]) / 2.0
+    a = (_ARC_BOX[2] - _ARC_BOX[0]) / 2.0
+    b = (_ARC_BOX[3] - _ARC_BOX[1]) / 2.0
+    pts = []
+    for i in range(65):  # 180'->360' 호를 64등분한 점으로 근사
+        rad = math.radians(180 + 180 * i / 64.0)
+        pts.append((cx + a * math.cos(rad), cy + b * math.sin(rad)))
+    pts += _RIGHT[1:]                  # 오른쪽 뺨 -> 턱끝 (호의 끝점과 중복 제거)
+    pts += list(reversed(_LEFT))[1:]   # 턱끝 -> 왼쪽 뺨 (첫 점에서 폐곡선이 닫힘)
+    poly = [(x * w, y * h) for x, y in pts]
+    m = Image.new("L", (w, h), 0)
+    ImageDraw.Draw(m).polygon(poly, fill=255)
+    return m
+
+
 def draw_face(base, box, alpha=1.0, color=None):
     """정면 얼굴 윤곽 선화."""
     if alpha <= 0.004:
@@ -56,15 +87,17 @@ def draw_face(base, box, alpha=1.0, color=None):
     w, h = fx1 - fx0, fy1 - fy0
     lay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
-    col = tuple(color) + (200,)
-    lw = max(3, int(w * 0.006))
+    col = tuple(color) + (255,)
+    # 2.5~3m 사이니지 가독성 기준 최소 8px(1080px 패널에서 약 4.8mm)를 바닥값으로 하고,
+    # w=600(실사용 얼굴 폭)에서 비율 항도 정확히 8이 되게 잡았다 — 이전 max(3, w*0.006)은
+    # w>=1333이어야 바닥값을 넘는 죽은 항이라 실제로는 항상 3px로 고정돼 있었다.
+    lw = max(8, int(w / 75.0))
 
     # 얼굴 윤곽: 위는 타원, 아래는 턱으로 모이는 곡선
-    d.arc([w * 0.10, h * 0.04, w * 0.90, h * 0.86], 180, 360, fill=col, width=lw)
-    left = [(w * 0.10, h * 0.45), (w * 0.14, h * 0.66), (w * 0.30, h * 0.86),
-            (w * 0.50, h * 0.94)]
-    right = [(w * 0.90, h * 0.45), (w * 0.86, h * 0.66), (w * 0.70, h * 0.86),
-             (w * 0.50, h * 0.94)]
+    d.arc([w * _ARC_BOX[0], h * _ARC_BOX[1], w * _ARC_BOX[2], h * _ARC_BOX[3]],
+          180, 360, fill=col, width=lw)
+    left = [(w * x, h * y) for x, y in _LEFT]
+    right = [(w * x, h * y) for x, y in _RIGHT]
     d.line(left, fill=col, width=lw, joint="curve")
     d.line(right, fill=col, width=lw, joint="curve")
     # 눈·코·입을 최소한의 선으로
