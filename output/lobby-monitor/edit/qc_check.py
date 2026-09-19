@@ -19,8 +19,10 @@
 죽지 않도록 특수문자를 쓰지 않고 errors="replace" 로 방어한다.
 
 사용법
-    python output/lobby-monitor/edit/qc_check.py            # 전체
-    python output/lobby-monitor/edit/qc_check.py thread     # 한 편만
+    python output/lobby-monitor/edit/qc_check.py            # 전체 -> qc_result.json
+    python output/lobby-monitor/edit/qc_check.py thread     # 한 편만 -> qc_result_thread.json
+
+전체 실행은 3편 전수 디코딩(18,000프레임) 때문에 약 21분 걸린다.
 """
 import ast
 import json
@@ -343,6 +345,14 @@ def ok(d):
 
 def main(argv):
     only = argv[1:]
+    known = [m[0] for m in MASTERS]
+    # 이름을 잘못 적으면 검사 대상이 0개가 되는데, 그 상태로 ALL PASS 를 찍으면
+    # "검사 실패"가 "합격"으로 둔갑한다(copy_guard 가 같은 이유로 두는 가드다).
+    bad = [n for n in only if n not in known]
+    if bad:
+        print("알 수 없는 편 이름: %s (가능한 값: %s)" % (", ".join(bad), ", ".join(known)))
+        return 2
+
     result = {"masters": {}, "shared": {}}
     for name, fn, frames, dur, src in MASTERS:
         if only and name not in only:
@@ -353,8 +363,13 @@ def main(argv):
     result["shared"]["copy_guard"] = cg
     print("금지 문구      : %s" % ok(cg))
 
-    with open(os.path.join(HERE, "qc_result.json"), "w", encoding="utf-8") as f:
+    # 한 편만 돌렸을 때 전체 결과 파일을 덮어쓰지 않는다. 부분 실행 결과가
+    # qc_result.json 을 조용히 대체하면 나중에 그 파일을 "3편 검수 결과"로 읽는다.
+    name = "qc_result.json" if not only else "qc_result_%s.json" % "_".join(sorted(only))
+    out_path = os.path.join(HERE, name)
+    with open(out_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=1)
+    print("기록          : %s" % os.path.basename(out_path))
 
     allpass = cg["pass"] and all(
         c["pass"] for m in result["masters"].values() for c in m["checks"].values())
