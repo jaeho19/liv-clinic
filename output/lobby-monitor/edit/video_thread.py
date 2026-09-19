@@ -370,13 +370,16 @@ def e_lineup(tl):
         T(img, "압토스 라인업과 적용 부위", W / 2, 400 + int((1 - r) * 22), "b", 56,
           OFFW, "m", "a", a, shadow=180, blur=16, maxw=W - 2 * SAFE)
 
-    # 하이라이트를 선화보다 먼저 깔아야 눈·코·입 선이 사각형에 덮이지 않는다.
-    # 기본 ROSE 는 어두운 배경 위에서 탁한 갈색 덩어리로 보여 밝은 ROSE_T 를 쓴다.
+    # 하이라이트를 선화보다 먼저 깔아 선화가 항상 위에 오게 한다(부위 표시가
+    # 얼굴선을 끊지 않는다). 색은 face_diagram 기본 ROSE 를 그대로 쓴다 - 브래킷이
+    # 선화(226,214,206)와 다른 색으로 읽혀야 "표시"로 보인다. 밝은 ROSE_T 로
+    # 올리면 배경 대비는 4.4배로 커지지만(ROSE 는 3.4배) 선화와 톤이 붙어
+    # 브래킷이 선화의 일부처럼 보인다 - 스틸 대조로 확인했다.
     k = max(0, min(2, int(tl / E_SEG)))
     region, name, part = E_ITEMS[k]
     tk = tl - k * E_SEG
     ha, _hr = vis(tk, 0.2, E_SEG - 0.7, 0.5, 0.4)
-    fd.highlight(img, E_BOX, region, ha, ROSE_T)
+    fd.highlight(img, E_BOX, region, ha)
     fd.draw_face(img, E_BOX, eo(p(tl, 0.4, 0.9)))
 
     ca, cr = vis(tk, 0.35, E_SEG - 0.7, 0.5, 0.4)
