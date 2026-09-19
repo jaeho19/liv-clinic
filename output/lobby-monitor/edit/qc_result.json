@@ -238,8 +238,8 @@
      "frames": 5400,
      "pix_fmt": "yuv420p",
      "duration_sec": 180.0,
-     "size_bytes": 64455798,
-     "bitrate_bps": 2864702,
+     "size_bytes": 64557163,
+     "bitrate_bps": 2869207,
      "audio_streams": 0,
      "expected_frames": 5400,
      "expected_duration": 180.0,
@@ -259,9 +259,9 @@
     },
     "strobe": {
      "pairs": 5399,
-     "mad_mean": 0.3503,
-     "mad_median": 0.0316,
-     "mad_max": 7.4506,
+     "mad_mean": 0.357,
+     "mad_median": 0.0324,
+     "mad_max": 7.4536,
      "threshold": 5.0,
      "spikes": 38,
      "spikes_at_block_boundary": 23,
@@ -284,36 +284,36 @@
        "t": 82.867,
        "block": "D",
        "offset_frames": 506,
-       "mad1": 5.455,
-       "mad2": 10.704,
-       "ratio": 1.962
+       "mad1": 5.456,
+       "mad2": 10.708,
+       "ratio": 1.963
       },
       {
        "frame": 2487,
        "t": 82.9,
        "block": "D",
        "offset_frames": 507,
-       "mad1": 5.289,
-       "mad2": 10.821,
-       "ratio": 2.046
+       "mad1": 5.292,
+       "mad2": 10.822,
+       "ratio": 2.045
       },
       {
        "frame": 2488,
        "t": 82.933,
        "block": "D",
        "offset_frames": 508,
-       "mad1": 5.581,
-       "mad2": 10.65,
-       "ratio": 1.908
+       "mad1": 5.58,
+       "mad2": 10.656,
+       "ratio": 1.909
       },
       {
        "frame": 2489,
        "t": 82.967,
        "block": "D",
        "offset_frames": 509,
-       "mad1": 5.138,
-       "mad2": 9.557,
-       "ratio": 1.86
+       "mad1": 5.144,
+       "mad2": 9.559,
+       "ratio": 1.858
       },
       {
        "frame": 4200,
@@ -356,8 +356,8 @@
        "t": 168.233,
        "block": "H",
        "offset_frames": 7,
-       "mad1": 6.953,
-       "mad2": 13.609,
+       "mad1": 6.955,
+       "mad2": 13.613,
        "ratio": 1.957
       },
       {
@@ -365,35 +365,35 @@
        "t": 168.267,
        "block": "H",
        "offset_frames": 8,
-       "mad1": 6.698,
-       "mad2": 12.747,
-       "ratio": 1.903
+       "mad1": 6.701,
+       "mad2": 12.739,
+       "ratio": 1.901
       },
       {
        "frame": 5049,
        "t": 168.3,
        "block": "H",
        "offset_frames": 9,
-       "mad1": 6.1,
-       "mad2": 11.532,
-       "ratio": 1.89
+       "mad1": 6.091,
+       "mad2": 11.526,
+       "ratio": 1.892
       },
       {
        "frame": 5050,
        "t": 168.333,
        "block": "H",
        "offset_frames": 10,
-       "mad1": 5.485,
-       "mad2": 10.647,
-       "ratio": 1.941
+       "mad1": 5.489,
+       "mad2": 10.65,
+       "ratio": 1.94
       },
       {
        "frame": 5051,
        "t": 168.367,
        "block": "H",
        "offset_frames": 11,
-       "mad1": 5.19,
-       "mad2": 10.154,
+       "mad1": 5.189,
+       "mad2": 10.149,
        "ratio": 1.956
       },
       {
@@ -401,8 +401,8 @@
        "t": 168.4,
        "block": "H",
        "offset_frames": 12,
-       "mad1": 5.005,
-       "mad2": 9.168,
+       "mad1": 5.003,
+       "mad2": 9.164,
        "ratio": 1.832
       }
      ],
@@ -471,8 +471,8 @@
      "frames": 5400,
      "pix_fmt": "yuv420p",
      "duration_sec": 180.0,
-     "size_bytes": 46011615,
-     "bitrate_bps": 2044960,
+     "size_bytes": 46008468,
+     "bitrate_bps": 2044820,
      "audio_streams": 0,
      "expected_frames": 5400,
      "expected_duration": 180.0,
@@ -482,7 +482,7 @@
      "decoded_frames": 5400,
      "sampled_frames": 360,
      "sample_fps": 2,
-     "min_mean_luma": 54.61,
+     "min_mean_luma": 54.71,
      "dark_frames": [],
      "footer_pill_missing": [],
      "header_logo_missing": [],
@@ -492,33 +492,33 @@
     },
     "strobe": {
      "pairs": 5399,
-     "mad_mean": 0.142,
-     "mad_median": 0.0269,
-     "mad_max": 7.32,
+     "mad_mean": 0.1422,
+     "mad_median": 0.0268,
+     "mad_max": 7.3375,
      "threshold": 5.0,
      "spikes": 20,
      "spikes_at_block_boundary": 14,
      "spikes_outside_boundary": 6,
      "boundary_window_frames": 6,
      "off_boundary_pairs": 5321,
-     "off_boundary_mad_max": 6.9551,
+     "off_boundary_mad_max": 6.9754,
      "outside_detail": [
       {
        "frame": 5047,
        "t": 168.233,
        "block": "G",
        "offset_frames": 7,
-       "mad1": 6.955,
-       "mad2": 13.62,
-       "ratio": 1.958
+       "mad1": 6.975,
+       "mad2": 13.65,
+       "ratio": 1.957
       },
       {
        "frame": 5048,
        "t": 168.267,
        "block": "G",
        "offset_frames": 8,
-       "mad1": 6.703,
-       "mad2": 12.758,
+       "mad1": 6.715,
+       "mad2": 12.779,
        "ratio": 1.903
       },
       {
@@ -526,26 +526,26 @@
        "t": 168.3,
        "block": "G",
        "offset_frames": 9,
-       "mad1": 6.106,
-       "mad2": 11.543,
-       "ratio": 1.89
+       "mad1": 6.114,
+       "mad2": 11.561,
+       "ratio": 1.891
       },
       {
        "frame": 5050,
        "t": 168.333,
        "block": "G",
        "offset_frames": 10,
-       "mad1": 5.491,
-       "mad2": 10.654,
-       "ratio": 1.94
+       "mad1": 5.5,
+       "mad2": 10.675,
+       "ratio": 1.941
       },
       {
        "frame": 5051,
        "t": 168.367,
        "block": "G",
        "offset_frames": 11,
-       "mad1": 5.192,
-       "mad2": 10.157,
+       "mad1": 5.205,
+       "mad2": 10.178,
        "ratio": 1.956
       },
       {
@@ -553,12 +553,12 @@
        "t": 168.4,
        "block": "G",
        "offset_frames": 12,
-       "mad1": 5.006,
-       "mad2": 9.178,
-       "ratio": 1.833
+       "mad1": 5.016,
+       "mad2": 9.189,
+       "ratio": 1.832
       }
      ],
-     "ratio_min_outside": 1.833,
+     "ratio_min_outside": 1.832,
      "ratio_unmeasured": 0,
      "strobe_suspects": 0,
      "pass": true

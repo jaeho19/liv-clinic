@@ -194,8 +194,22 @@ def face_plate(img):
     softplate(img, 540, 880, 780, 900, 1.0, a=150, radius=100, blur=40)
 
 
+REGION_TAG_SIZE = 54        # 자막 하한. 44px 이던 것을 2편의 동종 라벨에 맞춰 올렸다
+
+
 def _region_tag(img, region, side, alpha, r):
-    """점등한 부위 옆에 붙는 이름표. face_diagram.region_rect 로 자리를 잡는다."""
+    """점등한 부위 옆에 붙는 이름표. face_diagram.region_rect 로 자리를 잡는다.
+
+    크기는 54px - 2편 e_lineup 의 같은 역할 라벨(부위명 "볼 / 중안부 · 하안부 /
+    이중턱", video_thread.py:390)이 54px 이고, 조판 규격의 자막 하한도 54px 이다.
+    44px 이던 것을 올렸다(이 편 180초 중 132초 동안 화면에 있다).
+
+    겹침: 이름표는 브래킷 바깥쪽으로만 자라므로 키워도 선화·브래킷에 닿지 않는다.
+    오른쪽은 rx1+88 에서 시작해 오른쪽으로, 왼쪽은 rx0-88 에서 왼쪽으로 늘어난다.
+    54px 실측 잉크 폭(턱선 94 · 중안부/피부결 141)으로 x 범위는 131~949 이고
+    안전여백(72~1008) 안이다. 세 이름표의 세로 중심은 710 / 878 / 1098 로
+    168px 이상 떨어져 서로 겹치지 않는다.
+    """
     if alpha <= 0.004:
         return
     rx0, ry0, rx1, ry1 = fd.region_rect(FACE_BOX, region)
@@ -203,11 +217,11 @@ def _region_tag(img, region, side, alpha, r):
     label = fd.REGION_LABEL[region]
     if side == "r":
         rule(img, rx1 + 16, cy - 3, 56 * r, 6, ROSE, alpha)
-        T(img, label, rx1 + 88, cy, "b", 44, ROSE_T, "l", "c", alpha,
+        T(img, label, rx1 + 88, cy, "b", REGION_TAG_SIZE, ROSE_T, "l", "c", alpha,
           shadow=160, blur=12)
     else:
         rule(img, rx0 - 16 - 56 * r, cy - 3, 56 * r, 6, ROSE, alpha)
-        T(img, label, rx0 - 88, cy, "b", 44, ROSE_T, "r", "c", alpha,
+        T(img, label, rx0 - 88, cy, "b", REGION_TAG_SIZE, ROSE_T, "r", "c", alpha,
           shadow=160, blur=12)
 
 
@@ -396,16 +410,22 @@ def f_clinic(tl):
         rule(img, W / 2 - 70, 980, 140, 5, ROSE, fa)
         T(img, FLOOR, W / 2, 1026, "m", 58, ROSE_T, "m", "a",
           fa * eo(p(tl, 0.8, 0.5)), shadow=160, blur=12)
-        T(img, "고민에서 시작하는 맞춤 진료", W / 2, 1126, "m", 50, OFFW, "m", "a",
+        # 54px - 조판 규격의 자막 하한. 2편 h_space / 3편 h_outro 의 같은 자리
+        # 한 줄이 54px 이라 세 편을 맞춘다. 실측 잉크 폭 603px (안전영역 936px).
+        T(img, "고민에서 시작하는 맞춤 진료", W / 2, 1126, "m", 54, OFFW, "m", "a",
           fa * eo(p(tl, 1.6, 0.6)), shadow=160, blur=12, maxw=W - 2 * SAFE)
     return img
 
 
 def g_outro(tl):
-    """2:48-3:00 마무리 - 배경만 천천히 움직이고 QR 카드는 완전 고정."""
+    """2:48-3:00 마무리 - 배경만 천천히 움직이고 QR 카드는 완전 고정.
+
+    QR 카드 위 한 줄은 54px(자막 하한). 1~3편의 같은 자리도 50~54px 이고 전부
+    시술·진료가 주어다. 잉크 452~506, QR 카드 상단 560 과 겹치지 않는다.
+    """
     img = kb(photo_plate("I03", blur=20, dim=0.62), p(tl, 0, 12), 1.14,
              _z1(12.0, 1.14), 0.44, 0.5, 0.56, 0.5)
-    T(img, "고민에서 시작하는 맞춤 진료", W / 2, 452, "m", 50, ROSE_T, "m", "a",
+    T(img, "고민에서 시작하는 맞춤 진료", W / 2, 452, "m", 54, ROSE_T, "m", "a",
       eo(p(tl, 0.2, 0.6)), shadow=160, blur=12)
     im, pad = qr_card()
     put(img, im, (SAFE - pad, 560 - pad), eo(p(tl, 0.2, 1.0)))

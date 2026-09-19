@@ -31,7 +31,8 @@ set_dirs(os.path.join(OUTPUT, "lifting-city", "edit", "fonts"),
 
 from liv_video.anim import clamp01, p, eo, eio, vis
 from liv_video.draw import T, put, rule, card, CARD, softplate
-from liv_video.media import asset, photo_panel, clip_frame, ambient_plate, photo_plate, kb
+from liv_video.media import (asset, cover, photo_panel, clip_frame, ambient_plate,
+                             photo_plate, kb)
 from liv_video.chrome import draw_chrome
 from liv_video.encode import encode_range
 
@@ -62,9 +63,22 @@ def _amb(key, prog, blur=24, dim=0.46, z0=1.0, z1=1.17, sway=1):
               0.5 + 0.055 * sway, 0.5 - 0.045 * sway)
 
 
-def _live_frame(key, idx, dim):
-    """생성 클립의 한 프레임. 앰비언트와 같은 정도로 감광하되 블러는 안 건다."""
-    im = clip_frame(key, idx)
+def _live_frame(key, t, dim):
+    """생성 클립 한 장 - 앰비언트와 같은 정도로 감광하고 아주 느리게 밀어 넣는다.
+
+    감광: ambient_plate 는 blur 와 dim 을 함께 하므로 라이브 경로에 그대로 못 쓴다.
+    라이브는 선명해야 하니 밝기만 낮춘다.
+
+    푸시인: 2편(cover 로 1.0 -> 1.0+KB_RATE*t)·4편(LIVE_Z0 1.17 -> 1.00)과 같은
+    방식으로 통일한다. 이 편의 라이브 클립 3개(H03/H04/H05)는 원본이 충분히
+    움직여서 푸시인 없이도 3초 평균 절대차가 1.308 이상 나왔지만, 그건 클립 운이
+    좋았던 것이다 - 4편 H06 은 원본 MAD 0.170 이 감광 후 0.048 로 떨어져 실제로
+    freezedetect 1건이 났다. 클립이 바뀌어도 화면이 멈추지 않도록 앰비언트와 같은
+    KB_RATE 로 당겨 둔다. cover() 는 항상 새 이미지를 돌려주므로 clip_frame 이
+    돌려준 원본을 제자리 변형할 위험도 함께 사라진다.
+    """
+    im = cover(clip_frame(key, int(t * FPS) + 1), W, H, 0.5, 0.5,
+               1.0 + KB_RATE * max(0.0, t))
     return ImageEnhance.Brightness(im).enhance(1.0 - dim) if dim > 0 else im
 
 
@@ -81,7 +95,7 @@ def _bg_clip(key, t, cut, span=24.0, blur=24, dim=0.46, z0=1.0, z1=None, sway=1)
     amb = _amb(key, clamp01((t - cut) / max(1e-6, span)), blur, dim, z0, z1, sway)
     if t >= cut + 0.7:
         return amb
-    live = _live_frame(key, int(t * FPS) + 1, dim)
+    live = _live_frame(key, t, dim)
     return live if t <= cut else Image.blend(live, amb, eio((t - cut) / 0.7))
 
 
@@ -333,10 +347,17 @@ def g_floor(tl):
 
 
 def h_outro(tl):
-    """2:48-3:00 마무리 - 배경만 천천히 움직이고 QR 카드는 완전 고정."""
+    """2:48-3:00 마무리 - 배경만 천천히 움직이고 QR 카드는 완전 고정.
+
+    QR·전화번호 바로 위 한 줄은 **시술을 주어로** 쓴다. 이 자리에 사람 이름을 두면
+    "이 번호로 연락하면 그 사람이 상담한다"는 행위 약속으로 읽히는데, 리브의 초진
+    상담은 상담실장이 먼저 본다(2026-09-19 사장님 확인). 1편은 같은 자리에
+    "리브성형외과 리프팅 상담", 2편은 "압토스 실리프팅 상담", 4편은
+    "고민에서 시작하는 맞춤 진료"로 전부 시술·진료가 주어다.
+    """
     img = kb(photo_plate("I03", blur=20, dim=0.62), p(tl, 0, 12), 1.14,
              _z1(12.0, 1.14), 0.44, 0.5, 0.56, 0.5)
-    T(img, "김수영 대표원장 상담", W / 2, 452, "m", 54, ROSE_T, "m", "a",
+    T(img, "압토스 실리프팅 상담", W / 2, 452, "m", 54, ROSE_T, "m", "a",
       eo(p(tl, 0.2, 0.6)), shadow=160, blur=12)
     im, pad = qr_card()
     put(img, im, (SAFE - pad, 560 - pad), eo(p(tl, 0.2, 1.0)))
