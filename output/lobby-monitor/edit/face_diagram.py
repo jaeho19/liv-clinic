@@ -7,7 +7,7 @@ import math
 import os
 import sys
 
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(
     os.path.abspath(__file__)))))
@@ -119,7 +119,14 @@ def draw_face(base, box, alpha=1.0, color=None):
 
 
 def highlight(base, box, region, alpha=1.0, color=None):
-    """해당 부위를 부드럽게 밝힌다. 영역 밖으로 번지지 않도록 사각형 안에서만 합성한다."""
+    """해당 부위를 네 모서리 브래킷(꺾쇠)으로 표시한다 — 카메라 포커스 표시처럼
+    사각형 안쪽을 채우지 않으므로 그 안의 선화(눈·코·입 등)가 그대로 보인다.
+    영역 밖으로도 번지지 않도록 사각형 안에서만 합성한다.
+
+    (fix round 3) 이전엔 반투명 rounded_rectangle 채움 + 블러였는데, 실제
+    렌더(④편)에서 사각형이 "부위 강조"가 아니라 "얼굴을 덮는 판"으로 보였다 —
+    특히 midface/texture에서 눈·코 선을 통째로 가렸다. 브래킷은 안쪽을 전혀
+    채우지 않아 이 문제가 구조적으로 생기지 않는다."""
     if alpha <= 0.004:
         return
     color = color or ROSE
@@ -127,12 +134,21 @@ def highlight(base, box, region, alpha=1.0, color=None):
     w, h = rx1 - rx0, ry1 - ry0
     if w < 4 or h < 4:
         return
-    pad = 0
     lay = Image.new("RGBA", (w, h), (0, 0, 0, 0))
     d = ImageDraw.Draw(lay)
-    d.rounded_rectangle([2, 2, w - 3, h - 3], radius=min(w, h) // 3,
-                        fill=tuple(color) + (70,), outline=tuple(color) + (220,), width=4)
-    lay = lay.filter(ImageFilter.GaussianBlur(3))
+    col = tuple(color) + (255,)
+    bw = 7  # draw_face의 얼굴선(8px)보다 한 단계 얇게 — 주역 선과 구분되는 보조 표시
+    # 모서리 팔 길이: 짧은 변의 22%, 12~48px로 clamp. w//2-6/h//2-6 clamp는
+    # 마주보는 모서리의 팔이 가운데서 만나 다시 "사각형처럼" 보이는 것을 막는다
+    # (실사용 부위 5종은 전부 min(w,h)>=128이라 이 clamp가 실제로 작동하진 않지만
+    # 더 작은 박스로 재사용될 때를 위한 안전장치).
+    arm = int(min(w, h) * 0.22)
+    arm = max(12, min(arm, 48, w // 2 - 6, h // 2 - 6))
+    x0, y0, x1, y1 = 3, 3, w - 4, h - 4
+    for cx, cy, dx, dy in ((x0, y0, 1, 1), (x1, y0, -1, 1),
+                           (x0, y1, 1, -1), (x1, y1, -1, -1)):
+        d.line([(cx, cy + dy * arm), (cx, cy), (cx + dx * arm, cy)],
+               fill=col, width=bw, joint="curve")
     if alpha < 0.996:
         lay.putalpha(lay.getchannel("A").point(lambda v, m=alpha: int(v * m)))
     base.paste(lay, (rx0, ry0), lay)
