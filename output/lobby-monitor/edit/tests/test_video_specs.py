@@ -71,6 +71,43 @@ def test_last_12s_qr_region_is_static(mod):
     assert np.abs(a[region] - b[region]).max() == 0, "%s QR 영역이 움직인다" % name
 
 
+# 3초(90프레임) 동안 화면이 얼마나 변하는지의 하한(평균 절대차, 8비트 단위).
+#
+# 배경 켄번즈가 너무 느리면 프레임 간 변화가 x264 양자화 아래로 내려가 인코딩 결과가
+# 앞 프레임과 똑같아지고, 최종 검수의 freezedetect(n=0.001:d=3) 가 정지 구간으로
+# 잡는다. 편 모듈이 배경 속도 상수(KB_RATE/_z1)를 빠뜨려도 나머지 11개 테스트는
+# 전부 통과하므로 - 8청크 전체 렌더를 마친 뒤에야 드러난다 - 여기서 먼저 막는다.
+#
+# 블록마다 두 곳을 본다: 시작 +1.5초(생성 클립을 그대로 쓰는 라이브 구간)와 중앙
+# (블러 플레이트 구간). 두 구간은 원인이 달라 한쪽만 재면 놓친다 - 실제로 ②편에서
+# 중앙만 재던 판에서는 통과했는데 E 블록 라이브 6초가 통째로 얼어 있었다.
+#
+# ②편 실측(18곳 중 최솟값): 정상 0.646(E 중앙) / 배경 속도 상수를 0.0034 로 낮추면
+# 0.284(B 중앙) / 라이브 푸시인을 빼면 0.170(E +1.5초). 뒤의 두 경우는 실제로
+# 인코딩 후 freezedetect 에 각각 4건·1건(4.9초)으로 잡혔다. 정상 쪽에 1.6배
+# 여유를 두고 0.40 으로 잡았다.
+MIN_MOVE_MAD = 0.40
+
+
+def test_background_keeps_moving(mod):
+    """각 블록의 라이브 구간과 중앙에서 3초 떨어진 두 프레임이 충분히 달라야 한다."""
+    m, name = mod
+    worst = None
+    for b in m.BLOCKS:
+        for off in (1.5, b["dur"] / 2.0):
+            i = max(0, min(EXPECTED[name] - 91, int((b["start"] + off) * 30)))
+            a = np.asarray(m.render_frame(i).convert("RGB")).astype(np.int16)
+            c = np.asarray(m.render_frame(i + 90).convert("RGB")).astype(np.int16)
+            mad = float(np.abs(a - c).mean())
+            if worst is None or mad < worst[0]:
+                worst = (mad, b["id"], i)
+    assert worst[0] > MIN_MOVE_MAD, (
+        "%s %s블록(f%d) 이 3초 동안 평균 %.3f 밖에 안 변한다 (하한 %.2f). "
+        "배경 켄번즈 속도와 라이브 구간 푸시인을 확인할 것 - 이 상태로 인코딩하면 "
+        "freezedetect 가 정지 구간으로 잡는다." % (name, worst[1], worst[2], worst[0],
+                                                MIN_MOVE_MAD))
+
+
 def test_no_banned_copy_in_module(mod):
     import copy_guard as cg
     m, name = mod

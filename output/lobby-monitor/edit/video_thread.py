@@ -15,7 +15,7 @@ import os
 import sys
 from functools import lru_cache
 
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageEnhance
 
 EDIT = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(EDIT)
@@ -71,16 +71,36 @@ def _amb(key, prog, blur=24, dim=0.46, z0=1.0, z1=1.17, sway=1):
               0.5 + 0.055 * sway, 0.5 - 0.045 * sway)
 
 
-def _bg_clip(key, t, cut, **kw):
-    """0~cut초는 생성 클립, 이후는 블러 플레이트를 가로 드리프트시킨다."""
-    span = kw.get("span", 24.0)
-    z0 = kw.get("z0", 1.0)
-    amb = _amb(key, clamp01((t - cut) / max(1e-6, span)),
-               kw.get("blur", 24), kw.get("dim", 0.46),
-               z0, kw.get("z1", _z1(span, z0)), kw.get("sway", 1))
+def _live_frame(key, t, dim):
+    """생성 클립 한 장 - 앰비언트와 같은 정도로 감광하고 아주 느리게 밀어 넣는다.
+
+    감광: ambient_plate 는 blur 와 dim 을 함께 하므로 라이브 경로에 그대로 못 쓴다.
+    라이브는 선명해야 하니 밝기만 낮춘다. 감광을 빼먹으면 블록 앞 6초 동안만 배경이
+    원본 밝기로 나와 그 위 조판이 묻힌다. 고치기 전 실측(잉크 박스 안 배경
+    평균휘도 / 150 초과 픽셀 비율): G 제목 자리가 t=6초에 150 / 50%,
+    D 제목 자리가 135 / 27%, E 제목 자리가 116 / 3%.
+
+    푸시인: 생성 클립 중에는 거의 움직이지 않는 것이 있다(프레임 간 평균 절대차
+    실측 H04 1.988 / H03 1.108 / H06 0.172). 감광까지 걸면 H06 라이브 6초가 통째로
+    정지 구간이 된다(실측: freezedetect 106.3~111.2초 4.9초). 앰비언트와 같은
+    KB_RATE 로 아주 느리게 당겨 어느 클립이 와도 화면이 멈추지 않게 한다.
+    """
+    im = clip_frame(key, int(t * FPS) + 1)
+    im = cover(im, W, H, 0.5, 0.5, 1.0 + KB_RATE * max(0.0, t))
+    return ImageEnhance.Brightness(im).enhance(1.0 - dim) if dim > 0.004 else im
+
+
+def _bg_clip(key, t, cut, span=24.0, blur=24, dim=0.46, z0=1.0, z1=None, sway=1):
+    """0~cut초는 생성 클립(감광만), 이후는 블러 플레이트를 가로 드리프트시킨다.
+
+    옵션을 **kw 로 받지 않는 이유: 이름을 잘못 적어도 예외 없이 조용히 기본값으로
+    렌더돼 한 블록 배경이 통째로 틀린 채 넘어간다.
+    """
+    amb = _amb(key, clamp01((t - cut) / max(1e-6, span)), blur, dim,
+               z0, _z1(span, z0) if z1 is None else z1, sway)
     if t >= cut + 0.7:
         return amb
-    live = clip_frame(key, int(t * FPS) + 1)
+    live = _live_frame(key, t, dim)
     return live if t <= cut else Image.blend(live, amb, eio((t - cut) / 0.7))
 
 
@@ -226,7 +246,7 @@ def a_hook(tl):
         a3, r3 = vis(tl, 8.0, None, 0.5)
         if a3 > 0:
             softplate(img, W / 2, 1345, 900, 220, a3 * 0.88, a=118, radius=70, blur=30)
-            T(img, "실에 돌기가 있습니다", W / 2, 1300 + int((1 - r3) * 22), "xb", 72,
+            T(img, "실에 돌기가 있습니다", W / 2, 1300 + int((1 - r3) * 22), "xb", 76,
               OFFW, "m", "a", a3, shadow=190, blur=18, maxw=W - 2 * SAFE)
     return img
 
@@ -269,7 +289,7 @@ def c_mechanism(tl):
     a, r = vis(tl - k * C_SEG, 0.2, C_SEG - 0.8, 0.45, 0.4)
     if a > 0:
         softplate(img, W / 2, 490, 960, 230, a * 0.85, a=112, radius=80, blur=34)
-        T(img, label, W / 2, 440 + int((1 - r) * 22), "xb", 72, OFFW, "m", "a", a,
+        T(img, label, W / 2, 440 + int((1 - r) * 22), "xb", 76, OFFW, "m", "a", a,
           shadow=190, blur=18, maxw=W - 2 * SAFE)
 
     for i in range(3):
@@ -308,6 +328,7 @@ def d_capsule(tl):
 
     a, r = vis(tl, 0.3, None, 0.5, 0.4)
     if a > 0:
+        softplate(img, W / 2, 470, 960, 250, a * 0.85, a=112, radius=80, blur=34)
         TL(img, ["히알루론산을 세 가지 크기로", "나눠 담습니다"], W / 2,
            400 + int((1 - r) * 22), "b", 56, OFFW, 80, "m", a, shadow=180, blur=16,
            maxw=W - 2 * SAFE)
@@ -318,13 +339,13 @@ def d_capsule(tl):
         la, lr = vis(tl, D_ONSET[name], None, 0.5)
         if la <= 0:
             continue
-        y = 1336 + i * 62
+        y = 1330 + i * 68
         rr = D_RADIUS[name] * 0.62
         dot = Image.new("RGBA", (56, 56), (0, 0, 0, 0))
         ImageDraw.Draw(dot).ellipse([28 - rr, 28 - rr, 28 + rr, 28 + rr],
                                     fill=pa.CLASS_COLOR[name] + (235,))
-        put(img, dot, (SAFE + 6, y - 4), la)
-        T(img, label, SAFE + 76 + int((1 - lr) * 18), y, "m", 46, OFFW, "l", "a", la,
+        put(img, dot, (SAFE + 6, y + 6), la)
+        T(img, label, SAFE + 76 + int((1 - lr) * 18), y, "m", 54, OFFW, "l", "a", la,
           shadow=160, blur=12)
 
     corner_note(img, NOTE_DIAGRAM, eo(p(tl, 0.4, 0.6)))
@@ -345,6 +366,7 @@ def e_lineup(tl):
 
     a, r = vis(tl, 0.3, None, 0.5, 0.4)
     if a > 0:
+        softplate(img, W / 2, 432, 920, 200, a * 0.85, a=112, radius=80, blur=34)
         T(img, "압토스 라인업과 적용 부위", W / 2, 400 + int((1 - r) * 22), "b", 56,
           OFFW, "m", "a", a, shadow=180, blur=16, maxw=W - 2 * SAFE)
 
@@ -359,10 +381,10 @@ def e_lineup(tl):
 
     ca, cr = vis(tk, 0.35, E_SEG - 0.7, 0.5, 0.4)
     if ca > 0:
-        CARD(img, SAFE, 1332, W - 2 * SAFE, 176, 26, CREAM, ca, dy=int((1 - cr) * 26))
-        yy = 1364 + int((1 - cr) * 26)
+        CARD(img, SAFE, 1324, W - 2 * SAFE, 192, 26, CREAM, ca, dy=int((1 - cr) * 26))
+        yy = 1356 + int((1 - cr) * 26)
         T(img, name, W / 2, yy, "b", 60, INK, "m", "a", ca, maxw=W - 2 * SAFE - 80)
-        T(img, part, W / 2, yy + 82, "m", 42, CHAR, "m", "a",
+        T(img, part, W / 2, yy + 84, "m", 54, CHAR, "m", "a",
           ca * eo(p(tk, 0.6, 0.5)), maxw=W - 2 * SAFE - 80)
 
     corner_note(img, NOTE_DIAGRAM, eo(p(tl, 0.4, 0.6)))
@@ -379,10 +401,11 @@ def f_certification(tl):
     """2:25-2:50 인증 - 정식 허가와 국제 인증, 사용국."""
     img = _bg_clip("H03", tl, 6.0, span=19.0, dim=0.50, sway=-1)
 
+    softplate(img, W / 2, 490, 1000, 250, 0.85, a=112, radius=80, blur=34)
     eyebrow(img, tl, "압토스 실리프팅", 430, 0.3)
     a, r = vis(tl, 0.5, None, 0.5, 0.4)
     if a > 0:
-        T(img, "정식 허가와 국제 인증", SAFE, 490 + int((1 - r) * 22), "xb", 72, OFFW,
+        T(img, "정식 허가와 국제 인증", SAFE, 490 + int((1 - r) * 22), "xb", 76, OFFW,
           "l", "a", a, shadow=190, blur=18, maxw=W - 2 * SAFE)
 
     cw, chh = 456, 262
@@ -396,7 +419,7 @@ def f_certification(tl):
         CARD(img, x, y, cw, chh, 26, CREAM, ca, dy=dy)
         T(img, top, x + cw / 2, y + 62 + dy, "b", 54, INK, "m", "a", ca, maxw=cw - 56)
         rule(img, x + cw / 2 - 30, y + 134 + dy, 60, 5, ROSE, ca)
-        T(img, bot, x + cw / 2, y + 166 + dy, "b", 48, BROWN, "m", "a", ca, maxw=cw - 56)
+        T(img, bot, x + cw / 2, y + 166 + dy, "b", 54, BROWN, "m", "a", ca, maxw=cw - 56)
 
     a2, r2 = vis(tl, 3.0, None, 0.6, 0.4)
     if a2 > 0:
@@ -410,13 +433,20 @@ G_SEGS = ((0.0, 12.0), (12.0, 25.0), (25.0, 38.0))
 
 
 def _g_photo(img, tl, t0, t1, key, pw, ph, head, sub):
-    """사진 패널 한 벌 - 위에 조판, 아래에 사진. 확대하지 않는다."""
+    """사진 패널 한 벌 - 위에 조판, 아래에 사진. 확대하지 않는다.
+
+    주제목은 한글 76px, 보조는 54px 로 고정한다. "APTOS Professional Course 수료"를
+    주제목에 두면 안전영역 936px 안에서 draw.fit_size 가 60px 까지 조용히 줄여
+    제목 규격(76~116px) 아래로 떨어진다(실측: 72px 지정 -> 60px 렌더). 그래서 그
+    문구는 보조 줄로 내리고 주제목은 한글로 둔다.
+    """
     a, r = vis(tl, t0, t1, 0.6, 0.45)
     if a <= 0:
         return
-    T(img, head, W / 2, 430 + int((1 - r) * 22), "xb", 72, OFFW, "m", "a", a,
+    softplate(img, W / 2, 500, 960, 250, a * 0.85, a=112, radius=80, blur=34)
+    T(img, head, W / 2, 430 + int((1 - r) * 22), "xb", 76, OFFW, "m", "a", a,
       shadow=190, blur=18, maxw=W - 2 * SAFE)
-    T(img, sub, W / 2, 540, "m", 46, ROSE_T, "m", "a", a * eo(p(tl, t0 + 0.3, 0.5)),
+    T(img, sub, W / 2, 540, "m", 54, ROSE_T, "m", "a", a * eo(p(tl, t0 + 0.3, 0.5)),
       shadow=160, blur=12, maxw=W - 2 * SAFE)
     im, pad = photo_panel(key, pw, ph, 24, 0.0, 0.5, 0.5)
     put(img, im, (W / 2 - pw / 2 - pad, 620 - pad + int((1 - r) * 30)), a)
@@ -429,22 +459,18 @@ def g_person(tl):
     _g_photo(img, tl, G_SEGS[0][0], G_SEGS[0][1] - 0.3, "A03", 630, 840,
              "김수영 대표원장", "조지아 APTOS 본사 연수")
     _g_photo(img, tl, G_SEGS[1][0], G_SEGS[1][1] - 0.3, "A02", 630, 840,
-             "APTOS Professional Course 수료", "본사 인증서 수여")
-
+             "APTOS 본사 인증서 수여", "APTOS Professional Course 수료")
     # 인증서는 화면을 채우는 커버 크롭으로 쓰지 않는다. 세로 화면의 9:16 크롭은
     # 원본 폭의 21%를 잘라내 표제("APTOS PROFESSIONAL COURSE CERTIFICATE")가
     # 중간에서 끊긴다(스틸 실측). 문서를 온전히 보여 주고 번호는 조판으로 키운다.
-    a, r = vis(tl, G_SEGS[2][0], None, 0.6, 0.45)
-    if a > 0:
-        T(img, "APTOS Professional Course 수료", W / 2, 430 + int((1 - r) * 22), "xb", 66,
-          OFFW, "m", "a", a, shadow=190, blur=18, maxw=W - 2 * SAFE)
-        im, pad = photo_panel("A01", 580, 816, 18, 0.0, 0.5, 0.5)
-        put(img, im, (W / 2 - 290 - pad, 550 - pad + int((1 - r) * 26)), a)
-        a2, r2 = vis(tl, G_SEGS[2][0] + 1.2, None, 0.55, 0.4)
-        if a2 > 0:
-            rule(img, W / 2 - 70, 1398, 140, 5, ROSE, a2)
-            T(img, "KR0062025", W / 2, 1436 + int((1 - r2) * 18), "xb", 92, ROSE_T,
-              "m", "a", a2, shadow=190, blur=20)
+    _g_photo(img, tl, G_SEGS[2][0], None, "A01", 540, 760,
+             "APTOS 본사 발급 인증서", "APTOS Professional Course 수료")
+
+    a2, r2 = vis(tl, G_SEGS[2][0] + 1.2, None, 0.55, 0.4)
+    if a2 > 0:
+        rule(img, W / 2 - 70, 1402, 140, 5, ROSE, a2)
+        T(img, "KR0062025", W / 2, 1440 + int((1 - r2) * 18), "xb", 92, ROSE_T,
+          "m", "a", a2, shadow=190, blur=20)
     return img
 
 
@@ -478,7 +504,7 @@ def i_outro(tl):
     """3:48-4:00 마무리 - 배경만 천천히 움직이고 QR 카드는 완전 고정."""
     img = kb(photo_plate("I03", blur=20, dim=0.62), p(tl, 0, 12), 1.14,
              _z1(12.0, 1.14), 0.44, 0.5, 0.56, 0.5)
-    T(img, "압토스 실리프팅 상담", W / 2, 452, "m", 50, ROSE_T, "m", "a",
+    T(img, "압토스 실리프팅 상담", W / 2, 452, "m", 54, ROSE_T, "m", "a",
       eo(p(tl, 0.2, 0.6)), shadow=160, blur=12)
     im, pad = qr_card()
     put(img, im, (SAFE - pad, 560 - pad), eo(p(tl, 0.2, 1.0)))
