@@ -5,6 +5,7 @@
 - 전경: 실제 장비 PNG / 원장 사진 D01 / 한글 조판 / QR
 - 병원명(상단)과 "이 건물 4층"(하단)은 전 구간 고정 노출
 - 장면 경계는 0.4초 크로스 디졸브. 고정 크롬은 디졸브 위에 그려 흔들리지 않는다.
+- 합성·조판·인코딩은 output/liv_video 공용 툴킷을 쓴다.
 
 사용:
   python render_video.py --scene 1          # 1번 장면(30초)만 렌더 -> edit/scenes/M01.mp4
@@ -13,303 +14,39 @@
 import os
 import sys
 import argparse
-import subprocess
 from functools import lru_cache
 
 import numpy as np
-from PIL import Image, ImageDraw, ImageFont, ImageFilter, ImageEnhance
+from PIL import Image, ImageDraw
 
-# ---------------------------------------------------------------- paths / spec
 EDIT = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(EDIT)
-PREP = os.path.join(EDIT, "prep")
-GEN = os.path.join(EDIT, "gen")
-FONTDIR = os.path.join(EDIT, "fonts")
+sys.path.insert(0, os.path.dirname(ROOT))          # output/ 를 임포트 경로에 추가
+
+from liv_video.spec import (W, H, FPS, SAFE, ROSE, ROSE_T, ROSE_D, BROWN, OFFW,
+                            CHAR, INK, CREAM, WHITE, CLINIC, FLOOR, PHONE,
+                            ADDRESS, QR_TEXT, FOUR, set_dirs)
+from liv_video.anim import clamp01, p, eo, eio, vis, reveal
+from liv_video.draw import (font, tmetrics, twidth, fit_size, text_img, put, T,
+                            TL, rule, card, CARD, card_outline, rrect_mask, softplate)
+from liv_video.media import (asset, cover, photo_panel, device_img, clip_frame,
+                             ambient_plate, photo_plate, kb, vignette)
+from liv_video.chrome import draw_chrome
+from liv_video.encode import encode_range
+
+set_dirs(os.path.join(EDIT, "fonts"), os.path.join(EDIT, "prep"), os.path.join(EDIT, "gen"))
+
+# ---------------------------------------------------------------- paths / spec
 SCENEDIR = os.path.join(EDIT, "scenes")
 
-W, H, FPS = 1080, 1920, 30
 SCENE_SEC = 30
 SCENE_FRAMES = SCENE_SEC * FPS
 N_SCENES = 12
 NFRAMES = SCENE_FRAMES * N_SCENES          # 10800
-SAFE = 72
 XF_FRAMES = 12                              # 장면 간 디졸브 길이(0.4초)
-
-# ---------------------------------------------------------------- palette
-ROSE = (180, 152, 141)          # #b4988d
-ROSE_T = (222, 198, 186)        # 어두운 배경 위 로즈 텍스트
-ROSE_D = (146, 116, 103)
-BROWN = (109, 78, 66)           # #6d4e42
-OFFW = (246, 246, 246)          # #f6f6f6
-CHAR = (87, 87, 86)             # #575756
-INK = (42, 32, 26)
-CREAM = (240, 233, 226)
-WHITE = (255, 255, 255)
-
-CLINIC = "리브성형외과"
-FLOOR = "이 건물 4층"
-PHONE = "02-797-2773"
-ADDRESS = "서울 서초구 나루터로 80 자은빌딩 4층"
-QR_TEXT = "liv-clinic.net/ko/contact"
-FOUR = "울쎄라 · 써마지 · 덴서티 · 악센트 프라임"
-
-FONTS = {"r": "Pretendard-Regular.ttf", "m": "Pretendard-Medium.ttf",
-         "sb": "Pretendard-SemiBold.ttf", "b": "Pretendard-Bold.ttf",
-         "xb": "Pretendard-ExtraBold.ttf"}
-
-
-# ---------------------------------------------------------------- easing
-def clamp01(x):
-    return 0.0 if x < 0.0 else (1.0 if x > 1.0 else x)
-
-
-def p(t, t0, d):
-    return clamp01((t - t0) / d) if d > 0 else (1.0 if t >= t0 else 0.0)
-
-
-def eo(x):          # ease-out cubic
-    return 1.0 - (1.0 - x) ** 3
-
-
-def eio(x):         # smoothstep
-    return x * x * (3.0 - 2.0 * x)
-
-
-def vis(t, t0, t1=None, fin=0.5, fout=0.4):
-    """(alpha, 등장진행도) - 등장진행도는 슬라이드 오프셋용."""
-    a_in = eo(p(t, t0, fin))
-    a_out = 1.0 - eio(p(t, t1, fout)) if t1 is not None else 1.0
-    return a_in * a_out, a_in
-
-
-# ---------------------------------------------------------------- primitives
-@lru_cache(maxsize=96)
-def font(key, size):
-    return ImageFont.truetype(os.path.join(FONTDIR, FONTS[key]), int(size))
-
-
-_MEASURE = ImageDraw.Draw(Image.new("RGBA", (4, 4)))
-
-
-@lru_cache(maxsize=2048)
-def tmetrics(text, fkey, size):
-    bb = _MEASURE.textbbox((0, 0), text, font=font(fkey, size), anchor="la")
-    return bb  # (x0, y0, x1, y1) - 'la' 원점 기준
-
-
-def twidth(text, fkey, size):
-    bb = tmetrics(text, fkey, size)
-    return bb[2] - bb[0]
-
-
-def fit_size(text, fkey, size, maxw):
-    s = int(size)
-    while s > 16 and twidth(text, fkey, s) > maxw:
-        s -= 2
-    return s
-
-
-@lru_cache(maxsize=1200)
-def text_img(text, fkey, size, fill, shadow, blur, sdy):
-    f = font(fkey, size)
-    bb = tmetrics(text, fkey, size)
-    pad = (blur * 2 + 12) if shadow else 6
-    w = max(4, bb[2] - bb[0] + pad * 2)
-    h = max(4, bb[3] - bb[1] + pad * 2 + (sdy if shadow else 0))
-    img = Image.new("RGBA", (w, h), (0, 0, 0, 0))
-    ox, oy = pad - bb[0], pad - bb[1]
-    if shadow:
-        sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        ImageDraw.Draw(sh).text((ox, oy + sdy), text, font=f, fill=(0, 0, 0, shadow), anchor="la")
-        img.alpha_composite(sh.filter(ImageFilter.GaussianBlur(blur)))
-    ImageDraw.Draw(img).text((ox, oy), text, font=f, fill=fill, anchor="la")
-    return img, ox, oy, bb[2] - bb[0], bb[3] - bb[1], bb[1]
-
-
-def put(base, img, pos, alpha=1.0):
-    if alpha <= 0.004:
-        return
-    if alpha < 0.996:
-        img = img.copy()
-        img.putalpha(img.getchannel("A").point(lambda v, m=alpha: int(v * m)))
-    base.paste(img, (int(round(pos[0])), int(round(pos[1]))), img)
-
-
-def T(base, text, x, y, fkey, size, fill=OFFW, ha="l", va="a", alpha=1.0,
-      shadow=0, blur=12, sdy=5, maxw=None, dx=0, dy=0):
-    """한 줄 조판. y는 기본적으로 어센더 라인(va='a'), va='c'면 잉크 세로중심."""
-    if alpha <= 0.004 or not text:
-        return 0
-    if maxw:
-        size = fit_size(text, fkey, size, maxw)
-    im, ox, oy, tw, th, by0 = text_img(text, fkey, int(size), fill, int(shadow), int(blur), int(sdy))
-    if ha == "m":
-        x -= tw / 2.0
-    elif ha == "r":
-        x -= tw
-    if va == "c":
-        y = y - by0 - th / 2.0
-    elif va == "b":
-        y = y - by0 - th
-    put(base, im, (x - ox + dx, y - oy + dy), alpha)
-    return tw
-
-
-def TL(base, lines, x, y, fkey, size, fill=OFFW, lh=None, ha="l", alpha=1.0,
-       shadow=0, blur=12, maxw=None, dy=0, stagger=0.0, t=None, t0=None):
-    lh = lh or int(size * 1.26)
-    for i, ln in enumerate(lines):
-        a = alpha
-        if stagger and t is not None and t0 is not None:
-            a = alpha * eo(p(t, t0 + i * stagger, 0.45))
-        T(base, ln, x, y + i * lh, fkey, size, fill, ha, "a", a, shadow, blur, maxw=maxw, dy=dy)
-    return len(lines) * lh
-
-
-def rule(base, x, y, w, h=5, color=ROSE, alpha=1.0):
-    if alpha <= 0.004 or w < 1:
-        return
-    im = Image.new("RGBA", (int(w), int(h)), tuple(color) + (255,))
-    put(base, im, (x, y), alpha)
-
-
-@lru_cache(maxsize=192)
-def card(w, h, radius, fill, shadow=120, sblur=22, soff=12):
-    pad = sblur * 2 + soff + 8
-    img = Image.new("RGBA", (w + 2 * pad, h + 2 * pad), (0, 0, 0, 0))
-    if shadow:
-        sh = Image.new("RGBA", img.size, (0, 0, 0, 0))
-        ImageDraw.Draw(sh).rounded_rectangle([pad, pad + soff, pad + w, pad + h + soff],
-                                             radius, fill=(0, 0, 0, shadow))
-        img.alpha_composite(sh.filter(ImageFilter.GaussianBlur(sblur)))
-    ImageDraw.Draw(img).rounded_rectangle([pad, pad, pad + w, pad + h], radius, fill=tuple(fill))
-    return img, pad
-
-
-def CARD(base, x, y, w, h, radius=28, fill=CREAM, alpha=1.0, shadow=120, dy=0):
-    im, pad = card(int(w), int(h), int(radius), tuple(fill), int(shadow))
-    put(base, im, (x - pad, y - pad + dy), alpha)
-
-
-@lru_cache(maxsize=32)
-def card_outline(w, h, radius, a=84, width=3):
-    img = Image.new("RGBA", (w + 4, h + 4), (0, 0, 0, 0))
-    ImageDraw.Draw(img).rounded_rectangle([1, 1, w + 2, h + 2], radius,
-                                          outline=(246, 246, 246, a), width=width)
-    return img
-
-
-@lru_cache(maxsize=96)
-def rrect_mask(w, h, radius):
-    m = Image.new("L", (w, h), 0)
-    ImageDraw.Draw(m).rounded_rectangle([0, 0, w - 1, h - 1], radius, fill=255)
-    return m
-
-
-# ---------------------------------------------------------------- assets
-_A = {}
-_PNG = {"E01", "E02", "E03", "logo_white", "logo_ink", "qr"}
-
-
-def asset(key):
-    if key not in _A:
-        ext = ".png" if key in _PNG else ".jpg"
-        im = Image.open(os.path.join(PREP, key + ext))
-        _A[key] = im.convert("RGBA") if im.mode in ("RGBA", "LA", "P") else im.convert("RGB")
-    return _A[key]
-
-
-def cover(img, w, h, cx=0.5, cy=0.5, zoom=1.0, resample=Image.LANCZOS):
-    w, h = int(w), int(h)
-    ar_t = w / float(h)
-    sw, sh = img.size
-    if sw / float(sh) > ar_t:
-        ch = sh / zoom
-        cw = ch * ar_t
-    else:
-        cw = sw / zoom
-        ch = cw / ar_t
-    cw, ch = min(cw, sw), min(ch, sh)
-    x = (sw - cw) * cx
-    y = (sh - ch) * cy
-    return img.resize((w, h), resample, box=(x, y, x + cw, y + ch))
-
-
-@lru_cache(maxsize=160)
-def photo_panel(key, w, h, radius=24, dim=0.0, cx=0.5, cy=0.5, shadow=130, border=True):
-    im = cover(asset(key), w, h, cx, cy, 1.0)
-    if dim > 0:
-        im = ImageEnhance.Brightness(im).enhance(1.0 - dim)
-    im = im.convert("RGBA")
-    im.putalpha(rrect_mask(w, h, radius))
-    pad = 46
-    out = Image.new("RGBA", (w + 2 * pad, h + 2 * pad), (0, 0, 0, 0))
-    if shadow:
-        sh = Image.new("RGBA", out.size, (0, 0, 0, 0))
-        ImageDraw.Draw(sh).rounded_rectangle([pad, pad + 14, pad + w, pad + h + 14],
-                                             radius, fill=(0, 0, 0, shadow))
-        out.alpha_composite(sh.filter(ImageFilter.GaussianBlur(20)))
-    out.alpha_composite(im, (pad, pad))
-    if border:
-        ImageDraw.Draw(out).rounded_rectangle([pad, pad, pad + w - 1, pad + h - 1],
-                                              radius, outline=(255, 255, 255, 46), width=2)
-    return out, pad
-
-
-@lru_cache(maxsize=96)
-def device_img(key, h, ground=True):
-    src = asset(key)
-    w = max(1, int(round(src.width * h / float(src.height))))
-    im = src.resize((w, int(h)), Image.LANCZOS)
-    pad = 46
-    out = Image.new("RGBA", (w + 2 * pad, int(h) + 2 * pad), (0, 0, 0, 0))
-    if ground:
-        sh = Image.new("RGBA", out.size, (0, 0, 0, 0))
-        ImageDraw.Draw(sh).ellipse([pad + w * 0.06, pad + h - 22, pad + w * 0.94, pad + h + 30],
-                                   fill=(0, 0, 0, 120))
-        out.alpha_composite(sh.filter(ImageFilter.GaussianBlur(16)))
-    out.alpha_composite(im, (pad, pad))
-    return out, pad
 
 
 # ---------------------------------------------------------------- backgrounds
-def clip_frame(key, idx):
-    idx = max(1, min(180, int(idx)))
-    return Image.open(os.path.join(GEN, "frames", key, "%04d.jpg" % idx)).convert("RGB")
-
-
-_PLATE = {}
-
-
-def ambient_plate(key, blur=26, dim=0.50, bright=1.0):
-    k = ("a", key, blur, dim, bright)
-    if k not in _PLATE:
-        pl = cover(clip_frame(key, 180), int(W * 1.24), int(H * 1.24))
-        pl = pl.filter(ImageFilter.GaussianBlur(blur))
-        _PLATE[k] = ImageEnhance.Brightness(pl).enhance((1.0 - dim) * bright)
-    return _PLATE[k]
-
-
-def photo_plate(key, blur=0, dim=0.0, bright=1.0, cx=0.5, cy=0.5, zoom_room=1.24):
-    k = ("p", key, blur, dim, bright, cx, cy, zoom_room)
-    if k not in _PLATE:
-        pl = cover(asset(key), int(W * zoom_room), int(H * zoom_room), cx, cy)
-        if blur:
-            pl = pl.filter(ImageFilter.GaussianBlur(blur))
-        if dim or bright != 1.0:
-            pl = ImageEnhance.Brightness(pl).enhance((1.0 - dim) * bright)
-        _PLATE[k] = pl
-    return _PLATE[k]
-
-
-def kb(plate, prog, z0=1.0, z1=1.07, cx0=0.5, cy0=0.5, cx1=0.5, cy1=0.5,
-       resample=Image.BICUBIC):
-    prog = clamp01(prog)
-    return cover(plate, W, H,
-                 cx0 + (cx1 - cx0) * prog, cy0 + (cy1 - cy0) * prog,
-                 z0 + (z1 - z0) * prog, resample)
-
-
 def bg_scene(key, t, cut=6.0, xf=0.7, blur=24, dim=0.44, bright=1.0, z1=1.17, sway=1):
     """0~cut초는 생성 클립 원본, 이후는 마지막 프레임의 블러 플레이트로 자연 전환.
 
@@ -325,76 +62,7 @@ def bg_scene(key, t, cut=6.0, xf=0.7, blur=24, dim=0.44, bright=1.0, z1=1.17, sw
     return Image.blend(live, amb, eio((t - cut) / xf))
 
 
-@lru_cache(maxsize=8)
-def _vignette():
-    yy, xx = np.mgrid[0:H, 0:W]
-    d = np.sqrt(((xx - W / 2) / (W * 0.72)) ** 2 + ((yy - H / 2) / (H * 0.78)) ** 2)
-    a = np.clip((d - 0.55) / 0.85, 0, 1) ** 1.6 * 150
-    rgba = np.zeros((H, W, 4), np.uint8)
-    rgba[..., 3] = a.astype(np.uint8)
-    return Image.fromarray(rgba, "RGBA")
-
-
-def vignette(base, alpha=1.0):
-    put(base, _vignette(), (0, 0), alpha)
-
-
-# ---------------------------------------------------------------- fixed chrome
-def _scrim(height, a_top, a_bot, color=(24, 18, 15)):
-    a = np.linspace(a_top, a_bot, height)
-    rgba = np.zeros((height, W, 4), np.uint8)
-    rgba[..., 0], rgba[..., 1], rgba[..., 2] = color
-    rgba[..., 3] = np.repeat(a[:, None], W, axis=1).astype(np.uint8)
-    return Image.fromarray(rgba, "RGBA")
-
-
-_CHROME = {}
-
-
-def chrome():
-    if "top" not in _CHROME:
-        # ---- 상단: 병원 로고 + 병원명
-        top = Image.new("RGBA", (W, 330), (0, 0, 0, 0))
-        top.alpha_composite(_scrim(330, 172, 0))
-        logo = asset("logo_white").resize((247, 58), Image.LANCZOS)
-        top.alpha_composite(logo, (SAFE, 84))
-        T(top, CLINIC, W - SAFE, 113, "sb", 46, OFFW, "r", "c", 1.0, shadow=150, blur=10)
-        _CHROME["top"] = top
-
-        # ---- 하단: "이 건물 4층" 필 + 전화번호
-        bot = Image.new("RGBA", (W, 430), (0, 0, 0, 0))
-        bot.alpha_composite(_scrim(430, 0, 205))
-        py = 430 - 72 - 92            # 하단 안전여백 72 위
-        pw = int(twidth(FLOOR, "b", 50) + 76)
-        pill, pad = card(pw, 92, 46, ROSE, shadow=110)
-        bot.alpha_composite(pill, (SAFE - pad, py - pad))
-        T(bot, FLOOR, SAFE + pw / 2, py + 46, "b", 50, WHITE, "m", "c")
-        T(bot, PHONE, W - SAFE, py + 46, "m", 42, OFFW, "r", "c", 1.0, shadow=140, blur=10)
-        _CHROME["bot"] = bot
-    return _CHROME["top"], _CHROME["bot"]
-
-
-def draw_chrome(base):
-    top, bot = chrome()
-    base.paste(top, (0, 0), top)
-    base.paste(bot, (0, H - 430), bot)
-
-
 # ---------------------------------------------------------------- 공통 조각
-@lru_cache(maxsize=48)
-def _softplate(w, h, radius, a, blur):
-    pad = blur * 2 + 10
-    img = Image.new("RGBA", (w + 2 * pad, h + 2 * pad), (0, 0, 0, 0))
-    ImageDraw.Draw(img).rounded_rectangle([pad, pad, pad + w, pad + h], radius, fill=(18, 13, 11, a))
-    return img.filter(ImageFilter.GaussianBlur(blur)), pad
-
-
-def softplate(base, cx, cy, w, h, alpha=1.0, a=120, radius=70, blur=26):
-    """사진 위 흰 글씨 가독성을 위한 가장자리가 부드러운 어두운 판."""
-    im, pad = _softplate(int(w), int(h), int(radius), int(a), int(blur))
-    put(base, im, (cx - w / 2 - pad, cy - h / 2 - pad), alpha)
-
-
 def title_block(img, t, lines, size=104, y=300, x=SAFE, fkey="xb", fill=OFFW,
                 t0=0.12, t1=5.6, ha="l", lh=None):
     a, r = vis(t, t0, t1, 0.42, 0.45)
@@ -488,22 +156,6 @@ def equip_card(kind, w, h, label, sub):
     if sub:
         T(img, sub, pad + w / 2, ly + int(s * 1.14) + 26, "m", cap_size, CHAR, "m", maxw=w - 48)
     return img, pad
-
-
-def reveal(base, top_img, rect, prog, radius=0):
-    """rect(사각형)에서 시작해 전체 화면으로 확장하며 top_img를 드러낸다."""
-    prog = clamp01(prog)
-    x0, y0, x1, y1 = rect
-    cx0 = x0 + (0 - x0) * prog
-    cy0 = y0 + (0 - y0) * prog
-    cx1 = x1 + (W - x1) * prog
-    cy1 = y1 + (H - y1) * prog
-    w = max(2, int(cx1 - cx0))
-    h = max(2, int(cy1 - cy0))
-    rad = int(radius * (1 - prog))
-    crop = top_img.crop((int(cx0), int(cy0), int(cx0) + w, int(cy0) + h)).convert("RGBA")
-    crop.putalpha(rrect_mask(w, h, rad) if rad > 0 else Image.new("L", (w, h), 255))
-    base.paste(crop, (int(cx0), int(cy0)), crop)
 
 
 @lru_cache(maxsize=4)
@@ -1104,25 +756,6 @@ def render_frame(i):
 
 
 # ---------------------------------------------------------------- CLI
-def encode_range(first, last, out_path, crf=12, preset="medium", quiet=False):
-    cmd = ["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", "rgb24",
-           "-s", "%dx%d" % (W, H), "-r", str(FPS), "-i", "-",
-           "-an", "-c:v", "libx264", "-preset", preset, "-crf", str(crf),
-           "-pix_fmt", "yuv420p", "-g", "30", "-keyint_min", "30",
-           "-x264-params", "scenecut=0:open_gop=0", "-fps_mode", "cfr", out_path]
-    proc = subprocess.Popen(cmd, stdin=subprocess.PIPE)
-    n = last - first
-    for k, i in enumerate(range(first, last)):
-        proc.stdin.write(render_frame(i).tobytes())
-        if not quiet and k % 60 == 0:
-            print("  %s %d/%d" % (os.path.basename(out_path), k, n), flush=True)
-    proc.stdin.close()
-    rc = proc.wait()
-    if rc != 0:
-        raise SystemExit("ffmpeg failed rc=%d" % rc)
-    return out_path
-
-
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--scene", type=int, help="1-12")
@@ -1148,7 +781,7 @@ def main():
     if args.scene:
         si = args.scene - 1
         out = args.out or os.path.join(SCENEDIR, "%s.mp4" % SCENES[si]["id"])
-        encode_range(si * SCENE_FRAMES, (si + 1) * SCENE_FRAMES, out, args.crf)
+        encode_range(render_frame, si * SCENE_FRAMES, (si + 1) * SCENE_FRAMES, out, args.crf)
         print("done", out)
         return
 
