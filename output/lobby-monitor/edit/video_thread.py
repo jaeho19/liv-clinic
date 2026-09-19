@@ -401,7 +401,9 @@ def f_certification(tl):
     """2:25-2:50 인증 - 정식 허가와 국제 인증, 사용국."""
     img = _bg_clip("H03", tl, 6.0, span=19.0, dim=0.50, sway=-1)
 
-    softplate(img, W / 2, 490, 1000, 250, 0.85, a=112, radius=80, blur=34)
+    ea, _er = vis(tl, 0.3, None, 0.5, 0.4)
+    if ea > 0:
+        softplate(img, W / 2, 490, 1000, 250, ea * 0.85, a=112, radius=80, blur=34)
     eyebrow(img, tl, "압토스 실리프팅", 430, 0.3)
     a, r = vis(tl, 0.5, None, 0.5, 0.4)
     if a > 0:

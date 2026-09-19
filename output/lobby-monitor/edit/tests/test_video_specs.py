@@ -108,6 +108,34 @@ def test_background_keeps_moving(mod):
                                                 MIN_MOVE_MAD))
 
 
+def test_render_frame_is_idempotent(mod):
+    """같은 프레임을 두 번 렌더하면 픽셀이 완전히 같아야 한다.
+
+    lru_cache 가 붙은 함수가 가변 PIL 이미지를 돌려주고 호출부가 그것을 제자리
+    변형하면, 같은 인덱스를 다시 그릴 때 이미 그려진 그림 위에 또 그린다. ④편에서
+    실제로 이 결함이 최종 마스터까지 나갔다(라이브 구간 97프레임 스트로브).
+
+    이 스위트의 다른 단언으로는 못 잡는다 - 크롬·휘도 단언은 덧그려진 프레임도
+    통과하고, freezedetect/blackdetect 는 움직임이 '모자란' 쪽을 찾으므로 움직임이
+    '넘치는' 이 결함은 원리상 못 본다. 그래서 별도 가드가 필요하다.
+
+    샘플은 블록마다 두 곳: 시작 +0.4초(생성 클립을 그대로 쓰는 라이브 창 - 오염이
+    거기서 일어난다)와 중앙(블러 플레이트 구간).
+    """
+    m, name = mod
+    for b in m.BLOCKS:
+        for off in (0.4, b["dur"] / 2.0):
+            i = max(0, min(EXPECTED[name] - 1, int((b["start"] + off) * 30)))
+            a = np.asarray(m.render_frame(i).convert("RGB")).astype(int)
+            c = np.asarray(m.render_frame(i).convert("RGB")).astype(int)
+            d = int(np.abs(a - c).max())
+            assert d == 0, (
+                "%s %s블록 f%d 를 두 번 렌더하면 그림이 달라진다 (최대 %d). "
+                "캐시(lru_cache 등)가 돌려준 이미지를 그 자리에서 덧그리는 곳이 "
+                "있는지 확인할 것 - 캐시된 이미지는 반드시 복사한 뒤 그려야 한다."
+                % (name, b["id"], i, d))
+
+
 def test_no_banned_copy_in_module(mod):
     import copy_guard as cg
     m, name = mod
