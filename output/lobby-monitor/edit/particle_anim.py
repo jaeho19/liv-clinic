@@ -22,7 +22,7 @@ CLASS_COLOR = {"micro": (226, 198, 186), "submicro": (214, 180, 166),
                "nano": (198, 160, 146)}
 
 
-def active_counts(t, dur=35.0):
+def active_counts(t, dur):
     """t 시점에 표시 중인 크기별 입자 수."""
     out = {}
     for (name, _r, start), total in zip(SIZES, PER_CLASS):

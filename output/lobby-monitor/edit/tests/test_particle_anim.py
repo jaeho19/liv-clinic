@@ -62,3 +62,20 @@ def test_particles_stay_inside_box():
     outside = arr.copy()
     outside[BOX[1]:BOX[3], BOX[0]:BOX[2]] = 0
     assert outside.max() == 0, "입자가 지정 영역 밖으로 나갔다"
+
+
+def test_draw_release_is_deterministic_for_same_seed():
+    # 태스크 8이 이 영상을 8개 청크로 나눠 병렬 프로세스로 렌더한 뒤 이어 붙인다.
+    # 같은 seed·t가 프로세스마다 다르게 나오면 청크 경계에서 입자가 튀는
+    # 결함이 생기고, 자동 검수는 이를 잡지 못한다.
+    def render(seed):
+        img = Image.new("RGB", (1080, 1920), (18, 14, 12))
+        pa.draw_release(img, BOX, 20.0, DUR, seed=seed)
+        return np.asarray(img)
+
+    a1 = render(7)
+    a2 = render(7)
+    assert np.array_equal(a1, a2), "같은 seed·t인데 픽셀이 달라졌다"
+
+    a3 = render(99)
+    assert not np.array_equal(a1, a3), "seed를 바꿔도 결과가 같다 (테스트가 무의미해짐)"
