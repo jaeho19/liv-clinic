@@ -187,6 +187,15 @@ def qr_card():
 # 끝 프레임에서 두 문자열이 동시에 크롬 바깥(세로 340~1440)에 남도록 도착 중심을
 # 0.65 로 잡았다. 줌 1.55 가 상한이다 - 1.70 이면 세로 가시범위가 0.588 로 줄어
 # 두 문자열 간격 0.339 를 크롬 사이 1,100px 안에 넣을 수 없다.
+#
+# 전면 크롭을 쓰는 이유(video_thread.py 의 g_person 주석은 정반대로 "인증서를
+# 커버 크롭으로 쓰지 않는다"고 적혀 있다 - 두 편의 역할이 다르다):
+# 설계서 3장 3편 A 가 "인증서가 화면을 채우며 ... 확대"로, 5장이 "카드 안의 작은
+# 사진 -> 화면을 채우는 전면"을 1편에서 바꾸는 핵심으로 못박았다. 패널로 되돌리면
+# 이 편의 시각 언어가 1편으로 회귀한다. 전면 크롭이 잘라내는 표제
+# ("APTOS PROFESSIONAL COURSE CERTIFICATE" 좌우 각 2%)는 같은 편 C 블록의 조판
+# ("APTOS Professional Course 수료")이 복원한다 - 로비 관람객이 16분 루프 중
+# 한 편만 보고 갈 수 있으므로 근거를 같은 편 안에 둔다.
 A_ZOOM = (1.0, 1.55)
 A_CY = (0.42, 0.65)
 
@@ -233,13 +242,27 @@ def b_georgia(tl):
     return img
 
 
+C_PHOTO = (262, 600, 555, 740)          # 3:4 원본 비율 그대로. 아래 조판 자리를 비운다
+
+
 def c_ceremony(tl):
-    """0:44-1:06 수여 - 본사 깃발 앞 인증서 수여."""
+    """0:44-1:06 수여 - 본사 깃발 앞 인증서 수여.
+
+    주제목은 한글 76px, "APTOS Professional Course 수료"는 보조 54px 로 내린다.
+    그 문구를 주제목에 두면 안전영역 936px 안에서 draw.fit_size 가 조용히 줄여
+    제목 하한 76px 을 깬다(실측: xb 66px 지정 -> 60px 렌더, 폭 920px).
+    2편 _g_photo 가 같은 이유로 같은 처리를 하므로 세 편의 조판을 맞춘다.
+    """
     img = _h04_amb(30.0 + tl)
-    duo(img, tl, 0.3, None, "APTOS Professional Course 수료",
-        "Certified by G. · M. · C. Sulamanidze MD-PhD", 452, 546, 66, 40,
-        plate=(505, 940, 260), lead=0.4)
-    photo_still(img, tl, 0.3, None, "A02", B_PHOTO, panel=(0.0, 0.5, 0.52))
+    duo(img, tl, 0.3, None, "APTOS 본사 인증서 수여",
+        "APTOS Professional Course 수료", 430, 530, 76, 54,
+        plate=(500, 960, 250), lead=0.4)
+    photo_still(img, tl, 0.3, None, "A02", C_PHOTO, panel=(0.0, 0.5, 0.52))
+    # 발급자 3인은 54px 한 줄에 안 들어간다(실측 1,086px > 936). fit_size 에 맡기면
+    # 46px 로 조용히 줄어 자막 하한 54px 을 깨므로 두 줄로 나눈다.
+    duo(img, tl, 0.8, None, "Certified by", "G. · M. · C. Sulamanidze MD-PhD",
+        1362, 1424, 54, 54, plate=(1430, 940, 170), f1=ROSE_T, f2=OFFW,
+        k1="m", k2="m", lead=0.4)
     return img
 
 
@@ -259,9 +282,9 @@ def d_lecture(tl):
     photo_still(img, tl, 17.0, None, "A10", (SAFE, 400, 936, 840),
                 panel=(0.0, 0.5, 0.62))
     duo(img, tl, 0.2, 16.7, "학회 발표", "Kim, Soo Young · Liv Plastic Surgery",
-        1240, 1348, 76, 44, plate=(1330, 940, 240))
+        1240, 1348, 76, 54, plate=(1330, 940, 240))
     duo(img, tl, 17.2, None, "Aptos Xperts Alliance", "압토스 국제 조직 연단",
-        1310, 1400, 64, 44, plate=(1370, 940, 230))
+        1310, 1400, 64, 54, plate=(1370, 940, 230))
     return img
 
 
@@ -294,7 +317,7 @@ def f_person(tl):
         put(img, im, (fx - pad, fy - pad + dy), a)
 
     duo(img, tl, 0.8, None, "김수영 대표원장", "성형외과 전문의",
-        1300, 1398, 76, 48, plate=(1370, 940, 240))
+        1300, 1398, 76, 54, plate=(1370, 940, 240))
     return img
 
 
@@ -313,7 +336,7 @@ def h_outro(tl):
     """2:48-3:00 마무리 - 배경만 천천히 움직이고 QR 카드는 완전 고정."""
     img = kb(photo_plate("I03", blur=20, dim=0.62), p(tl, 0, 12), 1.14,
              _z1(12.0, 1.14), 0.44, 0.5, 0.56, 0.5)
-    T(img, "김수영 대표원장 상담", W / 2, 452, "m", 50, ROSE_T, "m", "a",
+    T(img, "김수영 대표원장 상담", W / 2, 452, "m", 54, ROSE_T, "m", "a",
       eo(p(tl, 0.2, 0.6)), shadow=160, blur=12)
     im, pad = qr_card()
     put(img, im, (SAFE - pad, 560 - pad), eo(p(tl, 0.2, 1.0)))
