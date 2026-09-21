@@ -6292,7 +6292,6 @@
       "rejuran2cc": { "name": "Rejuran Healer 2cc", "desc": "Délivre un composant issu du saumon (PN) dans le derme pour stimuler l'auto-régénération de la peau." },
       "rejuran2cc3x": { "name": "Rejuran Healer 2cc · 3 séances (cure de 12 semaines)", "desc": "Délivre un composant issu du saumon (PN) dans le derme pour stimuler l'auto-régénération de la peau." },
       "ivCustom": { "name": "Perfusion personnalisée", "desc": "Thérapie d'apport en vitamines et nutriments par voie intraveineuse selon votre état." },
-      "inmode": { "name": "Lifting InMode (2 modes)", "desc": "Utilise l'énergie RF pour réduire les cellules graisseuses et stimuler le collagène simultanément." },
       "ulthera300": { "name": "Ultherapy Prime 300 tirs", "desc": "Délivre des ultrasons focalisés de haute intensité (HIFU) en profondeur pour fermeté et lifting." }
     },
     "disclaimer": "Toutes les procédures peuvent entraîner des effets secondaires tels que gonflement, ecchymoses ou inflammation selon les individus ; une consultation approfondie avec l'équipe médicale est nécessaire.",
@@ -6301,7 +6300,7 @@
     "banner": { "title": "Tarif découverte première visite", "subtitle": "À partir de 5 000 KRW — offre exclusive pour les nouveaux clients" },
     "meta": {
       "title": "Tarif découverte première visite | LIV Plastic Surgery",
-      "description": "Tarifs découverte première visite chez LIV Plastic Surgery. De l'épilation à 5 000 KRW au Botox, Rejuran, InMode et Ultherapy — jusqu'à -47%."
+      "description": "Tarifs découverte première visite chez LIV Plastic Surgery. De l'épilation à 5 000 KRW au Botox, Rejuran et Ultherapy — jusqu'à -47%."
     },
     "slimBanner": {
       "text": "Tarif Première Visite · Jusqu'à -47%",

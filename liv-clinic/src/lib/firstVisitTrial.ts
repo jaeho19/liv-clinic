@@ -54,7 +54,6 @@ export const FIRST_VISIT_TRIALS: TrialItem[] = [
   { id: 'rejuran2cc', category: 'injection', originalPrice: 300000, trialPrice: 195000, discountRate: 35 },
   { id: 'rejuran2cc3x', category: 'injection', originalPrice: 920000, trialPrice: 560000, discountRate: 39 },
   { id: 'ivCustom', category: 'injection', originalPrice: 50000, trialPrice: 29000, discountRate: 42 },
-  { id: 'inmode', category: 'lifting', originalPrice: 250000, trialPrice: 149000, discountRate: 40 },
   { id: 'ulthera300', category: 'lifting', originalPrice: 1470000, trialPrice: 990000, discountRate: 33 },
 ];
 
