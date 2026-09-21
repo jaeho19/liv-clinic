@@ -1,0 +1,12 @@
+# 생성·변환 산출물은 리포에 넣지 않는다 (lobby-monitor 와 같은 규칙).
+# 소스와 기록(보고서 JSON·문서)만 추적한다.
+edit/clips/*.mp4
+edit/clips/frames/
+edit/gen/*.png
+edit/gen/*.jpg
+edit/fonts/
+edit/stills/
+edit/scenes_out/
+edit/scenes_out2/
+edit/scenes_film/
+*.mp4

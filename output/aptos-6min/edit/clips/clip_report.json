@@ -1,0 +1,832 @@
+{
+ "V3": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "조직 섬유가 걸려 당겨짐 (t2v)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_021206_515e2d8f-fff6-441c-bd03-1907980a033b.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.075,
+   "min": 0.139,
+   "max": 5.083
+  }
+ },
+ "V4": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "빛이 석재를 쓸고 지나감 (BG02 참조)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_021220_f9f5b279-20b0-469d-b49c-2a6a66c41028.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 5.106,
+   "min": 1.371,
+   "max": 10.544
+  }
+ },
+ "V5": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "빛 터널 통과 (t2v) — 오프닝 훅 후보",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_021204_a7172514-72de-4a70-83dd-37ff478dd2b5.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 2.19,
+   "min": 0.608,
+   "max": 5.882
+  }
+ },
+ "V6": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "캡슐 확산 (t2v) — NAMICA",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_021204_11eea49b-e524-4609-806d-7d5cf281af81.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 2.93,
+   "min": 0.476,
+   "max": 6.209
+  }
+ },
+ "V1": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "실 매크로 트래킹 (P01T 참조)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_021221_6dcc0d65-5e21-4ac9-9ffe-93e7e3790190.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.572,
+   "min": 0.821,
+   "max": 2.844
+  }
+ },
+ "V2": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "돌기 클로즈업 랙포커스 (P01B 참조)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_021220_226c2735-f220-4baa-913d-fb32c7f45a48.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.634,
+   "min": 0.259,
+   "max": 1.255
+  }
+ },
+ "V7": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "먹 안개 드리프트 — 개념도 배경",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_023010_7bb07500-e96a-4743-8cbc-72a0d75bd932.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.544,
+   "min": 0.179,
+   "max": 0.904
+  }
+ },
+ "V9": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "석재 바닥 위 빛 이동 — 증거 섹션",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_023010_abba2310-dafe-402e-87a6-ec38d13ceb4d.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.704,
+   "min": 0.438,
+   "max": 1.271
+  }
+ },
+ "V10": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "좌상단 빛이 번지며 내려옴 — 마무리",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_023010_fc2ac81c-0ae3-41cd-9c54-cb41fa3221ee.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.072,
+   "min": 0.485,
+   "max": 1.737
+  }
+ },
+ "V8": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 121,
+   "duration": 5.042
+  },
+  "note": "지면 위 빛 이동 — 표 섹션 배경",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_023010_0b7ea253-cd81-418b-8326-f8fa77052e0d.mp4",
+  "frames": 150,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.275,
+   "min": 0.628,
+   "max": 1.992
+  }
+ },
+ "N01": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 169,
+   "duration": 7.042
+  },
+  "note": "훅2 돌기 매크로 트래킹 (P01B)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_5192082d-9a9d-4f12-ab3c-24439eaf9e55.mp4",
+  "want_frames": 210,
+  "frames": 210,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.889,
+   "min": 0.654,
+   "max": 1.465
+  }
+ },
+ "N02": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "훅3 실 회전 림라이트 (P01T)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031642_ab7162f5-277a-4aac-9ed0-f525d371551a.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.814,
+   "min": 0.068,
+   "max": 1.6
+  }
+ },
+ "N03": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "01 오프너 석재 빛 스윕 (BG02)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_47264b0b-b33c-4e17-bd38-86874edf3f91.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 5.53,
+   "min": 3.054,
+   "max": 8.312
+  }
+ },
+ "N04": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 289,
+   "duration": 12.042
+  },
+  "note": "01 제품 베드 가로결 (BG07)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_cf7a6e64-2329-43fd-bf71-36666d70f03a.mp4",
+  "want_frames": 360,
+  "frames": 360,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.674,
+   "min": 0.355,
+   "max": 1.308
+  }
+ },
+ "N05": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "01 돌기 랙포커스 (P01B)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_41ca361f-826e-4f3e-9a82-7abea213702e.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.708,
+   "min": 0.319,
+   "max": 1.201
+  }
+ },
+ "N06": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 241,
+   "duration": 10.042
+  },
+  "note": "01 정리 베드 종이결 (BG09)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_505ace3c-c35c-4bd2-92bd-14f304c797da.mp4",
+  "want_frames": 300,
+  "frames": 300,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.14,
+   "min": 0.417,
+   "max": 1.884
+  }
+ },
+ "N07": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 289,
+   "duration": 12.042
+  },
+  "note": "02 오프너 석재 빛 사선 (BG02)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_905ab400-e579-4a5d-87ff-43d25782e43f.mp4",
+  "want_frames": 360,
+  "frames": 360,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 4.197,
+   "min": 2.52,
+   "max": 7.542
+  }
+ },
+ "N08": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "03 오프너 월넛 결 (BG04)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_8086a7f7-1183-43d3-94b8-2d7812627e9f.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.596,
+   "min": 0.817,
+   "max": 2.231
+  }
+ },
+ "N09": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 409,
+   "duration": 17.042
+  },
+  "note": "03 도해 베드1 재생성 (BG05) — 첫 판 0.399 로 약했다",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_040221_971ea726-e431-47fe-961c-92370720225e.mp4",
+  "want_frames": 510,
+  "frames": 510,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.564,
+   "min": 0.016,
+   "max": 0.782
+  }
+ },
+ "N10": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "03 악센트 실 팽팽 (P01T)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_7e8c0cca-b4fd-45a5-9abd-7494a91d62c6.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.219,
+   "min": 0.738,
+   "max": 2.064
+  }
+ },
+ "N11": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 409,
+   "duration": 17.042
+  },
+  "note": "03 도해 베드2 먹 안개 (BG05)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_dfb38ccb-5046-46a0-9ed9-508dbee6e4a6.mp4",
+  "want_frames": 510,
+  "frames": 510,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.733,
+   "min": 0.219,
+   "max": 1.311
+  }
+ },
+ "N12": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "03 정리 빛기둥 (BG03)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031247_20ba2df4-e18e-4b67-a43c-e86abd39956f.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.449,
+   "min": 0.188,
+   "max": 0.658
+  }
+ },
+ "N13": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "04 오프너 입자 확산 재생성 (BG08) — 첫 판 0.363 로 약했다",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_034413_c93566e5-4bde-4b95-b35b-365424fbcc66.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 2.06,
+   "min": 0.048,
+   "max": 3.86
+  }
+ },
+ "N14": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 385,
+   "duration": 16.042
+  },
+  "note": "04 캡슐 베드 부유 입자 (BG01)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031642_6e3b38a9-794e-4fc1-a819-f92270ac861e.mp4",
+  "want_frames": 480,
+  "frames": 480,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.537,
+   "min": 0.208,
+   "max": 2.456
+  }
+ },
+ "N15": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 289,
+   "duration": 12.042
+  },
+  "note": "04 정리 베드 석재 반사 (BG10)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031642_7d77a369-9d7e-4721-8b4c-ffc150c164df.mp4",
+  "want_frames": 360,
+  "frames": 360,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.255,
+   "min": 0.789,
+   "max": 2.231
+  }
+ },
+ "N16": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "05 오프너 석고벽 사선 (BG06)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031642_4b34cf11-769b-4ac8-947c-1d9c40675944.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.905,
+   "min": 0.67,
+   "max": 1.313
+  }
+ },
+ "N17": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "05 악센트 석재 빛선 (BG02)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031642_1d9f6d4c-350b-4f76-88a8-3920de3b6e8d.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 4.56,
+   "min": 0.261,
+   "max": 46.749
+  }
+ },
+ "N18": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 337,
+   "duration": 14.042
+  },
+  "note": "05 표 베드 종이 그라디언트 (BG09)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031642_c76ca5bb-de31-4dde-ac17-118697208652.mp4",
+  "want_frames": 420,
+  "frames": 420,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.774,
+   "min": 0.389,
+   "max": 1.146
+  }
+ },
+ "N19": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "06 오프너 석재바닥 반사 (BG10)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_031642_5c031dd8-c95f-46a5-905b-114befab8de6.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.696,
+   "min": 0.638,
+   "max": 2.735
+  }
+ },
+ "N20": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 385,
+   "duration": 16.042
+  },
+  "note": "06 인증 베드 빛기둥 이동 (BG03)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_032312_46bed647-df56-4dda-ad14-363a4b6a0f2e.mp4",
+  "want_frames": 480,
+  "frames": 480,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.786,
+   "min": 0.116,
+   "max": 2.603
+  }
+ },
+ "N21": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 241,
+   "duration": 10.042
+  },
+  "note": "06 100개국 재생성 (BG02) — 첫 판은 첫 1초가 검었다",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_040222_3839f69b-9e6c-4e6d-a734-aa652c33ebd4.mp4",
+  "want_frames": 300,
+  "frames": 300,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.135,
+   "min": 0.044,
+   "max": 2.674
+  }
+ },
+ "N22": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "07 오프너 월넛 사선광 (BG04)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_032312_de62a18e-3505-47a2-b2e6-d41be3698003.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 2.459,
+   "min": 1.053,
+   "max": 4.093
+  }
+ },
+ "N23": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "08 오프너 석고벽 개방광 (BG06)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_032312_343dfa1d-84a8-4079-9c1c-5411b8d139ec.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.912,
+   "min": 0.244,
+   "max": 2.291
+  }
+ },
+ "N24": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 289,
+   "duration": 12.042
+  },
+  "note": "09 마무리 빛 번짐 (BG08)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_032312_64f183ef-35fb-455b-974b-8ad22fa7c865.mp4",
+  "want_frames": 360,
+  "frames": 360,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.042,
+   "min": 0.027,
+   "max": 3.112
+  }
+ },
+ "N25": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 289,
+   "duration": 12.042
+  },
+  "note": "09 QR 배경 재생성 (BG08) — 첫 판 0.244 로 약했다",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_040222_fc37f09e-69e2-4b7f-9f25-09bf4c6a9de4.mp4",
+  "want_frames": 360,
+  "frames": 360,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.304,
+   "min": 0.007,
+   "max": 0.522
+  }
+ },
+ "N26": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "W5 수료증 패널 배경 (BG03)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_034413_ce684174-92a1-4d9c-85eb-2f52045e383d.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 2.297,
+   "min": 0.351,
+   "max": 6.389
+  }
+ },
+ "N27": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "W6 학회 패널 배경 (BG04)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_034413_ab9dff6a-5c8f-49c4-940a-0e04d0e59a1c.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.081,
+   "min": 0.434,
+   "max": 1.794
+  }
+ },
+ "N28": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 217,
+   "duration": 9.042
+  },
+  "note": "X2 상담 패널 배경 (BG01)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_034413_3096059b-9539-43e5-ba56-533328ffb7e4.mp4",
+  "want_frames": 270,
+  "frames": 270,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 0.869,
+   "min": 0.557,
+   "max": 1.333
+  }
+ },
+ "N29": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 217,
+   "duration": 9.042
+  },
+  "note": "X3 로비 패널 배경 (BG10)",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_034413_8a1a1612-fe66-45f1-95c0-ec9505b0dfc1.mp4",
+  "want_frames": 270,
+  "frames": 270,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 1.152,
+   "min": 0.679,
+   "max": 2.113
+  }
+ },
+ "N30": {
+  "source": {
+   "width": 480,
+   "height": 854,
+   "codec": "h264",
+   "fps": 24.0,
+   "nb_frames": 193,
+   "duration": 8.042
+  },
+  "note": "E3 캡슐 근접 배경 추상 빛 (BG05) — 구슬 아님",
+  "url": "https://d8j0ntlcm91z4.cloudfront.net/user_3DTURjcGnTrRjZmSD43f9beOfdT/hf_20260921_034413_3066f463-7626-4fd6-adac-c410384ba985.mp4",
+  "want_frames": 240,
+  "frames": 240,
+  "fixed": "복제 1장",
+  "interpolated": true,
+  "motion": {
+   "mean": 2.428,
+   "min": 0.54,
+   "max": 4.019
+  }
+ }
+}
