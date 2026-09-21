@@ -1,48 +1,61 @@
-리브성형외과 1층 모니터용 압토스 실리프팅 6분 영상, 이어서 3단계(6분 전체)를 진행합니다.
+리브성형외과 1층 모니터용 압토스 실리프팅 6분 영상 — 3단계(6분 전체)까지 끝났습니다.
+이어서 작업하려면 아래를 복사해 새 창에 붙여넣으세요.
 
-먼저 아래 두 문서를 읽어 주세요. 순서대로입니다.
-  D:\dev\LIV_homepage\output\aptos-6min\HANDOFF2.md   ← 현재 상태와 다음 할 일
-  D:\dev\LIV_homepage\output\aptos-6min\LOOK.md       ← 설계 근거와 실측 기록
+────────────────────────────────────────────────────────────────────────
+
+리브성형외과 1층 모니터용 압토스 실리프팅 6분 영상, 이어서 작업합니다.
+
+먼저 아래 문서를 순서대로 읽어 주세요.
+  D:\dev\LIV_homepage\output\aptos-6min\DELIVERY.md   ← 완성 보고와 남은 판단거리
+  D:\dev\LIV_homepage\output\aptos-6min\LOOK.md       ← 설계 근거와 실측 기록(길다. 3단계 함정 항목은 꼭)
+  D:\dev\LIV_homepage\output\aptos-6min\HANDOFF.md    ← §3 진단·§4 금지 문구 대조표는 여전히 유효
 
 ■ 지금까지 온 길
-- 1단계(룩 확정용 정지 이미지 5장) 승인 완료
-- 2단계 파일럿 v1은 "사진 프레임을 연결한 것 같다"는 이유로 폐기
-- 2단계 파일럿 v2(Seedance 2.5 생성 클립 기반) 승인 — pilot_30s_v2.mp4
-- 라인업·적용 부위를 조각 두상 + 부위 표시로 해결 (face_areas.py)
+- 1단계 룩(정지 5장) 승인
+- 2단계 파일럿 v1 폐기("사진 프레임을 연결한 것 같다") → v2 승인
+- 3단계 6분 전체 완성 — aptos_6min.mp4, 검수 전항목 통과 (master c417e43)
+  섹션 안에서 강약(매 섹션을 클립으로 세게 열고 본문에서 내린다)이 사장님 결정
 
-■ 확정 사항
-- 주제: 압토스 실리프팅. 리브성형외과가 압토스 전문 병원임을 보여준다
-- 매체: 1층 공용 모니터용 세로형 1080x1920 무음, 정확히 360초(10,800프레임)
-- 가격은 넣지 않는다
-- 생성 도구: Higgsfield MCP + Seedance 2.5 (영상) / GPT Image 2.5 (이미지)
-- 클립 화질은 당분간 480p로 진행. 1080p 재생성은 6분이 선 뒤에 판단한다
-- 크레딧은 충분하니 품질을 위해 이미지·영상을 추가로 만들어도 된다
+■ 완성본
+  output/aptos-6min/aptos_6min.mp4   1080x1920 · 360.000초 · 무음 · 582MB
+  전체 중앙값 0.438 / 블록 최저 0.271 / 강약 1.95배
+  (승인된 파일럿 0.430 / 0.211 / 1.84배 — 네 항목 모두 넘었다)
 
-■ 이번에 할 일
-HANDOFF2.md §2의 6분 구성안(360초)대로 전체를 만든다.
-pilot2.py가 본보기다 — 그 문법을 그대로 6분으로 확장하면 된다.
-섹션마다 생성 클립으로 열고(5~10초) 그 뒤 조판·실사 계층으로 넘어간다.
-추가 클립이 15~20편 필요하다.
+■ 사장님 판단이 필요한 것 (DELIVERY.md §7)
+1. 1080p 재생성 여부 — 지금 클립 30편은 480p 원본을 늘린 것이다.
+   480p 는 초당 3크레딧이고 잔액은 4,265다. 1080p 는 단가가 오른다.
+2. 파일 크기 582MB — CRF 12 라 거의 무손실이다. 모니터 재생기가 버거우면
+   CRF 18~20 으로 다시 인코딩하면 된다(렌더는 다시 안 해도 된다).
+3. A09(학회 사진) 더 넓은 원본이 병원에 있으면 교체 — 지금 파일은 원본 자체가
+   잘려 있어 스크린 문구가 "for Facia" "Liv Plastic Surge" 에서 끊긴다.
+4. 인계문 §10 미결 3건(①편 정지 구간 2건, 홈페이지 미진행 시술 2건,
+   렌더러 3중 복제)은 그대로 남아 있다.
 
 ■ 반드시 지킬 것 (어기면 이전 작업의 실패가 반복됩니다)
-1. 클립이 주인공인 구간에서는 감광하지 않는다. 글자 자리에만 band_scrim.
-   이전 영상은 생성 클립을 갖고도 dim 0.46~0.58로 눌러서 움직임이 사라졌다.
-2. 의료 내용(실 메커니즘·캡슐·부위 표시)은 코드로 그린다. AI에 맡기지 않는다.
-   화면에 "개념도" 표기 필수.
-3. 생성 이미지를 "실물 사진"으로 표기하지 않는다. 제품 렌더는 "제품 이미지".
-4. 증거 사진은 형태를 바꾸지 않는다. 업스케일은 face_enhancement: false로만.
-   A01(인증서)은 업스케일 금지 — 업스케일러가 작은 글자를 지어낸다.
-5. Seedance에 참조 이미지를 붙일 때는 declined_preset_id를 같이 보낸다.
-   안 보내면 프리셋 추천에 막혀 job이 안 만들어진다.
-   generate_audio는 기본값이 true이니 false를 명시한다.
-6. 청크 렌더 명령에 PYTHONIOENCODING=utf-8을 빠뜨리면 렌더가 죽는다 (cp949).
-7. 문구는 설계서 §4 기준이다. 작업 뒤 copy_guard.py로 검사한다.
+1. 움직임 기준선은 **지금 쓰는 코드로 다시 재라.** 문서에 적힌 숫자를 그대로
+   믿으면 안 된다 — 측정 코드가 다르면 10~20% 어긋난다(LOOK.md 3단계 §1).
+   승인판 pilot_30s_v2.mp4 와 폐기판 pilot_30s.mp4 가 둘 다 남아 있다.
+2. 악센트 구간에서는 감광하지 않는다. 글자 자리에만 band_scrim, 그것도 좁게 —
+   넓게 깔면 배경 움직임까지 죽는다(LOOK.md 3단계 §5).
+3. 의료 내용(실·캡슐·부위)은 코드로 그린다. AI 클립 위에 의료 설명을 얹으면
+   AI 가 의료 내용을 그린 것이 된다(LOOK.md 3단계 §9). 화면에 "개념도" 표기.
+4. 증거 사진은 잘라서 화면을 채우지 않는다. panel_scene 을 쓴다(DELIVERY.md §5).
+   A01 업스케일 금지, A03 확대 금지는 그대로.
+5. Seedance 참조 이미지에는 declined_preset_id 를 같이 보낸다. generate_audio 는
+   기본값이 true 이니 false 명시. 한 번에 12편 제출하면 429 로 막힌다(8편씩).
+6. 모든 python 명령에 PYTHONIOENCODING=utf-8 (cp949 로 죽는다).
+7. clips.py --convert 에 --keys 를 빠뜨리면 기존 V1~V10 까지 다시 변환돼
+   파일럿 검사가 깨진다.
 
-■ 검수
-test_pilot.py(40개)와 copy_guard를 통과시키고, ffprobe 규격 + freezedetect +
-blackdetect에 더해 프레임 간 변화량을 반드시 같이 잰다.
-freezedetect는 이전 작업의 97프레임 스트로브를 원리상 못 잡았다.
+■ 고치고 다시 확인하는 법
+  cd output/aptos-6min/edit
+  PYTHONIOENCODING=utf-8 python -m pytest test_film.py test_pilot.py -q
+  PYTHONIOENCODING=utf-8 python probe_motion.py F2 Y2      # 렌더 없이 블록 움직임
+  PYTHONIOENCODING=utf-8 python film.py --sheet            # 블록마다 1컷
+  seq 0 11 | xargs -P 12 -I{} sh -c 'PYTHONIOENCODING=utf-8 python film.py --chunk {}'
+  PYTHONIOENCODING=utf-8 python film.py --join
+  PYTHONIOENCODING=utf-8 python verify_film.py ../aptos_6min.mp4 --json ../verify_report.json
+  PYTHONIOENCODING=utf-8 python ../../lobby-monitor/edit/copy_guard.py <파일들>
 
-■ 먼저 확인해 주세요
-클립 움직임 강도를 6분 내내 지금처럼 셀지, 강약을 둘지 아직 정하지 못했습니다.
-전체를 만들기 전에 의견을 주세요.
+  한 블록만 고쳤으면 그 블록이 든 청크만 다시 렌더하고 --join 하면 된다.
+  청크 k 는 프레임 k*900 ~ (k+1)*900 이다.
