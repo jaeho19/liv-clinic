@@ -158,6 +158,8 @@ export default function EventDetailClient() {
               status={status}
               isEnded={isEnded}
               isPromotion={new Date(event.endDate).getFullYear() >= 2099}
+              // 상세 갤러리 없이 포스터 1장뿐인 이벤트는 포스터를 새 탭에서 원본 크기로 볼 수 있게 한다.
+              zoomHref={galleryImages.length === 0 ? `/events/${event.id}/poster` : undefined}
             />
 
             {/* 이벤트 정보 */}

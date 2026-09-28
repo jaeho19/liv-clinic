@@ -1,9 +1,8 @@
 import { Metadata } from 'next';
-import { createClient } from '@supabase/supabase-js';
-import type { Database } from '@/types/supabase';
 import { BASE_URL, buildHreflangMap, getSiteName } from '@/lib/seo';
 import { pickLocalized } from '@/lib/i18nFallback';
-import { buildEventMetaDescription, decodeEventSlug, eventsMetaFor } from '@/lib/eventsMeta';
+import { buildEventMetaDescription, eventsMetaFor } from '@/lib/eventsMeta';
+import { getPublishedEventRow } from '@/lib/eventsServer';
 import type { Locale } from '@/i18n/routing';
 import EventDetailClient from './EventDetailClient';
 
@@ -11,24 +10,8 @@ import EventDetailClient from './EventDetailClient';
 // (관리자에서 이벤트 정보 수정 시 탭 제목/OG 정보가 빠르게 반영되어야 함)
 export const revalidate = 60;
 
-// Server-side: Supabase에서 이벤트 데이터 가져오기
-// 한글 슬러그(`6월-프로모션`)는 라우트 파라미터로 퍼센트 인코딩된 채 들어와 DB 조회가 빗나갔다
-// (2026-09-06 실측: 4개 이벤트 × 11로케일이 폴백 제목으로 서빙됨) → 조회 전에 디코드한다.
-async function getEvent(rawSlug: string) {
-  const supabase = createClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
-
-  const { data } = await supabase
-    .from('events')
-    .select('*')
-    .eq('slug', decodeEventSlug(rawSlug))
-    .eq('is_published', true)
-    .single();
-
-  return data;
-}
+// Server-side: Supabase에서 이벤트 데이터 가져오기 (포스터 전용 페이지와 공유 — 슬러그 디코드 포함)
+const getEvent = getPublishedEventRow;
 
 // OG 메타데이터 생성 (카카오톡, SNS 공유 시 썸네일 표시)
 export async function generateMetadata({

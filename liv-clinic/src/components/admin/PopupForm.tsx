@@ -157,14 +157,17 @@ export default function PopupForm({ popup }: PopupFormProps) {
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2">
           <label className="block text-sm font-medium text-[#575756] mb-1.5">링크 URL</label>
+          {/* type="url" 은 절대 URL 만 통과시켜 이벤트 연동 트리거가 넣는 상대 경로(/ko/events/슬러그)를 저장할 수
+              없었다 — 다른 항목을 고치려면 링크를 지워야 했음(2026-09-28 10월 팝업 링크 소실). text 로 둔다. */}
           <input
-            type="url"
+            type="text"
+            inputMode="url"
             value={form.link_url}
             onChange={(e) => updateField('link_url', e.target.value)}
             className="w-full px-3 py-2 border border-[#e5e5e5] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#b4988d]"
-            placeholder="https://..."
+            placeholder="/ko/events/이벤트-슬러그 또는 https://..."
           />
-          <p className="text-xs text-[#b4b4b4] mt-1">이미지 클릭 시 이동할 URL</p>
+          <p className="text-xs text-[#b4b4b4] mt-1">이미지 클릭 시 이동할 URL. 사이트 안 페이지는 /ko/events/슬러그 처럼 경로만 적어도 됩니다.</p>
         </div>
         <div>
           <label className="block text-sm font-medium text-[#575756] mb-1.5">열기 방식</label>
