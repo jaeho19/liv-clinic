@@ -202,7 +202,9 @@ export default function ImageUploader(props: ImageUploaderProps) {
             className="rounded-lg border border-[#e5e5e5] object-cover"
             style={{ width: 240, height: 160 }}
           />
+          {/* 폼(EventForm 등) 안에 들어가므로 type="button" 필수 — 없으면 submit 이 되어 ✕ 가 저장·이동을 일으킨다 */}
           <button
+            type="button"
             onClick={handleRemove}
             className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white rounded-full text-xs flex items-center justify-center hover:bg-red-600 cursor-pointer"
           >
