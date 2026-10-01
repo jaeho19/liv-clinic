@@ -1,5 +1,5 @@
 // 채팅 응답 실측 (읽기 전용) — "연락처 먼저" 설계(docs/superpowers/specs/2026-10-01-chat-contact-first-design.md)의
-// 목표 G-1~G-5를 같은 정의로 다시 재기 위한 스크립트. 아무것도 변경하지 않는다(READ ONLY 트랜잭션).
+// 목표 G-1~G-6을 같은 정의로 다시 재기 위한 스크립트. 아무것도 변경하지 않는다(READ ONLY 트랜잭션).
 //
 // 실행 (liv-clinic 폴더에서):
 //   NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/chat-response-baseline.mjs [--since 2026-05-08] [--card-since 2026-08-09]
@@ -10,6 +10,7 @@
 //   - 영업중: 평일 10:00–19:00, 토 10:00–16:00 (KST, 코드 기본값). 휴진일(CHAT_CLOSED_DATES)은 반영하지 않는다.
 //   - 다시 닿을 길 없음: 이메일·메신저 연락처가 없고, 직원 답변이 없거나 답변 뒤 손님이 다시 말하지 않음.
 //   - 이름·연락처 값은 읽지 않고 유무만 센다.
+//   - 이벤트 안내(항목 9): 자동 안내(source='auto') 가운데 본문이 이벤트 페이지 주소(…/events 또는 …/events/…)로 끝나는 글.
 
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -52,6 +53,11 @@ const { rows: colRows } = await db.query(
     WHERE table_schema='public' AND table_name='chat_sessions' AND column_name='visitor_messenger_clicked'`
 );
 const CLICKED = colRows.length > 0 ? 'cs.visitor_messenger_clicked' : 'NULL::text';
+const { rows: hintColRows } = await db.query(
+  `SELECT 1 FROM information_schema.columns
+    WHERE table_schema='public' AND table_name='chat_sessions' AND column_name='event_hint_at'`
+);
+const HAS_EVENT_HINT = hintColRows.length > 0;
 
 const base = (since) => `
 WITH s AS (
@@ -154,6 +160,39 @@ await q('8. [G-5] 자동 안내 지연(초) — 직전 손님 글 기준', `
          round(max(sec)::numeric, 1) AS 최대,
          to_char(max(created_at) AT TIME ZONE 'Asia/Seoul', 'MM-DD HH24:MI') AS 마지막_KST
     FROM d`);
+
+// G-6: 가격·프로모션을 물은 손님이 이벤트 안내(프로모션 링크)를 몇 초 만에 받았는가.
+// 시험 세션은 이름으로만 뺀다(첫 글 기준은 쓰지 않는다 — 대화 중간의 가격 질문도 세기 때문이다).
+if (HAS_EVENT_HINT) {
+  await q('9. [G-6] 이벤트 안내 — 나간 세션·손님 글에서 안내까지(초)·연락 수단 확보', `
+    WITH h AS (
+      SELECT a.session_id,
+             EXTRACT(EPOCH FROM (a.created_at - v.created_at)) AS sec
+        FROM public.chat_messages a
+        JOIN LATERAL (
+          SELECT created_at FROM public.chat_messages v
+           WHERE v.session_id = a.session_id AND v.sender = 'visitor' AND v.created_at <= a.created_at
+           ORDER BY v.created_at DESC LIMIT 1) v ON true
+       WHERE a.source = 'auto'
+         AND a.original_text ~ 'https?://[^[:space:]]+/events(/[^[:space:]]*)?$'
+         AND a.created_at >= timestamptz '${SINCE} 00:00+09'),
+    s AS (
+      SELECT h.session_id, min(h.sec) AS first_sec, count(*) AS hints,
+             bool_or((cs.visitor_email IS NOT NULL AND cs.visitor_email <> '')
+                     OR cs.visitor_messenger_handle IS NOT NULL
+                     OR ${CLICKED} IS NOT NULL) AS has_means
+        FROM h JOIN public.chat_sessions cs ON cs.id = h.session_id
+       WHERE coalesce(cs.visitor_name, '') !~* '(test|테스트|smoke)'
+       GROUP BY h.session_id)
+    SELECT count(*) AS 세션, coalesce(sum(hints), 0) AS 안내_횟수,
+           round(min(first_sec)::numeric, 1) AS 최소,
+           round((percentile_cont(0.5) WITHIN GROUP (ORDER BY first_sec))::numeric, 1) AS 중앙값,
+           round(max(first_sec)::numeric, 1) AS 최대,
+           count(*) FILTER (WHERE has_means) AS 연락수단_확보
+      FROM s`);
+} else {
+  console.log('\n── 9. [G-6] 이벤트 안내 ──\n  (건너뜀 — event_hint_at 컬럼 없음, 042 미적용)');
+}
 
 await db.query('ROLLBACK');
 await db.end();
