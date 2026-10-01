@@ -1,12 +1,39 @@
 'use client';
 
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { useTranslations } from 'next-intl';
 import type { ChatMessage, VisitorLocale } from '@/lib/chat/chatApi';
+import { splitLinks } from '@/lib/chat/linkify';
 
 interface Props {
   message: ChatMessage;
   visitorLocale: VisitorLocale;
+}
+
+/**
+ * 직원·자동 안내 말풍선의 글 — http(s) 주소는 새 창으로 여는 링크로 그린다 (스펙 2026-10-01 §4.10).
+ * 새 창으로 여는 이유: 대화가 있던 화면을 그대로 두기 위해서다.
+ */
+function LinkedText({ text }: { text: string }) {
+  return (
+    <>
+      {splitLinks(text).map((part, i) =>
+        part.kind === 'link' ? (
+          <a
+            key={i}
+            href={part.value}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline underline-offset-2 break-all"
+          >
+            {part.value}
+          </a>
+        ) : (
+          <Fragment key={i}>{part.value}</Fragment>
+        )
+      )}
+    </>
+  );
 }
 
 export default function MessageBubble({ message, visitorLocale }: Props) {
@@ -56,7 +83,8 @@ export default function MessageBubble({ message, visitorLocale }: Props) {
       <div
         className={`max-w-[85%] rounded-2xl px-3.5 py-2 text-sm ${bubbleColor} whitespace-pre-wrap break-words`}
       >
-        {primary}
+        {/* 손님 자신의 글은 글자 그대로, 직원·자동 안내의 글만 링크를 눌리게 한다 */}
+        {isVisitor ? primary : <LinkedText text={primary} />}
       </div>
       {failed && (
         <div className="mt-0.5 text-[11px] text-red-500">{t('translationFailed')}</div>
@@ -78,7 +106,7 @@ export default function MessageBubble({ message, visitorLocale }: Props) {
             isVisitor ? 'border-[#b4988d]/30' : 'border-gray-200'
           } whitespace-pre-wrap break-words`}
         >
-          {secondary}
+          {isVisitor ? secondary : <LinkedText text={secondary ?? ''} />}
         </div>
       )}
     </div>
