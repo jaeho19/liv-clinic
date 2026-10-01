@@ -85,10 +85,19 @@ export async function fetchVisitorMessages(
   return json.messages;
 }
 
+export interface VisitorSendResult {
+  message: ChatMessage;
+  /**
+   * saved: 서버가 이 글 속 이메일을 연락처로 저장했다. hasContact: 지금 연락처(이메일·메신저)가 있다 — 연락처 카드를 숨길지 판단한다.
+   * 배포 직후 옛 서버가 응답하면 없을 수 있어 null을 허용한다.
+   */
+  contact: { saved: boolean; hasContact: boolean } | null;
+}
+
 export async function sendVisitorMessage(
   sessionToken: string,
   text: string
-): Promise<ChatMessage> {
+): Promise<VisitorSendResult> {
   const res = await fetch('/api/chat/messages', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -98,8 +107,21 @@ export async function sendVisitorMessage(
     const err = await safeJson(res);
     throw new ChatApiError(res.status, err?.error ?? 'send_failed', err);
   }
-  const json = (await res.json()) as { message: ChatMessage };
-  return json.message;
+  const json = (await res.json()) as {
+    message: ChatMessage;
+    contact?: { saved: boolean; hasContact: boolean };
+  };
+  return { message: json.message, contact: json.contact ?? null };
+}
+
+/** 세션의 연락처 유무 — 패널을 열 때 연락처 카드를 띄울지 판단한다. 연락처 값 자체는 받지 않는다. */
+export async function fetchSessionInfo(sessionToken: string): Promise<{ hasContact: boolean }> {
+  const url = new URL('/api/chat/sessions', window.location.origin);
+  url.searchParams.set('token', sessionToken);
+  const res = await fetch(url.toString());
+  if (!res.ok) throw new ChatApiError(res.status, 'session_info_failed');
+  const json = (await res.json()) as { hasContact?: boolean };
+  return { hasContact: Boolean(json.hasContact) };
 }
 
 export async function sendOperatorMessage(
@@ -119,7 +141,7 @@ export async function sendOperatorMessage(
   return json.message;
 }
 
-// 오프시간 캡처 블록: 방문자 메신저 연락처 저장
+// 연락처 카드: 손님이 자기 연락처(WhatsApp 번호·WeChat ID·이메일)를 남긴다
 export async function saveContact(
   sessionToken: string,
   channel: ContactChannel,
@@ -128,11 +150,28 @@ export async function saveContact(
   const res = await fetch('/api/chat/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sessionToken, channel, handle }),
+    body: JSON.stringify({ sessionToken, channel, handle, kind: 'save' }),
   });
   if (!res.ok) {
     const err = await safeJson(res);
     throw new ChatApiError(res.status, err?.error ?? 'contact_failed', err);
+  }
+}
+
+/**
+ * 연락처 카드: 손님이 병원 연락 단추(WhatsApp·WeChat·LINE·이메일)를 눌렀음을 알린다 → 직원 Slack 방에 한 줄.
+ * 화면 이동(새 창·메일 앱)을 막지 않도록 응답을 기다리지 않고, 실패해도 조용히 넘어간다.
+ */
+export function reportContactClick(sessionToken: string, channel: ContactChannel): void {
+  try {
+    void fetch('/api/chat/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ sessionToken, channel, kind: 'click' }),
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // fetch 자체를 쓸 수 없는 환경 — 무시
   }
 }
 

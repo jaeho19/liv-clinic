@@ -8,8 +8,6 @@ import { primaryMessengerFor } from '@/lib/messengerLinks';
 export const CLINIC_LINK_CHANNELS = ['whatsapp', 'wechat', 'line', 'email'] as const;
 /** 카드의 "연락처 남기기" 칩. LINE ID는 받지 않는다 — 직원이 ID로 손님을 찾지 못했다(2026-10-01 실측 2건 모두 실패). */
 export const CONTACT_FORM_CHANNELS = ['whatsapp', 'wechat', 'email'] as const;
-/** @deprecated 예전 카드(메신저 3종)용. 새 카드로 바꾸는 작업에서 지운다. */
-export const CONTACT_CHANNELS = ['whatsapp', 'wechat', 'line'] as const;
 
 export type ContactChannel = (typeof CLINIC_LINK_CHANNELS)[number];
 export type ContactFormChannel = (typeof CONTACT_FORM_CHANNELS)[number];

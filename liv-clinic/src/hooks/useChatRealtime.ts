@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { createClient } from '@/lib/supabase-browser';
 import { fetchVisitorMessages, type ChatMessage } from '@/lib/chat/chatApi';
+import { upsertMessage } from '@/lib/chat/messageList';
 
 interface UseChatRealtimeArgs {
   sessionId: string | null;
@@ -86,13 +87,13 @@ export function useChatRealtime(args: UseChatRealtimeArgs): UseChatRealtimeRetur
   }, [enabled, sessionId, refresh]);
 
   const appendOptimistic = useCallback((msg: ChatMessage) => {
-    setMessages((prev) => {
-      if (prev.some((m) => m.id === msg.id)) return prev;
-      const next = [...prev, msg];
-      next.sort((a, b) => (a.created_at < b.created_at ? -1 : 1));
-      return next;
-    });
-    lastFetchedAtRef.current = msg.created_at;
+    // 같은 글이 이미 목록에 있을 수 있다 — 자동 안내의 broadcast가 전송 응답보다 먼저 도착해
+    // 번역 전 상태로 불러온 경우다. 그때는 응답으로 온 완성본으로 바꾼다.
+    setMessages((prev) => upsertMessage(prev, msg));
+    // 워터마크는 앞으로만 움직인다 — 이미 더 늦은 글(자동 안내)까지 불러왔으면 되돌리지 않는다.
+    if (!lastFetchedAtRef.current || msg.created_at > lastFetchedAtRef.current) {
+      lastFetchedAtRef.current = msg.created_at;
+    }
   }, []);
 
   return { messages, loading, error, appendOptimistic, refresh };

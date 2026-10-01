@@ -1,10 +1,12 @@
 'use client';
 
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useEffect, useMemo, useRef, useState, type FormEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import type { UseChatSessionReturn } from '@/hooks/useChatSession';
 import { useChatRealtime } from '@/hooks/useChatRealtime';
-import { sendVisitorMessage, fetchPresence, ChatApiError } from '@/lib/chat/chatApi';
+import { sendVisitorMessage, fetchPresence, fetchSessionInfo, ChatApiError } from '@/lib/chat/chatApi';
+import { parseCaptureDismissedAt, shouldShowCaptureBlock } from '@/lib/chat/contactChannels';
+import { countVisitorText } from '@/lib/chat/messageList';
 import {
   trackChatFirstMessage,
   trackChatMessage,
@@ -27,17 +29,38 @@ interface Props {
 
 const MAX_LEN = 1000;
 
+// 연락처 카드를 ✕로 닫은 시각(ms)을 세션별로 기억한다. 12시간 뒤에는 다시 뜬다 (스펙 2026-10-01 §4.2).
+const captureDismissKey = (sessionId: string) => `liv-chat-capture-dismissed:${sessionId}`;
+
+function readCaptureDismissedAt(sessionId: string): number | null {
+  try {
+    return parseCaptureDismissedAt(window.localStorage.getItem(captureDismissKey(sessionId)));
+  } catch {
+    return null;
+  }
+}
+
 export default function ChatPanel({ locale, open, onClose, sessionState }: Props) {
   const t = useTranslations('chat');
   const { session, start, loading: starting, error: startError } = sessionState;
+  const sessionId = session?.sessionId ?? null;
+  const sessionToken = session?.sessionToken ?? null;
   const [presence, setPresence] = useState<{
     online: boolean;
     businessHours: boolean;
     nextOpenAt: string | null;
   } | null>(null);
+  // presence 를 받아 올 때마다(30초) 갱신하는 "지금" — 연락처 카드의 시간 조건(직원 글 10분, ✕ 12시간)에 쓴다.
+  const [nowMs, setNowMs] = useState(() => Date.now());
   const [text, setText] = useState('');
   const [sendError, setSendError] = useState<string | null>(null);
   const [sending, setSending] = useState(false);
+  // 보내는 중인 글 — 전송 응답보다 자동 안내가 먼저 도착하면 손님 글이 목록에 먼저 보인다. 그때 입력창을 바로 비운다.
+  const [inFlight, setInFlight] = useState<{ text: string; countBefore: number } | null>(null);
+  // 서버 기준 연락처 유무 (세션별). null = 아직 모름
+  const [contactInfo, setContactInfo] = useState<{ sessionId: string; hasContact: boolean } | null>(null);
+  // 이 화면에서 방금 ✕로 닫은 시각 (세션별)
+  const [dismissedNow, setDismissedNow] = useState<{ sessionId: string; atMs: number } | null>(null);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -58,8 +81,8 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
   }, []);
 
   const { messages, appendOptimistic } = useChatRealtime({
-    sessionId: session?.sessionId ?? null,
-    sessionToken: session?.sessionToken ?? null,
+    sessionId,
+    sessionToken,
     enabled: open && !!session,
   });
 
@@ -70,12 +93,14 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
     const tick = async () => {
       try {
         const p = await fetchPresence();
-        if (!cancelled)
+        if (!cancelled) {
           setPresence({
             online: p.online,
             businessHours: p.businessHours,
             nextOpenAt: p.nextOpenAt,
           });
+          setNowMs(Date.now());
+        }
       } catch {
         // ignore
       }
@@ -88,6 +113,24 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
     };
   }, [open]);
 
+  // 연락처 유무 조회 — 패널을 열 때 한 번. 실패하면 "연락처 없음"으로 본다(놓치는 것보다 한 번 더 묻는 편이 낫다).
+  useEffect(() => {
+    if (!open || !sessionId || !sessionToken) return;
+    let cancelled = false;
+    fetchSessionInfo(sessionToken)
+      .then((info) => {
+        if (!cancelled) setContactInfo({ sessionId, hasContact: info.hasContact });
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setContactInfo((cur) => (cur?.sessionId === sessionId ? cur : { sessionId, hasContact: false }));
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [open, sessionId, sessionToken]);
+
   // Auto scroll on new messages
   useEffect(() => {
     if (!open) return;
@@ -99,7 +142,10 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') onClose();
+      if (e.key !== 'Escape') return;
+      // 패널 위에 모달(WeChat QR 크게 보기)이 떠 있으면 Esc 는 그 모달만 닫는다
+      if (document.querySelector('[role="dialog"][aria-modal="true"]')) return;
+      onClose();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -113,9 +159,9 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
     }
     if (!open && openedAtRef.current !== null && session) {
       const durationSec = (Date.now() - openedAtRef.current) / 1000;
-      const sessionId = session.sessionId;
+      const closedSessionId = session.sessionId;
       openedAtRef.current = null;
-      void trackChatClose('visitor_close', durationSec, sessionId, locale);
+      void trackChatClose('visitor_close', durationSec, closedSessionId, locale);
     }
   }, [open, session, locale]);
 
@@ -126,6 +172,9 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
       trackPromoClick('chat_direct_booking', 'view');
     }
   }, [open, session]);
+
+  // 저장돼 있던 "카드를 닫은 시각" — 세션이 정해지면 한 번 읽는다.
+  const storedDismissedAt = useMemo(() => (open && sessionId ? readCaptureDismissedAt(sessionId) : null), [open, sessionId]);
 
   const handleStart = async (e: FormEvent) => {
     e.preventDefault();
@@ -149,15 +198,19 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
       messages.filter((m) => m.sender === 'visitor').length === 0;
     setSending(true);
     setSendError(null);
+    setInFlight({ text: trimmed, countBefore: countVisitorText(messages, trimmed) });
     try {
-      const created = await sendVisitorMessage(session.sessionToken, trimmed);
+      const { message: created, contact } = await sendVisitorMessage(session.sessionToken, trimmed);
       trackChatMessage('sent', locale);
       if (wasFirst) trackChatFirstMessage(locale);
       if (created.translation_status === 'failed') {
         trackChatTranslationFailure(created.translation_error ?? 'unknown');
       }
       appendOptimistic(created);
-      setText('');
+      // 글 속 이메일이 연락처로 저장됐으면 카드를 숨긴다 (hasContact 는 서버가 알려 준다)
+      if (contact) setContactInfo({ sessionId: session.sessionId, hasContact: contact.hasContact });
+      // 응답을 기다리는 사이 손님이 새 글을 쓰기 시작했으면 지우지 않는다
+      setText((cur) => (cur.trim() === trimmed ? '' : cur));
     } catch (err) {
       if (err instanceof ChatApiError) {
         if (err.code === 'rate_limited') setSendError(t('rateLimited'));
@@ -169,14 +222,43 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
       }
     } finally {
       setSending(false);
+      setInFlight(null);
+    }
+  };
+
+  const dismissCapture = () => {
+    if (!sessionId) return;
+    const atMs = Date.now();
+    setDismissedNow({ sessionId, atMs });
+    try {
+      window.localStorage.setItem(captureDismissKey(sessionId), String(atMs));
+    } catch {
+      // privacy 모드 등 — 저장하지 못해도 이 화면에서는 닫힌 채로 둔다
     }
   };
 
   if (!open) return null;
 
-  const remaining = MAX_LEN - text.length;
-  const overLimit = text.length > MAX_LEN;
+  // 보내는 중인 글이 이미 목록에 나타났으면(자동 안내가 응답보다 먼저 도착) 입력창을 비워 보여 준다.
+  const echoed =
+    inFlight !== null &&
+    text.trim() === inFlight.text &&
+    countVisitorText(messages, inFlight.text) > inFlight.countBefore;
+  const shownText = echoed ? '' : text;
+  const remaining = MAX_LEN - shownText.length;
+  const overLimit = shownText.length > MAX_LEN;
   const isOnline = presence?.online ?? false;
+
+  const hasContact = contactInfo?.sessionId === sessionId ? contactInfo.hasContact : false;
+  const dismissedAtMs = dismissedNow?.sessionId === sessionId ? dismissedNow.atMs : storedDismissedAt;
+  const showCapture = shouldShowCaptureBlock({
+    presenceLoaded: presence !== null,
+    sessionInfoLoaded: contactInfo?.sessionId === sessionId,
+    hasContact,
+    dismissedAtMs,
+    messages,
+    nowMs,
+  });
 
   return (
     <div
@@ -288,19 +370,19 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
             {messages.map((m) => (
               <MessageBubble key={m.id} message={m} visitorLocale={locale} />
             ))}
-            {/* 오프시간 캡처 블록 — 방문자가 질문을 남긴 직후가 캡처 전환율이 가장 높은 시점 (spec §4).
-                dismissed/saved 판정은 블록 내부(localStorage) 담당. */}
-            {session &&
-              presence &&
-              presence.businessHours === false &&
-              messages.some((m) => m.sender === 'visitor') && (
-                <ChatCaptureBlock
-                  locale={locale}
-                  sessionId={session.sessionId}
-                  sessionToken={session.sessionToken}
-                  nextOpenAt={presence.nextOpenAt}
-                />
-              )}
+            {/* 연락처 카드 — 손님이 답을 기다리는 동안이면 영업시간에도 뜬다 (스펙 2026-10-01 §4.2).
+                띄울지는 shouldShowCaptureBlock 이 정하고, 영업시간 여부는 카드 안의 안내 한 줄만 가른다. */}
+            {presence && showCapture && (
+              <ChatCaptureBlock
+                locale={locale}
+                sessionId={session.sessionId}
+                sessionToken={session.sessionToken}
+                businessHours={presence.businessHours}
+                nextOpenAt={presence.nextOpenAt}
+                onDismiss={dismissCapture}
+                onSaved={() => setContactInfo({ sessionId: session.sessionId, hasContact: true })}
+              />
+            )}
           </div>
 
           {/* Composer */}
@@ -311,7 +393,7 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
           >
             <div className="flex items-end gap-2">
               <textarea
-                value={text}
+                value={shownText}
                 onChange={(e) => setText(e.target.value)}
                 onKeyDown={(e) => {
                   // 데스크톱에서만 Enter=전송. 모바일은 Enter=줄바꿈 (자연스러운 입력)
@@ -327,7 +409,7 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
               />
               <button
                 type="submit"
-                disabled={sending || text.trim().length === 0 || overLimit}
+                disabled={sending || shownText.trim().length === 0 || overLimit}
                 className="bg-[#0f766e] text-white text-sm px-4 py-2 rounded-md hover:bg-[#115e59] disabled:opacity-50 transition self-end min-h-[44px] min-w-[60px]"
               >
                 {t('send')}
@@ -336,7 +418,7 @@ export default function ChatPanel({ locale, open, onClose, sessionState }: Props
             <div className="flex items-center justify-between text-[10px] text-gray-400">
               <span>{t('subtitle')}</span>
               <span className={overLimit || remaining < 100 ? 'text-red-500' : ''}>
-                {text.length}/{MAX_LEN}
+                {shownText.length}/{MAX_LEN}
               </span>
             </div>
             {sendError && <div className="text-[11px] text-red-500">{sendError}</div>}
