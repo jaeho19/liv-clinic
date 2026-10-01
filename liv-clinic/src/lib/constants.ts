@@ -42,6 +42,11 @@ export const SOCIAL_LINKS = {
 // WhatsApp 비즈니스 번호(하이픈 없는 국제 형식) — wa.me 딥링크 조립용 기준값.
 export const WHATSAPP_NUMBER = '821068882773';
 
+// WeChat 아이디와 QR 이미지(QR만 있는 그림 — 아이디는 화면이 글자로 함께 보여 준다).
+// WeChat 앱에서 QR을 다시 만들면 주소가 바뀐다. 이미지를 바꿀 때는 실제 스캔으로 병원 계정이 뜨는지 확인할 것.
+export const WECHAT_ID = 'livps0414';
+export const WECHAT_QR_IMAGE = '/images/wechat-qr-code.png';
+
 // Google Business(구글 지도) 후기 페이지 URL — 홈 ReviewsSection의 외부 신뢰 링크.
 // cid 단축형: 로케일·세션 파라미터 없이 항상 리브성형외과 신사(LIV Clinic Sinsa)
 // 지도 상세(후기 포함)로 연결된다. 빈 문자열이면 링크는 렌더링되지 않는다.

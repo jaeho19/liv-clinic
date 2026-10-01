@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
+import { WECHAT_ID, WECHAT_QR_IMAGE } from '@/lib/constants';
 
 interface WeChatQRModalProps {
   open: boolean;
@@ -52,16 +53,19 @@ export default function WeChatQRModal({ open, onClose }: WeChatQRModalProps) {
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.2 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative max-w-[90vw] max-h-[90vh]"
+            className="relative flex max-w-[90vw] max-h-[90vh] flex-col items-center gap-3 rounded-2xl bg-white p-5 sm:p-6"
           >
             <Image
-              src="/images/wechat-qr.png"
+              src={WECHAT_QR_IMAGE}
               alt="WeChat QR"
-              width={800}
-              height={800}
-              className="w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain"
+              width={660}
+              height={660}
+              className="w-auto h-auto max-w-[80vw] max-h-[70vh] object-contain"
               priority
             />
+            <p className="font-mono text-lg sm:text-xl font-semibold tracking-wide text-secondary select-all">
+              WeChat ID: {WECHAT_ID}
+            </p>
           </motion.div>
         </motion.div>
       )}
