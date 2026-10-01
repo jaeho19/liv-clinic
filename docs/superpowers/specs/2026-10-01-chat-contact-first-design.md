@@ -1,10 +1,11 @@
 # 라이브채팅 "연락처 먼저" 1단계 — 자동 안내 + 연락처 받기 + 오늘 연락할 손님 (chat-contact-first)
 
-> 작성: 2026-10-01 · 대상: 자동 안내(`liv-clinic/src/lib/chat/autoAck.ts`, `serverI18n.ts`), 연락처 카드(`components/chat/ChatCaptureBlock.tsx`, `ChatPanel.tsx`, `lib/chat/contactChannels.ts`), 연락처·메시지·세션 API(`app/api/chat/*`), 확대 알림(`escalationRunner.ts`), 영업시간(`businessHours.ts`), Slack 문구(`slackText.ts`, `slackRelay.ts`), 관리자 채팅 목록, 가격 문의 이벤트 안내(`lib/chat/priceIntent.ts`·`eventHint.ts`·`linkify.ts` 신규, `components/chat/MessageBubble.tsx`)
+> 작성: 2026-10-01 · 대상: 자동 안내(`liv-clinic/src/lib/chat/autoAck.ts`, `serverI18n.ts`), 연락처 카드(`components/chat/ChatCaptureBlock.tsx`, `ChatPanel.tsx`, `lib/chat/contactChannels.ts`), 연락처·메시지·세션 API(`app/api/chat/*`), 확대 알림(`escalationRunner.ts`), 영업시간(`businessHours.ts`), Slack 문구(`slackText.ts`, `slackRelay.ts`), 관리자 채팅 목록, 가격 문의 이벤트 안내(`lib/chat/priceIntent.ts`·`eventHint.ts`·`linkify.ts` 신규, `components/chat/MessageBubble.tsx`), 채널 아이콘(`components/ui/ChannelIcon.tsx` 신규, `components/layout/FloatingCTA.tsx`)
 > 선행 문서: `2026-09-03-slack-patient-rooms-design.md` §4.10(자동 첫 안내)·확대 알림, `chat-offhours-messenger-bridge.design.md`(2026-08-09, 영업시간 외 연락처 카드 — 리포에 커밋되지 않고 메인 작업 폴더 `docs/02-design/features/`에만 있다). 이 문서는 그 카드의 "영업시간 외에만 노출" 규칙과 자동 안내 문구를 대체한다.
 > 결정(2026-10-01, 원장님): ① 영업시간 중 헤더 "We're online" 유지 ② 손님이 이메일을 쓰면 연락처로 저장 ③ 연락처를 남긴 손님은 5·12·30분 알림을 멈추고 **"오늘 연락할 손님"**으로 분류 ④ 약속 문구는 **"오늘 안에, 최대한 빨리 연락"** ⑤ 가격·효과는 사람이 직접 답변 ⑥ 이 1단계(AI 없음)를 먼저 내고, AI 이용 안내 답변은 바로 이어서 별도 문서로.
 > 추가 결정(2026-10-01, 직원 의견 검토 뒤): ⑦ 채팅 카드에 **병원 WeChat QR과 아이디를 넣는다** — WeChat은 업무폰 한 대로만 응대할 수 있지만 앱 자체 번역으로 응대가 가능하므로, 손님이 병원 WeChat을 추가하게 한다(같은 날 "추가 버튼 제거" 안을 검토했다가 이쪽으로 확정). WhatsApp·LINE은 병원 계정으로 연결하는 버튼을 유지한다 ⑧ 연락처를 남긴 손님의 방에는 **직원 답글의 번역본**을 올려, 복사해서 위챗·왓츠앱·메일에 붙여 넣게 한다.
 > 추가 결정(2026-10-01, 원장님 제안): ⑨ **가격·프로모션을 물은 손님에게는 이번 달 프로모션 페이지 링크를 손님 언어로 먼저 보낸다**(이번 달 것이 없으면 이벤트 목록). 가격 답변은 계속 직원이 한다(⑤ 유지) — 링크는 직원이 확인하는 동안 손님이 먼저 볼 것을 주는 것이다(§4.10).
+> 추가 결정(2026-10-01, 원장님 — 미리보기를 본 뒤): ⑩ 카드의 병원 연락 단추를 **WhatsApp·WeChat·LINE·이메일 네 개로, 아이콘과 함께 나란히** 둔다. 이메일은 병원 주소 `jaeho19@gmail.com`을 보여 준다(§4.2).
 > 상태: **원장님 승인(2026-10-01).** ⑨(§4.10)는 같은 날 추가됐다 — 원장님이 방향과 링크 위치(이번 달 프로모션으로 바로)를 정했다. **손님 문구(U-1)는 원장님이 미리보기 화면을 보고 고치는 중이다 — 문구가 확정된 뒤에 구현 계획을 쓴다**(§11).
 
 ---
@@ -20,6 +21,7 @@
 | 채팅창의 링크는 글자로만 보여 눌리지 않는다 | 직원과 자동 안내가 보낸 링크는 **눌린다**(새 창) |
 | 연락처 카드는 밤·주말에만 뜬다 | 손님이 답을 기다리는 동안이면 **낮에도** 뜬다 |
 | 카드에서 받는 연락처: WhatsApp·WeChat·LINE ID | WhatsApp 번호·WeChat ID·**이메일**. LINE ID는 받지 않는다 (ID 검색이 2건 모두 실패) |
+| 카드의 메신저 단추는 글자뿐이고, 1순위만 크고 나머지는 작은 링크다. 이메일로 병원에 연락할 길은 없다 | **WhatsApp·WeChat·LINE·이메일 단추 네 개를 아이콘과 함께 나란히** 보여 준다. 이메일 단추는 병원 주소(`jaeho19@gmail.com`)와 복사 버튼을 보여 준다 |
 | 카드의 WeChat은 버튼 하나다. 휴대폰에서는 앱 링크(안 열리는 경우가 있다), PC에서는 QR만 뜬다 | 카드에 **병원 WeChat QR과 아이디(복사 버튼)**를 함께 보여 준다. 중국어 화면에서는 펼친 채로 나온다 |
 | 손님이 대화에 이메일을 써도 그냥 글자다 | **자동으로 연락처로 저장**하고 Slack 방에 알린다 |
 | 직원 답글이 손님 언어로 어떻게 나갔는지는 관리자 화면에서만 보인다 | 연락처를 남긴 손님의 방에는 **번역본이 바로 아래 올라온다** — 복사해서 위챗·왓츠앱·메일에 붙여 넣는다 |
@@ -40,6 +42,7 @@
 | U-6 | ~~병원 WeChat QR 원본 이미지~~ **받음(2026-10-01)** | 원본 화면에서 QR만 잘라 `liv-clinic/public/images/wechat-qr-code.png`(660×660, 흑백)로 넣었다. 읽어 보면 `https://u.wechat.com/kH7fonYYvwh851jK2Y2nsfo?s=2`이고 160px로 줄여도 읽힌다 |
 | U-7 | ~~사이트의 위챗 포스터 QR 확인~~ **끝남(2026-10-01)** | 원장님 확인: 받은 QR이 최신이고, 사이트 포스터(`wechat-qr.png`, 주소 `https://u.wechat.com/kL9gQH6GOesxNpNB-SWRDko`)는 예전 QR이다. 브랜치 `fix/wechat-qr-latest`(8646dfc)에서 `/zh/wechat` 페이지와 QR 크게 보기 화면을 새 QR로 바꾸고 포스터를 지웠다(테스트 633건·타입 검사·빌드 통과, 화면 확인). 이 설계 브랜치에도 병합돼 있다. **운영 반영(master 푸시)은 원장님 승인 대기** — 1단계보다 먼저 따로 내보낼 수 있다. 같은 브랜치에 LINE 링크 교체(U-2, 435869d)도 들어 있다 |
 | U-8 | **매달 프로모션은 관리자 화면의 「매달 프로모션」으로 등록** | 그렇게 만든 이벤트는 주소가 `2026-11-promotion` 꼴이 되고, 가격을 물은 손님에게 그 페이지로 바로 가는 링크가 나간다(§4.10). 다른 방법으로 만들었거나 아직 게시 전이면 이벤트 목록 링크가 나간다 — 고장은 아니고 손님이 한 번 더 눌러야 할 뿐이다. 8·9·10월 프로모션은 이미 이 꼴이다 |
+| U-9 | **채팅 카드의 병원 이메일은 `jaeho19@gmail.com`** (원장님 지정, 2026-10-01) | 이 메일함은 원장님만 볼 수 있다. 손님이 그 주소로 메일을 보내면 Slack 방에 "병원 이메일 주소를 확인했습니다" 알림이 오지만 직원은 메일을 볼 수 없으므로, 원장님이 직접 답하거나 메일 내용을 방에 전달해야 한다. 사이트의 다른 곳(푸터·문의 페이지)은 `info@livps.co.kr` 그대로다 — 그쪽도 바꾸려면 따로 알려 주시면 된다 |
 
 코드에 이미 있어 따로 받을 필요가 없는 값: WeChat ID `livps0414`, WhatsApp `+82 10-6888-2773`, LINE ID `icps7972773`, 이메일 `info@livps.co.kr`, 전화 `02-797-2773`(모두 `constants.ts`). 바뀐 것이 있을 때만 알려 주시면 된다.
 
@@ -83,7 +86,7 @@
 **In Scope**
 - 자동 안내를 "접수 안내"(예상 시간 + 연락처 요청 + 되묻기)로 교체 — 영업 중 / 마감 임박 / 상담 시간 외, 연락처 있음 / 없음
 - 자동 안내 발송 시점 앞당기기 (번역·Slack 릴레이를 기다리지 않고 손님 글 저장 직후)
-- 연락처 카드: 영업시간 중에도 노출, 이메일 채널 추가, LINE ID 수집 중단, 병원 WeChat QR·아이디 표시, 메신저 버튼을 눌러도 카드를 닫지 않음
+- 연락처 카드: 영업시간 중에도 노출, 이메일 채널 추가, LINE ID 수집 중단, 병원 WeChat QR·아이디 표시, 메신저 버튼을 눌러도 카드를 닫지 않음, 병원 연락 단추 네 개(WhatsApp·WeChat·LINE·이메일)를 아이콘과 함께 나란히
 - 손님 글 속 이메일 자동 인식 → 연락처 저장
 - 가격·프로모션을 물은 손님에게 이벤트 안내(이번 달 프로모션 링크) 자동 발송, 채팅 말풍선의 링크를 눌리게 (§4.10)
 - 연락처를 남긴 손님: 확대 알림 제외 + Slack 분류 표시 + 하루 두 번 요약 + 직원 답글 번역본을 방에 올리기
@@ -201,14 +204,25 @@ AND 최근 10분 안에 직원 글이 없음
 |------|------|------|
 | 제목 | `captureHeading` ("Don't miss our reply") | 그대로 |
 | 안내 한 줄 | 상담 시간 외: 기존 `captureReturnAt`(복귀 시각을 한국 시각 + 손님 현지 시각으로). 영업시간 중: 신규 `captureBusyLead` | 영업시간 중 문구 신규 |
-| 메신저로 이어가기 | 그 로케일의 1순위 메신저는 크게, 나머지는 작은 링크 + 참조 코드 안내(현행 순서). WhatsApp·LINE은 병원 계정으로 가는 버튼, **WeChat은 병원 QR·아이디 블록**(아래) | **버튼을 눌러도 카드를 닫지 않는다.** 누르면 그 아래에 `captureMessengerFallback` 한 줄이 나타나고 서버에 알린다(§4.4) |
-| 연락처 남기기 | 칩 `[WhatsApp] [WeChat] [Email]` + 입력 1칸 + 저장 | **이메일 추가, LINE 칩 제거.** 기본 선택: `zh` → WeChat, `ja` → Email, 그 외 → WhatsApp |
+| 병원으로 바로 연락하기 | 안내 한 줄(신규 `captureChannelsLead`) + **같은 크기의 단추 네 개: WhatsApp · WeChat · LINE · 이메일. 단추마다 아이콘 + 이름**(아래). 그 로케일의 1순위 메신저가 맨 앞, 이메일은 맨 뒤. WhatsApp·LINE은 병원 계정을 여는 단추, **WeChat은 병원 QR·아이디 블록**, **이메일은 병원 주소 블록**을 카드 안에 펼친다. 그 아래에 참조 코드 안내(`captureCodeInstruction`, 현행) | **이메일 단추 추가, 아이콘 추가, 네 단추를 나란히**(지금은 1순위만 큰 글자 단추이고 나머지는 작은 링크다 — 결정 ⑩). **단추를 눌러도 카드를 닫지 않는다.** WhatsApp·LINE을 누르면 그 아래에 `captureMessengerFallback` 한 줄이 나타난다. 누른 것은 서버에 알린다(§4.4) |
+| 연락처 남기기 | 칩 `[WhatsApp] [WeChat] [Email]`(아이콘 포함) + 입력 1칸 + 저장 | **이메일 추가, LINE 칩 제거.** 기본 선택: `zh` → WeChat, `ja` → Email, 그 외 → WhatsApp |
 | 개인정보 한 줄 | 신규 `capturePrivacyNote` | 신규 |
+
+- **아이콘** (결정 ⑩ — 글자만 있는 단추보다 한눈에 알아보게)
+  - WhatsApp·LINE은 `FloatingCTA.tsx`에 이미 있는 SVG, WeChat은 `/images/wechat-icon.png`(사이트 오른쪽 단추가 쓰는 그림), 이메일은 봉투 모양 SVG(신규)를 쓴다.
+  - 새 파일 `components/ui/ChannelIcon.tsx`에 네 아이콘을 모은다(`<ChannelIcon channel="whatsapp" className="…" />`). `FloatingCTA`는 SVG를 이 파일에서 가져다 쓰도록만 바꾼다 — 같은 그림을 두 군데에 두지 않기 위해서이고, 모양은 달라지지 않는다.
+  - 단추 이름은 번역하지 않는다(`WhatsApp`·`WeChat`·`LINE`·`Email`). 아이콘은 꾸밈이므로 `aria-hidden`이고, 단추의 이름이 접근성 이름이다.
+- **이메일은 병원 주소를 보여 준다** (결정 ⑩)
+  - 블록 내용: 주소 `jaeho19@gmail.com` + **복사 버튼**, 안내 한 줄(신규 `captureEmailLead` — 이 주소로 메일을 보낼 때 참조 코드를 적어 달라는 내용).
+  - 주소를 누르면 메일 앱이 열린다(`mailto:` — 제목 `LIV Plastic Surgery #코드`, 본문은 기존 `whatsappPrefillChat` 문구). 메일 앱이 없는 PC에서는 아무 일도 일어나지 않을 수 있으므로 복사 버튼이 기본 길이다.
+  - 주소는 `constants.ts`의 새 상수 `CHAT_CONTACT_EMAIL`로 둔다(원장님 지정, 2026-10-01 — U-9). **채팅 카드 전용이다.** 푸터·문의 페이지·검색엔진용 정보가 쓰는 `SITE_INFO.email`(`info@livps.co.kr`)은 바꾸지 않는다.
+  - 복사하거나 주소를 누르면 서버에 `click`(email)을 알린다(§4.4) → 방에 한 줄. 블록이 보이기만 한 것은 알리지 않는다.
+  - 손님이 자기 이메일을 남기는 길("연락처 남기기"의 Email 칩, 글 속 이메일 인식)은 따로 그대로 있다. 단추는 **병원 주소**, 칩은 **손님 주소**다.
 
 - **WeChat은 병원 QR과 아이디를 보여 준다** (결정 ⑦)
   - 블록 내용: **QR만 담은 정사각형 이미지**, `WeChat ID: livps0414` + **복사 버튼**, 안내 한 줄(`captureWechatLead` — QR을 스캔하거나 아이디를 검색해 추가한 뒤 참조 코드를 보내 달라는 내용).
   - QR 이미지: **`/images/wechat-qr-code.png`**(원장님이 준 WeChat 원본 화면에서 QR만 자른 것 — U-6). 코드에서는 `constants.ts`의 `WECHAT_QR_IMAGE`로 쓴다. 예전 포스터 `wechat-qr.png`는 옛 QR이라 지웠다(U-7). 실제 스캔 확인은 다른 기기의 WeChat으로 한다(§9).
-  - `zh`는 1순위가 WeChat이므로 이 블록을 **펼친 채로** 보여 준다(큰 버튼 자리). 다른 로케일은 작은 링크 "WeChat"을 누르면 같은 블록이 카드 안에 펼쳐진다.
+  - `zh`는 1순위가 WeChat이므로 이 블록을 **펼친 채로** 보여 준다. 다른 로케일은 WeChat 단추를 누르면 같은 블록이 카드 안에 펼쳐진다. 이메일 블록과는 한 번에 하나만 펼친다.
   - 휴대폰·PC 모두 같은 블록이다. 지금 휴대폰에서 쓰는 앱 링크(`weixin://dl/chat?…`)는 카드에서 쓰지 않는다 — 자기 화면의 QR은 스캔할 수 없으므로 휴대폰 손님은 **아이디 복사 → WeChat에서 검색**이 확실한 길이다. QR을 누르면 `WeChatQRModal`로 크게 본다(저장하거나 다른 기기로 스캔). 이 모달은 이미 새 QR과 아이디를 보여 준다(8646dfc) — 카드에서 그대로 쓰면 된다.
   - 아이디 복사 또는 QR 확대를 누르면 서버에 `click`(wechat)을 알린다(§4.4) → 방에 한 줄. 블록이 보이기만 한 것은 알리지 않는다.
   - 병원 아이디는 `constants.ts`의 `WECHAT_ID`를 쓴다(8646dfc에서 추가, `WeChatInfo.tsx`·`WeChatQRModal.tsx`가 이미 쓰고 있다).
@@ -218,13 +232,13 @@ AND 최근 10분 안에 직원 글이 없음
 - 메신저 버튼을 누른 뒤에도 카드를 남기는 이유: 지금은 버튼을 누르는 순간 카드가 닫힌다. 8/19 손님은 LINE 버튼이 실패한 뒤 대화창에 직접 "LINE이 안 된다"와 이메일을 적어야 했다.
 - 저장에 성공하면 카드는 사라진다(`hasContact = true`). 확인은 대화창의 시스템 메시지가 한다(§4.4) — 카드 안의 초록색 "Saved!" 상태는 없앤다.
 - **LINE**: 직원이 손님 LINE ID를 찾지 못하므로 ID를 받지 않는다. LINE은 손님이 병원을 추가하는 버튼으로만 남는다. 버튼의 주소(`SOCIAL_LINKS.line`)는 아이디 검색을 거치지 않는 친구 추가 링크로 이미 바꿨다(U-2, 435869d) — 카드에서는 지금처럼 `LINE_LINK`를 쓰면 된다.
-- `contactChannels.ts`: `CONTACT_CHANNELS`를 `MESSENGER_LINK_CHANNELS = ['whatsapp','wechat','line']`(메신저로 이어가기)과 `CONTACT_FORM_CHANNELS = ['whatsapp','wechat','email']`(남기기)로 나눈다. `validateContactHandle`에 `email` 분기, `defaultFormChannel(locale)`, `orderedLinkChannels(locale)`(1순위 메신저를 맨 앞으로 — 지금 `ChatCaptureBlock` 안의 `orderedChannels`를 옮긴 것) 추가. `primaryMessengerFor`(사이트 전역)는 바꾸지 않는다.
+- `contactChannels.ts`: `CONTACT_CHANNELS`를 `CLINIC_LINK_CHANNELS = ['whatsapp','wechat','line','email']`(병원으로 바로 연락하기)과 `CONTACT_FORM_CHANNELS = ['whatsapp','wechat','email']`(남기기)로 나눈다. `validateContactHandle`에 `email` 분기, `defaultFormChannel(locale)`, `orderedLinkChannels(locale)`(1순위 메신저를 맨 앞으로, 이메일은 맨 뒤 — 지금 `ChatCaptureBlock` 안의 `orderedChannels`를 옮긴 것) 추가. `primaryMessengerFor`(사이트 전역)는 바꾸지 않는다.
 
 ### 4.3 손님 글 속 이메일 자동 인식
 
 `POST /api/chat/messages` 손님 경로에서, 손님 글을 INSERT한 **직후(번역 전)** 처리한다(§4.1의 순서 2). 원문만 보면 되고, 자동 안내가 결과를 써야 하기 때문이다.
 
-1. `extractEmail(text)`(순수, `contactChannels.ts`): 첫 이메일 형태 문자열 1개. 병원 자체 도메인(`livps.co.kr`, `liv-clinic.net`)은 제외. 254자 초과는 무시.
+1. `extractEmail(text)`(순수, `contactChannels.ts`): 첫 이메일 형태 문자열 1개. 병원 자체 도메인(`livps.co.kr`, `liv-clinic.net`)과 **카드에 보여 주는 병원 주소(`CHAT_CONTACT_EMAIL`)**는 제외 — 손님이 "이 주소로 메일 보냈어요"라고 병원 주소를 적어도 손님 연락처로 저장되지 않게. 254자 초과는 무시.
 2. 찾았고 세션의 `visitor_email`과 다르면(대소문자 무시) `visitor_email`을 갱신한다 — 마지막에 쓴 주소가 이긴다. 같으면 아무것도 하지 않는다.
 3. 손님 화면에 확인 시스템 메시지(§4.4와 같은 문구), Slack 방·피드에 알림(§4.5). Slack 알림은 응답 뒤(`after`) 손님 글 릴레이 **다음**에 보낸다 — 방에서 글 → 연락처 순으로 보이게.
 4. 응답에 `contact: { saved: boolean, hasContact: boolean }`를 싣는다.
@@ -242,7 +256,7 @@ AND 최근 10분 안에 직원 글이 없음
 |--------|-----------|------|
 | `save` (기본) | `whatsapp` · `wechat` · `line`(옛 화면 호환) | 현행: `visitor_messenger_channel/handle` 저장 |
 | `save` | `email` | `visitor_email` 저장 (형식 검증은 세션 생성과 같은 규칙) |
-| `click` | `whatsapp` · `wechat` · `line` | `visitor_messenger_clicked`에 채널 기록 + Slack 방에 한 줄. `handle` 없음. 연락처로 치지 않는다. WeChat은 아이디 복사·QR 확대가 클릭이다(§4.2) |
+| `click` | `whatsapp` · `wechat` · `line` · `email` | `visitor_messenger_clicked`에 채널 기록 + Slack 방에 한 줄. `handle` 없음. 연락처로 치지 않는다. WeChat은 아이디 복사·QR 확대가, 이메일은 주소 복사·주소 누르기가 클릭이다(§4.2) |
 
 - `save` 성공 시: 확인 시스템 메시지 INSERT + broadcast(현행), Slack 방·피드 알림(§4.5), 응답 `{ ok: true, hasContact: true }`.
 - 확인 문구(`CONTACT_SAVED_TEMPLATES`, 10개 로케일)는 영업시간 중에도 맞도록 바꾼다: `{channel} contact saved: {handle}. We'll reach out to you there as soon as we can.` (기존: "…once we are back online"). 이메일의 채널 표기는 `Email`.
@@ -277,7 +291,7 @@ AND (visitor_email IS NOT NULL OR visitor_messenger_handle IS NOT NULL)
   ```
 - `#해외문의` 피드에 한 줄(`buildFeedLine` 종류 `contact` 추가): `📋 연락처 남김 · 🇨🇳 Li Wei · WeChat · <#방> · 10/01(목) 14:03 KST`
 - 시작 화면에서 이메일을 넣은 손님은 방의 첫 메시지 꼬리말에 `_이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리되며 재촉 알림은 울리지 않습니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다._`를 붙인다.
-- 메신저 버튼 클릭 시 방에: `📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #A1B2C3D4 가 담긴 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.` (LINE도 같은 형식). WeChat은 `📲 손님이 병원 WeChat 아이디·QR을 확인했습니다 — 업무폰 WeChat에서 친구 요청과 코드 #A1B2C3D4 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.`
+- 메신저 버튼 클릭 시 방에: `📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #A1B2C3D4 가 담긴 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.` (LINE도 같은 형식). WeChat은 `📲 손님이 병원 WeChat 아이디·QR을 확인했습니다 — 업무폰 WeChat에서 친구 요청과 코드 #A1B2C3D4 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.` 이메일은 `📲 손님이 병원 이메일 주소를 확인했습니다 — jaeho19@gmail.com 메일함에서 코드 #A1B2C3D4 가 담긴 메일을 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.`(주소는 `CHAT_CONTACT_EMAIL`)
 
 **(c) 하루 두 번 요약** — `#해외문의`에 답변 직원 전원 멘션으로:
 
@@ -317,6 +331,7 @@ _방에 답을 쓰거나 방을 보관(완료)하면 목록에서 빠집니다._
 | 이메일 | 병원 메일 (1단계는 직접 발송) |
 | (WhatsApp·LINE 버튼 클릭) | 그 메신저에 온 손님 메시지(참조 코드로 확인)에 답장으로 |
 | (병원 WeChat QR·아이디 확인) | 업무폰 WeChat에 온 친구 요청을 수락하고, 참조 코드로 손님을 확인한 뒤 그 대화창에 |
+| (병원 이메일 주소 확인) | 병원 메일함(`jaeho19@gmail.com`)에 온 손님 메일에 답장으로. 이 메일함은 원장님만 볼 수 있다 — 원장님이 직접 답하거나 메일 내용을 방에 전달한다(U-9) |
 
 손님이 메신저로 보낸 글은 그 앱의 번역으로 읽는다. WeChat은 "받은 메시지 자동 번역"과 "쓰면서 번역"이 있어, 짧은 답은 방을 거치지 않고 WeChat 안에서 바로 써도 된다(§9 직원 안내). 그 경우 방은 그대로 남으므로 상담이 끝나면 보관한다.
 
@@ -335,7 +350,7 @@ _방에 답을 쓰거나 방을 보관(완료)하면 목록에서 빠집니다._
 | `buildContactText` | §4.5 (b) 문구. 이메일 채널 표기 `이메일` |
 | `buildFeedLine` | 종류 `contact` 추가 |
 | `buildRoomFirstText` | 선택 인자 `contactNote` |
-| 신규 `buildMessengerClickText` | §4.5 (b) |
+| 신규 `buildMessengerClickText` | §4.5 (b) — WhatsApp·LINE·WeChat·이메일 |
 | 신규 `buildFollowupDigestText` | §4.5 (c) |
 | 신규 `buildTranslationCopyText` | §4.5 (d) — 번역문만, Slack 이스케이프 |
 | 신규 `buildEventHintNote` | §4.10 — 손님에게 이벤트 링크가 나갔다는 한 줄 + 링크 |
@@ -474,7 +489,7 @@ ALTER TABLE public.chat_sessions
 COMMENT ON COLUMN public.chat_sessions.followup_digest_at IS
   '"오늘 연락할 손님" 요약에 마지막으로 오른 시각. 요약 창 시작보다 이전이면 다시 오른다';
 COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
-  '손님이 카드에서 마지막으로 누른 메신저(whatsapp/wechat/line). 연락처가 아니다 — 측정과 번역본 게시 대상 판정에 쓴다';
+  '손님이 카드에서 마지막으로 누른 단추(whatsapp/wechat/line/email). 연락처가 아니다 — 측정과 번역본 게시 대상 판정에 쓴다';
 COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
   '가격 문의에 이벤트 안내(프로모션 링크)를 마지막으로 보낸 시각. 12시간이 지나야 다시 보낸다';
 ```
@@ -501,12 +516,14 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 | 위치 | 변경 |
 |------|------|
 | `serverI18n.ts` | `INTAKE_FRAGMENTS` 10개 로케일 × 12키 + 한국어 원문, `CONTACT_SAVED_TEMPLATES` 10개 문구 교체, `EVENT_HINT_TEXTS` 10개 로케일 × 2문장 + 한국어 원문(§4.10 — 메시지 JSON은 바꾸지 않는다) |
-| `src/messages/*.json` 11개 (`chat` 네임스페이스) | 신규 키 8개: `captureBusyLead`, `captureContactPlaceholderEmail`, `captureMessengerFallback`(`{code}` 변수), `capturePrivacyNote`, `captureWechatLead`(`{code}` 변수), `captureWechatIdLabel`, `captureCopy`, `captureCopied`. 기존 값은 바꾸지 않는다 |
+| `src/messages/*.json` 11개 (`chat` 네임스페이스) | 신규 키 10개: `captureBusyLead`, `captureChannelsLead`, `captureContactPlaceholderEmail`, `captureMessengerFallback`(`{code}` 변수), `capturePrivacyNote`, `captureWechatLead`(`{code}` 변수), `captureWechatIdLabel`, `captureEmailLead`(`{code}` 변수), `captureCopy`, `captureCopied`. 기존 값은 바꾸지 않는다 |
 
-- 메시지 JSON은 줄바꿈이 섞여 있어 다시 직렬화하면 안 된다. 기존 `chat` 키 줄 뒤에 **바이트 보존 삽입**으로 넣고, `JSON.parse` 무결성 + `npm run verify:i18n` + `git diff --numstat`(파일당 +8/−0)으로 검증한다.
-- 쓰지 않게 되는 키(`captureContactSaved`, `captureContactPlaceholderLine`)는 지우지 않는다.
+- 메시지 JSON은 줄바꿈이 섞여 있어 다시 직렬화하면 안 된다. 기존 `chat` 키 줄 뒤에 **바이트 보존 삽입**으로 넣고, `JSON.parse` 무결성 + `npm run verify:i18n` + `git diff --numstat`(파일당 +10/−0)으로 검증한다.
+- 쓰지 않게 되는 키(`captureContactSaved`, `captureContactPlaceholderLine`, `captureMessengerLead`)는 지우지 않는다.
 - 신규 키 문구(영어 기준):
   - `captureBusyLead`: "You don't have to wait here. Leave a contact and we'll reach out to you first."
+  - `captureChannelsLead`: "Reach us wherever is easiest for you:" (네 단추 위. 이메일이 들어가면서 기존 `captureMessengerLead`의 "messenger"가 맞지 않게 돼 새 키를 쓴다)
+  - `captureEmailLead`: "Email us at this address and include the code {code}."
   - `captureContactPlaceholderEmail`: "Email address"
   - `captureMessengerFallback`: "Send us the code {code} there. If it doesn't open, leave your contact below."
   - `capturePrivacyNote`: "We use your contact only to reply to this inquiry."
@@ -524,8 +541,8 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 |------|------|
 | `businessHours.test.ts` | 휴진일: `isBusinessHours` false, `getNextOpenAt` 건너뛰기, 형식 오류 무시. `businessSlot`: 마감 61분 전 `open` / 60분 전 `closing` / 마감 뒤·일요일·휴진일 `closed`, 토요일 마감 기준 |
 | `autoAck.test.ts` | `autoAckKind`: 첫 발송·12시간 초과 → `intake`, 이내 → `short`. `composeIntakeTexts`: 10개 로케일 × 3 시간대 × 연락처 유무가 비어 있지 않고 서로 다름, `W`는 `open`에만, 한국어 원문에 "오늘 안에 최대한 빨리"·"상담 시간이 시작되는 대로". 기존 짧은 안내 테스트 유지 |
-| `contactChannels.test.ts` | `extractEmail`(본문 중간·문장 끝 마침표·병원 도메인 제외·없음·여러 개면 첫째), 이메일 검증, `defaultFormChannel`, 채널 목록 분리(남기기 목록에 `line` 없음·`email` 있음), `orderedLinkChannels`(`ja` → LINE 먼저, `en` → WhatsApp 먼저, `zh` → WeChat 먼저), `shouldShowCaptureBlock` 새 조건 조합(영업시간 무관, 연락처 있음, 기다리는 중 아님, 직원 글 10분 이내, ✕ 12시간) |
-| `contactService.test.ts` (신규) | `saveVisitorContact`: `email` → `visitor_email` 갱신 + 시스템 메시지, 메신저 → 기존 컬럼, `line` 호환. `recordMessengerClick`: 클릭 컬럼만 갱신·시스템 메시지 없음. `saveEmailFromMessage`: 인식 저장 1회, 같은 주소 재입력은 무변경, 이메일 없는 글은 무변경. DB 오류는 throw 없이 실패 결과 |
+| `contactChannels.test.ts` | `extractEmail`(본문 중간·문장 끝 마침표·병원 도메인 제외·**카드의 병원 주소 `CHAT_CONTACT_EMAIL` 제외**·없음·여러 개면 첫째), 이메일 검증, `defaultFormChannel`, 채널 목록 분리(남기기 목록에 `line` 없음·`email` 있음, 바로 연락하기 목록은 네 개), `orderedLinkChannels`(`ja` → LINE 먼저, `en` → WhatsApp 먼저, `zh` → WeChat 먼저, **이메일은 어느 로케일에서나 맨 뒤**), `shouldShowCaptureBlock` 새 조건 조합(영업시간 무관, 연락처 있음, 기다리는 중 아님, 직원 글 10분 이내, ✕ 12시간) |
+| `contactService.test.ts` (신규) | `saveVisitorContact`: `email` → `visitor_email` 갱신 + 시스템 메시지, 메신저 → 기존 컬럼, `line` 호환. `recordMessengerClick`: 클릭 컬럼만 갱신·시스템 메시지 없음, `email` 클릭도 같은 방식으로 기록. `saveEmailFromMessage`: 인식 저장 1회, 같은 주소 재입력은 무변경, 이메일 없는 글은 무변경. DB 오류는 throw 없이 실패 결과 |
 | `visitorMessageFollowups.test.ts` (신규) | `startEarlyFollowups`: 이메일 저장이 끝난 뒤에 자동 안내를 시작하고, 자동 안내 완료는 기다리지 않고 돌아온다. 이벤트 안내는 자동 안내가 끝난 **뒤에** 시작한다. `runVisitorMessageFollowups`: 이메일이 저장된 경우에만 연락처 알림이 손님 글 릴레이 **뒤에** 간다, `ackPromise`를 끝까지 기다린다, 한쪽이 실패해도 다른 쪽은 끝난다. `eventHintUrl`이 있을 때만 이벤트 안내 알림이 손님 글 릴레이 **뒤에** 간다 |
 | `priceIntent.test.ts` (신규) | 실제 문의 문장 9개(영어 "…the price of Ulthera", "any promotion on ultherapy prime ?" · 중국어 "超声刀多少钱？", "我想了解一下价目表", "…含税总价是多少" · 번체 "想問除紋身價格" · 일본어 "…大体の金額についても…" 등) → true. 가격과 무관한 실제 문장(예약·진료 절차·"Do you have sculptra", "what kind of fillers do you do?") → false. `chat.promoDraft` 11개 로케일(메시지 JSON에서 읽는다)이 파일의 상수와 같고 모두 false, 배너 문장 뒤에 가격 질문이 붙으면 true. 대소문자 무시, 낱말 경계(`priceless`·`Costa`·`eventually` → false), 넣지 않은 낱말(`Do you offer…`, `얼마나 걸리나요`) → false |
 | `eventHint.test.ts` (신규) | `currentPromotionSlug`: 한국 시각 월 경계(UTC 9/30 15:00 → `2026-10-promotion`). `eventHintUrl`: 슬러그 있음 → 상세, 없음 → 목록, 10개 로케일. `shouldSendEventHint`: 처음 → true, 12시간 이내 → false, 초과 → true, 직원 글 10분 이내 → false. `composeEventHintTexts`: 10개 로케일 × 2종(프로모션·목록) 문장이 비어 있지 않고 서로 다르며, 한국어 원문·번역문 모두 줄바꿈 뒤 링크로 끝난다. 프로모션이 있으면 `P_promo`, 없으면 `P_list`. `sendEventHintIfDue`: 낱말 없음·`CHAT_EVENT_HINT=off` → DB 호출 0회. 보냄 → INSERT가 `source='auto'`이고 원문·번역문 모두 링크로 끝난다. 선점 0행 → `lost_race`·INSERT 없음. 프로모션 없음·조회 오류 → 목록 링크로 보냄. 세션 조회·선점 오류(042 미적용) → `error`, throw 없음 |
@@ -533,7 +550,8 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 | `escalationRunner.test.ts` (신규) | 후보 조회에 연락처 NULL 조건 2개, `CHAT_FOLLOWUP=off`면 조건 없음 |
 | `followupDigest.test.ts` (신규) | `digestWindow`: 평일 10:00~10:08·18:00~18:08, 토 15:00~, 창 밖은 null, 영업시간 설정 변경 반영. `runFollowupDigest`: 대상 조회 조건, 선점된 세션만 게시, 0명 무게시, 7일 초과 제외, 직원 없음·`off` 무게시 |
 | `slackRelay.test.ts` | 번역본 게시: 연락 수단이 있는 방 세션의 Slack 답글 → 전달 뒤 번역문만 담은 게시 1회. 연락 수단 없음·번역 실패·번역 생략·스레드 모드·`CHAT_FOLLOWUP=off` → 게시 없음. 연락 수단 조회 실패·게시 실패 → 결과는 `delivered` 유지. 피드 스레드 답장은 방 복사 **뒤에** 번역본 |
-| `slackText.test.ts` | §4.7 표의 바뀐 문구와 신규 빌더 전부(`buildEventHintNote`는 안내 한 줄 + 링크 줄) |
+| `slackText.test.ts` | §4.7 표의 바뀐 문구와 신규 빌더 전부(`buildEventHintNote`는 안내 한 줄 + 링크 줄, `buildMessengerClickText`는 WhatsApp·LINE·WeChat·이메일 네 가지 — 이메일은 병원 주소가 들어간다) |
+| `ChannelIcon.test.tsx` (신규, `components/ui/__tests__`) | 네 채널 모두 아이콘을 그리고 `aria-hidden`이다. 알 수 없는 채널은 아무것도 그리지 않는다 |
 | `fakeAdmin.ts` | `in`·`or`·`gte` 지원 추가 |
 
 검증 게이트: `npm test`, `npx tsc --noEmit`, 변경 파일 대상 `npx eslint`, `npm run verify:i18n`, `npm run build`.
@@ -552,6 +570,7 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
    - 다음 요약 시각에 `#해외문의` 요약 게시 → 방에 답글 → 다음 요약에서 빠짐.
    - 연락처를 남긴 시험 세션의 방에 한국어로 답글 → 번역본이 바로 아래 올라옴 → **업무폰 Slack에서 길게 눌러 복사 → WeChat 입력창에 붙여 넣어** 번역문만 깨끗하게 들어가는지 확인.
    - 중국어 화면(`/zh`)에서 카드에 병원 WeChat QR과 아이디가 펼쳐져 있고, 복사 버튼으로 아이디가 복사되며, 누르면 방에 📲 한 줄이 오는지 확인. 영어 화면에서는 작은 "WeChat" 링크를 눌러야 펼쳐지는지 확인. 휴대폰에서 복사한 아이디로 실제 WeChat 검색이 되는지, 카드의 QR(잘라 만든 이미지)을 다른 기기의 WeChat으로 스캔하면 병원 계정이 뜨는지 확인.
+   - 카드에 WhatsApp·WeChat·LINE·이메일 단추 네 개가 아이콘과 함께 나란히 보이는지(영어 화면은 WhatsApp, 일본어는 LINE, 중국어는 WeChat이 맨 앞). 이메일 단추 → 병원 주소가 펼쳐지고, 복사 버튼으로 주소가 복사되며, 주소를 누르면 휴대폰 메일 앱이 코드가 든 글과 함께 열리고, 방에 📲 한 줄이 오는지 확인. 사이트 오른쪽의 LINE·WhatsApp 단추 모양이 그대로인지 확인(아이콘 파일을 옮겼으므로).
    - 영어 화면에서 "How much is Ulthera?"를 보냄 → 접수 안내 **뒤에** 이벤트 안내 말풍선이 오고, 링크를 누르면 새 창에서 이번 달 프로모션(영어 포스터)이 열림 → 방에 🎁 한 줄. 같은 세션에서 가격을 다시 물어도 두 번째 안내는 없음. 일본어·중국어 화면에서도 그 언어 문장과 그 언어 페이지인지 확인.
    - 이벤트 화면의 5% 배너로 채팅을 열어 미리 채워진 문장만 보냄 → 이벤트 안내가 나가지 않음.
    - 이벤트 안내가 나간 뒤에도 5분 재촉 알림이 그대로 오는지 확인(연락처 없는 시험 세션 — 이벤트 안내는 답변으로 치지 않는다).
@@ -573,6 +592,7 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 - 직원 답변을 번역해 손님 이메일로 자동 발송 — 발송 코드(Resend)는 상담 예약 폼에 있지만 운영 서버에 키가 없다. 키 등록·발신 도메인 인증·다른 기기에서 대화 이어가기 링크가 필요해 별도 단계로 둔다. **이메일만 남긴 손님을 직원 손 없이 챙기려면 이것이 필요하다**(U-4).
 - 손님 글에서 메신저 ID 인식, 방 주제(topic)에 나중에 남긴 연락처 반영.
 - 사이트의 다른 WeChat 버튼(하단 바, WeChat 안내 페이지, 문의 페이지) 변경 — 결정 ⑦은 채팅 카드에만 적용한다.
+- 사이트의 다른 곳에 적힌 병원 이메일(`SITE_INFO.email` = `info@livps.co.kr`) 변경 — 결정 ⑩의 주소는 채팅 카드에만 쓴다(U-9). 그 주소로 온 메일을 Slack 방에 자동으로 옮기는 일도 하지 않는다.
 - 관리자 화면에서 쓴 답글의 번역본을 따로 올리기 — 방에 원문·번역이 이미 함께 올라간다.
 - 위챗·왓츠앱과 채팅을 직접 연결하기(직원이 Slack에서 답하면 그 메신저로 자동 발송) — 병원 계정이 개인형이라 연동 수단이 없다. 번역본 복사로 대신한다.
 - 대화 중 재발신 때 나가는 짧은 안내 변경, 세션 시작 시의 시스템 안내·노란 안내 띠 변경.
@@ -596,9 +616,10 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 - **기대값이 바뀌는 기존 테스트**: `contactChannels.test.ts`(채널 목록, 카드 노출 조건), `slackText.test.ts`(`ROOM_AUTO_ACK_NOTE`, `buildContactText`, 방 첫 메시지 꼬리). `autoAck.test.ts`의 짧은 안내 기대값은 유지된다.
 - **메시지 JSON**: 11개 파일은 줄바꿈이 섞여 있다. 재직렬화하지 말고 `\n`만 경계로 줄을 나눠 바이트 보존 삽입한다(메모리 `liv-i18n-file-quirks`).
 - **Grep 도구**: `glob`에 폴더 경로를 넣으면 이 PC에서 거짓 0건이 나온다. 폴더는 `path`로 좁힌다(메모리 `grep-glob-dir-false-negative`).
-- **손님 문구(U-1)는 검토 중이다**: 원장님이 "문구가 어떻게 나가는지 보고 고친 다음에 마무리하자"고 했다(2026-10-01). 미리보기 화면은 `https://claude.ai/artifact/5sAwkitRkzQ47no9mLFqxv`(원장님 계정에서만 열린다. 상황·언어를 고르면 손님 화면과 한국어 원문이 번호와 함께 나온다. 일본어·중국어 문장은 번역 초안이다). 원장님이 고친 문구를 §4.1·§4.10 표에 반영하고, 미리보기를 같은 주소로 다시 올린 뒤 구현 계획을 쓴다. 고칠 것이 없다는 답을 받으면 표 그대로 구현한다.
+- **손님 문구(U-1)는 검토 중이다**: 원장님이 "문구가 어떻게 나가는지 보고 고친 다음에 마무리하자"고 했다(2026-10-01). 미리보기 화면은 `https://claude.ai/artifact/5sAwkitRkzQ47no9mLFqxv`(원장님 계정에서만 열린다. 상황·언어를 고르면 손님 화면과 한국어 원문이 번호와 함께 나오고, 초안 2부터는 연락처 카드도 단추 네 개·아이콘과 함께 나온다. 일본어·중국어 문장은 번역 초안이다. 접수·이벤트 안내 문장은 번호 1~16, 카드 문구는 가~아로 부른다. 화면의 원본 파일은 세션 임시 폴더에 있었으므로, 새 세션에서 고치려면 Artifact 도구로 이 주소를 읽어 온 뒤 같은 주소로 다시 올린다). 원장님이 고친 문구를 §4.1·§4.10 표에 반영하고, 미리보기를 같은 주소로 다시 올린 뒤 구현 계획을 쓴다. 고칠 것이 없다는 답을 받으면 표 그대로 구현한다.
 - **아직 받지 못한 값의 기본 처리**: U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다.
 - **이벤트 안내(§4.10, 결정 ⑨)는 설계 승인 뒤 같은 날 추가됐다**: 신규 파일 `priceIntent.ts`·`eventHint.ts`·`linkify.ts`와 각 테스트, `MessageBubble.tsx` 수정, `serverI18n.ts`의 `EVENT_HINT_TEXTS`, 042의 세 번째 컬럼 `event_hint_at`, 환경변수 `CHAT_EVENT_HINT`. 낱말 목록은 §4.10 표 그대로 옮기고, 테스트에는 그 절에 적은 실제 문의 문장을 쓴다. 이번 달 프로모션은 **주소(`YYYY-MM-promotion`)로** 찾는다 — "진행 중인 이벤트"로 찾지 않는다.
+- **카드의 단추 네 개와 아이콘(§4.2, 결정 ⑩)도 같은 날 추가됐다**: 신규 `components/ui/ChannelIcon.tsx`(WhatsApp·LINE SVG는 `FloatingCTA.tsx`에서 옮기고 `FloatingCTA`는 가져다 쓰게 바꾼다 — 모양이 달라지면 안 된다), `constants.ts`의 `CHAT_CONTACT_EMAIL`, `click` 채널에 `email`, 메시지 키 2개 추가(`captureChannelsLead`·`captureEmailLead` — 신규 키는 모두 10개). 병원 이메일 주소는 채팅 카드에만 쓰고 `SITE_INFO.email`은 건드리지 않는다.
 - **이미 끝난 것(다시 만들지 않는다)**: U-2·U-6·U-7 — LINE 친구 추가 링크(`SOCIAL_LINKS.line`), `public/images/wechat-qr-code.png`, `WECHAT_ID`·`WECHAT_QR_IMAGE` 상수, 새 QR을 쓰는 `WeChatQRModal`·`WeChatInfo`, 테스트 `components/ui/__tests__/WeChatQR.test.tsx`·`lib/__tests__/messengerLinks.test.ts`가 이 브랜치에 있다(`fix/wechat-qr-latest`의 8646dfc·435869d 병합). 카드에서 가져다 쓴다. 그 수정이 운영에 먼저 나갔는지는 `git fetch` 뒤 `git log origin/master`로 확인하고, 나갔다면 master를 이 브랜치에 병합한 뒤 시작한다.
 - **운영에 닿는 일은 원장님 승인 뒤에만 한다**: 마이그레이션 042 운영 적용, master 머지·푸시(= Netlify 배포), Netlify 환경변수 변경.
 - **측정 스크립트**는 이미 있다(`liv-clinic/scripts/chat-response-baseline.mjs`). §1·§2의 수치를 낸 질의이므로 기존 항목의 정의를 바꾸지 않는다. 이벤트 안내 항목 9는 새로 더한다(§4.10).
