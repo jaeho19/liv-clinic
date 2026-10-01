@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { createChatAdminClient } from '@/lib/chat/db';
+import { isFollowupDue } from '@/lib/chat/followupDigest';
 import type { VisitorLocale } from '@/lib/chat/chatApi';
 
 export const dynamic = 'force-dynamic';
@@ -17,6 +18,7 @@ interface SessionRow {
   created_at: string;
   assigned_label: string | null;
   resolved_at: string | null;
+  awaiting_since: string | null;
 }
 
 // 방문자가 남긴 채널 표기 (미지의 값은 원문 그대로 — 채널 확장 대비)
@@ -62,7 +64,7 @@ async function loadSessions(tab: Tab): Promise<SessionRow[]> {
   let query = admin
     .from('chat_sessions')
     .select(
-      'id, visitor_locale, visitor_name, visitor_email, visitor_messenger_channel, visitor_messenger_handle, status, last_message_at, unread_admin_count, created_at, assigned_label, resolved_at'
+      'id, visitor_locale, visitor_name, visitor_email, visitor_messenger_channel, visitor_messenger_handle, status, last_message_at, unread_admin_count, created_at, assigned_label, resolved_at, awaiting_since'
     );
   if (tab === 'open') query = query.eq('status', 'open').is('resolved_at', null);
   else if (tab === 'resolved') query = query.eq('status', 'open').not('resolved_at', 'is', null);
@@ -156,6 +158,12 @@ export default async function AdminChatListPage({
                     </div>
                   </div>
                   <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                    {/* 연락처를 남기고 답을 기다리는 손님 — Slack의 '오늘 연락할 손님'과 같은 기준 */}
+                    {isFollowupDue(s) && (
+                      <span className="text-[11px] text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-full px-2 py-0.5 whitespace-nowrap">
+                        오늘 연락
+                      </span>
+                    )}
                     {s.assigned_label && (
                       <span className="text-[11px] text-[#6d4e42] bg-[#b4988d]/10 rounded-full px-2 py-0.5 whitespace-nowrap">
                         담당 {s.assigned_label}
