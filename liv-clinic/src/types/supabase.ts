@@ -228,6 +228,8 @@ export type Database = {
           closed_at: string | null
           created_at: string
           escalation_level: number
+          event_hint_at: string | null
+          followup_digest_at: string | null
           id: string
           ip_hash: string | null
           last_message_at: string | null
@@ -245,6 +247,7 @@ export type Database = {
           visitor_email: string | null
           visitor_locale: string
           visitor_messenger_channel: string | null
+          visitor_messenger_clicked: string | null
           visitor_messenger_handle: string | null
           visitor_name: string | null
         }
@@ -258,6 +261,8 @@ export type Database = {
           closed_at?: string | null
           created_at?: string
           escalation_level?: number
+          event_hint_at?: string | null
+          followup_digest_at?: string | null
           id?: string
           ip_hash?: string | null
           last_message_at?: string | null
@@ -275,6 +280,7 @@ export type Database = {
           visitor_email?: string | null
           visitor_locale: string
           visitor_messenger_channel?: string | null
+          visitor_messenger_clicked?: string | null
           visitor_messenger_handle?: string | null
           visitor_name?: string | null
         }
@@ -288,6 +294,8 @@ export type Database = {
           closed_at?: string | null
           created_at?: string
           escalation_level?: number
+          event_hint_at?: string | null
+          followup_digest_at?: string | null
           id?: string
           ip_hash?: string | null
           last_message_at?: string | null
@@ -305,6 +313,7 @@ export type Database = {
           visitor_email?: string | null
           visitor_locale?: string
           visitor_messenger_channel?: string | null
+          visitor_messenger_clicked?: string | null
           visitor_messenger_handle?: string | null
           visitor_name?: string | null
         }
