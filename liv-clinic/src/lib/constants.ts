@@ -49,6 +49,10 @@ export const WHATSAPP_NUMBER = '821068882773';
 export const WECHAT_ID = 'livps0414';
 export const WECHAT_QR_IMAGE = '/images/wechat-qr-code.png';
 
+// 채팅 연락처 카드의 "이메일" 단추가 보여 주는 병원 주소 (원장님 지정, 2026-10-01).
+// 채팅 카드 전용이다 — 푸터·문의 페이지·검색엔진용 정보는 SITE_INFO.email(info@livps.co.kr)을 그대로 쓴다.
+export const CHAT_CONTACT_EMAIL = 'jaeho19@gmail.com';
+
 // Google Business(구글 지도) 후기 페이지 URL — 홈 ReviewsSection의 외부 신뢰 링크.
 // cid 단축형: 로케일·세션 파라미터 없이 항상 리브성형외과 신사(LIV Clinic Sinsa)
 // 지도 상세(후기 포함)로 연결된다. 빈 문자열이면 링크는 렌더링되지 않는다.
