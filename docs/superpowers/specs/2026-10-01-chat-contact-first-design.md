@@ -30,12 +30,12 @@
 | # | 항목 | 설명 |
 |---|------|------|
 | U-1 | **손님 문구 확인** | §4.1 한국어 원문 12문장. 다른 언어는 이 원문을 기준으로 옮긴다 |
-| U-2 | **병원 LINE 친구 추가 링크** | LINE 앱 → 홈 → 친구 추가 → QR 코드 → 링크 복사. `https://line.me/ti/p/` 뒤에 무작위 글자가 붙은 주소여야 한다(끝이 `~icps7972773`이면 지금과 같은 아이디 방식이다). 받으면 사이트 전체의 LINE 버튼이 ID 검색 없이 동작한다. 늦게 주셔도 나머지는 먼저 나간다. **2026-10-01에 받은 LINE QR 이미지는 읽어 보니 `https://line.me/R/ti/p/~icps7972773`(지금 사이트 링크와 같은 아이디 방식)이라 쓰지 않는다 — 링크를 기다린다** |
+| U-2 | ~~병원 LINE 친구 추가 링크~~ **받음(2026-10-01)** | `https://line.me/ti/p/VJYu9BSnsX` — 아이디 검색을 거치지 않는 주소(열어 보면 친구 추가 화면이 뜬다). `fix/wechat-qr-latest`(435869d)에서 `SOCIAL_LINKS.line`을 바꿔 사이트의 모든 LINE 버튼에 적용했고 이 브랜치에도 병합돼 있다. 같은 날 받은 LINE QR 이미지는 예전 아이디 방식 주소라 쓰지 않는다 |
 | U-3 | **올해 남은 휴진일** | 날짜 목록(예: 10/3, 10/9, 12/25). 없으면 빈 채로 나가고 지금처럼 동작한다 |
 | U-4 | **이메일만 남긴 손님은 직원이 직접 메일을 보내야 한다** | 1단계에는 메일 자동 발송이 없다. 방에 한국어로 답을 쓰면 번역본이 올라오므로(§4.5 d) 그것을 복사해 메일에 붙이면 된다. 자동 발송은 다음 단계 후보다(§10) |
 | U-5 | **개인정보 처리방침에 OpenAI·Slack 추가 여부** | 지금 위탁 업체 목록에 Supabase·Google Analytics만 있다. 넣으려면 문구 초안(§10)을 승인해 주시면 함께 반영한다 |
 | U-6 | ~~병원 WeChat QR 원본 이미지~~ **받음(2026-10-01)** | 원본 화면에서 QR만 잘라 `liv-clinic/public/images/wechat-qr-code.png`(660×660, 흑백)로 넣었다. 읽어 보면 `https://u.wechat.com/kH7fonYYvwh851jK2Y2nsfo?s=2`이고 160px로 줄여도 읽힌다 |
-| U-7 | ~~사이트의 위챗 포스터 QR 확인~~ **끝남(2026-10-01)** | 원장님 확인: 받은 QR이 최신이고, 사이트 포스터(`wechat-qr.png`, 주소 `https://u.wechat.com/kL9gQH6GOesxNpNB-SWRDko`)는 예전 QR이다. 브랜치 `fix/wechat-qr-latest`(8646dfc)에서 `/zh/wechat` 페이지와 QR 크게 보기 화면을 새 QR로 바꾸고 포스터를 지웠다(테스트 633건·타입 검사·빌드 통과, 화면 확인). 이 설계 브랜치에도 병합돼 있다. **운영 반영(master 푸시)은 원장님 승인 대기** — 1단계보다 먼저 따로 내보낼 수 있다 |
+| U-7 | ~~사이트의 위챗 포스터 QR 확인~~ **끝남(2026-10-01)** | 원장님 확인: 받은 QR이 최신이고, 사이트 포스터(`wechat-qr.png`, 주소 `https://u.wechat.com/kL9gQH6GOesxNpNB-SWRDko`)는 예전 QR이다. 브랜치 `fix/wechat-qr-latest`(8646dfc)에서 `/zh/wechat` 페이지와 QR 크게 보기 화면을 새 QR로 바꾸고 포스터를 지웠다(테스트 633건·타입 검사·빌드 통과, 화면 확인). 이 설계 브랜치에도 병합돼 있다. **운영 반영(master 푸시)은 원장님 승인 대기** — 1단계보다 먼저 따로 내보낼 수 있다. 같은 브랜치에 LINE 링크 교체(U-2, 435869d)도 들어 있다 |
 
 코드에 이미 있어 따로 받을 필요가 없는 값: WeChat ID `livps0414`, WhatsApp `+82 10-6888-2773`, LINE ID `icps7972773`, 이메일 `info@livps.co.kr`, 전화 `02-797-2773`(모두 `constants.ts`). 바뀐 것이 있을 때만 알려 주시면 된다.
 
@@ -209,7 +209,7 @@ AND 최근 10분 안에 직원 글이 없음
 
 - 메신저 버튼을 누른 뒤에도 카드를 남기는 이유: 지금은 버튼을 누르는 순간 카드가 닫힌다. 8/19 손님은 LINE 버튼이 실패한 뒤 대화창에 직접 "LINE이 안 된다"와 이메일을 적어야 했다.
 - 저장에 성공하면 카드는 사라진다(`hasContact = true`). 확인은 대화창의 시스템 메시지가 한다(§4.4) — 카드 안의 초록색 "Saved!" 상태는 없앤다.
-- **LINE**: 직원이 손님 LINE ID를 찾지 못하므로 ID를 받지 않는다. LINE은 손님이 병원을 추가하는 버튼으로만 남는다. 원장님이 친구 추가 링크(U-2)를 주시면 `constants.ts`의 `SOCIAL_LINKS.line`을 그 링크로 바꾼다(사이트 전체 LINE 버튼에 적용). 받기 전까지는 현행 링크를 쓴다.
+- **LINE**: 직원이 손님 LINE ID를 찾지 못하므로 ID를 받지 않는다. LINE은 손님이 병원을 추가하는 버튼으로만 남는다. 버튼의 주소(`SOCIAL_LINKS.line`)는 아이디 검색을 거치지 않는 친구 추가 링크로 이미 바꿨다(U-2, 435869d) — 카드에서는 지금처럼 `LINE_LINK`를 쓰면 된다.
 - `contactChannels.ts`: `CONTACT_CHANNELS`를 `MESSENGER_LINK_CHANNELS = ['whatsapp','wechat','line']`(메신저로 이어가기)과 `CONTACT_FORM_CHANNELS = ['whatsapp','wechat','email']`(남기기)로 나눈다. `validateContactHandle`에 `email` 분기, `defaultFormChannel(locale)`, `orderedLinkChannels(locale)`(1순위 메신저를 맨 앞으로 — 지금 `ChatCaptureBlock` 안의 `orderedChannels`를 옮긴 것) 추가. `primaryMessengerFor`(사이트 전역)는 바꾸지 않는다.
 
 ### 4.3 손님 글 속 이메일 자동 인식
@@ -431,7 +431,7 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 ## 9. 롤아웃
 
 1. **마이그레이션 042를 운영 DB에 먼저 적용**(추가형이라 기존 코드에 영향 없음).
-2. 원장님 입력 반영: 휴진일 → Netlify `CHAT_CLOSED_DATES`, LINE 링크 → `SOCIAL_LINKS.line`(받았을 때).
+2. 원장님 입력 반영: 휴진일 → Netlify `CHAT_CLOSED_DATES`(받았을 때). LINE 링크와 WeChat QR은 코드에 이미 반영돼 있다.
 3. master 머지·푸시(= Netlify 배포)는 원장님 승인 뒤.
 4. 스모크(운영, 시험 이름 `Smoke Test 1001`):
    - 영업시간 중 첫 글 → 접수 안내(`open`) + 카드 표시 → 이메일 저장 → 대화창 확인 문구, 방에 📱, 피드에 📋 → 5분 뒤에도 재촉 알림 없음.
@@ -460,7 +460,8 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 - 관리자 화면에서 쓴 답글의 번역본을 따로 올리기 — 방에 원문·번역이 이미 함께 올라간다.
 - 위챗·왓츠앱과 채팅을 직접 연결하기(직원이 Slack에서 답하면 그 메신저로 자동 발송) — 병원 계정이 개인형이라 연동 수단이 없다. 번역본 복사로 대신한다.
 - 대화 중 재발신 때 나가는 짧은 안내 변경, 세션 시작 시의 시스템 안내·노란 안내 띠 변경.
-- 사이트 전역 1순위 메신저(`primaryMessengerFor`) 변경 — LINE 링크 교체(U-2) 뒤 대만·태국을 LINE으로 바꿀지 다시 본다.
+- 사이트 전역 1순위 메신저(`primaryMessengerFor`) 변경 — LINE 링크는 고쳤으니(U-2) 대만·태국을 LINE 기본으로 바꿀지는 따로 정한다.
+- 가이드 글 본문의 "LINE ID: icps7972773" 표기(일본어·대만어 가이드 10여 곳) — 아이디 검색이 안 되는 손님에게는 통하지 않으므로 친구 추가 링크로 바꾸는 것이 좋지만, 가이드 원고를 고치는 별도 작업이다.
 - 휴진일을 관리자 화면에서 고치기, Slack 버튼(Block Kit), 연락 완료 전용 버튼.
 
 **U-5 문구 초안 (승인 시 11개 로케일 `privacy` 5조에 반영)**
@@ -478,7 +479,8 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 - **기대값이 바뀌는 기존 테스트**: `contactChannels.test.ts`(채널 목록, 카드 노출 조건), `slackText.test.ts`(`ROOM_AUTO_ACK_NOTE`, `buildContactText`, 방 첫 메시지 꼬리). `autoAck.test.ts`의 짧은 안내 기대값은 유지된다.
 - **메시지 JSON**: 11개 파일은 줄바꿈이 섞여 있다. 재직렬화하지 말고 `\n`만 경계로 줄을 나눠 바이트 보존 삽입한다(메모리 `liv-i18n-file-quirks`).
 - **Grep 도구**: `glob`에 폴더 경로를 넣으면 이 PC에서 거짓 0건이 나온다. 폴더는 `path`로 좁힌다(메모리 `grep-glob-dir-false-negative`).
-- **아직 받지 못한 값의 기본 처리**: U-1 문구는 §4.1 그대로 구현한다. U-2 LINE 링크는 현행을 유지한다(상수만 나중에 교체). U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다. U-6·U-7은 끝났다 — `public/images/wechat-qr-code.png`와 `WECHAT_ID`·`WECHAT_QR_IMAGE` 상수, 새 QR을 쓰는 `WeChatQRModal`·`WeChatInfo`, 테스트 `components/ui/__tests__/WeChatQR.test.tsx`가 이미 이 브랜치에 있다(`fix/wechat-qr-latest` 병합). 다시 만들지 말고 카드에서 가져다 쓴다. 그 수정이 운영에 먼저 나갔는지는 `git log origin/master`로 확인한다(나갔다면 master를 이 브랜치에 병합한 뒤 시작).
+- **아직 받지 못한 값의 기본 처리**: U-1 문구는 §4.1 그대로 구현한다. U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다.
+- **이미 끝난 것(다시 만들지 않는다)**: U-2·U-6·U-7 — LINE 친구 추가 링크(`SOCIAL_LINKS.line`), `public/images/wechat-qr-code.png`, `WECHAT_ID`·`WECHAT_QR_IMAGE` 상수, 새 QR을 쓰는 `WeChatQRModal`·`WeChatInfo`, 테스트 `components/ui/__tests__/WeChatQR.test.tsx`·`lib/__tests__/messengerLinks.test.ts`가 이 브랜치에 있다(`fix/wechat-qr-latest`의 8646dfc·435869d 병합). 카드에서 가져다 쓴다. 그 수정이 운영에 먼저 나갔는지는 `git fetch` 뒤 `git log origin/master`로 확인하고, 나갔다면 master를 이 브랜치에 병합한 뒤 시작한다.
 - **운영에 닿는 일은 원장님 승인 뒤에만 한다**: 마이그레이션 042 운영 적용, master 머지·푸시(= Netlify 배포), Netlify 환경변수 변경.
 - **측정 스크립트**는 이미 있다(`liv-clinic/scripts/chat-response-baseline.mjs`). §1·§2의 수치를 낸 질의이므로 정의를 바꾸지 않는다.
 - **2단계(별도 문서)**: AI 이용 안내(홈페이지 답변에서 고르기), 직원 답변 이메일 자동 발송.
