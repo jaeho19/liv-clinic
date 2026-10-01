@@ -3,17 +3,26 @@ import {
   buildContactText,
   buildDeliveryFailureText,
   buildEscalationText,
+  buildEventHintNote,
   buildFeedLine,
+  buildFollowupDigestText,
+  buildMessengerClickText,
   buildReplyText,
   buildRoomFirstText,
   buildRoomTopic,
   buildRoomVisitorText,
   buildRootText,
+  buildTranslationCopyText,
   extractRoomChannelFromFeedText,
   buildFeedReplyMirrorText,
+  FOLLOWUP_DIGEST_MAX_LINES,
   ROOM_AUTO_ACK_NOTE,
+  ROOM_EMAIL_CONTACT_NOTE,
   ROOM_FOOTER,
+  staffChannelLabel,
+  type FollowupDigestItem,
 } from '../slackText';
+import { CHAT_CONTACT_EMAIL } from '@/lib/constants';
 
 describe('buildReplyText — 방문자 메시지', () => {
   it('한국어 번역을 먼저 보여주고 원문을 인용으로 붙인다', () => {
@@ -158,16 +167,48 @@ describe('buildRootText', () => {
   });
 });
 
-describe('buildContactText — 방문자 연락처 릴레이', () => {
-  it('채널 라벨과 핸들, 스태프 안내 문구를 포함한다', () => {
+describe('buildContactText — 손님 연락처 알림', () => {
+  it("방: '오늘 연락할 손님' 분류와 번역본 안내 세 줄을 붙인다", () => {
+    const text = buildContactText({
+      channelLabel: 'WeChat',
+      handle: 'abc123',
+      adminUrl: null,
+      mode: 'room',
+      followup: true,
+    });
+    expect(text).toBe(
+      '📱 *손님이 연락처를 남겼습니다* — WeChat: abc123\n' +
+        "_'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다._\n" +
+        '_이 방에 한국어로 답을 쓰면 바로 아래에 번역본이 올라옵니다. 복사해서 위챗·왓츠앱·메일에 붙여 넣으세요._\n' +
+        '_방에 답을 쓰면 목록에서 빠집니다. 상담이 끝나면 방을 보관(완료)해 주세요._'
+    );
+  });
+
+  it('스레드: 번역본은 방에만 올라오므로 그 줄을 뺀다', () => {
+    const text = buildContactText({
+      channelLabel: '이메일',
+      handle: 'guest@example.com',
+      adminUrl: null,
+      mode: 'thread',
+      followup: true,
+    });
+    expect(text).toBe(
+      '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com\n' +
+        "_'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다._\n" +
+        '_이 스레드에 답글을 쓰면 목록에서 빠집니다._'
+    );
+  });
+
+  it('긴급 정지(CHAT_FOLLOWUP=off) 중에는 분류 안내 대신 연락 요청만 남긴다', () => {
     const text = buildContactText({
       channelLabel: 'WhatsApp',
       handle: '+82 10-1234-5678',
       adminUrl: null,
+      mode: 'room',
+      followup: false,
     });
     expect(text).toBe(
-      '📱 *방문자가 연락처를 남겼습니다* — WhatsApp: +82 10-1234-5678\n' +
-        '_근무 시작 후 이 연락처로 먼저 연락해 주세요._'
+      '📱 *손님이 연락처를 남겼습니다* — WhatsApp: +82 10-1234-5678\n_이 연락처로 먼저 연락해 주세요._'
     );
   });
 
@@ -176,18 +217,158 @@ describe('buildContactText — 방문자 연락처 릴레이', () => {
       channelLabel: 'WeChat',
       handle: '<!channel>id',
       adminUrl: null,
+      mode: 'room',
+      followup: true,
     });
     expect(text).not.toContain('<!channel>');
     expect(text).toContain('&lt;!channel&gt;id');
   });
 
-  it('스레드 없이 단독 게시될 때만 어드민 링크를 붙인다', () => {
+  it('붙일 방·스레드가 없으면(단독 게시) 관리자 화면에서 답하라는 안내와 링크를 붙인다', () => {
     const text = buildContactText({
       channelLabel: 'LINE',
       handle: 'my_line_id',
       adminUrl: 'https://example.com/admin/chat/abc',
+      mode: 'standalone',
+      followup: true,
     });
-    expect(text).toContain('🔗 <https://example.com/admin/chat/abc|관리자 화면에서 열기>');
+    expect(text).toBe(
+      '📱 *손님이 연락처를 남겼습니다* — LINE: my_line_id\n' +
+        "_'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다._\n" +
+        '_관리자 화면에서 답하면 목록에서 빠집니다._\n' +
+        '🔗 <https://example.com/admin/chat/abc|관리자 화면에서 열기>'
+    );
+  });
+
+  it('방·스레드에 붙을 때는 관리자 링크를 붙이지 않는다', () => {
+    const text = buildContactText({
+      channelLabel: 'LINE',
+      handle: 'my_line_id',
+      adminUrl: 'https://example.com/admin/chat/abc',
+      mode: 'room',
+      followup: true,
+    });
+    expect(text).not.toContain('🔗');
+  });
+});
+
+describe('staffChannelLabel — 직원에게 보이는 채널 이름', () => {
+  it('이메일만 한국어, 메신저는 브랜드명', () => {
+    expect(staffChannelLabel('email')).toBe('이메일');
+    expect(staffChannelLabel('wechat')).toBe('WeChat');
+    expect(staffChannelLabel('whatsapp')).toBe('WhatsApp');
+    expect(staffChannelLabel('line')).toBe('LINE');
+  });
+  it('모르는 값은 그대로, 없으면 빈 글자', () => {
+    expect(staffChannelLabel('telegram')).toBe('telegram');
+    expect(staffChannelLabel(null)).toBe('');
+  });
+});
+
+describe('buildMessengerClickText — 손님이 카드의 병원 연락 단추를 눌렀다', () => {
+  const sessionId = 'a1b2c3d4-0000-0000-0000-000000000000';
+
+  it('WhatsApp', () => {
+    expect(buildMessengerClickText({ channel: 'whatsapp', sessionId, copyHint: true })).toBe(
+      '📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #A1B2C3D4 가 담긴 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'
+    );
+  });
+
+  it('LINE도 같은 형식', () => {
+    expect(buildMessengerClickText({ channel: 'line', sessionId, copyHint: true })).toBe(
+      '📲 손님이 LINE으로 이어가기를 눌렀습니다 — 병원 LINE에서 코드 #A1B2C3D4 가 담긴 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'
+    );
+  });
+
+  it('WeChat은 아이디·QR 확인', () => {
+    expect(buildMessengerClickText({ channel: 'wechat', sessionId, copyHint: true })).toBe(
+      '📲 손님이 병원 WeChat 아이디·QR을 확인했습니다 — 업무폰 WeChat에서 친구 요청과 코드 #A1B2C3D4 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'
+    );
+  });
+
+  it('이메일은 병원 주소가 들어간다', () => {
+    const text = buildMessengerClickText({ channel: 'email', sessionId, copyHint: true });
+    expect(text).toBe(
+      `📲 손님이 병원 이메일 주소를 확인했습니다 — ${CHAT_CONTACT_EMAIL} 메일함에서 코드 #A1B2C3D4 가 담긴 메일을 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.`
+    );
+    expect(text).toContain('jaeho19@gmail.com');
+  });
+
+  it('번역본이 올라오지 않는 곳(스레드·긴급 정지)에서는 그 안내를 붙이지 않는다', () => {
+    const text = buildMessengerClickText({ channel: 'whatsapp', sessionId, copyHint: false });
+    expect(text.endsWith('메시지를 확인해 주세요.')).toBe(true);
+    expect(text).not.toContain('번역본');
+  });
+});
+
+describe('buildTranslationCopyText — 직원 답글의 번역본', () => {
+  it('번역문만 담는다 (머리말·이모지 없음)', () => {
+    expect(buildTranslationCopyText('您好，价格是100万韩元。')).toBe('您好，价格是100万韩元。');
+  });
+  it('Slack 마크업만 이스케이프한다', () => {
+    expect(buildTranslationCopyText('A & B <!channel>')).toBe('A &amp; B &lt;!channel&gt;');
+  });
+});
+
+describe('buildEventHintNote — 이벤트 링크가 자동으로 나갔다', () => {
+  it('안내 한 줄 + 링크 줄', () => {
+    expect(buildEventHintNote('https://liv-clinic.net/en/events/2026-10-promotion')).toBe(
+      '🎁 _가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요._\n' +
+        'https://liv-clinic.net/en/events/2026-10-promotion'
+    );
+  });
+});
+
+describe("buildFollowupDigestText — '오늘 연락할 손님' 요약", () => {
+  const item = (over: Partial<FollowupDigestItem> = {}): FollowupDigestItem => ({
+    visitorName: 'Li Wei',
+    visitorLocale: 'zh',
+    contactLabel: 'WeChat',
+    awaitingSince: '2026-10-01T00:26:00Z',
+    channelId: 'C0ROOM1',
+    adminUrl: null,
+    ...over,
+  });
+
+  it('머리말(인원·전원 멘션) + 손님 줄 + 꼬리말', () => {
+    const text = buildFollowupDigestText({
+      mentionAll: '<@U1> <@U2>',
+      items: [
+        item(),
+        item({ visitorName: null, visitorLocale: 'en', contactLabel: '이메일', awaitingSince: '2026-10-01T05:03:00Z', channelId: 'C0ROOM2' }),
+      ],
+    });
+    expect(text).toBe(
+      '📋 *오늘 연락할 손님 2명* <@U1> <@U2>\n' +
+        '• 🇨🇳 Li Wei · WeChat · 10/01(목) 09:26 문의 · <#C0ROOM1>\n' +
+        '• 🇬🇧 익명 · 이메일 · 10/01(목) 14:03 문의 · <#C0ROOM2>\n' +
+        '_방에 답을 쓰거나 방을 보관(완료)하면 목록에서 빠집니다._'
+    );
+  });
+
+  it('방이 없는 손님(스레드 방식)은 관리자 화면 링크', () => {
+    const text = buildFollowupDigestText({
+      mentionAll: '',
+      items: [item({ channelId: null, adminUrl: 'https://liv-clinic.net/admin/chat/abc' })],
+    });
+    expect(text.split('\n')[0]).toBe('📋 *오늘 연락할 손님 1명*');
+    expect(text.split('\n')[1]).toBe(
+      '• 🇨🇳 Li Wei · WeChat · 10/01(목) 09:26 문의 · <https://liv-clinic.net/admin/chat/abc|관리자 화면>'
+    );
+  });
+
+  it('20명을 넘으면 "외 N명"', () => {
+    const items = Array.from({ length: FOLLOWUP_DIGEST_MAX_LINES + 3 }, (_, i) => item({ visitorName: `G${i}` }));
+    const lines = buildFollowupDigestText({ mentionAll: '<@U1>', items }).split('\n');
+    expect(lines[0]).toBe('📋 *오늘 연락할 손님 23명* <@U1>');
+    expect(lines).toHaveLength(1 + FOLLOWUP_DIGEST_MAX_LINES + 1 + 1);
+    expect(lines[FOLLOWUP_DIGEST_MAX_LINES + 1]).toBe('• 외 3명');
+  });
+
+  it('이름의 Slack 마크업을 이스케이프한다', () => {
+    expect(buildFollowupDigestText({ mentionAll: '', items: [item({ visitorName: '<!channel>' })] })).not.toContain(
+      '<!channel>'
+    );
   });
 });
 
@@ -211,6 +392,25 @@ describe('buildRoomFirstText — 방의 첫 메시지', () => {
   it('멘션 대상이 없어도 구분자가 남지 않는다', () => {
     const text = buildRoomFirstText({ ...base, mentionAll: '' });
     expect(text.split('\n')[0]).toBe('🔴 *새 문의* · 📥 01/01(월) 14:03 KST');
+  });
+
+  it('자동 안내 꼬리말은 접수 안내가 나갔다고 알린다', () => {
+    expect(ROOM_AUTO_ACK_NOTE).toBe(
+      '_손님에게는 접수 안내(예상 시간·연락처 요청·시술과 방문일 질문)가 자동으로 나갔습니다._'
+    );
+  });
+
+  it('시작 화면에서 이메일을 넣은 손님이면 꼬리말을 한 줄 더 붙인다', () => {
+    const text = buildRoomFirstText({ ...base, mentionAll: '<@U1>', contactNote: ROOM_EMAIL_CONTACT_NOTE });
+    expect(text.endsWith(`${ROOM_FOOTER}\n${ROOM_AUTO_ACK_NOTE}\n${ROOM_EMAIL_CONTACT_NOTE}`)).toBe(true);
+    expect(ROOM_EMAIL_CONTACT_NOTE).toBe(
+      "_이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리되며 재촉 알림은 울리지 않습니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다._"
+    );
+  });
+
+  it('연락처 꼬리말이 null이면 붙이지 않는다', () => {
+    const text = buildRoomFirstText({ ...base, mentionAll: '<@U1>', contactNote: null });
+    expect(text.endsWith(`${ROOM_FOOTER}\n${ROOM_AUTO_ACK_NOTE}`)).toBe(true);
   });
 });
 
@@ -309,6 +509,19 @@ describe('buildFeedLine — #해외문의 피드', () => {
     expect(buildFeedLine({ kind: 'new', visitorName: '<!channel>', visitorLocale: 'en', channelId: null, at })).not.toContain(
       '<!channel>'
     );
+  });
+
+  it('연락처 남김 (채널 이름과 방 링크)', () => {
+    expect(
+      buildFeedLine({
+        kind: 'contact',
+        visitorName: 'Li Wei',
+        visitorLocale: 'zh',
+        channelId: 'C9',
+        at: '2026-10-01T05:03:00Z',
+        contactLabel: 'WeChat',
+      })
+    ).toBe('📋 연락처 남김 · 🇨🇳 Li Wei · WeChat · <#C9> · 10/01(목) 14:03 KST');
   });
 });
 

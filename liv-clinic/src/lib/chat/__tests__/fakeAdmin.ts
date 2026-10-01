@@ -3,6 +3,8 @@
 export interface FakeOp {
   table: string;
   op: 'select' | 'update' | 'insert';
+  /** 마지막 select(...)에 넘긴 컬럼 문자열 — 같은 테이블의 조회를 서로 구분할 때 쓴다 */
+  columns?: string;
   filters: Array<[column: string, operator: string, value: unknown]>;
   payload?: unknown;
 }
@@ -25,13 +27,17 @@ export function fakeAdmin(handler: (op: FakeOp) => FakeResult) {
       };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const b: any = {
-        select: () => b,
+        select: (columns?: string) => ((op.columns = columns), b),
         update: (payload: unknown) => ((op.op = 'update'), (op.payload = payload), b),
         insert: (payload: unknown) => ((op.op = 'insert'), (op.payload = payload), b),
         eq: (c: string, v: unknown) => (op.filters.push([c, 'eq', v]), b),
         is: (c: string, v: unknown) => (op.filters.push([c, 'is', v]), b),
         not: (c: string, o: string, v: unknown) => (op.filters.push([c, `not.${o}`, v]), b),
         lt: (c: string, v: unknown) => (op.filters.push([c, 'lt', v]), b),
+        gte: (c: string, v: unknown) => (op.filters.push([c, 'gte', v]), b),
+        in: (c: string, v: unknown[]) => (op.filters.push([c, 'in', v]), b),
+        // or('a.is.null,b.is.null') — 식 전체를 값으로 남긴다 (컬럼 자리는 빈 글자)
+        or: (expr: string) => (op.filters.push(['', 'or', expr]), b),
         limit: () => b,
         order: () => b,
         maybeSingle: () => Promise.resolve(finish()),
@@ -46,4 +52,9 @@ export function fakeAdmin(handler: (op: FakeOp) => FakeResult) {
 
 export function hasFilter(op: FakeOp, column: string, value: unknown): boolean {
   return op.filters.some(([c, , v]) => c === column && v === value);
+}
+
+/** 연산자까지 맞는 필터가 있는가 — 예: hasFilterOp(op, 'awaiting_since', 'gte') */
+export function hasFilterOp(op: FakeOp, column: string, operator: string): boolean {
+  return op.filters.some(([c, o]) => c === column && o === operator);
 }

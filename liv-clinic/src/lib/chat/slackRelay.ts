@@ -1,8 +1,10 @@
 import 'server-only';
 import { createChatAdminClient, type ChatAdminClient } from '@/lib/chat/db';
 import { broadcastToSession } from '@/lib/chat/broadcast';
-import { translate } from '@/lib/chat/translation';
+import { translate, type TranslationResult } from '@/lib/chat/translation';
 import type { VisitorLocale } from '@/lib/chat/serverI18n';
+import { isFollowupEnabled } from '@/lib/chat/chatFlags';
+import type { ContactChannel } from '@/lib/chat/contactChannels';
 import {
   _internals,
   archiveChannel,
@@ -13,6 +15,7 @@ import {
   postSlackMessage,
   slackTextToPlain,
   unarchiveChannel,
+  type PostMessageResult,
 } from '@/lib/chat/slack';
 import { loadStaffDirectory, mentionOf, resolveStaffLabel, type StaffDirectory } from '@/lib/chat/slackStaff';
 import { ensureRoom, roomPrefix, type RoomDeps } from '@/lib/chat/slackRooms';
@@ -21,13 +24,18 @@ import {
   adminSessionUrl,
   buildContactText,
   buildDeliveryFailureText,
+  buildEventHintNote,
   buildFeedLine,
   buildFeedReplyMirrorText,
+  buildMessengerClickText,
   buildReplyText,
   buildRoomFirstText,
   buildRoomVisitorText,
   buildRootText,
+  buildTranslationCopyText,
   extractRoomChannelFromFeedText,
+  ROOM_EMAIL_CONTACT_NOTE,
+  staffChannelLabel,
   type RelaySender,
   type RoomSessionInfo,
 } from '@/lib/chat/slackText';
@@ -198,6 +206,8 @@ export interface RelayOutboundArgs {
   senderLabel?: string | null;
   /** chat_messages.created_at — KST 접수 시각 표기용. 없으면 지금. */
   receivedAt?: string;
+  /** 이 글에서 방금 이메일이 저장돼 📱 연락처 알림이 바로 뒤따른다 → 방 첫 메시지의 연락처 꼬리말은 생략한다. */
+  contactJustSaved?: boolean;
 }
 
 /**
@@ -280,7 +290,12 @@ function roomText(
     originalText: args.originalText,
     translatedText: args.translatedText,
   };
-  if (firstInRoom) return buildRoomFirstText({ mentionAll: staff.mentionAll(), receivedAt, ...body });
+  if (firstInRoom) {
+    // 시작 화면에서 이메일을 넣은 손님 — '오늘 연락할 손님'으로 관리된다는 꼬리말을 붙인다 (스펙 2026-10-01 §4.5 b).
+    const contactNote =
+      session.visitor_email && !args.contactJustSaved && isFollowupEnabled() ? ROOM_EMAIL_CONTACT_NOTE : null;
+    return buildRoomFirstText({ mentionAll: staff.mentionAll(), receivedAt, contactNote, ...body });
+  }
   // 담당자가 있으면 담당자만, 없으면 전원. 관찰자는 mentionAll에 들어 있지 않다.
   // 명단에서 빠진 담당자를 계속 부르지 않도록 지금도 답변 직원인지 확인한다.
   const assignee = session.assigned_slack_user_id;
@@ -404,10 +419,22 @@ async function postInThread(
   }
 }
 
-/** 방문자가 남긴 메신저 연락처를 세션의 방/스레드에 게시한다. throw-free. */
+/** 세션의 방(본문) 또는 대표 스레드에 한 줄을 올린다. 붙일 곳이 없으면 null. */
+async function postToSessionTarget(target: SlackTarget, text: string): Promise<PostMessageResult | null> {
+  if (target.mode === 'room') return postSlackMessage({ text, channelId: target.channelId });
+  if (target.mode === 'thread' && target.threadTs) {
+    return postSlackMessage({ text, threadTs: target.threadTs, channelId: target.channelId ?? undefined });
+  }
+  return null;
+}
+
+/**
+ * 손님이 남긴 연락처(메신저·이메일)를 세션의 방/스레드에 게시하고, 방이면 #해외문의 피드에도 한 줄 남긴다. throw-free.
+ * 카드에서 저장했을 때와 손님 글 속 이메일을 자동 저장했을 때 모두 이 함수를 쓴다 (스펙 2026-10-01 §4.3·§4.5 b).
+ */
 export async function relayContactToSlack(args: {
   sessionId: string;
-  channelLabel: string;
+  channel: ContactChannel;
   handle: string;
 }): Promise<void> {
   if (!isSlackRelayConfigured()) return;
@@ -416,23 +443,73 @@ export async function relayContactToSlack(args: {
     const session = await loadSession(admin, args.sessionId);
     if (!session) return;
     const target = resolveTarget(session, getSlackChannelId());
+    const channelLabel = staffChannelLabel(args.channel);
     const attached = target.mode === 'room' || (target.mode === 'thread' && Boolean(target.threadTs));
     const text = buildContactText({
-      channelLabel: args.channelLabel,
+      channelLabel,
       handle: args.handle,
-      adminUrl: attached ? null : adminSessionUrl(args.sessionId),
+      mode: target.mode === 'room' ? 'room' : attached ? 'thread' : 'standalone',
+      followup: isFollowupEnabled(),
+      adminUrl: adminSessionUrl(args.sessionId),
     });
+    // 방도 스레드도 없으면 #해외문의에 관리자 화면 링크를 붙여 단독 게시한다.
     const result =
-      target.mode === 'room'
-        ? await postSlackMessage({ text, channelId: target.channelId })
-        : await postSlackMessage({
-            text,
-            threadTs: target.mode === 'thread' ? target.threadTs : null,
-            channelId: (target.mode === 'thread' ? target.channelId : null) ?? undefined,
-          });
+      (await postToSessionTarget(target, text)) ??
+      (await postSlackMessage({
+        text,
+        channelId: (target.mode === 'thread' ? target.channelId : null) ?? undefined,
+      }));
     if (!result.ok) console.warn('[slack relay] contact post failed:', result.error);
+    // 피드 줄은 방 모드에서만 — 스레드 모드는 같은 채널(#해외문의)이라 중복이다. 답변 직원이 없으면 새 트래픽을 만들지 않는다.
+    if (target.mode === 'room' && (await hasResponders())) {
+      await postFeed(
+        buildFeedLine({
+          kind: 'contact',
+          visitorName: session.visitor_name,
+          visitorLocale: session.visitor_locale,
+          channelId: target.channelId,
+          at: new Date().toISOString(),
+          contactLabel: channelLabel,
+        })
+      );
+    }
   } catch (e) {
     console.warn('[slack relay] contact relay failed:', e);
+  }
+}
+
+/** 손님이 카드의 병원 연락 단추(WhatsApp·WeChat·LINE·이메일)를 눌렀음을 방/스레드에 알린다. throw-free. */
+export async function relayMessengerClickToSlack(args: { sessionId: string; channel: ContactChannel }): Promise<void> {
+  if (!isSlackRelayConfigured()) return;
+  try {
+    const admin = createChatAdminClient();
+    const session = await loadSession(admin, args.sessionId);
+    if (!session) return;
+    const target = resolveTarget(session, getSlackChannelId());
+    const text = buildMessengerClickText({
+      channel: args.channel,
+      sessionId: args.sessionId,
+      copyHint: target.mode === 'room' && isFollowupEnabled(),
+    });
+    const result = await postToSessionTarget(target, text);
+    if (result && !result.ok) console.warn('[slack relay] messenger click post failed:', result.error);
+  } catch (e) {
+    console.warn('[slack relay] messenger click relay failed:', e);
+  }
+}
+
+/** 가격 문의에 이벤트 링크가 자동으로 나갔음을 방/스레드에 알린다. 방도 스레드도 없으면 올리지 않는다. throw-free. */
+export async function relayEventHintNoteToSlack(args: { sessionId: string; url: string }): Promise<void> {
+  if (!isSlackRelayConfigured()) return;
+  try {
+    const admin = createChatAdminClient();
+    const session = await loadSession(admin, args.sessionId);
+    if (!session) return;
+    const target = resolveTarget(session, getSlackChannelId());
+    const result = await postToSessionTarget(target, buildEventHintNote(args.url));
+    if (result && !result.ok) console.warn('[slack relay] event hint note failed:', result.error);
+  } catch (e) {
+    console.warn('[slack relay] event hint note relay failed:', e);
   }
 }
 
@@ -612,6 +689,45 @@ async function findSessionByFeedParent(
 }
 
 /**
+ * 직원 답글의 번역본을 방에 올린다 (스펙 2026-10-01 §4.5 d) — 직원이 복사해 위챗·왓츠앱·메일에 붙여 넣는다.
+ * 대상: 방 모드이고 연락 수단(이메일·메신저 연락처·카드 단추 클릭)이 하나라도 있는 세션.
+ * 번역이 성공했고 번역문이 원문과 다를 때만. 실패는 경고만 — 답글 전달 결과(delivered)에 영향을 주지 않는다.
+ */
+async function postTranslationCopy(
+  admin: ChatAdminClient,
+  session: RelaySessionRow,
+  original: string,
+  translation: TranslationResult
+): Promise<void> {
+  try {
+    if (!isFollowupEnabled()) return;
+    if (session.slack_mode !== 'room' || !session.slack_channel_id) return;
+    if (translation.status !== 'success') return;
+    const translated = translation.text.trim();
+    if (!translated || translated === original.trim()) return;
+    // 공용 RELAY_SESSION_COLUMNS에 넣지 않고 따로 읽는다 — visitor_messenger_clicked는 042의 새 컬럼이라,
+    // 공용 조회에 넣으면 042 적용 전 배포에서 릴레이 전체가 깨진다.
+    const { data, error } = await admin
+      .from('chat_sessions')
+      .select('visitor_email, visitor_messenger_handle, visitor_messenger_clicked')
+      .eq('id', session.id)
+      .maybeSingle();
+    if (error) {
+      console.warn('[slack relay] contact means lookup failed:', error.code ?? 'unknown');
+      return;
+    }
+    if (!data || !(data.visitor_email || data.visitor_messenger_handle || data.visitor_messenger_clicked)) return;
+    const posted = await postSlackMessage({
+      text: buildTranslationCopyText(translated),
+      channelId: session.slack_channel_id,
+    });
+    if (!posted.ok) console.warn('[slack relay] translation copy failed:', posted.error);
+  } catch (e) {
+    console.warn('[slack relay] translation copy threw:', e);
+  }
+}
+
+/**
  * Slack 메시지를 손님 채팅창으로 전달한다.
  * operator 메시지로 INSERT하므로 040 트리거가 unread_admin_count·awaiting_since를 리셋하고,
  * 어드민 상세(postgres_changes)와 방문자 위젯(broadcast)에 모두 반영된다.
@@ -706,6 +822,8 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
       });
       if (!mirror.ok) console.warn('[slack relay] feed reply mirror failed:', mirror.error);
     }
+
+    await postTranslationCopy(admin, session, plain, translation);
 
     return 'delivered';
   } catch (e) {

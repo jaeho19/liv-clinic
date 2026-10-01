@@ -87,7 +87,7 @@ export async function POST(req: NextRequest) {
   }
 
   after(async () => {
-    await relayContactToSlack({ sessionId: session.id, channelLabel: label, handle });
+    await relayContactToSlack({ sessionId: session.id, channel, handle });
   });
 
   return NextResponse.json({ ok: true }, { status: 201 });
