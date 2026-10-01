@@ -176,3 +176,243 @@ export function getAutoAckTexts(
   const key = offHours ? 'autoAckOffHours' : 'autoAck';
   return { ko: AUTO_ACK_KO[key], localized: getChatSystemMessage(locale, key) };
 }
+
+// ── 접수 안내 (스펙 2026-10-01 §4.1) ────────────────────────────────────────
+// 새 문의의 첫 자동 안내: 예상 시간 + 연락처 요청 + 되묻기. 문장을 조합해 말풍선 하나로 보낸다.
+// ja·zh·zh-TW 는 원장님이 미리보기에서 확인한 문장(스펙 부록 A) 그대로다 — 고치려면 미리보기도 함께 고친다.
+
+export type IntakeSlot = 'open' | 'closing' | 'closed';
+
+export type IntakeFragmentKey =
+  | 'G'
+  | 'S_open'
+  | 'S_closing'
+  | 'S_closed'
+  | 'C_ask_open'
+  | 'C_ask_closing'
+  | 'C_ask_closed'
+  | 'C_known_open'
+  | 'C_known_closing'
+  | 'C_known_closed'
+  | 'Q'
+  | 'W';
+
+const INTAKE_FRAGMENTS_KO: Record<IntakeFragmentKey, string> = {
+  G: '안녕하세요, 리브성형외과입니다. 메시지 잘 받았습니다.',
+  S_open: '지금 상담 직원이 다른 손님을 안내 중이라 답변까지 10~20분쯤 걸릴 수 있습니다.',
+  S_closing: '오늘 상담 시간이 곧 끝납니다.',
+  S_closed: '지금은 상담 시간이 아닙니다.',
+  C_ask_open:
+    '기다리지 않으셔도 되도록 아래에 WeChat·LINE·WhatsApp·이메일 중 편한 연락처를 남겨 주시면, 오늘 안에 최대한 빨리 그쪽으로 연락드리겠습니다.',
+  C_ask_closing:
+    '아래에 WeChat·LINE·WhatsApp·이메일 중 편한 연락처를 남겨 주시면, 오늘 안에 연락드리고, 어려우면 다음 영업일에 가장 먼저 연락드리겠습니다.',
+  C_ask_closed:
+    '아래에 WeChat·LINE·WhatsApp·이메일 중 편한 연락처를 남겨 주시면, 상담 시간이 시작되는 대로 최대한 빨리 그쪽으로 연락드리겠습니다.',
+  C_known_open: '남겨 주신 연락처로 오늘 안에 최대한 빨리 연락드리겠습니다.',
+  C_known_closing: '남겨 주신 연락처로 오늘 안에 연락드리고, 어려우면 다음 영업일에 가장 먼저 연락드리겠습니다.',
+  C_known_closed: '남겨 주신 연락처로 상담 시간이 시작되는 대로 최대한 빨리 연락드리겠습니다.',
+  Q: '원하시는 시술과 방문 예정일을 함께 적어 주시면 한 번에 정확히 안내드릴 수 있습니다.',
+  W: '이 창을 열어 두시면 여기로도 답변드립니다.',
+};
+
+const INTAKE_FRAGMENTS: Record<VisitorLocale, Record<IntakeFragmentKey, string>> = {
+  en: {
+    G: "Hello, this is LIV Plastic Surgery. We've received your message.",
+    S_open: 'Our consultants are assisting other guests right now, so a reply may take about 10–20 minutes.',
+    S_closing: 'Our consultation hours end soon today.',
+    S_closed: "We're outside consultation hours right now.",
+    C_ask_open:
+      "So you don't have to wait, leave a contact below (WeChat, LINE, WhatsApp or email) and we'll reach out to you there today, as soon as we can.",
+    C_ask_closing:
+      "Leave a contact below (WeChat, LINE, WhatsApp or email) and we'll reach out to you there — today if we can, otherwise first thing on the next business day.",
+    C_ask_closed:
+      "Leave a contact below (WeChat, LINE, WhatsApp or email) and we'll reach out to you there as soon as our consultation hours begin.",
+    C_known_open: "We'll reach out to you today at the contact you left, as soon as we can.",
+    C_known_closing:
+      "We'll reach out to you at the contact you left — today if we can, otherwise first thing on the next business day.",
+    C_known_closed: "We'll reach out to you at the contact you left as soon as our consultation hours begin.",
+    Q: "If you tell us which treatment you're interested in and when you plan to visit, we can give you a complete answer in one go.",
+    W: "If you keep this window open, we'll also reply here.",
+  },
+  ja: {
+    G: 'こんにちは、LIV美容クリニックです。メッセージを受け付けました。',
+    S_open: 'ただいまスタッフが他のお客様をご案内中のため、ご返信まで10〜20分ほどかかる場合がございます。',
+    S_closing: '本日のご相談時間はまもなく終了いたします。',
+    S_closed: 'ただいまはご相談時間外です。',
+    C_ask_open:
+      'お待ちいただかなくて済むよう、下にWeChat・LINE・WhatsApp・メールのうちご都合のよい連絡先をお残しください。本日中に、できるだけ早くそちらへご連絡いたします。',
+    C_ask_closing:
+      '下にWeChat・LINE・WhatsApp・メールのうちご都合のよい連絡先をお残しください。本日中にご連絡し、難しい場合は翌営業日に最優先でご連絡いたします。',
+    C_ask_closed:
+      '下にWeChat・LINE・WhatsApp・メールのうちご都合のよい連絡先をお残しください。ご相談時間が始まり次第、できるだけ早くそちらへご連絡いたします。',
+    C_known_open: 'お残しいただいた連絡先へ、本日中にできるだけ早くご連絡いたします。',
+    C_known_closing: 'お残しいただいた連絡先へ本日中にご連絡し、難しい場合は翌営業日に最優先でご連絡いたします。',
+    C_known_closed: 'お残しいただいた連絡先へ、ご相談時間が始まり次第できるだけ早くご連絡いたします。',
+    Q: 'ご希望の施術とご来院予定日をあわせてお知らせいただければ、一度で正確にご案内できます。',
+    W: 'この画面を開いたままにしていただければ、こちらにもご返信いたします。',
+  },
+  zh: {
+    G: '您好，这里是LIV整形外科。已收到您的留言。',
+    S_open: '目前咨询人员正在接待其他顾客，回复可能需要10～20分钟左右。',
+    S_closing: '今天的咨询时间即将结束。',
+    S_closed: '现在不在咨询时间内。',
+    C_ask_open:
+      '为了不让您久等，请在下方留下方便的联系方式（微信、LINE、WhatsApp或邮箱），我们会在今天之内尽快通过该方式联系您。',
+    C_ask_closing:
+      '请在下方留下方便的联系方式（微信、LINE、WhatsApp或邮箱），我们会在今天之内联系您；如来不及，将在下一个营业日第一时间联系您。',
+    C_ask_closed: '请在下方留下方便的联系方式（微信、LINE、WhatsApp或邮箱），咨询时间一开始，我们会尽快通过该方式联系您。',
+    C_known_open: '我们会在今天之内尽快通过您留下的联系方式与您联系。',
+    C_known_closing: '我们会在今天之内通过您留下的联系方式与您联系；如来不及，将在下一个营业日第一时间联系您。',
+    C_known_closed: '咨询时间一开始，我们会尽快通过您留下的联系方式与您联系。',
+    Q: '请一并告知您想了解的项目和预计到访日期，我们可以一次性为您准确说明。',
+    W: '保持此窗口打开，我们也会在这里回复您。',
+  },
+  'zh-TW': {
+    G: '您好，這裡是LIV整形外科。已收到您的訊息。',
+    S_open: '目前諮詢人員正在接待其他顧客，回覆可能需要10～20分鐘左右。',
+    S_closing: '今天的諮詢時間即將結束。',
+    S_closed: '現在不在諮詢時間內。',
+    C_ask_open:
+      '為了不讓您久等，請在下方留下方便的聯絡方式（微信、LINE、WhatsApp或電子郵件），我們會在今天之內盡快透過該方式與您聯絡。',
+    C_ask_closing:
+      '請在下方留下方便的聯絡方式（微信、LINE、WhatsApp或電子郵件），我們會在今天之內與您聯絡；如來不及，將在下一個營業日優先與您聯絡。',
+    C_ask_closed:
+      '請在下方留下方便的聯絡方式（微信、LINE、WhatsApp或電子郵件），諮詢時間一開始，我們會盡快透過該方式與您聯絡。',
+    C_known_open: '我們會在今天之內盡快透過您留下的聯絡方式與您聯絡。',
+    C_known_closing: '我們會在今天之內透過您留下的聯絡方式與您聯絡；如來不及，將在下一個營業日優先與您聯絡。',
+    C_known_closed: '諮詢時間一開始，我們會盡快透過您留下的聯絡方式與您聯絡。',
+    Q: '請一併告知您想了解的療程和預計到訪日期，我們可以一次為您準確說明。',
+    W: '保持此視窗開啟，我們也會在這裡回覆您。',
+  },
+  vi: {
+    G: 'Xin chào, đây là Phẫu thuật thẩm mỹ LIV. Chúng tôi đã nhận được tin nhắn của bạn.',
+    S_open: 'Hiện nhân viên tư vấn đang hỗ trợ khách khác nên có thể mất khoảng 10–20 phút để trả lời.',
+    S_closing: 'Giờ tư vấn hôm nay sắp kết thúc.',
+    S_closed: 'Hiện đang ngoài giờ tư vấn.',
+    C_ask_open:
+      'Để bạn không phải chờ, hãy để lại một cách liên hệ bên dưới (WeChat, LINE, WhatsApp hoặc email), chúng tôi sẽ liên hệ với bạn qua đó trong hôm nay, sớm nhất có thể.',
+    C_ask_closing:
+      'Hãy để lại một cách liên hệ bên dưới (WeChat, LINE, WhatsApp hoặc email), chúng tôi sẽ liên hệ với bạn qua đó trong hôm nay nếu kịp, nếu không sẽ liên hệ đầu tiên vào ngày làm việc tiếp theo.',
+    C_ask_closed:
+      'Hãy để lại một cách liên hệ bên dưới (WeChat, LINE, WhatsApp hoặc email), chúng tôi sẽ liên hệ với bạn qua đó ngay khi giờ tư vấn bắt đầu.',
+    C_known_open: 'Chúng tôi sẽ liên hệ với bạn trong hôm nay qua thông tin liên hệ bạn đã để lại, sớm nhất có thể.',
+    C_known_closing:
+      'Chúng tôi sẽ liên hệ với bạn qua thông tin liên hệ bạn đã để lại — trong hôm nay nếu kịp, nếu không sẽ liên hệ đầu tiên vào ngày làm việc tiếp theo.',
+    C_known_closed: 'Chúng tôi sẽ liên hệ với bạn qua thông tin liên hệ bạn đã để lại ngay khi giờ tư vấn bắt đầu.',
+    Q: 'Nếu bạn cho chúng tôi biết dịch vụ bạn quan tâm và thời gian dự định đến, chúng tôi có thể tư vấn đầy đủ chỉ trong một lần.',
+    W: 'Nếu bạn để cửa sổ này mở, chúng tôi cũng sẽ trả lời tại đây.',
+  },
+  th: {
+    G: 'สวัสดีค่ะ ที่นี่ศัลยกรรมพลาสติกลีฟค่ะ เราได้รับข้อความของคุณแล้วค่ะ',
+    S_open: 'ขณะนี้เจ้าหน้าที่กำลังดูแลลูกค้าท่านอื่นอยู่ การตอบกลับอาจใช้เวลาประมาณ 10–20 นาทีค่ะ',
+    S_closing: 'เวลาให้คำปรึกษาของวันนี้ใกล้จะสิ้นสุดแล้วค่ะ',
+    S_closed: 'ขณะนี้อยู่นอกเวลาให้คำปรึกษาค่ะ',
+    C_ask_open:
+      'เพื่อไม่ให้คุณต้องรอ กรุณาฝากช่องทางติดต่อไว้ด้านล่าง (WeChat, LINE, WhatsApp หรืออีเมล) เราจะติดต่อกลับทางนั้นภายในวันนี้โดยเร็วที่สุดค่ะ',
+    C_ask_closing:
+      'กรุณาฝากช่องทางติดต่อไว้ด้านล่าง (WeChat, LINE, WhatsApp หรืออีเมล) เราจะติดต่อกลับทางนั้นภายในวันนี้ หากไม่ทันจะติดต่อเป็นอันดับแรกในวันทำการถัดไปค่ะ',
+    C_ask_closed:
+      'กรุณาฝากช่องทางติดต่อไว้ด้านล่าง (WeChat, LINE, WhatsApp หรืออีเมล) เราจะติดต่อกลับทางนั้นโดยเร็วที่สุดเมื่อถึงเวลาให้คำปรึกษาค่ะ',
+    C_known_open: 'เราจะติดต่อกลับทางช่องทางที่คุณฝากไว้ภายในวันนี้โดยเร็วที่สุดค่ะ',
+    C_known_closing: 'เราจะติดต่อกลับทางช่องทางที่คุณฝากไว้ภายในวันนี้ หากไม่ทันจะติดต่อเป็นอันดับแรกในวันทำการถัดไปค่ะ',
+    C_known_closed: 'เราจะติดต่อกลับทางช่องทางที่คุณฝากไว้โดยเร็วที่สุดเมื่อถึงเวลาให้คำปรึกษาค่ะ',
+    Q: 'หากแจ้งหัตถการที่สนใจและวันที่คาดว่าจะเข้ามา เราจะให้ข้อมูลได้ครบถ้วนในครั้งเดียวค่ะ',
+    W: 'หากเปิดหน้าต่างนี้ไว้ เราจะตอบกลับที่นี่ด้วยค่ะ',
+  },
+  ru: {
+    G: 'Здравствуйте, это клиника «ЛИВ Пластическая хирургия». Мы получили ваше сообщение.',
+    S_open: 'Сейчас наши консультанты заняты с другими гостями, поэтому ответ может занять около 10–20 минут.',
+    S_closing: 'Время консультаций на сегодня скоро заканчивается.',
+    S_closed: 'Сейчас нерабочее время консультаций.',
+    C_ask_open:
+      'Чтобы вам не пришлось ждать, оставьте ниже удобный контакт (WeChat, LINE, WhatsApp или email), и мы свяжемся с вами там сегодня, как можно скорее.',
+    C_ask_closing:
+      'Оставьте ниже удобный контакт (WeChat, LINE, WhatsApp или email), и мы свяжемся с вами там — сегодня, если успеем, а если нет — первым делом в следующий рабочий день.',
+    C_ask_closed:
+      'Оставьте ниже удобный контакт (WeChat, LINE, WhatsApp или email), и мы свяжемся с вами там, как только начнётся время консультаций.',
+    C_known_open: 'Мы свяжемся с вами сегодня по оставленному вами контакту, как можно скорее.',
+    C_known_closing:
+      'Мы свяжемся с вами по оставленному вами контакту — сегодня, если успеем, а если нет — первым делом в следующий рабочий день.',
+    C_known_closed: 'Мы свяжемся с вами по оставленному вами контакту, как только начнётся время консультаций.',
+    Q: 'Если вы сообщите, какая процедура вас интересует и когда вы планируете визит, мы сможем сразу дать полный ответ.',
+    W: 'Если вы оставите это окно открытым, мы ответим и здесь.',
+  },
+  fr: {
+    G: 'Bonjour, ici LIV Chirurgie Esthétique. Nous avons bien reçu votre message.',
+    S_open:
+      "Nos conseillers s'occupent actuellement d'autres patients ; la réponse peut prendre environ 10 à 20 minutes.",
+    S_closing: "Nos horaires de consultation se terminent bientôt aujourd'hui.",
+    S_closed: 'Nous sommes actuellement en dehors des horaires de consultation.',
+    C_ask_open:
+      "Pour vous éviter d'attendre, laissez un contact ci-dessous (WeChat, LINE, WhatsApp ou e-mail) et nous vous y recontacterons aujourd'hui, dès que possible.",
+    C_ask_closing:
+      "Laissez un contact ci-dessous (WeChat, LINE, WhatsApp ou e-mail) et nous vous y recontacterons — aujourd'hui si possible, sinon en priorité le prochain jour ouvré.",
+    C_ask_closed:
+      'Laissez un contact ci-dessous (WeChat, LINE, WhatsApp ou e-mail) et nous vous y recontacterons dès le début de nos horaires de consultation.',
+    C_known_open: "Nous vous recontacterons aujourd'hui au contact que vous avez laissé, dès que possible.",
+    C_known_closing:
+      "Nous vous recontacterons au contact que vous avez laissé — aujourd'hui si possible, sinon en priorité le prochain jour ouvré.",
+    C_known_closed:
+      'Nous vous recontacterons au contact que vous avez laissé dès le début de nos horaires de consultation.',
+    Q: 'Si vous nous indiquez le soin qui vous intéresse et la date prévue de votre visite, nous pourrons vous donner une réponse complète en une seule fois.',
+    W: 'Si vous gardez cette fenêtre ouverte, nous vous répondrons aussi ici.',
+  },
+  mn: {
+    G: 'Сайн байна уу, LIV Гоо Заслын Эмнэлэг байна. Таны мессежийг хүлээн авлаа.',
+    S_open:
+      'Одоо манай зөвлөхүүд бусад үйлчлүүлэгчид үйлчилж байгаа тул хариу өгөхөд 10–20 орчим минут шаардагдаж магадгүй.',
+    S_closing: 'Өнөөдрийн зөвлөгөөний цаг удахгүй дуусна.',
+    S_closed: 'Одоо зөвлөгөөний цаг биш байна.',
+    C_ask_open:
+      'Таныг хүлээлгэхгүйн тулд доор холбоо барих хаягаа (WeChat, LINE, WhatsApp эсвэл имэйл) үлдээвэл бид өнөөдөртөө багтаан аль болох хурдан тэр хаягаар тантай холбогдоно.',
+    C_ask_closing:
+      'Доор холбоо барих хаягаа (WeChat, LINE, WhatsApp эсвэл имэйл) үлдээвэл бид өнөөдөртөө багтаан холбогдох бөгөөд амжихгүй бол дараагийн ажлын өдөр хамгийн түрүүнд холбогдоно.',
+    C_ask_closed:
+      'Доор холбоо барих хаягаа (WeChat, LINE, WhatsApp эсвэл имэйл) үлдээвэл зөвлөгөөний цаг эхэлмэгц бид аль болох хурдан тэр хаягаар тантай холбогдоно.',
+    C_known_open: 'Таны үлдээсэн хаягаар бид өнөөдөртөө багтаан аль болох хурдан холбогдоно.',
+    C_known_closing:
+      'Таны үлдээсэн хаягаар бид өнөөдөртөө багтаан холбогдох бөгөөд амжихгүй бол дараагийн ажлын өдөр хамгийн түрүүнд холбогдоно.',
+    C_known_closed: 'Таны үлдээсэн хаягаар зөвлөгөөний цаг эхэлмэгц бид аль болох хурдан холбогдоно.',
+    Q: 'Сонирхож буй эмчилгээ болон ирэхээр төлөвлөж буй өдрөө хамт бичвэл бид нэг дор бүрэн хариулт өгөх боломжтой.',
+    W: 'Энэ цонхыг нээлттэй үлдээвэл бид энд бас хариулна.',
+  },
+  ar: {
+    G: 'مرحباً، معكم مستشفى ليف للتجميل. لقد استلمنا رسالتك.',
+    S_open: 'مستشارونا يساعدون ضيوفاً آخرين حالياً، لذا قد يستغرق الرد نحو 10–20 دقيقة.',
+    S_closing: 'ساعات الاستشارة لهذا اليوم ستنتهي قريباً.',
+    S_closed: 'نحن حالياً خارج ساعات الاستشارة.',
+    C_ask_open:
+      'حتى لا تضطر للانتظار، اترك وسيلة تواصل أدناه (WeChat أو LINE أو WhatsApp أو البريد الإلكتروني) وسنتواصل معك عبرها اليوم في أقرب وقت ممكن.',
+    C_ask_closing:
+      'اترك وسيلة تواصل أدناه (WeChat أو LINE أو WhatsApp أو البريد الإلكتروني) وسنتواصل معك عبرها اليوم إن أمكن، وإلا فسنتواصل معك أولاً في يوم العمل التالي.',
+    C_ask_closed:
+      'اترك وسيلة تواصل أدناه (WeChat أو LINE أو WhatsApp أو البريد الإلكتروني) وسنتواصل معك عبرها فور بدء ساعات الاستشارة.',
+    C_known_open: 'سنتواصل معك اليوم عبر وسيلة التواصل التي تركتها في أقرب وقت ممكن.',
+    C_known_closing:
+      'سنتواصل معك عبر وسيلة التواصل التي تركتها اليوم إن أمكن، وإلا فسنتواصل معك أولاً في يوم العمل التالي.',
+    C_known_closed: 'سنتواصل معك عبر وسيلة التواصل التي تركتها فور بدء ساعات الاستشارة.',
+    Q: 'إذا أخبرتنا بالإجراء الذي يهمك وموعد زيارتك المتوقع، يمكننا إعطاؤك إجابة كاملة دفعة واحدة.',
+    W: 'إذا أبقيت هذه النافذة مفتوحة، سنرد عليك هنا أيضاً.',
+  },
+};
+
+/** 접수 안내에 들어가는 문장 키 (순수): G + S + C + Q, 영업 중일 때만 W. */
+export function intakeFragmentKeys(slot: IntakeSlot, hasContact: boolean): IntakeFragmentKey[] {
+  const keys: IntakeFragmentKey[] = ['G', `S_${slot}`, `C_${hasContact ? 'known' : 'ask'}_${slot}`, 'Q'];
+  if (slot === 'open') keys.push('W');
+  return keys;
+}
+
+/** 접수 안내 문구. ko = 관리자 화면에 보이는 원문, localized = 손님 언어. 줄바꿈으로 이은 말풍선 하나. */
+export function composeIntakeTexts(
+  locale: VisitorLocale,
+  slot: IntakeSlot,
+  hasContact: boolean
+): { ko: string; localized: string } {
+  const keys = intakeFragmentKeys(slot, hasContact);
+  const table = INTAKE_FRAGMENTS[locale] ?? INTAKE_FRAGMENTS.en;
+  return {
+    ko: keys.map((k) => INTAKE_FRAGMENTS_KO[k]).join('\n'),
+    localized: keys.map((k) => table[k]).join('\n'),
+  };
+}
