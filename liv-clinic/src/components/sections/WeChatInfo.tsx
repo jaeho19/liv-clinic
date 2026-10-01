@@ -4,8 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import WeChatQRModal from '@/components/ui/WeChatQRModal';
-
-const WECHAT_ID = 'livps0414';
+import { WECHAT_ID, WECHAT_QR_IMAGE } from '@/lib/constants';
 
 export default function WeChatInfo() {
   const t = useTranslations('wechatPage');
@@ -50,7 +49,7 @@ export default function WeChatInfo() {
           aria-label={t('qrLabel')}
         >
           <Image
-            src="/images/wechat-qr.png"
+            src={WECHAT_QR_IMAGE}
             alt={t('qrLabel')}
             width={400}
             height={400}
