@@ -33,7 +33,9 @@ export const SOCIAL_LINKS = {
   naver: 'https://blog.naver.com/liv_clinic',
   youtube: 'https://www.youtube.com/@리브성형외과',
   wechat: 'weixin://dl/chat?livps0414', // WeChat ID: livps0414 (QR 모달 WeChatInfo와 동일)
-  line: 'https://line.me/R/ti/p/~icps7972773', // LINE ID: icps7972773 (앱 직접 실행)
+  // LINE 앱의 "QR 코드 → 링크 복사"로 얻은 친구 추가 주소. 아이디 방식(`…/ti/p/~icps7972773`)으로
+  // 되돌리지 말 것 — 아이디 검색은 연령 인증이 안 된 계정에서 막혀 일본 손님에게 열리지 않았다.
+  line: 'https://line.me/ti/p/VJYu9BSnsX', // LINE ID: icps7972773
   // 하이픈 없는 국제 형식의 순수 번호만 유지. wa.me 딥링크는 로케일별 prefill과 함께
   // 렌더 시점에 buildWhatsAppLink()로 조립한다(외국인에게 한국어 인사말 노출 방지).
   whatsapp: 'https://wa.me/821068882773', // +82 10-6888-2773
