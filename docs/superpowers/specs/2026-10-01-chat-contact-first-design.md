@@ -1,10 +1,11 @@
 # 라이브채팅 "연락처 먼저" 1단계 — 자동 안내 + 연락처 받기 + 오늘 연락할 손님 (chat-contact-first)
 
-> 작성: 2026-10-01 · 대상: 자동 안내(`liv-clinic/src/lib/chat/autoAck.ts`, `serverI18n.ts`), 연락처 카드(`components/chat/ChatCaptureBlock.tsx`, `ChatPanel.tsx`, `lib/chat/contactChannels.ts`), 연락처·메시지·세션 API(`app/api/chat/*`), 확대 알림(`escalationRunner.ts`), 영업시간(`businessHours.ts`), Slack 문구(`slackText.ts`, `slackRelay.ts`), 관리자 채팅 목록
+> 작성: 2026-10-01 · 대상: 자동 안내(`liv-clinic/src/lib/chat/autoAck.ts`, `serverI18n.ts`), 연락처 카드(`components/chat/ChatCaptureBlock.tsx`, `ChatPanel.tsx`, `lib/chat/contactChannels.ts`), 연락처·메시지·세션 API(`app/api/chat/*`), 확대 알림(`escalationRunner.ts`), 영업시간(`businessHours.ts`), Slack 문구(`slackText.ts`, `slackRelay.ts`), 관리자 채팅 목록, 가격 문의 이벤트 안내(`lib/chat/priceIntent.ts`·`eventHint.ts`·`linkify.ts` 신규, `components/chat/MessageBubble.tsx`)
 > 선행 문서: `2026-09-03-slack-patient-rooms-design.md` §4.10(자동 첫 안내)·확대 알림, `chat-offhours-messenger-bridge.design.md`(2026-08-09, 영업시간 외 연락처 카드 — 리포에 커밋되지 않고 메인 작업 폴더 `docs/02-design/features/`에만 있다). 이 문서는 그 카드의 "영업시간 외에만 노출" 규칙과 자동 안내 문구를 대체한다.
 > 결정(2026-10-01, 원장님): ① 영업시간 중 헤더 "We're online" 유지 ② 손님이 이메일을 쓰면 연락처로 저장 ③ 연락처를 남긴 손님은 5·12·30분 알림을 멈추고 **"오늘 연락할 손님"**으로 분류 ④ 약속 문구는 **"오늘 안에, 최대한 빨리 연락"** ⑤ 가격·효과는 사람이 직접 답변 ⑥ 이 1단계(AI 없음)를 먼저 내고, AI 이용 안내 답변은 바로 이어서 별도 문서로.
 > 추가 결정(2026-10-01, 직원 의견 검토 뒤): ⑦ 채팅 카드에 **병원 WeChat QR과 아이디를 넣는다** — WeChat은 업무폰 한 대로만 응대할 수 있지만 앱 자체 번역으로 응대가 가능하므로, 손님이 병원 WeChat을 추가하게 한다(같은 날 "추가 버튼 제거" 안을 검토했다가 이쪽으로 확정). WhatsApp·LINE은 병원 계정으로 연결하는 버튼을 유지한다 ⑧ 연락처를 남긴 손님의 방에는 **직원 답글의 번역본**을 올려, 복사해서 위챗·왓츠앱·메일에 붙여 넣게 한다.
-> 상태: **원장님 승인(2026-10-01).** 다음은 구현 계획과 구현 — §11 인계 메모를 따른다.
+> 추가 결정(2026-10-01, 원장님 제안): ⑨ **가격·프로모션을 물은 손님에게는 이번 달 프로모션 페이지 링크를 손님 언어로 먼저 보낸다**(이번 달 것이 없으면 이벤트 목록). 가격 답변은 계속 직원이 한다(⑤ 유지) — 링크는 직원이 확인하는 동안 손님이 먼저 볼 것을 주는 것이다(§4.10).
+> 상태: **원장님 승인(2026-10-01).** ⑨(§4.10)는 같은 날 추가됐다 — 원장님이 방향과 링크 위치(이번 달 프로모션으로 바로)를 정했다. 다음은 구현 계획과 구현 — §11 인계 메모를 따른다.
 
 ---
 
@@ -15,6 +16,8 @@
 | 영업시간 중 첫 글에 "잠시만 기다려 주세요. 곧 답변드리겠습니다"만 나간다 (실제 첫 답변은 중앙값 12분) | "답변까지 10~20분쯤 걸릴 수 있습니다. 연락처를 남겨 주시면 **오늘 안에 최대한 빨리** 연락드리겠습니다" |
 | 직원 첫 답변의 절반이 "어떤 시술, 언제 오시나요?" 되묻기이고, 그 사이 손님은 떠난다 | 자동 안내가 **시술과 방문 예정일을 먼저 묻는다** |
 | 자동 안내가 손님 글 뒤 약 8초(4~14초) 만에 나간다 | **3초 이내**로 앞당긴다 |
+| 가격을 물으면 직원이 답할 때까지 손님이 볼 것이 없다 (가격 문의 9건 중 5건은 답까지 1시간 반~4일) | 가격을 물으면 **이번 달 프로모션 페이지 링크**를 손님 언어로 바로 보낸다(첫 글이면 접수 안내 바로 뒤에, 대화 중간에 물어도 보낸다). "가격은 직원이 확인해 안내드린다"고 함께 알린다 |
+| 채팅창의 링크는 글자로만 보여 눌리지 않는다 | 직원과 자동 안내가 보낸 링크는 **눌린다**(새 창) |
 | 연락처 카드는 밤·주말에만 뜬다 | 손님이 답을 기다리는 동안이면 **낮에도** 뜬다 |
 | 카드에서 받는 연락처: WhatsApp·WeChat·LINE ID | WhatsApp 번호·WeChat ID·**이메일**. LINE ID는 받지 않는다 (ID 검색이 2건 모두 실패) |
 | 카드의 WeChat은 버튼 하나다. 휴대폰에서는 앱 링크(안 열리는 경우가 있다), PC에서는 QR만 뜬다 | 카드에 **병원 WeChat QR과 아이디(복사 버튼)**를 함께 보여 준다. 중국어 화면에서는 펼친 채로 나온다 |
@@ -29,13 +32,14 @@
 
 | # | 항목 | 설명 |
 |---|------|------|
-| U-1 | **손님 문구 확인** | §4.1 한국어 원문 12문장. 다른 언어는 이 원문을 기준으로 옮긴다 |
+| U-1 | **손님 문구 확인** | §4.1 한국어 원문 12문장 + §4.10 이벤트 안내 1문장. 다른 언어는 이 원문을 기준으로 옮긴다 |
 | U-2 | ~~병원 LINE 친구 추가 링크~~ **받음(2026-10-01)** | `https://line.me/ti/p/VJYu9BSnsX` — 아이디 검색을 거치지 않는 주소(열어 보면 친구 추가 화면이 뜬다). `fix/wechat-qr-latest`(435869d)에서 `SOCIAL_LINKS.line`을 바꿔 사이트의 모든 LINE 버튼에 적용했고 이 브랜치에도 병합돼 있다. 같은 날 받은 LINE QR 이미지는 예전 아이디 방식 주소라 쓰지 않는다 |
 | U-3 | **올해 남은 휴진일** | 날짜 목록(예: 10/3, 10/9, 12/25). 없으면 빈 채로 나가고 지금처럼 동작한다 |
 | U-4 | **이메일만 남긴 손님은 직원이 직접 메일을 보내야 한다** | 1단계에는 메일 자동 발송이 없다. 방에 한국어로 답을 쓰면 번역본이 올라오므로(§4.5 d) 그것을 복사해 메일에 붙이면 된다. 자동 발송은 다음 단계 후보다(§10) |
 | U-5 | **개인정보 처리방침에 OpenAI·Slack 추가 여부** | 지금 위탁 업체 목록에 Supabase·Google Analytics만 있다. 넣으려면 문구 초안(§10)을 승인해 주시면 함께 반영한다 |
 | U-6 | ~~병원 WeChat QR 원본 이미지~~ **받음(2026-10-01)** | 원본 화면에서 QR만 잘라 `liv-clinic/public/images/wechat-qr-code.png`(660×660, 흑백)로 넣었다. 읽어 보면 `https://u.wechat.com/kH7fonYYvwh851jK2Y2nsfo?s=2`이고 160px로 줄여도 읽힌다 |
 | U-7 | ~~사이트의 위챗 포스터 QR 확인~~ **끝남(2026-10-01)** | 원장님 확인: 받은 QR이 최신이고, 사이트 포스터(`wechat-qr.png`, 주소 `https://u.wechat.com/kL9gQH6GOesxNpNB-SWRDko`)는 예전 QR이다. 브랜치 `fix/wechat-qr-latest`(8646dfc)에서 `/zh/wechat` 페이지와 QR 크게 보기 화면을 새 QR로 바꾸고 포스터를 지웠다(테스트 633건·타입 검사·빌드 통과, 화면 확인). 이 설계 브랜치에도 병합돼 있다. **운영 반영(master 푸시)은 원장님 승인 대기** — 1단계보다 먼저 따로 내보낼 수 있다. 같은 브랜치에 LINE 링크 교체(U-2, 435869d)도 들어 있다 |
+| U-8 | **매달 프로모션은 관리자 화면의 「매달 프로모션」으로 등록** | 그렇게 만든 이벤트는 주소가 `2026-11-promotion` 꼴이 되고, 가격을 물은 손님에게 그 페이지로 바로 가는 링크가 나간다(§4.10). 다른 방법으로 만들었거나 아직 게시 전이면 이벤트 목록 링크가 나간다 — 고장은 아니고 손님이 한 번 더 눌러야 할 뿐이다. 8·9·10월 프로모션은 이미 이 꼴이다 |
 
 코드에 이미 있어 따로 받을 필요가 없는 값: WeChat ID `livps0414`, WhatsApp `+82 10-6888-2773`, LINE ID `icps7972773`, 이메일 `info@livps.co.kr`, 전화 `02-797-2773`(모두 `constants.ts`). 바뀐 것이 있을 때만 알려 주시면 된다.
 
@@ -52,6 +56,8 @@
 - 직원이 답한 22건 중 **12건의 첫 답변이 "어떤 시술, 언제"를 되묻는 말**이었고, 그중 9건은 손님이 답하지 않고 끝났다.
 - LINE ID 방식은 기록에 남은 2건 모두 실패했다(8/19 일본 손님: 병원 LINE 링크에서 "ID 검색 불가", 직원도 손님 ID 조회 불가 / 9/24 대만 손님: 직원이 ID 확인 불가). LINE은 연령 인증이 안 된 계정의 ID 검색을 막고, QR·친구 추가 링크는 막지 않는다.
 - 추석 연휴 9/24 04:20 문의는 9/28에 답변됐다. 코드에 휴진일 개념이 없어 연휴 낮에도 영업시간으로 판정한다.
+- **가격·프로모션을 물은 손님은 25건 중 9건**이다(첫 글 6건, 대화 중간 3건). 그 질문에 직원이 처음 답하기까지 중앙값 95분이고, 5건은 1시간 35분~4일이 걸렸다(대부분 상담 시간 밖 문의).
+- 직원도 가격 질문에 **이벤트 내용으로** 답한다(3건). 10/1 대만 손님에게는 울쎄라 600샷을 275만 원으로 답했다가 44분 뒤 이벤트 가격 220만 원으로 다시 보냈다.
 
 문제의 구조: 웹 채팅은 양쪽이 동시에 있어야 하는데 손님은 한 번 쓰고 떠난다. 손님이 확실히 화면 앞에 있는 순간은 **첫 글을 보낸 직후 몇 초**뿐이므로, 그때 (1) 정직한 예상 시간 (2) 돌아올 길(연락처) (3) 한 번에 답하는 데 필요한 정보를 받는다.
 
@@ -66,8 +72,9 @@
 | G-3 | 연락처를 남긴 손님의 방에 울린 5·12·30분 알림 | 매번 | **0회** |
 | G-4 | 마감 1시간 전 요약에 남아 있는 "오늘 연락할 손님" | 측정 없음 | 요약으로 매일 관찰 (0건 지향) |
 | G-5 | 손님 첫 글 → 자동 안내 도착 | **4.2~13.7초, 중앙값 7.9초** (자동 안내 15회 실측. 선행 스펙의 목표 3초에 못 미친다) | **3초 이내** (§4.1 발송 시점 변경, 번역 API 호출 0회 유지) |
+| G-6 | 가격·프로모션을 물은 손님이 첫 정보를 받기까지 | 직원 첫 답변까지 **중앙값 95분** (9건) | 이벤트 링크 **3초 이내** (§4.10). 직원이 10분 안에 답하던 대화는 대상이 아니다 |
 
-측정은 `liv-clinic/scripts/chat-response-baseline.mjs`(읽기 전용, 이 문서와 함께 커밋됨)로 배포 2주·4주 뒤에 한다. 시험 세션 판정: 이름에 `test`·`테스트`·`smoke`가 있거나 첫 글이 3자 이하·한글.
+측정은 `liv-clinic/scripts/chat-response-baseline.mjs`(읽기 전용, 이 문서와 함께 커밋됨)로 배포 2주·4주 뒤에 한다. G-6은 구현 때 스크립트에 더하는 항목 9로 센다(§4.10). 시험 세션 판정: 이름에 `test`·`테스트`·`smoke`가 있거나 첫 글이 3자 이하·한글.
 
 ---
 
@@ -78,11 +85,12 @@
 - 자동 안내 발송 시점 앞당기기 (번역·Slack 릴레이를 기다리지 않고 손님 글 저장 직후)
 - 연락처 카드: 영업시간 중에도 노출, 이메일 채널 추가, LINE ID 수집 중단, 병원 WeChat QR·아이디 표시, 메신저 버튼을 눌러도 카드를 닫지 않음
 - 손님 글 속 이메일 자동 인식 → 연락처 저장
+- 가격·프로모션을 물은 손님에게 이벤트 안내(이번 달 프로모션 링크) 자동 발송, 채팅 말풍선의 링크를 눌리게 (§4.10)
 - 연락처를 남긴 손님: 확대 알림 제외 + Slack 분류 표시 + 하루 두 번 요약 + 직원 답글 번역본을 방에 올리기
 - 휴진일(`CHAT_CLOSED_DATES`)
 - 관리자 채팅 목록에 "오늘 연락" 표시
-- 마이그레이션 042 (컬럼 2개, 추가형)
-- 측정 스크립트 (작성 완료 — 구현 뒤 메신저 버튼 집계가 맞게 나오는지만 확인)
+- 마이그레이션 042 (컬럼 3개, 추가형)
+- 측정 스크립트 (작성 완료 — 구현 뒤 메신저 버튼 집계가 맞게 나오는지 확인하고, 이벤트 안내 항목 9를 더한다)
 
 **Out of Scope** — §10에 이유와 함께 정리
 
@@ -152,17 +160,17 @@
 ```
 1. 손님 글 INSERT (pending)            ← 트리거가 awaiting_since를 세운다
 2. 글 속 이메일 인식·저장 (§4.3)        ← 원문만 있으면 된다
-3. 자동 안내 시작 — 기다리지 않는다     ← 번역·Slack과 무관
+3. 자동 안내 시작 — 기다리지 않는다     ← 번역·Slack과 무관. 가격 문의면 이어서 이벤트 안내(§4.10)
 4. 번역 → UPDATE → broadcast → 응답
-5. after: Promise.all([ Slack 릴레이(→ 연락처 알림), 3의 Promise ])
+5. after: Promise.all([ Slack 릴레이(→ 연락처 알림), 3의 Promise ]) → 이벤트 안내가 나갔으면 방에 한 줄(§4.10)
 ```
 
 자동 안내는 번역도 Slack도 쓰지 않으므로 3에서 바로 나간다(DB 왕복 3~4회). 5에서 그 Promise를 기다려 함수가 끝나기 전에 완료를 보장한다. `sendAutoAckIfDue`는 throw하지 않는다. 직원 알림 시점은 바뀌지 않는다. 손님 화면은 자동 안내 broadcast를 받으면 메시지를 다시 가져오므로 손님 자신의 글과 자동 안내가 함께 보이고, 뒤이어 오는 응답은 id로 중복 제거된다(현행 `appendOptimistic`).
 
 **구현 단위**
 - 새 파일 `lib/chat/visitorMessageFollowups.ts`(라우트 테스트가 없는 리포라 로직을 lib로 뺀다):
-  - `startEarlyFollowups(admin, session, text)` — 2를 끝까지 하고 3을 시작해 `{ contact, ackPromise }`를 돌려준다.
-  - `runVisitorMessageFollowups({ relayArgs, contact, ackPromise })` — 5. Slack 쪽은 손님 글 릴레이 → (이메일이 저장됐으면) 연락처 알림을 순차로.
+  - `startEarlyFollowups(admin, session, text)` — 2를 끝까지 하고 3을 시작해 `{ contact, ackPromise }`를 돌려준다. `ackPromise`는 자동 안내에 이어 이벤트 안내(§4.10)까지 끝낸 뒤 `{ ack, eventHintUrl }`로 풀린다.
+  - `runVisitorMessageFollowups({ relayArgs, contact, ackPromise })` — 5. Slack 쪽은 손님 글 릴레이 → (이메일이 저장됐으면) 연락처 알림을 순차로. 릴레이와 `ackPromise`가 모두 끝난 뒤 `eventHintUrl`이 있으면 이벤트 안내 알림(§4.10)을 보낸다.
   - `api/chat/messages` 손님 경로는 INSERT 직후 `startEarlyFollowups`, `after()`에서 `runVisitorMessageFollowups`를 부른다. 직원(관리자 화면) 경로는 Slack 릴레이만 하던 그대로다.
 - `serverI18n.ts`: `INTAKE_FRAGMENTS`(10개 로케일 × 12키) + `INTAKE_FRAGMENTS_KO`, `composeIntakeTexts(locale, slot, hasContact): { ko, localized }` (순수).
 - `autoAck.ts`: `autoAckKind({ autoAckAt }, now): 'intake' | 'short'` (순수), `sendAutoAckIfDue`가 세션 조회에 `visitor_email, visitor_messenger_handle`을 더 읽고 종류에 따라 문구를 고른다. 선점·INSERT·broadcast는 그대로.
@@ -330,6 +338,7 @@ _방에 답을 쓰거나 방을 보관(완료)하면 목록에서 빠집니다._
 | 신규 `buildMessengerClickText` | §4.5 (b) |
 | 신규 `buildFollowupDigestText` | §4.5 (c) |
 | 신규 `buildTranslationCopyText` | §4.5 (d) — 번역문만, Slack 이스케이프 |
+| 신규 `buildEventHintNote` | §4.10 — 손님에게 이벤트 링크가 나갔다는 한 줄 + 링크 |
 
 봇이 쓴 글은 이벤트 단계에서 걸러지므로(`bot_id`) 손님에게 되돌아가지 않는다.
 
@@ -354,6 +363,101 @@ _방에 답을 쓰거나 방을 보관(완료)하면 목록에서 빠집니다._
 | 옛 화면(캐시된 스크립트)이 `line` 저장 요청 | API가 받아 준다 |
 | 자동 안내가 손님 글 전송 응답(번역 포함 약 2.6초)보다 먼저 도착 | 손님 글 말풍선이 먼저 보이고 입력창에는 같은 글이 잠깐 남는다 → `ChatPanel`이 전송 중인 글과 같은 손님 글이 목록에 나타나면 입력창을 바로 비운다 |
 | 자동 안내를 시작한 뒤 번역·UPDATE가 실패해 500 응답 | 자동 안내는 이미 나갔거나 나가는 중이다. 손님 글 자체는 INSERT돼 있으므로(현행과 같은 상태) 문제 없다 |
+| 이번 달 프로모션이 아직 게시 전이거나 「매달 프로모션」으로 만들지 않았다 | 이벤트 목록 링크를 보낸다(§4.10) |
+| 이번 달 프로모션 조회가 실패 | 이벤트 목록 링크를 보낸다 — 안내 자체는 나간다 |
+| 가격 낱말은 있지만 가격 질문이 아니다 | 이벤트 링크가 한 번 나갈 뿐이다. 직원 답변·알림에는 영향이 없다 |
+| 낱말 없이 돌려 말한 가격 질문 | 이벤트 안내는 나가지 않고 접수 안내만 나간다(지금과 같다). 뜻으로 판정하는 것은 2단계 |
+| 직원이 10분 안에 답한 대화에서 가격을 물음 | 이벤트 안내를 보내지 않는다 — 직원이 바로 답한다 |
+| 손님이 이벤트 링크를 눌러 다른 화면으로 감 | 새 창으로 열린다. 그 화면에도 채팅 버튼과 미확인 표시가 있어 직원 답이 오면 알 수 있다 |
+| 042 적용 전에 코드가 먼저 배포됨 (이벤트 안내) | 선점 UPDATE가 실패해 이벤트 안내가 나가지 않는다(경고만). 접수 안내와 릴레이는 정상이다 — `event_hint_at`은 자동 안내의 세션 조회에 넣지 않는다 |
+
+### 4.10 가격 문의에 이벤트 안내 (결정 ⑨)
+
+가격을 물은 손님은 직원이 확인해 답할 때까지 볼 것이 없다(§1 — 9건 중 5건은 1시간 반 넘게 기다렸다). 직원도 결국 이벤트 내용으로 답한다. 그래서 **가격은 직원이 답한다는 원칙(⑤)은 그대로 두고**, 그 전에 손님 언어의 프로모션 페이지 링크를 먼저 보낸다. AI는 쓰지 않는다 — 낱말로 판정하고, 문장은 미리 써 둔다.
+
+**언제 보내는가** — 손님 글마다 아래를 모두 만족할 때. 접수 안내(§4.1)와 조건이 따로라서 **첫 글이 아니어도** 나간다(대화 중간에 가격을 물은 3건).
+
+```
+손님 글에 가격·프로모션 낱말이 있다                                      (looksLikePriceQuestion — 아래)
+AND CHAT_EVENT_HINT ≠ off
+AND 이 세션에 이벤트 안내를 보낸 적이 없거나, 마지막이 12시간보다 오래됨   (event_hint_at)
+AND 최근 10분 안에 직원 글(자동 안내 제외)이 없다
+```
+
+- 12시간은 접수 안내(§4.1)와, 10분은 연락처 카드(§4.2)와 같은 기준이다. 직원이 지금 답하고 있는 대화에는 끼어들지 않는다 — 그때는 직원이 바로 답한다.
+- 영업시간과 무관하다. 답을 가장 오래 기다리는 것은 상담 시간 밖 문의다.
+
+**낱말 판정** — 새 파일 `lib/chat/priceIntent.ts`의 `looksLikePriceQuestion(text): boolean`(순수).
+
+1. 5% 직접 예약 배너가 입력창에 넣어 주는 문장(`chat.promoDraft`, 11개 언어)을 글에서 먼저 지운다. 그 문장에는 "할인·優惠·割引" 같은 낱말이 들어 있지만 손님이 쓴 가격 질문이 아니다(25건 중 5건이 이 문장으로 시작했다). 문장은 이 파일에 상수로 두고, 테스트가 메시지 JSON의 값과 같은지 확인한다.
+2. 남은 글에서 아래 낱말을 찾는다. **손님 화면 언어와 상관없이 전체 목록을 본다** — 중국어 화면에서 영어·한국어로 쓴 손님이 있었다.
+
+| 묶음 | 판정 | 낱말 |
+|------|------|------|
+| 띄어 쓰는 언어 | 낱말 단위(앞뒤가 글자·숫자가 아님 — `(?<![\p{L}\p{N}])…(?![\p{L}\p{N}])`), 대소문자 무시 | 영어 `price` `prices` `priced` `pricing` `cost` `costs` `how much` `fee` `fees` `quote` `quotation` `promotion` `promotions` `promo` `discount` `discounts` `event` `events` · 프랑스어 `prix` `tarif` `tarifs` `coût` `coûte` `réduction` `remise` · 베트남어 `giá` `bao nhiêu tiền` `chi phí` `khuyến mãi` `ưu đãi` · 러시아어 `цена` `цены` `цену` `цене` `ценах` `стоимость` `стоимости` `сколько стоит` `скидка` `скидки` `скидку` `акция` `акции` `прайс` · 몽골어 `үнэ` `үнийн` `үнэтэй` `хямдрал` `урамшуулал` |
+| 붙여 쓰는 언어 | 글에 들어 있으면 | 중국어(간체·번체) `价格` `價格` `价钱` `價錢` `多少钱` `多少錢` `价目` `價目` `费用` `費用` `总价` `總價` `报价` `報價` `价位` `價位` `收费` `收費` `优惠` `優惠` `折扣` `促销` `促銷` · 일본어 `価格` `料金` `値段` `金額` `費用` `いくら` `キャンペーン` `割引` `プロモーション` `イベント` · 한국어 `가격` `비용` `금액` `할인` `이벤트` `프로모션` `얼마예요` `얼마에요` `얼마인가요` `얼마입니까` `얼마죠` · 태국어 `ราคา` `กี่บาท` `ค่าใช้จ่าย` `โปรโมชั่น` `โปรโมชัน` `ส่วนลด` · 아랍어 `سعر` `أسعار` `اسعار` `بكم` `تكلفة` `خصم` `عروض` |
+
+- 일부러 넣지 않은 낱말: `offer`("Do you offer Sculptra?"), `活动`("움직임"으로도 쓴다), `rate`, `deal`, `عرض`("폭·표시"), 그리고 "얼마나 걸리나요"처럼 **시간을 묻는 말에도 쓰이는** `얼마` · `combien` · `bao nhiêu` · `เท่าไหร่`(가격을 묻는 꼴만 넣었다). 영어 `how much`는 "how much downtime"에도 걸리지만 영어 가격 질문의 가장 흔한 꼴이라 넣는다.
+- 지난 문의에 대입한 결과(2026-10-01, 손님 글 58개): 글 12개·세션 9건이 걸렸고, 읽어서 분류한 가격·프로모션 세션 9건과 일치한다. 잘못 걸린 글은 없고, 배너 문장 11개는 하나도 걸리지 않는다. 문의가 영어·중국어·일본어뿐이었으므로 다른 언어의 낱말은 대입해 보지 못했다.
+- 낱말이 걸렸지만 가격 질문이 아니면 이벤트 링크가 한 번 나갈 뿐이다. 낱말 없이 돌려 말한 가격 질문은 놓친다 — 그 손님은 접수 안내만 받는다(지금과 같다). 뜻으로 판정하는 것은 2단계(AI)에서 다룬다.
+
+**무엇을 보내는가** — 문장 + 줄바꿈 + 링크. 말풍선 하나.
+
+| 언어 | 문장 |
+|------|------|
+| 한국어 원문 (U-1 확인 대상) | 가격은 상담 직원이 확인한 뒤 정확히 안내드리겠습니다. 기다리시는 동안 지금 진행 중인 이벤트를 먼저 보실 수 있습니다. |
+| 영어 기준문 | Our consultants will confirm the exact price and get back to you. While you wait, you can take a look at our current promotions here: |
+
+다른 9개 언어는 영어 기준문의 뜻을 그대로 옮긴다. 문장에는 가격·할인율·효과를 넣지 않는다 — 그런 내용은 링크한 페이지에만 있다.
+
+**링크** — `eventHintUrl(locale, promotionSlug)`(순수):
+
+| 경우 | 링크 |
+|------|------|
+| 이번 달 프로모션이 게시돼 있다 | `{SITE_URL}/{locale}/events/{YYYY}-{MM}-promotion` |
+| 없다 · 조회 실패 | `{SITE_URL}/{locale}/events` (이벤트 목록) |
+
+- **이번 달 프로모션** = `events`에서 `slug = '{YYYY}-{MM}-promotion'`(한국 시각의 연·월) AND `is_published = true` AND `end_date >= 오늘(한국 날짜)`인 행. 관리자 화면의 「매달 프로모션」 템플릿(`monthlyPromotionTemplate.ts`)이 이 주소를 만든다 — 8·9·10월 프로모션이 모두 이 꼴이다(U-8).
+- 주소로 찾는 이유: "진행 중인 이벤트"로 찾으면 런칭 이벤트·상시 이벤트(종료일 2099년)와 섞이고, 다음 달 프로모션이 미리 시작된 날(10월 것은 9/28 시작)에는 둘이 겹친다. 주소는 그런 날에도 하나로 정해진다.
+- 상세 페이지는 손님 언어의 포스터를 고른다(영어·일본어·중국어 포스터 컬럼. 번체는 중국어 → 영어, 그 밖의 언어는 영어 순으로 대신한다 — 기존 `pickLocalized`). 채팅이 되는 10개 로케일의 이벤트 페이지가 모두 열리는 것을 확인했다(2026-10-01 운영 사이트).
+- `SITE_URL`은 `lib/siteEnvironment.ts`의 값이다.
+
+**저장 형태** — 자동 안내와 같다: `sender='operator'`, `source='auto'`, `sender_label='자동 안내'`, `original_text` = 한국어 문장 + 링크, `translated_text` = 손님 언어 문장 + 링크, 번역 API 호출 없음. `source='auto'`이므로 대기 시계·미응답 수·확대 알림·"오늘 연락할 손님"을 건드리지 않는다 — 가격은 여전히 직원이 답해야 하기 때문이다.
+
+**순서와 선점**
+- 같은 글에서 접수 안내(또는 짧은 안내)가 나가면 이벤트 안내는 그 **뒤에** INSERT한다 — 손님 화면에서 손님 글 → 안내 → 이벤트 안내 순으로 보인다. §4.1 순서 3의 Promise가 `sendAutoAckIfDue` 다음에 `sendEventHintIfDue`를 잇는다. 번역·Slack을 기다리지 않는 것도 같다.
+- `event_hint_at`을 조건부 UPDATE(읽은 값이 그대로일 때만 1행 — `auto_ack_at`과 같은 방식)로 선점한 뒤 보낸다. 손님이 가격을 연달아 물어도 한 번만 나간다.
+- `event_hint_at`은 **별도 조회**로 읽는다. 자동 안내의 세션 조회에 넣으면 042 적용 전 배포에서 자동 안내까지 깨진다(§4.5 (d)에서 `RELAY_SESSION_COLUMNS`를 건드리지 않는 것과 같은 이유).
+
+**직원에게 알림** — 이벤트 안내가 나갔으면, 손님 글 릴레이가 끝난 뒤 그 세션의 방(스레드 모드면 스레드)에 올린다:
+
+```
+🎁 _가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요._
+https://liv-clinic.net/en/events/2026-10-promotion
+```
+
+- 직원이 손님이 무엇을 보고 있는지 알고 답하게 하기 위해서다. 10/1에는 275만 원으로 답했다가 이벤트 가격 220만 원으로 다시 보낸 일이 있었다(§1).
+- 방도 스레드도 없으면 올리지 않는다. 봇이 쓴 글이라 손님에게 되돌아가지 않는다(§4.7). 실패는 경고 로그만 남긴다.
+- 문구는 `slackText.ts`의 `buildEventHintNote(url)`, 게시는 `slackRelay.ts`의 `relayEventHintNoteToSlack({ sessionId, url })` — `relayContactToSlack`과 같은 방식으로 대상을 찾는다.
+
+**링크를 눌리게** — 지금 손님 화면의 말풍선은 글자만 그린다(`MessageBubble.tsx`).
+- 새 파일 `lib/chat/linkify.ts`의 `splitLinks(text): Array<{ kind: 'text' | 'link'; value: string }>`(순수): `http://`·`https://`로 시작하는 주소만 링크로 가른다. 주소 끝의 문장부호(`. , ; : ! ? ) ]`와 `。 、 ， ！ ？ ）`)는 링크에서 뺀다.
+- `MessageBubble`은 **직원·자동 안내 말풍선**(본문과 "원문 보기")에서 링크 조각을 `<a target="_blank" rel="noopener noreferrer">`(밑줄)로 그린다. 손님 자신의 글과 시스템 메시지(노란 띠)는 그대로 글자다.
+- 직원이 Slack이나 관리자 화면에서 붙여 넣은 주소도 같이 눌리게 된다.
+- 새 창으로 여는 이유: 대화가 있던 화면을 그대로 두기 위해서다. 새로 열린 화면도 같은 사이트라 채팅 버튼과 미확인 표시가 그대로 있고(세션은 브라우저에 저장된다), 직원 답이 오면 그 화면에서도 알림이 뜬다.
+- 관리자 화면의 대화 보기는 바꾸지 않는다.
+
+**긴급 정지** — 환경변수 `CHAT_EVENT_HINT=off`면 이벤트 안내를 보내지 않는다(낱말 판정도 조회도 하지 않는다). 링크 누르기는 그대로다.
+
+**구현 단위**
+- `lib/chat/priceIntent.ts`(신규, 순수): `looksLikePriceQuestion`, 낱말 목록, 배너 문장 상수.
+- `lib/chat/eventHint.ts`(신규):
+  - 순수: `currentPromotionSlug(now)`(한국 시각 기준 `YYYY-MM-promotion`), `eventHintUrl(locale, slug | null)`, `shouldSendEventHint({ eventHintAt, lastStaffAt }, now)`.
+  - `sendEventHintIfDue(admin, sessionId, text, now): Promise<{ outcome: 'sent' | 'not_due' | 'lost_race' | 'error'; url?: string }>` — throw하지 않는다. 낱말이 없거나 정지 상태면 DB를 건드리지 않고 돌아온다. 순서: 조회 3개를 함께(세션의 `visitor_locale, event_hint_at` · 마지막 직원 글 시각 — `sender='operator'`이고 `source`가 `app`·`slack` · 이번 달 프로모션) → 판정 → 선점 → INSERT → broadcast.
+- `serverI18n.ts`: `EVENT_HINT_TEXTS`(10개 로케일) + 한국어 원문, `composeEventHintTexts(locale, url): { ko, localized }`(순수).
+- `visitorMessageFollowups.ts`(§4.1): `ackPromise`가 `sendAutoAckIfDue` → `sendEventHintIfDue`를 차례로 돌고 `{ ack, eventHintUrl }`로 풀린다. `runVisitorMessageFollowups`는 손님 글 릴레이와 그 Promise가 모두 끝난 뒤 `eventHintUrl`이 있으면 `relayEventHintNoteToSlack`을 부른다.
+- `components/chat/MessageBubble.tsx`, `lib/chat/linkify.ts`(신규).
+- 측정 스크립트 `chat-response-baseline.mjs`에 항목 9를 **더한다**(기존 항목의 정의는 건드리지 않는다): 이벤트 안내가 나간 세션 수, 손님 글에서 안내까지 걸린 초(G-6), 그중 연락 수단을 확보한 세션 수. `event_hint_at` 컬럼이 없으면(042 적용 전) 건너뛴다 — `visitor_messenger_clicked`를 다루는 방식과 같다.
 
 ---
 
@@ -363,15 +467,18 @@ _방에 답을 쓰거나 방을 보관(완료)하면 목록에서 빠집니다._
 ALTER TABLE public.chat_sessions
   ADD COLUMN IF NOT EXISTS followup_digest_at        TIMESTAMPTZ NULL,
   ADD COLUMN IF NOT EXISTS visitor_messenger_clicked TEXT NULL
-    CHECK (visitor_messenger_clicked IS NULL OR char_length(visitor_messenger_clicked) <= 20);
+    CHECK (visitor_messenger_clicked IS NULL OR char_length(visitor_messenger_clicked) <= 20),
+  ADD COLUMN IF NOT EXISTS event_hint_at             TIMESTAMPTZ NULL;
 
 COMMENT ON COLUMN public.chat_sessions.followup_digest_at IS
   '"오늘 연락할 손님" 요약에 마지막으로 오른 시각. 요약 창 시작보다 이전이면 다시 오른다';
 COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
   '손님이 카드에서 마지막으로 누른 메신저(whatsapp/wechat/line). 연락처가 아니다 — 측정과 번역본 게시 대상 판정에 쓴다';
+COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
+  '가격 문의에 이벤트 안내(프로모션 링크)를 마지막으로 보낸 시각. 12시간이 지나야 다시 보낸다';
 ```
 
-트리거·인덱스·정책·publication 변경 없음. 이메일은 기존 `visitor_email`을 쓴다.
+트리거·인덱스·정책·publication 변경 없음. 이메일은 기존 `visitor_email`을 쓴다. 이벤트 안내 메시지는 기존 `source='auto'`를 쓰므로 `chat_messages`의 CHECK도 그대로다.
 
 ---
 
@@ -381,9 +488,10 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 |------|------|
 | `CHAT_CLOSED_DATES` | 신설, 선택. 비면 현행과 같다 |
 | `CHAT_FOLLOWUP` | 신설, 선택. `off`일 때만 의미(§4.5 긴급 정지) |
+| `CHAT_EVENT_HINT` | 신설, 선택. `off`일 때만 의미(§4.10 긴급 정지) |
 | `CHAT_BUSINESS_HOURS_JSON`, `CHAT_ESCALATION_MINUTES`, `SLACK_*`, `CHAT_OPS_SECRET` | 그대로 |
 
-루트 `.env.example`에 두 변수를 적는다.
+루트 `.env.example`에 세 변수를 적는다.
 
 ---
 
@@ -391,7 +499,7 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 
 | 위치 | 변경 |
 |------|------|
-| `serverI18n.ts` | `INTAKE_FRAGMENTS` 10개 로케일 × 12키 + 한국어 원문, `CONTACT_SAVED_TEMPLATES` 10개 문구 교체 |
+| `serverI18n.ts` | `INTAKE_FRAGMENTS` 10개 로케일 × 12키 + 한국어 원문, `CONTACT_SAVED_TEMPLATES` 10개 문구 교체, `EVENT_HINT_TEXTS` 10개 로케일 + 한국어 원문(§4.10 — 메시지 JSON은 바꾸지 않는다) |
 | `src/messages/*.json` 11개 (`chat` 네임스페이스) | 신규 키 8개: `captureBusyLead`, `captureContactPlaceholderEmail`, `captureMessengerFallback`(`{code}` 변수), `capturePrivacyNote`, `captureWechatLead`(`{code}` 변수), `captureWechatIdLabel`, `captureCopy`, `captureCopied`. 기존 값은 바꾸지 않는다 |
 
 - 메시지 JSON은 줄바꿈이 섞여 있어 다시 직렬화하면 안 된다. 기존 `chat` 키 줄 뒤에 **바이트 보존 삽입**으로 넣고, `JSON.parse` 무결성 + `npm run verify:i18n` + `git diff --numstat`(파일당 +8/−0)으로 검증한다.
@@ -417,11 +525,14 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 | `autoAck.test.ts` | `autoAckKind`: 첫 발송·12시간 초과 → `intake`, 이내 → `short`. `composeIntakeTexts`: 10개 로케일 × 3 시간대 × 연락처 유무가 비어 있지 않고 서로 다름, `W`는 `open`에만, 한국어 원문에 "오늘 안에 최대한 빨리"·"상담 시간이 시작되는 대로". 기존 짧은 안내 테스트 유지 |
 | `contactChannels.test.ts` | `extractEmail`(본문 중간·문장 끝 마침표·병원 도메인 제외·없음·여러 개면 첫째), 이메일 검증, `defaultFormChannel`, 채널 목록 분리(남기기 목록에 `line` 없음·`email` 있음), `orderedLinkChannels`(`ja` → LINE 먼저, `en` → WhatsApp 먼저, `zh` → WeChat 먼저), `shouldShowCaptureBlock` 새 조건 조합(영업시간 무관, 연락처 있음, 기다리는 중 아님, 직원 글 10분 이내, ✕ 12시간) |
 | `contactService.test.ts` (신규) | `saveVisitorContact`: `email` → `visitor_email` 갱신 + 시스템 메시지, 메신저 → 기존 컬럼, `line` 호환. `recordMessengerClick`: 클릭 컬럼만 갱신·시스템 메시지 없음. `saveEmailFromMessage`: 인식 저장 1회, 같은 주소 재입력은 무변경, 이메일 없는 글은 무변경. DB 오류는 throw 없이 실패 결과 |
-| `visitorMessageFollowups.test.ts` (신규) | `startEarlyFollowups`: 이메일 저장이 끝난 뒤에 자동 안내를 시작하고, 자동 안내 완료는 기다리지 않고 돌아온다. `runVisitorMessageFollowups`: 이메일이 저장된 경우에만 연락처 알림이 손님 글 릴레이 **뒤에** 간다, `ackPromise`를 끝까지 기다린다, 한쪽이 실패해도 다른 쪽은 끝난다 |
+| `visitorMessageFollowups.test.ts` (신규) | `startEarlyFollowups`: 이메일 저장이 끝난 뒤에 자동 안내를 시작하고, 자동 안내 완료는 기다리지 않고 돌아온다. 이벤트 안내는 자동 안내가 끝난 **뒤에** 시작한다. `runVisitorMessageFollowups`: 이메일이 저장된 경우에만 연락처 알림이 손님 글 릴레이 **뒤에** 간다, `ackPromise`를 끝까지 기다린다, 한쪽이 실패해도 다른 쪽은 끝난다. `eventHintUrl`이 있을 때만 이벤트 안내 알림이 손님 글 릴레이 **뒤에** 간다 |
+| `priceIntent.test.ts` (신규) | 실제 문의 문장 9개(영어 "…the price of Ulthera", "any promotion on ultherapy prime ?" · 중국어 "超声刀多少钱？", "我想了解一下价目表", "…含税总价是多少" · 번체 "想問除紋身價格" · 일본어 "…大体の金額についても…" 등) → true. 가격과 무관한 실제 문장(예약·진료 절차·"Do you have sculptra", "what kind of fillers do you do?") → false. `chat.promoDraft` 11개 로케일(메시지 JSON에서 읽는다)이 파일의 상수와 같고 모두 false, 배너 문장 뒤에 가격 질문이 붙으면 true. 대소문자 무시, 낱말 경계(`priceless`·`Costa`·`eventually` → false), 넣지 않은 낱말(`Do you offer…`, `얼마나 걸리나요`) → false |
+| `eventHint.test.ts` (신규) | `currentPromotionSlug`: 한국 시각 월 경계(UTC 9/30 15:00 → `2026-10-promotion`). `eventHintUrl`: 슬러그 있음 → 상세, 없음 → 목록, 10개 로케일. `shouldSendEventHint`: 처음 → true, 12시간 이내 → false, 초과 → true, 직원 글 10분 이내 → false. `composeEventHintTexts`: 10개 로케일 문장이 비어 있지 않고 서로 다르며, 한국어 원문·번역문 모두 줄바꿈 뒤 링크로 끝난다. `sendEventHintIfDue`: 낱말 없음·`CHAT_EVENT_HINT=off` → DB 호출 0회. 보냄 → INSERT가 `source='auto'`이고 원문·번역문 모두 링크로 끝난다. 선점 0행 → `lost_race`·INSERT 없음. 프로모션 없음·조회 오류 → 목록 링크로 보냄. 세션 조회·선점 오류(042 미적용) → `error`, throw 없음 |
+| `linkify.test.ts` (신규) | 주소 없음 → 글 조각 하나, 문장 중간의 주소, 여러 개, 줄바꿈 뒤 주소, 끝 문장부호(`.` `。` `)`) 제외, `http`·`https`만(`javascript:`·`www.`만 있는 글은 글자 그대로) |
 | `escalationRunner.test.ts` (신규) | 후보 조회에 연락처 NULL 조건 2개, `CHAT_FOLLOWUP=off`면 조건 없음 |
 | `followupDigest.test.ts` (신규) | `digestWindow`: 평일 10:00~10:08·18:00~18:08, 토 15:00~, 창 밖은 null, 영업시간 설정 변경 반영. `runFollowupDigest`: 대상 조회 조건, 선점된 세션만 게시, 0명 무게시, 7일 초과 제외, 직원 없음·`off` 무게시 |
 | `slackRelay.test.ts` | 번역본 게시: 연락 수단이 있는 방 세션의 Slack 답글 → 전달 뒤 번역문만 담은 게시 1회. 연락 수단 없음·번역 실패·번역 생략·스레드 모드·`CHAT_FOLLOWUP=off` → 게시 없음. 연락 수단 조회 실패·게시 실패 → 결과는 `delivered` 유지. 피드 스레드 답장은 방 복사 **뒤에** 번역본 |
-| `slackText.test.ts` | 바뀐 문구와 신규 빌더 5종 |
+| `slackText.test.ts` | §4.7 표의 바뀐 문구와 신규 빌더 전부(`buildEventHintNote`는 안내 한 줄 + 링크 줄) |
 | `fakeAdmin.ts` | `in`·`or`·`gte` 지원 추가 |
 
 검증 게이트: `npm test`, `npx tsc --noEmit`, 변경 파일 대상 `npx eslint`, `npm run verify:i18n`, `npm run build`.
@@ -440,13 +551,17 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
    - 다음 요약 시각에 `#해외문의` 요약 게시 → 방에 답글 → 다음 요약에서 빠짐.
    - 연락처를 남긴 시험 세션의 방에 한국어로 답글 → 번역본이 바로 아래 올라옴 → **업무폰 Slack에서 길게 눌러 복사 → WeChat 입력창에 붙여 넣어** 번역문만 깨끗하게 들어가는지 확인.
    - 중국어 화면(`/zh`)에서 카드에 병원 WeChat QR과 아이디가 펼쳐져 있고, 복사 버튼으로 아이디가 복사되며, 누르면 방에 📲 한 줄이 오는지 확인. 영어 화면에서는 작은 "WeChat" 링크를 눌러야 펼쳐지는지 확인. 휴대폰에서 복사한 아이디로 실제 WeChat 검색이 되는지, 카드의 QR(잘라 만든 이미지)을 다른 기기의 WeChat으로 스캔하면 병원 계정이 뜨는지 확인.
+   - 영어 화면에서 "How much is Ulthera?"를 보냄 → 접수 안내 **뒤에** 이벤트 안내 말풍선이 오고, 링크를 누르면 새 창에서 이번 달 프로모션(영어 포스터)이 열림 → 방에 🎁 한 줄. 같은 세션에서 가격을 다시 물어도 두 번째 안내는 없음. 일본어·중국어 화면에서도 그 언어 문장과 그 언어 페이지인지 확인.
+   - 이벤트 화면의 5% 배너로 채팅을 열어 미리 채워진 문장만 보냄 → 이벤트 안내가 나가지 않음.
+   - 이벤트 안내가 나간 뒤에도 5분 재촉 알림이 그대로 오는지 확인(연락처 없는 시험 세션 — 이벤트 안내는 답변으로 치지 않는다).
 5. 직원 안내(`#해외문의`에 게시):
    > 손님이 연락처를 남기면 재촉 알림이 멈추고 '오늘 연락할 손님'으로 표시됩니다. 여유 있을 때 **그 방에 한국어로 답을 쓰면 바로 아래에 번역본이 올라옵니다.** 그것을 복사해 위챗·왓츠앱·메일에 붙여 넣어 보내 주세요. 방에 답을 쓰면 목록에서 빠지고, 상담이 끝나면 방을 보관해 주세요. 문 열 때와 마감 1시간 전에 남은 손님 목록이 올라옵니다. 연락처가 없는 손님은 지금처럼 5·12·30분 알림이 옵니다.
    > 채팅창에 병원 위챗 QR과 아이디가 나갑니다. 업무폰 위챗에 친구 요청이 오면 수락하고, 손님이 보낸 코드(#로 시작)로 어느 방 손님인지 확인해 주세요.
    > 위챗 손님이 보낸 글은 위챗의 번역으로 읽을 수 있습니다: 나 → 설정 → 일반 → 번역 → "채팅에서 받은 메시지 자동 번역"을 켜거나, 메시지를 길게 눌러 "번역". 짧은 답은 입력창을 길게 눌러 "쓰면서 번역"을 써도 됩니다(업무폰에서 메뉴가 보이는지는 확인 필요).
-6. 2주·4주 뒤 측정 스크립트로 G-1~G-5 확인(자동 안내 지연은 스모크 직후에도 한 번 잰다).
+   > 손님이 가격을 물으면 이번 달 프로모션 페이지 링크가 자동으로 먼저 나갑니다(방에 🎁 표시). 가격 답변은 지금처럼 직접 해 주세요 — 손님이 이벤트 페이지를 보고 있으니 그 내용과 맞춰 안내해 주세요.
+6. 2주·4주 뒤 측정 스크립트로 G-1~G-6 확인(자동 안내 지연은 스모크 직후에도 한 번 잰다).
 
-되돌리기: Slack 쪽은 `CHAT_FOLLOWUP=off`(재배포), 손님 화면은 커밋 되돌리기. 042는 추가형이라 그대로 둔다.
+되돌리기: Slack 쪽은 `CHAT_FOLLOWUP=off`, 이벤트 안내는 `CHAT_EVENT_HINT=off`(둘 다 재배포), 그 밖의 손님 화면은 커밋 되돌리기. 042는 추가형이라 그대로 둔다.
 
 ---
 
@@ -463,6 +578,7 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 - 사이트 전역 1순위 메신저(`primaryMessengerFor`) 변경 — LINE 링크는 고쳤으니(U-2) 대만·태국을 LINE 기본으로 바꿀지는 따로 정한다.
 - 가이드 글 본문의 "LINE ID: icps7972773" 표기(일본어·대만어 가이드 10여 곳) — 아이디 검색이 안 되는 손님에게는 통하지 않으므로 친구 추가 링크로 바꾸는 것이 좋지만, 가이드 원고를 고치는 별도 작업이다.
 - 휴진일을 관리자 화면에서 고치기, Slack 버튼(Block Kit), 연락 완료 전용 버튼.
+- 이벤트 안내(§4.10)에서: 가격표 페이지(`/pricing`) 링크 — 정가 기준이라 직원이 안내하는 이벤트 가격과 달라 혼선이 생긴다. 가격 질문을 뜻으로 판정하기, 물어본 시술에 맞는 이벤트 고르기 — 2단계(AI)에서 다룬다. 채팅창 안에 포스터 미리보기 카드, 링크 클릭 기록, 가격 질문이 아닌 손님에게도 이벤트 링크 보내기(접수 안내가 길어져 연락처 요청이 묻힌다), 관리자 화면 대화 보기의 링크 누르기.
 
 **U-5 문구 초안 (승인 시 11개 로케일 `privacy` 5조에 반영)**
 > 서비스 운영을 위해 신뢰할 수 있는 수탁업체에 업무를 위탁합니다: Supabase(데이터베이스 호스팅), Google Analytics(웹사이트 이용 분석), **OpenAI(채팅 번역, 국외 처리), Slack(상담 문의 알림 전달, 국외 처리).** 수탁업체는 서비스 제공에 필요한 범위에서만 정보를 처리합니다.
@@ -479,8 +595,9 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 - **기대값이 바뀌는 기존 테스트**: `contactChannels.test.ts`(채널 목록, 카드 노출 조건), `slackText.test.ts`(`ROOM_AUTO_ACK_NOTE`, `buildContactText`, 방 첫 메시지 꼬리). `autoAck.test.ts`의 짧은 안내 기대값은 유지된다.
 - **메시지 JSON**: 11개 파일은 줄바꿈이 섞여 있다. 재직렬화하지 말고 `\n`만 경계로 줄을 나눠 바이트 보존 삽입한다(메모리 `liv-i18n-file-quirks`).
 - **Grep 도구**: `glob`에 폴더 경로를 넣으면 이 PC에서 거짓 0건이 나온다. 폴더는 `path`로 좁힌다(메모리 `grep-glob-dir-false-negative`).
-- **아직 받지 못한 값의 기본 처리**: U-1 문구는 §4.1 그대로 구현한다. U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다.
+- **아직 받지 못한 값의 기본 처리**: U-1 문구는 §4.1·§4.10 그대로 구현한다. U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다.
+- **이벤트 안내(§4.10, 결정 ⑨)는 설계 승인 뒤 같은 날 추가됐다**: 신규 파일 `priceIntent.ts`·`eventHint.ts`·`linkify.ts`와 각 테스트, `MessageBubble.tsx` 수정, `serverI18n.ts`의 `EVENT_HINT_TEXTS`, 042의 세 번째 컬럼 `event_hint_at`, 환경변수 `CHAT_EVENT_HINT`. 낱말 목록은 §4.10 표 그대로 옮기고, 테스트에는 그 절에 적은 실제 문의 문장을 쓴다. 이번 달 프로모션은 **주소(`YYYY-MM-promotion`)로** 찾는다 — "진행 중인 이벤트"로 찾지 않는다.
 - **이미 끝난 것(다시 만들지 않는다)**: U-2·U-6·U-7 — LINE 친구 추가 링크(`SOCIAL_LINKS.line`), `public/images/wechat-qr-code.png`, `WECHAT_ID`·`WECHAT_QR_IMAGE` 상수, 새 QR을 쓰는 `WeChatQRModal`·`WeChatInfo`, 테스트 `components/ui/__tests__/WeChatQR.test.tsx`·`lib/__tests__/messengerLinks.test.ts`가 이 브랜치에 있다(`fix/wechat-qr-latest`의 8646dfc·435869d 병합). 카드에서 가져다 쓴다. 그 수정이 운영에 먼저 나갔는지는 `git fetch` 뒤 `git log origin/master`로 확인하고, 나갔다면 master를 이 브랜치에 병합한 뒤 시작한다.
 - **운영에 닿는 일은 원장님 승인 뒤에만 한다**: 마이그레이션 042 운영 적용, master 머지·푸시(= Netlify 배포), Netlify 환경변수 변경.
-- **측정 스크립트**는 이미 있다(`liv-clinic/scripts/chat-response-baseline.mjs`). §1·§2의 수치를 낸 질의이므로 정의를 바꾸지 않는다.
+- **측정 스크립트**는 이미 있다(`liv-clinic/scripts/chat-response-baseline.mjs`). §1·§2의 수치를 낸 질의이므로 기존 항목의 정의를 바꾸지 않는다. 이벤트 안내 항목 9는 새로 더한다(§4.10).
 - **2단계(별도 문서)**: AI 이용 안내(홈페이지 답변에서 고르기), 직원 답변 이메일 자동 발송.
