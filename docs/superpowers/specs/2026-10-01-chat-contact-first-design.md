@@ -5,7 +5,7 @@
 > 결정(2026-10-01, 원장님): ① 영업시간 중 헤더 "We're online" 유지 ② 손님이 이메일을 쓰면 연락처로 저장 ③ 연락처를 남긴 손님은 5·12·30분 알림을 멈추고 **"오늘 연락할 손님"**으로 분류 ④ 약속 문구는 **"오늘 안에, 최대한 빨리 연락"** ⑤ 가격·효과는 사람이 직접 답변 ⑥ 이 1단계(AI 없음)를 먼저 내고, AI 이용 안내 답변은 바로 이어서 별도 문서로.
 > 추가 결정(2026-10-01, 직원 의견 검토 뒤): ⑦ 채팅 카드에 **병원 WeChat QR과 아이디를 넣는다** — WeChat은 업무폰 한 대로만 응대할 수 있지만 앱 자체 번역으로 응대가 가능하므로, 손님이 병원 WeChat을 추가하게 한다(같은 날 "추가 버튼 제거" 안을 검토했다가 이쪽으로 확정). WhatsApp·LINE은 병원 계정으로 연결하는 버튼을 유지한다 ⑧ 연락처를 남긴 손님의 방에는 **직원 답글의 번역본**을 올려, 복사해서 위챗·왓츠앱·메일에 붙여 넣게 한다.
 > 추가 결정(2026-10-01, 원장님 제안): ⑨ **가격·프로모션을 물은 손님에게는 이번 달 프로모션 페이지 링크를 손님 언어로 먼저 보낸다**(이번 달 것이 없으면 이벤트 목록). 가격 답변은 계속 직원이 한다(⑤ 유지) — 링크는 직원이 확인하는 동안 손님이 먼저 볼 것을 주는 것이다(§4.10).
-> 상태: **원장님 승인(2026-10-01).** ⑨(§4.10)는 같은 날 추가됐다 — 원장님이 방향과 링크 위치(이번 달 프로모션으로 바로)를 정했다. 다음은 구현 계획과 구현 — §11 인계 메모를 따른다.
+> 상태: **원장님 승인(2026-10-01).** ⑨(§4.10)는 같은 날 추가됐다 — 원장님이 방향과 링크 위치(이번 달 프로모션으로 바로)를 정했다. **손님 문구(U-1)는 원장님이 미리보기 화면을 보고 고치는 중이다 — 문구가 확정된 뒤에 구현 계획을 쓴다**(§11).
 
 ---
 
@@ -32,7 +32,7 @@
 
 | # | 항목 | 설명 |
 |---|------|------|
-| U-1 | **손님 문구 확인** | §4.1 한국어 원문 12문장 + §4.10 이벤트 안내 1문장. 다른 언어는 이 원문을 기준으로 옮긴다 |
+| U-1 | **손님 문구 확인** | §4.1 한국어 원문 12문장 + §4.10 이벤트 안내 2문장. 다른 언어는 이 원문을 기준으로 옮긴다. 상황·언어별로 손님 화면에 어떻게 보이는지는 미리보기 화면에서 볼 수 있다(§11) — 원장님이 보고 고치기로 했다 |
 | U-2 | ~~병원 LINE 친구 추가 링크~~ **받음(2026-10-01)** | `https://line.me/ti/p/VJYu9BSnsX` — 아이디 검색을 거치지 않는 주소(열어 보면 친구 추가 화면이 뜬다). `fix/wechat-qr-latest`(435869d)에서 `SOCIAL_LINKS.line`을 바꿔 사이트의 모든 LINE 버튼에 적용했고 이 브랜치에도 병합돼 있다. 같은 날 받은 LINE QR 이미지는 예전 아이디 방식 주소라 쓰지 않는다 |
 | U-3 | **올해 남은 휴진일** | 날짜 목록(예: 10/3, 10/9, 12/25). 없으면 빈 채로 나가고 지금처럼 동작한다 |
 | U-4 | **이메일만 남긴 손님은 직원이 직접 메일을 보내야 한다** | 1단계에는 메일 자동 발송이 없다. 방에 한국어로 답을 쓰면 번역본이 올라오므로(§4.5 d) 그것을 복사해 메일에 붙이면 된다. 자동 발송은 다음 단계 후보다(§10) |
@@ -401,14 +401,14 @@ AND 최근 10분 안에 직원 글(자동 안내 제외)이 없다
 - 지난 문의에 대입한 결과(2026-10-01, 손님 글 58개): 글 12개·세션 9건이 걸렸고, 읽어서 분류한 가격·프로모션 세션 9건과 일치한다. 잘못 걸린 글은 없고, 배너 문장 11개는 하나도 걸리지 않는다. 문의가 영어·중국어·일본어뿐이었으므로 다른 언어의 낱말은 대입해 보지 못했다.
 - 낱말이 걸렸지만 가격 질문이 아니면 이벤트 링크가 한 번 나갈 뿐이다. 낱말 없이 돌려 말한 가격 질문은 놓친다 — 그 손님은 접수 안내만 받는다(지금과 같다). 뜻으로 판정하는 것은 2단계(AI)에서 다룬다.
 
-**무엇을 보내는가** — 문장 + 줄바꿈 + 링크. 말풍선 하나.
+**무엇을 보내는가** — 문장 + 줄바꿈 + 링크. 말풍선 하나. 문장은 링크가 어디로 가느냐에 따라 둘 중 하나다.
 
-| 언어 | 문장 |
-|------|------|
-| 한국어 원문 (U-1 확인 대상) | 가격은 상담 직원이 확인한 뒤 정확히 안내드리겠습니다. 기다리시는 동안 지금 진행 중인 이벤트를 먼저 보실 수 있습니다. |
-| 영어 기준문 | Our consultants will confirm the exact price and get back to you. While you wait, you can take a look at our current promotions here: |
+| 키 | 쓰이는 때 | 한국어 원문 (U-1 확인 대상) | 영어 기준문 |
+|----|-----------|------------------------------|-------------|
+| `P_promo` | 이번 달 프로모션으로 갈 때 | 가격은 상담 직원이 확인한 뒤 정확히 안내드리겠습니다. 이번 달 프로모션은 아래에서 보실 수 있습니다. | Our consultants will confirm the exact price and get back to you. You can see this month's promotion here: |
+| `P_list` | 이벤트 목록으로 갈 때 | 가격은 상담 직원이 확인한 뒤 정확히 안내드리겠습니다. 진행 중인 이벤트는 아래에서 보실 수 있습니다. | Our consultants will confirm the exact price and get back to you. You can see our current promotions here: |
 
-다른 9개 언어는 영어 기준문의 뜻을 그대로 옮긴다. 문장에는 가격·할인율·효과를 넣지 않는다 — 그런 내용은 링크한 페이지에만 있다.
+다른 9개 언어는 영어 기준문의 뜻을 그대로 옮긴다. 문장에는 가격·할인율·효과를 넣지 않는다 — 그런 내용은 링크한 페이지에만 있다. "기다리시는 동안" 같은 말은 원장님 의견으로 뺐다(2026-10-01).
 
 **링크** — `eventHintUrl(locale, promotionSlug)`(순수):
 
@@ -419,7 +419,8 @@ AND 최근 10분 안에 직원 글(자동 안내 제외)이 없다
 
 - **이번 달 프로모션** = `events`에서 `slug = '{YYYY}-{MM}-promotion'`(한국 시각의 연·월) AND `is_published = true` AND `end_date >= 오늘(한국 날짜)`인 행. 관리자 화면의 「매달 프로모션」 템플릿(`monthlyPromotionTemplate.ts`)이 이 주소를 만든다 — 8·9·10월 프로모션이 모두 이 꼴이다(U-8).
 - 주소로 찾는 이유: "진행 중인 이벤트"로 찾으면 런칭 이벤트·상시 이벤트(종료일 2099년)와 섞이고, 다음 달 프로모션이 미리 시작된 날(10월 것은 9/28 시작)에는 둘이 겹친다. 주소는 그런 날에도 하나로 정해진다.
-- 상세 페이지는 손님 언어의 포스터를 고른다(영어·일본어·중국어 포스터 컬럼. 번체는 중국어 → 영어, 그 밖의 언어는 영어 순으로 대신한다 — 기존 `pickLocalized`). 채팅이 되는 10개 로케일의 이벤트 페이지가 모두 열리는 것을 확인했다(2026-10-01 운영 사이트).
+- 상세 페이지는 손님 언어의 포스터를 고른다(영어·일본어·중국어 포스터 컬럼. 번체는 중국어 → 영어, 그 밖의 언어는 영어 순으로 대신한다 — 기존 `pickLocalized`). 운영 사이트에서 확인했다(2026-10-01): `/{locale}/events/2026-10-promotion`이 10개 로케일 모두 열리고, 영어·일본어·중국어는 각자의 제목과 포스터, 번체는 중국어판, 나머지 6개 언어는 영어판이 나온다.
+- 달이 바뀌면 손댈 것이 없다. 주소의 연·월을 발송 시각(한국 시각)으로 만들기 때문에 11월 1일 0시부터는 `2026-11-promotion`을 찾는다. 그 달 것이 아직 게시 전이면 목록으로 가고, 게시하는 순간부터 그 페이지로 간다.
 - `SITE_URL`은 `lib/siteEnvironment.ts`의 값이다.
 
 **저장 형태** — 자동 안내와 같다: `sender='operator'`, `source='auto'`, `sender_label='자동 안내'`, `original_text` = 한국어 문장 + 링크, `translated_text` = 손님 언어 문장 + 링크, 번역 API 호출 없음. `source='auto'`이므로 대기 시계·미응답 수·확대 알림·"오늘 연락할 손님"을 건드리지 않는다 — 가격은 여전히 직원이 답해야 하기 때문이다.
@@ -454,7 +455,7 @@ https://liv-clinic.net/en/events/2026-10-promotion
 - `lib/chat/eventHint.ts`(신규):
   - 순수: `currentPromotionSlug(now)`(한국 시각 기준 `YYYY-MM-promotion`), `eventHintUrl(locale, slug | null)`, `shouldSendEventHint({ eventHintAt, lastStaffAt }, now)`.
   - `sendEventHintIfDue(admin, sessionId, text, now): Promise<{ outcome: 'sent' | 'not_due' | 'lost_race' | 'error'; url?: string }>` — throw하지 않는다. 낱말이 없거나 정지 상태면 DB를 건드리지 않고 돌아온다. 순서: 조회 3개를 함께(세션의 `visitor_locale, event_hint_at` · 마지막 직원 글 시각 — `sender='operator'`이고 `source`가 `app`·`slack` · 이번 달 프로모션) → 판정 → 선점 → INSERT → broadcast.
-- `serverI18n.ts`: `EVENT_HINT_TEXTS`(10개 로케일) + 한국어 원문, `composeEventHintTexts(locale, url): { ko, localized }`(순수).
+- `serverI18n.ts`: `EVENT_HINT_TEXTS`(10개 로케일 × `P_promo`·`P_list`) + 한국어 원문, `composeEventHintTexts(locale, kind, url): { ko, localized }`(순수, `kind`는 `'promotion' | 'list'` — 링크가 프로모션 상세면 `P_promo`, 목록이면 `P_list`).
 - `visitorMessageFollowups.ts`(§4.1): `ackPromise`가 `sendAutoAckIfDue` → `sendEventHintIfDue`를 차례로 돌고 `{ ack, eventHintUrl }`로 풀린다. `runVisitorMessageFollowups`는 손님 글 릴레이와 그 Promise가 모두 끝난 뒤 `eventHintUrl`이 있으면 `relayEventHintNoteToSlack`을 부른다.
 - `components/chat/MessageBubble.tsx`, `lib/chat/linkify.ts`(신규).
 - 측정 스크립트 `chat-response-baseline.mjs`에 항목 9를 **더한다**(기존 항목의 정의는 건드리지 않는다): 이벤트 안내가 나간 세션 수, 손님 글에서 안내까지 걸린 초(G-6), 그중 연락 수단을 확보한 세션 수. `event_hint_at` 컬럼이 없으면(042 적용 전) 건너뛴다 — `visitor_messenger_clicked`를 다루는 방식과 같다.
@@ -499,7 +500,7 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 
 | 위치 | 변경 |
 |------|------|
-| `serverI18n.ts` | `INTAKE_FRAGMENTS` 10개 로케일 × 12키 + 한국어 원문, `CONTACT_SAVED_TEMPLATES` 10개 문구 교체, `EVENT_HINT_TEXTS` 10개 로케일 + 한국어 원문(§4.10 — 메시지 JSON은 바꾸지 않는다) |
+| `serverI18n.ts` | `INTAKE_FRAGMENTS` 10개 로케일 × 12키 + 한국어 원문, `CONTACT_SAVED_TEMPLATES` 10개 문구 교체, `EVENT_HINT_TEXTS` 10개 로케일 × 2문장 + 한국어 원문(§4.10 — 메시지 JSON은 바꾸지 않는다) |
 | `src/messages/*.json` 11개 (`chat` 네임스페이스) | 신규 키 8개: `captureBusyLead`, `captureContactPlaceholderEmail`, `captureMessengerFallback`(`{code}` 변수), `capturePrivacyNote`, `captureWechatLead`(`{code}` 변수), `captureWechatIdLabel`, `captureCopy`, `captureCopied`. 기존 값은 바꾸지 않는다 |
 
 - 메시지 JSON은 줄바꿈이 섞여 있어 다시 직렬화하면 안 된다. 기존 `chat` 키 줄 뒤에 **바이트 보존 삽입**으로 넣고, `JSON.parse` 무결성 + `npm run verify:i18n` + `git diff --numstat`(파일당 +8/−0)으로 검증한다.
@@ -527,7 +528,7 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 | `contactService.test.ts` (신규) | `saveVisitorContact`: `email` → `visitor_email` 갱신 + 시스템 메시지, 메신저 → 기존 컬럼, `line` 호환. `recordMessengerClick`: 클릭 컬럼만 갱신·시스템 메시지 없음. `saveEmailFromMessage`: 인식 저장 1회, 같은 주소 재입력은 무변경, 이메일 없는 글은 무변경. DB 오류는 throw 없이 실패 결과 |
 | `visitorMessageFollowups.test.ts` (신규) | `startEarlyFollowups`: 이메일 저장이 끝난 뒤에 자동 안내를 시작하고, 자동 안내 완료는 기다리지 않고 돌아온다. 이벤트 안내는 자동 안내가 끝난 **뒤에** 시작한다. `runVisitorMessageFollowups`: 이메일이 저장된 경우에만 연락처 알림이 손님 글 릴레이 **뒤에** 간다, `ackPromise`를 끝까지 기다린다, 한쪽이 실패해도 다른 쪽은 끝난다. `eventHintUrl`이 있을 때만 이벤트 안내 알림이 손님 글 릴레이 **뒤에** 간다 |
 | `priceIntent.test.ts` (신규) | 실제 문의 문장 9개(영어 "…the price of Ulthera", "any promotion on ultherapy prime ?" · 중국어 "超声刀多少钱？", "我想了解一下价目表", "…含税总价是多少" · 번체 "想問除紋身價格" · 일본어 "…大体の金額についても…" 등) → true. 가격과 무관한 실제 문장(예약·진료 절차·"Do you have sculptra", "what kind of fillers do you do?") → false. `chat.promoDraft` 11개 로케일(메시지 JSON에서 읽는다)이 파일의 상수와 같고 모두 false, 배너 문장 뒤에 가격 질문이 붙으면 true. 대소문자 무시, 낱말 경계(`priceless`·`Costa`·`eventually` → false), 넣지 않은 낱말(`Do you offer…`, `얼마나 걸리나요`) → false |
-| `eventHint.test.ts` (신규) | `currentPromotionSlug`: 한국 시각 월 경계(UTC 9/30 15:00 → `2026-10-promotion`). `eventHintUrl`: 슬러그 있음 → 상세, 없음 → 목록, 10개 로케일. `shouldSendEventHint`: 처음 → true, 12시간 이내 → false, 초과 → true, 직원 글 10분 이내 → false. `composeEventHintTexts`: 10개 로케일 문장이 비어 있지 않고 서로 다르며, 한국어 원문·번역문 모두 줄바꿈 뒤 링크로 끝난다. `sendEventHintIfDue`: 낱말 없음·`CHAT_EVENT_HINT=off` → DB 호출 0회. 보냄 → INSERT가 `source='auto'`이고 원문·번역문 모두 링크로 끝난다. 선점 0행 → `lost_race`·INSERT 없음. 프로모션 없음·조회 오류 → 목록 링크로 보냄. 세션 조회·선점 오류(042 미적용) → `error`, throw 없음 |
+| `eventHint.test.ts` (신규) | `currentPromotionSlug`: 한국 시각 월 경계(UTC 9/30 15:00 → `2026-10-promotion`). `eventHintUrl`: 슬러그 있음 → 상세, 없음 → 목록, 10개 로케일. `shouldSendEventHint`: 처음 → true, 12시간 이내 → false, 초과 → true, 직원 글 10분 이내 → false. `composeEventHintTexts`: 10개 로케일 × 2종(프로모션·목록) 문장이 비어 있지 않고 서로 다르며, 한국어 원문·번역문 모두 줄바꿈 뒤 링크로 끝난다. 프로모션이 있으면 `P_promo`, 없으면 `P_list`. `sendEventHintIfDue`: 낱말 없음·`CHAT_EVENT_HINT=off` → DB 호출 0회. 보냄 → INSERT가 `source='auto'`이고 원문·번역문 모두 링크로 끝난다. 선점 0행 → `lost_race`·INSERT 없음. 프로모션 없음·조회 오류 → 목록 링크로 보냄. 세션 조회·선점 오류(042 미적용) → `error`, throw 없음 |
 | `linkify.test.ts` (신규) | 주소 없음 → 글 조각 하나, 문장 중간의 주소, 여러 개, 줄바꿈 뒤 주소, 끝 문장부호(`.` `。` `)`) 제외, `http`·`https`만(`javascript:`·`www.`만 있는 글은 글자 그대로) |
 | `escalationRunner.test.ts` (신규) | 후보 조회에 연락처 NULL 조건 2개, `CHAT_FOLLOWUP=off`면 조건 없음 |
 | `followupDigest.test.ts` (신규) | `digestWindow`: 평일 10:00~10:08·18:00~18:08, 토 15:00~, 창 밖은 null, 영업시간 설정 변경 반영. `runFollowupDigest`: 대상 조회 조건, 선점된 세션만 게시, 0명 무게시, 7일 초과 제외, 직원 없음·`off` 무게시 |
@@ -587,7 +588,7 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 
 ## 11. 구현 인계 메모 (새 세션용)
 
-- **상태**: 설계 승인(2026-10-01). 다음은 구현 계획(`superpowers:writing-plans`, `docs/superpowers/plans/`에 저장) → 구현. 경위와 실측은 메모리 `chat-auto-reply-baseline-2026-10`에 있다.
+- **상태**: 설계 승인(2026-10-01), 손님 문구만 원장님 검토 중(아래). 문구가 확정되면 구현 계획(`superpowers:writing-plans`, `docs/superpowers/plans/`에 저장) → 구현. 경위와 실측은 메모리 `chat-auto-reply-baseline-2026-10`에 있다.
 - **작업 위치**: 워크트리 `D:\dev\LIV_homepage-slack-rooms`, 브랜치 `feature/chat-contact-first`(master `a485c64`에서 분기). 메인 폴더 `D:\dev\LIV_homepage`(master)는 다른 세션이 쓰므로 거기서 브랜치를 바꾸거나 작업하지 않는다.
 - **명령**: npm은 `liv-clinic/`에서 실행한다. 이 PC는 TLS 프록시 뒤라 `npm run build`에는 `NEXT_TURBOPACK_EXPERIMENTAL_USE_SYSTEM_TLS_CERTS=1`, DB·Node 스크립트에는 `NODE_TLS_REJECT_UNAUTHORIZED=0`이 필요하다. 워크트리의 `node_modules`는 복사본이며 master와 `package.json` 차이가 없다.
 - **검증 게이트**: `npm test` · `npx tsc --noEmit` · 변경 파일만 `npx eslint <files>`(리포 전체 lint에는 기존 오류가 있다) · `npm run verify:i18n` · `npm run build`.
@@ -595,7 +596,8 @@ COMMENT ON COLUMN public.chat_sessions.event_hint_at IS
 - **기대값이 바뀌는 기존 테스트**: `contactChannels.test.ts`(채널 목록, 카드 노출 조건), `slackText.test.ts`(`ROOM_AUTO_ACK_NOTE`, `buildContactText`, 방 첫 메시지 꼬리). `autoAck.test.ts`의 짧은 안내 기대값은 유지된다.
 - **메시지 JSON**: 11개 파일은 줄바꿈이 섞여 있다. 재직렬화하지 말고 `\n`만 경계로 줄을 나눠 바이트 보존 삽입한다(메모리 `liv-i18n-file-quirks`).
 - **Grep 도구**: `glob`에 폴더 경로를 넣으면 이 PC에서 거짓 0건이 나온다. 폴더는 `path`로 좁힌다(메모리 `grep-glob-dir-false-negative`).
-- **아직 받지 못한 값의 기본 처리**: U-1 문구는 §4.1·§4.10 그대로 구현한다. U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다.
+- **손님 문구(U-1)는 검토 중이다**: 원장님이 "문구가 어떻게 나가는지 보고 고친 다음에 마무리하자"고 했다(2026-10-01). 미리보기 화면은 `https://claude.ai/artifact/5sAwkitRkzQ47no9mLFqxv`(원장님 계정에서만 열린다. 상황·언어를 고르면 손님 화면과 한국어 원문이 번호와 함께 나온다. 일본어·중국어 문장은 번역 초안이다). 원장님이 고친 문구를 §4.1·§4.10 표에 반영하고, 미리보기를 같은 주소로 다시 올린 뒤 구현 계획을 쓴다. 고칠 것이 없다는 답을 받으면 표 그대로 구현한다.
+- **아직 받지 못한 값의 기본 처리**: U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다.
 - **이벤트 안내(§4.10, 결정 ⑨)는 설계 승인 뒤 같은 날 추가됐다**: 신규 파일 `priceIntent.ts`·`eventHint.ts`·`linkify.ts`와 각 테스트, `MessageBubble.tsx` 수정, `serverI18n.ts`의 `EVENT_HINT_TEXTS`, 042의 세 번째 컬럼 `event_hint_at`, 환경변수 `CHAT_EVENT_HINT`. 낱말 목록은 §4.10 표 그대로 옮기고, 테스트에는 그 절에 적은 실제 문의 문장을 쓴다. 이번 달 프로모션은 **주소(`YYYY-MM-promotion`)로** 찾는다 — "진행 중인 이벤트"로 찾지 않는다.
 - **이미 끝난 것(다시 만들지 않는다)**: U-2·U-6·U-7 — LINE 친구 추가 링크(`SOCIAL_LINKS.line`), `public/images/wechat-qr-code.png`, `WECHAT_ID`·`WECHAT_QR_IMAGE` 상수, 새 QR을 쓰는 `WeChatQRModal`·`WeChatInfo`, 테스트 `components/ui/__tests__/WeChatQR.test.tsx`·`lib/__tests__/messengerLinks.test.ts`가 이 브랜치에 있다(`fix/wechat-qr-latest`의 8646dfc·435869d 병합). 카드에서 가져다 쓴다. 그 수정이 운영에 먼저 나갔는지는 `git fetch` 뒤 `git log origin/master`로 확인하고, 나갔다면 master를 이 브랜치에 병합한 뒤 시작한다.
 - **운영에 닿는 일은 원장님 승인 뒤에만 한다**: 마이그레이션 042 운영 적용, master 머지·푸시(= Netlify 배포), Netlify 환경변수 변경.
