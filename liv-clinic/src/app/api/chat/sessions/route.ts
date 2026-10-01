@@ -111,14 +111,16 @@ export async function GET(req: NextRequest) {
     // Visitor 측: token으로 단건 조회
     const { data, error } = await admin
       .from('chat_sessions')
-      .select('id, visitor_locale, status, last_message_at, created_at')
+      .select('id, visitor_locale, status, last_message_at, created_at, visitor_email, visitor_messenger_handle')
       .eq('session_token', token)
       .single();
 
     if (error || !data) {
       return NextResponse.json({ error: 'not_found' }, { status: 404 });
     }
-    return NextResponse.json({ session: data });
+    // 연락처 값은 돌려주지 않는다 — 손님 화면은 연락처 카드를 띄울지 판단할 유무(hasContact)만 필요하다.
+    const { visitor_email, visitor_messenger_handle, ...session } = data;
+    return NextResponse.json({ session, hasContact: Boolean(visitor_email || visitor_messenger_handle) });
   }
 
   // Admin 측: 쿠키 기반 Supabase 세션으로 인증 확인

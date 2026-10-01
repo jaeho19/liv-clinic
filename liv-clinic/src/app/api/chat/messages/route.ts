@@ -7,7 +7,12 @@ import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import { checkSessionMessageLimit } from '@/lib/chat/rateLimit';
 import { broadcastToSession } from '@/lib/chat/broadcast';
 import { relayChatMessageToSlack } from '@/lib/chat/slackRelay';
-import { sendAutoAckIfDue } from '@/lib/chat/autoAck';
+import type { ContactSession } from '@/lib/chat/contactService';
+import {
+  runVisitorMessageFollowups,
+  startEarlyFollowups,
+  type EarlyFollowups,
+} from '@/lib/chat/visitorMessageFollowups';
 
 export const runtime = 'nodejs';
 
@@ -20,6 +25,10 @@ const OperatorMessageSchema = z.object({
   sessionId: z.string().uuid(),
   text: z.string().trim().min(1).max(1000),
 });
+
+// source 는 손님 화면이 직원 글과 자동 안내(source='auto')를 가르는 데 쓴다 (연락처 카드 노출 규칙).
+const MESSAGE_COLUMNS =
+  'id, session_id, sender, original_text, original_lang, translated_text, translated_lang, translation_status, created_at, source';
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -44,7 +53,7 @@ async function handleVisitorMessage(body: unknown) {
 
   const { data: session, error: sessionError } = await admin
     .from('chat_sessions')
-    .select('id, visitor_locale, status')
+    .select('id, visitor_locale, status, visitor_email, visitor_messenger_handle')
     .eq('session_token', sessionToken)
     .single();
   if (sessionError || !session) {
@@ -79,6 +88,12 @@ async function handleVisitorMessage(body: unknown) {
     text,
     fromLang: visitorLocale,
     toLang: 'ko',
+    visitorSession: {
+      id: session.id,
+      visitor_locale: session.visitor_locale,
+      visitor_email: session.visitor_email,
+      visitor_messenger_handle: session.visitor_messenger_handle,
+    },
   });
 }
 
@@ -131,15 +146,17 @@ interface PersistArgs {
   text: string;
   fromLang: SupportedLang;
   toLang: SupportedLang;
+  /** 손님 글일 때만 — 글 속 이메일 인식과 자동 안내에 쓴다 */
+  visitorSession?: ContactSession;
 }
 
 async function persistAndBroadcast(
   admin: ChatAdminClient,
   args: PersistArgs
 ) {
-  const { sessionId, sender, senderAdminId, senderLabel = null, text, fromLang, toLang } = args;
+  const { sessionId, sender, senderAdminId, senderLabel = null, text, fromLang, toLang, visitorSession } = args;
 
-  // 1. pending 메시지 INSERT
+  // 1. pending 메시지 INSERT (손님 글이면 트리거가 awaiting_since를 세운다)
   const { data: pending, error: insertError } = await admin
     .from('chat_messages')
     .insert({
@@ -158,10 +175,16 @@ async function persistAndBroadcast(
     return NextResponse.json({ error: 'db_error' }, { status: 500 });
   }
 
-  // 2. 동기 번역
+  // 2. 손님 글: 글 속 이메일을 저장하고, 자동 안내(→ 이벤트 안내)를 번역·Slack을 기다리지 않고 지금 시작한다.
+  //    손님이 화면 앞에 있는 첫 몇 초 안에 안내가 도착해야 한다 (스펙 2026-10-01 §4.1).
+  const early: EarlyFollowups | null = visitorSession
+    ? await startEarlyFollowups(admin, visitorSession, text)
+    : null;
+
+  // 3. 동기 번역
   const translation = await translate(text, fromLang, toLang);
 
-  // 3. 결과 UPDATE
+  // 4. 결과 UPDATE
   const { data: updated, error: updateError } = await admin
     .from('chat_messages')
     .update({
@@ -172,42 +195,55 @@ async function persistAndBroadcast(
       translation_error: translation.errorCode ?? null,
     })
     .eq('id', pending.id)
-    .select(
-      'id, session_id, sender, original_text, original_lang, translated_text, translated_lang, translation_status, created_at'
-    )
+    .select(MESSAGE_COLUMNS)
     .single();
   if (updateError || !updated) {
     console.error('[chat/messages] update failed:', updateError);
+    // 자동 안내는 이미 나갔거나 나가는 중이다 — 함수가 끝나기 전에 마저 끝나게 한다.
+    if (early) {
+      const ackPromise = early.ackPromise;
+      after(async () => {
+        await ackPromise;
+      });
+    }
     return NextResponse.json({ error: 'db_error' }, { status: 500 });
   }
 
-  // 4. Broadcast (방문자 측 위젯 도달용. 어드민은 postgres_changes로 자체 수신)
+  // 5. Broadcast (방문자 측 위젯 도달용. 어드민은 postgres_changes로 자체 수신)
   void broadcastToSession(sessionId, {
     type: 'message_created',
     payload: { messageId: updated.id, sender: updated.sender as 'visitor' | 'operator' | 'system' },
   });
 
-  // 5. Slack 채널로 릴레이 — 방문자 메시지와 어드민 UI 답장을 같은 스레드에 미러링한다.
+  // 6. Slack 채널로 릴레이 — 방문자 메시지와 어드민 UI 답장을 같은 방/스레드에 미러링한다.
   //    응답 이후(after)에 처리 — 이미 동기 번역이 걸려 있는 경로에 Slack 왕복까지 얹지 않는다.
   //    Slack에서 들어온 답글은 이 라우트를 거치지 않고 slackRelay가 직접 INSERT하므로 에코가 없다.
   const translatedText = updated.translation_status === 'success' ? updated.translated_text : null;
+  const relayArgs = {
+    sessionId,
+    messageId: updated.id,
+    sender,
+    originalText: updated.original_text,
+    translatedText,
+    senderLabel,
+    receivedAt: updated.created_at,
+  };
   after(async () => {
-    await relayChatMessageToSlack({
-      sessionId,
-      messageId: updated.id,
-      sender,
-      originalText: updated.original_text,
-      translatedText,
-      senderLabel,
-      receivedAt: updated.created_at,
-    });
-    // 자동 첫 안내 — Slack 릴레이 뒤에 실행해 직원 알림을 늦추지 않는다 (스펙 §4.10)
-    if (sender === 'visitor') {
-      const ack = await sendAutoAckIfDue(sessionId);
-      if (ack === 'error') console.warn('[chat/messages] auto ack failed for session', sessionId);
+    if (early) {
+      // 손님 글: Slack 릴레이 → (이메일 저장 시) 연락처 알림, 그리고 2에서 시작한 자동 안내의 완료를 기다린다.
+      await runVisitorMessageFollowups({ relayArgs, contact: early.contact, ackPromise: early.ackPromise });
+    } else {
+      await relayChatMessageToSlack(relayArgs);
     }
   });
 
+  if (early) {
+    // contact.saved: 이번 글에서 이메일을 저장했다. hasContact: 연락처 카드를 숨길지 판단하는 값.
+    return NextResponse.json(
+      { message: updated, contact: { saved: early.contact.saved, hasContact: early.contact.hasContact } },
+      { status: 201 }
+    );
+  }
   return NextResponse.json({ message: updated }, { status: 201 });
 }
 
@@ -240,9 +276,7 @@ export async function GET(req: NextRequest) {
 
   let query = admin
     .from('chat_messages')
-    .select(
-      'id, session_id, sender, original_text, original_lang, translated_text, translated_lang, translation_status, created_at'
-    )
+    .select(MESSAGE_COLUMNS)
     .eq('session_id', sessionId)
     .order('created_at', { ascending: true })
     .limit(200);
