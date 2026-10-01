@@ -417,3 +417,71 @@ export function composeIntakeTexts(
     localized: keys.map((k) => table[k]).join('\n'),
   };
 }
+
+// ── 이벤트 안내 (스펙 2026-10-01 §4.10) ─────────────────────────────────────
+// 가격·프로모션을 물은 손님에게 "가격은 직원이 확인해 안내드린다" + 프로모션 페이지 링크를 먼저 보낸다.
+// 문장에는 가격·할인율·효과를 넣지 않는다 — 그런 내용은 링크한 페이지에만 있다.
+// ja·zh·zh-TW 는 원장님이 미리보기에서 확인한 문장(스펙 부록 A) 그대로다.
+
+/** promotion = 이번 달 프로모션 상세로 갈 때, list = 이벤트 목록으로 갈 때 */
+export type EventHintKind = 'promotion' | 'list';
+
+const EVENT_HINT_KO: Record<EventHintKind, string> = {
+  promotion: '가격은 상담 직원이 확인한 뒤 정확히 안내드리겠습니다. 이번 달 프로모션은 아래에서 보실 수 있습니다.',
+  list: '가격은 상담 직원이 확인한 뒤 정확히 안내드리겠습니다. 진행 중인 이벤트는 아래에서 보실 수 있습니다.',
+};
+
+const EVENT_HINT_TEXTS: Record<VisitorLocale, Record<EventHintKind, string>> = {
+  en: {
+    promotion: "Our consultants will confirm the exact price and get back to you. You can see this month's promotion here:",
+    list: 'Our consultants will confirm the exact price and get back to you. You can see our current promotions here:',
+  },
+  ja: {
+    promotion: '料金はスタッフが確認のうえ、正確にご案内いたします。今月のプロモーションはこちらからご覧いただけます。',
+    list: '料金はスタッフが確認のうえ、正確にご案内いたします。実施中のイベントはこちらからご覧いただけます。',
+  },
+  zh: {
+    promotion: '具体价格将由咨询人员确认后为您准确说明。本月优惠活动可在此查看：',
+    list: '具体价格将由咨询人员确认后为您准确说明。目前进行中的活动可在此查看：',
+  },
+  'zh-TW': {
+    promotion: '確切價格將由諮詢人員確認後為您準確說明。本月優惠活動可在此查看：',
+    list: '確切價格將由諮詢人員確認後為您準確說明。目前進行中的活動可在此查看：',
+  },
+  vi: {
+    promotion:
+      'Nhân viên tư vấn sẽ xác nhận giá chính xác và phản hồi lại cho bạn. Bạn có thể xem chương trình khuyến mãi tháng này tại đây:',
+    list: 'Nhân viên tư vấn sẽ xác nhận giá chính xác và phản hồi lại cho bạn. Bạn có thể xem các chương trình khuyến mãi hiện có tại đây:',
+  },
+  th: {
+    promotion: 'เจ้าหน้าที่จะตรวจสอบราคาที่แน่นอนแล้วแจ้งให้ทราบอีกครั้งค่ะ ดูโปรโมชันประจำเดือนนี้ได้ที่นี่:',
+    list: 'เจ้าหน้าที่จะตรวจสอบราคาที่แน่นอนแล้วแจ้งให้ทราบอีกครั้งค่ะ ดูโปรโมชันที่กำลังจัดอยู่ได้ที่นี่:',
+  },
+  ru: {
+    promotion: 'Наши консультанты уточнят точную стоимость и ответят вам. Акцию этого месяца можно посмотреть здесь:',
+    list: 'Наши консультанты уточнят точную стоимость и ответят вам. Действующие акции можно посмотреть здесь:',
+  },
+  fr: {
+    promotion:
+      'Nos conseillers vérifieront le tarif exact et reviendront vers vous. Vous pouvez consulter la promotion du mois ici :',
+    list: 'Nos conseillers vérifieront le tarif exact et reviendront vers vous. Vous pouvez consulter nos offres en cours ici :',
+  },
+  mn: {
+    promotion: 'Үнийг манай зөвлөх нягталж, танд яг таг мэдээлэл өгнө. Энэ сарын урамшууллыг эндээс үзнэ үү:',
+    list: 'Үнийг манай зөвлөх нягталж, танд яг таг мэдээлэл өгнө. Одоо явагдаж буй урамшууллыг эндээс үзнэ үү:',
+  },
+  ar: {
+    promotion: 'سيتأكد مستشارونا من السعر الدقيق ويعودون إليك. يمكنك الاطلاع على عرض هذا الشهر هنا:',
+    list: 'سيتأكد مستشارونا من السعر الدقيق ويعودون إليك. يمكنك الاطلاع على عروضنا الحالية هنا:',
+  },
+};
+
+/** 이벤트 안내 문구: 문장 + 줄바꿈 + 링크. ko = 관리자 화면에 보이는 원문, localized = 손님 언어. */
+export function composeEventHintTexts(
+  locale: VisitorLocale,
+  kind: EventHintKind,
+  url: string
+): { ko: string; localized: string } {
+  const table = EVENT_HINT_TEXTS[locale] ?? EVENT_HINT_TEXTS.en;
+  return { ko: `${EVENT_HINT_KO[kind]}\n${url}`, localized: `${table[kind]}\n${url}` };
+}
