@@ -35,7 +35,7 @@
 | U-4 | **이메일만 남긴 손님은 직원이 직접 메일을 보내야 한다** | 1단계에는 메일 자동 발송이 없다. 방에 한국어로 답을 쓰면 번역본이 올라오므로(§4.5 d) 그것을 복사해 메일에 붙이면 된다. 자동 발송은 다음 단계 후보다(§10) |
 | U-5 | **개인정보 처리방침에 OpenAI·Slack 추가 여부** | 지금 위탁 업체 목록에 Supabase·Google Analytics만 있다. 넣으려면 문구 초안(§10)을 승인해 주시면 함께 반영한다 |
 | U-6 | ~~병원 WeChat QR 원본 이미지~~ **받음(2026-10-01)** | 원본 화면에서 QR만 잘라 `liv-clinic/public/images/wechat-qr-code.png`(660×660, 흑백)로 넣었다. 읽어 보면 `https://u.wechat.com/kH7fonYYvwh851jK2Y2nsfo?s=2`이고 160px로 줄여도 읽힌다 |
-| U-7 | **사이트에 지금 올라가 있는 위챗 포스터의 QR 확인** | 포스터(`wechat-qr.png`, `/zh/wechat` 페이지와 QR 확대 화면에 쓰임)의 QR은 `https://u.wechat.com/kL9gQH6GOesxNpNB-SWRDko`로, **받은 원본과 주소가 다르다.** 예전 QR이라 만료됐거나 다른 계정일 수 있다. 휴대폰 WeChat으로 사이트의 QR을 한 번 스캔해 병원 계정이 뜨는지 확인이 필요하다 |
+| U-7 | ~~사이트의 위챗 포스터 QR 확인~~ **끝남(2026-10-01)** | 원장님 확인: 받은 QR이 최신이고, 사이트 포스터(`wechat-qr.png`, 주소 `https://u.wechat.com/kL9gQH6GOesxNpNB-SWRDko`)는 예전 QR이다. 브랜치 `fix/wechat-qr-latest`(8646dfc)에서 `/zh/wechat` 페이지와 QR 크게 보기 화면을 새 QR로 바꾸고 포스터를 지웠다(테스트 633건·타입 검사·빌드 통과, 화면 확인). 이 설계 브랜치에도 병합돼 있다. **운영 반영(master 푸시)은 원장님 승인 대기** — 1단계보다 먼저 따로 내보낼 수 있다 |
 
 코드에 이미 있어 따로 받을 필요가 없는 값: WeChat ID `livps0414`, WhatsApp `+82 10-6888-2773`, LINE ID `icps7972773`, 이메일 `info@livps.co.kr`, 전화 `02-797-2773`(모두 `constants.ts`). 바뀐 것이 있을 때만 알려 주시면 된다.
 
@@ -199,11 +199,11 @@ AND 최근 10분 안에 직원 글이 없음
 
 - **WeChat은 병원 QR과 아이디를 보여 준다** (결정 ⑦)
   - 블록 내용: **QR만 담은 정사각형 이미지**, `WeChat ID: livps0414` + **복사 버튼**, 안내 한 줄(`captureWechatLead` — QR을 스캔하거나 아이디를 검색해 추가한 뒤 참조 코드를 보내 달라는 내용).
-  - QR 이미지: **`/images/wechat-qr-code.png`**(원장님이 준 WeChat 원본 화면에서 QR만 자른 것, 이미 커밋됨 — U-6). 기존 `/images/wechat-qr.png`는 QR만 있는 그림이 아니라 **한국어 안내가 들어간 세로 포스터**(1024×1536, 966KB)이고 QR 주소도 원본과 다르므로(U-7) 카드에서는 쓰지 않는다. 실제 스캔 확인은 다른 기기의 WeChat으로 한다(§9).
+  - QR 이미지: **`/images/wechat-qr-code.png`**(원장님이 준 WeChat 원본 화면에서 QR만 자른 것 — U-6). 코드에서는 `constants.ts`의 `WECHAT_QR_IMAGE`로 쓴다. 예전 포스터 `wechat-qr.png`는 옛 QR이라 지웠다(U-7). 실제 스캔 확인은 다른 기기의 WeChat으로 한다(§9).
   - `zh`는 1순위가 WeChat이므로 이 블록을 **펼친 채로** 보여 준다(큰 버튼 자리). 다른 로케일은 작은 링크 "WeChat"을 누르면 같은 블록이 카드 안에 펼쳐진다.
-  - 휴대폰·PC 모두 같은 블록이다. 지금 휴대폰에서 쓰는 앱 링크(`weixin://dl/chat?…`)는 카드에서 쓰지 않는다 — 자기 화면의 QR은 스캔할 수 없으므로 휴대폰 손님은 **아이디 복사 → WeChat에서 검색**이 확실한 길이다. QR을 누르면 `WeChatQRModal`로 크게 본다(저장하거나 다른 기기로 스캔). 이 모달은 지금 포스터를 띄우므로 **`src` 인자를 추가**해 카드에서는 새 QR 이미지를 넘긴다 — 카드와 확대 화면이 서로 다른 QR을 보여 주면 안 된다. 다른 호출부(`FloatingCTA`, `/zh/wechat`의 `WeChatInfo`)는 기본값(포스터)을 그대로 쓰고, U-7 확인 결과 포스터 QR이 죽었으면 기본값과 `WeChatInfo`의 이미지를 새 QR로 바꾼다(한 줄씩).
+  - 휴대폰·PC 모두 같은 블록이다. 지금 휴대폰에서 쓰는 앱 링크(`weixin://dl/chat?…`)는 카드에서 쓰지 않는다 — 자기 화면의 QR은 스캔할 수 없으므로 휴대폰 손님은 **아이디 복사 → WeChat에서 검색**이 확실한 길이다. QR을 누르면 `WeChatQRModal`로 크게 본다(저장하거나 다른 기기로 스캔). 이 모달은 이미 새 QR과 아이디를 보여 준다(8646dfc) — 카드에서 그대로 쓰면 된다.
   - 아이디 복사 또는 QR 확대를 누르면 서버에 `click`(wechat)을 알린다(§4.4) → 방에 한 줄. 블록이 보이기만 한 것은 알리지 않는다.
-  - 병원 아이디는 상수 한 곳에 둔다: `constants.ts`에 `WECHAT_ID = 'livps0414'`를 추가하고, 지금 값을 따로 들고 있는 `WeChatInfo.tsx`도 이 상수를 쓰게 한다.
+  - 병원 아이디는 `constants.ts`의 `WECHAT_ID`를 쓴다(8646dfc에서 추가, `WeChatInfo.tsx`·`WeChatQRModal.tsx`가 이미 쓰고 있다).
   - 직원 쪽: 친구 요청과 메시지는 업무폰 WeChat으로 온다. 앱의 번역(받은 글 자동 번역, 쓰면서 번역)으로 응대하고, 긴 답은 방에 써서 올라온 번역본을 붙여 넣는다(§4.5 d, §9 직원 안내).
   - "WeChat ID 남기기"(연락처 남기기의 WeChat 칩)는 그대로 둔다 — 손님이 원하면 직원이 추가하는 길도 남긴다.
 
@@ -478,7 +478,7 @@ COMMENT ON COLUMN public.chat_sessions.visitor_messenger_clicked IS
 - **기대값이 바뀌는 기존 테스트**: `contactChannels.test.ts`(채널 목록, 카드 노출 조건), `slackText.test.ts`(`ROOM_AUTO_ACK_NOTE`, `buildContactText`, 방 첫 메시지 꼬리). `autoAck.test.ts`의 짧은 안내 기대값은 유지된다.
 - **메시지 JSON**: 11개 파일은 줄바꿈이 섞여 있다. 재직렬화하지 말고 `\n`만 경계로 줄을 나눠 바이트 보존 삽입한다(메모리 `liv-i18n-file-quirks`).
 - **Grep 도구**: `glob`에 폴더 경로를 넣으면 이 PC에서 거짓 0건이 나온다. 폴더는 `path`로 좁힌다(메모리 `grep-glob-dir-false-negative`).
-- **아직 받지 못한 값의 기본 처리**: U-1 문구는 §4.1 그대로 구현한다. U-2 LINE 링크는 현행을 유지한다(상수만 나중에 교체). U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다. U-6은 끝났다(`public/images/wechat-qr-code.png` 커밋됨 — 다시 만들지 않는다). U-7(포스터 QR 확인)의 답이 없으면 `FloatingCTA`·`/zh/wechat`은 건드리지 않고 카드만 새 QR을 쓴다.
+- **아직 받지 못한 값의 기본 처리**: U-1 문구는 §4.1 그대로 구현한다. U-2 LINE 링크는 현행을 유지한다(상수만 나중에 교체). U-3 휴진일은 `CHAT_CLOSED_DATES`를 비워 둔다. U-5 처리방침은 건드리지 않는다. U-6·U-7은 끝났다 — `public/images/wechat-qr-code.png`와 `WECHAT_ID`·`WECHAT_QR_IMAGE` 상수, 새 QR을 쓰는 `WeChatQRModal`·`WeChatInfo`, 테스트 `components/ui/__tests__/WeChatQR.test.tsx`가 이미 이 브랜치에 있다(`fix/wechat-qr-latest` 병합). 다시 만들지 말고 카드에서 가져다 쓴다. 그 수정이 운영에 먼저 나갔는지는 `git log origin/master`로 확인한다(나갔다면 master를 이 브랜치에 병합한 뒤 시작).
 - **운영에 닿는 일은 원장님 승인 뒤에만 한다**: 마이그레이션 042 운영 적용, master 머지·푸시(= Netlify 배포), Netlify 환경변수 변경.
 - **측정 스크립트**는 이미 있다(`liv-clinic/scripts/chat-response-baseline.mjs`). §1·§2의 수치를 낸 질의이므로 정의를 바꾸지 않는다.
 - **2단계(별도 문서)**: AI 이용 안내(홈페이지 답변에서 고르기), 직원 답변 이메일 자동 발송.
