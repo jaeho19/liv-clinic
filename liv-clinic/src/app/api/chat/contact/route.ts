@@ -1,26 +1,27 @@
 import { after, NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
 import { createChatAdminClient } from '@/lib/chat/db';
-import {
-  CONTACT_CHANNELS,
-  CONTACT_CHANNEL_LABELS,
-  validateContactHandle,
-} from '@/lib/chat/contactChannels';
-import { checkContactSaveLimit } from '@/lib/chat/rateLimit';
-import { getContactSavedMessage, type VisitorLocale } from '@/lib/chat/serverI18n';
-import { broadcastToSession } from '@/lib/chat/broadcast';
-import { relayContactToSlack } from '@/lib/chat/slackRelay';
+import { CLINIC_LINK_CHANNELS, validateContactHandle } from '@/lib/chat/contactChannels';
+import { recordMessengerClick, saveVisitorContact } from '@/lib/chat/contactService';
+import { checkContactClickLimit, checkContactSaveLimit } from '@/lib/chat/rateLimit';
+import { relayContactToSlack, relayMessengerClickToSlack } from '@/lib/chat/slackRelay';
 
 export const runtime = 'nodejs';
 
 const ContactSchema = z.object({
   sessionToken: z.string().uuid(),
-  channel: z.enum(CONTACT_CHANNELS),
-  handle: z.string().trim().min(4).max(100),
+  // line 저장은 새 카드에 없지만, 캐시된 옛 화면이 보낼 수 있어 받아 준다.
+  channel: z.enum(CLINIC_LINK_CHANNELS),
+  kind: z.enum(['save', 'click']).default('save'),
+  handle: z.string().trim().max(254).optional(),
 });
 
-// 방문자가 오프시간 캡처 블록에서 메신저 연락처를 남긴다.
-// 근무 시작 후 직원이 이 연락처로 선제 연락하는 것이 전제 (spec §7.1).
+// 이메일 형식 검증은 세션 생성(api/chat/sessions)과 같은 규칙을 쓴다.
+const EmailSchema = z.string().email();
+
+// 연락처 카드 (스펙 2026-10-01 §4.4).
+//   kind=save  : 손님이 자기 연락처(WhatsApp 번호·WeChat ID·이메일)를 남긴다 → '오늘 연락할 손님'
+//   kind=click : 손님이 병원 연락 단추를 눌렀다 → 기록 + 방에 한 줄. 연락처로 치지 않는다
 export async function POST(req: NextRequest) {
   let parsed;
   try {
@@ -31,11 +32,18 @@ export async function POST(req: NextRequest) {
   if (!parsed.success) {
     return NextResponse.json({ error: 'invalid_input' }, { status: 400 });
   }
-  const { sessionToken, channel } = parsed.data;
-  const handle = parsed.data.handle.trim();
+  const { sessionToken, channel, kind } = parsed.data;
+  const handle = parsed.data.handle ?? '';
 
-  if (!validateContactHandle(channel, handle)) {
-    return NextResponse.json({ error: 'invalid_handle' }, { status: 400 });
+  if (kind === 'save') {
+    if (handle.length < 4) {
+      return NextResponse.json({ error: 'invalid_input' }, { status: 400 });
+    }
+    const valid =
+      channel === 'email' ? EmailSchema.safeParse(handle).success : validateContactHandle(channel, handle);
+    if (!valid) {
+      return NextResponse.json({ error: 'invalid_handle' }, { status: 400 });
+    }
   }
 
   const admin = createChatAdminClient();
@@ -48,47 +56,31 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'session_not_found' }, { status: 404 });
   }
 
+  if (kind === 'click') {
+    // 손님 화면은 응답을 기다리지 않는다. 한도를 넘은 클릭은 조용히 버린다(방에 📲 줄이 쌓이지 않게).
+    if (!checkContactClickLimit(session.id).allowed) {
+      return NextResponse.json({ ok: true, ignored: true });
+    }
+    await recordMessengerClick(admin, session, channel);
+    after(async () => {
+      await relayMessengerClickToSlack({ sessionId: session.id, channel });
+    });
+    return NextResponse.json({ ok: true });
+  }
+
   const limit = checkContactSaveLimit(session.id);
   if (!limit.allowed) {
     return NextResponse.json({ error: 'rate_limited', reason: limit.reason }, { status: 429 });
   }
 
-  const { error: updateError } = await admin
-    .from('chat_sessions')
-    .update({ visitor_messenger_channel: channel, visitor_messenger_handle: handle })
-    .eq('id', session.id);
-  if (updateError) {
-    console.error('[chat/contact] update failed:', updateError);
-    return NextResponse.json({ error: 'db_error' }, { status: 500 });
-  }
-
-  const locale = session.visitor_locale as VisitorLocale;
-  const label = CONTACT_CHANNEL_LABELS[channel];
-
-  // 확인 system 메시지 — 실패해도 저장 자체는 성공 처리 (세션 생성 라우트와 동일 정책)
-  const { data: sysMsg, error: msgError } = await admin
-    .from('chat_messages')
-    .insert({
-      session_id: session.id,
-      sender: 'system',
-      original_text: getContactSavedMessage(locale, label, handle),
-      original_lang: locale,
-      translation_status: 'skipped',
-    })
-    .select('id')
-    .single();
-  if (msgError) {
-    console.warn('[chat/contact] system message insert failed:', msgError);
-  } else if (sysMsg) {
-    await broadcastToSession(session.id, {
-      type: 'message_created',
-      payload: { messageId: sysMsg.id, sender: 'system' },
-    });
+  const saved = await saveVisitorContact(admin, session, { channel, handle });
+  if (!saved.ok) {
+    return NextResponse.json({ error: saved.error }, { status: 500 });
   }
 
   after(async () => {
     await relayContactToSlack({ sessionId: session.id, channel, handle });
   });
 
-  return NextResponse.json({ ok: true }, { status: 201 });
+  return NextResponse.json({ ok: true, hasContact: true }, { status: 201 });
 }

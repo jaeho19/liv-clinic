@@ -139,18 +139,19 @@ export function getChatSystemMessage(
 }
 
 // 연락처 저장 확인 — 채널 라벨/핸들 삽입이 필요해 별도 템플릿 테이블.
-// 채널 라벨(WhatsApp 등)은 브랜드명이라 로케일 무관.
+// 채널 라벨(WhatsApp·Email 등)은 로케일 무관.
+// 2026-10-01: 카드가 영업시간 중에도 뜨므로 "영업 재개 후"가 아니라 "최대한 빨리 그쪽으로"로 바꿨다.
 const CONTACT_SAVED_TEMPLATES: Record<VisitorLocale, string> = {
-  en: '{channel} contact saved: {handle}. We will message you first once we are back online.',
-  ja: '{channel}の連絡先を保存しました：{handle}。営業再開後、こちらから先にご連絡いたします。',
-  zh: '已保存您的{channel}联系方式：{handle}。恢复营业后我们会主动联系您。',
-  'zh-TW': '已儲存您的{channel}聯絡方式：{handle}。恢復營業後我們會主動聯絡您。',
-  vi: 'Đã lưu thông tin {channel} của bạn: {handle}. Chúng tôi sẽ chủ động liên hệ ngay khi làm việc trở lại.',
-  th: 'บันทึกข้อมูลติดต่อ {channel} ของคุณแล้ว: {handle} เราจะติดต่อคุณทันทีเมื่อกลับมาทำการ',
-  ru: 'Контакт {channel} сохранён: {handle}. Мы сами свяжемся с вами, как только снова будем онлайн.',
-  fr: 'Contact {channel} enregistré : {handle}. Nous vous contacterons dès notre retour.',
-  mn: '{channel} холбоо барих мэдээлэл хадгалагдлаа: {handle}. Бид ажил эхэлмэгц тантай эхэлж холбогдоно.',
-  ar: 'تم حفظ جهة اتصال {channel}: {handle}. سنتواصل معك أولاً فور عودتنا.',
+  en: "{channel} contact saved: {handle}. We'll reach out to you there as soon as we can.",
+  ja: '{channel}の連絡先を保存しました：{handle}。できるだけ早くそちらへご連絡いたします。',
+  zh: '已保存您的{channel}联系方式：{handle}。我们会尽快通过该方式联系您。',
+  'zh-TW': '已儲存您的{channel}聯絡方式：{handle}。我們會盡快透過該方式與您聯絡。',
+  vi: 'Đã lưu thông tin {channel} của bạn: {handle}. Chúng tôi sẽ liên hệ với bạn qua đó sớm nhất có thể.',
+  th: 'บันทึกข้อมูลติดต่อ {channel} ของคุณแล้ว: {handle} เราจะติดต่อคุณทางนั้นโดยเร็วที่สุด',
+  ru: 'Контакт {channel} сохранён: {handle}. Мы свяжемся с вами там как можно скорее.',
+  fr: 'Contact {channel} enregistré : {handle}. Nous vous y recontacterons dès que possible.',
+  mn: '{channel} холбоо барих мэдээлэл хадгалагдлаа: {handle}. Бид аль болох хурдан тэр хаягаар тантай холбогдоно.',
+  ar: 'تم حفظ جهة اتصال {channel}: {handle}. سنتواصل معك عبرها في أقرب وقت ممكن.',
 };
 
 export function getContactSavedMessage(

@@ -94,21 +94,32 @@ export function checkIpSessionDailyLimit(ipHash: string | null): RateLimitDecisi
 
 const CONTACT_SAVES_PER_DAY = Number(process.env.CHAT_RATE_LIMIT_CONTACT_PER_DAY ?? 5);
 const contactDaily = new Map<string, IpDailyBucket>();
+const contactClickDaily = new Map<string, IpDailyBucket>();
 
-// 오프시간 캡처 블록의 연락처 저장 — 세션당 일일 제한 (마지막 값으로 덮어쓰기 허용)
-export function checkContactSaveLimit(sessionId: string): RateLimitDecision {
+function checkContactDaily(map: Map<string, IpDailyBucket>, sessionId: string): RateLimitDecision {
   const dayKey = kstDateKey();
-  const bucket = contactDaily.get(sessionId);
+  const bucket = map.get(sessionId);
   if (!bucket || bucket.dayKey !== dayKey) {
-    contactDaily.set(sessionId, { dayKey, count: 1 });
+    map.set(sessionId, { dayKey, count: 1 });
   } else {
     if (bucket.count >= CONTACT_SAVES_PER_DAY) {
       return { allowed: false, reason: 'contact_daily' };
     }
     bucket.count += 1;
   }
-  trimIfTooLarge(contactDaily);
+  trimIfTooLarge(map);
   return { allowed: true };
+}
+
+// 연락처 저장(카드 저장 + 손님 글 속 이메일 인식) — 세션당 일일 제한 (마지막 값으로 덮어쓰기 허용)
+export function checkContactSaveLimit(sessionId: string): RateLimitDecision {
+  return checkContactDaily(contactDaily, sessionId);
+}
+
+// 카드의 병원 연락 단추 클릭 알림 — 세션당 일일 제한. 저장과 통을 따로 둔다:
+// 단추를 여러 번 눌렀다고 정작 연락처 저장이 막히면 안 된다 (Slack 방에 올라가는 📲 줄만 제한하면 된다).
+export function checkContactClickLimit(sessionId: string): RateLimitDecision {
+  return checkContactDaily(contactClickDaily, sessionId);
 }
 
 // 테스트/개발용 리셋
@@ -117,4 +128,5 @@ export function _resetRateLimitForTesting() {
   sessionTotal.clear();
   ipDaily.clear();
   contactDaily.clear();
+  contactClickDaily.clear();
 }
