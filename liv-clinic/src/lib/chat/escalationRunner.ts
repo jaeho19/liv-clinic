@@ -1,5 +1,6 @@
 import 'server-only';
 import { createChatAdminClient } from '@/lib/chat/db';
+import { isFollowupEnabled } from '@/lib/chat/chatFlags';
 import { parseThresholds, planEscalation } from '@/lib/chat/escalation';
 import { getSlackChannelId, isSlackRelayConfigured, postSlackMessage } from '@/lib/chat/slack';
 import { loadStaffDirectory, mentionOf } from '@/lib/chat/slackStaff';
@@ -24,16 +25,21 @@ export async function runEscalations(now: Date): Promise<{ checked: number; esca
   if (staff.responderIds.length === 0) return { checked: 0, escalated: 0 };
   const legacy = getSlackChannelId();
 
-  const { data, error } = await admin
+  let query = admin
     .from('chat_sessions')
     .select(`${RELAY_SESSION_COLUMNS}, awaiting_since, escalation_level`)
     .eq('status', 'open')
     .is('resolved_at', null)
     .not('awaiting_since', 'is', null)
     .lt('escalation_level', 3)
-    .not('slack_mode', 'is', null)
-    .order('awaiting_since', { ascending: true })
-    .limit(BATCH);
+    .not('slack_mode', 'is', null);
+  // 연락처를 남긴 손님은 '오늘 연락할 손님'으로 따로 챙긴다 — 5·12·30분 알림은 연락처가 없는 손님에게만 간다
+  // (스펙 2026-10-01 §4.5 a). 알림이 이미 올라간 뒤에 연락처를 남기면 그때부터 후보에서 빠진다.
+  // CHAT_FOLLOWUP=off(긴급 정지)면 예전처럼 연락처와 무관하게 알린다.
+  if (isFollowupEnabled()) {
+    query = query.is('visitor_email', null).is('visitor_messenger_handle', null);
+  }
+  const { data, error } = await query.order('awaiting_since', { ascending: true }).limit(BATCH);
   if (error) {
     console.warn('[chat ops] candidate query failed:', error.code ?? 'unknown');
     return { checked: 0, escalated: 0 };
