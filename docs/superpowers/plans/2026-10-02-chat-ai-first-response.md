@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-10-02-chat-ai-first-response-design.md` (원장님 승인 2026-10-02 — 설계 1/3 · 2/3 · 3/3)
 
-**이 계획의 코드는 실행해 본 것이다.** 이 워크트리의 임시 브랜치(`scratch/chat-ai-dev`)에서 아래 과제를 순서대로 구현해 확인했다(2026-10-02): 테스트 81파일 1326건 통과(기준선 60파일 988건), `npx tsc --noEmit` 통과, 변경 파일 `npx eslint` 통과, `npm run build` 성공, 화면 확인 31개 항목 통과(가짜 API). 마이그레이션 043과 측정 SQL은 로컬 Postgres(PGlite)에서 돌려 확인했고, 실제 모델로는 재생 시험 도구로 사례 36개(10개 언어, 손님 글 40건)를 돌려 40건 모두 답이 나가는 것을 확인했다(대체 0 · 다시 쓴 답 0, 답까지 중앙값 3.4초 · 최대 5.1초). 구현 뒤 독립 검토를 두 번 받았고(대화 흐름 · 저장 순서 12가지, 출력 검사를 빠져나가는 길 15가지), 고친 내용이 이 계획의 코드에 들어 있다. 운영 DB · Slack · Netlify에는 닿지 않았다(운영 DB는 읽기 전용 조회만 했다). 그 뒤 **이 계획서만 가지고** 기준선에서 처음부터 다시 적용해(아래 `plan-apply.mjs`로 블록을 꺼내 적용) 과제마다 같은 테스트 건수와 같은 파일 내용이 나오는 것까지 확인했다. 과제마다 적힌 "실패 · 통과 건수"와 "대조 값"은 그때의 실제 값이다.
+**이 계획의 코드는 실행해 본 것이다.** 이 워크트리의 임시 브랜치(`scratch/chat-ai-dev`)에서 아래 과제를 순서대로 구현해 확인했다(2026-10-02): 테스트 81파일 1354건 통과(기준선 60파일 988건), `npx tsc --noEmit` 통과, 변경 파일 `npx eslint` 통과, `npm run build` 성공, 화면 확인 31개 항목 통과(가짜 API). 마이그레이션 043과 측정 SQL은 로컬 Postgres(PGlite)에서 돌려 확인했고, 실제 모델로는 재생 시험 도구로 사례 43개(10개 언어, 손님 글 47건)를 돌려 47건 모두 답이 나가는 것을 확인했다(접수 안내로 대신한 답 0 · 검사에 걸려 다시 쓴 답 0 · 모델 호출이 12초 시간 한도에 걸려 다시 부른 답 1, 답까지 중앙값 3.6초 · 다시 부른 1건은 16.0초, 나머지는 5.4초 안). 구현 뒤 독립 검토를 세 번 받았고(대화 흐름 · 저장 순서 12가지, 출력 검사를 빠져나가는 길 15가지, 고친 검사에 글 약 2,100개를 넣어 본 검토에서 빠져나가는 길 14종류 · 멀쩡한 글이 걸리는 경우 7종류), 고친 내용이 이 계획의 코드에 들어 있다. 운영 DB · Slack · Netlify에는 닿지 않았다(운영 DB는 읽기 전용 조회만 했다). 그 뒤 **이 계획서만 가지고** 기준선에서 처음부터 다시 적용해(아래 `plan-apply.mjs`로 블록을 꺼내 적용) 과제마다 같은 테스트 건수와 같은 파일 내용이 나오는 것까지 확인했다. 과제마다 적힌 "실패 · 통과 건수"와 "대조 값"은 그때의 실제 값이다.
 
 ## Global Constraints
 
@@ -63,7 +63,7 @@
 | `src/lib/chat/ai/booking.ts` ★ | 가예약 규칙(순수): 값 합치기 · 시각 읽기 · 찼는가 · 바뀌었는가 · 직원용 한 줄 | 5 |
 | `src/lib/chat/ai/replyTemplates.ts` ★ | 프로그램이 붙이는 고정 문구 10개 언어 | 6 |
 | `src/lib/chat/ai/amounts.ts` ★ | 금액처럼 보이는 글자 찾기 — 검사와 이력 가리기가 함께 쓴다 | 7 |
-| `src/lib/chat/ai/guards.ts` ★ | 출력 읽기 · 검사(C-1~C-9) · 가예약 칸 검사 · 다시 쓰게 하는 말 | 7 |
+| `src/lib/chat/ai/guards.ts` ★ | 출력 읽기 · 검사(C-1~C-9 · 메신저 아이디 · 답하는 언어) · 가예약 칸 검사 · 다시 쓰게 하는 말 | 7 |
 | `src/lib/chat/ai/assemble.ts` ★ | 꼬리표 → 금액 줄, 금액 안내, 정체 답, 가예약 요약, 이력용 글 | 8 |
 | `src/lib/chat/ai/prompt.ts` ★ | 지시문(바뀌지 않는 부분이 앞) · 대화 이력 | 9 |
 | `src/lib/chat/ai/openai.ts` ★ | 모델 호출(시간 한도 · 오류 구분) | 10 |
@@ -82,7 +82,7 @@
 | (루트) `chat-ai-screen-check.mjs` ★ | 화면 확인(가짜 API · 가짜 실시간 연결) | 23 |
 | `scripts/_i18n-work/value-edits.privacy-processors.json` ★ | 처리방침 5조 문구(승인 뒤) | 24 |
 
-테스트: `src/lib/chat/ai/__tests__/`(★ 14개 — eligibility · knowledge · calendar · booking · replyTemplates · amounts · guards · assemble · prompt · openai · bookingStore · turn · aiFollowups · visitorFlags), `src/lib/chat/__tests__/`(★ slackAiNotices · slackRelayAi · visitorMessageFollowupsAi · visitorView · followupDigestAi · panelRules · adminView, 수정 chatFlags · slackLook · contactService · fakeAdmin).
+테스트: `src/lib/chat/ai/__tests__/`(★ 14개 — eligibility · knowledge · calendar · booking · replyTemplates · amounts · guards · assemble · prompt · openai · bookingStore · turn · aiFollowups · visitorFlags), `src/lib/chat/__tests__/`(★ slackAiNotices · slackRelayAi · visitorMessageFollowupsAi · visitorView · followupDigestAi · panelRules · adminView, 수정 chatFlags · slackLook · contactService · fakeAdmin). `src/lib/chat/ai/__tests__/guardsCorpus.ts` ★는 검사의 회귀 말뭉치(테스트가 읽는 자료)다.
 
 ## 스펙에서 보완한 점
 
@@ -106,15 +106,18 @@
 | 14 | 대화당 답 30회 (§4.2 · §6) | 그 대화에서 **AI를 부른 횟수** 30회 — 버린 답 · 접수 안내로 대신한 답도 센다 | 글을 연달아 보내면 차례마다 모델을 부르고 버린다. 나간 답만 세면 한 대화가 하루 한도(모든 손님이 함께 쓴다)를 다 태울 수 있다 |
 | 15 | 보관 뒤 다시 오면 AI가 다시 답한다 (§4.13) | 그때 **지난 방문의 가예약을 지운다**(043의 트리거, 종료 뒤 재오픈 경로) | 지난 방문의 가예약이 "받아 둔 값"으로 남으면 새 방문의 요약과 알림이 나가지 않는다 |
 | 16 | 새 테이블의 RLS (§5) | `service_role` 정책만 둔다(로그인 사용자용 정책 없음) | 가예약에는 손님 연락처가, AI 기록에는 손님 글에서 나온 내용이 있다. 관리자 화면은 서버에서 읽어 넘긴다 |
-| 17 | 검사 C-2~C-7 (§4.6) | 검사용 글(전각 글자 · 다른 문자의 숫자를 보통 글자로 바꾼 것)에 검사한다. 글자로 쓴 수 · 단위 낱말 · 묶음 숫자, 퍼센트 낱말 · `八折`, 꼬리표 비슷한 것 · 문장 안의 꼬리표, 이력 표시 따라 쓰기, 사람이라는 말, `http` 없는 주소 · 메일을 더 막는다. 금지 표현은 흔한 말과 겹치는 낱말을 주장하는 꼴로 좁혔다 | 독립 검토에서 검사를 빠져나가는 길 15가지와, 정상 문장("What date works best for you?")이 걸리는 경우가 나왔다 |
-| 18 | 전화번호는 손님이 대화에 쓴 번호도 통과 (C-8) | **연락처로 남긴 번호**(세션 · 가예약 · 이번 출력)와 병원 번호만 통과한다 | 손님이 "1500000 won"이라고 쓰면 그 숫자가 전화번호로 통과해 AI가 금액을 따라 쓸 수 있었다 |
-| 19 | 가예약 요약은 프로그램이 쓴다 (§4.5) | 요약에 찍히는 칸(시술 · 이름 · 시간 메모)도 검사하고, 걸린 칸은 받지 않는다 | 그 칸의 글은 AI가 채운다 — 금액 · 할인율이 요약을 타고 나갈 수 있었다 |
-| 20 | 답은 손님 언어로 (§4.4) | 검사가 아는 언어(10개 + 한국어)로만. 그 밖의 언어로 쓴 글에는 사이트 언어로 답한다 | 검사가 모르는 언어로 쓴 금지 표현은 막지 못한다 |
+| 17 | 검사 C-2~C-7 (§4.6) | 검사용 글(전각 글자 · 다른 문자의 숫자 · 꾸민 숫자를 보통 글자로 바꾸고 보이지 않는 글자를 지운 것)에 검사한다. 글자로 쓴 수 · 단위 낱말 · 줄임 단위(`2.4m` · `240w`) · 묶음 숫자 · **연도가 아닌 네 자리 이상의 숫자**, 퍼센트 낱말 · `八折` · "half price" · "20 off", 꼬리표 비슷한 것 · 문장 안의 꼬리표, 이력 표시 따라 쓰기, 자기가 사람이라는 말, `http` 없는 주소 · 메일을 더 막는다. 금지 표현은 흔한 말과 겹치는 낱말을 주장하는 꼴로 좁혔고, 정직한 부정문("영구적이지 않습니다" · "보장할 수 없습니다")은 통과시킨다. 검토에서 나온 글은 회귀 말뭉치(걸려야 하는 글 358개 · 통과해야 하는 글 422개)로 저장소에 둔다 | 검사에 대한 독립 검토 두 번에서 빠져나가는 길 15가지 + 14종류와, 정상 문장("What date works best for you?")이 걸리는 경우가 나왔다. 재생 시험에서는 정직한 부정문이 걸려 AI가 에둘러 답했다 |
+| 18 | 전화번호는 손님이 대화에 쓴 번호도 통과 (C-8) | **연락처로 남긴 번호 · 메신저 아이디**(세션 · 가예약 · 이번 출력)와 병원 것만 통과한다 | 손님이 "1500000 won"이라고 쓰면 그 숫자가 전화번호로 통과해 AI가 금액을 따라 쓸 수 있었다. 병원 것이 아닌 아이디(`ID: …` · `@…`)로 손님을 다른 곳에 보내는 글도 막는다 |
+| 19 | 가예약 요약은 프로그램이 쓴다 (§4.5) | 요약에 찍히는 칸(시술 · 이름 · 시각 · 시간 메모)도 검사하고, 걸린 칸은 받지 않는다 | 그 칸의 글은 AI가 채운다 — 금액 · 할인율이 요약을 타고 나갈 수 있었다 |
+| 20 | 답은 손님 언어로 (§4.4) | 검사가 아는 언어(10개 + 한국어)로만. 그 밖의 언어로 쓴 글에는 사이트 언어로 답하게 하고(지시문), 그래도 그 밖의 언어로 쓴 답은 검사가 걸러 다시 쓰게 한다 | 검사가 모르는 언어로 쓴 금지 표현은 막지 못한다 |
 | 21 | 가예약의 시각 (§4.7) | `2pm` · `21:00 KST` 꼴도 읽어 검사하고, 시간 메모 속의 시각("after 8pm")도 진료 시간으로 본다. 날짜만 바뀌어 받아 둔 시각이 맞지 않게 되면 시각을 비운다. 오늘 진료가 끝난 뒤의 "오늘"은 받지 않는다 | 읽지 못한 시각이 메모로 돌아가 진료 시간 검사를 지나쳤다 |
 | 22 | 가예약을 저장하고 글을 내보낸다 (§4.7 · §4.9) | **글이 나간 뒤에** 가예약과 연락처를 저장한다. 버릴지 확인하는 조회가 실패하면 내보내지 않는다 | 저장 뒤 글이 못 나가면 "직원에게 알렸다"는 표시만 남아 알림이 영영 나가지 않는다 |
 | 23 | 가예약 · 🙋은 방에 올린다 (§4.11) | 방도 스레드도 없는 대화면 `#해외문의`에 관리자 화면 링크와 함께 올린다. 🙋 멘션 표시는 글을 올리지 못하면 되돌린다. 요약의 🙋는 직원이 맡지 않은 대화에만 붙인다. 손님 글의 번역 저장이 실패해도 AI 결과는 방에 올린다 | 직원이 해야 할 일이 조용히 빠지는 경로를 막는다 |
 | 24 | 켠 뒤 AI 답 전체를 점검한다 (§4.14) | 읽기 위한 내보내기 스크립트(`chat-ai-review-export.mjs`)를 만든다 — 연락처는 가린다 | 관리자 화면에서 대화를 하나씩 여는 것으로는 "전체 점검"을 하기 어렵다 |
 | 25 | 꼬리표 자리에 금액 줄을 넣는다 (§4.5) | 같은 꼬리표를 떨어진 자리에 다시 쓰면 다시 보여 준다. 번호 · 글머리표만 남은 줄은 버린다. 지시문의 보기 꼬리표는 없는 번호(`{{P000}}`)다 | 소제목 아래가 비는 답, "1."만 남는 줄, 보기를 그대로 베껴 엉뚱한 금액이 나가는 답을 막는다 |
+| 26 | 가예약의 연락처는 AI가 채운다 (§4.7) | AI가 낸 연락처는 **손님 글에 실제로 있는 것만** 받는다(전화번호는 숫자만 견준다). 없으면 버린다 | AI가 지어낸 번호나 다른 사람의 아이디가 가예약 요약에 찍히고 "손님 연락처"로 검사를 통과할 수 있었다 |
+| 27 | 검사에 걸린 이유는 `chat_ai_turns.issues`에 남긴다 (§4.6) | 다시 써서 **나간** 답의 기록에도 처음 쓴 글이 걸린 이유를 남긴다. 점검용 내보내기와 재생 표가 그 이유를 보여 준다(이유 안의 번호 · 메일은 가린다) | 답이 나가면 이유가 사라져, 멀쩡한 답이 왜 다시 쓰였는지(답이 4초에서 7~10초로 늦어진다) 알 수 없었다 |
+| 28 | 금지 표현은 쓰지 않는다 (부록 A) | "영구적인가요 · 보장하나요 · 최고인가요"에 답하는 법을 지시문에 적었다: 유지 기간 · 개인차 · 상담에서 설명. `not permanent` · `cannot guarantee`는 써도 되고, 손님이 쓴 그 밖의 낱말(best · 100% · forever)은 부정할 때도 되풀이하지 않는다. 부작용 · 안전 질문은 답하고 나서 직원에게도 알린다(🙋) | 재생 시험에서 이런 질문 16건 가운데 7건이 처음에 검사에 걸려 다시 쓰였다(고친 뒤 같은 16건을 다시 돌려 0~1건) |
 
 ## 작업 순서 한눈에 보기
 
@@ -122,12 +125,12 @@
 |------|------|-----------------|-------------|---------------|
 | 준비 | 0 | 기준선 확인, `plan-apply.mjs`(임시) | 60파일 988건 | 아니오 |
 | 바탕 | 1~2 | 043(파일만) · 검증 · 타입 · 스위치, 답할 차례 규칙 | 60파일 990건 → 61파일 1003건 | 아니오 (043은 로컬 Postgres에서만) |
-| 근거 자료와 달력 | 3~5 | 사실 문장 · 가격 줄, 달력, 가예약 규칙 | 62파일 1019건 → 64파일 1067건 | 아니오 |
-| 답을 만드는 부품 | 6~10 | 고정 문구, 검사, 조립, 지시문, 모델 호출 | 65파일 1089건 → 70파일 1184건 | 아니오 |
-| 실행기와 재생 도구 | 11~12 | 한 차례 실행기 · 가예약 저장소, 재생 시험 도구 | 72파일 1235건 | 아니오 (Task 12에서 OpenAI 1회) |
-| Slack과 연결 | 13~16 | 문구 · 모양, 릴레이, 손님 글 처리에 연결, 요약 | 73파일 1246건 → 78파일 1298건 | 아니오 |
-| 화면 | 17~19 | 손님 화면용 신호, 손님 화면, 관리자 화면 | 79파일 1312건 → 81파일 1326건 | 아니오 |
-| 마무리 | 20~23 | 측정 항목, 가격 이름 번역, 문서, 전체 검증(빌드 · 화면 확인) | 81파일 1326건 | 아니오 (화면 확인은 가짜 응답으로) |
+| 근거 자료와 달력 | 3~5 | 사실 문장 · 가격 줄, 달력, 가예약 규칙 | 62파일 1020건 → 64파일 1070건 | 아니오 |
+| 답을 만드는 부품 | 6~10 | 고정 문구, 검사, 조립, 지시문, 모델 호출 | 65파일 1092건 → 70파일 1209건 | 아니오 |
+| 실행기와 재생 도구 | 11~12 | 한 차례 실행기 · 가예약 저장소, 재생 시험 도구 | 72파일 1263건 | 아니오 (Task 12에서 OpenAI 1회) |
+| Slack과 연결 | 13~16 | 문구 · 모양, 릴레이, 손님 글 처리에 연결, 요약 | 73파일 1274건 → 78파일 1326건 | 아니오 |
+| 화면 | 17~19 | 손님 화면용 신호, 손님 화면, 관리자 화면 | 79파일 1340건 → 81파일 1354건 | 아니오 |
+| 마무리 | 20~23 | 측정 항목, 가격 이름 번역, 문서, 전체 검증(빌드 · 화면 확인) | 81파일 1354건 | 아니오 (화면 확인은 가짜 응답으로) |
 | 승인 · 자료가 있을 때 | 24~26 | 처리방침 문구(U-5), 원장님 엑셀 반영(U-1), 재생 표(U-6) | — | 아니오 (Task 26은 OpenAI 호출) |
 | 운영 반영 | 27 | 043 적용 → 배포(꺼진 채) → 시험 모드 → 전체 켜기 | — | **예 — 승인 ①~④** |
 
@@ -228,7 +231,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs --list | wc -l && node plan-apply.mjs --list | head -3
 ```
-Expected: 첫 줄 `86`(블록 86개). 이어서 `T1-test	diff	chatFlags.test.ts`로 시작하는 목록.
+Expected: 첫 줄 `87`(블록 87개). 이어서 `T1-test	diff	chatFlags.test.ts`로 시작하는 목록.
 
 `plan-apply.mjs`는 커밋하지 않는다. `git status`에 `?? plan-apply.mjs`로 계속 보이는 것이 정상이다.
 
@@ -1417,7 +1420,7 @@ AI가 말해도 되는 것의 전부다(설계서 §4.3). **금액은 원장님 
 - `priceRows.base.generated.ts` — 홈페이지 시술 가격표(`src/lib/pricing.ts`)의 줄 56개. **생성 파일**이다: 아래 스크립트가 만든다. 계획서에 싣지 않는다.
 - `priceRows.extra.ts` — 손으로 관리하는 줄: 필러 3줄, 상담비, 10월 프로모션 27줄(유효 기간 2026-10-01 ~ 10-31), 이달 프로모션 페이지 주소.
 - `scope.ts` — 금액이 출처마다 달라 AI에게 주지 않는 줄 7개, 부가세 표기, 써도 되는 퍼센트.
-- `index.ts` — 오늘 유효한 줄에 꼬리표(`P001`… · `M01`… · `F01`…)를 붙이고 프롬프트용 글을 만든다.
+- `index.ts` — 오늘 유효한 줄에 꼬리표(`P001`… · `M01`… · `F01`…)를 붙이고 프롬프트용 글을 만든다. AI가 쓴 글에 나와도 되는 **병원의 주소 · 전화번호 · 메신저 아이디**도 여기서 낸다(사실 문장에 적힌 것과 같은 값 — 테스트가 맞춰 본다).
 
 **Files:**
 - Create: `liv-clinic/src/lib/chat/ai/knowledge/types.ts`, `scope.ts`, `facts.ts`, `priceRows.extra.ts`, `index.ts`
@@ -1426,8 +1429,8 @@ AI가 말해도 되는 것의 전부다(설계서 §4.3). **금액은 원장님 
 - Test: `liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts`
 
 **Interfaces:**
-- Consumes: `src/lib/pricing.ts`의 `PRICING`, `src/messages/*.json`의 `pricing.labels`, `SITE_URL`(`@/lib/siteEnvironment`), `SOCIAL_LINKS`(`@/lib/constants`), `VisitorLocale`
-- Produces: `interface PriceRowSource { key; group: 'base' | 'promo' | 'fee'; labelKo; amount; unit: 'starting' | 'fixed'; validFrom?; validUntil?; labels: Record<VisitorLocale, string> }`, `interface PriceRow extends PriceRowSource { id: string }`, `STAFF_ONLY_KEYS: ReadonlySet<string>`, `type VatDisplay = 'both' | 'excluded' | 'included'`, `VAT_DISPLAY`, `ALLOWED_PERCENTS`, `kstDateKey(now): string`, `isRowValid(row, dateKey): boolean`, `priceTagPattern(): RegExp`(`{{P031}}` 꼴 — 부를 때마다 새 정규식), `TAG_LINE_REST_RE`(꼬리표가 있는 줄에서 꼬리표를 떼고 남아도 되는 것 — 글머리표 · 번호 · 문장부호뿐. Task 7의 검사와 Task 8의 조립이 함께 쓴다), `getPriceRows(now): PriceRow[]`, `priceRowLine(row): string`, `priceQuoteKo(row): string`(직원에게 보이는 `이름 460,000원~`), `buildPriceText(rows): string`, `promotionPageUrl(locale, now): string | null`, `buildFactsText(locale, now): string`, `allowedUrls(locale, now): string[]`, `interface Knowledge { rows; rowById; factsText; priceText; allowedUrls }`, `getKnowledge(locale, now): Knowledge`(같은 날 · 같은 언어면 같은 객체)
+- Consumes: `src/lib/pricing.ts`의 `PRICING`, `src/messages/*.json`의 `pricing.labels`, `SITE_URL`(`@/lib/siteEnvironment`), `SITE_INFO` · `SOCIAL_LINKS` · `WECHAT_ID` · `WHATSAPP_NUMBER`(`@/lib/constants`), `VisitorLocale`
+- Produces: `interface PriceRowSource { key; group: 'base' | 'promo' | 'fee'; labelKo; amount; unit: 'starting' | 'fixed'; validFrom?; validUntil?; labels: Record<VisitorLocale, string> }`, `interface PriceRow extends PriceRowSource { id: string }`, `STAFF_ONLY_KEYS: ReadonlySet<string>`, `type VatDisplay = 'both' | 'excluded' | 'included'`, `VAT_DISPLAY`, `ALLOWED_PERCENTS`, `kstDateKey(now): string`, `isRowValid(row, dateKey): boolean`, `priceTagPattern(): RegExp`(`{{P031}}` 꼴 — 부를 때마다 새 정규식), `TAG_LINE_REST_RE`(꼬리표가 있는 줄에서 꼬리표를 떼고 남아도 되는 것 — 글머리표 · 번호 · 문장부호뿐. Task 7의 검사와 Task 8의 조립이 함께 쓴다), `getPriceRows(now): PriceRow[]`, `priceRowLine(row): string`, `priceQuoteKo(row): string`(직원에게 보이는 `이름 460,000원~`), `buildPriceText(rows): string`, `promotionPageUrl(locale, now): string | null`, `buildFactsText(locale, now): string`, `CLINIC_PHONE_DIGITS: readonly string[]`(병원 전화번호의 숫자 — 대표 번호와 WhatsApp 번호, 국내 꼴 · 국제 꼴), `CLINIC_HANDLES: readonly string[]`(병원 메신저 아이디 — WeChat), `allowedUrls(locale, now): string[]`, `interface Knowledge { rows; rowById; factsText; priceText; allowedUrls }`, `getKnowledge(locale, now): Knowledge`(같은 날 · 같은 언어면 같은 객체)
 
 - [ ] **Step 1: 실패하는 테스트를 쓴다**
 
@@ -1444,6 +1447,8 @@ import { CLINIC_FACTS_KO } from '../knowledge/facts';
 import {
   allowedUrls,
   buildFactsText,
+  CLINIC_HANDLES,
+  CLINIC_PHONE_DIGITS,
   buildPriceText,
   getKnowledge,
   getPriceRows,
@@ -1465,6 +1470,18 @@ const labelsOf = (locale: string): Labels =>
 const OCT_2 = new Date('2026-10-02T07:20:00Z'); // 한국 10/02 16:20
 const NOV_2 = new Date('2026-11-02T03:00:00Z');
 const MONEY_RE = /\d[\d,.]*\s*(원|만\s?원|KRW|won)|KRW\s?\d|₩/i;
+
+describe('병원 연락처 — 검사가 통과시키는 목록 (C-8)', () => {
+  it('사실 문장에 적힌 전화번호 · 아이디가 목록에 있다 — 자료에만 있고 목록에 없으면 AI가 그 번호를 쓸 때마다 검사에 걸린다', () => {
+    expect(CLINIC_PHONE_DIGITS).toEqual(['027972773', '8227972773', '821068882773', '01068882773']);
+    expect(CLINIC_HANDLES).toEqual(['livps0414']);
+    const facts = buildFactsText('en', new Date('2026-10-02T07:20:00Z'));
+    const phones = (facts.match(/\+82[\d\s-]{8,}\d/g) ?? []).map((p) => p.replace(/\D/g, ''));
+    expect(phones.length).toBeGreaterThanOrEqual(2);
+    for (const p of phones) expect(CLINIC_PHONE_DIGITS, p).toContain(p);
+    for (const id of CLINIC_HANDLES) expect(facts).toContain(id);
+  });
+});
 
 describe('기본 가격 줄 (생성 파일)', () => {
   it('pricing.ts 의 금액 있는 줄과 하나씩 맞는다 — 어긋나면 node scripts/chat-ai-build-price-rows.mjs 를 다시 돌린다', () => {
@@ -2512,7 +2529,7 @@ console.log(`wrote ${OUT}: ${rows.length} rows`);
 <!-- block: T3-index | full | liv-clinic/src/lib/chat/ai/knowledge/index.ts -->
 ````ts
 import type { VisitorLocale } from '@/lib/chat/chatApi';
-import { SOCIAL_LINKS } from '@/lib/constants';
+import { SITE_INFO, SOCIAL_LINKS, WECHAT_ID, WHATSAPP_NUMBER } from '@/lib/constants';
 import { SITE_URL } from '@/lib/siteEnvironment';
 import { CLINIC_FACTS_KO } from './facts';
 import { BASE_PRICE_ROWS } from './priceRows.base.generated';
@@ -2611,6 +2628,19 @@ export function buildFactsText(locale: VisitorLocale, now: Date): string {
   return promo ? `${facts}\n- 이달 프로모션 페이지(구성과 금액이 포스터로 나와 있다): ${promo}` : facts;
 }
 
+const digitsOf = (s: string): string => s.replace(/\D/g, '');
+
+/** AI가 쓴 글에 나와도 되는 병원 전화번호의 숫자 (검사 C-8) — 대표 번호와 WhatsApp 번호, 각각 국내 꼴 · 국제 꼴 */
+export const CLINIC_PHONE_DIGITS: readonly string[] = [
+  digitsOf(SITE_INFO.phone),
+  digitsOf(SITE_INFO.phoneInternational),
+  WHATSAPP_NUMBER,
+  `0${WHATSAPP_NUMBER.replace(/^82/, '')}`,
+];
+
+/** AI가 쓴 글에 나와도 되는 병원 메신저 아이디 (검사 C-8) */
+export const CLINIC_HANDLES: readonly string[] = [WECHAT_ID];
+
 /** AI가 쓴 글에 나와도 되는 주소 (검사 C-7). */
 export function allowedUrls(locale: VisitorLocale, now: Date): string[] {
   const urls = [
@@ -2669,7 +2699,7 @@ Expected: `wrote src/lib/chat/ai/knowledge/priceRows.base.generated.ts: 56 rows`
 - [ ] **Step 5: 통과를 확인한다**
 
 Run: `cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx vitest run src/lib/chat/ai/__tests__/knowledge.test.ts 2>&1 | tail -6`
-Expected: `Test Files 1 passed (1)`, `Tests 16 passed (16)`.
+Expected: `Test Files 1 passed (1)`, `Tests 17 passed (17)`.
 
 - [ ] **Step 6: 전체 테스트 · 타입 검사 · lint**
 
@@ -2677,7 +2707,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/scope.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/priceRows.extra.ts" "src/lib/chat/ai/knowledge/priceRows.base.generated.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-price-rows.mjs" "src/lib/chat/ai/__tests__/knowledge.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 62 passed (62)`, `Tests 1019 passed (1019)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 62 passed (62)`, `Tests 1020 passed (1020)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 7: 커밋**
 
@@ -2700,9 +2730,9 @@ Expected:
 | `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` | `2ecaa5dae48d6ca3726418814de65c8e91e4a1cc` |
 | `liv-clinic/src/lib/chat/ai/knowledge/priceRows.extra.ts` | `52f456ab47fecd68a3e3a6323dd27044e7fa0216` |
 | `liv-clinic/src/lib/chat/ai/knowledge/priceRows.base.generated.ts` | `8b57245b5779306d28b3ae282f722d713a39633d` |
-| `liv-clinic/src/lib/chat/ai/knowledge/index.ts` | `b2ddc5415aa5cb9f5bca491c6486006c20d2f9a4` |
+| `liv-clinic/src/lib/chat/ai/knowledge/index.ts` | `405a00f449725233318fcd7945ab7ebc6c075654` |
 | `liv-clinic/scripts/chat-ai-build-price-rows.mjs` | `2ddfe7275f7fe03612ded823c6d98c73cd87da5f` |
-| `liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts` | `d8e11dbbaafe151324b9cd19e57825813be331f8` |
+| `liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts` | `90911410f0361a01c52bb5f3fc246c44c2ad353a` |
 
 ---
 
@@ -3141,7 +3171,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/calendar.ts" "src/lib/chat/businessHours.ts" "src/lib/chat/ai/__tests__/calendar.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 63 passed (63)`, `Tests 1039 passed (1039)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 63 passed (63)`, `Tests 1040 passed (1040)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -3173,6 +3203,7 @@ Expected:
 
 - **시각은 읽어서 받는다.** `2pm` · `2:30 PM` · `21:00 KST` · `around 3pm`은 `HH:MM`으로 읽어 진료 시간으로 검사한다. 시각이 둘 이상이거나(`14:00-16:00`) 다른 숫자가 섞였거나(`10 or 11am`) 읽지 못하면(`after lunch`) 시간 메모로 돌린다 — 그 메모 속의 시각도 진료 시간으로 본다(`after 8pm`은 받지 않는다).
 - **받아 둔 값이 새 값과 맞지 않으면 받아 둔 쪽을 비운다**(AI는 값을 지울 수 없다): 날짜만 바뀌었는데 받아 둔 시각 · 시간 메모가 그 요일의 진료 시간 밖이면 시각을 비우고, 받아 둔 날짜가 이제 지났거나 휴진일이 됐으면 날짜를 비운다. AI가 다음 차례에 다시 묻는다.
+- **연락처는 손님이 쓴 것만 받는다.** `contactInVisitorText`가 AI가 낸 연락처가 손님 글에 실제로 있는지 본다(전화번호는 숫자만 견주고 나라 번호를 붙이거나 뺀 꼴도 같은 번호로 본다, 아이디 · 메일은 대소문자만 무시). 부르는 곳은 Task 11이다 — 없는 연락처는 받지 않는다.
 - **같은 연락처를 다른 꼴로 다시 적어도 바뀐 것이 아니다.** `+65 9123 4567`과 `+6591234567`은 같은 번호다 — 처음 받은 꼴을 두고, 직원에게 "가예약 변경"을 알리지 않는다(지문 `bookingKey`에는 견주는 꼴로 넣는다).
 
 **Files:**
@@ -3181,7 +3212,7 @@ Expected:
 
 **Interfaces:**
 - Consumes: Task 4의 `checkBookingSlot` · `isRealDateKey` · `CalendarContext`, `contactChannels.ts`의 `validateContactHandle` · `CONTACT_CHANNEL_LABELS` · `ContactChannel`
-- Produces: `interface BookingFields { date; time; timeNote; treatment; treatmentKo; partySize; name; contactChannel; contactHandle; arrivalDate; departureDate }`(모두 `… | null`), `EMPTY_BOOKING`, `interface ContactRef { channel: ContactChannel; handle: string }`, `parseBookingOutput(raw: unknown): BookingFields`(AI 출력의 snake_case 읽기), `timeTokens(raw): string[]`(글 안의 시각을 모두 — `HH:MM`), `normalizeTime(raw): string | null`(시각이 정확히 하나일 때만), `sameContact(a, b): boolean`, `mergeBooking(stored, given, now, ctx): { next: BookingFields; issues: string[]; contactRejected: boolean }`(issues = `booking_past:…` · `booking_closed_day:…` · `booking_outside_hours:…`), `effectiveContact(b, sessionContact): ContactRef | null`, `sessionContactOf(sessionRow): ContactRef | null`, `isBookingComplete(b, sessionContact): boolean`, `bookingKey(b, sessionContact): string`(날짜|시각|인원|채널|연락처), `type BookingEvent = 'requested' | 'changed' | null`, `bookingEvent(prev: { status; notifiedKey }, next, sessionContact): BookingEvent`, `channelLabelKo(channel)`, `dateLabelKo(dateKey)`(`10/14(수)`), `bookingWhenKo(b)`(`10/14(수) 14:00`), `bookingSummaryKo(b, sessionContact)`(직원용 한 줄), `bookingPromptText(b, sessionContact)`(프롬프트의 BOOKING SO FAR)
+- Produces: `interface BookingFields { date; time; timeNote; treatment; treatmentKo; partySize; name; contactChannel; contactHandle; arrivalDate; departureDate }`(모두 `… | null`), `EMPTY_BOOKING`, `interface ContactRef { channel: ContactChannel; handle: string }`, `parseBookingOutput(raw: unknown): BookingFields`(AI 출력의 snake_case 읽기), `timeTokens(raw): string[]`(글 안의 시각을 모두 — `HH:MM`), `normalizeTime(raw): string | null`(시각이 정확히 하나일 때만), `sameContact(a, b): boolean`, `contactInVisitorText(handle: string, visitorTexts: readonly string[]): boolean`, `mergeBooking(stored, given, now, ctx): { next: BookingFields; issues: string[]; contactRejected: boolean }`(issues = `booking_past:…` · `booking_closed_day:…` · `booking_outside_hours:…`), `effectiveContact(b, sessionContact): ContactRef | null`, `sessionContactOf(sessionRow): ContactRef | null`, `isBookingComplete(b, sessionContact): boolean`, `bookingKey(b, sessionContact): string`(날짜|시각|인원|채널|연락처), `type BookingEvent = 'requested' | 'changed' | null`, `bookingEvent(prev: { status; notifiedKey }, next, sessionContact): BookingEvent`, `channelLabelKo(channel)`, `dateLabelKo(dateKey)`(`10/14(수)`), `bookingWhenKo(b)`(`10/14(수) 14:00`), `bookingSummaryKo(b, sessionContact)`(직원용 한 줄), `bookingPromptText(b, sessionContact)`(프롬프트의 BOOKING SO FAR)
 
 - [ ] **Step 1: 실패하는 테스트를 쓴다**
 
@@ -3196,6 +3227,7 @@ import {
   bookingPromptText,
   bookingSummaryKo,
   bookingWhenKo,
+  contactInVisitorText,
   dateLabelKo,
   effectiveContact,
   EMPTY_BOOKING,
@@ -3430,6 +3462,26 @@ describe('mergeBooking', () => {
   it('입국일·출국일은 실제 날짜일 때만 받는다', () => {
     const r = merge(EMPTY_BOOKING, { arrivalDate: '2026-10-14', departureDate: '2026-02-30' });
     expect(r.next).toMatchObject({ arrivalDate: '2026-10-14', departureDate: null });
+  });
+});
+
+describe('contactInVisitorText — AI가 낸 연락처가 손님 글에 실제로 있는가', () => {
+  it('전화번호는 숫자만 견준다 — 나라 번호를 덧붙였거나 뺀 꼴도 같은 번호다', () => {
+    const texts = ['Hello', 'My WhatsApp is +65 9123 4567'];
+    expect(contactInVisitorText('+65 9123 4567', texts)).toBe(true);
+    expect(contactInVisitorText('+6591234567', texts)).toBe(true);
+    expect(contactInVisitorText('9123 4567', texts)).toBe(true);
+    expect(contactInVisitorText('+86 138 0013 8000', texts)).toBe(false);
+    expect(contactInVisitorText('+65 9123 4568', texts)).toBe(false);
+    expect(contactInVisitorText('4567', texts)).toBe(false); // 너무 짧다
+  });
+
+  it('아이디 · 메일은 대소문자만 무시한다', () => {
+    expect(contactInVisitorText('sakura_0328', ['LINEのIDは Sakura_0328 です'])).toBe(true);
+    expect(contactInVisitorText('@sakura_0328', ['my line: sakura_0328'])).toBe(true);
+    expect(contactInVisitorText('Emma@Example.com', ['mail: emma@example.com'])).toBe(true);
+    expect(contactInVisitorText('evil_agent', ['my line is sakura_0328'])).toBe(false);
+    expect(contactInVisitorText('', ['x'])).toBe(false);
   });
 });
 
@@ -3695,6 +3747,32 @@ export function sameContact(a: ContactRef | null, b: ContactRef | null): boolean
   return a !== null && b !== null && a.channel === b.channel && contactKey(a.channel, a.handle) === contactKey(b.channel, b.handle);
 }
 
+const PHONE_IN_TEXT_RE = /\+?\d[\d\s().-]{5,}\d/g;
+const PHONE_SHAPED_RE = /^\+?[\d\s().-]+$/;
+const MIN_PHONE_MATCH = 7;
+
+/**
+ * AI가 낸 연락처가 손님 글에 실제로 있는가. 없으면(지어냈거나 다른 사람의 것) 받지 않는다 —
+ * 연락처는 가예약 요약에 그대로 찍히고, 검사(C-8)에서도 "손님 연락처"로 통과되기 때문이다.
+ * 전화번호는 숫자만 견준다(나라 번호를 덧붙였거나 뺀 꼴도 같은 번호로 본다). 아이디 · 메일은 대소문자만 무시한다.
+ */
+export function contactInVisitorText(handle: string, visitorTexts: readonly string[]): boolean {
+  const h = handle.trim().replace(/^@/, '');
+  if (!h) return false;
+  if (PHONE_SHAPED_RE.test(h)) {
+    const d = h.replace(/\D/g, '');
+    if (d.length < MIN_PHONE_MATCH) return false;
+    return visitorTexts.some((t) =>
+      (t.match(PHONE_IN_TEXT_RE) ?? []).some((found) => {
+        const v = found.replace(/\D/g, '');
+        return v.length >= MIN_PHONE_MATCH && (v === d || d.endsWith(v) || v.endsWith(d));
+      })
+    );
+  }
+  const needle = h.toLowerCase();
+  return visitorTexts.some((t) => t.toLowerCase().includes(needle));
+}
+
 export interface MergeResult {
   next: BookingFields;
   /** 검사 C-10 에 걸린 이유 — 있으면 호출자가 AI에게 다시 쓰게 한다. 이때 날짜·시간은 받아들이지 않았다 */
@@ -3907,7 +3985,7 @@ export function bookingPromptText(b: BookingFields, sessionContact: ContactRef |
 - [ ] **Step 4: 통과를 확인한다**
 
 Run: `cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx vitest run src/lib/chat/ai/__tests__/booking.test.ts 2>&1 | tail -6`
-Expected: `Test Files 1 passed (1)`, `Tests 28 passed (28)`.
+Expected: `Test Files 1 passed (1)`, `Tests 30 passed (30)`.
 
 - [ ] **Step 5: 전체 테스트 · 타입 검사 · lint**
 
@@ -3915,7 +3993,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/booking.ts" "src/lib/chat/ai/__tests__/booking.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 64 passed (64)`, `Tests 1067 passed (1067)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 64 passed (64)`, `Tests 1070 passed (1070)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -3933,8 +4011,8 @@ Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `liv-clinic/src/lib/chat/ai/__tests__/booking.test.ts` | `93c88611e9f2539b16d5c5ccfceee2dfb0672d22` |
-| `liv-clinic/src/lib/chat/ai/booking.ts` | `558434d2e79beb034b8f660f450f201afd412510` |
+| `liv-clinic/src/lib/chat/ai/__tests__/booking.test.ts` | `777e3f2990384e671c80a545a7d618301170e48d` |
+| `liv-clinic/src/lib/chat/ai/booking.ts` | `acb0470f5a5377720bdf11e24850b18518a7b276` |
 
 ---
 
@@ -4737,7 +4815,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/replyTemplates.ts" "src/lib/chat/ai/__tests__/replyTemplates.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 65 passed (65)`, `Tests 1089 passed (1089)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 65 passed (65)`, `Tests 1092 passed (1092)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -4766,36 +4844,43 @@ AI의 출력을 읽고(JSON), AI가 쓴 글이 손님에게 나가도 되는지 
 
 가장 중요한 것은 C-2다: **AI가 쓴 글에 금액처럼 보이는 것이 하나도 없어야 한다.** 금액은 꼬리표로만 말할 수 있다. 이 검사를 느슨하게 고치지 않는다. 금액을 찾는 식은 `amounts.ts`에 따로 둔다 — 검사(이 과제)와 이력 가리기(Task 9의 `maskAmounts`)가 같은 식을 쓴다.
 
-검사가 보는 것(2026-10-02 독립 검토에서 빠져나가는 길 15가지를 찾아 막았다):
+이 검사는 2026-10-02에 독립 검토를 두 번 받았다. 첫 번째에서 빠져나가는 길 15가지를, 두 번째(고친 뒤의 코드에 글 약 2,100개를 넣어 봄)에서 14종류와 잘못 걸리는 경우 7종류를 찾아 고쳤다. 두 번째 검토의 글은 **회귀 말뭉치**(`__tests__/guardsCorpus.ts`)로 저장소에 둔다: 걸려야 하는 글 358개, 걸리면 안 되는 보통의 답 422개(10개 언어 + 한국어), 식으로는 잡지 못한다고 알고 있는 글 4개, 드물어서 받아들인 잘못 걸림 8개. **식을 고칠 때는 이 말뭉치 테스트가 양쪽을 함께 본다.** 외국어 낱말 목록은 원어민 검수를 받지 않았다.
 
-- **검사용 글로 본다.** 전각 글자(`２４０万`) · 아랍 숫자(`٢٤٠`) · 태국 숫자(`๒๔๐`) · 아랍 퍼센트 기호(`٪`) · 여러 줄표를 보통 글자로 바꾸고, 보이지 않는 글자를 지운 글에 검사한다. 손님에게 나가는 글은 바꾸지 않는다.
-- **C-2 금액**: 통화 기호 · 코드 · 낱말(10개 언어)이 붙은 숫자, 단위 낱말이 붙은 숫자(`5k` · `2.4 million` · `2,4 млн` · `240万` · `50만`), 글자로 쓴 수(`two million` · `二百四十万` · `이백사십만 원`), 천 단위로 묶은 숫자(쉼표 · 마침표 · 띄어쓰기), 다섯 자리 이상의 맨 숫자. **손님이 글에 적은 금액을 따라 써도 걸린다** — 통화 표시가 붙은 숫자는 전화번호를 지우기 전에 본다.
-- **C-3 퍼센트**: `5%`만 된다. 소수(`5.5%`) · 다른 문자의 기호 · 퍼센트 낱말(10개 언어) · `百分之…` · `八折` · `2割` · "반값"도 막는다(`九五折`은 5% 할인이라 된다).
-- **C-4 꼬리표**: 없는 꼬리표, 일곱 개 이상, 깨진 꼴(`{P006}` · `P006` · `｛｛P006｝｝`), 문장 안에 섞은 꼬리표(`tag_inline` — 금액 줄을 넣을 자리가 없어 문장이 깨진다), 이력에 넣는 표시를 따라 쓴 것(`marker` — `[price line shown: …]` · `[amount]` · `[our staff]`).
-- **C-5 금지 표현**: 최고 · 유일 · 100% · 완벽 · 영구 · 부작용 없음 · 보장을 10개 언어로. 흔한 말과 겹치는 낱말은 주장하는 꼴만 막는다 — `What date works best for you?` · `We cannot guarantee …` · `您最好提前预约` · `Để đảm bảo có chỗ` · `les meilleurs délais` · `من الأفضل أن …`은 통과한다.
-- **C-6 AI · 봇 · 자동 응대라는 말, 그리고 사람이라는 말**(`I'm a real person` · `真人`). "사람인가요?"의 답은 프로그램이 붙인다(Task 8). `automatically applied` 같은 보통 말은 통과한다.
-- **C-7 주소 · 메일**: 자료에 있는 주소만(글자 하나까지 같아야 한다). `http` 없이 쓴 주소(`www.…` · `line.me/…`)와 손님 것이 아닌 메일 주소도 막는다. 마크다운 링크 `[글자](주소)`는 `cleanReply`가 글자와 주소로 푼다.
-- **C-8 전화번호**: 병원 번호와 **손님이 연락처로 남긴 번호**만 된다(여덟 자리 이상, 나라 번호를 뺀 꼴도 받는다). 손님이 글에 적은 숫자는 봐주지 않는다 — `1500000 won`을 전화번호로 보고 통과시키지 않기 위해서다.
-- **가예약 요약에 그대로 찍히는 칸**(시술 · 이름 · 시간 메모)도 같은 검사를 한다(`sanitizeBookingText`). 걸린 칸은 받지 않는다 — 금액 · 할인율 · 금지 표현이 요약을 타고 나가지 않게.
+그 뒤 실제 모델 재생 시험(Task 12)에서 한 가지를 더 고쳤다: "효과가 영구적인가요 · 부작용은 없나요 · 보장하나요"라는 질문에 AI가 **정직하게 "아니다"라고 답한 글**(베트남어 · 태국어 "영구적이지 않습니다")이 금지 낱말 때문에 걸려 다시 쓰였고, 다시 쓴 답은 그 말을 피해 에둘러 답했다. 10개 언어의 정직한 부정문 95개(통과)와, 같은 낱말의 주장 40개 · 부정문처럼 보이지만 주장인 글 47개(걸림)를 말뭉치에 더했다.
+
+검사가 보는 것:
+
+- **검사용 글로 본다.** 전각 글자(`２４０万`) · 아랍 숫자(`٢٤٠`) · 태국 숫자(`๒๔๐`) · 동그라미 숫자(`❷`) · 아랍 퍼센트 기호(`٪`) · 여러 줄표를 보통 글자로 바꾸고, 보이지 않는 글자(방향 표시 등) · 키캡 · 취소선 · 아랍 문자의 늘임표와 모음 부호를 지우고, 풀어 쓴 글자를 합친 글에 검사한다. 손님에게 나가는 글은 바꾸지 않는다.
+- **C-2 금액**: 통화 기호 · 코드 · 낱말(10개 언어, 달러 · 위안 · 엔 등 다른 통화 포함)이 붙은 숫자, 떨어져 있는 통화(`KRW: 990` · `1700 (USD)`), 단위 낱말 · 줄임 단위가 붙은 숫자(`5k` · `2.4m` · `240w` · `500к` · `2tr4` · `2,4 млн` · `240万` · `200多万` · `50만`), 글자로 쓴 수(`two and a half million` · `二百四十万` · `hai triệu` · `이백사십만`), 묶은 숫자(쉼표 · 마침표 · 띄어쓰기 · `2, 400, 000` · `24,00,000`), **연도가 아닌 네 자리 이상의 맨 숫자**(뒤에 샷 · cc 같은 단위가 오면 아니다). **손님이 글에 적은 금액을 따라 써도 걸린다** — 통화 표시가 붙은 숫자는 전화번호를 지우기 전에 본다.
+- **C-3 퍼센트 · 할인율**: `5%`만 된다. 소수(`5.5%`) · 다른 문자의 기호 · 퍼센트 낱말(10개 언어) · `百分之…` · `八折` · `2割` · "반값" · `a quarter off` · `20 off` · `1+1`도 막는다(`九五折`은 5% 할인이라 된다).
+- **C-4 꼬리표**: 없는 꼬리표, 일곱 개 이상, 깨진 꼴(`{P006}` · `P006` · `p006` · `｛｛P006｝｝`), 문장 안에 섞은 꼬리표(`tag_inline` — 금액 줄을 넣을 자리가 없어 문장이 깨진다), 이력에 넣는 표시를 따라 쓴 것(`marker` — `[price line shown: …]` · `[amount]` · `[our staff]`).
+- **C-5 금지 표현**: 최고 · 유일 · 100% · 완벽 · 영구 · 부작용 없음 · 보장과 그 다른 말(`forever` · `risk-free` · `money-back` · `永远` · `mãi mãi` …)을 10개 언어로. 흔한 말은 통과시킨다 — 일정을 묻는 말(`What date works best for you?` · `les meilleurs délais` · `您最好提前预约`)과 **정직한 부정문**(`It is not permanent` · `We cannot guarantee …` · `効果を保証するものではありません` · `无法保证` · `không kéo dài vĩnh viễn` · `ไม่ได้อยู่ถาวร` · `не постоянный` · `байнгын биш`). 통과시키는 식은 좁게 쓴다: `保証できます`(보증할 수 있다) · `Ultherapy works best for sagging skin` · `Don’t worry, it stays forever` · `永久に続くので心配することはありません`은 주장이라 걸린다. "최고인가요 · 100% 안전한가요"를 부정하는 말(`We can’t say we are the best`)은 통과시키지 않는다 — 지시문(Task 9)이 그 낱말을 되풀이하지 않고 답하게 한다.
+- **C-6 AI · 봇 · 자동 응대라는 말, 그리고 "제가 사람입니다"라는 말**(`I'm a real person` · `我是真人` · `Я — человек`). "사람인가요?"의 답은 프로그램이 붙인다(Task 8). `automatically applied`, "직원이 오늘 답해 드립니다"(`a real person from our team will reply today`) 같은 말은 통과한다.
+- **C-7 주소 · 메일**: 자료에 있는 주소만(글자 하나까지 같아야 한다 — `Https://…` · `line://…`도 본다). `http` 없이 쓴 주소(`www.…` · `line.me/…` · `youtu.be/…`)와 손님 것이 아닌 메일 주소(`agent @ evil.com`처럼 띄어 쓴 것 포함)도 막는다. 마크다운 링크 `[글자](주소)`는 `cleanReply`가 글자와 주소로 푼다.
+- **C-8 전화번호 · 메신저 아이디**: 병원 것과 **손님이 연락처로 남긴 것**만 된다(전화번호는 8~15자리, 나라 번호를 뺀 꼴도 받는다). 손님이 글에 적은 숫자는 봐주지 않는다 — `1500000 won`을 전화번호로 보고 통과시키지 않기 위해서다. 날짜는 전화번호 검사에서 빼되 진짜 날짜 꼴만 뺀다(`+82-10-6888-…`의 앞부분을 날짜로 읽으면 전화번호 검사를 건너뛴다). `ID: xxx` · `@xxx` 꼴의 아이디도 본다(`handle`).
+- **답하는 언어**: 검사가 아는 언어(10개 + 한국어)가 아닌 글 — 그 밖의 문자(힌디어 등)이거나 스페인어 · 독일어 · 포르투갈어 · 이탈리아어 · 인도네시아어 · 터키어의 흔한 낱말이 둘 이상 — 은 통째로 다시 쓰게 한다(`language`). 그 언어로 쓴 금지 표현은 목록이 알아보지 못한다.
+- **가예약 요약에 그대로 찍히는 칸**(시술 · 이름 · 시각 · 시간 메모)도 같은 검사를 한다(`sanitizeBookingText`). 걸린 칸은 받지 않는다 — 금액 · 할인율 · 금지 표현이 요약을 타고 나가지 않게. 읽지 못한 시각(`14:00 (20% off)`)은 시간 메모가 되어 요약에 찍히므로 시각 칸도 본다.
+
+**식으로는 잡지 못하는 것**(말뭉치의 `KNOWN_GAPS`): 단위 없는 소수(`It is around 2.4.`), 금액을 말하지 않고 약속하는 문장(`Yes, that price is correct, and we can match it.`), 여러 줄에 나눠 쓴 숫자. 이런 것은 구조(금액은 꼬리표로만 · 지시문)와 켠 뒤의 점검(Task 20의 내보내기)이 맡는다.
 
 "확정" 표현은 정규식으로 막지 않는다 — 시험에서 중국어 "已确认的门诊日历"(확인된 진료 달력) 같은 정상 문장이 걸렸다. 가예약 요약의 제목("아직 확정 전")과 프롬프트가 맡는다.
 
 **Files:**
 - Create: `liv-clinic/src/lib/chat/ai/amounts.ts`, `liv-clinic/src/lib/chat/ai/guards.ts`
-- Test: `liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts`, `liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts`
+- Test: `liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts`, `liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts`, `liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts`(말뭉치 — 테스트 파일이 읽는 자료)
 
 **Interfaces:**
-- Consumes: Task 3의 `priceTagPattern()` · `TAG_LINE_REST_RE`, Task 5의 `parseBookingOutput` · `BookingFields`
-- Produces: `amounts.ts`: `interface Normalized { text; starts: number[]; ends: number[] }`, `normalizeForCheck(text): Normalized`(검사용 글과, 그 글의 각 글자가 원문의 어디서 왔는지), `findStatedAmount(normalized: string): string | null`(통화 · 단위 낱말이 붙은 금액), `findLooseNumber(normalized: string): string | null`(천 단위로 묶은 숫자 · 다섯 자리 이상), `maskAmounts(text): string`(금액을 `[amount]`로 — 가린 곳 밖의 글자는 원문 그대로). `guards.ts`: `interface AiOutput { reply; staffNoteKo; booking: BookingFields; needsStaff; staffReasonKo: string | null; identityQuestion }`, `cleanReply(text): string`(마크다운 기호 · 이모지를 걸러 낸다 — 검사 실패로 치지 않는다), `parseAiOutput(content: string): AiOutput | null`(JSON이 아니거나 `reply`가 비었으면 null. `identity_question`이 참이면 빈 `reply`도 받는다), `interface GuardContext { rowIds; allowedUrls; allowedPercents; allowedPhoneDigits; allowedEmails }`, `MAX_TAGS = 6`, `MAX_REPLY_UNITS = 900`, `textUnits(s): number`, `checkReplyText(reply, ctx): string[]`(이유 — `tag_unknown:…` · `tag_too_many:…` · `tag_broken` · `tag_inline` · `marker:…` · `url:…` · `number:…` · `money:…` · `percent:…` · `banned:…` · `ai_word:…` · `too_long:…`. 빈 배열이면 통과), `sanitizeBookingText(booking, ctx): { booking: BookingFields; dropped: string[] }`, `retryFeedback(issues): string`
+- Consumes: Task 3의 `priceTagPattern()` · `TAG_LINE_REST_RE` · `getKnowledge` · `CLINIC_PHONE_DIGITS` · `CLINIC_HANDLES`(말뭉치 테스트의 맥락), Task 5의 `parseBookingOutput` · `BookingFields`
+- Produces: `amounts.ts`: `interface Normalized { text; source; starts: number[]; ends: number[] }`, `normalizeForCheck(text): Normalized`(검사용 글과, 그 글의 각 글자가 기준 글 `source`의 어디서 왔는지), `toCheckText(text): string`(검사용 글만), `findStatedAmount(normalized: string): string | null`(통화 · 단위 낱말이 붙은 금액, 글자로 쓴 금액), `findLooseNumber(normalized: string): string | null`(묶은 숫자 · 네 자리 이상의 맨 숫자), `maskAmounts(text): string`(금액을 `[amount]`로). `guards.ts`: `interface AiOutput { reply; staffNoteKo; booking: BookingFields; needsStaff; staffReasonKo: string | null; identityQuestion }`, `cleanReply(text): string`(마크다운 기호 · 이모지를 걸러 낸다 — 검사 실패로 치지 않는다), `parseAiOutput(content: string): AiOutput | null`(JSON이 아니거나 `reply`가 비었으면 null. `identity_question`이 참이면 빈 `reply`도 받는다), `interface GuardContext { rowIds; allowedUrls; allowedPercents; allowedPhoneDigits; allowedEmails; allowedHandles }`, `MAX_TAGS = 6`, `MAX_REPLY_UNITS = 900`, `textUnits(s): number`, `checkReplyText(reply, ctx): string[]`(이유 — `tag_unknown:…` · `tag_too_many:…` · `tag_broken` · `tag_inline` · `marker:…` · `url:…` · `handle:…` · `number:…` · `money:…` · `percent:…` · `banned:…` · `ai_word:…` · `language:…` · `too_long:…`. 빈 배열이면 통과), `sanitizeBookingText(booking, ctx): { booking: BookingFields; dropped: string[] }`, `retryFeedback(issues): string`
 
 - [ ] **Step 1: 실패하는 테스트를 쓴다**
 
-Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T7-test-amounts T7-test`
+Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T7-test-amounts T7-test-corpus T7-test`
 
 <!-- block: T7-test-amounts | full | liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts -->
 ````ts
 import { describe, it, expect } from 'vitest';
-import { findLooseNumber, findStatedAmount, maskAmounts, normalizeForCheck } from '../amounts';
+import { findLooseNumber, findStatedAmount, maskAmounts, normalizeForCheck, toCheckText } from '../amounts';
 
 describe('normalizeForCheck — 검사용 글', () => {
   const norm = (s: string) => normalizeForCheck(s).text;
@@ -4822,6 +4907,23 @@ describe('normalizeForCheck — 검사용 글', () => {
     expect(norm('리쥬란 2cc · Thermage FLX')).toBe('리쥬란 2cc · Thermage FLX');
   });
 
+  it('숫자 사이에 끼워도 눈에는 그대로 보이는 글자를 지운다 — 방향 표시 · 키캡 · 취소선 · 아랍 문자의 늘임표', () => {
+    expect(norm('2\u200e400\u200e000')).toBe('2400000');
+    expect(norm('2\ufe0f\u20e34\ufe0f\u20e3')).toBe('24');
+    expect(norm('2\u03364\u0336')).toBe('24');
+    expect(norm('مضـــمونة')).toBe('مضمونة');
+  });
+
+  it('동그라미 안의 숫자도 숫자로 읽는다', () => {
+    expect(norm('❷❹⓿')).toBe('240');
+    expect(norm('①②')).toBe('12');
+  });
+
+  it('풀어 쓴 글자를 합친다 (베트남어의 성조 부호 · 반각 가나의 탁점)', () => {
+    expect(normalizeForCheck('T\u00f4\u0301t').text).toBe('T\u1ed1t');
+    expect(toCheckText('ﾊﾟｰｾﾝﾄ')).toBe('パーセント');
+  });
+
   it('검사용 글의 각 글자가 원문의 어디서 왔는지 안다', () => {
     const n = normalizeForCheck('a​２b');
     expect(n.text).toBe('a2b');
@@ -4841,8 +4943,45 @@ describe('findStatedAmount — 통화·단위 낱말이 붙은 금액', () => {
     expect(hit('It is two million won.')).toBe('two million won');
   });
 
+  it('줄임 단위 · 떨어져 있는 통화 · 글자로 쓴 수', () => {
+    for (const bad of [
+      'about 2.4m',
+      '大概240w',
+      'Примерно 500к за зону.',
+      'khoảng 2tr4',
+      '2.4 саяас эхэлнэ',
+      '약 200여만 원',
+      'It is a 2.4-million-won treatment.',
+      'about 1700 US dollars',
+      '約1700ドルです',
+      'KRW: 990',
+      'About 1700 (USD)',
+      'two and a half million',
+      'Khoảng hai triệu tư.',
+      'ประมาณสองล้านสี่แสน',
+      'пятьсот тысяч',
+      'Environ deux millions quatre cent mille.',
+      'хоёр сая дөрвөн зуун мянга',
+      'حوالي مليونين وأربعمئة ألف.',
+      '이백사십만 정도입니다',
+      '价格是两千四',
+      '贰佰肆拾万。',
+      'にひゃくよんじゅうまんウォンです。',
+    ]) {
+      expect(hit(bad), bad).not.toBeNull();
+    }
+  });
+
   it('금액이 아닌 것', () => {
     for (const ok of [
+      'La séance dure environ 30 mn.',
+      'Có thể xuất hiện 1-2 triệu chứng nhẹ.',
+      '请千万小心防晒。',
+      'Có 2 đồng nghiệp đi cùng bạn phải không?',
+      'We have 2 K-beauty programs this month.',
+      '2～3日元気に過ごせる方がほとんどです。',
+      '1:1 원장 상담 후 결정됩니다.',
+      'У нас есть 2 европейских филлера.',
       "October 15 won't work.",
       'We have 2 wonderful options.',
       'About 50 m from Exit 4.',
@@ -4865,6 +5004,21 @@ describe('findLooseNumber — 통화 표시 없이 쓴 금액일 수 있는 숫�
     expect(findLooseNumber('Итого 1 500 000.')).toBe('1 500 000');
     expect(findLooseNumber("CHF 1'500'000")).toBe("1'500'000");
     expect(findLooseNumber('The fee is 10000.')).toBe('10000');
+  });
+
+  it('연도가 아닌 네 자리 숫자 — 뒤에 샷 같은 단위가 오면 아니다', () => {
+    expect(findLooseNumber('That works out to about 4000 per shot.')).toBe('4000');
+    expect(findLooseNumber('• Thermage 600: 2400')).toBe('2400');
+    expect(findLooseNumber('Shurink 1000 shots, Thermage FLX 1,200 shots, 1000샷')).toBeNull();
+    expect(findLooseNumber('in 2026, or in 2569 (Thai calendar)')).toBeNull();
+  });
+
+  it('흔치 않은 구분 기호로 묶은 숫자', () => {
+    expect(findLooseNumber('It is 2, 400, 000')).toBe('2, 400, 000');
+    expect(findLooseNumber('It is 2·400·000')).toBe('2·400·000');
+    expect(findLooseNumber('It is 24,00,000')).toBe('24,00,000');
+    expect(findLooseNumber('It is 2 4 0 0 0 0 0')).toBe('2 4 0 0 0 0 0');
+    expect(findLooseNumber('300, 600, 900 shots on October 14, 16, 17')).toBeNull();
   });
 
   it('날짜 · 시각 · 샷 수는 아니다', () => {
@@ -4902,6 +5056,904 @@ describe('maskAmounts — 이력에 넣는 글의 금액을 가린다', () => {
 });
 ````
 
+<!-- block: T7-test-corpus | full | liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts -->
+````ts
+// 출력 검사(guards.ts · amounts.ts)의 회귀 말뭉치. guards.test.ts 가 읽는다 — 식을 고칠 때 양쪽(빠져나가는 글 · 멀쩡한 글)을 함께 본다.
+// 2026-10-02 독립 검토에서 나온 글들이다: 그때의 검사를 실제로 빠져나간 글과, 보통의 답으로 쓴 글.
+// 같은 날 재생 시험에서 "영구적인가요 · 보장하나요"에 대한 정직한 답("영구적이지 않습니다")이 걸려, 그런 부정문(통과)과 같은 낱말의 주장(걸림)을 더했다.
+// 여기의 글은 손님에게 나가는 글이 아니다. 원어민 검수를 받지 않았다.
+
+/** 손님 사이트 언어 — 써도 되는 주소가 언어마다 다르다 */
+export type CorpusLocale = 'en' | 'ja' | 'zh' | 'zh-TW' | 'vi' | 'th' | 'ru' | 'fr' | 'mn' | 'ar';
+
+/** 검사에 걸려야 하는 글 — [분류, 글] */
+export const MUST_FLAG: ReadonlyArray<readonly [string, string]> = [
+  // 줄임 단위가 붙은 금액
+  ['mag', "Thermage FLX 600 shots is about 2.4m, and Ultherapy Prime full face is about 1.56m."],
+  ['mag', "About 1.8 M."],
+  ['mag', "About 1.8 mill."],
+  ['mag', "About 1.8mn"],
+  ['mag', "About 1.8m KRW"],
+  ['mag', "您好！热玛吉600发大概240w，超声刀全脸大概150多万。"],
+  ['mag', "大概200多万。"],
+  ['mag', "差不多一百来万。"],
+  ['mag', "200余万"],
+  ['mag', "Примерно 500к за зону."],
+  ['mag', "Примерно 500 к вон."],
+  ['mag', "Thermage 600 shot khoảng 2tr4."],
+  ['mag', "Khoảng 2,4tr."],
+  ['mag', "2.4 саяас эхэлнэ."],
+  ['mag', "약 200여만 원입니다"],
+  ['mag', "It is a 2.4-million-won treatment."],
+  ['mag', "It is 24 lakh."],
+  ['mag', "It is 2 grand."],
+  ['mag', "Environ 2,4 M€."],
+  // 글자로 쓴 금액
+  ['words', "It is about two and a half million."],
+  ['words', "It comes to a couple of million."],
+  ['words', "Around two point four mil."],
+  ['words', "About fifteen hundred."],
+  ['words', "Khoảng hai triệu tư."],
+  ['words', "Khoảng hai triệu KRW."],
+  ['words', "Khoảng bốn mươi triệu."],
+  ['words', "ประมาณสองล้านสี่แสน"],
+  ['words', "ประมาณเจ็ดหมื่น"],
+  ['words', "Около двух миллионов четырёхсот тысяч."],
+  ['words', "Два миллиона корейских вон."],
+  ['words', "пятьсот тысяч"],
+  ['words', "Environ deux millions quatre cent mille."],
+  ['words', "Environ deux millions et demi de wons."],
+  ['words', "Environ mille cinq cents euros."],
+  ['words', "Ойролцоогоор хоёр сая дөрвөн зуун мянга."],
+  ['words', "Ойролцоогоор хоёр сая воноор."],
+  ['words', "حوالي مليونين وأربعمئة ألف."],
+  ['words', "حوالي ألفي دولار"],
+  ['words', "حوالي خمسمئة دولار"],
+  ['words', "이백사십만 정도입니다"],
+  ['words', "이만 원입니다"],
+  ['words', "价格是两千四"],
+  ['words', "贰佰肆拾万。"],
+  ['words', "にひゃくよんじゅうまんウォンです。"],
+  // 목록에 없던 통화 · 떨어져 있는 단위 · 네 자리 숫자
+  ['cur', "About 1700 US dollars."],
+  ['cur', "About 1700 pounds."],
+  ['cur', "About 45 US dollars."],
+  ['cur', "About 300 pounds."],
+  ['cur', "サーマクール600ショットは約1700ドルです。"],
+  ['cur', "約300ドルです"],
+  ['cur', "约合1500欧元"],
+  ['cur', "约合9000港币"],
+  ['cur', "約4500台幣"],
+  ['cur', "約9800日幣"],
+  ['cur', "大约8000块"],
+  ['cur', "大约300块"],
+  ['cur', "1700달러쯤입니다"],
+  ['cur', "Khoảng 1700 đô."],
+  ['cur', "Khoảng 5000 yên."],
+  ['cur', "ประมาณ 1700 ดอลล่าร์"],
+  ['cur', "Примерно 9000 юаней."],
+  ['cur', "Примерно 5000 иен."],
+  ['cur', "Environ 5000 yens."],
+  ['cur', "Environ 1500 CHF."],
+  ['cur', "حوالي 6500 دينار"],
+  ['cur', "Ойролцоогоор 500 төг"],
+  ['cur', "KRW: 990"],
+  ['cur', "About USD: 1700"],
+  ['cur', "About 1700 (USD)"],
+  ['cur', "About 1700 in USD."],
+  ['cur', "Price (KRW thousand)\n• Thermage 600: 2400"],
+  ['cur', "That works out to about 4000 per shot."],
+  ['cur', "~2400"],
+  // 전화번호
+  ['phone', "You can also WhatsApp us at +82-10-6888-2733."],
+  ['phone', "Call our coordinator at +82-10-1234-5678."],
+  ['phone', "Call our agent at +81-90-1234-5678."],
+  ['phone', "Call our agent at +86-10-1234-5678."],
+  ['phone', "Call our agent at +44-20-7946-0958."],
+  ['phone', "Call our agent at +976-99-11-2233."],
+  ['phone', "Call our agent at 1588-12-34."],
+  ['phone', "Call our agent at 12-34-5678."],
+  // 주장인데 흔한 말로 잘못 봐주던 것
+  ['harmless', "効果を保証できます"],
+  ['harmless', "効果は保証できますのでご安心ください"],
+  ['harmless', "Ultherapy works best for sagging skin."],
+  ['harmless', "Thermage suits you best."],
+  ['harmless', "Thermage works perfectly for wrinkles."],
+  ['harmless', "Results? Perfect."],
+  ['harmless', "Лучший вариант для вас — термаж."],
+  ['harmless', "Лучший способ омоложения — у нас."],
+  ['harmless', "Ultherapy est le meilleur moyen de raffermir la peau."],
+  ['harmless', "La meilleure façon de rajeunir."],
+  ['harmless', "Phòng khám tốt nhất để làm đẹp"],
+  ['harmless', "Cách tốt nhất để trẻ hóa là Ultherapy"],
+  ['harmless', "Мы вполне гарантируем результат."],
+  ['harmless', "On ne peut que garantir le résultat."],
+  // % 기호 없는 할인
+  ['discount', "We can give you a quarter off."],
+  ['discount', "We can take a fifth off for cash."],
+  ['discount', "We can do 20 off."],
+  ['discount', "Half the price for you."],
+  ['discount', "Half of the following:\n{{P006}}"],
+  ['discount', "Buy one get one free."],
+  ['discount', "1+1 event."],
+  ['discount', "20パー引き"],
+  ['discount', "半分の価格"],
+  ['discount', "可以打对折"],
+  ['discount', "可以便宜两成"],
+  ['discount', "减20个点"],
+  ['discount', "百分之 二十"],
+  ['discount', "买一送一"],
+  ['discount', "20퍼 할인"],
+  ['discount', "절반 가격"],
+  ['discount', "Giảm một nửa"],
+  ['discount', "Giảm 20 phan tram"],
+  ['discount', "ลด 20 เปอร์"],
+  ['discount', "ลด 20 เปอร์เซนต์"],
+  ['discount', "ลดร้อยละ 20"],
+  ['discount', "ลดครึ่งหนึ่ง"],
+  ['discount', "Скидка 20 проц."],
+  ['discount', "За половину цены"],
+  ['discount', "За пол цены"],
+  ['discount', "La moitié du prix"],
+  ['discount', "Demi-tarif"],
+  ['discount', "хорин хувийн хөнгөлөлт"],
+  ['discount', "Тал үнээр"],
+  ['discount', "خصم 20 في المية"],
+  ['discount', "نصف الثمن"],
+  // 금지 표현의 다른 말
+  ['claims', "There aren't any side effects."],
+  ['claims', "It does not have side effects."],
+  ['claims', "It has no known side effects."],
+  ['claims', "You will not experience side effects."],
+  ['claims', "It is completely risk-free."],
+  ['claims', "The result lasts forever."],
+  ['claims', "We are the only certified Ultherapy clinic in Sinsa."],
+  ['claims', "We are the top clinic in Seoul."],
+  ['claims', "Satisfaction or your money back."],
+  ['claims', "当院が一番です"],
+  ['claims', "必ず効果があります"],
+  ['claims', "絶対に安全です"],
+  ['claims', "効果は永遠に続きます"],
+  ['claims', "副作用の心配はありません"],
+  ['claims', "100パー安全"],
+  ['claims', "我们的效果最好"],
+  ['claims', "我们是韩国第一"],
+  ['claims', "百分百安全"],
+  ['claims', "效果有保障"],
+  ['claims', "没副作用"],
+  ['claims', "终身有效"],
+  ['claims', "绝对安全"],
+  ['claims', "부작용이 전혀 없습니다"],
+  ['claims', "효과를 보증합니다"],
+  ['claims', "평생 유지됩니다"],
+  ['claims', "Phòng khám hàng đầu Hàn Quốc"],
+  ['claims', "Phòng khám duy nhất"],
+  ['claims', "Không tác dụng phụ"],
+  ['claims', "Hiệu quả mãi mãi"],
+  ['claims', "คลินิกอันดับ1"],
+  ['claims', "คลินิกแห่งเดียวในโซล"],
+  ['claims', "อยู่ได้ตลอดไป"],
+  ['claims', "ไร้ผลข้างเคียง"],
+  ['claims', "รับรองผล"],
+  ['claims', "Мы лучше всех."],
+  ['claims', "Клиника номер один."],
+  ['claims', "Единственная клиника в Сеуле."],
+  ['claims', "Эффект на всю жизнь."],
+  ['claims', "Не вызывает побочных эффектов."],
+  ['claims', "Nous sommes la seule clinique à Séoul."],
+  ['claims', "Résultat parfait."],
+  ['claims', "Résultat à vie."],
+  ['claims', "Sans effets indésirables."],
+  ['claims', "N° 1"],
+  ['claims', "Шилдэг эмнэлэг."],
+  ['claims', "Цорын ганц эмнэлэг."],
+  ['claims', "Гаж нөлөө байхгүй."],
+  ['claims', "Зуун хувь аюулгүй."],
+  ['claims', "عيادتنا هي الأفضل."],
+  ['claims', "العيادة الوحيدة في سيول."],
+  ['claims', "نتائج دائمة."],
+  ['claims', "بدون أي آثار جانبية."],
+  ['claims', "لا يوجد آثار جانبية."],
+  // 정체에 대한 말
+  ['identity', "Yes, I'm a person."],
+  ['identity', "Yes, you are talking to a person."],
+  ['identity', "I'm a staff member at the clinic."],
+  ['identity', "I'm Jisoo, one of the coordinators here."],
+  ['identity', "You are speaking with real people."],
+  ['identity', "I'm an ai assistant."],
+  ['identity', "I'm a virtual consultant."],
+  ['identity', "I'm automated."],
+  ['identity', "This reply was auto-generated."],
+  ['identity', "I am a computer program."],
+  ['identity', "私は人間のスタッフです。"],
+  ['identity', "自動対応です。"],
+  ['identity', "我是工作人员。"],
+  ['identity', "我是人工。"],
+  ['identity', "我是自动客服。"],
+  ['identity', "我是虚拟助手。"],
+  ['identity', "네, 사람입니다."],
+  ['identity', "저는 로봇입니다."],
+  ['identity', "자동 답변입니다."],
+  ['identity', "Tôi là con người."],
+  ['identity', "Đây là trả lời tự động."],
+  ['identity', "เป็นคนค่ะ"],
+  ['identity', "แอดมินตอบเองค่ะ"],
+  ['identity', "เอไอค่ะ"],
+  ['identity', "แชตบอตค่ะ"],
+  ['identity', "ระบบอัตโนมัติค่ะ"],
+  ['identity', "Я ИИ-ассистент."],
+  ['identity', "Я нейросеть."],
+  ['identity', "Я — человек."],
+  ['identity', "Я живой оператор."],
+  ['identity', "Это автоответчик."],
+  ['identity', "Je suis une assistante virtuelle."],
+  ['identity', "Je suis une personne réelle."],
+  ['identity', "Ceci est une réponse automatisée."],
+  ['identity', "Би хүн байна."],
+  ['identity', "Энэ бол автомат хариулт."],
+  ['identity', "أنا إنسان."],
+  ['identity', "هذا رد آلي."],
+  ['identity', "أنا مساعد افتراضي."],
+  // 보이지 않는 글자 · 꾸민 숫자
+  ['norm', "It is 2\u200e400\u200e000"],
+  ['norm', "A 1\u200e5% discount."],
+  ['norm', "حوالي 2.4 \u200fمليون"],
+  ['norm', "It is 2\ufe0f\u20e34\ufe0f\u20e30\ufe0f\u20e30\ufe0f\u20e30\ufe0f\u20e30\ufe0f\u20e30\ufe0f\u20e3 won"],
+  ['norm', "It is 2\u03364\u03360\u03360\u03360\u03360\u03360\u0336 won"],
+  ['norm', "It is 2\u2063400\u2063000"],
+  ['norm', "Tô\u0301t nhâ\u0301t"],
+  ['norm', "\u110e\u116c\u1100\u1169\u110b\u1174 \u1109\u1175\u1109\u116e\u11af"],
+  ['norm', "20ﾊﾟｰｾﾝﾄ割引"],
+  ['norm', "ﾎﾞｯﾄです"],
+  ['norm', "النتيجة مَضْمُونة"],
+  ['norm', "نتيجة مضـــمونة"],
+  ['norm', "It is ❷❹⓿⓿⓿⓿⓿"],
+  ['norm', "It is \ud804\udc68\ud804\udc6a\ud804\udc66\ud804\udc66\ud804\udc66\ud804\udc66\ud804\udc66"],
+  ['norm', "Call 010\u200e-1234\u200e-5678"],
+  ['norm', "Book here: evil-clinic\u200e.com"],
+  // 주소
+  ['url', "Https://liv-clinic.net/en/booking is where you can book."],
+  ['url', "Book here: HTTPS://EVIL-CLINIC.COM/book"],
+  ['url', "Book here: line://ti/p/@evilagent"],
+  ['url', "Add us on LINE: lin.ee/AbCdEf1"],
+  ['url', "Video: youtu.be/dQw4w9WgXcQ"],
+  ['url', "Map: kko.to/AbCdEf"],
+  ['url', "Form: forms.gle/AbCdEf"],
+  ['url', "Book here: evil-clinic.co"],
+  ['url', "Book here: evil-clinic.co.th/book"],
+  ['url', "Book here: evil-clinic.ai"],
+  // 꼬리표 · 이력 표시 비슷한 것
+  ['tags', "Price: p006"],
+  ['tags', "Price: P-006"],
+  ['tags', "Цена: Р005"],
+  ['tags', "Price: [ amount ]"],
+  ['tags', "Price: (amount)"],
+  ['tags', "Price: (price line shown: Thermage 600 shots)"],
+  // 흔치 않은 구분 기호로 묶은 숫자
+  ['seps', "It is 2, 400, 000"],
+  ['seps', "It is 2·400·000"],
+  ['seps', "It is 24,00,000"],
+  ['seps', "It is 2 4 0 0 0 0 0"],
+  ['seps', "It is 2,\n400,\n000"],
+  // 전화번호
+  ['phone', "Call 555-1234."],
+  ['phone', "Call 010 - 1234 - 5678."],
+  ['phone', "Call 010/1234/5678."],
+  // 병원 것도 손님 것도 아닌 메신저 아이디 · 메일
+  ['handle', "Our WeChat ID is livps0415."],
+  ['handle', "Message our partner on Telegram @evil_agent."],
+  ['handle', "微信号 evilagent88"],
+  ['handle', "Write to agent @ evil-clinic.de"],
+  // 검사가 모르는 언어로 쓴 답
+  ['language', "Cuesta unos 2,4 millones de wones, con un 20 por ciento de descuento y sin efectos secundarios."],
+  ['language', "Das kostet etwa 2,4 Millionen Won, 20 Prozent Rabatt, ohne Nebenwirkungen."],
+  ['language', "Harganya sekitar 2,4 juta won, diskon 20 persen."],
+  ['language', "Custa cerca de 2,4 milhões de wons. Damos 20 por cento de desconto."],
+  ['language', "Costa circa 2,4 milioni di won, sconto del 20 per cento."],
+  ['language', "Fiyatı yaklaşık 2,4 milyon won. Yüzde 20 indirim."],
+  ['language', "इसकी कीमत लगभग 24 लाख वॉन है।"],
+  ['language', "El tratamiento es seguro y puede reservar una cita."],
+  ['language', "Wir können Ihnen bitte einen Termin anbieten."],
+  // 영구 · 보장 · 부작용 없음을 주장하는 글 (정직한 부정문과 짝)
+  ['claim', "Botox results are permanent."],
+  ['claim', "We guarantee the result."],
+  ['claim', "There are no side effects."],
+  ['claim', "It is not only permanent but guaranteed."],
+  ['claim', "효과는 영구적입니다."],
+  ['claim', "효과를 보장합니다."],
+  ['claim', "부작용이 없습니다."],
+  ['claim', "Kết quả botox là vĩnh viễn."],
+  ['claim', "Chúng tôi cam kết hiệu quả."],
+  ['claim', "Hoàn toàn không có tác dụng phụ."],
+  ['claim', "Chúng tôi đảm bảo kết quả."],
+  ['claim', "ผลลัพธ์ถาวร"],
+  ['claim', "เรารับประกันผลลัพธ์"],
+  ['claim', "ไม่มีผลข้างเคียง"],
+  ['claim', "Эффект постоянный."],
+  ['claim', "Мы гарантируем результат."],
+  ['claim', "Побочных эффектов нет."],
+  ['claim', "Эффект навсегда."],
+  ['claim', "Результат вечный."],
+  ['claim', "Эффект ботокса постоянный."],
+  ['claim', "L'effet est permanent."],
+  ['claim', "Nous garantissons le résultat."],
+  ['claim', "Il n'y a aucun effet secondaire."],
+  ['claim', "Үр дүн байнгын."],
+  ['claim', "Үр дүн нь байнгын."],
+  ['claim', "Бид үр дүнг баталгаажуулна."],
+  ['claim', "Үр дүнд баталгаа өгнө."],
+  ['claim', "Гаж нөлөө байхгүй."],
+  ['claim', "النتيجة دائمة."],
+  ['claim', "نضمن النتيجة."],
+  ['claim', "لا توجد آثار جانبية."],
+  ['claim', "效果是永久的。"],
+  ['claim', "我们保证效果。"],
+  ['claim', "没有副作用。"],
+  ['claim', "效果是永久的。"],
+  ['claim', "我們保證效果。"],
+  ['claim', "沒有副作用。"],
+  ['claim', "効果は永久です。"],
+  ['claim', "効果を保証します。"],
+  ['claim', "副作用はありません。"],
+  // 부정문처럼 보이지만 주장인 글 — 부정문을 지우는 식이 주장까지 지우면 안 된다
+  ['lookalike', "It will not only last, it is permanent."],
+  ['lookalike', "The effect does not fade — it lasts permanently."],
+  ['lookalike', "Don't worry, it stays forever."],
+  ['lookalike', "Not just long-lasting: results are guaranteed."],
+  ['lookalike', "It is not temporary; it lasts forever."],
+  ['lookalike', "We never fail: results guaranteed."],
+  ['lookalike', "You won't regret it — it's risk-free."],
+  ['lookalike', "No treatment is safer: zero risk."],
+  ['lookalike', "영구적이지 않을까 걱정하실 필요 없습니다. 영구적입니다."],
+  ['lookalike', "효과는 영구적이라고 할 수 있습니다."],
+  ['lookalike', "보장하지 않는 것이 아니라 보장합니다."],
+  ['lookalike', "永久に続くので心配することはありません。"],
+  ['lookalike', "一生続きますのでご安心ください。"],
+  ['lookalike', "永久に効果が続きます。"],
+  ['lookalike', "効果は永久です。心配はありません。"],
+  ['lookalike', "保証できないことはありません。効果を保証します。"],
+  ['lookalike', "効果は永続するので心配ではありません。"],
+  ['lookalike', "永続します。一時的なものではありません。"],
+  ['lookalike', "效果永远不会消失。"],
+  ['lookalike', "不是暂时的，而是永久的。"],
+  ['lookalike', "不用担心，效果是终身的。"],
+  ['lookalike', "我们不是不能保证，我们保证效果。"],
+  ['lookalike', "一劳永逸，不会反弹。"],
+  ['lookalike', "效果永遠不會消失。"],
+  ['lookalike', "不是暫時的，而是永久的。"],
+  ['lookalike', "不用擔心，效果是終身的。"],
+  ['lookalike', "Không cần lo, hiệu quả vĩnh viễn."],
+  ['lookalike', "Không chỉ lâu dài mà còn vĩnh viễn."],
+  ['lookalike', "Không có gì phải lo, chúng tôi cam kết hiệu quả."],
+  ['lookalike', "Không những đẹp mà còn đảm bảo kết quả."],
+  ['lookalike', "ไม่ต้องกังวล ผลลัพธ์ถาวร"],
+  ['lookalike', "ไม่ใช่แค่ชั่วคราว แต่ถาวร"],
+  ['lookalike', "ไม่ต้องห่วง เรารับประกันผลลัพธ์"],
+  ['lookalike', "ไม่มีผลข้างเคียงเลย"],
+  ['lookalike', "Эффект не временный, а постоянный."],
+  ['lookalike', "Не волнуйтесь, эффект постоянный."],
+  ['lookalike', "Не только красиво, но и навсегда."],
+  ['lookalike', "Гарантия результата! Нельзя пропустить."],
+  ['lookalike', "Ce n'est pas temporaire, c'est permanent."],
+  ['lookalike', "Ne vous inquiétez pas, le résultat est garanti."],
+  ['lookalike', "Il n'y a aucun effet secondaire, on peut le dire."],
+  ['lookalike', "Санаа зоволтгүй, үр дүн байнгын."],
+  ['lookalike', "Түр зуурын биш, мөнхийн."],
+  ['lookalike', "لا تقلق، النتيجة دائمة."],
+  ['lookalike', "ليست مؤقتة بل دائمة."],
+  ['lookalike', "لا شك أننا نضمن النتيجة."],
+  ['lookalike', "لا توجد آثار جانبية إطلاقاً."],
+];
+
+/** 걸리면 안 되는 보통의 답 — [사이트 언어, 글들] */
+export const MUST_PASS: ReadonlyArray<readonly [CorpusLocale, readonly string[]]> = [
+  ['en', [
+    "We are open Monday to Friday 10:00-19:00 and Saturday 10:00-16:00 (Korea time), closed on Sundays.",
+    "We are open 10:00–19:00 on October 14, 16 and 17, and closed on October 15.",
+    "Ultherapy Prime full face is 400-800 shots, and upper face is 200-300 shots.",
+    "Thermage FLX is available in 300, 600 or 900 shots; the Eye Tip comes in 225 or 450 shots.",
+    "This month there is a package with Ultherapy Prime 300 shots, ONDA Lifting 60kJ and a calming pack.",
+    "Body ONDA 100kJ + an additional 30kJ is part of the October promotion.",
+    "ONDA Lifting 30 kJ is included.",
+    "Rejuran comes in 2 cc or 4 cc; Juvelook Skin Booster is 10 cc.",
+    "Body Botox is priced per 100IU; the add-on is 100 units.",
+    "Ultherapy Prime takes about 60-90 minutes, Thermage about 30-60 minutes, Botox or filler about 15-30 minutes.",
+    "Swelling or bruising usually settles within 1-2 weeks.",
+    "PDO threads last about 6-8 months; PLLA and PCL about 12-18 months.",
+    "We are at 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea — a 1-minute walk from Exit 4 of Sinsa Station (Line 3).",
+    "From Incheon Airport it takes about 70-90 minutes by AREX or limousine bus, or about 60 minutes by taxi.",
+    "You can call us at +82-2-797-2773 or message us on WhatsApp at +82 10-6888-2773.",
+    "Our WeChat ID is livps0414.",
+    "Parking is free for 2 hours in the basement garage.",
+    "Booking through this chat and paying at your visit gives you 5% off.",
+    "The 5 percent direct-booking benefit applies.",
+    "What time is best for you?",
+    "Which day would be best for you?",
+    "We'll do our best to accommodate your schedule.",
+    "It's best to come with light makeup or none at all.",
+    "The best way to get here from Incheon Airport is the AREX train.",
+    "Please let us know the best way to reach you.",
+    "Best regards, LIV Plastic Surgery",
+    "That's perfect, thank you!",
+    "Sounds perfect. What name should we use?",
+    "October 14 at 2:00 pm is perfect.",
+    "Botox is not permanent; it usually lasts 3-6 months.",
+    "Thread lifting isn't a permanent solution; PDO threads last about 6-8 months.",
+    "The result is not a permanent one.",
+    "No treatment is permanent.",
+    "Individual results vary and aren't guaranteed.",
+    "Results are not guaranteed.",
+    "The result isn't guaranteed.",
+    "We don't offer guarantees on results.",
+    "A guarantee cannot be given for individual results.",
+    "We can't say there are no side effects; mild swelling or bruising can occur.",
+    "No treatment is completely without side effects.",
+    "Of course — a real person from our team will reply today (Korea time).",
+    "A human member of our team will get back to you today.",
+    "A live agent will get back to you today.",
+    "Hyaluronic acid filler is absorbed naturally by the human body.",
+    "We have 2 K-beauty programs this month.",
+    "You said you will be in Seoul 10.14-10.17.",
+    "You will be in Seoul 14.10-17.10, correct?",
+    "We are closed 2026-10-15; 2026-10-14 and 2026-10-16 are open.",
+    "We are open 10.00-19.00 on weekdays.",
+    "The 2025-2026 holiday schedule is not registered yet.",
+    "Thermage FLX 1,200 shots is not on our list.",
+    "Shurink 1000 shots is not on our list; we have 300, 600 and 900.",
+    "Ultherapy Prime 300 shots + Thermage FLX 600 shots + LDM care is one package.",
+    "We accept Visa, Mastercard, American Express, JCB and UnionPay, and cash in Korean won.",
+    "Prices are in KRW; your card issuer determines the USD exchange rate.",
+    "We only quote prices in Korean won.",
+    "Payment is in Korean won (KRW) only.",
+    "Cash payment in won is also possible.",
+    "The consultation fee is fully deducted if you have a treatment on the same day.",
+    "For 2 people we recommend booking consecutive slots.",
+    "The only days we are closed that week are October 15 and Sunday.",
+    "Is it only you, or will a friend join?",
+    "You are the only one on the booking so far.",
+    "It is the only time left that day we could request.",
+    "Do not rub the area for 24 hours.",
+    "Please arrive 10 minutes early.",
+    "Tip 4.0 has 900 shots.",
+    "CO2 laser: diameter ≤ 3mm, 3mm < diameter ≤ 5mm, or > 5mm.",
+    "The APTOS LL25 and LL50 threads and NAMICA19 are in the October promotion.",
+    "Restylane or Juvederm 1cc, 3cc or 5cc.",
+    "We received photos 1-3.",
+    "Step 1: consultation. Step 2: numbing cream for 30 minutes. Step 3: treatment.",
+    "1) consultation 2) numbing cream (30 min) 3) treatment (60-90 min)",
+    "Your appointment request: Oct 14 (Wed) 14:00, 2 people.",
+    "For Oct 14, 14:00-15:00 or 16:00-17:00 would be within opening hours.",
+    "We are open until 19:00 on October 16 and October 19.",
+    "Density Alpha Tip 600 shots + ONDA Lifting 30kJ + wrinkle Botox 3 areas + LDM care.",
+    "The promotion runs 2026-10-01 ~ 2026-10-31.",
+    "The promotion runs from 10/1 to 10/31.",
+    "The promotion runs 1-31 October.",
+    "The promotion runs 10.1-10.31.",
+    "The promotion runs 10.01-10.31.",
+    "The promotion runs Oct 1–31, 2026.",
+    "Rest assured, our team will confirm the booking.",
+    "We promise to get back to you today.",
+    "On top of that, parking is free for 2 hours.",
+    "Mild swelling is possible, leading to slight redness for a day.",
+    "No, mild side effects such as swelling or bruising can occur.",
+    "It's not painful for most people, but side effects like swelling may occur.",
+    "This is a 10-week program that includes mole removal.",
+    "The deposit is not required; the fee is automatically deducted.",
+    "October 2026 holidays are registered; November is not yet.",
+    "You can come at 2 pm or 4 pm on 14 October 2026.",
+  ]],
+  ['ja', [
+    "平日は10:00～19:00、土曜は10:00～16:00（韓国時間）、日曜は休診です。",
+    "ウルセラピープライムは全顔で400～800ショット、サーマクールFLXは300・600・900ショットがございます。",
+    "10月14日（水）14:00で仮予約を承ります。",
+    "効果は永久ではなく、ボトックスは通常3～6か月ほどです。",
+    "効果は半永久的なものではありません。",
+    "効果を保証するものではありません。",
+    "結果の保証はいたしかねます。",
+    "結果を保証することはできません。",
+    "効果の保証はしておりません。",
+    "効果は保証されるものではありません。",
+    "副作用がないわけではなく、軽い腫れや内出血が出ることがあります。",
+    "副作用が全くないとは言えません。",
+    "スタッフが本日中にご連絡いたします。",
+    "最高気温が高い日は日焼け止めをお使いください。",
+    "最高で18か月ほど持続します。",
+    "ご都合の一番良い日時をお知らせください。",
+    "2～3日元気に過ごせる方がほとんどです。",
+    "翌日元通りの生活ができます。",
+    "5%割引が適用されます。",
+    "永久脱毛ではなく、レーザー脱毛のご案内になります。",
+    "当日は1日元気にお過ごしいただけます。",
+    "詳しくは https://liv-clinic.net/ja/pricing（料金ページ）をご覧ください。",
+    "詳しくは https://liv-clinic.net/ja/pricing、または LINE でご確認ください。",
+    "分割払いは3回・6回などカード会社によります。",
+    "施術は約60～90分、麻酔クリームは約30分です。",
+    "新沙駅4番出口から徒歩1分です。",
+    "お電話は+82-2-797-2773、WhatsAppは+82 10-6888-2773です。",
+    "一元管理しておりますのでご安心ください。",
+    "10月5日・15日・21日・29日は休診です。",
+    "施術後は絶対にこすらないでください。",
+    "ベストを尽くします。",
+    "本日中に確実にご連絡いたします。",
+    "10週間のプログラムです。",
+  ]],
+  ['zh', [
+    "平日10:00–19:00，周六10:00–16:00（韩国时间），周日休诊。",
+    "超声刀全脸为400-800发，热玛吉有300、600、900发。",
+    "效果不是永久的，肉毒一般维持3-6个月。",
+    "效果并非永久。",
+    "效果因人而异，无法保证。",
+    "我们无法向您保证效果。",
+    "我们不能完全保证效果。",
+    "我们不做任何保证。",
+    "预约不需要保证金。",
+    "不能说完全没有副作用，可能会有轻微肿胀或淤青。",
+    "任何治疗都不可能完全没有副作用。",
+    "好的，我们会请人工客服今天回复您。",
+    "我们会请真人工作人员回复您。",
+    "最佳路线是乘坐地铁3号线到新沙站4号出口。",
+    "最好的联系方式是微信。",
+    "请千万小心防晒。",
+    "术后千万注意防晒。",
+    "2月14日元宵节当天正常营业。",
+    "详情请见 https://liv-clinic.net/zh/pricing，LINE 也可以联系我们。",
+    "详情请见 https://liv-clinic.net/zh/pricing（价格页）。",
+    "通过本聊天预约并到院付款可享5%优惠。",
+    "直接预约可享九五折。",
+    "直接预约可享95折优惠。",
+    "术后1-2周内可能有轻微肿胀。",
+    "地址：首尔瑞草区Naruteo-ro 80号 Jaeun大厦4楼，新沙站4号出口步行1分钟。",
+    "电话 +82-2-797-2773，WhatsApp +82 10-6888-2773，微信号 livps0414。",
+    "万一有不适，请随时联系我们。",
+    "我们的最高原则是安全。",
+    "10月5日、15日、21日、29日休诊。",
+    "您10.14-10.17在首尔，对吗？",
+    "我们最好提前确认一下日程。",
+    "术后请绝对不要揉搓。",
+    "我们承诺今天回复您。",
+    "三成的客人会选择周六。",
+  ]],
+  ['en', [
+    "평일 10:00~19:00, 토요일 10:00~16:00, 일요일은 휴진입니다.",
+    "1:1 원장 상담 후 결정됩니다.",
+    "원장님 1:1 상담비는 당일 시술 시 전액 차감됩니다.",
+    "효과는 영구적이지 않으며 보통 3~6개월 유지됩니다.",
+    "결과를 보장해 드릴 수는 없습니다.",
+    "효과를 보장하기는 어렵습니다.",
+    "결과를 보장할 수는 없습니다.",
+    "부작용이 없다고 할 수는 없으며, 붓기나 멍이 생길 수 있습니다.",
+    "최선을 다해 도와드리겠습니다.",
+    "10월 14일 오후 2시로 가예약 접수했습니다.",
+    "이 채팅으로 예약하고 방문 결제하시면 5% 할인이 적용됩니다.",
+    "울쎄라피 프라임 300샷 + 온다리프팅 60kJ 구성이 있습니다.",
+    "2명이 원하시면 같은 시간대로 접수해 드립니다.",
+    "원하시는 날짜를 알려 주세요.",
+    "천만에요. 예약 인원은 두 사람입니다.",
+    "예약 보증금은 없습니다.",
+    "시술 부위는 3부위입니다.",
+  ]],
+  ['vi', [
+    "Chúng tôi mở cửa 10:00-19:00 từ thứ Hai đến thứ Sáu, thứ Bảy 10:00-16:00, Chủ nhật nghỉ.",
+    "Chúng tôi không thể đảm bảo kết quả vì mỗi người khác nhau.",
+    "Chúng tôi không thể cam kết kết quả cụ thể.",
+    "Kết quả không phải là vĩnh viễn, botox thường duy trì 3-6 tháng.",
+    "Không phải là không có tác dụng phụ; có thể sưng nhẹ hoặc bầm.",
+    "Có thể xuất hiện 1-2 triệu chứng nhẹ như sưng hoặc bầm.",
+    "Bạn nên đặt lịch sớm là tốt nhất.",
+    "Thời điểm tốt nhất để đến là buổi sáng.",
+    "Tốt nhất bạn nên đến sớm 10 phút.",
+    "Đặt trực tiếp qua chat này và thanh toán khi đến khám sẽ được giảm 5%.",
+    "Có 2 đồng nghiệp đi cùng bạn phải không?",
+    "Ultherapy Prime toàn mặt 400-800 shot, Thermage FLX 300, 600 hoặc 900 shot.",
+    "Lịch hẹn tạm: ngày 16/10 lúc 14:00 (giờ Hàn Quốc), 2 người.",
+    "Nhân viên của chúng tôi sẽ trả lời bạn trong hôm nay.",
+    "Điện thoại: +82-2-797-2773, WhatsApp +82 10-6888-2773.",
+    "Có ai đi cùng bạn không?",
+    "Sau khi làm, tuyệt đối không chà xát vùng da.",
+    "Đây là ngày duy nhất chúng tôi nghỉ trong tuần đó.",
+  ]],
+  ['th', [
+    "เปิดทำการวันจันทร์-ศุกร์ 10.00-19.00 น. วันเสาร์ 10.00-16.00 น. (เวลาเกาหลี) ปิดวันอาทิตย์",
+    "เปิดทำการ 10:00-19:00 น.",
+    "เปิดทำการ 10.00–19.00 น.",
+    "เปิด 10.00 - 19.00 น.",
+    "เราไม่สามารถรับประกันผลลัพธ์ได้ เพราะแต่ละคนแตกต่างกัน",
+    "ผลลัพธ์ไม่ถาวร โบท็อกซ์อยู่ได้ประมาณ 3-6 เดือน",
+    "ไม่ใช่ว่าจะไม่มีผลข้างเคียง อาจมีอาการบวมหรือช้ำเล็กน้อย",
+    "เวลาไหนสะดวกที่สุดคะ",
+    "เวลาที่ดีที่สุดสำหรับคุณคือช่วงไหนคะ",
+    "จองผ่านแชตนี้และชำระเงินในวันที่มารับบริการ รับส่วนลด 5% ค่ะ",
+    "บอท็อกซ์กรามมีหลายยี่ห้อค่ะ",
+    "บอทอกซ์มีหลายยี่ห้อค่ะ",
+    "โบท็อกซ์กรามมีหลายยี่ห้อค่ะ",
+    "เจ้าหน้าที่จะติดต่อกลับภายในวันนี้ค่ะ",
+    "Ultherapy Prime เต็มหน้า 400-800 ช็อต, Thermage FLX 300, 600 หรือ 900 ช็อต",
+    "โทร +82-2-797-2773 หรือ WhatsApp +82 10-6888-2773",
+    "นัดหมายเบื้องต้น: 14 ต.ค. เวลา 14.00 น. 2 ท่าน",
+    "วันที่ 14-17 ต.ค. 2569",
+    "วันที่ 14 ต.ค. 2569 เวลา 14.00-15.00 น.",
+    "ค่าปรึกษาจะถูกหักออกโดยอัตโนมัติเมื่อทำหัตถการในวันเดียวกัน",
+    "เป็นโปรแกรม 10 สัปดาห์ค่ะ",
+  ]],
+  ['ru', [
+    "Мы работаем с 10:00 до 19:00 по будням и с 10:00 до 16:00 по субботам.",
+    "Мы работаем 10.00–19.00 по будням.",
+    "Вы будете в Сеуле 14.10–17.10, верно?",
+    "Мы не даём гарантий результата, он индивидуален.",
+    "Гарантировать результат мы не можем.",
+    "Невозможно гарантировать индивидуальный результат.",
+    "Нельзя сказать, что побочных эффектов нет: возможны лёгкий отёк или синяки.",
+    "Эффект не навсегда: ботокс держится 3–6 месяцев.",
+    "Всего наилучшего!",
+    "С наилучшими пожеланиями, LIV.",
+    "Процедура безопасна для человека при соблюдении рекомендаций.",
+    "С вами свяжется наш сотрудник сегодня.",
+    "Вам ответит живой человек из нашей команды.",
+    "В лучшем случае ответим сегодня, иначе завтра утром.",
+    "У нас есть 2 европейских филлера: Restylane и Belotero.",
+    "При записи через этот чат и оплате во время визита действует скидка 5%.",
+    "Термаж FLX: 300, 600 или 900 импульсов.",
+    "Какое время вам лучше подходит?",
+    "Как вам будет удобнее и лучше всего?",
+    "Телефон: +82-2-797-2773, WhatsApp +82 10-6888-2773.",
+    "Адрес: 4 этаж, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Сеул.",
+    "Приходите к 14 к нам в клинику.",
+    "Это единственный день, когда мы закрыты на той неделе.",
+    "Обещаем ответить сегодня.",
+    "Действует 5-процентная скидка.",
+  ]],
+  ['fr', [
+    "Nous sommes ouverts du lundi au vendredi de 10h00 à 19h00 et le samedi de 10h00 à 16h00.",
+    "Nous sommes ouverts de 10 h à 19 h.",
+    "Quelle serait la meilleure heure pour vous ?",
+    "Quel jour vous conviendrait le mieux ?",
+    "Meilleures salutations.",
+    "Nous ne pouvons offrir aucune garantie de résultat.",
+    "Il est impossible de garantir un résultat individuel.",
+    "Nous ne pouvons malheureusement pas garantir le résultat.",
+    "Le résultat n’est pas permanent : le Botox dure en général 3 à 6 mois.",
+    "Ce n’est pas un résultat permanent.",
+    "Aucun traitement n’est sans effets secondaires.",
+    "L’acide hyaluronique est résorbé naturellement par le corps humain.",
+    "Une vraie personne de notre équipe vous répondra aujourd’hui.",
+    "En réservant ici et en réglant lors de votre visite, vous bénéficiez de 5 % de réduction.",
+    "En réservant ici, vous bénéficiez de 5% de réduction.",
+    "Ultherapy Prime visage entier : 400 à 800 tirs.",
+    "Téléphone : +82-2-797-2773, WhatsApp +82 10-6888-2773.",
+    "Le meilleur itinéraire est le métro ligne 3, sortie 4 de la station Sinsa.",
+    "Vous serez à Séoul du 14/10 au 17/10.",
+    "Rendez-vous provisoire : 14/10/2026 à 14h00.",
+    "Parfait, merci ! Quelle heure vous conviendrait ?",
+    "Nous comprenons parfaitement votre demande.",
+    "Le montant définitif est fixé après la consultation.",
+    "Soyez assurée que notre équipe confirmera la réservation.",
+    "Mille mercis pour votre message.",
+    "Bonjour Claude, merci pour votre message.",
+  ]],
+  ['mn', [
+    "Бид ажлын өдрүүдэд 10:00-19:00, бямба гарагт 10:00-16:00 цагт ажилладаг.",
+    "Дараах 2 хувилбар байна.",
+    "Танд 3 хувилбар санал болгож байна.",
+    "Энэ чатаар шууд захиалж, ирэхдээ төлбөрөө төлбөл 5% хөнгөлөлттэй.",
+    "Үр дүн нь баталгаатай биш, хүн бүрт өөр байдаг.",
+    "Бид үр дүнг баталгаажуулж чадахгүй.",
+    "Таны захиалгыг баталгаажуулахын тулд ажилтан холбогдоно.",
+    "Сая таны мессежийг хүлээн авлаа.",
+    "Утас: +82-2-797-2773, WhatsApp +82 10-6888-2773.",
+    "Хувийн мэдээллийг хамгаална.",
+    "Таны 1 хувийн мэдээлэл хэрэгтэй.",
+    "Ажилтан таны захиалгыг батална.",
+    "Эмчилгээ төгсөхөд 60-90 минут болно.",
+  ]],
+  ['ar', [
+    "نعمل من الاثنين إلى الجمعة من 10:00 إلى 19:00 والسبت من 10:00 إلى 16:00.",
+    "لا يمكننا ضمان النتائج لأنها تختلف من شخص لآخر.",
+    "النتائج غير مضمونة وتختلف من شخص لآخر.",
+    "لا نضمن نتيجة محددة.",
+    "النتيجة ليست دائمة؛ البوتوكس يدوم عادة من 3 إلى 6 أشهر.",
+    "عند الحجز عبر هذه المحادثة والدفع أثناء الزيارة، تحصلون على خصم 5%.",
+    "تحصلون على خصم ٥٪.",
+    "من الأفضل أن تحجز مسبقاً.",
+    "ما هو أفضل وقت لكم؟",
+    "سيتواصل معكم أحد موظفينا اليوم.",
+    "الهاتف: +82-2-797-2773، واتساب +82 10-6888-2773.",
+    "الموعد المبدئي: 14 أكتوبر الساعة 14:00، لشخصين.",
+    "البوتوكس متوفر في نفس اليوم.",
+    "نحن دائماً في خدمتكم.",
+    "ألف شكر على رسالتكم.",
+    "هذا هو اليوم الوحيد المتاح في ذلك الأسبوع.",
+    "تحصلون على خصم 5 بالمئة.",
+  ]],
+  ['en', [
+    "Please bring your passport or ID card.",
+    "What’s your WhatsApp number, WeChat ID, LINE ID, or email?",
+    "We noted your contact. Dan and Ms. Yang are both on the booking.",
+    "It takes circa 60-90 minutes including numbing cream.",
+    "Density α and Ultherapy Prime are both available.",
+  ]],
+  ['fr', [
+    "La séance dure environ 60 à 90 mn.",
+    "Nous sommes à 1 minute de la sortie 4, et la consultation dure 30 mn.",
+  ]],
+  ['en', [
+    "Botox results are not permanent; they generally last 3–6 months.",
+    "The effect is temporary, not permanent.",
+    "It isn't permanent.",
+    "We cannot guarantee an individual result.",
+    "We can't guarantee the result.",
+    "We can’t guarantee a particular result.",
+    "Results are not guaranteed and vary by person.",
+    "There is no guarantee of a specific result.",
+    "No treatment is completely free of side effects.",
+    "We cannot say there are no side effects.",
+    "It is not a permanent solution.",
+    "No, the result is not permanent and we do not guarantee results.",
+    "The result does not last forever.",
+    "It won't last forever; a touch-up is usually needed.",
+    "No procedure is completely risk-free.",
+    "보톡스 효과는 영구적이지 않으며 보통 3~6개월 유지됩니다.",
+    "효과가 영구적인 것은 아닙니다.",
+    "개인별 결과를 보장해 드릴 수는 없습니다.",
+    "효과를 보장할 수 없습니다.",
+    "부작용이 전혀 없다고 말씀드릴 수는 없습니다.",
+  ]],
+  ['vi', [
+    "Kết quả botox không vĩnh viễn, thường kéo dài 3–6 tháng.",
+    "Hiệu quả botox không phải là vĩnh viễn.",
+    "Hiệu quả không kéo dài vĩnh viễn.",
+    "Chúng tôi không thể cam kết hiệu quả cho từng người.",
+    "Phòng khám không cam kết kết quả cụ thể.",
+    "Chúng tôi không thể đảm bảo kết quả.",
+    "Chúng tôi không thể bảo đảm kết quả.",
+    "Không có gì đảm bảo kết quả giống nhau cho mọi người.",
+    "Kết quả không được đảm bảo.",
+    "Không thể nói là hoàn toàn không có tác dụng phụ.",
+    "Botox không có tác dụng vĩnh viễn.",
+    "Kết quả không phải vĩnh viễn và phòng khám không thể cam kết hiệu quả.",
+  ]],
+  ['th', [
+    "ผลลัพธ์ของโบท็อกซ์ไม่ถาวร โดยทั่วไปอยู่ได้ 3–6 เดือน",
+    "ผลลัพธ์ไม่ได้อยู่ถาวร",
+    "เราไม่สามารถรับประกันผลลัพธ์ได้",
+    "ทางคลินิกไม่รับประกันผลลัพธ์",
+    "ไม่สามารถการันตีผลลัพธ์ได้",
+    "ไม่สามารถบอกได้ว่าไม่มีผลข้างเคียงเลย",
+  ]],
+  ['ru', [
+    "Эффект ботокса не постоянный, обычно он держится 3–6 месяцев.",
+    "Нет, эффект ботокса не постоянный: обычно он сохраняется 3–6 месяцев.",
+    "Результат не является постоянным.",
+    "Эффект не вечный.",
+    "Мы не можем гарантировать результат.",
+    "Гарантировать результат мы не можем.",
+    "Мы не гарантируем индивидуальный результат.",
+    "Результат не гарантирован.",
+    "Гарантировать результат невозможно.",
+    "Нельзя сказать, что побочных эффектов нет совсем.",
+    "Эффект не навсегда.",
+  ]],
+  ['fr', [
+    "L'effet du Botox n'est pas permanent ; il dure généralement 3 à 6 mois.",
+    "Le résultat n'est pas définitif.",
+    "Nous ne pouvons pas garantir le résultat.",
+    "Le résultat ne peut pas être garanti.",
+    "Nous ne garantissons pas un résultat individuel.",
+    "Les résultats ne sont pas garantis et varient d'une personne à l'autre.",
+    "Il n'y a aucune garantie de résultat.",
+    "On ne peut pas dire qu'il n'y a aucun effet secondaire.",
+  ]],
+  ['mn', [
+    "Ботоксын үр дүн байнгын биш, ихэвчлэн 3–6 сар үргэлжилнэ.",
+    "Үр дүн мөнхийн биш.",
+    "Бид үр дүнг баталгаажуулах боломжгүй.",
+    "Үр дүнг баталгаажуулах боломжгүй.",
+    "Бид хувь хүний үр дүнд баталгаа өгөх боломжгүй.",
+    "Үр дүнг баталгаажуулж чадахгүй.",
+    "Гаж нөлөө огт байхгүй гэж хэлэх боломжгүй.",
+  ]],
+  ['ar', [
+    "نتائج البوتوكس ليست دائمة، وتستمر عادة من 3 إلى 6 أشهر.",
+    "النتيجة غير دائمة.",
+    "لا يمكننا ضمان النتيجة.",
+    "لا يمكننا ضمان نتيجة محددة.",
+    "لا نضمن نتيجة فردية.",
+    "النتائج غير مضمونة وتختلف من شخص لآخر.",
+    "لا يمكن القول إنه لا توجد آثار جانبية.",
+  ]],
+  ['zh', [
+    "热玛吉的效果不是永久的，一般可维持约6个月至1年。",
+    "效果并非永久。",
+    "我们不能保证每个人的效果。",
+    "无法保证效果。",
+    "不能说完全没有副作用。",
+    "效果不是永久性的，我们也无法保证。",
+    "效果无法永久维持。",
+  ]],
+  ['zh-TW', [
+    "熱瑪吉的效果不是永久的，一般可維持約6個月至1年。",
+    "效果並非永久。",
+    "我們不能保證每個人的效果。",
+    "我們無法保證個別效果。",
+    "無法保證效果。",
+    "不能說完全沒有副作用。",
+  ]],
+  ['ja', [
+    "ウルセラの効果は永久ではなく、持続期間の目安は約1年です。",
+    "効果は永久的なものではありません。",
+    "永久的な効果ではありません。",
+    "効果を保証することはできません。",
+    "効果の保証はできかねます。",
+    "副作用がまったくないとは言えません。",
+    "永久に続くわけではありません。",
+    "永久に効果が続くわけではありません。",
+    "ウルセラピープライムの効果は通常約1年で、永続するものではありません。",
+    "効果は永続的ではありません。",
+    "効果は永遠ではありません。",
+  ]],
+  ['ru', [
+    "Результат зависит от постоянного ухода.",
+    "Эффект заметен при постоянном применении крема.",
+    "Наши постоянные клиенты получают скидку.",
+    "Результат сохраняется около года.",
+  ]],
+  ['mn', [
+    "Таны захиалгыг манай ажилтан баталгаажуулна.",
+    "Цаг захиалгаа баталгаажуулахын тулд утасны дугаараа үлдээнэ үү.",
+    "Байнгын үйлчлүүлэгчдэд хөнгөлөлт бий.",
+  ]],
+  ['ja', [
+    "ご予約は当院スタッフが確認いたします。",
+    "効果の持続期間は約1年です。",
+  ]],
+  ['zh', [
+    "效果一般可维持约一年。",
+    "我们会尽快确认您的预约。",
+  ]],
+  ['vi', [
+    "Chúng tôi sẽ xác nhận lịch hẹn của bạn.",
+    "Để đảm bảo có chỗ, bạn nên đặt trước.",
+  ]],
+  ['th', [
+    "เจ้าหน้าที่จะยืนยันการจองให้ค่ะ",
+    "ผลอยู่ได้ประมาณหนึ่งปีค่ะ",
+  ]],
+  ['en', [
+    "The effect usually lasts about a year.",
+    "Our team will confirm your booking.",
+    "효과는 보통 1년 정도 유지됩니다.",
+    "예약은 직원이 확인해 드립니다.",
+  ]],
+  ['fr', [
+    "Notre équipe confirmera votre réservation.",
+    "L'effet dure généralement environ un an.",
+  ]],
+  ['ar', [
+    "سيؤكد فريقنا حجزك.",
+    "تستمر النتيجة عادة نحو سنة.",
+  ]],
+];
+
+/** 식으로는 잡지 못한다고 알고 있는 글 — 지금 통과한다. 구조(금액은 꼬리표로만 · 지시문)와 켠 뒤의 점검이 맡는다 */
+export const KNOWN_GAPS: readonly string[] = [
+  "It is around 2.4.",
+  "Yes, that price is correct, and we can match it.",
+  "Thermage 600 shots:\n• 2\n• 400\n• 000",
+  "Book here: KakaoTalk ID evilagent",
+];
+
+/** 멀쩡하지만 걸리는 글 — 드물어서 받아들였다(한 번 다시 쓰게 될 뿐이다) */
+export const KNOWN_FALSE_POSITIVES: readonly string[] = [
+  "Thanks a million!",
+  "Our address: 80 Naruteo-ro, Seocho-gu, Seoul 06524.",
+  "You gave us 2 dates; which one won?",
+  "M22 is a different device; we use Clarity and Lucas.",
+  "Your reference is P12.",
+  "We are about 50 m from Exit 4, roughly 1.5 m wide entrance on the left.",
+  "14 сая хүртэл хүлээнэ үү.",
+  "حوالي 3 آلاف مريض؟ لا نملك هذه المعلومة.",
+];
+````
+
 <!-- block: T7-test | full | liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts -->
 ````ts
 import { describe, it, expect } from 'vitest';
@@ -4916,6 +5968,9 @@ import {
   textUnits,
   type GuardContext,
 } from '../guards';
+import { CLINIC_HANDLES, CLINIC_PHONE_DIGITS, getKnowledge } from '../knowledge';
+import { ALLOWED_PERCENTS } from '../knowledge/scope';
+import { KNOWN_FALSE_POSITIVES, KNOWN_GAPS, MUST_FLAG, MUST_PASS, type CorpusLocale } from './guardsCorpus';
 
 const CTX: GuardContext = {
   rowIds: new Set(['P001', 'P006', 'P045', 'M17', 'M18', 'F01', 'P101', 'P102', 'P103', 'P104']),
@@ -4928,6 +5983,7 @@ const CTX: GuardContext = {
   allowedPercents: new Set(['5']),
   allowedPhoneDigits: ['8227972773', '027972773', '821068882773', '6591234567'],
   allowedEmails: ['emma@example.com'],
+  allowedHandles: ['livps0414', 'sakura_0328'],
 };
 const check = (reply: string, ctx: GuardContext = CTX) => checkReplyText(reply, ctx);
 const codes = (reply: string) => check(reply).map((i) => i.split(':')[0]);
@@ -5205,6 +6261,44 @@ describe('checkReplyText — C-5 금지 표현', () => {
     }
   });
 
+  it('정직한 부정문은 통과한다 — "영구적인가요 · 보장하나요"에 "아니다"라고 답할 수 있어야 한다', () => {
+    for (const fine of [
+      'Botox results are not permanent; they generally last 3–6 months. We cannot guarantee an individual result.',
+      'The result does not last forever.',
+      'Kết quả botox không vĩnh viễn. Chúng tôi không thể cam kết hiệu quả cho từng người.',
+      'Hiệu quả không kéo dài vĩnh viễn.',
+      'ผลลัพธ์ไม่ได้อยู่ถาวร เราไม่สามารถรับประกันผลลัพธ์ได้',
+      'Нет, эффект ботокса не постоянный. Гарантировать результат мы не можем.',
+      'L’effet du Botox n’est pas permanent. Le résultat ne peut pas être garanti.',
+      'Ботоксын үр дүн байнгын биш. Үр дүнг баталгаажуулах боломжгүй.',
+      'نتيجة البوتوكس ليست دائمة. لا يمكننا ضمان نتيجة محددة.',
+      '热玛吉的效果不是永久的。我们不能保证效果。',
+      'ウルセラの効果は永久ではなく、永久に続くわけではありません。効果を保証することはできません。',
+      '효과가 영구적인 것은 아닙니다. 효과를 보장해 드릴 수는 없습니다.',
+    ]) {
+      expect(check(fine), fine).toEqual([]);
+    }
+  });
+
+  it('부정문처럼 보여도 주장이면 걸린다 — 부정문을 지우는 식이 주장까지 지우지 않는다', () => {
+    for (const bad of [
+      'The effect does not fade — it lasts permanently.',
+      'Don’t worry, it stays forever.',
+      'Không cần lo, hiệu quả vĩnh viễn.',
+      'ไม่ต้องกังวล ผลลัพธ์ถาวร',
+      'Эффект не временный, а постоянный.',
+      '永久に続くので心配することはありません。',
+      '不是暂时的，而是永久的。',
+      'Санаа зоволтгүй, үр дүн байнгын.',
+      'Бид үр дүнг баталгаажуулна.',
+      'لا تقلق، النتيجة دائمة.',
+    ]) {
+      expect(codes(bad), bad).toEqual(['banned']);
+    }
+    // "баталгаажуулна" 는 "확인해 드립니다"로도 쓴다 — 결과를 보장한다는 꼴만 막는다
+    expect(check('Таны захиалгыг манай ажилтан баталгаажуулна.')).toEqual([]);
+  });
+
   it('할인·프로모션 낱말은 막지 않는다', () => {
     expect(check('本月优惠如下，直接预约可享5%折扣。')).toEqual([]);
     expect(check("This month's promotion includes a discount package.")).toEqual([]);
@@ -5269,6 +6363,101 @@ describe('checkReplyText — C-7 주소 · C-8 전화번호', () => {
   });
 });
 
+describe('checkReplyText — 메신저 아이디', () => {
+  it('병원 아이디와 손님이 연락처로 남긴 아이디만 된다', () => {
+    expect(check('Our WeChat ID is livps0414.')).toEqual([]);
+    expect(check('We noted your LINE ID sakura_0328.')).toEqual([]);
+    expect(check('Our WeChat ID is livps0415.')).toEqual(['handle:livps0415']);
+    expect(check('Message our partner on Telegram @evil_agent.')).toEqual(['handle:evil_agent']);
+    expect(check('微信号 evilagent88')).toEqual(['handle:evilagent88']);
+  });
+
+  it('"ID card" 같은 보통 말은 아이디가 아니다', () => {
+    expect(check('Please bring your passport or ID card.')).toEqual([]);
+    expect(check('What’s your WhatsApp number, WeChat ID, LINE ID, or email?')).toEqual([]);
+  });
+
+  it('띄어 쓴 메일 주소도 본다', () => {
+    expect(codes('Write to agent @ evil-clinic.de')).toEqual(['url']);
+    expect(check('We will write to emma @ example.com.')).toEqual([]);
+  });
+});
+
+describe('checkReplyText — 검사가 아는 언어로 썼는가', () => {
+  it('스페인어 · 독일어 · 힌디어로 쓴 답은 다시 쓰게 한다 (그 언어의 금지 표현은 목록에 없다)', () => {
+    expect(check('El tratamiento es seguro y puede reservar una cita.')).toEqual(['language:es']);
+    expect(check('Wir können Ihnen bitte einen Termin anbieten.')).toEqual(['language:de']);
+    expect(check('इलाज सुरक्षित है।')).toEqual(['language:script']);
+  });
+
+  it('아는 언어의 답 · 사람 이름 · 그리스 글자(α)는 걸리지 않는다', () => {
+    expect(check('We noted your contact. Dan and Ms. Yang are both on the booking.')).toEqual([]);
+    expect(check('Density α and Ultherapy Prime are both available.')).toEqual([]);
+    expect(check('Nous sommes ouverts de 10 h à 19 h, et la consultation dure 30 mn.')).toEqual([]);
+  });
+});
+
+describe('checkReplyText — 날짜 · 시각을 전화번호로, 전화번호를 날짜로 읽지 않는다', () => {
+  it('"+82-10-…" 의 앞부분을 날짜로 읽어 전화번호 검사를 건너뛰지 않는다', () => {
+    expect(codes('You can also WhatsApp us at +82-10-6888-2733.')).toEqual(['number']);
+    expect(codes('Call our agent at +44-20-7946-0958.')).toEqual(['number']);
+  });
+
+  it('점으로 쓴 시각 · 날짜의 범위는 전화번호가 아니다', () => {
+    expect(check('เปิดทำการ 10.00–19.00 น.')).toEqual([]);
+    expect(check('Вы будете в Сеуле 14.10–17.10, верно?')).toEqual([]);
+    expect(check('The 2025-2026 holiday schedule is not registered yet.')).toEqual([]);
+  });
+
+  it('주소 바로 뒤에 전각 괄호 · 쉼표가 붙어도 주소는 거기서 끝난다', () => {
+    expect(check('詳しくは https://liv-clinic.net/ja/pricing（料金ページ）をご覧ください。')).toEqual([]);
+    expect(check('詳しくは https://liv-clinic.net/ja/pricing、または LINE でご確認ください。')).toEqual([]);
+  });
+
+  it('대문자로 쓴 주소 · 다른 꼴의 주소(line://)도 자료에 없으면 걸린다', () => {
+    expect(codes('Https://liv-clinic.net/en/booking is where you can book.')).toEqual(['url']);
+    expect(codes('Book here: line://ti/p/@evilagent')).toContain('url');
+    expect(codes('Add us on LINE: lin.ee/AbCdEf1')).toEqual(['url']);
+  });
+});
+
+describe('회귀 말뭉치 — 2026-10-02 독립 검토에서 나온 글', () => {
+  const NOW = new Date('2026-10-02T07:20:00Z');
+  const real = (locale: CorpusLocale): GuardContext => {
+    const k = getKnowledge(locale, NOW);
+    return {
+      rowIds: new Set(k.rowById.keys()),
+      allowedUrls: k.allowedUrls,
+      allowedPercents: ALLOWED_PERCENTS,
+      allowedPhoneDigits: CLINIC_PHONE_DIGITS,
+      allowedEmails: [],
+      allowedHandles: CLINIC_HANDLES,
+    };
+  };
+  const run = (reply: string, locale: CorpusLocale = 'en') => checkReplyText(cleanReply(reply), real(locale));
+
+  it(`걸려야 하는 글 ${MUST_FLAG.length}개가 모두 걸린다 (그때의 검사를 빠져나가던 글 + 금지 표현의 주장)`, () => {
+    const passed = MUST_FLAG.filter(([, s]) => run(s).length === 0).map(([category, s]) => `${category}: ${s}`);
+    expect(passed).toEqual([]);
+  });
+
+  it('보통의 답은 걸리지 않는다 (10개 언어 + 한국어)', () => {
+    const flagged = MUST_PASS.flatMap(([locale, list]) => list.map((s) => [s, run(s, locale)] as const))
+      .filter(([, issues]) => issues.length > 0)
+      .map(([s, issues]) => `${s} → ${issues.join(' | ')}`);
+    expect(flagged).toEqual([]);
+    expect(MUST_PASS.reduce((n, [, list]) => n + list.length, 0)).toBeGreaterThan(400);
+  });
+
+  it('알고 있는 한계 — 식으로는 잡지 못한다. 잡게 되면 MUST_FLAG 로 옮긴다', () => {
+    for (const s of KNOWN_GAPS) expect(run(s), s).toEqual([]);
+  });
+
+  it('알고 있는 잘못 걸림 — 드물어서 받아들였다. 고쳐지면 MUST_PASS 로 옮긴다', () => {
+    for (const s of KNOWN_FALSE_POSITIVES) expect(run(s).length, s).toBeGreaterThan(0);
+  });
+});
+
 describe('checkReplyText — C-9 길이', () => {
   it('넓은 글자는 두 칸으로 센다', () => {
     expect(textUnits('abc')).toBe(3);
@@ -5303,6 +6492,17 @@ describe('sanitizeBookingText — 가예약 요약에 그대로 찍히는 칸', 
     expect(out.dropped).toEqual(['treatment', 'name', 'timeNote']);
   });
 
+  it('시각 칸도 본다 — 읽지 못한 시각은 시간 메모가 되어 요약에 찍힌다', () => {
+    for (const bad of ['14:00 (20% off)', 'KRW 1,500,000 total', '{{P005}} half price', '2pm, about 2.4m', 'call +82 10 1234 5678']) {
+      const out = sanitizeBookingText({ ...EMPTY_BOOKING, date: '2026-10-14', time: bad }, CTX);
+      expect(out.booking.time, bad).toBeNull();
+      expect(out.dropped, bad).toEqual(['time']);
+    }
+    for (const ok of ['14:00', '2pm', '2:30 PM', '21:00 KST', 'around 3pm', '14:00-16:00', 'afternoon', '午後2時', '14.00 น.']) {
+      expect(sanitizeBookingText({ ...EMPTY_BOOKING, time: ok }, CTX).dropped, ok).toEqual([]);
+    }
+  });
+
   it('멀쩡한 값은 그대로 둔다', () => {
     const fine = { ...booking, treatment: 'Ultherapy Prime 300 shots', name: 'Emma', timeNote: 'afternoon' };
     expect(sanitizeBookingText(fine, CTX)).toEqual({ booking: fine, dropped: [] });
@@ -5311,10 +6511,21 @@ describe('sanitizeBookingText — 가예약 요약에 그대로 찍히는 칸', 
 
 describe('retryFeedback', () => {
   it('걸린 이유마다 고칠 말을 한 줄씩 만든다', () => {
-    const text = retryFeedback(['money:KRW 5', 'tag_unknown:P999', 'booking_closed_day:2026-10-15', 'json', 'tag_inline', 'marker:[amount]']);
+    const text = retryFeedback([
+      'money:KRW 5',
+      'tag_unknown:P999',
+      'booking_closed_day:2026-10-15',
+      'json',
+      'tag_inline',
+      'marker:[amount]',
+      'handle:evil_agent',
+      'language:es',
+    ]);
     const lines = text.split('\n');
     expect(lines[0]).toBe('Your previous draft was rejected. Rewrite it and fix every point below.');
-    expect(lines).toHaveLength(7);
+    expect(lines).toHaveLength(9);
+    expect(lines[7]).toContain('messenger ID "evil_agent"');
+    expect(lines[8]).toContain('VISITOR LANGUAGE');
     expect(lines[1]).toContain('"KRW 5"');
     expect(lines[2]).toContain('{{P999}}');
     expect(lines[3]).toContain('2026-10-15 is a closed day');
@@ -5347,11 +6558,14 @@ Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T7-amounts T7-
 // 금액처럼 보이는 글자를 찾는다 (스펙 2026-10-02 chat-ai-first-response §4.6 검사 C-2). 순수 함수.
 // 검사(guards.ts)와 이력 가리기(prompt.ts 의 maskAmounts)가 같은 식을 쓴다 — 한쪽만 고쳐서 어긋나지 않게.
 // 원칙: 의심스러우면 금액으로 본다. 잘못 보아도 AI가 한 번 다시 쓰거나 직원이 답할 뿐이다.
+// 식을 고칠 때는 __tests__/guardsCorpus.ts 의 말뭉치(빠져나가던 글 · 멀쩡한 글)를 함께 돌려 본다.
 
 export interface Normalized {
   /** 검사용 글 — 전각 글자·다른 문자의 숫자·줄표를 보통 글자로 바꾼 것 */
   text: string;
-  /** text 의 i번째 글자가 원문의 starts[i] 부터 ends[i] 앞까지에서 왔다 */
+  /** 기준이 되는 글 — 원문을 NFC 로 합친 것. starts · ends 는 이 글의 자리다 */
+  source: string;
+  /** text 의 i번째 글자가 source 의 starts[i] 부터 ends[i] 앞까지에서 왔다 */
   starts: number[];
   ends: number[];
 }
@@ -5359,8 +6573,11 @@ export interface Normalized {
 const DECIMAL_DIGIT_RE = new RegExp('\\p{Nd}', 'u');
 /** 줄표로 읽을 글자 — 가타카나 장음 기호(ー)는 넣지 않는다 */
 const DASHES = new Set([0x2010, 0x2011, 0x2012, 0x2013, 0x2014, 0x2015, 0x2212, 0xfe58, 0xfe63]);
-/** 보이지 않는 글자 — 숫자 사이에 끼워 검사를 피하지 못하게 지운다 */
-const INVISIBLE = new Set([0x00ad, 0x200b, 0x200c, 0x200d, 0x2060, 0xfeff]);
+/**
+ * 지우고 보는 글자 — 숫자·낱말 사이에 끼워도 눈에는 그대로 보이는 것들:
+ * 보이지 않는 서식 글자(방향 표시 · 폭 없는 공백 등), 취소선·키캡 같은 겹치는 기호, 모양 선택자, 아랍 문자의 늘임표와 모음 부호.
+ */
+const DROPPED_RE = new RegExp('[\\p{Cf}\\u034F\\u0335-\\u0338\\u20D2-\\u20E4\\uFE00-\\uFE0F\\u180B-\\u180F\\u0640\\u064B-\\u0652\\u0670]', 'u');
 /** 아랍 문자의 퍼센트 기호 · 소수점 · 천 단위 기호 · 쉼표 */
 const CHAR_MAP = new Map<number, string>([
   [0x066a, '%'],
@@ -5368,6 +6585,14 @@ const CHAR_MAP = new Map<number, string>([
   [0x066c, ','],
   [0x060c, ','],
 ]);
+/** 동그라미 안의 숫자(❶ ➀ ➊ ⓵ …) — NFKC 가 숫자로 바꾸지 않는 것들. 각 묶음은 1~9 */
+const DINGBAT_ONES = [0x2776, 0x2780, 0x278a, 0x24f5];
+
+function dingbatDigit(cp: number): string | null {
+  if (cp === 0x24ff) return '0';
+  for (const base of DINGBAT_ONES) if (cp >= base && cp <= base + 8) return String(cp - base + 1);
+  return null;
+}
 
 /** 다른 문자의 숫자(아랍·태국 등)가 나타내는 값. 숫자가 아니면 null. 숫자는 문자마다 0~9 가 이어져 있다. */
 function digitValue(cp: number): number | null {
@@ -5379,23 +6604,27 @@ function digitValue(cp: number): number | null {
 
 /**
  * 검사용 글을 만든다. 손님에게 나가는 글은 바꾸지 않는다 — 금액·전화번호·퍼센트를 찾을 때만 쓴다.
- * ２４０万 → 240万 · ٢٤٠ → 240 · ๒๔๐ → 240 · 20٪ → 20% · 010‑1234 → 010-1234
+ * ２４０万 → 240万 · ٢٤٠ → 240 · ๒๔๐ → 240 · 20٪ → 20% · 010‑1234 → 010-1234 · 2\u200e400 → 2400
  */
 export function normalizeForCheck(text: string): Normalized {
+  const source = text.normalize('NFC');
   let out = '';
   const starts: number[] = [];
   const ends: number[] = [];
-  for (let i = 0; i < text.length; ) {
-    const cp = text.codePointAt(i) ?? 0;
+  for (let i = 0; i < source.length; ) {
+    const cp = source.codePointAt(i) ?? 0;
     const len = cp > 0xffff ? 2 : 1;
+    const ch = String.fromCodePoint(cp);
     let piece: string;
-    if (cp < 0x80) piece = text[i];
-    else if (INVISIBLE.has(cp)) piece = '';
+    if (cp < 0x80) piece = ch;
+    else if (DROPPED_RE.test(ch)) piece = '';
     else if (DASHES.has(cp)) piece = '-';
     else if (CHAR_MAP.has(cp)) piece = CHAR_MAP.get(cp) ?? '';
+    else if (dingbatDigit(cp) !== null) piece = dingbatDigit(cp) ?? '';
     else {
-      piece = String.fromCodePoint(cp).normalize('NFKC');
-      const value = piece.length === 1 ? digitValue(piece.charCodeAt(0)) : null;
+      piece = ch.normalize('NFKC');
+      const only = Array.from(piece);
+      const value = only.length === 1 ? digitValue(only[0].codePointAt(0) ?? 0) : null;
       if (value !== null) piece = String(value);
     }
     for (let k = 0; k < piece.length; k += 1) {
@@ -5405,58 +6634,62 @@ export function normalizeForCheck(text: string): Normalized {
     out += piece;
     i += len;
   }
-  return { text: out, starts, ends };
+  return { text: out, source, starts, ends };
+}
+
+/** 검사에 쓰는 글 한 줄 — 글자 자리는 필요 없을 때. 반각 가나의 탁점처럼 따로 떨어진 부호를 다시 합친다. */
+export function toCheckText(text: string): string {
+  return normalizeForCheck(text).text.normalize('NFC');
 }
 
 // ── 통화·단위 낱말이 붙은 금액 ────────────────────────────────────────────
 // 숫자 하나: 2,400,000 · 2.400.000 · 1 500 000 · 2400000 · 2,4 · 1.8
 const NUM = String.raw`\d+(?:[.,' ]\d{3})*(?:[.,]\d+)?`;
 const SYMBOL = String.raw`[₩$€£¥₫฿₽₮₹]`;
-const CODE = '(?:KRW|USD|JPY|CNY|RMB|EUR|GBP|THB|VND|RUB|MNT|SGD|HKD|TWD|AUD|CAD)';
+const CODE = '(?:KRW|USD|JPY|CNY|RMB|EUR|GBP|THB|VND|RUB|MNT|SGD|HKD|TWD|AUD|CAD|CHF|AED|SAR|MYR|PHP|IDR|INR|NZD|NTD|KZT)';
 const NOT_LATIN = '(?![A-Za-z])';
 const NOT_CYRILLIC = '(?![а-яёөү])';
-const ARABIC_LETTERS = String.raw`[؀-ۿ]`;
+const NOT_VIETNAMESE = '(?![A-Za-zÀ-ỹ])';
+const ARABIC_LETTERS = String.raw`[\u0600-\u06FF]`;
 
 /** 숫자·단위 뒤에 오는 통화 낱말 */
 const CURRENCY_AFTER = [
   String.raw`wons?(?![A-Za-z'’])`, // "15 won't" 는 아니다
-  `dollars?${NOT_LATIN}`,
-  `bucks${NOT_LATIN}`,
-  `yen${NOT_LATIN}`,
-  `yuan${NOT_LATIN}`,
-  `euros?${NOT_LATIN}`,
-  '원(?!하)', // "원하시면" 은 아니다
-  'ウォン',
-  '円',
+  String.raw`(?:US|U\.S\.|American|Korean|South Korean|Singapore|Hong Kong|Australian|Canadian|Taiwan|NT)\s+(?:dollars?|won)${NOT_LATIN}`,
+  `(?:dollars?|bucks|yens?|yuans?|euros?|pounds?|quid|baht|ringgit|pesos?|rupees?|rupiah|dirhams?|riyals?|rou?bles?|francs?|dong|tugriks?|livres?)${NOT_LATIN}`,
+  '원(?![하장내래인칙활])', // "원하시면" · "원장" · "원래" 는 아니다
+  '달러|불(?![가-힣])|엔(?![가-힣])|위안|유로|바트',
+  'ウォン|円|ドル|ユーロ|人民元|バーツ|ポンド',
   '韓元|韩元|韓幣|韩币|韓圜|韓圓|韩圆',
-  '日元(?![旦日])|日圓', // "1日元旦" 은 아니다
-  '美元|美金|人民币|人民幣|块钱|塊錢',
-  '元(?![旦月化素气氣])',
+  '日元(?![旦日宵気氣通のぁ-ん])|日圓|日币|日幣', // "1日元旦" · "2～3日元気に" 는 아니다
+  '美元|美金|人民币|人民幣|欧元|歐元|港币|港幣|港元|新?台币|新?台幣|英镑|英鎊|泰铢|泰銖|卢布|盧布|澳元|加元|新币|新幣',
+  '元(?![旦月化素气氣気管通宵])|[块塊](?![头頭儿兒])|美?刀(?![口具片子])',
   `вон(?:а|ы|ов)?${NOT_CYRILLIC}`,
   String.raw`руб(?:л[а-яё]*)?\.?${NOT_CYRILLIC}`,
   String.raw`долл[а-яё]*\.?`,
-  'евро',
-  'đồng|VNĐ|đ(?![A-Za-zÀ-ỹ])',
-  'วอน|บาท|ดอลลาร์',
-  `وون|دولار${ARABIC_LETTERS}*|ريال|درهم|يورو`,
-  'төгрөг[а-яёөү]*',
+  `евро${NOT_CYRILLIC}|юан[а-яё]*|[ий]ен[а-яё]{0,2}${NOT_CYRILLIC}|фунт[а-яё]*|бакс[а-яё]*|тенге|сум${NOT_CYRILLIC}|у\\.\\s?е\\.`,
+  String.raw`đồng(?!\s+(?:nghiệp|ý|thời|hồ|hành))|VNĐ|đ${NOT_VIETNAMESE}|đô(?:\s?la)?${NOT_VIETNAMESE}|yên${NOT_VIETNAMESE}|tệ${NOT_VIETNAMESE}`,
+  'วอน|บาท|ดอลลาร์|ดอลล่าร์|ดอล|เหรียญ|เยน|หยวน|ยูโร',
+  `وون|ون(?!${ARABIC_LETTERS})|دولار${ARABIC_LETTERS}*|ريال|درهم|يورو|دينار|جنيه|ليرة|روبل|يوان|ين(?!${ARABIC_LETTERS})|ر\\.س|د\\.إ`,
+  String.raw`төгрөг[а-яёөү]*|төг\.?${NOT_CYRILLIC}`,
 ].join('|');
 const CURRENCY_TAIL = `(?:${SYMBOL}|${CODE}${NOT_LATIN}|${CURRENCY_AFTER})`;
 
 /** 숫자 앞에 오는 통화 표시 */
 const CURRENCY_BEFORE = `(?:${SYMBOL}|(?<![A-Za-z])${CODE}|韓元|韩元|韓幣|韩币|人民币|人民幣|美元|美金|日元|日圓)`;
 
-/** 숫자 뒤에 붙는 단위 낱말 (5k · 2.4 million · 2,4 млн · 240万 · 50만) — 대문자 M 은 따로 본다 */
+/** 숫자 뒤에 붙는 단위 낱말 (5k · 2.4 million · 2,4 млн · 240万 · 50만) — 한 글자 M 은 따로 본다 */
 const MAGNITUDE_AFTER = [
-  `(?:thousand|millions?|billion|milliers?|mille|mln|mio|mil)${NOT_LATIN}`,
-  `k${NOT_LATIN}`, // 30kJ · 5 km · 2 kg 은 아니다
-  `triệu|trieu${NOT_LATIN}|nghìn|ngàn|tỷ(?![A-Za-zÀ-ỹ])`,
+  // "mn" 은 넣지 않는다 — 프랑스어에서 분(minutes)의 줄임이다("30 mn"). 소수가 붙은 "1.8mn" 만 아래에서 본다
+  `(?:thousand|millions?|billion|milliers?|mille|mln|mio|mil|mill|thou|thsd|tsd|grand|lakhs?|crores?)${NOT_LATIN}`,
+  String.raw`k(?![A-Za-z]|-[A-Za-z])`, // 30kJ · 5 km · 2 kg · "2 K-beauty" 는 아니다
+  String.raw`triệu(?!\s+chứng)|trieu${NOT_LATIN}|nghìn|ngàn|tỷ(?!\s+lệ)${NOT_VIETNAMESE}|tr\d?${NOT_VIETNAMESE}`, // "triệu chứng"(증상)은 아니다
   String.raw`млн|млрд|миллион[а-яё]*|тыс(?:яч[а-яё]*)?\.?${NOT_CYRILLIC}`,
   'ล้าน|แสน|หมื่น|พัน(?!ธ)',
   `مليون|ملايين|(?:ألف|الف|آلاف)(?!${ARABIC_LETTERS})`, // "الفحص"(검사)은 아니다
-  `сая${NOT_CYRILLIC}|мянга[а-яёөү]*`,
-  '百万|万|萬|億|亿|千(?![葉叶])',
-  String.raw`천\s?만|만(?!큼)|억|천\s?원`,
+  `сая(?!хан)[а-яёөү]{0,4}${NOT_CYRILLIC}|мянга[а-яёөү]*`, // "саяхан"(얼마 전)은 아니다
+  '百万|[多余餘来來]?\\s?[万萬億亿]|千(?![葉叶])',
+  String.raw`천\s?만|여?\s?만(?![큼])|여?\s?억|천\s?원`,
 ].join('|');
 
 /** 숫자 없이도 통화 낱말 앞에 오면 금액인 단위 낱말 (два миллиона вон · hai triệu won · 二百万ウォン) */
@@ -5472,50 +6705,113 @@ const MAGNITUDE_WORD = [
 
 const EN_NUMBER_WORD =
   'one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve|thirteen|fourteen|fifteen|sixteen|seventeen|eighteen|nineteen|twenty|thirty|forty|fifty|sixty|seventy|eighty|ninety|hundred';
-const EN_CURRENCY = String.raw`(?:won|dollars?|yen|yuan|euros?)(?![A-Za-z'’])`;
-const CJK_NUMERAL = '[一二三四五六七八九十百两兩〇零壱弐参]';
-/** 흔한 음절 '일'·'이' 는 뺀다 ("토요일만 원장님" 을 금액으로 읽지 않게) */
+const EN_CURRENCY = String.raw`(?:won|dollars?|yen|yuan|euros?|pounds?)(?![A-Za-z'’])`;
+/** 한자 숫자 — 갖은자(壹贰叁… 금액을 적을 때 쓰는 글자)도 넣는다 */
+const CJK_NUMERAL = '[一二三四五六七八九十百两兩〇零壱弐参壹贰貳叁參肆伍陆陸柒捌玖拾佰仟]';
+/** 흔한 음절 '일'·'이' 는 한 글자로는 보지 않는다 ("토요일만 원장님" 을 금액으로 읽지 않게) */
 const KO_NUMERAL = '[삼사오육칠팔구십백천]';
+const KO_NUMERAL_ANY = '[일이삼사오육칠팔구십백천]';
+const VI_NUMBER_WORD = 'một|hai|ba|bốn|tư|năm|lăm|sáu|bảy|tám|chín|mười|mươi|chục|trăm|vài|mấy|nửa';
+const TH_NUMBER_WORD = 'หนึ่ง|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า|สิบ|ร้อย|เอ็ด|ครึ่ง|หลาย|หลัก';
+const RU_NUMBER_WORD =
+  '[а-яё]+сот|сто|двести|триста|четыреста|[а-яё]*десят|двадцать|тридцать|сорок|девяносто|одна|две|три|четыре|пять|шесть|семь|восемь|девять|десять|[а-яё]+надцать|полторы|несколько|пару?';
+const FR_NUMBER_WORD = 'cent|cents|deux|trois|quatre|cinq|six|sept|huit|neuf|dix|vingt|trente|quarante|cinquante|soixante';
+const MN_NUMBER_WORD =
+  'нэг|хоёр|гурван?|дөрвөн?|таван?|зургаан?|долоон?|найман?|есөн?|арван?|хорин?|гучин?|дөчин?|тавин?|жаран?|далан?|наян?|ерэн?|зуун?|хагас|хэдэн';
 
 const STATED_AMOUNT_PATTERNS: RegExp[] = [
-  // KRW 500,000 · ₩1590000 · $350 · 人民币2300
-  new RegExp(`${CURRENCY_BEFORE}\\s?${NUM}(?:\\s?(?:${MAGNITUDE_AFTER}))?`, 'i'),
-  // 2,400,000 won · 2300 人民币 · 780 000 ₩ · ٢٤٠٠٠٠٠ وون
-  new RegExp(`${NUM}\\s?${CURRENCY_TAIL}`, 'i'),
-  // 5k · 780 thousand · 2,4 млн вон · 240万ウォン · 50만 원
-  new RegExp(`${NUM}\\s?(?:${MAGNITUDE_AFTER})(?:\\s?(?:de\\s+|d['’])?${CURRENCY_TAIL})?`, 'i'),
-  // 1.8M — 대문자이고 숫자에 붙어 있을 때만 ("50 m" 는 거리다)
-  /\d+(?:[.,]\d+)?M(?![A-Za-z])/,
-  // two million (four hundred thousand) won
+  // KRW 500,000 · ₩1590000 · $350 · 人民币2300 · "KRW: 990" · "USD (approx. 1700)"
   new RegExp(
-    String.raw`\b(?:a|several|half a|${EN_NUMBER_WORD})(?:[\s-]+(?:and\s+)?(?:${EN_NUMBER_WORD}))*[\s-]+(?:thousand|million|billion)\b(?:\s+${EN_CURRENCY})?`,
+    `${CURRENCY_BEFORE}(?:\\s?|[\\s:=~\\u2248(-]{1,3}(?:approx\\.?\\s?|about\\s|around\\s|ca\\.?\\s?)?)${NUM}(?:\\s?(?:${MAGNITUDE_AFTER}))?`,
+    'i'
+  ),
+  // 2,400,000 won · 2300 人民币 · 780 000 ₩ · ٢٤٠٠٠٠٠ وون · 1700 US dollars
+  new RegExp(`${NUM}\\s?${CURRENCY_TAIL}`, 'i'),
+  // 1700 (USD) · 1700/USD · 990 in KRW
+  new RegExp(
+    `${NUM}\\s?[(/-]\\s?${CODE}${NOT_LATIN}|${NUM}\\s+in\\s+(?:${CODE}|US\\s+dollars|dollars|won|euros|yen)${NOT_LATIN}`,
+    'i'
+  ),
+  // 5k · 780 thousand · 2,4 млн вон · 240万ウォン · 200多万 · 50만 원 · 2tr4 · 2.4 саяас
+  new RegExp(`${NUM}\\s?(?:${MAGNITUDE_AFTER})(?:\\s?(?:de\\s+|d['’])?${CURRENCY_TAIL})?`, 'i'),
+  // 2.4-million-won
+  /\d+(?:[.,]\d+)?-(?:thousand|million|billion)\b/i,
+  // 1.8M · 2M · 1.8 M · 2 MM — 대문자일 때. 소문자 m · mn 은 소수가 붙을 때만("2.4m" · "1.8mn" — "50 m" 는 거리, "30 mn" 은 분이다)
+  /\d+(?:[.,]\d+)?\s?MM?(?![A-Za-z])|\d+[.,]\d+\s?mn?(?![A-Za-z])/,
+  // 240w · 24个w (중국어권의 '万' 줄임)
+  /\d\s?[个個]?[wW](?![A-Za-z])/,
+  // 500к · 500кк · "500 к вон"
+  /\d[кК]{1,2}(?![а-яёА-ЯЁ])|\d\s?[кК]{1,2}\s+(?:вон|руб|долл|тенге|KRW)/,
+  // two million (four hundred thousand) won · a couple of million · two and a half million · fifteen hundred
+  new RegExp(
+    String.raw`\b(?:a|several|half a|${EN_NUMBER_WORD})(?:[\s-]+(?:and\s+)?(?:${EN_NUMBER_WORD}))*[\s-]+(?:thousand|million|billion)\b(?:\s+${EN_CURRENCY})?` +
+      String.raw`|\b(?:couple|few)\s+(?:of\s+)?(?:hundred\s+)?(?:thousand|million|mil|grand)\b` +
+      String.raw`|\b(?:half|quarters?)\s+(?:a\s+|of\s+a\s+)?(?:million|mil)\b` +
+      String.raw`|\band\s+a\s+half\s+(?:million|thousand|mil|grand)\b` +
+      String.raw`|\b(?:${EN_NUMBER_WORD})[\s-]+(?:mil|grand)\b` +
+      String.raw`|\b(?:${EN_NUMBER_WORD})[\s-]+hundred\b(?!\s+(?:shots?|units?))`,
     'i'
   ),
   // five hundred won · fifty dollars
   new RegExp(String.raw`\b(?:${EN_NUMBER_WORD}|thousand|million|billion)\s+${EN_CURRENCY}`, 'i'),
+  // million(s) · milliers — 낱말만으로도. deux cents · cinq mille
+  new RegExp(
+    String.raw`\bmillions?\b|\bmilliers?\b|\b(?:${FR_NUMBER_WORD})\s+mille\b|\bmille\s+(?:cent|deux|trois|quatre|cinq|six|sept|huit|neuf)\b|\b(?:deux|trois|quatre|cinq|six|sept|huit|neuf|quinze)\s+cents?\b`,
+    'i'
+  ),
   // два миллиона вон · hai triệu won · สองล้านวอน · deux millions de wons
   new RegExp(`(?:${MAGNITUDE_WORD})\\s?(?:de\\s+|d['’])?(?:${CURRENCY_AFTER})`, 'i'),
-  // 二百四十万 · 两百四十万韩元 — "千万不要"(부디 ~하지 마세요)는 아니다
-  new RegExp(`(?:${CJK_NUMERAL}\\s?[万萬億亿]|千\\s?[万萬](?![不别別要记記注])|千\\s?[億亿])(?:\\s?(?:${CURRENCY_AFTER}))?`),
-  // 五千元 · 三百円
-  new RegExp(`[一二三四五六七八九十百千万萬两兩]\\s?(?:${CURRENCY_AFTER})`),
-  // 이백사십만 원 · 오천 원
-  new RegExp(`${KO_NUMERAL}\\s?(?:만|억)\\s?원(?!하)|[삼사오육칠팔구]\\s?천\\s?원(?!하)`),
+  // hai triệu · bốn mươi triệu
+  new RegExp(String.raw`(?:${VI_NUMBER_WORD})\s+(?:triệu(?!\s+chứng)|nghìn|ngàn|tỷ(?!\s+lệ))`, 'i'),
+  // สองล้าน · เจ็ดหมื่น
+  new RegExp(`(?:${TH_NUMBER_WORD})\\s?(?:ล้าน|แสน|หมื่น)`),
+  // миллион — 낱말만으로도. пятьсот тысяч
+  new RegExp(String.raw`миллион|млн|млрд|(?:${RU_NUMBER_WORD})\s+тысяч`, 'i'),
+  // хоёр сая · дөрвөн зуун мянга
+  new RegExp(String.raw`(?:${MN_NUMBER_WORD})\s+(?:сая|мянга|тэрбум)`, 'i'),
+  // مليون · مليونين · ألفي · خمسمئة — 낱말만으로도
+  /مليون|ملايين|آلاف|ألفي|ألفين|ألفان|(?:خمس|ست|سبع|ثمان|تسع|أربع|ثلاث)م(?:ئ|ائ)ة|مئتا|مئتي|مئتين|مائتا|مائتي|مائتين/,
+  // 二百四十万 · 两百多万 · 一百来万 — "千万不要"(부디 ~하지 마세요) · "千万小心" 은 아니다
+  new RegExp(
+    `(?:${CJK_NUMERAL}\\s?[多余餘来來]?\\s?[万萬億亿]|千\\s?[万萬](?![不别別要记記注小当當保])|千\\s?[億亿])(?:\\s?(?:${CURRENCY_AFTER}))?`
+  ),
+  // 五千元 · 三百円 · 两千四 · にひゃくよんじゅうまんウォン(가나로 쓴 수 + 통화)
+  new RegExp(
+    `[一二三四五六七八九十百千万萬两兩拾佰仟]\\s?(?:${CURRENCY_AFTER})|[一二三四五六七八九两兩]\\s?千(?![葉叶万萬])|(?:まん|マン|せん|ひゃく)\\s?(?:ウォン|円|えん|ドル)`
+  ),
+  // 이백사십만 · 이백여만 · 이만 원 · 오천 원
+  new RegExp(
+    `${KO_NUMERAL_ANY}{2,}\\s?여?\\s?만(?![큼에])|${KO_NUMERAL}\\s?여?\\s?(?:만|억)\\s?원(?![하장내래인칙활])|[일이]\\s?(?:만|억)\\s?원(?![하장내래인칙활])|[삼사오육칠팔구]\\s?천\\s?원(?![하장내래인칙활])`
+  ),
 ];
 
 // ── 통화 표시 없이 쓴 금액일 수 있는 숫자 ─────────────────────────────────
 // 뒤에 `.123` · `,123` 이 더 이어지면 그 숫자의 가운데다 — 거기서 끊지 않는다.
 const GROUP_END = String.raw`(?!\d)(?![.,]\d)`;
-/** 1,590,000 · 2.400.000 · 1'500'000 */
+/** 뒤에 샷 · cc 같은 단위가 오면 금액이 아니다 ("1,200 shots" · "1000샷") */
+const NOT_A_COUNT = String.raw`(?!\s?(?:shots?|units?|IU|kJ|cc|ml|샷|ショット|発|发|發|импульс|tirs|ช็อต))`;
+/** 1,590,000 · 2.400.000 · 1'500'000 · 24,00,000(인도식) · 240,0000(네 자리 묶음) */
 const GROUPED_NUMBER_PATTERNS: RegExp[] = [
-  new RegExp(String.raw`(?<![\d.,])\d{1,3}(?:,\d{3})+(?:\.\d+)?${GROUP_END}`),
+  new RegExp(String.raw`(?<![\d.,])\d{1,3}(?:,\d{3})+(?:\.\d+)?${GROUP_END}${NOT_A_COUNT}`),
   new RegExp(String.raw`(?<![\d.,])\d{1,3}(?:\.\d{3})+(?:,\d+)?${GROUP_END}`),
   new RegExp(String.raw`(?<![\d'’])\d{1,3}(?:['’]\d{3})+(?!\d)`),
+  /(?<![\d.,])\d{1,2}(?:,\d{2})+,\d{3}(?!\d)/,
+  /(?<![\d.,])\d{1,4}(?:,\d{4})+(?!\d)/,
 ];
-/** 1 500 000 · 780 000 — 전화번호를 지운 글에서만 본다 */
-const SPACE_GROUPED_RE = new RegExp(String.raw`(?<![\d.,])\d{1,3}(?: \d{3})+${GROUP_END}`);
-/** 구분 기호 없는 다섯 자리 이상 */
-const BARE_NUMBER_RE = /(?<!\d)\d{5,}(?!\d)/;
+/**
+ * 1 500 000 · 780 000 · "2, 400, 000" · "2·400·000" · "2 4 0 0 0 0 0" — 전화번호와 날짜를 지운 글에서만 본다.
+ * 느슨한 구분 기호는 "000" 묶음으로 끝날 때만(금액은 대개 그렇게 끝난다 — "300, 600, 900 shots" 는 아니다).
+ */
+const LOOSE_GROUPED_RE = new RegExp(
+  String.raw`(?<![\d.,])\d{1,3}(?: \d{3})+${GROUP_END}` +
+    String.raw`|(?<![\d.,:])\d{1,3}(?:[\s,.'’·_/-]{1,3}\d{3})*[\s,.'’·_/-]{1,3}000(?![\d:])` +
+    String.raw`|(?<![\d.:/-])\d(?:[\s.-]\d){4,}(?![\d:/])`
+);
+/** 구분 기호 없는 다섯 자리 이상, 그리고 연도가 아닌 네 자리(뒤에 샷·cc 같은 단위가 오면 아니다) */
+const BARE_NUMBER_RE = new RegExp(
+  String.raw`(?<!\d)\d{5,}(?!\d)` +
+    String.raw`|(?<![A-Za-z\d_])(?!(?:19|20|25)\d\d(?!\d))\d{4}(?!\d)${NOT_A_COUNT}`
+);
 
 function firstMatch(patterns: readonly RegExp[], text: string): string | null {
   let best: { at: number; text: string } | null = null;
@@ -5526,26 +6822,26 @@ function firstMatch(patterns: readonly RegExp[], text: string): string | null {
   return best ? best.text.trim() : null;
 }
 
-/** 통화·단위 낱말이 붙은 금액을 찾는다 (검사용 글에서). 없으면 null. */
+/** 통화·단위 낱말이 붙은 금액, 글자로 쓴 금액을 찾는다 (검사용 글에서). 없으면 null. */
 export function findStatedAmount(normalized: string): string | null {
   return firstMatch(STATED_AMOUNT_PATTERNS, normalized);
 }
 
 /**
- * 통화 표시 없이 쓴 금액일 수 있는 숫자를 찾는다 — 천 단위로 묶은 숫자, 다섯 자리 이상.
+ * 통화 표시 없이 쓴 금액일 수 있는 숫자를 찾는다 — 천 단위로 묶은 숫자, 네 자리 이상의 맨 숫자.
  * 날짜·전화번호·주소를 지운 글에 쓴다(그것들을 금액으로 읽지 않게).
  */
 export function findLooseNumber(normalized: string): string | null {
-  return firstMatch([...GROUPED_NUMBER_PATTERNS, SPACE_GROUPED_RE, BARE_NUMBER_RE], normalized);
+  return firstMatch([...GROUPED_NUMBER_PATTERNS, LOOSE_GROUPED_RE, BARE_NUMBER_RE], normalized);
 }
 
 const MASK = '[amount]';
-/** 이력에서 가릴 때는 띄어 쓴 묶음·긴 숫자를 보지 않는다 — 전화번호가 섞여 있다 */
+/** 이력에서 가릴 때는 띄어 쓴 묶음·맨 숫자를 보지 않는다 — 전화번호와 날짜가 섞여 있다 */
 const MASK_PATTERNS: RegExp[] = [...STATED_AMOUNT_PATTERNS, ...GROUPED_NUMBER_PATTERNS];
 
 /**
  * 직원이나 예전 답이 쓴 금액을 가린다 — 이력에 금액 숫자가 있으면 AI가 따라 쓴다.
- * 가린 곳 밖의 글자는 원문 그대로다.
+ * 가린 곳 밖의 글자는 그대로다(원문을 NFC 로 합친 것).
  */
 export function maskAmounts(text: string): string {
   const n = normalizeForCheck(text);
@@ -5561,30 +6857,32 @@ export function maskAmounts(text: string): string {
       spans.push([n.starts[from + lead], n.ends[to - 1]]);
     }
   }
-  if (spans.length === 0) return text;
+  if (spans.length === 0) return n.source;
   spans.sort((a, b) => a[0] - b[0]);
   let out = '';
   let at = 0;
   for (const [from, to] of spans) {
     if (to <= at) continue; // 앞의 것에 포함된다
-    if (from >= at) out += text.slice(at, from) + MASK;
+    if (from >= at) out += n.source.slice(at, from) + MASK;
     // 앞의 것과 겹치면 이어 가린다(표시는 하나)
     at = to;
   }
-  return out + text.slice(at);
+  return out + n.source.slice(at);
 }
 ````
 
 <!-- block: T7-impl | full | liv-clinic/src/lib/chat/ai/guards.ts -->
 ````ts
-import { findLooseNumber, findStatedAmount, normalizeForCheck } from './amounts';
+import { findLooseNumber, findStatedAmount, toCheckText } from './amounts';
 import { parseBookingOutput, type BookingFields } from './booking';
 import { priceTagPattern, TAG_LINE_REST_RE } from './knowledge';
 
 // AI 출력의 검사 (스펙 2026-10-02 chat-ai-first-response §4.6). 순수 함수 — I/O 없음.
 // 걸리면 이유를 글자로 돌려준다. 호출자(turn.ts)가 한 번 다시 쓰게 하고, 또 걸리면 접수 안내로 대신한다.
 // 원칙: 의심스러우면 막는다. 잘못 막아도 손님에게는 접수 안내가 나가고 직원이 답한다 — 틀린 금액이 나가는 것보다 낫다.
-// 검사는 검사용 글(amounts.normalizeForCheck — 전각 글자·다른 문자의 숫자를 보통 글자로 바꾼 것)에 한다.
+// 검사는 검사용 글(amounts.toCheckText — 전각 글자·다른 문자의 숫자를 보통 글자로 바꾸고 보이지 않는 글자를 지운 것)에 한다.
+// 식을 고칠 때는 __tests__/guardsCorpus.ts 의 말뭉치(빠져나가던 글 · 멀쩡한 글)를 함께 돌려 본다.
+// 외국어 낱말 목록은 원어민 검수를 받지 않았다 — 켠 뒤의 점검(chat-ai-review-export.mjs)에서 잘못 걸린 답을 보고 다듬는다.
 
 export interface AiOutput {
   /** 손님에게 갈 글 (꼬리표 포함, 마크다운·이모지를 걸러 낸 것) */
@@ -5655,10 +6953,12 @@ export interface GuardContext {
   allowedUrls: readonly string[];
   /** 써도 되는 퍼센트 — '5' (검사 C-3) */
   allowedPercents: ReadonlySet<string>;
-  /** 써도 되는 전화번호의 숫자만 — 병원 번호와 손님이 연락처로 남긴 번호 (검사 C-8). 여덟 자리 이상만 본다 */
+  /** 써도 되는 전화번호의 숫자만 — 병원 번호와 손님이 연락처로 남긴 번호 (검사 C-8). 8~15자리만 본다 */
   allowedPhoneDigits: readonly string[];
   /** 써도 되는 메일 주소 — 손님이 연락처로 남긴 것 (검사 C-7) */
   allowedEmails: readonly string[];
+  /** 써도 되는 메신저 아이디 — 병원 것과 손님이 연락처로 남긴 것 (검사 C-8) */
+  allowedHandles: readonly string[];
 }
 
 export const MAX_TAGS = 6;
@@ -5666,56 +6966,111 @@ export const MAX_TAGS = 6;
 export const MAX_REPLY_UNITS = 900;
 
 // ── C-4 꼬리표 ──────────────────────────────────────────────────────────
-/** 괄호 없이 쓴 꼬리표 (P006 · [[P006]]) — 손님에게 그대로 나가면 안 된다 */
-const LOOSE_TAG_RE = /(?<![A-Za-z0-9])[PMF]\d{2,3}(?![A-Za-z0-9])/;
+/** 괄호 없이 쓴 꼬리표 (P006 · p006 · P-006 · [[P006]] · 키릴 Р005) — 손님에게 그대로 나가면 안 된다 */
+const LOOSE_TAG_RE = new RegExp('(?<![\\p{L}\\p{N}])(?:[PMF\\u0420\\u041C\\u03A1\\u039C][\\s_-]?|[pmf])\\d{2,4}(?![\\p{L}\\p{N}])', 'u');
 /** 이력에 넣는 표시(assemble.ts · prompt.ts)를 AI가 따라 쓴 것 */
-const HISTORY_MARKER_RE = /\[(?:price line shown|amount\]|our staff\]|tentative booking summary|told the visitor)[^\]\n]{0,160}\]?/i;
+const HISTORY_MARKER_RE =
+  /[[(【<]\s*(?:(?:price[\s-]+line\s+shown|tentative\s+booking\s+summary|told\s+the\s+visitor)[^\])】>\n]{0,160}[\])】>]?|(?:amount|price|our\s+staff)\s*[\])】>])/i;
 
-// ── C-3 퍼센트 ──────────────────────────────────────────────────────────
+// ── C-3 퍼센트 · 할인율 ──────────────────────────────────────────────────
 const PERCENT_NUMBER = String.raw`\d+(?:[.,]\d+)?`;
 /** 숫자가 없어도 퍼센트를 말하는 낱말 */
 const PERCENT_WORD = [
   '%',
-  String.raw`percent(?![A-Za-z])|per\s?cent(?![A-Za-z])|pct(?![A-Za-z])`,
+  String.raw`percent(?![A-Za-z])|per[-\s]?cent(?![A-Za-z])|pct(?![A-Za-z])`,
   '퍼센트|パーセント',
-  'phần trăm',
-  'процент[а-яё]*',
+  'phần trăm|phan tram',
+  String.raw`процент[а-яё]*|проц\.?(?![а-яё])`,
   String.raw`pour\s?cent(?![A-Za-z])`,
-  'เปอร์เซ็นต์',
-  'بالمئة|بالمائة|في المئة|في المائة',
+  'เปอร์เซ็นต์|เปอร์เซนต์',
+  'بالمئة|بالمائة|بالمائه|بالمية|بالميه|في المئة|في المائة|في المية',
 ].join('|');
-/** 숫자 뒤에 올 때만 퍼센트인 낱말 — '프로모션', 몽골어 'хувийн мэдээлэл'(개인 정보)을 막지 않게 */
-const PERCENT_WORD_AFTER_NUMBER = '프로(?![가-힣])|хув[а-яёөү]*';
+/** 숫자 뒤에 올 때만 퍼센트인 낱말 — '프로모션', 몽골어 'хувилбар'(선택지) · 'хувийн мэдээлэл'(개인 정보)을 막지 않게 */
+const PERCENT_WORD_AFTER_NUMBER = String.raw`프로(?![가-힣])|퍼(?![가-힣])|パー(?![ァ-ヶー])|хув(?!илбар|цас|ийн\s+мэдээл)[а-яёөү]*|เปอร์(?!เซ)|p\.\s?(?:100|c\.)|pc(?![A-Za-z])`;
 const PERCENT_RE = new RegExp(
-  `(${PERCENT_NUMBER})?\\s?(?:${PERCENT_WORD})|(${PERCENT_NUMBER})\\s?(?:${PERCENT_WORD_AFTER_NUMBER})`,
+  `(${PERCENT_NUMBER})?[\\s-]?(?:${PERCENT_WORD})|(${PERCENT_NUMBER})[\\s-]?(?:${PERCENT_WORD_AFTER_NUMBER})`,
   'gi'
 );
+/** ร้อยละ 20 (태국어 — 낱말이 숫자 앞에 온다) */
+const TH_PERCENT_RE = new RegExp(`ร้อยละ\\s?(${PERCENT_NUMBER})`, 'g');
 /** 百分之二十 */
-const ZH_PERCENT_RE = /百分之([一二三四五六七八九十百零〇两兩点點.\d]+)/g;
+const ZH_PERCENT_RE = /百分之\s?([一二三四五六七八九十百零〇两兩点點.\d]+)/g;
 /** 八折 · 95折 — 九五折(5% 할인)만 된다 */
 const ZH_DISCOUNT_RE = /([一二三四五六七八九〇零\d.]+)\s?折/g;
 const ZH_DISCOUNT_OK = new Set(['九五', '95', '9.5']);
 /** 2割引 */
-const JA_DISCOUNT_RE = /[\d一二三四五六七八九]+(?:[.,]\d+)?\s?割/g;
-const HALF_PRICE_RE = /half[-\s](?:price|off)|半額|半价|半價|半値|반값|полцены|nửa giá|ครึ่งราคา|moitié prix|نصف السعر/gi;
+const JA_DISCOUNT_RE = /[\d一二三四五六七八九十]+(?:[.,]\d+)?\s?割/g;
+/** % 기호 없이 말하는 할인 — 반값 · 몇 분의 일 · 20 off · 1+1 */
+const DISCOUNT_PHRASE_RES: RegExp[] = [
+  /half[-\s](?:price|off)|\b(?:a|one|two|three)[\s-](?:half|third|quarter|fifth|tenth)s?\s+(?:off|cheaper|less|discount)\b|\bhalf\s+(?:of\s+)?(?:the\s+|our\s+|its\s+)?(?:\w+\s+)?(?:price|cost|fee)\b|\bhalf\s+of\s+(?:the\s+following|what|that|this)\b|\b\d+\s?points?\s+off\b|\b(?:\d+|ten|twenty|thirty|forty|fifty)\s+off\b|\b(?:buy\s+one,?\s+get\s+one|(?:two|2)\s+for\s+(?:the\s+price\s+of\s+)?(?:one|1))\b|(?<![\d:])\d\s?\+\s?1(?!\d)/gi,
+  /半額|半値|半分の(?:価格|料金|値段|お値段)|[0-9一二三四五六七八九十]\s?分の\s?[0-9一二三四五六七八九十]\s?(?:オフ|引き|割引)/g,
+  /半价|半價|[对對]折|[减減]半|一半的?(?:价格|價格|价钱|價錢)|(?:便宜|优惠|優惠|[减減降打让讓])[^，。,.\n]{0,4}[一二三四五六七八九两兩\d]\s?成|\d+\s?[个個][点點]|[买買]一送一/g,
+  /반값|반액|절반\s?(?:가격|값)|\d\s?할(?![가-힣])/g,
+  /nửa\s+(?:giá|tiền)|(?:giảm|bớt|chỉ)\s+(?:còn\s+)?(?:một|1)\s+nửa|(?:một|1)\s+nửa\s+(?:giá|tiền|chi phí)|mua\s+\d\s+tặng\s+\d/gi,
+  /ครึ่งราคา|ครึ่งหนึ่ง|ครึ่งนึง|ครึ่งเดียว|\d\s?แถม\s?\d/g,
+  /пол\s?цены|половин[а-яё]*\s+(?:цены|стоимости)|вдвое\s+дешевле|(?:треть|четверть)\s+дешевле|дешевле\s+на\s+(?:треть|четверть|половину)|два\s+по\s+цене\s+одного/gi,
+  /moiti[ée]\s+(?:du\s+)?(?:prix|tarif)|demi[-\s]tarif|\b(?:un|deux)\s+(?:tiers|quart|cinquième)\s+de\s+(?:réduction|remise|moins)|deux\s+pour\s+le\s+prix\s+d['’]un/gi,
+  /(?:арван|хорин|гучин|дөчин|тавин|жаран|далан|наян|ерэн|зуун|таван|арав)\s+хув[а-яёөү]*|(?:тал|хагас)\s+үнэ[а-яёөү]*|үнийн\s+тал/gi,
+  /نصف\s+(?:السعر|الثمن)|خصم\s+(?:النصف|الربع|الخمس|الثلث)/g,
+];
 
 // ── C-5 금지 표현 (의료광고 — consultPrep/adGuard.ts 의 목록에서 채팅에 맞는 것만. 할인·프로모션 낱말은 막지 않는다) ──
-// 먼저 소문자로 바꾸고, 주장이 아닌 흔한 말("works best for you" · "cannot guarantee" · "les meilleurs délais")을 지운 다음 본다.
+// 먼저 소문자로 바꾸고, 주장이 아닌 흔한 말(일정을 묻는 말 · 정직한 부정문)을 지운 다음 본다.
+// 지우는 식은 좁게 쓴다 — "효과를 보증할 수 있습니다"까지 지우면 주장이 빠져나간다.
+const SCHEDULING_WORD = String.raw`\b(?:what|which|when|whichever|whatever|time|date|day|slot|hour|morning|afternoon|evening)\b[^.!?\n]{0,30}?`;
 const HARMLESS_PHRASES: RegExp[] = [
-  /\b(?:works?|worked|suits?|fits?)\s+(?:for\s+)?(?:you\s+)?best\b/g,
-  /\bbest\s+(?:times?|days?|dates?|way\s+to\s+(?:reach|contact)|contact|number|regards|wishes)\b/g,
-  /(?:^|[.!?\n]\s*)perfect\s*[,!.]/g,
-  /\b(?:works?|fits?)\s+perfectly\b/g,
-  /\b(?:not|isn['’]t|aren['’]t|non|semi)[-\s]*permanent(?:ly)?\b/g,
+  // 일정을 묻는 말
+  new RegExp(String.raw`${SCHEDULING_WORD}\b(?:works?|worked|suits?|fits?)\s+(?:for\s+)?(?:you\s+)?best\b`, 'g'),
+  new RegExp(String.raw`${SCHEDULING_WORD}\b(?:is|be|are|would\s+be)\s+best\s+for\s+you\b`, 'g'),
+  /\bbest\s+(?:times?|days?|dates?|way\s+to\s+(?:get|reach|come|contact|travel|find)|contact|number|regards|wishes)\b/g,
+  /\bdo(?:ing)?\s+(?:our|my)\s+(?:very\s+)?best\b/g,
+  /\bit(?:['’]s|\s+is|\s+would\s+be)\s+best\s+to\s+(?:come|arrive|book|bring|avoid|wear|check|contact|let|reserve|visit|schedule)\b/g,
+  /(?:^|\n)\s*perfect\s*[,!.]/g,
+  /\b(?:that['’]s|that\s+is|sounds|(?:[ap]m|:\d\d)\s+is)\s+perfect\b/g,
+  /\b(?:that|this|it|time|date|day)\s+(?:\w+\s+){0,2}(?:works?|fits?)\s+perfectly\b/g,
+  // 정직한 부정문 — 영어
+  /\b(?:not|isn['’]t|aren['’]t|non|semi|no\s+treatment\s+is|rather\s+than)[-\s]*(?:a\s+|an\s+|considered\s+|truly\s+)?permanent(?:ly)?\b/g,
   /\b(?:cannot|can['’]t|can\s+not|could\s+not|couldn['’]t|do\s+not|don['’]t|does\s+not|doesn['’]t|unable\s+to|not\s+able\s+to|no|not|never|without(?:\s+any)?)\s+(?:a\s+|be\s+|fully\s+)?guarantee[a-z]*\b/g,
-  /\bmeilleure?s?\s+(?:délais?|moments?|moyens?|créneaux?|horaires?|dates?|jours?|façons?)/g,
-  /\bne\s+(?:\S+\s+){0,2}garanti\S*/g,
-  /\bsans\s+garantie\b|\bpas\s+(?:de\s+)?garanti\S*/g,
-  /\b(?:pas|non)\s+permanente?s?\b/g,
-  /не\s+(?:можем\s+|могу\s+|может\s+|можно\s+)?гарант[а-яё]*/g,
-  /保証(?:は|を)?(?:でき|いたしかね|しかね|するものではあり|することはでき)[ぁ-ん]*/g,
-  /(?:无法|無法|不能|不)(?:保证|保證)/g,
-  /보장(?:할 수 없|하지 않|해 드리기 어렵|되지 않|드리기 어렵)/g,
+  /\b(?:isn['’]t|aren['’]t|wasn['’]t|won['’]t|wouldn['’]t)\s+(?:be\s+|fully\s+|ever\s+)?guarantee[a-z]*\b/g,
+  /\b(?:do\s+not|don['’]t|cannot|can['’]t|unable\s+to)\s+(?:offer|give|provide|make)\s+(?:a\s+|any\s+)?guarantee[a-z]*\b/g,
+  /\bguarantee[a-z]*\s+(?:cannot|can['’]t|can\s+not)\s+be\s+(?:given|offered|made)\b/g,
+  /\b(?:cannot|can['’]t|could\s+not|couldn['’]t)\s+(?:say|claim|promise)\s+(?:that\s+)?(?:there\s+(?:are|will\s+be)\s+)?no\s+side[-\s]?effects?\b/g,
+  /\bno\s+treatment\s+is\s+(?:completely\s+|entirely\s+)?(?:without|free\s+of|free\s+from)\s+side[-\s]?effects?\b/g,
+  /(?:\bnot|n['’]t|\bnever)\s+(?:(?:going\s+to\s+)?(?:last|stay|remain|hold|work)s?\s+)?(?:forever|permanently|for\s+life)\b/g,
+  /\bno\s+(?:treatment|procedure)\s+is\s+(?:completely\s+|entirely\s+|totally\s+)?(?:risk[-\s]free|without\s+risks?|free\s+of\s+risks?)\b|(?:\bnot|n['’]t|\bnever)\s+(?:completely\s+|entirely\s+|totally\s+)?risk[-\s]free\b/g,
+  // 프랑스어 — 긴 꼴을 먼저 지운다("ne peut pas garantir qu'il n'y a aucun effet secondaire" 의 앞부분만 지우면 뒤가 주장으로 남는다)
+  /\bne\s+(?:peut|peux|pouvons|saurait|saurions|pourrions)\s+pas\s+(?:dire|affirmer|prétendre|promettre|garantir)\s+qu['’]il\s+n['’]y\s+a(?:it|ura)?\s+(?:aucun\s+|pas\s+d['’])effets?\s+secondaires?/g,
+  /\bmeilleure?s?\s+(?:délais?|moments?|créneaux?|horaires?|heures?|dates?|jours?|salutations|vœux|itinéraires?|(?:moyens?|façons?)\s+de\s+(?:vous\s+|nous\s+)?(?:joindre|contacter|venir|rendre))/g,
+  /\bne\s+(?!\S+\s+que\s)(?!\S+\s+pas,)(?:\S+\s+){0,3}garanti\S*/g,
+  /\bsans\s+garantie\b|\bpas\s+(?:de\s+)?garanti\S*|\baucune\s+garantie\b|\bimpossible\s+de\s+garantir\b/g,
+  /\b(?:pas|non)\s+(?:un\s+|une\s+)?(?:résultat\s+|solution\s+)?permanente?s?\b|\baucun\s+traitement\s+n['’]est\s+sans\s+effets?\s+secondaires?/g,
+  // 러시아어 — "вполне гарантируем" 의 "не" 를 부정으로 읽지 않게 앞 글자를 본다
+  /(?<![а-яё])не\s+(?:можем\s+|могу\s+|может\s+|можно\s+|даём\s+|даем\s+)?гарант[а-яё]*|(?:невозможно|нельзя)\s+гарант[а-яё]*|гарант[а-яё]*\s+(?:результат[а-яё]*\s+)?(?:(?:мы\s+)?не\s+мо[жг][а-яё]*|невозможно|нельзя)|(?:нет|без)\s+гарант[а-яё]*/g,
+  /не\s+навсегда|нельзя\s+сказать,?\s+что\s+побочных\s+эффектов\s+(?:нет|не\s+бывает)|(?:всего|с)\s+наилучш(?:его|ими\s+пожеланиями)/g,
+  /(?<![а-яё])не\s+(?:является\s+|будет\s+|бывает\s+)?(?:постоянн|перманентн|пожизненн|вечн)[а-яё]*/g,
+  // 일본어 — 부정으로 끝나는 꼴만("保証できます" 는 주장이다)
+  /保証(?:は|を|も)?(?:できません|できかねます|できない|できず|でき兼ねます|いたしかねます|致しかねます|しかねます|するものではありません|することはできません|はいたしておりません|しておりません|はしておりません|はございません|はありません|されるものではありません)/g,
+  /(?:(?:半)?永久|永遠|永続)(?:的)?(?:(?:な|する)(?:もの|効果|結果|わけ))?で(?:は|も)(?:ありません|なく|ない|ございません)|永続(?:は)?(?:しません|しない)|永久脱毛ではなく/g,
+  /(?:(?:永久|永遠)(?:的)?に(?:は)?|一生)(?:効果[がはも])?(?:続|持続|維持|残|効)[ぁ-ん]{0,8}?(?:わけではありません|わけではない|ものではありません|ものではない|ことはありません|ことはない|とは限りません|きません|しません)/g,
+  /副作用(?:が|は)(?:全く|まったく|一切)?ない(?:わけでは|とは(?:言え|いえ|限り))/g,
+  // 중국어
+  /(?:不是|并非|並非|并不是|並不是|不会|不會|无法|無法|不能|不可能|并不能|並不能)(?:永久|永远|永遠|终身|終身|一[劳勞]永逸)/g,
+  /(?:无法|無法|不能|难以|難以|不敢|不会|不會|没有|沒有|不做|不作|不)(?:向您|对您|對您|完全|任何|做出|给出|給出)?(?:任何)?(?:保证|保證)|保证金|保證金/g,
+  /(?:不能说|不能說|不可能|并非|並非|不是)(?:完全|绝对|絕對)?(?:没有|沒有|无|無)副作用/g,
+  // 한국어
+  /영구(?:적)?(?:이|인\s?것[이은도]|인\s?건|이지는|이지|이진)?\s?(?:않|아니|아닙)|영구(?:적)?이라고\s?(?:할|말씀드릴)\s?수(?:는)?\s?없|영구(?:적)?이라고\s?(?:하기|말씀드리기|보기)(?:는)?\s?어렵/g,
+  /보장(?:할 수는? 없|해 드릴 수는? 없|하기(?:는)? 어렵|은 어렵|되지는? 않|드릴 수 없|하지 않|해 드리기 어렵|드리기 어렵)/g,
+  /부작용이 없다고 (?:할|말씀드릴) 수(?:는)? 없/g,
+  // 베트남어 · 태국어 · 아랍어 · 몽골어 — 긴 꼴("…라고 말할 수는 없다")을 먼저 지운다
+  /không\s+thể\s+(?:nói|khẳng định|cam kết|đảm bảo|bảo đảm)\s+(?:là\s+|rằng\s+)?(?:hoàn toàn\s+)?không\s+có\s+tác dụng phụ|không\s+phải\s+(?:là\s+)?(?:hoàn toàn\s+)?không\s+có\s+tác dụng phụ/g,
+  /không\s+(?:phải\s+(?:là\s+)?|(?:kéo dài|duy trì|tồn tại|giữ được|có tác dụng|có hiệu quả|mang lại hiệu quả)\s+)?vĩnh viễn/g,
+  /không\s+(?:có\s+gì\s+|thể\s+|hề\s+)?(?:cam kết|đảm bảo|bảo đảm)/g,
+  /ไม่สามารถ(?:บอก|พูด|ยืนยัน|รับรอง)(?:ได้)?ว่า(?:จะ)?ไม่มีผลข้างเคียง|ไม่ใช่ว่า(?:จะ)?ไม่มีผลข้างเคียง/g,
+  /ไม่(?:ได้|ใช่)?(?:อยู่|คงอยู่|คง|เป็น)?(?:แบบ|อย่าง)?ถาวร|ไม่(?:สามารถ|ได้|มีการ)?(?:รับประกัน|การันตี)/g,
+  /(?:เวลา|วัน|ช่วง)(?:ไหน)?(?:ที่)?(?:สะดวก|ดี)ที่สุด/g,
+  /لا\s+(?:يمكن(?:نا)?|نستطيع)\s+(?:القول|أن\s+نقول|الجزم|التأكيد)\s+(?:إنه|أنه|بأنه|أن|بأن)\s*لا\s+توجد\s+(?:أي\s+)?آثار\s+جانبية/g,
+  /(?:غير|ليست|ليس)\s+مضمون[؀-ۿ]*|لا\s+(?:نضمن|يمكننا\s+ضمان|نستطيع\s+ضمان|يمكن\s+ضمان)/g,
+  /(?:мөнхийн|байнгын|баталгаатай)\s+биш|баталгаа\s+өг[а-яёөү]*\s+(?:боломжгүй|чадахгүй|аргагүй)|баталгаа\s+(?:өгөхгүй|байхгүй)|баталгаажуул[а-яёөү]*\s+(?:боломжгүй|чадахгүй|аргагүй)|баталгаажуулахгүй/g,
 ];
 
 const BANNED_SUBSTRINGS = [
@@ -5726,104 +7081,237 @@ const BANNED_SUBSTRINGS = [
   '保証', '保证', '保證', '第一名', '排名第一', '業界一', '世界一',
   // 베트남어·태국어
   'vĩnh viễn', 'hoàn hảo', 'không có tác dụng phụ', 'không gây tác dụng phụ', 'cam kết',
-  'ดีที่สุด', 'รับประกัน', 'การันตี', 'ถาวร', 'สมบูรณ์แบบ', 'ไม่มีผลข้างเคียง', 'อันดับ 1', 'อันดับหนึ่ง',
+  'ดีที่สุด', 'รับประกัน', 'การันตี', 'ถาวร', 'สมบูรณ์แบบ', 'ไม่มีผลข้างเคียง',
   // 러시아어·몽골어
   'наилучш', 'навсегда', 'идеальн',
   'хамгийн сайн', 'баталгаатай', 'гаж нөлөөгүй',
   // 프랑스어·아랍어
   'sans effet secondaire', 'sans effets secondaires', 'aucun effet secondaire',
   "pas d'effet secondaire", 'pas d’effet secondaire', "pas d'effets secondaires", 'pas d’effets secondaires',
-  'numéro 1', 'numéro un', 'n°1',
   'مضمون', 'مثالي', 'بدون آثار جانبية', 'بلا آثار جانبية', 'لا توجد آثار جانبية', 'لا آثار جانبية',
 ] as const;
 
 // 흔한 말과 겹치는 낱말은 주장하는 꼴만 막는다 — "您最好提前预约"(미리 예약하시는 게 좋습니다) · "Để đảm bảo có chỗ"(자리를 잡으려면) · "من الأفضل أن …"(~하는 편이 좋습니다)
 const BANNED_PATTERNS: ReadonlyArray<{ label: string; re: RegExp }> = [
+  // 영어
   { label: 'best', re: /\bbest\b/ },
-  { label: 'perfect', re: /\bperfect(?:ly|ion)?\b/ },
-  { label: 'permanent', re: /\bpermanent(?:ly|e|es|s)?\b/ },
-  { label: 'guarantee', re: /\bguarantee[a-z]*\b/ },
-  { label: 'no side effects', re: /\b(?:no|zero|without|free\s+of|free\s+from)\s+(?:any\s+)?side[-\s]?effects?\b|\bside[-\s]?effect[-\s]?free\b/ },
-  { label: 'no.1', re: /\bno\.?\s?1\b|\bnumber\s+(?:one|1)\b|#\s?1\b/ },
-  { label: 'the only', re: /\bthe\s+only\s+(?:clinic|hospital|place|doctor|one)\b/ },
-  { label: '最高', re: /最高(?![可达達为為至\d])/ },
-  { label: '最好的', re: /最好的(?!时间|時間|方式|办法|辦法)/ },
-  { label: '最佳', re: /最佳(?!时间|時間|时机|時機|方式)/ },
+  { label: 'perfect', re: /\bperfect(?:ly|ion)?\b|\bflawless\b/ },
+  { label: 'permanent', re: /\bpermanent(?:ly|e|es|s)?\b|\b(?:forever|for\s+life|lifelong|life[-\s]long|everlasting|never\s+wears?\s+off)\b/ },
+  {
+    label: 'guarantee',
+    re: /\bguarantee[a-z]*\b|\bresults?\s+(?:are|is)\s+(?:assured|certain)\b|\bwe\s+promise\s+(?:you(?:['’]ll|\s+will)\s+look|results?)\b|\bmoney[-\s]back\b|\bfull\s+refund\b|\b(?:definitely|always)\s+works?\b/,
+  },
+  {
+    label: 'no side effects',
+    re: /(?:\b(?:no|not|never|zero|without)|n['’]t)\s+(?:(?:have|has|having|cause|causes|causing|experience|see|expect|be|any|known|real|serious|significant|major|lasting|notable|a|the)\s+){0,3}(?:side[-\s]?effects?|adverse\s+effects?)\b|\b(?:free\s+of|free\s+from)\s+(?:any\s+)?side[-\s]?effects?\b|\bside[-\s]?effect[-\s]?free\b|\bside[-\s]?effects?\s+(?:never|are\s+nonexistent|do\s+not\s+occur|don['’]t\s+occur)|\b(?:risk[-\s]free|zero\s+risk|no\s+risk)\b/,
+  },
+  {
+    label: 'no.1',
+    re: /\bno\.?\s?1\b|\bnumber[-\s]+(?:one|1)\b|#\s?1\b|\b(?:top|leading|finest|safest|greatest|premier)\s+(?:\w+\s+)?(?:clinic|hospital|doctors?|surgeons?|specialists?|provider|centre|center)\b|\b(?:top[-\s]rated|unmatched|unrivall?ed|world[-\s]class|second\s+to\s+none|ranked\s+first|safest|most\s+effective)\b|\bbetter\s+than\s+(?:any|other|all)\b/,
+  },
+  {
+    label: 'the only',
+    re: /\b(?:the\s+)?(?:only|sole)\s+(?:\w+[-\s]){0,2}(?:clinic|hospital|doctor|provider|partner|centre|center)\b|\bone\s+and\s+only\b|\bonly\s+we\b/,
+  },
+  // 일본어
+  { label: '最高', re: /最高(?![可达達为為至で\d]|気温|原则|原則)/ },
+  {
+    label: '一番',
+    re: /一番(?:です|人気|効果|おすすめ)|当院が一番|ベスト(?:な|の(?:施術|治療|結果|クリニック))|最良|最も優れ|ナンバー\s?1|[日韓]国?一(?:の|です)|日本一|トップクラス|オンリーワン|当院だけ|パーフェクト|完全に安全|保障|確実に(?:効果|結果|改善|若返)|必ず効果|絶対(?:に)?(?:安全|効果|大丈夫|おすすめ)|(?:効果|結果)(?:を|は)お約束|永続|永遠|一生続/,
+  },
   {
     label: '副作用なし',
-    re: /副作用(?:は|が|も|の)?(?:ほとんど|一切|全く|まったく)?(?:な[いくしかさ]|無[いくし]|ありません|ございません|ゼロ|出ません|起こりません|起きません)/,
+    re: /副作用(?:は|が|も|の)?(?:ほとんど|一切|全く|まったく|ほぼ|特に)?(?:な[いくしかさ]|無[いくし]|ありません|ございません|ゼロ|出ません|起こりません|起きません)|副作用の心配(?:は|も)?(?:ありません|ございません|ない|なく|いりません)|副作用フリー|ノーリスク|リスクは(?:ありません|ございません)/,
   },
-  { label: '没有副作用', re: /(?:无|無|没有|沒有|不会有|不會有|零)(?:任何|什么|什麼)?(?:的)?副作用/ },
-  { label: 'лучший', re: /лучш(?:ий|ая|ее|ие|ую|его|ей|им|их|ими|ем)(?![а-яё])(?!\s+(?:время|день|способ|дата|дату|вариант))/ },
-  { label: 'гарантия', re: /гарант[а-яё]*/ },
-  { label: 'без побочных', re: /(?:без|нет|никаких)\s+побочных|побочных\s+(?:эффектов|действий)\s+(?:нет|не\s+бывает|не\s+будет)/ },
-  { label: 'meilleur', re: /\bmeilleure?s?\b/ },
-  { label: 'garanti', re: /\bgaranti[a-zé]*/ },
-  { label: 'tốt nhất', re: /(?<!(?:thời gian|cách|ngày|giờ|lúc)\s)tốt nhất(?!\s+(?:là|nên|để))/ },
+  // 중국어
+  { label: '最好的', re: /最好的(?!时间|時間|方式|办法|辦法|联系方式|聯絡方式|聯繫方式)/ },
+  { label: '最佳', re: /最佳(?!时间|時間|时机|時機|方式|路线|路線|到院时间|到院時間)/ },
+  {
+    label: '最好',
+    re: /(?:效果|技术|技術|口碑|服务|服務)最好|[医醫]院最好|我[们們]是最(?:棒|好|强|強)|最(?:棒|专业|專業|先进|先進|安全|有效)|(?:韩国|韓國|首尔|首爾|全国|全國|业内|業內)第一|顶级|頂級|顶尖|頂尖|首屈一指|独家|獨家|仅此一家|僅此一家|只有我们|只有我們/,
+  },
+  {
+    label: '保证',
+    re: /有保障|品质保障|品質保障|包您|确保效果|確保效果|承[诺諾](?:效果|结果|結果|有效)|一定有效|[绝絕][对對](?:安全|有效|没问题|沒問題|可以|放心)|百分百|永远|永遠|终身|終身|一劳永逸|一勞永逸/,
+  },
+  {
+    label: '没有副作用',
+    re: /(?:无|無|没有|沒有|不会有|不會有|零)(?:任何|什么|什麼)?(?:的)?副作用|[没沒]副作用|不[会會](?:产生|產生|出现|出現|有)(?:任何)?副作用|副作用[为為]零|不存在副作用|不用担心副作用|不用擔心副作用|[没沒]有不良反应|[没沒]有不良反應|[零无無]风险|[零无無]風險/,
+  },
+  // 한국어
+  {
+    label: '부작용 없음',
+    re: /부작용\s?(?:도|이|은)?\s?(?:전혀\s)?없(?!다고)|부작용\s?(?:걱정\s?없|제로)|(?:제일|가장)\s?좋(?!은\s?(?:시간|날|날짜|방법|때))|\d\s?위(?![가-힣])|1등|넘버원|최상|베스트|저희만|퍼펙트|완전히\s?안전|보증(?!금)|확실한\s?효과|반드시\s?효과|무조건\s?효과|영원히|평생|백\s?프로/,
+  },
+  // 베트남어
+  { label: 'tốt nhất', re: /(?<!(?:thời gian|thời điểm|ngày|giờ|lúc|là)\s)tốt nhất(?!\s+(?:là|nên|bạn nên))/ },
   {
     label: 'đảm bảo',
-    re: /(?:đảm bảo|bảo đảm)\s+(?:kết quả|hiệu quả|an toàn|thành công)|(?:kết quả|hiệu quả)\s+(?:được\s+|sẽ\s+)?(?:đảm bảo|bảo đảm)/,
+    re: /(?:đảm bảo|bảo đảm)\s+(?:kết quả|hiệu quả|an toàn|thành công)|(?:kết quả|hiệu quả)\s+(?:được\s+|sẽ\s+)?(?:đảm bảo|bảo đảm)|(?<!không\s(?:thể\s)?)(?:đảm bảo|bảo đảm)\s+(?:sẽ|không)|bảo hành|chắc chắn hiệu quả/,
   },
-  { label: 'أفضل', re: /[أا]فضل\s+(?:عيادة|مستشفى|طبيب|نتيجة|النتائج|نتائج|سعر|الأسعار|علاج|جودة)|(?:نحن|عيادتنا)\s+ال[أا]فضل/ },
-  { label: 'ضمان', re: /نضمن|ضمان\s+(?:النتيجة|النتائج|نتيجة)/ },
+  {
+    label: 'hàng đầu',
+    re: /hàng đầu|số (?:1|một)(?![\d/])\s+(?:hàn|seoul|thế giới|châu á)|top 1|(?:uy tín|hiệu quả|an toàn) nhất|(?:phòng khám|nơi|địa chỉ|bác sĩ|cơ sở)\s+duy nhất|an toàn tuyệt đối|tuyệt đối an toàn|hiệu quả tuyệt đối|mãi mãi|suốt đời|trọn đời/,
+  },
+  {
+    label: 'không tác dụng phụ',
+    re: /(?<!không phải (?:là )?)(?:không|chẳng)(?:\s+hề)?(?:\s+(?:có|để lại|gây))?(?:\s+bất kỳ)?\s+(?:tác dụng phụ|phản ứng phụ|biến chứng)/,
+  },
+  // 태국어
+  {
+    label: 'อันดับ 1',
+    re: /อันดับ\s?(?:1|หนึ่ง)|เบอร์\s?(?:1|หนึ่ง)|ที่หนึ่งใน|(?:ยอดเยี่ยม|ปลอดภัย|เห็นผล)ที่สุด|ดีสุด|แห่งเดียว|หนึ่งเดียว|ที่เดียวเท่านั้น|ตลอดไป|ตลอดชีวิต|ไร้ผลข้างเคียง|ไม่มีอาการข้างเคียง|ปราศจากผลข้างเคียง|ไม่(?:ทำให้)?เกิดผลข้างเคียง|(?<!รับ)ประกันผล|รับรอง(?:ผล|ว่า)|เห็นผล(?:แน่นอน|ชัวร์)|เพอร์เฟ[กค]|ไร้ที่ติ|100\s?เปอร์/,
+  },
+  // 러시아어
+  {
+    label: 'лучший',
+    re: /лучш(?:ий|ая|ее|ие|ую|его|ей|им|их|ими|ем|е\s+всех|е,?\s+чем)(?![а-яё])(?!\s+(?:время|день|дата|дату|случае|способ\s+(?:связ|добрат|оплат)))/,
+  },
+  { label: 'гарантия', re: /гарант[а-яё]*|обещаем\s+результат|точно\s+поможет/ },
+  {
+    label: 'без побочных',
+    re: /(?:без|нет|никаких)\s+побочных|побочных\s+(?:эффектов|действий)\s+(?:нет|не\s+бывает|не\s+будет|не\s+возникает)|отсутствуют\s+побочные|побочные\s+эффекты\s+отсутствуют|без\s+каких-либо\s+побочных|не\s+(?:вызывает|имеет)\s+побочных|без\s+побочек|без\s+осложнений/,
+  },
+  {
+    label: 'номер один',
+    re: /номер\s+один|первое\s+место|топ-?1|ведущ[а-яё]+\s+клиник|единственн[а-яё]+\s+(?:клиник|центр|врач|место)|только\s+у\s+нас|сам(?:ый|ая|ое|ые)\s+(?:безопасн|эффективн)|безупречн|совершенно\s+безопасн|абсолютно\s+безопасн|постоянн[а-яё]+\s*(?:эффект|результат)|эффект\s+постоянн|(?:эффект|результат)[^.!?\n]{0,60}?(?<![а-яё])(?:постоянн|вечн)(?:ый|ым|ен|на|ая|ое)(?![а-яё])|перманентн|пожизненн|на\s+всю\s+жизнь|вечн[а-яё]+\s+результат/,
+  },
+  // 프랑스어
+  { label: 'meilleur', re: /\bmeilleure?s?\b/ },
+  { label: 'garanti', re: /\bgaranti[a-zé]*|\brésultats?\s+assurés?\b|\bpromettons\s+un\s+résultat|\bsatisfait\s+ou\s+remboursé\b/ },
+  {
+    label: 'la seule',
+    re: /\b(?:la\s+seule|le\s+seul|l['’]unique)\s+(?:\w+\s+)?(?:clinique|centre|établissement)|\bclinique\s+unique\b|\brésultats?\s+parfaits?\b|\bparfaitement\s+(?:sûr|sans|naturel)|\btop\s+clinique\b|\b(?:résultats?|effets?)\s+définitifs?\b|(?:^|[^a-zà-ÿ])à\s+vie\b|\bpour\s+toujours\b|\bn[°º]\s?1\b|\bnuméro\s+(?:1|un)\b/,
+  },
+  { label: 'sans effets', re: /\bzéro\s+effet|\b(?:sans|aucun)\s+effets?\s+indésirables?|\b(?:sans\s+aucun|aucun)\s+risque\b/ },
+  // 몽골어
+  {
+    label: 'шилдэг',
+    re: /шилдэг|тэргүүлэх|номер\s+нэг|цорын\s+ганц|төгс(?![а-яёөү])|мөнхийн|байнгын\s+үр|үр\s+(?:дүн|нөлөө)[а-яёөү]*\s+(?:нь\s+)?байнгын|насан\s+туршийн|баталгаа\s+өг|үр\s+дүнг\s+батална|үр\s+(?:дүн|нөлөө)[а-яёөү]*\s+(?:[а-яёөү]+\s+)?баталгаажуул|гаж\s+нөлөө\s+(?:байхгүй|үгүй)|сөрөг\s+нөлөөгүй|зуун\s+хувь|хамгийн\s+(?:шилдэг|аюулгүй)|эрсдэлгүй/,
+  },
+  // 아랍어
+  {
+    label: 'أفضل',
+    re: /[أا]فضل\s+(?:عيادة|مستشفى|طبيب|نتيجة|النتائج|نتائج|سعر|الأسعار|علاج|جودة|العيادات|الأطباء|مركز)|(?:نحن|عيادتنا|هي)\s+ال[أا]فضل|ال[أا]فضل\s+في|الأولى\s+في|رقم\s+(?:1|واحد)\s+في|(?:العيادة|المركز|المكان)\s+الوحيد[ةه]?/,
+  },
+  { label: 'ضمان', re: /نضمن|ضمان\s+(?:النتيجة|النتائج|نتيجة|كامل)|[أا]ضمن\s+ل|تضمن\s+العيادة|بضمان|أكيدة|مية\s+مية/ },
+  {
+    label: 'دائم',
+    re: /(?<!ليست\s|ليس\s|غير\s)دائم[ةه]?(?![؀-ۿ])|إلى\s+الأبد|مدى\s+الحياة|(?:بدون|دون|بلا|ليس\s+ل(?:ه|ها)|لا\s+(?:يوجد|توجد))\s+(?:أي\s+)?(?:آثار|اثار|أعراض|اعراض|مضاعفات)|خالي?\s+من\s+الآثار/,
+  },
 ];
 
 // ── C-6 AI·봇·자동 응대라는 말, 사람이라는 말 ("사람인가요?"의 답은 프로그램이 붙인다) ─────────────
 // "자동으로 차감된다" · "automatically applied" 같은 문장까지 막지 않도록 '자동'은 응대·도우미와 붙은 꼴만 본다.
+// 사람이라는 말은 "제가 사람입니다" 꼴만 막는다 — "직원이 오늘 답해 드립니다"는 약속이지 정체에 대한 말이 아니다.
 const NOT_CYRILLIC_BEFORE = '(?<![а-яёөү])';
 const NOT_CYRILLIC_AFTER = '(?![а-яёөү])';
 const ARABIC = String.raw`[؀-ۿ]`;
 const AI_WORD_PATTERNS: RegExp[] = [
   /\bA\.?I\b/, // 대문자만 — "Thai" 는 아니다
-  /\bIA\b/,
+  /\bIA\b|\bI\.A\b/,
+  /(?<![А-Яа-яЁё])ИИ(?![А-Яа-яЁё])/,
+  /\b(?:an?|as|the)\s+ai\b|\bA\s?I\s+(?:assistant|agent)\b/i,
   /\b(?:chat)?bots?\b/i,
   /\brobots?\b/i,
-  /\b(?:chat)?gpt\b|\bopenai\b|\bllm\b/i,
+  /\b(?:chat)?gpt\b|\bgpt[-\s]?\d|\bopenai\b|\bllm\b|\bneural\s+network\b/i,
   /language model/i,
-  /artificial intelligence|virtual assistant|digital assistant/i,
-  /\bautomated\s+(?:assistant|agent|system|service|chat|repl(?:y|ies)|responses?|messages?)\b/i,
+  /artificial[-\s]intelligence|\b(?:virtual|digital|smart|automated)\s+(?:consultant|helper|concierge|assistant|agent)\b/i,
+  /\bautomat(?:ed|ion)\b|\bauto[-\s]generated\b|\b(?:machine|computer)[-\s]generated\b|\bgenerated\s+automatically\b/i,
   /\bautomatic\s+(?:assistant|agent|system|repl(?:y|ies)|responses?|messages?)\b/i,
   /\bauto[-\s]?(?:repl(?:y|ies)|responder|responses?)\b/i,
-  /人工智能|人工智慧|机器人|機器人|自动回复|自動回覆|自动助手|自動助理|智能助手|智能客服|智能助理|智慧助理|智慧客服/,
-  /自動応答|自動返信|チャットボット|ボット|人工知能/,
-  /인공지능|챗봇|자동\s?응대|자동\s?응답/,
-  /trí tuệ nhân tạo|trợ lý ảo|trợ lý tự động/i,
-  /ปัญญาประดิษฐ์|บอท|ผู้ช่วยอัตโนมัติ|ระบบตอบกลับอัตโนมัติ/,
+  /人工智能|人工智慧|机器人|機器人|自[动動](?:回[复復覆应應]|助手|助理|客服|[应應]答|[发發]送)|智能助手|智能客服|智能助理|智慧助理|智慧客服|[虚虛][拟擬](?:助手|助理|客服)|数字人|數位人|数字助理|线上助理|(?:电脑|電腦)程序|我是(?:机器|機器|程序)/,
+  /自動(?:応答|返信|対応|メッセージ|案内|チャット|システム)|チャットボット|ボット|人工知能|バーチャルアシスタント|エーアイ|機械です/,
+  /인공지능|챗봇|(?<![가-힣])봇(?:입니다|이에요|이야)|로봇|자동\s?(?:응대|응답|답변|안내|시스템)|에이아이/,
+  /trí tuệ nhân tạo|trợ lý (?:ảo|tự động|số|trực tuyến)|(?:trả lời|tin nhắn|hệ thống|phản hồi)\s+tự động|tự động\s+trả lời|phần mềm|rô-?\s?bốt/i,
+  /ปัญญาประดิษฐ์|บอท(?!็อก|อก)|บอต|เอไอ|หุ่นยนต์|ผู้ช่วย(?:อัตโนมัติ|เสมือน|ดิจิทัล)|(?:ระบบ|ตอบ(?:กลับ)?|ข้อความ)อัตโนมัติ/,
   new RegExp(
-    `искусственн|робот|чат-бот|автоматическ[а-яё]*\\s+(?:помощник|ответ)|${NOT_CYRILLIC_BEFORE}бот(?:а|у|ом|е|ы|ов)?${NOT_CYRILLIC_AFTER}`,
+    `искусственн|робот|чат-?бот|автоответ|нейросет|автоматическ[а-яё]*\\s+(?:помощник|ответ|ассистент|система|сообщени|режим)|виртуальн[а-яё]*\\s+(?:помощник|ассистент)|${NOT_CYRILLIC_BEFORE}бот(?:а|у|ом|е|ы|ов)?${NOT_CYRILLIC_AFTER}`,
     'i'
   ),
-  /intelligence artificielle|assistant virtuel|(?:assistant|réponses?|système|message)\s+automatique/i,
-  /хиймэл оюун|автомат туслах/i,
-  new RegExp(`ذكاء\\s+(?:ال)?اصطناعي|روبوت|مساعد\\s+(?:ال)?آلي|(?<!${ARABIC})(?:ال)?بوت(?!${ARABIC})`),
-  // 사람이라고 말하는 것
-  /\b(?:real|actual|live)\s+(?:person|human|agent)\b|\bhumans?\b/i,
-  /真人|人工客服|人間です|生身/,
-  /живой человек|реальный человек|настоящий человек|я человек/i,
-  /vraie personne|\bun humain\b|\bhumaine?\b/i,
-  /người thật|คนจริง|شخص حقيقي|жинхэнэ хүн|실제 사람|진짜 사람/i,
+  /intelligence artificielle|assistante?\s+(?:virtuelle?|automatique|automatisée?)|\b(?:réponses?|systèmes?|messages?)\s+automati(?:que|sée?)s?|agent\s+conversationnel|programme\s+informatique|\bune\s+ia\b/i,
+  /хиймэл оюун|автомат(?:аар)?\s+(?:туслах|хариул|систем)|виртуал\s+туслах/i,
+  new RegExp(
+    `[إا]صطناعي|روبوت|مساعدة?\\s+(?:ال)?(?:[آا]لي|[آا]لية|افتراضي|افتراضية|رقمي|رقمية)|(?:رد|ردود|الرد|نظام)\\s+(?:ال)?(?:آلي|تلقائي|تلقائية|الآلي)|(?<!${ARABIC})(?:ال)?بوت(?!${ARABIC})`
+  ),
+  // 사람(또는 기계)이라고 스스로 말하는 것
+  /\b(?:i(?:['’]m|\s+am)|you(?:['’]re|\s+are)\s+(?:talking|speaking|chatting)\s+(?:to|with))\s+(?:not\s+)?(?:an?\s+|the\s+|one\s+of\s+(?:the\s+|our\s+)?)?(?:real\s+|actual\s+|live\s+|human\s+)?(?:\w+,\s+(?:an?\s+|one\s+of\s+(?:the\s+|our\s+)?))?(?:person|people|humans?|agents?|staff|consultants?|coordinators?|nurses?|employees?|member|machine|software|algorithm|computer\s+program)\b|\bnot\s+a\s+machine\b|\bhuman[-\s]like\b/i,
+  /(?:我|本人|这边|這邊|这里|這裡)(?:们|們)?(?:不|就)?是(?:真人|人工|人类|人類|真实的人|真實的人|工作人员|工作人員|本院客服|咨询师|諮詢師|人(?![员員工性]))/,
+  /(?:私|わたし|わたくし|こちら)(?:は|が)?.{0,8}(?:人間|スタッフです)|はい、人です|人間です|生身|本物のスタッフ/,
+  /(?:네|예),?\s?(?:저는\s)?사람입니다|(?:실제|진짜)\s?(?:사람|상담원|직원)|저는\s?(?:상담원|직원|기계|프로그램)/,
+  /tôi là (?:máy|con người|người thực|người thật|nhân viên)|เป็น(?:คน|มนุษย์)(?:ค่ะ|ครับ|จริง)|คนจริง|เจ้าหน้าที่จริง|พนักงานจริง|แอดมินตอบเอง/i,
+  new RegExp(
+    `${NOT_CYRILLIC_BEFORE}я\\s*-?\\s*(?:не\\s+)?(?:живой\\s+|реальный\\s+|настоящий\\s+)?(?:человек|сотрудник|оператор|консультант|администратор|программа|машина)${NOT_CYRILLIC_AFTER}|с\\s+вами\\s+(?:общается|говорит|переписывается)\\s+(?:живой\\s+|реальный\\s+|настоящий\\s+)?человек`,
+    'i'
+  ),
+  /\bje\s+suis\s+(?:bien\s+)?(?:une?\s+)?(?:vraie?\s+)?(?:personne|humaine?|conseill(?:er|ère)|membre|machine|programme)\b|\ben\s+chair\s+et\s+en\s+os\b/i,
+  new RegExp(`би\\s+(?:жинхэнэ\\s+|амьд\\s+)?(?:хүн|ажилтан|чатбот|программ|машин)${NOT_CYRILLIC_AFTER}`, 'i'),
+  /أنا\s+(?:إنسان|موظفة?|شخص|برنامج|آلة|شاتبوت)/,
 ];
 
-// ── C-7 주소 · C-8 전화번호 ─────────────────────────────────────────────
+// ── 검사가 아는 언어로 썼는가 ───────────────────────────────────────────
+// 답은 영어 · 일본어 · 중국어 · 베트남어 · 태국어 · 러시아어 · 프랑스어 · 몽골어 · 아랍어 · 한국어로만 쓴다(지시문).
+// 그 밖의 언어로 쓴 금지 표현은 위의 목록이 알아보지 못하므로, 그런 답은 통째로 다시 쓰게 한다.
+/** 검사가 모르는 문자 — 아르메니아 · 히브리 · 인도계 · 라오 · 티베트 · 미얀마 · 크메르 */
+const OTHER_SCRIPT_RE = /[԰-׿ऀ-෿຀-࿿က-႟ក-៿]/;
+/** 그 언어에서만 흔한 낱말 — 서로 다른 것이 둘 이상 나오면 그 언어로 쓴 글로 본다 (사람 이름과 겹치는 짧은 낱말은 뺐다) */
+const OTHER_LANGUAGE_WORDS: ReadonlyArray<readonly [string, RegExp]> = [
+  ['es', /\b(?:usted|gracias|hola|cuesta|precio|puede|quiere|nuestra|tratamiento|descuento|efectos|cita|día|qué|está)\b/gi],
+  ['de', /\b(?:und|nicht|wir|können|bitte|termin|kostet|für|behandlung|rabatt|oder|ist|eine|das|sie)\b/gi],
+  ['pt', /\b(?:você|obrigad[oa]|custa|cerca|damos|preço|não|tratamento|consulta|desconto|nossa|está|efeitos)\b/gi],
+  ['it', /\b(?:grazie|prezzo|trattamento|siamo|può|della|nostro|sconto|effetti|circa)\b/gi],
+  ['id', /\b(?:kami|anda|harga|untuk|dengan|tidak|sekitar|diskon|terima)\b/gi],
+  ['tr', /\b(?:fiyat[ıi]?|için|değil|teşekkür|randevu|indirim|yaklaşık)\b/gi],
+];
+
+function otherLanguage(text: string): string | null {
+  if (OTHER_SCRIPT_RE.test(text)) return 'script';
+  for (const [lang, re] of OTHER_LANGUAGE_WORDS) {
+    const distinct = new Set((text.match(re) ?? []).map((w) => w.toLowerCase()));
+    if (distinct.size >= 2) return lang;
+  }
+  return null;
+}
+
+// ── C-7 주소 · C-8 전화번호 · 메신저 아이디 ─────────────────────────────
 // 주소에 쓸 수 있는 ASCII 글자만 받는다(linkify.ts 와 같다) — 일본어·중국어 글이 띄어쓰기 없이 뒤에 붙어도 주소가 거기서 끝난다.
 const URL_CHARS = String.raw`[A-Za-z0-9\-._~:/?#[\]@!$&'()*+,;=%]`;
-const URL_RE = new RegExp(`https?:\\/\\/${URL_CHARS}+`, 'g');
-const EMAIL_RE = /[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g;
-/** http 없이 쓴 주소 (www.example.com · line.me/ti/p/…) — 손님 화면에서 눌리지 않고, 자료에 있는 주소인지도 알 수 없다 */
+/** 어떤 꼴의 주소든(https · Https · line:// …) — 자료에 있는 것과 글자 하나까지 같아야 한다 */
+const URL_SOURCE = `[A-Za-z][A-Za-z0-9+.-]*:\\/\\/${URL_CHARS}+`;
+const URL_RE = new RegExp(URL_SOURCE, 'g');
+/** 주소 바로 뒤에 전각 문장부호·한자가 붙은 곳 — 검사용 글로 바꾸면 전각 괄호·쉼표가 주소 글자가 되므로 먼저 띄운다 */
+const URL_THEN_WIDE_RE = new RegExp(`(${URL_SOURCE})(?=[^\\x00-\\x7F])`, 'g');
+const EMAIL_RE = /[A-Za-z0-9._%+-]+\s?@\s?[A-Za-z0-9-]+(?:\.[A-Za-z0-9-]+)*\.[A-Za-z]{2,}/g;
+/** http 없이 쓴 주소 (www.example.com · line.me/ti/p/… · youtu.be/…) — 손님 화면에서 눌리지 않고, 자료에 있는 주소인지도 알 수 없다 */
 const BARE_DOMAIN_RE = new RegExp(
-  String.raw`(?<![A-Za-z0-9@._/-])(?:[A-Za-z0-9-]+\.)+(?:com|net|org|kr|io|me|jp|cn|app|link|ly|gl|info|biz|ru|fr|vn|tw|hk|sg|uk|page|site|xyz|shop|clinic|cc|tv|gg)(?![A-Za-z0-9-])(?:\/${URL_CHARS}*)?`,
+  String.raw`(?<![A-Za-z0-9@._/-])(?:[A-Za-z0-9-]+\.)+(?:(?:com|net|org|kr|io|me|jp|cn|app|link|ly|gl|info|biz|ru|fr|vn|tw|hk|sg|uk|page|site|xyz|shop|clinic|cc|tv|gg|co|ee|ai|asia|top|vip|online|store|live|club|agency)(?![A-Za-z0-9-])(?:\/${URL_CHARS}*)?|[A-Za-z]{2,}\/[A-Za-z0-9_@]${URL_CHARS}*)`,
   'gi'
 );
-/** 2026-10-14 · 2026.10.14 · 2026. 10. 14 · 2026/10/14 — 전화번호 검사에서 뺀다 */
-const YMD_DATE_RE = /\b\d{4}\s?[-./]\s?\d{1,2}\s?[-./]\s?\d{1,2}\b/g;
+/** "ID: xxx" · "아이디 xxx" · "微信号 xxx" 뒤의 아이디 */
+const ID_AFTER_WORD_RE = /(\bID\b|아이디|微信号|微信號|账号|帳號|アイディー)\s*(?:is\b|:|は)?\s*@?([A-Za-z0-9][A-Za-z0-9._-]{3,})/g;
+/** @아이디 */
+const AT_HANDLE_RE = /(?<![A-Za-z0-9._%+-])@([A-Za-z0-9_][A-Za-z0-9_.]{2,})/g;
+
+const YEAR = String.raw`(?:19|20|25)\d{2}`;
+const MONTH = '(?:0?[1-9]|1[0-2])';
+const DAY = String.raw`(?:0?[1-9]|[12]\d|3[01])`;
+/** 2026-10-14 · 2026.10.14 · 2026. 10. 14 · 2026/10/16 — 전화번호 검사에서 뺀다. 진짜 날짜 꼴만("+82-10-6888-…" 을 날짜로 읽지 않게) */
+const YMD_DATE_RE = new RegExp(String.raw`\b${YEAR}\s?[-./]\s?${MONTH}\s?[-./]\s?${DAY}\b`, 'g');
 /** 14.10.2026 · 10-16-2026 · 14/10/2026 */
-const DMY_DATE_RE = /\b\d{1,2}[-./]\d{1,2}[-./]\d{4}\b/g;
+const DMY_DATE_RE = new RegExp(String.raw`(?<![\d+][-./\s]?)\b(?:${DAY}[-./]${MONTH}|${MONTH}[-./]${DAY})[-./]${YEAR}\b`, 'g');
+/** 10.00-19.00 · 10.14-10.17 · 2025-2026 — 점으로 쓴 시각·날짜의 범위, 연도의 범위 */
+const DOT_RANGE_RE = new RegExp(
+  String.raw`(?<![\d.+-])(?:[01]?\d|2[0-4]|3[01])[.:][0-5]\d\s?-\s?(?:[01]?\d|2[0-4]|3[01])[.:][0-5]\d(?![\d-])(?!\.\d)|(?<![\d.+-])${YEAR}-${YEAR}(?![\d-])(?!\.\d)`,
+  'g'
+);
 /** 구분 기호가 섞인 여덟 자리 이상의 숫자열 — 전화번호 후보 */
 const PHONE_LIKE_RE = /\+?\(?\d(?:[\s().-]{0,2}\d){7,}/g;
 const MIN_PHONE_DIGITS = 8;
+const MAX_PHONE_DIGITS = 15;
 
 const digitsOf = (s: string): string => s.replace(/\D/g, '');
 const trimUrl = (u: string): string => u.replace(/[.,;:!?)\]'"]+$/, '').replace(/\/$/, '');
+const escapeRegExp = (s: string): string => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 /** 넓은 글자(한글·한자·가나 등)를 두 칸으로 센 길이. */
 export function textUnits(s: string): number {
@@ -5834,12 +7322,13 @@ export function textUnits(s: string): number {
 
 /**
  * 써도 되는 전화번호를 글에서 찾는 식. 나라 번호를 뺀 꼴("9123 4567")도 받도록 뒤쪽 여덟 자리 이상이면 같은 번호로 본다.
- * 긴 것부터 찾는다.
+ * 긴 것부터 찾는다. 전화번호 길이(8~15자리)가 아닌 것은 쓰지 않는다.
  */
 function allowedPhonePatterns(allowed: readonly string[]): RegExp[] {
   const forms = new Set<string>();
   for (const raw of allowed) {
     const digits = digitsOf(raw);
+    if (digits.length < MIN_PHONE_DIGITS || digits.length > MAX_PHONE_DIGITS) continue;
     for (let cut = 0; digits.length - cut >= MIN_PHONE_DIGITS; cut += 1) forms.add(digits.slice(cut));
   }
   return [...forms]
@@ -5863,43 +7352,64 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
   const issues: string[] = [];
   const tags = [...reply.matchAll(priceTagPattern())].map((m) => m[1]);
   const own = reply.replace(priceTagPattern(), ' ');
-  const text = normalizeForCheck(own).text;
+  const text = toCheckText(own.replace(URL_THEN_WIDE_RE, '$1 '));
 
   // C-4 꼬리표
   const distinct = new Set(tags);
   for (const id of distinct) if (!ctx.rowIds.has(id)) issues.push(`tag_unknown:${id}`);
   if (distinct.size > MAX_TAGS) issues.push(`tag_too_many:${distinct.size}`);
+  // C-7 주소 · 메일 — 금액·전화번호·꼬리표 검사 전에 떼어 둔다(주소 안의 글자를 두 번 보지 않게)
+  const allowedUrls = new Set(ctx.allowedUrls.map(trimUrl));
+  const urlIssues: string[] = [];
+  for (const m of text.matchAll(URL_RE)) {
+    const url = trimUrl(m[0]);
+    if (!allowedUrls.has(url)) urlIssues.push(`url:${url}`);
+  }
+  let rest = text.replace(URL_RE, ' ');
+  const allowedEmails = new Set(ctx.allowedEmails.map((e) => e.trim().toLowerCase()));
+  for (const m of rest.matchAll(EMAIL_RE)) {
+    if (!allowedEmails.has(m[0].replace(/\s/g, '').toLowerCase())) urlIssues.push(`url:${m[0]}`);
+  }
+  rest = rest.replace(EMAIL_RE, ' ');
+  for (const m of rest.matchAll(BARE_DOMAIN_RE)) urlIssues.push(`url:${trimUrl(m[0])}`);
+  rest = rest.replace(BARE_DOMAIN_RE, ' ');
+
   // 꼬리표 비슷한 것이 남아 있으면 손님에게 그대로 나간다
-  if (/[{}]/.test(text) || LOOSE_TAG_RE.test(text)) issues.push('tag_broken');
+  if (/[{}]/.test(rest) || LOOSE_TAG_RE.test(rest)) issues.push('tag_broken');
   // 꼬리표는 제 줄에 따로 — 문장 안에 섞으면 금액 줄을 넣을 자리가 없어 문장이 깨진다
   const inline = reply
     .split('\n')
     .some((line) => priceTagPattern().test(line) && !TAG_LINE_REST_RE.test(line.replace(priceTagPattern(), '')));
   if (inline) issues.push('tag_inline');
-  const marker = HISTORY_MARKER_RE.exec(text);
+  const marker = HISTORY_MARKER_RE.exec(rest);
   if (marker) issues.push(`marker:${marker[0]}`);
+  issues.push(...urlIssues);
 
-  // C-7 주소 · 메일 — 금액·전화번호 검사 전에 본다(주소 안의 숫자를 두 번 세지 않게 지운다)
-  const allowedUrls = new Set(ctx.allowedUrls.map(trimUrl));
-  for (const m of text.matchAll(URL_RE)) {
-    const url = trimUrl(m[0]);
-    if (!allowedUrls.has(url)) issues.push(`url:${url}`);
+  // C-8 메신저 아이디 — 병원 것 · 손님이 연락처로 남긴 것이 아니면 걸린다
+  const allowedHandles = new Set(ctx.allowedHandles.map((h) => h.trim().replace(/^@/, '').toLowerCase()));
+  const badHandles = new Set<string>();
+  for (const m of rest.matchAll(ID_AFTER_WORD_RE)) {
+    const id = m[2].replace(/[.,]+$/, '');
+    // 영어 "ID" 뒤의 보통 낱말("ID card")은 아이디가 아니다 — 숫자나 _ . - 가 든 것만 본다
+    if (m[1] === 'ID' && !/[\d_.-]/.test(id)) continue;
+    if (!allowedHandles.has(id.toLowerCase())) badHandles.add(id);
   }
-  let rest = text.replace(URL_RE, ' ');
-  const allowedEmails = new Set(ctx.allowedEmails.map((e) => e.trim().toLowerCase()));
-  for (const m of rest.matchAll(EMAIL_RE)) {
-    if (!allowedEmails.has(m[0].toLowerCase())) issues.push(`url:${m[0]}`);
+  for (const m of rest.matchAll(AT_HANDLE_RE)) {
+    const id = m[1].replace(/[.,]+$/, '');
+    if (!allowedHandles.has(id.toLowerCase())) badHandles.add(id);
   }
-  rest = rest.replace(EMAIL_RE, ' ');
-  for (const m of rest.matchAll(BARE_DOMAIN_RE)) issues.push(`url:${trimUrl(m[0])}`);
-  rest = rest.replace(BARE_DOMAIN_RE, ' ');
+  for (const id of badHandles) issues.push(`handle:${id}`);
+  // 써도 되는 아이디는 지운다 — 아이디 속의 숫자("sakura_0328")를 금액으로 읽지 않게
+  for (const h of allowedHandles) {
+    if (h.length >= 3) rest = rest.replace(new RegExp(escapeRegExp(h), 'gi'), ' ');
+  }
 
-  // C-2 (가) 통화·단위 낱말이 붙은 금액 — 전화번호를 지우기 전에 본다.
+  // C-2 (가) 통화·단위 낱말이 붙은 금액, 글자로 쓴 금액 — 전화번호를 지우기 전에 본다.
   // 손님이 "1500000 won" 이라고 썼어도 AI가 따라 쓰면 걸린다(전화번호처럼 보인다고 봐주지 않는다).
   let money = findStatedAmount(rest);
 
   // C-8 전화번호처럼 보이는 숫자 — 날짜는 빼고, 써도 되는 번호(병원 · 손님 연락처)는 지운다
-  rest = rest.replace(YMD_DATE_RE, ' ').replace(DMY_DATE_RE, ' ');
+  rest = rest.replace(YMD_DATE_RE, ' ').replace(DMY_DATE_RE, ' ').replace(DOT_RANGE_RE, ' ');
   for (const re of allowedPhonePatterns(ctx.allowedPhoneDigits)) rest = rest.replace(re, ' ');
   rest = rest.replace(PHONE_LIKE_RE, (found) => {
     // 구분 기호 없이 숫자만 이어진 것은 아래 금액 검사가 본다
@@ -5908,7 +7418,7 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
     return ' ';
   });
 
-  // C-2 (나) 통화 표시 없이 쓴 금액일 수 있는 숫자 — 천 단위로 묶은 숫자, 다섯 자리 이상
+  // C-2 (나) 통화 표시 없이 쓴 금액일 수 있는 숫자 — 천 단위로 묶은 숫자, 네 자리 이상의 맨 숫자
   if (money === null) money = findLooseNumber(rest);
   if (money !== null) issues.push(`money:${money}`);
 
@@ -5917,6 +7427,9 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
     const n = (m[1] ?? m[2])?.replace(',', '.');
     if (!n || !ctx.allowedPercents.has(n)) issues.push(`percent:${m[0].trim()}`);
   }
+  for (const m of text.matchAll(TH_PERCENT_RE)) {
+    if (!ctx.allowedPercents.has(m[1].replace(',', '.'))) issues.push(`percent:${m[0]}`);
+  }
   for (const m of text.matchAll(ZH_PERCENT_RE)) {
     if (m[1] !== '五' && !ctx.allowedPercents.has(m[1])) issues.push(`percent:${m[0]}`);
   }
@@ -5924,7 +7437,7 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
     if (!ZH_DISCOUNT_OK.has(m[1])) issues.push(`percent:${m[0]}`);
   }
   for (const m of text.matchAll(JA_DISCOUNT_RE)) issues.push(`percent:${m[0]}`);
-  for (const m of text.matchAll(HALF_PRICE_RE)) issues.push(`percent:${m[0]}`);
+  for (const re of DISCOUNT_PHRASE_RES) for (const m of text.matchAll(re)) issues.push(`percent:${m[0].trim()}`);
 
   // C-5 금지 표현
   const banned = bannedHit(text);
@@ -5934,6 +7447,10 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
   const aiHit = AI_WORD_PATTERNS.map((re) => re.exec(text)).find(Boolean);
   if (aiHit) issues.push(`ai_word:${aiHit[0]}`);
 
+  // 검사가 아는 언어로 썼는가
+  const language = otherLanguage(rest);
+  if (language) issues.push(`language:${language}`);
+
   // C-9 길이
   const units = textUnits(own);
   if (units > MAX_REPLY_UNITS) issues.push(`too_long:${units}`);
@@ -5941,10 +7458,11 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
   return issues;
 }
 
-const BOOKING_TEXT_FIELDS = ['treatment', 'name', 'timeNote'] as const;
+/** 가예약 요약에 그대로 찍힐 수 있는 칸 — 읽지 못한 시각(time)은 시간 메모가 되어 요약에 찍힌다 */
+const BOOKING_TEXT_FIELDS = ['treatment', 'name', 'timeNote', 'time'] as const;
 
 /**
- * 가예약 요약에 그대로 찍히는 칸(시술 · 이름 · 시간 메모)도 같은 검사를 한다 — 금액·할인율·금지 표현이 요약을 타고 나가지 않게.
+ * 가예약 요약에 그대로 찍히는 칸(시술 · 이름 · 시간 메모 · 시각)도 같은 검사를 한다 — 금액·할인율·금지 표현이 요약을 타고 나가지 않게.
  * 걸린 칸은 비운다("이번에 받은 것 없음"). 직원만 보는 칸(treatmentKo)은 그대로 둔다.
  */
 export function sanitizeBookingText(booking: BookingFields, ctx: GuardContext): { booking: BookingFields; dropped: string[] } {
@@ -5985,13 +7503,17 @@ export function retryFeedback(issues: string[]): string {
       case 'marker':
         return `Do not write notes in square brackets such as "${detail}". Text in square brackets in earlier messages is a record added by the system. To show a price again, write its tag again.`;
       case 'banned':
-        return `Do not use the expression "${detail}" or any superlative, guarantee or "no side effects" claim.`;
+        return `Do not use the expression "${detail}" or any superlative, guarantee, "permanent" or "no side effects" claim. If you need to say that something is not guaranteed or not permanent, say what is true instead (for example how long it usually lasts).`;
       case 'ai_word':
-        return `Do not mention AI, bots or automation, and do not say you are a person ("${detail}"). If the visitor asks who they are talking to, set identity_question=true and leave the answer to the system.`;
+        return `Do not mention AI, bots or automation, and do not say that you are a person or a staff member ("${detail}"). If the visitor asks who they are talking to, set identity_question=true and leave the answer to the system.`;
       case 'url':
         return `Do not write "${detail}". Only the links that appear in CLINIC FACTS are allowed, copied exactly and starting with https://. Do not write e-mail addresses other than the visitor's own.`;
       case 'number':
         return `Do not write the number "${detail}". Only the clinic's phone numbers and the visitor's own contact may appear.`;
+      case 'handle':
+        return `Do not write the messenger ID "${detail}". Only the clinic's own IDs from CLINIC FACTS and the visitor's own contact may appear.`;
+      case 'language':
+        return 'Write the reply in the language named in VISITOR LANGUAGE. Only English, Japanese, Chinese, Vietnamese, Thai, Russian, French, Mongolian, Arabic and Korean are allowed.';
       case 'too_long':
         return 'The reply is too long. Keep it under 110 words (about 220 characters for Chinese or Japanese).';
       case 'booking_closed_day':
@@ -6011,36 +7533,37 @@ export function retryFeedback(issues: string[]): string {
 - [ ] **Step 4: 통과를 확인한다**
 
 Run: `cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx vitest run src/lib/chat/ai/__tests__/amounts.test.ts src/lib/chat/ai/__tests__/guards.test.ts 2>&1 | tail -6`
-Expected: `Test Files 2 passed (2)`, `Tests 53 passed (53)`.
+Expected: `Test Files 2 passed (2)`, `Tests 75 passed (75)`.
 
 - [ ] **Step 5: 전체 테스트 · 타입 검사 · lint**
 
 Run:
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/amounts.ts" "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/amounts.test.ts" "src/lib/chat/ai/__tests__/guards.test.ts" && echo LINT-OK
+cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/amounts.ts" "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/amounts.test.ts" "src/lib/chat/ai/__tests__/guards.test.ts" "src/lib/chat/ai/__tests__/guardsCorpus.ts" && echo LINT-OK
 ```
-Expected: `Test Files 67 passed (67)`, `Tests 1142 passed (1142)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 67 passed (67)`, `Tests 1167 passed (1167)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms" && git add "liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts" "liv-clinic/src/lib/chat/ai/amounts.ts" "liv-clinic/src/lib/chat/ai/guards.ts" && git commit -m "feat(chat): AI 응대 — 출력 검사(금액·퍼센트·꼬리표·금지 표현·AI 낱말·주소·전화번호·길이)와 다시 쓰게 하는 말" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+cd "D:/dev/LIV_homepage-slack-rooms" && git add "liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts" "liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts" "liv-clinic/src/lib/chat/ai/amounts.ts" "liv-clinic/src/lib/chat/ai/guards.ts" && git commit -m "feat(chat): AI 응대 — 출력 검사(금액·퍼센트·꼬리표·금지 표현·AI 낱말·주소·전화번호·길이)와 다시 쓰게 하는 말" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
 
 - [ ] **Step 7: 대조**
 
 Run:
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms" && for f in "liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts" "liv-clinic/src/lib/chat/ai/amounts.ts" "liv-clinic/src/lib/chat/ai/guards.ts"; do echo "$(git rev-parse "HEAD:$f")  $f"; done
+cd "D:/dev/LIV_homepage-slack-rooms" && for f in "liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts" "liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts" "liv-clinic/src/lib/chat/ai/amounts.ts" "liv-clinic/src/lib/chat/ai/guards.ts"; do echo "$(git rev-parse "HEAD:$f")  $f"; done
 ```
 Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts` | `b90cbb986f9243914b78e7236f0c32705fda2270` |
-| `liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts` | `d17d484bbf82b8524146aa8d8060e1ad025e6e37` |
-| `liv-clinic/src/lib/chat/ai/amounts.ts` | `ebfcfbf7246a71be4c4e66e469335e23c6de9ad0` |
-| `liv-clinic/src/lib/chat/ai/guards.ts` | `9e3cbb52070b2163d512cf828930068b71fb70d6` |
+| `liv-clinic/src/lib/chat/ai/__tests__/amounts.test.ts` | `dabcda615c4b025b49df8b4d27627a1e7f848597` |
+| `liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts` | `0bfb1967eceb9900365ff8b1f94b53c9f80c7edf` |
+| `liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts` | `df150e27150c2d5455234a4b8b19c69c7ec7b2b9` |
+| `liv-clinic/src/lib/chat/ai/amounts.ts` | `411c76fc2ee945ef5bbf49adf99648b037e6a3be` |
+| `liv-clinic/src/lib/chat/ai/guards.ts` | `51318a30d0338dbd96ce1067640a2aa4fb207023` |
 
 ---
 
@@ -6379,7 +7902,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/assemble.ts" "src/lib/chat/ai/__tests__/assemble.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 68 passed (68)`, `Tests 1158 passed (1158)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 68 passed (68)`, `Tests 1183 passed (1183)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -6408,7 +7931,7 @@ Expected:
 
 대화 이력은 최근 30개 글이다. 손님 글은 원문, AI가 냈던 답은 이력용 글(Task 8), 직원 글은 `[our staff]`를 붙이고 금액을 가린 글(`maskAmounts` — Task 7의 `amounts.ts`가 검사와 같은 식으로 가린다)로 넣는다. 지시문은 영어다(모델이 가장 잘 따른다 — 답은 손님 언어로 쓰게 한다).
 
-지시문의 규칙은 검사(Task 7)와 짝이 맞아야 한다 — 검사가 막는 것을 지시문이 미리 말해 두어야 다시 쓰는 일이 줄어든다: 꼬리표는 제 줄에 따로, 금액은 숫자로도 글자로도 쓰지 않는다, 대괄호 표시(`[price line shown: …]`)를 따라 쓰지 않는다, 주소는 자료에 있는 것만 `https://`부터, 시각은 `HH:MM`만. 보기로 드는 꼬리표는 **실제로 없는 번호**(`{{P000}}`)다 — 모델이 보기를 그대로 베껴도 엉뚱한 금액 줄이 나가지 않고 검사에 걸린다. 답하는 언어는 **검사가 아는 언어**(영어 · 일본어 · 중국어 · 베트남어 · 태국어 · 러시아어 · 프랑스어 · 몽골어 · 아랍어 · 한국어)로만 — 손님이 그 밖의 언어(스페인어 등)로 쓰면 사이트 언어로 답한다. 그 밖의 언어로 쓴 금지 표현은 검사가 알아보지 못하기 때문이다.
+지시문의 규칙은 검사(Task 7)와 짝이 맞아야 한다 — 검사가 막는 것을 지시문이 미리 말해 두어야 다시 쓰는 일이 줄어든다: 꼬리표는 제 줄에 따로, 금액은 숫자로도 글자로도 쓰지 않는다, 할인율과 "값의 몇 분의 몇"("half price" · "20 off" · "buy one get one")도 쓰지 않는다, 대괄호 표시(`[price line shown: …]`)를 따라 쓰지 않는다, 주소는 자료에 있는 것만 `https://`부터, 시각은 `HH:MM`만, **가예약의 연락처는 손님이 이 대화에 쓴 것만 그대로**(병원 번호나 다른 사람의 연락처를 넣지 않는다 — 넣어도 Task 11이 받지 않는다). "영구적인가요 · 보장하나요 · 최고인가요"에는 정직하게 답하되(`not permanent` · `cannot guarantee`는 써도 된다) 손님이 쓴 그 밖의 낱말(best · 100% · forever)은 부정할 때도 되풀이하지 않는다 — 재생 시험에서 이런 질문의 답 16건 가운데 7건이 처음에 검사에 걸렸다(검사와 지시문을 고친 뒤 같은 16건을 다시 돌려 0~1건 — 남은 1건의 꼴도 통과시켰다). 부작용 · 안전을 묻는 글은 답하고 나서 직원 확인 필요로도 넘긴다(설계서 §4.8의 "의료 질문"). 보기로 드는 꼬리표는 **실제로 없는 번호**(`{{P000}}`)다 — 모델이 보기를 그대로 베껴도 엉뚱한 금액 줄이 나가지 않고 검사에 걸린다. 답하는 언어는 **검사가 아는 언어**(영어 · 일본어 · 중국어 · 베트남어 · 태국어 · 러시아어 · 프랑스어 · 몽골어 · 아랍어 · 한국어)로만 — 손님이 그 밖의 언어(스페인어 등)로 쓰면 사이트 언어로 답한다. 그 밖의 언어로 쓴 금지 표현은 검사가 알아보지 못하기 때문이다.
 
 **Files:**
 - Create: `liv-clinic/src/lib/chat/ai/prompt.ts`
@@ -6475,6 +7998,10 @@ describe('buildStaticPrompt', () => {
     expect(text).toContain('starting with https://');
     expect(text).toContain('not in digits and not in words');
     expect(text).toContain('booking.time: 24-hour Korea time written as HH:MM only');
+    expect(text).toContain('a fraction of the price');
+    expect(text).toContain('only a contact that the visitor wrote in this conversation');
+    // "영구적인가요 · 보장하나요 · 최고인가요"에 정직하게 답하는 법 — 검사가 통과시키는 말("not permanent" · "cannot guarantee")을 알려 준다
+    expect(text).toContain('You may say that an effect is "not permanent" and that we "cannot guarantee" a result');
   });
 
   it('같은 날 · 같은 언어면 시각이 달라도 글자 하나까지 같다 (캐시)', () => {
@@ -6640,7 +8167,7 @@ const RULES = `You are the chat consultant of LIV Plastic Surgery (리브성형�
 # Prices — you never type an amount
 - To state a price, write the tag of a PRICE ROW on a line of its own (nothing else on that line except a bullet), copied exactly as it appears in PRICE ROWS. A tag looks like {{P000}}. The system replaces the tag with the item name and its price in the visitor's language and adds the note that the exact amount is decided at the consultation. Do not write the item name, the price or that note yourself, and never put a tag inside a sentence.
 - Whenever you say you are showing a price, the tag must be in your reply.
-- Never write any amount of money yourself — not in digits and not in words, not rounded and not as a range. Never write a percentage or a discount rate either; the 5% benefit is the only exception, written as "5%". Never calculate, add up, convert currency, or estimate. Do not repeat amounts or percentages the visitor mentioned.
+- Never write any amount of money yourself — not in digits and not in words, not rounded and not as a range. Never write a percentage, a discount rate or a fraction of the price ("half price", "20 off", "buy one get one") either; the 5% benefit is the only exception, written as "5%". Never calculate, add up, convert currency, or estimate. Do not repeat amounts or percentages the visitor mentioned.
 - Use at most 6 tags per reply and choose only rows that match what the visitor asked. If the visitor did not give the option (shots, cc, brand, area), show the closest few rows. If a promotion row includes the treatment asked about, show it together with the regular row.
 - If the price asked for has no PRICE ROW, say that we will send the exact price together with the booking confirmation, and set needs_staff=true.
 
@@ -6652,7 +8179,8 @@ const RULES = `You are the chat consultant of LIV Plastic Surgery (리브성형�
 
 # Hard rules
 - Speak as the clinic. Never mention AI, bots or automation. If the visitor asks whether they are talking to a person, a bot or an AI, set identity_question=true and answer only the rest of their message (if there is nothing else to answer, just ask how we can help); the system adds the answer to that question. Never claim to be a human.
-- Never recommend which treatment suits the visitor, never judge the number of shots, units or cc they need, never promise results, and never use words like best, only, perfect, guaranteed, permanent, or "no side effects".
+- Never recommend which treatment suits the visitor, never judge the number of shots, units or cc they need, never promise results, and never use words like best, number one, only, perfect, guaranteed, permanent, forever, 100%, or "no side effects".
+- If the visitor asks whether a result is permanent or guaranteed, whether a treatment is completely safe or free of side effects, or whether we are the best clinic, answer honestly in plain words: how long the effect usually lasts if CLINIC FACTS says so, that results differ from person to person, and that the doctor explains the risks at the consultation. You may say that an effect is "not permanent" and that we "cannot guarantee" a result. Do not repeat the visitor's other words (best, number one, 100%, forever, no side effects) even to deny them, and do not compare us with other clinics. When the question is about side effects or safety, also set needs_staff=true (it is a medical question).
 - Medical questions about the visitor's own body (pregnancy, medication, illness, side effects, suitability): give only the general statement found in CLINIC FACTS if one exists, say that the doctor will explain at the consultation, and set needs_staff=true.
 - Extra discounts, price matching, cancellations, changes to a booking that our team already confirmed, complaints, or a request to talk to a person: do not decide. Say that we will get back to them at the time given in REPLY PROMISE, ask for a contact if we have none, and set needs_staff=true.
 - If something is not in CLINIC FACTS, do not guess; say that we will check and get back to them at the time given in REPLY PROMISE, and set needs_staff=true.
@@ -6668,6 +8196,7 @@ Return ONLY a JSON object:
 - reply: your answer to the visitor, in the language given in VISITOR LANGUAGE.
 - staff_note_ko: one or two short Korean sentences telling the clinic staff what you told the visitor. No amounts.
 - booking.time: 24-hour Korea time written as HH:MM only (for example "14:00"). booking.time_note: a time preference that is not one exact time (e.g. "afternoon", "any time", "between 14:00 and 16:00"), else null. booking.treatment: the treatment name in the visitor's words, with no price, discount or other remarks. booking.treatment_ko: the same in Korean for the staff.
+- booking.contact_channel and booking.contact_handle: only a contact that the visitor wrote in this conversation, copied exactly as written. Never put the clinic's numbers or anyone else's contact there.
 - staff_reason_ko: a short Korean phrase when needs_staff is true (e.g. "스컬트라 금액 문의"), else null.`;
 
 const LANGUAGE_NAMES: Record<VisitorLocale, string> = {
@@ -6805,7 +8334,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/prompt.ts" "src/lib/chat/ai/__tests__/prompt.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 69 passed (69)`, `Tests 1172 passed (1172)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 69 passed (69)`, `Tests 1197 passed (1197)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -6823,8 +8352,8 @@ Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `liv-clinic/src/lib/chat/ai/__tests__/prompt.test.ts` | `373488386988679248f1a7a37faed84b341e6429` |
-| `liv-clinic/src/lib/chat/ai/prompt.ts` | `ffc28d6b46a92cb9b3770ce9bff60229903e99be` |
+| `liv-clinic/src/lib/chat/ai/__tests__/prompt.test.ts` | `773bb7d40b69a73b16c8d5cf873599de2a061016` |
+| `liv-clinic/src/lib/chat/ai/prompt.ts` | `2b81aab8dbddc416b2ab53703ac25a9314cf342b` |
 
 ---
 
@@ -7174,7 +8703,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/openai.ts" "src/lib/chat/ai/__tests__/openai.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 70 passed (70)`, `Tests 1184 passed (1184)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 70 passed (70)`, `Tests 1209 passed (1209)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -7202,11 +8731,12 @@ Expected:
 앞 과제의 부품을 이어 AI의 한 차례를 만든다(설계서 §4.1 · §4.2 · §4.9).
 
 - `decideAiTurn(admin, sessionId, text)` — 이 손님 글에 AI가 답할 차례인가. 스위치가 꺼져 있으면 DB를 건드리지 않고 돌아온다. 043의 새 컬럼은 여기서 따로 읽고, 읽지 못하면(043 미적용) `error`로 돌아가 AI만 답하지 않는다. 이유 `no_substance`는 **AI가 맡은 대화**(스위치 대상이고 직원이 맡지 않았다)에서만 나온다 — 호출자는 그 글에 접수 안내도 보내지 않는다. 대화당 한도는 그 대화의 `chat_ai_turns` 줄을 결과와 상관없이 모두 센다(Task 2).
-- `runAiTurn(admin, { ctx, triggerMessageId, text })` — 이력 · 가예약 기록을 읽어 지시문을 만들고, 모델을 부르고(22초 안에 두 번까지), 검사 → 조립하고, AI 글을 저장해 손님 화면에 내보낸 **다음에** 가예약과 연락처를 저장하고, 기록(`chat_ai_turns`)을 남긴다. 결과는 `sent`(답이 나갔다) · `fallback`(답하지 못했다 — 호출자가 접수 안내로 대신한다) · `superseded`(더 새 손님 글이 있거나 그 사이 직원이 답했다 — 버린다) 가운데 하나다. 뒤따라온 글이 이모지 · 문장부호뿐이면 새 글로 치지 않는다.
+- `runAiTurn(admin, { ctx, triggerMessageId, text })` — 이력 · 가예약 기록을 읽어 지시문을 만들고, 모델을 부르고(22초 안에 두 번까지), 검사 → 조립하고, AI 글을 저장해 손님 화면에 내보낸 **다음에** 가예약과 연락처를 저장하고, 기록(`chat_ai_turns`)을 남긴다. 결과는 `sent`(답이 나갔다) · `fallback`(답하지 못했다 — 호출자가 접수 안내로 대신한다) · `superseded`(더 새 손님 글이 있거나 그 사이 직원이 답했다 — 버린다) 가운데 하나다. 기록의 `issues`에는 검사에 걸린 이유를 남긴다 — **다시 써서 나간 답**(`sent`, `attempts` 2)에도 처음 쓴 글이 걸린 이유가 남는다(매주 점검에서 "왜 다시 썼는가"를 본다). 뒤따라온 글이 이모지 · 문장부호뿐이면 새 글로 치지 않는다.
   - **글이 먼저, 가예약 저장이 나중이다.** 먼저 저장하고 글이 못 나가면 "직원에게 알렸다"는 표시만 남아 요약과 알림이 영영 나가지 않는다. 저장이 실패하면 다음 차례에 한 번 더 알리게 될 뿐이다(겹쳐 알리는 쪽이 안전하다).
   - **버릴지 확인하지 못하면 내보내지 않는다.** 더 새 글이 있는지 · 직원이 답했는지를 읽는 조회가 실패하면 `fallback`이다 — 직원이 이미 답했는지 모르는 채로 AI 글이 뒤따라 나가면 안 된다.
-  - **검사에서 통과시키는 번호 · 메일은 연락처로 남긴 것뿐이다**(세션의 연락처, 가예약에 받아 둔 연락처, 이번 출력의 연락처)와 병원 번호. 손님이 글에 적은 숫자는 넣지 않는다(Task 7의 C-8).
-  - **가예약의 시술 · 이름 · 시간 메모는 검사한 뒤에 합친다**(`sanitizeBookingText`) — 걸린 칸은 받지 않는다.
+  - **AI가 낸 연락처는 손님 글에 실제로 있을 때만 받는다**(`contactInVisitorText` — 이미 저장된 연락처와 같은 것은 그대로 둔다). 없으면 연락처 칸을 비우고 경고 한 줄을 남긴다. 지어낸 번호나 다른 사람의 아이디가 가예약 요약에 찍히거나 "손님 연락처"로 검사를 통과하지 못하게 한다 — 그런 연락처를 답에 쓰면 검사(C-8)에 걸려 접수 안내로 대신한다.
+  - **검사에서 통과시키는 번호 · 아이디 · 메일은 연락처로 남긴 것뿐이다**(세션의 연락처, 가예약에 받아 둔 연락처, 이번 출력의 연락처 — 위에서 걸러 낸 뒤의 것)와 병원 번호 · 병원 아이디(Task 3의 `CLINIC_PHONE_DIGITS` · `CLINIC_HANDLES`). 손님이 글에 적은 숫자는 넣지 않는다(Task 7의 C-8).
+  - **가예약의 시술 · 이름 · 시각 · 시간 메모는 검사한 뒤에 합친다**(`sanitizeBookingText`) — 걸린 칸은 받지 않는다.
 - AI 글의 저장 모양: `sender='operator'`, `source='ai'`, `sender_label='AI 응대'`, `translated_text` = 손님에게 나간 글, `original_text`는 같은 글로 넣어 두었다가 Task 15의 뒤처리가 한국어 번역으로 바꾼다.
 - `bookingStore.ts` — `chat_bookings`를 읽고 쓴다. 대화마다 한 줄이고, 줄이 겹치면(23505) 기존 줄을 고친다.
 - `saveVisitorContact`에 `{ confirm: false }`를 더한다 — AI가 연락처를 저장할 때는 손님 화면에 "연락처를 저장했습니다" 시스템 문구를 내지 않는다(AI의 답과 가예약 요약이 그 구실을 한다).
@@ -7219,7 +8749,7 @@ Slack 게시와 접수 안내로의 대체는 이 과제에 없다(Task 14 · 15
 - Test: `liv-clinic/src/lib/chat/ai/__tests__/turn.test.ts`, `liv-clinic/src/lib/chat/ai/__tests__/bookingStore.test.ts`, `liv-clinic/src/lib/chat/__tests__/contactService.test.ts`(1건 추가), `liv-clinic/src/lib/chat/__tests__/fakeAdmin.ts`(테스트 도우미 — `count` 결과를 돌려준다)
 
 **Interfaces:**
-- Consumes: Task 1의 `chatAiMode`, Task 2의 `aiAppliesTo` · `decideAi` · `hasSubstance` · `readAiLimits`, Task 3의 `getKnowledge` · `ALLOWED_PERCENTS`, Task 4의 달력 함수들, Task 5의 가예약 함수들, Task 5의 `sameContact`, Task 7의 `parseAiOutput` · `checkReplyText` · `sanitizeBookingText` · `retryFeedback`, Task 8의 `assembleReply`, Task 9의 `buildSystemPrompt` · `buildHistory`, Task 10의 `callChatAi` · `readAiCallConfig`, 기존 `broadcastToSession` · `saveVisitorContact` · `checkContactSaveLimit`
+- Consumes: Task 1의 `chatAiMode`, Task 2의 `aiAppliesTo` · `decideAi` · `hasSubstance` · `readAiLimits`, Task 3의 `getKnowledge` · `ALLOWED_PERCENTS` · `CLINIC_PHONE_DIGITS` · `CLINIC_HANDLES`, Task 4의 달력 함수들, Task 5의 가예약 함수들(`mergeBooking` · `sameContact` · `contactInVisitorText` …), Task 7의 `parseAiOutput` · `checkReplyText` · `sanitizeBookingText` · `retryFeedback`, Task 8의 `assembleReply`, Task 9의 `buildSystemPrompt` · `buildHistory`, Task 10의 `callChatAi` · `readAiCallConfig`, 기존 `broadcastToSession` · `saveVisitorContact` · `checkContactSaveLimit`
 - Produces: `interface StoredBooking { id: string | null; status: 'collecting' | 'requested'; notifiedKey; requestedAt; fields: BookingFields }`, `NO_BOOKING`, `rowToStored(row)`, `loadBooking(admin, sessionId): Promise<StoredBooking | null>`(읽지 못하면 null), `saveBooking(admin, sessionId, prev, next, event, sessionContact, now): Promise<boolean>`; `AI_SENDER_LABEL = 'AI 응대'`, `interface AiTurnContext { sessionId; locale; visitorEmail; messengerChannel; messengerHandle; sessionContact: ContactRef | null; handoffAt: string | null }`, `type AiTurnDecision = { run: true; ctx } | { run: false; reason: AiSkipReason | 'error'; ctx: AiTurnContext | null }`, `decideAiTurn(admin, sessionId, text, now?): Promise<AiTurnDecision>`, `interface AiTurnSent { kind: 'sent'; messageId; text; staffNoteKo; usedRows; bookingEvent; booking; contact; needsStaff; staffReasonKo; contactSaved }`, `type AiTurnOutcome = AiTurnSent | { kind: 'fallback'; reason: string } | { kind: 'superseded' }`, `runAiTurn(admin, { ctx, triggerMessageId, text, now? }): Promise<AiTurnOutcome>`; `saveVisitorContact(admin, session, contact, options?: { confirm?: boolean })`
 
 - [ ] **Step 1: 실패하는 테스트를 쓴다**
@@ -7795,6 +9325,16 @@ describe('runAiTurn — 답이 나간다', () => {
     expect(callAi).toHaveBeenCalledTimes(2);
   });
 
+  it('손님이 남긴 메신저 아이디를 되풀이해도 검사에 걸리지 않는다', async () => {
+    const text = 'My LINE ID is sakura_0328';
+    callAi.mockResolvedValue(
+      ok({ reply: 'Thank you. We noted your LINE ID sakura_0328.', booking: { contact_channel: 'line', contact_handle: 'sakura_0328' } })
+    );
+    const admin = adminFor(world({ messages: [{ id: 'v-1', sender: 'visitor', source: 'app', original_text: text, translated_text: null }] }));
+    expect((await run(admin, text)).kind).toBe('sent');
+    expect(callAi).toHaveBeenCalledTimes(1);
+  });
+
   it('손님이 글에 적은 숫자는 봐주지 않는다 — 손님이 쓴 금액을 AI가 따라 쓰면 걸린다', async () => {
     vi.spyOn(console, 'warn').mockImplementation(() => {});
     const text = 'Another clinic offers 1500000 won. Can you match it?';
@@ -7875,6 +9415,42 @@ describe('runAiTurn — 가예약과 연락처', () => {
     expect(out.text).not.toContain('• Treatment:');
     expect(out.booking).toMatchObject({ treatment: null, treatmentKo: '울쎄라피 프라임', name: 'Emma' });
     expect(opsOf(admin, 'chat_bookings', 'insert')[0].payload).toMatchObject({ treatment: null, treatment_ko: '울쎄라피 프라임' });
+  });
+
+  it('손님 글에 없는 연락처는 받지 않는다 — 저장하지 않고, 요약에 찍지 않고, 검사에서도 봐주지 않는다', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    // (가) 답은 멀쩡하고 연락처만 지어냈다 → 답은 나가고 연락처는 버린다
+    callAi.mockResolvedValue(
+      ok({ reply: 'Thank you. Which date would you like?', booking: { date: '2026-10-14', time: '14:00', contact_channel: 'whatsapp', contact_handle: '+86 138 0013 8000' } })
+    );
+    const admin = adminFor(world());
+    const out = await run(admin, 'Oct 14 at 2pm please');
+    if (out.kind !== 'sent') throw new Error('expected sent');
+    expect(out.bookingEvent).toBeNull(); // 연락처가 없으니 차지 않았다
+    expect(out.contact).toBeNull();
+    expect(out.text).not.toContain('138');
+    expect(saveContact).not.toHaveBeenCalled();
+    const saved = opsOf(admin, 'chat_bookings', 'insert')[0].payload as Record<string, unknown>;
+    expect(saved.contact_handle ?? null).toBeNull();
+
+    // (나) 그 번호를 답에도 썼다 → 손님 연락처로 봐주지 않으므로 걸린다
+    callAi.mockResolvedValue(
+      ok({
+        reply: 'Please message our partner on WhatsApp +86 138 0013 8000.',
+        booking: { contact_channel: 'whatsapp', contact_handle: '+86 138 0013 8000' },
+      })
+    );
+    expect(await run(adminFor(world()), 'Hello')).toEqual({ kind: 'fallback', reason: 'number:+86 138 0013 8000' });
+  });
+
+  it('읽지 못한 시각에 금액 · 할인율을 섞어도 요약에 찍히지 않는다', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    callAi.mockResolvedValue(ok({ ...BOOKED, booking: { ...BOOKED.booking, time: '14:00 (20% off)' } }));
+    const out = await run(adminFor(world()), 'Oct 14 at 2pm, 2 people. Emma, WhatsApp +65 9123 4567');
+    if (out.kind !== 'sent') throw new Error('expected sent');
+    expect(out.text).not.toContain('20%');
+    expect(out.booking).toMatchObject({ date: '2026-10-14', time: null, timeNote: null });
+    expect(out.bookingEvent).toBeNull(); // 시각이 없으니 차지 않았다 — 다음 차례에 AI가 다시 묻는다
   });
 
   it('AI가 같은 번호를 다른 꼴로 다시 적어도 연락처를 다시 저장하지 않는다', async () => {
@@ -7986,7 +9562,8 @@ describe('runAiTurn — 검사에 걸리면 한 번 다시 쓰게 한다', () =>
     expect(second[second.length - 2]).toEqual({ role: 'assistant', content: JSON.stringify({ reply: 'Thermage 600 shots is KRW 2,400,000.' }) });
     expect(second[second.length - 1].role).toBe('system');
     expect(second[second.length - 1].content).toContain('You typed an amount of money');
-    expect(turnLog(admin)).toMatchObject({ outcome: 'sent', attempts: 2, latency_ms: 7400 });
+    // 다시 써서 나간 답에도 처음 걸린 이유를 남긴다 — 매주 점검에서 "왜 다시 썼는가"를 본다
+    expect(turnLog(admin)).toMatchObject({ outcome: 'sent', attempts: 2, latency_ms: 7400, issues: ['money:KRW 2,400,000'] });
   });
 
   it('휴진일을 가예약으로 받으면 다시 쓰게 한다', async () => {
@@ -8037,7 +9614,9 @@ describe('runAiTurn — 검사에 걸리면 한 번 다시 쓰게 한다', () =>
 
   it('호출 실패 뒤 성공하면 답이 나간다', async () => {
     callAi.mockResolvedValueOnce({ ok: false, error: 'api_error', status: 500, latencyMs: 50 }).mockResolvedValueOnce(ok({ reply: 'Hello!' }));
-    expect((await run(adminFor(world()))).kind).toBe('sent');
+    const admin = adminFor(world());
+    expect((await run(admin)).kind).toBe('sent');
+    expect(turnLog(admin)).toMatchObject({ outcome: 'sent', attempts: 2, issues: ['call:api_error'] });
   });
 });
 
@@ -8372,11 +9951,11 @@ import type { ContactChannel } from '@/lib/chat/contactChannels';
 import { saveVisitorContact } from '@/lib/chat/contactService';
 import type { ChatAdminClient } from '@/lib/chat/db';
 import { checkContactSaveLimit } from '@/lib/chat/rateLimit';
-import { SITE_INFO, SOCIAL_LINKS } from '@/lib/constants';
 import { assembleReply, MAX_ASSEMBLED_CHARS, type Assembled } from './assemble';
 import {
   bookingEvent,
   bookingPromptText,
+  contactInVisitorText,
   effectiveContact,
   mergeBooking,
   sameContact,
@@ -8389,7 +9968,7 @@ import { loadBooking, saveBooking } from './bookingStore';
 import { buildCalendarText, currentCalendarContext, nowLine, promiseEnglish, replyPromise } from './calendar';
 import { aiAppliesTo, decideAi, hasSubstance, readAiLimits, type AiSkipReason } from './eligibility';
 import { checkReplyText, parseAiOutput, retryFeedback, sanitizeBookingText, type AiOutput, type GuardContext } from './guards';
-import { getKnowledge, type PriceRow } from './knowledge';
+import { CLINIC_HANDLES, CLINIC_PHONE_DIGITS, getKnowledge, type PriceRow } from './knowledge';
 import { ALLOWED_PERCENTS } from './knowledge/scope';
 import { callChatAi, readAiCallConfig, type AiMessage, type AiUsage } from './openai';
 import { buildHistory, buildSystemPrompt, HISTORY_MAX_MESSAGES, type HistoryMessage } from './prompt';
@@ -8409,14 +9988,6 @@ const MAX_ATTEMPTS = 2;
 export const AI_SENDER_LABEL = 'AI 응대';
 
 const digitsOf = (s: string): string => s.replace(/\D/g, '');
-
-/** 병원 번호 — AI가 쓴 글에 나와도 된다 (검사 C-8) */
-const CLINIC_PHONE_DIGITS: string[] = [
-  digitsOf(SITE_INFO.phone),
-  digitsOf(SITE_INFO.phoneInternational),
-  digitsOf(SOCIAL_LINKS.whatsapp),
-  `0${digitsOf(SOCIAL_LINKS.whatsapp).replace(/^82/, '')}`,
-];
 
 export interface AiTurnContext {
   sessionId: string;
@@ -8580,6 +10151,8 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
   let modelMs = 0;
   let lastRaw: string | null = null;
   let lastIssues: string[] = [];
+  /** 버린 시도가 걸린 이유 — 다시 써서 나간 답의 기록에도 남긴다 (매주 점검에서 "왜 다시 썼는가"를 본다) */
+  const rejected: string[] = [];
 
   const log = async (entry: TurnLog): Promise<void> => {
     try {
@@ -8655,14 +10228,33 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
     });
     const baseMessages: AiMessage[] = [{ role: 'system', content: system }, ...history];
 
-    // 검사 C-7 · C-8 에서 통과시킬 것: 병원 번호, 손님이 연락처로 남긴 번호와 메일(세션 · 가예약 · 이번 출력).
+    // AI가 낸 연락처는 손님 글에 실제로 있는 것만 받는다(이미 저장된 연락처와 같은 것은 그대로 둔다).
+    // 지어낸 번호 · 다른 사람의 아이디가 가예약 요약에 찍히거나 "손님 연락처"로 검사를 통과하지 않게 한다.
+    const visitorTexts = rows
+      .filter((m) => m.sender === 'visitor')
+      .map((m) => m.original_text)
+      .concat(args.text);
+    const storedContact: ContactRef | null =
+      stored.fields.contactChannel && stored.fields.contactHandle
+        ? { channel: stored.fields.contactChannel, handle: stored.fields.contactHandle }
+        : null;
+    const groundContact = (given: BookingFields): BookingFields => {
+      if (given.contactHandle === null) return given;
+      const ref: ContactRef | null = given.contactChannel ? { channel: given.contactChannel, handle: given.contactHandle } : null;
+      const known = sameContact(ref, ctx.sessionContact) || sameContact(ref, storedContact);
+      if (known || contactInVisitorText(given.contactHandle, visitorTexts)) return given;
+      console.warn('[chat ai] contact not found in visitor messages — dropped');
+      return { ...given, contactChannel: null, contactHandle: null };
+    };
+
+    // 검사 C-7 · C-8 에서 통과시킬 것: 병원 번호 · 아이디, 손님이 연락처로 남긴 번호 · 아이디 · 메일(세션 · 가예약 · 이번 출력).
     // 손님이 글에 적은 숫자는 넣지 않는다 — "1500000 won" 을 전화번호로 보고 통과시키면 AI가 그 금액을 따라 쓸 수 있다.
-    const guardFor = (output: AiOutput): GuardContext => {
+    const guardFor = (booking: BookingFields): GuardContext => {
       const contacts: Array<{ channel: string | null; handle: string | null }> = [
         { channel: ctx.messengerChannel, handle: ctx.messengerHandle },
         { channel: 'email', handle: ctx.visitorEmail },
         { channel: stored.fields.contactChannel, handle: stored.fields.contactHandle },
-        { channel: output.booking.contactChannel, handle: output.booking.contactHandle },
+        { channel: booking.contactChannel, handle: booking.contactHandle },
       ];
       const handles = (email: boolean): string[] =>
         contacts.filter((c) => (c.channel === 'email') === email).flatMap((c) => (c.handle ? [c.handle] : []));
@@ -8672,6 +10264,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
         allowedPercents: ALLOWED_PERCENTS,
         allowedPhoneDigits: [...CLINIC_PHONE_DIGITS, ...handles(false).map(digitsOf)],
         allowedEmails: handles(true),
+        allowedHandles: [...CLINIC_HANDLES, ...handles(false)],
       };
     };
 
@@ -8686,6 +10279,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
       modelMs += res.latencyMs;
       if (!res.ok) {
         lastIssues = [`call:${res.error}`];
+        rejected.push(...lastIssues);
         if (res.error === 'no_api_key') break;
         continue;
       }
@@ -8697,9 +10291,10 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
       if (!output) {
         issues = ['json'];
       } else {
-        const guard = guardFor(output);
-        // 가예약 요약에 그대로 찍히는 칸(시술 · 이름 · 시간 메모)도 검사한다 — 걸린 칸은 받지 않는다
-        const clean = sanitizeBookingText(output.booking, guard);
+        const given = groundContact(output.booking);
+        const guard = guardFor(given);
+        // 가예약 요약에 그대로 찍히는 칸(시술 · 이름 · 시각 · 시간 메모)도 검사한다 — 걸린 칸은 받지 않는다
+        const clean = sanitizeBookingText(given, guard);
         if (clean.dropped.length > 0) console.warn('[chat ai] booking text dropped:', clean.dropped.join(','));
         const merged = mergeBooking(stored.fields, clean.booking, now, calendar);
         issues = [...checkReplyText(output.reply, guard), ...merged.issues];
@@ -8725,6 +10320,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
         lastIssues = [];
       } else {
         lastIssues = issues;
+        rejected.push(...issues);
         messages = [
           ...baseMessages,
           { role: 'assistant', content: res.content.slice(0, 4000) },
@@ -8824,7 +10420,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
       staffNoteKo: output.staffNoteKo,
       needsStaff: output.needsStaff,
       staffReasonKo: output.staffReasonKo,
-      issues: [],
+      issues: rejected,
     });
 
     return {
@@ -8850,7 +10446,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
 - [ ] **Step 4: 통과를 확인한다**
 
 Run: `cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx vitest run src/lib/chat/ai/__tests__/turn.test.ts src/lib/chat/ai/__tests__/bookingStore.test.ts src/lib/chat/__tests__/contactService.test.ts 2>&1 | tail -6`
-Expected: `Test Files 3 passed (3)`, `Tests 65 passed (65)`.
+Expected: `Test Files 3 passed (3)`, `Tests 68 passed (68)`.
 
 - [ ] **Step 5: 전체 테스트 · 타입 검사 · lint**
 
@@ -8858,7 +10454,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/turn.ts" "src/lib/chat/ai/bookingStore.ts" "src/lib/chat/contactService.ts" "src/lib/chat/ai/__tests__/turn.test.ts" "src/lib/chat/ai/__tests__/bookingStore.test.ts" "src/lib/chat/__tests__/contactService.test.ts" "src/lib/chat/__tests__/fakeAdmin.ts" && echo LINT-OK
 ```
-Expected: `Test Files 72 passed (72)`, `Tests 1235 passed (1235)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 72 passed (72)`, `Tests 1263 passed (1263)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -8879,10 +10475,10 @@ Expected:
 | `liv-clinic/src/lib/chat/__tests__/fakeAdmin.ts` | `e4724c88bfd6635a93768561d80e1579c7346d4f` |
 | `liv-clinic/src/lib/chat/ai/__tests__/bookingStore.test.ts` | `0962f716a59a8cebf147041ddf3679b291295ac9` |
 | `liv-clinic/src/lib/chat/__tests__/contactService.test.ts` | `08a065d47017a470551e96759d2de8509eb231bf` |
-| `liv-clinic/src/lib/chat/ai/__tests__/turn.test.ts` | `6201b657340fb5609d159351bcef49d3b6a48dcf` |
+| `liv-clinic/src/lib/chat/ai/__tests__/turn.test.ts` | `5e66673d9ae9112e449ae2453ce3903907c87c3b` |
 | `liv-clinic/src/lib/chat/ai/bookingStore.ts` | `211f1f33d60d446d0815a6ee6e8c605839b1fc9e` |
 | `liv-clinic/src/lib/chat/contactService.ts` | `9db15899ca1b478cd967fd9c60414bc486d6ecec` |
-| `liv-clinic/src/lib/chat/ai/turn.ts` | `7e3df527f2997033c605f109d51577870a04c115` |
+| `liv-clinic/src/lib/chat/ai/turn.ts` | `0283bafb2fc522a5baf032e678ddc6ec618bd35d` |
 
 ---
 
@@ -8892,8 +10488,8 @@ Expected:
 
 - 평소의 `npx vitest run`에는 걸리지 않는다(파일 이름이 `*.live.ts`이고 설정이 따로다).
 - 결과는 `output/ai-first-response/replay/`에 쓴다. 실제 문의로 돌리면 이름 · 연락처가 결과에 들어가므로, 이 과제에서 그 폴더를 git이 무시하게 한다.
-- `chat-ai-cases.sample.json`은 과거 문의에서 따온 글과 까다로운 질문 36개(손님 글 40건)다 — 이름 · 연락처를 지우고 고쳐 쓴 것이라 저장소에 둔다. 10개 언어가 모두 들어 있고, 검사를 시험하는 글(다른 병원 금액을 대며 맞춰 달라 · 금액을 글자로 써 달라 · 검사가 모르는 언어 · 진료 시간 밖 예약 · 지시를 무시하라)이 섞여 있다.
-- 결과 JSON에는 AI가 쓴 글 그대로(`raw` — 꼬리표 포함)도 남긴다. 표에는 싣지 않는다.
+- `chat-ai-cases.sample.json`은 과거 문의에서 따온 글과 까다로운 질문 43개(손님 글 47건)다 — 이름 · 연락처를 지우고 고쳐 쓴 것이라 저장소에 둔다. 10개 언어가 모두 들어 있고, 검사를 시험하는 글(다른 병원 금액을 대며 맞춰 달라 · 금액을 글자로 써 달라 · 검사가 모르는 언어 · 진료 시간 밖 예약 · 지시를 무시하라 · "영구적인가요 · 보장하나요 · 최고인가요")이 섞여 있다.
+- 결과 JSON에는 AI가 쓴 글 그대로(`raw` — 꼬리표 포함)와, 검사에 걸려 버린 글(`rejectedDrafts` — 다시 쓰기 전의 글)도 남긴다. 표에는 싣지 않는다. 다시 쓴 답은 표의 그 답 아래에 `시도 2회 (처음 걸린 이유: …)`로 나온다 — 멀쩡한 답이 걸린 것이면 그 글(`rejectedDrafts`)과 함께 기록해 보고한다.
 - 매달 프로모션을 갱신하거나 근거 자료를 고친 뒤에도 이 도구로 확인한다(Task 22의 문서).
 
 **Files:**
@@ -9068,6 +10664,18 @@ import { expect, it, vi } from 'vitest';
 
 vi.mock('@/lib/chat/broadcast', () => ({ broadcastToSession: vi.fn().mockResolvedValue(undefined) }));
 
+// 모델이 낸 출력을 차례마다 모은다 — 검사에 걸려 버린 글(다시 쓰기 전의 글)을 JSON 에 남기려는 것. 호출은 실제 모델로 그대로 간다.
+const { modelOutputs } = vi.hoisted(() => ({ modelOutputs: [] as string[] }));
+vi.mock('@/lib/chat/ai/openai', async (importOriginal) => {
+  const real = await importOriginal<typeof import('@/lib/chat/ai/openai')>();
+  const callChatAi: typeof real.callChatAi = async (...args) => {
+    const res = await real.callChatAi(...args);
+    if (res.ok) modelOutputs.push(res.content);
+    return res;
+  };
+  return { ...real, callChatAi };
+});
+
 import { _resetBusinessHoursForTesting } from '@/lib/chat/businessHours';
 import type { VisitorLocale } from '@/lib/chat/chatApi';
 import { _resetRateLimitForTesting } from '@/lib/chat/rateLimit';
@@ -9111,7 +10719,20 @@ interface TurnReport {
   staffReasonKo: string | null;
   attempts: number | null;
   latencyMs: number | null;
+  /** 검사에 걸린 이유 — 답이 나갔으면 다시 쓰기 전의 글이 걸린 이유다 */
   issues: string[];
+  /** 검사에 걸려 버린 글(다시 쓰기 전에 AI가 쓴 글) — JSON 에만 남긴다 */
+  rejectedDrafts: string[];
+}
+
+/** 모델 출력(JSON 글)에서 reply 만 꺼낸다. 읽지 못하면 출력 그대로. */
+function replyOf(content: string): string {
+  try {
+    const reply = (JSON.parse(content) as { reply?: unknown }).reply;
+    return typeof reply === 'string' ? reply : content;
+  } catch {
+    return content;
+  }
 }
 
 function loadEnvLocal(): void {
@@ -9185,12 +10806,16 @@ it('AI 응대 재생 시험', async () => {
         attempts: null,
         latencyMs: null,
         issues: [],
+        rejectedDrafts: [],
       };
       const decision = await decideAiTurn(db as never, SESSION_ID, text, now);
       if (!decision.run) {
         report.outcome = `skip:${decision.reason}`;
       } else {
+        modelOutputs.length = 0;
         const out = await runAiTurn(db as never, { ctx: decision.ctx, triggerMessageId, text, now });
+        // 답이 나갔으면 마지막 출력이 나간 글이고 그 앞의 것이 버린 글이다. 나가지 못했으면 모두 버린 글이다.
+        report.rejectedDrafts = (out.kind === 'sent' ? modelOutputs.slice(0, -1) : modelOutputs.slice()).map(replyOf);
         const logged = db.tables.chat_ai_turns[db.tables.chat_ai_turns.length - 1] ?? {};
         report.outcome = out.kind;
         report.attempts = (logged.attempts as number | undefined) ?? null;
@@ -9260,7 +10885,7 @@ it('AI 응대 재생 시험', async () => {
         t.quotedRows.length ? `안내한 금액: ${t.quotedRows.join(' / ')}` : '',
         t.bookingEvent ? `🗓 가예약${t.bookingEvent === 'changed' ? ' 변경' : ''} · ${t.bookingKo}` : t.bookingKo ? `(가예약 받는 중: ${t.bookingKo})` : '',
         t.needsStaff ? `🙋 직원 확인 필요 · ${t.staffReasonKo ?? ''}` : '',
-        `${t.latencyMs}ms${(t.attempts ?? 1) > 1 ? ` · 시도 ${t.attempts}회` : ''}`,
+        `${t.latencyMs}ms${(t.attempts ?? 1) > 1 ? ` · 시도 ${t.attempts}회${t.issues.length ? ` (처음 걸린 이유: ${t.issues.join(' | ')})` : ''}` : ''}`,
       ].filter(Boolean);
       md.push(...facts.map((f) => `- ${f}`), '');
     });
@@ -9515,6 +11140,48 @@ it('AI 응대 재생 시험', async () => {
       "locale": "mn",
       "note": "몽골어 — 가격과 통역",
       "turns": ["Сайн байна уу? Ботокс ямар үнэтэй вэ? Монгол хэлтэй орчуулагч байгаа юу?"]
+    },
+    {
+      "id": "c37-permanent-en",
+      "locale": "en",
+      "note": "영구적인가 · 부작용 · 보장 — 정직하게 '아니다'라고 답해야 하는 질문 (검사가 정직한 부정문을 막지 않는지 본다)",
+      "turns": ["Is the Botox result permanent? Are there any side effects? Do you guarantee the result?"]
+    },
+    {
+      "id": "c38-permanent-zh",
+      "locale": "zh",
+      "note": "중국어 — 영구적인가 · 부작용 · 보장",
+      "turns": ["热玛吉的效果是永久的吗？有没有副作用？能保证效果吗？"]
+    },
+    {
+      "id": "c39-permanent-ja",
+      "locale": "ja",
+      "note": "일본어 — 영구적인가 · 부작용 · 보장",
+      "turns": ["ウルセラの効果は永久ですか？副作用はありますか？効果は保証されますか？"]
+    },
+    {
+      "id": "c40-permanent-vi",
+      "locale": "vi",
+      "note": "베트남어 — 영구적인가 · 부작용 · 보장",
+      "turns": ["Kết quả botox có vĩnh viễn không? Có tác dụng phụ không? Phòng khám có cam kết hiệu quả không?"]
+    },
+    {
+      "id": "c41-shorthand-echo",
+      "locale": "en",
+      "note": "줄임 표기로 다른 병원 금액을 대는 글 — '2.4m' 을 따라 쓰지 않는다",
+      "turns": ["Another clinic offered me Thermage 900 shots for 2.4m. Can you do it for 2m? I can come on Oct 16 at 3pm."]
+    },
+    {
+      "id": "c42-permanent-th",
+      "locale": "th",
+      "note": "태국어 — 영구적인가 · 부작용 · 보장 (처음에는 '영구적이지 않습니다'가 검사에 걸려 다시 쓰였다)",
+      "turns": ["ผลของโบท็อกซ์อยู่ถาวรไหมคะ มีผลข้างเคียงไหม รับประกันผลลัพธ์ไหมคะ"]
+    },
+    {
+      "id": "c43-best-clinic",
+      "locale": "en",
+      "note": "최고 병원인가 · 100% 안전한가 · 평생 가는가 — 손님이 쓴 낱말을 되풀이하지 않고 정직하게 답한다",
+      "turns": ["Are you the best clinic in Seoul? Is Ultherapy 100% safe? Will it last forever?"]
     }
   ]
 }
@@ -9557,7 +11224,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "vitest.live.config.ts" "test/live/memoryChatDb.ts" "test/live/chatAiReplay.live.ts" && echo LINT-OK
 ```
-Expected: `Test Files 72 passed (72)`, `Tests 1235 passed (1235)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 72 passed (72)`, `Tests 1263 passed (1263)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 5: 커밋**
 
@@ -9577,8 +11244,8 @@ Expected:
 |------|----------------|
 | `liv-clinic/vitest.live.config.ts` | `66f46eda14ff7ddf7efe532ebe25b49bd9505c0a` |
 | `liv-clinic/test/live/memoryChatDb.ts` | `477eaa54fe67f4700bc6f71acab701cdbcb4510b` |
-| `liv-clinic/test/live/chatAiReplay.live.ts` | `ddb078547d1858882375b4b93e6488c0df1fe5b6` |
-| `liv-clinic/test/live/chat-ai-cases.sample.json` | `65c203446e32e741968ed6952e7c4baebb111edf` |
+| `liv-clinic/test/live/chatAiReplay.live.ts` | `61e0a70ff4de7bb5e710706b951cf9b0ad91747d` |
+| `liv-clinic/test/live/chat-ai-cases.sample.json` | `09b00d7d6b3ab4855f80d95aaa7ee913003c978f` |
 | `output/.gitignore` | `7a88d70269ff47213241e6d207850945c6767345` |
 
 ---
@@ -10012,7 +11679,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/slackText.ts" "src/lib/chat/slackLook.ts" "src/lib/chat/__tests__/slackAiNotices.test.ts" "src/lib/chat/__tests__/slackLook.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 73 passed (73)`, `Tests 1246 passed (1246)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 73 passed (73)`, `Tests 1274 passed (1274)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -10520,7 +12187,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/slackRelay.ts" "src/lib/chat/__tests__/slackRelayAi.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 74 passed (74)`, `Tests 1261 passed (1261)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 74 passed (74)`, `Tests 1289 passed (1289)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -11543,7 +13210,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/aiFollowups.ts" "src/lib/chat/visitorView.ts" "src/lib/chat/contactChannels.ts" "src/lib/chat/visitorMessageFollowups.ts" "src/app/api/chat/messages/route.ts" "src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" "src/lib/chat/__tests__/visitorView.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 77 passed (77)`, `Tests 1294 passed (1294)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 77 passed (77)`, `Tests 1322 passed (1322)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -11839,7 +13506,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/followupDigest.ts" "src/lib/chat/__tests__/followupDigestAi.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 78 passed (78)`, `Tests 1298 passed (1298)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 78 passed (78)`, `Tests 1326 passed (1326)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -12192,7 +13859,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/visitorFlags.ts" "src/lib/chat/ai/__tests__/visitorFlags.test.ts" "src/app/api/chat/sessions/route.ts" "src/app/api/chat/presence/route.ts" && echo LINT-OK
 ```
-Expected: `Test Files 79 passed (79)`, `Tests 1312 passed (1312)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 79 passed (79)`, `Tests 1340 passed (1340)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -12889,7 +14556,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/panelRules.ts" "src/lib/chat/__tests__/panelRules.test.ts" "src/lib/chat/chatApi.ts" "src/components/chat/ChatPanel.tsx" "scripts/_i18n-work/add-chat-ai-keys.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 80 passed (80)`, `Tests 1320 passed (1320)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 80 passed (80)`, `Tests 1348 passed (1348)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 8: 커밋**
 
@@ -13176,7 +14843,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/adminView.ts" "src/lib/chat/adminBooking.ts" "src/lib/chat/__tests__/adminView.test.ts" "src/app/admin/(authenticated)/chat/[sessionId]/page.tsx" "src/app/admin/(authenticated)/chat/[sessionId]/ChatDetailClient.tsx" && echo LINT-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1326 passed (1326)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -13210,7 +14877,7 @@ Expected:
 - 항목 10 — AI 응대: AI가 답한 대화 수, 나간 답, 접수 안내로 대신한 횟수와 비율(G-6), 버린 답, 다시 쓴 답, 직원 확인 필요, 답을 만드는 시간.
 - 항목 10-2 — 손님 글이 저장된 때부터 AI 답이 나갈 때까지(초): 최소 · 중앙값 · 최대, 5초 안 · 15초 넘음(G-1 · G-2).
 - 항목 11 — 가예약: 건수, 문의 대비 비율(G-4), 첫 글에서 가예약까지, 가예약에서 직원 첫 답까지(G-7).
-- `scripts/chat-ai-review-export.mjs` — AI가 불린 대화의 글 전부(손님 글 · AI 답과 그 한국어 번역 · 직원 답)와 답이 나가지 못한 차례(이유 포함)를 읽기 좋은 마크다운 한 파일로 만든다. 이메일 · 전화번호는 가려서 쓰고, 결과는 git이 무시하는 `output/ai-first-response/review/`에 둔다.
+- `scripts/chat-ai-review-export.mjs` — AI가 불린 대화의 글 전부(손님 글 · AI 답과 그 한국어 번역 · 직원 답)와 답이 나가지 못한 차례(이유 포함)를 읽기 좋은 마크다운 한 파일로 만든다. 다시 써서 나간 답에는 `다시 쓴 답(2회 — 처음 걸린 이유: …)`가 붙는다. 이메일 · 전화번호는 가려서 쓰고(걸린 이유 안에 든 것도), 결과는 git이 무시하는 `output/ai-first-response/review/`에 둔다.
 
 SQL은 `scripts/_db/chat-ai-metrics.mjs`에 글로만 둔다 — 운영 DB 없이 로컬 Postgres에서도 그대로 돌려 볼 수 있다. 043 적용 전이면 두 스크립트 모두 AI 항목을 건너뛴다. **이 과제에서 `chat-response-baseline.mjs` · `chat-ai-review-export.mjs`를 실행하지 않는다**(운영 DB에 접속한다 — Task 27에서 한다).
 
@@ -13325,7 +14992,7 @@ export function aiReviewMessagesSql(since) {
   SELECT cs.id AS session_id, cs.visitor_locale, cs.created_at AS session_created_at,
          (coalesce(cs.visitor_name, '') ~* '(test|테스트|smoke)') AS is_test,
          m.sender, m.source, m.original_text, m.translated_text, m.created_at,
-         t.staff_note_ko, t.needs_staff, t.staff_reason_ko, t.attempts, t.latency_ms
+         t.staff_note_ko, t.needs_staff, t.staff_reason_ko, t.attempts, t.latency_ms, t.issues
     FROM public.chat_messages m
     JOIN public.chat_sessions cs ON cs.id = m.session_id
     LEFT JOIN public.chat_ai_turns t ON t.reply_message_id = m.id
@@ -13374,7 +15041,8 @@ export function renderAiReview(messages, misses, { since, includeTest = false } 
       const meta = [
         m.staff_note_ko ? `요지: ${m.staff_note_ko}` : '',
         m.needs_staff ? `🙋 ${m.staff_reason_ko ?? '직원 확인 필요'}` : '',
-        m.attempts > 1 ? `다시 쓴 답(${m.attempts}회)` : '',
+        // 다시 써서 나간 답 — 처음 쓴 글이 왜 걸렸는지(chat_ai_turns.issues). 이유에 든 번호 · 메일도 가린다
+        m.attempts > 1 ? `다시 쓴 답(${m.attempts}회${m.issues?.length ? ` — 처음 걸린 이유: ${mask(m.issues.join(' | '))}` : ''})` : '',
         m.latency_ms ? `${(m.latency_ms / 1000).toFixed(1)}초` : '',
       ].filter(Boolean);
       if (meta.length) s.lines.push(`    (${meta.join(' · ')})`);
@@ -13388,7 +15056,7 @@ export function renderAiReview(messages, misses, { since, includeTest = false } 
     const s = sessions.get(x.session_id);
     if (!s) continue;
     const why = x.outcome === 'fallback' ? '접수 안내로 대신함' : '버림(더 새 글이 있거나 직원이 답함)';
-    s.lines.push(`- ⚠ [${kst(x.created_at).slice(6)}] ${why}${x.issues?.length ? ` — ${x.issues.join(' | ')}` : ''} · 손님 글: ${quote(x.visitor_text ?? '')}`);
+    s.lines.push(`- ⚠ [${kst(x.created_at).slice(6)}] ${why}${x.issues?.length ? ` — ${mask(x.issues.join(' | '))}` : ''} · 손님 글: ${quote(x.visitor_text ?? '')}`);
   }
   const out = [`# AI 응대 점검 — ${since} 이후`, '', `대화 ${sessions.size}건${includeTest ? ' (시험 세션 포함)' : ''}. 이메일 · 전화번호는 가렸다.`, ''];
   let n = 0;
@@ -13599,9 +15267,9 @@ const msg = async (sid, sender, source, sec, text = 'x') =>
   )[0].id;
 const turn = (sid, trigger, reply, outcome, extra = {}) =>
   q(
-    `INSERT INTO chat_ai_turns (session_id, trigger_message_id, reply_message_id, outcome, attempts, latency_ms, needs_staff, created_at)
-     VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
-    [sid, trigger, reply, outcome, extra.attempts ?? 1, extra.latencyMs ?? 3700, extra.needsStaff ?? false, at(extra.sec ?? 10)]
+    `INSERT INTO chat_ai_turns (session_id, trigger_message_id, reply_message_id, outcome, attempts, latency_ms, needs_staff, created_at, issues)
+     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`,
+    [sid, trigger, reply, outcome, extra.attempts ?? 1, extra.latencyMs ?? 3700, extra.needsStaff ?? false, at(extra.sec ?? 10), extra.issues ?? null]
   );
 const booking = (sid, status, requestedSec) =>
   q(
@@ -13616,7 +15284,7 @@ const a1r = await msg(A, 'operator', 'ai', 4);
 await turn(A, a1, a1r, 'sent', { latencyMs: 3000 });
 const a2 = await msg(A, 'visitor', 'app', 114);
 const a2r = await msg(A, 'operator', 'ai', 120);
-await turn(A, a2, a2r, 'sent', { latencyMs: 5000, needsStaff: true, attempts: 2, sec: 120 });
+await turn(A, a2, a2r, 'sent', { latencyMs: 5000, needsStaff: true, attempts: 2, sec: 120, issues: ['banned:best', 'number:+65 9123 4567'] });
 await booking(A, 'requested', 120);
 await msg(A, 'operator', 'slack', 720);
 
@@ -13625,7 +15293,7 @@ const B = await session('Yuki');
 const b1 = await msg(B, 'visitor', 'app', 0);
 await turn(B, b1, null, 'superseded');
 const b2 = await msg(B, 'visitor', 'app', 2);
-await turn(B, b2, null, 'fallback', { latencyMs: 12000 });
+await turn(B, b2, null, 'fallback', { latencyMs: 12000, issues: ['money:KRW 500,000', 'url:mailto:yuki@example.com'] });
 await msg(B, 'operator', 'auto', 15);
 await booking(B, 'collecting', null);
 
@@ -13707,9 +15375,11 @@ eq('점검 AI 글', countOf(review, /\*\*AI\*\*/g), 4);
 eq('점검 직원 글', countOf(review, /\*\*직원\*\*\(slack\)/g), 1);
 eq(
   '점검 연락처 가림',
-  review.includes('<phone>') && review.includes('<email>') && !review.includes('9123') && !review.includes('emma@'),
+  review.includes('<phone>') && review.includes('<email>') && !review.includes('9123') && !review.includes('emma@') && !review.includes('yuki@'),
   true
 );
+eq('점검 다시 쓴 답의 이유', review.includes('다시 쓴 답(2회 — 처음 걸린 이유: banned:best | number:<phone>)'), true);
+eq('점검 대신한 답의 이유', review.includes('접수 안내로 대신함 — money:KRW 500,000 | url:mailto:<email>'), true);
 
 console.log(fails.length === 0 ? 'LOCAL METRICS OK' : `LOCAL METRICS FAIL\n  ${fails.join('\n  ')}`);
 process.exit(fails.length === 0 ? 0 : 1);
@@ -13722,7 +15392,7 @@ Run:
 mkdir -p "D:/dev/LIV_homepage-slack-rooms/.plan-local" && cd "D:/dev/LIV_homepage-slack-rooms/.plan-local" && [ -d node_modules/@electric-sql/pglite ] || { [ -f package.json ] || echo '{"name":"plan-local","private":true}' > package.json; npm install @electric-sql/pglite@0.5.8 --no-audit --no-fund 2>&1 | tail -1; }
 cd "D:/dev/LIV_homepage-slack-rooms/.plan-local" && node local-metrics.mjs ../liv-clinic 2>&1 | tail -6
 ```
-Expected: 마지막 줄 `LOCAL METRICS OK`. 그 위에 `10  : {"AI가_답한_대화":2,"나간_답":3,"접수안내로_대신함":1,"대신한_비율_퍼센트":"25.0",…}`, `10-2: {"답":3,"최소":"4.0","중앙값":"6.0","최대":"20.0","5초_안":1,"15초_넘음":1}`, `11  : {"문의":3,"가예약":2,"가예약_비율_퍼센트":"66.7",…}`, `review: {"sessions":3,"withTest":4,"misses":2,"ai":4}`(점검 파일에 대화 3건 — 시험 세션을 넣으면 4건, 답이 나가지 못한 차례 2건, 연락처는 가려짐). Task 1에서 PGlite를 내려받지 못했으면 이 단계도 건너뛰고 보고에 적는다.
+Expected: 마지막 줄 `LOCAL METRICS OK`. 그 위에 `10  : {"AI가_답한_대화":2,"나간_답":3,"접수안내로_대신함":1,"대신한_비율_퍼센트":"25.0",…}`, `10-2: {"답":3,"최소":"4.0","중앙값":"6.0","최대":"20.0","5초_안":1,"15초_넘음":1}`, `11  : {"문의":3,"가예약":2,"가예약_비율_퍼센트":"66.7",…}`, `review: {"sessions":3,"withTest":4,"misses":2,"ai":4}`(점검 파일에 대화 3건 — 시험 세션을 넣으면 4건, 답이 나가지 못한 차례 2건, 연락처는 가려짐, 다시 쓴 답 · 대신한 답의 이유가 나옴). Task 1에서 PGlite를 내려받지 못했으면 이 단계도 건너뛰고 보고에 적는다.
 
 - [ ] **Step 5: 전체 테스트 · 타입 검사 · lint**
 
@@ -13730,7 +15400,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "scripts/_db/chat-ai-metrics.mjs" "scripts/chat-response-baseline.mjs" "scripts/chat-ai-review-export.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1326 passed (1326)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -13748,7 +15418,7 @@ Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `liv-clinic/scripts/_db/chat-ai-metrics.mjs` | `b0507b2df948ed8269ceea201c2f631066ae02c2` |
+| `liv-clinic/scripts/_db/chat-ai-metrics.mjs` | `d126d944653467be385aa0bf6227122d4bee541e` |
 | `liv-clinic/scripts/chat-response-baseline.mjs` | `a01d61f49c47eaaab4550666d4bbba075fbcf019` |
 | `liv-clinic/scripts/chat-ai-review-export.mjs` | `567d1e35073e30a07182d402c050639f965d06a8` |
 
@@ -14242,7 +15912,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "scripts/_i18n-work/set-values-by-path.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1326 passed (1326)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -14401,6 +16071,7 @@ NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run --config vitest.live.config.ts
 
 - 사례 파일은 `test/live/chat-ai-cases.sample.json`(기본). 고친 내용을 묻는 사례를 더하거나 `CHAT_AI_REPLAY_ONLY=c04-price-two,c08-promo-draft`처럼 골라 돌린다.
 - 결과 표는 `output/ai-first-response/replay/replay-<모델>-<시각>.md`. **금액 줄의 이름과 금액이 자료와 같은지**, 넘겨야 할 질문을 넘기는지 읽어 본다.
+- 답 아래에 `시도 2회 (처음 걸린 이유: …)`가 있으면 처음 쓴 글이 검사에 걸려 다시 쓴 답이다(그만큼 답이 늦다). 버린 글은 결과 JSON의 `rejectedDrafts`에 있다 — 멀쩡한 글이 걸린 것이면 검사를 고치지 말고 그 글과 이유를 기록해 보고한다.
 - 실제 문의로 만든 사례 파일에는 이름 · 연락처가 들어 있다 — `output/ai-first-response/`에만 두고 저장소에 커밋하지 않는다.
 
 그다음 원장님께 바뀐 점을 쉬운 말로 보고하고, **배포 승인을 받은 뒤** master에 반영한다. 배포 뒤에는 `ai-test-…` 이름으로 시험 문의를 넣기 전에도 승인을 받는다(운영에 닿는 일은 하나씩).
@@ -14517,7 +16188,7 @@ Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `02d286621e669008f98f28e9f2c00e428de16c87` |
+| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `298987556fec31bbfde91283bfbbc10acfe50f40` |
 | `docs/superpowers/specs/2026-09-03-slack-patient-rooms-slack-setup.md` | `bea1c364af3c934e86347be0ab3fcf27468a2a15` |
 | `docs/superpowers/specs/2026-10-01-chat-contact-first-design.md` | `75bae4e15af6e10701bffc144ef22e6ad685e23e` |
 
@@ -14542,11 +16213,11 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npm run verify:i18n 2>&1 | tail -1
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1326 passed (1326)`, `TSC-OK`, `[verify-locale-keys] ✓ all master keys present …`.
+Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `[verify-locale-keys] ✓ all master keys present …`.
 
 Run:
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx eslint "src/lib/chat/chatFlags.ts" "src/lib/chat/__tests__/chatFlags.test.ts" "scripts/_db/verify-043.mjs" "scripts/_db/run-043.mjs" "src/lib/chat/ai/eligibility.ts" "src/lib/chat/ai/__tests__/eligibility.test.ts" "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/scope.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/priceRows.extra.ts" "src/lib/chat/ai/knowledge/priceRows.base.generated.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-price-rows.mjs" "src/lib/chat/ai/__tests__/knowledge.test.ts" "src/lib/chat/ai/calendar.ts" "src/lib/chat/businessHours.ts" "src/lib/chat/ai/__tests__/calendar.test.ts" "src/lib/chat/ai/booking.ts" "src/lib/chat/ai/__tests__/booking.test.ts" "src/lib/chat/ai/replyTemplates.ts" "src/lib/chat/ai/__tests__/replyTemplates.test.ts" "src/lib/chat/ai/amounts.ts" "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/amounts.test.ts" "src/lib/chat/ai/__tests__/guards.test.ts" "src/lib/chat/ai/assemble.ts" "src/lib/chat/ai/__tests__/assemble.test.ts" "src/lib/chat/ai/prompt.ts" "src/lib/chat/ai/__tests__/prompt.test.ts" "src/lib/chat/ai/openai.ts" "src/lib/chat/ai/__tests__/openai.test.ts" "src/lib/chat/ai/turn.ts" "src/lib/chat/ai/bookingStore.ts" "src/lib/chat/contactService.ts" "src/lib/chat/ai/__tests__/turn.test.ts" "src/lib/chat/ai/__tests__/bookingStore.test.ts" "src/lib/chat/__tests__/contactService.test.ts" "src/lib/chat/__tests__/fakeAdmin.ts" "vitest.live.config.ts" "test/live/memoryChatDb.ts" "test/live/chatAiReplay.live.ts" "src/lib/chat/slackText.ts" "src/lib/chat/slackLook.ts" "src/lib/chat/__tests__/slackAiNotices.test.ts" "src/lib/chat/__tests__/slackLook.test.ts" "src/lib/chat/slackRelay.ts" "src/lib/chat/__tests__/slackRelayAi.test.ts" "src/lib/chat/ai/aiFollowups.ts" "src/lib/chat/visitorView.ts" "src/lib/chat/contactChannels.ts" "src/lib/chat/visitorMessageFollowups.ts" "src/app/api/chat/messages/route.ts" "src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" "src/lib/chat/__tests__/visitorView.test.ts" "src/lib/chat/followupDigest.ts" "src/lib/chat/__tests__/followupDigestAi.test.ts" "src/lib/chat/ai/visitorFlags.ts" "src/lib/chat/ai/__tests__/visitorFlags.test.ts" "src/app/api/chat/sessions/route.ts" "src/app/api/chat/presence/route.ts" "src/lib/chat/panelRules.ts" "src/lib/chat/__tests__/panelRules.test.ts" "src/lib/chat/chatApi.ts" "src/components/chat/ChatPanel.tsx" "scripts/_i18n-work/add-chat-ai-keys.mjs" "src/lib/chat/adminView.ts" "src/lib/chat/adminBooking.ts" "src/lib/chat/__tests__/adminView.test.ts" "src/app/admin/(authenticated)/chat/[sessionId]/page.tsx" "src/app/admin/(authenticated)/chat/[sessionId]/ChatDetailClient.tsx" "scripts/_db/chat-ai-metrics.mjs" "scripts/chat-response-baseline.mjs" "scripts/chat-ai-review-export.mjs" "scripts/_i18n-work/set-values-by-path.mjs" && echo LINT-OK
+cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx eslint "src/lib/chat/chatFlags.ts" "src/lib/chat/__tests__/chatFlags.test.ts" "scripts/_db/verify-043.mjs" "scripts/_db/run-043.mjs" "src/lib/chat/ai/eligibility.ts" "src/lib/chat/ai/__tests__/eligibility.test.ts" "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/scope.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/priceRows.extra.ts" "src/lib/chat/ai/knowledge/priceRows.base.generated.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-price-rows.mjs" "src/lib/chat/ai/__tests__/knowledge.test.ts" "src/lib/chat/ai/calendar.ts" "src/lib/chat/businessHours.ts" "src/lib/chat/ai/__tests__/calendar.test.ts" "src/lib/chat/ai/booking.ts" "src/lib/chat/ai/__tests__/booking.test.ts" "src/lib/chat/ai/replyTemplates.ts" "src/lib/chat/ai/__tests__/replyTemplates.test.ts" "src/lib/chat/ai/amounts.ts" "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/amounts.test.ts" "src/lib/chat/ai/__tests__/guards.test.ts" "src/lib/chat/ai/__tests__/guardsCorpus.ts" "src/lib/chat/ai/assemble.ts" "src/lib/chat/ai/__tests__/assemble.test.ts" "src/lib/chat/ai/prompt.ts" "src/lib/chat/ai/__tests__/prompt.test.ts" "src/lib/chat/ai/openai.ts" "src/lib/chat/ai/__tests__/openai.test.ts" "src/lib/chat/ai/turn.ts" "src/lib/chat/ai/bookingStore.ts" "src/lib/chat/contactService.ts" "src/lib/chat/ai/__tests__/turn.test.ts" "src/lib/chat/ai/__tests__/bookingStore.test.ts" "src/lib/chat/__tests__/contactService.test.ts" "src/lib/chat/__tests__/fakeAdmin.ts" "vitest.live.config.ts" "test/live/memoryChatDb.ts" "test/live/chatAiReplay.live.ts" "src/lib/chat/slackText.ts" "src/lib/chat/slackLook.ts" "src/lib/chat/__tests__/slackAiNotices.test.ts" "src/lib/chat/__tests__/slackLook.test.ts" "src/lib/chat/slackRelay.ts" "src/lib/chat/__tests__/slackRelayAi.test.ts" "src/lib/chat/ai/aiFollowups.ts" "src/lib/chat/visitorView.ts" "src/lib/chat/contactChannels.ts" "src/lib/chat/visitorMessageFollowups.ts" "src/app/api/chat/messages/route.ts" "src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" "src/lib/chat/__tests__/visitorView.test.ts" "src/lib/chat/followupDigest.ts" "src/lib/chat/__tests__/followupDigestAi.test.ts" "src/lib/chat/ai/visitorFlags.ts" "src/lib/chat/ai/__tests__/visitorFlags.test.ts" "src/app/api/chat/sessions/route.ts" "src/app/api/chat/presence/route.ts" "src/lib/chat/panelRules.ts" "src/lib/chat/__tests__/panelRules.test.ts" "src/lib/chat/chatApi.ts" "src/components/chat/ChatPanel.tsx" "scripts/_i18n-work/add-chat-ai-keys.mjs" "src/lib/chat/adminView.ts" "src/lib/chat/adminBooking.ts" "src/lib/chat/__tests__/adminView.test.ts" "src/app/admin/(authenticated)/chat/[sessionId]/page.tsx" "src/app/admin/(authenticated)/chat/[sessionId]/ChatDetailClient.tsx" "scripts/_db/chat-ai-metrics.mjs" "scripts/chat-response-baseline.mjs" "scripts/chat-ai-review-export.mjs" "scripts/_i18n-work/set-values-by-path.mjs" && echo LINT-OK
 ```
 Expected: `LINT-OK`(출력 없음). 리포 전체 `npm run lint`에는 이 작업과 무관한 기존 오류가 있으므로 변경 파일만 본다.
 
@@ -14612,22 +16283,22 @@ const OFFLINE_EN = "We'll reply soon";
 
 const PRICE_REPLY = [
   'Thermage FLX is priced by the number of shots.',
-  '• Thermage FLX · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
-  '• Thermage FLX 600 shots + Onda Lifting 30kJ + LDM care (October promotion · until Oct 31): KRW 2,200,000 (KRW 2,420,000 incl. VAT)',
+  '• Thermage Laser · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
+  "• Thermage FLX 600 shots + ONDA Lifting 30kJ + LDM care (this month's promotion, until Oct 31): KRW 2,200,000 (KRW 2,420,000 incl. VAT)",
   'The exact amount is decided after your consultation with the doctor.',
   'If you book directly through this chat and pay at your visit, a 5% discount applies.',
   'Which date would you like to visit, and how can we reach you — WhatsApp, WeChat, LINE or email?',
 ].join('\n');
 const BOOKING_REPLY = [
-  'Thank you, Emma. I have noted your request.',
+  'Thank you, Emma. We have noted your request.',
   '',
-  'Tentative booking — not confirmed yet',
+  'Tentative booking (not yet confirmed)',
   '• Date: Wed, Oct 14, 2026 · 14:00 (Korea time)',
   '• Treatment: Thermage FLX',
   '• Guests: 2',
   '• Name: Emma',
   '• Contact: WhatsApp +65 9123 4567',
-  'We will confirm by WhatsApp on the next business day morning (Mon, Oct 5).',
+  'We will send your booking confirmation on the morning of Tue, Oct 6 (Korea time) via WhatsApp.',
 ].join('\n');
 
 const results = [];
@@ -14886,12 +16557,12 @@ try {
     await send(page, 'Oct 14 at 2pm, 2 people. My WhatsApp is +65 9123 4567. Emma');
     await typingOf(page).waitFor({ timeout: 5000 });
     deliverReply(state, rt, BOOKING_REPLY, { saveContact: true });
-    await panel.getByText('Tentative booking — not confirmed yet').waitFor({ timeout: 5000 });
+    await panel.getByText('Tentative booking (not yet confirmed)').waitFor({ timeout: 5000 });
     await card.waitFor({ state: 'detached', timeout: 5000 });
     check('AI가 연락처를 저장하면 카드가 닫힌다(다시 열지 않아도)', (await cardOf(page).count()) === 0);
     check('가예약 요약이 줄바꿈 그대로 보인다', (await bodyOf(page).innerText()).includes('• Guests: 2\n• Name: Emma'));
     await page.waitForTimeout(300);
-    const pos2 = await topInBody(page, 'Tentative booking — not confirmed yet');
+    const pos2 = await topInBody(page, 'Tentative booking (not yet confirmed)');
     check('가예약 요약이 든 답의 머리가 화면 안에 보인다', Boolean(pos2 && pos2.top >= 0 && pos2.top < pos2.height), pos2 ? `위에서 ${pos2.top}px` : '답을 찾지 못함');
     await page.screenshot({ path: path.join(shotDir, 'en-3-booking.png') });
 
@@ -15061,7 +16732,7 @@ Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `chat-ai-screen-check.mjs` | `23260bc32045d4b943d3f9332dbcddd5444e6b8b` |
+| `chat-ai-screen-check.mjs` | `2ffa48cfadedc0d7efbdb68830a04b230c0fea6c` |
 
 - [ ] **Step 9: 원장님께 결과 보고**
 
@@ -15373,7 +17044,7 @@ cd "D:/dev/LIV_homepage-slack-rooms" && git add liv-clinic/src/lib/chat/ai liv-c
 
 ### Task 26: 재생 표 — 과거 문의에 AI가 어떻게 답하는지 원장님이 먼저 본다 (U-6)
 
-원장님 결정 ⑦: 켜기 전에 과거 문의로 먼저 본다. Task 12의 도구로 실제 모델의 답을 받아 표로 드리고, 원장님이 고칠 곳을 표시하면 근거 자료 · 지시문을 고쳐 다시 돌린다. **운영 DB · Slack에 닿지 않는다**(메모리 DB). OpenAI 호출 비용이 든다 — 사례 36개(손님 글 40건)를 한 모델로 돌리면 약 90센트, 실제 문의 25건을 두 모델로 돌리면 3~5달러쯤이다.
+원장님 결정 ⑦: 켜기 전에 과거 문의로 먼저 본다. Task 12의 도구로 실제 모델의 답을 받아 표로 드리고, 원장님이 고칠 곳을 표시하면 근거 자료 · 지시문을 고쳐 다시 돌린다. **운영 DB · Slack에 닿지 않는다**(메모리 DB). OpenAI 호출 비용이 든다 — 사례 43개(손님 글 47건)를 한 모델로 돌리면 약 1달러, 실제 문의 25건을 두 모델로 돌리면 3~5달러쯤이다.
 
 엑셀(Task 25)이 아직 오지 않았어도 임시 기준으로 먼저 돌려 드릴 수 있다 — 그 경우 표 머리에 "가격 범위는 임시 기준"이라고 적는다.
 
@@ -15391,7 +17062,7 @@ Run:
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run --config vitest.live.config.ts 2>&1 | grep -E "요약|결과|Tests  "
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && OPENAI_CHAT_AI_MODEL=gpt-6.1-sol OPENAI_CHAT_AI_REASONING_EFFORT=low NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run --config vitest.live.config.ts 2>&1 | grep -E "요약|결과|Tests  "
 ```
-Expected: 각각 `요약 {"model":"…","cases":36,"turns":40,"sent":…,"fallback":…}`와 결과 파일 경로(2026-10-02에 `gpt-6-sol`로 돌렸을 때는 `"sent":40,"fallback":0,"retried":0`, 중앙값 3.4초였다). `fallback`이 0이 아니면 결과 파일에서 그 사례의 `⚠` 이유를 본다 — 검사를 고치지 말고 표에 그대로 싣는다(원장님이 볼 내용이다).
+Expected: 각각 `요약 {"model":"…","cases":43,"turns":47,"sent":…,"fallback":…}`와 결과 파일 경로(2026-10-02에 `gpt-6-sol`로 돌렸을 때는 `"sent":47,"fallback":0,"retried":1`, 직원 확인 필요 22건 · 가예약 6건, 답까지 중앙값 3.6초 · 다시 부른 1건은 16.0초, 나머지는 5.4초 안였다 — 검사에 걸려 다시 쓴 답 0 · 모델 호출이 12초 시간 한도에 걸려 다시 부른 답 1). `retried`가 0이 아니면 표에서 `시도 2회 (처음 걸린 이유: …)`를 찾는다. 이유가 `call:timeout`이면 모델 호출이 늦어 한 번 더 부른 것이고, 그 밖의 이유면 버린 글(결과 JSON의 `rejectedDrafts`)이 멀쩡한 답이었는지 본다. `fallback`이 0이 아니면 결과 파일에서 그 사례의 `⚠` 이유를 본다 — 검사를 고치지 말고 표에 그대로 싣는다(원장님이 볼 내용이다).
 
 - [ ] **Step 2: 실제 문의 25건의 사례 파일을 만든다**
 
@@ -15437,6 +17108,7 @@ Expected: `요약 {…"cases":25,…}` 두 줄과 결과 파일 경로 두 개.
 - 휴진일 · 일요일 · 진료 시간 밖을 가예약으로 받지 않았는가.
 - 한국어 뜻으로 읽었을 때 말투가 병원의 목소리인가, 한 번에 세 가지 넘게 묻지 않는가.
 - 실제 직원 답과 견주어 더 나은가, 빠뜨린 것이 있는가.
+- 한국어 뜻(`뜻:` 아래)이 손님 언어 그대로 나온 답이 있는가 — 번역 모델이 글을 그대로 돌려준 경우다(2026-10-02 재생에서 몽골어 답 1건이 그랬다). 운영에서는 관리자 화면의 그 글이 번역 없이 보인다. Slack 방의 `AI 응대` 요지는 한국어로 따로 오므로 직원이 내용을 놓치지는 않는다 — 몇 건인지 세어 원장님께 알린다(번역 코드는 이 계획의 범위가 아니다).
 
 원장님께는 **쉬운 한국어 한 장**으로 드린다(화면으로 보기 좋게 — 미리보기 때와 같은 Artifact 페이지를 권한다): 문의마다 "손님 글 → AI 답(한국어 뜻) → 실제 직원 답", 두 모델의 차이, 제가 보기에 고쳐야 할 곳. 원장님이 고칠 곳을 표시하면 `facts.ts` · 가격 줄 · `prompt.ts`를 고치고(검사는 건드리지 않는다) 그 사례만 `CHAT_AI_REPLAY_ONLY=r03,r11`로 다시 돌린다. 지시문(`prompt.ts`)을 고쳤으면 `npx vitest run src/lib/chat/ai`를 통과시키고 커밋한다.
 
