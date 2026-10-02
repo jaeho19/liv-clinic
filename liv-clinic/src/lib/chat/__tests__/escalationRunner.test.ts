@@ -106,7 +106,7 @@ describe('runEscalations — 연락처를 남긴 손님은 재촉 알림에서 �
     ]);
   });
 
-  it('12분: 담당자가 답하지 않았다는 사유가 막대의 설명 줄로 붙는다', async () => {
+  it('12분: 방에는 큰 줄만 올린다 (담당자가 답하지 않았다는 사유는 넣지 않는다)', async () => {
     adminWith([
       {
         ...WAITING,
@@ -121,10 +121,6 @@ describe('runEscalations — 연락처를 남긴 손님은 재촉 알림에서 �
     expect(post.text).toBe('<@U0AAA>');
     expect(post.attachments![0].blocks).toEqual([
       { type: 'section', text: { type: 'mrkdwn', text: '⏰ *12분째 답이 없습니다.*' } },
-      {
-        type: 'context',
-        elements: [{ type: 'mrkdwn', text: '담당 <@U0AAA> 님이 응답하지 않아 전원에게 알립니다.' }],
-      },
     ]);
   });
 

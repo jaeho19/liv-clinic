@@ -13,14 +13,15 @@ import {
   buildRoomFirstText,
   buildRoomVisitorText,
   buildTranslationCopyText,
-  contactNoticeParts,
+  contactNoticeHeadline,
   deliveryFailureParts,
-  escalationNoticeParts,
-  EVENT_HINT_SENTENCE,
+  escalationNoticeHeadline,
+  EVENT_HINT_SHORT,
   localeKoName,
   messengerClickParts,
   ROOM_REOPENED_LEAD,
-  roomFirstNoticeParts,
+  roomFirstNoticeHeadline,
+  staffChannelLabel,
   type ContactNoticeArgs,
   type MessengerClickArgs,
   type NoticeParts,
@@ -33,6 +34,8 @@ import {
 //
 // 멘션은 색 막대 안에 넣지 않는다 — 막대 안의 멘션이 알림을 만드는지 확인하지 못했다. 항상 최상위 text에 둔다.
 // 손님 글에는 막대를 붙이지 않는다 — 막대 안의 긴 글은 "더 보기"로 접힌다.
+// 알림(LIV 알림)의 색 막대에는 큰 줄만 넣는다 (스펙 2026-10-02 slack-room-notice-trim) — 설명 줄은 방에서 뺐다.
+// 예외는 답글 전달 실패의 사유 한 줄. 글자만 문구(plainText)는 예전 문구 그대로라 설명이 남아 있다.
 
 export interface StyledMessage extends SlackLook {
   /** 최상위 text — 화면에 그대로 보이고 멘션 알림에 쓰인다. 색 막대만 있는 알림은 '' */
@@ -110,8 +113,19 @@ export function bar(kind: BarKind, parts: NoticeParts): SlackAttachment {
   return { color: BAR_COLOR[kind], fallback: parts.headline.replace(/[*`]/g, ''), blocks };
 }
 
-function notice(kind: BarKind, parts: NoticeParts, plainText: string, text = ''): StyledMessage {
-  return { ...NOTICE_LOOK, text, attachments: [bar(kind, parts)], plainText };
+/** LIV 알림 하나 = 색 막대 하나에 큰 줄 하나. notes(작은 회색 설명)는 전달 실패의 사유만 넘긴다. */
+function notice(
+  kind: BarKind,
+  headline: string,
+  plainText: string,
+  opts: { text?: string; notes?: string[] } = {}
+): StyledMessage {
+  return {
+    ...NOTICE_LOOK,
+    text: opts.text ?? '',
+    attachments: [bar(kind, { headline, notes: opts.notes ?? [] })],
+    plainText,
+  };
 }
 
 const joinLines = (lines: string[]): string => lines.filter((l) => l.length > 0).join('\n');
@@ -129,7 +143,7 @@ export function styledRoomFirstVisitor(
     session: VisitorIdentity;
     mentionAll: string;
     receivedAt: string;
-    /** 연락처가 이미 있는 손님이면 ROOM_EMAIL_CONTACT_NOTE — 꾸민 글에서는 첫 알림 쪽에 붙는다 */
+    /** 연락처가 이미 있는 손님이면 ROOM_EMAIL_CONTACT_NOTE — 꾸민 글에서는 첫 알림에 초록 막대(연락처)로 붙는다 */
     contactNote?: string | null;
   }
 ): StyledMessage {
@@ -150,9 +164,18 @@ export function styledRoomFirstVisitor(
   };
 }
 
-/** 첫 손님 글 바로 뒤의 새 문의 알림 — 접수 시각·참조코드·사용법. */
-export function styledRoomFirstNotice(args: RoomFirstNoticeArgs): StyledMessage {
-  return notice('info', roomFirstNoticeParts(args), buildRoomFirstNoticeText(args));
+/**
+ * 첫 손님 글 바로 뒤의 새 문의 알림 — 접수 시각·참조코드 한 줄.
+ * contactEmail(시작 화면에서 이메일을 넣은 손님)이 있으면 같은 글에 초록 막대 한 줄을 더 단다 — 연락처는 언제나 초록 한 줄로 보인다.
+ */
+export function styledRoomFirstNotice(args: RoomFirstNoticeArgs & { contactEmail?: string | null }): StyledMessage {
+  const msg = notice('info', roomFirstNoticeHeadline(args), buildRoomFirstNoticeText(args));
+  if (!args.contactEmail) return msg;
+  const contact = bar('contact', {
+    headline: contactNoticeHeadline(staffChannelLabel('email'), args.contactEmail),
+    notes: [],
+  });
+  return { ...msg, attachments: [...(msg.attachments ?? []), contact] };
 }
 
 /** 손님 후속 글. 시각 글자는 넣지 않는다(Slack이 글마다 보여 준다). reopened의 🔔 머리말은 글자만 문구에만 들어간다. */
@@ -178,7 +201,7 @@ export function styledRoomVisitor(
 
 /** 완료(보관)했던 방에 손님이 다시 썼을 때, 손님 글 뒤에 붙는 알림. */
 export function styledReopenedNotice(): StyledMessage {
-  return notice('info', { headline: ROOM_REOPENED_LEAD, notes: [] }, ROOM_REOPENED_LEAD);
+  return notice('info', ROOM_REOPENED_LEAD, ROOM_REOPENED_LEAD);
 }
 
 // ── 직원 답의 사본, 번역본 ─────────────────────────────────────────────────
@@ -217,15 +240,15 @@ export function styledTranslationCopy(translated: string): StyledMessage {
 // ── 알림 ────────────────────────────────────────────────────────────────
 
 export function styledContactNotice(args: ContactNoticeArgs): StyledMessage {
-  return notice('contact', contactNoticeParts(args), buildContactText(args));
+  return notice('contact', contactNoticeHeadline(args.channelLabel, args.handle), buildContactText(args));
 }
 
 export function styledMessengerClick(args: MessengerClickArgs): StyledMessage {
-  return notice('contact', messengerClickParts(args), buildMessengerClickText(args));
+  return notice('contact', messengerClickParts(args).headline, buildMessengerClickText(args));
 }
 
 export function styledEventHint(url: string): StyledMessage {
-  return notice('info', { headline: `🎁 ${EVENT_HINT_SENTENCE}\n${url}`, notes: [] }, buildEventHintNote(url));
+  return notice('info', `🎁 ${EVENT_HINT_SHORT}\n${url}`, buildEventHintNote(url));
 }
 
 /** 재촉: 멘션은 최상위 text에(알림이 가야 한다), 문장은 빨간 막대에. */
@@ -235,9 +258,11 @@ export function styledEscalation(args: {
   mention: string;
   assigneeMention: string | null;
 }): StyledMessage {
-  return notice('alert', escalationNoticeParts(args), buildEscalationText(args), args.mention);
+  return notice('alert', escalationNoticeHeadline(args), buildEscalationText(args), { text: args.mention });
 }
 
+/** 전달 실패: 사유를 알아야 다시 보낼 수 있다 — 설명 줄을 남기는 유일한 알림. */
 export function styledDeliveryFailure(reason: string): StyledMessage {
-  return notice('alert', deliveryFailureParts(reason), buildDeliveryFailureText(reason));
+  const parts = deliveryFailureParts(reason);
+  return notice('alert', parts.headline, buildDeliveryFailureText(reason), { notes: parts.notes });
 }

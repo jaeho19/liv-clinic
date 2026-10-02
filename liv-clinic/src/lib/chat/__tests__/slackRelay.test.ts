@@ -42,7 +42,7 @@ import {
   resolveTarget,
 } from '../slackRelay';
 import { BAR_COLOR } from '../slackLook';
-import { bareNote, buildRoomFirstText, ROOM_EMAIL_CONTACT_NOTE, ROOM_REOPENED_LEAD } from '../slackText';
+import { buildRoomFirstText, ROOM_REOPENED_LEAD } from '../slackText';
 import { fakeAdmin, hasFilter, type FakeOp } from './fakeAdmin';
 
 describe('resolveTarget', () => {
@@ -473,19 +473,19 @@ describe('relayContactToSlack — 연락처 알림', () => {
   });
   afterEach(clearSlackEnv);
 
-  it('방: LIV 알림의 초록 막대(큰 줄 + 분류 안내 세 줄)를 방에, 피드에 "연락처 남김" 한 줄', async () => {
+  it('방: LIV 알림의 초록 막대(큰 줄만)를 방에, 피드에 "연락처 남김" 한 줄', async () => {
     adminFor(ROOM_ROW);
     await relayContactToSlack({ sessionId: SESSION_ID, channel: 'email', handle: 'guest@example.com' });
 
     expect(postMock).toHaveBeenCalledTimes(2);
     const room = postMock.mock.calls[0][0];
     expect(room).toMatchObject({ channelId: 'C0ROOM', username: 'LIV 알림', iconEmoji: ':bell:', text: '' });
-    const bar = barOf(room);
-    expect(bar.color).toBe(BAR_COLOR.contact);
-    expect(bar.headline).toBe('📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com');
-    expect(bar.notes).toHaveLength(3);
-    expect(bar.notes[0]).toBe("'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다.");
-    expect(bar.notes[1]).toContain('번역본이 올라옵니다');
+    // 설명 줄 없이 큰 줄 하나 (slack-room-notice-trim)
+    expect(barOf(room)).toEqual({
+      color: BAR_COLOR.contact,
+      headline: '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com',
+      notes: [],
+    });
     const feed = postMock.mock.calls[1][0];
     expect(feed.channelId).toBe('C0FEED');
     expect(feed.text.startsWith('📋 연락처 남김 · 🇨🇳 익명 · 이메일 · <#C0ROOM> · ')).toBe(true);
@@ -533,14 +533,14 @@ describe('relayContactToSlack — 연락처 알림', () => {
     expect(postMock.mock.calls[0][0].username).toBeUndefined();
   });
 
-  it('CHAT_FOLLOWUP=off 면 분류 안내 대신 연락 요청만 남긴다', async () => {
+  it('CHAT_FOLLOWUP=off 여도 방의 막대는 큰 줄만이다', async () => {
     process.env.CHAT_FOLLOWUP = 'off';
     adminFor(ROOM_ROW);
     await relayContactToSlack({ sessionId: SESSION_ID, channel: 'email', handle: 'guest@example.com' });
     expect(barOf(postMock.mock.calls[0][0])).toEqual({
       color: BAR_COLOR.contact,
       headline: '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com',
-      notes: ['이 연락처로 먼저 연락해 주세요.'],
+      notes: [],
     });
   });
 
@@ -570,7 +570,7 @@ describe('relayMessengerClickToSlack · relayEventHintNoteToSlack — 방에 한
   });
   afterEach(clearSlackEnv);
 
-  it('단추 클릭: 방에 LIV 알림의 초록 막대 (번역본 안내는 설명 줄)', async () => {
+  it('단추 클릭: 방에 LIV 알림의 초록 막대 (큰 줄만)', async () => {
     adminFor(ROOM_ROW);
     await relayMessengerClickToSlack({ sessionId: SESSION_ID, channel: 'whatsapp' });
     expect(postMock).toHaveBeenCalledTimes(1);
@@ -579,7 +579,7 @@ describe('relayMessengerClickToSlack · relayEventHintNoteToSlack — 방에 한
       color: BAR_COLOR.contact,
       headline:
         '📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #5B0C7C1A 가 담긴 메시지를 확인해 주세요.',
-      notes: ['이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'],
+      notes: [],
     });
   });
 
@@ -596,7 +596,7 @@ describe('relayMessengerClickToSlack · relayEventHintNoteToSlack — 방에 한
     expect(postMock).not.toHaveBeenCalled();
   });
 
-  it('이벤트 안내: 방에 LIV 알림의 회색 막대 (문장 다음 줄에 링크)', async () => {
+  it('이벤트 안내: 방에 LIV 알림의 회색 막대 (짧은 문장 다음 줄에 링크)', async () => {
     adminFor(ROOM_ROW);
     const url = 'https://liv-clinic.net/zh/events/2026-10-promotion';
     await relayEventHintNoteToSlack({ sessionId: SESSION_ID, url });
@@ -604,7 +604,7 @@ describe('relayMessengerClickToSlack · relayEventHintNoteToSlack — 방에 한
     expect(postMock.mock.calls[0][0]).toMatchObject({ channelId: 'C0ROOM', username: 'LIV 알림', text: '' });
     expect(barOf(postMock.mock.calls[0][0])).toEqual({
       color: BAR_COLOR.info,
-      headline: `🎁 가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요.\n${url}`,
+      headline: `🎁 이벤트 링크를 자동으로 보냈습니다\n${url}`,
       notes: [],
     });
   });
@@ -701,9 +701,18 @@ describe('relayChatMessageToSlack — 방의 첫 글: 손님 글과 새 문의 �
     receivedAt: '2026-10-05T03:00:00Z',
   };
   const VISITOR_TEXT = '<@U0AAA>\n울쎄라 얼마인가요?\n> _원문:_ How much is Ulthera?';
-  /** n번째 게시(새 문의 알림)의 설명 줄들 */
-  const noticeNotes = (call: number): string[] =>
-    (postMock.mock.calls[call][0].attachments![0].blocks[1].elements as Array<{ text: string }>).map((e) => e.text);
+  /** n번째 게시(새 문의 알림)의 막대들 — 색, 큰 줄, 블록 수(1 = 설명 줄 없음) */
+  const noticeBars = (call: number) =>
+    postMock.mock.calls[call][0].attachments!.map((a) => ({
+      color: a.color,
+      headline: (a.blocks[0].text as { text: string }).text,
+      blocks: a.blocks.length,
+    }));
+  const NEW_INQUIRY_BAR = {
+    color: BAR_COLOR.info,
+    headline: '*새 문의* · 📥 10/05(월) 12:00 KST · 참조코드 `#5B0C7C1A`',
+    blocks: 1,
+  };
 
   beforeEach(() => {
     setSlackEnv();
@@ -738,7 +747,8 @@ describe('relayChatMessageToSlack — 방의 첫 글: 손님 글과 새 문의 �
       type: 'section',
       text: { type: 'mrkdwn', text: '*새 문의* · 📥 10/05(월) 12:00 KST · 참조코드 `#5B0C7C1A`' },
     });
-    expect(noticeNotes(1)).toHaveLength(2);
+    // 설명 줄 없이 큰 줄 하나 (slack-room-notice-trim)
+    expect(noticeBars(1)).toEqual([NEW_INQUIRY_BAR]);
 
     // 피드 줄에는 이름표를 붙이지 않는다 — 피드 스레드 답장 전달이 부모 글의 user로 우리 봇을 판별한다.
     const feed = postMock.mock.calls[2][0];
@@ -765,31 +775,35 @@ describe('relayChatMessageToSlack — 방의 첫 글: 손님 글과 새 문의 �
     expect(persist?.payload).toEqual({ slack_ts: '1.1' });
   });
 
-  it('시작 화면에서 이메일을 넣은 손님: 알림의 설명에 연락처 꼬리말이 한 줄 더 붙는다', async () => {
+  it('시작 화면에서 이메일을 넣은 손님: 새 문의 알림에 초록 막대 한 줄(연락처)이 따라붙는다', async () => {
     adminFor({ ...UNASSIGNED_ROW, visitor_email: 'guest@example.com' });
     await relayChatMessageToSlack(FIRST);
+    // 손님 글, 알림(막대 두 개), 피드 줄 — 게시 횟수는 늘지 않는다
+    expect(postMock).toHaveBeenCalledTimes(3);
     expect(postMock.mock.calls[0][0].text).toBe(VISITOR_TEXT);
-    expect(noticeNotes(1)).toHaveLength(3);
-    expect(noticeNotes(1)[2]).toBe(bareNote(ROOM_EMAIL_CONTACT_NOTE));
+    expect(noticeBars(1)).toEqual([
+      NEW_INQUIRY_BAR,
+      { color: BAR_COLOR.contact, headline: '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com', blocks: 1 },
+    ]);
   });
 
   it('이메일이 없는 손님에게는 붙지 않는다', async () => {
     adminFor(UNASSIGNED_ROW);
     await relayChatMessageToSlack(FIRST);
-    expect(noticeNotes(1).join('\n')).not.toContain('이메일을 남긴 손님입니다');
+    expect(noticeBars(1)).toEqual([NEW_INQUIRY_BAR]);
   });
 
   it('이 글에서 방금 이메일이 저장됐으면(📱 알림이 뒤따른다) 붙이지 않는다', async () => {
     adminFor({ ...UNASSIGNED_ROW, visitor_email: 'guest@example.com' });
     await relayChatMessageToSlack({ ...FIRST, contactJustSaved: true });
-    expect(noticeNotes(1)).toHaveLength(2);
+    expect(noticeBars(1)).toEqual([NEW_INQUIRY_BAR]);
   });
 
   it('CHAT_FOLLOWUP=off 면 붙이지 않는다', async () => {
     process.env.CHAT_FOLLOWUP = 'off';
     adminFor({ ...UNASSIGNED_ROW, visitor_email: 'guest@example.com' });
     await relayChatMessageToSlack(FIRST);
-    expect(noticeNotes(1)).toHaveLength(2);
+    expect(noticeBars(1)).toEqual([NEW_INQUIRY_BAR]);
   });
 
   it('알림 게시가 실패해도 피드 줄까지 간다', async () => {

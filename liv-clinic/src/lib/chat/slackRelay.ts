@@ -434,8 +434,15 @@ async function postInRoom(
   // 글자만으로 올라갔으면(긴급 정지·재게시) 그 문구에 이미 들어 있으므로 올리지 않는다.
   if (args.sender === 'visitor' && !posted.plain) {
     if (firstInRoom) {
+      // 시작 화면에서 이메일을 넣은 손님이면 알림에 초록 막대(연락처) 한 줄이 따라붙는다 (slack-room-notice-trim §2.3)
+      const contactNote = firstContactNote(session, args);
       await postRoomNotice(
-        styledRoomFirstNotice({ sessionId: session.id, receivedAt, contactNote: firstContactNote(session, args) }),
+        styledRoomFirstNotice({
+          sessionId: session.id,
+          receivedAt,
+          contactNote,
+          contactEmail: contactNote ? session.visitor_email : null,
+        }),
         channelId,
         'first notice'
       );

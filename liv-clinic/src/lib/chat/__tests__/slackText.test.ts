@@ -1,6 +1,5 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import {
-  bareNote,
   buildContactText,
   buildDeliveryFailureText,
   buildEscalationText,
@@ -19,7 +18,6 @@ import {
   contactNoticeParts,
   deliveryFailureParts,
   escalationNoticeHeadline,
-  escalationNoticeParts,
   EVENT_HINT_SENTENCE,
   EVENT_HINT_SHORT,
   extractRoomChannelFromFeedText,
@@ -31,7 +29,6 @@ import {
   ROOM_FOOTER,
   ROOM_REOPENED_LEAD,
   roomFirstNoticeHeadline,
-  roomFirstNoticeParts,
   staffChannelLabel,
   type FollowupDigestItem,
 } from '../slackText';
@@ -577,20 +574,8 @@ describe('buildDeliveryFailureText', () => {
   });
 });
 
-// ── 큰 줄 + 설명 줄 (스펙 2026-10-01 slack-room-look §3.4) — 색 막대에 넣을 조각 ─────────────────
-// 같은 문장을 글자만 올리는 build…Text 가 이어 붙여 쓴다. 위의 기존 기대값이 바뀌지 않는 것이 그 증거다.
-
-describe('bareNote — 기울임 표시를 벗긴다', () => {
-  it('앞뒤 밑줄 하나씩만 벗긴다', () => {
-    expect(bareNote('_설명입니다._')).toBe('설명입니다.');
-    expect(bareNote(ROOM_FOOTER)).toBe(
-      '이 채널에 쓰면 손님에게 번역되어 전달됩니다. 직원끼리 메모는 스레드로 남겨 주세요.'
-    );
-  });
-  it('밑줄이 없으면 그대로', () => {
-    expect(bareNote('그대로')).toBe('그대로');
-  });
-});
+// ── 알림의 조각 (스펙 2026-10-01 slack-room-look §3.4) — 글자만 문구가 큰 줄과 설명 줄을 이어 붙인다 ─────────
+// 손님 방의 색 막대에는 큰 줄만 올린다(2026-10-02 slack-room-notice-trim). 설명 줄은 글자만 문구에 남는다.
 
 describe('contactNoticeParts — 연락처 알림의 조각', () => {
   it('방: 큰 줄 하나 + 설명 세 줄(기울임 없음), 링크 없음', () => {
@@ -649,26 +634,10 @@ describe('EVENT_HINT_SENTENCE', () => {
   });
 });
 
-describe('roomFirstNoticeParts — 방의 첫 알림(새 문의)', () => {
+describe('buildRoomFirstNoticeText — 첫 알림의 글자만 문구', () => {
   const base = { receivedAt: '2026-10-01T07:40:00Z', sessionId: '40e56969-aaaa-bbbb-cccc-dddddddddddd' };
 
-  it('큰 줄에 접수 시각과 참조코드, 설명에 사용법과 접수 안내', () => {
-    expect(roomFirstNoticeParts(base)).toEqual({
-      headline: '*새 문의* · 📥 10/01(목) 16:40 KST · 참조코드 `#40E56969`',
-      notes: [
-        '이 채널에 쓰면 손님에게 번역되어 전달됩니다. 직원끼리 메모는 스레드로 남겨 주세요.',
-        '손님에게는 접수 안내(예상 시간·연락처 요청·시술과 방문일 질문)가 자동으로 나갔습니다.',
-      ],
-    });
-  });
-  it('연락처 꼬리말이 있으면 설명이 한 줄 는다', () => {
-    const p = roomFirstNoticeParts({ ...base, contactNote: ROOM_EMAIL_CONTACT_NOTE });
-    expect(p.notes).toHaveLength(3);
-    expect(p.notes[2]).toBe(
-      "이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리되며 재촉 알림은 울리지 않습니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다."
-    );
-  });
-  it('글자만 올릴 때: 🔴 머리 + 기울임 설명', () => {
+  it('🔴 머리 + 기울임 설명 (꾸민 알림이 거부됐을 때만 쓴다)', () => {
     expect(buildRoomFirstNoticeText(base)).toBe(
       `🔴 *새 문의* · 📥 10/01(목) 16:40 KST · 참조코드 #40E56969\n${ROOM_FOOTER}\n${ROOM_AUTO_ACK_NOTE}`
     );
@@ -691,28 +660,6 @@ describe('ROOM_REOPENED_LEAD', () => {
         translatedText: null,
       }).startsWith(`${ROOM_REOPENED_LEAD} · <@U1>`)
     ).toBe(true);
-  });
-});
-
-describe('escalationNoticeParts — 재촉 알림의 조각 (멘션은 넣지 않는다)', () => {
-  it('1단계', () => {
-    expect(escalationNoticeParts({ level: 1, minutes: 5, assigneeMention: '<@U1>' })).toEqual({
-      headline: '⏰ *5분째 답이 없습니다.*',
-      notes: [],
-    });
-  });
-  it('2단계: 담당자가 있으면 전원에게 알리는 사유를 설명 줄로', () => {
-    expect(escalationNoticeParts({ level: 2, minutes: 12, assigneeMention: '<@U1>' })).toEqual({
-      headline: '⏰ *12분째 답이 없습니다.*',
-      notes: ['담당 <@U1> 님이 응답하지 않아 전원에게 알립니다.'],
-    });
-    expect(escalationNoticeParts({ level: 2, minutes: 12, assigneeMention: null }).notes).toEqual([]);
-  });
-  it('3단계: 🚨', () => {
-    expect(escalationNoticeParts({ level: 3, minutes: 30, assigneeMention: null })).toEqual({
-      headline: '🚨 *30분째 미응답입니다.*',
-      notes: [],
-    });
   });
 });
 

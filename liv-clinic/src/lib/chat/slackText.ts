@@ -91,9 +91,9 @@ function operatorPrefix(senderLabel: string | null): string {
   return `↩️ _관리자 화면 답장${who}_`;
 }
 
-// ── 알림의 조각: 큰 줄 + 설명 줄 (스펙 2026-10-01 slack-room-look §3.4) ─────────────────────
-// 손님 방에서는 slackLook.ts 가 이 조각을 색 막대에 넣는다(큰 줄 = section, 설명 = 작은 회색 글씨).
-// 글자만 올릴 때(스레드 방식·피드·긴급 정지·꾸민 글 실패)는 아래 build…Text 가 같은 조각을 이어 붙인다.
+// ── 알림의 조각: 큰 줄 + 설명 줄 (스펙 2026-10-01 slack-room-look §3.4, 2026-10-02 slack-room-notice-trim) ────
+// 손님 방에서는 slackLook.ts 가 큰 줄만 색 막대에 넣는다 — 설명 줄은 방에서 뺐다(전달 실패의 사유만 남긴다).
+// 글자만 올릴 때(스레드 방식·피드·긴급 정지·꾸민 글 실패)는 아래 build…Text 가 큰 줄과 설명 줄을 이어 붙인다.
 
 export interface NoticeParts {
   /** 큰 줄 (mrkdwn) */
@@ -103,11 +103,6 @@ export interface NoticeParts {
 }
 
 const italic = (s: string): string => `_${s}_`;
-
-/** `_문장_` → `문장`. 기울임으로 감싸 둔 상수(ROOM_FOOTER 등)를 설명 줄로 쓸 때. */
-export function bareNote(s: string): string {
-  return s.replace(/^_/, '').replace(/_$/, '');
-}
 
 // ── 스레드 모드 (현행 문구, 변경 없음) ────────────────────────────────────
 
@@ -315,18 +310,8 @@ export interface RoomFirstNoticeArgs {
 }
 
 /**
- * 방의 첫 알림(새 문의)의 조각 — 손님 글을 손님 이름표로 따로 올릴 때 그 바로 뒤에 붙는다 (slack-room-look §3.4).
- * 참조코드는 방 이름에서 빠졌으므로 여기와 방 주제에 남긴다(검색으로 방을 찾는다). 백틱 = 코드 글씨.
- */
-export function roomFirstNoticeParts(args: RoomFirstNoticeArgs): NoticeParts {
-  const code = buildChatRefCode(args.sessionId);
-  const notes = [bareNote(ROOM_FOOTER), bareNote(ROOM_AUTO_ACK_NOTE)];
-  if (args.contactNote) notes.push(bareNote(args.contactNote));
-  return { headline: `*새 문의* · 📥 ${formatKst(args.receivedAt)} · 참조코드 \`#${code}\``, notes };
-}
-
-/**
- * 방의 첫 알림(새 문의)의 큰 줄 — 손님 방의 색 막대에는 이 한 줄만 올린다 (스펙 2026-10-02 slack-room-notice-trim).
+ * 방의 첫 알림(새 문의)의 큰 줄 — 손님 글을 손님 이름표로 따로 올릴 때 그 바로 뒤에 붙는다 (slack-room-look §3.4).
+ * 손님 방의 색 막대에는 이 한 줄만 올린다 (스펙 2026-10-02 slack-room-notice-trim).
  * 참조코드는 방 이름에서 빠졌으므로 여기와 방 주제에 남긴다(검색으로 방을 찾는다). 백틱 = 코드 글씨.
  */
 export function roomFirstNoticeHeadline(args: { receivedAt: string; sessionId: string }): string {
@@ -411,23 +396,6 @@ export function buildEscalationText(args: {
     return `⏰ ${args.mention} ${args.minutes}분째 답이 없습니다 · 담당 ${args.assigneeMention} 님이 응답하지 않아 전원에게 알립니다.`;
   }
   return `⏰ ${args.mention} ${args.minutes}분째 답이 없습니다.`;
-}
-
-/**
- * 재촉 알림의 조각 — 손님 방의 빨간 막대에 넣는다. 멘션은 여기 넣지 않는다:
- * 막대 안의 멘션이 알림을 만드는지 확인하지 못했으므로 호출자가 최상위 text에 따로 둔다 (slack-room-look §3.3).
- */
-export function escalationNoticeParts(args: {
-  level: 1 | 2 | 3;
-  minutes: number;
-  assigneeMention: string | null;
-}): NoticeParts {
-  if (args.level === 3) return { headline: `🚨 *${args.minutes}분째 미응답입니다.*`, notes: [] };
-  const notes =
-    args.level === 2 && args.assigneeMention
-      ? [`담당 ${args.assigneeMention} 님이 응답하지 않아 전원에게 알립니다.`]
-      : [];
-  return { headline: `⏰ *${args.minutes}분째 답이 없습니다.*`, notes };
 }
 
 /**

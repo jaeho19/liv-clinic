@@ -162,23 +162,40 @@ describe('손님 글 (1·3)', () => {
 });
 
 describe('알림 (2·4·8·9·10·11·12·13) — LIV 알림 + 색 막대', () => {
-  it('첫 알림: 회색, 큰 줄에 접수 시각과 참조코드', () => {
+  it('첫 알림: 회색, 큰 줄 하나 — 접수 시각과 참조코드 (설명 줄 없음)', () => {
     const m = styledRoomFirstNotice({ sessionId: SESSION_ID, receivedAt: AT });
     expect(m.username).toBe('LIV 알림');
     expect(m.iconEmoji).toBe(':bell:');
     expect(m.text).toBe('');
-    expect(m.attachments).toHaveLength(1);
-    expect(m.attachments![0].color).toBe(BAR_COLOR.info);
-    expect(m.attachments![0].blocks[0]).toEqual({
-      type: 'section',
-      text: { type: 'mrkdwn', text: '*새 문의* · 📥 10/01(목) 16:40 KST · 참조코드 `#40E56969`' },
-    });
-    expect(m.attachments![0].fallback).toBe('새 문의 · 📥 10/01(목) 16:40 KST · 참조코드 #40E56969');
+    expect(m.attachments).toEqual([
+      {
+        color: BAR_COLOR.info,
+        fallback: '새 문의 · 📥 10/01(목) 16:40 KST · 참조코드 #40E56969',
+        blocks: [
+          { type: 'section', text: { type: 'mrkdwn', text: '*새 문의* · 📥 10/01(목) 16:40 KST · 참조코드 `#40E56969`' } },
+        ],
+      },
+    ]);
     expect(m.plainText).toBe(buildRoomFirstNoticeText({ sessionId: SESSION_ID, receivedAt: AT }));
   });
-  it('첫 알림: 연락처 꼬리말이 있으면 설명이 세 줄', () => {
-    const m = styledRoomFirstNotice({ sessionId: SESSION_ID, receivedAt: AT, contactNote: ROOM_EMAIL_CONTACT_NOTE });
-    expect(m.attachments![0].blocks[1].elements as unknown[]).toHaveLength(3);
+  it('첫 알림: 시작 화면에서 이메일을 넣은 손님이면 초록 막대 한 줄이 따라붙는다', () => {
+    const args = { sessionId: SESSION_ID, receivedAt: AT, contactNote: ROOM_EMAIL_CONTACT_NOTE };
+    const m = styledRoomFirstNotice({ ...args, contactEmail: 'yuki.t@example.com' });
+    expect(m.attachments).toHaveLength(2);
+    expect(m.attachments![0].color).toBe(BAR_COLOR.info);
+    expect(m.attachments![1]).toEqual({
+      color: BAR_COLOR.contact,
+      fallback: '📱 손님이 연락처를 남겼습니다 — 이메일: yuki.t@example.com',
+      blocks: [
+        {
+          type: 'section',
+          text: { type: 'mrkdwn', text: '📱 *손님이 연락처를 남겼습니다* — 이메일: yuki.t@example.com' },
+        },
+      ],
+    });
+    // 글자만 문구에는 지금까지의 꼬리말이 그대로 붙는다
+    expect(m.plainText).toBe(buildRoomFirstNoticeText(args));
+    expect(m.plainText.endsWith(ROOM_EMAIL_CONTACT_NOTE)).toBe(true);
   });
   it('재발신 알림: 회색, 설명 없음', () => {
     const m = styledReopenedNotice();
@@ -186,38 +203,38 @@ describe('알림 (2·4·8·9·10·11·12·13) — LIV 알림 + 색 막대', () =
     expect(m.attachments![0].color).toBe(BAR_COLOR.info);
     expect(m.attachments![0].blocks).toEqual([{ type: 'section', text: { type: 'mrkdwn', text: ROOM_REOPENED_LEAD } }]);
   });
-  it('연락처 남김: 초록, 설명 세 줄(기울임 없음)', () => {
+  it('연락처 남김: 초록, 큰 줄만 (설명은 글자만 문구에만 남는다)', () => {
     const args = { channelLabel: '이메일', handle: 'yuki.t@example.com', mode: 'room' as const, followup: true, adminUrl: null };
     const m = styledContactNotice(args);
     expect(m).toMatchObject({ ...NOTICE_LOOK, text: '', plainText: buildContactText(args) });
     expect(m.attachments![0].color).toBe(BAR_COLOR.contact);
-    expect(m.attachments![0].blocks[0]).toEqual({
-      type: 'section',
-      text: { type: 'mrkdwn', text: '📱 *손님이 연락처를 남겼습니다* — 이메일: yuki.t@example.com' },
-    });
-    const notes = (m.attachments![0].blocks[1].elements as Array<{ text: string }>).map((e) => e.text);
-    expect(notes).toHaveLength(3);
-    expect(notes.every((n) => !n.startsWith('_'))).toBe(true);
+    expect(m.attachments![0].blocks).toEqual([
+      { type: 'section', text: { type: 'mrkdwn', text: '📱 *손님이 연락처를 남겼습니다* — 이메일: yuki.t@example.com' } },
+    ]);
+    expect(m.plainText).toContain("_'오늘 연락할 손님'으로 분류했습니다");
   });
-  it('병원 연락 단추: 초록, 번역본 안내는 설명 줄', () => {
+  it('병원 연락 단추: 초록, 큰 줄만 (번역본 안내는 글자만 문구에만 남는다)', () => {
     const args = { channel: 'whatsapp' as const, sessionId: SESSION_ID, copyHint: true };
     const m = styledMessengerClick(args);
     expect(m.attachments![0].color).toBe(BAR_COLOR.contact);
-    expect(m.attachments![0].blocks).toHaveLength(2);
-    expect(m.plainText).toBe(buildMessengerClickText(args));
-  });
-  it('이벤트 링크 안내: 회색, 문장 다음 줄에 링크', () => {
-    const url = 'https://liv-clinic.net/ja/events/2026-10-promotion';
-    const m = styledEventHint(url);
-    expect(m.attachments![0].color).toBe(BAR_COLOR.info);
     expect(m.attachments![0].blocks).toEqual([
       {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `🎁 가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요.\n${url}`,
+          text: '📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #40E56969 가 담긴 메시지를 확인해 주세요.',
         },
       },
+    ]);
+    expect(m.plainText).toBe(buildMessengerClickText(args));
+    expect(m.plainText).toContain('번역본이 아래에 올라옵니다');
+  });
+  it('이벤트 링크 안내: 회색, 짧은 문장 다음 줄에 링크', () => {
+    const url = 'https://liv-clinic.net/ja/events/2026-10-promotion';
+    const m = styledEventHint(url);
+    expect(m.attachments![0].color).toBe(BAR_COLOR.info);
+    expect(m.attachments![0].blocks).toEqual([
+      { type: 'section', text: { type: 'mrkdwn', text: `🎁 이벤트 링크를 자동으로 보냈습니다\n${url}` } },
     ]);
     expect(m.plainText).toBe(buildEventHintNote(url));
   });
@@ -230,12 +247,15 @@ describe('알림 (2·4·8·9·10·11·12·13) — LIV 알림 + 색 막대', () =
       { type: 'section', text: { type: 'mrkdwn', text: '⏰ *5분째 답이 없습니다.*' } },
     ]);
   });
-  it('12분 재촉: 담당자가 답하지 않았다는 사유가 설명 줄', () => {
-    const m = styledEscalation({ level: 2, minutes: 12, mention: '<@U1> <@U2>', assigneeMention: '<@U1>' });
-    expect(m.attachments![0].blocks[1]).toEqual({
-      type: 'context',
-      elements: [{ type: 'mrkdwn', text: '담당 <@U1> 님이 응답하지 않아 전원에게 알립니다.' }],
-    });
+  it('12분 재촉: 큰 줄만 — 담당자가 답하지 않았다는 사유는 글자만 문구에만 남는다', () => {
+    const args = { level: 2 as const, minutes: 12, mention: '<@U1> <@U2>', assigneeMention: '<@U1>' };
+    const m = styledEscalation(args);
+    expect(m.text).toBe('<@U1> <@U2>');
+    expect(m.attachments![0].blocks).toEqual([
+      { type: 'section', text: { type: 'mrkdwn', text: '⏰ *12분째 답이 없습니다.*' } },
+    ]);
+    expect(m.plainText).toBe(buildEscalationText(args));
+    expect(m.plainText).toContain('담당 <@U1> 님이 응답하지 않아 전원에게 알립니다.');
   });
   it('30분 재촉: 🚨', () => {
     const m = styledEscalation({ level: 3, minutes: 30, mention: '<@U1>', assigneeMention: null });
