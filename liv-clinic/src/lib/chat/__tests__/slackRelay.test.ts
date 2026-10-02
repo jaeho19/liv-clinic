@@ -32,6 +32,7 @@ import { archiveChannel, fetchThreadParent, getBotUserId, postSlackMessage, unar
 import { ensureRoom } from '../slackRooms';
 import { translate } from '../translation';
 import {
+  notifyDeliveryFailure,
   postStyled,
   relayChatMessageToSlack,
   relayContactToSlack,
@@ -290,6 +291,17 @@ function clearSlackEnv() {
   delete process.env.SLACK_CHANNEL_ID;
   delete process.env.CHAT_FOLLOWUP;
   delete process.env.NEXT_PUBLIC_SITE_URL;
+  delete process.env.SLACK_ROOM_LOOK;
+}
+
+/** 색 막대 알림 한 건의 색·큰 줄·설명 줄 (slack-room-look §3.3). */
+function barOf(post: Parameters<typeof postSlackMessage>[0]) {
+  const a = post.attachments![0];
+  return {
+    color: a.color,
+    headline: (a.blocks[0].text as { text: string }).text,
+    notes: a.blocks[1] ? (a.blocks[1].elements as Array<{ text: string }>).map((e) => e.text) : [],
+  };
 }
 
 describe('relaySlackReplyToVisitor — 연락 수단이 있는 손님의 방에 번역본 게시', () => {
@@ -461,25 +473,39 @@ describe('relayContactToSlack — 연락처 알림', () => {
   });
   afterEach(clearSlackEnv);
 
-  it('방: 분류 안내가 담긴 글을 방에, 피드에 "연락처 남김" 한 줄', async () => {
+  it('방: LIV 알림의 초록 막대(큰 줄 + 분류 안내 세 줄)를 방에, 피드에 "연락처 남김" 한 줄', async () => {
     adminFor(ROOM_ROW);
     await relayContactToSlack({ sessionId: SESSION_ID, channel: 'email', handle: 'guest@example.com' });
 
     expect(postMock).toHaveBeenCalledTimes(2);
     const room = postMock.mock.calls[0][0];
-    expect(room.channelId).toBe('C0ROOM');
-    expect(room.text.split('\n')[0]).toBe('📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com');
-    expect(room.text).toContain("'오늘 연락할 손님'으로 분류했습니다");
-    expect(room.text).toContain('번역본이 올라옵니다');
+    expect(room).toMatchObject({ channelId: 'C0ROOM', username: 'LIV 알림', iconEmoji: ':bell:', text: '' });
+    const bar = barOf(room);
+    expect(bar.color).toBe(BAR_COLOR.contact);
+    expect(bar.headline).toBe('📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com');
+    expect(bar.notes).toHaveLength(3);
+    expect(bar.notes[0]).toBe("'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다.");
+    expect(bar.notes[1]).toContain('번역본이 올라옵니다');
     const feed = postMock.mock.calls[1][0];
     expect(feed.channelId).toBe('C0FEED');
     expect(feed.text.startsWith('📋 연락처 남김 · 🇨🇳 익명 · 이메일 · <#C0ROOM> · ')).toBe(true);
+    expect(feed.username).toBeUndefined();
   });
 
   it('메신저 채널은 브랜드명으로 적는다', async () => {
     adminFor(ROOM_ROW);
     await relayContactToSlack({ sessionId: SESSION_ID, channel: 'wechat', handle: 'liwei88' });
-    expect(postMock.mock.calls[0][0].text.split('\n')[0]).toBe('📱 *손님이 연락처를 남겼습니다* — WeChat: liwei88');
+    expect(barOf(postMock.mock.calls[0][0]).headline).toBe('📱 *손님이 연락처를 남겼습니다* — WeChat: liwei88');
+  });
+
+  it('SLACK_ROOM_LOOK=off 면 방에도 예전 글자 문구로 올린다', async () => {
+    process.env.SLACK_ROOM_LOOK = 'off';
+    adminFor(ROOM_ROW);
+    await relayContactToSlack({ sessionId: SESSION_ID, channel: 'wechat', handle: 'liwei88' });
+    const room = postMock.mock.calls[0][0];
+    expect(room.username).toBeUndefined();
+    expect(room.text.split('\n')[0]).toBe('📱 *손님이 연락처를 남겼습니다* — WeChat: liwei88');
+    expect(room.text).toContain("_'오늘 연락할 손님'으로 분류했습니다");
   });
 
   it('스레드: 대표 스레드에 올리고 번역본 안내와 피드 줄은 없다', async () => {
@@ -490,6 +516,9 @@ describe('relayContactToSlack — 연락처 알림', () => {
     expect(postMock.mock.calls[0][0]).toMatchObject({ channelId: 'C0FEED', threadTs: THREAD_TS });
     expect(postMock.mock.calls[0][0].text).not.toContain('번역본');
     expect(postMock.mock.calls[0][0].text).toContain('이 스레드에 답글을 쓰면 목록에서 빠집니다');
+    // 스레드 방식은 예전 그대로 글자만
+    expect(postMock.mock.calls[0][0].username).toBeUndefined();
+    expect(postMock.mock.calls[0][0].attachments).toBeUndefined();
   });
 
   it('방도 스레드도 없으면 관리자 화면 링크를 붙여 단독 게시한다', async () => {
@@ -500,15 +529,19 @@ describe('relayContactToSlack — 연락처 알림', () => {
     expect(postMock).toHaveBeenCalledTimes(1);
     expect(postMock.mock.calls[0][0].threadTs).toBeUndefined();
     expect(postMock.mock.calls[0][0].text).toContain(`🔗 <https://liv-clinic.net/admin/chat/${SESSION_ID}|관리자 화면에서 열기>`);
+    // #해외문의에 단독으로 올리는 글에는 이름표를 붙이지 않는다
+    expect(postMock.mock.calls[0][0].username).toBeUndefined();
   });
 
   it('CHAT_FOLLOWUP=off 면 분류 안내 대신 연락 요청만 남긴다', async () => {
     process.env.CHAT_FOLLOWUP = 'off';
     adminFor(ROOM_ROW);
     await relayContactToSlack({ sessionId: SESSION_ID, channel: 'email', handle: 'guest@example.com' });
-    expect(postMock.mock.calls[0][0].text).toBe(
-      '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com\n_이 연락처로 먼저 연락해 주세요._'
-    );
+    expect(barOf(postMock.mock.calls[0][0])).toEqual({
+      color: BAR_COLOR.contact,
+      headline: '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com',
+      notes: ['이 연락처로 먼저 연락해 주세요.'],
+    });
   });
 
   it('Slack 설정이 없으면 아무것도 하지 않는다', async () => {
@@ -537,14 +570,17 @@ describe('relayMessengerClickToSlack · relayEventHintNoteToSlack — 방에 한
   });
   afterEach(clearSlackEnv);
 
-  it('단추 클릭: 방에 📲 한 줄 (번역본 안내 포함)', async () => {
+  it('단추 클릭: 방에 LIV 알림의 초록 막대 (번역본 안내는 설명 줄)', async () => {
     adminFor(ROOM_ROW);
     await relayMessengerClickToSlack({ sessionId: SESSION_ID, channel: 'whatsapp' });
     expect(postMock).toHaveBeenCalledTimes(1);
-    expect(postMock.mock.calls[0][0].channelId).toBe('C0ROOM');
-    expect(postMock.mock.calls[0][0].text).toBe(
-      '📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #5B0C7C1A 가 담긴 메시지를 확인해 주세요. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'
-    );
+    expect(postMock.mock.calls[0][0]).toMatchObject({ channelId: 'C0ROOM', username: 'LIV 알림', text: '' });
+    expect(barOf(postMock.mock.calls[0][0])).toEqual({
+      color: BAR_COLOR.contact,
+      headline:
+        '📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #5B0C7C1A 가 담긴 메시지를 확인해 주세요.',
+      notes: ['이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'],
+    });
   });
 
   it('단추 클릭: 스레드 모드는 스레드에, 번역본 안내 없이', async () => {
@@ -560,14 +596,16 @@ describe('relayMessengerClickToSlack · relayEventHintNoteToSlack — 방에 한
     expect(postMock).not.toHaveBeenCalled();
   });
 
-  it('이벤트 안내: 방에 🎁 한 줄과 링크', async () => {
+  it('이벤트 안내: 방에 LIV 알림의 회색 막대 (문장 다음 줄에 링크)', async () => {
     adminFor(ROOM_ROW);
     const url = 'https://liv-clinic.net/zh/events/2026-10-promotion';
     await relayEventHintNoteToSlack({ sessionId: SESSION_ID, url });
     expect(postMock).toHaveBeenCalledTimes(1);
-    expect(postMock.mock.calls[0][0]).toEqual({
-      text: `🎁 _가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요._\n${url}`,
-      channelId: 'C0ROOM',
+    expect(postMock.mock.calls[0][0]).toMatchObject({ channelId: 'C0ROOM', username: 'LIV 알림', text: '' });
+    expect(barOf(postMock.mock.calls[0][0])).toEqual({
+      color: BAR_COLOR.info,
+      headline: `🎁 가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요.\n${url}`,
+      notes: [],
     });
   });
 
@@ -579,6 +617,61 @@ describe('relayMessengerClickToSlack · relayEventHintNoteToSlack — 방에 한
     postMock.mockClear();
     adminFor(UNASSIGNED_ROW);
     await relayEventHintNoteToSlack({ sessionId: SESSION_ID, url: 'https://liv-clinic.net/en/events' });
+    expect(postMock).not.toHaveBeenCalled();
+  });
+});
+
+describe('notifyDeliveryFailure — 답글 전달 실패 알림', () => {
+  const postMock = vi.mocked(postSlackMessage);
+  const ROOM_REPLY = {
+    channel: 'C0ROOM',
+    slackTs: '3.0',
+    threadTs: null,
+    isTopLevel: true,
+    isBroadcast: false,
+    text: '답',
+    slackUserId: 'U0AAA',
+  };
+
+  beforeEach(() => {
+    setSlackEnv();
+    postMock.mockReset();
+    postMock.mockResolvedValue({ ok: true, ts: '9.9', channel: 'C0ROOM' });
+  });
+  afterEach(clearSlackEnv);
+
+  it('손님 방 안: LIV 알림의 빨간 막대 (큰 줄 + 사유)', async () => {
+    await notifyDeliveryFailure(ROOM_REPLY, 'error');
+    expect(postMock).toHaveBeenCalledTimes(1);
+    expect(postMock.mock.calls[0][0]).toMatchObject({ channelId: 'C0ROOM', username: 'LIV 알림', text: '' });
+    expect(barOf(postMock.mock.calls[0][0])).toEqual({
+      color: BAR_COLOR.alert,
+      headline: '⚠️ *방금 답글이 손님에게 전달되지 않았습니다*',
+      notes: ['사유: 서버 오류가 났습니다. 관리자 화면에서 다시 보내 주세요'],
+    });
+  });
+
+  it('방 안의 스레드에서 난 실패는 그 스레드에 단다', async () => {
+    await notifyDeliveryFailure({ ...ROOM_REPLY, threadTs: '1.5', isTopLevel: false, isBroadcast: true }, 'empty_text');
+    expect(postMock.mock.calls[0][0]).toMatchObject({ channelId: 'C0ROOM', threadTs: '1.5', username: 'LIV 알림' });
+  });
+
+  it('#해외문의(피드 채널)의 스레드에서는 예전 그대로 글자만 올린다', async () => {
+    await notifyDeliveryFailure(
+      { ...ROOM_REPLY, channel: 'C0FEED', threadTs: THREAD_TS, isTopLevel: false },
+      'session_not_found'
+    );
+    expect(postMock.mock.calls[0][0]).toEqual({
+      text: '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: 이 스레드는 상담과 연결돼 있지 않습니다. 사이드바의 손님 방(날짜-이름으로 된 방) 본문에 답해 주세요',
+      channelId: 'C0FEED',
+      threadTs: THREAD_TS,
+    });
+  });
+
+  it('전달됐거나 일부러 무시한 경우에는 알리지 않는다', async () => {
+    for (const outcome of ['delivered', 'internal_note', 'legacy_top_level', 'unknown_channel'] as const) {
+      await notifyDeliveryFailure(ROOM_REPLY, outcome);
+    }
     expect(postMock).not.toHaveBeenCalled();
   });
 });

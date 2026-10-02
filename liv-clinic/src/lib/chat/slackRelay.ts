@@ -7,7 +7,11 @@ import { isFollowupEnabled, isRoomLookEnabled } from '@/lib/chat/chatFlags';
 import type { ContactChannel } from '@/lib/chat/contactChannels';
 import {
   styledAdminReply,
+  styledContactNotice,
+  styledDeliveryFailure,
+  styledEventHint,
   styledFeedReplyCopy,
+  styledMessengerClick,
   styledReopenedNotice,
   styledRoomFirstNotice,
   styledRoomFirstVisitor,
@@ -33,10 +37,7 @@ import { routeInbound } from '@/lib/chat/slackEvents';
 import {
   adminSessionUrl,
   buildContactText,
-  buildDeliveryFailureText,
-  buildEventHintNote,
   buildFeedLine,
-  buildMessengerClickText,
   buildReplyText,
   buildRootText,
   extractRoomChannelFromFeedText,
@@ -506,11 +507,15 @@ async function postInThread(
   }
 }
 
-/** 세션의 방(본문) 또는 대표 스레드에 한 줄을 올린다. 붙일 곳이 없으면 null. */
-async function postToSessionTarget(target: SlackTarget, text: string): Promise<PostMessageResult | null> {
-  if (target.mode === 'room') return postSlackMessage({ text, channelId: target.channelId });
+/** 세션의 방(본문) 또는 대표 스레드에 알림 하나를 올린다 — 방이면 꾸민 글, 스레드면 글자만. 붙일 곳이 없으면 null. */
+async function postToSessionTarget(target: SlackTarget, msg: StyledMessage): Promise<PostMessageResult | null> {
+  if (target.mode === 'room') return postStyled(msg, { channelId: target.channelId });
   if (target.mode === 'thread' && target.threadTs) {
-    return postSlackMessage({ text, threadTs: target.threadTs, channelId: target.channelId ?? undefined });
+    return postSlackMessage({
+      text: msg.plainText,
+      threadTs: target.threadTs,
+      channelId: target.channelId ?? undefined,
+    });
   }
   return null;
 }
@@ -532,18 +537,18 @@ export async function relayContactToSlack(args: {
     const target = resolveTarget(session, getSlackChannelId());
     const channelLabel = staffChannelLabel(args.channel);
     const attached = target.mode === 'room' || (target.mode === 'thread' && Boolean(target.threadTs));
-    const text = buildContactText({
+    const msg = styledContactNotice({
       channelLabel,
       handle: args.handle,
       mode: target.mode === 'room' ? 'room' : attached ? 'thread' : 'standalone',
       followup: isFollowupEnabled(),
       adminUrl: adminSessionUrl(args.sessionId),
     });
-    // 방도 스레드도 없으면 #해외문의에 관리자 화면 링크를 붙여 단독 게시한다.
+    // 방도 스레드도 없으면 #해외문의에 관리자 화면 링크를 붙여 단독 게시한다(글자만 — 피드에는 이름표를 쓰지 않는다).
     const result =
-      (await postToSessionTarget(target, text)) ??
+      (await postToSessionTarget(target, msg)) ??
       (await postSlackMessage({
-        text,
+        text: msg.plainText,
         channelId: (target.mode === 'thread' ? target.channelId : null) ?? undefined,
       }));
     if (!result.ok) console.warn('[slack relay] contact post failed:', result.error);
@@ -573,12 +578,12 @@ export async function relayMessengerClickToSlack(args: { sessionId: string; chan
     const session = await loadSession(admin, args.sessionId);
     if (!session) return;
     const target = resolveTarget(session, getSlackChannelId());
-    const text = buildMessengerClickText({
+    const msg = styledMessengerClick({
       channel: args.channel,
       sessionId: args.sessionId,
       copyHint: target.mode === 'room' && isFollowupEnabled(),
     });
-    const result = await postToSessionTarget(target, text);
+    const result = await postToSessionTarget(target, msg);
     if (result && !result.ok) console.warn('[slack relay] messenger click post failed:', result.error);
   } catch (e) {
     console.warn('[slack relay] messenger click relay failed:', e);
@@ -593,7 +598,7 @@ export async function relayEventHintNoteToSlack(args: { sessionId: string; url: 
     const session = await loadSession(admin, args.sessionId);
     if (!session) return;
     const target = resolveTarget(session, getSlackChannelId());
-    const result = await postToSessionTarget(target, buildEventHintNote(args.url));
+    const result = await postToSessionTarget(target, styledEventHint(args.url));
     if (result && !result.ok) console.warn('[slack relay] event hint note failed:', result.error);
   } catch (e) {
     console.warn('[slack relay] event hint note relay failed:', e);
@@ -922,11 +927,12 @@ export async function notifyDeliveryFailure(args: RelayInboundArgs, outcome: Inb
   // 답변 직원이 없으면 오늘과 동일하게 라우트의 console.warn만 남긴다.
   if (!(await hasResponders())) return;
   try {
-    const r = await postSlackMessage({
-      text: buildDeliveryFailureText(outcome),
-      channelId: args.channel,
-      threadTs: args.threadTs,
-    });
+    const msg = styledDeliveryFailure(outcome);
+    // 손님 방 안에서는 빨간 막대 알림, #해외문의(스레드 방식·피드 줄의 스레드)에서는 글자만 — 피드 채널에는 이름표를 쓰지 않는다.
+    const r =
+      args.channel === getSlackChannelId()
+        ? await postSlackMessage({ text: msg.plainText, channelId: args.channel, threadTs: args.threadTs })
+        : await postStyled(msg, { channelId: args.channel, threadTs: args.threadTs });
     if (!r.ok) console.warn('[slack relay] failure notice not posted:', r.error);
   } catch (e) {
     console.warn('[slack relay] failure notice threw:', e);
