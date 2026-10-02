@@ -5,7 +5,16 @@ import { translate, type TranslationResult } from '@/lib/chat/translation';
 import type { VisitorLocale } from '@/lib/chat/serverI18n';
 import { isFollowupEnabled, isRoomLookEnabled } from '@/lib/chat/chatFlags';
 import type { ContactChannel } from '@/lib/chat/contactChannels';
-import type { StyledMessage } from '@/lib/chat/slackLook';
+import {
+  styledAdminReply,
+  styledFeedReplyCopy,
+  styledReopenedNotice,
+  styledRoomFirstNotice,
+  styledRoomFirstVisitor,
+  styledRoomVisitor,
+  styledTranslationCopy,
+  type StyledMessage,
+} from '@/lib/chat/slackLook';
 import {
   _internals,
   archiveChannel,
@@ -27,13 +36,9 @@ import {
   buildDeliveryFailureText,
   buildEventHintNote,
   buildFeedLine,
-  buildFeedReplyMirrorText,
   buildMessengerClickText,
   buildReplyText,
-  buildRoomFirstText,
-  buildRoomVisitorText,
   buildRootText,
-  buildTranslationCopyText,
   extractRoomChannelFromFeedText,
   ROOM_EMAIL_CONTACT_NOTE,
   staffChannelLabel,
@@ -50,6 +55,9 @@ import {
 //
 // supabase-js는 쓰기 실패를 throw하지 않고 `{ error }`로 돌려준다 — 모든 update/insert는
 // error를 확인하고 실패 시 `[slack relay]` 경고를 한 줄 남긴다.
+//
+// 글 모양 (스펙 2026-10-01 slack-room-look): 손님 방 안의 글은 postStyled로 올린다 — 손님 글은 손님 이름표,
+// 알림은 LIV 알림 + 색 막대, 거부되면 글자만으로 다시. #해외문의(피드 줄·스레드 방식)는 postSlackMessage로 글자만.
 
 export { buildContactText, buildReplyText, buildRootText };
 export type { RelaySender };
@@ -323,39 +331,49 @@ function rootText(session: RelaySessionRow, args: RelayOutboundArgs): string {
   });
 }
 
-function roomText(
+/** 시작 화면에서 이메일을 넣은 손님 — '오늘 연락할 손님'으로 관리된다는 꼬리말 (스펙 2026-10-01 §4.5 b). */
+function firstContactNote(session: RelaySessionRow, args: RelayOutboundArgs): string | null {
+  return session.visitor_email && !args.contactJustSaved && isFollowupEnabled() ? ROOM_EMAIL_CONTACT_NOTE : null;
+}
+
+/** 방에 올릴 글: 손님 글(손님 이름표) 또는 관리자 화면 답장의 사본(작성자 이름표). */
+function roomMessage(
   session: RelaySessionRow,
   staff: StaffDirectory,
   args: RelayOutboundArgs,
   receivedAt: string,
   firstInRoom: boolean,
   reopened: boolean
-): string {
+): StyledMessage {
+  const body = { originalText: args.originalText, translatedText: args.translatedText };
   if (args.sender === 'operator') {
-    return buildReplyText({
-      sender: 'operator',
+    return styledAdminReply({
       senderLabel: args.senderLabel ?? null,
       visitorLocale: session.visitor_locale,
-      originalText: args.originalText,
-      translatedText: args.translatedText,
+      ...body,
     });
   }
-  const body = {
-    visitorLocale: session.visitor_locale,
-    originalText: args.originalText,
-    translatedText: args.translatedText,
-  };
+  const who = { visitorName: session.visitor_name, visitorLocale: session.visitor_locale };
   if (firstInRoom) {
-    // 시작 화면에서 이메일을 넣은 손님 — '오늘 연락할 손님'으로 관리된다는 꼬리말을 붙인다 (스펙 2026-10-01 §4.5 b).
-    const contactNote =
-      session.visitor_email && !args.contactJustSaved && isFollowupEnabled() ? ROOM_EMAIL_CONTACT_NOTE : null;
-    return buildRoomFirstText({ mentionAll: staff.mentionAll(), receivedAt, contactNote, ...body });
+    return styledRoomFirstVisitor({
+      session: who,
+      mentionAll: staff.mentionAll(),
+      receivedAt,
+      contactNote: firstContactNote(session, args),
+      ...body,
+    });
   }
   // 담당자가 있으면 담당자만, 없으면 전원. 관찰자는 mentionAll에 들어 있지 않다.
   // 명단에서 빠진 담당자를 계속 부르지 않도록 지금도 답변 직원인지 확인한다.
   const assignee = session.assigned_slack_user_id;
   const mention = assignee && staff.isResponder(assignee) ? mentionOf(assignee) : staff.mentionAll();
-  return buildRoomVisitorText({ mention, receivedAt, reopened, ...body });
+  return styledRoomVisitor({ session: who, mention, receivedAt, reopened, ...body });
+}
+
+/** 손님 글 뒤에 붙는 알림(새 문의·다시 말을 걸었음). 실패해도 손님 글은 이미 올라가 있으므로 경고만 남긴다. */
+async function postRoomNotice(msg: StyledMessage, channelId: string, label: string): Promise<void> {
+  const r = await postStyled(msg, { channelId });
+  if (!r.ok) console.warn(`[slack relay] ${label} failed:`, r.error);
 }
 
 async function postInRoom(
@@ -367,20 +385,18 @@ async function postInRoom(
   receivedAt: string,
   firstInRoom: boolean
 ): Promise<'posted' | 'failed' | 'fallback_thread'> {
-  let posted = await postSlackMessage({
-    text: roomText(session, staff, args, receivedAt, firstInRoom, false),
-    channelId,
-  });
+  let posted = await postStyled(roomMessage(session, staff, args, receivedAt, firstInRoom, false), { channelId });
+  let reopened = false;
 
   if (!posted.ok && posted.error === 'is_archived') {
-    // 완료(보관)된 방에 손님이 다시 말을 걸었다 → 해제 후 🔔로 게시 + 피드에 '다시 열림'
+    // 완료(보관)된 방에 손님이 다시 말을 걸었다 → 해제 후 다시 게시 + 피드에 '다시 열림' (방의 🔔 알림은 아래에서 붙인다)
     const un = await unarchiveChannel(channelId);
     if (!un.ok) {
       console.warn('[slack relay] unarchive failed, switching session to thread mode:', un.error);
       await revertToThreadMode(admin, session.id);
       return 'fallback_thread';
     }
-    posted = await postSlackMessage({ text: roomText(session, staff, args, receivedAt, false, true), channelId });
+    posted = await postStyled(roomMessage(session, staff, args, receivedAt, false, true), { channelId });
     if (!posted.ok || !posted.ts) {
       // 해제는 됐는데 재게시가 실패 — 손님 메시지를 잃지 않도록 스레드로 폴백한다.
       // 방을 다시 보관해야 한다. 열린 채로 두면 세션과 끊긴 방에 직원이 답을 쓰고 손님은 못 받는다.
@@ -390,6 +406,7 @@ async function postInRoom(
       if (!r.ok) console.warn('[slack relay] archive failed:', r.error);
       return 'fallback_thread';
     }
+    reopened = true;
     await postFeed(
       buildFeedLine({
         kind: 'reopened',
@@ -411,6 +428,21 @@ async function postInRoom(
     return 'failed';
   }
   await persistSlackTs(admin, args.messageId, posted.ts);
+
+  // 꾸민 손님 글에는 머리말·꼬리말이 없다 → 알림을 따로 붙인다 (slack-room-look §3.4의 2·4번).
+  // 글자만으로 올라갔으면(긴급 정지·재게시) 그 문구에 이미 들어 있으므로 올리지 않는다.
+  if (args.sender === 'visitor' && !posted.plain) {
+    if (firstInRoom) {
+      await postRoomNotice(
+        styledRoomFirstNotice({ sessionId: session.id, receivedAt, contactNote: firstContactNote(session, args) }),
+        channelId,
+        'first notice'
+      );
+    } else if (reopened) {
+      await postRoomNotice(styledReopenedNotice(), channelId, 'reopened notice');
+    }
+  }
+
   if (firstInRoom) {
     await postFeed(
       buildFeedLine({
@@ -772,10 +804,7 @@ async function postTranslationCopy(
       return;
     }
     if (!data || !(data.visitor_email || data.visitor_messenger_handle || data.visitor_messenger_clicked)) return;
-    const posted = await postSlackMessage({
-      text: buildTranslationCopyText(translated),
-      channelId: session.slack_channel_id,
-    });
+    const posted = await postStyled(styledTranslationCopy(translated), { channelId: session.slack_channel_id });
     if (!posted.ok) console.warn('[slack relay] translation copy failed:', posted.error);
   } catch (e) {
     console.warn('[slack relay] translation copy threw:', e);
@@ -871,8 +900,7 @@ export async function relaySlackReplyToVisitor(args: RelayInboundArgs): Promise<
     });
 
     if (viaFeed && session.slack_mode === 'room' && session.slack_channel_id) {
-      const mirror = await postSlackMessage({
-        text: buildFeedReplyMirrorText({ senderLabel, text: plain }),
+      const mirror = await postStyled(styledFeedReplyCopy({ senderLabel, text: plain }), {
         channelId: session.slack_channel_id,
       });
       if (!mirror.ok) console.warn('[slack relay] feed reply mirror failed:', mirror.error);
