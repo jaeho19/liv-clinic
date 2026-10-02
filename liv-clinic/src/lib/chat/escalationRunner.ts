@@ -4,8 +4,15 @@ import { isFollowupEnabled } from '@/lib/chat/chatFlags';
 import { parseThresholds, planEscalation } from '@/lib/chat/escalation';
 import { getSlackChannelId, isSlackRelayConfigured, postSlackMessage } from '@/lib/chat/slack';
 import { loadStaffDirectory, mentionOf } from '@/lib/chat/slackStaff';
-import { postFeed, RELAY_SESSION_COLUMNS, resolveTarget, type RelaySessionRow } from '@/lib/chat/slackRelay';
-import { buildEscalationText, buildFeedLine } from '@/lib/chat/slackText';
+import { styledEscalation } from '@/lib/chat/slackLook';
+import {
+  postFeed,
+  postStyled,
+  RELAY_SESSION_COLUMNS,
+  resolveTarget,
+  type RelaySessionRow,
+} from '@/lib/chat/slackRelay';
+import { buildFeedLine } from '@/lib/chat/slackText';
 
 // 3분마다 호출된다 (netlify/functions/chat-ops.mts → POST /api/chat/ops).
 // 영업시간 판정은 호출자(app/api/chat/ops/route.ts) 한 곳에서만 한다 — 여기서는 반복하지 않는다.
@@ -84,14 +91,16 @@ export async function runEscalations(now: Date): Promise<{ checked: number; esca
 
     const assigneeMention = assigneeId ? mentionOf(assigneeId) : null;
     const mention = step.target === 'assignee' && assigneeMention ? assigneeMention : staff.mentionAll();
-    const text = buildEscalationText({ level: step.nextLevel, minutes: step.minutes, mention, assigneeMention });
+    const msg = styledEscalation({ level: step.nextLevel, minutes: step.minutes, mention, assigneeMention });
 
     if (target.mode === 'room') {
-      const r = await postSlackMessage({ text, channelId: target.channelId });
+      // 손님 방: LIV 알림 이름표 — 멘션은 본문에, 문장은 빨간 막대에 (스펙 slack-room-look §3.4)
+      const r = await postStyled(msg, { channelId: target.channelId });
       if (!r.ok) console.warn('[chat ops] escalation post failed:', r.error);
     } else if (target.mode === 'thread' && target.threadTs) {
+      // 스레드 방식: 예전 문구 그대로 글자만
       const r = await postSlackMessage({
-        text,
+        text: msg.plainText,
         channelId: target.channelId ?? undefined,
         threadTs: target.threadTs,
         replyBroadcast: step.nextLevel >= 2,

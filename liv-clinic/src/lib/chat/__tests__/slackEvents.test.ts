@@ -129,6 +129,34 @@ describe('classifySlackEvent — infinite loop prevention', () => {
   it('ignores bot_message subtype even without bot_id', () => {
     expect(classifySlackEvent(staffReply({ subtype: 'bot_message' })).action).toBe('ignore');
   });
+  // 2026-10-01 실측: username·icon_emoji를 붙여 올린 글(손님 이름표·LIV 알림·번역본)은
+  // subtype이 bot_message이고 user가 없다. 손님 방의 본문 글이므로 걸러지지 않으면 손님에게 되돌아간다.
+  it('이름표를 붙여 올린 우리 글(bot_message, user 없음, 방 본문)을 무시한다', () => {
+    const event = envelope({
+      type: 'message',
+      subtype: 'bot_message',
+      channel: 'C0ROOM',
+      channel_type: 'group',
+      bot_id: 'B0BMNF6U39R',
+      username: 'Yuki Tanaka 손님',
+      icons: { emoji: ':flag-jp:' },
+      text: '울쎄라 가격이 얼마인가요?',
+      ts: '1790847492.238449',
+    });
+    expect(classifySlackEvent(event)).toEqual({ action: 'ignore', reason: 'bot_or_app_message' });
+  });
+  it('색 막대만 있는 알림 글(text가 비어 있음)도 무시한다', () => {
+    const event = envelope({
+      type: 'message',
+      subtype: 'bot_message',
+      channel: 'C0ROOM',
+      bot_id: 'B0BMNF6U39R',
+      username: 'LIV 알림',
+      text: '',
+      ts: '1790847493.695469',
+    });
+    expect(classifySlackEvent(event)).toEqual({ action: 'ignore', reason: 'bot_or_app_message' });
+  });
 });
 
 describe('classifySlackEvent — filtering', () => {
