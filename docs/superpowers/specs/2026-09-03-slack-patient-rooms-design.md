@@ -4,6 +4,7 @@
 > 관련: `docs/01-plan/features/chat-slack-ops-improvement.plan.md`(2026-09-01, 이하 "09-01 계획서"), `docs/02-design/features/chat-offhours-messenger-bridge.design.md`(구현 완료), 마이그레이션 036·037
 > 결정(2026-09-03, 원장님): **A안 채택** — Slack 유지 + 손님 1명당 비공개 채널 1개. 앱 재설치는 원장님이 직접. 알림은 **첫 문의 전원 → 이후 담당자만 → 담당자가 답을 안 하면 다른 직원에게 확대**.
 > 2026-09-10 개정: §6 직원 명단(`SLACK_STAFF`)은 **`#해외문의` 채널 멤버 자동 산출**로 대체, 피드 줄 스레드 답장은 손님에게 전달 + 방 복사. 자세한 내용은 `2026-09-10-slack-staff-from-channel-design.md`.
+> 2026-10-01 개정: §4.2의 채널 이름(`chat-{이름}-{코드}`)은 **`10월01일-이름`**(문의한 날짜 + 손님 이름)으로, §4.3 "방 안의 메시지"의 모양은 **이름표(손님 글·LIV 알림·번역본) + 색 막대**로 대체. `SLACK_ROOM_PREFIX`는 폐기. 자세한 내용은 `2026-10-01-slack-room-look-design.md`.
 
 ---
 
