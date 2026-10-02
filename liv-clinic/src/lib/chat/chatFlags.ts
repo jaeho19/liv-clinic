@@ -19,3 +19,11 @@ export function isFollowupEnabled(): boolean {
 export function isEventHintEnabled(): boolean {
   return !isOff('CHAT_EVENT_HINT');
 }
+
+/**
+ * 손님 방 글의 이름표·색 막대 (스펙 2026-10-01 slack-room-look §3.5).
+ * SLACK_ROOM_LOOK=off 면 false — 방 안의 글을 예전처럼 글자만으로 올린다. 방 이름 규칙과는 무관하다.
+ */
+export function isRoomLookEnabled(): boolean {
+  return !isOff('SLACK_ROOM_LOOK');
+}

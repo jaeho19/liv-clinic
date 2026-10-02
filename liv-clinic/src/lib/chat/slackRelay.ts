@@ -3,8 +3,9 @@ import { createChatAdminClient, type ChatAdminClient } from '@/lib/chat/db';
 import { broadcastToSession } from '@/lib/chat/broadcast';
 import { translate, type TranslationResult } from '@/lib/chat/translation';
 import type { VisitorLocale } from '@/lib/chat/serverI18n';
-import { isFollowupEnabled } from '@/lib/chat/chatFlags';
+import { isFollowupEnabled, isRoomLookEnabled } from '@/lib/chat/chatFlags';
 import type { ContactChannel } from '@/lib/chat/contactChannels';
+import type { StyledMessage } from '@/lib/chat/slackLook';
 import {
   _internals,
   archiveChannel,
@@ -140,6 +141,61 @@ export async function postFeed(text: string): Promise<void> {
   if (!feed) return;
   const r = await postSlackMessage({ text, channelId: feed });
   if (!r.ok) console.warn('[slack relay] feed post failed:', r.error);
+}
+
+// ── 손님 방 글 모양 (스펙 2026-10-01 slack-room-look §3.5) ─────────────────────
+
+/** 꾸민 글이 실패해도 글자만으로 다시 올리지 않는 오류. 여기 없는 오류(invalid_blocks·missing_scope·모르는 오류)는 다시 올린다. */
+const NO_PLAIN_RETRY = new Set([
+  // 방 상태 — 호출부가 처리한다(보관 해제, 스레드 방식 전환)
+  'is_archived',
+  'channel_not_found',
+  'not_in_channel',
+  // 설정·인증 — 다시 해도 같다
+  'no_bot_token',
+  'no_channel_id',
+  'invalid_auth',
+  'not_authed',
+  'account_inactive',
+  'token_revoked',
+  // 일시 오류 — callSlack이 이미 한 번 재시도했다. 더 하면 함수 실행 한도를 넘긴다
+  'ratelimited',
+  'timeout',
+  'network_error',
+  'http_429',
+  'http_500',
+  'http_502',
+  'http_503',
+  'http_504',
+]);
+
+export interface StyledPostResult extends PostMessageResult {
+  /** 글자만의 문구로 올렸는가 — 긴급 정지(SLACK_ROOM_LOOK=off) 중이거나 꾸민 글이 거부돼 다시 올렸을 때 */
+  plain: boolean;
+}
+
+/**
+ * 손님 방에 꾸민 글(이름표·색 막대)을 올린다.
+ * 꾸민 글이 거부되면 같은 내용을 글자만으로 한 번 더 올린다 — 모양 때문에 글이 사라지는 일이 없게 한다.
+ * #해외문의 피드 줄에는 쓰지 않는다: 이름표를 붙인 글은 user 필드가 없어 피드 스레드 답장 전달(findSessionByFeedParent)이 끊긴다.
+ */
+export async function postStyled(
+  msg: StyledMessage,
+  where: { channelId: string; threadTs?: string | null }
+): Promise<StyledPostResult> {
+  if (!isRoomLookEnabled()) {
+    return { ...(await postSlackMessage({ text: msg.plainText, ...where })), plain: true };
+  }
+  const styled = await postSlackMessage({
+    text: msg.text,
+    username: msg.username,
+    iconEmoji: msg.iconEmoji,
+    attachments: msg.attachments,
+    ...where,
+  });
+  if (styled.ok || NO_PLAIN_RETRY.has(styled.error ?? '')) return { ...styled, plain: false };
+  console.warn('[slack look] styled post failed, retrying plain:', styled.error);
+  return { ...(await postSlackMessage({ text: msg.plainText, ...where })), plain: true };
 }
 
 function makeRoomDeps(admin: ChatAdminClient, staff: StaffDirectory): RoomDeps {

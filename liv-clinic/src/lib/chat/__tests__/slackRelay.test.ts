@@ -30,6 +30,7 @@ import { fetchThreadParent, getBotUserId, postSlackMessage } from '../slack';
 import { ensureRoom } from '../slackRooms';
 import { translate } from '../translation';
 import {
+  postStyled,
   relayChatMessageToSlack,
   relayContactToSlack,
   relayEventHintNoteToSlack,
@@ -634,5 +635,110 @@ describe('relayChatMessageToSlack — 방 첫 메시지의 연락처 꼬리말',
     await relayChatMessageToSlack(FIRST);
     expect(ensureRoomMock).toHaveBeenCalledTimes(1);
     expect(ensureRoomMock.mock.calls[0][2]).toBe(FIRST.receivedAt);
+  });
+});
+
+// ── 손님 방 글 모양 (스펙 2026-10-01 slack-room-look §3.5) ───────────────────────────
+
+describe('postStyled — 꾸민 글 올리기와 글자만 재게시', () => {
+  const postMock = vi.mocked(postSlackMessage);
+  const MSG = {
+    username: 'LIV 알림',
+    iconEmoji: ':bell:',
+    text: '',
+    attachments: [
+      { color: '#a8a6a8', fallback: '안내', blocks: [{ type: 'section', text: { type: 'mrkdwn', text: '*안내*' } }] },
+    ],
+    plainText: '글자만 문구',
+  };
+  const OK = { ok: true, ts: '9.9', channel: 'C0ROOM' };
+
+  beforeEach(() => {
+    setSlackEnv();
+    postMock.mockReset();
+    postMock.mockResolvedValue(OK);
+  });
+  afterEach(() => {
+    clearSlackEnv();
+    delete process.env.SLACK_ROOM_LOOK;
+  });
+
+  it('이름표·아이콘·색 막대를 붙여 한 번 올린다', async () => {
+    const r = await postStyled(MSG, { channelId: 'C0ROOM' });
+    expect(r).toEqual({ ...OK, plain: false });
+    expect(postMock).toHaveBeenCalledTimes(1);
+    expect(postMock.mock.calls[0][0]).toEqual({
+      text: '',
+      username: 'LIV 알림',
+      iconEmoji: ':bell:',
+      attachments: MSG.attachments,
+      channelId: 'C0ROOM',
+    });
+  });
+
+  it('SLACK_ROOM_LOOK=off 면 글자만 문구를 올린다', async () => {
+    process.env.SLACK_ROOM_LOOK = 'off';
+    const r = await postStyled(MSG, { channelId: 'C0ROOM' });
+    expect(r).toEqual({ ...OK, plain: true });
+    expect(postMock).toHaveBeenCalledTimes(1);
+    expect(postMock.mock.calls[0][0]).toEqual({ text: '글자만 문구', channelId: 'C0ROOM' });
+  });
+
+  it('꾸민 글이 거부되면(invalid_blocks) 같은 내용을 글자만으로 한 번 더 올린다', async () => {
+    postMock.mockResolvedValueOnce({ ok: false, error: 'invalid_blocks' }).mockResolvedValueOnce(OK);
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const r = await postStyled(MSG, { channelId: 'C0ROOM' });
+    expect(r).toEqual({ ...OK, plain: true });
+    expect(postMock).toHaveBeenCalledTimes(2);
+    expect(postMock.mock.calls[1][0]).toEqual({ text: '글자만 문구', channelId: 'C0ROOM' });
+    expect(warn.mock.calls.some((c) => String(c[0]).includes('styled post failed, retrying plain'))).toBe(true);
+    warn.mockRestore();
+  });
+
+  it('앱 권한이 빠졌을 때(missing_scope)와 모르는 오류도 글자만으로 올린다', async () => {
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    for (const error of ['missing_scope', 'some_new_slack_error']) {
+      postMock.mockReset();
+      postMock.mockResolvedValueOnce({ ok: false, error }).mockResolvedValueOnce(OK);
+      expect(await postStyled(MSG, { channelId: 'C0ROOM' })).toEqual({ ...OK, plain: true });
+      expect(postMock).toHaveBeenCalledTimes(2);
+    }
+    warn.mockRestore();
+  });
+
+  it('방 상태 오류(is_archived·channel_not_found·not_in_channel)는 다시 올리지 않는다 — 호출부가 처리한다', async () => {
+    for (const error of ['is_archived', 'channel_not_found', 'not_in_channel']) {
+      postMock.mockReset();
+      postMock.mockResolvedValue({ ok: false, error });
+      expect(await postStyled(MSG, { channelId: 'C0ROOM' })).toEqual({ ok: false, error, plain: false });
+      expect(postMock).toHaveBeenCalledTimes(1);
+    }
+  });
+
+  it('일시 오류(timeout·ratelimited·http_503)는 다시 올리지 않는다 — callSlack이 이미 한 번 재시도했다', async () => {
+    for (const error of ['timeout', 'ratelimited', 'network_error', 'http_503']) {
+      postMock.mockReset();
+      postMock.mockResolvedValue({ ok: false, error });
+      expect(await postStyled(MSG, { channelId: 'C0ROOM' })).toEqual({ ok: false, error, plain: false });
+      expect(postMock).toHaveBeenCalledTimes(1);
+    }
+  });
+
+  it('글자만 재게시도 실패하면 그 결과를 돌려준다', async () => {
+    postMock
+      .mockResolvedValueOnce({ ok: false, error: 'invalid_attachments' })
+      .mockResolvedValueOnce({ ok: false, error: 'msg_too_long' });
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    expect(await postStyled(MSG, { channelId: 'C0ROOM' })).toEqual({ ok: false, error: 'msg_too_long', plain: true });
+    warn.mockRestore();
+  });
+
+  it('스레드 안에 올릴 때는 thread_ts를 두 번 다 넘긴다', async () => {
+    postMock.mockResolvedValueOnce({ ok: false, error: 'invalid_blocks' }).mockResolvedValueOnce(OK);
+    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    await postStyled(MSG, { channelId: 'C0ROOM', threadTs: '1.5' });
+    expect(postMock.mock.calls[0][0]).toMatchObject({ channelId: 'C0ROOM', threadTs: '1.5', username: 'LIV 알림' });
+    expect(postMock.mock.calls[1][0]).toEqual({ text: '글자만 문구', channelId: 'C0ROOM', threadTs: '1.5' });
+    warn.mockRestore();
   });
 });
