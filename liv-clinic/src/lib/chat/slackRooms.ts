@@ -1,57 +1,22 @@
 import 'server-only';
-import { buildChatRefCode } from '@/lib/chat/contactChannels';
 import {
   archiveChannel,
   createPrivateChannel,
   inviteToChannel,
   setChannelTopic,
 } from '@/lib/chat/slack';
+import { legacyRoomName, roomNameCandidates } from '@/lib/chat/roomName';
 import { buildRoomTopic, type RoomSessionInfo } from '@/lib/chat/slackText';
 
 // 손님 1명 = 비공개 채널 1개. 이 파일은 "방을 확보하는" 절차만 담당한다.
 // DB 접근은 RoomDeps로 주입받아 Vitest에서 가짜로 바꿀 수 있게 한다.
-
-export const DEFAULT_ROOM_PREFIX = 'chat';
-
-export function roomPrefix(): string {
-  return (process.env.SLACK_ROOM_PREFIX || DEFAULT_ROOM_PREFIX).trim() || DEFAULT_ROOM_PREFIX;
-}
-
-/**
- * 이름 슬러그: NFKD → 결합 부호 제거 → 소문자 → [a-z0-9] 외 연속 문자를 '-' 하나로 → 앞뒤 '-' 제거 → 16자.
- * CJK·태국어처럼 ASCII로 만들 수 없는 이름은 ''(호출자가 로케일로 대체).
- */
-export function slugifyName(name: string | null | undefined): string {
-  if (!name) return '';
-  const ascii = name
-    .normalize('NFKD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-+|-+$/g, '');
-  return ascii.slice(0, 16).replace(/-+$/g, '');
-}
-
-/** `{prefix}-{slug|locale}-{참조코드 앞 6자}` (+ `-N`, N ≥ 2) */
-export function buildRoomName(args: {
-  prefix: string;
-  visitorName: string | null;
-  visitorLocale: string;
-  sessionId: string;
-  suffix?: number;
-}): string {
-  const slug = slugifyName(args.visitorName) || args.visitorLocale.toLowerCase();
-  const code = buildChatRefCode(args.sessionId).slice(0, 6).toLowerCase();
-  const base = `${args.prefix}-${slug}-${code}`;
-  return args.suffix && args.suffix > 1 ? `${base}-${args.suffix}` : base;
-}
+// 방 이름 규칙은 roomName.ts에 있다 (스펙 2026-10-01 slack-room-look §3.1).
 
 export interface RoomDeps {
   /** 초대 대상 = 답변 직원 + 관찰자 */
   staffIds: string[];
   /** 답변 직원이 1명 이상인지. 없으면 방을 만들지 않는다(아무도 멘션할 수 없는 방은 없는 것과 같다) */
   hasResponders: boolean;
-  prefix: string;
   sleep(ms: number): Promise<void>;
   /** `slack_mode IS NULL`인 세션을 'room'으로 선점. 성공 시 true */
   claimRoomMode(sessionId: string): Promise<boolean>;
@@ -74,7 +39,12 @@ export type EnsureRoomResult =
 const LOST_RACE_POLLS = 3;
 const LOST_RACE_INTERVAL_MS = 700;
 
-export async function ensureRoom(session: RoomSessionInfo, deps: RoomDeps): Promise<EnsureRoomResult> {
+/** receivedAt = 방을 만들게 한 첫 글의 시각. 방 이름의 날짜가 된다. */
+export async function ensureRoom(
+  session: RoomSessionInfo,
+  deps: RoomDeps,
+  receivedAt: string | Date
+): Promise<EnsureRoomResult> {
   if (!deps.hasResponders) {
     await deps.setThreadMode(session.sessionId);
     return { mode: 'thread' };
@@ -91,7 +61,7 @@ export async function ensureRoom(session: RoomSessionInfo, deps: RoomDeps): Prom
     return { mode: 'feed' };
   }
 
-  const created = await createWithRetries(session, deps.prefix);
+  const created = await createWithRetries(session, receivedAt);
   if (!created) {
     await deps.setThreadMode(session.sessionId);
     return { mode: 'thread' };
@@ -119,32 +89,36 @@ export async function ensureRoom(session: RoomSessionInfo, deps: RoomDeps): Prom
   return { mode: 'room', channelId: created.id, created: true };
 }
 
+/**
+ * 이름 후보를 차례로 시도한다 (`10월01일-이름` → `-2` → `-3` → `-참조코드`).
+ * - name_taken: 다음 후보 (보관된 방의 이름도 점유된다).
+ * - invalid_name…: Slack이 이름 글자를 거부했다 → 지금까지 항상 통한 예전 꼴(`chat-이름-코드`)로 한 번만 더.
+ * - 그 밖의 오류(권한·제한·시간 초과): 곧바로 포기 → 호출자가 스레드 방식으로 넘긴다.
+ */
 async function createWithRetries(
   session: RoomSessionInfo,
-  prefix: string
+  receivedAt: string | Date
 ): Promise<{ id: string; name: string } | null> {
-  let currentPrefix = prefix;
-  let suffix = 1;
-  for (let attempt = 0; attempt < 4; attempt++) {
-    const name = buildRoomName({
-      prefix: currentPrefix,
-      visitorName: session.visitorName,
-      visitorLocale: session.visitorLocale,
-      sessionId: session.sessionId,
-      suffix,
-    });
+  const names = roomNameCandidates({
+    visitorName: session.visitorName,
+    visitorLocale: session.visitorLocale,
+    sessionId: session.sessionId,
+    at: receivedAt,
+  });
+  let lastError = 'name_taken';
+  for (const name of names) {
     const r = await createPrivateChannel(name);
     if (r.ok) return { id: r.data.channel.id, name: r.data.channel.name };
-    if (r.error === 'name_taken' && suffix < 3) {
-      suffix += 1;
-      continue;
+    lastError = r.error;
+    if (r.error === 'name_taken') continue;
+    if (r.error.startsWith('invalid_name')) {
+      console.warn('[slack rooms] name rejected, retrying with legacy name:', r.error);
+      const legacy = await createPrivateChannel(legacyRoomName(session));
+      if (legacy.ok) return { id: legacy.data.channel.id, name: legacy.data.channel.name };
+      lastError = legacy.error;
     }
-    if (r.error === 'invalid_name_specials' && currentPrefix !== DEFAULT_ROOM_PREFIX) {
-      currentPrefix = DEFAULT_ROOM_PREFIX;
-      continue;
-    }
-    console.warn('[slack rooms] create failed:', r.error);
-    return null;
+    break;
   }
+  console.warn('[slack rooms] create failed:', lastError);
   return null;
 }

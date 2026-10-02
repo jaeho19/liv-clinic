@@ -628,4 +628,11 @@ describe('relayChatMessageToSlack — 방 첫 메시지의 연락처 꼬리말',
     await relayChatMessageToSlack(FIRST);
     expect(postMock.mock.calls[0][0].text).not.toContain('이메일을 남긴 손님입니다');
   });
+
+  it('첫 글의 시각을 방 만들기에 넘긴다 (방 이름의 날짜가 된다)', async () => {
+    adminFor(UNASSIGNED_ROW);
+    await relayChatMessageToSlack(FIRST);
+    expect(ensureRoomMock).toHaveBeenCalledTimes(1);
+    expect(ensureRoomMock.mock.calls[0][2]).toBe(FIRST.receivedAt);
+  });
 });

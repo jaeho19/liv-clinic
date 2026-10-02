@@ -18,7 +18,7 @@ import {
   type PostMessageResult,
 } from '@/lib/chat/slack';
 import { loadStaffDirectory, mentionOf, resolveStaffLabel, type StaffDirectory } from '@/lib/chat/slackStaff';
-import { ensureRoom, roomPrefix, type RoomDeps } from '@/lib/chat/slackRooms';
+import { ensureRoom, type RoomDeps } from '@/lib/chat/slackRooms';
 import { routeInbound } from '@/lib/chat/slackEvents';
 import {
   adminSessionUrl,
@@ -146,7 +146,6 @@ function makeRoomDeps(admin: ChatAdminClient, staff: StaffDirectory): RoomDeps {
   return {
     staffIds: staff.inviteIds,
     hasResponders: staff.responderIds.length > 0,
-    prefix: roomPrefix(),
     sleep: (ms) => _internals.sleep(ms),
     async claimRoomMode(sessionId) {
       const { data, error } = await admin
@@ -229,7 +228,7 @@ export async function relayChatMessageToSlack(args: RelayOutboundArgs): Promise<
     let firstInRoom = false;
 
     if (target.mode === 'unassigned') {
-      const r = await ensureRoom(sessionInfo(session), makeRoomDeps(admin, staff));
+      const r = await ensureRoom(sessionInfo(session), makeRoomDeps(admin, staff), receivedAt);
       if (r.mode === 'room') {
         target = { mode: 'room', channelId: r.channelId };
         firstInRoom = r.created;
