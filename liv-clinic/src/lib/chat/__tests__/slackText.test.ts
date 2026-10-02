@@ -1,5 +1,6 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import {
+  bareNote,
   buildContactText,
   buildDeliveryFailureText,
   buildEscalationText,
@@ -8,17 +9,25 @@ import {
   buildFollowupDigestText,
   buildMessengerClickText,
   buildReplyText,
+  buildRoomFirstNoticeText,
   buildRoomFirstText,
   buildRoomTopic,
   buildRoomVisitorText,
   buildRootText,
   buildTranslationCopyText,
+  contactNoticeParts,
+  deliveryFailureParts,
+  escalationNoticeParts,
+  EVENT_HINT_SENTENCE,
   extractRoomChannelFromFeedText,
   buildFeedReplyMirrorText,
   FOLLOWUP_DIGEST_MAX_LINES,
+  messengerClickParts,
   ROOM_AUTO_ACK_NOTE,
   ROOM_EMAIL_CONTACT_NOTE,
   ROOM_FOOTER,
+  ROOM_REOPENED_LEAD,
+  roomFirstNoticeParts,
   staffChannelLabel,
   type FollowupDigestItem,
 } from '../slackText';
@@ -551,7 +560,7 @@ describe('buildEscalationText', () => {
 describe('buildDeliveryFailureText', () => {
   it('알려진 사유는 한국어로', () => {
     expect(buildDeliveryFailureText('session_not_found')).toBe(
-      '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: 이 스레드는 상담과 연결돼 있지 않습니다. 사이드바의 손님 방(chat-…) 본문에 답해 주세요'
+      '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: 이 스레드는 상담과 연결돼 있지 않습니다. 사이드바의 손님 방(날짜-이름으로 된 방) 본문에 답해 주세요'
     );
   });
   it('모르는 사유는 코드 그대로', () => {
@@ -561,6 +570,157 @@ describe('buildDeliveryFailureText', () => {
     expect(buildDeliveryFailureText('<!channel> & <@U1>')).toBe(
       '⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: &lt;!channel&gt; &amp; &lt;@U1&gt;'
     );
+  });
+});
+
+// ── 큰 줄 + 설명 줄 (스펙 2026-10-01 slack-room-look §3.4) — 색 막대에 넣을 조각 ─────────────────
+// 같은 문장을 글자만 올리는 build…Text 가 이어 붙여 쓴다. 위의 기존 기대값이 바뀌지 않는 것이 그 증거다.
+
+describe('bareNote — 기울임 표시를 벗긴다', () => {
+  it('앞뒤 밑줄 하나씩만 벗긴다', () => {
+    expect(bareNote('_설명입니다._')).toBe('설명입니다.');
+    expect(bareNote(ROOM_FOOTER)).toBe(
+      '이 채널에 쓰면 손님에게 번역되어 전달됩니다. 직원끼리 메모는 스레드로 남겨 주세요.'
+    );
+  });
+  it('밑줄이 없으면 그대로', () => {
+    expect(bareNote('그대로')).toBe('그대로');
+  });
+});
+
+describe('contactNoticeParts — 연락처 알림의 조각', () => {
+  it('방: 큰 줄 하나 + 설명 세 줄(기울임 없음), 링크 없음', () => {
+    expect(
+      contactNoticeParts({ channelLabel: 'WeChat', handle: 'abc123', adminUrl: null, mode: 'room', followup: true })
+    ).toEqual({
+      headline: '📱 *손님이 연락처를 남겼습니다* — WeChat: abc123',
+      notes: [
+        "'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다.",
+        '이 방에 한국어로 답을 쓰면 바로 아래에 번역본이 올라옵니다. 복사해서 위챗·왓츠앱·메일에 붙여 넣으세요.',
+        '방에 답을 쓰면 목록에서 빠집니다. 상담이 끝나면 방을 보관(완료)해 주세요.',
+      ],
+      link: null,
+    });
+  });
+  it('긴급 정지 중에는 설명이 한 줄', () => {
+    expect(
+      contactNoticeParts({ channelLabel: '이메일', handle: 'a@b.co', adminUrl: null, mode: 'room', followup: false }).notes
+    ).toEqual(['이 연락처로 먼저 연락해 주세요.']);
+  });
+  it('단독 게시일 때만 관리자 링크가 있다', () => {
+    const args = { channelLabel: 'LINE', handle: 'x', adminUrl: 'https://example.com/admin/chat/abc', followup: true };
+    expect(contactNoticeParts({ ...args, mode: 'standalone' }).link).toBe(
+      '🔗 <https://example.com/admin/chat/abc|관리자 화면에서 열기>'
+    );
+    expect(contactNoticeParts({ ...args, mode: 'room' }).link).toBeNull();
+  });
+  it('핸들의 Slack 마크업을 이스케이프한다', () => {
+    expect(
+      contactNoticeParts({ channelLabel: 'WeChat', handle: '<!channel>', adminUrl: null, mode: 'room', followup: true })
+        .headline
+    ).toBe('📱 *손님이 연락처를 남겼습니다* — WeChat: &lt;!channel&gt;');
+  });
+});
+
+describe('messengerClickParts — 병원 연락 단추 알림의 조각', () => {
+  const sessionId = 'a1b2c3d4-0000-0000-0000-000000000000';
+  it('번역본 안내는 설명 줄로 뺀다', () => {
+    expect(messengerClickParts({ channel: 'whatsapp', sessionId, copyHint: true })).toEqual({
+      headline:
+        '📲 손님이 WhatsApp으로 이어가기를 눌렀습니다 — 병원 WhatsApp에서 코드 #A1B2C3D4 가 담긴 메시지를 확인해 주세요.',
+      notes: ['이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'],
+    });
+  });
+  it('번역본이 올라오지 않는 곳에서는 설명 줄이 없다', () => {
+    expect(messengerClickParts({ channel: 'wechat', sessionId, copyHint: false }).notes).toEqual([]);
+  });
+});
+
+describe('EVENT_HINT_SENTENCE', () => {
+  it('이벤트 안내 알림의 문장 (글자만 올릴 때는 기울임으로 감싼다)', () => {
+    expect(EVENT_HINT_SENTENCE).toBe(
+      '가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요.'
+    );
+    expect(buildEventHintNote('https://x.y/z')).toBe(`🎁 _${EVENT_HINT_SENTENCE}_\nhttps://x.y/z`);
+  });
+});
+
+describe('roomFirstNoticeParts — 방의 첫 알림(새 문의)', () => {
+  const base = { receivedAt: '2026-10-01T07:40:00Z', sessionId: '40e56969-aaaa-bbbb-cccc-dddddddddddd' };
+
+  it('큰 줄에 접수 시각과 참조코드, 설명에 사용법과 접수 안내', () => {
+    expect(roomFirstNoticeParts(base)).toEqual({
+      headline: '*새 문의* · 📥 10/01(목) 16:40 KST · 참조코드 `#40E56969`',
+      notes: [
+        '이 채널에 쓰면 손님에게 번역되어 전달됩니다. 직원끼리 메모는 스레드로 남겨 주세요.',
+        '손님에게는 접수 안내(예상 시간·연락처 요청·시술과 방문일 질문)가 자동으로 나갔습니다.',
+      ],
+    });
+  });
+  it('연락처 꼬리말이 있으면 설명이 한 줄 는다', () => {
+    const p = roomFirstNoticeParts({ ...base, contactNote: ROOM_EMAIL_CONTACT_NOTE });
+    expect(p.notes).toHaveLength(3);
+    expect(p.notes[2]).toBe(
+      "이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리되며 재촉 알림은 울리지 않습니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다."
+    );
+  });
+  it('글자만 올릴 때: 🔴 머리 + 기울임 설명', () => {
+    expect(buildRoomFirstNoticeText(base)).toBe(
+      `🔴 *새 문의* · 📥 10/01(목) 16:40 KST · 참조코드 #40E56969\n${ROOM_FOOTER}\n${ROOM_AUTO_ACK_NOTE}`
+    );
+    expect(buildRoomFirstNoticeText({ ...base, contactNote: ROOM_EMAIL_CONTACT_NOTE }).endsWith(ROOM_EMAIL_CONTACT_NOTE)).toBe(
+      true
+    );
+  });
+});
+
+describe('ROOM_REOPENED_LEAD', () => {
+  it('손님 후속 글의 🔔 머리말과 같은 문장이다', () => {
+    expect(ROOM_REOPENED_LEAD).toBe('🔔 *완료했던 문의에 손님이 다시 말을 걸었습니다*');
+    expect(
+      buildRoomVisitorText({
+        mention: '<@U1>',
+        receivedAt: '2024-01-01T05:12:00Z',
+        reopened: true,
+        visitorLocale: 'vi',
+        originalText: 'a',
+        translatedText: null,
+      }).startsWith(`${ROOM_REOPENED_LEAD} · <@U1>`)
+    ).toBe(true);
+  });
+});
+
+describe('escalationNoticeParts — 재촉 알림의 조각 (멘션은 넣지 않는다)', () => {
+  it('1단계', () => {
+    expect(escalationNoticeParts({ level: 1, minutes: 5, assigneeMention: '<@U1>' })).toEqual({
+      headline: '⏰ *5분째 답이 없습니다.*',
+      notes: [],
+    });
+  });
+  it('2단계: 담당자가 있으면 전원에게 알리는 사유를 설명 줄로', () => {
+    expect(escalationNoticeParts({ level: 2, minutes: 12, assigneeMention: '<@U1>' })).toEqual({
+      headline: '⏰ *12분째 답이 없습니다.*',
+      notes: ['담당 <@U1> 님이 응답하지 않아 전원에게 알립니다.'],
+    });
+    expect(escalationNoticeParts({ level: 2, minutes: 12, assigneeMention: null }).notes).toEqual([]);
+  });
+  it('3단계: 🚨', () => {
+    expect(escalationNoticeParts({ level: 3, minutes: 30, assigneeMention: null })).toEqual({
+      headline: '🚨 *30분째 미응답입니다.*',
+      notes: [],
+    });
+  });
+});
+
+describe('deliveryFailureParts — 전달 실패 알림의 조각', () => {
+  it('큰 줄 + 사유 한 줄', () => {
+    expect(deliveryFailureParts('empty_text')).toEqual({
+      headline: '⚠️ *방금 답글이 손님에게 전달되지 않았습니다*',
+      notes: ['사유: 내용이 비어 있습니다'],
+    });
+  });
+  it('모르는 사유는 이스케이프한 코드 그대로', () => {
+    expect(deliveryFailureParts('<@U1>').notes).toEqual(['사유: &lt;@U1&gt;']);
   });
 });
 

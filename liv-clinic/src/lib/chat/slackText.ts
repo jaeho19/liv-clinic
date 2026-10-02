@@ -91,6 +91,24 @@ function operatorPrefix(senderLabel: string | null): string {
   return `↩️ _관리자 화면 답장${who}_`;
 }
 
+// ── 알림의 조각: 큰 줄 + 설명 줄 (스펙 2026-10-01 slack-room-look §3.4) ─────────────────────
+// 손님 방에서는 slackLook.ts 가 이 조각을 색 막대에 넣는다(큰 줄 = section, 설명 = 작은 회색 글씨).
+// 글자만 올릴 때(스레드 방식·피드·긴급 정지·꾸민 글 실패)는 아래 build…Text 가 같은 조각을 이어 붙인다.
+
+export interface NoticeParts {
+  /** 큰 줄 (mrkdwn) */
+  headline: string;
+  /** 설명 줄들 — 기울임 표시 없는 문장 */
+  notes: string[];
+}
+
+const italic = (s: string): string => `_${s}_`;
+
+/** `_문장_` → `문장`. 기울임으로 감싸 둔 상수(ROOM_FOOTER 등)를 설명 줄로 쓸 때. */
+export function bareNote(s: string): string {
+  return s.replace(/^_/, '').replace(/_$/, '');
+}
+
 // ── 스레드 모드 (현행 문구, 변경 없음) ────────────────────────────────────
 
 /** 루트(첫) 메시지 — 세션 컨텍스트를 헤더로 붙인다. */
@@ -139,61 +157,74 @@ export function buildReplyText(args: {
 /** 연락처 알림이 올라가는 곳: 손님 방 / #해외문의 스레드 / 붙일 곳이 없어 #해외문의에 단독 게시. */
 export type ContactNoticeMode = 'room' | 'thread' | 'standalone';
 
-const FOLLOWUP_CLASSIFIED_NOTE = "_'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다._";
+const FOLLOWUP_CLASSIFIED_NOTE = "'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다.";
 
-/**
- * 손님이 연락처를 남겼을 때 올리는 글 (스펙 2026-10-01 §4.5 b).
- * - followup=false(CHAT_FOLLOWUP=off): '오늘 연락할 손님' 안내를 붙이지 않는다 — 알림이 계속 울리고 번역본도 올라오지 않기 때문이다.
- * - 번역본은 방에만 올라오므로 그 안내는 mode='room'에만 붙인다.
- */
-export function buildContactText(args: {
+export interface ContactNoticeArgs {
   channelLabel: string;
   handle: string;
   mode: ContactNoticeMode;
   followup: boolean;
   /** 단독 게시(mode='standalone')일 때 붙이는 관리자 화면 주소 */
   adminUrl: string | null;
-}): string {
-  const lines = [`📱 *손님이 연락처를 남겼습니다* — ${args.channelLabel}: ${escapeSlackText(args.handle)}`];
-  if (!args.followup) {
-    lines.push('_이 연락처로 먼저 연락해 주세요._');
-  } else if (args.mode === 'room') {
-    lines.push(
-      FOLLOWUP_CLASSIFIED_NOTE,
-      '_이 방에 한국어로 답을 쓰면 바로 아래에 번역본이 올라옵니다. 복사해서 위챗·왓츠앱·메일에 붙여 넣으세요._',
-      '_방에 답을 쓰면 목록에서 빠집니다. 상담이 끝나면 방을 보관(완료)해 주세요._'
-    );
-  } else if (args.mode === 'thread') {
-    lines.push(FOLLOWUP_CLASSIFIED_NOTE, '_이 스레드에 답글을 쓰면 목록에서 빠집니다._');
-  } else {
-    lines.push(FOLLOWUP_CLASSIFIED_NOTE, '_관리자 화면에서 답하면 목록에서 빠집니다._');
-  }
-  if (args.mode === 'standalone' && args.adminUrl) {
-    lines.push(`🔗 <${args.adminUrl}|관리자 화면에서 열기>`);
-  }
-  return lines.join('\n');
 }
 
 /**
- * 손님이 카드에서 병원 연락 단추를 눌렀을 때 방/스레드에 올리는 한 줄 (§4.5 b).
- * copyHint = 번역본이 이 방에 올라오는 경우(방 모드 + CHAT_FOLLOWUP 켜짐)에만 그 안내를 붙인다.
+ * 손님이 연락처를 남겼을 때 올리는 글의 조각 (스펙 2026-10-01 §4.5 b).
+ * - followup=false(CHAT_FOLLOWUP=off): '오늘 연락할 손님' 안내를 붙이지 않는다 — 알림이 계속 울리고 번역본도 올라오지 않기 때문이다.
+ * - 번역본은 방에만 올라오므로 그 안내는 mode='room'에만 붙인다.
  */
-export function buildMessengerClickText(args: {
+export function contactNoticeParts(args: ContactNoticeArgs): NoticeParts & { link: string | null } {
+  const headline = `📱 *손님이 연락처를 남겼습니다* — ${args.channelLabel}: ${escapeSlackText(args.handle)}`;
+  let notes: string[];
+  if (!args.followup) {
+    notes = ['이 연락처로 먼저 연락해 주세요.'];
+  } else if (args.mode === 'room') {
+    notes = [
+      FOLLOWUP_CLASSIFIED_NOTE,
+      '이 방에 한국어로 답을 쓰면 바로 아래에 번역본이 올라옵니다. 복사해서 위챗·왓츠앱·메일에 붙여 넣으세요.',
+      '방에 답을 쓰면 목록에서 빠집니다. 상담이 끝나면 방을 보관(완료)해 주세요.',
+    ];
+  } else if (args.mode === 'thread') {
+    notes = [FOLLOWUP_CLASSIFIED_NOTE, '이 스레드에 답글을 쓰면 목록에서 빠집니다.'];
+  } else {
+    notes = [FOLLOWUP_CLASSIFIED_NOTE, '관리자 화면에서 답하면 목록에서 빠집니다.'];
+  }
+  const link = args.mode === 'standalone' && args.adminUrl ? `🔗 <${args.adminUrl}|관리자 화면에서 열기>` : null;
+  return { headline, notes, link };
+}
+
+/** 연락처 알림을 글자만으로 — 큰 줄, 기울임 설명 줄, (단독 게시면) 관리자 링크. */
+export function buildContactText(args: ContactNoticeArgs): string {
+  const p = contactNoticeParts(args);
+  return [p.headline, ...p.notes.map(italic), ...(p.link ? [p.link] : [])].join('\n');
+}
+
+export interface MessengerClickArgs {
   channel: ContactChannel;
   sessionId: string;
+  /** 번역본이 이 방에 올라오는 경우(방 모드 + CHAT_FOLLOWUP 켜짐)에만 그 안내를 붙인다 */
   copyHint: boolean;
-}): string {
+}
+
+/** 손님이 카드에서 병원 연락 단추를 눌렀을 때 방/스레드에 올리는 글의 조각 (§4.5 b). */
+export function messengerClickParts(args: MessengerClickArgs): NoticeParts {
   const code = `#${buildChatRefCode(args.sessionId)}`;
-  let body: string;
+  let headline: string;
   if (args.channel === 'wechat') {
-    body = `📲 손님이 병원 WeChat 아이디·QR을 확인했습니다 — 업무폰 WeChat에서 친구 요청과 코드 ${code} 메시지를 확인해 주세요.`;
+    headline = `📲 손님이 병원 WeChat 아이디·QR을 확인했습니다 — 업무폰 WeChat에서 친구 요청과 코드 ${code} 메시지를 확인해 주세요.`;
   } else if (args.channel === 'email') {
-    body = `📲 손님이 병원 이메일 주소를 확인했습니다 — ${CHAT_CONTACT_EMAIL} 메일함에서 코드 ${code} 가 담긴 메일을 확인해 주세요.`;
+    headline = `📲 손님이 병원 이메일 주소를 확인했습니다 — ${CHAT_CONTACT_EMAIL} 메일함에서 코드 ${code} 가 담긴 메일을 확인해 주세요.`;
   } else {
     const label = CONTACT_CHANNEL_LABELS[args.channel];
-    body = `📲 손님이 ${label}으로 이어가기를 눌렀습니다 — 병원 ${label}에서 코드 ${code} 가 담긴 메시지를 확인해 주세요.`;
+    headline = `📲 손님이 ${label}으로 이어가기를 눌렀습니다 — 병원 ${label}에서 코드 ${code} 가 담긴 메시지를 확인해 주세요.`;
   }
-  return args.copyHint ? `${body} 이 방에 답을 쓰면 번역본이 아래에 올라옵니다.` : body;
+  return { headline, notes: args.copyHint ? ['이 방에 답을 쓰면 번역본이 아래에 올라옵니다.'] : [] };
+}
+
+/** 단추 알림을 글자만으로 — 한 줄. */
+export function buildMessengerClickText(args: MessengerClickArgs): string {
+  const p = messengerClickParts(args);
+  return [p.headline, ...p.notes].join(' ');
 }
 
 /** 직원 답글의 번역본 — 번역문만 담는다. 휴대폰 Slack의 "텍스트 복사"가 메시지 전체를 복사하므로 머리말·꾸밈을 붙이지 않는다 (§4.5 d). */
@@ -201,9 +232,11 @@ export function buildTranslationCopyText(translated: string): string {
   return escapeSlackText(translated);
 }
 
+export const EVENT_HINT_SENTENCE = '가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요.';
+
 /** 가격 문의에 이벤트 링크가 자동으로 나갔음을 직원에게 알린다 (§4.10). */
 export function buildEventHintNote(url: string): string {
-  return ['🎁 _가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요._', url].join('\n');
+  return [`🎁 ${italic(EVENT_HINT_SENTENCE)}`, url].join('\n');
 }
 
 // ── 방 모드 ─────────────────────────────────────────────────────────────
@@ -267,6 +300,34 @@ export function buildRoomFirstText(args: {
   return lines.join('\n');
 }
 
+export interface RoomFirstNoticeArgs {
+  receivedAt: string;
+  sessionId: string;
+  /** 연락처가 이미 있는 손님이면 ROOM_EMAIL_CONTACT_NOTE */
+  contactNote?: string | null;
+}
+
+/**
+ * 방의 첫 알림(새 문의)의 조각 — 손님 글을 손님 이름표로 따로 올릴 때 그 바로 뒤에 붙는다 (slack-room-look §3.4).
+ * 참조코드는 방 이름에서 빠졌으므로 여기와 방 주제에 남긴다(검색으로 방을 찾는다). 백틱 = 코드 글씨.
+ */
+export function roomFirstNoticeParts(args: RoomFirstNoticeArgs): NoticeParts {
+  const code = buildChatRefCode(args.sessionId);
+  const notes = [bareNote(ROOM_FOOTER), bareNote(ROOM_AUTO_ACK_NOTE)];
+  if (args.contactNote) notes.push(bareNote(args.contactNote));
+  return { headline: `*새 문의* · 📥 ${formatKst(args.receivedAt)} · 참조코드 \`#${code}\``, notes };
+}
+
+/** 첫 알림을 글자만으로 — 꾸민 알림이 거부됐을 때만 쓴다(손님 글은 이미 이름표로 올라가 있다). */
+export function buildRoomFirstNoticeText(args: RoomFirstNoticeArgs): string {
+  const code = buildChatRefCode(args.sessionId);
+  const lines = [`🔴 *새 문의* · 📥 ${formatKst(args.receivedAt)} · 참조코드 #${code}`, ROOM_FOOTER, ROOM_AUTO_ACK_NOTE];
+  if (args.contactNote) lines.push(args.contactNote);
+  return lines.join('\n');
+}
+
+export const ROOM_REOPENED_LEAD = '🔔 *완료했던 문의에 손님이 다시 말을 걸었습니다*';
+
 /** 방의 손님 후속 메시지: 담당자(또는 전원) 멘션 + 시각 + 본문. reopened면 🔔 머리말 */
 export function buildRoomVisitorText(args: {
   mention: string;
@@ -276,7 +337,7 @@ export function buildRoomVisitorText(args: {
   originalText: string;
   translatedText: string | null;
 }): string {
-  const lead = args.reopened ? '🔔 *완료했던 문의에 손님이 다시 말을 걸었습니다*' : null;
+  const lead = args.reopened ? ROOM_REOPENED_LEAD : null;
   const head = joinHead([lead, args.mention, formatKstTime(args.receivedAt)]);
   return [
     head,
@@ -337,14 +398,38 @@ export function buildEscalationText(args: {
   return `⏰ ${args.mention} ${args.minutes}분째 답이 없습니다.`;
 }
 
+/**
+ * 재촉 알림의 조각 — 손님 방의 빨간 막대에 넣는다. 멘션은 여기 넣지 않는다:
+ * 막대 안의 멘션이 알림을 만드는지 확인하지 못했으므로 호출자가 최상위 text에 따로 둔다 (slack-room-look §3.3).
+ */
+export function escalationNoticeParts(args: {
+  level: 1 | 2 | 3;
+  minutes: number;
+  assigneeMention: string | null;
+}): NoticeParts {
+  if (args.level === 3) return { headline: `🚨 *${args.minutes}분째 미응답입니다.*`, notes: [] };
+  const notes =
+    args.level === 2 && args.assigneeMention
+      ? [`담당 ${args.assigneeMention} 님이 응답하지 않아 전원에게 알립니다.`]
+      : [];
+  return { headline: `⏰ *${args.minutes}분째 답이 없습니다.*`, notes };
+}
+
 const FAILURE_REASON_KO: Record<string, string> = {
-  session_not_found: '이 스레드는 상담과 연결돼 있지 않습니다. 사이드바의 손님 방(chat-…) 본문에 답해 주세요',
+  session_not_found: '이 스레드는 상담과 연결돼 있지 않습니다. 사이드바의 손님 방(날짜-이름으로 된 방) 본문에 답해 주세요',
   empty_text: '내용이 비어 있습니다',
   error: '서버 오류가 났습니다. 관리자 화면에서 다시 보내 주세요',
 };
 
+const failureReason = (reason: string): string => FAILURE_REASON_KO[reason] ?? escapeSlackText(reason);
+
 export function buildDeliveryFailureText(reason: string): string {
-  return `⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: ${FAILURE_REASON_KO[reason] ?? escapeSlackText(reason)}`;
+  return `⚠️ 방금 답글이 손님에게 전달되지 않았습니다 · 사유: ${failureReason(reason)}`;
+}
+
+/** 전달 실패 알림의 조각 — 손님 방의 빨간 막대에 넣는다. */
+export function deliveryFailureParts(reason: string): NoticeParts {
+  return { headline: '⚠️ *방금 답글이 손님에게 전달되지 않았습니다*', notes: [`사유: ${failureReason(reason)}`] };
 }
 
 // ── "오늘 연락할 손님" 하루 두 번 요약 (스펙 2026-10-01 §4.5 c) ────────────────
