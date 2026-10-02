@@ -142,17 +142,41 @@ export interface PostMessageResult {
   error?: string;
 }
 
+/** Block Kit 블록 하나 (색 막대 안에 넣는 section·context). 내용은 slackLook.ts가 만든다. */
+export interface SlackBlock {
+  type: string;
+  [key: string]: unknown;
+}
+
+/** 색 막대 하나 = attachments 요소 하나. */
+export interface SlackAttachment {
+  color: string;
+  /** 알림 미리보기처럼 블록을 그리지 못하는 곳에 쓰이는 글자만의 요약 */
+  fallback: string;
+  blocks: SlackBlock[];
+}
+
+/** 글마다 바꾸는 겉모습. username·icon_emoji는 앱에 chat:write.customize 권한이 있어야 적용된다. */
+export interface SlackLook {
+  username?: string;
+  iconEmoji?: string;
+  attachments?: SlackAttachment[];
+}
+
 /**
  * chat.postMessage 호출.
  * - threadTs가 있으면 해당 스레드에 답글로 붙는다. replyBroadcast는 threadTs가 있을 때만 의미 있다.
  * - channelId 미지정 시 SLACK_CHANNEL_ID(#해외문의).
+ * - username·iconEmoji·attachments는 주어졌을 때만 요청에 넣는다(없으면 요청 본문이 예전과 같다).
  */
-export async function postSlackMessage(args: {
-  text: string;
-  threadTs?: string | null;
-  channelId?: string;
-  replyBroadcast?: boolean;
-}): Promise<PostMessageResult> {
+export async function postSlackMessage(
+  args: {
+    text: string;
+    threadTs?: string | null;
+    channelId?: string;
+    replyBroadcast?: boolean;
+  } & SlackLook
+): Promise<PostMessageResult> {
   if (!getSlackBotToken()) return { ok: false, error: 'no_bot_token' };
   const channel = args.channelId ?? getSlackChannelId();
   if (!channel) return { ok: false, error: 'no_channel_id' };
@@ -162,6 +186,9 @@ export async function postSlackMessage(args: {
     text: args.text,
     reply_broadcast: Boolean(args.replyBroadcast && args.threadTs),
     ...(args.threadTs ? { thread_ts: args.threadTs } : {}),
+    ...(args.username ? { username: args.username } : {}),
+    ...(args.iconEmoji ? { icon_emoji: args.iconEmoji } : {}),
+    ...(args.attachments && args.attachments.length > 0 ? { attachments: args.attachments } : {}),
     unfurl_links: false,
     unfurl_media: false,
   });

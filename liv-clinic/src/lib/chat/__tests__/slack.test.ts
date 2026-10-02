@@ -211,6 +211,37 @@ describe('callSlack / postSlackMessage', () => {
     expect(body.reply_broadcast).toBe(true);
   });
 
+  it('이름표·아이콘·색 막대가 없으면 요청 본문은 예전 그대로다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true, ts: '1.2', channel: 'C1' }));
+    await postSlackMessage({ text: 'hi', channelId: 'C1' });
+    const body = JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body as string);
+    expect(Object.keys(body).sort()).toEqual(['channel', 'reply_broadcast', 'text', 'unfurl_links', 'unfurl_media']);
+  });
+
+  it('이름표·아이콘·색 막대를 주면 username·icon_emoji·attachments로 보낸다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true, ts: '1.2', channel: 'C1' }));
+    const attachments = [
+      {
+        color: '#a8a6a8',
+        fallback: '새 문의',
+        blocks: [{ type: 'section', text: { type: 'mrkdwn', text: '*새 문의*' } }],
+      },
+    ];
+    await postSlackMessage({ text: '', channelId: 'C1', username: 'LIV 알림', iconEmoji: ':bell:', attachments });
+    const body = JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body as string);
+    expect(body.username).toBe('LIV 알림');
+    expect(body.icon_emoji).toBe(':bell:');
+    expect(body.attachments).toEqual(attachments);
+    expect(body.text).toBe('');
+  });
+
+  it('빈 attachments 배열은 보내지 않는다', async () => {
+    global.fetch = vi.fn().mockResolvedValue(jsonResponse({ ok: true, ts: '1.2', channel: 'C1' }));
+    await postSlackMessage({ text: 'hi', channelId: 'C1', attachments: [] });
+    const body = JSON.parse((global.fetch as ReturnType<typeof vi.fn>).mock.calls[0][1].body as string);
+    expect('attachments' in body).toBe(false);
+  });
+
   it('429는 Retry-After 뒤 1회 재시도한다', async () => {
     global.fetch = vi
       .fn()
