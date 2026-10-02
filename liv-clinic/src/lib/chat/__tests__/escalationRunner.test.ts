@@ -15,12 +15,14 @@ vi.mock('../slack', async (importOriginal) => ({
 
 import { createChatAdminClient } from '../db';
 import { postSlackMessage } from '../slack';
+import { loadStaffDirectory } from '../slackStaff';
 import { runEscalations } from '../escalationRunner';
 import { fakeAdmin, hasFilter, type FakeOp } from './fakeAdmin';
 
-describe('runEscalations — 연락처를 남긴 손님은 재촉 알림에서 뺀다', () => {
+describe('runEscalations — 재촉 알림 (기본은 꺼짐 · CHAT_ESCALATION=on 일 때만, 연락처를 남긴 손님은 뺀다)', () => {
   const adminMock = vi.mocked(createChatAdminClient);
   const postMock = vi.mocked(postSlackMessage);
+  const staffMock = vi.mocked(loadStaffDirectory);
   // 2026-10-05(월) 12:00 KST
   const NOW = new Date('2026-10-05T03:00:00Z');
 
@@ -58,14 +60,30 @@ describe('runEscalations — 연락처를 남긴 손님은 재촉 알림에서 �
     process.env.SLACK_CHANNEL_ID = 'C0FEED';
     delete process.env.CHAT_FOLLOWUP;
     delete process.env.CHAT_ESCALATION_MINUTES;
+    // 재촉 알림은 기본이 꺼져 있다(원장님 2026-10-02) — 아래 테스트는 다시 켰을 때의 동작을 고정한다.
+    process.env.CHAT_ESCALATION = 'on';
     postMock.mockReset();
     postMock.mockResolvedValue({ ok: true, ts: '9.9', channel: 'C0ROOM' });
+    staffMock.mockClear();
   });
   afterEach(() => {
     delete process.env.SLACK_BOT_TOKEN;
     delete process.env.SLACK_CHANNEL_ID;
     delete process.env.CHAT_FOLLOWUP;
+    delete process.env.CHAT_ESCALATION;
     delete process.env.SLACK_ROOM_LOOK;
+  });
+
+  it('CHAT_ESCALATION 이 없으면(기본) 30분을 넘긴 손님이 있어도 조회도 게시도 하지 않는다 — 방 알림도 #해외문의 🚨 줄도 없다', async () => {
+    delete process.env.CHAT_ESCALATION;
+    // 켜져 있었다면 방 🚨 + 피드 🚨 두 건이 올라갈 손님 (아래 '30분' 테스트와 같은 행)
+    const admin = adminWith([{ ...WAITING, awaiting_since: '2026-10-05T02:29:00Z', escalation_level: 2 }]);
+    const result = await runEscalations(NOW);
+    expect(result).toEqual({ checked: 0, escalated: 0 });
+    expect(postMock).not.toHaveBeenCalled();
+    // 단계(escalation_level)를 올리지 않고, 직원 명단을 읽으러 Slack 에 가지도 않는다
+    expect(admin.ops).toEqual([]);
+    expect(staffMock).not.toHaveBeenCalled();
   });
 
   it('후보 조회에 연락처 NULL 조건 두 개가 붙는다', async () => {

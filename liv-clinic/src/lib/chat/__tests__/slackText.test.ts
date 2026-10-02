@@ -188,7 +188,7 @@ describe('buildContactText — 손님 연락처 알림', () => {
     });
     expect(text).toBe(
       '📱 *손님이 연락처를 남겼습니다* — WeChat: abc123\n' +
-        "_'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다._\n" +
+        "_'오늘 연락할 손님'으로 분류했습니다._\n" +
         '_이 방에 한국어로 답을 쓰면 바로 아래에 번역본이 올라옵니다. 복사해서 위챗·왓츠앱·메일에 붙여 넣으세요._\n' +
         '_방에 답을 쓰면 목록에서 빠집니다. 상담이 끝나면 방을 보관(완료)해 주세요._'
     );
@@ -204,7 +204,7 @@ describe('buildContactText — 손님 연락처 알림', () => {
     });
     expect(text).toBe(
       '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com\n' +
-        "_'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다._\n" +
+        "_'오늘 연락할 손님'으로 분류했습니다._\n" +
         '_이 스레드에 답글을 쓰면 목록에서 빠집니다._'
     );
   });
@@ -244,7 +244,7 @@ describe('buildContactText — 손님 연락처 알림', () => {
     });
     expect(text).toBe(
       '📱 *손님이 연락처를 남겼습니다* — LINE: my_line_id\n' +
-        "_'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다._\n" +
+        "_'오늘 연락할 손님'으로 분류했습니다._\n" +
         '_관리자 화면에서 답하면 목록에서 빠집니다._\n' +
         '🔗 <https://example.com/admin/chat/abc|관리자 화면에서 열기>'
     );
@@ -414,7 +414,7 @@ describe('buildRoomFirstText — 방의 첫 메시지', () => {
     const text = buildRoomFirstText({ ...base, mentionAll: '<@U1>', contactNote: ROOM_EMAIL_CONTACT_NOTE });
     expect(text.endsWith(`${ROOM_FOOTER}\n${ROOM_AUTO_ACK_NOTE}\n${ROOM_EMAIL_CONTACT_NOTE}`)).toBe(true);
     expect(ROOM_EMAIL_CONTACT_NOTE).toBe(
-      "_이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리되며 재촉 알림은 울리지 않습니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다._"
+      "_이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리됩니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다._"
     );
   });
 
@@ -584,7 +584,7 @@ describe('contactNoticeParts — 연락처 알림의 조각', () => {
     ).toEqual({
       headline: '📱 *손님이 연락처를 남겼습니다* — WeChat: abc123',
       notes: [
-        "'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다.",
+        "'오늘 연락할 손님'으로 분류했습니다.",
         '이 방에 한국어로 답을 쓰면 바로 아래에 번역본이 올라옵니다. 복사해서 위챗·왓츠앱·메일에 붙여 넣으세요.',
         '방에 답을 쓰면 목록에서 빠집니다. 상담이 끝나면 방을 보관(완료)해 주세요.',
       ],

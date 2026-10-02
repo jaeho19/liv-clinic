@@ -1,6 +1,6 @@
 import 'server-only';
 import { createChatAdminClient } from '@/lib/chat/db';
-import { isFollowupEnabled } from '@/lib/chat/chatFlags';
+import { isEscalationEnabled, isFollowupEnabled } from '@/lib/chat/chatFlags';
 import { parseThresholds, planEscalation } from '@/lib/chat/escalation';
 import { getSlackChannelId, isSlackRelayConfigured, postSlackMessage } from '@/lib/chat/slack';
 import { loadStaffDirectory, mentionOf } from '@/lib/chat/slackStaff';
@@ -24,6 +24,8 @@ const EVENT_RETENTION_DAYS = 30;
 type Candidate = RelaySessionRow & { awaiting_since: string; escalation_level: number };
 
 export async function runEscalations(now: Date): Promise<{ checked: number; escalated: number }> {
+  // 재촉 알림은 기본이 꺼져 있다(원장님 2026-10-02) — CHAT_ESCALATION=on 일 때만 아래가 돈다.
+  if (!isEscalationEnabled()) return { checked: 0, escalated: 0 };
   if (!isSlackRelayConfigured()) return { checked: 0, escalated: 0 };
   const admin = createChatAdminClient();
   const thresholds = parseThresholds(process.env.CHAT_ESCALATION_MINUTES);

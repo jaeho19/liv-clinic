@@ -152,7 +152,7 @@ export function buildReplyText(args: {
 /** 연락처 알림이 올라가는 곳: 손님 방 / #해외문의 스레드 / 붙일 곳이 없어 #해외문의에 단독 게시. */
 export type ContactNoticeMode = 'room' | 'thread' | 'standalone';
 
-const FOLLOWUP_CLASSIFIED_NOTE = "'오늘 연락할 손님'으로 분류했습니다. 5·12·30분 알림은 울리지 않습니다.";
+const FOLLOWUP_CLASSIFIED_NOTE = "'오늘 연락할 손님'으로 분류했습니다.";
 
 export interface ContactNoticeArgs {
   channelLabel: string;
@@ -170,7 +170,7 @@ export function contactNoticeHeadline(channelLabel: string, handle: string): str
 
 /**
  * 손님이 연락처를 남겼을 때 올리는 글의 조각 (스펙 2026-10-01 §4.5 b).
- * - followup=false(CHAT_FOLLOWUP=off): '오늘 연락할 손님' 안내를 붙이지 않는다 — 알림이 계속 울리고 번역본도 올라오지 않기 때문이다.
+ * - followup=false(CHAT_FOLLOWUP=off): '오늘 연락할 손님' 안내를 붙이지 않는다 — 요약도 번역본도 올라오지 않기 때문이다.
  * - 번역본은 방에만 올라오므로 그 안내는 mode='room'에만 붙인다.
  */
 export function contactNoticeParts(args: ContactNoticeArgs): NoticeParts & { link: string | null } {
@@ -269,7 +269,7 @@ export const ROOM_AUTO_ACK_NOTE =
   '_손님에게는 접수 안내(예상 시간·연락처 요청·시술과 방문일 질문)가 자동으로 나갔습니다._';
 /** 시작 화면에서 이메일을 넣은 손님의 방 첫 메시지에 붙이는 꼬리말 (§4.5 b). */
 export const ROOM_EMAIL_CONTACT_NOTE =
-  "_이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리되며 재촉 알림은 울리지 않습니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다._";
+  "_이메일을 남긴 손님입니다 — '오늘 연락할 손님'으로 관리됩니다. 이 방에 답을 쓰면 번역본이 아래에 올라옵니다._";
 
 function joinHead(parts: Array<string | null | undefined>): string {
   return parts.filter((p): p is string => Boolean(p && p.length > 0)).join(' · ');

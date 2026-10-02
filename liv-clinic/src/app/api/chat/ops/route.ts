@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic';
 /**
  * 운영 작업 라우트 — Netlify 예약 함수(chat-ops.mts)가 3분마다 호출한다.
  * 공유 시크릿(CHAT_OPS_SECRET)으로만 접근. 영업시간 밖(휴진일 포함)에는 정리만 하고 즉시 끝난다.
- * 영업시간 중: 미응답 확대 알림 → '오늘 연락할 손님' 요약(하루 두 번, 창 안에서만).
+ * 영업시간 중: 미응답 확대 알림(기본 꺼짐 — CHAT_ESCALATION=on 일 때만) → '오늘 연락할 손님' 요약(하루 두 번, 창 안에서만).
  */
 export async function POST(req: NextRequest) {
   const secret = process.env.CHAT_OPS_SECRET;

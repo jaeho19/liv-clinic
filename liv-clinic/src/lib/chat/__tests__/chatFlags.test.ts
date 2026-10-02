@@ -1,11 +1,12 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { isEventHintEnabled, isFollowupEnabled, isRoomLookEnabled } from '../chatFlags';
+import { isEscalationEnabled, isEventHintEnabled, isFollowupEnabled, isRoomLookEnabled } from '../chatFlags';
 
 describe('긴급 정지 스위치', () => {
   afterEach(() => {
     delete process.env.CHAT_FOLLOWUP;
     delete process.env.CHAT_EVENT_HINT;
     delete process.env.SLACK_ROOM_LOOK;
+    delete process.env.CHAT_ESCALATION;
   });
 
   it('환경변수가 없으면 둘 다 켜져 있다', () => {
@@ -40,5 +41,22 @@ describe('긴급 정지 스위치', () => {
     expect(isFollowupEnabled()).toBe(true);
     process.env.SLACK_ROOM_LOOK = 'plain';
     expect(isRoomLookEnabled()).toBe(true);
+  });
+
+  it("재촉 알림 스위치(CHAT_ESCALATION)는 반대다: 없으면 꺼짐, 'on'일 때만 켜짐 (대소문자·앞뒤 공백 무시)", () => {
+    expect(isEscalationEnabled()).toBe(false);
+    process.env.CHAT_ESCALATION = ' ON ';
+    expect(isEscalationEnabled()).toBe(true);
+    process.env.CHAT_ESCALATION = 'off';
+    expect(isEscalationEnabled()).toBe(false);
+    process.env.CHAT_ESCALATION = '1';
+    expect(isEscalationEnabled()).toBe(false);
+  });
+
+  it('재촉 알림 스위치는 다른 스위치와 독립이다', () => {
+    process.env.CHAT_ESCALATION = 'on';
+    expect(isFollowupEnabled()).toBe(true);
+    process.env.CHAT_FOLLOWUP = 'off';
+    expect(isEscalationEnabled()).toBe(true);
   });
 });

@@ -1,6 +1,7 @@
 import 'server-only';
 
 // 긴급 정지 스위치 (스펙 2026-10-01 §4.5·§4.10). 값이 'off'일 때만 꺼진다 — 비어 있으면 켜진 것이다.
+// 맨 아래 재촉 알림(CHAT_ESCALATION)만 반대다: 비어 있으면 꺼진 것이고 'on'일 때만 켜진다.
 // 환경변수는 호출 시점에 읽는다(테스트에서 바꿔 넣을 수 있게).
 
 function isOff(name: string): boolean {
@@ -9,7 +10,7 @@ function isOff(name: string): boolean {
 
 /**
  * "오늘 연락할 손님" 묶음 — 연락처를 남긴 손님의 5·12·30분 알림 제외, 하루 두 번 요약, 직원 답글 번역본 게시.
- * CHAT_FOLLOWUP=off 면 false (연락처가 있어도 예전처럼 알림이 울리고, 요약·번역본은 나가지 않는다).
+ * CHAT_FOLLOWUP=off 면 false (요약·번역본은 나가지 않고, 재촉 알림을 켜 둔 경우에는 연락처가 있어도 울린다).
  */
 export function isFollowupEnabled(): boolean {
   return !isOff('CHAT_FOLLOWUP');
@@ -26,4 +27,12 @@ export function isEventHintEnabled(): boolean {
  */
 export function isRoomLookEnabled(): boolean {
   return !isOff('SLACK_ROOM_LOOK');
+}
+
+/**
+ * 재촉 알림 — 방의 5·12·30분 "답이 없습니다" 와 #해외문의의 🚨 줄.
+ * 위 스위치들과 반대로 기본이 꺼져 있다(원장님 2026-10-02: 재촉 알림을 없앤다). CHAT_ESCALATION=on 일 때만 true.
+ */
+export function isEscalationEnabled(): boolean {
+  return (process.env.CHAT_ESCALATION ?? '').trim().toLowerCase() === 'on';
 }
