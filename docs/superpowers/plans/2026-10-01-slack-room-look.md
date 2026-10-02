@@ -15,6 +15,7 @@
 ## Global Constraints
 
 - **작업 위치**: 워크트리 `D:\dev\LIV_homepage-slack-rooms`, 브랜치 `feature/slack-room-look`(master `fc670e2`에서 분기, 설계서·계획서 커밋이 얹혀 있다). 메인 폴더 `D:\dev\LIV_homepage`(master)는 다른 세션이 쓴다 — 거기서 브랜치를 바꾸거나 작업하지 않는다. 이 워크트리에서도 다른 브랜치로 체크아웃하지 않는다.
+- **로컬에 `scratch/slack-room-look-dev` 브랜치가 남아 있다**: 이 계획서를 만들 때 코드를 먼저 구현해 검증한 흔적이다(푸시되지 않았다). 체크아웃하거나 병합하지 않는다 — 구현은 이 계획서의 과제대로 한다. 대조가 어긋나 어디가 다른지 봐야 할 때만 `git diff scratch/slack-room-look-dev -- <파일>`로 참고한다. Task 12에서 지운다.
 - **명령의 실행 위치**: 아래 명령은 전부 `cd`를 포함해 적었다. **루트** = `D:/dev/LIV_homepage-slack-rooms`(git·`plan-apply.mjs`), **앱** = `D:/dev/LIV_homepage-slack-rooms/liv-clinic`(npm·npx·node 스크립트). npm 명령을 루트에서 실행하지 않는다.
 - **이 PC는 TLS 프록시 뒤다**: `npm run build`에는 `NEXT_TURBOPACK_EXPERIMENTAL_USE_SYSTEM_TLS_CERTS=1`, DB나 Slack·Netlify를 부르는 명령에는 `NODE_TLS_REJECT_UNAUTHORIZED=0`을 붙인다(명령에 이미 적혀 있다).
 - **계획서의 코드를 그대로 옮긴다**: 고쳐 쓰거나 줄이거나 "더 낫게" 바꾸지 않는다. 옮기는 방법은 Task 0의 `plan-apply.mjs`를 권한다(계획서에서 블록을 꺼내 그대로 쓰거나 `git apply` 한다). 손으로 옮겨도 되지만, 과제마다 커밋 뒤의 **대조**(파일의 git blob 값)가 표와 같아야 한다. 계획대로 했는데 테스트가 실패하거나 대조가 다르면, 고치기 전에 멈추고 원인을 보고한다.
@@ -4235,18 +4236,18 @@ Expected: `23 files changed, …`와 `23` — 위 21개 + 이 계획서 + 설계
 
 - [ ] **Step 4: 설계서에 구현 상태를 적는다**
 
-`docs/superpowers/specs/2026-10-01-slack-room-look-design.md` 머리의 `> 상태: **모양 승인(…` 줄 **바로 아래**에 다음 한 줄을 넣는다(날짜는 실행한 날로):
+`docs/superpowers/specs/2026-10-01-slack-room-look-design.md` 머리의 `> 상태: **모양 승인(…` 줄 **바로 아래**에 다음 한 줄을 넣는다. `YYYY-MM-DD` 자리에는 실행한 날짜를 적는다(예: `2026-10-02`):
 
 ```
-> 구현(2026-10-0X): 계획서 `docs/superpowers/plans/2026-10-01-slack-room-look.md`대로 브랜치 `feature/slack-room-look`에 구현했다 — 테스트 60파일 985건·타입 검사·빌드 통과, 계획서 대조 21개 파일 일치. **운영 반영(master 푸시 → 시험 문의 → 방 이름 바꾸기)은 원장님 승인 대기.**
+> 구현(YYYY-MM-DD): 계획서 `docs/superpowers/plans/2026-10-01-slack-room-look.md`대로 브랜치 `feature/slack-room-look`에 구현했다 — 테스트 60파일 985건·타입 검사·빌드 통과, 계획서 대조 21개 파일 일치. **운영 반영(master 푸시 → 시험 문의 → 방 이름 바꾸기)은 원장님 승인 대기.**
 ```
 
-- [ ] **Step 5: 임시 도구를 지우고 커밋**
+- [ ] **Step 5: 임시 도구와 검증용 브랜치를 지우고 커밋**
 
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms" && rm plan-apply.mjs && git add docs/superpowers/specs/2026-10-01-slack-room-look-design.md && git commit -m "docs(chat): 설계서에 구현 상태 기록 — Slack 손님 방 보기 개선" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>" && git status --short | wc -l
+cd "D:/dev/LIV_homepage-slack-rooms" && rm plan-apply.mjs && git add docs/superpowers/specs/2026-10-01-slack-room-look-design.md && git commit -m "docs(chat): 설계서에 구현 상태 기록 — Slack 손님 방 보기 개선" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>" && git status --short | wc -l && (git branch -D scratch/slack-room-look-dev 2>/dev/null || echo "scratch 브랜치 없음")
 ```
-Expected: 커밋 1건, 마지막 줄 `0`(작업 폴더가 깨끗하다).
+Expected: 커밋 1건, `0`(작업 폴더가 깨끗하다), 이어서 `Deleted branch scratch/slack-room-look-dev …` 또는 `scratch 브랜치 없음`. (그 브랜치는 계획서를 만들 때 쓴 검증용이다. Step 3의 대조가 통과했으므로 이 브랜치의 내용과 같다는 것이 이미 확인됐다.)
 
 - [ ] **Step 6: 원장님께 결과 보고**
 
@@ -4317,7 +4318,10 @@ Expected: 표에 `MM월DD일-smoke-test-1002`(오늘 날짜) 줄이 `이미 새 
 
 꾸민 글이 거부돼 글자만으로 다시 올라간 흔적이 없는지 본다(시험 시각 앞뒤로 창을 좁게 — 한국 시각에서 9시간을 뺀 UTC로 적는다):
 
-Run: `cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NETLIFY_SITE_ID=de7005fe-c770-4b2f-bbe0-1025513014d5 NODE_TLS_REJECT_UNAUTHORIZED=0 netlify logs --source functions --function ___netlify-server-handler --since <시험 시작 UTC ISO> --until <시험 끝 UTC ISO> 2>&1 | grep -c "slack look\|name rejected"`
+Run (시각 두 개는 실제 시험 시각으로 바꾼다 — 예: 한국 시각 14:10~14:25에 시험했으면 `2026-10-02T05:10:00Z`와 `2026-10-02T05:25:00Z`):
+```bash
+cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NETLIFY_SITE_ID=de7005fe-c770-4b2f-bbe0-1025513014d5 NODE_TLS_REJECT_UNAUTHORIZED=0 netlify logs --source functions --function ___netlify-server-handler --since 2026-10-02T05:10:00Z --until 2026-10-02T05:25:00Z 2>&1 | grep -c "slack look\|name rejected"
+```
 Expected: `0`. (로그는 유실될 수 있으므로 0이라도 위 캡처 확인이 본 증거다.)
 
 끝나면 원장님께 그 시험 방을 **바로 보관**해 달라고 한다. 실패한 항목이 있으면 아래 "되돌리기"를 원장님과 정한다.
