@@ -168,13 +168,18 @@ export interface ContactNoticeArgs {
   adminUrl: string | null;
 }
 
+/** 연락처 알림의 큰 줄 — 📱 알림과, 시작 화면에서 이메일을 넣은 손님의 첫 알림(초록 막대)이 같이 쓴다. */
+export function contactNoticeHeadline(channelLabel: string, handle: string): string {
+  return `📱 *손님이 연락처를 남겼습니다* — ${channelLabel}: ${escapeSlackText(handle)}`;
+}
+
 /**
  * 손님이 연락처를 남겼을 때 올리는 글의 조각 (스펙 2026-10-01 §4.5 b).
  * - followup=false(CHAT_FOLLOWUP=off): '오늘 연락할 손님' 안내를 붙이지 않는다 — 알림이 계속 울리고 번역본도 올라오지 않기 때문이다.
  * - 번역본은 방에만 올라오므로 그 안내는 mode='room'에만 붙인다.
  */
 export function contactNoticeParts(args: ContactNoticeArgs): NoticeParts & { link: string | null } {
-  const headline = `📱 *손님이 연락처를 남겼습니다* — ${args.channelLabel}: ${escapeSlackText(args.handle)}`;
+  const headline = contactNoticeHeadline(args.channelLabel, args.handle);
   let notes: string[];
   if (!args.followup) {
     notes = ['이 연락처로 먼저 연락해 주세요.'];
@@ -233,6 +238,8 @@ export function buildTranslationCopyText(translated: string): string {
 }
 
 export const EVENT_HINT_SENTENCE = '가격 문의로 보여 손님에게 이벤트 링크를 자동으로 보냈습니다. 가격은 직접 답해 주세요.';
+/** 손님 방의 색 막대에 넣는 짧은 문장 — 방의 알림은 큰 줄만 올린다 (스펙 2026-10-02 slack-room-notice-trim). 글자만 문구는 위 문장 그대로다. */
+export const EVENT_HINT_SHORT = '이벤트 링크를 자동으로 보냈습니다';
 
 /** 가격 문의에 이벤트 링크가 자동으로 나갔음을 직원에게 알린다 (§4.10). */
 export function buildEventHintNote(url: string): string {
@@ -316,6 +323,14 @@ export function roomFirstNoticeParts(args: RoomFirstNoticeArgs): NoticeParts {
   const notes = [bareNote(ROOM_FOOTER), bareNote(ROOM_AUTO_ACK_NOTE)];
   if (args.contactNote) notes.push(bareNote(args.contactNote));
   return { headline: `*새 문의* · 📥 ${formatKst(args.receivedAt)} · 참조코드 \`#${code}\``, notes };
+}
+
+/**
+ * 방의 첫 알림(새 문의)의 큰 줄 — 손님 방의 색 막대에는 이 한 줄만 올린다 (스펙 2026-10-02 slack-room-notice-trim).
+ * 참조코드는 방 이름에서 빠졌으므로 여기와 방 주제에 남긴다(검색으로 방을 찾는다). 백틱 = 코드 글씨.
+ */
+export function roomFirstNoticeHeadline(args: { receivedAt: string; sessionId: string }): string {
+  return `*새 문의* · 📥 ${formatKst(args.receivedAt)} · 참조코드 \`#${buildChatRefCode(args.sessionId)}\``;
 }
 
 /** 첫 알림을 글자만으로 — 꾸민 알림이 거부됐을 때만 쓴다(손님 글은 이미 이름표로 올라가 있다). */
@@ -413,6 +428,14 @@ export function escalationNoticeParts(args: {
       ? [`담당 ${args.assigneeMention} 님이 응답하지 않아 전원에게 알립니다.`]
       : [];
   return { headline: `⏰ *${args.minutes}분째 답이 없습니다.*`, notes };
+}
+
+/**
+ * 재촉 알림의 큰 줄 — 손님 방의 빨간 막대에는 이 한 줄만 올린다. 멘션은 넣지 않는다:
+ * 막대 안의 멘션이 알림을 만드는지 확인하지 못했으므로 호출자가 최상위 text에 따로 둔다 (slack-room-look §3.3).
+ */
+export function escalationNoticeHeadline(args: { level: 1 | 2 | 3; minutes: number }): string {
+  return args.level === 3 ? `🚨 *${args.minutes}분째 미응답입니다.*` : `⏰ *${args.minutes}분째 답이 없습니다.*`;
 }
 
 const FAILURE_REASON_KO: Record<string, string> = {

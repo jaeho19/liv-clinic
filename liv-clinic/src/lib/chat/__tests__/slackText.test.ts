@@ -15,10 +15,13 @@ import {
   buildRoomVisitorText,
   buildRootText,
   buildTranslationCopyText,
+  contactNoticeHeadline,
   contactNoticeParts,
   deliveryFailureParts,
+  escalationNoticeHeadline,
   escalationNoticeParts,
   EVENT_HINT_SENTENCE,
+  EVENT_HINT_SHORT,
   extractRoomChannelFromFeedText,
   buildFeedReplyMirrorText,
   FOLLOWUP_DIGEST_MAX_LINES,
@@ -27,6 +30,7 @@ import {
   ROOM_EMAIL_CONTACT_NOTE,
   ROOM_FOOTER,
   ROOM_REOPENED_LEAD,
+  roomFirstNoticeHeadline,
   roomFirstNoticeParts,
   staffChannelLabel,
   type FollowupDigestItem,
@@ -721,6 +725,50 @@ describe('deliveryFailureParts — 전달 실패 알림의 조각', () => {
   });
   it('모르는 사유는 이스케이프한 코드 그대로', () => {
     expect(deliveryFailureParts('<@U1>').notes).toEqual(['사유: &lt;@U1&gt;']);
+  });
+});
+
+// ── 큰 줄만 (스펙 2026-10-02 slack-room-notice-trim) — 손님 방의 색 막대에는 큰 줄 하나만 올린다 ─────────────
+
+describe('contactNoticeHeadline — 연락처 알림의 큰 줄', () => {
+  it('채널 이름과 연락처를 한 줄로', () => {
+    expect(contactNoticeHeadline('이메일', 'guest@example.com')).toBe(
+      '📱 *손님이 연락처를 남겼습니다* — 이메일: guest@example.com'
+    );
+  });
+  it('연락처의 Slack 마크업을 이스케이프한다', () => {
+    expect(contactNoticeHeadline('WeChat', '<!channel>')).toBe(
+      '📱 *손님이 연락처를 남겼습니다* — WeChat: &lt;!channel&gt;'
+    );
+  });
+  it('contactNoticeParts의 큰 줄과 같다', () => {
+    expect(
+      contactNoticeParts({ channelLabel: 'LINE', handle: 'x', adminUrl: null, mode: 'room', followup: true }).headline
+    ).toBe(contactNoticeHeadline('LINE', 'x'));
+  });
+});
+
+describe('EVENT_HINT_SHORT', () => {
+  it('손님 방의 색 막대에 넣는 짧은 문장', () => {
+    expect(EVENT_HINT_SHORT).toBe('이벤트 링크를 자동으로 보냈습니다');
+  });
+});
+
+describe('roomFirstNoticeHeadline — 방의 첫 알림(새 문의)의 큰 줄', () => {
+  it('접수 시각과 참조코드 (코드는 백틱으로 감싼다)', () => {
+    expect(
+      roomFirstNoticeHeadline({ receivedAt: '2026-10-01T07:40:00Z', sessionId: '40e56969-aaaa-bbbb-cccc-dddddddddddd' })
+    ).toBe('*새 문의* · 📥 10/01(목) 16:40 KST · 참조코드 `#40E56969`');
+  });
+});
+
+describe('escalationNoticeHeadline — 재촉 알림의 큰 줄 (멘션은 넣지 않는다)', () => {
+  it('5분·12분은 ⏰', () => {
+    expect(escalationNoticeHeadline({ level: 1, minutes: 5 })).toBe('⏰ *5분째 답이 없습니다.*');
+    expect(escalationNoticeHeadline({ level: 2, minutes: 12 })).toBe('⏰ *12분째 답이 없습니다.*');
+  });
+  it('30분은 🚨', () => {
+    expect(escalationNoticeHeadline({ level: 3, minutes: 30 })).toBe('🚨 *30분째 미응답입니다.*');
   });
 });
 
