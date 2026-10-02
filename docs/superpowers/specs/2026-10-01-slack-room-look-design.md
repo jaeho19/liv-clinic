@@ -6,6 +6,7 @@
 > 선행 문서: `2026-09-03-slack-patient-rooms-design.md`(방 모드) — 이 문서는 그 §4.2의 채널 이름 규칙과 §4.3 "방 안의 메시지"의 모양을 대체한다. `2026-09-10-slack-staff-from-channel-design.md`(피드 스레드 답장), `2026-10-01-chat-contact-first-design.md` §4.5·§4.7(연락처·번역본·이벤트 알림 문구) — 문구는 그대로 쓰고 모양만 바꾼다.
 > 미리보기(원장님 계정 전용): `https://claude.ai/artifact/EE9Ur3m9dHcScAhrp6k1ki` · 실제 Slack 시험 방: `10월01일-yuki-tanaka`(`C0C5XNW0MMG`, 원장님만 초대)
 > 상태: **모양 승인(2026-10-01, 시험 방 캡처 확인).** 다음은 구현 계획서 `docs/superpowers/plans/2026-10-01-slack-room-look.md` → 새 세션에서 구현 → 운영 반영(승인 뒤). §8 인계 메모를 따른다.
+> 구현(2026-10-02): 계획서 `docs/superpowers/plans/2026-10-01-slack-room-look.md`대로 브랜치 `feature/slack-room-look`에 구현했다 — 테스트 60파일 985건·타입 검사·빌드 통과, 계획서 대조 21개 파일 일치. **운영 반영(master 푸시 → 시험 문의 → 방 이름 바꾸기)은 원장님 승인 대기.**
 
 ---
 
