@@ -3894,7 +3894,7 @@
                 "name": "Clarity II",
                 "nameKo": "Clarity II",
                 "wavelength": "755nm + 1064nm",
-                "feature": "Dual Wavelength + IntelliTrak Technology",
+                "feature": "Dual Wavelength",
                 "targets": [
                   "Pigmentation",
                   "Vascular",
@@ -3904,9 +3904,9 @@
                 "highlight": true
               },
               {
-                "name": "Lucas",
-                "nameKo": "Lucas",
-                "wavelength": "532/755/1064nm",
+                "name": "Pico Toning",
+                "nameKo": "Pico Toning",
+                "wavelength": "532nm + 1064nm",
                 "feature": "Picosecond Pulse (450ps)",
                 "targets": [
                   "Melasma",
@@ -3916,25 +3916,14 @@
                 "highlight": false
               },
               {
-                "name": "Laser Toning",
-                "nameKo": "Laser Toning",
-                "wavelength": "1064nm Nd:YAG",
-                "feature": "Low-power Repetitive Irradiation",
+                "name": "Ultraformer",
+                "nameKo": "Ultraformer",
+                "wavelengthLabel": "Method",
+                "wavelength": "HIFU Ultrasound",
+                "feature": "High-Intensity Focused Ultrasound (HIFU)",
                 "targets": [
-                  "Skin Tone",
-                  "Pores",
-                  "Skin Texture"
-                ],
-                "highlight": false
-              },
-              {
-                "name": "Ulblanc",
-                "nameKo": "Ulblanc",
-                "wavelength": "Proprietary Wavelength",
-                "feature": "Selective Melanin Targeting",
-                "targets": [
-                  "Skin Whitening",
-                  "Tone Evening"
+                  "Lifting",
+                  "Firming"
                 ],
                 "highlight": false
               }

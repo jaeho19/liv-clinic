@@ -3894,7 +3894,7 @@
                 "name": "Clarity II",
                 "nameKo": "Clarity II",
                 "wavelength": "755nm + 1064nm",
-                "feature": "双波长 + IntelliTrak技术",
+                "feature": "双波长",
                 "targets": [
                   "色素",
                   "血管",
@@ -3904,9 +3904,9 @@
                 "highlight": true
               },
               {
-                "name": "Lucas",
-                "nameKo": "Lucas",
-                "wavelength": "532/755/1064nm",
+                "name": "Pico Toning",
+                "nameKo": "皮秒调色",
+                "wavelength": "532nm + 1064nm",
                 "feature": "皮秒脉冲 (450ps)",
                 "targets": [
                   "黄褐斑",
@@ -3916,25 +3916,14 @@
                 "highlight": false
               },
               {
-                "name": "Laser Toning",
-                "nameKo": "激光调色",
-                "wavelength": "1064nm Nd:YAG",
-                "feature": "低能量重复照射",
+                "name": "Ultraformer",
+                "nameKo": "Ultraformer",
+                "wavelengthLabel": "方式",
+                "wavelength": "HIFU超声波",
+                "feature": "高强度聚焦超声(HIFU)",
                 "targets": [
-                  "肤色",
-                  "毛孔",
-                  "肤质"
-                ],
-                "highlight": false
-              },
-              {
-                "name": "Ulblanc",
-                "nameKo": "Ulblanc",
-                "wavelength": "专用波长",
-                "feature": "选择性黑色素靶向",
-                "targets": [
-                  "美白",
-                  "均匀肤色"
+                  "提升",
+                  "改善弹性"
                 ],
                 "highlight": false
               }

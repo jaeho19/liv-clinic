@@ -3894,7 +3894,7 @@
                 "name": "ความชัดเจน II",
                 "nameKo": "ความชัดเจน II",
                 "wavelength": "755 นาโนเมตร + 1,064 นาโนเมตร",
-                "feature": "ความยาวคลื่นคู่ + เทคโนโลยี IntelliTrak",
+                "feature": "ความยาวคลื่นคู่",
                 "targets": [
                   "ผิวคล้ำ",
                   "หลอดเลือด",
@@ -3904,9 +3904,9 @@
                 "highlight": true
               },
               {
-                "name": "ลูคัส",
-                "nameKo": "ลูคัส",
-                "wavelength": "532/755/1064นาโนเมตร",
+                "name": "พิโคโทนนิ่ง",
+                "nameKo": "พิโคโทนนิ่ง",
+                "wavelength": "532 นาโนเมตร + 1,064 นาโนเมตร",
                 "feature": "พิโควินาทีพัลส์ (450ps)",
                 "targets": [
                   "ฝ้า",
@@ -3916,25 +3916,14 @@
                 "highlight": false
               },
               {
-                "name": "เลเซอร์โทนนิ่ง",
-                "nameKo": "เลเซอร์โทนนิ่ง",
-                "wavelength": "1,064 นาโนเมตร Nd:YAG",
-                "feature": "การฉายรังสีซ้ำๆ พลังงานต่ำ",
+                "name": "Ultraformer",
+                "nameKo": "Ultraformer",
+                "wavelengthLabel": "วิธีการ",
+                "wavelength": "อัลตราซาวด์ HIFU",
+                "feature": "อัลตราซาวด์โฟกัสความเข้มสูง (HIFU)",
                 "targets": [
-                  "สีผิว",
-                  "รูขุมขน",
-                  "เนื้อผิว"
-                ],
-                "highlight": false
-              },
-              {
-                "name": "Ulblanc",
-                "nameKo": "Ulblanc",
-                "wavelength": "ความยาวคลื่นที่เป็นกรรมสิทธิ์",
-                "feature": "การกำหนดเป้าหมายเมลานินแบบเลือกสรร",
-                "targets": [
-                  "ผิวขาวใส",
-                  "โทนเย็น"
+                  "ยกกระชับ",
+                  "เพิ่มความยืดหยุ่น"
                 ],
                 "highlight": false
               }

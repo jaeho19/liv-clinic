@@ -3894,7 +3894,7 @@
                 "name": "Rõ ràng II",
                 "nameKo": "Rõ ràng II",
                 "wavelength": "755nm + 1064nm",
-                "feature": "Bước sóng kép + Công nghệ IntelliTrak",
+                "feature": "Bước sóng kép",
                 "targets": [
                   "Sắc tố",
                   "mạch máu",
@@ -3904,9 +3904,9 @@
                 "highlight": true
               },
               {
-                "name": "Lucas",
-                "nameKo": "Lucas",
-                "wavelength": "532/755/1064nm",
+                "name": "Pico Toning",
+                "nameKo": "Pico Toning",
+                "wavelength": "532nm + 1064nm",
                 "feature": "Xung Pico giây (450ps)",
                 "targets": [
                   "Nám",
@@ -3916,25 +3916,14 @@
                 "highlight": false
               },
               {
-                "name": "Làm săn chắc da bằng laser",
-                "nameKo": "Làm săn chắc da bằng laser",
-                "wavelength": "1064nm Nd:YAG",
-                "feature": "Chiếu xạ lặp lại công suất thấp",
+                "name": "Ultraformer",
+                "nameKo": "Ultraformer",
+                "wavelengthLabel": "Phương thức",
+                "wavelength": "Siêu âm HIFU",
+                "feature": "Siêu âm hội tụ cường độ cao (HIFU)",
                 "targets": [
-                  "Tông Màu Da",
-                  "lỗ chân lông",
-                  "Kết cấu da"
-                ],
-                "highlight": false
-              },
-              {
-                "name": "Ulblanc",
-                "nameKo": "Ulblanc",
-                "wavelength": "Bước sóng độc quyền",
-                "feature": "Nhắm mục tiêu Melanin có chọn lọc",
-                "targets": [
-                  "Làm trắng da",
-                  "Giai điệu buổi tối"
+                  "Nâng cơ",
+                  "Cải thiện độ đàn hồi"
                 ],
                 "highlight": false
               }
