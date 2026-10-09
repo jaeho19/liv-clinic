@@ -3915,11 +3915,10 @@
                 "highlight": false
               },
               {
-                "name": "Ultraformer",
-                "nameKo": "Ultraformer",
-                "wavelengthLabel": "Phương thức",
-                "wavelength": "Siêu âm HIFU",
-                "feature": "Siêu âm hội tụ cường độ cao (HIFU)",
+                "name": "Ulblanc",
+                "nameKo": "Ulblanc",
+                "wavelength": "Siêu âm",
+                "feature": "Tái tạo",
                 "targets": [
                   "Nâng cơ",
                   "Cải thiện độ đàn hồi"

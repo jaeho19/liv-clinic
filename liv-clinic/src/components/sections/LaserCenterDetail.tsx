@@ -26,7 +26,6 @@ interface CategoryItem {
 interface EquipmentItem {
   name: string;
   nameKo: string;
-  wavelengthLabel?: string; // 레이저가 아닌 장비(예: HIFU)는 '파장' 대신 '방식' 등으로 표기
   wavelength: string;
   feature: string;
   targets: string[];
@@ -115,7 +114,6 @@ const CategoryCard = ({ category, index, viewMoreLabel }: CategoryCardProps) => 
 interface EquipmentCardProps {
   name: string;
   nameKo: string;
-  wavelengthLabel?: string;
   wavelength: string;
   feature: string;
   targets: string[];
@@ -127,7 +125,7 @@ interface EquipmentCardProps {
   };
 }
 
-const EquipmentCard = ({ name, nameKo, wavelengthLabel, wavelength, feature, targets, highlight = false, labels }: EquipmentCardProps) => (
+const EquipmentCard = ({ name, nameKo, wavelength, feature, targets, highlight = false, labels }: EquipmentCardProps) => (
   <motion.div
     className={`relative rounded-xl md:rounded-2xl p-4 md:p-6 h-full ${
       highlight
@@ -148,7 +146,7 @@ const EquipmentCard = ({ name, nameKo, wavelengthLabel, wavelength, feature, tar
 
     <div className="space-y-3 mb-4">
       <div>
-        <span className="text-xs text-[var(--color-mono-light)]">{wavelengthLabel ?? labels.wavelength}</span>
+        <span className="text-xs text-[var(--color-mono-light)]">{labels.wavelength}</span>
         <p className="text-sm font-medium text-[var(--color-secondary)]">{wavelength}</p>
       </div>
       <div>
@@ -456,7 +454,6 @@ export default function LaserCenterDetail() {
                 <EquipmentCard
                   name={equipment.name}
                   nameKo={equipment.nameKo}
-                  wavelengthLabel={equipment.wavelengthLabel}
                   wavelength={equipment.wavelength}
                   feature={equipment.feature}
                   targets={equipment.targets}

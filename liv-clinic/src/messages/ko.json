@@ -3917,11 +3917,10 @@
                 "highlight": false
               },
               {
-                "name": "Ultraformer",
-                "nameKo": "울트라포머",
-                "wavelengthLabel": "방식",
-                "wavelength": "HIFU 초음파",
-                "feature": "고강도 집속 초음파(HIFU)",
+                "name": "Ulblanc",
+                "nameKo": "울블랑",
+                "wavelength": "초음파",
+                "feature": "재생",
                 "targets": [
                   "리프팅",
                   "탄력 개선"

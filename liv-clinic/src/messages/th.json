@@ -3915,11 +3915,10 @@
                 "highlight": false
               },
               {
-                "name": "Ultraformer",
-                "nameKo": "Ultraformer",
-                "wavelengthLabel": "วิธีการ",
-                "wavelength": "อัลตราซาวด์ HIFU",
-                "feature": "อัลตราซาวด์โฟกัสความเข้มสูง (HIFU)",
+                "name": "Ulblanc",
+                "nameKo": "Ulblanc",
+                "wavelength": "อัลตราซาวด์",
+                "feature": "ฟื้นฟูผิว",
                 "targets": [
                   "ยกกระชับ",
                   "เพิ่มความยืดหยุ่น"

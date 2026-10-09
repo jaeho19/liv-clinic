@@ -3915,11 +3915,10 @@
                 "highlight": false
               },
               {
-                "name": "Ultraformer",
-                "nameKo": "Ultraformer",
-                "wavelengthLabel": "Метод",
-                "wavelength": "Ультразвук HIFU",
-                "feature": "Высокоинтенсивный фокусированный ультразвук (HIFU)",
+                "name": "Ulblanc",
+                "nameKo": "Ulblanc",
+                "wavelength": "Ультразвук",
+                "feature": "Регенерация",
                 "targets": [
                   "Лифтинг",
                   "Повышение упругости"

@@ -3915,11 +3915,10 @@
                 "highlight": false
               },
               {
-                "name": "Ultraformer",
-                "nameKo": "Ultraformer",
-                "wavelengthLabel": "方式",
-                "wavelength": "HIFU超声波",
-                "feature": "高强度聚焦超声(HIFU)",
+                "name": "Ulblanc",
+                "nameKo": "Ulblanc",
+                "wavelength": "超声波",
+                "feature": "再生",
                 "targets": [
                   "提升",
                   "改善弹性"
