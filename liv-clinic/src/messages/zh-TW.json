@@ -3777,7 +3777,7 @@
           "hero": {
             "title": "激光中心",
             "subtitle": "針對肌膚問題的定製激光解決方案",
-            "description": "Clarity II + Lucas 組合<br/>從色素到血管、脫毛、紋身去除一站式護理"
+            "description": "Clarity II + PicoLO 組合<br/>從色素到血管、脫毛、紋身去除一站式護理"
           },
           "viewMore": "瞭解詳情",
           "stats": [
@@ -3810,10 +3810,10 @@
                 "id": "pigmentation",
                 "name": "色斑/色素改善",
                 "nameEn": "Pigmentation & Melasma",
-                "description": "通過皮秒激光和激光調色有效改善黃褐斑、色斑、老年斑等色素問題。",
+                "description": "通過皮秒激光有效改善黃褐斑、色斑，通過CO2激光有效改善老年斑。",
                 "equipment": [
-                  "Lucas",
-                  "激光調色",
+                  "PicoLO",
+                  "CO2激光",
                   "Clarity II"
                 ],
                 "icon": "☀️"
@@ -3832,9 +3832,8 @@
                 "id": "skintone",
                 "name": "膚色均勻化",
                 "nameEn": "Skin Tone Brightening",
-                "description": "通過激光調色和Ulblanc改善暗沉肌膚，使膚色更加明亮。",
+                "description": "通過Ulblanc改善暗沉肌膚，使膚色更加明亮。",
                 "equipment": [
-                  "激光調色",
                   "Ulblanc"
                 ],
                 "icon": "✨"
@@ -3853,9 +3852,9 @@
                 "id": "tattoo",
                 "name": "紋身去除",
                 "nameEn": "Tattoo Removal",
-                "description": "Lucas皮秒激光無疤痕有效去除各種顏色的紋身。",
+                "description": "PicoLO皮秒激光無疤痕有效去除各種顏色的紋身。",
                 "equipment": [
-                  "Lucas"
+                  "PicoLO"
                 ],
                 "icon": "🎨"
               }
@@ -3868,8 +3867,8 @@
             "chartTitle": "肌膚問題 × 設備矩陣",
             "equipment": [
               "Clarity II",
-              "Lucas",
-              "激光調色",
+              "PicoLO",
+              "CO2激光",
               "Ulblanc"
             ],
             "concerns": [
@@ -3931,7 +3930,7 @@
           },
           "synergy": {
             "badge": "LIV EXCLUSIVE",
-            "title": "Clarity II + Lucas 協同效果",
+            "title": "Clarity II + PicoLO 協同效果",
             "subtitle": "兩款高端設備的組合，比單一治療更快速有效",
             "benefits": [
               {
@@ -3986,7 +3985,7 @@
               },
               {
                 "q": "恢復期需要多長時間？",
-                "a": "取決於激光類型。激光調色、Ulblanc幾乎沒有恢復期，可立即恢復日常生活。皮秒激光可能有3-5天的輕微泛紅。"
+                "a": "取決於激光類型。Ulblanc幾乎沒有恢復期，可立即恢復日常生活。皮秒激光可能有3-5天的輕微泛紅。"
               },
               {
                 "q": "什麼時候能看到效果？",

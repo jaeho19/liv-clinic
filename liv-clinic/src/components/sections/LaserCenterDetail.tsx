@@ -213,11 +213,11 @@ const EquipmentMatrixIllustration = ({ chartTitle, equipment, concerns }: Matrix
       ))}
     </g>
 
-    {/* 행 - 피부 고민 */}
+    {/* 행 - 피부 고민 (열: Clarity II · 피콜로 · CO2 레이저 · 울블랑) */}
     {[
       { checks: [true, true, true, false] },
       { checks: [true, false, false, false] },
-      { checks: [false, false, true, true] },
+      { checks: [false, false, false, true] }, // 피부톤: CO2 레이저는 토닝 장비가 아니므로 제외
       { checks: [true, false, false, false] },
       { checks: [false, true, false, false] }
     ].map((row, rowIdx) => (

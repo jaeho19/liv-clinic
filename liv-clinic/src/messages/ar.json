@@ -3777,7 +3777,7 @@
           "hero": {
             "title": "مركز الليزر",
             "subtitle": "حلول ليزر مخصصة لمشكلات بشرتك",
-            "description": "مع دمج Clarity II + Lucas<br/>عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"
+            "description": "مع دمج Clarity II + PicoLO<br/>عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"
           },
           "viewMore": "اعرف المزيد",
           "stats": [
@@ -3810,10 +3810,10 @@
                 "id": "pigmentation",
                 "name": "Pigmentation Treatment",
                 "nameEn": "Pigmentation & Melasma",
-                "description": "Effectively treat melasma, spots, and age spots with pico laser and laser toning.",
+                "description": "Effectively treat melasma and spots with pico laser, and age spots with CO2 laser.",
                 "equipment": [
-                  "Lucas",
-                  "Laser Toning",
+                  "PicoLO",
+                  "CO2 Laser",
                   "Clarity II"
                 ],
                 "icon": "☀️"
@@ -3832,9 +3832,8 @@
                 "id": "skintone",
                 "name": "Skin Tone Evening",
                 "nameEn": "Skin Tone Brightening",
-                "description": "Brighten dull skin with laser toning and Ulblanc for a clearer complexion.",
+                "description": "Brighten dull skin with Ulblanc for a clearer complexion.",
                 "equipment": [
-                  "Laser Toning",
                   "Ulblanc"
                 ],
                 "icon": "✨"
@@ -3853,9 +3852,9 @@
                 "id": "tattoo",
                 "name": "Tattoo Removal",
                 "nameEn": "Tattoo Removal",
-                "description": "Effectively remove tattoos of all colors without scarring using Lucas pico laser.",
+                "description": "Effectively remove tattoos of all colors without scarring using PicoLO pico laser.",
                 "equipment": [
-                  "Lucas"
+                  "PicoLO"
                 ],
                 "icon": "🎨"
               }
@@ -3868,8 +3867,8 @@
             "chartTitle": "مصفوفة المشكلة الجلدية × المعدات",
             "equipment": [
               "Clarity II",
-              "Lucas",
-              "Laser Toning",
+              "PicoLO",
+              "CO2 Laser",
               "Ulblanc"
             ],
             "concerns": [
@@ -3931,7 +3930,7 @@
           },
           "synergy": {
             "badge": "LIV EXCLUSIVE",
-            "title": "أثر تآزر Clarity II + Lucas",
+            "title": "أثر تآزر Clarity II + PicoLO",
             "subtitle": "توقّع نتائج أسرع وأكثر فاعلية مقارنة بالعلاج الفردي بفضل هذه المجموعة الفاخرة من المعدات",
             "benefits": [
               {
@@ -3986,7 +3985,7 @@
               },
               {
                 "q": "How long is the downtime?",
-                "a": "It depends on the laser type. Laser toning and Ulblanc have almost no downtime, allowing immediate return to daily activities. Pico laser may have mild redness for 3-5 days."
+                "a": "It depends on the laser type. Ulblanc has almost no downtime, allowing immediate return to daily activities. Pico laser may have mild redness for 3-5 days."
               },
               {
                 "q": "When will I see results?",
@@ -6774,7 +6773,7 @@
         "عيادة ليزر سيول",
         "ليزر Pico كوريا",
         "علاج الكلف في كوريا",
-        "ليزر توننغ سيول",
+        "ليزر CO2 سيول",
         "إزالة الشعر بالليزر سيول",
         "إزالة الوشم كوريا",
         "ليزر غانغنام"

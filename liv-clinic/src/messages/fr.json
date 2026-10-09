@@ -3777,7 +3777,7 @@
           "hero": {
             "title": "Centre laser",
             "subtitle": "Solutions laser personnalisées pour vos préoccupations cutanées",
-            "description": "Combinaison Clarity II + Lucas<br/>Soin tout-en-un, de la pigmentation aux vaisseaux, en passant par l'épilation et le détatouage"
+            "description": "Combinaison Clarity II + PicoLO<br/>Soin tout-en-un, de la pigmentation aux vaisseaux, en passant par l'épilation et le détatouage"
           },
           "viewMore": "En savoir plus",
           "stats": [
@@ -3810,10 +3810,10 @@
                 "id": "pigmentation",
                 "name": "Pigmentation Treatment",
                 "nameEn": "Pigmentation & Melasma",
-                "description": "Effectively treat melasma, spots, and age spots with pico laser and laser toning.",
+                "description": "Effectively treat melasma and spots with pico laser, and age spots with CO2 laser.",
                 "equipment": [
-                  "Lucas",
-                  "Laser Toning",
+                  "PicoLO",
+                  "CO2 Laser",
                   "Clarity II"
                 ],
                 "icon": "☀️"
@@ -3832,9 +3832,8 @@
                 "id": "skintone",
                 "name": "Skin Tone Evening",
                 "nameEn": "Skin Tone Brightening",
-                "description": "Brighten dull skin with laser toning and Ulblanc for a clearer complexion.",
+                "description": "Brighten dull skin with Ulblanc for a clearer complexion.",
                 "equipment": [
-                  "Laser Toning",
                   "Ulblanc"
                 ],
                 "icon": "✨"
@@ -3853,9 +3852,9 @@
                 "id": "tattoo",
                 "name": "Tattoo Removal",
                 "nameEn": "Tattoo Removal",
-                "description": "Effectively remove tattoos of all colors without scarring using Lucas pico laser.",
+                "description": "Effectively remove tattoos of all colors without scarring using PicoLO pico laser.",
                 "equipment": [
-                  "Lucas"
+                  "PicoLO"
                 ],
                 "icon": "🎨"
               }
@@ -3868,8 +3867,8 @@
             "chartTitle": "Matrice préoccupation cutanée × équipement",
             "equipment": [
               "Clarity II",
-              "Lucas",
-              "Laser Toning",
+              "PicoLO",
+              "CO2 Laser",
               "Ulblanc"
             ],
             "concerns": [
@@ -3931,7 +3930,7 @@
           },
           "synergy": {
             "badge": "LIV EXCLUSIVE",
-            "title": "Effet synergique Clarity II + Lucas",
+            "title": "Effet synergique Clarity II + PicoLO",
             "subtitle": "Attendez-vous à des résultats plus rapides et plus efficaces qu'avec un traitement seul grâce à cette combinaison premium d'équipements",
             "benefits": [
               {
@@ -3986,7 +3985,7 @@
               },
               {
                 "q": "How long is the downtime?",
-                "a": "It depends on the laser type. Laser toning and Ulblanc have almost no downtime, allowing immediate return to daily activities. Pico laser may have mild redness for 3-5 days."
+                "a": "It depends on the laser type. Ulblanc has almost no downtime, allowing immediate return to daily activities. Pico laser may have mild redness for 3-5 days."
               },
               {
                 "q": "When will I see results?",
@@ -6774,7 +6773,7 @@
         "clinique laser Séoul",
         "laser Pico Corée",
         "traitement mélasma Corée",
-        "laser toning Séoul",
+        "laser CO2 Séoul",
         "épilation laser Séoul",
         "détatouage Corée",
         "laser Gangnam"

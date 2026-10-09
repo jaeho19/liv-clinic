@@ -3777,7 +3777,7 @@
           "hero": {
             "title": "Trung tâm Laser",
             "subtitle": "Giải pháp Laser tùy chỉnh cho mối quan tâm về làn da của bạn",
-            "description": "Với sự kết hợp Clarity II + Lucas<br/>Chăm sóc toàn diện từ sắc tố đến mạch máu, tẩy lông và xóa hình xăm"
+            "description": "Với sự kết hợp Clarity II + PicoLO<br/>Chăm sóc toàn diện từ sắc tố đến mạch máu, tẩy lông và xóa hình xăm"
           },
           "viewMore": "Tìm hiểu thêm",
           "stats": [
@@ -3810,11 +3810,11 @@
                 "id": "sắc tố",
                 "name": "Điều trị sắc tố",
                 "nameEn": "Sắc Tố & Nám",
-                "description": "Điều trị nám, đốm đồi mồi hiệu quả bằng pico laser và laser toning.",
+                "description": "Điều trị nám, tàn nhang hiệu quả bằng pico laser và đốm đồi mồi bằng laser CO2.",
                 "equipment": [
-                  "Lucas",
-                  "Làm săn chắc da bằng laser",
-                  "Rõ ràng II"
+                  "PicoLO",
+                  "Laser CO2",
+                  "Clarity II"
                 ],
                 "icon": "☀️"
               },
@@ -3824,7 +3824,7 @@
                 "nameEn": "Đỏ & mạch máu",
                 "description": "Điều trị chứng đỏ mặt, giãn mao mạch và u mạch máu bằng bước sóng kép Clarity II.",
                 "equipment": [
-                  "Rõ ràng II"
+                  "Clarity II"
                 ],
                 "icon": "🔴"
               },
@@ -3832,9 +3832,8 @@
                 "id": "màu da",
                 "name": "Tông Màu Da Buổi Tối",
                 "nameEn": "Làm sáng tông màu da",
-                "description": "Làm sáng làn da xỉn màu bằng laser toning và Ulblanc để có làn da sáng hơn.",
+                "description": "Làm sáng làn da xỉn màu bằng Ulblanc để có làn da sáng hơn.",
                 "equipment": [
-                  "Làm săn chắc da bằng laser",
                   "Ulblanc"
                 ],
                 "icon": "✨"
@@ -3845,7 +3844,7 @@
                 "nameEn": "Triệt lông cao cấp",
                 "description": "Triệt lông an toàn cho mọi loại da với bước sóng kép Clarity II và công nghệ IntelliTrak.",
                 "equipment": [
-                  "Rõ ràng II"
+                  "Clarity II"
                 ],
                 "icon": "💎"
               },
@@ -3853,9 +3852,9 @@
                 "id": "hình xăm",
                 "name": "Xóa hình xăm",
                 "nameEn": "Xóa hình xăm",
-                "description": "Xóa hình xăm hiệu quả mọi màu sắc mà không để lại sẹo bằng laser Lucas pico.",
+                "description": "Xóa hình xăm hiệu quả mọi màu sắc mà không để lại sẹo bằng laser pico PicoLO.",
                 "equipment": [
-                  "Lucas"
+                  "PicoLO"
                 ],
                 "icon": "🎨"
               }
@@ -3867,9 +3866,9 @@
             "subtitle": "4 thiết bị cao cấp của LIV Laser Center giải quyết mọi vấn đề về da",
             "chartTitle": "Mối quan tâm về da × Ma trận thiết bị",
             "equipment": [
-              "Rõ ràng II",
-              "Lucas",
-              "Làm săn chắc da bằng laser",
+              "Clarity II",
+              "PicoLO",
+              "Laser CO2",
               "Ulblanc"
             ],
             "concerns": [
@@ -3891,8 +3890,8 @@
             },
             "items": [
               {
-                "name": "Rõ ràng II",
-                "nameKo": "Rõ ràng II",
+                "name": "Clarity II",
+                "nameKo": "Clarity II",
                 "wavelength": "755nm + 1064nm",
                 "feature": "Bước sóng kép",
                 "targets": [
@@ -3931,7 +3930,7 @@
           },
           "synergy": {
             "badge": "SỐNG ĐỘC QUYỀN",
-            "title": "Clarity II + Hiệu ứng tổng hợp Lucas",
+            "title": "Hiệu ứng cộng hưởng Clarity II + PicoLO",
             "subtitle": "Mong đợi kết quả nhanh hơn và hiệu quả hơn so với điều trị đơn lẻ với sự kết hợp thiết bị cao cấp này",
             "benefits": [
               {
@@ -3986,7 +3985,7 @@
               },
               {
                 "q": "Thời gian ngừng hoạt động là bao lâu?",
-                "a": "Nó phụ thuộc vào loại laser. Laser toning và Ulblanc hầu như không có thời gian nghỉ dưỡng, cho phép quay trở lại hoạt động hàng ngày ngay lập tức. Laser Pico có thể bị đỏ nhẹ trong 3-5 ngày."
+                "a": "Nó phụ thuộc vào loại laser. Ulblanc hầu như không có thời gian nghỉ dưỡng, cho phép quay trở lại hoạt động hàng ngày ngay lập tức. Laser Pico có thể bị đỏ nhẹ trong 3-5 ngày."
               },
               {
                 "q": "Khi nào tôi sẽ thấy kết quả?",
@@ -6772,7 +6771,7 @@
         "phòng khám laser Seoul",
         "laser Pico Hàn Quốc",
         "trị nám Hàn Quốc",
-        "laser toning Seoul",
+        "laser CO2 Seoul",
         "triệt lông laser Seoul",
         "xóa hình xăm Hàn Quốc",
         "laser Gangnam"
