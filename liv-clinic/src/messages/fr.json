@@ -417,8 +417,6 @@
       "cards": {
         "sagging": { "title": "Ovale du visage relâché", "desc": "Consultation centrée sur le lifting par fils pour redessiner les contours.", "tags": "Aptos · Lifting par fils" },
         "elasticity": { "title": "Fermeté sans chirurgie", "desc": "Programmes de lifting non chirurgical par ultrasons et radiofréquence.", "tags": "Ulthera · Thermage · Lifting combiné" },
-        "fundamental": { "title": "Correction en profondeur du relâchement", "desc": "Si le non-chirurgical ne suffit plus, envisagez une consultation de lifting facial.", "tags": "Consultation lifting facial" },
-        "underEye": { "title": "Cernes et regard fatigué", "desc": "Consultation de repositionnement des poches sous les yeux.", "tags": "Consultation repositionnement graisseux" },
         "texture": { "title": "Grain de peau, pores, régénération", "desc": "Des soins régénérants proposés étape par étape après un diagnostic de peau.", "tags": "Potenza · Rejuran · Juvelook" }
       },
       "paths": {

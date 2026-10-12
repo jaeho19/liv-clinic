@@ -417,8 +417,6 @@
       "cards": {
         "sagging": { "title": "Sagging jawline & contours", "desc": "Consultation focused on thread lifting to redefine blurred contours.", "tags": "Aptos · Thread Lifting" },
         "elasticity": { "title": "Firmness without surgery", "desc": "Non-surgical lifting plans based on ultrasound and RF devices.", "tags": "Ulthera · Thermage · Combination Lifting" },
-        "fundamental": { "title": "Fundamental sagging correction", "desc": "If non-surgical results felt limited, explore a facelift consultation.", "tags": "Facelift Consultation" },
-        "underEye": { "title": "Tired look under the eyes", "desc": "Under-eye fat repositioning consultation to discuss your options.", "tags": "Fat Repositioning Consultation" },
         "texture": { "title": "Texture, pores & regeneration", "desc": "Step-by-step regenerative treatments after a skin assessment.", "tags": "Potenza · Rejuran · Juvelook" }
       },
       "paths": {

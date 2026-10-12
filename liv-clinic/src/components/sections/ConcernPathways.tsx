@@ -15,15 +15,13 @@ import { PREP_LANGS } from '@/lib/consultPrep/types';
  *    의료광고 사전심의 대상 — docs/02-design/features/marketing-attribution.design.md §6 참조.
  *
  * 지원 언어에서는 상담 준비 카드로 연결하고, 기존 시술 안내도 함께 제공한다.
- * 전용 상세 페이지가 없는 안면거상·지방재배치의 안내 경로는 상담을 유지한다.
+ * 카드 번호는 배열 순서(index)로 매긴다 — 카드를 빼거나 더해도 01부터 다시 이어진다.
  */
 const PREP_LOCALES = new Set<string>(PREP_LANGS);
 
 const concernsConfig = [
   { id: 'sagging', href: '/lifting/aptos', navKey: 'aptos' },
   { id: 'elasticity', href: '/lifting', navKey: 'lifting' },
-  { id: 'fundamental', href: '/contact', navKey: 'contact' },
-  { id: 'underEye', href: '/contact', navKey: 'contact' },
   { id: 'texture', href: '/antiaging/skinbooster', navKey: 'skinbooster' },
 ] as const;
 
@@ -41,10 +39,8 @@ export default function ConcernPathways() {
     title: t(`cards.${config.id}.title`),
     desc: t(`cards.${config.id}.desc`),
     tags: t(`cards.${config.id}.tags`),
-    ctaLabel: usePrep
-      ? tPrep('title')
-      : config.href === '/contact' ? tCommon('consultation') : tCommon('learnMore'),
-    treatmentHref: usePrep && config.href !== '/contact' ? config.href : null,
+    ctaLabel: usePrep ? tPrep('title') : tCommon('learnMore'),
+    treatmentHref: usePrep ? config.href : null,
     treatmentLabel: tNav(config.navKey),
   }));
 
@@ -84,9 +80,9 @@ export default function ConcernPathways() {
           </div>
         </AnimateOnScroll>
 
-        {/* 고민 카드 5종 */}
+        {/* 고민 카드 3종 — 2열 구간을 두면 마지막 줄에 빈칸이 생기므로 1열 → 3열로 바로 넘어간다 */}
         <StaggerChildren
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5"
+          className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-5"
           staggerDelay={0.1}
         >
           {concerns.map((concern, index) => (

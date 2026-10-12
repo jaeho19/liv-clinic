@@ -417,8 +417,6 @@
       "cards": {
         "sagging": { "title": "Đường viền hàm chảy xệ", "desc": "Tư vấn tập trung vào nâng cơ chỉ để định hình lại đường nét.", "tags": "Aptos · Nâng cơ chỉ" },
         "elasticity": { "title": "Cải thiện độ săn chắc không phẫu thuật", "desc": "Phác đồ nâng cơ không phẫu thuật bằng sóng siêu âm và RF.", "tags": "Ulthera · Thermage · Nâng cơ kết hợp" },
-        "fundamental": { "title": "Cải thiện chảy xệ tận gốc", "desc": "Nếu phương pháp không phẫu thuật chưa đủ, hãy tư vấn căng da mặt.", "tags": "Tư vấn căng da mặt" },
-        "underEye": { "title": "Quầng mắt và vẻ mệt mỏi", "desc": "Tư vấn tái phân bố mỡ dưới mắt để cải thiện ấn tượng khuôn mặt.", "tags": "Tư vấn tái phân bố mỡ" },
         "texture": { "title": "Kết cấu da · lỗ chân lông · tái tạo", "desc": "Đề xuất từng bước các liệu trình tái tạo sau khi chẩn đoán da.", "tags": "Potenza · Rejuran · Juvelook" }
       },
       "paths": {

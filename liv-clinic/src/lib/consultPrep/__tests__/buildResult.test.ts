@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, afterEach, vi } from 'vitest';
 import { createTranslator } from 'use-intl/core';
 import { buildResult, treatmentGroupOf, type TreatmentNameResolver } from '../buildResult';
 import { CONSULT_ONLY } from '../types';
@@ -31,15 +31,6 @@ describe('buildResult', () => {
     expect(t.duration).toBe('60-90분');
     expect(t.recovery).toBe('즉시 일상 복귀 가능');
     expect(t.cautions.length).toBeGreaterThan(0);
-  });
-
-  it('consultOnly는 이름만 두고 소요시간·회복을 비운다', () => {
-    const out = buildResult(
-      { ...SEL, treatmentIds: [CONSULT_ONLY, 'filler'] }, 'underEye', 'ko');
-    const row = out.treatments.find((t) => t.consultOnly)!;
-    expect(row.duration).toBe('');
-    expect(row.href).toBeNull();
-    expect(row.reason).toContain('상담');
   });
 
   it('용어와 질문을 해당 언어로 채운다', () => {
@@ -177,10 +168,53 @@ describe('buildResult — 시술명 로케일', () => {
     expect(byId.toning).toBe('레이저 토닝');
   });
 
-  it('consultOnly 행은 resolver 를 넘겨도 이름이 비어 있다', () => {
-    const out = buildResult(
+});
+
+// consultOnly 를 쓰던 고민(fundamental·underEye)은 2026-10-12 홈 카드와 함께 규칙표에서 빠졌다.
+// 처리 경로는 남아 있으므로 가짜 규칙표로 검증한다.
+describe('buildResult — consultOnly 행', () => {
+  const rule = (treatmentId: string, displayOrder: number, reasonKo: string) => ({
+    concernId: 'surgical',
+    treatmentId,
+    displayOrder,
+    reason: { ko: reasonKo, en: '', ja: '', zh: '' },
+    caution: { ko: '', en: '', ja: '', zh: '' },
+    reviewedBy: '원장,실장',
+    reviewedAt: '2026-10-12',
+  });
+
+  async function loadWithConsultOnlyRule() {
+    vi.resetModules();
+    vi.doMock('@/lib/data/concernRules.generated', () => ({
+      CONCERN_RULES: [
+        rule(CONSULT_ONLY, 1, '수술적 방법은 상담에서 확인이 필요합니다'),
+        rule('filler', 2, '꺼진 부위에 볼륨을 채우는 방식입니다'),
+      ],
+      CONCERN_TERMS: [],
+      PREP_QUESTIONS: [],
+    }));
+    return (await import('../buildResult')).buildResult;
+  }
+
+  afterEach(() => {
+    vi.doUnmock('@/lib/data/concernRules.generated');
+    vi.resetModules();
+  });
+
+  it('consultOnly는 이름만 두고 소요시간·회복을 비운다', async () => {
+    const build = await loadWithConsultOnlyRule();
+    const out = build({ ...SEL, treatmentIds: [CONSULT_ONLY, 'filler'] }, 'surgical', 'ko');
+    const row = out.treatments.find((t) => t.consultOnly)!;
+    expect(row.duration).toBe('');
+    expect(row.href).toBeNull();
+    expect(row.reason).toContain('상담');
+  });
+
+  it('consultOnly 행은 resolver 를 넘겨도 이름이 비어 있다', async () => {
+    const build = await loadWithConsultOnlyRule();
+    const out = build(
       { ...SEL, treatmentIds: [CONSULT_ONLY, 'filler'] },
-      'underEye',
+      'surgical',
       'en',
       resolverFor('en', enMessages)
     );

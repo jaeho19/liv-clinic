@@ -3,6 +3,8 @@ import {
   treatmentsFor, termsFor, questionsFor, isKnownTerm, isKnownQuestion, pickText,
 } from '../rules';
 import { CONSULT_ONLY } from '../types';
+import { CONCERN_RULES } from '@/lib/data/concernRules.generated';
+import koMessages from '@/messages/ko.json';
 
 describe('treatmentsFor', () => {
   it('displayOrder 오름차순으로 돌려준다', () => {
@@ -15,8 +17,16 @@ describe('treatmentsFor', () => {
     expect(treatmentsFor('sagging')[0].treatmentId).toBe('aptos');
   });
 
+  // 2026-10-12 fundamental·underEye 카드 삭제로 지금 규칙표에는 consultOnly 행이 없다.
+  // 다시 생기면 이 규칙을 지켜야 한다.
   it('수술 상담이 필요한 고민은 consultOnly를 첫 행으로 둔다', () => {
-    expect(treatmentsFor('underEye')[0].treatmentId).toBe(CONSULT_ONLY);
+    const ids = new Set(CONCERN_RULES.filter((r) => r.treatmentId === CONSULT_ONLY).map((r) => r.concernId));
+    for (const id of ids) expect(treatmentsFor(id)[0].treatmentId, id).toBe(CONSULT_ONLY);
+  });
+
+  it('규칙표의 고민 목록은 홈 고민 카드(sections.concerns.cards)와 같다', () => {
+    const fromRules = [...new Set(CONCERN_RULES.map((r) => r.concernId))].sort();
+    expect(fromRules).toEqual(Object.keys(koMessages.sections.concerns.cards).sort());
   });
 
   it('없는 고민에는 빈 배열을 돌려준다', () => {

@@ -9,7 +9,9 @@ import type { PrepCardResult } from '@/lib/consultPrep/buildResult';
 import { PREP_LANGS, type PrepLang } from '@/lib/consultPrep/types';
 import { trackPrepResultShown } from '@/lib/analytics-events';
 
-const CONCERN_IDS = ['sagging', 'elasticity', 'fundamental', 'underEye', 'texture'] as const;
+// 목록에 없는 값(예전 홈 카드 링크 ?concern=fundamental · ?concern=underEye 포함)은
+// 첫 항목(sagging)으로 바꿔 연다 — 없는 고민으로 API 를 부르면 400 이 난다.
+const CONCERN_IDS = ['sagging', 'elasticity', 'texture'] as const;
 
 // useSearchParams()가 쓰는 Suspense 경계 "안"은 정적 생성 시점에 실제 쿼리를
 // 알 수 없어 CSR로 미뤄진다(2026-09-03 리뷰). concern 쿼리에 의존하는
