@@ -5,7 +5,7 @@ import path from 'node:path';
 const SECTIONS = path.resolve(__dirname, '..');
 const APP = path.resolve(__dirname, '..', '..', '..', 'app', '[locale]');
 
-// 시술 상세 17종 — 컴포넌트 파일 → InternationalNotice treatmentId
+// 시술 상세 16종 — 컴포넌트 파일 → InternationalNotice treatmentId (문신 제거는 2026-10-20 폐지)
 const FILES: Record<string, string> = {
   [path.join(SECTIONS, 'UltheraDetail.tsx')]: 'ulthera',
   [path.join(SECTIONS, 'ThermageDetail.tsx')]: 'thermage',
@@ -24,12 +24,11 @@ const FILES: Record<string, string> = {
   [path.join(SECTIONS, 'VascularDetail.tsx')]: 'vascular',
   [path.join(SECTIONS, 'SkinToneDetail.tsx')]: 'skintone',
   [path.join(SECTIONS, 'HairRemovalDetail.tsx')]: 'hair-removal',
-  [path.join(SECTIONS, 'TattooRemovalDetail.tsx')]: 'tattoo',
 };
 
 describe('InternationalNotice is mounted on every treatment detail (P1-2)', () => {
-  it('covers 17 treatment pages', () => {
-    expect(Object.keys(FILES)).toHaveLength(17);
+  it('covers 16 treatment pages', () => {
+    expect(Object.keys(FILES)).toHaveLength(16);
   });
 
   for (const [file, id] of Object.entries(FILES)) {

@@ -769,9 +769,9 @@ export const TREATMENTS = {
       name: '루카스 레이저',
       nameEn: 'Lucas Laser',
       tagline: '피코세컨드 기술로 난치성 색소까지 – 1000배 빠른 펄스',
-      shortDesc: '피코초(10⁻¹²) 초단펄스로 색소를 미세하게 분해, 문신 제거에도 탁월',
+      shortDesc: '피코초(10⁻¹²) 초단펄스로 색소를 미세하게 분해',
       heroImage: '/images/treatments/lucas-hero.jpg',
-      description: '루카스 레이저는 피코세컨드(10⁻¹²초) 기술을 적용한 최신 레이저입니다. 기존 나노초(10⁻⁹초) 레이저보다 1000배 빠른 펄스로 색소를 미세하게 분해하여, 주변 조직 손상을 최소화하면서 효과적인 치료가 가능합니다. 특히 난치성 기미, 문신 제거에 탁월한 효과를 보입니다.',
+      description: '루카스 레이저는 피코세컨드(10⁻¹²초) 기술을 적용한 최신 레이저입니다. 기존 나노초(10⁻⁹초) 레이저보다 1000배 빠른 펄스로 색소를 미세하게 분해하여, 주변 조직 손상을 최소화하면서 효과적인 치료가 가능합니다. 특히 난치성 기미에 탁월한 효과를 보입니다.',
       benefits: [
         { title: '피코세컨드 펄스', desc: '1조분의 1초(10⁻¹²) 초단펄스로 나노초 대비 1000배 빠름' },
         { title: '미세 색소 분해', desc: '색소를 나노 레이저보다 더 미세하게 분해하여 빠른 배출' },
@@ -809,11 +809,10 @@ export const TREATMENTS = {
       anesthesia: '마취 크림 (선택)',
       recovery: '3-7일 (미세 딱지 가능)',
       results: '2-4주 간격 3-5회 시술 권장',
-      targetAreas: ['기미 부위', '잡티', '오타모반', '문신', '흉터'],
+      targetAreas: ['기미 부위', '잡티', '오타모반', '흉터'],
       idealFor: [
         '난치성 기미로 고민인 분 (토닝으로 개선 안 된 경우)',
         '잡티, 검버섯 제거를 원하는 분',
-        '문신 제거를 원하는 분 (컬러 문신 포함)',
         '모공, 흉터 개선을 원하는 분',
       ],
       cautions: [
@@ -825,7 +824,6 @@ export const TREATMENTS = {
       faqs: [
         { q: '피코세컨드와 나노세컨드의 차이는?', a: '피코세컨드는 나노세컨드보다 1000배 빠른 펄스입니다. 이로 인해 색소를 더 미세하게 분해하고, 주변 조직 손상을 최소화하여 부작용이 적고 회복이 빠릅니다.' },
         { q: '기존 토닝과 어떤 차이가 있나요?', a: '토닝은 저출력으로 점진적 개선을 유도하고, 피코 레이저는 고에너지 초단펄스로 색소를 직접 분해합니다. 난치성 기미나 깊은 색소에는 피코 레이저가 더 효과적입니다.' },
-        { q: '문신 제거에 몇 회가 필요한가요?', a: '문신 크기, 색상, 깊이에 따라 다르지만, 보통 5-10회 이상 시술이 필요합니다. 컬러 문신은 추가 시술이 필요할 수 있습니다.' },
       ],
       relatedTreatments: ['clarity', 'toning', 'ulblanc'],
     },
@@ -1302,7 +1300,7 @@ export const LASER_EQUIPMENT = {
     wavelength: '532nm / 755nm / 1064nm',
     feature: '피코초 펄스 (450ps) - 나노초 대비 1000배 빠름',
     advantage: '광음향 효과로 색소 미세 분쇄, 흉터 위험 최소화',
-    targets: ['기미', '색소', '잡티', '검버섯', '문신 제거'],
+    targets: ['기미', '색소', '잡티', '검버섯'],
     sessions: '3-10회 (적응증에 따라 상이)',
     downtime: '3-7일',
   },
@@ -1400,23 +1398,6 @@ export const LASER_CATEGORIES = [
       bikini: { treatment: '클래리티 II 755nm/1064nm', sessions: '8-10회', interval: '6-8주' },
     },
   },
-  {
-    id: 'tattoo',
-    name: '문신 제거',
-    nameEn: 'Tattoo Removal',
-    href: '/laser/tattoo',
-    icon: 'eraser',
-    color: '#8B5CF6',
-    description: '피코세컨드 기술로 깨끗한 문신 제거',
-    shortDesc: '흑색, 컬러, 아이라인, 눈썹 문신 제거',
-    recommendedEquipment: ['lucas'],
-    featuredEquipment: 'lucas',
-    treatmentProtocol: {
-      black: { treatment: '루카스 피코', sessions: '5-8회', interval: '6-8주' },
-      color: { treatment: '루카스 피코 + 클래리티', sessions: '8-12회', interval: '6-8주' },
-      cosmetic: { treatment: '루카스 피코', sessions: '3-5회', interval: '4-6주' },
-    },
-  },
 ] as const;
 
 // 메인 네비게이션
@@ -1466,7 +1447,6 @@ export const MAIN_NAV = [
       { label: '홍조/혈관 치료', href: '/laser/vascular' },
       { label: '피부톤 균일화', href: '/laser/skintone' },
       { label: '프리미엄 제모', href: '/laser/hair-removal' },
-      { label: '문신 제거', href: '/laser/tattoo' },
     ],
   },
   {

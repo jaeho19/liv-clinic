@@ -3770,12 +3770,12 @@
         "name": "激光中心",
         "fullName": "Laser Center",
         "tagline": "高端激光全方位解決方案",
-        "description": "色素、血管、膚質、脫毛、紋身去除，一站式解決各種皮膚問題的高端激光中心。",
+        "description": "色素、血管、膚質、脫毛，一站式解決各種皮膚問題的高端激光中心。",
         "detail": {
           "hero": {
             "title": "激光中心",
             "subtitle": "針對肌膚問題的定製激光解決方案",
-            "description": "Clarity II + PicoLO 組合<br/>從色素到血管、脫毛、紋身去除一站式護理"
+            "description": "Clarity II + PicoLO 組合<br/>從色素到血管、脫毛一站式護理"
           },
           "viewMore": "瞭解詳情",
           "stats": [
@@ -3786,7 +3786,7 @@
             },
             {
               "label": "治療領域",
-              "value": "5種",
+              "value": "4種",
               "desc": "肌膚問題解決"
             },
             {
@@ -3845,16 +3845,6 @@
                   "Clarity II"
                 ],
                 "icon": "💎"
-              },
-              {
-                "id": "tattoo",
-                "name": "紋身去除",
-                "nameEn": "Tattoo Removal",
-                "description": "PicoLO皮秒激光無疤痕有效去除各種顏色的紋身。",
-                "equipment": [
-                  "PicoLO"
-                ],
-                "icon": "🎨"
               }
             ]
           },
@@ -3873,8 +3863,7 @@
               "色斑/色素",
               "紅血絲/血管",
               "膚色",
-              "脫毛",
-              "紋身去除"
+              "脫毛"
             ]
           },
           "equipmentSection": {
@@ -3907,8 +3896,7 @@
                 "feature": "皮秒脈衝 (450ps)",
                 "targets": [
                   "黃褐斑",
-                  "色素",
-                  "紋身去除"
+                  "色素"
                 ],
                 "highlight": false
               },
@@ -4097,8 +4085,7 @@
           "otherCategories": {
             "vascular": "紅血絲/血管治療",
             "skintone": "膚色均勻化",
-            "hair-removal": "高端脫毛",
-            "tattoo": "紋身去除"
+            "hair-removal": "高端脫毛"
           },
           "hero": {
             "subtitle": "頑固性黃褐斑也能通過LIV三階段系統解決",
@@ -4776,258 +4763,6 @@
       },
       "hair-removal": {
         "name": "激光脫毛"
-      },
-      "tattoo": {
-        "name": "紋身去除",
-        "fullName": "Tattoo Removal",
-        "tagline": "安全去除紋身",
-        "description": "皮秒激光將紋身色素分解成微小顆粒，徹底清除。",
-        "detail": {
-          "breadcrumb": "紋身去除",
-          "hero": {
-            "title": "紋身去除",
-            "subtitle": "Tattoo Removal with Lucas",
-            "description": "皮秒技術無疤痕乾淨地有效去除所有顏色的紋身"
-          },
-          "picoTech": {
-            "badge": "皮秒技術",
-            "title": "為什麼選擇皮秒激光？",
-            "description1": "傳統納秒(10⁻⁹秒)激光通過熱作用(Photothermal)分解墨水。皮秒(10⁻¹²秒)激光以快1000倍的脈衝產生光聲作用(Photoacoustic)。",
-            "description2": "這種衝擊波將墨水顆粒粉碎到微塵級別，使我們身體的免疫系統能夠輕鬆清除。",
-            "benefits": [
-              {
-                "title": "更少的治療次數",
-                "desc": "微粒粉碎實現高效清除"
-              },
-              {
-                "title": "更少的熱損傷",
-                "desc": "短脈衝保護周圍組織"
-              },
-              {
-                "title": "更少的副作用",
-                "desc": "最大限度降低疤痕、色素變化風險"
-              }
-            ],
-            "illustration": {
-              "title": "墨水顆粒粉碎機制",
-              "nanosecond": "納秒 (10⁻⁹秒)",
-              "nanosecondDevice": "傳統Q-Switch激光",
-              "picosecond": "皮秒 (10⁻¹²秒)",
-              "picosecondDevice": "Lucas激光",
-              "before": "Before",
-              "after": "After",
-              "photothermal": "熱作用 (Photothermal)",
-              "photothermalResult": "大顆粒 → 中顆粒",
-              "photoacoustic": "光聲作用 (Photoacoustic)",
-              "photoacousticResult": "大顆粒 → 微小顆粒 ✓"
-            }
-          },
-          "colorWavelength": {
-            "badge": "多波長系統",
-            "title": "靶向所有顏色",
-            "subtitle": "Lucas皮秒激光通過多波長有效分解各種顏色的墨水",
-            "illustrationTitle": "墨水顏色最佳波長",
-            "colors": {
-              "black": {
-                "name": "黑色",
-                "wavelength": "1064nm",
-                "difficulty": "最容易"
-              },
-              "red": {
-                "name": "紅色",
-                "wavelength": "532nm",
-                "difficulty": "比較容易"
-              },
-              "blue": {
-                "name": "藍色",
-                "wavelength": "755nm",
-                "difficulty": "較難"
-              },
-              "green": {
-                "name": "綠色",
-                "wavelength": "755nm",
-                "difficulty": "最難"
-              }
-            },
-            "lucasNote": "Lucas：多波長可靶向所有顏色",
-            "wavelengths": [
-              {
-                "wavelength": "1064nm",
-                "colors": "黑色、深藍色、棕色",
-                "note": "最深穿透，大多數紋身"
-              },
-              {
-                "wavelength": "755nm",
-                "colors": "藍色、綠色",
-                "note": "中等深度，特殊顏色靶向"
-              },
-              {
-                "wavelength": "532nm",
-                "colors": "紅色、橙色、黃色",
-                "note": "表皮層，淺色專用"
-              }
-            ]
-          },
-          "tattooTypes": {
-            "badge": "紋身類型指南",
-            "title": "您想去除什麼樣的紋身？",
-            "subtitle": "根據紋身的類型和特性，治療次數和難度會有所不同",
-            "estimatedSessions": "預計次數",
-            "difficulty": {
-              "easy": "比較容易",
-              "medium": "中等",
-              "hard": "較難"
-            },
-            "types": [
-              {
-                "type": "業餘紋身",
-                "description": "非專業人士做的紋身。墨水較淺，去除相對容易。",
-                "sessions": "3-5次",
-                "notes": "多為墨汁、筆墨等單色紋身"
-              },
-              {
-                "type": "專業紋身（黑白）",
-                "description": "專業紋身師做的黑白紋身。墨水深且均勻。",
-                "sessions": "6-10次",
-                "notes": "黑色墨水對激光反應最好"
-              },
-              {
-                "type": "專業紋身（彩色）",
-                "description": "使用多種顏色的彩色紋身。不同顏色需要不同波長。",
-                "sessions": "8-15次以上",
-                "notes": "綠色、藍色需要更多次數"
-              },
-              {
-                "type": "半永久化妝",
-                "description": "眉毛、眼線、唇部等半永久化妝。比一般紋身做得較淺。",
-                "sessions": "3-6次",
-                "notes": "眼部治療使用特殊防護設備"
-              },
-              {
-                "type": "外傷性紋身",
-                "description": "事故造成的異物沉積。瀝青、石墨等嵌入皮膚的情況。",
-                "sessions": "4-8次",
-                "notes": "根據深度和範圍而定"
-              },
-              {
-                "type": "遮蓋紋身",
-                "description": "在原有紋身上重新做的紋身。墨水層較厚，去除較難。",
-                "sessions": "10-20次以上",
-                "notes": "分階段去除後可做新紋身"
-              }
-            ]
-          },
-          "process": {
-            "badge": "治療流程",
-            "title": "紋身去除流程",
-            "steps": [
-              {
-                "step": 1,
-                "title": "諮詢 & 評估",
-                "description": "評估紋身大小、顏色、深度、膚質，告知預計治療次數和費用。",
-                "duration": "約30分鐘"
-              },
-              {
-                "step": 2,
-                "title": "皮秒激光治療",
-                "description": "用Lucas皮秒激光將墨水顆粒微細粉碎。治療時間因大小而異。",
-                "duration": "15-60分鐘"
-              },
-              {
-                "step": 3,
-                "title": "恢復期",
-                "description": "皮膚自然排出粉碎的墨水。可能出現結痂、輕微腫脹。",
-                "duration": "2-4周"
-              },
-              {
-                "step": 4,
-                "title": "下次治療",
-                "description": "間隔6-8周重複治療。每次治療都能看到紋身變淡。",
-                "duration": "間隔6-8周"
-              }
-            ]
-          },
-          "lucas": {
-            "title": "Lucas",
-            "subtitle": "皮秒紋身去除的新標準",
-            "specs": {
-              "pulseDuration": {
-                "label": "脈衝持續時間",
-                "value": "450皮秒"
-              },
-              "wavelength": {
-                "label": "波長",
-                "value": "532 / 755 / 1064nm"
-              },
-              "repetitionRate": {
-                "label": "重複率",
-                "value": "最高10Hz"
-              },
-              "energy": {
-                "label": "能量",
-                "value": "最高1.8J"
-              }
-            },
-            "strengths": {
-              "title": "Lucas的優勢",
-              "items": [
-                "多波長應對所有顏色",
-                "450ps超短脈衝最小化熱損傷",
-                "點陣鏡頭也可治療疤痕"
-              ]
-            }
-          },
-          "precautions": {
-            "before": {
-              "title": "治療前",
-              "items": [
-                "治療前2周避免過度日曬",
-                "治療部位避免使用刺激性產品",
-                "如有皮膚狀況（炎症、傷口）請提前告知",
-                "告知正在服用的藥物（光敏性藥物等）"
-              ]
-            },
-            "after": {
-              "title": "治療後",
-              "items": [
-                "按指示塗抹處方藥膏",
-                "絕對不要人為去除結痂",
-                "必須使用防曬霜（SPF 30以上）",
-                "1周內避免桑拿、劇烈運動"
-              ]
-            }
-          },
-          "faq": [
-            {
-              "q": "紋身能完全去除嗎？",
-              "a": "大多數紋身可以去除90%以上。能否完全去除取決於墨水顏色、深度、紋身年齡、膚質等因素。黑色墨水最容易去除，綠色和藍色可能需要更多次數。諮詢時會給出準確的預估。"
-            },
-            {
-              "q": "紋身去除有多痛？",
-              "a": "疼痛程度從'橡皮筋彈的感覺'到'刺痛感'因人而異。Lucas皮秒激光的脈衝時間比傳統納秒激光短1000倍，熱量積累少，疼痛也相應減輕。必要時塗抹麻醉膏來最小化疼痛。"
-            },
-            {
-              "q": "治療後會留疤嗎？",
-              "a": "皮秒激光最小化熱損傷，疤痕風險非常低。遵循適當的能量設置和治療間隔，大多數情況下可以無疤痕恢復。遵循治療後護理指南（防曬、不剝結痂等），可期待乾淨的皮膚。"
-            },
-            {
-              "q": "舊紋身和新紋身，哪個更容易去除？",
-              "a": "通常舊紋身更容易去除。隨著時間推移，我們身體的免疫系統會自然清除部分墨水顆粒。但新紋身也可以用皮秒激光有效去除，而且墨水清晰殘留，激光靶向更容易也是優點。"
-            },
-            {
-              "q": "所有顏色的紋身都能去除嗎？",
-              "a": "大多數顏色都可以去除。Lucas皮秒激光提供多波長（532nm、755nm、1064nm）來應對各種顏色。"
-            },
-            {
-              "q": "治療間隔為什麼是6-8周？",
-              "a": "激光粉碎的墨水顆粒由我們身體的巨噬細胞吸收，通過淋巴系統排出。這個自然癒合過程需要4-6周，皮膚完全恢復後才能進行下次治療。間隔太短會增加皮膚損傷和疤痕風險。"
-            }
-          ],
-          "cta": {
-            "title": "新起點的第一步",
-            "description": "不想要的紋身，用皮秒激光乾淨去除。免費諮詢獲取準確的治療方案"
-          }
-        }
       }
     }
   },
@@ -5773,7 +5508,7 @@
       "title": "激光中心",
       "subtitle": "針對皮膚問題的定製激光方案",
       "description1": "通過Clarity II + Lucas組合，",
-      "description2": "從色素到血管、脫毛、紋身去除一站式護理"
+      "description2": "從色素到血管、脫毛一站式護理"
     },
     "highlights": {
       "equipment": "設備",
@@ -5799,10 +5534,6 @@
       "hairRemoval": {
         "title": "高端脫毛",
         "description": "用Clarity II雙波長和IntelliTrak技術，適合所有膚質的安全脫毛。"
-      },
-      "tattoo": {
-        "title": "紋身去除",
-        "description": "用Lucas皮秒激光無疤痕有效去除各種顏色的紋身。"
       }
     },
     "matrix": {
@@ -5829,8 +5560,7 @@
         "spec": "皮秒脈衝 (450ps)",
         "tags": [
           "黃褐斑",
-          "色素",
-          "紋身去除"
+          "色素"
         ]
       },
       "toning": {
@@ -6156,8 +5886,7 @@
         "description": "從皮膚深處明亮清透 – 色素治療的新標準",
         "features": [
           "高功率Q開關",
-          "黃褐斑/色斑治療",
-          "紋身去除"
+          "黃褐斑/色斑治療"
         ],
         "certification": "KFDA認證"
       },
@@ -6440,17 +6169,6 @@
         "dualToning": "雙波長激光 (Clarity + Lucas)",
         "dualToningDesc": "脫毛護理",
         "single": "單次"
-      },
-      "tattoo": {
-        "tattooLucas": "紋身祛除激光 (Lucas)",
-        "onePart": "1部位",
-        "co2Laser": "CO2激光",
-        "co2Desc": "痣/扁平疣/老年斑等",
-        "dia3mm": "直徑 ≤ 3mm (1個)",
-        "dia5mm": "3mm < 直徑 ≤ 5mm (1個)",
-        "diaOver5mm": "直徑 > 5mm (1個)",
-        "faceFull": "全臉 (50個以上)",
-        "neckFull": "全頸 (50個以上)"
       }
     }
   },
@@ -6769,15 +6487,14 @@
       ]
     },
     "laser": {
-      "title": "激光中心 | 色斑·紅血絲·脫毛·紋身 | LIV整形外科",
-      "description": "皮秒激光、Clarity等正品設備，改善黃褐斑、色素、紅血絲、毛孔，並提供激光脫毛與紋身去除。首爾江南LIV整形外科激光中心按膚質訂製方案。",
+      "title": "激光中心 | 色斑·紅血絲·脫毛 | LIV整形外科",
+      "description": "皮秒激光、Clarity等正品設備，改善黃褐斑、色素、紅血絲、毛孔，並提供激光脫毛。首爾江南LIV整形外科激光中心按膚質訂製方案。",
       "keywords": [
         "激光 首爾",
         "皮秒激光 韓國",
         "黃褐斑治療 韓國",
         "激光美白 首爾",
         "激光脫毛 韓國",
-        "紋身去除",
         "江南醫美"
       ]
     },
@@ -6991,19 +6708,6 @@
         "毛孔治療 首爾",
         "膚色改善 韓國",
         "激光嫩膚",
-        "江南醫美",
-        "新沙站"
-      ]
-    },
-    "laserTattoo": {
-      "title": "除刺青·洗紋身 | 皮秒雷射（激光） | 首爾江南 LIV整形外科",
-      "description": "首爾江南LIV整形外科除刺青（洗紋身）。皮秒雷射將刺青色素微細分解，加速代謝排出，可處理彩色刺青，同時保護周圍組織。新沙站步行1分鐘。",
-      "keywords": [
-        "除刺青 首爾",
-        "洗紋身 韓國",
-        "皮秒雷射 刺青",
-        "彩色紋身去除",
-        "去紋身 韓國",
         "江南醫美",
         "新沙站"
       ]

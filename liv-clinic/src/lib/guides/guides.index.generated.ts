@@ -25,13 +25,6 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "en",
-    "slug": "tattoo-removal-pico-seoul",
-    "status": "published",
-    "title": "Tattoo removal in Seoul with a pico laser: sessions, cost and fitting it around your trip",
-    "category": "treatment"
-  },
-  {
-    "locale": "en",
     "slug": "ultherapy-cost-seoul",
     "status": "published",
     "title": "Ultherapy in Seoul: 2026 price guide, what's included and how to plan your visit",
@@ -64,13 +57,6 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "status": "published",
     "title": "施術後の飛行機搭乗とダウンタイムの目安：1泊2日・2泊3日 美容医療旅行モデルプラン（新沙・LIV美容クリニック）",
     "category": "aftercare"
-  },
-  {
-    "locale": "ja",
-    "slug": "tattoo-removal-pico-seoul",
-    "status": "published",
-    "title": "韓国でタトゥー除去：ピコレーザーの回数・費用・旅行日程（新沙・LIV美容クリニック）",
-    "category": "treatment"
   },
   {
     "locale": "ja",
@@ -109,13 +95,6 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "zh",
-    "slug": "tattoo-removal-pico-seoul",
-    "status": "published",
-    "title": "首尔皮秒激光洗纹身：疗程次数、费用与行程安排",
-    "category": "treatment"
-  },
-  {
-    "locale": "zh",
     "slug": "ultherapy-cost-seoul",
     "status": "published",
     "title": "首尔超声刀(Ultherapy)价格与行程规划：外国人同价、当天完成",
@@ -148,13 +127,6 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "status": "published",
     "title": "療程後可以搭飛機嗎？各療程恢復期與首爾 2–3 天醫美行程",
     "category": "aftercare"
-  },
-  {
-    "locale": "zh-TW",
-    "slug": "tattoo-removal-pico-seoul",
-    "status": "published",
-    "title": "首爾皮秒雷射除刺青：療程次數、費用與行程安排",
-    "category": "treatment"
   },
   {
     "locale": "zh-TW",

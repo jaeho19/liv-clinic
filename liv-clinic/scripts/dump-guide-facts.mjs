@@ -86,8 +86,8 @@ async function main() {
   }
   out.push('\n### laser 카테고리 (LASER_CATEGORIES; 소요 시간 등은 각 src/app/[locale]/laser/*/layout.tsx serviceData — ko)\n');
   for (const c of LASER_CATEGORIES) out.push(`- ${c.id}: ${c.nameEn} — ${c.shortDesc ?? ''} ${c.description ?? ''}`);
-  out.push('- layout serviceData(ko): pigmentation 20-40분·마취 크림(선택)·3-7일(미세 딱지 가능) / vascular 15-30분 / skintone 30-45분·즉시 일상 복귀 / hair-removal 15-60분(부위에 따라)·즉시 일상 복귀 / tattoo 15-30분·마취 크림(30분)·3-7일(미세 딱지)');
-  const laserKeys = ['tattoo', 'hairRemoval', 'pigmentation', 'vascular', 'skintone'];
+  out.push('- layout serviceData(ko): pigmentation 20-40분·마취 크림(선택)·3-7일(미세 딱지 가능) / vascular 15-30분 / skintone 30-45분·즉시 일상 복귀 / hair-removal 15-60분(부위에 따라)·즉시 일상 복귀');
+  const laserKeys = ['hairRemoval', 'pigmentation', 'vascular', 'skintone'];
   for (const key of laserKeys) {
     for (const l of LOCALES) {
       const faq = get(msg[l], `treatments.laser.${key}.detail.faq`);

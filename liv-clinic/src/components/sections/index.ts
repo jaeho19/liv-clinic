@@ -28,7 +28,6 @@ export { default as PigmentationDetail } from './PigmentationDetail';
 export { default as VascularDetail } from './VascularDetail';
 export { default as SkinToneDetail } from './SkinToneDetail';
 export { default as HairRemovalDetail } from './HairRemovalDetail';
-export { default as TattooRemovalDetail } from './TattooRemovalDetail';
 export { default as SignatureDetail } from './SignatureDetail';
 export { default as ConsultationForm } from './ConsultationForm';
 export { default as EventCard } from './EventCard';

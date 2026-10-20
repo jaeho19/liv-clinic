@@ -39,7 +39,7 @@ const STATIC_PATHS: SitemapPath[] = [
 ];
 
 // 레이저 카테고리 페이지 (다국어 검색 최적화)
-const LASER_CATEGORIES = ['pigmentation', 'vascular', 'skintone', 'hair-removal', 'tattoo'];
+const LASER_CATEGORIES = ['pigmentation', 'vascular', 'skintone', 'hair-removal'];
 
 /** 사이트맵에 넣을 모든 경로(정적 + 시술 상세 + 레이저 카테고리). 이벤트 상세는 DB에서 따로 붙인다. */
 export function buildSitemapPaths(reviewLocales: readonly string[] = ['ko']): SitemapPath[] {

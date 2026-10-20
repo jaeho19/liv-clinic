@@ -3770,12 +3770,12 @@
         "name": "Laser Center",
         "fullName": "Laser Center",
         "tagline": "Advanced Laser Total Solution",
-        "description": "A premium laser center addressing various skin concerns from pigmentation, vascular issues, skin texture, hair removal, to tattoo removal.",
+        "description": "A premium laser center addressing various skin concerns, from pigmentation and vascular issues to skin texture and hair removal.",
         "detail": {
           "hero": {
             "title": "Laser Center",
             "subtitle": "Customized Laser Solutions for Your Skin Concerns",
-            "description": "With Clarity II + PicoLO combination<br/>One-stop care from pigmentation to vascular, hair removal, and tattoo removal"
+            "description": "With Clarity II + PicoLO combination<br/>One-stop care from pigmentation to vascular and hair removal"
           },
           "viewMore": "Learn More",
           "stats": [
@@ -3786,7 +3786,7 @@
             },
             {
               "label": "Treatment Areas",
-              "value": "5 Types",
+              "value": "4 Types",
               "desc": "Skin Concern Solutions"
             },
             {
@@ -3845,16 +3845,6 @@
                   "Clarity II"
                 ],
                 "icon": "💎"
-              },
-              {
-                "id": "tattoo",
-                "name": "Tattoo Removal",
-                "nameEn": "Tattoo Removal",
-                "description": "Effectively remove tattoos of all colors without scarring using PicoLO pico laser.",
-                "equipment": [
-                  "PicoLO"
-                ],
-                "icon": "🎨"
               }
             ]
           },
@@ -3873,8 +3863,7 @@
               "Pigmentation",
               "Redness/Vascular",
               "Skin Tone",
-              "Hair Removal",
-              "Tattoo Removal"
+              "Hair Removal"
             ]
           },
           "equipmentSection": {
@@ -3907,8 +3896,7 @@
                 "feature": "Picosecond Pulse (450ps)",
                 "targets": [
                   "Melasma",
-                  "Pigmentation",
-                  "Tattoo Removal"
+                  "Pigmentation"
                 ],
                 "highlight": false
               },
@@ -4097,8 +4085,7 @@
           "otherCategories": {
             "vascular": "Redness & Vascular Treatment",
             "skintone": "Skin Tone Enhancement",
-            "hair-removal": "Premium Hair Removal",
-            "tattoo": "Tattoo Removal"
+            "hair-removal": "Premium Hair Removal"
           },
           "hero": {
             "subtitle": "Even stubborn melasma with our 3-stage system",
@@ -4776,258 +4763,6 @@
       },
       "hair-removal": {
         "name": "Laser Hair Removal"
-      },
-      "tattoo": {
-        "name": "Tattoo Removal",
-        "fullName": "Tattoo Removal",
-        "tagline": "Safe Tattoo Removal",
-        "description": "Picosecond laser breaks down tattoo pigments into fine particles for clean removal.",
-        "detail": {
-          "breadcrumb": "Tattoo Removal",
-          "hero": {
-            "title": "Tattoo Removal",
-            "subtitle": "Tattoo Removal with Lucas",
-            "description": "Picosecond technology for scar-free, clean removal of all ink colors"
-          },
-          "picoTech": {
-            "badge": "Picosecond Technology",
-            "title": "Why Pico Laser?",
-            "description1": "Traditional nanosecond (10⁻⁹s) lasers used photothermal effect to break down ink. Picosecond (10⁻¹²s) lasers deliver 1000x faster pulses creating photoacoustic effects.",
-            "description2": "This shockwave shatters ink particles to dust-level size, allowing easy removal by the body's immune system.",
-            "benefits": [
-              {
-                "title": "Fewer Sessions",
-                "desc": "Efficient removal with fine particle breakdown"
-              },
-              {
-                "title": "Less Heat Damage",
-                "desc": "Short pulse protects surrounding tissue"
-              },
-              {
-                "title": "Fewer Side Effects",
-                "desc": "Minimized risk of scarring and pigment changes"
-              }
-            ],
-            "illustration": {
-              "title": "Ink Particle Shattering Mechanism",
-              "nanosecond": "Nanosecond (10⁻⁹s)",
-              "nanosecondDevice": "Traditional Q-Switch Laser",
-              "picosecond": "Picosecond (10⁻¹²s)",
-              "picosecondDevice": "Lucas Laser",
-              "before": "Before",
-              "after": "After",
-              "photothermal": "Photothermal",
-              "photothermalResult": "Large → Medium particles",
-              "photoacoustic": "Photoacoustic",
-              "photoacousticResult": "Large → Fine particles ✓"
-            }
-          },
-          "colorWavelength": {
-            "badge": "Multi-Wavelength System",
-            "title": "Targeting All Colors",
-            "subtitle": "Lucas pico laser effectively breaks down various ink colors with multiple wavelengths",
-            "illustrationTitle": "Optimal Wavelength by Ink Color",
-            "colors": {
-              "black": {
-                "name": "Black",
-                "wavelength": "1064nm",
-                "difficulty": "Easiest"
-              },
-              "red": {
-                "name": "Red",
-                "wavelength": "532nm",
-                "difficulty": "Relatively Easy"
-              },
-              "blue": {
-                "name": "Blue",
-                "wavelength": "755nm",
-                "difficulty": "Somewhat Difficult"
-              },
-              "green": {
-                "name": "Green",
-                "wavelength": "755nm",
-                "difficulty": "Most Difficult"
-              }
-            },
-            "lucasNote": "Lucas: Multi-wavelength for all color targeting",
-            "wavelengths": [
-              {
-                "wavelength": "1064nm",
-                "colors": "Black, Dark Blue, Brown",
-                "note": "Deepest penetration, most tattoos"
-              },
-              {
-                "wavelength": "755nm",
-                "colors": "Blue, Green",
-                "note": "Medium depth, special color targeting"
-              },
-              {
-                "wavelength": "532nm",
-                "colors": "Red, Orange, Yellow",
-                "note": "Epidermal layer, bright colors"
-              }
-            ]
-          },
-          "tattooTypes": {
-            "badge": "Tattoo Type Guide",
-            "title": "What Type of Tattoo Do You Want to Remove?",
-            "subtitle": "Treatment sessions and difficulty vary by tattoo type and characteristics",
-            "estimatedSessions": "Estimated Sessions",
-            "difficulty": {
-              "easy": "Relatively Easy",
-              "medium": "Medium",
-              "hard": "Somewhat Difficult"
-            },
-            "types": [
-              {
-                "type": "Amateur Tattoo",
-                "description": "Non-professional tattoos with shallow ink placement, relatively easy to remove.",
-                "sessions": "3-5 sessions",
-                "notes": "Mostly single-color tattoos with pen ink or india ink"
-              },
-              {
-                "type": "Professional Tattoo (B&W)",
-                "description": "Professional black and white tattoos with deep, uniform ink placement.",
-                "sessions": "6-10 sessions",
-                "notes": "Black ink responds best to laser"
-              },
-              {
-                "type": "Professional Tattoo (Color)",
-                "description": "Multi-colored tattoos requiring different wavelengths for each color.",
-                "sessions": "8-15+ sessions",
-                "notes": "Green and blue require more sessions"
-              },
-              {
-                "type": "Permanent Makeup",
-                "description": "Semi-permanent makeup on eyebrows, eyeliner, lips. Shallower than regular tattoos.",
-                "sessions": "3-6 sessions",
-                "notes": "Special protective equipment for eye area"
-              },
-              {
-                "type": "Traumatic Tattoo",
-                "description": "Foreign material embedded from accidents. Asphalt, graphite in skin.",
-                "sessions": "4-8 sessions",
-                "notes": "Varies by depth and extent"
-              },
-              {
-                "type": "Cover-up Tattoo",
-                "description": "Tattoo drawn over existing tattoo. Thicker ink layers make removal difficult.",
-                "sessions": "10-20+ sessions",
-                "notes": "New tattoo possible after staged removal"
-              }
-            ]
-          },
-          "process": {
-            "badge": "Treatment Process",
-            "title": "Tattoo Removal Process",
-            "steps": [
-              {
-                "step": 1,
-                "title": "Consultation & Assessment",
-                "description": "Evaluate tattoo size, color, depth, skin type and provide expected sessions and cost guidance.",
-                "duration": "About 30 min"
-              },
-              {
-                "step": 2,
-                "title": "Pico Laser Treatment",
-                "description": "Lucas pico laser finely shatters ink particles. Treatment time varies by size.",
-                "duration": "15-60 min"
-              },
-              {
-                "step": 3,
-                "title": "Recovery Period",
-                "description": "Skin naturally discharges shattered ink. Scabbing and mild swelling may occur.",
-                "duration": "2-4 weeks"
-              },
-              {
-                "step": 4,
-                "title": "Next Session",
-                "description": "Repeat treatment at 6-8 week intervals. Tattoo visibly fades with each session.",
-                "duration": "6-8 week interval"
-              }
-            ]
-          },
-          "lucas": {
-            "title": "Lucas",
-            "subtitle": "The New Standard in Picosecond Tattoo Removal",
-            "specs": {
-              "pulseDuration": {
-                "label": "Pulse Duration",
-                "value": "450 Picoseconds"
-              },
-              "wavelength": {
-                "label": "Wavelength",
-                "value": "532 / 755 / 1064nm"
-              },
-              "repetitionRate": {
-                "label": "Repetition Rate",
-                "value": "Up to 10Hz"
-              },
-              "energy": {
-                "label": "Energy",
-                "value": "Up to 1.8J"
-              }
-            },
-            "strengths": {
-              "title": "Lucas Advantages",
-              "items": [
-                "Multi-wavelength for all color response",
-                "450ps ultra-short pulse minimizes heat damage",
-                "Fractional lens also treats scars"
-              ]
-            }
-          },
-          "precautions": {
-            "before": {
-              "title": "Before Treatment",
-              "items": [
-                "Avoid excessive sun exposure 2 weeks before treatment",
-                "Avoid irritating products on treatment area",
-                "Inform us of any skin conditions (inflammation, wounds)",
-                "Disclose medications (photosensitizing drugs, etc.)"
-              ]
-            },
-            "after": {
-              "title": "After Treatment",
-              "items": [
-                "Apply prescribed ointment as directed",
-                "Never remove scabs artificially",
-                "Essential sunscreen (SPF 30+)",
-                "Avoid sauna and intense exercise for 1 week"
-              ]
-            }
-          },
-          "faq": [
-            {
-              "q": "Can tattoos be completely removed?",
-              "a": "Most tattoos can be removed over 90%. Complete removal depends on ink color, depth, tattoo age, and skin type. Black ink removes best, while green and blue may require more sessions. We'll provide accurate estimates during consultation."
-            },
-            {
-              "q": "How painful is tattoo removal?",
-              "a": "Pain levels range from 'snapping rubber band' to 'pinching' depending on the individual. Lucas pico laser has 1000x shorter pulse than traditional nanosecond lasers, reducing heat buildup and pain. Numbing cream can be applied to minimize discomfort."
-            },
-            {
-              "q": "Will there be scarring?",
-              "a": "Pico laser minimizes heat damage, making scarring risk very low. With proper energy settings and treatment intervals, most recover without scarring. Following post-care guidelines (sun protection, no scab picking) ensures clean healing."
-            },
-            {
-              "q": "Are older or newer tattoos easier to remove?",
-              "a": "Generally, older tattoos remove easier as the body's immune system naturally removes some ink particles over time. However, new tattoos can also be effectively removed with pico laser, and their clearer ink can make laser targeting easier."
-            },
-            {
-              "q": "Can all ink colors be removed?",
-              "a": "Most colors can be removed. Lucas pico laser offers multiple wavelengths (532nm, 755nm, 1064nm) to address various colors."
-            },
-            {
-              "q": "Why is the treatment interval 6-8 weeks?",
-              "a": "Laser-shattered ink particles are absorbed by macrophages and discharged through the lymphatic system. This natural healing process takes 4-6 weeks, and the next treatment should only proceed after complete skin recovery. Too-frequent treatments increase skin damage and scarring risk."
-            }
-          ],
-          "cta": {
-            "title": "The First Step Toward a Fresh Start",
-            "description": "Remove unwanted tattoos cleanly with pico laser. Get accurate treatment planning through free consultation"
-          }
-        }
       }
     }
   },
@@ -5773,7 +5508,7 @@
       "title": "Laser Center",
       "subtitle": "Customized Laser Solutions for Your Skin Concerns",
       "description1": "With Clarity II + Lucas combination,",
-      "description2": "one-stop care from pigmentation to vascular, hair removal, and tattoo removal at our Seoul skin clinic"
+      "description2": "one-stop care from pigmentation to vascular and hair removal at our Seoul skin clinic"
     },
     "highlights": {
       "equipment": "Equipment",
@@ -5799,10 +5534,6 @@
       "hairRemoval": {
         "title": "Premium Hair Removal",
         "description": "Safe hair removal for all skin types with Clarity II dual wavelength and IntelliTrak technology."
-      },
-      "tattoo": {
-        "title": "Tattoo Removal",
-        "description": "Effectively remove all colors of tattoos without scarring using Lucas pico laser."
       }
     },
     "matrix": {
@@ -5829,8 +5560,7 @@
         "spec": "Picosecond Pulse (450ps)",
         "tags": [
           "Melasma",
-          "Pigmentation",
-          "Tattoo Removal"
+          "Pigmentation"
         ]
       },
       "toning": {
@@ -6156,8 +5886,7 @@
         "description": "Bright and clear from within – a new standard in pigment treatment",
         "features": [
           "High-power Q-switch",
-          "Melasma/spot treatment",
-          "Tattoo removal"
+          "Melasma/spot treatment"
         ],
         "certification": "KFDA Approved"
       },
@@ -6440,17 +6169,6 @@
         "dualToning": "Dual Toning Laser (Clarity + Lucas)",
         "dualToningDesc": "Hair Removal Care",
         "single": "Single Session"
-      },
-      "tattoo": {
-        "tattooLucas": "Tattoo Removal Laser (Lucas)",
-        "onePart": "Per Area",
-        "co2Laser": "CO2 Laser",
-        "co2Desc": "Moles / Flat Warts / Age Spots, etc.",
-        "dia3mm": "Diameter ≤ 3mm (1 spot)",
-        "dia5mm": "3mm < Diameter ≤ 5mm (1 spot)",
-        "diaOver5mm": "Diameter > 5mm (1 spot)",
-        "faceFull": "Full Face (50+ spots)",
-        "neckFull": "Full Neck (50+ spots)"
       }
     }
   },
@@ -6763,14 +6481,13 @@
     },
     "laser": {
       "title": "Laser Center | Pigmentation, Redness & Hair Removal | LIV Clinic",
-      "description": "Pico laser and Clarity treatments for melasma, pigmentation, redness, pores, hair removal and tattoo removal at LIV Clinic's laser center in Gangnam, Seoul.",
+      "description": "Pico laser and Clarity treatments for melasma, pigmentation, redness, pores and hair removal at LIV Clinic's laser center in Gangnam, Seoul.",
       "keywords": [
         "laser clinic Seoul",
         "Pico laser Korea",
         "melasma treatment Korea",
         "CO2 laser Seoul",
         "laser hair removal Seoul",
-        "tattoo removal Korea",
         "Gangnam laser"
       ]
     },
@@ -6985,19 +6702,6 @@
         "tone correction Seoul",
         "Gangnam laser",
         "Sinsa Station clinic"
-      ]
-    },
-    "laserTattoo": {
-      "title": "Tattoo Removal in Seoul | Picosecond Laser | LIV Clinic",
-      "description": "Tattoo removal at LIV Clinic in Gangnam, Seoul — picosecond laser finely shatters ink for faster clearance, including colored tattoos, with tissue protection.",
-      "keywords": [
-        "tattoo removal Korea",
-        "laser tattoo removal Seoul",
-        "Pico laser tattoo",
-        "colored tattoo removal Korea",
-        "Gangnam tattoo removal",
-        "Sinsa Station clinic",
-        "tattoo removal cost Seoul"
       ]
     },
     "laserVascular": {

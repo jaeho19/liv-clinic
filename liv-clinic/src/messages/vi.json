@@ -3770,12 +3770,12 @@
         "name": "Trung tâm Laser",
         "fullName": "Trung tâm Laser",
         "tagline": "Giải pháp tổng thể Laser tiên tiến",
-        "description": "Một trung tâm laser cao cấp giải quyết các vấn đề khác nhau về da từ sắc tố, các vấn đề về mạch máu, kết cấu da, tẩy lông đến xóa hình xăm.",
+        "description": "Một trung tâm laser cao cấp giải quyết các vấn đề khác nhau về da, từ sắc tố, các vấn đề về mạch máu, kết cấu da đến tẩy lông.",
         "detail": {
           "hero": {
             "title": "Trung tâm Laser",
             "subtitle": "Giải pháp Laser tùy chỉnh cho mối quan tâm về làn da của bạn",
-            "description": "Với sự kết hợp Clarity II + PicoLO<br/>Chăm sóc toàn diện từ sắc tố đến mạch máu, tẩy lông và xóa hình xăm"
+            "description": "Với sự kết hợp Clarity II + PicoLO<br/>Chăm sóc toàn diện từ sắc tố đến mạch máu và tẩy lông"
           },
           "viewMore": "Tìm hiểu thêm",
           "stats": [
@@ -3786,7 +3786,7 @@
             },
             {
               "label": "Khu vực điều trị",
-              "value": "5 loại",
+              "value": "4 loại",
               "desc": "Giải pháp cho mối quan tâm về da"
             },
             {
@@ -3845,16 +3845,6 @@
                   "Clarity II"
                 ],
                 "icon": "💎"
-              },
-              {
-                "id": "hình xăm",
-                "name": "Xóa hình xăm",
-                "nameEn": "Xóa hình xăm",
-                "description": "Xóa hình xăm hiệu quả mọi màu sắc mà không để lại sẹo bằng laser pico PicoLO.",
-                "equipment": [
-                  "PicoLO"
-                ],
-                "icon": "🎨"
               }
             ]
           },
@@ -3873,8 +3863,7 @@
               "Sắc tố",
               "Đỏ/mạch máu",
               "Tông Màu Da",
-              "Triệt lông",
-              "Xóa hình xăm"
+              "Triệt lông"
             ]
           },
           "equipmentSection": {
@@ -3907,8 +3896,7 @@
                 "feature": "Xung Pico giây (450ps)",
                 "targets": [
                   "Nám",
-                  "Sắc tố",
-                  "Xóa hình xăm"
+                  "Sắc tố"
                 ],
                 "highlight": false
               },
@@ -4097,8 +4085,7 @@
           "otherCategories": {
             "vascular": "Điều trị đỏ da & mạch máu",
             "skintone": "Đều màu da",
-            "hair-removal": "Triệt lông cao cấp",
-            "tattoo": "Xóa hình xăm"
+            "hair-removal": "Triệt lông cao cấp"
           },
           "hero": {
             "subtitle": "Trị nám cứng đầu với hệ thống 3 giai đoạn của chúng tôi",
@@ -4776,258 +4763,6 @@
       },
       "hair-removal": {
         "name": "Triệt lông bằng laze"
-      },
-      "tattoo": {
-        "name": "Xóa hình xăm",
-        "fullName": "Xóa hình xăm",
-        "tagline": "Xóa hình xăm an toàn",
-        "description": "Laser Picosecond phá vỡ các sắc tố hình xăm thành các hạt mịn để loại bỏ sạch sẽ.",
-        "detail": {
-          "breadcrumb": "Xóa hình xăm",
-          "hero": {
-            "title": "Xóa hình xăm",
-            "subtitle": "Xóa hình xăm cùng Lucas",
-            "description": "Công nghệ Picosecond xóa sạch mọi màu mực không để lại sẹo"
-          },
-          "picoTech": {
-            "badge": "Công nghệ Pico giây",
-            "title": "Tại sao là Pico Laser?",
-            "description1": "Laser nano giây (10⁻⁹s) truyền thống sử dụng hiệu ứng quang nhiệt để phân hủy mực. Laser picosecond (10⁻¹²s) cung cấp xung nhanh hơn 1000 lần để tạo ra hiệu ứng quang âm.",
-            "description2": "Sóng xung kích này làm vỡ các hạt mực đến kích thước ngang bằng bụi, cho phép hệ thống miễn dịch của cơ thể dễ dàng loại bỏ.",
-            "benefits": [
-              {
-                "title": "Ít phiên hơn",
-                "desc": "Loại bỏ hiệu quả với sự phân hủy hạt mịn"
-              },
-              {
-                "title": "Ít thiệt hại nhiệt hơn",
-                "desc": "Mạch ngắn bảo vệ mô xung quanh"
-              },
-              {
-                "title": "Ít tác dụng phụ hơn",
-                "desc": "Giảm thiểu nguy cơ để lại sẹo và thay đổi sắc tố"
-              }
-            ],
-            "illustration": {
-              "title": "Cơ chế phá vỡ hạt mực",
-              "nanosecond": "Nano giây (10⁻⁹s)",
-              "nanosecondDevice": "Laser Q-Switch truyền thống",
-              "picosecond": "Pico giây (10⁻¹² giây)",
-              "picosecondDevice": "Lucas Laser",
-              "before": "Trước",
-              "after": "Sau đó",
-              "photothermal": "quang nhiệt",
-              "photothermalResult": "Hạt lớn → hạt trung bình",
-              "photoacoustic": "Quang âm",
-              "photoacousticResult": "Lớn → Hạt mịn ✓"
-            }
-          },
-          "colorWavelength": {
-            "badge": "Hệ thống đa bước sóng",
-            "title": "Nhắm mục tiêu tất cả các màu",
-            "subtitle": "Laser pico Lucas phá vỡ hiệu quả các màu mực khác nhau với nhiều bước sóng",
-            "illustrationTitle": "Bước sóng tối ưu theo màu mực",
-            "colors": {
-              "black": {
-                "name": "Đen",
-                "wavelength": "1064nm",
-                "difficulty": "Dễ nhất"
-              },
-              "red": {
-                "name": "Màu đỏ",
-                "wavelength": "532nm",
-                "difficulty": "Tương đối dễ dàng"
-              },
-              "blue": {
-                "name": "Màu xanh da trời",
-                "wavelength": "755nm",
-                "difficulty": "Hơi khó khăn"
-              },
-              "green": {
-                "name": "Màu xanh lá",
-                "wavelength": "755nm",
-                "difficulty": "Khó khăn nhất"
-              }
-            },
-            "lucasNote": "Lucas: Đa bước sóng để nhắm mục tiêu tất cả màu sắc",
-            "wavelengths": [
-              {
-                "wavelength": "1064nm",
-                "colors": "Đen, Xanh đậm, Nâu",
-                "note": "Thâm nhập sâu nhất, hình xăm nhất"
-              },
-              {
-                "wavelength": "755nm",
-                "colors": "Xanh lam, xanh lục",
-                "note": "Độ sâu trung bình, nhắm mục tiêu màu đặc biệt"
-              },
-              {
-                "wavelength": "532nm",
-                "colors": "Đỏ, Cam, Vàng",
-                "note": "Lớp biểu bì, màu sắc tươi sáng"
-              }
-            ]
-          },
-          "tattooTypes": {
-            "badge": "Hướng dẫn loại hình xăm",
-            "title": "Bạn muốn xóa loại hình xăm nào?",
-            "subtitle": "Các buổi điều trị và độ khó khác nhau tùy theo loại hình xăm và đặc điểm",
-            "estimatedSessions": "Phiên ước tính",
-            "difficulty": {
-              "easy": "Tương đối dễ dàng",
-              "medium": "Trung bình",
-              "hard": "Hơi khó khăn"
-            },
-            "types": [
-              {
-                "type": "Hình xăm nghiệp dư",
-                "description": "Hình xăm không chuyên nghiệp, vị trí mực nông, tương đối dễ xóa.",
-                "sessions": "3-5 buổi",
-                "notes": "Chủ yếu là hình xăm một màu bằng mực bút hoặc mực Ấn Độ"
-              },
-              {
-                "type": "Hình xăm chuyên nghiệp (Đen trắng)",
-                "description": "Hình xăm đen trắng chuyên nghiệp với mực vào sâu, đều.",
-                "sessions": "6-10 buổi",
-                "notes": "Mực đen phản ứng tốt nhất với tia laser"
-              },
-              {
-                "type": "Hình Xăm Chuyên Nghiệp (Màu)",
-                "description": "Hình xăm nhiều màu đòi hỏi bước sóng khác nhau cho mỗi màu.",
-                "sessions": "8-15+ buổi",
-                "notes": "Xanh và xanh yêu cầu nhiều phiên hơn"
-              },
-              {
-                "type": "Trang điểm vĩnh viễn",
-                "description": "Trang điểm bán vĩnh viễn trên lông mày, bút kẻ mắt, môi. Nông hơn so với hình xăm thông thường.",
-                "sessions": "3-6 buổi",
-                "notes": "Thiết bị bảo vệ đặc biệt cho vùng mắt"
-              },
-              {
-                "type": "Hình xăm chấn thương",
-                "description": "Vật liệu lạ dính vào từ tai nạn. Nhựa đường, than chì trong da.",
-                "sessions": "4-8 buổi",
-                "notes": "Thay đổi theo độ sâu và mức độ"
-              },
-              {
-                "type": "Hình xăm che đậy",
-                "description": "Hình xăm được vẽ trên hình xăm hiện có. Lớp mực dày hơn làm cho việc loại bỏ khó khăn.",
-                "sessions": "10-20+ buổi",
-                "notes": "Có thể có hình xăm mới sau khi loại bỏ theo giai đoạn"
-              }
-            ]
-          },
-          "process": {
-            "badge": "Quy trình xử lý",
-            "title": "Quy trình xóa hình xăm",
-            "steps": [
-              {
-                "step": 1,
-                "title": "Tư vấn & Đánh giá",
-                "description": "Đánh giá kích thước hình xăm, màu sắc, độ sâu, loại da và cung cấp các buổi trị liệu dự kiến ​​cũng như hướng dẫn về chi phí.",
-                "duration": "Khoảng 30 phút"
-              },
-              {
-                "step": 2,
-                "title": "Điều trị bằng Laser Pico",
-                "description": "Laser pico Lucas phá vỡ các hạt mực một cách tinh vi. Thời gian điều trị thay đổi tùy theo kích cỡ.",
-                "duration": "15-60 phút"
-              },
-              {
-                "step": 3,
-                "title": "Thời gian phục hồi",
-                "description": "Da tự nhiên xả mực vỡ. Có thể xảy ra bong vảy và sưng nhẹ.",
-                "duration": "2-4 tuần"
-              },
-              {
-                "step": 4,
-                "title": "Phiên tiếp theo",
-                "description": "Lặp lại điều trị trong khoảng thời gian 6-8 tuần. Hình xăm mờ đi rõ rệt sau mỗi lần điều trị.",
-                "duration": "khoảng thời gian 6-8 tuần"
-              }
-            ]
-          },
-          "lucas": {
-            "title": "Lucas",
-            "subtitle": "Tiêu chuẩn mới trong xóa hình xăm Picosecond",
-            "specs": {
-              "pulseDuration": {
-                "label": "Thời lượng xung",
-                "value": "450 Picos giây"
-              },
-              "wavelength": {
-                "label": "Bước sóng",
-                "value": "532/755/1064nm"
-              },
-              "repetitionRate": {
-                "label": "Tỷ lệ lặp lại",
-                "value": "Lên đến 10Hz"
-              },
-              "energy": {
-                "label": "Năng lượng",
-                "value": "Lên tới 1,8J"
-              }
-            },
-            "strengths": {
-              "title": "Ưu điểm của Lucas",
-              "items": [
-                "Đa bước sóng cho tất cả các phản ứng màu sắc",
-                "Xung cực ngắn 450ps giảm thiểu thiệt hại do nhiệt",
-                "Thấu kính phân đoạn cũng điều trị sẹo"
-              ]
-            }
-          },
-          "precautions": {
-            "before": {
-              "title": "Trước khi điều trị",
-              "items": [
-                "Tránh tiếp xúc với ánh nắng quá nhiều 2 tuần trước khi điều trị",
-                "Tránh các sản phẩm gây kích ứng trên vùng điều trị",
-                "Thông báo cho chúng tôi về bất kỳ tình trạng da nào (viêm, vết thương)",
-                "Tiết lộ các loại thuốc (thuốc cảm quang, v.v.)"
-              ]
-            },
-            "after": {
-              "title": "Sau khi điều trị",
-              "items": [
-                "Bôi thuốc mỡ theo chỉ dẫn",
-                "Không bao giờ loại bỏ vảy một cách giả tạo",
-                "Kem chống nắng cần thiết (SPF 30+)",
-                "Tránh xông hơi và tập thể dục cường độ cao trong 1 tuần"
-              ]
-            }
-          },
-          "faq": [
-            {
-              "q": "Hình xăm có thể được loại bỏ hoàn toàn?",
-              "a": "Hầu hết các hình xăm có thể được loại bỏ trên 90%. Việc loại bỏ hoàn toàn phụ thuộc vào màu mực, độ sâu, độ tuổi hình xăm và loại da. Mực đen loại bỏ tốt nhất, trong khi mực xanh và xanh lam có thể cần nhiều lần tẩy hơn. Chúng tôi sẽ cung cấp ước tính chính xác trong quá trình tư vấn."
-            },
-            {
-              "q": "Xóa hình xăm đau đớn thế nào?",
-              "a": "Mức độ đau dao động từ 'bật dây cao su' đến 'véo' tùy theo từng cá nhân. Laser pico Lucas có xung ngắn hơn 1000 lần so với laser nano giây truyền thống, làm giảm sự tích tụ nhiệt và đau đớn. Có thể bôi kem gây tê để giảm thiểu sự khó chịu."
-            },
-            {
-              "q": "Sẽ có sẹo?",
-              "a": "Laser Pico giảm thiểu tổn thương do nhiệt, khiến nguy cơ để lại sẹo rất thấp. Với cài đặt năng lượng và khoảng thời gian điều trị thích hợp, hầu hết sẽ hồi phục mà không để lại sẹo. Tuân theo các hướng dẫn sau chăm sóc (chống nắng, không cạo vảy) đảm bảo vết thương lành sạch."
-            },
-            {
-              "q": "Hình xăm cũ hơn hay mới hơn có dễ xóa hơn không?",
-              "a": "Nói chung, những hình xăm cũ dễ xóa hơn vì hệ thống miễn dịch của cơ thể sẽ loại bỏ một cách tự nhiên một số hạt mực theo thời gian. Tuy nhiên, những hình xăm mới cũng có thể được xóa bỏ một cách hiệu quả bằng laser pico và mực trong hơn của chúng có thể giúp việc nhắm mục tiêu bằng laser dễ dàng hơn."
-            },
-            {
-              "q": "Có thể loại bỏ tất cả các màu mực?",
-              "a": "Hầu hết các màu sắc có thể được loại bỏ. Laser pico Lucas cung cấp nhiều bước sóng (532nm, 755nm, 1064nm) để xử lý nhiều màu sắc khác nhau."
-            },
-            {
-              "q": "Tại sao khoảng thời gian điều trị là 6-8 tuần?",
-              "a": "Các hạt mực bị vỡ bằng laser được các đại thực bào hấp thụ và thải ra ngoài qua hệ bạch huyết. Quá trình chữa lành tự nhiên này mất 4-6 tuần và lần điều trị tiếp theo chỉ nên tiến hành sau khi da đã phục hồi hoàn toàn. Việc điều trị quá thường xuyên sẽ làm tăng tổn thương da và nguy cơ để lại sẹo."
-            }
-          ],
-          "cta": {
-            "title": "Bước đầu tiên hướng tới một khởi đầu mới",
-            "description": "Xóa hình xăm không mong muốn một cách sạch sẽ bằng laser pico. Nhận kế hoạch điều trị chính xác thông qua tư vấn miễn phí"
-          }
-        }
       }
     }
   },
@@ -5773,7 +5508,7 @@
       "title": "Trung tâm Laser",
       "subtitle": "Giải pháp Laser tùy chỉnh cho mối quan tâm về làn da của bạn",
       "description1": "Với sự kết hợp Clarity II + Lucas,",
-      "description2": "chăm sóc toàn diện từ sắc tố đến mạch máu, tẩy lông và xóa hình xăm"
+      "description2": "chăm sóc toàn diện từ sắc tố đến mạch máu và tẩy lông"
     },
     "highlights": {
       "equipment": "Thiết bị",
@@ -5799,10 +5534,6 @@
       "hairRemoval": {
         "title": "Triệt lông cao cấp",
         "description": "Triệt lông an toàn cho mọi loại da với bước sóng kép Clarity II và công nghệ IntelliTrak."
-      },
-      "tattoo": {
-        "title": "Xóa hình xăm",
-        "description": "Xóa hình xăm hiệu quả mọi màu sắc mà không để lại sẹo bằng tia laser Lucas pico."
       }
     },
     "matrix": {
@@ -5829,8 +5560,7 @@
         "spec": "Xung Pico giây (450ps)",
         "tags": [
           "Nám",
-          "Sắc tố",
-          "Xóa hình xăm"
+          "Sắc tố"
         ]
       },
       "toning": {
@@ -6156,8 +5886,7 @@
         "description": "Sáng và rõ ràng từ bên trong – tiêu chuẩn mới trong điều trị sắc tố",
         "features": [
           "Công tắc Q công suất cao",
-          "Điều trị nám/điểm",
-          "Xóa hình xăm"
+          "Điều trị nám/điểm"
         ],
         "certification": "KFDA phê duyệt"
       },
@@ -6440,17 +6169,6 @@
         "dualToning": "Laser tăng cường kép (Clarity + Lucas)",
         "dualToningDesc": "Chăm sóc tẩy lông",
         "single": "Phiên duy nhất"
-      },
-      "tattoo": {
-        "tattooLucas": "Laser xóa hình xăm (Lucas)",
-        "onePart": "mỗi khu vực",
-        "co2Laser": "Laser CO2",
-        "co2Desc": "Nốt ruồi / Mụn cóc phẳng / Đốm đồi mồi, v.v.",
-        "dia3mm": "Đường kính 3 mm (1 điểm)",
-        "dia5mm": "3 mm < Đường kính ≤ 5 mm (1 điểm)",
-        "diaOver5mm": "Đường kính > 5mm (1 điểm)",
-        "faceFull": "Toàn mặt (50 điểm trở lên)",
-        "neckFull": "Toàn cổ (50+ điểm)"
       }
     }
   },
@@ -6763,14 +6481,13 @@
     },
     "laser": {
       "title": "Trung tâm Laser | Sắc tố & triệt lông | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Laser Pico và Clarity điều trị nám, sắc tố, đỏ da, lỗ chân lông, triệt lông và xóa hình xăm tại trung tâm laser của Phẫu thuật Thẩm mỹ LIV, Gangnam, Seoul.",
+      "description": "Laser Pico và Clarity điều trị nám, sắc tố, đỏ da, lỗ chân lông và triệt lông tại trung tâm laser của Phẫu thuật Thẩm mỹ LIV, Gangnam, Seoul.",
       "keywords": [
         "phòng khám laser Seoul",
         "laser Pico Hàn Quốc",
         "trị nám Hàn Quốc",
         "laser CO2 Seoul",
         "triệt lông laser Seoul",
-        "xóa hình xăm Hàn Quốc",
         "laser Gangnam"
       ]
     },
@@ -6985,19 +6702,6 @@
         "cải thiện tông da Seoul",
         "laser Gangnam",
         "phòng khám ga Sinsa"
-      ]
-    },
-    "laserTattoo": {
-      "title": "Xóa hình xăm Seoul | Laser picosecond | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Xóa hình xăm tại Phẫu thuật Thẩm mỹ LIV, Gangnam, Seoul — laser picosecond phá vỡ mực xăm thành hạt siêu nhỏ, xử lý cả hình xăm màu, bảo vệ mô da.",
-      "keywords": [
-        "xóa hình xăm Hàn Quốc",
-        "xóa xăm bằng laser Seoul",
-        "laser Pico xóa xăm",
-        "xóa xăm màu Hàn Quốc",
-        "xóa xăm Gangnam",
-        "phòng khám ga Sinsa",
-        "giá xóa hình xăm Seoul"
       ]
     },
     "laserVascular": {

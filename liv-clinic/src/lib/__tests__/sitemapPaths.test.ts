@@ -51,7 +51,7 @@ describe('buildSitemapPaths', () => {
 
   it('still includes the home page and every treatment detail', () => {
     expect(byPath['']).toBeDefined();
-    for (const p of ['/lifting/ulthera', '/lifting/thermage', '/antiaging/botox', '/laser/tattoo']) {
+    for (const p of ['/lifting/ulthera', '/lifting/thermage', '/antiaging/botox', '/laser/hair-removal']) {
       expect(byPath[p], p).toBeDefined();
     }
   });

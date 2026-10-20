@@ -110,6 +110,14 @@ describe('resolveLegacyRequest — legacy WordPress paths', () => {
     expect(resolveLegacyRequest('/layer_popup/abc', '')).toEqual(redirect('/ko/events', 'utm-only'));
   });
 
+  it('sends the retired tattoo-removal page (2026-10-20) to the laser center in the same locale', () => {
+    expect(resolveLegacyRequest('/laser/tattoo', '')).toEqual(redirect('/ko/laser', 'utm-only'));
+    expect(resolveLegacyRequest('/ko/laser/tattoo', '')).toEqual(redirect('/ko/laser', 'utm-only'));
+    expect(resolveLegacyRequest('/en/laser/tattoo/', '')).toEqual(redirect('/en/laser', 'utm-only'));
+    expect(resolveLegacyRequest('/zh-TW/laser/tattoo', 'utm_source=gsc')).toEqual(redirect('/zh-TW/laser', 'utm-only'));
+    expect(resolveLegacyRequest('/ja/laser/pigmentation', '')).toBeNull();
+  });
+
   it('handles the Korean event slugs whether the path arrives decoded or percent-encoded', () => {
     expect(resolveLegacyRequest('/덴서티-이벤트', '')).toEqual(redirect('/ko/events', 'utm-only'));
     expect(resolveLegacyRequest(encodeURI('/직원픽-이벤트'), 'lang=jp')).toEqual(redirect('/ja/events', 'utm-only'));

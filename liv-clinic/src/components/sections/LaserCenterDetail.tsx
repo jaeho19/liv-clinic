@@ -183,7 +183,7 @@ interface MatrixIllustrationProps {
 }
 
 const EquipmentMatrixIllustration = ({ chartTitle, equipment, concerns }: MatrixIllustrationProps) => (
-  <svg viewBox="0 0 600 400" className="w-full h-auto">
+  <svg viewBox="0 0 600 350" className="w-full h-auto">
     <defs>
       <linearGradient id="matrixGradient" x1="0%" y1="0%" x2="100%" y2="100%">
         <stop offset="0%" stopColor="#b4988d" stopOpacity="0.1" />
@@ -192,7 +192,7 @@ const EquipmentMatrixIllustration = ({ chartTitle, equipment, concerns }: Matrix
     </defs>
 
     {/* 배경 */}
-    <rect x="0" y="0" width="600" height="400" fill="#fafafa" rx="16" />
+    <rect x="0" y="0" width="600" height="350" fill="#fafafa" rx="16" />
 
     {/* 제목 */}
     <text x="300" y="35" fontSize="16" fill="#575756" textAnchor="middle" fontWeight="600">
@@ -216,8 +216,7 @@ const EquipmentMatrixIllustration = ({ chartTitle, equipment, concerns }: Matrix
       { checks: [true, true, true, false] },
       { checks: [true, false, false, false] },
       { checks: [false, false, false, true] }, // 피부톤: CO2 레이저는 토닝 장비가 아니므로 제외
-      { checks: [true, false, false, false] },
-      { checks: [false, true, false, false] }
+      { checks: [true, false, false, false] }
     ].map((row, rowIdx) => (
       <g key={rowIdx} transform={`translate(0, ${110 + rowIdx * 55})`}>
         {/* 고민명 */}

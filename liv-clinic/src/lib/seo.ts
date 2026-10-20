@@ -184,8 +184,8 @@ export const seoConfig: Record<string, {
       // 一般關鍵字
       '抗老首爾', '肌膚緊緻', '除皺治療', 'K-beauty',
       '韓國醫療觀光', '首爾高階醫美',
-      // 台灣·香港 실제 검색어 (2026-09 조사: 鳳凰電波·林蔭道·除刺青·中文)
-      '韓國 音波拉提 價格', '韓國 電波拉提 價格', '鳳凰電波 韓國', '首爾 醫美 中文', '林蔭道 醫美', '首爾 除刺青'
+      // 台灣·香港 실제 검색어 (2026-09 조사: 鳳凰電波·林蔭道·中文)
+      '韓國 音波拉提 價格', '韓國 電波拉提 價格', '鳳凰電波 韓國', '首爾 醫美 中文', '林蔭道 醫美'
     ],
   },
   vi: {
@@ -444,7 +444,7 @@ const SCHEMA_L10N: Record<string, SchemaL10n> = {
       },
       {
         alternateName: ['피코 레이저', 'ピコレーザー', '皮秒激光'],
-        description: '기미/잡티/문신 제거 | Melasma/Spots/Tattoo Removal | シミ・タトゥー除去',
+        description: '기미/잡티 제거 | Melasma/Spots | シミ・くすみ除去',
       },
     ],
     reservationWord: '상담 예약',
@@ -488,7 +488,7 @@ const SCHEMA_L10N: Record<string, SchemaL10n> = {
       { alternateName: ['Dermal Filler'], description: 'Volume and contour enhancement' },
       { alternateName: ['Skin Booster'], description: 'Skin hydration and elasticity improvement' },
       { alternateName: ['Laser Toning'], description: 'Pigmentation treatment and skin tone improvement' },
-      { alternateName: ['Pico Laser'], description: 'Melasma, blemish and tattoo removal' },
+      { alternateName: ['Pico Laser'], description: 'Melasma and blemish removal' },
     ],
     reservationWord: 'Consultation Booking',
     physicianOccupation: 'Plastic Surgery Specialist',
@@ -528,7 +528,7 @@ const SCHEMA_L10N: Record<string, SchemaL10n> = {
       { alternateName: ['フィラー'], description: 'ボリューム・輪郭の改善' },
       { alternateName: ['スキンブースター'], description: '肌の保湿・弾力の改善' },
       { alternateName: ['レーザートーニング'], description: '色素治療・肌トーンの改善' },
-      { alternateName: ['ピコレーザー'], description: 'シミ・くすみ・タトゥーの除去' },
+      { alternateName: ['ピコレーザー'], description: 'シミ・くすみの除去' },
     ],
     reservationWord: 'カウンセリング予約',
     physicianOccupation: '形成外科専門医',
@@ -568,7 +568,7 @@ const SCHEMA_L10N: Record<string, SchemaL10n> = {
       { alternateName: ['玻尿酸'], description: '填充塑形与轮廓改善' },
       { alternateName: ['水光针'], description: '皮肤补水与弹性改善' },
       { alternateName: ['激光美白'], description: '色素治疗与肤色改善' },
-      { alternateName: ['皮秒激光'], description: '黄褐斑、色斑及纹身去除' },
+      { alternateName: ['皮秒激光'], description: '黄褐斑及色斑去除' },
     ],
     reservationWord: '咨询预约',
     physicianOccupation: '整形外科专科医生',
@@ -608,7 +608,7 @@ const SCHEMA_L10N: Record<string, SchemaL10n> = {
       { alternateName: ['玻尿酸'], description: '填充塑形與輪廓改善' },
       { alternateName: ['水光針'], description: '肌膚保濕與彈性改善' },
       { alternateName: ['雷射淨膚'], description: '色素治療與膚色改善' },
-      { alternateName: ['皮秒雷射'], description: '黑斑、色斑及刺青去除' },
+      { alternateName: ['皮秒雷射'], description: '黑斑及色斑去除' },
     ],
     reservationWord: '諮詢預約',
     physicianOccupation: '整形外科專科醫師',

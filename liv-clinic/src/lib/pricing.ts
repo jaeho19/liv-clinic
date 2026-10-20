@@ -304,27 +304,4 @@ export const PRICING: Record<string, TreatmentPricing> = {
       },
     ],
   },
-
-  tattoo: {
-    id: 'tattoo',
-    groups: [
-      {
-        groupKey: 'tattooLucas',
-        rows: [
-          { rowKey: 'onePart', price: '50,000', suffix: 'starting' },
-        ],
-      },
-      {
-        groupKey: 'co2Laser',
-        subKey: 'co2Desc',
-        rows: [
-          { rowKey: 'dia3mm', price: '10,000', suffix: 'starting' },
-          { rowKey: 'dia5mm', price: '30,000', suffix: 'starting' },
-          { rowKey: 'diaOver5mm', price: '50,000', suffix: 'starting' },
-          { rowKey: 'faceFull', price: '500,000', suffix: 'starting' },
-          { rowKey: 'neckFull', price: '500,000', suffix: 'starting' },
-        ],
-      },
-    ],
-  },
 };

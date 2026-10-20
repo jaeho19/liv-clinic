@@ -13,8 +13,8 @@ const SIMPLIFIED =
   /[于术诊说语请咨询医疗应头发时间后从与对这为们体验价护见觉爱让业务预约线网针国际须区号层还问银韩现购买质专调结构题给开设础检备识别长变额颈脸颊选择剂达显确满师内两个卖财]/;
 
 describe('treatmentsForeign', () => {
-  it('covers all 17 treatment pages in all 4 locales without Korean text', () => {
-    expect(TREATMENT_FOREIGN_IDS).toHaveLength(17);
+  it('covers all 16 treatment pages in all 4 locales without Korean text', () => {
+    expect(TREATMENT_FOREIGN_IDS).toHaveLength(16);
     for (const id of TREATMENT_FOREIGN_IDS) {
       for (const locale of LOCALES) {
         const info = getTreatmentForeignInfo(id, locale);
@@ -55,7 +55,6 @@ describe('treatmentsForeign', () => {
       'book-seoul-clinic-foreigner',
       'ultherapy-vs-thermage-vs-shurink',
       'botox-filler-cost-seoul',
-      'tattoo-removal-pico-seoul',
       'downtime-flight-travel-plan',
     ]);
     for (const id of TREATMENT_FOREIGN_IDS) {

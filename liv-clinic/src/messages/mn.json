@@ -3770,12 +3770,12 @@
         "name": "Лазер төв",
         "fullName": "Лазер төв",
         "tagline": "Дэвшилтэт лазерийн иж бүрэн шийдэл",
-        "description": "Пигментаци, судасны асуудал, арьсны бүтэц, үс арилгах, шивээс арилгах зэрэг арьсны янз бүрийн асуудлыг шийдэх премиум лазер төв.",
+        "description": "Пигментаци, судасны асуудал, арьсны бүтэц, үс арилгах зэрэг арьсны янз бүрийн асуудлыг шийдэх премиум лазер төв.",
         "detail": {
           "hero": {
             "title": "Лазер төв",
             "subtitle": "Таны арьсны асуудалд тохирсон лазерийн шийдэл",
-            "description": "Clarity II + PicoLO хослолтой<br/>Пигментациас эхлээд судас, үс арилгах, шивээс арилгах хүртэлх нэг цэгийн арчилгаа"
+            "description": "Clarity II + PicoLO хослолтой<br/>Пигментациас эхлээд судас, үс арилгах хүртэлх нэг цэгийн арчилгаа"
           },
           "viewMore": "Дэлгэрэнгүй мэдээлэл",
           "stats": [
@@ -3786,7 +3786,7 @@
             },
             {
               "label": "Treatment Areas",
-              "value": "5 Types",
+              "value": "4 Types",
               "desc": "Skin Concern Solutions"
             },
             {
@@ -3845,16 +3845,6 @@
                   "Clarity II"
                 ],
                 "icon": "💎"
-              },
-              {
-                "id": "tattoo",
-                "name": "Tattoo Removal",
-                "nameEn": "Tattoo Removal",
-                "description": "Effectively remove tattoos of all colors without scarring using PicoLO pico laser.",
-                "equipment": [
-                  "PicoLO"
-                ],
-                "icon": "🎨"
               }
             ]
           },
@@ -3873,8 +3863,7 @@
               "Pigmentation",
               "Redness/Vascular",
               "Skin Tone",
-              "Hair Removal",
-              "Tattoo Removal"
+              "Hair Removal"
             ]
           },
           "equipmentSection": {
@@ -3907,8 +3896,7 @@
                 "feature": "Picosecond Pulse (450ps)",
                 "targets": [
                   "Melasma",
-                  "Pigmentation",
-                  "Tattoo Removal"
+                  "Pigmentation"
                 ],
                 "highlight": false
               },
@@ -4097,8 +4085,7 @@
           "otherCategories": {
             "vascular": "Улайлт ба судасны эмчилгээ",
             "skintone": "Арьсны өнгө жигдрүүлэх",
-            "hair-removal": "Премиум үс арилгах",
-            "tattoo": "Шивээс арилгах"
+            "hair-removal": "Премиум үс арилгах"
           },
           "hero": {
             "subtitle": "Тууштай мелазмыг ч манай 3 үе шаттай системээр",
@@ -4776,258 +4763,6 @@
       },
       "hair-removal": {
         "name": "Лазерээр үс арилгах"
-      },
-      "tattoo": {
-        "name": "Шивээс арилгах",
-        "fullName": "Шивээс арилгах",
-        "tagline": "Аюулгүй шивээс арилгалт",
-        "description": "Пикосекундын лазер шивээсний пигментийг нарийн ширхэгт хувааж цэвэрхэн арилгадаг.",
-        "detail": {
-          "breadcrumb": "Шивээс арилгах",
-          "hero": {
-            "title": "Шивээс арилгах",
-            "subtitle": "Lucas-аар шивээс арилгах",
-            "description": "Бүх өнгийн бэхийг сорвигүй, цэвэрхэн арилгах пикосекундын технологи"
-          },
-          "picoTech": {
-            "badge": "Пикосекундын технологи",
-            "title": "Яагаад Pico лазер?",
-            "description1": "Уламжлалт наносекунд (10⁻⁹ с) лазерүүд бэхийг задлахын тулд фотодулааны нөлөөг ашигладаг байсан. Пикосекунд (10⁻¹² с) лазер 1000 дахин хурдан импульс дамжуулж фотоакустик нөлөө бий болгодог.",
-            "description2": "Энэхүү цохилтын долгион нь бэхийн ширхгийг тоосны хэмжээнд хүртэл бутчиж, биеийн дархлааны систем хялбар арилгах боломжийг олгоно.",
-            "benefits": [
-              {
-                "title": "Fewer Sessions",
-                "desc": "Efficient removal with fine particle breakdown"
-              },
-              {
-                "title": "Less Heat Damage",
-                "desc": "Short pulse protects surrounding tissue"
-              },
-              {
-                "title": "Fewer Side Effects",
-                "desc": "Minimized risk of scarring and pigment changes"
-              }
-            ],
-            "illustration": {
-              "title": "Бэхийн ширхгийг бутлах механизм",
-              "nanosecond": "Наносекунд (10⁻⁹ с)",
-              "nanosecondDevice": "Уламжлалт Q-Switch лазер",
-              "picosecond": "Пикосекунд (10⁻¹² с)",
-              "picosecondDevice": "Lucas лазер",
-              "before": "Өмнө",
-              "after": "Дараа",
-              "photothermal": "Фотодулаан",
-              "photothermalResult": "Том → дунд ширхэгт",
-              "photoacoustic": "Фотоакустик",
-              "photoacousticResult": "Том → нарийн ширхэгт ✓"
-            }
-          },
-          "colorWavelength": {
-            "badge": "Олон долгионы уртын систем",
-            "title": "Бүх өнгийг онилох",
-            "subtitle": "Lucas pico лазер олон долгионы уртаар янз бүрийн өнгийн бэхийг үр дүнтэйгээр задалдаг",
-            "illustrationTitle": "Бэхийн өнгөнд тохирсон оновчтой долгионы урт",
-            "colors": {
-              "black": {
-                "name": "Хар",
-                "wavelength": "1064 нм",
-                "difficulty": "Хамгийн хялбар"
-              },
-              "red": {
-                "name": "Улаан",
-                "wavelength": "532 нм",
-                "difficulty": "Харьцангуй хялбар"
-              },
-              "blue": {
-                "name": "Цэнхэр",
-                "wavelength": "755 нм",
-                "difficulty": "Бага зэрэг хүндрэлтэй"
-              },
-              "green": {
-                "name": "Ногоон",
-                "wavelength": "755 нм",
-                "difficulty": "Хамгийн хүнд"
-              }
-            },
-            "lucasNote": "Lucas: бүх өнгийг онилох олон долгионы урт",
-            "wavelengths": [
-              {
-                "wavelength": "1064nm",
-                "colors": "Black, Dark Blue, Brown",
-                "note": "Deepest penetration, most tattoos"
-              },
-              {
-                "wavelength": "755nm",
-                "colors": "Blue, Green",
-                "note": "Medium depth, special color targeting"
-              },
-              {
-                "wavelength": "532nm",
-                "colors": "Red, Orange, Yellow",
-                "note": "Epidermal layer, bright colors"
-              }
-            ]
-          },
-          "tattooTypes": {
-            "badge": "Шивээсний төрлийн заавар",
-            "title": "Та ямар төрлийн шивээсийг арилгахыг хүсэж байна вэ?",
-            "subtitle": "Эмчилгээний удаагийн тоо болон хүндрэл нь шивээсний төрөл болон шинж чанараас хамаардаг",
-            "estimatedSessions": "Тооцоолсон удаагийн тоо",
-            "difficulty": {
-              "easy": "Харьцангуй хялбар",
-              "medium": "Дунд",
-              "hard": "Бага зэрэг хүндрэлтэй"
-            },
-            "types": [
-              {
-                "type": "Amateur Tattoo",
-                "description": "Non-professional tattoos with shallow ink placement, relatively easy to remove.",
-                "sessions": "3-5 sessions",
-                "notes": "Mostly single-color tattoos with pen ink or india ink"
-              },
-              {
-                "type": "Professional Tattoo (B&W)",
-                "description": "Professional black and white tattoos with deep, uniform ink placement.",
-                "sessions": "6-10 sessions",
-                "notes": "Black ink responds best to laser"
-              },
-              {
-                "type": "Professional Tattoo (Color)",
-                "description": "Multi-colored tattoos requiring different wavelengths for each color.",
-                "sessions": "8-15+ sessions",
-                "notes": "Green and blue require more sessions"
-              },
-              {
-                "type": "Permanent Makeup",
-                "description": "Semi-permanent makeup on eyebrows, eyeliner, lips. Shallower than regular tattoos.",
-                "sessions": "3-6 sessions",
-                "notes": "Special protective equipment for eye area"
-              },
-              {
-                "type": "Traumatic Tattoo",
-                "description": "Foreign material embedded from accidents. Asphalt, graphite in skin.",
-                "sessions": "4-8 sessions",
-                "notes": "Varies by depth and extent"
-              },
-              {
-                "type": "Cover-up Tattoo",
-                "description": "Tattoo drawn over existing tattoo. Thicker ink layers make removal difficult.",
-                "sessions": "10-20+ sessions",
-                "notes": "New tattoo possible after staged removal"
-              }
-            ]
-          },
-          "process": {
-            "badge": "Эмчилгээний явц",
-            "title": "Шивээс арилгах үйл явц",
-            "steps": [
-              {
-                "step": 1,
-                "title": "Consultation & Assessment",
-                "description": "Evaluate tattoo size, color, depth, skin type and provide expected sessions and cost guidance.",
-                "duration": "About 30 min"
-              },
-              {
-                "step": 2,
-                "title": "Pico Laser Treatment",
-                "description": "Lucas pico laser finely shatters ink particles. Treatment time varies by size.",
-                "duration": "15-60 min"
-              },
-              {
-                "step": 3,
-                "title": "Recovery Period",
-                "description": "Skin naturally discharges shattered ink. Scabbing and mild swelling may occur.",
-                "duration": "2-4 weeks"
-              },
-              {
-                "step": 4,
-                "title": "Next Session",
-                "description": "Repeat treatment at 6-8 week intervals. Tattoo visibly fades with each session.",
-                "duration": "6-8 week interval"
-              }
-            ]
-          },
-          "lucas": {
-            "title": "Lucas",
-            "subtitle": "Пикосекундын шивээс арилгалтын шинэ стандарт",
-            "specs": {
-              "pulseDuration": {
-                "label": "Импульсийн хугацаа",
-                "value": "450 пикосекунд"
-              },
-              "wavelength": {
-                "label": "Долгионы урт",
-                "value": "532 / 755 / 1064 нм"
-              },
-              "repetitionRate": {
-                "label": "Давтамжийн хурд",
-                "value": "10 Гц хүртэл"
-              },
-              "energy": {
-                "label": "Энерги",
-                "value": "1.8 Ж хүртэл"
-              }
-            },
-            "strengths": {
-              "title": "Lucas-ийн давуу тал",
-              "items": [
-                "Multi-wavelength for all color response",
-                "450ps ultra-short pulse minimizes heat damage",
-                "Fractional lens also treats scars"
-              ]
-            }
-          },
-          "precautions": {
-            "before": {
-              "title": "Эмчилгээний өмнө",
-              "items": [
-                "Avoid excessive sun exposure 2 weeks before treatment",
-                "Avoid irritating products on treatment area",
-                "Inform us of any skin conditions (inflammation, wounds)",
-                "Disclose medications (photosensitizing drugs, etc.)"
-              ]
-            },
-            "after": {
-              "title": "Эмчилгээний дараа",
-              "items": [
-                "Apply prescribed ointment as directed",
-                "Never remove scabs artificially",
-                "Essential sunscreen (SPF 30+)",
-                "Avoid sauna and intense exercise for 1 week"
-              ]
-            }
-          },
-          "faq": [
-            {
-              "q": "Can tattoos be completely removed?",
-              "a": "Most tattoos can be removed over 90%. Complete removal depends on ink color, depth, tattoo age, and skin type. Black ink removes best, while green and blue may require more sessions. We'll provide accurate estimates during consultation."
-            },
-            {
-              "q": "How painful is tattoo removal?",
-              "a": "Pain levels range from 'snapping rubber band' to 'pinching' depending on the individual. Lucas pico laser has 1000x shorter pulse than traditional nanosecond lasers, reducing heat buildup and pain. Numbing cream can be applied to minimize discomfort."
-            },
-            {
-              "q": "Will there be scarring?",
-              "a": "Pico laser minimizes heat damage, making scarring risk very low. With proper energy settings and treatment intervals, most recover without scarring. Following post-care guidelines (sun protection, no scab picking) ensures clean healing."
-            },
-            {
-              "q": "Are older or newer tattoos easier to remove?",
-              "a": "Generally, older tattoos remove easier as the body's immune system naturally removes some ink particles over time. However, new tattoos can also be effectively removed with pico laser, and their clearer ink can make laser targeting easier."
-            },
-            {
-              "q": "Can all ink colors be removed?",
-              "a": "Most colors can be removed. Lucas pico laser offers multiple wavelengths (532nm, 755nm, 1064nm) to address various colors."
-            },
-            {
-              "q": "Why is the treatment interval 6-8 weeks?",
-              "a": "Laser-shattered ink particles are absorbed by macrophages and discharged through the lymphatic system. This natural healing process takes 4-6 weeks, and the next treatment should only proceed after complete skin recovery. Too-frequent treatments increase skin damage and scarring risk."
-            }
-          ],
-          "cta": {
-            "title": "Шинэ эхлэл рүү хийх анхны алхам",
-            "description": "Хүсээгүй шивээсийг pico лазераар цэвэрхэн арилга. Үнэгүй зөвлөгөөгөөр нарийн эмчилгээний төлөвлөгөө аваарай"
-          }
-        }
       }
     }
   },
@@ -5773,7 +5508,7 @@
       "title": "Лазер төв",
       "subtitle": "Таны арьсны асуудалд тохирсон лазерийн шийдэл",
       "description1": "Clarity II + Lucas хослолтой,",
-      "description2": "пигментациас эхлээд судас, үс арилгах, шивээс арилгах хүртэлх нэг цэгийн арчилгаа"
+      "description2": "пигментациас эхлээд судас, үс арилгах хүртэлх нэг цэгийн арчилгаа"
     },
     "highlights": {
       "equipment": "Тоног төхөөрөмж",
@@ -5799,10 +5534,6 @@
       "hairRemoval": {
         "title": "Премиум үс арилгах",
         "description": "Clarity II-ийн давхар долгионы урт болон IntelliTrak технологиор бүх арьсны төрөлд аюулгүй үс арилгах."
-      },
-      "tattoo": {
-        "title": "Шивээс арилгах",
-        "description": "Lucas pico лазераар бүх өнгийн шивээсийг сорвигүй үр дүнтэйгээр арилгана."
       }
     },
     "matrix": {
@@ -5829,8 +5560,7 @@
         "spec": "Пикосекундын импульс (450 пс)",
         "tags": [
           "Melasma",
-          "Pigmentation",
-          "Tattoo Removal"
+          "Pigmentation"
         ]
       },
       "toning": {
@@ -6156,8 +5886,7 @@
         "description": "Дотроосоо гэрэлтэх тунгалаг – пигментийн эмчилгээний шинэ стандарт",
         "features": [
           "Өндөр чадлын Q-switch",
-          "Мелазма/толбоны эмчилгээ",
-          "Шивээс арилгах"
+          "Мелазма/толбоны эмчилгээ"
         ],
         "certification": "KFDA баталгаажсан"
       },
@@ -6440,17 +6169,6 @@
         "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
         "dualToningDesc": "Үс арилгах арчилгаа",
         "single": "Нэг удаагийн сесс"
-      },
-      "tattoo": {
-        "tattooLucas": "Шивээс арилгах лазер (Lucas)",
-        "onePart": "Хэсэг тутамд",
-        "co2Laser": "CO2 лазер",
-        "co2Desc": "Мэнгэ / хавтгай үүлдэр / нас ахисны толбо гэх мэт.",
-        "dia3mm": "Диаметр ≤ 3 мм (1 цэг)",
-        "dia5mm": "3 мм < Диаметр ≤ 5 мм (1 цэг)",
-        "diaOver5mm": "Диаметр > 5 мм (1 цэг)",
-        "faceFull": "Бүх нүүр (50+ цэг)",
-        "neckFull": "Бүх хүзүү (50+ цэг)"
       }
     }
   },
@@ -6765,14 +6483,13 @@
     },
     "laser": {
       "title": "Лазер төв | Пигмент·Улайлт·Үсгүйжүүлэлт | LIV Гоо Заслын Эмнэлэг",
-      "description": "Сөүлийн Каннам дахь LIV эмнэлгийн лазер төв: Pico лазер, Clarity-аар мелазм, пигмент, улайлт, нүх сүв, үсгүйжүүлэлт, шивээс арилгах эмчилгээ.",
+      "description": "Сөүлийн Каннам дахь LIV эмнэлгийн лазер төв: Pico лазер, Clarity-аар мелазм, пигмент, улайлт, нүх сүв, үсгүйжүүлэлт эмчилгээ.",
       "keywords": [
         "лазер эмнэлэг Сөүл",
         "Pico лазер Солонгос",
         "мелазм эмчилгээ Солонгос",
         "CO2 лазер Сөүл",
         "лазер үсгүйжүүлэлт Сөүл",
-        "шивээс арилгах Солонгос",
         "Каннам лазер"
       ]
     },
@@ -6987,19 +6704,6 @@
         "арьсны өнгө засах Сөүл",
         "Каннам лазер",
         "Шинса метро эмнэлэг"
-      ]
-    },
-    "laserTattoo": {
-      "title": "Шивээс арилгах Сөүл | Пикосекунд лазер | LIV Гоо Заслын Эмнэлэг",
-      "description": "Сөүлийн Каннам дахь LIV эмнэлгийн шивээс арилгах эмчилгээ — пикосекунд лазер бэхийг нарийн бутлан, өнгөт шивээсэд ч тохирно. Эдийг хамгаална.",
-      "keywords": [
-        "шивээс арилгах Солонгос",
-        "лазер шивээс арилгах Сөүл",
-        "Pico лазер шивээс",
-        "өнгөт шивээс арилгах Солонгос",
-        "Каннам шивээс арилгах",
-        "Шинса метро эмнэлэг",
-        "шивээс арилгах үнэ Сөүл"
       ]
     },
     "laserVascular": {

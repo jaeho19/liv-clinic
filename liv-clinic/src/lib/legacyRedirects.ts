@@ -55,6 +55,7 @@ const LEGACY_PATH_RULES: ReadonlyArray<{ test: RegExp; to: string }> = [
   { test: /^\/equipment$/i, to: '/about/equipment' },
   { test: /^\/location$/i, to: '/about/location' },
   { test: /^\/promotion$/i, to: '/events' }, // 은퇴한 프로모션 페이지
+  { test: /^\/laser\/tattoo$/i, to: '/laser' }, // 2026-10-20 문신 제거 페이지 폐지(바디 타투 제거는 하지 않음) → 레이저 센터
   { test: /^\/layer_popup(?:\/.*)?$/i, to: '/events' }, // 옛 이벤트 팝업
   { test: /^\/(?:덴서티-이벤트|직원픽-이벤트)$/, to: '/events' },
 ];

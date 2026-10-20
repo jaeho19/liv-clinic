@@ -3770,12 +3770,12 @@
         "name": "مركز الليزر",
         "fullName": "مركز الليزر",
         "tagline": "حل ليزر متكامل ومتطور",
-        "description": "مركز ليزر فاخر يعالج مختلف مشاكل البشرة من التصبغات، المشكلات الوعائية، ملمس البشرة، إزالة الشعر، إلى إزالة الوشم.",
+        "description": "مركز ليزر فاخر يعالج مختلف مشاكل البشرة من التصبغات، المشكلات الوعائية، ملمس البشرة، إلى إزالة الشعر.",
         "detail": {
           "hero": {
             "title": "مركز الليزر",
             "subtitle": "حلول ليزر مخصصة لمشكلات بشرتك",
-            "description": "مع دمج Clarity II + PicoLO<br/>عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"
+            "description": "مع دمج Clarity II + PicoLO<br/>عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر"
           },
           "viewMore": "اعرف المزيد",
           "stats": [
@@ -3786,7 +3786,7 @@
             },
             {
               "label": "Treatment Areas",
-              "value": "5 Types",
+              "value": "4 Types",
               "desc": "Skin Concern Solutions"
             },
             {
@@ -3845,16 +3845,6 @@
                   "Clarity II"
                 ],
                 "icon": "💎"
-              },
-              {
-                "id": "tattoo",
-                "name": "Tattoo Removal",
-                "nameEn": "Tattoo Removal",
-                "description": "Effectively remove tattoos of all colors without scarring using PicoLO pico laser.",
-                "equipment": [
-                  "PicoLO"
-                ],
-                "icon": "🎨"
               }
             ]
           },
@@ -3873,8 +3863,7 @@
               "Pigmentation",
               "Redness/Vascular",
               "Skin Tone",
-              "Hair Removal",
-              "Tattoo Removal"
+              "Hair Removal"
             ]
           },
           "equipmentSection": {
@@ -3907,8 +3896,7 @@
                 "feature": "Picosecond Pulse (450ps)",
                 "targets": [
                   "Melasma",
-                  "Pigmentation",
-                  "Tattoo Removal"
+                  "Pigmentation"
                 ],
                 "highlight": false
               },
@@ -4097,8 +4085,7 @@
           "otherCategories": {
             "vascular": "علاج الاحمرار والأوعية الدموية",
             "skintone": "توحيد لون البشرة",
-            "hair-removal": "إزالة الشعر بريميوم",
-            "tattoo": "إزالة الوشم"
+            "hair-removal": "إزالة الشعر بريميوم"
           },
           "hero": {
             "subtitle": "حتى الكلف العنيد عبر نظامنا المؤلف من 3 مراحل",
@@ -4776,258 +4763,6 @@
       },
       "hair-removal": {
         "name": "إزالة الشعر بالليزر"
-      },
-      "tattoo": {
-        "name": "إزالة الوشم",
-        "fullName": "إزالة الوشم",
-        "tagline": "إزالة آمنة للوشم",
-        "description": "يفتّت ليزر البيكوسيكند صبغات الوشم إلى جزيئات دقيقة لإزالة نظيفة.",
-        "detail": {
-          "breadcrumb": "إزالة الوشم",
-          "hero": {
-            "title": "إزالة الوشم",
-            "subtitle": "إزالة الوشم بـ Lucas",
-            "description": "تقنية البيكوسيكند لإزالة نظيفة ومن دون ندوب لجميع ألوان الحبر"
-          },
-          "picoTech": {
-            "badge": "تقنية البيكوسيكند",
-            "title": "لماذا ليزر Pico؟",
-            "description1": "كانت ليزرات النانوسيكند التقليدية (10⁻⁹ ث) تستخدم التأثير الضوء-حراري لتفتيت الحبر. تقدّم ليزرات البيكوسيكند (10⁻¹² ث) نبضات أسرع بمعدل 1000 مرة محدِثةً تأثيرات ضوء-صوتية.",
-            "description2": "هذه الموجة الصدمية تحطّم جزيئات الحبر إلى حجم يشبه الغبار، مما يتيح إزالتها بسهولة عن طريق الجهاز المناعي للجسم.",
-            "benefits": [
-              {
-                "title": "Fewer Sessions",
-                "desc": "Efficient removal with fine particle breakdown"
-              },
-              {
-                "title": "Less Heat Damage",
-                "desc": "Short pulse protects surrounding tissue"
-              },
-              {
-                "title": "Fewer Side Effects",
-                "desc": "Minimized risk of scarring and pigment changes"
-              }
-            ],
-            "illustration": {
-              "title": "آلية تحطيم جزيئات الحبر",
-              "nanosecond": "نانوسيكند (10⁻⁹ ث)",
-              "nanosecondDevice": "ليزر Q-Switch تقليدي",
-              "picosecond": "بيكوسيكند (10⁻¹² ث)",
-              "picosecondDevice": "ليزر Lucas",
-              "before": "قبل",
-              "after": "بعد",
-              "photothermal": "ضوء-حراري",
-              "photothermalResult": "جزيئات كبيرة → متوسطة",
-              "photoacoustic": "ضوء-صوتي",
-              "photoacousticResult": "جزيئات كبيرة → دقيقة ✓"
-            }
-          },
-          "colorWavelength": {
-            "badge": "نظام متعدد الأطوال الموجية",
-            "title": "استهداف جميع الألوان",
-            "subtitle": "يفتّت ليزر Lucas Pico مختلف ألوان الحبر بفاعلية بفضل أطوال موجية متعددة",
-            "illustrationTitle": "الطول الموجي الأمثل حسب لون الحبر",
-            "colors": {
-              "black": {
-                "name": "أسود",
-                "wavelength": "1064 نانومتر",
-                "difficulty": "الأسهل"
-              },
-              "red": {
-                "name": "أحمر",
-                "wavelength": "532 نانومتر",
-                "difficulty": "سهل نسبياً"
-              },
-              "blue": {
-                "name": "أزرق",
-                "wavelength": "755 نانومتر",
-                "difficulty": "صعب نوعاً ما"
-              },
-              "green": {
-                "name": "أخضر",
-                "wavelength": "755 نانومتر",
-                "difficulty": "الأصعب"
-              }
-            },
-            "lucasNote": "Lucas: أطوال موجية متعددة لاستهداف جميع الألوان",
-            "wavelengths": [
-              {
-                "wavelength": "1064nm",
-                "colors": "Black, Dark Blue, Brown",
-                "note": "Deepest penetration, most tattoos"
-              },
-              {
-                "wavelength": "755nm",
-                "colors": "Blue, Green",
-                "note": "Medium depth, special color targeting"
-              },
-              {
-                "wavelength": "532nm",
-                "colors": "Red, Orange, Yellow",
-                "note": "Epidermal layer, bright colors"
-              }
-            ]
-          },
-          "tattooTypes": {
-            "badge": "دليل أنواع الوشم",
-            "title": "أيّ نوع من الوشم تريد إزالته؟",
-            "subtitle": "تختلف عدد الجلسات ودرجة الصعوبة باختلاف نوع الوشم وخصائصه",
-            "estimatedSessions": "عدد الجلسات التقديري",
-            "difficulty": {
-              "easy": "سهل نسبياً",
-              "medium": "متوسط",
-              "hard": "صعب نوعاً ما"
-            },
-            "types": [
-              {
-                "type": "Amateur Tattoo",
-                "description": "Non-professional tattoos with shallow ink placement, relatively easy to remove.",
-                "sessions": "3-5 sessions",
-                "notes": "Mostly single-color tattoos with pen ink or india ink"
-              },
-              {
-                "type": "Professional Tattoo (B&W)",
-                "description": "Professional black and white tattoos with deep, uniform ink placement.",
-                "sessions": "6-10 sessions",
-                "notes": "Black ink responds best to laser"
-              },
-              {
-                "type": "Professional Tattoo (Color)",
-                "description": "Multi-colored tattoos requiring different wavelengths for each color.",
-                "sessions": "8-15+ sessions",
-                "notes": "Green and blue require more sessions"
-              },
-              {
-                "type": "Permanent Makeup",
-                "description": "Semi-permanent makeup on eyebrows, eyeliner, lips. Shallower than regular tattoos.",
-                "sessions": "3-6 sessions",
-                "notes": "Special protective equipment for eye area"
-              },
-              {
-                "type": "Traumatic Tattoo",
-                "description": "Foreign material embedded from accidents. Asphalt, graphite in skin.",
-                "sessions": "4-8 sessions",
-                "notes": "Varies by depth and extent"
-              },
-              {
-                "type": "Cover-up Tattoo",
-                "description": "Tattoo drawn over existing tattoo. Thicker ink layers make removal difficult.",
-                "sessions": "10-20+ sessions",
-                "notes": "New tattoo possible after staged removal"
-              }
-            ]
-          },
-          "process": {
-            "badge": "إجراءات العلاج",
-            "title": "عملية إزالة الوشم",
-            "steps": [
-              {
-                "step": 1,
-                "title": "Consultation & Assessment",
-                "description": "Evaluate tattoo size, color, depth, skin type and provide expected sessions and cost guidance.",
-                "duration": "About 30 min"
-              },
-              {
-                "step": 2,
-                "title": "Pico Laser Treatment",
-                "description": "Lucas pico laser finely shatters ink particles. Treatment time varies by size.",
-                "duration": "15-60 min"
-              },
-              {
-                "step": 3,
-                "title": "Recovery Period",
-                "description": "Skin naturally discharges shattered ink. Scabbing and mild swelling may occur.",
-                "duration": "2-4 weeks"
-              },
-              {
-                "step": 4,
-                "title": "Next Session",
-                "description": "Repeat treatment at 6-8 week intervals. Tattoo visibly fades with each session.",
-                "duration": "6-8 week interval"
-              }
-            ]
-          },
-          "lucas": {
-            "title": "Lucas",
-            "subtitle": "المعيار الجديد في إزالة الوشم بالبيكوسيكند",
-            "specs": {
-              "pulseDuration": {
-                "label": "مدة النبضة",
-                "value": "450 بيكوسيكند"
-              },
-              "wavelength": {
-                "label": "الطول الموجي",
-                "value": "532 / 755 / 1064 نانومتر"
-              },
-              "repetitionRate": {
-                "label": "معدّل التكرار",
-                "value": "حتى 10 هرتز"
-              },
-              "energy": {
-                "label": "الطاقة",
-                "value": "حتى 1.8 جول"
-              }
-            },
-            "strengths": {
-              "title": "مزايا Lucas",
-              "items": [
-                "Multi-wavelength for all color response",
-                "450ps ultra-short pulse minimizes heat damage",
-                "Fractional lens also treats scars"
-              ]
-            }
-          },
-          "precautions": {
-            "before": {
-              "title": "قبل العلاج",
-              "items": [
-                "Avoid excessive sun exposure 2 weeks before treatment",
-                "Avoid irritating products on treatment area",
-                "Inform us of any skin conditions (inflammation, wounds)",
-                "Disclose medications (photosensitizing drugs, etc.)"
-              ]
-            },
-            "after": {
-              "title": "بعد العلاج",
-              "items": [
-                "Apply prescribed ointment as directed",
-                "Never remove scabs artificially",
-                "Essential sunscreen (SPF 30+)",
-                "Avoid sauna and intense exercise for 1 week"
-              ]
-            }
-          },
-          "faq": [
-            {
-              "q": "Can tattoos be completely removed?",
-              "a": "Most tattoos can be removed over 90%. Complete removal depends on ink color, depth, tattoo age, and skin type. Black ink removes best, while green and blue may require more sessions. We'll provide accurate estimates during consultation."
-            },
-            {
-              "q": "How painful is tattoo removal?",
-              "a": "Pain levels range from 'snapping rubber band' to 'pinching' depending on the individual. Lucas pico laser has 1000x shorter pulse than traditional nanosecond lasers, reducing heat buildup and pain. Numbing cream can be applied to minimize discomfort."
-            },
-            {
-              "q": "Will there be scarring?",
-              "a": "Pico laser minimizes heat damage, making scarring risk very low. With proper energy settings and treatment intervals, most recover without scarring. Following post-care guidelines (sun protection, no scab picking) ensures clean healing."
-            },
-            {
-              "q": "Are older or newer tattoos easier to remove?",
-              "a": "Generally, older tattoos remove easier as the body's immune system naturally removes some ink particles over time. However, new tattoos can also be effectively removed with pico laser, and their clearer ink can make laser targeting easier."
-            },
-            {
-              "q": "Can all ink colors be removed?",
-              "a": "Most colors can be removed. Lucas pico laser offers multiple wavelengths (532nm, 755nm, 1064nm) to address various colors."
-            },
-            {
-              "q": "Why is the treatment interval 6-8 weeks?",
-              "a": "Laser-shattered ink particles are absorbed by macrophages and discharged through the lymphatic system. This natural healing process takes 4-6 weeks, and the next treatment should only proceed after complete skin recovery. Too-frequent treatments increase skin damage and scarring risk."
-            }
-          ],
-          "cta": {
-            "title": "الخطوة الأولى نحو بداية جديدة",
-            "description": "أزل الوشم غير المرغوب فيه بشكل نظيف باستخدام ليزر pico. احصل على خطة علاج دقيقة عبر استشارة مجانية"
-          }
-        }
       }
     }
   },
@@ -5773,7 +5508,7 @@
       "title": "مركز الليزر",
       "subtitle": "حلول ليزر مخصصة لمشكلات بشرتك",
       "description1": "مع دمج Clarity II + Lucas،",
-      "description2": "عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر والوشم"
+      "description2": "عناية شاملة في مكان واحد، من التصبغات إلى الأوعية وإزالة الشعر"
     },
     "highlights": {
       "equipment": "المعدات",
@@ -5799,10 +5534,6 @@
       "hairRemoval": {
         "title": "إزالة شعر فاخرة",
         "description": "إزالة شعر آمنة لجميع أنواع البشرة بفضل الطول الموجي المزدوج لـ Clarity II وتقنية IntelliTrak."
-      },
-      "tattoo": {
-        "title": "إزالة الوشم",
-        "description": "أزل جميع ألوان الوشم بفاعلية ومن دون ندوب باستخدام ليزر Lucas Pico."
       }
     },
     "matrix": {
@@ -5829,8 +5560,7 @@
         "spec": "نبضة بيكوسيكند (450 ps)",
         "tags": [
           "Melasma",
-          "Pigmentation",
-          "Tattoo Removal"
+          "Pigmentation"
         ]
       },
       "toning": {
@@ -6156,8 +5886,7 @@
         "description": "ساطع وصافٍ من الداخل – معيار جديد في علاج التصبغات",
         "features": [
           "Q-switch عالي الطاقة",
-          "علاج الكلف والبقع",
-          "إزالة الوشم"
+          "علاج الكلف والبقع"
         ],
         "certification": "معتمد من KFDA"
       },
@@ -6440,17 +6169,6 @@
         "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
         "dualToningDesc": "العناية بإزالة الشعر",
         "single": "جلسة واحدة"
-      },
-      "tattoo": {
-        "tattooLucas": "ليزر إزالة الوشم (Lucas)",
-        "onePart": "لكل منطقة",
-        "co2Laser": "ليزر CO2",
-        "co2Desc": "الشامات / الثآليل المسطحة / بقع الشيخوخة، إلخ.",
-        "dia3mm": "القطر ≤ 3 مم (نقطة واحدة)",
-        "dia5mm": "3 مم < القطر ≤ 5 مم (نقطة واحدة)",
-        "diaOver5mm": "القطر > 5 مم (نقطة واحدة)",
-        "faceFull": "الوجه بالكامل (أكثر من 50 نقطة)",
-        "neckFull": "الرقبة بالكامل (أكثر من 50 نقطة)"
       }
     }
   },
@@ -6764,15 +6482,14 @@
       ]
     },
     "laser": {
-      "title": "مركز الليزر | تصبغات وإزالة شعر ووشم | مستشفى ليف للتجميل",
-      "description": "ليزر Pico وClarity لعلاج الكلف والتصبغات والاحمرار والمسام وإزالة الشعر والوشم في مركز الليزر بمستشفى ليف للتجميل في غانغنام، سيول.",
+      "title": "مركز الليزر | تصبغات وإزالة شعر | مستشفى ليف للتجميل",
+      "description": "ليزر Pico وClarity لعلاج الكلف والتصبغات والاحمرار والمسام وإزالة الشعر في مركز الليزر بمستشفى ليف للتجميل في غانغنام، سيول.",
       "keywords": [
         "عيادة ليزر سيول",
         "ليزر Pico كوريا",
         "علاج الكلف في كوريا",
         "ليزر CO2 سيول",
         "إزالة الشعر بالليزر سيول",
-        "إزالة الوشم كوريا",
         "ليزر غانغنام"
       ]
     },
@@ -6987,19 +6704,6 @@
         "توحيد لون البشرة سيول",
         "ليزر غانغنام",
         "عيادة محطة سينسا"
-      ]
-    },
-    "laserTattoo": {
-      "title": "إزالة الوشم في سيول | ليزر بيكوثانية | مستشفى ليف للتجميل",
-      "description": "إزالة الوشم في مستشفى ليف للتجميل بغانغنام، سيول — ليزر بيكوثانية يفتّت الحبر بدقة لتسريع التخلص منه، بما في ذلك الأوشام الملوّنة، مع حماية الأنسجة.",
-      "keywords": [
-        "إزالة الوشم كوريا",
-        "إزالة الوشم بالليزر سيول",
-        "ليزر Pico للوشم",
-        "إزالة الوشم الملون كوريا",
-        "إزالة الوشم غانغنام",
-        "عيادة محطة سينسا",
-        "سعر إزالة الوشم سيول"
       ]
     },
     "laserVascular": {

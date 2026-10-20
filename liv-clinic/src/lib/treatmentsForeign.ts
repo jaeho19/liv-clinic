@@ -25,7 +25,6 @@ export const TREATMENT_FOREIGN_IDS = [
   'vascular',
   'skintone',
   'hair-removal',
-  'tattoo',
 ] as const;
 export type TreatmentForeignId = (typeof TREATMENT_FOREIGN_IDS)[number];
 
@@ -175,7 +174,6 @@ const GUIDE_FOR: Partial<Record<TreatmentForeignId, string>> = {
   shurink: 'ultherapy-vs-thermage-vs-shurink',
   botox: 'botox-filler-cost-seoul',
   filler: 'botox-filler-cost-seoul',
-  tattoo: 'tattoo-removal-pico-seoul',
 };
 
 /** [locale][id] — name·duration은 사이트 메시지/데이터 값, stay는 위 두 사전 중 하나 */
@@ -197,7 +195,6 @@ const ENTRIES: Record<GuideLocale, Record<TreatmentForeignId, { name: string; du
     vascular: { name: 'Vascular Treatment', duration: '15–30 minutes' },
     skintone: { name: 'Skin Texture', duration: '30–45 minutes' },
     'hair-removal': { name: 'Laser Hair Removal', duration: '15–60 minutes, depending on the area' },
-    tattoo: { name: 'Tattoo Removal', duration: '15–30 minutes' },
   },
   ja: {
     ulthera: { name: 'ウルセラ（ウルセラプライム）', duration: '60-90分' },
@@ -216,7 +213,6 @@ const ENTRIES: Record<GuideLocale, Record<TreatmentForeignId, { name: string; du
     vascular: { name: '血管治療', duration: '15-30分' },
     skintone: { name: '肌質改善', duration: '30-45分' },
     'hair-removal': { name: 'レーザー脱毛', duration: '15-60分（部位による）' },
-    tattoo: { name: 'タトゥー除去', duration: '15-30分' },
   },
   zh: {
     ulthera: { name: '超声刀 Prime', duration: '60-90分钟' },
@@ -235,7 +231,6 @@ const ENTRIES: Record<GuideLocale, Record<TreatmentForeignId, { name: string; du
     vascular: { name: '血管治疗', duration: '15-30分钟' },
     skintone: { name: '肤质改善', duration: '30-45分钟' },
     'hair-removal': { name: '激光脱毛', duration: '15-60分钟（视部位而定）' },
-    tattoo: { name: '纹身去除', duration: '15-30分钟' },
   },
   'zh-TW': {
     ulthera: { name: '音波拉提 Prime', duration: '60-90分鐘' },
@@ -254,7 +249,6 @@ const ENTRIES: Record<GuideLocale, Record<TreatmentForeignId, { name: string; du
     vascular: { name: '血管治療', duration: '15-30分鐘' },
     skintone: { name: '膚質改善', duration: '30-45分鐘' },
     'hair-removal': { name: '雷射除毛（激光脫毛）', duration: '15-60分鐘（依部位而定）' },
-    tattoo: { name: '除刺青（紋身去除）', duration: '15-30分鐘' },
   },
 };
 
