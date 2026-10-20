@@ -11,6 +11,24 @@ import type { MediaNewsLocaleMap } from './types';
 
 export const ZH: MediaNewsLocaleMap = {
   // ── mediaNewsData ──
+  '18': {
+    badge: '学术',
+    source: 'LIV资讯',
+    title:
+      'Kim Sooyoung 代表院长在 MIPS 研讨会圆满完成“线雕提升与胶原蛋白刺激剂联合疗法”演讲',
+    description:
+      'LIV整形外科 Kim Sooyoung 代表院长作为正式讲者出席韩国具代表性的微创整形学会 MIPS 研讨会，以“恢复面部立体感的线雕提升与胶原蛋白刺激剂联合疗法”为主题，圆满完成口头发表。',
+    body: [
+      '您好，这里是LIV整形外科。',
+      '我们再次与您分享一则喜讯，它印证了LIV整形外科不懈的学术研究与独到的技术实力。',
+      '在近期举行的韩国具代表性的微创整形学会 MIPS 研讨会上，LIV整形外科 Kim Sooyoung 代表院长作为正式讲者出席，面向整形外科专科医生及医美医疗团队进行了口头发表，现场反响热烈。',
+      '在本次发表中，Kim Sooyoung 院长以“恢复面部立体感的线雕提升与胶原蛋白刺激剂联合疗法”为主题，分享了如何以最自然、最优雅的方式修复随岁月流逝而下垂、凹陷的面部轮廓的高难度临床心得。',
+      '尤其是，Kim 院长并未止步于千篇一律的提拉，而是介绍了LIV独有的“Site-specific algorithm（分区定制算法）”体系——通过按解剖层次（Layer）进行的方法，将线雕提升的结构性提升效果与胶原蛋白刺激剂促进皮肤内自体组织再生的效果相结合，获得了到场知名医疗专家深切的学术共鸣与赞誉。',
+      '不追求人为的改变，而是引导出面部本来的立体感与优雅——LIV整形外科的“Slow Aging”医学理念，正是如此在国内外重要学术舞台上持续获得专业认可。',
+      '始终站在学术最前沿钻研、只追求以医学依据为基础的安全而精细施术的LIV整形外科，今后也将以韩国顶尖水准的抗衰老心得与细致的关怀，回报每一位前来的您。',
+      '谢谢。',
+    ],
+  },
   '17': {
     badge: '学术',
     source: 'LIV资讯',
@@ -157,6 +175,12 @@ export const ZH: MediaNewsLocaleMap = {
   },
 
   // ── featuredMediaNews (home) ──
+  f10: {
+    badge: '学术',
+    title: '以正式讲者身份在 MIPS 研讨会发表演讲',
+    description:
+      'Kim Sooyoung 代表院长作为正式讲者出席 MIPS 研讨会，发表了结合线雕提升与胶原蛋白刺激剂的分区定制联合疗法。',
+  },
   f9: {
     badge: '学术',
     title: '受邀在 AXA（Aptos Expert Alliance）发表演讲',
@@ -179,11 +203,6 @@ export const ZH: MediaNewsLocaleMap = {
     badge: '节目出演',
     title: 'SBS Good Morning 节目出演',
     description: '分享了关于皮肤弹性、生活习惯性衰老与胶原蛋白再生的专家见解。',
-  },
-  f2: {
-    badge: '封面故事',
-    title: 'Issuemaker 封面故事',
-    description: '介绍了LIV整形外科在慢老化理念、再生类施术与新沙站扩张方面的方向。',
   },
   f3: {
     badge: '全球培训师',

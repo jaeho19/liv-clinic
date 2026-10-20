@@ -30,7 +30,7 @@ export interface MediaNewsItem {
   body?: string[];
   /** 내부 소식 상세 모달용 이미지 경로 배열 */
   images?: string[];
-  /** 모달 이미지 배치 — 'stack'이면 상하로 쌓아 원본 비율로 넓게 표시(가로형 사진용). 기본은 3:4 2열 그리드 */
+  /** 모달 이미지 배치 — 'stack'이면 상하로 쌓아 원본 비율로 넓게 표시(가로형 사진용, 세로 사진은 높이 32rem 제한). 기본은 3:4 2열 그리드 */
   imageLayout?: 'grid' | 'stack';
 }
 
@@ -62,6 +62,35 @@ export const MEDIA_YEARS = ['2026', '2025', '2021'] as const;
  */
 export const mediaNewsData: MediaNewsItem[] = [
   // ── 2026 ──
+  {
+    id: '18',
+    type: 'news',
+    category: 'academic_global',
+    badge: 'ACADEMIC',
+    year: '2026',
+    title: '김수영 대표원장, MIPS 심포지엄서 ‘실리프팅 & 콜라겐 부스터 병합요법’ 발표 성료',
+    source: 'LIV 소식',
+    description:
+      '리브성형외과 김수영 대표원장이 국내 대표 최소침습성형학회 MIPS 심포지엄에 공식 연자로 참석해 “안면부 입체감 회복을 위한 실리프팅과 콜라겐 부스터의 병합요법”을 주제로 구연 발표를 성황리에 마쳤습니다.',
+    body: [
+      '안녕하세요, 리브성형외과입니다.',
+      '리브성형외과의 끊임없는 학술 연구와 독보적인 기술력을 입증하는 기쁜 소식을 다시 한번 전해드립니다.',
+      '최근 개최된 국내 대표 최소침습성형학회 MIPS 심포지엄에서, 리브성형외과의 김수영 대표원장님이 공식 연자로 참석하여 성형외과 전문의 및 미용성형 의료진들을 대상으로 구연 발표를 성황리에 마쳤습니다.',
+      '이번 발표에서 김수영 원장님은 “안면부 입체감 회복을 위한 실리프팅과 콜라겐 부스터의 병합요법”이라는 주제를 바탕으로, 세월의 흐름에 따라 처지고 꺼진 얼굴 라인을 가장 자연스럽고 우아하게 복원하는 고난도 임상 노하우를 공유하셨습니다.',
+      '특히 획일화된 당김에 그치는 것이 아니라, 해부학적 층(Layer)별 접근을 통해 실리프팅의 구조적 리프팅 효과와 콜라겐 부스터의 피부 속 자가 조직 재생 효과를 결합하는 리브만의 ‘Site-specific algorithm(부위별 맞춤형 알고리즘)’ 체계를 선보여 현장에 참석한 저명한 의료진들로부터 깊은 학술적 공감과 찬사를 받았습니다.',
+      '인위적인 변화 대신 본연의 입체감과 우아함을 이끌어내는 리브성형외과의 ‘Slow Aging’ 메디컬 철학은 이처럼 국내외 메이저 학술 무대에서 그 전문성을 지속적으로 인정받고 있습니다.',
+      '늘 학술의 최전선에서 연구하며 의학적 근거에 기반한 안전하고 정밀한 시술만을 지향하는 리브성형외과. 앞으로도 찾아주시는 모든 분께 국내 최고 수준의 안티에이징 노하우와 섬세한 케어로 보답할 것을 약속드립니다.',
+      '감사합니다.',
+    ],
+    images: [
+      '/images/media-news/mips-symposium-2026-1.jpg',
+      '/images/media-news/mips-symposium-2026-2.jpg',
+    ],
+    imageLayout: 'stack',
+    imagePosition: '50% 40%',
+    link: '/media',
+    isExternal: false,
+  },
   {
     id: '17',
     type: 'news',
@@ -358,6 +387,20 @@ export const mediaNewsData: MediaNewsItem[] = [
  */
 export const featuredMediaNews: FeaturedMediaCard[] = [
   {
+    id: 'f10',
+    type: 'news',
+    badge: 'ACADEMIC',
+    year: '2026',
+    title: 'MIPS 심포지엄 공식 연자 발표',
+    description:
+      '김수영 대표원장이 MIPS 심포지엄에 공식 연자로 참석해 실리프팅과 콜라겐 부스터를 결합한 부위별 맞춤형 병합요법을 발표했습니다.',
+    image: '/images/media-news/mips-symposium-2026-1.jpg',
+    imagePosition: '50% 40%',
+    link: '/media',
+    isExternal: false,
+    newsId: '18',
+  },
+  {
     id: 'f9',
     type: 'news',
     badge: 'ACADEMIC',
@@ -409,18 +452,6 @@ export const featuredMediaNews: FeaturedMediaCard[] = [
     image: '/images/media-news/og/2.png',
     imagePosition: '52% 14%',
     link: 'https://www.vegannews.co.kr/news/article.html?no=354684',
-    isExternal: true,
-  },
-  {
-    id: 'f2',
-    type: 'press',
-    badge: 'COVER STORY',
-    year: '2025',
-    title: '이슈메이커 커버스토리',
-    description: '슬로우에이징 철학, 재생 시술, 신사역 확장에 관한 리브성형외과의 방향성을 소개했습니다.',
-    image: '/images/media-news/director-portrait.jpg',
-    imagePosition: '50% 0%',
-    link: 'https://www.issuemaker.kr/news/articleView.html?idxno=50870',
     isExternal: true,
   },
   {

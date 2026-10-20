@@ -11,6 +11,24 @@ import type { MediaNewsLocaleMap } from './types';
 
 export const VI: MediaNewsLocaleMap = {
   // ── mediaNewsData ──
+  '18': {
+    badge: 'HỌC THUẬT',
+    source: 'Tin LIV',
+    title:
+      'Bác sĩ Kim Sooyoung, Giám đốc Y khoa — hoàn thành bài trình bày về “liệu pháp kết hợp căng chỉ & collagen booster” tại hội thảo MIPS',
+    description:
+      'Bác sĩ Kim Sooyoung, Giám đốc Y khoa của Phòng khám Phẫu thuật Thẩm mỹ LIV, đã tham dự hội thảo MIPS của hội phẫu thuật thẩm mỹ xâm lấn tối thiểu tiêu biểu tại Hàn Quốc với tư cách diễn giả chính thức và hoàn thành tốt đẹp bài báo cáo miệng với chủ đề “Liệu pháp kết hợp căng chỉ và collagen booster để phục hồi đường nét ba chiều của gương mặt”.',
+    body: [
+      'Xin chào, đây là Phòng khám Phẫu thuật Thẩm mỹ LIV.',
+      'Chúng tôi một lần nữa xin chia sẻ tin vui khẳng định hoạt động nghiên cứu học thuật không ngừng và năng lực chuyên môn vượt trội của Phòng khám Phẫu thuật Thẩm mỹ LIV.',
+      'Tại hội thảo MIPS diễn ra gần đây của hội phẫu thuật thẩm mỹ xâm lấn tối thiểu tiêu biểu tại Hàn Quốc, Bác sĩ Kim Sooyoung, Giám đốc Y khoa của Phòng khám Phẫu thuật Thẩm mỹ LIV, đã tham dự với tư cách diễn giả chính thức và có bài báo cáo miệng được đón nhận nồng nhiệt trước các bác sĩ chuyên khoa phẫu thuật tạo hình và đội ngũ y tế thẩm mỹ.',
+      'Trong bài trình bày lần này, với chủ đề “Liệu pháp kết hợp căng chỉ và collagen booster để phục hồi đường nét ba chiều của gương mặt”, bác sĩ Kim đã chia sẻ bí quyết lâm sàng chuyên sâu nhằm phục hồi một cách tự nhiên và thanh lịch nhất những đường nét gương mặt đã chảy xệ và hóp lại theo thời gian.',
+      'Đặc biệt, không dừng lại ở việc kéo căng theo một khuôn mẫu chung, bác sĩ Kim đã giới thiệu hệ thống “Site-specific algorithm (thuật toán tùy chỉnh theo từng vùng)” riêng của LIV — kết hợp hiệu quả nâng đỡ cấu trúc của căng chỉ với hiệu quả tái tạo mô tự thân trong da của collagen booster thông qua cách tiếp cận theo từng lớp (Layer) giải phẫu — và nhận được sự đồng cảm học thuật sâu sắc cùng lời khen ngợi từ các bác sĩ danh tiếng có mặt tại hội thảo.',
+      'Triết lý y khoa “Slow Aging” của Phòng khám Phẫu thuật Thẩm mỹ LIV — khơi dậy đường nét ba chiều và vẻ thanh lịch vốn có thay vì những thay đổi gượng ép — nhờ đó tiếp tục được ghi nhận về chuyên môn trên các diễn đàn học thuật lớn trong và ngoài nước.',
+      'Phòng khám Phẫu thuật Thẩm mỹ LIV luôn nghiên cứu ở tuyến đầu học thuật và chỉ theo đuổi những thủ thuật an toàn, chính xác dựa trên cơ sở y học. Chúng tôi xin hứa sẽ tiếp tục đáp lại tất cả quý khách tìm đến bằng bí quyết chống lão hóa ở trình độ hàng đầu Hàn Quốc cùng sự chăm sóc tận tâm, tỉ mỉ.',
+      'Xin cảm ơn.',
+    ],
+  },
   '17': {
     badge: 'HỌC THUẬT',
     source: 'Tin LIV',
@@ -160,6 +178,12 @@ export const VI: MediaNewsLocaleMap = {
   },
 
   // ── featuredMediaNews (home) ──
+  f10: {
+    badge: 'HỌC THUẬT',
+    title: 'Diễn giả chính thức tại hội thảo MIPS',
+    description:
+      'Bác sĩ Kim Sooyoung, Giám đốc Y khoa, đã tham dự hội thảo MIPS với tư cách diễn giả chính thức và trình bày liệu pháp kết hợp căng chỉ và collagen booster được tùy chỉnh theo từng vùng.',
+  },
   f9: {
     badge: 'HỌC THUẬT',
     title: 'Bài trình bày theo lời mời tại AXA (Aptos Expert Alliance)',
@@ -183,12 +207,6 @@ export const VI: MediaNewsLocaleMap = {
     title: 'Xuất hiện trên chương trình SBS Good Morning',
     description:
       'Chia sẻ ý kiến chuyên môn về độ đàn hồi da, lão hóa do thói quen sinh hoạt và tái tạo collagen.',
-  },
-  f2: {
-    badge: 'BÀI BÌA',
-    title: 'Bài bìa của Issuemaker',
-    description:
-      'Giới thiệu định hướng của Phòng khám Phẫu thuật Thẩm mỹ LIV — triết lý Slow Aging, các thủ thuật tái tạo và việc mở rộng tại ga Sinsa.',
   },
   f3: {
     badge: 'GIẢNG VIÊN TOÀN CẦU',

@@ -11,6 +11,23 @@ import type { MediaNewsLocaleMap } from './types';
 
 export const EN: MediaNewsLocaleMap = {
   // ── mediaNewsData ──
+  '18': {
+    source: 'LIV News',
+    title:
+      'Dr. Kim Sooyoung, Medical Director — presentation on “thread lifting & collagen booster combination therapy” at the MIPS Symposium',
+    description:
+      'Dr. Kim Sooyoung, Medical Director of LIV Plastic Surgery, took part as an official speaker in the MIPS Symposium, held by Korea’s leading society for minimally invasive plastic surgery, and successfully delivered an oral presentation on “Combination Therapy of Thread Lifting and Collagen Boosters for Restoring Three-Dimensional Facial Contours”.',
+    body: [
+      'Hello, this is LIV Plastic Surgery.',
+      'We are pleased to share another piece of good news that reflects LIV Plastic Surgery’s ongoing academic research and distinctive technical expertise.',
+      'At the recent MIPS Symposium, held by Korea’s leading society for minimally invasive plastic surgery, Dr. Kim Sooyoung, Medical Director of LIV Plastic Surgery, took part as an official speaker and delivered a well-received oral presentation to plastic surgeons and aesthetic medicine physicians.',
+      'Under the theme “Combination Therapy of Thread Lifting and Collagen Boosters for Restoring Three-Dimensional Facial Contours”, Dr. Kim shared advanced clinical know-how for restoring facial lines that have sagged and hollowed over time as naturally and elegantly as possible.',
+      'In particular, rather than stopping at uniform pulling, Dr. Kim presented LIV’s “site-specific algorithm” — a framework that uses a layer-by-layer anatomical approach to combine the structural lifting effect of threads with the collagen booster’s effect of regenerating the skin’s own tissue — and received deep academic resonance and praise from the distinguished physicians in attendance.',
+      'LIV Plastic Surgery’s “Slow Aging” medical philosophy, which brings out the face’s own dimensionality and elegance instead of artificial change, continues in this way to be recognised for its expertise on major academic stages in Korea and abroad.',
+      'LIV Plastic Surgery always conducts its research at the forefront of the field and pursues only safe, precise procedures grounded in medical evidence. We promise to repay everyone who comes to us with anti-aging know-how of the highest level in Korea and attentive care.',
+      'Thank you.',
+    ],
+  },
   '17': {
     source: 'LIV News',
     title:
@@ -141,6 +158,11 @@ export const EN: MediaNewsLocaleMap = {
   },
 
   // ── featuredMediaNews (home) ──
+  f10: {
+    title: 'Official speaker at the MIPS Symposium',
+    description:
+      'Dr. Kim Sooyoung, Medical Director, took part in the MIPS Symposium as an official speaker and presented a site-specific combination therapy that pairs thread lifting with collagen boosters.',
+  },
   f9: {
     title: 'Invited presentation at AXA (Aptos Expert Alliance)',
     description:
@@ -160,11 +182,6 @@ export const EN: MediaNewsLocaleMap = {
     title: 'Appearance on SBS Good Morning',
     description:
       'Shared expert views on skin elasticity, lifestyle-related ageing and collagen regeneration.',
-  },
-  f2: {
-    title: 'Issuemaker cover story',
-    description:
-      'Introduced LIV Plastic Surgery’s direction — its slow-aging philosophy, regenerative procedures and the expansion at Sinsa Station.',
   },
   f3: {
     title: 'Certified as an official APTOS trainer',

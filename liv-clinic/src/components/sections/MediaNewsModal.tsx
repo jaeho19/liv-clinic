@@ -136,7 +136,7 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
                 {view.title}
               </h3>
 
-              {/* 사진 (내부 소식 상세) — stack: 상하 배치·원본 비율(가로형), 기본: 3:4 2열 그리드(세로형) */}
+              {/* 사진 (내부 소식 상세) — stack: 상하 배치·원본 비율(가로형, 세로 사진은 높이 32rem 제한), 기본: 3:4 2열 그리드(세로형) */}
               {view.images && view.images.length > 0 && (
                 <div
                   className={
@@ -153,7 +153,7 @@ export default function MediaNewsModal({ open, item, onClose }: MediaNewsModalPr
                           alt={t('photoAlt', { title: view.title, index: i + 1 })}
                           width={1200}
                           height={750}
-                          className="h-auto w-full"
+                          className="h-auto max-h-[32rem] w-full object-contain"
                           sizes="(max-width: 672px) 92vw, 42rem"
                         />
                       </div>

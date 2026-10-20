@@ -10,6 +10,24 @@ import type { MediaNewsLocaleMap } from './types';
 
 export const FR: MediaNewsLocaleMap = {
   // ── mediaNewsData ──
+  '18': {
+    badge: 'ACADÉMIQUE',
+    source: 'Actualités LIV',
+    title:
+      'Dre Kim Sooyoung, directrice médicale — présentation sur l’« association lifting par fils & boosters de collagène » au symposium MIPS',
+    description:
+      'La Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, est intervenue en tant qu’oratrice officielle au symposium MIPS, organisé par la principale société coréenne de chirurgie plastique mini-invasive, et y a présenté avec succès une communication orale intitulée « Association du lifting par fils et des boosters de collagène pour restaurer le relief tridimensionnel du visage ».',
+    body: [
+      'Bonjour, ici LIV Plastic Surgery.',
+      'Nous avons le plaisir de vous annoncer une nouvelle fois une bonne nouvelle qui témoigne de la recherche scientifique continue et du savoir-faire technique distinctif de LIV Plastic Surgery.',
+      'Lors du récent symposium MIPS, organisé par la principale société coréenne de chirurgie plastique mini-invasive, la Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, est intervenue en tant qu’oratrice officielle et a présenté avec un grand succès une communication orale devant des chirurgiens plasticiens et des médecins esthétiques.',
+      'Sur le thème « Association du lifting par fils et des boosters de collagène pour restaurer le relief tridimensionnel du visage », la Dre Kim a partagé un savoir-faire clinique avancé pour restaurer, de la manière la plus naturelle et la plus élégante possible, les lignes du visage qui se sont relâchées et creusées avec le temps.',
+      'Plutôt que de s’en tenir à une traction uniforme, la Dre Kim a notamment présenté le « Site-specific algorithm » (algorithme adapté à chaque zone) propre à LIV : une approche anatomique couche par couche (Layer) qui associe l’effet liftant structurel des fils à l’effet de régénération des tissus propres de la peau apporté par les boosters de collagène. Cette présentation a suscité une profonde adhésion scientifique et les éloges des éminents médecins présents.',
+      'La philosophie médicale « Slow Aging » de LIV Plastic Surgery, qui révèle le relief et l’élégance naturels du visage plutôt que de rechercher un changement artificiel, continue ainsi d’être reconnue pour son expertise sur les grandes scènes scientifiques, en Corée comme à l’international.',
+      'Toujours à la pointe de la recherche et engagée exclusivement en faveur de traitements sûrs et précis fondés sur des preuves médicales, LIV Plastic Surgery promet de continuer à répondre à la confiance de chacun avec un savoir-faire anti-âge du plus haut niveau en Corée et des soins attentifs.',
+      'Merci.',
+    ],
+  },
   '17': {
     badge: 'ACADÉMIQUE',
     source: 'Actualités LIV',
@@ -158,6 +176,12 @@ export const FR: MediaNewsLocaleMap = {
   },
 
   // ── featuredMediaNews (home) ──
+  f10: {
+    badge: 'ACADÉMIQUE',
+    title: 'Intervenante officielle au symposium MIPS',
+    description:
+      'La Dre Kim Sooyoung, directrice médicale, est intervenue en tant qu’oratrice officielle au symposium MIPS et y a présenté une association du lifting par fils et des boosters de collagène adaptée à chaque zone du visage.',
+  },
   f9: {
     badge: 'ACADÉMIQUE',
     title: 'Présentation sur invitation à l’AXA (Aptos Expert Alliance)',
@@ -181,12 +205,6 @@ export const FR: MediaNewsLocaleMap = {
     title: 'Participation à l’émission SBS Good Morning',
     description:
       'Des avis d’expert ont été partagés sur l’élasticité de la peau, le vieillissement lié au mode de vie et la régénération du collagène.',
-  },
-  f2: {
-    badge: 'ARTICLE DE COUVERTURE',
-    title: 'Article de couverture d’Issuemaker',
-    description:
-      'Présentation de l’orientation de LIV Plastic Surgery : philosophie du slow aging, procédures régénératives et extension près de la station Sinsa.',
   },
   f3: {
     badge: 'FORMATEUR INTERNATIONAL',

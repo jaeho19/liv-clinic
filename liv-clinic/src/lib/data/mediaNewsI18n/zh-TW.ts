@@ -14,6 +14,24 @@ import type { MediaNewsLocaleMap } from './types';
 
 export const ZH_TW: MediaNewsLocaleMap = {
   // ── mediaNewsData ──
+  '18': {
+    badge: '學術',
+    source: 'LIV資訊',
+    title:
+      'Kim Sooyoung 代表院長於 MIPS 研討會圓滿完成「埋線拉提與膠原蛋白增生劑合併療法」發表',
+    description:
+      'LIV整形外科 Kim Sooyoung 代表院長以正式講者身分出席韓國具代表性的微創整形學會 MIPS 研討會，以「恢復臉部立體感的埋線拉提與膠原蛋白增生劑合併療法」為題，圓滿完成口頭發表。',
+    body: [
+      '您好，這裡是LIV整形外科。',
+      '我們再次與您分享一則喜訊，見證LIV整形外科不懈的學術研究與獨到的技術實力。',
+      '在近期舉辦的韓國具代表性的微創整形學會 MIPS 研討會上，LIV整形外科 Kim Sooyoung 代表院長以正式講者身分出席，向整形外科專科醫師及醫美醫療團隊進行口頭發表，現場反應熱烈。',
+      '在本次發表中，Kim Sooyoung 院長以「恢復臉部立體感的埋線拉提與膠原蛋白增生劑合併療法」為題，分享了如何以最自然、最優雅的方式修復隨歲月流逝而下垂、凹陷的臉部線條的高難度臨床心得。',
+      '尤其，Kim 院長並未止步於千篇一律的拉提，而是介紹了LIV獨有的「Site-specific algorithm（分區客製化演算法）」體系——透過依解剖層次（Layer）進行的方法，結合埋線拉提的結構性拉提效果與膠原蛋白增生劑促進皮膚內自體組織再生的效果，獲得了在場知名醫療專家深切的學術共鳴與讚譽。',
+      '不追求人為的改變，而是引導出臉部原本的立體感與優雅——LIV整形外科的「Slow Aging」醫學理念，正是如此在國內外重要學術舞台上持續獲得專業肯定。',
+      '始終站在學術最前線鑽研、只追求以醫學實證為基礎的安全而精細療程的LIV整形外科，今後也將以韓國頂尖水準的抗老化心得與細膩的照護，回報每一位前來的您。',
+      '謝謝。',
+    ],
+  },
   '17': {
     badge: '學術',
     source: 'LIV資訊',
@@ -160,6 +178,12 @@ export const ZH_TW: MediaNewsLocaleMap = {
   },
 
   // ── featuredMediaNews (home) ──
+  f10: {
+    badge: '學術',
+    title: '以正式講者身分於 MIPS 研討會發表',
+    description:
+      'Kim Sooyoung 代表院長以正式講者身分出席 MIPS 研討會，發表了結合埋線拉提與膠原蛋白增生劑的分區客製化合併療法。',
+  },
   f9: {
     badge: '學術',
     title: '受邀於 AXA（Aptos Expert Alliance）發表演講',
@@ -182,11 +206,6 @@ export const ZH_TW: MediaNewsLocaleMap = {
     badge: '節目出演',
     title: 'SBS Good Morning 節目出演',
     description: '分享了關於皮膚彈性、生活習慣造成的老化與膠原蛋白再生的專業見解。',
-  },
-  f2: {
-    badge: '封面故事',
-    title: 'Issuemaker 封面故事',
-    description: '介紹了LIV整形外科在 Slow Aging 理念、再生類療程與新沙站擴點方面的方向。',
   },
   f3: {
     badge: '全球培訓師',
