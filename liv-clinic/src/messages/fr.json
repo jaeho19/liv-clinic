@@ -4173,6 +4173,13 @@
               "treatment": "Lucas Pico + Toning",
               "sessions": "5-10 séances",
               "interval": "Intervalle de 2-4 semaines"
+            },
+            "cosmetic": {
+              "level": "Maquillage semi-permanent",
+              "description": "Retrait sourcils et eye-liner",
+              "treatment": "Lucas Pico",
+              "sessions": "3-6 séances",
+              "interval": "Intervalle de 4-6 semaines"
             }
           },
           "idealFor": [
@@ -4181,7 +4188,8 @@
             "Those concerned about many spots and freckles",
             "Those starting to develop age spots",
             "Those with dull and uneven skin tone",
-            "Those wanting consistent care without downtime"
+            "Those wanting consistent care without downtime",
+            "Those who want semi-permanent eyebrow or eyeliner makeup removed"
           ],
           "faq": [
             {
@@ -4199,6 +4207,10 @@
             {
               "q": "Can I get pigmentation laser during pregnancy?",
               "a": "Laser treatments are not recommended during pregnancy or breastfeeding. We recommend treatment after completing pregnancy and breastfeeding. During pregnancy, focus on sun protection and moisturizing."
+            },
+            {
+              "q": "Can semi-permanent eyebrow or eyeliner makeup be removed?",
+              "a": "Yes. We remove semi-permanent eyebrow and eyeliner makeup with the Lucas pico laser. Because it sits shallower than a regular tattoo, it usually takes 3-6 sessions at 4-6 week intervals, and special protective equipment is used around the eyes. We do not offer body tattoo removal."
             }
           ],
           "cta": {
@@ -6153,7 +6165,17 @@
         "dualToningDesc": "Mélasma / taches / pores / cicatrices d'acné",
         "potenza": "Potenza",
         "single": "Séance unique",
-        "pumpingTip": "Pumping Tip"
+        "pumpingTip": "Pumping Tip",
+        "semiPermanent": "Retrait de maquillage semi-permanent (Lucas Pico)",
+        "semiPermanentDesc": "Sourcils / eye-liner",
+        "semiPermanentOnePart": "Par zone",
+        "co2Laser": "Laser CO2",
+        "co2Desc": "Grains de beauté / verrues plates / taches de vieillesse, etc.",
+        "dia3mm": "Diamètre ≤ 3 mm (1 point)",
+        "dia5mm": "3 mm < Diamètre ≤ 5 mm (1 point)",
+        "diaOver5mm": "Diamètre > 5 mm (1 point)",
+        "faceFull": "Visage complet (plus de 50 points)",
+        "neckFull": "Cou complet (plus de 50 points)"
       },
       "vascular": {
         "dualToning": "Laser à tonification double (Clarity + Lucas)",
@@ -6690,7 +6712,8 @@
         "taches de rousseur Séoul",
         "traitement taches brunes Corée",
         "laser Gangnam",
-        "clinique station Sinsa"
+        "clinique station Sinsa",
+        "détatouage sourcils Séoul"
       ]
     },
     "laserSkintone": {

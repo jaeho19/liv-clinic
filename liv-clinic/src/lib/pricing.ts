@@ -263,6 +263,25 @@ export const PRICING: Record<string, TreatmentPricing> = {
           { rowKey: 'pumpingTip', price: '200,000', suffix: 'starting' },
         ],
       },
+      // 2026-10-20 문신 제거 탭 폐지 후 이 표로 옮김 — 반영구(눈썹·아이라인) 제거는 계속 한다
+      {
+        groupKey: 'semiPermanent',
+        subKey: 'semiPermanentDesc',
+        rows: [
+          { rowKey: 'semiPermanentOnePart', price: '50,000', suffix: 'starting' },
+        ],
+      },
+      {
+        groupKey: 'co2Laser',
+        subKey: 'co2Desc',
+        rows: [
+          { rowKey: 'dia3mm', price: '10,000', suffix: 'starting' },
+          { rowKey: 'dia5mm', price: '30,000', suffix: 'starting' },
+          { rowKey: 'diaOver5mm', price: '50,000', suffix: 'starting' },
+          { rowKey: 'faceFull', price: '500,000', suffix: 'starting' },
+          { rowKey: 'neckFull', price: '500,000', suffix: 'starting' },
+        ],
+      },
     ],
   },
 

@@ -4173,6 +4173,13 @@
               "treatment": "Lucas Pico + Toning",
               "sessions": "5-10 удаа",
               "interval": "2-4 долоо хоногийн зайтай"
+            },
+            "cosmetic": {
+              "level": "Хагас байнгын будалт",
+              "description": "Хөмсөг, нүдний шугамын будалт арилгах",
+              "treatment": "Lucas Pico",
+              "sessions": "3-6 удаа",
+              "interval": "4-6 долоо хоногийн зайтай"
             }
           },
           "idealFor": [
@@ -4181,7 +4188,8 @@
             "Those concerned about many spots and freckles",
             "Those starting to develop age spots",
             "Those with dull and uneven skin tone",
-            "Those wanting consistent care without downtime"
+            "Those wanting consistent care without downtime",
+            "Those who want semi-permanent eyebrow or eyeliner makeup removed"
           ],
           "faq": [
             {
@@ -4199,6 +4207,10 @@
             {
               "q": "Can I get pigmentation laser during pregnancy?",
               "a": "Laser treatments are not recommended during pregnancy or breastfeeding. We recommend treatment after completing pregnancy and breastfeeding. During pregnancy, focus on sun protection and moisturizing."
+            },
+            {
+              "q": "Can semi-permanent eyebrow or eyeliner makeup be removed?",
+              "a": "Yes. We remove semi-permanent eyebrow and eyeliner makeup with the Lucas pico laser. Because it sits shallower than a regular tattoo, it usually takes 3-6 sessions at 4-6 week intervals, and special protective equipment is used around the eyes. We do not offer body tattoo removal."
             }
           ],
           "cta": {
@@ -6153,7 +6165,17 @@
         "dualToningDesc": "Меласма / толбо / нүх сүв / батганы сорви",
         "potenza": "Potenza",
         "single": "Нэг удаагийн сесс",
-        "pumpingTip": "Pumping Tip"
+        "pumpingTip": "Pumping Tip",
+        "semiPermanent": "Хагас байнгын будалт арилгах (Lucas Pico)",
+        "semiPermanentDesc": "Хөмсөг / нүдний шугам",
+        "semiPermanentOnePart": "Хэсэг тутамд",
+        "co2Laser": "CO2 лазер",
+        "co2Desc": "Мэнгэ / хавтгай үүлдэр / нас ахисны толбо гэх мэт.",
+        "dia3mm": "Диаметр ≤ 3 мм (1 цэг)",
+        "dia5mm": "3 мм < Диаметр ≤ 5 мм (1 цэг)",
+        "diaOver5mm": "Диаметр > 5 мм (1 цэг)",
+        "faceFull": "Бүх нүүр (50+ цэг)",
+        "neckFull": "Бүх хүзүү (50+ цэг)"
       },
       "vascular": {
         "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
@@ -6690,7 +6712,8 @@
         "сэгс арилгах Сөүл",
         "хар толбо эмчилгээ Солонгос",
         "Каннам лазер",
-        "Шинса метро эмнэлэг"
+        "Шинса метро эмнэлэг",
+        "хөмсөгний будалт арилгах Сөүл"
       ]
     },
     "laserSkintone": {

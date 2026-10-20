@@ -4173,6 +4173,13 @@
               "treatment": "Lucas Pico + Toning",
               "sessions": "5-10 sessions",
               "interval": "2-4 week interval"
+            },
+            "cosmetic": {
+              "level": "Semi-permanent Makeup",
+              "description": "Eyebrow & eyeliner removal",
+              "treatment": "Lucas Pico",
+              "sessions": "3-6 sessions",
+              "interval": "4-6 week interval"
             }
           },
           "idealFor": [
@@ -4181,7 +4188,8 @@
             "Those concerned about many spots and freckles",
             "Those starting to develop age spots",
             "Those with dull and uneven skin tone",
-            "Those wanting consistent care without downtime"
+            "Those wanting consistent care without downtime",
+            "Those who want semi-permanent eyebrow or eyeliner makeup removed"
           ],
           "faq": [
             {
@@ -4199,6 +4207,10 @@
             {
               "q": "Can I get pigmentation laser during pregnancy?",
               "a": "Laser treatments are not recommended during pregnancy or breastfeeding. We recommend treatment after completing pregnancy and breastfeeding. During pregnancy, focus on sun protection and moisturizing."
+            },
+            {
+              "q": "Can semi-permanent eyebrow or eyeliner makeup be removed?",
+              "a": "Yes. We remove semi-permanent eyebrow and eyeliner makeup with the Lucas pico laser. Because it sits shallower than a regular tattoo, it usually takes 3-6 sessions at 4-6 week intervals, and special protective equipment is used around the eyes. We do not offer body tattoo removal."
             }
           ],
           "cta": {
@@ -6153,7 +6165,17 @@
         "dualToningDesc": "Melasma / Blemishes / Pores / Acne Scars",
         "potenza": "Potenza",
         "single": "Single Session",
-        "pumpingTip": "Pumping Tip"
+        "pumpingTip": "Pumping Tip",
+        "semiPermanent": "Semi-permanent Makeup Removal (Lucas Pico)",
+        "semiPermanentDesc": "Eyebrows / Eyeliner",
+        "semiPermanentOnePart": "Per Area",
+        "co2Laser": "CO2 Laser",
+        "co2Desc": "Moles / Flat Warts / Age Spots, etc.",
+        "dia3mm": "Diameter ≤ 3mm (1 spot)",
+        "dia5mm": "3mm < Diameter ≤ 5mm (1 spot)",
+        "diaOver5mm": "Diameter > 5mm (1 spot)",
+        "faceFull": "Full Face (50+ spots)",
+        "neckFull": "Full Neck (50+ spots)"
       },
       "vascular": {
         "dualToning": "Dual Toning Laser (Clarity + Lucas)",
@@ -6688,7 +6710,8 @@
         "freckle removal Seoul",
         "dark spot treatment Korea",
         "Gangnam laser",
-        "Sinsa Station clinic"
+        "Sinsa Station clinic",
+        "eyebrow tattoo removal Seoul"
       ]
     },
     "laserSkintone": {

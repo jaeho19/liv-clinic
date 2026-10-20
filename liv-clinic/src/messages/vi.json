@@ -4173,6 +4173,13 @@
               "treatment": "Lucas Pico + Toning",
               "sessions": "5-10 buổi",
               "interval": "khoảng thời gian 2-4 tuần"
+            },
+            "cosmetic": {
+              "level": "Trang điểm bán vĩnh viễn",
+              "description": "Xóa phun lông mày, kẻ mắt",
+              "treatment": "Lucas Pico",
+              "sessions": "3-6 buổi",
+              "interval": "khoảng thời gian 4-6 tuần"
             }
           },
           "idealFor": [
@@ -4181,7 +4188,8 @@
             "Những người quan tâm đến nhiều đốm và tàn nhang",
             "Những người bắt đầu phát triển các đốm đồi mồi",
             "Những người có làn da xỉn màu và không đều màu",
-            "Những người muốn được chăm sóc liên tục mà không cần thời gian nghỉ dưỡng"
+            "Những người muốn được chăm sóc liên tục mà không cần thời gian nghỉ dưỡng",
+            "Người muốn xóa trang điểm bán vĩnh viễn ở lông mày hoặc kẻ mắt"
           ],
           "faq": [
             {
@@ -4199,6 +4207,10 @@
             {
               "q": "Tôi có thể điều trị bằng laser sắc tố khi mang thai không?",
               "a": "Phương pháp điều trị bằng laser không được khuyến khích trong thời kỳ mang thai hoặc cho con bú. Chúng tôi khuyên bạn nên điều trị sau khi hoàn thành quá trình mang thai và cho con bú. Khi mang thai, hãy tập trung vào việc chống nắng và dưỡng ẩm."
+            },
+            {
+              "q": "Có xóa được trang điểm bán vĩnh viễn ở lông mày, kẻ mắt không?",
+              "a": "Có. Chúng tôi xóa trang điểm bán vĩnh viễn ở lông mày và kẻ mắt bằng laser Lucas Pico. Vì nông hơn hình xăm thông thường nên thường cần 3-6 buổi, cách nhau 4-6 tuần, và dùng thiết bị bảo vệ đặc biệt cho vùng mắt. Chúng tôi không xóa hình xăm trên cơ thể."
             }
           ],
           "cta": {
@@ -6153,7 +6165,17 @@
         "dualToningDesc": "Nám / Vết thâm / Lỗ chân lông / Sẹo mụn",
         "potenza": "Potenza",
         "single": "Phiên duy nhất",
-        "pumpingTip": "Mẹo bơm"
+        "pumpingTip": "Mẹo bơm",
+        "semiPermanent": "Xóa trang điểm bán vĩnh viễn (Lucas Pico)",
+        "semiPermanentDesc": "Lông mày / Kẻ mắt",
+        "semiPermanentOnePart": "mỗi khu vực",
+        "co2Laser": "Laser CO2",
+        "co2Desc": "Nốt ruồi / Mụn cóc phẳng / Đốm đồi mồi, v.v.",
+        "dia3mm": "Đường kính 3 mm (1 điểm)",
+        "dia5mm": "3 mm < Đường kính ≤ 5 mm (1 điểm)",
+        "diaOver5mm": "Đường kính > 5mm (1 điểm)",
+        "faceFull": "Toàn mặt (50 điểm trở lên)",
+        "neckFull": "Toàn cổ (50+ điểm)"
       },
       "vascular": {
         "dualToning": "Laser tăng cường kép (Clarity + Lucas)",
@@ -6688,7 +6710,8 @@
         "xóa tàn nhang Seoul",
         "trị đốm nâu Hàn Quốc",
         "laser Gangnam",
-        "phòng khám ga Sinsa"
+        "phòng khám ga Sinsa",
+        "xóa phun xăm lông mày Seoul"
       ]
     },
     "laserSkintone": {

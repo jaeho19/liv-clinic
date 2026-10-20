@@ -4173,6 +4173,13 @@
               "treatment": "Lucas皮秒 + 调光",
               "sessions": "5-10次",
               "interval": "2-4周间隔"
+            },
+            "cosmetic": {
+              "level": "半永久化妆",
+              "description": "眉毛、眼线半永久去除",
+              "treatment": "Lucas皮秒",
+              "sessions": "3-6次",
+              "interval": "4-6周间隔"
             }
           },
           "idealFor": [
@@ -4181,7 +4188,8 @@
             "色斑、雀斑较多困扰的人",
             "开始出现老年斑的人",
             "肤色暗沉不均匀的人",
-            "想要无恢复期持续护理的人"
+            "想要无恢复期持续护理的人",
+            "想去除眉毛、眼线半永久化妆的人"
           ],
           "faq": [
             {
@@ -4199,6 +4207,10 @@
             {
               "q": "怀孕期间可以做色素激光吗？",
               "a": "不建议在怀孕或哺乳期间做激光治疗。建议在分娩和哺乳结束后进行治疗。怀孕期间请专注于防晒和保湿。"
+            },
+            {
+              "q": "半永久眉毛、眼线也能去除吗？",
+              "a": "可以。我们使用Lucas皮秒激光去除眉毛、眼线半永久化妆。由于比一般纹身更浅，通常需要3-6次，每4-6周一次，眼部治疗时会使用特殊防护设备。本院不提供身体纹身去除。"
             }
           ],
           "cta": {
@@ -6153,7 +6165,17 @@
         "dualToningDesc": "色斑/雀斑/毛孔/痘印",
         "potenza": "Potenza",
         "single": "单次",
-        "pumpingTip": "Pumping 探头"
+        "pumpingTip": "Pumping 探头",
+        "semiPermanent": "半永久化妆去除 (Lucas皮秒)",
+        "semiPermanentDesc": "眉毛 / 眼线",
+        "semiPermanentOnePart": "1部位",
+        "co2Laser": "CO2激光",
+        "co2Desc": "痣/扁平疣/老年斑等",
+        "dia3mm": "直径 ≤ 3mm (1个)",
+        "dia5mm": "3mm < 直径 ≤ 5mm (1个)",
+        "diaOver5mm": "直径 > 5mm (1个)",
+        "faceFull": "全脸 (50个以上)",
+        "neckFull": "全颈 (50个以上)"
       },
       "vascular": {
         "dualToning": "双波长激光 (Clarity + Lucas)",
@@ -6696,7 +6718,8 @@
         "雀斑去除 首尔",
         "祛斑 韩国",
         "江南医美",
-        "新沙站"
+        "新沙站",
+        "半永久眉毛去除 首尔"
       ]
     },
     "laserSkintone": {

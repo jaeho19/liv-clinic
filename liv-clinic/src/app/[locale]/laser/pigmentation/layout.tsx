@@ -20,7 +20,7 @@ const serviceData = {
   duration: '20-40분',
   anesthesia: '마취 크림 (선택)',
   recovery: '3-7일 (미세 딱지 가능)',
-  targetAreas: ['기미', '잡티', '주근깨', '검버섯', '오타모반'],
+  targetAreas: ['기미', '잡티', '주근깨', '검버섯', '오타모반', '반영구 화장(눈썹·아이라인)'],
   benefits: [
     { title: '3단계 치료 시스템', desc: '경증, 중등도, 중증에 따른 맞춤 치료' },
     { title: '피코세컨드 기술', desc: '난치성 기미도 효과적 분해' },

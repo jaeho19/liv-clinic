@@ -106,6 +106,12 @@
 | skinbooster | rejuran | volume4cc | 4 cc | 460,000 | starting |
 | pigmentation | dualToning (Melasma / Blemishes / Pores / Acne Scars) | single | Single Session | 150,000 | starting |
 | pigmentation | potenza | pumpingTip | Pumping Tip | 200,000 | starting |
+| pigmentation | semiPermanent (Eyebrows / Eyeliner) | semiPermanentOnePart | Per Area | 50,000 | starting |
+| pigmentation | co2Laser (Moles / Flat Warts / Age Spots, etc.) | dia3mm | Diameter ≤ 3mm (1 spot) | 10,000 | starting |
+| pigmentation | co2Laser (Moles / Flat Warts / Age Spots, etc.) | dia5mm | 3mm < Diameter ≤ 5mm (1 spot) | 30,000 | starting |
+| pigmentation | co2Laser (Moles / Flat Warts / Age Spots, etc.) | diaOver5mm | Diameter > 5mm (1 spot) | 50,000 | starting |
+| pigmentation | co2Laser (Moles / Flat Warts / Age Spots, etc.) | faceFull | Full Face (50+ spots) | 500,000 | starting |
+| pigmentation | co2Laser (Moles / Flat Warts / Age Spots, etc.) | neckFull | Full Neck (50+ spots) | 500,000 | starting |
 | vascular | dualToning (Redness / Vascular Relief) | single | Single Session | 150,000 | starting |
 | skintone | dualToning (Skin Tone Improvement) | single | Single Session | 150,000 | starting |
 | hairRemoval | dualToning (Hair Removal Care) | single | Single Session | 150,000 | starting |
@@ -350,10 +356,10 @@
 - skintone: Skin Tone Enhancement — 칙칙한 피부톤, 피부 투명감, 전체 화이트닝 울블랑과 토닝의 시너지로 맑고 투명한 피부톤
 - hair-removal: Premium Hair Removal — 얼굴, 겨드랑이, 팔다리, 비키니라인 영구 제모 755nm 알렉산드라이트 - 제모의 골드 스탠다드
 - layout serviceData(ko): pigmentation 20-40분·마취 크림(선택)·3-7일(미세 딱지 가능) / vascular 15-30분 / skintone 30-45분·즉시 일상 복귀 / hair-removal 15-60분(부위에 따라)·즉시 일상 복귀
-- laser/pigmentation (en, Pigmentation Treatment) FAQ: Q Can melasma be completely cured? → Melasma should be approached as 'management' rather than 'cure'. After significant improvement with intensive treatment, regular maintenance and sun protection minimize recurrence. LIV's 3-stage system includes both treatment and maintenance. | Q Should I choose pico laser or toning? → It depends on your goals. Stubborn melasma or deep pigmentation requires pico laser intensive treatment, while mild pigmentation or maintenance suits toning. Often, a combination protocol of pico treatment followed by toning maintenance is most effective. | Q Can pigmentation get darker after laser? → Temporary post-inflammatory hyperpigmentation (PIH) can occur. This naturally improves within 2-4 weeks and can be prevented with thorough sun protection. LIV provides comprehensive post-treatment care guidance. | Q Can I get pigmentation laser during pregnancy? → Laser treatments are not recommended during pregnancy or breastfeeding. We recommend treatment after completing pregnancy and breastfeeding. During pregnancy, focus on sun protection and moisturizing.
-- laser/pigmentation (ja, 色素治療) FAQ: Q シミは完治可能ですか？ → シミは完治より「管理」の概念でアプローチする必要があります。集中治療で大きく改善した後、定期的な維持管理と紫外線遮断で再発を最小化します。LIVの3段階システムは治療と維持管理の両方を含みます。 | Q ピコレーザーとトーニング、どちらが良いですか？ → 目的によって異なります。難治性シミや深い色素はピコレーザーで集中治療し、軽微な色素や維持管理はトーニングが適しています。多くの場合、ピコ治療後トーニングで維持する複合プロトコルが効果的です。 | Q レーザー後に色素が濃くなることもありますか？ → 一時的な色素沈着（PIH）が発生する可能性があります。これは2-4週以内に自然に改善され、紫外線遮断を徹底すれば予防できます。LIVでは施術後のケア案内を徹底しています。 | Q 妊娠中でも色素レーザーは可能ですか？ → 妊娠中や授乳中はレーザー施術をお勧めしません。出産および授乳完了後の施術をお勧めします。妊娠中は紫外線遮断と保湿に集中してください。
-- laser/pigmentation (zh, 色素治疗) FAQ: Q 黄褐斑可以根治吗？ → 黄褐斑需要以'管理'而非根治的理念来对待。集中治疗后大幅改善，通过定期维护和防晒将复发降到最低。LIV的三阶段系统包含治疗和维护两个环节。 | Q 皮秒激光和调光，哪个更好？ → 取决于目的。顽固性黄褐斑或深层色素用皮秒激光集中治疗，轻微色素或维护则调光更合适。很多情况下，皮秒治疗后用调光维护的复合方案最为有效。 | Q 激光后色素会加深吗？ → 可能出现暂时性色素沉着（PIH）。这会在2-4周内自然改善，做好防晒可以预防。LIV会彻底做好术后护理指导。 | Q 怀孕期间可以做色素激光吗？ → 不建议在怀孕或哺乳期间做激光治疗。建议在分娩和哺乳结束后进行治疗。怀孕期间请专注于防晒和保湿。
-- laser/pigmentation (zh-TW, 色素治療) FAQ: Q 黃褐斑可以根治嗎？ → 黃褐斑需要以'管理'而非根治的理念來對待。集中治療後大幅改善，通過定期維護和防曬將復發降到最低。LIV的三階段系統包含治療和維護兩個環節。 | Q 皮秒激光和調光，哪個更好？ → 取決於目的。頑固性黃褐斑或深層色素用皮秒激光集中治療，輕微色素或維護則調光更合適。很多情況下，皮秒治療後用調光維護的複合方案最為有效。 | Q 激光後色素會加深嗎？ → 可能出現暫時性色素沉著（PIH）。這會在2-4周內自然改善，做好防曬可以預防。LIV會徹底做好術後護理指導。 | Q 懷孕期間可以做色素激光嗎？ → 不建議在懷孕或哺乳期間做激光治療。建議在分娩和哺乳結束後進行治療。懷孕期間請專注於防曬和保溼。
+- laser/pigmentation (en, Pigmentation Treatment) FAQ: Q Can melasma be completely cured? → Melasma should be approached as 'management' rather than 'cure'. After significant improvement with intensive treatment, regular maintenance and sun protection minimize recurrence. LIV's 3-stage system includes both treatment and maintenance. | Q Should I choose pico laser or toning? → It depends on your goals. Stubborn melasma or deep pigmentation requires pico laser intensive treatment, while mild pigmentation or maintenance suits toning. Often, a combination protocol of pico treatment followed by toning maintenance is most effective. | Q Can pigmentation get darker after laser? → Temporary post-inflammatory hyperpigmentation (PIH) can occur. This naturally improves within 2-4 weeks and can be prevented with thorough sun protection. LIV provides comprehensive post-treatment care guidance. | Q Can I get pigmentation laser during pregnancy? → Laser treatments are not recommended during pregnancy or breastfeeding. We recommend treatment after completing pregnancy and breastfeeding. During pregnancy, focus on sun protection and moisturizing. | Q Can semi-permanent eyebrow or eyeliner makeup be removed? → Yes. We remove semi-permanent eyebrow and eyeliner makeup with the Lucas pico laser. Because it sits shallower than a regular tattoo, it usually takes 3-6 sessions at 4-6 week intervals, and special protective equipment is used around the eyes. We do not offer body tattoo removal.
+- laser/pigmentation (ja, 色素治療) FAQ: Q シミは完治可能ですか？ → シミは完治より「管理」の概念でアプローチする必要があります。集中治療で大きく改善した後、定期的な維持管理と紫外線遮断で再発を最小化します。LIVの3段階システムは治療と維持管理の両方を含みます。 | Q ピコレーザーとトーニング、どちらが良いですか？ → 目的によって異なります。難治性シミや深い色素はピコレーザーで集中治療し、軽微な色素や維持管理はトーニングが適しています。多くの場合、ピコ治療後トーニングで維持する複合プロトコルが効果的です。 | Q レーザー後に色素が濃くなることもありますか？ → 一時的な色素沈着（PIH）が発生する可能性があります。これは2-4週以内に自然に改善され、紫外線遮断を徹底すれば予防できます。LIVでは施術後のケア案内を徹底しています。 | Q 妊娠中でも色素レーザーは可能ですか？ → 妊娠中や授乳中はレーザー施術をお勧めしません。出産および授乳完了後の施術をお勧めします。妊娠中は紫外線遮断と保湿に集中してください。 | Q アートメイク（眉・アイライン）も消せますか？ → はい。ルーカス ピコレーザーで眉・アイラインのアートメイクを除去します。一般のタトゥーより浅く施術されているため、通常3-6回、4-6週間隔で行い、目元の施術時は特殊な保護具を使用します。ボディタトゥーの除去は行っておりません。
+- laser/pigmentation (zh, 色素治疗) FAQ: Q 黄褐斑可以根治吗？ → 黄褐斑需要以'管理'而非根治的理念来对待。集中治疗后大幅改善，通过定期维护和防晒将复发降到最低。LIV的三阶段系统包含治疗和维护两个环节。 | Q 皮秒激光和调光，哪个更好？ → 取决于目的。顽固性黄褐斑或深层色素用皮秒激光集中治疗，轻微色素或维护则调光更合适。很多情况下，皮秒治疗后用调光维护的复合方案最为有效。 | Q 激光后色素会加深吗？ → 可能出现暂时性色素沉着（PIH）。这会在2-4周内自然改善，做好防晒可以预防。LIV会彻底做好术后护理指导。 | Q 怀孕期间可以做色素激光吗？ → 不建议在怀孕或哺乳期间做激光治疗。建议在分娩和哺乳结束后进行治疗。怀孕期间请专注于防晒和保湿。 | Q 半永久眉毛、眼线也能去除吗？ → 可以。我们使用Lucas皮秒激光去除眉毛、眼线半永久化妆。由于比一般纹身更浅，通常需要3-6次，每4-6周一次，眼部治疗时会使用特殊防护设备。本院不提供身体纹身去除。
+- laser/pigmentation (zh-TW, 色素治療) FAQ: Q 黃褐斑可以根治嗎？ → 黃褐斑需要以'管理'而非根治的理念來對待。集中治療後大幅改善，通過定期維護和防曬將復發降到最低。LIV的三階段系統包含治療和維護兩個環節。 | Q 皮秒激光和調光，哪個更好？ → 取決於目的。頑固性黃褐斑或深層色素用皮秒激光集中治療，輕微色素或維護則調光更合適。很多情況下，皮秒治療後用調光維護的複合方案最為有效。 | Q 激光後色素會加深嗎？ → 可能出現暫時性色素沉著（PIH）。這會在2-4周內自然改善，做好防曬可以預防。LIV會徹底做好術後護理指導。 | Q 懷孕期間可以做色素激光嗎？ → 不建議在懷孕或哺乳期間做激光治療。建議在分娩和哺乳結束後進行治療。懷孕期間請專注於防曬和保溼。 | Q 半永久眉毛、眼線也能去除嗎？ → 可以。我們使用Lucas皮秒激光去除眉毛、眼線半永久化妝。由於比一般紋身更淺，通常需要3-6次，每4-6週一次，眼部治療時會使用特殊防護設備。本院不提供身體紋身去除。
 - laser/vascular (en, Vascular Treatment) FAQ: Q Will I see results immediately after redness treatment? → Redness may appear temporarily worse immediately after treatment. This is a normal reaction and subsides within 2-3 days. Actual effects gradually appear from 3-4 weeks and progressively improve with repeated sessions. | Q Can redness be completely eliminated? → Results vary depending on the cause and severity of redness. Most cases can expect 50-80% improvement, with the goal of significantly reducing symptoms rather than complete elimination. Maintenance treatments help sustain results. | Q Can rosacea be treated with laser? → Vascular dilation symptoms of rosacea can be effectively treated with laser. However, rosacea is a complex skin condition, so combining laser treatment with skincare and medication is most effective. | Q Are there post-treatment precautions? → Avoid saunas, alcohol, and intense exercise for 2-3 days after treatment. Apply thorough sun protection and avoid irritating cosmetics. Temporary redness or swelling at the treatment site is normal.
 - laser/vascular (ja, 血管治療) FAQ: Q 赤ら顔治療後すぐに効果が出ますか？ → 施術直後は一時的に赤みがひどく見えることがあります。これは正常な反応で、2-3日以内に落ち着きます。実際の効果は3-4週後から徐々に現れ、繰り返し施術により段階的に改善されます。 | Q 赤みは完全になくなりますか？ → 赤みの原因と深刻度によって異なります。ほとんどの場合50-80%改善が期待でき、完全に無くすよりは症状を大幅に緩和させることが目標です。維持管理施術で効果を持続させることができます。 | Q 酒さもレーザーで治療できますか？ → 酒さの血管拡張症状はレーザーで効果的に治療できます。ただし酒さは複合的な皮膚疾患なので、レーザー治療とともにスキンケア、薬物治療を併用することが効果的です。 | Q 施術後の注意点はありますか？ → 施術後2-3日間はサウナ、飲酒、激しい運動を避けてください。紫外線遮断を徹底し、刺激的な化粧品の使用を控えてください。施術部位が一時的に赤くなったり腫れることは正常です。
 - laser/vascular (zh, 血管治疗) FAQ: Q 红血丝治疗后马上见效吗？ → 治疗后可能暂时看起来更红。这是正常反应，2-3天内会消退。实际效果会在3-4周后逐渐显现，随着重复治疗会逐步改善。 | Q 红血丝能完全消除吗？ → 取决于发红的原因和严重程度。大多数情况下可期待50-80%的改善，目标是大幅缓解症状而非完全消除。通过维护治疗可以保持效果。 | Q 酒糟鼻也能用激光治疗吗？ → 酒糟鼻的血管扩张症状可以用激光有效治疗。但酒糟鼻是复杂的皮肤病，激光治疗配合皮肤护理、药物治疗效果更好。 | Q 治疗后有什么注意事项？ → 治疗后2-3天内避免桑拿、饮酒、剧烈运动。做好防晒，避免使用刺激性化妆品。治疗部位暂时发红或肿胀是正常的。
@@ -704,12 +710,18 @@
 - protocol.severe.treatment: Lucas Pico + Toning
 - protocol.severe.sessions: 5-10 sessions
 - protocol.severe.interval: 2-4 week interval
+- protocol.cosmetic.level: Semi-permanent Makeup
+- protocol.cosmetic.description: Eyebrow & eyeliner removal
+- protocol.cosmetic.treatment: Lucas Pico
+- protocol.cosmetic.sessions: 3-6 sessions
+- protocol.cosmetic.interval: 4-6 week interval
 - idealFor[0]: Those whose melasma is getting darker and wider
 - idealFor[1]: Those who have had multiple toning sessions without results
 - idealFor[2]: Those concerned about many spots and freckles
 - idealFor[3]: Those starting to develop age spots
 - idealFor[4]: Those with dull and uneven skin tone
 - idealFor[5]: Those wanting consistent care without downtime
+- idealFor[6]: Those who want semi-permanent eyebrow or eyeliner makeup removed
 
 ### laser/pigmentation detail (ja)
 
@@ -773,12 +785,18 @@
 - protocol.severe.treatment: ルーカス ピコ + トーニング
 - protocol.severe.sessions: 5-10回
 - protocol.severe.interval: 2-4週間隔
+- protocol.cosmetic.level: アートメイク
+- protocol.cosmetic.description: 眉・アイラインのアートメイク除去
+- protocol.cosmetic.treatment: ルーカス ピコ
+- protocol.cosmetic.sessions: 3-6回
+- protocol.cosmetic.interval: 4-6週間隔
 - idealFor[0]: シミが濃くなり広がっている方
 - idealFor[1]: 何度もトーニングを受けたが効果がない方
 - idealFor[2]: そばかす、くすみが多くて悩んでいる方
 - idealFor[3]: 老人性色素斑が出始めた方
 - idealFor[4]: 肌トーンがくすんで均一でない方
 - idealFor[5]: ダウンタイムなく継続的にケアしたい方
+- idealFor[6]: 眉・アイラインのアートメイクを消したい方
 
 ### laser/pigmentation detail (zh)
 
@@ -842,12 +860,18 @@
 - protocol.severe.treatment: Lucas皮秒 + 调光
 - protocol.severe.sessions: 5-10次
 - protocol.severe.interval: 2-4周间隔
+- protocol.cosmetic.level: 半永久化妆
+- protocol.cosmetic.description: 眉毛、眼线半永久去除
+- protocol.cosmetic.treatment: Lucas皮秒
+- protocol.cosmetic.sessions: 3-6次
+- protocol.cosmetic.interval: 4-6周间隔
 - idealFor[0]: 黄褐斑越来越深且扩大的人
 - idealFor[1]: 多次做调光但效果不佳的人
 - idealFor[2]: 色斑、雀斑较多困扰的人
 - idealFor[3]: 开始出现老年斑的人
 - idealFor[4]: 肤色暗沉不均匀的人
 - idealFor[5]: 想要无恢复期持续护理的人
+- idealFor[6]: 想去除眉毛、眼线半永久化妆的人
 
 ### laser/pigmentation detail (zh-TW)
 
@@ -911,12 +935,18 @@
 - protocol.severe.treatment: Lucas皮秒 + 調光
 - protocol.severe.sessions: 5-10次
 - protocol.severe.interval: 2-4周間隔
+- protocol.cosmetic.level: 半永久化妝
+- protocol.cosmetic.description: 眉毛、眼線半永久去除
+- protocol.cosmetic.treatment: Lucas皮秒
+- protocol.cosmetic.sessions: 3-6次
+- protocol.cosmetic.interval: 4-6周間隔
 - idealFor[0]: 黃褐斑越來越深且擴大的人
 - idealFor[1]: 多次做調光但效果不佳的人
 - idealFor[2]: 色斑、雀斑較多困擾的人
 - idealFor[3]: 開始出現老年斑的人
 - idealFor[4]: 膚色暗沉不均勻的人
 - idealFor[5]: 想要無恢復期持續護理的人
+- idealFor[6]: 想去除眉毛、眼線半永久化妝的人
 
 ### laser/vascular detail (en)
 

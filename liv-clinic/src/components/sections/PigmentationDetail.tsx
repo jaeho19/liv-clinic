@@ -328,9 +328,17 @@ export default function PigmentationDetail() {
         sessions: t('laser.pigmentation.detail.protocol.severe.sessions'),
         interval: t('laser.pigmentation.detail.protocol.severe.interval'),
       },
+      // 반영구 화장(눈썹·아이라인) 제거 — 2026-10-20 문신 제거 탭 폐지 후 이 페이지로 옮김
+      cosmetic: {
+        level: t('laser.pigmentation.detail.protocol.cosmetic.level'),
+        description: t('laser.pigmentation.detail.protocol.cosmetic.description'),
+        treatment: t('laser.pigmentation.detail.protocol.cosmetic.treatment'),
+        sessions: t('laser.pigmentation.detail.protocol.cosmetic.sessions'),
+        interval: t('laser.pigmentation.detail.protocol.cosmetic.interval'),
+      },
     },
-    idealFor: [0, 1, 2, 3, 4, 5].map(i => t(`laser.pigmentation.detail.idealFor.${i}`)),
-    faq: [0, 1, 2, 3].map(i => ({
+    idealFor: [0, 1, 2, 3, 4, 5, 6].map(i => t(`laser.pigmentation.detail.idealFor.${i}`)),
+    faq: [0, 1, 2, 3, 4].map(i => ({
       q: t(`laser.pigmentation.detail.faq.${i}.q`),
       a: t(`laser.pigmentation.detail.faq.${i}.a`),
     })),
@@ -575,11 +583,12 @@ export default function PigmentationDetail() {
             </h2>
           </motion.div>
 
-          <div className="max-w-4xl mx-auto grid md:grid-cols-3 gap-6">
+          <div className="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
               { ...detail.protocol.mild, color: '#10B981' },
               { ...detail.protocol.moderate, color: '#F59E0B' },
               { ...detail.protocol.severe, color: '#8B5CF6' },
+              { ...detail.protocol.cosmetic, color: '#EC4899' },
             ].map((protocol, index) => (
               <motion.div
                 key={protocol.level}
