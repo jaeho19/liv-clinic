@@ -32,14 +32,14 @@ export const FR: MediaNewsLocaleMap = {
     badge: 'ACADÉMIQUE',
     source: 'Actualités LIV',
     title:
-      'Dr Kim Sooyoung, directeur médical — conférencier invité à l’AXA (Aptos Expert Alliance), la conférence internationale des experts du lifting',
+      'Dre Kim Sooyoung, directrice médicale — conférencière invitée à l’AXA (Aptos Expert Alliance), la conférence internationale des experts du lifting',
     description:
-      'Le Dr Kim Sooyoung, directeur médical de LIV Plastic Surgery, a été invité à l’AXA (Aptos Expert Alliance), une conférence d’experts organisée par APTOS, marque internationale du lifting par fils, et y a mené à bien sa présentation.',
+      'La Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, a été invitée à l’AXA (Aptos Expert Alliance), une conférence d’experts organisée par APTOS, marque internationale du lifting par fils, et y a mené à bien sa présentation.',
     body: [
       'Bonjour, ici LIV Plastic Surgery.',
-      'Le 20 juin 2026, le Dr Kim Sooyoung, directeur médical de LIV Plastic Surgery, a été invité à l’AXA (Aptos Expert Alliance), une conférence d’experts organisée par APTOS, marque internationale du lifting par fils, et y a mené à bien sa présentation.',
+      'Le 20 juin 2026, la Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, a été invitée à l’AXA (Aptos Expert Alliance), une conférence d’experts organisée par APTOS, marque internationale du lifting par fils, et y a mené à bien sa présentation.',
       'L’AXA (Aptos Expert Alliance) est un forum scientifique international où les maîtres et les experts APTOS du monde entier partagent leur expérience clinique la plus récente et leur savoir-faire opératoire — un événement scientifique reconnu, consacré à l’échange des connaissances actuelles et de nombreux cas cliniques dans le domaine du lifting à l’échelle internationale.',
-      'Le Dr Kim Sooyoung est titulaire de la certification APTOS International Trainer. Lors de cette présentation, le Dr Kim Sooyoung a partagé différents cas cliniques ainsi que le savoir-faire de LIV Plastic Surgery en matière de lifting par fils, et a pris part à un échange scientifique enrichissant avec les médecins présents.',
+      'La Dre Kim Sooyoung est titulaire de la certification APTOS International Trainer. Lors de cette présentation, la Dre Kim Sooyoung a partagé différents cas cliniques ainsi que le savoir-faire de LIV Plastic Surgery en matière de lifting par fils, et a pris part à un échange scientifique enrichissant avec les médecins présents.',
       'LIV Plastic Surgery poursuivra ses échanges scientifiques avec les médecins de Corée et du monde entier et mettra tout en œuvre pour proposer des soins anti-âge haut de gamme toujours plus sûrs et plus précis, fondés sur une recherche continue et sur l’expérience clinique.',
       'Merci.',
     ],
@@ -47,40 +47,40 @@ export const FR: MediaNewsLocaleMap = {
   '16': {
     badge: 'INTERVIEW MÉDIA',
     source: 'Medical Aesthetic',
-    title: 'Dr Kim Sooyoung, directeur médical — interview clinique sur l’APTOS Bio-Lifting',
+    title: 'Dre Kim Sooyoung, directrice médicale — interview clinique sur l’APTOS Bio-Lifting',
     description:
-      'Le Dr Kim Sooyoung, directeur médical de LIV Plastic Surgery, a participé à une interview consacrée à l’APTOS Bio-Lifting dans le magazine de médecine esthétique « Medical Aesthetic ». L’article s’intéresse à la manière dont les médecins coréens certifiés formateurs officiels APTOS utilisent APTOS dans leur pratique clinique. Le Dr Kim Sooyoung y évoque la conception précise du lifting en fonction de la structure du visage et de l’état des tissus, le caractère naturel du changement obtenu et l’importance d’une approche Bio-Lifting adaptée à chaque patient.',
+      'La Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, a participé à une interview consacrée à l’APTOS Bio-Lifting dans le magazine de médecine esthétique « Medical Aesthetic ». L’article s’intéresse à la manière dont les médecins coréens certifiés formateurs officiels APTOS utilisent APTOS dans leur pratique clinique. La Dre Kim Sooyoung y évoque la conception précise du lifting en fonction de la structure du visage et de l’état des tissus, le caractère naturel du changement obtenu et l’importance d’une approche Bio-Lifting adaptée à chaque patient.',
     body: [
-      'Le Dr Kim Sooyoung, directeur médical de LIV Plastic Surgery, a participé à l’article « Comment l’APTOS Bio-Lifting est-il utilisé dans la pratique clinique en Corée ? », publié dans le magazine de médecine esthétique « Medical Aesthetic ».',
+      'La Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, a participé à l’article « Comment l’APTOS Bio-Lifting est-il utilisé dans la pratique clinique en Corée ? », publié dans le magazine de médecine esthétique « Medical Aesthetic ».',
       'L’article revient sur la façon dont APTOS, marque internationale du lifting par fils, développe son activité scientifique sur le marché coréen autour de ses formateurs officiels, et présente APTOS non pas comme un simple produit de lifting par fils destiné à tendre les tissus relâchés, mais comme une plateforme de Bio-Lifting qui exige un vector design précis, adapté à la structure du visage et à l’état des tissus.',
-      'En tant que formateur officiel APTOS, le Dr Kim Sooyoung a souligné la structure et les indications propres à chaque produit, la conception du geste selon l’état des tissus, ainsi que l’importance du plane d’intervention et des fixation points. L’APTOS Bio-Lifting va en particulier au-delà d’un lifting purement mécanique : c’est une approche qui conçoit le soutien des tissus et les vecteurs de traction pour les zones qui en ont besoin, en tenant compte du mode de vieillissement et de la structure faciale de chaque patient — ce qui rejoint la philosophie Slow Aging de LIV Plastic Surgery.',
-      'LIV Plastic Surgery privilégie une amélioration naturelle et raffinée plutôt qu’un changement spectaculaire. Au cours de l’interview, le Dr Kim Sooyoung a expliqué que les patients coréens accordent aujourd’hui plus d’importance à un ovale du visage net, à une amélioration stable de l’étage moyen et de l’étage inférieur du visage et à une récupération naturelle qu’à une surcorrection ou à des résultats artificiels. Cela correspond à l’anti-âge mesuré, au lifting précis et aux soins personnalisés que défend LIV Plastic Surgery.',
+      'En tant que formatrice officielle APTOS, la Dre Kim Sooyoung a souligné la structure et les indications propres à chaque produit, la conception du geste selon l’état des tissus, ainsi que l’importance du plane d’intervention et des fixation points. L’APTOS Bio-Lifting va en particulier au-delà d’un lifting purement mécanique : c’est une approche qui conçoit le soutien des tissus et les vecteurs de traction pour les zones qui en ont besoin, en tenant compte du mode de vieillissement et de la structure faciale de chaque patient — ce qui rejoint la philosophie Slow Aging de LIV Plastic Surgery.',
+      'LIV Plastic Surgery privilégie une amélioration naturelle et raffinée plutôt qu’un changement spectaculaire. Au cours de l’interview, la Dre Kim Sooyoung a expliqué que les patients coréens accordent aujourd’hui plus d’importance à un ovale du visage net, à une amélioration stable de l’étage moyen et de l’étage inférieur du visage et à une récupération naturelle qu’à une surcorrection ou à des résultats artificiels. Cela correspond à l’anti-âge mesuré, au lifting précis et aux soins personnalisés que défend LIV Plastic Surgery.',
       'L’article présente également APTOS comme un traitement pouvant être réalisé seul, mais aussi en association avec des appareils à base d’énergie, des skin boosters, des produits de comblement ou de la toxine botulique, selon l’état du patient : élasticité de la peau, perte de volume, modification de l’ovale du visage, etc. LIV Plastic Surgery poursuit une approche anti-âge intégrée, centrée sur le soutien structurel du visage et la vector correction, tout en tenant compte de la texture de la peau, du volume et du contrôle des muscles peauciers.',
-      'Cette interview illustre la manière dont le Dr Kim Sooyoung, en tant que formateur officiel APTOS, continue d’élargir sa formation scientifique et son expérience clinique afin de proposer aux patients, en Corée comme à l’étranger, des procédures de lifting plus sûres et plus reproductibles.',
+      'Cette interview illustre la manière dont la Dre Kim Sooyoung, en tant que formatrice officielle APTOS, continue d’élargir sa formation scientifique et son expérience clinique afin de proposer aux patients, en Corée comme à l’étranger, des procédures de lifting plus sûres et plus reproductibles.',
     ],
   },
   '15': {
     badge: 'INTERVIEW MÉDIA',
     source: 'Medical Aesthetic',
-    title: 'Dr Kim Sooyoung, directeur médical — interview avec « Medical Aesthetic »',
+    title: 'Dre Kim Sooyoung, directrice médicale — interview avec « Medical Aesthetic »',
     description:
-      'Le Dr Kim Sooyoung, directeur médical, a accordé une interview officielle à « Medical Aesthetic », magazine spécialisé dans la chirurgie esthétique et les dispositifs médicaux, en partageant un éclairage médical sur la philosophie Slow Aging de LIV, sur les procédures APTOS, marque internationale de lifting, et sur un algorithme adapté à chaque zone du visage.',
+      'La Dre Kim Sooyoung, directrice médicale, a accordé une interview officielle à « Medical Aesthetic », magazine spécialisé dans la chirurgie esthétique et les dispositifs médicaux, en partageant un éclairage médical sur la philosophie Slow Aging de LIV, sur les procédures APTOS, marque internationale de lifting, et sur un algorithme adapté à chaque zone du visage.',
     body: [
       'Bonjour, ici LIV Plastic Surgery.',
-      'Le Dr Kim Sooyoung, directeur médical de LIV Plastic Surgery, a récemment accordé une interview officielle, accompagnée d’une séance photo, à « Medical Aesthetic », publication reconnue dans le domaine de la chirurgie esthétique et des dispositifs médicaux.',
-      'Dans cette interview, qui met en lumière les médecins à l’origine des tendances du marché de la chirurgie esthétique en Corée et à l’étranger, le Dr Kim Sooyoung a présenté la philosophie « Slow Aging » que défend LIV Plastic Surgery, ainsi qu’un éclairage médical approfondi sur les procédures réalisées avec APTOS, la marque internationale de lifting qui retient aujourd’hui le plus l’attention du secteur médical.',
-      'Titulaire de la certification APTOS International Trainer, le Dr Kim Sooyoung a expliqué en détail la synergie qui naît lorsque la technologie propre à APTOS rencontre l’approche anatomique par couches de LIV Plastic Surgery, le « Site-specific algorithm » (algorithme adapté à chaque zone). Le savoir-faire avancé de LIV en matière de lifting par fils — qui repositionne les tissus relâchés avec une précision anatomique plutôt que de les tirer artificiellement, afin de révéler le relief et l’élégance propres au visage — a suscité un vif intérêt de la part de l’équipe de reportage présente sur place.',
+      'La Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, a récemment accordé une interview officielle, accompagnée d’une séance photo, à « Medical Aesthetic », publication reconnue dans le domaine de la chirurgie esthétique et des dispositifs médicaux.',
+      'Dans cette interview, qui met en lumière les médecins à l’origine des tendances du marché de la chirurgie esthétique en Corée et à l’étranger, la Dre Kim Sooyoung a présenté la philosophie « Slow Aging » que défend LIV Plastic Surgery, ainsi qu’un éclairage médical approfondi sur les procédures réalisées avec APTOS, la marque internationale de lifting qui retient aujourd’hui le plus l’attention du secteur médical.',
+      'Titulaire de la certification APTOS International Trainer, la Dre Kim Sooyoung a expliqué en détail la synergie qui naît lorsque la technologie propre à APTOS rencontre l’approche anatomique par couches de LIV Plastic Surgery, le « Site-specific algorithm » (algorithme adapté à chaque zone). Le savoir-faire avancé de LIV en matière de lifting par fils — qui repositionne les tissus relâchés avec une précision anatomique plutôt que de les tirer artificiellement, afin de révéler le relief et l’élégance propres au visage — a suscité un vif intérêt de la part de l’équipe de reportage présente sur place.',
       'LIV Plastic Surgery est une clinique vers laquelle les marques internationales et les spécialistes de la médecine esthétique se tournent avec confiance. En s’appuyant sur des techniques précises reconnues à l’international et sur une recherche scientifique continue, LIV continuera de proposer une référence sûre et distinctive en matière de soins anti-âge haut de gamme à toutes les personnes qui viennent à sa rencontre, de Corée comme d’ailleurs.',
       'Le texte intégral de cette interview sera partagé de nouveau lors de la publication de l’article officiel.',
       'Merci.',
     ],
   },
   '1': {
-    badge: 'FORMATEUR INTERNATIONAL',
+    badge: 'FORMATRICE INTERNATIONALE',
     source: 'Hi News',
-    title: 'Certification de formateur officiel APTOS',
+    title: 'Certification de formatrice officielle APTOS',
     description:
-      'Le Dr Kim Sooyoung, directeur médical de LIV Plastic Surgery, a obtenu la certification International Trainer d’APTOS, marque internationale du lifting par fils — une reconnaissance de son expertise en matière de lifting, fondée sur l’expérience clinique et la maîtrise technique.',
+      'La Dre Kim Sooyoung, directrice médicale de LIV Plastic Surgery, a obtenu la certification International Trainer d’APTOS, marque internationale du lifting par fils — une reconnaissance de son expertise en matière de lifting, fondée sur l’expérience clinique et la maîtrise technique.',
   },
   '2': {
     badge: 'ÉMISSION TV',
@@ -93,7 +93,7 @@ export const FR: MediaNewsLocaleMap = {
     source: 'Issuemaker',
     title: 'Couverture de l’APTOS International Program',
     description:
-      'Présenté comme médecin représentant la Corée sur invitation du siège d’APTOS, avec une participation à un programme international consacré aux procédures de lifting.',
+      'Présentée comme médecin représentant la Corée sur invitation du siège d’APTOS, avec une participation à un programme international consacré aux procédures de lifting.',
   },
   '4': {
     badge: 'ARTICLE DE COUVERTURE',
@@ -120,16 +120,16 @@ export const FR: MediaNewsLocaleMap = {
     badge: 'ACADÉMIQUE',
     source: 'Actualités LIV',
     title:
-      'Dr Kim Sooyoung, directeur médical — conférence sur invitation à Aesthetic Plastic Surgery Korea',
+      'Dre Kim Sooyoung, directrice médicale — conférence sur invitation à Aesthetic Plastic Surgery Korea',
     description:
-      'Le Dr Kim Sooyoung, directeur médical, a présenté une communication orale officielle sur invitation, intitulée « Site-specific algorithm for facial rejuvenation », lors du congrès Aesthetic Plastic Surgery Korea organisé par la société coréenne de chirurgie plastique esthétique, en y exposant une approche précise zone par zone fondée sur l’anatomie du visage ainsi que l’algorithme opératoire propre à LIV.',
+      'La Dre Kim Sooyoung, directrice médicale, a présenté une communication orale officielle sur invitation, intitulée « Site-specific algorithm for facial rejuvenation », lors du congrès Aesthetic Plastic Surgery Korea organisé par la société coréenne de chirurgie plastique esthétique, en y exposant une approche précise zone par zone fondée sur l’anatomie du visage ainsi que l’algorithme opératoire propre à LIV.',
   },
   '8': {
     badge: 'ACTUALITÉS LIV',
     source: 'Actualités LIV',
-    title: 'Remise de la plaque officielle de formateur international APTOS',
+    title: 'Remise de la plaque officielle de formatrice internationale APTOS',
     description:
-      'Le Dr Kim Sooyoung, directeur médical, a reçu la plaque officielle de formateur d’APTOS, marque internationale du lifting par fils. Cette certification a ouvert la voie au développement de la formation des médecins en Corée et à l’étranger, ainsi que de l’activité scientifique dans le domaine du lifting.',
+      'La Dre Kim Sooyoung, directrice médicale, a reçu la plaque officielle de formatrice d’APTOS, marque internationale du lifting par fils. Cette certification a ouvert la voie au développement de la formation des médecins en Corée et à l’étranger, ainsi que de l’activité scientifique dans le domaine du lifting.',
   },
   '9': {
     badge: 'VISITE LIV',
@@ -186,11 +186,11 @@ export const FR: MediaNewsLocaleMap = {
     badge: 'ACADÉMIQUE',
     title: 'Présentation sur invitation à l’AXA (Aptos Expert Alliance)',
     description:
-      'Le Dr Kim Sooyoung, directeur médical, a été invité à l’AXA, conférence d’experts organisée par APTOS, marque internationale du lifting par fils, et y a présenté des cas cliniques ainsi qu’un savoir-faire en lifting par fils.',
+      'La Dre Kim Sooyoung, directrice médicale, a été invitée à l’AXA, conférence d’experts organisée par APTOS, marque internationale du lifting par fils, et y a présenté des cas cliniques ainsi qu’un savoir-faire en lifting par fils.',
   },
   f8: {
     badge: 'INTERVIEW MÉDIA',
-    title: 'Dr Kim Sooyoung, directeur médical — interview clinique sur l’APTOS Bio-Lifting',
+    title: 'Dre Kim Sooyoung, directrice médicale — interview clinique sur l’APTOS Bio-Lifting',
     description:
       'Participation à l’interview consacrée à l’APTOS Bio-Lifting dans le magazine de médecine esthétique « Medical Aesthetic », autour de la conception précise du lifting en fonction de la structure du visage et de l’état des tissus, et d’une approche Bio-Lifting adaptée à chaque patient.',
   },
@@ -207,9 +207,9 @@ export const FR: MediaNewsLocaleMap = {
       'Des avis d’expert ont été partagés sur l’élasticité de la peau, le vieillissement lié au mode de vie et la régénération du collagène.',
   },
   f3: {
-    badge: 'FORMATEUR INTERNATIONAL',
-    title: 'Certification de formateur officiel APTOS',
+    badge: 'FORMATRICE INTERNATIONALE',
+    title: 'Certification de formatrice officielle APTOS',
     description:
-      'Le Dr Kim Sooyoung, directeur médical, a obtenu la certification International Trainer d’APTOS, marque internationale du lifting par fils.',
+      'La Dre Kim Sooyoung, directrice médicale, a obtenu la certification International Trainer d’APTOS, marque internationale du lifting par fils.',
   },
 };

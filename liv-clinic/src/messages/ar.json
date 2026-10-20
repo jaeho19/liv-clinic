@@ -578,7 +578,7 @@
       "name": "Sooyoung Kim",
       "nameEn": "Dr. Sooyoung Kim",
       "directorTitle": "المديرة، عيادة ليف للتجميل",
-      "directorTitleEn": "المدير",
+      "directorTitleEn": "المديرة",
       "specialty": "جراحة تجميل معتمدة",
       "philosophy": "السعي وراء الطبيعية — هذا هو الجمال الحقيقي. نساعدك على اكتشاف جمالك الراقي والأصيل.",
       "credentials": "المؤهلات",
@@ -590,10 +590,10 @@
         "Fellowship, MD Anderson Cancer Center, Texas, USA"
       ],
       "certifications": {
-        "official": "معتمد رسميًا",
+        "official": "معتمدة رسميًا",
         "ultheraThermage": "Ultherapy Prime و Thermage",
-        "globalExpert": "خبير معتمد عالميًا",
-        "aptosCertified": "خبير معتمد APTOS"
+        "globalExpert": "خبيرة معتمدة عالميًا",
+        "aptosCertified": "خبيرة معتمدة APTOS"
       },
       "internationalActivities": "الأنشطة الدولية",
       "activities": [
@@ -620,7 +620,7 @@
       "ui": {
         "playVideo": "تشغيل الفيديو"
       },
-      "featuredVideoTitle": "علاجات مكافحة الشيخوخة يشرحها مدير عيادة LIV"
+      "featuredVideoTitle": "علاجات مكافحة الشيخوخة تشرحها مديرة عيادة LIV"
     },
     "doctors": {
       "kim": {
@@ -2738,7 +2738,7 @@
           },
           "trainingSection": {
             "title": "تدريب معتمد عالمياً",
-            "description": "أكمل الدكتور Kim Sooyoung من LIV الدورة المهنية في المقر الرئيسي لـ APTOS في جورجيا وشارك في الإجراءات لاكتساب أحدث التقنيات.",
+            "description": "أكملت الدكتورة Kim Sooyoung من LIV الدورة المهنية في المقر الرئيسي لـ APTOS في جورجيا وشاركت في الإجراءات لاكتساب أحدث التقنيات.",
             "certificateTitle": "شهادة APTOS Professional Course",
             "certificateName": "Kim Sooyoung · KR0062025",
             "certificateIssuer": "موثّق من قبل G. Sulamanidze MD-PhD, M. Sulamanidze MD-PhD, C. Sulamanidze MD"
