@@ -1,19 +1,22 @@
 // 채팅 응답 실측 (읽기 전용) — "연락처 먼저" 설계(docs/superpowers/specs/2026-10-01-chat-contact-first-design.md)의
 // 목표 G-1~G-6을 같은 정의로 다시 재기 위한 스크립트. 아무것도 변경하지 않는다(READ ONLY 트랜잭션).
+// 항목 10·11 은 "AI 1차 응대 + 가예약" 설계(2026-10-02-chat-ai-first-response-design.md §2 · §4.14)의 지표다.
 //
 // 실행 (liv-clinic 폴더에서):
 //   NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/chat-response-baseline.mjs [--since 2026-05-08] [--card-since 2026-08-09]
 //
 // 정의
 //   - 시험 세션 제외: 이름에 test/테스트/smoke 가 있거나, 첫 손님 글이 3자 이하이거나 한글이 섞임.
-//   - 직원 답변: sender='operator' AND source <> 'auto' (자동 안내 제외).
+//   - 직원 답변: sender='operator' AND source NOT IN ('auto','ai') (자동 안내와 AI 응대 제외).
 //   - 영업중: 평일 10:00–19:00, 토 10:00–16:00 (KST, 코드 기본값). 휴진일(CHAT_CLOSED_DATES)은 반영하지 않는다.
 //   - 다시 닿을 길 없음: 이메일·메신저 연락처가 없고, 직원 답변이 없거나 답변 뒤 손님이 다시 말하지 않음.
 //   - 이름·연락처 값은 읽지 않고 유무만 센다.
 //   - 이벤트 안내(항목 9): 자동 안내(source='auto') 가운데 본문이 이벤트 페이지 주소(…/events 또는 …/events/…)로 끝나는 글.
+//   - AI 응대(항목 10) · 가예약(항목 11): SQL 과 정의는 scripts/_db/chat-ai-metrics.mjs. 043 적용 전이면 건너뛴다.
 
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
+import { AI_TABLES_SQL, aiReplyDelaySql, aiTurnsSql, bookingsSql } from './_db/chat-ai-metrics.mjs';
 
 const require = createRequire(new URL('../package.json', import.meta.url));
 const { Client } = require('pg');
@@ -66,7 +69,7 @@ WITH s AS (
          (SELECT min(m.created_at) FROM public.chat_messages m WHERE m.session_id = cs.id AND m.sender = 'visitor') AS first_visitor_at,
          (SELECT max(m.created_at) FROM public.chat_messages m WHERE m.session_id = cs.id AND m.sender = 'visitor') AS last_visitor_at,
          (SELECT m.original_text FROM public.chat_messages m WHERE m.session_id = cs.id AND m.sender = 'visitor' ORDER BY m.created_at LIMIT 1) AS first_text,
-         (SELECT min(m.created_at) FROM public.chat_messages m WHERE m.session_id = cs.id AND m.sender = 'operator' AND m.source <> 'auto') AS first_human_at
+         (SELECT min(m.created_at) FROM public.chat_messages m WHERE m.session_id = cs.id AND m.sender = 'operator' AND m.source NOT IN ('auto', 'ai')) AS first_human_at
     FROM public.chat_sessions cs
    WHERE cs.created_at >= timestamptz '${since} 00:00+09'
      AND coalesce(cs.visitor_name, '') !~* '(test|테스트|smoke)'
@@ -192,6 +195,16 @@ if (HAS_EVENT_HINT) {
       FROM s`);
 } else {
   console.log('\n── 9. [G-6] 이벤트 안내 ──\n  (건너뜀 — event_hint_at 컬럼 없음, 042 미적용)');
+}
+
+// AI 1차 응대 + 가예약 (스펙 2026-10-02 chat-ai-first-response). 시험 세션(이름에 test — `ai-test-…` 포함)은 뺀다.
+const { rows: aiTableRows } = await db.query(AI_TABLES_SQL);
+if (aiTableRows[0]?.turns && aiTableRows[0]?.bookings) {
+  await q('10. AI 응대 — 답한 대화·나간 답·접수 안내로 대신함·직원 확인 필요', aiTurnsSql(SINCE));
+  await q('10-2. 손님 글 → AI 답(초)', aiReplyDelaySql(SINCE));
+  await q('11. 가예약 — 건수·문의 대비 비율·직원 첫 답까지', bookingsSql(SINCE));
+} else {
+  console.log('\n── 10·11. AI 응대 · 가예약 ──\n  (건너뜀 — chat_ai_turns · chat_bookings 테이블 없음, 043 미적용)');
 }
 
 await db.query('ROLLBACK');
