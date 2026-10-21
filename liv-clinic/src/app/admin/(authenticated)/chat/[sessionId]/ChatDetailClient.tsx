@@ -12,6 +12,7 @@ import {
   type ChatMessage,
   type VisitorLocale,
 } from '@/lib/chat/chatApi';
+import { operatorSourceLabel } from '@/lib/chat/adminView';
 import { buildChatRefCode } from '@/lib/chat/contactChannels';
 import { trackChatClose } from '@/lib/analytics-events';
 
@@ -39,6 +40,8 @@ function messengerLabel(channel: string | null): string {
 interface Props {
   session: SessionMeta;
   initialMessages: ChatMessage[];
+  /** 머리말의 가예약 한 줄 — 화면을 열 때의 값이다. 없으면 null */
+  bookingLine?: string | null;
 }
 
 const MAX_LEN = 1000;
@@ -60,7 +63,7 @@ function formatTime(iso: string): string {
   return new Date(iso).toLocaleString('ko-KR', { hour12: false, timeZone: 'Asia/Seoul' });
 }
 
-export default function ChatDetailClient({ session, initialMessages }: Props) {
+export default function ChatDetailClient({ session, initialMessages, bookingLine = null }: Props) {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [text, setText] = useState('');
   const [sending, setSending] = useState(false);
@@ -255,6 +258,8 @@ export default function ChatDetailClient({ session, initialMessages }: Props) {
                   </button>
                 </div>
               )}
+              {/* AI가 받은 가예약 — 확정은 직원이 방(또는 이 화면)에서 답으로 한다 */}
+              {bookingLine && <div className="text-xs text-[#2f6fde] mt-0.5 break-all">{bookingLine}</div>}
               <div className="text-[11px] text-gray-400 mt-0.5 sm:hidden">
                 시작 {formatTime(session.created_at)}
               </div>
@@ -414,11 +419,7 @@ function AdminMessageRow({ message }: { message: ChatMessage }) {
       <div className="mt-0.5 text-[10px] text-gray-400">
         {isOperator && (
           <span className="mr-1">
-            {message.source === 'auto'
-              ? '자동 안내'
-              : message.source === 'slack'
-              ? `Slack · ${message.sender_label ?? 'Slack 직원'}`
-              : '관리자 화면'}
+            {operatorSourceLabel(message)}
             {' · '}
           </span>
         )}

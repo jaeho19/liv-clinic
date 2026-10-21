@@ -1,6 +1,9 @@
 import { notFound } from 'next/navigation';
 import { createChatAdminClient } from '@/lib/chat/db';
 import type { ChatMessage, VisitorLocale } from '@/lib/chat/chatApi';
+import { adminBookingLine } from '@/lib/chat/adminBooking';
+import { sessionContactOf } from '@/lib/chat/ai/booking';
+import { loadBooking } from '@/lib/chat/ai/bookingStore';
 import ChatDetailClient from './ChatDetailClient';
 
 export const dynamic = 'force-dynamic';
@@ -32,6 +35,10 @@ export default async function AdminChatDetailPage({
     .order('created_at', { ascending: true })
     .limit(200);
 
+  // 가예약 한 줄 (스펙 2026-10-02 chat-ai-first-response §4.12). 읽지 못하면(043 미적용) 줄 없이 그린다.
+  const booking = await loadBooking(admin, sessionId);
+  const bookingLine = adminBookingLine(booking, sessionContactOf(session));
+
   return (
     <ChatDetailClient
       session={{
@@ -47,6 +54,7 @@ export default async function AdminChatDetailPage({
         resolved_at: session.resolved_at,
       }}
       initialMessages={(messages ?? []) as unknown as ChatMessage[]}
+      bookingLine={bookingLine}
     />
   );
 }
