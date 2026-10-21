@@ -1,0 +1,191 @@
+{
+  "closedDates": "2026-10-05,2026-10-15,2026-10-21,2026-10-29",
+  "defaultNow": "2026-10-22T02:00:00Z",
+  "cases": [
+    {
+      "id": "o01-sculptra-decline",
+      "locale": "en",
+      "note": "엑셀 시트 4 E1 — 있나요?(한 줄 소개 · 혜택) → 관심(R1 · 조합 ①) → 거절(R5) → 가예약(요약 아래 혜택 줄)",
+      "turns": [
+        "Hi, do you have Sculptra?",
+        "Around Oct 24. How much is it? My jawline also feels a bit saggy.",
+        "Lifting maybe later — just Sculptra for now. 2 pm works. Emma, WhatsApp +65 9123 4567"
+      ]
+    },
+    {
+      "id": "o02-ulthera-budget-ja",
+      "locale": "ja",
+      "note": "엑셀 시트 4 E2 — 울쎄라 가격(첫 답 그대로) → 너무 비싸다 · 예산(R2 · 저부담 대안 · 🙋) → 생각해 볼게요(R4 · 부드러운 마무리 한 번)",
+      "turns": [
+        "ウルセラの全顔はいくらですか？",
+        "高いですね。予算は100万ウォンくらいです。",
+        "少し考えてみます。"
+      ]
+    },
+    {
+      "id": "o03-booking-clear-zh",
+      "locale": "zh",
+      "note": "엑셀 시트 4 E3 — 예약 의사가 분명함(R7): 조합 제안 없음, 요약 아래 혜택 줄, 혜택 문장은 한 번만",
+      "turns": [
+        "你好，10月24日下午3点，热玛吉600发，2个人预约。Chen，微信 chen_88"
+      ]
+    },
+    {
+      "id": "o04-thermage-package-think",
+      "locale": "en",
+      "note": "손님이 먼저 패키지를 물음(질문 → 이달 프로모션 금액 줄로 답, 제안 횟수에 세지 않음) → 엑셀 시트 4 E4 생각해 볼게요(R4)",
+      "turns": [
+        "How much is Thermage FLX 600 shots?",
+        "Do you have any packages with it?",
+        "OK, I'll think about it and get back to you."
+      ]
+    },
+    {
+      "id": "o05-density-two-offers",
+      "locale": "en",
+      "note": "관심이 이어짐 — 제안 ① 뒤에 ② (대화당 2개까지), 그다음 가예약",
+      "turns": [
+        "Do you do Density?",
+        "How long does it take, and is there downtime?",
+        "Sounds good. Is there anything else in this month's lifting offers?",
+        "OK, Oct 27 at 11am please. Mia, mia.k@example.com"
+      ]
+    },
+    {
+      "id": "o06-haggle",
+      "locale": "en",
+      "note": "흥정 · 다른 병원 비교(R3) — 제안 없음, 이달 프로모션과 혜택만, 🙋",
+      "turns": [
+        "How much is Ultherapy Prime for the full face?",
+        "Another clinic offers 300 shots for 1.2 million won. Can you match that?"
+      ]
+    },
+    {
+      "id": "o07-medical",
+      "locale": "en",
+      "note": "의료 질문(R6) — 제안 없음, 일반 문장 + 원장님 상담 + 🙋",
+      "turns": [
+        "Do you have fillers?",
+        "I'm pregnant right now. Is it safe for me to get fillers?"
+      ]
+    },
+    {
+      "id": "o08-trial-only-booking",
+      "locale": "en",
+      "note": "첫방문 체험가(제모 5천 원)만 안내한 가예약 → 요약 아래 줄은 5%만(무료 서비스 제외)",
+      "turns": [
+        "How much is underarm hair removal? It's my first visit.",
+        "Great, Oct 24 at 11am please. Sara, WhatsApp +1 415 555 0134"
+      ]
+    },
+    {
+      "id": "o09-skincare-burden",
+      "locale": "en",
+      "note": "피부 관리 이름(대표원장님이 고친 4가지) → 가격 부담(R2) — 첫방문 체험가 스킨케어가 저부담 대안",
+      "turns": [
+        "Do you have Aqua Peel or facials?",
+        "How much is it?",
+        "Hmm, that's a bit expensive for me."
+      ]
+    },
+    {
+      "id": "o10-inmode-ja",
+      "locale": "ja",
+      "note": "인모드 한 줄 소개(대표원장님: 인모드도 함께 안내) → 관심(R1) — 슈링크 · 인모드 조합 ①",
+      "turns": [
+        "インモードはありますか？",
+        "ダウンタイムはありますか？何分くらいかかりますか？"
+      ]
+    },
+    {
+      "id": "o11-concern-zh-TW",
+      "locale": "zh-TW",
+      "note": "시술을 정하지 않고 고민만 말함(처짐) — 시술 이름 + 이달 리프팅 구성 (고민만 말함 줄), 인모드 포함",
+      "turns": [
+        "我的下顎線有點鬆弛，你們有什麼療程？",
+        "大概多少錢？"
+      ]
+    },
+    {
+      "id": "o12-group-rejuran",
+      "locale": "en",
+      "note": "3명 동행 — 채팅 예약 혜택은 한 분에 1회씩, 단체 할인은 직원",
+      "turns": [
+        "We are 3 friends interested in Rejuran. Is there any group benefit?",
+        "Oct 27 at 2pm, all three for Rejuran 2cc. Lin, LINE lin_tw88"
+      ]
+    },
+    {
+      "id": "o13-benefit-questions",
+      "locale": "en",
+      "note": "손님이 혜택을 먼저 물음 — 혜택 문장으로 답, 프로모션 금액에도 5% (대표원장님 10/20)",
+      "turns": [
+        "Is there any free gift or discount if I book through this chat?",
+        "Does the 5% also apply to promotion prices?"
+      ]
+    },
+    {
+      "id": "o14-tattoo",
+      "locale": "en",
+      "note": "문신 제거(2026-10-20 폐지) — 바디 타투는 하지 않음, 눈썹 · 아이라인 문신 제거는 함",
+      "turns": [
+        "Do you do tattoo removal? I have a small tattoo on my arm.",
+        "What about eyebrow tattoo removal?"
+      ]
+    },
+    {
+      "id": "o15-rejuran-interest-vi",
+      "locale": "vi",
+      "note": "베트남어 — 있나요?(한 줄 소개 · 혜택) → 관심(R1 · 리쥬란 조합 ①). 10/21 에 쓴 베트남어 제안 문장이 나가는지",
+      "turns": [
+        "Chào bạn, bên mình có Rejuran không?",
+        "Tôi định đến khoảng ngày 24/10. Giá thế nào? Da tôi cũng hơi khô, có gói nào làm cùng không?"
+      ]
+    },
+    {
+      "id": "o16-thermage-interest-th",
+      "locale": "th",
+      "note": "태국어 — 써마지 가격 → 함께 받을 구성 관심(R1 · 조합 ①). 태국어 제안 문장",
+      "turns": [
+        "สวัสดีค่ะ Thermage FLX 600 ช็อต ราคาเท่าไหร่คะ",
+        "จะไปวันที่ 24 ตุลาคมค่ะ มีอะไรที่ทำคู่กันได้ไหมคะ"
+      ]
+    },
+    {
+      "id": "o17-ulthera-budget-ru",
+      "locale": "ru",
+      "note": "러시아어 — 울쎄라 가격 → 비싸다 · 예산(R2 · 부담 덜한 구성). 러시아어 '더 할인은 없다' + 앞 문장",
+      "turns": [
+        "Здравствуйте, сколько стоит Ultherapy на всё лицо?",
+        "Дороговато. Мой бюджет около 1 000 000 вон."
+      ]
+    },
+    {
+      "id": "o18-filler-interest-fr",
+      "locale": "fr",
+      "note": "프랑스어 — 필러 있나요? → 관심 · 턱선(R1 · 필러 조합 ① 윤곽 보톡스). 프랑스어 제안 문장",
+      "turns": [
+        "Bonjour, vous faites des injections de filler ?",
+        "Je viens vers le 24 octobre. Quel est le prix ? J’aimerais aussi affiner un peu la mâchoire."
+      ]
+    },
+    {
+      "id": "o19-density-interest-mn",
+      "locale": "mn",
+      "note": "몽골어 — 덴서티 있나요? → 관심(R1 · 덴서티 조합 ①). 몽골어 제안 문장",
+      "turns": [
+        "Сайн байна уу, Density эмчилгээ хийдэг үү?",
+        "10-р сарын 24-нд очно. Үнэ хэд вэ? Хамт хийлгэж болох багц байна уу?"
+      ]
+    },
+    {
+      "id": "o20-sagging-concern-ar",
+      "locale": "ar",
+      "note": "아랍어 — 고민만 말함(처짐) → 패키지 관심(R1 · 고민 줄). 아랍어 제안 문장",
+      "turns": [
+        "مرحبًا، أعاني من ترهل خفيف في الوجه. ما العلاجات المتوفرة لديكم؟",
+        "سأزور سيول في 24 أكتوبر. هل لديكم باقات هذا الشهر؟"
+      ]
+    }
+  ]
+}

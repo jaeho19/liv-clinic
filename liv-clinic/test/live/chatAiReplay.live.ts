@@ -76,6 +76,12 @@ interface TurnReport {
   issues: string[];
   /** 검사에 걸려 버린 글(다시 쓰기 전에 AI가 쓴 글) — JSON 에만 남긴다 */
   rejectedDrafts: string[];
+  /** 제안형 응대: AI가 읽은 반응 · 나간 제안 줄 · 혜택 문장 · 상한 때문에 지운 꼬리표 */
+  reaction: string | null;
+  offers: string[];
+  benefit: string[];
+  offersDropped: string[];
+  offerDeclined: boolean;
 }
 
 /** 모델 출력(JSON 글)에서 reply 만 꺼낸다. 읽지 못하면 출력 그대로. */
@@ -160,6 +166,11 @@ it('AI 응대 재생 시험', async () => {
         latencyMs: null,
         issues: [],
         rejectedDrafts: [],
+        reaction: null,
+        offers: [],
+        benefit: [],
+        offersDropped: [],
+        offerDeclined: false,
       };
       const decision = await decideAiTurn(db as never, SESSION_ID, text, now);
       if (!decision.run) {
@@ -175,6 +186,11 @@ it('AI 응대 재생 시험', async () => {
         report.latencyMs = (logged.latency_ms as number | undefined) ?? null;
         report.issues = (logged.issues as string[] | null | undefined) ?? [];
         report.raw = (logged.raw_reply as string | null | undefined) ?? null;
+        report.reaction = (logged.reaction as string | null | undefined) ?? null;
+        report.offersDropped = (logged.offers_dropped as string[] | null | undefined) ?? [];
+        report.offerDeclined = logged.offer_declined === true;
+        const shown = (logged.shown_keys as string[] | null | undefined) ?? [];
+        report.benefit = shown.filter((k) => k.startsWith('benefit'));
         if (out.kind === 'sent') {
           report.reply = out.text;
           report.replyKo = await ko(out.text, c.locale);
@@ -184,13 +200,14 @@ it('AI 응대 재생 시험', async () => {
           report.bookingKo = bookingSummaryKo(out.booking, out.contact) || null;
           report.needsStaff = out.needsStaff;
           report.staffReasonKo = out.staffReasonKo;
+          report.offers = out.usedOffers.map((o) => o.key);
         } else if (out.kind === 'fallback') {
           report.issues = report.issues.length > 0 ? report.issues : [out.reason];
         }
       }
       turns.push(report);
       console.log(
-        `${c.id} #${i + 1} ${report.outcome}${report.latencyMs ? ` ${report.latencyMs}ms` : ''}${report.attempts && report.attempts > 1 ? ` (시도 ${report.attempts})` : ''}${report.needsStaff ? ' 🙋' : ''}${report.bookingEvent ? ` 🗓 ${report.bookingEvent}` : ''}${report.issues.length ? ` ⚠ ${report.issues.join(' | ')}` : ''}`
+        `${c.id} #${i + 1} ${report.outcome}${report.latencyMs ? ` ${report.latencyMs}ms` : ''}${report.attempts && report.attempts > 1 ? ` (시도 ${report.attempts})` : ''}${report.needsStaff ? ' 🙋' : ''}${report.bookingEvent ? ` 🗓 ${report.bookingEvent}` : ''}${report.reaction ? ` ${report.reaction}` : ''}${report.offers.length ? ` 제안 ${report.offers.join(',')}` : ''}${report.offersDropped.length ? ` 지움 ${report.offersDropped.join(',')}` : ''}${report.issues.length ? ` ⚠ ${report.issues.join(' | ')}` : ''}`
       );
     }
     results.push({ id: c.id, locale: c.locale, note: c.note ?? null, actual: c.actual ?? [], turns });
@@ -212,13 +229,18 @@ it('AI 응대 재생 시험', async () => {
     bookings: sent.filter((t) => t.bookingEvent === 'requested').length,
     medianMs: ms.length ? ms[Math.floor(ms.length / 2)] : null,
     maxMs: ms.length ? ms[ms.length - 1] : null,
+    offersOn: (process.env.CHAT_AI_OFFERS ?? '').toLowerCase() === 'on',
+    offersShown: sent.filter((t) => t.offers.length > 0).length,
+    offersDropped: sent.reduce((n, t) => n + t.offersDropped.length, 0),
+    benefitShown: sent.filter((t) => t.benefit.length > 0).length,
+    declined: sent.filter((t) => t.offerDeclined).length,
   };
 
   // 표(마크다운)
   const md: string[] = [
-    `# AI 응대 재생 시험 — ${summary.model} (추론 강도 ${summary.reasoningEffort})`,
+    `# AI 응대 재생 시험 — ${summary.model} (추론 강도 ${summary.reasoningEffort})${summary.offersOn ? ' · 제안형 응대 켜짐' : ''}`,
     '',
-    `사례 ${summary.cases}개 · 손님 글 ${summary.turns}건 · 답 나감 ${summary.sent} · 접수 안내로 대체 ${summary.fallback} · 다시 쓴 답 ${summary.retried} · 직원 확인 필요 ${summary.needsStaff} · 가예약 ${summary.bookings} · 답까지 걸린 시간 중앙값 ${summary.medianMs}ms / 최대 ${summary.maxMs}ms`,
+    `사례 ${summary.cases}개 · 손님 글 ${summary.turns}건 · 답 나감 ${summary.sent} · 접수 안내로 대체 ${summary.fallback} · 다시 쓴 답 ${summary.retried} · 직원 확인 필요 ${summary.needsStaff} · 가예약 ${summary.bookings} · 답까지 걸린 시간 중앙값 ${summary.medianMs}ms / 최대 ${summary.maxMs}ms${summary.offersOn ? ` · 제안이 나간 답 ${summary.offersShown} · 혜택 문장이 나간 답 ${summary.benefitShown} · 상한으로 지운 꼬리표 ${summary.offersDropped} · 거절 기록 ${summary.declined}` : ''}`,
     '',
   ];
   for (const r of results) {
@@ -238,6 +260,9 @@ it('AI 응대 재생 시험', async () => {
         t.quotedRows.length ? `안내한 금액: ${t.quotedRows.join(' / ')}` : '',
         t.bookingEvent ? `🗓 가예약${t.bookingEvent === 'changed' ? ' 변경' : ''} · ${t.bookingKo}` : t.bookingKo ? `(가예약 받는 중: ${t.bookingKo})` : '',
         t.needsStaff ? `🙋 직원 확인 필요 · ${t.staffReasonKo ?? ''}` : '',
+        t.reaction || t.offers.length || t.benefit.length || t.offersDropped.length
+          ? `반응 ${t.reaction ?? '없음'}${t.offers.length ? ` · 제안 ${t.offers.join(', ')}` : ''}${t.benefit.length ? ` · 혜택 문장(${t.benefit.join(', ')})` : ''}${t.offersDropped.length ? ` · 상한으로 지움 ${t.offersDropped.join(', ')}` : ''}${t.offerDeclined ? ' · 거절 기록' : ''}`
+          : '',
         `${t.latencyMs}ms${(t.attempts ?? 1) > 1 ? ` · 시도 ${t.attempts}회${t.issues.length ? ` (처음 걸린 이유: ${t.issues.join(' | ')})` : ''}` : ''}`,
       ].filter(Boolean);
       md.push(...facts.map((f) => `- ${f}`), '');
