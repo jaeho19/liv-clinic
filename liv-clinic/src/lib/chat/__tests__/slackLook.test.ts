@@ -103,8 +103,8 @@ describe('bar — 색 막대 하나', () => {
   it('설명 줄이 없으면 context 블록을 넣지 않는다', () => {
     expect(bar('alert', { headline: '⏰ *5분째 답이 없습니다.*', notes: [] }).blocks).toHaveLength(1);
   });
-  it('색은 세 가지', () => {
-    expect(BAR_COLOR).toEqual({ info: '#a8a6a8', contact: '#2e9e6b', alert: '#d8452f' });
+  it('색은 네 가지 (파랑은 AI 응대가 받은 가예약)', () => {
+    expect(BAR_COLOR).toEqual({ info: '#a8a6a8', contact: '#2e9e6b', alert: '#d8452f', booking: '#2f6fde' });
   });
 });
 

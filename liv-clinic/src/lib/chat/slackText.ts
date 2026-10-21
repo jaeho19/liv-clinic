@@ -352,7 +352,7 @@ export function buildRoomVisitorText(args: {
 
 // ── #해외문의 피드 / 확대 알림 / 실패 알림 ───────────────────────────────
 
-export type FeedKind = 'new' | 'resolved' | 'closed' | 'reopened' | 'escalated' | 'contact';
+export type FeedKind = 'new' | 'resolved' | 'closed' | 'reopened' | 'escalated' | 'contact' | 'booking';
 
 export function buildFeedLine(args: {
   kind: FeedKind;
@@ -364,6 +364,8 @@ export function buildFeedLine(args: {
   minutes?: number;
   /** kind='contact'일 때 남긴 채널 이름 (WeChat, 이메일 …) */
   contactLabel?: string | null;
+  /** kind='booking'일 때 가예약 날짜·시각 — `10/14(수) 14:00` */
+  bookingWhen?: string | null;
 }): string {
   const name = escapeSlackText(args.visitorName || '익명');
   const link = args.channelId ? `<#${args.channelId}>` : null;
@@ -382,7 +384,66 @@ export function buildFeedLine(args: {
       return joinHead([`🚨 ${args.minutes ?? 30}분째 미응답`, name, link]);
     case 'contact':
       return joinHead(['📋 연락처 남김', `${localeFlag(args.visitorLocale)} ${name}`, args.contactLabel, link, when]);
+    case 'booking':
+      return joinHead(['🗓 가예약', `${localeFlag(args.visitorLocale)} ${name}`, args.bookingWhen, link, when]);
   }
+}
+
+// ── AI 1차 응대 (스펙 2026-10-02 chat-ai-first-response §4.11) ───────────────
+// 방 안에 새로 생기는 글 세 가지: AI가 손님에게 한 답의 요지(이름표 `AI 응대`), 가예약(파란 막대), 직원 확인 필요(빨간 막대).
+// 멘션은 가예약과 직원 확인 필요에만 붙는다 — 호출자가 최상위 text 에 둔다(막대 안에는 넣지 않는다).
+
+export interface AiReplyArgs {
+  /** AI가 낸 요지 (한국어 한두 문장) */
+  note: string;
+  /** 이 답에 쓰인 가격 줄 — `써마지 레이저 · 600샷 2,400,000원~` 꼴 */
+  quoted: string[];
+}
+
+/** `AI 응대` 글의 본문: 요지, 금액 줄을 썼으면 그 아래 "안내한 금액". 답 전체는 관리자 화면에서 본다. */
+export function buildAiReplyBody(args: AiReplyArgs): string {
+  const lines = [escapeSlackText(args.note.trim() || '손님에게 답했습니다.')];
+  if (args.quoted.length > 0) lines.push(`> 안내한 금액: ${args.quoted.map(escapeSlackText).join(' / ')}`);
+  return lines.join('\n');
+}
+
+/** `AI 응대` 글을 글자만으로 — 스레드 방식이거나 꾸민 글을 못 올릴 때. */
+export function buildAiReplyText(args: AiReplyArgs): string {
+  return `💬 _AI 응대_\n${buildAiReplyBody(args)}`;
+}
+
+export interface BookingNoticeArgs {
+  /** 찬 뒤에 날짜·시각·인원·연락처가 바뀐 것이면 true */
+  changed: boolean;
+  /** booking.bookingSummaryKo — `10/14(수) 14:00 · 2명 · 울쎄라피 프라임 · WhatsApp +65… · Emma` */
+  summary: string;
+}
+
+const bookingTitle = (changed: boolean): string => (changed ? '가예약 변경' : '가예약');
+
+/** 가예약 알림의 큰 줄 — 손님 방의 파란 막대. */
+export function bookingNoticeHeadline(args: BookingNoticeArgs): string {
+  return `🗓 *${bookingTitle(args.changed)}* · ${escapeSlackText(args.summary)}`;
+}
+
+/** 가예약 알림을 글자만으로. */
+export function buildBookingNoticeText(args: BookingNoticeArgs & { mention: string }): string {
+  return joinHead([[`🗓 *${bookingTitle(args.changed)}*`, args.mention].filter(Boolean).join(' '), escapeSlackText(args.summary)]);
+}
+
+/** AI가 답을 내지 못했을 때의 사유 (접수 안내가 대신 나갔다) */
+export const AI_FALLBACK_REASON = '자동 응대가 답하지 못했습니다';
+/** 대화 하나에서 AI가 낼 수 있는 답의 한도에 닿았을 때의 사유 */
+export const AI_SESSION_CAP_REASON = 'AI 응답 한도에 닿았습니다';
+
+/** 직원 확인 필요 알림의 큰 줄 — 손님 방의 빨간 막대. */
+export function staffNeededHeadline(reason: string | null): string {
+  return joinHead(['🙋 *직원 확인 필요*', reason ? escapeSlackText(reason) : null]);
+}
+
+/** 직원 확인 필요 알림을 글자만으로. */
+export function buildStaffNeededText(args: { reason: string | null; mention: string }): string {
+  return joinHead([['🙋 *직원 확인 필요*', args.mention].filter(Boolean).join(' '), args.reason ? escapeSlackText(args.reason) : null]);
 }
 
 export function buildEscalationText(args: {
@@ -436,6 +497,10 @@ export interface FollowupDigestItem {
   channelId: string | null;
   /** 방이 없을 때 대신 붙이는 관리자 화면 주소 */
   adminUrl: string | null;
+  /** AI 응대가 받은 가예약의 날짜·시각 — `10/14(수) 14:00`. 없으면 덧붙이지 않는다 */
+  bookingWhen?: string | null;
+  /** 🙋 직원 확인 필요가 걸려 있는가 */
+  needsStaff?: boolean;
 }
 
 /** 요약 한 번에 이름을 적는 최대 인원 — 넘으면 "외 N명". */
@@ -447,7 +512,8 @@ export function buildFollowupDigestText(args: { mentionAll: string; items: Follo
     const where = it.channelId ? `<#${it.channelId}>` : it.adminUrl ? `<${it.adminUrl}|관리자 화면>` : null;
     const when = `${formatKst(it.awaitingSince).replace(/ KST$/, '')} 문의`;
     const who = `${localeFlag(it.visitorLocale)} ${escapeSlackText(it.visitorName || '익명')}`;
-    return `• ${joinHead([who, it.contactLabel, when, where])}`;
+    const booking = it.bookingWhen ? `🗓 ${it.bookingWhen}` : null;
+    return `• ${joinHead([who, it.contactLabel, when, booking, it.needsStaff ? '🙋' : null, where])}`;
   });
   const rest = args.items.length - lines.length;
   if (rest > 0) lines.push(`• 외 ${rest}명`);

@@ -1,7 +1,11 @@
 import 'server-only';
 import { escapeSlackText, type SlackAttachment, type SlackBlock, type SlackLook } from '@/lib/chat/slack';
 import {
+  bookingNoticeHeadline,
+  buildAiReplyBody,
+  buildAiReplyText,
   buildBodyLines,
+  buildBookingNoticeText,
   buildContactText,
   buildDeliveryFailureText,
   buildEscalationText,
@@ -12,6 +16,7 @@ import {
   buildRoomFirstNoticeText,
   buildRoomFirstText,
   buildRoomVisitorText,
+  buildStaffNeededText,
   buildTranslationCopyText,
   contactNoticeHeadline,
   deliveryFailureParts,
@@ -22,6 +27,9 @@ import {
   ROOM_REOPENED_LEAD,
   roomFirstNoticeHeadline,
   staffChannelLabel,
+  staffNeededHeadline,
+  type AiReplyArgs,
+  type BookingNoticeArgs,
   type ContactNoticeArgs,
   type MessengerClickArgs,
   type NoticeParts,
@@ -49,13 +57,17 @@ export const BAR_COLOR = {
   info: '#a8a6a8',
   /** 손님 쪽 연락 — 연락처 남김, 병원 연락 단추 누름 */
   contact: '#2e9e6b',
-  /** 재촉, 전달 실패 */
+  /** 재촉, 전달 실패, 직원 확인 필요 */
   alert: '#d8452f',
+  /** AI 응대가 받은 가예약 */
+  booking: '#2f6fde',
 } as const;
 export type BarKind = keyof typeof BAR_COLOR;
 
 export const NOTICE_LOOK: SlackLook = { username: 'LIV 알림', iconEmoji: ':bell:' };
 export const COPY_LOOK: SlackLook = { username: '번역본 · 복사용', iconEmoji: ':clipboard:' };
+/** AI가 손님에게 한 답의 요지 (스펙 2026-10-02 chat-ai-first-response §4.11) — 직원만 보는 이름표다 */
+export const AI_LOOK: SlackLook = { username: 'AI 응대', iconEmoji: ':speech_balloon:' };
 
 const STAFF_COPY_ICON = ':leftwards_arrow_with_hook:';
 const UNKNOWN_LOCALE_ICON = ':globe_with_meridians:';
@@ -265,4 +277,21 @@ export function styledEscalation(args: {
 export function styledDeliveryFailure(reason: string): StyledMessage {
   const parts = deliveryFailureParts(reason);
   return notice('alert', parts.headline, buildDeliveryFailureText(reason), { notes: parts.notes });
+}
+
+// ── AI 1차 응대 (스펙 2026-10-02 chat-ai-first-response §4.11) ───────────────
+
+/** AI가 손님에게 한 답의 요지. 멘션도 막대도 없다 — 방에 조용히 쌓인다. */
+export function styledAiReply(args: AiReplyArgs): StyledMessage {
+  return { ...AI_LOOK, text: buildAiReplyBody(args), plainText: buildAiReplyText(args) };
+}
+
+/** 가예약(또는 가예약 변경): 멘션은 최상위 text에, 내용은 파란 막대에. */
+export function styledBookingNotice(args: BookingNoticeArgs & { mention: string }): StyledMessage {
+  return notice('booking', bookingNoticeHeadline(args), buildBookingNoticeText(args), { text: args.mention });
+}
+
+/** 직원 확인 필요: 빨간 막대. mention 이 '' 이면(같은 대화에서 이미 알렸다) 막대만 조용히 올라간다. */
+export function styledStaffNeeded(args: { reason: string | null; mention: string }): StyledMessage {
+  return notice('alert', staffNeededHeadline(args.reason), buildStaffNeededText(args), { text: args.mention });
 }
