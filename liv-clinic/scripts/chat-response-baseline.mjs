@@ -1,6 +1,7 @@
 // 채팅 응답 실측 (읽기 전용) — "연락처 먼저" 설계(docs/superpowers/specs/2026-10-01-chat-contact-first-design.md)의
 // 목표 G-1~G-6을 같은 정의로 다시 재기 위한 스크립트. 아무것도 변경하지 않는다(READ ONLY 트랜잭션).
 // 항목 10·11 은 "AI 1차 응대 + 가예약" 설계(2026-10-02-chat-ai-first-response-design.md §2 · §4.14)의 지표다.
+// 항목 12 는 "제안형 응대" 설계(2026-10-12-chat-ai-guided-offers-design.md §4.8)의 지표다.
 //
 // 실행 (liv-clinic 폴더에서):
 //   NODE_TLS_REJECT_UNAUTHORIZED=0 node scripts/chat-response-baseline.mjs [--since 2026-05-08] [--card-since 2026-08-09]
@@ -13,10 +14,11 @@
 //   - 이름·연락처 값은 읽지 않고 유무만 센다.
 //   - 이벤트 안내(항목 9): 자동 안내(source='auto') 가운데 본문이 이벤트 페이지 주소(…/events 또는 …/events/…)로 끝나는 글.
 //   - AI 응대(항목 10) · 가예약(항목 11): SQL 과 정의는 scripts/_db/chat-ai-metrics.mjs. 043 적용 전이면 건너뛴다.
+//   - 제안형 응대(항목 12): 같은 파일. 044 적용 전이면 건너뛴다.
 
 import { readFileSync } from 'node:fs';
 import { createRequire } from 'node:module';
-import { AI_TABLES_SQL, aiReplyDelaySql, aiTurnsSql, bookingsSql } from './_db/chat-ai-metrics.mjs';
+import { AI_TABLES_SQL, aiOffersSql, aiReactionsSql, aiReplyDelaySql, aiTurnsSql, bookingsSql } from './_db/chat-ai-metrics.mjs';
 
 const require = createRequire(new URL('../package.json', import.meta.url));
 const { Client } = require('pg');
@@ -203,6 +205,12 @@ if (aiTableRows[0]?.turns && aiTableRows[0]?.bookings) {
   await q('10. AI 응대 — 답한 대화·나간 답·접수 안내로 대신함·직원 확인 필요', aiTurnsSql(SINCE));
   await q('10-2. 손님 글 → AI 답(초)', aiReplyDelaySql(SINCE));
   await q('11. 가예약 — 건수·문의 대비 비율·직원 첫 답까지', bookingsSql(SINCE));
+  if (aiTableRows[0]?.offers) {
+    await q('12. 제안형 응대 — 제안이 나간 대화·종류·제안 뒤 손님 반응·가예약·거절·혜택', aiOffersSql(SINCE));
+    await q('12-2. AI가 읽은 손님 반응 (R1 관심 · R2 가격 부담 · R3 흥정 · R4 유보 · R5 거절 · R6 의료 · R7 예약 분명)', aiReactionsSql(SINCE));
+  } else {
+    console.log('\n── 12. 제안형 응대 ──\n  (건너뜀 — chat_ai_turns.shown_keys 컬럼 없음, 044 미적용)');
+  }
 } else {
   console.log('\n── 10·11. AI 응대 · 가예약 ──\n  (건너뜀 — chat_ai_turns · chat_bookings 테이블 없음, 043 미적용)');
 }

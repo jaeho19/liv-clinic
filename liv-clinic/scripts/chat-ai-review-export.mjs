@@ -45,7 +45,7 @@ try {
   if (!tables[0]?.turns) {
     console.log('chat_ai_turns 테이블이 없습니다 — 043 을 적용하기 전입니다.');
   } else {
-    const { rows: messages } = await db.query(aiReviewMessagesSql(SINCE));
+    const { rows: messages } = await db.query(aiReviewMessagesSql(SINCE, { offers: Boolean(tables[0]?.offers) }));
     const { rows: misses } = await db.query(aiReviewMissesSql(SINCE));
     const text = renderAiReview(messages, misses, { since: SINCE, includeTest: INCLUDE_TEST });
     mkdirSync(OUT_DIR, { recursive: true });
