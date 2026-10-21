@@ -10,13 +10,13 @@
 
 **Spec:** `docs/superpowers/specs/2026-10-02-chat-ai-first-response-design.md` (원장님 승인 2026-10-02 — 설계 1/3 · 2/3 · 3/3)
 
-**2단계 (2026-10-21 추가):** 제안형 응대(대표원장님 회신 반영 — 채팅 예약 혜택 · 승인된 이달 구성 제안 · 반응 7가지)는 별도 계획서 `docs/superpowers/plans/2026-10-21-chat-ai-guided-offers.md`(**Task 28~42**)에 있다. **이 계획(Task 0~27)을 다 마친 뒤** 이어서 한다. 이 계획의 코드 블록과 대조 값은 바뀌지 않았다.
+**2단계 (2026-10-21 추가):** 제안형 응대(대표원장님 회신 반영 — 채팅 예약 혜택 · 승인된 이달 구성 제안 · 반응 7가지)는 별도 계획서 `docs/superpowers/plans/2026-10-21-chat-ai-guided-offers.md`(**Task 28~42**)에 있다. **이 계획(Task 0~27)을 다 마친 뒤** 이어서 한다. 2단계를 더하면서 이 계획의 코드 블록과 대조 값은 바뀌지 않았다.
 
-**이 계획의 코드는 실행해 본 것이다.** 이 워크트리의 임시 브랜치(`scratch/chat-ai-dev`)에서 아래 과제를 순서대로 구현해 확인했다(2026-10-02): 테스트 81파일 1354건 통과(기준선 60파일 988건), `npx tsc --noEmit` 통과, 변경 파일 `npx eslint` 통과, `npm run build` 성공, 화면 확인 31개 항목 통과(가짜 API). 마이그레이션 043과 측정 SQL은 로컬 Postgres(PGlite)에서 돌려 확인했고, 실제 모델로는 재생 시험 도구로 사례 43개(10개 언어, 손님 글 47건)를 돌려 47건 모두 답이 나가는 것을 확인했다(접수 안내로 대신한 답 0 · 검사에 걸려 다시 쓴 답 0 · 모델 호출이 12초 시간 한도에 걸려 다시 부른 답 1, 답까지 중앙값 3.6초 · 다시 부른 1건은 16.0초, 나머지는 5.4초 안). 구현 뒤 독립 검토를 세 번 받았고(대화 흐름 · 저장 순서 12가지, 출력 검사를 빠져나가는 길 15가지, 고친 검사에 글 약 2,100개를 넣어 본 검토에서 빠져나가는 길 14종류 · 멀쩡한 글이 걸리는 경우 7종류), 고친 내용이 이 계획의 코드에 들어 있다. 운영 DB · Slack · Netlify에는 닿지 않았다(운영 DB는 읽기 전용 조회만 했다). 그 뒤 **이 계획서만 가지고** 기준선에서 처음부터 다시 적용해(아래 `plan-apply.mjs`로 블록을 꺼내 적용) 과제마다 같은 테스트 건수와 같은 파일 내용이 나오는 것까지 확인했다. 과제마다 적힌 "실패 · 통과 건수"와 "대조 값"은 그때의 실제 값이다.
+**이 계획의 코드는 실행해 본 것이다.** 이 워크트리의 임시 브랜치(`scratch/chat-ai-dev`)에서 아래 과제를 순서대로 구현해 확인했다(2026-10-02 — 2026-10-21에 그 사이 운영에 나간 master `e0e8dc3`(10/20 문신 제거 탭 폐지 · 가격표 이동 등) 위로 옮겨 측정 · 재현을 다시 했다): 테스트 81파일 1355건 통과(기준선 60파일 989건), `npx tsc --noEmit` 통과, 변경 파일 `npx eslint` 통과, `npm run build` 성공, 화면 확인 31개 항목 통과(가짜 API). 마이그레이션 043과 측정 SQL은 로컬 Postgres(PGlite)에서 돌려 확인했고, 실제 모델로는 재생 시험 도구로 사례 43개(10개 언어, 손님 글 47건)를 돌려 47건 모두 답이 나가는 것을 확인했다(접수 안내로 대신한 답 0 · 검사에 걸려 다시 쓴 답 0 · 모델 호출이 12초 시간 한도에 걸려 다시 부른 답 1, 답까지 중앙값 3.6초 · 다시 부른 1건은 16.0초, 나머지는 5.4초 안). 2026-10-21에 운영 master 위로 옮긴 뒤 같은 사례를 다시 돌려 47건 모두 답이 나가는 것을 확인했다(대신 0 · 다시 쓴 답 0 · 다시 부른 답 0, 중앙값 3.7초 · 가장 긴 답 5.8초). 구현 뒤 독립 검토를 세 번 받았고(대화 흐름 · 저장 순서 12가지, 출력 검사를 빠져나가는 길 15가지, 고친 검사에 글 약 2,100개를 넣어 본 검토에서 빠져나가는 길 14종류 · 멀쩡한 글이 걸리는 경우 7종류), 고친 내용이 이 계획의 코드에 들어 있다. 운영 DB · Slack · Netlify에는 닿지 않았다(운영 DB는 읽기 전용 조회만 했다). 그 뒤 **이 계획서만 가지고** 기준선에서 처음부터 다시 적용해(아래 `plan-apply.mjs`로 블록을 꺼내 적용) 과제마다 같은 테스트 건수와 같은 파일 내용이 나오는 것까지 확인했다. 과제마다 적힌 "실패 · 통과 건수"와 "대조 값"은 그때의 실제 값이다.
 
 ## Global Constraints
 
-- **작업 위치**: 워크트리 `D:\dev\LIV_homepage-slack-rooms`, 브랜치 `feature/chat-ai-first-response`(운영 master `b1c444a`에서 분기, 설계서 · 계획서 커밋이 얹혀 있다). 메인 폴더 `D:\dev\LIV_homepage`(master)는 다른 세션이 쓴다 — 거기서 브랜치를 바꾸거나 작업하지 않는다. 이 워크트리에서도 다른 브랜치로 체크아웃하지 않는다.
+- **작업 위치**: 워크트리 `D:\dev\LIV_homepage-slack-rooms`, 브랜치 `feature/chat-ai-first-response`(운영 master `e0e8dc3`에서 분기, 설계서 · 계획서 커밋이 얹혀 있다). 메인 폴더 `D:\dev\LIV_homepage`(master)는 다른 세션이 쓴다 — 거기서 브랜치를 바꾸거나 작업하지 않는다. 이 워크트리에서도 다른 브랜치로 체크아웃하지 않는다.
 - **로컬에 `scratch/chat-ai-dev` 브랜치가 남아 있다**: 이 계획서를 만들 때 코드를 먼저 구현해 검증한 흔적이다(푸시되지 않았다). 체크아웃하거나 병합하지 않는다 — 구현은 이 계획서의 과제대로 한다. 대조가 어긋나 어디가 다른지 봐야 할 때만 `git diff scratch/chat-ai-dev -- <파일>`로 참고한다. 운영 반영(Task 27)이 끝난 뒤 지운다.
 - **명령의 실행 위치**: 아래 명령은 전부 `cd`를 포함해 적었다. **루트** = `D:/dev/LIV_homepage-slack-rooms`(git · `plan-apply.mjs`), **앱** = `D:/dev/LIV_homepage-slack-rooms/liv-clinic`(npm · npx · node 스크립트). npm 명령을 루트에서 실행하지 않는다.
 - **이 PC는 TLS 프록시 뒤다**: `npm run build`에는 `NEXT_TURBOPACK_EXPERIMENTAL_USE_SYSTEM_TLS_CERTS=1`, OpenAI · DB · Netlify를 부르는 명령에는 `NODE_TLS_REJECT_UNAUTHORIZED=0`을 붙인다(명령에 이미 적혀 있다).
@@ -34,7 +34,7 @@
 - **환경변수**(모두 신설, 비어 있으면 기본값): `CHAT_AI`(`on` | `test` | 그 밖 = 꺼짐), `OPENAI_CHAT_AI_MODEL`, `OPENAI_CHAT_AI_REASONING_EFFORT`, `CHAT_AI_TIMEOUT_MS`, `CHAT_AI_MAX_REPLIES`, `CHAT_AI_DAILY_MAX`, `CHAT_AI_NOTICE`. `OPENAI_API_KEY`는 번역이 쓰는 것을 그대로 쓴다. 로컬 `.env.local`에는 `CHAT_AI`를 넣지 않는다(테스트는 스스로 값을 넣고 지운다).
 - **`output/ai-first-response/`는 커밋하지 않는다**: 원장님 엑셀과 재생 시험 결과가 들어 있다(실제 문의로 돌리면 이름 · 연락처가 들어간다). Task 12가 이 폴더를 git이 무시하게 한다. 그 전에는 `git add`에 이 폴더가 딸려 들어가지 않게 파일을 하나씩 지정한다.
 - **OpenAI를 실제로 부르는 단계는 Task 12의 한 번(약 2센트)과 Task 26뿐이다**: 나머지 테스트는 모델을 가짜로 대신한다. 재생 시험은 메모리 DB를 쓰므로 운영 DB · Slack에 닿지 않는다.
-- **검증 게이트**: `npx vitest run` · `npx tsc --noEmit` · 변경 파일만 `npx eslint <files>`(리포 전체 lint에는 기존 오류가 있다) · `npm run build`. 기준선(2026-10-02, 이 브랜치): 테스트 60파일 988건 통과.
+- **검증 게이트**: `npx vitest run` · `npx tsc --noEmit` · 변경 파일만 `npx eslint <files>`(리포 전체 lint에는 기존 오류가 있다) · `npm run build`. 기준선(2026-10-21, 이 브랜치): 테스트 60파일 989건 통과.
 - **Grep 도구**: `glob`에 폴더 경로를 넣으면 이 PC에서 거짓 0건이 나온다. 폴더는 `path`로 좁힌다.
 - **커밋 메시지**: 한국어 `type(scope): 요약`. 끝에 세션의 Co-Authored-By 줄을 붙인다(아래 명령에는 `Claude Fable 5.1`로 적혀 있다 — 세션 안내가 다른 줄을 주면 그 줄을 쓴다). 커밋할 때는 그 과제의 파일만 `git add` 한다(`plan-apply.mjs`와 `.plan-local/`이 딸려 들어가지 않게). 푸시는 하지 않는다(Task 27).
 
@@ -101,7 +101,7 @@
 | 7 | 고지 한 줄은 `CHAT_AI_NOTICE=on`이면 (§4.10) | 그 대화가 AI 응대 대상일 때만 보인다(AI가 꺼져 있으면 스위치만 켜도 안 보인다). 직원이 맡은 뒤에도 남는다 | 사실과 다른 고지를 막는다 |
 | 8 | 관리자 화면의 가예약 줄 `접수 10/02 16:20` (§4.12) | `접수 10/02(금) 16:20`, 화면을 열 때의 값(실시간 갱신 없음) | 지금의 날짜 표기 함수(`formatKst`)를 쓴다. 가예약 알림은 Slack이 실시간으로 준다 |
 | 9 | 측정 항목 10 · 11 (§4.14) | 항목 10-2(손님 글 → AI 답, 초)를 더했다 | G-1 · G-2의 기준이 "손님 글에서 답까지"다 |
-| 10 | 가격 줄 이름은 홈페이지 번역을 그대로 (§4.3) | 그 번역의 뚜렷한 오역 247곳과 가격표 머리글 6곳을 바로잡는다(Task 21) | 베트남어 "300장 사진", 태국어 "국내 보험료", 러시아어 "길들인" 같은 기계 번역이 AI의 금액 줄로 손님에게 나가게 된다. 홈페이지 가격표도 함께 고쳐진다 |
+| 10 | 가격 줄 이름은 홈페이지 번역을 그대로 (§4.3) | 그 번역의 뚜렷한 오역 244곳과 가격표 머리글 6곳을 바로잡는다(Task 21 — 2026-10-20에 문신 표에서 기미/색소 표로 옮겨 온 반영구 화장 제거 · CO2 줄도 포함) | 베트남어 "300장 사진", 태국어 "국내 보험료", 러시아어 "길들인" 같은 기계 번역이 AI의 금액 줄로 손님에게 나가게 된다. 홈페이지 가격표도 함께 고쳐진다 |
 | 11 | 🙋 멘션은 대화당 한 번 (§4.8) | 멘션했는지 기록하지 못하면(DB 오류) 멘션한다 | 놓치는 것보다 한 번 더 울리는 편이 낫다 |
 | 12 | 재생 시험은 "임시 vitest 설정으로" (§8) | `vitest.live.config.ts`와 `test/live/`를 저장소에 둔다. `output/ai-first-response/`는 git이 무시한다 | 매달 프로모션을 갱신할 때 다시 쓴다. 결과에 실제 문의가 들어갈 수 있다 |
 | 13 | 처리방침 문구 (부록 D) | 과제로 분리했고(Task 24), 시행일을 바꿀지는 승인 때 함께 정한다 | 승인 전에는 적용하지 않는다 |
@@ -120,19 +120,20 @@
 | 26 | 가예약의 연락처는 AI가 채운다 (§4.7) | AI가 낸 연락처는 **손님 글에 실제로 있는 것만** 받는다(전화번호는 숫자만 견준다). 없으면 버린다 | AI가 지어낸 번호나 다른 사람의 아이디가 가예약 요약에 찍히고 "손님 연락처"로 검사를 통과할 수 있었다 |
 | 27 | 검사에 걸린 이유는 `chat_ai_turns.issues`에 남긴다 (§4.6) | 다시 써서 **나간** 답의 기록에도 처음 쓴 글이 걸린 이유를 남긴다. 점검용 내보내기와 재생 표가 그 이유를 보여 준다(이유 안의 번호 · 메일은 가린다) | 답이 나가면 이유가 사라져, 멀쩡한 답이 왜 다시 쓰였는지(답이 4초에서 7~10초로 늦어진다) 알 수 없었다 |
 | 28 | 금지 표현은 쓰지 않는다 (부록 A) | "영구적인가요 · 보장하나요 · 최고인가요"에 답하는 법을 지시문에 적었다: 유지 기간 · 개인차 · 상담에서 설명. `not permanent` · `cannot guarantee`는 써도 되고, 손님이 쓴 그 밖의 낱말(best · 100% · forever)은 부정할 때도 되풀이하지 않는다. 부작용 · 안전 질문은 답하고 나서 직원에게도 알린다(🙋) | 재생 시험에서 이런 질문 16건 가운데 7건이 처음에 검사에 걸려 다시 쓰였다(고친 뒤 같은 16건을 다시 돌려 0~1건) |
+| 29 | 사실 문장은 홈페이지 가격표 · 시술 페이지를 따른다 (§4.3) | 2026-10-20에 문신 제거 탭이 없어진 것에 맞춰 레이저 줄을 "CO2 점 제거, 눈썹 · 아이라인 문신(화장 문신) 제거. 바디 타투는 하지 않는다"로 쓰고, 이 시술을 손님 글에서는 늘 "눈썹 · 아이라인 문신 제거"라고 부르게 했다 | 기미/색소 표로 옮겨 온 가격 줄의 이름 "반영구 화장 제거"(半永久 · bán vĩnh viễn · กึ่งถาวร · перманентный)에 금지 낱말이 들어 있어, AI가 그 이름을 따라 쓰면 검사에 걸려 다시 쓰게 된다(2026-10-21 임시 사례 7개에서 5개 → 1개, 남은 1개는 손님이 쓴 낱말을 따라 쓴 것). 검사는 고치지 않았다 |
 
 ## 작업 순서 한눈에 보기
 
 | 묶음 | 과제 | 무엇을 만드는가 | 전체 테스트 | 운영에 닿는가 |
 |------|------|-----------------|-------------|---------------|
-| 준비 | 0 | 기준선 확인, `plan-apply.mjs`(임시) | 60파일 988건 | 아니오 |
-| 바탕 | 1~2 | 043(파일만) · 검증 · 타입 · 스위치, 답할 차례 규칙 | 60파일 990건 → 61파일 1003건 | 아니오 (043은 로컬 Postgres에서만) |
-| 근거 자료와 달력 | 3~5 | 사실 문장 · 가격 줄, 달력, 가예약 규칙 | 62파일 1020건 → 64파일 1070건 | 아니오 |
-| 답을 만드는 부품 | 6~10 | 고정 문구, 검사, 조립, 지시문, 모델 호출 | 65파일 1092건 → 70파일 1209건 | 아니오 |
-| 실행기와 재생 도구 | 11~12 | 한 차례 실행기 · 가예약 저장소, 재생 시험 도구 | 72파일 1263건 | 아니오 (Task 12에서 OpenAI 1회) |
-| Slack과 연결 | 13~16 | 문구 · 모양, 릴레이, 손님 글 처리에 연결, 요약 | 73파일 1274건 → 78파일 1326건 | 아니오 |
-| 화면 | 17~19 | 손님 화면용 신호, 손님 화면, 관리자 화면 | 79파일 1340건 → 81파일 1354건 | 아니오 |
-| 마무리 | 20~23 | 측정 항목, 가격 이름 번역, 문서, 전체 검증(빌드 · 화면 확인) | 81파일 1354건 | 아니오 (화면 확인은 가짜 응답으로) |
+| 준비 | 0 | 기준선 확인, `plan-apply.mjs`(임시) | 60파일 989건 | 아니오 |
+| 바탕 | 1~2 | 043(파일만) · 검증 · 타입 · 스위치, 답할 차례 규칙 | 60파일 991건 → 61파일 1004건 | 아니오 (043은 로컬 Postgres에서만) |
+| 근거 자료와 달력 | 3~5 | 사실 문장 · 가격 줄, 달력, 가예약 규칙 | 62파일 1021건 → 64파일 1071건 | 아니오 |
+| 답을 만드는 부품 | 6~10 | 고정 문구, 검사, 조립, 지시문, 모델 호출 | 65파일 1093건 → 70파일 1210건 | 아니오 |
+| 실행기와 재생 도구 | 11~12 | 한 차례 실행기 · 가예약 저장소, 재생 시험 도구 | 72파일 1264건 | 아니오 (Task 12에서 OpenAI 1회) |
+| Slack과 연결 | 13~16 | 문구 · 모양, 릴레이, 손님 글 처리에 연결, 요약 | 73파일 1275건 → 78파일 1327건 | 아니오 |
+| 화면 | 17~19 | 손님 화면용 신호, 손님 화면, 관리자 화면 | 79파일 1341건 → 81파일 1355건 | 아니오 |
+| 마무리 | 20~23 | 측정 항목, 가격 이름 번역, 문서, 전체 검증(빌드 · 화면 확인) | 81파일 1355건 | 아니오 (화면 확인은 가짜 응답으로) |
 | 승인 · 자료가 있을 때 | 24~26 | 처리방침 문구(U-5), 원장님 엑셀 반영(U-1), 재생 표(U-6) | — | 아니오 (Task 26은 OpenAI 호출) |
 | 운영 반영 | 27 | 043 적용 → 배포(꺼진 채) → 시험 모드 → 전체 켜기 | — | **예 — 승인 ①~④** |
 
@@ -157,13 +158,13 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms" && git status -sb | head -4 && git log --oneline -4
 ```
-Expected: 첫 줄 `## feature/chat-ai-first-response`. 그 아래에는 `?? output/ai-first-response/` 한 줄만 있거나 아무것도 없다(이 폴더는 원장님 엑셀이 든 작업 폴더다 — Task 12에서 git이 무시하게 한다. 그 전까지 `git add`에 넣지 않는다). 로그 위쪽에 이 계획서와 설계서의 `docs(chat): …` 커밋들이 있고 그 아래 `b1c444a docs(chat): 재촉 알림 끔 …`이 있다(코드 커밋은 아직 없다). 브랜치가 다르면 멈추고 보고한다(`git switch feature/chat-ai-first-response`만 허용).
+Expected: 첫 줄 `## feature/chat-ai-first-response`. 그 아래에는 `?? output/ai-first-response/` 한 줄만 있거나 아무것도 없다(이 폴더는 원장님 엑셀이 든 작업 폴더다 — Task 12에서 git이 무시하게 한다. 그 전까지 `git add`에 넣지 않는다). 로그 위쪽에 이 계획서와 설계서의 `docs(chat): …` 커밋들이 있고 그 아래 `e0e8dc3 fix(i18n): 김수영 대표원장 번역을 여성형으로 통일 …`이 있다(코드 커밋은 아직 없다). 브랜치가 다르면 멈추고 보고한다(`git switch feature/chat-ai-first-response`만 허용).
 
 Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms" && git fetch origin && git log --oneline -1 origin/master
 ```
-Expected: `b1c444a …`(계획을 쓸 때의 운영 master). 다른 커밋이면 그 사이 운영에 무엇인가 나간 것이다 — 멈추고 원장님께 알린 뒤, 이 브랜치에 `origin/master`를 병합하고 시작한다(충돌이 나면 보고한다).
+Expected: `e0e8dc3 …`(계획을 쓸 때의 운영 master). 다른 커밋이면 그 사이 운영에 무엇인가 나간 것이다 — 멈추고 원장님께 알린 뒤, 이 브랜치에 `origin/master`를 병합하고 시작한다(충돌이 나면 보고한다).
 
 - [ ] **Step 2: 기준선 테스트와 타입 검사**
 
@@ -171,7 +172,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK
 ```
-Expected: `Test Files 60 passed (60)`, `Tests 988 passed (988)`, `TSC-OK`. 다르면 시작하지 않고 원인을 찾는다.
+Expected: `Test Files 60 passed (60)`, `Tests 989 passed (989)`, `TSC-OK`. `tsc`가 `.next/types/validator.ts`에서 없는 페이지(예: `laser/tattoo/page.js` — 2026-10-20에 없어졌다)를 찾지 못한다는 오류만 내면 예전 빌드가 남긴 파일이다: `cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && rm -rf .next` 뒤 이 명령을 다시 돌린다(`.next`는 빌드 때 다시 생긴다). 그 밖에 다르면 시작하지 않고 원인을 찾는다.
 
 - [ ] **Step 3: `plan-apply.mjs`를 워크트리 루트에 만든다**
 
@@ -1126,7 +1127,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/chatFlags.ts" "src/lib/chat/__tests__/chatFlags.test.ts" "scripts/_db/verify-043.mjs" "scripts/_db/run-043.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 60 passed (60)`, `Tests 990 passed (990)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 60 passed (60)`, `Tests 991 passed (991)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 8: 커밋**
 
@@ -1391,7 +1392,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/eligibility.ts" "src/lib/chat/ai/__tests__/eligibility.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 61 passed (61)`, `Tests 1003 passed (1003)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 61 passed (61)`, `Tests 1004 passed (1004)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -1779,7 +1780,7 @@ export const CLINIC_FACTS_KO = `## 병원
 ## 병원에서 하는 시술 (가격 줄이 없어도 "있다"고 답할 수 있다)
 - 리프팅: 울쎄라피 프라임, 써마지 FLX(아이 써마지 포함), 덴서티, 슈링크, 인모드, 온다 리프팅, 실리프팅(압토스·실루엣소프트·민트)
 - 주사: 보톡스(윤곽·바디·주름), 필러(국산·수입 — 레스틸렌·쥬비덤·벨로테로), 스컬트라, 쥬베룩, 리쥬란, 힐로웨이브, 그 밖의 스킨부스터
-- 레이저: 듀얼토닝(색소·홍조·피부톤), 포텐자, 제모, 문신 제거, CO2 점 제거
+- 레이저: 듀얼토닝(색소·홍조·피부톤), 포텐자, 제모, CO2 점 제거, 눈썹·아이라인 문신(화장 문신) 제거. 바디 타투(문신) 제거는 하지 않는다. 손님에게 쓰는 글에서는 이 시술을 늘 '눈썹·아이라인 문신 제거'(손님 언어로)라고 부른다 — 그 가격 줄의 이름(○○ 화장 제거)에는 금지 표현이 들어 있으니 자기 글에 옮겨 쓰거나 번역해 쓰지 않는다(이름과 금액은 금액 줄에서 프로그램이 붙인다).
 - 관리: LDM 관리, 진정 관리
 - 이 목록에 없는 시술을 물으면 있다·없다를 단정하지 않고 직원 확인으로 넘긴다.
 
@@ -2709,7 +2710,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/scope.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/priceRows.extra.ts" "src/lib/chat/ai/knowledge/priceRows.base.generated.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-price-rows.mjs" "src/lib/chat/ai/__tests__/knowledge.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 62 passed (62)`, `Tests 1020 passed (1020)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 62 passed (62)`, `Tests 1021 passed (1021)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 7: 커밋**
 
@@ -2729,9 +2730,9 @@ Expected:
 |------|----------------|
 | `liv-clinic/src/lib/chat/ai/knowledge/types.ts` | `563421a79e068368cd99082a25bbf8d1e0b77b35` |
 | `liv-clinic/src/lib/chat/ai/knowledge/scope.ts` | `f920cdcda92be96ea814c6ffaf40607b555d8bc4` |
-| `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` | `2ecaa5dae48d6ca3726418814de65c8e91e4a1cc` |
+| `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` | `e4e3ffd31cf97cf9d150e4f40f27273fde955891` |
 | `liv-clinic/src/lib/chat/ai/knowledge/priceRows.extra.ts` | `52f456ab47fecd68a3e3a6323dd27044e7fa0216` |
-| `liv-clinic/src/lib/chat/ai/knowledge/priceRows.base.generated.ts` | `8b57245b5779306d28b3ae282f722d713a39633d` |
+| `liv-clinic/src/lib/chat/ai/knowledge/priceRows.base.generated.ts` | `ecb9c947e528e12896b8dcd91726b0ec9fc3847b` |
 | `liv-clinic/src/lib/chat/ai/knowledge/index.ts` | `405a00f449725233318fcd7945ab7ebc6c075654` |
 | `liv-clinic/scripts/chat-ai-build-price-rows.mjs` | `2ddfe7275f7fe03612ded823c6d98c73cd87da5f` |
 | `liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts` | `90911410f0361a01c52bb5f3fc246c44c2ad353a` |
@@ -3173,7 +3174,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/calendar.ts" "src/lib/chat/businessHours.ts" "src/lib/chat/ai/__tests__/calendar.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 63 passed (63)`, `Tests 1040 passed (1040)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 63 passed (63)`, `Tests 1041 passed (1041)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -3995,7 +3996,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/booking.ts" "src/lib/chat/ai/__tests__/booking.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 64 passed (64)`, `Tests 1070 passed (1070)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 64 passed (64)`, `Tests 1071 passed (1071)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -4817,7 +4818,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/replyTemplates.ts" "src/lib/chat/ai/__tests__/replyTemplates.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 65 passed (65)`, `Tests 1092 passed (1092)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 65 passed (65)`, `Tests 1093 passed (1093)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -7543,7 +7544,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/amounts.ts" "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/amounts.test.ts" "src/lib/chat/ai/__tests__/guards.test.ts" "src/lib/chat/ai/__tests__/guardsCorpus.ts" && echo LINT-OK
 ```
-Expected: `Test Files 67 passed (67)`, `Tests 1167 passed (1167)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 67 passed (67)`, `Tests 1168 passed (1168)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -7904,7 +7905,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/assemble.ts" "src/lib/chat/ai/__tests__/assemble.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 68 passed (68)`, `Tests 1183 passed (1183)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 68 passed (68)`, `Tests 1184 passed (1184)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -8336,7 +8337,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/prompt.ts" "src/lib/chat/ai/__tests__/prompt.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 69 passed (69)`, `Tests 1197 passed (1197)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 69 passed (69)`, `Tests 1198 passed (1198)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -8705,7 +8706,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/openai.ts" "src/lib/chat/ai/__tests__/openai.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 70 passed (70)`, `Tests 1209 passed (1209)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 70 passed (70)`, `Tests 1210 passed (1210)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -10456,7 +10457,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/turn.ts" "src/lib/chat/ai/bookingStore.ts" "src/lib/chat/contactService.ts" "src/lib/chat/ai/__tests__/turn.test.ts" "src/lib/chat/ai/__tests__/bookingStore.test.ts" "src/lib/chat/__tests__/contactService.test.ts" "src/lib/chat/__tests__/fakeAdmin.ts" && echo LINT-OK
 ```
-Expected: `Test Files 72 passed (72)`, `Tests 1263 passed (1263)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 72 passed (72)`, `Tests 1264 passed (1264)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -11226,7 +11227,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "vitest.live.config.ts" "test/live/memoryChatDb.ts" "test/live/chatAiReplay.live.ts" && echo LINT-OK
 ```
-Expected: `Test Files 72 passed (72)`, `Tests 1263 passed (1263)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 72 passed (72)`, `Tests 1264 passed (1264)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 5: 커밋**
 
@@ -11681,7 +11682,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/slackText.ts" "src/lib/chat/slackLook.ts" "src/lib/chat/__tests__/slackAiNotices.test.ts" "src/lib/chat/__tests__/slackLook.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 73 passed (73)`, `Tests 1274 passed (1274)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 73 passed (73)`, `Tests 1275 passed (1275)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -12189,7 +12190,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/slackRelay.ts" "src/lib/chat/__tests__/slackRelayAi.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 74 passed (74)`, `Tests 1289 passed (1289)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 74 passed (74)`, `Tests 1290 passed (1290)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -13212,7 +13213,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/aiFollowups.ts" "src/lib/chat/visitorView.ts" "src/lib/chat/contactChannels.ts" "src/lib/chat/visitorMessageFollowups.ts" "src/app/api/chat/messages/route.ts" "src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" "src/lib/chat/__tests__/visitorView.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 77 passed (77)`, `Tests 1322 passed (1322)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 77 passed (77)`, `Tests 1323 passed (1323)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -13508,7 +13509,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/followupDigest.ts" "src/lib/chat/__tests__/followupDigestAi.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 78 passed (78)`, `Tests 1326 passed (1326)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 78 passed (78)`, `Tests 1327 passed (1327)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -13861,7 +13862,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/visitorFlags.ts" "src/lib/chat/ai/__tests__/visitorFlags.test.ts" "src/app/api/chat/sessions/route.ts" "src/app/api/chat/presence/route.ts" && echo LINT-OK
 ```
-Expected: `Test Files 79 passed (79)`, `Tests 1340 passed (1340)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 79 passed (79)`, `Tests 1341 passed (1341)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -14558,7 +14559,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/panelRules.ts" "src/lib/chat/__tests__/panelRules.test.ts" "src/lib/chat/chatApi.ts" "src/components/chat/ChatPanel.tsx" "scripts/_i18n-work/add-chat-ai-keys.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 80 passed (80)`, `Tests 1348 passed (1348)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 80 passed (80)`, `Tests 1349 passed (1349)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 8: 커밋**
 
@@ -14581,17 +14582,17 @@ Expected:
 | `liv-clinic/src/lib/chat/chatApi.ts` | `0cf339797d7d0d2cfd8892906f4b5ba146753d97` |
 | `liv-clinic/src/components/chat/ChatPanel.tsx` | `2037230b770cdbd72e4de626ca6b41070034eee4` |
 | `liv-clinic/scripts/_i18n-work/add-chat-ai-keys.mjs` | `bbfb172118e2cd2eb2c0f949f26ab875ccfad387` |
-| `liv-clinic/src/messages/ar.json` | `db1f0a05a610951ad3fc70ff670125dde73fc8ab` |
-| `liv-clinic/src/messages/en.json` | `49308b5f4d713c1bf326a2ddc32ba78c86383d32` |
-| `liv-clinic/src/messages/fr.json` | `34109b7006e9347a95b845e719910faae8021fb5` |
-| `liv-clinic/src/messages/ja.json` | `00d6f1eac6e6a0bc9ed7c738c1cdeb6ea05e1790` |
-| `liv-clinic/src/messages/ko.json` | `f878b32a42921b9c5c6faa55ba1bf64635b8b680` |
-| `liv-clinic/src/messages/mn.json` | `2c2bbbb96eac409c5048f21d3e248d296a563695` |
-| `liv-clinic/src/messages/ru.json` | `fcaca9375a7da53d2fa9829c3f634f849946aeaf` |
-| `liv-clinic/src/messages/th.json` | `25b033df07087bd00bab9e0731a907d2a6bbbc31` |
-| `liv-clinic/src/messages/vi.json` | `c1f5ae83a1aeaece91b64607eaee78da60ec9b8c` |
-| `liv-clinic/src/messages/zh-TW.json` | `b621a597a45639707ec81859b96462f1227f44f3` |
-| `liv-clinic/src/messages/zh.json` | `f8f99b9b8e3e5563805f74d1c6de87fc530ae015` |
+| `liv-clinic/src/messages/ar.json` | `af246c0813254378157835f03c8e5a6f716fba4e` |
+| `liv-clinic/src/messages/en.json` | `ea94e43139bffea7f96e2943b8ed8ba27ac1340c` |
+| `liv-clinic/src/messages/fr.json` | `c54661a63f4fca973027fb6bb7dc8dc1669cee83` |
+| `liv-clinic/src/messages/ja.json` | `e7f2728b51e3061b896b4df62a02642219d7f85a` |
+| `liv-clinic/src/messages/ko.json` | `fed83bf3f1703cf52c9df95fad53a53d86db135d` |
+| `liv-clinic/src/messages/mn.json` | `bd44e6bd3a71f2b17ee098b079bc690ac46edf69` |
+| `liv-clinic/src/messages/ru.json` | `61b8ae4951a08bb84d8c667fbf50d9a4e7ed0e83` |
+| `liv-clinic/src/messages/th.json` | `8c7f49400a40949f55fecc69ecea7a8ad0777175` |
+| `liv-clinic/src/messages/vi.json` | `fd5deca9da63a4999e4e74282bfe2001b12d6d5f` |
+| `liv-clinic/src/messages/zh-TW.json` | `67d9c6e231ad689caab211aac4927d545f0190c4` |
+| `liv-clinic/src/messages/zh.json` | `96c86554e32241ae638548d12fa3dfcab73ecbab` |
 
 ---
 
@@ -14845,7 +14846,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/adminView.ts" "src/lib/chat/adminBooking.ts" "src/lib/chat/__tests__/adminView.test.ts" "src/app/admin/(authenticated)/chat/[sessionId]/page.tsx" "src/app/admin/(authenticated)/chat/[sessionId]/ChatDetailClient.tsx" && echo LINT-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 81 passed (81)`, `Tests 1355 passed (1355)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -15402,7 +15403,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "scripts/_db/chat-ai-metrics.mjs" "scripts/chat-response-baseline.mjs" "scripts/chat-ai-review-export.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 81 passed (81)`, `Tests 1355 passed (1355)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -15442,7 +15443,7 @@ AI의 금액 줄은 홈페이지 가격표와 **같은 이름**을 쓴다(`src/m
 | 중국어 | `国产` | 중국 손님에게는 "중국산"으로 읽힌다 | `韩国产` |
 | 번체 | `激光` | 대만에서는 `雷射` | `雷射` |
 
-이 과제는 이름 247곳과 가격표 머리글 6곳(베트남어 · 러시아어 각 3곳)을 바로잡는다. 언어별로 바뀌는 줄 수: 영어 2 · 일본어 3 · 중국어 6 · 번체 18 · 베트남어 50 · 태국어 42 · 러시아어 65 · 프랑스어 31 · 몽골어 15 · 아랍어 21 = 253줄. 장비 · 제품 이름(Thermage · Density · Rejuran · Xeomin 등)은 로마자로 두고, 샷 수 · 부위 · 단위만 그 언어의 말로 적었다. **원어민 검수는 받지 않았다**(원장님께 보고할 것). 홈페이지의 시술 페이지 가격표도 함께 고쳐진다.
+이 과제는 이름 244곳과 가격표 머리글 6곳(베트남어 · 러시아어 각 3곳)을 바로잡는다. 언어별로 바뀌는 줄 수: 영어 2 · 일본어 3 · 중국어 6 · 번체 17 · 베트남어 50 · 태국어 41 · 러시아어 64 · 프랑스어 31 · 몽골어 15 · 아랍어 21 = 250줄. 2026-10-20에 문신 제거 표가 없어지며 기미/색소 표로 옮겨 온 줄(반영구 화장 제거 1부위 · CO2 레이저 5줄)은 옛 문신 표의 번역을 그대로 가져왔다 — 그 오역(러시아어 `Анфас`(정면 사진) · 몽골어 `үүлдэр`(품종) · 베트남어 `Đường kính 3 mm`(≤ 빠짐) 같은 것)도 여기서 고친다. 장비 · 제품 이름(Thermage · Density · Rejuran · Xeomin 등)은 로마자로 두고, 샷 수 · 부위 · 단위만 그 언어의 말로 적었다. **원어민 검수는 받지 않았다**(원장님께 보고할 것). 홈페이지의 시술 페이지 가격표도 함께 고쳐진다.
 
 `사넬주사`(샤넬주사인지 확인 필요)는 건드리지 않는다 — AI에게 주지 않는 줄이다(Task 3의 `STAFF_ONLY_KEYS`).
 
@@ -15637,8 +15638,7 @@ if (failed) process.exitCode = 1;
     "pricing.labels.skinbooster.juvelook": "Juvelook Skin Booster",
     "pricing.labels.skinbooster.elementWhitening": "Element 美白 Booster",
     "pricing.labels.skinbooster.stemcell": "幹細胞 Skin Booster",
-    "pricing.labels.tattoo.tattooLucas": "除刺青雷射 (Lucas)",
-    "pricing.labels.tattoo.co2Laser": "CO2雷射",
+    "pricing.labels.pigmentation.co2Laser": "CO2雷射",
     "pricing.labels.pigmentation.dualToning": "雙波長雷射 (Clarity + Lucas)",
     "pricing.labels.vascular.dualToning": "雙波長雷射 (Clarity + Lucas)",
     "pricing.labels.skintone.dualToning": "雙波長雷射 (Clarity + Lucas)",
@@ -15678,12 +15678,12 @@ if (failed) process.exitCode = 1;
     "pricing.labels.vascular.dualToningDesc": "Đỏ da / Giãn mao mạch",
     "pricing.labels.skintone.dualToningDesc": "Cải thiện tông da",
     "pricing.labels.hairRemoval.dualToningDesc": "Triệt lông",
-    "pricing.labels.tattoo.onePart": "1 vùng",
-    "pricing.labels.tattoo.dia3mm": "Đường kính ≤ 3 mm (1 nốt)",
-    "pricing.labels.tattoo.dia5mm": "3 mm < Đường kính ≤ 5 mm (1 nốt)",
-    "pricing.labels.tattoo.diaOver5mm": "Đường kính > 5 mm (1 nốt)",
-    "pricing.labels.tattoo.faceFull": "Toàn mặt (từ 50 nốt)",
-    "pricing.labels.tattoo.neckFull": "Toàn cổ (từ 50 nốt)",
+    "pricing.labels.pigmentation.semiPermanentOnePart": "1 vùng",
+    "pricing.labels.pigmentation.dia3mm": "Đường kính ≤ 3 mm (1 nốt)",
+    "pricing.labels.pigmentation.dia5mm": "3 mm < Đường kính ≤ 5 mm (1 nốt)",
+    "pricing.labels.pigmentation.diaOver5mm": "Đường kính > 5 mm (1 nốt)",
+    "pricing.labels.pigmentation.faceFull": "Toàn mặt (từ 50 nốt)",
+    "pricing.labels.pigmentation.neckFull": "Toàn cổ (từ 50 nốt)",
     "pricing.labels.pigmentation.dualToning": "Laser Dual Toning (Clarity + Lucas)",
     "pricing.labels.vascular.dualToning": "Laser Dual Toning (Clarity + Lucas)",
     "pricing.labels.skintone.dualToning": "Laser Dual Toning (Clarity + Lucas)",
@@ -15727,11 +15727,10 @@ if (failed) process.exitCode = 1;
     "pricing.labels.vascular.dualToningDesc": "ผิวแดง / เส้นเลือดฝอย",
     "pricing.labels.skintone.dualToningDesc": "ปรับสีผิวให้สม่ำเสมอ",
     "pricing.labels.hairRemoval.dualToningDesc": "กำจัดขน",
-    "pricing.labels.tattoo.tattooLucas": "เลเซอร์ลบรอยสัก (Lucas)",
-    "pricing.labels.tattoo.onePart": "1 ตำแหน่ง",
-    "pricing.labels.tattoo.co2Desc": "ไฝ / หูดแบน / กระเนื้อ ฯลฯ",
-    "pricing.labels.tattoo.faceFull": "ทั้งใบหน้า (50 จุดขึ้นไป)",
-    "pricing.labels.tattoo.neckFull": "ทั้งลำคอ (50 จุดขึ้นไป)",
+    "pricing.labels.pigmentation.semiPermanentOnePart": "1 ตำแหน่ง",
+    "pricing.labels.pigmentation.co2Desc": "ไฝ / หูดแบน / กระเนื้อ ฯลฯ",
+    "pricing.labels.pigmentation.faceFull": "ทั้งใบหน้า (50 จุดขึ้นไป)",
+    "pricing.labels.pigmentation.neckFull": "ทั้งลำคอ (50 จุดขึ้นไป)",
     "pricing.labels.pigmentation.dualToning": "เลเซอร์ Dual Toning (Clarity + Lucas)",
     "pricing.labels.vascular.dualToning": "เลเซอร์ Dual Toning (Clarity + Lucas)",
     "pricing.labels.skintone.dualToning": "เลเซอร์ Dual Toning (Clarity + Lucas)",
@@ -15788,14 +15787,13 @@ if (failed) process.exitCode = 1;
     "pricing.labels.pigmentation.pumpingTip": "Pumping Tip",
     "pricing.labels.vascular.dualToningDesc": "Покраснение / сосуды",
     "pricing.labels.hairRemoval.dualToningDesc": "Удаление волос",
-    "pricing.labels.tattoo.tattooLucas": "Лазерное удаление татуировок (Lucas)",
-    "pricing.labels.tattoo.onePart": "1 зона",
-    "pricing.labels.tattoo.co2Desc": "Родинки / плоские бородавки / возрастные пятна и т. д.",
-    "pricing.labels.tattoo.dia3mm": "Диаметр ≤ 3 мм (1 шт.)",
-    "pricing.labels.tattoo.dia5mm": "3 мм < диаметр ≤ 5 мм (1 шт.)",
-    "pricing.labels.tattoo.diaOver5mm": "Диаметр > 5 мм (1 шт.)",
-    "pricing.labels.tattoo.faceFull": "Всё лицо (от 50 шт.)",
-    "pricing.labels.tattoo.neckFull": "Вся шея (от 50 шт.)",
+    "pricing.labels.pigmentation.semiPermanentOnePart": "1 зона",
+    "pricing.labels.pigmentation.co2Desc": "Родинки / плоские бородавки / возрастные пятна и т. д.",
+    "pricing.labels.pigmentation.dia3mm": "Диаметр ≤ 3 мм (1 шт.)",
+    "pricing.labels.pigmentation.dia5mm": "3 мм < диаметр ≤ 5 мм (1 шт.)",
+    "pricing.labels.pigmentation.diaOver5mm": "Диаметр > 5 мм (1 шт.)",
+    "pricing.labels.pigmentation.faceFull": "Всё лицо (от 50 шт.)",
+    "pricing.labels.pigmentation.neckFull": "Вся шея (от 50 шт.)",
     "pricing.labels.pigmentation.dualToning": "Лазер Dual Toning (Clarity + Lucas)",
     "pricing.labels.vascular.dualToning": "Лазер Dual Toning (Clarity + Lucas)",
     "pricing.labels.skintone.dualToning": "Лазер Dual Toning (Clarity + Lucas)",
@@ -15826,12 +15824,12 @@ if (failed) process.exitCode = 1;
     "pricing.labels.skinbooster.glow": "Injection éclat (Water Glow)",
     "pricing.labels.vascular.dualToningDesc": "Rougeurs / vaisseaux",
     "pricing.labels.hairRemoval.dualToningDesc": "Épilation",
-    "pricing.labels.tattoo.onePart": "1 zone",
-    "pricing.labels.tattoo.dia3mm": "Diamètre ≤ 3 mm (1 unité)",
-    "pricing.labels.tattoo.dia5mm": "3 mm < diamètre ≤ 5 mm (1 unité)",
-    "pricing.labels.tattoo.diaOver5mm": "Diamètre > 5 mm (1 unité)",
-    "pricing.labels.tattoo.faceFull": "Visage entier (50 unités et plus)",
-    "pricing.labels.tattoo.neckFull": "Cou entier (50 unités et plus)",
+    "pricing.labels.pigmentation.semiPermanentOnePart": "1 zone",
+    "pricing.labels.pigmentation.dia3mm": "Diamètre ≤ 3 mm (1 unité)",
+    "pricing.labels.pigmentation.dia5mm": "3 mm < diamètre ≤ 5 mm (1 unité)",
+    "pricing.labels.pigmentation.diaOver5mm": "Diamètre > 5 mm (1 unité)",
+    "pricing.labels.pigmentation.faceFull": "Visage entier (50 unités et plus)",
+    "pricing.labels.pigmentation.neckFull": "Cou entier (50 unités et plus)",
     "pricing.labels.pigmentation.dualToning": "Laser Dual Toning (Clarity + Lucas)",
     "pricing.labels.vascular.dualToning": "Laser Dual Toning (Clarity + Lucas)",
     "pricing.labels.skintone.dualToning": "Laser Dual Toning (Clarity + Lucas)",
@@ -15847,8 +15845,8 @@ if (failed) process.exitCode = 1;
     "pricing.labels.skinbooster.glow": "Water Glow тарилга",
     "pricing.labels.vascular.dualToningDesc": "Улайлт / судас",
     "pricing.labels.hairRemoval.dualToningDesc": "Үс арилгах",
-    "pricing.labels.tattoo.onePart": "1 хэсэг",
-    "pricing.labels.tattoo.co2Desc": "Мэнгэ / хавтгай үү / насны толбо гэх мэт",
+    "pricing.labels.pigmentation.semiPermanentOnePart": "1 хэсэг",
+    "pricing.labels.pigmentation.co2Desc": "Мэнгэ / хавтгай үү / насны толбо гэх мэт",
     "pricing.labels.pigmentation.dualToning": "Dual Toning лазер (Clarity + Lucas)",
     "pricing.labels.vascular.dualToning": "Dual Toning лазер (Clarity + Lucas)",
     "pricing.labels.skintone.dualToning": "Dual Toning лазер (Clarity + Lucas)",
@@ -15875,7 +15873,7 @@ if (failed) process.exitCode = 1;
     "pricing.labels.skinbooster.glow": "حقن النضارة (Water Glow)",
     "pricing.labels.vascular.dualToningDesc": "الاحمرار / الشعيرات الدموية",
     "pricing.labels.hairRemoval.dualToningDesc": "إزالة الشعر",
-    "pricing.labels.tattoo.onePart": "منطقة واحدة",
+    "pricing.labels.pigmentation.semiPermanentOnePart": "منطقة واحدة",
     "pricing.labels.pigmentation.dualToning": "ليزر Dual Toning (Clarity + Lucas)",
     "pricing.labels.vascular.dualToning": "ليزر Dual Toning (Clarity + Lucas)",
     "pricing.labels.skintone.dualToning": "ليزر Dual Toning (Clarity + Lucas)",
@@ -15890,7 +15888,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && node scripts/_i18n-work/set-values-by-path.mjs scripts/_i18n-work/value-edits.pricing-labels.json && git status --short src/messages | wc -l
 ```
-Expected: 언어마다 `미리보기 <언어>: N줄 바꿈` — en 2 · ja 3 · zh 6 · zh-TW 18 · vi 50 · th 42(+ `1줄은 이미 같은 값`) · ru 65 · fr 31 · mn 15 · ar 21, 그리고 `전체 정상`, 마지막 줄 `0`(바뀐 파일 없음).
+Expected: 언어마다 `미리보기 <언어>: N줄 바꿈` — en 2 · ja 3 · zh 6 · zh-TW 17 · vi 50 · th 41(+ `1줄은 이미 같은 값`) · ru 64 · fr 31 · mn 15 · ar 21, 그리고 `전체 정상`, 마지막 줄 `0`(바뀐 파일 없음).
 
 - [ ] **Step 3: 기록, 그리고 바이트 보존 확인**
 
@@ -15898,7 +15896,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && node scripts/_i18n-work/set-values-by-path.mjs scripts/_i18n-work/value-edits.pricing-labels.json --write | tail -1 && git diff --numstat -- src/messages | awk '$1 != $2 { bad = 1 } { n += $1 } END { print NR " files, " n " lines"; exit bad }' && npm run verify:i18n 2>&1 | tail -1
 ```
-Expected: `전체 정상`, `10 files, 253 lines`(파일마다 추가 줄 수 = 삭제 줄 수 — 줄 수가 그대로다), `[verify-locale-keys] ✓ all master keys present …`. 숫자가 다르거나 명령이 실패하면 `git checkout -- src/messages`로 되돌리고 원인을 찾는다.
+Expected: `전체 정상`, `10 files, 250 lines`(파일마다 추가 줄 수 = 삭제 줄 수 — 줄 수가 그대로다), `[verify-locale-keys] ✓ all master keys present …`. 숫자가 다르거나 명령이 실패하면 `git checkout -- src/messages`로 되돌리고 원인을 찾는다.
 
 - [ ] **Step 4: 기본 가격 줄을 다시 만든다**
 
@@ -15906,7 +15904,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && node scripts/chat-ai-build-price-rows.mjs 2>&1 | grep -v -i "warning\|trace-warnings\|Reparsing\|eliminate" && git diff --numstat -- src/lib/chat/ai/knowledge/priceRows.base.generated.ts
 ```
-Expected: `wrote src/lib/chat/ai/knowledge/priceRows.base.generated.ts: 56 rows`, 이어서 `239	239	…priceRows.base.generated.ts`(이름 줄 239개가 바뀌었다 — 금액은 그대로다).
+Expected: `wrote src/lib/chat/ai/knowledge/priceRows.base.generated.ts: 56 rows`, 이어서 `238	238	…priceRows.base.generated.ts`(이름 줄 238개가 바뀌었다 — 금액은 그대로다).
 
 - [ ] **Step 5: 전체 테스트 · 타입 검사 · lint**
 
@@ -15914,12 +15912,12 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "scripts/_i18n-work/set-values-by-path.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 81 passed (81)`, `Tests 1355 passed (1355)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms" && git add "liv-clinic/scripts/_i18n-work/set-values-by-path.mjs" "liv-clinic/scripts/_i18n-work/value-edits.pricing-labels.json" "liv-clinic/src/messages/ar.json" "liv-clinic/src/messages/en.json" "liv-clinic/src/messages/fr.json" "liv-clinic/src/messages/ja.json" "liv-clinic/src/messages/mn.json" "liv-clinic/src/messages/ru.json" "liv-clinic/src/messages/th.json" "liv-clinic/src/messages/vi.json" "liv-clinic/src/messages/zh-TW.json" "liv-clinic/src/messages/zh.json" "liv-clinic/src/lib/chat/ai/knowledge/priceRows.base.generated.ts" && git commit -m "fix(i18n): 가격 이름 번역 바로잡기 — AI 금액 줄과 홈페이지 가격표가 함께 쓰는 이름 247곳 + 가격표 머리글 6곳 (10개 언어, 바이트 보존)" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+cd "D:/dev/LIV_homepage-slack-rooms" && git add "liv-clinic/scripts/_i18n-work/set-values-by-path.mjs" "liv-clinic/scripts/_i18n-work/value-edits.pricing-labels.json" "liv-clinic/src/messages/ar.json" "liv-clinic/src/messages/en.json" "liv-clinic/src/messages/fr.json" "liv-clinic/src/messages/ja.json" "liv-clinic/src/messages/mn.json" "liv-clinic/src/messages/ru.json" "liv-clinic/src/messages/th.json" "liv-clinic/src/messages/vi.json" "liv-clinic/src/messages/zh-TW.json" "liv-clinic/src/messages/zh.json" "liv-clinic/src/lib/chat/ai/knowledge/priceRows.base.generated.ts" && git commit -m "fix(i18n): 가격 이름 번역 바로잡기 — AI 금액 줄과 홈페이지 가격표가 함께 쓰는 이름 244곳 + 가격표 머리글 6곳 (10개 언어, 바이트 보존)" -m "Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
 
 - [ ] **Step 7: 대조**
@@ -15933,18 +15931,18 @@ Expected:
 | 파일 | 나와야 하는 값 |
 |------|----------------|
 | `liv-clinic/scripts/_i18n-work/set-values-by-path.mjs` | `ce1044ddbfbd8d2b3393b8c45c48d310058ffbcf` |
-| `liv-clinic/scripts/_i18n-work/value-edits.pricing-labels.json` | `95ebe257e1426df416b097754a24d29a9ba53c81` |
-| `liv-clinic/src/messages/ar.json` | `45a914793da26f075f871bc9b48f6675a8ce4e81` |
-| `liv-clinic/src/messages/en.json` | `bf1c057e4030b8640a2bcec9ca77cba06ed76a79` |
-| `liv-clinic/src/messages/fr.json` | `2cb48ae48f6830ce9ef54d7995dce648f5148e25` |
-| `liv-clinic/src/messages/ja.json` | `02265ccf5fe7613f2f54cf82bb1de3ecebca6343` |
-| `liv-clinic/src/messages/mn.json` | `485c31fd8dd2c49cba015b72c25c3e764b6e88cb` |
-| `liv-clinic/src/messages/ru.json` | `daf82dd1f19233f9fcb215522799265ddd922b79` |
-| `liv-clinic/src/messages/th.json` | `7c31caef122aadc3ccfcd88d30186b441d8f0df6` |
-| `liv-clinic/src/messages/vi.json` | `f284cb8ce77e3bf52cc745c246c84daf927cd71e` |
-| `liv-clinic/src/messages/zh-TW.json` | `25241468597c517f3857aa022d8964f4a462d899` |
-| `liv-clinic/src/messages/zh.json` | `52bf17ce0fc3a7551864c1b9185c7bbc5a4ec1c6` |
-| `liv-clinic/src/lib/chat/ai/knowledge/priceRows.base.generated.ts` | `f880799dca887ea00326bea91d7cf65adf829a1a` |
+| `liv-clinic/scripts/_i18n-work/value-edits.pricing-labels.json` | `2d4149b8895d86c42f47a1507f11d6ee6e0b8f4b` |
+| `liv-clinic/src/messages/ar.json` | `fe9295ad21f455f81815944cbba2b703007763b9` |
+| `liv-clinic/src/messages/en.json` | `8cb5e846d40e715c8e0464ee261ebd2a4cdfa5f1` |
+| `liv-clinic/src/messages/fr.json` | `7b7a658d81fbc2486331114840e4eb88805f0051` |
+| `liv-clinic/src/messages/ja.json` | `313b1970798921d3cc2979bc7331a524e219cb9e` |
+| `liv-clinic/src/messages/mn.json` | `45c0ac93e7f52085255f79050267bdc9dbd51c2b` |
+| `liv-clinic/src/messages/ru.json` | `f587c3a4e98a38584a6624568f6667b58eb4ea34` |
+| `liv-clinic/src/messages/th.json` | `bac53048f98dd8c917146d4ff550a197a143f2c2` |
+| `liv-clinic/src/messages/vi.json` | `99557601a983b865f13ca3269cfe5f75e4c7cd45` |
+| `liv-clinic/src/messages/zh-TW.json` | `25119284a89cc6d3814da830b4895bcb82ea7b68` |
+| `liv-clinic/src/messages/zh.json` | `bc0992c57fe835384bb72cf380b43e8a231189b4` |
+| `liv-clinic/src/lib/chat/ai/knowledge/priceRows.base.generated.ts` | `a0fe76d378c1a071bdf7814eccd449c7842beb8f` |
 
 ---
 
@@ -16085,7 +16083,7 @@ NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run --config vitest.live.config.ts
 - 이름(`labelKo` · `labels`)에 금액 · 할인율을 넣지 않는다.
 - 같은 시술의 금액이 출처마다 다르면 AI에게 주지 않는다(`STAFF_ONLY_KEYS`) — 원장님 확인 뒤에 푼다.
 - 꼬리표(`P031` 등)는 자료를 읽을 때마다 순서대로 다시 붙는다. 꼬리표 번호를 문서나 코드에 적어 두지 않는다.
-- AI의 금액 줄은 홈페이지 가격표와 **같은 이름**(`src/messages/<언어>.json`의 `pricing.labels`)을 쓴다. 2026-10-02에 이 이름의 오역 247곳과 가격표 머리글 6곳을 바로잡았다(베트남어 "300장 사진", 태국어 "국내 보험료", 러시아어 "길들인" 같은 기계 번역 — 목록은 `liv-clinic/scripts/_i18n-work/value-edits.pricing-labels.json`). 원어민 검수는 받지 않았다. 이름을 더 고칠 때는 같은 방법(`set-values-by-path.mjs`)으로 고치고 §4를 한다.
+- AI의 금액 줄은 홈페이지 가격표와 **같은 이름**(`src/messages/<언어>.json`의 `pricing.labels`)을 쓴다. 2026-10-02에 이 이름의 오역 244곳과 가격표 머리글 6곳을 바로잡았다(2026-10-20에 문신 표에서 기미/색소 표로 옮겨 온 반영구 화장 제거 · CO2 줄 포함 — 베트남어 "300장 사진", 태국어 "국내 보험료", 러시아어 "길들인" 같은 기계 번역 — 목록은 `liv-clinic/scripts/_i18n-work/value-edits.pricing-labels.json`). 원어민 검수는 받지 않았다. 이름을 더 고칠 때는 같은 방법(`set-values-by-path.mjs`)으로 고치고 §4를 한다.
 ````
 
 <!-- block: T22-setup | diff | 2026-09-03-slack-patient-rooms-slack-setup.md -->
@@ -16190,7 +16188,7 @@ Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `298987556fec31bbfde91283bfbbc10acfe50f40` |
+| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `7c4b61dc2c065f5fd27f5c7d9aad85cc881e7f07` |
 | `docs/superpowers/specs/2026-09-03-slack-patient-rooms-slack-setup.md` | `bea1c364af3c934e86347be0ab3fcf27468a2a15` |
 | `docs/superpowers/specs/2026-10-01-chat-contact-first-design.md` | `75bae4e15af6e10701bffc144ef22e6ad685e23e` |
 
@@ -16215,7 +16213,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npm run verify:i18n 2>&1 | tail -1
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`, `[verify-locale-keys] ✓ all master keys present …`.
+Expected: `Test Files 81 passed (81)`, `Tests 1355 passed (1355)`, `TSC-OK`, `[verify-locale-keys] ✓ all master keys present …`.
 
 Run:
 ```bash
@@ -16808,17 +16806,17 @@ Expected:
 | 파일 | 나와야 하는 값 |
 |------|----------------|
 | `liv-clinic/scripts/_i18n-work/value-edits.privacy-processors.json` | `c6dab19e65d286d7d316a8d56b593c615214664d` |
-| `liv-clinic/src/messages/ar.json` | `5d6c1cd839352cad44bb31972ab5ada6274a54e5` |
-| `liv-clinic/src/messages/en.json` | `f49540cfce8be18cb6958a48fc54784ecb5b21b0` |
-| `liv-clinic/src/messages/fr.json` | `0f4e8002735a8947bdd38030e37e6c78ea7563d3` |
-| `liv-clinic/src/messages/ja.json` | `023d09db2514977cb8d03539043ede5157dc87d3` |
-| `liv-clinic/src/messages/ko.json` | `88e99e7d452ac334827cf4774f67b018c7757a43` |
-| `liv-clinic/src/messages/mn.json` | `3dbbfd07306d1e9ae0da783944bab37b98f3e56c` |
-| `liv-clinic/src/messages/ru.json` | `10034b34c82deed756f0f67044d6691c4076a97c` |
-| `liv-clinic/src/messages/th.json` | `c9e0ad9f83978b2c8718a286b30dd26d7b185fd2` |
-| `liv-clinic/src/messages/vi.json` | `d9ab4a1efd7d55628b32ac98059453da1f32a451` |
-| `liv-clinic/src/messages/zh-TW.json` | `b098cdfc4f66da653e895cba400389f4ff7c03cf` |
-| `liv-clinic/src/messages/zh.json` | `37eed3ac528aa12cff8ea459d01aad5e9e7c18e4` |
+| `liv-clinic/src/messages/ar.json` | `db1f506accd9ac4acfda90aecfebffa91cc939d2` |
+| `liv-clinic/src/messages/en.json` | `7969f19ee6b5df5a1ff2fe63b20a751150ac732b` |
+| `liv-clinic/src/messages/fr.json` | `9c312cec694e2fa6e70adea50074a2b9e4f22bc1` |
+| `liv-clinic/src/messages/ja.json` | `89dd353a08af1f14e6f742ab1780f822e0b6dec3` |
+| `liv-clinic/src/messages/ko.json` | `b7cb2c9026556a95cc8e57e7b1245f9bb2854040` |
+| `liv-clinic/src/messages/mn.json` | `966dd75616f6f3257e1db507509b1da6987233b1` |
+| `liv-clinic/src/messages/ru.json` | `ea3bd414ddbf51e896788e9776f1da9c10bc1af0` |
+| `liv-clinic/src/messages/th.json` | `9aa2602515472188e60e9e8de5b1c0e727e612c4` |
+| `liv-clinic/src/messages/vi.json` | `355d27de45aa1b03330ddd368e110b4dc4a4d87a` |
+| `liv-clinic/src/messages/zh-TW.json` | `7e77ac19f8c6aff2374484b657ab85fd709c449d` |
+| `liv-clinic/src/messages/zh.json` | `8b1dbc887cc494dab3cf51f9eacc56b041070cef` |
 
 - [ ] **Step 6: (원장님이 시행일을 바꾸기로 했을 때만) 시행일**
 
@@ -17064,7 +17062,7 @@ Run:
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run --config vitest.live.config.ts 2>&1 | grep -E "요약|결과|Tests  "
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && OPENAI_CHAT_AI_MODEL=gpt-6.1-sol OPENAI_CHAT_AI_REASONING_EFFORT=low NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run --config vitest.live.config.ts 2>&1 | grep -E "요약|결과|Tests  "
 ```
-Expected: 각각 `요약 {"model":"…","cases":43,"turns":47,"sent":…,"fallback":…}`와 결과 파일 경로(2026-10-02에 `gpt-6-sol`로 돌렸을 때는 `"sent":47,"fallback":0,"retried":1`, 직원 확인 필요 22건 · 가예약 6건, 답까지 중앙값 3.6초 · 다시 부른 1건은 16.0초, 나머지는 5.4초 안였다 — 검사에 걸려 다시 쓴 답 0 · 모델 호출이 12초 시간 한도에 걸려 다시 부른 답 1). `retried`가 0이 아니면 표에서 `시도 2회 (처음 걸린 이유: …)`를 찾는다. 이유가 `call:timeout`이면 모델 호출이 늦어 한 번 더 부른 것이고, 그 밖의 이유면 버린 글(결과 JSON의 `rejectedDrafts`)이 멀쩡한 답이었는지 본다. `fallback`이 0이 아니면 결과 파일에서 그 사례의 `⚠` 이유를 본다 — 검사를 고치지 말고 표에 그대로 싣는다(원장님이 볼 내용이다).
+Expected: 각각 `요약 {"model":"…","cases":43,"turns":47,"sent":…,"fallback":…}`와 결과 파일 경로(2026-10-02에 `gpt-6-sol`로 돌렸을 때는 `"sent":47,"fallback":0,"retried":1`, 직원 확인 필요 22건 · 가예약 6건, 답까지 중앙값 3.6초 · 다시 부른 1건은 16.0초, 나머지는 5.4초 안였다 — 검사에 걸려 다시 쓴 답 0 · 모델 호출이 12초 시간 한도에 걸려 다시 부른 답 1. 2026-10-21에 운영 master 위로 옮긴 뒤에는 `"sent":47,"fallback":0,"retried":0`, 직원 확인 필요 20건 · 가예약 6건, 중앙값 3.7초 · 가장 긴 답 5.8초 — 직원 확인 건수는 모델 답이라 조금씩 다르다). `retried`가 0이 아니면 표에서 `시도 2회 (처음 걸린 이유: …)`를 찾는다. 이유가 `call:timeout`이면 모델 호출이 늦어 한 번 더 부른 것이고, 그 밖의 이유면 버린 글(결과 JSON의 `rejectedDrafts`)이 멀쩡한 답이었는지 본다. `fallback`이 0이 아니면 결과 파일에서 그 사례의 `⚠` 이유를 본다 — 검사를 고치지 말고 표에 그대로 싣는다(원장님이 볼 내용이다).
 
 - [ ] **Step 2: 실제 문의 25건의 사례 파일을 만든다**
 
@@ -17172,7 +17170,7 @@ Expected: 항목 0~9가 예전처럼 나오고, `── 10. AI 응대 …` · `�
 
 원장님께 이렇게 묻는다(네 가지를 함께 알린다):
 1. "master에 푸시하면 Netlify가 자동으로 배포합니다(약 2분). AI는 **꺼진 채**로 나갑니다 — 채팅은 지금과 똑같이 동작합니다. 진행할까요?"
-2. "이 배포로 홈페이지 가격표의 시술 이름이 10개 언어에서 바로잡힌 번역으로 바뀝니다(253줄 — 베트남어 '300장 사진' → '300 shots' 같은 오역). 금액은 바뀌지 않습니다. 원어민 검수는 받지 않았습니다."
+2. "이 배포로 홈페이지 가격표의 시술 이름이 10개 언어에서 바로잡힌 번역으로 바뀝니다(250줄 — 베트남어 '300장 사진' → '300 shots' 같은 오역). 금액은 바뀌지 않습니다. 원어민 검수는 받지 않았습니다."
 3. (Task 24를 했으면) "개인정보 처리방침 5조에 OpenAI · Slack이 들어간 문구도 함께 나갑니다."
 4. "채팅창에서 새 답이 길 때 답의 첫 줄이 보이도록 스크롤하는 방식이 직원 답에도 적용됩니다."
 
