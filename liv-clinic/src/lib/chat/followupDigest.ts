@@ -1,5 +1,6 @@
 import 'server-only';
-import { createChatAdminClient } from '@/lib/chat/db';
+import { bookingWhenKo } from '@/lib/chat/ai/booking';
+import { createChatAdminClient, type ChatAdminClient } from '@/lib/chat/db';
 import {
   CLOSING_SOON_MIN,
   dayRangeMinutes,
@@ -92,7 +93,53 @@ interface DigestRow {
   slack_channel_id: string | null;
 }
 
-function toDigestItem(s: DigestRow): FollowupDigestItem {
+interface AiMark {
+  /** AI 응대가 받은 가예약의 날짜·시각 — `10/14(수) 14:00` */
+  bookingWhen: string | null;
+  /** 🙋 직원 확인 필요가 걸려 있다 */
+  needsStaff: boolean;
+}
+
+/**
+ * 요약 줄 끝에 덧붙일 표시 — AI 응대가 받은 가예약과 🙋 (스펙 2026-10-02 chat-ai-first-response §4.11).
+ * AI 글은 직원 답이 아니라서 가예약을 받은 손님도 직원이 답하기 전까지 이 요약에 남는다 — 놓친 가예약이 여기서 다시 보인다.
+ * 043 의 테이블·컬럼이라 요약 대상 조회와 따로 읽는다. 실패하면(043 미적용) 덧붙이지 않을 뿐 요약은 그대로 나간다.
+ */
+async function loadAiMarks(admin: ChatAdminClient, sessionIds: string[]): Promise<Map<string, AiMark>> {
+  const marks = new Map<string, AiMark>();
+  if (sessionIds.length === 0) return marks;
+  const mark = (id: string): AiMark => {
+    const m = marks.get(id) ?? { bookingWhen: null, needsStaff: false };
+    marks.set(id, m);
+    return m;
+  };
+  try {
+    const [bookings, handoffs] = await Promise.all([
+      admin
+        .from('chat_bookings')
+        .select('session_id, visit_date, visit_time, time_note')
+        .in('session_id', sessionIds)
+        .eq('status', 'requested'),
+      admin.from('chat_sessions').select('id, ai_handoff_at, staff_engaged_at').in('id', sessionIds),
+    ]);
+    if (bookings.error || handoffs.error) {
+      console.warn('[chat ops] ai marks read failed:', (bookings.error ?? handoffs.error)?.code ?? 'unknown');
+    }
+    for (const b of bookings.data ?? []) {
+      const when = bookingWhenKo({ date: b.visit_date, time: b.visit_time, timeNote: b.time_note });
+      if (when) mark(b.session_id).bookingWhen = when;
+    }
+    for (const h of handoffs.data ?? []) {
+      // 직원이 이미 맡은 대화에는 붙이지 않는다 — AI가 넘긴 질문에 직원이 답을 시작했다
+      if (h.ai_handoff_at && !h.staff_engaged_at) mark(h.id).needsStaff = true;
+    }
+  } catch (e) {
+    console.warn('[chat ops] ai marks read threw:', e);
+  }
+  return marks;
+}
+
+function toDigestItem(s: DigestRow, ai?: AiMark): FollowupDigestItem {
   const labels: string[] = [];
   if (s.visitor_messenger_handle) labels.push(staffChannelLabel(s.visitor_messenger_channel) || '메신저');
   if (s.visitor_email) labels.push('이메일');
@@ -104,6 +151,8 @@ function toDigestItem(s: DigestRow): FollowupDigestItem {
     awaitingSince: s.awaiting_since,
     channelId,
     adminUrl: channelId ? null : adminSessionUrl(s.id),
+    ...(ai?.bookingWhen ? { bookingWhen: ai.bookingWhen } : {}),
+    ...(ai?.needsStaff ? { needsStaff: true } : {}),
   };
 }
 
@@ -168,8 +217,15 @@ export async function runFollowupDigest(now: Date): Promise<DigestResult> {
     if (claimed.length === 0) return { window: window.kind, listed: 0 };
 
     // 선점 뒤 게시 — 게시가 실패해도 이 창에서는 다시 시도하지 않는다(확대 알림과 같은 방식). 다음 창에서 다시 오른다.
+    const marks = await loadAiMarks(
+      admin,
+      claimed.map((s) => s.id)
+    );
     const posted = await postSlackMessage({
-      text: buildFollowupDigestText({ mentionAll: staff.mentionAll(), items: claimed.map(toDigestItem) }),
+      text: buildFollowupDigestText({
+        mentionAll: staff.mentionAll(),
+        items: claimed.map((s) => toDigestItem(s, marks.get(s.id))),
+      }),
     });
     if (!posted.ok) console.warn('[chat ops] followup digest post failed:', posted.error);
     return { window: window.kind, listed: claimed.length };
