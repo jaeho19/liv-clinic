@@ -108,11 +108,11 @@ describe('renderPriceLine — 부가세 별도와 포함을 같이 (both)', () =
   it('부가세 표기 규칙이 바뀌면: 별도만 / 포함만', () => {
     expect(renderPriceLine(ULTHERA, 'en', 'excluded')).toBe('• Ultherapy Prime · Full face (400-800 shots): from KRW 1,560,000');
     expect(renderPriceLine(ULTHERA, 'en', 'included')).toBe('• Ultherapy Prime · Full face (400-800 shots): from KRW 1,716,000');
-    expect(priceCaveat('en', 'both')).toBe('The amounts above are approximate, not final.');
+    expect(priceCaveat('en', 'both')).toBe('The exact amount is decided after your consultation with the doctor; the amounts above are approximate.');
     expect(priceCaveat('en', 'excluded')).toBe(
-      'Prices exclude VAT. The amounts above are approximate, not final.'
+      'Prices exclude VAT. The exact amount is decided after your consultation with the doctor; the amounts above are approximate.'
     );
-    expect(priceCaveat('ja', 'included')).toBe('表示価格は税込です。 上記は確定金額ではなく、おおよその金額です。');
+    expect(priceCaveat('ja', 'included')).toBe('表示価格は税込です。 正確な金額は医師の診察後に決まります。上記はおおよその金額です。');
   });
 
   it("상담비 같은 '그 밖의 금액'(fee)은 적힌 금액 그대로 — 부가세 포함 금액을 붙이지 않는다", () => {

@@ -339,7 +339,7 @@ describe('runAiTurn — 답이 나간다', () => {
     expect(out.text.split('\n')).toEqual([
       'Here is the price:',
       '• Thermage Laser · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
-      'The amounts above are approximate, not final.',
+      'The exact amount is decided after your consultation with the doctor; the amounts above are approximate.',
       'Which date suits you?',
     ]);
     expect(out.usedRows.map((r) => r.key)).toEqual(['thermage.name.shot600']);
