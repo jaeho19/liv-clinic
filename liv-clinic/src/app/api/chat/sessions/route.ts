@@ -6,6 +6,7 @@ import { checkIpSessionDailyLimit } from '@/lib/chat/rateLimit';
 import { extractIp, hashIp } from '@/lib/chat/ipHash';
 import { broadcastToSession } from '@/lib/chat/broadcast';
 import { getChatSystemMessage, VISITOR_LOCALES } from '@/lib/chat/serverI18n';
+import { newSessionAiFlags, sessionAiFlags } from '@/lib/chat/ai/visitorFlags';
 import { createServerClient } from '@/lib/supabase-server';
 
 export const runtime = 'nodejs';
@@ -58,8 +59,11 @@ export async function POST(req: NextRequest) {
   // 운영자 presence: MVP는 단순 운영시간 판정으로 대체 (정확한 presence는 후속)
   const businessHours = isBusinessHours();
 
+  // AI가 먼저 답하는 대화인가 — 그러면 상담 시간 밖에도 몇 초 안에 답이 간다 (스펙 2026-10-02 chat-ai-first-response §4.10)
+  const ai = newSessionAiFlags(visitorName || null);
+
   // §5.1, §6.2: 세션 생성 직후 system 메시지 1건 자동 INSERT
-  const systemKey = businessHours ? 'welcome' : 'delayedResponseNotice';
+  const systemKey = businessHours || ai.instantReply ? 'welcome' : 'delayedResponseNotice';
   const systemText = getChatSystemMessage(visitorLocale, systemKey);
 
   const { data: systemMsg, error: msgError } = await admin
@@ -94,6 +98,8 @@ export async function POST(req: NextRequest) {
       createdAt: session.created_at,
       businessHours,
       operatorOnline: businessHours, // MVP: 운영시간 = 운영자 온라인 가정
+      instantReply: ai.instantReply,
+      assistantNotice: ai.assistantNotice,
     },
     { status: 201 }
   );
@@ -111,7 +117,7 @@ export async function GET(req: NextRequest) {
     // Visitor 측: token으로 단건 조회
     const { data, error } = await admin
       .from('chat_sessions')
-      .select('id, visitor_locale, status, last_message_at, created_at, visitor_email, visitor_messenger_handle')
+      .select('id, visitor_locale, status, last_message_at, created_at, visitor_name, visitor_email, visitor_messenger_handle')
       .eq('session_token', token)
       .single();
 
@@ -119,8 +125,15 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'not_found' }, { status: 404 });
     }
     // 연락처 값은 돌려주지 않는다 — 손님 화면은 연락처 카드를 띄울지 판단할 유무(hasContact)만 필요하다.
-    const { visitor_email, visitor_messenger_handle, ...session } = data;
-    return NextResponse.json({ session, hasContact: Boolean(visitor_email || visitor_messenger_handle) });
+    const { visitor_name, visitor_email, visitor_messenger_handle, ...session } = data;
+    // instantReply: 이 대화의 다음 손님 글에 AI가 몇 초 안에 답한다(직원이 맡으면 꺼진다). assistantNotice: 고지 한 줄.
+    const ai = await sessionAiFlags(admin, { id: data.id, visitor_name });
+    return NextResponse.json({
+      session,
+      hasContact: Boolean(visitor_email || visitor_messenger_handle),
+      instantReply: ai.instantReply,
+      assistantNotice: ai.assistantNotice,
+    });
   }
 
   // Admin 측: 쿠키 기반 Supabase 세션으로 인증 확인

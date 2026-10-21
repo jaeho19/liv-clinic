@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { isBusinessHours, getBusinessHoursConfig, getNextOpenAt } from '@/lib/chat/businessHours';
 import { getOnlineOperatorCount } from '@/lib/chat/operatorPresence';
+import { presenceAiFlags } from '@/lib/chat/ai/visitorFlags';
 
 export const runtime = 'nodejs';
 
@@ -33,5 +34,7 @@ export async function GET() {
     nextOpenAt: getNextOpenAt()?.toISOString() ?? null, // 오프시간 캡처 블록의 복귀 시각 안내용
     schedule: config,
     source, // 신규 필드 (디버깅용, 기존 클라이언트는 무시)
+    // AI가 먼저 답하는가 · 고지 한 줄을 보이는가 — 채팅 시작 화면용 (스펙 2026-10-02 chat-ai-first-response §4.10)
+    ...presenceAiFlags(),
   });
 }
