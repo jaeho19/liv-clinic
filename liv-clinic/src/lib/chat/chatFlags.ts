@@ -50,6 +50,17 @@ export function chatAiMode(): ChatAiMode {
 }
 
 /**
+ * 제안형 응대 (스펙 2026-10-12 chat-ai-guided-offers §6) — 조합 · 저부담 대안 제안, 첫방문 체험가 줄, 채팅 예약 혜택의 피부관리 · 수액.
+ * 기본이 꺼져 있다. 값의 뜻은 CHAT_AI 와 같다: on = 모든 문의, test = 이름이 `ai-test`로 시작하는 문의만, 그 밖의 값은 꺼짐.
+ * 꺼져 있으면 혜택 문장은 5%만 말한다(10/2 와 같은 뜻). 자문(U-4 · U-11) 전에는 on 으로 두지 않는다(test 는 된다).
+ * 긴급 정지: 값을 지우고 재배포 — AI 응대는 그대로 두고 제안만 멈춘다.
+ */
+export function chatAiOffersMode(): ChatAiMode {
+  const value = (process.env.CHAT_AI_OFFERS ?? '').trim().toLowerCase();
+  return value === 'on' || value === 'test' ? value : 'off';
+}
+
+/**
  * 손님 화면의 고지 한 줄 ("자동 응대가 먼저 답하고, 예약은 병원에서 확인합니다") — 스펙 §4.10.
  * 기본이 꺼져 있다(원장님 2026-10-02: AI라고 적지 않는다). 자문 결과 고지가 필요하면 CHAT_AI_NOTICE=on.
  */

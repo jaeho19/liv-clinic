@@ -143,11 +143,15 @@ export type Database = {
           latency_ms: number | null
           model: string | null
           needs_staff: boolean
+          offer_declined: boolean
+          offers_dropped: string[] | null
           outcome: string
           prompt_tokens: number | null
           raw_reply: string | null
+          reaction: string | null
           reply_message_id: string | null
           session_id: string
+          shown_keys: string[] | null
           staff_note_ko: string | null
           staff_reason_ko: string | null
           trigger_message_id: string | null
@@ -163,11 +167,15 @@ export type Database = {
           latency_ms?: number | null
           model?: string | null
           needs_staff?: boolean
+          offer_declined?: boolean
+          offers_dropped?: string[] | null
           outcome: string
           prompt_tokens?: number | null
           raw_reply?: string | null
+          reaction?: string | null
           reply_message_id?: string | null
           session_id: string
+          shown_keys?: string[] | null
           staff_note_ko?: string | null
           staff_reason_ko?: string | null
           trigger_message_id?: string | null
@@ -183,11 +191,15 @@ export type Database = {
           latency_ms?: number | null
           model?: string | null
           needs_staff?: boolean
+          offer_declined?: boolean
+          offers_dropped?: string[] | null
           outcome?: string
           prompt_tokens?: number | null
           raw_reply?: string | null
+          reaction?: string | null
           reply_message_id?: string | null
           session_id?: string
+          shown_keys?: string[] | null
           staff_note_ko?: string | null
           staff_reason_ko?: string | null
           trigger_message_id?: string | null
@@ -219,6 +231,7 @@ export type Database = {
       chat_bookings: {
         Row: {
           arrival_date: string | null
+          benefit: string | null
           contact_channel: string | null
           contact_handle: string | null
           created_at: string
@@ -240,6 +253,7 @@ export type Database = {
         }
         Insert: {
           arrival_date?: string | null
+          benefit?: string | null
           contact_channel?: string | null
           contact_handle?: string | null
           created_at?: string
@@ -261,6 +275,7 @@ export type Database = {
         }
         Update: {
           arrival_date?: string | null
+          benefit?: string | null
           contact_channel?: string | null
           contact_handle?: string | null
           created_at?: string

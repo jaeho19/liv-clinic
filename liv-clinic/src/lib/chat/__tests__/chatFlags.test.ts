@@ -1,6 +1,7 @@
 import { describe, it, expect, afterEach } from 'vitest';
 import {
   chatAiMode,
+  chatAiOffersMode,
   isAiNoticeEnabled,
   isEscalationEnabled,
   isEventHintEnabled,
@@ -16,6 +17,7 @@ describe('긴급 정지 스위치', () => {
     delete process.env.CHAT_ESCALATION;
     delete process.env.CHAT_AI;
     delete process.env.CHAT_AI_NOTICE;
+    delete process.env.CHAT_AI_OFFERS;
   });
 
   it('환경변수가 없으면 둘 다 켜져 있다', () => {
@@ -88,5 +90,19 @@ describe('긴급 정지 스위치', () => {
     expect(chatAiMode()).toBe('off');
     process.env.CHAT_AI_NOTICE = 'yes';
     expect(isAiNoticeEnabled()).toBe(false);
+  });
+
+  it("제안형 응대 스위치(CHAT_AI_OFFERS): 없으면 off, 'on'·'test'만 뜻이 있다. AI 스위치와 독립이다", () => {
+    expect(chatAiOffersMode()).toBe('off');
+    process.env.CHAT_AI_OFFERS = ' On ';
+    expect(chatAiOffersMode()).toBe('on');
+    expect(chatAiMode()).toBe('off');
+    process.env.CHAT_AI_OFFERS = 'TEST';
+    expect(chatAiOffersMode()).toBe('test');
+    process.env.CHAT_AI_OFFERS = 'yes';
+    expect(chatAiOffersMode()).toBe('off');
+    process.env.CHAT_AI = 'on';
+    delete process.env.CHAT_AI_OFFERS;
+    expect(chatAiOffersMode()).toBe('off');
   });
 });
