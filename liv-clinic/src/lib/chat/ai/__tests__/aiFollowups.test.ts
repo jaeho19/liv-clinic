@@ -59,6 +59,8 @@ describe('finishAiTurn — 답이 나간 차례', () => {
       sessionId: SESSION_ID,
       note: '인사에 답했습니다.',
       quoted: [],
+      offers: [],
+      offerDeclined: false,
       booking: null,
       staffNeeded: null,
     });
@@ -82,9 +84,21 @@ describe('finishAiTurn — 답이 나간 차례', () => {
       changed: false,
       summary: '10/14(수) 14:00 · 2명 · 울쎄라피 프라임 · WhatsApp +65 9123 4567 · Emma',
       when: '10/14(수) 14:00',
+      benefit: null,
     });
     await finish({ ...SENT, bookingEvent: 'changed', booking, contact });
     expect(relayAi.mock.calls[1][0].booking?.changed).toBe(true);
+  });
+
+  it('제안형 응대: 나간 제안의 이름 · 손님의 거절 · 가예약에 안내한 혜택을 한국어로 넘긴다', async () => {
+    const offer = getKnowledge('en', new Date('2026-10-20T05:00:00Z'), { offers: true }).offers[0];
+    const booking = { ...EMPTY_BOOKING, date: '2026-10-14', time: '14:00', name: 'Emma' };
+    const contact = { channel: 'whatsapp' as const, handle: '+65 9123 4567' };
+    await finish({ ...SENT, usedOffers: [offer], offerDeclined: true, bookingEvent: 'requested', booking, contact, bookingBenefit: 'full' });
+    const args = relayAi.mock.calls[0][0];
+    expect(args.offers).toEqual(['스컬트라 제안 ①']);
+    expect(args.offerDeclined).toBe(true);
+    expect(args.booking?.benefit).toBe('혜택: 5% + 피부관리 또는 수액 1회(그날 결제 30만 원 이상 · 방문한 날 선택)');
   });
 
   it('직원 확인 필요와 사유를 넘긴다', async () => {
@@ -151,6 +165,8 @@ describe('finishAiTurn — 답이 나가지 않은 차례', () => {
       sessionId: SESSION_ID,
       note: null,
       quoted: [],
+      offers: [],
+      offerDeclined: false,
       booking: null,
       staffNeeded: { reason: '자동 응대가 답하지 못했습니다' },
     });

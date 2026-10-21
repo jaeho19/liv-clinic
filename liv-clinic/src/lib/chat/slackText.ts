@@ -398,12 +398,18 @@ export interface AiReplyArgs {
   note: string;
   /** 이 답에 쓰인 가격 줄 — `써마지 레이저 · 600샷 2,400,000원~` 꼴 */
   quoted: string[];
+  /** 이 답에 나간 제안 줄 — `스컬트라 제안 ①` 꼴 (제안형 응대, 스펙 2026-10-12 §4.6) */
+  offers?: string[];
+  /** 손님이 이번 글에서 제안을 거절했다 */
+  offerDeclined?: boolean;
 }
 
-/** `AI 응대` 글의 본문: 요지, 금액 줄을 썼으면 그 아래 "안내한 금액". 답 전체는 관리자 화면에서 본다. */
+/** `AI 응대` 글의 본문: 요지, 금액 줄을 썼으면 그 아래 "안내한 금액", 제안을 했거나 손님이 거절했으면 "제안". 답 전체는 관리자 화면에서 본다. */
 export function buildAiReplyBody(args: AiReplyArgs): string {
   const lines = [escapeSlackText(args.note.trim() || '손님에게 답했습니다.')];
   if (args.quoted.length > 0) lines.push(`> 안내한 금액: ${args.quoted.map(escapeSlackText).join(' / ')}`);
+  if (args.offers && args.offers.length > 0) lines.push(`> 제안: ${args.offers.map(escapeSlackText).join(' / ')}`);
+  if (args.offerDeclined) lines.push('> 제안: 손님이 거절 — 이 대화에서는 더 제안하지 않습니다');
   return lines.join('\n');
 }
 
@@ -417,18 +423,23 @@ export interface BookingNoticeArgs {
   changed: boolean;
   /** booking.bookingSummaryKo — `10/14(수) 14:00 · 2명 · 울쎄라피 프라임 · WhatsApp +65… · Emma` */
   summary: string;
+  /** 손님에게 안내한 채팅 예약 혜택 (offers.benefitKo — `혜택: 5% + …`). 제안형 응대가 꺼진 대화는 없다 */
+  benefit?: string | null;
 }
+
+const withBenefit = (args: BookingNoticeArgs): string =>
+  args.benefit ? `${escapeSlackText(args.summary)} · ${escapeSlackText(args.benefit)}` : escapeSlackText(args.summary);
 
 const bookingTitle = (changed: boolean): string => (changed ? '가예약 변경' : '가예약');
 
 /** 가예약 알림의 큰 줄 — 손님 방의 파란 막대. */
 export function bookingNoticeHeadline(args: BookingNoticeArgs): string {
-  return `🗓 *${bookingTitle(args.changed)}* · ${escapeSlackText(args.summary)}`;
+  return `🗓 *${bookingTitle(args.changed)}* · ${withBenefit(args)}`;
 }
 
 /** 가예약 알림을 글자만으로. */
 export function buildBookingNoticeText(args: BookingNoticeArgs & { mention: string }): string {
-  return joinHead([[`🗓 *${bookingTitle(args.changed)}*`, args.mention].filter(Boolean).join(' '), escapeSlackText(args.summary)]);
+  return joinHead([[`🗓 *${bookingTitle(args.changed)}*`, args.mention].filter(Boolean).join(' '), withBenefit(args)]);
 }
 
 /** AI가 답을 내지 못했을 때의 사유 (접수 안내가 대신 나갔다) */

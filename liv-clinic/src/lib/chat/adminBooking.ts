@@ -1,6 +1,7 @@
 // 관리자 채팅 상세 화면 머리말의 가예약 한 줄 (스펙 2026-10-02 chat-ai-first-response §4.12).
 // 서버(page.tsx)에서만 쓴다 — booking.ts 가 달력을 거쳐 서버 전용 모듈(businessHours.ts)을 불러온다.
 import { bookingSummaryKo, type BookingFields, type ContactRef } from '@/lib/chat/ai/booking';
+import { benefitKo, type BookingBenefit } from '@/lib/chat/ai/knowledge/offers';
 import { formatKst } from '@/lib/chat/kst';
 
 export interface AdminBooking {
@@ -8,10 +9,13 @@ export interface AdminBooking {
   /** 가예약이 처음 찬 시각 */
   requestedAt: string | null;
   fields: BookingFields;
+  /** 손님에게 안내한 채팅 예약 혜택 (044 — 제안형 응대가 켜진 대화만) */
+  benefit?: BookingBenefit | null;
 }
 
 /**
- * 찼으면 `🗓 가예약 · 10/14(수) 14:00 · 2명 · 울쎄라피 프라임 · WhatsApp +65 9123 4567 · Emma · 접수 10/02(금) 16:20`,
+ * 찼으면 `🗓 가예약 · 10/14(수) 14:00 · 2명 · 울쎄라피 프라임 · WhatsApp +65 9123 4567 · Emma · 접수 10/02(금) 16:20`
+ * (제안형 응대로 혜택을 안내했으면 끝에 `· 혜택: …`),
  * 아직 받는 중이면 `🗓 가예약 받는 중 · …`(가예약으로 받은 것만 — 세션의 연락처는 넣지 않는다). 받은 것이 없으면 null.
  */
 export function adminBookingLine(booking: AdminBooking | null, sessionContact: ContactRef | null): string | null {
@@ -19,6 +23,7 @@ export function adminBookingLine(booking: AdminBooking | null, sessionContact: C
   if (booking.status === 'requested') {
     const parts = [`🗓 가예약 · ${bookingSummaryKo(booking.fields, sessionContact)}`];
     if (booking.requestedAt) parts.push(`접수 ${formatKst(booking.requestedAt).replace(' KST', '')}`);
+    if (booking.benefit) parts.push(benefitKo(booking.benefit));
     return parts.join(' · ');
   }
   const summary = bookingSummaryKo(booking.fields, null);

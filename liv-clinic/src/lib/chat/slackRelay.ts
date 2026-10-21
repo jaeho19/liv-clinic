@@ -632,8 +632,11 @@ export interface AiSlackArgs {
   note: string | null;
   /** 그 답에 쓰인 가격 줄 (한국어, `써마지 레이저 · 600샷 2,400,000원~` 꼴) */
   quoted: string[];
-  /** 가예약이 처음 찼거나 바뀌었으면 그 내용. when 은 피드 줄에 쓰는 날짜·시각 */
-  booking: { changed: boolean; summary: string; when: string } | null;
+  /** 그 답에 나간 제안 줄 (한국어, `스컬트라 제안 ①` 꼴) · 손님이 이번 글에서 제안을 거절했는가 — 제안형 응대 */
+  offers?: string[];
+  offerDeclined?: boolean;
+  /** 가예약이 처음 찼거나 바뀌었으면 그 내용. when 은 피드 줄에 쓰는 날짜·시각, benefit 은 안내한 혜택(`혜택: …`, 없으면 null) */
+  booking: { changed: boolean; summary: string; when: string; benefit?: string | null } | null;
   /** 직원 확인이 필요하면 그 사유 */
   staffNeeded: { reason: string | null } | null;
 }
@@ -686,11 +689,18 @@ export async function relayAiTurnToSlack(args: AiSlackArgs): Promise<void> {
       return Boolean(r?.ok);
     };
 
-    if (args.note !== null) await post(styledAiReply({ note: args.note, quoted: args.quoted }), 'ai reply');
+    if (args.note !== null) {
+      await post(styledAiReply({ note: args.note, quoted: args.quoted, offers: args.offers, offerDeclined: args.offerDeclined }), 'ai reply');
+    }
 
     if (args.booking) {
       await post(
-        styledBookingNotice({ changed: args.booking.changed, summary: args.booking.summary, mention: staff.mentionAll() }),
+        styledBookingNotice({
+          changed: args.booking.changed,
+          summary: args.booking.summary,
+          benefit: args.booking.benefit,
+          mention: staff.mentionAll(),
+        }),
         'booking notice',
         true
       );

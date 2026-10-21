@@ -6,6 +6,7 @@ import { AI_FALLBACK_REASON, AI_SESSION_CAP_REASON } from '@/lib/chat/slackText'
 import { translate } from '@/lib/chat/translation';
 import { bookingSummaryKo, bookingWhenKo } from './booking';
 import { priceQuoteKo } from './knowledge';
+import { benefitKo, offerKo } from './knowledge/offers';
 import type { AiTurnOutcome } from './turn';
 
 // AI 응대 한 차례의 뒤처리 (스펙 2026-10-02 chat-ai-first-response §4.1 의 "응답 뒤" · §4.11 · §4.12). throw 하지 않는다.
@@ -44,6 +45,8 @@ export async function finishAiTurn(args: { sessionId: string; locale: VisitorLoc
         sessionId,
         note: null,
         quoted: [],
+        offers: [],
+        offerDeclined: false,
         booking: null,
         staffNeeded: { reason: outcome.kind === 'fallback' ? AI_FALLBACK_REASON : AI_SESSION_CAP_REASON },
       });
@@ -54,11 +57,14 @@ export async function finishAiTurn(args: { sessionId: string; locale: VisitorLoc
         sessionId,
         note: outcome.staffNoteKo,
         quoted: outcome.usedRows.map(priceQuoteKo),
+        offers: outcome.usedOffers.map(offerKo),
+        offerDeclined: outcome.offerDeclined,
         booking: outcome.bookingEvent
           ? {
               changed: outcome.bookingEvent === 'changed',
               summary: bookingSummaryKo(outcome.booking, outcome.contact),
               when: bookingWhenKo(outcome.booking),
+              benefit: outcome.bookingBenefit ? benefitKo(outcome.bookingBenefit) : null,
             }
           : null,
         staffNeeded: outcome.needsStaff ? { reason: outcome.staffReasonKo } : null,
