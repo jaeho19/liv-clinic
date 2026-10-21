@@ -73,6 +73,23 @@ describe('saveVisitorContact', () => {
     });
   });
 
+  it('confirm:false 면 저장만 하고 손님 화면의 확인 문구는 남기지 않는다 (AI 응대가 받은 연락처)', async () => {
+    const admin = okAdmin();
+    const r = await saveVisitorContact(
+      admin as never,
+      SESSION,
+      { channel: 'whatsapp', handle: '+65 9123 4567' },
+      { confirm: false }
+    );
+    expect(r).toEqual({ ok: true });
+    expect(sessionUpdate(admin)?.payload).toEqual({
+      visitor_messenger_channel: 'whatsapp',
+      visitor_messenger_handle: '+65 9123 4567',
+    });
+    expect(systemInsert(admin)).toBeUndefined();
+    expect(broadcastToSession).not.toHaveBeenCalled();
+  });
+
   it('DB 오류는 throw 없이 실패 결과 — 확인 문구도 넣지 않는다', async () => {
     const admin = okAdmin((op) => (op.op === 'update' ? { error: { code: '57014' } } : undefined));
     const error = vi.spyOn(console, 'error').mockImplementation(() => {});

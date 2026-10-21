@@ -12,6 +12,8 @@ export interface FakeOp {
 export interface FakeResult {
   data?: unknown;
   error?: { code: string; message?: string } | null;
+  /** select('id', { count: 'exact', head: true }) 의 결과 건수 */
+  count?: number | null;
 }
 
 export function fakeAdmin(handler: (op: FakeOp) => FakeResult) {
@@ -23,7 +25,7 @@ export function fakeAdmin(handler: (op: FakeOp) => FakeResult) {
       ops.push(op);
       const finish = () => {
         const r = handler(op);
-        return { data: r.data ?? null, error: r.error ?? null };
+        return { data: r.data ?? null, error: r.error ?? null, count: r.count ?? null };
       };
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const b: any = {

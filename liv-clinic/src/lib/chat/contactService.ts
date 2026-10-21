@@ -46,11 +46,15 @@ async function confirmToVisitor(
   });
 }
 
-/** 연락처 저장: email → visitor_email, 메신저 → visitor_messenger_channel/handle. 그 뒤 손님 화면에 확인 문구. */
+/**
+ * 연락처 저장: email → visitor_email, 메신저 → visitor_messenger_channel/handle. 그 뒤 손님 화면에 확인 문구.
+ * options.confirm=false 면 확인 문구를 남기지 않는다 — AI 응대가 대화에서 받은 연락처는 AI의 답과 가예약 요약이 그 구실을 한다.
+ */
 export async function saveVisitorContact(
   admin: ChatAdminClient,
   session: Pick<ContactSession, 'id' | 'visitor_locale'>,
-  input: { channel: ContactChannel; handle: string }
+  input: { channel: ContactChannel; handle: string },
+  options: { confirm?: boolean } = {}
 ): Promise<SaveContactResult> {
   try {
     const patch =
@@ -62,7 +66,7 @@ export async function saveVisitorContact(
       console.error('[chat contact] update failed:', error.code ?? 'unknown');
       return { ok: false, error: 'db_error' };
     }
-    await confirmToVisitor(admin, session, input.channel, input.handle);
+    if (options.confirm !== false) await confirmToVisitor(admin, session, input.channel, input.handle);
     return { ok: true };
   } catch (e) {
     console.error('[chat contact] save failed:', e);
