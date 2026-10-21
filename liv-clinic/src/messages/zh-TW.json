@@ -6246,6 +6246,8 @@
     "hideOriginal": "隱藏原文",
     "close": "關閉對話",
     "translationFailed": "(翻譯失敗 — 僅顯示原文)",
+    "typing": "正在輸入…",
+    "assistantNotice": "這裡先由自動助理為您解答，所有預約皆由本院人員確認。",
     "rateLimited": "您發送消息過於頻繁，請稍後再試。",
     "tooLong": "消息不能超過 1000 個字符。",
     "sessionEnded": "本次對話已結束。如需進一步諮詢，請開始新的對話。",

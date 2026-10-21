@@ -6238,6 +6238,8 @@
     "hideOriginal": "Ẩn bản gốc",
     "close": "Đóng trò chuyện",
     "translationFailed": "(bản dịch không thành công - chỉ bản gốc)",
+    "typing": "Đang nhập…",
+    "assistantNotice": "Tại đây, trợ lý tự động sẽ trả lời trước và nhân viên của chúng tôi xác nhận mọi lịch hẹn.",
     "rateLimited": "Bạn đang gửi tin nhắn quá nhanh. Vui lòng thử lại sau giây lát.",
     "tooLong": "Tin nhắn không thể vượt quá 1000 ký tự.",
     "sessionEnded": "Cuộc trò chuyện này đã kết thúc. Bắt đầu một cuộc trò chuyện mới để có thêm câu hỏi.",

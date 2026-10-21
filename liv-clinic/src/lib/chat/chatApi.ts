@@ -53,6 +53,9 @@ export interface CreateSessionResponse {
   createdAt: string;
   businessHours: boolean;
   operatorOnline: boolean;
+  /** AI가 먼저 답하는 대화다 — 배포 직후 옛 서버가 응답하면 없을 수 있다 */
+  instantReply?: boolean;
+  assistantNotice?: boolean;
 }
 
 export async function createChatSession(input: {
@@ -92,6 +95,8 @@ export interface VisitorSendResult {
    * 배포 직후 옛 서버가 응답하면 없을 수 있어 null을 허용한다.
    */
   contact: { saved: boolean; hasContact: boolean } | null;
+  /** 몇 초 안에 답이 온다 — "입력 중"을 보인다 (스펙 2026-10-02 chat-ai-first-response §4.10) */
+  instantReply: boolean;
 }
 
 export async function sendVisitorMessage(
@@ -110,18 +115,32 @@ export async function sendVisitorMessage(
   const json = (await res.json()) as {
     message: ChatMessage;
     contact?: { saved: boolean; hasContact: boolean };
+    instantReply?: boolean;
   };
-  return { message: json.message, contact: json.contact ?? null };
+  return { message: json.message, contact: json.contact ?? null, instantReply: Boolean(json.instantReply) };
 }
 
-/** 세션의 연락처 유무 — 패널을 열 때 연락처 카드를 띄울지 판단한다. 연락처 값 자체는 받지 않는다. */
-export async function fetchSessionInfo(sessionToken: string): Promise<{ hasContact: boolean }> {
+export interface SessionInfo {
+  /** 연락처 유무 — 연락처 카드를 띄울지 판단한다. 연락처 값 자체는 받지 않는다 */
+  hasContact: boolean;
+  /** 이 대화의 다음 손님 글에 몇 초 안에 답이 간다 (직원이 맡으면 꺼진다) */
+  instantReply: boolean;
+  /** 고지 한 줄을 보인다 */
+  assistantNotice: boolean;
+}
+
+/** 세션 정보 — 패널을 열 때와 직원·자동 응대의 새 글이 도착할 때 읽는다. */
+export async function fetchSessionInfo(sessionToken: string): Promise<SessionInfo> {
   const url = new URL('/api/chat/sessions', window.location.origin);
   url.searchParams.set('token', sessionToken);
   const res = await fetch(url.toString());
   if (!res.ok) throw new ChatApiError(res.status, 'session_info_failed');
-  const json = (await res.json()) as { hasContact?: boolean };
-  return { hasContact: Boolean(json.hasContact) };
+  const json = (await res.json()) as { hasContact?: boolean; instantReply?: boolean; assistantNotice?: boolean };
+  return {
+    hasContact: Boolean(json.hasContact),
+    instantReply: Boolean(json.instantReply),
+    assistantNotice: Boolean(json.assistantNotice),
+  };
 }
 
 export async function sendOperatorMessage(
@@ -212,6 +231,9 @@ export async function fetchPresence(): Promise<{
   operatorCount: number;
   businessHours: boolean;
   nextOpenAt: string | null;
+  /** AI가 먼저 답한다(채팅 시작 화면용) — 옛 서버의 응답에는 없다 */
+  instantReply?: boolean;
+  assistantNotice?: boolean;
 }> {
   const res = await fetch('/api/chat/presence');
   if (!res.ok) throw new ChatApiError(res.status, 'presence_failed');

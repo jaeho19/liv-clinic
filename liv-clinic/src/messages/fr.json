@@ -6238,6 +6238,8 @@
     "hideOriginal": "Masquer l'original",
     "close": "Fermer le chat",
     "translationFailed": "(échec de la traduction — original uniquement)",
+    "typing": "Écrit…",
+    "assistantNotice": "Ici, un assistant automatique répond d’abord, et notre équipe confirme toutes les réservations.",
     "rateLimited": "Vous envoyez des messages trop rapidement. Veuillez réessayer dans un instant.",
     "tooLong": "Les messages ne peuvent pas dépasser 1 000 caractères.",
     "sessionEnded": "Cette conversation est terminée. Démarrez un nouveau chat pour d'autres questions.",
