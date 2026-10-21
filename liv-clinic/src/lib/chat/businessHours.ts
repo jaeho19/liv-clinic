@@ -168,6 +168,11 @@ export function getBusinessHoursConfig(): BusinessHoursConfig {
   return loadConfig();
 }
 
+/** 등록된 휴진일(한국 날짜). AI 응대의 달력과 가예약 날짜 검사가 쓴다 (스펙 2026-10-02 chat-ai-first-response). */
+export function getClosedDates(): ReadonlySet<string> {
+  return loadClosedDates();
+}
+
 // 테스트용 캐시 리셋
 export function _resetBusinessHoursForTesting() {
   cachedConfig = null;
