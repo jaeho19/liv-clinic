@@ -74,7 +74,7 @@ export function assembleReply(args: AssembleArgs): Assembled {
     shownKeys.add(row.key);
     out.push(renderPriceLine(row, locale, vat));
     history.push(`[price line shown: ${row.labelKo}]`);
-    // "정확한 금액은 상담 뒤에" 는 시술 금액에 붙는 말이다 — 상담비(fee) 줄만 있으면 붙이지 않는다
+    // "대략적인 금액" 안내는 시술 금액에 붙는 말이다 — 상담비(fee) 줄만 있으면 붙이지 않는다
     if (row.group !== 'fee') lastPriceIndex = out.length - 1;
   };
 

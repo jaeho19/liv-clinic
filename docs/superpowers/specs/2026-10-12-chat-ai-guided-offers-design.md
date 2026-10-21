@@ -42,7 +42,7 @@ AI ②  Sculptra pricing depends on the amount used, so we will send the exact p
       for the jawline, and this month's lifting set is:
       • Ultherapy Prime 300 shots + ONDA Lifting 60 kJ + calming pack (this month's promotion, until Oct 31):
         KRW 1,590,000 (KRW 1,749,000 incl. VAT)
-      The exact amount is decided after your consultation with the doctor.
+      The amounts above are approximate, not final.
       Which combination suits you is decided by the doctor at the consultation.   ← 여기까지 제안 줄 {{C01}}
       Oct 20 (Tue) is a clinic day — what time works for you?
       (제안은 손님이 두 번째 글로 반응을 보인 뒤 · 턴당 1개)

@@ -45,7 +45,7 @@ describe('assembleReply — 금액 줄', () => {
         'Here are the regular and promotion options:',
         '• Thermage Laser · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
         "• Thermage FLX 600 shots + ONDA Lifting 30kJ + LDM care (this month's promotion, until Oct 31): KRW 2,200,000 (KRW 2,420,000 incl. VAT)",
-        'The exact amount is decided after your consultation with the doctor.',
+        'The amounts above are approximate, not final.',
         'What date would you prefer?',
       ].join('\n')
     );
@@ -60,7 +60,7 @@ describe('assembleReply — 금액 줄', () => {
 
   it('문장 안에 섞인 꼬리표는 문장 아래의 금액 줄로 옮긴다', () => {
     const a = assembleReply({ ...base, reply: `The consultation fee is {{${FEE}}} and it is deducted on the day.` });
-    // 상담비 줄에는 부가세 포함 금액도, "정확한 금액은 상담 뒤에" 안내도 붙지 않는다
+    // 상담비 줄에는 부가세 포함 금액도, "대략적인 금액" 안내도 붙지 않는다
     expect(a.text.split('\n')).toEqual([
       'The consultation fee is and it is deducted on the day.',
       '• 1:1 consultation fee (fully deducted from the procedure cost if a procedure is received the same day): KRW 10,000',
@@ -71,7 +71,7 @@ describe('assembleReply — 금액 줄', () => {
     const a = assembleReply({ ...base, reply: `{{${THERMAGE}}}\n{{${FEE}}}\nOK?` });
     const lines = a.text.split('\n');
     expect(lines[0]).toContain('KRW 2,400,000');
-    expect(lines[1]).toBe('The exact amount is decided after your consultation with the doctor.');
+    expect(lines[1]).toBe('The amounts above are approximate, not final.');
     expect(lines[2]).toContain('KRW 10,000');
     expect(lines[3]).toBe('OK?');
   });
@@ -86,7 +86,7 @@ describe('assembleReply — 금액 줄', () => {
     const a = assembleReply({ ...base, reply: `1. {{${THERMAGE}}}\n2) {{${PROMO}}}\n・{{${FEE}}}\nThanks` });
     const lines = a.text.split('\n');
     expect(lines).toHaveLength(5); // 금액 줄 둘 · 금액 안내 · 상담비 줄 · Thanks
-    expect(lines.every((l) => l.startsWith('• ') || l.startsWith('The exact amount') || l === 'Thanks')).toBe(true);
+    expect(lines.every((l) => l.startsWith('• ') || l.startsWith('The amounts above') || l === 'Thanks')).toBe(true);
   });
 
   it('같은 꼬리표를 떨어진 자리에 다시 쓰면 다시 보여 준다 — 소제목 아래가 비지 않게. 쓰인 가격 줄에는 한 번만 넣는다', () => {
@@ -96,7 +96,7 @@ describe('assembleReply — 금액 줄', () => {
     });
     expect(a.text.match(/Thermage Laser · 600 shots: from KRW 2,400,000/g)).toHaveLength(2);
     expect(a.usedRows.map((r) => r.key)).toEqual(['thermage.name.shot600', 'promo.2026-10.20']);
-    expect(a.text.match(/The exact amount/g)).toHaveLength(1);
+    expect(a.text.match(/The amounts above/g)).toHaveLength(1);
   });
 
   it('없는 꼬리표는 조용히 버린다(검사를 통과했다면 일어나지 않는다)', () => {
@@ -108,7 +108,7 @@ describe('assembleReply — 금액 줄', () => {
   it('부가세 표기 규칙을 넘기면 그 규칙으로 그린다', () => {
     const a = assembleReply({ ...base, reply: `{{${THERMAGE}}}`, vat: 'excluded' });
     expect(a.text).toBe(
-      '• Thermage Laser · 600 shots: from KRW 2,400,000\nPrices exclude VAT. The exact amount is decided after your consultation with the doctor.'
+      '• Thermage Laser · 600 shots: from KRW 2,400,000\nPrices exclude VAT. The amounts above are approximate, not final.'
     );
   });
 
@@ -117,7 +117,7 @@ describe('assembleReply — 금액 줄', () => {
     const a = assembleReply({ ...base, locale: 'ja', rowById: ja.rowById, reply: `料金はこちらです。\n{{${THERMAGE}}}` });
     const lines = a.text.split('\n');
     expect(lines[1]).toMatch(/^• .+：KRW 2,400,000〜（税込 KRW 2,640,000）$/);
-    expect(lines[2]).toBe('正確な金額は、医師の診察後に決まります。');
+    expect(lines[2]).toBe('上記は確定金額ではなく、おおよその金額です。');
   });
 });
 
@@ -174,7 +174,7 @@ describe('assembleReply — 정체 답 · 가예약 요약', () => {
     const text = a.text;
     expect(text.indexOf('An automated assistant')).toBe(0);
     expect(text.indexOf('KRW 2,400,000')).toBeGreaterThan(text.indexOf('Price:'));
-    expect(text.indexOf('Tentative booking')).toBeGreaterThan(text.indexOf('The exact amount'));
+    expect(text.indexOf('Tentative booking')).toBeGreaterThan(text.indexOf('The amounts above'));
     expect(text.length).toBeLessThan(MAX_ASSEMBLED_CHARS);
   });
 });
@@ -197,7 +197,7 @@ describe('assembleReply — 제안 줄 · 혜택 문장 (제안형 응대)', () 
         'We will confirm the Sculptra price.',
         "Sculptra can be combined with a lifting treatment such as Ultherapy Prime or Thermage at the same consultation. This month's set:",
         "• Ultherapy Prime 300 shots + ONDA Lifting 60kJ + calming pack (this month's promotion, until Oct 31): KRW 1,590,000 (KRW 1,749,000 incl. VAT)",
-        'The exact amount is decided after your consultation with the doctor.',
+        'The amounts above are approximate, not final.',
         'Which combination suits you is decided by the doctor at the consultation.',
         'What time works for you?',
       ].join('\n')

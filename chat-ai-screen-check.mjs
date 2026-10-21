@@ -39,7 +39,7 @@ const PRICE_REPLY = [
   'Thermage FLX is priced by the number of shots.',
   '• Thermage Laser · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
   "• Thermage FLX 600 shots + ONDA Lifting 30kJ + LDM care (this month's promotion, until Oct 31): KRW 2,200,000 (KRW 2,420,000 incl. VAT)",
-  'The exact amount is decided after your consultation with the doctor.',
+  'The amounts above are approximate, not final.',
   'If you book directly through this chat and pay at your visit, a 5% discount applies.',
   'Which date would you like to visit, and how can we reach you — WhatsApp, WeChat, LINE or email?',
 ].join('\n');
