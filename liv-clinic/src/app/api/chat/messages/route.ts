@@ -10,9 +10,11 @@ import { relayChatMessageToSlack } from '@/lib/chat/slackRelay';
 import type { ContactSession } from '@/lib/chat/contactService';
 import {
   runVisitorMessageFollowups,
+  settleEarlyFollowups,
   startEarlyFollowups,
   type EarlyFollowups,
 } from '@/lib/chat/visitorMessageFollowups';
+import { toVisitorMessages } from '@/lib/chat/visitorView';
 
 export const runtime = 'nodejs';
 
@@ -70,6 +72,16 @@ async function handleVisitorMessage(body: unknown) {
       console.error('[chat/messages] session reopen failed:', reopenError);
       return NextResponse.json({ error: 'db_error' }, { status: 500 });
     }
+    // 종료했던 대화에 손님이 다시 왔다 → 직원 담당을 풀어 AI가 다시 먼저 답하게 한다 (스펙 2026-10-02 chat-ai-first-response §4.13).
+    // 지난 방문의 가예약도 지운다(새 방문은 새로 받는다 — 보관했던 대화는 043 의 트리거가 같은 일을 한다).
+    // 043 의 컬럼·표라 재오픈과 따로 고친다 — 043 적용 전이면 경고만 남기고 지나간다.
+    const { error: resetError } = await admin
+      .from('chat_sessions')
+      .update({ staff_engaged_at: null, ai_handoff_at: null })
+      .eq('id', session.id);
+    if (resetError) console.warn('[chat/messages] ai state reset failed:', resetError.code ?? 'unknown');
+    const { error: bookingError } = await admin.from('chat_bookings').delete().eq('session_id', session.id);
+    if (bookingError) console.warn('[chat/messages] booking reset failed:', bookingError.code ?? 'unknown');
   }
 
   const limit = checkSessionMessageLimit(session.id);
@@ -175,10 +187,10 @@ async function persistAndBroadcast(
     return NextResponse.json({ error: 'db_error' }, { status: 500 });
   }
 
-  // 2. 손님 글: 글 속 이메일을 저장하고, 자동 안내(→ 이벤트 안내)를 번역·Slack을 기다리지 않고 지금 시작한다.
-  //    손님이 화면 앞에 있는 첫 몇 초 안에 안내가 도착해야 한다 (스펙 2026-10-01 §4.1).
+  // 2. 손님 글: 글 속 이메일을 저장하고, AI 답(또는 자동 안내 → 이벤트 안내)을 번역·Slack을 기다리지 않고 지금 시작한다.
+  //    손님이 화면 앞에 있는 첫 몇 초 안에 답이 도착해야 한다 (스펙 2026-10-01 §4.1, 2026-10-02 chat-ai-first-response §4.1).
   const early: EarlyFollowups | null = visitorSession
-    ? await startEarlyFollowups(admin, visitorSession, text)
+    ? await startEarlyFollowups(admin, visitorSession, text, { messageId: pending.id })
     : null;
 
   // 3. 동기 번역
@@ -199,12 +211,10 @@ async function persistAndBroadcast(
     .single();
   if (updateError || !updated) {
     console.error('[chat/messages] update failed:', updateError);
-    // 자동 안내는 이미 나갔거나 나가는 중이다 — 함수가 끝나기 전에 마저 끝나게 한다.
+    // 자동 안내·AI 답은 이미 나갔거나 나가는 중이다 — 함수가 끝나기 전에 마저 끝나게 하고, AI 결과는 방에 올린다.
     if (early) {
       const ackPromise = early.ackPromise;
-      after(async () => {
-        await ackPromise;
-      });
+      after(() => settleEarlyFollowups({ sessionId, locale: fromLang as VisitorLocale, ackPromise }));
     }
     return NextResponse.json({ error: 'db_error' }, { status: 500 });
   }
@@ -231,7 +241,13 @@ async function persistAndBroadcast(
   after(async () => {
     if (early) {
       // 손님 글: Slack 릴레이 → (이메일 저장 시) 연락처 알림, 그리고 2에서 시작한 자동 안내의 완료를 기다린다.
-      await runVisitorMessageFollowups({ relayArgs, contact: early.contact, ackPromise: early.ackPromise });
+      await runVisitorMessageFollowups({
+        relayArgs,
+        contact: early.contact,
+        ackPromise: early.ackPromise,
+        quiet: early.aiLed,
+        locale: fromLang as VisitorLocale,
+      });
     } else {
       await relayChatMessageToSlack(relayArgs);
     }
@@ -239,8 +255,13 @@ async function persistAndBroadcast(
 
   if (early) {
     // contact.saved: 이번 글에서 이메일을 저장했다. hasContact: 연락처 카드를 숨길지 판단하는 값.
+    // instantReply: 몇 초 안에 답이 간다 — 손님 화면이 "입력 중"을 보인다.
     return NextResponse.json(
-      { message: updated, contact: { saved: early.contact.saved, hasContact: early.contact.hasContact } },
+      {
+        message: updated,
+        contact: { saved: early.contact.saved, hasContact: early.contact.hasContact },
+        instantReply: early.aiReplying,
+      },
       { status: 201 }
     );
   }
@@ -291,5 +312,6 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'db_error' }, { status: 500 });
   }
 
-  return NextResponse.json({ messages: data ?? [] });
+  // 손님 화면으로 가는 응답에서는 글의 출처 'ai' 를 'auto' 로 바꾼다 (손님 쪽에는 AI 표시를 두지 않는다 — 스펙 §4.10)
+  return NextResponse.json({ messages: sessionToken ? toVisitorMessages(data ?? []) : (data ?? []) });
 }

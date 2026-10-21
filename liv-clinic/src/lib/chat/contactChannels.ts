@@ -85,7 +85,7 @@ export const STAFF_ACTIVE_WINDOW_MS = 10 * 60 * 1000;
 
 export interface CaptureMessage {
   sender: string;
-  /** 'auto' = 자동 안내. 직원 글로 치지 않는다 */
+  /** 'auto' = 자동 안내, 'ai' = AI 1차 응대. 직원 글로 치지 않는다 */
   source?: string | null;
   created_at: string;
 }
@@ -104,9 +104,12 @@ export interface CaptureBlockConditions {
   nowMs: number;
 }
 
-/** 직원이 쓴 글인가 — 자동 안내(source='auto')와 시스템 메시지는 아니다. */
+/**
+ * 직원이 쓴 글인가 — 자동 안내(source='auto')·AI 1차 응대(source='ai')·시스템 메시지는 아니다.
+ * 손님 화면에는 'ai' 가 'auto' 로 바뀌어 오지만(visitorView.ts), 값이 그대로 와도 같은 판정이 나오게 둘 다 본다.
+ */
 export function isStaffMessage(m: CaptureMessage): boolean {
-  return m.sender === 'operator' && m.source !== 'auto';
+  return m.sender === 'operator' && m.source !== 'auto' && m.source !== 'ai';
 }
 
 /** 영업시간 여부는 노출 조건이 아니다 — 손님이 답을 기다리는 동안이면 낮에도 뜬다. */
