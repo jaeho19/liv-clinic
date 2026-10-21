@@ -6,6 +6,7 @@ import {
   buildStaticPrompt,
   buildSystemPrompt,
   maskAmounts,
+  offerStateText,
   type DynamicPromptArgs,
   type HistoryMessage,
 } from '../prompt';
@@ -183,5 +184,55 @@ describe('buildHistory', () => {
       new Map()
     );
     expect(turns).toEqual([{ role: 'assistant', content: JSON.stringify({ reply: '[our staff] 내일 오전에 연락드리겠습니다' }) }]);
+  });
+});
+
+describe('제안형 응대 (스펙 2026-10-12 §4.1 · §4.2)', () => {
+  it('켜져 있을 때만 제안 규칙 · OFFER ROWS · 반응 출력 칸이 들어간다', () => {
+    const on = buildStaticPrompt(getKnowledge('en', MORNING, { offers: true }));
+    const off = buildStaticPrompt(getKnowledge('en', MORNING));
+    expect(on).toContain('# Suggestions — OFFER ROWS');
+    expect(on).toContain('# OFFER ROWS (Korean)');
+    expect(on).toContain('"reaction": "R1"|"R2"|"R3"|"R4"|"R5"|"R6"|"R7"|null, "offer_declined": boolean');
+    expect(on.indexOf('# OFFER ROWS (Korean)')).toBeGreaterThan(on.indexOf('# PRICE ROWS'));
+    expect(off).not.toContain('OFFER ROWS');
+    expect(off).not.toContain('"reaction"');
+    // 어느 쪽이든 혜택은 {{B01}} 로, 시술이 있는지 물으면 한 줄 소개를 붙인다
+    for (const p of [on, off]) {
+      expect(p).toContain('by writing the tag {{B01}} on a line of its own');
+      expect(p).toContain('시술 한 줄 소개');
+    }
+  });
+
+  it('보기로 드는 제안 꼬리표 {{C00}} 은 실제로 없다', () => {
+    const k = getKnowledge('en', MORNING, { offers: true });
+    expect(k.offerById.has('C00')).toBe(false);
+  });
+
+  it('OFFER STATE: 첫 답 · 거절 · 남은 수 · 혜택 문장이 나갔는지', () => {
+    const base = { offersOn: true, sentReplies: 0, benefitShown: false, declined: false, shownOffers: [], maxOffers: 2 };
+    expect(offerStateText(base)).toBe(
+      'The direct-booking benefit ({{B01}}) has not been shown yet in this conversation.\nThis is your first reply in this conversation: do not use any suggestion tag.'
+    );
+    expect(offerStateText({ ...base, sentReplies: 2, declined: true })).toContain('The visitor declined suggestions');
+    expect(
+      offerStateText({ ...base, sentReplies: 2, benefitShown: true, shownOffers: [{ id: 'C01', label: '스컬트라 — first' }] })
+    ).toBe(
+      [
+        'The direct-booking benefit ({{B01}}) was already shown in this conversation. Write it again only if the visitor asks about the benefit or a discount.',
+        'Suggestions already shown: 스컬트라 — first ({{C01}}).',
+        'Suggestions you may still make in this conversation: 1 (at most one per reply).',
+      ].join('\n')
+    );
+    expect(offerStateText({ ...base, offersOn: false, sentReplies: 3 })).toBe(
+      'The direct-booking benefit ({{B01}}) has not been shown yet in this conversation.'
+    );
+  });
+
+  it('OFFER STATE 는 바뀌는 부분(가예약 뒤 · 언어 앞)에 들어간다', () => {
+    const text = buildDynamicPrompt({ ...DYNAMIC, offerStateText: 'STATE' });
+    expect(text.indexOf('# OFFER STATE\nSTATE')).toBeGreaterThan(text.indexOf('# BOOKING SO FAR'));
+    expect(text.indexOf('# VISITOR LANGUAGE')).toBeGreaterThan(text.indexOf('# OFFER STATE'));
+    expect(buildDynamicPrompt(DYNAMIC)).not.toContain('# OFFER STATE');
   });
 });
