@@ -6133,8 +6133,8 @@
         "contourAreas": "Эрүү / чамархай",
         "botoxBody": "Botox (бие)",
         "bodyAreas": "Мөрний булчин / гар / шилбэ / гуя (100IU тутамд)",
-        "domestic": "Дотоодын",
-        "domesticPremium": "Дотоодын Premium",
+        "domestic": "Солонгост үйлдвэрлэсэн",
+        "domesticPremium": "Солонгост үйлдвэрлэсэн премиум",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
@@ -6150,7 +6150,7 @@
         "elementWhitening": "Element Whitening Booster",
         "stemcell": "Үүдэл эсийн Skin Booster",
         "melasma": "Меласма тарилга",
-        "glow": "Glow тарилга",
+        "glow": "Water Glow тарилга",
         "rejuranHbPlus": "Rejuran HB plus",
         "eyeRejuran": "Eye Rejuran",
         "rejuran": "Rejuran",
@@ -6161,16 +6161,16 @@
         "volume10cc": "10 cc"
       },
       "pigmentation": {
-        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
+        "dualToning": "Dual Toning лазер (Clarity + Lucas)",
         "dualToningDesc": "Меласма / толбо / нүх сүв / батганы сорви",
         "potenza": "Potenza",
-        "single": "Нэг удаагийн сесс",
+        "single": "1 удаа",
         "pumpingTip": "Pumping Tip",
         "semiPermanent": "Хагас байнгын будалт арилгах (Lucas Pico)",
         "semiPermanentDesc": "Хөмсөг / нүдний шугам",
-        "semiPermanentOnePart": "Хэсэг тутамд",
+        "semiPermanentOnePart": "1 хэсэг",
         "co2Laser": "CO2 лазер",
-        "co2Desc": "Мэнгэ / хавтгай үүлдэр / нас ахисны толбо гэх мэт.",
+        "co2Desc": "Мэнгэ / хавтгай үү / насны толбо гэх мэт",
         "dia3mm": "Диаметр ≤ 3 мм (1 цэг)",
         "dia5mm": "3 мм < Диаметр ≤ 5 мм (1 цэг)",
         "diaOver5mm": "Диаметр > 5 мм (1 цэг)",
@@ -6178,19 +6178,19 @@
         "neckFull": "Бүх хүзүү (50+ цэг)"
       },
       "vascular": {
-        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
-        "dualToningDesc": "Улайлт / судасны намжаалт",
-        "single": "Нэг удаагийн сесс"
+        "dualToning": "Dual Toning лазер (Clarity + Lucas)",
+        "dualToningDesc": "Улайлт / судас",
+        "single": "1 удаа"
       },
       "skintone": {
-        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
+        "dualToning": "Dual Toning лазер (Clarity + Lucas)",
         "dualToningDesc": "Арьсны өнгийг сайжруулах",
-        "single": "Нэг удаагийн сесс"
+        "single": "1 удаа"
       },
       "hairRemoval": {
-        "dualToning": "Давхар тонжуулах лазер (Clarity + Lucas)",
-        "dualToningDesc": "Үс арилгах арчилгаа",
-        "single": "Нэг удаагийн сесс"
+        "dualToning": "Dual Toning лазер (Clarity + Lucas)",
+        "dualToningDesc": "Үс арилгах",
+        "single": "1 удаа"
       }
     }
   },

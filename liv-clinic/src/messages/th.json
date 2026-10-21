@@ -6093,10 +6093,10 @@
       },
       "thermage": {
         "name": "เทอร์มาจเลเซอร์",
-        "shot300": "300 นัด",
-        "shot600": "600 นัด",
-        "shot900": "900 นัด",
-        "eyeTip225": "อายทิป 225 ช็อต",
+        "shot300": "300 ช็อต",
+        "shot600": "600 ช็อต",
+        "shot900": "900 ช็อต",
+        "eyeTip225": "Eye Tip 225 ช็อต",
         "eyeTip450": "Eye Tip 450 ช็อต"
       },
       "shurink": {
@@ -6104,21 +6104,21 @@
         "shurinkAreas": "V-line / แก้ม / หน้าผาก / คางสองชั้น / ริ้วรอยคอ / ใต้ตา",
         "ultheraLaser": "อัลเทอร่าเลเซอร์",
         "ultheraAreas": "V-line / แก้ม / คางสองชั้น / ริ้วรอยคอ",
-        "shot300": "300 นัด",
-        "shot600": "600 นัด",
-        "shot900": "900 นัด"
+        "shot300": "300 ช็อต",
+        "shot600": "600 ช็อต",
+        "shot900": "900 ช็อต"
       },
       "density": {
-        "hiTip": "เลเซอร์ความหนาแน่น (Hi-Tip)",
-        "alphaTip": "เลเซอร์ความหนาแน่น (Alpha-Tip)",
-        "shot300": "300 นัด",
-        "shot600": "600 นัด"
+        "hiTip": "เลเซอร์ Density (Hi-Tip)",
+        "alphaTip": "เลเซอร์ Density (Alpha-Tip)",
+        "shot300": "300 ช็อต",
+        "shot600": "600 ช็อต"
       },
       "inmode": {
         "name": "อินโหมดเลเซอร์",
         "fxForma": "โหมด FX / FORMA",
         "fx": "โหมด FX",
-        "forma": "โหมดฟอร์มา"
+        "forma": "โหมด FORMA"
       },
       "thread": {
         "name": "การร้อยไหม",
@@ -6129,31 +6129,31 @@
         "mint": "MINT (8 เส้น)"
       },
       "botox": {
-        "botoxContour": "โบท็อกซ์ (คอนทัวร์)",
+        "botoxContour": "โบท็อกซ์ (ปรับรูปหน้า)",
         "contourAreas": "กราม/ขมับ",
         "botoxBody": "โบท็อกซ์ (ร่างกาย)",
-        "bodyAreas": "สี่เหลี่ยมคางหมู / แขน / น่อง / ต้นขา (ต่อ 100IU)",
-        "domestic": "ภายในประเทศ",
-        "domesticPremium": "เบี้ยประกันภัยในประเทศ",
-        "xeomin": "เซวมิน",
-        "allergan": "อัลเลอร์แกน"
+        "bodyAreas": "กล้ามเนื้อบ่า / ต้นแขน / น่อง / ต้นขา (ต่อ 100IU)",
+        "domestic": "ผลิตในเกาหลี",
+        "domesticPremium": "พรีเมียมผลิตในเกาหลี",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan"
       },
       "filler": {
         "chanelInjection": "การฉีดชาแนล",
         "volume3cc": "3 ซีซี",
-        "otherFillers": "สารตัวเติมอื่น ๆ",
+        "otherFillers": "ฟิลเลอร์อื่น ๆ",
         "consultOnly": "ราคาโดยละเอียดให้ไว้ในระหว่างการให้คำปรึกษา"
       },
       "skinbooster": {
         "hilowave": "Hilowave",
         "juvelook": "Juvelook สกินบูสเตอร์",
-        "elementWhitening": "องค์ประกอบไวท์เทนนิ่งบูสเตอร์",
-        "stemcell": "สเต็มเซลล์ผิวบูสเตอร์",
-        "melasma": "การฉีดฝ้า",
-        "glow": "ฉีดโกลว์",
+        "elementWhitening": "Element ไวท์เทนนิ่งบูสเตอร์",
+        "stemcell": "สเต็มเซลล์สกินบูสเตอร์",
+        "melasma": "ฉีดรักษาฝ้า",
+        "glow": "ฉีดผิวฉ่ำวาว (Water Glow)",
         "rejuranHbPlus": "รีจูรัน เอชบี พลัส",
         "eyeRejuran": "อาย รีจูรัน",
-        "rejuran": "รีจูราน",
+        "rejuran": "รีจูรัน",
         "volume1cc": "1 ซีซี",
         "volume2cc": "2 ซีซี",
         "volume4cc": "4 ซีซี",
@@ -6161,36 +6161,36 @@
         "volume10cc": "10 ซีซี"
       },
       "pigmentation": {
-        "dualToning": "Dual Toning Laser (ความกระจ่างใส + ลูคัส)",
-        "dualToningDesc": "ฝ้า / ฝ้า / รูขุมขน / รอยแผลเป็นจากสิว",
+        "dualToning": "เลเซอร์ Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "ฝ้า / จุดด่างดำ / รูขุมขน / แผลเป็นจากสิว",
         "potenza": "Potenza",
-        "single": "เซสชันเดียว",
-        "pumpingTip": "เคล็ดลับการปั๊ม",
+        "single": "1 ครั้ง",
+        "pumpingTip": "Pumping Tip",
         "semiPermanent": "ลบเมคอัพกึ่งถาวร (Lucas Pico)",
         "semiPermanentDesc": "คิ้ว / อายไลเนอร์",
-        "semiPermanentOnePart": "ต่อพื้นที่",
+        "semiPermanentOnePart": "1 ตำแหน่ง",
         "co2Laser": "เลเซอร์ CO2",
-        "co2Desc": "ไฝ / หูดแบน / จุดด่างอายุ ฯลฯ",
+        "co2Desc": "ไฝ / หูดแบน / กระเนื้อ ฯลฯ",
         "dia3mm": "เส้นผ่านศูนย์กลาง ≤ 3 มม. (1 จุด)",
         "dia5mm": "3 มม. < เส้นผ่านศูนย์กลาง ≤ 5 มม. (1 จุด)",
         "diaOver5mm": "เส้นผ่านศูนย์กลาง > 5 มม. (1 จุด)",
-        "faceFull": "เต็มหน้า (50+ จุด)",
-        "neckFull": "คอเต็ม (50+ จุด)"
+        "faceFull": "ทั้งใบหน้า (50 จุดขึ้นไป)",
+        "neckFull": "ทั้งลำคอ (50 จุดขึ้นไป)"
       },
       "vascular": {
-        "dualToning": "Dual Toning Laser (ความกระจ่างใส + ลูคัส)",
-        "dualToningDesc": "สีแดง / บรรเทาหลอดเลือด",
-        "single": "เซสชันเดียว"
+        "dualToning": "เลเซอร์ Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "ผิวแดง / เส้นเลือดฝอย",
+        "single": "1 ครั้ง"
       },
       "skintone": {
-        "dualToning": "Dual Toning Laser (ความกระจ่างใส + ลูคัส)",
-        "dualToningDesc": "การปรับปรุงสีผิว",
-        "single": "เซสชันเดียว"
+        "dualToning": "เลเซอร์ Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "ปรับสีผิวให้สม่ำเสมอ",
+        "single": "1 ครั้ง"
       },
       "hairRemoval": {
-        "dualToning": "Dual Toning Laser (ความกระจ่างใส + ลูคัส)",
-        "dualToningDesc": "การดูแลกำจัดขน",
-        "single": "เซสชันเดียว"
+        "dualToning": "เลเซอร์ Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "กำจัดขน",
+        "single": "1 ครั้ง"
       }
     }
   },

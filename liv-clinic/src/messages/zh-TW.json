@@ -6092,7 +6092,7 @@
         "fullFaceNeck": "全面部 + 頸部 (600發~)"
       },
       "thermage": {
-        "name": "鳳凰電波激光",
+        "name": "鳳凰電波雷射",
         "shot300": "300發",
         "shot600": "600發",
         "shot900": "900發",
@@ -6100,22 +6100,22 @@
         "eyeTip450": "眼部探頭 450發"
       },
       "shurink": {
-        "shurinkLaser": "Shurink激光",
+        "shurinkLaser": "Shurink雷射",
         "shurinkAreas": "V臉/蘋果肌/額頭/雙下巴/頸紋/眼下",
-        "ultheraLaser": "音波拉提激光",
+        "ultheraLaser": "音波拉提雷射",
         "ultheraAreas": "V臉/蘋果肌/雙下巴/頸紋",
         "shot300": "300發",
         "shot600": "600發",
         "shot900": "900發"
       },
       "density": {
-        "hiTip": "Density激光 (Hi-Tip)",
-        "alphaTip": "Density激光 (Alpha-Tip)",
+        "hiTip": "Density雷射 (Hi-Tip)",
+        "alphaTip": "Density雷射 (Alpha-Tip)",
         "shot300": "300發",
         "shot600": "600發"
       },
       "inmode": {
-        "name": "InMode激光",
+        "name": "InMode雷射",
         "fxForma": "FX / FORMA 模式",
         "fx": "FX 模式",
         "forma": "FORMA 模式"
@@ -6130,11 +6130,11 @@
       },
       "botox": {
         "botoxContour": "肉毒桿菌素 (輪廓)",
-        "contourAreas": "方形臉/太陽穴",
+        "contourAreas": "咀嚼肌/太陽穴",
         "botoxBody": "肉毒桿菌素 (身體)",
         "bodyAreas": "斜方肌/手臂/小腿/大腿 (100IU)",
-        "domestic": "國產",
-        "domesticPremium": "國產高級",
+        "domestic": "韓國製",
+        "domesticPremium": "韓國製高階",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
@@ -6146,9 +6146,9 @@
       },
       "skinbooster": {
         "hilowave": "Hilowave",
-        "juvelook": "Juvelook 皮膚助推器",
-        "elementWhitening": "Element 美白助推器",
-        "stemcell": "幹細胞皮膚助推器",
+        "juvelook": "Juvelook Skin Booster",
+        "elementWhitening": "Element 美白 Booster",
+        "stemcell": "幹細胞 Skin Booster",
         "melasma": "祛斑針",
         "glow": "水光針",
         "rejuranHbPlus": "Rejuran HB plus",
@@ -6161,7 +6161,7 @@
         "volume10cc": "10 cc"
       },
       "pigmentation": {
-        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToning": "雙波長雷射 (Clarity + Lucas)",
         "dualToningDesc": "色斑/雀斑/毛孔/痘印",
         "potenza": "Potenza",
         "single": "單次",
@@ -6169,7 +6169,7 @@
         "semiPermanent": "半永久化妝去除 (Lucas皮秒)",
         "semiPermanentDesc": "眉毛 / 眼線",
         "semiPermanentOnePart": "1部位",
-        "co2Laser": "CO2激光",
+        "co2Laser": "CO2雷射",
         "co2Desc": "痣/扁平疣/老年斑等",
         "dia3mm": "直徑 ≤ 3mm (1個)",
         "dia5mm": "3mm < 直徑 ≤ 5mm (1個)",
@@ -6178,17 +6178,17 @@
         "neckFull": "全頸 (50個以上)"
       },
       "vascular": {
-        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToning": "雙波長雷射 (Clarity + Lucas)",
         "dualToningDesc": "紅血絲/血管改善",
         "single": "單次"
       },
       "skintone": {
-        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToning": "雙波長雷射 (Clarity + Lucas)",
         "dualToningDesc": "膚色改善",
         "single": "單次"
       },
       "hairRemoval": {
-        "dualToning": "雙波長激光 (Clarity + Lucas)",
+        "dualToning": "雙波長雷射 (Clarity + Lucas)",
         "dualToningDesc": "脫毛護理",
         "single": "單次"
       }

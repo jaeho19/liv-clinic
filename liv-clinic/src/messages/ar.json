@@ -6093,26 +6093,26 @@
       },
       "thermage": {
         "name": "ليزر Thermage",
-        "shot300": "300 لقطة",
-        "shot600": "600 لقطة",
-        "shot900": "900 لقطة",
-        "eyeTip225": "Eye Tip 225 لقطة",
-        "eyeTip450": "Eye Tip 450 لقطة"
+        "shot300": "300 نبضة",
+        "shot600": "600 نبضة",
+        "shot900": "900 نبضة",
+        "eyeTip225": "Eye Tip 225 نبضة",
+        "eyeTip450": "Eye Tip 450 نبضة"
       },
       "shurink": {
         "shurinkLaser": "ليزر Shurink",
         "shurinkAreas": "خط V / الخدود / الجبهة / الذقن المزدوج / تجاعيد الرقبة / تحت العين",
         "ultheraLaser": "ليزر Ulthera",
         "ultheraAreas": "خط V / الخدود / الذقن المزدوج / تجاعيد الرقبة",
-        "shot300": "300 لقطة",
-        "shot600": "600 لقطة",
-        "shot900": "900 لقطة"
+        "shot300": "300 نبضة",
+        "shot600": "600 نبضة",
+        "shot900": "900 نبضة"
       },
       "density": {
         "hiTip": "ليزر Density (Hi-Tip)",
         "alphaTip": "ليزر Density (Alpha-Tip)",
-        "shot300": "300 لقطة",
-        "shot600": "600 لقطة"
+        "shot300": "300 نبضة",
+        "shot600": "600 نبضة"
       },
       "inmode": {
         "name": "ليزر InMode",
@@ -6129,12 +6129,12 @@
         "mint": "MINT (8 خيوط)"
       },
       "botox": {
-        "botoxContour": "Botox (الكفاف)",
+        "botoxContour": "Botox (تحديد الوجه)",
         "contourAreas": "الفك / الصدغ",
         "botoxBody": "Botox (الجسم)",
         "bodyAreas": "العضلة شبه المنحرفة / الذراعان / الساقان / الفخذان (لكل 100 وحدة دولية)",
-        "domestic": "محلي",
-        "domesticPremium": "محلي فاخر",
+        "domestic": "كوري الصنع",
+        "domesticPremium": "كوري الصنع فاخر",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
@@ -6150,7 +6150,7 @@
         "elementWhitening": "Element Whitening Booster",
         "stemcell": "Skin Booster بالخلايا الجذعية",
         "melasma": "حقن الكلف",
-        "glow": "حقن Glow",
+        "glow": "حقن النضارة (Water Glow)",
         "rejuranHbPlus": "Rejuran HB plus",
         "eyeRejuran": "Eye Rejuran",
         "rejuran": "Rejuran",
@@ -6161,14 +6161,14 @@
         "volume10cc": "10 سم³"
       },
       "pigmentation": {
-        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
+        "dualToning": "ليزر Dual Toning (Clarity + Lucas)",
         "dualToningDesc": "الكلف / البقع / المسام / ندبات حب الشباب",
         "potenza": "Potenza",
         "single": "جلسة واحدة",
         "pumpingTip": "Pumping Tip",
         "semiPermanent": "إزالة المكياج شبه الدائم (Lucas Pico)",
         "semiPermanentDesc": "الحواجب / الآيلاينر",
-        "semiPermanentOnePart": "لكل منطقة",
+        "semiPermanentOnePart": "منطقة واحدة",
         "co2Laser": "ليزر CO2",
         "co2Desc": "الشامات / الثآليل المسطحة / بقع الشيخوخة، إلخ.",
         "dia3mm": "القطر ≤ 3 مم (نقطة واحدة)",
@@ -6178,18 +6178,18 @@
         "neckFull": "الرقبة بالكامل (أكثر من 50 نقطة)"
       },
       "vascular": {
-        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
-        "dualToningDesc": "احمرار / تخفيف الأوعية الدموية",
+        "dualToning": "ليزر Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "الاحمرار / الشعيرات الدموية",
         "single": "جلسة واحدة"
       },
       "skintone": {
-        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
+        "dualToning": "ليزر Dual Toning (Clarity + Lucas)",
         "dualToningDesc": "تحسين لون البشرة",
         "single": "جلسة واحدة"
       },
       "hairRemoval": {
-        "dualToning": "ليزر التنغيم المزدوج (Clarity + Lucas)",
-        "dualToningDesc": "العناية بإزالة الشعر",
+        "dualToning": "ليزر Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "إزالة الشعر",
         "single": "جلسة واحدة"
       }
     }

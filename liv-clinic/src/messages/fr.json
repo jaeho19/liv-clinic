@@ -6093,26 +6093,26 @@
       },
       "thermage": {
         "name": "Laser Thermage",
-        "shot300": "300 lignes",
-        "shot600": "600 lignes",
-        "shot900": "900 lignes",
-        "eyeTip225": "Eye Tip 225 lignes",
-        "eyeTip450": "Eye Tip 450 lignes"
+        "shot300": "300 tirs",
+        "shot600": "600 tirs",
+        "shot900": "900 tirs",
+        "eyeTip225": "Eye Tip 225 tirs",
+        "eyeTip450": "Eye Tip 450 tirs"
       },
       "shurink": {
         "shurinkLaser": "Laser Shurink",
         "shurinkAreas": "Ligne V / joues / front / double menton / rides du cou / contour des yeux",
         "ultheraLaser": "Laser Ulthera",
         "ultheraAreas": "Ligne V / joues / double menton / rides du cou",
-        "shot300": "300 lignes",
-        "shot600": "600 lignes",
-        "shot900": "900 lignes"
+        "shot300": "300 tirs",
+        "shot600": "600 tirs",
+        "shot900": "900 tirs"
       },
       "density": {
         "hiTip": "Laser Density (Hi-Tip)",
         "alphaTip": "Laser Density (Alpha-Tip)",
-        "shot300": "300 lignes",
-        "shot600": "600 lignes"
+        "shot300": "300 tirs",
+        "shot600": "600 tirs"
       },
       "inmode": {
         "name": "Laser InMode",
@@ -6130,18 +6130,18 @@
       },
       "botox": {
         "botoxContour": "Botox (contour)",
-        "contourAreas": "Mâchoire / temps",
+        "contourAreas": "Mâchoire / tempes",
         "botoxBody": "Botox (corps)",
         "bodyAreas": "Trapèzes / bras / mollets / cuisses (par 100 UI)",
-        "domestic": "Domestique",
-        "domesticPremium": "Domestique Premium",
+        "domestic": "Fabrication coréenne",
+        "domesticPremium": "Fabrication coréenne premium",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
       "filler": {
         "chanelInjection": "Injection Chanel",
         "volume3cc": "3 cc",
-        "otherFillers": "Autres acides hyaluroniques",
+        "otherFillers": "Autres produits de comblement",
         "consultOnly": "Tarification détaillée fournie lors de la consultation"
       },
       "skinbooster": {
@@ -6150,7 +6150,7 @@
         "elementWhitening": "Element Whitening Booster",
         "stemcell": "Skin Booster aux cellules souches",
         "melasma": "Injection mélasma",
-        "glow": "Injection Glow",
+        "glow": "Injection éclat (Water Glow)",
         "rejuranHbPlus": "Rejuran HB plus",
         "eyeRejuran": "Eye Rejuran",
         "rejuran": "Rejuran",
@@ -6161,36 +6161,36 @@
         "volume10cc": "10 cc"
       },
       "pigmentation": {
-        "dualToning": "Laser à tonification double (Clarity + Lucas)",
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
         "dualToningDesc": "Mélasma / taches / pores / cicatrices d'acné",
         "potenza": "Potenza",
-        "single": "Séance unique",
+        "single": "1 séance",
         "pumpingTip": "Pumping Tip",
         "semiPermanent": "Retrait de maquillage semi-permanent (Lucas Pico)",
         "semiPermanentDesc": "Sourcils / eye-liner",
-        "semiPermanentOnePart": "Par zone",
+        "semiPermanentOnePart": "1 zone",
         "co2Laser": "Laser CO2",
         "co2Desc": "Grains de beauté / verrues plates / taches de vieillesse, etc.",
-        "dia3mm": "Diamètre ≤ 3 mm (1 point)",
-        "dia5mm": "3 mm < Diamètre ≤ 5 mm (1 point)",
-        "diaOver5mm": "Diamètre > 5 mm (1 point)",
-        "faceFull": "Visage complet (plus de 50 points)",
-        "neckFull": "Cou complet (plus de 50 points)"
+        "dia3mm": "Diamètre ≤ 3 mm (1 unité)",
+        "dia5mm": "3 mm < diamètre ≤ 5 mm (1 unité)",
+        "diaOver5mm": "Diamètre > 5 mm (1 unité)",
+        "faceFull": "Visage entier (50 unités et plus)",
+        "neckFull": "Cou entier (50 unités et plus)"
       },
       "vascular": {
-        "dualToning": "Laser à tonification double (Clarity + Lucas)",
-        "dualToningDesc": "Rougeurs / soulagement vasculaire",
-        "single": "Séance unique"
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Rougeurs / vaisseaux",
+        "single": "1 séance"
       },
       "skintone": {
-        "dualToning": "Laser à tonification double (Clarity + Lucas)",
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
         "dualToningDesc": "Amélioration du teint",
-        "single": "Séance unique"
+        "single": "1 séance"
       },
       "hairRemoval": {
-        "dualToning": "Laser à tonification double (Clarity + Lucas)",
-        "dualToningDesc": "Soins épilation",
-        "single": "Séance unique"
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Épilation",
+        "single": "1 séance"
       }
     }
   },

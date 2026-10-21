@@ -6070,10 +6070,10 @@
     "error": "Please try again in a moment."
   },
   "pricing": {
-    "sectionTitle": "Цены на лечение",
+    "sectionTitle": "Цены на процедуры",
     "header": {
-      "treatment": "Уход",
-      "option": "Район / Вариант",
+      "treatment": "Процедура",
+      "option": "Зона / вариант",
       "price": "Цена"
     },
     "consultRequired": "Требуется консультация",
@@ -6092,33 +6092,33 @@
         "fullFaceNeck": "Всё лицо + шея (600 импульсов~)"
       },
       "thermage": {
-        "name": "Термаж Лазер",
-        "shot300": "300 выстрелов",
-        "shot600": "600 выстрелов",
-        "shot900": "900 выстрелов",
-        "eyeTip225": "Наконечник глаза 225 снимков",
-        "eyeTip450": "Наконечник для глаз: 450 снимков."
+        "name": "Лазер Thermage",
+        "shot300": "300 импульсов",
+        "shot600": "600 импульсов",
+        "shot900": "900 импульсов",
+        "eyeTip225": "Eye Tip 225 импульсов",
+        "eyeTip450": "Eye Tip 450 импульсов"
       },
       "shurink": {
-        "shurinkLaser": "Шуринк Лазер",
-        "shurinkAreas": "V-образный / Щеки / Лоб / Двойной подбородок / Морщины на шее / Под глазами",
-        "ultheraLaser": "Альтера Лазер",
-        "ultheraAreas": "V-образный вырез/Щеки/Двойной подбородок/Морщины на шее",
-        "shot300": "300 выстрелов",
-        "shot600": "600 выстрелов",
-        "shot900": "900 выстрелов"
+        "shurinkLaser": "Лазер Shurink",
+        "shurinkAreas": "V-линия / щёки / лоб / второй подбородок / морщины на шее / под глазами",
+        "ultheraLaser": "Лазер Ulthera",
+        "ultheraAreas": "V-линия / щёки / второй подбородок / морщины на шее",
+        "shot300": "300 импульсов",
+        "shot600": "600 импульсов",
+        "shot900": "900 импульсов"
       },
       "density": {
-        "hiTip": "Лазер плотности (Hi-Tip)",
-        "alphaTip": "Лазер плотности (альфа-наконечник)",
-        "shot300": "300 выстрелов",
-        "shot600": "600 выстрелов"
+        "hiTip": "Лазер Density (Hi-Tip)",
+        "alphaTip": "Лазер Density (Alpha-Tip)",
+        "shot300": "300 импульсов",
+        "shot600": "600 импульсов"
       },
       "inmode": {
         "name": "Лазер InMode",
         "fxForma": "Режим FX / FORMA",
-        "fx": "Режим эффектов",
-        "forma": "Режим ФОРМА"
+        "fx": "Режим FX",
+        "forma": "Режим FORMA"
       },
       "thread": {
         "name": "Нитевой лифтинг",
@@ -6129,68 +6129,68 @@
         "mint": "MINT (8 нитей)"
       },
       "botox": {
-        "botoxContour": "Ботокс (Контур)",
-        "contourAreas": "Челюсть/Висок",
-        "botoxBody": "Ботокс (Тело)",
-        "bodyAreas": "Трапеции/Руки/Икры/Бёдра (на 100МЕ)",
-        "domestic": "Одомашненный",
-        "domesticPremium": "Внутренний премиум",
-        "xeomin": "Ксеомин",
-        "allergan": "Аллерган"
+        "botoxContour": "Ботокс (контур лица)",
+        "contourAreas": "Челюсть / виски",
+        "botoxBody": "Ботокс (тело)",
+        "bodyAreas": "Трапеции / руки / икры / бёдра (за 100 ЕД)",
+        "domestic": "Корейского производства",
+        "domesticPremium": "Корейского производства, премиум",
+        "xeomin": "Xeomin",
+        "allergan": "Allergan"
       },
       "filler": {
         "chanelInjection": "Шанель Инъекция",
-        "volume3cc": "3 куб.см",
-        "otherFillers": "Другие наполнители",
+        "volume3cc": "3 мл",
+        "otherFillers": "Другие филлеры",
         "consultOnly": "Подробную стоимость уточняйте при консультации."
       },
       "skinbooster": {
         "hilowave": "Hilowave",
-        "juvelook": "Бустер для кожи Juvelook",
-        "elementWhitening": "Элементный отбеливающий усилитель",
-        "stemcell": "Усилитель кожи со стволовыми клетками",
-        "melasma": "Мелазма Инъекции",
-        "glow": "Светящаяся инъекция",
-        "rejuranHbPlus": "Режуран ХБ плюс",
-        "eyeRejuran": "Глаз Режуран",
-        "rejuran": "Режуран",
-        "volume1cc": "1 куб.см",
-        "volume2cc": "2 куб.см",
-        "volume4cc": "4 куб.см",
-        "volume5cc": "5 куб.см",
-        "volume10cc": "10 куб.см"
+        "juvelook": "Скинбустер Juvelook",
+        "elementWhitening": "Осветляющий бустер Element",
+        "stemcell": "Скинбустер со стволовыми клетками",
+        "melasma": "Инъекции от мелазмы",
+        "glow": "Инъекции для сияния кожи (Water Glow)",
+        "rejuranHbPlus": "Rejuran HB plus",
+        "eyeRejuran": "Eye Rejuran",
+        "rejuran": "Rejuran",
+        "volume1cc": "1 мл",
+        "volume2cc": "2 мл",
+        "volume4cc": "4 мл",
+        "volume5cc": "5 мл",
+        "volume10cc": "10 мл"
       },
       "pigmentation": {
-        "dualToning": "Двойной тонирующий лазер (Clarity + Lucas)",
-        "dualToningDesc": "Мелазма/пятна/поры/шрамы от прыщей",
+        "dualToning": "Лазер Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Мелазма / пигментные пятна / поры / рубцы после акне",
         "potenza": "Potenza",
-        "single": "Один сеанс",
-        "pumpingTip": "Наконечник для сцеживания",
+        "single": "1 сеанс",
+        "pumpingTip": "Pumping Tip",
         "semiPermanent": "Удаление перманентного макияжа (Lucas Pico)",
         "semiPermanentDesc": "Брови / подводка глаз",
-        "semiPermanentOnePart": "За площадь",
+        "semiPermanentOnePart": "1 зона",
         "co2Laser": "CO2-лазер",
-        "co2Desc": "Родинки/плоские бородавки/пигментные пятна и т. д.",
-        "dia3mm": "Диаметр ≤ 3 мм (1 точка)",
-        "dia5mm": "3 мм < Диаметр ≤ 5 мм (1 точка)",
-        "diaOver5mm": "Диаметр > 5 мм (1 точка)",
-        "faceFull": "Анфас (50+ мест)",
-        "neckFull": "Полная шея (50+ мест)"
+        "co2Desc": "Родинки / плоские бородавки / возрастные пятна и т. д.",
+        "dia3mm": "Диаметр ≤ 3 мм (1 шт.)",
+        "dia5mm": "3 мм < диаметр ≤ 5 мм (1 шт.)",
+        "diaOver5mm": "Диаметр > 5 мм (1 шт.)",
+        "faceFull": "Всё лицо (от 50 шт.)",
+        "neckFull": "Вся шея (от 50 шт.)"
       },
       "vascular": {
-        "dualToning": "Двойной тонирующий лазер (Clarity + Lucas)",
-        "dualToningDesc": "Покраснение/сосудистое облегчение",
-        "single": "Один сеанс"
+        "dualToning": "Лазер Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Покраснение / сосуды",
+        "single": "1 сеанс"
       },
       "skintone": {
-        "dualToning": "Двойной тонирующий лазер (Clarity + Lucas)",
+        "dualToning": "Лазер Dual Toning (Clarity + Lucas)",
         "dualToningDesc": "Улучшение тона кожи",
-        "single": "Один сеанс"
+        "single": "1 сеанс"
       },
       "hairRemoval": {
-        "dualToning": "Двойной тонирующий лазер (Clarity + Lucas)",
-        "dualToningDesc": "Уход за удалением волос",
-        "single": "Один сеанс"
+        "dualToning": "Лазер Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Удаление волос",
+        "single": "1 сеанс"
       }
     }
   },

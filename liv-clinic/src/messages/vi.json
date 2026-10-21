@@ -6070,10 +6070,10 @@
     "error": "Please try again in a moment."
   },
   "pricing": {
-    "sectionTitle": "Giá điều trị",
+    "sectionTitle": "Bảng giá dịch vụ",
     "header": {
-      "treatment": "Sự đối đãi",
-      "option": "Khu vực/Tùy chọn",
+      "treatment": "Dịch vụ",
+      "option": "Vùng / Tùy chọn",
       "price": "Giá"
     },
     "consultRequired": "Cần tư vấn",
@@ -6092,33 +6092,33 @@
         "fullFaceNeck": "Toàn mặt + cổ (600 shots~)"
       },
       "thermage": {
-        "name": "Laser nhiệt",
-        "shot300": "300 bức ảnh",
-        "shot600": "600 bức ảnh",
-        "shot900": "900 bức ảnh",
-        "eyeTip225": "Đầu mắt 225 ảnh",
-        "eyeTip450": "Đầu mắt 450 bức ảnh"
+        "name": "Laser Thermage",
+        "shot300": "300 shots",
+        "shot600": "600 shots",
+        "shot900": "900 shots",
+        "eyeTip225": "Eye Tip 225 shots",
+        "eyeTip450": "Eye Tip 450 shots"
       },
       "shurink": {
-        "shurinkLaser": "Laser thu nhỏ",
+        "shurinkLaser": "Laser Shurink",
         "shurinkAreas": "V-line / Má / Trán / Cằm đôi / Nếp nhăn cổ / Dưới mắt",
         "ultheraLaser": "Laser Ulthera",
-        "ultheraAreas": "V-line / Má / Hai cằm / Nếp nhăn ở cổ",
-        "shot300": "300 bức ảnh",
-        "shot600": "600 bức ảnh",
-        "shot900": "900 bức ảnh"
+        "ultheraAreas": "V-line / Má / Cằm đôi / Nếp nhăn cổ",
+        "shot300": "300 shots",
+        "shot600": "600 shots",
+        "shot900": "900 shots"
       },
       "density": {
-        "hiTip": "Laser mật độ (Hi-Tip)",
-        "alphaTip": "Laser mật độ (Alpha-Tip)",
-        "shot300": "300 bức ảnh",
-        "shot600": "600 bức ảnh"
+        "hiTip": "Laser Density (Hi-Tip)",
+        "alphaTip": "Laser Density (Alpha-Tip)",
+        "shot300": "300 shots",
+        "shot600": "600 shots"
       },
       "inmode": {
         "name": "Laser InMode",
         "fxForma": "Chế độ FX / FORMA",
         "fx": "Chế độ FX",
-        "forma": "Chế độ HÌNH THỨC"
+        "forma": "Chế độ FORMA"
       },
       "thread": {
         "name": "Nâng chỉ",
@@ -6129,30 +6129,30 @@
         "mint": "MINT (8 sợi)"
       },
       "botox": {
-        "botoxContour": "Botox (Đường viền)",
-        "contourAreas": "Hàm / Đền",
+        "botoxContour": "Botox (thon gọn đường nét)",
+        "contourAreas": "Hàm / Thái dương",
         "botoxBody": "Botox (Cơ thể)",
-        "bodyAreas": "Cơ thang / Cánh tay / Bắp chân / Đùi (trên 100IU)",
-        "domestic": "Nội địa",
-        "domesticPremium": "Phí bảo hiểm nội địa",
+        "bodyAreas": "Cơ thang / Bắp tay / Bắp chân / Đùi (mỗi 100IU)",
+        "domestic": "Sản xuất tại Hàn Quốc",
+        "domesticPremium": "Sản xuất tại Hàn Quốc, cao cấp",
         "xeomin": "Xeomin",
-        "allergan": "chất gây dị ứng"
+        "allergan": "Allergan"
       },
       "filler": {
         "chanelInjection": "Thuốc tiêm Chanel",
         "volume3cc": "3 cc",
-        "otherFillers": "Chất độn khác",
+        "otherFillers": "Filler khác",
         "consultOnly": "Báo giá chi tiết khi tư vấn"
       },
       "skinbooster": {
         "hilowave": "Hilowave",
-        "juvelook": "Tăng cường da Juvelook",
-        "elementWhitening": "Yếu tố tăng cường làm trắng",
-        "stemcell": "Tăng cường tế bào gốc cho da",
+        "juvelook": "Juvelook Skin Booster",
+        "elementWhitening": "Element Whitening Booster",
+        "stemcell": "Skin Booster tế bào gốc",
         "melasma": "Tiêm trị nám",
-        "glow": "Tiêm phát sáng",
+        "glow": "Tiêm căng bóng da (Water Glow)",
         "rejuranHbPlus": "Rejuran HB plus",
-        "eyeRejuran": "Phục hồi mắt",
+        "eyeRejuran": "Eye Rejuran",
         "rejuran": "Rejuran",
         "volume1cc": "1 cc",
         "volume2cc": "2 cc",
@@ -6161,36 +6161,36 @@
         "volume10cc": "10 cc"
       },
       "pigmentation": {
-        "dualToning": "Laser tăng cường kép (Clarity + Lucas)",
-        "dualToningDesc": "Nám / Vết thâm / Lỗ chân lông / Sẹo mụn",
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Nám / Đốm sắc tố / Lỗ chân lông / Sẹo mụn",
         "potenza": "Potenza",
-        "single": "Phiên duy nhất",
-        "pumpingTip": "Mẹo bơm",
+        "single": "1 lần",
+        "pumpingTip": "Pumping Tip",
         "semiPermanent": "Xóa trang điểm bán vĩnh viễn (Lucas Pico)",
         "semiPermanentDesc": "Lông mày / Kẻ mắt",
-        "semiPermanentOnePart": "mỗi khu vực",
+        "semiPermanentOnePart": "1 vùng",
         "co2Laser": "Laser CO2",
         "co2Desc": "Nốt ruồi / Mụn cóc phẳng / Đốm đồi mồi, v.v.",
-        "dia3mm": "Đường kính 3 mm (1 điểm)",
-        "dia5mm": "3 mm < Đường kính ≤ 5 mm (1 điểm)",
-        "diaOver5mm": "Đường kính > 5mm (1 điểm)",
-        "faceFull": "Toàn mặt (50 điểm trở lên)",
-        "neckFull": "Toàn cổ (50+ điểm)"
+        "dia3mm": "Đường kính ≤ 3 mm (1 nốt)",
+        "dia5mm": "3 mm < Đường kính ≤ 5 mm (1 nốt)",
+        "diaOver5mm": "Đường kính > 5 mm (1 nốt)",
+        "faceFull": "Toàn mặt (từ 50 nốt)",
+        "neckFull": "Toàn cổ (từ 50 nốt)"
       },
       "vascular": {
-        "dualToning": "Laser tăng cường kép (Clarity + Lucas)",
-        "dualToningDesc": "Đỏ/Giảm mạch máu",
-        "single": "Phiên duy nhất"
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Đỏ da / Giãn mao mạch",
+        "single": "1 lần"
       },
       "skintone": {
-        "dualToning": "Laser tăng cường kép (Clarity + Lucas)",
-        "dualToningDesc": "Cải thiện tông màu da",
-        "single": "Phiên duy nhất"
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Cải thiện tông da",
+        "single": "1 lần"
       },
       "hairRemoval": {
-        "dualToning": "Laser tăng cường kép (Clarity + Lucas)",
-        "dualToningDesc": "Chăm sóc tẩy lông",
-        "single": "Phiên duy nhất"
+        "dualToning": "Laser Dual Toning (Clarity + Lucas)",
+        "dualToningDesc": "Triệt lông",
+        "single": "1 lần"
       }
     }
   },

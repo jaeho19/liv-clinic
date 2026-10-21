@@ -6130,11 +6130,11 @@
       },
       "botox": {
         "botoxContour": "肉毒素 (轮廓)",
-        "contourAreas": "方形脸/太阳穴",
+        "contourAreas": "咬肌/太阳穴",
         "botoxBody": "肉毒素 (身体)",
         "bodyAreas": "斜方肌/手臂/小腿/大腿 (100IU)",
-        "domestic": "国产",
-        "domesticPremium": "国产高级",
+        "domestic": "韩国产",
+        "domesticPremium": "韩国产高端",
         "xeomin": "Xeomin",
         "allergan": "Allergan"
       },
@@ -6146,9 +6146,9 @@
       },
       "skinbooster": {
         "hilowave": "Hilowave",
-        "juvelook": "Juvelook 皮肤助推器",
-        "elementWhitening": "Element 美白助推器",
-        "stemcell": "干细胞皮肤助推器",
+        "juvelook": "Juvelook Skin Booster",
+        "elementWhitening": "Element 美白 Booster",
+        "stemcell": "干细胞 Skin Booster",
         "melasma": "祛斑针",
         "glow": "水光针",
         "rejuranHbPlus": "Rejuran HB plus",
