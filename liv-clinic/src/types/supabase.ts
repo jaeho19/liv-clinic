@@ -131,6 +131,165 @@ export type Database = {
         }
         Relationships: []
       }
+      chat_ai_turns: {
+        Row: {
+          attempts: number
+          cached_tokens: number | null
+          completion_tokens: number | null
+          created_at: string
+          history_text: string | null
+          id: string
+          issues: string[] | null
+          latency_ms: number | null
+          model: string | null
+          needs_staff: boolean
+          outcome: string
+          prompt_tokens: number | null
+          raw_reply: string | null
+          reply_message_id: string | null
+          session_id: string
+          staff_note_ko: string | null
+          staff_reason_ko: string | null
+          trigger_message_id: string | null
+        }
+        Insert: {
+          attempts?: number
+          cached_tokens?: number | null
+          completion_tokens?: number | null
+          created_at?: string
+          history_text?: string | null
+          id?: string
+          issues?: string[] | null
+          latency_ms?: number | null
+          model?: string | null
+          needs_staff?: boolean
+          outcome: string
+          prompt_tokens?: number | null
+          raw_reply?: string | null
+          reply_message_id?: string | null
+          session_id: string
+          staff_note_ko?: string | null
+          staff_reason_ko?: string | null
+          trigger_message_id?: string | null
+        }
+        Update: {
+          attempts?: number
+          cached_tokens?: number | null
+          completion_tokens?: number | null
+          created_at?: string
+          history_text?: string | null
+          id?: string
+          issues?: string[] | null
+          latency_ms?: number | null
+          model?: string | null
+          needs_staff?: boolean
+          outcome?: string
+          prompt_tokens?: number | null
+          raw_reply?: string | null
+          reply_message_id?: string | null
+          session_id?: string
+          staff_note_ko?: string | null
+          staff_reason_ko?: string | null
+          trigger_message_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_ai_turns_reply_message_id_fkey"
+            columns: ["reply_message_id"]
+            isOneToOne: false
+            referencedRelation: "chat_messages"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "chat_ai_turns_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "chat_sessions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "chat_ai_turns_trigger_message_id_fkey"
+            columns: ["trigger_message_id"]
+            isOneToOne: false
+            referencedRelation: "chat_messages"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_bookings: {
+        Row: {
+          arrival_date: string | null
+          contact_channel: string | null
+          contact_handle: string | null
+          created_at: string
+          departure_date: string | null
+          id: string
+          notified_at: string | null
+          notified_key: string | null
+          party_size: number | null
+          requested_at: string | null
+          session_id: string
+          status: string
+          time_note: string | null
+          treatment: string | null
+          treatment_ko: string | null
+          updated_at: string
+          visit_date: string | null
+          visit_time: string | null
+          visitor_name: string | null
+        }
+        Insert: {
+          arrival_date?: string | null
+          contact_channel?: string | null
+          contact_handle?: string | null
+          created_at?: string
+          departure_date?: string | null
+          id?: string
+          notified_at?: string | null
+          notified_key?: string | null
+          party_size?: number | null
+          requested_at?: string | null
+          session_id: string
+          status?: string
+          time_note?: string | null
+          treatment?: string | null
+          treatment_ko?: string | null
+          updated_at?: string
+          visit_date?: string | null
+          visit_time?: string | null
+          visitor_name?: string | null
+        }
+        Update: {
+          arrival_date?: string | null
+          contact_channel?: string | null
+          contact_handle?: string | null
+          created_at?: string
+          departure_date?: string | null
+          id?: string
+          notified_at?: string | null
+          notified_key?: string | null
+          party_size?: number | null
+          requested_at?: string | null
+          session_id?: string
+          status?: string
+          time_note?: string | null
+          treatment?: string | null
+          treatment_ko?: string | null
+          updated_at?: string
+          visit_date?: string | null
+          visit_time?: string | null
+          visitor_name?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_bookings_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: true
+            referencedRelation: "chat_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       chat_messages: {
         Row: {
           created_at: string
@@ -219,6 +378,7 @@ export type Database = {
       }
       chat_sessions: {
         Row: {
+          ai_handoff_at: string | null
           assigned_admin_id: string | null
           assigned_at: string | null
           assigned_label: string | null
@@ -240,6 +400,7 @@ export type Database = {
           slack_mode: string | null
           slack_room_name: string | null
           slack_thread_ts: string | null
+          staff_engaged_at: string | null
           status: string
           unread_admin_count: number
           updated_at: string
@@ -252,6 +413,7 @@ export type Database = {
           visitor_name: string | null
         }
         Insert: {
+          ai_handoff_at?: string | null
           assigned_admin_id?: string | null
           assigned_at?: string | null
           assigned_label?: string | null
@@ -273,6 +435,7 @@ export type Database = {
           slack_mode?: string | null
           slack_room_name?: string | null
           slack_thread_ts?: string | null
+          staff_engaged_at?: string | null
           status?: string
           unread_admin_count?: number
           updated_at?: string
@@ -285,6 +448,7 @@ export type Database = {
           visitor_name?: string | null
         }
         Update: {
+          ai_handoff_at?: string | null
           assigned_admin_id?: string | null
           assigned_at?: string | null
           assigned_label?: string | null
@@ -306,6 +470,7 @@ export type Database = {
           slack_mode?: string | null
           slack_room_name?: string | null
           slack_thread_ts?: string | null
+          staff_engaged_at?: string | null
           status?: string
           unread_admin_count?: number
           updated_at?: string

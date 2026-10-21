@@ -1,5 +1,12 @@
 import { describe, it, expect, afterEach } from 'vitest';
-import { isEscalationEnabled, isEventHintEnabled, isFollowupEnabled, isRoomLookEnabled } from '../chatFlags';
+import {
+  chatAiMode,
+  isAiNoticeEnabled,
+  isEscalationEnabled,
+  isEventHintEnabled,
+  isFollowupEnabled,
+  isRoomLookEnabled,
+} from '../chatFlags';
 
 describe('긴급 정지 스위치', () => {
   afterEach(() => {
@@ -7,6 +14,8 @@ describe('긴급 정지 스위치', () => {
     delete process.env.CHAT_EVENT_HINT;
     delete process.env.SLACK_ROOM_LOOK;
     delete process.env.CHAT_ESCALATION;
+    delete process.env.CHAT_AI;
+    delete process.env.CHAT_AI_NOTICE;
   });
 
   it('환경변수가 없으면 둘 다 켜져 있다', () => {
@@ -58,5 +67,26 @@ describe('긴급 정지 스위치', () => {
     expect(isFollowupEnabled()).toBe(true);
     process.env.CHAT_FOLLOWUP = 'off';
     expect(isEscalationEnabled()).toBe(true);
+  });
+
+  it("AI 응대 스위치(CHAT_AI): 없으면 off, 'on'·'test'만 뜻이 있다 (대소문자·앞뒤 공백 무시)", () => {
+    expect(chatAiMode()).toBe('off');
+    process.env.CHAT_AI = ' ON ';
+    expect(chatAiMode()).toBe('on');
+    process.env.CHAT_AI = 'Test';
+    expect(chatAiMode()).toBe('test');
+    process.env.CHAT_AI = 'off';
+    expect(chatAiMode()).toBe('off');
+    process.env.CHAT_AI = '1';
+    expect(chatAiMode()).toBe('off');
+  });
+
+  it("고지 한 줄 스위치(CHAT_AI_NOTICE): 없으면 꺼짐, 'on'일 때만 켜짐. AI 스위치와 독립이다", () => {
+    expect(isAiNoticeEnabled()).toBe(false);
+    process.env.CHAT_AI_NOTICE = ' On ';
+    expect(isAiNoticeEnabled()).toBe(true);
+    expect(chatAiMode()).toBe('off');
+    process.env.CHAT_AI_NOTICE = 'yes';
+    expect(isAiNoticeEnabled()).toBe(false);
   });
 });

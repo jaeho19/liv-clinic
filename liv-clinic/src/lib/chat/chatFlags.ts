@@ -1,7 +1,7 @@
 import 'server-only';
 
 // 긴급 정지 스위치 (스펙 2026-10-01 §4.5·§4.10). 값이 'off'일 때만 꺼진다 — 비어 있으면 켜진 것이다.
-// 맨 아래 재촉 알림(CHAT_ESCALATION)만 반대다: 비어 있으면 꺼진 것이고 'on'일 때만 켜진다.
+// 아래쪽의 재촉 알림(CHAT_ESCALATION)·AI 응대(CHAT_AI)·고지 한 줄(CHAT_AI_NOTICE)은 반대다: 비어 있으면 꺼진 것이다.
 // 환경변수는 호출 시점에 읽는다(테스트에서 바꿔 넣을 수 있게).
 
 function isOff(name: string): boolean {
@@ -35,4 +35,24 @@ export function isRoomLookEnabled(): boolean {
  */
 export function isEscalationEnabled(): boolean {
   return (process.env.CHAT_ESCALATION ?? '').trim().toLowerCase() === 'on';
+}
+
+export type ChatAiMode = 'off' | 'test' | 'on';
+
+/**
+ * AI 1차 응대 (스펙 2026-10-02 chat-ai-first-response §4.2). 기본이 꺼져 있다.
+ * CHAT_AI=on 이면 모든 문의, test 면 이름이 `ai-test`로 시작하는 문의만, 그 밖의 값은 꺼짐.
+ * 긴급 정지: 값을 지우거나 off 로 두고 재배포한다.
+ */
+export function chatAiMode(): ChatAiMode {
+  const value = (process.env.CHAT_AI ?? '').trim().toLowerCase();
+  return value === 'on' || value === 'test' ? value : 'off';
+}
+
+/**
+ * 손님 화면의 고지 한 줄 ("자동 응대가 먼저 답하고, 예약은 병원에서 확인합니다") — 스펙 §4.10.
+ * 기본이 꺼져 있다(원장님 2026-10-02: AI라고 적지 않는다). 자문 결과 고지가 필요하면 CHAT_AI_NOTICE=on.
+ */
+export function isAiNoticeEnabled(): boolean {
+  return (process.env.CHAT_AI_NOTICE ?? '').trim().toLowerCase() === 'on';
 }
