@@ -1,6 +1,7 @@
 import { findLooseNumber, findStatedAmount, toCheckText } from './amounts';
 import { parseBookingOutput, type BookingFields } from './booking';
 import { priceTagPattern, TAG_LINE_REST_RE } from './knowledge';
+import { offerTagPattern } from './knowledge/offers';
 
 // AI 출력의 검사 (스펙 2026-10-02 chat-ai-first-response §4.6). 순수 함수 — I/O 없음.
 // 걸리면 이유를 글자로 돌려준다. 호출자(turn.ts)가 한 번 다시 쓰게 하고, 또 걸리면 접수 안내로 대신한다.
@@ -19,7 +20,14 @@ export interface AiOutput {
   staffReasonKo: string | null;
   /** 손님이 사람인지 AI인지 물었다 — 답은 프로그램이 붙인다 */
   identityQuestion: boolean;
+  /** 손님의 마지막 글을 읽은 반응 R1~R7 (제안형 응대 §4.2). 없거나 모르는 값이면 null */
+  reaction: Reaction | null;
+  /** 손님이 제안을 거절했거나 한 가지만 원한다고 했다 — 그 대화에서 제안을 멈춘다 (§4.5) */
+  offerDeclined: boolean;
 }
+
+export type Reaction = 'R1' | 'R2' | 'R3' | 'R4' | 'R5' | 'R6' | 'R7';
+const REACTIONS: ReadonlySet<string> = new Set(['R1', 'R2', 'R3', 'R4', 'R5', 'R6', 'R7']);
 
 const STAFF_NOTE_MAX = 300;
 const STAFF_REASON_MAX = 80;
@@ -61,6 +69,7 @@ export function parseAiOutput(content: string): AiOutput | null {
   // 정체만 물은 글에는 AI가 쓸 말이 없을 수 있다 — 그때는 프로그램이 붙이는 답만 나간다
   if (!reply && !identityQuestion) return null;
   const reason = short(o.staff_reason_ko, STAFF_REASON_MAX);
+  const reaction = typeof o.reaction === 'string' && REACTIONS.has(o.reaction.trim().toUpperCase()) ? o.reaction.trim().toUpperCase() : null;
   return {
     reply,
     staffNoteKo: short(o.staff_note_ko, STAFF_NOTE_MAX),
@@ -68,12 +77,16 @@ export function parseAiOutput(content: string): AiOutput | null {
     needsStaff: o.needs_staff === true,
     staffReasonKo: reason || null,
     identityQuestion,
+    reaction: reaction as Reaction | null,
+    offerDeclined: o.offer_declined === true,
   };
 }
 
 export interface GuardContext {
   /** 오늘 유효한 가격 줄의 꼬리표 */
   rowIds: ReadonlySet<string>;
+  /** 오늘 쓸 수 있는 제안 줄 · 혜택 문장의 꼬리표 (C01… · B01). 없으면 B01 만 */
+  offerIds?: ReadonlySet<string>;
   /** 써도 되는 주소 (검사 C-7) */
   allowedUrls: readonly string[];
   /** 써도 되는 퍼센트 — '5' (검사 C-3) */
@@ -91,11 +104,14 @@ export const MAX_TAGS = 6;
 export const MAX_REPLY_UNITS = 900;
 
 // ── C-4 꼬리표 ──────────────────────────────────────────────────────────
-/** 괄호 없이 쓴 꼬리표 (P006 · p006 · P-006 · [[P006]] · 키릴 Р005) — 손님에게 그대로 나가면 안 된다 */
-const LOOSE_TAG_RE = new RegExp('(?<![\\p{L}\\p{N}])(?:[PMF\\u0420\\u041C\\u03A1\\u039C][\\s_-]?|[pmf])\\d{2,4}(?![\\p{L}\\p{N}])', 'u');
+/** 괄호 없이 쓴 꼬리표 (P006 · p006 · P-006 · [[P006]] · 키릴 Р005 · C01 · B01 · T03) — 손님에게 그대로 나가면 안 된다 */
+const LOOSE_TAG_RE = new RegExp(
+  '(?<![\\p{L}\\p{N}])(?:[PMFTCB\\u0420\\u041C\\u03A1\\u039C\\u0421\\u0412\\u0422][\\s_-]?|[pmftcb])\\d{2,4}(?![\\p{L}\\p{N}])',
+  'u'
+);
 /** 이력에 넣는 표시(assemble.ts · prompt.ts)를 AI가 따라 쓴 것 */
 const HISTORY_MARKER_RE =
-  /[[(【<]\s*(?:(?:price[\s-]+line\s+shown|tentative\s+booking\s+summary|told\s+the\s+visitor)[^\])】>\n]{0,160}[\])】>]?|(?:amount|price|our\s+staff)\s*[\])】>])/i;
+  /[[(【<]\s*(?:(?:price[\s-]+line\s+shown|tentative\s+booking\s+summary|told\s+the\s+visitor|suggestion\s+shown|direct[\s-]+booking\s+benefit)[^\])】>\n]{0,160}[\])】>]?|(?:amount|price|our\s+staff)\s*[\])】>])/i;
 
 // ── C-3 퍼센트 · 할인율 ──────────────────────────────────────────────────
 const PERCENT_NUMBER = String.raw`\d+(?:[.,]\d+)?`;
@@ -324,6 +340,27 @@ const BANNED_PATTERNS: ReadonlyArray<{ label: string; re: RegExp }> = [
     label: 'دائم',
     re: /(?<!ليست\s|ليس\s|غير\s)دائم[ةه]?(?![؀-ۿ])|إلى\s+الأبد|مدى\s+الحياة|(?:بدون|دون|بلا|ليس\s+ل(?:ه|ها)|لا\s+(?:يوجد|توجد))\s+(?:أي\s+)?(?:آثار|اثار|أعراض|اعراض|مضاعفات)|خالي?\s+من\s+الآثار/,
   },
+  // 유인 · 압박 (제안형 응대 §4.5 — 엑셀 시트 1 마-1). 프로모션 기간을 사실로 말하는 것("10/31까지")은 막지 않는다.
+  // "서두르실 필요 없어요" · "no hurry" 같은 반대 뜻은 지나가게 한다.
+  {
+    label: 'pressure',
+    re: new RegExp(
+      [
+        String.raw`\b(?:only\s+today|today\s+only|last\s+chance|(?:do\s+not|don['’]t)\s+miss|act\s+now|selling\s+out|while\s+(?:stocks?|supplies)\s+last)\b`,
+        String.raw`(?<!\bno\s)(?<!\bno\s+need\s+to\s)(?<!n['’]t\s)(?<!\bnot\s+in\s+a\s)\bhurry\b`,
+        String.raw`\blimited\s+(?:quantit(?:y|ies)|stock|slots?|spots?|availability|places|seats)\b|\b(?:only\s+)?a\s+few\s+(?:slots?|spots?|places)\s+left\b|\balmost\s+(?:fully\s+)?booked\b`,
+        String.raw`지금만|오늘만|오늘\s?(?:결제|예약)하시면|마지막\s?기회|놓치지\s?마|서두르(?!실\s?필요|지\s?않|지\s?마)|자리가\s?(?:거의\s)?없|한정\s?수량|마감\s?임박|선착순`,
+        '今だけ|本日限り|本日限定|最後のチャンス|お見逃しなく|お急ぎください|残りわずか|数量限定|先着',
+        '仅限今天|只限今天|今天截止|最后机会|最後機會|不要错过|不要錯過|别错过|別錯過|抓紧|抓緊|名额有限|名額有限|限量|仅剩|僅剩|先到先得',
+        'chỉ hôm nay|cơ hội cuối|đừng bỏ lỡ|nhanh tay|số lượng có hạn',
+        'วันนี้เท่านั้น|โอกาสสุดท้าย|อย่าพลาด|จำนวนจำกัด',
+        String.raw`только\s+сегодня|последний\s+шанс|не\s+упустите|(?<!не\s)спешите|количество\s+ограничено`,
+        String.raw`aujourd['’]hui\s+seulement|seulement\s+aujourd['’]hui|dernière\s+chance|ne\s+manquez\s+pas|dépêchez-vous|places\s+limitées|quantités?\s+limitées?`,
+        String.raw`зөвхөн\s+өнөөдөр|сүүлчийн\s+боломж|битгий\s+алдаарай|бүү\s+алдаарай|тоо\s+хязгаартай|яараарай`,
+        String.raw`اليوم\s+فقط|الفرصة\s+الأخيرة|لا\s+تفوت|عدد\s+محدود|كمية\s+محدودة`,
+      ].join('|')
+    ),
+  },
 ];
 
 // ── C-6 AI·봇·자동 응대라는 말, 사람이라는 말 ("사람인가요?"의 답은 프로그램이 붙인다) ─────────────
@@ -476,13 +513,16 @@ function bannedHit(text: string): string | null {
 export function checkReplyText(reply: string, ctx: GuardContext): string[] {
   const issues: string[] = [];
   const tags = [...reply.matchAll(priceTagPattern())].map((m) => m[1]);
-  const own = reply.replace(priceTagPattern(), ' ');
+  const offerTags = [...reply.matchAll(offerTagPattern())].map((m) => m[1]);
+  const own = reply.replace(priceTagPattern(), ' ').replace(offerTagPattern(), ' ');
   const text = toCheckText(own.replace(URL_THEN_WIDE_RE, '$1 '));
 
-  // C-4 꼬리표
+  // C-4 꼬리표 — 금액 줄은 6개까지. 제안 · 혜택 꼬리표의 수는 조립 단계(offerCaps.ts)가 줄인다
   const distinct = new Set(tags);
   for (const id of distinct) if (!ctx.rowIds.has(id)) issues.push(`tag_unknown:${id}`);
   if (distinct.size > MAX_TAGS) issues.push(`tag_too_many:${distinct.size}`);
+  const offerIds = ctx.offerIds ?? new Set(['B01']);
+  for (const id of new Set(offerTags)) if (!offerIds.has(id)) issues.push(`tag_unknown:${id}`);
   // C-7 주소 · 메일 — 금액·전화번호·꼬리표 검사 전에 떼어 둔다(주소 안의 글자를 두 번 보지 않게)
   const allowedUrls = new Set(ctx.allowedUrls.map(trimUrl));
   const urlIssues: string[] = [];
@@ -502,9 +542,10 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
   // 꼬리표 비슷한 것이 남아 있으면 손님에게 그대로 나간다
   if (/[{}]/.test(rest) || LOOSE_TAG_RE.test(rest)) issues.push('tag_broken');
   // 꼬리표는 제 줄에 따로 — 문장 안에 섞으면 금액 줄을 넣을 자리가 없어 문장이 깨진다
-  const inline = reply
-    .split('\n')
-    .some((line) => priceTagPattern().test(line) && !TAG_LINE_REST_RE.test(line.replace(priceTagPattern(), '')));
+  const inline = reply.split('\n').some((line) => {
+    if (!priceTagPattern().test(line) && !offerTagPattern().test(line)) return false;
+    return !TAG_LINE_REST_RE.test(line.replace(priceTagPattern(), '').replace(offerTagPattern(), ''));
+  });
   if (inline) issues.push('tag_inline');
   const marker = HISTORY_MARKER_RE.exec(rest);
   if (marker) issues.push(`marker:${marker[0]}`);
@@ -583,6 +624,20 @@ export function checkReplyText(reply: string, ctx: GuardContext): string[] {
   return issues;
 }
 
+/**
+ * 프로그램이 넣는 문장(제안 줄 · 혜택 문장)의 검사 — 금지 표현 · 압박 · AI라는 말만 본다.
+ * 금액 · 퍼센트는 프로그램이 정해 쓰는 것이라 보지 않는다. 자료 검사 테스트(offers.test.ts)가 쓴다.
+ */
+export function claimIssues(text: string): string[] {
+  const t = toCheckText(text);
+  const issues: string[] = [];
+  const banned = bannedHit(t);
+  if (banned) issues.push(`banned:${banned}`);
+  const aiHit = AI_WORD_PATTERNS.map((re) => re.exec(t)).find(Boolean);
+  if (aiHit) issues.push(`ai_word:${aiHit[0]}`);
+  return issues;
+}
+
 /** 가예약 요약에 그대로 찍힐 수 있는 칸 — 읽지 못한 시각(time)은 시간 메모가 되어 요약에 찍힌다 */
 const BOOKING_TEXT_FIELDS = ['treatment', 'name', 'timeNote', 'time'] as const;
 
@@ -618,7 +673,7 @@ export function retryFeedback(issues: string[]): string {
       case 'percent':
         return `Do not write the percentage or discount rate "${detail}". The only one you may mention is the 5% direct-booking benefit, written as "5%".`;
       case 'tag_unknown':
-        return `The tag {{${detail}}} does not exist. Use only tags that appear in PRICE ROWS.`;
+        return `The tag {{${detail}}} does not exist. Use only tags that appear in PRICE ROWS or OFFER ROWS, and {{B01}} for the direct-booking benefit.`;
       case 'tag_too_many':
         return `You used ${detail} price tags. Use at most ${MAX_TAGS}.`;
       case 'tag_broken':
@@ -628,6 +683,9 @@ export function retryFeedback(issues: string[]): string {
       case 'marker':
         return `Do not write notes in square brackets such as "${detail}". Text in square brackets in earlier messages is a record added by the system. To show a price again, write its tag again.`;
       case 'banned':
+        if (detail === 'pressure') {
+          return 'Do not pressure the visitor (only today, last chance, hurry, limited slots, do not miss and the like). You may state a promotion period as a plain fact.';
+        }
         return `Do not use the expression "${detail}" or any superlative, guarantee, "permanent" or "no side effects" claim. If you need to say that something is not guaranteed or not permanent, say what is true instead (for example how long it usually lasts).`;
       case 'ai_word':
         return `Do not mention AI, bots or automation, and do not say that you are a person or a staff member ("${detail}"). If the visitor asks who they are talking to, set identity_question=true and leave the answer to the system.`;

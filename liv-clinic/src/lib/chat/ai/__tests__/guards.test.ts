@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import { EMPTY_BOOKING } from '../booking';
 import {
   checkReplyText,
+  claimIssues,
   cleanReply,
   MAX_REPLY_UNITS,
   parseAiOutput,
@@ -11,6 +12,7 @@ import {
   type GuardContext,
 } from '../guards';
 import { CLINIC_HANDLES, CLINIC_PHONE_DIGITS, getKnowledge } from '../knowledge';
+import { benefitBookingLine, benefitSentence, OFFER_SOURCES, offerClosing, offerLead } from '../knowledge/offers';
 import { ALLOWED_PERCENTS } from '../knowledge/scope';
 import { KNOWN_FALSE_POSITIVES, KNOWN_GAPS, MUST_FLAG, MUST_PASS, type CorpusLocale } from './guardsCorpus';
 
@@ -65,6 +67,8 @@ describe('parseAiOutput — 검사 C-1', () => {
       needsStaff: true,
       staffReasonKo: '스컬트라 금액 문의',
       identityQuestion: false,
+      reaction: null,
+      offerDeclined: false,
     });
   });
 
@@ -76,6 +80,8 @@ describe('parseAiOutput — 검사 C-1', () => {
       needsStaff: false,
       staffReasonKo: null,
       identityQuestion: false,
+      reaction: null,
+      offerDeclined: false,
     });
   });
 
@@ -582,5 +588,85 @@ describe('retryFeedback', () => {
 
   it('보기로 드는 꼬리표는 실제로 없는 것이다 — 모델이 보기를 그대로 베껴도 엉뚱한 금액이 나가지 않게', () => {
     expect(retryFeedback(['money:x', 'tag_broken'])).not.toMatch(/\{\{P0[0-9][1-9]\}\}/);
+  });
+});
+
+describe('제안형 응대 — 제안 · 혜택 꼬리표와 압박 표현 (스펙 2026-10-12 §4.7)', () => {
+  const OCTX: GuardContext = { ...CTX, offerIds: new Set(['C01', 'C02', 'B01']) };
+
+  it('있는 제안 · 혜택 꼬리표는 통과하고, 없는 것은 tag_unknown', () => {
+    expect(check('Yes.\n{{B01}}\n{{C01}}\nWhen?', OCTX)).toEqual([]);
+    expect(check('{{C09}}', OCTX)).toEqual(['tag_unknown:C09']);
+    // 제안 꼬리표 목록이 없으면 B01 만 된다(제안형 응대가 꺼진 상태)
+    expect(check('{{B01}}')).toEqual([]);
+    expect(check('{{C01}}')).toEqual(['tag_unknown:C01']);
+  });
+
+  it('제안 꼬리표도 제 줄에 따로 — 문장 안에 섞이면 tag_inline, 괄호 없이 쓰면 tag_broken', () => {
+    expect(check('We have a set {{C01}} for you.', OCTX)).toContain('tag_inline');
+    expect(check('Please see C01 below.', OCTX)).toContain('tag_broken');
+    expect(check('Benefit: B01', OCTX)).toContain('tag_broken');
+  });
+
+  it('이력 표시를 따라 쓰면 marker', () => {
+    expect(codes('[suggestion shown: 스컬트라 — first]')).toContain('marker');
+    expect(codes('[direct-booking benefit sentence shown]')).toContain('marker');
+  });
+
+  it('압박 · 마감 표현은 언어마다 걸린다', () => {
+    for (const text of [
+      'This offer is for today only.',
+      'Hurry, slots are filling up.',
+      "Don't miss this month's set.",
+      'We have limited slots left.',
+      '오늘만 이 구성으로 가능합니다.',
+      '마지막 기회입니다.',
+      '今だけの特別価格です。',
+      'お見逃しなく。',
+      '名额有限，请尽快预约。',
+      '不要错过本月优惠。',
+      'Только сегодня.',
+      'Dernière chance !',
+    ]) {
+      expect(check(text), text).toContain('banned:pressure');
+    }
+  });
+
+  it('반대 뜻이나 사실로 말하는 기간은 걸리지 않는다', () => {
+    for (const text of [
+      'There is no hurry — take your time.',
+      'No need to hurry.',
+      "This month's promotion runs until Oct 31.",
+      '서두르실 필요는 없습니다.',
+      '이번 달 프로모션은 10월 31일까지입니다.',
+      '今月のプロモーションは10月31日までです。',
+    ]) {
+      expect(check(text), text).toEqual([]);
+    }
+  });
+
+  it('반응과 거절을 읽는다 — 모르는 값은 null', () => {
+    const out = parseAiOutput(JSON.stringify({ reply: 'ok', reaction: 'r5', offer_declined: true }));
+    expect(out?.reaction).toBe('R5');
+    expect(out?.offerDeclined).toBe(true);
+    expect(parseAiOutput(JSON.stringify({ reply: 'ok', reaction: 'R9' }))?.reaction).toBeNull();
+  });
+
+  it('자료 검사: 프로그램이 넣는 문장(제안 줄 · 혜택 문장)은 10개 언어 모두 금지 표현 · 압박 · AI라는 말에 걸리지 않는다', () => {
+    const LOCALES = ['en', 'ja', 'zh', 'zh-TW', 'vi', 'th', 'ru', 'fr', 'mn', 'ar'] as const;
+    for (const locale of LOCALES) {
+      for (const source of OFFER_SOURCES) {
+        expect(claimIssues(offerLead(source, locale)), `${source.key} lead ${locale}`).toEqual([]);
+        expect(claimIssues(offerClosing(source, locale)), `${source.key} closing ${locale}`).toEqual([]);
+      }
+      for (const text of [
+        benefitSentence(locale, true),
+        benefitSentence(locale, false),
+        benefitBookingLine(locale, 'full'),
+        benefitBookingLine(locale, 'five'),
+      ]) {
+        expect(claimIssues(text), `${locale}: ${text}`).toEqual([]);
+      }
+    }
   });
 });

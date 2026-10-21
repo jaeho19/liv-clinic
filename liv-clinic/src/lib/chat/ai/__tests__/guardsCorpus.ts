@@ -1,6 +1,7 @@
 // 출력 검사(guards.ts · amounts.ts)의 회귀 말뭉치. guards.test.ts 가 읽는다 — 식을 고칠 때 양쪽(빠져나가는 글 · 멀쩡한 글)을 함께 본다.
 // 2026-10-02 독립 검토에서 나온 글들이다: 그때의 검사를 실제로 빠져나간 글과, 보통의 답으로 쓴 글.
 // 같은 날 재생 시험에서 "영구적인가요 · 보장하나요"에 대한 정직한 답("영구적이지 않습니다")이 걸려, 그런 부정문(통과)과 같은 낱말의 주장(걸림)을 더했다.
+// 2026-10-21 제안형 응대: 압박 표현(걸림 — 10개 언어 + 한국어)과 그 반대 뜻 · 프로모션 기간을 사실로 말하는 글(통과)을 더했다.
 // 여기의 글은 손님에게 나가는 글이 아니다. 원어민 검수를 받지 않았다.
 
 /** 손님 사이트 언어 — 써도 되는 주소가 언어마다 다르다 */
@@ -346,6 +347,20 @@ export const MUST_FLAG: ReadonlyArray<readonly [string, string]> = [
   ['lookalike', "No treatment is safer: zero risk."],
   ['lookalike', "영구적이지 않을까 걱정하실 필요 없습니다. 영구적입니다."],
   ['lookalike', "효과는 영구적이라고 할 수 있습니다."],
+  // 유인 · 압박 (제안형 응대 2026-10-21 — 엑셀 시트 1 마-1)
+  ['pressure', "Book today only to get this price."],
+  ['pressure', "Last chance for this month's set!"],
+  ['pressure', "선착순으로 마감됩니다."],
+  ['pressure', "本日限りの価格です。"],
+  ['pressure', "名額有限，請盡快預約。"],
+  ['pressure', "Chỉ hôm nay thôi, đừng bỏ lỡ."],
+  ['pressure', "Đây là cơ hội cuối trong tháng này."],
+  ['pressure', "โอกาสสุดท้ายสำหรับเดือนนี้"],
+  ['pressure', "Не упустите предложение этого месяца."],
+  ['pressure', "Places limitées ce mois-ci."],
+  ['pressure', "Зөвхөн өнөөдөр энэ үнээр."],
+  ['pressure', "Сүүлчийн боломж!"],
+  ['pressure', "لا تفوت عرض هذا الشهر."],
   ['lookalike', "보장하지 않는 것이 아니라 보장합니다."],
   ['lookalike', "永久に続くので心配することはありません。"],
   ['lookalike', "一生続きますのでご安心ください。"],
@@ -871,6 +886,20 @@ export const MUST_PASS: ReadonlyArray<readonly [CorpusLocale, readonly string[]]
     "سيؤكد فريقنا حجزك.",
     "تستمر النتيجة عادة نحو سنة.",
   ]],
+  // 제안형 응대 (2026-10-21) — 압박 낱말의 반대 뜻, 프로모션 기간을 사실로 말하는 글
+  ['en', [
+    "Take your time — there is no rush.",
+    "This month's promotion runs until October 31.",
+  ]],
+  ['ja', ["お急ぎにならなくて大丈夫です。", "今月のプロモーションは10月31日までです。"]],
+  ['zh', ["不用着急，慢慢考虑。", "本月优惠到10月31日为止。"]],
+  ['zh-TW', ["不用急，慢慢考慮。", "本月優惠到10月31日為止。"]],
+  ['vi', ["Quý khách không cần vội, cứ từ từ cân nhắc.", "Chương trình khuyến mãi tháng này kéo dài đến ngày 31 tháng 10."]],
+  ['th', ["ไม่ต้องรีบนะคะ ค่อย ๆ พิจารณาได้", "โปรโมชันเดือนนี้มีถึงวันที่ 31 ตุลาคม"]],
+  ['ru', ["Не спешите, подумайте спокойно.", "Акция этого месяца действует до 31 октября."]],
+  ['fr', ["Rien ne presse, prenez votre temps.", "La promotion de ce mois est valable jusqu’au 31 octobre."]],
+  ['mn', ["Яарах шаардлагагүй, тайван бодоорой.", "Энэ сарын урамшуулал 10-р сарын 31 хүртэл үргэлжилнэ."]],
+  ['ar', ["لا داعي للعجلة، خذ وقتك.", "يستمر عرض هذا الشهر حتى 31 أكتوبر."]],
 ];
 
 /** 식으로는 잡지 못한다고 알고 있는 글 — 지금 통과한다. 구조(금액은 꼬리표로만 · 지시문)와 켠 뒤의 점검이 맡는다 */
