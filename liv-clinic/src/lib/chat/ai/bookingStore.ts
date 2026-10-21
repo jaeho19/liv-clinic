@@ -2,6 +2,7 @@ import 'server-only';
 import type { ChatAdminClient } from '@/lib/chat/db';
 import type { ContactChannel } from '@/lib/chat/contactChannels';
 import { bookingKey, EMPTY_BOOKING, type BookingEvent, type BookingFields, type ContactRef } from './booking';
+import type { BookingBenefit } from './knowledge/offers';
 
 // 가예약의 저장 (스펙 2026-10-02 chat-ai-first-response §4.7 · §5 chat_bookings). throw 하지 않는다.
 // 대화마다 한 줄이다. 규칙(값 합치기 · 찼는가 · 바뀌었는가)은 booking.ts 가 정하고 여기는 읽고 쓰기만 한다.
@@ -14,6 +15,8 @@ export interface StoredBooking {
   notifiedKey: string | null;
   requestedAt: string | null;
   fields: BookingFields;
+  /** 손님에게 안내한 채팅 예약 혜택 (044 — 제안형 응대). 꺼진 대화 · 아직 차지 않은 가예약은 null */
+  benefit: BookingBenefit | null;
 }
 
 export const NO_BOOKING: StoredBooking = {
@@ -22,10 +25,11 @@ export const NO_BOOKING: StoredBooking = {
   notifiedKey: null,
   requestedAt: null,
   fields: EMPTY_BOOKING,
+  benefit: null,
 };
 
 const COLUMNS =
-  'id, status, visit_date, visit_time, time_note, treatment, treatment_ko, party_size, visitor_name, contact_channel, contact_handle, arrival_date, departure_date, requested_at, notified_key';
+  'id, status, visit_date, visit_time, time_note, treatment, treatment_ko, party_size, visitor_name, contact_channel, contact_handle, arrival_date, departure_date, requested_at, notified_key, benefit';
 
 interface BookingRow {
   id: string;
@@ -43,6 +47,7 @@ interface BookingRow {
   departure_date: string | null;
   requested_at: string | null;
   notified_key: string | null;
+  benefit?: string | null;
 }
 
 export function rowToStored(row: BookingRow): StoredBooking {
@@ -64,6 +69,7 @@ export function rowToStored(row: BookingRow): StoredBooking {
       arrivalDate: row.arrival_date,
       departureDate: row.departure_date,
     },
+    benefit: row.benefit === 'full' || row.benefit === 'five' ? row.benefit : null,
   };
 }
 
@@ -106,7 +112,7 @@ const sameFields = (a: BookingFields, b: BookingFields): boolean =>
 
 /**
  * 합친 가예약을 저장한다. 바뀐 것도 알릴 일도 없으면 아무것도 하지 않는다.
- * event 가 있으면 "직원에게 알린 지문"을 함께 적는다 — requested 는 처음 찬 시각도 적는다.
+ * event 가 있으면 "직원에게 알린 지문"과 그때 안내한 혜택(benefit)을 함께 적는다 — requested 는 처음 찬 시각도 적는다.
  * 저장에 실패하면 false (경고만 — 답은 그대로 나간다. 다음 차례에 AI가 다시 받는다).
  */
 export async function saveBooking(
@@ -116,14 +122,15 @@ export async function saveBooking(
   next: BookingFields,
   event: BookingEvent,
   sessionContact: ContactRef | null,
-  now: Date
+  now: Date,
+  benefit: BookingBenefit | null = null
 ): Promise<boolean> {
   if (!event && prev.id !== null && sameFields(prev.fields, next)) return true;
   if (!event && prev.id === null && sameFields(EMPTY_BOOKING, next)) return true;
   const stamp = now.toISOString();
   const patch = {
     ...fieldsToRow(next),
-    ...(event ? { status: 'requested', notified_key: bookingKey(next, sessionContact), notified_at: stamp } : {}),
+    ...(event ? { status: 'requested', notified_key: bookingKey(next, sessionContact), notified_at: stamp, benefit } : {}),
     ...(event === 'requested' ? { requested_at: stamp } : {}),
   };
   try {

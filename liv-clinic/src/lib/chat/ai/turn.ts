@@ -1,7 +1,7 @@
 import 'server-only';
 import { broadcastToSession } from '@/lib/chat/broadcast';
 import type { VisitorLocale } from '@/lib/chat/chatApi';
-import { chatAiMode } from '@/lib/chat/chatFlags';
+import { chatAiMode, chatAiOffersMode } from '@/lib/chat/chatFlags';
 import type { ContactChannel } from '@/lib/chat/contactChannels';
 import { saveVisitorContact } from '@/lib/chat/contactService';
 import type { ChatAdminClient } from '@/lib/chat/db';
@@ -23,10 +23,15 @@ import { loadBooking, saveBooking } from './bookingStore';
 import { buildCalendarText, currentCalendarContext, nowLine, promiseEnglish, replyPromise } from './calendar';
 import { aiAppliesTo, decideAi, hasSubstance, readAiLimits, type AiSkipReason } from './eligibility';
 import { checkReplyText, parseAiOutput, retryFeedback, sanitizeBookingText, type AiOutput, type GuardContext } from './guards';
-import { CLINIC_HANDLES, CLINIC_PHONE_DIGITS, getKnowledge, type PriceRow } from './knowledge';
+import { CLINIC_HANDLES, CLINIC_PHONE_DIGITS, getKnowledge, priceTagPattern, type OfferRow, type PriceRow } from './knowledge';
+import { BENEFIT_TAG, benefitBookingLine, benefitSentence, OFFER_SOURCES, type BookingBenefit } from './knowledge/offers';
 import { ALLOWED_PERCENTS } from './knowledge/scope';
+import { applyOfferCaps, MAX_OFFERS_PER_CONVERSATION, type OfferHistory } from './offerCaps';
 import { callChatAi, readAiCallConfig, type AiMessage, type AiUsage } from './openai';
-import { buildHistory, buildSystemPrompt, HISTORY_MAX_MESSAGES, type HistoryMessage } from './prompt';
+import { buildHistory, buildSystemPrompt, HISTORY_MAX_MESSAGES, offerStateText, type HistoryMessage } from './prompt';
+
+/** 제안 줄의 key — 기록(shown_keys)에서 가격 줄 key 와 가른다 */
+const OFFER_KEYS: ReadonlySet<string> = new Set(OFFER_SOURCES.map((o) => o.key));
 
 // AI 응대의 한 차례 (스펙 2026-10-02 chat-ai-first-response §4.1 · §4.2 · §4.9). throw 하지 않는다.
 //   decideAiTurn : 이 손님 글에 AI가 답할 차례인가 (스위치 · 직원 담당 · 한도)
@@ -54,6 +59,8 @@ export interface AiTurnContext {
   sessionContact: ContactRef | null;
   /** 🙋 멘션을 이미 보냈으면 그 시각 (chat_sessions.ai_handoff_at) */
   handoffAt: string | null;
+  /** 이 대화에 제안형 응대를 쓰는가 — CHAT_AI_OFFERS 가 on, 또는 test 이고 이름이 ai-test 로 시작 (스펙 2026-10-12 §6) */
+  offersOn: boolean;
 }
 
 /**
@@ -99,6 +106,7 @@ export async function decideAiTurn(
       messengerHandle: s.visitor_messenger_handle,
       sessionContact: sessionContactOf(s),
       handoffAt: s.ai_handoff_at,
+      offersOn: aiAppliesTo(chatAiOffersMode(), s.visitor_name),
     };
     if (!aiAppliesTo(mode, s.visitor_name)) return { run: false, reason: 'off', ctx };
     if (s.staff_engaged_at) return { run: false, reason: 'staff_engaged', ctx };
@@ -156,6 +164,16 @@ export interface AiTurnSent {
   staffReasonKo: string | null;
   /** 가예약이 차지 않았는데 연락처를 새로 저장했다 → 방에 연락처 알림(초록 막대)을 올린다 */
   contactSaved: ContactRef | null;
+  /** 이 답에 나간 제안 줄 (제안형 응대) — Slack 요지의 "> 제안:" 줄 */
+  usedOffers: OfferRow[];
+  /** AI가 읽은 손님 반응 R1~R7 */
+  reaction: string | null;
+  /** 상한 때문에 지운 꼬리표 — 'C03:first_reply' 꼴 */
+  offersDropped: string[];
+  /** 손님이 이번 글에서 제안을 거절했다 — Slack 요지에 "손님 거절" 줄 */
+  offerDeclined: boolean;
+  /** 이번 답의 가예약 요약 아래에 안내한 혜택 (제안형 응대가 켜진 대화에서 가예약이 찼거나 바뀌었을 때만) */
+  bookingBenefit: BookingBenefit | null;
 }
 
 export type AiTurnOutcome =
@@ -180,6 +198,8 @@ interface Accepted {
   event: BookingEvent;
   contact: ContactRef | null;
   assembled: Assembled;
+  offersDropped: string[];
+  bookingBenefit: BookingBenefit | null;
 }
 
 interface TurnLog {
@@ -194,6 +214,11 @@ interface TurnLog {
   needsStaff?: boolean;
   staffReasonKo?: string | null;
   issues: string[];
+  /** 제안형 응대의 기록 (스펙 2026-10-12 §4.8) */
+  shownKeys?: string[];
+  reaction?: string | null;
+  offerDeclined?: boolean;
+  offersDropped?: string[];
 }
 
 export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Promise<AiTurnOutcome> {
@@ -228,6 +253,11 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
         needs_staff: entry.needsStaff ?? false,
         staff_reason_ko: entry.staffReasonKo ?? null,
         issues: entry.issues.length > 0 ? entry.issues : null,
+        // 제안형 응대 — 컬럼은 함께 구현하면 043, 10/2 를 먼저 배포하면 044 (스펙 2026-10-12 §5)
+        shown_keys: entry.shownKeys && entry.shownKeys.length > 0 ? entry.shownKeys : null,
+        reaction: entry.reaction ?? null,
+        offer_declined: entry.offerDeclined ?? false,
+        offers_dropped: entry.offersDropped && entry.offersDropped.length > 0 ? entry.offersDropped : null,
       });
       if (error) console.warn('[chat ai] turn log failed:', error.code ?? 'unknown');
     } catch (e) {
@@ -252,7 +282,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
       loadBooking(admin, ctx.sessionId),
       admin
         .from('chat_ai_turns')
-        .select('reply_message_id, history_text')
+        .select('reply_message_id, history_text, shown_keys, offer_declined')
         .eq('session_id', ctx.sessionId)
         .eq('outcome', 'sent')
         .order('created_at', { ascending: false })
@@ -262,24 +292,49 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
 
     const rows = [...((messagesRes.data ?? []) as HistoryMessage[])].reverse();
     const aiHistoryById = new Map<string, string>();
-    for (const t of (turnsRes.data ?? []) as Array<{ reply_message_id: string | null; history_text: string | null }>) {
+    type SentTurn = { reply_message_id: string | null; history_text: string | null; shown_keys?: string[] | null; offer_declined?: boolean | null };
+    const sentTurns = (turnsRes.data ?? []) as SentTurn[]; // 최신순
+    for (const t of sentTurns) {
       if (t.reply_message_id && t.history_text) aiHistoryById.set(t.reply_message_id, t.history_text);
     }
+    // 제안형 응대: 이 대화에서 지금까지 나간 것 (스펙 2026-10-12 §4.5)
+    const shownBefore = sentTurns.flatMap((t) => t.shown_keys ?? []);
+    const isBenefitKey = (k: string) => k === 'benefit' || k === 'benefit-line';
+    const offerHistory: OfferHistory = {
+      sentReplies: sentTurns.length,
+      shownOfferKeys: new Set(shownBefore.filter((k) => OFFER_KEYS.has(k))),
+      shownPriceKeys: new Set(shownBefore.filter((k) => !OFFER_KEYS.has(k) && !isBenefitKey(k))),
+      declined: sentTurns.some((t) => t.offer_declined === true),
+      benefitInLastReply: (sentTurns[0]?.shown_keys ?? []).some(isBenefitKey),
+    };
     const history = buildHistory(rows, aiHistoryById);
     if (history.length === 0 || history[history.length - 1].role !== 'user') {
       history.push({ role: 'user', content: args.text });
     }
 
     // 2. 지시문
-    const knowledge = getKnowledge(ctx.locale, now);
+    const offersOn = ctx.offersOn;
+    const knowledge = getKnowledge(ctx.locale, now, { offers: offersOn });
     const calendar = currentCalendarContext();
     const promise = replyPromise(now, calendar);
+    const offerByKey = new Map(knowledge.offers.map((o) => [o.key, o]));
     const system = buildSystemPrompt(knowledge, {
       locale: ctx.locale,
       calendarText: buildCalendarText(now, calendar),
       nowLine: nowLine(now, calendar),
       replyPromise: promiseEnglish(promise),
       bookingText: bookingPromptText(stored.fields, ctx.sessionContact),
+      offerStateText: offerStateText({
+        offersOn: knowledge.offers.length > 0,
+        sentReplies: offerHistory.sentReplies,
+        benefitShown: shownBefore.some(isBenefitKey),
+        declined: offerHistory.declined,
+        shownOffers: [...offerHistory.shownOfferKeys].map((k) => {
+          const o = offerByKey.get(k);
+          return { id: o?.id ?? null, label: o ? `${o.forKo} — ${o.slot}` : k };
+        }),
+        maxOffers: MAX_OFFERS_PER_CONVERSATION,
+      }),
     });
     const baseMessages: AiMessage[] = [{ role: 'system', content: system }, ...history];
 
@@ -315,6 +370,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
         contacts.filter((c) => (c.channel === 'email') === email).flatMap((c) => (c.handle ? [c.handle] : []));
       return {
         rowIds: new Set(knowledge.rowById.keys()),
+        offerIds: new Set([...knowledge.offerById.keys(), BENEFIT_TAG]),
         allowedUrls: knowledge.allowedUrls,
         allowedPercents: ALLOWED_PERCENTS,
         allowedPhoneDigits: [...CLINIC_PHONE_DIGITS, ...handles(false).map(digitsOf)],
@@ -356,10 +412,32 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
         if (issues.length === 0) {
           const event = bookingEvent({ status: stored.status, notifiedKey: stored.notifiedKey }, merged.next, ctx.sessionContact);
           const contact = effectiveContact(merged.next, ctx.sessionContact);
+          const bookingSummary = Boolean(event && contact && merged.next.date);
+          // 제안 상한 — 넘는 꼬리표는 지우고 나간다 (스펙 2026-10-12 §4.5)
+          const caps = applyOfferCaps({
+            reply: output.reply,
+            offersOn: knowledge.offers.length > 0,
+            offerById: knowledge.offerById,
+            rowById: knowledge.rowById,
+            history: offerHistory,
+            reaction: output.reaction,
+            offerDeclined: output.offerDeclined,
+            bookingSummary,
+          });
+          // 가예약 요약 아래 줄: 이 대화에서 안내한 금액이 첫방문 체험가뿐이면 5%만 (체험가는 무료 서비스에서 빠진다)
+          const priceKeysNow = [...caps.reply.matchAll(priceTagPattern())]
+            .map((m) => knowledge.rowById.get(m[1])?.key)
+            .filter((k): k is string => Boolean(k));
+          const priceKeys = [...offerHistory.shownPriceKeys, ...priceKeysNow, ...caps.offers.flatMap((o) => o.rowKeys)];
+          const trialOnly = priceKeys.length > 0 && priceKeys.every((k) => k.startsWith('trial.'));
+          const bookingBenefit: BookingBenefit | null = bookingSummary && offersOn ? (trialOnly ? 'five' : 'full') : null;
           const assembled = assembleReply({
             locale: ctx.locale,
-            reply: output.reply,
+            reply: caps.reply,
             rowById: knowledge.rowById,
+            offerById: knowledge.offerById,
+            benefitText: benefitSentence(ctx.locale, offersOn),
+            benefitLine: bookingSummary ? benefitBookingLine(ctx.locale, bookingBenefit ?? 'five') : null,
             identityQuestion: output.identityQuestion,
             bookingEvent: event,
             booking: merged.next,
@@ -367,7 +445,8 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
             promise,
           });
           if (assembled.text.length > MAX_ASSEMBLED_CHARS) issues.push(`too_long:${assembled.text.length}`);
-          else candidate = { output, booking: merged.next, event, contact, assembled };
+          else if (!assembled.text.trim()) issues.push('empty_after_caps');
+          else candidate = { output, booking: merged.next, event, contact, assembled, offersDropped: caps.dropped, bookingBenefit };
         }
       }
       if (candidate) {
@@ -411,7 +490,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
     }
 
     // 5. 손님 화면에 내보낸다. original_text 는 한국어 번역이 끝나면 그 번역으로 바뀐다(뒤처리)
-    const { output, booking, event, contact, assembled } = accepted;
+    const { output, booking, event, contact, assembled, offersDropped, bookingBenefit } = accepted;
     const { data: inserted, error: insertError } = await admin
       .from('chat_messages')
       .insert({
@@ -440,7 +519,7 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
 
     // 6. 가예약과 연락처 저장 — 글이 나간 뒤에 한다. 먼저 저장하고 글이 못 나가면 "직원에게 알렸다"는 표시만 남아
     //    요약과 알림이 영영 나가지 않는다. 저장이 실패하면 다음 차례에 다시 알리게 될 뿐이다(겹쳐 알리는 쪽이 안전하다).
-    await saveBooking(admin, ctx.sessionId, stored, booking, event, ctx.sessionContact, now);
+    await saveBooking(admin, ctx.sessionId, stored, booking, event, ctx.sessionContact, now, bookingBenefit);
     let contactSaved: ContactRef | null = null;
     if (booking.contactChannel && booking.contactHandle) {
       const given: ContactRef = { channel: booking.contactChannel, handle: booking.contactHandle };
@@ -476,6 +555,10 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
       needsStaff: output.needsStaff,
       staffReasonKo: output.staffReasonKo,
       issues: rejected,
+      shownKeys: assembled.shownKeys,
+      reaction: output.reaction,
+      offerDeclined: output.offerDeclined,
+      offersDropped,
     });
 
     return {
@@ -490,6 +573,11 @@ export async function runAiTurn(admin: ChatAdminClient, args: RunAiTurnArgs): Pr
       needsStaff: output.needsStaff,
       staffReasonKo: output.staffReasonKo,
       contactSaved,
+      usedOffers: assembled.usedOffers,
+      reaction: output.reaction,
+      offersDropped,
+      offerDeclined: output.offerDeclined,
+      bookingBenefit,
     };
   } catch (e) {
     console.warn('[chat ai] turn threw:', e);

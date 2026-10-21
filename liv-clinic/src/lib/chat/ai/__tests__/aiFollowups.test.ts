@@ -32,6 +32,11 @@ const SENT: AiTurnSent = {
   needsStaff: false,
   staffReasonKo: null,
   contactSaved: null,
+  usedOffers: [],
+  reaction: null,
+  offersDropped: [],
+  offerDeclined: false,
+  bookingBenefit: null,
 };
 const finish = (outcome: Parameters<typeof finishAiTurn>[0]['outcome']) =>
   finishAiTurn({ sessionId: SESSION_ID, locale: 'en', outcome });

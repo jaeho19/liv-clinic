@@ -47,6 +47,7 @@ const CTX: AiTurnContext = {
   messengerHandle: null,
   sessionContact: null,
   handoffAt: null,
+  offersOn: false,
 };
 const SENT: AiTurnSent = {
   kind: 'sent',
@@ -60,6 +61,11 @@ const SENT: AiTurnSent = {
   needsStaff: false,
   staffReasonKo: null,
   contactSaved: null,
+  usedOffers: [],
+  reaction: null,
+  offersDropped: [],
+  offerDeclined: false,
+  bookingBenefit: null,
 };
 
 beforeEach(() => {

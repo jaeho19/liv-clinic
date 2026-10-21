@@ -32,6 +32,7 @@ const CTX: AiTurnContext = {
   messengerHandle: null,
   sessionContact: null,
   handoffAt: null,
+  offersOn: false,
 };
 
 const SESSION_ROW = {
@@ -178,6 +179,21 @@ describe('decideAiTurn', () => {
     expect((await decideAiTurn(decideAdmin(SESSION_ROW) as never, SESSION_ID, 'Hello', NOW)).run).toBe(false);
     const admin = decideAdmin({ ...SESSION_ROW, visitor_name: 'ai-test-1002' });
     expect((await decideAiTurn(admin as never, SESSION_ID, 'Hello', NOW)).run).toBe(true);
+  });
+
+  it('제안형 응대(CHAT_AI_OFFERS): on 이면 모든 문의, test 면 이름이 ai-test 로 시작하는 문의만 — AI 스위치와 따로 정한다', async () => {
+    const offersOf = async (name: string) =>
+      (await decideAiTurn(decideAdmin({ ...SESSION_ROW, visitor_name: name }) as never, SESSION_ID, 'Hello', NOW)).ctx?.offersOn;
+    try {
+      expect(await offersOf('Emma')).toBe(false);
+      process.env.CHAT_AI_OFFERS = 'test';
+      expect(await offersOf('Emma')).toBe(false);
+      expect(await offersOf('ai-test-1021')).toBe(true);
+      process.env.CHAT_AI_OFFERS = 'on';
+      expect(await offersOf('Emma')).toBe(true);
+    } finally {
+      delete process.env.CHAT_AI_OFFERS;
+    }
   });
 
   it('직원이 맡은 대화에는 답하지 않는다 (호출 수도 세지 않는다)', async () => {
@@ -768,5 +784,124 @@ describe('runAiTurn — 답을 버리는 경우 · 오류', () => {
     vi.spyOn(console, 'warn').mockImplementation(() => {});
     callAi.mockRejectedValue(new Error('boom'));
     expect(await run(adminFor(world()))).toEqual({ kind: 'fallback', reason: 'exception' });
+  });
+});
+
+describe('runAiTurn — 제안형 응대 (이 대화에 켜짐, 스펙 2026-10-12)', () => {
+  const KO = getKnowledge('en', NOW, { offers: true });
+  const C = (key: string) => KO.offers.find((o) => o.key === key)!.id;
+  const T = (key: string) => KO.rows.find((r) => r.key === key)!.id;
+  const EARLIER = { reply_message_id: 'm-0', history_text: 'Yes, we offer Sculptra.', shown_keys: ['benefit'], offer_declined: false };
+
+  const OCTX: AiTurnContext = { ...CTX, offersOn: true };
+
+  it('첫 답: 혜택 문장(5% + 피부관리 · 수액 조건)은 나가고 제안 줄은 지운다 — 지운 것과 반응을 기록한다', async () => {
+    callAi.mockResolvedValue(
+      ok({ reply: `Yes, we offer Sculptra.\n{{B01}}\n{{${C('sculptra.first')}}}\nWhen are you visiting?`, staff_note_ko: '스컬트라 안내', reaction: 'R1' })
+    );
+    const admin = adminFor(world());
+    const out = await run(admin, 'Do you have Sculptra?', OCTX);
+    expect(out.kind).toBe('sent');
+    if (out.kind !== 'sent') return;
+    expect(out.text).toBe(
+      [
+        'Yes, we offer Sculptra.',
+        'If you book through this chat and pay at your visit, you get 5% off. If your payment that day is KRW 300,000 or more (excl. VAT), you can also have one complimentary skin-care session or IV drip per person — you choose which on the day (first-visit trial prices excluded).',
+        'When are you visiting?',
+      ].join('\n')
+    );
+    expect(out.usedOffers).toEqual([]);
+    expect(turnLog(admin)).toMatchObject({
+      shown_keys: ['benefit'],
+      reaction: 'R1',
+      offer_declined: false,
+      offers_dropped: [`${C('sculptra.first')}:first_reply`],
+    });
+    // 지시문에 "첫 답" 상태와 제안 규칙이 들어간다
+    const system = callAi.mock.calls[0][0][0].content;
+    expect(system).toContain('# OFFER STATE\nThe direct-booking benefit ({{B01}}) has not been shown yet in this conversation.\nThis is your first reply');
+    expect(system).toContain('# OFFER ROWS (Korean)');
+  });
+
+  it('두 번째 답(관심): 제안 줄이 나가고, 바로 앞 답에 있던 혜택 문장은 되풀이하지 않는다', async () => {
+    callAi.mockResolvedValue(
+      ok({ reply: `{{B01}}\n{{${C('sculptra.first')}}}\nWhat time works for you?`, staff_note_ko: '리프팅 구성 제안', reaction: 'R1' })
+    );
+    const admin = adminFor(world({ turns: [EARLIER] }));
+    const out = await run(admin, 'Around Oct 20. How much is it?', OCTX);
+    if (out.kind !== 'sent') throw new Error(out.kind);
+    expect(out.text).toContain("Sculptra can be combined with a lifting treatment such as Ultherapy Prime or Thermage at the same consultation. This month's set:");
+    expect(out.text).toContain('Which combination suits you is decided by the doctor at the consultation.');
+    expect(out.text).not.toContain('If you book through this chat');
+    expect(out.usedOffers.map((o) => o.key)).toEqual(['sculptra.first']);
+    expect(turnLog(admin)).toMatchObject({ shown_keys: ['sculptra.first', 'promo.2026-10.19'], offers_dropped: ['B01:benefit_repeat'] });
+  });
+
+  it('손님이 거절하면(R5) 그 답의 제안도 지우고 거절을 기록한다 — 다음 차례 지시문은 "거절"', async () => {
+    callAi.mockResolvedValue(
+      ok({ reply: `Understood — Sculptra only.\n{{${C('sculptra.second')}}}`, reaction: 'R5', offer_declined: true })
+    );
+    const admin = adminFor(world({ turns: [EARLIER] }));
+    const out = await run(admin, 'Just Sculptra for now.', OCTX);
+    if (out.kind !== 'sent') throw new Error(out.kind);
+    expect(out.text).toBe('Understood — Sculptra only.');
+    expect(turnLog(admin)).toMatchObject({ offer_declined: true, offers_dropped: [`${C('sculptra.second')}:declined`] });
+
+    callAi.mockClear();
+    callAi.mockResolvedValue(ok({ reply: 'Noted.', reaction: 'R1' }));
+    await run(adminFor(world({ turns: [{ ...EARLIER, offer_declined: true, shown_keys: [] }] })), 'What time?', OCTX);
+    expect(callAi.mock.calls[0][0][0].content).toContain('The visitor declined suggestions');
+  });
+
+  it('가예약이 차면 요약 아래에 혜택 한 줄(조건까지)이 붙고, 같은 답의 혜택 문장은 지운다', async () => {
+    callAi.mockResolvedValue(
+      ok({
+        reply: 'Thank you, Emma.\n{{B01}}',
+        reaction: 'R7',
+        booking: { date: '2026-10-14', time: '14:00', treatment: 'Thermage', party_size: 1, name: 'Emma', contact_channel: 'whatsapp', contact_handle: '+65 9123 4567' },
+      })
+    );
+    const admin = adminFor(world({ messages: [{ id: 'v-1', sender: 'visitor', source: 'app', original_text: 'Oct 14 2pm Thermage, Emma, WhatsApp +65 9123 4567', translated_text: null }] }));
+    const out = await run(admin, 'Oct 14 2pm Thermage, Emma, WhatsApp +65 9123 4567', OCTX);
+    if (out.kind !== 'sent') throw new Error(out.kind);
+    const lines = out.text.split('\n');
+    expect(lines.filter((l) => l.startsWith('If you book through this chat'))).toEqual([]);
+    expect(lines[lines.length - 2]).toMatch(/^Since you booked through this chat, you get 5% off when you pay at your visit\. If your payment that day is KRW 300,000/);
+    expect(turnLog(admin)).toMatchObject({ shown_keys: ['benefit-line'], offers_dropped: ['B01:benefit_in_summary'] });
+    // 가예약에 안내한 혜택을 남긴다 — Slack 파란 막대 · 관리자 화면의 "· 혜택:"
+    expect(out.bookingBenefit).toBe('full');
+    expect(opsOf(admin, 'chat_bookings', 'insert')[0]?.payload).toMatchObject({ status: 'requested', benefit: 'full' });
+  });
+
+  it('이 대화에서 안내한 금액이 첫방문 체험가뿐이면 요약 아래 줄은 5%만', async () => {
+    callAi.mockResolvedValue(
+      ok({
+        reply: 'Thank you, Emma.',
+        reaction: 'R7',
+        booking: { date: '2026-10-14', time: '14:00', treatment: 'Underarm hair removal', party_size: 1, name: 'Emma', contact_channel: 'whatsapp', contact_handle: '+65 9123 4567' },
+      })
+    );
+    const turns = [{ ...EARLIER, shown_keys: ['benefit', 'trial.armpitHairRemoval'] }];
+    const admin = adminFor(
+      world({ turns, messages: [{ id: 'v-1', sender: 'visitor', source: 'app', original_text: 'Oct 14 2pm, Emma, WhatsApp +65 9123 4567', translated_text: null }] })
+    );
+    const out = await run(admin, 'Oct 14 2pm, Emma, WhatsApp +65 9123 4567', OCTX);
+    if (out.kind !== 'sent') throw new Error(out.kind);
+    const lines = out.text.split('\n');
+    expect(lines[lines.length - 2]).toBe('Since you booked through this chat, you get 5% off when you pay at your visit.');
+    expect(T('trial.armpitHairRemoval')).toBe('T01');
+    expect(out.bookingBenefit).toBe('five');
+    expect(opsOf(admin, 'chat_bookings', 'insert')[0]?.payload).toMatchObject({ benefit: 'five' });
+  });
+
+  it('꺼져 있으면 혜택 문장은 5%만, 제안 줄 꼬리표는 없는 꼬리표로 다시 쓰게 한다', async () => {
+    callAi
+      .mockResolvedValueOnce(ok({ reply: `Yes.\n{{B01}}\n{{C01}}` }))
+      .mockResolvedValueOnce(ok({ reply: 'Yes.\n{{B01}}' }));
+    const admin = adminFor(world());
+    const out = await run(admin, 'Do you have Sculptra?');
+    if (out.kind !== 'sent') throw new Error(out.kind);
+    expect(out.text).toBe('Yes.\nIf you book through this chat and pay at your visit, you get 5% off.');
+    expect(turnLog(admin)?.issues).toEqual(['tag_unknown:C01']);
   });
 });

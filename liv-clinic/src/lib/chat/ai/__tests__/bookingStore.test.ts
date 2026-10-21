@@ -41,6 +41,7 @@ const STORED: StoredBooking = {
   notifiedKey: '2026-10-14|14:00|2|whatsapp|6591234567',
   requestedAt: '2026-10-02T07:00:00Z',
   fields: FIELDS,
+  benefit: null,
 };
 
 const admin = (handler: (op: FakeOp) => FakeResult) => fakeAdmin(handler);
@@ -53,6 +54,12 @@ describe('loadBooking', () => {
     expect(await loadBooking(a as never, SESSION_ID)).toEqual(STORED);
     expect(hasFilter(a.ops[0], 'session_id', SESSION_ID)).toBe(true);
     expect(rowToStored({ ...ROW, status: 'collecting' }).status).toBe('collecting');
+  });
+
+  it('안내한 혜택(044)을 읽는다 — 모르는 값은 버린다', () => {
+    expect(rowToStored({ ...ROW, benefit: 'full' }).benefit).toBe('full');
+    expect(rowToStored({ ...ROW, benefit: 'five' }).benefit).toBe('five');
+    expect(rowToStored({ ...ROW, benefit: 'gift' }).benefit).toBeNull();
   });
 
   it('줄이 없으면 빈 가예약', async () => {
@@ -103,6 +110,15 @@ describe('saveBooking', () => {
       notified_at: '2026-10-02T07:20:00.000Z',
       requested_at: '2026-10-02T07:20:00.000Z',
     });
+  });
+
+  it('알릴 때 안내한 혜택을 함께 적는다 — 알리지 않는 저장에는 적지 않는다', async () => {
+    const a = admin(() => ({ data: null }));
+    await saveBooking(a as never, SESSION_ID, NO_BOOKING, FIELDS, 'requested', null, NOW, 'full');
+    expect((a.ops[0].payload as Record<string, unknown>).benefit).toBe('full');
+    const b = admin(() => ({ data: null }));
+    await saveBooking(b as never, SESSION_ID, NO_BOOKING, { ...EMPTY_BOOKING, date: '2026-10-14' }, null, null, NOW, 'full');
+    expect('benefit' in (b.ops[0].payload as Record<string, unknown>)).toBe(false);
   });
 
   it('바뀌었으면 기존 줄의 지문과 알린 시각만 새로 적는다(처음 찬 시각은 그대로)', async () => {
