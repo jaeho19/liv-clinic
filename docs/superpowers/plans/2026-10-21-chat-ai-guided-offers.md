@@ -10,7 +10,7 @@
 
 **Spec:** `docs/superpowers/specs/2026-10-12-chat-ai-guided-offers-design.md` — §0.2(대표원장님 회신 2026-10-20 · 보충 답 · 「시제품에서 정한 것」)가 아래 절보다 우선한다. 바탕: `2026-10-02-chat-ai-first-response-design.md`와 그 계획서 `2026-10-02-chat-ai-first-response.md`(Task 0~27).
 
-**이 계획의 코드는 실행해 본 것이다.** 10/2 계획을 다 적용한 상태(로컬 임시 브랜치 `scratch/chat-ai-dev`) 위에 임시 브랜치 `scratch/chat-ai-offers-dev`를 따서 아래 과제를 순서대로 구현해 확인했다(2026-10-20 ~ 21): 테스트 84파일 1413건 통과(기준선 81파일 1354건), 과제마다 `npx tsc --noEmit` 통과, 변경 파일 `npx eslint` 통과. 마이그레이션 044와 측정 SQL은 로컬 Postgres(PGlite)에서 돌려 확인했다. 실제 모델로는 재생 시험을 세 번 돌렸다(Task 41의 표 — 제안 사례 20개 · 10/2 사례 47건을 제안 켜고 · 끄고, 모두 답이 나가고 접수 안내로 대신한 답 0). 사용자가 2026-10-21에 재생 확인 화면을 보고 승인했다. 운영 DB · Slack · Netlify에는 닿지 않았다. 그 뒤 **이 계획서만 가지고** 10/2 계획을 마친 상태에서 다시 적용해(`plan-apply.mjs`로 블록을 꺼내) 과제마다 같은 테스트 건수와 같은 파일 내용이 나오는 것까지 확인했다. 과제마다 적힌 "실패 · 통과 건수"와 "대조 값"은 그때의 실제 값이다.
+**이 계획의 코드는 실행해 본 것이다.** 10/2 계획을 다 적용한 상태(로컬 임시 브랜치 `scratch/chat-ai-dev`) 위에 임시 브랜치 `scratch/chat-ai-offers-dev`를 따서 아래 과제를 순서대로 구현해 확인했다(2026-10-20 ~ 21): 테스트 84파일 1414건 통과(기준선 81파일 1355건), 과제마다 `npx tsc --noEmit` 통과, 변경 파일 `npx eslint` 통과. 마이그레이션 044와 측정 SQL은 로컬 Postgres(PGlite)에서 돌려 확인했다. 실제 모델로는 재생 시험을 세 번 돌렸다(Task 41의 표 — 제안 사례 20개 · 10/2 사례 47건을 제안 켜고 · 끄고, 모두 답이 나가고 접수 안내로 대신한 답 0). 사용자가 2026-10-21에 재생 확인 화면을 보고 승인했다. 운영 DB · Slack · Netlify에는 닿지 않았다. 그 뒤 **이 계획서만 가지고** 10/2 계획을 마친 상태에서 다시 적용해(`plan-apply.mjs`로 블록을 꺼내) 과제마다 같은 테스트 건수와 같은 파일 내용이 나오는 것까지 확인했다. 과제마다 적힌 "실패 · 통과 건수"와 "대조 값"은 그때의 실제 값이다.
 
 ## Global Constraints
 
@@ -25,7 +25,7 @@
 - **정해진 값**: 꼬리표 `{{C01}}`(제안 줄 — 오늘 유효한 것만, 읽을 때마다 번호) · `{{B01}}`(혜택 문장) · `{{T01}}`(첫방문 체험가 — 켜진 대화만), 제안 한 답 1개 · 한 대화 2개, 무료 서비스 기준 `BENEFIT_MIN_KRW = 300_000`(부가세 별도, 한 분), 반응 `R1`~`R7`, 가예약 혜택 `full` | `five`.
 - **환경변수**(신설, 비어 있으면 꺼짐): `CHAT_AI_OFFERS`(`on` | `test` | 그 밖 = 꺼짐). 로컬 `.env.local`에는 넣지 않는다(테스트는 스스로 값을 넣고 지운다).
 - **OpenAI를 실제로 부르는 단계는 Task 38의 한 번(약 6센트)과 Task 41뿐이다.**
-- **검증 게이트**: `npx vitest run` · `npx tsc --noEmit` · 변경 파일만 `npx eslint <files>` · `npm run build`. 기준선(10/2 계획을 마친 상태): 테스트 81파일 1354건 통과.
+- **검증 게이트**: `npx vitest run` · `npx tsc --noEmit` · 변경 파일만 `npx eslint <files>` · `npm run build`. 기준선(10/2 계획을 마친 상태): 테스트 81파일 1355건 통과.
 - **커밋 메시지**: 한국어 `type(scope): 요약` + `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`(세션 안내가 다른 줄을 주면 그 줄).
 
 ---
@@ -48,7 +48,7 @@
 | `src/lib/chat/chatFlags.ts` · `src/types/supabase.ts` · (루트) `.env.example` | 스위치 `chatAiOffersMode()`, 타입, 환경변수 설명 | 29 |
 | `src/lib/chat/ai/knowledge/offers.ts` ★ | 조합 제안 줄 37개 · 10개 언어 문장, 채팅 예약 혜택 문장, 기준 금액, 직원용 이름 | 30 |
 | `src/lib/chat/ai/knowledge/priceRows.trial.ts` ★(생성) · `scripts/chat-ai-build-trial-rows.mjs` ★ | 첫방문 체험가 10줄 | 30 |
-| `src/lib/chat/ai/knowledge/{index,facts,scope,types}.ts` | 꼬리표 `T`, 켜짐/꺼짐 자료, 한 줄 소개 · 혜택 규칙, 문신 제거 폐지 | 30 |
+| `src/lib/chat/ai/knowledge/{index,facts,types}.ts` | 꼬리표 `T`, 켜짐/꺼짐 자료, 한 줄 소개 · 혜택 규칙 | 30 |
 | `src/lib/chat/ai/guards.ts` | 제안 · 혜택 꼬리표, 압박 표현, 반응 읽기, `claimIssues` | 31 |
 | `src/lib/chat/ai/offerCaps.ts` ★ | 제안 상한 · 이끄는 말 정리 | 32 |
 | `src/lib/chat/ai/assemble.ts` · `replyTemplates.ts` | 제안 줄 · 혜택 문장 · 요약 아래 혜택 줄 조립, `shownKeys` | 33 |
@@ -80,7 +80,7 @@
 | 11 | 한 답 안의 순서 (§4.1) | 지시문에 "답(한 줄 소개) → 금액 줄 → `{{B01}}` → 제안 → 되묻기"를 적었다 | 재생 o12에서 혜택 문장이 질문 뒤에 붙었다 |
 | 12 | 첫방문 체험가를 저부담 대안으로 (§0.2) | 체험가 10줄을 홈페이지에서 **생성**해 가격 줄 `T01~`로 둔다(켜진 대화만). 바뀌면 테스트가 알린다 | 체험가 금액을 손으로 옮기면 홈페이지와 어긋날 수 있다 |
 | 13 | 압박 표현 묶음 (§4.5) | 10개 언어 + 한국어(몽골어 포함). "서두르실 필요 없어요 · no hurry"와 기간을 사실로 말하는 글은 지나간다. 회귀 말뭉치에 걸림 13 · 통과 20 | — |
-| 14 | 사실 문장 "반영구 눈썹 · 아이라인 제거" | "눈썹 · 아이라인 문신(화장 문신) 제거" | 검사의 금지 낱말 '영구'에 걸린다 — 검사는 느슨하게 고치지 않았다. 문신 제거 폐지(2026-10-20)에 맞춰 문신 줄을 고쳤다 |
+| 14 | 사실 문장 "반영구 눈썹 · 아이라인 제거" | "눈썹 · 아이라인 문신(화장 문신) 제거" | 검사의 금지 낱말 '영구'에 걸린다 — 검사는 느슨하게 고치지 않았다. 문신 제거 폐지(2026-10-20)에 맞춘 레이저 줄은 10/2 Task 3에 들어 있다(두 계획을 운영 master `e0e8dc3` 위로 옮길 때 옮겼다) |
 | 15 | 측정 항목 12의 G-10 (§4.8) | 넣지 않았다 — 점검 때 내보내기를 읽어 센다 | 가예약 시술 이름과 구성 이름을 견줘야 한다 |
 | 16 | 조합 문장 10개 언어 (§4.3) | 2026-10-21에 베트남어 · 태국어 · 러시아어 · 프랑스어 · 몽골어 · 아랍어를 더해 10개 언어를 모두 채웠다(테스트가 "그 언어로 쓰였는가"를 본다) | 처음 시제품은 영어 · 일본어 · 중국어 둘만 있었고 나머지는 영어로 나갔다 |
 
@@ -88,11 +88,11 @@
 
 | 묶음 | 과제 | 무엇을 만드는가 | 전체 테스트 | 운영에 닿는가 |
 |------|------|-----------------|-------------|---------------|
-| 준비 | 28 | 10/2 상태 대조, `plan-apply.mjs`(임시) | 81파일 1354건 | 아니오 |
-| 바탕 | 29~30 | 044(파일만) · 스위치, 근거 자료 | 81파일 1355건 → 82파일 1370건 | 아니오 (044는 로컬 Postgres에서만) |
-| 답을 만드는 부품 | 31~34 | 검사, 상한, 조립, 지시문 | 82파일 1377건 → 83파일 1398건 | 아니오 |
-| 실행기와 직원 쪽 | 35~36 | 실행기 · 가예약 혜택, Slack · 관리자 화면 | 83파일 1407건 → 84파일 1413건 | 아니오 |
-| 마무리 | 37~40 | 측정, 재생 도구, 문서, 전체 검증 | 84파일 1413건 | 아니오 (Task 38에서 OpenAI 3회) |
+| 준비 | 28 | 10/2 상태 대조, `plan-apply.mjs`(임시) | 81파일 1355건 | 아니오 |
+| 바탕 | 29~30 | 044(파일만) · 스위치, 근거 자료 | 81파일 1356건 → 82파일 1371건 | 아니오 (044는 로컬 Postgres에서만) |
+| 답을 만드는 부품 | 31~34 | 검사, 상한, 조립, 지시문 | 82파일 1378건 → 83파일 1399건 | 아니오 |
+| 실행기와 직원 쪽 | 35~36 | 실행기 · 가예약 혜택, Slack · 관리자 화면 | 83파일 1408건 → 84파일 1414건 | 아니오 |
+| 마무리 | 37~40 | 측정, 재생 도구, 문서, 전체 검증 | 84파일 1414건 | 아니오 (Task 38에서 OpenAI 3회) |
 | 재생 표 | 41 | 실제 모델로 세 번 | — | 아니오 (OpenAI 호출) |
 | 운영 반영 | 42 | 044 → 배포(꺼짐) → 이달 갱신 → 시험 모드 → 자문 뒤 켜기 | — | **예 — 승인 ①~⑤** |
 
@@ -123,7 +123,7 @@ Expected: 첫 줄 `## feature/chat-ai-first-response`. 그 아래에 바뀐 파�
 
 Run:
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms" && for f in "liv-clinic/src/lib/chat/__tests__/chatFlags.test.ts" "liv-clinic/src/lib/chat/chatFlags.ts" "liv-clinic/src/types/supabase.ts" ".env.example" "liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts" "liv-clinic/src/lib/chat/ai/knowledge/types.ts" "liv-clinic/src/lib/chat/ai/knowledge/scope.ts" "liv-clinic/src/lib/chat/ai/knowledge/facts.ts" "liv-clinic/src/lib/chat/ai/knowledge/index.ts" "liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts" "liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts" "liv-clinic/src/lib/chat/ai/guards.ts" "liv-clinic/src/lib/chat/ai/__tests__/assemble.test.ts" "liv-clinic/src/lib/chat/ai/replyTemplates.ts" "liv-clinic/src/lib/chat/ai/assemble.ts" "liv-clinic/src/lib/chat/ai/__tests__/prompt.test.ts" "liv-clinic/src/lib/chat/ai/prompt.ts" "liv-clinic/src/lib/chat/ai/__tests__/bookingStore.test.ts" "liv-clinic/src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/aiFollowups.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/turn.test.ts" "liv-clinic/src/lib/chat/ai/bookingStore.ts" "liv-clinic/src/lib/chat/ai/turn.ts" "liv-clinic/src/lib/chat/slackText.ts" "liv-clinic/src/lib/chat/slackRelay.ts" "liv-clinic/src/lib/chat/ai/aiFollowups.ts" "liv-clinic/src/lib/chat/adminBooking.ts" "liv-clinic/scripts/_db/chat-ai-metrics.mjs" "liv-clinic/scripts/chat-response-baseline.mjs" "liv-clinic/scripts/chat-ai-review-export.mjs" "liv-clinic/test/live/chatAiReplay.live.ts" "docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md" "docs/superpowers/specs/2026-09-03-slack-patient-rooms-slack-setup.md"; do echo "$(git rev-parse "HEAD:$f")  $f"; done
+cd "D:/dev/LIV_homepage-slack-rooms" && for f in "liv-clinic/src/lib/chat/__tests__/chatFlags.test.ts" "liv-clinic/src/lib/chat/chatFlags.ts" "liv-clinic/src/types/supabase.ts" ".env.example" "liv-clinic/src/lib/chat/ai/knowledge/types.ts" "liv-clinic/src/lib/chat/ai/knowledge/facts.ts" "liv-clinic/src/lib/chat/ai/knowledge/index.ts" "liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts" "liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts" "liv-clinic/src/lib/chat/ai/guards.ts" "liv-clinic/src/lib/chat/ai/__tests__/assemble.test.ts" "liv-clinic/src/lib/chat/ai/replyTemplates.ts" "liv-clinic/src/lib/chat/ai/assemble.ts" "liv-clinic/src/lib/chat/ai/__tests__/prompt.test.ts" "liv-clinic/src/lib/chat/ai/prompt.ts" "liv-clinic/src/lib/chat/ai/__tests__/bookingStore.test.ts" "liv-clinic/src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/aiFollowups.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/turn.test.ts" "liv-clinic/src/lib/chat/ai/bookingStore.ts" "liv-clinic/src/lib/chat/ai/turn.ts" "liv-clinic/src/lib/chat/slackText.ts" "liv-clinic/src/lib/chat/slackRelay.ts" "liv-clinic/src/lib/chat/ai/aiFollowups.ts" "liv-clinic/src/lib/chat/adminBooking.ts" "liv-clinic/scripts/_db/chat-ai-metrics.mjs" "liv-clinic/scripts/chat-response-baseline.mjs" "liv-clinic/scripts/chat-ai-review-export.mjs" "liv-clinic/test/live/chatAiReplay.live.ts" "docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md" "docs/superpowers/specs/2026-09-03-slack-patient-rooms-slack-setup.md"; do echo "$(git rev-parse "HEAD:$f")  $f"; done
 ```
 Expected:
 
@@ -133,10 +133,8 @@ Expected:
 | `liv-clinic/src/lib/chat/chatFlags.ts` | `d9f085c3155d6ff8ce7f36c65faab7cf76b14067` |
 | `liv-clinic/src/types/supabase.ts` | `018ce6ae477dfb02502445d775b9043f07150b22` |
 | `.env.example` | `9b29037901765048e7d0bcb8535e460f559b3ef2` |
-| `liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts` | `90911410f0361a01c52bb5f3fc246c44c2ad353a` |
 | `liv-clinic/src/lib/chat/ai/knowledge/types.ts` | `563421a79e068368cd99082a25bbf8d1e0b77b35` |
-| `liv-clinic/src/lib/chat/ai/knowledge/scope.ts` | `f920cdcda92be96ea814c6ffaf40607b555d8bc4` |
-| `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` | `2ecaa5dae48d6ca3726418814de65c8e91e4a1cc` |
+| `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` | `e4e3ffd31cf97cf9d150e4f40f27273fde955891` |
 | `liv-clinic/src/lib/chat/ai/knowledge/index.ts` | `405a00f449725233318fcd7945ab7ebc6c075654` |
 | `liv-clinic/src/lib/chat/ai/__tests__/guardsCorpus.ts` | `0bfb1967eceb9900365ff8b1f94b53c9f80c7edf` |
 | `liv-clinic/src/lib/chat/ai/__tests__/guards.test.ts` | `df150e27150c2d5455234a4b8b19c69c7ec7b2b9` |
@@ -160,7 +158,7 @@ Expected:
 | `liv-clinic/scripts/chat-response-baseline.mjs` | `a01d61f49c47eaaab4550666d4bbba075fbcf019` |
 | `liv-clinic/scripts/chat-ai-review-export.mjs` | `567d1e35073e30a07182d402c050639f965d06a8` |
 | `liv-clinic/test/live/chatAiReplay.live.ts` | `61e0a70ff4de7bb5e710706b951cf9b0ad91747d` |
-| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `298987556fec31bbfde91283bfbbc10acfe50f40` |
+| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `7c4b61dc2c065f5fd27f5c7d9aad85cc881e7f07` |
 | `docs/superpowers/specs/2026-09-03-slack-patient-rooms-slack-setup.md` | `bea1c364af3c934e86347be0ab3fcf27468a2a15` |
 
 하나라도 다르면 **멈추고 보고한다.** 10/2 계획 뒤에 그 파일을 고친 일이 있다는 뜻이다 — 가장 흔한 것은 원장님 가격 엑셀 반영(10/2 Task 25: `scope.ts` · `facts.ts` · `priceRows.extra.ts`)과 매달 프로모션 갱신(`priceRows.extra.ts`)이다. 그때는 이 계획의 `diff` 블록이 들어가지 않을 수 있으므로, Claude 세션이 지금의 상태 위에서 이 계획서를 다시 만든다(만든 도구: 로컬 브랜치 `scratch/chat-ai-offers-dev`의 `.plan-tools/offers/`). 손으로 고쳐 맞추지 않는다.
@@ -171,7 +169,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1354 passed (1354)`, `TSC-OK`. (10/2 계획의 Task 23이 끝났을 때의 건수와 같다.) 다르면 시작하지 않고 원인을 찾는다.
+Expected: `Test Files 81 passed (81)`, `Tests 1355 passed (1355)`, `TSC-OK`. (10/2 계획의 Task 23이 끝났을 때의 건수와 같다.) 다르면 시작하지 않고 원인을 찾는다.
 
 - [ ] **Step 4: `plan-apply.mjs`를 워크트리 루트에 만든다**
 
@@ -233,7 +231,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs --list | wc -l && node plan-apply.mjs --list | head -3
 ```
-Expected: 첫 줄 `43`(블록 43개). 이어서 `T29-test	diff	chatFlags.test.ts`로 시작하는 목록.
+Expected: 첫 줄 `41`(블록 41개). 이어서 `T29-test	diff	chatFlags.test.ts`로 시작하는 목록.
 
 `plan-apply.mjs`는 커밋하지 않는다. `git status`에 `?? plan-apply.mjs`로 계속 보이는 것이 정상이다.
 
@@ -708,7 +706,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/chatFlags.ts" "src/lib/chat/__tests__/chatFlags.test.ts" "scripts/_db/verify-044.mjs" "scripts/_db/run-044.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 81 passed (81)`, `Tests 1355 passed (1355)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 81 passed (81)`, `Tests 1356 passed (1356)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 8: 커밋**
 
@@ -743,7 +741,7 @@ Expected:
 - **조합 제안 줄**(`offers.ts`의 `OFFER_SOURCES`, 37줄): 손님이 묻는 시술 15가지 × 제안 ① · ② · 부담 덜한 구성. 줄마다 "함께 보이는 가격 줄"의 key(`rowKeys`)와 앞 문장(한국어 + 10개 언어)이 있다. 가리키는 가격 줄이 오늘 유효하지 않으면 그 제안은 AI에게 가지 않는다 — 10월 프로모션 줄을 가리키는 제안은 11월 1일에 저절로 빠진다. 꼬리표 `C01`…은 읽을 때마다 순서대로 붙는다.
 - **채팅 예약 혜택 문장**(`{{B01}}` · 가예약 요약 아래 줄, 10개 언어): 켜져 있으면 "5% + 그날 결제 30만 원(부가세 별도, 한 분) 이상이면 피부관리 또는 수액 1회 — 방문한 날 선택, 첫방문 체험가 제외", 꺼져 있으면 5%만. 기준 금액은 `BENEFIT_MIN_KRW` 하나다.
 - **첫방문 체험가 줄**(`priceRows.trial.ts`, 10줄 `T01`~): 홈페이지 첫방문 체험가에서 **생성**한다(`scripts/chat-ai-build-trial-rows.mjs`). 제안형 응대가 켜진 대화에만 가격 줄로 들어간다.
-- **사실 문장**(`facts.ts`): 시술 한 줄 소개 16개, 혜택 규칙(`benefitFactsKo` — 켜짐/꺼짐), 문신 제거 폐지(2026-10-20)에 맞춘 줄, 직원에게 넘기는 줄에 폐지된 문신 제거 금액 줄(`scope.ts`).
+- **사실 문장**(`facts.ts`): 시술 한 줄 소개 16개, 혜택 규칙(`benefitFactsKo` — 켜짐/꺼짐). 문신 제거 폐지(2026-10-20)에 맞춘 레이저 줄과 기미/색소 표로 옮겨 온 반영구 화장 제거 · CO2 금액 줄은 10/2 Task 3에 이미 들어 있다.
 - 직원에게 보이는 이름: `offerKo`(`스컬트라 제안 ①`), `benefitKo`(`혜택: 5% + …`) — Task 36이 쓴다.
 
 **Files:**
@@ -751,8 +749,8 @@ Expected:
 - Create: `liv-clinic/scripts/chat-ai-build-trial-rows.mjs` → 생성: `liv-clinic/src/lib/chat/ai/knowledge/priceRows.trial.ts`
 - Modify: `liv-clinic/src/lib/chat/ai/knowledge/types.ts` (`PriceGroup`에 `trial`)
 - Modify: `liv-clinic/src/lib/chat/ai/knowledge/index.ts` (꼬리표 `T`, `getKnowledge(locale, now, { offers })` → `offersOn` · `offers` · `offerById` · `offerText`)
-- Modify: `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` · `scope.ts`
-- Test: `liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts` (신규) · `knowledge.test.ts`
+- Modify: `liv-clinic/src/lib/chat/ai/knowledge/facts.ts`
+- Test: `liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts` (신규) — `knowledge.test.ts`는 고치지 않고 함께 돌린다
 
 **Interfaces:**
 - Consumes: 10/2 Task 3의 `PriceRow` · `PriceRowSource` · `getPriceRows` · `buildFactsText` · `getKnowledge` · `STAFF_ONLY_KEYS`, 홈페이지 `src/lib/firstVisitTrial.ts` · `src/messages/*.json`의 `firstVisit`
@@ -760,7 +758,7 @@ Expected:
 
 - [ ] **Step 1: 실패하는 테스트를 쓴다**
 
-Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T30-test T30-test-knowledge`
+Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T30-test`
 
 <!-- block: T30-test | full | liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts -->
 ````ts
@@ -965,65 +963,14 @@ describe('직원에게 보이는 이름 (Slack · 관리자 화면 — 한국어
 });
 ````
 
-<!-- block: T30-test-knowledge | diff | knowledge.test.ts -->
-````diff
-diff --git a/liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts b/liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts
-index 9091141..dce5adb 100644
---- a/liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts
-+++ b/liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts
-@@ -110,7 +110,7 @@ describe('손으로 관리하는 가격 줄', () => {
-   it('직원에게 넘기는 줄(STAFF_ONLY_KEYS)은 모두 실제로 있는 줄이다', () => {
-     const keys = new Set(BASE_PRICE_ROWS.map((r) => r.key));
-     for (const key of STAFF_ONLY_KEYS) expect(keys.has(key), key).toBe(true);
--    expect(STAFF_ONLY_KEYS.size).toBe(7);
-+    expect(STAFF_ONLY_KEYS.size).toBe(8);
-   });
- 
-   it('공통 규칙의 값', () => {
-@@ -120,12 +120,12 @@ describe('손으로 관리하는 가격 줄', () => {
- });
- 
- describe('getPriceRows', () => {
--  it('10월: 기본 52줄(P) · 프로모션 27줄(M) · 상담비 1줄(F), 꼬리표는 순서대로', () => {
-+  it('10월: 기본 51줄(P) · 프로모션 27줄(M) · 상담비 1줄(F), 꼬리표는 순서대로', () => {
-     const rows = getPriceRows(OCT_2);
-     const ids = (prefix: string) => rows.filter((r) => r.id.startsWith(prefix)).map((r) => r.id);
--    expect(ids('P')).toHaveLength(52); // 56 − 직원에게 넘기는 7 + 필러 3
-+    expect(ids('P')).toHaveLength(51); // 56 − 직원에게 넘기는 8 + 필러 3
-     expect(ids('P')[0]).toBe('P001');
--    expect(ids('P')[51]).toBe('P052');
-+    expect(ids('P')[50]).toBe('P051');
-     expect(ids('M')).toHaveLength(27);
-     expect(ids('M')[0]).toBe('M01');
-     expect(ids('F')).toEqual(['F01']);
-@@ -139,7 +139,7 @@ describe('getPriceRows', () => {
-     expect(promo('2026-09-30T15:00:00Z')).toBe(27); // 한국 10/01 00:00
-     expect(promo('2026-10-31T14:59:59Z')).toBe(27); // 한국 10/31 23:59
-     expect(promo('2026-10-31T15:00:00Z')).toBe(0); // 한국 11/01 00:00
--    expect(getPriceRows(NOV_2).filter((r) => r.group === 'base')).toHaveLength(52);
-+    expect(getPriceRows(NOV_2).filter((r) => r.group === 'base')).toHaveLength(51);
-   });
- 
-   it('isRowValid · kstDateKey', () => {
-@@ -170,7 +170,7 @@ describe('프롬프트에 넣는 글', () => {
-     const text = buildPriceText(getPriceRows(OCT_2));
-     const at = (s: string) => text.indexOf(s);
-     expect(at('## 기본 가격')).toBe(0);
--    expect(at('## 이달 프로모션 (2026-10-01 ~ 2026-10-31)')).toBeGreaterThan(at('{{P052}}'));
-+    expect(at('## 이달 프로모션 (2026-10-01 ~ 2026-10-31)')).toBeGreaterThan(at('{{P051}}'));
-     expect(at('## 그 밖의 금액')).toBeGreaterThan(at('{{M27}}'));
-     expect(at('{{F01}} 1:1 상담비')).toBeGreaterThan(at('## 그 밖의 금액'));
-   });
-````
-
 - [ ] **Step 2: 실패를 확인한다**
 
 Run: `cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx vitest run src/lib/chat/ai/__tests__/offers.test.ts src/lib/chat/ai/__tests__/knowledge.test.ts 2>&1 | tail -12`
-Expected: FAIL — `Test Files 2 failed (2)`, `Tests 3 failed | 14 passed (17)` (`Cannot find module '../knowledge/offers'`). `offers.ts`와 `priceRows.trial.ts`가 아직 없어 새 테스트 파일을 읽지 못하고, `knowledge.test.ts`는 바뀐 사실 문장(한 줄 소개 · 문신 제거) 검사가 실패한다.
+Expected: FAIL — `Test Files 1 failed | 1 passed (2)`, `Tests 17 passed (17)` (`Cannot find module '../knowledge/offers'`). `offers.ts`와 `priceRows.trial.ts`가 아직 없어 새 테스트 파일을 읽지 못하고(`knowledge.test.ts`는 그대로 통과한다).
 
 - [ ] **Step 3: 구현을 쓴다**
 
-Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T30-types T30-scope T30-facts T30-offers T30-script T30-index`
+Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T30-types T30-facts T30-offers T30-script T30-index`
 
 `priceRows.trial.ts`는 블록이 아니다 — 다음 단계의 생성 스크립트가 만든다(10/2 Task 3의 기본 가격 줄과 같은 방식). `offers.ts`의 문장은 10개 언어 모두 Claude 초안이다(원어민 검수 전, 시술 이름은 홈페이지 가격표의 표기). 문장을 다듬지 않는다 — 대표원장님이 재생 화면에서 본 문장이다.
 
@@ -1046,27 +993,10 @@ index 563421a..1586782 100644
    /** 자료 안에서 겹치지 않는 이름 — 예: 'ulthera.name.upperFace', 'promo.2026-10.19' */
 ````
 
-<!-- block: T30-scope | diff | scope.ts -->
-````diff
-diff --git a/liv-clinic/src/lib/chat/ai/knowledge/scope.ts b/liv-clinic/src/lib/chat/ai/knowledge/scope.ts
-index f920cdc..6c01159 100644
---- a/liv-clinic/src/lib/chat/ai/knowledge/scope.ts
-+++ b/liv-clinic/src/lib/chat/ai/knowledge/scope.ts
-@@ -21,6 +21,8 @@ export const STAFF_ONLY_KEYS: ReadonlySet<string> = new Set([
-   'skinbooster.hilowave.volume2cc',
-   // 제모 페이지에 듀얼토닝 금액이 그대로 들어가 있다
-   'hairRemoval.dualToning.single',
-+  // 문신 제거는 2026-10-20 에 폐지됐다(바디 타투는 하지 않는다). 같은 금액의 반영구 화장 제거 줄은 master 가격표로 다시 만들 때 들어온다
-+  'tattoo.tattooLucas.onePart',
- ]);
- 
- /**
-````
-
 <!-- block: T30-facts | diff | facts.ts -->
 ````diff
 diff --git a/liv-clinic/src/lib/chat/ai/knowledge/facts.ts b/liv-clinic/src/lib/chat/ai/knowledge/facts.ts
-index 2ecaa5d..a04f0e0 100644
+index e4e3ffd..3577270 100644
 --- a/liv-clinic/src/lib/chat/ai/knowledge/facts.ts
 +++ b/liv-clinic/src/lib/chat/ai/knowledge/facts.ts
 @@ -24,11 +24,29 @@ export const CLINIC_FACTS_KO = `## 병원
@@ -1074,10 +1004,9 @@ index 2ecaa5d..a04f0e0 100644
  ## 병원에서 하는 시술 (가격 줄이 없어도 "있다"고 답할 수 있다)
  - 리프팅: 울쎄라피 프라임, 써마지 FLX(아이 써마지 포함), 덴서티, 슈링크, 인모드, 온다 리프팅, 실리프팅(압토스·실루엣소프트·민트)
 -- 주사: 보톡스(윤곽·바디·주름), 필러(국산·수입 — 레스틸렌·쥬비덤·벨로테로), 스컬트라, 쥬베룩, 리쥬란, 힐로웨이브, 그 밖의 스킨부스터
--- 레이저: 듀얼토닝(색소·홍조·피부톤), 포텐자, 제모, 문신 제거, CO2 점 제거
--- 관리: LDM 관리, 진정 관리
 +- 주사: 보톡스(윤곽·바디·주름), 필러(국산·수입 — 레스틸렌·쥬비덤·벨로테로), 스컬트라, 쥬베룩, 리쥬란, 힐로웨이브, 그 밖의 스킨부스터, 수액
-+- 레이저: 듀얼토닝(색소·홍조·피부톤), 포텐자, 제모, CO2 점 제거, 눈썹·아이라인 문신(화장 문신) 제거. 바디 타투(문신) 제거는 하지 않는다.
+ - 레이저: 듀얼토닝(색소·홍조·피부톤), 포텐자, 제모, CO2 점 제거, 눈썹·아이라인 문신(화장 문신) 제거. 바디 타투(문신) 제거는 하지 않는다. 손님에게 쓰는 글에서는 이 시술을 늘 '눈썹·아이라인 문신 제거'(손님 언어로)라고 부른다 — 그 가격 줄의 이름(○○ 화장 제거)에는 금지 표현이 들어 있으니 자기 글에 옮겨 쓰거나 번역해 쓰지 않는다(이름과 금액은 금액 줄에서 프로그램이 붙인다).
+-- 관리: LDM 관리, 진정 관리
 +- 관리: LDM 관리, 진정 관리, 피부 관리(크라이오 진정관리·수분관리·비타민 C 미백관리·아쿠아필 관리)
  - 이 목록에 없는 시술을 물으면 있다·없다를 단정하지 않고 직원 확인으로 넘긴다.
  
@@ -2193,31 +2122,29 @@ Expected: `Test Files 2 passed (2)`, `Tests 32 passed (32)`.
 
 Run:
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/scope.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/offers.ts" "src/lib/chat/ai/knowledge/priceRows.trial.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-trial-rows.mjs" "src/lib/chat/ai/__tests__/offers.test.ts" "src/lib/chat/ai/__tests__/knowledge.test.ts" && echo LINT-OK
+cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/offers.ts" "src/lib/chat/ai/knowledge/priceRows.trial.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-trial-rows.mjs" "src/lib/chat/ai/__tests__/offers.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 82 passed (82)`, `Tests 1370 passed (1370)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 82 passed (82)`, `Tests 1371 passed (1371)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 7: 커밋**
 
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms" && git add "liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts" "liv-clinic/src/lib/chat/ai/knowledge/types.ts" "liv-clinic/src/lib/chat/ai/knowledge/scope.ts" "liv-clinic/src/lib/chat/ai/knowledge/facts.ts" "liv-clinic/src/lib/chat/ai/knowledge/offers.ts" "liv-clinic/scripts/chat-ai-build-trial-rows.mjs" "liv-clinic/src/lib/chat/ai/knowledge/index.ts" "liv-clinic/src/lib/chat/ai/knowledge/priceRows.trial.ts" && git commit -m "feat(chat): 제안형 응대 — 근거 자료(조합 제안 줄·채팅 예약 혜택 문장 10개 언어·첫방문 체험가 줄·시술 한 줄 소개)" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
+cd "D:/dev/LIV_homepage-slack-rooms" && git add "liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts" "liv-clinic/src/lib/chat/ai/knowledge/types.ts" "liv-clinic/src/lib/chat/ai/knowledge/facts.ts" "liv-clinic/src/lib/chat/ai/knowledge/offers.ts" "liv-clinic/scripts/chat-ai-build-trial-rows.mjs" "liv-clinic/src/lib/chat/ai/knowledge/index.ts" "liv-clinic/src/lib/chat/ai/knowledge/priceRows.trial.ts" && git commit -m "feat(chat): 제안형 응대 — 근거 자료(조합 제안 줄·채팅 예약 혜택 문장 10개 언어·첫방문 체험가 줄·시술 한 줄 소개)" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 ```
 
 - [ ] **Step 8: 대조**
 
 Run:
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms" && for f in "liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts" "liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts" "liv-clinic/src/lib/chat/ai/knowledge/types.ts" "liv-clinic/src/lib/chat/ai/knowledge/scope.ts" "liv-clinic/src/lib/chat/ai/knowledge/facts.ts" "liv-clinic/src/lib/chat/ai/knowledge/offers.ts" "liv-clinic/scripts/chat-ai-build-trial-rows.mjs" "liv-clinic/src/lib/chat/ai/knowledge/index.ts" "liv-clinic/src/lib/chat/ai/knowledge/priceRows.trial.ts"; do echo "$(git rev-parse "HEAD:$f")  $f"; done
+cd "D:/dev/LIV_homepage-slack-rooms" && for f in "liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts" "liv-clinic/src/lib/chat/ai/knowledge/types.ts" "liv-clinic/src/lib/chat/ai/knowledge/facts.ts" "liv-clinic/src/lib/chat/ai/knowledge/offers.ts" "liv-clinic/scripts/chat-ai-build-trial-rows.mjs" "liv-clinic/src/lib/chat/ai/knowledge/index.ts" "liv-clinic/src/lib/chat/ai/knowledge/priceRows.trial.ts"; do echo "$(git rev-parse "HEAD:$f")  $f"; done
 ```
 Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
 | `liv-clinic/src/lib/chat/ai/__tests__/offers.test.ts` | `a23e461c670498bcb18087f4972762d1e96835ec` |
-| `liv-clinic/src/lib/chat/ai/__tests__/knowledge.test.ts` | `dce5adb16fee8d48b531c295b69c8863b9244231` |
 | `liv-clinic/src/lib/chat/ai/knowledge/types.ts` | `158678212b83b7bdf5e4d27e22987d13b233860a` |
-| `liv-clinic/src/lib/chat/ai/knowledge/scope.ts` | `6c011590c4f9e5df2d1254c800dd26f5d02abb7c` |
-| `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` | `a04f0e025a7d9a62863aaa2a4d852f60bb88aef2` |
+| `liv-clinic/src/lib/chat/ai/knowledge/facts.ts` | `3577270aada10ffda994ad1dc59d8409929b8699` |
 | `liv-clinic/src/lib/chat/ai/knowledge/offers.ts` | `6bf7eda4b8df29bbd3551cc5b585e52055913770` |
 | `liv-clinic/scripts/chat-ai-build-trial-rows.mjs` | `d4cb9d400331c22fd16df0bd33b708ca7a7f7009` |
 | `liv-clinic/src/lib/chat/ai/knowledge/index.ts` | `d132baabf5d0d998bb625b6dc73e5ce1a831591f` |
@@ -2628,7 +2555,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/guards.test.ts" "src/lib/chat/ai/__tests__/guardsCorpus.ts" && echo LINT-OK
 ```
-Expected: `Test Files 82 passed (82)`, `Tests 1377 passed (1377)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 82 passed (82)`, `Tests 1378 passed (1378)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -3018,7 +2945,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/offerCaps.ts" "src/lib/chat/ai/__tests__/offerCaps.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 83 passed (83)`, `Tests 1390 passed (1390)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 83 passed (83)`, `Tests 1391 passed (1391)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -3359,7 +3286,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/assemble.ts" "src/lib/chat/ai/replyTemplates.ts" "src/lib/chat/ai/__tests__/assemble.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 83 passed (83)`, `Tests 1394 passed (1394)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 83 passed (83)`, `Tests 1395 passed (1395)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -3658,7 +3585,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/prompt.ts" "src/lib/chat/ai/__tests__/prompt.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 83 passed (83)`, `Tests 1398 passed (1398)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 83 passed (83)`, `Tests 1399 passed (1399)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -4313,7 +4240,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/ai/turn.ts" "src/lib/chat/ai/bookingStore.ts" "src/lib/chat/ai/__tests__/turn.test.ts" "src/lib/chat/ai/__tests__/bookingStore.test.ts" "src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 83 passed (83)`, `Tests 1407 passed (1407)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 83 passed (83)`, `Tests 1408 passed (1408)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -4681,7 +4608,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "src/lib/chat/slackText.ts" "src/lib/chat/slackRelay.ts" "src/lib/chat/ai/aiFollowups.ts" "src/lib/chat/adminBooking.ts" "src/lib/chat/__tests__/slackOfferNotices.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" && echo LINT-OK
 ```
-Expected: `Test Files 84 passed (84)`, `Tests 1413 passed (1413)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 84 passed (84)`, `Tests 1414 passed (1414)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -5038,7 +4965,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "scripts/_db/chat-ai-metrics.mjs" "scripts/chat-response-baseline.mjs" "scripts/chat-ai-review-export.mjs" && echo LINT-OK
 ```
-Expected: `Test Files 84 passed (84)`, `Tests 1413 passed (1413)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 84 passed (84)`, `Tests 1414 passed (1414)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 6: 커밋**
 
@@ -5382,7 +5309,7 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npx eslint "test/live/chatAiReplay.live.ts" && echo LINT-OK
 ```
-Expected: `Test Files 84 passed (84)`, `Tests 1413 passed (1413)`, `TSC-OK`, `LINT-OK`.
+Expected: `Test Files 84 passed (84)`, `Tests 1414 passed (1414)`, `TSC-OK`, `LINT-OK`.
 
 - [ ] **Step 4: 커밋**
 
@@ -5427,7 +5354,7 @@ Run: `cd "D:/dev/LIV_homepage-slack-rooms" && node plan-apply.mjs T39-knowledge 
 <!-- block: T39-knowledge | diff | 2026-10-02-chat-ai-first-response-knowledge-update.md -->
 ````diff
 diff --git a/docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md b/docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md
-index 2989875..dd085ed 100644
+index 7c4b61d..66a07f2 100644
 --- a/docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md
 +++ b/docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md
 @@ -2,6 +2,7 @@
@@ -5594,7 +5521,7 @@ Expected:
 
 | 파일 | 나와야 하는 값 |
 |------|----------------|
-| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `dd085eda79b6a515b21a9111cb344c47784d4c75` |
+| `docs/superpowers/specs/2026-10-02-chat-ai-first-response-knowledge-update.md` | `66a07f26d55e2f4803c97179c8fa8115472bac45` |
 | `docs/superpowers/specs/2026-09-03-slack-patient-rooms-slack-setup.md` | `048b0ed204e3b43e7481611502111ac4833d1542` |
 
 ---
@@ -5617,11 +5544,11 @@ Run:
 ```bash
 cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run 2>&1 | tail -6 && npx tsc --noEmit && echo TSC-OK && npm run verify:i18n 2>&1 | tail -1
 ```
-Expected: `Test Files 84 passed (84)`, `Tests 1413 passed (1413)`, `TSC-OK`, `[verify-locale-keys] ✓ all master keys present …`(메시지 JSON은 이 계획에서 바꾸지 않았다).
+Expected: `Test Files 84 passed (84)`, `Tests 1414 passed (1414)`, `TSC-OK`, `[verify-locale-keys] ✓ all master keys present …`(메시지 JSON은 이 계획에서 바꾸지 않았다).
 
 Run:
 ```bash
-cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx eslint "src/lib/chat/chatFlags.ts" "src/lib/chat/__tests__/chatFlags.test.ts" "scripts/_db/verify-044.mjs" "scripts/_db/run-044.mjs" "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/scope.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/offers.ts" "src/lib/chat/ai/knowledge/priceRows.trial.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-trial-rows.mjs" "src/lib/chat/ai/__tests__/offers.test.ts" "src/lib/chat/ai/__tests__/knowledge.test.ts" "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/guards.test.ts" "src/lib/chat/ai/__tests__/guardsCorpus.ts" "src/lib/chat/ai/offerCaps.ts" "src/lib/chat/ai/__tests__/offerCaps.test.ts" "src/lib/chat/ai/assemble.ts" "src/lib/chat/ai/replyTemplates.ts" "src/lib/chat/ai/__tests__/assemble.test.ts" "src/lib/chat/ai/prompt.ts" "src/lib/chat/ai/__tests__/prompt.test.ts" "src/lib/chat/ai/turn.ts" "src/lib/chat/ai/bookingStore.ts" "src/lib/chat/ai/__tests__/turn.test.ts" "src/lib/chat/ai/__tests__/bookingStore.test.ts" "src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" "src/lib/chat/slackText.ts" "src/lib/chat/slackRelay.ts" "src/lib/chat/ai/aiFollowups.ts" "src/lib/chat/adminBooking.ts" "src/lib/chat/__tests__/slackOfferNotices.test.ts" "scripts/_db/chat-ai-metrics.mjs" "scripts/chat-response-baseline.mjs" "scripts/chat-ai-review-export.mjs" "test/live/chatAiReplay.live.ts" && echo LINT-OK
+cd "D:/dev/LIV_homepage-slack-rooms/liv-clinic" && npx eslint "src/lib/chat/chatFlags.ts" "src/lib/chat/__tests__/chatFlags.test.ts" "scripts/_db/verify-044.mjs" "scripts/_db/run-044.mjs" "src/lib/chat/ai/knowledge/types.ts" "src/lib/chat/ai/knowledge/facts.ts" "src/lib/chat/ai/knowledge/offers.ts" "src/lib/chat/ai/knowledge/priceRows.trial.ts" "src/lib/chat/ai/knowledge/index.ts" "scripts/chat-ai-build-trial-rows.mjs" "src/lib/chat/ai/__tests__/offers.test.ts" "src/lib/chat/ai/guards.ts" "src/lib/chat/ai/__tests__/guards.test.ts" "src/lib/chat/ai/__tests__/guardsCorpus.ts" "src/lib/chat/ai/offerCaps.ts" "src/lib/chat/ai/__tests__/offerCaps.test.ts" "src/lib/chat/ai/assemble.ts" "src/lib/chat/ai/replyTemplates.ts" "src/lib/chat/ai/__tests__/assemble.test.ts" "src/lib/chat/ai/prompt.ts" "src/lib/chat/ai/__tests__/prompt.test.ts" "src/lib/chat/ai/turn.ts" "src/lib/chat/ai/bookingStore.ts" "src/lib/chat/ai/__tests__/turn.test.ts" "src/lib/chat/ai/__tests__/bookingStore.test.ts" "src/lib/chat/__tests__/visitorMessageFollowupsAi.test.ts" "src/lib/chat/ai/__tests__/aiFollowups.test.ts" "src/lib/chat/slackText.ts" "src/lib/chat/slackRelay.ts" "src/lib/chat/ai/aiFollowups.ts" "src/lib/chat/adminBooking.ts" "src/lib/chat/__tests__/slackOfferNotices.test.ts" "scripts/_db/chat-ai-metrics.mjs" "scripts/chat-response-baseline.mjs" "scripts/chat-ai-review-export.mjs" "test/live/chatAiReplay.live.ts" && echo LINT-OK
 ```
 Expected: `LINT-OK`.
 
@@ -5675,11 +5602,11 @@ Expected: `?? plan-apply.mjs`만 보인다(Task 42 끝에 지운다).
 
 | 재생 | 손님 글 | 답 나감 | 접수 안내로 대신 | 다시 쓴 답 | 직원 확인 필요 | 가예약 | 제안이 나간 답 | 혜택 문장이 나간 답 | 상한으로 지운 꼬리표 | 답까지 중앙값 · 최대 |
 |------|---------|---------|------------------|------------|----------------|--------|----------------|---------------------|---------------------|---------------------|
-| 제안 사례 20개 (켜짐) | 45 | 45 | 0 | 0 | 9 | 5 | 6 | 24 | 5 | 3.5초 · 4.8초 |
-| 10/2 사례 43개 (켜짐) | 47 | 47 | 0 | 1 | 23 | 5 | 0 | 31 | 5 | 3.6초 · 6.5초 |
-| 10/2 사례 43개 (꺼짐) | 47 | 47 | 0 | 1 | 24 | 6 | — | — | — | 3.8초 · 8.7초 |
+| 제안 사례 20개 (켜짐) | 45 | 45 | 0 | 0 | 10 | 5 | 8 | 24 | 6 | 3.5초 · 7.4초 |
+| 10/2 사례 43개 (켜짐) | 47 | 47 | 0 | 0 | 21 | 5 | 0 | 32 | 5 | 3.7초 · 6.9초 |
+| 10/2 사례 43개 (꺼짐) | 47 | 47 | 0 | 0 | 19 | 6 | — | — | — | 3.6초 · 5.8초 |
 
-다시 쓴 답 2건은 둘 다 검사가 의도대로 막은 것이다: 켜짐 c02 — AI가 `{{B01}}`을 제 줄이 아니라 문장 끝에 붙여 꼬리표 위치 검사(`tag_inline`)에 걸렸고, 다시 써서 나갔다(지시문은 이미 "제 줄에"라고 한다). 꺼짐 c43 — "can't guarantee … risk-free"가 10/2 검사의 금지 낱말에 걸렸다(10/2 계획의 알려진 경우). 10/2 사례에서 "제안이 나간 답"이 0인 것은 정상이다 — 거의 모두 한 번 묻고 끝나는 사례라 첫 답이다(첫 답에는 제안하지 않는다).
+위 표는 두 계획을 운영 master `e0e8dc3` 위로 옮긴 뒤(2026-10-21 오후)의 결과다 — 세 번 모두 검사에 걸려 다시 쓴 답이 없었다. 같은 날 오전, 옮기기 전에는 다시 쓴 답이 1건씩 있었다(켜짐 c02 — AI가 `{{B01}}`을 제 줄이 아니라 문장 끝에 붙여 꼬리표 위치 검사 `tag_inline`에 걸림 · 꺼짐 c43 — "can't guarantee … risk-free"가 10/2 검사의 금지 낱말에 걸림). 모델 답이라 이런 1~2건은 다시 나올 수 있고, 둘 다 검사가 의도대로 막은 것이다. 10/2 사례에서 "제안이 나간 답"이 0인 것은 정상이다 — 거의 모두 한 번 묻고 끝나는 사례라 첫 답이다(첫 답에는 제안하지 않는다).
 
 사용자가 2026-10-21에 재생 확인 화면을 보고 승인했다(그때의 화면: https://claude.ai/artifact/1rkCWgEACFwcB2m5mMXLkU — 본인만 열 수 있다. 대표원장님께는 그 화면의 공유 메뉴로 보여 드린다).
 
