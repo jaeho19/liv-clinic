@@ -1,0 +1,116 @@
+# AI 1차 응대 — 근거 자료 고치는 법 (매달 프로모션 · 원장님 엑셀 · 가격표 변경)
+
+> 작성: 2026-10-02 · 대상: 이 일을 맡는 Claude 세션. 원장님이 "프로모션 표 갱신해 줘", "엑셀 작성했어", "가격이 바뀌었어"라고 하실 때 이 문서를 따른다.
+> 설계: `2026-10-02-chat-ai-first-response-design.md` §4.3 · 구현 계획: `../plans/2026-10-02-chat-ai-first-response.md`
+> 한 줄 요약: AI는 `liv-clinic/src/lib/chat/ai/knowledge/`에 적힌 것만 말한다. 금액·프로모션·규칙이 바뀌면 이 폴더를 고치고, **테스트 → 재생 시험 → 원장님 확인 → 배포(승인)** 순서로 반영한다. 금액은 AI가 쓰지 않고 프로그램이 이 폴더의 값을 그대로 옮겨 넣으므로, 여기가 틀리면 손님에게 틀린 금액이 나간다.
+
+---
+
+## 0. 언제 무엇을 고치나
+
+| 일 | 고칠 곳 | 절 |
+|----|---------|----|
+| **매달 초** — 새 달 프로모션 (휴진일 등록과 같은 날) | `priceRows.extra.ts` | §2 |
+| 원장님이 엑셀(`LIV_AI응대_가격안내범위_작성용.xlsx`)을 적어 주셨다 | `scope.ts` · `facts.ts` · `priceRows.extra.ts` | §3 |
+| 홈페이지 시술 가격표(`src/lib/pricing.ts`)나 그 번역이 바뀌었다 | 생성 스크립트를 다시 돌린다 | §4 |
+| 병원 안내(결제·주차·시술 목록·혜택 규칙)가 바뀌었다 | `facts.ts` | §5 |
+| 휴진일 | Netlify 환경변수 `CHAT_CLOSED_DATES` (코드가 아니다 — 달마다 등록, 재배포) | `2026-10-01-chat-contact-first-design.md` |
+
+달이 바뀌었는데 §2를 하지 못했어도 틀린 금액은 나가지 않는다. 지난달 프로모션 줄은 유효 기간이 지나면 AI에게 가지 않고, AI는 "이달 프로모션은 직원이 확인해 알려 드린다"로 넘긴다.
+
+## 1. 자료가 있는 곳
+
+`liv-clinic/src/lib/chat/ai/knowledge/`
+
+| 파일 | 내용 | 고치는 방법 |
+|------|------|-------------|
+| `priceRows.base.generated.ts` | 홈페이지 시술 페이지 가격표의 줄(금액 + 10개 언어 이름) | **손으로 고치지 않는다.** `node scripts/chat-ai-build-price-rows.mjs`가 `pricing.ts`와 `messages/*.json`의 `pricing.labels`에서 만든다 |
+| `priceRows.extra.ts` | 손으로 관리하는 줄: 필러 3줄, 상담비, **이달 프로모션**(유효 기간 포함), 이달 프로모션 페이지 주소(`PROMOTION_PAGES`) | 손으로 고친다 |
+| `scope.ts` | 직원에게 넘기는 줄(`STAFF_ONLY_KEYS`), 부가세 표기(`VAT_DISPLAY`), 써도 되는 퍼센트(`ALLOWED_PERCENTS`) | 손으로 고친다 |
+| `facts.ts` | 사실 문장(한국어): 병원 · 시술 목록 · 이용 문답 · 혜택과 규칙 | 손으로 고친다 |
+| `index.ts` · `types.ts` | 위 자료를 읽어 꼬리표(`P001`·`M01`·`F01`)를 붙이고 프롬프트용 글을 만든다 | 자료만 바꿀 때는 건드리지 않는다 |
+
+손님에게 나가는 고정 문구(금액 줄의 꼴, 금액 안내 한 줄, 가예약 요약, 확정 약속)는 `liv-clinic/src/lib/chat/ai/replyTemplates.ts`에 10개 언어로 있다.
+
+## 2. 매달 초 — 이달 프로모션 갱신
+
+1. **포스터를 읽는다.** 새 달 프로모션의 한국어 포스터(홈페이지 `/ko/events/<그 달 slug>`의 그림, 또는 원장님이 주신 파일)를 한 장씩 열어 묶음 이름 · 구성 · 금액 · 조건을 표로 옮긴다. 금액이 부가세 별도인지 포함인지 포스터에서 확인한다(2026-10 포스터는 별도). 포함으로 적힌 달이면 원장님께 여쭌 뒤 **별도 금액으로 바꿔** 넣는다(가격 줄의 금액은 언제나 부가세 별도다).
+2. **원장님께 표를 보여 드리고 확인받는다.** 금액 · 구성이 포스터와 같은지, AI가 말하면 안 되는 줄이 있는지.
+3. **`priceRows.extra.ts`를 고친다.**
+   - 유효 기간 상수를 새 달로: `const NOV_2026 = { validFrom: '2026-11-01', validUntil: '2026-11-30' } as const;` (한국 날짜, 양 끝 포함)
+   - `PROMOTION_PAGES`에 새 달 줄을 더한다: `{ slug: '2026-11-promotion', ...NOV_2026 }` — slug는 그 달 이벤트 페이지 주소의 끝부분이다.
+   - 프로모션 줄을 새 달의 것으로 바꾼다. 한 줄의 꼴은 지난달 줄 그대로: `key: 'promo.2026-11.01'`(달 + 두 자리 번호), `group: 'promo'`, `unit: 'fixed'`, `labelKo: '[분류] 구성'`, `amount`(원, 정수), `...NOV_2026`, `labels`(10개 언어).
+   - 지난달 줄은 지운다. 달이 바뀌기 며칠 전에 미리 배포한다면 두 달의 줄을 함께 둬도 된다 — 유효 기간이 가른다.
+4. **10개 언어 이름(`labels`)을 채운다.** 한국어 이름을 그대로 옮긴다. 금액 · 할인율 · 광고 문구(최고 · 유일 등)를 넣지 않는다. 장비 · 제품 이름은 홈페이지 번역(`src/messages/<언어>.json`의 `pricing.labels`)의 표기를 따른다.
+5. **테스트를 맞춘다.** `src/lib/chat/ai/__tests__/knowledge.test.ts`에는 날짜를 고정한 검사가 있다(예: "10월: 기본 52줄 · 프로모션 27줄"). 새 달의 줄 수에 맞게 그 달의 검사를 더하거나 고친다.
+6. §6의 확인을 하고 원장님께 보고한 뒤, 승인을 받아 배포한다.
+
+## 3. 원장님 엑셀 반영
+
+엑셀과 도구는 `output/ai-first-response/`에 있다(git이 추적하지 않는 폴더).
+
+1. **읽는다** (워크트리 루트에서):
+   ```bash
+   python output/ai-first-response/_tools/read_price_scope_xlsx.py "output/ai-first-response/LIV_AI응대_가격안내범위_작성용.xlsx" --baseline output/ai-first-response/_tools/scope-baseline.json --json output/ai-first-response/scope-answers.json
+   ```
+   `scope-baseline.json`은 원장님께 보내 드린 원본의 값이다. 출력에는 **기준과 달라진 칸**과 **비어 있는 진한 노란 칸**만 나온다. 원장님이 다른 이름으로 저장해 주셨으면 그 파일 경로를 넣는다.
+2. **시트별로 반영한다.**
+
+   | 시트 | ★ 칸 | 반영할 곳 |
+   |------|------|-----------|
+   | 2 안내 범위 | 결정(가·나·다·라), AI가 말할 내용, 원장님 답 · 메모 | `가. 금액을 말한다` → 그 시술의 줄을 가격 줄에 둔다(없으면 `priceRows.extra.ts`에 더한다). `나. 기준만 말하고 견적은 직원이` → "부터" 금액 줄만 두고, `facts.ts`의 「혜택과 규칙」에 "견적은 직원 확인"을 적는다. `다. 프로모션 구성만 말한다` → 기본 줄을 `STAFF_ONLY_KEYS`에 넣고 프로모션 줄만 둔다. `라. 금액은 직원이 답한다` → 그 시술의 줄을 `STAFF_ONLY_KEYS`에 넣는다(기본 가격표에 없는 시술이면 아무 줄도 만들지 않는다). 메모에 적어 주신 금액(예: 주름 보톡스, 스컬트라)은 `priceRows.extra.ts`에 줄로 더한다 |
+   | 3 기본 가격표 | 확인(맞음 · 고침 · AI는 말하지 않음), 고친 금액 | `고침` → **홈페이지 가격표(`pricing.ts`)를 고칠지 원장님께 먼저 여쭌다**(홈페이지와 AI의 금액이 달라지면 안 된다). 고치기로 하면 `pricing.ts`를 고치고 §4. `AI는 말하지 않음` → `STAFF_ONLY_KEYS`에 넣는다. 주황 칸에 답을 주셨으면 그 줄을 `STAFF_ONLY_KEYS`에서 빼고 금액을 맞춘다 |
+   | 4 10월 프로모션 | 확인, 고친 내용 | `priceRows.extra.ts`의 그 달 프로모션 줄(금액 · 구성 이름). `AI는 말하지 않음` → 그 줄을 지운다 |
+   | 5 공통 규칙 | 결정, 메모 | 1 부가세 → `scope.ts`의 `VAT_DISPLAY`. 3·4 혜택 → `facts.ts`의 「혜택과 규칙」(퍼센트가 새로 생기면 `ALLOWED_PERCENTS`에도). 5 첫방문 체험가 → 안내하기로 하면 `priceRows.extra.ts`에 줄을 더하고 `facts.ts`의 문장을 고친다. 16 금액에 붙이는 말 → `replyTemplates.ts`의 `caveat`(10개 언어). 나머지(2 · 6~15) → `facts.ts`의 「혜택과 규칙」 문장 |
+
+3. **비어 있는 진한 노란 칸**은 엑셀 첫 장의 약속대로 "금액은 직원이 답한다"로 둔다(지금의 임시 기준과 같다). 다시 여쭙지 않아도 된다.
+4. `scope.ts` · `facts.ts` · `priceRows.extra.ts` 머리말의 "엑셀 회신 전의 임시 값"이라는 말을 "2026-MM-DD 원장님 엑셀 반영"으로 고친다. 설계서 §4.3의 「엑셀 회신 전의 임시 기준」 문단에도 반영했다고 적는다.
+5. §6의 확인을 한다. 재생 시험은 전체 사례로 돌려 원장님께 표를 드린다(설계서 §9의 3단계).
+
+## 4. 홈페이지 가격표가 바뀌었을 때
+
+`src/lib/pricing.ts`(금액)나 `src/messages/*.json`의 `pricing.labels`(이름)를 고쳤으면, `liv-clinic` 폴더에서:
+
+```bash
+node scripts/chat-ai-build-price-rows.mjs
+```
+
+`priceRows.base.generated.ts`가 다시 만들어진다. 돌리지 않으면 `knowledge.test.ts`가 실패해 알려 준다. 줄이 새로 생겼거나 없어졌으면 `STAFF_ONLY_KEYS`의 이름도 맞는지 본다(없는 줄을 가리키면 테스트가 실패한다).
+
+## 5. 사실 문장(`facts.ts`)을 고칠 때
+
+- 홈페이지에 공개된 내용이나 원장님이 정해 주신 것만 적는다. 추측으로 채우지 않는다.
+- **금액을 적지 않는다.** 금액은 가격 줄에만 둔다(AI가 따라 쓰면 검사에 걸려 답이 나가지 않는다).
+- 최고 · 유일 · 100% · 보장 같은 낱말을 적지 않는다.
+- 진료 시간 문장을 바꿀 때는 환경변수 `CHAT_BUSINESS_HOURS_JSON`(달력의 기준)과 같은지 본다.
+
+## 6. 고친 뒤 확인과 반영
+
+`liv-clinic` 폴더에서:
+
+```bash
+NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run src/lib/chat/ai
+npx tsc --noEmit
+```
+
+재생 시험(실제 모델로 답을 받아 본다 — 운영 DB·Slack에는 닿지 않는다. 답 한 번에 약 2센트):
+
+```bash
+NODE_TLS_REJECT_UNAUTHORIZED=0 npx vitest run --config vitest.live.config.ts
+```
+
+- 사례 파일은 `test/live/chat-ai-cases.sample.json`(기본). 고친 내용을 묻는 사례를 더하거나 `CHAT_AI_REPLAY_ONLY=c04-price-two,c08-promo-draft`처럼 골라 돌린다.
+- 결과 표는 `output/ai-first-response/replay/replay-<모델>-<시각>.md`. **금액 줄의 이름과 금액이 자료와 같은지**, 넘겨야 할 질문을 넘기는지 읽어 본다.
+- 답 아래에 `시도 2회 (처음 걸린 이유: …)`가 있으면 처음 쓴 글이 검사에 걸려 다시 쓴 답이다(그만큼 답이 늦다). 버린 글은 결과 JSON의 `rejectedDrafts`에 있다 — 멀쩡한 글이 걸린 것이면 검사를 고치지 말고 그 글과 이유를 기록해 보고한다.
+- 실제 문의로 만든 사례 파일에는 이름 · 연락처가 들어 있다 — `output/ai-first-response/`에만 두고 저장소에 커밋하지 않는다.
+
+그다음 원장님께 바뀐 점을 쉬운 말로 보고하고, **배포 승인을 받은 뒤** master에 반영한다. 배포 뒤에는 `ai-test-…` 이름으로 시험 문의를 넣기 전에도 승인을 받는다(운영에 닿는 일은 하나씩).
+
+## 7. 지킬 것
+
+- 금액은 부가세 별도, 원 단위 정수. 부가세 포함 금액은 프로그램이 계산해 붙인다(`VAT_DISPLAY`).
+- 줄의 이름(`key`)은 겹치지 않게. 프로모션 줄에는 유효 기간이 꼭 있어야 하고, 다른 줄에는 없어야 한다(테스트가 본다).
+- 이름(`labelKo` · `labels`)에 금액 · 할인율을 넣지 않는다.
+- 같은 시술의 금액이 출처마다 다르면 AI에게 주지 않는다(`STAFF_ONLY_KEYS`) — 원장님 확인 뒤에 푼다.
+- 꼬리표(`P031` 등)는 자료를 읽을 때마다 순서대로 다시 붙는다. 꼬리표 번호를 문서나 코드에 적어 두지 않는다.
+- AI의 금액 줄은 홈페이지 가격표와 **같은 이름**(`src/messages/<언어>.json`의 `pricing.labels`)을 쓴다. 2026-10-02에 이 이름의 오역 244곳과 가격표 머리글 6곳을 바로잡았다(2026-10-20에 문신 표에서 기미/색소 표로 옮겨 온 반영구 화장 제거 · CO2 줄 포함 — 베트남어 "300장 사진", 태국어 "국내 보험료", 러시아어 "길들인" 같은 기계 번역 — 목록은 `liv-clinic/scripts/_i18n-work/value-edits.pricing-labels.json`). 원어민 검수는 받지 않았다. 이름을 더 고칠 때는 같은 방법(`set-values-by-path.mjs`)으로 고치고 §4를 한다.
