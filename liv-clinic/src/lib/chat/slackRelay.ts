@@ -7,6 +7,8 @@ import { isFollowupEnabled, isRoomLookEnabled } from '@/lib/chat/chatFlags';
 import type { ContactChannel } from '@/lib/chat/contactChannels';
 import {
   styledAdminReply,
+  styledAiReply,
+  styledBookingNotice,
   styledContactNotice,
   styledDeliveryFailure,
   styledEventHint,
@@ -16,6 +18,7 @@ import {
   styledRoomFirstNotice,
   styledRoomFirstVisitor,
   styledRoomVisitor,
+  styledStaffNeeded,
   styledTranslationCopy,
   type StyledMessage,
 } from '@/lib/chat/slackLook';
@@ -272,6 +275,11 @@ export interface RelayOutboundArgs {
   receivedAt?: string;
   /** 이 글에서 방금 이메일이 저장돼 📱 연락처 알림이 바로 뒤따른다 → 방 첫 메시지의 연락처 꼬리말은 생략한다. */
   contactJustSaved?: boolean;
+  /**
+   * AI가 답하는 대화의 손님 글 — 멘션을 붙이지 않는다 (스펙 2026-10-02 chat-ai-first-response §4.11).
+   * 멘션은 가예약과 직원 확인 필요에만 붙는다(relayAiTurnToSlack).
+   */
+  quiet?: boolean;
 }
 
 /**
@@ -358,7 +366,7 @@ function roomMessage(
   if (firstInRoom) {
     return styledRoomFirstVisitor({
       session: who,
-      mentionAll: staff.mentionAll(),
+      mentionAll: args.quiet ? '' : staff.mentionAll(),
       receivedAt,
       contactNote: firstContactNote(session, args),
       ...body,
@@ -367,7 +375,11 @@ function roomMessage(
   // 담당자가 있으면 담당자만, 없으면 전원. 관찰자는 mentionAll에 들어 있지 않다.
   // 명단에서 빠진 담당자를 계속 부르지 않도록 지금도 답변 직원인지 확인한다.
   const assignee = session.assigned_slack_user_id;
-  const mention = assignee && staff.isResponder(assignee) ? mentionOf(assignee) : staff.mentionAll();
+  const mention = args.quiet
+    ? ''
+    : assignee && staff.isResponder(assignee)
+      ? mentionOf(assignee)
+      : staff.mentionAll();
   return styledRoomVisitor({ session: who, mention, receivedAt, reopened, ...body });
 }
 
@@ -609,6 +621,111 @@ export async function relayEventHintNoteToSlack(args: { sessionId: string; url: 
     if (result && !result.ok) console.warn('[slack relay] event hint note failed:', result.error);
   } catch (e) {
     console.warn('[slack relay] event hint note relay failed:', e);
+  }
+}
+
+// ── AI 1차 응대의 결과를 방에 올린다 (스펙 2026-10-02 chat-ai-first-response §4.11) ──────────
+
+export interface AiSlackArgs {
+  sessionId: string;
+  /** AI가 손님에게 한 답의 요지. AI가 답하지 못했으면(접수 안내로 대신함) null — 요지 글을 올리지 않는다 */
+  note: string | null;
+  /** 그 답에 쓰인 가격 줄 (한국어, `써마지 레이저 · 600샷 2,400,000원~` 꼴) */
+  quoted: string[];
+  /** 가예약이 처음 찼거나 바뀌었으면 그 내용. when 은 피드 줄에 쓰는 날짜·시각 */
+  booking: { changed: boolean; summary: string; when: string } | null;
+  /** 직원 확인이 필요하면 그 사유 */
+  staffNeeded: { reason: string | null } | null;
+}
+
+/**
+ * 🙋 멘션을 지금 보내도 되는가 — 대화당 한 번(직원이 답하기 전까지).
+ * chat_sessions.ai_handoff_at 을 조건부로 선점한다. 조회가 실패하면 알리는 쪽을 고른다(놓치는 것보다 한 번 더 울리는 편이 낫다).
+ * claimed = 이번에 실제로 선점했다(글을 올리지 못하면 되돌린다).
+ */
+async function claimHandoffMention(admin: ChatAdminClient, sessionId: string): Promise<{ mention: boolean; claimed: boolean }> {
+  const { data, error } = await admin
+    .from('chat_sessions')
+    .update({ ai_handoff_at: new Date().toISOString() })
+    .eq('id', sessionId)
+    .is('ai_handoff_at', null)
+    .select('id');
+  if (error) {
+    console.warn('[slack relay] handoff claim failed:', error.code ?? 'unknown');
+    return { mention: true, claimed: false };
+  }
+  const claimed = Boolean(data && data.length > 0);
+  return { mention: claimed, claimed };
+}
+
+/**
+ * AI 응대 한 차례의 결과를 세션의 방(또는 스레드)에 올린다. 손님 글 릴레이 뒤에 부른다. throw-free.
+ *   1. `AI 응대` 요지 — 멘션 없음
+ *   2. 가예약(파란 막대) — 전원 멘션. 처음 찬 것이면 #해외문의에도 한 줄
+ *   3. 직원 확인 필요(빨간 막대) — 전원 멘션은 대화당 한 번, 그 뒤로는 막대만
+ * 방도 스레드도 없는 대화(방 만들기 실패 등)면 요지는 올리지 않고, 2·3은 #해외문의에 관리자 화면 링크와 함께 글자만으로 올린다 —
+ * 직원이 해야 할 일이 조용히 빠지지 않게(연락처 알림과 같은 방식).
+ */
+export async function relayAiTurnToSlack(args: AiSlackArgs): Promise<void> {
+  if (!isSlackRelayConfigured()) return;
+  try {
+    const admin = createChatAdminClient();
+    const session = await loadSession(admin, args.sessionId);
+    if (!session) return;
+    const target = resolveTarget(session, getSlackChannelId());
+    const staff = await loadStaffDirectory();
+    const adminUrl = adminSessionUrl(args.sessionId);
+    /** 올렸으면 true. standalone = 붙일 방·스레드가 없으면 #해외문의에 단독으로 올린다(직원이 해야 할 일이 든 글) */
+    const post = async (msg: StyledMessage, label: string, standalone = false): Promise<boolean> => {
+      const r =
+        (await postToSessionTarget(target, msg)) ??
+        (standalone
+          ? await postSlackMessage({ text: adminUrl ? `${msg.plainText}\n<${adminUrl}|관리자 화면에서 열기>` : msg.plainText })
+          : null);
+      if (r && !r.ok) console.warn(`[slack relay] ${label} failed:`, r.error);
+      return Boolean(r?.ok);
+    };
+
+    if (args.note !== null) await post(styledAiReply({ note: args.note, quoted: args.quoted }), 'ai reply');
+
+    if (args.booking) {
+      await post(
+        styledBookingNotice({ changed: args.booking.changed, summary: args.booking.summary, mention: staff.mentionAll() }),
+        'booking notice',
+        true
+      );
+      // 피드 줄은 처음 찼을 때만, 방 모드에서만(스레드 모드는 같은 채널이라 중복이다). 답변 직원이 없으면 새 트래픽을 만들지 않는다.
+      if (!args.booking.changed && target.mode === 'room' && staff.responderIds.length > 0) {
+        await postFeed(
+          buildFeedLine({
+            kind: 'booking',
+            visitorName: session.visitor_name,
+            visitorLocale: session.visitor_locale,
+            channelId: target.channelId,
+            at: new Date().toISOString(),
+            bookingWhen: args.booking.when,
+          })
+        );
+      }
+    }
+
+    if (args.staffNeeded) {
+      // 멘션할 직원이 없으면 선점하지 않는다 — 멘션할 사람이 생긴 뒤의 첫 🙋 에 쓴다
+      const mentionAll = staff.mentionAll();
+      const claim = mentionAll ? await claimHandoffMention(admin, args.sessionId) : { mention: false, claimed: false };
+      const posted = await post(
+        styledStaffNeeded({ reason: args.staffNeeded.reason, mention: claim.mention ? mentionAll : '' }),
+        'staff needed notice',
+        true
+      );
+      // 글을 올리지 못했으면 선점을 되돌린다 — 그대로 두면 이 대화는 멘션을 한 번도 받지 못한다
+      if (!posted && claim.claimed) {
+        const { error } = await admin.from('chat_sessions').update({ ai_handoff_at: null }).eq('id', args.sessionId);
+        if (error) console.warn('[slack relay] handoff release failed:', error.code ?? 'unknown');
+      }
+    }
+  } catch (e) {
+    console.warn('[slack relay] ai turn relay failed:', e);
   }
 }
 
