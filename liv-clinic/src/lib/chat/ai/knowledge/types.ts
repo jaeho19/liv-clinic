@@ -6,8 +6,8 @@ import type { VisitorLocale } from '@/lib/chat/chatApi';
 /** starting = "부터" 금액, fixed = 정해진 금액(프로모션·상담비) */
 export type PriceUnit = 'starting' | 'fixed';
 
-/** base = 기본 가격표, promo = 이달 프로모션, fee = 그 밖의 금액 */
-export type PriceGroup = 'base' | 'promo' | 'fee';
+/** base = 기본 가격표, promo = 이달 프로모션, fee = 그 밖의 금액, trial = 첫방문 1회 체험가(제안형 응대가 켜졌을 때만) */
+export type PriceGroup = 'base' | 'promo' | 'fee' | 'trial';
 
 export interface PriceRowSource {
   /** 자료 안에서 겹치지 않는 이름 — 예: 'ulthera.name.upperFace', 'promo.2026-10.19' */
