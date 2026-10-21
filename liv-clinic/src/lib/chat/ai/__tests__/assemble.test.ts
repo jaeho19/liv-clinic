@@ -26,7 +26,13 @@ const base: AssembleArgs = {
 describe('assembleReply — 금액 줄', () => {
   it('꼬리표가 없으면 글이 그대로 나간다', () => {
     const a = assembleReply({ ...base, reply: 'Hello!\nHow can we help?' });
-    expect(a).toEqual({ text: 'Hello!\nHow can we help?', historyText: 'Hello!\nHow can we help?', usedRows: [] });
+    expect(a).toEqual({
+      text: 'Hello!\nHow can we help?',
+      historyText: 'Hello!\nHow can we help?',
+      usedRows: [],
+      usedOffers: [],
+      shownKeys: [],
+    });
   });
 
   it('꼬리표 자리에 금액 줄이 들어가고, 마지막 금액 줄 아래에 금액 안내가 한 번 붙는다', () => {
@@ -170,5 +176,66 @@ describe('assembleReply — 정체 답 · 가예약 요약', () => {
     expect(text.indexOf('KRW 2,400,000')).toBeGreaterThan(text.indexOf('Price:'));
     expect(text.indexOf('Tentative booking')).toBeGreaterThan(text.indexOf('The exact amount'));
     expect(text.length).toBeLessThan(MAX_ASSEMBLED_CHARS);
+  });
+});
+
+describe('assembleReply — 제안 줄 · 혜택 문장 (제안형 응대)', () => {
+  const KO = getKnowledge('en', NOW, { offers: true });
+  const offer = (key: string) => KO.offers.find((o) => o.key === key)!;
+  const withOffers: AssembleArgs = {
+    ...base,
+    rowById: KO.rowById,
+    offerById: KO.offerById,
+    benefitText: 'BENEFIT SENTENCE',
+  };
+
+  it('{{C…}} 자리에 앞 문장 · 그 구성의 금액 줄 · 금액 안내 · 마지막 문장이 들어간다', () => {
+    const c = offer('sculptra.first');
+    const a = assembleReply({ ...withOffers, reply: `We will confirm the Sculptra price.\n{{${c.id}}}\nWhat time works for you?` });
+    expect(a.text).toBe(
+      [
+        'We will confirm the Sculptra price.',
+        "Sculptra can be combined with a lifting treatment such as Ultherapy Prime or Thermage at the same consultation. This month's set:",
+        "• Ultherapy Prime 300 shots + ONDA Lifting 60kJ + calming pack (this month's promotion, until Oct 31): KRW 1,590,000 (KRW 1,749,000 incl. VAT)",
+        'The exact amount is decided after your consultation with the doctor.',
+        'Which combination suits you is decided by the doctor at the consultation.',
+        'What time works for you?',
+      ].join('\n')
+    );
+    expect(a.usedOffers).toEqual([c]);
+    expect(a.shownKeys).toEqual(['sculptra.first', 'promo.2026-10.19']);
+    expect(a.historyText).toContain('[suggestion shown: 스컬트라 — first]');
+    expect(a.historyText).toContain('[price line shown: [리프팅] 울쎄라피 프라임 300샷 + 온다리프팅 60kJ + 진정팩]');
+    expect(a.historyText).not.toMatch(/1,590,000/);
+  });
+
+  it('가격 부담 줄은 "할인은 더 드릴 수 없다"로 시작하고 예산 문장으로 끝난다', () => {
+    const a = assembleReply({ ...withOffers, reply: `{{${offer('ulthera.lighter').id}}}` });
+    const lines = a.text.split('\n');
+    expect(lines[0]).toBe('We are not able to add a further discount here. Lighter options include:');
+    expect(lines[lines.length - 1]).toBe('The doctor will go through what fits your budget and your concerns at the consultation.');
+  });
+
+  it('{{B01}} 자리에 혜택 문장이 한 번 들어간다', () => {
+    const a = assembleReply({ ...withOffers, reply: 'Yes, we offer Sculptra.\n{{B01}}\nWhen are you visiting?' });
+    expect(a.text).toBe('Yes, we offer Sculptra.\nBENEFIT SENTENCE\nWhen are you visiting?');
+    expect(a.historyText).toContain('[direct-booking benefit sentence shown]');
+    expect(a.shownKeys).toEqual(['benefit']);
+  });
+
+  it('가예약 요약 아래 · 확정 약속 앞에 혜택 한 줄이 붙는다', () => {
+    const a = assembleReply({
+      ...withOffers,
+      reply: 'Thank you, Emma.',
+      bookingEvent: 'requested',
+      booking: BOOKING,
+      contact: WHATSAPP,
+      benefitLine: 'BENEFIT LINE',
+    });
+    const lines = a.text.split('\n');
+    expect(lines[lines.length - 2]).toBe('BENEFIT LINE');
+    expect(lines[lines.length - 1]).toBe('We will send your booking confirmation today via WhatsApp.');
+    expect(a.shownKeys).toContain('benefit-line');
+    expect(a.historyText).toContain('and the direct-booking benefit]');
   });
 });

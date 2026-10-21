@@ -399,9 +399,11 @@ export interface BookingBlockArgs {
   /** 찬 뒤에 바뀐 것이면 true — 제목이 달라진다 */
   changed: boolean;
   promise: ReplyPromise;
+  /** 요약 바로 아래 · 확정 약속 앞에 붙이는 채팅 예약 혜택 한 줄 (제안형 응대 §4.4 ②) */
+  benefitLine?: string | null;
 }
 
-/** 가예약 요약 + 확정 약속 (+ LINE 안내). 날짜가 없으면 빈 글자 — 호출자는 가예약이 찼을 때만 부른다. */
+/** 가예약 요약 + (채팅 예약 혜택 한 줄) + 확정 약속 (+ LINE 안내). 날짜가 없으면 빈 글자 — 호출자는 가예약이 찼을 때만 부른다. */
 export function renderBookingBlock(args: BookingBlockArgs): string {
   const { locale, booking: b, contact, changed, promise } = args;
   if (!b.date) return '';
@@ -417,6 +419,7 @@ export function renderBookingBlock(args: BookingBlockArgs): string {
   if (b.partySize) lines.push(`• ${T.guests}${T.sep}${T.guestsValue(b.partySize)}`);
   if (b.name) lines.push(`• ${T.name}${T.sep}${b.name}`);
   lines.push(`• ${T.contact}${T.sep}${CONTACT_CHANNEL_LABELS[contact.channel]} ${contact.handle}`);
+  if (args.benefitLine) lines.push(args.benefitLine);
   lines.push(promiseSentence(locale, contact.channel, promise));
   if (contact.channel === 'line') lines.push(lineHint(locale));
   return lines.join('\n');
