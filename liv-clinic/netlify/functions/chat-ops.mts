@@ -1,7 +1,7 @@
-// 채팅 운영 작업 (Netlify Scheduled Function, 영업시간대 3분 간격) — '오늘 연락할 손님' 요약, 처리 기록 정리.
+// 채팅 운영 작업 (Netlify Scheduled Function, 매일 24시간 3분 간격) — AI 응대 요약(밤 · 주말 포함), '오늘 연락할 손님' 요약, 처리 기록 정리.
 // 미응답 확대 알림은 2026-10-02부터 기본이 꺼져 있다(CHAT_ESCALATION=on 일 때만). 이 함수와 CHAT_OPS_SECRET 은 요약에 계속 필요하다.
 // 예약 함수 한도가 30초라 여기서는 fetch 1발만 하고 실제 처리는 POST /api/chat/ops 가 한다.
-// 스케줄은 UTC: 1-10시 = KST 10:00~19:59, 월~토. 영업시간 판정은 라우트가 다시 한다(토요일 16시 이후 등).
+// 스케줄은 UTC 매일 3분마다(2026-10-22부터 — AI 응대 요약이 밤 · 주말에도 돌아야 한다). 영업시간 판정은 라우트가 한다.
 // 타입 주의: tsconfig가 **/*.mts를 타입체크하므로 @netlify/functions 타입 import를 쓰지 않는다 (keepwarm.mts와 동일).
 
 const SITE_URL = process.env.URL ?? 'https://liv-clinic.net';
@@ -26,4 +26,4 @@ const chatOps = async () => {
 
 export default chatOps;
 
-export const config = { schedule: '*/3 1-10 * * 1-6' };
+export const config = { schedule: '*/3 * * * *' };
