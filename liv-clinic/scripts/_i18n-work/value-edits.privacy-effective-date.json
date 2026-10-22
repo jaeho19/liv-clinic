@@ -1,0 +1,13 @@
+[
+  { "file": "ko.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "en.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "ja.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "zh.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "zh-TW.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "vi.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "th.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "ru.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "fr.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "mn.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" },
+  { "file": "ar.json", "find": "\"effectiveDate\": \"2026-07-07\"", "replace": "\"effectiveDate\": \"2026-10-22\"" }
+]
