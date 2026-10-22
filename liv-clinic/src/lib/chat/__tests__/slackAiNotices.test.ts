@@ -4,6 +4,7 @@ import {
   BAR_COLOR,
   NOTICE_LOOK,
   styledAiReply,
+  styledAiSummary,
   styledBookingNotice,
   styledRoomFirstVisitor,
   styledRoomVisitor,
@@ -12,9 +13,12 @@ import {
 import {
   AI_FALLBACK_REASON,
   AI_SESSION_CAP_REASON,
+  AI_TRANSLATION_FAILED_NOTE,
   bookingNoticeHeadline,
   buildAiReplyBody,
   buildAiReplyText,
+  buildAiSummaryBody,
+  missingAmounts,
   buildBookingNoticeText,
   buildFeedLine,
   buildFollowupDigestText,
@@ -28,35 +32,87 @@ const SUMMARY = '10/14(수) 14:00 · 2명 · 울쎄라피 프라임 · WhatsApp 
 const MENTION = '<@U0AAA> <@U0BBB>';
 const AT = '2026-10-02T07:20:00Z'; // 10/02(금) 16:20 KST
 
-describe('AI 응대 글 — AI가 손님에게 한 답의 요지', () => {
-  it('요지 한두 문장, 금액 줄을 썼으면 그 아래 "안내한 금액"', () => {
-    expect(buildAiReplyBody({ note: '써마지 600샷 가격과 이달 프로모션을 안내했습니다.', quoted: [] })).toBe(
-      '써마지 600샷 가격과 이달 프로모션을 안내했습니다.'
-    );
-    expect(
-      buildAiReplyBody({
-        note: '써마지 600샷 가격과 이달 프로모션을 안내했습니다.',
-        quoted: ['써마지 레이저 · 600샷 2,400,000원~', '[리프팅] 써마지 FLX 600샷 + 온다리프팅 30kJ + LDM관리 2,200,000원'],
-      })
-    ).toBe(
-      '써마지 600샷 가격과 이달 프로모션을 안내했습니다.\n> 안내한 금액: 써마지 레이저 · 600샷 2,400,000원~ / [리프팅] 써마지 FLX 600샷 + 온다리프팅 30kJ + LDM관리 2,200,000원'
+const SENT =
+  'Ultherapy Prime pricing depends on the area.\n• Ultherapy Prime · Upper face (200-300 shots): from KRW 780,000 (KRW 858,000 incl. VAT)\nIf you book through this chat, you get 5% off.';
+const KO =
+  '울쎄라피 프라임 가격은 부위에 따라 다릅니다.\n• 울쎄라피 프라임 · 상안면(200~300샷): KRW 780,000부터 (부가세 포함 KRW 858,000)\n이 채팅으로 예약하시면 5% 할인됩니다.';
+const QUOTED = ['울쎄라피 프라임 · 상안면 (200~300샷) 780,000원~'];
+
+describe('AI 응대 글 — 손님에게 나간 답의 한국어 번역 전문 (스펙 2026-10-22 §1)', () => {
+  it('번역문 전문을 그대로 올린다. 금액이 다 들어 있으면 금액 줄을 덧붙이지 않는다', () => {
+    expect(buildAiReplyBody({ sentText: SENT, koreanText: KO, quoted: QUOTED })).toBe(KO);
+  });
+
+  it('missingAmounts: KRW 금액 가운데 번역문에 없는 것 — 쉼표는 무시, 다른 숫자에 붙은 것은 없는 것으로 본다', () => {
+    expect(missingAmounts(SENT, KO)).toEqual([]);
+    expect(missingAmounts(SENT, '상안면 780000원부터, 부가세 포함 858,000원')).toEqual([]);
+    expect(missingAmounts(SENT, '상안면 78만 원부터 (부가세 포함 85만 8천 원)')).toEqual(['780000', '858000']);
+    expect(missingAmounts(SENT, '상안면 7800001원')).toEqual(['780000', '858000']);
+    expect(missingAmounts('KRW 1,000 and KRW 1,000', '없음')).toEqual(['1000']);
+  });
+
+  it('번역이 금액을 바꿨으면 정확한 금액 줄을 붙인다', () => {
+    const ko = '울쎄라피 프라임 상안면은 78만 원부터입니다.';
+    expect(buildAiReplyBody({ sentText: SENT, koreanText: ko, quoted: QUOTED })).toBe(
+      `${ko}\n> 안내한 금액: 울쎄라피 프라임 · 상안면 (200~300샷) 780,000원~`
     );
   });
 
-  it('요지가 비어 있으면 정해진 문장, 특수문자는 이스케이프', () => {
-    expect(buildAiReplyBody({ note: '  ', quoted: [] })).toBe('손님에게 답했습니다.');
-    expect(buildAiReplyBody({ note: 'A & B <c>', quoted: ['x <y>'] })).toBe('A &amp; B &lt;c&gt;\n> 안내한 금액: x &lt;y&gt;');
+  it('번역 실패(null): 나간 글 그대로 + 정확한 금액 줄 + 실패 표시', () => {
+    expect(AI_TRANSLATION_FAILED_NOTE).toBe('_(번역 실패 — 손님에게 나간 글 그대로)_');
+    expect(buildAiReplyBody({ sentText: SENT, koreanText: null, quoted: QUOTED })).toBe(
+      `${SENT}\n> 안내한 금액: 울쎄라피 프라임 · 상안면 (200~300샷) 780,000원~\n${AI_TRANSLATION_FAILED_NOTE}`
+    );
+    expect(buildAiReplyBody({ sentText: 'Hello!', koreanText: null, quoted: [] })).toBe(`Hello!\n${AI_TRANSLATION_FAILED_NOTE}`);
+  });
+
+  it('빈 글이면 정해진 문장, 특수문자는 이스케이프', () => {
+    expect(buildAiReplyBody({ sentText: ' ', koreanText: '  ', quoted: [] })).toBe('손님에게 답했습니다.');
+    expect(buildAiReplyBody({ sentText: 'x', koreanText: 'A & B <c>', quoted: [] })).toBe('A &amp; B &lt;c&gt;');
   });
 
   it('꾸민 글: 이름표 AI 응대, 막대 없음, 멘션 없음. 글자만 문구에는 머리말이 붙는다', () => {
-    const m = styledAiReply({ note: '위치를 안내했습니다.', quoted: [] });
+    const args = { sentText: 'Hi', koreanText: '위치를 안내했습니다.', quoted: [] };
+    const m = styledAiReply(args);
     expect(AI_LOOK).toEqual({ username: 'AI 응대', iconEmoji: ':speech_balloon:' });
-    expect(m).toEqual({
-      ...AI_LOOK,
-      text: '위치를 안내했습니다.',
-      plainText: '💬 _AI 응대_\n위치를 안내했습니다.',
-    });
-    expect(buildAiReplyText({ note: '위치를 안내했습니다.', quoted: [] })).toBe(m.plainText);
+    expect(m).toEqual({ ...AI_LOOK, text: '위치를 안내했습니다.', plainText: '💬 _AI 응대_\n위치를 안내했습니다.' });
+    expect(buildAiReplyText(args)).toBe(m.plainText);
+    expect(m.attachments).toBeUndefined();
+  });
+});
+
+describe('AI 응대 요약 — 대화가 멈췄을 때 1개 (스펙 2026-10-22 §2)', () => {
+  const base = { from: '2026-10-22T01:43:14Z', until: '2026-10-22T01:50:05Z', visitorMessages: 7, notes: [] };
+
+  it('머리줄(시각 범위 · 손님 글 수) + 물은 것 · 답한 것 · 직원이 할 일', () => {
+    expect(
+      buildAiSummaryBody({
+        ...base,
+        summary: { asked: '울쎄라 가격, 예약 변경', answered: '부위별 가격 안내, 10/28 11시 가예약', todo: '가예약 확정 연락' },
+      })
+    ).toBe(
+      '📝 *AI 응대 요약* · 10:43~10:50 · 손님 글 7개\n• 물은 것: 울쎄라 가격, 예약 변경\n• 답한 것: 부위별 가격 안내, 10/28 11시 가예약\n• 직원이 할 일: 가예약 확정 연락'
+    );
+  });
+
+  it('할 일이 비어 있으면 그 줄을 빼고, 같은 분이면 시각을 하나만', () => {
+    expect(
+      buildAiSummaryBody({ ...base, until: base.from, visitorMessages: 1, summary: { asked: '위치', answered: '주소 안내', todo: ' ' } })
+    ).toBe('📝 *AI 응대 요약* · 10:43 · 손님 글 1개\n• 물은 것: 위치\n• 답한 것: 주소 안내');
+  });
+
+  it('요약 실패: 머리줄에 표시하고 차례별 요지를 목록으로. 요지도 없으면 머리줄만. 특수문자 이스케이프', () => {
+    expect(buildAiSummaryBody({ ...base, summary: null, notes: ['가격을 안내했습니다.', ' ', 'A <b>'] })).toBe(
+      '📝 *AI 응대 요약* · 10:43~10:50 · 손님 글 7개 · 자동 요약 실패 — 차례별 요지\n• 가격을 안내했습니다.\n• A &lt;b&gt;'
+    );
+    expect(buildAiSummaryBody({ ...base, summary: null, notes: [] })).toBe(
+      '📝 *AI 응대 요약* · 10:43~10:50 · 손님 글 7개 · 자동 요약 실패 — 차례별 요지'
+    );
+  });
+
+  it('꾸민 글: AI 응대 이름표, 막대 · 멘션 없음, 글자만 문구도 같은 본문', () => {
+    const m = styledAiSummary({ ...base, summary: { asked: 'a', answered: 'b', todo: '' } });
+    expect(m).toEqual({ ...AI_LOOK, text: m.plainText, plainText: '📝 *AI 응대 요약* · 10:43~10:50 · 손님 글 7개\n• 물은 것: a\n• 답한 것: b' });
     expect(m.attachments).toBeUndefined();
   });
 });

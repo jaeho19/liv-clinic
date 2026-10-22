@@ -4,6 +4,7 @@ import {
   bookingNoticeHeadline,
   buildAiReplyBody,
   buildAiReplyText,
+  buildAiSummaryBody,
   buildBodyLines,
   buildBookingNoticeText,
   buildContactText,
@@ -29,6 +30,7 @@ import {
   staffChannelLabel,
   staffNeededHeadline,
   type AiReplyArgs,
+  type AiSummaryArgs,
   type BookingNoticeArgs,
   type ContactNoticeArgs,
   type MessengerClickArgs,
@@ -66,7 +68,7 @@ export type BarKind = keyof typeof BAR_COLOR;
 
 export const NOTICE_LOOK: SlackLook = { username: 'LIV 알림', iconEmoji: ':bell:' };
 export const COPY_LOOK: SlackLook = { username: '번역본 · 복사용', iconEmoji: ':clipboard:' };
-/** AI가 손님에게 한 답의 요지 (스펙 2026-10-02 chat-ai-first-response §4.11) — 직원만 보는 이름표다 */
+/** AI 응대 글(손님에게 나간 답의 번역 전문)과 대화 요약의 이름표 (스펙 2026-10-22 chat-ai-slack-transcript) — 직원만 본다 */
 export const AI_LOOK: SlackLook = { username: 'AI 응대', iconEmoji: ':speech_balloon:' };
 
 const STAFF_COPY_ICON = ':leftwards_arrow_with_hook:';
@@ -281,9 +283,15 @@ export function styledDeliveryFailure(reason: string): StyledMessage {
 
 // ── AI 1차 응대 (스펙 2026-10-02 chat-ai-first-response §4.11) ───────────────
 
-/** AI가 손님에게 한 답의 요지. 멘션도 막대도 없다 — 방에 조용히 쌓인다. */
+/** AI가 손님에게 한 답의 한국어 번역 전문(스펙 2026-10-22 chat-ai-slack-transcript §1). 멘션도 막대도 없다 — 방에 조용히 쌓인다. */
 export function styledAiReply(args: AiReplyArgs): StyledMessage {
   return { ...AI_LOOK, text: buildAiReplyBody(args), plainText: buildAiReplyText(args) };
+}
+
+/** 대화가 멈췄을 때의 요약 1개 (스펙 2026-10-22 §2). 멘션도 막대도 없다. 글자만 문구도 같은 본문이다(머리줄이 📝 로 시작한다). */
+export function styledAiSummary(args: AiSummaryArgs): StyledMessage {
+  const body = buildAiSummaryBody(args);
+  return { ...AI_LOOK, text: body, plainText: body };
 }
 
 /** 가예약(또는 가예약 변경): 멘션은 최상위 text에, 내용은 파란 막대에. */

@@ -389,33 +389,76 @@ export function buildFeedLine(args: {
   }
 }
 
-// ── AI 1차 응대 (스펙 2026-10-02 chat-ai-first-response §4.11) ───────────────
-// 방 안에 새로 생기는 글 세 가지: AI가 손님에게 한 답의 요지(이름표 `AI 응대`), 가예약(파란 막대), 직원 확인 필요(빨간 막대).
-// 멘션은 가예약과 직원 확인 필요에만 붙는다 — 호출자가 최상위 text 에 둔다(막대 안에는 넣지 않는다).
+// ── AI 1차 응대 (스펙 2026-10-02 chat-ai-first-response §4.11, 2026-10-22 chat-ai-slack-transcript) ───────────────
+// 방 안에 새로 생기는 글: AI가 손님에게 한 답의 한국어 번역 전문(이름표 `AI 응대`), 가예약(파란 막대), 직원 확인 필요(빨간 막대),
+// 대화가 멈췄을 때의 요약 1개(이름표 `AI 응대`). 멘션은 가예약과 직원 확인 필요에만 붙는다 — 호출자가 최상위 text 에 둔다(막대 안에는 넣지 않는다).
 
 export interface AiReplyArgs {
-  /** AI가 낸 요지 (한국어 한두 문장) */
-  note: string;
-  /** 이 답에 쓰인 가격 줄 — `써마지 레이저 · 600샷 2,400,000원~` 꼴 */
+  /** 손님에게 나간 답 (손님 언어) */
+  sentText: string;
+  /** 그 답의 한국어 번역. null = 번역 실패 → 나간 글을 그대로 올리고 표시한다 */
+  koreanText: string | null;
+  /** 이 답에 쓰인 가격 줄 — `써마지 레이저 · 600샷 2,400,000원~` 꼴. 번역이 금액을 빠뜨렸거나 번역이 실패했을 때만 붙인다 */
   quoted: string[];
-  /** 이 답에 나간 제안 줄 — `스컬트라 제안 ①` 꼴 (제안형 응대, 스펙 2026-10-12 §4.6) */
-  offers?: string[];
-  /** 손님이 이번 글에서 제안을 거절했다 */
-  offerDeclined?: boolean;
 }
 
-/** `AI 응대` 글의 본문: 요지, 금액 줄을 썼으면 그 아래 "안내한 금액", 제안을 했거나 손님이 거절했으면 "제안". 답 전체는 관리자 화면에서 본다. */
+export const AI_TRANSLATION_FAILED_NOTE = '_(번역 실패 — 손님에게 나간 글 그대로)_';
+
+/** 손님에게 나간 글의 금액(`KRW 1,234,000`) 가운데 번역문에 없는 것. 쉼표는 무시하고, 앞뒤에 다른 숫자가 붙은 것은 없는 것으로 본다. */
+export function missingAmounts(sentText: string, koreanText: string): string[] {
+  const korean = koreanText.replace(/,/g, '');
+  const amounts = [...sentText.matchAll(/KRW\s*(\d[\d,]*)/g)].map((m) => m[1].replace(/,/g, ''));
+  return [...new Set(amounts)].filter((a) => !new RegExp(`(?<!\\d)${a}(?!\\d)`).test(korean));
+}
+
+/**
+ * `AI 응대` 글의 본문 — 손님에게 나간 답의 한국어 번역 전문 (스펙 2026-10-22 chat-ai-slack-transcript §1).
+ * 번역이 금액을 빠뜨렸거나 번역이 실패했으면 프로그램이 만든 정확한 금액 줄을 붙인다. 실패면 나간 글 그대로 + 표시.
+ */
 export function buildAiReplyBody(args: AiReplyArgs): string {
-  const lines = [escapeSlackText(args.note.trim() || '손님에게 답했습니다.')];
-  if (args.quoted.length > 0) lines.push(`> 안내한 금액: ${args.quoted.map(escapeSlackText).join(' / ')}`);
-  if (args.offers && args.offers.length > 0) lines.push(`> 제안: ${args.offers.map(escapeSlackText).join(' / ')}`);
-  if (args.offerDeclined) lines.push('> 제안: 손님이 거절 — 이 대화에서는 더 제안하지 않습니다');
+  const failed = args.koreanText === null;
+  const shown = (args.koreanText ?? args.sentText).trim();
+  const lines = [escapeSlackText(shown || '손님에게 답했습니다.')];
+  if (args.quoted.length > 0 && (failed || missingAmounts(args.sentText, args.koreanText ?? '').length > 0)) {
+    lines.push(`> 안내한 금액: ${args.quoted.map(escapeSlackText).join(' / ')}`);
+  }
+  if (failed) lines.push(AI_TRANSLATION_FAILED_NOTE);
   return lines.join('\n');
 }
 
 /** `AI 응대` 글을 글자만으로 — 스레드 방식이거나 꾸민 글을 못 올릴 때. */
 export function buildAiReplyText(args: AiReplyArgs): string {
   return `💬 _AI 응대_\n${buildAiReplyBody(args)}`;
+}
+
+export interface AiSummaryArgs {
+  /** 요약한 구간의 첫 글 · 마지막 글 시각 */
+  from: string;
+  until: string;
+  /** 그 구간의 손님 글 수 */
+  visitorMessages: number;
+  /** AI가 쓴 요약. null = 요약 실패 → notes 를 대신 올린다 */
+  summary: { asked: string; answered: string; todo: string } | null;
+  /** 그 구간 AI 차례들의 요지 (요약 실패 때만 쓴다) */
+  notes: string[];
+}
+
+const hm = (iso: string): string => formatKstTime(iso).replace(' KST', '');
+
+/** 대화가 멈췄을 때의 `AI 응대 요약` 본문 (스펙 2026-10-22 chat-ai-slack-transcript §2). 멘션 없음. */
+export function buildAiSummaryBody(args: AiSummaryArgs): string {
+  const range = hm(args.from) === hm(args.until) ? hm(args.from) : `${hm(args.from)}~${hm(args.until)}`;
+  const head = ['📝 *AI 응대 요약*', range, `손님 글 ${args.visitorMessages}개`];
+  if (!args.summary) head.push('자동 요약 실패 — 차례별 요지');
+  const lines = [head.join(' · ')];
+  if (args.summary) {
+    lines.push(`• 물은 것: ${escapeSlackText(args.summary.asked)}`);
+    lines.push(`• 답한 것: ${escapeSlackText(args.summary.answered)}`);
+    if (args.summary.todo.trim()) lines.push(`• 직원이 할 일: ${escapeSlackText(args.summary.todo.trim())}`);
+  } else {
+    for (const note of args.notes) if (note.trim()) lines.push(`• ${escapeSlackText(note.trim())}`);
+  }
+  return lines.join('\n');
 }
 
 export interface BookingNoticeArgs {
