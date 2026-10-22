@@ -53,14 +53,11 @@ beforeEach(() => {
 afterEach(() => vi.restoreAllMocks());
 
 describe('finishAiTurn — 답이 나간 차례', () => {
-  it('방에 요지를 올리고, AI 글의 한국어 번역을 저장한다', async () => {
+  it('번역을 먼저 끝내고, 방에 답 전문(번역)을 올리고, 같은 번역을 관리자 화면용으로 저장한다', async () => {
     await finish(SENT);
     expect(relayAi).toHaveBeenCalledWith({
       sessionId: SESSION_ID,
-      note: '인사에 답했습니다.',
-      quoted: [],
-      offers: [],
-      offerDeclined: false,
+      reply: { sentText: 'Hello! How can we help you today?', koreanText: '안녕하세요! 무엇을 도와드릴까요?', quoted: [] },
       booking: null,
       staffNeeded: null,
     });
@@ -73,7 +70,7 @@ describe('finishAiTurn — 답이 나간 차례', () => {
 
   it('금액 줄을 썼으면 "안내한 금액"을 한국어로 넘긴다', async () => {
     await finish({ ...SENT, usedRows: [THERMAGE] });
-    expect(relayAi.mock.calls[0][0].quoted).toEqual(['써마지 레이저 · 600샷 2,400,000원~']);
+    expect(relayAi.mock.calls[0][0].reply?.quoted).toEqual(['써마지 레이저 · 600샷 2,400,000원~']);
   });
 
   it('가예약이 찼거나 바뀌었으면 한 줄 요약과 날짜를 넘긴다', async () => {
@@ -90,14 +87,12 @@ describe('finishAiTurn — 답이 나간 차례', () => {
     expect(relayAi.mock.calls[1][0].booking?.changed).toBe(true);
   });
 
-  it('제안형 응대: 나간 제안의 이름 · 손님의 거절 · 가예약에 안내한 혜택을 한국어로 넘긴다', async () => {
+  it('제안형 응대: 가예약에 안내한 혜택을 한국어로 넘긴다(제안 이름은 이제 답 전문에 보인다)', async () => {
     const offer = getKnowledge('en', new Date('2026-10-20T05:00:00Z'), { offers: true }).offers[0];
     const booking = { ...EMPTY_BOOKING, date: '2026-10-14', time: '14:00', name: 'Emma' };
     const contact = { channel: 'whatsapp' as const, handle: '+65 9123 4567' };
     await finish({ ...SENT, usedOffers: [offer], offerDeclined: true, bookingEvent: 'requested', booking, contact, bookingBenefit: 'full' });
     const args = relayAi.mock.calls[0][0];
-    expect(args.offers).toEqual(['스컬트라 제안 ①']);
-    expect(args.offerDeclined).toBe(true);
     expect(args.booking?.benefit).toBe('혜택: 5% + 피부관리 또는 수액 1회(그날 결제 30만 원 이상 · 방문한 날 선택)');
   });
 
@@ -119,15 +114,28 @@ describe('finishAiTurn — 답이 나간 차례', () => {
     expect(relayContact).toHaveBeenCalledWith({ sessionId: SESSION_ID, channel: 'wechat', handle: 'emma_w' });
   });
 
-  it('한국어 번역은 Slack 게시와 함께 돈다 — 게시를 기다렸다가 시작하지 않는다 (함수 시간 한도 60초)', async () => {
-    let releaseRelay!: () => void;
-    relayAi.mockImplementation(() => new Promise<void>((resolve) => (releaseRelay = resolve)));
-    const running = finish(SENT);
-    await new Promise((r) => setTimeout(r, 0));
-    expect(translateMock).toHaveBeenCalledTimes(1); // Slack 게시가 아직 끝나지 않았다
-    releaseRelay();
-    await running;
-    expect(admin.ops.filter((o) => o.table === 'chat_messages' && o.op === 'update')).toHaveLength(1);
+  it('번역이 끝난 뒤에 Slack 에 올린다 — 방에 번역 전문이 올라가야 한다', async () => {
+    const order: string[] = [];
+    translateMock.mockImplementation(async () => {
+      order.push('translate');
+      return { status: 'success', text: '안녕하세요!', latencyMs: 1 };
+    });
+    relayAi.mockImplementation(async () => {
+      order.push('slack');
+    });
+    await finish(SENT);
+    expect(order).toEqual(['translate', 'slack']);
+  });
+
+  it('번역 실패: 나간 글 그대로(koreanText=null)로 올리고 글은 고치지 않는다. 번역할 것이 없으면(skipped) 나간 글을 번역으로 쓴다', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    translateMock.mockResolvedValueOnce({ status: 'failed', text: SENT.text, errorCode: 'timeout', latencyMs: 5000 });
+    await finish(SENT);
+    expect(relayAi.mock.calls[0][0].reply?.koreanText).toBeNull();
+    translateMock.mockResolvedValueOnce({ status: 'skipped', text: SENT.text, latencyMs: 0 });
+    await finish(SENT);
+    expect(relayAi.mock.calls[1][0].reply?.koreanText).toBe(SENT.text);
+    expect(admin.ops.filter((o) => o.op === 'update')).toHaveLength(0);
   });
 
   it('Slack 게시가 예외를 내도 한국어 번역은 저장한다', async () => {
@@ -147,7 +155,7 @@ describe('finishAiTurn — 답이 나간 차례', () => {
     translateMock.mockResolvedValueOnce({ status: 'success', text: SENT.text, latencyMs: 10 });
     await finish(SENT);
     expect(admin.ops.filter((o) => o.op === 'update')).toHaveLength(0);
-    expect(warn).toHaveBeenCalledTimes(2);
+    expect(warn).toHaveBeenCalledTimes(1);
   });
 
   it('번역이 4,000자를 넘으면 자른다', async () => {
@@ -159,14 +167,11 @@ describe('finishAiTurn — 답이 나간 차례', () => {
 });
 
 describe('finishAiTurn — 답이 나가지 않은 차례', () => {
-  it('fallback: 요지 없이 직원 확인 필요(자동 응대가 답하지 못했습니다)만', async () => {
+  it('fallback: 답 글 없이 직원 확인 필요(자동 응대가 답하지 못했습니다)만', async () => {
     await finish({ kind: 'fallback', reason: 'call:timeout' });
     expect(relayAi).toHaveBeenCalledWith({
       sessionId: SESSION_ID,
-      note: null,
-      quoted: [],
-      offers: [],
-      offerDeclined: false,
+      reply: null,
       booking: null,
       staffNeeded: { reason: '자동 응대가 답하지 못했습니다' },
     });
