@@ -138,14 +138,17 @@ async function summarizeOne(admin: ChatAdminClient, s: SummarySession): Promise<
   }
   if (!got || got.length === 0) return 'skipped';
 
+  // 최근 글부터 읽는다 — 글이 MESSAGE_LIMIT 개를 넘는 긴 대화에서도 이번 구간(끝부분)이 빠지지 않게. 요약은 시간 순으로.
   const { data: msgData, error: msgError } = await admin
     .from('chat_messages')
     .select('id, created_at, sender, source, original_text, translated_text')
     .eq('session_id', s.id)
-    .order('created_at', { ascending: true })
+    .order('created_at', { ascending: false })
     .limit(MESSAGE_LIMIT);
   if (msgError) console.warn('[chat ai summary] messages lookup failed:', msgError.code ?? 'unknown');
-  const messages = (msgData ?? []) as Array<SegmentMessage & { id: string }>;
+  const messages = ((msgData ?? []) as Array<SegmentMessage & { id: string }>).sort(
+    (a, b) => Date.parse(a.created_at) - Date.parse(b.created_at)
+  );
   const lines = segmentLines(messages, s.ai_summary_at, s.last_message_at);
 
   let summary: AiSummaryFields | null = null;

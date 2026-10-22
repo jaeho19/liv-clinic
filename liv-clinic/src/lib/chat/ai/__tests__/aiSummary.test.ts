@@ -225,6 +225,15 @@ describe('runAiSummaries', () => {
     expect(warn).toHaveBeenCalled();
   });
 
+  it('긴 대화: 글을 최근 것부터 읽어(최대 300개) 시간 순으로 요약한다', async () => {
+    useAdmin((op) =>
+      op.table === 'chat_messages' && op.columns !== 'session_id, created_at' ? { data: [...MSGS].reverse() } : undefined
+    );
+    await runAiSummaries(NOW);
+    expect(relayMock.mock.calls[0][0].summary).toMatchObject({ from: '2026-10-22T01:43:13Z', until: '2026-10-22T01:49:28Z' });
+    expect(aiMock.mock.calls[0][0][1].content.startsWith('[10:43] 손님:')).toBe(true);
+  });
+
   it('Slack 게시가 실패하면 센 수에 넣지 않는다(다시 시도하지 않는다)', async () => {
     useAdmin();
     relayMock.mockResolvedValueOnce(false);
