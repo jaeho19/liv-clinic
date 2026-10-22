@@ -571,6 +571,12 @@ export const PROCEDURE_CATALOG: ProcedureType[] = [
     options: [],
   },
   {
+    id: 'rituo_fine',
+    name: '리투오 파인',
+    category: 'skinbooster',
+    options: [],
+  },
+  {
     id: 'radiesse',
     name: '레디어스',
     category: 'skinbooster',
@@ -592,6 +598,7 @@ export const PROCEDURE_RECIPE_MAP: Record<string, string> = {
   juvelook_volume: '쥬베룩 볼륨 시술',
   juvelook_skin: '쥬베룩 스킨부스터 시술',
   rituo: '리투오 시술',
+  rituo_fine: '리투오 파인 시술',
   radiesse: '레디어스 시술',
 };
 
