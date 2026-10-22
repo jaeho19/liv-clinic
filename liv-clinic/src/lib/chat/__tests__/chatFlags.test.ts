@@ -3,6 +3,7 @@ import {
   chatAiMode,
   chatAiOffersMode,
   isAiNoticeEnabled,
+  isAiSummaryEnabled,
   isEscalationEnabled,
   isEventHintEnabled,
   isFollowupEnabled,
@@ -18,6 +19,7 @@ describe('긴급 정지 스위치', () => {
     delete process.env.CHAT_AI;
     delete process.env.CHAT_AI_NOTICE;
     delete process.env.CHAT_AI_OFFERS;
+    delete process.env.CHAT_AI_SUMMARY;
   });
 
   it('환경변수가 없으면 둘 다 켜져 있다', () => {
@@ -104,5 +106,13 @@ describe('긴급 정지 스위치', () => {
     process.env.CHAT_AI = 'on';
     delete process.env.CHAT_AI_OFFERS;
     expect(chatAiOffersMode()).toBe('off');
+  });
+
+  it("AI 응대 요약 스위치(CHAT_AI_SUMMARY): 없으면 켜짐, 'off'일 때만 꺼짐", () => {
+    expect(isAiSummaryEnabled()).toBe(true);
+    process.env.CHAT_AI_SUMMARY = ' Off ';
+    expect(isAiSummaryEnabled()).toBe(false);
+    process.env.CHAT_AI_SUMMARY = 'on';
+    expect(isAiSummaryEnabled()).toBe(true);
   });
 });

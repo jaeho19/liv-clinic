@@ -30,6 +30,14 @@ export function isRoomLookEnabled(): boolean {
 }
 
 /**
+ * 대화가 멈췄을 때의 AI 응대 요약 (스펙 2026-10-22 chat-ai-slack-transcript §2).
+ * CHAT_AI_SUMMARY=off 면 false — 요약만 멈춘다(AI 답 전문은 그대로 방에 올라간다).
+ */
+export function isAiSummaryEnabled(): boolean {
+  return !isOff('CHAT_AI_SUMMARY');
+}
+
+/**
  * 재촉 알림 — 방의 5·12·30분 "답이 없습니다" 와 #해외문의의 🚨 줄.
  * 위 스위치들과 반대로 기본이 꺼져 있다(원장님 2026-10-02: 재촉 알림을 없앤다). CHAT_ESCALATION=on 일 때만 true.
  */

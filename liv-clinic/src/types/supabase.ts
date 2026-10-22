@@ -394,6 +394,7 @@ export type Database = {
       chat_sessions: {
         Row: {
           ai_handoff_at: string | null
+          ai_summary_at: string | null
           assigned_admin_id: string | null
           assigned_at: string | null
           assigned_label: string | null
@@ -429,6 +430,7 @@ export type Database = {
         }
         Insert: {
           ai_handoff_at?: string | null
+          ai_summary_at?: string | null
           assigned_admin_id?: string | null
           assigned_at?: string | null
           assigned_label?: string | null
@@ -464,6 +466,7 @@ export type Database = {
         }
         Update: {
           ai_handoff_at?: string | null
+          ai_summary_at?: string | null
           assigned_admin_id?: string | null
           assigned_at?: string | null
           assigned_label?: string | null

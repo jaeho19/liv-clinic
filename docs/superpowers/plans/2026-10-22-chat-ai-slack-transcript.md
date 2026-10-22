@@ -550,6 +550,7 @@ cd "D:/dev/LIV_homepage-slack-rooms" && git add liv-clinic/src/lib/chat/ai/aiFol
 **Files:**
 - Create: `liv-clinic/supabase/migrations/045_chat_ai_summary.sql`
 - Create: `liv-clinic/scripts/_db/run-045.mjs`, `liv-clinic/scripts/_db/verify-045.mjs`
+- Modify: `liv-clinic/src/types/supabase.ts` — `chat_sessions`의 Row · Insert · Update에 `ai_summary_at`(`ai_handoff_at` 다음 줄, 043 · 044와 같은 방식). [실행 중 보완] 처음 계획에 빠져 Task 5의 tsc에서 걸렸다 — Task 5 커밋에 함께 넣었다.
 
 **Interfaces:**
 - Produces: `chat_sessions.ai_summary_at TIMESTAMPTZ NULL` (Task 5가 읽고 조건부 UPDATE 한다)
