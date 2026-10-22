@@ -28,7 +28,7 @@ import { postSlackMessage } from '../slack';
 import { BAR_COLOR } from '../slackLook';
 import { ensureRoom } from '../slackRooms';
 import { parseStaffDirectory, loadStaffDirectory } from '../slackStaff';
-import { relayAiTurnToSlack, relayChatMessageToSlack } from '../slackRelay';
+import { relayAiSummaryToSlack, relayAiTurnToSlack, relayChatMessageToSlack } from '../slackRelay';
 import { AI_FALLBACK_REASON } from '../slackText';
 import { fakeAdmin, hasFilter, type FakeOp, type FakeResult } from './fakeAdmin';
 
@@ -121,17 +121,29 @@ describe('relayChatMessageToSlack — quiet (AI가 답하는 대화의 손님 �
 });
 
 describe('relayAiTurnToSlack', () => {
-  const args = { sessionId: SESSION_ID, note: '울쎄라 가격을 안내했습니다.', quoted: [], booking: null, staffNeeded: null };
+  const args = {
+    sessionId: SESSION_ID,
+    reply: { sentText: 'Ulthera is …', koreanText: '울쎄라 가격을 안내했습니다.', quoted: [] },
+    booking: null,
+    staffNeeded: null,
+  };
 
-  it('요지 글: 이름표 AI 응대, 멘션 없음. 금액 줄을 썼으면 "안내한 금액"', async () => {
+  it('AI 응대 글: 이름표 AI 응대, 멘션 없음, 손님에게 나간 답의 번역 전문. 금액이 빠졌으면 정확한 금액 줄', async () => {
     useAdmin(ROOM_SESSION);
-    await relayAiTurnToSlack({ ...args, quoted: ['써마지 레이저 · 600샷 2,400,000원~'] });
+    await relayAiTurnToSlack({
+      ...args,
+      reply: {
+        sentText: 'Thermage 600 shots: from KRW 2,400,000',
+        koreanText: '써마지 600샷은 240만 원부터입니다.',
+        quoted: ['써마지 레이저 · 600샷 2,400,000원~'],
+      },
+    });
     expect(posts()).toHaveLength(1);
     expect(posts()[0]).toMatchObject({
       channelId: 'C0ROOM',
       username: 'AI 응대',
       iconEmoji: ':speech_balloon:',
-      text: '울쎄라 가격을 안내했습니다.\n> 안내한 금액: 써마지 레이저 · 600샷 2,400,000원~',
+      text: '써마지 600샷은 240만 원부터입니다.\n> 안내한 금액: 써마지 레이저 · 600샷 2,400,000원~',
     });
   });
 
@@ -182,9 +194,9 @@ describe('relayAiTurnToSlack', () => {
     expect(warn).toHaveBeenCalled();
   });
 
-  it('AI가 답하지 못했을 때(note=null): 요지 글 없이 직원 확인 필요만', async () => {
+  it('AI가 답하지 못했을 때(reply=null): AI 응대 글 없이 직원 확인 필요만', async () => {
     useAdmin(ROOM_SESSION);
-    await relayAiTurnToSlack({ ...args, note: null, staffNeeded: { reason: AI_FALLBACK_REASON } });
+    await relayAiTurnToSlack({ ...args, reply: null, staffNeeded: { reason: AI_FALLBACK_REASON } });
     const sent = posts();
     expect(sent).toHaveLength(1);
     expect(sent[0].attachments?.[0].fallback).toBe('🙋 직원 확인 필요 · 자동 응대가 답하지 못했습니다');
@@ -212,7 +224,7 @@ describe('relayAiTurnToSlack', () => {
     expect(posts().some((p) => p.channelId === 'C0FEED')).toBe(false);
   });
 
-  it('방도 스레드도 없으면: 요지는 올리지 않고, 가예약과 직원 확인 필요는 #해외문의에 관리자 화면 링크와 함께 올린다 (조용히 빠지지 않게)', async () => {
+  it('방도 스레드도 없으면: AI 응대 글은 올리지 않고, 가예약과 직원 확인 필요는 #해외문의에 관리자 화면 링크와 함께 올린다 (조용히 빠지지 않게)', async () => {
     process.env.NEXT_PUBLIC_SITE_URL = 'https://liv-clinic.net';
     useAdmin({ ...ROOM_SESSION, slack_mode: null, slack_channel_id: null });
     await relayAiTurnToSlack({
@@ -234,7 +246,7 @@ describe('relayAiTurnToSlack', () => {
     const warn = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const admin = useAdmin(ROOM_SESSION);
     postMock.mockResolvedValue({ ok: false, error: 'channel_not_found' });
-    await relayAiTurnToSlack({ ...args, note: null, staffNeeded: { reason: 'x' } });
+    await relayAiTurnToSlack({ ...args, reply: null, staffNeeded: { reason: 'x' } });
     const updates = admin.ops.filter((o) => o.table === 'chat_sessions' && o.op === 'update');
     expect(updates).toHaveLength(2);
     expect(updates[1].payload).toEqual({ ai_handoff_at: null });
@@ -245,7 +257,7 @@ describe('relayAiTurnToSlack', () => {
   it('답변 직원이 한 명도 없으면 🙋 멘션을 선점하지 않는다 (멘션할 사람이 생겼을 때 쓸 수 있게)', async () => {
     vi.mocked(loadStaffDirectory).mockResolvedValueOnce(parseStaffDirectory('', ''));
     const admin = useAdmin(ROOM_SESSION);
-    await relayAiTurnToSlack({ ...args, note: null, staffNeeded: { reason: 'x' } });
+    await relayAiTurnToSlack({ ...args, reply: null, staffNeeded: { reason: 'x' } });
     expect(admin.ops.filter((o) => o.table === 'chat_sessions' && o.op === 'update')).toHaveLength(0);
     expect(posts()[0].text).toBe('');
   });
@@ -261,5 +273,38 @@ describe('relayAiTurnToSlack', () => {
     postMock.mockResolvedValue({ ok: false, error: 'channel_not_found' });
     await expect(relayAiTurnToSlack(args)).resolves.toBeUndefined();
     expect(warn).toHaveBeenCalled();
+  });
+});
+
+describe('relayAiSummaryToSlack — 대화가 멈췄을 때의 요약 (스펙 2026-10-22 §2)', () => {
+  const summary = {
+    from: '2026-10-22T01:43:14Z',
+    until: '2026-10-22T01:50:05Z',
+    visitorMessages: 2,
+    summary: { asked: '가격', answered: '안내', todo: '' },
+    notes: [],
+  };
+
+  it('방이면 AI 응대 이름표로 방에, 멘션 없이. 올렸으면 true', async () => {
+    const ok = await relayAiSummaryToSlack({ session: { slack_mode: 'room', slack_channel_id: 'C0ROOM', slack_thread_ts: null }, summary });
+    expect(ok).toBe(true);
+    expect(posts()).toHaveLength(1);
+    expect(posts()[0]).toMatchObject({ channelId: 'C0ROOM', username: 'AI 응대' });
+    expect(String(posts()[0].text)).toContain('📝 *AI 응대 요약*');
+    expect(String(posts()[0].text)).not.toContain('<@');
+  });
+
+  it('스레드면 글자만으로 스레드에. 방도 스레드도 없으면 올리지 않고 false', async () => {
+    await relayAiSummaryToSlack({ session: { slack_mode: 'thread', slack_channel_id: 'C0FEED', slack_thread_ts: '1.1' }, summary });
+    expect(posts()[0]).toMatchObject({ threadTs: '1.1', channelId: 'C0FEED' });
+    postMock.mockClear();
+    expect(await relayAiSummaryToSlack({ session: { slack_mode: null, slack_channel_id: null, slack_thread_ts: null }, summary })).toBe(false);
+    expect(posts()).toHaveLength(0);
+  });
+
+  it('Slack 이 실패하면 false, throw 하지 않는다', async () => {
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
+    postMock.mockResolvedValue({ ok: false, error: 'channel_not_found' });
+    expect(await relayAiSummaryToSlack({ session: { slack_mode: 'room', slack_channel_id: 'C0ROOM', slack_thread_ts: null }, summary })).toBe(false);
   });
 });

@@ -8,6 +8,7 @@ import type { ContactChannel } from '@/lib/chat/contactChannels';
 import {
   styledAdminReply,
   styledAiReply,
+  styledAiSummary,
   styledBookingNotice,
   styledContactNotice,
   styledDeliveryFailure,
@@ -46,6 +47,8 @@ import {
   extractRoomChannelFromFeedText,
   ROOM_EMAIL_CONTACT_NOTE,
   staffChannelLabel,
+  type AiReplyArgs,
+  type AiSummaryArgs,
   type RelaySender,
   type RoomSessionInfo,
 } from '@/lib/chat/slackText';
@@ -628,13 +631,8 @@ export async function relayEventHintNoteToSlack(args: { sessionId: string; url: 
 
 export interface AiSlackArgs {
   sessionId: string;
-  /** AI가 손님에게 한 답의 요지. AI가 답하지 못했으면(접수 안내로 대신함) null — 요지 글을 올리지 않는다 */
-  note: string | null;
-  /** 그 답에 쓰인 가격 줄 (한국어, `써마지 레이저 · 600샷 2,400,000원~` 꼴) */
-  quoted: string[];
-  /** 그 답에 나간 제안 줄 (한국어, `스컬트라 제안 ①` 꼴) · 손님이 이번 글에서 제안을 거절했는가 — 제안형 응대 */
-  offers?: string[];
-  offerDeclined?: boolean;
+  /** 손님에게 나간 답과 그 한국어 번역(스펙 2026-10-22 chat-ai-slack-transcript §1). AI가 답하지 못했으면(접수 안내로 대신함) null — 답 글을 올리지 않는다 */
+  reply: AiReplyArgs | null;
   /** 가예약이 처음 찼거나 바뀌었으면 그 내용. when 은 피드 줄에 쓰는 날짜·시각, benefit 은 안내한 혜택(`혜택: …`, 없으면 null) */
   booking: { changed: boolean; summary: string; when: string; benefit?: string | null } | null;
   /** 직원 확인이 필요하면 그 사유 */
@@ -663,10 +661,10 @@ async function claimHandoffMention(admin: ChatAdminClient, sessionId: string): P
 
 /**
  * AI 응대 한 차례의 결과를 세션의 방(또는 스레드)에 올린다. 손님 글 릴레이 뒤에 부른다. throw-free.
- *   1. `AI 응대` 요지 — 멘션 없음
+ *   1. `AI 응대` — 손님에게 나간 답의 한국어 번역 전문, 멘션 없음
  *   2. 가예약(파란 막대) — 전원 멘션. 처음 찬 것이면 #해외문의에도 한 줄
  *   3. 직원 확인 필요(빨간 막대) — 전원 멘션은 대화당 한 번, 그 뒤로는 막대만
- * 방도 스레드도 없는 대화(방 만들기 실패 등)면 요지는 올리지 않고, 2·3은 #해외문의에 관리자 화면 링크와 함께 글자만으로 올린다 —
+ * 방도 스레드도 없는 대화(방 만들기 실패 등)면 답 글은 올리지 않고, 2·3은 #해외문의에 관리자 화면 링크와 함께 글자만으로 올린다 —
  * 직원이 해야 할 일이 조용히 빠지지 않게(연락처 알림과 같은 방식).
  */
 export async function relayAiTurnToSlack(args: AiSlackArgs): Promise<void> {
@@ -689,8 +687,8 @@ export async function relayAiTurnToSlack(args: AiSlackArgs): Promise<void> {
       return Boolean(r?.ok);
     };
 
-    if (args.note !== null) {
-      await post(styledAiReply({ note: args.note, quoted: args.quoted, offers: args.offers, offerDeclined: args.offerDeclined }), 'ai reply');
+    if (args.reply !== null) {
+      await post(styledAiReply(args.reply), 'ai reply');
     }
 
     if (args.booking) {
@@ -736,6 +734,26 @@ export async function relayAiTurnToSlack(args: AiSlackArgs): Promise<void> {
     }
   } catch (e) {
     console.warn('[slack relay] ai turn relay failed:', e);
+  }
+}
+
+/**
+ * 대화가 멈췄을 때의 AI 응대 요약 1개를 그 대화의 방(또는 스레드)에 올린다 (스펙 2026-10-22 chat-ai-slack-transcript §2).
+ * 방도 스레드도 없으면 올리지 않는다(#해외문의에 따로 올리지 않는다). 올렸으면 true. throw-free.
+ */
+export async function relayAiSummaryToSlack(args: {
+  session: Pick<RelaySessionRow, 'slack_mode' | 'slack_channel_id' | 'slack_thread_ts'>;
+  summary: AiSummaryArgs;
+}): Promise<boolean> {
+  if (!isSlackRelayConfigured()) return false;
+  try {
+    const target = resolveTarget(args.session, getSlackChannelId());
+    const result = await postToSessionTarget(target, styledAiSummary(args.summary));
+    if (result && !result.ok) console.warn('[slack relay] ai summary failed:', result.error);
+    return Boolean(result?.ok);
+  } catch (e) {
+    console.warn('[slack relay] ai summary relay failed:', e);
+    return false;
   }
 }
 
