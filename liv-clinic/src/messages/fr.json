@@ -180,7 +180,7 @@
       },
       {
         "heading": "5. Processing on our behalf",
-        "body": "To operate our services we use trusted processors: Supabase (database hosting) and Google Analytics (website usage analysis). These providers process data only as needed to deliver their service."
+        "body": "To operate our services we use trusted processors: Supabase (database hosting), Google Analytics (website usage analysis), OpenAI (translation of and automated replies to live chat messages — United States) and Slack (relaying live chat conversations to our staff — United States). These providers process data only as needed to deliver their service."
       },
       {
         "heading": "6. Your rights",
