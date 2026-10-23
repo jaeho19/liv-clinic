@@ -13,6 +13,7 @@ import type { PriceGroup, PriceRow, PriceRowSource } from './types';
 // 가격 줄: 기본(홈페이지 가격표 − 직원에게 넘기는 줄) + 손으로 관리하는 줄(필러·상담비·이달 프로모션) 가운데 오늘 유효한 것.
 // 꼬리표는 읽을 때마다 순서대로 붙인다 — 대화 이력에는 꼬리표가 아니라 이름을 남기므로 달라져도 된다.
 // 제안형 응대(스펙 2026-10-12 chat-ai-guided-offers)가 켜지면 첫방문 체험가 줄(T…)과 제안 줄(C…)이 더해진다.
+// 프로모션 줄의 includes 는 "이 묶음에 든 시술" — AI가 그 시술의 기본 가격 줄을 보여 주면 조립(assemble.ts)이 이 줄을 함께 붙인다.
 
 const KST_OFFSET_MS = 9 * 60 * 60 * 1000;
 
@@ -56,6 +57,12 @@ export function getPriceRows(now: Date, options: { trial?: boolean } = {}): Pric
     rows.push({ ...source, id: `${style.prefix}${String(counters[source.group]).padStart(style.width, '0')}` });
   }
   return rows;
+}
+
+/** 이 기본 가격 줄의 시술이 든 오늘의 프로모션 줄 (자료 순서대로). 기본 가격 줄이 아니면 비어 있다. */
+export function promoRowsIncluding(row: PriceRow, rows: Iterable<PriceRow>): PriceRow[] {
+  if (row.group !== 'base') return [];
+  return [...rows].filter((r) => r.group === 'promo' && r.includes?.some((prefix) => row.key.startsWith(prefix)));
 }
 
 const krw = (amount: number): string => `KRW ${amount.toLocaleString('en-US')}`;

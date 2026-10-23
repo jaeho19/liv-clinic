@@ -17,6 +17,7 @@ import {
   priceQuoteKo,
   priceRowLine,
   priceTagPattern,
+  promoRowsIncluding,
   promotionPageUrl,
 } from '../knowledge';
 import { BASE_PRICE_ROWS } from '../knowledge/priceRows.base.generated';
@@ -105,6 +106,18 @@ describe('손으로 관리하는 가격 줄', () => {
     expect(EXTRA_PRICE_ROWS.filter((r) => r.group === 'fee').map((r) => [r.key, r.amount, r.unit])).toEqual([
       ['fee.consult', 10000, 'fixed'],
     ]);
+  });
+
+  it('프로모션 줄의 includes 는 있는 기본 가격 줄을 가리키고, 프로모션 줄에만 있다', () => {
+    for (const row of EXTRA_PRICE_ROWS) {
+      if (!row.includes) continue;
+      expect(row.group, row.key).toBe('promo');
+      for (const prefix of row.includes) {
+        expect(all.some((b) => b.group === 'base' && b.key.startsWith(prefix)), `${row.key}: ${prefix}`).toBe(true);
+      }
+    }
+    // '추가 선택' 줄은 그 구성과 함께일 때만 의미가 있어 혼자 붙이지 않는다
+    for (const row of EXTRA_PRICE_ROWS.filter((r) => r.labelKo.includes('추가 선택'))) expect(row.includes, row.key).toBeUndefined();
   });
 
   it('직원에게 넘기는 줄(STAFF_ONLY_KEYS)은 모두 실제로 있는 줄이다', () => {
@@ -218,5 +231,31 @@ describe('프롬프트에 넣는 글', () => {
     expect(a.rowById.get('P999')).toBeUndefined();
     expect(a.priceText).toContain('{{M01}}');
     expect(a.factsText).toContain('## 혜택과 규칙');
+  });
+});
+
+describe('promoRowsIncluding — 기본 가격 줄의 시술이 든 이달 프로모션 줄', () => {
+  const rows = getPriceRows(OCT_2);
+  const row = (key: string) => rows.find((r) => r.key === key)!;
+  const keysFor = (key: string) => promoRowsIncluding(row(key), rows).map((r) => r.key);
+
+  it('써마지 600샷 · 울쎄라 · 리쥬란 · 압토스 — 자료 순서대로', () => {
+    expect(keysFor('thermage.name.shot600')).toEqual(['promo.2026-10.16', 'promo.2026-10.20']);
+    expect(keysFor('ulthera.name.fullFace')).toEqual(['promo.2026-10.16', 'promo.2026-10.19']);
+    expect(keysFor('skinbooster.rejuran.volume2cc')).toEqual(['promo.2026-10.12']);
+    expect(keysFor('skinbooster.rejuranHbPlus.volume2cc')).toEqual(['promo.2026-10.13']);
+    expect(keysFor('thread.name.aptosLight25')).toEqual(['promo.2026-10.26']);
+  });
+
+  it('묶음에 없는 시술 · 아이 써마지 · 프로모션 줄 자신에는 아무것도 없다', () => {
+    expect(keysFor('botox.botoxContour.domestic')).toEqual([]);
+    expect(keysFor('thermage.name.eyeTip225')).toEqual([]);
+    expect(keysFor('promo.2026-10.20')).toEqual([]);
+  });
+
+  it('기간이 지난 달에는 없다', () => {
+    const nov = getPriceRows(NOV_2);
+    const thermage = nov.find((r) => r.key === 'thermage.name.shot600')!;
+    expect(promoRowsIncluding(thermage, nov)).toEqual([]);
   });
 });

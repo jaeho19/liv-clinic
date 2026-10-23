@@ -336,16 +336,20 @@ describe('runAiTurn — 답이 나간다', () => {
     const admin = adminFor(world());
     const out = await run(admin, 'How much is Thermage 600?');
     if (out.kind !== 'sent') throw new Error('expected sent');
+    // 써마지가 든 이달 프로모션 줄 둘은 AI가 쓰지 않았어도 붙는다 (2026-10-23)
     expect(out.text.split('\n')).toEqual([
       'Here is the price:',
       '• Thermage Laser · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
+      "• Ultherapy Prime 200 shots + Thermage FLX 600 shots + LDM care (this month's promotion, until Oct 31): KRW 2,500,000 (KRW 2,750,000 incl. VAT)",
+      "• Thermage FLX 600 shots + ONDA Lifting 30kJ + LDM care (this month's promotion, until Oct 31): KRW 2,200,000 (KRW 2,420,000 incl. VAT)",
       'The exact amount is decided after your consultation with the doctor; the amounts above are approximate.',
       'Which date suits you?',
     ]);
-    expect(out.usedRows.map((r) => r.key)).toEqual(['thermage.name.shot600']);
+    expect(out.usedRows.map((r) => r.key)).toEqual(['thermage.name.shot600', 'promo.2026-10.16', 'promo.2026-10.20']);
     expect(turnLog(admin)).toMatchObject({
       raw_reply: `Here is the price:\n{{${THERMAGE}}}\nWhich date suits you?`,
-      history_text: 'Here is the price:\n[price line shown: 써마지 레이저 · 600샷]\nWhich date suits you?',
+      history_text:
+        'Here is the price:\n[price line shown: 써마지 레이저 · 600샷]\n[price line shown: [리프팅] 울쎄라피 프라임 200샷 + 써마지 FLX 600샷 + LDM관리]\n[price line shown: [리프팅] 써마지 FLX 600샷 + 온다리프팅 30kJ + LDM관리]\nWhich date suits you?',
     });
   });
 

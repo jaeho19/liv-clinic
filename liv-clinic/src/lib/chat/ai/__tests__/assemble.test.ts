@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { assembleReply, MAX_ASSEMBLED_CHARS, type AssembleArgs } from '../assemble';
 import { EMPTY_BOOKING, type BookingFields } from '../booking';
-import { getKnowledge } from '../knowledge';
+import { getKnowledge, type PriceRow } from '../knowledge';
 
 const NOW = new Date('2026-10-02T07:20:00Z');
 const K = getKnowledge('en', NOW);
@@ -12,10 +12,13 @@ const FEE = idOf('fee.consult');
 
 const BOOKING: BookingFields = { ...EMPTY_BOOKING, date: '2026-10-14', time: '14:00', partySize: 2, name: 'Emma' };
 const WHATSAPP = { channel: 'whatsapp' as const, handle: '+65 9123 4567' };
+// 프로모션 줄 붙이기는 그 describe 에서만 본다 — 다른 시험은 includes 를 뗀 자료로 그린다(써마지 줄 하나가 그대로 한 줄이 되게)
+const withoutIncludes = (rows: ReadonlyMap<string, PriceRow>): Map<string, PriceRow> =>
+  new Map([...rows].map(([id, row]) => [id, { ...row, includes: undefined }]));
 const base: AssembleArgs = {
   locale: 'en',
   reply: 'Hello!',
-  rowById: K.rowById,
+  rowById: withoutIncludes(K.rowById),
   identityQuestion: false,
   bookingEvent: null,
   booking: EMPTY_BOOKING,
@@ -114,10 +117,86 @@ describe('assembleReply — 금액 줄', () => {
 
   it('손님 언어의 이름과 문구로 그린다', () => {
     const ja = getKnowledge('ja', NOW);
-    const a = assembleReply({ ...base, locale: 'ja', rowById: ja.rowById, reply: `料金はこちらです。\n{{${THERMAGE}}}` });
+    const a = assembleReply({ ...base, locale: 'ja', rowById: withoutIncludes(ja.rowById), reply: `料金はこちらです。\n{{${THERMAGE}}}` });
     const lines = a.text.split('\n');
     expect(lines[1]).toMatch(/^• .+：KRW 2,400,000〜（税込 KRW 2,640,000）$/);
     expect(lines[2]).toBe('正確な金額は医師の診察後に決まります。上記はおおよその金額です。');
+  });
+});
+
+describe('assembleReply — 이달 프로모션 줄을 붙인다 (2026-10-23)', () => {
+  const full: AssembleArgs = { ...base, rowById: K.rowById };
+  const CAVEAT = 'The exact amount is decided after your consultation with the doctor; the amounts above are approximate.';
+  const M16_LINE =
+    "• Ultherapy Prime 200 shots + Thermage FLX 600 shots + LDM care (this month's promotion, until Oct 31): KRW 2,500,000 (KRW 2,750,000 incl. VAT)";
+  const M20_LINE =
+    "• Thermage FLX 600 shots + ONDA Lifting 30kJ + LDM care (this month's promotion, until Oct 31): KRW 2,200,000 (KRW 2,420,000 incl. VAT)";
+
+  it('AI가 기본 가격 줄만 쓰면, 그 시술이 든 이달 프로모션 줄을 그 아래에 붙이고 금액 안내는 맨 아래 한 번', () => {
+    const a = assembleReply({ ...full, reply: `Here is the price:\n{{${THERMAGE}}}\n{{B01}}\nWhat date would you prefer?`, benefitText: 'BENEFIT' });
+    expect(a.text.split('\n')).toEqual([
+      'Here is the price:',
+      '• Thermage Laser · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
+      M16_LINE,
+      M20_LINE,
+      CAVEAT,
+      'BENEFIT',
+      'What date would you prefer?',
+    ]);
+    expect(a.usedRows.map((r) => r.key)).toEqual(['thermage.name.shot600', 'promo.2026-10.16', 'promo.2026-10.20']);
+    expect(a.shownKeys).toEqual(['thermage.name.shot600', 'benefit', 'promo.2026-10.16', 'promo.2026-10.20']);
+    expect(a.historyText).toBe(
+      [
+        'Here is the price:',
+        '[price line shown: 써마지 레이저 · 600샷]',
+        '[price line shown: [리프팅] 울쎄라피 프라임 200샷 + 써마지 FLX 600샷 + LDM관리]',
+        '[price line shown: [리프팅] 써마지 FLX 600샷 + 온다리프팅 30kJ + LDM관리]',
+        '[direct-booking benefit sentence shown]',
+        'What date would you prefer?',
+      ].join('\n')
+    );
+  });
+
+  it('AI가 이미 쓴 프로모션 줄은 다시 붙이지 않고, 빠진 것만 마지막 금액 줄 아래에 붙인다', () => {
+    const a = assembleReply({ ...full, reply: `{{${THERMAGE}}}\nThis month's promotion also includes it:\n{{${PROMO}}}\nOK?` });
+    expect(a.text.split('\n')).toEqual([
+      '• Thermage Laser · 600 shots: from KRW 2,400,000 (KRW 2,640,000 incl. VAT)',
+      "This month's promotion also includes it:",
+      M20_LINE,
+      M16_LINE,
+      CAVEAT,
+      'OK?',
+    ]);
+  });
+
+  it('프로모션 묶음에 없는 시술이면 아무것도 붙이지 않는다', () => {
+    const a = assembleReply({ ...full, reply: `{{${idOf('botox.botoxContour.xeomin')}}}` });
+    expect(a.usedRows.map((r) => r.key)).toEqual(['botox.botoxContour.xeomin']);
+  });
+
+  it('프로모션 기간이 지난 달에는 붙이지 않는다', () => {
+    const nov = getKnowledge('en', new Date('2026-11-02T03:00:00Z'));
+    const id = nov.rows.find((r) => r.key === 'thermage.name.shot600')!.id;
+    const a = assembleReply({ ...full, rowById: nov.rowById, reply: `{{${id}}}` });
+    expect(a.usedRows.map((r) => r.key)).toEqual(['thermage.name.shot600']);
+  });
+
+  it('한 답의 금액 줄은 6개를 넘지 않는다 — 넘치는 프로모션 줄은 붙이지 않는다', () => {
+    const tags = ['thermage.name.shot300', 'thermage.name.shot600', 'thermage.name.shot900', 'ulthera.name.upperFace', 'ulthera.name.fullFace']
+      .map((k) => `{{${idOf(k)}}}`)
+      .join('\n');
+    const a = assembleReply({ ...full, reply: tags });
+    expect(a.usedRows).toHaveLength(6);
+    expect(a.usedRows[5].key).toBe('promo.2026-10.16');
+  });
+
+  it('제안 줄 안에 나온 기본 가격 줄로는 붙이지 않는다', () => {
+    const KO = getKnowledge('en', NOW, { offers: true });
+    // 울쎄라 '가볍게' 제안 — 울쎄라피 프라임 상안면 + 슈링크 300샷 (울쎄라는 이달 프로모션 묶음 둘에 들어 있다)
+    const offer = KO.offers.find((o) => o.rowKeys.includes('ulthera.name.upperFace'))!;
+    expect(offer).toBeDefined();
+    const a = assembleReply({ ...full, rowById: KO.rowById, offerById: KO.offerById, reply: `{{${offer.id}}}` });
+    expect(a.usedRows.map((r) => r.key)).toEqual(offer.rowKeys);
   });
 });
 

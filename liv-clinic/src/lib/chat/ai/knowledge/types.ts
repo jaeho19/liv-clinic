@@ -21,6 +21,12 @@ export interface PriceRowSource {
   /** 유효 기간(한국 날짜 YYYY-MM-DD, 양 끝 포함). 없으면 늘 유효하다 */
   validFrom?: string;
   validUntil?: string;
+  /**
+   * 프로모션 줄만: 이 묶음에 든 시술의 기본 가격 줄 key 앞부분(예: 'thermage.name.shot' — 300 · 600 · 900샷, 아이팁은 아님).
+   * AI가 그 기본 가격 줄을 보여 주면 이 줄을 프로그램이 함께 붙인다(2026-10-23). 덤으로 든 것('… 포함'),
+   * '또는'으로 고르는 시술, '추가 선택' 줄은 적지 않는다.
+   */
+  includes?: readonly string[];
   /** 손님에게 보이는 이름 — 10개 언어 */
   labels: Record<VisitorLocale, string>;
 }

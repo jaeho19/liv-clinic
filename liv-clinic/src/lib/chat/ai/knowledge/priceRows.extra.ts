@@ -159,6 +159,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 290000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['pigmentation.co2Laser'],
     labels: {
       en: 'CO2 laser (moles·flat warts·milia·skin tags) entire face or neck, fewer than 50',
       ja: 'CO2レーザー (ほくろ・扁平疣贅・稗粒腫・スキンタッグ) 顔または首全体、50個未満',
@@ -179,6 +180,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 390000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['pigmentation.co2Laser'],
     labels: {
       en: 'CO2 laser (moles·flat warts·milia·skin tags) entire face or neck, fewer than 100',
       ja: 'CO2レーザー (ほくろ・扁平疣贅・稗粒腫・スキンタッグ) 顔または首全体、100個未満',
@@ -239,6 +241,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 700000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['botox.botoxBody'],
     labels: {
       en: 'Body ONDA 60kJ + trapezius Botox 200 units',
       ja: 'Body ONDA 60kJ + 僧帽筋ボトックス 200単位',
@@ -279,6 +282,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 400000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['skinbooster.hilowave'],
     labels: {
       en: 'HILO WAVE 2cc + LDM care + modeling mask',
       ja: 'HILO WAVE 2cc + LDMケア + モデリングマスク',
@@ -319,6 +323,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 550000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['skinbooster.rejuran.', 'skinbooster.eyeRejuran'],
     labels: {
       en: 'Rejuran Healer 2cc + Eye Rejuran 2cc + glow injection 2cc + LDM care + modeling mask',
       ja: 'Rejuran Healer 2cc + Eye Rejuran 2cc + 水光注射 2cc + LDMケア + モデリングマスク',
@@ -339,6 +344,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 750000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['skinbooster.rejuranHbPlus', 'skinbooster.eyeRejuran'],
     labels: {
       en: 'Rejuran HB 2cc + Eye Rejuran 2cc + glow injection 2cc + LDM care + modeling mask',
       ja: 'Rejuran HB 2cc + Eye Rejuran 2cc + 水光注射 2cc + LDMケア + モデリングマスク',
@@ -359,6 +365,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 500000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['pigmentation.potenza'],
     labels: {
       en: 'Potenza (pores) + Fraxel + Juvelook Skin 5cc or butterfly zone skin Botox (German-made) + calming care',
       ja: 'Potenza(毛穴) + Fraxel + Juvelook Skin 5ccまたはバタフライゾーンのスキンボトックス(ドイツ製) + 鎮静ケア',
@@ -379,6 +386,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 900000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['pigmentation.potenza', 'skinbooster.juvelook'],
     labels: {
       en: 'Potenza (pores) + Juvelook Skin 3cc + calming care 3 sessions + butterfly zone skin Botox (Korean-made) 1 session',
       ja: 'Potenza(毛穴) + Juvelook Skin 3cc + 鎮静ケア 3回 + バタフライゾーンのスキンボトックス(韓国製) 1回',
@@ -399,6 +407,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 2500000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['ulthera.name', 'thermage.name.shot'],
     labels: {
       en: 'Ultherapy Prime 200 shots + Thermage FLX 600 shots + LDM care',
       ja: 'Ultherapy Prime 200ショット + Thermage FLX 600ショット + LDMケア',
@@ -439,6 +448,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 1800000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['density.alphaTip'],
     labels: {
       en: 'Density Alpha Tip 600 shots + ONDA Lifting 30kJ + wrinkle Botox (Korean-made) 3 areas + LDM care',
       ja: 'Density Alpha Tip 600ショット + ONDA Lifting 30kJ + しわボトックス(韓国製) 3部位 + LDMケア',
@@ -459,6 +469,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 1590000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['ulthera.name'],
     labels: {
       en: 'Ultherapy Prime 300 shots + ONDA Lifting 60kJ + calming pack',
       ja: 'Ultherapy Prime 300ショット + ONDA Lifting 60kJ + 鎮静パック',
@@ -479,6 +490,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 2200000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['thermage.name.shot'],
     labels: {
       en: 'Thermage FLX 600 shots + ONDA Lifting 30kJ + LDM care',
       ja: 'Thermage FLX 600ショット + ONDA Lifting 30kJ + LDMケア',
@@ -499,6 +511,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 450000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['guide.filler.imported'],
     labels: {
       en: 'Restylane or Juvederm 1cc',
       ja: 'RestylaneまたはJuvederm 1cc',
@@ -519,6 +532,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 1300000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['guide.filler.imported'],
     labels: {
       en: 'Restylane or Juvederm 3cc',
       ja: 'RestylaneまたはJuvederm 3cc',
@@ -539,6 +553,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 2000000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['guide.filler.imported'],
     labels: {
       en: 'Restylane or Juvederm 5cc',
       ja: 'RestylaneまたはJuvederm 5cc',
@@ -579,6 +594,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 3000000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['thread.name.aptosNamica'],
     labels: {
       en: 'APTOS NAMICA19 10 threads (includes ONDA Lifting 1 session)',
       ja: 'APTOS NAMICA19 10本 (ONDA Lifting 1回を含む)',
@@ -599,6 +615,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 1000000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['thread.name.aptosLight25'],
     labels: {
       en: 'APTOS LL25 deep cheek 2 threads (includes ONDA Lifting 1 session)',
       ja: 'APTOS LL25 深頬 2本 (ONDA Lifting 1回を含む)',
@@ -619,6 +636,7 @@ export const EXTRA_PRICE_ROWS: PriceRowSource[] = [
     amount: 2000000,
     unit: 'fixed',
     ...OCT_2026,
+    includes: ['thread.name.aptosLight50'],
     labels: {
       en: 'APTOS LL50 double chin 2 threads (includes ONDA Lifting 1 session)',
       ja: 'APTOS LL50 二重あご 2本 (ONDA Lifting 1回を含む)',

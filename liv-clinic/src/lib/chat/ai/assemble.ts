@@ -2,7 +2,8 @@ import type { VisitorLocale } from '@/lib/chat/chatApi';
 import type { BookingEvent, BookingFields, ContactRef } from './booking';
 import { bookingWhenKo } from './booking';
 import type { ReplyPromise } from './calendar';
-import { TAG_LINE_REST_RE, type OfferRow, type PriceRow } from './knowledge';
+import { MAX_TAGS } from './guards';
+import { promoRowsIncluding, TAG_LINE_REST_RE, type OfferRow, type PriceRow } from './knowledge';
 import { BENEFIT_TAG, offerClosing, offerLead } from './knowledge/offers';
 import { VAT_DISPLAY, type VatDisplay } from './knowledge/scope';
 import { identityAnswer, priceCaveat, renderBookingBlock, renderPriceLine } from './replyTemplates';
@@ -11,6 +12,7 @@ import { identityAnswer, priceCaveat, renderBookingBlock, renderPriceLine } from
 //   꼬리표 {{P031}}  → 금액 줄 (이름과 금액은 가격표에서)
 //   꼬리표 {{C01}}   → 제안 줄: 앞 문장 + 그 구성의 금액 줄 + 마지막 문장 (제안형 응대 §4.3 — 상한은 offerCaps.ts 가 먼저 지운다)
 //   꼬리표 {{B01}}   → 채팅 예약 혜택 문장 (제안형 응대 §4.4 ①)
+//   기본 가격 줄을 꼬리표로 썼으면 → 그 시술이 든 이달 프로모션 줄을 AI가 빠뜨렸어도 붙인다 (2026-10-23 — 한 답에 금액 줄 MAX_TAGS 개까지)
 //   시술 금액 줄이 있으면 → 마지막 금액 줄 바로 아래에 금액 안내 한 줄 (상담비 줄만 있으면 붙이지 않는다)
 //   정체를 물었으면   → 맨 앞에 "자동 응대가 먼저 답하고 …"
 //   가예약이 찼거나 바뀌었으면 → 맨 끝에 가예약 요약 + (채팅 예약 혜택 한 줄) + 확정 약속
@@ -68,6 +70,10 @@ export function assembleReply(args: AssembleArgs): Assembled {
   let lastPriceIndex = -1;
   /** 바로 앞에 낸 금액 줄 — 같은 꼬리표를 잇달아 쓰면 한 번만 보여 준다 */
   let previousRow: PriceRow | null = null;
+  /** AI가 꼬리표로 직접 쓴 기본 가격 줄과, 꼬리표로 쓴 마지막 시술 금액 줄의 자리 (out · history) — 프로모션 줄을 붙일 곳 */
+  const taggedBaseRows: PriceRow[] = [];
+  let lastTaggedOut = -1;
+  let lastTaggedHistory = -1;
 
   const pushRow = (row: PriceRow) => {
     if (!usedRows.includes(row)) usedRows.push(row);
@@ -122,7 +128,32 @@ export function assembleReply(args: AssembleArgs): Assembled {
       // 떨어진 자리에 다시 쓴 꼬리표는 다시 보여 준다(소제목 아래가 비지 않게). 쓰인 가격 줄 목록에는 한 번만 넣는다
       previousRow = row;
       pushRow(row);
+      if (row.group === 'base' && !taggedBaseRows.includes(row)) taggedBaseRows.push(row);
+      if (row.group !== 'fee') {
+        lastTaggedOut = out.length - 1;
+        lastTaggedHistory = history.length - 1;
+      }
     }
+  }
+
+  // 손님이 물은 시술이 든 이달 프로모션 줄 — 지시문에도 "함께 보여라"가 있지만 실제 모델이 자주 빠뜨렸다(2026-10-22 재생: 써마지 5번 중 2번).
+  // 꼬리표로 쓴 마지막 시술 금액 줄 바로 아래에 붙인다. 제안 줄 안의 기본 가격 줄로는 붙이지 않는다(제안 구성이 흐트러진다).
+  const attached: PriceRow[] = [];
+  for (const row of taggedBaseRows) {
+    for (const promo of promoRowsIncluding(row, rowById.values())) {
+      if (usedRows.length + attached.length >= MAX_TAGS) break;
+      if (!usedRows.includes(promo) && !attached.includes(promo)) attached.push(promo);
+    }
+  }
+  if (attached.length > 0) {
+    out.splice(lastTaggedOut + 1, 0, ...attached.map((row) => renderPriceLine(row, locale, vat)));
+    history.splice(lastTaggedHistory + 1, 0, ...attached.map((row) => `[price line shown: ${row.labelKo}]`));
+    for (const row of attached) {
+      usedRows.push(row);
+      shownKeys.add(row.key);
+    }
+    // 붙인 줄은 꼬리표로 쓴 마지막 시술 금액 줄(≤ 마지막 금액 줄) 바로 아래에 들어갔다 — 마지막 금액 줄이 그만큼 아래로 간다
+    lastPriceIndex += attached.length;
   }
   if (lastPriceIndex >= 0) out.splice(lastPriceIndex + 1, 0, priceCaveat(locale, vat));
 
