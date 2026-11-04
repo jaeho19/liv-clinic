@@ -5,8 +5,9 @@ import { useLocale } from 'next-intl';
 import { createClient } from '@/lib/supabase-browser';
 import PopupModal, { popupImageSources } from './PopupModal';
 import type { PopupRow } from '@/types/admin';
-import type { Locale } from '@/i18n/routing';
+import { usePathname, type Locale } from '@/i18n/routing';
 import { pickLocalizedStrict } from '@/lib/i18nFallback';
+import { isPopupHiddenPath } from '@/lib/popupRoutes';
 
 // ── 로컬 정적 팝업 설정 ──────────────────────────────────
 // Supabase 없이도 표시할 팝업을 여기에 추가하세요.
@@ -57,6 +58,7 @@ const getServerMobileSnapshot = () => false;
 
 export default function PopupManager() {
   const locale = useLocale() as Locale;
+  const pathname = usePathname();
   const [popups, setPopups] = useState<PopupRow[]>([]);
   const [visible, setVisible] = useState(true);
   const isMobile = useSyncExternalStore(subscribeViewport, getMobileSnapshot, getServerMobileSnapshot);
@@ -123,7 +125,7 @@ export default function PopupManager() {
           (p) => pickLocalizedStrict(popupImageSources(p), locale) !== null
         );
 
-  if (displayPopups.length === 0 || !visible) return null;
+  if (displayPopups.length === 0 || !visible || isPopupHiddenPath(pathname)) return null;
 
   const handleClose = () => {
     setVisible(false);
