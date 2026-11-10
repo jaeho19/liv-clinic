@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { SITE_INFO, SOCIAL_LINKS } from './constants';
+import { GOOGLE_BUSINESS_URL, SITE_INFO, SOCIAL_LINKS } from './constants';
 import { LOCALES, type Locale } from '@/i18n/routing';
 import { LOCALE_META } from '@/i18n/locales-meta';
 import { isPreviewDeployment, SITE_URL } from './siteEnvironment';
@@ -38,7 +38,7 @@ export function getSiteName(locale?: string): string {
 }
 
 /** Clinic names in the other languages we publish, used for schema alternateName. */
-const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'LIV美容クリニック', 'リブ美容クリニック', 'リブ形成外科', 'LIV整形外科'] as const;
+const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'LIV美容クリニック', 'リブ美容クリニック', 'リブクリニック', 'リブ形成外科', 'LIV整形外科'] as const;
 
 /**
  * alternateName list for the LocalBusiness entity.
@@ -1035,6 +1035,7 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
       'https://pf.kakao.com/_hgFwn',
       SOCIAL_LINKS.youtube,
       'https://www.gangnamunni.com/hospitals/7195',
+      GOOGLE_BUSINESS_URL,
     ],
     medicalSpecialty: [
       'Dermatology',
