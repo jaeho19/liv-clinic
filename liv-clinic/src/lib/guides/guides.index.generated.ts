@@ -18,10 +18,80 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "en",
+    "slug": "choose-lifting-treatment-by-concern",
+    "status": "draft",
+    "title": "Which lifting treatment in Korea? Eight options at a Seoul clinic, sorted by concern",
+    "category": "comparison"
+  },
+  {
+    "locale": "en",
+    "slug": "density-onda-inmode-lifting-seoul",
+    "status": "draft",
+    "title": "Density vs ONDA vs InMode in Seoul: three newer lifting devices compared",
+    "category": "comparison"
+  },
+  {
+    "locale": "en",
     "slug": "downtime-flight-travel-plan",
     "status": "published",
     "title": "Can I fly after Ultherapy or Botox? Downtime by treatment and a 2–3 day Seoul itinerary",
     "category": "aftercare"
+  },
+  {
+    "locale": "en",
+    "slug": "first-visit-what-to-expect-seoul-clinic",
+    "status": "draft",
+    "title": "Your first visit to a skin clinic in Seoul: what happens on the day, step by step",
+    "category": "booking"
+  },
+  {
+    "locale": "en",
+    "slug": "pigmentation-laser-seoul-guide",
+    "status": "draft",
+    "title": "Pigmentation laser in Seoul: melasma, spots, devices, sessions and what fits in one trip",
+    "category": "treatment"
+  },
+  {
+    "locale": "en",
+    "slug": "seoul-clinic-total-cost-payment",
+    "status": "draft",
+    "title": "What will I actually pay at a Seoul clinic? Price list, VAT, consultation fee and payment",
+    "category": "price"
+  },
+  {
+    "locale": "en",
+    "slug": "sinsa-station-clinic-access-from-airport",
+    "status": "draft",
+    "title": "How to get to Sinsa Station from Incheon or Gimpo Airport, and when the clinic is open",
+    "category": "booking"
+  },
+  {
+    "locale": "en",
+    "slug": "skin-booster-seoul-guide",
+    "status": "draft",
+    "title": "Skin boosters in Seoul: products on the list, prices, downtime and fitting one into a short trip",
+    "category": "treatment"
+  },
+  {
+    "locale": "en",
+    "slug": "skin-tone-laser-toning-seoul",
+    "status": "draft",
+    "title": "Laser toning in Seoul for skin tone: devices, sessions, downtime and price",
+    "category": "treatment"
+  },
+  {
+    "locale": "en",
+    "slug": "thermage-flx-cost-seoul",
+    "status": "draft",
+    "title": "Thermage FLX in Seoul: 2026 price guide by shot count, what's included and how to plan your visit",
+    "category": "price"
+  },
+  {
+    "locale": "en",
+    "slug": "thread-lift-aptos-seoul",
+    "status": "draft",
+    "title": "Thread lift and APTOS in Seoul: price, downtime and how long to stay",
+    "category": "treatment"
   },
   {
     "locale": "en",
@@ -53,10 +123,80 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "ja",
+    "slug": "choose-lifting-treatment-by-concern",
+    "status": "draft",
+    "title": "韓国のたるみ治療、どれを選ぶ？お悩み別に見るリフティング8種（新沙・LIV美容クリニック）",
+    "category": "comparison"
+  },
+  {
+    "locale": "ja",
+    "slug": "density-onda-inmode-lifting-seoul",
+    "status": "draft",
+    "title": "デンシティ・オンダリフト・インモードの違いと韓国での料金（新沙・LIV美容クリニック）",
+    "category": "comparison"
+  },
+  {
+    "locale": "ja",
     "slug": "downtime-flight-travel-plan",
     "status": "published",
     "title": "施術後の飛行機搭乗とダウンタイムの目安：1泊2日・2泊3日 美容医療旅行モデルプラン（新沙・LIV美容クリニック）",
     "category": "aftercare"
+  },
+  {
+    "locale": "ja",
+    "slug": "first-visit-what-to-expect-seoul-clinic",
+    "status": "draft",
+    "title": "初めての韓国美容クリニック：来院当日の流れを順番に解説（新沙・LIV美容クリニック）",
+    "category": "booking"
+  },
+  {
+    "locale": "ja",
+    "slug": "pigmentation-laser-seoul-guide",
+    "status": "draft",
+    "title": "韓国でシミ取り・肝斑レーザー — 機器と回数、料金、紫外線ケア、短い旅行でできること（新沙・LIV美容クリニック）",
+    "category": "treatment"
+  },
+  {
+    "locale": "ja",
+    "slug": "seoul-clinic-total-cost-payment",
+    "status": "draft",
+    "title": "韓国の美容クリニック、結局いくら払う？ — 料金表の見方・VAT・カウンセリング料・支払い方法（新沙・LIV美容クリニック）",
+    "category": "price"
+  },
+  {
+    "locale": "ja",
+    "slug": "sinsa-station-clinic-access-from-airport",
+    "status": "draft",
+    "title": "新沙駅への行き方：仁川・金浦空港からLIV美容クリニックまでのアクセスと診療時間",
+    "category": "booking"
+  },
+  {
+    "locale": "ja",
+    "slug": "skin-booster-seoul-guide",
+    "status": "draft",
+    "title": "韓国のスキンブースター・水光注射ガイド — 種類と料金、ダウンタイム、短い旅行での受け方（新沙・LIV美容クリニック）",
+    "category": "treatment"
+  },
+  {
+    "locale": "ja",
+    "slug": "skin-tone-laser-toning-seoul",
+    "status": "draft",
+    "title": "韓国のレーザートーニング — 回数・間隔・ダウンタイム・料金と、旅行中に受けるときの考え方（新沙・LIV美容クリニック）",
+    "category": "treatment"
+  },
+  {
+    "locale": "ja",
+    "slug": "thermage-flx-cost-seoul",
+    "status": "draft",
+    "title": "韓国でサーマクール（サーマジFLX）を受ける前に：ショット数別の値段・施術時間・ダウンタイム（新沙・LIV美容クリニック）",
+    "category": "price"
+  },
+  {
+    "locale": "ja",
+    "slug": "thread-lift-aptos-seoul",
+    "status": "draft",
+    "title": "韓国で糸リフト・アプトス(APTOS)を受ける前に：値段・ダウンタイム・滞在日数の目安（新沙・LIV美容クリニック）",
+    "category": "treatment"
   },
   {
     "locale": "ja",
@@ -123,10 +263,80 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "zh-TW",
+    "slug": "choose-lifting-treatment-by-concern",
+    "status": "draft",
+    "title": "韓國拉提療程怎麼選？依困擾整理首爾診所的8種拉提",
+    "category": "comparison"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "density-onda-inmode-lifting-seoul",
+    "status": "draft",
+    "title": "Density vs ONDA vs InMode：首爾三種新型拉提儀器的差異與價格",
+    "category": "comparison"
+  },
+  {
+    "locale": "zh-TW",
     "slug": "downtime-flight-travel-plan",
     "status": "published",
     "title": "療程後可以搭飛機嗎？各療程恢復期與首爾 2–3 天醫美行程",
     "category": "aftercare"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "first-visit-what-to-expect-seoul-clinic",
+    "status": "draft",
+    "title": "第一次去韓國醫美診所：到院當天流程一次看懂（首爾新沙站 LIV整形外科）",
+    "category": "booking"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "pigmentation-laser-seoul-guide",
+    "status": "draft",
+    "title": "首爾除斑雷射指南：肝斑、色斑用什麼儀器、要做幾次、短期旅行能完成多少",
+    "category": "treatment"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "seoul-clinic-total-cost-payment",
+    "status": "draft",
+    "title": "到首爾做醫美，實際要付多少？價目表、加值稅、面診費與付款方式",
+    "category": "price"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "sinsa-station-clinic-access-from-airport",
+    "status": "draft",
+    "title": "新沙站怎麼去？從仁川、金浦機場到 LIV整形外科 的交通與營業時間",
+    "category": "booking"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "skin-booster-seoul-guide",
+    "status": "draft",
+    "title": "首爾水光針（Skin Booster）指南：產品與價格、恢復期、短期旅行怎麼安排",
+    "category": "treatment"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "skin-tone-laser-toning-seoul",
+    "status": "draft",
+    "title": "首爾淨膚雷射（Laser Toning）：次數、間隔、恢復期與價格，旅行中怎麼安排",
+    "category": "treatment"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "thermage-flx-cost-seoul",
+    "status": "draft",
+    "title": "韓國鳳凰電波 Thermage FLX 價格與行程規劃｜首爾新沙 LIV整形外科",
+    "category": "price"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "thread-lift-aptos-seoul",
+    "status": "draft",
+    "title": "韓國埋線拉提與 APTOS 埋線：價格、恢復期與停留天數｜首爾新沙 LIV整形外科",
+    "category": "treatment"
   },
   {
     "locale": "zh-TW",

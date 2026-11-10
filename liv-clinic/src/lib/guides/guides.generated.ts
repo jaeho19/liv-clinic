@@ -566,6 +566,648 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
+    "title": "Which lifting treatment in Korea? Eight options at a Seoul clinic, sorted by concern",
+    "description": "Ultherapy Prime, Thermage FLX, Density, InMode, ONDA, Shurink, thread lift and APTOS at LIV in Sinsa, Seoul, sorted by concern, downtime, trip length and 2026 starting price.",
+    "keywords": [
+      "which lifting treatment korea",
+      "lifting treatment for sagging jawline",
+      "non surgical face lift seoul",
+      "lifting treatment no downtime korea",
+      "thread lift vs ultherapy korea",
+      "korea lifting treatment price"
+    ],
+    "category": "comparison",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting",
+    "locale": "en",
+    "slug": "choose-lifting-treatment-by-concern",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "A Seoul clinic's lifting menu can run to eight names, and most visitors arrive knowing two of them. This guide sorts the eight lifting options at [LIV Plastic Surgery](/international) by the concern each one is described for on the clinic's own pages, so you can see where your question fits before you message anyone. It is a map, not a diagnosis: the doctor decides the plan at the consultation, after seeing your skin. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station, and international patients pay from the same price list as Korean patients."
+      },
+      {
+        "type": "h2",
+        "text": "All eight at a glance",
+        "id": "all-eight-at-a-glance"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Treatment",
+          "What it is, as the site describes it",
+          "Time",
+          "Anesthesia",
+          "Recovery",
+          "From (per session)"
+        ],
+        "rows": [
+          [
+            "[Ultherapy Prime](/lifting/ulthera)",
+            "HIFU (focused ultrasound) reaching the SMAS layer",
+            "60–90 min",
+            "Anesthetic cream (30 min)",
+            "Immediate return to daily life",
+            "KRW 780,000~"
+          ],
+          [
+            "[Thermage FLX](/lifting/thermage)",
+            "RF (radiofrequency) for the dermal layer",
+            "45–60 min",
+            "Usually none; cream on request",
+            "Immediate return to daily life",
+            "KRW 1,000,000~"
+          ],
+          [
+            "[Density](/lifting/density)",
+            "Entry-level RF lifting device",
+            "40–60 min",
+            "Anesthetic cream (optional)",
+            "Immediate return to daily life",
+            "KRW 890,000~"
+          ],
+          [
+            "[InMode](/lifting/inmode)",
+            "RF, with FX and FORMA modes",
+            "30–60 min",
+            "None, or anesthetic cream",
+            "Immediate return to daily life",
+            "KRW 150,000~"
+          ],
+          [
+            "[ONDA](/lifting/onda)",
+            "2.45 GHz microwave (not RF)",
+            "Face 15–30 min / about 10 min per body area",
+            "Not required",
+            "No downtime",
+            "Quoted at consultation [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음]"
+          ],
+          [
+            "[Shurink](/lifting/shurink)",
+            "HIFU for regular care at a reasonable cost",
+            "30–45 min",
+            "Anesthetic cream (optional)",
+            "Immediate return to daily life",
+            "KRW 200,000~"
+          ],
+          [
+            "[Thread lift](/lifting/thread)",
+            "Threads placed under local anesthesia",
+            "30–60 min",
+            "Local anesthesia",
+            "3–7 days (bruising and swelling possible)",
+            "KRW 800,000~"
+          ],
+          [
+            "[APTOS](/lifting/aptos)",
+            "APTOS-brand thread lifting",
+            "30–60 min",
+            "Local anesthesia",
+            "3–7 days (bruising and swelling possible)",
+            "KRW 1,500,000~"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Per session · VAT not included · \"From\" is the lowest published option for each treatment (for example Ultherapy Prime upper face 200–300 shots, Eye Thermage 225 shots, Shurink 300 shots, MINT 8 threads, APTOS Light Lift 25 with 2 threads). The exact price is confirmed after your consultation."
+      },
+      {
+        "type": "h2",
+        "text": "Sorted by concern",
+        "id": "sorted-by-concern"
+      },
+      {
+        "type": "p",
+        "text": "Each line below repeats what the clinic's treatment pages say the treatment is for. Several treatments appear under more than one concern, which is why the choice is made in person."
+      },
+      {
+        "type": "h3",
+        "text": "Sagging skin and the jawline"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Ultherapy Prime** is described for people concerned about sagging skin or loss of elasticity who want lifting without surgery. Areas: forehead, eye area, cheeks, jawline and neck.",
+          "**Thread lift** is described for people who want immediate lifting, are concerned about sagging cheeks, want nasolabial folds and the jawline tidied, or were not satisfied with laser lifting alone.",
+          "**Shurink** and **Density** cover the same areas as Ultherapy Prime (forehead, eye area, cheeks, jawline, neck). Shurink is positioned for a first lifting treatment or regular upkeep, Density for a combined lifting effect."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Loss of elasticity and fine lines"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Thermage FLX** is described for loss of elasticity and fine lines, with a natural, gradual change. It treats the full face, eye area, neck and body, and has a dedicated tip for the eye area.",
+          "**InMode** lists collagen regeneration and improvement of fine lines among its uses."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Facial fat together with laxity"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**InMode** is recommended by the clinic when facial fat and sagging skin are a combined concern: fat under the chin, cheek fullness, the face line, a double chin.",
+          "**ONDA** is described for loss of elasticity together with localized fat, on the face (cheeks, jawline), the double chin and the body (abdomen, flanks, thighs, arms)."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "Longer-lasting change, and volume"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**APTOS** is described for people who want long-lasting lifting, a biostimulation effect, and natural-looking volume and firmness. The clinic gives a duration of up to 24 months and describes APTOS NAMICA as encapsulating 40 mg of hyaluronic acid.",
+          "**Ultherapy Prime** results are described as lasting 1–2 years, varying from person to person.",
+          "Where lost volume is the main concern, the doctor may also discuss [filler](/antiaging/filler) rather than a lifting device."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "No downtime, or no anesthesia"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "All six energy devices list an immediate return to daily life. **ONDA** needs no anesthesia, **Thermage FLX** is usually done without it, and **InMode** can be done without it.",
+          "**Thread lift** and **APTOS** use local anesthesia, and bruising or swelling is possible for 3–7 days."
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "A first treatment, or a smaller budget"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Shurink** is positioned for a first lifting treatment, a quick session and lifting at a reasonable cost.",
+          "**Density** is described as an entry-level RF lifting device at a reasonable cost.",
+          "**InMode** has the lowest published starting price of the eight. Lower price does not mean it addresses the same concern, so compare the \"for\" lines above before the price column."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "How soon, how long, how often",
+        "id": "how-soon-how-long-how-often"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Treatment",
+          "Results, as the site describes them",
+          "Repeat"
+        ],
+        "rows": [
+          [
+            "Ultherapy Prime",
+            "Gradual improvement over 3–6 months, lasts 1–2 years",
+            "Once every 1–2 years"
+          ],
+          [
+            "Thermage FLX",
+            "Immediate elasticity improvement, collagen regeneration over 3–6 months",
+            "Once every 6 months to 1 year"
+          ],
+          [
+            "Density",
+            "Immediate lifting + collagen regeneration over 3–6 months",
+            "Every 3–6 months"
+          ],
+          [
+            "InMode",
+            "Immediate firmness + gradual collagen regeneration",
+            "Every 3–6 months (maintenance)"
+          ],
+          [
+            "ONDA",
+            "Appears gradually over 4–12 weeks",
+            "Set at consultation"
+          ],
+          [
+            "Shurink",
+            "Results begin after 2–4 weeks, peaking at 3 months",
+            "Every 3–6 months"
+          ],
+          [
+            "Thread lift",
+            "Immediate lifting, lasting 6–12 months depending on the thread",
+            "Set at consultation"
+          ],
+          [
+            "APTOS",
+            "Immediate lifting, lasting up to 24 months",
+            "Set at consultation"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Durations vary with skin condition, age and lifestyle, and the cycle is set at the consultation. For the detail on the first, second and sixth rows, see our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink); for Density, ONDA and InMode, see the [three-device comparison](/guides/density-onda-inmode-lifting-seoul)."
+      },
+      {
+        "type": "h2",
+        "text": "If you are on a short trip",
+        "id": "if-you-are-on-a-short-trip"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Energy devices.** Most non-surgical treatments at LIV take 30 to 90 minutes with no hospitalization, and many patients are treated on the day of their visit. Ultherapy Prime and Thermage FLX are completed in one session with no revisit required. For the other devices, ask about follow-up when you book.",
+          "**Threads.** A thread lift has an optional check about one week later, or a remote photo check after you fly home. Expect 3–7 days in which bruising and swelling are possible, light makeup from 24 hours after the treatment, and two weeks of avoiding strong facial expressions and massage. Plan photos and events around that.",
+          "**Combining.** The clinic says a thread lift can be combined with laser lifting after 1–2 weeks, and APTOS after 2–4 weeks. On a short trip that usually means choosing one and doing the other on a later visit; the doctor confirms the order.",
+          "**Planning.** Our [downtime and flight guide](/guides/downtime-flight-travel-plan) and [booking guide](/guides/book-seoul-clinic-foreigner) cover the calendar and the steps."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What the doctor needs to know",
+        "id": "what-the-doctor-needs-to-know"
+      },
+      {
+        "type": "p",
+        "text": "The clinic's own cautions differ by treatment, and they can change which option is offered."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Pregnancy and breastfeeding.** Lifting treatments are not recommended during pregnancy or while breastfeeding.",
+          "**Pacemaker.** Thermage FLX is not performed on people with a pacemaker; for ONDA, tell the clinic.",
+          "**Metal implants.** A metal implant in the treatment area needs a consultation first for Ultherapy Prime and Thermage FLX; for ONDA, tell the clinic about any metal implant in the body.",
+          "**Sensitive skin or skin problems.** Sensitive skin needs a consultation first for Shurink. For ONDA, mention any inflammation, infection or wound in the area.",
+          "**Threads.** A pulling sensation is possible in the treated area, and infection or thread exposure is possible in rare cases."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Before you decide",
+        "id": "before-you-decide"
+      },
+      {
+        "type": "p",
+        "text": "Use this page to narrow the list to two or three names, then let the doctor do the rest: at LIV the board-certified plastic surgeon diagnoses your skin in person and recommends a plan based on your concerns and the result you want; see [our medical team](/about/staff). Prices for every treatment here are on the [price list](/pricing) or the treatment pages. Send questions and photos through the [international patients page](/international) or the [contact form](/contact); more answers are on the [medical Q&A page](/medical)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Which lifting treatment is right for a sagging jawline?",
+        "a": "The jawline is a listed treatment area for Ultherapy Prime, Shurink, Density, ONDA, thread lifts and APTOS, and InMode lists the face line. Which of them fits depends on whether the main issue is sagging skin, facial fat or both, and that is diagnosed by the doctor in person."
+      },
+      {
+        "q": "Which lifting treatments have no downtime?",
+        "a": "Ultherapy Prime, Thermage FLX, Density, InMode, ONDA and Shurink all list an immediate return to daily life. Thread lifts and APTOS list 3–7 days in which bruising and swelling are possible."
+      },
+      {
+        "q": "Can two lifting treatments be combined?",
+        "a": "Yes, in several cases. The clinic says combining Ultherapy Prime and Thermage can produce synergistic effects, that InMode with Thermage allows a stronger improvement in elasticity, and that a thread lift can be combined with laser lifting after 1–2 weeks. Whether a combination suits you is decided at the consultation."
+      },
+      {
+        "q": "What is the difference between a regular thread lift and APTOS?",
+        "a": "Both take 30–60 minutes under local anesthesia with 3–7 days of possible bruising and swelling. The clinic gives 6–12 months for a thread lift depending on the thread, and up to 24 months for APTOS, which it lists as certified by KFDA (class 4), CE, ISO 13485 and FDA MDSAP."
+      },
+      {
+        "q": "Can I choose the treatment myself before I arrive?",
+        "a": "You can say what you are interested in, and the clinic will send a suggestion and a price estimate after seeing your photos. The final plan is set at the in-person consultation. The 1:1 consultation fee is KRW 10,000, fully deducted from the treatment cost if you go ahead the same day."
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "Density vs ONDA vs InMode in Seoul: three newer lifting devices compared",
+    "description": "Density, ONDA and InMode compared on energy type, treatment time, anesthesia, downtime, results and 2026 prices at LIV in Sinsa, Seoul, and who the clinic describes each one for.",
+    "keywords": [
+      "density lifting korea",
+      "onda lifting korea",
+      "inmode korea price",
+      "inmode fx forma seoul",
+      "density rf lifting price",
+      "onda vs inmode"
+    ],
+    "category": "comparison",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting",
+    "locale": "en",
+    "slug": "density-onda-inmode-lifting-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Ultherapy and Thermage are the names most visitors already know. Once you start reading Korean clinic menus, three more appear again and again: Density, ONDA and InMode. This guide sets out how [LIV Plastic Surgery](/international) describes each of them, what they take in time and recovery, and what they cost, so you can ask better questions before you message a clinic. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency."
+      },
+      {
+        "type": "h2",
+        "text": "The short answer",
+        "id": "the-short-answer"
+      },
+      {
+        "type": "p",
+        "text": "The three do not use the same energy, and the clinic does not describe them for the same person."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Density** is described by the clinic as an entry-level RF (radiofrequency) lifting device at a reasonable cost. It covers the forehead, eye area, cheeks, jawline and neck.",
+          "**ONDA** is not RF. It uses 2.45 GHz microwave energy, needs no anesthesia, and is the only one of the three the clinic also uses on the body.",
+          "**InMode** is the option the clinic recommends when facial fat and sagging skin are a combined concern, with FX and FORMA modes priced separately."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "This is not a ranking. Which one fits you, or whether a different treatment on the [lifting pages](/lifting) fits better, is decided with the doctor at the consultation."
+      },
+      {
+        "type": "h2",
+        "text": "Density, ONDA and InMode at a glance",
+        "id": "density-onda-and-inmode-at-a-glance"
+      },
+      {
+        "type": "table",
+        "header": [
+          "",
+          "Density",
+          "ONDA",
+          "InMode"
+        ],
+        "rows": [
+          [
+            "Energy, as the site describes it",
+            "RF (radiofrequency)",
+            "2.45 GHz microwave (not RF)",
+            "RF"
+          ],
+          [
+            "Treatment time",
+            "40–60 minutes",
+            "Face 15–30 minutes / about 10 minutes per body area",
+            "30–60 minutes"
+          ],
+          [
+            "Anesthesia",
+            "Topical anesthetic cream (optional)",
+            "No anesthesia required",
+            "No anesthesia or topical anesthetic cream"
+          ],
+          [
+            "Recovery",
+            "Immediate return to daily life",
+            "No downtime (return to daily life right after the treatment)",
+            "Immediate return to daily life"
+          ],
+          [
+            "Results",
+            "Immediate lifting + collagen regeneration over 3–6 months",
+            "Appears gradually over 4–12 weeks (varies by individual)",
+            "Immediate firmness + gradual collagen regeneration"
+          ],
+          [
+            "Areas",
+            "Forehead, eye area, cheeks, jawline, neck",
+            "Face (cheeks, jawline), double chin, abdomen, flanks, thighs, arms",
+            "Under the chin, cheeks, face line, double chin, deep cheek area"
+          ],
+          [
+            "Repeat interval",
+            "3–6 months recommended",
+            "Set at consultation",
+            "Every 3–6 months as maintenance"
+          ],
+          [
+            "Return visit",
+            "Confirm at consultation",
+            "Confirm at consultation",
+            "Confirm at consultation"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "All values are from LIV's treatment pages and medical Q&A. The clinic's international patients page lists revisit guidance for Ultherapy Prime, Thermage FLX and thread lifts only, so ask about follow-up for these three when you book."
+      },
+      {
+        "type": "h2",
+        "text": "What each device is for",
+        "id": "what-each-device-is-for"
+      },
+      {
+        "type": "h3",
+        "text": "Density"
+      },
+      {
+        "type": "p",
+        "text": "The clinic describes Density for people who want a combined lifting effect, who want both an immediate effect and long-term improvement, and who were not satisfied with an earlier lifting treatment. Treatment takes 40–60 minutes; anesthetic cream is optional. The clinic's results line reads \"immediate lifting + collagen regeneration over 3–6 months\", and it recommends an interval of 3–6 months between sessions. Asked how it differs from Ultherapy Prime and Thermage, the clinic's answer is that Density is an entry-level RF lifting device at a reasonable cost. See the [Density page](/lifting/density)."
+      },
+      {
+        "type": "h3",
+        "text": "ONDA"
+      },
+      {
+        "type": "p",
+        "text": "ONDA is often assumed to be another RF device. The clinic's own answer is no: it uses 2.45 GHz microwave energy. It is described for people who have loss of elasticity together with localized fat, who want improvement without downtime, and who want to care for the face and body together. On the face it treats the cheeks and jawline and the double chin in 15–30 minutes; on the body it treats the abdomen, flanks, thighs and arms at about 10 minutes per area. It is performed without anesthesia and is reported to feel similar to a warm massage. Results are not immediate: they appear gradually over 4–12 weeks and vary by individual. See the [ONDA page](/lifting/onda)."
+      },
+      {
+        "type": "h3",
+        "text": "InMode"
+      },
+      {
+        "type": "p",
+        "text": "The clinic recommends InMode for people whose concerns combine facial fat and sagging skin. Its listed uses are reducing fat under the chin while strengthening elasticity, lifting the cheeks and tidying the face line, improving a double chin and the deep cheek area, and collagen regeneration with improvement of fine lines. Treatment takes 30–60 minutes, with no anesthesia or with anesthetic cream. The clinic lists it alongside Shurink as a maintenance treatment that can be done every 3–6 months. It can also be combined with Thermage: the clinic says RF synergy allows a stronger improvement in elasticity. See the [InMode page](/lifting/inmode)."
+      },
+      {
+        "type": "h2",
+        "text": "Prices at LIV (2026, per session)",
+        "id": "prices-at-liv-2026-per-session"
+      },
+      {
+        "type": "p",
+        "text": "Density and InMode prices are published on their treatment pages."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Treatment",
+          "Option",
+          "Price (per session)"
+        ],
+        "rows": [
+          [
+            "Density",
+            "Hi tip · 300 shots",
+            "KRW 890,000~"
+          ],
+          [
+            "Density",
+            "Hi tip · 600 shots",
+            "KRW 1,500,000~"
+          ],
+          [
+            "Density",
+            "Alpha tip · 300 shots",
+            "KRW 990,000~"
+          ],
+          [
+            "Density",
+            "Alpha tip · 600 shots",
+            "KRW 1,800,000~"
+          ],
+          [
+            "InMode",
+            "FX mode",
+            "KRW 150,000~"
+          ],
+          [
+            "InMode",
+            "FORMA mode",
+            "KRW 200,000~"
+          ],
+          [
+            "InMode",
+            "FX / FORMA mode",
+            "KRW 250,000~"
+          ],
+          [
+            "ONDA",
+            "Face or body area",
+            "Quoted at consultation [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인]"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Per session · VAT not included · The exact price is confirmed after your consultation and may vary with your skin condition, treatment scope and the products used. International patients are charged from the same price list as Korean patients."
+      },
+      {
+        "type": "p",
+        "text": "The tilde means \"from\". Which Density tip and shot count, or which InMode mode, applies to you is agreed with the doctor at the consultation, and that is when the final figure is set. For Ultherapy Prime, Thermage FLX and Shurink prices, see the [price list](/pricing) and our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink)."
+      },
+      {
+        "type": "h2",
+        "text": "Who each one suits, in the clinic's words",
+        "id": "who-each-one-suits-in-the-clinics-words"
+      },
+      {
+        "type": "table",
+        "header": [
+          "If your main concern is…",
+          "The site associates it with"
+        ],
+        "rows": [
+          [
+            "A first RF lifting treatment at a reasonable cost",
+            "Density"
+          ],
+          [
+            "Immediate effect plus longer-term improvement",
+            "Density"
+          ],
+          [
+            "Loss of elasticity together with localized fat",
+            "ONDA, InMode"
+          ],
+          [
+            "Double chin",
+            "ONDA, InMode"
+          ],
+          [
+            "Fat under the chin, cheek fullness, face line",
+            "InMode"
+          ],
+          [
+            "Face and body in the same plan",
+            "ONDA"
+          ],
+          [
+            "No anesthesia",
+            "ONDA (none required); InMode (none, or cream)"
+          ],
+          [
+            "Regular maintenance every 3–6 months",
+            "InMode, Density"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Treat the table as a map of how the clinic describes each device, not as a diagnosis. Two people with the same concern can be given different plans, and the doctor may suggest a treatment that is not in this comparison at all, such as [Ultherapy Prime](/lifting/ulthera), [Thermage FLX](/lifting/thermage) or a [thread lift](/lifting/thread)."
+      },
+      {
+        "type": "h2",
+        "text": "What to tell the doctor",
+        "id": "what-to-tell-the-doctor"
+      },
+      {
+        "type": "p",
+        "text": "These cautions are the clinic's own. Mention anything that applies in your first message."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Pregnancy and breastfeeding.** Density and InMode are not performed during pregnancy or while breastfeeding. For ONDA, the clinic asks you to tell it at the consultation if you are pregnant or breastfeeding.",
+          "**Pacemaker or metal implants.** For ONDA, tell the clinic if you have a pacemaker or a metal implant in the body.",
+          "**Skin problems in the treatment area.** For ONDA, tell the clinic about any inflammation, infection or wound in the area. For Density and InMode, whether treatment is possible depends on your skin condition and is checked at the consultation.",
+          "**Underlying conditions.** For ONDA, tell the clinic about conditions such as uncontrolled diabetes.",
+          "**After the treatment.** Mild swelling or redness is possible after Density and InMode."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Fitting it into a Seoul trip",
+        "id": "fitting-it-into-a-seoul-trip"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Same-day treatment.** Most non-surgical treatments at LIV take 30 to 90 minutes and need no hospitalization, so many patients are treated on the day of their visit.",
+          "**Booking.** Message the clinic on WhatsApp (+82 10-6888-2773), the live chat or the [contact form](/contact). Share your concerns and photos, and the clinic suggests suitable treatments and sends a price estimate before you travel. Replies come within one business day, and no deposit is needed to reserve a consultation. The steps are in our [booking guide](/guides/book-seoul-clinic-foreigner).",
+          "**Language.** Consultations are available in English; interpretation is arranged free of charge on request.",
+          "**Clinic hours.** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed Sunday (Korea time).",
+          "**Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. See [location](/about/location).",
+          "**Timing your flight.** All three list an immediate return to daily life. Your own timing is confirmed at the consultation; our [downtime and flight guide](/guides/downtime-flight-travel-plan) covers planning."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Before you decide",
+        "id": "before-you-decide"
+      },
+      {
+        "type": "p",
+        "text": "This comparison shows how the three devices differ, not which one your skin needs. That is decided at the consultation, where the board-certified plastic surgeon diagnoses your skin in person and recommends a plan; see [our medical team](/about/staff). The 1:1 consultation fee is KRW 10,000, fully deducted from the treatment cost if you go ahead the same day, and you are free to decide later. Send questions through the [international patients page](/international) or the [contact form](/contact); more answers are on the [medical Q&A page](/medical)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Is ONDA a radiofrequency (RF) treatment?",
+        "a": "No. ONDA uses 2.45 GHz microwave energy. Density and InMode are the RF options in this comparison."
+      },
+      {
+        "q": "Does Density, ONDA or InMode need anesthesia?",
+        "a": "ONDA is performed without anesthesia and is reported to feel similar to a warm massage. InMode is done with no anesthesia or with topical anesthetic cream, and for Density the anesthetic cream is optional."
+      },
+      {
+        "q": "How soon do results appear?",
+        "a": "The clinic describes Density as immediate lifting plus collagen regeneration over 3–6 months, and InMode as immediate firmness plus gradual collagen regeneration. ONDA is not immediate: results appear gradually over 4–12 weeks. Results vary from person to person."
+      },
+      {
+        "q": "How often are these treatments repeated?",
+        "a": "The clinic recommends an interval of 3–6 months for Density, and lists InMode as a maintenance treatment that can be done every 3–6 months. The cycle depends on your skin condition and the result you want, so the exact frequency is set at the consultation."
+      },
+      {
+        "q": "Can InMode be combined with Thermage?",
+        "a": "Yes. The clinic says the RF synergy allows a stronger improvement in elasticity. Whether a combination suits you is decided at the consultation."
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 1
+  },
+  {
     "title": "Can I fly after Ultherapy or Botox? Downtime by treatment and a 2–3 day Seoul itinerary",
     "description": "Same-day, no-revisit treatments at LIV in Sinsa, Seoul, what is and is not known about flying afterwards, and model itineraries for a 2- or 3-day trip.",
     "keywords": [
@@ -854,6 +1496,2436 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "readingMinutes": 10,
     "reviewMarkers": 0
+  },
+  {
+    "title": "Your first visit to a skin clinic in Seoul: what happens on the day, step by step",
+    "description": "A step-by-step walk through a first visit to LIV Plastic Surgery in Sinsa, Seoul — arrival, consultation with the doctor, numbing time, how long each treatment takes, the consultation fee, payment, aftercare and follow-up by messenger, with a before / on the day / after checklist.",
+    "keywords": [
+      "first time korea skin clinic what to expect",
+      "seoul clinic consultation fee",
+      "korean skin clinic visit step by step",
+      "how long does ultherapy take korea",
+      "what to tell clinic before treatment korea",
+      "seoul skin clinic english interpreter"
+    ],
+    "category": "booking",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/international",
+    "locale": "en",
+    "slug": "first-visit-what-to-expect-seoul-clinic",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Booking a clinic from overseas is one thing; walking in on the day is another. If this is your first time at a clinic in Korea, the questions are usually practical ones. How long will I be there? Who do I talk to, and in which language? When does the numbing cream go on? What do I pay, and what happens once I am back home?"
+      },
+      {
+        "type": "p",
+        "text": "This guide follows one visit to LIV Plastic Surgery (LIV) from the front door to the follow-up message a week later. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station (Line 3, Exit 4) and next to Garosu-gil. The work here is lifting, botox, filler and skin boosters, and most of these treatments take 30 to 90 minutes with no hospitalization, so many patients are treated on the same day as their consultation. What you are treated with, and how much of it, is decided with the doctor at that consultation."
+      },
+      {
+        "type": "h2",
+        "text": "The day in six steps",
+        "id": "the-day-in-six-steps"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**Arrive.** Sinsa Station, Line 3, Exit 4. The clinic is a one-minute walk away, on the 4th floor of the Jaeun Building. Routes from the airports are in the [location page](/about/location).",
+          "**Consultation with the doctor.** A board-certified plastic surgeon examines your skin in person and confirms, or adjusts, the plan you discussed by messenger. Consultations are available in English, Japanese and Chinese, and an interpreter is arranged free of charge if you ask for one when you book. [검수 필요: 대면 상담에 걸리는 시간]",
+          "**Preparation.** Where a treatment uses a topical anesthetic cream, it goes on before the treatment and needs time to work — about 30 minutes for Ultherapy Prime. Some treatments need no anesthesia at all (table below).",
+          "**Treatment.** Between 10 and 90 minutes depending on what you are having.",
+          "**Payment.** You pay at the clinic, from the same published [price list](/pricing) as Korean patients.",
+          "**Aftercare instructions.** Before you leave you receive a written aftercare guide in English, Japanese or Chinese."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Then you walk out. No hospital stay is involved, and for most treatments no second appointment either."
+      },
+      {
+        "type": "h2",
+        "text": "How long each treatment takes",
+        "id": "how-long-each-treatment-takes"
+      },
+      {
+        "type": "p",
+        "text": "These are the times and anesthesia methods listed on LIV's treatment pages. Add the consultation and any numbing time when you work out how long you will be at the clinic."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Treatment",
+          "Before the treatment",
+          "Treatment time",
+          "Return visit"
+        ],
+        "rows": [
+          [
+            "[Ultherapy Prime](/lifting/ulthera)",
+            "Topical anesthetic cream, about 30 minutes",
+            "60–90 minutes",
+            "Not required"
+          ],
+          [
+            "[Thermage FLX](/lifting/thermage)",
+            "No anesthesia (vibration reduces discomfort)",
+            "45–60 minutes",
+            "Not required"
+          ],
+          [
+            "[Botox](/antiaging/botox)",
+            "No anesthesia, or cream on request",
+            "10–20 minutes",
+            "Not required"
+          ],
+          [
+            "[Filler](/antiaging/filler)",
+            "Topical anesthetic cream or nerve block",
+            "20–40 minutes",
+            "Not required"
+          ],
+          [
+            "[Skin booster](/antiaging/skinbooster)",
+            "Topical anesthetic cream",
+            "30–45 minutes",
+            "Not required"
+          ],
+          [
+            "[Thread lift](/lifting/thread)",
+            "Local anesthesia",
+            "30–60 minutes",
+            "Optional check about 1 week later, or a remote photo check"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Timelines are general guidance and are confirmed during your consultation. If you are sensitive to pain, say so at the consultation — additional pain control is possible for lifting treatments."
+      },
+      {
+        "type": "p",
+        "text": "If you are combining two treatments in one visit, tell the clinic in advance so the appointment is long enough. Recovery times and what is known about flying afterwards are covered separately in the [downtime and flight guide](/guides/downtime-flight-travel-plan)."
+      },
+      {
+        "type": "h2",
+        "text": "What to tell the clinic before you come",
+        "id": "what-to-tell-the-clinic-before-you-come"
+      },
+      {
+        "type": "p",
+        "text": "The clinic can only plan around what it knows. LIV's treatment pages and medical Q&A ask you to mention the following, ideally in your first messages rather than on the day:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Pregnancy or breastfeeding.** Most cosmetic treatments are not recommended during pregnancy or breastfeeding. The clinic recommends treatment after both are finished.",
+          "**A pacemaker.** Thermage FLX is not performed on patients with a pacemaker.",
+          "**A metal implant in the treatment area.** A consultation is needed first for Ultherapy Prime and Thermage FLX.",
+          "**A neuromuscular disorder.** Botox is not performed.",
+          "**Inflammation, infection or a wound in the treatment area, or an underlying condition such as uncontrolled diabetes.** The ONDA page asks you to mention these at the consultation; it is sensible to raise them for any treatment.",
+          "**Your flight times.** Not a medical fact, but the clinic schedules around them."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "None of this replaces the in-person consultation. It simply means the doctor is not hearing something important for the first time when you are already in the chair."
+      },
+      {
+        "type": "h2",
+        "text": "The consultation fee and how it is credited",
+        "id": "the-consultation-fee-and-how-it-is-credited"
+      },
+      {
+        "type": "p",
+        "text": "A 1:1 consultation with the doctor costs KRW 10,000. If you go ahead with treatment on the same day, the fee is fully deducted from the treatment cost. You can also come for the consultation alone and decide later; the clinic's own Q&A says it is fine to take your time."
+      },
+      {
+        "type": "p",
+        "text": "Two more points about money:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**No deposit.** No deposit is required to reserve a consultation.",
+          "**Same price list.** International patients pay from the same price list as Korean patients. There is no foreigner surcharge and no charge for language support or interpretation. Prices on the [price list](/pricing) are per session and exclude VAT, and the final figure is confirmed after the consultation."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Paying on the day",
+        "id": "paying-on-the-day"
+      },
+      {
+        "type": "p",
+        "text": "The clinic accepts international cards — Visa, Mastercard, American Express, JCB and UnionPay — and cash in Korean won (KRW). If you have a question about payment, raise it during the consultation or beforehand by messenger."
+      },
+      {
+        "type": "h2",
+        "text": "Checklist: before you fly, on the day, after you go home",
+        "id": "checklist-before-you-fly-on-the-day-after-you-go-home"
+      },
+      {
+        "type": "table",
+        "header": [
+          "When",
+          "What to do"
+        ],
+        "rows": [
+          [
+            "Before you fly",
+            "Message the clinic on WhatsApp (+82 10-6888-2773), the live chat on this site or the [contact form](/contact) with your concern, 2–3 photos and your dates in Seoul. Replies come within one business day."
+          ],
+          [
+            "Before you fly",
+            "Receive the remote consultation and price estimate, then reserve a date and time. Give two or three possible slots if your dates are tight."
+          ],
+          [
+            "Before you fly",
+            "Tell the clinic about pregnancy or breastfeeding, a pacemaker, metal implants and any ongoing medical condition. Ask for an interpreter if you want one."
+          ],
+          [
+            "Before you fly",
+            "Check the clinic's hours against your flights: Monday–Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time). The clinic is generally closed on Korean public holidays as well."
+          ],
+          [
+            "On the day",
+            "Sinsa Station Exit 4, one-minute walk, 4th floor of the Jaeun Building."
+          ],
+          [
+            "On the day",
+            "In-person consultation with the doctor: the plan is confirmed here. Ask anything you are unsure about, including pain control."
+          ],
+          [
+            "On the day",
+            "Numbing where needed, then treatment. Pay by international card or KRW cash."
+          ],
+          [
+            "On the day",
+            "Take the written aftercare guide with you and follow it that evening."
+          ],
+          [
+            "After you go home",
+            "Send photos through the same messenger or chat; the clinic reviews your progress and guides your aftercare."
+          ],
+          [
+            "After you go home",
+            "Thread lift only: the optional check about one week later can be done remotely with photos."
+          ],
+          [
+            "After you go home",
+            "Botox: results begin after 3–7 days, and a touch-up may be needed 2–3 weeks after a first treatment. Send photos so the clinic can check."
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "After the treatment, the same evening",
+        "id": "after-the-treatment-the-same-evening"
+      },
+      {
+        "type": "p",
+        "text": "What you are asked to do depends on the treatment, and your written guide is the reference. A few examples from LIV's treatment pages: after botox, avoid alcohol and saunas on the day and do not massage the treated area; after filler, no massage or pressure on the area, and avoid strenuous exercise and saunas for 3 days; after a skin booster, avoid makeup and alcohol on the day and protect the skin from the sun. The fuller list, by treatment, is in the [downtime and flight guide](/guides/downtime-flight-travel-plan)."
+      },
+      {
+        "type": "h2",
+        "text": "Follow-up after you fly home",
+        "id": "follow-up-after-you-fly-home"
+      },
+      {
+        "type": "p",
+        "text": "Leaving Seoul does not end the contact. You send photos through your messenger or the live chat, the clinic reviews your progress and answers your questions, and you have the written aftercare guide to refer to. If something worries you, message with a photo rather than waiting."
+      },
+      {
+        "type": "h2",
+        "text": "Before you message",
+        "id": "before-you-message"
+      },
+      {
+        "type": "p",
+        "text": "This is the general flow of a first visit. Which treatment suits you, how much of it, and what it costs are confirmed at the consultation with the doctor. To start, send your dates and a couple of photos through the [international patients page](/international), and see [how to book as a foreigner](/guides/book-seoul-clinic-foreigner) for the booking steps and a first message you can copy."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much is the consultation, and do I get it back?",
+        "a": "A 1:1 consultation costs KRW 10,000. If you proceed with treatment on the same day, the fee is fully deducted from the treatment cost. You can also have the consultation only and decide afterwards."
+      },
+      {
+        "q": "Can I be treated on the same day as my consultation?",
+        "a": "In most cases, yes. Most non-surgical treatments take 30 to 90 minutes and require no hospitalization, so many patients are treated on the day of their visit. The final decision is made after the in-person consultation with the doctor."
+      },
+      {
+        "q": "Will there be an interpreter?",
+        "a": "Consultations are available in English, Japanese and Chinese. If you prefer an interpreter, one is arranged free of charge — ask when you book. There is no extra charge for language support."
+      },
+      {
+        "q": "What should I tell the clinic before my visit?",
+        "a": "Tell the clinic if you are pregnant or breastfeeding, have a pacemaker, have a metal implant in the treatment area, or have a neuromuscular disorder or another ongoing condition. Most cosmetic treatments are not recommended during pregnancy or breastfeeding, and Thermage FLX is not performed on patients with a pacemaker."
+      },
+      {
+        "q": "Do I have to come back to the clinic before I leave Korea?",
+        "a": "Not for Ultherapy Prime, Thermage FLX, botox, filler or skin boosters, which are completed the same day with no revisit required. A thread lift has an optional check about one week later, which can be a remote photo check."
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "Pigmentation laser in Seoul: melasma, spots, devices, sessions and what fits in one trip",
+    "description": "How LIV Plastic Surgery in Sinsa, Seoul treats melasma, spots, freckles and age spots — the three-stage system and the lasers it uses, sessions and intervals by severity, published prices, sun care afterwards, and an honest look at how much of a multi-session program fits into a short visit.",
+    "keywords": [
+      "pigmentation laser seoul",
+      "melasma treatment korea",
+      "pico laser seoul price",
+      "laser toning korea",
+      "dark spot removal korea",
+      "freckle removal seoul",
+      "pigmentation treatment korea foreigner"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/laser",
+    "locale": "en",
+    "slug": "pigmentation-laser-seoul-guide",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Laser treatment for dark spots and melasma is high on many visitors' lists for Seoul, and it is also the treatment most likely to be misunderstood before a trip: pigmentation is usually treated over several sessions spaced weeks apart, not in a single afternoon. This guide lays out what [LIV Plastic Surgery](/international) publishes about its [laser](/laser) pigmentation care — the types of pigment it treats, the devices, the session counts and intervals, the prices that are listed, and the sun care that follows — so you can decide what is realistic for the days you have. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station, and international patients pay from the same price list as Korean patients."
+      },
+      {
+        "type": "h2",
+        "text": "Which kinds of pigmentation the clinic treats",
+        "id": "which-kinds-of-pigmentation-the-clinic-treats"
+      },
+      {
+        "type": "p",
+        "text": "The clinic's pigmentation page covers melasma, blemishes and spots, freckles and age spots. It describes the treatment as suited to people who:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "have melasma that is getting darker and wider",
+          "have had multiple toning sessions without results",
+          "are concerned about many spots and freckles",
+          "are starting to develop age spots",
+          "have a dull and uneven skin tone",
+          "want consistent care without downtime"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Different pigment sits at different depths and behaves differently, which is why the type is diagnosed in person before a device is chosen. Photos sent ahead help the clinic give you a first estimate, but the plan is set at the consultation with the surgeon."
+      },
+      {
+        "type": "h2",
+        "text": "The three-stage system and the devices",
+        "id": "the-three-stage-system-and-the-devices"
+      },
+      {
+        "type": "p",
+        "text": "LIV describes its approach as a three-stage pigmentation system, moving from intensive treatment to maintenance. Device names are given as the clinic writes them."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Stage",
+          "Purpose",
+          "Device",
+          "What the clinic says it does"
+        ],
+        "rows": [
+          [
+            "Stage 1",
+            "Intensive treatment",
+            "Lucas Pico",
+            "Deep pigment breakdown with a picosecond pulse"
+          ],
+          [
+            "Stage 2",
+            "Precision targeting",
+            "Clarity II 755nm",
+            "Precise treatment of shallow pigment with the alexandrite wavelength"
+          ],
+          [
+            "Stage 3",
+            "Maintenance",
+            "Toning + Ulblanc",
+            "Gentle repeated treatment to maintain the effect and help prevent recurrence"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "On the question many people ask — pico laser or toning? — the clinic's answer is that it depends on the goal. Stubborn melasma or deep pigmentation calls for intensive pico laser treatment, while mild pigmentation or maintenance suits toning; often a combination of pico treatment followed by toning maintenance is used. The page explains the picosecond pulse as 1,000 times faster than a nanosecond laser, breaking pigment into finer particles."
+      },
+      {
+        "type": "h2",
+        "text": "Sessions and intervals by severity",
+        "id": "sessions-and-intervals-by-severity"
+      },
+      {
+        "type": "p",
+        "text": "This is the table to read before you book flights. These are the clinic's published protocols; your own plan is decided at the consultation."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Severity",
+          "Typical concern",
+          "Treatment",
+          "Sessions",
+          "Interval"
+        ],
+        "rows": [
+          [
+            "Mild",
+            "Light melasma, spots",
+            "Laser Toning",
+            "5–10 sessions",
+            "2 weeks"
+          ],
+          [
+            "Moderate",
+            "Medium-depth pigmentation",
+            "Clarity II 755nm",
+            "3–5 sessions",
+            "3–4 weeks"
+          ],
+          [
+            "Severe / stubborn",
+            "Deep, stubborn melasma",
+            "Lucas Pico + Toning",
+            "5–10 sessions",
+            "2–4 weeks"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "For laser toning specifically, the clinic recommends ten or more cumulative sessions and says the effect is usually felt from the third or fourth session."
+      },
+      {
+        "type": "h2",
+        "text": "Time, anesthesia and downtime by device",
+        "id": "time-anesthesia-and-downtime-by-device"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Device",
+          "Treatment time",
+          "Anesthesia",
+          "Downtime"
+        ],
+        "rows": [
+          [
+            "Laser Toning",
+            "5–15 minutes",
+            "None",
+            "None; back to daily life immediately"
+          ],
+          [
+            "Ulblanc",
+            "15–20 minutes",
+            "None",
+            "None; back to daily life immediately"
+          ],
+          [
+            "Clarity II",
+            "15–30 minutes",
+            "None (cryogen cooling to minimise discomfort)",
+            "3–5 days; fine scabs possible on pigmented areas"
+          ],
+          [
+            "Lucas laser",
+            "20–40 minutes",
+            "Topical anesthetic cream (optional)",
+            "3–7 days; fine scabs possible"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "After surface pigment is treated with Clarity II, the pigment may look darker or thin scabs may form for about 3–5 days before coming away naturally. If your trip includes photos or events, plan those days accordingly."
+      },
+      {
+        "type": "h2",
+        "text": "Published prices (2026)",
+        "id": "published-prices-2026"
+      },
+      {
+        "type": "p",
+        "text": "Prices on the pigmentation page are per session. Item names appear as on the clinic's list."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Item",
+          "Basis",
+          "Price (per session)"
+        ],
+        "rows": [
+          [
+            "Dual Toning Laser (Clarity + Lucas) — melasma / blemishes / pores / acne scars",
+            "Single session",
+            "KRW 150,000~"
+          ],
+          [
+            "Potenza",
+            "Pumping Tip",
+            "KRW 200,000~"
+          ],
+          [
+            "CO2 Laser — moles / flat warts / age spots, etc.",
+            "Diameter ≤ 3 mm (1 spot)",
+            "KRW 10,000~"
+          ],
+          [
+            "CO2 Laser",
+            "3 mm < diameter ≤ 5 mm (1 spot)",
+            "KRW 30,000~"
+          ],
+          [
+            "CO2 Laser",
+            "Diameter > 5 mm (1 spot)",
+            "KRW 50,000~"
+          ],
+          [
+            "CO2 Laser",
+            "Full face (50+ spots)",
+            "KRW 500,000~"
+          ],
+          [
+            "CO2 Laser",
+            "Full neck (50+ spots)",
+            "KRW 500,000~"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Per session · VAT not included · The tilde means \"from\": the exact price is confirmed after your consultation and depends on your skin condition and the scope of treatment. A program of several sessions is therefore the per-session price multiplied by the sessions you actually have. The amount charged to your card depends on the exchange rate on the day."
+      },
+      {
+        "type": "p",
+        "text": "International patients are charged from the same list as Korean patients, and there is no fee for interpretation. Treatments not shown above are quoted at the consultation."
+      },
+      {
+        "type": "h2",
+        "text": "Sun care and aftercare",
+        "id": "sun-care-and-aftercare"
+      },
+      {
+        "type": "p",
+        "text": "Sun protection is the part of pigmentation treatment that happens after you leave the clinic, and the clinic treats it as essential:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Skin is more sensitive after laser treatment, and the risk of pigmentation from UV exposure increases.",
+          "For at least 2–4 weeks, apply sunscreen (SPF 50+) thoroughly and use a hat or a parasol.",
+          "The clinic advises avoiding laser treatment during seasons when you will be outdoors a lot. If your Seoul trip is followed directly by a beach holiday or a ski trip, say so at the consultation.",
+          "Temporary post-inflammatory hyperpigmentation (PIH) can occur after laser. The clinic states that it improves naturally within 2–4 weeks and that thorough sun protection helps prevent it."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You receive a written aftercare guide in English, and after you return home the clinic can review photos sent by messenger or chat."
+      },
+      {
+        "type": "h2",
+        "text": "What is realistic in one short trip",
+        "id": "what-is-realistic-in-one-short-trip"
+      },
+      {
+        "type": "p",
+        "text": "The honest point: the published programs run from 3 to 10 sessions at intervals of 2 to 4 weeks. A visit of a few days covers one session of such a program, not the program."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**One session on this trip.** You can have a consultation and, in most cases, a session on the same day. Think of it as the first step of a plan, and ask the surgeon what to expect from a single session for your type of pigment.",
+          "**Repeat visits.** If you travel to Seoul every few weeks or months, sessions can be spaced to the intervals above. Tell the clinic your travel pattern in your first message.",
+          "**A longer stay.** A stay of a month or more allows more than one session at the 2-week or 3–4 week intervals.",
+          "**Melasma is managed, not cured.** The clinic says melasma should be approached as management rather than cure: intensive treatment first, then regular maintenance and sun protection to minimise recurrence. That is hard to complete in one trip, and it is better to know this before you book."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "If a single visit is all you have, the surgeon may suggest a different plan at the consultation. For timing around flights, see [downtime and flight planning](/guides/downtime-flight-travel-plan)."
+      },
+      {
+        "type": "h2",
+        "text": "Booking, consultation fee and payment",
+        "id": "booking-consultation-fee-and-payment"
+      },
+      {
+        "type": "p",
+        "text": "No agency is needed and there is no deposit to reserve a consultation; enquiries are answered within one business day. Step-by-step booking is covered in [how to book a Seoul clinic as a foreigner](/guides/book-seoul-clinic-foreigner)."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Contact:** WhatsApp (+82 10-6888-2773), the live chat on this site, or the [contact form](/contact).",
+          "**Consultation fee:** KRW 10,000 for the 1:1 consultation with the board-certified plastic surgeon, fully deducted from the treatment cost if you have treatment the same day.",
+          "**Language:** English, Japanese and Chinese; interpretation arranged free of charge on request.",
+          "**Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).",
+          "**Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. See [location](/about/location).",
+          "**Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Treatment is planned under Dr. Sooyoung Kim, a board-certified plastic surgeon and a member of the Korean Society for Laser Medicine and Surgery; see [our medical team](/about/staff)."
+      },
+      {
+        "type": "h2",
+        "text": "Before you book",
+        "id": "before-you-book"
+      },
+      {
+        "type": "p",
+        "text": "The device, the number of sessions and the final price are decided at your consultation with the surgeon; the figures above are what the clinic publishes, so you can plan honestly around your dates. See the [laser page](/laser) and the [pricing page](/pricing), then send your questions through the [international patients page](/international) or the [contact form](/contact)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Can melasma be completely cured with laser?",
+        "a": "The clinic's answer is that melasma should be approached as management rather than cure. After improvement with intensive treatment, regular maintenance and sun protection are used to minimise recurrence, and LIV's three-stage system includes both treatment and maintenance."
+      },
+      {
+        "q": "How many sessions does pigmentation laser take?",
+        "a": "By the clinic's published protocols: 5–10 sessions of laser toning at 2-week intervals for mild pigmentation, 3–5 sessions of Clarity II 755nm at 3–4 week intervals for moderate pigmentation, and 5–10 sessions of Lucas Pico plus toning at 2–4 week intervals for deep or stubborn melasma. Your own number is set at the consultation."
+      },
+      {
+        "q": "Can pigmentation get darker after laser?",
+        "a": "Temporary post-inflammatory hyperpigmentation (PIH) can occur. The clinic states that it improves naturally within 2–4 weeks and can be prevented with thorough sun protection, and it gives aftercare guidance after treatment."
+      },
+      {
+        "q": "How much does pigmentation laser cost in Seoul?",
+        "a": "At LIV, a single session of Dual Toning Laser (Clarity + Lucas) is listed from KRW 150,000, and CO2 laser for moles and age spots from KRW 10,000 per spot of 3 mm or less. Prices are per session, exclude VAT, and are the same for international patients."
+      },
+      {
+        "q": "Can I have pigmentation laser while pregnant?",
+        "a": "No. The clinic does not recommend laser treatment during pregnancy or breastfeeding and advises treatment after both are complete. During pregnancy it suggests focusing on sun protection and moisturising."
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 0
+  },
+  {
+    "title": "What will I actually pay at a Seoul clinic? Price list, VAT, consultation fee and payment",
+    "description": "How the public price list at LIV Plastic Surgery in Sinsa, Seoul works — per-session prices in KRW, VAT not included, \"from\" prices — plus the consultation fee, free interpretation, cards, installments, no deposit, and worked examples.",
+    "keywords": [
+      "korea skin clinic cost foreigner",
+      "seoul clinic price list vat",
+      "korea clinic consultation fee",
+      "how to pay korea clinic credit card",
+      "korea clinic deposit foreigner",
+      "seoul aesthetic clinic total cost"
+    ],
+    "category": "price",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/pricing",
+    "locale": "en",
+    "slug": "seoul-clinic-total-cost-payment",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "A price list tells you what a treatment starts at. It does not tell you what ends up on the receipt — whether tax is included, whether a consultation is charged, whether there is a deposit, or whether a foreign patient pays something extra. This guide answers those questions for [LIV Plastic Surgery](/international), a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station, using only what the clinic publishes. In short: the same list applies to everyone, prices are per session in Korean won and exclude VAT, and the exact figure is confirmed at your consultation."
+      },
+      {
+        "type": "h2",
+        "text": "The short version",
+        "id": "the-short-version"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**One price list for everyone.** International patients pay from the same list as Korean patients. There is no foreigner surcharge.",
+          "**Prices are per session, in KRW, and exclude VAT.** VAT is added on top of the listed price.",
+          "**The tilde (~) means \"from\".** The exact price is determined after consultation.",
+          "**Consultation fee: KRW 10,000,** fully deducted from the treatment cost if you have treatment the same day.",
+          "**Interpretation is free,** and there is no extra charge for language support.",
+          "**No deposit** is required to reserve a consultation.",
+          "**Payment:** Visa, Mastercard, American Express, JCB, UnionPay, or Korean won in cash. Card installments are available."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "How to read the public price list",
+        "id": "how-to-read-the-public-price-list"
+      },
+      {
+        "type": "p",
+        "text": "The [pricing page](/pricing) publishes four groups — thread lift, filler, Thermage and Ultherapy — and each treatment page carries its own table (for example [Botox](/antiaging/botox), [skin boosters](/antiaging/skinbooster) and the [laser pages](/laser)). Every row has the same three parts: an item, a basis, and a price."
+      },
+      {
+        "type": "table",
+        "header": [
+          "What you see",
+          "What it means"
+        ],
+        "rows": [
+          [
+            "KRW 1,560,000~",
+            "A starting price in Korean won. The tilde means \"from\"."
+          ],
+          [
+            "A basis such as \"400-800 shots\", \"1cc\", \"8 threads\", \"per 100IU\", \"single session\"",
+            "What the price covers. The amount you actually need is set at the consultation."
+          ],
+          [
+            "\"Per session\"",
+            "One treatment visit, not a course."
+          ],
+          [
+            "\"All prices are exclusive of VAT\"",
+            "VAT is added to the listed price when you pay."
+          ],
+          [
+            "\"Detailed pricing provided during consultation\"",
+            "The item is not priced publicly; you get a quote in person or by message."
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Some rows as they appear on the clinic's lists:"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Treatment",
+          "Basis",
+          "Listed price (per session, excluding VAT)"
+        ],
+        "rows": [
+          [
+            "Ultherapy — full face",
+            "400-800 shots",
+            "KRW 1,560,000~"
+          ],
+          [
+            "Thermage FLX",
+            "600 shots",
+            "KRW 2,400,000~"
+          ],
+          [
+            "Thread lift — MINT",
+            "8 threads",
+            "KRW 800,000~"
+          ],
+          [
+            "Filler — Domestic",
+            "1cc",
+            "KRW 200,000~"
+          ],
+          [
+            "Contour Botox (jaw / temple) — Domestic",
+            "—",
+            "KRW 60,000~"
+          ],
+          [
+            "Laser toning for skin tone",
+            "Single session",
+            "KRW 150,000~"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The clinic's own note under the list reads: the prices are per session, the exact price is determined after consultation, and the final cost may vary depending on individual skin condition, treatment scope and products used."
+      },
+      {
+        "type": "h2",
+        "text": "What is added to the price — and what is not",
+        "id": "what-is-added-to-the-price-and-what-is-not"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Item",
+          "What you pay",
+          "Note"
+        ],
+        "rows": [
+          [
+            "Treatment",
+            "The listed price, confirmed at consultation",
+            "Per session, in KRW"
+          ],
+          [
+            "VAT",
+            "Added on top of the treatment price",
+            "The list is VAT-exclusive"
+          ],
+          [
+            "1:1 consultation",
+            "KRW 10,000",
+            "Fully deducted from the treatment cost if you proceed the same day"
+          ],
+          [
+            "Interpretation (English, Japanese, Chinese)",
+            "Free",
+            "Arranged on request"
+          ],
+          [
+            "Foreign-patient surcharge",
+            "None",
+            "Same price list as Korean patients"
+          ],
+          [
+            "Deposit to reserve a consultation",
+            "None",
+            "You pay at the clinic"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Because the list excludes VAT, ask for the VAT-inclusive total when you receive your estimate. That single number is the easiest way to compare clinics."
+      },
+      {
+        "type": "h2",
+        "text": "Worked examples (illustration only)",
+        "id": "worked-examples-illustration-only"
+      },
+      {
+        "type": "p",
+        "text": "These examples use only prices from the clinic's published lists. They show how the pieces fit together; they are not quotes. Every listed price is a starting price, and yours is confirmed after the consultation."
+      },
+      {
+        "type": "p",
+        "text": "**Example 1 — Consultation only.** You meet the surgeon, hear the plan and decide to think about it."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Line",
+          "Amount"
+        ],
+        "rows": [
+          [
+            "1:1 consultation",
+            "KRW 10,000"
+          ],
+          [
+            "You pay",
+            "KRW 10,000"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**Example 2 — One small treatment the same day.** Contour Botox with a domestic product, treated right after the consultation."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Line",
+          "Amount"
+        ],
+        "rows": [
+          [
+            "Contour Botox (jaw / temple), Domestic",
+            "KRW 60,000~"
+          ],
+          [
+            "1:1 consultation",
+            "KRW 10,000, fully deducted from the treatment cost"
+          ],
+          [
+            "VAT",
+            "plus VAT"
+          ],
+          [
+            "You pay",
+            "KRW 60,000~ plus VAT"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**Example 3 — Two treatments in one visit.** Full-face Ultherapy and one session of laser toning for skin tone."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Line",
+          "Amount"
+        ],
+        "rows": [
+          [
+            "Ultherapy, full face (400-800 shots)",
+            "KRW 1,560,000~"
+          ],
+          [
+            "Laser toning for skin tone, single session",
+            "KRW 150,000~"
+          ],
+          [
+            "Listed starting prices combined",
+            "KRW 1,710,000~"
+          ],
+          [
+            "1:1 consultation",
+            "KRW 10,000, fully deducted from the treatment cost"
+          ],
+          [
+            "VAT",
+            "plus VAT"
+          ],
+          [
+            "You pay",
+            "KRW 1,710,000~ plus VAT"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "In each case the consultation fee does not sit on top of the treatment: once you proceed the same day, it is credited in full. What moves the real figure is the part the list cannot know in advance — how many shots, cc or threads you need, and which product is chosen."
+      },
+      {
+        "type": "h2",
+        "text": "Payment methods and installments",
+        "id": "payment-methods-and-installments"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Cards issued abroad:** Visa, Mastercard, American Express, JCB and UnionPay are accepted.",
+          "**Cash:** Korean won (KRW).",
+          "**Installments:** credit card installment payments are available. Interest-free installment terms vary by card company and payment amount, so ask during your consultation. [검수 필요: 해외 발급 카드도 할부 결제가 되는지]",
+          "**Currency:** prices are set in Korean won. If you pay by card, the amount that appears on your statement depends on the exchange rate applied on the day.",
+          "**When you pay:** at the clinic. No deposit is taken to reserve a consultation; if your plans change, let the clinic know through the same messenger as early as you can."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "If you have a specific question about payment, the clinic asks you to raise it during the consultation — or simply include it in your first message."
+      },
+      {
+        "type": "h2",
+        "text": "What is decided at the consultation",
+        "id": "what-is-decided-at-the-consultation"
+      },
+      {
+        "type": "p",
+        "text": "The estimate you receive by messenger is based on photos. The in-person consultation with the board-certified plastic surgeon is where the plan and the price become final:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Which treatment,** and whether one treatment or a combination suits your concern.",
+          "**How much:** the number of shots for [Ultherapy](/lifting/ulthera) or [Thermage](/lifting/thermage), cc for [filler](/antiaging/filler), units and product for [Botox](/antiaging/botox), the number of threads, or the number of laser sessions.",
+          "**Which product,** where the list has tiers such as domestic, domestic premium and imported.",
+          "**The final price,** including VAT."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You are free to have the consultation and decide later. The clinic says so directly: you can take your time to decide after the consultation."
+      },
+      {
+        "type": "h2",
+        "text": "Getting an estimate before you fly",
+        "id": "getting-an-estimate-before-you-fly"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**Message the clinic** in English on WhatsApp (+82 10-6888-2773), the live chat on this site, or the [contact form](/contact). Replies come within one business day.",
+          "**Send your concern and 2–3 photos,** plus your dates in Seoul.",
+          "**Receive a clear price estimate** with suggested treatments. Ask for the total including VAT.",
+          "**Reserve a time** that fits your itinerary — no deposit.",
+          "**Confirm in person.** The surgeon finalizes the plan and the price, and in most cases you are treated the same day."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Clinic hours are Monday to Friday 10:00–19:00 and Saturday 10:00–16:00, closed on Sunday (Korea time)."
+      },
+      {
+        "type": "h2",
+        "text": "Before you book",
+        "id": "before-you-book"
+      },
+      {
+        "type": "p",
+        "text": "The treatment, the amount and the final price are decided at your consultation with the surgeon; the figures in this guide are the clinic's published starting prices, and the examples are illustrations only. Check the current list on the [pricing page](/pricing), read more answers on the [medical Q&A page](/medical), and send your questions through the [international patients page](/international) or the [contact form](/contact)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "Do foreigners pay more than Korean patients?",
+        "a": "No. Foreign patients are charged from the same price list as Korean patients, and the prices are published so you can check them before your visit. There is also no extra charge for language support or interpretation."
+      },
+      {
+        "q": "Is VAT included in the listed prices?",
+        "a": "No. All listed prices are exclusive of VAT, which is added when you pay. Ask the clinic for the VAT-inclusive total when you receive your estimate."
+      },
+      {
+        "q": "Is there a consultation fee, and do I get it back?",
+        "a": "The 1:1 consultation costs KRW 10,000. If you proceed with treatment on the same day, it is fully deducted from the treatment cost. You can also have only the consultation and decide later."
+      },
+      {
+        "q": "Do I need to pay a deposit to book?",
+        "a": "No. No deposit is required to reserve a consultation. You pay at the clinic."
+      },
+      {
+        "q": "Can I pay with a foreign credit card or in installments?",
+        "a": "Internationally issued Visa, Mastercard, American Express, JCB and UnionPay cards are accepted, as is cash in Korean won. Card installment payments are available; interest-free terms vary by card company and amount, so ask at the consultation."
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "How to get to Sinsa Station from Incheon or Gimpo Airport, and when the clinic is open",
+    "description": "Getting to LIV Plastic Surgery in Sinsa, Seoul — address, Sinsa Station Exit 4 (1-minute walk, next to Garosu-gil), travel times from Incheon and Gimpo airports, opening hours in Korea time with the time difference for Japan, Taiwan and Hong Kong, and how to plan your arrival around clinic hours.",
+    "keywords": [
+      "incheon airport to sinsa station",
+      "gimpo airport to sinsa station",
+      "sinsa station exit 4 clinic",
+      "garosu-gil skin clinic location",
+      "seoul clinic opening hours saturday",
+      "korea time zone clinic appointment"
+    ],
+    "category": "booking",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/about/location",
+    "locale": "en",
+    "slug": "sinsa-station-clinic-access-from-airport",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Most of the planning for a treatment trip to Seoul comes down to two things: how long it takes to get from the airport to the clinic, and whether the clinic is open when you get there. Miss the second one — land on a Saturday afternoon, say — and a two-day trip can lose its only usable slot."
+      },
+      {
+        "type": "p",
+        "text": "This guide covers both for LIV Plastic Surgery (LIV), a non-surgical anti-aging clinic in Gangnam. The clinic is one minute on foot from Sinsa Station (Line 3, Exit 4), next to Garosu-gil. Below are the address, the travel times from Incheon and Gimpo airports as the clinic publishes them, the opening hours in Korea time, and a way to line up your arrival with those hours."
+      },
+      {
+        "type": "h2",
+        "text": "Address and nearest station",
+        "id": "address-and-nearest-station"
+      },
+      {
+        "type": "p",
+        "text": "**Address:** 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea"
+      },
+      {
+        "type": "p",
+        "text": "**Nearest station:** Sinsa Station, Seoul Subway Line 3, Exit 4 — a 1-minute walk. The clinic is on the 4th floor of the Jaeun Building."
+      },
+      {
+        "type": "p",
+        "text": "**Neighbourhood:** the clinic is next to Garosu-gil, so the street is within walking distance before or after your appointment."
+      },
+      {
+        "type": "p",
+        "text": "**Phone:** +82-2-797-2773 · **Email:** info@livps.co.kr"
+      },
+      {
+        "type": "p",
+        "text": "The same details are on the [location page](/about/location). If you are taking a taxi, showing the driver the address from that page is the simplest way to avoid confusion."
+      },
+      {
+        "type": "h2",
+        "text": "From the airport to the clinic",
+        "id": "from-the-airport-to-the-clinic"
+      },
+      {
+        "type": "table",
+        "header": [
+          "From",
+          "How",
+          "Time"
+        ],
+        "rows": [
+          [
+            "Incheon Airport (ICN)",
+            "AREX train or limousine bus to Sinsa Station (Line 3)",
+            "About 70–90 minutes"
+          ],
+          [
+            "Incheon Airport (ICN)",
+            "Taxi",
+            "About 60 minutes"
+          ],
+          [
+            "Gimpo Airport (GMP)",
+            "Taxi or subway",
+            "About 40 minutes"
+          ],
+          [
+            "Sinsa Station",
+            "Line 3, Exit 4",
+            "1-minute walk"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "These are the travel times the clinic publishes for the journey itself. They do not include immigration, baggage claim or waiting for a train or bus, and road traffic changes the taxi time, so leave yourself a margin between landing and your appointment."
+      },
+      {
+        "type": "p",
+        "text": "If you are coming from a hotel rather than straight from the airport, the last step is the same: Sinsa Station, Line 3, Exit 4, one minute on foot."
+      },
+      {
+        "type": "h2",
+        "text": "Opening hours, in Korea time and in yours",
+        "id": "opening-hours-in-korea-time-and-in-yours"
+      },
+      {
+        "type": "p",
+        "text": "The clinic's hours are given in Korea time (KST). Korea does not share a time zone with every market it serves, so check the column that applies to you before you propose an appointment time."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Day",
+          "Korea time",
+          "Japan",
+          "Taiwan / Hong Kong"
+        ],
+        "rows": [
+          [
+            "Monday–Friday",
+            "10:00–19:00",
+            "10:00–19:00 (no difference)",
+            "09:00–18:00"
+          ],
+          [
+            "Saturday",
+            "10:00–16:00",
+            "10:00–16:00 (no difference)",
+            "09:00–15:00"
+          ],
+          [
+            "Sunday",
+            "Closed",
+            "Closed",
+            "Closed"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Japan is on the same time as Korea. Taiwan and Hong Kong are one hour behind Korea, so a 10:00 appointment in Seoul is 09:00 on a phone still set to Taipei or Hong Kong time. If you are travelling from anywhere else, check the difference to Korea time yourself and confirm the appointment time in Korea time with the clinic."
+      },
+      {
+        "type": "p",
+        "text": "The same applies to messages. Enquiries are answered within one business day, and \"business day\" follows the hours above — a message sent on Saturday evening or on Sunday is picked up when the clinic reopens."
+      },
+      {
+        "type": "p",
+        "text": "The clinic is generally closed on Korean public holidays as well, including the Seollal and Chuseok holiday periods. If your trip overlaps a holiday, check the available days on chat before you book flights."
+      },
+      {
+        "type": "h2",
+        "text": "Planning your arrival around clinic hours",
+        "id": "planning-your-arrival-around-clinic-hours"
+      },
+      {
+        "type": "p",
+        "text": "Most non-surgical treatments take 30 to 90 minutes and need no hospitalization, so many patients are treated on the day of their visit. That makes an arrival-day appointment realistic — if the hours work. Count backwards from closing time: the journey from the airport, the consultation, any numbing time (about 30 minutes of anesthetic cream for Ultherapy Prime), and the treatment itself (for example 60–90 minutes for Ultherapy Prime, 45–60 for Thermage FLX, 10–20 for botox)."
+      },
+      {
+        "type": "table",
+        "header": [
+          "You land",
+          "What usually works"
+        ],
+        "rows": [
+          [
+            "Weekday morning",
+            "A same-day afternoon appointment. The clinic is open until 19:00."
+          ],
+          [
+            "Weekday afternoon or evening",
+            "An appointment the next morning from 10:00 is the safer choice."
+          ],
+          [
+            "Friday evening",
+            "Saturday, between 10:00 and 16:00. Book the Saturday slot early in the day."
+          ],
+          [
+            "Saturday morning",
+            "Possible only if you can reach Sinsa with time to spare before 16:00. Otherwise plan for Monday."
+          ],
+          [
+            "Saturday afternoon or Sunday",
+            "The clinic is closed on Sunday. The first available day is Monday from 10:00."
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "The latest time the clinic takes a patient for a given treatment is not published. Ask when you book. [검수 필요: 평일·토요일 마지막 접수(시술 시작) 가능 시간]"
+      },
+      {
+        "type": "p",
+        "text": "Three habits make scheduling easier:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Send your flight times, not just your dates.** The clinic schedules around them.",
+          "**Offer two or three possible slots** in your first message.",
+          "**If your flight is delayed, say so through the same messenger as early as you can.** No deposit is required to reserve a consultation, so a change of plan is a matter of rescheduling."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "For full two-day and three-day layouts, including the day you fly home, see the [downtime and flight guide](/guides/downtime-flight-travel-plan)."
+      },
+      {
+        "type": "h2",
+        "text": "Contacting the clinic before you travel",
+        "id": "contacting-the-clinic-before-you-travel"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Your language",
+          "First choice",
+          "Also works"
+        ],
+        "rows": [
+          [
+            "English",
+            "WhatsApp +82 10-6888-2773",
+            "Live chat on this site, [contact form](/contact)"
+          ],
+          [
+            "Japanese",
+            "LINE ID icps7972773",
+            "Live chat"
+          ],
+          [
+            "Chinese",
+            "WeChat ID livps0414",
+            "Online chat on this site"
+          ],
+          [
+            "Any language",
+            "[Contact form](/contact) or email info@livps.co.kr",
+            "Phone +82-2-797-2773"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Consultations are available in English, Japanese and Chinese, and an interpreter is arranged free of charge on request. The booking steps, and a first message you can copy, are in [how to book as a foreigner](/guides/book-seoul-clinic-foreigner)."
+      },
+      {
+        "type": "h2",
+        "text": "Before you book flights",
+        "id": "before-you-book-flights"
+      },
+      {
+        "type": "p",
+        "text": "Check the clinic's hours against your arrival and departure before you commit to flights, then send your dates and flight times through the [international patients page](/international). Which treatment suits you, and how long your appointment needs to be, are confirmed at the consultation with the doctor."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How do I get from Incheon Airport to the clinic?",
+        "a": "Take the AREX airport train or a limousine bus to Sinsa Station on Subway Line 3. The clinic is a 1-minute walk from Exit 4. Public transport takes about 70–90 minutes, and a taxi takes about 60 minutes."
+      },
+      {
+        "q": "How long does it take from Gimpo Airport?",
+        "a": "About 40 minutes by taxi or subway. From Sinsa Station, use Exit 4 on Line 3; the clinic is a 1-minute walk away."
+      },
+      {
+        "q": "Which exit of Sinsa Station is the clinic near?",
+        "a": "Exit 4, on Line 3. The clinic is a 1-minute walk from the exit, on the 4th floor of the Jaeun Building, next to Garosu-gil."
+      },
+      {
+        "q": "Is the clinic open on weekends?",
+        "a": "On Saturday, from 10:00 to 16:00 Korea time. It is closed on Sunday, and generally on Korean public holidays. Weekday hours are 10:00 to 19:00."
+      },
+      {
+        "q": "Is there a time difference I should allow for?",
+        "a": "Clinic hours are in Korea time. Japan has no time difference with Korea. Taiwan and Hong Kong are one hour behind, so 10:00 in Seoul is 09:00 there. Always confirm your appointment in Korea time."
+      }
+    ],
+    "readingMinutes": 6,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "Skin boosters in Seoul: products on the list, prices, downtime and fitting one into a short trip",
+    "description": "A plain guide to skin booster injections at LIV Plastic Surgery in Sinsa, Seoul — the products on the published price list, price per session, treatment time, anesthesia, 1–3 days of small injection marks, how many sessions the clinic recommends, and what a short-stay visitor can realistically plan.",
+    "keywords": [
+      "skin booster seoul",
+      "skin booster korea price",
+      "rejuran seoul price",
+      "water glow injection korea",
+      "juvelook korea",
+      "skin booster downtime",
+      "skin booster korea foreigner"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/antiaging/skinbooster",
+    "locale": "en",
+    "slug": "skin-booster-seoul-guide",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Skin boosters are one of the treatments visitors most often ask about before a trip to Seoul: small injections aimed at skin quality — hydration, elasticity and glow — rather than at volume or muscle movement. This guide sets out what [LIV Plastic Surgery](/international) actually publishes about them: which products are on the price list, what a session costs, how long it takes, what your skin looks like afterwards, and how the recommended course of several sessions fits (or does not fit) into a short stay. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English."
+      },
+      {
+        "type": "h2",
+        "text": "What a skin booster is, in the clinic's words",
+        "id": "what-a-skin-booster-is-in-the-clinics-words"
+      },
+      {
+        "type": "p",
+        "text": "The clinic's [skin booster page](/antiaging/skinbooster) describes the treatment for the full face, the neck and the backs of the hands. It is suggested for people who are concerned about:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "dry skin and a lack of moisture",
+          "reduced elasticity and fine lines",
+          "a dull skin tone and skin that looks tired",
+          "skin recovery after laser treatment"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "People often ask whether a skin booster is the same thing as a \"water-glow injection\". The clinic's answer is that the two are similar, but a skin booster contains a wider range of ingredients. Which product suits you is not something to settle from a list: the clinic chooses it with you at the consultation, based on your skin condition and your goals."
+      },
+      {
+        "type": "h2",
+        "text": "Products and prices at LIV (2026)",
+        "id": "products-and-prices-at-liv-2026"
+      },
+      {
+        "type": "p",
+        "text": "The skin booster price list is organised by product and by volume (cc). Product names below appear as they do on the clinic's list."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Product on the list",
+          "Volume",
+          "Price (per session)"
+        ],
+        "rows": [
+          [
+            "Rejuran",
+            "2 cc",
+            "KRW 300,000~"
+          ],
+          [
+            "Rejuran",
+            "4 cc",
+            "KRW 460,000~"
+          ],
+          [
+            "Rejuran HB plus",
+            "1 cc",
+            "KRW 190,000~"
+          ],
+          [
+            "Rejuran HB plus",
+            "2 cc",
+            "KRW 340,000~"
+          ],
+          [
+            "Rejuran HB plus",
+            "4 cc",
+            "KRW 600,000~"
+          ],
+          [
+            "Eye Rejuran",
+            "1 cc",
+            "KRW 190,000~"
+          ],
+          [
+            "Juvelook Skin Booster",
+            "10 cc",
+            "KRW 270,000~"
+          ],
+          [
+            "Stem Cell Skin Booster",
+            "5 cc",
+            "KRW 270,000~"
+          ],
+          [
+            "Element Whitening Booster",
+            "2 cc",
+            "KRW 240,000~"
+          ],
+          [
+            "Melasma Injection",
+            "4 cc",
+            "KRW 240,000~"
+          ],
+          [
+            "Glow Injection",
+            "2 cc",
+            "KRW 240,000~"
+          ],
+          [
+            "Hilowave",
+            "2 cc",
+            "KRW 500,000~"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Per session · VAT not included · The tilde means \"from\": the exact price is confirmed after your consultation and depends on the product, the volume and the area treated. The amount charged to your card depends on the exchange rate on the day."
+      },
+      {
+        "type": "p",
+        "text": "How to read the list:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Price follows product and volume.** The same product costs more at a higher cc, and how many cc your face, neck or hands need is decided in person.",
+          "**The list shows names and volumes, not a ranking.** The clinic does not publish a \"which is stronger\" comparison; the choice is made at the consultation.",
+          "**Nothing is added for being a foreign patient,** and there is no fee for interpretation or language support."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Time, anesthesia and downtime at a glance",
+        "id": "time-anesthesia-and-downtime-at-a-glance"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Item",
+          "What the clinic states"
+        ],
+        "rows": [
+          [
+            "Treatment time",
+            "30–45 minutes"
+          ],
+          [
+            "Anesthesia",
+            "Topical anesthetic cream"
+          ],
+          [
+            "Downtime",
+            "1–3 days (micro-needle marks)"
+          ],
+          [
+            "When results show",
+            "Hydration right away; elasticity and glow after 2–4 weeks"
+          ],
+          [
+            "Recommended course",
+            "3–4 sessions at 2–4 week intervals"
+          ],
+          [
+            "After the course",
+            "Maintenance every 2–3 months is recommended"
+          ],
+          [
+            "Return visit for one session",
+            "Same day, no revisit required"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The downtime is the part to plan around. Small injection marks and some redness are possible after the session, and the clinic gives 1–3 days as the recovery period. If you have photos, a dinner or a meeting you care about, put the appointment a few days before or after it rather than on the same day."
+      },
+      {
+        "type": "h2",
+        "text": "Aftercare the clinic asks for",
+        "id": "aftercare-the-clinic-asks-for"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Avoid makeup and alcohol on the day of treatment.",
+          "Be thorough with sun protection afterwards.",
+          "Expect fine needle marks and possible redness for the first few days."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "You receive a written aftercare guide in English, and after you return home the clinic can review photos you send by messenger or chat. If something does not look right, message the clinic rather than waiting."
+      },
+      {
+        "type": "h2",
+        "text": "How many sessions, and what that means for a short trip",
+        "id": "how-many-sessions-and-what-that-means-for-a-short-trip"
+      },
+      {
+        "type": "p",
+        "text": "This is the honest point for visitors. The clinic recommends skin boosters as a basic course of 3–4 sessions at 2–4 week intervals, followed by maintenance every 2–3 months. A one-week holiday covers one session of that course, not all of it."
+      },
+      {
+        "type": "p",
+        "text": "What the clinic says about a single session: you may notice an improvement in hydration after one session, but the optimal effect needs the full course. So a realistic plan looks like one of these:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**One session on this trip.** Treat it as a first session. You get the same-day treatment and no return visit is required for that session.",
+          "**A course across several visits.** If you come to Seoul regularly — for work, or every month or two — sessions can be spaced to match the 2–4 week interval. Tell the clinic your travel pattern when you first message.",
+          "**A longer stay.** If you are in Korea for a month or more, the interval allows more than one session within the stay."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Which of these makes sense for you is decided at the consultation with the surgeon; the clinic may also suggest a different treatment if a single visit is all you have. For trip timing with other treatments, see the guide on [downtime and flight planning](/guides/downtime-flight-travel-plan)."
+      },
+      {
+        "type": "p",
+        "text": "A simple way to place one session in a short itinerary:"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**Before you travel:** message the clinic with your concern, a few photos and your dates, and receive a price estimate.",
+          "**Early in the trip:** in-person consultation and, in most cases, treatment on the same day. Allow time for the anesthetic cream before the 30–45 minute treatment.",
+          "**The next 1–3 days:** injection marks and possible redness; keep plans flexible and stay careful with sun protection.",
+          "**After you fly home:** photo follow-up by messenger or chat."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Booking, consultation fee and payment",
+        "id": "booking-consultation-fee-and-payment"
+      },
+      {
+        "type": "p",
+        "text": "You do not need an agency, and there is no deposit to reserve a consultation. Enquiries are answered within one business day. The full booking steps are in the guide on [booking a Seoul clinic as a foreigner](/guides/book-seoul-clinic-foreigner)."
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Contact:** WhatsApp (+82 10-6888-2773), the live chat on this site, or the [contact form](/contact).",
+          "**Consultation fee:** KRW 10,000 for the 1:1 consultation with the board-certified plastic surgeon, fully deducted from the treatment cost if you go ahead on the same day.",
+          "**Language:** consultations in English, Japanese and Chinese; interpretation arranged free of charge on request.",
+          "**Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).",
+          "**Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. See [location](/about/location).",
+          "**Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "What to tell the clinic",
+        "id": "what-to-tell-the-clinic"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Whether you are pregnant or breastfeeding. The clinic's position is that most cosmetic treatments are not recommended during pregnancy or breastfeeding, and it advises waiting until both are complete.",
+          "Any laser or other skin treatment you have had recently, or plan to have on the same trip. Skin boosters are listed as an option for skin recovery after laser, and the order of treatments is something the surgeon plans with you.",
+          "How long you are staying and when you fly, so the plan matches your dates.",
+          "If volume or expression lines are your main concern instead, [filler](/antiaging/filler) and [Botox](/antiaging/botox) are separate treatments with their own price lists; see the guide to [Botox and filler prices in Seoul](/guides/botox-filler-cost-seoul)."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Every treatment is planned and performed under Dr. Sooyoung Kim, a board-certified plastic surgeon; see [our medical team](/about/staff). More answers are on the [medical Q&A page](/medical)."
+      },
+      {
+        "type": "h2",
+        "text": "Before you book",
+        "id": "before-you-book"
+      },
+      {
+        "type": "p",
+        "text": "The product, the volume, the number of sessions and the final price are decided at your consultation with the surgeon; the figures above are the published starting points so you can plan. Check the current list on the [pricing page](/pricing) and the [skin booster page](/antiaging/skinbooster), then send your questions through the [international patients page](/international) or the [contact form](/contact). The clinic replies within one business day."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does a skin booster cost in Seoul?",
+        "a": "At LIV the published prices start from KRW 190,000 per session (Rejuran HB plus 1 cc or Eye Rejuran 1 cc) and go up to KRW 600,000 (Rejuran HB plus 4 cc), depending on the product and the volume. Prices are per session, exclude VAT, and are the same for international and Korean patients. The exact price is confirmed after the consultation."
+      },
+      {
+        "q": "Is a skin booster the same as a water-glow injection?",
+        "a": "They are similar, but according to the clinic a skin booster contains a wider range of ingredients. The price list includes both skin booster products and a Glow Injection, and the choice between them is made at the consultation based on your skin condition and goals."
+      },
+      {
+        "q": "How long is the downtime?",
+        "a": "The clinic states 1–3 days, with micro-needle marks and possible redness. Avoid makeup and alcohol on the day of treatment and be thorough with sun protection afterwards."
+      },
+      {
+        "q": "How many sessions do I need?",
+        "a": "The recommended basic course is 3–4 sessions at 2–4 week intervals, then maintenance every 2–3 months. You may notice better hydration after one session, but the clinic says the optimal effect requires the full course."
+      },
+      {
+        "q": "Can I have it done on the same day as my consultation?",
+        "a": "In most cases, yes. A session takes 30–45 minutes with topical anesthetic cream, needs no hospitalization, and no return visit is required for that session."
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 0
+  },
+  {
+    "title": "Laser toning in Seoul for skin tone: devices, sessions, downtime and price",
+    "description": "What the skin-tone laser program at LIV Plastic Surgery in Sinsa, Seoul covers — laser toning and Ulblanc, session counts and intervals, treatment time, downtime, the listed price, aftercare, and what fits into a short trip.",
+    "keywords": [
+      "laser toning seoul",
+      "laser toning korea price",
+      "skin tone laser korea",
+      "skin brightening laser seoul",
+      "laser toning downtime",
+      "korea skin clinic laser foreigner"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/laser",
+    "locale": "en",
+    "slug": "skin-tone-laser-toning-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Laser toning is one of the treatments visitors ask about most when they plan a skin clinic visit in Seoul, usually with two questions: how many sessions does it take, and is one session during a trip worth it? This guide sets out what the skin-tone laser page at [LIV Plastic Surgery](/international) says — the devices, the concerns they are used for, session counts and intervals, treatment time, downtime and the listed price — so you can decide before you message the clinic. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil, and international patients pay from the same price list as Korean patients."
+      },
+      {
+        "type": "h2",
+        "text": "What laser toning is",
+        "id": "what-laser-toning-is"
+      },
+      {
+        "type": "p",
+        "text": "On the clinic's [laser pages](/laser), laser toning is described as a 1064nm Nd:YAG laser used at low power with repeated pulses, so that melanin in the skin is broken down gradually. Unlike conventional high-power lasers, it delivers low energy evenly over a wide area, which is why irritation is kept low and there is no recovery period."
+      },
+      {
+        "type": "p",
+        "text": "The page lists three effects: gradual breakdown of pigment, stimulation of the dermis (collagen production), and control of sebaceous gland function with tightening of pores. The key word is *gradual* — this is a treatment built on repeated sessions, not a one-time procedure."
+      },
+      {
+        "type": "h2",
+        "text": "Which concern, which approach",
+        "id": "which-concern-which-approach"
+      },
+      {
+        "type": "p",
+        "text": "The skin-tone page groups concerns into four types and names the devices used for each."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Concern",
+          "How the page describes it",
+          "Approach",
+          "Devices named"
+        ],
+        "rows": [
+          [
+            "Overall dull skin",
+            "Skin looks dark and lifeless from sun exposure, stress or fatigue",
+            "Laser toning for overall brightness",
+            "Laser Toning, Ulblanc"
+          ],
+          [
+            "Partial pigmentation",
+            "Darker pigment on the cheeks, forehead or around the cheekbones",
+            "Intensive laser toning combined with a pico laser",
+            "Laser Toning, Lucas"
+          ],
+          [
+            "Pores and skin texture",
+            "Tone looks uneven because of enlarged pores and rough texture",
+            "Laser toning's collagen remodeling effect",
+            "Laser Toning"
+          ],
+          [
+            "Reduced transparency",
+            "Skin looks dull and lacks clarity",
+            "Ulblanc, with laser toning",
+            "Ulblanc, Laser Toning"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Which type you are, and whether a second device is added, is decided at your consultation after the doctor has looked at your skin in person."
+      },
+      {
+        "type": "h2",
+        "text": "The devices at a glance",
+        "id": "the-devices-at-a-glance"
+      },
+      {
+        "type": "table",
+        "header": [
+          "",
+          "Laser Toning (Spectra XT)",
+          "Ulblanc"
+        ],
+        "rows": [
+          [
+            "What the page says",
+            "1064nm Nd:YAG, low-power repeated irradiation (MLA mode)",
+            "Dedicated whitening wavelength that selectively targets melanin"
+          ],
+          [
+            "Used for",
+            "Dull skin, fine lines, pores, texture, brightness",
+            "Tone evenness, transparency, radiance, dullness"
+          ],
+          [
+            "Treatment time",
+            "5–15 minutes",
+            "15–20 minutes"
+          ],
+          [
+            "Anesthesia",
+            "None",
+            "None"
+          ],
+          [
+            "Recovery",
+            "None — immediate return to daily life",
+            "None — immediate return to daily life"
+          ],
+          [
+            "Recommended sessions",
+            "10 or more in total; a difference is usually noticed from the 3rd or 4th session",
+            "5–10 in total"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "The skin-tone page gives 30–45 minutes for a session overall, and describes laser toning itself as a \"lunchtime treatment\" of 15–20 minutes. Times are general guidance; how long your visit takes depends on what is combined."
+      },
+      {
+        "type": "p",
+        "text": "Two other devices appear when pigment is the main issue. Lucas is the clinic's pico laser (20–40 minutes, topical anesthetic cream optional, 3–7 days of recovery with possible fine scabs). Clarity II is used in the moderate skin-tone protocol (15–30 minutes, no anesthesia thanks to cryogen cooling, 3–5 days during which pigment may darken or thin scabs may form before falling off naturally). If either is part of your plan, your downtime is no longer \"none\", which matters for a trip."
+      },
+      {
+        "type": "h2",
+        "text": "Sessions and intervals",
+        "id": "sessions-and-intervals"
+      },
+      {
+        "type": "p",
+        "text": "The page presents skin-tone treatment as a three-step program."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Step",
+          "Device",
+          "What it does",
+          "Schedule on the page"
+        ],
+        "rows": [
+          [
+            "1. Skin conditioning",
+            "Laser Toning",
+            "Low-power energy delivered evenly across the skin to improve its baseline condition",
+            "Weekly, 4–5 sessions"
+          ],
+          [
+            "2. Melanin targeting",
+            "Ulblanc",
+            "A wavelength that acts selectively on melanin to break down pigment gradually",
+            "Every 2 weeks, 3–4 sessions"
+          ],
+          [
+            "3. Maintenance",
+            "Laser Toning + Ulblanc",
+            "Keeps the improved tone and helps prevent new pigmentation",
+            "Monthly"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "The clinic also publishes a guide by degree of concern:"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Degree",
+          "Combination",
+          "Sessions",
+          "Interval"
+        ],
+        "rows": [
+          [
+            "Mild",
+            "Ulblanc + toning",
+            "5",
+            "2 weeks"
+          ],
+          [
+            "Moderate",
+            "Ulblanc + toning + Clarity II",
+            "10",
+            "2 weeks"
+          ],
+          [
+            "Severe",
+            "Intensive combined care",
+            "15 or more",
+            "1–2 weeks"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "These are the clinic's general protocols, not a prescription. The number of sessions and the interval for you are set by the doctor at the consultation."
+      },
+      {
+        "type": "h2",
+        "text": "Price",
+        "id": "price"
+      },
+      {
+        "type": "p",
+        "text": "The skin-tone page lists one price:"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Item",
+          "Basis",
+          "Price"
+        ],
+        "rows": [
+          [
+            "Toning for skin tone improvement",
+            "Single session",
+            "KRW 150,000~"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Per session · VAT not included · The tilde means \"from\"; the final price is determined after your consultation and depends on your skin condition and what is combined."
+      },
+      {
+        "type": "p",
+        "text": "No course or package price is published for skin-tone treatment, so if you are planning several sessions, ask for an estimate in your first message. International patients pay from the same list as Korean patients, and interpretation is free. How the wider price list, VAT and the consultation fee work is on the [pricing page](/pricing)."
+      },
+      {
+        "type": "h2",
+        "text": "Fitting a session into a short trip",
+        "id": "fitting-a-session-into-a-short-trip"
+      },
+      {
+        "type": "p",
+        "text": "What the facts support, plainly:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**One session fits easily.** Laser toning and Ulblanc need no anesthesia and no recovery period, and the page describes returning to daily activities immediately. A session takes well under an hour.",
+          "**One session is one step of a course.** The program is built on weekly or two-weekly sessions, and the clinic says a difference from laser toning is usually noticed from the 3rd or 4th session. A visitor on a one-week trip will not complete a course in Seoul. Treat a single session as exactly that, and ask at the remote consultation whether it makes sense for your skin.",
+          "**Longer stays and repeat visitors.** If you are in Seoul for several weeks, or come back regularly, the weekly and two-weekly schedules above become realistic. Tell the clinic your dates so the doctor can plan around them.",
+          "**If a pigment laser is added, plan for scabs.** With Clarity II or Lucas, allow for 3–7 days in which treated spots may darken or form fine scabs. Put that session early in your trip, or leave it for a visit when you have the time.",
+          "**Sun is the real scheduling issue.** The clinic advises thorough sun protection for at least 2–4 weeks after any laser treatment and suggests avoiding laser treatment in periods with a lot of outdoor activity. If the rest of your holiday is beaches or hiking, say so."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Most non-surgical treatments at LIV are done on the same day as the in-person consultation. [검수 필요: 레이저 토닝·울블랑도 상담 당일 시술이 되는지, 외국인 안내 표에는 레이저 항목이 없음]"
+      },
+      {
+        "type": "h2",
+        "text": "Aftercare",
+        "id": "aftercare"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Sunscreen.** After laser treatment the skin is more sensitive and the risk of pigmentation from UV exposure rises. Apply SPF 50+ sunscreen thoroughly for at least 2–4 weeks and use a hat or parasol.",
+          "**Temporary darkening.** With pigment lasers, temporary post-inflammatory hyperpigmentation can occur; the clinic says this improves naturally within 2–4 weeks and can be prevented with thorough sun protection.",
+          "**Pregnancy and breastfeeding.** Laser treatments are not recommended; the clinic advises waiting until both are complete.",
+          "**After you fly home.** Send photos through your messenger or the live chat and the clinic reviews your progress. A written aftercare guide is provided in English, Japanese and Chinese."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Booking and payment in brief",
+        "id": "booking-and-payment-in-brief"
+      },
+      {
+        "type": "p",
+        "text": "You can message the clinic directly — WhatsApp (+82 10-6888-2773), the live chat on this site or the [contact form](/contact) — and replies come within one business day. No deposit is required to reserve a consultation. The 1:1 consultation costs KRW 10,000 and is fully deducted from the treatment cost if you have treatment the same day. Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash are accepted. The clinic is open Monday to Friday 10:00–19:00 and Saturday 10:00–16:00, closed on Sunday."
+      },
+      {
+        "type": "h2",
+        "text": "Before you book",
+        "id": "before-you-book"
+      },
+      {
+        "type": "p",
+        "text": "The devices, the number of sessions and the final price are decided at your consultation with the doctor; the figures here are the clinic's published general guidance. See the [laser pages](/laser) for the full list of laser treatments, the [medical Q&A](/medical) for more answers, and send your dates and a couple of photos through the [international patients page](/international) or the [contact form](/contact)."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How many laser toning sessions do I need?",
+        "a": "The clinic recommends 10 or more sessions of laser toning in total, with a difference usually noticed from the 3rd or 4th session, and 5–10 sessions of Ulblanc. Its skin-tone protocols run from 5 sessions at 2-week intervals for mild concerns to 15 or more for severe ones. Your own number is set at the consultation."
+      },
+      {
+        "q": "Is there downtime after laser toning?",
+        "a": "The clinic describes laser toning as having almost no downtime, with an immediate return to daily activities; the same is stated for Ulblanc. If Clarity II or Lucas is added for pigment, allow 3–7 days in which fine scabs or darkening may appear."
+      },
+      {
+        "q": "How much does laser toning cost at LIV?",
+        "a": "The skin-tone page lists toning at KRW 150,000~ for a single session, excluding VAT. The final price is determined after consultation. Foreign patients pay from the same price list as Korean patients."
+      },
+      {
+        "q": "Is one session during a trip enough?",
+        "a": "It depends on what you expect. The treatment works gradually over repeated sessions at weekly or two-weekly intervals, so a single session is one step rather than a full course. The doctor can tell you at the consultation what one session can reasonably do for your skin."
+      },
+      {
+        "q": "Do I need to avoid the sun afterwards?",
+        "a": "Yes. The clinic asks for SPF 50+ sunscreen for at least 2–4 weeks after laser treatment, plus a hat or parasol, because treated skin is more prone to pigmentation from UV exposure."
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "Thermage FLX in Seoul: 2026 price guide by shot count, what's included and how to plan your visit",
+    "description": "Thermage FLX prices at LIV Plastic Surgery in Sinsa, Seoul, by shot count and eye tip, what the price covers, treatment time, anesthesia, downtime, how long results last and how to book from abroad.",
+    "keywords": [
+      "thermage flx korea price",
+      "thermage seoul cost",
+      "thermage flx 600 shots price korea",
+      "eye thermage korea",
+      "thermage korea foreigner",
+      "thermage flx seoul same day"
+    ],
+    "category": "price",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting/thermage",
+    "locale": "en",
+    "slug": "thermage-flx-cost-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "Planning to have Thermage FLX while you are in Seoul, and want to see the published price before you message a clinic? This guide sets out what LIV lists for Thermage FLX: the price by shot count, how long the appointment takes, what happens with anesthesia and downtime, and how to fit it into a short trip. [LIV Plastic Surgery](/international) is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency."
+      },
+      {
+        "type": "h2",
+        "text": "Thermage FLX prices at LIV (2026)",
+        "id": "thermage-flx-prices-at-liv-2026"
+      },
+      {
+        "type": "p",
+        "text": "Thermage FLX is priced by the number of shots, and the eye area uses a dedicated eye tip with its own price. The figures below are the starting prices per session shown on the [Thermage FLX page](/lifting/thermage); the [price list](/pricing) shows the 600-shot and eye-tip rows."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Treatment",
+          "Shots",
+          "Price (per session)"
+        ],
+        "rows": [
+          [
+            "Thermage FLX",
+            "300",
+            "KRW 1,300,000~"
+          ],
+          [
+            "Thermage FLX",
+            "600",
+            "KRW 2,400,000~"
+          ],
+          [
+            "Thermage FLX",
+            "900",
+            "KRW 3,300,000~"
+          ],
+          [
+            "Eye Thermage (eye tip)",
+            "225",
+            "KRW 1,000,000~"
+          ],
+          [
+            "Eye Thermage (eye tip)",
+            "450",
+            "KRW 1,600,000~"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Per session · VAT not included · The exact price is confirmed after your consultation and may vary with your skin condition, the area treated and the products used. Prices are charged in Korean won; the amount on your card statement depends on the exchange rate on the day."
+      },
+      {
+        "type": "p",
+        "text": "Two things to know about the numbers. The tilde means \"from\": the final price is set once the surgeon has seen your skin and agreed the shot count with you. And VAT is added on top of the listed price."
+      },
+      {
+        "type": "h3",
+        "text": "What the price covers"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**The shot count for your area.** Thermage FLX is priced by the number of shots of radiofrequency energy delivered. The clinic treats the full face, the eye area, the neck and the body; how many shots your area needs is decided at the consultation.",
+          "**A genuine Thermage FLX system and authentic tips.** LIV is a Thermage FLX partner clinic and an officially certified Ultherapy Prime provider. Only genuine, certified handpieces (tips) are used, and you are welcome to check this yourself before treatment.",
+          "**Language support at no extra charge.** Consultations are available in English, and interpretation is arranged free of charge on request. There is no foreigner surcharge and no fee for language support.",
+          "**An in-person consultation with the surgeon** before the treatment, on the same visit. The 1:1 consultation fee is KRW 10,000, and it is fully deducted from the treatment cost if you proceed with treatment on the same day."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Time, anesthesia, downtime and results",
+        "id": "time-anesthesia-downtime-and-results"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Item",
+          "What the clinic states"
+        ],
+        "rows": [
+          [
+            "Treatment time",
+            "45–60 minutes"
+          ],
+          [
+            "Anesthesia",
+            "No anesthesia; vibration reduces discomfort"
+          ],
+          [
+            "Recovery",
+            "Immediate return to daily life"
+          ],
+          [
+            "Return visit",
+            "Same day · no revisit required"
+          ],
+          [
+            "Results",
+            "Immediate elasticity improvement, collagen regeneration over 3–6 months"
+          ],
+          [
+            "How long results last",
+            "6 months to 1 year"
+          ],
+          [
+            "Recommended interval",
+            "1–2 sessions per year"
+          ]
+        ]
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Anesthesia and comfort.** The treatment page lists Thermage FLX as a no-anesthesia treatment, because the vibrating tip reduces discomfort. The clinic's medical Q&A says that numbing cream is applied for about 30 minutes before the treatment, and that most patients can receive it comfortably. [검수 필요: 써마지 FLX 마취 — 시술 페이지는 '무마취', 의료 Q&A는 '마취 크림 약 30분'으로 서로 다름. 실제 진행 방식 확인] If you are sensitive to pain, additional pain control is available; mention it at your consultation.",
+          "**Downtime.** You can return to daily life immediately. Temporary flushing is possible after the treatment.",
+          "**Results.** The clinic describes an immediate improvement in elasticity, followed by collagen regeneration over 3–6 months. Results last about 6 months to 1 year, and this varies with skin condition, age and lifestyle. No particular result can be promised in advance.",
+          "**How often.** The clinic recommends 1–2 sessions per year. The interval that suits you is set at the consultation.",
+          "**Thermage FLX compared with earlier versions.** According to the clinic, AccuREP technology adjusts the energy automatically and the treatment is 25% faster."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Fitting Thermage FLX into your trip (no agency needed)",
+        "id": "fitting-thermage-flx-into-your-trip-no-agency-needed"
+      },
+      {
+        "type": "p",
+        "text": "Thermage FLX is completed in one session with no return visit, so it needs a single block of time during your stay. You do not need a medical-tourism agency: you message the clinic directly, receive a quote before you travel, and there is no deposit to reserve a consultation. Enquiries are answered within one business day."
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**Contact the clinic** on WhatsApp (+82 10-6888-2773) or the live chat on this site, in English. You can also use the [contact form](/contact).",
+          "**Remote consultation and quote.** Share your concerns and a few photos. The clinic suggests suitable treatments and sends a clear price estimate.",
+          "**Schedule your visit.** Pick a date and time that fits your itinerary and reserve your appointment.",
+          "**Visit and same-day treatment.** Meet the surgeon for a final in-person consultation, then receive your treatment the same day in most cases.",
+          "**Remote aftercare.** After you return home, follow-up and questions are handled through your messenger or chat, and you receive a written aftercare guide in English."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Practical details for the day:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).",
+          "**Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. From Incheon Airport it is about 70–90 minutes by AREX train or limousine bus, or about 60 minutes by taxi; from Gimpo Airport about 40 minutes by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.",
+          "**Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash. Card installment payment is available.",
+          "**Flying home:** Thermage FLX needs no follow-up visit, and the clinic lists recovery as an immediate return to daily life. The site does not state a number of hours to wait before boarding a flight, so tell the clinic your flight time when you book and confirm it at your consultation. [검수 필요: 써마지 FLX 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음]",
+          "**Changing your appointment:** because there is no deposit for a consultation booking, if your plans change, tell the clinic through the same chat as early as you can."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "When you block out time, allow for the consultation, the treatment itself (45–60 minutes) and, if numbing cream is used, about 30 minutes before it. For how other treatments fit into a one- or two-night stay, see the [downtime and flight planning guide](/guides/downtime-flight-travel-plan)."
+      },
+      {
+        "type": "h2",
+        "text": "Is Thermage FLX right for you?",
+        "id": "is-thermage-flx-right-for-you"
+      },
+      {
+        "type": "p",
+        "text": "The clinic describes Thermage FLX as suited to people who:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "are concerned about loss of skin elasticity;",
+          "want to improve fine lines;",
+          "prefer a natural, gradual change; and",
+          "want a treatment without anesthesia."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Points to raise at your consultation:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Thermage FLX cannot be performed on people with a pacemaker.",
+          "It is not performed during pregnancy or while breastfeeding.",
+          "If you have a metal implant in the treatment area, a consultation is needed first.",
+          "Temporary flushing is possible after the treatment."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "If you are weighing it against Ultherapy: Thermage uses radiofrequency (RF) energy to contract collagen in the dermal layer and promote its regeneration, and the clinic describes it as effective for overall skin elasticity. [Ultherapy Prime](/lifting/ulthera) uses focused ultrasound (HIFU) that reaches the deeper SMAS layer, and is described as effective for lifting sagging skin. The two can be combined. The [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink) compares them in more detail, and the [Ultherapy price guide](/guides/ultherapy-cost-seoul) lists Ultherapy prices by area. Which one fits you is decided at the consultation."
+      },
+      {
+        "type": "p",
+        "text": "Every treatment is planned and performed under Dr. Sooyoung Kim, a board-certified plastic surgeon with four SCI-indexed research publications; see [our medical team](/about/staff). More answers for international patients are on the [medical Q&A page](/medical)."
+      },
+      {
+        "type": "h2",
+        "text": "Before you book",
+        "id": "before-you-book"
+      },
+      {
+        "type": "p",
+        "text": "Your treatment area, shot count and final price are decided at your consultation with the surgeon; the figures above are the published starting points so you can plan your trip. Send your questions through the [international patients page](/international) or the [contact form](/contact) and the clinic will reply within one business day."
+      }
+    ],
+    "faq": [
+      {
+        "q": "How much does Thermage FLX cost in Seoul at LIV?",
+        "a": "The published starting prices per session are KRW 1,300,000 for 300 shots, KRW 2,400,000 for 600 shots and KRW 3,300,000 for 900 shots. Eye Thermage with the eye tip starts at KRW 1,000,000 for 225 shots and KRW 1,600,000 for 450 shots. VAT is not included, and the exact price is confirmed after your consultation."
+      },
+      {
+        "q": "Do international patients pay more?",
+        "a": "No. At LIV, international patients are charged from the same price list as Korean patients, published on the [pricing page](/pricing). There is no extra charge for interpretation or language support."
+      },
+      {
+        "q": "Can I have Thermage FLX on the same day as my consultation, and do I need to come back?",
+        "a": "In most cases the treatment is done on the day of your visit. It takes 45–60 minutes, requires no hospitalization, and Thermage FLX is completed in one session with no revisit required."
+      },
+      {
+        "q": "Does Thermage FLX hurt?",
+        "a": "Pain varies with the treatment and the individual. Thermage FLX uses a vibrating tip that reduces discomfort, and the clinic's medical Q&A says most patients can receive the treatment comfortably. Additional pain control is available if you ask at your consultation."
+      },
+      {
+        "q": "How long do Thermage results last, and how often should I repeat it?",
+        "a": "The clinic states that Thermage results last about 6 months to 1 year, depending on skin condition, age and lifestyle, and recommends 1–2 sessions per year. Your own interval is decided with the surgeon."
+      },
+      {
+        "q": "Can Thermage be used around the eyes?",
+        "a": "Yes. The eye area is treated with a dedicated Thermage eye tip, listed at 225 or 450 shots."
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 2
+  },
+  {
+    "title": "Thread lift and APTOS in Seoul: price, downtime and how long to stay",
+    "description": "How LIV Plastic Surgery in Sinsa, Seoul describes its thread lift and APTOS thread lift, with published prices by thread, anesthesia, the 3–7 day recovery period, the optional one-week check, aftercare rules and trip planning for international patients.",
+    "keywords": [
+      "thread lift korea price",
+      "thread lift seoul",
+      "aptos thread lift korea",
+      "thread lift korea downtime",
+      "thread lift seoul foreigner",
+      "aptos namica price",
+      "how long to stay in korea thread lift"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting/thread",
+    "locale": "en",
+    "slug": "thread-lift-aptos-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "A thread lift is the one lifting treatment at LIV that comes with a real recovery period, so it needs more planning than a device treatment you walk out of. This guide explains how the clinic describes its [thread lift](/lifting/thread) and its [APTOS thread lift](/lifting/aptos), what each thread costs, and how the 3–7 day recovery and the optional one-week check affect the length of your trip. [LIV Plastic Surgery](/international) is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency."
+      },
+      {
+        "type": "h2",
+        "text": "Thread lift and APTOS: how the clinic describes each",
+        "id": "thread-lift-and-aptos-how-the-clinic-describes-each"
+      },
+      {
+        "type": "p",
+        "text": "Both treatments place threads under local anesthesia, take 30–60 minutes and treat the same areas: forehead, cheekbones, cheeks, jawline, nasolabial folds and neck. The difference the site draws is in how long the result is expected to last and who each one is aimed at."
+      },
+      {
+        "type": "table",
+        "header": [
+          "",
+          "Thread lift",
+          "APTOS Bio Lifting"
+        ],
+        "rows": [
+          [
+            "Treatment time",
+            "30–60 minutes",
+            "30–60 minutes"
+          ],
+          [
+            "Anesthesia",
+            "Local anesthesia",
+            "Local anesthesia"
+          ],
+          [
+            "Recovery",
+            "3–7 days (bruising and swelling possible)",
+            "3–7 days (bruising and swelling possible)"
+          ],
+          [
+            "Results as stated",
+            "Immediate lifting, lasting 6–12 months",
+            "Immediate lifting, lasting up to 24 months"
+          ],
+          [
+            "Combining with laser lifting",
+            "Possible after 1–2 weeks",
+            "Possible after 2–4 weeks"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**Thread lift.** The clinic describes it as suited to people who want immediate lifting, who are concerned about sagging cheeks or a flattened cheekbone area, who want to tidy the nasolabial folds and jawline, or who have not been satisfied with laser lifting alone. Results last 6–12 months depending on the type of thread."
+      },
+      {
+        "type": "p",
+        "text": "**APTOS.** The clinic describes it as suited to people who want longer-lasting lifting, who want a biostimulation effect, who prefer a globally certified product, or who want natural-looking volume and elasticity. According to the APTOS page, APTOS NAMICA threads encapsulate 40 mg of hyaluronic acid and the effect lasts up to 24 months. The page lists the product's certifications as KFDA Class 4, CE, ISO 13485 and FDA MDSAP."
+      },
+      {
+        "type": "p",
+        "text": "On duration in general, the clinic's medical Q&A adds that it depends on the thread material: PDO (dissolvable) threads last about 6–8 months and PLLA or PCL threads about 12–18 months, and because threads promote collagen regeneration as they dissolve, the effect continues for some time after they are absorbed. These are the clinic's stated ranges, not a promise for any individual; which thread suits your face is decided at the consultation."
+      },
+      {
+        "type": "h2",
+        "text": "Prices by thread (2026)",
+        "id": "prices-by-thread-2026"
+      },
+      {
+        "type": "p",
+        "text": "Thread lifts are priced by product and number of threads. These are the starting prices per session on the [price list](/pricing)."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Thread",
+          "Basis",
+          "Price (per session)"
+        ],
+        "rows": [
+          [
+            "APTOS NAMICA",
+            "10 threads",
+            "KRW 3,000,000~"
+          ],
+          [
+            "APTOS Light Lift 25",
+            "2 threads",
+            "KRW 1,500,000~"
+          ],
+          [
+            "APTOS Light Lift 50",
+            "2 threads",
+            "KRW 2,500,000~"
+          ],
+          [
+            "Silhouette Soft",
+            "2 threads",
+            "KRW 1,000,000~"
+          ],
+          [
+            "MINT",
+            "8 threads",
+            "KRW 800,000~"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Per session · VAT not included · The exact price is confirmed after your consultation and may vary with your skin condition, the treatment scope and the products used. Prices are charged in Korean won; the amount on your card statement depends on the exchange rate on the day."
+      },
+      {
+        "type": "p",
+        "text": "The tilde means \"from\". The number of threads you need depends on the area and the degree of sagging, so the final figure is set once the surgeon has examined your face. The 1:1 consultation fee is KRW 10,000 and is fully deducted from the treatment cost if you proceed on the same day. There is no foreigner surcharge and no charge for interpretation."
+      },
+      {
+        "type": "h2",
+        "text": "Downtime and aftercare",
+        "id": "downtime-and-aftercare"
+      },
+      {
+        "type": "p",
+        "text": "The clinic's stated recovery period for both treatments is 3–7 days, during which bruising and swelling are possible. Its aftercare points are:"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Bruising and swelling** may appear for 3–7 days after the treatment.",
+          "**Avoid exaggerated facial expressions and facial massage for 2 weeks.**",
+          "**A pulling or tight sensation** in the treated area is possible.",
+          "**Light makeup** is possible from 24 hours after the treatment.",
+          "**Rare risks** the clinic lists are infection and thread exposure. If anything worries you after treatment, contact the clinic through the same chat you booked with."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Most cosmetic treatments, including lifting treatments, are not recommended during pregnancy or breastfeeding. Tell the surgeon about your medical history and any medication at the consultation."
+      },
+      {
+        "type": "h2",
+        "text": "Follow-up: the one-week check is optional",
+        "id": "follow-up-the-one-week-check-is-optional"
+      },
+      {
+        "type": "p",
+        "text": "For a thread lift, the clinic's international page lists an optional check about one week later, or a remote photo check instead. The medical Q&A puts it the same way: a check-up after one week is recommended if needed, but it is not required."
+      },
+      {
+        "type": "p",
+        "text": "After you return home, you can send photos by messenger or chat and the clinic reviews your progress and guides your aftercare. A written aftercare guide is provided in English."
+      },
+      {
+        "type": "h2",
+        "text": "How long to stay in Seoul",
+        "id": "how-long-to-stay-in-seoul"
+      },
+      {
+        "type": "p",
+        "text": "The treatment itself takes 30–60 minutes, needs no hospitalization, and in most cases is done on the same day as your in-person consultation. What decides the length of your trip is how you want to handle recovery and follow-up."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Plan",
+          "What it looks like"
+        ],
+        "rows": [
+          [
+            "Short stay with remote follow-up",
+            "Consultation and treatment on one visit, then the one-week check is done by photo after you are home. The 3–7 day bruising and swelling period will overlap with your return journey."
+          ],
+          [
+            "About one week",
+            "Treatment early in the trip, in-person check about one week later before you leave. Most of the 3–7 day recovery period passes while you are still in Seoul."
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "These are ways of arranging time, not medical advice. The site does not state how soon after a thread lift you may fly. [검수 필요: 실리프팅·압토스 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음] Tell the clinic your flight dates when you book, and confirm the timing at your consultation."
+      },
+      {
+        "type": "p",
+        "text": "If you also want a laser lifting treatment, the clinic says it can be combined 1–2 weeks after a thread lift, or 2–4 weeks after APTOS, so the two do not usually fit into one short trip. See the [lifting overview](/lifting) for the device options, and the [downtime and flight planning guide](/guides/downtime-flight-travel-plan) for how other treatments fit into one or two nights."
+      },
+      {
+        "type": "h2",
+        "text": "Booking from abroad",
+        "id": "booking-from-abroad"
+      },
+      {
+        "type": "p",
+        "text": "You do not need an agency, and there is no deposit to reserve a consultation. Enquiries are answered within one business day."
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**Contact the clinic** on WhatsApp (+82 10-6888-2773) or the live chat on this site, in English, or use the [contact form](/contact).",
+          "**Remote consultation and quote.** Share your concerns and a few photos; the clinic suggests suitable treatments and sends a clear price estimate.",
+          "**Schedule your visit** around your travel dates.",
+          "**Visit and treatment.** Meet the surgeon for a final in-person consultation, then receive your treatment the same day in most cases.",
+          "**Remote aftercare** by messenger or chat after you return home."
+        ]
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).",
+          "**Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. From Incheon Airport about 70–90 minutes by AREX train or limousine bus, or about 60 minutes by taxi; from Gimpo Airport about 40 minutes by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.",
+          "**Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash. Card installment payment is available."
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Every treatment is planned and performed under Dr. Sooyoung Kim, a board-certified plastic surgeon with four SCI-indexed research publications; see [our medical team](/about/staff). The step-by-step booking process is covered in the [booking guide for international patients](/guides/book-seoul-clinic-foreigner)."
+      },
+      {
+        "type": "h2",
+        "text": "Before you book",
+        "id": "before-you-book"
+      },
+      {
+        "type": "p",
+        "text": "The type of thread, the number of threads and the final price are decided at your consultation with the surgeon; the figures above are the published starting points so you can plan your trip. Send your questions and travel dates through the [international patients page](/international) or the [contact form](/contact) and the clinic will reply within one business day."
+      }
+    ],
+    "faq": [
+      {
+        "q": "What is the difference between a thread lift and APTOS at LIV?",
+        "a": "Both are done under local anesthesia in 30–60 minutes with a 3–7 day recovery period. The clinic states that a thread lift gives immediate lifting lasting 6–12 months, and that APTOS gives immediate lifting lasting up to 24 months; APTOS NAMICA threads encapsulate 40 mg of hyaluronic acid. Which one suits you is decided at the consultation."
+      },
+      {
+        "q": "How much does a thread lift cost in Seoul at LIV?",
+        "a": "Published starting prices per session are KRW 800,000 for MINT (8 threads), KRW 1,000,000 for Silhouette Soft (2 threads), KRW 1,500,000 for APTOS Light Lift 25 (2 threads), KRW 2,500,000 for APTOS Light Lift 50 (2 threads) and KRW 3,000,000 for APTOS NAMICA (10 threads). VAT is not included, and international patients pay from the same price list."
+      },
+      {
+        "q": "How long is the downtime after a thread lift?",
+        "a": "The clinic states 3–7 days, with bruising and swelling possible. Light makeup is possible from 24 hours after the treatment, and exaggerated facial expressions and massage should be avoided for 2 weeks."
+      },
+      {
+        "q": "Do I have to come back for a check-up?",
+        "a": "No. A check about one week later is optional, and it can be replaced by a remote photo check through messenger or chat after you return home."
+      },
+      {
+        "q": "How many days should I stay in Seoul for a thread lift?",
+        "a": "The treatment takes 30–60 minutes and needs no hospitalization. If you want the in-person check, plan for about one week; otherwise the check can be done by photo. The right timing for your return flight is confirmed with the clinic at your consultation."
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 1
   },
   {
     "title": "Ultherapy in Seoul: 2026 price guide, what's included and how to plan your visit",
@@ -1888,6 +4960,643 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
+    "title": "韓国のたるみ治療、どれを選ぶ？お悩み別に見るリフティング8種（新沙・LIV美容クリニック）",
+    "description": "ウルセラ・サーマクール・デンシティ・インモード・オンダリフト・シュリンク・糸リフト・アプトスの8種を、たるみ・小じわ・脂肪・ダウンタイム・滞在日数・2026年の料金で整理。ソウル新沙(シンサ)駅徒歩1分のLIV美容クリニックの案内をもとにした早見表つき。",
+    "keywords": [
+      "韓国 たるみ治療 選び方",
+      "韓国 リフトアップ 種類",
+      "フェイスライン たるみ 韓国",
+      "韓国 リフティング ダウンタイムなし",
+      "糸リフト ウルセラ どっち",
+      "韓国 リフティング 料金"
+    ],
+    "category": "comparison",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting",
+    "locale": "ja",
+    "slug": "choose-lifting-treatment-by-concern",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "韓国のクリニックでリフティングのメニューを開くと、名前が8つ並んでいることがあります。この記事は、LIV美容クリニックのリフティング8種を「クリニックがそれぞれをどんなお悩み向けと案内しているか」で並べ替えたものです。あくまで地図であって診断ではなく、実際のプランは医師が肌を診てカウンセリングで決めます。LIVは新沙(シンサ)駅4番出口から徒歩1分の非手術アンチエイジング専門クリニックで、外国人も同一料金、日本語で直接予約できます。"
+      },
+      {
+        "type": "h2",
+        "text": "8種の早見表",
+        "id": "s1"
+      },
+      {
+        "type": "table",
+        "header": [
+          "施術",
+          "サイトの説明",
+          "施術時間",
+          "麻酔",
+          "ダウンタイム",
+          "料金（1回・税別）"
+        ],
+        "rows": [
+          [
+            "[ウルセラプライム](/lifting/ulthera)",
+            "HIFU（超音波）でSMAS層まで",
+            "60〜90分",
+            "麻酔クリーム（30分）",
+            "すぐに日常復帰可能",
+            "780,000ウォン〜"
+          ],
+          [
+            "[サーマクール（サーマジ）FLX](/lifting/thermage)",
+            "RF（高周波）で真皮層に",
+            "45〜60分",
+            "通常は無麻酔・希望により麻酔クリーム",
+            "すぐに日常復帰可能",
+            "1,000,000ウォン〜"
+          ],
+          [
+            "[デンシティ](/lifting/density)",
+            "高周波リフティングの入門機器",
+            "40〜60分",
+            "麻酔クリーム（選択）",
+            "すぐに日常復帰可能",
+            "890,000ウォン〜"
+          ],
+          [
+            "[インモード](/lifting/inmode)",
+            "高周波（FX・FORMAモード）",
+            "30〜60分",
+            "無麻酔または麻酔クリーム",
+            "すぐに日常復帰可能",
+            "150,000ウォン〜"
+          ],
+          [
+            "[オンダ（オンダリフト）](/lifting/onda)",
+            "2.45GHzのマイクロ波（RFではない）",
+            "顔15〜30分 / ボディ1部位約10分",
+            "不要",
+            "ダウンタイムなし",
+            "カウンセリングでお見積もり [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음]"
+          ],
+          [
+            "[シュリンク](/lifting/shurink)",
+            "HIFU・費用を抑えた定期ケア向き",
+            "30〜45分",
+            "麻酔クリーム（選択）",
+            "すぐに日常復帰可能",
+            "200,000ウォン〜"
+          ],
+          [
+            "[糸リフト](/lifting/thread)",
+            "局所麻酔で糸を入れる施術",
+            "30〜60分",
+            "局所麻酔",
+            "3〜7日（内出血・腫れの可能性）",
+            "800,000ウォン〜"
+          ],
+          [
+            "[アプトス](/lifting/aptos)",
+            "APTOSブランドの糸によるリフティング",
+            "30〜60分",
+            "局所麻酔",
+            "3〜7日（内出血・腫れの可能性）",
+            "1,500,000ウォン〜"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "1回あたりの料金・VAT（付加価値税）別途。「〜」は各施術で公開されている最も低い金額です（例：ウルセラプライム上顔面200〜300ショット、アイサーマジ225ショット、シュリンク300ショット、ミント8本、APTOS Light Lift 25・2本）。最終料金はカウンセリング後に確定します。"
+      },
+      {
+        "type": "h2",
+        "text": "お悩み別に見る",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "以下は、LIVの各施術ページに書かれている「こんな方に」をお悩みごとにまとめ直したものです。同じ施術が複数のお悩みに登場します。だからこそ、最後は対面で決めます。"
+      },
+      {
+        "type": "h3",
+        "text": "たるみ・フェイスライン"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**ウルセラプライム**は、たるみや弾力低下が気になり、手術なしでリフティングしたい方向け。対象は額・目元・頬・顎ライン・首です。",
+          "**糸リフト**は、即時のリフティングを求める方、頬のたるみが気になる方、ほうれい線や顎ラインを整えたい方、レーザーリフティングだけでは満足できなかった方向け。",
+          "**シュリンク**と**デンシティ**も対象部位はウルセラと同じ（額・目元・頬・顎ライン・首）。シュリンクは初めての方や定期メンテナンス向き、デンシティは複合的なリフティング効果を求める方向けと案内されています。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "弾力低下・小じわ"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**サーマクール（サーマジ）FLX**は、弾力低下や小じわが気になり、自然で段階的な変化を求める方向け。顔全体・目元・首・ボディが対象で、目もとには専用チップがあります。",
+          "**インモード**も、用途のひとつにコラーゲン再生と小じわの改善を挙げています。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "顔の脂肪とたるみが両方気になる"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**インモード**は、顔の脂肪が多い方や、たるみが複合的に気になる方におすすめとされています（顎下の脂肪、頬、フェイスライン、二重あご）。",
+          "**オンダ**は、弾力低下と部分的な脂肪が一緒にある方向け。顔（頬・顎ライン）、二重あご、ボディ（腹部・わき腹・太もも・腕）が対象です。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "長く持たせたい・ボリューム感"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**アプトス**は、長期間続くリフティング、バイオスティミュレーション効果、自然なボリューム感と弾力を求める方向け。持続は最大24ヶ月とされ、APTOS NAMICAはヒアルロン酸40mgをカプセル化した糸と説明されています。",
+          "**ウルセラプライム**の効果は1〜2年持続（個人差あり）と案内されています。",
+          "ボリュームの減少そのものが主なお悩みの場合は、リフティング機器ではなく[フィラー](/antiaging/filler)の話になることもあります。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "ダウンタイムなし・麻酔なしがいい"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "機器6種はいずれも「すぐに日常復帰可能」。**オンダ**は麻酔不要、**サーマクールFLX**は通常無麻酔、**インモード**も無麻酔で受けられます。",
+          "**糸リフト**と**アプトス**は局所麻酔で行い、3〜7日は内出血や腫れが出る可能性があります。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "初めて・予算を抑えたい"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**シュリンク**は、初めてリフティングを受ける方、短時間で済ませたい方、費用を抑えたい方向け。",
+          "**デンシティ**は、費用を抑えられる高周波リフティングの入門機器。",
+          "公開されている料金がいちばん低いのは**インモード**です。ただし安いものが同じお悩みに対応するとは限らないので、料金より先に上の「向いている方」を見比べてください。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "効果の出方・持続・間隔",
+        "id": "s3"
+      },
+      {
+        "type": "table",
+        "header": [
+          "施術",
+          "効果（サイトの記載）",
+          "間隔"
+        ],
+        "rows": [
+          [
+            "ウルセラプライム",
+            "3〜6ヶ月かけて徐々に改善、1〜2年持続",
+            "1〜2年に1回"
+          ],
+          [
+            "サーマクールFLX",
+            "即時の弾力改善、3〜6ヶ月のコラーゲン再生",
+            "6ヶ月〜1年に1回"
+          ],
+          [
+            "デンシティ",
+            "即時のリフティング＋3〜6ヶ月のコラーゲン再生",
+            "3〜6ヶ月間隔"
+          ],
+          [
+            "インモード",
+            "即時の弾力＋段階的なコラーゲン再生",
+            "3〜6ヶ月間隔（メンテナンス）"
+          ],
+          [
+            "オンダ",
+            "4〜12週間かけて徐々に現れる",
+            "カウンセリングで決定"
+          ],
+          [
+            "シュリンク",
+            "2〜4週後から効果が現れ、3ヶ月で最大効果",
+            "3〜6ヶ月間隔"
+          ],
+          [
+            "糸リフト",
+            "即時のリフティング、糸の種類により6〜12ヶ月持続",
+            "カウンセリングで決定"
+          ],
+          [
+            "アプトス",
+            "即時のリフティング、最大24ヶ月持続",
+            "カウンセリングで決定"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "持続期間は肌の状態・年齢・生活習慣によって変わり、周期はカウンセリングで決まります。ウルセラ・サーマクール・シュリンクの詳細は[3種の比較記事](/guides/ultherapy-vs-thermage-vs-shurink)、デンシティ・オンダ・インモードは[こちらの比較記事](/guides/density-onda-inmode-lifting-seoul)にまとめています。"
+      },
+      {
+        "type": "h2",
+        "text": "2泊3日など短い滞在の場合",
+        "id": "s4"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**機器の施術。** 非手術施術の多くは30〜90分・入院不要で、多くの方が来院当日に施術を受けます。ウルセラプライムとサーマジFLXは当日完了・再来院不要。そのほかの機器は、予約時に再来院の要否をご確認ください。",
+          "**糸の施術。** 糸リフトは約1週間後に任意の確認、または帰国後の写真によるオンライン確認があります。3〜7日は内出血・腫れの可能性があり、軽いメイクは施術24時間後から、2週間は激しい表情やマッサージを避けます。写真を撮る予定や大事な予定とは日をずらすのが安心です。",
+          "**併用。** 糸リフトはレーザーリフティングと1〜2週間後、アプトスは2〜4週間後の併用でシナジー効果が期待できると案内されています。短い滞在では、どちらかを選んで残りは次回、という形が多くなります。順番は医師が確認します。",
+          "**日程づくり。** [ダウンタイムとフライトのガイド](/guides/downtime-flight-travel-plan)と[予約ガイド](/guides/book-seoul-clinic-foreigner)も参考にしてください。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "医師に伝えていただきたいこと",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "注意点は施術ごとに違い、それによって提案が変わることがあります。以下はクリニックの案内です。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**妊娠中・授乳中。** リフティング施術はおすすめされません。",
+          "**ペースメーカー。** サーマクールFLXは受けられません。オンダは必ずお知らせください。",
+          "**金属インプラント。** 施術部位にある場合、ウルセラとサーマクールは事前のカウンセリングが必要です。オンダは体内の金属インプラントを必ずお知らせください。",
+          "**敏感肌・肌トラブル。** シュリンクは、敏感肌の方は事前のカウンセリングが必要です。オンダは、施術部位に炎症・感染・傷がある場合にお知らせください。",
+          "**糸の施術。** 施術部位につっぱり感が出ることがあり、まれに感染や糸の露出の可能性があります。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "この記事は、候補を2〜3つに絞るためのものです。その先は医師の仕事で、LIVでは形成外科専門医が肌の状態を直接診断し、お悩みと希望に合わせたプランを提案します（[医療スタッフ](/about/staff)）。料金は[料金案内ページ](/pricing)と各施術ページで確認できます。ご質問と写真は[外国人患者向けページ](/international)か[お問い合わせフォーム](/contact)から、ほかの回答は[医療Q&Aページ](/medical)へ。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "フェイスラインのたるみにはどの施術が合いますか？",
+        "a": "顎ラインは、ウルセラプライム・シュリンク・デンシティ・オンダ・糸リフト・アプトスの対象部位に含まれ、インモードもフェイスラインを挙げています。どれが合うかは、主な原因がたるみか、脂肪か、その両方かによって変わり、医師が対面で診断します。"
+      },
+      {
+        "q": "ダウンタイムがないリフティングはどれですか？",
+        "a": "ウルセラプライム・サーマクールFLX・デンシティ・インモード・オンダ・シュリンクは、いずれもすぐに日常生活に戻れると案内されています。糸リフトとアプトスは3〜7日、内出血や腫れの可能性があります。"
+      },
+      {
+        "q": "2つの施術を組み合わせることはできますか？",
+        "a": "組み合わせられる場合があります。LIVは、ウルセラとサーマジの併用には相乗効果がある、インモードとサーマジの併用でより強い弾力改善が期待できる、糸リフトは1〜2週間後にレーザーリフティングと併用できる、と案内しています。合うかどうかはカウンセリングで決まります。"
+      },
+      {
+        "q": "糸リフトとアプトスの違いは何ですか？",
+        "a": "どちらも局所麻酔で30〜60分、3〜7日は内出血・腫れの可能性があります。持続は、糸リフトが糸の種類により6〜12ヶ月、アプトスが最大24ヶ月と案内されています。アプトスはKFDA 4等級・CE・ISO 13485・FDA MDSAPの認証を受けた製品とされています。"
+      },
+      {
+        "q": "渡韓前に自分で施術を決めておけますか？",
+        "a": "気になる施術を伝えていただいて大丈夫です。写真を見たうえで提案と見積もりが届き、最終的なプランは対面のカウンセリングで決まります。1:1専門相談は1万ウォンで、当日施術の場合は施術金額から全額差し引かれます。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "デンシティ・オンダリフト・インモードの違いと韓国での料金（新沙・LIV美容クリニック）",
+    "description": "デンシティ・オンダ（オンダリフト）・インモードの違いを、エネルギーの方式・施術時間・麻酔・ダウンタイム・効果の出方・2026年の料金で比較。ソウル新沙(シンサ)駅徒歩1分のLIV美容クリニックが、それぞれをどんなたるみ・お悩み向けと案内しているかをまとめました。",
+    "keywords": [
+      "デンシティ 韓国 料金",
+      "オンダリフト 韓国",
+      "インモード 韓国 値段",
+      "デンシティ インモード 違い",
+      "韓国 たるみ 治療",
+      "オンダリフト インモード 違い"
+    ],
+    "category": "comparison",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting",
+    "locale": "ja",
+    "slug": "density-onda-inmode-lifting-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "ウルセラやサーマクールは知っていても、韓国のクリニックのメニューを見ると「デンシティ」「オンダリフト」「インモード」が並んでいて迷う——そんな方向けの記事です。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分・カロスキル隣の非手術アンチエイジング専門クリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人も同一料金で、日本語で直接予約できます。"
+      },
+      {
+        "type": "h2",
+        "text": "結論から：3つは「エネルギー」も「向いている人」も違う",
+        "id": "s1"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**デンシティ**は、LIVの案内では「費用を抑えられる高周波（RF）リフティングの入門機器」。額・目元・頬・顎ライン・首が対象です。",
+          "**オンダ（オンダリフト）**は高周波ではなく、2.45GHzのマイクロ波を使います。麻酔は不要で、3つのうち唯一ボディにも使う機器です。",
+          "**インモード**は、顔の脂肪とたるみが複合的に気になる方におすすめと案内されています。FXモードとFORMAモードがあり、料金も別です。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "優劣の話ではありません。どれが合うか、あるいは[リフティングのページ](/lifting)にある別の施術が合うかは、カウンセリングで医師と決まります。"
+      },
+      {
+        "type": "h2",
+        "text": "一目でわかる比較表",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "",
+          "デンシティ",
+          "オンダ",
+          "インモード"
+        ],
+        "rows": [
+          [
+            "エネルギー（サイトの説明）",
+            "RF（高周波）",
+            "2.45GHzのマイクロ波（RFではない）",
+            "RF（高周波）"
+          ],
+          [
+            "施術時間",
+            "40〜60分",
+            "顔15〜30分 / ボディは1部位あたり約10分",
+            "30〜60分"
+          ],
+          [
+            "麻酔",
+            "麻酔クリーム（選択）",
+            "麻酔不要",
+            "無麻酔または麻酔クリーム"
+          ],
+          [
+            "ダウンタイム",
+            "すぐに日常復帰可能",
+            "ダウンタイムなし（施術直後から日常生活可能）",
+            "すぐに日常復帰可能"
+          ],
+          [
+            "効果",
+            "即時のリフティング＋3〜6ヶ月のコラーゲン再生",
+            "4〜12週間かけて徐々に現れます（個人差あり）",
+            "即時の弾力＋段階的なコラーゲン再生"
+          ],
+          [
+            "対象部位",
+            "額・目元・頬・顎ライン・首",
+            "顔（頬・顎ライン）・二重あご・腹部・わき腹・太もも・腕",
+            "顎下・頬・フェイスライン・二重あご・頬の深い部分"
+          ],
+          [
+            "施術間隔",
+            "3〜6ヶ月間隔を推奨",
+            "カウンセリングで決定",
+            "メンテナンスとして3〜6ヶ月間隔"
+          ],
+          [
+            "再来院",
+            "カウンセリングで確認",
+            "カウンセリングで確認",
+            "カウンセリングで確認"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "表の値はLIVの各施術ページと医療Q&Aの記載です。外国人向け案内ページの再来院の目安はウルセラプライム・サーマジFLX・糸リフトなどに限られるため、この3つについては予約時にご確認ください。"
+      },
+      {
+        "type": "h2",
+        "text": "それぞれの特徴（LIVの案内より）",
+        "id": "liv"
+      },
+      {
+        "type": "h3",
+        "text": "デンシティ"
+      },
+      {
+        "type": "p",
+        "text": "「複合的なリフティング効果がほしい」「即時の効果と長期的な改善の両方を求める」「これまでのリフティング施術に満足できなかった」方向けと案内されています。施術時間は40〜60分、麻酔クリームは選択制。効果は「即時のリフティング＋3〜6ヶ月のコラーゲン再生」とされ、3〜6ヶ月間隔の施術が推奨です。ウルセラプライムやサーマジとの違いを尋ねる質問に対して、LIVは「費用を抑えられる高周波リフティングの入門機器」と答えています（[デンシティのページ](/lifting/density)）。"
+      },
+      {
+        "type": "h3",
+        "text": "オンダ（オンダリフト）"
+      },
+      {
+        "type": "p",
+        "text": "「高周波の機器ですか？」という質問へのLIVの答えは「いいえ。オンダは2.45GHzのマイクロ波を使用します」。弾力の低下と部分的な脂肪が一緒に気になる方、ダウンタイムなしで改善したい方、顔とボディを一緒にケアしたい方向けです。顔（頬・顎ライン）と二重あごは15〜30分、ボディ（腹部・わき腹・太もも・腕）は1部位あたり約10分。麻酔なしで行い、温かいマッサージに近い感覚と報告されています。効果は即時ではなく、4〜12週間かけて徐々に現れます（個人差あり）（[オンダのページ](/lifting/onda)）。"
+      },
+      {
+        "type": "h3",
+        "text": "インモード"
+      },
+      {
+        "type": "p",
+        "text": "顔の脂肪が多い方や、たるみが複合的に気になる方におすすめと案内されています。挙げられている用途は、顎下の脂肪を減らしながら弾力を高めること、頬のリフティングとフェイスラインの引き締め、二重あご・頬の深い部分の改善、肌内部のコラーゲン再生と小じわの改善。施術時間は30〜60分で、無麻酔または麻酔クリームで行います。LIVはシュリンクと並べて「3〜6ヶ月間隔で受けられるメンテナンス施術」としており、サーマジとの併用については「高周波のシナジー効果でより強い弾力改善が期待できる」と説明しています（[インモードのページ](/lifting/inmode)）。"
+      },
+      {
+        "type": "h2",
+        "text": "韓国・LIVでの料金（2026年・1回あたり・税別）",
+        "id": "liv20261"
+      },
+      {
+        "type": "p",
+        "text": "デンシティとインモードの料金は、それぞれの施術ページに公開されています。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "施術",
+          "種類",
+          "料金（1回・税別）"
+        ],
+        "rows": [
+          [
+            "デンシティ",
+            "ハイチップ・300ショット",
+            "890,000ウォン〜"
+          ],
+          [
+            "デンシティ",
+            "ハイチップ・600ショット",
+            "1,500,000ウォン〜"
+          ],
+          [
+            "デンシティ",
+            "アルファチップ・300ショット",
+            "990,000ウォン〜"
+          ],
+          [
+            "デンシティ",
+            "アルファチップ・600ショット",
+            "1,800,000ウォン〜"
+          ],
+          [
+            "インモード",
+            "FXモード",
+            "150,000ウォン〜"
+          ],
+          [
+            "インモード",
+            "FORMAモード",
+            "200,000ウォン〜"
+          ],
+          [
+            "インモード",
+            "FX / FORMAモード",
+            "250,000ウォン〜"
+          ],
+          [
+            "オンダ",
+            "顔・ボディ各部位",
+            "カウンセリングでお見積もり [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인]"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "1回あたりの料金・VAT（付加価値税）別途・肌の状態や施術範囲、使用製品によりカウンセリング後に確定します。外国人患者にも韓国人患者と同じ料金表が適用されます。"
+      },
+      {
+        "type": "p",
+        "text": "「〜」は「この金額から」の意味です。デンシティのチップとショット数、インモードのモードは、カウンセリングで医師と決めた時点で最終料金が確定します。ウルセラ・サーマクール・シュリンクの料金は[料金案内ページ](/pricing)と[ウルセラ・サーマクール・シュリンクの比較記事](/guides/ultherapy-vs-thermage-vs-shurink)をご覧ください。"
+      },
+      {
+        "type": "h2",
+        "text": "お悩み別：サイトの案内ではどれ？",
+        "id": "s5"
+      },
+      {
+        "type": "table",
+        "header": [
+          "気になること",
+          "サイトが挙げている機器"
+        ],
+        "rows": [
+          [
+            "費用を抑えて高周波リフティングを始めたい",
+            "デンシティ"
+          ],
+          [
+            "即時の効果と長期的な改善の両方",
+            "デンシティ"
+          ],
+          [
+            "たるみ（弾力低下）と部分的な脂肪が一緒に気になる",
+            "オンダ・インモード"
+          ],
+          [
+            "二重あご",
+            "オンダ・インモード"
+          ],
+          [
+            "顎下の脂肪・頬のもたつき・フェイスライン",
+            "インモード"
+          ],
+          [
+            "顔とボディを一緒にケアしたい",
+            "オンダ"
+          ],
+          [
+            "麻酔なしで受けたい",
+            "オンダ（不要）・インモード（無麻酔または麻酔クリーム）"
+          ],
+          [
+            "3〜6ヶ月ごとの定期メンテナンス",
+            "インモード・デンシティ"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "この表は「クリニックが各機器をどう説明しているか」の地図であって、診断ではありません。同じお悩みでも提案が変わることがあり、[ウルセラ](/lifting/ulthera)・[サーマクール](/lifting/thermage)・[糸リフト](/lifting/thread)など、この比較にない施術を医師がすすめる場合もあります。"
+      },
+      {
+        "type": "h2",
+        "text": "カウンセリングで伝えていただきたいこと",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "以下はクリニックの案内にある注意点です。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**妊娠中・授乳中。** デンシティとインモードは受けられません。オンダは、妊娠中・授乳中の場合カウンセリング時に必ずお知らせください。",
+          "**ペースメーカー・体内の金属。** オンダは、ペースメーカーや体内の金属インプラントがある場合に必ずお知らせください。",
+          "**施術部位の肌トラブル。** オンダは、施術部位に炎症・感染・傷がある場合にお知らせください。デンシティとインモードは、肌の状態によって施術できるかどうかをカウンセリングで確認します。",
+          "**持病。** オンダは、コントロールされていない糖尿病などの基礎疾患がある場合にお知らせください。",
+          "**施術後。** デンシティとインモードは、軽い腫れ・赤みが出ることがあります。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "旅行日程への組み込み方",
+        "id": "s7"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**日帰りで完了。** 非手術施術の多くは30〜90分・入院不要で、多くの方が来院当日に施術を受けます。",
+          "**予約。** LINE（ID：icps7972773）・ライブチャット・[お問い合わせフォーム](/contact)で日本語で連絡（通訳は無料）。お悩みと写真を送ると、施術の提案と見積もりが渡韓前に届きます。返信は営業日1日以内、予約金は不要です。流れは[予約ガイド](/guides/book-seoul-clinic-foreigner)に詳しくまとめています。",
+          "**診療時間。** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間）。",
+          "**アクセス。** 地下鉄3号線・新沙駅4番出口から徒歩1分（[アクセス](/about/location)）。",
+          "**帰国便。** 3つとも施術後すぐに日常生活に戻れると案内されています。個別のタイミングはカウンセリングで確認し、日程の立て方は[ダウンタイムとフライトのガイド](/guides/downtime-flight-travel-plan)を参考にしてください。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "この記事でわかるのは3つの違いまでで、あなたの肌にどれが必要かは、形成外科専門医が肌の状態を直接診断するカウンセリングで決まります（[医療スタッフ](/about/staff)）。1:1専門相談は1万ウォンで、当日施術の場合は施術金額から全額差し引かれます。相談だけでも大丈夫です。ご質問は[外国人患者向けページ](/international)か[お問い合わせフォーム](/contact)から、ほかの回答は[医療Q&Aページ](/medical)へ。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "オンダリフトは高周波（RF）の施術ですか？",
+        "a": "いいえ。オンダは2.45GHzのマイクロ波を使用します。この比較のなかで高周波（RF）にあたるのはデンシティとインモードです。"
+      },
+      {
+        "q": "デンシティ・オンダ・インモードに麻酔は必要ですか？",
+        "a": "オンダは麻酔なしで行い、温かいマッサージに近い感覚と報告されています。インモードは無麻酔または麻酔クリーム、デンシティは麻酔クリームを選択できます。"
+      },
+      {
+        "q": "効果はいつから現れますか？",
+        "a": "デンシティは即時のリフティング＋3〜6ヶ月のコラーゲン再生、インモードは即時の弾力＋段階的なコラーゲン再生と案内されています。オンダは即時ではなく、4〜12週間かけて徐々に現れます。いずれも個人差があります。"
+      },
+      {
+        "q": "どのくらいの間隔で受けますか？",
+        "a": "デンシティは3〜6ヶ月間隔を推奨、インモードは3〜6ヶ月間隔で受けられるメンテナンス施術とされています。肌の状態やご希望の効果によって変わるため、正確な周期はカウンセリングで決まります。"
+      },
+      {
+        "q": "インモードとサーマクールは併用できますか？",
+        "a": "できます。LIVは、高周波のシナジー効果でより強い弾力改善が期待できると案内しています。合うかどうかはカウンセリングで決まります。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 1
+  },
+  {
     "title": "施術後の飛行機搭乗とダウンタイムの目安：1泊2日・2泊3日 美容医療旅行モデルプラン（新沙・LIV美容クリニック）",
     "description": "ウルセラ・サーマクール・ボトックスなど施術別の所要時間・ダウンタイム・再来院の要否をLIV美容クリニック（新沙駅徒歩1分）の公開情報から整理。飛行機に乗れる時期はサイトに記載がなくカウンセリングで確認する点を明記し、1泊2日・2泊3日のモデルプランを掲載します。",
     "keywords": [
@@ -2168,6 +5877,2433 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "readingMinutes": 9,
     "reviewMarkers": 0
+  },
+  {
+    "title": "初めての韓国美容クリニック：来院当日の流れを順番に解説（新沙・LIV美容クリニック）",
+    "description": "初めて韓国の美容クリニックに行く方向けに、LIV美容クリニック（新沙駅徒歩1分）の来院当日の流れを順番に説明します。到着、院長のカウンセリング（通訳）、麻酔クリームの時間、施術別の所要時間、相談費用1万ウォンの扱い、支払い、アフターケア、帰国後のLINEフォローまで。渡韓前・当日・帰国後のチェックリスト付き。",
+    "keywords": [
+      "初めて 韓国 美容クリニック 流れ",
+      "韓国 美容皮膚科 当日 流れ",
+      "韓国 美容クリニック カウンセリング 料金",
+      "ウルセラ 所要時間 韓国",
+      "韓国 美容皮膚科 通訳 日本語",
+      "新沙 美容クリニック 初めて"
+    ],
+    "category": "booking",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/international",
+    "locale": "ja",
+    "slug": "first-visit-what-to-expect-seoul-clinic",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "LINEで予約まではできたけれど、「当日は何時間くらいかかるのか」「受付から先は日本語で通じるのか」「麻酔クリームはいつ塗るのか」「お金はいつ、いくら払うのか」が分からない。初めて韓国の美容クリニックに行く方が気になるのは、たいていこうした当日のことです。"
+      },
+      {
+        "type": "p",
+        "text": "この記事では、LIV美容クリニックでの来院当日を、入口から帰国後のフォローまで順番に追っていきます。LIVはソウル・江南の新沙（シンサ）駅3号線4番出口から徒歩1分、カロスキルのすぐ隣にある、非手術のアンチエイジング施術に絞ったクリニックです。ウルセラ（ウルセラプライム）、サーマジFLX、ボトックス、ヒアルロン酸、スキンブースターなど、ほとんどの施術は30〜90分で終わり入院も不要なため、カウンセリング当日にそのまま施術を受ける方が多くいます。何を、どの範囲で受けるかは、院長とのカウンセリングで決まります。"
+      },
+      {
+        "type": "h2",
+        "text": "来院当日の6ステップ",
+        "id": "s1"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**到着**：新沙駅3号線4番出口から徒歩1分、自恩ビル4階です。空港からの行き方は[アクセスページ](/about/location)をご覧ください。",
+          "**院長のカウンセリング**：形成外科専門医が肌の状態を直接診て、LINEで相談した内容を確認し、必要に応じて調整します。日本語でのカウンセリングに対応しており、ご希望があれば通訳を無料で手配します（予約時にお伝えください）。[검수 필요: 대면 상담에 걸리는 시간]",
+          "**準備**：麻酔クリームを使う施術では、施術の前に塗って時間をおきます。ウルセラプライムは約30分です。麻酔なしで行う施術もあります（下の表）。",
+          "**施術**：内容によって10〜90分です。",
+          "**お支払い**：クリニックで、韓国人患者と同じ[料金表](/pricing)に基づいてお支払いいただきます。",
+          "**アフターケアの案内**：お帰りの前に、日本語の書面によるアフターケア案内をお渡しします。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "これで終わりです。入院はなく、ほとんどの施術は再来院も必要ありません。"
+      },
+      {
+        "type": "h2",
+        "text": "施術別の所要時間と麻酔",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "LIVの施術ページに記載されている所要時間と麻酔方法です。クリニックにいる時間を見積もるときは、これにカウンセリングと麻酔クリームの時間を足してください。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "施術",
+          "施術の前",
+          "施術時間",
+          "再来院"
+        ],
+        "rows": [
+          [
+            "[ウルセラ（ウルセラプライム）](/lifting/ulthera)",
+            "麻酔クリーム 約30分",
+            "60〜90分",
+            "不要"
+          ],
+          [
+            "[サーマジFLX](/lifting/thermage)",
+            "無麻酔（振動技術で痛み軽減）",
+            "45〜60分",
+            "不要"
+          ],
+          [
+            "[ボトックス](/antiaging/botox)",
+            "無麻酔、またはご希望で麻酔クリーム",
+            "10〜20分",
+            "不要"
+          ],
+          [
+            "[ヒアルロン酸（フィラー）](/antiaging/filler)",
+            "麻酔クリームまたは神経ブロック麻酔",
+            "20〜40分",
+            "不要"
+          ],
+          [
+            "[スキンブースター](/antiaging/skinbooster)",
+            "麻酔クリーム",
+            "30〜45分",
+            "不要"
+          ],
+          [
+            "[糸リフト](/lifting/thread)",
+            "局所麻酔",
+            "30〜60分",
+            "約1週間後に任意の確認、または写真によるオンライン確認"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "日程の目安は一般的なもので、カウンセリングで確定します。痛みに敏感な方は、リフトアップ施術では追加の痛み対策ができますので、カウンセリングでお伝えください。"
+      },
+      {
+        "type": "p",
+        "text": "1回の来院で2つの施術を組み合わせたい場合は、予約枠を長めに取れるよう事前にお知らせください。ダウンタイムや施術後の飛行機については、[ダウンタイムと旅行プランの記事](/guides/downtime-flight-travel-plan)にまとめています。"
+      },
+      {
+        "type": "h2",
+        "text": "来院前に伝えておくこと",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "クリニックは、聞いていないことを前提に計画を立てることはできません。LIVの施術ページと医療Q&Aでは、次の点を伝えるよう案内しています。当日ではなく、最初のLINEのやり取りで書いておくと安心です。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**妊娠中・授乳中**：ほとんどの美容施術は推奨されません。妊娠・授乳が終わってからの施術をおすすめしています。",
+          "**ペースメーカーを装着している**：サーマジFLXは施術できません。",
+          "**施術部位に金属インプラントがある**：ウルセラプライム、サーマジFLXは事前の相談が必要です。",
+          "**神経筋疾患がある**：ボトックスは施術できません。",
+          "**施術部位に炎症・感染・傷がある、コントロールされていない糖尿病などの基礎疾患がある**：オンダの施術ページでカウンセリング時に必ず伝えるよう案内している項目です。ほかの施術でも伝えておくと確実です。",
+          "**フライトの時刻**：医療情報ではありませんが、予約時間の調整に使います。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "これは対面カウンセリングの代わりではありません。大事なことを、院長が施術直前に初めて聞く、という状況を避けるためのものです。"
+      },
+      {
+        "type": "h2",
+        "text": "カウンセリング費用1万ウォンの扱い",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "院長との1:1専門相談費用は1万ウォンです。当日そのまま施術を受ける場合は、施術金額から全額差し引かれます。カウンセリングだけ受けて、じっくり考えてから決めても構いません。"
+      },
+      {
+        "type": "p",
+        "text": "お金に関して、あと2点です。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**予約金は不要**：カウンセリングの予約に予約金は必要ありません。",
+          "**料金表は同じ**：外国人患者にも韓国人患者と同じ料金表が適用されます。「外国人料金」はなく、日本語対応や通訳のための追加費用もありません。[料金表](/pricing)の金額は1回あたり・VAT別で、最終的な料金はカウンセリング後に確定します。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "当日のお支払い",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "Visa、Mastercard、American Express、JCB、UnionPay（銀聯）など海外発行のクレジットカードと、韓国ウォン（KRW）の現金が使えます。支払いについて不明な点は、カウンセリング時、または事前にLINEでお尋ねください。"
+      },
+      {
+        "type": "h2",
+        "text": "チェックリスト：渡韓前・当日・帰国後",
+        "id": "s6"
+      },
+      {
+        "type": "table",
+        "header": [
+          "タイミング",
+          "すること"
+        ],
+        "rows": [
+          [
+            "渡韓前",
+            "LINE（ID：icps7972773）、当サイトのライブチャット、または[お問い合わせフォーム](/contact)に、悩み・写真2〜3枚・ソウル滞在日程を送る。返信は営業日基準で1日以内。"
+          ],
+          [
+            "渡韓前",
+            "オンライン相談で施術の提案と見積もりを受け取り、日時を予約する。日程が短い場合は候補を2〜3つ伝える。"
+          ],
+          [
+            "渡韓前",
+            "妊娠中・授乳中、ペースメーカー、金属インプラント、治療中の病気があれば伝える。通訳が必要ならこのときに依頼する。"
+          ],
+          [
+            "渡韓前",
+            "診療時間とフライトを照らし合わせる。平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間。日本との時差はありません）。韓国の祝日も一般的に休診。"
+          ],
+          [
+            "当日",
+            "新沙駅3号線4番出口から徒歩1分、自恩ビル4階へ。"
+          ],
+          [
+            "当日",
+            "院長の対面カウンセリングで内容を確定する。痛みへの不安など、気になることはここで聞く。"
+          ],
+          [
+            "当日",
+            "必要な施術は麻酔クリームのあと施術。支払いは海外発行のカードまたは韓国ウォン現金。"
+          ],
+          [
+            "当日",
+            "日本語のアフターケア案内を受け取り、その日の夜から従う。"
+          ],
+          [
+            "帰国後",
+            "同じLINEやチャットに写真を送ると、経過を確認してアフターケアを案内してもらえる。"
+          ],
+          [
+            "帰国後",
+            "糸リフトのみ：約1週間後の任意の確認は、写真によるオンライン確認でも可。"
+          ],
+          [
+            "帰国後",
+            "ボトックス：効果は3〜7日後から。初回は2〜3週間後にタッチアップが必要な場合があるので、写真を送って確認してもらう。"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "施術後、その日の夜",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "守ることは施術によって違い、基準になるのはお渡しする書面の案内です。LIVの施術ページから例を挙げると、ボトックスは当日の飲酒とサウナを避け、施術部位をマッサージしないこと。ヒアルロン酸はマッサージや圧迫をせず、激しい運動とサウナを3日間避けること。スキンブースターは当日のメイクと飲酒を避け、紫外線対策を徹底すること。施術別の詳しい一覧は[ダウンタイムと旅行プランの記事](/guides/downtime-flight-travel-plan)にあります。"
+      },
+      {
+        "type": "h2",
+        "text": "帰国後のフォロー",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "ソウルを離れても、連絡は続けられます。LINEやライブチャットに写真を送れば、クリニックが経過を確認して質問に答えます。手元には日本語のアフターケア案内も残ります。気になることがあれば、様子を見続けるよりも、写真を添えてメッセージを送ってください。"
+      },
+      {
+        "type": "h2",
+        "text": "予約の前に",
+        "id": "s9"
+      },
+      {
+        "type": "p",
+        "text": "ここまでは初めての来院の一般的な流れです。どの施術が合うか、どの範囲で、いくらになるかは、院長とのカウンセリングで確定します。まずは滞在日程と写真を[外国人患者向けページ](/international)のLINEボタンから送ってください。予約の手順と最初のメッセージ例は[日本語で予約する方法](/guides/book-seoul-clinic-foreigner)にあります。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "カウンセリングはいくらですか？施術を受けたら戻ってきますか？",
+        "a": "1:1専門相談費用は1万ウォンです。当日施術を受ける場合は、施術金額から全額差し引かれます。カウンセリングだけ受けて、あとで決めることもできます。"
+      },
+      {
+        "q": "カウンセリングと同じ日に施術を受けられますか？",
+        "a": "多くの場合できます。ほとんどの非手術施術は30〜90分で終わり入院も不要なため、来院当日に施術を受ける方が多いです。最終的な判断は院長との対面カウンセリングで行います。"
+      },
+      {
+        "q": "当日は日本語で大丈夫ですか？",
+        "a": "はい。英語・日本語・中国語での相談に対応しており、ご希望があれば通訳を無料で手配します。予約時にお伝えください。多言語対応のための追加費用はありません。"
+      },
+      {
+        "q": "来院前に伝えておくべきことは？",
+        "a": "妊娠中・授乳中、ペースメーカーの装着、施術部位の金属インプラント、神経筋疾患など治療中の病気があればお伝えください。妊娠中・授乳中はほとんどの美容施術が推奨されず、ペースメーカーを装着している方はサーマジFLXを受けられません。"
+      },
+      {
+        "q": "帰国前にもう一度来院する必要はありますか？",
+        "a": "ウルセラプライム、サーマジFLX、ボトックス、フィラー、スキンブースターは当日1回で完了し、再来院は不要です。糸リフトは約1週間後の確認が任意で、写真によるオンライン確認でも対応できます。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "韓国でシミ取り・肝斑レーザー — 機器と回数、料金、紫外線ケア、短い旅行でできること（新沙・LIV美容クリニック）",
+    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックの色素治療を解説。肝斑・シミ・そばかす・老人性色素斑に使うレーザーと3段階システム、症状別の回数と間隔、公開料金、施術後の紫外線ケア、そして複数回の治療を短い韓国旅行でどこまで受けられるかを正直にまとめました。",
+    "keywords": [
+      "シミ取り 韓国",
+      "韓国 肝斑 レーザー",
+      "韓国 ピコレーザー 値段",
+      "韓国 レーザートーニング",
+      "ソウル シミ取り 日本語",
+      "韓国 そばかす レーザー",
+      "シミ取り 韓国 ダウンタイム"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/laser",
+    "locale": "ja",
+    "slug": "pigmentation-laser-seoul-guide",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "「韓国でシミ取りをしたい」「肝斑のレーザーを受けたい」という相談は多いのですが、色素治療は旅行前にいちばん誤解されやすい施術でもあります。多くの場合、1日で終わるものではなく、数週間おきに複数回かけて進めるからです。この記事では、LIV美容クリニックが[レーザー](/laser)の色素治療について公開している内容 — 対象となる色素の種類、機器、回数と間隔、料金、施術後の紫外線ケア — を整理し、限られた滞在日数で何が現実的かを考えます。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分の非手術アンチエイジング専門クリニックで、外国人患者も韓国人患者と同じ料金表が適用されます。"
+      },
+      {
+        "type": "h2",
+        "text": "対象となる色素の種類",
+        "id": "s1"
+      },
+      {
+        "type": "p",
+        "text": "クリニックの色素治療ページが扱うのは、肝斑、シミ・くすみ、そばかす、老人性色素斑などの色素病変です[검수 필요: 일본어 사이트는 '기미'를 'シミ'로 표기함 — 가이드에서 '肝斑'으로 옮긴 용어가 맞는지 확인]。次のような方に向いていると案内されています。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "肝斑が濃くなり、広がっている方",
+          "何度もトーニングを受けたが効果を感じられなかった方",
+          "そばかす、くすみが多くて悩んでいる方",
+          "老人性色素斑が出始めた方",
+          "肌トーンがくすんで均一でない方",
+          "ダウンタイムなく継続的にケアしたい方"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "色素は種類によって深さも性質も違うため、機器を決める前に対面で診断します。事前に写真を送ればおおよその見積もりは届きますが、治療計画は院長とのカウンセリングで決まります。"
+      },
+      {
+        "type": "h2",
+        "text": "3段階システムと使用機器",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "LIVは色素治療を、集中治療から維持管理へ進む「3段階システム」として案内しています。機器名はクリニックの表記のままです。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "段階",
+          "目的",
+          "機器",
+          "クリニックの説明"
+        ],
+        "rows": [
+          [
+            "1段階",
+            "集中治療",
+            "ルーカス ピコ",
+            "ピコセカンドパルスで深い色素を集中分解"
+          ],
+          [
+            "2段階",
+            "精密ターゲット",
+            "クラリティII 755nm",
+            "アレキサンドライト波長で浅い色素を精密治療"
+          ],
+          [
+            "3段階",
+            "維持管理",
+            "トーニング + ウルブラン",
+            "低刺激の繰り返し施術で効果維持と再発防止"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "「ピコレーザーとトーニング、どちらが良いですか？」という質問へのクリニックの回答は「目的によって異なる」。難治性の肝斑や深い色素はピコレーザーで集中治療し、軽い色素や維持管理にはトーニングが適していて、多くの場合はピコ治療のあとトーニングで維持する組み合わせが使われます。ピコ秒のパルスについては、ナノ秒レーザーの1000倍速く、色素をより微細に分解すると説明されています。"
+      },
+      {
+        "type": "h2",
+        "text": "症状別の回数と間隔",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "航空券を取る前に見ておきたい表です。以下はクリニックが公開している推奨プロトコルで、実際の計画はカウンセリングで決まります。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "程度",
+          "主な症状",
+          "治療",
+          "回数",
+          "間隔"
+        ],
+        "rows": [
+          [
+            "軽度",
+            "軽い肝斑・シミ、そばかす",
+            "レーザートーニング",
+            "5〜10回",
+            "2週間隔"
+          ],
+          [
+            "中等度",
+            "中間の深さの色素",
+            "クラリティII 755nm",
+            "3〜5回",
+            "3〜4週間隔"
+          ],
+          [
+            "重度・難治性",
+            "深い肝斑、難治性",
+            "ルーカス ピコ + トーニング",
+            "5〜10回",
+            "2〜4週間隔"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "レーザートーニングについては、10回以上の累積施術が推奨され、3〜4回目から効果を感じやすいとされています。"
+      },
+      {
+        "type": "h2",
+        "text": "機器別の施術時間・麻酔・ダウンタイム",
+        "id": "s4"
+      },
+      {
+        "type": "table",
+        "header": [
+          "機器",
+          "施術時間",
+          "麻酔",
+          "ダウンタイム"
+        ],
+        "rows": [
+          [
+            "レーザートーニング",
+            "5〜15分",
+            "無麻酔",
+            "なし（すぐに日常復帰）"
+          ],
+          [
+            "ウルブラン",
+            "15〜20分",
+            "無麻酔",
+            "なし（すぐに日常復帰）"
+          ],
+          [
+            "クラリティII",
+            "15〜30分",
+            "無麻酔（クライオジェン冷却で痛みを軽減）",
+            "3〜5日（色素部位に薄いかさぶたができることがあります）"
+          ],
+          [
+            "ルーカスレーザー",
+            "20〜40分",
+            "麻酔クリーム（希望により）",
+            "3〜7日（薄いかさぶたができることがあります）"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "クラリティIIで表皮の色素を治療した場合、3〜5日ほど色素が濃く見えたり薄いかさぶたができたりして、その後自然に剥がれます。旅行中に写真撮影や予定がある方は、この期間を見込んで日程を組んでください。"
+      },
+      {
+        "type": "h2",
+        "text": "公開料金（2026年・1回・税別）",
+        "id": "20261"
+      },
+      {
+        "type": "p",
+        "text": "色素治療ページの料金は1回あたりです。項目名は料金表の表記に合わせています。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "基準",
+          "料金（1回・税別）"
+        ],
+        "rows": [
+          [
+            "デュアルトーニングレーザー（クラリティ + ルーカス）— シミ/くすみ/毛穴/ニキビ跡",
+            "1回",
+            "150,000ウォン〜"
+          ],
+          [
+            "ポテンツァ",
+            "パンピングチップ",
+            "200,000ウォン〜"
+          ],
+          [
+            "CO2レーザー — ほくろ/扁平疣贅/シミなど",
+            "直径3mm以下（1個）",
+            "10,000ウォン〜"
+          ],
+          [
+            "CO2レーザー",
+            "直径3mm超〜5mm以下（1個）",
+            "30,000ウォン〜"
+          ],
+          [
+            "CO2レーザー",
+            "直径5mm超（1個）",
+            "50,000ウォン〜"
+          ],
+          [
+            "CO2レーザー",
+            "顔全体（50個以上）",
+            "500,000ウォン〜"
+          ],
+          [
+            "CO2レーザー",
+            "首全体（50個以上）",
+            "500,000ウォン〜"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "1回あたりの料金・VAT（付加価値税）別途・「〜」は「から」の意味で、肌の状態と施術範囲によりカウンセリング後に確定します。複数回のプログラムは、1回の料金に実際に受けた回数を掛けた金額が目安です。カード決済の円換算額は当日の為替レートによります。"
+      },
+      {
+        "type": "p",
+        "text": "外国人患者も同じ料金表で、通訳の追加費用はありません。上の表にない施術は、カウンセリングで見積もりを受け取ってください。"
+      },
+      {
+        "type": "h2",
+        "text": "施術後の紫外線ケア",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "色素治療は、クリニックを出たあとの紫外線対策までが治療の一部です。クリニックの案内は次のとおりです。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "レーザー施術後は肌が敏感になり、紫外線による色素沈着のリスクが高まります。",
+          "最低2〜4週間は日焼け止め（SPF 50+）を丁寧に塗り、帽子や日傘を使ってください。",
+          "野外活動が多い時期のレーザー施術は避けることが勧められています。ソウルのあとにビーチリゾートやスキーの予定がある方は、カウンセリングで伝えてください。",
+          "レーザー後に一時的な色素沈着（PIH）が起こる可能性があります。クリニックは、2〜4週以内に自然に改善し、紫外線対策を徹底すれば予防できると説明しています。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "日本語のアフターケア案内があり、帰国後もLINEやチャットで写真を送れば経過を確認してもらえます。"
+      },
+      {
+        "type": "h2",
+        "text": "短い旅行でできること、できないこと",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "正直にお伝えします。公開されているプログラムは3〜10回、間隔は2〜4週です。数日の旅行で受けられるのは、そのうちの1回分です。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**今回の旅行で1回受ける。** カウンセリングのあと、多くの場合その日のうちに施術を受けられます。計画の第一歩と考え、ご自身の色素のタイプで1回の施術に何を期待できるかを院長に確認してください。",
+          "**渡韓を重ねて受ける。** 数週間〜数ヶ月おきにソウルへ来る方は、上の間隔に合わせて回数を重ねられます。最初の問い合わせで渡韓の頻度を伝えてください。",
+          "**長めの滞在で受ける。** 1ヶ月以上の滞在なら、2週間隔や3〜4週間隔で複数回受けることも可能です。",
+          "**肝斑は「完治」より「管理」。** クリニックは、集中治療で改善したあと、定期的な維持管理と紫外線対策で再発を抑えるという考え方を示しています。1回の旅行で終えるのは難しい治療だということを、予約前に知っておいてください。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "1回しか来院できない場合は、カウンセリングで別の計画を提案されることもあります。帰国便との兼ね合いは[ダウンタイムと帰国便の計画ガイド](/guides/downtime-flight-travel-plan)も参考にしてください。"
+      },
+      {
+        "type": "h2",
+        "text": "予約・カウンセリング料・お支払い",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "エージェントも予約金も不要で、お問い合わせには営業日1日以内に返信します。手順は[外国人のためのソウルのクリニック予約ガイド](/guides/book-seoul-clinic-foreigner)にまとめています。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**問い合わせ：** LINE（ID: icps7972773）、当サイトのライブチャット、または[お問い合わせフォーム](/contact)。",
+          "**カウンセリング料：** 形成外科専門医による1:1カウンセリングは1万ウォンで、当日施術を受ける場合は施術料金から全額差し引かれます。",
+          "**言語：** 日本語・英語・中国語。通訳が必要な場合は無料で手配します。",
+          "**診療時間：** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間）。",
+          "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分（[アクセス案内](/about/location)）。",
+          "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "治療は、形成外科専門医で大韓医学レーザー学会正会員のキム・スヨン代表院長が計画します（[医療スタッフ紹介](/about/staff)）。"
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s9"
+      },
+      {
+        "type": "p",
+        "text": "機器・回数・最終料金は、院長とのカウンセリングで決まります。この記事の数字はクリニックが公開している内容で、日程に合わせて無理のない計画を立てるための目安です。[レーザーのページ](/laser)と[料金案内ページ](/pricing)をご確認のうえ、[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からご質問ください。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "肝斑はレーザーで完治しますか？",
+        "a": "クリニックの回答は、「完治」より「管理」の考え方でアプローチする必要がある、というものです。集中治療で改善したあと、定期的な維持管理と紫外線対策で再発を最小限に抑えます。LIVの3段階システムは治療と維持管理の両方を含みます。"
+      },
+      {
+        "q": "シミ取りレーザーは何回必要ですか？",
+        "a": "公開されている推奨プロトコルでは、軽度はレーザートーニングを2週間隔で5〜10回、中等度はクラリティII 755nmを3〜4週間隔で3〜5回、深い・難治性の肝斑はルーカス ピコとトーニングを2〜4週間隔で5〜10回です。実際の回数はカウンセリングで決まります。"
+      },
+      {
+        "q": "レーザー後にシミが濃くなることはありますか？",
+        "a": "一時的な色素沈着（PIH）が起こる可能性があります。クリニックの説明では、2〜4週以内に自然に改善し、紫外線対策を徹底すれば予防できます。施術後のケアについても案内があります。"
+      },
+      {
+        "q": "韓国のシミ取りレーザーの料金はいくらですか？",
+        "a": "LIVでは、デュアルトーニングレーザー（クラリティ + ルーカス）が1回150,000ウォン〜、ほくろやシミなどのCO2レーザーが直径3mm以下1個10,000ウォン〜です。1回あたり・税別の表示で、外国人患者も同じ料金表です。"
+      },
+      {
+        "q": "妊娠中でも色素レーザーは受けられますか？",
+        "a": "受けられません。クリニックは妊娠中・授乳中のレーザー施術を勧めておらず、出産と授乳が終わってからの施術を案内しています。妊娠中は紫外線対策と保湿に集中するよう勧めています。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "韓国の美容クリニック、結局いくら払う？ — 料金表の見方・VAT・カウンセリング料・支払い方法（新沙・LIV美容クリニック）",
+    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックの公開料金表の読み方をまとめました。1回あたり・ウォン建て・VAT別途・「〜」の意味、カウンセリング料1万ウォンと当日施術時の差し引き、通訳無料、予約金なし、使えるカードと分割払い、公開料金だけで組んだ計算例まで。外国人も同一料金です。",
+    "keywords": [
+      "韓国 美容皮膚科 支払い",
+      "韓国 美容クリニック 料金 税別",
+      "韓国 美容皮膚科 カウンセリング料",
+      "韓国 クリニック クレジットカード JCB",
+      "韓国 美容 予約金 なし",
+      "韓国 美容皮膚科 外国人料金",
+      "ソウル 美容クリニック 料金 日本語"
+    ],
+    "category": "price",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/pricing",
+    "locale": "ja",
+    "slug": "seoul-clinic-total-cost-payment",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "料金表を見れば「いくらから」は分かります。でも、実際に会計でいくらになるのか——税は含まれているのか、カウンセリングは有料か、予約金は必要か、外国人は割高にならないか——は料金表だけでは分かりにくいものです。この記事では、LIV美容クリニックが公開している情報だけを使って、その疑問に答えます。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分にある非手術アンチエイジング専門のクリニックです。先に結論を言うと、料金表は全員共通、1回あたり・韓国ウォン建て・VAT別途の表示で、正確な金額はカウンセリングで確定します。"
+      },
+      {
+        "type": "h2",
+        "text": "まず結論",
+        "id": "s1"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**料金表は1つだけ。** 外国人患者も韓国人患者と同じ料金表が適用されます。外国人向けの上乗せはありません。",
+          "**1回あたり・ウォン建て・VAT（付加価値税）別途。** 表示料金にVATが加算されます。",
+          "**「〜」は「から」。** 正確な料金はカウンセリング後に決まります。",
+          "**カウンセリング料は1万ウォン。** 当日施術を受ける場合は、施術料金から全額差し引かれます。",
+          "**通訳は無料。** 多言語対応のための追加費用もありません。",
+          "**予約金は不要。** カウンセリングの予約に予約金はかかりません。",
+          "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、または韓国ウォン現金。カード分割払いも可能です。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "公開料金表の読み方",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "[料金案内ページ](/pricing)には糸リフト・フィラー・サーマジ・ウルセラの4区分が公開されており、そのほかの施術は各施術ページ（[ボトックス](/antiaging/botox)、[スキンブースター](/antiaging/skinbooster)、[レーザー](/laser)など）に料金表があります。どの行も「項目・基準・料金」の3つでできています。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "表示",
+          "意味"
+        ],
+        "rows": [
+          [
+            "1,560,000ウォン〜",
+            "韓国ウォン建ての開始料金。「〜」は「から」。"
+          ],
+          [
+            "「400-800ショット」「1cc」「8本」「100IUあたり」「1回」などの基準",
+            "その料金が何に対するものか。実際に必要な量はカウンセリングで決まります。"
+          ],
+          [
+            "「1回基準」",
+            "コースではなく、施術1回分の料金。"
+          ],
+          [
+            "「すべての料金はVAT別途」",
+            "お支払い時に表示料金へVATが加算されます。"
+          ],
+          [
+            "「カウンセリング時に詳細をご案内」",
+            "公開料金がない項目。対面またはメッセージで見積もりを受け取ります。"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "料金表から、いくつか例を挙げます。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "施術",
+          "基準",
+          "公開料金（1回・VAT別途）"
+        ],
+        "rows": [
+          [
+            "ウルセラ 全顔",
+            "400-800ショット",
+            "1,560,000ウォン〜"
+          ],
+          [
+            "サーマジFLX",
+            "600ショット",
+            "2,400,000ウォン〜"
+          ],
+          [
+            "糸リフト ミント",
+            "8本",
+            "800,000ウォン〜"
+          ],
+          [
+            "フィラー 国産",
+            "1cc",
+            "200,000ウォン〜"
+          ],
+          [
+            "輪郭ボトックス（エラ・こめかみ）国産",
+            "—",
+            "60,000ウォン〜"
+          ],
+          [
+            "肌トーン改善のレーザートーニング",
+            "1回",
+            "150,000ウォン〜"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "料金表の下には、クリニックの注記があります。「上記の料金は1回基準で、正確な料金はカウンセリング後に決定されます。個人の肌状態、施術範囲、使用製品によって最終費用は変わる場合があります」。"
+      },
+      {
+        "type": "h2",
+        "text": "料金に加わるもの・加わらないもの",
+        "id": "s3"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "金額",
+          "補足"
+        ],
+        "rows": [
+          [
+            "施術料金",
+            "公開料金をもとにカウンセリングで確定",
+            "1回あたり・ウォン建て"
+          ],
+          [
+            "VAT（付加価値税）",
+            "施術料金に加算",
+            "料金表は税別表示"
+          ],
+          [
+            "1:1カウンセリング",
+            "1万ウォン",
+            "当日施術を受ける場合は施術料金から全額差し引き"
+          ],
+          [
+            "通訳（日本語・英語・中国語）",
+            "無料",
+            "希望すれば手配"
+          ],
+          [
+            "外国人向けの追加料金",
+            "なし",
+            "韓国人患者と同じ料金表"
+          ],
+          [
+            "カウンセリング予約の予約金",
+            "なし",
+            "お支払いは来院時"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "料金表は税別なので、見積もりを受け取るときは「VAT込みの総額」を確認しておくと安心です。他院と比べるときも、この総額でそろえるのが一番分かりやすい方法です。"
+      },
+      {
+        "type": "h2",
+        "text": "計算例（あくまで説明用です）",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "以下はクリニックの公開料金だけを使った例で、仕組みを説明するためのものです。見積もりではありません。公開料金はすべて開始料金で、実際の金額はカウンセリング後に確定します。"
+      },
+      {
+        "type": "p",
+        "text": "**例1：カウンセリングだけ受ける場合。** 院長の説明を聞いて、いったん持ち帰って検討する。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "内訳",
+          "金額"
+        ],
+        "rows": [
+          [
+            "1:1カウンセリング",
+            "1万ウォン"
+          ],
+          [
+            "お支払い",
+            "1万ウォン"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**例2：当日に小さな施術を1つ。** カウンセリング後、そのまま国産製品で輪郭ボトックスを受ける。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "内訳",
+          "金額"
+        ],
+        "rows": [
+          [
+            "輪郭ボトックス（エラ・こめかみ）国産",
+            "60,000ウォン〜"
+          ],
+          [
+            "1:1カウンセリング",
+            "1万ウォン（施術料金から全額差し引き）"
+          ],
+          [
+            "VAT",
+            "別途加算"
+          ],
+          [
+            "お支払い",
+            "60,000ウォン〜 ＋ VAT"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**例3：1回の来院で2つの施術。** ウルセラ全顔と、肌トーン改善のレーザートーニング1回。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "内訳",
+          "金額"
+        ],
+        "rows": [
+          [
+            "ウルセラ 全顔（400-800ショット）",
+            "1,560,000ウォン〜"
+          ],
+          [
+            "肌トーン改善のレーザートーニング 1回",
+            "150,000ウォン〜"
+          ],
+          [
+            "公開開始料金の合計",
+            "1,710,000ウォン〜"
+          ],
+          [
+            "1:1カウンセリング",
+            "1万ウォン（施術料金から全額差し引き）"
+          ],
+          [
+            "VAT",
+            "別途加算"
+          ],
+          [
+            "お支払い",
+            "1,710,000ウォン〜 ＋ VAT"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "どの例でも、当日施術を受ければカウンセリング料は施術料金に上乗せされず、全額差し引かれます。実際の金額を左右するのは、料金表では事前に分からない部分——ショット数・cc数・本数がどれだけ必要か、どの製品を選ぶか——です。"
+      },
+      {
+        "type": "h2",
+        "text": "お支払い方法と分割払い",
+        "id": "s5"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**海外発行カード：** Visa、Mastercard、American Express、JCB、UnionPay（銀聯）が使えます。",
+          "**現金：** 韓国ウォン（KRW）。",
+          "**分割払い：** カード分割払いが可能です。無利息分割の条件はカード会社と決済金額によって異なるため、カウンセリング時にお問い合わせください。[검수 필요: 해외 발급 카드도 할부 결제가 되는지]",
+          "**通貨：** 料金は韓国ウォン建てです。カードで支払う場合、明細に載る金額は適用される為替レートによって変わります。",
+          "**支払うタイミング：** 来院時にお支払いいただきます。カウンセリングの予約に予約金はかかりません。予定が変わったときは、同じLINEやチャットでなるべく早めにお知らせください。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "お支払いについて個別のご質問があれば、カウンセリング時にお伝えください。最初のメッセージに書き添えていただいても構いません。"
+      },
+      {
+        "type": "h2",
+        "text": "カウンセリングで決まること",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "LINEなどで届く見積もりは、写真をもとにした目安です。計画と料金が確定するのは、形成外科専門医との対面カウンセリングです。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**どの施術にするか。** 1つの施術でよいか、組み合わせるか。",
+          "**どれだけ必要か。** [ウルセラ](/lifting/ulthera)や[サーマジ](/lifting/thermage)のショット数、[フィラー](/antiaging/filler)のcc数、[ボトックス](/antiaging/botox)の単位と製品、糸の本数、レーザーの回数。",
+          "**どの製品にするか。** 国産・国産プレミアム・輸入のように段階がある項目。",
+          "**最終料金。** VATを含めた総額。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "カウンセリングだけ受けて、後日決めることもできます。クリニックも「十分にご検討いただいてからお決めいただいて大丈夫です」と案内しています。"
+      },
+      {
+        "type": "h2",
+        "text": "渡韓前に見積もりを取る流れ",
+        "id": "s7"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**問い合わせ：** LINE（ID: icps7972773）、当サイトのライブチャット、[お問い合わせフォーム](/contact)に日本語でメッセージを送ります。営業日1日以内に返信があります。",
+          "**お悩みと写真2〜3枚、** ソウル滞在の日程を伝えます。",
+          "**見積もりを受け取る：** 適した施術の提案と料金の見積もりが届きます。VAT込みの総額も聞いておきましょう。",
+          "**日時を予約：** 旅行日程に合う日時を選びます。予約金は不要です。",
+          "**来院して確定：** 院長が対面で計画と料金を確定し、多くの場合その日のうちに施術を受けます。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "診療時間は平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間）です。"
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "施術内容・量・最終料金は、院長とのカウンセリングで決まります。この記事の数字はクリニックの公開開始料金で、計算例は説明用です。最新の料金は[料金案内ページ](/pricing)、そのほかのご質問は[医療Q&Aページ](/medical)をご覧のうえ、[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からお問い合わせください。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "外国人は韓国人より料金が高くなりますか？",
+        "a": "いいえ。外国人患者も韓国人患者と同じ料金表が適用され、料金は公開されているので来院前に確認できます。多言語対応や通訳のための追加費用もかかりません。"
+      },
+      {
+        "q": "表示料金は税込みですか？",
+        "a": "いいえ。公開料金はすべてVAT（付加価値税）別途で、お支払い時に加算されます。見積もりを受け取るときに、VAT込みの総額をご確認ください。"
+      },
+      {
+        "q": "カウンセリング料はかかりますか？戻ってきますか？",
+        "a": "1:1カウンセリングは1万ウォンです。当日施術を受ける場合は、施術料金から全額差し引かれます。カウンセリングだけ受けて、後日決めることもできます。"
+      },
+      {
+        "q": "予約金は必要ですか？",
+        "a": "必要ありません。カウンセリングのご予約に予約金はかからず、お支払いは来院時です。"
+      },
+      {
+        "q": "日本のクレジットカードや分割払いは使えますか？",
+        "a": "海外発行のVisa、Mastercard、American Express、JCB、UnionPayが使え、韓国ウォン現金でもお支払いいただけます。カード分割払いも可能ですが、無利息分割の条件はカード会社と金額によって異なるため、カウンセリング時にご確認ください。"
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "新沙駅への行き方：仁川・金浦空港からLIV美容クリニックまでのアクセスと診療時間",
+    "description": "仁川空港・金浦空港から新沙（シンサ）駅前のLIV美容クリニックまでの行き方と所要時間、住所、新沙駅4番出口から徒歩1分（カロスキル隣）の場所、診療時間（韓国時間・日本との時差なし）、日曜休診・土曜16時までを踏まえた到着日の予約の組み方をまとめます。",
+    "keywords": [
+      "新沙駅 行き方",
+      "仁川空港 新沙駅 行き方",
+      "金浦空港 新沙駅 所要時間",
+      "新沙駅 4番出口 美容クリニック",
+      "カロスキル 美容皮膚科 アクセス",
+      "韓国 美容クリニック 土曜 診療時間"
+    ],
+    "category": "booking",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/about/location",
+    "locale": "ja",
+    "slug": "sinsa-station-clinic-access-from-airport",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "韓国での施術を旅程に組み込むとき、最後に効いてくるのは「空港からクリニックまで何分かかるか」と「着いたときにクリニックが開いているか」の2点です。とくに週末の短い旅行では、土曜の午後に到着して診療時間に間に合わず、使える枠がなくなってしまうことがあります。"
+      },
+      {
+        "type": "p",
+        "text": "この記事では、LIV美容クリニックへのアクセスをまとめます。LIVはソウル・江南の新沙（シンサ）駅3号線4番出口から徒歩1分、カロスキルのすぐ隣にある、非手術アンチエイジング施術のクリニックです。住所、仁川空港・金浦空港からの所要時間（クリニックが公開している目安）、診療時間、そして到着時刻に合わせた予約の組み方を順に説明します。"
+      },
+      {
+        "type": "h2",
+        "text": "住所と最寄り駅",
+        "id": "s1"
+      },
+      {
+        "type": "p",
+        "text": "**住所**：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階"
+      },
+      {
+        "type": "p",
+        "text": "**最寄り駅**：地下鉄3号線 新沙（シンサ）駅 4番出口から徒歩1分。自恩ビルの4階です。"
+      },
+      {
+        "type": "p",
+        "text": "**周辺**：カロスキルの隣にあるため、施術の前後に歩いて立ち寄れます。"
+      },
+      {
+        "type": "p",
+        "text": "**電話**：+82-2-797-2773　**メール**：info@livps.co.kr"
+      },
+      {
+        "type": "p",
+        "text": "同じ情報は[アクセスページ](/about/location)にも載っています。タクシーを使う場合は、そのページの住所を運転手に見せるのが確実です。"
+      },
+      {
+        "type": "h2",
+        "text": "空港からクリニックまで",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "出発地",
+          "行き方",
+          "所要時間"
+        ],
+        "rows": [
+          [
+            "仁川空港（ICN）",
+            "空港鉄道（AREX）またはリムジンバスで地下鉄3号線・新沙駅へ",
+            "約70〜90分"
+          ],
+          [
+            "仁川空港（ICN）",
+            "タクシー",
+            "約60分"
+          ],
+          [
+            "金浦空港（GMP）",
+            "タクシーまたは地下鉄",
+            "約40分"
+          ],
+          [
+            "新沙駅",
+            "3号線4番出口",
+            "徒歩1分"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "クリニックが公開している移動時間の目安です。入国審査、荷物の受け取り、電車やバスの待ち時間は含まれておらず、タクシーは道路状況で変わります。着陸時刻から予約時刻までは余裕をみてください。"
+      },
+      {
+        "type": "p",
+        "text": "ホテルに寄ってから来院する場合も、最後は同じです。新沙駅3号線4番出口から徒歩1分です。"
+      },
+      {
+        "type": "h2",
+        "text": "診療時間（韓国時間）",
+        "id": "s3"
+      },
+      {
+        "type": "table",
+        "header": [
+          "曜日",
+          "診療時間（韓国時間）",
+          "日本時間"
+        ],
+        "rows": [
+          [
+            "平日（月〜金）",
+            "10:00〜19:00",
+            "10:00〜19:00（時差なし）"
+          ],
+          [
+            "土曜",
+            "10:00〜16:00",
+            "10:00〜16:00（時差なし）"
+          ],
+          [
+            "日曜",
+            "休診",
+            "休診"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "日本と韓国に時差はありません。スマートフォンの時計も、フライトの時刻も、予約の時刻も、そのまま同じ数字で考えて大丈夫です。"
+      },
+      {
+        "type": "p",
+        "text": "LINEの返信も同じ時間帯が基準です。お問い合わせには営業日基準で1日以内に返信しますので、土曜の夜や日曜に送ったメッセージは、次の診療日に対応となります。"
+      },
+      {
+        "type": "p",
+        "text": "韓国の祝日（旧正月・秋夕の連休など）も一般的に休診です。旅程が韓国の祝日と重なる場合は、航空券を取る前にLINEやチャットで診療日をご確認ください。"
+      },
+      {
+        "type": "h2",
+        "text": "到着時刻に合わせた予約の組み方",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "ほとんどの非手術施術は30〜90分で終わり入院も不要なため、来院当日に施術を受ける方が多くいます。つまり、診療時間にさえ合えば、到着日の予約も現実的です。閉院時刻から逆算して考えてください。空港からの移動、カウンセリング、麻酔クリームの時間（ウルセラプライムは約30分）、そして施術そのもの（ウルセラプライム60〜90分、サーマジFLX 45〜60分、ボトックス10〜20分など）が必要です。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "到着のタイミング",
+          "組みやすい予約"
+        ],
+        "rows": [
+          [
+            "平日の午前",
+            "当日午後の予約。平日は19:00まで診療しています。"
+          ],
+          [
+            "平日の午後〜夜",
+            "翌日の朝10:00以降にするほうが安心です。"
+          ],
+          [
+            "金曜の夜",
+            "土曜の10:00〜16:00。土曜はできるだけ早い時間帯を。"
+          ],
+          [
+            "土曜の午前",
+            "16:00までに余裕をもって新沙に着ける場合のみ。難しければ月曜に。"
+          ],
+          [
+            "土曜の午後・日曜",
+            "日曜は休診です。最短は月曜10:00からになります。"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "施術ごとの最終受付時刻は公開されていません。予約時にご確認ください。[검수 필요: 평일·토요일 마지막 접수(시술 시작) 가능 시간]"
+      },
+      {
+        "type": "p",
+        "text": "金曜の夜に着いて日曜に帰る週末旅行なら、使えるのは土曜の10:00〜16:00だけです。この場合は早めに土曜の枠を押さえておくことをおすすめします。"
+      },
+      {
+        "type": "p",
+        "text": "予約をスムーズにするコツは3つです。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**日付だけでなく、フライトの時刻も伝える**：クリニックはそれに合わせて時間を調整します。",
+          "**候補の日時を2〜3つ書く**：最初のメッセージに入れておくと調整が早くなります。",
+          "**フライトが遅れたら、同じLINEでできるだけ早く知らせる**：カウンセリングの予約に予約金は必要ないため、予定が変わっても日時を取り直せば済みます。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "帰国日まで含めた1泊2日・2泊3日の組み方は、[ダウンタイムと旅行モデルプランの記事](/guides/downtime-flight-travel-plan)をご覧ください。"
+      },
+      {
+        "type": "h2",
+        "text": "渡韓前の連絡先",
+        "id": "s5"
+      },
+      {
+        "type": "table",
+        "header": [
+          "言語",
+          "第一候補",
+          "その他"
+        ],
+        "rows": [
+          [
+            "日本語",
+            "LINE ID：icps7972773",
+            "当サイトのライブチャット、[お問い合わせフォーム](/contact)"
+          ],
+          [
+            "英語",
+            "WhatsApp +82 10-6888-2773",
+            "ライブチャット"
+          ],
+          [
+            "中国語",
+            "WeChat ID：livps0414",
+            "オンラインチャット"
+          ],
+          [
+            "共通",
+            "[お問い合わせフォーム](/contact)、メール info@livps.co.kr",
+            "電話 +82-2-797-2773"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "日本語でのカウンセリングに対応しており、ご希望があれば通訳を無料で手配します。予約の手順と最初のメッセージ例は[日本語で予約する方法](/guides/book-seoul-clinic-foreigner)にまとめています。"
+      },
+      {
+        "type": "h2",
+        "text": "航空券を取る前に",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "到着・出発の時刻と診療時間を照らし合わせてから航空券を決め、滞在日程とフライト時刻を[外国人患者向けページ](/international)のLINEボタンからお送りください。どの施術が合うか、予約にどのくらいの時間が必要かは、院長とのカウンセリングで確定します。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "仁川空港からクリニックまでどう行けばいいですか？",
+        "a": "仁川空港から空港鉄道（AREX）またはリムジンバスで、地下鉄3号線の新沙駅までお越しください。クリニックは新沙駅4番出口から徒歩1分です。公共交通機関で約70〜90分、タクシーで約60分かかります。"
+      },
+      {
+        "q": "金浦空港からはどのくらいかかりますか？",
+        "a": "タクシーまたは地下鉄で約40分です。新沙駅からは3号線4番出口を出て徒歩1分です。"
+      },
+      {
+        "q": "新沙駅の何番出口が近いですか？",
+        "a": "3号線の4番出口です。出口から徒歩1分、自恩ビルの4階にあり、カロスキルのすぐ隣です。"
+      },
+      {
+        "q": "土日は診療していますか？",
+        "a": "土曜は10:00〜16:00に診療しています。日曜は休診で、韓国の祝日も一般的に休診です。平日は10:00〜19:00です。"
+      },
+      {
+        "q": "日本と時差はありますか？",
+        "a": "ありません。診療時間は韓国時間で案内していますが、日本時間と同じです。予約時刻もフライト時刻も、そのままの数字で計画できます。"
+      }
+    ],
+    "readingMinutes": 6,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "韓国のスキンブースター・水光注射ガイド — 種類と料金、ダウンタイム、短い旅行での受け方（新沙・LIV美容クリニック）",
+    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックのスキンブースターについて、料金表にある製品と1回あたりの料金、施術時間、麻酔、1〜3日の注射跡、推奨回数と間隔、施術後の注意点、短い韓国旅行に組み込むときの考え方をまとめました。外国人も同一料金です。",
+    "keywords": [
+      "韓国 スキンブースター",
+      "韓国 水光注射 値段",
+      "韓国 リジュラン 値段",
+      "ソウル スキンブースター 日本語",
+      "韓国 ジュベルック",
+      "スキンブースター ダウンタイム",
+      "水光注射 韓国 旅行"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/antiaging/skinbooster",
+    "locale": "ja",
+    "slug": "skin-booster-seoul-guide",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "韓国旅行のついでにスキンブースターや水光注射を受けたい、でも「どの製品があるのか」「いくらなのか」「注射跡は何日残るのか」を先に知っておきたい方へ。この記事では、LIV美容クリニックが公開している情報だけをもとに、製品と料金、施術時間、ダウンタイム、推奨回数、そして短い滞在でどこまで計画できるかを整理します。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分、カロスキルのすぐ隣にある非手術アンチエイジング専門のクリニックです。外国人患者も韓国人患者と同じ料金表が適用され、日本語で直接予約できます。"
+      },
+      {
+        "type": "h2",
+        "text": "スキンブースターとは — 水光注射との違い",
+        "id": "s1"
+      },
+      {
+        "type": "p",
+        "text": "[スキンブースター](/antiaging/skinbooster)は、ボリュームや筋肉の動きではなく、うるおい・弾力・ツヤといった肌質そのものを目的にした注入施術です。クリニックの案内では、対象部位は顔全体・首・手の甲で、次のような方に向いています。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "肌の乾燥、水分不足が気になる方",
+          "弾力の低下、小ジワが気になる方",
+          "くすんだ肌トーン、ハリのない肌が気になる方",
+          "レーザー施術後の肌再生を望む方"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "「スキンブースターと水光注射は同じものですか？」という質問に対するクリニックの回答は、「似ていますが、スキンブースターはより多様な成分を含みます」。料金表にはスキンブースター系の製品と「水光注射」の両方が載っています。どの製品にするかは、肌状態と目的に応じてカウンセリングで選びます。"
+      },
+      {
+        "type": "h2",
+        "text": "製品と料金（2026年・1回・税別）",
+        "id": "20261"
+      },
+      {
+        "type": "p",
+        "text": "料金は製品と容量（cc）ごとに公開されています。製品名は料金表の表記のままです。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "料金表の製品名",
+          "容量",
+          "料金（1回・税別）"
+        ],
+        "rows": [
+          [
+            "リジュラン",
+            "2cc",
+            "300,000ウォン〜"
+          ],
+          [
+            "リジュラン",
+            "4cc",
+            "460,000ウォン〜"
+          ],
+          [
+            "リジュラン HB plus",
+            "1cc",
+            "190,000ウォン〜"
+          ],
+          [
+            "リジュラン HB plus",
+            "2cc",
+            "340,000ウォン〜"
+          ],
+          [
+            "リジュラン HB plus",
+            "4cc",
+            "600,000ウォン〜"
+          ],
+          [
+            "アイリジュラン",
+            "1cc",
+            "190,000ウォン〜"
+          ],
+          [
+            "ジュベルックスキンブースター",
+            "10cc",
+            "270,000ウォン〜"
+          ],
+          [
+            "幹細胞スキンブースター",
+            "5cc",
+            "270,000ウォン〜"
+          ],
+          [
+            "エレメント美白ブースター",
+            "2cc",
+            "240,000ウォン〜"
+          ],
+          [
+            "シミ注射",
+            "4cc",
+            "240,000ウォン〜"
+          ],
+          [
+            "水光注射",
+            "2cc",
+            "240,000ウォン〜"
+          ],
+          [
+            "ヒロウェーブ",
+            "2cc",
+            "500,000ウォン〜"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "1回あたりの料金・VAT（付加価値税）別途・「〜」は「から」の意味で、製品・容量・部位によりカウンセリング後に確定します。カード決済の円換算額は当日の為替レートによります。"
+      },
+      {
+        "type": "p",
+        "text": "料金表の読み方："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**製品と容量で料金が変わります。** 同じ製品でもcc数が増えると料金が上がります。顔・首・手の甲にどのくらい必要かは、対面で肌を見て決めます。",
+          "**料金表は製品の優劣を示すものではありません。** 製品同士の比較表は公開されておらず、選択はカウンセリングで行います。",
+          "**外国人患者への上乗せはありません。** 通訳や日本語対応の追加費用もかかりません。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "施術時間・麻酔・ダウンタイム",
+        "id": "s3"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "クリニックの案内"
+        ],
+        "rows": [
+          [
+            "施術時間",
+            "30〜45分"
+          ],
+          [
+            "麻酔",
+            "麻酔クリーム"
+          ],
+          [
+            "ダウンタイム",
+            "1〜3日（微細な注射跡）"
+          ],
+          [
+            "効果が出る時期",
+            "施術直後のうるおい、2〜4週後に弾力・ツヤの改善"
+          ],
+          [
+            "推奨コース",
+            "2〜4週間隔で3〜4回"
+          ],
+          [
+            "コース後",
+            "2〜3ヶ月ごとのメンテナンス施術を推奨"
+          ],
+          [
+            "1回分の再来院",
+            "当日完了・再来院不要"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "計画で気をつけたいのはダウンタイムです。施術後は細かい注射跡や赤みが出ることがあり、回復の目安は1〜3日。写真撮影や大事な会食がある日は、施術日と重ならないようにずらしておくと安心です。"
+      },
+      {
+        "type": "h2",
+        "text": "施術後の注意点",
+        "id": "s4"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "施術当日のメイクと飲酒は避けてください。",
+          "紫外線対策を徹底してください。",
+          "最初の数日は、細かい注射跡と赤みが出る可能性があります。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "日本語のアフターケア案内があり、帰国後もLINEやチャットで写真を送れば経過を確認してもらえます。気になることがあれば、様子を見ずにクリニックへ連絡してください。"
+      },
+      {
+        "type": "h2",
+        "text": "何回必要？ 短い旅行ではどこまでできる？",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "旅行者にとっていちばん大事な点を、正直にお伝えします。クリニックが推奨する基本コースは「2〜4週間隔で3〜4回」、その後は2〜3ヶ月ごとのメンテナンスです。つまり、2泊3日や1週間の旅行で受けられるのは、コースのうちの1回分です。"
+      },
+      {
+        "type": "p",
+        "text": "1回の施術について、クリニックは「1回でも保湿感の改善を感じることはできるが、最適な効果のためにはコース施術が必要」と説明しています。現実的な計画は次のいずれかになります。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**今回の旅行で1回だけ受ける。** コースの初回と考えてください。その1回については当日完了で、再来院は不要です。",
+          "**数回の渡韓に分けて受ける。** 出張や旅行で定期的にソウルへ来る方は、2〜4週の間隔に合わせて回数を重ねられます。最初の問い合わせで渡韓の頻度を伝えてください。",
+          "**長めの滞在で受ける。** 1ヶ月以上滞在する場合は、滞在中に複数回受けることも間隔のうえでは可能です。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "どの受け方が合うかは、院長とのカウンセリングで決まります。1回しか来院できない場合は、別の施術を提案されることもあります。ほかの施術も含めた日程の組み方は[ダウンタイムと帰国便の計画ガイド](/guides/downtime-flight-travel-plan)も参考にしてください。"
+      },
+      {
+        "type": "p",
+        "text": "短い旅程に1回を入れる場合の流れ："
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**出発前：** 気になる点と写真、渡韓日程をLINEで送り、料金の見積もりを受け取ります。",
+          "**旅行の前半：** 対面カウンセリングのあと、多くの場合その日のうちに施術。麻酔クリームの時間と、施術30〜45分を見込んでください。",
+          "**その後1〜3日：** 注射跡や赤みが出る可能性があります。予定には余裕を持たせ、紫外線対策を続けます。",
+          "**帰国後：** LINEやチャットで写真による経過確認。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "予約・カウンセリング料・お支払い",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "エージェントも予約金も不要です。お問い合わせには営業日1日以内に返信します。予約の詳しい手順は[外国人のためのソウルのクリニック予約ガイド](/guides/book-seoul-clinic-foreigner)にまとめています。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**問い合わせ：** LINE（ID: icps7972773）、当サイトのライブチャット、または[お問い合わせフォーム](/contact)。",
+          "**カウンセリング料：** 形成外科専門医による1:1カウンセリングは1万ウォンで、当日施術を受ける場合は施術料金から全額差し引かれます。",
+          "**言語：** 日本語・英語・中国語で相談でき、通訳が必要な場合は無料で手配します。",
+          "**診療時間：** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間）。",
+          "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分（[アクセス案内](/about/location)）。",
+          "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "カウンセリングで伝えていただきたいこと",
+        "id": "s7"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "妊娠中・授乳中かどうか。クリニックは、妊娠中や授乳中はほとんどの美容施術を勧めておらず、妊娠と授乳が終わってからの施術を案内しています。",
+          "最近受けた、または同じ旅行中に受ける予定のレーザーなどの施術。スキンブースターはレーザー施術後の肌再生を望む方にも案内されており、施術の順番は院長が一緒に計画します。",
+          "滞在日数と帰国便の日時。",
+          "ボリュームや表情ジワが主な悩みであれば、[ヒアルロン酸（フィラー）](/antiaging/filler)や[ボトックス](/antiaging/botox)は別の施術で、料金表も別です（[ボトックス・ヒアルロン酸の料金ガイド](/guides/botox-filler-cost-seoul)）。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "施術は形成外科専門医のキム・スヨン代表院長が計画・担当します（[医療スタッフ紹介](/about/staff)）。そのほかの質問は[医療Q&Aページ](/medical)にもあります。"
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "製品・容量・回数・最終料金は、院長とのカウンセリングで決まります。この記事の数字は、旅行計画のための公開料金と公開情報の目安です。最新の料金は[料金案内ページ](/pricing)と[スキンブースターのページ](/antiaging/skinbooster)でご確認のうえ、[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からご質問ください。営業日1日以内に返信いたします。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "韓国のスキンブースターはいくらですか？",
+        "a": "LIVの公開料金は、1回190,000ウォン〜（リジュラン HB plus 1cc、アイリジュラン 1cc）から600,000ウォン〜（リジュラン HB plus 4cc）まで、製品と容量によって異なります。1回あたり・税別の表示で、外国人患者も韓国人患者と同じ料金表です。正確な料金はカウンセリング後に確定します。"
+      },
+      {
+        "q": "スキンブースターと水光注射は同じものですか？",
+        "a": "似ていますが、クリニックの説明ではスキンブースターのほうがより多様な成分を含みます。料金表には両方が載っており、どちらが合うかは肌状態と目的に応じてカウンセリングで選びます。"
+      },
+      {
+        "q": "ダウンタイムは何日くらいですか？",
+        "a": "クリニックの案内では1〜3日で、微細な注射跡や赤みが出ることがあります。施術当日のメイクと飲酒は避け、紫外線対策を徹底してください。"
+      },
+      {
+        "q": "何回受ければよいですか？",
+        "a": "基本コースは2〜4週間隔で3〜4回、その後は2〜3ヶ月ごとのメンテナンスが推奨されています。1回でも保湿感の改善を感じることはできますが、最適な効果にはコース施術が必要とされています。"
+      },
+      {
+        "q": "カウンセリング当日に施術まで受けられますか？",
+        "a": "多くの場合、当日に受けられます。施術は麻酔クリームを使って30〜45分ほどで、入院は不要、その1回分については再来院も不要です。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 0
+  },
+  {
+    "title": "韓国のレーザートーニング — 回数・間隔・ダウンタイム・料金と、旅行中に受けるときの考え方（新沙・LIV美容クリニック）",
+    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックの肌トーン改善レーザーについて、レーザートーニングとウルブランの違い、推奨回数と間隔、施術時間、ダウンタイム、公開料金、施術後のケア、短い旅行日程での受け方をまとめました。",
+    "keywords": [
+      "韓国 レーザートーニング",
+      "レーザートーニング 韓国 料金",
+      "韓国 美容皮膚科 くすみ",
+      "ソウル レーザートーニング 日本語",
+      "レーザートーニング 回数 間隔",
+      "韓国 肌トーン レーザー",
+      "新沙 カロスキル 美容皮膚科"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/laser",
+    "locale": "ja",
+    "slug": "skin-tone-laser-toning-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "韓国旅行のついでにレーザートーニングを受けたい、という方がまず気になるのは「何回必要なのか」「旅行中の1回でも意味があるのか」の2点ではないでしょうか。この記事では、LIV美容クリニックの肌トーン改善レーザーのページに書かれている内容——使う機器、お悩み別の進め方、回数と間隔、施術時間、ダウンタイム、公開料金——を、問い合わせ前に判断できるよう整理しました。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分、カロスキルのすぐ隣にある非手術アンチエイジング専門のクリニックで、外国人患者も韓国人患者と同じ料金表が適用されます。"
+      },
+      {
+        "type": "h2",
+        "text": "レーザートーニングとは",
+        "id": "s1"
+      },
+      {
+        "type": "p",
+        "text": "クリニックの[レーザー施術ページ](/laser)では、レーザートーニングを「1064nm Nd:YAGレーザーを低出力で繰り返し照射し、肌の中のメラニンを徐々に分解する施術」と説明しています。従来の高出力レーザーと違い、低エネルギーを広い範囲に均一に照射するため、肌への刺激を抑えられ、ダウンタイムがありません。"
+      },
+      {
+        "type": "p",
+        "text": "ページに挙げられている作用は3つ。色素を徐々に分解すること、真皮層への刺激（コラーゲン生成）、皮脂腺機能の調節と毛穴の引き締めです。ポイントは「徐々に」という点で、1回で完結する施術ではなく、回数を重ねる前提の施術です。"
+      },
+      {
+        "type": "h2",
+        "text": "お悩み別の進め方",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "肌トーンのページでは、お悩みを4つのタイプに分け、それぞれに使う機器を示しています。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "お悩み",
+          "ページでの説明",
+          "進め方",
+          "機器"
+        ],
+        "rows": [
+          [
+            "全体的にくすんだ肌",
+            "日光・ストレス・疲労などで肌全体が暗く見える",
+            "レーザートーニングで全体の明るさを改善",
+            "レーザートーニング、ウルブラン"
+          ],
+          [
+            "部分的な色素沈着",
+            "頬・額・頬骨まわりに部分的に暗い色素がある",
+            "レーザートーニングの集中治療＋ピコレーザー併用",
+            "レーザートーニング、Lucas"
+          ],
+          [
+            "毛穴・肌質",
+            "開いた毛穴と荒れた肌質でトーンが不均一に見える",
+            "レーザートーニングのコラーゲンリモデリング作用を活用",
+            "レーザートーニング"
+          ],
+          [
+            "透明感の低下",
+            "くすんで透明感がない",
+            "ウルブラン、レーザートーニング併用",
+            "ウルブラン、レーザートーニング"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "ご自身がどのタイプに当たるか、機器を組み合わせるかどうかは、医師が肌を直接見たうえでカウンセリングで決めます。"
+      },
+      {
+        "type": "h2",
+        "text": "機器の比較",
+        "id": "s3"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "レーザートーニング（Spectra XT）",
+          "ウルブラン（Ulblanc）"
+        ],
+        "rows": [
+          [
+            "ページの説明",
+            "1064nm Nd:YAG、低出力繰り返し照射（MLAモード）",
+            "メラニンに選択的に作用する専用波長"
+          ],
+          [
+            "適応",
+            "くすみ、小じわ、毛穴、肌質、明るさ",
+            "トーンの均一化、透明感、光沢、くすみ"
+          ],
+          [
+            "施術時間",
+            "5〜15分",
+            "15〜20分"
+          ],
+          [
+            "麻酔",
+            "無麻酔",
+            "無麻酔"
+          ],
+          [
+            "ダウンタイム",
+            "なし（すぐに日常生活可能）",
+            "なし（すぐに日常生活可能）"
+          ],
+          [
+            "推奨回数",
+            "累計10回以上、3〜4回目から変化を感じやすい",
+            "累計5〜10回"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "肌トーンのページでは1回の所要時間を30〜45分、レーザートーニング単体は「15〜20分のランチタイム施術」と案内しています。時間は一般的な目安で、組み合わせる内容によって変わります。"
+      },
+      {
+        "type": "p",
+        "text": "色素が主なお悩みの場合は、別の機器が加わることがあります。Lucas（ルーカス）はピコレーザーで、施術時間20〜40分、麻酔クリームは選択制、回復期間は3〜7日（細かいかさぶたができることがあります）。クラリティII（Clarity II）は中等度のプロトコルで使われ、施術時間15〜30分、冷却ガスで痛みを抑えるため無麻酔、3〜5日ほど色素が濃くなったり薄いかさぶたができたりしてから自然に剥がれます。これらが入る場合は「ダウンタイムなし」ではなくなるので、旅行日程に影響します。"
+      },
+      {
+        "type": "h2",
+        "text": "回数と間隔",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "ページでは、肌トーン改善を3ステップのプログラムとして紹介しています。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "ステップ",
+          "機器",
+          "内容",
+          "ページ記載の回数"
+        ],
+        "rows": [
+          [
+            "1. 肌コンディショニング",
+            "レーザートーニング",
+            "低出力エネルギーを肌全体に均一に照射し、ベースの状態を整える",
+            "週1回、4〜5回"
+          ],
+          [
+            "2. メラニンターゲティング",
+            "ウルブラン",
+            "メラニンに選択的に作用する波長で色素を徐々に分解",
+            "2週間間隔、3〜4回"
+          ],
+          [
+            "3. 維持管理",
+            "レーザートーニング＋ウルブラン",
+            "整えたトーンを保ち、新たな色素沈着を予防",
+            "月1回"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "お悩みの程度別の目安も公開されています。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "程度",
+          "組み合わせ",
+          "回数",
+          "間隔"
+        ],
+        "rows": [
+          [
+            "軽度",
+            "ウルブラン＋トーニング",
+            "5回",
+            "2週間"
+          ],
+          [
+            "中等度",
+            "ウルブラン＋トーニング＋クラリティII",
+            "10回",
+            "2週間"
+          ],
+          [
+            "重度",
+            "集中複合ケア",
+            "15回以上",
+            "1〜2週間"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "いずれもクリニックの一般的なプロトコルで、個別の処方ではありません。実際の回数と間隔はカウンセリングで医師が決めます。"
+      },
+      {
+        "type": "h2",
+        "text": "料金",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "肌トーンのページに掲載されている料金は1項目です。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "基準",
+          "料金"
+        ],
+        "rows": [
+          [
+            "肌トーン改善のトーニング",
+            "1回",
+            "150,000ウォン〜"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "1回あたりの料金・VAT（付加価値税）別途。「〜」は「から」の意味で、最終的な料金は肌の状態や組み合わせる内容によりカウンセリング後に確定します。"
+      },
+      {
+        "type": "p",
+        "text": "肌トーン施術のコース料金・回数券の料金は公開されていません。複数回を考えている方は、最初のメッセージで見積もりを依頼してください。外国人患者も同じ料金表が適用され、通訳は無料です。料金表全体の見方やカウンセリング料については[料金案内ページ](/pricing)をご覧ください。"
+      },
+      {
+        "type": "h2",
+        "text": "短い旅行日程で受けるなら",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "公開されている情報から言えることだけを、率直にまとめます。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**1回なら日程に入れやすい。** レーザートーニングとウルブランは無麻酔・ダウンタイムなしで、施術直後から日常生活が可能と案内されています。所要時間も1時間かかりません。",
+          "**ただし1回は「コースの1回分」。** プログラムは週1回または2週間間隔で回数を重ねる設計で、レーザートーニングは3〜4回目から変化を感じやすいとされています。数日〜1週間の旅行でコースを終えることはできません。1回は1回として考え、ご自身の肌に意味があるかどうかは事前のオンライン相談で確認してください。",
+          "**長期滞在・定期的に渡韓する方。** 数週間滞在する方や定期的にソウルに来る方なら、上の週1回・2週間間隔のスケジュールが現実的になります。滞在日程を伝えていただければ、それに合わせて計画します。",
+          "**色素用レーザーが加わる場合はかさぶたを想定。** クラリティIIやLucasを使う場合、3〜7日ほど施術部位が濃くなったり細かいかさぶたができたりすることがあります。旅行の前半に入れるか、余裕のある次回に回すのが無難です。",
+          "**日程で一番大事なのは紫外線。** クリニックはレーザー施術後、最低2〜4週間の徹底した紫外線対策を勧めており、野外活動が多い時期の施術は避けるよう案内しています。施術後にビーチや登山の予定がある方は、必ずお伝えください。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "LIVでは、非手術の施術の多くは対面カウンセリングと同じ日に受けられます。[검수 필요: 레이저 토닝·울블랑도 상담 당일 시술이 되는지, 외국인 안내 표에는 레이저 항목이 없음]"
+      },
+      {
+        "type": "h2",
+        "text": "施術後のケア",
+        "id": "s7"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**日焼け止め：** レーザー施術後は肌が敏感になり、紫外線による色素沈着のリスクが高まります。最低2〜4週間はSPF 50+の日焼け止めを丁寧に塗り、帽子や日傘を使ってください。",
+          "**一時的に濃く見えることがある：** 色素用レーザーでは一時的な炎症後色素沈着（PIH）が起こることがあります。2〜4週間以内に自然に改善し、紫外線対策を徹底すれば予防できると案内されています。",
+          "**妊娠中・授乳中：** レーザー施術はお勧めしていません。出産・授乳が終わってからの施術をお勧めします。",
+          "**帰国後：** LINEやチャットで写真を送っていただければ経過を確認します。日本語のアフターケア案内もお渡しします。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "予約とお支払い",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "エージェントは不要で、日本語で直接相談できます。LINE（ID: icps7972773）、当サイトのライブチャット、[お問い合わせフォーム](/contact)からどうぞ。営業日1日以内に返信します。カウンセリングの予約に予約金は必要ありません。1:1カウンセリングは1万ウォンで、当日施術を受ける場合は施術料金から全額差し引かれます。お支払いはVisa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。診療時間は平日10:00〜19:00、土曜10:00〜16:00、日曜休診です。"
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s9"
+      },
+      {
+        "type": "p",
+        "text": "使う機器、回数、最終料金は、医師とのカウンセリングで決まります。この記事の数字はクリニックが公開している一般的な目安です。レーザー施術の全体は[レーザー施術ページ](/laser)、そのほかのご質問は[医療Q&Aページ](/medical)をご覧ください。滞在日程と写真を添えて、[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からお問い合わせください。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "レーザートーニングは何回必要ですか？",
+        "a": "クリニックの案内では、レーザートーニングは累計10回以上が推奨で、3〜4回目から変化を感じやすいとされています。ウルブランは累計5〜10回です。肌トーンのプロトコルは、軽度で2週間間隔・5回、重度で15回以上が目安です。実際の回数はカウンセリングで決まります。"
+      },
+      {
+        "q": "ダウンタイムはありますか？",
+        "a": "レーザートーニングはダウンタイムがほとんどなく、すぐに日常生活が可能と案内されています。ウルブランも同様です。色素治療のためにクラリティIIやLucasを併用する場合は、3〜7日ほど色素が濃くなったり細かいかさぶたができたりすることがあります。"
+      },
+      {
+        "q": "料金はいくらですか？",
+        "a": "肌トーンのページでは、トーニング1回150,000ウォン〜（VAT別途）と公開されています。最終料金はカウンセリング後に確定します。外国人患者も韓国人患者と同じ料金表です。"
+      },
+      {
+        "q": "旅行中の1回だけでも受けられますか？",
+        "a": "受けられますが、期待値は調整が必要です。週1回〜2週間間隔で回数を重ねて徐々に変化を出す施術なので、1回はコースの1回分です。1回でどこまで見込めるかは、カウンセリングで医師にご確認ください。"
+      },
+      {
+        "q": "施術後、日焼けは避けるべきですか？",
+        "a": "はい。レーザー施術後は紫外線による色素沈着のリスクが高まるため、最低2〜4週間はSPF 50+の日焼け止めと、帽子や日傘の使用をお勧めしています。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "韓国でサーマクール（サーマジFLX）を受ける前に：ショット数別の値段・施術時間・ダウンタイム（新沙・LIV美容クリニック）",
+    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックで受けるサーマクール（サーマジFLX）の料金を、300・600・900ショットとアイ専用チップ別に公開。料金に含まれるもの、施術時間、麻酔、ダウンタイム、効果の持続期間、LINEでの予約手順まで、渡韓前に知っておきたい情報をまとめました。外国人も同一料金です。",
+    "keywords": [
+      "韓国 サーマクール 値段",
+      "サーマジFLX 韓国",
+      "サーマクール 韓国 600ショット 料金",
+      "アイサーマジ 韓国",
+      "サーマジ ソウル 新沙",
+      "韓国 サーマクール 正規品"
+    ],
+    "category": "price",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting/thermage",
+    "locale": "ja",
+    "slug": "thermage-flx-cost-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "韓国でサーマクール（現行機種はサーマジFLX）を検討していて、問い合わせの前に「何ショットでいくらか」「どのくらい時間がかかるか」「翌日の予定に響くか」を確かめておきたい方へ。この記事は、LIV美容クリニックのサイトに公開されている内容を、渡韓の計画に使いやすい順に整理したものです。[LIV美容クリニック](/international)は、ソウル・江南の新沙(シンサ)駅4番出口から徒歩1分、カロスキルのすぐ隣にある非手術アンチエイジング専門のクリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人患者も韓国人患者と同じ料金表が適用され、日本語で直接予約できます。"
+      },
+      {
+        "type": "h2",
+        "text": "ショット数別の料金（2026年・1回あたり・税別）",
+        "id": "20261"
+      },
+      {
+        "type": "p",
+        "text": "サーマジFLXの料金はショット数で決まり、目もとはアイ専用チップの料金が別に設定されています。以下は[サーマジFLXの施術ページ](/lifting/thermage)に掲載されている1回あたりの料金です。[料金案内ページ](/pricing)には600ショットとアイサーマジの行が載っています。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "施術",
+          "ショット数",
+          "料金（1回・税別）"
+        ],
+        "rows": [
+          [
+            "サーマジFLX",
+            "300ショット",
+            "1,300,000ウォン〜"
+          ],
+          [
+            "サーマジFLX",
+            "600ショット",
+            "2,400,000ウォン〜"
+          ],
+          [
+            "サーマジFLX",
+            "900ショット",
+            "3,300,000ウォン〜"
+          ],
+          [
+            "アイサーマジ（アイ専用チップ）",
+            "225ショット",
+            "1,000,000ウォン〜"
+          ],
+          [
+            "アイサーマジ（アイ専用チップ）",
+            "450ショット",
+            "1,600,000ウォン〜"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "1回あたりの料金・VAT（付加価値税）別途・肌の状態、施術範囲、使用する製品によりカウンセリング後に確定します。お支払いは韓国ウォン建てで、日本円での実際の金額は決済日の為替レートにより変わります。"
+      },
+      {
+        "type": "p",
+        "text": "「〜」は「この金額から」という意味です。何ショットにするかは院長が肌の状態を見て相談のうえ決め、その時点で最終料金が確定します。"
+      },
+      {
+        "type": "h3",
+        "text": "料金に含まれるもの"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**部位に合わせたショット数。** サーマジFLXは高周波（RF）を照射するショット数で料金が決まります。対象部位は顔全体、目もと、首、ボディです。",
+          "**正規のサーマジFLXと正規チップ。** LIV美容クリニックはサーマジFLXのパートナー院であり、ウルセラプライムの正規認証院です。施術には正規認証のハンドピース（チップ）だけを使い、正規品の使用は施術前にご自身で確認していただけます。",
+          "**日本語対応・通訳。** 日本語での相談に対応し、通訳が必要な場合は無料で手配されます。外国人料金や通訳料はありません。",
+          "**院長の対面カウンセリング。** 1:1専門相談費用は1万ウォンで、当日施術を行う場合は施術金額から全額差し引かれます。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "施術時間・麻酔・ダウンタイム・効果",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "サイトの案内"
+        ],
+        "rows": [
+          [
+            "所要時間",
+            "45〜60分"
+          ],
+          [
+            "麻酔",
+            "無麻酔（振動技術で痛み軽減）"
+          ],
+          [
+            "回復",
+            "すぐに日常復帰可能"
+          ],
+          [
+            "再来院",
+            "当日・再来院不要"
+          ],
+          [
+            "効果",
+            "即時の弾力改善、3〜6ヶ月のコラーゲン再生"
+          ],
+          [
+            "持続期間",
+            "6ヶ月〜1年程度"
+          ],
+          [
+            "施術間隔",
+            "年1〜2回を推奨"
+          ]
+        ]
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**麻酔と痛み。** 施術ページでは、振動技術で痛みが軽減されるため「無麻酔」と案内されています。一方、医療Q&Aには「施術前に約30分間麻酔クリームを塗った後に行う」「ほとんどの患者様が快適に施術を受けられる」とあります。[검수 필요: 써마지 FLX 마취 — 시술 페이지는 '무마취', 의료 Q&A는 '마취 크림 약 30분'으로 서로 다름. 실제 진행 방식 확인] 痛みに敏感な方は追加の痛み調節が可能ですので、カウンセリングでお伝えください。",
+          "**ダウンタイム。** 施術後すぐに日常生活に戻れます。一時的な赤みが出ることがあります。",
+          "**効果と持続。** 施術直後の弾力改善に加えて、3〜6ヶ月かけてコラーゲンが再生すると案内されています。持続は6ヶ月〜1年程度で、肌の状態・年齢・生活習慣によって変わります。効果には個人差があり、結果を事前にお約束するものではありません。",
+          "**旧世代との違い。** サイトによると、サーマジFLXはAccuREP技術でエネルギーを自動調整し、施術が25%速くなっています。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "旅行日程への組み込み方（LINEで完結）",
+        "id": "line"
+      },
+      {
+        "type": "p",
+        "text": "サーマジFLXは1回で完了し、再来院は不要です。滞在中に1枠を確保すれば足ります。予約に予約金は不要で、問い合わせには営業日1日以内に返信があります。"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**問い合わせ：** LINE（ID: icps7972773）または当サイトのライブチャットに日本語でメッセージを送ります。[お問い合わせフォーム](/contact)も使えます。",
+          "**遠隔カウンセリングと見積もり：** 気になる部位と写真を送ると、適した施術の提案と明確な料金見積もりが届きます。",
+          "**来院日時の決定：** 旅行日程に合う日時を選んで予約します。",
+          "**来院・当日施術：** 院長との対面カウンセリングのあと、多くの場合その日のうちに施術を受けます。",
+          "**帰国後のアフターケア：** 帰国後もLINEやチャットで写真を送れば、経過を確認してもらえます。日本語のアフターケア案内もあります。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "当日の実務情報："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**診療時間：** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間。日本との時差はありません）。",
+          "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分。仁川空港からは空港鉄道（AREX）またはリムジンバスで約70〜90分、タクシーで約60分。金浦空港からはタクシーまたは地下鉄で約40分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
+          "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。カード分割払いも可能です。",
+          "**帰国便のタイミング：** 再来院は不要で、回復は「すぐに日常復帰可能」と案内されています。ただし「施術後何時間で搭乗してよいか」という基準はサイトにありません。予約時にフライト時刻を伝え、カウンセリングで確認してください。[검수 필요: 써마지 FLX 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음]",
+          "**予定の変更：** カウンセリング予約に予約金はありませんので、予定が変わったら同じチャットからできるだけ早めにご連絡ください。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "日程を組むときは、カウンセリング＋施術（45〜60分）に、麻酔クリームを使う場合の約30分を加えた時間をひとつの枠として見ておくと安心です。ほかの施術を含めた1泊2日・2泊3日の組み方は[ダウンタイムと飛行機のガイド](/guides/downtime-flight-travel-plan)にまとめています。"
+      },
+      {
+        "type": "h2",
+        "text": "向いている方・注意が必要な方",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "サイトの案内では、サーマジFLXは次のような方に向いています。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "肌の弾力低下が気になる方",
+          "小じわを改善したい方",
+          "自然で少しずつの変化を望む方",
+          "麻酔なしの施術を希望する方"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "カウンセリングで事前にお伝えいただきたい点："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "ペースメーカーを装着している方は施術を受けられません。",
+          "妊娠中・授乳中の方は施術を受けられません。",
+          "施術部位に金属インプラントがある場合は相談が必要です。",
+          "施術後に一時的な赤みが出ることがあります。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "ウルセラと迷っている方へ。サーマジは高周波（RF）で真皮層のコラーゲンを収縮させて再生を促し、全体的な肌の弾力改善に向くと案内されています。[ウルセラ](/lifting/ulthera)は超音波（HIFU）で皮膚の深い層であるSMASまでエネルギーを届け、たるんだ肌のリフティングに向くとされています。両方を併用することもできます。詳しい比較は[ウルセラ・サーマジ・シュリンク比較ガイド](/guides/ultherapy-vs-thermage-vs-shurink)、ウルセラの料金は[ウルセラ料金ガイド](/guides/ultherapy-cost-seoul)をご覧ください。どれが合うかはカウンセリングで決めます。"
+      },
+      {
+        "type": "p",
+        "text": "施術は形成外科専門医のキム・スヨン代表院長（SCI論文4編）が計画・担当します。詳しくは[医療スタッフ紹介](/about/staff)をご覧ください。外国人患者向けのQ&Aは[医療Q&Aページ](/medical)にもまとめています。"
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "部位・ショット数・最終料金は、院長とのカウンセリングで決まります。この記事の数字は、旅行の計画を立てるための公開料金の目安です。ご質問は[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からどうぞ。営業日1日以内に返信いたします。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "韓国のサーマクール（サーマジFLX）はいくらですか？",
+        "a": "LIVの公開料金は1回あたり、300ショット1,300,000ウォン〜、600ショット2,400,000ウォン〜、900ショット3,300,000ウォン〜です。アイ専用チップは225ショット1,000,000ウォン〜、450ショット1,600,000ウォン〜。いずれも税別で、最終料金はカウンセリング後に確定します。"
+      },
+      {
+        "q": "外国人だと料金が高くなりますか？",
+        "a": "いいえ。LIVでは外国人患者も韓国人患者と同じ料金表が適用され、料金は[料金案内ページ](/pricing)に公開されています。通訳や日本語対応の追加費用もありません。"
+      },
+      {
+        "q": "カウンセリング当日に施術まで受けられますか？再来院は必要ですか？",
+        "a": "多くの場合、当日に受けられます。施術は45〜60分、入院不要で、サーマジFLXは1回で完了し再来院も不要です。"
+      },
+      {
+        "q": "痛みはどのくらいですか？",
+        "a": "痛みは施術の種類や個人差によって異なります。サーマジFLXは振動技術（Vibrating Tip）により痛みが軽減されており、医療Q&Aでは「ほとんどの患者様が快適に施術を受けられる」と案内しています。痛みに敏感な方は、カウンセリングで追加の痛み調節をご相談ください。"
+      },
+      {
+        "q": "効果はどのくらい持ちますか？何回受ければよいですか？",
+        "a": "サーマジの効果は6ヶ月〜1年程度持続すると案内されており、肌の状態・年齢・生活習慣で変わります。施術間隔は年1〜2回が推奨で、ご自身に合う間隔は院長と決めます。"
+      },
+      {
+        "q": "目もとにも施術できますか？",
+        "a": "はい。サーマジのアイ専用チップで施術でき、225ショットと450ショットの料金が公開されています。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 2
+  },
+  {
+    "title": "韓国で糸リフト・アプトス(APTOS)を受ける前に：値段・ダウンタイム・滞在日数の目安（新沙・LIV美容クリニック）",
+    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックが案内する糸リフトとアプトス(APTOS)の違い、糸の種類別の料金、局所麻酔、3〜7日のダウンタイム、1週間後の任意の経過確認、施術後の注意点、滞在日数の考え方をまとめました。日本語相談対応・通訳無料、外国人も同一料金です。",
+    "keywords": [
+      "韓国 糸リフト 値段",
+      "糸リフト 韓国 ダウンタイム",
+      "アプトス 糸リフト 韓国",
+      "韓国 糸リフト 何泊",
+      "糸リフト ソウル 新沙",
+      "APTOS NAMICA 料金",
+      "韓国 糸リフト 日本語"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting/thread",
+    "locale": "ja",
+    "slug": "thread-lift-aptos-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "糸リフトは、LIVのリフティング施術のなかでダウンタイムをはっきり見込んでおく必要がある施術です。照射系の施術のように「終わったらそのまま観光」とはいかないため、何泊にするか、帰国後の経過確認をどうするかを先に決めておくと安心です。この記事では、LIV美容クリニックのサイトにある[糸リフト（スレッドリフト）](/lifting/thread)と[アプトス(APTOS)](/lifting/aptos)の案内を整理します。[LIV美容クリニック](/international)はソウル・江南の新沙(シンサ)駅4番出口から徒歩1分、カロスキルの隣にある非手術アンチエイジング専門のクリニックで、施術は形成外科専門医が担当します。日本語相談に対応、通訳は無料、外国人も同じ料金表です。"
+      },
+      {
+        "type": "h2",
+        "text": "糸リフトとアプトスの違い（サイトの案内より）",
+        "id": "s1"
+      },
+      {
+        "type": "p",
+        "text": "どちらも局所麻酔で糸を挿入する施術で、所要時間は30〜60分、対象部位は額、頬骨、頬、顎ライン、ほうれい線、首です。サイトが分けて説明しているのは、効果の持続期間と、どんな方に向くかという点です。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "",
+          "糸リフト（スレッドリフト）",
+          "アプトス バイオリフティング"
+        ],
+        "rows": [
+          [
+            "所要時間",
+            "30〜60分",
+            "30〜60分"
+          ],
+          [
+            "麻酔",
+            "局所麻酔",
+            "局所麻酔"
+          ],
+          [
+            "回復",
+            "3〜7日（内出血・腫れの可能性）",
+            "3〜7日（内出血・腫れの可能性）"
+          ],
+          [
+            "効果（サイト表記）",
+            "即時のリフティング、6〜12ヶ月持続",
+            "即時のリフティング、最大24ヶ月持続"
+          ],
+          [
+            "レーザーリフティングとの併用",
+            "1〜2週間後から可能",
+            "2〜4週間後から可能"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**糸リフト。** すぐにリフトアップしたい方、頬のたるみや頬骨まわりの下がりが気になる方、ほうれい線や顎ラインを整えたい方、レーザーリフティングだけでは物足りなかった方に向くと案内されています。効果は糸の種類により6〜12ヶ月ほど持続します。"
+      },
+      {
+        "type": "p",
+        "text": "**アプトス(APTOS)。** 長く続くリフティングを望む方、バイオスティミュレーション効果を求める方、グローバル認証を受けた製品を希望する方、自然なボリューム感と弾力を望む方に向くと案内されています。施術ページによると、APTOS NAMICAはヒアルロン酸40mgをカプセル化した糸で、効果は最大24ヶ月持続します。認証はKFDA 4等級、CE、ISO 13485、FDA MDSAPと記載されています。"
+      },
+      {
+        "type": "p",
+        "text": "持続期間について、医療Q&Aでは糸の素材による違いも説明しています。PDO（溶ける糸）は6〜8ヶ月、PLLAやPCLの糸は12〜18ヶ月程度で、糸が溶けながらコラーゲン再生を促すため、糸が完全に溶けた後も一定期間効果が続くとしています。いずれもサイトに書かれた目安であり、個人差があります。どの糸が合うかは、院長がカウンセリングで顔の状態を見て決めます。"
+      },
+      {
+        "type": "h2",
+        "text": "糸の種類別の料金（2026年・1回あたり・税別）",
+        "id": "20261"
+      },
+      {
+        "type": "p",
+        "text": "糸リフトの料金は、製品と本数で決まります。以下は[料金案内ページ](/pricing)に公開されている1回あたりの料金です。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "糸",
+          "基準",
+          "料金（1回・税別）"
+        ],
+        "rows": [
+          [
+            "APTOS NAMICA",
+            "10本",
+            "3,000,000ウォン〜"
+          ],
+          [
+            "APTOS Light Lift 25",
+            "2本",
+            "1,500,000ウォン〜"
+          ],
+          [
+            "APTOS Light Lift 50",
+            "2本",
+            "2,500,000ウォン〜"
+          ],
+          [
+            "シルエットソフト",
+            "2本",
+            "1,000,000ウォン〜"
+          ],
+          [
+            "ミント",
+            "8本",
+            "800,000ウォン〜"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "1回あたりの料金・VAT（付加価値税）別途・肌の状態、施術範囲、使用する製品によりカウンセリング後に確定します。お支払いは韓国ウォン建てで、日本円での実際の金額は決済日の為替レートにより変わります。"
+      },
+      {
+        "type": "p",
+        "text": "「〜」は「この金額から」という意味です。必要な本数は部位とたるみの程度によって変わるため、最終料金は対面カウンセリングで確定します。1:1専門相談費用は1万ウォンで、当日施術を行う場合は施術金額から全額差し引かれます。外国人料金や通訳料はありません。"
+      },
+      {
+        "type": "h2",
+        "text": "ダウンタイムと施術後の注意点",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "回復期間は、糸リフト・アプトスともに「3〜7日（内出血・腫れの可能性）」と案内されています。サイトに挙げられている注意点は次のとおりです。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**内出血・腫れ：** 施術後3〜7日は出る可能性があります。",
+          "**表情とマッサージ：** 2週間は大きな表情や顔のマッサージを避けてください。",
+          "**つっぱり感：** 施術部位に引きつれる感じが出ることがあります。",
+          "**メイク：** 軽いメイクは施術24時間後から可能です。",
+          "**まれなリスク：** 感染、糸の露出の可能性が挙げられています。気になる症状があれば、予約に使ったチャットからすぐに連絡してください。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "妊娠中・授乳中は、リフティング施術を含むほとんどの美容施術がすすめられていません。既往歴や服用中の薬は、カウンセリングで院長に伝えてください。"
+      },
+      {
+        "type": "h2",
+        "text": "経過確認：1週間後の来院は任意",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "外国人患者向けページでは、糸リフトの経過確認を「約1週間後に任意の確認、または写真によるオンライン確認」としています。医療Q&Aでも、必要に応じて1週間後の経過確認をすすめるものの任意、という案内です。"
+      },
+      {
+        "type": "p",
+        "text": "帰国後は、LINEやチャットで写真を送れば経過を確認し、アフターケアを案内してもらえます。日本語のアフターケア案内も用意されています。"
+      },
+      {
+        "type": "h2",
+        "text": "滞在日数の考え方",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "施術そのものは30〜60分で入院は不要、多くの場合は対面カウンセリングの当日に受けられます。滞在日数を左右するのは、ダウンタイムをどこで過ごすかと、経過確認を対面にするか写真にするかです。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "日程",
+          "内容"
+        ],
+        "rows": [
+          [
+            "短い滞在＋写真で経過確認",
+            "1回の来院でカウンセリングと施術を済ませ、1週間後の確認は帰国後に写真で行う。3〜7日の内出血・腫れの期間が帰国の移動や帰国後の予定と重なります。"
+          ],
+          [
+            "約1週間の滞在",
+            "旅行の前半に施術を受け、約1週間後に対面で経過を確認してから帰国。3〜7日の回復期間の大半をソウルで過ごせます。"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "これは時間の配置の例であり、医学的な助言ではありません。糸リフト後に何日目から飛行機に乗ってよいかは、サイトに記載がありません。[검수 필요: 실리프팅·압토스 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음] 予約時にフライトの日程を伝え、カウンセリングで確認してください。"
+      },
+      {
+        "type": "p",
+        "text": "レーザーリフティングも受けたい場合、併用は糸リフトの1〜2週間後、アプトスの2〜4週間後からと案内されているため、短い旅行1回に両方を入れるのは通常むずかしくなります。照射系の施術は[リフティング一覧](/lifting)、ほかの施術を含めた1泊2日・2泊3日の組み方は[ダウンタイムと飛行機のガイド](/guides/downtime-flight-travel-plan)をご覧ください。"
+      },
+      {
+        "type": "h2",
+        "text": "日本からの予約方法",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "エージェントは不要で、カウンセリング予約に予約金もかかりません。問い合わせには営業日1日以内に返信があります。"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**問い合わせ：** LINE（ID: icps7972773）、当サイトのライブチャット、または[お問い合わせフォーム](/contact)に日本語で。",
+          "**遠隔カウンセリングと見積もり：** 気になる部位と写真を送ると、適した施術の提案と明確な料金見積もりが届きます。",
+          "**来院日時の決定：** 旅行日程に合わせて予約します。フライトの日程も一緒に伝えてください。",
+          "**来院・施術：** 院長との対面カウンセリングのあと、多くの場合その日のうちに施術を受けます。",
+          "**帰国後のアフターケア：** LINEやチャットで経過確認と質問対応。"
+        ]
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**診療時間：** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間。日本との時差はありません）。",
+          "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分。仁川空港からは空港鉄道（AREX）またはリムジンバスで約70〜90分、タクシーで約60分。金浦空港からはタクシーまたは地下鉄で約40分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
+          "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。カード分割払いも可能です。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "施術は形成外科専門医のキム・スヨン代表院長（SCI論文4編）が計画・担当します。詳しくは[医療スタッフ紹介](/about/staff)へ。予約の流れは[日本語で予約する方法](/guides/book-seoul-clinic-foreigner)にもまとめています。"
+      },
+      {
+        "type": "h2",
+        "text": "最後に",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "糸の種類・本数・最終料金は、院長とのカウンセリングで決まります。この記事の数字は、旅行の計画を立てるための公開情報の目安です。滞在日程を添えて[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からご連絡ください。営業日1日以内に返信いたします。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "糸リフトとアプトスは何が違いますか？",
+        "a": "どちらも局所麻酔で30〜60分、回復期間は3〜7日です。サイトでは、糸リフトは「即時のリフティング、6〜12ヶ月持続」、アプトスは「即時のリフティング、最大24ヶ月持続」と案内しており、APTOS NAMICAはヒアルロン酸40mgをカプセル化した糸です。どちらが合うかはカウンセリングで決めます。"
+      },
+      {
+        "q": "韓国の糸リフトはいくらですか？",
+        "a": "LIVの公開料金は1回あたり、ミント（8本）800,000ウォン〜、シルエットソフト（2本）1,000,000ウォン〜、APTOS Light Lift 25（2本）1,500,000ウォン〜、APTOS Light Lift 50（2本）2,500,000ウォン〜、APTOS NAMICA（10本）3,000,000ウォン〜です。いずれも税別で、外国人患者も同じ料金表が適用されます。"
+      },
+      {
+        "q": "ダウンタイムはどのくらいですか？メイクはいつからできますか？",
+        "a": "回復期間は3〜7日で、内出血や腫れが出る可能性があります。軽いメイクは施術24時間後から可能です。2週間は大きな表情やマッサージを避けてください。"
+      },
+      {
+        "q": "経過確認のためにもう一度来院する必要はありますか？",
+        "a": "必須ではありません。約1週間後の確認は任意で、帰国後にLINEやチャットで写真を送るオンライン確認に替えられます。"
+      },
+      {
+        "q": "何泊すればよいですか？",
+        "a": "施術は30〜60分で入院は不要です。対面での経過確認を希望する場合は約1週間、写真での確認にする場合は短い滞在でも組めます。帰国便の時期はカウンセリングで個別に確認してください。"
+      }
+    ],
+    "readingMinutes": 9,
+    "reviewMarkers": 1
   },
   {
     "title": "韓国でウルセラを受ける前に：値段・ショット数・正規品の見分け方（新沙・LIV美容クリニック）",
@@ -4581,6 +10717,648 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
+    "title": "韓國拉提療程怎麼選？依困擾整理首爾診所的8種拉提",
+    "description": "音波拉提(Ultherapy Prime)、鳳凰電波(Thermage FLX)、Density、InMode、ONDA、Shurink、埋線拉提與APTOS，依下垂、細紋、脂肪、恢復期、停留天數與2026年起價整理，附首爾新沙站LIV整形外科的8種療程總表。",
+    "keywords": [
+      "韓國 拉提 怎麼選",
+      "韓國 拉提療程 比較",
+      "下顎線 鬆弛 拉提",
+      "韓國 拉提 無恢復期",
+      "埋線拉提 音波拉提 差別",
+      "首爾 拉提 價格"
+    ],
+    "category": "comparison",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting",
+    "locale": "zh-TW",
+    "slug": "choose-lifting-treatment-by-concern",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "打開首爾診所的拉提療程表，常常一次看到八個名字，而多數人只認得其中兩個。這篇文章把LIV整形外科的8種拉提療程，依診所自己在各療程頁面寫的「適合對象」重新整理，讓你在聯絡診所之前先知道自己的問題落在哪一格。它是一張地圖，不是診斷：實際方案要由醫師在面診時看過你的皮膚後決定。LIV位於首爾江南新沙站4號出口步行1分鐘，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接預約。"
+      },
+      {
+        "type": "h2",
+        "text": "8種療程總表",
+        "id": "s1"
+      },
+      {
+        "type": "table",
+        "header": [
+          "療程",
+          "網站的說明",
+          "治療時間",
+          "麻醉",
+          "恢復",
+          "起價（單次）"
+        ],
+        "rows": [
+          [
+            "[音波拉提 Ultherapy Prime](/lifting/ulthera)",
+            "HIFU（聚焦超音波），作用到SMAS層",
+            "60–90分鐘",
+            "麻醉藥膏（30分鐘）",
+            "可立即恢復日常生活",
+            "780,000韓元起"
+          ],
+          [
+            "[鳳凰電波 Thermage FLX](/lifting/thermage)",
+            "RF（射頻），作用於真皮層",
+            "45–60分鐘",
+            "通常不需麻醉，可依需求塗麻醉藥膏",
+            "可立即恢復日常生活",
+            "1,000,000韓元起"
+          ],
+          [
+            "[Density](/lifting/density)",
+            "射頻拉提入門儀器",
+            "40–60分鐘",
+            "麻醉藥膏（可選擇）",
+            "可立即恢復日常生活",
+            "890,000韓元起"
+          ],
+          [
+            "[InMode](/lifting/inmode)",
+            "射頻，分 FX 與 FORMA 模式",
+            "30–60分鐘",
+            "不麻醉或使用麻醉藥膏",
+            "可立即恢復日常生活",
+            "150,000韓元起"
+          ],
+          [
+            "[ONDA](/lifting/onda)",
+            "2.45GHz微波（不是射頻）",
+            "臉部15–30分鐘 / 身體每部位約10分鐘",
+            "不需麻醉",
+            "無恢復期",
+            "面診時報價 [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음]"
+          ],
+          [
+            "[Shurink](/lifting/shurink)",
+            "HIFU，適合以合理費用定期管理",
+            "30–45分鐘",
+            "麻醉藥膏（可選擇）",
+            "可立即恢復日常生活",
+            "200,000韓元起"
+          ],
+          [
+            "[埋線拉提 Thread Lift](/lifting/thread)",
+            "局部麻醉下置入線材",
+            "30–60分鐘",
+            "局部麻醉",
+            "3–7天（可能出現瘀青、腫脹）",
+            "800,000韓元起"
+          ],
+          [
+            "[APTOS 生物拉提](/lifting/aptos)",
+            "APTOS 品牌線材的拉提",
+            "30–60分鐘",
+            "局部麻醉",
+            "3–7天（可能出現瘀青、腫脹）",
+            "1,500,000韓元起"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "單次價格 · 未含加值稅(VAT)。「起」是各療程公開的最低項目（例如音波拉提上面部200–300發、眼部鳳凰電波225發、Shurink 300發、MINT 8條、APTOS Light Lift 25 兩條）。實際金額於面診後確定。"
+      },
+      {
+        "type": "h2",
+        "text": "依困擾來看",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "以下每一行都是把LIV療程頁面上的「適合對象」依困擾重新排列。同一種療程會出現在不只一種困擾底下，這也是為什麼最後要當面決定。"
+      },
+      {
+        "type": "h3",
+        "text": "下垂與下顎線"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**音波拉提**：適合在意皮膚下垂、彈性下降，想不動手術就拉提的人。部位是額頭、眼周、臉頰、下顎線與頸部。",
+          "**埋線拉提**：適合想要立即拉提、在意臉頰下垂、想修飾法令紋與下顎線，或只做雷射拉提覺得不夠的人。",
+          "**Shurink** 與 **Density**：治療部位和音波拉提相同（額頭、眼周、臉頰、下顎線、頸部）。Shurink 面向第一次做拉提或定期維護的人，Density 面向想要複合拉提效果的人。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "彈性下降與細紋"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**鳳凰電波**：適合在意彈性下降、想改善細紋，希望自然、漸進變化的人。部位包括全臉、眼周、頸部與身體，眼周有專用探頭。",
+          "**InMode**：用途之一是膠原蛋白再生與細紋改善。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "臉部脂肪加上鬆弛"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**InMode**：診所推薦給臉部脂肪較多或皮膚鬆弛複合困擾的人，包括下巴下方脂肪、臉頰肉、臉部輪廓線與雙下巴。",
+          "**ONDA**：適合彈性下降與局部脂肪同時存在的人，部位是臉部（臉頰、下顎線）、雙下巴與身體（腹部、側腰、大腿、手臂）。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "想維持久一點、想要澎潤感"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**APTOS**：適合想要長期維持的拉提、生物刺激效果，以及自然澎潤感與彈性的人。診所說明效果最長可維持24個月，APTOS NAMICA 是包覆40mg玻尿酸的線材。",
+          "**音波拉提**：效果一般可維持1–2年，因人而異。",
+          "如果主要困擾是容積流失本身，醫師談的可能是[玻尿酸](/antiaging/filler)，而不是拉提儀器。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "不想有恢復期、不想麻醉"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "六種儀器類療程的說明都是可立即恢復日常生活。**ONDA** 不需麻醉，**鳳凰電波**通常不需麻醉，**InMode** 也可以不麻醉。",
+          "**埋線拉提**與 **APTOS** 使用局部麻醉，3–7天內可能出現瘀青、腫脹。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "第一次做、預算有限"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Shurink**：面向第一次做拉提、想快速完成、想以合理費用做拉提的人。",
+          "**Density**：價格合理的射頻拉提入門儀器。",
+          "八種當中公開起價最低的是 **InMode**。但價格低不代表處理的是同一種困擾，請先比較上面的「適合對象」，再看價格欄。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "效果何時出現、維持多久、多久做一次",
+        "id": "s3"
+      },
+      {
+        "type": "table",
+        "header": [
+          "療程",
+          "效果（網站說明）",
+          "間隔"
+        ],
+        "rows": [
+          [
+            "音波拉提 Prime",
+            "3–6個月逐漸改善，維持1–2年",
+            "1–2年一次"
+          ],
+          [
+            "鳳凰電波 FLX",
+            "立即改善彈性，3–6個月膠原蛋白再生",
+            "6個月–1年一次"
+          ],
+          [
+            "Density",
+            "立即拉提 + 3–6個月膠原蛋白再生",
+            "間隔3–6個月"
+          ],
+          [
+            "InMode",
+            "立即的彈性 + 逐漸的膠原蛋白再生",
+            "每3–6個月（維護）"
+          ],
+          [
+            "ONDA",
+            "在4–12週內逐漸顯現",
+            "面診時確定"
+          ],
+          [
+            "Shurink",
+            "2–4週後開始出現效果，3個月達到最大效果",
+            "間隔3–6個月"
+          ],
+          [
+            "埋線拉提",
+            "立即拉提，依線材種類維持6–12個月",
+            "面診時確定"
+          ],
+          [
+            "APTOS",
+            "立即拉提，最長維持24個月",
+            "面診時確定"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "效果維持時間會因皮膚狀況、年齡與生活習慣而不同，週期在面診時確定。音波拉提、鳳凰電波與 Shurink 的細節見[三種療程比較](/guides/ultherapy-vs-thermage-vs-shurink)；Density、ONDA 與 InMode 見[三種儀器比較](/guides/density-onda-inmode-lifting-seoul)。"
+      },
+      {
+        "type": "h2",
+        "text": "如果只停留幾天",
+        "id": "s4"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**儀器類療程。** LIV的大多數非手術療程約需30~90分鐘、不需住院，很多患者到院當天就完成治療。音波拉提 Prime 與鳳凰電波 FLX 當天完成、不需回診；其他儀器是否需要回診，預約時請詢問。",
+          "**線材類療程。** 埋線拉提約1週後可選擇回診，或回國後以照片遠端確認。3–7天內可能有瘀青、腫脹，治療24小時後可以化淡妝，2週內要避免誇張的表情與按摩。有拍照或重要行程的話，請把日子錯開。",
+          "**併行。** 診所說明埋線拉提可在1–2週後與雷射拉提併行，APTOS 則是2–4週後。短暫停留時通常是先選一種，另一種留到下次；順序由醫師確認。",
+          "**排行程。** 可參考[恢復期與搭機指南](/guides/downtime-flight-travel-plan)與[預約指南](/guides/book-seoul-clinic-foreigner)。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "請先告訴醫師",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "各療程的注意事項不同，也可能影響診所建議哪一種。以下來自LIV的療程頁面。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**懷孕或哺乳期。** 不建議進行拉提治療。",
+          "**心臟節律器。** 裝有心臟節律器的人不能做鳳凰電波 FLX；做 ONDA 前請務必告知。",
+          "**金屬植入物。** 治療部位有金屬植入物時，音波拉提與鳳凰電波需要先諮詢；做 ONDA 前，體內有金屬植入物請務必告知。",
+          "**敏感肌膚與皮膚狀況。** 敏感肌膚做 Shurink 前需要先諮詢。做 ONDA 前，治療部位如有發炎、感染或傷口，請告知。",
+          "**線材類療程。** 治療部位可能有緊繃感，極少數情況下可能感染或線材外露。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "這篇文章的用途，是幫你把名單縮小到兩三個；接下來交給醫師。在LIV，整形外科專科醫師會親自診斷你的皮膚狀況，並依你的需求與期望效果推薦治療方案（見[醫療團隊](/about/staff)）。各療程價格公開在[價格說明頁](/pricing)與各療程頁面。有問題或想傳照片，可以透過[國際患者頁面](/international)或[線上諮詢表單](/contact)聯絡診所；更多回答見[醫療問答頁](/medical)。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "下顎線鬆弛適合做哪一種拉提？",
+        "a": "下顎線是音波拉提、Shurink、Density、ONDA、埋線拉提與 APTOS 的治療部位之一，InMode 也列出臉部輪廓線。哪一種適合，要看主要原因是皮膚下垂、臉部脂肪，還是兩者都有，這由醫師當面診斷。"
+      },
+      {
+        "q": "哪些拉提療程沒有恢復期？",
+        "a": "音波拉提、鳳凰電波、Density、InMode、ONDA 與 Shurink 的說明都是可立即恢復日常生活。埋線拉提與 APTOS 在3–7天內可能出現瘀青、腫脹。"
+      },
+      {
+        "q": "兩種拉提可以一起做嗎？",
+        "a": "有些可以。LIV說明音波拉提與鳳凰電波結合可產生協同效果，InMode 與鳳凰電波併行可帶來更強的彈性改善，埋線拉提可在1–2週後與雷射拉提併行。是否適合，要在面診時決定。"
+      },
+      {
+        "q": "一般埋線拉提和 APTOS 有什麼不同？",
+        "a": "兩者都是局部麻醉、30–60分鐘，3–7天內可能出現瘀青、腫脹。維持時間方面，埋線拉提依線材種類為6–12個月，APTOS 最長24個月。診所列出 APTOS 取得 KFDA 第4等級、CE、ISO 13485 與 FDA MDSAP 認證。"
+      },
+      {
+        "q": "可以在出發前自己先決定做哪一種嗎？",
+        "a": "可以先告訴診所你有興趣的療程，診所看過照片後會提供建議與價格預估，最終方案在到院面診時確定。1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。"
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "Density vs ONDA vs InMode：首爾三種新型拉提儀器的差異與價格",
+    "description": "Density、ONDA、InMode 三種拉提療程在能量種類、治療時間、麻醉、恢復期、效果出現時間與2026年價格上的差異，以及首爾新沙站LIV整形外科把它們各自描述給哪一類困擾的人。",
+    "keywords": [
+      "Density 拉提 韓國",
+      "ONDA 韓國 價格",
+      "InMode 韓國 價格",
+      "韓國 電波拉提 入門",
+      "Density InMode 差別",
+      "首爾 拉提 推薦"
+    ],
+    "category": "comparison",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting",
+    "locale": "zh-TW",
+    "slug": "density-onda-inmode-lifting-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "音波拉提和鳳凰電波大家多半聽過，但一打開韓國診所的療程表，還會看到另外三個名字：Density、ONDA 與 InMode。這篇文章整理LIV對這三種儀器的說明、所需時間與恢復期，以及公開的價格，讓你在聯絡診所之前先有概念。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接聯絡診所預約，不需要透過中介。"
+      },
+      {
+        "type": "h2",
+        "text": "一段話說清楚差異",
+        "id": "s1"
+      },
+      {
+        "type": "p",
+        "text": "三種儀器用的能量不同，診所描述的適合對象也不同。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**Density**：依LIV的說法，是「價格合理的射頻（RF）拉提入門儀器」，治療部位是額頭、眼周、臉頰、下顎線與頸部。",
+          "**ONDA**：不是射頻，使用的是2.45GHz微波；不需麻醉，也是三者中唯一同時用於身體的儀器。",
+          "**InMode**：診所推薦給臉部脂肪較多或皮膚鬆弛複合困擾的人，分為 FX 與 FORMA 模式，價格分開計算。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "這不是排名。哪一種適合你，或者[拉提療程頁](/lifting)上的其他療程是否更合適，要在面診時由醫師決定。"
+      },
+      {
+        "type": "h2",
+        "text": "三種療程一覽",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "",
+          "Density",
+          "ONDA",
+          "InMode"
+        ],
+        "rows": [
+          [
+            "能量（依網站說明）",
+            "RF（射頻）",
+            "2.45GHz微波（不是射頻）",
+            "RF（射頻）"
+          ],
+          [
+            "治療時間",
+            "40–60分鐘",
+            "臉部15–30分鐘 / 身體每個部位約10分鐘",
+            "30–60分鐘"
+          ],
+          [
+            "麻醉",
+            "麻醉藥膏（可選擇）",
+            "不需麻醉",
+            "不麻醉或使用麻醉藥膏"
+          ],
+          [
+            "恢復",
+            "可立即恢復日常生活",
+            "無恢復期（治療後可立即恢復日常生活）",
+            "可立即恢復日常生活"
+          ],
+          [
+            "效果",
+            "立即拉提 + 3–6個月膠原蛋白再生",
+            "在4–12週內逐漸顯現（因人而異）",
+            "立即的彈性 + 逐漸的膠原蛋白再生"
+          ],
+          [
+            "治療部位",
+            "額頭、眼周、臉頰、下顎線、頸部",
+            "臉部（臉頰、下顎線）、雙下巴、腹部、側腰、大腿、手臂",
+            "下巴下方、臉頰、臉部輪廓線、雙下巴、深層臉頰"
+          ],
+          [
+            "治療間隔",
+            "建議間隔3–6個月",
+            "面診時確定",
+            "作為維護性治療每3–6個月一次"
+          ],
+          [
+            "是否回診",
+            "面診時確認",
+            "面診時確認",
+            "面診時確認"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "以上內容取自LIV各療程頁面與醫療問答。國際患者頁面的回診說明只涵蓋音波拉提、鳳凰電波與埋線拉提等療程，這三種儀器是否需要回診，預約時請詢問。"
+      },
+      {
+        "type": "h2",
+        "text": "三種儀器各自的用途",
+        "id": "s3"
+      },
+      {
+        "type": "h3",
+        "text": "Density"
+      },
+      {
+        "type": "p",
+        "text": "LIV把 Density 描述為適合「想要複合拉提效果的人」「同時想要立即效果與長期改善的人」「對過去的拉提療程不滿意的人」。治療40–60分鐘，麻醉藥膏可選擇。效果說明是「立即拉提 + 3–6個月膠原蛋白再生」，診所建議間隔3–6個月。被問到它和音波拉提 Prime、鳳凰電波有什麼差異時，診所的回答是：Density 是價格合理的射頻拉提入門儀器。詳見[Density 頁面](/lifting/density)。"
+      },
+      {
+        "type": "h3",
+        "text": "ONDA"
+      },
+      {
+        "type": "p",
+        "text": "很多人以為 ONDA 也是電波（射頻），診所的回答是「不是。ONDA使用2.45GHz微波」。LIV把它描述為適合「彈性下降與局部脂肪同時存在的人」「希望沒有恢復期就能改善的人」「想同時管理臉部與身體的人」。臉部（臉頰、下顎線）與雙下巴約15–30分鐘，身體（腹部、側腰、大腿、手臂）每個部位約10分鐘。不需麻醉即可進行，感受被描述為類似溫熱的按摩。效果並非立即出現，而是在4–12週內逐漸顯現，因人而異。詳見[ONDA 頁面](/lifting/onda)。"
+      },
+      {
+        "type": "h3",
+        "text": "InMode"
+      },
+      {
+        "type": "p",
+        "text": "診所把 InMode 推薦給臉部脂肪較多或皮膚鬆弛複合困擾的人。列出的用途包括：減少下巴下方脂肪並加強彈性、臉頰拉提與修飾臉部輪廓線、改善雙下巴與深層臉頰，以及皮膚內膠原蛋白再生與細紋改善。治療30–60分鐘，不麻醉或使用麻醉藥膏。LIV把它和 Shurink 並列為每3–6個月可以進行一次的維護性治療；與鳳凰電波併行時，診所說明射頻的加乘效果可帶來更強的彈性改善。詳見[InMode 頁面](/lifting/inmode)。"
+      },
+      {
+        "type": "h2",
+        "text": "2026年LIV價格（單次、未含加值稅）",
+        "id": "2026liv"
+      },
+      {
+        "type": "p",
+        "text": "Density 與 InMode 的價格公開在各自的療程頁面。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "療程",
+          "項目",
+          "價格（單次）"
+        ],
+        "rows": [
+          [
+            "Density",
+            "Hi 探頭 · 300發",
+            "890,000韓元起"
+          ],
+          [
+            "Density",
+            "Hi 探頭 · 600發",
+            "1,500,000韓元起"
+          ],
+          [
+            "Density",
+            "Alpha 探頭 · 300發",
+            "990,000韓元起"
+          ],
+          [
+            "Density",
+            "Alpha 探頭 · 600發",
+            "1,800,000韓元起"
+          ],
+          [
+            "InMode",
+            "FX 模式",
+            "150,000韓元起"
+          ],
+          [
+            "InMode",
+            "FORMA 模式",
+            "200,000韓元起"
+          ],
+          [
+            "InMode",
+            "FX / FORMA 模式",
+            "250,000韓元起"
+          ],
+          [
+            "ONDA",
+            "臉部或身體各部位",
+            "面診時報價 [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인]"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "單次價格 · 未含加值稅(VAT) · 實際金額依個人膚況、治療範圍與所用產品，於面診後確定。外國患者與韓國患者適用相同的價目表。"
+      },
+      {
+        "type": "p",
+        "text": "「起」代表起價：Density 用哪一種探頭、打幾發，InMode 用哪一種模式，在面診時和醫師確認後，最終價格才會確定。音波拉提、鳳凰電波與 Shurink 的價格請看[價格說明頁](/pricing)與[音波拉提 vs 鳳凰電波 vs Shurink 比較](/guides/ultherapy-vs-thermage-vs-shurink)。"
+      },
+      {
+        "type": "h2",
+        "text": "依困擾來看：網站把哪一種對應到哪裡",
+        "id": "s5"
+      },
+      {
+        "type": "table",
+        "header": [
+          "你最在意的是…",
+          "網站提到的儀器"
+        ],
+        "rows": [
+          [
+            "想以合理費用開始做射頻拉提",
+            "Density"
+          ],
+          [
+            "立即效果與長期改善都想要",
+            "Density"
+          ],
+          [
+            "彈性下降，同時有局部脂肪",
+            "ONDA、InMode"
+          ],
+          [
+            "雙下巴",
+            "ONDA、InMode"
+          ],
+          [
+            "下巴下方脂肪、臉頰肉、臉部輪廓線",
+            "InMode"
+          ],
+          [
+            "臉部和身體想一起管理",
+            "ONDA"
+          ],
+          [
+            "不想麻醉",
+            "ONDA（不需麻醉）；InMode（不麻醉或麻醉藥膏）"
+          ],
+          [
+            "每3–6個月定期維護",
+            "InMode、Density"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "這張表整理的是診所如何描述各儀器，不是診斷。同樣的困擾，兩個人可能得到不同的建議；醫師也可能建議這篇沒有比較的療程，例如[音波拉提](/lifting/ulthera)、[鳳凰電波](/lifting/thermage)或[埋線拉提](/lifting/thread)。"
+      },
+      {
+        "type": "h2",
+        "text": "面診時請告訴醫師",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "以下注意事項來自LIV的療程頁面，第一次留言時就先說明。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**懷孕或哺乳期。** Density 與 InMode 在懷孕或哺乳期不能做。ONDA 則請在諮詢時務必告知。",
+          "**心臟節律器、體內金屬植入物。** 做 ONDA 前，如有心臟節律器或體內金屬植入物，請務必告知。",
+          "**治療部位的皮膚狀況。** 做 ONDA 前，治療部位如有發炎、感染或傷口，請告知。Density 與 InMode 能否治療要依皮膚狀況在面診時確認。",
+          "**慢性疾病。** 做 ONDA 前，如有未控制的糖尿病等疾病，請告知。",
+          "**治療後。** Density 與 InMode 治療後可能有輕微腫脹、泛紅。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "排進首爾行程",
+        "id": "s7"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**當天完成。** LIV的大多數非手術療程約需30~90分鐘、不需住院，很多患者到院當天就完成治療。",
+          "**預約。** 以 LINE（ID：icps7972773）、WhatsApp（+82 10-6888-2773）、本站線上客服或[線上諮詢表單](/contact)用中文聯絡診所，傳送你在意的部位與照片，診所會建議合適的療程，並在出發前提供價格預估。諮詢會在一個工作日內回覆，預約面診不需訂金。完整流程見[預約指南](/guides/book-seoul-clinic-foreigner)。",
+          "**語言。** 提供中文諮詢，需要時免費安排翻譯。",
+          "**診療時間。** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間）。",
+          "**交通。** 地鐵3號線新沙站4號出口步行1分鐘，見[交通資訊](/about/location)。",
+          "**回程航班。** 三種療程的說明都是治療後可立即恢復日常生活。個別的時間在面診時與你確認，行程安排可參考[恢復期與搭機指南](/guides/downtime-flight-travel-plan)。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "這篇文章能告訴你三種儀器的差異，但不能告訴你你的皮膚需要哪一種——那要在面診時由整形外科專科醫師親自診斷後決定（見[醫療團隊](/about/staff)）。1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣，也可以只諮詢、之後再決定。有問題可以透過[國際患者頁面](/international)或[線上諮詢表單](/contact)聯絡診所；更多回答見[醫療問答頁](/medical)。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "ONDA 是射頻（RF）治療嗎？",
+        "a": "不是。ONDA使用2.45GHz微波。這篇比較中屬於射頻（RF）的是 Density 與 InMode。"
+      },
+      {
+        "q": "Density、ONDA、InMode 需要麻醉嗎？",
+        "a": "ONDA 不需麻醉即可進行，感受被描述為類似溫熱的按摩。InMode 不麻醉或使用麻醉藥膏，Density 的麻醉藥膏可選擇。"
+      },
+      {
+        "q": "效果什麼時候出現？",
+        "a": "依LIV的說明，Density 是立即拉提加上3–6個月膠原蛋白再生，InMode 是立即的彈性加上逐漸的膠原蛋白再生。ONDA 並非立即出現，而是在4–12週內逐漸顯現。效果因人而異。"
+      },
+      {
+        "q": "這些療程多久做一次？",
+        "a": "Density 建議間隔3–6個月；InMode 屬於每3–6個月可以進行一次的維護性治療。治療週期會依你的皮膚狀況與期望效果而不同，準確的週期在面診時確定。"
+      },
+      {
+        "q": "InMode 可以和鳳凰電波一起做嗎？",
+        "a": "可以。LIV說明射頻的加乘效果可帶來更強的彈性改善。是否適合併行，要在面診時決定。"
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 1
+  },
+  {
     "title": "療程後可以搭飛機嗎？各療程恢復期與首爾 2–3 天醫美行程",
     "description": "整理LIV整形外科（首爾江南新沙站步行1分鐘、林蔭道旁）官網公開的音波拉提、鳳凰電波、肉毒桿菌素、玻尿酸、水光針、埋線拉提的治療時間、恢復期與是否需要複診，說明關於療程後搭飛機官網能確認什麼、哪些要在面診時確認，並附兩天一夜、三天兩夜的首爾醫美行程範例。",
     "keywords": [
@@ -4874,6 +11652,2528 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "readingMinutes": 8,
     "reviewMarkers": 0
+  },
+  {
+    "title": "第一次去韓國醫美診所：到院當天流程一次看懂（首爾新沙站 LIV整形外科）",
+    "description": "寫給第一次到韓國做醫美的人：以首爾新沙站的 LIV整形外科 為例，依序說明到院當天的流程——抵達、院長面診（可安排翻譯）、敷麻醉藥膏的時間、各療程需要多久、1萬韓元諮詢費怎麼抵扣、付款方式、術後護理指南，以及回國後用 LINE 或 WhatsApp 追蹤，並附出發前／當天／回國後檢查表。",
+    "keywords": [
+      "第一次 韓國醫美",
+      "韓國醫美 當天流程",
+      "首爾 醫美 面診 費用",
+      "音波拉提 要多久",
+      "韓國醫美 中文翻譯",
+      "韓國醫美 注意事項",
+      "新沙站 醫美 第一次"
+    ],
+    "category": "booking",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/international",
+    "locale": "zh-TW",
+    "slug": "first-visit-what-to-expect-seoul-clinic",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "用 LINE 約好時間之後，真正讓人緊張的往往是當天：要在診所待多久？進門之後還能講中文嗎？麻醉藥膏什麼時候敷？錢什麼時候付、付多少？回國之後有問題找誰？第一次到韓國做醫美的人，問的大多是這些很實際的事。"
+      },
+      {
+        "type": "p",
+        "text": "這篇文章以 LIV整形外科 為例，從走進診所到回國後的追蹤，把一次到院的過程依序走一遍。LIV 位於首爾江南新沙站（地鐵3號線）4號出口步行1分鐘處，緊鄰林蔭道，專注於非手術抗老療程：音波拉提、鳳凰電波、肉毒桿菌素、玻尿酸、水光針等。這類療程大多在30~90分鐘內完成、不需住院，所以很多人面診當天就直接做完。至於做哪個療程、做多少，都是在與院長面診時決定的。"
+      },
+      {
+        "type": "h2",
+        "text": "到院當天的 6 個步驟",
+        "id": "s1"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**抵達**：地鐵3號線新沙站4號出口步行1分鐘，自恩大廈4樓。從機場怎麼去，見[交通位置頁面](/about/location)。",
+          "**院長面診**：由整形外科專科醫師當面看過膚況，確認你在 LINE 或 WhatsApp 上談好的方案，必要時再調整。可以用中文諮詢，如需翻譯可免費安排，預約時先說一聲即可。[검수 필요: 대면 상담에 걸리는 시간]",
+          "**準備**：需要敷麻醉藥膏的療程，會在治療前先敷並等待一段時間，音波拉提 Prime 約30分鐘。也有不需要麻醉的療程（見下表）。",
+          "**治療**：依療程不同，10~90分鐘。",
+          "**付款**：在診所付款，適用與韓國患者相同的[價目表](/pricing)。",
+          "**術後護理說明**：離開前會拿到中文的書面術後護理指南。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "到這裡就結束了。不需住院，大多數療程也不需要再回診。"
+      },
+      {
+        "type": "h2",
+        "text": "各療程需要多久",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "以下是 LIV 療程頁面上列出的治療時間與麻醉方式。估算在診所停留的時間時，請再加上面診和敷麻醉藥膏的時間。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "療程",
+          "治療前",
+          "治療時間",
+          "是否複診"
+        ],
+        "rows": [
+          [
+            "[音波拉提 Prime](/lifting/ulthera)",
+            "麻醉藥膏約30分鐘",
+            "60~90分鐘",
+            "無需複診"
+          ],
+          [
+            "[鳳凰電波 FLX](/lifting/thermage)",
+            "不需麻醉（以震動技術減輕疼痛）",
+            "45~60分鐘",
+            "無需複診"
+          ],
+          [
+            "[肉毒桿菌素](/antiaging/botox)",
+            "不麻醉，或依需求敷麻醉藥膏",
+            "10~20分鐘",
+            "無需複診"
+          ],
+          [
+            "[玻尿酸](/antiaging/filler)",
+            "麻醉藥膏或神經阻斷麻醉",
+            "20~40分鐘",
+            "無需複診"
+          ],
+          [
+            "[水光針](/antiaging/skinbooster)",
+            "麻醉藥膏",
+            "30~45分鐘",
+            "無需複診"
+          ],
+          [
+            "[埋線拉提](/lifting/thread)",
+            "局部麻醉",
+            "30~60分鐘",
+            "約1週後可選複查，或以照片遠距複查"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "以上時間為一般參考，實際以面診時確認為準。比較怕痛的人，拉提療程可以加強止痛，面診時請直接告訴醫師。"
+      },
+      {
+        "type": "p",
+        "text": "如果想在同一次到院做兩個療程，請事先告知，診所才能預留足夠的時間。恢復期以及療程後搭飛機的問題，另外整理在[恢復期與行程規劃指南](/guides/downtime-flight-travel-plan)。"
+      },
+      {
+        "type": "h2",
+        "text": "到院前要先告訴診所的事",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "診所只能依照已經知道的資訊來規劃。LIV 的療程頁面和醫療問答請患者務必告知以下情況，最好在一開始傳訊息時就寫上，而不是當天才說："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**懷孕或哺乳期**：大多數美容治療不建議在懷孕或哺乳期間進行，建議結束之後再接受治療。",
+          "**裝有心律調節器**：不能做鳳凰電波 FLX。",
+          "**治療部位有金屬植入物**：音波拉提 Prime 與鳳凰電波 FLX 需要先諮詢。",
+          "**神經肌肉疾病**：不能做肉毒桿菌素。",
+          "**治療部位有發炎、感染或傷口，或有未受控制的糖尿病等慢性疾病**：這是 ONDA 療程頁面要求面診時務必告知的項目，做其他療程時也建議一併說明。",
+          "**航班時間**：這不是醫療資訊，但診所會依此安排時間。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "這些都不能取代當面的面診，只是避免醫師到了治療前才第一次聽到重要的事。"
+      },
+      {
+        "type": "h2",
+        "text": "1萬韓元諮詢費與抵扣方式",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "與院長的1對1專業諮詢費用為1萬韓元。當天進行治療時，可從治療費用中全額抵扣。也可以只做面診，回去考慮清楚再決定。"
+      },
+      {
+        "type": "p",
+        "text": "關於費用，還有兩點："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**不需訂金**：預約面診不需要付訂金。",
+          "**同一份價目表**：外國患者與韓國患者適用同一份價目表，沒有「外國人價格」，中文諮詢和翻譯也不另外收費。[價目表](/pricing)上的價格以單次計算、未含增值稅，最終金額在面診後確定。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "當天怎麼付款",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "可使用 Visa、Mastercard、American Express、JCB、銀聯（UnionPay）等境外發行的信用卡，也可以用韓元（KRW）現金付款，台灣或香港發行的卡都可以。LINE Pay、支付寶、微信支付等行動支付是否可用，請在到院前透過 LINE 或線上客服先確認。"
+      },
+      {
+        "type": "h2",
+        "text": "檢查表：出發前、當天、回國後",
+        "id": "s6"
+      },
+      {
+        "type": "table",
+        "header": [
+          "時間點",
+          "要做的事"
+        ],
+        "rows": [
+          [
+            "出發前",
+            "透過 LINE（ID：icps7972773）或 WhatsApp（+82 10-6888-2773）傳訊息，寫上困擾、附2~3張照片和在首爾的日期。也可以用 WeChat（livps0414）、網站線上客服或[線上諮詢表單](/contact)。一個工作天內回覆。"
+          ],
+          [
+            "出發前",
+            "收到遠距諮詢的建議和報價後，預約日期與時間。行程緊湊的話，多給兩三個可選時段。"
+          ],
+          [
+            "出發前",
+            "告知是否懷孕或哺乳、是否裝有心律調節器、有無金屬植入物、正在治療的疾病。需要翻譯也在這時提出。"
+          ],
+          [
+            "出發前",
+            "對照診所營業時間和航班：週一至週五 10:00–19:00、週六 10:00–16:00、週日休診（韓國時間，比台灣、香港快1小時）。韓國國定假日一般也休診。"
+          ],
+          [
+            "當天",
+            "新沙站3號線4號出口步行1分鐘，自恩大廈4樓。"
+          ],
+          [
+            "當天",
+            "與院長當面面診，確定方案。怕痛或有任何疑問都在這時提出。"
+          ],
+          [
+            "當天",
+            "需要的療程先敷麻醉藥膏，再進行治療。以境外發行的信用卡或韓元現金付款。"
+          ],
+          [
+            "當天",
+            "領取中文的書面術後護理指南，當晚就照著做。"
+          ],
+          [
+            "回國後",
+            "透過同一個 LINE、WhatsApp 或線上客服傳照片，診所會查看恢復情況並指導護理。"
+          ],
+          [
+            "回國後",
+            "僅埋線拉提：約1週後的複查為可選，可以用照片遠距複查。"
+          ],
+          [
+            "回國後",
+            "肉毒桿菌素：3~7天後開始出現效果，首次治療後2~3週可能需要補打，請傳照片讓診所確認。"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "療程後的當天晚上",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "要注意什麼依療程而不同，以你拿到的書面指南為準。舉幾個 LIV 療程頁面上的例子：肉毒桿菌素當天避免飲酒與三溫暖，不要按摩治療部位；玻尿酸不要按摩或按壓治療部位，3天內避免劇烈運動與三溫暖；水光針當天不化妝、不飲酒，並做好防曬。各療程更完整的注意事項，見[恢復期與行程規劃指南](/guides/downtime-flight-travel-plan)。"
+      },
+      {
+        "type": "h2",
+        "text": "回國後的追蹤",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "離開首爾不代表聯絡就結束了。把照片傳到 LINE、WhatsApp 或線上客服，診所會查看恢復情況並回答問題，手邊也有中文的術後護理指南可以對照。有擔心的地方，與其自己觀察，不如直接附上照片傳訊息詢問。"
+      },
+      {
+        "type": "h2",
+        "text": "傳訊息之前",
+        "id": "s9"
+      },
+      {
+        "type": "p",
+        "text": "以上是第一次到院的一般流程。適合哪個療程、做多少、費用多少，都在與院長面診時確定。先把行程日期和幾張照片透過[國際患者頁面](/international)上的 LINE 或 WhatsApp 傳給診所；預約步驟和第一則訊息的範例，見[中文預約教學](/guides/book-seoul-clinic-foreigner)。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "面診要多少錢？做療程的話會退嗎？",
+        "a": "1對1專業諮詢費用為1萬韓元。當天進行治療時，從治療費用中全額抵扣。也可以只做面診，之後再決定。"
+      },
+      {
+        "q": "面診當天可以直接做療程嗎？",
+        "a": "多數情況下可以。大多數非手術療程30~90分鐘完成、不需住院，很多人到院當天就做完了。最終以院長面診後的判斷為準。"
+      },
+      {
+        "q": "到院後可以用中文溝通嗎？",
+        "a": "可以。診所支援中文、英語、日語諮詢，如需翻譯可免費安排，預約時說明即可，語言服務沒有額外費用。"
+      },
+      {
+        "q": "到院前要先告訴診所什麼？",
+        "a": "懷孕或哺乳期、裝有心律調節器、治療部位有金屬植入物、神經肌肉疾病或其他正在治療的疾病，都請事先告知。懷孕或哺乳期間大多數美容治療不建議進行，裝有心律調節器者不能做鳳凰電波 FLX。"
+      },
+      {
+        "q": "回國前需要再回診所一次嗎？",
+        "a": "音波拉提 Prime、鳳凰電波 FLX、肉毒桿菌素、玻尿酸、水光針都是當天一次完成，不需複診。埋線拉提約1週後可選複查，也可以透過照片遠距複查。"
+      }
+    ],
+    "readingMinutes": 6,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "首爾除斑雷射指南：肝斑、色斑用什麼儀器、要做幾次、短期旅行能完成多少",
+    "description": "LIV整形外科位於首爾新沙站步行1分鐘。本文依診所公開資訊整理肝斑（黃褐斑）、色斑、雀斑、老年斑的雷射治療：三階段系統與皮秒等儀器、依症狀的次數與間隔、公開價格、術後防曬，以及多次療程在短期赴韓旅行中實際能完成到哪一步。",
+    "keywords": [
+      "韓國 除斑 雷射",
+      "首爾 皮秒雷射 價格",
+      "韓國 肝斑 治療",
+      "韓國 淨膚雷射",
+      "Pico laser Seoul",
+      "melasma treatment Korea",
+      "首爾 除斑 中文"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/laser",
+    "locale": "zh-TW",
+    "slug": "pigmentation-laser-seoul-guide",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "到首爾做除斑雷射是很多人的行程清單之一，但它也是出發前最容易被誤會的療程：色素治療多半不是一個下午就結束，而是每隔幾週一次、分多次進行。這篇文章整理LIV整形外科對[雷射](/laser)色素治療公開的內容——治療哪些色素、用哪些儀器、次數與間隔、有公開的價格、術後防曬——讓你依自己停留的天數判斷什麼才實際。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表。"
+      },
+      {
+        "type": "h2",
+        "text": "先看重點",
+        "id": "s1"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "診所公開的色素治療方案為3–10次，每次間隔2–4週；幾天的旅行只能完成其中一次。",
+          "儀器依色素深淺選擇：Lucas皮秒（Lucas Pico）、Clarity II 755nm、雷射調光（Laser Toning）與 Ulblanc。",
+          "有公開價格的項目：雙波長雷射（Clarity + Lucas）單次150,000韓元起，CO2雷射每個10,000韓元起。",
+          "術後至少2–4週要認真防曬（SPF 50+）。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "治療哪些色素問題",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "診所的色素治療頁面涵蓋肝斑（黃褐斑，Melasma）、色斑、雀斑與老年斑。依診所說明，適合以下族群："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "肝斑越來越深、範圍擴大的人",
+          "做過多次調光但效果不佳的人",
+          "色斑、雀斑較多的人",
+          "開始出現老年斑的人",
+          "膚色暗沉不均勻的人",
+          "想要沒有恢復期、持續保養的人"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "不同色素的深淺與性質不同，所以要先面診判斷類型，再決定用哪一種儀器。事先傳照片可以拿到初步報價，但治療計畫是在與院長面診時確定的。"
+      },
+      {
+        "type": "h2",
+        "text": "三階段系統與使用的儀器",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "LIV把色素治療說明為「三階段色素治療系統」，從集中治療走到維持保養。儀器名稱依診所的寫法。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "階段",
+          "目的",
+          "儀器",
+          "診所的說明"
+        ],
+        "rows": [
+          [
+            "第1階段",
+            "集中治療",
+            "Lucas皮秒（Lucas Pico）",
+            "以皮秒脈衝集中分解深層色素"
+          ],
+          [
+            "第2階段",
+            "精準治療",
+            "Clarity II 755nm",
+            "以亞歷山大波長精準治療淺層色素"
+          ],
+          [
+            "第3階段",
+            "維持保養",
+            "調光 + Ulblanc（美白雷射）",
+            "低刺激重複治療，維持效果、預防復發"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "很多人會問皮秒雷射和調光哪個好。診所的回答是取決於目的：頑固性肝斑或深層色素用皮秒雷射集中治療，輕微色素或維持保養則適合調光；很多情況下會採用皮秒治療後以調光維持的複合方案。關於皮秒，頁面的說明是脈衝比奈秒雷射快1000倍，能把色素分解得更細。"
+      },
+      {
+        "type": "h2",
+        "text": "依症狀的次數與間隔",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "訂機票前請先看這張表。以下是診所公開的建議方案，你實際的計畫在面診時確定。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "程度",
+          "主要症狀",
+          "治療",
+          "次數",
+          "間隔"
+        ],
+        "rows": [
+          [
+            "輕度",
+            "輕微肝斑、色斑",
+            "雷射調光（Laser Toning）",
+            "5–10次",
+            "2週"
+          ],
+          [
+            "中度",
+            "中等深度色素",
+            "Clarity II 755nm",
+            "3–5次",
+            "3–4週"
+          ],
+          [
+            "重度 / 頑固性",
+            "深層、頑固性肝斑",
+            "Lucas皮秒 + 調光",
+            "5–10次",
+            "2–4週"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "其中雷射調光，診所建議累積10次以上，通常從第3–4次開始感受到效果。"
+      },
+      {
+        "type": "h2",
+        "text": "各儀器的療程時間、麻醉與恢復期",
+        "id": "s5"
+      },
+      {
+        "type": "table",
+        "header": [
+          "儀器",
+          "療程時間",
+          "麻醉",
+          "恢復期"
+        ],
+        "rows": [
+          [
+            "雷射調光（Laser Toning）",
+            "5–15分鐘",
+            "不麻醉",
+            "無，立即恢復日常"
+          ],
+          [
+            "Ulblanc",
+            "15–20分鐘",
+            "不麻醉",
+            "無，立即恢復日常"
+          ],
+          [
+            "Clarity II",
+            "15–30分鐘",
+            "不麻醉（以冷卻噴霧降低疼痛）",
+            "3–5天（色素部位可能有薄痂）"
+          ],
+          [
+            "Lucas雷射",
+            "20–40分鐘",
+            "麻醉藥膏（可選）",
+            "3–7天（可能有薄痂）"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "以 Clarity II 治療表皮色素時，色素可能在3–5天內變深或形成薄痂，之後自然脫落。旅途中有拍照或重要行程的人，請把這段時間算進去。"
+      },
+      {
+        "type": "h2",
+        "text": "公開價格（2026年・單次）",
+        "id": "2026"
+      },
+      {
+        "type": "p",
+        "text": "色素治療頁面的價格為單次價格，項目名稱依診所價目表。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "計價基準",
+          "價格（單次）"
+        ],
+        "rows": [
+          [
+            "雙波長雷射（Clarity + Lucas）— 色斑/雀斑/毛孔/痘印",
+            "單次",
+            "150,000韓元起"
+          ],
+          [
+            "Potenza",
+            "Pumping 探頭",
+            "200,000韓元起"
+          ],
+          [
+            "CO2雷射 — 痣/扁平疣/老年斑等",
+            "直徑3mm以下（1個）",
+            "10,000韓元起"
+          ],
+          [
+            "CO2雷射",
+            "直徑超過3mm至5mm（1個）",
+            "30,000韓元起"
+          ],
+          [
+            "CO2雷射",
+            "直徑超過5mm（1個）",
+            "50,000韓元起"
+          ],
+          [
+            "CO2雷射",
+            "全臉（50個以上）",
+            "500,000韓元起"
+          ],
+          [
+            "CO2雷射",
+            "全頸（50個以上）",
+            "500,000韓元起"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "單次價格 · 未含加值稅(VAT) · 「起」是起價，依皮膚狀態與治療範圍，於面診後確定。多次療程的費用，大致是單次價格乘以實際做的次數。實際刷卡金額以付款當天匯率為準。"
+      },
+      {
+        "type": "p",
+        "text": "外國患者適用同一份價目表，翻譯不另收費。表中沒有列出的療程，請在面診時取得報價。"
+      },
+      {
+        "type": "h2",
+        "text": "術後防曬與照護",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "色素治療有一半是離開診所之後的防曬。診所的說明如下："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "雷射後皮膚變得敏感，紫外線造成色素沉著的風險會提高。",
+          "至少2–4週內要仔細塗抹防曬乳（SPF 50+），並使用帽子或陽傘。",
+          "診所建議避開戶外活動多的時期做雷射。如果首爾行程之後緊接著海島度假或滑雪，請在面診時告知。",
+          "雷射後可能出現暫時性的色素沉著（PIH）。診所表示這會在2–4週內自然改善，做好防曬可以預防。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "診所提供中文的術後照護指南；回國後也可以透過 LINE 或線上客服傳照片，由診所查看恢復情況。"
+      },
+      {
+        "type": "h2",
+        "text": "短期旅行能做到哪一步",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "老實說：公開的方案是3–10次，間隔2–4週。幾天的旅行能完成的是其中一次，而不是整個方案。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**這次旅行做一次。** 面診後多數情況下當天即可進行療程。請把它當作計畫的第一步，並向院長確認以你的色素類型，做一次可以期待什麼。",
+          "**分幾次赴韓完成。** 每隔幾週或幾個月會來首爾的人，可以配合上面的間隔累積次數。第一次諮詢時請告訴診所你來韓國的頻率。",
+          "**停留時間較長。** 停留一個月以上時，依2週或3–4週的間隔可以做一次以上。",
+          "**肝斑是「管理」而不是「根治」。** 診所的說法是先集中治療，再靠定期維持與防曬把復發降到最低。這很難在一次旅行中完成，預約前先了解比較好。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "如果只能到院一次，院長可能會在面診時建議其他安排。回程航班的時間規劃可以參考[恢復期與回程航班規劃指南](/guides/downtime-flight-travel-plan)。"
+      },
+      {
+        "type": "h2",
+        "text": "預約、面診費與付款",
+        "id": "s9"
+      },
+      {
+        "type": "p",
+        "text": "不需要透過中介，預約面診也不需要訂金，諮詢會在一個工作日內得到回覆。預約步驟見[外國人預約首爾診所指南](/guides/book-seoul-clinic-foreigner)。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**聯絡方式：** LINE（ID：icps7972773）、WhatsApp（+82 10-6888-2773）、本站線上客服或[線上諮詢表單](/contact)。",
+          "**面診費：** 整形外科專科醫師的1對1面診費用為1萬韓元，當天進行療程時從療程費用中全額抵扣。",
+          "**語言：** 提供中文、英語、日語諮詢，需要時免費安排翻譯。",
+          "**診療時間：** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間，比臺灣、香港快1小時）。",
+          "**交通：** 地鐵3號線新沙站4號出口步行1分鐘，詳見[交通資訊](/about/location)。",
+          "**付款方式：** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)，以及韓元現金。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "治療由整形外科專科醫師、大韓醫學雷射學會正式會員金秀英代表院長負責規劃，詳見[醫療團隊介紹](/about/staff)。"
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s10"
+      },
+      {
+        "type": "p",
+        "text": "儀器、次數與最終價格，都在與院長面診時確定；本文的數字是診所公開的內容，方便你依實際日期做合理的規劃。請先看[雷射療程頁](/laser)與[價格說明頁](/pricing)，有任何問題可透過[外國患者專頁](/international)或[線上諮詢表單](/contact)聯絡診所。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "肝斑（黃褐斑）可以用雷射根治嗎？",
+        "a": "診所的回答是，肝斑要以「管理」而不是根治的觀念來看待。集中治療改善之後，透過定期維持與防曬把復發降到最低；LIV的三階段系統同時包含治療與維持兩個部分。"
+      },
+      {
+        "q": "除斑雷射要做幾次？",
+        "a": "依診所公開的建議方案：輕度以雷射調光每2週一次、共5–10次；中度以 Clarity II 755nm 每3–4週一次、共3–5次；深層或頑固性肝斑以 Lucas皮秒加調光每2–4週一次、共5–10次。實際次數在面診時確定。"
+      },
+      {
+        "q": "雷射後斑會不會反而變深（反黑）？",
+        "a": "可能出現暫時性的色素沉著（PIH）。診所表示這會在2–4週內自然改善，做好防曬可以預防，療程後也會提供照護說明。"
+      },
+      {
+        "q": "首爾除斑雷射多少錢？",
+        "a": "在LIV，雙波長雷射（Clarity + Lucas）單次150,000韓元起；處理痣、老年斑等的CO2雷射，直徑3mm以下每個10,000韓元起。價格為單次、未含加值稅，外國患者同價。"
+      },
+      {
+        "q": "懷孕期間可以做色素雷射嗎？",
+        "a": "不可以。診所不建議在懷孕或哺乳期間做雷射治療，建議在生產與哺乳結束後再進行；懷孕期間請專注於防曬與保濕。"
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 0
+  },
+  {
+    "title": "到首爾做醫美，實際要付多少？價目表、加值稅、面診費與付款方式",
+    "description": "LIV整形外科位於首爾新沙站步行1分鐘。本文說明公開價目表怎麼看：單次價格、韓元計價、未含加值稅(VAT)、「起」的意思，以及面診費1萬韓元與當天抵扣、免費翻譯、預約不需訂金、可用的信用卡與分期，並用公開價格做幾個試算範例。外國患者同價。",
+    "keywords": [
+      "韓國醫美 費用",
+      "韓國醫美 付款 信用卡",
+      "首爾 醫美 價目表 含稅",
+      "韓國 診所 面診費",
+      "韓國醫美 外國人 價格",
+      "韓國醫美 訂金",
+      "seoul clinic price VAT"
+    ],
+    "category": "price",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/pricing",
+    "locale": "zh-TW",
+    "slug": "seoul-clinic-total-cost-payment",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "價目表告訴你一個療程「從多少錢起」，卻沒告訴你結帳時到底是多少：含不含稅？面診要不要錢？要不要先付訂金？外國人會不會比較貴？這篇文章只用LIV整形外科公開的資訊來回答這些問題。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘，專注非手術抗老化療程。先講結論：所有人用同一份價目表，價格為單次、以韓元計價、未含加值稅，確切金額在面診時確定。"
+      },
+      {
+        "type": "h2",
+        "text": "先看重點",
+        "id": "s1"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**只有一份價目表。** 外國患者與韓國患者適用同一份價目表，沒有外國人加價。",
+          "**單次、韓元計價、未含加值稅(VAT)。** 結帳時在公開價格之外另加加值稅。",
+          "**「起」是起價。** 確切價格在面診後決定。",
+          "**面診費1萬韓元，** 當天進行療程時從療程費用中全額抵扣。",
+          "**翻譯免費，** 語言服務不另收費。",
+          "**預約面診不需訂金。**",
+          "**付款方式：** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)，或韓元現金；可以信用卡分期。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "公開價目表怎麼看",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "[價格說明頁](/pricing)公開了四類：埋線拉提、玻尿酸、鳳凰電波（Thermage）、音波拉提（Ultherapy）；其他療程的價格則在各療程頁面上，例如[肉毒桿菌素](/antiaging/botox)、[水光針](/antiaging/skinbooster)與[雷射療程](/laser)。每一列都由「項目、計價基準、價格」三部分組成。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "你看到的寫法",
+          "意思"
+        ],
+        "rows": [
+          [
+            "1,560,000韓元起",
+            "以韓元計價的起始價格。"
+          ],
+          [
+            "「400-800發」「1cc」「8根」「每100IU」「單次」等計價基準",
+            "這個價格對應的內容。實際需要多少，在面診時決定。"
+          ],
+          [
+            "「單次價格」",
+            "一次療程的價格，不是整個療程組合。"
+          ],
+          [
+            "「所有價格未含加值稅(VAT)」",
+            "付款時在公開價格之外另加加值稅。"
+          ],
+          [
+            "「面診時提供詳細報價」",
+            "沒有公開價格的項目，到院或以訊息取得報價。"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "從診所的價目表中舉幾列："
+      },
+      {
+        "type": "table",
+        "header": [
+          "療程",
+          "計價基準",
+          "公開價格（單次、未含加值稅）"
+        ],
+        "rows": [
+          [
+            "音波拉提（Ultherapy）全面部",
+            "400-800發",
+            "1,560,000韓元起"
+          ],
+          [
+            "鳳凰電波 FLX（Thermage FLX）",
+            "600發",
+            "2,400,000韓元起"
+          ],
+          [
+            "埋線拉提 MINT",
+            "8根",
+            "800,000韓元起"
+          ],
+          [
+            "玻尿酸 國產",
+            "1cc",
+            "200,000韓元起"
+          ],
+          [
+            "輪廓肉毒桿菌素（方形臉／太陽穴）國產",
+            "—",
+            "60,000韓元起"
+          ],
+          [
+            "膚色改善淨膚雷射（Laser Toning）",
+            "單次",
+            "150,000韓元起"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "價目表下方有診所的說明：以上為單次價格，確切價格於面診後決定；最終費用可能因個人皮膚狀況、治療範圍與使用產品而不同。"
+      },
+      {
+        "type": "h2",
+        "text": "哪些會加在價格上，哪些不會",
+        "id": "s3"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "金額",
+          "說明"
+        ],
+        "rows": [
+          [
+            "療程費用",
+            "以公開價格為基礎，面診時確定",
+            "單次、韓元計價"
+          ],
+          [
+            "加值稅(VAT)",
+            "加在療程費用之上",
+            "價目表為未含稅價格"
+          ],
+          [
+            "1對1面診",
+            "1萬韓元",
+            "當天進行療程時從療程費用中全額抵扣"
+          ],
+          [
+            "翻譯（中文、英語、日語）",
+            "免費",
+            "需要時安排"
+          ],
+          [
+            "外國患者加價",
+            "無",
+            "與韓國患者同一份價目表"
+          ],
+          [
+            "預約面診的訂金",
+            "無",
+            "到院時付款"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "因為價目表是未含稅價格，拿到報價時記得請診所提供「含加值稅的總額」。要和其他診所比較時，用這個總額最清楚。"
+      },
+      {
+        "type": "h2",
+        "text": "試算範例（僅供說明）",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "以下範例只使用診所公開的價格，目的是說明各項目如何組成，並不是報價。公開價格都是起價，你的實際金額在面診後確定。"
+      },
+      {
+        "type": "p",
+        "text": "**範例一：只做面診。** 聽完院長的建議，先回去考慮。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "明細",
+          "金額"
+        ],
+        "rows": [
+          [
+            "1對1面診",
+            "1萬韓元"
+          ],
+          [
+            "實付",
+            "1萬韓元"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**範例二：當天做一項小療程。** 面診後直接施打國產輪廓肉毒桿菌素。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "明細",
+          "金額"
+        ],
+        "rows": [
+          [
+            "輪廓肉毒桿菌素（方形臉／太陽穴）國產",
+            "60,000韓元起"
+          ],
+          [
+            "1對1面診",
+            "1萬韓元（從療程費用中全額抵扣）"
+          ],
+          [
+            "加值稅(VAT)",
+            "另計"
+          ],
+          [
+            "實付",
+            "60,000韓元起 ＋ 加值稅"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**範例三：一次到院做兩項療程。** 全面部音波拉提，加一次膚色改善淨膚雷射。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "明細",
+          "金額"
+        ],
+        "rows": [
+          [
+            "音波拉提（Ultherapy）全面部（400-800發）",
+            "1,560,000韓元起"
+          ],
+          [
+            "膚色改善淨膚雷射 單次",
+            "150,000韓元起"
+          ],
+          [
+            "公開起價合計",
+            "1,710,000韓元起"
+          ],
+          [
+            "1對1面診",
+            "1萬韓元（從療程費用中全額抵扣）"
+          ],
+          [
+            "加值稅(VAT)",
+            "另計"
+          ],
+          [
+            "實付",
+            "1,710,000韓元起 ＋ 加值稅"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "不論哪個範例，只要當天進行療程，面診費就不會疊加在療程費用上，而是全額抵扣。真正影響金額的，是價目表事先無法知道的部分：你需要幾發、幾cc、幾根，以及選擇哪一種產品。"
+      },
+      {
+        "type": "h2",
+        "text": "付款方式與分期",
+        "id": "s5"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**境外發行的信用卡：** 可使用Visa、Mastercard、American Express、JCB、銀聯(UnionPay)。",
+          "**現金：** 韓元(KRW)。",
+          "**分期：** 可以信用卡分期付款。免息分期的條件依發卡公司與付款金額而不同，請在面診時詢問。[검수 필요: 해외 발급 카드도 할부 결제가 되는지]",
+          "**幣別：** 價格以韓元計算。刷卡時，帳單上的金額會依當天適用的匯率而不同。",
+          "**付款時間：** 到院時付款。預約面診不需訂金；行程有變動時，請盡早透過同一個通訊軟體告知診所。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "如果對付款有任何疑問，可以在面診時提出，也可以在第一次傳訊息時就一併詢問。"
+      },
+      {
+        "type": "h2",
+        "text": "哪些事要到面診才確定",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "透過通訊軟體收到的報價，是依照片給出的預估。方案與價格，要到與整形外科專科醫師面診時才確定："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**做哪一種療程，** 單做一項還是搭配組合。",
+          "**需要多少：** [音波拉提](/lifting/ulthera)或[鳳凰電波](/lifting/thermage)的發數、[玻尿酸](/antiaging/filler)的cc數、[肉毒桿菌素](/antiaging/botox)的單位與產品、埋線的根數，或雷射的次數。",
+          "**選哪一種產品：** 例如國產、國產高端、進口等分級。",
+          "**最終價格：** 含加值稅的總額。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "你也可以只面診，回去再決定。診所的說法是：可以充分考慮後再做決定。"
+      },
+      {
+        "type": "h2",
+        "text": "出發前先拿到報價",
+        "id": "s7"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**聯絡診所：** 以LINE（ID：icps7972773）或WhatsApp（+82 10-6888-2773）用中文傳訊息，也可以用本站線上客服或[線上諮詢表單](/contact)。一個工作日內回覆。",
+          "**說明困擾並傳2–3張照片，** 加上你在首爾的日期。",
+          "**收到報價：** 診所會建議合適的療程並提供明確的價格預估。記得問含加值稅的總額。",
+          "**預約時間：** 選一個符合行程的日期與時間，不需訂金。",
+          "**到院確認：** 院長面診後確定方案與價格，多數情況下當天即可進行療程。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "診療時間為週一至週五10:00–19:00、週六10:00–16:00，週日休診（韓國時間，比臺灣、香港快1小時）。"
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s8"
+      },
+      {
+        "type": "p",
+        "text": "療程內容、用量與最終價格，都在與院長面診時確定；本文的數字是診所公開的起價，試算範例僅供說明。最新價格請看[價格說明頁](/pricing)，其他問題見[醫療問答頁](/medical)，也可以透過[外國患者專頁](/international)或[線上諮詢表單](/contact)直接詢問診所。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "外國人會比韓國人貴嗎？",
+        "a": "不會。外國患者與韓國患者適用同一份價目表，價格已公開，出發前就可以查看。語言服務與翻譯也不另收費。"
+      },
+      {
+        "q": "公開價格含稅嗎？",
+        "a": "不含。所有公開價格都未含加值稅(VAT)，付款時另計。拿到報價時，請向診所確認含加值稅的總額。"
+      },
+      {
+        "q": "面診要收費嗎？可以抵扣嗎？",
+        "a": "1對1面診費為1萬韓元。當天進行療程時，從療程費用中全額抵扣。也可以只面診，充分考慮後再決定。"
+      },
+      {
+        "q": "預約要先付訂金嗎？",
+        "a": "不用。預約面診不需支付訂金，到院時再付款。"
+      },
+      {
+        "q": "可以刷臺灣或香港的信用卡嗎？可以分期嗎？",
+        "a": "可以使用境外發行的Visa、Mastercard、American Express、JCB、銀聯(UnionPay)，也可以付韓元現金。信用卡可以分期，但免息分期的條件依發卡公司與金額而不同，請在面診時確認。"
+      }
+    ],
+    "readingMinutes": 6,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "新沙站怎麼去？從仁川、金浦機場到 LIV整形外科 的交通與營業時間",
+    "description": "從仁川機場、金浦機場到首爾新沙站 LIV整形外科 的交通方式與所需時間，診所地址、新沙站4號出口步行1分鐘（林蔭道旁）的位置，韓國時間的營業時間與台灣、香港的1小時時差，以及配合週日休診、週六只到16:00來安排抵達日預約的方法。",
+    "keywords": [
+      "新沙站 怎麼去",
+      "仁川機場 到 新沙站",
+      "金浦機場 到 新沙站",
+      "新沙站 4號出口 醫美",
+      "林蔭道 醫美 交通",
+      "韓國 醫美 診所 營業時間",
+      "首爾 醫美 週六 看診"
+    ],
+    "category": "booking",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/about/location",
+    "locale": "zh-TW",
+    "slug": "sinsa-station-clinic-access-from-airport",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "把醫美排進首爾行程時，最後卡關的常常是兩件事：從機場到診所要多久，以及到的時候診所有沒有開。尤其是週末的短程旅行，如果週六下午才抵達，趕不上營業時間，整趟行程可能就沒有可用的時段了。"
+      },
+      {
+        "type": "p",
+        "text": "這篇文章整理前往 LIV整形外科 的交通資訊。LIV 位於首爾江南新沙站（地鐵3號線）4號出口步行1分鐘處，緊鄰林蔭道，是專注非手術抗老療程的診所。以下依序說明地址、從仁川與金浦機場出發所需的時間（診所公開的參考值）、營業時間與時差，以及怎麼配合抵達時間安排預約。"
+      },
+      {
+        "type": "h2",
+        "text": "地址與最近的地鐵站",
+        "id": "s1"
+      },
+      {
+        "type": "p",
+        "text": "**地址**：首爾特別市瑞草區Naruteo-ro 80號 自恩大廈4樓"
+      },
+      {
+        "type": "p",
+        "text": "**最近的地鐵站**：地鐵3號線新沙站，4號出口步行1分鐘，診所在自恩大廈4樓。"
+      },
+      {
+        "type": "p",
+        "text": "**周邊**：診所緊鄰林蔭道，療程前後都可以步行過去逛逛。"
+      },
+      {
+        "type": "p",
+        "text": "**電話**：+82-2-797-2773　**電子郵件**：info@livps.co.kr"
+      },
+      {
+        "type": "p",
+        "text": "同樣的資訊也在[交通位置頁面](/about/location)。搭計程車的話，直接把該頁面上的地址給司機看最不容易出錯。"
+      },
+      {
+        "type": "h2",
+        "text": "從機場到診所",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "出發地",
+          "怎麼走",
+          "時間"
+        ],
+        "rows": [
+          [
+            "仁川機場（ICN）",
+            "機場鐵路（AREX）或機場豪華巴士到地鐵3號線新沙站",
+            "約70~90分鐘"
+          ],
+          [
+            "仁川機場（ICN）",
+            "計程車",
+            "約60分鐘"
+          ],
+          [
+            "金浦機場（GMP）",
+            "計程車或地鐵",
+            "約40分鐘"
+          ],
+          [
+            "新沙站",
+            "3號線4號出口",
+            "步行1分鐘"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "以上是診所公開的交通時間參考值，不包含入境審查、領行李和等車的時間，計程車也會受路況影響。從落地到預約時間之間，請多留一些餘裕。"
+      },
+      {
+        "type": "p",
+        "text": "如果是先到飯店再過來，最後一段也一樣：新沙站3號線4號出口，步行1分鐘。"
+      },
+      {
+        "type": "h2",
+        "text": "營業時間：韓國時間與台灣、香港時間對照",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "診所的營業時間以韓國時間標示。韓國比台灣、香港快1小時，提出預約時段之前，先看清楚是哪一邊的時間。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "星期",
+          "韓國時間",
+          "台灣／香港時間"
+        ],
+        "rows": [
+          [
+            "週一至週五",
+            "10:00–19:00",
+            "09:00–18:00"
+          ],
+          [
+            "週六",
+            "10:00–16:00",
+            "09:00–15:00"
+          ],
+          [
+            "週日",
+            "休診",
+            "休診"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "也就是說，首爾早上10:00的預約，在手機還沒調時區時顯示的是09:00。和診所確認預約時，一律以韓國時間為準，機票上的抵達時間也是當地（韓國）時間。順帶一提，日本和韓國沒有時差。"
+      },
+      {
+        "type": "p",
+        "text": "訊息回覆也依照同樣的時間。諮詢會在一個工作天內得到回覆，所以週六晚上或週日傳的訊息，會在下一個看診日處理。"
+      },
+      {
+        "type": "p",
+        "text": "韓國的國定假日（農曆新年、中秋等連假期間）一般也休診。如果旅行日期與韓國假日重疊，請在訂機票之前先透過 LINE、WhatsApp 或線上客服確認可以看診的日期。"
+      },
+      {
+        "type": "h2",
+        "text": "配合抵達時間安排預約",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "大多數非手術療程30~90分鐘完成、不需住院，很多人到院當天就做完了。換句話說，只要對得上營業時間，抵達當天就預約也是可行的。請從關門時間往回推算：機場到診所的交通、面診、敷麻醉藥膏的時間（音波拉提 Prime 約30分鐘），再加上療程本身（例如音波拉提 Prime 60~90分鐘、鳳凰電波 FLX 45~60分鐘、肉毒桿菌素10~20分鐘）。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "抵達時間",
+          "比較好排的預約"
+        ],
+        "rows": [
+          [
+            "平日上午",
+            "當天下午的預約。平日營業到19:00。"
+          ],
+          [
+            "平日下午到晚上",
+            "改約隔天早上10:00以後比較保險。"
+          ],
+          [
+            "週五晚上",
+            "週六10:00–16:00之間，盡量約早一點的時段。"
+          ],
+          [
+            "週六上午",
+            "只有在能夠從容地在16:00前抵達新沙時才可行，否則改約週一。"
+          ],
+          [
+            "週六下午或週日",
+            "週日休診，最快是週一10:00起。"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "各療程最晚幾點可以開始，診所沒有公開，請在預約時確認。[검수 필요: 평일·토요일 마지막 접수(시술 시작) 가능 시간]"
+      },
+      {
+        "type": "p",
+        "text": "如果是週五晚上到、週日回程的週末行程，能用的只有週六10:00–16:00這一段，建議盡早把週六的時段約下來。"
+      },
+      {
+        "type": "p",
+        "text": "讓預約更順利的三個小習慣："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**除了日期，也把航班時間告訴診所**：診所會依航班時間安排。",
+          "**第一則訊息就給兩三個可選的時段**：來回確認的次數會少很多。",
+          "**航班延誤時，盡早透過同一個 LINE 或 WhatsApp 告知**：預約面診不需要訂金，行程有變只要重新約時間即可。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "包含回程日在內的兩天一夜、三天兩夜安排，見[恢復期與首爾醫美行程範例](/guides/downtime-flight-travel-plan)。"
+      },
+      {
+        "type": "h2",
+        "text": "出發前怎麼聯絡診所",
+        "id": "s5"
+      },
+      {
+        "type": "table",
+        "header": [
+          "語言",
+          "首選管道",
+          "其他管道"
+        ],
+        "rows": [
+          [
+            "中文",
+            "LINE ID：icps7972773、WhatsApp +82 10-6888-2773",
+            "WeChat ID：livps0414、網站線上客服、[線上諮詢表單](/contact)"
+          ],
+          [
+            "英語",
+            "WhatsApp +82 10-6888-2773",
+            "網站線上客服"
+          ],
+          [
+            "日語",
+            "LINE ID：icps7972773",
+            "網站線上客服"
+          ],
+          [
+            "通用",
+            "[線上諮詢表單](/contact)、電子郵件 info@livps.co.kr",
+            "電話 +82-2-797-2773"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "台灣讀者用 LINE 最方便，香港讀者可以用 WhatsApp，直接用中文傳訊息即可。診所支援中文諮詢，如需翻譯可免費安排。預約步驟和第一則訊息的範例，見[中文預約教學](/guides/book-seoul-clinic-foreigner)。"
+      },
+      {
+        "type": "h2",
+        "text": "訂機票之前",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "先把抵達、回程的時間和診所營業時間對照過，再決定航班，然後把行程日期與航班時間透過[國際患者頁面](/international)上的 LINE 或 WhatsApp 傳給診所。適合哪個療程、預約需要留多長時間，都在與院長面診時確定。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "從仁川機場怎麼到診所？",
+        "a": "從仁川機場搭乘機場鐵路（AREX）或機場豪華巴士，前往地鐵3號線新沙站，診所在4號出口步行1分鐘處。大眾運輸約需70~90分鐘，計程車約60分鐘。"
+      },
+      {
+        "q": "從金浦機場過去要多久？",
+        "a": "搭計程車或地鐵約40分鐘。到新沙站後從3號線4號出口出來，步行1分鐘即到。"
+      },
+      {
+        "q": "新沙站要從幾號出口出來？",
+        "a": "3號線4號出口。出站後步行1分鐘，診所在自恩大廈4樓，緊鄰林蔭道。"
+      },
+      {
+        "q": "週末有看診嗎？",
+        "a": "週六 10:00–16:00（韓國時間）看診，週日休診，韓國國定假日一般也休診。平日為 10:00–19:00。"
+      },
+      {
+        "q": "和台灣、香港有時差嗎？",
+        "a": "有。韓國比台灣、香港快1小時，診所的營業時間以韓國時間標示，所以首爾的10:00是台灣、香港的09:00。確認預約時請一律以韓國時間為準。"
+      }
+    ],
+    "readingMinutes": 5,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "首爾水光針（Skin Booster）指南：產品與價格、恢復期、短期旅行怎麼安排",
+    "description": "LIV整形外科位於首爾新沙站步行1分鐘。本文依診所公開資訊整理水光針（Skin Booster）的產品與單次價格、療程時間、麻醉方式、1–3天的細微針痕、建議次數與間隔、術後注意事項，以及短期赴韓旅行時實際能安排到什麼程度。外國患者同價。",
+    "keywords": [
+      "韓國 水光針 價格",
+      "首爾 水光針",
+      "韓國 麗珠蘭 價格",
+      "Rejuran 首爾",
+      "Skin Booster Korea",
+      "水光針 恢復期",
+      "韓國 醫美 水光針 中文"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/antiaging/skinbooster",
+    "locale": "zh-TW",
+    "slug": "skin-booster-seoul-guide",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "去首爾旅行時想順便打水光針（Skin Booster），但想先知道診所有哪些產品、一次多少錢、針痕會留幾天？這篇文章只根據LIV整形外科公開的資訊，整理產品與價格、療程時間、恢復期、建議次數，以及短期停留能做到哪一步。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接聯絡診所預約。"
+      },
+      {
+        "type": "h2",
+        "text": "先看重點",
+        "id": "s1"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "療程時間30–45分鐘，使用麻醉藥膏；恢復期1–3天（細微針痕）。",
+          "價目表依產品與容量（cc）公開，單次190,000韓元起至600,000韓元起。",
+          "診所建議的基礎療程是每2–4週一次、共3–4次；短期旅行通常只能完成其中一次。",
+          "外國患者同價、翻譯免費、預約不需訂金；面診費1萬韓元，當天進行療程時全額抵扣。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "水光針（Skin Booster）是什麼",
+        "id": "skin-booster"
+      },
+      {
+        "type": "p",
+        "text": "[水光針](/antiaging/skinbooster)（Skin Booster）針對的是膚質本身——水潤感、彈性與光澤，而不是容量或肌肉活動。依診所說明，治療部位為全臉、頸部與手背，適合以下族群："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "皮膚乾燥、缺水",
+          "彈性下降、出現細紋",
+          "膚色暗沉、缺乏光澤",
+          "希望在雷射療程後幫助皮膚修復"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "常有人問：Skin Booster 和一般的水光注射一樣嗎？診所的回答是概念相似，但 Skin Booster 含有更多樣的成分。價目表上兩類都有；選哪一種產品，要依皮膚狀態與目的，在面診時決定。"
+      },
+      {
+        "type": "h2",
+        "text": "產品與價格（2026年・單次）",
+        "id": "2026"
+      },
+      {
+        "type": "p",
+        "text": "價格依產品與容量（cc）公開，產品名稱與診所價目表的寫法一致。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "價目表上的產品",
+          "容量",
+          "價格（單次）"
+        ],
+        "rows": [
+          [
+            "Rejuran",
+            "2cc",
+            "300,000韓元起"
+          ],
+          [
+            "Rejuran",
+            "4cc",
+            "460,000韓元起"
+          ],
+          [
+            "Rejuran HB plus",
+            "1cc",
+            "190,000韓元起"
+          ],
+          [
+            "Rejuran HB plus",
+            "2cc",
+            "340,000韓元起"
+          ],
+          [
+            "Rejuran HB plus",
+            "4cc",
+            "600,000韓元起"
+          ],
+          [
+            "眼部Rejuran",
+            "1cc",
+            "190,000韓元起"
+          ],
+          [
+            "Juvelook Skin Booster",
+            "10cc",
+            "270,000韓元起"
+          ],
+          [
+            "幹細胞 Skin Booster",
+            "5cc",
+            "270,000韓元起"
+          ],
+          [
+            "Element 美白 Booster",
+            "2cc",
+            "240,000韓元起"
+          ],
+          [
+            "祛斑針",
+            "4cc",
+            "240,000韓元起"
+          ],
+          [
+            "水光針",
+            "2cc",
+            "240,000韓元起"
+          ],
+          [
+            "Hilowave",
+            "2cc",
+            "500,000韓元起"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "單次價格 · 未含加值稅(VAT) · 「起」是起價，依產品、容量與部位，於面診後確定。實際刷卡金額以付款當天匯率為準。"
+      },
+      {
+        "type": "p",
+        "text": "價格怎麼看："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**產品與容量決定價格。** 同一產品cc數越高價格越高；臉、頸部或手背需要多少cc，要在面診時看過皮膚狀況後決定。",
+          "**價目表不是產品排名。** 診所沒有公開產品之間的強弱比較，選擇在面診時進行。",
+          "**外國患者不加價。** 同一份價目表，翻譯與語言服務也不收費。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "療程時間、麻醉與恢復期",
+        "id": "s4"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "診所說明"
+        ],
+        "rows": [
+          [
+            "療程時間",
+            "30–45分鐘"
+          ],
+          [
+            "麻醉",
+            "麻醉藥膏"
+          ],
+          [
+            "恢復期",
+            "1–3天（細微針痕）"
+          ],
+          [
+            "效果出現",
+            "療程後立即有水潤感，2–4週後彈性與光澤改善"
+          ],
+          [
+            "建議療程",
+            "每2–4週一次，共3–4次"
+          ],
+          [
+            "療程結束後",
+            "建議每2–3個月做一次維持療程"
+          ],
+          [
+            "單次是否需回診",
+            "當天完成，無需回診"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "安排行程時最需要留意的是恢復期。療程後可能出現細微針痕與泛紅，診所給的恢復期是1–3天。如果旅途中有拍照、聚餐或重要會議，建議把療程排在這些行程之前或之後幾天，不要排在同一天。"
+      },
+      {
+        "type": "h2",
+        "text": "術後注意事項",
+        "id": "s5"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "療程當天避免化妝與飲酒。",
+          "徹底做好防曬。",
+          "最初幾天可能有細微針痕與泛紅。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "診所提供中文的術後照護指南；回國後也可以透過 LINE 或線上客服傳照片，由診所查看恢復情況。覺得不對勁時，請直接聯絡診所，不要自己觀望。"
+      },
+      {
+        "type": "h2",
+        "text": "需要做幾次？短期旅行能做到哪一步",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "這是旅客最需要先知道的一點。診所建議的基礎療程是每2–4週一次、共3–4次，之後每2–3個月做一次維持療程。換句話說，三天兩夜或一週的行程，只能完成療程中的一次。"
+      },
+      {
+        "type": "p",
+        "text": "關於單次療程，診所的說明是：做一次就能感受到水潤感的改善，但最佳效果需要完成整個療程。實際可行的安排大致有三種："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**這次旅行做一次。** 把它當作療程的第一次。這一次當天完成，不需回診。",
+          "**分幾次赴韓完成。** 如果你因出差或旅行固定來首爾，可以配合2–4週的間隔累積次數。第一次諮詢時請告訴診所你來韓國的頻率。",
+          "**停留時間較長。** 在韓國停留一個月以上時，依間隔可以在停留期間做一次以上。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "哪一種適合你，要在與院長面診時決定；如果只能到院一次，院長也可能建議其他療程。和其他療程一起規劃行程時，可以參考[恢復期與回程航班規劃指南](/guides/downtime-flight-travel-plan)。"
+      },
+      {
+        "type": "p",
+        "text": "把一次療程排進短期行程的方式："
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**出發前：** 把想改善的問題、幾張照片和旅行日期傳給診所，取得價格預估。",
+          "**行程前段：** 到院面診，多數情況下當天即可進行療程。請預留敷麻醉藥膏的時間，加上30–45分鐘的療程時間。",
+          "**之後1–3天：** 可能有針痕與泛紅，行程保留彈性，持續防曬。",
+          "**回國後：** 透過 LINE 或線上客服傳照片追蹤。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "預約、面診費與付款",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "不需要透過中介，預約面診也不需要訂金，諮詢會在一個工作日內得到回覆。完整的預約步驟見[外國人預約首爾診所指南](/guides/book-seoul-clinic-foreigner)。"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**聯絡方式：** LINE（ID：icps7972773）、WhatsApp（+82 10-6888-2773）、本站線上客服或[線上諮詢表單](/contact)。",
+          "**面診費：** 整形外科專科醫師的1對1面診費用為1萬韓元，當天進行療程時從療程費用中全額抵扣。",
+          "**語言：** 提供中文、英語、日語諮詢，需要時免費安排翻譯。",
+          "**診療時間：** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間，比臺灣、香港快1小時）。",
+          "**交通：** 地鐵3號線新沙站4號出口步行1分鐘，詳見[交通資訊](/about/location)。",
+          "**付款方式：** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)，以及韓元現金。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "面診時要告訴診所什麼",
+        "id": "s8"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "是否懷孕或哺乳。診所的立場是懷孕或哺乳期間不建議進行大多數美容療程，建議在懷孕與哺乳結束後再做。",
+          "最近做過、或這次旅行打算一起做的雷射等療程。水光針也適合希望在雷射療程後幫助皮膚修復的人，療程的先後順序由院長與你一起規劃。",
+          "停留天數與回程航班時間。",
+          "如果主要困擾是容量或表情紋，[玻尿酸](/antiaging/filler)與[肉毒桿菌素](/antiaging/botox)是另一類療程，有獨立的價目表，可參考[肉毒桿菌素與玻尿酸價格指南](/guides/botox-filler-cost-seoul)。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "所有療程由整形外科專科醫師金秀英代表院長負責規劃與治療，詳見[醫療團隊介紹](/about/staff)。更多常見問題見[醫療問答頁](/medical)。"
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s9"
+      },
+      {
+        "type": "p",
+        "text": "產品、容量、次數與最終價格，都在與院長面診時確定；本文的數字是官網公開的起價與說明，方便你提前規劃。最新價格請看[價格說明頁](/pricing)與[水光針療程頁](/antiaging/skinbooster)，有任何問題可透過[外國患者專頁](/international)或[線上諮詢表單](/contact)聯絡診所，一個工作日內會得到回覆。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "在首爾打水光針要多少錢？",
+        "a": "LIV公開的價格從單次190,000韓元起（Rejuran HB plus 1cc、眼部Rejuran 1cc）到600,000韓元起（Rejuran HB plus 4cc），依產品與容量而不同。價格為單次、未含加值稅，外國患者與韓國患者適用同一份價目表，確切金額於面診後確定。"
+      },
+      {
+        "q": "Skin Booster 和水光針一樣嗎？",
+        "a": "概念相似，但依診所說明，Skin Booster 含有更多樣的成分。價目表上兩類都有，適合哪一種要依皮膚狀態與目的，在面診時選擇。"
+      },
+      {
+        "q": "恢復期多久？",
+        "a": "診所說明為1–3天，可能有細微針痕與泛紅。療程當天避免化妝與飲酒，之後要徹底防曬。"
+      },
+      {
+        "q": "需要做幾次才有效？",
+        "a": "建議的基礎療程是每2–4週一次、共3–4次，之後每2–3個月做一次維持療程。做一次就能感受到水潤感的改善，但診所表示最佳效果需要完成整個療程。"
+      },
+      {
+        "q": "面診當天可以直接做嗎？",
+        "a": "多數情況下可以。療程使用麻醉藥膏，約30–45分鐘，不需要住院，這一次療程也不需要回診。"
+      }
+    ],
+    "readingMinutes": 6,
+    "reviewMarkers": 0
+  },
+  {
+    "title": "首爾淨膚雷射（Laser Toning）：次數、間隔、恢復期與價格，旅行中怎麼安排",
+    "description": "LIV整形外科位於首爾新沙站步行1分鐘。本文整理官網膚色改善雷射頁面的內容：淨膚雷射（Laser Toning）與Ulblanc的差別、建議次數與間隔、療程時間、恢復期、公開價格、術後照護，以及短期旅行時能做到哪一步。外國患者同價。",
+    "keywords": [
+      "韓國 淨膚雷射",
+      "首爾 淨膚雷射 價格",
+      "韓國 雷射 膚色 暗沉",
+      "首爾 醫美 雷射 中文",
+      "laser toning seoul",
+      "淨膚雷射 幾次 間隔",
+      "韓國 皮膚科 雷射 外國人"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/laser",
+    "locale": "zh-TW",
+    "slug": "skin-tone-laser-toning-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "到首爾旅行時想順便做淨膚雷射（Laser Toning）的人，最常問兩件事：要做幾次？旅行中只做一次有沒有意義？這篇文章把LIV整形外科官網膚色改善雷射頁面上的內容整理出來——使用的設備、不同困擾的做法、次數與間隔、療程時間、恢復期與公開價格——讓你在聯絡診所之前就能判斷。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表。"
+      },
+      {
+        "type": "note",
+        "text": "用語說明：臺灣常說的「淨膚雷射」，在官網繁體中文頁面寫作「激光嫩膚」，英文為 Laser Toning；「皮秒雷射」在官網寫作「皮秒激光」（Pico Laser）。本文以臺灣用語為主。"
+      },
+      {
+        "type": "h2",
+        "text": "先看重點",
+        "id": "s1"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "淨膚雷射（Laser Toning，設備為 Spectra XT）與 Ulblanc 都不需麻醉、沒有恢復期，療程後可立即恢復日常生活。",
+          "這是靠次數累積的療程：淨膚雷射建議累計10次以上，通常第3–4次開始有感；Ulblanc建議累計5–10次。",
+          "公開價格：膚色改善調理單次150,000韓元起，未含加值稅(VAT)。",
+          "旅行中做一次很容易安排，但一次只是療程中的一次；術後至少2–4週要認真防曬。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "淨膚雷射是什麼",
+        "id": "s2"
+      },
+      {
+        "type": "p",
+        "text": "依診所[雷射療程頁面](/laser)的說明，淨膚雷射使用1064nm Nd:YAG雷射，以低能量重複照射，逐漸分解皮膚中的黑色素。與傳統高能量雷射不同，它以低能量均勻覆蓋大面積，把對皮膚的刺激降到最低，所以沒有恢復期。"
+      },
+      {
+        "type": "p",
+        "text": "頁面列出三項作用：逐步分解色素、刺激真皮層（膠原蛋白生成）、調節皮脂腺功能並收緊毛孔。關鍵字是「逐漸」——它不是做一次就結束的療程。"
+      },
+      {
+        "type": "h2",
+        "text": "不同困擾，不同做法",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "膚色頁面把困擾分成四類，並寫明各自使用的設備。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "困擾",
+          "頁面的描述",
+          "做法",
+          "設備"
+        ],
+        "rows": [
+          [
+            "整體暗沉",
+            "因日曬、壓力、疲勞等，膚色整體暗淡無光",
+            "以淨膚雷射整體提亮膚色",
+            "淨膚雷射、Ulblanc"
+          ],
+          [
+            "局部色素沉著",
+            "臉頰、額頭、顴骨周圍局部出現深色色素",
+            "淨膚雷射密集治療＋皮秒雷射",
+            "淨膚雷射、Lucas"
+          ],
+          [
+            "毛孔／膚質",
+            "毛孔粗大、膚質粗糙使膚色看起來不均勻",
+            "利用淨膚雷射的膠原蛋白重塑作用",
+            "淨膚雷射"
+          ],
+          [
+            "透明感下降",
+            "肌膚暗淡、缺乏透明感",
+            "Ulblanc，搭配淨膚雷射",
+            "Ulblanc、淨膚雷射"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "你屬於哪一類、是否需要搭配其他設備，由醫師在面診時實際看過皮膚後決定。"
+      },
+      {
+        "type": "h2",
+        "text": "設備比較",
+        "id": "s4"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "淨膚雷射（Laser Toning／Spectra XT）",
+          "Ulblanc"
+        ],
+        "rows": [
+          [
+            "頁面說明",
+            "1064nm Nd:YAG，低能量重複照射（MLA模式）",
+            "選擇性作用於黑色素的專用波長"
+          ],
+          [
+            "適應症",
+            "暗沉、細紋、毛孔、膚質、提亮",
+            "均勻膚色、透明感、光澤、暗沉"
+          ],
+          [
+            "療程時間",
+            "5–15分鐘",
+            "15–20分鐘"
+          ],
+          [
+            "麻醉",
+            "不需麻醉",
+            "不需麻醉"
+          ],
+          [
+            "恢復期",
+            "無（立即恢復日常）",
+            "無（立即恢復日常）"
+          ],
+          [
+            "建議次數",
+            "累計10次以上，第3–4次開始有感",
+            "累計5–10次"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "膚色頁面標示單次療程整體約30–45分鐘，並把淨膚雷射本身形容為「15–20分鐘的午休時段治療」。時間為一般參考，會依搭配內容而不同。"
+      },
+      {
+        "type": "p",
+        "text": "以色素為主要困擾時，可能會加入其他設備。Lucas 是皮秒雷射，療程20–40分鐘，可選擇使用麻醉藥膏，恢復期3–7天（可能出現細小結痂）。Clarity II 用於中度方案，療程15–30分鐘，以冷卻氣體減輕疼痛、不需麻醉，3–5天內色素可能變深或形成薄痂，之後自然脫落。只要方案中有這兩種設備，就不再是「零恢復期」，安排行程時要算進去。"
+      },
+      {
+        "type": "h2",
+        "text": "次數與間隔",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "官網把膚色改善設計成三個步驟。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "步驟",
+          "設備",
+          "內容",
+          "頁面標示"
+        ],
+        "rows": [
+          [
+            "1. 肌膚調理",
+            "淨膚雷射",
+            "以低能量均勻照射全臉，改善皮膚基礎狀態",
+            "每週1次，4–5次"
+          ],
+          [
+            "2. 黑色素靶向",
+            "Ulblanc",
+            "以選擇性作用於黑色素的波長逐步分解色素",
+            "每2週1次，3–4次"
+          ],
+          [
+            "3. 維護管理",
+            "淨膚雷射＋Ulblanc",
+            "維持改善後的膚色，預防新的色素沉著",
+            "每月1次"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "診所也公開了依困擾程度的參考方案："
+      },
+      {
+        "type": "table",
+        "header": [
+          "程度",
+          "組合",
+          "次數",
+          "間隔"
+        ],
+        "rows": [
+          [
+            "輕度",
+            "Ulblanc＋淨膚雷射",
+            "5次",
+            "2週"
+          ],
+          [
+            "中度",
+            "Ulblanc＋淨膚雷射＋Clarity II",
+            "10次",
+            "2週"
+          ],
+          [
+            "重度",
+            "密集複合管理",
+            "15次以上",
+            "1–2週"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "以上是診所的一般方案，不是個人處方。實際次數與間隔由醫師在面診時決定。"
+      },
+      {
+        "type": "h2",
+        "text": "價格",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "膚色頁面公開的價格只有一項："
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "計價基準",
+          "價格"
+        ],
+        "rows": [
+          [
+            "膚色改善調理（Toning）",
+            "單次",
+            "150,000韓元起"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "單次價格 · 未含加值稅(VAT) · 「起」為起價，最終價格依皮膚狀況與搭配內容，於面診後確定。"
+      },
+      {
+        "type": "p",
+        "text": "膚色療程沒有公開多次療程或套組的價格；如果你打算做多次，第一次聯絡時就可以請診所提供報價。外國患者同價，翻譯免費。整份價目表的看法與面診費，請見[價格說明頁](/pricing)。"
+      },
+      {
+        "type": "h2",
+        "text": "短期旅行怎麼安排",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "只說官網內容能支持的部分："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**做一次很容易排進行程。** 淨膚雷射與Ulblanc不需麻醉、沒有恢復期，頁面寫明療程後可立即恢復日常活動，整個過程不到一小時。",
+          "**但一次只是療程中的一次。** 方案是以每週或每2週一次累積次數來設計的，診所說明淨膚雷射通常第3–4次開始有感。幾天到一週的旅行無法在首爾做完整個療程。請把一次當成一次，是否值得做，可以在出發前的線上諮詢先問清楚。",
+          "**長住或固定往返首爾的人。** 如果你會停留數週或定期到首爾，上面每週、每2週的排程就比較實際。把停留日期告訴診所，方便醫師配合安排。",
+          "**加入色素雷射時，要預留結痂時間。** 使用Clarity II或Lucas時，治療部位可能有3–7天顏色變深或出現細小結痂。建議排在行程前段，或留到時間充裕的下一次。",
+          "**真正影響行程的是防曬。** 診所建議雷射後至少2–4週徹底防曬，並建議避免在戶外活動多的時期做雷射。如果接下來要去海邊或登山，請務必先告知。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "在LIV，多數非手術療程可在面診當天進行。[검수 필요: 레이저 토닝·울블랑도 상담 당일 시술이 되는지, 외국인 안내 표에는 레이저 항목이 없음]"
+      },
+      {
+        "type": "h2",
+        "text": "術後照護",
+        "id": "s8"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**防曬：** 雷射後皮膚較敏感，紫外線造成色素沉著的風險提高。至少2–4週內仔細塗抹SPF 50+防曬，並使用帽子或陽傘。",
+          "**暫時性變深：** 色素雷射後可能出現暫時性的發炎後色素沉著（PIH）；診所說明通常2–4週內自然改善，做好防曬可以預防。",
+          "**懷孕與哺乳期：** 不建議做雷射療程，診所建議在生產與哺乳結束後再做。",
+          "**回國後：** 透過LINE或線上客服傳照片，診所會查看恢復情況，並提供中文的術後照護指南。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "預約與付款",
+        "id": "s9"
+      },
+      {
+        "type": "p",
+        "text": "不需要透過中介，可以用中文直接聯絡診所：LINE（ID：icps7972773）、WhatsApp（+82 10-6888-2773）、本站線上客服或[線上諮詢表單](/contact)，一個工作日內回覆。預約面診不需訂金。1對1面診費為1萬韓元，當天進行療程時從療程費用中全額抵扣。付款方式：Visa、Mastercard、American Express、JCB、銀聯(UnionPay)與韓元現金。診療時間為週一至週五10:00–19:00、週六10:00–16:00，週日休診。"
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s10"
+      },
+      {
+        "type": "p",
+        "text": "使用哪些設備、做幾次、最終價格，都在與醫師面診時確定；本文的數字是診所公開的一般參考。雷射療程總覽見[雷射療程頁面](/laser)，其他問題見[醫療問答頁](/medical)。把停留日期和幾張照片透過[外國患者專頁](/international)或[線上諮詢表單](/contact)傳給診所即可。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "淨膚雷射要做幾次？",
+        "a": "依診所說明，淨膚雷射建議累計10次以上，通常第3–4次開始有感；Ulblanc建議累計5–10次。膚色方案從輕度的每2週1次、共5次，到重度的15次以上。你的實際次數在面診時決定。"
+      },
+      {
+        "q": "做完有恢復期嗎？",
+        "a": "診所說明淨膚雷射幾乎沒有恢復期，可立即恢復日常生活，Ulblanc也一樣。若為了色素搭配Clarity II或Lucas，可能有3–7天色素變深或出現細小結痂。"
+      },
+      {
+        "q": "在LIV做淨膚雷射多少錢？",
+        "a": "膚色頁面公開的價格是單次150,000韓元起，未含加值稅(VAT)，最終價格於面診後確定。外國患者與韓國患者適用同一份價目表。"
+      },
+      {
+        "q": "旅行中只做一次可以嗎？",
+        "a": "可以做，但要調整期待。這是以每週到每2週一次、累積次數逐漸改善的療程，一次只是其中一次。一次能做到什麼程度，請在面診時向醫師確認。"
+      },
+      {
+        "q": "做完需要避免曬太陽嗎？",
+        "a": "需要。雷射後皮膚較容易因紫外線產生色素沉著，診所建議至少2–4週使用SPF 50+防曬，並搭配帽子或陽傘。"
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 1
+  },
+  {
+    "title": "韓國鳳凰電波 Thermage FLX 價格與行程規劃｜首爾新沙 LIV整形外科",
+    "description": "LIV整形外科位於首爾新沙站步行1分鐘、林蔭道旁。本文公開鳳凰電波(Thermage FLX) 300、600、900發與眼部專用探頭的價格，說明費用包含什麼、療程需時多久、麻醉方式、恢復期、效果維持多久，並整理以LINE或WhatsApp預約的步驟、免費翻譯與付款方式，方便把療程排進首爾行程。",
+    "keywords": [
+      "韓國 鳳凰電波 價格",
+      "首爾 鳳凰電波 推薦",
+      "Thermage FLX 韓國",
+      "鳳凰電波 600發 價格 韓國",
+      "眼部鳳凰電波 韓國",
+      "韓國 電波拉皮 外國人 同價",
+      "Thermage FLX Seoul price"
+    ],
+    "category": "price",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting/thermage",
+    "locale": "zh-TW",
+    "slug": "thermage-flx-cost-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "這篇文章寫給打算在首爾旅行或出差期間做鳳凰電波（Thermage FLX，也常稱電波拉皮）、想先看到公開價格再聯絡診所的讀者。內容整理自LIV整形外科官網：幾發多少錢、療程要多久、麻醉與恢復期如何，以及怎麼排進短天數的行程。[LIV整形外科](/international)位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，沒有外國人加價，可以用中文直接聯絡診所預約。"
+      },
+      {
+        "type": "h2",
+        "text": "2026年鳳凰電波 FLX 價格（單次）",
+        "id": "2026-flx"
+      },
+      {
+        "type": "p",
+        "text": "鳳凰電波 FLX 依發數計價，眼周使用眼部專用探頭，另有獨立價格。下表是[鳳凰電波 FLX 療程頁](/lifting/thermage)公開的單次起價；[價格說明頁](/pricing)列出的是600發與眼部鳳凰電波。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "療程",
+          "發數",
+          "價格（單次）"
+        ],
+        "rows": [
+          [
+            "鳳凰電波 FLX",
+            "300發",
+            "1,300,000韓元起"
+          ],
+          [
+            "鳳凰電波 FLX",
+            "600發",
+            "2,400,000韓元起"
+          ],
+          [
+            "鳳凰電波 FLX",
+            "900發",
+            "3,300,000韓元起"
+          ],
+          [
+            "眼部鳳凰電波（眼部專用探頭）",
+            "225發",
+            "1,000,000韓元起"
+          ],
+          [
+            "眼部鳳凰電波（眼部專用探頭）",
+            "450發",
+            "1,600,000韓元起"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "單次價格 · 未含加值稅(VAT) · 依個人膚況、治療範圍與使用產品，於面診後確定。費用以韓元計價，換算成新臺幣或港幣的實際金額以付款當天匯率為準。"
+      },
+      {
+        "type": "p",
+        "text": "「起」代表起價：要打幾發，由院長看過膚況、與你討論後決定，最終價格也在這時確定。標價未含加值稅，付款時另計。"
+      },
+      {
+        "type": "h3",
+        "text": "費用包含什麼"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**對應部位的發數。** 鳳凰電波 FLX 以射頻(RF)能量的發數計價。治療部位包括全臉、眼周、頸部與身體；你的部位需要幾發，在面診時決定。",
+          "**正品 Thermage FLX 儀器與正品探頭。** LIV整形外科是鳳凰電波(Thermage FLX)合作診所，也是音波拉提(Ultherapy Prime)正品認證診所，只使用正品認證的手具（探頭）。療程前可以親自確認。",
+          "**中文溝通與翻譯，不另收費。** 提供中文諮詢，需要時免費安排翻譯；沒有外國人加價，也沒有語言服務費。",
+          "**院長當面面診。** 1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "需時多久、麻醉、恢復期與效果",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "官網說明"
+        ],
+        "rows": [
+          [
+            "療程時間",
+            "45–60分鐘"
+          ],
+          [
+            "麻醉",
+            "不需麻醉（以震動技術減輕疼痛）"
+          ],
+          [
+            "恢復",
+            "可立即恢復日常生活"
+          ],
+          [
+            "回診",
+            "當天完成 · 不需回診"
+          ],
+          [
+            "效果",
+            "立即改善彈性，3–6個月膠原蛋白再生"
+          ],
+          [
+            "維持時間",
+            "約6個月–1年"
+          ],
+          [
+            "建議週期",
+            "1年1–2次"
+          ]
+        ]
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**麻醉與疼痛：** 療程頁標示為「不需麻醉」，因為震動技術可減輕疼痛；醫療問答頁則說明，療程前會塗抹約30分鐘的麻醉藥膏，大多數患者都能舒適地接受治療。[검수 필요: 써마지 FLX 마취 — 시술 페이지는 '무마취', 의료 Q&A는 '마취 크림 약 30분'으로 서로 다름. 실제 진행 방식 확인] 如果你對疼痛敏感，可以進行額外的疼痛控制，請在面診時告知。",
+          "**恢復期：** 療程後可立即恢復日常生活。療程後可能出現暫時性的泛紅。",
+          "**效果與維持：** 官網說明為立即改善彈性，之後3–6個月膠原蛋白再生；效果約可維持6個月–1年，會因個人膚況、年齡與生活習慣而不同。效果因人而異，無法事先保證。",
+          "**與舊機型的差別：** 依官網說明，鳳凰電波 FLX 以 AccuREP 技術自動調節能量，治療速度快25%。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "行程規劃：把鳳凰電波排進首爾行程",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "鳳凰電波 FLX 一次完成、當天做完、不需回診，所以只要在停留期間留出一個時段即可。以下依「出發前、在首爾當天、回程與回國後」整理。"
+      },
+      {
+        "type": "h3",
+        "text": "出發前：在臺灣或香港就能完成的三件事"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**聯絡診所：** 以 LINE（ID：icps7972773）或 WhatsApp（+82 10-6888-2773）用中文傳訊息，也可以用本站線上客服或[線上諮詢表單](/contact)。不需要透過中介，預約諮詢也不需要訂金；診所會在一個工作天內回覆。",
+          "**遠端諮詢與報價：** 傳送想改善的部位與幾張照片，診所會建議合適的療程並提供明確的價格預估。",
+          "**確定到院時間：** 選一個符合行程的日期與時間，完成預約。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "在首爾當天：一次到院的流程"
+      },
+      {
+        "type": "table",
+        "header": [
+          "階段",
+          "內容",
+          "時間"
+        ],
+        "rows": [
+          [
+            "面診",
+            "院長當面確認部位與發數，確定最終價格（可安排免費翻譯）",
+            "—"
+          ],
+          [
+            "麻醉藥膏",
+            "如有使用",
+            "約30分鐘"
+          ],
+          [
+            "療程",
+            "鳳凰電波 FLX",
+            "45–60分鐘"
+          ],
+          [
+            "療程後",
+            "可立即恢復日常生活，不需住院、不需回診",
+            "—"
+          ]
+        ]
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**診療時間：** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間，比臺灣、香港快1小時）。",
+          "**交通：** 地鐵3號線新沙站4號出口步行1分鐘。從仁川機場搭機場鐵路(AREX)或機場巴士約70–90分鐘，計程車約60分鐘；從金浦機場搭計程車或地鐵約40分鐘。地址：首爾特別市瑞草區 Naruteo-ro 80號 自恩大廈4樓。",
+          "**付款方式：** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)，以及韓元現金；可使用信用卡分期。"
+        ]
+      },
+      {
+        "type": "h3",
+        "text": "回程與回國後"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**回程航班：** 鳳凰電波 FLX 不需回診，官網說明療程後可立即恢復日常生活。不過官網沒有寫明「療程後幾小時可以搭機」，請在預約時告知航班時間，並在面診時向診所確認。[검수 필요: 써마지 FLX 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음]",
+          "**更改預約：** 由於預約諮詢不需要訂金，行程有變動時，只要盡早透過原本的聊天管道告知診所即可。",
+          "**回國後追蹤：** 透過 LINE 或線上客服傳照片，診所會查看恢復情況並回答問題，並提供中文的術後照護指南。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "其他療程如何排進兩天一夜或三天兩夜，可參考[恢復期與搭機行程指南](/guides/downtime-flight-travel-plan)。"
+      },
+      {
+        "type": "h2",
+        "text": "適合誰、要注意什麼",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "依官網說明，鳳凰電波 FLX 適合："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "有皮膚彈性下降困擾的人",
+          "想改善細紋的人",
+          "希望變化自然、循序漸進的人",
+          "希望不需麻醉的人"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "面診時請務必告知："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "裝有心律調節器者不能接受療程。",
+          "孕婦與哺乳期女性不能接受療程。",
+          "治療部位有金屬植入物者，需要先諮詢。",
+          "療程後可能出現暫時性的泛紅。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "如果你在鳳凰電波與音波拉提之間猶豫：鳳凰電波使用射頻(RF)能量收縮真皮層的膠原蛋白並促進再生，官網說明它適合改善整體皮膚彈性；[音波拉提(Ultherapy Prime)](/lifting/ulthera)使用超音波(HIFU)將能量傳到皮膚深層的SMAS層，適合拉提下垂的皮膚。兩種療程也可以搭配進行。詳細比較見[音波拉提、鳳凰電波與Shurink比較指南](/guides/ultherapy-vs-thermage-vs-shurink)，音波拉提的價格見[音波拉提價格指南](/guides/ultherapy-cost-seoul)。哪一種適合你，在面診時決定。"
+      },
+      {
+        "type": "p",
+        "text": "所有療程由整形外科專科醫生金秀英代表院長（發表SCI論文4篇）負責規劃與治療。詳見[醫療團隊介紹](/about/staff)。更多外國患者常見問題見[醫療問答頁](/medical)。"
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "治療部位、發數與最終價格，都在與院長面診時確定；本文的數字是官網公開的起價，方便你提前規劃行程。有任何問題，可透過[外國患者專頁](/international)或[線上諮詢表單](/contact)聯絡診所，一個工作天內會得到回覆。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "在首爾做鳳凰電波 Thermage FLX 要多少錢？",
+        "a": "LIV公開的單次起價為：300發1,300,000韓元、600發2,400,000韓元、900發3,300,000韓元；眼部專用探頭225發1,000,000韓元、450發1,600,000韓元。價格未含加值稅，最終價格在面診後確定。"
+      },
+      {
+        "q": "外國人做鳳凰電波會比較貴嗎？",
+        "a": "在LIV不會。外國患者與韓國患者適用同一份價目表，價格公開在[價格說明頁](/pricing)；翻譯與語言服務也不另收費。"
+      },
+      {
+        "q": "面診當天可以直接做嗎？需要回診嗎？",
+        "a": "多數情況下可以當天進行。療程需要45–60分鐘，不需住院，鳳凰電波 FLX 一次完成、不需回診。"
+      },
+      {
+        "q": "鳳凰電波會很痛嗎？",
+        "a": "疼痛程度因療程與個人而異。鳳凰電波 FLX 採用震動技術（Vibrating Tip）減輕疼痛，醫療問答頁說明大多數患者都能舒適地接受治療。對疼痛敏感的人，可在面診時提出，安排額外的疼痛控制。"
+      },
+      {
+        "q": "效果能維持多久？多久做一次？",
+        "a": "官網說明鳳凰電波的效果約可維持6個月–1年，會因膚況、年齡與生活習慣而不同；建議1年進行1–2次。適合你的週期由院長在面診時決定。"
+      },
+      {
+        "q": "眼周也可以做鳳凰電波嗎？",
+        "a": "可以。眼周使用鳳凰電波眼部專用探頭，官網公開225發與450發兩種價格。"
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 2
+  },
+  {
+    "title": "韓國埋線拉提與 APTOS 埋線：價格、恢復期與停留天數｜首爾新沙 LIV整形外科",
+    "description": "LIV整形外科位於首爾新沙站步行1分鐘、林蔭道旁。本文整理官網對埋線拉提(Thread Lift)與 APTOS 埋線的說明：兩者差別、各線材價格、局部麻醉、3–7天恢復期、約一週後可選擇的回診、術後注意事項，以及首爾行程該排幾天。提供中文諮詢與免費翻譯，外國人同價。",
+    "keywords": [
+      "韓國 埋線拉提 價格",
+      "首爾 埋線拉提 推薦",
+      "APTOS 埋線 韓國",
+      "韓國 埋線 恢復期",
+      "韓國 埋線拉提 幾天",
+      "韓國 線雕 外國人 同價",
+      "thread lift Seoul price"
+    ],
+    "category": "treatment",
+    "status": "draft",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/lifting/thread",
+    "locale": "zh-TW",
+    "slug": "thread-lift-aptos-seoul",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "埋線拉提（Thread Lift，也有人稱線雕）是LIV的拉提療程中，需要把恢復期明確算進行程的一項。它不像電波、音波這類儀器療程做完就能照常觀光，所以出發前最好先想好要停留幾天、回國後怎麼追蹤。本文整理LIV整形外科官網對[埋線拉提](/lifting/thread)與[APTOS 埋線](/lifting/aptos)的說明。[LIV整形外科](/international)位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接聯絡診所預約。"
+      },
+      {
+        "type": "h2",
+        "text": "埋線拉提與 APTOS 的差別（依官網說明）",
+        "id": "aptos"
+      },
+      {
+        "type": "p",
+        "text": "兩者都是在局部麻醉下置入線材，療程時間30–60分鐘，治療部位相同：額頭、顴骨、臉頰、下顎線、法令紋與頸部。官網區分的重點，在於效果預期維持多久，以及各自適合的對象。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "",
+          "埋線拉提",
+          "APTOS 生物拉提 (APTOS Bio Lifting)"
+        ],
+        "rows": [
+          [
+            "療程時間",
+            "30–60分鐘",
+            "30–60分鐘"
+          ],
+          [
+            "麻醉",
+            "局部麻醉",
+            "局部麻醉"
+          ],
+          [
+            "恢復",
+            "3–7天（可能出現瘀青、腫脹）",
+            "3–7天（可能出現瘀青、腫脹）"
+          ],
+          [
+            "效果（官網標示）",
+            "立即拉提，維持6–12個月",
+            "立即拉提，最長維持24個月"
+          ],
+          [
+            "與雷射拉提併行",
+            "1–2週後可以",
+            "2–4週後可以"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "**埋線拉提。** 官網說明適合：想要立即拉提的人、有臉頰下垂或顴骨一帶鬆垮困擾的人、想改善法令紋與下顎線的人，以及只做雷射拉提覺得不夠的人。依線材種類，效果維持6–12個月。"
+      },
+      {
+        "type": "p",
+        "text": "**APTOS。** 官網說明適合：想要維持較久的拉提的人、想要生物刺激(biostimulation)效果的人、希望使用取得國際認證產品的人，以及想要自然的澎潤感與彈性的人。依療程頁說明，APTOS NAMICA 線材包覆40mg玻尿酸，效果最長維持24個月；產品認證列為 KFDA 第4等級、CE、ISO 13485、FDA MDSAP。"
+      },
+      {
+        "type": "p",
+        "text": "關於維持時間，醫療問答頁另外說明會因線材材質而不同：PDO（可溶解線）約6–8個月，PLLA或PCL線約12–18個月；線材溶解時會促進膠原蛋白再生，所以完全溶解後效果仍會持續一段時間。以上都是官網列出的範圍，實際情況因人而異；哪一種線材適合你，由院長在面診時看過臉部狀況後決定。"
+      },
+      {
+        "type": "h2",
+        "text": "各線材價格（2026年・單次）",
+        "id": "2026"
+      },
+      {
+        "type": "p",
+        "text": "埋線拉提依產品與線數計價。下表是[價格說明頁](/pricing)公開的單次起價。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "線材",
+          "計價基準",
+          "價格（單次）"
+        ],
+        "rows": [
+          [
+            "APTOS NAMICA",
+            "10條",
+            "3,000,000韓元起"
+          ],
+          [
+            "APTOS Light Lift 25",
+            "2條",
+            "1,500,000韓元起"
+          ],
+          [
+            "APTOS Light Lift 50",
+            "2條",
+            "2,500,000韓元起"
+          ],
+          [
+            "Silhouette Soft",
+            "2條",
+            "1,000,000韓元起"
+          ],
+          [
+            "MINT",
+            "8條",
+            "800,000韓元起"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "單次價格 · 未含加值稅(VAT) · 依個人膚況、治療範圍與使用產品，於面診後確定。費用以韓元計價，換算成新臺幣或港幣的實際金額以付款當天匯率為準。"
+      },
+      {
+        "type": "p",
+        "text": "「起」代表起價。需要幾條線，取決於部位與鬆弛程度，所以最終價格要等當面面診後才確定。1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。沒有外國人加價，翻譯也不另收費。"
+      },
+      {
+        "type": "h2",
+        "text": "恢復期與術後注意事項",
+        "id": "s3"
+      },
+      {
+        "type": "p",
+        "text": "官網標示埋線拉提與 APTOS 的恢復期都是3–7天，期間可能出現瘀青、腫脹。官網列出的注意事項如下："
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**瘀青、腫脹：** 療程後3–7天內可能出現。",
+          "**表情與按摩：** 2週內避免誇張的表情與臉部按摩。",
+          "**緊繃感：** 治療部位可能有拉扯、緊繃的感覺。",
+          "**化妝：** 療程24小時後可以化淡妝。",
+          "**少見的風險：** 官網列出感染與線材外露的可能。療程後若有任何不適，請立即透過預約時使用的聊天管道聯絡診所。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "懷孕或哺乳期不建議進行包括拉提在內的大多數美容療程。病史與正在服用的藥物，請在面診時告知院長。"
+      },
+      {
+        "type": "h2",
+        "text": "追蹤：一週後的回診可自行選擇",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "外國患者專頁對埋線拉提的說明是：約1週後可選擇回診，或以照片遠端追蹤。醫療問答頁的說法相同：如有需要，建議一週後回診確認，但並非必需。"
+      },
+      {
+        "type": "p",
+        "text": "回國後，透過 LINE、WhatsApp 或線上客服傳照片，診所會查看恢復情況並指導術後照護，另提供中文的術後照護指南。"
+      },
+      {
+        "type": "h2",
+        "text": "首爾行程該排幾天",
+        "id": "s5"
+      },
+      {
+        "type": "p",
+        "text": "療程本身30–60分鐘，不需住院，多數情況下可在當面面診的同一天進行。決定停留天數的，是你想在哪裡度過恢復期，以及追蹤要當面還是用照片。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "行程安排",
+          "內容"
+        ],
+        "rows": [
+          [
+            "短天數＋照片追蹤",
+            "一次到院完成面診與療程，一週後的追蹤在回國後以照片進行。3–7天的瘀青、腫脹期會與回程及回國後的行程重疊。"
+          ],
+          [
+            "停留約一週",
+            "行程前段做療程，約一週後當面回診確認再回國。3–7天的恢復期大部分在首爾度過。"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "以上是時間安排的示例，不是醫療建議。埋線後第幾天可以搭機，官網沒有寫明。[검수 필요: 실리프팅·압토스 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음] 請在預約時告知航班日期，並在面診時向診所確認。"
+      },
+      {
+        "type": "p",
+        "text": "如果也想做雷射拉提，官網說明埋線拉提後1–2週、APTOS 後2–4週可以併行，所以一趟短天數的行程通常排不下兩種。儀器類療程可看[拉提療程總覽](/lifting)；其他療程如何排進兩天一夜或三天兩夜，見[恢復期與搭機行程指南](/guides/downtime-flight-travel-plan)。"
+      },
+      {
+        "type": "h2",
+        "text": "從臺灣、香港預約的方式",
+        "id": "s6"
+      },
+      {
+        "type": "p",
+        "text": "不需要透過中介，預約諮詢也不需要訂金；診所會在一個工作天內回覆。"
+      },
+      {
+        "type": "ol",
+        "items": [
+          "**聯絡診所：** 以 LINE（ID：icps7972773）或 WhatsApp（+82 10-6888-2773）用中文傳訊息，也可以用本站線上客服或[線上諮詢表單](/contact)。",
+          "**遠端諮詢與報價：** 傳送想改善的部位與幾張照片，診所會建議合適的療程並提供明確的價格預估。",
+          "**確定到院時間：** 配合行程預約，並一併告知航班日期。",
+          "**到院與療程：** 院長當面面診後，多數情況下當天進行療程。",
+          "**回國後追蹤：** 透過通訊軟體或線上客服傳照片、提問。"
+        ]
+      },
+      {
+        "type": "ul",
+        "items": [
+          "**診療時間：** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間，比臺灣、香港快1小時）。",
+          "**交通：** 地鐵3號線新沙站4號出口步行1分鐘。從仁川機場搭機場鐵路(AREX)或機場巴士約70–90分鐘，計程車約60分鐘；從金浦機場搭計程車或地鐵約40分鐘。地址：首爾特別市瑞草區 Naruteo-ro 80號 自恩大廈4樓。",
+          "**付款方式：** Visa、Mastercard、American Express、JCB、銀聯(UnionPay)，以及韓元現金；可使用信用卡分期。"
+        ]
+      },
+      {
+        "type": "p",
+        "text": "所有療程由整形外科專科醫生金秀英代表院長（發表SCI論文4篇）負責規劃與治療，詳見[醫療團隊介紹](/about/staff)。預約流程另見[外國人預約首爾診所指南](/guides/book-seoul-clinic-foreigner)。"
+      },
+      {
+        "type": "h2",
+        "text": "最後",
+        "id": "s7"
+      },
+      {
+        "type": "p",
+        "text": "線材種類、線數與最終價格，都在與院長面診時確定；本文的數字是官網公開的起價，方便你提前規劃行程。請附上預計停留的日期，透過[外國患者專頁](/international)或[線上諮詢表單](/contact)聯絡診所，一個工作天內會得到回覆。"
+      }
+    ],
+    "faq": [
+      {
+        "q": "埋線拉提和 APTOS 有什麼不同？",
+        "a": "兩者都是局部麻醉、30–60分鐘、恢復期3–7天。官網標示埋線拉提為「立即拉提，維持6–12個月」，APTOS 為「立即拉提，最長維持24個月」；APTOS NAMICA 線材包覆40mg玻尿酸。哪一種適合你，在面診時決定。"
+      },
+      {
+        "q": "在首爾做埋線拉提要多少錢？",
+        "a": "LIV公開的單次起價為：MINT（8條）800,000韓元、Silhouette Soft（2條）1,000,000韓元、APTOS Light Lift 25（2條）1,500,000韓元、APTOS Light Lift 50（2條）2,500,000韓元、APTOS NAMICA（10條）3,000,000韓元。價格未含加值稅，外國患者適用同一份價目表。"
+      },
+      {
+        "q": "恢復期多久？什麼時候可以化妝？",
+        "a": "官網標示為3–7天，可能出現瘀青、腫脹。療程24小時後可以化淡妝；2週內避免誇張的表情與按摩。"
+      },
+      {
+        "q": "一定要回診嗎？",
+        "a": "不一定。約一週後的回診可自行選擇，也可以在回國後透過通訊軟體或線上客服傳照片，改為遠端追蹤。"
+      },
+      {
+        "q": "做埋線要在首爾停留幾天？",
+        "a": "療程30–60分鐘，不需住院。想當面回診的話，可安排停留約一週；改用照片追蹤的話，短天數也能安排。回程航班的時間，請在面診時向診所個別確認。"
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 1
   },
   {
     "title": "韓國音波拉提(Ultherapy)價格與行程規劃｜首爾新沙 LIV整形外科",

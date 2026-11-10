@@ -1,6 +1,6 @@
 # 가이드 근거 시트 (자동 생성 — 수정하지 말고 `npx tsx scripts/dump-guide-facts.mjs`로 재생성)
 
-생성: 2026-10-20. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
+생성: 2026-11-10. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
 
 ## 1. 병원 기본 정보 (src/lib/constants.ts SITE_INFO·BUSINESS_HOURS)
 
@@ -84,11 +84,11 @@
 | thread | name | aptosLight50 | APTOS Light Lift 50 (2 threads) | 2,500,000 | starting |
 | thread | name | silhouette | Silhouette Soft (2 threads) | 1,000,000 | starting |
 | thread | name | mint | MINT (8 threads) | 800,000 | starting |
-| botox | botoxContour (Jaw / Temple) | domestic | Domestic | 60,000 | starting |
-| botox | botoxContour (Jaw / Temple) | domesticPremium | Domestic Premium | 110,000 | starting |
+| botox | botoxContour (Jaw / Temple) | domestic | Korean-made | 60,000 | starting |
+| botox | botoxContour (Jaw / Temple) | domesticPremium | Korean-made Premium | 110,000 | starting |
 | botox | botoxContour (Jaw / Temple) | xeomin | Xeomin | 160,000 | starting |
 | botox | botoxContour (Jaw / Temple) | allergan | Allergan | 190,000 | starting |
-| botox | botoxBody (Trapezius / Arms / Calves / Thighs (per 100IU)) | domesticPremium | Domestic Premium | 220,000 | starting |
+| botox | botoxBody (Trapezius / Arms / Calves / Thighs (per 100IU)) | domesticPremium | Korean-made Premium | 220,000 | starting |
 | botox | botoxBody (Trapezius / Arms / Calves / Thighs (per 100IU)) | xeomin | Xeomin | 320,000 | starting |
 | filler | chanelInjection | volume3cc | 3 cc | 330,000 | starting |
 | filler | otherFillers | consultOnly | Detailed pricing provided during consultation | 상담 후 결정 |  |
@@ -767,7 +767,7 @@
 - picoVsNano.comparison.many: 多い
 - picoVsNano.comparison.few: 少ない
 - equipment.title: 色素治療推奨機器
-- equipment.subtitle: LIV整形外科が保有する4つのプレミアムレーザーで最適な色素治療
+- equipment.subtitle: LIV美容クリニックが保有する4つのプレミアムレーザーで最適な色素治療
 - equipment.featured: FEATURED
 - protocol.title: 症状別推奨プロトコル
 - protocol.mild.level: 軽度
@@ -1054,7 +1054,7 @@
 - clarity.subtitle: 血管治療に最適化されたデュアル波長プレミアムレーザー
 - clarity.badge: ONLY OPTION
 - clarity.why: なぜクラリティIIなのか？
-- clarity.whyDesc: LIV整形外科が保有する機器の中で血管治療に最も適した機器です。1064nm Nd:YAG波長が血管のヘモグロビンに選択的に吸収され、周辺組織損傷なく血管だけを治療します。
+- clarity.whyDesc: LIV美容クリニックが保有する機器の中で血管治療に最も適した機器です。1064nm Nd:YAG波長が血管のヘモグロビンに選択的に吸収され、周辺組織損傷なく血管だけを治療します。
 - clarity.recommendedSessions: 3-8回 (症状により)
 - clarity.benefits[0].title: デュアル波長
 - clarity.benefits[0].desc: 755nm(色素/脱毛) + 1064nm(血管/深部色素) マルチソリューション
@@ -1655,7 +1655,7 @@
 
 - **botox-natural** (ko) Q 보톡스 맞으면 표정이 부자연스러워지나요? → 적정 용량을 정확한 위치에 주입하면 자연스러운 표정을 유지하면서 주름만 개선됩니다. 부자연스러운 표정은 주로 과용량 사용이나 잘못된 주입 위치로 인해 발생합니다. 리브성형외과에서는 숙련된 전문의가 개인의 근육 특성에 맞춰 적정량을 시술하므로 자연스러운 결과를 기대하실 수 있습니다.
   - (en) Q Will Botox make my facial expressions look unnatural? → When the proper amount is injected at the correct locations, natural expressions are maintained while only improving wrinkles. Unnatural expressions typically occur from overdosing or incorrect injection sites. At LIV Plastic Surgery, our experienced specialists inject appropriate amounts tailored to each individual's muscle characteristics, so you can expect natural results.
-  - (ja) Q ボトックスを打つと表情が不自然になりますか？ → 適切な量を正確な位置に注入すれば、自然な表情を維持しながらシワだけを改善できます。不自然な表情は主に過剰投与や不適切な注入位置によって発生します。リブ形成外科では、熟練した専門医が個人の筋肉特性に合わせて適切な量を施術するため、自然な結果を期待できます。
+  - (ja) Q ボトックスを打つと表情が不自然になりますか？ → 適切な量を正確な位置に注入すれば、自然な表情を維持しながらシワだけを改善できます。不自然な表情は主に過剰投与や不適切な注入位置によって発生します。LIV美容クリニックでは、熟練した専門医が個人の筋肉特性に合わせて適切な量を施術するため、自然な結果を期待できます。
   - (zh) Q 注射肉毒素后表情会不自然吗？ → 在正确位置注射适量可以在保持自然表情的同时只改善皱纹。不自然的表情通常是由于用量过多或注射位置不正确造成的。在LIV整形外科，熟练的专家会根据每个人的肌肉特点注射适量，您可以期待自然的效果。
   - (zh-TW) Q 注射肉毒桿菌素後表情會不自然嗎？ → 在正確位置注射適量可以在保持自然表情的同時只改善皺紋。不自然的表情通常是由於用量過多或注射位置不正確造成的。在LIV 整形外科，熟練的專家會根據每個人的肌肉特點注射適量，您可以期待自然的效果。
 
@@ -1721,7 +1721,7 @@
 
 - **liv-specialty** (ko) Q 리브성형외과에서 가장 잘하는 시술이 뭔가요? → 리브성형외과는 울쎄라피 프라임 정품 인증과 써마지 FLX 파트너 병원으로, 비수술 리프팅 시술을 전문으로 합니다. 성형외과 전문의가 SCI 논문 4편의 학술 경험을 바탕으로 환자 개개인에게 맞춤 시술을 제공합니다. 신사역 4번 출구 도보 1분 거리에 위치해 있습니다.
   - (en) Q What does LIV Plastic Surgery specialize in? → LIV Plastic Surgery is an official Ultherapy Prime certified clinic and Thermage FLX partner hospital, specializing in non-surgical lifting treatments. Our board-certified plastic surgeon provides customized treatments based on academic experience with 4 SCI publications. We are located just 1 minute walk from Sinsa Station Exit 4.
-  - (ja) Q リブ形成外科で一番得意な施術は何ですか？ → リブ形成外科はウルセラ正規認証とサーマジFLXパートナー病院として、非手術リフティング施術を専門としています。形成外科専門医がSCI論文4編の学術経験を基に、患者様一人一人に合わせた施術を提供しています。新沙駅4番出口から徒歩1分の場所に位置しています。
+  - (ja) Q LIV美容クリニックで一番得意な施術は何ですか？ → LIV美容クリニックはウルセラ正規認証とサーマジFLXパートナー病院として、非手術リフティング施術を専門としています。形成外科専門医がSCI論文4編の学術経験を基に、患者様一人一人に合わせた施術を提供しています。新沙駅4番出口から徒歩1分の場所に位置しています。
   - (zh) Q LIV整形外科最擅长什么治疗？ → LIV整形外科是超声刀正品认证和热玛吉FLX合作医院，专注于非手术提升治疗。整形外科专家基于4篇SCI论文的学术经验，为每位患者提供定制治疗。位于新沙站4号出口步行1分钟处。
   - (zh-TW) Q LIV 整形外科最擅長什麼治療？ → LIV 整形外科是音波拉提正品認證和鳳凰電波 FLX合作醫院，專注於非手術拉提治療。整形外科專家基於4篇SCI論文的學術經驗，為每位患者提供定製治療。位於新沙站4號出口步行1分鐘處。
 
