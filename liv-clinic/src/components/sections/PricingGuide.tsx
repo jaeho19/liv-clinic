@@ -5,13 +5,14 @@ import { AnimateOnScroll, Breadcrumb } from '@/components/ui';
 import { Link } from '@/i18n/routing';
 import { PRICING_GUIDE, PRICING_GUIDE_NOTE_KEYS } from '@/lib/pricingGuide';
 import InternationalPricingNote from './InternationalPricingNote';
+import type { FxReference } from '@/lib/fxReference';
 
 /**
  * 정식 가격표 페이지 본문.
  * 표 스타일은 기존 `PriceTable`(src/components/ui/PriceTable.tsx)을 차용해 톤을 맞춘다.
  * 정렬은 RTL(ar) 대응을 위해 논리 속성(text-start/text-end)을 사용한다.
  */
-export default function PricingGuide() {
+export default function PricingGuide({ fx = null }: { fx?: FxReference | null }) {
   const t = useTranslations('pricingGuide');
   const tNav = useTranslations('nav');
 
@@ -90,7 +91,7 @@ export default function PricingGuide() {
             ))}
 
             {/* 외국인 환자 안내 (P1-3) — en·ja·zh·zh-TW에서만 렌더 */}
-            <InternationalPricingNote />
+            <InternationalPricingNote fx={fx} />
 
             {/* 하단 공통 안내문 */}
             <AnimateOnScroll>

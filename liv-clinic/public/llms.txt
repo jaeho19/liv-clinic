@@ -25,6 +25,7 @@ LIV Plastic Surgery is led by a board-certified plastic surgeon with SCI-indexed
 ## Key Pages (English)
 
 - [Home](https://liv-clinic.net/en)
+- [Clinic fact sheet](https://liv-clinic.net/en/guides/liv-clinic-facts)
 - [For International Patients](https://liv-clinic.net/en/international)
 - [Pricing](https://liv-clinic.net/en/pricing)
 - [Doctors](https://liv-clinic.net/en/about/staff)
@@ -63,6 +64,7 @@ LIV Plastic Surgery is led by a board-certified plastic surgeon with SCI-indexed
 ## Key Pages (Japanese / 日本語)
 
 - [ホーム](https://liv-clinic.net/ja)
+- [クリニック基本情報まとめ](https://liv-clinic.net/ja/guides/liv-clinic-facts)
 - [海外からお越しの方へ](https://liv-clinic.net/ja/international)
 - [料金表](https://liv-clinic.net/ja/pricing)
 - [医師紹介](https://liv-clinic.net/ja/about/staff)
@@ -91,6 +93,7 @@ LIV Plastic Surgery is led by a board-certified plastic surgeon with SCI-indexed
 ## Key Pages (Traditional Chinese / 繁體中文 — Taiwan, Hong Kong)
 
 - [首頁](https://liv-clinic.net/zh-TW)
+- [診所基本資料一覽](https://liv-clinic.net/zh-TW/guides/liv-clinic-facts)
 - [海外顧客須知](https://liv-clinic.net/zh-TW/international)
 - [價格表](https://liv-clinic.net/zh-TW/pricing)
 - [醫師介紹](https://liv-clinic.net/zh-TW/about/staff)
@@ -119,6 +122,7 @@ LIV Plastic Surgery is led by a board-certified plastic surgeon with SCI-indexed
 ## Key Pages (Simplified Chinese / 简体中文)
 
 - [首页](https://liv-clinic.net/zh)
+- [诊所基本信息一览](https://liv-clinic.net/zh/guides/liv-clinic-facts)
 - [海外顾客须知](https://liv-clinic.net/zh/international)
 - [价格表](https://liv-clinic.net/zh/pricing)
 - [Ultherapy Prime](https://liv-clinic.net/zh/lifting/ulthera)

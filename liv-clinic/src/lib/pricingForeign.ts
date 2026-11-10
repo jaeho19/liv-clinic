@@ -2,7 +2,7 @@
  * 가격 페이지 "외국인 환자 안내"(P1-3) — en·ja·zh·zh-TW 전용 문구.
  * 사실은 사이트 기존 표기만: 동일 가격표(international.why / medical foreign-pricing-same),
  * VAT 별도(pricingGuide.notes.vat), 결제수단(international.payment.methods), 통역 무료(international.communication).
- * 참고 환산(USD/JPY/TWD)은 넣지 않는다(계획 D3).
+ * 참고 환산은 여기 문구에 고정값으로 넣지 않는다 — 그날 환율로 한 줄을 따로 그린다(src/lib/fxReference.ts, 2026-11).
  */
 import type { GuideLocale } from '@/lib/guides/types';
 

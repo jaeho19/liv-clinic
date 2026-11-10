@@ -46,6 +46,13 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "en",
+    "slug": "liv-clinic-facts",
+    "status": "published",
+    "title": "LIV Plastic Surgery fact sheet: address, hours, doctor, treatments and prices",
+    "category": "booking"
+  },
+  {
+    "locale": "en",
     "slug": "pigmentation-laser-seoul-guide",
     "status": "published",
     "title": "Pigmentation laser in Seoul: melasma, spots, devices, sessions and what fits in one trip",
@@ -151,6 +158,13 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "ja",
+    "slug": "liv-clinic-facts",
+    "status": "published",
+    "title": "LIV美容クリニック 基本情報まとめ：住所・診療時間・医師・施術・料金",
+    "category": "booking"
+  },
+  {
+    "locale": "ja",
     "slug": "pigmentation-laser-seoul-guide",
     "status": "published",
     "title": "韓国でシミ取り・肝斑レーザー — 機器と回数、料金、紫外線ケア、短い旅行でできること（新沙・LIV美容クリニック）",
@@ -235,6 +249,13 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   },
   {
     "locale": "zh",
+    "slug": "liv-clinic-facts",
+    "status": "published",
+    "title": "LIV整形外科 基本信息一览：地址、营业时间、医生、项目与价格",
+    "category": "booking"
+  },
+  {
+    "locale": "zh",
     "slug": "ultherapy-cost-seoul",
     "status": "published",
     "title": "首尔超声刀(Ultherapy)价格与行程规划：外国人同价、当天完成",
@@ -287,6 +308,13 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "slug": "first-visit-what-to-expect-seoul-clinic",
     "status": "published",
     "title": "第一次去韓國醫美診所：到院當天流程一次看懂（首爾新沙站 LIV整形外科）",
+    "category": "booking"
+  },
+  {
+    "locale": "zh-TW",
+    "slug": "liv-clinic-facts",
+    "status": "published",
+    "title": "LIV整形外科 基本資訊一覽：地址、營業時間、醫師、療程與價格",
     "category": "booking"
   },
   {

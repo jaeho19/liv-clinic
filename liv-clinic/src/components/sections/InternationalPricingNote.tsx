@@ -5,9 +5,10 @@ import { Link } from '@/i18n/routing';
 import { PRICING_FOREIGN } from '@/lib/pricingForeign';
 import { isGuideLocale } from '@/lib/guides/types';
 import { publishedGuideCount } from '@/lib/guides/publicIndex';
+import { buildFxLine, type FxReference } from '@/lib/fxReference';
 
 /** 가격 페이지 하단 "외국인 환자 안내"(P1-3). en·ja·zh·zh-TW에서만 렌더. */
-export default function InternationalPricingNote() {
+export default function InternationalPricingNote({ fx = null }: { fx?: FxReference | null }) {
   const locale = useLocale();
   if (!isGuideLocale(locale)) return null;
   const copy = PRICING_FOREIGN[locale];
@@ -26,6 +27,7 @@ export default function InternationalPricingNote() {
           </li>
         ))}
       </ul>
+      {fx && <p className="mb-5 text-small leading-relaxed text-mono-light">{buildFxLine(locale, fx)}</p>}
       <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Link
           href="/international"

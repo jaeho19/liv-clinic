@@ -1773,6 +1773,388 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
+    "title": "LIV Plastic Surgery fact sheet: address, hours, doctor, treatments and prices",
+    "description": "Key facts about LIV Plastic Surgery, a non-surgical anti-aging clinic at Sinsa Station, Seoul — official names, address, opening hours, languages, doctor, certified devices, treatment times, starting prices in KRW and how to book.",
+    "keywords": [
+      "LIV Plastic Surgery Seoul",
+      "LIV clinic Sinsa address hours",
+      "Sinsa Station skin clinic English",
+      "Ultherapy Prime certified clinic Seoul",
+      "Seoul anti-aging clinic prices",
+      "Gangnam clinic for foreigners"
+    ],
+    "category": "booking",
+    "status": "published",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/international",
+    "locale": "en",
+    "slug": "liv-clinic-facts",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "LIV Plastic Surgery is a non-surgical anti-aging clinic in Seoul, Korea, focused on lifting and skin-tightening treatments. LIV Plastic Surgery is on the 4th floor of the Jaeun Building, a 1-minute walk from Sinsa Station (Line 3) Exit 4, next to Garosu-gil in the Gangnam area. LIV Plastic Surgery is led by Dr. Sooyoung Kim, a board-certified plastic surgeon."
+      },
+      {
+        "type": "h2",
+        "text": "Basic facts",
+        "id": "basic-facts"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Item",
+          "Fact"
+        ],
+        "rows": [
+          [
+            "Name (English)",
+            "LIV Plastic Surgery"
+          ],
+          [
+            "Name (Korean)",
+            "리브성형외과"
+          ],
+          [
+            "Name (Japanese)",
+            "LIV美容クリニック"
+          ],
+          [
+            "Name (Chinese)",
+            "LIV整形外科"
+          ],
+          [
+            "Address",
+            "4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul 06536, Korea"
+          ],
+          [
+            "Nearest station",
+            "Sinsa Station, Subway Line 3, Exit 4 — a 1-minute walk"
+          ],
+          [
+            "Opening hours (Korea time)",
+            "Monday–Friday 10:00–19:00, Saturday 10:00–16:00"
+          ],
+          [
+            "Closed",
+            "Sunday. LIV Plastic Surgery is generally closed on Korean public holidays, including the Seollal and Chuseok holiday periods."
+          ],
+          [
+            "Phone",
+            "+82-2-797-2773 (02-797-2773 inside Korea)"
+          ],
+          [
+            "Email",
+            "info@livps.co.kr"
+          ],
+          [
+            "Website",
+            "https://liv-clinic.net"
+          ],
+          [
+            "Languages",
+            "Korean, English, Japanese, Chinese"
+          ],
+          [
+            "Interpreter",
+            "Arranged free of charge on request"
+          ],
+          [
+            "WhatsApp",
+            "+82 10-6888-2773"
+          ],
+          [
+            "LINE",
+            "ID icps7972773"
+          ],
+          [
+            "WeChat",
+            "ID livps0414"
+          ],
+          [
+            "Other channels",
+            "Live chat on the website, [contact form](/contact)"
+          ],
+          [
+            "Reply time",
+            "Within one business day"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Doctor",
+        "id": "doctor"
+      },
+      {
+        "type": "table",
+        "header": [
+          "Item",
+          "Fact"
+        ],
+        "rows": [
+          [
+            "Name",
+            "Dr. Sooyoung Kim, Director of LIV Plastic Surgery"
+          ],
+          [
+            "Specialty",
+            "Board-certified Plastic Surgeon"
+          ],
+          [
+            "Education",
+            "M.D., Korea University College of Medicine; M.S. in Plastic Surgery, Korea University Graduate School"
+          ],
+          [
+            "Training",
+            "Internship and Residency in Plastic Surgery, Korea University Medical Center; Fellowship, MD Anderson Cancer Center, Houston, Texas, USA"
+          ],
+          [
+            "Academic post",
+            "Clinical Professor, Korea University College of Medicine"
+          ],
+          [
+            "Memberships",
+            "Korean Association of Plastic Surgeons; Korean Society of Plastic and Reconstructive Surgeons; Korean Society of Aesthetic Plastic Surgery; Korean Cleft Palate-Craniofacial Association; Korean Society for Laser Medicine and Surgery"
+          ],
+          [
+            "Research",
+            "4 SCI-indexed publications (Arch Plast Surg 2024 and 2016, Dermatol Surg 2014, Microsurgery 2014)"
+          ],
+          [
+            "Areas of practice",
+            "Ultherapy Prime lifting, Thermage lifting, combination lifting treatments, anti-aging programs"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "Every treatment at LIV Plastic Surgery is planned and performed under a board-certified plastic surgeon. Dr. Shinhye Cheon, a board-certified family medicine physician, also practices at LIV Plastic Surgery. Full profiles are on the [staff page](/about/staff)."
+      },
+      {
+        "type": "h2",
+        "text": "Devices and certifications",
+        "id": "devices-and-certifications"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV Plastic Surgery is an official Ultherapy Prime certified clinic.",
+          "LIV Plastic Surgery is a Thermage FLX partner clinic.",
+          "LIV Plastic Surgery treats using only genuine, certified handpieces (tips). Patients can verify this before treatment.",
+          "Laser treatments at LIV Plastic Surgery use the Clarity II and Lucas lasers.",
+          "The devices are listed on the [equipment page](/about/equipment)."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Treatments",
+        "id": "treatments"
+      },
+      {
+        "type": "p",
+        "text": "Prices are the lowest \"from\" prices on the clinic's published list, in Korean won (KRW), per session, VAT not included. The exact price is determined after consultation."
+      },
+      {
+        "type": "table",
+        "header": [
+          "Treatment",
+          "Time",
+          "Anesthesia",
+          "Recovery",
+          "Lowest listed price"
+        ],
+        "rows": [
+          [
+            "[Ultherapy Prime](/lifting/ulthera)",
+            "60–90 min",
+            "Topical anesthetic cream (30 min)",
+            "Immediate return to daily life",
+            "From KRW 780,000 (upper face, 200–300 shots)"
+          ],
+          [
+            "[Thermage FLX](/lifting/thermage)",
+            "45–60 min",
+            "No anesthesia (vibration reduces discomfort)",
+            "Immediate return to daily life",
+            "From KRW 1,000,000 (Eye Tip 225 shots)"
+          ],
+          [
+            "[Density](/lifting/density)",
+            "40–60 min",
+            "Topical anesthetic cream (optional)",
+            "Immediate return to daily life",
+            "From KRW 890,000 (Hi-Tip, 300 shots)"
+          ],
+          [
+            "[ONDA](/lifting/onda)",
+            "Face 15–30 min; about 10 min per body area",
+            "No anesthesia required",
+            "No downtime",
+            "Quoted at consultation"
+          ],
+          [
+            "[InMode](/lifting/inmode)",
+            "30–60 min",
+            "No anesthesia or topical anesthetic cream",
+            "Immediate return to daily life",
+            "From KRW 150,000 (FX Mode)"
+          ],
+          [
+            "[Shurink](/lifting/shurink)",
+            "30–45 min",
+            "Topical anesthetic cream (optional)",
+            "Immediate return to daily life",
+            "From KRW 200,000 (300 shots)"
+          ],
+          [
+            "[Thread lift](/lifting/thread)",
+            "30–60 min",
+            "Local anesthesia",
+            "3–7 days (bruising and swelling possible)",
+            "From KRW 800,000 (MINT, 8 threads)"
+          ],
+          [
+            "[APTOS thread lift](/lifting/aptos)",
+            "30–60 min",
+            "Local anesthesia",
+            "3–7 days (bruising and swelling possible)",
+            "From KRW 1,500,000 (APTOS Light Lift 25, 2 threads)"
+          ],
+          [
+            "[Botox](/antiaging/botox)",
+            "10–20 min",
+            "No anesthesia, or topical anesthetic cream on request",
+            "Immediate return to daily life",
+            "From KRW 60,000 (Korean-made, jaw or temple)"
+          ],
+          [
+            "[Filler](/antiaging/filler)",
+            "20–40 min",
+            "Topical anesthetic cream or nerve block",
+            "Immediate to 3 days (varies by area)",
+            "From KRW 200,000 (domestic, 1 cc)"
+          ],
+          [
+            "[Skin boosters](/antiaging/skinbooster)",
+            "30–45 min",
+            "Topical anesthetic cream",
+            "1–3 days (micro-needle marks)",
+            "From KRW 190,000 (Rejuran HB plus, 1 cc)"
+          ],
+          [
+            "[Skincare programs](/antiaging/skincare)",
+            "60–90 min",
+            "Not applicable",
+            "None",
+            "Quoted at consultation"
+          ],
+          [
+            "[Pigmentation laser](/laser)",
+            "20–40 min",
+            "Topical anesthetic cream (optional)",
+            "3–7 days (fine scabs possible)",
+            "From KRW 150,000 (single session)"
+          ],
+          [
+            "[Vascular laser](/laser)",
+            "15–30 min",
+            "—",
+            "—",
+            "From KRW 150,000 (single session)"
+          ],
+          [
+            "[Skin-tone laser](/laser)",
+            "30–45 min",
+            "—",
+            "Immediate return to daily life",
+            "From KRW 150,000 (single session)"
+          ],
+          [
+            "[Laser hair removal](/laser)",
+            "15–60 min (varies by area)",
+            "—",
+            "Immediate return to daily life",
+            "From KRW 150,000 (single session)"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Times, anesthesia and recovery are general guidance from the clinic's treatment pages and are confirmed during consultation. The full list is on the [price list](/pricing)."
+      },
+      {
+        "type": "h2",
+        "text": "Price and payment facts",
+        "id": "price-and-payment-facts"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV Plastic Surgery publishes its price list at [/pricing](/pricing). Prices are per session, in Korean won, and do not include VAT.",
+          "International patients at LIV Plastic Surgery pay from the same price list as Korean patients. There is no foreigner surcharge.",
+          "LIV Plastic Surgery does not charge extra for language support or interpretation.",
+          "A 1:1 consultation at LIV Plastic Surgery costs KRW 10,000. The fee is fully deducted from the treatment cost if treatment is done on the same day.",
+          "LIV Plastic Surgery accepts Visa, Mastercard, American Express, JCB and UnionPay cards issued abroad, and cash in Korean won (KRW).",
+          "Card installment payments are available at LIV Plastic Surgery.",
+          "No deposit is required to reserve a consultation at LIV Plastic Surgery."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "For international patients",
+        "id": "for-international-patients"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Most non-surgical treatments at LIV Plastic Surgery take 30 to 90 minutes and require no hospitalization, so many patients are treated on the same day as their visit.",
+          "Ultherapy Prime, Thermage FLX, botox, filler and skin boosters are done in one visit with no revisit required.",
+          "A thread lift has an optional check about 1 week later, which can also be done remotely with photos.",
+          "LIV Plastic Surgery provides a written aftercare guide in English, Japanese and Chinese.",
+          "After patients return home, LIV Plastic Surgery reviews photos and answers questions through messenger or live chat.",
+          "To book from overseas: message LIV Plastic Surgery on WhatsApp, LINE, WeChat, the website live chat or the contact form; share concerns and photos to receive a price estimate; then choose a date. Details are on the [international patients page](/international)."
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "Related pages",
+        "id": "related-pages"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "Clinic pages: [Lifting](/lifting) · [Laser](/laser) · [Price list](/pricing) · [International patients](/international) · [Staff](/about/staff) · [Location](/about/location) · [Medical Q&A](/medical) · [Contact](/contact)",
+          "Guides: [How to book as a foreigner](/guides/book-seoul-clinic-foreigner) · [Total cost and payment](/guides/seoul-clinic-total-cost-payment) · [First visit, step by step](/guides/first-visit-what-to-expect-seoul-clinic) · [Getting to Sinsa Station from the airport](/guides/sinsa-station-clinic-access-from-airport) · [Ultherapy cost in Seoul](/guides/ultherapy-cost-seoul) · [Downtime and flights](/guides/downtime-flight-travel-plan) · [All guides](/guides)"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "Where is LIV Plastic Surgery?",
+        "a": "LIV Plastic Surgery is at 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul, Korea. It is a 1-minute walk from Exit 4 of Sinsa Station on Subway Line 3, next to Garosu-gil."
+      },
+      {
+        "q": "What are the opening hours of LIV Plastic Surgery?",
+        "a": "LIV Plastic Surgery is open Monday to Friday 10:00–19:00 and Saturday 10:00–16:00, Korea time. It is closed on Sundays and generally on Korean public holidays."
+      },
+      {
+        "q": "Which languages does LIV Plastic Surgery support?",
+        "a": "LIV Plastic Surgery offers consultations in Korean, English, Japanese and Chinese. An interpreter is arranged free of charge on request."
+      },
+      {
+        "q": "Do foreigners pay more at LIV Plastic Surgery?",
+        "a": "No. International patients are charged from the same published price list as Korean patients, per session and excluding VAT. There is no extra charge for language support or interpretation."
+      },
+      {
+        "q": "How do I book LIV Plastic Surgery from overseas?",
+        "a": "Message LIV Plastic Surgery on WhatsApp (+82 10-6888-2773), LINE (ID icps7972773), WeChat (ID livps0414), the website live chat or the contact form. The clinic replies within one business day, and no deposit is required to reserve a consultation."
+      }
+    ],
+    "readingMinutes": 7,
+    "reviewMarkers": 0
+  },
+  {
     "title": "Pigmentation laser in Seoul: melasma, spots, devices, sessions and what fits in one trip",
     "description": "How LIV Plastic Surgery in Sinsa, Seoul treats melasma, spots, freckles and age spots — the three-stage system and the lasers it uses, sessions and intervals by severity, published prices, sun care afterwards, and an honest look at how much of a multi-session program fits into a short visit.",
     "keywords": [
@@ -6154,6 +6536,388 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
+    "title": "LIV美容クリニック 基本情報まとめ：住所・診療時間・医師・施術・料金",
+    "description": "ソウル・新沙駅のLIV美容クリニックの基本情報を1ページに整理。正式名称、住所、診療時間、対応言語、医師、正規認証機器、施術時間、ウォン建ての最低料金、予約方法。",
+    "keywords": [
+      "LIV美容クリニック",
+      "LIV美容クリニック 住所 診療時間",
+      "新沙駅 美容クリニック 日本語",
+      "ウルセラプライム 正規認証 ソウル",
+      "韓国 美容クリニック 料金",
+      "江南 美容皮膚科 外国人"
+    ],
+    "category": "booking",
+    "status": "published",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/international",
+    "locale": "ja",
+    "slug": "liv-clinic-facts",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "LIV美容クリニックは、韓国・ソウルにある非手術アンチエイジング専門のクリニックで、リフティングと肌の引き締め施術を中心としています。LIV美容クリニックは地下鉄3号線・新沙（シンサ）駅4番出口から徒歩1分、カロスキル隣の自恩ビル4階にあります。LIV美容クリニックの代表院長は、形成外科専門医のキム・スヨン医師です。"
+      },
+      {
+        "type": "h2",
+        "text": "基本情報",
+        "id": "s1"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "内容"
+        ],
+        "rows": [
+          [
+            "名称（日本語）",
+            "LIV美容クリニック"
+          ],
+          [
+            "名称（韓国語）",
+            "리브성형외과"
+          ],
+          [
+            "名称（英語）",
+            "LIV Plastic Surgery"
+          ],
+          [
+            "名称（中国語）",
+            "LIV整形外科"
+          ],
+          [
+            "住所",
+            "ソウル特別市 瑞草区 ナルト路80 自恩ビル4階（郵便番号 06536）"
+          ],
+          [
+            "最寄り駅",
+            "地下鉄3号線 新沙駅 4番出口から徒歩1分"
+          ],
+          [
+            "診療時間（韓国時間）",
+            "平日 10:00〜19:00、土曜 10:00〜16:00"
+          ],
+          [
+            "休診日",
+            "日曜。LIV美容クリニックは韓国の祝日（旧正月・秋夕の連休など）も一般的に休診です。"
+          ],
+          [
+            "電話",
+            "+82-2-797-2773（韓国国内 02-797-2773）"
+          ],
+          [
+            "メール",
+            "info@livps.co.kr"
+          ],
+          [
+            "ウェブサイト",
+            "https://liv-clinic.net"
+          ],
+          [
+            "対応言語",
+            "韓国語、英語、日本語、中国語"
+          ],
+          [
+            "通訳",
+            "ご希望に応じて無料で手配"
+          ],
+          [
+            "LINE",
+            "ID：icps7972773"
+          ],
+          [
+            "WhatsApp",
+            "+82 10-6888-2773"
+          ],
+          [
+            "WeChat",
+            "ID：livps0414"
+          ],
+          [
+            "その他の連絡手段",
+            "サイトのライブチャット、[お問い合わせフォーム](/contact)"
+          ],
+          [
+            "返信の目安",
+            "営業日基準で1日以内"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "医師",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "内容"
+        ],
+        "rows": [
+          [
+            "氏名",
+            "キム・スヨン（Dr. Sooyoung Kim）、LIV美容クリニック代表院長"
+          ],
+          [
+            "専門",
+            "形成外科専門医"
+          ],
+          [
+            "学歴",
+            "高麗大学校医科大学卒業、高麗大学校大学院形成外科学修士取得"
+          ],
+          [
+            "研修",
+            "高麗大学校医療院研修医修了、同 形成外科レジデント修了、米国テキサス州ヒューストン MD Anderson Cancer Center 研修"
+          ],
+          [
+            "教職",
+            "高麗大学校医科大学非常勤教授"
+          ],
+          [
+            "所属学会",
+            "大韓形成外科医師会、大韓形成外科学会、大韓美容形成外科学会、大韓頭蓋顔面形成外科学会、大韓医学レーザー学会（いずれも正会員）"
+          ],
+          [
+            "研究",
+            "SCI収載論文4編（Arch Plast Surg 2024・2016、Dermatol Surg 2014、Microsurgery 2014）"
+          ],
+          [
+            "専門分野",
+            "ウルセラプライムリフティング、サーマジリフティング、複合リフティング施術、アンチエイジングプログラム"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "LIV美容クリニックの施術はすべて、形成外科専門医のもとで計画・実施されます。LIV美容クリニックには家庭医学科専門医のチョン・シネ医師も在籍しています。詳しい経歴は[医療スタッフ紹介](/about/staff)にあります。"
+      },
+      {
+        "type": "h2",
+        "text": "機器と認証",
+        "id": "s3"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV美容クリニックはウルセラプライムの正規認証院です。",
+          "LIV美容クリニックはサーマジFLXのパートナー院です。",
+          "LIV美容クリニックは正規認証のハンドピース（チップ）のみを使用します。正規品の使用は施術前に確認できます。",
+          "LIV美容クリニックのレーザー施術にはクラリティIIとルーカスレーザーを使用します。",
+          "機器の一覧は[機器紹介](/about/equipment)にあります。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "施術一覧",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "料金は公開料金表のうち最も低い「〜から」の金額です。韓国ウォン建て、1回あたり、VAT別。正確な料金はカウンセリング後に決まります。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "施術",
+          "所要時間",
+          "麻酔",
+          "回復",
+          "最低料金"
+        ],
+        "rows": [
+          [
+            "[ウルセラプライム](/lifting/ulthera)",
+            "60〜90分",
+            "麻酔クリーム（30分）",
+            "すぐに日常復帰可能",
+            "780,000ウォン〜（上顔面、200〜300ショット）"
+          ],
+          [
+            "[サーマジFLX](/lifting/thermage)",
+            "45〜60分",
+            "無麻酔（振動技術で痛み軽減）",
+            "すぐに日常復帰可能",
+            "1,000,000ウォン〜（アイチップ 225ショット）"
+          ],
+          [
+            "[デンシティ](/lifting/density)",
+            "40〜60分",
+            "麻酔クリーム（選択）",
+            "すぐに日常復帰可能",
+            "890,000ウォン〜（ハイチップ、300ショット）"
+          ],
+          [
+            "[オンダ](/lifting/onda)",
+            "顔15〜30分、ボディは1部位あたり約10分",
+            "麻酔不要",
+            "ダウンタイムなし",
+            "カウンセリング時に案内"
+          ],
+          [
+            "[インモード](/lifting/inmode)",
+            "30〜60分",
+            "無麻酔または麻酔クリーム",
+            "すぐに日常復帰可能",
+            "150,000ウォン〜（FX モード）"
+          ],
+          [
+            "[シュリンク](/lifting/shurink)",
+            "30〜45分",
+            "麻酔クリーム（選択）",
+            "すぐに日常復帰可能",
+            "200,000ウォン〜（300ショット）"
+          ],
+          [
+            "[糸リフト](/lifting/thread)",
+            "30〜60分",
+            "局所麻酔",
+            "3〜7日（内出血・腫れの可能性）",
+            "800,000ウォン〜（ミント、8本）"
+          ],
+          [
+            "[アプトス（APTOS）糸リフト](/lifting/aptos)",
+            "30〜60分",
+            "局所麻酔",
+            "3〜7日（内出血・腫れの可能性）",
+            "1,500,000ウォン〜（APTOS Light Lift 25、2本）"
+          ],
+          [
+            "[ボトックス](/antiaging/botox)",
+            "10〜20分",
+            "無麻酔または麻酔クリーム（ご希望の場合）",
+            "すぐに日常復帰可能",
+            "60,000ウォン〜（韓国製、エラまたはこめかみ）"
+          ],
+          [
+            "[フィラー](/antiaging/filler)",
+            "20〜40分",
+            "麻酔クリームまたは神経ブロック麻酔",
+            "すぐに〜3日（部位により異なります）",
+            "200,000ウォン〜（国産、1cc）"
+          ],
+          [
+            "[スキンブースター](/antiaging/skinbooster)",
+            "30〜45分",
+            "麻酔クリーム",
+            "1〜3日（微細な注射跡）",
+            "190,000ウォン〜（リジュラン HB plus、1cc）"
+          ],
+          [
+            "[スキンケア](/antiaging/skincare)",
+            "60〜90分",
+            "該当なし",
+            "なし",
+            "カウンセリング時に案内"
+          ],
+          [
+            "[色素治療レーザー](/laser)",
+            "20〜40分",
+            "麻酔クリーム（選択）",
+            "3〜7日（微細なかさぶたの可能性）",
+            "150,000ウォン〜（1回）"
+          ],
+          [
+            "[血管治療レーザー](/laser)",
+            "15〜30分",
+            "—",
+            "—",
+            "150,000ウォン〜（1回）"
+          ],
+          [
+            "[肌トーンレーザー](/laser)",
+            "30〜45分",
+            "—",
+            "すぐに日常復帰可能",
+            "150,000ウォン〜（1回）"
+          ],
+          [
+            "[レーザー脱毛](/laser)",
+            "15〜60分（部位による）",
+            "—",
+            "すぐに日常復帰可能",
+            "150,000ウォン〜（1回）"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "所要時間・麻酔・回復は各施術ページに基づく一般的な目安で、カウンセリングで確定します。全項目は[料金表](/pricing)にあります。"
+      },
+      {
+        "type": "h2",
+        "text": "料金と支払い",
+        "id": "s5"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV美容クリニックは料金表を[料金表ページ](/pricing)で公開しています。料金は1回あたり、韓国ウォン建て、VAT別です。",
+          "LIV美容クリニックでは、外国人患者にも韓国人患者と同じ料金表が適用されます。外国人料金はありません。",
+          "LIV美容クリニックでは、多言語対応や通訳のための追加費用はかかりません。",
+          "LIV美容クリニックの1:1専門相談費用は1万ウォンです。当日施術を行う場合は施術金額から全額差し引かれます。",
+          "LIV美容クリニックでは、海外発行のVisa、Mastercard、American Express、JCB、UnionPay（銀聯）と、韓国ウォン（KRW）の現金が使えます。",
+          "LIV美容クリニックではカード分割払いが可能です。",
+          "LIV美容クリニックのカウンセリング予約に予約金は必要ありません。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "海外からお越しの方へ",
+        "id": "s6"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV美容クリニックのほとんどの非手術施術は30〜90分で、入院は不要です。来院当日に施術を受ける方が多くいます。",
+          "ウルセラプライム、サーマジFLX、ボトックス、フィラー、スキンブースターは当日1回で完了し、再来院は不要です。",
+          "糸リフトは約1週間後に任意の経過確認があり、写真によるオンライン確認でも可能です。",
+          "LIV美容クリニックは英語・日本語・中国語のアフターケア案内（書面）をお渡しします。",
+          "帰国後も、LIV美容クリニックはメッセンジャーやライブチャットで写真を確認し、質問に対応します。",
+          "海外からの予約方法：LINE、WhatsApp、WeChat、サイトのライブチャット、またはお問い合わせフォームで連絡し、悩みと写真を送って見積もりを受け取り、日程を決めます。詳細は[海外からお越しの方へ](/international)にあります。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "関連ページ",
+        "id": "s7"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "クリニックのページ：[リフティング](/lifting)・[レーザー](/laser)・[料金表](/pricing)・[海外からお越しの方へ](/international)・[医療スタッフ紹介](/about/staff)・[アクセス](/about/location)・[医療情報](/medical)・[お問い合わせ](/contact)",
+          "ガイド：[予約方法](/guides/book-seoul-clinic-foreigner)・[料金表の見方と支払い方法](/guides/seoul-clinic-total-cost-payment)・[来院当日の流れ](/guides/first-visit-what-to-expect-seoul-clinic)・[空港から新沙駅への行き方](/guides/sinsa-station-clinic-access-from-airport)・[ウルセラの値段](/guides/ultherapy-cost-seoul)・[ダウンタイムと飛行機](/guides/downtime-flight-travel-plan)・[ガイド一覧](/guides)"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "LIV美容クリニックはどこにありますか？",
+        "a": "LIV美容クリニックの住所は、ソウル特別市 瑞草区 ナルト路80 自恩ビル4階です。地下鉄3号線・新沙駅4番出口から徒歩1分、カロスキルの隣にあります。"
+      },
+      {
+        "q": "LIV美容クリニックの診療時間は？",
+        "a": "LIV美容クリニックの診療時間は平日10:00〜19:00、土曜10:00〜16:00（韓国時間）です。日曜は休診で、韓国の祝日も一般的に休診です。"
+      },
+      {
+        "q": "LIV美容クリニックは何語に対応していますか？",
+        "a": "LIV美容クリニックは韓国語、英語、日本語、中国語での相談に対応しています。通訳はご希望に応じて無料で手配します。"
+      },
+      {
+        "q": "LIV美容クリニックでは外国人は料金が高くなりますか？",
+        "a": "いいえ。外国人患者にも韓国人患者と同じ公開料金表（1回あたり・VAT別）が適用されます。多言語対応や通訳のための追加費用もありません。"
+      },
+      {
+        "q": "LIV美容クリニックは海外からどう予約しますか？",
+        "a": "LINE（ID：icps7972773）、WhatsApp（+82 10-6888-2773）、WeChat（ID：livps0414）、サイトのライブチャット、またはお問い合わせフォームで連絡します。営業日基準で1日以内に返信があり、カウンセリングの予約に予約金は必要ありません。"
+      }
+    ],
+    "readingMinutes": 8,
+    "reviewMarkers": 0
+  },
+  {
     "title": "韓国でシミ取り・肝斑レーザー — 機器と回数、料金、紫外線ケア、短い旅行でできること（新沙・LIV美容クリニック）",
     "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックの色素治療を解説。肝斑・シミ・そばかす・老人性色素斑に使うレーザーと3段階システム、症状別の回数と間隔、公開料金、施術後の紫外線ケア、そして複数回の治療を短い韓国旅行でどこまで受けられるかを正直にまとめました。",
     "keywords": [
@@ -9663,6 +10427,388 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
+    "title": "LIV整形外科 基本信息一览：地址、营业时间、医生、项目与价格",
+    "description": "首尔新沙站 LIV整形外科 的基本信息汇总：正式名称、地址、营业时间、支持语言、医生、正品认证仪器、各项目所需时间、韩元起价以及预约方式。",
+    "keywords": [
+      "LIV整形外科",
+      "LIV整形外科 地址 营业时间",
+      "新沙站 医美 中文",
+      "超声刀 Prime 正品认证 首尔",
+      "首尔 医美 价格",
+      "江南 医美 外国人"
+    ],
+    "category": "booking",
+    "status": "published",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/international",
+    "locale": "zh",
+    "slug": "liv-clinic-facts",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "LIV整形外科 是位于韩国首尔的非手术抗衰诊所，以提拉和紧致项目为主。LIV整形外科 位于地铁3号线新沙站4号出口步行1分钟处的自恩大厦4层，紧邻林荫道，属于江南一带。LIV整形外科 的代表院长是整形外科专科医生金秀英。"
+      },
+      {
+        "type": "h2",
+        "text": "基本信息",
+        "id": "s1"
+      },
+      {
+        "type": "table",
+        "header": [
+          "项目",
+          "内容"
+        ],
+        "rows": [
+          [
+            "名称（中文）",
+            "LIV整形外科"
+          ],
+          [
+            "名称（韩文）",
+            "리브성형외과"
+          ],
+          [
+            "名称（英文）",
+            "LIV Plastic Surgery"
+          ],
+          [
+            "名称（日文）",
+            "LIV美容クリニック"
+          ],
+          [
+            "地址",
+            "首尔特别市瑞草区Naruteo-ro 80号 自恩大厦4层（邮编 06536）"
+          ],
+          [
+            "最近的地铁站",
+            "地铁3号线新沙站4号出口，步行1分钟"
+          ],
+          [
+            "营业时间（韩国时间）",
+            "周一至周五 10:00–19:00，周六 10:00–16:00"
+          ],
+          [
+            "休息日",
+            "周日。LIV整形外科 在韩国法定节假日（春节、中秋等连休期间）一般也休诊。"
+          ],
+          [
+            "电话",
+            "+82-2-797-2773（韩国境内 02-797-2773）"
+          ],
+          [
+            "邮箱",
+            "info@livps.co.kr"
+          ],
+          [
+            "网站",
+            "https://liv-clinic.net"
+          ],
+          [
+            "支持语言",
+            "韩语、英语、日语、中文"
+          ],
+          [
+            "翻译",
+            "按需免费安排"
+          ],
+          [
+            "微信（WeChat）",
+            "ID：livps0414"
+          ],
+          [
+            "WhatsApp",
+            "+82 10-6888-2773"
+          ],
+          [
+            "LINE",
+            "ID：icps7972773"
+          ],
+          [
+            "其他渠道",
+            "网站在线客服、[在线咨询表单](/contact)"
+          ],
+          [
+            "回复时间",
+            "一个工作日内"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "医生",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "项目",
+          "内容"
+        ],
+        "rows": [
+          [
+            "姓名",
+            "金秀英（Dr. Sooyoung Kim），LIV整形外科 代表院长"
+          ],
+          [
+            "专科",
+            "整形外科专科医生"
+          ],
+          [
+            "学历",
+            "高丽大学医学院毕业；高丽大学研究生院整形外科学硕士"
+          ],
+          [
+            "培训",
+            "高丽大学医疗院住院医师结业；高丽大学医疗院整形外科住院医师结业；美国德克萨斯州休斯顿 MD Anderson Cancer Center 进修"
+          ],
+          [
+            "教职",
+            "高丽大学医学院客座教授"
+          ],
+          [
+            "学会",
+            "大韩整形外科医师会、大韩整形外科学会、大韩美容整形外科学会、大韩头颅颜面整形外科学会、大韩医学激光学会（均为正式会员）"
+          ],
+          [
+            "研究",
+            "SCI 收录论文4篇（Arch Plast Surg 2024、2016；Dermatol Surg 2014；Microsurgery 2014）"
+          ],
+          [
+            "专长",
+            "超声刀Prime提升、热玛吉提升、复合提升治疗、抗衰老项目"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "LIV整形外科 的所有治疗都由整形外科专科医生制定并主持。家庭医学科专科医生千信惠也在 LIV整形外科 出诊。详细履历见[医疗团队](/about/staff)。"
+      },
+      {
+        "type": "h2",
+        "text": "仪器与认证",
+        "id": "s3"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV整形外科 是超声刀（Ultherapy Prime）正品认证诊所。",
+          "LIV整形外科 是热玛吉（Thermage FLX）合作诊所。",
+          "LIV整形外科 仅使用正品认证的手具（探头）进行治疗，患者可在治疗前亲自确认。",
+          "LIV整形外科 的激光项目使用 Clarity II 和 Lucas 激光。",
+          "仪器列表见[仪器介绍](/about/equipment)。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "项目一览",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "价格为公开价目表中最低的“起”价，以韩元计、按单次计算、不含增值税。准确价格在面诊后确定。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "项目",
+          "所需时间",
+          "麻醉",
+          "恢复",
+          "最低起价"
+        ],
+        "rows": [
+          [
+            "[超声刀 Prime（Ultherapy Prime）](/lifting/ulthera)",
+            "60–90分钟",
+            "麻醉霜（30分钟）",
+            "即刻可恢复日常生活",
+            "780,000韩元起（上面部，200–300发）"
+          ],
+          [
+            "[热玛吉 FLX（Thermage FLX）](/lifting/thermage)",
+            "45–60分钟",
+            "无需麻醉（振动技术减少疼痛）",
+            "即刻可恢复日常生活",
+            "1,000,000韩元起（眼部探头 225发）"
+          ],
+          [
+            "[Density](/lifting/density)",
+            "40–60分钟",
+            "麻醉霜（可选）",
+            "即刻可恢复日常生活",
+            "890,000韩元起（Hi-Tip，300发）"
+          ],
+          [
+            "[ONDA](/lifting/onda)",
+            "面部15–30分钟；身体每个部位约10分钟",
+            "无需麻醉",
+            "无恢复期",
+            "面诊时报价"
+          ],
+          [
+            "[InMode](/lifting/inmode)",
+            "30–60分钟",
+            "无麻醉或麻醉霜",
+            "即刻可恢复日常生活",
+            "150,000韩元起（FX 模式）"
+          ],
+          [
+            "[Shurink](/lifting/shurink)",
+            "30–45分钟",
+            "麻醉霜（可选）",
+            "即刻可恢复日常生活",
+            "200,000韩元起（300发）"
+          ],
+          [
+            "[线雕](/lifting/thread)",
+            "30–60分钟",
+            "局部麻醉",
+            "3–7天（可能出现淤青、肿胀）",
+            "800,000韩元起（MINT，8根）"
+          ],
+          [
+            "[APTOS 线雕](/lifting/aptos)",
+            "30–60分钟",
+            "局部麻醉",
+            "3–7天（可能出现淤青、肿胀）",
+            "1,500,000韩元起（APTOS Light Lift 25，2根）"
+          ],
+          [
+            "[肉毒素](/antiaging/botox)",
+            "10–20分钟",
+            "无麻醉或麻醉霜（按需）",
+            "即刻可恢复日常生活",
+            "60,000韩元起（韩国产，下颌或太阳穴）"
+          ],
+          [
+            "[玻尿酸](/antiaging/filler)",
+            "20–40分钟",
+            "麻醉霜或神经阻滞麻醉",
+            "即刻至3天（依部位而异）",
+            "200,000韩元起（国产，1cc）"
+          ],
+          [
+            "[水光针](/antiaging/skinbooster)",
+            "30–45分钟",
+            "麻醉霜",
+            "1–3天（微针痕迹）",
+            "190,000韩元起（Rejuran HB plus，1cc）"
+          ],
+          [
+            "[皮肤管理](/antiaging/skincare)",
+            "60–90分钟",
+            "不适用",
+            "无",
+            "面诊时报价"
+          ],
+          [
+            "[色素激光](/laser)",
+            "20–40分钟",
+            "麻醉霜（可选）",
+            "3–7天（可能有细小结痂）",
+            "150,000韩元起（单次）"
+          ],
+          [
+            "[血管激光](/laser)",
+            "15–30分钟",
+            "—",
+            "—",
+            "150,000韩元起（单次）"
+          ],
+          [
+            "[肤色激光](/laser)",
+            "30–45分钟",
+            "—",
+            "即刻可恢复日常生活",
+            "150,000韩元起（单次）"
+          ],
+          [
+            "[激光脱毛](/laser)",
+            "15–60分钟（依部位而异）",
+            "—",
+            "即刻可恢复日常生活",
+            "150,000韩元起（单次）"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "所需时间、麻醉和恢复为各项目页面上的一般参考，具体以面诊时确认为准。完整内容见[价目表](/pricing)。"
+      },
+      {
+        "type": "h2",
+        "text": "价格与付款",
+        "id": "s5"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV整形外科 在[价目表页面](/pricing)公开价格。价格按单次计算、以韩元计、不含增值税。",
+          "LIV整形外科 的外国患者与韩国患者适用同一份价目表，没有外国人加价。",
+          "LIV整形外科 的语言服务和翻译不收取额外费用。",
+          "LIV整形外科 的1对1专业咨询费用为1万韩元，当天进行治疗时可从治疗费用中全额抵扣。",
+          "LIV整形外科 接受境外发行的 Visa、Mastercard、American Express、JCB、银联（UnionPay）卡，以及韩元（KRW）现金。",
+          "LIV整形外科 可以信用卡分期付款。",
+          "在 LIV整形外科 预约面诊无需支付定金。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "外国患者须知",
+        "id": "s6"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV整形外科 的大多数非手术项目需要30–90分钟，无需住院，很多患者在到院当天完成治疗。",
+          "超声刀 Prime、热玛吉 FLX、肉毒素、玻尿酸、水光针当天一次完成，无需复诊。",
+          "线雕约1周后可选复查，也可以通过照片远程复查。",
+          "LIV整形外科 提供英语、日语和中文的书面术后护理指南。",
+          "回国后，LIV整形外科 通过即时通讯或在线客服查看照片并解答疑问。",
+          "海外预约方式：通过微信、WhatsApp、LINE、网站在线客服或在线咨询表单联系，发送困扰和照片后获得报价，再确定日期。详情见[国际患者页面](/international)。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "相关页面",
+        "id": "s7"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "诊所页面：[提拉项目](/lifting)、[激光项目](/laser)、[价目表](/pricing)、[国际患者页面](/international)、[医疗团队](/about/staff)、[位置](/about/location)、[医疗信息](/medical)、[联系与预约](/contact)",
+          "指南：[中文预约教学](/guides/book-seoul-clinic-foreigner)、[首尔超声刀价格](/guides/ultherapy-cost-seoul)、[超声刀、热玛吉、Shurink 比较](/guides/ultherapy-vs-thermage-vs-shurink)、[肉毒素与玻尿酸价格](/guides/botox-filler-cost-seoul)、[恢复期与乘机安排](/guides/downtime-flight-travel-plan)、[全部指南](/guides)"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "LIV整形外科 在哪里？",
+        "a": "LIV整形外科 的地址是首尔特别市瑞草区Naruteo-ro 80号 自恩大厦4层。从地铁3号线新沙站4号出口步行1分钟即到，旁边就是林荫道。"
+      },
+      {
+        "q": "LIV整形外科 的营业时间是？",
+        "a": "LIV整形外科 的营业时间为周一至周五 10:00–19:00、周六 10:00–16:00（韩国时间）。周日休息，韩国法定节假日一般也休诊。"
+      },
+      {
+        "q": "LIV整形外科 支持哪些语言？",
+        "a": "LIV整形外科 支持韩语、英语、日语和中文咨询。翻译按需免费安排。"
+      },
+      {
+        "q": "外国人在 LIV整形外科 要付更高的费用吗？",
+        "a": "不会。外国患者与韩国患者适用同一份公开价目表（按单次计算、不含增值税），语言服务和翻译也不收取额外费用。"
+      },
+      {
+        "q": "在海外如何预约 LIV整形外科？",
+        "a": "通过微信（ID：livps0414）、WhatsApp（+82 10-6888-2773）、LINE（ID：icps7972773）、网站在线客服或在线咨询表单联系。诊所在一个工作日内回复，预约面诊无需支付定金。"
+      }
+    ],
+    "readingMinutes": 6,
+    "reviewMarkers": 0
+  },
+  {
     "title": "首尔超声刀(Ultherapy)价格与行程规划：外国人同价、当天完成",
     "description": "LIV整形外科位于首尔新沙站步行1分钟、林荫道旁。本文公开超声刀(Ultherapy Prime)各部位与发数的价格，说明费用包含什么、如何确认正品、治疗需要多长时间、能否当天完成，并整理通过微信预约的步骤、免费翻译与付款方式，帮助海外患者把超声刀安排进首尔行程。",
     "keywords": [
@@ -11924,6 +13070,388 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "q": "回國前需要再回診所一次嗎？",
         "a": "音波拉提 Prime、鳳凰電波 FLX、肉毒桿菌素、玻尿酸、水光針都是當天一次完成，不需複診。埋線拉提約1週後可選複查，也可以透過照片遠距複查。"
+      }
+    ],
+    "readingMinutes": 6,
+    "reviewMarkers": 0
+  },
+  {
+    "title": "LIV整形外科 基本資訊一覽：地址、營業時間、醫師、療程與價格",
+    "description": "首爾新沙站 LIV整形外科 的基本資訊整理：正式名稱、地址、營業時間、支援語言、醫師、正品認證儀器、各療程所需時間、韓元起價以及預約方式。",
+    "keywords": [
+      "LIV整形外科",
+      "LIV整形外科 地址 營業時間",
+      "新沙站 醫美 中文",
+      "音波拉提 Ultherapy Prime 正品認證 首爾",
+      "首爾 醫美 價格",
+      "江南 醫美 外國人"
+    ],
+    "category": "booking",
+    "status": "published",
+    "updated": "2026-11-10",
+    "reviewer": "clinic",
+    "treatment": "/international",
+    "locale": "zh-TW",
+    "slug": "liv-clinic-facts",
+    "blocks": [
+      {
+        "type": "p",
+        "text": "LIV整形外科 是位於韓國首爾的非手術抗老診所，以拉提和緊緻療程為主。LIV整形外科 位於地鐵3號線新沙站4號出口步行1分鐘處的自恩大廈4樓，緊鄰林蔭道，屬於江南一帶。LIV整形外科 的代表院長是整形外科專科醫生金秀英。"
+      },
+      {
+        "type": "h2",
+        "text": "基本資訊",
+        "id": "s1"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "內容"
+        ],
+        "rows": [
+          [
+            "名稱（中文）",
+            "LIV整形外科"
+          ],
+          [
+            "名稱（韓文）",
+            "리브성형외과"
+          ],
+          [
+            "名稱（英文）",
+            "LIV Plastic Surgery"
+          ],
+          [
+            "名稱（日文）",
+            "LIV美容クリニック"
+          ],
+          [
+            "地址",
+            "首爾特別市瑞草區Naruteo-ro 80號 自恩大廈4樓（郵遞區號 06536）"
+          ],
+          [
+            "最近的地鐵站",
+            "地鐵3號線新沙站4號出口，步行1分鐘"
+          ],
+          [
+            "營業時間（韓國時間）",
+            "週一至週五 10:00–19:00，週六 10:00–16:00"
+          ],
+          [
+            "休診日",
+            "週日。LIV整形外科 在韓國國定假日（農曆新年、中秋等連假期間）一般也休診。"
+          ],
+          [
+            "電話",
+            "+82-2-797-2773（韓國境內 02-797-2773）"
+          ],
+          [
+            "電子郵件",
+            "info@livps.co.kr"
+          ],
+          [
+            "網站",
+            "https://liv-clinic.net"
+          ],
+          [
+            "支援語言",
+            "韓語、英語、日語、中文"
+          ],
+          [
+            "翻譯",
+            "依需求免費安排"
+          ],
+          [
+            "LINE",
+            "ID：icps7972773"
+          ],
+          [
+            "WhatsApp",
+            "+82 10-6888-2773"
+          ],
+          [
+            "WeChat",
+            "ID：livps0414"
+          ],
+          [
+            "其他管道",
+            "網站線上客服、[線上諮詢表單](/contact)"
+          ],
+          [
+            "回覆時間",
+            "一個工作天內"
+          ]
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "醫師",
+        "id": "s2"
+      },
+      {
+        "type": "table",
+        "header": [
+          "項目",
+          "內容"
+        ],
+        "rows": [
+          [
+            "姓名",
+            "金秀英（Dr. Sooyoung Kim），LIV整形外科 代表院長"
+          ],
+          [
+            "專科",
+            "整形外科專科醫生"
+          ],
+          [
+            "學歷",
+            "高麗大學醫學院畢業；高麗大學研究生院整形外科學碩士"
+          ],
+          [
+            "訓練",
+            "高麗大學醫療院住院醫師結業；高麗大學醫療院整形外科住院醫師結業；美國德克薩斯州休斯頓 MD Anderson Cancer Center 進修"
+          ],
+          [
+            "教職",
+            "高麗大學醫學院客座教授"
+          ],
+          [
+            "學會",
+            "大韓整形外科醫師會、大韓整形外科學會、大韓美容整形外科學會、大韓頭顱顏面整形外科學會、大韓醫學激光學會（皆為正式會員）"
+          ],
+          [
+            "研究",
+            "SCI 收錄論文4篇（Arch Plast Surg 2024、2016；Dermatol Surg 2014；Microsurgery 2014）"
+          ],
+          [
+            "專長",
+            "音波拉提Prime拉提、鳳凰電波拉提、複合拉提療程、抗衰老療程"
+          ]
+        ]
+      },
+      {
+        "type": "p",
+        "text": "LIV整形外科 的所有療程都由整形外科專科醫生規劃並主持。家庭醫學科專科醫生千信惠也在 LIV整形外科 看診。詳細經歷見[醫療團隊](/about/staff)。"
+      },
+      {
+        "type": "h2",
+        "text": "儀器與認證",
+        "id": "s3"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV整形外科 是音波拉提（Ultherapy Prime）正品認證診所。",
+          "LIV整形外科 是鳳凰電波（Thermage FLX）合作診所。",
+          "LIV整形外科 僅使用正品認證的手具（探頭）進行治療，患者可在治療前親自確認。",
+          "LIV整形外科 的雷射療程使用 Clarity II 和 Lucas 雷射。",
+          "儀器列表見[儀器介紹](/about/equipment)。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "療程一覽",
+        "id": "s4"
+      },
+      {
+        "type": "p",
+        "text": "價格為公開價目表中最低的「起」價，以韓元計、以單次計算、未含增值稅。準確價格在面診後確定。"
+      },
+      {
+        "type": "table",
+        "header": [
+          "療程",
+          "所需時間",
+          "麻醉",
+          "恢復",
+          "最低起價"
+        ],
+        "rows": [
+          [
+            "[音波拉提 Prime（Ultherapy Prime）](/lifting/ulthera)",
+            "60–90分鐘",
+            "麻醉藥膏（30分鐘）",
+            "可立即恢復日常生活",
+            "780,000韓元起（上面部，200–300發）"
+          ],
+          [
+            "[鳳凰電波 FLX（Thermage FLX）](/lifting/thermage)",
+            "45–60分鐘",
+            "不需麻醉（以震動技術減輕疼痛）",
+            "可立即恢復日常生活",
+            "1,000,000韓元起（眼部探頭 225發）"
+          ],
+          [
+            "[Density](/lifting/density)",
+            "40–60分鐘",
+            "麻醉藥膏（可選擇）",
+            "可立即恢復日常生活",
+            "890,000韓元起（Hi-Tip，300發）"
+          ],
+          [
+            "[ONDA](/lifting/onda)",
+            "臉部15–30分鐘；身體每個部位約10分鐘",
+            "不需麻醉",
+            "無恢復期",
+            "面診時報價"
+          ],
+          [
+            "[InMode](/lifting/inmode)",
+            "30–60分鐘",
+            "不麻醉或使用麻醉藥膏",
+            "可立即恢復日常生活",
+            "150,000韓元起（FX 模式）"
+          ],
+          [
+            "[Shurink](/lifting/shurink)",
+            "30–45分鐘",
+            "麻醉藥膏（可選擇）",
+            "可立即恢復日常生活",
+            "200,000韓元起（300發）"
+          ],
+          [
+            "[埋線拉提](/lifting/thread)",
+            "30–60分鐘",
+            "局部麻醉",
+            "3–7天（可能出現瘀青、腫脹）",
+            "800,000韓元起（MINT，8條）"
+          ],
+          [
+            "[APTOS 埋線拉提](/lifting/aptos)",
+            "30–60分鐘",
+            "局部麻醉",
+            "3–7天（可能出現瘀青、腫脹）",
+            "1,500,000韓元起（APTOS Light Lift 25，2條）"
+          ],
+          [
+            "[肉毒桿菌素](/antiaging/botox)",
+            "10–20分鐘",
+            "不麻醉或使用麻醉藥膏（依需求）",
+            "可立即恢復日常生活",
+            "60,000韓元起（韓國製，下顎或太陽穴）"
+          ],
+          [
+            "[玻尿酸](/antiaging/filler)",
+            "20–40分鐘",
+            "麻醉藥膏或神經阻斷麻醉",
+            "立即至3天（依部位而異）",
+            "200,000韓元起（國產，1cc）"
+          ],
+          [
+            "[水光針](/antiaging/skinbooster)",
+            "30–45分鐘",
+            "麻醉藥膏",
+            "1–3天（細微針痕）",
+            "190,000韓元起（Rejuran HB plus，1cc）"
+          ],
+          [
+            "[皮膚管理](/antiaging/skincare)",
+            "60–90分鐘",
+            "不適用",
+            "無",
+            "面診時報價"
+          ],
+          [
+            "[色素雷射](/laser)",
+            "20–40分鐘",
+            "麻醉藥膏（可選擇）",
+            "3–7天（可能有細小結痂）",
+            "150,000韓元起（單次）"
+          ],
+          [
+            "[血管雷射](/laser)",
+            "15–30分鐘",
+            "—",
+            "—",
+            "150,000韓元起（單次）"
+          ],
+          [
+            "[膚色雷射](/laser)",
+            "30–45分鐘",
+            "—",
+            "可立即恢復日常生活",
+            "150,000韓元起（單次）"
+          ],
+          [
+            "[雷射除毛](/laser)",
+            "15–60分鐘（依部位而異）",
+            "—",
+            "可立即恢復日常生活",
+            "150,000韓元起（單次）"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "所需時間、麻醉和恢復為各療程頁面上的一般參考，實際以面診時確認為準。完整內容見[價目表](/pricing)。"
+      },
+      {
+        "type": "h2",
+        "text": "價格與付款",
+        "id": "s5"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV整形外科 在[價目表頁面](/pricing)公開價格。價格以單次計算、以韓元計、未含增值稅。",
+          "LIV整形外科 的外國患者與韓國患者適用同一份價目表，沒有外國人加價。",
+          "LIV整形外科 的語言服務和翻譯不收取額外費用。",
+          "LIV整形外科 的1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。",
+          "LIV整形外科 接受境外發行的 Visa、Mastercard、American Express、JCB、銀聯（UnionPay）卡，以及韓元（KRW）現金。",
+          "LIV整形外科 可以信用卡分期付款。",
+          "在 LIV整形外科 預約面診不需要支付訂金。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "外國患者須知",
+        "id": "s6"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "LIV整形外科 的大多數非手術療程需要30–90分鐘，不需住院，很多患者在到院當天完成治療。",
+          "音波拉提 Prime、鳳凰電波 FLX、肉毒桿菌素、玻尿酸、水光針當天一次完成，不需複診。",
+          "埋線拉提約1週後可選擇複查，也可以透過照片遠距複查。",
+          "LIV整形外科 提供英語、日語和中文的書面術後護理指南。",
+          "回國後，LIV整形外科 透過即時通訊或線上客服查看照片並解答疑問。",
+          "海外預約方式：透過 LINE、WhatsApp、WeChat、網站線上客服或線上諮詢表單聯絡，傳送困擾和照片後取得報價，再確定日期。詳情見[國際患者頁面](/international)。"
+        ]
+      },
+      {
+        "type": "h2",
+        "text": "相關頁面",
+        "id": "s7"
+      },
+      {
+        "type": "ul",
+        "items": [
+          "診所頁面：[拉提療程](/lifting)、[雷射療程](/laser)、[價目表](/pricing)、[國際患者頁面](/international)、[醫療團隊](/about/staff)、[位置](/about/location)、[醫療資訊](/medical)、[預約與聯絡](/contact)",
+          "指南：[中文預約教學](/guides/book-seoul-clinic-foreigner)、[實際要付多少與付款方式](/guides/seoul-clinic-total-cost-payment)、[到院當天流程](/guides/first-visit-what-to-expect-seoul-clinic)、[從機場到新沙站](/guides/sinsa-station-clinic-access-from-airport)、[首爾音波拉提價格](/guides/ultherapy-cost-seoul)、[恢復期與搭機安排](/guides/downtime-flight-travel-plan)、[全部指南](/guides)"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "q": "LIV整形外科 在哪裡？",
+        "a": "LIV整形外科 的地址是首爾特別市瑞草區Naruteo-ro 80號 自恩大廈4樓。從地鐵3號線新沙站4號出口步行1分鐘即到，緊鄰林蔭道。"
+      },
+      {
+        "q": "LIV整形外科 的營業時間是？",
+        "a": "LIV整形外科 的營業時間為週一至週五 10:00–19:00、週六 10:00–16:00（韓國時間）。週日休診，韓國國定假日一般也休診。"
+      },
+      {
+        "q": "LIV整形外科 支援哪些語言？",
+        "a": "LIV整形外科 支援韓語、英語、日語和中文諮詢。翻譯依需求免費安排。"
+      },
+      {
+        "q": "外國人在 LIV整形外科 要付比較高的費用嗎？",
+        "a": "不會。外國患者與韓國患者適用同一份公開價目表（以單次計算、未含增值稅），語言服務和翻譯也不收取額外費用。"
+      },
+      {
+        "q": "在海外如何預約 LIV整形外科？",
+        "a": "透過 LINE（ID：icps7972773）、WhatsApp（+82 10-6888-2773）、WeChat（ID：livps0414）、網站線上客服或線上諮詢表單聯絡。診所在一個工作天內回覆，預約面診不需要支付訂金。"
       }
     ],
     "readingMinutes": 6,
