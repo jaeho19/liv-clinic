@@ -577,7 +577,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "korea lifting treatment price"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -642,7 +642,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "Face 15–30 min / about 10 min per body area",
             "Not required",
             "No downtime",
-            "Quoted at consultation [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음]"
+            "Quoted at consultation"
           ],
           [
             "[Shurink](/lifting/shurink)",
@@ -877,7 +877,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "Density vs ONDA vs InMode in Seoul: three newer lifting devices compared",
@@ -891,7 +891,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "onda vs inmode"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -1075,7 +1075,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "ONDA",
             "Face or body area",
-            "Quoted at consultation [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인]"
+            "Quoted at consultation"
           ]
         ]
       },
@@ -1204,8 +1204,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "Yes. The clinic says the RF synergy allows a stronger improvement in elasticity. Whether a combination suits you is decided at the consultation."
       }
     ],
-    "readingMinutes": 9,
-    "reviewMarkers": 1
+    "readingMinutes": 8,
+    "reviewMarkers": 0
   },
   {
     "title": "Can I fly after Ultherapy or Botox? Downtime by treatment and a 2–3 day Seoul itinerary",
@@ -1509,7 +1509,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "seoul skin clinic english interpreter"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/international",
@@ -1533,7 +1533,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ol",
         "items": [
           "**Arrive.** Sinsa Station, Line 3, Exit 4. The clinic is a one-minute walk away, on the 4th floor of the Jaeun Building. Routes from the airports are in the [location page](/about/location).",
-          "**Consultation with the doctor.** A board-certified plastic surgeon examines your skin in person and confirms, or adjusts, the plan you discussed by messenger. Consultations are available in English, Japanese and Chinese, and an interpreter is arranged free of charge if you ask for one when you book. [검수 필요: 대면 상담에 걸리는 시간]",
+          "**Consultation with the doctor.** A board-certified plastic surgeon examines your skin in person and confirms, or adjusts, the plan you discussed by messenger. Consultations are available in English, Japanese and Chinese, and an interpreter is arranged free of charge if you ask for one when you book.",
           "**Preparation.** Where a treatment uses a topical anesthetic cream, it goes on before the treatment and needs time to work — about 30 minutes for Ultherapy Prime. Some treatments need no anesthesia at all (table below).",
           "**Treatment.** Between 10 and 90 minutes depending on what you are having.",
           "**Payment.** You pay at the clinic, from the same published [price list](/pricing) as Korean patients.",
@@ -1770,7 +1770,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "Pigmentation laser in Seoul: melasma, spots, devices, sessions and what fits in one trip",
@@ -1785,7 +1785,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "pigmentation treatment korea foreigner"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/laser",
@@ -2129,7 +2129,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "seoul aesthetic clinic total cost"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/pricing",
@@ -2402,7 +2402,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**Cards issued abroad:** Visa, Mastercard, American Express, JCB and UnionPay are accepted.",
           "**Cash:** Korean won (KRW).",
-          "**Installments:** credit card installment payments are available. Interest-free installment terms vary by card company and payment amount, so ask during your consultation. [검수 필요: 해외 발급 카드도 할부 결제가 되는지]",
+          "**Installments:** credit card installment payments are available. Interest-free installment terms vary by card company and payment amount, so ask during your consultation.",
           "**Currency:** prices are set in Korean won. If you pay by card, the amount that appears on your statement depends on the exchange rate applied on the day.",
           "**When you pay:** at the clinic. No deposit is taken to reserve a consultation; if your plans change, let the clinic know through the same messenger as early as you can."
         ]
@@ -2485,7 +2485,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 7,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "How to get to Sinsa Station from Incheon or Gimpo Airport, and when the clinic is open",
@@ -2499,7 +2499,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "korea time zone clinic appointment"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/about/location",
@@ -2672,7 +2672,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "The latest time the clinic takes a patient for a given treatment is not published. Ask when you book. [검수 필요: 평일·토요일 마지막 접수(시술 시작) 가능 시간]"
+        "text": "The latest time the clinic takes a patient for a given treatment is not published. Ask when you book."
       },
       {
         "type": "p",
@@ -2762,7 +2762,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "Skin boosters in Seoul: products on the list, prices, downtime and fitting one into a short trip",
@@ -2777,7 +2777,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "skin booster korea foreigner"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/antiaging/skinbooster",
@@ -3091,7 +3091,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "korea skin clinic laser foreigner"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/laser",
@@ -3344,7 +3344,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Most non-surgical treatments at LIV are done on the same day as the in-person consultation. [검수 필요: 레이저 토닝·울블랑도 상담 당일 시술이 되는지, 외국인 안내 표에는 레이저 항목이 없음]"
+        "text": "Most non-surgical treatments at LIV are done on the same day as the in-person consultation."
       },
       {
         "type": "h2",
@@ -3402,7 +3402,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "Thermage FLX in Seoul: 2026 price guide by shot count, what's included and how to plan your visit",
@@ -3416,7 +3416,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "thermage flx seoul same day"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting/thermage",
@@ -3537,7 +3537,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**Anesthesia and comfort.** The treatment page lists Thermage FLX as a no-anesthesia treatment, because the vibrating tip reduces discomfort. The clinic's medical Q&A says that numbing cream is applied for about 30 minutes before the treatment, and that most patients can receive it comfortably. [검수 필요: 써마지 FLX 마취 — 시술 페이지는 '무마취', 의료 Q&A는 '마취 크림 약 30분'으로 서로 다름. 실제 진행 방식 확인] If you are sensitive to pain, additional pain control is available; mention it at your consultation.",
+          "**Anesthesia and comfort.** The treatment page lists Thermage FLX as a no-anesthesia treatment, because the vibrating tip reduces discomfort. Numbing cream can be applied for about 30 minutes before the treatment, and most patients receive it comfortably. If you are sensitive to pain, additional pain control is available; mention it at your consultation.",
           "**Downtime.** You can return to daily life immediately. Temporary flushing is possible after the treatment.",
           "**Results.** The clinic describes an immediate improvement in elasticity, followed by collagen regeneration over 3–6 months. Results last about 6 months to 1 year, and this varies with skin condition, age and lifestyle. No particular result can be promised in advance.",
           "**How often.** The clinic recommends 1–2 sessions per year. The interval that suits you is set at the consultation.",
@@ -3573,7 +3573,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).",
           "**Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. From Incheon Airport it is about 70–90 minutes by AREX train or limousine bus, or about 60 minutes by taxi; from Gimpo Airport about 40 minutes by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.",
           "**Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash. Card installment payment is available.",
-          "**Flying home:** Thermage FLX needs no follow-up visit, and the clinic lists recovery as an immediate return to daily life. The site does not state a number of hours to wait before boarding a flight, so tell the clinic your flight time when you book and confirm it at your consultation. [검수 필요: 써마지 FLX 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음]",
+          "**Flying home:** Thermage FLX needs no follow-up visit, and the clinic lists recovery as an immediate return to daily life. The site does not state a number of hours to wait before boarding a flight, so tell the clinic your flight time when you book and confirm it at your consultation.",
           "**Changing your appointment:** because there is no deposit for a consultation booking, if your plans change, tell the clinic through the same chat as early as you can."
         ]
       },
@@ -3657,7 +3657,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 2
+    "reviewMarkers": 0
   },
   {
     "title": "Thread lift and APTOS in Seoul: price, downtime and how long to stay",
@@ -3672,7 +3672,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "how long to stay in korea thread lift"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting/thread",
@@ -3855,7 +3855,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "These are ways of arranging time, not medical advice. The site does not state how soon after a thread lift you may fly. [검수 필요: 실리프팅·압토스 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음] Tell the clinic your flight dates when you book, and confirm the timing at your consultation."
+        "text": "These are ways of arranging time, not medical advice. The site does not state how soon after a thread lift you may fly. Tell the clinic your flight dates when you book, and confirm the timing at your consultation."
       },
       {
         "type": "p",
@@ -3925,7 +3925,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "Ultherapy in Seoul: 2026 price guide, what's included and how to plan your visit",
@@ -4971,7 +4971,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓国 リフティング 料金"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -5036,7 +5036,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "顔15〜30分 / ボディ1部位約10分",
             "不要",
             "ダウンタイムなし",
-            "カウンセリングでお見積もり [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음]"
+            "カウンセリングでお見積もり"
           ],
           [
             "[シュリンク](/lifting/shurink)",
@@ -5271,7 +5271,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "デンシティ・オンダリフト・インモードの違いと韓国での料金（新沙・LIV美容クリニック）",
@@ -5285,7 +5285,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "オンダリフト インモード 違い"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -5465,7 +5465,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "オンダ",
             "顔・ボディ各部位",
-            "カウンセリングでお見積もり [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인]"
+            "カウンセリングでお見積もり"
           ]
         ]
       },
@@ -5594,7 +5594,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "施術後の飛行機搭乗とダウンタイムの目安：1泊2日・2泊3日 美容医療旅行モデルプラン（新沙・LIV美容クリニック）",
@@ -5890,7 +5890,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙 美容クリニック 初めて"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/international",
@@ -5914,7 +5914,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ol",
         "items": [
           "**到着**：新沙駅3号線4番出口から徒歩1分、自恩ビル4階です。空港からの行き方は[アクセスページ](/about/location)をご覧ください。",
-          "**院長のカウンセリング**：形成外科専門医が肌の状態を直接診て、LINEで相談した内容を確認し、必要に応じて調整します。日本語でのカウンセリングに対応しており、ご希望があれば通訳を無料で手配します（予約時にお伝えください）。[검수 필요: 대면 상담에 걸리는 시간]",
+          "**院長のカウンセリング**：形成外科専門医が肌の状態を直接診て、LINEで相談した内容を確認し、必要に応じて調整します。日本語でのカウンセリングに対応しており、ご希望があれば通訳を無料で手配します（予約時にお伝えください）。",
           "**準備**：麻酔クリームを使う施術では、施術の前に塗って時間をおきます。ウルセラプライムは約30分です。麻酔なしで行う施術もあります（下の表）。",
           "**施術**：内容によって10〜90分です。",
           "**お支払い**：クリニックで、韓国人患者と同じ[料金表](/pricing)に基づいてお支払いいただきます。",
@@ -6151,7 +6151,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "韓国でシミ取り・肝斑レーザー — 機器と回数、料金、紫外線ケア、短い旅行でできること（新沙・LIV美容クリニック）",
@@ -6166,7 +6166,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "シミ取り 韓国 ダウンタイム"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/laser",
@@ -6184,7 +6184,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "クリニックの色素治療ページが扱うのは、肝斑、シミ・くすみ、そばかす、老人性色素斑などの色素病変です[검수 필요: 일본어 사이트는 '기미'를 'シミ'로 표기함 — 가이드에서 '肝斑'으로 옮긴 용어가 맞는지 확인]。次のような方に向いていると案内されています。"
+        "text": "クリニックの色素治療ページが扱うのは、肝斑、シミ・くすみ、そばかす、老人性色素斑などの色素病変です。次のような方に向いていると案内されています。"
       },
       {
         "type": "ul",
@@ -6496,7 +6496,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "韓国の美容クリニック、結局いくら払う？ — 料金表の見方・VAT・カウンセリング料・支払い方法（新沙・LIV美容クリニック）",
@@ -6511,7 +6511,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "ソウル 美容クリニック 料金 日本語"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/pricing",
@@ -6784,7 +6784,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**海外発行カード：** Visa、Mastercard、American Express、JCB、UnionPay（銀聯）が使えます。",
           "**現金：** 韓国ウォン（KRW）。",
-          "**分割払い：** カード分割払いが可能です。無利息分割の条件はカード会社と決済金額によって異なるため、カウンセリング時にお問い合わせください。[검수 필요: 해외 발급 카드도 할부 결제가 되는지]",
+          "**分割払い：** カード分割払いが可能です。無利息分割の条件はカード会社と決済金額によって異なるため、カウンセリング時にお問い合わせください。",
           "**通貨：** 料金は韓国ウォン建てです。カードで支払う場合、明細に載る金額は適用される為替レートによって変わります。",
           "**支払うタイミング：** 来院時にお支払いいただきます。カウンセリングの予約に予約金はかかりません。予定が変わったときは、同じLINEやチャットでなるべく早めにお知らせください。"
         ]
@@ -6867,7 +6867,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 8,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "新沙駅への行き方：仁川・金浦空港からLIV美容クリニックまでのアクセスと診療時間",
@@ -6881,7 +6881,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓国 美容クリニック 土曜 診療時間"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/about/location",
@@ -7046,7 +7046,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "施術ごとの最終受付時刻は公開されていません。予約時にご確認ください。[검수 필요: 평일·토요일 마지막 접수(시술 시작) 가능 시간]"
+        "text": "施術ごとの最終受付時刻は公開されていません。予約時にご確認ください。"
       },
       {
         "type": "p",
@@ -7140,7 +7140,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "韓国のスキンブースター・水光注射ガイド — 種類と料金、ダウンタイム、短い旅行での受け方（新沙・LIV美容クリニック）",
@@ -7155,7 +7155,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "水光注射 韓国 旅行"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/antiaging/skinbooster",
@@ -7470,7 +7470,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙 カロスキル 美容皮膚科"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/laser",
@@ -7723,7 +7723,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIVでは、非手術の施術の多くは対面カウンセリングと同じ日に受けられます。[검수 필요: 레이저 토닝·울블랑도 상담 당일 시술이 되는지, 외국인 안내 표에는 레이저 항목이 없음]"
+        "text": "LIVでは、非手術の施術の多くは対面カウンセリングと同じ日に受けられます。"
       },
       {
         "type": "h2",
@@ -7781,7 +7781,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "韓国でサーマクール（サーマジFLX）を受ける前に：ショット数別の値段・施術時間・ダウンタイム（新沙・LIV美容クリニック）",
@@ -7795,7 +7795,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓国 サーマクール 正規品"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting/thermage",
@@ -7916,7 +7916,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**麻酔と痛み。** 施術ページでは、振動技術で痛みが軽減されるため「無麻酔」と案内されています。一方、医療Q&Aには「施術前に約30分間麻酔クリームを塗った後に行う」「ほとんどの患者様が快適に施術を受けられる」とあります。[검수 필요: 써마지 FLX 마취 — 시술 페이지는 '무마취', 의료 Q&A는 '마취 크림 약 30분'으로 서로 다름. 실제 진행 방식 확인] 痛みに敏感な方は追加の痛み調節が可能ですので、カウンセリングでお伝えください。",
+          "**麻酔と痛み。** 施術ページでは、振動技術で痛みが軽減されるため「無麻酔」と案内されています。施術前に約30分間麻酔クリームを塗ることもでき、ほとんどの方が快適に施術を受けられます。痛みに敏感な方は追加の痛み調節が可能ですので、カウンセリングでお伝えください。",
           "**ダウンタイム。** 施術後すぐに日常生活に戻れます。一時的な赤みが出ることがあります。",
           "**効果と持続。** 施術直後の弾力改善に加えて、3〜6ヶ月かけてコラーゲンが再生すると案内されています。持続は6ヶ月〜1年程度で、肌の状態・年齢・生活習慣によって変わります。効果には個人差があり、結果を事前にお約束するものではありません。",
           "**旧世代との違い。** サイトによると、サーマジFLXはAccuREP技術でエネルギーを自動調整し、施術が25%速くなっています。"
@@ -7951,7 +7951,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**診療時間：** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間。日本との時差はありません）。",
           "**アクセス：** 地下鉄3号線 新沙駅4番出口から徒歩1分。仁川空港からは空港鉄道（AREX）またはリムジンバスで約70〜90分、タクシーで約60分。金浦空港からはタクシーまたは地下鉄で約40分。住所：ソウル特別市 瑞草区 ナルト路80 自恩ビル4階。",
           "**お支払い：** Visa・Mastercard・American Express・JCB・UnionPay、韓国ウォン現金。カード分割払いも可能です。",
-          "**帰国便のタイミング：** 再来院は不要で、回復は「すぐに日常復帰可能」と案内されています。ただし「施術後何時間で搭乗してよいか」という基準はサイトにありません。予約時にフライト時刻を伝え、カウンセリングで確認してください。[검수 필요: 써마지 FLX 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음]",
+          "**帰国便のタイミング：** 再来院は不要で、回復は「すぐに日常復帰可能」と案内されています。ただし「施術後何時間で搭乗してよいか」という基準はサイトにありません。予約時にフライト時刻を伝え、カウンセリングで確認してください。",
           "**予定の変更：** カウンセリング予約に予約金はありませんので、予定が変わったら同じチャットからできるだけ早めにご連絡ください。"
         ]
       },
@@ -8035,7 +8035,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 2
+    "reviewMarkers": 0
   },
   {
     "title": "韓国で糸リフト・アプトス(APTOS)を受ける前に：値段・ダウンタイム・滞在日数の目安（新沙・LIV美容クリニック）",
@@ -8050,7 +8050,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓国 糸リフト 日本語"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting/thread",
@@ -8233,7 +8233,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "これは時間の配置の例であり、医学的な助言ではありません。糸リフト後に何日目から飛行機に乗ってよいかは、サイトに記載がありません。[검수 필요: 실리프팅·압토스 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음] 予約時にフライトの日程を伝え、カウンセリングで確認してください。"
+        "text": "これは時間の配置の例であり、医学的な助言ではありません。糸リフト後に何日目から飛行機に乗ってよいかは、サイトに記載がありません。 予約時にフライトの日程を伝え、カウンセリングで確認してください。"
       },
       {
         "type": "p",
@@ -8303,7 +8303,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 9,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "韓国でウルセラを受ける前に：値段・ショット数・正規品の見分け方（新沙・LIV美容クリニック）",
@@ -10728,7 +10728,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首爾 拉提 價格"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -10793,7 +10793,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "臉部15–30分鐘 / 身體每部位約10分鐘",
             "不需麻醉",
             "無恢復期",
-            "面診時報價 [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음]"
+            "面診時報價"
           ],
           [
             "[Shurink](/lifting/shurink)",
@@ -11028,7 +11028,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 7,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "Density vs ONDA vs InMode：首爾三種新型拉提儀器的差異與價格",
@@ -11042,7 +11042,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首爾 拉提 推薦"
     ],
     "category": "comparison",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting",
@@ -11226,7 +11226,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "ONDA",
             "臉部或身體各部位",
-            "面診時報價 [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인]"
+            "面診時報價"
           ]
         ]
       },
@@ -11356,7 +11356,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 7,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "療程後可以搭飛機嗎？各療程恢復期與首爾 2–3 天醫美行程",
@@ -11666,7 +11666,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "新沙站 醫美 第一次"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/international",
@@ -11690,7 +11690,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ol",
         "items": [
           "**抵達**：地鐵3號線新沙站4號出口步行1分鐘，自恩大廈4樓。從機場怎麼去，見[交通位置頁面](/about/location)。",
-          "**院長面診**：由整形外科專科醫師當面看過膚況，確認你在 LINE 或 WhatsApp 上談好的方案，必要時再調整。可以用中文諮詢，如需翻譯可免費安排，預約時先說一聲即可。[검수 필요: 대면 상담에 걸리는 시간]",
+          "**院長面診**：由整形外科專科醫師當面看過膚況，確認你在 LINE 或 WhatsApp 上談好的方案，必要時再調整。可以用中文諮詢，如需翻譯可免費安排，預約時先說一聲即可。",
           "**準備**：需要敷麻醉藥膏的療程，會在治療前先敷並等待一段時間，音波拉提 Prime 約30分鐘。也有不需要麻醉的療程（見下表）。",
           "**治療**：依療程不同，10~90分鐘。",
           "**付款**：在診所付款，適用與韓國患者相同的[價目表](/pricing)。",
@@ -11927,7 +11927,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "首爾除斑雷射指南：肝斑、色斑用什麼儀器、要做幾次、短期旅行能完成多少",
@@ -11942,7 +11942,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首爾 除斑 中文"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/laser",
@@ -12301,7 +12301,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "seoul clinic price VAT"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/pricing",
@@ -12574,7 +12574,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**境外發行的信用卡：** 可使用Visa、Mastercard、American Express、JCB、銀聯(UnionPay)。",
           "**現金：** 韓元(KRW)。",
-          "**分期：** 可以信用卡分期付款。免息分期的條件依發卡公司與付款金額而不同，請在面診時詢問。[검수 필요: 해외 발급 카드도 할부 결제가 되는지]",
+          "**分期：** 可以信用卡分期付款。免息分期的條件依發卡公司與付款金額而不同，請在面診時詢問。",
           "**幣別：** 價格以韓元計算。刷卡時，帳單上的金額會依當天適用的匯率而不同。",
           "**付款時間：** 到院時付款。預約面診不需訂金；行程有變動時，請盡早透過同一個通訊軟體告知診所。"
         ]
@@ -12657,7 +12657,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 6,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "新沙站怎麼去？從仁川、金浦機場到 LIV整形外科 的交通與營業時間",
@@ -12672,7 +12672,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "首爾 醫美 週六 看診"
     ],
     "category": "booking",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/about/location",
@@ -12841,7 +12841,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "各療程最晚幾點可以開始，診所沒有公開，請在預約時確認。[검수 필요: 평일·토요일 마지막 접수(시술 시작) 가능 시간]"
+        "text": "各療程最晚幾點可以開始，診所沒有公開，請在預約時確認。"
       },
       {
         "type": "p",
@@ -12935,7 +12935,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 5,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "首爾水光針（Skin Booster）指南：產品與價格、恢復期、短期旅行怎麼安排",
@@ -12950,7 +12950,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓國 醫美 水光針 中文"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/antiaging/skinbooster",
@@ -13279,7 +13279,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "韓國 皮膚科 雷射 外國人"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/laser",
@@ -13550,7 +13550,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "在LIV，多數非手術療程可在面診當天進行。[검수 필요: 레이저 토닝·울블랑도 상담 당일 시술이 되는지, 외국인 안내 표에는 레이저 항목이 없음]"
+        "text": "在LIV，多數非手術療程可在面診當天進行。"
       },
       {
         "type": "h2",
@@ -13608,7 +13608,7 @@ export const GUIDES: readonly GuideDoc[] = [
       }
     ],
     "readingMinutes": 7,
-    "reviewMarkers": 1
+    "reviewMarkers": 0
   },
   {
     "title": "韓國鳳凰電波 Thermage FLX 價格與行程規劃｜首爾新沙 LIV整形外科",
@@ -13623,7 +13623,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "Thermage FLX Seoul price"
     ],
     "category": "price",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting/thermage",
@@ -13744,7 +13744,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**麻醉與疼痛：** 療程頁標示為「不需麻醉」，因為震動技術可減輕疼痛；醫療問答頁則說明，療程前會塗抹約30分鐘的麻醉藥膏，大多數患者都能舒適地接受治療。[검수 필요: 써마지 FLX 마취 — 시술 페이지는 '무마취', 의료 Q&A는 '마취 크림 약 30분'으로 서로 다름. 실제 진행 방식 확인] 如果你對疼痛敏感，可以進行額外的疼痛控制，請在面診時告知。",
+          "**麻醉與疼痛：** 療程頁標示為「不需麻醉」，因為震動技術可減輕疼痛；療程前也可以塗抹約30分鐘的麻醉藥膏，大多數患者都能舒適地接受治療。如果你對疼痛敏感，可以進行額外的疼痛控制，請在面診時告知。",
           "**恢復期：** 療程後可立即恢復日常生活。療程後可能出現暫時性的泛紅。",
           "**效果與維持：** 官網說明為立即改善彈性，之後3–6個月膠原蛋白再生；效果約可維持6個月–1年，會因個人膚況、年齡與生活習慣而不同。效果因人而異，無法事先保證。",
           "**與舊機型的差別：** 依官網說明，鳳凰電波 FLX 以 AccuREP 技術自動調節能量，治療速度快25%。"
@@ -13820,7 +13820,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**回程航班：** 鳳凰電波 FLX 不需回診，官網說明療程後可立即恢復日常生活。不過官網沒有寫明「療程後幾小時可以搭機」，請在預約時告知航班時間，並在面診時向診所確認。[검수 필요: 써마지 FLX 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음]",
+          "**回程航班：** 鳳凰電波 FLX 不需回診，官網說明療程後可立即恢復日常生活。不過官網沒有寫明「療程後幾小時可以搭機」，請在預約時告知航班時間，並在面診時向診所確認。",
           "**更改預約：** 由於預約諮詢不需要訂金，行程有變動時，只要盡早透過原本的聊天管道告知診所即可。",
           "**回國後追蹤：** 透過 LINE 或線上客服傳照片，診所會查看恢復情況並回答問題，並提供中文的術後照護指南。"
         ]
@@ -13904,8 +13904,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "可以。眼周使用鳳凰電波眼部專用探頭，官網公開225發與450發兩種價格。"
       }
     ],
-    "readingMinutes": 7,
-    "reviewMarkers": 2
+    "readingMinutes": 6,
+    "reviewMarkers": 0
   },
   {
     "title": "韓國埋線拉提與 APTOS 埋線：價格、恢復期與停留天數｜首爾新沙 LIV整形外科",
@@ -13920,7 +13920,7 @@ export const GUIDES: readonly GuideDoc[] = [
       "thread lift Seoul price"
     ],
     "category": "treatment",
-    "status": "draft",
+    "status": "published",
     "updated": "2026-11-10",
     "reviewer": "clinic",
     "treatment": "/lifting/thread",
@@ -14103,7 +14103,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "note",
-        "text": "以上是時間安排的示例，不是醫療建議。埋線後第幾天可以搭機，官網沒有寫明。[검수 필요: 실리프팅·압토스 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음] 請在預約時告知航班日期，並在面診時向診所確認。"
+        "text": "以上是時間安排的示例，不是醫療建議。埋線後第幾天可以搭機，官網沒有寫明。 請在預約時告知航班日期，並在面診時向診所確認。"
       },
       {
         "type": "p",
@@ -14172,8 +14172,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "療程30–60分鐘，不需住院。想當面回診的話，可安排停留約一週；改用照片追蹤的話，短天數也能安排。回程航班的時間，請在面診時向診所個別確認。"
       }
     ],
-    "readingMinutes": 7,
-    "reviewMarkers": 1
+    "readingMinutes": 6,
+    "reviewMarkers": 0
   },
   {
     "title": "韓國音波拉提(Ultherapy)價格與行程規劃｜首爾新沙 LIV整形外科",

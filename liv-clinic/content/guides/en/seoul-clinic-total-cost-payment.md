@@ -9,7 +9,7 @@ keywords:
   - korea clinic deposit foreigner
   - seoul aesthetic clinic total cost
 category: price
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /pricing
@@ -102,7 +102,7 @@ In each case the consultation fee does not sit on top of the treatment: once you
 
 - **Cards issued abroad:** Visa, Mastercard, American Express, JCB and UnionPay are accepted.
 - **Cash:** Korean won (KRW).
-- **Installments:** credit card installment payments are available. Interest-free installment terms vary by card company and payment amount, so ask during your consultation. [검수 필요: 해외 발급 카드도 할부 결제가 되는지]
+- **Installments:** credit card installment payments are available. Interest-free installment terms vary by card company and payment amount, so ask during your consultation.
 - **Currency:** prices are set in Korean won. If you pay by card, the amount that appears on your statement depends on the exchange rate applied on the day.
 - **When you pay:** at the clinic. No deposit is taken to reserve a consultation; if your plans change, let the clinic know through the same messenger as early as you can.
 

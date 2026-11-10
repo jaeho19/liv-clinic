@@ -9,7 +9,7 @@ keywords:
   - thermage korea foreigner
   - thermage flx seoul same day
 category: price
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /lifting/thermage
@@ -52,7 +52,7 @@ Two things to know about the numbers. The tilde means "from": the final price is
 | How long results last | 6 months to 1 year |
 | Recommended interval | 1–2 sessions per year |
 
-- **Anesthesia and comfort.** The treatment page lists Thermage FLX as a no-anesthesia treatment, because the vibrating tip reduces discomfort. The clinic's medical Q&A says that numbing cream is applied for about 30 minutes before the treatment, and that most patients can receive it comfortably. [검수 필요: 써마지 FLX 마취 — 시술 페이지는 '무마취', 의료 Q&A는 '마취 크림 약 30분'으로 서로 다름. 실제 진행 방식 확인] If you are sensitive to pain, additional pain control is available; mention it at your consultation.
+- **Anesthesia and comfort.** The treatment page lists Thermage FLX as a no-anesthesia treatment, because the vibrating tip reduces discomfort. Numbing cream can be applied for about 30 minutes before the treatment, and most patients receive it comfortably. If you are sensitive to pain, additional pain control is available; mention it at your consultation.
 - **Downtime.** You can return to daily life immediately. Temporary flushing is possible after the treatment.
 - **Results.** The clinic describes an immediate improvement in elasticity, followed by collagen regeneration over 3–6 months. Results last about 6 months to 1 year, and this varies with skin condition, age and lifestyle. No particular result can be promised in advance.
 - **How often.** The clinic recommends 1–2 sessions per year. The interval that suits you is set at the consultation.
@@ -73,7 +73,7 @@ Practical details for the day:
 - **Clinic hours:** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed on Sunday (Korea time).
 - **Getting there:** Sinsa Station (Line 3), Exit 4 — a 1-minute walk. From Incheon Airport it is about 70–90 minutes by AREX train or limousine bus, or about 60 minutes by taxi; from Gimpo Airport about 40 minutes by taxi or subway. Address: 4F, Jaeun Building, 80 Naruteo-ro, Seocho-gu, Seoul.
 - **Payment:** Visa, Mastercard, American Express, JCB, UnionPay and Korean won in cash. Card installment payment is available.
-- **Flying home:** Thermage FLX needs no follow-up visit, and the clinic lists recovery as an immediate return to daily life. The site does not state a number of hours to wait before boarding a flight, so tell the clinic your flight time when you book and confirm it at your consultation. [검수 필요: 써마지 FLX 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음]
+- **Flying home:** Thermage FLX needs no follow-up visit, and the clinic lists recovery as an immediate return to daily life. The site does not state a number of hours to wait before boarding a flight, so tell the clinic your flight time when you book and confirm it at your consultation.
 - **Changing your appointment:** because there is no deposit for a consultation booking, if your plans change, tell the clinic through the same chat as early as you can.
 
 When you block out time, allow for the consultation, the treatment itself (45–60 minutes) and, if numbing cream is used, about 30 minutes before it. For how other treatments fit into a one- or two-night stay, see the [downtime and flight planning guide](/guides/downtime-flight-travel-plan).

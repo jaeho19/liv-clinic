@@ -10,7 +10,7 @@ keywords:
   - freckle removal seoul
   - pigmentation treatment korea foreigner
 category: treatment
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /laser

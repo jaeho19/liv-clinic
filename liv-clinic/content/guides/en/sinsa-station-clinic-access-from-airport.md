@@ -9,7 +9,7 @@ keywords:
   - seoul clinic opening hours saturday
   - korea time zone clinic appointment
 category: booking
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /about/location
@@ -72,7 +72,7 @@ Most non-surgical treatments take 30 to 90 minutes and need no hospitalization, 
 | Saturday morning | Possible only if you can reach Sinsa with time to spare before 16:00. Otherwise plan for Monday. |
 | Saturday afternoon or Sunday | The clinic is closed on Sunday. The first available day is Monday from 10:00. |
 
-> The latest time the clinic takes a patient for a given treatment is not published. Ask when you book. [검수 필요: 평일·토요일 마지막 접수(시술 시작) 가능 시간]
+> The latest time the clinic takes a patient for a given treatment is not published. Ask when you book.
 
 Three habits make scheduling easier:
 

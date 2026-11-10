@@ -10,7 +10,7 @@ keywords:
   - melasma treatment Korea
   - 首爾 除斑 中文
 category: treatment
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /laser

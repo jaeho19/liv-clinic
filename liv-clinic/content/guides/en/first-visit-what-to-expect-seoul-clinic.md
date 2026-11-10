@@ -9,7 +9,7 @@ keywords:
   - what to tell clinic before treatment korea
   - seoul skin clinic english interpreter
 category: booking
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /international
@@ -22,7 +22,7 @@ This guide follows one visit to LIV Plastic Surgery (LIV) from the front door to
 ## The day in six steps
 
 1. **Arrive.** Sinsa Station, Line 3, Exit 4. The clinic is a one-minute walk away, on the 4th floor of the Jaeun Building. Routes from the airports are in the [location page](/about/location).
-2. **Consultation with the doctor.** A board-certified plastic surgeon examines your skin in person and confirms, or adjusts, the plan you discussed by messenger. Consultations are available in English, Japanese and Chinese, and an interpreter is arranged free of charge if you ask for one when you book. [검수 필요: 대면 상담에 걸리는 시간]
+2. **Consultation with the doctor.** A board-certified plastic surgeon examines your skin in person and confirms, or adjusts, the plan you discussed by messenger. Consultations are available in English, Japanese and Chinese, and an interpreter is arranged free of charge if you ask for one when you book.
 3. **Preparation.** Where a treatment uses a topical anesthetic cream, it goes on before the treatment and needs time to work — about 30 minutes for Ultherapy Prime. Some treatments need no anesthesia at all (table below).
 4. **Treatment.** Between 10 and 90 minutes depending on what you are having.
 5. **Payment.** You pay at the clinic, from the same published [price list](/pricing) as Korean patients.

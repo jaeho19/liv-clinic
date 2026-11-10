@@ -9,7 +9,7 @@ keywords:
   - 埋線拉提 音波拉提 差別
   - 首爾 拉提 價格
 category: comparison
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /lifting
@@ -25,7 +25,7 @@ treatment: /lifting
 | [鳳凰電波 Thermage FLX](/lifting/thermage) | RF（射頻），作用於真皮層 | 45–60分鐘 | 通常不需麻醉，可依需求塗麻醉藥膏 | 可立即恢復日常生活 | 1,000,000韓元起 |
 | [Density](/lifting/density) | 射頻拉提入門儀器 | 40–60分鐘 | 麻醉藥膏（可選擇） | 可立即恢復日常生活 | 890,000韓元起 |
 | [InMode](/lifting/inmode) | 射頻，分 FX 與 FORMA 模式 | 30–60分鐘 | 不麻醉或使用麻醉藥膏 | 可立即恢復日常生活 | 150,000韓元起 |
-| [ONDA](/lifting/onda) | 2.45GHz微波（不是射頻） | 臉部15–30分鐘 / 身體每部位約10分鐘 | 不需麻醉 | 無恢復期 | 面診時報價 [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음] |
+| [ONDA](/lifting/onda) | 2.45GHz微波（不是射頻） | 臉部15–30分鐘 / 身體每部位約10分鐘 | 不需麻醉 | 無恢復期 | 面診時報價 |
 | [Shurink](/lifting/shurink) | HIFU，適合以合理費用定期管理 | 30–45分鐘 | 麻醉藥膏（可選擇） | 可立即恢復日常生活 | 200,000韓元起 |
 | [埋線拉提 Thread Lift](/lifting/thread) | 局部麻醉下置入線材 | 30–60分鐘 | 局部麻醉 | 3–7天（可能出現瘀青、腫脹） | 800,000韓元起 |
 | [APTOS 生物拉提](/lifting/aptos) | APTOS 品牌線材的拉提 | 30–60分鐘 | 局部麻醉 | 3–7天（可能出現瘀青、腫脹） | 1,500,000韓元起 |

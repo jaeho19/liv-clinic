@@ -9,7 +9,7 @@ keywords:
   - Density InMode 差別
   - 首爾 拉提 推薦
 category: comparison
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /lifting
@@ -69,7 +69,7 @@ Density 與 InMode 的價格公開在各自的療程頁面。
 | InMode | FX 模式 | 150,000韓元起 |
 | InMode | FORMA 模式 | 200,000韓元起 |
 | InMode | FX / FORMA 模式 | 250,000韓元起 |
-| ONDA | 臉部或身體各部位 | 面診時報價 [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인] |
+| ONDA | 臉部或身體各部位 | 面診時報價 |
 
 > 單次價格 · 未含加值稅(VAT) · 實際金額依個人膚況、治療範圍與所用產品，於面診後確定。外國患者與韓國患者適用相同的價目表。
 

@@ -10,7 +10,7 @@ keywords:
   - 韓國醫美 訂金
   - seoul clinic price VAT
 category: price
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /pricing
@@ -103,7 +103,7 @@ treatment: /pricing
 
 - **境外發行的信用卡：** 可使用Visa、Mastercard、American Express、JCB、銀聯(UnionPay)。
 - **現金：** 韓元(KRW)。
-- **分期：** 可以信用卡分期付款。免息分期的條件依發卡公司與付款金額而不同，請在面診時詢問。[검수 필요: 해외 발급 카드도 할부 결제가 되는지]
+- **分期：** 可以信用卡分期付款。免息分期的條件依發卡公司與付款金額而不同，請在面診時詢問。
 - **幣別：** 價格以韓元計算。刷卡時，帳單上的金額會依當天適用的匯率而不同。
 - **付款時間：** 到院時付款。預約面診不需訂金；行程有變動時，請盡早透過同一個通訊軟體告知診所。
 

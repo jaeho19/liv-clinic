@@ -10,7 +10,7 @@ keywords:
   - スキンブースター ダウンタイム
   - 水光注射 韓国 旅行
 category: treatment
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /antiaging/skinbooster

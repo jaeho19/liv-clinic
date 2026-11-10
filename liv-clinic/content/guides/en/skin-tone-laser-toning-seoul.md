@@ -9,7 +9,7 @@ keywords:
   - laser toning downtime
   - korea skin clinic laser foreigner
 category: treatment
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /laser
@@ -93,7 +93,7 @@ What the facts support, plainly:
 - **If a pigment laser is added, plan for scabs.** With Clarity II or Lucas, allow for 3–7 days in which treated spots may darken or form fine scabs. Put that session early in your trip, or leave it for a visit when you have the time.
 - **Sun is the real scheduling issue.** The clinic advises thorough sun protection for at least 2–4 weeks after any laser treatment and suggests avoiding laser treatment in periods with a lot of outdoor activity. If the rest of your holiday is beaches or hiking, say so.
 
-Most non-surgical treatments at LIV are done on the same day as the in-person consultation. [검수 필요: 레이저 토닝·울블랑도 상담 당일 시술이 되는지, 외국인 안내 표에는 레이저 항목이 없음]
+Most non-surgical treatments at LIV are done on the same day as the in-person consultation.
 
 ## Aftercare
 

@@ -10,7 +10,7 @@ keywords:
   - 水光針 恢復期
   - 韓國 醫美 水光針 中文
 category: treatment
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /antiaging/skinbooster

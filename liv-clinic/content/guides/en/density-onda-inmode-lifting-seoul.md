@@ -9,7 +9,7 @@ keywords:
   - density rf lifting price
   - onda vs inmode
 category: comparison
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /lifting
@@ -69,7 +69,7 @@ Density and InMode prices are published on their treatment pages.
 | InMode | FX mode | KRW 150,000~ |
 | InMode | FORMA mode | KRW 200,000~ |
 | InMode | FX / FORMA mode | KRW 250,000~ |
-| ONDA | Face or body area | Quoted at consultation [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음, 공개 가능한 가격인지 확인] |
+| ONDA | Face or body area | Quoted at consultation |
 
 > Per session · VAT not included · The exact price is confirmed after your consultation and may vary with your skin condition, treatment scope and the products used. International patients are charged from the same price list as Korean patients.
 

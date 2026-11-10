@@ -10,7 +10,7 @@ keywords:
   - aptos namica price
   - how long to stay in korea thread lift
 category: treatment
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /lifting/thread
@@ -79,7 +79,7 @@ The treatment itself takes 30–60 minutes, needs no hospitalization, and in mos
 | Short stay with remote follow-up | Consultation and treatment on one visit, then the one-week check is done by photo after you are home. The 3–7 day bruising and swelling period will overlap with your return journey. |
 | About one week | Treatment early in the trip, in-person check about one week later before you leave. Most of the 3–7 day recovery period passes while you are still in Seoul. |
 
-> These are ways of arranging time, not medical advice. The site does not state how soon after a thread lift you may fly. [검수 필요: 실리프팅·압토스 시술 후 비행기 탑승 가능 시점 — 사이트에 기준 없음] Tell the clinic your flight dates when you book, and confirm the timing at your consultation.
+> These are ways of arranging time, not medical advice. The site does not state how soon after a thread lift you may fly. Tell the clinic your flight dates when you book, and confirm the timing at your consultation.
 
 If you also want a laser lifting treatment, the clinic says it can be combined 1–2 weeks after a thread lift, or 2–4 weeks after APTOS, so the two do not usually fit into one short trip. See the [lifting overview](/lifting) for the device options, and the [downtime and flight planning guide](/guides/downtime-flight-travel-plan) for how other treatments fit into one or two nights.
 

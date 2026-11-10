@@ -9,7 +9,7 @@ keywords:
   - thread lift vs ultherapy korea
   - korea lifting treatment price
 category: comparison
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /lifting
@@ -25,7 +25,7 @@ A Seoul clinic's lifting menu can run to eight names, and most visitors arrive k
 | [Thermage FLX](/lifting/thermage) | RF (radiofrequency) for the dermal layer | 45–60 min | Usually none; cream on request | Immediate return to daily life | KRW 1,000,000~ |
 | [Density](/lifting/density) | Entry-level RF lifting device | 40–60 min | Anesthetic cream (optional) | Immediate return to daily life | KRW 890,000~ |
 | [InMode](/lifting/inmode) | RF, with FX and FORMA modes | 30–60 min | None, or anesthetic cream | Immediate return to daily life | KRW 150,000~ |
-| [ONDA](/lifting/onda) | 2.45 GHz microwave (not RF) | Face 15–30 min / about 10 min per body area | Not required | No downtime | Quoted at consultation [검수 필요: 온다 가격 — 사이트·근거 시트에 가격이 없음] |
+| [ONDA](/lifting/onda) | 2.45 GHz microwave (not RF) | Face 15–30 min / about 10 min per body area | Not required | No downtime | Quoted at consultation |
 | [Shurink](/lifting/shurink) | HIFU for regular care at a reasonable cost | 30–45 min | Anesthetic cream (optional) | Immediate return to daily life | KRW 200,000~ |
 | [Thread lift](/lifting/thread) | Threads placed under local anesthesia | 30–60 min | Local anesthesia | 3–7 days (bruising and swelling possible) | KRW 800,000~ |
 | [APTOS](/lifting/aptos) | APTOS-brand thread lifting | 30–60 min | Local anesthesia | 3–7 days (bruising and swelling possible) | KRW 1,500,000~ |

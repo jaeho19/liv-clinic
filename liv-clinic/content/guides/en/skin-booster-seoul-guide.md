@@ -10,7 +10,7 @@ keywords:
   - skin booster downtime
   - skin booster korea foreigner
 category: treatment
-status: draft
+status: published
 updated: 2026-11-10
 reviewer: clinic
 treatment: /antiaging/skinbooster
