@@ -88,7 +88,9 @@ describe('technical SEO regression', () => {
 describe('buildHreflangMap', () => {
   it('lists every locale with BCP-47 codes and x-default → /en', () => {
     const map = buildHreflangMap('/events/first-visit');
-    expect(Object.keys(map)).toHaveLength(LOCALES.length + 1);
+    // 로케일 전부 + 홍콩 번체(zh-Hant-HK → /zh-TW) + x-default
+    expect(Object.keys(map)).toHaveLength(LOCALES.length + 2);
+    expect(map['zh-Hant-HK']).toBe(`${BASE_URL}/zh-TW/events/first-visit`);
     expect(map['ko-KR']).toBe(`${BASE_URL}/ko/events/first-visit`);
     expect(map['zh-Hans-CN']).toBe(`${BASE_URL}/zh/events/first-visit`);
     expect(map['zh-Hant-TW']).toBe(`${BASE_URL}/zh-TW/events/first-visit`);
@@ -119,7 +121,7 @@ describe('getSiteName', () => {
 describe('buildHreflangMap with a locale subset (guides)', () => {
   it('lists only the given locales and points x-default at en', () => {
     const map = buildHreflangMap('/guides/ultherapy-cost-seoul', ['en', 'ja', 'zh', 'zh-TW']);
-    expect(Object.keys(map).sort()).toEqual(['en', 'ja-JP', 'x-default', 'zh-Hans-CN', 'zh-Hant-TW'].sort());
+    expect(Object.keys(map).sort()).toEqual(['en', 'ja-JP', 'x-default', 'zh-Hans-CN', 'zh-Hant-HK', 'zh-Hant-TW'].sort());
     expect(map['x-default']).toBe(`${BASE_URL}/en/guides/ultherapy-cost-seoul`);
   });
 
@@ -157,7 +159,7 @@ describe('generatePageMetadata guide options', () => {
 
   it('defaults to all locales and the website type', () => {
     const meta = generatePageMetadata({ locale: 'en', path: '/about' });
-    expect(Object.keys(meta.alternates!.languages as Record<string, string>)).toHaveLength(LOCALES.length + 1);
+    expect(Object.keys(meta.alternates!.languages as Record<string, string>)).toHaveLength(LOCALES.length + 2);
     expect((meta.openGraph as { type?: string }).type).toBe('website');
   });
 });

@@ -50,7 +50,7 @@ export function buildMonthlyPromotionDraft(year: number, month: number): Monthly
     title_zh: `${month}月促销活动`,
     description_ko: `리브성형외과 ${month}월 프로모션`,
     description_en: `LIV Plastic Surgery ${monthEn} Promotion`,
-    description_ja: `リブ形成外科${month}月プロモーション`,
+    description_ja: `LIV美容クリニック${month}月プロモーション`,
     description_zh: `LIV整形外科${month}月优惠活动`,
     start_date: `${year}-${mm}-01`,
     end_date: `${year}-${mm}-${pad2(lastDayOfMonth(year, month))}`,

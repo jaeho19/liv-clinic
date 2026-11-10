@@ -150,6 +150,9 @@ export function suggestChannel(lead: LegacyLeadFields): ChannelSuggestion | null
   if (/지인|소개/.test(text)) return { category: 'referral', detail: null, confidence: 'medium', reason: '기록에 지인·소개 언급' };
   if (/플레이스/.test(text)) return { category: 'naver_place', detail: null, confidence: 'low', reason: '기록에 플레이스 언급' };
   if (/네이버/.test(text)) return { category: 'naver_search', detail: null, confidence: 'low', reason: '기록에 네이버 언급' };
+  if (/chat\s*gpt|챗\s*gpt|지피티|제미나이|gemini|퍼플렉시티|perplexity|코파일럿|copilot|AI\s*검색|AI\s*추천/i.test(text)) {
+    return { category: 'ai_search', detail: null, confidence: 'low', reason: '기록에 AI 검색 언급' };
+  }
   if (/구글|google/i.test(text)) return { category: 'google_search', detail: null, confidence: 'low', reason: '기록에 구글 언급' };
   if (/카페|커뮤니티/.test(text)) return { category: 'community', detail: null, confidence: 'low', reason: '기록에 카페 언급' };
 

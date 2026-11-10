@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { SITE_INFO } from './constants';
+import { SITE_INFO, SOCIAL_LINKS } from './constants';
 import { LOCALES, type Locale } from '@/i18n/routing';
 import { LOCALE_META } from '@/i18n/locales-meta';
 import { isPreviewDeployment, SITE_URL } from './siteEnvironment';
@@ -38,7 +38,7 @@ export function getSiteName(locale?: string): string {
 }
 
 /** Clinic names in the other languages we publish, used for schema alternateName. */
-const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'LIV美容クリニック', 'リブ形成外科', 'LIV整形外科'] as const;
+const ALT_CLINIC_NAMES = [SITE_INFO.nameEn, 'LIV美容クリニック', 'リブ美容クリニック', 'リブ形成外科', 'LIV整形外科'] as const;
 
 /**
  * alternateName list for the LocalBusiness entity.
@@ -62,6 +62,8 @@ export function buildHreflangMap(path: string, locales: readonly string[] = LOCA
     ...Object.fromEntries(
       locales.map((code) => [LOCALE_META[code as Locale].hreflang, `${BASE_URL}/${code}${path}`]),
     ),
+    // 홍콩 전용 번역은 없다 — 번체 페이지(zh-TW)를 홍콩 번체 사용자에게도 알린다.
+    ...(locales.includes('zh-TW') ? { 'zh-Hant-HK': `${BASE_URL}/zh-TW${path}` } : {}),
     'x-default': `${BASE_URL}/${xDefault}${path}`,
   };
 }
@@ -1031,6 +1033,8 @@ export function generateLocalBusinessSchema(locale: string = 'ko') {
       'https://www.instagram.com/livps_official/',
       'https://blog.naver.com/liv_clinic',
       'https://pf.kakao.com/_hgFwn',
+      SOCIAL_LINKS.youtube,
+      'https://www.gangnamunni.com/hospitals/7195',
     ],
     medicalSpecialty: [
       'Dermatology',

@@ -17,7 +17,7 @@ describe('buildMonthlyPromotionDraft', () => {
     expect(draft.title_zh).toBe('9月促销活动');
     expect(draft.description_ko).toBe('리브성형외과 9월 프로모션');
     expect(draft.description_en).toBe('LIV Plastic Surgery September Promotion');
-    expect(draft.description_ja).toBe('リブ形成外科9月プロモーション');
+    expect(draft.description_ja).toBe('LIV美容クリニック9月プロモーション');
     expect(draft.description_zh).toBe('LIV整形外科9月优惠活动');
     expect(draft.start_date).toBe('2026-09-01');
     expect(draft.end_date).toBe('2026-09-30');

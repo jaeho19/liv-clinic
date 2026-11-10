@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { parseUtmFromSearch, captureUtm, readStoredUtm, pickUtmFields, storedUtmBody, UTM_STORAGE_KEY } from '../utm';
+import { parseUtmFromSearch, parseAiReferrer, captureUtm, readStoredUtm, pickUtmFields, storedUtmBody, UTM_STORAGE_KEY } from '../utm';
 
 function memStorage(initial: Record<string, string> = {}) {
   const map = new Map(Object.entries(initial));
@@ -118,5 +118,29 @@ describe('readStoredUtm', () => {
   test('객체가 아닌 값은 null', () => {
     const s = memStorage({ [UTM_STORAGE_KEY]: '"just a string"' });
     expect(readStoredUtm(s)).toBeNull();
+  });
+});
+
+describe('parseAiReferrer', () => {
+  test('AI 답변 화면 리퍼러를 utm_source로 바꾼다', () => {
+    expect(parseAiReferrer('https://chatgpt.com/')).toEqual({ source: 'chatgpt.com', medium: 'ai_referral' });
+    expect(parseAiReferrer('https://www.perplexity.ai/search/abc')).toEqual({ source: 'perplexity.ai', medium: 'ai_referral' });
+    expect(parseAiReferrer('https://gemini.google.com/app')).toEqual({ source: 'gemini.google.com', medium: 'ai_referral' });
+  });
+
+  test('일반 검색·빈 값·깨진 주소는 null', () => {
+    expect(parseAiReferrer('https://www.google.com/')).toBeNull();
+    expect(parseAiReferrer('https://notchatgpt.com/')).toBeNull();
+    expect(parseAiReferrer('')).toBeNull();
+    expect(parseAiReferrer('not a url')).toBeNull();
+  });
+
+  test('UTM이 있으면 UTM이 우선, 없으면 리퍼러로 채운다', () => {
+    const a = memStorage();
+    captureUtm('?utm_source=instagram', a, 'https://chatgpt.com/');
+    expect(readStoredUtm(a)).toEqual({ source: 'instagram' });
+    const b = memStorage();
+    captureUtm('', b, 'https://chatgpt.com/');
+    expect(readStoredUtm(b)).toEqual({ source: 'chatgpt.com', medium: 'ai_referral' });
   });
 });

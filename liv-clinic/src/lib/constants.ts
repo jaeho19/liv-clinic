@@ -1565,7 +1565,7 @@ export const EVENTS: EventItem[] = [
     description: {
       ko: '새해를 맞아 리브성형외과에서 준비한 특별 패키지! 새로운 시작을 위한 특별 할인 혜택.',
       en: 'Special package from LIV Plastic Surgery for the new year! Special discounts for a fresh start.',
-      ja: '新年を迎え、リブ形成外科で準備した特別パッケージ！新しいスタートのための特別割引。',
+      ja: '新年を迎え、LIV美容クリニックで準備した特別パッケージ！新しいスタートのための特別割引。',
       zh: '迎接新年，LIV整形外科准备的特别套餐！新起点特别优惠。',
     },
     posterImage: '/images/event/restart-2026/001.jpeg',

@@ -52,10 +52,38 @@ export function parseUtmFromSearch(search: string): UtmParams | null {
   return found ? out : null;
 }
 
-export function captureUtm(search: string, storage: StorageLike): void {
+/**
+ * AI 답변 화면에서 넘어온 방문의 리퍼러 호스트 → utm_source 값.
+ * UTM이 없는 방문만 대상이다(ChatGPT는 보통 utm_source=chatgpt.com을 직접 붙인다).
+ */
+const AI_REFERRER_HOSTS: [RegExp, string][] = [
+  [/(^|\.)chatgpt\.com$|(^|\.)chat\.openai\.com$/, 'chatgpt.com'],
+  [/(^|\.)perplexity\.ai$/, 'perplexity.ai'],
+  [/^gemini\.google\.com$/, 'gemini.google.com'],
+  [/^copilot\.microsoft\.com$/, 'copilot.microsoft.com'],
+  [/(^|\.)claude\.ai$/, 'claude.ai'],
+];
+
+export const AI_REFERRAL_MEDIUM = 'ai_referral';
+
+export function parseAiReferrer(referrer: string | null | undefined): UtmParams | null {
+  if (!referrer) return null;
+  let host: string;
+  try {
+    host = new URL(referrer).hostname.toLowerCase();
+  } catch {
+    return null;
+  }
+  for (const [re, source] of AI_REFERRER_HOSTS) {
+    if (re.test(host)) return { source, medium: AI_REFERRAL_MEDIUM };
+  }
+  return null;
+}
+
+export function captureUtm(search: string, storage: StorageLike, referrer?: string | null): void {
   try {
     if (storage.getItem(UTM_STORAGE_KEY)) return; // 첫 터치 유지
-    const utm = parseUtmFromSearch(search);
+    const utm = parseUtmFromSearch(search) ?? parseAiReferrer(referrer);
     if (!utm) return;
     storage.setItem(UTM_STORAGE_KEY, JSON.stringify(utm));
   } catch {

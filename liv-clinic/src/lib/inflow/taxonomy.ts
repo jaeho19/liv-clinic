@@ -34,6 +34,7 @@ export type ChannelCategory =
   | 'app'
   | 'naver_search'
   | 'google_search'
+  | 'ai_search'
   | 'naver_place'
   | 'kakao_map'
   | 'instagram'
@@ -50,6 +51,7 @@ export const CHANNEL_CATEGORIES: ChannelCategory[] = [
   'app',
   'naver_search',
   'google_search',
+  'ai_search',
   'naver_place',
   'kakao_map',
   'instagram',
@@ -67,6 +69,7 @@ export const CHANNEL_CATEGORY_LABELS: Record<ChannelCategory, string> = {
   app: '앱',
   naver_search: '네이버 검색',
   google_search: '구글 검색',
+  ai_search: 'AI 검색',
   naver_place: '네이버 플레이스',
   kakao_map: '카카오맵',
   instagram: '인스타그램',
@@ -85,6 +88,7 @@ export const CHANNEL_CATEGORY_COLORS: Record<ChannelCategory, string> = {
   app: 'bg-pink-500',
   naver_search: 'bg-emerald-600',
   google_search: 'bg-blue-500',
+  ai_search: 'bg-cyan-600',
   naver_place: 'bg-teal-500',
   kakao_map: 'bg-yellow-500',
   instagram: 'bg-fuchsia-500',
@@ -105,10 +109,12 @@ export function getChannelCategoryLabel(v: string | null | undefined): string {
 /** 대분류별 세부 채널 프리셋 (datalist 제안용 — 자유 입력 허용) */
 export const APP_CHANNEL_PRESETS = ['강남언니', '바비톡', '캐시닥', '여신티켓', '당근'] as const;
 export const FOREIGN_SNS_PRESETS = ['위챗', '샤오홍슈', '더우인', '왓츠앱', '라인'] as const;
+export const AI_SEARCH_PRESETS = ['ChatGPT', '제미나이', '퍼플렉시티', '코파일럿', '클로드'] as const;
 
 export const CHANNEL_DETAIL_PRESETS: Partial<Record<ChannelCategory, readonly string[]>> = {
   app: APP_CHANNEL_PRESETS,
   foreign_sns: FOREIGN_SNS_PRESETS,
+  ai_search: AI_SEARCH_PRESETS,
 };
 
 // ─── 시술 태그 ──────────────────────────────────────
