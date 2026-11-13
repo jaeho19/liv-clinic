@@ -5,6 +5,7 @@ import { routing } from './i18n/routing';
 import { LOCALES } from './i18n/routing';
 import type { Locale } from './i18n/routing';
 import { resolveLegacyRequest, type LegacyResolution } from './lib/legacyRedirects';
+import { preferTraditionalChinese } from './lib/acceptLanguage';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -146,6 +147,19 @@ export default async function middleware(request: NextRequest) {
     await supabase.auth.getUser();
 
     return supabaseResponse;
+  }
+
+  // 홍콩·마카오(zh-HK·zh-MO)·zh-Hant 브라우저는 번체(zh-TW)로 — next-intl 기본 협상은 간체 zh를 고른다.
+  // 언어 협상은 페이지 이동(GET·HEAD)에서만 쓰이므로, 본문이 있는 요청은 새 Request로 감싸지 않는다
+  // (Request를 복제하면 원래 요청의 본문이 소모된다).
+  if (request.method === 'GET' || request.method === 'HEAD') {
+    const acceptLanguage = request.headers.get('accept-language');
+    const preferred = preferTraditionalChinese(acceptLanguage);
+    if (preferred && preferred !== acceptLanguage) {
+      const headers = new Headers(request.headers);
+      headers.set('accept-language', preferred);
+      return intlMiddleware(new NextRequest(request, { headers }));
+    }
   }
 
   return intlMiddleware(request);
