@@ -7,7 +7,8 @@ import {
   type PartId,
   type TreatmentId,
 } from '@/lib/survey/questions';
-import type { SurveySummary } from '@/lib/survey/summary';
+import type { SurveyResponseLike, SurveySummary } from '@/lib/survey/summary';
+import ResponseList from './ResponseList';
 import { seoulDateTime } from '@/lib/survey/csv';
 
 /**
@@ -55,9 +56,12 @@ function Tile({ label, value, unit, sub }: { label: string; value: string; unit?
 export default function SurveyDashboard({
   summary,
   gifts,
+  responses,
 }: {
   summary: SurveySummary;
   gifts: { issued: number; redeemed: number };
+  /** 「응답 하나씩 보기」용 원본 응답(최신순) */
+  responses: SurveyResponseLike[];
 }) {
   const parts = [...summary.parts].sort((a, b) => (a.avg ?? 99) - (b.avg ?? 99));
   const questions = [...summary.questions].sort((a, b) => (a.avg ?? 99) - (b.avg ?? 99));
@@ -233,6 +237,8 @@ export default function SurveyDashboard({
           )}
         </Card>
       </div>
+
+      <ResponseList responses={responses} />
     </div>
   );
 }

@@ -178,7 +178,7 @@ export default function SurveyAdminPage() {
           {data.truncated && (
             <p className="text-xs text-[#9a4a2f]">응답이 너무 많아 최근 5,000건만 계산했어요. 기간을 줄여 주세요.</p>
           )}
-          <SurveyDashboard summary={summary} gifts={data.gifts} />
+          <SurveyDashboard summary={summary} gifts={data.gifts} responses={data.responses} />
         </>
       )}
     </div>
