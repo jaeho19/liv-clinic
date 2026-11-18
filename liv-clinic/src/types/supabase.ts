@@ -131,6 +131,66 @@ export type Database = {
         }
         Relationships: []
       }
+      survey_responses: {
+        Row: {
+          comment: string | null
+          created_at: string
+          first_visit: boolean
+          id: string
+          locale: string
+          ratings: Json
+          recommend: number
+          skipped_parts: string[]
+          survey_version: number
+          treatment_other: string | null
+          treatments: string[]
+        }
+        Insert: {
+          comment?: string | null
+          created_at?: string
+          first_visit: boolean
+          id?: string
+          locale: string
+          ratings?: Json
+          recommend: number
+          skipped_parts?: string[]
+          survey_version?: number
+          treatment_other?: string | null
+          treatments: string[]
+        }
+        Update: {
+          comment?: string | null
+          created_at?: string
+          first_visit?: boolean
+          id?: string
+          locale?: string
+          ratings?: Json
+          recommend?: number
+          skipped_parts?: string[]
+          survey_version?: number
+          treatment_other?: string | null
+          treatments?: string[]
+        }
+        Relationships: []
+      }
+      survey_gift_codes: {
+        Row: {
+          code: string
+          issued_on: string
+          redeemed_at: string | null
+        }
+        Insert: {
+          code: string
+          issued_on?: string
+          redeemed_at?: string | null
+        }
+        Update: {
+          code?: string
+          issued_on?: string
+          redeemed_at?: string | null
+        }
+        Relationships: []
+      }
       chat_ai_turns: {
         Row: {
           attempts: number
