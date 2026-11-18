@@ -6,6 +6,7 @@ import { LOCALES } from './i18n/routing';
 import type { Locale } from './i18n/routing';
 import { resolveLegacyRequest, type LegacyResolution } from './lib/legacyRedirects';
 import { preferTraditionalChinese } from './lib/acceptLanguage';
+import { SURVEY_PUBLIC_PATH, SURVEY_SHARE_PATH } from './lib/survey/questions';
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -112,6 +113,14 @@ export default async function middleware(request: NextRequest) {
   }
   const bookLocale = pathname.match(BOOK_LOCALE_RE)?.[1] as Locale | undefined;
   if (bookLocale) return bookRedirect(request, bookLocale);
+
+  // /survey 짧은 주소(카톡으로 보내는 만족도 설문) → 리다이렉트 없이 한국어 설문(/ko/survey)을 그대로 보여 준다.
+  // 리다이렉트하면 카카오톡이 최종 주소(/ko/survey)의 썸네일 없는 옛 미리보기 캐시를 쓸 수 있어 rewrite 로 둔다.
+  if (pathname === SURVEY_SHARE_PATH || pathname === `${SURVEY_SHARE_PATH}/`) {
+    const url = request.nextUrl.clone();
+    url.pathname = SURVEY_PUBLIC_PATH;
+    return NextResponse.rewrite(url);
+  }
 
   // /wechat 안내 페이지는 zh 전용. 다른 로케일 접근은 /zh/wechat으로 redirect.
   if (WECHAT_REDIRECT_RE.test(pathname)) {

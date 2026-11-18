@@ -46,8 +46,9 @@ const base = {
 };
 
 describe('문항 구조', () => {
-  it('카톡으로 보내는 주소는 공개 주소에 쿼리만 붙인 것(같은 화면, 카카오 미리보기 캐시만 새로)', () => {
-    expect(SURVEY_SHARE_PATH.startsWith(`${SURVEY_PUBLIC_PATH}?`)).toBe(true);
+  it('카톡으로 보내는 주소는 짧은 /survey(미들웨어가 /ko/survey 로 rewrite), 공개 주소와 다르다', () => {
+    expect(SURVEY_SHARE_PATH).toBe('/survey');
+    expect(SURVEY_PUBLIC_PATH).toBe('/ko/survey');
   });
 
   it('문항 버전 2(종합 평가 1~5점), 같은 휴대폰 재응답은 3일 뒤', () => {
