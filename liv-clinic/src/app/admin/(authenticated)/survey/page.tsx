@@ -7,7 +7,7 @@ import { summarizeSurvey, type SurveyResponseLike } from '@/lib/survey/summary';
 import { buildSurveyCsv } from '@/lib/survey/csv';
 import { seoulDate } from '@/lib/survey/giftCode';
 import { PERIOD_LABELS, periodRange, type PeriodKey } from '@/lib/survey/periods';
-import { SURVEY_PUBLIC_PATH } from '@/lib/survey/questions';
+import { SURVEY_PUBLIC_PATH, SURVEY_SHARE_PATH } from '@/lib/survey/questions';
 import { copyText } from '@/lib/copyText';
 
 /**
@@ -61,7 +61,8 @@ export default function SurveyAdminPage() {
 
   const summary = useMemo(() => (data ? summarizeSurvey(data.responses) : null), [data]);
 
-  const surveyUrl = typeof window === 'undefined' ? SURVEY_PUBLIC_PATH : `${window.location.origin}${SURVEY_PUBLIC_PATH}`;
+  // 카톡으로 보내는 주소 — 카카오 미리보기 캐시를 피하려고 ?from=kakao 를 붙인다(questions.ts SURVEY_SHARE_PATH)
+  const surveyUrl = typeof window === 'undefined' ? SURVEY_SHARE_PATH : `${window.location.origin}${SURVEY_SHARE_PATH}`;
   const kakaoLine = `오늘 리브성형외과를 찾아 주셔서 감사합니다. 2분짜리 만족도 설문에 답해 주시면 작은 답례품을 드립니다. (이름은 받지 않습니다) ${surveyUrl}`;
 
   const copy = async (label: string, text: string) => {

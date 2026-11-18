@@ -42,7 +42,9 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   const surveyLocale = isSurveyLocale(locale) ? locale : 'en';
   const copy = SURVEY_COPY[surveyLocale];
   // 카카오톡 링크 미리보기(og:*) — 썸네일은 scripts/og/survey-og.html 로 만든 한국어 이미지 하나를 모든 언어가 쓴다
-  // (카톡으로 보내는 주소가 /ko/survey). 카카오는 미리보기를 캐시하므로 바꾼 뒤에는 카카오 공유 디버거에서 초기화.
+  // (카톡으로 보내는 주소가 /ko/survey?from=kakao). 카카오는 주소별로 미리보기를 캐시한다 — 바꾼 뒤에는 보내는 주소의
+  // 쿼리를 바꾸거나(questions.ts SURVEY_SHARE_PATH) 카카오 공유 디버거에서 초기화.
+  // og:url 은 넣지 않는다: 넣으면 카카오·페이스북이 ?from=kakao 를 이미 캐시된 /ko/survey 로 묶어 옛 미리보기를 쓸 수 있다.
   const image = { url: `${BASE_URL}/images/og/survey-ko.jpg`, width: 1200, height: 630, alt: copy.og.title };
   return {
     title: copy.metaTitle,
@@ -50,7 +52,6 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     robots: { index: false, follow: false },
     openGraph: {
       type: 'website',
-      url: `${BASE_URL}/${surveyLocale}/survey`,
       siteName: copy.brand,
       title: copy.og.title,
       description: copy.og.description,

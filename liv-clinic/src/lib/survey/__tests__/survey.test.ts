@@ -6,6 +6,8 @@ import {
   TREATMENT_IDS,
   GIFT_CODE_VALID_DAYS,
   RESUBMIT_AFTER_DAYS,
+  SURVEY_PUBLIC_PATH,
+  SURVEY_SHARE_PATH,
   SURVEY_VERSION,
 } from '../questions';
 import { SURVEY_COPY, fillCopy } from '../copy';
@@ -44,6 +46,10 @@ const base = {
 };
 
 describe('문항 구조', () => {
+  it('카톡으로 보내는 주소는 공개 주소에 쿼리만 붙인 것(같은 화면, 카카오 미리보기 캐시만 새로)', () => {
+    expect(SURVEY_SHARE_PATH.startsWith(`${SURVEY_PUBLIC_PATH}?`)).toBe(true);
+  });
+
   it('문항 버전 2(종합 평가 1~5점), 같은 휴대폰 재응답은 3일 뒤', () => {
     expect(SURVEY_VERSION).toBe(2);
     expect(RESUBMIT_AFTER_DAYS).toBe(3);

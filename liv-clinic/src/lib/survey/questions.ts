@@ -125,8 +125,16 @@ export function isPartShown(part: SurveyPart, treatments: readonly TreatmentId[]
   return !consultOnly;
 }
 
-/** 공개 설문 주소(카톡 문구·관리자 화면에 쓴다). */
+/** 공개 설문 주소. */
 export const SURVEY_PUBLIC_PATH = '/ko/survey';
+
+/**
+ * 카톡으로 보내는 주소(관리자 「설문 주소 복사」·「카톡 문구 복사」).
+ * 카카오톡은 처음 본 주소의 미리보기(썸네일)를 오래 캐시한다. /ko/survey 는 썸네일을 넣기 전(2026-11-18 22시)에
+ * 이미 공유돼 썸네일 없는 미리보기가 남았으므로, 처음 보는 주소(?from=kakao)로 보낸다 — 화면은 같다.
+ * 썸네일을 다시 바꾸면 이 값을 ?from=kakao2 처럼 바꿔야 새 미리보기가 나온다(또는 카카오 공유 디버거에서 초기화).
+ */
+export const SURVEY_SHARE_PATH = '/ko/survey?from=kakao';
 
 /** 답례품 번호 유효 기간(일) — 계획서 「남은 질문」, 대표원장 확인 전 임시값. */
 export const GIFT_CODE_VALID_DAYS = 90;
