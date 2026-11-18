@@ -1,0 +1,107 @@
+<!doctype html>
+<!--
+  만족도 설문 카카오톡·메신저 링크 미리보기 이미지(1200×630) 원본.
+  만들기: 이 파일을 브라우저(Playwright) 1200×630 창으로 열어 화면을 찍고
+  public/images/og/survey-ko.jpg 로 저장한다(2026-11-18, 사용자 요청 "썸네일을 조금 더 멋들어지게").
+  사진은 1층 로비 데스크(public/images/about/lobby.jpg) — 답례품을 데스크에서 받는다는 흐름과 맞춘다.
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&display=swap">
+<style>
+  @font-face { font-family: 'Paperlogy'; src: url('../../public/fonts/Paperlogy-4Regular-hangul.woff2') format('woff2'); font-weight: 400; unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF; }
+  @font-face { font-family: 'Paperlogy'; src: url('../../public/fonts/Paperlogy-4Regular-latin.woff2') format('woff2'); font-weight: 400; unicode-range: U+0000-024F, U+2000-206F; }
+  @font-face { font-family: 'Paperlogy'; src: url('../../public/fonts/Paperlogy-6SemiBold-hangul.woff2') format('woff2'); font-weight: 600; unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF; }
+  @font-face { font-family: 'Paperlogy'; src: url('../../public/fonts/Paperlogy-6SemiBold-latin.woff2') format('woff2'); font-weight: 600; unicode-range: U+0000-024F, U+2000-206F; }
+  @font-face { font-family: 'Paperlogy'; src: url('../../public/fonts/Paperlogy-7Bold-hangul.woff2') format('woff2'); font-weight: 700; unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF; }
+  @font-face { font-family: 'Paperlogy'; src: url('../../public/fonts/Paperlogy-7Bold-latin.woff2') format('woff2'); font-weight: 700; unicode-range: U+0000-024F, U+2000-206F; }
+
+  :root {
+    --rose: #b4988d;      /* globals.css --color-primary */
+    --brown: #6d4e42;     /* globals.css --color-secondary */
+    --ink: #575756;       /* globals.css --color-mono */
+    --paper: #f7f3f0;
+  }
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body {
+    position: relative;
+    font-family: 'Paperlogy', 'Malgun Gothic', sans-serif;
+    background:
+      radial-gradient(70% 90% at 100% 0%, rgba(180, 152, 141, 0.28) 0%, rgba(180, 152, 141, 0) 60%),
+      var(--paper);
+    color: var(--ink);
+  }
+  .photo {
+    position: absolute; inset: 0 auto 0 0; width: 470px;
+    background: url('../../public/images/about/lobby.jpg') 45% 42% / auto 118% no-repeat;
+  }
+  .photo::after {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(36, 25, 21, 0) 55%, rgba(36, 25, 21, 0.22) 100%);
+  }
+  .seam { position: absolute; left: 470px; top: 0; bottom: 0; width: 6px; background: var(--rose); opacity: 0.55; }
+  .panel {
+    position: absolute; left: 476px; right: 0; top: 0; bottom: 0;
+    padding: 0 72px 0 76px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .top { display: flex; align-items: center; justify-content: space-between; }
+  .top img { height: 36px; }
+  .eyebrow { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 30px; color: var(--rose); letter-spacing: 0.02em; }
+  h1 { margin: 34px 0 0; font-size: 88px; line-height: 1.02; font-weight: 700; color: var(--brown); letter-spacing: -0.02em; }
+  .sub { margin: 18px 0 0; font-size: 27px; font-weight: 400; color: var(--ink); }
+  .chips { display: flex; gap: 10px; margin-top: 28px; }
+  .chip { border: 1.5px solid rgba(180, 152, 141, 0.7); background: #fff; border-radius: 999px; padding: 9px 20px; font-size: 21px; font-weight: 600; color: var(--brown); }
+
+  /* 답례품 티켓 — 설문 완료 화면의 티켓과 같은 모양(양옆 홈 + 절취선) */
+  .ticket-wrap { margin-top: 34px; filter: drop-shadow(0 14px 18px rgba(109, 78, 66, 0.16)); }
+  .ticket {
+    display: flex; align-items: stretch; height: 96px; background: #fff; border-radius: 18px;
+    -webkit-mask: radial-gradient(circle 12px at 140px 0, transparent 11.5px, #000 12px) top / 100% 51% no-repeat,
+                  radial-gradient(circle 12px at 140px 100%, transparent 11.5px, #000 12px) bottom / 100% 51% no-repeat;
+  }
+  .stub {
+    width: 140px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px;
+    color: var(--rose); font-size: 19px; font-weight: 600; letter-spacing: 0.04em;
+    border-right: 2.5px dashed #ead9d1;
+  }
+  .stub svg { width: 34px; height: 34px; }
+  .main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 28px; }
+  .main b { font-size: 26px; color: var(--brown); font-weight: 700; }
+  .main span { margin-top: 6px; font-size: 18px; color: #8a817d; }
+</style>
+</head>
+<body>
+  <div class="photo"></div>
+  <div class="seam"></div>
+  <div class="panel">
+    <div class="top">
+      <img src="../../public/images/logo.png" alt="LIV">
+      <span class="eyebrow">Patient Feedback</span>
+    </div>
+    <h1>만족도 설문</h1>
+    <p class="sub">리브성형외과를 찾아 주셔서 감사합니다</p>
+    <div class="chips">
+      <span class="chip">2분이면 끝나요</span>
+      <span class="chip">이름은 받지 않아요</span>
+    </div>
+    <div class="ticket-wrap">
+      <div class="ticket">
+        <div class="stub">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3.5" y="8.5" width="17" height="4" rx="1" />
+            <path d="M5 12.5V20h14v-7.5M12 8.5V20" />
+            <path d="M12 8.5c-1.6-3.6-5.2-4-5.6-1.8-.3 1.6 2 1.8 5.6 1.8zM12 8.5c1.6-3.6 5.2-4 5.6-1.8.3 1.6-2 1.8-5.6 1.8z" />
+          </svg>
+          답례품
+        </div>
+        <div class="main">
+          <b>응답하시면 답례품을 드려요</b>
+          <span>완료 화면의 번호를 데스크에 보여 주세요</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -2,10 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createServerClient } from '@/lib/supabase-server';
 import { createAdminClient } from '@/lib/supabase-admin';
 import { addDays, seoulDate } from '@/lib/survey/giftCode';
+import { SURVEY_VERSION } from '@/lib/survey/questions';
 
 /**
  * GET /api/admin/survey?from=YYYY-MM-DD&to=YYYY-MM-DD — 기간(서울 날짜, 양 끝 포함) 안의 설문 응답과
  * 답례품 번호 발급·지급 수. 숫자 계산은 화면이 lib/survey/summary.ts 로 한다.
+ * 지금 문항 버전(SURVEY_VERSION)의 응답만 준다 — 버전마다 점수 척도가 달라 섞으면 평균이 틀린다
+ * (버전 1 = 2026-11-18 종합 평가 0~10점 시절, 시험 응답뿐).
  */
 
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
@@ -30,6 +33,7 @@ export async function GET(request: NextRequest) {
       admin
         .from('survey_responses')
         .select('*')
+        .eq('survey_version', SURVEY_VERSION)
         .gte('created_at', `${from}T00:00:00+09:00`)
         .lt('created_at', `${addDays(to, 1)}T00:00:00+09:00`)
         .order('created_at', { ascending: false })

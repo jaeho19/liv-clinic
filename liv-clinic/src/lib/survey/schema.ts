@@ -35,7 +35,7 @@ export const surveySubmissionSchema = z
     // 모르는 문항 id 가 오면 거절한다(오타·옛 화면이 엉뚱한 키를 저장하지 않게)
     ratings: z.strictObject(ratingsShape),
     skipped_parts: z.array(z.enum(SKIPPABLE_PART_IDS)).max(SKIPPABLE_PART_IDS.length).default([]),
-    recommend: z.number().int().min(0).max(10),
+    recommend: z.number().int().min(1).max(5),
     comment: z.string().trim().max(1000).optional(),
   })
   .superRefine((value, ctx) => {

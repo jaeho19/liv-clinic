@@ -26,10 +26,6 @@ function percent(value: number | null): string {
   return value === null ? '–' : `${Math.round(value * 100)}%`;
 }
 
-function signed(value: number | null): string {
-  if (value === null) return '–';
-  return value > 0 ? `+${value}` : String(value);
-}
 
 function Card({ title, note, children }: { title: string; note?: string; children: React.ReactNode }) {
   return (
@@ -90,15 +86,16 @@ export default function SurveyDashboard({
           sub={`답례품 ${gifts.redeemed}건 드림 · 번호 ${gifts.issued}건 발급`}
         />
         <Tile
-          label="추천 지수"
-          value={signed(summary.nps)}
-          sub={`9~10점 ${summary.promoters}명 · 7~8점 ${summary.passives}명 · 0~6점 ${summary.detractors}명`}
+          label="종합 평가 평균"
+          value={score(summary.recommendAvg)}
+          unit="/ 5점"
+          sub={`4~5점 ${summary.top}명 · 3점 ${summary.middle}명 · 1~2점 ${summary.low}명`}
         />
-        <Tile label="추천 점수 평균" value={score(summary.recommendAvg)} unit="/ 10점" />
+        <Tile label="추천하는 분" value={percent(summary.recommendTop)} sub="종합 평가에 4~5점을 준 분" />
         <Tile label="첫 방문 손님" value={percent(summary.firstVisitShare)} sub="나머지는 다시 방문" />
       </div>
       <p className="text-xs text-[#8a8a8a]">
-        추천 지수 = 9~10점을 준 분의 비율 − 0~6점을 준 분의 비율. -100에서 100 사이이고, 0보다 크면 추천하는 분이 더 많다는 뜻이에요.
+        종합 평가 = 「가족이나 지인에게 추천하시겠습니까?」에 준 1~5점. 「추천하는 분」은 그중 4~5점을 준 분의 비율이에요.
       </p>
 
       <Card title="파트별 점수" note="5점 만점 · 그 파트 문항 2개의 평균 · 낮은 순">
@@ -154,14 +151,15 @@ export default function SurveyDashboard({
         </div>
       </Card>
 
-      <Card title="달별 변화" note="파트 점수는 5점 만점">
+      <Card title="달별 변화" note="종합 평가·파트 점수는 5점 만점">
         <div className="-mx-4 overflow-x-auto px-4 lg:-mx-5 lg:px-5">
-          <table className="w-full min-w-[640px] text-sm">
+          <table className="w-full min-w-[720px] text-sm">
             <thead>
               <tr className="border-b border-[#e5e5e5] text-xs text-[#8a8a8a]">
                 <th className="py-2 pe-3 text-left font-medium">달</th>
                 <th className="py-2 pe-3 text-end font-medium">응답</th>
-                <th className="py-2 pe-3 text-end font-medium">추천 지수</th>
+                <th className="py-2 pe-3 text-end font-medium">종합 평가</th>
+                <th className="py-2 pe-3 text-end font-medium">추천하는 분</th>
                 {SURVEY_PARTS.map((p) => (
                   <th key={p.id} className="py-2 pe-3 text-end font-medium last:pe-0">
                     {p.adminLabel}
@@ -174,7 +172,8 @@ export default function SurveyDashboard({
                 <tr key={m.month} className="border-b border-[#f3f3f3] last:border-0 tabular-nums">
                   <td className="py-2 pe-3 text-[#575756]">{m.month.replace('-', '년 ')}월</td>
                   <td className="py-2 pe-3 text-end text-[#575756]">{m.count}</td>
-                  <td className="py-2 pe-3 text-end font-semibold text-[#6d4e42]">{signed(m.nps)}</td>
+                  <td className="py-2 pe-3 text-end font-semibold text-[#6d4e42]">{score(m.recommendAvg)}</td>
+                  <td className="py-2 pe-3 text-end text-[#575756]">{percent(m.recommendTop)}</td>
                   {SURVEY_PARTS.map((p) => (
                     <td key={p.id} className="py-2 pe-3 text-end text-[#575756] last:pe-0">
                       {score(m.parts[p.id])}
@@ -194,7 +193,7 @@ export default function SurveyDashboard({
               <tr className="border-b border-[#e5e5e5] text-xs text-[#8a8a8a]">
                 <th className="py-2 pe-3 text-left font-medium">시술</th>
                 <th className="py-2 pe-3 text-end font-medium">응답</th>
-                <th className="py-2 text-end font-medium">추천 지수</th>
+                <th className="py-2 text-end font-medium">종합 평가</th>
               </tr>
             </thead>
             <tbody>
@@ -202,7 +201,7 @@ export default function SurveyDashboard({
                 <tr key={t.id} className="border-b border-[#f3f3f3] last:border-0 tabular-nums">
                   <td className="py-2 pe-3 text-[#575756]">{TREATMENT_ADMIN_LABELS[t.id]}</td>
                   <td className="py-2 pe-3 text-end text-[#575756]">{t.count}</td>
-                  <td className="py-2 text-end font-semibold text-[#6d4e42]">{signed(t.nps)}</td>
+                  <td className="py-2 text-end font-semibold text-[#6d4e42]">{score(t.recommendAvg)}</td>
                 </tr>
               ))}
             </tbody>
@@ -218,7 +217,7 @@ export default function SurveyDashboard({
                 <li key={`${c.created_at}-${i}`} className="rounded-lg bg-[#faf8f7] px-3.5 py-3">
                   <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[#8a8a8a]">
                     <span className="tabular-nums">{seoulDateTime(c.created_at)}</span>
-                    <span className="rounded-full bg-white px-2 py-px font-semibold text-[#6d4e42]">추천 {c.recommend}점</span>
+                    <span className="rounded-full bg-white px-2 py-px font-semibold text-[#6d4e42]">종합 {c.recommend}점</span>
                     <span>{c.first_visit ? '첫 방문' : '다시 방문'}</span>
                     <span>
                       ·{' '}

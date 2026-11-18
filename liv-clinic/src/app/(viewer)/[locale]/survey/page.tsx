@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { SURVEY_LOCALES, isSurveyLocale } from '@/lib/survey/questions';
 import { SURVEY_COPY, SURVEY_LANGUAGE_NAMES } from '@/lib/survey/copy';
+import { BASE_URL } from '@/lib/seo';
 import SurveyForm from './SurveyForm';
 
 /**
@@ -38,10 +39,24 @@ export const viewport: Viewport = {
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale } = await params;
-  const copy = SURVEY_COPY[isSurveyLocale(locale) ? locale : 'en'];
+  const surveyLocale = isSurveyLocale(locale) ? locale : 'en';
+  const copy = SURVEY_COPY[surveyLocale];
+  // 카카오톡 링크 미리보기(og:*) — 썸네일은 scripts/og/survey-og.html 로 만든 한국어 이미지 하나를 모든 언어가 쓴다
+  // (카톡으로 보내는 주소가 /ko/survey). 카카오는 미리보기를 캐시하므로 바꾼 뒤에는 카카오 공유 디버거에서 초기화.
+  const image = { url: `${BASE_URL}/images/og/survey-ko.jpg`, width: 1200, height: 630, alt: copy.og.title };
   return {
     title: copy.metaTitle,
+    description: copy.og.description,
     robots: { index: false, follow: false },
+    openGraph: {
+      type: 'website',
+      url: `${BASE_URL}/${surveyLocale}/survey`,
+      siteName: copy.brand,
+      title: copy.og.title,
+      description: copy.og.description,
+      images: [image],
+    },
+    twitter: { card: 'summary_large_image', title: copy.og.title, description: copy.og.description, images: [image.url] },
   };
 }
 

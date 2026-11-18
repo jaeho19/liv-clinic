@@ -41,7 +41,8 @@ export interface SurveyCopy {
   skipPart: string;
   skippedNote: string;
   unskipPart: string;
-  recommend: { question: string; low: string; high: string };
+  /** 종합 평가(추천) 1점~5점 순서 */
+  recommend: { question: string; scale: readonly [string, string, string, string, string] };
   comment: { question: string; placeholder: string; privacy: string };
   submit: string;
   submitting: string;
@@ -57,7 +58,9 @@ export interface SurveyCopy {
     capture: string;
     noCode: string;
   };
-  already: { title: string; body: string };
+  already: { title: string; body: string; again: string };
+  /** 카카오톡·메신저 링크 미리보기 */
+  og: { title: string; description: string };
 }
 
 const ko: SurveyCopy = {
@@ -120,8 +123,7 @@ const ko: SurveyCopy = {
   unskipPart: '다시 답하기',
   recommend: {
     question: '가족이나 지인에게 리브성형외과를 추천하시겠습니까?',
-    low: '전혀 추천 안 함',
-    high: '꼭 추천함',
+    scale: ['전혀 추천 안 함', '추천 안 함', '보통', '추천함', '꼭 추천함'],
   },
   comment: {
     question: '좋았던 점, 아쉬웠던 점, 칭찬하고 싶은 직원이 있다면 적어 주세요.',
@@ -145,6 +147,11 @@ const ko: SurveyCopy = {
   already: {
     title: '이미 응답해 주셨어요',
     body: '참여해 주셔서 감사합니다. 받으신 답례품 번호를 다시 보여 드릴게요.',
+    again: '응답하신 날부터 {days}일이 지나면 다시 참여하실 수 있어요.',
+  },
+  og: {
+    title: '리브성형외과 만족도 설문',
+    description: '2분이면 끝나요 · 이름은 받지 않아요 · 응답하시면 작은 답례품을 드립니다',
   },
 };
 
@@ -208,8 +215,7 @@ const en: SurveyCopy = {
   unskipPart: 'Answer this section',
   recommend: {
     question: 'How likely are you to recommend LIV Plastic Surgery to family or friends?',
-    low: 'Not at all likely',
-    high: 'Extremely likely',
+    scale: ['Definitely not', 'Probably not', 'Not sure', 'Probably yes', 'Definitely yes'],
   },
   comment: {
     question: 'Tell us what you liked, what could be better, or any staff member you would like to thank.',
@@ -233,6 +239,11 @@ const en: SurveyCopy = {
   already: {
     title: "You've already answered",
     body: 'Thank you for taking part. Here is your gift code again.',
+    again: 'You can take the survey again {days} days after your last answer.',
+  },
+  og: {
+    title: 'LIV Plastic Surgery Satisfaction Survey',
+    description: 'Takes 2 minutes · No name needed · A small thank-you gift when you finish',
   },
 };
 
@@ -296,8 +307,7 @@ const ja: SurveyCopy = {
   unskipPart: '回答する',
   recommend: {
     question: 'ご家族やご友人にLIV美容クリニックを勧めたいと思いますか？',
-    low: 'まったく勧めない',
-    high: 'ぜひ勧めたい',
+    scale: ['まったく勧めない', '勧めない', 'どちらともいえない', '勧めたい', 'ぜひ勧めたい'],
   },
   comment: {
     question: '良かった点、改善してほしい点、褒めたいスタッフがいればご記入ください。',
@@ -321,6 +331,11 @@ const ja: SurveyCopy = {
   already: {
     title: 'すでにご回答いただいています',
     body: 'ご協力ありがとうございます。お礼の品の番号をもう一度表示します。',
+    again: '回答日から{days}日たつと、もう一度ご回答いただけます。',
+  },
+  og: {
+    title: 'LIV美容クリニック 満足度アンケート',
+    description: '約2分・お名前は不要・回答された方にささやかなお礼の品',
   },
 };
 
@@ -384,8 +399,7 @@ const zh: SurveyCopy = {
   unskipPart: '重新作答',
   recommend: {
     question: '您会向家人或朋友推荐LIV整形外科吗？',
-    low: '完全不会',
-    high: '一定会',
+    scale: ['完全不会', '不会', '一般', '会', '一定会'],
   },
   comment: {
     question: '请写下您满意的地方、希望改进的地方，或想表扬的员工。',
@@ -409,6 +423,11 @@ const zh: SurveyCopy = {
   already: {
     title: '您已经提交过了',
     body: '感谢您的参与，再次为您显示礼品编号。',
+    again: '提交{days}天后可以再次参与。',
+  },
+  og: {
+    title: 'LIV整形外科 满意度调查',
+    description: '约2分钟 · 无需姓名 · 完成后赠送小礼品',
   },
 };
 
@@ -472,8 +491,7 @@ const zhTW: SurveyCopy = {
   unskipPart: '重新作答',
   recommend: {
     question: '您會向家人或朋友推薦LIV整形外科嗎？',
-    low: '完全不會',
-    high: '一定會',
+    scale: ['完全不會', '不會', '普通', '會', '一定會'],
   },
   comment: {
     question: '請寫下您滿意的地方、希望改進的地方，或想表揚的員工。',
@@ -497,6 +515,11 @@ const zhTW: SurveyCopy = {
   already: {
     title: '您已經填寫過了',
     body: '感謝您的參與，再次為您顯示禮物編號。',
+    again: '填寫{days}天後可以再次參與。',
+  },
+  og: {
+    title: 'LIV整形外科 滿意度問卷',
+    description: '約2分鐘 · 不需姓名 · 填寫完成送小禮物',
   },
 };
 

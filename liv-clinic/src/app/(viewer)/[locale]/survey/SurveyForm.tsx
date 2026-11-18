@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from
 import {
   CONSULT_ONLY,
   GIFT_CODE_VALID_DAYS,
+  RESUBMIT_AFTER_DAYS,
   SURVEY_PARTS,
   SURVEY_VERSION,
   TREATMENT_IDS,
@@ -22,6 +23,7 @@ import { formatGiftCode } from '@/lib/survey/giftCode';
 /**
  * 만족도 설문 화면. 한 페이지에 15문항을 카드로 나눠 보여 주고, 제출하면 답례품 번호 「티켓」을 띄운다.
  * 같은 휴대폰에서 다시 열면 이미 응답한 화면과 받은 번호를 다시 보여 준다(localStorage — 막혀 있어도 설문은 된다).
+ * 응답한 지 RESUBMIT_AFTER_DAYS(3)일이 지나면 다시 낼 수 있다 — 재방문 손님이 다음 시술 뒤에도 답하게.
  */
 
 const STORAGE_KEY = `liv-survey-v${SURVEY_VERSION}`;
@@ -45,11 +47,19 @@ interface Stored {
   code: string | null;
 }
 
+const RESUBMIT_AFTER_MS = RESUBMIT_AFTER_DAYS * 24 * 60 * 60 * 1000;
+
+/** 이 휴대폰에서 최근 RESUBMIT_AFTER_DAYS 일 안에 낸 응답. 기간이 지났으면 지우고 null */
 function readStored(): Stored | null {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as Stored;
+    const parsed = JSON.parse(raw) as Stored & { at?: string };
+    const at = typeof parsed?.at === 'string' ? Date.parse(parsed.at) : NaN;
+    if (!Number.isFinite(at) || Date.now() - at >= RESUBMIT_AFTER_MS) {
+      window.localStorage.removeItem(STORAGE_KEY);
+      return null;
+    }
     return { code: typeof parsed?.code === 'string' ? parsed.code : null };
   } catch {
     return null;
@@ -172,7 +182,8 @@ export default function SurveyForm({ locale, copy, languages }: Props) {
   };
 
   return (
-    <div className="relative min-h-dvh overflow-x-hidden">
+    // overflow-x-hidden 은 이 div 를 스크롤 상자로 만들어 진행 막대의 sticky 를 풀어 버린다 → clip
+    <div className="relative min-h-dvh overflow-x-clip">
       {/* 머리 쪽에 아주 옅은 로즈 빛 — 종이 위에 놓인 안내문 느낌 */}
       <div
         aria-hidden
@@ -231,18 +242,27 @@ export default function SurveyForm({ locale, copy, languages }: Props) {
               </p>
             </section>
 
-            {/* 진행 막대 — 스크롤해도 위에 붙어 있다 */}
-            <div className="sticky top-0 z-20 -mx-4 mt-6 px-4 py-2.5 backdrop-blur-md [background:color-mix(in_srgb,var(--color-background)_70%,transparent)]">
-              <div className="flex items-center gap-3">
-                <div className="h-[3px] flex-1 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--color-primary)_22%,transparent)]">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-[width] duration-500 ease-out"
-                    style={{ width: `${Math.round((answered / total) * 100)}%` }}
-                  />
-                </div>
-                <span className="shrink-0 text-[12px] tabular-nums text-mono-light">
-                  {fillCopy(copy.progress, { answered, total })}
-                </span>
+            {/* 진행 막대 — 스크롤해도 화면 맨 위에 붙어서 몇 문항 답했는지 보여 준다 */}
+            <div
+              className="sticky z-20 -mx-4 mt-6 border-b border-[color-mix(in_srgb,var(--color-primary)_25%,transparent)] px-4 pb-3 pt-2.5 shadow-[0_8px_18px_-16px_rgba(109,78,66,0.7)] backdrop-blur-md [background:color-mix(in_srgb,#ffffff_90%,transparent)]"
+              style={{ top: 'env(safe-area-inset-top, 0px)' }}
+            >
+              <div className="flex items-center justify-between gap-3 text-[13px] font-semibold text-secondary">
+                <span>{copy.title}</span>
+                <span className="tabular-nums">{fillCopy(copy.progress, { answered, total })}</span>
+              </div>
+              <div
+                className="mt-2 h-1.5 overflow-hidden rounded-full bg-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]"
+                role="progressbar"
+                aria-label={copy.title}
+                aria-valuemin={0}
+                aria-valuemax={total}
+                aria-valuenow={answered}
+              >
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-[width] duration-500 ease-out"
+                  style={{ width: `${Math.round((answered / total) * 100)}%` }}
+                />
               </div>
             </div>
 
@@ -366,28 +386,7 @@ export default function SurveyForm({ locale, copy, languages }: Props) {
                   badge={copy.required}
                   error={showErrors && missing.recommend ? copy.requiredError : null}
                 >
-                  <div className="grid grid-cols-6 gap-1.5 sm:grid-cols-11" role="radiogroup">
-                    {Array.from({ length: 11 }, (_, score) => (
-                      <ChoiceButton
-                        key={score}
-                        name="recommend"
-                        checked={recommend === score}
-                        onChange={() => setRecommend(score)}
-                        className="h-12 font-serif text-[22px] leading-none lining-nums"
-                        ariaLabel={String(score)}
-                      >
-                        {score}
-                      </ChoiceButton>
-                    ))}
-                  </div>
-                  <p className="mt-2.5 flex justify-between gap-3 text-[12px] text-mono-light">
-                    <span>
-                      <b className="font-serif text-[14px] font-normal text-secondary lining-nums">0</b> {copy.recommend.low}
-                    </span>
-                    <span className="text-end">
-                      <b className="font-serif text-[14px] font-normal text-secondary lining-nums">10</b> {copy.recommend.high}
-                    </span>
-                  </p>
+                  <ScaleChoices name="recommend" labels={copy.recommend.scale} value={recommend} onChange={setRecommend} />
                 </Question>
               </Card>
 
@@ -588,12 +587,13 @@ function PartCard({
       type="button"
       onClick={onToggleSkip}
       aria-pressed={skipped}
-      className={`shrink-0 rounded-full border px-2.5 py-1 text-[11.5px] transition-colors ${
+      className={`inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-[12.5px] font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary ${
         skipped
           ? 'border-secondary bg-secondary text-white'
-          : 'border-border text-mono-light hover:border-primary hover:text-secondary'
+          : 'border-primary bg-[color-mix(in_srgb,var(--color-primary)_14%,white)] text-secondary hover:bg-[color-mix(in_srgb,var(--color-primary)_24%,white)]'
       }`}
     >
+      {skipped ? <UndoIcon /> : <SkipIcon />}
       {skipped ? copy.unskipPart : copy.skipPart}
     </button>
   ) : null;
@@ -605,23 +605,12 @@ function PartCard({
       ) : (
         part.questions.map((questionId) => (
           <Question key={questionId} id={`q-${questionId}`} label={copy.questions[questionId]}>
-            <div className="grid grid-cols-5 gap-1.5" role="radiogroup">
-              {copy.scale.map((label, i) => {
-                const value = i + 1;
-                return (
-                  <ChoiceButton
-                    key={value}
-                    name={questionId}
-                    checked={ratings[questionId] === value}
-                    onChange={() => onRate(questionId, value)}
-                    className="h-full min-h-[58px] flex-col gap-0.5 px-1 py-2 text-center"
-                  >
-                    <span className="font-serif text-[19px] leading-none lining-nums">{value}</span>
-                    <span className="text-[10.5px] leading-tight">{label}</span>
-                  </ChoiceButton>
-                );
-              })}
-            </div>
+            <ScaleChoices
+              name={questionId}
+              labels={copy.scale}
+              value={ratings[questionId] ?? null}
+              onChange={(value) => onRate(questionId, value)}
+            />
           </Question>
         ))
       )}
@@ -643,6 +632,11 @@ function Thanks({ copy, code, already }: { copy: SurveyCopy; code: string | null
       <p className="mx-auto mt-3 max-w-[400px] text-[15px] leading-relaxed text-mono">
         {already ? copy.already.body : copy.done.body}
       </p>
+      {already && (
+        <p className="mx-auto mt-2 max-w-[400px] text-[13px] text-mono-light">
+          {fillCopy(copy.already.again, { days: RESUBMIT_AFTER_DAYS })}
+        </p>
+      )}
 
       {/* 답례품 티켓 — 양옆 홈과 절취선. 마스크가 box-shadow 를 지우므로 그림자는 바깥 drop-shadow 로 */}
       <div
@@ -686,6 +680,57 @@ function Thanks({ copy, code, already }: { copy: SurveyCopy; code: string | null
         {copy.done.capture}
       </p>
     </section>
+  );
+}
+
+/** 1~5점 다섯 단추 — 파트 문항과 종합 평가가 함께 쓴다 */
+function ScaleChoices({
+  name,
+  labels,
+  value,
+  onChange,
+}: {
+  name: string;
+  labels: readonly string[];
+  value: number | null;
+  onChange: (value: number) => void;
+}) {
+  return (
+    <div className="grid grid-cols-5 gap-1.5" role="radiogroup">
+      {labels.map((label, i) => {
+        const score = i + 1;
+        return (
+          <ChoiceButton
+            key={score}
+            name={name}
+            checked={value === score}
+            onChange={() => onChange(score)}
+            className="h-full min-h-[58px] flex-col gap-0.5 px-1 py-2 text-center"
+          >
+            <span className="font-serif text-[19px] leading-none lining-nums">{score}</span>
+            <span className="text-[10.5px] leading-tight">{label}</span>
+          </ChoiceButton>
+        );
+      })}
+    </div>
+  );
+}
+
+function SkipIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M5.8 18.2L18.2 5.8" />
+    </svg>
+  );
+}
+
+function UndoIcon() {
+  return (
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+      <path d="M9 14L4 9l5-5" />
+      <path d="M4 9h10.5a5.5 5.5 0 010 11H11" />
+    </svg>
   );
 }
 

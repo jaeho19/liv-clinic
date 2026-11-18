@@ -40,7 +40,7 @@ export function buildSurveyCsv(rows: SurveyResponseLike[]): string {
     '기타 시술',
     ...questionColumns.map((c) => c.header),
     '넘긴 파트',
-    '추천 점수(0~10)',
+    '종합 평가(추천, 1~5)',
     '자유 의견',
   ];
 

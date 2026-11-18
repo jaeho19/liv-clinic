@@ -11,7 +11,7 @@ import {
 /**
  * 관리자 화면 「만족도 설문」의 숫자 계산 — 순수 함수(테스트: __tests__/summary.test.ts).
  *
- * - 추천 지수 = 9~10점 비율 − 0~6점 비율 (×100, 정수, -100~100)
+ * - 종합 평가 = 「가족이나 지인에게 추천하시겠습니까?」 1~5점(문항 버전 2). 추천 비율 = 4~5점을 준 분의 비율.
  * - 파트 점수 = 그 파트 문항 점수(1~5)를 모두 모은 평균. 넘긴 파트·보이지 않은 파트는 빠진다.
  * - 달은 서울 시각 기준.
  */
@@ -52,15 +52,16 @@ export interface QuestionStat extends ScoreStat {
 export interface MonthStat {
   month: string;
   count: number;
-  nps: number | null;
   recommendAvg: number | null;
+  /** 4~5점 비율 0~1 */
+  recommendTop: number | null;
   parts: Record<PartId, number | null>;
 }
 
 export interface TreatmentStat {
   id: TreatmentId;
   count: number;
-  nps: number | null;
+  recommendAvg: number | null;
 }
 
 export interface SurveyComment {
@@ -74,11 +75,14 @@ export interface SurveyComment {
 
 export interface SurveySummary {
   count: number;
-  nps: number | null;
-  promoters: number;
-  passives: number;
-  detractors: number;
+  /** 종합 평가 평균(1~5) */
   recommendAvg: number | null;
+  /** 4~5점 비율 0~1 */
+  recommendTop: number | null;
+  /** 4~5점 · 3점 · 1~2점 응답 수 */
+  top: number;
+  middle: number;
+  low: number;
   firstVisitShare: number | null;
   parts: PartStat[];
   questions: QuestionStat[];
@@ -110,11 +114,10 @@ export function readRatings(raw: unknown): Partial<Record<RatingQuestionId, numb
   return out;
 }
 
-export function npsOf(scores: number[]): number | null {
+/** 4~5점(추천하겠다)을 준 비율 0~1. 응답이 없으면 null */
+export function topShareOf(scores: number[]): number | null {
   if (scores.length === 0) return null;
-  const promoters = scores.filter((s) => s >= 9).length;
-  const detractors = scores.filter((s) => s <= 6).length;
-  return Math.round(((promoters - detractors) / scores.length) * 100);
+  return scores.filter((s) => s >= 4).length / scores.length;
 }
 
 /** created_at(UTC ISO) → 서울 기준 'YYYY-MM' */
@@ -184,15 +187,15 @@ export function summarizeSurvey(responses: SurveyResponseLike[]): SurveySummary 
     return {
       month,
       count: rows.length,
-      nps: npsOf(monthScores),
       recommendAvg: mean(monthScores),
+      recommendTop: topShareOf(monthScores),
       parts: partAvgs,
     };
   });
 
   const treatments: TreatmentStat[] = TREATMENT_IDS.map((id) => {
     const rows = responses.filter((r) => r.treatments.includes(id));
-    return { id, count: rows.length, nps: npsOf(rows.map((r) => r.recommend)) };
+    return { id, count: rows.length, recommendAvg: mean(rows.map((r) => r.recommend)) };
   })
     .filter((t) => t.count > 0)
     .sort((a, b) => b.count - a.count);
@@ -211,11 +214,11 @@ export function summarizeSurvey(responses: SurveyResponseLike[]): SurveySummary 
 
   return {
     count,
-    nps: npsOf(scores),
-    promoters: scores.filter((s) => s >= 9).length,
-    passives: scores.filter((s) => s === 7 || s === 8).length,
-    detractors: scores.filter((s) => s <= 6).length,
     recommendAvg: mean(scores),
+    recommendTop: topShareOf(scores),
+    top: scores.filter((s) => s >= 4).length,
+    middle: scores.filter((s) => s === 3).length,
+    low: scores.filter((s) => s <= 2).length,
     firstVisitShare: count > 0 ? responses.filter((r) => r.first_visit).length / count : null,
     parts,
     questions,

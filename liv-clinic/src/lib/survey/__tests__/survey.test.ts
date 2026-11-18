@@ -5,6 +5,8 @@ import {
   SURVEY_PARTS,
   TREATMENT_IDS,
   GIFT_CODE_VALID_DAYS,
+  RESUBMIT_AFTER_DAYS,
+  SURVEY_VERSION,
 } from '../questions';
 import { SURVEY_COPY, fillCopy } from '../copy';
 import { surveySubmissionSchema, toSurveyResponseInsert, visibleParts } from '../schema';
@@ -16,7 +18,7 @@ import {
   normalizeGiftCode,
   seoulDate,
 } from '../giftCode';
-import { npsOf, readRatings, seoulMonth, summarizeSurvey, type SurveyResponseLike } from '../summary';
+import { readRatings, seoulMonth, summarizeSurvey, topShareOf, type SurveyResponseLike } from '../summary';
 import { buildSurveyCsv } from '../csv';
 import { periodRange } from '../periods';
 
@@ -33,15 +35,24 @@ describe('관리자 기간', () => {
 
 const base = {
   locale: 'ko',
-  version: 1,
+  version: 2,
   first_visit: true,
   treatments: ['botox'],
   ratings: { desk_kind: 5, nurse_pain: 4 },
   skipped_parts: [],
-  recommend: 9,
+  recommend: 5,
 };
 
 describe('문항 구조', () => {
+  it('문항 버전 2(종합 평가 1~5점), 같은 휴대폰 재응답은 3일 뒤', () => {
+    expect(SURVEY_VERSION).toBe(2);
+    expect(RESUBMIT_AFTER_DAYS).toBe(3);
+    for (const locale of SURVEY_LOCALES) {
+      expect(SURVEY_COPY[locale].recommend.scale).toHaveLength(5);
+      expect(SURVEY_COPY[locale].already.again).toContain('{days}');
+    }
+  });
+
   it('대표원장 확정안: 평가 문항 11개 + 시작 2 + 추천 1 + 의견 1 = 15문항', () => {
     expect(RATING_QUESTION_IDS).toHaveLength(11);
     expect(2 + RATING_QUESTION_IDS.length + 1 + 1).toBe(15);
@@ -123,14 +134,14 @@ describe('제출 검증', () => {
     expect(surveySubmissionSchema.safeParse(base).success).toBe(true);
   });
 
-  it('설문 화면이 실제로 보내는 모양(빈 기타 칸·허니팟 포함)을 받는다 — 2026-11-18 로컬 미리보기에서 잡은 요청', () => {
+  it('설문 화면이 실제로 보내는 모양(빈 기타 칸·허니팟 포함)을 받는다 — 2026-11-18 로컬 미리보기에서 잡은 요청(버전 2로 고침)', () => {
     const sent = {
-      locale: 'ko', version: 1, first_visit: false, treatments: ['lifting_device', 'skincare'], treatment_other: '',
+      locale: 'ko', version: 2, first_visit: false, treatments: ['lifting_device', 'skincare'], treatment_other: '',
       ratings: { desk_kind: 5, desk_flow: 4, doctor_explain: 5, doctor_risk: 3, nurse_kind: 5, nurse_pain: 4, skin_kind: 5, skin_care: 5, facility_clean: 4 },
-      skipped_parts: ['counselor'], recommend: 9, comment: '원장님 설명이 자세해서 좋았어요.', website: '',
+      skipped_parts: ['counselor'], recommend: 4, comment: '원장님 설명이 자세해서 좋았어요.', website: '',
     };
     const row = toSurveyResponseInsert(surveySubmissionSchema.parse(sent));
-    expect(row).toMatchObject({ treatment_other: null, skipped_parts: ['counselor'], recommend: 9, first_visit: false });
+    expect(row).toMatchObject({ survey_version: 2, treatment_other: null, skipped_parts: ['counselor'], recommend: 4, first_visit: false });
     expect(Object.keys(row.ratings)).toHaveLength(9);
     expect('website' in row).toBe(false);
   });
@@ -145,13 +156,15 @@ describe('제출 검증', () => {
   });
 
   it('점수 범위·모르는 문항·모르는 언어를 거절', () => {
-    expect(surveySubmissionSchema.safeParse({ ...base, recommend: 11 }).success).toBe(false);
-    expect(surveySubmissionSchema.safeParse({ ...base, recommend: 8.5 }).success).toBe(false);
+    expect(surveySubmissionSchema.safeParse({ ...base, recommend: 6 }).success).toBe(false);
+    expect(surveySubmissionSchema.safeParse({ ...base, recommend: 0 }).success).toBe(false);
+    expect(surveySubmissionSchema.safeParse({ ...base, recommend: 4.5 }).success).toBe(false);
     expect(surveySubmissionSchema.safeParse({ ...base, ratings: { desk_kind: 0 } }).success).toBe(false);
     expect(surveySubmissionSchema.safeParse({ ...base, ratings: { desk_kind: 6 } }).success).toBe(false);
     expect(surveySubmissionSchema.safeParse({ ...base, ratings: { lang: 3 } }).success).toBe(false);
     expect(surveySubmissionSchema.safeParse({ ...base, locale: 'vi' }).success).toBe(false);
-    expect(surveySubmissionSchema.safeParse({ ...base, version: 2 }).success).toBe(false);
+    // 버전 1(종합 0~10점) 화면이 열린 채 남아 있다가 내도 받지 않는다 — 척도가 다르다
+    expect(surveySubmissionSchema.safeParse({ ...base, version: 1, recommend: 9 }).success).toBe(false);
   });
 
   it('「상담만 받음」은 다른 시술과 같이 고를 수 없고, 같은 시술 두 번도 거절', () => {
@@ -241,17 +254,18 @@ function response(over: Partial<SurveyResponseLike>): SurveyResponseLike {
     treatment_other: null,
     ratings: {},
     skipped_parts: [],
-    recommend: 10,
+    recommend: 5,
     comment: null,
     ...over,
   };
 }
 
 describe('결과 계산', () => {
-  it('추천 지수 = 9~10점 비율 − 0~6점 비율', () => {
-    expect(npsOf([])).toBeNull();
-    expect(npsOf([10, 9, 8, 7, 6])).toBe(20); // 2명 − 1명 / 5명
-    expect(npsOf([0, 0, 10])).toBe(-33);
+  it('추천하는 분 = 종합 평가 4~5점 비율, 평균과 4~5·3·1~2점 수', () => {
+    expect(topShareOf([])).toBeNull();
+    expect(topShareOf([5, 4, 3, 2, 1])).toBe(0.4);
+    const s = summarizeSurvey([response({ recommend: 5 }), response({ recommend: 4 }), response({ recommend: 3 }), response({ recommend: 1 })]);
+    expect(s).toMatchObject({ recommendAvg: 3.3, recommendTop: 0.5, top: 2, middle: 1, low: 1 });
   });
 
   it('파트 점수는 넘긴 응답을 빼고 평균, 넘긴 수는 따로 센다', () => {
@@ -275,13 +289,14 @@ describe('결과 계산', () => {
 
   it('달은 서울 기준, 시술별 수와 의견(최신순)', () => {
     const summary = summarizeSurvey([
-      response({ created_at: '2026-10-31T15:30:00Z', recommend: 5, comment: '대기가 길었어요' }), // 서울 11/1
-      response({ created_at: '2026-10-31T14:30:00Z', treatments: ['laser', 'botox'], recommend: 9 }), // 서울 10/31
+      response({ created_at: '2026-10-31T15:30:00Z', recommend: 2, comment: '대기가 길었어요' }), // 서울 11/1
+      response({ created_at: '2026-10-31T14:30:00Z', treatments: ['laser', 'botox'], recommend: 4 }), // 서울 10/31
       response({ created_at: '2026-11-02T00:00:00Z', comment: '  친절했어요 ' }),
     ]);
     expect(summary.months.map((m) => [m.month, m.count])).toEqual([['2026-10', 1], ['2026-11', 2]]);
     expect(seoulMonth('2026-10-31T15:30:00Z')).toBe('2026-11');
-    expect(summary.treatments[0]).toEqual({ id: 'botox', count: 3, nps: 33 });
+    expect(summary.treatments[0]).toEqual({ id: 'botox', count: 3, recommendAvg: 3.7 }); // (2+4+5)/3
+    expect(summary.months.at(-1)).toMatchObject({ month: '2026-11', recommendAvg: 3.5, recommendTop: 0.5 });
     expect(summary.comments.map((c) => c.comment)).toEqual(['친절했어요', '대기가 길었어요']);
     expect(summary.firstVisitShare).toBe(1);
   });
@@ -289,7 +304,7 @@ describe('결과 계산', () => {
   it('ratings 에 이상한 값이 있어도 무시한다', () => {
     expect(readRatings({ desk_kind: 3, desk_flow: '5', nurse_kind: 9, x: 1 })).toEqual({ desk_kind: 3 });
     expect(readRatings(null)).toEqual({});
-    expect(summarizeSurvey([]).nps).toBeNull();
+    expect(summarizeSurvey([]).recommendAvg).toBeNull();
   });
 });
 
