@@ -30,6 +30,7 @@ const labelsOf = (locale: string): Labels =>
 
 const OCT_2 = new Date('2026-10-02T07:20:00Z'); // 한국 10/02 16:20
 const NOV_2 = new Date('2026-11-02T03:00:00Z');
+const DEC_2 = new Date('2026-12-02T03:00:00Z');
 const MONEY_RE = /\d[\d,.]*\s*(원|만\s?원|KRW|won)|KRW\s?\d|₩/i;
 
 describe('병원 연락처 — 검사가 통과시키는 목록 (C-8)', () => {
@@ -102,7 +103,7 @@ describe('손으로 관리하는 가격 줄', () => {
         expect(row.validFrom ?? row.validUntil, row.key).toBeUndefined();
       }
     }
-    expect(EXTRA_PRICE_ROWS.filter((r) => r.group === 'promo')).toHaveLength(27);
+    expect(EXTRA_PRICE_ROWS.filter((r) => r.group === 'promo')).toHaveLength(27 + 43); // 10월 27 · 11월 43
     expect(EXTRA_PRICE_ROWS.filter((r) => r.group === 'fee').map((r) => [r.key, r.amount, r.unit])).toEqual([
       ['fee.consult', 10000, 'fixed'],
     ]);
@@ -151,8 +152,11 @@ describe('getPriceRows', () => {
     expect(promo('2026-09-30T14:59:59Z')).toBe(0); // 한국 9/30 23:59
     expect(promo('2026-09-30T15:00:00Z')).toBe(27); // 한국 10/01 00:00
     expect(promo('2026-10-31T14:59:59Z')).toBe(27); // 한국 10/31 23:59
-    expect(promo('2026-10-31T15:00:00Z')).toBe(0); // 한국 11/01 00:00
+    expect(promo('2026-10-31T15:00:00Z')).toBe(43); // 한국 11/01 00:00 — 11월 줄
+    expect(promo('2026-11-30T14:59:59Z')).toBe(43); // 한국 11/30 23:59
+    expect(promo('2026-11-30T15:00:00Z')).toBe(0); // 한국 12/01 00:00
     expect(getPriceRows(NOV_2).filter((r) => r.group === 'base')).toHaveLength(52);
+    expect(getPriceRows(NOV_2).filter((r) => r.group === 'promo').every((r) => r.key.startsWith('promo.2026-11.'))).toBe(true);
   });
 
   it('isRowValid · kstDateKey', () => {
@@ -189,7 +193,7 @@ describe('프롬프트에 넣는 글', () => {
   });
 
   it('프로모션 줄이 없는 달에는 직원 확인으로 넘기라는 줄이 들어간다', () => {
-    const text = buildPriceText(getPriceRows(NOV_2));
+    const text = buildPriceText(getPriceRows(DEC_2));
     expect(text).toContain('## 이달 프로모션\n(지금 등록된 프로모션 가격 줄이 없다. 프로모션 금액을 물으면 직원 확인.)');
     expect(text).not.toContain('{{M');
   });
@@ -204,11 +208,17 @@ describe('프롬프트에 넣는 글', () => {
   });
 
   it('이달 프로모션 페이지 주소는 기간 안에만 들어간다', () => {
-    expect(PROMOTION_PAGES).toEqual([{ slug: '2026-10-promotion', validFrom: '2026-10-01', validUntil: '2026-10-31' }]);
+    expect(PROMOTION_PAGES).toEqual([
+      { slug: '2026-10-promotion', validFrom: '2026-10-01', validUntil: '2026-10-31' },
+      { slug: '2026-11-promotion', validFrom: '2026-11-01', validUntil: '2026-11-30' },
+    ]);
     expect(promotionPageUrl('en', OCT_2)).toBe('https://liv-clinic.net/en/events/2026-10-promotion');
-    expect(promotionPageUrl('en', NOV_2)).toBeNull();
+    expect(promotionPageUrl('ja', NOV_2)).toBe('https://liv-clinic.net/ja/events/2026-11-promotion');
+    expect(promotionPageUrl('en', DEC_2)).toBeNull();
     expect(buildFactsText('en', OCT_2)).toContain('https://liv-clinic.net/en/events/2026-10-promotion');
     expect(buildFactsText('en', NOV_2)).not.toContain('/events/2026-10-promotion');
+    expect(buildFactsText('en', NOV_2)).toContain('https://liv-clinic.net/en/events/2026-11-promotion');
+    expect(buildFactsText('en', DEC_2)).not.toContain('/events/2026-11-promotion');
   });
 
   it('AI가 써도 되는 주소', () => {
@@ -220,7 +230,8 @@ describe('프롬프트에 넣는 글', () => {
       'https://wa.me/821068882773',
       'https://liv-clinic.net/zh-TW/events/2026-10-promotion',
     ]);
-    expect(allowedUrls('zh-TW', NOV_2)).toHaveLength(5);
+    expect(allowedUrls('zh-TW', NOV_2)).toContain('https://liv-clinic.net/zh-TW/events/2026-11-promotion');
+    expect(allowedUrls('zh-TW', DEC_2)).toHaveLength(5);
   });
 
   it('getKnowledge: 같은 날 · 같은 언어면 같은 객체, 꼬리표로 줄을 찾는다', () => {
@@ -254,8 +265,42 @@ describe('promoRowsIncluding — 기본 가격 줄의 시술이 든 이달 프�
   });
 
   it('기간이 지난 달에는 없다', () => {
-    const nov = getPriceRows(NOV_2);
-    const thermage = nov.find((r) => r.key === 'thermage.name.shot600')!;
-    expect(promoRowsIncluding(thermage, nov)).toEqual([]);
+    const dec = getPriceRows(DEC_2);
+    const thermage = dec.find((r) => r.key === 'thermage.name.shot600')!;
+    expect(promoRowsIncluding(thermage, dec)).toEqual([]);
+  });
+});
+
+describe('11월 프로모션 줄 (2026-11 포스터 4장)', () => {
+  const rows = getPriceRows(NOV_2);
+  const row = (key: string) => rows.find((r) => r.key === key)!;
+  const keysFor = (key: string) => promoRowsIncluding(row(key), rows).map((r) => r.key);
+  const n = (i: number) => `promo.2026-11.${String(i).padStart(2, '0')}`;
+
+  it('43줄, 꼬리표 M01~M43, 모두 11/30 까지', () => {
+    const promo = rows.filter((r) => r.group === 'promo');
+    expect(promo).toHaveLength(43);
+    expect(promo[0].id).toBe('M01');
+    expect(promo[42].id).toBe('M43');
+    for (const r of promo) expect([r.validFrom, r.validUntil], r.key).toEqual(['2026-11-01', '2026-11-30']);
+  });
+
+  it('포스터 금액 몇 가지', () => {
+    expect([n(1), n(9), n(22), n(30), n(35), n(36), n(43)].map((k) => row(k).amount)).toEqual([
+      490000, 2300000, 3000000, 3000000, 350000, 700000, 1200000,
+    ]);
+  });
+
+  it('물은 시술이 든 11월 묶음 — 자료 순서대로', () => {
+    expect(keysFor('thermage.name.shot600')).toEqual([n(28), n(30), n(31)]);
+    expect(keysFor('thermage.name.eyeTip225')).toEqual([n(29), n(30)]);
+    expect(keysFor('ulthera.name.fullFace')).toEqual([n(2), n(3), n(25), n(27), n(28), n(33)]);
+    expect(keysFor('density.alphaTip.shot300')).toEqual([n(4), n(5), n(6), n(7), n(8), n(9), n(32), n(34)]);
+    expect(keysFor('shurink.shurinkLaser.shot300')).toEqual([n(1)]);
+    expect(keysFor('skinbooster.rejuran.volume4cc')).toEqual([n(12)]);
+    expect(keysFor('skinbooster.rejuranHbPlus.volume4cc')).toEqual([n(13)]);
+    expect(keysFor('pigmentation.co2Laser.neckFull')).toEqual([n(20), n(21)]);
+    expect(keysFor('thread.name.aptosLight50')).toEqual([n(24)]);
+    expect(keysFor('botox.botoxContour.domestic')).toEqual([]);
   });
 });

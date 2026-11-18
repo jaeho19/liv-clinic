@@ -175,9 +175,9 @@ describe('assembleReply — 이달 프로모션 줄을 붙인다 (2026-10-23)', 
   });
 
   it('프로모션 기간이 지난 달에는 붙이지 않는다', () => {
-    const nov = getKnowledge('en', new Date('2026-11-02T03:00:00Z'));
-    const id = nov.rows.find((r) => r.key === 'thermage.name.shot600')!.id;
-    const a = assembleReply({ ...full, rowById: nov.rowById, reply: `{{${id}}}` });
+    const dec = getKnowledge('en', new Date('2026-12-02T03:00:00Z'));
+    const id = dec.rows.find((r) => r.key === 'thermage.name.shot600')!.id;
+    const a = assembleReply({ ...full, rowById: dec.rowById, reply: `{{${id}}}` });
     expect(a.usedRows.map((r) => r.key)).toEqual(['thermage.name.shot600']);
   });
 
