@@ -12,8 +12,8 @@
 // 2 = 2026-11-18 종합 평가(추천)를 0~10점에서 1~5점으로 바꿈. 1(0~10점)은 시험 응답뿐이라 관리자 화면에서 뺀다.
 export const SURVEY_VERSION = 2;
 
-/** 같은 휴대폰에서 다시 응답할 수 있기까지의 날 수(재방문 손님용, 사용자 2026-11-18). */
-export const RESUBMIT_AFTER_DAYS = 3;
+/** 같은 휴대폰에서 다시 응답할 수 있기까지의 날 수(2026-11-18 3일 → 2026-11-24 사용자 요청으로 90일). */
+export const RESUBMIT_AFTER_DAYS = 90;
 
 /** 설문을 보여 주는 언어. 나머지 로케일은 영어 화면으로 보낸다. */
 export const SURVEY_LOCALES = ['ko', 'en', 'ja', 'zh', 'zh-TW'] as const;

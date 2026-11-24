@@ -23,7 +23,7 @@ import { formatGiftCode } from '@/lib/survey/giftCode';
 /**
  * 만족도 설문 화면. 한 페이지에 15문항을 카드로 나눠 보여 주고, 제출하면 답례품 번호 「티켓」을 띄운다.
  * 같은 휴대폰에서 다시 열면 이미 응답한 화면과 받은 번호를 다시 보여 준다(localStorage — 막혀 있어도 설문은 된다).
- * 응답한 지 RESUBMIT_AFTER_DAYS(3)일이 지나면 다시 낼 수 있다 — 재방문 손님이 다음 시술 뒤에도 답하게.
+ * 응답한 지 RESUBMIT_AFTER_DAYS(90)일이 지나야 다시 낼 수 있다 — 한 사람은 90일에 한 번만.
  */
 
 const STORAGE_KEY = `liv-survey-v${SURVEY_VERSION}`;

@@ -51,9 +51,9 @@ describe('문항 구조', () => {
     expect(SURVEY_PUBLIC_PATH).toBe('/ko/survey');
   });
 
-  it('문항 버전 2(종합 평가 1~5점), 같은 휴대폰 재응답은 3일 뒤', () => {
+  it('문항 버전 2(종합 평가 1~5점), 같은 휴대폰 재응답은 90일 뒤', () => {
     expect(SURVEY_VERSION).toBe(2);
-    expect(RESUBMIT_AFTER_DAYS).toBe(3);
+    expect(RESUBMIT_AFTER_DAYS).toBe(90);
     for (const locale of SURVEY_LOCALES) {
       expect(SURVEY_COPY[locale].recommend.scale).toHaveLength(5);
       expect(SURVEY_COPY[locale].already.again).toContain('{days}');
