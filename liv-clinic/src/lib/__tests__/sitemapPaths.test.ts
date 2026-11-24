@@ -66,11 +66,11 @@ describe('buildSitemapPaths', () => {
     expect(paths.every((p) => !p.path.endsWith('/'))).toBe(true);
   });
 
-  it('never lists /guides for non-guide locales', () => {
+  it('never lists /guides outside the article locales', () => {
     const guides = paths.filter((p) => p.path.startsWith('/guides'));
     for (const g of guides) {
       expect(g.locales, g.path).toBeDefined();
-      for (const l of g.locales!) expect(['en', 'ja', 'zh', 'zh-TW']).toContain(l);
+      for (const l of g.locales!) expect(['ko', 'en', 'ja', 'zh', 'zh-TW']).toContain(l);
     }
   });
 });

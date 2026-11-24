@@ -7,7 +7,7 @@ import { buildGuideSchemas } from '@/lib/guides/schema';
 import GuideArticle from '@/components/guides/GuideArticle';
 
 export const revalidate = 3600;
-// 4개 언어 × 존재하는 slug만 생성. 그 밖(ko/vi/… 또는 없는 slug)은 404.
+// 원고가 있는 (언어, slug)만 생성한다 — 한국어 칼럼과 외국인 가이드. 그 밖(vi/… 또는 없는 slug)은 404.
 export const dynamicParams = false;
 
 export function generateStaticParams() {

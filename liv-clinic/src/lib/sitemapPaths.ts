@@ -1,6 +1,5 @@
 import { TREATMENTS } from '@/lib/constants';
-import { guideLocalesFor, listGuides, publishedGuideSlugs } from '@/lib/guides';
-import { GUIDE_LOCALES } from '@/lib/guides/types';
+import { guideStore, type GuideStore } from '@/lib/guides';
 
 export type SitemapPath = {
   /** 로케일 접두사 뒤 경로. 홈은 ''. */
@@ -42,25 +41,28 @@ const STATIC_PATHS: SitemapPath[] = [
 const LASER_CATEGORIES = ['pigmentation', 'vascular', 'skintone', 'hair-removal'];
 
 /** 사이트맵에 넣을 모든 경로(정적 + 시술 상세 + 레이저 카테고리). 이벤트 상세는 DB에서 따로 붙인다. */
-export function buildSitemapPaths(reviewLocales: readonly string[] = ['ko']): SitemapPath[] {
+export function buildSitemapPaths(
+  reviewLocales: readonly string[] = ['ko'],
+  guideSource: GuideStore = guideStore,
+): SitemapPath[] {
   const treatments: SitemapPath[] = [
     ...Object.keys(TREATMENTS.lifting).map((id) => `/lifting/${id}`),
     ...Object.keys(TREATMENTS.antiaging).map((id) => `/antiaging/${id}`),
     ...LASER_CATEGORIES.map((id) => `/laser/${id}`),
   ].map((path) => ({ path, priority: 0.8, changeFrequency: 'monthly' as const }));
 
-  // 가이드(P1-1): 게시본이 있는 언어에만. 허브는 게시 가이드가 1편 이상인 언어만.
+  // 가이드·한국어 칼럼: 게시본이 있는 언어에만. 허브는 게시본이 1편 이상인 언어만.
   // 초안(draft)은 noindex라 사이트맵에 넣지 않는다.
-  const hubLocales = GUIDE_LOCALES.filter((l) => listGuides(l).length > 0);
+  const hubLocales = guideSource.hubLocales();
   const guides: SitemapPath[] = [
     ...(hubLocales.length > 0
       ? [{ path: '/guides', priority: 0.8, changeFrequency: 'weekly' as const, locales: hubLocales }]
       : []),
-    ...publishedGuideSlugs().map((slug) => ({
+    ...guideSource.publishedGuideSlugs().map((slug) => ({
       path: `/guides/${slug}`,
       priority: 0.8,
       changeFrequency: 'monthly' as const,
-      locales: guideLocalesFor(slug),
+      locales: guideSource.guideLocalesFor(slug),
     })),
   ];
 

@@ -1,12 +1,15 @@
 /**
- * 가이드 화면 문구(en·ja·zh·zh-TW). 번역 JSON에 키를 늘리지 않기 위해 TS에 둔다.
+ * 가이드·칼럼 화면 문구(ko·en·ja·zh·zh-TW). 번역 JSON에 키를 늘리지 않기 위해 TS에 둔다.
+ * 한국어(ko)는 국내 환자용 「칼럼」, 나머지는 외국인 가이드다.
  * 원장 표기는 sections.doctors.kim(name·title·specialty) 메시지 값과 같게 유지한다.
  */
-import type { GuideCategory, GuideLocale } from './types';
+import type { ArticleLocale, GuideCategory } from './types';
 
 export interface GuideUi {
   guides: string;
   hubTitle: string;
+  /** 허브 제목 위 작은 글씨 */
+  hubEyebrow: string;
   hubIntro: string;
   hubEmpty: string;
   updated: string;
@@ -29,10 +32,44 @@ export interface GuideUi {
   category: Record<GuideCategory, string>;
 }
 
-export const GUIDE_UI: Record<GuideLocale, GuideUi> = {
+export const GUIDE_UI: Record<ArticleLocale, GuideUi> = {
+  ko: {
+    guides: '칼럼',
+    hubTitle: '리브 칼럼',
+    hubEyebrow: '의료정보',
+    hubIntro:
+      '리프팅·안티에이징 시술을 알아볼 때 자주 묻는 질문을 하나씩 풀어 드립니다. 모든 글은 김수영 대표원장이 직접 감수합니다.',
+    hubEmpty: '칼럼을 준비하고 있습니다.',
+    updated: '수정일',
+    readingTime: (m) => `읽는 데 약 ${m}분`,
+    author: '글',
+    reviewedBy: '감수',
+    clinicAuthor: '리브성형외과',
+    doctorAuthor: '김수영 대표원장 (성형외과 전문의)',
+    toc: '이 글의 순서',
+    faq: '자주 묻는 질문',
+    relatedTreatment: '관련 시술',
+    viewTreatment: '시술 안내 보기',
+    pricing: '가격 안내',
+    international: '해외 환자 안내',
+    bookCta: '상담 예약',
+    chatCta: '채팅 문의',
+    backToGuides: '칼럼 전체 보기',
+    draftBanner: '검수 중인 초안입니다. 검색에 노출되지 않으며 내용이 바뀔 수 있습니다.',
+    disclaimer:
+      '이 글은 일반적인 의료 정보이며 진단이나 처방을 대신하지 않습니다. 시술 가능 여부와 계획은 내원 상담에서 정해지고, 효과와 회복 기간에는 개인차가 있습니다. 시술 후 붓기·멍·통증 등의 부작용이 생길 수 있으니 의료진과 충분히 상담하시기 바랍니다. 가격은 1회 기준·VAT 별도이며 상담 후 확정됩니다.',
+    category: {
+      price: '가격',
+      booking: '예약·내원',
+      comparison: '시술 비교',
+      aftercare: '시술 후 관리',
+      treatment: '시술 정보',
+    },
+  },
   en: {
     guides: 'Guides for international patients',
     hubTitle: 'Guides for international patients',
+    hubEyebrow: 'Information for international patients',
     hubIntro:
       'Prices, timing and how to plan a visit to LIV Plastic Surgery in Sinsa, Seoul — written for patients travelling from abroad.',
     hubEmpty: 'Guides are being prepared.',
@@ -65,6 +102,7 @@ export const GUIDE_UI: Record<GuideLocale, GuideUi> = {
   ja: {
     guides: '海外からの患者さま向けガイド',
     hubTitle: '海外からの患者さま向けガイド',
+    hubEyebrow: '海外からの患者さまへ',
     hubIntro:
       'ソウル・新沙(シンサ)のLIV美容クリニックで施術を受ける方のために、料金・所要時間・予約と滞在の計画をまとめました。',
     hubEmpty: 'ガイドを準備中です。',
@@ -97,6 +135,7 @@ export const GUIDE_UI: Record<GuideLocale, GuideUi> = {
   zh: {
     guides: '国际患者指南',
     hubTitle: '国际患者指南',
+    hubEyebrow: '国际患者须知',
     hubIntro: '为从海外前来首尔新沙站 LIV整形外科就诊的患者整理的价格、时间与行程规划。',
     hubEmpty: '指南准备中。',
     updated: '更新',
@@ -128,6 +167,7 @@ export const GUIDE_UI: Record<GuideLocale, GuideUi> = {
   'zh-TW': {
     guides: '國際患者指南',
     hubTitle: '國際患者指南',
+    hubEyebrow: '國際患者須知',
     hubIntro: '為從海外前來首爾新沙站（林蔭道旁）LIV整形外科就診的患者整理的價格、時間與行程規劃。',
     hubEmpty: '指南準備中。',
     updated: '更新',

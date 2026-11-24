@@ -6,15 +6,16 @@
  * "## FAQ" 이후의 "### 질문" + 답 문단은 faq[]로 분리한다(FAQPage 스키마용).
  */
 import type {
+  ArticleLocale,
   GuideBlock,
   GuideCategory,
   GuideDoc,
   GuideFaq,
   GuideFrontmatter,
-  GuideLocale,
   GuideReviewer,
   GuideStatus,
 } from './types';
+import { COLUMN_LOCALE } from './types';
 
 export const REVIEW_MARKER = /\[검수 필요[^\]]*\]/g;
 
@@ -177,6 +178,24 @@ export function estimateReadingMinutes(text: string): number {
   return Math.max(1, Math.round(cjk / 400 + words / 200));
 }
 
+/**
+ * 게시(published)를 막는 사유 — 하나라도 있으면 빌드가 실패한다. 초안은 제한이 없다.
+ *  - [검수 필요] 표식이 남아 있다.
+ *  - 한국어 칼럼인데 감수자가 원장이 아니다. 칼럼은 원장이 직접 읽은 편만 원장 이름으로 낸다
+ *    (2026-11-24 결정). 외국인 가이드는 병원 이름(clinic)으로 낼 수 있다.
+ */
+export function publishBlockers(doc: Pick<GuideDoc, 'status' | 'locale' | 'reviewer' | 'reviewMarkers'>): string[] {
+  if (doc.status !== 'published') return [];
+  const reasons: string[] = [];
+  if (doc.reviewMarkers > 0) {
+    reasons.push(`status is published but ${doc.reviewMarkers} [검수 필요] marker(s) remain`);
+  }
+  if (doc.locale === COLUMN_LOCALE && doc.reviewer !== 'dr-kim') {
+    reasons.push('Korean columns are published only after the director has read them — set reviewer: dr-kim');
+  }
+  return reasons;
+}
+
 function requireString(data: Record<string, string | string[]>, key: string): string {
   const v = data[key];
   if (typeof v !== 'string' || !v.trim()) throw new Error(`frontmatter "${key}" is required`);
@@ -191,7 +210,7 @@ function requireEnum<T extends string>(data: Record<string, string | string[]>, 
   return v as T;
 }
 
-export function parseGuide(src: string, ctx: { locale: GuideLocale; slug: string }): GuideDoc {
+export function parseGuide(src: string, ctx: { locale: ArticleLocale; slug: string }): GuideDoc {
   const { data, body } = parseFrontmatter(src);
   const keywords = Array.isArray(data.keywords) ? data.keywords.filter(Boolean) : [];
   if (keywords.length === 0) throw new Error('frontmatter "keywords" needs at least one item');

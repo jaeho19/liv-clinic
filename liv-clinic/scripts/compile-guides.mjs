@@ -5,6 +5,7 @@
  * prebuild에서 실행된다. 검증 실패 = 빌드 실패:
  *   - frontmatter 필수값·enum·날짜 형식
  *   - status: published 인데 [검수 필요] 표식이 남아 있음
+ *   - 한국어 칼럼(ko)이 published 인데 reviewer 가 dr-kim 이 아님(원장 감수 전에는 공개하지 않는다)
  *   - 같은 slug가 로케일마다 다른 category를 가짐
  * `_`로 시작하는 파일(예: _facts.md, _example.md)은 무시한다.
  * 생성물은 커밋한다(concernRules.generated.ts와 같은 이유).
@@ -23,12 +24,12 @@ const OUT = path.join(ROOT, 'src', 'lib', 'guides', 'guides.generated.ts');
 const OUT_INDEX = path.join(ROOT, 'src', 'lib', 'guides', 'guides.index.generated.ts');
 
 async function main() {
-  const { parseGuide } = await import('../src/lib/guides/markdown.ts');
-  const { GUIDE_LOCALES } = await import('../src/lib/guides/types.ts');
+  const { parseGuide, publishBlockers } = await import('../src/lib/guides/markdown.ts');
+  const { ARTICLE_LOCALES, missingGuideLocales } = await import('../src/lib/guides/types.ts');
 
   const docs = [];
   const errors = [];
-  for (const locale of GUIDE_LOCALES) {
+  for (const locale of ARTICLE_LOCALES) {
     const dir = path.join(SRC, locale);
     if (!fs.existsSync(dir)) continue;
     const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md') && !f.startsWith('_')).sort();
@@ -40,9 +41,7 @@ async function main() {
       }
       try {
         const doc = parseGuide(fs.readFileSync(path.join(dir, file), 'utf8'), { locale, slug });
-        if (doc.status === 'published' && doc.reviewMarkers > 0) {
-          errors.push(`${locale}/${slug}: status is published but ${doc.reviewMarkers} [검수 필요] marker(s) remain`);
-        }
+        for (const reason of publishBlockers(doc)) errors.push(`${locale}/${slug}: ${reason}`);
         docs.push(doc);
       } catch (e) {
         errors.push(`${locale}/${file}: ${e.message}`);
@@ -58,7 +57,8 @@ async function main() {
   for (const [slug, list] of bySlug) {
     const cats = new Set(list.map((d) => d.category));
     if (cats.size > 1) errors.push(`${slug}: category differs across locales (${[...cats].join(', ')})`);
-    const missing = GUIDE_LOCALES.filter((l) => !list.some((d) => d.locale === l));
+    // 한국어 칼럼만 있는 slug는 번역 대상이 아니다 — 외국인 가이드의 빠진 외국어판만 알린다
+    const missing = missingGuideLocales(list.map((d) => d.locale));
     if (missing.length) console.warn(`[compile-guides] warn: ${slug} has no ${missing.join(', ')} version`);
   }
 

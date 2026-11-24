@@ -3,6 +3,34 @@ import type { GuideIndexEntry } from './types';
 
 export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
   {
+    "locale": "ko",
+    "slug": "density-vs-thermage",
+    "status": "draft",
+    "title": "덴서티와 써마지는 무엇이 다른가요? 같은 고주파 리프팅 비교",
+    "category": "comparison"
+  },
+  {
+    "locale": "ko",
+    "slug": "onda-vs-inmode-double-chin",
+    "status": "draft",
+    "title": "이중턱에는 온다와 인모드 중 무엇이 맞을까요?",
+    "category": "comparison"
+  },
+  {
+    "locale": "ko",
+    "slug": "skin-booster-how-many-sessions",
+    "status": "draft",
+    "title": "스킨부스터는 몇 번, 얼마 간격으로 받아야 하나요?",
+    "category": "treatment"
+  },
+  {
+    "locale": "ko",
+    "slug": "thread-lift-how-long-it-lasts",
+    "status": "draft",
+    "title": "실리프팅은 얼마나 유지되나요? 실 종류별 유지 기간과 회복",
+    "category": "treatment"
+  },
+  {
     "locale": "en",
     "slug": "book-seoul-clinic-foreigner",
     "status": "published",

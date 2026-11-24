@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { GUIDE_UI } from '@/lib/guides/ui';
-import type { GuideBlock, GuideDoc } from '@/lib/guides/types';
+import { isGuideLocale, type GuideBlock, type GuideDoc } from '@/lib/guides/types';
 import GuideInline from './GuideInline';
 
 function Block({ block, locale, showMarkers }: { block: GuideBlock; locale: string; showMarkers: boolean }) {
@@ -146,12 +146,15 @@ export default function GuideArticle({ guide }: { guide: GuideDoc }) {
             >
               {ui.bookCta}
             </Link>
-            <Link
-              href={`${prefix}/international`}
-              className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/60 px-7 py-3 font-medium transition-colors hover:bg-white/10"
-            >
-              {ui.international}
-            </Link>
+            {/* 국제환자 안내는 외국인 가이드에만 — 한국어 칼럼에는 내지 않는다 */}
+            {isGuideLocale(guide.locale) && (
+              <Link
+                href={`${prefix}/international`}
+                className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/60 px-7 py-3 font-medium transition-colors hover:bg-white/10"
+              >
+                {ui.international}
+              </Link>
+            )}
             <Link
               href={`${prefix}/pricing`}
               className="inline-flex min-h-[48px] items-center justify-center rounded-full border border-white/60 px-7 py-3 font-medium transition-colors hover:bg-white/10"

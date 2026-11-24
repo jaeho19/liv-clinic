@@ -12,6 +12,8 @@ import MobileMenu, { type NavItem } from './MobileMenu';
 import { useHashNavigation } from '@/hooks/useHashNavigation';
 import { LOCALES, type Locale } from '@/i18n/routing';
 import { trackCTAClick } from '@/lib/analytics-events';
+import { hasKoreanColumns } from '@/lib/guides/publicIndex';
+import { GUIDE_UI } from '@/lib/guides/ui';
 
 // LOCALES SSOT 기반 홈 경로 매칭 — 새 locale 추가 시 자동 동기화
 const LOCALE_HOME_RE = new RegExp(`^/(${LOCALES.map((l) => l.replace(/\./g, '\\.')).join('|')})$`);
@@ -240,6 +242,16 @@ export default function Header() {
       key: 'medical',
       label: t('medical'),
       href: '/medical',
+      // 한국어 칼럼이 1편 이상 공개되면 「의료정보」 아래에 「칼럼」을 낸다. 최상위에 열 번째 항목을 두지 않는 이유:
+      // ko는 1280px에서 여유가 60px뿐이라(위 NAV_MIN_WIDTH 표) 항목 하나가 늘면 햄버거 전환 폭을 올려야 한다.
+      ...(hasKoreanColumns(locale)
+        ? {
+            children: [
+              { key: 'medicalInfo', label: t('medical'), href: '/medical' },
+              { key: 'columns', label: GUIDE_UI.ko.guides, href: '/guides' },
+            ],
+          }
+        : {}),
     },
     {
       key: 'events',

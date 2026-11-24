@@ -6,16 +6,21 @@ import { isGuidePublished, publishedGuideCount, localeSwitchPath } from '../publ
 describe('localeSwitchPath', () => {
   it('leaves non-guide paths alone', () => {
     expect(localeSwitchPath('/about', 'ko')).toBe('/about');
+    expect(localeSwitchPath('/about', 'mn')).toBe('/about');
     expect(localeSwitchPath('/', 'vi')).toBe('/');
   });
-  it('sends non-guide locales to the international page from any guide path', () => {
-    expect(localeSwitchPath('/guides', 'ko')).toBe('/international');
+  it('sends locales without articles to the international page from any guide path', () => {
+    expect(localeSwitchPath('/guides', 'mn')).toBe('/international');
+    // 한국어는 게시된 칼럼이 생기면 허브로, 그 전에는 국제환자 페이지로
+    expect(localeSwitchPath('/guides', 'ko')).toBe(publishedGuideCount('ko') > 0 ? '/guides' : '/international');
     expect(localeSwitchPath('/guides/ultherapy-cost-seoul', 'vi')).toBe('/international');
   });
   it('keeps guide locales on the hub, and on a detail only when that language is published', () => {
     expect(localeSwitchPath('/guides', 'ja')).toBe('/guides');
     for (const g of GUIDES) {
-      const expected = g.status === 'published' ? `/guides/${g.slug}` : '/guides';
+      // 초안뿐인 글은 그 언어의 허브로, 허브도 비어 있는 언어(첫 칼럼 공개 전의 한국어)는 국제환자 페이지로
+      const fallback = publishedGuideCount(g.locale) > 0 ? '/guides' : '/international';
+      const expected = g.status === 'published' ? `/guides/${g.slug}` : fallback;
       expect(localeSwitchPath(`/guides/${g.slug}`, g.locale)).toBe(expected);
     }
     expect(localeSwitchPath('/guides/no-such-slug', 'en')).toBe('/guides');
@@ -24,9 +29,9 @@ describe('localeSwitchPath', () => {
 
 describe('guides index', () => {
   it('returns nothing for locales without guides', () => {
-    expect(listGuides('ko')).toEqual([]);
+    expect(listGuides('mn')).toEqual([]);
     expect(getGuide('vi', 'anything')).toBeNull();
-    expect(publishedGuideCount('ko')).toBe(0);
+    expect(publishedGuideCount('mn')).toBe(0);
   });
 
   it('hides drafts unless asked', () => {

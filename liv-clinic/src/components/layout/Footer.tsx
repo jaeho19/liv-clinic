@@ -7,18 +7,17 @@ import { LOCALE_META, LOCALE_ORDER } from '@/i18n/locales-meta';
 import { SITE_INFO, BUSINESS_HOURS, SOCIAL_LINKS } from '@/lib/constants';
 import { trackCTAClick } from '@/lib/analytics-events';
 // 가이드 링크: 본문이 든 @/lib/guides가 아니라 작은 색인(publicIndex)만 클라이언트로 보낸다
-import { isGuideLocale } from '@/lib/guides/types';
+import { isArticleLocale } from '@/lib/guides/types';
 import { publishedGuideCount, isGuidePublished } from '@/lib/guides/publicIndex';
 import { GUIDE_UI } from '@/lib/guides/ui';
 
 /**
- * 언어 버전 링크를 낼지 — 가이드(/guides…)는 en·ja·zh·zh-TW에만 있고, 상세는 게시된 언어에만 있다.
+ * 언어 버전 링크를 낼지 — 글(/guides…)은 한국어 칼럼과 en·ja·zh·zh-TW 가이드뿐이고, 상세는 게시된 언어에만 있다.
  * 없는 페이지로 가는 <a>는 크롤러에 404 링크가 되므로 현재 로케일과 실제 존재하는 언어만 남긴다.
  */
 function languageLinkExists(code: string, pathname: string, current: string): boolean {
   if (!pathname.startsWith('/guides')) return true;
   if (code === current) return true;
-  if (!isGuideLocale(code)) return false;
   const slug = pathname.split('/')[2];
   return slug ? isGuidePublished(code, slug) : publishedGuideCount(code) > 0;
 }
@@ -156,8 +155,8 @@ export default function Footer() {
                   {tIntl('footerLabel')}
                 </Link>
               </li>
-              {/* 외국인 가이드 허브 — 게시된 가이드가 있는 언어(en·ja·zh·zh-TW)에서만 */}
-              {isGuideLocale(locale) && publishedGuideCount(locale) > 0 && (
+              {/* 글 허브 — 게시본이 있는 언어에서만(한국어는 「칼럼」, 외국어는 외국인 가이드) */}
+              {isArticleLocale(locale) && publishedGuideCount(locale) > 0 && (
                 <li>
                   <Link
                     href="/guides"

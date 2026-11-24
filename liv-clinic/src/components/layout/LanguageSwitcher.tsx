@@ -24,7 +24,7 @@ export default function LanguageSwitcher({ isScrolled = true }: LanguageSwitcher
   // React reconciler가 "removeChild ... not a child of this node" 예외로 페이지를 깨뜨림.
   // locale 전환은 폰트·dir·서버 컴포넌트 모두 새로 받아야 하므로 전체 리로드가 안전·정합.
   const handleLanguageChange = (langCode: string) => {
-    // 가이드(/guides…)는 4개 언어에만 있어 없는 언어로는 국제환자 페이지/허브로 보낸다(publicIndex.localeSwitchPath).
+    // 글(/guides…)은 일부 언어에만 있어(한국어 칼럼·외국인 가이드) 없는 언어로는 국제환자 페이지/허브로 보낸다(publicIndex.localeSwitchPath).
     const target = localeSwitchPath(pathname, langCode);
     const suffix = target === '/' ? '' : target;
     window.location.assign(`/${langCode}${suffix}`);
