@@ -17,7 +17,7 @@ import type {
   GuideStatus,
 } from './types';
 import { COLUMN_LOCALE } from './types';
-import { GUIDE_IMAGE_PATH } from './images';
+import { GUIDE_IMAGE_PATH, GUIDE_VIDEO_PATH } from './images';
 
 export const REVIEW_MARKER = /\[검수 필요[^\]]*\]/g;
 
@@ -238,6 +238,10 @@ export function parseGuide(src: string, ctx: { locale: ArticleLocale; slug: stri
   if (!/^\d{4}-\d{2}-\d{2}$/.test(updated)) {
     throw new Error(`frontmatter "updated" must be YYYY-MM-DD, got "${updated}"`);
   }
+  const published = typeof data.published === 'string' && data.published ? data.published : undefined;
+  if (published && !/^\d{4}-\d{2}-\d{2}$/.test(published)) {
+    throw new Error(`frontmatter "published" must be YYYY-MM-DD, got "${published}"`);
+  }
   const fm: GuideFrontmatter = {
     title: requireString(data, 'title'),
     description: requireString(data, 'description'),
@@ -245,15 +249,24 @@ export function parseGuide(src: string, ctx: { locale: ArticleLocale; slug: stri
     category: requireEnum(data, 'category', CATEGORIES),
     status: requireEnum(data, 'status', STATUSES),
     updated,
+    ...(published ? { published } : {}),
     reviewer: requireEnum(data, 'reviewer', REVIEWERS),
     ...(typeof data.treatment === 'string' && data.treatment ? { treatment: data.treatment } : {}),
     ...(typeof data.cover === 'string' && data.cover ? { cover: data.cover } : {}),
     ...(typeof data.coverAlt === 'string' && data.coverAlt ? { coverAlt: data.coverAlt } : {}),
+    ...(typeof data.coverVideo === 'string' && data.coverVideo ? { coverVideo: data.coverVideo } : {}),
   };
   const { blocks, faq } = parseBlocks(body);
   if (fm.cover) {
     requireGuideImagePath(fm.cover, 'frontmatter "cover"');
     if (!fm.coverAlt) throw new Error('frontmatter "coverAlt" is required when "cover" is set (describe the picture)');
+  }
+  if (fm.coverVideo) {
+    // 사진이 먼저 보이고(영상을 못 트는 환경 포함) 공유 이미지로도 나가므로 영상만 둘 수는 없다
+    if (!fm.cover) throw new Error('frontmatter "coverVideo" needs a "cover" photo as well (the photo shows first and is what gets shared)');
+    if (!GUIDE_VIDEO_PATH.test(fm.coverVideo)) {
+      throw new Error(`frontmatter "coverVideo" must be an .mp4 under /images/guides/ (lowercase a-z 0-9 hyphen), got "${fm.coverVideo}"`);
+    }
   }
   for (const b of blocks) {
     if (b.type !== 'image') continue;

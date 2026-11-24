@@ -12,7 +12,8 @@ updated: 2026-11-24
 reviewer: clinic
 treatment: /lifting/density
 cover: /images/guides/density-thermage-cover.webp
-coverAlt: 매끈한 석고 면에 동심원 물결 두 개가 나란히 새겨진 정물 사진
+coverAlt: 덴서티 장비(왼쪽)와 써마지 FLX 장비(오른쪽)를 나란히 놓은 사진
+coverVideo: /images/guides/density-thermage-cover.mp4
 ---
 
 덴서티와 써마지는 둘 다 고주파(RF) 에너지로 진피층의 콜라겐을 자극하는 리프팅입니다. 원리는 같은 계열이고, 권장 주기와 비용, 마취 방식에서 차이가 납니다. 써마지는 1년에 1~2회, 덴서티는 3~6개월 간격으로 꾸준히 관리하는 쪽에 가깝습니다.

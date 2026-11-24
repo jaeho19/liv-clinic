@@ -24,8 +24,15 @@ export function guideSharePath(cover: string): string {
   return cover.replace(/\.[a-z]+$/, '-share.jpg');
 }
 
-/** 이 글이 쓰는 이미지 파일 전부(대표 사진·공유용 짝 먼저) — 빌드 때 파일 존재 확인용. */
-export function guideImagePaths(guide: Pick<GuideDoc, 'cover' | 'blocks'>): string[] {
+/** 대표 사진의 움직이는 버전: /images/guides/<영문 소문자·숫자·하이픈>.mp4 (소리 없는 H.264, 16:9) */
+export const GUIDE_VIDEO_PATH = /^\/images\/guides\/[a-z0-9-]+\.mp4$/;
+
+/** 이 글이 쓰는 이미지·영상 파일 전부(대표 사진·공유용 짝·영상 먼저) — 빌드 때 파일 존재 확인용. */
+export function guideImagePaths(guide: Pick<GuideDoc, 'cover' | 'coverVideo' | 'blocks'>): string[] {
   const inBody = guide.blocks.flatMap((b) => (b.type === 'image' ? [b.src] : []));
-  return [...(guide.cover ? [guide.cover, guideSharePath(guide.cover)] : []), ...inBody];
+  return [
+    ...(guide.cover ? [guide.cover, guideSharePath(guide.cover)] : []),
+    ...(guide.coverVideo ? [guide.coverVideo] : []),
+    ...inBody,
+  ];
 }

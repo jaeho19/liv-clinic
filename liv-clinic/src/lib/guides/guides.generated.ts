@@ -17,7 +17,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewer": "clinic",
     "treatment": "/lifting/density",
     "cover": "/images/guides/density-thermage-cover.webp",
-    "coverAlt": "매끈한 석고 면에 동심원 물결 두 개가 나란히 새겨진 정물 사진",
+    "coverAlt": "덴서티 장비(왼쪽)와 써마지 FLX 장비(오른쪽)를 나란히 놓은 사진",
+    "coverVideo": "/images/guides/density-thermage-cover.mp4",
     "locale": "ko",
     "slug": "density-vs-thermage",
     "blocks": [
@@ -222,7 +223,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewer": "clinic",
     "treatment": "/lifting/onda",
     "cover": "/images/guides/double-chin-cover.webp",
-    "coverAlt": "턱과 목선이 보이는 석고 조각상의 옆모습",
+    "coverAlt": "온다 장비(왼쪽)와 인모드 장비(오른쪽)를 나란히 놓은 사진",
+    "coverVideo": "/images/guides/double-chin-cover.mp4",
     "locale": "ko",
     "slug": "onda-vs-inmode-double-chin",
     "blocks": [
@@ -400,7 +402,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewer": "clinic",
     "treatment": "/antiaging/skinbooster",
     "cover": "/images/guides/skin-booster-cover.webp",
-    "coverAlt": "연분홍 꽃잎 위에 맺힌 물방울을 가까이서 찍은 사진",
+    "coverAlt": "볼에 물방울이 맺힌 촉촉한 피부의 여성 얼굴을 가까이서 찍은 사진",
+    "coverVideo": "/images/guides/skin-booster-cover.mp4",
     "locale": "ko",
     "slug": "skin-booster-how-many-sessions",
     "blocks": [
@@ -599,7 +602,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewer": "clinic",
     "treatment": "/lifting/thread",
     "cover": "/images/guides/thread-lift-cover.webp",
-    "coverAlt": "고운 실 여러 가닥이 완만하게 위로 휘어 올라간 정물 사진",
+    "coverAlt": "압토스(APTOS) 연수 수술실에서 의료진이 실리프팅을 시술하는 모습",
+    "coverVideo": "/images/guides/thread-lift-cover.mp4",
     "locale": "ko",
     "slug": "thread-lift-how-long-it-lasts",
     "blocks": [

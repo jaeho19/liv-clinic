@@ -128,3 +128,29 @@ LIV Plastic Surgery is led by a board-certified plastic surgeon with SCI-indexed
 - [Ultherapy Prime](https://liv-clinic.net/zh/lifting/ulthera)
 - [优惠活动](https://liv-clinic.net/zh/events)
 - [预约与联系](https://liv-clinic.net/zh/contact)
+
+## Key Pages (Korean / 한국어)
+
+- [홈](https://liv-clinic.net/ko)
+- [의료진 소개 — 김수영 대표원장(성형외과 전문의)](https://liv-clinic.net/ko/about/staff)
+- [가격 안내](https://liv-clinic.net/ko/pricing)
+- [보유 장비](https://liv-clinic.net/ko/about/equipment)
+- [오시는 길](https://liv-clinic.net/ko/about/location)
+- [울쎄라피 프라임](https://liv-clinic.net/ko/lifting/ulthera)
+- [써마지 FLX](https://liv-clinic.net/ko/lifting/thermage)
+- [덴서티](https://liv-clinic.net/ko/lifting/density)
+- [인모드](https://liv-clinic.net/ko/lifting/inmode)
+- [온다 리프팅](https://liv-clinic.net/ko/lifting/onda)
+- [슈링크](https://liv-clinic.net/ko/lifting/shurink)
+- [실리프팅](https://liv-clinic.net/ko/lifting/thread)
+- [압토스 실리프팅](https://liv-clinic.net/ko/lifting/aptos)
+- [보톡스](https://liv-clinic.net/ko/antiaging/botox)
+- [필러](https://liv-clinic.net/ko/antiaging/filler)
+- [스킨부스터](https://liv-clinic.net/ko/antiaging/skinbooster)
+- [기미·색소 레이저](https://liv-clinic.net/ko/laser/pigmentation)
+- [이벤트](https://liv-clinic.net/ko/events)
+- [후기](https://liv-clinic.net/ko/reviews)
+- [상담 예약](https://liv-clinic.net/ko/contact)
+
+<!-- columns:start — 자동 생성(npm run build:guides). 공개된 한국어 칼럼 목록. 손으로 고치지 말 것 -->
+<!-- columns:end -->

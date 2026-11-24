@@ -38,7 +38,7 @@ export const GUIDE_UI: Record<ArticleLocale, GuideUi> = {
     hubTitle: '리브 칼럼',
     hubEyebrow: '의료정보',
     hubIntro:
-      '리프팅·안티에이징 시술을 알아볼 때 자주 묻는 질문을 하나씩 풀어 드립니다. 모든 글은 김수영 대표원장이 직접 감수합니다.',
+      '리프팅·안티에이징 시술을 알아볼 때 자주 묻는 질문을 김수영 대표원장이 하나씩 풀어 드립니다.',
     hubEmpty: '칼럼을 준비하고 있습니다.',
     updated: '수정일',
     readingTime: (m) => `읽는 데 약 ${m}분`,

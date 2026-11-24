@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
-import { generatePageMetadata, getSiteName, safeJsonLd } from '@/lib/seo';
+import { BASE_URL, generatePageMetadata, getSiteName, safeJsonLd } from '@/lib/seo';
 import { allGuideParams, getGuide, guideLocalesFor } from '@/lib/guides';
+import { isDoctorAuthored } from '@/lib/guides/byline';
+import { GUIDE_UI } from '@/lib/guides/ui';
 import { buildGuideSchemas } from '@/lib/guides/schema';
 import { guideOgImage } from '@/lib/guides/ogImage';
 import GuideArticle from '@/components/guides/GuideArticle';
@@ -36,8 +38,22 @@ export async function generateMetadata({
     alternateLocales: published ? guideLocalesFor(slug) : [locale],
     ogType: 'article',
   });
+  // 글 정보(저자·공개일·수정일)를 공유 메타에도 싣는다 — 검색엔진·AI 검색이 글의 출처와 시점을 읽는 자리.
+  // 한국어 칼럼의 저자는 원장(의료진 소개로 이음), 외국인 가이드는 병원 이름 그대로.
+  const doctor = isDoctorAuthored(guide);
+  const article: Metadata = {
+    ...meta,
+    ...(doctor ? { authors: [{ name: GUIDE_UI[guide.locale].doctorAuthor, url: `${BASE_URL}/${locale}/about/staff` }] } : {}),
+    openGraph: {
+      ...meta.openGraph,
+      type: 'article',
+      publishedTime: guide.published ?? guide.updated,
+      modifiedTime: guide.updated,
+      ...(doctor ? { authors: [`${BASE_URL}/${locale}/about/staff`] } : {}),
+    },
+  };
   // 초안은 직접 URL로만 검수한다 — 색인·링크 추적 모두 막는다
-  return published ? meta : { ...meta, robots: { index: false, follow: false } };
+  return published ? article : { ...article, robots: { index: false, follow: false } };
 }
 
 export default async function GuidePage({ params }: { params: Promise<{ locale: string; slug: string }> }) {

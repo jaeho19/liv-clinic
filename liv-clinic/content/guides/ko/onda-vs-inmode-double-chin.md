@@ -12,7 +12,8 @@ updated: 2026-11-24
 reviewer: clinic
 treatment: /lifting/onda
 cover: /images/guides/double-chin-cover.webp
-coverAlt: 턱과 목선이 보이는 석고 조각상의 옆모습
+coverAlt: 온다 장비(왼쪽)와 인모드 장비(오른쪽)를 나란히 놓은 사진
+coverVideo: /images/guides/double-chin-cover.mp4
 ---
 
 이중턱이 지방과 탄력 저하가 함께 있어서 생긴 경우라면 온다와 인모드를 모두 고려할 수 있습니다. 온다는 마이크로웨이브, 인모드는 고주파(RF)를 쓰고, 효과가 나타나는 시기가 서로 다릅니다. 어느 쪽이 맞는지는 턱밑 지방의 양과 피부 탄력을 직접 보고 정합니다.

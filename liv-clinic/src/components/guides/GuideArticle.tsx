@@ -2,7 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { GUIDE_IMAGE_SIZE } from '@/lib/guides/images';
 import { GUIDE_UI } from '@/lib/guides/ui';
-import { isGuideLocale, type GuideBlock, type GuideDoc } from '@/lib/guides/types';
+import { guideMetaLine } from '@/lib/guides/byline';
+import { COLUMN_LOCALE, isGuideLocale, type GuideBlock, type GuideDoc } from '@/lib/guides/types';
+import GuideCoverVideo from './GuideCoverVideo';
 import GuideInline from './GuideInline';
 
 function Block({ block, locale, showMarkers }: { block: GuideBlock; locale: string; showMarkers: boolean }) {
@@ -89,8 +91,6 @@ export default function GuideArticle({ guide }: { guide: GuideDoc }) {
   const isDraft = guide.status !== 'published';
   const toc = guide.blocks.filter((b): b is Extract<GuideBlock, { type: 'h2' }> => b.type === 'h2');
   const prefix = `/${guide.locale}`;
-  const byline =
-    guide.reviewer === 'dr-kim' ? `${ui.reviewedBy} ${ui.doctorAuthor}` : `${ui.author} ${ui.clinicAuthor}`;
 
   return (
     <article className="pb-16">
@@ -108,24 +108,38 @@ export default function GuideArticle({ guide }: { guide: GuideDoc }) {
           <p className="mb-3 font-serif text-h4 text-primary">{ui.category[guide.category]}</p>
           <h1 className="mb-4 text-h1 text-secondary md:text-display">{guide.title}</h1>
           <p className="mb-6 text-body leading-relaxed text-mono md:text-h4">{guide.description}</p>
+          {/* 한국어 칼럼: 원장 이름만(수정일·읽는 시간은 적지 않는다), 이름은 의료진 소개로 잇는다. 외국인 가이드: 수정일 · 읽는 시간 · 저자 */}
           <p className="text-small text-mono-light">
-            {ui.updated} {guide.updated} · {ui.readingTime(guide.readingMinutes)} · {byline}
+            {guide.locale === COLUMN_LOCALE ? (
+              <>
+                {ui.author}{' '}
+                <Link href={`${prefix}/about/staff`} rel="author" className="underline-offset-4 hover:text-primary hover:underline">
+                  {ui.doctorAuthor}
+                </Link>
+              </>
+            ) : (
+              guideMetaLine(guide)
+            )}
           </p>
         </div>
       </header>
 
       <div className="container-custom max-w-3xl">
         {/* 대표 사진 — 글 머리 바로 아래. 화면에서 가장 큰 그림이라 먼저 받는다(priority).
-            글 칸은 데스크톱에서 1120px(.container-custom)이라 16:9 그대로면 높이 630px로 본문을 밀어낸다 → md부터 21:9 띠로 자른다. */}
+            글 칸은 데스크톱에서 1120px(.container-custom)이라 16:9 그대로면 높이 630px로 본문을 밀어낸다 → md부터 21:9 띠로 자른다.
+            움직이는 버전(coverVideo)이 있으면 사진 위에 얹는다 — 사진은 그대로 남아 먼저 보인다. */}
         {guide.cover && (
-          <Image
-            src={guide.cover}
-            alt={guide.coverAlt ?? ''}
-            {...GUIDE_IMAGE_SIZE}
-            priority
-            sizes="(min-width: 1200px) 1120px, 100vw"
-            className="mt-8 aspect-[16/9] w-full rounded-2xl object-cover md:aspect-[21/9]"
-          />
+          <div className="relative mt-8 aspect-[16/9] w-full overflow-hidden rounded-2xl md:aspect-[21/9]">
+            <Image
+              src={guide.cover}
+              alt={guide.coverAlt ?? ''}
+              {...GUIDE_IMAGE_SIZE}
+              priority
+              sizes="(min-width: 1200px) 1120px, 100vw"
+              className="h-full w-full object-cover"
+            />
+            {guide.coverVideo && <GuideCoverVideo src={guide.coverVideo} />}
+          </div>
         )}
         {toc.length >= 3 && (
           <nav className="my-8 rounded-2xl border border-border bg-white p-5" aria-label={ui.toc}>

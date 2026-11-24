@@ -62,6 +62,8 @@ export interface GuideFrontmatter {
   status: GuideStatus;
   /** YYYY-MM-DD — 화면의 "업데이트"와 Article.dateModified */
   updated: string;
+  /** YYYY-MM-DD — 처음 공개한 날(Article.datePublished). 없으면 updated를 쓴다. 화면에는 적지 않는다. */
+  published?: string;
   reviewer: GuideReviewer;
   /** 관련 시술 경로(로케일 접두 없음). 예: '/lifting/ulthera' */
   treatment?: string;
@@ -69,6 +71,11 @@ export interface GuideFrontmatter {
   cover?: string;
   /** 대표 사진 설명(대체 글). cover가 있으면 필수. */
   coverAlt?: string;
+  /**
+   * 대표 사진의 움직이는 버전(/images/guides/….mp4, 소리 없는 짧은 반복 영상). 글 머리에서만 쓴다 —
+   * 목록 카드·공유 이미지는 cover(사진) 그대로. cover 없이는 쓸 수 없다.
+   */
+  coverVideo?: string;
 }
 
 export interface GuideDoc extends GuideFrontmatter {

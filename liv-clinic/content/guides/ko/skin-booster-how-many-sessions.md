@@ -12,7 +12,8 @@ updated: 2026-11-24
 reviewer: clinic
 treatment: /antiaging/skinbooster
 cover: /images/guides/skin-booster-cover.webp
-coverAlt: 연분홍 꽃잎 위에 맺힌 물방울을 가까이서 찍은 사진
+coverAlt: 볼에 물방울이 맺힌 촉촉한 피부의 여성 얼굴을 가까이서 찍은 사진
+coverVideo: /images/guides/skin-booster-cover.mp4
 ---
 
 스킨부스터는 보통 2~4주 간격으로 3~4회 받는 것을 권합니다. 이 과정을 마친 뒤에는 2~3개월마다 유지 시술을 권합니다. 실제 횟수와 간격은 피부 상태와 쓰는 제품에 따라 상담에서 정합니다. [검수 필요: 제품별(리쥬란·쥬베룩 등)로 권장 횟수와 간격이 다른지 — 홈페이지에는 공통 기준만 있음]

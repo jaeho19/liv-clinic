@@ -79,6 +79,39 @@ describe('guide images — validation', () => {
   });
 });
 
+describe('cover video — the moving version of the cover', () => {
+  const parse = (src: string) => parseGuide(src, { locale: 'ko', slug: 'x' });
+  const COVER = 'cover: /images/guides/thread-cover.webp\ncoverAlt: 실리프팅을 시술하는 모습\n';
+
+  it('reads the cover video from frontmatter', () => {
+    const doc = parse(fm(`${COVER}coverVideo: /images/guides/thread-cover.mp4\n`) + BODY);
+    expect(doc.coverVideo).toBe('/images/guides/thread-cover.mp4');
+  });
+
+  it('is optional — a cover without a video stays a still photo', () => {
+    expect(parse(fm(COVER) + BODY).coverVideo).toBeUndefined();
+  });
+
+  it('refuses a video without a cover photo, because the photo is what shows first and what gets shared', () => {
+    expect(() => parse(fm('coverVideo: /images/guides/thread-cover.mp4\n') + BODY)).toThrow(/cover/);
+  });
+
+  it('refuses videos that are not an mp4 under /images/guides/', () => {
+    expect(() => parse(fm(`${COVER}coverVideo: /images/guides/thread-cover.gif\n`) + BODY)).toThrow(/mp4/);
+    expect(() => parse(fm(`${COVER}coverVideo: /videos/thread-cover.mp4\n`) + BODY)).toThrow(/\/images\/guides\//);
+  });
+
+  it('counts the video among the files the build must find', () => {
+    const doc = parse(fm(`${COVER}coverVideo: /images/guides/thread-cover.mp4\n`) + BODY);
+    expect(guideImagePaths(doc)).toEqual([
+      '/images/guides/thread-cover.webp',
+      '/images/guides/thread-cover-share.jpg',
+      '/images/guides/thread-cover.mp4',
+      '/images/guides/thread-absorption.webp',
+    ]);
+  });
+});
+
 describe('guide image helpers', () => {
   const doc = parseGuide(fm('cover: /images/guides/thread-cover.webp\ncoverAlt: 정물 사진\n') + BODY, {
     locale: 'ko',
