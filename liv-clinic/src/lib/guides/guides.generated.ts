@@ -16,6 +16,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/lifting/density",
+    "cover": "/images/guides/density-thermage-cover.webp",
+    "coverAlt": "매끈한 석고 면에 동심원 물결 두 개가 나란히 새겨진 정물 사진",
     "locale": "ko",
     "slug": "density-vs-thermage",
     "blocks": [
@@ -31,6 +33,12 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "p",
         "text": "두 시술 모두 고주파 에너지를 진피층에 전달해 열을 냅니다. 이 열로 기존 콜라겐이 수축해 시술 직후 탄력 변화가 있고, 그 뒤 3~6개월에 걸쳐 새 콜라겐이 만들어집니다."
+      },
+      {
+        "type": "image",
+        "src": "/images/guides/rf-lifting-timeline.webp",
+        "alt": "고주파 리프팅 뒤의 변화: 시술 직후 기존 콜라겐이 수축하고, 3~6개월에 걸쳐 새 콜라겐이 생성됩니다",
+        "caption": "덴서티와 써마지 모두 시술 직후의 변화와 이후 몇 달에 걸친 변화가 함께 나타납니다."
       },
       {
         "type": "ul",
@@ -213,6 +221,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/lifting/onda",
+    "cover": "/images/guides/double-chin-cover.webp",
+    "coverAlt": "턱과 목선이 보이는 석고 조각상의 옆모습",
     "locale": "ko",
     "slug": "onda-vs-inmode-double-chin",
     "blocks": [
@@ -231,6 +241,12 @@ export const GUIDES: readonly GuideDoc[] = [
           "**온다**: 이탈리아 DEKA사의 2.45GHz 마이크로웨이브 장비입니다. 에너지의 약 80%가 피하지방층에, 약 20%가 진피층에 작용합니다. 지방층에 흡수된 에너지가 지방세포의 막을 손상시키고, 손상된 지방은 몸의 대식세포가 서서히 치웁니다. 진피층에는 열 자극이 전달돼 콜라겐 재생을 이끕니다. 핸드피스가 피부 표면을 약 5°C로 식혀 표피를 보호합니다.",
           "**인모드**: 고주파(RF) 에너지로 지방층과 진피층을 함께 자극합니다. 한 장비에서 여러 모드를 골라 쓸 수 있고, 리브성형외과 가격표에는 FX 모드와 FORMA 모드가 있습니다. FORMA는 비침습 고주파로 콜라겐 수축과 재생을 이끌어 탄력을 다룹니다. [검수 필요: FX 모드 설명 — 홈페이지에 FX 설명이 없고, 시술 페이지에는 Morpheus8·FaceTite가 소개돼 있어 실제로 운영하는 모드 확인 필요]"
         ]
+      },
+      {
+        "type": "image",
+        "src": "/images/guides/onda-energy-layers.webp",
+        "alt": "온다 에너지가 작용하는 층: 표피는 약 5°C로 식혀 보호하고, 에너지의 약 20%는 진피에, 약 80%는 피하지방층에 작용합니다",
+        "caption": "온다는 에너지의 대부분이 피하지방층에 작용합니다."
       },
       {
         "type": "h2",
@@ -383,6 +399,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/antiaging/skinbooster",
+    "cover": "/images/guides/skin-booster-cover.webp",
+    "coverAlt": "연분홍 꽃잎 위에 맺힌 물방울을 가까이서 찍은 사진",
     "locale": "ko",
     "slug": "skin-booster-how-many-sessions",
     "blocks": [
@@ -415,6 +433,12 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "p",
         "text": "시술 직후에도 수분감은 느낄 수 있습니다. 탄력과 윤기는 2~4주가 지나면서 나아집니다. 이 변화가 쌓이도록 2~4주 간격으로 3~4회를 한 과정으로 권합니다."
+      },
+      {
+        "type": "image",
+        "src": "/images/guides/skin-booster-schedule.webp",
+        "alt": "스킨부스터 권장 일정: 2~4주 간격으로 3~4회, 이후 2~3개월마다 유지 시술",
+        "caption": "2~4주 간격으로 3~4회를 한 과정으로 권합니다."
       },
       {
         "type": "table",
@@ -574,6 +598,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/lifting/thread",
+    "cover": "/images/guides/thread-lift-cover.webp",
+    "coverAlt": "고운 실 여러 가닥이 완만하게 위로 휘어 올라간 정물 사진",
     "locale": "ko",
     "slug": "thread-lift-how-long-it-lasts",
     "blocks": [
@@ -641,6 +667,12 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "p",
         "text": "실의 재료에 따라 몸에 흡수되는 기간이 다르고, 그만큼 유지 기간도 달라집니다."
+      },
+      {
+        "type": "image",
+        "src": "/images/guides/thread-absorption-period.webp",
+        "alt": "실 재료별 흡수 기간 비교: PDO 6~8개월, PLLA 12~18개월, PCL 18~24개월",
+        "caption": "실 재료에 따라 몸에 흡수되는 기간이 다릅니다."
       },
       {
         "type": "table",

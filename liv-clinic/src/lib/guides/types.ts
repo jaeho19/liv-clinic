@@ -45,7 +45,9 @@ export type GuideBlock =
   | { type: 'ul'; items: string[] }
   | { type: 'ol'; items: string[] }
   | { type: 'table'; header: string[]; rows: string[][] }
-  | { type: 'note'; text: string };
+  | { type: 'note'; text: string }
+  /** 본문 그림. 파일은 public/images/guides/ 의 1600×900 (images.ts) */
+  | { type: 'image'; src: string; alt: string; caption?: string };
 
 export interface GuideFaq {
   q: string;
@@ -63,6 +65,10 @@ export interface GuideFrontmatter {
   reviewer: GuideReviewer;
   /** 관련 시술 경로(로케일 접두 없음). 예: '/lifting/ulthera' */
   treatment?: string;
+  /** 대표 사진 경로(/images/guides/…, 1600×900). 글 머리·목록 카드·공유 이미지에 쓴다. */
+  cover?: string;
+  /** 대표 사진 설명(대체 글). cover가 있으면 필수. */
+  coverAlt?: string;
 }
 
 export interface GuideDoc extends GuideFrontmatter {

@@ -4,6 +4,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { generatePageMetadata, getSiteName, safeJsonLd } from '@/lib/seo';
 import { allGuideParams, getGuide, guideLocalesFor } from '@/lib/guides';
 import { buildGuideSchemas } from '@/lib/guides/schema';
+import { guideOgImage } from '@/lib/guides/ogImage';
 import GuideArticle from '@/components/guides/GuideArticle';
 
 export const revalidate = 3600;
@@ -23,12 +24,15 @@ export async function generateMetadata({
   const guide = getGuide(locale, slug);
   if (!guide) return {};
   const published = guide.status === 'published';
+  const ogImage = guideOgImage(guide);
   const meta = generatePageMetadata({
     locale,
     title: `${guide.title} | ${getSiteName(locale)}`,
     description: guide.description,
     keywords: guide.keywords,
     path: `/guides/${slug}`,
+    // 대표 사진이 있으면 공유 이미지로 쓴다(없으면 사이트 기본 이미지)
+    images: ogImage ? [ogImage] : [],
     alternateLocales: published ? guideLocalesFor(slug) : [locale],
     ogType: 'article',
   });

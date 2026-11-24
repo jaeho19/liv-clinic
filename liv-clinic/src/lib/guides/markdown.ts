@@ -2,7 +2,8 @@
  * 가이드 Markdown 부분집합 파서. 외부 의존성 없음(프록시 뒤라 패키지 추가 불가).
  *
  * 지원: frontmatter(스칼라·"- " 목록), ## / ###, 문단, "- " 목록, "1. " 목록,
- * "| a | b |" 표(둘째 줄 구분선), "> " 안내문, 인라인 **굵게**·[텍스트](url).
+ * "| a | b |" 표(둘째 줄 구분선), "> " 안내문, 인라인 **굵게**·[텍스트](url),
+ * 한 줄을 통째로 차지하는 그림 `![대체 글](/images/guides/파일.webp "캡션")`.
  * "## FAQ" 이후의 "### 질문" + 답 문단은 faq[]로 분리한다(FAQPage 스키마용).
  */
 import type {
@@ -16,6 +17,7 @@ import type {
   GuideStatus,
 } from './types';
 import { COLUMN_LOCALE } from './types';
+import { GUIDE_IMAGE_PATH } from './images';
 
 export const REVIEW_MARKER = /\[검수 필요[^\]]*\]/g;
 
@@ -64,6 +66,9 @@ function headingId(text: string, ordinal: number): string {
     .replace(/\s+/g, '-');
   return latin.length >= 3 ? latin : `s${ordinal}`;
 }
+
+/** 한 줄을 통째로 차지하는 그림: ![대체 글](경로 "캡션") */
+const IMAGE_LINE = /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+"([^"]*)")?\)\s*$/;
 
 const cells = (line: string) =>
   line.trim().replace(/^\|/, '').replace(/\|$/, '').split('|').map((c) => c.trim());
@@ -125,6 +130,15 @@ export function parseBlocks(body: string): { blocks: GuideBlock[]; faq: GuideFaq
       } else {
         blocks.push({ type: 'h3', text: h3[1].trim() });
       }
+      i++;
+      continue;
+    }
+    const image = IMAGE_LINE.exec(line.trim());
+    // FAQ 답 안의 그림은 지원하지 않는다(FAQPage 스키마는 글자만) — 그대로 문장으로 남긴다
+    if (image && !(inFaq && question)) {
+      flushPara();
+      const [, alt, src, caption] = image;
+      blocks.push({ type: 'image', src, alt: alt.trim(), ...(caption ? { caption } : {}) });
       i++;
       continue;
     }
@@ -210,6 +224,12 @@ function requireEnum<T extends string>(data: Record<string, string | string[]>, 
   return v as T;
 }
 
+function requireGuideImagePath(src: string, what: string): void {
+  if (!GUIDE_IMAGE_PATH.test(src)) {
+    throw new Error(`${what} must be a file under /images/guides/ (lowercase a-z 0-9 hyphen), got "${src}"`);
+  }
+}
+
 export function parseGuide(src: string, ctx: { locale: ArticleLocale; slug: string }): GuideDoc {
   const { data, body } = parseFrontmatter(src);
   const keywords = Array.isArray(data.keywords) ? data.keywords.filter(Boolean) : [];
@@ -227,8 +247,19 @@ export function parseGuide(src: string, ctx: { locale: ArticleLocale; slug: stri
     updated,
     reviewer: requireEnum(data, 'reviewer', REVIEWERS),
     ...(typeof data.treatment === 'string' && data.treatment ? { treatment: data.treatment } : {}),
+    ...(typeof data.cover === 'string' && data.cover ? { cover: data.cover } : {}),
+    ...(typeof data.coverAlt === 'string' && data.coverAlt ? { coverAlt: data.coverAlt } : {}),
   };
   const { blocks, faq } = parseBlocks(body);
+  if (fm.cover) {
+    requireGuideImagePath(fm.cover, 'frontmatter "cover"');
+    if (!fm.coverAlt) throw new Error('frontmatter "coverAlt" is required when "cover" is set (describe the picture)');
+  }
+  for (const b of blocks) {
+    if (b.type !== 'image') continue;
+    requireGuideImagePath(b.src, 'image');
+    if (!b.alt) throw new Error(`image ${b.src} needs alt text: ![describe the picture](${b.src})`);
+  }
   const reviewMarkers = (body.match(REVIEW_MARKER) ?? []).length;
   return {
     ...fm,

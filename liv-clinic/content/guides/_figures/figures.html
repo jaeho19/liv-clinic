@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+<!--
+  칼럼 본문 그림의 원본. 숫자·문구를 고칠 때는 이 파일을 고친 뒤 다시 찍는다(README "그림 만드는 법").
+  - 그림 하나 = <svg id="fig-…"> 1600×900. 색은 src/app/globals.css 의 토큰과 같다.
+  - 휴대폰에서는 그림이 가로 약 360px로 줄어든다 → 글자는 44px 아래로 내리지 말 것.
+  - 숫자는 홈페이지에 적힌 값만 쓴다(content/guides/_facts.md).
+  이 파일은 liv-clinic 폴더를 루트로 띄운 정적 서버에서 연다(글꼴 경로가 /public/fonts/…).
+-->
+<head>
+<meta charset="utf-8">
+<title>칼럼 그림 원본</title>
+<style>
+  @font-face { font-family: 'Paperlogy'; src: url('/public/fonts/Paperlogy-4Regular-latin.woff2') format('woff2'); font-weight: 400; unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F; }
+  @font-face { font-family: 'Paperlogy'; src: url('/public/fonts/Paperlogy-4Regular-hangul.woff2') format('woff2'); font-weight: 400; unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF; }
+  @font-face { font-family: 'Paperlogy'; src: url('/public/fonts/Paperlogy-6SemiBold-latin.woff2') format('woff2'); font-weight: 600; unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F; }
+  @font-face { font-family: 'Paperlogy'; src: url('/public/fonts/Paperlogy-6SemiBold-hangul.woff2') format('woff2'); font-weight: 600; unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF; }
+  @font-face { font-family: 'Paperlogy'; src: url('/public/fonts/Paperlogy-7Bold-latin.woff2') format('woff2'); font-weight: 700; unicode-range: U+0000-024F, U+0300-036F, U+1E00-1EFF, U+2000-206F, U+20A0-20CF, U+2100-214F, U+2190-21FF, U+2200-22FF, U+25A0-25FF, U+2600-26FF, U+FB00-FB4F; }
+  @font-face { font-family: 'Paperlogy'; src: url('/public/fonts/Paperlogy-7Bold-hangul.woff2') format('woff2'); font-weight: 700; unicode-range: U+1100-11FF, U+3000-303F, U+3130-318F, U+AC00-D7A3, U+FF00-FFEF; }
+
+  :root {
+    --surface: #ffffff;
+    --secondary: #6d4e42;   /* 제목·막대·강조 */
+    --primary: #b4988d;     /* 보조 선 */
+    --ink: #575756;         /* 본문 글자 */
+    --muted: #8a8a8a;       /* 눈금·주석 */
+    --grid: #e5e5e5;
+    --tint-1: #f3ece9;      /* 옅은 면 */
+    --tint-2: #e0d0c9;
+    --tint-3: #c9aea3;
+  }
+  body { margin: 0; background: #ddd; font-family: 'Paperlogy', sans-serif; }
+  svg { display: block; width: 1600px; height: 900px; margin: 0 0 40px; background: var(--surface); }
+  text { font-family: 'Paperlogy', sans-serif; }
+  .title { font-size: 64px; font-weight: 700; fill: var(--secondary); }
+  .label { font-size: 54px; font-weight: 600; fill: var(--ink); }
+  .strong { font-size: 56px; font-weight: 700; fill: var(--secondary); }
+  .body { font-size: 48px; font-weight: 400; fill: var(--ink); }
+  .tick { font-size: 44px; font-weight: 400; fill: var(--muted); }
+  .brand { font-size: 34px; font-weight: 600; fill: var(--primary); }
+  .on-dark { font-size: 46px; font-weight: 700; fill: #ffffff; }
+</style>
+</head>
+<body>
+
+<!-- 1. 실리프팅: 실 재료별 흡수 기간 (PDO 6~8 · PLLA 12~18 · PCL 18~24개월) — 0~24개월 = x 330~1420 -->
+<svg id="fig-thread-absorption" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="실 재료별 흡수 기간">
+  <text class="title" x="90" y="150">실 재료별 흡수 기간</text>
+  <g stroke="var(--grid)" stroke-width="3">
+    <line x1="330" y1="240" x2="330" y2="700"/><line x1="602.5" y1="240" x2="602.5" y2="700"/>
+    <line x1="875" y1="240" x2="875" y2="700"/><line x1="1147.5" y1="240" x2="1147.5" y2="700"/>
+    <line x1="1420" y1="240" x2="1420" y2="700"/>
+  </g>
+  <g class="tick" text-anchor="middle">
+    <text x="330" y="770">0</text><text x="602.5" y="770">6</text><text x="875" y="770">12</text>
+    <text x="1147.5" y="770">18</text><text x="1420" y="770">24개월</text>
+  </g>
+  <g fill="var(--secondary)">
+    <rect x="602.5" y="288" width="90.8" height="72" rx="10"/>
+    <rect x="875" y="434" width="272.5" height="72" rx="10"/>
+    <rect x="1147.5" y="580" width="272.5" height="72" rx="10"/>
+  </g>
+  <g class="label">
+    <text x="90" y="343">PDO</text><text x="90" y="489">PLLA</text><text x="90" y="635">PCL</text>
+  </g>
+  <g class="body" text-anchor="end">
+    <text x="578" y="341">6~8개월</text><text x="851" y="487">12~18개월</text><text x="1123" y="633">18~24개월</text>
+  </g>
+  <text class="brand" x="1510" y="850" text-anchor="end">리브성형외과</text>
+</svg>
+
+<!-- 2. 덴서티·써마지: 고주파 리프팅 뒤의 변화 (시술 직후 수축 → 3~6개월 새 콜라겐) -->
+<svg id="fig-rf-timeline" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="고주파 리프팅 뒤의 변화">
+  <text class="title" x="90" y="150">고주파 리프팅 뒤의 변화</text>
+  <line x1="150" y1="450" x2="1440" y2="450" stroke="var(--primary)" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1440 450 l-34 -22 v44 z" fill="var(--primary)"/>
+  <g>
+    <circle cx="360" cy="450" r="34" fill="var(--secondary)" stroke="var(--surface)" stroke-width="6"/>
+    <circle cx="1060" cy="450" r="34" fill="var(--secondary)" stroke="var(--surface)" stroke-width="6"/>
+  </g>
+  <g class="strong" text-anchor="middle">
+    <text x="360" y="360">시술 직후</text><text x="1060" y="360">3~6개월에 걸쳐</text>
+  </g>
+  <g class="body" text-anchor="middle">
+    <text x="360" y="570">기존 콜라겐이 수축</text><text x="1060" y="570">새 콜라겐이 생성</text>
+  </g>
+  <text class="tick" x="90" y="760">덴서티·써마지 공통 · 변화에는 개인차가 있습니다</text>
+  <text class="brand" x="1510" y="850" text-anchor="end">리브성형외과</text>
+</svg>
+
+<!-- 3. 온다: 에너지가 작용하는 층 (표피 약 5°C 냉각 · 진피 약 20% · 피하지방층 약 80%) -->
+<svg id="fig-onda-layers" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="온다 에너지가 작용하는 층">
+  <text class="title" x="90" y="150">온다 에너지가 작용하는 층</text>
+  <rect x="90" y="230" width="640" height="92" rx="10" fill="var(--tint-1)"/>
+  <rect x="90" y="330" width="640" height="160" rx="10" fill="var(--tint-2)"/>
+  <rect x="90" y="498" width="640" height="270" rx="10" fill="var(--tint-3)"/>
+  <g class="label">
+    <text x="130" y="295">표피</text><text x="130" y="430">진피</text><text x="130" y="652">피하지방층</text>
+  </g>
+  <g stroke="var(--primary)" stroke-width="4">
+    <line x1="742" y1="276" x2="800" y2="276"/><line x1="742" y1="410" x2="800" y2="410"/><line x1="742" y1="633" x2="800" y2="633"/>
+  </g>
+  <text class="body" x="820" y="293">약 5°C로 식혀 보호</text>
+  <text class="strong" x="820" y="400">에너지의 약 20%</text>
+  <text class="body" x="820" y="464">열 자극 → 콜라겐 재생</text>
+  <text class="strong" x="820" y="622">에너지의 약 80%</text>
+  <text class="body" x="820" y="686">지방세포에 작용</text>
+  <text class="brand" x="1510" y="850" text-anchor="end">리브성형외과</text>
+</svg>
+
+<!-- 4. 스킨부스터: 권장 일정 (2~4주 간격 3~4회 → 2~3개월마다 유지) -->
+<svg id="fig-skinbooster-schedule" viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="스킨부스터 권장 일정">
+  <text class="title" x="90" y="150">스킨부스터 권장 일정</text>
+  <g stroke="var(--primary)" stroke-width="8" stroke-linecap="round">
+    <line x1="268" y1="420" x2="412" y2="420"/><line x1="548" y1="420" x2="692" y2="420"/><line x1="828" y1="420" x2="972" y2="420"/>
+    <line x1="1118" y1="420" x2="1200" y2="420"/>
+  </g>
+  <path d="M1216 420 l-34 -22 v44 z" fill="var(--primary)"/>
+  <g class="tick" text-anchor="middle">
+    <text x="340" y="380">2~4주</text><text x="620" y="380">2~4주</text><text x="900" y="380">2~4주</text>
+  </g>
+  <g fill="var(--secondary)">
+    <circle cx="200" cy="420" r="62"/><circle cx="480" cy="420" r="62"/><circle cx="760" cy="420" r="62"/>
+  </g>
+  <circle cx="1040" cy="420" r="59" fill="var(--surface)" stroke="var(--secondary)" stroke-width="6" stroke-dasharray="16 12"/>
+  <g class="on-dark" text-anchor="middle">
+    <text x="200" y="437">1회</text><text x="480" y="437">2회</text><text x="760" y="437">3회</text>
+  </g>
+  <text x="1040" y="437" text-anchor="middle" style="font-size:46px;font-weight:700;fill:var(--secondary)">4회</text>
+  <rect x="1236" y="358" width="274" height="124" rx="20" fill="var(--tint-1)"/>
+  <text class="strong" x="1373" y="440" text-anchor="middle" style="font-size:50px">유지 시술</text>
+  <text class="body" x="1373" y="552" text-anchor="middle">2~3개월마다</text>
+  <text class="body" x="620" y="552" text-anchor="middle">3~4회를 한 과정으로</text>
+  <line x1="90" y1="640" x2="1510" y2="640" stroke="var(--grid)" stroke-width="3"/>
+  <text class="body" x="90" y="730"><tspan style="font-weight:700;fill:var(--secondary)">시술 직후</tspan> 수분감　→　<tspan style="font-weight:700;fill:var(--secondary)">2~4주 후</tspan> 탄력·윤기</text>
+  <text class="brand" x="1510" y="850" text-anchor="end">리브성형외과</text>
+</svg>
+
+</body>
+</html>

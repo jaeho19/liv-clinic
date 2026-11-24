@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { BASE_URL, generateFAQSchema, generateWebPageSchema, getSiteName } from '@/lib/seo';
 import { LOCALE_META } from '@/i18n/locales-meta';
 import { GUIDE_UI } from './ui';
+import { guideOgImage } from './ogImage';
 import type { GuideDoc } from './types';
 
 /**
@@ -43,6 +44,7 @@ export async function buildGuideSchemas(guide: GuideDoc): Promise<object[]> {
       logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/logo.png` },
     },
     mainEntityOfPage: url,
+    ...(guideOgImage(guide) ? { image: guideOgImage(guide)!.url } : {}),
     ...(guide.reviewer === 'dr-kim' ? { reviewedBy: physician } : {}),
     ...(guide.treatment
       ? { about: { '@type': 'MedicalProcedure', url: `${BASE_URL}/${guide.locale}${guide.treatment}` } }

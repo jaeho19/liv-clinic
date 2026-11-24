@@ -1,4 +1,6 @@
+import Image from 'next/image';
 import Link from 'next/link';
+import { GUIDE_IMAGE_SIZE } from '@/lib/guides/images';
 import { GUIDE_UI } from '@/lib/guides/ui';
 import { isGuideLocale, type GuideBlock, type GuideDoc } from '@/lib/guides/types';
 import GuideInline from './GuideInline';
@@ -37,6 +39,20 @@ function Block({ block, locale, showMarkers }: { block: GuideBlock; locale: stri
         <div className="my-6 rounded-xl border border-primary/30 bg-primary/5 px-5 py-4 text-small leading-relaxed text-secondary">
           {inline(block.text)}
         </div>
+      );
+    case 'image':
+      return (
+        // 글자가 든 그림이라 원본(1600px)의 절반쯤인 820px로 묶는다 — 글 칸(1120px)에 꽉 채우면 고해상도 화면에서 흐려진다
+        <figure className="mx-auto my-8 max-w-[820px]">
+          <Image
+            src={block.src}
+            alt={block.alt}
+            {...GUIDE_IMAGE_SIZE}
+            sizes="(min-width: 900px) 820px, 100vw"
+            className="h-auto w-full rounded-2xl border border-border bg-white"
+          />
+          {block.caption && <figcaption className="mt-3 text-center text-small text-mono-light">{block.caption}</figcaption>}
+        </figure>
       );
     case 'table':
       return (
@@ -99,6 +115,18 @@ export default function GuideArticle({ guide }: { guide: GuideDoc }) {
       </header>
 
       <div className="container-custom max-w-3xl">
+        {/* 대표 사진 — 글 머리 바로 아래. 화면에서 가장 큰 그림이라 먼저 받는다(priority).
+            글 칸은 데스크톱에서 1120px(.container-custom)이라 16:9 그대로면 높이 630px로 본문을 밀어낸다 → md부터 21:9 띠로 자른다. */}
+        {guide.cover && (
+          <Image
+            src={guide.cover}
+            alt={guide.coverAlt ?? ''}
+            {...GUIDE_IMAGE_SIZE}
+            priority
+            sizes="(min-width: 1200px) 1120px, 100vw"
+            className="mt-8 aspect-[16/9] w-full rounded-2xl object-cover md:aspect-[21/9]"
+          />
+        )}
         {toc.length >= 3 && (
           <nav className="my-8 rounded-2xl border border-border bg-white p-5" aria-label={ui.toc}>
             <p className="mb-3 text-small font-medium text-secondary">{ui.toc}</p>

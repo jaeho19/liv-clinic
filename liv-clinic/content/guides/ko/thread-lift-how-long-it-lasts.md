@@ -11,6 +11,8 @@ status: draft
 updated: 2026-11-24
 reviewer: clinic
 treatment: /lifting/thread
+cover: /images/guides/thread-lift-cover.webp
+coverAlt: 고운 실 여러 가닥이 완만하게 위로 휘어 올라간 정물 사진
 ---
 
 실리프팅 효과는 실 종류에 따라 보통 6~12개월 이어집니다. 히알루론산을 담은 압토스 나미카(APTOS NAMICA)는 최대 24개월까지 유지됩니다. 다만 유지 기간은 피부 상태와 처짐 정도, 생활 습관에 따라 사람마다 다릅니다. [검수 필요: 시술 페이지에는 6~12개월, 같은 페이지 비교표에는 6~18개월로 적혀 있음 — 어느 쪽으로 통일할지]
@@ -34,6 +36,8 @@ treatment: /lifting/thread
 ## 실 종류에 따라 유지 기간이 얼마나 다른가요?
 
 실의 재료에 따라 몸에 흡수되는 기간이 다르고, 그만큼 유지 기간도 달라집니다.
+
+![실 재료별 흡수 기간 비교: PDO 6~8개월, PLLA 12~18개월, PCL 18~24개월](/images/guides/thread-absorption-period.webp "실 재료에 따라 몸에 흡수되는 기간이 다릅니다.")
 
 | 실 재료 | 흡수 기간 | 특징 |
 |---|---|---|

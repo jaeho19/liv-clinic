@@ -16,11 +16,21 @@
 - 다른 칼럼으로 거는 링크는 그 칼럼이 published일 때만 건다(초안은 검색에 안 나가야 한다).
 - 네이버 블로그 글을 그대로 옮기지 않는다(같은 글이 두 곳에 있으면 구글이 한쪽만 인정한다).
 
+## 이미지
+
+- 파일은 전부 `public/images/guides/`에 **1600×900(16:9) WebP**로 둔다. 파일 이름은 영어 소문자·숫자·하이픈. 원고가 가리키는 파일이 없으면 빌드가 실패한다.
+- **대표 사진**: frontmatter에 `cover: /images/guides/파일.webp`와 `coverAlt: 사진 설명`(필수). 글 머리, 목록 카드, 공유 이미지(og:image)에 쓰인다.
+- **본문 그림**: 한 줄을 통째로 `![그림 설명](/images/guides/파일.webp "캡션")`. 그림 설명(대체 글)은 필수이고 그림 속 숫자를 글로도 적는다. FAQ 답 안에서는 쓸 수 없다.
+- 대표 사진은 분위기 사진으로 만든다(Higgsfield `gpt_image_2_6`, 16:9). **사람 얼굴·시술 장면·장비·전후 비교·글자는 넣지 않는다** — 생성 이미지는 사실처럼 보일 수 있는 것을 담지 않는다. 색은 아이보리·더스티 로즈·브라운.
+- 숫자·층 구조가 들어가는 **설명 그림은 생성하지 않고 코드로 그린다**: 원본은 `_figures/figures.html`(그림 하나 = `<svg id="fig-…">` 1600×900, 브랜드 글꼴). 숫자는 홈페이지에 적힌 값만 쓴다. 휴대폰에서는 가로 약 360px로 줄어드니 글자는 44px 아래로 내리지 않는다.
+- 그림 만드는 법: liv-clinic 폴더를 루트로 정적 서버를 띄워 `/content/guides/_figures/figures.html`을 열고(글꼴이 `/public/fonts/…`에서 온다) 각 `<svg>`를 1600×900 PNG로 찍은 뒤 sharp로 WebP(품질 92)로 바꾼다. 사진은 품질 82.
+- 원장 답으로 숫자가 바뀌면 `figures.html`을 고쳐 다시 찍는다(그림 속 숫자와 본문 표가 어긋나면 안 된다).
+
 ## 공통 형식
 
-- `_`로 시작하는 파일은 컴파일하지 않는다(`_facts.md`, `_example.md`).
+- `_`로 시작하는 파일·폴더는 컴파일하지 않는다(`_facts.md`, `_example.md`, `_figures/`).
 - 빌드 전 `npm run build:guides`가 `src/lib/guides/guides.generated.ts`를 만든다(커밋한다).
-- frontmatter 필수: `title`, `description`, `keywords`(목록), `category`(price|booking|comparison|aftercare|treatment), `status`(draft|published), `updated`(YYYY-MM-DD), `reviewer`(clinic|dr-kim). 선택: `treatment`(예: /lifting/ulthera).
+- frontmatter 필수: `title`, `description`, `keywords`(목록), `category`(price|booking|comparison|aftercare|treatment), `status`(draft|published), `updated`(YYYY-MM-DD), `reviewer`(clinic|dr-kim). 선택: `treatment`(예: /lifting/ulthera), `cover`·`coverAlt`(위 "이미지").
 - `status: draft` = 직접 URL로만 열림(noindex, 허브·사이트맵·hreflang 제외, 화면 상단 "검수 중" 띠). 검수가 끝나면 `published`로 바꾼다.
 - 사이트에 근거가 없는 의료적 수치는 쓰지 말고 `[검수 필요: 무엇을 확인해야 하는지]`를 남긴다. published에 표식이 남으면 빌드가 실패한다.
 - 본문 문법: `##` 절, `###` 소절, 문단, `- ` 목록, `1. ` 목록, `| a | b |` 표(둘째 줄 `|---|`), `> ` 안내문, `**굵게**`, `[텍스트](/경로)`. 내부 링크는 로케일 접두 없이 쓴다(렌더 시 붙는다).

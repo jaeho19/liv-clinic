@@ -7,6 +7,7 @@
  *   - status: published 인데 [검수 필요] 표식이 남아 있음
  *   - 한국어 칼럼(ko)이 published 인데 reviewer 가 dr-kim 이 아님(원장 감수 전에는 공개하지 않는다)
  *   - 같은 slug가 로케일마다 다른 category를 가짐
+ *   - 원고가 가리키는 이미지(cover·본문 그림)가 public/images/guides/ 에 없음
  * `_`로 시작하는 파일(예: _facts.md, _example.md)은 무시한다.
  * 생성물은 커밋한다(concernRules.generated.ts와 같은 이유).
  *
@@ -26,6 +27,7 @@ const OUT_INDEX = path.join(ROOT, 'src', 'lib', 'guides', 'guides.index.generate
 async function main() {
   const { parseGuide, publishBlockers } = await import('../src/lib/guides/markdown.ts');
   const { ARTICLE_LOCALES, missingGuideLocales } = await import('../src/lib/guides/types.ts');
+  const { guideImagePaths } = await import('../src/lib/guides/images.ts');
 
   const docs = [];
   const errors = [];
@@ -42,6 +44,9 @@ async function main() {
       try {
         const doc = parseGuide(fs.readFileSync(path.join(dir, file), 'utf8'), { locale, slug });
         for (const reason of publishBlockers(doc)) errors.push(`${locale}/${slug}: ${reason}`);
+        for (const img of guideImagePaths(doc)) {
+          if (!fs.existsSync(path.join(ROOT, 'public', img))) errors.push(`${locale}/${slug}: image file missing — public${img}`);
+        }
         docs.push(doc);
       } catch (e) {
         errors.push(`${locale}/${file}: ${e.message}`);
