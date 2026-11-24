@@ -27,6 +27,7 @@ export default function GiftRecipientList({ refreshKey = 0 }: { refreshKey?: num
   const [rows, setRows] = useState<Row[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [loadFailed, setLoadFailed] = useState(false);
   const [query, setQuery] = useState('');
   const [showAll, setShowAll] = useState(false);
   const [confirmingId, setConfirmingId] = useState<string | null>(null);
@@ -42,12 +43,14 @@ export default function GiftRecipientList({ refreshKey = 0 }: { refreshKey?: num
   const load = useCallback(async () => {
     setLoading(true);
     setError(null);
+    setLoadFailed(false);
     try {
       const res = await fetch('/api/admin/survey/recipients');
       const json = await res.json();
       if (!res.ok) throw new Error(json?.error ?? '명단을 불러오지 못했습니다.');
       setRows(json.recipients as Row[]);
     } catch (e) {
+      setLoadFailed(true);
       setError(e instanceof Error ? e.message : '명단을 불러오지 못했습니다.');
     } finally {
       setLoading(false);
@@ -183,7 +186,13 @@ export default function GiftRecipientList({ refreshKey = 0 }: { refreshKey?: num
         className={`${FIELD} mt-3 w-full`}
       />
 
-      {searching && rows && (
+      {/* 다시 불러오는 동안·실패했을 때는 옛 명단으로 「보내도 됩니다」를 말하지 않는다 */}
+      {searching && rows && (loading || loadFailed) && (
+        <p role="status" className="mt-2 rounded-lg bg-[#f6f4f3] px-3 py-2 text-xs font-semibold text-[#8a8a8a]">
+          {loading ? '명단 확인 중…' : '명단을 불러오지 못해 확인할 수 없어요. 잠시 뒤 다시 열어 주세요.'}
+        </p>
+      )}
+      {searching && rows && !loading && !loadFailed && (
         <p
           role="status"
           className={`mt-2 rounded-lg px-3 py-2 text-xs font-semibold ${
