@@ -139,3 +139,9 @@ export const SURVEY_SHARE_PATH = '/survey';
 
 /** 답례품 번호 유효 기간(일) — 계획서 「남은 질문」, 대표원장 확인 전 임시값. */
 export const GIFT_CODE_VALID_DAYS = 90;
+
+/**
+ * 답례품을 받은 분께 설문 링크를 다시 보내지 않는 기간(일) — 사용자 요청 2026-11-24.
+ * 받은 날 + 이 일수 = 「다시 보낼 수 있는 날」. 관리자 「답례품 받은 분」 명단(048)이 이 기간만 보관한다.
+ */
+export const GIFT_RECIPIENT_HOLD_DAYS = 90;

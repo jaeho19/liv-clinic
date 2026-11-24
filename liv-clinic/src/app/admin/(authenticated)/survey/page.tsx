@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import GiftCodeChecker from '@/components/admin/survey/GiftCodeChecker';
+import GiftRecipientList from '@/components/admin/survey/GiftRecipientList';
 import SurveyDashboard from '@/components/admin/survey/SurveyDashboard';
 import { summarizeSurvey, type SurveyResponseLike } from '@/lib/survey/summary';
 import { buildSurveyCsv } from '@/lib/survey/csv';
@@ -33,6 +34,8 @@ export default function SurveyAdminPage() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
+  // 「드림」 하면 답례품 받은 분 명단도 다시 불러온다
+  const [recipientsKey, setRecipientsKey] = useState(0);
 
   const range = useMemo(
     () => (period === 'custom' ? custom : periodRange(period, today)),
@@ -115,7 +118,15 @@ export default function SurveyAdminPage() {
         </div>
       </div>
 
-      <GiftCodeChecker onRedeemed={load} />
+      <div className="grid items-start gap-4 lg:grid-cols-2">
+        <GiftCodeChecker
+          onRedeemed={() => {
+            load();
+            setRecipientsKey((k) => k + 1);
+          }}
+        />
+        <GiftRecipientList refreshKey={recipientsKey} />
+      </div>
 
       <div className="flex flex-wrap items-center gap-2 rounded-xl border border-[#e5e5e5] bg-white p-3">
         <div className="flex flex-wrap gap-1">

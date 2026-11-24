@@ -191,6 +191,27 @@ export type Database = {
         }
         Relationships: []
       }
+      survey_gift_recipients: {
+        Row: {
+          id: string
+          name: string
+          phone_last4: string
+          given_on: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          phone_last4: string
+          given_on?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          phone_last4?: string
+          given_on?: string
+        }
+        Relationships: []
+      }
       chat_ai_turns: {
         Row: {
           attempts: number
