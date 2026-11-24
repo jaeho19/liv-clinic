@@ -684,37 +684,6 @@
           "conferencePlastic": "Korean Society of Plastic and Reconstructive Surgeons"
         }
       },
-      "cheon": {
-        "name": "Shinhye Cheon",
-        "nameEn": "Dr. Shinhye Cheon",
-        "title": "Medical Director",
-        "specialty": "Board-certified Family Medicine Physician",
-        "philosophy": "Creating natural changes through delicate procedures.",
-        "education": [
-          "M.D., Keimyung University College of Medicine",
-          "Residency, Hallym University Kangnam Sacred Heart Hospital",
-          "Clinical Professor, Hallym University Kangnam Sacred Heart Hospital"
-        ],
-        "experience": [
-          "Current) Director, LIV Plastic Surgery",
-          "Former) Director, Ichon Plastic Surgery",
-          "Former) Director, Yonsei Mien Clinic",
-          "Former) Director, Abiju Clinic",
-          "Former) Director, Roje Dermatology Clinic"
-        ],
-        "certifications": [
-          "Member, Korean Academy of Family Medicine",
-          "Member, Korean Society of Aesthetic Medicine and Laser Surgery",
-          "Member, Korean Society of Obesity Medicine and Aesthetic Treatment"
-        ],
-        "specialties": [
-          "Lifting Lasers",
-          "Skin Boosters",
-          "Laser Toning",
-          "Pigmentation & Pore Lasers",
-          "Skin Care Programs"
-        ]
-      },
       "labels": {
         "education": "Education",
         "experience": "Experience",
@@ -2879,10 +2848,6 @@
             {
               "name": "Dr. Kim Su-young",
               "desc": "Focusing on anti-aging and lifting, she pursues natural change tailored to each individual's facial flow."
-            },
-            {
-              "name": "Dr. Cheon Shin-hye",
-              "desc": "Considering the flow of skin and face, she pursues anti-aging that stays natural over time."
             }
           ]
         },
@@ -6601,7 +6566,7 @@
     },
     "staff": {
       "title": "Medical Team | Board-Certified Plastic Surgeon | LIV Clinic",
-      "description": "Meet LIV Clinic physicians Dr. Sooyoung Kim and Dr. Shinhye Cheon. Explore their specialties, education, experience, publications and academic activities.",
+      "description": "Meet Dr. Sooyoung Kim, medical director of LIV Clinic. Explore her specialties, education, experience, publications and academic activities.",
       "keywords": [
         "LIV Clinic doctor",
         "board-certified plastic surgeon Seoul",

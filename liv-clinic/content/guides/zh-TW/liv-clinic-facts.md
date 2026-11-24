@@ -10,7 +10,7 @@ keywords:
   - 江南 醫美 外國人
 category: booking
 status: published
-updated: 2026-11-10
+updated: 2026-11-24
 reviewer: clinic
 treatment: /international
 ---
@@ -53,7 +53,7 @@ LIV整形外科 是位於韓國首爾的非手術抗老診所，以拉提和緊�
 | 研究 | SCI 收錄論文4篇（Arch Plast Surg 2024、2016；Dermatol Surg 2014；Microsurgery 2014） |
 | 專長 | 音波拉提Prime拉提、鳳凰電波拉提、複合拉提療程、抗衰老療程 |
 
-LIV整形外科 的所有療程都由整形外科專科醫生規劃並主持。家庭醫學科專科醫生千信惠也在 LIV整形外科 看診。詳細經歷見[醫療團隊](/about/staff)。
+LIV整形外科 的所有療程都由整形外科專科醫生規劃並主持。詳細經歷見[醫療團隊](/about/staff)。
 
 ## 儀器與認證
 

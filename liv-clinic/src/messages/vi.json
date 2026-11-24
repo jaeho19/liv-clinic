@@ -684,37 +684,6 @@
           "conferencePlastic": "Hiệp hội bác sĩ phẫu thuật thẩm mỹ và tái tạo Hàn Quốc"
         }
       },
-      "cheon": {
-        "name": "Shinhye Cheon",
-        "nameEn": "Tiến sĩ Shinhye Cheon",
-        "title": "Giám đốc Y khoa",
-        "specialty": "Bác sĩ y học gia đình được hội đồng chứng nhận",
-        "philosophy": "Tạo ra những thay đổi tự nhiên thông qua các thủ tục tinh tế.",
-        "education": [
-          "Bác sĩ, Đại học Y khoa Keimyung",
-          "Nội trú, Đại học Hallym Bệnh viện Thánh Tâm Kangnam",
-          "Giáo sư lâm sàng, Bệnh viện Thánh Tâm Kangnam thuộc Đại học Hallym"
-        ],
-        "experience": [
-          "Hiện tại) Giám đốc Phẫu thuật Thẩm mỹ LIV",
-          "Cựu) Giám đốc, Phẫu thuật thẩm mỹ Ichon",
-          "Nguyên) Giám đốc Phòng khám Yonsei Miên",
-          "Cựu) Giám đốc, Phòng khám Abiju",
-          "Nguyên) Giám đốc, Phòng khám Da liễu Roje"
-        ],
-        "certifications": [
-          "Thành viên, Học viện Y học Gia đình Hàn Quốc",
-          "Thành viên, Hiệp hội Y học Thẩm mỹ và Phẫu thuật Laser Hàn Quốc",
-          "Thành viên, Hiệp hội Y học Béo phì và Điều trị Thẩm mỹ Hàn Quốc"
-        ],
-        "specialties": [
-          "Laser nâng cơ",
-          "Skin Booster",
-          "Laser toning",
-          "Laser sắc tố/lỗ chân lông",
-          "Chương trình chăm sóc da"
-        ]
-      },
       "labels": {
         "education": "Giáo dục",
         "experience": "Kinh nghiệm",
@@ -2879,10 +2848,6 @@
             {
               "name": "BS. Kim Su-young",
               "desc": "Tập trung vào chống lão hóa và nâng cơ, hướng tới thay đổi tự nhiên theo dòng chảy khuôn mặt mỗi người."
-            },
-            {
-              "name": "BS. Cheon Shin-hye",
-              "desc": "Xem xét dòng chảy của da và khuôn mặt, hướng tới chống lão hóa tự nhiên theo thời gian."
             }
           ]
         },
@@ -6601,7 +6566,7 @@
     },
     "staff": {
       "title": "Đội ngũ y tế | Bác sĩ chuyên khoa | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Giới thiệu bác sĩ Kim Sooyoung và Shinhye Cheon tại LIV: chuyên khoa, học vấn, kinh nghiệm, các bài báo và hoạt động học thuật.",
+      "description": "Giới thiệu bác sĩ Kim Sooyoung tại LIV: chuyên khoa, học vấn, kinh nghiệm, các bài báo và hoạt động học thuật.",
       "keywords": [
         "bác sĩ LIV Clinic",
         "bác sĩ chuyên khoa thẩm mỹ Seoul",

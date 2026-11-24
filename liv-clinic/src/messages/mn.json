@@ -684,37 +684,6 @@
           "conferencePlastic": "Солонгосын гоо заслын мэс заслын нийгэмлэг"
         }
       },
-      "cheon": {
-        "name": "Shinhye Cheon",
-        "nameEn": "Dr. Shinhye Cheon",
-        "title": "Эмнэлзүйн захирал",
-        "specialty": "Гэрчилгээт ерөнхий эмч",
-        "philosophy": "Нарийн мэдрэмжтэй процедураар байгалийн өөрчлөлт бий болгох.",
-        "education": [
-          "M.D., Keimyung University College of Medicine",
-          "Residency, Hallym University Kangnam Sacred Heart Hospital",
-          "Clinical Professor, Hallym University Kangnam Sacred Heart Hospital"
-        ],
-        "experience": [
-          "Current) Director, LIV Plastic Surgery",
-          "Former) Director, Ichon Plastic Surgery",
-          "Former) Director, Yonsei Mien Clinic",
-          "Former) Director, Abiju Clinic",
-          "Former) Director, Roje Dermatology Clinic"
-        ],
-        "certifications": [
-          "Member, Korean Academy of Family Medicine",
-          "Member, Korean Society of Aesthetic Medicine and Laser Surgery",
-          "Member, Korean Society of Obesity Medicine and Aesthetic Treatment"
-        ],
-        "specialties": [
-          "Лифтинг лазер",
-          "Скин бустер",
-          "Лазер тонинг",
-          "Пигмент/нүх сүвний лазер",
-          "Арьс арчилгааны хөтөлбөр"
-        ]
-      },
       "labels": {
         "education": "Боловсрол",
         "experience": "Туршлага",
@@ -2879,10 +2848,6 @@
             {
               "name": "Эмч Ким Су-ён",
               "desc": "Насжилтын эсрэг ба өргөлтийг гол болгон, хүн бүрийн нүүрний урсгалд тохирсон байгалийн өөрчлөлтийг эрмэлздэг."
-            },
-            {
-              "name": "Эмч Чон Шин-хэ",
-              "desc": "Арьс, нүүрний урсгалыг харгалзан цаг хугацаа өнгөрсөн ч байгалийн насжилтын эсрэг арчилгааг эрмэлздэг."
             }
           ]
         },
@@ -6603,7 +6568,7 @@
     },
     "staff": {
       "title": "Эмч мэргэжилтэн | Мэргэшсэн мэс засалч | LIV Гоо Заслын Эмнэлэг",
-      "description": "LIV-ийн Sooyoung Kim, Shinhye Cheon эмч нарын мэргэжил, боловсрол, туршлага, эрдэм шинжилгээний бүтээл, хурлын үйл ажиллагааны танилцуулга.",
+      "description": "LIV-ийн Sooyoung Kim эмчийн мэргэжил, боловсрол, туршлага, эрдэм шинжилгээний бүтээл, хурлын үйл ажиллагааны танилцуулга.",
       "keywords": [
         "LIV эмнэлгийн эмч",
         "мэргэшсэн пластик мэс засалч Сөүл",

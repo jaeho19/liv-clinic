@@ -10,7 +10,7 @@ keywords:
   - 江南 医美 外国人
 category: booking
 status: published
-updated: 2026-11-10
+updated: 2026-11-24
 reviewer: clinic
 treatment: /international
 ---
@@ -53,7 +53,7 @@ LIV整形外科 是位于韩国首尔的非手术抗衰诊所，以提拉和紧�
 | 研究 | SCI 收录论文4篇（Arch Plast Surg 2024、2016；Dermatol Surg 2014；Microsurgery 2014） |
 | 专长 | 超声刀Prime提升、热玛吉提升、复合提升治疗、抗衰老项目 |
 
-LIV整形外科 的所有治疗都由整形外科专科医生制定并主持。家庭医学科专科医生千信惠也在 LIV整形外科 出诊。详细履历见[医疗团队](/about/staff)。
+LIV整形外科 的所有治疗都由整形外科专科医生制定并主持。详细履历见[医疗团队](/about/staff)。
 
 ## 仪器与认证
 

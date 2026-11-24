@@ -684,37 +684,6 @@
           "conferencePlastic": "الجمعية الكورية لجراحي التجميل والترميم"
         }
       },
-      "cheon": {
-        "name": "Shinhye Cheon",
-        "nameEn": "Dr. Shinhye Cheon",
-        "title": "المدير الطبي",
-        "specialty": "طبيبة الأسرة المعتمدة",
-        "philosophy": "إحداث تغييرات طبيعية من خلال إجراءات دقيقة.",
-        "education": [
-          "M.D., Keimyung University College of Medicine",
-          "Residency, Hallym University Kangnam Sacred Heart Hospital",
-          "Clinical Professor, Hallym University Kangnam Sacred Heart Hospital"
-        ],
-        "experience": [
-          "Current) Director, LIV Plastic Surgery",
-          "Former) Director, Ichon Plastic Surgery",
-          "Former) Director, Yonsei Mien Clinic",
-          "Former) Director, Abiju Clinic",
-          "Former) Director, Roje Dermatology Clinic"
-        ],
-        "certifications": [
-          "Member, Korean Academy of Family Medicine",
-          "Member, Korean Society of Aesthetic Medicine and Laser Surgery",
-          "Member, Korean Society of Obesity Medicine and Aesthetic Treatment"
-        ],
-        "specialties": [
-          "ليزر الشد",
-          "حقن البشرة",
-          "تفتيح البشرة بالليزر",
-          "ليزر التصبغات والمسام",
-          "برامج العناية بالبشرة"
-        ]
-      },
       "labels": {
         "education": "التعليم",
         "experience": "الخبرة",
@@ -2879,10 +2848,6 @@
             {
               "name": "د. كيم سو-يونغ",
               "desc": "بالتركيز على مكافحة الشيخوخة والشدّ، تسعى إلى تغيّر طبيعي يناسب ملامح وجه كل شخص."
-            },
-            {
-              "name": "د. تشون شين-هيه",
-              "desc": "مع مراعاة ملامح البشرة والوجه، تسعى إلى مكافحة شيخوخة تبقى طبيعية مع الوقت."
             }
           ]
         },
@@ -6603,7 +6568,7 @@
     },
     "staff": {
       "title": "الفريق الطبي | جراح تجميل معتمد | مستشفى ليف للتجميل",
-      "description": "تعرّف على الطبيبين Sooyoung Kim وShinhye Cheon في LIV: التخصصات والتعليم والخبرات والمنشورات والأنشطة العلمية.",
+      "description": "تعرّف على الدكتورة Sooyoung Kim في LIV: التخصصات والتعليم والخبرات والمنشورات والأنشطة العلمية.",
       "keywords": [
         "طبيب مستشفى ليف للتجميل",
         "جراح تجميل معتمد سيول",

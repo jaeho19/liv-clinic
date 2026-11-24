@@ -10,7 +10,7 @@ keywords:
   - Gangnam clinic for foreigners
 category: booking
 status: published
-updated: 2026-11-10
+updated: 2026-11-24
 reviewer: clinic
 treatment: /international
 ---
@@ -53,7 +53,7 @@ LIV Plastic Surgery is a non-surgical anti-aging clinic in Seoul, Korea, focused
 | Research | 4 SCI-indexed publications (Arch Plast Surg 2024 and 2016, Dermatol Surg 2014, Microsurgery 2014) |
 | Areas of practice | Ultherapy Prime lifting, Thermage lifting, combination lifting treatments, anti-aging programs |
 
-Every treatment at LIV Plastic Surgery is planned and performed under a board-certified plastic surgeon. Dr. Shinhye Cheon, a board-certified family medicine physician, also practices at LIV Plastic Surgery. Full profiles are on the [staff page](/about/staff).
+Every treatment at LIV Plastic Surgery is planned and performed under a board-certified plastic surgeon. Dr. Kim's full profile is on the [staff page](/about/staff).
 
 ## Devices and certifications
 

@@ -94,7 +94,7 @@ const IMAGES: StackImage[] = [
   { src: `${IMG_DIR}/hilowave-5.jpg`, width: 1920, height: 1128, alt: '자연스러운 변화의 무드' },
   { src: `${IMG_DIR}/hilowave-6.jpg`, width: 1920, height: 972, alt: 'HILO WAVE PROGRAM 가격 안내' },
   { src: `${IMG_DIR}/hilowave-7.jpg`, width: 1920, height: 1004, alt: '과하지 않게, 하지만 확실하게' },
-  { src: `${IMG_DIR}/hilowave-8.jpg`, width: 1920, height: 2058, alt: '의료진 소개 — 김수영·천신혜 대표원장' },
+  { src: `${IMG_DIR}/hilowave-8-doctor.jpg`, width: 1920, height: 1355, alt: '의료진 소개 — 김수영 대표원장' },
   { src: `${IMG_DIR}/hilowave-9.jpg`, width: 1920, height: 2189, alt: 'LIV EXPERIENCE 공간' },
 ];
 

@@ -10,7 +10,7 @@ keywords:
   - 江南 美容皮膚科 外国人
 category: booking
 status: published
-updated: 2026-11-10
+updated: 2026-11-24
 reviewer: clinic
 treatment: /international
 ---
@@ -53,7 +53,7 @@ LIV美容クリニックは、韓国・ソウルにある非手術アンチエ�
 | 研究 | SCI収載論文4編（Arch Plast Surg 2024・2016、Dermatol Surg 2014、Microsurgery 2014） |
 | 専門分野 | ウルセラプライムリフティング、サーマジリフティング、複合リフティング施術、アンチエイジングプログラム |
 
-LIV美容クリニックの施術はすべて、形成外科専門医のもとで計画・実施されます。LIV美容クリニックには家庭医学科専門医のチョン・シネ医師も在籍しています。詳しい経歴は[医療スタッフ紹介](/about/staff)にあります。
+LIV美容クリニックの施術はすべて、形成外科専門医のもとで計画・実施されます。詳しい経歴は[医療スタッフ紹介](/about/staff)にあります。
 
 ## 機器と認証
 

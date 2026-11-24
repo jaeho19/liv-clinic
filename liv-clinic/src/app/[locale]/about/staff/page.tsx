@@ -87,8 +87,6 @@ type ThesisPublication = {
   degree: string;
 };
 
-type Publication = JournalPublication | ThesisPublication;
-type Presentation = { title: string; conference: string; year: number; type: string };
 
 // 의료진 기본 정보 (이미지 등 번역이 필요없는 데이터)
 const doctorsMeta = {
@@ -96,13 +94,6 @@ const doctorsMeta = {
     id: 'dr-kim',
     image: '/images/doctor/doctor-main.jpg',
     // 미디어·언론 보도 (추후 업데이트 예정)
-    mediaAppearances: [] as Array<{ title: string; outlet: string; date: string }>,
-  },
-  cheon: {
-    id: 'dr-cheon',
-    image: '/images/doctor/doctor-2.jpg',
-    publications: [] as Publication[],
-    presentations: [] as Presentation[],
     mediaAppearances: [] as Array<{ title: string; outlet: string; date: string }>,
   },
 };
@@ -234,20 +225,7 @@ export default function StaffPage() {
     ...doctorsMeta.kim,
   };
 
-  const cheonData = {
-    name: t('sections.doctors.cheon.name'),
-    nameEn: t('sections.doctors.cheon.nameEn'),
-    title: t('sections.doctors.cheon.title'),
-    specialty: t('sections.doctors.cheon.specialty'),
-    philosophy: t('sections.doctors.cheon.philosophy'),
-    education: t.raw('sections.doctors.cheon.education') as string[],
-    experience: t.raw('sections.doctors.cheon.experience') as string[],
-    certifications: t.raw('sections.doctors.cheon.certifications') as string[],
-    specialties: t.raw('sections.doctors.cheon.specialties') as string[],
-    ...doctorsMeta.cheon,
-  };
-
-  const doctors = [kimData, cheonData];
+  const doctors = [kimData];
 
   // 라벨 번역
   const labels = {

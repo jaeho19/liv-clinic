@@ -81,27 +81,6 @@ const doctorsSchemaData = {
       },
     ],
   },
-  cheon: {
-    id: 'dr-cheon',
-    name: '천신혜',
-    nameEn: 'Shinhye Cheon, M.D.',
-    title: '진료원장',
-    specialty: '레이저·피부 관리 전문',
-    philosophy: '과학적 근거를 바탕으로 한 맞춤형 피부 케어로 건강한 아름다움을 제공합니다.',
-    image: '/images/doctor/doctor-2.jpg',
-    education: [
-      '의학전문대학원 졸업',
-    ],
-    experience: [
-      '리브성형외과 진료원장 (現)',
-    ],
-    certifications: [
-      '의사 면허',
-    ],
-    specialties: ['리프팅 레이저', '스킨부스터', '레이저 토닝', '색소/모공 레이저', '피부 관리 프로그램'],
-    publications: [],
-    presentations: [],
-  },
 };
 
 type DoctorKey = keyof typeof doctorsSchemaData;
@@ -122,7 +101,7 @@ async function localizedDoctorData(locale: string, key: DoctorKey) {
     title: t(`sections.doctors.${key}.title`),
     specialty: t(`sections.doctors.${key}.specialty`),
     philosophy: t(`sections.doctors.${key}.philosophy`),
-    education: key === 'kim' ? [] : t.raw(`sections.doctors.${key}.education`) as string[],
+    education: [] as string[],
     experience: t.raw(`sections.doctors.${key}.experience`) as string[],
     certifications: t.raw(`sections.doctors.${key}.certifications`) as string[],
     specialties: t.raw(`sections.doctors.${key}.specialties`) as string[],
@@ -139,12 +118,8 @@ export default async function StaffLayout({
   const { locale } = await params;
 
   // 의료진 스키마 생성 (약력·경력·소속 병원명 모두 로케일별)
-  const [kimData, cheonData] = await Promise.all([
-    localizedDoctorData(locale, 'kim'),
-    localizedDoctorData(locale, 'cheon'),
-  ]);
+  const kimData = await localizedDoctorData(locale, 'kim');
   const kimSchema = generatePhysicianSchema(kimData, { locale });
-  const cheonSchema = generatePhysicianSchema(cheonData, { locale });
 
   // ProfilePage 스키마 (로케일별 title/description/breadcrumb, mainEntity로 의료진 연결)
   const pageSchema = await localizedWebPageSchema({
@@ -159,7 +134,6 @@ export default async function StaffLayout({
     ],
     mainEntity: [
       { '@id': `${BASE_URL}/about/staff#dr-kim` },
-      { '@id': `${BASE_URL}/about/staff#dr-cheon` },
     ],
   });
 
@@ -169,11 +143,6 @@ export default async function StaffLayout({
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(kimSchema) }}
-      />
-      {/* Physician Schema - 천신혜 원장 */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(cheonSchema) }}
       />
       {/* ProfilePage Schema */}
       <script

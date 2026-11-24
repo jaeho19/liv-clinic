@@ -1785,7 +1785,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "en",
@@ -1929,7 +1929,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Every treatment at LIV Plastic Surgery is planned and performed under a board-certified plastic surgeon. Dr. Shinhye Cheon, a board-certified family medicine physician, also practices at LIV Plastic Surgery. Full profiles are on the [staff page](/about/staff)."
+        "text": "Every treatment at LIV Plastic Surgery is planned and performed under a board-certified plastic surgeon. Dr. Kim's full profile is on the [staff page](/about/staff)."
       },
       {
         "type": "h2",
@@ -6548,7 +6548,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "ja",
@@ -6692,7 +6692,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV美容クリニックの施術はすべて、形成外科専門医のもとで計画・実施されます。LIV美容クリニックには家庭医学科専門医のチョン・シネ医師も在籍しています。詳しい経歴は[医療スタッフ紹介](/about/staff)にあります。"
+        "text": "LIV美容クリニックの施術はすべて、形成外科専門医のもとで計画・実施されます。詳しい経歴は[医療スタッフ紹介](/about/staff)にあります。"
       },
       {
         "type": "h2",
@@ -10439,7 +10439,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh",
@@ -10583,7 +10583,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV整形外科 的所有治疗都由整形外科专科医生制定并主持。家庭医学科专科医生千信惠也在 LIV整形外科 出诊。详细履历见[医疗团队](/about/staff)。"
+        "text": "LIV整形外科 的所有治疗都由整形外科专科医生制定并主持。详细履历见[医疗团队](/about/staff)。"
       },
       {
         "type": "h2",
@@ -13088,7 +13088,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-24",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh-TW",
@@ -13232,7 +13232,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV整形外科 的所有療程都由整形外科專科醫生規劃並主持。家庭醫學科專科醫生千信惠也在 LIV整形外科 看診。詳細經歷見[醫療團隊](/about/staff)。"
+        "text": "LIV整形外科 的所有療程都由整形外科專科醫生規劃並主持。詳細經歷見[醫療團隊](/about/staff)。"
       },
       {
         "type": "h2",

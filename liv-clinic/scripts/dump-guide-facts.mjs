@@ -161,7 +161,7 @@ async function main() {
     out.push(`- ${l}: ${d.name} / ${d.nameEn} / ${d.title} / ${d.specialty} / 학력: ${(d.education ?? []).join('; ')} / 자격: ${(d.certifications ?? []).join('; ')} / 전문: ${(d.specialties ?? []).join('; ')}`);
   }
   out.push('- SCI 논문 4편: src/app/[locale]/about/staff/page.tsx KIM_SCI_PUBLICATIONS (Arch Plast Surg 2024·2016, Dermatol Surg 2014, Microsurgery 2014) — 제목·저널만 인용, 링크 없음');
-  out.push('- 두 번째 의료진: ' + LOCALES.map((l) => `${l}: ${get(msg[l], 'sections.doctors.cheon.name')} (${get(msg[l], 'sections.doctors.cheon.specialty')})`).join(' / '));
+  out.push('- 의료진은 김수영 대표원장 1명. 천신혜 원장은 2026-11 퇴직 — 가이드·페이지에 다시 쓰지 않는다');
 
   h('8. 사이트에 없는 것 (가이드에서 [검수 필요]로 남길 항목)');
   out.push('- 시술별 비행 가능 시점, 붓기·붉음이 가라앉는 일수(울쎄라 "약간의 붓기·홍조 가능"만 있음), 술·사우나 제한 기간, 통증 점수');
