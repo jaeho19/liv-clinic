@@ -1,6 +1,10 @@
 // 칼럼 공개 상태 점검: 서버가 그린 HTML에서 저자 줄·구조화 데이터·공유 메타·사이트맵·llms.txt 를 확인한다.
 // 사용: node column-published-check.mjs <slug> [기준 주소=http://localhost:3010]
 const [slug, base = 'http://localhost:3010'] = process.argv.slice(2);
+// 아직 초안인 칼럼(status: draft) — 허브·사이트맵에 나오면 안 된다
+const { readdirSync, readFileSync } = await import('node:fs');
+const KO = new URL('./liv-clinic/content/guides/ko/', import.meta.url);
+const drafts = readdirSync(KO).filter((n) => n.endsWith('.md') && /^status:s*draft/m.test(readFileSync(new URL(n, KO), 'utf8'))).map((n) => n.slice(0, -3));
 const get = async (p) => {
   const r = await fetch(base + p);
   return { status: r.status, text: await r.text() };
@@ -55,10 +59,10 @@ const hub = await get('/ko/guides');
 const hubText = hub.text.replace(/<[^>]+>/g, ' ');
 check('허브 200 + 색인 허용', hub.status === 200 && !/<meta name="robots" content="[^"]*noindex/.test(hub.text));
 check('허브 카드: 원장 이름, 수정일·읽는 시간 없음', hubText.includes('글 김수영 대표원장') && !hubText.includes('수정일') && !hubText.includes('읽는 데'));
-check('허브에 초안은 안 보임', !hub.text.includes('density-vs-thermage'));
+check(`허브에 초안은 안 보임(초안 ${drafts.length}편)`, drafts.every((d) => !hub.text.includes(`/ko/guides/${d}`)));
 const sm = await get('/sitemap.xml');
 check('사이트맵에 이 칼럼', sm.text.includes(`/ko/guides/${slug}`));
-check('사이트맵에 초안 없음', !sm.text.includes('/ko/guides/density-vs-thermage'));
+check(`사이트맵에 초안 없음(초안 ${drafts.length}편)`, drafts.every((d) => !sm.text.includes(`/ko/guides/${d}`)));
 const llms = await get('/llms.txt');
 check('llms.txt 칼럼 구역에 이 칼럼', llms.text.includes(`/ko/guides/${slug}`) && llms.text.includes('## 칼럼'));
 const robots = await get('/robots.txt');

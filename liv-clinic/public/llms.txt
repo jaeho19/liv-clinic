@@ -139,7 +139,6 @@ LIV Plastic Surgery is led by a board-certified plastic surgeon with SCI-indexed
 - [울쎄라피 프라임](https://liv-clinic.net/ko/lifting/ulthera)
 - [써마지 FLX](https://liv-clinic.net/ko/lifting/thermage)
 - [덴서티](https://liv-clinic.net/ko/lifting/density)
-- [인모드](https://liv-clinic.net/ko/lifting/inmode)
 - [온다 리프팅](https://liv-clinic.net/ko/lifting/onda)
 - [슈링크](https://liv-clinic.net/ko/lifting/shurink)
 - [실리프팅](https://liv-clinic.net/ko/lifting/thread)
@@ -153,4 +152,13 @@ LIV Plastic Surgery is led by a board-certified plastic surgeon with SCI-indexed
 - [상담 예약](https://liv-clinic.net/ko/contact)
 
 <!-- columns:start — 자동 생성(npm run build:guides). 공개된 한국어 칼럼 목록. 손으로 고치지 말 것 -->
+
+## 칼럼 (Korean columns) — 글 김수영 대표원장 (성형외과 전문의)
+
+- [리브 칼럼 전체 보기](https://liv-clinic.net/ko/guides)
+- [덴서티 VS 써마지, 고주파 리프팅 비교](https://liv-clinic.net/ko/guides/density-vs-thermage): 덴서티와 써마지는 둘 다 고주파(RF)로 진피층 콜라겐을 자극하는 리프팅입니다. 시술 시간, 마취, 권장 주기, 가격이 어떻게 다른지 표로 정리했습니다.
+- [이중턱 시술 온다, 나에게 맞을까?](https://liv-clinic.net/ko/guides/onda-double-chin): 온다는 2.45GHz 마이크로웨이브로 턱밑 지방과 탄력을 함께 다루는 시술입니다. 원리와 시술 시간, 효과가 나타나는 시기, 어떤 경우에 맞는지 정리했습니다.
+- [스킨부스터 효과는 몇 번 받아야 할까? 시술 주기는?](https://liv-clinic.net/ko/guides/skin-booster-how-many-sessions): 스킨부스터는 보통 2~4주 간격으로 3~4회 받고, 이후 2~3개월마다 유지 시술을 권합니다. 효과가 나타나는 시기와 시술 후 주의할 점을 정리했습니다.
+- [실리프팅 유지기간, 실 종류별 기간과 효과](https://liv-clinic.net/ko/guides/thread-lift-how-long-it-lasts): 실리프팅 효과는 실 종류에 따라 보통 6~12개월, 길게는 24개월까지 이어집니다. 실 종류별 차이와 회복 기간, 시술 후 주의할 점을 정리했습니다.
+
 <!-- columns:end -->

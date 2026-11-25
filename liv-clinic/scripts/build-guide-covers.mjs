@@ -3,7 +3,7 @@
  * 칼럼·가이드 대표 사진 만들기.
  *
  *   node scripts/build-guide-covers.mjs            # 전부
- *   node scripts/build-guide-covers.mjs double-chin-cover   # 이름을 준 것만
+ *   node scripts/build-guide-covers.mjs onda-double-chin-cover   # 이름을 준 것만
  *
  * 대표 사진은 "글의 시술·장비·부위가 바로 보이는 사진"이어야 한다(README "이미지").
  * 그래서 홈페이지에 이미 있는 사진을 자르거나 나란히 놓아서 만든다 — 장비 모양은 손대지 않는다.
@@ -44,10 +44,10 @@ const COVERS = {
     left: { file: DEVICE('density') },
     right: { file: DEVICE('thermage'), crop: { left: 394, top: 120, width: 194, height: 790 } },
   },
-  'double-chin-cover': {
-    kind: 'pair',
-    left: { file: DEVICE('onda') },
-    right: { file: DEVICE('inmode') },
+  // 이중턱 온다 칼럼: 온다 장비 한 대. (처음엔 온다·인모드 두 대였으나 2026-11-25 인모드가 병원에 없다고 확인돼 한 대로)
+  'onda-double-chin-cover': {
+    kind: 'single',
+    device: { file: DEVICE('onda') },
   },
 };
 
@@ -96,6 +96,19 @@ async function buildPair({ left, right }) {
   return sharp(backdrop).composite(layers).png().toBuffer();
 }
 
+async function buildSingle({ device: spec }) {
+  const d = await device(spec);
+  const s = await floorShadow(d.info.width);
+  const cx = W / 2;
+  return sharp(backdrop)
+    .composite([
+      { input: s.data, left: Math.round(cx - s.info.width / 2), top: Math.round(FLOOR_Y - s.info.height / 2 - 4) },
+      { input: d.data, left: Math.round(cx - d.info.width / 2), top: FLOOR_Y - d.info.height },
+    ])
+    .png()
+    .toBuffer();
+}
+
 /* ── 사진에서 잘라내기 ─────────────────────────────────────────── */
 async function buildCrop({ file, region }) {
   let img = sharp(file).rotate(); // EXIF 방향 반영
@@ -112,7 +125,8 @@ for (const name of names) {
     console.error(`모르는 이름: ${name} (가능: ${Object.keys(COVERS).join(', ')})`);
     process.exit(1);
   }
-  const master = spec.kind === 'pair' ? await buildPair(spec) : await buildCrop(spec);
+  const master =
+    spec.kind === 'pair' ? await buildPair(spec) : spec.kind === 'single' ? await buildSingle(spec) : await buildCrop(spec);
   // 움직이는 버전을 만들 때 시작 장면으로 올릴 무손실 원본이 필요하면: GUIDE_COVER_MASTER_DIR=<폴더>
   if (process.env.GUIDE_COVER_MASTER_DIR) fs.writeFileSync(path.join(process.env.GUIDE_COVER_MASTER_DIR, `${name}.png`), master);
   const webp = await sharp(master).webp({ quality: 86 }).toFile(path.join(OUT, `${name}.webp`));
