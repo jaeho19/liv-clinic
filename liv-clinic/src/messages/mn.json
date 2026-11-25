@@ -343,8 +343,7 @@
       },
       "thermage": {
         "flx600": { "name": "Thermage FLX", "basis": "600 цохилт", "price": "KRW 2,400,000~" },
-        "eye225": { "name": "Нүдний Thermage", "basis": "225 цохилт", "price": "KRW 1,000,000~" },
-        "eye450": { "name": "Нүдний Thermage", "basis": "450 цохилт", "price": "KRW 1,600,000~" }
+        "eye225": { "name": "Нүдний Thermage", "basis": "225 цохилт", "price": "KRW 1,000,000~" }
       },
       "ulthera": {
         "upperFace": { "name": "Нүүрний дээд хэсэг", "basis": "200-300 цохилт", "price": "KRW 780,000~" },
@@ -372,7 +371,6 @@
     "ulthera": "Ultherapy Prime",
     "thermage": "Thermage FLX",
     "density": "Density",
-    "inmode": "InMode",
     "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "Утсан лифтинг",
@@ -475,10 +473,6 @@
         "shurink": {
           "subTitle": "Shurink",
           "desc": "V-хэлбэрийн контурын нарийн HIFU"
-        },
-        "inmode": {
-          "subTitle": "InMode",
-          "desc": "RF энергиэр өөх багасгах ба лифтинг"
         },
         "potenza": {
           "subTitle": "Potenza",
@@ -1258,7 +1252,7 @@
               },
               {
                 "feature": "Tip Types",
-                "flx": "900/600/400/225",
+                "flx": "600 / 225 (Eye)",
                 "cpt": "900/600/400",
                 "nxt": "Limited"
               },
@@ -1328,7 +1322,7 @@
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
-                "desc": "Патентлагдсан доргионы технологи нь эмчилгээний явцад <strong>өвдөлтийг багасгана</strong>. Мэдээгүйжүүлэлтгүйгээр тав тухтай эмчилгээ боломжтой."
+                "desc": "Патентлагдсан доргионы технологи нь эмчилгээний явцад <strong>өвдөлтийг багасгана</strong>. Мэдээгүйжүүлэлтийн аргыг зөвлөгөөн дээр сонгоно: мэдээгүйжүүлэлтгүй, мэдээ алдуулах тос, хэсэгчилсэн мэдээгүйжүүлэлт эсвэл унтуулах мэдээгүйжүүлэлт."
               },
               "collagenRemodeling": {
                 "title": "Коллагены сэргэлт",
@@ -1389,20 +1383,12 @@
             "recommendedShots": {
               "title": "Хэсэгчилсэн зөвлөмжтэй shot тоо",
               "fullFace": {
-                "shots": "300-400",
+                "shots": "600",
                 "label": "Бүх нүүр"
-              },
-              "lowerFace": {
-                "shots": "200-300",
-                "label": "Нүүрний доод хэсэг"
               },
               "eye": {
                 "shots": "225",
                 "label": "Нүдний эргэн тойрон"
-              },
-              "fullFaceNeck": {
-                "shots": "500-900",
-                "label": "Бүх нүүр + Хүзүү"
               }
             }
           },
@@ -1416,7 +1402,7 @@
               },
               {
                 "q": "Is the Thermage treatment painful?",
-                "a": "FLX minimizes discomfort during treatment with Comfort Pulse Technology. Treatment can be performed without anesthesia, and most patients only feel a tolerable level of heat."
+                "a": "FLX minimizes discomfort during treatment with Comfort Pulse Technology. Most patients only feel a tolerable level of heat, and anesthesia is chosen at the consultation from no anesthesia, numbing cream, local anesthesia or sedation, whichever suits you."
               },
               {
                 "q": "How can I verify Thermage authenticity?",
@@ -1929,249 +1915,6 @@
             "sectionLabel": "Холбогдох эмчилгээ",
             "title": "Холбогдох эмчилгээ"
           }
-        }
-      },
-      "inmode": {
-        "name": "InMode",
-        "fullName": "InMode",
-        "tagline": "RF дээр суурилсан хосолсон лифтинг",
-        "description": "Арьсны уян хатан, биеийн хэлбэрийг нэгэн зэрэг сайжруулдаг радио давтамж ашигладаг иж бүрэн лифтинг систем.",
-        "detail": {
-          "illustrations": {
-            "forma": "Арьсны уян хатан",
-            "morpheus": "Микро зүү RF",
-            "facetite": "Өөх чангатгах"
-          },
-          "treatmentCard": {
-            "benefits": "Гол давуу тал",
-            "duration": "Эмчилгээний хугацаа",
-            "downtime": "Сэргэх хугацаа",
-            "idealFor": "Тохиромжтой"
-          },
-          "comparison": {
-            "header": "Харьцуулалт",
-            "rows": {
-              "method": {
-                "feature": "Арга",
-                "forma": "RF радио давтамж",
-                "morpheus": "Микро зүү + RF",
-                "facetite": "Канул + RF"
-              },
-              "invasiveness": {
-                "feature": "Инвазив байдал",
-                "forma": "Инвазив бус",
-                "morpheus": "Хамгийн бага инвазив",
-                "facetite": "Хамгийн бага инвазив"
-              },
-              "anesthesia": {
-                "feature": "Мэдээ алдуулалт",
-                "forma": "Шаардлагагүй",
-                "morpheus": "Мэдээ алдуулах тос",
-                "facetite": "Орон нутгийн мэдээ алдуулалт"
-              },
-              "downtime": {
-                "feature": "Сэргэх хугацаа",
-                "forma": "Үгүй",
-                "morpheus": "3-5 хоног",
-                "facetite": "5-7 хоног"
-              },
-              "onset": {
-                "feature": "Үр нөлөө гарах",
-                "forma": "Аажмаар",
-                "morpheus": "Аажмаар",
-                "facetite": "Шууд"
-              },
-              "sessions": {
-                "feature": "Сесси",
-                "forma": "4-6 сесси",
-                "morpheus": "2-3 сесси",
-                "facetite": "1 сесси"
-              },
-              "target": {
-                "feature": "Гол зорилт",
-                "forma": "Уян хатан",
-                "morpheus": "Сүв/Сорви",
-                "facetite": "Өөх/Уналт"
-              }
-            }
-          },
-          "treatmentOptions": {
-            "forma": {
-              "name": "Forma",
-              "nameKo": "Forma",
-              "description": "Инвазив бус RF радио давтамж нь коллагены агшилт ба сэргэлтийг үүсгэн арьсны уян хатан байдлыг сайжруулна. Бараг өвдөлтгүй, сэргэх хугацаагүй тул өдөр тутмын үйл ажиллагаандаа шууд эргэн орох боломжтой.",
-              "benefits": [
-                "Instant skin tightening",
-                "Collagen regeneration",
-                "Fine wrinkle improvement",
-                "Pain-free treatment"
-              ],
-              "duration": "20-30 минут",
-              "downtime": "Үгүй",
-              "idealFor": [
-                "Loss of elasticity",
-                "Fine wrinkles",
-                "Preventive care"
-              ]
-            },
-            "morpheus": {
-              "name": "Morpheus8",
-              "nameKo": "Morpheus8",
-              "description": "Алтаар бүрсэн 24 микро зүү нь RF энергийг дермисийн давхаргад хүргэж арьс сэргээнэ. Сүв, сорви, арьсны бүтэц ба уян хатан байдлыг зэрэгцээ сайжруулна.",
-              "benefits": [
-                "Pore reduction",
-                "Acne scar improvement",
-                "Skin texture refinement",
-                "Dermal remodeling"
-              ],
-              "duration": "30-45 минут",
-              "downtime": "3-5 хоног",
-              "idealFor": [
-                "Large pores",
-                "Acne scars",
-                "Skin texture"
-              ]
-            },
-            "facetite": {
-              "name": "FaceTite",
-              "nameKo": "FaceTite",
-              "description": "Нимгэн канул нь RF энергийг өөхний давхаргад шууд хүргэж өөхийг хайлуулж арьсыг чангатгана. Мини нүүрний лифтингийн түвшний үр дүнг өгдөг.",
-              "benefits": [
-                "Fat reduction",
-                "Skin tightening",
-                "Jawline improvement",
-                "Double chin reduction"
-              ],
-              "duration": "60-90 минут",
-              "downtime": "5-7 хоног",
-              "idealFor": [
-                "Double chin",
-                "Cheek fat",
-                "Jawline sagging"
-              ]
-            }
-          },
-          "recommendations": {
-            "forma": {
-              "title": "Forma зөвлөмжтэй",
-              "desc": "Арьсны уян хатан байдлыг хадгалах, урьдчилан сэргийлэх арчилгаа, сэргэх хугацаагүй эмчилгээ хүсэгчдэд"
-            },
-            "morpheus": {
-              "title": "Morpheus8 зөвлөмжтэй",
-              "desc": "Сүв, сорви, бүтцийг сайжруулахыг хүсэж богино хугацааны сэргэлт хүлээж авах боломжтой хүмүүст"
-            },
-            "facetite": {
-              "title": "FaceTite зөвлөмжтэй",
-              "desc": "Давхар эрүү, хацрын өөх, уналтад санаа зовж тодорхой үр дүн хүсэгчдэд"
-            }
-          },
-          "extendedFaqs": [
-            {
-              "q": "Which InMode treatment is most popular?",
-              "a": "Morpheus8 is the most popular. By combining microneedles with RF, it can simultaneously improve pores, scars, skin texture, and elasticity, making it effective for those with various skin concerns."
-            },
-            {
-              "q": "Can I combine multiple InMode treatments?",
-              "a": "Yes, you can. For example, combining Morpheus8 for skin texture improvement with FaceTite for fat tightening is popular. The optimal combination is determined through consultation."
-            },
-            {
-              "q": "How is InMode different from other lifting treatments?",
-              "a": "InMode is an all-in-one platform that allows various treatments within a single system. Morpheus8 offers microneedle RF for skin texture and elasticity, while FaceTite enables fat tightening, allowing personalized treatments."
-            }
-          ],
-          "hero": {
-            "badge": "Бүх-нэг-нэгээр лифтинг систем",
-            "title": "InMode",
-            "description": "RF энергиэр өөхийг багасгах ба лифтингийг нэгэн зэрэг.<br />Нүүрний өөх таны санаа зовнил бол InMode хариулт.",
-            "stats": {
-              "rf": {
-                "value": "RF",
-                "label": "Радио давтамжийн энерги"
-              },
-              "fda": {
-                "value": "FDA",
-                "label": "Зөвшөөрөгдсөн төхөөрөмж"
-              },
-              "custom": {
-                "value": "Захиалгат",
-                "label": "Хувийн эмчилгээ"
-              }
-            },
-            "floatingBadges": {
-              "morpheus": {
-                "title": "Morpheus8",
-                "subtitle": "Микро зүү RF"
-              },
-              "custom": {
-                "title": "Захиалгат эмчилгээ",
-                "subtitle": "Санаа зовнилд тулгуурласан оновчлол"
-              }
-            }
-          },
-          "about": {
-            "sectionLabel": "InMode тухай",
-            "title": "InMode гэж юу вэ?",
-            "description": "InMode бол өөхний давхарга ба дермисийн давхаргыг нэгэн зэрэг идэвхжүүлэхийн тулд <strong>радио давтамжийн (RF) энерги</strong>-г ашигладаг олон-лифтинг төхөөрөмж юм. Нүүрэндээ өөх ихтэй эсвэл арьс уналттай хосолсон асуудалтай хүмүүст үр дүнтэй."
-          },
-          "compare": {
-            "sectionLabel": "Харьцуулалт",
-            "title": "Гар хэрэгслийн харьцуулалт",
-            "subtitle": "Эмчилгээ бүрийн шинж чанарыг харьцуулж танд тохирохыг олоорой"
-          },
-          "livDifference": {
-            "sectionLabel": "LIV Difference",
-            "title": "LIV дэх InMode",
-            "cards": {
-              "genuine": {
-                "title": "Баталгаажсан эмнэлэг",
-                "desc": "InMode Korea-ийн албан ёсоор баталгаажсан эмнэлгийн хувьд зөвхөн жинхэнэ тоног төхөөрөмж, tips ашигладаг. Тоног төхөөрөмжийн хамгийн сүүлийн хувилбарыг ажиллуулна."
-              },
-              "combination": {
-                "title": "Захиалгат хосолсон эмчилгээ",
-                "desc": "Нэг гар хэрэгсэл ашиглах оронд арьсны байдалд үндэслэн олон эмчилгээг хослуулж оновчтой үр дүнг өгнө."
-              },
-              "specialist": {
-                "title": "Мэргэжилтний эмчилгээ",
-                "desc": "Гэрчилгээт арьс судлаач/гоо заслын мэс засалч өөрөө зөвлөгөө, эмчилгээ хийдэг. Манай баялаг туршлага нь оновчтой үр дүнг баталгаажуулна."
-              }
-            }
-          },
-          "processSection": {
-            "sectionLabel": "Эмчилгээний үйл явц"
-          },
-          "treatmentInfo": {
-            "sectionLabel": "Эмчилгээний мэдээлэл",
-            "title": "Эмчилгээний мэдээлэл",
-            "labels": {
-              "duration": "Эмчилгээний хугацаа",
-              "anesthesia": "Мэдээ алдуулалт",
-              "recovery": "Сэргэх хугацаа",
-              "results": "Үр дүн"
-            }
-          },
-          "faq": {
-            "sectionLabel": "Түгээмэл асуулт",
-            "title": "Түгээмэл асуултууд",
-            "moreInfo": "Илүү эмнэлзүйн мэдээлэл хүсэж байна уу?",
-            "viewMedicalQA": "Эмнэлзүйн Q&A харах"
-          },
-          "cta": {
-            "sectionLabel": "Өөрчлөлтөд бэлэн үү?",
-            "title": "InMode зөвлөгөө захиалах",
-            "description": "Манай эмнэлзүйн багтай 1:1 хувийн зөвлөгөөгөөр,<br />таны санаа зовнилд оновчтой эмчилгээг олоорой.",
-            "bookConsultation": "Үнэгүй зөвлөгөө захиалах",
-            "businessHours": "Даваа-Баасан 10:00-19:00",
-            "location": "Шинса метроны 4-р гарцнаас 3 минутын алхаа"
-          },
-          "related": {
-            "sectionLabel": "Холбогдох эмчилгээ",
-            "title": "Холбогдох эмчилгээ"
-          }
-        },
-        "ui": {
-          "skinElasticity": "Арьсны уян хатан",
-          "microneedleRf": "Микро зүү RF",
-          "fatTightening": "Өөх чангатгах"
         }
       },
       "shurink": {
@@ -4784,7 +4527,7 @@
         "category": "lifting",
         "question": "How painful are lifting treatments?",
         "shortAnswer": "Treatment is performed after numbing cream, and most people can tolerate it.",
-        "answer": "The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Both Ultherapy Prime and Thermage FLX are performed after applying numbing cream for about 30 minutes. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.",
+        "answer": "The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Ultherapy Prime is performed after applying numbing cream for about 30 minutes, and for Thermage FLX the anesthesia is chosen at the consultation from no anesthesia, numbing cream, local anesthesia or sedation. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -4801,7 +4544,7 @@
         "category": "lifting",
         "question": "How often should I get lifting treatments?",
         "shortAnswer": "Ultherapy is recommended once every 1-2 years, Thermage once every 6 months to 1 year.",
-        "answer": "Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink or InMode can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.",
+        "answer": "Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -5321,13 +5064,6 @@
         "duration": "40-60 мин",
         "recovery": "Сэргэлтийн хугацаагүй"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameEn": "InMode",
-        "description": "Олон үйлдэлт RF технологиор өөхийг бууруулах болон арьсыг чангатгах нөлөөг зэрэг үзүүлнэ.",
-        "duration": "30-90 мин",
-        "recovery": "0-5 хоног"
-      },
       "onda": {
         "name": "ONDA",
         "nameEn": "ONDA",
@@ -5423,14 +5159,6 @@
           "recovery": "Байхгүй",
           "results": "3-6 сар",
           "price": "Боломжийн"
-        },
-        "inmode": {
-          "technology": "RF",
-          "duration": "30-90 мин",
-          "anesthesia": "Мэдээ алдуулалтгүй",
-          "recovery": "0-5 хоног",
-          "results": "6 сар - 1 жил",
-          "price": "Өөр өөр"
         },
         "thread": {
           "technology": "PDO утас",
@@ -5813,17 +5541,6 @@
         ],
         "certification": "KFDA баталгаажсан"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameKo": "InMode",
-        "description": "Өөх тосны бууралт + уян хатан байдлын сайжруулалт нэг сесст",
-        "features": [
-          "Өөх бууралт ба лифтинг зэрэг",
-          "Тодорхой хэсэгт төвлөрсөн эмчилгээ",
-          "Сэргэх хугацаа бага"
-        ],
-        "certification": "FDA, KFDA баталгаажсан"
-      },
       "onda": {
         "name": "ONDA",
         "nameKo": "ONDA",
@@ -6058,11 +5775,8 @@
       },
       "thermage": {
         "name": "Thermage лазер",
-        "shot300": "300 цохилт",
         "shot600": "600 цохилт",
-        "shot900": "900 цохилт",
-        "eyeTip225": "Eye Tip 225 цохилт",
-        "eyeTip450": "Eye Tip 450 цохилт"
+        "eyeTip225": "Eye Tip 225 цохилт"
       },
       "shurink": {
         "shurinkLaser": "Shurink лазер",
@@ -6078,12 +5792,6 @@
         "alphaTip": "Density лазер (Alpha-Tip)",
         "shot300": "300 цохилт",
         "shot600": "600 цохилт"
-      },
-      "inmode": {
-        "name": "InMode лазер",
-        "fxForma": "FX / FORMA горим",
-        "fx": "FX горим",
-        "forma": "FORMA горим"
       },
       "thread": {
         "name": "Утсан лифтинг",
@@ -6732,19 +6440,6 @@
         "арьс чангаруулах Сөүл",
         "мэс заслын бус лифтинг Солонгос",
         "Каннам лифтинг",
-        "Шинса метро эмнэлэг"
-      ]
-    },
-    "inmode": {
-      "title": "InMode RF лифтинг Сөүл | Хэлбэр засах | LIV Гоо Заслын Эмнэлэг",
-      "description": "Сөүлийн Каннам дахь LIV эмнэлгийн InMode — RF суурьтай хосолсон лифтингээр уян хатан чанар, нүүрний хэлбэр, өөхийг таны төрхөд тохируулан сайжруулна.",
-      "keywords": [
-        "InMode Солонгос",
-        "InMode лифтинг Сөүл",
-        "RF лифтинг Солонгос",
-        "нүүрний хэлбэр засах Сөүл",
-        "эрүүний шугам лифтинг Солонгос",
-        "Каннам InMode",
         "Шинса метро эмнэлэг"
       ]
     },

@@ -83,7 +83,7 @@ const ko: SurveyCopy = {
     question: '오늘 받으신 시술을 모두 골라 주세요.',
     hint: '여러 개 고를 수 있어요.',
     items: {
-      lifting_device: { label: '리프팅 장비', detail: '울쎄라피 프라임·써마지 FLX·덴서티·인모드·온다·슈링크' },
+      lifting_device: { label: '리프팅 장비', detail: '울쎄라피 프라임·써마지 FLX·덴서티·온다·슈링크' },
       thread_lift: { label: '실리프팅', detail: '압토스 등' },
       botox: { label: '보톡스', detail: '' },
       filler: { label: '필러', detail: '' },
@@ -175,7 +175,7 @@ const en: SurveyCopy = {
     question: 'Which treatments did you receive today?',
     hint: 'Select all that apply.',
     items: {
-      lifting_device: { label: 'Lifting devices', detail: 'Ultherapy Prime, Thermage FLX, Density, InMode, Onda, Shurink' },
+      lifting_device: { label: 'Lifting devices', detail: 'Ultherapy Prime, Thermage FLX, Density, Onda, Shurink' },
       thread_lift: { label: 'Thread lift', detail: 'Aptos, etc.' },
       botox: { label: 'Botox', detail: '' },
       filler: { label: 'Filler', detail: '' },
@@ -267,7 +267,7 @@ const ja: SurveyCopy = {
     question: '本日受けられた施術をすべてお選びください。',
     hint: '複数選択できます。',
     items: {
-      lifting_device: { label: 'リフティング機器', detail: 'ウルセラピープライム・サーマジFLX・Density・インモード・Onda・Shurink' },
+      lifting_device: { label: 'リフティング機器', detail: 'ウルセラピープライム・サーマジFLX・Density・Onda・Shurink' },
       thread_lift: { label: '糸リフト', detail: 'アプトスなど' },
       botox: { label: 'ボトックス', detail: '' },
       filler: { label: 'ヒアルロン酸フィラー', detail: '' },
@@ -359,7 +359,7 @@ const zh: SurveyCopy = {
     question: '请选择您今天接受的所有项目。',
     hint: '可多选。',
     items: {
-      lifting_device: { label: '提升仪器', detail: '超声刀Prime·热玛吉FLX·Density·InMode·Onda·Shurink' },
+      lifting_device: { label: '提升仪器', detail: '超声刀Prime·热玛吉FLX·Density·Onda·Shurink' },
       thread_lift: { label: '线雕提升', detail: 'Aptos等' },
       botox: { label: '肉毒素', detail: '' },
       filler: { label: '玻尿酸', detail: '' },
@@ -451,7 +451,7 @@ const zhTW: SurveyCopy = {
     question: '請選擇您今天接受的所有療程。',
     hint: '可複選。',
     items: {
-      lifting_device: { label: '拉提儀器', detail: '音波拉提 Prime・鳳凰電波 FLX・Density・InMode・Onda・Shurink' },
+      lifting_device: { label: '拉提儀器', detail: '音波拉提 Prime・鳳凰電波 FLX・Density・Onda・Shurink' },
       thread_lift: { label: '埋線拉提', detail: 'Aptos等' },
       botox: { label: '肉毒桿菌素', detail: '' },
       filler: { label: '玻尿酸', detail: '' },

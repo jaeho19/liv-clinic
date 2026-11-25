@@ -343,8 +343,7 @@
       },
       "thermage": {
         "flx600": { "name": "サーマジFLX", "basis": "600ショット", "price": "240万ウォン～" },
-        "eye225": { "name": "アイサーマジ", "basis": "225ショット", "price": "100万ウォン～" },
-        "eye450": { "name": "アイサーマジ", "basis": "450ショット", "price": "160万ウォン～" }
+        "eye225": { "name": "アイサーマジ", "basis": "225ショット", "price": "100万ウォン～" }
       },
       "ulthera": {
         "upperFace": { "name": "上顔面", "basis": "200~300ショット", "price": "78万ウォン～" },
@@ -372,7 +371,6 @@
     "ulthera": "ウルセラ",
     "thermage": "サーマジFLX",
     "density": "デンシティ",
-    "inmode": "インモード",
     "onda": "オンダ",
     "shurink": "シュリンク",
     "thread": "スレッドリフト",
@@ -475,10 +473,6 @@
         "shurink": {
           "subTitle": "シュリンク",
           "desc": "精密なHIFUでV ラインを完成"
-        },
-        "inmode": {
-          "subTitle": "インモード",
-          "desc": "RFエネルギーで脂肪減少とリフティングを同時に"
         },
         "potenza": {
           "subTitle": "ポテンザ",
@@ -1258,7 +1252,7 @@
               },
               {
                 "feature": "チップ種類",
-                "flx": "900/600/400/225",
+                "flx": "600 / 225（アイ）",
                 "cpt": "900/600/400",
                 "nxt": "制限的"
               },
@@ -1328,7 +1322,7 @@
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
-                "desc": "特許取得の振動技術で施術中<strong>痛みを最小化</strong>します。無麻酔でも快適に施術を受けられます。"
+                "desc": "特許取得の振動技術で施術中<strong>痛みを最小化</strong>します。麻酔は無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔からカウンセリングで選べます。"
               },
               "collagenRemodeling": {
                 "title": "コラーゲンリモデリング",
@@ -1389,20 +1383,12 @@
             "recommendedShots": {
               "title": "部位別推奨ショット数",
               "fullFace": {
-                "shots": "300-400",
+                "shots": "600",
                 "label": "全顔"
-              },
-              "lowerFace": {
-                "shots": "200-300",
-                "label": "下顔面"
               },
               "eye": {
                 "shots": "225",
                 "label": "目元（アイ）"
-              },
-              "fullFaceNeck": {
-                "shots": "500-900",
-                "label": "全顔＋首"
               }
             }
           },
@@ -1416,7 +1402,7 @@
               },
               {
                 "q": "サーマジ施術中痛みはひどいですか？",
-                "a": "FLXは振動技術（Comfort Pulse Technology）で施術中不快感を最小化しました。無麻酔で進行可能で、ほとんどの患者様が我慢できるレベルの熱感のみ感じられます。"
+                "a": "FLXは振動技術（Comfort Pulse Technology）で施術中不快感を最小化しました。ほとんどの患者様が我慢できるレベルの熱感のみ感じられます。麻酔は無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔の中から、カウンセリングでご希望に合わせて決められます。"
               },
               {
                 "q": "サーマジ正品確認はどうしますか？",
@@ -1929,249 +1915,6 @@
             "sectionLabel": "Related Treatments",
             "title": "一緒に見ると良い施術"
           }
-        }
-      },
-      "inmode": {
-        "name": "インモード",
-        "fullName": "InMode",
-        "tagline": "RF基盤複合リフティング",
-        "description": "高周波を活用した複合リフティングシステムで肌弾力とボディコンツアリングを同時に改善します。",
-        "detail": {
-          "illustrations": {
-            "forma": "肌弾力",
-            "morpheus": "マイクロニードルRF",
-            "facetite": "脂肪タイトニング"
-          },
-          "treatmentCard": {
-            "benefits": "主な効果",
-            "duration": "施術時間",
-            "downtime": "ダウンタイム",
-            "idealFor": "おすすめの方"
-          },
-          "comparison": {
-            "header": "比較項目",
-            "rows": {
-              "method": {
-                "feature": "施術方式",
-                "forma": "RF高周波",
-                "morpheus": "マイクロニードル+RF",
-                "facetite": "カニューレ+RF"
-              },
-              "invasiveness": {
-                "feature": "侵襲度",
-                "forma": "非侵襲",
-                "morpheus": "最小侵襲",
-                "facetite": "最小侵襲"
-              },
-              "anesthesia": {
-                "feature": "麻酔",
-                "forma": "不要",
-                "morpheus": "麻酔クリーム",
-                "facetite": "局所麻酔"
-              },
-              "downtime": {
-                "feature": "ダウンタイム",
-                "forma": "なし",
-                "morpheus": "3-5日",
-                "facetite": "5-7日"
-              },
-              "onset": {
-                "feature": "効果発現",
-                "forma": "段階的",
-                "morpheus": "段階的",
-                "facetite": "即時"
-              },
-              "sessions": {
-                "feature": "施術回数",
-                "forma": "4-6回",
-                "morpheus": "2-3回",
-                "facetite": "1回"
-              },
-              "target": {
-                "feature": "主なターゲット",
-                "forma": "弾力",
-                "morpheus": "毛穴/傷跡",
-                "facetite": "脂肪/たるみ"
-              }
-            }
-          },
-          "treatmentOptions": {
-            "forma": {
-              "name": "Forma",
-              "nameKo": "フォルマ",
-              "description": "非侵襲RF高周波でコラーゲンの収縮と再生を誘導し肌弾力を改善します。痛みがほとんどなくダウンタイムがないため日常生活に支障がありません。",
-              "benefits": [
-                "即時の肌引き締め",
-                "コラーゲン再生促進",
-                "小じわ改善",
-                "無痛施術"
-              ],
-              "duration": "20-30分",
-              "downtime": "なし",
-              "idealFor": [
-                "弾力低下",
-                "小じわ",
-                "予防管理"
-              ]
-            },
-            "morpheus": {
-              "name": "Morpheus8",
-              "nameKo": "モーフィアス8",
-              "description": "24本の金メッキマイクロニードルが真皮層までRFエネルギーを伝達し肌リモデリングを誘導します。毛穴、傷跡、肌質、弾力を同時に改善します。",
-              "benefits": [
-                "毛穴縮小",
-                "ニキビ跡改善",
-                "肌質改善",
-                "真皮層リモデリング"
-              ],
-              "duration": "30-45分",
-              "downtime": "3-5日",
-              "idealFor": [
-                "開いた毛穴",
-                "ニキビ跡",
-                "肌質"
-              ]
-            },
-            "facetite": {
-              "name": "FaceTite",
-              "nameKo": "フェイスタイト",
-              "description": "細いカニューレを通じて脂肪層に直接RFエネルギーを伝達し脂肪を溶かし肌をタイトニングします。ミニリフト級の効果を提供します。",
-              "benefits": [
-                "脂肪減少",
-                "肌タイトニング",
-                "フェイスライン改善",
-                "二重あご改善"
-              ],
-              "duration": "60-90分",
-              "downtime": "5-7日",
-              "idealFor": [
-                "二重あご",
-                "頬の脂肪",
-                "フェイスラインのたるみ"
-              ]
-            }
-          },
-          "recommendations": {
-            "forma": {
-              "title": "Forma推薦",
-              "desc": "肌弾力維持、予防管理、ダウンタイムなしで施術を受けたい方"
-            },
-            "morpheus": {
-              "title": "Morpheus8推薦",
-              "desc": "毛穴、傷跡、肌質改善を望み短期ダウンタイムが可能な方"
-            },
-            "facetite": {
-              "title": "FaceTite推薦",
-              "desc": "二重あご、頬の脂肪など脂肪のたるみが悩みで確実な効果を求める方"
-            }
-          },
-          "extendedFaqs": [
-            {
-              "q": "インモード施術で最も人気があるのは何ですか？",
-              "a": "Morpheus8が最も人気です。マイクロニードルとRFを組み合わせて毛穴、傷跡、肌質、弾力を同時に改善できるため、様々な肌の悩みをお持ちの方に効果的です。"
-            },
-            {
-              "q": "インモード施術を複数組み合わせて受けられますか？",
-              "a": "はい、可能です。例えばMorpheus8で肌質を改善しFaceTiteで脂肪をタイトニングする組み合わせが人気です。カウンセリングを通じて最適な組み合わせを決定します。"
-            },
-            {
-              "q": "インモードと他のリフティング施術の違いは？",
-              "a": "インモードはオールインワンプラットフォームで一つのシステムで様々な施術を選択できます。特にMorpheus8はマイクロニードルRFで肌質と弾力を、FaceTiteは脂肪タイトニングまで可能で個人カスタマイズ施術が可能です。"
-            }
-          ],
-          "hero": {
-            "badge": "オールインワンリフティングシステム",
-            "title": "インモード",
-            "description": "高周波（RF）エネルギーで脂肪減少とリフティングを同時に。<br />顔の脂肪がお悩みならインモードが答えです。",
-            "stats": {
-              "rf": {
-                "value": "RF",
-                "label": "高周波エネルギー"
-              },
-              "fda": {
-                "value": "FDA",
-                "label": "承認機器"
-              },
-              "custom": {
-                "value": "カスタム",
-                "label": "個人別施術"
-              }
-            },
-            "floatingBadges": {
-              "morpheus": {
-                "title": "Morpheus8",
-                "subtitle": "マイクロニードルRF"
-              },
-              "custom": {
-                "title": "カスタム施術",
-                "subtitle": "悩み別最適化"
-              }
-            }
-          },
-          "about": {
-            "sectionLabel": "About InMode",
-            "title": "インモードとは？",
-            "description": "インモードは<strong>高周波（RF）エネルギー</strong>を活用して脂肪層と真皮層を同時に刺激するマルチリフティング機器です。顔の脂肪が多いタイプやたるんだ肌が複合的にお悩みの場合に効果的です。"
-          },
-          "compare": {
-            "sectionLabel": "Comparison",
-            "title": "ハンドピース比較",
-            "subtitle": "各施術の特性を比較して自分に合った施術を見つけてください"
-          },
-          "livDifference": {
-            "sectionLabel": "LIV Difference",
-            "title": "LIVだけのインモード",
-            "cards": {
-              "genuine": {
-                "title": "正規認定クリニック",
-                "desc": "インモードコリア公式認定クリニックとして正規機器とチップのみ使用します。最新バージョンの機器を運用しています。"
-              },
-              "combination": {
-                "title": "カスタマイズ組み合わせ施術",
-                "desc": "一つのハンドピースだけでなく、肌状態に応じて複数の施術を組み合わせて最適な結果を導き出します。"
-              },
-              "specialist": {
-                "title": "専門医直接施術",
-                "desc": "皮膚科/形成外科専門医が直接カウンセリングから施術まで行います。豊富な経験で最適な結果を導き出します。"
-              }
-            }
-          },
-          "processSection": {
-            "sectionLabel": "Treatment Process"
-          },
-          "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "施術情報",
-            "labels": {
-              "duration": "施術時間",
-              "anesthesia": "麻酔",
-              "recovery": "回復期間",
-              "results": "効果"
-            }
-          },
-          "faq": {
-            "sectionLabel": "FAQ",
-            "title": "よくある質問",
-            "moreInfo": "もっと医療情報をお知りになりたいですか？",
-            "viewMedicalQA": "医療情報Q&Aを見る"
-          },
-          "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "インモードカウンセリング予約",
-            "description": "専門医療陣との1:1カスタマイズカウンセリングを通じて<br />自分に合った最適な施術を見つけてください。",
-            "bookConsultation": "無料カウンセリング予約",
-            "businessHours": "平日 10:00-19:00",
-            "location": "新沙駅4番出口徒歩3分"
-          },
-          "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "一緒に見ると良い施術"
-          }
-        },
-        "ui": {
-          "skinElasticity": "肌の弾力",
-          "microneedleRf": "マイクロニードルRF",
-          "fatTightening": "脂肪タイトニング"
         }
       },
       "shurink": {
@@ -4784,7 +4527,7 @@
         "category": "lifting",
         "question": "リフティング施術はどのくらい痛いですか？",
         "shortAnswer": "麻酔クリーム後に施術を行い、ほとんどの方が耐えられる程度です。",
-        "answer": "リフティング施術の痛みは、施術の種類や個人差によって異なります。ウルセラとサーマジFLXは、施術前に約30分間麻酔クリームを塗った後に行います。特にサーマジFLXは振動技術（Vibrating Tip）が適用されており、痛みが大幅に軽減されています。ほとんどの患者様が快適に施術を受けることができます。痛みに敏感な方は追加の痛み調節が可能ですので、ご相談時にお知らせください。",
+        "answer": "リフティング施術の痛みは、施術の種類や個人差によって異なります。ウルセラは施術前に約30分間麻酔クリームを塗った後に行い、サーマジFLXは無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔からカウンセリングで選びます。特にサーマジFLXは振動技術（Vibrating Tip）が適用されており、痛みが大幅に軽減されています。ほとんどの患者様が快適に施術を受けることができます。痛みに敏感な方は追加の痛み調節が可能ですので、ご相談時にお知らせください。",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -4801,7 +4544,7 @@
         "category": "lifting",
         "question": "リフティング施術はどのくらいの頻度で受けるべきですか？",
         "shortAnswer": "ウルセラは1-2年に1回、サーマジは6ヶ月-1年に1回をお勧めします。",
-        "answer": "ウルセラは1-2年に1回、サーマジは6ヶ月-1年に1回をお勧めします。シュリンクやインモードなどのメンテナンス施術は3-6ヶ月間隔で受けることができます。肌の状態やご希望の効果によって施術周期が異なる場合がありますので、正確な周期はご相談を通じて決定することをお勧めします。",
+        "answer": "ウルセラは1-2年に1回、サーマジは6ヶ月-1年に1回をお勧めします。シュリンクなどのメンテナンス施術は3-6ヶ月間隔で受けることができます。肌の状態やご希望の効果によって施術周期が異なる場合がありますので、正確な周期はご相談を通じて決定することをお勧めします。",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -5322,13 +5065,6 @@
         "duration": "40-60分",
         "recovery": "ダウンタイムなし"
       },
-      "inmode": {
-        "name": "インモード",
-        "nameEn": "InMode",
-        "description": "高周波(RF)エネルギーで脂肪減少と肌の弾力改善を同時に可能にするマルチリフティング機器です。",
-        "duration": "30-90分",
-        "recovery": "0-5日"
-      },
       "onda": {
         "name": "オンダ",
         "nameEn": "ONDA",
@@ -5424,14 +5160,6 @@
           "recovery": "なし",
           "results": "3-6ヶ月",
           "price": "リーズナブル"
-        },
-        "inmode": {
-          "technology": "RF",
-          "duration": "30-90分",
-          "anesthesia": "麻酔なし",
-          "recovery": "0-5日",
-          "results": "6ヶ月-1年",
-          "price": "施術により異なる"
         },
         "thread": {
           "technology": "溶ける糸",
@@ -5814,17 +5542,6 @@
         ],
         "certification": "KFDA承認"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameKo": "インモード",
-        "description": "脂肪減少 + 弾力改善を一度に",
-        "features": [
-          "脂肪減少とリフティング同時",
-          "局所部位集中",
-          "ダウンタイムが少ない"
-        ],
-        "certification": "FDA、KFDA承認"
-      },
       "onda": {
         "name": "ONDA",
         "nameKo": "オンダ",
@@ -6059,11 +5776,8 @@
       },
       "thermage": {
         "name": "サーマジレーザー",
-        "shot300": "300ショット",
         "shot600": "600ショット",
-        "shot900": "900ショット",
-        "eyeTip225": "アイチップ 225ショット",
-        "eyeTip450": "アイチップ 450ショット"
+        "eyeTip225": "アイチップ 225ショット"
       },
       "shurink": {
         "shurinkLaser": "シュリンクレーザー",
@@ -6079,12 +5793,6 @@
         "alphaTip": "デンシティレーザー (アルファチップ)",
         "shot300": "300ショット",
         "shot600": "600ショット"
-      },
-      "inmode": {
-        "name": "インモードレーザー",
-        "fxForma": "FX / FORMA モード",
-        "fx": "FX モード",
-        "forma": "FORMA モード"
       },
       "thread": {
         "name": "糸リフト",
@@ -6729,19 +6437,6 @@
         "高周波 リフト ソウル",
         "弾力 リフティング",
         "引き締め 韓国",
-        "新沙駅",
-        "江南 美容皮膚科"
-      ]
-    },
-    "inmode": {
-      "title": "インモード | RF複合リフト・輪郭 | LIV美容クリニック（江南）",
-      "description": "韓国・江南のLIV美容クリニックのインモード。RF基盤の複合リフティングで弾力・輪郭・脂肪改善を同時に。フェイスラインに合わせて設計。新沙駅徒歩1分。",
-      "keywords": [
-        "インモード 韓国",
-        "InMode リフティング",
-        "RF リフト ソウル",
-        "小顔 輪郭",
-        "あご下 リフト",
         "新沙駅",
         "江南 美容皮膚科"
       ]

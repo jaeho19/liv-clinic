@@ -1,6 +1,6 @@
 ---
-title: "Thermage FLX in Seoul: 2026 price guide by shot count, what's included and how to plan your visit"
-description: Thermage FLX prices at LIV Plastic Surgery in Sinsa, Seoul, by shot count and eye tip, what the price covers, treatment time, anesthesia, downtime, how long results last and how to book from abroad.
+title: "Thermage FLX in Seoul: 2026 prices for the full face and eyes, what's included and how to plan your visit"
+description: Thermage FLX prices at LIV Plastic Surgery in Sinsa, Seoul, for the full face (600 shots) and the eye tip (225 shots), what the price covers, treatment time, anesthesia options, downtime, how long results last and how to book from abroad.
 keywords:
   - thermage flx korea price
   - thermage seoul cost
@@ -10,32 +10,29 @@ keywords:
   - thermage flx seoul same day
 category: price
 status: published
-updated: 2026-11-10
+updated: 2026-11-25
 reviewer: clinic
 treatment: /lifting/thermage
 ---
 
-Planning to have Thermage FLX while you are in Seoul, and want to see the published price before you message a clinic? This guide sets out what LIV lists for Thermage FLX: the price by shot count, how long the appointment takes, what happens with anesthesia and downtime, and how to fit it into a short trip. [LIV Plastic Surgery](/international) is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency.
+Planning to have Thermage FLX while you are in Seoul, and want to see the published price before you message a clinic? This guide sets out what LIV lists for Thermage FLX: the price for the full face and the eye area, how long the appointment takes, the anesthesia options and downtime, and how to fit it into a short trip. [LIV Plastic Surgery](/international) is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency.
 
 ## Thermage FLX prices at LIV (2026)
 
-Thermage FLX is priced by the number of shots, and the eye area uses a dedicated eye tip with its own price. The figures below are the starting prices per session shown on the [Thermage FLX page](/lifting/thermage); the [price list](/pricing) shows the 600-shot and eye-tip rows.
+At LIV the full face is planned at 600 shots, and the eye area uses a dedicated 225-shot eye tip with its own price. The figures below are the starting prices per session shown on the [Thermage FLX page](/lifting/thermage) and the [price list](/pricing).
 
 | Treatment | Shots | Price (per session) |
 |---|---|---|
-| Thermage FLX | 300 | KRW 1,300,000~ |
-| Thermage FLX | 600 | KRW 2,400,000~ |
-| Thermage FLX | 900 | KRW 3,300,000~ |
+| Thermage FLX (full face) | 600 | KRW 2,400,000~ |
 | Eye Thermage (eye tip) | 225 | KRW 1,000,000~ |
-| Eye Thermage (eye tip) | 450 | KRW 1,600,000~ |
 
 > Per session · VAT not included · The exact price is confirmed after your consultation and may vary with your skin condition, the area treated and the products used. Prices are charged in Korean won; the amount on your card statement depends on the exchange rate on the day.
 
-Two things to know about the numbers. The tilde means "from": the final price is set once the surgeon has seen your skin and agreed the shot count with you. And VAT is added on top of the listed price.
+Two things to know about the numbers. The tilde means "from": the final price is set once the surgeon has seen your skin and agreed the treatment plan with you. And VAT is added on top of the listed price.
 
 ### What the price covers
 
-- **The shot count for your area.** Thermage FLX is priced by the number of shots of radiofrequency energy delivered. The clinic treats the full face, the eye area, the neck and the body; how many shots your area needs is decided at the consultation.
+- **The recommended shot count for your area.** Thermage FLX is priced by the number of shots of radiofrequency energy delivered. The clinic recommends 600 shots for the full face and 225 shots with the eye tip for the eye area. It also treats the neck and the body; the plan for your area is confirmed at the consultation.
 - **A genuine Thermage FLX system and authentic tips.** LIV is a Thermage FLX partner clinic and an officially certified Ultherapy Prime provider. Only genuine, certified handpieces (tips) are used, and you are welcome to check this yourself before treatment.
 - **Language support at no extra charge.** Consultations are available in English, and interpretation is arranged free of charge on request. There is no foreigner surcharge and no fee for language support.
 - **An in-person consultation with the surgeon** before the treatment, on the same visit. The 1:1 consultation fee is KRW 10,000, and it is fully deducted from the treatment cost if you proceed with treatment on the same day.
@@ -45,14 +42,14 @@ Two things to know about the numbers. The tilde means "from": the final price is
 | Item | What the clinic states |
 |---|---|
 | Treatment time | 45–60 minutes |
-| Anesthesia | No anesthesia; vibration reduces discomfort |
+| Anesthesia | No anesthesia, numbing cream, local anesthesia or sedation, chosen at the consultation |
 | Recovery | Immediate return to daily life |
 | Return visit | Same day · no revisit required |
 | Results | Immediate elasticity improvement, collagen regeneration over 3–6 months |
 | How long results last | 6 months to 1 year |
 | Recommended interval | 1–2 sessions per year |
 
-- **Anesthesia and comfort.** The treatment page lists Thermage FLX as a no-anesthesia treatment, because the vibrating tip reduces discomfort. Numbing cream can be applied for about 30 minutes before the treatment, and most patients receive it comfortably. If you are sensitive to pain, additional pain control is available; mention it at your consultation.
+- **Anesthesia and comfort.** Thermage FLX can be done with no anesthesia, with numbing cream, with local anesthesia or under sedation, and the method is chosen with the surgeon at the consultation. Where numbing cream is used, it is applied for about 30 minutes before the treatment. If you are sensitive to pain, mention it at your consultation.
 - **Downtime.** You can return to daily life immediately. Temporary flushing is possible after the treatment.
 - **Results.** The clinic describes an immediate improvement in elasticity, followed by collagen regeneration over 3–6 months. Results last about 6 months to 1 year, and this varies with skin condition, age and lifestyle. No particular result can be promised in advance.
 - **How often.** The clinic recommends 1–2 sessions per year. The interval that suits you is set at the consultation.
@@ -83,9 +80,8 @@ When you block out time, allow for the consultation, the treatment itself (45–
 The clinic describes Thermage FLX as suited to people who:
 
 - are concerned about loss of skin elasticity;
-- want to improve fine lines;
-- prefer a natural, gradual change; and
-- want a treatment without anesthesia.
+- want to improve fine lines; and
+- prefer a natural, gradual change.
 
 Points to raise at your consultation:
 
@@ -102,7 +98,7 @@ Every treatment is planned and performed under Dr. Sooyoung Kim, a board-certifi
 
 ### How much does Thermage FLX cost in Seoul at LIV?
 
-The published starting prices per session are KRW 1,300,000 for 300 shots, KRW 2,400,000 for 600 shots and KRW 3,300,000 for 900 shots. Eye Thermage with the eye tip starts at KRW 1,000,000 for 225 shots and KRW 1,600,000 for 450 shots. VAT is not included, and the exact price is confirmed after your consultation.
+The published starting price per session is KRW 2,400,000 for the full face at the recommended 600 shots. Eye Thermage uses a dedicated 225-shot eye tip and starts at KRW 1,000,000. VAT is not included, and the exact price is confirmed after your consultation.
 
 ### Do international patients pay more?
 
@@ -114,7 +110,7 @@ In most cases the treatment is done on the day of your visit. It takes 45–60 m
 
 ### Does Thermage FLX hurt?
 
-Pain varies with the treatment and the individual. Thermage FLX uses a vibrating tip that reduces discomfort, and the clinic's medical Q&A says most patients can receive the treatment comfortably. Additional pain control is available if you ask at your consultation.
+Pain varies with the treatment and the individual. Thermage FLX uses a vibrating tip that reduces discomfort, and the clinic's medical Q&A says most patients can receive the treatment comfortably. Anesthesia can be none, numbing cream, local anesthesia or sedation; the method is chosen at your consultation, so tell the surgeon if you are sensitive to pain.
 
 ### How long do Thermage results last, and how often should I repeat it?
 
@@ -122,8 +118,8 @@ The clinic states that Thermage results last about 6 months to 1 year, depending
 
 ### Can Thermage be used around the eyes?
 
-Yes. The eye area is treated with a dedicated Thermage eye tip, listed at 225 or 450 shots.
+Yes. The eye area is treated with a dedicated Thermage eye tip, planned at 225 shots and listed from KRW 1,000,000 per session.
 
 ## Before you book
 
-Your treatment area, shot count and final price are decided at your consultation with the surgeon; the figures above are the published starting points so you can plan your trip. Send your questions through the [international patients page](/international) or the [contact form](/contact) and the clinic will reply within one business day.
+Your treatment area, anesthesia method and final price are decided at your consultation with the surgeon; the figures above are the published starting points so you can plan your trip. Send your questions through the [international patients page](/international) or the [contact form](/contact) and the clinic will reply within one business day.

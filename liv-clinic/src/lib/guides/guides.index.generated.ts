@@ -20,14 +20,14 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "locale": "en",
     "slug": "choose-lifting-treatment-by-concern",
     "status": "published",
-    "title": "Which lifting treatment in Korea? Eight options at a Seoul clinic, sorted by concern",
+    "title": "Which lifting treatment in Korea? Seven options at a Seoul clinic, sorted by concern",
     "category": "comparison"
   },
   {
     "locale": "en",
-    "slug": "density-onda-inmode-lifting-seoul",
+    "slug": "density-vs-onda-lifting-seoul",
     "status": "published",
-    "title": "Density vs ONDA vs InMode in Seoul: three newer lifting devices compared",
+    "title": "Density vs ONDA in Seoul: two newer lifting devices compared",
     "category": "comparison"
   },
   {
@@ -90,7 +90,7 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "locale": "en",
     "slug": "thermage-flx-cost-seoul",
     "status": "published",
-    "title": "Thermage FLX in Seoul: 2026 price guide by shot count, what's included and how to plan your visit",
+    "title": "Thermage FLX in Seoul: 2026 prices for the full face and eyes, what's included and how to plan your visit",
     "category": "price"
   },
   {
@@ -132,14 +132,14 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "locale": "ja",
     "slug": "choose-lifting-treatment-by-concern",
     "status": "published",
-    "title": "韓国のたるみ治療、どれを選ぶ？お悩み別に見るリフティング8種（新沙・LIV美容クリニック）",
+    "title": "韓国のたるみ治療、どれを選ぶ？お悩み別に見るリフティング7種（新沙・LIV美容クリニック）",
     "category": "comparison"
   },
   {
     "locale": "ja",
-    "slug": "density-onda-inmode-lifting-seoul",
+    "slug": "density-vs-onda-lifting-seoul",
     "status": "published",
-    "title": "デンシティ・オンダリフト・インモードの違いと韓国での料金（新沙・LIV美容クリニック）",
+    "title": "デンシティとオンダリフトの違いと韓国での料金（新沙・LIV美容クリニック）",
     "category": "comparison"
   },
   {
@@ -202,7 +202,7 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "locale": "ja",
     "slug": "thermage-flx-cost-seoul",
     "status": "published",
-    "title": "韓国でサーマクール（サーマジFLX）を受ける前に：ショット数別の値段・施術時間・ダウンタイム（新沙・LIV美容クリニック）",
+    "title": "韓国でサーマクール（サーマジFLX）を受ける前に：顔全体・目もとの値段・施術時間・ダウンタイム（新沙・LIV美容クリニック）",
     "category": "price"
   },
   {
@@ -286,14 +286,14 @@ export const GUIDE_INDEX: readonly GuideIndexEntry[] = [
     "locale": "zh-TW",
     "slug": "choose-lifting-treatment-by-concern",
     "status": "published",
-    "title": "韓國拉提療程怎麼選？依困擾整理首爾診所的8種拉提",
+    "title": "韓國拉提療程怎麼選？依困擾整理首爾診所的7種拉提",
     "category": "comparison"
   },
   {
     "locale": "zh-TW",
-    "slug": "density-onda-inmode-lifting-seoul",
+    "slug": "density-vs-onda-lifting-seoul",
     "status": "published",
-    "title": "Density vs ONDA vs InMode：首爾三種新型拉提儀器的差異與價格",
+    "title": "Density vs ONDA：首爾兩種新型拉提儀器的差異與價格",
     "category": "comparison"
   },
   {

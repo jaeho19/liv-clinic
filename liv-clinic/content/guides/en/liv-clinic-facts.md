@@ -10,7 +10,7 @@ keywords:
   - Gangnam clinic for foreigners
 category: booking
 status: published
-updated: 2026-11-24
+updated: 2026-11-25
 reviewer: clinic
 treatment: /international
 ---
@@ -70,10 +70,9 @@ Prices are the lowest "from" prices on the clinic's published list, in Korean wo
 | Treatment | Time | Anesthesia | Recovery | Lowest listed price |
 |---|---|---|---|---|
 | [Ultherapy Prime](/lifting/ulthera) | 60–90 min | Topical anesthetic cream (30 min) | Immediate return to daily life | From KRW 780,000 (upper face, 200–300 shots) |
-| [Thermage FLX](/lifting/thermage) | 45–60 min | No anesthesia (vibration reduces discomfort) | Immediate return to daily life | From KRW 1,000,000 (Eye Tip 225 shots) |
+| [Thermage FLX](/lifting/thermage) | 45–60 min | No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation) | Immediate return to daily life | From KRW 1,000,000 (Eye Tip 225 shots) |
 | [Density](/lifting/density) | 40–60 min | Topical anesthetic cream (optional) | Immediate return to daily life | From KRW 890,000 (Hi-Tip, 300 shots) |
 | [ONDA](/lifting/onda) | Face 15–30 min; about 10 min per body area | No anesthesia required | No downtime | Quoted at consultation |
-| [InMode](/lifting/inmode) | 30–60 min | No anesthesia or topical anesthetic cream | Immediate return to daily life | From KRW 150,000 (FX Mode) |
 | [Shurink](/lifting/shurink) | 30–45 min | Topical anesthetic cream (optional) | Immediate return to daily life | From KRW 200,000 (300 shots) |
 | [Thread lift](/lifting/thread) | 30–60 min | Local anesthesia | 3–7 days (bruising and swelling possible) | From KRW 800,000 (MINT, 8 threads) |
 | [APTOS thread lift](/lifting/aptos) | 30–60 min | Local anesthesia | 3–7 days (bruising and swelling possible) | From KRW 1,500,000 (APTOS Light Lift 25, 2 threads) |

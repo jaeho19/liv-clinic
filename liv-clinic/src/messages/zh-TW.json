@@ -343,8 +343,7 @@
       },
       "thermage": {
         "flx600": { "name": "鳳凰電波 FLX", "basis": "600發", "price": "240萬韓元～" },
-        "eye225": { "name": "眼部鳳凰電波", "basis": "225發", "price": "100萬韓元～" },
-        "eye450": { "name": "眼部鳳凰電波", "basis": "450發", "price": "160萬韓元～" }
+        "eye225": { "name": "眼部鳳凰電波", "basis": "225發", "price": "100萬韓元～" }
       },
       "ulthera": {
         "upperFace": { "name": "上面部", "basis": "200~300發", "price": "78萬韓元～" },
@@ -372,7 +371,6 @@
     "ulthera": "音波拉提",
     "thermage": "鳳凰電波 FLX",
     "density": "Density",
-    "inmode": "InMode",
     "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "埋線",
@@ -475,10 +473,6 @@
         "shurink": {
           "subTitle": "Shurink",
           "desc": "精準HIFU打造V形臉"
-        },
-        "inmode": {
-          "subTitle": "InMode",
-          "desc": "射頻能量同時減脂和拉提"
         },
         "potenza": {
           "subTitle": "Potenza",
@@ -1258,7 +1252,7 @@
               },
               {
                 "feature": "治療頭種類",
-                "flx": "900/600/400/225",
+                "flx": "600 / 225（眼部）",
                 "cpt": "900/600/400",
                 "nxt": "有限"
               },
@@ -1328,7 +1322,7 @@
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
-                "desc": "專利振動技術<strong>最大限度減少</strong>治療過程中的疼痛。無需麻醉也能舒適接受治療。"
+                "desc": "專利振動技術<strong>最大限度減少</strong>治療過程中的疼痛。麻醉方式可在面診時從無麻醉、麻醉藥膏、局部麻醉、睡眠麻醉中選擇。"
               },
               "collagenRemodeling": {
                 "title": "膠原蛋白重塑",
@@ -1389,20 +1383,12 @@
             "recommendedShots": {
               "title": "分部位推薦發數",
               "fullFace": {
-                "shots": "300-400",
+                "shots": "600",
                 "label": "全臉"
-              },
-              "lowerFace": {
-                "shots": "200-300",
-                "label": "下半臉"
               },
               "eye": {
                 "shots": "225",
                 "label": "眼部"
-              },
-              "fullFaceNeck": {
-                "shots": "500-900",
-                "label": "全臉+頸部"
               }
             }
           },
@@ -1416,7 +1402,7 @@
               },
               {
                 "q": "鳳凰電波治療過程中會很疼嗎？",
-                "a": "FLX通過振動技術（Comfort Pulse Technology）最大限度減少治療過程中的不適。可無麻醉進行，大多數患者只感到可忍受程度的熱感。"
+                "a": "FLX通過振動技術（Comfort Pulse Technology）最大限度減少治療過程中的不適。大多數患者只感到可忍受程度的熱感。麻醉方式可在面診時依您的需求，從無麻醉、麻醉藥膏、局部麻醉、睡眠麻醉中選擇。"
               },
               {
                 "q": "如何確認鳳凰電波是正品？",
@@ -1929,249 +1915,6 @@
             "sectionLabel": "相關推薦治療",
             "title": "相關推薦治療"
           }
-        }
-      },
-      "inmode": {
-        "name": "InMode",
-        "fullName": "InMode",
-        "tagline": "射頻複合拉提",
-        "description": "利用射頻的複合拉提系統，同時改善皮膚彈性和身體輪廓。",
-        "detail": {
-          "illustrations": {
-            "forma": "皮膚彈性",
-            "morpheus": "微針射頻",
-            "facetite": "脂肪緊緻"
-          },
-          "treatmentCard": {
-            "benefits": "主要效果",
-            "duration": "治療時間",
-            "downtime": "恢復期",
-            "idealFor": "適合人群"
-          },
-          "comparison": {
-            "header": "比較項目",
-            "rows": {
-              "method": {
-                "feature": "治療方式",
-                "forma": "射頻高頻",
-                "morpheus": "微針+射頻",
-                "facetite": "套管+射頻"
-              },
-              "invasiveness": {
-                "feature": "侵入性",
-                "forma": "非侵入",
-                "morpheus": "微創",
-                "facetite": "微創"
-              },
-              "anesthesia": {
-                "feature": "麻醉",
-                "forma": "不需要",
-                "morpheus": "麻醉膏",
-                "facetite": "局部麻醉"
-              },
-              "downtime": {
-                "feature": "恢復期",
-                "forma": "無",
-                "morpheus": "3-5天",
-                "facetite": "5-7天"
-              },
-              "onset": {
-                "feature": "效果顯現",
-                "forma": "漸進",
-                "morpheus": "漸進",
-                "facetite": "即刻"
-              },
-              "sessions": {
-                "feature": "治療次數",
-                "forma": "4-6次",
-                "morpheus": "2-3次",
-                "facetite": "1次"
-              },
-              "target": {
-                "feature": "主要目標",
-                "forma": "彈性",
-                "morpheus": "毛孔/疤痕",
-                "facetite": "脂肪/鬆弛"
-              }
-            }
-          },
-          "treatmentOptions": {
-            "forma": {
-              "name": "Forma",
-              "nameKo": "Forma",
-              "description": "非侵入性射頻高頻誘導膠原蛋白收縮和再生，改善皮膚彈性。幾乎無痛且無恢復期，不影響日常生活。",
-              "benefits": [
-                "即刻皮膚緊緻",
-                "促進膠原蛋白再生",
-                "改善細紋",
-                "無痛治療"
-              ],
-              "duration": "20-30分鐘",
-              "downtime": "無",
-              "idealFor": [
-                "彈性下降",
-                "細紋",
-                "預防護理"
-              ]
-            },
-            "morpheus": {
-              "name": "Morpheus8",
-              "nameKo": "Morpheus8",
-              "description": "24根鍍金微針將射頻能量傳遞到真皮層，誘導皮膚重塑。同時改善毛孔、疤痕、膚質和彈性。",
-              "benefits": [
-                "縮小毛孔",
-                "改善痤瘡疤痕",
-                "改善膚質",
-                "真皮層重塑"
-              ],
-              "duration": "30-45分鐘",
-              "downtime": "3-5天",
-              "idealFor": [
-                "毛孔粗大",
-                "痤瘡疤痕",
-                "膚質"
-              ]
-            },
-            "facetite": {
-              "name": "FaceTite",
-              "nameKo": "FaceTite",
-              "description": "通過細套管將射頻能量直接傳遞到脂肪層，溶解脂肪並緊緻皮膚。提供迷你拉皮級別的效果。",
-              "benefits": [
-                "減少脂肪",
-                "緊緻皮膚",
-                "改善下頜線",
-                "改善雙下巴"
-              ],
-              "duration": "60-90分鐘",
-              "downtime": "5-7天",
-              "idealFor": [
-                "雙下巴",
-                "臉頰脂肪",
-                "下頜線鬆弛"
-              ]
-            }
-          },
-          "recommendations": {
-            "forma": {
-              "title": "Forma推薦",
-              "desc": "希望維持皮膚彈性、預防護理、無恢復期治療的人"
-            },
-            "morpheus": {
-              "title": "Morpheus8推薦",
-              "desc": "希望改善毛孔、疤痕、膚質且可接受短期恢復期的人"
-            },
-            "facetite": {
-              "title": "FaceTite推薦",
-              "desc": "擔心雙下巴、臉頰脂肪等脂肪鬆弛且希望獲得明確效果的人"
-            }
-          },
-          "extendedFaqs": [
-            {
-              "q": "InMode治療中最受歡迎的是什麼？",
-              "a": "Morpheus8最受歡迎。結合微針和射頻，可以同時改善毛孔、疤痕、膚質和彈性，對有各種皮膚問題的人很有效。"
-            },
-            {
-              "q": "可以組合多種InMode治療嗎？",
-              "a": "是的，可以。例如，用Morpheus8改善膚質，用FaceTite緊緻脂肪的組合很受歡迎。通過諮詢確定最佳組合。"
-            },
-            {
-              "q": "InMode與其他拉提治療有什麼區別？",
-              "a": "InMode是一個全能平臺，可以在一個系統中選擇各種治療。特別是Morpheus8通過微針射頻改善膚質和彈性，FaceTite可以進行脂肪緊緻，實現個性化定製治療。"
-            }
-          ],
-          "hero": {
-            "badge": "全能拉提系統",
-            "title": "InMode",
-            "description": "通過射頻(RF)能量同時實現減脂和拉提。<br />如果面部脂肪是您的困擾，InMode就是答案。",
-            "stats": {
-              "rf": {
-                "value": "RF",
-                "label": "射頻能量"
-              },
-              "fda": {
-                "value": "FDA",
-                "label": "認證設備"
-              },
-              "custom": {
-                "value": "定製",
-                "label": "個性化治療"
-              }
-            },
-            "floatingBadges": {
-              "morpheus": {
-                "title": "Morpheus8",
-                "subtitle": "微針射頻"
-              },
-              "custom": {
-                "title": "定製治療",
-                "subtitle": "針對問題優化"
-              }
-            }
-          },
-          "about": {
-            "sectionLabel": "About InMode",
-            "title": "什麼是InMode？",
-            "description": "InMode是利用<strong>射頻(RF)能量</strong>同時刺激脂肪層和真皮層的多功能拉提設備。對面部脂肪較多或皮膚鬆弛等複合問題非常有效。"
-          },
-          "compare": {
-            "sectionLabel": "Comparison",
-            "title": "手柄比較",
-            "subtitle": "比較各治療的特性，找到適合自己的治療"
-          },
-          "livDifference": {
-            "sectionLabel": "LIV Difference",
-            "title": "LIV獨有的InMode",
-            "cards": {
-              "genuine": {
-                "title": "正品認證診所",
-                "desc": "作為InMode Korea官方認證診所，僅使用正品設備和探頭。運營最新版本的設備。"
-              },
-              "combination": {
-                "title": "定製組合治療",
-                "desc": "不僅使用單一手柄，還根據皮膚狀態組合多種治療以獲得最佳效果。"
-              },
-              "specialist": {
-                "title": "專家親自治療",
-                "desc": "皮膚科/整形外科專家從諮詢到治療全程親自進行。憑藉豐富的經驗獲得最佳效果。"
-              }
-            }
-          },
-          "processSection": {
-            "sectionLabel": "Treatment Process"
-          },
-          "treatmentInfo": {
-            "sectionLabel": "治療資訊",
-            "title": "治療資訊",
-            "labels": {
-              "duration": "治療時間",
-              "anesthesia": "麻醉",
-              "recovery": "恢復期",
-              "results": "效果"
-            }
-          },
-          "faq": {
-            "sectionLabel": "FAQ",
-            "title": "常見問題",
-            "moreInfo": "想了解更多醫療資訊嗎？",
-            "viewMedicalQA": "查看醫療問答"
-          },
-          "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "預約InMode諮詢",
-            "description": "通過與專業醫療團隊的1:1定製諮詢，<br />找到最適合您的治療方案。",
-            "bookConsultation": "預約免費諮詢",
-            "businessHours": "工作日 10:00-19:00",
-            "location": "新沙站4號出口步行3分鐘"
-          },
-          "related": {
-            "sectionLabel": "相關推薦治療",
-            "title": "相關推薦治療"
-          }
-        },
-        "ui": {
-          "skinElasticity": "皮膚彈性",
-          "microneedleRf": "微針射頻",
-          "fatTightening": "脂肪緊縮"
         }
       },
       "shurink": {
@@ -4784,7 +4527,7 @@
         "category": "lifting",
         "question": "拉提治療有多疼？",
         "shortAnswer": "塗抹麻醉膏後進行治療，大多數人能夠承受。",
-        "answer": "拉提治療的疼痛程度因治療類型和個人差異而異。音波拉提和鳳凰電波 FLX治療前都會塗抹約30分鐘的麻醉膏。特別是鳳凰電波 FLX採用振動技術（Vibrating Tip），大大減輕了疼痛，大多數患者都能舒適地接受治療。如果您對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知我們。",
+        "answer": "拉提治療的疼痛程度因治療類型和個人差異而異。音波拉提治療前會塗抹約30分鐘的麻醉膏；鳳凰電波 FLX則可在面診時從無麻醉、麻醉藥膏、局部麻醉、睡眠麻醉中選擇。特別是鳳凰電波 FLX採用振動技術（Vibrating Tip），大大減輕了疼痛，大多數患者都能舒適地接受治療。如果您對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知我們。",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -4801,7 +4544,7 @@
         "category": "lifting",
         "question": "拉提治療多久做一次？",
         "shortAnswer": "音波拉提建議1-2年做一次，鳳凰電波建議6個月-1年做一次。",
-        "answer": "音波拉提建議1-2年做一次，鳳凰電波建議6個月-1年做一次。Shurink或InMode等維護性治療可以每3-6個月進行一次。根據您的皮膚狀況和期望效果，治療週期可能會有所不同，建議通過諮詢確定準確的週期。",
+        "answer": "音波拉提建議1-2年做一次，鳳凰電波建議6個月-1年做一次。Shurink等維護性治療可以每3-6個月進行一次。根據您的皮膚狀況和期望效果，治療週期可能會有所不同，建議通過諮詢確定準確的週期。",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -5321,13 +5064,6 @@
         "duration": "40-60分鐘",
         "recovery": "無恢復期"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameEn": "InMode",
-        "description": "射頻(RF)能量同時實現脂肪減少和皮膚彈性改善的多功能拉提設備。",
-        "duration": "30-90分鐘",
-        "recovery": "0-5天"
-      },
       "onda": {
         "name": "ONDA",
         "nameEn": "ONDA",
@@ -5423,14 +5159,6 @@
           "recovery": "無",
           "results": "3-6個月",
           "price": "實惠"
-        },
-        "inmode": {
-          "technology": "RF",
-          "duration": "30-90分鐘",
-          "anesthesia": "無麻醉",
-          "recovery": "0-5天",
-          "results": "6個月-1年",
-          "price": "因治療而異"
         },
         "thread": {
           "technology": "可吸收線",
@@ -5813,17 +5541,6 @@
         ],
         "certification": "KFDA認證"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameKo": "InMode",
-        "description": "減脂 + 緊緻一次完成",
-        "features": [
-          "減脂和拉提同步",
-          "局部集中",
-          "恢復期短"
-        ],
-        "certification": "FDA、KFDA認證"
-      },
       "onda": {
         "name": "ONDA",
         "nameKo": "ONDA",
@@ -6058,11 +5775,8 @@
       },
       "thermage": {
         "name": "鳳凰電波雷射",
-        "shot300": "300發",
         "shot600": "600發",
-        "shot900": "900發",
-        "eyeTip225": "眼部探頭 225發",
-        "eyeTip450": "眼部探頭 450發"
+        "eyeTip225": "眼部探頭 225發"
       },
       "shurink": {
         "shurinkLaser": "Shurink雷射",
@@ -6078,12 +5792,6 @@
         "alphaTip": "Density雷射 (Alpha-Tip)",
         "shot300": "300發",
         "shot600": "600發"
-      },
-      "inmode": {
-        "name": "InMode雷射",
-        "fxForma": "FX / FORMA 模式",
-        "fx": "FX 模式",
-        "forma": "FORMA 模式"
       },
       "thread": {
         "name": "埋線拉提",
@@ -6737,19 +6445,6 @@
         "射頻緊膚 首爾",
         "彈力提升",
         "非手術提升 韓國",
-        "江南醫美",
-        "新沙站"
-      ]
-    },
-    "inmode": {
-      "title": "InMode | 射頻複合提升·輪廓 | LIV整形外科（江南）",
-      "description": "首爾江南LIV整形外科InMode。射頻複合提升同時改善彈力、輪廓與脂肪，依臉型訂製設計。新沙站步行1分鐘。",
-      "keywords": [
-        "InMode 韓國",
-        "InMode提升",
-        "射頻提升 首爾",
-        "面部輪廓",
-        "下巴提升 韓國",
         "江南醫美",
         "新沙站"
       ]

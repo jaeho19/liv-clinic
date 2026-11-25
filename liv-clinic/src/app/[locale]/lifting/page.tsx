@@ -7,7 +7,7 @@ import { routing } from '@/i18n/routing';
 import { buildLocalizedMetadata } from '@/lib/pageMeta';
 
 // Treatment IDs for lifting category
-const liftingTreatmentIds = ['aptos', 'ulthera', 'thermage', 'onda', 'density', 'inmode', 'shurink', 'thread'];
+const liftingTreatmentIds = ['aptos', 'ulthera', 'thermage', 'onda', 'density', 'shurink', 'thread'];
 
 // Treatment image paths (투명 배경 PNG)
 const TREATMENT_IMAGES: Record<string, string> = {
@@ -16,7 +16,6 @@ const TREATMENT_IMAGES: Record<string, string> = {
   thermage: '/images/treatments/thermage.png',
   onda: '/images/treatments/onda.png',
   density: '/images/treatments/density.png',
-  inmode: '/images/treatments/inmode.png',
   shurink: '/images/treatments/shurink.png',
   thread: '/images/treatments/thread.png',
 };
@@ -28,7 +27,6 @@ const TREATMENT_IMAGE_SIZES: Record<string, { width: number; height: number }> =
   thermage: { width: 800, height: 1000 },
   onda: { width: 189, height: 697 },
   density: { width: 800, height: 1000 },
-  inmode: { width: 800, height: 1000 },
   shurink: { width: 800, height: 1000 },
   thread: { width: 1024, height: 681 },
 };
@@ -40,7 +38,6 @@ const TREATMENT_LINKS: Record<string, string> = {
   thermage: '/lifting/thermage',
   onda: '/lifting/onda',
   density: '/lifting/density',
-  inmode: '/lifting/inmode',
   shurink: '/lifting/shurink',
   thread: '/lifting/thread',
 };

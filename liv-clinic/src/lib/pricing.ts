@@ -55,11 +55,8 @@ export const PRICING: Record<string, TreatmentPricing> = {
       {
         groupKey: 'name',
         rows: [
-          { rowKey: 'shot300', price: '1,300,000', suffix: 'starting' },
           { rowKey: 'shot600', price: '2,400,000', suffix: 'starting' },
-          { rowKey: 'shot900', price: '3,300,000', suffix: 'starting' },
           { rowKey: 'eyeTip225', price: '1,000,000', suffix: 'starting' },
-          { rowKey: 'eyeTip450', price: '1,600,000', suffix: 'starting' },
         ],
       },
     ],
@@ -103,20 +100,6 @@ export const PRICING: Record<string, TreatmentPricing> = {
         rows: [
           { rowKey: 'shot300', price: '990,000', suffix: 'starting' },
           { rowKey: 'shot600', price: '1,800,000', suffix: 'starting' },
-        ],
-      },
-    ],
-  },
-
-  inmode: {
-    id: 'inmode',
-    groups: [
-      {
-        groupKey: 'name',
-        rows: [
-          { rowKey: 'fxForma', price: '250,000', suffix: 'starting' },
-          { rowKey: 'fx', price: '150,000', suffix: 'starting' },
-          { rowKey: 'forma', price: '200,000', suffix: 'starting' },
         ],
       },
     ],

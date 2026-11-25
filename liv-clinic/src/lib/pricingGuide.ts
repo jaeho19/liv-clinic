@@ -31,7 +31,7 @@ export const PRICING_GUIDE: readonly PricingGuideCategory[] = [
     },
   },
   { id: 'filler', rows: ['domestic', 'domesticPremium', 'imported'], href: '/antiaging/filler' },
-  { id: 'thermage', rows: ['flx600', 'eye225', 'eye450'], href: '/lifting/thermage' },
+  { id: 'thermage', rows: ['flx600', 'eye225'], href: '/lifting/thermage' },
   { id: 'ulthera', rows: ['upperFace', 'lowerFace', 'fullFace', 'fullFaceNeck'], href: '/lifting/ulthera' },
 ] as const;
 

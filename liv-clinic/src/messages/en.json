@@ -343,8 +343,7 @@
       },
       "thermage": {
         "flx600": { "name": "Thermage FLX", "basis": "600 shots", "price": "KRW 2,400,000~" },
-        "eye225": { "name": "Eye Thermage", "basis": "225 shots", "price": "KRW 1,000,000~" },
-        "eye450": { "name": "Eye Thermage", "basis": "450 shots", "price": "KRW 1,600,000~" }
+        "eye225": { "name": "Eye Thermage", "basis": "225 shots", "price": "KRW 1,000,000~" }
       },
       "ulthera": {
         "upperFace": { "name": "Upper face", "basis": "200-300 shots", "price": "KRW 780,000~" },
@@ -372,7 +371,6 @@
     "ulthera": "Ultherapy Prime",
     "thermage": "Thermage FLX",
     "density": "Density",
-    "inmode": "InMode",
     "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "Thread Lift",
@@ -475,10 +473,6 @@
         "shurink": {
           "subTitle": "Shurink",
           "desc": "Precision HIFU for V-line contouring"
-        },
-        "inmode": {
-          "subTitle": "InMode",
-          "desc": "Fat reduction and lifting with RF energy"
         },
         "potenza": {
           "subTitle": "Potenza",
@@ -1258,7 +1252,7 @@
               },
               {
                 "feature": "Tip Types",
-                "flx": "900/600/400/225",
+                "flx": "600 / 225 (Eye)",
                 "cpt": "900/600/400",
                 "nxt": "Limited"
               },
@@ -1328,7 +1322,7 @@
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
-                "desc": "Patented vibration technology <strong>minimizes pain</strong> during treatment. Comfortable treatment possible without anesthesia."
+                "desc": "Patented vibration technology <strong>minimizes pain</strong> during treatment. Anesthesia is chosen at the consultation: none, numbing cream, local anesthesia or sedation."
               },
               "collagenRemodeling": {
                 "title": "Collagen Remodeling",
@@ -1389,20 +1383,12 @@
             "recommendedShots": {
               "title": "Recommended Shots by Area",
               "fullFace": {
-                "shots": "300-400",
+                "shots": "600",
                 "label": "Full Face"
-              },
-              "lowerFace": {
-                "shots": "200-300",
-                "label": "Lower Face"
               },
               "eye": {
                 "shots": "225",
                 "label": "Eye Area"
-              },
-              "fullFaceNeck": {
-                "shots": "500-900",
-                "label": "Full Face + Neck"
               }
             }
           },
@@ -1416,7 +1402,7 @@
               },
               {
                 "q": "Is the Thermage treatment painful?",
-                "a": "FLX minimizes discomfort during treatment with Comfort Pulse Technology. Treatment can be performed without anesthesia, and most patients only feel a tolerable level of heat."
+                "a": "FLX minimizes discomfort during treatment with Comfort Pulse Technology. Most patients only feel a tolerable level of heat, and anesthesia is chosen at the consultation from no anesthesia, numbing cream, local anesthesia or sedation, whichever suits you."
               },
               {
                 "q": "How can I verify Thermage authenticity?",
@@ -1929,249 +1915,6 @@
             "sectionLabel": "Related Treatments",
             "title": "Related Treatments"
           }
-        }
-      },
-      "inmode": {
-        "name": "InMode",
-        "fullName": "InMode",
-        "tagline": "RF-Based Combination Lifting",
-        "description": "A comprehensive lifting system using radiofrequency to improve skin elasticity and body contouring simultaneously.",
-        "detail": {
-          "illustrations": {
-            "forma": "Skin Elasticity",
-            "morpheus": "Microneedle RF",
-            "facetite": "Fat Tightening"
-          },
-          "treatmentCard": {
-            "benefits": "Key Benefits",
-            "duration": "Treatment Time",
-            "downtime": "Downtime",
-            "idealFor": "Ideal For"
-          },
-          "comparison": {
-            "header": "Comparison",
-            "rows": {
-              "method": {
-                "feature": "Method",
-                "forma": "RF Radiofrequency",
-                "morpheus": "Microneedle + RF",
-                "facetite": "Cannula + RF"
-              },
-              "invasiveness": {
-                "feature": "Invasiveness",
-                "forma": "Non-invasive",
-                "morpheus": "Minimally invasive",
-                "facetite": "Minimally invasive"
-              },
-              "anesthesia": {
-                "feature": "Anesthesia",
-                "forma": "Not required",
-                "morpheus": "Numbing cream",
-                "facetite": "Local anesthesia"
-              },
-              "downtime": {
-                "feature": "Downtime",
-                "forma": "None",
-                "morpheus": "3-5 days",
-                "facetite": "5-7 days"
-              },
-              "onset": {
-                "feature": "Effect Onset",
-                "forma": "Gradual",
-                "morpheus": "Gradual",
-                "facetite": "Immediate"
-              },
-              "sessions": {
-                "feature": "Sessions",
-                "forma": "4-6 sessions",
-                "morpheus": "2-3 sessions",
-                "facetite": "1 session"
-              },
-              "target": {
-                "feature": "Main Target",
-                "forma": "Elasticity",
-                "morpheus": "Pores/Scars",
-                "facetite": "Fat/Sagging"
-              }
-            }
-          },
-          "treatmentOptions": {
-            "forma": {
-              "name": "Forma",
-              "nameKo": "Forma",
-              "description": "Non-invasive RF radiofrequency induces collagen contraction and regeneration to improve skin elasticity. Virtually painless with no downtime, allowing you to resume daily activities immediately.",
-              "benefits": [
-                "Instant skin tightening",
-                "Collagen regeneration",
-                "Fine wrinkle improvement",
-                "Pain-free treatment"
-              ],
-              "duration": "20-30 min",
-              "downtime": "None",
-              "idealFor": [
-                "Loss of elasticity",
-                "Fine wrinkles",
-                "Preventive care"
-              ]
-            },
-            "morpheus": {
-              "name": "Morpheus8",
-              "nameKo": "Morpheus8",
-              "description": "24 gold-plated microneedles deliver RF energy to the dermal layer for skin remodeling. Simultaneously improves pores, scars, skin texture, and elasticity.",
-              "benefits": [
-                "Pore reduction",
-                "Acne scar improvement",
-                "Skin texture refinement",
-                "Dermal remodeling"
-              ],
-              "duration": "30-45 min",
-              "downtime": "3-5 days",
-              "idealFor": [
-                "Large pores",
-                "Acne scars",
-                "Skin texture"
-              ]
-            },
-            "facetite": {
-              "name": "FaceTite",
-              "nameKo": "FaceTite",
-              "description": "A thin cannula delivers RF energy directly to the fat layer to melt fat and tighten skin. Provides mini facelift-level results.",
-              "benefits": [
-                "Fat reduction",
-                "Skin tightening",
-                "Jawline improvement",
-                "Double chin reduction"
-              ],
-              "duration": "60-90 min",
-              "downtime": "5-7 days",
-              "idealFor": [
-                "Double chin",
-                "Cheek fat",
-                "Jawline sagging"
-              ]
-            }
-          },
-          "recommendations": {
-            "forma": {
-              "title": "Forma Recommended",
-              "desc": "For maintaining skin elasticity, preventive care, and those who want treatment without downtime"
-            },
-            "morpheus": {
-              "title": "Morpheus8 Recommended",
-              "desc": "For those wanting pore, scar, and texture improvement who can accommodate short-term downtime"
-            },
-            "facetite": {
-              "title": "FaceTite Recommended",
-              "desc": "For those concerned about double chin, cheek fat, and sagging who want definitive results"
-            }
-          },
-          "extendedFaqs": [
-            {
-              "q": "Which InMode treatment is most popular?",
-              "a": "Morpheus8 is the most popular. By combining microneedles with RF, it can simultaneously improve pores, scars, skin texture, and elasticity, making it effective for those with various skin concerns."
-            },
-            {
-              "q": "Can I combine multiple InMode treatments?",
-              "a": "Yes, you can. For example, combining Morpheus8 for skin texture improvement with FaceTite for fat tightening is popular. The optimal combination is determined through consultation."
-            },
-            {
-              "q": "How is InMode different from other lifting treatments?",
-              "a": "InMode is an all-in-one platform that allows various treatments within a single system. Morpheus8 offers microneedle RF for skin texture and elasticity, while FaceTite enables fat tightening, allowing personalized treatments."
-            }
-          ],
-          "hero": {
-            "badge": "All-in-One Lifting System",
-            "title": "InMode",
-            "description": "Fat reduction and lifting simultaneously with RF energy.<br />If facial fat is your concern, InMode is the answer.",
-            "stats": {
-              "rf": {
-                "value": "RF",
-                "label": "Radiofrequency Energy"
-              },
-              "fda": {
-                "value": "FDA",
-                "label": "Approved Device"
-              },
-              "custom": {
-                "value": "Custom",
-                "label": "Personalized Treatment"
-              }
-            },
-            "floatingBadges": {
-              "morpheus": {
-                "title": "Morpheus8",
-                "subtitle": "Microneedle RF"
-              },
-              "custom": {
-                "title": "Custom Treatment",
-                "subtitle": "Concern-Based Optimization"
-              }
-            }
-          },
-          "about": {
-            "sectionLabel": "About InMode",
-            "title": "What is InMode?",
-            "description": "InMode is a multi-lifting device that uses <strong>radiofrequency (RF) energy</strong> to stimulate both the fat layer and dermal layer simultaneously. It's effective for those with excess facial fat or combined concerns of loose skin."
-          },
-          "compare": {
-            "sectionLabel": "Comparison",
-            "title": "Handpiece Comparison",
-            "subtitle": "Compare the characteristics of each treatment to find the right one for you"
-          },
-          "livDifference": {
-            "sectionLabel": "LIV Difference",
-            "title": "InMode at LIV",
-            "cards": {
-              "genuine": {
-                "title": "Certified Clinic",
-                "desc": "As an officially certified InMode Korea clinic, we only use genuine equipment and tips. We operate the latest version of equipment."
-              },
-              "combination": {
-                "title": "Customized Combination Treatment",
-                "desc": "Rather than using just one handpiece, we combine multiple treatments based on skin condition for optimal results."
-              },
-              "specialist": {
-                "title": "Specialist Treatment",
-                "desc": "Board-certified dermatologists/plastic surgeons directly perform consultations and treatments. Our extensive experience ensures optimal results."
-              }
-            }
-          },
-          "processSection": {
-            "sectionLabel": "Treatment Process"
-          },
-          "treatmentInfo": {
-            "sectionLabel": "Treatment Info",
-            "title": "Treatment Information",
-            "labels": {
-              "duration": "Treatment Time",
-              "anesthesia": "Anesthesia",
-              "recovery": "Recovery Period",
-              "results": "Results"
-            }
-          },
-          "faq": {
-            "sectionLabel": "FAQ",
-            "title": "Frequently Asked Questions",
-            "moreInfo": "Want more medical information?",
-            "viewMedicalQA": "View Medical Q&A"
-          },
-          "cta": {
-            "sectionLabel": "Ready for Transformation?",
-            "title": "Book InMode Consultation",
-            "description": "Through 1:1 personalized consultation with our medical team,<br />find the optimal treatment for your concerns.",
-            "bookConsultation": "Book Free Consultation",
-            "businessHours": "Weekdays 10:00-19:00",
-            "location": "3 min walk from Sinsa Station Exit 4"
-          },
-          "related": {
-            "sectionLabel": "Related Treatments",
-            "title": "Related Treatments"
-          }
-        },
-        "ui": {
-          "skinElasticity": "Skin Elasticity",
-          "microneedleRf": "Microneedle RF",
-          "fatTightening": "Fat Tightening"
         }
       },
       "shurink": {
@@ -4784,7 +4527,7 @@
         "category": "lifting",
         "question": "How painful are lifting treatments?",
         "shortAnswer": "Treatment is performed after numbing cream, and most people can tolerate it.",
-        "answer": "The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Both Ultherapy Prime and Thermage FLX are performed after applying numbing cream for about 30 minutes. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.",
+        "answer": "The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Ultherapy Prime is performed after applying numbing cream for about 30 minutes, and for Thermage FLX the anesthesia is chosen at the consultation from no anesthesia, numbing cream, local anesthesia or sedation. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -4801,7 +4544,7 @@
         "category": "lifting",
         "question": "How often should I get lifting treatments?",
         "shortAnswer": "Ultherapy is recommended once every 1-2 years, Thermage once every 6 months to 1 year.",
-        "answer": "Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink or InMode can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.",
+        "answer": "Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -5321,13 +5064,6 @@
         "duration": "40-60 min",
         "recovery": "No downtime"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameEn": "InMode",
-        "description": "Multi-functional RF technology for simultaneous fat reduction and skin tightening effects.",
-        "duration": "30-90 min",
-        "recovery": "0-5 days"
-      },
       "onda": {
         "name": "ONDA",
         "nameEn": "ONDA",
@@ -5423,14 +5159,6 @@
           "recovery": "None",
           "results": "3-6 months",
           "price": "Affordable"
-        },
-        "inmode": {
-          "technology": "RF",
-          "duration": "30-90 min",
-          "anesthesia": "No Anesthesia",
-          "recovery": "0-5 days",
-          "results": "6 months - 1 year",
-          "price": "Varies"
         },
         "thread": {
           "technology": "PDO Thread",
@@ -5813,17 +5541,6 @@
         ],
         "certification": "KFDA Approved"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameKo": "InMode",
-        "description": "Fat reduction + elasticity improvement in one session",
-        "features": [
-          "Simultaneous fat reduction and lifting",
-          "Targeted treatment",
-          "Minimal downtime"
-        ],
-        "certification": "FDA, KFDA Approved"
-      },
       "onda": {
         "name": "ONDA",
         "nameKo": "ONDA",
@@ -6058,11 +5775,8 @@
       },
       "thermage": {
         "name": "Thermage Laser",
-        "shot300": "300 shots",
         "shot600": "600 shots",
-        "shot900": "900 shots",
-        "eyeTip225": "Eye Tip 225 shots",
-        "eyeTip450": "Eye Tip 450 shots"
+        "eyeTip225": "Eye Tip 225 shots"
       },
       "shurink": {
         "shurinkLaser": "Shurink Laser",
@@ -6078,12 +5792,6 @@
         "alphaTip": "Density Laser (Alpha-Tip)",
         "shot300": "300 shots",
         "shot600": "600 shots"
-      },
-      "inmode": {
-        "name": "InMode Laser",
-        "fxForma": "FX / FORMA Mode",
-        "fx": "FX Mode",
-        "forma": "FORMA Mode"
       },
       "thread": {
         "name": "Thread Lifting",
@@ -6730,19 +6438,6 @@
         "skin tightening Seoul",
         "non-surgical lifting Korea",
         "Gangnam lifting",
-        "Sinsa Station clinic"
-      ]
-    },
-    "inmode": {
-      "title": "InMode RF Lifting in Seoul | Contouring | LIV Clinic",
-      "description": "InMode RF-based combination lifting at LIV Clinic in Gangnam, Seoul — firming, contouring and fat improvement tailored to your face shape.",
-      "keywords": [
-        "InMode Korea",
-        "InMode lifting Seoul",
-        "RF lifting Korea",
-        "face contouring Seoul",
-        "jawline lifting Korea",
-        "Gangnam InMode",
         "Sinsa Station clinic"
       ]
     },

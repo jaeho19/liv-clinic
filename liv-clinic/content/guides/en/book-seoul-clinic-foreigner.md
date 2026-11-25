@@ -10,7 +10,7 @@ keywords:
   - book clinic in korea without agency
 category: booking
 status: published
-updated: 2026-09-06
+updated: 2026-11-25
 reviewer: clinic
 ---
 
@@ -59,7 +59,7 @@ The photos matter more than the wording. Clear pictures of the area you want tre
 
 - **Arrive.** Sinsa Station, Line 3, Exit 4 — the clinic is a one-minute walk, on the 4th floor of the Jaeun Building.
 - **In-person consultation.** The surgeon confirms the plan from your remote consultation. Consultations are available in English, and if you prefer an interpreter, one is arranged free of charge — just say so when you book.
-- **Preparation.** Depending on the treatment, a topical anesthetic cream may go on first: for [Ultherapy Prime](/lifting/ulthera) it stays on for about 30 minutes, while [Thermage FLX](/lifting/thermage) is done without anesthesia (vibration reduces discomfort). [Botox](/antiaging/botox) needs no anesthesia, or cream on request.
+- **Preparation.** Depending on the treatment, a topical anesthetic cream may go on first: for [Ultherapy Prime](/lifting/ulthera) it stays on for about 30 minutes, while for [Thermage FLX](/lifting/thermage) the method (no anesthesia, numbing cream, local anesthesia or sedation) is chosen at the consultation. [Botox](/antiaging/botox) needs no anesthesia, or cream on request.
 - **Treatment.** Most non-surgical treatments take 30 to 90 minutes in total — Ultherapy Prime 60–90 minutes, Thermage FLX 45–60, botox 10–20 — with no hospitalization.
 - **Before you leave.** You receive a written aftercare guide in English.
 

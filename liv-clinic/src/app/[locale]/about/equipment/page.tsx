@@ -14,7 +14,7 @@ const PROCESSED_IMAGE_PATH = '/images/equipment/processed';
 const EQUIPMENT_CATEGORIES = [
   {
     id: 'lifting',
-    equipmentIds: ['ultherapy', 'thermage', 'density', 'shurink', 'inmode', 'onda'],
+    equipmentIds: ['ultherapy', 'thermage', 'density', 'shurink', 'onda'],
   },
   {
     id: 'laser',
@@ -32,7 +32,6 @@ const EQUIPMENT_IMAGES: Record<string, string> = {
   thermage: `${PROCESSED_IMAGE_PATH}/equipment_thermage.png`,
   density: `${PROCESSED_IMAGE_PATH}/equipment_density.png`,
   shurink: `${PROCESSED_IMAGE_PATH}/equipment_shurink.png`,
-  inmode: `${PROCESSED_IMAGE_PATH}/equipment_inmode.png`,
   onda: `${PROCESSED_IMAGE_PATH}/equipment_onda.png`,
   potenza: `${PROCESSED_IMAGE_PATH}/equipment_potenza.png`,
   clarity: `${PROCESSED_IMAGE_PATH}/equipment_clarity.png`,

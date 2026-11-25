@@ -1053,22 +1053,15 @@ export default function ThermageDetail() {
           <AnimateOnScroll>
             <div className="bg-white/10 rounded-2xl p-6 backdrop-blur">
               <h3 className="text-h4 mb-4 text-center">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.title')}</h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+              {/* 병원 팁은 600샷(얼굴 전체)·225샷(눈가) 두 가지뿐 — 2026-11-25 병원 정정 */}
+              <div className="grid grid-cols-2 gap-4 text-center max-w-md mx-auto">
                 <div className="p-4 bg-white/5 rounded-xl">
                   <p className="text-h3 font-serif">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.fullFace.shots')}</p>
                   <p className="text-small opacity-70">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.fullFace.label')}</p>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl">
-                  <p className="text-h3 font-serif">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.lowerFace.shots')}</p>
-                  <p className="text-small opacity-70">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.lowerFace.label')}</p>
-                </div>
-                <div className="p-4 bg-white/5 rounded-xl">
                   <p className="text-h3 font-serif">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.eye.shots')}</p>
                   <p className="text-small opacity-70">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.eye.label')}</p>
-                </div>
-                <div className="p-4 bg-white/5 rounded-xl">
-                  <p className="text-h3 font-serif">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.fullFaceNeck.shots')}</p>
-                  <p className="text-small opacity-70">{t('lifting.thermage.detail.treatmentInfo.recommendedShots.fullFaceNeck.label')}</p>
                 </div>
               </div>
             </div>

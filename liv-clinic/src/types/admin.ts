@@ -31,7 +31,6 @@ export const RELATED_TREATMENT_OPTIONS = [
   { value: '/lifting/ulthera', label: '울쎄라' },
   { value: '/lifting/thermage', label: '써마지 FLX' },
   { value: '/lifting/density', label: '덴서티' },
-  { value: '/lifting/inmode', label: '인모드' },
   { value: '/lifting/shurink', label: '슈링크' },
   { value: '/lifting/thread', label: '실리프팅' },
   { value: '/lifting/aptos', label: '압토스' },

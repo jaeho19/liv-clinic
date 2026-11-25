@@ -343,8 +343,7 @@
       },
       "thermage": {
         "flx600": { "name": "Thermage FLX", "basis": "600 shots", "price": "KRW 2,400,000~" },
-        "eye225": { "name": "Thermage mắt", "basis": "225 shots", "price": "KRW 1,000,000~" },
-        "eye450": { "name": "Thermage mắt", "basis": "450 shots", "price": "KRW 1,600,000~" }
+        "eye225": { "name": "Thermage mắt", "basis": "225 shots", "price": "KRW 1,000,000~" }
       },
       "ulthera": {
         "upperFace": { "name": "Vùng mặt trên", "basis": "200-300 shots", "price": "KRW 780,000~" },
@@ -372,7 +371,6 @@
     "ulthera": "Ultherapy Prime",
     "thermage": "Nhiệt FLX",
     "density": "Density",
-    "inmode": "InMode",
     "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "Nâng sợi chỉ",
@@ -475,10 +473,6 @@
         "shurink": {
           "subTitle": "Shurink",
           "desc": "HIFU chính xác cho đường nét V-line"
-        },
-        "inmode": {
-          "subTitle": "InMode",
-          "desc": "Giảm mỡ và nâng cơ bằng năng lượng RF"
         },
         "potenza": {
           "subTitle": "Potenza",
@@ -1258,7 +1252,7 @@
               },
               {
                 "feature": "Các loại tiền boa",
-                "flx": "900/600/400/225",
+                "flx": "600 / 225 (mắt)",
                 "cpt": "900/600/400",
                 "nxt": "Giới hạn"
               },
@@ -1328,7 +1322,7 @@
               },
               "comfortPulse": {
                 "title": "Xung thoải mái",
-                "desc": "Công nghệ rung được cấp bằng sáng chế <strong>giảm thiểu cơn đau</strong> trong quá trình điều trị. Có thể điều trị thoải mái mà không cần gây mê."
+                "desc": "Công nghệ rung được cấp bằng sáng chế <strong>giảm thiểu cơn đau</strong> trong quá trình điều trị. Phương pháp gây tê được chọn khi tư vấn: không gây tê, kem gây tê, gây tê tại chỗ hoặc gây mê ngủ."
               },
               "collagenRemodeling": {
                 "title": "Tái tạo collagen",
@@ -1389,20 +1383,12 @@
             "recommendedShots": {
               "title": "Số lần chụp được đề xuất theo khu vực",
               "fullFace": {
-                "shots": "300-400",
+                "shots": "600",
                 "label": "Toàn mặt"
-              },
-              "lowerFace": {
-                "shots": "200-300",
-                "label": "Mặt dưới"
               },
               "eye": {
                 "shots": "225",
                 "label": "Vùng mắt"
-              },
-              "fullFaceNeck": {
-                "shots": "500-900",
-                "label": "Toàn mặt + Cổ"
               }
             }
           },
@@ -1416,7 +1402,7 @@
               },
               {
                 "q": "Điều trị Thermage có đau không?",
-                "a": "FLX giảm thiểu sự khó chịu trong quá trình điều trị bằng Công nghệ Comfort Pulse. Việc điều trị có thể được thực hiện mà không cần gây mê và hầu hết bệnh nhân chỉ cảm thấy mức độ nóng có thể chịu được."
+                "a": "FLX giảm thiểu sự khó chịu trong quá trình điều trị bằng Công nghệ Comfort Pulse. Hầu hết bệnh nhân chỉ cảm thấy mức độ nóng có thể chịu được. Phương pháp gây tê được chọn khi tư vấn, tùy theo mong muốn của quý khách: không gây tê, kem gây tê, gây tê tại chỗ hoặc gây mê ngủ."
               },
               {
                 "q": "Làm cách nào tôi có thể xác minh tính xác thực của Thermage?",
@@ -1929,249 +1915,6 @@
             "sectionLabel": "Phương pháp điều trị liên quan",
             "title": "Phương pháp điều trị liên quan"
           }
-        }
-      },
-      "inmode": {
-        "name": "InMode",
-        "fullName": "InMode",
-        "tagline": "Nâng cơ kết hợp dựa trên RF",
-        "description": "Một hệ thống nâng cơ toàn diện sử dụng tần số vô tuyến để cải thiện đồng thời độ đàn hồi của da và đường nét cơ thể.",
-        "detail": {
-          "illustrations": {
-            "forma": "Độ đàn hồi của da",
-            "morpheus": "Microneedle RF",
-            "facetite": "Săn chắc mỡ"
-          },
-          "treatmentCard": {
-            "benefits": "Lợi ích chính",
-            "duration": "Thời gian điều trị",
-            "downtime": "Thời gian ngừng hoạt động",
-            "idealFor": "Lý tưởng cho"
-          },
-          "comparison": {
-            "header": "So sánh",
-            "rows": {
-              "method": {
-                "feature": "Phương pháp",
-                "forma": "Tần số vô tuyến RF",
-                "morpheus": "Microneedle + RF",
-                "facetite": "Ống thông + RF"
-              },
-              "invasiveness": {
-                "feature": "sự xâm lấn",
-                "forma": "Không xâm lấn",
-                "morpheus": "xâm lấn tối thiểu",
-                "facetite": "xâm lấn tối thiểu"
-              },
-              "anesthesia": {
-                "feature": "Gây tê",
-                "forma": "Không bắt buộc",
-                "morpheus": "Kem gây tê",
-                "facetite": "Gây tê cục bộ"
-              },
-              "downtime": {
-                "feature": "Thời gian ngừng hoạt động",
-                "forma": "Không có",
-                "morpheus": "3-5 ngày",
-                "facetite": "5-7 ngày"
-              },
-              "onset": {
-                "feature": "Hiệu ứng khởi phát",
-                "forma": "dần dần",
-                "morpheus": "dần dần",
-                "facetite": "ngay lập tức"
-              },
-              "sessions": {
-                "feature": "Phiên",
-                "forma": "4-6 buổi",
-                "morpheus": "2-3 buổi",
-                "facetite": "1 buổi"
-              },
-              "target": {
-                "feature": "Mục tiêu chính",
-                "forma": "độ đàn hồi",
-                "morpheus": "Lỗ chân lông/Sẹo",
-                "facetite": "Béo/Chệch"
-              }
-            }
-          },
-          "treatmentOptions": {
-            "forma": {
-              "name": "Forma",
-              "nameKo": "Forma",
-              "description": "Tần số vô tuyến RF không xâm lấn gây ra sự co lại và tái tạo collagen để cải thiện độ đàn hồi của da. Hầu như không đau và không có thời gian nghỉ dưỡng, cho phép bạn tiếp tục các hoạt động hàng ngày ngay lập tức.",
-              "benefits": [
-                "Căng da tức thì",
-                "Tái tạo collagen",
-                "Cải thiện nếp nhăn",
-                "Điều trị không đau"
-              ],
-              "duration": "20-30 phút",
-              "downtime": "Không có",
-              "idealFor": [
-                "Mất độ đàn hồi",
-                "nếp nhăn",
-                "Chăm sóc phòng ngừa"
-              ]
-            },
-            "morpheus": {
-              "name": "Morpheus8",
-              "nameKo": "Morpheus8",
-              "description": "24 kim siêu nhỏ mạ vàng cung cấp năng lượng RF đến lớp hạ bì để tái tạo da. Đồng thời cải thiện lỗ chân lông, sẹo, kết cấu da và độ đàn hồi.",
-              "benefits": [
-                "Thu nhỏ lỗ chân lông",
-                "Cải thiện sẹo mụn",
-                "Tinh chỉnh kết cấu da",
-                "Tái tạo da"
-              ],
-              "duration": "30-45 phút",
-              "downtime": "3-5 ngày",
-              "idealFor": [
-                "Lỗ chân lông to",
-                "Sẹo mụn",
-                "Kết cấu da"
-              ]
-            },
-            "facetite": {
-              "name": "FaceTite",
-              "nameKo": "FaceTite",
-              "description": "Một ống thông mỏng cung cấp năng lượng RF trực tiếp đến lớp mỡ để làm tan mỡ và làm săn chắc da. Cung cấp kết quả cấp độ căng da mặt nhỏ.",
-              "benefits": [
-                "Giảm béo",
-                "Làm săn chắc da",
-                "cải thiện đường viền hàm",
-                "Giảm cằm đôi"
-              ],
-              "duration": "60-90 phút",
-              "downtime": "5-7 ngày",
-              "idealFor": [
-                "Cằm đôi",
-                "Má béo",
-                "Xương hàm chảy xệ"
-              ]
-            }
-          },
-          "recommendations": {
-            "forma": {
-              "title": "Hình thức được đề xuất",
-              "desc": "Để duy trì độ đàn hồi của da, chăm sóc phòng ngừa và những người muốn điều trị mà không cần thời gian nghỉ dưỡng"
-            },
-            "morpheus": {
-              "title": "Morpheus8 được đề xuất",
-              "desc": "Dành cho những người muốn cải thiện lỗ chân lông, sẹo và kết cấu, có thể đáp ứng thời gian nghỉ dưỡng ngắn hạn"
-            },
-            "facetite": {
-              "title": "FaceTite được đề xuất",
-              "desc": "Dành cho những người quan tâm đến cằm đôi, mỡ má và chảy xệ muốn có kết quả rõ ràng"
-            }
-          },
-          "extendedFaqs": [
-            {
-              "q": "Phương pháp điều trị InMode nào phổ biến nhất?",
-              "a": "Morpheus8 là phổ biến nhất. Bằng cách kết hợp microneedles với RF, nó có thể đồng thời cải thiện lỗ chân lông, vết sẹo, kết cấu da và độ đàn hồi, mang lại hiệu quả cho những người có nhiều vấn đề về da."
-            },
-            {
-              "q": "Tôi có thể kết hợp nhiều phương pháp điều trị InMode không?",
-              "a": "Vâng, bạn có thể. Ví dụ, kết hợp Morpheus8 để cải thiện kết cấu da với FaceTite để làm săn chắc mỡ là phổ biến. Sự kết hợp tối ưu được xác định thông qua tư vấn."
-            },
-            {
-              "q": "InMode khác với các phương pháp điều trị nâng cơ khác như thế nào?",
-              "a": "InMode là nền tảng tất cả trong một cho phép thực hiện nhiều phương pháp điều trị khác nhau trong một hệ thống duy nhất. Morpheus8 cung cấp RF microneedle để cải thiện kết cấu và độ đàn hồi của da, trong khi FaceTite cho phép làm săn chắc mỡ, cho phép điều trị theo cá nhân hóa."
-            }
-          ],
-          "hero": {
-            "badge": "Hệ thống nâng tất cả trong một",
-            "title": "InMode",
-            "description": "Giảm mỡ và nâng cơ đồng thời bằng năng lượng RF.<br />Nếu vấn đề mỡ mặt là mối lo ngại của bạn thì InMode chính là câu trả lời.",
-            "stats": {
-              "rf": {
-                "value": "RF",
-                "label": "Năng lượng tần số vô tuyến"
-              },
-              "fda": {
-                "value": "FDA",
-                "label": "Thiết bị được phê duyệt"
-              },
-              "custom": {
-                "value": "Phong tục",
-                "label": "Điều trị cá nhân"
-              }
-            },
-            "floatingBadges": {
-              "morpheus": {
-                "title": "Morpheus8",
-                "subtitle": "Microneedle RF"
-              },
-              "custom": {
-                "title": "Điều trị tùy chỉnh",
-                "subtitle": "Tối ưu hóa dựa trên mối quan tâm"
-              }
-            }
-          },
-          "about": {
-            "sectionLabel": "Giới thiệu về InMode",
-            "title": "InMode là gì?",
-            "description": "InMode là một thiết bị nâng cơ đa năng sử dụng <strong>năng lượng tần số vô tuyến (RF)</strong> để kích thích đồng thời cả lớp mỡ và lớp da. Nó có hiệu quả đối với những người có mỡ mặt dư thừa hoặc có mối lo ngại về da chảy xệ."
-          },
-          "compare": {
-            "sectionLabel": "So sánh",
-            "title": "So sánh tay khoan",
-            "subtitle": "So sánh đặc điểm của từng phương pháp điều trị để tìm ra phương pháp phù hợp với bạn"
-          },
-          "livDifference": {
-            "sectionLabel": "LIV Sự khác biệt",
-            "title": "InMode tại LIV",
-            "cards": {
-              "genuine": {
-                "title": "Phòng khám được chứng nhận",
-                "desc": "Là phòng khám InMode Korea được chứng nhận chính thức, chúng tôi chỉ sử dụng thiết bị và đầu tip chính hãng. Chúng tôi vận hành phiên bản mới nhất của thiết bị."
-              },
-              "combination": {
-                "title": "Điều trị kết hợp tùy chỉnh",
-                "desc": "Thay vì chỉ sử dụng một tay cầm, chúng tôi kết hợp nhiều phương pháp điều trị dựa trên tình trạng da để có kết quả tối ưu."
-              },
-              "specialist": {
-                "title": "Điều trị chuyên khoa",
-                "desc": "Các bác sĩ da liễu/bác sĩ phẫu thuật thẩm mỹ được hội đồng chứng nhận trực tiếp thực hiện tư vấn và điều trị. Kinh nghiệm sâu rộng của chúng tôi đảm bảo kết quả tối ưu."
-              }
-            }
-          },
-          "processSection": {
-            "sectionLabel": "Quy trình xử lý"
-          },
-          "treatmentInfo": {
-            "sectionLabel": "Thông tin điều trị",
-            "title": "Thông tin điều trị",
-            "labels": {
-              "duration": "Thời gian điều trị",
-              "anesthesia": "Gây tê",
-              "recovery": "Thời gian phục hồi",
-              "results": "Kết quả"
-            }
-          },
-          "faq": {
-            "sectionLabel": "Câu hỏi thường gặp",
-            "title": "Câu hỏi thường gặp",
-            "moreInfo": "Muốn biết thêm thông tin y tế?",
-            "viewMedicalQA": "Xem Hỏi đáp Y tế"
-          },
-          "cta": {
-            "sectionLabel": "Sẵn sàng cho sự chuyển đổi?",
-            "title": "Đặt lịch tư vấn InMode",
-            "description": "Thông qua tư vấn cá nhân 1:1 với đội ngũ y tế của chúng tôi,<br />tìm ra phương pháp điều trị tối ưu cho những lo lắng của bạn.",
-            "bookConsultation": "Đặt chỗ tư vấn miễn phí",
-            "businessHours": "Các ngày trong tuần 10:00-19:00",
-            "location": "3 phút đi bộ từ Ga Sinsa Lối ra 4"
-          },
-          "related": {
-            "sectionLabel": "Phương pháp điều trị liên quan",
-            "title": "Phương pháp điều trị liên quan"
-          }
-        },
-        "ui": {
-          "skinElasticity": "Độ đàn hồi của da",
-          "microneedleRf": "Microneedle RF",
-          "fatTightening": "Săn chắc mỡ"
         }
       },
       "shurink": {
@@ -4784,7 +4527,7 @@
         "category": "nâng",
         "question": "Các phương pháp điều trị nâng cơ đau đớn như thế nào?",
         "shortAnswer": "Việc điều trị được thực hiện sau khi bôi kem gây tê và hầu hết mọi người đều có thể chịu đựng được.",
-        "answer": "Mức độ đau của các phương pháp điều trị nâng cơ khác nhau tùy thuộc vào loại điều trị và khả năng chịu đựng của từng cá nhân. Cả Ultherapy Prime và Thermage FLX đều được thực hiện sau khi thoa kem gây tê khoảng 30 phút. Đặc biệt Thermage FLX sử dụng công nghệ rung (Vibrating Tip) giúp giảm đáng kể sự khó chịu. Hầu hết bệnh nhân có thể được điều trị một cách thoải mái. Nếu bạn nhạy cảm với cơn đau, chúng tôi có sẵn biện pháp kiểm soát cơn đau bổ sung - vui lòng cho chúng tôi biết trong quá trình tư vấn.",
+        "answer": "Mức độ đau của các phương pháp điều trị nâng cơ khác nhau tùy thuộc vào loại điều trị và khả năng chịu đựng của từng cá nhân. Ultherapy Prime được thực hiện sau khi thoa kem gây tê khoảng 30 phút, còn với Thermage FLX, phương pháp gây tê được chọn khi tư vấn: không gây tê, kem gây tê, gây tê tại chỗ hoặc gây mê ngủ. Đặc biệt Thermage FLX sử dụng công nghệ rung (Vibrating Tip) giúp giảm đáng kể sự khó chịu. Hầu hết bệnh nhân có thể được điều trị một cách thoải mái. Nếu bạn nhạy cảm với cơn đau, chúng tôi có sẵn biện pháp kiểm soát cơn đau bổ sung - vui lòng cho chúng tôi biết trong quá trình tư vấn.",
         "relatedTreatments": [
           "máy siêu âm",
           "nhiệt độ",
@@ -4801,7 +4544,7 @@
         "category": "nâng",
         "question": "Tôi nên điều trị nâng cơ bao lâu một lần?",
         "shortAnswer": "Ultherapy được khuyên dùng 1-2 năm một lần, Thermage 6 tháng đến 1 năm một lần.",
-        "answer": "Ultherapy Prime được khuyên dùng 1-2 năm một lần và Thermage 6 tháng đến 1 năm một lần. Các phương pháp điều trị duy trì như Shurink hoặc InMode có thể được thực hiện 3-6 tháng một lần. Chu kỳ điều trị có thể khác nhau tùy thuộc vào tình trạng da của bạn và kết quả mong muốn, vì vậy tốt nhất bạn nên xác định tần suất chính xác thông qua tư vấn.",
+        "answer": "Ultherapy Prime được khuyên dùng 1-2 năm một lần và Thermage 6 tháng đến 1 năm một lần. Các phương pháp điều trị duy trì như Shurink có thể được thực hiện 3-6 tháng một lần. Chu kỳ điều trị có thể khác nhau tùy thuộc vào tình trạng da của bạn và kết quả mong muốn, vì vậy tốt nhất bạn nên xác định tần suất chính xác thông qua tư vấn.",
         "relatedTreatments": [
           "máy siêu âm",
           "nhiệt độ",
@@ -5321,13 +5064,6 @@
         "duration": "40-60 phút",
         "recovery": "Không có thời gian chết"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameEn": "InMode",
-        "description": "Công nghệ RF đa chức năng giúp giảm mỡ đồng thời và làm săn chắc da.",
-        "duration": "30-90 phút",
-        "recovery": "0-5 ngày"
-      },
       "onda": {
         "name": "ONDA",
         "nameEn": "ONDA",
@@ -5423,14 +5159,6 @@
           "recovery": "Không có",
           "results": "3-6 tháng",
           "price": "Có thể chi trả"
-        },
-        "inmode": {
-          "technology": "RF",
-          "duration": "30-90 phút",
-          "anesthesia": "Không gây mê",
-          "recovery": "0-5 ngày",
-          "results": "6 tháng - 1 năm",
-          "price": "Khác nhau"
         },
         "thread": {
           "technology": "Chủ đề PDO",
@@ -5813,17 +5541,6 @@
         ],
         "certification": "KFDA phê duyệt"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameKo": "InMode",
-        "description": "Giảm mỡ + cải thiện độ đàn hồi trong một buổi",
-        "features": [
-          "Giảm mỡ và nâng cơ đồng thời",
-          "Điều trị nhắm mục tiêu",
-          "Thời gian ngừng hoạt động tối thiểu"
-        ],
-        "certification": "FDA, KFDA được phê duyệt"
-      },
       "onda": {
         "name": "ONDA",
         "nameKo": "ONDA",
@@ -6058,11 +5775,8 @@
       },
       "thermage": {
         "name": "Laser Thermage",
-        "shot300": "300 shots",
         "shot600": "600 shots",
-        "shot900": "900 shots",
-        "eyeTip225": "Eye Tip 225 shots",
-        "eyeTip450": "Eye Tip 450 shots"
+        "eyeTip225": "Eye Tip 225 shots"
       },
       "shurink": {
         "shurinkLaser": "Laser Shurink",
@@ -6078,12 +5792,6 @@
         "alphaTip": "Laser Density (Alpha-Tip)",
         "shot300": "300 shots",
         "shot600": "600 shots"
-      },
-      "inmode": {
-        "name": "Laser InMode",
-        "fxForma": "Chế độ FX / FORMA",
-        "fx": "Chế độ FX",
-        "forma": "Chế độ FORMA"
       },
       "thread": {
         "name": "Nâng chỉ",
@@ -6730,19 +6438,6 @@
         "săn chắc da Seoul",
         "nâng cơ không phẫu thuật Hàn Quốc",
         "nâng cơ Gangnam",
-        "phòng khám ga Sinsa"
-      ]
-    },
-    "inmode": {
-      "title": "Nâng cơ RF InMode Seoul | Tạo đường nét | Phẫu thuật Thẩm mỹ LIV",
-      "description": "Nâng cơ kết hợp trên nền tảng RF InMode tại Phẫu thuật Thẩm mỹ LIV, Gangnam, Seoul — săn chắc, tạo đường nét và cải thiện mỡ theo dáng mặt của bạn.",
-      "keywords": [
-        "InMode Hàn Quốc",
-        "nâng cơ InMode Seoul",
-        "nâng cơ RF Hàn Quốc",
-        "tạo đường nét khuôn mặt Seoul",
-        "nâng cơ đường viền hàm Hàn Quốc",
-        "InMode Gangnam",
         "phòng khám ga Sinsa"
       ]
     },

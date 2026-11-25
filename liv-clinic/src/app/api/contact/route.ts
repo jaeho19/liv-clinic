@@ -10,7 +10,6 @@ const treatmentLabels: Record<string, string> = {
   'lifting-ulthera': '울쎄라피 프라임',
   'lifting-thermage': '써마지 FLX',
   'lifting-density': '덴서티',
-  'lifting-inmode': '인모드',
   'lifting-shurink': '슈링크',
   'lifting-thread': '실리프팅',
   'antiaging-botox': '보톡스',

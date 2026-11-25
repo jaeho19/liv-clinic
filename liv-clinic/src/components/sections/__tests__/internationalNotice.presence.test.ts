@@ -5,13 +5,12 @@ import path from 'node:path';
 const SECTIONS = path.resolve(__dirname, '..');
 const APP = path.resolve(__dirname, '..', '..', '..', 'app', '[locale]');
 
-// 시술 상세 16종 — 컴포넌트 파일 → InternationalNotice treatmentId (문신 제거는 2026-10-20 폐지)
+// 시술 상세 15종 — 컴포넌트 파일 → InternationalNotice treatmentId (문신 제거 2026-10-20 · 인모드 2026-11-25 폐지)
 const FILES: Record<string, string> = {
   [path.join(SECTIONS, 'UltheraDetail.tsx')]: 'ulthera',
   [path.join(SECTIONS, 'ThermageDetail.tsx')]: 'thermage',
   [path.join(SECTIONS, 'OndaDetail.tsx')]: 'onda',
   [path.join(SECTIONS, 'DensityDetail.tsx')]: 'density',
-  [path.join(SECTIONS, 'InModeDetail.tsx')]: 'inmode',
   [path.join(SECTIONS, 'ShurinkDetail.tsx')]: 'shurink',
   [path.join(SECTIONS, 'ThreadDetail.tsx')]: 'thread',
   [path.join(SECTIONS, 'AptosDetail.tsx')]: 'aptos',
@@ -27,8 +26,8 @@ const FILES: Record<string, string> = {
 };
 
 describe('InternationalNotice is mounted on every treatment detail (P1-2)', () => {
-  it('covers 16 treatment pages', () => {
-    expect(Object.keys(FILES)).toHaveLength(16);
+  it('covers 15 treatment pages', () => {
+    expect(Object.keys(FILES)).toHaveLength(15);
   });
 
   for (const [file, id] of Object.entries(FILES)) {

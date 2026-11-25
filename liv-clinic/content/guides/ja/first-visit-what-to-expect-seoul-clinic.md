@@ -10,7 +10,7 @@ keywords:
   - 新沙 美容クリニック 初めて
 category: booking
 status: published
-updated: 2026-11-10
+updated: 2026-11-25
 reviewer: clinic
 treatment: /international
 ---
@@ -37,7 +37,7 @@ LIVの施術ページに記載されている所要時間と麻酔方法です�
 | 施術 | 施術の前 | 施術時間 | 再来院 |
 |---|---|---|---|
 | [ウルセラ（ウルセラプライム）](/lifting/ulthera) | 麻酔クリーム 約30分 | 60〜90分 | 不要 |
-| [サーマジFLX](/lifting/thermage) | 無麻酔（振動技術で痛み軽減） | 45〜60分 | 不要 |
+| [サーマジFLX](/lifting/thermage) | 無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から選択（カウンセリングで決定） | 45〜60分 | 不要 |
 | [ボトックス](/antiaging/botox) | 無麻酔、またはご希望で麻酔クリーム | 10〜20分 | 不要 |
 | [ヒアルロン酸（フィラー）](/antiaging/filler) | 麻酔クリームまたは神経ブロック麻酔 | 20〜40分 | 不要 |
 | [スキンブースター](/antiaging/skinbooster) | 麻酔クリーム | 30〜45分 | 不要 |

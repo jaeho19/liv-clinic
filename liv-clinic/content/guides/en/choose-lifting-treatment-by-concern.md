@@ -1,6 +1,6 @@
 ---
-title: "Which lifting treatment in Korea? Eight options at a Seoul clinic, sorted by concern"
-description: Ultherapy Prime, Thermage FLX, Density, InMode, ONDA, Shurink, thread lift and APTOS at LIV in Sinsa, Seoul, sorted by concern, downtime, trip length and 2026 starting price.
+title: "Which lifting treatment in Korea? Seven options at a Seoul clinic, sorted by concern"
+description: Ultherapy Prime, Thermage FLX, Density, ONDA, Shurink, thread lift and APTOS at LIV in Sinsa, Seoul, sorted by concern, downtime, trip length and 2026 starting price.
 keywords:
   - which lifting treatment korea
   - lifting treatment for sagging jawline
@@ -10,21 +10,20 @@ keywords:
   - korea lifting treatment price
 category: comparison
 status: published
-updated: 2026-11-10
+updated: 2026-11-25
 reviewer: clinic
 treatment: /lifting
 ---
 
-A Seoul clinic's lifting menu can run to eight names, and most visitors arrive knowing two of them. This guide sorts the eight lifting options at [LIV Plastic Surgery](/international) by the concern each one is described for on the clinic's own pages, so you can see where your question fits before you message anyone. It is a map, not a diagnosis: the doctor decides the plan at the consultation, after seeing your skin. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station, and international patients pay from the same price list as Korean patients.
+A Seoul clinic's lifting menu can run to seven names, and most visitors arrive knowing two of them. This guide sorts the seven lifting options at [LIV Plastic Surgery](/international) by the concern each one is described for on the clinic's own pages, so you can see where your question fits before you message anyone. It is a map, not a diagnosis: the doctor decides the plan at the consultation, after seeing your skin. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station, and international patients pay from the same price list as Korean patients.
 
-## All eight at a glance
+## All seven at a glance
 
 | Treatment | What it is, as the site describes it | Time | Anesthesia | Recovery | From (per session) |
 |---|---|---|---|---|---|
 | [Ultherapy Prime](/lifting/ulthera) | HIFU (focused ultrasound) reaching the SMAS layer | 60–90 min | Anesthetic cream (30 min) | Immediate return to daily life | KRW 780,000~ |
-| [Thermage FLX](/lifting/thermage) | RF (radiofrequency) for the dermal layer | 45–60 min | Usually none; cream on request | Immediate return to daily life | KRW 1,000,000~ |
+| [Thermage FLX](/lifting/thermage) | RF (radiofrequency) for the dermal layer | 45–60 min | No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation) | Immediate return to daily life | KRW 1,000,000~ |
 | [Density](/lifting/density) | Entry-level RF lifting device | 40–60 min | Anesthetic cream (optional) | Immediate return to daily life | KRW 890,000~ |
-| [InMode](/lifting/inmode) | RF, with FX and FORMA modes | 30–60 min | None, or anesthetic cream | Immediate return to daily life | KRW 150,000~ |
 | [ONDA](/lifting/onda) | 2.45 GHz microwave (not RF) | Face 15–30 min / about 10 min per body area | Not required | No downtime | Quoted at consultation |
 | [Shurink](/lifting/shurink) | HIFU for regular care at a reasonable cost | 30–45 min | Anesthetic cream (optional) | Immediate return to daily life | KRW 200,000~ |
 | [Thread lift](/lifting/thread) | Threads placed under local anesthesia | 30–60 min | Local anesthesia | 3–7 days (bruising and swelling possible) | KRW 800,000~ |
@@ -45,11 +44,9 @@ Each line below repeats what the clinic's treatment pages say the treatment is f
 ### Loss of elasticity and fine lines
 
 - **Thermage FLX** is described for loss of elasticity and fine lines, with a natural, gradual change. It treats the full face, eye area, neck and body, and has a dedicated tip for the eye area.
-- **InMode** lists collagen regeneration and improvement of fine lines among its uses.
 
 ### Facial fat together with laxity
 
-- **InMode** is recommended by the clinic when facial fat and sagging skin are a combined concern: fat under the chin, cheek fullness, the face line, a double chin.
 - **ONDA** is described for loss of elasticity together with localized fat, on the face (cheeks, jawline), the double chin and the body (abdomen, flanks, thighs, arms).
 
 ### Longer-lasting change, and volume
@@ -58,16 +55,16 @@ Each line below repeats what the clinic's treatment pages say the treatment is f
 - **Ultherapy Prime** results are described as lasting 1–2 years, varying from person to person.
 - Where lost volume is the main concern, the doctor may also discuss [filler](/antiaging/filler) rather than a lifting device.
 
-### No downtime, or no anesthesia
+### Downtime and anesthesia
 
-- All six energy devices list an immediate return to daily life. **ONDA** needs no anesthesia, **Thermage FLX** is usually done without it, and **InMode** can be done without it.
+- All five energy devices list an immediate return to daily life. **ONDA** needs no anesthesia. For **Thermage FLX**, the clinic offers no anesthesia, numbing cream, local anesthesia or sedation, and the method is chosen at the consultation.
 - **Thread lift** and **APTOS** use local anesthesia, and bruising or swelling is possible for 3–7 days.
 
 ### A first treatment, or a smaller budget
 
 - **Shurink** is positioned for a first lifting treatment, a quick session and lifting at a reasonable cost.
 - **Density** is described as an entry-level RF lifting device at a reasonable cost.
-- **InMode** has the lowest published starting price of the eight. Lower price does not mean it addresses the same concern, so compare the "for" lines above before the price column.
+- **Shurink** also has the lowest published starting price of the seven (KRW 200,000~). Lower price does not mean it addresses the same concern, so compare the "for" lines above before the price column.
 
 ## How soon, how long, how often
 
@@ -76,13 +73,12 @@ Each line below repeats what the clinic's treatment pages say the treatment is f
 | Ultherapy Prime | Gradual improvement over 3–6 months, lasts 1–2 years | Once every 1–2 years |
 | Thermage FLX | Immediate elasticity improvement, collagen regeneration over 3–6 months | Once every 6 months to 1 year |
 | Density | Immediate lifting + collagen regeneration over 3–6 months | Every 3–6 months |
-| InMode | Immediate firmness + gradual collagen regeneration | Every 3–6 months (maintenance) |
 | ONDA | Appears gradually over 4–12 weeks | Set at consultation |
 | Shurink | Results begin after 2–4 weeks, peaking at 3 months | Every 3–6 months |
 | Thread lift | Immediate lifting, lasting 6–12 months depending on the thread | Set at consultation |
 | APTOS | Immediate lifting, lasting up to 24 months | Set at consultation |
 
-Durations vary with skin condition, age and lifestyle, and the cycle is set at the consultation. For the detail on the first, second and sixth rows, see our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink); for Density, ONDA and InMode, see the [three-device comparison](/guides/density-onda-inmode-lifting-seoul).
+Durations vary with skin condition, age and lifestyle, and the cycle is set at the consultation. For the detail on the first, second and fifth rows, see our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink); for Density and ONDA, see the [Density vs ONDA comparison](/guides/density-vs-onda-lifting-seoul).
 
 ## If you are on a short trip
 
@@ -105,15 +101,15 @@ The clinic's own cautions differ by treatment, and they can change which option 
 
 ### Which lifting treatment is right for a sagging jawline?
 
-The jawline is a listed treatment area for Ultherapy Prime, Shurink, Density, ONDA, thread lifts and APTOS, and InMode lists the face line. Which of them fits depends on whether the main issue is sagging skin, facial fat or both, and that is diagnosed by the doctor in person.
+The jawline is a listed treatment area for Ultherapy Prime, Shurink, Density, ONDA, thread lifts and APTOS. Which of them fits depends on whether the main issue is sagging skin, facial fat or both, and that is diagnosed by the doctor in person.
 
 ### Which lifting treatments have no downtime?
 
-Ultherapy Prime, Thermage FLX, Density, InMode, ONDA and Shurink all list an immediate return to daily life. Thread lifts and APTOS list 3–7 days in which bruising and swelling are possible.
+Ultherapy Prime, Thermage FLX, Density, ONDA and Shurink all list an immediate return to daily life. Thread lifts and APTOS list 3–7 days in which bruising and swelling are possible.
 
 ### Can two lifting treatments be combined?
 
-Yes, in several cases. The clinic says combining Ultherapy Prime and Thermage can produce synergistic effects, that InMode with Thermage allows a stronger improvement in elasticity, and that a thread lift can be combined with laser lifting after 1–2 weeks. Whether a combination suits you is decided at the consultation.
+Yes, in several cases. The clinic says combining Ultherapy Prime and Thermage can produce synergistic effects, and that a thread lift can be combined with laser lifting after 1–2 weeks. Whether a combination suits you is decided at the consultation.
 
 ### What is the difference between a regular thread lift and APTOS?
 

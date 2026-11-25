@@ -343,8 +343,7 @@
       },
       "thermage": {
         "flx600": { "name": "ثيرماج FLX", "basis": "600 نبضة", "price": "KRW 2,400,000~" },
-        "eye225": { "name": "ثيرماج للعيون", "basis": "225 نبضة", "price": "KRW 1,000,000~" },
-        "eye450": { "name": "ثيرماج للعيون", "basis": "450 نبضة", "price": "KRW 1,600,000~" }
+        "eye225": { "name": "ثيرماج للعيون", "basis": "225 نبضة", "price": "KRW 1,000,000~" }
       },
       "ulthera": {
         "upperFace": { "name": "الوجه العلوي", "basis": "200-300 نبضة", "price": "KRW 780,000~" },
@@ -372,7 +371,6 @@
     "ulthera": "Ultherapy Prime",
     "thermage": "Thermage FLX",
     "density": "Density",
-    "inmode": "InMode",
     "onda": "ONDA",
     "shurink": "Shurink",
     "thread": "شد بالخيوط",
@@ -475,10 +473,6 @@
         "shurink": {
           "subTitle": "Shurink",
           "desc": "HIFU دقيق لكونتور V"
-        },
-        "inmode": {
-          "subTitle": "InMode",
-          "desc": "تقليل الدهون والشد بطاقة RF"
         },
         "potenza": {
           "subTitle": "Potenza",
@@ -1258,7 +1252,7 @@
               },
               {
                 "feature": "Tip Types",
-                "flx": "900/600/400/225",
+                "flx": "600 / 225 (Eye)",
                 "cpt": "900/600/400",
                 "nxt": "Limited"
               },
@@ -1328,7 +1322,7 @@
               },
               "comfortPulse": {
                 "title": "Comfort Pulse",
-                "desc": "تقنية الاهتزاز المسجلة <strong>تُقلل الألم</strong> أثناء العلاج. علاج مريح ممكن بدون تخدير."
+                "desc": "تقنية الاهتزاز المسجلة <strong>تُقلل الألم</strong> أثناء العلاج. يُختار التخدير أثناء الاستشارة: بدون تخدير، أو كريم مخدر، أو تخدير موضعي، أو تخدير بالتنويم."
               },
               "collagenRemodeling": {
                 "title": "إعادة تشكيل الكولاجين",
@@ -1389,20 +1383,12 @@
             "recommendedShots": {
               "title": "Shots الموصى بها حسب المنطقة",
               "fullFace": {
-                "shots": "300-400",
+                "shots": "600",
                 "label": "الوجه بأكمله"
-              },
-              "lowerFace": {
-                "shots": "200-300",
-                "label": "الوجه السفلي"
               },
               "eye": {
                 "shots": "225",
                 "label": "محيط العين"
-              },
-              "fullFaceNeck": {
-                "shots": "500-900",
-                "label": "الوجه بأكمله + الرقبة"
               }
             }
           },
@@ -1416,7 +1402,7 @@
               },
               {
                 "q": "Is the Thermage treatment painful?",
-                "a": "FLX minimizes discomfort during treatment with Comfort Pulse Technology. Treatment can be performed without anesthesia, and most patients only feel a tolerable level of heat."
+                "a": "FLX minimizes discomfort during treatment with Comfort Pulse Technology. Most patients only feel a tolerable level of heat, and anesthesia is chosen at the consultation from no anesthesia, numbing cream, local anesthesia or sedation, whichever suits you."
               },
               {
                 "q": "How can I verify Thermage authenticity?",
@@ -1929,249 +1915,6 @@
             "sectionLabel": "علاجات ذات صلة",
             "title": "علاجات ذات صلة"
           }
-        }
-      },
-      "inmode": {
-        "name": "InMode",
-        "fullName": "InMode",
-        "tagline": "شد مدمج قائم على RF",
-        "description": "نظام شد شامل يستخدم الترددات الراديوية لتحسين مرونة البشرة وكنتور الجسم في وقت واحد.",
-        "detail": {
-          "illustrations": {
-            "forma": "مرونة البشرة",
-            "morpheus": "إبر دقيقة RF",
-            "facetite": "شد الدهون"
-          },
-          "treatmentCard": {
-            "benefits": "الفوائد الرئيسية",
-            "duration": "مدة العلاج",
-            "downtime": "فترة النقاهة",
-            "idealFor": "مثالي لـ"
-          },
-          "comparison": {
-            "header": "المقارنة",
-            "rows": {
-              "method": {
-                "feature": "الطريقة",
-                "forma": "RF ترددات راديوية",
-                "morpheus": "إبر دقيقة + RF",
-                "facetite": "كانيولا + RF"
-              },
-              "invasiveness": {
-                "feature": "درجة التدخل",
-                "forma": "غير جراحي",
-                "morpheus": "تدخل بسيط",
-                "facetite": "تدخل بسيط"
-              },
-              "anesthesia": {
-                "feature": "التخدير",
-                "forma": "غير مطلوب",
-                "morpheus": "كريم مخدر",
-                "facetite": "تخدير موضعي"
-              },
-              "downtime": {
-                "feature": "فترة النقاهة",
-                "forma": "لا يوجد",
-                "morpheus": "3-5 أيام",
-                "facetite": "5-7 أيام"
-              },
-              "onset": {
-                "feature": "بداية التأثير",
-                "forma": "تدريجي",
-                "morpheus": "تدريجي",
-                "facetite": "فوري"
-              },
-              "sessions": {
-                "feature": "الجلسات",
-                "forma": "4-6 جلسات",
-                "morpheus": "2-3 جلسات",
-                "facetite": "جلسة واحدة"
-              },
-              "target": {
-                "feature": "الهدف الرئيسي",
-                "forma": "المرونة",
-                "morpheus": "المسامات/الندوب",
-                "facetite": "الدهون/الترهل"
-              }
-            }
-          },
-          "treatmentOptions": {
-            "forma": {
-              "name": "Forma",
-              "nameKo": "Forma",
-              "description": "الترددات الراديوية RF غير الجراحية تحفز انكماش وتجدد الكولاجين لتحسين مرونة البشرة. تكاد تكون غير مؤلمة وبدون فترة نقاهة، مما يسمح لك باستئناف الأنشطة اليومية فوراً.",
-              "benefits": [
-                "Instant skin tightening",
-                "Collagen regeneration",
-                "Fine wrinkle improvement",
-                "Pain-free treatment"
-              ],
-              "duration": "20-30 دقيقة",
-              "downtime": "لا يوجد",
-              "idealFor": [
-                "Loss of elasticity",
-                "Fine wrinkles",
-                "Preventive care"
-              ]
-            },
-            "morpheus": {
-              "name": "Morpheus8",
-              "nameKo": "Morpheus8",
-              "description": "24 إبرة دقيقة مطلية بالذهب توصل طاقة RF إلى طبقة الأدمة لإعادة تشكيل البشرة. تحسن المسامات والندوب وملمس البشرة والمرونة في وقت واحد.",
-              "benefits": [
-                "Pore reduction",
-                "Acne scar improvement",
-                "Skin texture refinement",
-                "Dermal remodeling"
-              ],
-              "duration": "30-45 دقيقة",
-              "downtime": "3-5 أيام",
-              "idealFor": [
-                "Large pores",
-                "Acne scars",
-                "Skin texture"
-              ]
-            },
-            "facetite": {
-              "name": "FaceTite",
-              "nameKo": "FaceTite",
-              "description": "كانيولا رفيعة تُوصل طاقة RF مباشرة إلى طبقة الدهون لإذابة الدهون وشد البشرة. توفر نتائج بمستوى شد الوجه المصغر.",
-              "benefits": [
-                "Fat reduction",
-                "Skin tightening",
-                "Jawline improvement",
-                "Double chin reduction"
-              ],
-              "duration": "60-90 دقيقة",
-              "downtime": "5-7 أيام",
-              "idealFor": [
-                "Double chin",
-                "Cheek fat",
-                "Jawline sagging"
-              ]
-            }
-          },
-          "recommendations": {
-            "forma": {
-              "title": "Forma موصى به",
-              "desc": "للحفاظ على مرونة البشرة، والرعاية الوقائية، ومن يريدون علاجاً بدون فترة نقاهة"
-            },
-            "morpheus": {
-              "title": "Morpheus8 موصى به",
-              "desc": "لمن يريدون تحسين المسامات والندوب والملمس ويمكنهم تحمل فترة نقاهة قصيرة"
-            },
-            "facetite": {
-              "title": "FaceTite موصى به",
-              "desc": "لمن يقلقون بشأن الذقن المزدوج ودهون الخدود والترهل ويريدون نتائج حاسمة"
-            }
-          },
-          "extendedFaqs": [
-            {
-              "q": "Which InMode treatment is most popular?",
-              "a": "Morpheus8 is the most popular. By combining microneedles with RF, it can simultaneously improve pores, scars, skin texture, and elasticity, making it effective for those with various skin concerns."
-            },
-            {
-              "q": "Can I combine multiple InMode treatments?",
-              "a": "Yes, you can. For example, combining Morpheus8 for skin texture improvement with FaceTite for fat tightening is popular. The optimal combination is determined through consultation."
-            },
-            {
-              "q": "How is InMode different from other lifting treatments?",
-              "a": "InMode is an all-in-one platform that allows various treatments within a single system. Morpheus8 offers microneedle RF for skin texture and elasticity, while FaceTite enables fat tightening, allowing personalized treatments."
-            }
-          ],
-          "hero": {
-            "badge": "نظام شد شامل في جهاز واحد",
-            "title": "InMode",
-            "description": "تقليل الدهون والشد في وقت واحد بطاقة RF.<br />إذا كانت الدهون الوجهية هي مصدر قلقك، فإن InMode هو الإجابة.",
-            "stats": {
-              "rf": {
-                "value": "RF",
-                "label": "طاقة الترددات الراديوية"
-              },
-              "fda": {
-                "value": "FDA",
-                "label": "جهاز معتمد"
-              },
-              "custom": {
-                "value": "مخصص",
-                "label": "علاج شخصي"
-              }
-            },
-            "floatingBadges": {
-              "morpheus": {
-                "title": "Morpheus8",
-                "subtitle": "إبر دقيقة RF"
-              },
-              "custom": {
-                "title": "علاج مخصص",
-                "subtitle": "تحسين قائم على المخاوف"
-              }
-            }
-          },
-          "about": {
-            "sectionLabel": "حول InMode",
-            "title": "ما هو InMode؟",
-            "description": "InMode هو جهاز شد متعدد يستخدم <strong>طاقة الترددات الراديوية (RF)</strong> لتحفيز كل من طبقة الدهون وطبقة الأدمة في وقت واحد. فعال لمن يعانون من فائض دهون الوجه أو مخاوف مدمجة من ترهل البشرة."
-          },
-          "compare": {
-            "sectionLabel": "المقارنة",
-            "title": "مقارنة قطع اليد",
-            "subtitle": "قارن خصائص كل علاج لتجد الأنسب لك"
-          },
-          "livDifference": {
-            "sectionLabel": "LIV Difference",
-            "title": "InMode في LIV",
-            "cards": {
-              "genuine": {
-                "title": "عيادة معتمدة",
-                "desc": "كعيادة معتمدة رسمياً من InMode Korea، نستخدم فقط الأجهزة والأطراف الأصلية. نشغل أحدث إصدار من الأجهزة."
-              },
-              "combination": {
-                "title": "علاج مدمج مخصص",
-                "desc": "بدلاً من استخدام قطعة يد واحدة فقط، نجمع علاجات متعددة بناءً على حالة البشرة للحصول على نتائج مثلى."
-              },
-              "specialist": {
-                "title": "علاج من اختصاصي",
-                "desc": "أطباء أمراض جلدية/جراحو تجميل معتمدون يجرون الاستشارات والعلاجات مباشرة. تضمن خبرتنا الواسعة نتائج مثلى."
-              }
-            }
-          },
-          "processSection": {
-            "sectionLabel": "خطوات العلاج"
-          },
-          "treatmentInfo": {
-            "sectionLabel": "معلومات العلاج",
-            "title": "معلومات العلاج",
-            "labels": {
-              "duration": "مدة العلاج",
-              "anesthesia": "التخدير",
-              "recovery": "فترة التعافي",
-              "results": "النتائج"
-            }
-          },
-          "faq": {
-            "sectionLabel": "الأسئلة الشائعة",
-            "title": "الأسئلة الشائعة",
-            "moreInfo": "هل تريد المزيد من المعلومات الطبية؟",
-            "viewMedicalQA": "عرض الأسئلة الطبية"
-          },
-          "cta": {
-            "sectionLabel": "هل أنت مستعد للتحول؟",
-            "title": "احجز استشارة InMode",
-            "description": "من خلال استشارة شخصية مع فريقنا الطبي،<br />جد العلاج الأمثل لمخاوفك.",
-            "bookConsultation": "احجز استشارة مجانية",
-            "businessHours": "الإثنين-الجمعة 10:00-19:00",
-            "location": "3 دقائق سيراً من مخرج 4 محطة Sinsa"
-          },
-          "related": {
-            "sectionLabel": "علاجات ذات صلة",
-            "title": "علاجات ذات صلة"
-          }
-        },
-        "ui": {
-          "skinElasticity": "مرونة البشرة",
-          "microneedleRf": "إبر دقيقة RF",
-          "fatTightening": "شد الدهون"
         }
       },
       "shurink": {
@@ -4784,7 +4527,7 @@
         "category": "lifting",
         "question": "How painful are lifting treatments?",
         "shortAnswer": "Treatment is performed after numbing cream, and most people can tolerate it.",
-        "answer": "The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Both Ultherapy Prime and Thermage FLX are performed after applying numbing cream for about 30 minutes. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.",
+        "answer": "The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Ultherapy Prime is performed after applying numbing cream for about 30 minutes, and for Thermage FLX the anesthesia is chosen at the consultation from no anesthesia, numbing cream, local anesthesia or sedation. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -4801,7 +4544,7 @@
         "category": "lifting",
         "question": "How often should I get lifting treatments?",
         "shortAnswer": "Ultherapy is recommended once every 1-2 years, Thermage once every 6 months to 1 year.",
-        "answer": "Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink or InMode can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.",
+        "answer": "Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.",
         "relatedTreatments": [
           "ulthera",
           "thermage",
@@ -5321,13 +5064,6 @@
         "duration": "40-60 دقيقة",
         "recovery": "بدون فترة توقف"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameEn": "InMode",
-        "description": "تقنية RF متعددة الوظائف لتقليل الدهون وشدّ البشرة في آن واحد.",
-        "duration": "30-90 دقيقة",
-        "recovery": "0-5 أيام"
-      },
       "onda": {
         "name": "ONDA",
         "nameEn": "ONDA",
@@ -5423,14 +5159,6 @@
           "recovery": "لا يوجد",
           "results": "3-6 أشهر",
           "price": "اقتصادي"
-        },
-        "inmode": {
-          "technology": "RF",
-          "duration": "30-90 دقيقة",
-          "anesthesia": "بدون تخدير",
-          "recovery": "0-5 أيام",
-          "results": "6 أشهر - 1 سنة",
-          "price": "يختلف"
         },
         "thread": {
           "technology": "خيط PDO",
@@ -5813,17 +5541,6 @@
         ],
         "certification": "معتمد من KFDA"
       },
-      "inmode": {
-        "name": "InMode",
-        "nameKo": "InMode",
-        "description": "تقليل الدهون + تحسين المرونة في جلسة واحدة",
-        "features": [
-          "تقليل الدهون والشدّ في آن واحد",
-          "تركيز على مناطق موضعية",
-          "فترة توقف قصيرة"
-        ],
-        "certification": "معتمد من FDA و KFDA"
-      },
       "onda": {
         "name": "ONDA",
         "nameKo": "ONDA",
@@ -6058,11 +5775,8 @@
       },
       "thermage": {
         "name": "ليزر Thermage",
-        "shot300": "300 نبضة",
         "shot600": "600 نبضة",
-        "shot900": "900 نبضة",
-        "eyeTip225": "Eye Tip 225 نبضة",
-        "eyeTip450": "Eye Tip 450 نبضة"
+        "eyeTip225": "Eye Tip 225 نبضة"
       },
       "shurink": {
         "shurinkLaser": "ليزر Shurink",
@@ -6078,12 +5792,6 @@
         "alphaTip": "ليزر Density (Alpha-Tip)",
         "shot300": "300 نبضة",
         "shot600": "600 نبضة"
-      },
-      "inmode": {
-        "name": "ليزر InMode",
-        "fxForma": "وضع FX / FORMA",
-        "fx": "وضع FX",
-        "forma": "وضع FORMA"
       },
       "thread": {
         "name": "شدّ بالخيوط",
@@ -6732,19 +6440,6 @@
         "شد البشرة سيول",
         "شد الوجه بدون جراحة كوريا",
         "شد الوجه غانغنام",
-        "عيادة محطة سينسا"
-      ]
-    },
-    "inmode": {
-      "title": "InMode لشد الوجه وتحديد الملامح | مستشفى ليف للتجميل",
-      "description": "شد مركّب بتقنية InMode القائمة على الترددات الراديوية في مستشفى ليف للتجميل بغانغنام، سيول — شدّ وتحديد الملامح وتحسين الدهون بما يناسب شكل وجهك.",
-      "keywords": [
-        "InMode كوريا",
-        "شد InMode سيول",
-        "شد بالترددات الراديوية كوريا",
-        "تحديد ملامح الوجه سيول",
-        "شد خط الفك كوريا",
-        "InMode غانغنام",
         "عيادة محطة سينسا"
       ]
     },

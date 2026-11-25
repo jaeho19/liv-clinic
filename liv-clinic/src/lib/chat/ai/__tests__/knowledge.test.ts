@@ -65,7 +65,7 @@ describe('기본 가격 줄 (생성 파일)', () => {
         }
       }
     }
-    expect(expected).toHaveLength(56);
+    expect(expected).toHaveLength(50); // 2026-11-25 써마지 300·900·아이 450샷, 인모드 3줄 삭제 (56 → 50)
     expect(BASE_PRICE_ROWS.map((r) => ({ key: r.key, amount: r.amount, labelKo: r.labelKo, labels: r.labels }))).toEqual(
       expected
     );
@@ -134,12 +134,12 @@ describe('손으로 관리하는 가격 줄', () => {
 });
 
 describe('getPriceRows', () => {
-  it('10월: 기본 52줄(P) · 프로모션 27줄(M) · 상담비 1줄(F), 꼬리표는 순서대로', () => {
+  it('10월: 기본 46줄(P) · 프로모션 27줄(M) · 상담비 1줄(F), 꼬리표는 순서대로', () => {
     const rows = getPriceRows(OCT_2);
     const ids = (prefix: string) => rows.filter((r) => r.id.startsWith(prefix)).map((r) => r.id);
-    expect(ids('P')).toHaveLength(52); // 56 − 직원에게 넘기는 7 + 필러 3
+    expect(ids('P')).toHaveLength(46); // 50 − 직원에게 넘기는 7 + 필러 3
     expect(ids('P')[0]).toBe('P001');
-    expect(ids('P')[51]).toBe('P052');
+    expect(ids('P')[45]).toBe('P046');
     expect(ids('M')).toHaveLength(27);
     expect(ids('M')[0]).toBe('M01');
     expect(ids('F')).toEqual(['F01']);
@@ -155,7 +155,7 @@ describe('getPriceRows', () => {
     expect(promo('2026-10-31T15:00:00Z')).toBe(43); // 한국 11/01 00:00 — 11월 줄
     expect(promo('2026-11-30T14:59:59Z')).toBe(43); // 한국 11/30 23:59
     expect(promo('2026-11-30T15:00:00Z')).toBe(0); // 한국 12/01 00:00
-    expect(getPriceRows(NOV_2).filter((r) => r.group === 'base')).toHaveLength(52);
+    expect(getPriceRows(NOV_2).filter((r) => r.group === 'base')).toHaveLength(46);
     expect(getPriceRows(NOV_2).filter((r) => r.group === 'promo').every((r) => r.key.startsWith('promo.2026-11.'))).toBe(true);
   });
 

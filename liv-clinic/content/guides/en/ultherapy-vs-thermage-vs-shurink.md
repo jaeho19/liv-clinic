@@ -10,7 +10,7 @@ keywords:
   - ultherapy thermage shurink difference
 category: comparison
 status: published
-updated: 2026-09-06
+updated: 2026-11-25
 reviewer: clinic
 treatment: /lifting
 ---
@@ -29,12 +29,12 @@ In the way LIV describes them on its [lifting pages](/lifting): Ultherapy Prime 
 |---|---|---|---|
 | Energy | HIFU (focused ultrasound) | RF (radiofrequency) | HIFU |
 | Treatment time | 60–90 minutes | 45–60 minutes | 30–45 minutes |
-| Anesthesia | Topical anesthetic cream (30 min) | Usually none (vibration reduces discomfort); anesthetic cream on request | Topical anesthetic cream (optional) |
+| Anesthesia | Topical anesthetic cream (30 min) | No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation) | Topical anesthetic cream (optional) |
 | Recovery | Immediate return to daily life | Immediate return to daily life | Immediate return to daily life |
 | Results | Gradual improvement over 3–6 months, lasts 1–2 years | Immediate elasticity improvement, collagen regeneration over 3–6 months | Results begin after 2–4 weeks, peaking at 3 months |
 | Return visit | Same day · no revisit required | Same day · no revisit required | Confirm at consultation |
 
-Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well. Thermage FLX is generally performed without anesthesia, as its vibrating tip significantly reduces discomfort, and anesthetic cream can be applied if you prefer. If you are sensitive to pain, additional pain control is available on request.
+Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well. Thermage FLX has a vibrating tip that reduces discomfort, and it can be done with no anesthesia, numbing cream, local anesthesia or sedation; the method is chosen at the consultation. If you are sensitive to pain, additional pain control is available on request.
 
 ## What each treatment is for
 
@@ -44,7 +44,7 @@ The HIFU treatment the clinic describes for people who want lifting without surg
 
 ### Thermage FLX
 
-The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change and prefer a treatment without anesthesia. It treats the full face, eye area, neck and body, with a dedicated Thermage Eye tip around the eyes. Compared with earlier versions, FLX's AccuREP technology auto-tunes the energy and the treatment is 25% faster. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage).
+The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change. It treats the full face, eye area, neck and body; the clinic recommends 600 shots for the full face and uses a dedicated 225-shot Thermage Eye tip around the eyes. Compared with earlier versions, FLX's AccuREP technology auto-tunes the energy and the treatment is 25% faster. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage).
 
 ### Shurink
 
@@ -62,7 +62,6 @@ Ultherapy Prime and Thermage FLX prices are published on the [price list](/prici
 | Ultherapy Prime | Full face + neck · 600 shots~ | KRW 2,340,000~ |
 | Thermage FLX | 600 shots | KRW 2,400,000~ |
 | Eye Thermage | 225 shots | KRW 1,000,000~ |
-| Eye Thermage | 450 shots | KRW 1,600,000~ |
 | Shurink | 300 shots | KRW 200,000~ |
 | Shurink | 600 shots | KRW 400,000~ |
 | Shurink | 900 shots | KRW 600,000~ |

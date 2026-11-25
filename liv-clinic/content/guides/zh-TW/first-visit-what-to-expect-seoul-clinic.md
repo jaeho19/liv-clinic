@@ -11,7 +11,7 @@ keywords:
   - 新沙站 醫美 第一次
 category: booking
 status: published
-updated: 2026-11-10
+updated: 2026-11-25
 reviewer: clinic
 treatment: /international
 ---
@@ -38,7 +38,7 @@ treatment: /international
 | 療程 | 治療前 | 治療時間 | 是否複診 |
 |---|---|---|---|
 | [音波拉提 Prime](/lifting/ulthera) | 麻醉藥膏約30分鐘 | 60~90分鐘 | 無需複診 |
-| [鳳凰電波 FLX](/lifting/thermage) | 不需麻醉（以震動技術減輕疼痛） | 45~60分鐘 | 無需複診 |
+| [鳳凰電波 FLX](/lifting/thermage) | 不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定） | 45~60分鐘 | 無需複診 |
 | [肉毒桿菌素](/antiaging/botox) | 不麻醉，或依需求敷麻醉藥膏 | 10~20分鐘 | 無需複診 |
 | [玻尿酸](/antiaging/filler) | 麻醉藥膏或神經阻斷麻醉 | 20~40分鐘 | 無需複診 |
 | [水光針](/antiaging/skinbooster) | 麻醉藥膏 | 30~45分鐘 | 無需複診 |

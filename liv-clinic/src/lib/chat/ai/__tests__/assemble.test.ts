@@ -182,7 +182,7 @@ describe('assembleReply — 이달 프로모션 줄을 붙인다 (2026-10-23)', 
   });
 
   it('한 답의 금액 줄은 6개를 넘지 않는다 — 넘치는 프로모션 줄은 붙이지 않는다', () => {
-    const tags = ['thermage.name.shot300', 'thermage.name.shot600', 'thermage.name.shot900', 'ulthera.name.upperFace', 'ulthera.name.fullFace']
+    const tags = ['thermage.name.shot600', 'thermage.name.eyeTip225', 'ulthera.name.upperFace', 'ulthera.name.fullFace', 'ulthera.name.fullFaceNeck']
       .map((k) => `{{${idOf(k)}}}`)
       .join('\n');
     const a = assembleReply({ ...full, reply: tags });

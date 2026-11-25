@@ -15,7 +15,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "locale": "en",
     "slug": "book-seoul-clinic-foreigner",
@@ -135,7 +135,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**Arrive.** Sinsa Station, Line 3, Exit 4 — the clinic is a one-minute walk, on the 4th floor of the Jaeun Building.",
           "**In-person consultation.** The surgeon confirms the plan from your remote consultation. Consultations are available in English, and if you prefer an interpreter, one is arranged free of charge — just say so when you book.",
-          "**Preparation.** Depending on the treatment, a topical anesthetic cream may go on first: for [Ultherapy Prime](/lifting/ulthera) it stays on for about 30 minutes, while [Thermage FLX](/lifting/thermage) is done without anesthesia (vibration reduces discomfort). [Botox](/antiaging/botox) needs no anesthesia, or cream on request.",
+          "**Preparation.** Depending on the treatment, a topical anesthetic cream may go on first: for [Ultherapy Prime](/lifting/ulthera) it stays on for about 30 minutes, while for [Thermage FLX](/lifting/thermage) the method (no anesthesia, numbing cream, local anesthesia or sedation) is chosen at the consultation. [Botox](/antiaging/botox) needs no anesthesia, or cream on request.",
           "**Treatment.** Most non-surgical treatments take 30 to 90 minutes in total — Ultherapy Prime 60–90 minutes, Thermage FLX 45–60, botox 10–20 — with no hospitalization.",
           "**Before you leave.** You receive a written aftercare guide in English."
         ]
@@ -566,8 +566,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
-    "title": "Which lifting treatment in Korea? Eight options at a Seoul clinic, sorted by concern",
-    "description": "Ultherapy Prime, Thermage FLX, Density, InMode, ONDA, Shurink, thread lift and APTOS at LIV in Sinsa, Seoul, sorted by concern, downtime, trip length and 2026 starting price.",
+    "title": "Which lifting treatment in Korea? Seven options at a Seoul clinic, sorted by concern",
+    "description": "Ultherapy Prime, Thermage FLX, Density, ONDA, Shurink, thread lift and APTOS at LIV in Sinsa, Seoul, sorted by concern, downtime, trip length and 2026 starting price.",
     "keywords": [
       "which lifting treatment korea",
       "lifting treatment for sagging jawline",
@@ -578,7 +578,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "en",
@@ -586,12 +586,12 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "A Seoul clinic's lifting menu can run to eight names, and most visitors arrive knowing two of them. This guide sorts the eight lifting options at [LIV Plastic Surgery](/international) by the concern each one is described for on the clinic's own pages, so you can see where your question fits before you message anyone. It is a map, not a diagnosis: the doctor decides the plan at the consultation, after seeing your skin. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station, and international patients pay from the same price list as Korean patients."
+        "text": "A Seoul clinic's lifting menu can run to seven names, and most visitors arrive knowing two of them. This guide sorts the seven lifting options at [LIV Plastic Surgery](/international) by the concern each one is described for on the clinic's own pages, so you can see where your question fits before you message anyone. It is a map, not a diagnosis: the doctor decides the plan at the consultation, after seeing your skin. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station, and international patients pay from the same price list as Korean patients."
       },
       {
         "type": "h2",
-        "text": "All eight at a glance",
-        "id": "all-eight-at-a-glance"
+        "text": "All seven at a glance",
+        "id": "all-seven-at-a-glance"
       },
       {
         "type": "table",
@@ -616,7 +616,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "[Thermage FLX](/lifting/thermage)",
             "RF (radiofrequency) for the dermal layer",
             "45–60 min",
-            "Usually none; cream on request",
+            "No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation)",
             "Immediate return to daily life",
             "KRW 1,000,000~"
           ],
@@ -627,14 +627,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "Anesthetic cream (optional)",
             "Immediate return to daily life",
             "KRW 890,000~"
-          ],
-          [
-            "[InMode](/lifting/inmode)",
-            "RF, with FX and FORMA modes",
-            "30–60 min",
-            "None, or anesthetic cream",
-            "Immediate return to daily life",
-            "KRW 150,000~"
           ],
           [
             "[ONDA](/lifting/onda)",
@@ -702,8 +694,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**Thermage FLX** is described for loss of elasticity and fine lines, with a natural, gradual change. It treats the full face, eye area, neck and body, and has a dedicated tip for the eye area.",
-          "**InMode** lists collagen regeneration and improvement of fine lines among its uses."
+          "**Thermage FLX** is described for loss of elasticity and fine lines, with a natural, gradual change. It treats the full face, eye area, neck and body, and has a dedicated tip for the eye area."
         ]
       },
       {
@@ -713,7 +704,6 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**InMode** is recommended by the clinic when facial fat and sagging skin are a combined concern: fat under the chin, cheek fullness, the face line, a double chin.",
           "**ONDA** is described for loss of elasticity together with localized fat, on the face (cheeks, jawline), the double chin and the body (abdomen, flanks, thighs, arms)."
         ]
       },
@@ -731,12 +721,12 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "h3",
-        "text": "No downtime, or no anesthesia"
+        "text": "Downtime and anesthesia"
       },
       {
         "type": "ul",
         "items": [
-          "All six energy devices list an immediate return to daily life. **ONDA** needs no anesthesia, **Thermage FLX** is usually done without it, and **InMode** can be done without it.",
+          "All five energy devices list an immediate return to daily life. **ONDA** needs no anesthesia. For **Thermage FLX**, the clinic offers no anesthesia, numbing cream, local anesthesia or sedation, and the method is chosen at the consultation.",
           "**Thread lift** and **APTOS** use local anesthesia, and bruising or swelling is possible for 3–7 days."
         ]
       },
@@ -749,7 +739,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**Shurink** is positioned for a first lifting treatment, a quick session and lifting at a reasonable cost.",
           "**Density** is described as an entry-level RF lifting device at a reasonable cost.",
-          "**InMode** has the lowest published starting price of the eight. Lower price does not mean it addresses the same concern, so compare the \"for\" lines above before the price column."
+          "**Shurink** also has the lowest published starting price of the seven (KRW 200,000~). Lower price does not mean it addresses the same concern, so compare the \"for\" lines above before the price column."
         ]
       },
       {
@@ -781,11 +771,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "Every 3–6 months"
           ],
           [
-            "InMode",
-            "Immediate firmness + gradual collagen regeneration",
-            "Every 3–6 months (maintenance)"
-          ],
-          [
             "ONDA",
             "Appears gradually over 4–12 weeks",
             "Set at consultation"
@@ -809,7 +794,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Durations vary with skin condition, age and lifestyle, and the cycle is set at the consultation. For the detail on the first, second and sixth rows, see our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink); for Density, ONDA and InMode, see the [three-device comparison](/guides/density-onda-inmode-lifting-seoul)."
+        "text": "Durations vary with skin condition, age and lifestyle, and the cycle is set at the consultation. For the detail on the first, second and fifth rows, see our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink); for Density and ONDA, see the [Density vs ONDA comparison](/guides/density-vs-onda-lifting-seoul)."
       },
       {
         "type": "h2",
@@ -857,15 +842,15 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "Which lifting treatment is right for a sagging jawline?",
-        "a": "The jawline is a listed treatment area for Ultherapy Prime, Shurink, Density, ONDA, thread lifts and APTOS, and InMode lists the face line. Which of them fits depends on whether the main issue is sagging skin, facial fat or both, and that is diagnosed by the doctor in person."
+        "a": "The jawline is a listed treatment area for Ultherapy Prime, Shurink, Density, ONDA, thread lifts and APTOS. Which of them fits depends on whether the main issue is sagging skin, facial fat or both, and that is diagnosed by the doctor in person."
       },
       {
         "q": "Which lifting treatments have no downtime?",
-        "a": "Ultherapy Prime, Thermage FLX, Density, InMode, ONDA and Shurink all list an immediate return to daily life. Thread lifts and APTOS list 3–7 days in which bruising and swelling are possible."
+        "a": "Ultherapy Prime, Thermage FLX, Density, ONDA and Shurink all list an immediate return to daily life. Thread lifts and APTOS list 3–7 days in which bruising and swelling are possible."
       },
       {
         "q": "Can two lifting treatments be combined?",
-        "a": "Yes, in several cases. The clinic says combining Ultherapy Prime and Thermage can produce synergistic effects, that InMode with Thermage allows a stronger improvement in elasticity, and that a thread lift can be combined with laser lifting after 1–2 weeks. Whether a combination suits you is decided at the consultation."
+        "a": "Yes, in several cases. The clinic says combining Ultherapy Prime and Thermage can produce synergistic effects, and that a thread lift can be combined with laser lifting after 1–2 weeks. Whether a combination suits you is decided at the consultation."
       },
       {
         "q": "What is the difference between a regular thread lift and APTOS?",
@@ -880,27 +865,25 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
-    "title": "Density vs ONDA vs InMode in Seoul: three newer lifting devices compared",
-    "description": "Density, ONDA and InMode compared on energy type, treatment time, anesthesia, downtime, results and 2026 prices at LIV in Sinsa, Seoul, and who the clinic describes each one for.",
+    "title": "Density vs ONDA in Seoul: two newer lifting devices compared",
+    "description": "Density and ONDA compared on energy type, treatment time, anesthesia, downtime, results and 2026 prices at LIV in Sinsa, Seoul, and who the clinic describes each one for.",
     "keywords": [
       "density lifting korea",
       "onda lifting korea",
-      "inmode korea price",
-      "inmode fx forma seoul",
       "density rf lifting price",
-      "onda vs inmode"
+      "density vs onda"
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "en",
-    "slug": "density-onda-inmode-lifting-seoul",
+    "slug": "density-vs-onda-lifting-seoul",
     "blocks": [
       {
         "type": "p",
-        "text": "Ultherapy and Thermage are the names most visitors already know. Once you start reading Korean clinic menus, three more appear again and again: Density, ONDA and InMode. This guide sets out how [LIV Plastic Surgery](/international) describes each of them, what they take in time and recovery, and what they cost, so you can ask better questions before you message a clinic. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency."
+        "text": "Ultherapy and Thermage are the names most visitors already know. Once you start reading Korean clinic menus, two more appear again and again: Density and ONDA. This guide sets out how [LIV Plastic Surgery](/international) describes each of them, what they take in time and recovery, and what they cost, so you can ask better questions before you message a clinic. LIV is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency."
       },
       {
         "type": "h2",
@@ -909,14 +892,13 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "The three do not use the same energy, and the clinic does not describe them for the same person."
+        "text": "The two do not use the same energy, and the clinic does not describe them for the same person."
       },
       {
         "type": "ul",
         "items": [
           "**Density** is described by the clinic as an entry-level RF (radiofrequency) lifting device at a reasonable cost. It covers the forehead, eye area, cheeks, jawline and neck.",
-          "**ONDA** is not RF. It uses 2.45 GHz microwave energy, needs no anesthesia, and is the only one of the three the clinic also uses on the body.",
-          "**InMode** is the option the clinic recommends when facial fat and sagging skin are a combined concern, with FX and FORMA modes priced separately."
+          "**ONDA** is not RF. It uses 2.45 GHz microwave energy, needs no anesthesia, and, unlike Density, is also used on the body."
         ]
       },
       {
@@ -925,63 +907,54 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "h2",
-        "text": "Density, ONDA and InMode at a glance",
-        "id": "density-onda-and-inmode-at-a-glance"
+        "text": "Density and ONDA at a glance",
+        "id": "density-and-onda-at-a-glance"
       },
       {
         "type": "table",
         "header": [
           "",
           "Density",
-          "ONDA",
-          "InMode"
+          "ONDA"
         ],
         "rows": [
           [
             "Energy, as the site describes it",
             "RF (radiofrequency)",
-            "2.45 GHz microwave (not RF)",
-            "RF"
+            "2.45 GHz microwave (not RF)"
           ],
           [
             "Treatment time",
             "40–60 minutes",
-            "Face 15–30 minutes / about 10 minutes per body area",
-            "30–60 minutes"
+            "Face 15–30 minutes / about 10 minutes per body area"
           ],
           [
             "Anesthesia",
             "Topical anesthetic cream (optional)",
-            "No anesthesia required",
-            "No anesthesia or topical anesthetic cream"
+            "No anesthesia required"
           ],
           [
             "Recovery",
             "Immediate return to daily life",
-            "No downtime (return to daily life right after the treatment)",
-            "Immediate return to daily life"
+            "No downtime (return to daily life right after the treatment)"
           ],
           [
             "Results",
             "Immediate lifting + collagen regeneration over 3–6 months",
-            "Appears gradually over 4–12 weeks (varies by individual)",
-            "Immediate firmness + gradual collagen regeneration"
+            "Appears gradually over 4–12 weeks (varies by individual)"
           ],
           [
             "Areas",
             "Forehead, eye area, cheeks, jawline, neck",
-            "Face (cheeks, jawline), double chin, abdomen, flanks, thighs, arms",
-            "Under the chin, cheeks, face line, double chin, deep cheek area"
+            "Face (cheeks, jawline), double chin, abdomen, flanks, thighs, arms"
           ],
           [
             "Repeat interval",
             "3–6 months recommended",
-            "Set at consultation",
-            "Every 3–6 months as maintenance"
+            "Set at consultation"
           ],
           [
             "Return visit",
-            "Confirm at consultation",
             "Confirm at consultation",
             "Confirm at consultation"
           ]
@@ -989,7 +962,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "All values are from LIV's treatment pages and medical Q&A. The clinic's international patients page lists revisit guidance for Ultherapy Prime, Thermage FLX and thread lifts only, so ask about follow-up for these three when you book."
+        "text": "All values are from LIV's treatment pages and medical Q&A. The clinic's international patients page lists revisit guidance for Ultherapy Prime, Thermage FLX and thread lifts only, so ask about follow-up for these two when you book."
       },
       {
         "type": "h2",
@@ -1013,21 +986,13 @@ export const GUIDES: readonly GuideDoc[] = [
         "text": "ONDA is often assumed to be another RF device. The clinic's own answer is no: it uses 2.45 GHz microwave energy. It is described for people who have loss of elasticity together with localized fat, who want improvement without downtime, and who want to care for the face and body together. On the face it treats the cheeks and jawline and the double chin in 15–30 minutes; on the body it treats the abdomen, flanks, thighs and arms at about 10 minutes per area. It is performed without anesthesia and is reported to feel similar to a warm massage. Results are not immediate: they appear gradually over 4–12 weeks and vary by individual. See the [ONDA page](/lifting/onda)."
       },
       {
-        "type": "h3",
-        "text": "InMode"
-      },
-      {
-        "type": "p",
-        "text": "The clinic recommends InMode for people whose concerns combine facial fat and sagging skin. Its listed uses are reducing fat under the chin while strengthening elasticity, lifting the cheeks and tidying the face line, improving a double chin and the deep cheek area, and collagen regeneration with improvement of fine lines. Treatment takes 30–60 minutes, with no anesthesia or with anesthetic cream. The clinic lists it alongside Shurink as a maintenance treatment that can be done every 3–6 months. It can also be combined with Thermage: the clinic says RF synergy allows a stronger improvement in elasticity. See the [InMode page](/lifting/inmode)."
-      },
-      {
         "type": "h2",
         "text": "Prices at LIV (2026, per session)",
         "id": "prices-at-liv-2026-per-session"
       },
       {
         "type": "p",
-        "text": "Density and InMode prices are published on their treatment pages."
+        "text": "Density prices are published on its treatment page."
       },
       {
         "type": "table",
@@ -1058,21 +1023,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "KRW 1,800,000~"
           ],
           [
-            "InMode",
-            "FX mode",
-            "KRW 150,000~"
-          ],
-          [
-            "InMode",
-            "FORMA mode",
-            "KRW 200,000~"
-          ],
-          [
-            "InMode",
-            "FX / FORMA mode",
-            "KRW 250,000~"
-          ],
-          [
             "ONDA",
             "Face or body area",
             "Quoted at consultation"
@@ -1085,7 +1035,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "The tilde means \"from\". Which Density tip and shot count, or which InMode mode, applies to you is agreed with the doctor at the consultation, and that is when the final figure is set. For Ultherapy Prime, Thermage FLX and Shurink prices, see the [price list](/pricing) and our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink)."
+        "text": "The tilde means \"from\". Which Density tip and shot count applies to you is agreed with the doctor at the consultation, and that is when the final figure is set. For Ultherapy Prime, Thermage FLX and Shurink prices, see the [price list](/pricing) and our [Ultherapy vs Thermage vs Shurink guide](/guides/ultherapy-vs-thermage-vs-shurink)."
       },
       {
         "type": "h2",
@@ -1109,15 +1059,11 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "Loss of elasticity together with localized fat",
-            "ONDA, InMode"
+            "ONDA"
           ],
           [
             "Double chin",
-            "ONDA, InMode"
-          ],
-          [
-            "Fat under the chin, cheek fullness, face line",
-            "InMode"
+            "ONDA"
           ],
           [
             "Face and body in the same plan",
@@ -1125,11 +1071,11 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "No anesthesia",
-            "ONDA (none required); InMode (none, or cream)"
+            "ONDA (none required)"
           ],
           [
-            "Regular maintenance every 3–6 months",
-            "InMode, Density"
+            "Repeat sessions every 3–6 months",
+            "Density"
           ]
         ]
       },
@@ -1149,11 +1095,11 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**Pregnancy and breastfeeding.** Density and InMode are not performed during pregnancy or while breastfeeding. For ONDA, the clinic asks you to tell it at the consultation if you are pregnant or breastfeeding.",
+          "**Pregnancy and breastfeeding.** Density is not performed during pregnancy or while breastfeeding. For ONDA, the clinic asks you to tell it at the consultation if you are pregnant or breastfeeding.",
           "**Pacemaker or metal implants.** For ONDA, tell the clinic if you have a pacemaker or a metal implant in the body.",
-          "**Skin problems in the treatment area.** For ONDA, tell the clinic about any inflammation, infection or wound in the area. For Density and InMode, whether treatment is possible depends on your skin condition and is checked at the consultation.",
+          "**Skin problems in the treatment area.** For ONDA, tell the clinic about any inflammation, infection or wound in the area. For Density, whether treatment is possible depends on your skin condition and is checked at the consultation.",
           "**Underlying conditions.** For ONDA, tell the clinic about conditions such as uncontrolled diabetes.",
-          "**After the treatment.** Mild swelling or redness is possible after Density and InMode."
+          "**After the treatment.** Mild swelling or redness is possible after Density."
         ]
       },
       {
@@ -1169,7 +1115,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**Language.** Consultations are available in English; interpretation is arranged free of charge on request.",
           "**Clinic hours.** Monday to Friday 10:00–19:00, Saturday 10:00–16:00, closed Sunday (Korea time).",
           "**Getting there.** Sinsa Station (Line 3), Exit 4, a 1-minute walk. See [location](/about/location).",
-          "**Timing your flight.** All three list an immediate return to daily life. Your own timing is confirmed at the consultation; our [downtime and flight guide](/guides/downtime-flight-travel-plan) covers planning."
+          "**Timing your flight.** Both list an immediate return to daily life. Your own timing is confirmed at the consultation; our [downtime and flight guide](/guides/downtime-flight-travel-plan) covers planning."
         ]
       },
       {
@@ -1179,32 +1125,28 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "This comparison shows how the three devices differ, not which one your skin needs. That is decided at the consultation, where the board-certified plastic surgeon diagnoses your skin in person and recommends a plan; see [our medical team](/about/staff). The 1:1 consultation fee is KRW 10,000, fully deducted from the treatment cost if you go ahead the same day, and you are free to decide later. Send questions through the [international patients page](/international) or the [contact form](/contact); more answers are on the [medical Q&A page](/medical)."
+        "text": "This comparison shows how the two devices differ, not which one your skin needs. That is decided at the consultation, where the board-certified plastic surgeon diagnoses your skin in person and recommends a plan; see [our medical team](/about/staff). The 1:1 consultation fee is KRW 10,000, fully deducted from the treatment cost if you go ahead the same day, and you are free to decide later. Send questions through the [international patients page](/international) or the [contact form](/contact); more answers are on the [medical Q&A page](/medical)."
       }
     ],
     "faq": [
       {
         "q": "Is ONDA a radiofrequency (RF) treatment?",
-        "a": "No. ONDA uses 2.45 GHz microwave energy. Density and InMode are the RF options in this comparison."
+        "a": "No. ONDA uses 2.45 GHz microwave energy. Density is the RF option in this comparison."
       },
       {
-        "q": "Does Density, ONDA or InMode need anesthesia?",
-        "a": "ONDA is performed without anesthesia and is reported to feel similar to a warm massage. InMode is done with no anesthesia or with topical anesthetic cream, and for Density the anesthetic cream is optional."
+        "q": "Does Density or ONDA need anesthesia?",
+        "a": "ONDA is performed without anesthesia and is reported to feel similar to a warm massage. For Density, topical anesthetic cream is optional."
       },
       {
         "q": "How soon do results appear?",
-        "a": "The clinic describes Density as immediate lifting plus collagen regeneration over 3–6 months, and InMode as immediate firmness plus gradual collagen regeneration. ONDA is not immediate: results appear gradually over 4–12 weeks. Results vary from person to person."
+        "a": "The clinic describes Density as immediate lifting plus collagen regeneration over 3–6 months. ONDA is not immediate: results appear gradually over 4–12 weeks. Results vary from person to person."
       },
       {
         "q": "How often are these treatments repeated?",
-        "a": "The clinic recommends an interval of 3–6 months for Density, and lists InMode as a maintenance treatment that can be done every 3–6 months. The cycle depends on your skin condition and the result you want, so the exact frequency is set at the consultation."
-      },
-      {
-        "q": "Can InMode be combined with Thermage?",
-        "a": "Yes. The clinic says the RF synergy allows a stronger improvement in elasticity. Whether a combination suits you is decided at the consultation."
+        "a": "The clinic recommends an interval of 3–6 months for Density; for ONDA, the interval is set at the consultation. The cycle depends on your skin condition and the result you want, so the exact frequency is decided with the doctor."
       }
     ],
-    "readingMinutes": 8,
+    "readingMinutes": 7,
     "reviewMarkers": 0
   },
   {
@@ -1220,7 +1162,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "aftercare",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "en",
@@ -1259,7 +1201,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[Thermage FLX](/lifting/thermage)",
             "45–60 minutes",
-            "No anesthesia (vibration reduces discomfort)",
+            "No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation)",
             "Immediate return to daily life",
             "Same day · no revisit required"
           ],
@@ -1299,7 +1241,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Shurink (30–45 min), InMode (30–60 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime and, although they are not on the return-visit list, each is generally completed in a single session with no return visit needed; the interval for any maintenance sessions is decided at the consultation."
+        "text": "Shurink (30–45 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime and, although they are not on the return-visit list, each is generally completed in a single session with no return visit needed; the interval for any maintenance sessions is decided at the consultation."
       },
       {
         "type": "p",
@@ -1510,7 +1452,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "en",
@@ -1570,7 +1512,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "[Thermage FLX](/lifting/thermage)",
-            "No anesthesia (vibration reduces discomfort)",
+            "No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation)",
             "45–60 minutes",
             "Not required"
           ],
@@ -1785,7 +1727,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-24",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "en",
@@ -1975,7 +1917,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[Thermage FLX](/lifting/thermage)",
             "45–60 min",
-            "No anesthesia (vibration reduces discomfort)",
+            "No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation)",
             "Immediate return to daily life",
             "From KRW 1,000,000 (Eye Tip 225 shots)"
           ],
@@ -1992,13 +1934,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "No anesthesia required",
             "No downtime",
             "Quoted at consultation"
-          ],
-          [
-            "[InMode](/lifting/inmode)",
-            "30–60 min",
-            "No anesthesia or topical anesthetic cream",
-            "Immediate return to daily life",
-            "From KRW 150,000 (FX Mode)"
           ],
           [
             "[Shurink](/lifting/shurink)",
@@ -3787,8 +3722,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
-    "title": "Thermage FLX in Seoul: 2026 price guide by shot count, what's included and how to plan your visit",
-    "description": "Thermage FLX prices at LIV Plastic Surgery in Sinsa, Seoul, by shot count and eye tip, what the price covers, treatment time, anesthesia, downtime, how long results last and how to book from abroad.",
+    "title": "Thermage FLX in Seoul: 2026 prices for the full face and eyes, what's included and how to plan your visit",
+    "description": "Thermage FLX prices at LIV Plastic Surgery in Sinsa, Seoul, for the full face (600 shots) and the eye tip (225 shots), what the price covers, treatment time, anesthesia options, downtime, how long results last and how to book from abroad.",
     "keywords": [
       "thermage flx korea price",
       "thermage seoul cost",
@@ -3799,7 +3734,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "price",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting/thermage",
     "locale": "en",
@@ -3807,7 +3742,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "Planning to have Thermage FLX while you are in Seoul, and want to see the published price before you message a clinic? This guide sets out what LIV lists for Thermage FLX: the price by shot count, how long the appointment takes, what happens with anesthesia and downtime, and how to fit it into a short trip. [LIV Plastic Surgery](/international) is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency."
+        "text": "Planning to have Thermage FLX while you are in Seoul, and want to see the published price before you message a clinic? This guide sets out what LIV lists for Thermage FLX: the price for the full face and the eye area, how long the appointment takes, the anesthesia options and downtime, and how to fit it into a short trip. [LIV Plastic Surgery](/international) is a non-surgical anti-aging clinic in Gangnam, one minute from Sinsa Station and next to Garosu-gil. International patients pay from the same price list as Korean patients, and you can book directly in English without an agency."
       },
       {
         "type": "h2",
@@ -3816,7 +3751,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Thermage FLX is priced by the number of shots, and the eye area uses a dedicated eye tip with its own price. The figures below are the starting prices per session shown on the [Thermage FLX page](/lifting/thermage); the [price list](/pricing) shows the 600-shot and eye-tip rows."
+        "text": "At LIV the full face is planned at 600 shots, and the eye area uses a dedicated 225-shot eye tip with its own price. The figures below are the starting prices per session shown on the [Thermage FLX page](/lifting/thermage) and the [price list](/pricing)."
       },
       {
         "type": "table",
@@ -3827,29 +3762,14 @@ export const GUIDES: readonly GuideDoc[] = [
         ],
         "rows": [
           [
-            "Thermage FLX",
-            "300",
-            "KRW 1,300,000~"
-          ],
-          [
-            "Thermage FLX",
+            "Thermage FLX (full face)",
             "600",
             "KRW 2,400,000~"
-          ],
-          [
-            "Thermage FLX",
-            "900",
-            "KRW 3,300,000~"
           ],
           [
             "Eye Thermage (eye tip)",
             "225",
             "KRW 1,000,000~"
-          ],
-          [
-            "Eye Thermage (eye tip)",
-            "450",
-            "KRW 1,600,000~"
           ]
         ]
       },
@@ -3859,7 +3779,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Two things to know about the numbers. The tilde means \"from\": the final price is set once the surgeon has seen your skin and agreed the shot count with you. And VAT is added on top of the listed price."
+        "text": "Two things to know about the numbers. The tilde means \"from\": the final price is set once the surgeon has seen your skin and agreed the treatment plan with you. And VAT is added on top of the listed price."
       },
       {
         "type": "h3",
@@ -3868,7 +3788,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**The shot count for your area.** Thermage FLX is priced by the number of shots of radiofrequency energy delivered. The clinic treats the full face, the eye area, the neck and the body; how many shots your area needs is decided at the consultation.",
+          "**The recommended shot count for your area.** Thermage FLX is priced by the number of shots of radiofrequency energy delivered. The clinic recommends 600 shots for the full face and 225 shots with the eye tip for the eye area. It also treats the neck and the body; the plan for your area is confirmed at the consultation.",
           "**A genuine Thermage FLX system and authentic tips.** LIV is a Thermage FLX partner clinic and an officially certified Ultherapy Prime provider. Only genuine, certified handpieces (tips) are used, and you are welcome to check this yourself before treatment.",
           "**Language support at no extra charge.** Consultations are available in English, and interpretation is arranged free of charge on request. There is no foreigner surcharge and no fee for language support.",
           "**An in-person consultation with the surgeon** before the treatment, on the same visit. The 1:1 consultation fee is KRW 10,000, and it is fully deducted from the treatment cost if you proceed with treatment on the same day."
@@ -3892,7 +3812,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "Anesthesia",
-            "No anesthesia; vibration reduces discomfort"
+            "No anesthesia, numbing cream, local anesthesia or sedation, chosen at the consultation"
           ],
           [
             "Recovery",
@@ -3919,7 +3839,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**Anesthesia and comfort.** The treatment page lists Thermage FLX as a no-anesthesia treatment, because the vibrating tip reduces discomfort. Numbing cream can be applied for about 30 minutes before the treatment, and most patients receive it comfortably. If you are sensitive to pain, additional pain control is available; mention it at your consultation.",
+          "**Anesthesia and comfort.** Thermage FLX can be done with no anesthesia, with numbing cream, with local anesthesia or under sedation, and the method is chosen with the surgeon at the consultation. Where numbing cream is used, it is applied for about 30 minutes before the treatment. If you are sensitive to pain, mention it at your consultation.",
           "**Downtime.** You can return to daily life immediately. Temporary flushing is possible after the treatment.",
           "**Results.** The clinic describes an immediate improvement in elasticity, followed by collagen regeneration over 3–6 months. Results last about 6 months to 1 year, and this varies with skin condition, age and lifestyle. No particular result can be promised in advance.",
           "**How often.** The clinic recommends 1–2 sessions per year. The interval that suits you is set at the consultation.",
@@ -3976,9 +3896,8 @@ export const GUIDES: readonly GuideDoc[] = [
         "type": "ul",
         "items": [
           "are concerned about loss of skin elasticity;",
-          "want to improve fine lines;",
-          "prefer a natural, gradual change; and",
-          "want a treatment without anesthesia."
+          "want to improve fine lines; and",
+          "prefer a natural, gradual change."
         ]
       },
       {
@@ -4009,13 +3928,13 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Your treatment area, shot count and final price are decided at your consultation with the surgeon; the figures above are the published starting points so you can plan your trip. Send your questions through the [international patients page](/international) or the [contact form](/contact) and the clinic will reply within one business day."
+        "text": "Your treatment area, anesthesia method and final price are decided at your consultation with the surgeon; the figures above are the published starting points so you can plan your trip. Send your questions through the [international patients page](/international) or the [contact form](/contact) and the clinic will reply within one business day."
       }
     ],
     "faq": [
       {
         "q": "How much does Thermage FLX cost in Seoul at LIV?",
-        "a": "The published starting prices per session are KRW 1,300,000 for 300 shots, KRW 2,400,000 for 600 shots and KRW 3,300,000 for 900 shots. Eye Thermage with the eye tip starts at KRW 1,000,000 for 225 shots and KRW 1,600,000 for 450 shots. VAT is not included, and the exact price is confirmed after your consultation."
+        "a": "The published starting price per session is KRW 2,400,000 for the full face at the recommended 600 shots. Eye Thermage uses a dedicated 225-shot eye tip and starts at KRW 1,000,000. VAT is not included, and the exact price is confirmed after your consultation."
       },
       {
         "q": "Do international patients pay more?",
@@ -4027,7 +3946,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "Does Thermage FLX hurt?",
-        "a": "Pain varies with the treatment and the individual. Thermage FLX uses a vibrating tip that reduces discomfort, and the clinic's medical Q&A says most patients can receive the treatment comfortably. Additional pain control is available if you ask at your consultation."
+        "a": "Pain varies with the treatment and the individual. Thermage FLX uses a vibrating tip that reduces discomfort, and the clinic's medical Q&A says most patients can receive the treatment comfortably. Anesthesia can be none, numbing cream, local anesthesia or sedation; the method is chosen at your consultation, so tell the surgeon if you are sensitive to pain."
       },
       {
         "q": "How long do Thermage results last, and how often should I repeat it?",
@@ -4035,7 +3954,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "Can Thermage be used around the eyes?",
-        "a": "Yes. The eye area is treated with a dedicated Thermage eye tip, listed at 225 or 450 shots."
+        "a": "Yes. The eye area is treated with a dedicated Thermage eye tip, planned at 225 shots and listed from KRW 1,000,000 per session."
       }
     ],
     "readingMinutes": 8,
@@ -4538,7 +4457,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "en",
@@ -4590,7 +4509,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "Anesthesia",
             "Topical anesthetic cream (30 min)",
-            "Usually none (vibration reduces discomfort); anesthetic cream on request",
+            "No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation)",
             "Topical anesthetic cream (optional)"
           ],
           [
@@ -4615,7 +4534,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well. Thermage FLX is generally performed without anesthesia, as its vibrating tip significantly reduces discomfort, and anesthetic cream can be applied if you prefer. If you are sensitive to pain, additional pain control is available on request."
+        "text": "Time, anesthesia, recovery and results are from LIV's treatment pages; the return-visit line is from the international patients page, which does not cover Shurink, so ask when you book. On pain: with the topical anesthetic, most people tolerate Ultherapy Prime well. Thermage FLX has a vibrating tip that reduces discomfort, and it can be done with no anesthesia, numbing cream, local anesthesia or sedation; the method is chosen at the consultation. If you are sensitive to pain, additional pain control is available on request."
       },
       {
         "type": "h2",
@@ -4636,7 +4555,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change and prefer a treatment without anesthesia. It treats the full face, eye area, neck and body, with a dedicated Thermage Eye tip around the eyes. Compared with earlier versions, FLX's AccuREP technology auto-tunes the energy and the treatment is 25% faster. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage)."
+        "text": "The RF option, described for people concerned about loss of elasticity or fine lines, who want a natural, gradual change. It treats the full face, eye area, neck and body; the clinic recommends 600 shots for the full face and uses a dedicated 225-shot Thermage Eye tip around the eyes. Compared with earlier versions, FLX's AccuREP technology auto-tunes the energy and the treatment is 25% faster. The clinic recommends 1–2 sessions per year. LIV is a Thermage FLX partner clinic; see the [Thermage page](/lifting/thermage)."
       },
       {
         "type": "h3",
@@ -4692,11 +4611,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "Eye Thermage",
             "225 shots",
             "KRW 1,000,000~"
-          ],
-          [
-            "Eye Thermage",
-            "450 shots",
-            "KRW 1,600,000~"
           ],
           [
             "Shurink",
@@ -4810,7 +4724,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "The 1:1 consultation fee is KRW 10,000, fully deducted from the treatment cost if you proceed with treatment on the same day. You can also have the consultation only and decide later."
       }
     ],
-    "readingMinutes": 9,
+    "readingMinutes": 10,
     "reviewMarkers": 0
   },
   {
@@ -4826,7 +4740,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "locale": "ja",
     "slug": "book-seoul-clinic-foreigner",
@@ -4949,7 +4863,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**到着**：新沙駅3号線4番出口から徒歩1分、自恩ビル4階です。",
           "**カウンセリング**：形成外科専門医がオンライン相談の内容を対面で確認します。日本語でのカウンセリングに対応し、ご希望があれば通訳を無料で手配します（予約時にお申し付けください）。",
-          "**準備**：施術によっては先に麻酔クリームを塗ります。[ウルセラプライム](/lifting/ulthera)は約30分、[サーマジFLX](/lifting/thermage)は無麻酔（振動技術で痛みを軽減）で行います。[ボトックス](/antiaging/botox)は無麻酔で、ご希望があれば麻酔クリームも使えます。",
+          "**準備**：施術によっては先に麻酔クリームを塗ります。[ウルセラプライム](/lifting/ulthera)は約30分、[サーマジFLX](/lifting/thermage)は無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔のなかから、カウンセリングで方法を決めます。[ボトックス](/antiaging/botox)は無麻酔で、ご希望があれば麻酔クリームも使えます。",
           "**施術**：ほとんどの非手術施術は全体で30〜90分（ウルセラプライム60〜90分、サーマジFLX 45〜60分、ボトックス10〜20分）で、入院は不要です。",
           "**お帰りの前に**：日本語のアフターケア案内（書面）をお渡しします。"
         ]
@@ -5342,8 +5256,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
-    "title": "韓国のたるみ治療、どれを選ぶ？お悩み別に見るリフティング8種（新沙・LIV美容クリニック）",
-    "description": "ウルセラ・サーマクール・デンシティ・インモード・オンダリフト・シュリンク・糸リフト・アプトスの8種を、たるみ・小じわ・脂肪・ダウンタイム・滞在日数・2026年の料金で整理。ソウル新沙(シンサ)駅徒歩1分のLIV美容クリニックの案内をもとにした早見表つき。",
+    "title": "韓国のたるみ治療、どれを選ぶ？お悩み別に見るリフティング7種（新沙・LIV美容クリニック）",
+    "description": "ウルセラ・サーマクール・デンシティ・オンダリフト・シュリンク・糸リフト・アプトスの7種を、たるみ・小じわ・脂肪・ダウンタイム・滞在日数・2026年の料金で整理。ソウル新沙(シンサ)駅徒歩1分のLIV美容クリニックの案内をもとにした早見表つき。",
     "keywords": [
       "韓国 たるみ治療 選び方",
       "韓国 リフトアップ 種類",
@@ -5354,7 +5268,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "ja",
@@ -5362,11 +5276,11 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "韓国のクリニックでリフティングのメニューを開くと、名前が8つ並んでいることがあります。この記事は、LIV美容クリニックのリフティング8種を「クリニックがそれぞれをどんなお悩み向けと案内しているか」で並べ替えたものです。あくまで地図であって診断ではなく、実際のプランは医師が肌を診てカウンセリングで決めます。LIVは新沙(シンサ)駅4番出口から徒歩1分の非手術アンチエイジング専門クリニックで、外国人も同一料金、日本語で直接予約できます。"
+        "text": "韓国のクリニックでリフティングのメニューを開くと、名前が7つ並んでいることがあります。この記事は、LIV美容クリニックのリフティング7種を「クリニックがそれぞれをどんなお悩み向けと案内しているか」で並べ替えたものです。あくまで地図であって診断ではなく、実際のプランは医師が肌を診てカウンセリングで決めます。LIVは新沙(シンサ)駅4番出口から徒歩1分の非手術アンチエイジング専門クリニックで、外国人も同一料金、日本語で直接予約できます。"
       },
       {
         "type": "h2",
-        "text": "8種の早見表",
+        "text": "7種の早見表",
         "id": "s1"
       },
       {
@@ -5392,7 +5306,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "[サーマクール（サーマジ）FLX](/lifting/thermage)",
             "RF（高周波）で真皮層に",
             "45〜60分",
-            "通常は無麻酔・希望により麻酔クリーム",
+            "無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から選択（カウンセリングで決定）",
             "すぐに日常復帰可能",
             "1,000,000ウォン〜"
           ],
@@ -5403,14 +5317,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "麻酔クリーム（選択）",
             "すぐに日常復帰可能",
             "890,000ウォン〜"
-          ],
-          [
-            "[インモード](/lifting/inmode)",
-            "高周波（FX・FORMAモード）",
-            "30〜60分",
-            "無麻酔または麻酔クリーム",
-            "すぐに日常復帰可能",
-            "150,000ウォン〜"
           ],
           [
             "[オンダ（オンダリフト）](/lifting/onda)",
@@ -5478,8 +5384,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**サーマクール（サーマジ）FLX**は、弾力低下や小じわが気になり、自然で段階的な変化を求める方向け。顔全体・目元・首・ボディが対象で、目もとには専用チップがあります。",
-          "**インモード**も、用途のひとつにコラーゲン再生と小じわの改善を挙げています。"
+          "**サーマクール（サーマジ）FLX**は、弾力低下や小じわが気になり、自然で段階的な変化を求める方向け。顔全体・目元・首・ボディが対象で、目もとには専用チップがあります。"
         ]
       },
       {
@@ -5489,7 +5394,6 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**インモード**は、顔の脂肪が多い方や、たるみが複合的に気になる方におすすめとされています（顎下の脂肪、頬、フェイスライン、二重あご）。",
           "**オンダ**は、弾力低下と部分的な脂肪が一緒にある方向け。顔（頬・顎ライン）、二重あご、ボディ（腹部・わき腹・太もも・腕）が対象です。"
         ]
       },
@@ -5507,12 +5411,12 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "h3",
-        "text": "ダウンタイムなし・麻酔なしがいい"
+        "text": "ダウンタイムと麻酔"
       },
       {
         "type": "ul",
         "items": [
-          "機器6種はいずれも「すぐに日常復帰可能」。**オンダ**は麻酔不要、**サーマクールFLX**は通常無麻酔、**インモード**も無麻酔で受けられます。",
+          "機器5種はいずれも「すぐに日常復帰可能」。**オンダ**は麻酔不要です。**サーマクールFLX**は、無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔のなかから、カウンセリングで方法を決めます。",
           "**糸リフト**と**アプトス**は局所麻酔で行い、3〜7日は内出血や腫れが出る可能性があります。"
         ]
       },
@@ -5525,7 +5429,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**シュリンク**は、初めてリフティングを受ける方、短時間で済ませたい方、費用を抑えたい方向け。",
           "**デンシティ**は、費用を抑えられる高周波リフティングの入門機器。",
-          "公開されている料金がいちばん低いのは**インモード**です。ただし安いものが同じお悩みに対応するとは限らないので、料金より先に上の「向いている方」を見比べてください。"
+          "7種のうち公開されている料金がいちばん低いのも**シュリンク**です（200,000ウォン〜）。ただし安いものが同じお悩みに対応するとは限らないので、料金より先に上の「向いている方」を見比べてください。"
         ]
       },
       {
@@ -5557,11 +5461,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "3〜6ヶ月間隔"
           ],
           [
-            "インモード",
-            "即時の弾力＋段階的なコラーゲン再生",
-            "3〜6ヶ月間隔（メンテナンス）"
-          ],
-          [
             "オンダ",
             "4〜12週間かけて徐々に現れる",
             "カウンセリングで決定"
@@ -5585,7 +5484,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "持続期間は肌の状態・年齢・生活習慣によって変わり、周期はカウンセリングで決まります。ウルセラ・サーマクール・シュリンクの詳細は[3種の比較記事](/guides/ultherapy-vs-thermage-vs-shurink)、デンシティ・オンダ・インモードは[こちらの比較記事](/guides/density-onda-inmode-lifting-seoul)にまとめています。"
+        "text": "持続期間は肌の状態・年齢・生活習慣によって変わり、周期はカウンセリングで決まります。ウルセラ・サーマクール・シュリンクの詳細は[3種の比較記事](/guides/ultherapy-vs-thermage-vs-shurink)、デンシティとオンダは[こちらの比較記事](/guides/density-vs-onda-lifting-seoul)にまとめています。"
       },
       {
         "type": "h2",
@@ -5633,15 +5532,15 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "フェイスラインのたるみにはどの施術が合いますか？",
-        "a": "顎ラインは、ウルセラプライム・シュリンク・デンシティ・オンダ・糸リフト・アプトスの対象部位に含まれ、インモードもフェイスラインを挙げています。どれが合うかは、主な原因がたるみか、脂肪か、その両方かによって変わり、医師が対面で診断します。"
+        "a": "顎ラインは、ウルセラプライム・シュリンク・デンシティ・オンダ・糸リフト・アプトスの対象部位に含まれます。どれが合うかは、主な原因がたるみか、脂肪か、その両方かによって変わり、医師が対面で診断します。"
       },
       {
         "q": "ダウンタイムがないリフティングはどれですか？",
-        "a": "ウルセラプライム・サーマクールFLX・デンシティ・インモード・オンダ・シュリンクは、いずれもすぐに日常生活に戻れると案内されています。糸リフトとアプトスは3〜7日、内出血や腫れの可能性があります。"
+        "a": "ウルセラプライム・サーマクールFLX・デンシティ・オンダ・シュリンクは、いずれもすぐに日常生活に戻れると案内されています。糸リフトとアプトスは3〜7日、内出血や腫れの可能性があります。"
       },
       {
         "q": "2つの施術を組み合わせることはできますか？",
-        "a": "組み合わせられる場合があります。LIVは、ウルセラとサーマジの併用には相乗効果がある、インモードとサーマジの併用でより強い弾力改善が期待できる、糸リフトは1〜2週間後にレーザーリフティングと併用できる、と案内しています。合うかどうかはカウンセリングで決まります。"
+        "a": "組み合わせられる場合があります。LIVは、ウルセラとサーマジの併用には相乗効果がある、糸リフトは1〜2週間後にレーザーリフティングと併用できる、と案内しています。合うかどうかはカウンセリングで決まります。"
       },
       {
         "q": "糸リフトとアプトスの違いは何ですか？",
@@ -5656,39 +5555,36 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
-    "title": "デンシティ・オンダリフト・インモードの違いと韓国での料金（新沙・LIV美容クリニック）",
-    "description": "デンシティ・オンダ（オンダリフト）・インモードの違いを、エネルギーの方式・施術時間・麻酔・ダウンタイム・効果の出方・2026年の料金で比較。ソウル新沙(シンサ)駅徒歩1分のLIV美容クリニックが、それぞれをどんなたるみ・お悩み向けと案内しているかをまとめました。",
+    "title": "デンシティとオンダリフトの違いと韓国での料金（新沙・LIV美容クリニック）",
+    "description": "デンシティとオンダ（オンダリフト）の違いを、エネルギーの方式・施術時間・麻酔・ダウンタイム・効果の出方・2026年の料金で比較。ソウル新沙(シンサ)駅徒歩1分のLIV美容クリニックが、それぞれをどんなたるみ・お悩み向けと案内しているかをまとめました。",
     "keywords": [
       "デンシティ 韓国 料金",
       "オンダリフト 韓国",
-      "インモード 韓国 値段",
-      "デンシティ インモード 違い",
       "韓国 たるみ 治療",
-      "オンダリフト インモード 違い"
+      "デンシティ オンダリフト 違い"
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "ja",
-    "slug": "density-onda-inmode-lifting-seoul",
+    "slug": "density-vs-onda-lifting-seoul",
     "blocks": [
       {
         "type": "p",
-        "text": "ウルセラやサーマクールは知っていても、韓国のクリニックのメニューを見ると「デンシティ」「オンダリフト」「インモード」が並んでいて迷う——そんな方向けの記事です。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分・カロスキル隣の非手術アンチエイジング専門クリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人も同一料金で、日本語で直接予約できます。"
+        "text": "ウルセラやサーマクールは知っていても、韓国のクリニックのメニューを見ると「デンシティ」「オンダリフト」が並んでいて迷う——そんな方向けの記事です。LIV美容クリニックは新沙(シンサ)駅4番出口から徒歩1分・カロスキル隣の非手術アンチエイジング専門クリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人も同一料金で、日本語で直接予約できます。"
       },
       {
         "type": "h2",
-        "text": "結論から：3つは「エネルギー」も「向いている人」も違う",
+        "text": "結論から：2つは「エネルギー」も「向いている人」も違う",
         "id": "s1"
       },
       {
         "type": "ul",
         "items": [
           "**デンシティ**は、LIVの案内では「費用を抑えられる高周波（RF）リフティングの入門機器」。額・目元・頬・顎ライン・首が対象です。",
-          "**オンダ（オンダリフト）**は高周波ではなく、2.45GHzのマイクロ波を使います。麻酔は不要で、3つのうち唯一ボディにも使う機器です。",
-          "**インモード**は、顔の脂肪とたるみが複合的に気になる方におすすめと案内されています。FXモードとFORMAモードがあり、料金も別です。"
+          "**オンダ（オンダリフト）**は高周波ではなく、2.45GHzのマイクロ波を使います。麻酔は不要で、デンシティと違ってボディにも使う機器です。"
         ]
       },
       {
@@ -5705,55 +5601,46 @@ export const GUIDES: readonly GuideDoc[] = [
         "header": [
           "",
           "デンシティ",
-          "オンダ",
-          "インモード"
+          "オンダ"
         ],
         "rows": [
           [
             "エネルギー（サイトの説明）",
             "RF（高周波）",
-            "2.45GHzのマイクロ波（RFではない）",
-            "RF（高周波）"
+            "2.45GHzのマイクロ波（RFではない）"
           ],
           [
             "施術時間",
             "40〜60分",
-            "顔15〜30分 / ボディは1部位あたり約10分",
-            "30〜60分"
+            "顔15〜30分 / ボディは1部位あたり約10分"
           ],
           [
             "麻酔",
             "麻酔クリーム（選択）",
-            "麻酔不要",
-            "無麻酔または麻酔クリーム"
+            "麻酔不要"
           ],
           [
             "ダウンタイム",
             "すぐに日常復帰可能",
-            "ダウンタイムなし（施術直後から日常生活可能）",
-            "すぐに日常復帰可能"
+            "ダウンタイムなし（施術直後から日常生活可能）"
           ],
           [
             "効果",
             "即時のリフティング＋3〜6ヶ月のコラーゲン再生",
-            "4〜12週間かけて徐々に現れます（個人差あり）",
-            "即時の弾力＋段階的なコラーゲン再生"
+            "4〜12週間かけて徐々に現れます（個人差あり）"
           ],
           [
             "対象部位",
             "額・目元・頬・顎ライン・首",
-            "顔（頬・顎ライン）・二重あご・腹部・わき腹・太もも・腕",
-            "顎下・頬・フェイスライン・二重あご・頬の深い部分"
+            "顔（頬・顎ライン）・二重あご・腹部・わき腹・太もも・腕"
           ],
           [
             "施術間隔",
             "3〜6ヶ月間隔を推奨",
-            "カウンセリングで決定",
-            "メンテナンスとして3〜6ヶ月間隔"
+            "カウンセリングで決定"
           ],
           [
             "再来院",
-            "カウンセリングで確認",
             "カウンセリングで確認",
             "カウンセリングで確認"
           ]
@@ -5761,7 +5648,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "表の値はLIVの各施術ページと医療Q&Aの記載です。外国人向け案内ページの再来院の目安はウルセラプライム・サーマジFLX・糸リフトなどに限られるため、この3つについては予約時にご確認ください。"
+        "text": "表の値はLIVの各施術ページと医療Q&Aの記載です。外国人向け案内ページの再来院の目安はウルセラプライム・サーマジFLX・糸リフトなどに限られるため、この2つについては予約時にご確認ください。"
       },
       {
         "type": "h2",
@@ -5785,21 +5672,13 @@ export const GUIDES: readonly GuideDoc[] = [
         "text": "「高周波の機器ですか？」という質問へのLIVの答えは「いいえ。オンダは2.45GHzのマイクロ波を使用します」。弾力の低下と部分的な脂肪が一緒に気になる方、ダウンタイムなしで改善したい方、顔とボディを一緒にケアしたい方向けです。顔（頬・顎ライン）と二重あごは15〜30分、ボディ（腹部・わき腹・太もも・腕）は1部位あたり約10分。麻酔なしで行い、温かいマッサージに近い感覚と報告されています。効果は即時ではなく、4〜12週間かけて徐々に現れます（個人差あり）（[オンダのページ](/lifting/onda)）。"
       },
       {
-        "type": "h3",
-        "text": "インモード"
-      },
-      {
-        "type": "p",
-        "text": "顔の脂肪が多い方や、たるみが複合的に気になる方におすすめと案内されています。挙げられている用途は、顎下の脂肪を減らしながら弾力を高めること、頬のリフティングとフェイスラインの引き締め、二重あご・頬の深い部分の改善、肌内部のコラーゲン再生と小じわの改善。施術時間は30〜60分で、無麻酔または麻酔クリームで行います。LIVはシュリンクと並べて「3〜6ヶ月間隔で受けられるメンテナンス施術」としており、サーマジとの併用については「高周波のシナジー効果でより強い弾力改善が期待できる」と説明しています（[インモードのページ](/lifting/inmode)）。"
-      },
-      {
         "type": "h2",
         "text": "韓国・LIVでの料金（2026年・1回あたり・税別）",
         "id": "liv20261"
       },
       {
         "type": "p",
-        "text": "デンシティとインモードの料金は、それぞれの施術ページに公開されています。"
+        "text": "デンシティの料金は施術ページに公開されています。"
       },
       {
         "type": "table",
@@ -5830,21 +5709,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "1,800,000ウォン〜"
           ],
           [
-            "インモード",
-            "FXモード",
-            "150,000ウォン〜"
-          ],
-          [
-            "インモード",
-            "FORMAモード",
-            "200,000ウォン〜"
-          ],
-          [
-            "インモード",
-            "FX / FORMAモード",
-            "250,000ウォン〜"
-          ],
-          [
             "オンダ",
             "顔・ボディ各部位",
             "カウンセリングでお見積もり"
@@ -5857,7 +5721,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「〜」は「この金額から」の意味です。デンシティのチップとショット数、インモードのモードは、カウンセリングで医師と決めた時点で最終料金が確定します。ウルセラ・サーマクール・シュリンクの料金は[料金案内ページ](/pricing)と[ウルセラ・サーマクール・シュリンクの比較記事](/guides/ultherapy-vs-thermage-vs-shurink)をご覧ください。"
+        "text": "「〜」は「この金額から」の意味です。デンシティのチップとショット数は、カウンセリングで医師と決めた時点で最終料金が確定します。ウルセラ・サーマクール・シュリンクの料金は[料金案内ページ](/pricing)と[ウルセラ・サーマクール・シュリンクの比較記事](/guides/ultherapy-vs-thermage-vs-shurink)をご覧ください。"
       },
       {
         "type": "h2",
@@ -5881,15 +5745,11 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "たるみ（弾力低下）と部分的な脂肪が一緒に気になる",
-            "オンダ・インモード"
+            "オンダ"
           ],
           [
             "二重あご",
-            "オンダ・インモード"
-          ],
-          [
-            "顎下の脂肪・頬のもたつき・フェイスライン",
-            "インモード"
+            "オンダ"
           ],
           [
             "顔とボディを一緒にケアしたい",
@@ -5897,11 +5757,11 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "麻酔なしで受けたい",
-            "オンダ（不要）・インモード（無麻酔または麻酔クリーム）"
+            "オンダ（不要）"
           ],
           [
-            "3〜6ヶ月ごとの定期メンテナンス",
-            "インモード・デンシティ"
+            "3〜6ヶ月ごとに続けて受けたい",
+            "デンシティ"
           ]
         ]
       },
@@ -5921,11 +5781,11 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**妊娠中・授乳中。** デンシティとインモードは受けられません。オンダは、妊娠中・授乳中の場合カウンセリング時に必ずお知らせください。",
+          "**妊娠中・授乳中。** デンシティは受けられません。オンダは、妊娠中・授乳中の場合カウンセリング時に必ずお知らせください。",
           "**ペースメーカー・体内の金属。** オンダは、ペースメーカーや体内の金属インプラントがある場合に必ずお知らせください。",
-          "**施術部位の肌トラブル。** オンダは、施術部位に炎症・感染・傷がある場合にお知らせください。デンシティとインモードは、肌の状態によって施術できるかどうかをカウンセリングで確認します。",
+          "**施術部位の肌トラブル。** オンダは、施術部位に炎症・感染・傷がある場合にお知らせください。デンシティは、肌の状態によって施術できるかどうかをカウンセリングで確認します。",
           "**持病。** オンダは、コントロールされていない糖尿病などの基礎疾患がある場合にお知らせください。",
-          "**施術後。** デンシティとインモードは、軽い腫れ・赤みが出ることがあります。"
+          "**施術後。** デンシティは、軽い腫れ・赤みが出ることがあります。"
         ]
       },
       {
@@ -5940,7 +5800,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**予約。** LINE（ID：icps7972773）・ライブチャット・[お問い合わせフォーム](/contact)で日本語で連絡（通訳は無料）。お悩みと写真を送ると、施術の提案と見積もりが渡韓前に届きます。返信は営業日1日以内、予約金は不要です。流れは[予約ガイド](/guides/book-seoul-clinic-foreigner)に詳しくまとめています。",
           "**診療時間。** 平日10:00〜19:00、土曜10:00〜16:00、日曜休診（韓国時間）。",
           "**アクセス。** 地下鉄3号線・新沙駅4番出口から徒歩1分（[アクセス](/about/location)）。",
-          "**帰国便。** 3つとも施術後すぐに日常生活に戻れると案内されています。個別のタイミングはカウンセリングで確認し、日程の立て方は[ダウンタイムとフライトのガイド](/guides/downtime-flight-travel-plan)を参考にしてください。"
+          "**帰国便。** 2つとも施術後すぐに日常生活に戻れると案内されています。個別のタイミングはカウンセリングで確認し、日程の立て方は[ダウンタイムとフライトのガイド](/guides/downtime-flight-travel-plan)を参考にしてください。"
         ]
       },
       {
@@ -5950,32 +5810,28 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "この記事でわかるのは3つの違いまでで、あなたの肌にどれが必要かは、形成外科専門医が肌の状態を直接診断するカウンセリングで決まります（[医療スタッフ](/about/staff)）。1:1専門相談は1万ウォンで、当日施術の場合は施術金額から全額差し引かれます。相談だけでも大丈夫です。ご質問は[外国人患者向けページ](/international)か[お問い合わせフォーム](/contact)から、ほかの回答は[医療Q&Aページ](/medical)へ。"
+        "text": "この記事でわかるのは2つの違いまでで、あなたの肌にどれが必要かは、形成外科専門医が肌の状態を直接診断するカウンセリングで決まります（[医療スタッフ](/about/staff)）。1:1専門相談は1万ウォンで、当日施術の場合は施術金額から全額差し引かれます。相談だけでも大丈夫です。ご質問は[外国人患者向けページ](/international)か[お問い合わせフォーム](/contact)から、ほかの回答は[医療Q&Aページ](/medical)へ。"
       }
     ],
     "faq": [
       {
         "q": "オンダリフトは高周波（RF）の施術ですか？",
-        "a": "いいえ。オンダは2.45GHzのマイクロ波を使用します。この比較のなかで高周波（RF）にあたるのはデンシティとインモードです。"
+        "a": "いいえ。オンダは2.45GHzのマイクロ波を使用します。この比較のなかで高周波（RF）にあたるのはデンシティです。"
       },
       {
-        "q": "デンシティ・オンダ・インモードに麻酔は必要ですか？",
-        "a": "オンダは麻酔なしで行い、温かいマッサージに近い感覚と報告されています。インモードは無麻酔または麻酔クリーム、デンシティは麻酔クリームを選択できます。"
+        "q": "デンシティとオンダに麻酔は必要ですか？",
+        "a": "オンダは麻酔なしで行い、温かいマッサージに近い感覚と報告されています。デンシティは麻酔クリームを選択できます。"
       },
       {
         "q": "効果はいつから現れますか？",
-        "a": "デンシティは即時のリフティング＋3〜6ヶ月のコラーゲン再生、インモードは即時の弾力＋段階的なコラーゲン再生と案内されています。オンダは即時ではなく、4〜12週間かけて徐々に現れます。いずれも個人差があります。"
+        "a": "デンシティは即時のリフティング＋3〜6ヶ月のコラーゲン再生と案内されています。オンダは即時ではなく、4〜12週間かけて徐々に現れます。いずれも個人差があります。"
       },
       {
         "q": "どのくらいの間隔で受けますか？",
-        "a": "デンシティは3〜6ヶ月間隔を推奨、インモードは3〜6ヶ月間隔で受けられるメンテナンス施術とされています。肌の状態やご希望の効果によって変わるため、正確な周期はカウンセリングで決まります。"
-      },
-      {
-        "q": "インモードとサーマクールは併用できますか？",
-        "a": "できます。LIVは、高周波のシナジー効果でより強い弾力改善が期待できると案内しています。合うかどうかはカウンセリングで決まります。"
+        "a": "デンシティは3〜6ヶ月間隔が推奨され、オンダの間隔はカウンセリングで決まります。肌の状態やご希望の効果によって変わるため、正確な周期は医師と相談して決めます。"
       }
     ],
-    "readingMinutes": 9,
+    "readingMinutes": 7,
     "reviewMarkers": 0
   },
   {
@@ -5991,7 +5847,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "aftercare",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "ja",
@@ -6030,7 +5886,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[サーマクール（サーマジ）FLX](/lifting/thermage)",
             "45〜60分",
-            "無麻酔（振動技術で痛み軽減）",
+            "無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から選択（カウンセリングで決定）",
             "すぐに日常復帰可能",
             "当日・再来院不要"
           ],
@@ -6070,7 +5926,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "シュリンク（30〜45分）、インモード（30〜60分）、デンシティ（40〜60分）、オンダ（顔15〜30分）も「すぐに日常復帰可能」「ダウンタイムなし」と案内されています。再来院の一覧には載っていませんが、いずれも一般的に1回の施術で完結し、再来院は通常必要ありません。メンテナンスの間隔はカウンセリングで決めます。"
+        "text": "シュリンク（30〜45分）、デンシティ（40〜60分）、オンダ（顔15〜30分）も「すぐに日常復帰可能」「ダウンタイムなし」と案内されています。再来院の一覧には載っていませんが、いずれも一般的に1回の施術で完結し、再来院は通常必要ありません。メンテナンスの間隔はカウンセリングで決めます。"
       },
       {
         "type": "h2",
@@ -6273,7 +6129,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "ja",
@@ -6333,7 +6189,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "[サーマジFLX](/lifting/thermage)",
-            "無麻酔（振動技術で痛み軽減）",
+            "無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から選択（カウンセリングで決定）",
             "45〜60分",
             "不要"
           ],
@@ -6548,7 +6404,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-24",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "ja",
@@ -6738,7 +6594,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[サーマジFLX](/lifting/thermage)",
             "45〜60分",
-            "無麻酔（振動技術で痛み軽減）",
+            "無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から選択（カウンセリングで決定）",
             "すぐに日常復帰可能",
             "1,000,000ウォン〜（アイチップ 225ショット）"
           ],
@@ -6755,13 +6611,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "麻酔不要",
             "ダウンタイムなし",
             "カウンセリング時に案内"
-          ],
-          [
-            "[インモード](/lifting/inmode)",
-            "30〜60分",
-            "無麻酔または麻酔クリーム",
-            "すぐに日常復帰可能",
-            "150,000ウォン〜（FX モード）"
           ],
           [
             "[シュリンク](/lifting/shurink)",
@@ -8548,8 +8397,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
-    "title": "韓国でサーマクール（サーマジFLX）を受ける前に：ショット数別の値段・施術時間・ダウンタイム（新沙・LIV美容クリニック）",
-    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックで受けるサーマクール（サーマジFLX）の料金を、300・600・900ショットとアイ専用チップ別に公開。料金に含まれるもの、施術時間、麻酔、ダウンタイム、効果の持続期間、LINEでの予約手順まで、渡韓前に知っておきたい情報をまとめました。外国人も同一料金です。",
+    "title": "韓国でサーマクール（サーマジFLX）を受ける前に：顔全体・目もとの値段・施術時間・ダウンタイム（新沙・LIV美容クリニック）",
+    "description": "ソウル・新沙(シンサ)駅徒歩1分のLIV美容クリニックで受けるサーマクール（サーマジFLX）の料金を、顔全体600ショットとアイ専用チップ225ショットに分けて公開。料金に含まれるもの、施術時間、麻酔の選び方、ダウンタイム、効果の持続期間、LINEでの予約手順まで、渡韓前に知っておきたい情報をまとめました。外国人も同一料金です。",
     "keywords": [
       "韓国 サーマクール 値段",
       "サーマジFLX 韓国",
@@ -8560,7 +8409,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "price",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting/thermage",
     "locale": "ja",
@@ -8568,16 +8417,16 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "韓国でサーマクール（現行機種はサーマジFLX）を検討していて、問い合わせの前に「何ショットでいくらか」「どのくらい時間がかかるか」「翌日の予定に響くか」を確かめておきたい方へ。この記事は、LIV美容クリニックのサイトに公開されている内容を、渡韓の計画に使いやすい順に整理したものです。[LIV美容クリニック](/international)は、ソウル・江南の新沙(シンサ)駅4番出口から徒歩1分、カロスキルのすぐ隣にある非手術アンチエイジング専門のクリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人患者も韓国人患者と同じ料金表が適用され、日本語で直接予約できます。"
+        "text": "韓国でサーマクール（現行機種はサーマジFLX）を検討していて、問い合わせの前に「顔全体や目もとでいくらか」「どのくらい時間がかかるか」「翌日の予定に響くか」を確かめておきたい方へ。この記事は、LIV美容クリニックのサイトに公開されている内容を、渡韓の計画に使いやすい順に整理したものです。[LIV美容クリニック](/international)は、ソウル・江南の新沙(シンサ)駅4番出口から徒歩1分、カロスキルのすぐ隣にある非手術アンチエイジング専門のクリニックで、美容皮膚科領域の施術を形成外科専門医が担当します。外国人患者も韓国人患者と同じ料金表が適用され、日本語で直接予約できます。"
       },
       {
         "type": "h2",
-        "text": "ショット数別の料金（2026年・1回あたり・税別）",
+        "text": "料金（2026年・1回あたり・税別）",
         "id": "20261"
       },
       {
         "type": "p",
-        "text": "サーマジFLXの料金はショット数で決まり、目もとはアイ専用チップの料金が別に設定されています。以下は[サーマジFLXの施術ページ](/lifting/thermage)に掲載されている1回あたりの料金です。[料金案内ページ](/pricing)には600ショットとアイサーマジの行が載っています。"
+        "text": "LIVでは顔全体を600ショットで計画し、目もとには225ショットのアイ専用チップを使います。アイ専用チップの料金は別に設定されています。以下は[サーマジFLXの施術ページ](/lifting/thermage)と[料金案内ページ](/pricing)に掲載されている1回あたりの料金です。"
       },
       {
         "type": "table",
@@ -8588,29 +8437,14 @@ export const GUIDES: readonly GuideDoc[] = [
         ],
         "rows": [
           [
-            "サーマジFLX",
-            "300ショット",
-            "1,300,000ウォン〜"
-          ],
-          [
-            "サーマジFLX",
+            "サーマジFLX（顔全体）",
             "600ショット",
             "2,400,000ウォン〜"
-          ],
-          [
-            "サーマジFLX",
-            "900ショット",
-            "3,300,000ウォン〜"
           ],
           [
             "アイサーマジ（アイ専用チップ）",
             "225ショット",
             "1,000,000ウォン〜"
-          ],
-          [
-            "アイサーマジ（アイ専用チップ）",
-            "450ショット",
-            "1,600,000ウォン〜"
           ]
         ]
       },
@@ -8620,7 +8454,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「〜」は「この金額から」という意味です。何ショットにするかは院長が肌の状態を見て相談のうえ決め、その時点で最終料金が確定します。"
+        "text": "「〜」は「この金額から」という意味です。施術内容は院長が肌の状態を見て相談のうえ決め、その時点で最終料金が確定します。"
       },
       {
         "type": "h3",
@@ -8629,7 +8463,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**部位に合わせたショット数。** サーマジFLXは高周波（RF）を照射するショット数で料金が決まります。対象部位は顔全体、目もと、首、ボディです。",
+          "**部位に合わせた推奨ショット数。** サーマジFLXは高周波（RF）を照射するショット数で料金が決まります。推奨は顔全体600ショット、目もとはアイ専用チップで225ショットです。首やボディも対象で、施術内容はカウンセリングで確認します。",
           "**正規のサーマジFLXと正規チップ。** LIV美容クリニックはサーマジFLXのパートナー院であり、ウルセラプライムの正規認証院です。施術には正規認証のハンドピース（チップ）だけを使い、正規品の使用は施術前にご自身で確認していただけます。",
           "**日本語対応・通訳。** 日本語での相談に対応し、通訳が必要な場合は無料で手配されます。外国人料金や通訳料はありません。",
           "**院長の対面カウンセリング。** 1:1専門相談費用は1万ウォンで、当日施術を行う場合は施術金額から全額差し引かれます。"
@@ -8653,7 +8487,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "麻酔",
-            "無麻酔（振動技術で痛み軽減）"
+            "無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から選択（カウンセリングで決定）"
           ],
           [
             "回復",
@@ -8680,7 +8514,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**麻酔と痛み。** 施術ページでは、振動技術で痛みが軽減されるため「無麻酔」と案内されています。施術前に約30分間麻酔クリームを塗ることもでき、ほとんどの方が快適に施術を受けられます。痛みに敏感な方は追加の痛み調節が可能ですので、カウンセリングでお伝えください。",
+          "**麻酔と痛み。** サーマジFLXは、無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔のいずれでも行うことができ、方法はカウンセリングで院長と決めます。麻酔クリームを使う場合は、施術前に約30分間塗ります。痛みに敏感な方は、カウンセリングでお伝えください。",
           "**ダウンタイム。** 施術後すぐに日常生活に戻れます。一時的な赤みが出ることがあります。",
           "**効果と持続。** 施術直後の弾力改善に加えて、3〜6ヶ月かけてコラーゲンが再生すると案内されています。持続は6ヶ月〜1年程度で、肌の状態・年齢・生活習慣によって変わります。効果には個人差があり、結果を事前にお約束するものではありません。",
           "**旧世代との違い。** サイトによると、サーマジFLXはAccuREP技術でエネルギーを自動調整し、施術が25%速くなっています。"
@@ -8737,8 +8571,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "肌の弾力低下が気になる方",
           "小じわを改善したい方",
-          "自然で少しずつの変化を望む方",
-          "麻酔なしの施術を希望する方"
+          "自然で少しずつの変化を望む方"
         ]
       },
       {
@@ -8769,13 +8602,13 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "部位・ショット数・最終料金は、院長とのカウンセリングで決まります。この記事の数字は、旅行の計画を立てるための公開料金の目安です。ご質問は[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からどうぞ。営業日1日以内に返信いたします。"
+        "text": "部位・麻酔の方法・最終料金は、院長とのカウンセリングで決まります。この記事の数字は、旅行の計画を立てるための公開料金の目安です。ご質問は[外国人患者向けページ](/international)または[お問い合わせフォーム](/contact)からどうぞ。営業日1日以内に返信いたします。"
       }
     ],
     "faq": [
       {
         "q": "韓国のサーマクール（サーマジFLX）はいくらですか？",
-        "a": "LIVの公開料金は1回あたり、300ショット1,300,000ウォン〜、600ショット2,400,000ウォン〜、900ショット3,300,000ウォン〜です。アイ専用チップは225ショット1,000,000ウォン〜、450ショット1,600,000ウォン〜。いずれも税別で、最終料金はカウンセリング後に確定します。"
+        "a": "LIVの公開料金は1回あたり、顔全体（推奨600ショット）が2,400,000ウォン〜です。目もとはアイ専用チップ225ショットで1,000,000ウォン〜。いずれも税別で、最終料金はカウンセリング後に確定します。"
       },
       {
         "q": "外国人だと料金が高くなりますか？",
@@ -8787,7 +8620,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "痛みはどのくらいですか？",
-        "a": "痛みは施術の種類や個人差によって異なります。サーマジFLXは振動技術（Vibrating Tip）により痛みが軽減されており、医療Q&Aでは「ほとんどの患者様が快適に施術を受けられる」と案内しています。痛みに敏感な方は、カウンセリングで追加の痛み調節をご相談ください。"
+        "a": "痛みは施術の種類や個人差によって異なります。サーマジFLXは振動技術（Vibrating Tip）により痛みが軽減されており、医療Q&Aでは「ほとんどの患者様が快適に施術を受けられる」と案内しています。麻酔は無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から、カウンセリングで方法を決めます。痛みに敏感な方はその際にお伝えください。"
       },
       {
         "q": "効果はどのくらい持ちますか？何回受ければよいですか？",
@@ -8795,10 +8628,10 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "目もとにも施術できますか？",
-        "a": "はい。サーマジのアイ専用チップで施術でき、225ショットと450ショットの料金が公開されています。"
+        "a": "はい。サーマジのアイ専用チップで施術でき、225ショットで1回1,000,000ウォン〜の料金が公開されています。"
       }
     ],
-    "readingMinutes": 9,
+    "readingMinutes": 8,
     "reviewMarkers": 0
   },
   {
@@ -9315,7 +9148,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "ja",
@@ -9363,7 +9196,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "麻酔",
             "麻酔クリーム（30分）",
-            "通常は無麻酔（振動技術で痛み軽減）・希望により麻酔クリーム",
+            "無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔から選択（カウンセリングで決定）",
             "麻酔クリーム（選択）"
           ],
           [
@@ -9388,7 +9221,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "表の値はLIVの各施術ページと外国人向け案内ページの記載です（シュリンクの再来院は予約時にご確認ください）。サーマクールFLXは振動技術で痛みが軽減されるため、通常は麻酔なしで行い、ご希望があれば麻酔クリームを塗ることもできます。"
+        "text": "表の値はLIVの各施術ページと外国人向け案内ページの記載です（シュリンクの再来院は予約時にご確認ください）。サーマクールFLXは振動技術で痛みが軽減されており、麻酔は無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔のなかから、カウンセリングで方法を決めます。"
       },
       {
         "type": "h2",
@@ -9409,7 +9242,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「弾力低下が気になる」「小じわを改善したい」「自然で段階的な変化がいい」「麻酔なしで受けたい」方向け。対象は顔全体・目元・首・ボディ（目もとはサーマジアイ専用チップ）。FLXはAccuREP技術でエネルギーを自動調整し、旧世代より25%高速化。施術は年1〜2回が推奨で、LIVはサーマクールFLXのパートナー院です（[サーマクールのページ](/lifting/thermage)）。"
+        "text": "「弾力低下が気になる」「小じわを改善したい」「自然で段階的な変化がいい」方向け。対象は顔全体・目元・首・ボディで、推奨は顔全体600ショット、目もとは225ショットのサーマジアイ専用チップを使います。FLXはAccuREP技術でエネルギーを自動調整し、旧世代より25%高速化。施術は年1〜2回が推奨で、LIVはサーマクールFLXのパートナー院です（[サーマクールのページ](/lifting/thermage)）。"
       },
       {
         "type": "h3",
@@ -9465,11 +9298,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "アイサーマジ",
             "225ショット",
             "1,000,000ウォン〜"
-          ],
-          [
-            "アイサーマジ",
-            "450ショット",
-            "1,600,000ウォン〜"
           ],
           [
             "シュリンク",
@@ -9597,7 +9425,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "locale": "zh",
     "slug": "book-seoul-clinic-foreigner",
@@ -9717,7 +9545,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**到达**：地铁3号线新沙站4号出口步行1分钟，自恩大厦4层。",
           "**面诊**：由整形外科专科医生面诊，确认远程咨询时定下的方案。可以用中文沟通，如需翻译可免费安排，预约时说明即可。",
-          "**准备**：视项目而定，可能先敷麻醉霜。[超声刀 Prime](/lifting/ulthera)敷约30分钟；[热玛吉 FLX](/lifting/thermage)无需麻醉（振动技术减少疼痛）；[肉毒素](/antiaging/botox)无需麻醉，如有需要也可以敷麻醉霜。",
+          "**准备**：视项目而定，可能先敷麻醉霜。[超声刀 Prime](/lifting/ulthera)敷约30分钟；[热玛吉 FLX](/lifting/thermage)可选择无麻醉、麻醉霜、局部麻醉或睡眠麻醉，方式在面诊时决定；[肉毒素](/antiaging/botox)无需麻醉，如有需要也可以敷麻醉霜。",
           "**治疗**：大多数非手术项目总共30~90分钟（超声刀 Prime 60~90分钟、热玛吉 FLX 45~60分钟、肉毒素10~20分钟），无需住院。",
           "**离开前**：领取中文的书面术后护理指南。"
         ]
@@ -10145,7 +9973,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "aftercare",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh",
@@ -10184,7 +10012,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[热玛吉FLX](/lifting/thermage)",
             "45–60分钟",
-            "无需麻醉（振动技术减少疼痛）",
+            "无麻醉、麻醉霜、局部麻醉或睡眠麻醉（面诊时决定）",
             "即刻可恢复日常生活",
             "当天 · 无需复诊"
           ],
@@ -10224,7 +10052,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV的其他提升仪器——Shurink（30–45分钟）、InMode（30–60分钟）、Density（40–60分钟）、ONDA（面部15–30分钟）——官网也标注为\"即刻可恢复日常生活\"或\"无恢复期\"，虽然不在复诊列表中，但一般都是一次治疗即完成，通常不需要复诊；维护保养的间隔在面诊时确定。"
+        "text": "LIV的其他提升仪器——Shurink（30–45分钟）、Density（40–60分钟）、ONDA（面部15–30分钟）——官网也标注为\"即刻可恢复日常生活\"或\"无恢复期\"，虽然不在复诊列表中，但一般都是一次治疗即完成，通常不需要复诊；维护保养的间隔在面诊时确定。"
       },
       {
         "type": "p",
@@ -10439,7 +10267,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-24",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh",
@@ -10629,7 +10457,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[热玛吉 FLX（Thermage FLX）](/lifting/thermage)",
             "45–60分钟",
-            "无需麻醉（振动技术减少疼痛）",
+            "无麻醉、麻醉霜、局部麻醉或睡眠麻醉（面诊时决定）",
             "即刻可恢复日常生活",
             "1,000,000韩元起（眼部探头 225发）"
           ],
@@ -10646,13 +10474,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "无需麻醉",
             "无恢复期",
             "面诊时报价"
-          ],
-          [
-            "[InMode](/lifting/inmode)",
-            "30–60分钟",
-            "无麻醉或麻醉霜",
-            "即刻可恢复日常生活",
-            "150,000韩元起（FX 模式）"
           ],
           [
             "[Shurink](/lifting/shurink)",
@@ -11037,7 +10858,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "zh",
@@ -11089,7 +10910,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "麻醉",
             "麻醉霜（30分钟）",
-            "通常无需麻醉（振动技术减少疼痛），可按需涂麻醉霜",
+            "无麻醉、麻醉霜、局部麻醉或睡眠麻醉（面诊时决定）",
             "麻醉霜（可选）"
           ],
           [
@@ -11114,7 +10935,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "治疗时间、麻醉、恢复和效果取自LIV各项目页面；超声刀和热玛吉“无需复诊”取自国际患者页面。Shurink 没有公开的复诊说明，预约时请询问。关于疼痛：超声刀涂麻醉霜后进行，多数人可以承受；热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛，通常无需麻醉即可进行，如有需要也可以涂麻醉霜。如果你对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知。"
+        "text": "治疗时间、麻醉、恢复和效果取自LIV各项目页面；超声刀和热玛吉“无需复诊”取自国际患者页面。Shurink 没有公开的复诊说明，预约时请询问。关于疼痛：超声刀涂麻醉霜后进行，多数人可以承受；热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛；麻醉可选择无麻醉、麻醉霜、局部麻醉或睡眠麻醉，方式在面诊时决定。如果你对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知。"
       },
       {
         "type": "h2",
@@ -11135,7 +10956,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "热玛吉是RF项目，面向“在意皮肤弹性下降的人”“想改善细纹的人”“希望自然、渐进变化的人”“希望不用麻醉的人”。治疗部位包括全脸、眼周、颈部和身体，眼周使用热玛吉眼部专用探头。与旧版本相比，FLX的AccuREP技术会自动调节能量，速度快25%。治疗后即刻改善弹力，3–6个月胶原蛋白再生，诊所建议每年1–2次。LIV是热玛吉(Thermage FLX)合作诊所。详见[热玛吉页面](/lifting/thermage)。"
+        "text": "热玛吉是RF项目，面向“在意皮肤弹性下降的人”“想改善细纹的人”“希望自然、渐进变化的人”。治疗部位包括全脸、眼周、颈部和身体；全脸建议600发，眼周使用225发的热玛吉眼部专用探头。与旧版本相比，FLX的AccuREP技术会自动调节能量，速度快25%。治疗后即刻改善弹力，3–6个月胶原蛋白再生，诊所建议每年1–2次。LIV是热玛吉(Thermage FLX)合作诊所。详见[热玛吉页面](/lifting/thermage)。"
       },
       {
         "type": "h3",
@@ -11191,11 +11012,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "眼部热玛吉",
             "225发",
             "1,000,000韩元起"
-          ],
-          [
-            "眼部热玛吉",
-            "450发",
-            "1,600,000韩元起"
           ],
           [
             "Shurink",
@@ -11325,7 +11141,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "locale": "zh-TW",
     "slug": "book-seoul-clinic-foreigner",
@@ -11445,7 +11261,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**抵達**：地鐵3號線新沙站4號出口步行1分鐘，自恩大廈4樓。診所緊鄰林蔭道，療程結束後可以步行前往。",
           "**面診**：由整形外科專科醫師面診，確認遠距諮詢時定下的方案。可以用中文溝通，如需翻譯可免費安排，預約時說明即可。",
-          "**準備**：視療程而定，可能先敷麻醉藥膏。[音波拉提 Prime](/lifting/ulthera)敷約30分鐘；[鳳凰電波 FLX](/lifting/thermage)不需麻醉（以震動技術減輕疼痛）；[肉毒桿菌素](/antiaging/botox)不需麻醉，有需要也可以敷麻醉藥膏。",
+          "**準備**：視療程而定，可能先敷麻醉藥膏。[音波拉提 Prime](/lifting/ulthera)敷約30分鐘；[鳳凰電波 FLX](/lifting/thermage)可選擇不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉，方式在面診時決定；[肉毒桿菌素](/antiaging/botox)不需麻醉，有需要也可以敷麻醉藥膏。",
           "**治療**：大多數非手術療程總共30~90分鐘（音波拉提 Prime 60~90分鐘、鳳凰電波 FLX 45~60分鐘、肉毒桿菌素10~20分鐘），不需住院。",
           "**離開前**：領取中文的書面術後護理指南。"
         ]
@@ -11863,8 +11679,8 @@ export const GUIDES: readonly GuideDoc[] = [
     "reviewMarkers": 0
   },
   {
-    "title": "韓國拉提療程怎麼選？依困擾整理首爾診所的8種拉提",
-    "description": "音波拉提(Ultherapy Prime)、鳳凰電波(Thermage FLX)、Density、InMode、ONDA、Shurink、埋線拉提與APTOS，依下垂、細紋、脂肪、恢復期、停留天數與2026年起價整理，附首爾新沙站LIV整形外科的8種療程總表。",
+    "title": "韓國拉提療程怎麼選？依困擾整理首爾診所的7種拉提",
+    "description": "音波拉提(Ultherapy Prime)、鳳凰電波(Thermage FLX)、Density、ONDA、Shurink、埋線拉提與APTOS，依下垂、細紋、脂肪、恢復期、停留天數與2026年起價整理，附首爾新沙站LIV整形外科的7種療程總表。",
     "keywords": [
       "韓國 拉提 怎麼選",
       "韓國 拉提療程 比較",
@@ -11875,7 +11691,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "zh-TW",
@@ -11883,11 +11699,11 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "打開首爾診所的拉提療程表，常常一次看到八個名字，而多數人只認得其中兩個。這篇文章把LIV整形外科的8種拉提療程，依診所自己在各療程頁面寫的「適合對象」重新整理，讓你在聯絡診所之前先知道自己的問題落在哪一格。它是一張地圖，不是診斷：實際方案要由醫師在面診時看過你的皮膚後決定。LIV位於首爾江南新沙站4號出口步行1分鐘，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接預約。"
+        "text": "打開首爾診所的拉提療程表，常常一次看到七個名字，而多數人只認得其中兩個。這篇文章把LIV整形外科的7種拉提療程，依診所自己在各療程頁面寫的「適合對象」重新整理，讓你在聯絡診所之前先知道自己的問題落在哪一格。它是一張地圖，不是診斷：實際方案要由醫師在面診時看過你的皮膚後決定。LIV位於首爾江南新沙站4號出口步行1分鐘，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接預約。"
       },
       {
         "type": "h2",
-        "text": "8種療程總表",
+        "text": "7種療程總表",
         "id": "s1"
       },
       {
@@ -11913,7 +11729,7 @@ export const GUIDES: readonly GuideDoc[] = [
             "[鳳凰電波 Thermage FLX](/lifting/thermage)",
             "RF（射頻），作用於真皮層",
             "45–60分鐘",
-            "通常不需麻醉，可依需求塗麻醉藥膏",
+            "不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定）",
             "可立即恢復日常生活",
             "1,000,000韓元起"
           ],
@@ -11924,14 +11740,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "麻醉藥膏（可選擇）",
             "可立即恢復日常生活",
             "890,000韓元起"
-          ],
-          [
-            "[InMode](/lifting/inmode)",
-            "射頻，分 FX 與 FORMA 模式",
-            "30–60分鐘",
-            "不麻醉或使用麻醉藥膏",
-            "可立即恢復日常生活",
-            "150,000韓元起"
           ],
           [
             "[ONDA](/lifting/onda)",
@@ -11999,8 +11807,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**鳳凰電波**：適合在意彈性下降、想改善細紋，希望自然、漸進變化的人。部位包括全臉、眼周、頸部與身體，眼周有專用探頭。",
-          "**InMode**：用途之一是膠原蛋白再生與細紋改善。"
+          "**鳳凰電波**：適合在意彈性下降、想改善細紋，希望自然、漸進變化的人。部位包括全臉、眼周、頸部與身體，眼周有專用探頭。"
         ]
       },
       {
@@ -12010,7 +11817,6 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**InMode**：診所推薦給臉部脂肪較多或皮膚鬆弛複合困擾的人，包括下巴下方脂肪、臉頰肉、臉部輪廓線與雙下巴。",
           "**ONDA**：適合彈性下降與局部脂肪同時存在的人，部位是臉部（臉頰、下顎線）、雙下巴與身體（腹部、側腰、大腿、手臂）。"
         ]
       },
@@ -12028,12 +11834,12 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "h3",
-        "text": "不想有恢復期、不想麻醉"
+        "text": "恢復期與麻醉"
       },
       {
         "type": "ul",
         "items": [
-          "六種儀器類療程的說明都是可立即恢復日常生活。**ONDA** 不需麻醉，**鳳凰電波**通常不需麻醉，**InMode** 也可以不麻醉。",
+          "五種儀器類療程的說明都是可立即恢復日常生活。**ONDA** 不需麻醉；**鳳凰電波**可選擇不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉，方式在面診時決定。",
           "**埋線拉提**與 **APTOS** 使用局部麻醉，3–7天內可能出現瘀青、腫脹。"
         ]
       },
@@ -12046,7 +11852,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "**Shurink**：面向第一次做拉提、想快速完成、想以合理費用做拉提的人。",
           "**Density**：價格合理的射頻拉提入門儀器。",
-          "八種當中公開起價最低的是 **InMode**。但價格低不代表處理的是同一種困擾，請先比較上面的「適合對象」，再看價格欄。"
+          "七種當中公開起價最低的也是 **Shurink**（200,000韓元起）。但價格低不代表處理的是同一種困擾，請先比較上面的「適合對象」，再看價格欄。"
         ]
       },
       {
@@ -12078,11 +11884,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "間隔3–6個月"
           ],
           [
-            "InMode",
-            "立即的彈性 + 逐漸的膠原蛋白再生",
-            "每3–6個月（維護）"
-          ],
-          [
             "ONDA",
             "在4–12週內逐漸顯現",
             "面診時確定"
@@ -12106,7 +11907,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "效果維持時間會因皮膚狀況、年齡與生活習慣而不同，週期在面診時確定。音波拉提、鳳凰電波與 Shurink 的細節見[三種療程比較](/guides/ultherapy-vs-thermage-vs-shurink)；Density、ONDA 與 InMode 見[三種儀器比較](/guides/density-onda-inmode-lifting-seoul)。"
+        "text": "效果維持時間會因皮膚狀況、年齡與生活習慣而不同，週期在面診時確定。音波拉提、鳳凰電波與 Shurink 的細節見[三種療程比較](/guides/ultherapy-vs-thermage-vs-shurink)；Density 與 ONDA 見[兩種儀器比較](/guides/density-vs-onda-lifting-seoul)。"
       },
       {
         "type": "h2",
@@ -12154,15 +11955,15 @@ export const GUIDES: readonly GuideDoc[] = [
     "faq": [
       {
         "q": "下顎線鬆弛適合做哪一種拉提？",
-        "a": "下顎線是音波拉提、Shurink、Density、ONDA、埋線拉提與 APTOS 的治療部位之一，InMode 也列出臉部輪廓線。哪一種適合，要看主要原因是皮膚下垂、臉部脂肪，還是兩者都有，這由醫師當面診斷。"
+        "a": "下顎線是音波拉提、Shurink、Density、ONDA、埋線拉提與 APTOS 的治療部位之一。哪一種適合，要看主要原因是皮膚下垂、臉部脂肪，還是兩者都有，這由醫師當面診斷。"
       },
       {
         "q": "哪些拉提療程沒有恢復期？",
-        "a": "音波拉提、鳳凰電波、Density、InMode、ONDA 與 Shurink 的說明都是可立即恢復日常生活。埋線拉提與 APTOS 在3–7天內可能出現瘀青、腫脹。"
+        "a": "音波拉提、鳳凰電波、Density、ONDA 與 Shurink 的說明都是可立即恢復日常生活。埋線拉提與 APTOS 在3–7天內可能出現瘀青、腫脹。"
       },
       {
         "q": "兩種拉提可以一起做嗎？",
-        "a": "有些可以。LIV說明音波拉提與鳳凰電波結合可產生協同效果，InMode 與鳳凰電波併行可帶來更強的彈性改善，埋線拉提可在1–2週後與雷射拉提併行。是否適合，要在面診時決定。"
+        "a": "有些可以。LIV說明音波拉提與鳳凰電波結合可產生協同效果，埋線拉提可在1–2週後與雷射拉提併行。是否適合，要在面診時決定。"
       },
       {
         "q": "一般埋線拉提和 APTOS 有什麼不同？",
@@ -12173,31 +11974,30 @@ export const GUIDES: readonly GuideDoc[] = [
         "a": "可以先告訴診所你有興趣的療程，診所看過照片後會提供建議與價格預估，最終方案在到院面診時確定。1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。"
       }
     ],
-    "readingMinutes": 7,
+    "readingMinutes": 6,
     "reviewMarkers": 0
   },
   {
-    "title": "Density vs ONDA vs InMode：首爾三種新型拉提儀器的差異與價格",
-    "description": "Density、ONDA、InMode 三種拉提療程在能量種類、治療時間、麻醉、恢復期、效果出現時間與2026年價格上的差異，以及首爾新沙站LIV整形外科把它們各自描述給哪一類困擾的人。",
+    "title": "Density vs ONDA：首爾兩種新型拉提儀器的差異與價格",
+    "description": "Density 與 ONDA 兩種拉提療程在能量種類、治療時間、麻醉、恢復期、效果出現時間與2026年價格上的差異，以及首爾新沙站LIV整形外科把它們各自描述給哪一類困擾的人。",
     "keywords": [
       "Density 拉提 韓國",
       "ONDA 韓國 價格",
-      "InMode 韓國 價格",
       "韓國 電波拉提 入門",
-      "Density InMode 差別",
+      "Density ONDA 差別",
       "首爾 拉提 推薦"
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "zh-TW",
-    "slug": "density-onda-inmode-lifting-seoul",
+    "slug": "density-vs-onda-lifting-seoul",
     "blocks": [
       {
         "type": "p",
-        "text": "音波拉提和鳳凰電波大家多半聽過，但一打開韓國診所的療程表，還會看到另外三個名字：Density、ONDA 與 InMode。這篇文章整理LIV對這三種儀器的說明、所需時間與恢復期，以及公開的價格，讓你在聯絡診所之前先有概念。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接聯絡診所預約，不需要透過中介。"
+        "text": "音波拉提和鳳凰電波大家多半聽過，但一打開韓國診所的療程表，還會看到另外兩個名字：Density 與 ONDA。這篇文章整理LIV對這兩種儀器的說明、所需時間與恢復期，以及公開的價格，讓你在聯絡診所之前先有概念。LIV整形外科位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，可以用中文直接聯絡診所預約，不需要透過中介。"
       },
       {
         "type": "h2",
@@ -12206,14 +12006,13 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "三種儀器用的能量不同，診所描述的適合對象也不同。"
+        "text": "兩種儀器用的能量不同，診所描述的適合對象也不同。"
       },
       {
         "type": "ul",
         "items": [
           "**Density**：依LIV的說法，是「價格合理的射頻（RF）拉提入門儀器」，治療部位是額頭、眼周、臉頰、下顎線與頸部。",
-          "**ONDA**：不是射頻，使用的是2.45GHz微波；不需麻醉，也是三者中唯一同時用於身體的儀器。",
-          "**InMode**：診所推薦給臉部脂肪較多或皮膚鬆弛複合困擾的人，分為 FX 與 FORMA 模式，價格分開計算。"
+          "**ONDA**：不是射頻，使用的是2.45GHz微波；不需麻醉，而且和 Density 不同，也用於身體。"
         ]
       },
       {
@@ -12222,7 +12021,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "h2",
-        "text": "三種療程一覽",
+        "text": "兩種療程一覽",
         "id": "s2"
       },
       {
@@ -12230,55 +12029,46 @@ export const GUIDES: readonly GuideDoc[] = [
         "header": [
           "",
           "Density",
-          "ONDA",
-          "InMode"
+          "ONDA"
         ],
         "rows": [
           [
             "能量（依網站說明）",
             "RF（射頻）",
-            "2.45GHz微波（不是射頻）",
-            "RF（射頻）"
+            "2.45GHz微波（不是射頻）"
           ],
           [
             "治療時間",
             "40–60分鐘",
-            "臉部15–30分鐘 / 身體每個部位約10分鐘",
-            "30–60分鐘"
+            "臉部15–30分鐘 / 身體每個部位約10分鐘"
           ],
           [
             "麻醉",
             "麻醉藥膏（可選擇）",
-            "不需麻醉",
-            "不麻醉或使用麻醉藥膏"
+            "不需麻醉"
           ],
           [
             "恢復",
             "可立即恢復日常生活",
-            "無恢復期（治療後可立即恢復日常生活）",
-            "可立即恢復日常生活"
+            "無恢復期（治療後可立即恢復日常生活）"
           ],
           [
             "效果",
             "立即拉提 + 3–6個月膠原蛋白再生",
-            "在4–12週內逐漸顯現（因人而異）",
-            "立即的彈性 + 逐漸的膠原蛋白再生"
+            "在4–12週內逐漸顯現（因人而異）"
           ],
           [
             "治療部位",
             "額頭、眼周、臉頰、下顎線、頸部",
-            "臉部（臉頰、下顎線）、雙下巴、腹部、側腰、大腿、手臂",
-            "下巴下方、臉頰、臉部輪廓線、雙下巴、深層臉頰"
+            "臉部（臉頰、下顎線）、雙下巴、腹部、側腰、大腿、手臂"
           ],
           [
             "治療間隔",
             "建議間隔3–6個月",
-            "面診時確定",
-            "作為維護性治療每3–6個月一次"
+            "面診時確定"
           ],
           [
             "是否回診",
-            "面診時確認",
             "面診時確認",
             "面診時確認"
           ]
@@ -12286,11 +12076,11 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "以上內容取自LIV各療程頁面與醫療問答。國際患者頁面的回診說明只涵蓋音波拉提、鳳凰電波與埋線拉提等療程，這三種儀器是否需要回診，預約時請詢問。"
+        "text": "以上內容取自LIV各療程頁面與醫療問答。國際患者頁面的回診說明只涵蓋音波拉提、鳳凰電波與埋線拉提等療程，這兩種儀器是否需要回診，預約時請詢問。"
       },
       {
         "type": "h2",
-        "text": "三種儀器各自的用途",
+        "text": "兩種儀器各自的用途",
         "id": "s3"
       },
       {
@@ -12310,21 +12100,13 @@ export const GUIDES: readonly GuideDoc[] = [
         "text": "很多人以為 ONDA 也是電波（射頻），診所的回答是「不是。ONDA使用2.45GHz微波」。LIV把它描述為適合「彈性下降與局部脂肪同時存在的人」「希望沒有恢復期就能改善的人」「想同時管理臉部與身體的人」。臉部（臉頰、下顎線）與雙下巴約15–30分鐘，身體（腹部、側腰、大腿、手臂）每個部位約10分鐘。不需麻醉即可進行，感受被描述為類似溫熱的按摩。效果並非立即出現，而是在4–12週內逐漸顯現，因人而異。詳見[ONDA 頁面](/lifting/onda)。"
       },
       {
-        "type": "h3",
-        "text": "InMode"
-      },
-      {
-        "type": "p",
-        "text": "診所把 InMode 推薦給臉部脂肪較多或皮膚鬆弛複合困擾的人。列出的用途包括：減少下巴下方脂肪並加強彈性、臉頰拉提與修飾臉部輪廓線、改善雙下巴與深層臉頰，以及皮膚內膠原蛋白再生與細紋改善。治療30–60分鐘，不麻醉或使用麻醉藥膏。LIV把它和 Shurink 並列為每3–6個月可以進行一次的維護性治療；與鳳凰電波併行時，診所說明射頻的加乘效果可帶來更強的彈性改善。詳見[InMode 頁面](/lifting/inmode)。"
-      },
-      {
         "type": "h2",
         "text": "2026年LIV價格（單次、未含加值稅）",
         "id": "2026liv"
       },
       {
         "type": "p",
-        "text": "Density 與 InMode 的價格公開在各自的療程頁面。"
+        "text": "Density 的價格公開在療程頁面。"
       },
       {
         "type": "table",
@@ -12355,21 +12137,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "1,800,000韓元起"
           ],
           [
-            "InMode",
-            "FX 模式",
-            "150,000韓元起"
-          ],
-          [
-            "InMode",
-            "FORMA 模式",
-            "200,000韓元起"
-          ],
-          [
-            "InMode",
-            "FX / FORMA 模式",
-            "250,000韓元起"
-          ],
-          [
             "ONDA",
             "臉部或身體各部位",
             "面診時報價"
@@ -12382,7 +12149,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「起」代表起價：Density 用哪一種探頭、打幾發，InMode 用哪一種模式，在面診時和醫師確認後，最終價格才會確定。音波拉提、鳳凰電波與 Shurink 的價格請看[價格說明頁](/pricing)與[音波拉提 vs 鳳凰電波 vs Shurink 比較](/guides/ultherapy-vs-thermage-vs-shurink)。"
+        "text": "「起」代表起價：Density 用哪一種探頭、打幾發，在面診時和醫師確認後，最終價格才會確定。音波拉提、鳳凰電波與 Shurink 的價格請看[價格說明頁](/pricing)與[音波拉提 vs 鳳凰電波 vs Shurink 比較](/guides/ultherapy-vs-thermage-vs-shurink)。"
       },
       {
         "type": "h2",
@@ -12406,15 +12173,11 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "彈性下降，同時有局部脂肪",
-            "ONDA、InMode"
+            "ONDA"
           ],
           [
             "雙下巴",
-            "ONDA、InMode"
-          ],
-          [
-            "下巴下方脂肪、臉頰肉、臉部輪廓線",
-            "InMode"
+            "ONDA"
           ],
           [
             "臉部和身體想一起管理",
@@ -12422,11 +12185,11 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "不想麻醉",
-            "ONDA（不需麻醉）；InMode（不麻醉或麻醉藥膏）"
+            "ONDA（不需麻醉）"
           ],
           [
-            "每3–6個月定期維護",
-            "InMode、Density"
+            "每3–6個月持續治療",
+            "Density"
           ]
         ]
       },
@@ -12446,11 +12209,11 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**懷孕或哺乳期。** Density 與 InMode 在懷孕或哺乳期不能做。ONDA 則請在諮詢時務必告知。",
+          "**懷孕或哺乳期。** Density 在懷孕或哺乳期不能做。ONDA 則請在諮詢時務必告知。",
           "**心臟節律器、體內金屬植入物。** 做 ONDA 前，如有心臟節律器或體內金屬植入物，請務必告知。",
-          "**治療部位的皮膚狀況。** 做 ONDA 前，治療部位如有發炎、感染或傷口，請告知。Density 與 InMode 能否治療要依皮膚狀況在面診時確認。",
+          "**治療部位的皮膚狀況。** 做 ONDA 前，治療部位如有發炎、感染或傷口，請告知。Density 能否治療要依皮膚狀況在面診時確認。",
           "**慢性疾病。** 做 ONDA 前，如有未控制的糖尿病等疾病，請告知。",
-          "**治療後。** Density 與 InMode 治療後可能有輕微腫脹、泛紅。"
+          "**治療後。** Density 治療後可能有輕微腫脹、泛紅。"
         ]
       },
       {
@@ -12466,7 +12229,7 @@ export const GUIDES: readonly GuideDoc[] = [
           "**語言。** 提供中文諮詢，需要時免費安排翻譯。",
           "**診療時間。** 週一至週五 10:00–19:00，週六 10:00–16:00，週日休診（韓國時間）。",
           "**交通。** 地鐵3號線新沙站4號出口步行1分鐘，見[交通資訊](/about/location)。",
-          "**回程航班。** 三種療程的說明都是治療後可立即恢復日常生活。個別的時間在面診時與你確認，行程安排可參考[恢復期與搭機指南](/guides/downtime-flight-travel-plan)。"
+          "**回程航班。** 兩種療程的說明都是治療後可立即恢復日常生活。個別的時間在面診時與你確認，行程安排可參考[恢復期與搭機指南](/guides/downtime-flight-travel-plan)。"
         ]
       },
       {
@@ -12476,32 +12239,28 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "這篇文章能告訴你三種儀器的差異，但不能告訴你你的皮膚需要哪一種——那要在面診時由整形外科專科醫師親自診斷後決定（見[醫療團隊](/about/staff)）。1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣，也可以只諮詢、之後再決定。有問題可以透過[國際患者頁面](/international)或[線上諮詢表單](/contact)聯絡診所；更多回答見[醫療問答頁](/medical)。"
+        "text": "這篇文章能告訴你兩種儀器的差異，但不能告訴你你的皮膚需要哪一種——那要在面診時由整形外科專科醫師親自診斷後決定（見[醫療團隊](/about/staff)）。1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣，也可以只諮詢、之後再決定。有問題可以透過[國際患者頁面](/international)或[線上諮詢表單](/contact)聯絡診所；更多回答見[醫療問答頁](/medical)。"
       }
     ],
     "faq": [
       {
         "q": "ONDA 是射頻（RF）治療嗎？",
-        "a": "不是。ONDA使用2.45GHz微波。這篇比較中屬於射頻（RF）的是 Density 與 InMode。"
+        "a": "不是。ONDA使用2.45GHz微波。這篇比較中屬於射頻（RF）的是 Density。"
       },
       {
-        "q": "Density、ONDA、InMode 需要麻醉嗎？",
-        "a": "ONDA 不需麻醉即可進行，感受被描述為類似溫熱的按摩。InMode 不麻醉或使用麻醉藥膏，Density 的麻醉藥膏可選擇。"
+        "q": "Density、ONDA 需要麻醉嗎？",
+        "a": "ONDA 不需麻醉即可進行，感受被描述為類似溫熱的按摩。Density 的麻醉藥膏可選擇。"
       },
       {
         "q": "效果什麼時候出現？",
-        "a": "依LIV的說明，Density 是立即拉提加上3–6個月膠原蛋白再生，InMode 是立即的彈性加上逐漸的膠原蛋白再生。ONDA 並非立即出現，而是在4–12週內逐漸顯現。效果因人而異。"
+        "a": "依LIV的說明，Density 是立即拉提加上3–6個月膠原蛋白再生。ONDA 並非立即出現，而是在4–12週內逐漸顯現。效果因人而異。"
       },
       {
         "q": "這些療程多久做一次？",
-        "a": "Density 建議間隔3–6個月；InMode 屬於每3–6個月可以進行一次的維護性治療。治療週期會依你的皮膚狀況與期望效果而不同，準確的週期在面診時確定。"
-      },
-      {
-        "q": "InMode 可以和鳳凰電波一起做嗎？",
-        "a": "可以。LIV說明射頻的加乘效果可帶來更強的彈性改善。是否適合併行，要在面診時決定。"
+        "a": "Density 建議間隔3–6個月；ONDA 的間隔在面診時確定。治療週期會依你的皮膚狀況與期望效果而不同，準確的週期要和醫師討論後決定。"
       }
     ],
-    "readingMinutes": 7,
+    "readingMinutes": 6,
     "reviewMarkers": 0
   },
   {
@@ -12518,7 +12277,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "aftercare",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh-TW",
@@ -12557,7 +12316,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[鳳凰電波 FLX](/lifting/thermage)",
             "45–60分鐘",
-            "不需麻醉（以震動技術減輕疼痛）",
+            "不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定）",
             "可立即恢復日常生活",
             "當天 · 無需複診"
           ],
@@ -12597,7 +12356,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "LIV的其他拉提儀器——Shurink（30–45分鐘）、InMode（30–60分鐘）、Density（40–60分鐘）、ONDA（臉部15–30分鐘）——官網也標示為「可立即恢復日常生活」或「無恢復期」，雖然不在複診清單中，但一般都是一次療程即完成，通常不需要複診；維持保養的間隔在面診時決定。"
+        "text": "LIV的其他拉提儀器——Shurink（30–45分鐘）、Density（40–60分鐘）、ONDA（臉部15–30分鐘）——官網也標示為「可立即恢復日常生活」或「無恢復期」，雖然不在複診清單中，但一般都是一次療程即完成，通常不需要複診；維持保養的間隔在面診時決定。"
       },
       {
         "type": "p",
@@ -12813,7 +12572,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh-TW",
@@ -12873,7 +12632,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "[鳳凰電波 FLX](/lifting/thermage)",
-            "不需麻醉（以震動技術減輕疼痛）",
+            "不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定）",
             "45~60分鐘",
             "無需複診"
           ],
@@ -13088,7 +12847,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-24",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh-TW",
@@ -13278,7 +13037,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "[鳳凰電波 FLX（Thermage FLX）](/lifting/thermage)",
             "45–60分鐘",
-            "不需麻醉（以震動技術減輕疼痛）",
+            "不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定）",
             "可立即恢復日常生活",
             "1,000,000韓元起（眼部探頭 225發）"
           ],
@@ -13295,13 +13054,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "不需麻醉",
             "無恢復期",
             "面診時報價"
-          ],
-          [
-            "[InMode](/lifting/inmode)",
-            "30–60分鐘",
-            "不麻醉或使用麻醉藥膏",
-            "可立即恢復日常生活",
-            "150,000韓元起（FX 模式）"
           ],
           [
             "[Shurink](/lifting/shurink)",
@@ -15140,7 +14892,7 @@ export const GUIDES: readonly GuideDoc[] = [
   },
   {
     "title": "韓國鳳凰電波 Thermage FLX 價格與行程規劃｜首爾新沙 LIV整形外科",
-    "description": "LIV整形外科位於首爾新沙站步行1分鐘、林蔭道旁。本文公開鳳凰電波(Thermage FLX) 300、600、900發與眼部專用探頭的價格，說明費用包含什麼、療程需時多久、麻醉方式、恢復期、效果維持多久，並整理以LINE或WhatsApp預約的步驟、免費翻譯與付款方式，方便把療程排進首爾行程。",
+    "description": "LIV整形外科位於首爾新沙站步行1分鐘、林蔭道旁。本文公開鳳凰電波(Thermage FLX) 全臉600發與眼部專用探頭225發的價格，說明費用包含什麼、療程需時多久、麻醉方式、恢復期、效果維持多久，並整理以LINE或WhatsApp預約的步驟、免費翻譯與付款方式，方便把療程排進首爾行程。",
     "keywords": [
       "韓國 鳳凰電波 價格",
       "首爾 鳳凰電波 推薦",
@@ -15152,7 +14904,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "price",
     "status": "published",
-    "updated": "2026-11-10",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting/thermage",
     "locale": "zh-TW",
@@ -15160,7 +14912,7 @@ export const GUIDES: readonly GuideDoc[] = [
     "blocks": [
       {
         "type": "p",
-        "text": "這篇文章寫給打算在首爾旅行或出差期間做鳳凰電波（Thermage FLX，也常稱電波拉皮）、想先看到公開價格再聯絡診所的讀者。內容整理自LIV整形外科官網：幾發多少錢、療程要多久、麻醉與恢復期如何，以及怎麼排進短天數的行程。[LIV整形外科](/international)位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，沒有外國人加價，可以用中文直接聯絡診所預約。"
+        "text": "這篇文章寫給打算在首爾旅行或出差期間做鳳凰電波（Thermage FLX，也常稱電波拉皮）、想先看到公開價格再聯絡診所的讀者。內容整理自LIV整形外科官網：全臉與眼周多少錢、療程要多久、麻醉與恢復期如何，以及怎麼排進短天數的行程。[LIV整形外科](/international)位於首爾江南新沙站4號出口步行1分鐘、林蔭道旁，專注非手術抗老化療程；外國患者與韓國患者使用同一份價目表，沒有外國人加價，可以用中文直接聯絡診所預約。"
       },
       {
         "type": "h2",
@@ -15169,7 +14921,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "鳳凰電波 FLX 依發數計價，眼周使用眼部專用探頭，另有獨立價格。下表是[鳳凰電波 FLX 療程頁](/lifting/thermage)公開的單次起價；[價格說明頁](/pricing)列出的是600發與眼部鳳凰電波。"
+        "text": "在LIV，全臉以600發規劃，眼周則使用225發的眼部專用探頭，另有獨立價格。下表是[鳳凰電波 FLX 療程頁](/lifting/thermage)與[價格說明頁](/pricing)公開的單次起價。"
       },
       {
         "type": "table",
@@ -15180,29 +14932,14 @@ export const GUIDES: readonly GuideDoc[] = [
         ],
         "rows": [
           [
-            "鳳凰電波 FLX",
-            "300發",
-            "1,300,000韓元起"
-          ],
-          [
-            "鳳凰電波 FLX",
+            "鳳凰電波 FLX（全臉）",
             "600發",
             "2,400,000韓元起"
-          ],
-          [
-            "鳳凰電波 FLX",
-            "900發",
-            "3,300,000韓元起"
           ],
           [
             "眼部鳳凰電波（眼部專用探頭）",
             "225發",
             "1,000,000韓元起"
-          ],
-          [
-            "眼部鳳凰電波（眼部專用探頭）",
-            "450發",
-            "1,600,000韓元起"
           ]
         ]
       },
@@ -15212,7 +14949,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "「起」代表起價：要打幾發，由院長看過膚況、與你討論後決定，最終價格也在這時確定。標價未含加值稅，付款時另計。"
+        "text": "「起」代表起價：治療內容由院長看過膚況、與你討論後決定，最終價格也在這時確定。標價未含加值稅，付款時另計。"
       },
       {
         "type": "h3",
@@ -15221,7 +14958,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**對應部位的發數。** 鳳凰電波 FLX 以射頻(RF)能量的發數計價。治療部位包括全臉、眼周、頸部與身體；你的部位需要幾發，在面診時決定。",
+          "**對應部位的建議發數。** 鳳凰電波 FLX 以射頻(RF)能量的發數計價。建議全臉600發，眼周使用眼部專用探頭225發。頸部與身體也可以治療，你的治療內容在面診時確認。",
           "**正品 Thermage FLX 儀器與正品探頭。** LIV整形外科是鳳凰電波(Thermage FLX)合作診所，也是音波拉提(Ultherapy Prime)正品認證診所，只使用正品認證的手具（探頭）。療程前可以親自確認。",
           "**中文溝通與翻譯，不另收費。** 提供中文諮詢，需要時免費安排翻譯；沒有外國人加價，也沒有語言服務費。",
           "**院長當面面診。** 1對1專業諮詢費用為1萬韓元，當天進行治療時可從治療費用中全額抵扣。"
@@ -15245,7 +14982,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "麻醉",
-            "不需麻醉（以震動技術減輕疼痛）"
+            "不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定）"
           ],
           [
             "恢復",
@@ -15272,7 +15009,7 @@ export const GUIDES: readonly GuideDoc[] = [
       {
         "type": "ul",
         "items": [
-          "**麻醉與疼痛：** 療程頁標示為「不需麻醉」，因為震動技術可減輕疼痛；療程前也可以塗抹約30分鐘的麻醉藥膏，大多數患者都能舒適地接受治療。如果你對疼痛敏感，可以進行額外的疼痛控制，請在面診時告知。",
+          "**麻醉與疼痛：** 鳳凰電波 FLX 可以不麻醉，也可以使用麻醉藥膏、局部麻醉或睡眠麻醉，方式在面診時與院長決定。使用麻醉藥膏時，療程前約塗抹30分鐘。如果你對疼痛敏感，請在面診時告知。",
           "**恢復期：** 療程後可立即恢復日常生活。療程後可能出現暫時性的泛紅。",
           "**效果與維持：** 官網說明為立即改善彈性，之後3–6個月膠原蛋白再生；效果約可維持6個月–1年，會因個人膚況、年齡與生活習慣而不同。效果因人而異，無法事先保證。",
           "**與舊機型的差別：** 依官網說明，鳳凰電波 FLX 以 AccuREP 技術自動調節能量，治療速度快25%。"
@@ -15313,7 +15050,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "rows": [
           [
             "面診",
-            "院長當面確認部位與發數，確定最終價格（可安排免費翻譯）",
+            "院長當面確認部位與麻醉方式，確定最終價格（可安排免費翻譯）",
             "—"
           ],
           [
@@ -15371,8 +15108,7 @@ export const GUIDES: readonly GuideDoc[] = [
         "items": [
           "有皮膚彈性下降困擾的人",
           "想改善細紋的人",
-          "希望變化自然、循序漸進的人",
-          "希望不需麻醉的人"
+          "希望變化自然、循序漸進的人"
         ]
       },
       {
@@ -15403,13 +15139,13 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "治療部位、發數與最終價格，都在與院長面診時確定；本文的數字是官網公開的起價，方便你提前規劃行程。有任何問題，可透過[外國患者專頁](/international)或[線上諮詢表單](/contact)聯絡診所，一個工作天內會得到回覆。"
+        "text": "治療部位、麻醉方式與最終價格，都在與院長面診時確定；本文的數字是官網公開的起價，方便你提前規劃行程。有任何問題，可透過[外國患者專頁](/international)或[線上諮詢表單](/contact)聯絡診所，一個工作天內會得到回覆。"
       }
     ],
     "faq": [
       {
         "q": "在首爾做鳳凰電波 Thermage FLX 要多少錢？",
-        "a": "LIV公開的單次起價為：300發1,300,000韓元、600發2,400,000韓元、900發3,300,000韓元；眼部專用探頭225發1,000,000韓元、450發1,600,000韓元。價格未含加值稅，最終價格在面診後確定。"
+        "a": "LIV公開的單次起價為：全臉（建議600發）2,400,000韓元；眼周使用眼部專用探頭225發，1,000,000韓元。價格未含加值稅，最終價格在面診後確定。"
       },
       {
         "q": "外國人做鳳凰電波會比較貴嗎？",
@@ -15421,7 +15157,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "鳳凰電波會很痛嗎？",
-        "a": "疼痛程度因療程與個人而異。鳳凰電波 FLX 採用震動技術（Vibrating Tip）減輕疼痛，醫療問答頁說明大多數患者都能舒適地接受治療。對疼痛敏感的人，可在面診時提出，安排額外的疼痛控制。"
+        "a": "疼痛程度因療程與個人而異。鳳凰電波 FLX 採用震動技術（Vibrating Tip）減輕疼痛，醫療問答頁說明大多數患者都能舒適地接受治療。麻醉可選擇不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉，方式在面診時決定；對疼痛敏感的人，請在面診時提出。"
       },
       {
         "q": "效果能維持多久？多久做一次？",
@@ -15429,7 +15165,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "q": "眼周也可以做鳳凰電波嗎？",
-        "a": "可以。眼周使用鳳凰電波眼部專用探頭，官網公開225發與450發兩種價格。"
+        "a": "可以。眼周使用鳳凰電波眼部專用探頭，以225發進行，官網公開的單次起價為1,000,000韓元。"
       }
     ],
     "readingMinutes": 6,
@@ -15970,7 +15706,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "comparison",
     "status": "published",
-    "updated": "2026-09-06",
+    "updated": "2026-11-25",
     "reviewer": "clinic",
     "treatment": "/lifting",
     "locale": "zh-TW",
@@ -16022,7 +15758,7 @@ export const GUIDES: readonly GuideDoc[] = [
           [
             "麻醉",
             "麻醉藥膏（30分鐘）",
-            "通常不需麻醉（以震動技術減輕疼痛），可依需求塗麻醉藥膏",
+            "不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定）",
             "麻醉藥膏（可選擇）"
           ],
           [
@@ -16047,7 +15783,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "治療時間、麻醉、恢復與效果取自LIV各療程頁面；音波拉提與鳳凰電波「不需回診」取自國際患者頁面。Shurink 沒有公開的回診說明，預約時請詢問。關於疼痛：音波拉提塗抹麻醉藥膏後進行，大多數人都可以忍受；鳳凰電波 FLX採用震動技術（Vibrating Tip），大大減輕了疼痛，通常不需麻醉即可進行，如有需要也可以塗麻醉藥膏。如果你對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知。"
+        "text": "治療時間、麻醉、恢復與效果取自LIV各療程頁面；音波拉提與鳳凰電波「不需回診」取自國際患者頁面。Shurink 沒有公開的回診說明，預約時請詢問。關於疼痛：音波拉提塗抹麻醉藥膏後進行，大多數人都可以忍受；鳳凰電波 FLX採用震動技術（Vibrating Tip），大大減輕了疼痛；麻醉可選擇不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉，方式在面診時決定。如果你對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知。"
       },
       {
         "type": "h2",
@@ -16068,7 +15804,7 @@ export const GUIDES: readonly GuideDoc[] = [
       },
       {
         "type": "p",
-        "text": "鳳凰電波是RF療程，面向「在意皮膚彈性下降的人」「想改善細紋的人」「希望自然、漸進變化的人」「希望不麻醉的人」。治療部位包括全臉、眼周、頸部與身體，眼周使用鳳凰電波眼部專用探頭。與舊版本相比，FLX的AccuREP技術會自動調節能量，治療速度快25%。治療後立即改善彈性，3–6個月膠原蛋白再生，診所建議1年進行1–2次。LIV是鳳凰電波(Thermage FLX)合作診所。詳見[鳳凰電波頁面](/lifting/thermage)。"
+        "text": "鳳凰電波是RF療程，面向「在意皮膚彈性下降的人」「想改善細紋的人」「希望自然、漸進變化的人」。治療部位包括全臉、眼周、頸部與身體；全臉建議600發，眼周使用225發的鳳凰電波眼部專用探頭。與舊版本相比，FLX的AccuREP技術會自動調節能量，治療速度快25%。治療後立即改善彈性，3–6個月膠原蛋白再生，診所建議1年進行1–2次。LIV是鳳凰電波(Thermage FLX)合作診所。詳見[鳳凰電波頁面](/lifting/thermage)。"
       },
       {
         "type": "h3",
@@ -16124,11 +15860,6 @@ export const GUIDES: readonly GuideDoc[] = [
             "眼部鳳凰電波",
             "225發",
             "1,000,000韓元起"
-          ],
-          [
-            "眼部鳳凰電波",
-            "450發",
-            "1,600,000韓元起"
           ],
           [
             "Shurink",

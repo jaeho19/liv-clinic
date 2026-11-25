@@ -15,7 +15,6 @@ const TREATMENT_HREF: Record<string, string> = {
   thermage: '/lifting/thermage',
   shurink: '/lifting/shurink',
   density: '/lifting/density',
-  inmode: '/lifting/inmode',
   thread: '/lifting/thread',
   aptos: '/lifting/aptos',
   onda: '/lifting/onda',

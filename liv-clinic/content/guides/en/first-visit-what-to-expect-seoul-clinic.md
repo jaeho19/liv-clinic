@@ -10,7 +10,7 @@ keywords:
   - seoul skin clinic english interpreter
 category: booking
 status: published
-updated: 2026-11-10
+updated: 2026-11-25
 reviewer: clinic
 treatment: /international
 ---
@@ -37,7 +37,7 @@ These are the times and anesthesia methods listed on LIV's treatment pages. Add 
 | Treatment | Before the treatment | Treatment time | Return visit |
 |---|---|---|---|
 | [Ultherapy Prime](/lifting/ulthera) | Topical anesthetic cream, about 30 minutes | 60–90 minutes | Not required |
-| [Thermage FLX](/lifting/thermage) | No anesthesia (vibration reduces discomfort) | 45–60 minutes | Not required |
+| [Thermage FLX](/lifting/thermage) | No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation) | 45–60 minutes | Not required |
 | [Botox](/antiaging/botox) | No anesthesia, or cream on request | 10–20 minutes | Not required |
 | [Filler](/antiaging/filler) | Topical anesthetic cream or nerve block | 20–40 minutes | Not required |
 | [Skin booster](/antiaging/skinbooster) | Topical anesthetic cream | 30–45 minutes | Not required |

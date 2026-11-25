@@ -10,7 +10,7 @@ keywords:
   - 江南 医美 外国人
 category: booking
 status: published
-updated: 2026-11-24
+updated: 2026-11-25
 reviewer: clinic
 treatment: /international
 ---
@@ -70,10 +70,9 @@ LIV整形外科 的所有治疗都由整形外科专科医生制定并主持。�
 | 项目 | 所需时间 | 麻醉 | 恢复 | 最低起价 |
 |---|---|---|---|---|
 | [超声刀 Prime（Ultherapy Prime）](/lifting/ulthera) | 60–90分钟 | 麻醉霜（30分钟） | 即刻可恢复日常生活 | 780,000韩元起（上面部，200–300发） |
-| [热玛吉 FLX（Thermage FLX）](/lifting/thermage) | 45–60分钟 | 无需麻醉（振动技术减少疼痛） | 即刻可恢复日常生活 | 1,000,000韩元起（眼部探头 225发） |
+| [热玛吉 FLX（Thermage FLX）](/lifting/thermage) | 45–60分钟 | 无麻醉、麻醉霜、局部麻醉或睡眠麻醉（面诊时决定） | 即刻可恢复日常生活 | 1,000,000韩元起（眼部探头 225发） |
 | [Density](/lifting/density) | 40–60分钟 | 麻醉霜（可选） | 即刻可恢复日常生活 | 890,000韩元起（Hi-Tip，300发） |
 | [ONDA](/lifting/onda) | 面部15–30分钟；身体每个部位约10分钟 | 无需麻醉 | 无恢复期 | 面诊时报价 |
-| [InMode](/lifting/inmode) | 30–60分钟 | 无麻醉或麻醉霜 | 即刻可恢复日常生活 | 150,000韩元起（FX 模式） |
 | [Shurink](/lifting/shurink) | 30–45分钟 | 麻醉霜（可选） | 即刻可恢复日常生活 | 200,000韩元起（300发） |
 | [线雕](/lifting/thread) | 30–60分钟 | 局部麻醉 | 3–7天（可能出现淤青、肿胀） | 800,000韩元起（MINT，8根） |
 | [APTOS 线雕](/lifting/aptos) | 30–60分钟 | 局部麻醉 | 3–7天（可能出现淤青、肿胀） | 1,500,000韩元起（APTOS Light Lift 25，2根） |

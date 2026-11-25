@@ -1,6 +1,6 @@
 # 가이드 근거 시트 (자동 생성 — 수정하지 말고 `npx tsx scripts/dump-guide-facts.mjs`로 재생성)
 
-생성: 2026-11-10. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
+생성: 2026-11-25. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
 
 ## 1. 병원 기본 정보 (src/lib/constants.ts SITE_INFO·BUSINESS_HOURS)
 
@@ -40,7 +40,6 @@
 | --- | --- | --- | --- | --- | --- | --- |
 | flx600 | Thermage FLX | サーマジFLX | 热玛吉FLX | 鳳凰電波 FLX | 600 shots | KRW 2,400,000~ |
 | eye225 | Eye Thermage | アイサーマジ | 眼部热玛吉 | 眼部鳳凰電波 | 225 shots | KRW 1,000,000~ |
-| eye450 | Eye Thermage | アイサーマジ | 眼部热玛吉 | 眼部鳳凰電波 | 450 shots | KRW 1,600,000~ |
 
 ### ulthera — Ultherapy / ウルセラ / 超声刀 / 音波拉提
 
@@ -62,11 +61,8 @@
 | ulthera | name | lowerFace | Lower face (300-400 shots) | 1,170,000 | starting |
 | ulthera | name | fullFace | Full face (400-800 shots) | 1,560,000 | starting |
 | ulthera | name | fullFaceNeck | Full face + neck (600 shots~) | 2,340,000 | starting |
-| thermage | name | shot300 | 300 shots | 1,300,000 | starting |
 | thermage | name | shot600 | 600 shots | 2,400,000 | starting |
-| thermage | name | shot900 | 900 shots | 3,300,000 | starting |
 | thermage | name | eyeTip225 | Eye Tip 225 shots | 1,000,000 | starting |
-| thermage | name | eyeTip450 | Eye Tip 450 shots | 1,600,000 | starting |
 | shurink | shurinkLaser (V-line / Cheeks / Forehead / Double Chin / Neck Wrinkles / Under Eye) | shot300 | 300 shots | 200,000 | starting |
 | shurink | shurinkLaser (V-line / Cheeks / Forehead / Double Chin / Neck Wrinkles / Under Eye) | shot600 | 600 shots | 400,000 | starting |
 | shurink | shurinkLaser (V-line / Cheeks / Forehead / Double Chin / Neck Wrinkles / Under Eye) | shot900 | 900 shots | 600,000 | starting |
@@ -76,9 +72,6 @@
 | density | hiTip | shot600 | 600 shots | 1,500,000 | starting |
 | density | alphaTip | shot300 | 300 shots | 990,000 | starting |
 | density | alphaTip | shot600 | 600 shots | 1,800,000 | starting |
-| inmode | name | fxForma | FX / FORMA Mode | 250,000 | starting |
-| inmode | name | fx | FX Mode | 150,000 | starting |
-| inmode | name | forma | FORMA Mode | 200,000 | starting |
 | thread | name | aptosNamica | APTOS NAMICA (10 threads) | 3,000,000 | starting |
 | thread | name | aptosLight25 | APTOS Light Lift 25 (2 threads) | 1,500,000 | starting |
 | thread | name | aptosLight50 | APTOS Light Lift 50 (2 threads) | 2,500,000 | starting |
@@ -144,14 +137,14 @@
 
 | locale | name | duration | anesthesia | recovery | results |
 | --- | --- | --- | --- | --- | --- |
-| ko | 써마지 FLX | 45-60분 | 무마취 (진동 기술로 통증 감소) | 즉시 일상 복귀 가능 | 즉각적 탄력 개선, 3-6개월 콜라겐 재생 |
-| en | Thermage FLX | 45-60 minutes | No anesthesia (vibration reduces discomfort) | Immediate return to daily life | Immediate elasticity improvement, collagen regeneration over 3-6 months |
-| ja | サーマジFLX | 45-60分 | 無麻酔（振動技術で痛み軽減） | すぐに日常復帰可能 | 即時の弾力改善、3-6ヶ月のコラーゲン再生 |
-| zh | 热玛吉FLX | 45-60分钟 | 无需麻醉（振动技术减少疼痛） | 即刻可恢复日常生活 | 即刻改善弹力，3-6个月胶原蛋白再生 |
-| zh-TW | 鳳凰電波 FLX | 45-60分鐘 | 不需麻醉（以震動技術減輕疼痛） | 可立即恢復日常生活 | 立即改善彈性，3-6個月膠原蛋白再生 |
+| ko | 써마지 FLX | 45-60분 | 무마취 / 마취크림 / 국소마취 / 수면마취 가능 | 즉시 일상 복귀 가능 | 즉각적 탄력 개선, 3-6개월 콜라겐 재생 |
+| en | Thermage FLX | 45-60 minutes | No anesthesia / numbing cream / local anesthesia / sedation available | Immediate return to daily life | Immediate elasticity improvement, collagen regeneration over 3-6 months |
+| ja | サーマジFLX | 45-60分 | 無麻酔 / 麻酔クリーム / 局所麻酔 / 睡眠麻酔に対応 | すぐに日常復帰可能 | 即時の弾力改善、3-6ヶ月のコラーゲン再生 |
+| zh | 热玛吉FLX | 45-60分钟 | 无麻醉 / 麻醉膏 / 局部麻醉 / 睡眠麻醉均可 | 即刻可恢复日常生活 | 即刻改善弹力，3-6个月胶原蛋白再生 |
+| zh-TW | 鳳凰電波 FLX | 45-60分鐘 | 無麻醉 / 麻醉藥膏 / 局部麻醉 / 睡眠麻醉皆可 | 可立即恢復日常生活 | 立即改善彈性，3-6個月膠原蛋白再生 |
 
 - 대상 부위(ko): 얼굴 전체, 눈가, 목, 바디
-- 적합(ko idealFor): 피부 탄력 저하가 고민인 분 / 잔주름 개선을 원하는 분 / 자연스럽고 점진적인 변화를 원하는 분 / 무마취 시술을 원하는 분
+- 적합(ko idealFor): 피부 탄력 저하가 고민인 분 / 잔주름 개선을 원하는 분 / 자연스럽고 점진적인 변화를 원하는 분 / 통증이 걱정되는 분 (마취 방법 선택 가능)
 - 주의(ko cautions): 시술 후 일시적인 홍조가 있을 수 있음 / 페이스메이커 장착자는 시술 불가 / 임산부, 수유부는 시술 불가 / 시술 부위에 금속 임플란트가 있는 경우 상담 필요
 - FAQ(ko): Q 써마지 FLX와 이전 버전의 차이는? → AccuREP 기술로 에너지 자동 조절, 25% 빠른 시술. | Q 시술 주기는 어떻게 되나요? → 1년에 1~2회 시술을 권장합니다. | Q 써마지 눈가 시술도 가능한가요? → 네, 써마지 아이 전용 팁으로 눈가 시술 가능합니다.
 - FAQ(en): Q How is Thermage FLX different from earlier versions? → AccuREP auto-tunes energy; 25% faster. | Q How often should I receive treatment? → We recommend 1-2 sessions per year. | Q Can Thermage be used on the eye area? → Yes — Thermage Eye tip treats eye area.
@@ -196,25 +189,6 @@
 - FAQ(ja): Q ウルセラプライム、サーマジとの違いは？ → デンシティは費用を抑えられる高周波リフティングの入門機器です。 | Q 施術間隔はどのくらいが良いですか？ → 3~6ヶ月間隔の施術を推奨します。
 - FAQ(zh): Q Densiti和超声刀Prime、热玛吉有什么区别？ → Densiti是性价比高的入门级射频提升设备。 | Q 治疗间隔多久比较好？ → 建议3~6个月间隔。
 - FAQ(zh-TW): Q Density和音波拉提Prime、鳳凰電波有什麼差異？ → Density是價格合理的射頻拉提入門儀器。 | Q 治療間隔多久比較好？ → 建議間隔3~6個月。
-
-### lifting/inmode
-
-| locale | name | duration | anesthesia | recovery | results |
-| --- | --- | --- | --- | --- | --- |
-| ko | 인모드 | 30-60분 | 무마취 또는 마취 크림 | 즉시 일상 복귀 가능 | 즉각적 탄력 + 점진적 콜라겐 재생 |
-| en | InMode | 30-60 minutes | No anesthesia or topical anesthetic cream | Immediate return to daily life | Immediate firmness + gradual collagen regeneration |
-| ja | インモード | 30-60分 | 無麻酔または麻酔クリーム | すぐに日常復帰可能 | 即時の弾力＋段階的なコラーゲン再生 |
-| zh | InMode | 30-60分钟 | 无麻醉或麻醉霜 | 即刻可恢复日常生活 | 即刻弹力 + 渐进式胶原蛋白再生 |
-| zh-TW | InMode | 30-60分鐘 | 不麻醉或使用麻醉藥膏 | 可立即恢復日常生活 | 立即的彈性 + 逐漸的膠原蛋白再生 |
-
-- 대상 부위(ko): 턱밑, 볼살, 페이스라인, 이중턱, 심부볼
-- 적합(ko idealFor): 턱 밑 지방 제거 및 탄력 강화를 원하는 분 / 볼살 리프팅 및 페이스라인 정리를 원하는 분 / 이중턱, 심부볼 개선을 원하는 분 / 피부 속 콜라겐 재생 및 잔주름 개선을 원하는 분
-- 주의(ko cautions): 시술 후 약간의 붓기, 홍조 가능 / 피부 상태에 따라 시술 가능 여부 상담 필요 / 임산부, 수유부는 시술 불가
-- FAQ(ko): Q 인모드는 어떤 분께 추천하나요? → 얼굴 지방이 많거나 늘어진 피부가 복합 고민인 분. | Q 써마지와 병행하면 효과가 더 좋나요? → 네, 고주파 시너지 효과로 더 강력한 탄력 개선 가능.
-- FAQ(en): Q Who is InMode recommended for? → Those whose concerns combine facial fat and sagging skin. | Q Is it more effective when combined with Thermage? → Yes, RF synergy allows a stronger improvement in elasticity.
-- FAQ(ja): Q インモードはどのような方におすすめですか？ → 顔の脂肪が多い方や、たるみが複合的に気になる方。 | Q サーマジと併用すると効果は高まりますか？ → はい、高周波のシナジー効果でより強い弾力改善が期待できます。
-- FAQ(zh): Q InMode适合什么样的人？ → 面部脂肪多或皮肤松弛复合烦恼者。 | Q 和热玛吉并用效果更好吗？ → 是的，射频协同效应可提供更强的弹力改善。
-- FAQ(zh-TW): Q InMode推薦給什麼樣的人？ → 臉部脂肪較多或皮膚鬆弛複合困擾的人。 | Q 與鳳凰電波併行效果會更好嗎？ → 是的，射頻的加乘效果可帶來更強的彈性改善。
 
 ### lifting/shurink
 
@@ -1635,17 +1609,17 @@
   - (zh) Q 超声刀和热玛吉有什么区别？ → 超声刀使用HIFU（高强度聚焦超声波）技术将能量传递到皮肤深层的SMAS层。热玛吉则使用RF（射频）能量收缩并促进真皮层的胶原蛋白再生。超声刀有效提升下垂皮肤，热玛吉则有效改善整体皮肤弹性。两种治疗结合使用可产生协同效果。
   - (zh-TW) Q 音波拉提和鳳凰電波有什麼區別？ → 音波拉提使用HIFU（高強度聚焦超聲波）技術將能量傳遞到皮膚深層的SMAS層。鳳凰電波則使用RF（射頻）能量收縮並促進真皮層的膠原蛋白再生。音波拉提有效拉提下垂皮膚，鳳凰電波則有效改善整體皮膚彈性。兩種治療結合使用可產生協同效果。
 
-- **lifting-pain** (ko) Q 리프팅 시술은 얼마나 아픈가요? → 리프팅 시술의 통증은 시술 종류와 개인차에 따라 다릅니다. 울쎄라피 프라임과 써마지 FLX 모두 시술 전 마취 크림을 30분 정도 바른 후 진행합니다. 특히 써마지 FLX는 진동 기술(Vibrating Tip)이 적용되어 통증이 크게 감소했으며, 대부분의 환자분들이 편안하게 시술을 받으실 수 있습니다. 통증에 민감하신 분은 추가적인 통증 조절이 가능하니 상담 시 말씀해주세요.
-  - (en) Q How painful are lifting treatments? → The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Both Ultherapy Prime and Thermage FLX are performed after applying numbing cream for about 30 minutes. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.
-  - (ja) Q リフティング施術はどのくらい痛いですか？ → リフティング施術の痛みは、施術の種類や個人差によって異なります。ウルセラとサーマジFLXは、施術前に約30分間麻酔クリームを塗った後に行います。特にサーマジFLXは振動技術（Vibrating Tip）が適用されており、痛みが大幅に軽減されています。ほとんどの患者様が快適に施術を受けることができます。痛みに敏感な方は追加の痛み調節が可能ですので、ご相談時にお知らせください。
-  - (zh) Q 提升治疗有多疼？ → 提升治疗的疼痛程度因治疗类型和个人差异而异。超声刀和热玛吉FLX治疗前都会涂抹约30分钟的麻醉膏。特别是热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛，大多数患者都能舒适地接受治疗。如果您对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知我们。
-  - (zh-TW) Q 拉提治療有多疼？ → 拉提治療的疼痛程度因治療類型和個人差異而異。音波拉提和鳳凰電波 FLX治療前都會塗抹約30分鐘的麻醉膏。特別是鳳凰電波 FLX採用振動技術（Vibrating Tip），大大減輕了疼痛，大多數患者都能舒適地接受治療。如果您對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知我們。
+- **lifting-pain** (ko) Q 리프팅 시술은 얼마나 아픈가요? → 리프팅 시술의 통증은 시술 종류와 개인차에 따라 다릅니다. 울쎄라피 프라임은 시술 전 마취 크림을 30분 정도 바른 후 진행하고, 써마지 FLX는 무마취·마취크림·국소마취·수면마취 중에서 상담 후 정합니다. 특히 써마지 FLX는 진동 기술(Vibrating Tip)이 적용되어 통증이 크게 감소했으며, 대부분의 환자분들이 편안하게 시술을 받으실 수 있습니다. 통증에 민감하신 분은 추가적인 통증 조절이 가능하니 상담 시 말씀해주세요.
+  - (en) Q How painful are lifting treatments? → The pain level of lifting treatments varies depending on the treatment type and individual tolerance. Ultherapy Prime is performed after applying numbing cream for about 30 minutes, and for Thermage FLX the anesthesia is chosen at the consultation from no anesthesia, numbing cream, local anesthesia or sedation. Thermage FLX in particular uses vibration technology (Vibrating Tip) that significantly reduces discomfort. Most patients can receive treatment comfortably. If you are sensitive to pain, additional pain control is available - please let us know during consultation.
+  - (ja) Q リフティング施術はどのくらい痛いですか？ → リフティング施術の痛みは、施術の種類や個人差によって異なります。ウルセラは施術前に約30分間麻酔クリームを塗った後に行い、サーマジFLXは無麻酔・麻酔クリーム・局所麻酔・睡眠麻酔からカウンセリングで選びます。特にサーマジFLXは振動技術（Vibrating Tip）が適用されており、痛みが大幅に軽減されています。ほとんどの患者様が快適に施術を受けることができます。痛みに敏感な方は追加の痛み調節が可能ですので、ご相談時にお知らせください。
+  - (zh) Q 提升治疗有多疼？ → 提升治疗的疼痛程度因治疗类型和个人差异而异。超声刀治疗前会涂抹约30分钟的麻醉膏；热玛吉FLX则可在面诊时从无麻醉、麻醉膏、局部麻醉、睡眠麻醉中选择。特别是热玛吉FLX采用振动技术（Vibrating Tip），大大减轻了疼痛，大多数患者都能舒适地接受治疗。如果您对疼痛敏感，可以进行额外的疼痛控制，请在咨询时告知我们。
+  - (zh-TW) Q 拉提治療有多疼？ → 拉提治療的疼痛程度因治療類型和個人差異而異。音波拉提治療前會塗抹約30分鐘的麻醉膏；鳳凰電波 FLX則可在面診時從無麻醉、麻醉藥膏、局部麻醉、睡眠麻醉中選擇。特別是鳳凰電波 FLX採用振動技術（Vibrating Tip），大大減輕了疼痛，大多數患者都能舒適地接受治療。如果您對疼痛敏感，可以進行額外的疼痛控制，請在諮詢時告知我們。
 
-- **lifting-frequency** (ko) Q 리프팅 시술은 얼마나 자주 받아야 하나요? → 울쎄라피 프라임은 1-2년에 1회, 써마지는 6개월-1년에 1회를 권장합니다. 슈링크나 인모드 등 유지 관리용 시술은 3-6개월 간격으로 받으실 수 있습니다. 피부 상태와 원하시는 효과에 따라 시술 주기가 달라질 수 있으므로, 정확한 주기는 상담을 통해 결정하시는 것이 좋습니다.
-  - (en) Q How often should I get lifting treatments? → Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink or InMode can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.
-  - (ja) Q リフティング施術はどのくらいの頻度で受けるべきですか？ → ウルセラは1-2年に1回、サーマジは6ヶ月-1年に1回をお勧めします。シュリンクやインモードなどのメンテナンス施術は3-6ヶ月間隔で受けることができます。肌の状態やご希望の効果によって施術周期が異なる場合がありますので、正確な周期はご相談を通じて決定することをお勧めします。
-  - (zh) Q 提升治疗多久做一次？ → 超声刀建议1-2年做一次，热玛吉建议6个月-1年做一次。Shurink或InMode等维护性治疗可以每3-6个月进行一次。根据您的皮肤状况和期望效果，治疗周期可能会有所不同，建议通过咨询确定准确的周期。
-  - (zh-TW) Q 拉提治療多久做一次？ → 音波拉提建議1-2年做一次，鳳凰電波建議6個月-1年做一次。Shurink或InMode等維護性治療可以每3-6個月進行一次。根據您的皮膚狀況和期望效果，治療週期可能會有所不同，建議通過諮詢確定準確的週期。
+- **lifting-frequency** (ko) Q 리프팅 시술은 얼마나 자주 받아야 하나요? → 울쎄라피 프라임은 1-2년에 1회, 써마지는 6개월-1년에 1회를 권장합니다. 슈링크 등 유지 관리용 시술은 3-6개월 간격으로 받으실 수 있습니다. 피부 상태와 원하시는 효과에 따라 시술 주기가 달라질 수 있으므로, 정확한 주기는 상담을 통해 결정하시는 것이 좋습니다.
+  - (en) Q How often should I get lifting treatments? → Ultherapy Prime is recommended once every 1-2 years, and Thermage once every 6 months to 1 year. Maintenance treatments like Shurink can be done every 3-6 months. The treatment cycle may vary depending on your skin condition and desired results, so it's best to determine the exact frequency through consultation.
+  - (ja) Q リフティング施術はどのくらいの頻度で受けるべきですか？ → ウルセラは1-2年に1回、サーマジは6ヶ月-1年に1回をお勧めします。シュリンクなどのメンテナンス施術は3-6ヶ月間隔で受けることができます。肌の状態やご希望の効果によって施術周期が異なる場合がありますので、正確な周期はご相談を通じて決定することをお勧めします。
+  - (zh) Q 提升治疗多久做一次？ → 超声刀建议1-2年做一次，热玛吉建议6个月-1年做一次。Shurink等维护性治疗可以每3-6个月进行一次。根据您的皮肤状况和期望效果，治疗周期可能会有所不同，建议通过咨询确定准确的周期。
+  - (zh-TW) Q 拉提治療多久做一次？ → 音波拉提建議1-2年做一次，鳳凰電波建議6個月-1年做一次。Shurink等維護性治療可以每3-6個月進行一次。根據您的皮膚狀況和期望效果，治療週期可能會有所不同，建議通過諮詢確定準確的週期。
 
 - **lifting-duration** (ko) Q 리프팅 효과는 얼마나 지속되나요? → 울쎄라피 프라임의 효과는 약 1년, 써마지는 6개월-1년 정도 지속됩니다. 다만 효과 지속 기간은 개인의 피부 상태, 나이, 생활 습관에 따라 달라질 수 있습니다. 정기적인 유지 관리 시술을 받으시면 효과를 더 오래 유지할 수 있습니다.
   - (en) Q How long do lifting results last? → Ultherapy Prime results last about 1 year, while Thermage lasts 6 months to 1 year. However, the duration may vary depending on individual skin condition, age, and lifestyle. Regular maintenance treatments can help extend the results.
@@ -1729,7 +1703,7 @@
   - (en) Q What happens on my first visit? → Please make a consultation appointment by phone (02-797-2773) or KakaoTalk. During your visit, our board-certified plastic surgeon will personally diagnose your skin condition and recommend the optimal treatment plan based on your concerns and desired results. You can take your time to decide on treatment after the consultation.
   - (ja) Q 初めて訪問するとどのように進みますか？ → 電話（02-797-2773）またはカカオトークで相談予約をお願いいたします。ご来院時、形成外科専門医が直接肌の状態を診断し、患者様のお悩みとご希望の結果に合わせた最適な施術プランをご提案いたします。ご相談後、十分にご検討いただいてから施術をお決めいただいて大丈夫です。
   - (zh) Q 第一次来怎么进行？ → 请通过电话(02-797-2773)或KakaoTalk预约咨询。来访时，整形外科专家会亲自诊断您的皮肤状况，并根据您的需求和期望效果推荐最佳治疗方案。咨询后您可以充分考虑再决定是否治疗。
-  - (zh-TW) Q 第一次來怎麼進行？ → 請通過電話(02-797-2773)或KakaoTalk預約諮詢。來訪時，整形外科專家會親自診斷您的皮膚狀況，並根據您的需求和期望效果推薦最佳治療方案。諮詢後您可以充分考慮再決定是否治療。
+  - (zh-TW) Q 第一次來怎麼進行？ → 請透過電話(+82-2-797-2773)或LINE預約諮詢。來訪時，整形外科專家會親自診斷您的皮膚狀況，並根據您的需求和期望效果推薦最佳治療方案。諮詢後您可以充分考慮再決定是否治療。
 
 - **foreign-consultation-language** (ko) Q 영어·일본어·중국어 상담이 가능한가요? → 네, 영어·일본어·중국어 상담을 지원하며 통역은 무료로 준비해 드립니다. 왓츠앱(WhatsApp), 라인(LINE), 위챗(WeChat) 또는 홈페이지 실시간 채팅으로 편하게 예약하실 수 있습니다. 방문 상담 시에도 언어에 맞춰 안내해 드리니 걱정 없이 문의해 주세요.
   - (en) Q Do you offer consultations in English, Japanese or Chinese? → Yes. We support consultations in English, Japanese and Chinese, and interpretation is arranged free of charge. You can book easily via WhatsApp, LINE, WeChat or the live chat on our website, and we match your language for the in-person consultation as well.

@@ -118,6 +118,20 @@ describe('resolveLegacyRequest — legacy WordPress paths', () => {
     expect(resolveLegacyRequest('/ja/laser/pigmentation', '')).toBeNull();
   });
 
+  it('sends the retired InMode page (2026-11-25) to the lifting center, and the renamed comparison guide to its new slug', () => {
+    expect(resolveLegacyRequest('/lifting/inmode', '')).toEqual(redirect('/ko/lifting', 'utm-only'));
+    expect(resolveLegacyRequest('/en/lifting/inmode/', '')).toEqual(redirect('/en/lifting', 'utm-only'));
+    expect(resolveLegacyRequest('/ja/lifting/inmode', 'utm_source=gsc')).toEqual(redirect('/ja/lifting', 'utm-only'));
+    expect(resolveLegacyRequest('/en/guides/density-onda-inmode-lifting-seoul', '')).toEqual(
+      redirect('/en/guides/density-vs-onda-lifting-seoul', 'utm-only')
+    );
+    expect(resolveLegacyRequest('/zh-TW/guides/density-onda-inmode-lifting-seoul', '')).toEqual(
+      redirect('/zh-TW/guides/density-vs-onda-lifting-seoul', 'utm-only')
+    );
+    expect(resolveLegacyRequest('/en/lifting/density', '')).toBeNull();
+    expect(resolveLegacyRequest('/en/guides/density-vs-onda-lifting-seoul', '')).toBeNull();
+  });
+
   it('handles the Korean event slugs whether the path arrives decoded or percent-encoded', () => {
     expect(resolveLegacyRequest('/덴서티-이벤트', '')).toEqual(redirect('/ko/events', 'utm-only'));
     expect(resolveLegacyRequest(encodeURI('/직원픽-이벤트'), 'lang=jp')).toEqual(redirect('/ja/events', 'utm-only'));

@@ -62,7 +62,6 @@ export default function ContactPage() {
     { value: 'lifting-ulthera', label: tNav('ulthera') },
     { value: 'lifting-thermage', label: tNav('thermage') },
     { value: 'lifting-density', label: tNav('density') },
-    { value: 'lifting-inmode', label: tNav('inmode') },
     { value: 'lifting-shurink', label: tNav('shurink') },
     { value: 'lifting-thread', label: tNav('thread') },
     { value: 'antiaging-botox', label: tNav('botox') },

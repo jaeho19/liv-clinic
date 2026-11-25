@@ -10,7 +10,7 @@ keywords:
   - same day treatment seoul no revisit
 category: aftercare
 status: published
-updated: 2026-09-06
+updated: 2026-11-25
 reviewer: clinic
 treatment: /international
 ---
@@ -24,7 +24,7 @@ The table combines LIV's treatment pages (time, anesthesia, recovery) with the i
 | Treatment | Time | Anesthesia | Recovery, as listed | Return visit |
 |---|---|---|---|---|
 | [Ultherapy Prime](/lifting/ulthera) | 60–90 minutes | Topical anesthetic cream (30 min) | Immediate return to daily life | Same day · no revisit required |
-| [Thermage FLX](/lifting/thermage) | 45–60 minutes | No anesthesia (vibration reduces discomfort) | Immediate return to daily life | Same day · no revisit required |
+| [Thermage FLX](/lifting/thermage) | 45–60 minutes | No anesthesia, numbing cream, local anesthesia or sedation (chosen at consultation) | Immediate return to daily life | Same day · no revisit required |
 | [Botox](/antiaging/botox) | 10–20 minutes | No anesthesia, or topical anesthetic cream on request | Immediate return to daily life | Same day · no revisit required |
 | [Filler](/antiaging/filler) | 20–40 minutes | Topical anesthetic cream or nerve block | Immediate to 3 days (varies by area) | Same day · no revisit required |
 | [Skin booster](/antiaging/skinbooster) | 30–45 minutes | Topical anesthetic cream | 1–3 days (micro-needle marks) | Same day · no revisit required |
@@ -32,7 +32,7 @@ The table combines LIV's treatment pages (time, anesthesia, recovery) with the i
 
 > Time and recovery are quoted from the treatment pages; the return-visit column is from the international patients page, which calls these timelines general guidance confirmed at your consultation. There is deliberately no "earliest flight" column (next section).
 
-Shurink (30–45 min), InMode (30–60 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime and, although they are not on the return-visit list, each is generally completed in a single session with no return visit needed; the interval for any maintenance sessions is decided at the consultation.
+Shurink (30–45 min), Density (40–60 min) and ONDA (face 15–30 min) are also listed as immediate return or no downtime and, although they are not on the return-visit list, each is generally completed in a single session with no return visit needed; the interval for any maintenance sessions is decided at the consultation.
 
 Recovery is not results: Botox results begin after 3–7 days, so on a 2–3 day trip you will see the effect at home, not in Seoul. A skin booster is recommended as a course of 3–4 sessions at 2–4 week intervals — one visit is one session.
 

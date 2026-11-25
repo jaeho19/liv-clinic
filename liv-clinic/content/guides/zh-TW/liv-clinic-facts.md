@@ -10,7 +10,7 @@ keywords:
   - 江南 醫美 外國人
 category: booking
 status: published
-updated: 2026-11-24
+updated: 2026-11-25
 reviewer: clinic
 treatment: /international
 ---
@@ -70,10 +70,9 @@ LIV整形外科 的所有療程都由整形外科專科醫生規劃並主持。�
 | 療程 | 所需時間 | 麻醉 | 恢復 | 最低起價 |
 |---|---|---|---|---|
 | [音波拉提 Prime（Ultherapy Prime）](/lifting/ulthera) | 60–90分鐘 | 麻醉藥膏（30分鐘） | 可立即恢復日常生活 | 780,000韓元起（上面部，200–300發） |
-| [鳳凰電波 FLX（Thermage FLX）](/lifting/thermage) | 45–60分鐘 | 不需麻醉（以震動技術減輕疼痛） | 可立即恢復日常生活 | 1,000,000韓元起（眼部探頭 225發） |
+| [鳳凰電波 FLX（Thermage FLX）](/lifting/thermage) | 45–60分鐘 | 不麻醉、麻醉藥膏、局部麻醉或睡眠麻醉（面診時決定） | 可立即恢復日常生活 | 1,000,000韓元起（眼部探頭 225發） |
 | [Density](/lifting/density) | 40–60分鐘 | 麻醉藥膏（可選擇） | 可立即恢復日常生活 | 890,000韓元起（Hi-Tip，300發） |
 | [ONDA](/lifting/onda) | 臉部15–30分鐘；身體每個部位約10分鐘 | 不需麻醉 | 無恢復期 | 面診時報價 |
-| [InMode](/lifting/inmode) | 30–60分鐘 | 不麻醉或使用麻醉藥膏 | 可立即恢復日常生活 | 150,000韓元起（FX 模式） |
 | [Shurink](/lifting/shurink) | 30–45分鐘 | 麻醉藥膏（可選擇） | 可立即恢復日常生活 | 200,000韓元起（300發） |
 | [埋線拉提](/lifting/thread) | 30–60分鐘 | 局部麻醉 | 3–7天（可能出現瘀青、腫脹） | 800,000韓元起（MINT，8條） |
 | [APTOS 埋線拉提](/lifting/aptos) | 30–60分鐘 | 局部麻醉 | 3–7天（可能出現瘀青、腫脹） | 1,500,000韓元起（APTOS Light Lift 25，2條） |
