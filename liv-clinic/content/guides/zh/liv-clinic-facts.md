@@ -10,7 +10,7 @@ keywords:
   - 江南 医美 外国人
 category: booking
 status: published
-updated: 2026-11-25
+updated: 2026-11-26
 reviewer: clinic
 treatment: /international
 ---
@@ -48,7 +48,7 @@ LIV整形外科 是位于韩国首尔的非手术抗衰诊所，以提拉和紧�
 | 专科 | 整形外科专科医生 |
 | 学历 | 高丽大学医学院毕业；高丽大学研究生院整形外科学硕士 |
 | 培训 | 高丽大学医疗院住院医师结业；高丽大学医疗院整形外科住院医师结业；美国德克萨斯州休斯顿 MD Anderson Cancer Center 进修 |
-| 教职 | 高丽大学医学院客座教授 |
+| 教职 | 曾任高丽大学医学院客座教授 |
 | 学会 | 大韩整形外科医师会、大韩整形外科学会、大韩美容整形外科学会、大韩头颅颜面整形外科学会、大韩医学激光学会（均为正式会员） |
 | 研究 | SCI 收录论文4篇（Arch Plast Surg 2024、2016；Dermatol Surg 2014；Microsurgery 2014） |
 | 专长 | 超声刀Prime提升、热玛吉提升、复合提升治疗、抗衰老项目 |

@@ -10,7 +10,7 @@ keywords:
   - Gangnam clinic for foreigners
 category: booking
 status: published
-updated: 2026-11-25
+updated: 2026-11-26
 reviewer: clinic
 treatment: /international
 ---
@@ -48,7 +48,7 @@ LIV Plastic Surgery is a non-surgical anti-aging clinic in Seoul, Korea, focused
 | Specialty | Board-certified Plastic Surgeon |
 | Education | M.D., Korea University College of Medicine; M.S. in Plastic Surgery, Korea University Graduate School |
 | Training | Internship and Residency in Plastic Surgery, Korea University Medical Center; Fellowship, MD Anderson Cancer Center, Houston, Texas, USA |
-| Academic post | Clinical Professor, Korea University College of Medicine |
+| Academic post | Former Clinical Professor, Korea University College of Medicine |
 | Memberships | Korean Association of Plastic Surgeons; Korean Society of Plastic and Reconstructive Surgeons; Korean Society of Aesthetic Plastic Surgery; Korean Cleft Palate-Craniofacial Association; Korean Society for Laser Medicine and Surgery |
 | Research | 4 SCI-indexed publications (Arch Plast Surg 2024 and 2016, Dermatol Surg 2014, Microsurgery 2014) |
 | Areas of practice | Ultherapy Prime lifting, Thermage lifting, combination lifting treatments, anti-aging programs |

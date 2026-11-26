@@ -1,6 +1,6 @@
 # 가이드 근거 시트 (자동 생성 — 수정하지 말고 `npx tsx scripts/dump-guide-facts.mjs`로 재생성)
 
-생성: 2026-11-25. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
+생성: 2026-11-26. 출처는 각 표의 머리말에 있다. **여기에 없는 가격·시간·자격·비행 시점은 가이드에 쓰지 않는다.**
 
 ## 1. 병원 기본 정보 (src/lib/constants.ts SITE_INFO·BUSINESS_HOURS)
 
@@ -1755,10 +1755,10 @@
 
 ## 7. 의료진 (sections.doctors.kim, 4개 언어)
 
-- en: Sooyoung Kim / Dr. Sooyoung Kim / Director / Board-certified Plastic Surgeon / 학력: M.D., Korea University College of Medicine; Internship, Korea University Medical Center; Residency in Plastic Surgery, Korea University Medical Center; M.S. in Plastic Surgery, Korea University Graduate School; Clinical Professor, Korea University College of Medicine; Fellowship, MD Anderson Cancer Center, Houston, Texas, USA / 자격: Member, Korean Association of Plastic Surgeons; Member, Korean Society of Plastic and Reconstructive Surgeons; Member, Korean Society of Aesthetic Plastic Surgery; Member, Korean Cleft Palate-Craniofacial Association; Member, Korean Society for Laser Medicine and Surgery / 전문: Ultherapy Prime Lifting; Thermage Lifting; Combination Lifting Treatments; Anti-Aging Programs
-- ja: キム・スヨン / Dr. Sooyoung Kim / 代表院長 / 形成外科専門医 / 학력: 高麗大学校医科大学卒業; 高麗大学校医療院研修医修了; 高麗大学校医療院形成外科レジデント修了; 高麗大学校大学院形成外科学修士取得; 高麗大学校医科大学非常勤教授; 米国テキサス州ヒューストン MD Anderson Cancer Center 研修 / 자격: 大韓形成外科医師会正会員; 大韓形成外科学会正会員; 大韓美容形成外科学会正会員; 大韓頭蓋顔面形成外科学会正会員; 大韓医学レーザー学会正会員 / 전문: ウルセラプライムリフティング; サーマジリフティング; 複合リフティング施術; アンチエイジングプログラム
-- zh: 金秀英 / Dr. Sooyoung Kim / 代表院长 / 整形外科专科医生 / 학력: 高丽大学医学院毕业; 高丽大学医疗院住院医师结业; 高丽大学医疗院整形外科住院医师结业; 高丽大学研究生院整形外科学硕士; 高丽大学医学院客座教授; 美国德克萨斯州休斯顿 MD Anderson Cancer Center 进修 / 자격: 大韩整形外科医师会正式会员; 大韩整形外科学会正式会员; 大韩美容整形外科学会正式会员; 大韩头颅颜面整形外科学会正式会员; 大韩医学激光学会正式会员 / 전문: 超声刀Prime提升; 热玛吉提升; 复合提升治疗; 抗衰老项目
-- zh-TW: 金秀英 / Dr. Sooyoung Kim / 代表院長 / 整形外科專科醫生 / 학력: 高麗大學醫學院畢業; 高麗大學醫療院住院醫師結業; 高麗大學醫療院整形外科住院醫師結業; 高麗大學研究生院整形外科學碩士; 高麗大學醫學院客座教授; 美國德克薩斯州休斯頓 MD Anderson Cancer Center 進修 / 자격: 大韓整形外科醫師會正式會員; 大韓整形外科學會正式會員; 大韓美容整形外科學會正式會員; 大韓頭顱顏面整形外科學會正式會員; 大韓醫學激光學會正式會員 / 전문: 音波拉提Prime拉提; 鳳凰電波拉提; 複合拉提療程; 抗衰老療程
+- en: Sooyoung Kim / Dr. Sooyoung Kim / Director / Board-certified Plastic Surgeon / 학력: M.D., Korea University College of Medicine; Internship, Korea University Medical Center; Residency in Plastic Surgery, Korea University Medical Center; M.S. in Plastic Surgery, Korea University Graduate School; Former Clinical Professor, Korea University College of Medicine; Fellowship, MD Anderson Cancer Center, Houston, Texas, USA / 자격: Member, Korean Association of Plastic Surgeons; Member, Korean Society of Plastic and Reconstructive Surgeons; Member, Korean Society of Aesthetic Plastic Surgery; Member, Korean Cleft Palate-Craniofacial Association; Member, Korean Society for Laser Medicine and Surgery / 전문: Ultherapy Prime Lifting; Thermage Lifting; Combination Lifting Treatments; Anti-Aging Programs
+- ja: キム・スヨン / Dr. Sooyoung Kim / 代表院長 / 形成外科専門医 / 학력: 高麗大学校医科大学卒業; 高麗大学校医療院研修医修了; 高麗大学校医療院形成外科レジデント修了; 高麗大学校大学院形成外科学修士取得; 元 高麗大学校医科大学非常勤教授; 米国テキサス州ヒューストン MD Anderson Cancer Center 研修 / 자격: 大韓形成外科医師会正会員; 大韓形成外科学会正会員; 大韓美容形成外科学会正会員; 大韓頭蓋顔面形成外科学会正会員; 大韓医学レーザー学会正会員 / 전문: ウルセラプライムリフティング; サーマジリフティング; 複合リフティング施術; アンチエイジングプログラム
+- zh: 金秀英 / Dr. Sooyoung Kim / 代表院长 / 整形外科专科医生 / 학력: 高丽大学医学院毕业; 高丽大学医疗院住院医师结业; 高丽大学医疗院整形外科住院医师结业; 高丽大学研究生院整形外科学硕士; 曾任高丽大学医学院客座教授; 美国德克萨斯州休斯顿 MD Anderson Cancer Center 进修 / 자격: 大韩整形外科医师会正式会员; 大韩整形外科学会正式会员; 大韩美容整形外科学会正式会员; 大韩头颅颜面整形外科学会正式会员; 大韩医学激光学会正式会员 / 전문: 超声刀Prime提升; 热玛吉提升; 复合提升治疗; 抗衰老项目
+- zh-TW: 金秀英 / Dr. Sooyoung Kim / 代表院長 / 整形外科專科醫生 / 학력: 高麗大學醫學院畢業; 高麗大學醫療院住院醫師結業; 高麗大學醫療院整形外科住院醫師結業; 高麗大學研究生院整形外科學碩士; 曾任高麗大學醫學院客座教授; 美國德克薩斯州休斯頓 MD Anderson Cancer Center 進修 / 자격: 大韓整形外科醫師會正式會員; 大韓整形外科學會正式會員; 大韓美容整形外科學會正式會員; 大韓頭顱顏面整形外科學會正式會員; 大韓醫學激光學會正式會員 / 전문: 音波拉提Prime拉提; 鳳凰電波拉提; 複合拉提療程; 抗衰老療程
 - SCI 논문 4편: src/app/[locale]/about/staff/page.tsx KIM_SCI_PUBLICATIONS (Arch Plast Surg 2024·2016, Dermatol Surg 2014, Microsurgery 2014) — 제목·저널만 인용, 링크 없음
 - 의료진은 김수영 대표원장 1명. 천신혜 원장은 2026-11 퇴직 — 가이드·페이지에 다시 쓰지 않는다
 

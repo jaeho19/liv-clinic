@@ -2510,7 +2510,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-25",
+    "updated": "2026-11-26",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "en",
@@ -2636,7 +2636,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "Academic post",
-            "Clinical Professor, Korea University College of Medicine"
+            "Former Clinical Professor, Korea University College of Medicine"
           ],
           [
             "Memberships",
@@ -7187,7 +7187,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-25",
+    "updated": "2026-11-26",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "ja",
@@ -7313,7 +7313,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "教職",
-            "高麗大学校医科大学非常勤教授"
+            "元 高麗大学校医科大学非常勤教授"
           ],
           [
             "所属学会",
@@ -11050,7 +11050,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-25",
+    "updated": "2026-11-26",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh",
@@ -11176,7 +11176,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "教职",
-            "高丽大学医学院客座教授"
+            "曾任高丽大学医学院客座教授"
           ],
           [
             "学会",
@@ -13630,7 +13630,7 @@ export const GUIDES: readonly GuideDoc[] = [
     ],
     "category": "booking",
     "status": "published",
-    "updated": "2026-11-25",
+    "updated": "2026-11-26",
     "reviewer": "clinic",
     "treatment": "/international",
     "locale": "zh-TW",
@@ -13756,7 +13756,7 @@ export const GUIDES: readonly GuideDoc[] = [
           ],
           [
             "教職",
-            "高麗大學醫學院客座教授"
+            "曾任高麗大學醫學院客座教授"
           ],
           [
             "學會",

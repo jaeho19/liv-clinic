@@ -10,7 +10,7 @@ keywords:
   - 江南 醫美 外國人
 category: booking
 status: published
-updated: 2026-11-25
+updated: 2026-11-26
 reviewer: clinic
 treatment: /international
 ---
@@ -48,7 +48,7 @@ LIV整形外科 是位於韓國首爾的非手術抗老診所，以拉提和緊�
 | 專科 | 整形外科專科醫生 |
 | 學歷 | 高麗大學醫學院畢業；高麗大學研究生院整形外科學碩士 |
 | 訓練 | 高麗大學醫療院住院醫師結業；高麗大學醫療院整形外科住院醫師結業；美國德克薩斯州休斯頓 MD Anderson Cancer Center 進修 |
-| 教職 | 高麗大學醫學院客座教授 |
+| 教職 | 曾任高麗大學醫學院客座教授 |
 | 學會 | 大韓整形外科醫師會、大韓整形外科學會、大韓美容整形外科學會、大韓頭顱顏面整形外科學會、大韓醫學激光學會（皆為正式會員） |
 | 研究 | SCI 收錄論文4篇（Arch Plast Surg 2024、2016；Dermatol Surg 2014；Microsurgery 2014） |
 | 專長 | 音波拉提Prime拉提、鳳凰電波拉提、複合拉提療程、抗衰老療程 |
