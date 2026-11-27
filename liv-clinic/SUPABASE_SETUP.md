@@ -29,7 +29,8 @@
 
 ```bash
 # Naver Maps API
-NEXT_PUBLIC_NAVER_MAP_CLIENT_ID=cu36wf7hdh
+# 신규 NCP Maps(MyMapsApp) 키 — 옛 AI NAVER API 키 cu36wf7hdh 는 2026-06-25 종료
+NEXT_PUBLIC_NAVER_MAP_CLIENT_ID=t5h867gjgx
 
 # Supabase
 NEXT_PUBLIC_SUPABASE_URL=https://xxxxx.supabase.co

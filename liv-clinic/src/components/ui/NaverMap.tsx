@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
+import { destroyMapSafely, naverMapScriptUrl, NAVER_MAP_SCRIPT_SELECTOR } from './naverMapSdk';
 
 interface NaverMapProps {
   lat: number;
@@ -145,7 +146,7 @@ export default function NaverMap({
     }
 
     // 이미 로딩 중인 경우 - 콜백 큐에 등록
-    const existingScript = document.querySelector('script[src*="openapi.map.naver.com"]');
+    const existingScript = document.querySelector(NAVER_MAP_SCRIPT_SELECTOR);
     if (existingScript) {
       if (!window.__naverMapCallbacks) {
         window.__naverMapCallbacks = [];
@@ -183,7 +184,7 @@ export default function NaverMap({
     // language: 지도 타일/컨트롤의 표기 언어. SDK는 문서 전체에 싱글턴으로 한 번만
     // 주입되므로 "페이지 로드 시점의 로케일"로 고정된다. 이 앱에서 로케일 전환은
     // 하드 내비게이션이라 실사용상 문제는 없다(전환 = 새 문서 = 새 SDK 로드).
-    script.src = `https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=${clientId}&language=${mapLanguage}`;
+    script.src = naverMapScriptUrl(clientId, mapLanguage);
     script.async = true;
 
     // 전체 로딩 타임아웃 — onload/onerror가 모두 발화하지 않는 경우(네트워크 행, 광고차단 등)
@@ -250,7 +251,8 @@ export default function NaverMap({
         retryTimerRef.current = null;
       }
       if (mapInstanceRef.current) {
-        mapInstanceRef.current.destroy();
+        // 인증 실패 뒤엔 SDK 가 이미 해체돼 destroy() 가 던진다 → 새면 페이지 전체가 오류 화면
+        destroyMapSafely(mapInstanceRef.current);
         mapInstanceRef.current = null;
       }
     };
